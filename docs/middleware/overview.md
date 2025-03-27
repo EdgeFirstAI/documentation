@@ -1,4 +1,4 @@
-# EdgeFirst Perception Middleware
+# Middleware Overview
 
 The EdgeFirst Perception Middleware is a modular software stack designed as a collection of services
 communicating over a ROS2-like communication middleware called Zenoh. The various application services 

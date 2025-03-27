@@ -1,9 +1,21 @@
 nav:
   - Home: index.md
-  - getting_started
+  - Getting Started:
+    - getting_started/index.md
+    - getting_started/dataset.md
+    - getting_started/models.md
+    - getting_started/modules.md
   - enterprise
+  - Datasets:
+    - datasets/index.md
+    - datasets/tutorials.md
+    - datasets/zoo.md
+    - datasets/format.md
   - models
-  - middleware  
-  - modules  
-  - datasets
-  
+  - fusion
+  - Middleware:
+    - middleware/overview.md
+    - middleware/topics.md
+    - middleware/custom.md
+    - middleware/ref.md    
+  - modules

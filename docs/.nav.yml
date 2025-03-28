@@ -24,7 +24,13 @@ nav:
     - models/augmentations.md
   - fusion
   - Middleware:
-    - middleware/overview.md
+    - middleware/index.md
+    - Dataset Collection Middleware:
+      - modules/recording.md
+      - modules/replay.md
+      - modules/publishing.md
+      - modules/foxglove.md
+      - modules/advanced_foxglove.md
     - middleware/topics.md
     - middleware/custom.md
     - API Reference:
@@ -36,4 +42,22 @@ nav:
       - middleware/api/sensor_msgs.md
       - middleware/api/std_msgs.md
       - middleware/api/builtin_interfaces.md
-  - modules
+  - Modules:
+    - modules/index.md
+    - Introduction:
+      - modules/quickstart.md
+      - modules/walkthrough.md
+    - Hardware and OS:
+      - modules/hardware.md
+      - modules/radar.md
+      - modules/fusion.md
+      - modules/perception.md
+      - modules/architecture.md
+      - modules/networking.md
+      - modules/ssh.md
+    - Software:
+      - modules/configuration.md
+      - modules/troubleshooting.md
+      - modules/issues.md
+      - modules/release_notes.md
+      - modules/updates.md

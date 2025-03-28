@@ -1,195 +1,195 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
-         <loc>https://edgefirstai.github.io/documentation/main/</loc>
+         <loc>https://doc.edgefirst.ai/main/</loc>
          <lastmod>2025-03-28</lastmod>
     </url>
     <url>
-         <loc>https://edgefirstai.github.io/documentation/main/datasets/</loc>
+         <loc>https://doc.edgefirst.ai/main/datasets/</loc>
          <lastmod>2025-03-28</lastmod>
     </url>
     <url>
-         <loc>https://edgefirstai.github.io/documentation/main/datasets/format/</loc>
+         <loc>https://doc.edgefirst.ai/main/datasets/format/</loc>
          <lastmod>2025-03-28</lastmod>
     </url>
     <url>
-         <loc>https://edgefirstai.github.io/documentation/main/datasets/tutorials/</loc>
+         <loc>https://doc.edgefirst.ai/main/datasets/tutorials/</loc>
          <lastmod>2025-03-28</lastmod>
     </url>
     <url>
-         <loc>https://edgefirstai.github.io/documentation/main/datasets/zoo/</loc>
+         <loc>https://doc.edgefirst.ai/main/datasets/zoo/</loc>
          <lastmod>2025-03-28</lastmod>
     </url>
     <url>
-         <loc>https://edgefirstai.github.io/documentation/main/enterprise/</loc>
+         <loc>https://doc.edgefirst.ai/main/enterprise/</loc>
          <lastmod>2025-03-28</lastmod>
     </url>
     <url>
-         <loc>https://edgefirstai.github.io/documentation/main/fusion/</loc>
+         <loc>https://doc.edgefirst.ai/main/fusion/</loc>
          <lastmod>2025-03-28</lastmod>
     </url>
     <url>
-         <loc>https://edgefirstai.github.io/documentation/main/getting_started/</loc>
+         <loc>https://doc.edgefirst.ai/main/getting_started/</loc>
          <lastmod>2025-03-28</lastmod>
     </url>
     <url>
-         <loc>https://edgefirstai.github.io/documentation/main/getting_started/dataset/</loc>
+         <loc>https://doc.edgefirst.ai/main/getting_started/dataset/</loc>
          <lastmod>2025-03-28</lastmod>
     </url>
     <url>
-         <loc>https://edgefirstai.github.io/documentation/main/getting_started/developer/</loc>
+         <loc>https://doc.edgefirst.ai/main/getting_started/developer/</loc>
          <lastmod>2025-03-28</lastmod>
     </url>
     <url>
-         <loc>https://edgefirstai.github.io/documentation/main/getting_started/fusion/</loc>
+         <loc>https://doc.edgefirst.ai/main/getting_started/fusion/</loc>
          <lastmod>2025-03-28</lastmod>
     </url>
     <url>
-         <loc>https://edgefirstai.github.io/documentation/main/getting_started/modelpack/</loc>
+         <loc>https://doc.edgefirst.ai/main/getting_started/modelpack/</loc>
          <lastmod>2025-03-28</lastmod>
     </url>
     <url>
-         <loc>https://edgefirstai.github.io/documentation/main/getting_started/tutorials/</loc>
+         <loc>https://doc.edgefirst.ai/main/getting_started/tutorials/</loc>
          <lastmod>2025-03-28</lastmod>
     </url>
     <url>
-         <loc>https://edgefirstai.github.io/documentation/main/middleware/</loc>
+         <loc>https://doc.edgefirst.ai/main/middleware/</loc>
          <lastmod>2025-03-28</lastmod>
     </url>
     <url>
-         <loc>https://edgefirstai.github.io/documentation/main/middleware/api/</loc>
+         <loc>https://doc.edgefirst.ai/main/middleware/api/</loc>
          <lastmod>2025-03-28</lastmod>
     </url>
     <url>
-         <loc>https://edgefirstai.github.io/documentation/main/middleware/custom/</loc>
+         <loc>https://doc.edgefirst.ai/main/middleware/custom/</loc>
          <lastmod>2025-03-28</lastmod>
     </url>
     <url>
-         <loc>https://edgefirstai.github.io/documentation/main/middleware/topics/</loc>
+         <loc>https://doc.edgefirst.ai/main/middleware/topics/</loc>
          <lastmod>2025-03-28</lastmod>
     </url>
     <url>
-         <loc>https://edgefirstai.github.io/documentation/main/middleware/api/builtin_interfaces/</loc>
+         <loc>https://doc.edgefirst.ai/main/middleware/api/builtin_interfaces/</loc>
          <lastmod>2025-03-28</lastmod>
     </url>
     <url>
-         <loc>https://edgefirstai.github.io/documentation/main/middleware/api/edgefirst_msgs/</loc>
+         <loc>https://doc.edgefirst.ai/main/middleware/api/edgefirst_msgs/</loc>
          <lastmod>2025-03-28</lastmod>
     </url>
     <url>
-         <loc>https://edgefirstai.github.io/documentation/main/middleware/api/foxglove_msgs/</loc>
+         <loc>https://doc.edgefirst.ai/main/middleware/api/foxglove_msgs/</loc>
          <lastmod>2025-03-28</lastmod>
     </url>
     <url>
-         <loc>https://edgefirstai.github.io/documentation/main/middleware/api/geometry_msgs/</loc>
+         <loc>https://doc.edgefirst.ai/main/middleware/api/geometry_msgs/</loc>
          <lastmod>2025-03-28</lastmod>
     </url>
     <url>
-         <loc>https://edgefirstai.github.io/documentation/main/middleware/api/nav_msgs/</loc>
+         <loc>https://doc.edgefirst.ai/main/middleware/api/nav_msgs/</loc>
          <lastmod>2025-03-28</lastmod>
     </url>
     <url>
-         <loc>https://edgefirstai.github.io/documentation/main/middleware/api/sensor_msgs/</loc>
+         <loc>https://doc.edgefirst.ai/main/middleware/api/sensor_msgs/</loc>
          <lastmod>2025-03-28</lastmod>
     </url>
     <url>
-         <loc>https://edgefirstai.github.io/documentation/main/middleware/api/std_msgs/</loc>
+         <loc>https://doc.edgefirst.ai/main/middleware/api/std_msgs/</loc>
          <lastmod>2025-03-28</lastmod>
     </url>
     <url>
-         <loc>https://edgefirstai.github.io/documentation/main/models/</loc>
+         <loc>https://doc.edgefirst.ai/main/models/</loc>
          <lastmod>2025-03-28</lastmod>
     </url>
     <url>
-         <loc>https://edgefirstai.github.io/documentation/main/models/augmentations/</loc>
+         <loc>https://doc.edgefirst.ai/main/models/augmentations/</loc>
          <lastmod>2025-03-28</lastmod>
     </url>
     <url>
-         <loc>https://edgefirstai.github.io/documentation/main/models/model/training/fusion/</loc>
+         <loc>https://doc.edgefirst.ai/main/models/model/training/fusion/</loc>
          <lastmod>2025-03-28</lastmod>
     </url>
     <url>
-         <loc>https://edgefirstai.github.io/documentation/main/models/model/training/modelpack/</loc>
+         <loc>https://doc.edgefirst.ai/main/models/model/training/modelpack/</loc>
          <lastmod>2025-03-28</lastmod>
     </url>
     <url>
-         <loc>https://edgefirstai.github.io/documentation/main/models/model/validation/fusion/</loc>
+         <loc>https://doc.edgefirst.ai/main/models/model/validation/fusion/</loc>
          <lastmod>2025-03-28</lastmod>
     </url>
     <url>
-         <loc>https://edgefirstai.github.io/documentation/main/models/model/validation/metrics/</loc>
+         <loc>https://doc.edgefirst.ai/main/models/model/validation/metrics/</loc>
          <lastmod>2025-03-28</lastmod>
     </url>
     <url>
-         <loc>https://edgefirstai.github.io/documentation/main/models/model/validation/modelpack/</loc>
+         <loc>https://doc.edgefirst.ai/main/models/model/validation/modelpack/</loc>
          <lastmod>2025-03-28</lastmod>
     </url>
     <url>
-         <loc>https://edgefirstai.github.io/documentation/main/modules/</loc>
+         <loc>https://doc.edgefirst.ai/main/modules/</loc>
          <lastmod>2025-03-28</lastmod>
     </url>
     <url>
-         <loc>https://edgefirstai.github.io/documentation/main/modules/advanced_foxglove/</loc>
+         <loc>https://doc.edgefirst.ai/main/modules/advanced_foxglove/</loc>
          <lastmod>2025-03-28</lastmod>
     </url>
     <url>
-         <loc>https://edgefirstai.github.io/documentation/main/modules/architecture/</loc>
+         <loc>https://doc.edgefirst.ai/main/modules/architecture/</loc>
          <lastmod>2025-03-28</lastmod>
     </url>
     <url>
-         <loc>https://edgefirstai.github.io/documentation/main/modules/configuration/</loc>
+         <loc>https://doc.edgefirst.ai/main/modules/configuration/</loc>
          <lastmod>2025-03-28</lastmod>
     </url>
     <url>
-         <loc>https://edgefirstai.github.io/documentation/main/modules/foxglove/</loc>
+         <loc>https://doc.edgefirst.ai/main/modules/foxglove/</loc>
          <lastmod>2025-03-28</lastmod>
     </url>
     <url>
-         <loc>https://edgefirstai.github.io/documentation/main/modules/hardware/</loc>
+         <loc>https://doc.edgefirst.ai/main/modules/hardware/</loc>
          <lastmod>2025-03-28</lastmod>
     </url>
     <url>
-         <loc>https://edgefirstai.github.io/documentation/main/modules/issues/</loc>
+         <loc>https://doc.edgefirst.ai/main/modules/issues/</loc>
          <lastmod>2025-03-28</lastmod>
     </url>
     <url>
-         <loc>https://edgefirstai.github.io/documentation/main/modules/networking/</loc>
+         <loc>https://doc.edgefirst.ai/main/modules/networking/</loc>
          <lastmod>2025-03-28</lastmod>
     </url>
     <url>
-         <loc>https://edgefirstai.github.io/documentation/main/modules/publishing/</loc>
+         <loc>https://doc.edgefirst.ai/main/modules/publishing/</loc>
          <lastmod>2025-03-28</lastmod>
     </url>
     <url>
-         <loc>https://edgefirstai.github.io/documentation/main/modules/quickstart/</loc>
+         <loc>https://doc.edgefirst.ai/main/modules/quickstart/</loc>
          <lastmod>2025-03-28</lastmod>
     </url>
     <url>
-         <loc>https://edgefirstai.github.io/documentation/main/modules/radar/</loc>
+         <loc>https://doc.edgefirst.ai/main/modules/radar/</loc>
          <lastmod>2025-03-28</lastmod>
     </url>
     <url>
-         <loc>https://edgefirstai.github.io/documentation/main/modules/recording/</loc>
+         <loc>https://doc.edgefirst.ai/main/modules/recording/</loc>
          <lastmod>2025-03-28</lastmod>
     </url>
     <url>
-         <loc>https://edgefirstai.github.io/documentation/main/modules/release_notes/</loc>
+         <loc>https://doc.edgefirst.ai/main/modules/release_notes/</loc>
          <lastmod>2025-03-28</lastmod>
     </url>
     <url>
-         <loc>https://edgefirstai.github.io/documentation/main/modules/replay/</loc>
+         <loc>https://doc.edgefirst.ai/main/modules/replay/</loc>
          <lastmod>2025-03-28</lastmod>
     </url>
     <url>
-         <loc>https://edgefirstai.github.io/documentation/main/modules/ssh/</loc>
+         <loc>https://doc.edgefirst.ai/main/modules/ssh/</loc>
          <lastmod>2025-03-28</lastmod>
     </url>
     <url>
-         <loc>https://edgefirstai.github.io/documentation/main/modules/updates/</loc>
+         <loc>https://doc.edgefirst.ai/main/modules/updates/</loc>
          <lastmod>2025-03-28</lastmod>
     </url>
     <url>
-         <loc>https://edgefirstai.github.io/documentation/main/modules/walkthrough/</loc>
+         <loc>https://doc.edgefirst.ai/main/modules/walkthrough/</loc>
          <lastmod>2025-03-28</lastmod>
     </url>
 </urlset>

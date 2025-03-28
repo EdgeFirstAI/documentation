@@ -29,8 +29,8 @@ $$
 \text{mAR} = \frac{1}{n}\sum_{i=1}^{n}\text{recall}_{i}, n = \text{number of classes}
 $$
 
-> *Note:*
-> *The equation for recall is shown in the [Glossary](#glossary).*
+!!! note
+    The equation for recall is shown in the [Glossary](#glossary).
 
 The metric for mAR 0.50-0.95 is calculated by taking the sum of mAR values at IoU thresholds 0.50, 0.55, ..., 0.95 and then dividing by the number of validation IoU thresholds (in this case 10). 
 
@@ -47,8 +47,8 @@ $$
 \text{mACC} = \frac{1}{n}\sum_{i=1}^{n}\text{accuracy}_{i}, n = \text{number of classes}
 $$
 
-> *Note:*
-> *The equation for accuracy is shown in the [Glossary](#glossary).*
+!!! note
+    The equation for accuracy is shown in the [Glossary](#glossary).
 
 The following equation below calculates the mean average accuracy for a range of IoU thresholds from 0.50-0.95 which is calculated similarly to mean average recall. 
 
@@ -193,8 +193,8 @@ Another representation of the precision vs. recall is to incorporate the varying
 
 There are four BEV heatmaps generated. The heatmaps are a representation of the occupancy grid that is the output of the Radar model. This occupancy grid is the field of view of the model that represents positions in the scene in meters. The BEV heatmaps provides indications where the model is generally making right or wrong predictions. Furthermore, the heatmaps also indicate how the ground truth is distributed across the dataset. 
 
-> *Note:*
-> On a cell by cell basis, the sum of true positive, false positive, and false negative rates equals 1.
+!!! note
+    On a cell by cell basis, the sum of true positive, false positive, and false negative rates equals 1.
 
 #### True Positives Heatmap
 

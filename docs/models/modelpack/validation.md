@@ -25,8 +25,8 @@ This page will provide a walk-through on using DVE for validating the performanc
 
 4. Configure the settings on the left panel by specifying the name of the validation session, the model file to validate, and the dataset to deploy. Next configure the settings on the right panel by specifying the validation parameters.
 
-    > *Note:* 
-    > *Additional information on these parameters are provided by hovering over the info button.* 
+    !!! note
+        Additional information on these parameters are provided by hovering over the info button.
 
     <figure markdown="span">
     ![Validation Options](../assets/validation/modelpack-validation-options.jpg){ align=center }
@@ -61,8 +61,8 @@ This page will provide a walk-through on using DVE for validating the performanc
     <figcaption>Validation Metrics</figcaption>
     </figure>
 
-    > *Note:*
-    > *See [Metrics](../metrics.md) for further details.*
+    !!! note
+        See [Metrics](../metrics.md) for further details.
 
 9. It is also possible to compare validation metrics for multiple sessions. This is done by checking the checkboxes on the top left of the session cards.
 

@@ -2,8 +2,8 @@
 
 This page is dedicated to describing all available vision augmentations during training and model validation. For training purposes, vision augmentations are techniques used to increase the number of training samples in the dataset by providing more variations for each sample thus exposing the model with samples that have a diverse set of characteristics and conditions. For validation purposes, the model performance is evaluated for cases where there is a level of synthetic degradation imposed on the camera to mimic environmental conditions such as heavy rain, fog, snow, etc. where camera-based models could fail at detecting objects in the scene, whereas models with radar-based aspects could be more robust in such conditions. 
 
-> *Note:*
-> *For Fusion models, the camera is an optional sensor, but for ModelPack the camera is a requirement since ModelPack is a single-sensor (single-input) architecture and Fusion is a multi-sensor (multi-input) architecture.*
+!!! note
+    For Fusion models, the camera is an optional sensor, but for ModelPack the camera is a requirement since ModelPack is a single-sensor (single-input) architecture and Fusion is a multi-sensor (multi-input) architecture.
 
 The camera augmentations are distinguished into two categories: *Geometric* and *Non-Geometric*.
 
@@ -35,8 +35,8 @@ This type of augmentation flips the image in the x-axis. Once the image is flipp
 |---------------------------------|-----------------------------|
 | ![Original](assets/augmentations/without_hflip.jpg) | ![Flipped](assets/augmentations/with_hflip.jpg) |
 
-> *Note:*
-> *The augmentation for a vertical flip is omitted because these cases are arguably rare for samples being upside-down.*
+!!! note
+    The augmentation for a vertical flip is omitted because these cases are arguably rare for samples being upside-down.
 
 ## Non-Geometric
 
@@ -58,8 +58,8 @@ This augmentation reduces the clarity of the image with levels from 0-100% where
 
 This augmentation converts a color image to a grayscale image. A grayscale image is a single channel image where each pixel represents light intensity. 
 
-> *Note:*
-> *This augmentation is not exposed as an option in DVE because its transformation has no other variations, but model training utilizes this augmentation as part of the random selection of augmentations.*
+!!! note
+    This augmentation is not exposed as an option in DVE because its transformation has no other variations, but model training utilizes this augmentation as part of the random selection of augmentations.
 
 | Color Image                    | Grayscale Image               |
 |--------------------------------|-------------------------------|

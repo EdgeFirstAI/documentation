@@ -9,8 +9,8 @@ EdgeFirst Studio supports two model architectures: Modelpack and Fusion
     * [Training Fusion Models](fusion/training.md)
     * [Validating Fusion Models](fusion/validation.md)
 
-> *Note:*
-> *Click on the links for more information on each architecture and the revelant workflows.*
+!!! note
+    Click on the links for more information on each architecture and the revelant workflows.
 
 Related articles are provided below:
 

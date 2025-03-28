@@ -25,11 +25,9 @@ This page will provide a walk-through on using DVE for training Vision models us
 
 4. Configure the settings on the left panel by specifying *Trainer Type* to *Modelpack* and provide additional configurations for the name of the session and the dataset to deploy. Next configure the settings on the right panel by specifying training parameters. By default a segmentation model will be trained, however, object detection or multi-task based models are possible variations. 
 
-    > *Note:* 
-    > *Additional information on these parameters are provided by hovering over the info button.* 
-
-    > *Note:*
-    > *For more information on available vision augmentation please see [Vision Augmentations](../augmentations.md).*
+    !!! note
+        Additional information on these parameters are provided by hovering over the info button.
+        For more information on available vision augmentation please see [Vision Augmentations](../augmentations.md).
 
     <figure markdown="span">
     ![Training Options](../assets/training/modelpack-training-options.jpg){ align=center }

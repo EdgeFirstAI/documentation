@@ -25,11 +25,9 @@ This page will provide a walk-through on using DVE for training Fusion models.
 
 4. Configure the settings on the left panel by specifying *Trainer Type* to *EdgeFirst Fusion* and provide additional configurations for the name of the session and the dataset to deploy. Next configure the settings on the right panel by specifying training parameters. By default the Fusion model is configured with both camera and radar inputs, however, a Camera-Only or Radar-Only model are possible variations. 
 
-    > *Note:* 
-    > *Additional information on these parameters are provided by hovering over the info button* 
-
-    > *Note:*
-    > *For more information on available vision augmentations please see [Vision Augmentations](../augmentations.md).*
+    !!! note
+        Additional information on these parameters are provided by hovering over the info button.
+        For more information on available vision augmentations please see [Vision Augmentations](../augmentations.md).
 
     <figure markdown="span">
     ![Training Options](../assets/training/fusion-training-options.jpg){ align=center }

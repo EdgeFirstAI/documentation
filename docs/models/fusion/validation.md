@@ -25,11 +25,9 @@ This page will provide a walk-through on using DVE for validating the performanc
 
 4. Configure the settings on the left panel by specifying the name of the validation session, the model file to validate, and the dataset to deploy. Next configure the settings on the right panel by specifying the validation parameters. 
 
-    > *Note:* 
-    > *Additional information on these parameters are provided by hovering over the info button.* 
-
-    > *Note:*
-    > *The only augmentation available for this type of validation is `blur`. See [Vision Augmentations](../augmentations.md) for further details.*
+    !!! note
+        Additional information on these parameters are provided by hovering over the info button.
+        The only augmentation available for this type of validation is `blur`. See [Vision Augmentations](../augmentations.md) for further details.
 
     <figure markdown="span">
     ![Validation Options](../assets/validation/fusion-validation-options.jpg){ align=center }
@@ -66,8 +64,8 @@ This page will provide a walk-through on using DVE for validating the performanc
 
     The metrics provides the precision, recall, F1, and IoU scores of the model at the specified window sizes. Additional charts are provided for the precision vs. recall and bird’s eye view heatmaps describing where the model performs well and where the model makes errors. 
     
-    > *Note:*
-    > *See [Metrics](../metrics.md) for further details.*
+    !!! note
+        See [Metrics](../metrics.md) for further details.
 
 9. It is also possible to compare validation metrics for multiple sessions. This is done by checking the checkboxes on the top left of the session cards.
 

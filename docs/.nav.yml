@@ -13,8 +13,6 @@ nav:
     - datasets/format.md
   - Models:
     - models/index.md
-    - models/augmentations.md
-    - models/metrics.md
     - Modelpack:
       - models/modelpack/index.md
       - models/modelpack/training.md
@@ -23,6 +21,8 @@ nav:
       - models/fusion/index.md
       - models/fusion/training.md
       - models/fusion/validation.md
+    - models/augmentations.md
+    - models/metrics.md
   - Middleware:
     - middleware/index.md
     - Dataset Collection Middleware:

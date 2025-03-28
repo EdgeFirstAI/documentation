@@ -4,7 +4,7 @@ The EdgeFirst Fusion provides a framework for training and deploying camera+rada
 
 The EdgeFirst Fusion model performs early fusion using the low-level raw radar range-doppler data cube along with the camera input.  The middleware stack also allows for mid-level fusion using radar PCD.  Which is best suited depends on the target application, generally speaking the low-level fusion model provides the most robust performance in scenarios where camera degradation is expected.  By contrast the mid-level fusion requires the camera to be operating, but does not require specialized training as the model is trained only on camera data with the radar data fused later in the pipeline.
 
-![EdgeFirst Fusion Overview](assets/fusion-overview.png)
+![EdgeFirst Fusion Overview](../assets/fusion-overview.png)
 
 
 ## Low-Level Fusion
@@ -23,13 +23,13 @@ The low-level fusion model is trained to generate a 2D occupancy grid of recogni
 
 The radar data cube is a 4D complex tensor containing the radar response after the initial range and doppler FFTs.  The EdgeFirst Fusion model can be trained for various cube configurations, details are covered in the EdgeFirst Fusion Model Training Guide.  Radar data cubes vary greatly between various modules and vendors, it is a key limitation of the proliferation of radar and especially low-level radar models in the public domain.  While an image captured on various models of an iPhone or Android could be used to train and test an imaging model without much worry about the details of the optical parameters, such is not the case with radar data cubes; the models are tightly coupled with the radar modules.  EdgeFirst Fusion has well parameterized inputs to allow training with various sensor configurations, once trained the model is locked in to the particular radar module and configuration.  This also affects the dataset, care should be taken to keep datasets using compatible radar configurations, not mixing long and ultra-short range captures within a dataset for example.
 
-<div align="center"><img src="assets/radar-pipeline.png" alt="radar-pipeline" style="zoom:50%;" /></div>
+<div align="center"><img src="../assets/radar-pipeline.png" alt="radar-pipeline" style="zoom:50%;" /></div>
 
 While the radar data cube adds complexity to the dataset capture and model training, the benefits are significantly richer input features for the model.  While radar point clouds have very few scalar features (speed, power, noise, RCS) the radar cube offers a large 4D complex tensor as input to the AI models.  This allows the model to learn to detect and discriminate objects which would not be possible with only radar point clouds.
 
 The data cube is not easily interpreted, it is visually not intuitive without much experience.  Special handling is required by AI models as the input representation is unlike images, there is no direct correlation between the input and output representations. A good example of the difficulty of handling the radar cube is when locating objects according to azimuth and elevation, these must be calculated through the timing differences of the same signal returns across multiple receive antennas.  This is handled automatically by EdgeFirst Fusion but classical algorithms would need to handle this directly along with knowledge of the antenna array's physical dimensions.
 
-<div align="center"><img src="assets/cube.png" alt="Radar Data Cube" style="zoom:50%;" /></div>
+<div align="center"><img src="../assets/cube.png" alt="Radar Data Cube" style="zoom:50%;" /></div>
 
 The radar data cube contains a pair of sequences (A/B) each of which contains the receiving antenna’s range-doppler matrix as complex values.  The sequences represent different TX patterns, most notably the A sequence runs a single transmitter while the B sequence runs all transmitters.  So generally a model will be trained on the B sequence, or possibly the A/B sequence, while the A sequence would be reserved for special cases where we do not require resolving multiple objects at the same range.
 

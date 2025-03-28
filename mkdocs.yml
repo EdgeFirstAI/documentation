@@ -34,7 +34,7 @@ theme:
       primary: indigo
       accent: amber
   features:
-    - navigation.instant
+    # - navigation.instant
     - navigation.instant.prefetch
     - navigation.instant.progress
     - navigation.tracking
@@ -66,7 +66,10 @@ plugins:
           load_external_modules: true
           inventories:
           - https://docs.python.org/3/objects.inv
-      
+  - redirects:
+      redirect_maps:
+        'models/modelpack/index.md': 'models/modelpack/training.md'
+
 markdown_extensions:
   - md_in_html
   - attr_list

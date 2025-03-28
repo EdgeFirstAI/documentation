@@ -1,18 +1,18 @@
-# Metrics
+# Validation Metrics
 
 This page is dedicated to describing the metrics reported in DVE after running validation. DVE supports validation of Modelpack and Fusion models.
 The following sections will describe the metrics reported for each type of validation.
 
 ## Modelpack
 
-This section will describe the validation metrics reported in Modelpack validation sessions.
+This section will describe the validation metrics reported in [Modelpack validation sessions](modelpack/validation.md).
 
 ### Object Detection Metrics
 
 The object detection metrics describe the mean average precision (mAP), recall (mAR), and accuracy (mACC) at IoU thresholds 0.50, 0.75, and 0.50-0.95. These metrics are represented as a bar chart. Shown below is an example.
 
 <figure markdown="span">
-  ![Detection Metrics](../../../assets/models/metrics/modelpack-detection-metrics.jpg){ align=center }
+  ![Detection Metrics](assets/metrics/modelpack-detection-metrics.jpg){ align=center }
   <figcaption>Detection Metrics</figcaption>
 </figure>
 
@@ -61,7 +61,7 @@ $$
 The segmentation metrics describe precision, recall, accuracy, and IoU. These metrics are represented as a bar chart. Shown below is an example.
 
 <figure markdown="span">
-  ![Segmentation Metrics](../../../assets/models/metrics/modelpack-segmentation-metrics.jpg){ align=center }
+  ![Segmentation Metrics](assets/metrics/modelpack-segmentation-metrics.jpg){ align=center }
   <figcaption>Segmentation Metrics</figcaption>
 </figure>
 
@@ -86,7 +86,7 @@ This metric is the intersection over union. The intersection is based on the log
 The model inference timings are represented as a histogram where the y-axis shows the frequency of occurences in each bin in the x-axis. We can expect the speed of the model to be based on the bin with the highest frequency. However, the timings could be distributed across the bins to show variations in the model inference times.
 
 <figure markdown="span">
-  ![Model Timings](../../../assets/models/metrics/model-timings.jpg){ align=center }
+  ![Model Timings](assets/metrics/model-timings.jpg){ align=center }
   <figcaption>Model Timings</figcaption>
 </figure>
 
@@ -95,7 +95,7 @@ The model inference timings are represented as a histogram where the y-axis show
 The Confusion Matrix provides a summary of the prediction results by comparing the predicted labels with the ground truth (actual) labels. This matrix will show the ground truth labels along the x-axis and the predicted labels along the y-axis. Along the diagonal where both ground truth labels and prediction labels match shows the true positive (correct predictions) counts of that class. However, throughout validation, the matrix shows the cases where the model can misidentify labels or fail to find the labels.
 
 <figure markdown="span">
-  ![Confusion Matrix](../../../assets/models/metrics/modelpack-confusion-matrix.jpg){ align=center }
+  ![Confusion Matrix](assets/metrics/modelpack-confusion-matrix.jpg){ align=center }
   <figcaption>Confusion Matrix</figcaption>
 </figure>
 
@@ -104,20 +104,20 @@ The Confusion Matrix provides a summary of the prediction results by comparing t
 The precision vs. recall curve shows the tradeoff between precision and recall. At lower thresholds, precision will tend to be lower due to increased leniency for valid detections. However, more detections will tend to result in higher recall as the model finds more ground truth labels. Increasing the threshold will start to increase precision for more precise detections, but will start to reduce recall due to the reduction of model detections. The following curve shows the precision vs. recall trend for each of the classes in the dataset, along with the average curve for all the classes. A higher area under the curve, the better the model performance as this indicates maximized values for precision and recall throughout the varying thresholds. 
 
 <figure markdown="span">
-  ![Precision vs. Recall](../../../assets/models/metrics/modelpack-precision-vs-recall.jpg){ align=center }
+  ![Precision vs. Recall](assets/metrics/modelpack-precision-vs-recall.jpg){ align=center }
   <figcaption>Precision vs. Recall</figcaption>
 </figure>
 
 ## Fusion
 
-This section will describe the validation metrics reported in Fusion validation sessions.
+This section will describe the validation metrics reported in [Fusion validation sessions](fusion/validation.md).
 
 ### Base Metrics
 
 The Fusion validation sessions reports the metrics for precision, recall, F1-score, and IoU represented as a bar chart. Shown below is an example. 
 
 <figure markdown="span">
-  ![Base Metrics](../../../assets/models/metrics/fusion-base-metrics.jpg){ align=center }
+  ![Base Metrics](assets/metrics/fusion-base-metrics.jpg){ align=center }
   <figcaption>Base Metrics</figcaption>
 </figure>
 
@@ -138,7 +138,7 @@ This metric is based on how well the model finds the ground truth. In other word
 This metric is based on both precision and recall. It measures how well the model performs overall in terms of how well the model makes correct predictions and finds the ground truth. The following table demonstrates the nature of the F1-score as a function of precision and recall.
 
 <figure markdown="span">
-  ![F1-Score](../../../assets/models/metrics/F1-table.jpg){ align=center }
+  ![F1-Score](assets/metrics/F1-table.jpg){ align=center }
   <figcaption>F1-Score</figcaption>
 </figure>
 
@@ -157,7 +157,7 @@ $$
 This metric is defined as the intersection over union. It also measures how well the model performs overall by comparing the amount of correct predictions over the total amount of ground truths and the model predictions. This metric, however, is not as lenient as the F1-score as demonstrated by the following table.
 
 <figure markdown="span">
-  ![IoU Score](../../../assets/models/metrics/iou-table.jpg){ align=center }
+  ![IoU Score](assets/metrics/iou-table.jpg){ align=center }
   <figcaption>IoU Score</figcaption>
 </figure>
 
@@ -178,14 +178,14 @@ These timings are measured in the same way as Modelpack as described under [Mode
 The precision vs. recall curve is based on varying detection thresholds from 0 to 1 in 0.05 steps. The principle in practice is that for lower thresholds precision is low, but recall is high and as the threshold increases, precision increases and recall decreases. This shows the tradeoff between precision and recall. The nature of this tradeoff is due to increased detections at low threshold thus capturing more ground truths (high recall) but much more prone to false predictions (low precision). The opposite is true for high thresholds. A well performing model shows a high area under the curve of the precision vs. recall curve. 
 
 <figure markdown="span">
-  ![Precision vs. Recall](../../../assets/models/metrics/fusion-precision-v-recall.jpg){ align=center }
+  ![Precision vs. Recall](assets/metrics/fusion-precision-v-recall.jpg){ align=center }
   <figcaption>Precision vs. Recall</figcaption>
 </figure>
 
 Another representation of the precision vs. recall is to incorporate the varying threshold in the plot. The following curve shows the precision and recall vs. thresholds curve. As mentioned, at lower thresholds precision is low and recall is high, but increasing the threshold we can see precision and recall converge to a point. The point of convergence indicates the ideal threshold to use for deploying the model. This is the optimum threshold where precision and recall are balanced such that one is not sacrificing the other. 
 
 <figure markdown="span">
-  ![Precision and Recall vs Thresholds](../../../assets/models/metrics/fusion-precision-recall-thresholds.jpg){ align=center }
+  ![Precision and Recall vs Thresholds](assets/metrics/fusion-precision-recall-thresholds.jpg){ align=center }
   <figcaption>Precision and Recall vs Thresholds</figcaption>
 </figure>
 
@@ -199,7 +199,7 @@ There are four BEV heatmaps generated. The heatmaps are a representation of the 
 #### True Positives Heatmap
 
 <figure markdown="span">
-  ![True Positive Heatmap](../../../assets/models/metrics/tp-heatmap.jpg){ align=center }
+  ![True Positive Heatmap](assets/metrics/tp-heatmap.jpg){ align=center }
   <figcaption>True Positive Heatmap</figcaption>
 </figure>
 
@@ -212,7 +212,7 @@ $$
 #### False Negatives Heatmap
 
 <figure markdown="span">
-  ![False Negative Heatmap](../../../assets/models/metrics/fn-heatmap.jpg){ align=center }
+  ![False Negative Heatmap](assets/metrics/fn-heatmap.jpg){ align=center }
   <figcaption>False Negative Heatmap</figcaption>
 </figure>
 
@@ -225,7 +225,7 @@ $$
 #### False Positives Heatmap
 
 <figure markdown="span">
-  ![False Positive Heatmap](../../../assets/models/metrics/fp-heatmap.jpg){ align=center }
+  ![False Positive Heatmap](assets/metrics/fp-heatmap.jpg){ align=center }
   <figcaption>False Positive Heatmap</figcaption>
 </figure>
 
@@ -238,7 +238,7 @@ $$
 #### Ground Truth Heatmap
 
 <figure markdown="span">
-  ![Ground Truth Heatmap](../../../assets/models/metrics/gt-heatmap.jpg){ align=center }
+  ![Ground Truth Heatmap](assets/metrics/gt-heatmap.jpg){ align=center }
   <figcaption>Ground Truth Heatmap</figcaption>
 </figure>
 

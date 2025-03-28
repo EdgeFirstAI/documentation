@@ -17,7 +17,7 @@ This type of augmentation translates the image in either x, y, or both axis caus
 
 | Without Shift               | Negative XY Shift           | Positive XY shift             |
 |-----------------------------|-----------------------------|-------------------------------|
-| ![Original](../assets/models/augmentations/without_hflip.jpg) | ![Negative Shift](../assets/models/augmentations/negative_xy_shift.jpg) | ![Positive Shift](../assets/models/augmentations/positive_xy_shift.jpg) |
+| ![Original](assets/augmentations/without_hflip.jpg) | ![Negative Shift](assets/augmentations/negative_xy_shift.jpg) | ![Positive Shift](assets/augmentations/positive_xy_shift.jpg) |
 
 ### Scale
 
@@ -25,7 +25,7 @@ This type of augmentation resizes the actual image either smaller or larger, but
 
 | Original Scaling            | 0.50 Scaling                | 1.50 Scaling                  |
 |-----------------------------|-----------------------------|-------------------------------|
-| ![Original](../assets/models/augmentations/without_hflip.jpg) | ![Downscaling](../assets/models/augmentations/with_0.5_scaling.jpg) | ![Upscaling](../assets/models/augmentations/with_1.5_scaling.jpg) |
+| ![Original](assets/augmentations/without_hflip.jpg) | ![Downscaling](assets/augmentations/with_0.5_scaling.jpg) | ![Upscaling](assets/augmentations/with_1.5_scaling.jpg) |
 
 ### HFlip
 
@@ -33,7 +33,7 @@ This type of augmentation flips the image in the x-axis. Once the image is flipp
 
 | Original                        | Horizontal Flip             |
 |---------------------------------|-----------------------------|
-| ![Original](../assets/models/augmentations/without_hflip.jpg) | ![Flipped](../assets/models/augmentations/with_hflip.jpg) |
+| ![Original](assets/augmentations/without_hflip.jpg) | ![Flipped](assets/augmentations/with_hflip.jpg) |
 
 > *Note:*
 > *The augmentation for a vertical flip is omitted because these cases are arguably rare for samples being upside-down.*
@@ -48,11 +48,11 @@ This augmentation reduces the clarity of the image with levels from 0-100% where
 
 | 0% Blur                         | 20% Blur                    |
 |---------------------------------|-----------------------------|
-| ![0 Blur](../assets/models/augmentations/original.jpg) | ![20 Blur](../assets/models/augmentations/b20.jpg) |
+| ![0 Blur](assets/augmentations/original.jpg) | ![20 Blur](assets/augmentations/b20.jpg) |
 
 | 50% Blur                    | 80% Blur                    | 100% Blur                     |
 |-----------------------------|-----------------------------|-------------------------------|
-| ![50 Blur](../assets/models/augmentations/b50.jpg) | ![80 Blur](../assets/models/augmentations/b80.jpg) | ![100 Blur](../assets/models/augmentations/b100.jpg) |
+| ![50 Blur](assets/augmentations/b50.jpg) | ![80 Blur](assets/augmentations/b80.jpg) | ![100 Blur](assets/augmentations/b100.jpg) |
 
 ### Grayscale
 
@@ -63,7 +63,7 @@ This augmentation converts a color image to a grayscale image. A grayscale image
 
 | Color Image                    | Grayscale Image               |
 |--------------------------------|-------------------------------|
-| ![Color](../assets/models/augmentations/original.jpg) | ![Gray](../assets/models/augmentations/gray.jpg) |
+| ![Color](assets/augmentations/original.jpg) | ![Gray](assets/augmentations/gray.jpg) |
 
 ### Solarize
 
@@ -71,7 +71,7 @@ This augmentation manipulates the distribution of light and dark pixels based on
 
 | Without Solarization           | With Solarization             |
 |--------------------------------|-------------------------------|
-| ![Original](../assets/models/augmentations/original.jpg) | ![Solar](../assets/models/augmentations/solarize_128.jpg) |
+| ![Original](assets/augmentations/original.jpg) | ![Solar](assets/augmentations/solarize_128.jpg) |
 
 ### Contrast
 
@@ -79,7 +79,7 @@ This augmentation enhances the contrast in the image by enhancing the difference
 
 | Without Contrast               | With Contrast                  |
 |--------------------------------|--------------------------------|
-| ![Original](../assets/models/augmentations/original.jpg) | ![Contrast](../assets/models/augmentations/contrast_150.jpg) |
+| ![Original](assets/augmentations/original.jpg) | ![Contrast](assets/augmentations/contrast_150.jpg) |
 
 ### Brightness
 
@@ -87,7 +87,7 @@ This augmentation either dims or brightens the image by scaling the values in al
 
 | Original Brightness            | Brightness of 50                        | Brightness of 200                         |
 |--------------------------------|-----------------------------------------|-------------------------------------------|
-| ![Original](../assets/models/augmentations/original.jpg) | ![Bright 50](../assets/models/augmentations/brightness_50.jpg) | ![Bright 200](../assets/models/augmentations/brightness_200.jpg) |
+| ![Original](assets/augmentations/original.jpg) | ![Bright 50](assets/augmentations/brightness_50.jpg) | ![Bright 200](assets/augmentations/brightness_200.jpg) |
 
 ### Hue
 
@@ -95,7 +95,7 @@ This augmentation shifts the color of the image along the HSV color space. A par
 
 | Original                       | With Hue Adjustments             |
 |--------------------------------|----------------------------------|
-| ![Original](../assets/models/augmentations/original.jpg) | ![Hue](../assets/models/augmentations/hue_100.jpg)      |
+| ![Original](assets/augmentations/original.jpg) | ![Hue](assets/augmentations/hue_100.jpg)      |
 
 ### Saturation
 
@@ -103,7 +103,7 @@ This augmentation applies saturation in the HSV (Hue, Saturation, Value) color s
 
 | Original                       | With Saturation Adjustments              |
 |--------------------------------|------------------------------------------|
-| ![Original](../assets/models/augmentations/original.jpg) | ![Saturated](../assets/models/augmentations/saturation_150.jpg) |
+| ![Original](assets/augmentations/original.jpg) | ![Saturated](assets/augmentations/saturation_150.jpg) |
 
 ### Plasma
 
@@ -111,7 +111,7 @@ This augmentation applies a random plasma texture on the image using a Gaussian-
 
 | Original                       | With Plasma Adjustments        |
 |--------------------------------|-------------------------------|
-| ![Original](../assets/models/augmentations/original.jpg) | ![Plasma](../assets/models/augmentations/plasma.jpg) |
+| ![Original](assets/augmentations/original.jpg) | ![Plasma](assets/augmentations/plasma.jpg) |
 
 
 ### Random Patch
@@ -120,4 +120,4 @@ This augmentation generates a random patch within the image space. Then runs a r
 
 | Original                       | With Patch Adjustments        |
 |--------------------------------|-------------------------------|
-| ![Original](../assets/models/augmentations/original.jpg) | ![Patch](../assets/models/augmentations/patched.jpg) |
+| ![Original](assets/augmentations/original.jpg) | ![Patch](assets/augmentations/patched.jpg) |

@@ -13,16 +13,16 @@ nav:
     - datasets/format.md
   - Models:
     - models/index.md
-    - model:
-      - training:
-        - models/model/training/modelpack.md
-        - models/model/training/fusion.md
-      - validation:
-        - models/model/validation/modelpack.md
-        - models/model/validation/fusion.md
-        - models/model/validation/metrics.md
     - models/augmentations.md
-  - fusion
+    - models/metrics.md
+    - Modelpack:
+      - models/modelpack/index.md
+      - models/modelpack/training.md
+      - models/modelpack/validation.md
+    - Fusion:
+      - models/fusion/index.md
+      - models/fusion/training.md
+      - models/fusion/validation.md
   - Middleware:
     - middleware/overview.md
     - middleware/topics.md

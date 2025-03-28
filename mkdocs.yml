@@ -46,9 +46,27 @@ theme:
     - toc.follow
 
 plugins:
-  - awesome-nav
-  - search
-
+  - awesome-nav:
+  - autorefs:
+  - search:
+  - mkdocstrings:
+      default_handler: python
+      handlers:
+        python:
+          options:
+            show_source: false
+            show_bases: false
+            separate_signature: true
+            show_signature_annotations: true
+            show_symbol_type_toc: true
+            heading_level: 3
+            docstring_section_style: list
+            show_docstring_description: true
+            show_docstring_examples: true
+          load_external_modules: true
+          inventories:
+          - https://docs.python.org/3/objects.inv
+      
 markdown_extensions:
   - md_in_html
   - attr_list

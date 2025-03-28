@@ -17,5 +17,13 @@ nav:
     - middleware/overview.md
     - middleware/topics.md
     - middleware/custom.md
-    - middleware/ref.md    
+    - API Reference:
+      - middleware/api.md
+      - middleware/api/edgefirst_msgs.md
+      - middleware/api/foxglove_msgs.md
+      - middleware/api/geometry_msgs.md
+      - middleware/api/nav_msgs.md
+      - middleware/api/sensor_msgs.md
+      - middleware/api/std_msgs.md
+      - middleware/api/builtin_interfaces.md
   - modules

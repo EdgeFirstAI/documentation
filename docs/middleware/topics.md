@@ -49,3 +49,20 @@ code includes many examples which use the Rerun framework for drawing and demons
 to interpret the results, such as reading bounding boxes and drawing them over the camera feed.  You'll see these examples
 using Rerun for display througout our examples, but there is no direct connection to rerun and user applications could use
 any UI of their choosing.
+
+## Camera Topic
+
+The camera topic is published under the `/camera` namespace and offers the following sub-topics.  Some topics are optional and might not be available on the current system, refer to the camera service configuration documentation for details.
+
+### /camera/info
+
+### /camera/dma
+
+### /camera/h264
+
+### /camera/jpeg
+
+## Radar Topic
+
+## LiDAR Topic
+

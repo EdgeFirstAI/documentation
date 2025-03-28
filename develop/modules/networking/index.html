@@ -1145,6 +1145,8 @@
       
         
       
+        
+      
     
     
       
@@ -1636,6 +1638,28 @@
           </ul>
         </nav>
       
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../middleware/python_examples/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Python Examples
+    
+  </span>
+  
+
+      </a>
     </li>
   
 
@@ -2554,19 +2578,27 @@
 </table>
 <h2 id="ethernet-setup">Ethernet Setup</h2>
 <p>The Maivin ships with the Ethernet interface setup as a DHCP client and should automatically get an IP address on a network which provides DHCP.  Otherwise the Maivin will fallback to a link-local IP.  In either scenario, the Maivin can be accessed using the <code>verdin-imx8mp-XXXXXXXX.local</code> hostname.</p>
-<p><div class="highlight"><pre><span></span><code>The Maivin also supports IPv6 which will be available through a link-local address.  This IPv6 link-local address will be assocated with the `verdin-imx8mp-XXXXXXXX.local` hostname.
-</code></pre></div>
-<div class="highlight"><pre><span></span><code>If connecting to the Maivin using a Windows PC, either with an SSH client or a web browser, adding the &quot;.local&quot; suffix is optional.  For Linux or Mac machines, the suffix must be used.
-</code></pre></div></p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The Maivin also supports IPv6 which will be available through a link-local address.  This IPv6 link-local address will be assocated with the <code>verdin-imx8mp-XXXXXXXX.local</code> hostname.</p>
+</div>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>If connecting to the Maivin using a Windows PC, either with an SSH client or a web browser, adding the ".local" suffix is optional.  For Linux or Mac machines, the suffix must be used.</p>
+</div>
 <p>Once connected to the Maivin, standard Linux tools are available for listing the network interfaces and their current status.  NetworkManager offers the <code>nmcli</code> command-line tool for querying the status of the interfaces it manages; for example, the <code>nmcli connection</code> command is shown below.  We see the connection names <code>network0</code> and <code>network1</code> which are associated to the network interfaces <code>ethernet0</code> and <code>ethernet1</code>, respectively.  The connection names can be user defined, by default the <code>networkX</code> convention is followed which maps <code>X</code> to the equivalent <code>ethernetX</code> interface.</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>nmcli<span class="w"> </span>-t<span class="w"> </span>connection
 network0:958cc5e3-1bbf-3d64-beeb-020d4414e254:802-3-ethernet:ethernet0
 network1:78c31df4-8c89-31a6-9aeb-d5603e230e4e:802-3-ethernet:ethernet1
 </code></pre></div>
-<div class="highlight"><pre><span></span><code>When using `nmcli`, the -t parameter is used to provide simpler text output.  Without it, the rich console interface is used which requires an appropriate terminal to display correctly.  If you find the output of nmcli visually erroneous, use the -t parameter.
-</code></pre></div>
-<div class="highlight"><pre><span></span><code>The `nmcli` sub-commands can be abbreviated.  For example, `nmcli connection` can simply be entered as `nmcli c`.
-</code></pre></div>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>When using <code>nmcli</code>, the -t parameter is used to provide simpler text output.  Without it, the rich console interface is used which requires an appropriate terminal to display correctly.  If you find the output of nmcli visually erroneous, use the -t parameter.</p>
+</div>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>The <code>nmcli</code> sub-commands can be abbreviated.  For example, <code>nmcli connection</code> can simply be entered as <code>nmcli c</code>.</p>
+</div>
 <p>Other standard Linux tools such as <code>ifconfig</code>, <code>ip</code>, and <code>ethtool</code> are also available.  For example, <code>ifconfig</code> can be used to see the link status and IP address along with other details.</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>ifconfig<span class="w"> </span>ethernet0
 ethernet0<span class="w"> </span>Link<span class="w"> </span>encap:Ethernet<span class="w">  </span>HWaddr<span class="w"> </span><span class="m">00</span>:14:2D:E7:08:E3<span class="w">  </span>
@@ -2599,12 +2631,18 @@ network0:958cc5e3-1bbf-3d64-beeb-020d4414e254:802-3-ethernet:ethernet0
 <li><code>nmcli con up network0</code></li>
 </ol>
 <p>The device should now be configured with the new static IP address.</p>
-<p><div class="highlight"><pre><span></span><code>The internal Ethernet1 interface uses the 192.168.11.0/24 network to communicate with the radar module.  Do not configure the static IP address to reside on this network.
-</code></pre></div>
-<div class="highlight"><pre><span></span><code>The `ipv4.addresses` element must be configured before switching the IPv4 method to manual.
-</code></pre></div>
-<div class="highlight"><pre><span></span><code>Calling the `connection up` command while connected through this interface can cause the link to drop.  Reconnect using the new address.  An alternate to the `connection up` command is to use `sudo reboot` to restart the device.
-</code></pre></div></p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>The internal Ethernet1 interface uses the 192.168.11.0/24 network to communicate with the radar module.  Do not configure the static IP address to reside on this network.</p>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>The <code>ipv4.addresses</code> element must be configured before switching the IPv4 method to manual.</p>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Calling the <code>connection up</code> command while connected through this interface can cause the link to drop.  Reconnect using the new address.  An alternate to the <code>connection up</code> command is to use <code>sudo reboot</code> to restart the device.</p>
+</div>
 <h3 id="re-enable-dhcp">Re-enable DHCP</h3>
 <p>To revert the connection to using DHCP you must follow these steps.</p>
 <ol>
@@ -2623,8 +2661,10 @@ network0:958cc5e3-1bbf-3d64-beeb-020d4414e254:802-3-ethernet:ethernet0
 <p>NetworkManager allows mixed static and DHCP configurations.   If you configure <code>ipv4.method auto</code> you can still configure some of the other IPv4 parameters statically.</p>
 <h2 id="wifi-client-setup">WiFi Client Setup</h2>
 <p>Maivin units with WiFi can be configured to connect to a WiFi Access Point (AP).  Refer to the next section if you instead want to use your Maivin as a WiFi AP.</p>
-<div class="highlight"><pre><span></span><code>FCC regulations require special certifications for colocated transmitters (a device with multiple RF transmitters).  Maivin and Raivin are not currently certified for colocated transmitters so users must not enable more than one of the WiFi, Modem, or Radar without first receiving FCC certification.  Refer to regulatory boards in your jurisdiction for your relevant regulations.
-</code></pre></div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>FCC regulations require special certifications for colocated transmitters (a device with multiple RF transmitters).  Maivin and Raivin are not currently certified for colocated transmitters so users must not enable more than one of the WiFi, Modem, or Radar without first receiving FCC certification.  Refer to regulatory boards in your jurisdiction for your relevant regulations.</p>
+</div>
 <p>NetworkManager handles the WiFi client configuration.  Follow these steps to connect to an AP, you will need to know the AP Service Set Identifer (SSID, usually the network name) and the password, if required.</p>
 <ol>
 <li>First scan for available WiFi networks to join:</li>
@@ -2637,8 +2677,10 @@ network0:958cc5e3-1bbf-3d64-beeb-020d4414e254:802-3-ethernet:ethernet0
 </ol>
 <h2 id="wifi-ap-setup">WiFi AP Setup</h2>
 <p>Maivin units with WiFi can be configured as an AP allowing client devices to connect to the Maivin.  Instead of using NetworkManager, we use the <a href="https://wireless.docs.kernel.org/en/latest/en/users/documentation/hostapd.html">Host AP daemon (hostapd)</a>.</p>
-<div class="highlight"><pre><span></span><code>FCC regulations require special certifications for colocated transmitters (a device with multiple RF transmitters).  Maivin and Raivin are not currently certified for colocated transmitters so users must not enable more than one of the WiFi, Modem, or Radar without first receiving FCC certification.  Refer to regulatory boards in your jurisdiction for your relevant regulations.
-</code></pre></div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>FCC regulations require special certifications for colocated transmitters (a device with multiple RF transmitters).  Maivin and Raivin are not currently certified for colocated transmitters so users must not enable more than one of the WiFi, Modem, or Radar without first receiving FCC certification.  Refer to regulatory boards in your jurisdiction for your relevant regulations.</p>
+</div>
 <p>WiFi AP mode is configured using the <code>hostapd</code> service in Linux.  We describe a common WiFi AP configuration; for more advanced setup, please refer to the <a href="https://wireless.docs.kernel.org/en/latest/en/users/documentation/hostapd.html">hostapd documentation</a>.</p>
 <p>To enable the Maivin Access Point with default configurations simply enable the <code>hostapd</code> service.</p>
 <div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>systemctl<span class="w"> </span><span class="nb">enable</span><span class="w"> </span>hostapd
@@ -2668,8 +2710,10 @@ sae_require_mfp=1
 
 ht_capab=[LDPC][HT40+][GF][SHORT-GI-20][SHORT-GI-40][TX-STBC][DSSS_CCK-40]
 </code></pre></div>
-<div class="highlight"><pre><span></span><code>Please make sure to change the default password before enabling WiFi AP mode!
-</code></pre></div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Please make sure to change the default password before enabling WiFi AP mode!</p>
+</div>
 <p>The WiFi AP network configuration file is found under <code>/etc/systemd/network/hostapd.network</code> and is managed by <a href="https://systemd.io/">systemd</a>.  The following is the default configuration.  The full list of configuration options is documented in the <a href="https://www.freedesktop.org/software/systemd/man/latest/systemd.network.html">systemd network manual</a>.</p>
 <div class="highlight"><pre><span></span><code>[Match]
 Name=wlan0 uap0
@@ -2685,12 +2729,16 @@ IPForward=ipv4
 PoolOffset=100
 PoolSize=100
 </code></pre></div>
-<div class="highlight"><pre><span></span><code>If you change the network address in `hostapd.network`, make sure it matches the address in `hostapd.conf`!
-</code></pre></div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>If you change the network address in <code>hostapd.network</code>, make sure it matches the address in <code>hostapd.conf</code>!</p>
+</div>
 <h2 id="lte-modem-setup">LTE Modem Setup</h2>
 <p>Maivin provides an m.2 expansion port which can be used to add an LTE modem to the device.  We offer Maivin and Raivin units pre-configured with an LTE modem and SIM card or a modem can be added by customers themselves following the instructions at the end of this section.</p>
-<div class="highlight"><pre><span></span><code>FCC regulations require special certifications for colocated transmitters (a device with multiple RF transmitters).  Maivin and Raivin are not currently certified for colocated transmitters so users must not enable more than one of the WiFi, Modem, or Radar without first receiving FCC certification.  Refer to regulatory boards in your jurisdiction for your relevant regulations.
-</code></pre></div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>FCC regulations require special certifications for colocated transmitters (a device with multiple RF transmitters).  Maivin and Raivin are not currently certified for colocated transmitters so users must not enable more than one of the WiFi, Modem, or Radar without first receiving FCC certification.  Refer to regulatory boards in your jurisdiction for your relevant regulations.</p>
+</div>
 <h3 id="modem-configuration">Modem Configuration</h3>
 <p>The modem in the Maivin is configured through <a href="https://modemmanager.org">ModemManager</a>, which is a companion framework to NetworkManager but specializing in modem configuration.  Before you start, you need to ensure the modem is installed into the Maivin along with the SIM card and that you have the correct Access Point Name (APN) configuration string from your LTE carrier.</p>
 <p>We describe the common modem configuration in this section.  For further details of the modem features and configuration, please refer to the <a href="https://modemmanager.org">ModemManager Documentation</a>.</p>
@@ -2699,8 +2747,10 @@ PoolSize=100
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>cat<span class="w"> </span>/etc/overlays.txt
 <span class="nv">fdt_overlays</span><span class="o">=</span>maivin2.dtbo<span class="w"> </span>maivin2-os08a20.dtbo<span class="w"> </span>maivin2-m2usb.dtbo
 </code></pre></div>
-<div class="highlight"><pre><span></span><code>The `maivin2.dtbo` overlay must always be present first.  Care must be taken when adjusting the device tree overlays as errors will cause boot failures!
-</code></pre></div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>The <code>maivin2.dtbo</code> overlay must always be present first.  Care must be taken when adjusting the device tree overlays as errors will cause boot failures!</p>
+</div>
 <h4 id="verify-modem-found">Verify Modem Found</h4>
 <p>After confirming the correct device tree overlays are configured and rebooting the Maivin, you can verify the modem has been found.  For USB modems, the <code>lsusb</code> command is used, in the example below we see a Telit LN920 modem has been found.</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>lsusb
@@ -2728,28 +2778,36 @@ sudo<span class="w"> </span>systemctl<span class="w"> </span>start<span class="w
 <span class="w">           </span><span class="p">|</span><span class="w">           </span>equipment<span class="w"> </span>id:<span class="w"> </span><span class="m">352214163072532</span>
 &lt;additional<span class="w"> </span>output<span class="w"> </span>removed&gt;
 </code></pre></div>
-<div class="highlight"><pre><span></span><code>If `mmcli -m 0` returns the error &quot;error: couldn&#39;t find the ModemManager process in the bus&quot;, then you need to first start the service using `sudo systemctl start ModemManager`.
-</code></pre></div>
-<div class="highlight"><pre><span></span><code>If `mmcli -m 0` returns the error &quot;error: couldn&#39;t find modem&quot;, then wait a few minutes before trying again.  Modem startup can take a while.  If the modem is still not found, please contact support.
-</code></pre></div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If <code>mmcli -m 0</code> returns the error "error: couldn't find the ModemManager process in the bus", then you need to first start the service using <code>sudo systemctl start ModemManager</code>.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If <code>mmcli -m 0</code> returns the error "error: couldn't find modem", then wait a few minutes before trying again.  Modem startup can take a while.  If the modem is still not found, please contact support.</p>
+</div>
 <p>Now that the modem is properly detected by ModemManager, we switch to NetworkManager to configure the network.</p>
-<div class="highlight"><pre><span></span><code>Take careful note of the commands, as `mmcli` for ModemManager and `nmcli` for NetworkManager look very similar.
-</code></pre></div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Take careful note of the commands, as <code>mmcli</code> for ModemManager and <code>nmcli</code> for NetworkManager look very similar.</p>
+</div>
 <ol>
-<li>First we create a new NetworkManager connection for the cellular modem and provide the APN string which will be provided to you by your service provider:</li>
-<li><code>nmcli connection add type gsm ifname "*" con-name "Cellular Connection" autoconnect yes gsm.apn &lt;APN_FROM_CARRIER&gt;</code></li>
-<li>Next you can bring up the newly created connection:</li>
-<li><code>nmcli connection up "Cellular Connection"</code></li>
-<li>Then you can verify the connection is up:</li>
-<li><code>nmcli -c no connection show</code></li>
+<li>First we create a new NetworkManager connection for the cellular modem and provide the APN string which will be provided to you by your service provider:<br />
+<code>nmcli connection add type gsm ifname "*" con-name "Cellular Connection" autoconnect yes gsm.apn &lt;APN_FROM_CARRIER&gt;</code></li>
+<li>Next you can bring up the newly created connection:<br />
+<code>nmcli connection up "Cellular Connection"</code></li>
+<li>Then you can verify the connection is up:<br />
+<code>nmcli -c no connection show</code></li>
 </ol>
 <p>Once properly configured the <code>wwan0</code> interface can also be queried through <code>ifconfig</code>.</p>
 <h3 id="modem-installation">Modem Installation</h3>
 <p>The modem installation can be performed by customers by following these instructions.  If your modem and service provide require physical SIM card installation that is also possible during installation.</p>
-<div class="highlight"><pre><span></span><code>Installing an LTE modem is an advanced configuration which requires opening up the Maivin.  Extreme caution should be followed during this procedure.  We suggest ordering Maivin or Raivin units with the LTE option pre-configured.
-</code></pre></div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Installing an LTE modem is an advanced configuration which requires opening up the Maivin.  Extreme caution should be followed during this procedure.  We suggest ordering Maivin or Raivin units with the LTE option pre-configured.</p>
+</div>
 <h2 id="radar-networking">Radar Networking</h2>
-<p>The <code>ethernet1</code> and <code>can0</code> interfaces are reserved for internal communications with the radar module on Raivin configurations.  Refer to the Radar chapter for details.</p>
+<p>The <code>ethernet1</code> and <code>can0</code> interfaces are reserved for internal communications with the radar module on Raivin configurations.  Refer to the <a href="../radar/">Radar page</a> for details.</p>
 
 
 
@@ -2786,7 +2844,6 @@ sudo<span class="w"> </span>systemctl<span class="w"> </span>start<span class="w
   
     <div class="md-copyright__highlight">
       Copyright &copy; 2025 Au-Zone Technologies &mdash; <a href="#__consent">Privacy Settings</a>
-
     </div>
   
   

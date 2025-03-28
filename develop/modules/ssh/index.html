@@ -1145,6 +1145,8 @@
       
         
       
+        
+      
     
     
       
@@ -1636,6 +1638,28 @@
           </ul>
         </nav>
       
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../middleware/python_examples/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Python Examples
+    
+  </span>
+  
+
+      </a>
     </li>
   
 
@@ -2272,29 +2296,35 @@
 
 
 <h1 id="ssh">SSH</h1>
-<p>This section describes how to SSH into a Raivin using the default "torizon" account, and some basic commands you can use to provide some basic information about your Raivin if you have found an issue.
-<div class="highlight"><pre><span></span><code>The &quot;torizon&quot; account is effectively the root account of the Maivin device.  Using this account can cause irreparable harm to the software internals of the device. 
-</code></pre></div>
-<div class="highlight"><pre><span></span><code>As part of the initial SSH session, you will be asked to change the default password.  PLEASE RECORD THIS PASSWORD!  If you forget it, you will be unable to SSH into the device without a reinstall.  
-</code></pre></div>
-You need an SSH client (<a href="https://www.openssh.com/">OpenSSH</a>, <a href="https://www.putty.org/">PuTTY</a>, etc.) to SSH into the Maivin.</p>
+<p>This section describes how to SSH into a Raivin using the default "torizon" account, and some basic commands you can use to provide some basic information about your Raivin if you have found an issue.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>The "torizon" account is effectively the root account of the Maivin device.  Using this account can cause irreparable harm to the software internals of the device. </p>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>As part of the initial SSH session, you will be asked to change the default password.  PLEASE RECORD THIS PASSWORD!  If you forget it, you will be unable to SSH into the device without a reinstall.  </p>
+</div>
+<p>You need an SSH client (<a href="https://www.openssh.com/">OpenSSH</a>, <a href="https://www.putty.org/">PuTTY</a>, etc.) to SSH into the Maivin.</p>
 <h2 id="the-intial-ssh-session">The Intial SSH Session</h2>
-<p>First, verify that your Maivin is turned on and connected to the network.  You can follow the <a href="../quickstart/#on-boot-up">Quick Start instructions</a> to get the hostname of the device, which for the examples in this section will be <code>verdin-imx8mp-06976895.local</code>.
-<div class="highlight"><pre><span></span><code>Windows does not need the `.local` hostname suffix.
-</code></pre></div>
-In a command prompt, ping the Maivin's hostname.<br />
-<img align="center" alt="ping results" src="../static/ssh-ping.png" />
+<p>First, verify that your Maivin is turned on and connected to the network.  You can follow the <a href="../quickstart/#on-boot-up">Quick Start instructions</a> to get the hostname of the device, which for the examples in this section will be <code>verdin-imx8mp-06976895.local</code>.</p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Windows does not need the <code>.local</code> hostname suffix.</p>
+</div>
+<p>In a command prompt, ping the Maivin's hostname.<br />
+<img align="center" alt="ping results" src="../static/ssh-ping.png" /><br />
 If the Maivin does not reply, please confirm the Maivin is powered on and connected to the network.</p>
 <p>Once the ping is successful, use your SSH client to connect to the 'torizon' account on the Maivin's hostname.  For a command-line SSH such as OpenSSH, this should look as:</p>
 <p><div class="highlight"><pre><span></span><code>ssh<span class="w"> </span>torizon@Maivin-hostname
 </code></pre></div>
 For example:<br />
-<img align="center" alt="are you sure?" src="../static/ssh-areYouSure.png" />
+<img align="center" alt="are you sure?" src="../static/ssh-areYouSure.png" /><br />
 On the first log of a new or updated Maivin, you may get the "authenticity of host" error.  This is expected, and type "yes" to continue connecting.</p>
 <p>On a new Raivin, it will ask you to change the default password to a new password.  Re-enter the 'torizon' password, and then enter a new password twice.  After you change the default password, the SSH session will close so you can re-login with the new password.<br />
-<img align="center" alt="new password" src="../static/ssh-changePassword.png" /></p>
+<img align="center" alt="new password" src="../static/ssh-changePassword.png" />  </p>
 <p>Once you've finished those steps, the next and all future SSH sessions should look as follows:<br />
-<img align="center" alt="new password" src="../static/ssh-login.png" /></p>
+<img align="center" alt="new password" src="../static/ssh-login.png" />  </p>
 <p>You are now at the Linux command-line prompt for the Raivin!</p>
 <h2 id="standard-debugging-commands">Standard Debugging Commands</h2>
 <p>The version of Raivin you are running can be found using <code>ostree admin status</code>,
@@ -2348,7 +2378,7 @@ To exit the SSH session, type <code>exit</code>.</p>
 <div class="highlight"><pre><span></span><code>scp<span class="w"> </span>&lt;<span class="nb">source</span><span class="w"> </span>file&gt;<span class="w"> </span>&lt;destination<span class="w"> </span>file&gt;.
 </code></pre></div>
 To describe files on the Raivin, both source and destination, they are formatted as:
-<div class="highlight"><pre><span></span><code>torizon@verdin-imx8mp-\&lt;dir&gt;:/absolute/path/filename
+<div class="highlight"><pre><span></span><code>torizon@verdin-imx8mp-&lt;id&gt;:/absolute/path/filename
 </code></pre></div>
 The path is not needed for files in the <code>torizon</code> home directory <code>/home/torizon</code>, and relative paths from <code>/home/torizon</code> can be used.</p>
 <p>If the destination file will be named the same as a the source file, a period <code>.</code> can be used instead.</p>
@@ -2395,7 +2425,6 @@ This would copy the file to <code>/home/torizon/test.mcap</code>.</p>
   
     <div class="md-copyright__highlight">
       Copyright &copy; 2025 Au-Zone Technologies &mdash; <a href="#__consent">Privacy Settings</a>
-
     </div>
   
   

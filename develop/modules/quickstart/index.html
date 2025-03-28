@@ -1145,6 +1145,8 @@
       
         
       
+        
+      
     
     
       
@@ -1636,6 +1638,28 @@
           </ul>
         </nav>
       
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../middleware/python_examples/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Python Examples
+    
+  </span>
+  
+
+      </a>
     </li>
   
 
@@ -2300,12 +2324,16 @@
 <p>The device should boot up as soon as it is connected.  A blue light above and to the right of the power connecter should start blinking.<br />
 <img align="center" alt="Raivin Back Picture" src="../static/quickStart-backPic.png" />
 <em>Raivin showing network connection (left), eight-digit ID number (middle), tripod connected (bottom), and power connection with blue status light on (right)</em></p>
-<div class="highlight"><pre><span></span><code>The Raivin may get hot during operation.  Do not handle while operating.  Temperature can be measured with the `cat /dev/carrier_temp` command, which will output device temperature in millidegree Celsius.
-</code></pre></div>
+<div class="admonition danger">
+<p class="admonition-title">Danger</p>
+<p>The Raivin may get hot during operation.  Do not handle while operating.  Temperature can be measured with the <code>cat /dev/carrier_temp</code> command, which will output device temperature in millidegree Celsius.</p>
+</div>
 <h2 id="on-boot-up">On Boot Up</h2>
-<p>The Raivin will have an eight-digit number on the back of the device.  This is the ID number.  The hostname of the Raivin will be "verdin-imx8mp-\<id>.local", which is advertised over Multicast Domain Name System (mDMS).  For the steps below, the eight-digit number is "15141029".  The device will have a hostname of <code>verdin-imx8mp-15141029.local</code>.  This hostname can be used to connect to the device over <a href="../ssh/">SSH</a> and HTTP.
-<div class="highlight"><pre><span></span><code>On Windows machines, you will not need to add the &#39;.local&#39; suffix.
-</code></pre></div></p>
+<p>The Raivin will have an eight-digit number on the back of the device.  This is the ID number.  The hostname of the Raivin will be "verdin-imx8mp-<strong>ID</strong>.local", which is advertised over Multicast Domain Name System (mDMS).  For the steps below, the eight-digit number is "15141029".  The device will have a hostname of <code>verdin-imx8mp-15141029.local</code>.  This hostname can be used to connect to the device over <a href="../ssh/">SSH</a> and HTTP.</p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>On Windows machines, you will not need to add the '.local' suffix.</p>
+</div>
 <p>The Raivin has a web interface that can be connected to via both HTTP and HTTPS by entering <code>http://verdin-imx8mp-&lt;id&gt;.local</code>.  On first connection to the web interface, you will get a "Your connection is not private" warning.
 <img align="center" alt="Raivin Main Page Warning" src="../static/quickStart-sslCert.png" /><br />
 This is expected and nothing to worry about -- the HTTPS connection needs a SSL certificate which the vision module does not have.  Click the "Advanced" button, and then "Proceed to" link.<br />
@@ -2317,9 +2345,11 @@ If you have a Maivin, you will see the Maivin Main Page instead:<br />
 <p>From here, we recommend that you check out the Segmentation View page by clicking the "Segmentation View" card.  For a Raivin, it looks as so:<br />
 <img align="center" alt="Segmentation Page" src="../static/quickStart-segmentation.png" /><br />
 and for a Maivin:<br />
-<img align="center" alt="Maivin Segmentation Page" src="../static/ui-maivinSegmentation.png" /><br />
-<div class="highlight"><pre><span></span><code>The ultra-short model included in this release was trained for fixed camera and mostly tested indoors.
-</code></pre></div></p>
+<img align="center" alt="Maivin Segmentation Page" src="../static/ui-maivinSegmentation.png" />  </p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The ultra-short model included in this release was trained for fixed camera and mostly tested indoors.</p>
+</div>
 
 
 
@@ -2356,7 +2386,6 @@ and for a Maivin:<br />
   
     <div class="md-copyright__highlight">
       Copyright &copy; 2025 Au-Zone Technologies &mdash; <a href="#__consent">Privacy Settings</a>
-
     </div>
   
   

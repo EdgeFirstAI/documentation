@@ -1,5 +1,5 @@
 site_name: EdgeFirst Studio Documentation
-site_url: https://edgefirst.github.io/documentation/
+site_url: https://doc.edgefirst.ai
 site_description: EdgeFirst Studio Documentation
 site_author: Au-Zone Technologies
 theme:
@@ -8,7 +8,7 @@ theme:
   favicon: assets/favicon.png
   font:
     text: Roboto
-    code: Roboto Mono  
+    code: Roboto Mono
   palette:
     # Palette toggle for automatic mode
     - media: "(prefers-color-scheme)"
@@ -29,7 +29,7 @@ theme:
     - media: "(prefers-color-scheme: dark)"
       scheme: slate
       toggle:
-        icon: material/weather-night        
+        icon: material/weather-night
         name: Dark mode
       primary: indigo
       accent: amber
@@ -65,15 +65,12 @@ plugins:
             show_docstring_examples: true
           load_external_modules: true
           inventories:
-          - https://docs.python.org/3/objects.inv
-      
+            - https://docs.python.org/3/objects.inv
+
 markdown_extensions:
   - md_in_html
   - attr_list
   - pymdownx.blocks.caption
-  - attr_list
-  - admonition
-  - pymdownx.details
   - pymdownx.superfences:
       custom_fences:
         - name: mermaid
@@ -87,9 +84,12 @@ extra_javascript:
   - https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js
 
 extra:
+  version:
+    default: develop
+    provider: mike
   consent:
     title: Privacy Settings
-    description: >- 
+    description: >-
       We use cookies to recognize your repeated visits and preferences, as well
       as to measure the effectiveness of our documentation and whether users
       find what they're searching for. With your consent, you're helping us to

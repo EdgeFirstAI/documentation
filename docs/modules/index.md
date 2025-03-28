@@ -1,1 +1,3 @@
-# EdgeFirst Modules
+# EdgeFirst Modules User Manual
+
+This is the EdgeFirst Modules User Manual.  It provides information on how to use the EdgeFirst Perception Middleware in both the vision-only Maivin configuration and the combined vision and radar Raivin configuration.  If you have purchased a Maivin or Raivin vision module, please continue on to the [QuickStart Guide](./quickstart.md) for an unboxing of your new module.

@@ -1,20 +1,21 @@
 # SSH
 This section describes how to SSH into a Raivin using the default "torizon" account, and some basic commands you can use to provide some basic information about your Raivin if you have found an issue.
-```{warning}
-The "torizon" account is effectively the root account of the Maivin device.  Using this account can cause irreparable harm to the software internals of the device. 
-```
-```{warning}
-As part of the initial SSH session, you will be asked to change the default password.  PLEASE RECORD THIS PASSWORD!  If you forget it, you will be unable to SSH into the device without a reinstall.  
-```
+!!! warning
+    The "torizon" account is effectively the root account of the Maivin device.  Using this account can cause irreparable harm to the software internals of the device. 
+
+!!! warning
+    As part of the initial SSH session, you will be asked to change the default password.  PLEASE RECORD THIS PASSWORD!  If you forget it, you will be unable to SSH into the device without a reinstall.  
+
 You need an SSH client ([OpenSSH][openssh], [PuTTY][putty], etc.) to SSH into the Maivin.
 
 ## The Intial SSH Session
 First, verify that your Maivin is turned on and connected to the network.  You can follow the [Quick Start instructions](./quickstart.md#on-boot-up) to get the hostname of the device, which for the examples in this section will be `verdin-imx8mp-06976895.local`.
-```{tip}
-Windows does not need the `.local` hostname suffix.
-```
+
+!!! tip
+    Windows does not need the `.local` hostname suffix.
+
 In a command prompt, ping the Maivin's hostname.  
-![ping results](static/ssh-ping.png){align=center}
+![ping results](static/ssh-ping.png){align=center}  
 If the Maivin does not reply, please confirm the Maivin is powered on and connected to the network.
 
 Once the ping is successful, use your SSH client to connect to the 'torizon' account on the Maivin's hostname.  For a command-line SSH such as OpenSSH, this should look as:
@@ -23,14 +24,14 @@ Once the ping is successful, use your SSH client to connect to the 'torizon' acc
 ssh torizon@Maivin-hostname
 ```
 For example:  
-![are you sure?](static/ssh-areYouSure.png){align=center}
+![are you sure?](static/ssh-areYouSure.png){align=center}  
 On the first log of a new or updated Maivin, you may get the "authenticity of host" error.  This is expected, and type "yes" to continue connecting.
 
 On a new Raivin, it will ask you to change the default password to a new password.  Re-enter the 'torizon' password, and then enter a new password twice.  After you change the default password, the SSH session will close so you can re-login with the new password.  
-![new password](static/ssh-changePassword.png){align=center}
+![new password](static/ssh-changePassword.png){align=center}  
 
 Once you've finished those steps, the next and all future SSH sessions should look as follows:  
-![new password](static/ssh-login.png){align=center}
+![new password](static/ssh-login.png){align=center}  
 
 You are now at the Linux command-line prompt for the Raivin!
 
@@ -93,7 +94,7 @@ scp <source file> <destination file>.
 ```
 To describe files on the Raivin, both source and destination, they are formatted as:
 ```
-torizon@verdin-imx8mp-\<dir>:/absolute/path/filename
+torizon@verdin-imx8mp-<id>:/absolute/path/filename
 ```
 The path is not needed for files in the `torizon` home directory `/home/torizon`, and relative paths from `/home/torizon` can be used.
 

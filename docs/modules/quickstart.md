@@ -29,15 +29,13 @@ The device should boot up as soon as it is connected.  A blue light above and to
 ![Raivin Back Picture](static/quickStart-backPic.png){align=center}
 *Raivin showing network connection (left), eight-digit ID number (middle), tripod connected (bottom), and power connection with blue status light on (right)*
 
-```{warning}
-The Raivin may get hot during operation.  Do not handle while operating.  Temperature can be measured with the `cat /dev/carrier_temp` command, which will output device temperature in millidegree Celsius.
-```
+!!! Danger
+    The Raivin may get hot during operation.  Do not handle while operating.  Temperature can be measured with the `cat /dev/carrier_temp` command, which will output device temperature in millidegree Celsius.
 
 ## On Boot Up
-The Raivin will have an eight-digit number on the back of the device.  This is the ID number.  The hostname of the Raivin will be "verdin-imx8mp-\<id>.local", which is advertised over Multicast Domain Name System (mDMS).  For the steps below, the eight-digit number is "15141029".  The device will have a hostname of `verdin-imx8mp-15141029.local`.  This hostname can be used to connect to the device over [SSH](./ssh.md) and HTTP.
-```{tip}
-On Windows machines, you will not need to add the '.local' suffix.
-```
+The Raivin will have an eight-digit number on the back of the device.  This is the ID number.  The hostname of the Raivin will be "verdin-imx8mp-**ID**.local", which is advertised over Multicast Domain Name System (mDMS).  For the steps below, the eight-digit number is "15141029".  The device will have a hostname of `verdin-imx8mp-15141029.local`.  This hostname can be used to connect to the device over [SSH](./ssh.md) and HTTP.
+!!! Tip
+    On Windows machines, you will not need to add the '.local' suffix.
 
 The Raivin has a web interface that can be connected to via both HTTP and HTTPS by entering `http://verdin-imx8mp-<id>.local`.  On first connection to the web interface, you will get a "Your connection is not private" warning.
 ![Raivin Main Page Warning](static/quickStart-sslCert.png){align=center}  
@@ -53,6 +51,5 @@ From here, we recommend that you check out the Segmentation View page by clickin
 ![Segmentation Page](static/quickStart-segmentation.png){align=center}  
 and for a Maivin:  
 ![Maivin Segmentation Page](static/ui-maivinSegmentation.png){align=center}  
-```{note}
-The ultra-short model included in this release was trained for fixed camera and mostly tested indoors.
-```
+!!! note
+    The ultra-short model included in this release was trained for fixed camera and mostly tested indoors.

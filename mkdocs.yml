@@ -1,5 +1,5 @@
 site_name: EdgeFirst Studio Documentation
-site_url: https://edgefirstai.github.io/documentation/
+site_url: https://doc.edgefirst.ai
 site_description: EdgeFirst Studio Documentation
 site_author: Au-Zone Technologies
 theme:
@@ -34,7 +34,7 @@ theme:
       primary: indigo
       accent: amber
   features:
-    - navigation.instant
+    # - navigation.instant
     - navigation.instant.prefetch
     - navigation.instant.progress
     - navigation.tracking
@@ -65,12 +65,17 @@ plugins:
             show_docstring_examples: true
           load_external_modules: true
           inventories:
-            - https://docs.python.org/3/objects.inv
+          - https://docs.python.org/3/objects.inv
+  - redirects:
+      redirect_maps:
+        'models/modelpack/index.md': 'models/modelpack/training.md'
 
 markdown_extensions:
   - md_in_html
   - attr_list
   - pymdownx.blocks.caption
+  - admonition
+  - pymdownx.details
   - pymdownx.superfences:
       custom_fences:
         - name: mermaid
@@ -80,7 +85,6 @@ markdown_extensions:
       generic: true
 
 extra_javascript:
-  - javascripts/mathjax.js
   - https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js
 
 extra:

@@ -11,7 +11,7 @@ nav:
     - datasets/tutorials.md
     - datasets/zoo.md
     - datasets/format.md
-  - models:
+  - Models:
     - models/index.md
     - model:
       - training:

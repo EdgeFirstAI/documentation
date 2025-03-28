@@ -11,7 +11,17 @@ nav:
     - datasets/tutorials.md
     - datasets/zoo.md
     - datasets/format.md
-  - models
+  - Models:
+    - models/index.md
+    - model:
+      - training:
+        - models/model/training/modelpack.md
+        - models/model/training/fusion.md
+      - validation:
+        - models/model/validation/modelpack.md
+        - models/model/validation/fusion.md
+        - models/model/validation/metrics.md
+    - models/augmentations.md
   - fusion
   - Middleware:
     - middleware/overview.md

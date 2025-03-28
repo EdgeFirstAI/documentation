@@ -5,7 +5,10 @@ nav:
     - getting_started/dataset.md
     - getting_started/models.md
     - getting_started/modules.md
-  - enterprise
+  - Enterprise:
+    - enterprise/intro.md
+    - enterprise/navigation/nav.md
+    - enterprise/access/access.md
   - Datasets:
     - datasets/index.md
     - datasets/tutorials.md

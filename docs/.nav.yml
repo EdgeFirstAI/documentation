@@ -42,6 +42,7 @@ nav:
       - middleware/api/sensor_msgs.md
       - middleware/api/std_msgs.md
       - middleware/api/builtin_interfaces.md
+    - middleware/python_examples.md
   - Modules:
     - modules/index.md
     - Introduction:

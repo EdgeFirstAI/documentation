@@ -4,3 +4,4 @@ mkdocs-awesome-nav
 mkdocs-autorefs
 mkdocstrings-python
 mike
+mkdocs-redirects

@@ -6,14 +6,17 @@ nav:
     - getting_started/models.md
     - getting_started/modules.md
   - Enterprise:
-    - enterprise/intro.md
+    - enterprise/index.md
     - enterprise/navigation/nav.md
     - enterprise/access/access.md
+    - enterprise/agtg/agtg.md
   - Datasets:
     - datasets/index.md
+    - datasets/snapshots/ss.md
     - datasets/tutorials.md
     - datasets/zoo.md
     - datasets/format.md
+    - datasets/dataio/in.md
   - Models:
     - models/index.md
     - models/augmentations.md

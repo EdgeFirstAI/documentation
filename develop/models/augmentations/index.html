@@ -2665,8 +2665,8 @@
 
 <h1 id="vision-augmentations">Vision Augmentations</h1>
 <p>This page is dedicated to describing all available vision augmentations during training and model validation. For training purposes, vision augmentations are techniques used to increase the number of training samples in the dataset by providing more variations for each sample thus exposing the model with samples that have a diverse set of characteristics and conditions. For validation purposes, the model performance is evaluated for cases where there is a level of synthetic degradation imposed on the camera to mimic environmental conditions such as heavy rain, fog, snow, etc. where camera-based models could fail at detecting objects in the scene, whereas models with radar-based aspects could be more robust in such conditions. </p>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
+<div class="admonition info">
+<p class="admonition-title">Info</p>
 <p>For Fusion models, the camera is an optional sensor, but for ModelPack the camera is a requirement since ModelPack is a single-sensor (single-input) architecture and Fusion is a multi-sensor (multi-input) architecture.</p>
 </div>
 <p>The camera augmentations are distinguished into two categories: <em>Geometric</em> and <em>Non-Geometric</em>.</p>

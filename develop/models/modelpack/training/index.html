@@ -2354,7 +2354,29 @@
 <p>This page will provide a walk-through on using DVE for training Vision models using Modelpack.</p>
 <ol>
 <li>
-<p>Select <em>Trainer</em> from the tool options. </p>
+<p>Before running a training session, ensure the dataset is ready to be used for training. This means that the dataset is properly annotated and the dataset is properly split with training and validation samples. The sample dataset shown below has a dedicated split for training (1656 samples) and validation (184 samples).</p>
+<p><figure markdown="span">
+<img align="center" alt="Dataset Groups" src="../../assets/training/vision-dataset-groups.jpg" />
+<figcaption>Dataset Groups</figcaption>
+</figure></p>
+<p>To verify the annotations, click the button that navigates to the gallery. This will show the contents of the dataset. The dataset may be comprised of multiple sequences as shown below. </p>
+<p><figure markdown="span">
+<img align="center" alt="Dataset Sequences" src="../../assets/training/vision-dataset-sequences.jpg" />
+<figcaption>Dataset Sequences</figcaption>
+</figure></p>
+<p>Clicking on any of these sequences will open individual images in the sequence with the visualizations of the annotations. </p>
+<div class="admonition info">
+<p class="admonition-title">Info</p>
+<p>Datasets that train Vision models provide image annotations of the object's 2D bounding box and segmentation mask. For more information on the dataset annotations, please see <a href="../../../datasets/format/#dataset-annotation-format">EdgeFirst Dataset Format</a>.</p>
+</div>
+<p><figure markdown="span">
+<img align="center" alt="Vision Annotations" src="../../assets/training/vision-annotations.jpg" />
+<figcaption>Vision Annotations</figcaption>
+</figure></p>
+<p>For cases where the annotations need corrections, please see <a href="../../../datasets/tutorials/#manual-annotations">Dataset Tutorials</a> for more details.</p>
+</li>
+<li>
+<p>Once the training dataset is ready, select <em>Trainer</em> from the tool options. </p>
 <p><figure markdown="span">
 <img align="center" alt="Trainer Tool" src="../../assets/training/trainer-tool.jpg" />
 <figcaption>Tool Options</figcaption>
@@ -2368,13 +2390,24 @@
 </figure></p>
 </li>
 <li>
-<p>Create a new training session by clicking the <em>create</em> button on the top right.</p>
+<p>If you haven't already done so, create a training experiment. Create a new training experiment by clicking the <em>create</em> button on the top right.</p>
 <p><figure markdown="span">
-<img align="center" alt="Create New Session" src="../../assets/validation/create-button.jpg" />
-<figcaption>Create New Session</figcaption>
+<img align="center" alt="Create New Experiment" src="../../assets/validation/create-button.jpg" />
+<figcaption>Create New Experiment</figcaption>
+</figure></p>
+<p>This will provide pop-up for the user to specify the name and description of 
+the experiment. Give a name and a description that reflects your goals in this experiment.</p>
+<p><figure markdown="span">
+<img align="center" alt="Create New Experiment" src="../../assets/training/training-experiment.jpg" />
+<figcaption>Create New Experiment</figcaption>
 </figure></p>
 </li>
 <li>
+<p>Create a new training session within this experiment by clicking the <em>NEW SESSION</em> button as shown below.</p>
+<p><figure markdown="span">
+<img align="center" alt="Training Session" src="../../assets/training/training-session.jpg" />
+<figcaption>Training Session</figcaption>
+</figure></p>
 <p>Configure the settings on the left panel by specifying <em>Trainer Type</em> to <em>Modelpack</em> and provide additional configurations for the name of the session and the dataset to deploy. Next configure the settings on the right panel by specifying training parameters. By default a segmentation model will be trained, however, object detection or multi-task based models are possible variations. </p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>

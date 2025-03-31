@@ -1091,6 +1091,18 @@
         
       
       
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Validating Fusion Models
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <a href="./" class="md-nav__link md-nav__link--active">
         
   
@@ -1101,6 +1113,97 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#select-the-validator-tool" class="md-nav__link">
+    <span class="md-ellipsis">
+      Select the Validator Tool
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#specify-the-project" class="md-nav__link">
+    <span class="md-ellipsis">
+      Specify the Project
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#create-validation-session" class="md-nav__link">
+    <span class="md-ellipsis">
+      Create Validation Session
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#start-the-session" class="md-nav__link">
+    <span class="md-ellipsis">
+      Start the Session
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#session-progress" class="md-nav__link">
+    <span class="md-ellipsis">
+      Session Progress
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#completed-session" class="md-nav__link">
+    <span class="md-ellipsis">
+      Completed Session
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#validation-metrics" class="md-nav__link">
+    <span class="md-ellipsis">
+      Validation Metrics
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#comparing-metrics" class="md-nav__link">
+    <span class="md-ellipsis">
+      Comparing Metrics
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
       
     </li>
   
@@ -2336,6 +2439,86 @@
     
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#select-the-validator-tool" class="md-nav__link">
+    <span class="md-ellipsis">
+      Select the Validator Tool
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#specify-the-project" class="md-nav__link">
+    <span class="md-ellipsis">
+      Specify the Project
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#create-validation-session" class="md-nav__link">
+    <span class="md-ellipsis">
+      Create Validation Session
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#start-the-session" class="md-nav__link">
+    <span class="md-ellipsis">
+      Start the Session
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#session-progress" class="md-nav__link">
+    <span class="md-ellipsis">
+      Session Progress
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#completed-session" class="md-nav__link">
+    <span class="md-ellipsis">
+      Completed Session
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#validation-metrics" class="md-nav__link">
+    <span class="md-ellipsis">
+      Validation Metrics
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#comparing-metrics" class="md-nav__link">
+    <span class="md-ellipsis">
+      Comparing Metrics
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -2351,7 +2534,8 @@
 
 
 <h1 id="validating-fusion-models">Validating Fusion Models</h1>
-<p>This page will provide a walk-through on using DVE for validating the performance of Fusion models that have been trained, through the <a href="../../../getting_started/">QuickStart Guide</a> or <a href="../training/">Training Fusion</a>. This page will focus only on the validation of Fusion models.</p>
+<p>This page will provide a walk-through on using DVE for validating the performance of 
+Fusion models that have been trained, through the <a href="../../../getting_started/">QuickStart Guide</a> or <a href="../training/">Training Fusion</a>. This page will focus only on the validation of Fusion models.</p>
 <div style="text-align: center;">
     <iframe width="560" height="315" src="https://www.youtube.com/embed/oKh4k0CCLmU?si=8TCl_tlUZptoxpPM" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 </div>
@@ -2360,86 +2544,81 @@
 <p class="admonition-title">Note</p>
 <p>Checkout our video tutorial above as part of the <a href="https://youtube.com/playlist?list=PLtgoOooyxY45Kl6pztdm4una-tHUjuIXz&amp;si=DAmpo-gTvaSNktjw">EdgeFirst Studio Series</a> to showcase the steps for running Fusion validation in DVE. Otherwise, follow the steps below.</p>
 </div>
-<ol>
-<li>
+<h2 id="select-the-validator-tool">Select the Validator Tool</h2>
 <p>Select <em>Validator</em> from the tool options.</p>
-<p><figure markdown="span">
+<figure>
 <img align="center" alt="Validator Tool" src="../../assets/validation/validator-tool.jpg" />
 <figcaption>Tool Options</figcaption>
-</figure></p>
-</li>
-<li>
+</figure>
+<h2 id="specify-the-project">Specify the Project</h2>
 <p>Specify the project to run validation at the center of the top menu bar.</p>
-<p><figure markdown="span">
+<figure>
 <img align="center" alt="Project Selection" src="../../assets/validation/validator-project-selection.jpg" />
 <figcaption>Project Selection</figcaption>
-</figure></p>
-</li>
-<li>
+</figure>
+<h2 id="create-validation-session">Create Validation Session</h2>
 <p>Create a new validation session by clicking the <em>create</em> button on the top right of the page.</p>
-<p><figure markdown="span">
+<figure>
 <img align="center" alt="Create New Session" src="../../assets/validation/create-button.jpg" />
 <figcaption>Create New Session</figcaption>
-</figure></p>
-</li>
-<li>
-<p>Configure the settings on the left panel by specifying the name of the validation session, the model file to validate, and the dataset to deploy. Next configure the settings on the right panel by specifying the validation parameters. </p>
+</figure>
+<p>Configure the settings on the left panel by specifying the name of the validation session, 
+the model file to validate, and the dataset to deploy. Next configure the settings on the 
+right panel by specifying the validation parameters. </p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>Additional information on these parameters are provided by hovering over the info button.
 The only augmentation available for this type of validation is <code>blur</code>. See <a href="../../augmentations/">Vision Augmentations</a> for further details.</p>
 </div>
-<p><figure markdown="span">
+<figure>
 <img align="center" alt="Validation Options" src="../../assets/validation/fusion-validation-options.jpg" />
 <figcaption>Validation Options</figcaption>
-</figure></p>
-</li>
-<li>
+</figure>
+<h2 id="start-the-session">Start the Session</h2>
 <p>Start the session by clicking the <em>START SESSION</em> button on the bottom right.</p>
-<p><figure markdown="span">
+<figure>
 <img align="center" alt="Start Session" src="../../assets/validation/start-session.jpg" />
 <figcaption>Start the Session</figcaption>
-</figure></p>
-</li>
-<li>
-<p>The validation session has now started while the progress is tracked on the left panel and additional information and status is shown on the right panel.  </p>
-<p><figure markdown="span">
+</figure>
+<h2 id="session-progress">Session Progress</h2>
+<p>The validation session has now started while the progress is tracked on the left panel 
+and additional information and status is shown on the right panel.  </p>
+<figure>
 <img align="center" alt="Validation Session" src="../../assets/validation/fusion-validation-session.jpg" />
 <figcaption>Validation Session</figcaption>
-</figure></p>
-</li>
-<li>
+</figure>
+<h2 id="completed-session">Completed Session</h2>
 <p>Once completed, the status will be shown as complete.</p>
-<p><figure markdown="span">
+<figure>
 <img align="center" alt="Completed Session" src="../../assets/validation/fusion-completed-session.jpg" />
 <figcaption>Completed Session</figcaption>
-</figure></p>
-</li>
-<li>
+</figure>
+<h2 id="validation-metrics">Validation Metrics</h2>
 <p>The metrics are shown by clicking the plots button on the top left of the session card.</p>
-<p><figure markdown="span">
+<figure>
 <img align="center" alt="Validation Metrics" src="../../assets/validation/fusion-validation-metrics.jpg" />
 <figcaption>Validation Metrics</figcaption>
-</figure></p>
-<p>The metrics provides the precision, recall, F1, and IoU scores of the model at the specified window sizes. Additional charts are provided for the precision vs. recall and bird’s eye view heatmaps describing where the model performs well and where the model makes errors. </p>
+</figure>
+<p>The metrics provides the precision, recall, F1, and IoU scores of the model at the specified window sizes. Additional charts are provided for the precision vs. recall and bird’s eye view 
+heatmaps describing where the model performs well and where the model makes errors. </p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>See <a href="../../metrics/">Metrics</a> for further details.</p>
 </div>
-</li>
-<li>
-<p>It is also possible to compare validation metrics for multiple sessions. This is done by checking the checkboxes on the top left of the session cards.</p>
-<p><figure markdown="span">
+<h2 id="comparing-metrics">Comparing Metrics</h2>
+<p>It is also possible to compare validation metrics for multiple sessions. 
+This is done by checking the checkboxes on the top left of the session cards.</p>
+<figure>
 <img align="center" alt="Comparing Sessions" src="../../assets/validation/fusion-selecting-sessions.jpg" />
 <figcaption>Comparing Sessions</figcaption>
-</figure></p>
-<p>Compare the validation sessions by clicking the <em>COMPARE VALIDATE SESSION</em> button on the top left. This will display the validation metrics side by side for the specified validation sessions.</p>
-<p><figure markdown="span">
+</figure>
+<p>Compare the validation sessions by clicking the <em>COMPARE VALIDATE SESSION</em> button 
+on the top left. This will display the validation metrics side by side for the 
+specified validation sessions.</p>
+<figure>
 <img align="center" alt="Metrics Side-by-Side" src="../../assets/validation/fusion-metrics-side-by-side.jpg" />
 <figcaption>Metrics Side-by-Side</figcaption>
-</figure></p>
-</li>
-</ol>
+</figure>
 
 
 

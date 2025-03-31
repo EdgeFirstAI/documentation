@@ -18,35 +18,78 @@ cloud tools.
 
 Start by creating your [EdgeFirst Studio Account](https://dveml.com/#/login?initialMode=new-user).
 
+Enter the required fields denoted by the asterisk (*) and then create your account once completed.
+
+<figure markdown="span">
+![Create a New Account](assets/signup-page.jpg){ align=center }
+<figcaption>Create a New Account</figcaption>
+</figure>
+
+Next an email will be sent to you to verify the email you provided. Go ahead and click the link provided to verify your email.
+
+<figure markdown="span">
+![Email Verification](assets/email-verification.jpg){ align=center }
+<figcaption>Email Verification</figcaption>
+</figure>
+
+### 2. Getting Started with Deep View Enterprise (DVE)
+
+The following figure provides a general overview of DVE's layout. 
+
+<figure markdown="span">
+![DVE Navigation](../enterprise/navigation/image.png){ align=center }
+<figcaption>DVE Navigation</figcaption>
+</figure>
+
+Please see the overview of [Navigation in Enterprise](../enterprise/navigation/nav.md) for more details.
+
 ### 2. Create a project
 
+Using the account you just created, sign in to DVE. 
 Once you're logged in, create your first project. Provide a name and description of the project 
 that reflects your goals. 
 
 <figure markdown="span">
-![Create a New Project](../assets/getting_started/new_project.jpg){ align=center }
+![Create a New Project](assets/new_project.jpg){ align=center }
 <figcaption>Create a New Project</figcaption>
 </figure>
 
-### 3. Try our dataset
+### 3. Explore dataset
 
-### 4. Train a model
+Try our sample Raivin dataset for training a Fusion Model.
 
-### 5. Validate the model
+<figure markdown="span">
+![Raivin Dataset](assets/raivin-ultra-short.jpg){ align=center }
+<figcaption>Raivin Dataset</figcaption>
+</figure>
 
-### 6. Deploy the model
+Please see the overview of the [Datasets Dashboard](../datasets/index.md) for more details regarding the 
+dataset attributes in DVE.
 
-## Create Your Own Experiment
+### 4. Train model
 
-### 1. Record your dataset
+The following training session is a completed session from training a Fusion model
+from the dataset provided. 
 
-### 2. Label your dataset
+<figure markdown="span">
+![Sample Training Session](assets/training-session.jpg){ align=center }
+<figcaption>Sample Training Session</figcaption>
+</figure>
 
-### 3. Combine your dataset
+For more details regarding deploying training sessions, please see 
+[Training Modelpack](../models/modelpack/training.md) for training Vision models and 
+[Training Fusion](../models/fusion/training.md) for training Fusion models.
 
-### 4. Train your model
+### 5. Validate model
 
-### 5. Validate your model
+The following validation session is a completed session from validating a Fusion model
+from the dataset provided.
 
-### 6. Deploy your model
+<figure markdown="span">
+![Sample Validation Session](assets/validation-session.jpg){ align=center }
+<figcaption>Sample Validation Session</figcaption>
+</figure>
 
+For more details regarding deploying validation sessions, please see 
+[Validating Modelpack](../models/modelpack/validation.md) for validating Vision models and 
+[Validating Fusion](../models/fusion/validation.md) for validating Fusion models.

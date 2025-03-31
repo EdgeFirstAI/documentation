@@ -37,8 +37,12 @@ nav:
       - modules/publishing.md
       - modules/foxglove.md
       - modules/advanced_foxglove.md
+    - middleware/studio.md
     - middleware/topics.md
     - middleware/custom.md
+    - Developer Guide:
+      - middleware/dev.md
+      - middleware/dev/python.md      
     - API Reference:
       - middleware/api.md
       - middleware/api/edgefirst_msgs.md
@@ -48,7 +52,7 @@ nav:
       - middleware/api/sensor_msgs.md
       - middleware/api/std_msgs.md
       - middleware/api/builtin_interfaces.md
-    - middleware/python_examples.md
+      - middleware/api/studio.md    
   - Modules:
     - modules/index.md
     - Introduction:

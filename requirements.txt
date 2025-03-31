@@ -1,7 +1,8 @@
+edgefirst-client
 edgefirst-schemas
-mkdocs-material
-mkdocs-awesome-nav
-mkdocs-autorefs
-mkdocstrings-python
 mike
+mkdocs-autorefs
+mkdocs-awesome-nav
+mkdocs-material
 mkdocs-redirects
+mkdocstrings-python

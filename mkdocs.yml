@@ -34,9 +34,8 @@ theme:
       primary: indigo
       accent: amber
   features:
-    # - navigation.instant
-    - navigation.instant.prefetch
-    - navigation.instant.progress
+    - content.code.copy
+    - content.tabs.link
     - navigation.tracking
     - navigation.tabs
     - navigation.tabs.sticky
@@ -71,21 +70,23 @@ plugins:
         'models/modelpack/index.md': 'models/modelpack/training.md'
 
 markdown_extensions:
-  - md_in_html
-  - attr_list
+  - admonition  
+  - attr_list 
+  - md_in_html   
+  - pymdownx.arithmatex:
+      generic: true
   - pymdownx.blocks.caption
-  - admonition
-  - pymdownx.details
+  - pymdownx.details  
   - pymdownx.superfences:
       custom_fences:
         - name: mermaid
           class: mermaid
           format: !!python/name:pymdownx.superfences.fence_code_format
-  - pymdownx.arithmatex:
-      generic: true
+  - pymdownx.tabbed:
+      alternate_style: true  
 
 extra_javascript:
-  - https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js
+  - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
 
 extra:
   version:
@@ -101,3 +102,4 @@ extra:
 copyright: >
   Copyright &copy; 2025 Au-Zone Technologies &mdash;
   <a href="#__consent">Privacy Settings</a>
+  

@@ -12,7 +12,7 @@ cloud tools.
 
 ## Quickstart
 
-### 1. Sign up
+### 1. Sign Up
 
 Start by creating your [EdgeFirst Studio Account](https://dveml.com/#/login?initialMode=new-user).
 
@@ -41,7 +41,7 @@ The following figure provides a general overview of DVE's layout.
 
 Please see the overview of [Navigation in Enterprise](../enterprise/navigation/nav.md) for more details.
 
-### 3. Create a project
+### 3. Create a Project
 
 Using the account you just created, sign in to DVE. 
 Once you're logged in, create your first project. Provide a name and description of the project 
@@ -52,7 +52,7 @@ that reflects your goals.
 <figcaption>Create a New Project</figcaption>
 </figure>
 
-### 4. Explore dataset
+### 4. Explore Dataset
 
 Try our sample Raivin dataset for training a Fusion Model.
 
@@ -69,7 +69,7 @@ Try our sample Raivin dataset for training a Fusion Model.
 Please see the overview of the [Datasets Dashboard](../datasets/index.md) for more details regarding the 
 dataset attributes in DVE.
 
-### 5. Train model
+### 5. Train Model
 
 The following training session is a completed session from training a Fusion model
 from the dataset provided. 
@@ -88,7 +88,7 @@ For more details regarding deploying training sessions, please see
 [Training Modelpack](../models/modelpack/training.md) for training Vision models and 
 [Training Fusion](../models/fusion/training.md) for training Fusion models.
 
-### 6. Validate model
+### 6. Validate Model
 
 The following validation session is a completed session from validating a Fusion model
 from the dataset provided.

@@ -10,11 +10,9 @@ If you have recently received one of these EdgeFirst Modules you may want to fir
 the EdgeFirst Modules Quickstart then come back once you're ready to get started with the
 cloud tools.
 
-
-
 ## Quickstart
 
-### 1. Sign up
+### 1. Sign Up
 
 Start by creating your [EdgeFirst Studio Account](https://dveml.com/#/login?initialMode=new-user).
 
@@ -43,7 +41,7 @@ The following figure provides a general overview of DVE's layout.
 
 Please see the overview of [Navigation in Enterprise](../enterprise/navigation/nav.md) for more details.
 
-### 2. Create a project
+### 3. Create a Project
 
 Using the account you just created, sign in to DVE. 
 Once you're logged in, create your first project. Provide a name and description of the project 
@@ -54,7 +52,7 @@ that reflects your goals.
 <figcaption>Create a New Project</figcaption>
 </figure>
 
-### 3. Explore dataset
+### 4. Explore Dataset
 
 Try our sample Raivin dataset for training a Fusion Model.
 
@@ -63,10 +61,15 @@ Try our sample Raivin dataset for training a Fusion Model.
 <figcaption>Raivin Dataset</figcaption>
 </figure>
 
+<figure markdown="span">
+![Dataset Fields](../assets/datasets/image-1.png){ align=center }
+<figcaption>Dataset Fields</figcaption>
+</figure>
+
 Please see the overview of the [Datasets Dashboard](../datasets/index.md) for more details regarding the 
 dataset attributes in DVE.
 
-### 4. Train model
+### 5. Train Model
 
 The following training session is a completed session from training a Fusion model
 from the dataset provided. 
@@ -76,11 +79,16 @@ from the dataset provided.
 <figcaption>Sample Training Session</figcaption>
 </figure>
 
+<figure markdown="span">
+![Training Session Fields](assets/training-session-fields.jpg){ align=center }
+<figcaption>Training Session Fields</figcaption>
+</figure>
+
 For more details regarding deploying training sessions, please see 
 [Training Modelpack](../models/modelpack/training.md) for training Vision models and 
 [Training Fusion](../models/fusion/training.md) for training Fusion models.
 
-### 5. Validate model
+### 6. Validate Model
 
 The following validation session is a completed session from validating a Fusion model
 from the dataset provided.
@@ -88,6 +96,11 @@ from the dataset provided.
 <figure markdown="span">
 ![Sample Validation Session](assets/validation-session.jpg){ align=center }
 <figcaption>Sample Validation Session</figcaption>
+</figure>
+
+<figure markdown="span">
+![Validation Session Fields](assets/validation-session-fields.jpg){ align=center }
+<figcaption>Validation Session Fields</figcaption>
 </figure>
 
 For more details regarding deploying validation sessions, please see 

@@ -2,6 +2,13 @@
 
 This page will provide a walk-through on using DVE for validating the performance of Fusion models that have been trained, through the [QuickStart Guide](../../getting_started/index.md) or [Training Fusion](training.md). This page will focus only on the validation of Fusion models.
 
+<div style="text-align: center;">
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/oKh4k0CCLmU?si=8TCl_tlUZptoxpPM" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+</div>
+
+!!! note 
+    Checkout our video tutorial above as part of the [EdgeFirst Studio Series](https://youtube.com/playlist?list=PLtgoOooyxY45Kl6pztdm4una-tHUjuIXz&si=DAmpo-gTvaSNktjw) to showcase the steps for running Fusion validation in DVE. Otherwise, follow the steps below.
+
 1. Select *Validator* from the tool options.
 
     <figure markdown="span">

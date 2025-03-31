@@ -32,18 +32,20 @@ Next an email will be sent to you to verify the email you provided. Go ahead and
 <figcaption>Email Verification</figcaption>
 </figure>
 
-### 2. Become Familiar with Deep View Enterprise
+### 2. Getting Started with Deep View Enterprise (DVE)
+
+The following figure provides a general overview of DVE's layout. 
 
 <figure markdown="span">
-![Deep View Enterprise Navigation](../enterprise/navigation/image.png){ align=center }
-<figcaption>Deep View Enterprise Navigation</figcaption>
+![DVE Navigation](../enterprise/navigation/image.png){ align=center }
+<figcaption>DVE Navigation</figcaption>
 </figure>
 
 Please see the overview of [Navigation in Enterprise](../enterprise/navigation/nav.md) for more details.
 
 ### 2. Create a project
 
-Using the account you just created sign in to Deep View Enterprise. 
+Using the account you just created, sign in to DVE. 
 Once you're logged in, create your first project. Provide a name and description of the project 
 that reflects your goals. 
 
@@ -62,7 +64,7 @@ Try our sample Raivin dataset for training a Fusion Model.
 </figure>
 
 Please see the overview of the [Datasets Dashboard](../datasets/index.md) for more details regarding the 
-dataset attributes in Deep View Enterprise.
+dataset attributes in DVE.
 
 ### 4. Train model
 
@@ -76,7 +78,7 @@ from the dataset provided.
 
 For more details regarding deploying training sessions, please see 
 [Training Modelpack](../models/modelpack/training.md) for training Vision models and 
-[Training Fusion](../models/fusion/training.md) for training Fusion models
+[Training Fusion](../models/fusion/training.md) for training Fusion models.
 
 ### 5. Validate model
 
@@ -90,4 +92,4 @@ from the dataset provided.
 
 For more details regarding deploying validation sessions, please see 
 [Validating Modelpack](../models/modelpack/validation.md) for validating Vision models and 
-[Validating Fusion](../models/fusion/validation.md) for validating Fusion models
+[Validating Fusion](../models/fusion/validation.md) for validating Fusion models.

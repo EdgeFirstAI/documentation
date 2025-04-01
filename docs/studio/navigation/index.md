@@ -2,11 +2,11 @@
 
 Navigating  to different functionalities in the DVE portal is facilitated through the top navigation bar
 
-![alt text](image.png)
+![alt text](assets/image.png)
 
 ## Apps Menu
 
-![alt text](image-1.png)
+![alt text](assets/image-1.png)
 
 ### Projects
 Click on Projects to go to the projects dashboard. This operation is same a click on teh Au-Zone Icon.
@@ -46,11 +46,11 @@ This link provides information about general alerts (if present)
 
 This submenu provided teh ability to go to the hep pages, submit feedback, view release notes, download image downloader tool and also look at the currently deployed version. 
 
-![alt text](image-2.png)
+![alt text](assets/image-2.png)
 
 ## User and Organization Management
 
-![alt text](image-3.png)
+![alt text](assets/image-3.png)
 
 This menu has teh following options:
 

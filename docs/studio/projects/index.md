@@ -1,6 +1,6 @@
 # Project Dashboard
 
-![](./dashbaord.png)
+![](assets/dashbaord.png)
 
 Organize data into logical projects partitions
 
@@ -10,7 +10,7 @@ Organize data into logical projects partitions
 2. Enter project name and description
 2. Click Create 
 
-![](./create.png)
+![](assets/create.png)
 
 
 ## Delete Project
@@ -30,4 +30,4 @@ Organize data into logical projects partitions
 
 Project access control allows projects resources to be selectively available to different users. 
 
-For more information pease visit [Access Control](../../start/access/access.md)
+For more information pease visit [Access Control](../access/index.md)

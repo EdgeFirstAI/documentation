@@ -10,11 +10,11 @@ The admin user can add other users with different permissions.
 ## User Management
 To manage users, click on the user icon and select User Profile:
 
-![alt text](image.png)
+![alt text](assets/image.png)
 
 This opens the user management panel:
 
-![alt text](image-1.png)
+![alt text](assets/image-1.png)
 
 The account setting is used to see user information and permissions. 
 
@@ -73,7 +73,7 @@ There are two levels of access:
 
 There are three categories of access control
 
-![](access.png)
+![](assets/access.png)
 
 ### Default Sharing
 All the resources in the project are viewable and editable to all members of the organization 

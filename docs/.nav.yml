@@ -1,73 +1,68 @@
 nav:
   - Home: index.md
   - Getting Started:
-    - getting_started/index.md
-    - getting_started/dataset.md
-    - getting_started/models.md
-    - getting_started/modules.md
+      - getting_started/index.md
+      - getting_started/dataset.md
+      - getting_started/models.md
+      - getting_started/modules.md
   - Enterprise:
-    - enterprise/index.md
-    - enterprise/navigation/nav.md
-    - enterprise/access/access.md
-    - enterprise/agtg/agtg.md
+      - enterprise/index.md
+      - enterprise/navigation/nav.md
+      - enterprise/access/access.md
+      - enterprise/agtg/agtg.md
   - Datasets:
-    - datasets/index.md
-    - datasets/snapshots/ss.md
-    - datasets/tutorials.md
-    - datasets/zoo.md
-    - datasets/format.md
-    - datasets/dataio/in.md
+      - datasets/index.md
+      - datasets/snapshots/ss.md
+      - datasets/tutorials.md
+      - datasets/zoo.md
+      - datasets/format.md
+      - datasets/dataio/in.md
   - Models:
-    - models/index.md
-    - Modelpack:
-      - models/modelpack/index.md
-      - models/modelpack/training.md
-      - models/modelpack/validation.md
-    - Fusion:
-      - models/fusion/index.md
-      - models/fusion/training.md
-      - models/fusion/validation.md
-    - models/augmentations.md
-    - models/metrics.md
+      - models/index.md
+      - Modelpack:
+          - models/modelpack/index.md
+          - models/modelpack/training.md
+          - models/modelpack/validation.md
+      - Fusion:
+          - models/fusion/index.md
+          - models/fusion/training.md
+          - models/fusion/validation.md
+      - models/augmentations.md
+      - models/metrics.md
   - Middleware:
-    - middleware/index.md
-    - Dataset Collection Middleware:
-      - modules/recording.md
-      - modules/replay.md
-      - modules/publishing.md
-      - modules/foxglove.md
-      - modules/advanced_foxglove.md
-    - middleware/studio.md
-    - middleware/topics.md
-    - middleware/custom.md
-    - Developer Guide:
-      - middleware/dev.md
-      - middleware/dev/python.md      
-    - API Reference:
-      - middleware/api.md
-      - middleware/api/edgefirst_msgs.md
-      - middleware/api/foxglove_msgs.md
-      - middleware/api/geometry_msgs.md
-      - middleware/api/nav_msgs.md
-      - middleware/api/sensor_msgs.md
-      - middleware/api/std_msgs.md
-      - middleware/api/builtin_interfaces.md
-      - middleware/api/studio.md    
+      - middleware/index.md
+      - Dataset Collection Middleware:
+          - modules/recording.md
+          - modules/replay.md
+          - modules/publishing.md
+          - modules/foxglove.md
+          - modules/advanced_foxglove.md
+      - middleware/studio.md
+      - middleware/topics.md
+      - middleware/custom.md
+      - Developer Guide:
+          - middleware/dev.md
+          - middleware/dev/python.md
+      - API Reference:
+          - middleware/api.md
+          - middleware/api/edgefirst_msgs.md
+          - middleware/api/foxglove_msgs.md
+          - middleware/api/geometry_msgs.md
+          - middleware/api/nav_msgs.md
+          - middleware/api/sensor_msgs.md
+          - middleware/api/std_msgs.md
+          - middleware/api/builtin_interfaces.md
+          - middleware/api/studio.md
   - Modules:
-    - modules/index.md
-    - Introduction:
+      - modules/index.md
       - modules/quickstart.md
-      - modules/walkthrough.md
-    - Hardware and OS:
-      - modules/hardware.md
-      - modules/radar.md
-      - modules/fusion.md
-      - modules/perception.md
+      - modules/walkthrough.md      
+      - modules/configuration.md
       - modules/architecture.md
       - modules/networking.md
       - modules/ssh.md
-    - Software:
-      - modules/configuration.md
+      - modules/hardware.md
+      - modules/radar.md
       - modules/troubleshooting.md
       - modules/issues.md
       - modules/release_notes.md

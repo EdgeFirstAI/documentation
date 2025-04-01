@@ -51,11 +51,11 @@ Next become familiar with the EdgeFirst Studio workspace.
 The following figure provides a general overview of DVE's layout. 
 
 <figure markdown="span">
-![DVE Navigation](../enterprise/navigation/image.png){ align=center }
+![DVE Navigation](../studio/navigation/assets/image.png){ align=center }
 <figcaption>DVE Navigation</figcaption>
 </figure>
 
-Please see the overview of [Navigation in Enterprise](../enterprise/navigation/nav.md) for more details.
+Please see the overview of [Navigation in Enterprise](../studio/navigation/index.md) for more details.
 
 ### 3. Create a Project
 
@@ -78,7 +78,7 @@ Try our sample Raivin dataset for training a Fusion Model.
 </figure>
 
 <figure markdown="span">
-![Dataset Fields](../assets/datasets/image-1.png){ align=center }
+![Dataset Fields](../datasets/assets/dataset-fields.png){ align=center }
 <figcaption>Dataset Fields</figcaption>
 </figure>
 

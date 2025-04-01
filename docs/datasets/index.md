@@ -6,11 +6,11 @@ Overview of EdgeFirst Studio Dataset workflow and pre-packaged datasets.
 Dataset dashboard show a list of datasets in a project 
 with a summary of datasets in each card of dataset.
 
-![alt text](../assets/datasets/image.png)
+![alt text](assets/dataset-dashboard.png)
  
 An explanation of information in the dataset card is shown below:
 
-![alt text](../assets/datasets/image-1.png)
+![alt text](assets/dataset-fields.png)
 
 ## Annotation Sets
 
@@ -25,7 +25,7 @@ Each dataset can have  multiple annotations sets. Each annotation set contains a
 
 Click on labels (i) icon to open the dialog to edit labels
 
-![alt text](../assets/datasets/image-2.png)
+![alt text](assets/edit-label.png)
 
 The edit dialog allows to:
 
@@ -43,7 +43,7 @@ The edit dialog allows to:
 - Click on the groups (+) icon to add groups
 - Multiple groups can be added at one time
 
-![alt text](../assets/datasets/image-3.png)
+![alt text](assets/assign-groups.png)
 
 The above image show a dialog to add two groups by the name AA abd BB and randomly add 70% and 30% images to each
 
@@ -51,7 +51,7 @@ The above image show a dialog to add two groups by the name AA abd BB and random
 
 Click on the three dots on Dataset card to open the extended menu
 
-![alt text](../assets/datasets/image-4.png)
+![alt text](assets/dataset-menus.png)
 
 ### Pause Activities
 Pause or resume upload activities on this dataset
@@ -62,7 +62,7 @@ Change Name or Description of the dataset
 ### Manage Access
 Dataset access control allows dataset resources to be selectively available to different users. 
 
-For more information pease visit [Access Control](../../start/access/access.md)
+For more information pease visit [Access Control](../studio/access/index.md)
 
 ### Copy Dataset
 
@@ -71,14 +71,14 @@ To copy datasets proceed as follows:
 1. Open teh dataset extended menu
 2. Select Copy dataset
 
-![alt text](../assets/datasets/image-5.png)
+![alt text](assets/copy-datasets.png)
 
 3. Select the source project (datasets from other projects can be copied into currently selected project)
 4. Select the source dataset
 5. Select a groups to copy (or all groups)  
 6. Select source annotation set - of none is selected then annotations will not be copied
 7. Optional select 'Copy Annotations for Duplicate Images'. Normally images with same names are not copied to avoid image duplications. In this case the annotations of duplication images are also not copied. This option (in selected) copy annotations even if the image is duplicated. This is useful if tow datasets have same images but only annotations are required to be copied form one dataset to another
-8. Select filters if required. Please refer to [Gallery Filters](../Gallery/gallery.md) for more information.
+8. Select filters if required. Please refer to [Gallery Filters](../studio/datasets/gallery.md) for more information.
 9. Select the destination dataset(s). Please note that multiple destination datasets can be selected to spit the source dataset images into multiple datasets.
 10. Finally select percentage of teh images to be copied. If less that 100% of the images are selected then random subset of the images will be copied.  
 
@@ -86,7 +86,7 @@ To copy datasets proceed as follows:
 
 There are several import types available:
 
-![alt text](../assets/datasets/image-6.png)
+![alt text](assets/import-dataset.png)
 
 Select the import type. Most common import is the darknet format.
 
@@ -97,7 +97,7 @@ Select the import type. Most common import is the darknet format.
 5. Click START IMPORT
 6. Import will start in the background and teh status is show in the task progress bar
 
-![alt text](../assets/datasets/image-7.png)
+![alt text](assets/import-taskbar.png)
 
 7. NOTE: Although the import process is running in the background, closing the web browser or the DVE tab will kill the import. Moving to other pages on DVE is still fine.
 
@@ -106,7 +106,7 @@ Select the import type. Most common import is the darknet format.
 
 Export Dataset downloads the data from DVE to local folder on PC
 
-![alt text](../assets/datasets/image-8.png)
+![alt text](assets/export-dataset.png)
 
 1. Select dataset type : detection (bounding box) or Segmentation (Polygons) 
 2. Select Export format
@@ -121,7 +121,7 @@ Export Dataset downloads the data from DVE to local folder on PC
 
 Click on Analytics to see information about the dataset:
 
-![alt text](../assets/datasets/image-9.png)
+![alt text](assets/dataset-analytics.png)
 
 ### View on Map
 
@@ -132,17 +132,17 @@ When importing a dataset, the GPS location can be imported as following two ways
 
 If GPS location is present, then the annotation can be view on teh map by using the View on Map option.
 
-![alt text](../assets/datasets/image-10.png)
+![alt text](assets/dataset-maps.png)
 
 ### Generate API Token
 
 API Token is used for Bridge In and Bridge out API. To generate the API.  The API has encrypted Java Web Token (JWT) with embefded information about dataset and annotation set.
 
-![alt text](../assets/datasets/image-11.png)
+![alt text](assets/api-token.png)
 
 Select Dataset and Annotation set and Click GENERATE 
 
-![alt text](../assets/datasets/image-12.png)
+![alt text](assets/generated-api-token.png)
 
 Copy the API Token in green and use it for Bridge In or Bridge out API
 
@@ -155,7 +155,7 @@ Datasets that are not used often can be parked. The advantages of Parking a data
 
 Data set can be un-parked at any time for normal usage.
 
-![alt text](../assets/datasets/image-13.png)
+![alt text](assets/park-dataset.png)
 
 ### Remove Dataset
 

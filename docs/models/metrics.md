@@ -121,7 +121,7 @@ The Fusion validation sessions reports the metrics for precision, recall, F1-sco
   <figcaption>Base Metrics</figcaption>
 </figure>
 
-By default, these metrics are calculated based on the kernel sizes 1x1 and 3x3 which can be configured when starting a new session (*See step 4. in [Radar Validation](fusion.md)*). The kernel size is the window size setting where a kernel size of 1x1 indicates a 1-to-1 match between the ground truth and the model occupancy grid. A prediction can only be correct in a 1x1 kernel if the position of the prediction is in the same position as the ground truth. However, increasing the kernel size is more lenient by allowing predictions to be correct if their positions are within 3 meters away (3x3 kernel) from the ground truth. 
+By default, these metrics are calculated based on the kernel sizes 1x1 and 3x3 which can be configured when starting a new session (*See [Radar Validation](fusion/training.md#create-training-session)*). The kernel size is the window size setting where a kernel size of 1x1 indicates a 1-to-1 match between the ground truth and the model occupancy grid. A prediction can only be correct in a 1x1 kernel if the position of the prediction is in the same position as the ground truth. However, increasing the kernel size is more lenient by allowing predictions to be correct if their positions are within 3 meters away (3x3 kernel) from the ground truth. 
 
 The metrics and their equations are described below.
 

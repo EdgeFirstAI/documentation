@@ -106,7 +106,7 @@ To create IMU sensor plots:
 4. Choose desired parameters (e.g, angular_velocity, x, y, z)
 5. Repeat to add additional plot series as needed  
    ![IMU](static/imu.png){align=center}
-   ![static/imu_to_plot.png](IMU to plot){align=center}
+   ![IMU to plot](static/imu_to_plot.png){align=center}
    ![plot](static/plot.png){align=center}
    ![IMU message](static/imu_msg.png){align=center}
    ![IMU velocity](static/imu_velocity.png){align=center}

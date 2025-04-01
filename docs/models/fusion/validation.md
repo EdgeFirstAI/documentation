@@ -4,13 +4,17 @@ This page will provide a walk-through on using DVE for validating the performanc
 Fusion models that have been trained, through the [QuickStart Guide](../../getting_started/index.md) or [Training Fusion](training.md). This page will focus only on the validation of Fusion models.
 
 <div style="text-align: center;">
-    <iframe width="560" height="315" src="https://www.youtube.com/embed/oKh4k0CCLmU?si=8TCl_tlUZptoxpPM" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/oKh4k0CCLmU" title="Fusion Validation Workflow" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 </div>
 
 !!! note 
-    Checkout our video tutorial above as part of the [EdgeFirst Studio Series](https://youtube.com/playlist?list=PLtgoOooyxY45Kl6pztdm4una-tHUjuIXz&si=DAmpo-gTvaSNktjw) to showcase the steps for running Fusion validation in DVE. Otherwise, follow the steps below.
+    Checkout our video tutorial above as part of the [EdgeFirst Studio Series](https://youtube.com/playlist?list=PLtgoOooyxY45Kl6pztdm4una-tHUjuIXz&si=DAmpo-gTvaSNktjw) to showcase the steps for running Fusion validation in DVE. Otherwise, follow the steps below with section specific timestamps of the video.
 
 ## Select the Validator Tool
+
+<div style="text-align: center;">
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/oKh4k0CCLmU?start=106&end=117" title="EdgeFirst Fusion Validator" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+</div>
 
 Select *Validator* from the tool options.
 
@@ -30,6 +34,10 @@ Specify the project to run validation at the center of the top menu bar.
 
 ## Create Validation Session
 
+<div style="text-align: center;">
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/oKh4k0CCLmU?start=117&end=278" title="Validation Session" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+</div>
+
 Create a new validation session by clicking the *create* button on the top right of the page.
 
 <figure markdown="span">
@@ -43,7 +51,7 @@ right panel by specifying the validation parameters.
 
 !!! note
     Additional information on these parameters are provided by hovering over the info button.
-    The only augmentation available for this type of validation is `blur`. See [Vision Augmentations](../augmentations.md) for further details.
+    The only augmentation available for this type of validation is `blur`. See [Vision Augmentations](../augmentations.md#blur) for further details.
 
 <figure markdown="span">
 ![Validation Options](../assets/validation/fusion-validation-options.jpg){ align=center }
@@ -69,6 +77,11 @@ and additional information and status is shown on the right panel.
 <figcaption>Validation Session</figcaption>
 </figure>
 
+<figure markdown="span">
+![Validation Session Fields](../assets/validation/validation-session-fields.jpg){ align=center }
+<figcaption>Validation Session Fields</figcaption>
+</figure>
+
 ## Completed Session
 
 Once completed, the status will be shown as complete.
@@ -80,7 +93,11 @@ Once completed, the status will be shown as complete.
 
 ## Validation Metrics
 
-The metrics are shown by clicking the plots button on the top left of the session card.
+<div style="text-align: center;">
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/oKh4k0CCLmU?start=440&end=655" title="Validation Summary Metrics" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+</div>
+
+The metrics are shown by clicking the button that views the validation charts on the top left of the session card.
 
 <figure markdown="span">
 ![Validation Metrics](../assets/validation/fusion-validation-metrics.jpg){ align=center }
@@ -91,9 +108,13 @@ The metrics provides the precision, recall, F1, and IoU scores of the model at t
 heatmaps describing where the model performs well and where the model makes errors. 
 
 !!! note
-    See [Metrics](../metrics.md) for further details.
+    See [Validation Metrics](../metrics.md#fusion) for further details.
 
 ## Comparing Metrics
+
+<div style="text-align: center;">
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/oKh4k0CCLmU?start=713&end=975" title="Comparing Validation Metrics" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+</div>
 
 It is also possible to compare validation metrics for multiple sessions. 
 This is done by checking the checkboxes on the top left of the session cards.

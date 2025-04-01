@@ -113,6 +113,20 @@ left panel and additional information and status is shown on the right panel.
 <figcaption>Training Session</figcaption>
 </figure>
 
+<figure markdown="span">
+![Training Session Fields](../assets/training/training-session-fields.jpg){ align=center }
+<figcaption>Training Session Fields</figcaption>
+</figure>
+
+## Training Metrics
+
+The training metrics are shown by clicking the button that views the training charts on the top left of the session card. 
+
+<figure markdown="span">
+![Training Metrics](../assets/training/modelpack-training-metrics.jpg){ align=center }
+<figcaption>Training Metrics</figcaption>
+</figure>
+
 ## Completed Session
 
 Once completed, the status will be shown as complete.
@@ -122,19 +136,10 @@ Once completed, the status will be shown as complete.
 <figcaption>Completed Session</figcaption>
 </figure>
 
-## Training Metrics
-
-The training metrics are shown by clicking the plots button on the top left of the session card. 
-
-<figure markdown="span">
-![Training Metrics](../assets/training/modelpack-training-metrics.jpg){ align=center }
-<figcaption>Training Metrics</figcaption>
-</figure>
-
 ## Trained Models 
 
-The trained Keras, TFLite, and RTM models can be found and downloaded by clicking on the maximize 
-button next to the plots button on the top right of the session card. 
+The trained Keras, TFLite, and RTM models can be found and downloaded by clicking on the 
+button that views the session details on the top right of the session card. 
 This will open a new dialog with the session details and the models are placed 
 on the top right which can then be downloaded.
 

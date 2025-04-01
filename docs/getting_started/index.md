@@ -80,7 +80,7 @@ from the dataset provided.
 </figure>
 
 <figure markdown="span">
-![Training Session Fields](assets/training-session-fields.jpg){ align=center }
+![Training Session Fields](../models/assets/training/training-session-fields.jpg){ align=center }
 <figcaption>Training Session Fields</figcaption>
 </figure>
 
@@ -99,7 +99,7 @@ from the dataset provided.
 </figure>
 
 <figure markdown="span">
-![Validation Session Fields](assets/validation-session-fields.jpg){ align=center }
+![Validation Session Fields](../models/assets/validation/validation-session-fields.jpg){ align=center }
 <figcaption>Validation Session Fields</figcaption>
 </figure>
 

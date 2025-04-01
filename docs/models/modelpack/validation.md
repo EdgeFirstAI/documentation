@@ -60,6 +60,11 @@ panel and additional information and status is shown on the right panel.
 <figcaption>Validation Session</figcaption>
 </figure>
 
+<figure markdown="span">
+![Validation Session Fields](../assets/validation/validation-session-fields.jpg){ align=center }
+<figcaption>Validation Session Fields</figcaption>
+</figure>
+
 ## Completed Session
 
 Once completed, the status will be shown as complete.
@@ -71,7 +76,7 @@ Once completed, the status will be shown as complete.
 
 ## Validation Metrics 
 
-The metrics are shown by clicking the plots button on the top left of the session card. 
+The metrics are shown by clicking the button that views the validation charts on the top left of the session card. 
 
 <figure markdown="span">
 ![Validation Metrics](../assets/validation/modelpack-validation-metrics.jpg){ align=center }
@@ -79,7 +84,7 @@ The metrics are shown by clicking the plots button on the top left of the sessio
 </figure>
 
 !!! note
-    See [Metrics](../metrics.md) for further details.
+    See [Validation Metrics](../metrics.md#modelpack) for further details.
 
 ## Comparing Metrics
 

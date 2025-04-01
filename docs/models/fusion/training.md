@@ -3,15 +3,21 @@
 This page will provide a walk-through on using DVE for training Fusion models.
 
 <div style="text-align: center;">
-    <iframe width="560" height="315" src="https://www.youtube.com/embed/Q8uiYJb1HJ4?si=B5Q7_3uxUSG6BWa_" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/Q8uiYJb1HJ4" title="Fusion Training Workflow" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 </div>
 
 !!! note 
-    Checkout our video tutorial above as part of the [EdgeFirst Studio Series](https://youtube.com/playlist?list=PLtgoOooyxY45Kl6pztdm4una-tHUjuIXz&si=DAmpo-gTvaSNktjw) to showcase the steps for running Fusion training in DVE. Otherwise, follow the steps below.
+    Checkout our full video tutorial above as part of the [EdgeFirst Studio Series](https://youtube.com/playlist?list=PLtgoOooyxY45Kl6pztdm4una-tHUjuIXz&si=DAmpo-gTvaSNktjw) to showcase the steps for running Fusion training in DVE. Otherwise, follow along the steps shown below with section specific timestamps of the video.
 
 ## Verify Dataset
 
-Before running a training session, ensure the dataset is ready to be used for training. This means that the dataset is properly annotated and the dataset is properly split with training and validation samples. The sample dataset shown below has a dedicated split for training (20066 samples) and validation (2229 samples).
+Before running a training session, ensure the dataset is ready to be used for training. This means that the dataset is properly annotated and the dataset is properly split with training and validation samples. 
+
+<div style="text-align: center;">
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/Q8uiYJb1HJ4?start=81&end=118" title="Indoor Dataset Overview" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+</div>
+
+The sample dataset shown below has a dedicated split for training (20066 samples) and validation (2229 samples).
 
 <figure markdown="span">
 ![Dataset Groups](../assets/training/fusion-dataset-groups.jpg){ align=center }
@@ -38,6 +44,10 @@ Clicking on any of these sequences will open individual images in the sequence w
 For cases where the annotations need corrections, please see [Dataset Tutorials](../../datasets/tutorials.md#manual-annotations) for more details.
 
 ## Select the Trainer Tool
+
+<div style="text-align: center;">
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/Q8uiYJb1HJ4?start=117&end=217" title="EdgeFirst Fusion Trainer" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+</div>
 
 Select *Trainer* from the tool options. 
 
@@ -75,6 +85,10 @@ the experiment. Give a name and a description that reflects your goals in this e
 
 ## Create Training Session
 
+<div style="text-align: center;">
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/Q8uiYJb1HJ4?start=217&end=863" title="Training Session" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+</div>
+
 Create a new training session within this experiment by clicking the *NEW SESSION* button as shown below.
 
 <figure markdown="span">
@@ -104,6 +118,10 @@ Start the session by clicking the *START SESSION* button on the bottom right.
 
 ## Session Progress
 
+<div style="text-align: center;">
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/Q8uiYJb1HJ4?start=863&end=1050" title="Training Started" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+</div>
+
 The training session has now started while the progress is tracked on the left 
 panel and additional information and status is shown on the right panel.
 
@@ -112,7 +130,29 @@ panel and additional information and status is shown on the right panel.
 <figcaption>Training Session</figcaption>
 </figure>
 
+<figure markdown="span">
+![Training Session Fields](../assets/training/training-session-fields.jpg){ align=center }
+<figcaption>Training Session Fields</figcaption>
+</figure>
+
+## Training Metrics
+
+<div style="text-align: center;">
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/Q8uiYJb1HJ4?start=1050&end=1355" title="Training Summary Metrics" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+</div>
+
+The training metrics are shown by clicking the button that views the training charts on the top left of the session card. 
+
+<figure markdown="span">
+![Training Metrics](../assets/training/fusion-training-metrics.jpg){ align=center }
+<figcaption>Training Metrics</figcaption>
+</figure>
+
 ## Completed Session
+
+<div style="text-align: center;">
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/Q8uiYJb1HJ4?start=1358&end=1529" title="Training Completed" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+</div>
 
 Once completed, the status will be shown as complete.
 
@@ -121,19 +161,14 @@ Once completed, the status will be shown as complete.
 <figcaption>Completed Session</figcaption>
 </figure>
 
-## Training Metrics
-
-The training metrics are shown by clicking the plots button on the top left of the session card. 
-
-<figure markdown="span">
-![Training Metrics](../assets/training/fusion-training-metrics.jpg){ align=center }
-<figcaption>Training Metrics</figcaption>
-</figure>
-
 ## Trained Models
 
+<div style="text-align: center;">
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/Q8uiYJb1HJ4?start=1530&end=1830" title="Downloading Model" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+</div>
+
 The trained Keras and TFLite models can be found and downloaded by clicking on the 
-maximize button next to the plots button on the top right of the session card. 
+button the views the session details on the top right of the session card. 
 This will open a new dialog with the session details and the models are placed on 
 the top right which can then be downloaded.
 

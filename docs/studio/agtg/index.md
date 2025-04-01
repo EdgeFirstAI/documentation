@@ -7,7 +7,7 @@ AGTG allows datasets to have annotation populated on a dataset with minimal huma
 
 ## Fully Automatic Ground Truth Generation
 
-This functionality is available at the time of restoring a snapshot. To invoke this import/create a snapshot and then enable AGTG while restoring the snapshot. Please refer to [Restoring a snapshot](../../datasets/snapshots/ss.md) 
+This functionality is available at the time of restoring a snapshot. To invoke this import/create a snapshot and then enable AGTG while restoring the snapshot. Please refer to [Restoring a snapshot](../snapshots/index.md) 
 
 ## Semi-Automatic Ground Truth Generation
 
@@ -16,12 +16,12 @@ This process is used to generate 2D Bounding boxes, 2D segmentations and 3D boun
 ### Starting an AGTG Server
 1. Select Cloud Instances dashboard from teh apps menu
 
-![alt text](image-1.png)
+![alt text](assets/image-1.png)
 
 2. Click on Start Button
 3. Enter A desired name and select AI Assisted Ground Truth
 
-![alt text](image-2.png)
+![alt text](assets/image-2.png)
 4. This will create a server. Please refresh to see the status of teh server. The server takes about 5 to 10 minutes to fully initialize.
 5. Once initialized, it is ready for usage in next steps.
 
@@ -32,22 +32,22 @@ This process is used to generate 2D Bounding boxes, 2D segmentations and 3D boun
 3. Go to the frame where editing begins
 4. Enable the editing of annotations:
 
-![alt text](image.png)
+![alt text](assets/image.png)
 
 5. Select Video Segment Tool
 
-![alt text](image-3.png)
+![alt text](assets/image-3.png)
 
 6. Select the AGTG server (as started above) if not already selected
 7. Click INITIALIZE STATE. Bt default all frames of the sequence are selected - if only a portion of sequence is to be edit then enter teh starting and ending frame numbers. This will decrease the initialization time.
 8. Once initialized, the first object is created without  any segmentation masks. The explanation of icons on teh object card is as follows:
 
-![alt text](image-4.png)
+![alt text](assets/image-4.png)
 
 9. Select an object on the image using rectangle or inclusion points. 
 10. The object should be segmented
 
-![alt text](image-5.png)
+![alt text](assets/image-5.png)
 
 11. Click PROPAGATE.
 12. This will start a counter and propagate the object from starting frame to the ending frame
@@ -55,12 +55,3 @@ This process is used to generate 2D Bounding boxes, 2D segmentations and 3D boun
 14. If satisfied, click on the SAVE PENDING SEGMENTATIONS to store the annotations to the dataset
 15. If the dataset has LIDAR, then 3D bounding boxes are also created for teh same object
 16. Repeat for other object as necessary
-
-
-
-
-
-
-
-
-

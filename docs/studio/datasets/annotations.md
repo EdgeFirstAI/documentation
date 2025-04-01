@@ -28,11 +28,11 @@ User reviews annotations in the source annotation set:
 
 - To create a multi-user Edit Task select "Edit/Audit Annotations" from the Apps Menu 
 
-![alt text](image-6.png)
+![alt text](assets/annotations/image-6.png)
 
 - Click CREATE
 
-![alt text](image-7.png)
+![alt text](assets/annotations/image-7.png)
 
 - Select Task name and description
 - Select Dataset
@@ -47,24 +47,24 @@ Task entry ius created in the Edit Dashboard. There are three columns:
 2. In Progress - Some images have been worked on - the remaining images are shown
 3. Completed - All images have been worked on
 
-![alt text](image-8.png)
+![alt text](assets/annotations/image-8.png)
 
 Click on any task entry and start editing. Teh actual editing process is same for task based or ad-hoc editing. The editing process is described below.
 
 ## Edit images from gallery
 Open the image gallery
 
-![alt text](image.png)
+![alt text](assets/annotations/image.png)
 
 Click on an image and expand Annotation Sets
 
-![alt text](image-1.png)
+![alt text](assets/annotations/image-1.png)
 
 Click on the pencil icon for the annotation set to edit
 
-![alt text](image-2.png)
+![alt text](assets/annotations/image-2.png)
 
-![alt text](image-3.png)
+![alt text](assets/annotations/image-3.png)
 
 ### Add a Rectangular Annotation
 1.	Expand the Labels Section
@@ -108,7 +108,7 @@ Click on the pencil icon for the annotation set to edit
 
 Go to the Edit /Audit Dashboard
 
-![alt text](image-4.png)
+![alt text](assets/annotations/image-4.png)
 
 Create a new task or continue an existing task
 #### Audit: 
@@ -125,7 +125,7 @@ There are two modes:
 Clicking on the dashboard tasks takes directly to the image mode editing. All the editing is the same as described in the Gallery based Editing above.
 User can switch between Image based editing/audit and annotation based Audit from the top header: 
 
-![alt text](image-5.png)
+![alt text](assets/annotations/image-5.png)
 
 ### Annotation Based Audit
 In this mode only one annotation is shown at a time. The user can edit the with single click and next annotation is automatically presented:
@@ -138,8 +138,3 @@ In this mode only one annotation is shown at a time. The user can edit the with 
 6.	1-9 change the annotation class from 1 to 9
 7.	SHIFT 0-9, change the annotation class from 10 to 19
 User can edit the size of the annotation by mouse click and drag
-
-
-
-
-

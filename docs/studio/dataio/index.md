@@ -5,7 +5,7 @@ This interface allows applications to publish data directly  to a dataset data. 
 
 In Dataset Management page, select the dropdown on the top-right of a dataset, then select “Generate API Token“. This token will be used with every bridge API to upload or access samples. This token does not expire and can be reused.
 
-![alt text](image.png)
+![alt text](assets/image.png)
 
 ## Generating Token
 
@@ -14,7 +14,7 @@ In Dataset Management page, select the dropdown on the top-right of a dataset, t
 3. Enter a device name
 4. Click “Generate“, a Java Web Token (Access Token) will be created for all API usage
 
-![alt text](image-1.png)
+![alt text](assets/image-1.png)
 
 ## Generating Bridge Token via API call
  
@@ -144,7 +144,7 @@ This interface allows applications to retrieve data from a dataset. The applicat
 
 In Dataset Management page, select the dropdown on the top-right of a dataset, then select “Generate API Token“. This token will be used with every bridge API to upload or access samples. This token does not expire and can be reused.
 
-![alt text](image-2.png)
+![alt text](assets/image-2.png)
 
 ## Generating Token
 - Select dataset
@@ -152,7 +152,7 @@ In Dataset Management page, select the dropdown on the top-right of a dataset, t
 - Enter a device name
 - Click “Generate“, a Java Web Token (Access Token) will be created for all API usage.
 
-[alt text](image-3.png)
+[alt text](assets/image-3.png)
 
 ## Get List of Samples with Pre Signed URLs
 

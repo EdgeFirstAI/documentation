@@ -6,18 +6,18 @@ Snapshots are frozen and compact form of datasets. A snapshot can be created by 
 
 The snapshot can be opened from the apps menu:
 
-![alt text](image-1.png)
+![alt text](assets/image-1.png)
 
 The snapshots menu shows the list of snapshots with its name and status
 
-![alt text](image-2.png)
+![alt text](assets/image-2.png)
 
 ## Create from existing Dataset
 This will create a Zip/Arrow file pair for each sequence in a dataset and store in the cloud storage. This snapshot can be later restored (into another dataset) or can be downloaded to local folder on a PC.
 
 1. From the Dataset Card, open teh context menu and select 'Generate API Token'
 
-![alt text](image-3.png)
+![alt text](assets/image-3.png)
 
 2. This will trigger the creation of snapshot.
 3. The status of the snapshot generation will be shown in the dataset card.
@@ -43,11 +43,11 @@ This action will take an MCAP or Zip/Arrow files and create a dataset in DVE. Th
 1. Click on the snapshot context menu (three dots)
 2. Select Restore
 
-![alt text](image-4.png)
+![alt text](assets/image-4.png)
 
 3. This will open the restore dialog
 
-![alt text](image-6.png)
+![alt text](assets/image-6.png)
 
 4. Select Project where the dataset will be created
 5. Enter dataset name and description. If dataset name is not provided a dataset, a dataset with snapshot name will be created
@@ -64,11 +64,11 @@ This action will take an MCAP or Zip/Arrow files and create a dataset in DVE. Th
 1. Click on the snapshot context menu (three dots)
 2. Select Download 
 
-![alt text](image-4.png)
+![alt text](assets/image-4.png)
 
 ## Delete Snapshot
 
 1. Click on the snapshot context menu (three dots)
 2. Select Remove 
 
-![alt text](image-5.png)
+![alt text](assets/image-5.png)

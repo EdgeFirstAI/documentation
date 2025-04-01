@@ -6,13 +6,28 @@ models on the actual hardware.  If you don't have such a device, that's okay, we
 how to run the models on a PC using the same applications and APIs you would be using on the
 embedded device so you may get familiar with this environment.
 
+| Maivin 1              | Maivin 2          | Raivin             |
+|-----------------------------|-----------------------------|-------------------------------|
+| ![Maivin 1](assets/maivin-1.png) | ![Maivin 2](assets/maivin-2.png) | ![Raivin](assets/raivin.png) |
+
 If you have recently received one of these EdgeFirst Modules you may want to first start with
 the EdgeFirst Modules Quickstart then come back once you're ready to get started with the
 cloud tools.
 
-## Quickstart
+## EdgeFirst Studio Quickstart
 
-### 1. Sign Up
+This guide will walk a user through a high-level overview of getting started with 
+EdgeFirst Studio (formerly Deep View Enterprise) by exploring individual processes from collecting
+and curating datasets to training, validating, and deploying EdgeFirst models.
+
+This guide will showcase two workflows. The first workflow will provide a guided user experience by
+providing completed experiments for users to follow along merely acting as an observer to get a 
+general idea of the workspace. The second workflow will be much more user involved by providing
+instructions for the user to be familiar with using the tools available in EdgeFirst Studio. 
+
+### Guided Workflow
+
+#### Sign Up
 
 Start by creating your [EdgeFirst Studio Account](https://dveml.com/#/login?initialMode=new-user).
 
@@ -23,15 +38,16 @@ Enter the required fields denoted by the asterisk (*) and then create your accou
 <figcaption>Create a New Account</figcaption>
 </figure>
 
-Next an email will be sent to you to verify the email you provided. Go ahead and click the link provided to verify your email.
+Next an email will be sent to verify the email you provided. Go ahead and click on the link provided to verify your email.
 
 <figure markdown="span">
 ![Email Verification](assets/email-verification.jpg){ align=center }
 <figcaption>Email Verification</figcaption>
 </figure>
 
-### 2. Getting Started with Deep View Enterprise (DVE)
+### EdgeFirst Studio Workspace
 
+Next become familiar with the EdgeFirst Studio workspace. 
 The following figure provides a general overview of DVE's layout. 
 
 <figure markdown="span">
@@ -106,3 +122,5 @@ from the dataset provided.
 For more details regarding deploying validation sessions, please see 
 [Validating Modelpack](../models/modelpack/validation.md) for validating Vision models and 
 [Validating Fusion](../models/fusion/validation.md) for validating Fusion models.
+
+### Hands-on Workflow

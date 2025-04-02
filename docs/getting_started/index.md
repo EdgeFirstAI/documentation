@@ -14,7 +14,7 @@ If you have recently received one of these EdgeFirst Platforms you may want to f
 the [EdgeFirst Platforms Quickstart](../platforms/quickstart.md) then come back once you're ready to get started with the
 cloud tools.
 
-## EdgeFirst Studio Quickstart
+## Quickstart
 
 This guide will walk a user through a high-level overview of getting started with 
 EdgeFirst Studio (formerly Deep View Enterprise) by exploring individual processes from collecting
@@ -23,7 +23,7 @@ and curating datasets to training, validating, and deploying EdgeFirst models.
 This guide will showcase two workflows. The first workflow will provide a guided user experience by
 providing completed experiments for users to follow along merely acting as an observer to get a 
 general idea of the workspace. The second workflow will be much more user involved by providing
-instructions for the user to be familiar with using the tools available in EdgeFirst Studio *(coming soon)*. 
+instructions for the user to be familiar with using the tools available. 
 
 ### Guided Workflow
 
@@ -300,13 +300,24 @@ Select the *AI Image Segment Tool* and then enable the *SAM Box Tool*
 <figcaption>Auto Segment Mode</figcaption>
 </figure>
 
-Draw a bounding box annotation around the person that was missed and then click *CREATE ANNOTATION* to accept
-the drawn annotation and the segmentation mask. 
+Draw a bounding box around the person that was missed and then click *CREATE ANNOTATION* to create
+the drawn segmentation mask. Click *SUBMIT* to accept the annotation. 
 
 <figure markdown="span">
-![Add Annotation](assets/annotate-missing-person.jpg){ align=center }
-<figcaption>Add Annotation</figcaption>
+![Segment Tool](assets/segment-tool.jpg){ align=center }
+<figcaption>Segment Tool</figcaption>
 </figure>
+
+Draw a bounding box annotation around the person that was missed by selecting the *Box Tool*.
+Click *SUBMIT* to accept the annotation. 
+
+<figure markdown="span">
+![Box Tool](assets/box-tool.jpg){ align=center }
+<figcaption>Box Tool</figcaption>
+</figure>
+
+As part of the audit process is to go over each sample in the dataset and correcting
+any missed annotations or incorrect annotations.
 
 !!! note
     There are more features available for correcting the annotations.
@@ -328,10 +339,18 @@ for training a model and validating a model.
 You can now start training your model with a dataset that is fully annotated with
 samples reserved for training and validation. 
 
+<div style="text-align: center;">
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/Q8uiYJb1HJ4" title="EdgeFirst Training" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+</div>
+
 #### Validate Model
 
 After a model is trained, we can validate the performance of the model to verify
 if the model is "field ready" to be deployed. 
+
+<div style="text-align: center;">
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/oKh4k0CCLmU?si=PPmbJ1-8dZPLhGh2" title="EdgeFirst Validation" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+</div>
 
 #### Deploy Model
 

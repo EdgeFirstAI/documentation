@@ -4,10 +4,10 @@ This chapter will walk you through the Raivin's and Maivin's Web User Interface 
 
 ## The Main Page
 The Main Page of the Raivin web interface should look as follows:  
-![Raivin Main Page](static/quickStart-mainPage.png){align=center}
+![Raivin Main Page](assets/quickStart-mainPage.png){align=center}
 
 The Main Page for the Maivin looks slightly different:  
-![Maivin Main Page](static/ui-maivinMain.png){align=center}
+![Maivin Main Page](assets/ui-maivinMain.png){align=center}
 
 There are five cards on the Main Page that link to the Visualization pages:
 
@@ -32,9 +32,9 @@ On the right side of the ribbon, we have a grouping of two indicators an a dropd
 
 ### System Status Indicator
 Mousing over the System Status Indicator field will give a brief summary of any problems.  
-![Dropdown reporting good](static/quickStart-statusDropDownGood.png){align=center}  
+![Dropdown reporting good](assets/quickStart-statusDropDownGood.png){align=center}  
 *Everything is good!*  
-![Dropdown reporting bad](static/quickStart-statusDropDownDegraded.png){align=center}  
+![Dropdown reporting bad](assets/quickStart-statusDropDownDegraded.png){align=center}  
 *The Radar Publishing service is down.*
 
 More on these status can be found in the [Status Monitoring section](./replay.md#status-monitoring)
@@ -43,27 +43,27 @@ These pages contain the user-facing functionality of the vision module.
 
 ### The Segmentation Page
 The Segmentation page shows camera overlain with the current visual model output.  For Raivin modules, this will also includes the occupany grid at the bottom.  
-![Segmentation Page](static/quickStart-segmentation.png){align=center}
+![Segmentation Page](assets/quickStart-segmentation.png){align=center}
 White points is unmatched, raw data from the radar; green points are raw data matched to segmentation masks.
 
 For the Maivin, its Segmentation Page does not include the Occupancy Grid at the bottom.  
-![Maivin Segmentation Page](static/ui-maivinSegmentation.png){align=center}
+![Maivin Segmentation Page](assets/ui-maivinSegmentation.png){align=center}
 
 ### The Occupancy Page (Raivin-only)
 The Occupancy Page shows the raw, radar data, coloured by radar cross-section (RCS) size.  
-![Occupancy Page](static/quickStart-occupancy.png){align=center}
+![Occupancy Page](assets/quickStart-occupancy.png){align=center}
 
 ### The GPS Page
 The GPS page shows an interactive map centered on the device's location.  
-![GPS Page](static/quickStart-gps.png){align=center}
+![GPS Page](assets/quickStart-gps.png){align=center}
 This should be familiar to anyone who has used standard map web interfaces.  The map can be moved by dragging with left-mouse button (or touch with a touchscreen-enabled device).  The "+" and "-" buttons on the left will zoom-in and zoom-out on the map.  The "Refresh" button will re-center the map on the device's location.  The latitude and longitude are also reported on the web interface.
 
 ### The IMU Page
 The IMU page shows the device's orientation in 3D.  
-![IMU Page](static/quickStart-imu.png){align=center}
+![IMU Page](assets/quickStart-imu.png){align=center}
 My physically moving the device, it's virtual counterpart should move the same way.  Roll, pitch, and yaw values are reported.  If the device's virtual orientation does not match the physical orientation, keep the device's bottom flat and hit the "Reset Orientation" button.
 
 ### The MCAP Recording Page
 The MCAP Recording Page manages the device's operational state as well as the current recordings on the device.  
-![MCAP Page](static/quickStart-mcap.png){align=center}
+![MCAP Page](assets/quickStart-mcap.png){align=center}
 More information for this page can be found in the [Recording section](./recording.md).

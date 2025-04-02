@@ -13,7 +13,7 @@ When active, the Recorder Service:
 
 ## Using the Recorder
 The MCAP Recording Service is managed on its own visualization page, which can be accessed by clicking the "MCAP" card on the Raivin Main Page or by typing `https://<hostname>/mcap` in your browser window.  
-![MCAP recorder interface](static/mcap_recorder.png){align=center}
+![MCAP recorder interface](assets/mcap_recorder.png){align=center}
 At the top of page, under the ribbon, we have the Recording Toggle, which will start or end an MCAP recording.  We also have the "Live Mode" button, which will take the Raivin out of ["Replay Mode"](./replay.md) and back to "Live Mode".
 
 Under this, we have the listing of MCAP files currently the MCAP recording directory.  This directory is noted at the top of the list -- in the above image, it is `/media/DATA`.
@@ -33,7 +33,7 @@ For each MCAP file, the following elements and information exist, starting from 
 
 ### Starting a Recording
 To start a recording, simply click the "Recording" toggle to begin capturing data.
-![MCAP recording](static/mcap_recording.png){align=center}  
+![MCAP recording](assets/mcap_recording.png){align=center}  
 Note the the red text describing that recording is in progress with the filename of the recording.  Also notice the the Recording notification on the top ribbon is now on.
 ```{note}
 It may take up to 30 seconds for a recording to start, depending on topic tracked.
@@ -42,7 +42,7 @@ To stop recording, click the "Recording" toggle a second time.
 
 ### Managing Recordings
 Once a recording is complete, you can see the size in MB and duration in seconds of the captured data on the MCAP page.  You can also get more detailed metadata, such as the topics recorded, by clicking the "Details" button for the MCAP recording.
-![MCAP file details](static/mcap_detail.png){align=center}  
+![MCAP file details](assets/mcap_detail.png){align=center}  
 At the bottom of the "File Details" modal, there is a "Close" button to close the modal.
 ```{note}
 MCAP recording file names are saved in `hostname_YYYY_mm_DD_HH_MM_SS.mcap` format, where:

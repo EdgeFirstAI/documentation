@@ -1,7 +1,7 @@
 nav:
-  - Home: index.md
+  - Home: https://edgefirst.studio
   - Getting Started:
-      - getting_started/index.md
+      - index.md
       - getting_started/studio.md
       - getting_started/datasets.md
       - getting_started/models.md

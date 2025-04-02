@@ -18,17 +18,17 @@ The Replay Service is built into the [MCAP Recorder Page](./recording.md).  You 
 3. In the playback options dialog, choose your preferred settings:
    - Fusion Source: Choose between Live or MCAP data for the post-processed radar topics
    - Model Source: Choose between Live or MCAP data for the post-processed image topics  
-   ![MCAP replay options](static/replay_options.png){align=center}
+   ![MCAP replay options](assets/replay_options.png){align=center}
 4. Click "Start" to begin playback
 
 During playback, the currently playing file will be highlighted and marked as "Now Playing".  The State Indicator at the right in the top ribbon also notes we are "Replay Mode".  
-![MCAP replay options](static/replay_mode.png){align=center}
+![MCAP replay options](assets/replay_mode.png){align=center}
 
 Now that the device is in "Replay Mode", the inputs to the Segmentation, Occupancy, GPS, and IMU pages will come from the MCAP file instead of from the live sensors.
 
 ### Playback Controls
 - Click the "Live Mode" button to return to displaying live sensor data.  
-![MCAP replay options](static/replay_to_live_mode.png){align=center}
+![MCAP replay options](assets/replay_to_live_mode.png){align=center}
 - Click the stop button (⏹️) on the playing file to end playback
    ```{note}
    Stopping a file from replaying will not put the device back into "Live Mode".  You must click the "Live Mode" button to return to "Live Mode".
@@ -40,7 +40,7 @@ When a file is playing, you cannot play another file until you stop the current 
 ### Hybrid Mode
 The Replay Service supports a hybrid mode where you can:
 - Play back recorded sensor data while using live fusion and/or model data  
-![MCAP replay options](static/replay_options.png){align=center}
+![MCAP replay options](assets/replay_options.png){align=center}
 - Use recorded data for some systems while maintaining live data for others
 - Mix and match recorded and live data sources based on your testing needs
 
@@ -59,8 +59,8 @@ Located in the top-right corner, the status indicator shows:
 
 ### Recording Indicator
 A pulsing red circle appears when the system is actively recording.  
-![MCAP replay options](static/recorder_running.png){align=center}
+![MCAP replay options](assets/recorder_running.png){align=center}
 
 ### Service Status
 Click the information (ℹ️) button to view detailed service status, which shows the individual service states (Running/Stopped).  
-![MCAP replay options](static/system_status.png){align=center}
+![MCAP replay options](assets/system_status.png){align=center}

@@ -1,7 +1,7 @@
 nav:
-  - Home: index.md
+  - Home: https://edgefirst.studio
   - Getting Started:
-      - getting_started/index.md
+      - index.md
       - getting_started/studio.md
       - getting_started/datasets.md
       - getting_started/models.md
@@ -15,7 +15,7 @@ nav:
           - studio/projects/index.md
       - Datasets:
           - studio/datasets/gallery.md
-          - studio/datasets/annotations.md      
+          - studio/datasets/annotations.md
       - studio/agtg/index.md
   - Datasets:
       - datasets/index.md
@@ -42,7 +42,9 @@ nav:
           - platforms/foxglove.md
           - platforms/advanced_foxglove.md
       - perception/studio.md
-      - perception/topics.md
+      - Topics:
+          - perception/topics.md
+          - perception/topics/camera.md
       - perception/custom.md
       - Developer Guide:
           - perception/dev.md

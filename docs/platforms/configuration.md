@@ -1,13 +1,13 @@
 # Configuration
 This section describes the various settings pages and what they do.  The root Settings Page can be reached by clicking the rightmost gear icon on the top ribbon of any page of the Raivin web-interface.
-![root Settings page](static/configuration-root.png){align=center}
+![root Settings page](assets/configuration-root.png){align=center}
 
 Every settings page has a "Save Configuration" button at the bottom of the page. If you make changes, click this button to save them.
-![Save Configuration button](static/configuration-saveConfiguration.png){align=center}
+![Save Configuration button](assets/configuration-saveConfiguration.png){align=center}
 
 ## MCAP Recorder Settings Page
 This page configures how sensor and processed outputs are saved on the [MCAP Recording Page](./recording.md).
-![MCAP Settings page](static/configuration-mcap.png){align=center}
+![MCAP Settings page](assets/configuration-mcap.png){align=center}
 
 ```{tip}
 These values are stored in the `/etc/default/recorder` file on the device and can be hand-edited.  This is not recommended.
@@ -57,7 +57,7 @@ The Radar Cube FPS setting limits the radar cube framerate to reduce recording s
 
 ## Camera Settings
 This page configures the camera service that interacts with the Raivin's [OmniVision OS08A20 image sensor][os08a20].  With the exception of the H.264 Bitrate and maybe camera or stream sizes, it is not recommended that you change these settings.
-![Camera Settings page](static/configuration-camera.png){align=center}
+![Camera Settings page](assets/configuration-camera.png){align=center}
 
 ```{tip}
 These values are stored in the `/etc/default/camera` file on the device and can be hand-edited.  This is not recommended.
@@ -86,7 +86,7 @@ This setting enables or disables the /camera/jpeg topic.
 
 ## WebUI Settings Page
 This page configures how information is displayed on the [Segmentation Page](./walkthrough.md#the-segmentation-page).
-![WebUI Settings page](static/configuration-webui.png){align=center}
+![WebUI Settings page](assets/configuration-webui.png){align=center}
 
 ```{tip}
 These values are stored in the `/etc/default/webui` file on the device and can be hand-edited.  This is not recommended.
@@ -96,11 +96,11 @@ This mirrors both the Segmentation View as well as the Occupancy Grid on the Seg
 
 ### Angle Bins
 These three settings set the left-side minimum, right-side maximum, and width size (in degrees) of the angular radar views on the Segmentation and Occupancy pages.  The below image shows a minimum of -70, maximum of 70, and a binwidth of 14.
-![-70 by 70 at 14 steps](static/configuration-angleSettings.png){align=center}
+![-70 by 70 at 14 steps](assets/configuration-angleSettings.png){align=center}
 
 ### Range Bins
 These three settings set the near-side minimum, far-side maximum, and width size (in meters) of the radar views on the Segmentation and Occupancy pages.  The below image shows a minimum of 2, maximum of 9, and a binwidth of 1.
-![2 to 9 by 1 range](static/configuration-rangeSettings.png){align=center}
+![2 to 9 by 1 range](assets/configuration-rangeSettings.png){align=center}
 
 ### Draw PCD
 There are three settings for drawing the Point Cloud Data (PCD):
@@ -122,11 +122,11 @@ The settings turn on objection detection boxes and text from the Detect Topic to
 
 ### Show Stats and People Count
 These settings enable statistics views and a people counter on the Segmentation and Occupancy Pages.  The statistics are near the top right of the screen while the people counter is at the bottom right.
-![stats and peeps](static/configuration-showStatsPeopleCount.png){align=center}
+![stats and peeps](assets/configuration-showStatsPeopleCount.png){align=center}
 
 ## Model Configuration
 These settings configure the perception engine that is processing input from the video sensor and providing output on the model topics.
-![Model Settings page](static/configuration-model.png){align=center}
+![Model Settings page](assets/configuration-model.png){align=center}
 ```{tip}
 These values are stored in the `/etc/default/model` file on the device and can be hand-edited.  This is not recommended.
 ```
@@ -196,11 +196,11 @@ This control the NPU graph cache storage location.
 
 ## Service Status
 This page allows users to enable and disable the nine main services used by the Raivin.  By default, each of these services but the Recorder service should be running and enabled.
-![Services Status page](static/configuration-servicesStatus.png){align=center}
+![Services Status page](assets/configuration-servicesStatus.png){align=center}
 
 ## Radar Configuration (Raivin-only)
 This page configures the radar publishing service that interacts with the Raivin's integrated [DRVEGRD-169 radar module][radar] from [smartmicro][smart].  With the exception of the H.264 Bitrate and maybe camera or stream sizes, it is not recommended that you change these settings.
-![Radar Settings page](static/configuration-radarpub.png){align=center}
+![Radar Settings page](assets/configuration-radarpub.png){align=center}
 
 ```{tip}
 These values are stored in the `/etc/default/radarpub` file on the device and can be hand-edited.  This is not recommended.
@@ -257,7 +257,7 @@ The minimum number of points per cluster for DBSCAN clustering.
 
 ## Fusion Configuration (Raivin-only)
 These settings configure the perception engine that is processing input from the radar sensor and providing output on the Fusion topics.
-![Fusion Settings page](static/configuration-fusion.png){align=center}
+![Fusion Settings page](assets/configuration-fusion.png){align=center}
 ```{tip}
 These values are stored in the `/etc/default/fusion` file on the device and can be hand-edited.  This is not recommended.
 ```

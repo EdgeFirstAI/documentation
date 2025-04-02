@@ -218,7 +218,7 @@
   
   
     <li class="md-tabs__item">
-      <a href="../.." class="md-tabs__link">
+      <a href="https://edgefirst.studio" class="md-tabs__link">
         
   
     
@@ -237,7 +237,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../getting_started/" class="md-tabs__link">
+        <a href="../.." class="md-tabs__link">
           
   
     
@@ -397,7 +397,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../.." class="md-nav__link">
+      <a href="https://edgefirst.studio" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -445,7 +445,7 @@
           
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../getting_started/" class="md-nav__link ">
+            <a href="../.." class="md-nav__link ">
               
   
   <span class="md-ellipsis">
@@ -3850,12 +3850,12 @@
 
 <h1 id="configuration">Configuration</h1>
 <p>This section describes the various settings pages and what they do.  The root Settings Page can be reached by clicking the rightmost gear icon on the top ribbon of any page of the Raivin web-interface.
-<img align="center" alt="root Settings page" src="../static/configuration-root.png" /></p>
+<img align="center" alt="root Settings page" src="../assets/configuration-root.png" /></p>
 <p>Every settings page has a "Save Configuration" button at the bottom of the page. If you make changes, click this button to save them.
-<img align="center" alt="Save Configuration button" src="../static/configuration-saveConfiguration.png" /></p>
+<img align="center" alt="Save Configuration button" src="../assets/configuration-saveConfiguration.png" /></p>
 <h2 id="mcap-recorder-settings-page">MCAP Recorder Settings Page</h2>
 <p>This page configures how sensor and processed outputs are saved on the <a href="../recording/">MCAP Recording Page</a>.
-<img align="center" alt="MCAP Settings page" src="../static/configuration-mcap.png" /></p>
+<img align="center" alt="MCAP Settings page" src="../assets/configuration-mcap.png" /></p>
 <div class="highlight"><pre><span></span><code>These values are stored in the `/etc/default/recorder` file on the device and can be hand-edited.  This is not recommended.
 </code></pre></div>
 <h3 id="storage-location">Storage Location</h3>
@@ -3894,7 +3894,7 @@ expose a setting to user to limit this.</li>
 <p>The Radar Cube FPS setting limits the radar cube framerate to reduce recording size.  While the camera topic is encoded with H.264 which makes use of keyframes to significantly reduce the topic size, no such compression is available for the radar cube which means only the COMPRESSION parameter applies (if enabled).  While capturing datasets, the full 18 FPS is typically not required and it is recommended to set this parameter to 1-5 FPS to reduce the MCAP size.</p>
 <h2 id="camera-settings">Camera Settings</h2>
 <p>This page configures the camera service that interacts with the Raivin's <a href="https://www.ovt.com/products/os08a20/">OmniVision OS08A20 image sensor</a>.  With the exception of the H.264 Bitrate and maybe camera or stream sizes, it is not recommended that you change these settings.
-<img align="center" alt="Camera Settings page" src="../static/configuration-camera.png" /></p>
+<img align="center" alt="Camera Settings page" src="../assets/configuration-camera.png" /></p>
 <div class="highlight"><pre><span></span><code>These values are stored in the `/etc/default/camera` file on the device and can be hand-edited.  This is not recommended.
 </code></pre></div>
 <h3 id="camera-device">Camera Device</h3>
@@ -3913,17 +3913,17 @@ expose a setting to user to limit this.</li>
 <p>This setting enables or disables the /camera/jpeg topic.</p>
 <h2 id="webui-settings-page">WebUI Settings Page</h2>
 <p>This page configures how information is displayed on the <a href="../walkthrough/#the-segmentation-page">Segmentation Page</a>.
-<img align="center" alt="WebUI Settings page" src="../static/configuration-webui.png" /></p>
+<img align="center" alt="WebUI Settings page" src="../assets/configuration-webui.png" /></p>
 <div class="highlight"><pre><span></span><code>These values are stored in the `/etc/default/webui` file on the device and can be hand-edited.  This is not recommended.
 </code></pre></div>
 <h3 id="mirror-inputs">Mirror Inputs</h3>
 <p>This mirrors both the Segmentation View as well as the Occupancy Grid on the Segmentation page.</p>
 <h3 id="angle-bins">Angle Bins</h3>
 <p>These three settings set the left-side minimum, right-side maximum, and width size (in degrees) of the angular radar views on the Segmentation and Occupancy pages.  The below image shows a minimum of -70, maximum of 70, and a binwidth of 14.
-<img align="center" alt="-70 by 70 at 14 steps" src="../static/configuration-angleSettings.png" /></p>
+<img align="center" alt="-70 by 70 at 14 steps" src="../assets/configuration-angleSettings.png" /></p>
 <h3 id="range-bins">Range Bins</h3>
 <p>These three settings set the near-side minimum, far-side maximum, and width size (in meters) of the radar views on the Segmentation and Occupancy pages.  The below image shows a minimum of 2, maximum of 9, and a binwidth of 1.
-<img align="center" alt="2 to 9 by 1 range" src="../static/configuration-rangeSettings.png" /></p>
+<img align="center" alt="2 to 9 by 1 range" src="../assets/configuration-rangeSettings.png" /></p>
 <h3 id="draw-pcd">Draw PCD</h3>
 <p>There are three settings for drawing the Point Cloud Data (PCD):
 - <strong>Grid Draw PCD</strong>: This controls drawing the PCD on the Occupancy Page
@@ -3940,10 +3940,10 @@ expose a setting to user to limit this.</li>
 <p>The settings turn on objection detection boxes and text from the Detect Topic to display on the Segmentation View.  If there is no Detect Topic, boxes will not be displayed.</p>
 <h3 id="show-stats-and-people-count">Show Stats and People Count</h3>
 <p>These settings enable statistics views and a people counter on the Segmentation and Occupancy Pages.  The statistics are near the top right of the screen while the people counter is at the bottom right.
-<img align="center" alt="stats and peeps" src="../static/configuration-showStatsPeopleCount.png" /></p>
+<img align="center" alt="stats and peeps" src="../assets/configuration-showStatsPeopleCount.png" /></p>
 <h2 id="model-configuration">Model Configuration</h2>
 <p>These settings configure the perception engine that is processing input from the video sensor and providing output on the model topics.
-<img align="center" alt="Model Settings page" src="../static/configuration-model.png" />
+<img align="center" alt="Model Settings page" src="../assets/configuration-model.png" />
 <div class="highlight"><pre><span></span><code>These values are stored in the `/etc/default/model` file on the device and can be hand-edited.  This is not recommended.
 </code></pre></div></p>
 <h3 id="model">Model</h3>
@@ -3990,10 +3990,10 @@ expose a setting to user to limit this.</li>
 <p>This control the NPU graph cache storage location.</p>
 <h2 id="service-status">Service Status</h2>
 <p>This page allows users to enable and disable the nine main services used by the Raivin.  By default, each of these services but the Recorder service should be running and enabled.
-<img align="center" alt="Services Status page" src="../static/configuration-servicesStatus.png" /></p>
+<img align="center" alt="Services Status page" src="../assets/configuration-servicesStatus.png" /></p>
 <h2 id="radar-configuration-raivin-only">Radar Configuration (Raivin-only)</h2>
 <p>This page configures the radar publishing service that interacts with the Raivin's integrated <a href="https://www.smartmicro.com/automotive-radar/drvegrd-line#c20151">DRVEGRD-169 radar module</a> from <a href="https://www.smartmicro.com/">smartmicro</a>.  With the exception of the H.264 Bitrate and maybe camera or stream sizes, it is not recommended that you change these settings.
-<img align="center" alt="Radar Settings page" src="../static/configuration-radarpub.png" /></p>
+<img align="center" alt="Radar Settings page" src="../assets/configuration-radarpub.png" /></p>
 <div class="highlight"><pre><span></span><code>These values are stored in the `/etc/default/radarpub` file on the device and can be hand-edited.  This is not recommended.
 </code></pre></div>
 <h3 id="log-level">Log Level</h3>
@@ -4033,7 +4033,7 @@ Options are 'off', 'short-medium', 'short-long', 'medium-long', 'long-ultra-shor
 <p>The minimum number of points per cluster for DBSCAN clustering.</p>
 <h2 id="fusion-configuration-raivin-only">Fusion Configuration (Raivin-only)</h2>
 <p>These settings configure the perception engine that is processing input from the radar sensor and providing output on the Fusion topics.
-<img align="center" alt="Fusion Settings page" src="../static/configuration-fusion.png" />
+<img align="center" alt="Fusion Settings page" src="../assets/configuration-fusion.png" />
 <div class="highlight"><pre><span></span><code>These values are stored in the `/etc/default/fusion` file on the device and can be hand-edited.  This is not recommended.
 </code></pre></div></p>
 <h3 id="log-level_1">Log Level</h3>

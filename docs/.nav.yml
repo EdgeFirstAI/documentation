@@ -2,9 +2,11 @@ nav:
   - Home: index.md
   - Getting Started:
       - getting_started/index.md
-      - getting_started/dataset.md
+      - getting_started/studio.md
+      - getting_started/datasets.md
       - getting_started/models.md
-      - getting_started/modules.md
+    #   - getting_started/perception.md
+    #   - getting_started/platforms.md
   - Studio:
       - studio/index.md
       - studio/navigation/index.md
@@ -32,40 +34,39 @@ nav:
       - models/augmentations.md
       - models/metrics.md
   - Perception:
-      - middleware/index.md
+      - perception/index.md
       - Dataset Collection Middleware:
-          - modules/recording.md
-          - modules/replay.md
-          - modules/publishing.md
-          - modules/foxglove.md
-          - modules/advanced_foxglove.md
-      - middleware/studio.md
-      - middleware/topics.md
-      - middleware/custom.md
+          - platforms/recording.md
+          - platforms/replay.md
+          - platforms/publishing.md
+          - platforms/foxglove.md
+          - platforms/advanced_foxglove.md
+      - perception/studio.md
+      - perception/topics.md
+      - perception/custom.md
       - Developer Guide:
-          - middleware/dev.md
-          - middleware/dev/python.md
+          - perception/dev.md
+          - perception/dev/python.md
       - API Reference:
-          - middleware/api.md
-          - middleware/api/edgefirst_msgs.md
-          - middleware/api/foxglove_msgs.md
-          - middleware/api/geometry_msgs.md
-          - middleware/api/nav_msgs.md
-          - middleware/api/sensor_msgs.md
-          - middleware/api/std_msgs.md
-          - middleware/api/builtin_interfaces.md
-          - middleware/api/studio.md
+          - perception/api.md
+          - perception/api/edgefirst_msgs.md
+          - perception/api/foxglove_msgs.md
+          - perception/api/geometry_msgs.md
+          - perception/api/nav_msgs.md
+          - perception/api/sensor_msgs.md
+          - perception/api/std_msgs.md
+          - perception/api/builtin_interfaces.md
+          - perception/api/studio.md
   - Platforms:
-      - modules/index.md
-      - modules/quickstart.md
-      - modules/walkthrough.md
-      - modules/configuration.md
-      - modules/architecture.md
-      - modules/networking.md
-      - modules/ssh.md
-      - modules/hardware.md
-      - modules/radar.md
-      - modules/troubleshooting.md
-      - modules/issues.md
-      - modules/release_notes.md
-      - modules/updates.md
+      - platforms/index.md
+      - platforms/quickstart.md
+      - platforms/walkthrough.md
+      - platforms/configuration.md
+      - platforms/architecture.md
+      - platforms/networking.md
+      - platforms/ssh.md
+      - platforms/hardware.md
+      - platforms/radar.md
+      - platforms/issues.md
+      - platforms/release_notes.md
+      - platforms/updates.md

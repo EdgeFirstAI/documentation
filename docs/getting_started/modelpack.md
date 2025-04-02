@@ -1,2 +1,0 @@
-# ModelPack Tutorials
-

@@ -6,13 +6,28 @@ models on the actual hardware.  If you don't have such a device, that's okay, we
 how to run the models on a PC using the same applications and APIs you would be using on the
 embedded device so you may get familiar with this environment.
 
+**[Maivin 1](../platforms/index.md)** | **[Maivin 2](../platforms/index.md)** | **[Raivin](../platforms/index.md)**
+:------------------:|:------------------:|:------------------:
+[![Maivin 1](assets/maivin-1.png)](../platforms/index.md) | [![Maivin 2](assets/maivin-2.png)](../platforms/index.md) | [![Raivin](assets/raivin.png)](../platforms/index.md)
+
 If you have recently received one of these EdgeFirst Modules you may want to first start with
-the EdgeFirst Modules Quickstart then come back once you're ready to get started with the
+the [EdgeFirst Platforms Quickstart](../platforms/quickstart.md) then come back once you're ready to get started with the
 cloud tools.
 
-## Quickstart
+## EdgeFirst Studio Quickstart
 
-### 1. Sign Up
+This guide will walk a user through a high-level overview of getting started with 
+EdgeFirst Studio (formerly Deep View Enterprise) by exploring individual processes from collecting
+and curating datasets to training, validating, and deploying EdgeFirst models.
+
+This guide will showcase two workflows. The first workflow will provide a guided user experience by
+providing completed experiments for users to follow along merely acting as an observer to get a 
+general idea of the workspace. The second workflow will be much more user involved by providing
+instructions for the user to be familiar with using the tools available in EdgeFirst Studio *(coming soon)*. 
+
+### Guided Workflow
+
+#### Sign Up
 
 Start by creating your [EdgeFirst Studio Account](https://dveml.com/#/login?initialMode=new-user).
 
@@ -23,27 +38,29 @@ Enter the required fields denoted by the asterisk (*) and then create your accou
 <figcaption>Create a New Account</figcaption>
 </figure>
 
-Next an email will be sent to you to verify the email you provided. Go ahead and click the link provided to verify your email.
+Next an email will be sent to verify the email you provided. Go ahead and click on the link provided to verify your email.
 
 <figure markdown="span">
 ![Email Verification](assets/email-verification.jpg){ align=center }
 <figcaption>Email Verification</figcaption>
 </figure>
 
-### 2. Getting Started with Deep View Enterprise (DVE)
+#### EdgeFirst Studio Workspace
 
-The following figure provides a general overview of DVE's layout. 
+Next become familiar with the EdgeFirst Studio workspace. 
+
+The following figure provides a general overview of the workspace layout. 
 
 <figure markdown="span">
-![DVE Navigation](../enterprise/navigation/image.png){ align=center }
-<figcaption>DVE Navigation</figcaption>
+![Navigation](../studio/navigation/assets/image.png){ align=center }
+<figcaption>Navigation</figcaption>
 </figure>
 
-Please see the overview of [Navigation in Enterprise](../enterprise/navigation/nav.md) for more details.
+Please see the overview of [Navigating the Workspace](../studio/navigation/index.md) for more details.
 
-### 3. Create a Project
+#### Create a Project
 
-Using the account you just created, sign in to DVE. 
+Using the account you just created, sign in to EdgeFirst Studio. 
 Once you're logged in, create your first project. Provide a name and description of the project 
 that reflects your goals. 
 
@@ -52,7 +69,7 @@ that reflects your goals.
 <figcaption>Create a New Project</figcaption>
 </figure>
 
-### 4. Explore Dataset
+#### Explore Dataset
 
 Try our sample Raivin dataset for training a Fusion Model.
 
@@ -62,14 +79,14 @@ Try our sample Raivin dataset for training a Fusion Model.
 </figure>
 
 <figure markdown="span">
-![Dataset Fields](../assets/datasets/image-1.png){ align=center }
+![Dataset Fields](../datasets/assets/dataset-fields.png){ align=center }
 <figcaption>Dataset Fields</figcaption>
 </figure>
 
 Please see the overview of the [Datasets Dashboard](../datasets/index.md) for more details regarding the 
-dataset attributes in DVE.
+dataset attributes in EdgeFirst Studio.
 
-### 5. Train Model
+#### Train Model
 
 The following training session is a completed session from training a Fusion model
 from the dataset provided. 
@@ -80,7 +97,7 @@ from the dataset provided.
 </figure>
 
 <figure markdown="span">
-![Training Session Fields](assets/training-session-fields.jpg){ align=center }
+![Training Session Fields](../models/assets/training/training-session-fields.jpg){ align=center }
 <figcaption>Training Session Fields</figcaption>
 </figure>
 
@@ -88,7 +105,7 @@ For more details regarding deploying training sessions, please see
 [Training Modelpack](../models/modelpack/training.md) for training Vision models and 
 [Training Fusion](../models/fusion/training.md) for training Fusion models.
 
-### 6. Validate Model
+#### Validate Model
 
 The following validation session is a completed session from validating a Fusion model
 from the dataset provided.
@@ -99,7 +116,7 @@ from the dataset provided.
 </figure>
 
 <figure markdown="span">
-![Validation Session Fields](assets/validation-session-fields.jpg){ align=center }
+![Validation Session Fields](../models/assets/validation/validation-session-fields.jpg){ align=center }
 <figcaption>Validation Session Fields</figcaption>
 </figure>
 

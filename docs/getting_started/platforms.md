@@ -1,1 +1,1 @@
-# Platform (Edge Devices) Tutorials
+# EdgeFirst Devices: Setup and Boot Guide

@@ -88,6 +88,7 @@ Your newly created project will be placed next to the public project "Sample Dat
 In this Quickstart guide, you have created your EdgeFirst Studio Account, logged in to EdgeFirst Studio, and created your very first project. The following links will provide additional tutorials for user onboarding in EdgeFirst Studio.
 
 * [EdgeFirst Studio: From Start to Deployment](getting_started/workflows.md)
+* [Navigating EdgeFirst Studio](getting_started/studio.md)
 * [Dataset Management](getting_started/datasets.md)
 * [Model Training, Validation, and Deployment](getting_started/models.md)
 * [Command-Line Interface: Using the EdgeFirst Studio Middleware](getting_started/perception.md)

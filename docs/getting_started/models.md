@@ -1,4 +1,6 @@
-# Model Tutorials
+# Model Training, Validation, and Deployment
+
+EdgeFirst Studio supports *Vision Models* trained using **Modelpack** and *Spatial Perception Models* also known as **Fusion** models.
 
 ## ModelPack Tutorials
 

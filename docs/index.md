@@ -43,44 +43,59 @@ cloud (studio) tools.
 
 4. Once the email is verified, you can now [login](https://edgefirst.studio/#/login) to EdgeFirst Studio.
 
-5. When logging in, enter your username and password you specified.
+5. When logging in, enter your username and password you specified. Next click the *SIGN IN* button to sign in.
 
     <figure markdown="span">
     ![Login Page](assets/login-page.jpg){ align=center }
     <figcaption>Login Page</figcaption>
     </figure>
 
-### Explore
-
-1. Once logged in to EdgeFirst Studio, you will be greeted with the following page.
+6. Once logged in to EdgeFirst Studio, you will be greeted with the following [Projects](TBA) page.
 
     <figure markdown="span">
     ![Starting Page](assets/studio-from-scratch.jpg){ align=center }
     <figcaption>Starting Page</figcaption>
     </figure>
 
-2. It is recommended to become familiar with using EdgeFirst Studio. Follow the linked tutorials below for more information.
+### EdgeFirst Studio Initial Steps
 
-    * [Guided Workflow](TBA)
-    * [Hands-On Workflow](TBA)
-    * [Studio Tutorials](TBA)
+Now that you are in the *Projects* page, start by creating your first project since this is 
+required in future tutorials. You can create a new project by clicking on the *CREATE* button
+on the top right corner of the page.
 
-3. Start by creating your project. Provide a name and description of the project 
-that reflects your goals. In this example, the project will be based on "People Detection".
+<figure markdown="span">
+![Create Project](assets/create-project.jpg){ align=center }
+<figcaption>Create Project</figcaption>
+</figure>
 
-    <figure markdown="span">
-    ![Create Project](assets/create-project.jpg){ align=center }
-    <figcaption>Create Project</figcaption>
-    </figure>
+Provide a name and a description of the project that reflects your goals. 
+In this example, the project will be based on "People Detection".
 
-4. A public dataset is readily available for user onboarding and trials, but this dataset is a *read-only* dataset. In order to have full access to the dataset, copy the dataset into the project you've created. Please see additional information below for features involving datasets.
+<figure markdown="span">
+![Project Details](assets/create-project-fields.jpg){ align=center }
+<figcaption>Project Details</figcaption>
+</figure>
 
-    * [Copying Datasets](TBA)
-    * [Viewing Datasets](TBA)
-    * [Combining Datasets](TBA)
-    * [Splitting Datasets](TBA)
-    * [Annotating Datasets](TBA)
+Your newly created project will be placed next to the public project "Sample Datasets". This public project contains *read-only* public datasets for users to become familiar with how datasets are managed in EdgeFirst Studio. 
 
-5. A dataset can be used to train and validate models. Follow the linked tutorials for more information.
+<figure markdown="span">
+![New Project](assets/new-project.jpg){ align=center }
+<figcaption>New Project</figcaption>
+</figure>
 
-    * [Model Tutorials](TBA)
+In this Quickstart guide, you have created your EdgeFirst Studio Account, logged in to EdgeFirst Studio, and created your very first project. The following links will provide additional tutorials for user onboarding in EdgeFirst Studio.
+
+* [Navigating the projects page](TBA)
+
+A public dataset is readily available for user onboarding and trials, but this dataset is a *read-only* dataset. In order to have full access to the dataset, copy the dataset into the project you've created. Please see additional information below for features involving datasets.
+
+* [Copying Datasets](TBA)
+* [Viewing Datasets](TBA)
+* [Combining Datasets](TBA)
+* [Splitting Datasets](TBA)
+* [Annotating Datasets](TBA)
+
+A dataset can be used to train and validate models. Follow the linked tutorials for more information.
+
+* [Model Tutorials](TBA)
+

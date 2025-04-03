@@ -1,6 +1,6 @@
 # Validating Modelpack
 
-This page will provide a walk-through for validating the performance of Vision models that have been trained using Modelpack in EdgeFirst Studio, through the [QuickStart Guide](../../getting_started/index.md) or [Training Modelpack](training.md).  This page will focus only on the validation of Modelpack.
+This page will provide a walk-through for validating the performance of Vision models that have been trained using Modelpack in EdgeFirst Studio, through the [QuickStart Guide](../../index.md) or [Training Modelpack](training.md).  This page will focus only on the validation of Modelpack.
 
 ## Select the Validator Tool
 

@@ -36,8 +36,8 @@ Edit user is used to update email or change password.
 - Check the roles to be enabled.
 - Click Add.
 
-#### Note: 
-The admin user that creates other users is responsible for the usage bills of the users.
+!!! note
+    The admin user that creates other users is responsible for the usage bills of the users.
 
 ### List, Edit and Delete Users
 - Click on the user icon on the top right corner.
@@ -46,8 +46,8 @@ The admin user that creates other users is responsible for the usage bills of th
 - The lists of users under this admin user will be displayed.
 - Click on the X to delete user and the edit icon to edit user. 
 
-#### Note: 
-Admin user can change the password of the users connect to this account.
+!!! note
+    Admin user can change the password of the users connect to this account.
 
 ## Create Organization
 An admin user can still add users without creating an organization. However creating an organization prints the organization information on the bills and provides information for other users.

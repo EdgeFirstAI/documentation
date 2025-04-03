@@ -17,11 +17,11 @@ The camera topic is published under the `/camera` namespace and offers the follo
 
 ## /camera/info
 
-The `/camera/info` topic publishes information about the camera using the [CameraInfo](api/sensor_msgs.md#camerainfo) schema.  The schema provides the specifications for the camera resolution and optical parameters.
+The `/camera/info` topic publishes information about the camera using the [CameraInfo](../api/sensor_msgs.md#camerainfo) schema.  The schema provides the specifications for the camera resolution and optical parameters.
 
 ## /camera/dma
 
-The `/camera/dma` topic uses the custom [DmaBuffer](api/edgefirst_msgs.md#dmabuffer) EdgeFirst schema for transmitting Linux [dma-buf](https://docs.kernel.org/driver-api/dma-buf.html) descriptors.  This enables high-performance zero-copy of camera buffers between applications with trivial overhead.  A DmaBuffer provides the frame file descriptor and parent process descriptor along with the buffer resolution and format described using a [FOURCC](https://fourcc.org) code.
+The `/camera/dma` topic uses the custom [DmaBuffer](../api/edgefirst_msgs.md#dmabuffer) EdgeFirst schema for transmitting Linux [dma-buf](https://docs.kernel.org/driver-api/dma-buf.html) descriptors.  This enables high-performance zero-copy of camera buffers between applications with trivial overhead.  A DmaBuffer provides the frame file descriptor and parent process descriptor along with the buffer resolution and format described using a [FOURCC](https://fourcc.org) code.
 
 The mechanism for sharing buffers is for the camera service to publish its own `pid` along with the file descriptor (`fd`) of the buffer along with the buffer parameters (width, height, stride, fourcc).  When a subscriber receives the message it must first duplicate the file descriptor into its own process space, this is done using the [pidfd_getfd](https://man7.org/linux/man-pages/man2/pidfd_getfd.2.html) system call.  Once the file descriptor has been duplicated it can be used normally, either used as-is with an API which can consume a `dma-buf` or by using [mmap](https://man7.org/linux/man-pages/man2/mmap.2.html) to map the contents of the buffer into user-space.
 
@@ -55,8 +55,8 @@ sequenceDiagram
 
 ## /camera/h264
 
-The `/camera/h264` topic uses Foxglove's [CompressedVideo](api/foxglove_msgs.md#compressedvideo) schema to publish h.264 encoded video frames.  The h.264 encoder uses key-frames, I-Frames, at a typical rate of 1Hz with the frames in-between encoded as P/B-Frames.  The decoder requires an initial I-Frame before it can decode additional frames.  This is typically handled transparently but means when sending `CompressedVideo` data to the h.264 decoder it could take up to a second until valid output is produced.
+The `/camera/h264` topic uses Foxglove's [CompressedVideo](../api/foxglove_msgs.md#compressedvideo) schema to publish h.264 encoded video frames.  The h.264 encoder uses key-frames, I-Frames, at a typical rate of 1Hz with the frames in-between encoded as P/B-Frames.  The decoder requires an initial I-Frame before it can decode additional frames.  This is typically handled transparently but means when sending `CompressedVideo` data to the h.264 decoder it could take up to a second until valid output is produced.
 
 ## /camera/jpeg
 
-The `/camera/jpeg` topic uses ROS2's [CompressedImage](api/sensor_msgs.md#compressedimage) schema to publish JPEG encoded camera frames.  Each frame is a complete JPEG image and can be decoded using any standard JPEG decoder.
+The `/camera/jpeg` topic uses ROS2's [CompressedImage](../api/sensor_msgs.md#compressedimage) schema to publish JPEG encoded camera frames.  Each frame is a complete JPEG image and can be decoded using any standard JPEG decoder.

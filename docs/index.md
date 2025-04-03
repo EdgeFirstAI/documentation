@@ -3,7 +3,7 @@
 ![EdgeFirst Studio](assets/studio.png#only-light)
 ![EdgeFirst Studio](assets/studio-dark.png#only-dark)
 
-Welcome to EdgeFirst Studio, this tutorial will walk you through the full end-to-end workflow.
+Welcome to EdgeFirst Studio (formerly Deep View Enterprise), this tutorial will walk you through the full end-to-end workflow.
 Though not required, we urge you to follow along with an appropriate edge device to test the
 models on the actual hardware.
 

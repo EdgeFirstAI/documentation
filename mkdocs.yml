@@ -65,9 +65,6 @@ plugins:
           load_external_modules: true
           inventories:
           - https://docs.python.org/3/objects.inv
-  - redirects:
-      redirect_maps:
-        'models/modelpack/index.md': 'models/modelpack/training.md'
 
 markdown_extensions:
   - admonition  

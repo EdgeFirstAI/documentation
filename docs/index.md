@@ -23,6 +23,8 @@ cloud (studio) tools.
 
 ## EdgeFirst Studio Quickstart
 
+This guide describes the steps for onboarding new users to EdgeFirst Studio by creating their account, logging into EdgeFirst Studio, and creating their first project. 
+
 ### Sign Up
 
 1. If you haven't already created an EdgeFirst Studio Account, start by [creating an account](https://dveml.com/#/login?initialMode=new-user). 
@@ -57,7 +59,7 @@ cloud (studio) tools.
     <figcaption>Starting Page</figcaption>
     </figure>
 
-### EdgeFirst Studio Initial Steps
+### Initial Steps
 
 Now that you are in the *Projects* page, start by creating your first project since this is 
 required in future tutorials. You can create a new project by clicking on the *CREATE* button
@@ -85,17 +87,8 @@ Your newly created project will be placed next to the public project "Sample Dat
 
 In this Quickstart guide, you have created your EdgeFirst Studio Account, logged in to EdgeFirst Studio, and created your very first project. The following links will provide additional tutorials for user onboarding in EdgeFirst Studio.
 
-* [Navigating the projects page](TBA)
-
-A public dataset is readily available for user onboarding and trials, but this dataset is a *read-only* dataset. In order to have full access to the dataset, copy the dataset into the project you've created. Please see additional information below for features involving datasets.
-
-* [Copying Datasets](TBA)
-* [Viewing Datasets](TBA)
-* [Combining Datasets](TBA)
-* [Splitting Datasets](TBA)
-* [Annotating Datasets](TBA)
-
-A dataset can be used to train and validate models. Follow the linked tutorials for more information.
-
-* [Model Tutorials](TBA)
-
+* [EdgeFirst Studio: From Start to Deployment](getting_started/workflows.md)
+* [Dataset Management](getting_started/datasets.md)
+* [Model Training, Validation, and Deployment](getting_started/models.md)
+* [Command-Line Interface: Using the EdgeFirst Studio Middleware](getting_started/perception.md)
+* [EdgeFirst Devices: Setup and Boot Guide](getting_started/platforms.md)

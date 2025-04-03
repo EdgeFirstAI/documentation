@@ -92,4 +92,4 @@ In this Quickstart guide, you have created your EdgeFirst Studio Account, logged
 * [Dataset Management](getting_started/datasets.md)
 * [Model Training, Validation, and Deployment](getting_started/models.md)
 * [Command-Line Interface: Using the EdgeFirst Studio Middleware](getting_started/perception.md)
-* [EdgeFirst Devices: Setup and Boot Guide](getting_started/platforms.md)
+* [EdgeFirst Platforms: Setup and Boot Guide](getting_started/platforms.md)

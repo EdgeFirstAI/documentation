@@ -574,6 +574,14 @@
           
         
       
+        
+          
+        
+      
+        
+          
+        
+      
     
     
       
@@ -827,6 +835,50 @@
   
   <span class="md-ellipsis">
     Automatic Ground Truth Generation (AGTG)
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../studio/snapshots/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Snapshots
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../studio/dataio/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Bridge In API
     
   </span>
   
@@ -2544,9 +2596,9 @@
 </ul>
 <p>The camera topic is published under the <code>/camera</code> namespace and offers the following sub-topics.  Some topics are optional and might not be available on the current system, refer to the camera service configuration documentation for details.</p>
 <h2 id="camerainfo">/camera/info</h2>
-<p>The <code>/camera/info</code> topic publishes information about the camera using the <a href="api/sensor_msgs.md#camerainfo">CameraInfo</a> schema.  The schema provides the specifications for the camera resolution and optical parameters.</p>
+<p>The <code>/camera/info</code> topic publishes information about the camera using the <a href="../../api/sensor_msgs/#camerainfo">CameraInfo</a> schema.  The schema provides the specifications for the camera resolution and optical parameters.</p>
 <h2 id="cameradma">/camera/dma</h2>
-<p>The <code>/camera/dma</code> topic uses the custom <a href="api/edgefirst_msgs.md#dmabuffer">DmaBuffer</a> EdgeFirst schema for transmitting Linux <a href="https://docs.kernel.org/driver-api/dma-buf.html">dma-buf</a> descriptors.  This enables high-performance zero-copy of camera buffers between applications with trivial overhead.  A DmaBuffer provides the frame file descriptor and parent process descriptor along with the buffer resolution and format described using a <a href="https://fourcc.org">FOURCC</a> code.</p>
+<p>The <code>/camera/dma</code> topic uses the custom <a href="../../api/edgefirst_msgs/#dmabuffer">DmaBuffer</a> EdgeFirst schema for transmitting Linux <a href="https://docs.kernel.org/driver-api/dma-buf.html">dma-buf</a> descriptors.  This enables high-performance zero-copy of camera buffers between applications with trivial overhead.  A DmaBuffer provides the frame file descriptor and parent process descriptor along with the buffer resolution and format described using a <a href="https://fourcc.org">FOURCC</a> code.</p>
 <p>The mechanism for sharing buffers is for the camera service to publish its own <code>pid</code> along with the file descriptor (<code>fd</code>) of the buffer along with the buffer parameters (width, height, stride, fourcc).  When a subscriber receives the message it must first duplicate the file descriptor into its own process space, this is done using the <a href="https://man7.org/linux/man-pages/man2/pidfd_getfd.2.html">pidfd_getfd</a> system call.  Once the file descriptor has been duplicated it can be used normally, either used as-is with an API which can consume a <code>dma-buf</code> or by using <a href="https://man7.org/linux/man-pages/man2/mmap.2.html">mmap</a> to map the contents of the buffer into user-space.</p>
 <pre class="mermaid"><code>sequenceDiagram
     loop
@@ -2575,9 +2627,9 @@
 <p>Mapping DMA buffers into user-space requires additional synchronization primitives around accesses.  We cover these details in our camera sample application.  Further details are documented in the Linux Kernel Manual under <a href="https://docs.kernel.org/driver-api/dma-buf.html#cpu-access-to-dma-buffer-objects">CPU Access to DMA Buffer Objects</a>.</p>
 </div>
 <h2 id="camerah264">/camera/h264</h2>
-<p>The <code>/camera/h264</code> topic uses Foxglove's <a href="api/foxglove_msgs.md#compressedvideo">CompressedVideo</a> schema to publish h.264 encoded video frames.  The h.264 encoder uses key-frames, I-Frames, at a typical rate of 1Hz with the frames in-between encoded as P/B-Frames.  The decoder requires an initial I-Frame before it can decode additional frames.  This is typically handled transparently but means when sending <code>CompressedVideo</code> data to the h.264 decoder it could take up to a second until valid output is produced.</p>
+<p>The <code>/camera/h264</code> topic uses Foxglove's <a href="../../api/foxglove_msgs/#compressedvideo">CompressedVideo</a> schema to publish h.264 encoded video frames.  The h.264 encoder uses key-frames, I-Frames, at a typical rate of 1Hz with the frames in-between encoded as P/B-Frames.  The decoder requires an initial I-Frame before it can decode additional frames.  This is typically handled transparently but means when sending <code>CompressedVideo</code> data to the h.264 decoder it could take up to a second until valid output is produced.</p>
 <h2 id="camerajpeg">/camera/jpeg</h2>
-<p>The <code>/camera/jpeg</code> topic uses ROS2's <a href="api/sensor_msgs.md#compressedimage">CompressedImage</a> schema to publish JPEG encoded camera frames.  Each frame is a complete JPEG image and can be decoded using any standard JPEG decoder.</p>
+<p>The <code>/camera/jpeg</code> topic uses ROS2's <a href="../../api/sensor_msgs/#compressedimage">CompressedImage</a> schema to publish JPEG encoded camera frames.  Each frame is a complete JPEG image and can be decoded using any standard JPEG decoder.</p>
 
 
 

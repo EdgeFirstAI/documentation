@@ -17,6 +17,8 @@ nav:
           - studio/datasets/gallery.md
           - studio/datasets/annotations.md
       - studio/agtg/index.md
+      - studio/snapshots/index.md
+      - studio/dataio/index.md
   - Datasets:
       - datasets/index.md
       - datasets/tutorials.md

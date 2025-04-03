@@ -2587,35 +2587,35 @@
 
 
 <h1 id="software-updates">Software Updates</h1>
-<p>The Maivin platform runs a Linux operating system which is based on the <a href="https://developer.toradex.com/torizon/">Torizon</a> distribution.  The Maivin version of the distribution is refered to as "Torizon for Maivin" (TfM).  This TfM distribution uses <a href="https://ostreedev.github.io/ostree/">OSTree</a> to manage software udpates, this updates both the Linux operating system including the kernel, drivers, and core system packages as well as the EdgeFirst Middleware which provides the perception stack.</p>
-<p>The version naming for the TfM distribution follows the YEAR.MONTH.PATCH format.  The YEAR and MONTH refer to the data of the initial release of the software and the PATCH is the incremental patch release within this release cycle.  The upstream Torizon OS version number is documented in the release notes.</p>
+<p>The Maivin platform runs a Linux operating system which is based on the <a href="https://developer.toradex.com/torizon/">Torizon</a> distribution.  The Maivin version of the distribution is refered to as Torizon for Maivin.  This Torizon for Maivin distribution uses <a href="https://ostreedev.github.io/ostree/">OSTree</a> to manage software udpates, this updates both the Linux operating system including the kernel, drivers, and core system packages as well as the EdgeFirst Middleware which provides the perception stack.</p>
+<p>The version naming for the Torizon for Maivin distribution follows the YEAR.MONTH.PATCH format.  The YEAR and MONTH refer to the data of the initial release of the software and the PATCH is the incremental patch release within this release cycle.  The upstream Torizon OS version number is documented in the release notes.</p>
 <h2 id="ostree">OSTree</h2>
 <p>OSTree is a tool that provides a way to manage the filesystem of a Linux system as a series of snapshots.  Each snapshot is a complete filesystem image that can be booted into.  The system can be updated by switching to a new snapshot.  This allows for atomic updates where the system is either in the old state or the new state.  If the update fails the system can be rolled back to the previous snapshot.</p>
-<p>The TfM OSTree repository uses branches to manage the different versions of the software.  Three core branches are used:</p>
+<p>The Torizon for Maivin OSTree repository uses branches to manage the different versions of the software.  Three core branches are used:</p>
 <ul>
-<li>torizon/maivin/release</li>
-<li>
-<p>The release branch is the stable branch that is used for production systems.  This branch tracks the latest YEAR.MONTH.PATCH release.</p>
+<li><strong>torizon/maivin/release</strong><ul>
+<li>The release branch is the stable branch that is used for production systems.  This branch tracks the latest YEAR.MONTH.PATCH release.</li>
+</ul>
 </li>
-<li>
-<p>torizon/maivin/testing</p>
+<li><strong>torizon/maivin/testing</strong><ul>
+<li>The testing branch is used for testing new software releases.  This branch tracks the latest YEAR.MONTH.PATCHrcX release candidates.</li>
+</ul>
 </li>
-<li>
-<p>The testing branch is used for testing new software releases.  This branch tracks the latest YEAR.MONTH.PATCHrcX release candidates.</p>
-</li>
-<li>
-<p>torizon/maivin/develop</p>
-</li>
+<li><strong>torizon/maivin/develop</strong><ul>
 <li>The dev branch is used for development of new features.  This branch is updated frequently and is likely to contain breaking or undocumented changes.  This branch should only be used by developers working on the platform.</li>
 </ul>
-<div class="highlight"><pre><span></span><code>It is recommended that users should only pull ostree updates from the Release branch.
-</code></pre></div>
+</li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>It is recommended that users should only pull ostree updates from the Release branch.</p>
+</div>
 <p>Other branches may be used for specific purposes such as tracking major changes to the system such as a new major Torizon update or similar updates that have a high impact to the overall system.</p>
-<p>The currently booted TfM operating system release information can be read from the <code>/etc/os-release</code> file.</p>
+<p>The currently booted Torizon for Maivin operating system release information can be read from the <code>/etc/os-release</code> file.</p>
 <div class="highlight"><pre><span></span><code>cat<span class="w"> </span>/etc/os-release
 </code></pre></div>
 <h3 id="updating-the-system">Updating the System</h3>
-<p>The TfM system can be updated using the OSTree client.  The client is a command-line utility that can be used to manage the system snapshots.</p>
+<p>The Torizon for Maivin system can be updated using the OSTree client.  The client is a command-line utility that can be used to manage the system snapshots.</p>
 <p>To update the release:
 1. Access your Maivin through SSH
 2. Pull the latest Maivn release update with the <code>ostree pull</code> command:

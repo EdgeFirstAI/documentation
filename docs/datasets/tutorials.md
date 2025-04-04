@@ -122,7 +122,14 @@ The progress will be shown on the dataset specified in the project.
 <figcaption>Restore Progress</figcaption>
 </figure>
 
-Once completed, [navigate to the gallery](#viewing-datasets) of the dataset to visualize the annotations. The figure below shows a side-by-side display of the annotations from frames 1-3. The annotations for "people" are shown as both segmentation masks and bounding boxes. 
+Once completed, the dataset will now contain annotations that resulted from the auto-annotation process.
+
+<figure markdown="span">
+![Restored Dataset](assets/restored-dataset.jpg){ align=center }
+<figcaption>Restored Dataset</figcaption>
+</figure>
+
+Next [navigate to the gallery](#viewing-datasets) of the dataset by clicking on the gallery button highlighted in red to visualize the annotations. The figure below shows a side-by-side display of the annotations from frames 1-3. The annotations for "people" are shown as both segmentation masks and bounding boxes. 
 
 **Frame 1** | **Frame 2** | **Frame 3** 
 :------------------:|:------------------:|:------------------:
@@ -185,27 +192,13 @@ Click *SUBMIT* to accept the annotation.
 
 Part of the audit process is to go over each sample in the dataset and correcting any missed annotations or incorrect annotations.
 
-## Public Datasets
-
-When you first log into EdgeFirst Studio, a public project known as "Sample Datasets" will be provided.
-
-<figure markdown="span">
-![Public Project](assets/projects-page.jpg){ align=center }
-<figcaption>Public Project</figcaption>
-</figure>
-
-This project will contain two public datasets: *Raivin Pedestrians (ultra-short range) 2025.03* and *COCO 2017*.
-
-<figure markdown="span">
-![Public Datasets](assets/public-datasets.jpg){ align=center }
-<figcaption>Public Datasets</figcaption>
-</figure>
-
-The dataset *Raivin Pedestrians (ultra-short range) 2025.03* contains 3D bounding box annotations which is only eligible for [training Fusion models](../models/fusion/training.md). The dataset *COCO 2017* contains 2D bounding box annotations which is only eligble for [training Vision models](../models/modelpack/training.md).
-
-A public dataset is readily available for user onboarding and trials, but this dataset is a *read-only* dataset. By default users can [view the dataset](#viewing-datasets). Otherwise, in order to have full access to the dataset, users *MUST* [copy the dataset](#copying-datasets) into the project they've created. 
-
 ## Viewing Datasets
+
+This tutorial will show how to view the contents in the dataset.
+
+<div style="text-align: center;">
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/afPsj7_7SnU" title="Viewing Datasets" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+</div>
 
 In the project's page, you can click on the dataset button highlighted in red
 to view the datasets contained in the project.
@@ -244,6 +237,10 @@ When the sequence is clicked, you will now see the frames stored in the sequence
 ## Creating Datasets
 
 This tutorial will show how to create an empty dataset container in EdgeFirst Studio. This container is needed for [copying](#copying-datasets) or [combining](#combining-datasets) datasets as shown in the next sections.
+
+<div style="text-align: center;">
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/DJabdEHaZ8E?start=42&end=94" title="Creating Datasets" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+</div>
 
 To create a dataset, first select the project to store the new dataset. Next click the dataset button (highlighted in red) to view the datasets in that selected project.
 
@@ -291,6 +288,12 @@ You have now created a dataset and an annotation set container as shown below. T
 
 ## Copying Datasets
 
+This tutorial will show how to copy the dataset to a different container.
+
+<div style="text-align: center;">
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/qLv8ayxQ-Ns?start=326&end=372" title="Copying Datasets" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+</div>
+
 To copy a dataset, first [create a dataset](#creating-datasets) container. Once created, select the *Copy Dataset* from the dataset options on the newly created dataset container as shown below.
 
 <figure markdown="span">
@@ -325,6 +328,10 @@ The process of combining datasets consists of multiple copy processes on a given
 ## Splitting Datasets
 
 A proper dataset has samples reserved for training and validation. This tutorial will show how to split the samples in the dataset into training and validation groups.
+
+<div style="text-align: center;">
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/qLv8ayxQ-Ns?start=0&end=64" title="Splitting Datasets" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+</div>
 
 Consider the following dataset without any groups reserved.
 

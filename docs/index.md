@@ -61,7 +61,7 @@ This guide describes the steps for onboarding new users to EdgeFirst Studio by c
 
 ### Initial Steps
 
-Now that you are in the *Projects* (main) page, you will see a public project "Sample Datasets" containing [public datasets](datasets/tutorials.md#public-datasets) and completed experiments. More information will be provided in the [Guided Workflow](getting_started/workflows.md#guided-workflow-with-completed-experiments). 
+Now that you are in the *Projects* (main) page, you will see a public project "Sample Datasets" containing public datasets and completed experiments. More information will be provided in the [Guided Workflow](getting_started/workflows.md#guided-workflow-with-completed-experiments). 
 
 For now let's start by creating your first project since this is required in future tutorials. You can create a new project by clicking on the *CREATE* button
 on the top right corner of the page.

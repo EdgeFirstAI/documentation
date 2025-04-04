@@ -1,19 +1,7 @@
-# Deep View Enterprise
+# EdgeFirst Studio 
 
-Deep View Enterprise (DVE) is a multi stack platform for performing various Machine learning operations (MLOps). MLOps bundles standard workflows needed to train and deploy models. Furthermore, Deep View Enterprise ensures a seamless system for managing, tracking, and monitoring the lifecycle of the user's experiments. Lastly, Deep View Enterprise provides a set of workflows to automate data collection and curation, and model training, validation, and inference.
+EdgeFirst Studio (Formerly Deep View Enterprise) is a multi stack platform for performing various Machine Learning Operations (MLOps). 
 
-There are several workflows that define Deep View Enterprise's Machine Learning Operations:
-
-1. Dataset Collection
-2. Automatic Ground Truth Generation (AGTG)
-3. Dataset Curation
-4. Model Training
-    - Fusion Training
-    - ModelPack Training
-5. Model Validation
-    - Fusion Validation
-    - ModelPack Validation
-6. Model Inference
-
-> *Note:*
-> *Please see the links attached for further details regarding the individual workflows.*
+<div style="text-align: center;">
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/9bthwze0Q4Q" title="EdgeFirst Studio Introduction" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+</div>

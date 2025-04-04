@@ -41,7 +41,7 @@ Clicking on any of these sequences will open individual images in the sequence w
 <figcaption>Fusion Annotations</figcaption>
 </figure>
 
-For cases where the annotations need corrections, please see [Dataset Tutorials](../../datasets/tutorials.md#manual-annotations) for more details.
+For cases where the annotations need corrections, please see [Dataset Tutorials](../../datasets/tutorials.md#audit-annotations) for more details.
 
 ## Select the Trainer Tool
 

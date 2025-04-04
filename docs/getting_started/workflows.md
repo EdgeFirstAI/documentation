@@ -27,9 +27,27 @@ When a user first logs in, they will be greeted with the *Projects* page which c
 
 A project will contain datasets, training sessions, automation tasks, labeling/annotation tasks, and validation sessions. For an in-depth tutorial of the context of EdgeFirst Studio and navigating the studio, see [Navigating EdgeFirst Studio](../studio/navigation/index.md).
 
-### Datasets
+## Public Datasets
 
-The sample project will contain two [public datasets](../datasets/tutorials.md#public-datasets): *Raivin Pedestrians (ultra-short range) 2025.03* and *COCO 2017*. The following figure describes the atttributes of any given dataset.
+When you first log into EdgeFirst Studio, a public project known as "Sample Datasets" will be provided.
+
+<figure markdown="span">
+![Public Project](assets/projects-page.jpg){ align=center }
+<figcaption>Public Project</figcaption>
+</figure>
+
+This project will contain two public datasets: *Raivin Pedestrians (ultra-short range) 2025.03* and *COCO 2017*.
+
+<figure markdown="span">
+![Public Datasets](assets/public-datasets.jpg){ align=center }
+<figcaption>Public Datasets</figcaption>
+</figure>
+
+The dataset *Raivin Pedestrians (ultra-short range) 2025.03* contains 3D bounding box annotations which is only eligible for [training Fusion models](../models/fusion/training.md). The dataset *COCO 2017* contains 2D bounding box annotations which is only eligble for [training Vision models](../models/modelpack/training.md).
+
+A public dataset is readily available for user onboarding and trials, but this dataset is a *read-only* dataset. By default users can [view the dataset](../datasets/tutorials.md#viewing-datasets). Otherwise, in order to have full access to the dataset, users *MUST* [copy the dataset](../datasets/tutorials.md#copying-datasets) into the project they've created. 
+
+The following figure describes the atttributes of any given dataset.
 
 <figure markdown="span">
 ![Dataset Attributes](../studio/assets/dataset-attributes.jpg){ align=center }
@@ -95,12 +113,12 @@ If you have an EdgeFirst Platform, please proceed to step 1. Otherwise, proceed 
 
 ### 1. Record Data
 
-When starting from scratch, it is common to start recording your own data to build your own dataset. This step requires an [EdgeFirst Platform](../platforms/quickstart.md) for recording data. However, we also provide [Public Datasets](../datasets/tutorials.md#public-datasets) for users without an EdgeFirst Platform. 
+When starting from scratch, it is common to start recording your own data to build your own dataset. This step requires an [EdgeFirst Platform](../platforms/quickstart.md) for recording data. However, we also provide [Public Datasets](#public-datasets) for users without an EdgeFirst Platform. 
 
 Deploying an EdgeFirst Platform will allow users access to the following page for recording data.
 
 <figure markdown="span">
-![WebUI Service Page](../datasets/assets/webui-service-page.jpg){ align=center }
+![WebUI Service Page](../datasets/assets/webui-service-page.jpg){ align=center }W
 <figcaption>Preview: WebUI Service</figcaption>
 </figure>
 
@@ -137,7 +155,7 @@ Once an MCAP recording has been uploaded to EdgeFirst Studio, we can then run au
 <figcaption>Preview: Restore for Auto-Annotations Feature</figcaption>
 </figure>
 
-For instructions on annotating the uploaded data, refer to the [Annotating Data Tutorial](../datasets/tutorials.md#data---dataset-annotating-data).
+For instructions on annotating the uploaded data, refer to the [Annotating Data Tutorial](../datasets/tutorials.md#data-dataset-annotating-data).
 
 ### 5. Combine Multiple Datasets
 

@@ -3,7 +3,7 @@
 ![EdgeFirst Studio](assets/studio.png#only-light)
 ![EdgeFirst Studio](assets/studio-dark.png#only-dark)
 
-Welcome to EdgeFirst Studio (formerly Deep View Enterprise)!  This guide will introduce you to the compoents of the EdgeFirst AI Ecosystem.
+Welcome to EdgeFirst Studio (formerly Deep View Enterprise)!  This guide will introduce you to the components of the EdgeFirst AI Ecosystem.
 !!! tip
     Though not required, where appropriate, we recommend you to follow along with an appropriate edge device to test the models on the actual hardware.
 
@@ -14,7 +14,7 @@ Welcome to EdgeFirst Studio (formerly Deep View Enterprise)!  This guide will in
 
 ## EdgeFirst Platforms Quickstart
 
-If you have recently received one of these EdgeFirst Platforms, you may want to first start with
+If you have recently received one of these EdgeFirst Platforms, you should first start with
 the [EdgeFirst Platforms Quickstart](platforms/quickstart.md) and then come back once you're ready to get started with EdgeFirst Studio.
 
 **[Maivin 1](platforms/index.md)** | **[Maivin 2](platforms/index.md)** | **[Raivin](platforms/index.md)**

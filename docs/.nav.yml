@@ -24,6 +24,8 @@ nav:
       - datasets/index.md
       - datasets/tutorials.md
       - datasets/format.md
+      - datasets/types.md
+      - datasets/zoo.md
   - Models:
       - models/index.md
       - Modelpack:

@@ -30,65 +30,65 @@ If you have an EdgeFirst Platform, please proceed to step 1. Otherwise, proceed 
 
 ### 1. Record Data
 
-When starting from scratch, it is common to start recording your own data to build your own dataset. This step requires an [EdgeFirst Platform](../platforms/quickstart.md) for recording data. However, we also provide [Public Datasets](datasets.md#public-datasets) for users without an EdgeFirst Platform. 
+When starting from scratch, it is common to start recording your own data to build your own dataset. This step requires an [EdgeFirst Platform](../platforms/quickstart.md) for recording data. However, we also provide [Public Datasets](../datasets/tutorials.md#public-datasets) for users without an EdgeFirst Platform. 
 
 Deploying an EdgeFirst Platform will allow users access to the following page for recording data.
 
 <figure markdown="span">
-![WebUI Service Page](assets/webui-service-page.jpg){ align=center }
+![WebUI Service Page](../datasets/assets/webui-service-page.jpg){ align=center }
 <figcaption>Preview: WebUI Service</figcaption>
 </figure>
 
-For instructions on capturing and recording data, refer to the [Capture/Record Data Tutorial](datasets.md#capturerecord-data).
+For instructions on capturing and recording data, refer to the [Capture/Record Data Tutorial](../datasets/tutorials.md#capturerecord-data).
 
 ### 2. Download Recorded Data
 
 Once data is recorded which is stored as an MCAP file, download the MCAP file.
 
 <figure markdown="span">
-![Recorded MCAP](assets/recorded-mcap.jpg){ align=center }
+![Recorded MCAP](../datasets/assets/recorded-mcap.jpg){ align=center }
 <figcaption>Preview: Download MCAP</figcaption>
 </figure>
 
-For instructions on downloading the recorded MCAP file, refer to the [Download Captured Data Tutorial](datasets.md#download-recorded-data).
+For instructions on downloading the recorded MCAP file, refer to the [Download Captured Data Tutorial](../datasets/tutorials.md#download-recorded-data).
 
 ### 3. Upload Recorded Data to EdgeFirst Studio
 
 Once an MCAP file has been downloaded, upload the MCAP recording to EdgeFirst Studio.
 
 <figure markdown="span">
-![Upload MCAP](assets/mcap-upload.jpg){ align=center }
+![Upload MCAP](../datasets/assets/mcap-upload.jpg){ align=center }
 <figcaption>Preview: Upload Feature</figcaption>
 </figure>
 
-For instructions on uploading the recorded MCAP file to EdgeFirst Studio, refer to the [Upload Recorded Data Tutorial](datasets.md#upload-recorded-data-to-edgefirst-studio).
+For instructions on uploading the recorded MCAP file to EdgeFirst Studio, refer to the [Upload Recorded Data Tutorial](../datasets/tutorials.md#upload-recorded-data-to-edgefirst-studio).
 
 ### 4. Annotate Dataset
 
 Once an MCAP recording has been uploaded to EdgeFirst Studio, we can then run auto-annotations on the recording to reduce the effort needed from the user. Otherwise, the user can manually annotate the dataset.
 
 <figure markdown="span">
-![Restore Snapshot](assets/restore-snapshot.jpg){ align=center }
+![Restore Snapshot](../datasets/assets/restore-snapshot.jpg){ align=center }
 <figcaption>Preview: Restore for Auto-Annotations Feature</figcaption>
 </figure>
 
-For instructions on annotating the uploaded data, refer to the [Annotating Data Tutorial](datasets.md#data---dataset-annotating-data).
+For instructions on annotating the uploaded data, refer to the [Annotating Data Tutorial](../datasets/tutorials.md#data---dataset-annotating-data).
 
 ### 5. Combine Multiple Datasets
 
-This step utilizes the [copy dataset feature](datasets.md#copying-datasets) in EdgeFirst Studio. This feature
+This step utilizes the [copy dataset feature](../datasets/tutorials.md#copying-datasets) in EdgeFirst Studio. This feature
 allows copying of *read-only* datasets into your own dataset to give write permissions. This feature can also copy multiple datasets into a single container to expand the overall dataset. 
 
 <figure markdown="span">
-![Copy Dataset Options](assets/copy-dataset-options.jpg){ align=center }
+![Copy Dataset Options](../datasets/assets/copy-dataset-options.jpg){ align=center }
 <figcaption>Preview: Copy Datasets</figcaption>
 </figure>
 
-For users that do not have an EdgeFirst Platform, but would like to use the public *read-only* datasets provided, follow the instructions for [Copying Datasets](datasets.md#copying-datasets) into
+For users that do not have an EdgeFirst Platform, but would like to use the public *read-only* datasets provided, follow the instructions for [Copying Datasets](../datasets/tutorials.md#copying-datasets) into
 a dataset container with write access.
 
 For users that followed steps 1-4 and would like to expand their dataset, follow the
-instructions for [Combining Datasets](datasets.md#combining-datasets)
+instructions for [Combining Datasets](../datasets/tutorials.md#combining-datasets)
 
 ### 6. Split Dataset
 
@@ -97,11 +97,11 @@ dedicated training and validation groups. This intention is to reserve samples
 only for training and samples only for validation.
 
 <figure markdown="span">
-![Groups Field](assets/groups-field.jpg){ align=center }
+![Groups Field](../datasets/assets/groups-field.jpg){ align=center }
 <figcaption>Preview: Dataset Split</figcaption>
 </figure>
 
-For instructions on splitting the dataset in train and validation groups, refer to the [Splitting Datasets Tutorial](datasets.md#splitting-datasets)
+For instructions on splitting the dataset in train and validation groups, refer to the [Splitting Datasets Tutorial](../datasets/tutorials.md#splitting-datasets)
 
 ### 7. Train Model
 

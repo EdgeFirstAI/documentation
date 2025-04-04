@@ -1,355 +1,41 @@
 # Dataset Management
 
-This guide describes the various dataset tutorials/workflows in EdgeFirst Studio from capture to annotation and dataset management (curation).
+EdgeFirst Studio Datasets are structured based on the [EdgeFirst Dataset Format](../datasets/format.md). EdgeFirst Studio supports dataset workflows from capture to annotation and dataset management (curations).
 
-## Capture/Record Data
-
-This tutorial is a high level tutorial that provides an overview for recording data using an [EdgeFirst Platform](../platforms/index.md). For an in depth tutorial, please refer to the [MCAP Recording Service](../platforms/recording.md).
+* [Capture/Record Data](../datasets/tutorials.md#capturerecord-data)
 
 <div style="text-align: center;">
     <iframe width="560" height="315" src="https://www.youtube.com/embed/GVlkq9p0G5c" title="Dataset Recording" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 </div>
 
-On your browser, enter the following URL `https://<hostname>/` and the following page will appear.
-
-!!! note
-    Replace `<hostname>` with the hostname of your device.
-
-You will be greeted to the [Web UI Service](../platforms/walkthrough.md) page.
-
-<figure markdown="span">
-![WebUI Service Page](assets/webui-service-page.jpg){ align=center }
-<figcaption>WebUI Service Page</figcaption>
-</figure>
-
-To record data, click on the *MCAP Recorder* service highlighted in red above. Once clicked, you will be greeted with the [MCAP Recording Service](../platforms/walkthrough.md#the-mcap-recording-page) page.
-
-<figure markdown="span">
-![MCAP Recording Page](assets/mcap-recording-page.jpg){ align=center }
-<figcaption>MCAP Recording Page</figcaption>
-</figure>
-
-To start recording toggle/enable the *Recording* button indicated above and
-to stop the recording retoggle/disable the same button. 
-
-For more information on managing recordings, please see the [Managing Recordings Tutorial](../platforms/recording.md#managing-recordings).
-
-## Download Recorded Data
-
-This tutorial shows how to download recorded MCAP data shown in [Capture/Record Data Tutorial](#capturerecord-data). For more information on downloading MCAPs, please see [Downloading and Analysis](../platforms/recording.md#downloading-and-analysis).
+* [Download Recorded Data](../datasets/tutorials.md#download-recorded-data)
 
 <div style="text-align: center;">
     <iframe width="560" height="315" src="https://www.youtube.com/embed/j-75Q5-_dC0?start=0&end=558" title="Download Recording" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 </div>
 
-The MCAP files are listed under the list of MCAP files which can then be downloaded to your PC.
-
-<figure markdown="span">
-![Recorded MCAP](assets/recorded-mcap.jpg){ align=center }
-<figcaption>Recorded MCAP</figcaption>
-</figure>
-
-## Upload Recorded Data to EdgeFirst Studio
-
-This tutorial shows how to upload a downloaded MCAP recording shown in [Download Recorded Data Tutorial](#download-recorded-data).
+* [Upload Recorded Data to EdgeFirst Studio](../datasets/tutorials.md#upload-recorded-data-to-edgefirst-studio)
 
 <div style="text-align: center;">
     <iframe width="560" height="315" src="https://www.youtube.com/embed/j-75Q5-_dC0?start=558&end=720" title="Upload MCAP" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 </div>
 
-In EdgeFirst Studio, select *Data Snapshots* under the tool options.
-
-<figure markdown="span">
-![Data Snapshots](assets/data-snapshots.jpg){ align=center }
-<figcaption>Data Snapshots</figcaption>
-</figure>
-
-!!! note
-    A project has already been created intended for people detection. This step
-    has been covered in [Getting Started](../index.md#initial-steps).
-
-Once you are in the *Data Snapshots* page, upload the recorded MCAP by clicking *FROM FILE* which opens a new window dialog for selecting the MCAP downloaded in your PC.
-
-<figure markdown="span">
-![Upload MCAP](assets/mcap-upload.jpg){ align=center }
-<figcaption>Upload MCAP</figcaption>
-</figure>
-
-Once the MCAP file is selected, this would start the upload progress in EdgeFirst Studio. This upload progress may take several minutes depending on the size of the MCAP. Once the upload is complete, the status will be shown like the figure on the right. 
-
-**Upload Progress** | **Completed Upload** 
-:------------------:|:------------------:
-![Progress](assets/upload-progress.jpg) | ![Complete](assets/upload-completed.jpg)
-
-## Data -> Dataset: Annotating Data
-
-This tutorial shows how to annotate an uploaded MCAP recording shown in [Upload Recorded Data Tutorial](#upload-recorded-data-to-edgefirst-studio).
-
-##### Auto Annotations
-
-To reduce the effort required by the user to annotate the data, part of this process is to run auto-annotations on the uploaded data. 
+* [Annotate Data](../datasets/tutorials.md#data---dataset-annotating-data)
 
 <div style="text-align: center;">
     <iframe width="560" height="315" src="https://www.youtube.com/embed/j-75Q5-_dC0?start=720&end=1163" title="Auto Annotate Dataset" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 </div>
 
-To run auto-annotations on the recorded data, click *Restore* on the uploaded snapshot.
+* [Public Datasets](../datasets/tutorials.md#public-datasets)
 
-<figure markdown="span">
-![Restore Snapshot](assets/restore-snapshot.jpg){ align=center }
-<figcaption>Restore Snapshot</figcaption>
-</figure>
+* [Viewing Datasets](../datasets/tutorials.md#viewing-datasets)
 
-The following fields are for the user to specify. Adjust the following fields for your own use case.
+* [Creating Datasets](../datasets/tutorials.md#creating-datasets)
 
-<figure markdown="span">
-![Restore Snapshot Fields](assets/restore-snapshot-fields.jpg){ align=center }
-<figcaption>Restore Snapshot Fields</figcaption>
-</figure>
+* [Copying Datasets](../datasets/tutorials.md#copying-datasets)
 
-Once specifed, click *RESTORE SNAPSHOT* to start the auto-annotation process. This
-will start the auto-annotation process.
+* [Combining Datasets](../datasets/tutorials.md#combining-datasets)
 
-<figure markdown="span">
-![Restore Process](assets/snapshot-started.jpg){ align=center }
-<figcaption>Restore Process</figcaption>
-</figure>
+* [Splitting Datasets](../datasets/tutorials.md#splitting-datasets)
 
-The progress will be shown on the dataset specified in the project.
-
-<figure markdown="span">
-![Restore Progress](assets/restore-snapshot-progress.jpg){ align=center }
-<figcaption>Restore Progress</figcaption>
-</figure>
-
-Once completed, [navigate to the gallery](#viewing-datasets) of the dataset to visualize the annotations. The figure below shows a side-by-side display of the annotations from frames 1-3. The annotations for "people" are shown as both segmentation masks and bounding boxes. 
-
-**Frame 1** | **Frame 2** | **Frame 3** 
-:------------------:|:------------------:|:------------------:
-![Annotation 1](assets/annotation-1.jpg) | ![Annotation 2](assets/annotation-2.jpg) | ![Annotation 3](assets/annotation-3.jpg)
-
-
-##### Audit Annotations
-
-This step requires verifying the outputs of the auto-annotations and to make
-corrections if necessary in order to have a proper fully annotated dataset.
-
-<div style="text-align: center;">
-    <iframe width="560" height="315" src="https://www.youtube.com/embed/j-75Q5-_dC0?start=1536&end=2144" title="Visualize Annotations" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-</div>
-
-Some annotations were missed from the auto-annotations and to correct those errors, we can utilize the auto-segment tool.
-Start by enabling an AI Assisted Ground Truth server by navigating to the *Cloud Instances* under the tool options.
-
-<figure markdown="span">
-![Cloud Instances](assets/cloud-instances.jpg){ align=center }
-<figcaption>Cloud Instances</figcaption>
-</figure>
-
-Start and launch a new server to host the auto-segmentation backend.
-
-<figure markdown="span">
-![Start a Server](assets/launch-ai-server.jpg){ align=center }
-<figcaption>Start a Server</figcaption>
-</figure>
-
-Navigate back to the dataset and enable edit mode.
-
-<figure markdown="span">
-![Edit Mode](assets/edit-mode.jpg){ align=center }
-<figcaption>Edit Mode</figcaption>
-</figure>
-
-Select the *AI Image Segment Tool* and then enable the *SAM Box Tool*
-
-<figure markdown="span">
-![Auto Segment Mode](assets/enable-auto-segment-tool.jpg){ align=center }
-<figcaption>Auto Segment Mode</figcaption>
-</figure>
-
-Draw a bounding box around the person that was missed and then click *CREATE ANNOTATION* to create
-the drawn segmentation mask. Click *SUBMIT* to accept the annotation. 
-
-<figure markdown="span">
-![Segment Tool](assets/segment-tool.jpg){ align=center }
-<figcaption>Segment Tool</figcaption>
-</figure>
-
-Draw a bounding box annotation around the person that was missed by selecting the *Box Tool*.
-Click *SUBMIT* to accept the annotation. 
-
-<figure markdown="span">
-![Box Tool](assets/box-tool.jpg){ align=center }
-<figcaption>Box Tool</figcaption>
-</figure>
-
-Part of the audit process is to go over each sample in the dataset and correcting any missed annotations or incorrect annotations.
-
-## Public Datasets
-
-When you first log into EdgeFirst Studio, a public project known as "Sample Datasets" will be provided.
-
-<figure markdown="span">
-![Public Project](assets/projects-page.jpg){ align=center }
-<figcaption>Public Project</figcaption>
-</figure>
-
-This project will contain two public datasets: *Raivin Pedestrians (ultra-short range) 2025.03* and *COCO 2017*.
-
-<figure markdown="span">
-![Public Datasets](assets/public-datasets.jpg){ align=center }
-<figcaption>Public Datasets</figcaption>
-</figure>
-
-The dataset *Raivin Pedestrians (ultra-short range) 2025.03* contains 3D bounding box annotations which is only eligible for [training Fusion models](../models/fusion/training.md). The dataset *COCO 2017* contains 2D bounding box annotations which is only eligble for [training Vision models](../models/modelpack/training.md).
-
-A public dataset is readily available for user onboarding and trials, but this dataset is a *read-only* dataset. By default users can [view the dataset](#viewing-datasets). Otherwise, in order to have full access to the dataset, users *MUST* [copy the dataset](#copying-datasets) into the project they've created. 
-
-## Viewing Datasets
-
-In the project's page, you can click on the dataset button highlighted in red
-to view the datasets contained in the project.
-
-<figure markdown="span">
-![View Datasets](assets/datasets-button.jpg){ align=center }
-<figcaption>View Datasets</figcaption>
-</figure>
-
-You will now see the datasets contained in the project. Each dataset has a gallery. To see the images in the gallery, open the gallery by clicking the gallery button highlighted in red.
-
-<figure markdown="span">
-![Gallery Button](assets/project-datasets.jpg){ align=center }
-<figcaption>Gallery Button</figcaption>
-</figure>
-
-When clicking the gallery button, you will either see the images in the dataset for [Image-Based Datasets](../datasets/types.md#image-based) or sequences for [Sequence-Based Datasets](../datasets/types.md#sequence-based).
-
-For sequence-based datasets, you need to specify which sequence you would like to view. This can be done by clicking on the sequence.
-
-!!! note
-    The *Raivin Pedestrians (ultra-short range) 2025.03* has a single sequence.
-
-<figure markdown="span">
-![Dataset Sequence](assets/public-dataset-sequence.jpg){ align=center }
-<figcaption>Dataset Sequence</figcaption>
-</figure>
-
-When the sequence is clicked, you will now see the frames stored in the sequence along with the annotations.
-
-<figure markdown="span">
-![Dataset Sequence](assets/sample-dataset-image.jpg){ align=center }
-<figcaption>Dataset Sequence</figcaption>
-</figure>
-
-## Creating Datasets
-
-This tutorial will show how to create an empty dataset container in EdgeFirst Studio. This container is needed for [copying](#copying-datasets) or [combining](#combining-datasets) datasets as shown in the next sections.
-
-To create a dataset, first select the project to store the new dataset. Next click the dataset button (highlighted in red) to view the datasets in that selected project.
-
-<figure markdown="span">
-![Dataset Button](assets/user-project-dataset-button.jpg){ align=center }
-<figcaption>Dataset Button</figcaption>
-</figure>
-
-Next create a new dataset by clicking the *CREATE* button highlighted in red.
-
-<figure markdown="span">
-![Create Dataset Button](assets/create-dataset-button.jpg){ align=center }
-<figcaption>Create Dataset Button</figcaption>
-</figure>
-
-Provide the dataset name and the dataset desciption for this new dataset. In this example the name is the same as the original dataset source. Once the fields are filled, click the *CREATE* button on the bottom left of the window dialog.
-
-<figure markdown="span">
-![Create Dataset Fields](assets/create-dataset-fields.jpg){ align=center }
-<figcaption>Create Dataset Fields</figcaption>
-</figure>
-
-Once created, define an annotation set. The annotation set is a container for storing
-the annotations in the original dataset. To create an annotation set, click the "+" button
-in the *Annotation Sets* field. 
-
-<figure markdown="span">
-![Create Annotation Set](assets/create-annotation-set.jpg){ align=center }
-<figcaption>Create Annotation Set</figcaption>
-</figure>
-
-Next provide the name and description for the annotation container as shown below. Once provided, click *CREATE NEW SET* to create the annotation set.
-
-<figure markdown="span">
-![Annotation Set Fields](assets/annotation-set-fields.jpg){ align=center }
-<figcaption>Annotation Set Fields</figcaption>
-</figure>
-
-You have now created a dataset and an annotation set container as shown below. This container can be used to store [copied](#copying-datasets) or [combined](#combining-datasets) datasets.
-
-<figure markdown="span">
-![Created Dataset](assets/empty-dataset-container.jpg){ align=center }
-<figcaption>Created Dataset</figcaption>
-</figure>
-
-## Copying Datasets
-
-To copy a dataset, first [create a dataset](#creating-datasets) container. Once created, select the *Copy Dataset* from the dataset options on the newly created dataset container as shown below.
-
-<figure markdown="span">
-![Copy Dataset](assets/copy-dataset-option.jpg){ align=center }
-<figcaption>Copy Dataset</figcaption>
-</figure>
-
-This will open a new dialog for the user to specify the source dataset and the destination dataset. The source dataset is the original dataset and the destination dataset is the dataset container that was just created. The following options specified are shown below.
-
-<figure markdown="span">
-![Copy Dataset Options](assets/copy-dataset-options.jpg){ align=center }
-<figcaption>Copy Dataset Options</figcaption>
-</figure>
-
-The options provided above specifies the source information such as the project to be the public project "Sample Datasets" and the dataset to be *Raivin Pedestrians (ultra-short range) 2025.03*. Next the destination dataset is the dataset and annotation containers that was created. Once the options are specified, go ahead and click *APPLY* to start the copy process.
-
-<figure markdown="span">
-![Copy Dataset Process](assets/dataset-copy-process.jpg){ align=center }
-<figcaption>Copy Dataset Process</figcaption>
-</figure>
-
-Once the copying process completes, the frames and the annotations have been copied.
-
-**Original Dataset** | **Copied Dataset**
-:------------------:|:------------------:
-![Original](assets/original-public-dataset.jpg) | ![Copied](assets/copied-dataset-result.jpg)
-
-## Combining Datasets
-
-The process of combining datasets consists of multiple copy processes on a given dataset container. To combine datasets, first [create a dataset](#creating-datasets) container. Follow the process for [copying a dataset](#copying-datasets) onto the destination dataset container that was created. The copy process will copy the selected dataset onto the same dataset container and thus combining multiple datasets.
-
-## Splitting Datasets
-
-A proper dataset has samples reserved for training and validation. This tutorial will show how to split the samples in the dataset into training and validation groups.
-
-Consider the following dataset without any groups reserved.
-
-<figure markdown="span">
-![No Groups](assets/dataset-no-groups.jpg){ align=center }
-<figcaption>No Groups</figcaption>
-</figure>
-
-To create the dataset groups, click on the "+" button in the *Groups* field. 
-
-<figure markdown="span">
-![Add Groups](assets/add-groups-button.jpg){ align=center }
-<figcaption>Add Groups</figcaption>
-</figure>
-
-This will open a new dialog to list the groups needed by the user and the percentages dedicated for each group. Often the groups "train" and "val" are created, but the user is free to specify their own groups.
-
-<figure markdown="span">
-![Groups Field](assets/groups-field.jpg){ align=center }
-<figcaption>Groups Field</figcaption>
-</figure>
-
-Once the groups are specified, click *ADD GROUPS* to create the groups. This will automatically divide the samples in the dataset based on the percentages of each group specified.
-
-<figure markdown="span">
-![Dataset Groups](assets/dataset-with-groups.jpg){ align=center }
-<figcaption>Dataset Groups</figcaption>
-</figure>
+* [Exporting Datasets](../datasets/tutorials.md#exporting-datasets)

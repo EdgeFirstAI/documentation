@@ -131,8 +131,8 @@ panel and additional information and status is shown on the right panel.
 </figure>
 
 <figure markdown="span">
-![Training Session Fields](../assets/training/training-session-fields.jpg){ align=center }
-<figcaption>Training Session Fields</figcaption>
+![Training Session Attributes](../assets/training/training-session-attributes.jpg){ align=center }
+<figcaption>Training Session Attributes</figcaption>
 </figure>
 
 ## Training Metrics

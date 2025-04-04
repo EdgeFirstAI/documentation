@@ -78,8 +78,8 @@ and additional information and status is shown on the right panel.
 </figure>
 
 <figure markdown="span">
-![Validation Session Fields](../assets/validation/validation-session-fields.jpg){ align=center }
-<figcaption>Validation Session Fields</figcaption>
+![Validation Session Attributes](../assets/validation/validation-session-attributes.jpg){ align=center }
+<figcaption>Validation Session Attributes</figcaption>
 </figure>
 
 ## Completed Session

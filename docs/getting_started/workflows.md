@@ -7,20 +7,85 @@ and curating datasets to training, validating, and deploying EdgeFirst models.
     <iframe width="560" height="315" src="https://www.youtube.com/embed/MmoDCXj72jk?si=I8gTw2VCtcts69ks" title="EdgeFirst Studio Overview" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 </div>
 
-This tutorial will showcase two workflows. The first workflow will provide a guided user experience by providing completed experiments for users to follow along merely acting as an observer to get a general idea of the process. The second workflow will be much more user involved by providing instructions for the user to be familiar with using the tools available. 
+This tutorial will showcase two workflows. The first workflow will provide a guided user experience by providing completed experiments for users to follow along merely acting as an observer to get familiar with EdgeFirst Studio. The second workflow will be much more user involved by providing instructions for the user to be familiar with using the tools available. 
 
 ## Guided Workflow with Completed Experiments
 
-*coming soon*
+This workflow continues from the steps shown in [Getting Started](../index.md#edgefirst-studio-quickstart) which requires the user to have signed up for
+EdgeFirst Studio, logged in to EdgeFirst Studio, and created their first project.
+
+This workflow will give the user a high level overview of the context of EdgeFirst Studio by using the public project "Sample Datasets" provided which contains public datasets and completed experiments.
+
+### Projects
+
+When a user first logs in, they will be greeted with the *Projects* page which contains a sample project called "Sample Datasets". The following figure describes the attributes of any given project.
+
+<figure markdown="span">
+![Project Attributes](../studio/assets/project-attributes.jpg){ align=center }
+<figcaption>Project Attributes</figcaption>
+</figure>
+
+A project will contain datasets, training sessions, automation tasks, labeling/annotation tasks, and validation sessions. For an in-depth tutorial of the context of EdgeFirst Studio and navigating the studio, see [Navigating EdgeFirst Studio](../studio/navigation/index.md).
+
+### Datasets
+
+The sample project will contain two [public datasets](../datasets/tutorials.md#public-datasets): *Raivin Pedestrians (ultra-short range) 2025.03* and *COCO 2017*. The following figure describes the atttributes of any given dataset.
+
+<figure markdown="span">
+![Dataset Attributes](../studio/assets/dataset-attributes.jpg){ align=center }
+<figcaption>Dataset Attributes</figcaption>
+</figure>
+
+For an in-depth tutorial for managing datasets in EdgeFirst Studio from capture and annotation to export and deployment, see our [Dataset Tutorials](../datasets/tutorials.md).
+
+### Training Sessions
+
+The sample project will contain completed training sessions using the public datasets provided. The training session shown below is based on training a Fusion model from the public dataset *Raivin Pedestrians (ultra-short range) 2025.03*.
+
+<figure markdown="span">
+![Sample Training Session](assets/training-session.jpg){ align=center }
+<figcaption>Sample Training Session</figcaption>
+</figure>
+
+The following figure describes the attributes of any given training session.
+
+<figure markdown="span">
+![Training Session Attributes](../models/assets/training/training-session-attributes.jpg){ align=center }
+<figcaption>Training Session Attributes</figcaption>
+</figure>
+
+For more details regarding deploying training sessions, please see 
+[Training Modelpack](../models/modelpack/training.md) for training Vision models and 
+[Training Fusion](../models/fusion/training.md) for training Fusion models.
+
+### Validation Sessions
+
+The sample project will contain completed validation sessions using the models trained in the training sessions. The validation session shown belows is based on the training session from training a Fusion model using the dataset *Raivin Pedestrians (ultra-short range) 2025.03*.
+
+<figure markdown="span">
+![Sample Validation Session](assets/validation-session.jpg){ align=center }
+<figcaption>Sample Validation Session</figcaption>
+</figure>
+
+The following figure describes the attributes of any given validation session.
+
+<figure markdown="span">
+![Validation Session Attributes](../models/assets/validation/validation-session-attributes.jpg){ align=center }
+<figcaption>Validation Session Attributes</figcaption>
+</figure>
+
+For more details regarding deploying validation sessions, please see 
+[Validating Modelpack](../models/modelpack/validation.md) for validating Vision models and 
+[Validating Fusion](../models/fusion/validation.md) for validating Fusion models.
 
 ## Hands-on Workflow
 
 This workflow continues from the steps shown in [Getting Started](../index.md#edgefirst-studio-quickstart) which requires the user to have signed up for
 EdgeFirst Studio, logged in to EdgeFirst Studio, and created their first project.
 
-This tutorial shows the process of recording data from scratch, annotating data
+This workflow is a tutorial for showing the process of recording data from scratch, annotating data
 in EdgeFirst Studio, training and validating models, and then finally deploying 
-models in an EdgeFirst platform. 
+models in an EdgeFirst Platform. 
 
 !!! note
     This tutorial will provide examples on training, validating, and deploying

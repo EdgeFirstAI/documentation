@@ -1,91 +1,107 @@
 # Access Management
 
+This page describes security protocols in EdgeFirst Studio.
+
 ## User Credentials
 
-When initially deployed, the portal has one admin user for the organization.  The user credentials are provided by the AuZone Team. After login, the user can change the password. The organization information may not exist at this stage. The admin user can create the organization and its information. 
+When initially deployed, the portal has one admin user for the organization.  The user credentials are provided by the AuZone Team. After login, the user can change their password. The organization information may not exist at this stage. The admin user can create the organization and its information. 
 
-The admin user can add other users with different permissions. 
+!!! note
+    The admin user can add other users with different permissions. 
 
 ## User Management
-To manage users, click on the user icon and select User Profile:
 
-![alt text](assets/user-profile.png)
+To manage users, click on the user icon and select *User Profile*.
 
-This opens the user management panel:
+<figure markdown="span">
+![User Profile](assets/user-profile.png){ align=center }
+<figcaption>User Profile</figcaption>
+</figure>
 
-![alt text](assets/account-settings.png)
+This opens the user management panel.
 
-The account setting is used to see user information and permissions. 
+<figure markdown="span">
+![Account Settings](assets/account-settings.png){ align=center }
+<figcaption>Account Settings</figcaption>
+</figure>
 
-Edit user is used to update email or change password.
+The account setting is used to see user information and permissions. The button *EDIT USER* is used to update the username, email, or change the password.
 
 ### Change Password
+
 - Click on the user icon on the top right corner. 
-- Select User Profile.
-- Select Account Settings.
-- Click on Edit User.
+- Select *User Profile*.
+- Select *Account Settings*.
+- Click on *EDIT USER*.
 - Enter the new password.
-- Click update.
+- Click *Update*.
 
 ### Add New User
+
 - Click on the user icon on the top right corner. 
-- Select User Profile.
-- Select User Management.
+- Select *User Profile*.
+- Select *User Management*.
 - Enter the username/password/email for the new user.
 - Check the roles to be enabled.
-- Click Add.
+- Click *Add*.
 
 !!! note
     The admin user that creates other users is responsible for the usage bills of the users.
 
 ### List, Edit and Delete Users
+
 - Click on the user icon on the top right corner.
-- Select User Profile.
-- Select User Management.
+- Select *User Profile*.
+- Select *User Management*.
 - The lists of users under this admin user will be displayed.
-- Click on the X to delete user and the edit icon to edit user. 
+- Click on the *X* to delete user and the edit icon to edit user. 
 
 !!! note
-    Admin user can change the password of the users connect to this account.
+    The admin user can change the password of the users connected to this account.
 
 ## Create Organization
+
 An admin user can still add users without creating an organization. However creating an organization prints the organization information on the bills and provides information for other users.
 
-To create organization:
+To create an organization.
 
 - Click on the user icon on the top right corner. 
-- Select User Profile.
-- Select Organization.
+- Select *User Profile*.
+- Select *Create Organization*.
 - Enter the organization information.
  
-
 #### Video Tutorial:
-[Getting Started Video](https://youtu.be/DJabdEHaZ8E)
 
+<div style="text-align: center;">
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/DJabdEHaZ8E" title="Getting Started Video" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+</div>
 
 Access management works on project or dataset level.
 
 There are two levels of access:
 
-1. View Only - User can see the dataset, annotation and look at the training and validation results
-2. Edit - User can edit datasets, perform training and validation and add/delete annotations.
+1. View Only - User can see the dataset, annotation, and training and validation results.
+2. Edit - User can edit datasets, perform training and validation, and add/delete annotations.
 
-There are three categories of access control
+There are three categories of access control.
 
-![](assets/access.png)
+<figure markdown="span">
+![Access Control](assets/access.png){ align=center }
+<figcaption>Access Control</figcaption>
+</figure>
 
 ### Default Sharing
-All the resources in the project are viewable and editable to all members of the organization 
+
+All the resources in the project are viewable and editable to all members of the organization.
 
 ### Custom Sharing
 
-User can selectively add other users as viewers and editors. A users can be in one of the three3 modes with respect to a dataset.
+User can selectively add other users as viewers and editors. A users can be in one of the three modes with respect to a dataset.
 
-- No Access if the user iss not in the list of the allowed users.
-- View only if the user is in the list with Viewer permissions
-- Edit if the user is in the list with Edit permissions.  
+- No Access - If the user is not in the list of the allowed users.
+- View only - If the user is in the list with viewer permissions.
+- Edit - If the user is in the list with Edit permissions.  
 
 ### Private
 
-Available to the creator of the projects only
-
+Available to the creator of the projects only.

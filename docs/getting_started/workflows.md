@@ -1,31 +1,31 @@
 # EdgeFirst Studio: From Start to Deployment
 
-This tutorial will walk a user through a high-level overview of getting started with EdgeFirst Studio by exploring individual processes from collecting
-and curating datasets to training, validating, and deploying EdgeFirst models.
+This page will walk you through a high-level overview of getting started with EdgeFirst Studio by introducing the concepts used in Studio and their corresponding UI elements and then using those concepts and elements as part of an high-level workflow from collecting and curating datasets to training, validating, and deploying EdgeFirst models.
 
 <div style="text-align: center;">
     <iframe width="560" height="315" src="https://www.youtube.com/embed/MmoDCXj72jk?si=I8gTw2VCtcts69ks" title="EdgeFirst Studio Overview" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 </div>
 
-This tutorial will showcase two workflows. The first workflow will provide a guided user experience by providing completed experiments for users to follow along merely acting as an observer to get familiar with EdgeFirst Studio. The second workflow will be much more user involved by providing instructions for the user to be familiar with using the tools available. 
+## Projects, Datasets, and Training Session
 
-## Guided Workflow with Completed Experiments
+This section breaks down important concepts used in EdgeFirst Studios, namely:
 
-This workflow continues from the steps shown in [Getting Started](../index.md#edgefirst-studio-quickstart) which requires the user to have signed up for
-EdgeFirst Studio, logged in to EdgeFirst Studio, and created their first project.
+- *projects*: high-level collections of sensor datasets, training sessions, and other automation and management tasks associated with the dataset inputs and model outputs.  
+- *datasets*: a collection of sensor data, such as images, videos, radar cubes, etc. logically grouped together by the user. Usually, each dataset contained within a project will come from a single recording session.
+- *training sessions*: the functionality to convert datasets recorded into vision- and radar-based models that can be deployed back to the edge devices
 
-This workflow will give the user a high level overview of the context of EdgeFirst Studio by using the public project "Sample Datasets" provided which contains public datasets and completed experiments.
+These concepts and their respective UI elements will be used in guided workflow below, and follow from the steps shown in [Getting Started](../index.md#edgefirst-studio-quickstart).  Additional UI breakdowns of EdgeFirst Studio can be found in [Navigating EdgeFirst Studio](../studio/navigation.md).
 
 ### Projects
 
-When a user first logs in, they will be greeted with the *Projects* page which contains a sample project called "Sample Datasets". The following figure describes the attributes of any given project.
+As you saw from the initial workflow, when you first login, you will be greeted by the "Projects" page which contains a sample project called "Sample Datasets". The following figure describes the UI elements of the "Project" card.  Take special note of the icons to the left of the project attributes (datasets, trainers, etc.) as these are the buttons that lead into further parts of the project.
 
 <figure markdown="span">
 ![Project Attributes](../studio/assets/project-attributes.jpg){ align=center }
-<figcaption>Project Attributes</figcaption>
+<figcaption>Project UI Breakdown</figcaption>
 </figure>
 
-A project will contain datasets, training sessions, automation tasks, labeling/annotation tasks, and validation sessions. For an in-depth tutorial of the context of EdgeFirst Studio and navigating the studio, see [Navigating EdgeFirst Studio](../studio/navigation.md).
+A project will contain datasets and information about the operations done with those datasets, such as: training sessions, automation tasks, labeling/annotation tasks, and validation sessions.  The "Sample Datasets" project has two datasets and two training sets associated with it.
 
 ### Public Datasets
 

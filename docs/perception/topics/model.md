@@ -24,7 +24,7 @@ The XYZ coordinate system follows the [standard ROS convention](https://www.ros.
 This topic is only published if the model service is configured with a model that outputs segmentation.
 
 ## /model/mask_compressed
-The `/model/mask_compressed` topic publishes information about segmentation masks using the custom [Mask](../api/edgefirst_msgs.md#Mask) schema. Each mask message has the width, height, and length of the mask message. The messages on `/model/mask_compressed` are compressed and the encoding is `zstd`. This topic is recommended to be consumed by services that are operating over the network to reduce network bandwidth requirements.
+The `/model/mask_compressed` topic publishes information about segmentation masks using the custom [Mask](../api/edgefirst_msgs.md#Mask) schema. Each mask message has the width, height, and length of the mask message. The messages on `/model/mask_compressed` are compressed and the encoding is `zstd`. This topic is recommended to be consumed by services that are operating over the network to reduce network bandwidth requirements. This topic will be delayed by the time it takes the service to compress the mask.
 
 The XYZ coordinate system follows the [standard ROS convention](https://www.ros.org/reps/rep-0103.html#coordinate-frame-conventions) for `_optical` frames of z forward, x right, y down. 
 

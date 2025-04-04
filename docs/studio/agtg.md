@@ -7,7 +7,7 @@ AGTG allows datasets to have annotation populated on a dataset with minimal huma
 
 ## Fully Automatic Ground Truth Generation
 
-This functionality is available at the time of restoring a snapshot. To invoke this import/create a snapshot and then enable AGTG while restoring the snapshot. Please refer to [Restoring a snapshot](../snapshots/index.md) 
+This functionality is available at the time of restoring a snapshot. To invoke this import/create a snapshot and then enable AGTG while restoring the snapshot. Please refer to [Restoring a snapshot](snapshots.md) 
 
 ## Semi-Automatic Ground Truth Generation
 

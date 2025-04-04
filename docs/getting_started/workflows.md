@@ -25,7 +25,7 @@ When a user first logs in, they will be greeted with the *Projects* page which c
 <figcaption>Project Attributes</figcaption>
 </figure>
 
-A project will contain datasets, training sessions, automation tasks, labeling/annotation tasks, and validation sessions. For an in-depth tutorial of the context of EdgeFirst Studio and navigating the studio, see [Navigating EdgeFirst Studio](../studio/navigation/index.md).
+A project will contain datasets, training sessions, automation tasks, labeling/annotation tasks, and validation sessions. For an in-depth tutorial of the context of EdgeFirst Studio and navigating the studio, see [Navigating EdgeFirst Studio](../studio/navigation.md).
 
 ### Public Datasets
 
@@ -50,7 +50,7 @@ A public dataset is readily available for user onboarding and trials, but this d
 The following figure describes the atttributes of any given dataset.
 
 <figure markdown="span">
-![Dataset Attributes](../studio/assets/dataset-attributes.jpg){ align=center }
+![Dataset Attributes](../studio/assets/datasets/dataset-attributes.jpg){ align=center }
 <figcaption>Dataset Attributes</figcaption>
 </figure>
 

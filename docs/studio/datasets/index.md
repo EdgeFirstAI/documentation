@@ -12,7 +12,7 @@ with a summary of datasets in each card of dataset.
  
 An explanation of information in the dataset card is shown below:
 
-![alt text](../assets/datasets/dataset-fields.png)
+![alt text](../assets/datasets/dataset-attributes.jpg)
 
 ## Annotation Sets
 
@@ -64,7 +64,7 @@ Change Name or Description of the dataset
 ### Manage Access
 Dataset access control allows dataset resources to be selectively available to different users. 
 
-For more information pease visit [Access Control](../studio/access/index.md)
+For more information pease visit [Access Control](../access.md)
 
 ### Copy Dataset
 
@@ -80,7 +80,7 @@ To copy datasets proceed as follows:
 5. Select a groups to copy (or all groups)  
 6. Select source annotation set - of none is selected then annotations will not be copied
 7. Optional select 'Copy Annotations for Duplicate Images'. Normally images with same names are not copied to avoid image duplications. In this case the annotations of duplication images are also not copied. This option (in selected) copy annotations even if the image is duplicated. This is useful if tow datasets have same images but only annotations are required to be copied form one dataset to another
-8. Select filters if required. Please refer to [Gallery Filters](../studio/datasets/gallery.md) for more information.
+8. Select filters if required. Please refer to [Gallery Filters](gallery.md) for more information.
 9. Select the destination dataset(s). Please note that multiple destination datasets can be selected to spit the source dataset images into multiple datasets.
 10. Finally select percentage of teh images to be copied. If less that 100% of the images are selected then random subset of the images will be copied.  
 

@@ -30,4 +30,4 @@ Organize data into logical projects partitions
 
 Project access control allows projects resources to be selectively available to different users. 
 
-For more information pease visit [Access Control](../access/index.md)
+For more information pease visit [Access Control](access.md)

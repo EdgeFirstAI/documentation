@@ -6,7 +6,7 @@ The radar topics are managed by the `radarpub` service and handles interfacing w
 - Output raw Radarcube
 - DBScan clustering of radar points
 
-The radars topics are published under the `/radar` namespace and offers the following sub-topics: `/radar/targets`, `/radar/clusters`, `/radar/cube`, and `/radar/info`. Clustering parameters are configurable through the `radarpub` server. See radarpub service configuration documentation for details.
+The radars topics are published under the `/radar` namespace and offers the following sub-topics: `/radar/targets`, `/radar/clusters`, `/radar/cube`, and `/radar/info`. Clustering parameters are configurable through the `radarpub` service. See radarpub service configuration documentation for details.
 
 ## /radar/targets
 
@@ -19,11 +19,13 @@ The `/radar/clusters` topic publishes information about the received radar point
 
 The XYZ coordinate system follows the [standard ROS convention](https://www.ros.org/reps/rep-0103.html#coordinate-frame-conventions) of x forward, y left, z up. 
 
-This topic is only published if the radarpub service is configurated with the clustering task enabled.
+This topic is only published if the radarpub service is configured with the clustering task enabled.
 
 ## /radar/cube
 The `/radar/cube` topic publishes information about the received radar sensor data using the custom [RadarCube](../api/edgefirst_msgs.md#radarcube) schema. 
 
+
+This topic is only published if the radarpub service is configured with the radar cube task enabled.
 
 ## /radar/info
 The `/radar/info` topic publishes information about the current radar configuration. It describes the state of the center frequency, frequency sweep, range toggle, and detection frequency of the radar. 

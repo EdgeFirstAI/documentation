@@ -27,7 +27,7 @@ When a user first logs in, they will be greeted with the *Projects* page which c
 
 A project will contain datasets, training sessions, automation tasks, labeling/annotation tasks, and validation sessions. For an in-depth tutorial of the context of EdgeFirst Studio and navigating the studio, see [Navigating EdgeFirst Studio](../studio/navigation/index.md).
 
-## Public Datasets
+### Public Datasets
 
 When you first log into EdgeFirst Studio, a public project known as "Sample Datasets" will be provided.
 

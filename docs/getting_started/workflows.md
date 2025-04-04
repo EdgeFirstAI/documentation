@@ -27,31 +27,27 @@ As you saw from the initial workflow, when you first login, you will be greeted 
 
 A project will contain datasets and information about the operations done with those datasets, such as: training sessions, automation tasks, labeling/annotation tasks, and validation sessions.  The "Sample Datasets" project has two datasets and two training sets associated with it.
 
-### Public Datasets
+To return to this splash page from any other page, you can:
+* click your browser's "Back" button until back here
+* click the Apps ![Apps Button](../assets/apps_button.png) waffle button and select the "Projects" menu item.
+* click on the "Au-Zone" Home button in the top-left corner.
 
-When you first log into EdgeFirst Studio, a public project known as "Sample Datasets" will be provided.
+### Datasets
 
-<figure markdown="span">
-![Public Project](assets/projects-page.jpg){ align=center }
-<figcaption>Public Project</figcaption>
-</figure>
-
-This project will contain two public datasets: *Raivin Pedestrians (ultra-short range) 2025.03* and *COCO 2017*.
+From the "Projects" page, we can click on the "Datasets" ![Dataset Button](../assets/datasets_button.png) button to see the two datasets associated with this project: "Raivin Pedestrians (ultra-short range) 2025.03" and "COCO 2017".  These public datasets are readily available for user onboarding and trials, but these datasets are **READ-ONLY** datasets. By default, users can [view the datasets](../datasets/tutorials.md#viewing-datasets). Otherwise, in order to have full access to the dataset, users **MUST** [copy the dataset](../datasets/tutorials.md#copying-datasets) into the project they've created. 
 
 <figure markdown="span">
 ![Public Datasets](assets/public-datasets.jpg){ align=center }
 <figcaption>Public Datasets</figcaption>
 </figure>
 
-The dataset *Raivin Pedestrians (ultra-short range) 2025.03* contains 3D bounding box annotations which is only eligible for [training Fusion models](../models/fusion/training.md). The dataset *COCO 2017* contains 2D bounding box annotations which is only eligble for [training Vision models](../models/modelpack/training.md).
+The "Raivin Pedestrians (ultra-short range) 2025.03" dataset contains 3D bounding box annotations which are use only for [training Fusion models](../models/fusion/training.md). The "COCO 2017" dataset contains 2D bounding box annotations which are only valid for [training Vision models](../models/modelpack/training.md).
 
-A public dataset is readily available for user onboarding and trials, but this dataset is a *read-only* dataset. By default users can [view the dataset](../datasets/tutorials.md#viewing-datasets). Otherwise, in order to have full access to the dataset, users *MUST* [copy the dataset](../datasets/tutorials.md#copying-datasets) into the project they've created. 
-
-The following figure describes the atttributes of any given dataset.
+The following figure breaks down the elements of a "Dataset" card.
 
 <figure markdown="span">
 ![Dataset Attributes](../studio/assets/datasets/dataset-attributes.jpg){ align=center }
-<figcaption>Dataset Attributes</figcaption>
+<figcaption>Dataset Card UI Breakdown</figcaption>
 </figure>
 
 For an in-depth tutorial for managing datasets in EdgeFirst Studio from capture and annotation to export and deployment, see our [Dataset Tutorials](../datasets/tutorials.md).

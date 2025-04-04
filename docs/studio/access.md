@@ -1,6 +1,5 @@
 # Access Management
 
-
 ## User Credentials
 
 When initially deployed, the portal has one admin user for the organization.  The user credentials are provided by the AuZone Team. After login, the user can change the password. The organization information may not exist at this stage. The admin user can create the organization and its information. 
@@ -10,11 +9,11 @@ The admin user can add other users with different permissions.
 ## User Management
 To manage users, click on the user icon and select User Profile:
 
-![alt text](assets/image.png)
+![alt text](assets/user-profile.png)
 
 This opens the user management panel:
 
-![alt text](assets/image-1.png)
+![alt text](assets/account-settings.png)
 
 The account setting is used to see user information and permissions. 
 

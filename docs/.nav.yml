@@ -10,16 +10,16 @@ nav:
       - getting_started/platforms.md
   - Studio:
       - studio/index.md
-      - studio/navigation/index.md
-      - studio/access/index.md
-      - Projects:
-          - studio/projects/index.md
+      - studio/navigation.md
+      - studio/access.md
+      - studio/projects.md
       - Datasets:
+          - studio/datasets/index.md
           - studio/datasets/gallery.md
           - studio/datasets/annotations.md
-      - studio/agtg/index.md
-      - studio/snapshots/index.md
-      - studio/dataio/index.md
+      - studio/agtg.md
+      - studio/snapshots.md
+      - studio/dataio.md
   - Datasets:
       - datasets/index.md
       - datasets/tutorials.md

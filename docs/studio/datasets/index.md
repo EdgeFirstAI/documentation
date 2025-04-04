@@ -8,11 +8,11 @@ Overview of EdgeFirst Studio Dataset workflow and pre-packaged datasets.
 Dataset dashboard show a list of datasets in a project 
 with a summary of datasets in each card of dataset.
 
-![alt text](assets/dataset-dashboard.png)
+![alt text](../assets/datasets/dataset-dashboard.png)
  
 An explanation of information in the dataset card is shown below:
 
-![alt text](assets/dataset-fields.png)
+![alt text](../assets/datasets/dataset-fields.png)
 
 ## Annotation Sets
 
@@ -27,7 +27,7 @@ Each dataset can have  multiple annotations sets. Each annotation set contains a
 
 Click on labels (i) icon to open the dialog to edit labels
 
-![alt text](assets/edit-label.png)
+![alt text](../assets/datasets/edit-label.png)
 
 The edit dialog allows to:
 
@@ -45,7 +45,7 @@ The edit dialog allows to:
 - Click on the groups (+) icon to add groups
 - Multiple groups can be added at one time
 
-![alt text](assets/assign-groups.png)
+![alt text](../assets/datasets/assign-groups.png)
 
 The above image show a dialog to add two groups by the name AA abd BB and randomly add 70% and 30% images to each
 
@@ -53,7 +53,7 @@ The above image show a dialog to add two groups by the name AA abd BB and random
 
 Click on the three dots on Dataset card to open the extended menu
 
-![alt text](assets/dataset-menus.png)
+![alt text](../assets/datasets/dataset-menus.png)
 
 ### Pause Activities
 Pause or resume upload activities on this dataset
@@ -73,7 +73,7 @@ To copy datasets proceed as follows:
 1. Open teh dataset extended menu
 2. Select Copy dataset
 
-![alt text](assets/copy-datasets.png)
+![alt text](../assets/datasets/copy-datasets.png)
 
 3. Select the source project (datasets from other projects can be copied into currently selected project)
 4. Select the source dataset
@@ -88,7 +88,7 @@ To copy datasets proceed as follows:
 
 There are several import types available:
 
-![alt text](assets/import-dataset.png)
+![alt text](../assets/datasets/import-dataset.png)
 
 Select the import type. Most common import is the darknet format.
 
@@ -99,7 +99,7 @@ Select the import type. Most common import is the darknet format.
 5. Click START IMPORT
 6. Import will start in the background and teh status is show in the task progress bar
 
-![alt text](assets/import-taskbar.png)
+![alt text](../assets/datasets/import-taskbar.png)
 
 7. NOTE: Although the import process is running in the background, closing the web browser or the DVE tab will kill the import. Moving to other pages on DVE is still fine.
 
@@ -108,7 +108,7 @@ Select the import type. Most common import is the darknet format.
 
 Export Dataset downloads the data from DVE to local folder on PC
 
-![alt text](assets/export-dataset.png)
+![alt text](../assets/datasets/export-dataset.png)
 
 1. Select dataset type : detection (bounding box) or Segmentation (Polygons) 
 2. Select Export format
@@ -123,7 +123,7 @@ Export Dataset downloads the data from DVE to local folder on PC
 
 Click on Analytics to see information about the dataset:
 
-![alt text](assets/dataset-analytics.png)
+![alt text](../assets/datasets/dataset-analytics.png)
 
 ### View on Map
 
@@ -134,17 +134,17 @@ When importing a dataset, the GPS location can be imported as following two ways
 
 If GPS location is present, then the annotation can be view on teh map by using the View on Map option.
 
-![alt text](assets/dataset-maps.png)
+![alt text](../assets/datasets/dataset-maps.png)
 
 ### Generate API Token
 
 API Token is used for Bridge In and Bridge out API. To generate the API.  The API has encrypted Java Web Token (JWT) with embefded information about dataset and annotation set.
 
-![alt text](assets/api-token.png)
+![alt text](../assets/datasets/api-token.png)
 
 Select Dataset and Annotation set and Click GENERATE 
 
-![alt text](assets/generated-api-token.png)
+![alt text](../assets/datasets/generated-api-token.png)
 
 Copy the API Token in green and use it for Bridge In or Bridge out API
 
@@ -157,7 +157,7 @@ Datasets that are not used often can be parked. The advantages of Parking a data
 
 Data set can be un-parked at any time for normal usage.
 
-![alt text](assets/park-dataset.png)
+![alt text](../assets/datasets/park-dataset.png)
 
 ### Remove Dataset
 

@@ -1,6 +1,6 @@
 # Project Dashboard
 
-![](assets/dashbaord.png)
+![](assets/project-dashboard.png)
 
 Organize data into logical projects partitions
 
@@ -10,7 +10,7 @@ Organize data into logical projects partitions
 2. Enter project name and description
 2. Click Create 
 
-![](assets/create.png)
+![](assets/create-project.png)
 
 
 ## Delete Project

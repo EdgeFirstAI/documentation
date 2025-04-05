@@ -1,21 +1,27 @@
 # Bridge In API
 
-This interface allows applications to publish data directly  to a dataset data. The application requires an access token as follows:
+This interface allows applications to publish data directly to a dataset container in EdgeFirst Studio. The application requires an access token as follows.
 
-In Dataset Management page, select the dropdown on the top-right of a dataset, then select “Generate API Token“. This token will be used with every bridge API to upload or access samples. This token does not expire and can be reused.
+In a given dataset card, select the dropdown on the top-right of a dataset, then select “Generate API Token“. This token will be used with every bridge API to upload or access samples. This token does not expire and can be reused.
 
-![alt text](assets/generate-api-token.png)
+<figure markdown="span">
+![Generate API Token](assets/generate-api-token.png){ align=center }
+<figcaption>Generate API Token</figcaption>
+</figure>
 
 ## Generating Token
 
-1. Select dataset
-2. Select one annotation set from the dataset above
-3. Enter a device name
-4. Click “Generate“, a Java Web Token (Access Token) will be created for all API usage
+1. Specify the dataset.
+2. Select one annotation set from the dataset above.
+3. Enter a device name.
+4. Click "GENERATE", a Java Web Token (Access Token) will be created for all API usage.
 
-![alt text](assets/generated-token.png)
+<figure markdown="span">
+![Generated API Token](assets/generated-token.png){ align=center }
+<figcaption>Generated API Token</figcaption>
+</figure>
 
-## Generating Bridge Token via API call
+## Generating Bridge Token via API Call
  
 ```
 auth.generate_bridge_token
@@ -30,20 +36,18 @@ Description:
 ## Sending Request
 Each request will have a different endpoint. The url starts with http://dveml.com and followed with a path unique to each API. Each request body must contain a form-data. The form-data must contain a “uuid“ key with value type string and “code“ key with value type string (this is the Access Token).
 
-#### Note: 
-“uuid“ and “code“ must always be at the top of all requests
+!!! note
+    “uuid“ and “code“ must always be at the top of all requests.
 
- 
-Upload Sequence / Images
-Sequence is a series of images (like a video). The steps are as follows:
+## Uploading Sequences
 
-To upload a sequence call the POST endpoint
+To upload a sequence call the POST endpoint.
 
 ```
 https://test.dveml.com/samples/upload
 ```
 
- The arguments are in a JSON format:  for example
+The arguments, for example, are in a JSON format: 
 
 ```
 [
@@ -69,46 +73,51 @@ https://test.dveml.com/samples/upload
 
 The argument name are as follows:
 
-- code: access code as above
-- sequence_uuid:  User supplied sequence ID  - if sequence with this sequence_uuid does not exist, a new sequence is generated in database with the following parameters. NOTE: omit sequence_uuid to upload separate images. The images will be tied into sequence only if sequence_uuid is provided. 
-sequence_name: the name to create sequence if the sequence does not exist
-- description: sequence description - optional
-- sequence_height: sequence image height - optional - only used if uploading sequence
-- sequence_width: sequence image width- optional - only used if uploading sequence
-- image_height: image height - optional - only used if uploading non-sequence
-- image_width: image width - optional - only used if uploading non-sequence
-- date: time string in ISO format
-- source: device name in string
-- longitude: float64 - optional, will use longitude value from gps topic if not explicitly provided
-- latitude: float64 - optional, will use latitude value from gps topic if not explicitly provided
-- metadata: image EXIF in json format
-- uuid: user supplied sample uuid for this image - all annotation are tied to image using this uuid
-- image: image key derived from Create Sequence
-- frame_no: order of frames, starting from 1
-- pcd: pcd annotation filename
-- gps: paramers in json format
-- imu: paramers in json format
-- polygon: segmentation mask as polygon in json format
+- code: access code as above.
+- sequence_uuid:  User supplied sequence ID - if sequence with this sequence_uuid does not exist, a new sequence is generated in database with the following parameters. NOTE: omit sequence_uuid to upload separate images. The images will be tied into sequence only if sequence_uuid is provided. 
+- sequence_name: the name to create the sequence if the sequence does not exist.
+- description: sequence description - optional.
+- sequence_height: sequence image height - optional - only used if uploading a sequence.
+- sequence_width: sequence image width - optional - only used if uploading a sequence.
+- image_height: image height - optional - only used if uploading a non-sequence.
+- image_width: image width - optional - only used if uploading a non-sequence.
+- date: time string in ISO format.
+- source: device name in string.
+- longitude: float64 - optional, it will use the longitude value from the GPS topic if not explicitly provided.
+- latitude: float64 - optional, it will use the latitude value from the GPS topic if not explicitly provided.
+- metadata: image EXIF in JSON format.
+- uuid: user supplied sample uuid for this image - all annotation are tied to image using this uuid.
+- image: image key derived from "Create Sequence".
+- frame_no: order of frames, starting from 1.
+- pcd: pcd annotation filename.
+- gps: parameters in JSON format.
+- imu: parameters in JSON format.
+- polygon: segmentation mask as polygon in JSON format.
+
 Example: 
+
 ```
 [{"label_index": 1,"label_name": "obj","polgyon": [[0.1, 0.2],[0.3, 0.4]...]}]
 ```
-- box: parameters in json format
+- box: parameters in JSON format.
+
 Example: 
+
 ```
 [{"x": 0.1257633,"y": 0.41944844,"dx": 0.5000347,"dy": 0.50003463,"label_index": 1,"label_name":"obj"}]
 ```
-- 3dbox:paramers in json format
+- 3dbox: parameters in JSON format.
+
 Example: 
+
 ```
 [{"x": 1.1257633,"y": 0.41944844,"z": -0.109848246,"dx": 0.5000347,"dy": 0.50003463,"dz": 0.5990741,"label_index": 1,"label_name":"obj"}]
 ```
-- radar: radar binary filename
-- depthmap: depth data filename
-- cube: filename
-- scales: filename
+- radar: radar binary filename.
+- depthmap: depth data filename.
+- cube: filename.
+- scales: filename.
  
-
 This will return an array of s3 keys and pre-signed url as follows:
 
 ```
@@ -127,31 +136,36 @@ This will return an array of s3 keys and pre-signed url as follows:
     ],
     "status": "SUCCESS"
 }
-
 ```
 
-Upload Image and annotation files
-API for this is: (PUT)
+## Upload Image and Annotation Files
 
-pre-signed-url   as the url and image as payload
-
-return: http 200 
+- API for this is: (PUT).
+- Pre-signed-url as the url and image as payload.
+- return: http 200.
 
 # Bridge Out API
 
 This interface allows applications to retrieve data from a dataset. The application requires an access token as follows:
 
-In Dataset Management page, select the dropdown on the top-right of a dataset, then select “Generate API Token“. This token will be used with every bridge API to upload or access samples. This token does not expire and can be reused.
+In the datasets page, select the dropdown on the top-right of a dataset, then select "Generate API Token". This token will be used with every bridge API to upload or access samples. This token does not expire and can be reused.
 
-![alt text](assets/generate-api-token.png)
+<figure markdown="span">
+![Generate API Token](assets/generate-api-token.png){ align=center }
+<figcaption>Generate API Token</figcaption>
+</figure>
 
 ## Generating Token
-- Select dataset
-- Select one annotation set from the dataset above
-- Enter a device name
-- Click “Generate“, a Java Web Token (Access Token) will be created for all API usage.
 
-[alt text](assets/generated-token.png)
+- Select dataset.
+- Select one annotation set from the dataset above.
+- Enter a device name.
+- Click "Generate", a Java Web Token (Access Token) will be created for all API usage.
+
+<figure markdown="span">
+![Generated API Token](assets/generated-token.png){ align=center }
+<figcaption>Generated API Token</figcaption>
+</figure>
 
 ## Get List of Samples with Pre Signed URLs
 
@@ -174,31 +188,33 @@ Payload:
 
 Return:
 
-- JSON list of samples, where each key is the uuid of the sample
+- JSON list of samples, where each key is the uuid of the sample.
 - If sample has an image, an S3 presigned URL is provided.
 - If sample has file type annotations, an S3 presigned URL is provided for each file. 
-- Error message if an error occurred
+- Error message if an error occurred.
  
 
-Get List of Samples Without File URLs
+## Get List of Samples Without File URLs
 
 Endpoint: https://dveml.com/samples/list
 
 Method: HTTP GET
 
 Payload:
+
 ```
 {
  'sequence_uuid': 'abc',
  'code': 'abc',
 }
 ```
+
 Return:
 
 - JSON list of samples, where each key is the uuid of the sample.
 - No of S3 Presigned Urls for images or file-type annotations.
 - Error message if an error occurred.
-- Get Detailed Info for Samples
+- Get Detailed Info for Samples.
 - Endpoint: https://dveml.com/samples/get
 
 Method: HTTP GET

@@ -1,70 +1,90 @@
 # Annotation Sets
 
+An annotation set is a container in EdgeFirst Studio for storing dataset annotations.
 
 ## Editing 2D Annotations
 
 There are two modes of operations:
 
-1.	Edit images from gallery (Adhoc)
-2.	Edit Images from the Edit/Audit Dashboard (Multi-user editing environment)
+1.	Edit images from gallery (Adhoc).
+2.	Edit Images from the Edit/Audit Dashboard (Multi-user editing environment).
 
 ## Multi-User Annotation Audit / Edit 
 
-DVE allows multiple users to remotely access a single dataset and annotation set and make changes without interfering with each other.
+EdgeFirst Studio allows multiple users to remotely access a single dataset and annotation set and make changes without interfering with each other.
 
 ### Difference between Audit and Edit
 
 #### Edit
 
-User works on one annotation set, makes changes and saves in the same annotations set
+User works on one annotation set, makes changes and saves in the same annotations set.
 
 #### Audit
 
 User reviews annotations in the source annotation set: 
 - Accepted annotations move to the destination annotation set.  
-- Rejected annotation asr nopt copied to the destination annotation set.
+- Rejected annotation are not copied to the destination annotation set.
 - Edited annotations are copied with edits to teh destination annotation set.
+- To create a multi-user Edit Task select "Edit/Audit Annotations" from the Apps Menu.
 
+<figure markdown="span">
+![Audit Annotations](../assets/datasets/audit-annotations.png){ align=center }
+<figcaption>Audit Annotations</figcaption>
+</figure>
 
-- To create a multi-user Edit Task select "Edit/Audit Annotations" from the Apps Menu 
+- Click "CREATE"
 
-![alt text](../assets/datasets/audit-annotations.png)
+<figure markdown="span">
+![Create Task](../assets/datasets/create-task.png){ align=center }
+<figcaption>Create Task</figcaption>
+</figure>
 
-- Click CREATE
-
-![alt text](../assets/datasets/create-task.png)
-
-- Select Task name and description
-- Select Dataset
-- Select Destination Dataset - Where changes will be saved
-- Select Source Dataset only if Audit task only. For editing task leave Source Annotation set empty as Source and Destination annotation sets are the same as destination annotation set
-- Select Sharing - With entire organization or few selected users
-- Click CREATE TASK
+- Select Task name and description.
+- Select Dataset.
+- Select Destination Dataset - Where changes will be saved.
+- Select Source Dataset only if Audit task only. For editing task leave Source Annotation set empty as Source and Destination annotation sets are the same as destination annotation set.
+- Select Sharing - With entire organization or few selected users.
+- Click "CREATE TASK".
 
 Task entry ius created in the Edit Dashboard. There are three columns: 
 
-1. Open - Created but no work has started
-2. In Progress - Some images have been worked on - the remaining images are shown
-3. Completed - All images have been worked on
+1. Open - Created but no work has started.
+2. In Progress - Some images have been worked on - the remaining images are shown.
+3. Completed - All images have been worked on.
 
-![alt text](../assets/datasets/task-board.png)
+<figure markdown="span">
+![Task Board](../assets/datasets/task-board.png){ align=center }
+<figcaption>Task Board</figcaption>
+</figure>
 
 Click on any task entry and start editing. Teh actual editing process is same for task based or ad-hoc editing. The editing process is described below.
 
 ## Edit images from gallery
 Open the image gallery
 
-![alt text](../assets/datasets/image-gallery.png)
+<figure markdown="span">
+![Image Gallery](../assets/datasets/image-gallery.png){ align=center }
+<figcaption>Click on an image and expand Annotation Sets</figcaption>
+</figure>
 
 Click on an image and expand Annotation Sets
 
-![alt text](../assets/datasets/annotation-sets.png)
+<figure markdown="span">
+![Annotation Sets](../assets/datasets/annotation-sets.png){ align=center }
+<figcaption>Click on the pencil icon for the annotation set to edit</figcaption>
+</figure>
 
 Click on the pencil icon for the annotation set to edit
 
-![alt text](../assets/datasets/edit-annotations.png)
+<figure markdown="span">
+![Edit Annotations](../assets/datasets/edit-annotations.png){ align=center }
+<figcaption>Edit Annotation Set</figcaption>
+</figure>
 
-![alt text](../assets/datasets/edit-options.png)
+<figure markdown="span">
+![Edit Options](../assets/datasets/edit-options.png){ align=center }
+<figcaption>Annotation Editing Options</figcaption>
+</figure>
 
 ### Add a Rectangular Annotation
 1.	Expand the Labels Section
@@ -108,7 +128,10 @@ Click on the pencil icon for the annotation set to edit
 
 Go to the Edit /Audit Dashboard
 
-![alt text](../assets/datasets/audit-annotations.png)
+<figure markdown="span">
+![Audit Annotations](../assets/datasets/audit-annotations.png){ align=center }
+<figcaption>Audit Annotations</figcaption>
+</figure>
 
 Create a new task or continue an existing task
 #### Audit: 
@@ -125,7 +148,10 @@ There are two modes:
 Clicking on the dashboard tasks takes directly to the image mode editing. All the editing is the same as described in the Gallery based Editing above.
 User can switch between Image based editing/audit and annotation based Audit from the top header: 
 
-![alt text](../assets/datasets/audit-tool-type.png)
+<figure markdown="span">
+![Audit Tool Type](../assets/datasets/audit-tool-type.png){ align=center }
+<figcaption>Audit Tool Type</figcaption>
+</figure>
 
 ### Annotation Based Audit
 In this mode only one annotation is shown at a time. The user can edit the with single click and next annotation is automatically presented:

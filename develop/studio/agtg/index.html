@@ -430,6 +430,12 @@
       
         
       
+        
+      
+        
+      
+        
+      
     
     
       
@@ -479,11 +485,33 @@
   
   
     <li class="md-nav__item">
+      <a href="../../getting_started/workflows/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    EdgeFirst Studio: From Start to Deployment
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../getting_started/studio/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    Studio Tutorials
+    Navigating EdgeFirst Studio
     
   </span>
   
@@ -505,7 +533,7 @@
         
   
   <span class="md-ellipsis">
-    Dataset Tutorials
+    Dataset Management
     
   </span>
   
@@ -527,7 +555,51 @@
         
   
   <span class="md-ellipsis">
-    Model Tutorials
+    Model Training, Validation, and Deployment
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../getting_started/perception/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Command-Line Interface: Using the EdgeFirst Studio Middleware
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../getting_started/platforms/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    EdgeFirst Platforms: Setup and Boot Guide
     
   </span>
   
@@ -561,11 +633,7 @@
         
       
         
-          
-        
       
-        
-          
         
       
         
@@ -573,15 +641,9 @@
         
       
         
-          
-        
       
         
-          
-        
       
-        
-          
         
       
     
@@ -640,7 +702,7 @@
         
   
   <span class="md-ellipsis">
-    Navigation
+    Navigating EdgeFirst Studio
     
   </span>
   
@@ -679,53 +741,17 @@
   
   
   
-    
-    
-      
+    <li class="md-nav__item">
+      <a href="../projects/" class="md-nav__link">
         
-          
-        
-      
-    
-    
-      
-      
-    
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-        
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_4" >
-        
-          
-          
-          <div class="md-nav__link md-nav__container">
-            <a href="../projects/" class="md-nav__link ">
-              
   
   <span class="md-ellipsis">
-    Projects
+    Project Dashboard
     
   </span>
   
 
-            </a>
-            
-          </div>
-        
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_4_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_3_4">
-            <span class="md-nav__icon md-icon"></span>
-            Projects
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
-              
-            
-          </ul>
-        </nav>
-      
+      </a>
     </li>
   
 
@@ -739,6 +765,10 @@
   
     
     
+      
+        
+          
+        
       
         
       
@@ -757,8 +787,10 @@
         <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_5" >
         
           
-          <label class="md-nav__link" for="__nav_3_5" id="__nav_3_5_label" tabindex="0">
-            
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../datasets/" class="md-nav__link ">
+              
   
   <span class="md-ellipsis">
     Datasets
@@ -766,8 +798,14 @@
   </span>
   
 
-            <span class="md-nav__icon md-icon"></span>
-          </label>
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_3_5" id="__nav_3_5_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
         
         <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_5_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_3_5">
@@ -775,6 +813,8 @@
             Datasets
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
+            
+              
             
               
                 
@@ -944,7 +984,7 @@
         
   
   <span class="md-ellipsis">
-    Snapshots
+    Snapshot Dashboard
     
   </span>
   
@@ -995,6 +1035,8 @@
       
         
           
+        
+      
         
       
         
@@ -1077,6 +1119,28 @@
   
   <span class="md-ellipsis">
     EdgeFirst Dataset Format
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../datasets/zoo/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Dataset Zoo
     
   </span>
   
@@ -2587,57 +2651,77 @@
 
 
 <h1 id="automatic-ground-truth-generation-agtg">Automatic Ground Truth Generation (AGTG)</h1>
-<p>AGTG allows datasets to have annotation populated on a dataset with minimal human interaction. There are two modes of operation</p>
+<p>AGTG allows datasets to have annotations populated on a dataset with minimal human interaction. There are two modes of operation.</p>
 <ol>
-<li>Background Operation: this is invoked at the time of importing the dataset</li>
-<li>Semi-automatic: users can select portions of dataset sequenced and manually trigger AI assisted annotation</li>
+<li>Background Operation: This is invoked at the time of importing the dataset.</li>
+<li>Semi-automatic: Users can select portions of dataset sequenced and manually trigger AI assisted annotations.</li>
 </ol>
 <h2 id="fully-automatic-ground-truth-generation">Fully Automatic Ground Truth Generation</h2>
-<p>This functionality is available at the time of restoring a snapshot. To invoke this import/create a snapshot and then enable AGTG while restoring the snapshot. Please refer to <a href="../snapshots/">Restoring a snapshot</a> </p>
+<p>This functionality is available at the time of restoring a snapshot. To invoke the restore feature, import/create a snapshot and then enable AGTG while restoring the snapshot. Please refer to <a href="../snapshots/">Restoring a snapshot</a> for more information.</p>
 <h2 id="semi-automatic-ground-truth-generation">Semi-Automatic Ground Truth Generation</h2>
-<p>This process is used to generate 2D Bounding boxes, 2D segmentations and 3D bounding boxes using AI assisted pipelines in DVE</p>
+<p>This process is used to generate 2D Bounding boxes, 2D segmentation masks, and 3D bounding boxes using AI assisted pipelines in EdgeFirst Studio.</p>
 <h3 id="starting-an-agtg-server">Starting an AGTG Server</h3>
 <ol>
-<li>Select Cloud Instances dashboard from teh apps menu</li>
+<li>Select <em>Cloud Instances</em> dashboard from the apps menu.</li>
 </ol>
-<p><img alt="alt text" src="assets/image-1.png" /></p>
+<figure>
+<img align="center" alt="Cloud Instances" src="../assets/cloud-instances.png" />
+<figcaption>Cloud Instances</figcaption>
+</figure>
 <ol>
-<li>Click on Start Button</li>
-<li>Enter A desired name and select AI Assisted Ground Truth</li>
+<li>Click on the <em>Start</em> button.</li>
+<li>Enter A desired name and select AI Assisted Ground Truth.</li>
 </ol>
-<p><img alt="alt text" src="assets/image-2.png" />
-4. This will create a server. Please refresh to see the status of teh server. The server takes about 5 to 10 minutes to fully initialize.
-5. Once initialized, it is ready for usage in next steps.</p>
+<figure>
+<img align="center" alt="AI Server" src="../assets/launch-ai-server.png" />
+<figcaption>AI Server</figcaption>
+</figure>
+<ol>
+<li>This will create a server. Please refresh to see the status of the server. The server takes about 5 to 10 minutes to fully initialize.</li>
+<li>Once initialized, it is ready for usage in next steps.</li>
+</ol>
 <h3 id="creating-ai-assisted-annotations">Creating AI Assisted Annotations</h3>
 <ol>
-<li>Open a database and go to its gallery</li>
-<li>Click on a sequence that is intended to be edited</li>
-<li>Go to the frame where editing begins</li>
-<li>Enable the editing of annotations:</li>
+<li>Open a database and go to its gallery.</li>
+<li>Click on a sequence that is intended to be edited.</li>
+<li>Go to the frame where editing begins.</li>
+<li>Enable the editing of annotations.</li>
 </ol>
-<p><img alt="alt text" src="assets/image.png" /></p>
+<figure>
+<img align="center" alt="Enable Edit Annotations" src="../assets/edit-annotations.png" />
+<figcaption>Enable Edit Annotations</figcaption>
+</figure>
 <ol>
-<li>Select Video Segment Tool</li>
+<li>Select <em>Video Segment Tool</em>.</li>
 </ol>
-<p><img alt="alt text" src="assets/image-3.png" /></p>
+<figure>
+<img align="center" alt="Video Segment Tool" src="../assets/video-segment-tool.png" />
+<figcaption>Video Segment Tool</figcaption>
+</figure>
 <ol>
-<li>Select the AGTG server (as started above) if not already selected</li>
-<li>Click INITIALIZE STATE. Bt default all frames of the sequence are selected - if only a portion of sequence is to be edit then enter teh starting and ending frame numbers. This will decrease the initialization time.</li>
-<li>Once initialized, the first object is created without  any segmentation masks. The explanation of icons on teh object card is as follows:</li>
+<li>Select the AGTG server (as started above) if not already selected.</li>
+<li>Click <em>INITIALIZE STATE</em>. By default, all frames of the sequence are selected - If only a portion of a sequence is to be edited then enter the starting and ending frame numbers. This will decrease the initialization time.</li>
+<li>Once initialized, the first object is created without any segmentation masks. The explanation of icons on the object card is shown below.</li>
 </ol>
-<p><img alt="alt text" src="assets/image-4.png" /></p>
+<figure>
+<img align="center" alt="AI Segment Options" src="../assets/ai-segment-options.png" />
+<figcaption>AI Segment Options</figcaption>
+</figure>
 <ol>
-<li>Select an object on the image using rectangle or inclusion points. </li>
-<li>The object should be segmented</li>
+<li>Select an object on the image using a rectangle or inclusion points. </li>
+<li>The object should now be segmented.</li>
 </ol>
-<p><img alt="alt text" src="assets/image-5.png" /></p>
+<figure>
+<img align="center" alt="Segmented Annotation" src="../assets/segmented-annotation.png" />
+<figcaption>Segmented Annotation</figcaption>
+</figure>
 <ol>
-<li>Click PROPAGATE.</li>
-<li>This will start a counter and propagate the object from starting frame to the ending frame</li>
-<li>Scroll through teh frames to see if teh propagation is correct</li>
-<li>If satisfied, click on the SAVE PENDING SEGMENTATIONS to store the annotations to the dataset</li>
-<li>If the dataset has LIDAR, then 3D bounding boxes are also created for teh same object</li>
-<li>Repeat for other object as necessary</li>
+<li>Click <em>PROPAGATE</em>.</li>
+<li>This will start a counter and propagate the object from the starting frame to the ending frame.</li>
+<li>Scroll through the frames to see if the propagation is correct.</li>
+<li>If satisfied, click on the <em>SAVE PENDING SEGMENTATIONS</em> to store the annotations to the dataset.</li>
+<li>If the dataset has LIDAR, then 3D bounding boxes are also created for the same object.</li>
+<li>Repeat for other objects as necessary.</li>
 </ol>
 
 

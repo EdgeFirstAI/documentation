@@ -1,20 +1,21 @@
 # EdgeFirst Studio: From Start to Deployment
 
-This page will walk you through a high-level overview of getting started with EdgeFirst Studio by introducing the concepts used in Studio and their corresponding UI elements and then using those concepts and elements as part of an high-level workflow from collecting and curating datasets to training, validating, and deploying EdgeFirst models.
+This page will walk you through a high-level overview of getting started with EdgeFirst Studio by introducing the concepts used in Studio and their corresponding UI elements and then using those concepts and elements as part of a high-level workflow from collecting and curating datasets to training, validating, and deploying EdgeFirst models.
 
 <div style="text-align: center;">
     <iframe width="560" height="315" src="https://www.youtube.com/embed/MmoDCXj72jk?si=I8gTw2VCtcts69ks" title="EdgeFirst Studio Overview" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 </div>
 
-## Projects, Datasets, and Training Session
+## Projects, Datasets, and Training and Validation Sessions
 
 This section breaks down important concepts used in EdgeFirst Studios, namely:
 
 - *projects*: high-level collections of sensor datasets, training sessions, and other automation and management tasks associated with the dataset inputs and model outputs.  
 - *datasets*: a collection of sensor data, such as images, videos, radar cubes, etc. logically grouped together by the user. Usually, each dataset contained within a project will come from a single recording session.
 - *training sessions*: the functionality to convert datasets recorded into vision- and radar-based models that can be deployed back to the edge devices
+- *validation sessions*: the functionality to validate the performance of trained models to verify field readiness for deployment.
 
-These concepts and their respective UI elements will be used in guided workflow below, and follow from the steps shown in [Getting Started](../index.md#edgefirst-studio-quickstart).  Additional UI breakdowns of EdgeFirst Studio can be found in [Navigating EdgeFirst Studio](../studio/navigation.md).
+These concepts and their respective UI elements will be used in the hands-on workflow below, and follow from the steps shown in [Getting Started](../index.md#edgefirst-studio-quickstart).  Additional UI breakdowns of EdgeFirst Studio can be found in [Navigating EdgeFirst Studio](../studio/navigation.md).
 
 ### Projects
 
@@ -25,10 +26,11 @@ As you saw from the initial workflow, when you first login, you will be greeted 
 <figcaption>Project UI Breakdown</figcaption>
 </figure>
 
-A project will contain datasets and information about the operations done with those datasets, such as: training sessions, automation tasks, labeling/annotation tasks, and validation sessions.  The "Sample Datasets" project has two datasets and two training sets associated with it.
+A project will contain datasets and information about the operations done with those datasets, such as: training sessions, automation tasks, labeling/annotation tasks, and validation sessions.  The "Sample Datasets" project has two datasets, two training sessions, and two validation sessions associated with it.
 
 To return to this splash page from any other page, you can:
-* click your browser's "Back" button until back here
+
+* click your browser's "Back" button until back here.
 * click the Apps ![Apps Button](../assets/apps_button.png) waffle button and select the "Projects" menu item.
 * click on the "Au-Zone" Home button in the top-left corner.
 

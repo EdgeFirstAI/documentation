@@ -61,7 +61,7 @@ This section describes the steps for onboarding new users to EdgeFirst Studio by
 
 ### Initial Steps
 
-Now that you are in the *Projects* or Main page, you will see a public project called "Sample Datasets" containing public datasets and completed experiments. More information about this project will be provided in the [Guided Project Workflow](getting_started/workflows.md#guided-workflow-with-completed-experiments). 
+Now that you are in the *Projects* or Main page, you will see a public project called "Sample Datasets" containing public datasets and completed experiments. More information about this project will be provided in the [EdgeFirst Studio Overview](getting_started/workflows.md). 
 
 For now, let's start by creating your first project since this is required in future tutorials. You can create a new project by clicking on the "Create" button on the top-right corner of the page.
 

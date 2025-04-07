@@ -4,7 +4,7 @@ EdgeFirst Studio supports *Vision Models* trained using **Modelpack** and *Spati
 
 ## ModelPack Tutorials
 
-Modelpack is a single-sensor (single-input) architecture of a Vision model tasked with detecting objects in an image via bounding boxes, segmentation masks, or both. A Vision model is a type of model that interprets images or videos to perform tasks such as object recognition, image classification, and much more. There are three types of Vision models that are supported in EdgeFirst Studio. 
+Modelpack is a single-sensor (single-input) architecture of a Vision model tasked with detecting objects in an image via bounding boxes, segmentation masks, or both. A Vision model is a type of model that interprets images or videos to perform tasks such as object recognition, image classification, and much more. EdgeFirst Studio supports Vision models tasked with object recognition.
 
 * [Training Modelpack](../models/modelpack/training.md)
 * [Validating Modelpack](../models/modelpack/validation.md)

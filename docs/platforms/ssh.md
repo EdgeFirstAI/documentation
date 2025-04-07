@@ -87,6 +87,82 @@ Jan 29 10:29:29 verdin-imx8mp-15141029 systemd[1]: Started Maivin Camera Service
 ```
 To exit the SSH session, type `exit`.
 
+### Additional Examples
+
+#### MCAP Recorder Service
+
+Check the status of the MCAP Recorder Service.
+
+```shell
+$ systemctl status recorder.service
+```
+
+If the Recorder Service is inactive, the following status will be displayed on the terminal.
+
+```shell
+○ recorder.service - Maivin MCAP Recorder Service
+     Loaded: loaded (/usr/lib/systemd/system/recorder.service; disabled; vendor preset: disabled)
+    Drop-In: /etc/systemd/system/recorder.service.d
+             └─override.conf
+     Active: inactive (dead)
+```
+
+To start the Recorder Service, run the following command.
+
+```shell
+sudo systemctl start recorder.service
+```
+
+An active Recorder Service will display the following status on the terminal.
+
+```shell
+● recorder.service - Maivin MCAP Recorder Service
+     Loaded: loaded (/usr/lib/systemd/system/recorder.service; disabled; vendor preset: disabled)
+    Drop-In: /etc/systemd/system/recorder.service.d
+             └─override.conf
+     Active: active (running) since Mon 2025-04-07 16:19:22 UTC; 4min 45s ago
+   Main PID: 2607 (maivin-recorder)
+      Tasks: 17 (limit: 3772)
+     Memory: 319.5M
+     CGroup: /system.slice/recorder.service
+             └─ 2607 /home/torizon/saksham/maivin-recorder
+```
+
+#### WebUI
+
+Check the status of the WebUI
+
+```shell
+$ systemctl status webui
+```
+
+If the WebUI is inactive, the following status will be displayed on the terminal.
+
+```shell
+○ webui.service - Maivin Web UI Server
+     Loaded: loaded (/usr/lib/systemd/system/webui.service; enabled; vendor preset: enabled)
+     Active: inactive (dead)
+```
+
+To start the WebUI, run the following command.
+
+```shell
+$ sudo systemctl start webui
+```
+
+An active WebUI service will display the following status on the terminal.
+
+```shell
+● webui.service - Maivin Web UI Server
+     Loaded: loaded (/usr/lib/systemd/system/webui.service; enabled; vendor preset: enabled)
+     Active: active (running) since Mon 2025-04-07 16:06:37 UTC; 3s ago
+   Main PID: 1327 (websrv)
+      Tasks: 18 (limit: 3772)
+     Memory: 21.0M
+     CGroup: /system.slice/webui.service
+             └─ 1327 /usr/bin/websrv
+```
+
 ## Secure Copy
 We can use secure copy (SCP) to move files to and from the device.  Basic command usage is:
 ```shell

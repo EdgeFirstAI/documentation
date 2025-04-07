@@ -43,7 +43,7 @@ sequenceDiagram
 ```
 
 1. Camera service publishes a DmaBuffer for each frame received from the camera.
-2. Client application calls `pidfd_open(pid, 0)` to acquire a file descriptor that prefers to the camera service process.
+2. Client application calls `pidfd_open(pid, 0)` to acquire a file descriptor that refers to the camera service process.
 3. Client application calls `pidfd_getfd(pidfd, fd, 0)` to acquire a local duplicate of the camera buffer file descriptor.
 4. A new file descriptor is returned, to release the `dma-buf` object we will need to call `close(fd)` later.
 5. Client application calls `mmap(fd, ...)` to acquire a local pointer to the camera buffer's pixel data.

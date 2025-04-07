@@ -3,9 +3,10 @@
 ![EdgeFirst Studio](assets/studio.png#only-light)
 ![EdgeFirst Studio](assets/studio-dark.png#only-dark)
 
-Welcome to EdgeFirst Studio, this tutorial will walk you through the full end-to-end workflow.
-Though not required, we urge you to follow along with an appropriate edge device to test the
-models on the actual hardware.
+Welcome to EdgeFirst Studio (formerly Deep View Enterprise)!  This guide will introduce you to the components of the EdgeFirst AI Ecosystem.
+!!! tip
+    Though not required, where appropriate, we recommend you to follow along with an appropriate edge device to test the models on the actual hardware.
+
 
 <div style="text-align: center;">
     <iframe width="560" height="315" src="https://www.youtube.com/embed/HaiYg6Dk57Y?si=PgReAjTKj9Tn14fn" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
@@ -13,9 +14,8 @@ models on the actual hardware.
 
 ## EdgeFirst Platforms Quickstart
 
-If you have recently received one of these EdgeFirst Modules you may want to first start with
-the [EdgeFirst Platforms Quickstart](platforms/quickstart.md) then come back once you're ready to get started with the
-cloud tools.
+If you have recently received one of these EdgeFirst Platforms, you should first start with
+the [EdgeFirst Platforms Quickstart](platforms/quickstart.md) and then come back once you're ready to get started with EdgeFirst Studio.
 
 **[Maivin 1](platforms/index.md)** | **[Maivin 2](platforms/index.md)** | **[Raivin](platforms/index.md)**
 :------------------:|:------------------:|:------------------:
@@ -23,110 +23,75 @@ cloud tools.
 
 ## EdgeFirst Studio Quickstart
 
-This guide will walk a user through a high-level overview of getting started with 
-EdgeFirst Studio (formerly Deep View Enterprise) by exploring individual processes from collecting
-and curating datasets to training, validating, and deploying EdgeFirst models.
+This section describes the steps for onboarding new users to EdgeFirst Studio by creating their account, logging into EdgeFirst Studio, and creating their first project. 
 
-This guide will showcase two workflows. The first workflow will provide a guided user experience by
-providing completed experiments for users to follow along merely acting as an observer to get a 
-general idea of the workspace. The second workflow will be much more user involved by providing
-instructions for the user to be familiar with using the tools available in EdgeFirst Studio *(coming soon)*. 
+### Sign Up
 
-### Guided Workflow
+1. If you haven't already created an EdgeFirst Studio Account, start by [creating an account](https://dveml.com/#/login?initialMode=new-user). 
 
-#### Sign Up
+2. When creating your account, enter the required fields denoted by the asterisk (*) and then create your account once completed.
 
-Start by creating your [EdgeFirst Studio Account](https://edgefirst.studio/#/login?initialMode=new-user).
+    <figure markdown="span">
+    ![Create a New Account](assets/signup-page.jpg){ align=center }
+    <figcaption>Create a New Account</figcaption>
+    </figure>
 
-Enter the required fields denoted by the asterisk (*) and then create your account once completed.
+3. An email will be sent to verify the email you provided. Go ahead and click on the link provided to verify your email.
 
-<figure markdown="span">
-![Create a New Account](getting_started/assets/signup-page.jpg){ align=center }
-<figcaption>Create a New Account</figcaption>
-</figure>
+    <figure markdown="span">
+    ![Email Verification](assets/email-verification.jpg){ align=center }
+    <figcaption>Email Verification</figcaption>
+    </figure>
 
-Next an email will be sent to verify the email you provided. Go ahead and click on the link provided to verify your email.
+4. Once the email is verified, you can now [login](https://edgefirst.studio/#/login) to EdgeFirst Studio.
 
-<figure markdown="span">
-![Email Verification](getting_started/assets/email-verification.jpg){ align=center }
-<figcaption>Email Verification</figcaption>
-</figure>
+5. When logging in, enter your username and password you specified. Next click the *SIGN IN* button to sign in.
 
-#### EdgeFirst Studio Workspace
+    <figure markdown="span">
+    ![Login Page](assets/login-page.jpg){ align=center }
+    <figcaption>Login Page</figcaption>
+    </figure>
 
-Next become familiar with the EdgeFirst Studio workspace. 
+6. Once logged in to EdgeFirst Studio, you will be greeted with the following [Projects](./studio/projects.md) page.
 
-The following figure provides a general overview of the workspace layout. 
+    <figure markdown="span">
+    ![Starting Page](assets/studio-from-scratch.jpg){ align=center }
+    <figcaption>Projects Splash Page</figcaption>
+    </figure>
 
-<figure markdown="span">
-![Navigation](studio/navigation/assets/image.png){ align=center }
-<figcaption>Navigation</figcaption>
-</figure>
+### Initial Steps
 
-Please see the overview of [Navigating the Workspace](studio/navigation/index.md) for more details.
+Now that you are in the *Projects* or Main page, you will see a public project called "Sample Datasets" containing public datasets and completed experiments. More information about this project will be provided in the [Guided Project Workflow](getting_started/workflows.md#guided-workflow-with-completed-experiments). 
 
-#### Create a Project
-
-Using the account you just created, sign in to EdgeFirst Studio. 
-Once you're logged in, create your first project. Provide a name and description of the project 
-that reflects your goals. 
+For now, let's start by creating your first project since this is required in future tutorials. You can create a new project by clicking on the "Create" button on the top-right corner of the page.
 
 <figure markdown="span">
-![Create a New Project](getting_started/assets/new_project.jpg){ align=center }
-<figcaption>Create a New Project</figcaption>
+![Create Project](assets/create-project.jpg){ align=center }
+<figcaption>The location of the "Create" button</figcaption>
 </figure>
 
-#### Explore Dataset
-
-Try our sample Raivin dataset for training a Fusion Model.
+Provide a name and a description of the project that reflects your goals.  In this example, the project will be named "People Detection", which will be used in all future tutorials requiring a user-created project.
 
 <figure markdown="span">
-![Raivin Dataset](getting_started/assets/raivin-ultra-short.jpg){ align=center }
-<figcaption>Raivin Dataset</figcaption>
+![Project Details](assets/create-project-fields.jpg){ align=center }
+<figcaption>Project Details</figcaption>
 </figure>
+
+Your newly created project will be placed next to the public project named "Sample Datasets". This public project contains public datasets for users to become familiar with how datasets are managed in EdgeFirst Studio. 
+
+!!! Warning
+    The "Sample Datasets" project is **READ ONLY**.  Significant Studios functionality will need write-access to a project and will fail when attempted to be run on this project!
 
 <figure markdown="span">
-![Dataset Fields](datasets/assets/dataset-fields.png){ align=center }
-<figcaption>Dataset Fields</figcaption>
+![New Project](assets/new-project.jpg){ align=center }
+<figcaption>Both Projects</figcaption>
 </figure>
 
-Please see the overview of the [Datasets Dashboard](datasets/index.md) for more details regarding the 
-dataset attributes in EdgeFirst Studio.
+In this Quickstart guide, you have created your EdgeFirst Studio Account, logged in to EdgeFirst Studio, and created your very first project. The following links will provide additional tutorials for user onboarding in EdgeFirst Studio.
 
-#### Train Model
-
-The following training session is a completed session from training a Fusion model
-from the dataset provided. 
-
-<figure markdown="span">
-![Sample Training Session](getting_started/assets/training-session.jpg){ align=center }
-<figcaption>Sample Training Session</figcaption>
-</figure>
-
-<figure markdown="span">
-![Training Session Fields](models/assets/training/training-session-fields.jpg){ align=center }
-<figcaption>Training Session Fields</figcaption>
-</figure>
-
-For more details regarding deploying training sessions, please see 
-[Training Modelpack](models/modelpack/training.md) for training Vision models and 
-[Training Fusion](models/fusion/training.md) for training Fusion models.
-
-#### Validate Model
-
-The following validation session is a completed session from validating a Fusion model
-from the dataset provided.
-
-<figure markdown="span">
-![Sample Validation Session](getting_started/assets/validation-session.jpg){ align=center }
-<figcaption>Sample Validation Session</figcaption>
-</figure>
-
-<figure markdown="span">
-![Validation Session Fields](models/assets/validation/validation-session-fields.jpg){ align=center }
-<figcaption>Validation Session Fields</figcaption>
-</figure>
-
-For more details regarding deploying validation sessions, please see 
-[Validating Modelpack](models/modelpack/validation.md) for validating Vision models and 
-[Validating Fusion](models/fusion/validation.md) for validating Fusion models.
+* [EdgeFirst Studio: From Start to Deployment](getting_started/workflows.md)
+* [Navigating EdgeFirst Studio](getting_started/studio.md)
+* [Dataset Management](getting_started/datasets.md)
+* [Model Training, Validation, and Deployment](getting_started/models.md)
+* [Command-Line Interface: Using the EdgeFirst Studio Middleware](getting_started/perception.md)
+* [EdgeFirst Platforms: Setup and Boot Guide](getting_started/platforms.md)

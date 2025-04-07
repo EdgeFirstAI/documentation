@@ -1,19 +1,25 @@
-# Deep View Enterprise
+# EdgeFirst Studio 
 
-Deep View Enterprise (DVE) is a multi stack platform for performing various Machine learning operations (MLOps). MLOps bundles standard workflows needed to train and deploy models. Furthermore, Deep View Enterprise ensures a seamless system for managing, tracking, and monitoring the lifecycle of the user's experiments. Lastly, Deep View Enterprise provides a set of workflows to automate data collection and curation, and model training, validation, and inference.
+EdgeFirst Studio (Formerly Deep View Enterprise) is a multi stack platform for performing various Machine Learning Operations (MLOps). 
 
-There are several workflows that define Deep View Enterprise's Machine Learning Operations:
+<div style="text-align: center;">
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/9bthwze0Q4Q" title="EdgeFirst Studio Introduction" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+</div>
 
-1. Dataset Collection
-2. Automatic Ground Truth Generation (AGTG)
-3. Dataset Curation
-4. Model Training
-    - Fusion Training
-    - ModelPack Training
-5. Model Validation
-    - Fusion Validation
-    - ModelPack Validation
-6. Model Inference
+It is recommended for new users to visit the following tutorials to be familiar with the layout and features that EdgeFirst Studio offers.
 
-> *Note:*
-> *Please see the links attached for further details regarding the individual workflows.*
+* [Navigating EdgeFirst Studio](navigation.md) 
+* [Project Dashboard](projects.md)
+* [Dataset Dashboard](datasets/index.md)
+
+Additionally, users should be familiar with the annotation process described in the following tutorials.
+
+* [Automatic Ground Truth Generation](agtg.md)
+* [Building Snapshots](snapshots.md)
+* Annotation Audits (*coming soon*)
+
+Finally, EdgeFirst Studio provides security protocols described in [User Access Management](access.md).
+
+Related articles are provided below:
+
+1. [Bridge In API](dataio.md) - Describes direct publishing of datasets to EdgeFirst Studio.

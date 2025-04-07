@@ -31,7 +31,7 @@ Clicking on any of these sequences will open individual images in the sequence w
 <figcaption>Vision Annotations</figcaption>
 </figure>
 
-For cases where the annotations need corrections, please see [Dataset Tutorials](../../datasets/tutorials.md#manual-annotations) for more details.
+For cases where the annotations need corrections, please see [Dataset Tutorials](../../datasets/tutorials.md#audit-annotations) for more details.
 
 ## Select the Trainer Tool
 
@@ -114,8 +114,8 @@ left panel and additional information and status is shown on the right panel.
 </figure>
 
 <figure markdown="span">
-![Training Session Fields](../assets/training/training-session-fields.jpg){ align=center }
-<figcaption>Training Session Fields</figcaption>
+![Training Session Attributes](../assets/training/training-session-attributes.jpg){ align=center }
+<figcaption>Training Session Attributes</figcaption>
 </figure>
 
 ## Training Metrics

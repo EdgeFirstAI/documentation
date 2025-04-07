@@ -48,7 +48,7 @@ name but add the frame number and file extension.
 The following figure is a visualization of the typical contents in a Zip file.
 
 <figure markdown="span">
-![Sample Zip Contents](assets/format/zip-contents-sample.jpg){ align=center }
+![Sample Zip Contents](assets/zip-contents-sample.jpg){ align=center }
 <figcaption>Sample Zip Contents</figcaption>
 </figure>
 
@@ -150,7 +150,7 @@ of the annotations.
 The following figure visualizes the contents in a sample dataframe.
 
 <figure markdown="span">
-![Sample DataFrame](assets/format/arrow-table-sample.jpg){ align=center }
+![Sample DataFrame](assets/arrow-table-sample.jpg){ align=center }
 <figcaption>Sample DataFrame</figcaption>
 </figure>
 

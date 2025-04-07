@@ -1,6 +1,6 @@
 # Model Topics
 
-The model topics are managed by the `model` service and handles running vision only machine learning models.  The service supports object detection and segmentation tasks.
+The model topics are managed by the `model` service and handles running vision machine learning models.  The service supports object detection and segmentation tasks.
 
 - RTM models
     - Object Detection
@@ -32,3 +32,8 @@ This topic is only published if the model service is configured to enable compre
 
 ## /model/info
 The `/model/info` topic publishes information about the current model configuration. It describes shape and type of the input and output tensors, the labels of the model, the tasks the model supports, the format of the model, and the name of the model.
+
+## /model/visualization
+The `/model/visualization` topic publishes information about the detected objects using the [ImageAnnotations](../api/foxglove_msgs.md#imageannotations) schema. This message contains text and line annotations which will draw boxes and labels in Foxglove. This message is intended only for help visualizing the detection results in Foxglove without needed the EdgeFirst Detect plugin.
+
+This topic is only published if the model service is configured to enable visualization and configured with a model that outputs object detection.

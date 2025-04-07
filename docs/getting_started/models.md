@@ -8,7 +8,7 @@ Modelpack is a single-sensor (single-input) architecture of a Vision model taske
 
 * [Training Modelpack](../models/modelpack/training.md)
 * [Validating Modelpack](../models/modelpack/validation.md)
-* Deploying Modelpack (*Coming Soon*)
+* [Deploying Modelpack](../models/modelpack/deployment.md)
 
 ## Sensor Fusion Tutorials
 

@@ -210,4 +210,12 @@ For instructions to validate a Vision model, please refer to [Validating Modelpa
 
 Once the model has been validated and deemed the performance to be reasonable for deployment, you can now deploy the model on an EdgeFirst Platform and start running inference on the model. 
 
-*coming soon*
+To deploy Modelpack on an EdgeFirst Platform, please see the [Modelpack Deployment](../models/modelpack/deployment.md) instructions.
+
+<figure markdown="span">
+![Segmentation Sample](../models/assets/deployment/segmentation-sample-1.jpg){ align=center }
+<figcaption>Preview: Segmentation Inference</figcaption>
+</figure>
+
+!!! note
+    Deploying Fusion models is coming soon

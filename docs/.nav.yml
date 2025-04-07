@@ -32,6 +32,7 @@ nav:
           - models/modelpack/index.md
           - models/modelpack/training.md
           - models/modelpack/validation.md
+          - models/modelpack/deployment.md
       - Fusion:
           - models/fusion/index.md
           - models/fusion/training.md

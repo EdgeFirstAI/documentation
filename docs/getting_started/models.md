@@ -26,4 +26,4 @@ A Sensor Fusion Model is a multi-sensor (multi-input) architecture that fuses Ra
     <iframe width="560" height="315" src="https://www.youtube.com/embed/oKh4k0CCLmU?si=PPmbJ1-8dZPLhGh2" title="EdgeFirst Validation" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 </div>
 
-* Deploying Fusion Models (*Coming Soon*)
+* [Deploying Fusion Models](../models/fusion/deployment.md)

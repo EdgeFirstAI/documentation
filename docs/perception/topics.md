@@ -47,5 +47,5 @@ then drawing the bounding box pixels over the camera and finally displaying the 
 examples of such applications, the first you're likely to see is the Web User Interface (REFER TO WEBUI CHAPTER).  Our sample
 code includes many examples which use the Rerun framework for drawing and demonstrate how to subscribe to topics and how
 to interpret the results, such as reading bounding boxes and drawing them over the camera feed.  You'll see these examples
-using Rerun for display througout our examples, but there is no direct connection to rerun and user applications could use
+using Rerun for display throughout our examples, but there is no direct connection to Rerun and user applications could use
 any UI of their choosing.

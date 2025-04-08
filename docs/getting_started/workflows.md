@@ -217,5 +217,9 @@ To deploy Modelpack on an EdgeFirst Platform, please see the [Modelpack Deployme
 <figcaption>Preview: Segmentation Inference</figcaption>
 </figure>
 
-!!! note
-    Deploying Fusion models is coming soon
+To deploy Fusion models on an EdgeFirst Platform, please see the [Fusion Deployment](../models/fusion/deployment.md) instructions.
+
+<figure markdown="span">
+![Segmentation Sample](../models/assets/deployment/occupancy-sample-2.jpg){ align=center }
+<figcaption>Preview: Fusion Inference</figcaption>
+</figure>

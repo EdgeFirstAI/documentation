@@ -107,6 +107,9 @@ Configure the settings on the left panel by specifying *Trainer Type* to *EdgeFi
 <figcaption>Training Options</figcaption>
 </figure>
 
+!!! note
+    For an indoor setting, the "Radar Range Mode" is typically set to "Ultra Short (9m)" and the "Object Detection Range" is set to 9 meters. This is the maximum range of detection, further distances are ignored. 
+
 ## Start the Session
 
 Start the session by clicking the *START SESSION* button on the bottom right.
@@ -179,5 +182,5 @@ the top right which can then be downloaded.
 
 ## Next Steps
 
-Now you have generated your Fusion model, follow these next steps
+Now that you have generated your Fusion model, follow these next steps
 for [validating your Fusion model](validation.md).

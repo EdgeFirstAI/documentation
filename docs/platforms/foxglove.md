@@ -1,5 +1,5 @@
 # Foxglove Studio
-[Foxglove Studio][foxglove] is an open source application developed by FoxGlove Technologies, Inc.  It is part of the [Robot Operating System (ROS)][ros] ecosystem and supports playback for MCAP recordings.  You can [download Foxglove Studio][foxglove_dl] as well as our [EdgeFirst plug-in for Foxglove][github_edgefirst_dl] and customized [Raivin Foxglove layout](assets/Raivin_Foxglove_Layout.json).
+[Foxglove Studio][foxglove] is an open source application developed by FoxGlove Technologies, Inc.  It is part of the [Robot Operating System (ROS)][ros] ecosystem and supports playback for MCAP recordings.  You can [download Foxglove Studio][foxglove_dl] as well as our [EdgeFirst plug-in for Foxglove][github_edgefirst_dl] and customized [Raivin Foxglove layout](assets/Raivin_Foxglove_Layout.json){: download="Raivin_Foxglove_Layout.json" }
 
 ## Getting Started
 Let's discuss how to install our custom plug-ins once you've installed Foxglove Stuiods.

@@ -37,6 +37,7 @@ nav:
           - models/fusion/index.md
           - models/fusion/training.md
           - models/fusion/validation.md
+          - models/fusion/deployment.md
       - models/augmentations.md
       - models/metrics.md
   - Perception:

@@ -15,7 +15,12 @@ First, verify that your Maivin is turned on and connected to the network.  You c
     Windows does not need the `.local` hostname suffix.
 
 In a command prompt, ping the Maivin's hostname.  
-![ping results](assets/ssh-ping.png){align=center}  
+
+<figure markdown="span">
+![Ping Results](assets/ssh-ping.png){align=center}  
+<figcaption>Ping Results</figcaption>
+</figure>
+
 If the Maivin does not reply, please confirm the Maivin is powered on and connected to the network.
 
 Once the ping is successful, use your SSH client to connect to the 'torizon' account on the Maivin's hostname.  For a command-line SSH such as OpenSSH, this should look as:
@@ -23,20 +28,35 @@ Once the ping is successful, use your SSH client to connect to the 'torizon' acc
 ```shell
 ssh torizon@Maivin-hostname
 ```
+
 For example:  
-![are you sure?](assets/ssh-areYouSure.png){align=center}  
+
+<figure markdown="span">
+![Are you Sure?](assets/ssh-areYouSure.png){align=center} 
+<figcaption>Are you Sure?</figcaption>
+</figure>
+
 On the first log of a new or updated Maivin, you may get the "authenticity of host" error.  This is expected, and type "yes" to continue connecting.
 
 On a new Raivin, it will ask you to change the default password to a new password.  Re-enter the 'torizon' password, and then enter a new password twice.  After you change the default password, the SSH session will close so you can re-login with the new password.  
-![new password](assets/ssh-changePassword.png){align=center}  
+
+<figure markdown="span">
+![New Password](assets/ssh-changePassword.png){align=center}  
+<figcaption>New Password</figcaption>
+</figure>
 
 Once you've finished those steps, the next and all future SSH sessions should look as follows:  
-![new password](assets/ssh-login.png){align=center}  
+
+<figure markdown="span">
+![SSH Session](assets/ssh-login.png){align=center}  
+<figcaption>SSH Session</figcaption>
+</figure>
 
 You are now at the Linux command-line prompt for the Raivin!
 
 ## Standard Debugging Commands
-The version of Raivin you are running can be found using `ostree admin status`,
+The version of Raivin you are running can be found using `ostree admin status`.
+
 ```shell
 $ ostree admin status
 * torizon e56b949928e920ea6045b794315912eec30ae7ae4aa157a2c4e96b4fd0b9b872.0
@@ -90,15 +110,11 @@ To exit the SSH session, type `exit`.
 ### Additional Examples
 
 #### MCAP Recorder Service
-
 Check the status of the MCAP Recorder Service.
-
 ```shell
 $ systemctl status recorder.service
 ```
-
 If the Recorder Service is inactive, the following status will be displayed on the terminal.
-
 ```shell
 ○ recorder.service - Maivin MCAP Recorder Service
      Loaded: loaded (/usr/lib/systemd/system/recorder.service; disabled; vendor preset: disabled)
@@ -106,15 +122,11 @@ If the Recorder Service is inactive, the following status will be displayed on t
              └─override.conf
      Active: inactive (dead)
 ```
-
 To start the Recorder Service, run the following command.
-
 ```shell
 sudo systemctl start recorder.service
 ```
-
 An active Recorder Service will display the following status on the terminal.
-
 ```shell
 ● recorder.service - Maivin MCAP Recorder Service
      Loaded: loaded (/usr/lib/systemd/system/recorder.service; disabled; vendor preset: disabled)
@@ -129,29 +141,21 @@ An active Recorder Service will display the following status on the terminal.
 ```
 
 #### WebUI
-
 Check the status of the WebUI
-
 ```shell
 $ systemctl status webui
 ```
-
 If the WebUI is inactive, the following status will be displayed on the terminal.
-
 ```shell
 ○ webui.service - Maivin Web UI Server
      Loaded: loaded (/usr/lib/systemd/system/webui.service; enabled; vendor preset: enabled)
      Active: inactive (dead)
 ```
-
 To start the WebUI, run the following command.
-
 ```shell
 $ sudo systemctl start webui
 ```
-
 An active WebUI service will display the following status on the terminal.
-
 ```shell
 ● webui.service - Maivin Web UI Server
      Loaded: loaded (/usr/lib/systemd/system/webui.service; enabled; vendor preset: enabled)
@@ -174,7 +178,7 @@ torizon@verdin-imx8mp-<id>:/absolute/path/filename
 ```
 The path is not needed for files in the `torizon` home directory `/home/torizon`, and relative paths from `/home/torizon` can be used.
 
-If the destination file will be named the same as a the source file, a period `.` can be used instead.
+If the destination file will be named the same as the source file, a period `.` can be used instead.
 
 For example, if we want to upload the "test.mcap" file to the device from the current working directory on our local machine to remote device `verdin-imx8mp-15141029`, we can run the command:
 ```

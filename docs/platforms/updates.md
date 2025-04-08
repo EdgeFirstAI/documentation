@@ -1,6 +1,6 @@
 # Software Updates
 
-The Maivin platform runs a Linux operating system which is based on the [Torizon][torizon] distribution.  The Maivin version of the distribution is refered to as Torizon for Maivin.  This Torizon for Maivin distribution uses [OSTree][ostree] to manage software udpates, this updates both the Linux operating system including the kernel, drivers, and core system packages as well as the EdgeFirst Middleware which provides the perception stack.
+The Maivin platform runs a Linux operating system which is based on the [Torizon][torizon] distribution.  The Maivin version of the distribution is refered to as Torizon for Maivin.  This Torizon for Maivin distribution uses [OSTree][ostree] to manage software updates, this updates both the Linux operating system including the kernel, drivers, and core system packages as well as the EdgeFirst Middleware which provides the perception stack.
 
 The version naming for the Torizon for Maivin distribution follows the YEAR.MONTH.PATCH format.  The YEAR and MONTH refer to the data of the initial release of the software and the PATCH is the incremental patch release within this release cycle.  The upstream Torizon OS version number is documented in the release notes.
 
@@ -32,8 +32,9 @@ cat /etc/os-release
 The Torizon for Maivin system can be updated using the OSTree client.  The client is a command-line utility that can be used to manage the system snapshots.
 
 To update the release:
-1. Access your Maivin through SSH
-2. Pull the latest Maivn release update with the `ostree pull` command:
+
+1. Access your Maivin through [SSH](ssh.md)
+2. Pull the latest Maivin release update with the `ostree pull` command:
     ```bash
     torizon@verdin-imx8mp-15141091:~$ sudo ostree pull maivin:torizon/maivin/release
     1 delta parts, 2 loose fetched; 481 KiB transferred in 2 seconds; 0 bytes content written

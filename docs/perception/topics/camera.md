@@ -23,35 +23,46 @@ The `/camera/info` topic publishes information about the camera using the [Camer
 
 The `/camera/dma` topic uses the custom [DmaBuffer](../api/edgefirst_msgs.md#dmabuffer) EdgeFirst schema for transmitting Linux [dma-buf](https://docs.kernel.org/driver-api/dma-buf.html) descriptors.  This enables high-performance zero-copy of camera buffers between applications with trivial overhead.  A DmaBuffer provides the frame file descriptor and parent process descriptor along with the buffer resolution and format described using a [FOURCC](https://fourcc.org) code.
 
-The mechanism for sharing buffers is for the camera service to publish its own `pid` along with the file descriptor (`fd`) of the buffer along with the buffer parameters (width, height, stride, fourcc).  When a subscriber receives the message it must first duplicate the file descriptor into its own process space, this is done using the [pidfd_getfd](https://man7.org/linux/man-pages/man2/pidfd_getfd.2.html) system call.  Once the file descriptor has been duplicated it can be used normally, either used as-is with an API which can consume a `dma-buf` or by using [mmap](https://man7.org/linux/man-pages/man2/mmap.2.html) to map the contents of the buffer into user-space.
+The mechanism for sharing buffers is for the camera service to publish its own `pid` along with the file descriptor (`fd`) of the buffer along with the buffer parameters (width, height, stride, fourcc).  When a subscriber receives the message it must first duplicate the file descriptor into its own process space, this is done using the [pidfd_getfd](https://man7.org/linux/man-pages/man2/pidfd_getfd.2.html) system call.  Once the file descriptor has been duplicated it can be used normally, either uused as-is with an API which can consume a `dma-buf` or by using [mmap](https://man7.org/linux/man-pages/man2/mmap.2.html) to map the contents of the buffer into user-space.
 
 ``` mermaid
 sequenceDiagram
     loop
     autonumber
     Camera Service->>Client Application: DmaBuffer(pid, fd, ...)
-    Client Application-->>Linux Kernel: pidfd_getfd(pid, fd)
+    Client Application-->>Linux Kernel: pidfd_open(pid, fd)
+    Client Application-->>Linux Kernel: pidfd_getfd(pidfd, fd)
     Linux Kernel->>Client Application: fd duplicate
     Client Application-->>Linux Kernel: mmap(fd)
     Linux Kernel->>Client Application: ptr to camera pixels
     Client Application-->Linux Kernel: Client Application Processing
     Client Application-->>Linux Kernel: munmap(ptr)
     Client Application-->>Linux Kernel: close(fd)
+    Client Application-->>Linux Kernel: close(pidfd)
     end
 ```
 
 1. Camera service publishes a DmaBuffer for each frame received from the camera.
-2. Client application calls `pidfd_getfd(pid, fd, 0)` to acquire a local duplicate of the file descriptor.
-3. A new file descriptor is returned, to release the `dma-buf` object we will need to call `close(fd)` later.
-4. Client application calls `mmap(fd, ...)` to acquire a local pointer to the camera buffer's pixel data.
-5. A read-only pointer is returned to the client application, it will need to be released using `munmap(ptr)` later.
-6. Client application processes the pixel data.
-7. Client application calls `munmap(ptr)` to free the mapped buffer.
-8. Client application calls `close(fd)` to release the `dma-buf` object.
+2. Client application calls `pidfd_open(pid, 0)` to acquire a file descriptor that refers to the camera service process.
+3. Client application calls `pidfd_getfd(pidfd, fd, 0)` to acquire a local duplicate of the camera buffer file descriptor.
+4. A new file descriptor is returned, to release the `dma-buf` object we will need to call `close(fd)` later.
+5. Client application calls `mmap(fd, ...)` to acquire a local pointer to the camera buffer's pixel data.
+6. A read-only pointer is returned to the client application, it will need to be released using `munmap(ptr)` later.
+7. Client application processes the pixel data.
+8. Client application calls `munmap(ptr)` to free the mapped buffer.
+9. Client application calls `close(fd)` to release the `dma-buf` object.
+10. Client application calls `close(pidfd)` to release file descriptor for the camera service process.
+
+!!! tip "Permission Denied Errors"
+
+    The client application will not be able to call pidfd_getfd if the client application runs at a lower permission level than the camera service. If this error occurs, try running the client application as `sudo` or as a service.
+
 
 !!! tip "Mapping DMA Buffers"
 
     Mapping DMA buffers into user-space requires additional synchronization primitives around accesses.  We cover these details in our camera sample application.  Further details are documented in the Linux Kernel Manual under [CPU Access to DMA Buffer Objects](https://docs.kernel.org/driver-api/dma-buf.html#cpu-access-to-dma-buffer-objects).
+
+
 
 ## /camera/h264
 

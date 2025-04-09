@@ -31,7 +31,7 @@ This section describes the steps for onboarding new users to EdgeFirst Studio by
 
 ### Sign Up
 
-1. If you haven't already created an EdgeFirst Studio Account, start by [creating an account](https://dveml.com/#/login?initialMode=new-user). 
+1. If you haven't already created an EdgeFirst Studio Account, start by [creating an account][signup]. 
 
 2. When creating your account, enter the required fields denoted by the asterisk (*) and then create your account once completed.
 
@@ -47,7 +47,7 @@ This section describes the steps for onboarding new users to EdgeFirst Studio by
     <figcaption>Email Verification</figcaption>
     </figure>
 
-4. Once the email is verified, you can now [login](https://edgefirst.studio/#/login) to EdgeFirst Studio.
+4. Once the email is verified, you can now [login][login] to EdgeFirst Studio.
 
 5. When logging in, enter your username and password you specified. Next click the *SIGN IN* button to sign in.
 
@@ -99,3 +99,6 @@ In this Quickstart guide, you have created your EdgeFirst Studio Account, logged
 * [Model Training, Validation, and Deployment](getting_started/models.md)
 * [Command-Line Interface: Using the EdgeFirst Studio Middleware](getting_started/perception.md)
 * [EdgeFirst Platforms: Setup and Boot Guide](getting_started/platforms.md)
+
+[signup]: #
+[login]: #

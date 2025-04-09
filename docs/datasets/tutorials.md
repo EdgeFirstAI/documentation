@@ -361,6 +361,76 @@ Once the groups are specified, click *ADD GROUPS* to create the groups. This wil
 <figcaption>Dataset Groups</figcaption>
 </figure>
 
+## Importing Datasets
+
+This tutorial will show how to import a dataset into EdgeFirst Studio. 
+
+<div style="text-align: center;">
+<iframe width="560" height="315" src="https://www.youtube.com/embed/DJabdEHaZ8E?start=41" title="Import Dataset" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+</div>
+
+This tutorial will show importing a dataset such as [COCO128](https://www.kaggle.com/datasets/ultralytics/coco128) as an example.
+
+To import a dataset, first [create a dataset](#creating-datasets) container. The following dataset is created with the name set to "Coco128" and the description as "Demo import". Furthermore, an annotation set has also been created called "Ground Truth".
+
+<figure markdown="span">
+![COCO128 Dataset Container](assets/coco128-container.jpg){ align=center }
+<figcaption>COCO128 Dataset Container</figcaption>
+</figure>
+
+For an example dataset, [COCO128](https://www.kaggle.com/datasets/ultralytics/coco128?resource=download) was downloaded using the link provided. This will download a ZIP archive which can then be extracted.
+
+Once a container has been created, open the dataset options denoted by the three vertical dots on the top right corner of the dataset card.
+
+<figure markdown="span">
+![Dataset Options](assets/coco128-options.jpg){ align=center }
+<figcaption>Dataset Options</figcaption>
+</figure>
+
+Select "Import".
+
+<figure markdown="span">
+![Import Option](assets/coco128-import-option.jpg){ align=center }
+<figcaption>Import Option</figcaption>
+</figure>
+
+This will popup a new window for you to specify the dataset to be imported. In these options, select the "Import Type" to be "Darknet". Specify the dataset folder "coco128" to be imported. Specify the annotation set to the "Ground Truth" annotation set. The following figure shows the specifications.
+
+<figure markdown="span">
+![Import Options](assets/coco128-import-options.jpg){ align=center }
+<figcaption>Import Options</figcaption>
+</figure>
+
+The "coco128" dataset that was specified contains the "images" and "labels" subdirectories. 
+
+<figure markdown="span">
+![COCO128](assets/coco128-directories.jpg){ align=center }
+<figcaption>COCO128</figcaption>
+</figure>
+
+Select "START IMPORT" at the bottom right to start the import process.
+
+<figure markdown="span">
+![Start Import](assets/coco128-start-import.jpg){ align=center }
+<figcaption>Start Import</figcaption>
+</figure>
+
+This will start the import process as shown.
+
+<figure markdown="span">
+![Import Process](assets/coco128-import-process.jpg){ align=center }
+<figcaption>Import Process</figcaption>
+</figure>
+
+Once completed, refresh the page to see the changes. The dataset container will now contain 128 images from COCO and the annotations stored in the "Ground Truth" container.
+
+<figure markdown="span">
+![Imported COCO128 Dataset](assets/coco128-imported.jpg){ align=center }
+<figcaption>Imported COCO128 Dataset</figcaption>
+</figure>
+
+To view the dataset, refer to the instructions provided in [Viewing Datasets](#viewing-datasets).
+
 ## Exporting Datasets
 
 *Coming Soon*

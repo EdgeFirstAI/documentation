@@ -1,12 +1,12 @@
 # EdgeFirst Studio: From Start to Deployment
 
-This page will walk you through a high-level overview of getting started with EdgeFirst Studio by introducing the concepts used in Studio and their corresponding UI elements and then using those concepts and elements as part of an high-level workflow from collecting and curating datasets to training, validating, and deploying EdgeFirst models.
+This page will walk you through a high-level overview of getting started with EdgeFirst Studio by introducing the concepts used in Studio and their corresponding UI elements and then using those concepts and elements as part of a high-level workflow from collecting and curating datasets to training, validating, and deploying EdgeFirst models.
 
 <div style="text-align: center;">
     <iframe width="560" height="315" src="https://www.youtube.com/embed/MmoDCXj72jk?si=I8gTw2VCtcts69ks" title="EdgeFirst Studio Overview" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 </div>
 
-## Projects, Datasets, and Training Session
+## Projects, Datasets, and Training and Validation Sessions
 
 This section breaks down important concepts used in EdgeFirst Studios, namely:
 
@@ -15,7 +15,7 @@ This section breaks down important concepts used in EdgeFirst Studios, namely:
 - *training sessions*: the functionality to convert datasets recorded into vision- and radar-based models that can be deployed back to the edge devices.
 - *validation sessions*: the functionality to take a model and determine its accurary against other models or a standardized validation dataset.
 
-These concepts and their respective UI elements will be used in guided workflow below, and follow from the steps shown in [Getting Started](../index.md#edgefirst-studio-quickstart).  Additional UI breakdowns of EdgeFirst Studio can be found in [Navigating EdgeFirst Studio](../studio/navigation.md).
+These concepts and their respective UI elements will be used in the hands-on workflow below, and follow from the steps shown in [Getting Started](../index.md#edgefirst-studio-quickstart).  Additional UI breakdowns of EdgeFirst Studio can be found in [Navigating EdgeFirst Studio](../studio/navigation.md).
 
 ### Projects
 
@@ -26,10 +26,11 @@ As you saw from the initial workflow, when you first login, you will be greeted 
 <figcaption>Project UI Breakdown</figcaption>
 </figure>
 
-A project will contain datasets and information about the operations done with those datasets, such as: training sessions, automation tasks, labeling/annotation tasks, and validation sessions.  The "Sample Datasets" project has two datasets and two training sets associated with it.
+A project will contain datasets and information about the operations done with those datasets, such as: training sessions, automation tasks, labeling/annotation tasks, and validation sessions.  The "Sample Datasets" project has two datasets, two training sessions, and two validation sessions associated with it.
 
 To return to this splash page from any other page, you can:
-* click your browser's "Back" button until back here
+
+* click your browser's "Back" button until back here.
 * click the Apps ![Apps Button](../assets/apps_button.png) waffle button and select the "Projects" menu item.
 * click on the "Au-Zone" Home button in the top-left corner.
 
@@ -114,7 +115,7 @@ If you have an EdgeFirst Platform, please proceed to step 1. Otherwise, proceed 
 
 ### 1. Record Data
 
-When starting from scratch, it is common to start recording your own data to build your own dataset. This step requires an [EdgeFirst Platform](../platforms/quickstart.md) for recording data. However, we also provide [Public Datasets](#public-datasets) for users without an EdgeFirst Platform. 
+When starting from scratch, it is common to start recording your own data to build your own dataset. This step requires an [EdgeFirst Platform](../platforms/quickstart.md) for recording data. However, we also provide [Public Datasets](#datasets) for users without an EdgeFirst Platform. 
 
 Deploying an EdgeFirst Platform will allow users access to the following page for recording data.
 
@@ -213,4 +214,16 @@ For instructions to validate a Vision model, please refer to [Validating Modelpa
 
 Once the model has been validated and deemed the performance to be reasonable for deployment, you can now deploy the model on an EdgeFirst Platform and start running inference on the model. 
 
-*coming soon*
+To deploy Modelpack on an EdgeFirst Platform, please see the [Modelpack Deployment](../models/modelpack/deployment.md) instructions.
+
+<figure markdown="span">
+![Segmentation Sample](../models/assets/deployment/segmentation-sample-1.jpg){ align=center }
+<figcaption>Preview: Segmentation Inference</figcaption>
+</figure>
+
+To deploy Fusion models on an EdgeFirst Platform, please see the [Fusion Deployment](../models/fusion/deployment.md) instructions.
+
+<figure markdown="span">
+![Segmentation Sample](../models/assets/deployment/occupancy-sample-2.jpg){ align=center }
+<figcaption>Preview: Fusion Inference</figcaption>
+</figure>

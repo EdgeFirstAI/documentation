@@ -52,4 +52,10 @@ EdgeFirst Studio Datasets are structured based on the [EdgeFirst Dataset Format]
     <iframe width="560" height="315" src="https://www.youtube.com/embed/qLv8ayxQ-Ns?start=0&end=64" title="Splitting Datasets" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 </div>
 
+* [Importing Datasets](../datasets/tutorials.md#importing-datasets)
+
+<div style="text-align: center;">
+<iframe width="560" height="315" src="https://www.youtube.com/embed/DJabdEHaZ8E?start=41" title="Import Dataset" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+</div>
+
 * [Exporting Datasets](../datasets/tutorials.md#exporting-datasets)

@@ -102,9 +102,8 @@ image of size 2048x400, four columns of double wide (complex pairs)
 range-doppler matrices (4*2*256), and two rows of these range-doppler 
 matrices which typically contain 200 range bins.
 
-The radar cube has a wide dynamic range though most data is near zero, 
-making visualization challenging. It is suggested to normalize the cube for 
-visualization by following the conventions documented in the [Radar Normalizers](TBA) article.
+!!! note
+    The radar cube has a wide dynamic range though most data is near zero, making visualization challenging. 
 
 #### LiDAR
 

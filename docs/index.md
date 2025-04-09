@@ -4,12 +4,13 @@
 ![EdgeFirst Studio](assets/studio-dark.png#only-dark)
 
 Welcome to EdgeFirst Studio (formerly Deep View Enterprise)!  This guide will introduce you to the components of the EdgeFirst AI Ecosystem.
-!!! tip
-    Though not required, where appropriate, we recommend you to follow along with an appropriate edge device to test the models on the actual hardware.
 
+!!! tip "Need Help?"
+    📬 Have questions or ran into an issue?  
+    Feel free to [email our support team](mailto:support@edgefirst.ai) — we’re here to help!
 
 <div style="text-align: center;">
-    <iframe width="560" height="315" src="https://www.youtube.com/embed/HaiYg6Dk57Y?si=PgReAjTKj9Tn14fn" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/HaiYg6Dk57Y" title="EdgeFirst Studio Introduction" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 </div>
 
 ## EdgeFirst Platforms Quickstart
@@ -20,6 +21,9 @@ the [EdgeFirst Platforms Quickstart](platforms/quickstart.md) and then come back
 **[Maivin 1](platforms/index.md)** | **[Maivin 2](platforms/index.md)** | **[Raivin](platforms/index.md)**
 :------------------:|:------------------:|:------------------:
 [![Maivin 1](platforms/assets/maivin-1.png)](platforms/index.md) | [![Maivin 2](platforms/assets/maivin-2.png)](platforms/index.md) | [![Raivin](platforms/assets/raivin.png)](platforms/index.md)
+
+!!! tip
+    Though not required, where appropriate, we recommend you to follow along with an appropriate edge device to test the models on the actual hardware.
 
 ## EdgeFirst Studio Quickstart
 
@@ -61,7 +65,7 @@ This section describes the steps for onboarding new users to EdgeFirst Studio by
 
 ### Initial Steps
 
-Now that you are in the *Projects* or Main page, you will see a public project called "Sample Datasets" containing public datasets and completed experiments. More information about this project will be provided in the [Guided Project Workflow](getting_started/workflows.md#guided-workflow-with-completed-experiments). 
+Now that you are in the *Projects* or Main page, you will see a public project called "Sample Datasets" containing public datasets and completed experiments. More information about this project will be provided in the [EdgeFirst Studio Overview](getting_started/workflows.md). 
 
 For now, let's start by creating your first project since this is required in future tutorials. You can create a new project by clicking on the "Create" button on the top-right corner of the page.
 

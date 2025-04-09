@@ -34,7 +34,7 @@ Description:
 ```
 
 ## Sending Request
-Each request will have a different endpoint. The url starts with http://dveml.com and followed with a path unique to each API. Each request body must contain a form-data. The form-data must contain a “uuid“ key with value type string and “code“ key with value type string (this is the Access Token).
+Each request will have a different endpoint. The url starts with the link to [EdgeFirst Studio][studio] and followed with a path unique to each API. Each request body must contain a form-data. The form-data must contain a “uuid“ key with value type string and “code“ key with value type string (this is the Access Token).
 
 !!! note
     “uuid“ and “code“ must always be at the top of all requests.
@@ -234,3 +234,4 @@ Return:
 - If sample has file type annotations, an S3 presigned URL is provided for each file. 
 - Error message if an error occurred
  
+[studio]: #

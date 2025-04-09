@@ -12,8 +12,8 @@ This section breaks down important concepts used in EdgeFirst Studios, namely:
 
 - *projects*: high-level collections of sensor datasets, training sessions, and other automation and management tasks associated with the dataset inputs and model outputs.  
 - *datasets*: a collection of sensor data, such as images, videos, radar cubes, etc. logically grouped together by the user. Usually, each dataset contained within a project will come from a single recording session.
-- *training sessions*: the functionality to convert datasets recorded into vision- and radar-based models that can be deployed back to the edge devices
-- *validation sessions*: the functionality to validate the performance of trained models to verify field readiness for deployment.
+- *training sessions*: the functionality to convert datasets recorded into vision- and radar-based models that can be deployed back to the edge devices.
+- *validation sessions*: the functionality to take a model and determine its accurary against other models or a standardized validation dataset.
 
 These concepts and their respective UI elements will be used in the hands-on workflow below, and follow from the steps shown in [Getting Started](../index.md#edgefirst-studio-quickstart).  Additional UI breakdowns of EdgeFirst Studio can be found in [Navigating EdgeFirst Studio](../studio/navigation.md).
 
@@ -55,6 +55,10 @@ The following figure breaks down the elements of a "Dataset" card.
 For an in-depth tutorial for managing datasets in EdgeFirst Studio from capture and annotation to export and deployment, see our [Dataset Tutorials](../datasets/tutorials.md).
 
 ### Training Sessions
+
+Training sessions take in datasets and synthesize from them new AI models -- for object detection, object segmentation, and radar 3
+
+"Trainers" ![Trainers Button](../assets/trainers_button.png) button
 
 The sample project will contain completed training sessions using the public datasets provided. The training session shown below is based on training a Fusion model from the public dataset *Raivin Pedestrians (ultra-short range) 2025.03*.
 

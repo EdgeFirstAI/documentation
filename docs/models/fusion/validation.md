@@ -132,3 +132,8 @@ specified validation sessions.
 ![Metrics Side-by-Side](../assets/validation/fusion-metrics-side-by-side.jpg){ align=center }
 <figcaption>Metrics Side-by-Side</figcaption>
 </figure>
+
+## Next Steps
+
+Now that you have validated your Fusion model, follow these next steps
+for [deploying your Fusion model](deployment.md).

@@ -1,5 +1,5 @@
 nav:
-  - Home: https://edgefirst.studio
+#   - Home: https://edgefirst.studio
   - Getting Started:
       - index.md
       - getting_started/workflows.md
@@ -32,10 +32,12 @@ nav:
           - models/modelpack/index.md
           - models/modelpack/training.md
           - models/modelpack/validation.md
+          - models/modelpack/deployment.md
       - Fusion:
           - models/fusion/index.md
           - models/fusion/training.md
           - models/fusion/validation.md
+          - models/fusion/deployment.md
       - models/augmentations.md
       - models/metrics.md
   - Perception:

@@ -5,7 +5,7 @@ This article will walk you through the Raivin setup and then lead you to resourc
 The Maivin/Raivin box contains the following items:
 
 - The Maivin/Raivin vision module
-- A five-meter power cable, M12 circular connector (male) to 2.1mm x5.5 barrel adapter (female)
+- A five-meter power cable, M12 circular connector (male) to 2.1mm x5.5mm barrel adapter (female)
 - Box with power adapters
     - Power-adapter with interchangeable plugs.  2.1mm x 5.5mm barrel adapter (male) connector.
     - Interchangeable plugs for the following regions:
@@ -23,11 +23,18 @@ Next, connect a standard Category 5 network cable (not included) from your share
 Optionally, you can connect an antenna to the SMA connecter on the top-right corner of the back of the device to enhance GPS reception.
 
 Chose the proper power adapter plug from your region and connect it to the power cable.  Then connect the M12 connector of the power cable to the connection at the back of the module, making sure to align the tab at the top of the connecter to its corresponding slot.  
-![M12 connector](assets/quickStart-m12.png){align=center}
+
+<figure markdown="span">
+![M12 Connector](assets/quickStart-m12.png){align=center}
+<figcaption>M12 Connector</figcaption>
+</figure>
 
 The device should boot up as soon as it is connected.  A blue light above and to the right of the power connecter should start blinking.  
+
+<figure markdown="span">
 ![Raivin Back Picture](assets/quickStart-backPic.png){align=center}
-*Raivin showing network connection (left), eight-digit ID number (middle), tripod connected (bottom), and power connection with blue status light on (right)*
+<figcaption>Raivin showing network connection (left), eight-digit ID number (middle), tripod connected (bottom), and power connection with blue status light on (right)</figcaption>
+</figure>
 
 !!! Danger
     The Raivin may get hot during operation.  Do not handle while operating.  Temperature can be measured with the `cat /dev/carrier_temp` command, which will output device temperature in millidegree Celsius.
@@ -38,18 +45,46 @@ The Raivin will have an eight-digit number on the back of the device.  This is t
     On Windows machines, you will not need to add the '.local' suffix.
 
 The Raivin has a web interface that can be connected to via both HTTP and HTTPS by entering `http://verdin-imx8mp-<id>.local`.  On first connection to the web interface, you will get a "Your connection is not private" warning.
+
+<figure markdown="span">
 ![Raivin Main Page Warning](assets/quickStart-sslCert.png){align=center}  
-This is expected and nothing to worry about -- the HTTPS connection needs a SSL certificate which the vision module does not have.  Click the "Advanced" button, and then "Proceed to" link.  
+<figcaption>Raivin Main Page Warning</figcaption>
+</figure>
+
+This is expected and nothing to worry about -- the HTTPS connection needs a SSL certificate which the vision module does not have.  Click the "Advanced" button, and then "Proceed to" link. 
+
+<figure markdown="span">
 ![Raivin Advanced Information](assets/quickStart-sslAdvanced.png){align=center}
+<figcaption>Raivin Advanced Information</figcaption>
+</figure>
 
 After all that, you should see the [Raivin Main Page](./walkthrough.md).
+
+<figure markdown="span">
 ![Raivin Main Page](assets/quickStart-mainPage.png){align=center}.  
+<figcaption>Raivin Main Page</figcaption>
+</figure>
+
 If you have a Maivin, you will see the Maivin Main Page instead:  
+
+<figure markdown="span">
 ![Maivin Main Page](assets/ui-maivinMain.png){align=center}
+<figcaption>Maivin Main Page</figcaption>
+</figure>
 
 From here, we recommend that you check out the Segmentation View page by clicking the "Segmentation View" card.  For a Raivin, it looks as so:  
-![Segmentation Page](assets/quickStart-segmentation.png){align=center}  
+
+<figure markdown="span">
+![Raivin Segmentation Page](assets/quickStart-segmentation.png){align=center}  
+<figcaption>Raivin Segmentation Page</figcaption>
+</figure>
+
 and for a Maivin:  
+
+<figure markdown="span">
 ![Maivin Segmentation Page](assets/ui-maivinSegmentation.png){align=center}  
+<figcaption>Maivin Segmentation Page</figcaption>
+</figure>
+
 !!! note
     The ultra-short model included in this release was trained for fixed camera and mostly tested indoors.

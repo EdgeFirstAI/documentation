@@ -150,5 +150,5 @@ on the top right which can then be downloaded.
 
 ## Next Steps 
 
-Now you have generated your Vision model, follow these [next steps](validation.md) 
-for validating your Vision model.
+Now that you have generated your Vision model, follow these next steps
+for [validating your Vision model](validation.md).

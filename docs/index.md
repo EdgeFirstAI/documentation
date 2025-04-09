@@ -4,12 +4,13 @@
 ![EdgeFirst Studio](assets/studio-dark.png#only-dark)
 
 Welcome to EdgeFirst Studio (formerly Deep View Enterprise)!  This guide will introduce you to the components of the EdgeFirst AI Ecosystem.
-!!! tip
-    Though not required, where appropriate, we recommend you to follow along with an appropriate edge device to test the models on the actual hardware.
 
+!!! tip "Need Help?"
+    📬 Have questions or ran into an issue?  
+    Feel free to [email our support team](mailto:support@edgefirst.ai) — we’re here to help!
 
 <div style="text-align: center;">
-    <iframe width="560" height="315" src="https://www.youtube.com/embed/HaiYg6Dk57Y?si=PgReAjTKj9Tn14fn" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/HaiYg6Dk57Y" title="EdgeFirst Studio Introduction" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 </div>
 
 ## EdgeFirst Platforms Quickstart
@@ -21,13 +22,16 @@ the [EdgeFirst Platforms Quickstart](platforms/quickstart.md) and then come back
 :------------------:|:------------------:|:------------------:
 [![Maivin 1](platforms/assets/maivin-1.png)](platforms/index.md) | [![Maivin 2](platforms/assets/maivin-2.png)](platforms/index.md) | [![Raivin](platforms/assets/raivin.png)](platforms/index.md)
 
+!!! tip
+    Though not required, where appropriate, we recommend you to follow along with an appropriate edge device to test the models on the actual hardware.
+
 ## EdgeFirst Studio Quickstart
 
 This section describes the steps for onboarding new users to EdgeFirst Studio by creating their account, logging into EdgeFirst Studio, and creating their first project. 
 
 ### Sign Up
 
-1. If you haven't already created an EdgeFirst Studio Account, start by [creating an account](https://dveml.com/#/login?initialMode=new-user). 
+1. If you haven't already created an EdgeFirst Studio Account, start by [creating an account][signup]. 
 
 2. When creating your account, enter the required fields denoted by the asterisk (*) and then create your account once completed.
 
@@ -43,7 +47,7 @@ This section describes the steps for onboarding new users to EdgeFirst Studio by
     <figcaption>Email Verification</figcaption>
     </figure>
 
-4. Once the email is verified, you can now [login](https://edgefirst.studio/#/login) to EdgeFirst Studio.
+4. Once the email is verified, you can now [login][login] to EdgeFirst Studio.
 
 5. When logging in, enter your username and password you specified. Next click the *SIGN IN* button to sign in.
 
@@ -61,7 +65,7 @@ This section describes the steps for onboarding new users to EdgeFirst Studio by
 
 ### Initial Steps
 
-Now that you are in the *Projects* or Main page, you will see a public project called "Sample Datasets" containing public datasets and completed experiments. More information about this project will be provided in the [Guided Project Workflow](getting_started/workflows.md#guided-workflow-with-completed-experiments). 
+Now that you are in the *Projects* or Main page, you will see a public project called "Sample Datasets" containing public datasets and completed experiments. More information about this project will be provided in the [EdgeFirst Studio Overview](getting_started/workflows.md). 
 
 For now, let's start by creating your first project since this is required in future tutorials. You can create a new project by clicking on the "Create" button on the top-right corner of the page.
 
@@ -95,3 +99,6 @@ In this Quickstart guide, you have created your EdgeFirst Studio Account, logged
 * [Model Training, Validation, and Deployment](getting_started/models.md)
 * [Command-Line Interface: Using the EdgeFirst Studio Middleware](getting_started/perception.md)
 * [EdgeFirst Platforms: Setup and Boot Guide](getting_started/platforms.md)
+
+[signup]: #
+[login]: #

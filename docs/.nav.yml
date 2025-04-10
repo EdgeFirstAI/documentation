@@ -1,5 +1,5 @@
 nav:
-#   - Home: https://edgefirst.studio
+  #   - Home: https://edgefirst.studio
   - Getting Started:
       - index.md
       - getting_started/workflows.md
@@ -24,7 +24,7 @@ nav:
       - datasets/index.md
       - datasets/tutorials.md
       - datasets/format.md
-    #   - datasets/types.md
+      #   - datasets/types.md
       - datasets/zoo.md
   - Models:
       - models/index.md
@@ -42,16 +42,25 @@ nav:
       - models/metrics.md
   - Perception:
       - perception/index.md
-      - Dataset Collection Middleware:
-          - platforms/recording.md
-          - platforms/replay.md
-          - platforms/publishing.md
-          - platforms/foxglove.md
-          - platforms/advanced_foxglove.md
+      - Web UI:
+          - perception/webui/walkthrough.md
+          - perception/webui/configuration.md
+      - Data Recording:
+          - perception/mcap/recording.md
+          - perception/mcap/replay.md
+          - perception/mcap/publishing.md
+          - perception/mcap/foxglove.md
+          - perception/mcap/advanced_foxglove.md
       - perception/studio.md
-      - Topics:
+      - Middleware Topics:
           - perception/topics.md
+          - perception/topics/model.md
+          - perception/topics/fusion.md
           - perception/topics/camera.md
+          - perception/topics/radar.md
+          - perception/topics/lidar.md
+          - perception/topics/imu.md
+          - perception/topics/navsat.md
       - perception/custom.md
       - Developer Guide:
           - perception/dev.md
@@ -68,14 +77,47 @@ nav:
           - perception/api/studio.md
   - Platforms:
       - platforms/index.md
-      - platforms/quickstart.md
-      - platforms/walkthrough.md
-      - platforms/configuration.md
-      - platforms/architecture.md
-      - platforms/networking.md
-      - platforms/ssh.md
-      - platforms/hardware.md
-      - platforms/radar.md
-      - platforms/issues.md
-      - platforms/release_notes.md
-      - platforms/updates.md
+      - Maivin 1:
+        - platforms/maivin/quickstart.md
+        - platforms/maivin/walkthrough.md
+        - platforms/maivin/configuration.md
+        - platforms/maivin/networking.md
+        - platforms/maivin/ssh.md
+        - platforms/maivin/hardware.md
+        - platforms/maivin/updates.md
+        - platforms/maivin/release_notes.md        
+      - Maivin 2:
+        - platforms/maivin/quickstart.md
+        - platforms/maivin/walkthrough.md
+        - platforms/maivin/configuration.md
+        - platforms/maivin/networking.md
+        - platforms/maivin/ssh.md
+        - platforms/maivin/hardware.md
+        - platforms/maivin/updates.md
+        - platforms/maivin/release_notes.md        
+      - Raivin:
+        - platforms/maivin/quickstart.md
+        - platforms/maivin/walkthrough.md
+        - platforms/maivin/configuration.md
+        - platforms/maivin/networking.md
+        - platforms/maivin/ssh.md
+        - platforms/maivin/hardware.md
+        - platforms/maivin/radar.md
+        - platforms/maivin/updates.md
+        - platforms/maivin/release_notes.md        
+      - Raivin HD:
+        - platforms/maivin/quickstart.md
+        - platforms/maivin/walkthrough.md
+        - platforms/maivin/configuration.md
+        - platforms/maivin/networking.md
+        - platforms/maivin/ssh.md
+        - platforms/maivin/hardware.md
+        - platforms/maivin/radar.md
+        - platforms/maivin/updates.md
+        - platforms/maivin/release_notes.md
+      - NXP i.MX 8M Plus EVK:
+        - platforms/imx8mp/quickstart.md
+      - Nvidia Jetson:
+        - platforms/jetson/quickstart.md
+      - RaspberryPi:
+        - platforms/raspberrypi/quickstart.md

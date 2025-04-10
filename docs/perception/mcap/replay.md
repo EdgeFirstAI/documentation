@@ -1,4 +1,4 @@
-# MCAP Replay Service
+# Replay Service
 
 ## Overview
 The Replay Service allows users to play back previously recorded MCAP files, enabling detailed analysis of MCAP data. This service provides flexible playback options and integrates with live fusion and model data for comprehensive testing and validation.

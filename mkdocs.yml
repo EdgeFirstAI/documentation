@@ -87,7 +87,7 @@ extra_javascript:
 
 extra:
   version:
-    default: develop
+    default: latest
     provider: mike
   consent:
     title: Privacy Settings

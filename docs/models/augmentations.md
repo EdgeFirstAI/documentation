@@ -7,6 +7,15 @@ This page is dedicated to describing all available vision augmentations during t
 
 The camera augmentations are distinguished into two categories: *Geometric* and *Non-Geometric*.
 
+!!! info
+    During training, Modelpack retrieves a random selection of augmentations listed below. The operation for augmenting samples starts with a 50% chance of whether or not the sample is to be augmented. If the sample is to be augmented, only one random augmentation from Geometric and Non-Geometric types are applied to the sample. Then, the magnitude of this augmentation is based on a random selection from the minimum to the maximum set by the user under the [training options](modelpack/training.md#create-training-session) shown below.
+
+    <figure markdown="span">
+    ![Training Augmentations](assets/augmentations/training-augmentations-options.jpg){ align=center }
+    <figcaption>Training Augmentations</figcaption>
+    </figure>
+     
+
 ## Geometric
 
 These augmentations are based on transformations of the spatial orientation of the image.  For these type of augmentations, the ground truth annotations needs to adhere to the changes in the orientation of the objects in the image aswell.  The augmentations below provide visualizations for demonstrating the image and ground truth transformation.

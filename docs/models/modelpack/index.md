@@ -30,28 +30,38 @@ This section includes several tutorials useful to understand how to operate Mode
 
 ### Musicbox Detector
 
-This tutorial shows the whole ModelPack live cicle, from data collection to model deployment. At the end of this tutorial, the user will be able to go outside and record data to play with ModelPack at any scale. For more information go to [MusicBox Tutorial](tutorials/musicbox.md)
+This tutorial shows the whole ModelPack live cycle, from data collection to model deployment. At the end of this tutorial, the user will be able to go outside and record data to play with ModelPack at any scale. Continue reading on [MusicBox Tutorial...](tutorials/musicbox.md)
 
 ![MusicBox](./tutorials/assets/musicbox-tutorial-header.png)
 
 
-### Golf Ball Detector
 
-
-### Earpods Detector
-
-
-
-
-ModelPack exposes two different outputs that can be combined depending on the problem. The first one is a regression output for object detection that decode bounding boxes and classes. The second output is a classification output that assign a class to each pixel. Segmentation output is aproximatelly half of the input size. 
+<!-- ModelPack exposes two different outputs that can be combined depending on the problem. The first one is a regression output for object detection that decode bounding boxes and classes. The second output is a classification output that assign a class to each pixel. Segmentation output is aproximatelly half of the input size. 
 
 Modelpack is a single-sensor (single-input) architecture of a Vision model tasked with detecting objects in an image via bounding boxes, segmentation masks, or both. A Vision model is a type of model that interprets images or videos to perform tasks such as object recognition, image classification, and much more. There are three types of Vision models that are supported in EdgeFirst Studio. 
 
 1. Detection: Models that output bounding boxes and scores that provide 4-point coordinates on the image marking the locations of the object.
 2. Segmentation: Models that output segmentation masks with the same shape as the input image to distinguish pixels belonging to the object or its background. 
-3. Multitask: A combination of object detection and segmentation. These models outputs bounding boxes, scores, and segmentation masks.
+3. Multitask: A combination of object detection and segmentation. These models outputs bounding boxes, scores, and segmentation masks. -->
 
 
 
+## ModelPack Architecture
 
-## Tutorials
+ModelPack is a modern object detector and it adopts similar scaling strategies than Yolo familiy models. 
+The model expands and contracts based on the width and height parameters. 
+Modelpack shares a Darknet53 backbone similar to [Yolox](https://arxiv.org/pdf/2107.08430v2). 
+Different than yolox, ModelPack is NOT anchor free, which makes the model more accurate and stable after quantization.
+
+![Darknet-53 Backbone](tutorials/assets/darknet-53-backbone.png)
+Figure reproduced from: [Yang, L., Chen, G. & Ci, W. Multiclass objects detection...](https://asp-eurasipjournals.springeropen.com/articles/10.1186/s13634-023-01045-8)
+
+As mentioned above, ModelPack merges Semantic Segmentation and Object Detection on the same model and it is user reponsability depending on problem requirements.
+Semantic Segmentation only uses two scales (Scale 1 and Scale 2). On the other hand, Object Detection task uses the three scales. 
+While solving both tasks in the same inference cycle, the three scales are used.
+
+![ModelPack Architecture](tutorials/assets/modelpack-arch.png)
+
+ModelPack outputs can be configured on Studio User Interface as explained in ModelPack training guide ([here](training.md)).
+
+

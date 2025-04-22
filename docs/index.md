@@ -31,7 +31,7 @@ This section describes the steps for onboarding new users to EdgeFirst Studio by
 
 ### Sign Up
 
-1. If you haven't already created an EdgeFirst Studio Account, start by [creating an account][signup]. 
+1. If you haven't already created an EdgeFirst Studio Account, start by [creating an account][signup]. If you've already created an account, but you [forget your password](studio/access.md#forgot-password), click on the link to change your password.
 
 2. When creating your account, enter the required fields denoted by the asterisk (*) and then create your account once completed.
 

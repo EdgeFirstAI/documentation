@@ -1,14 +1,13 @@
 # Validating Fusion Models
 
 This page will provide a walk-through validating the performance of 
-Fusion models that have been trained in EdgeFirst Studio, through the [QuickStart Guide](../../index.md) or [Training Fusion](training.md).  This page will focus only on the validation of Fusion models.
+Fusion models that have been trained in EdgeFirst Studio, through the [QuickStart Guide](../../index.md) or [Training Fusion](training.md).  This page will focus only on the validation of Fusion models. For instructions on how to validate Vision models, please see [Validating Modelpack](../modelpack/validation.md).
 
 <div style="text-align: center;">
     <iframe width="560" height="315" src="https://www.youtube.com/embed/oKh4k0CCLmU" title="Fusion Validation Workflow" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 </div>
 
-!!! note 
-    Checkout our video tutorial above as part of the [EdgeFirst Studio Series](https://youtube.com/playlist?list=PLtgoOooyxY45Kl6pztdm4una-tHUjuIXz&si=DAmpo-gTvaSNktjw) to showcase the steps for running Fusion validation in EdgeFirst Studio.  Otherwise, follow the steps below with section specific timestamps of the video.
+Checkout our video tutorial above as part of the [EdgeFirst Studio Series](https://youtube.com/playlist?list=PLtgoOooyxY45Kl6pztdm4una-tHUjuIXz&si=DAmpo-gTvaSNktjw) to showcase the steps for running Fusion validation in EdgeFirst Studio.  Otherwise, follow the steps below with section specific timestamps of the video.
 
 ## Select the Validator Tool
 
@@ -49,9 +48,8 @@ Configure the settings on the left panel by specifying the name of the validatio
 the model file to validate, and the dataset to deploy.  Next configure the settings on the 
 right panel by specifying the validation parameters.  
 
-!!! note
-    Additional information on these parameters are provided by hovering over the info button.
-    The only augmentation available for this type of validation is `blur`.  See [Vision Augmentations](../augmentations.md#blur) for further details.
+Additional information on these parameters are provided by hovering over the info button.
+The only augmentation available for this type of validation is `blur`.  See [Vision Augmentations](../augmentations.md#blur) for further details.
 
 <figure markdown="span">
 ![Validation Options](../assets/validation/fusion-validation-options.jpg){ align=center }
@@ -107,8 +105,7 @@ The metrics are shown by clicking the button that views the validation charts on
 The metrics provides the precision, recall, F1, and IoU scores of the model at the specified window sizes.  Additional charts are provided for the precision vs. recall and bird’s eye view 
 heatmaps describing where the model performs well and where the model makes errors.  
 
-!!! note
-    See [Validation Metrics](../metrics.md#fusion) for further details.
+See [Validation Metrics](../metrics.md#fusion) for further details.
 
 ## Comparing Metrics
 

@@ -1,6 +1,6 @@
 # Training Fusion Models
 
-This page will provide a walk-through for training Fusion models in EdgeFirst Studio.
+This page will provide a walk-through for training Fusion models in EdgeFirst Studio. For a walk-through on training Vision models, please see [Training Modelpack](../modelpack/training.md).
 
 <div style="text-align: center;">
     <iframe width="560" height="315" src="https://www.youtube.com/embed/Q8uiYJb1HJ4" title="Fusion Training Workflow" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>

@@ -75,7 +75,7 @@ The following figure describes the attributes of any given training session.
 </figure>
 
 For more details regarding deploying training sessions, please see 
-[Training Modelpack](../models/modelpack/training.md) for training Vision models and 
+[Training ModelPack](../models/modelpack/training.md) for training Vision models and 
 [Training Fusion](../models/fusion/training.md) for training Fusion models.
 
 ### Validation Sessions
@@ -95,7 +95,7 @@ The following figure describes the attributes of any given validation session.
 </figure>
 
 For more details regarding deploying validation sessions, please see 
-[Validating Modelpack](../models/modelpack/validation.md) for validating Vision models and 
+[Validating ModelPack](../models/modelpack/validation.md) for validating Vision models and 
 [Validating Fusion](../models/fusion/validation.md) for validating Fusion models.
 
 ## Hands-on Workflow
@@ -109,7 +109,7 @@ models in an EdgeFirst Platform.
 
 !!! note
     This tutorial will provide examples on training, validating, and deploying
-    *Vision models* described in [Modelpack Tutorials](models.md#modelpack-tutorials).
+    *Vision models* described in [ModelPack Tutorials](models.md#modelpack-tutorials).
 
 If you have an EdgeFirst Platform, please proceed to step 1. Otherwise, proceed to step 5 for using a provided public dataset. However, feel free to follow along all the steps laid out to become familiar with the workflow.
 
@@ -197,7 +197,7 @@ Once you have a proper dataset that is fully annotated and split into training a
 <figcaption>Preview: Training Options</figcaption>
 </figure>
 
-Since the dataset provided in the demo contains 2D annotations (bounding boxes and segmentation masks) we can train a Vision model using Modelpack. For instructions to train a Vision model, please refer to [Training Modelpack Tutorial](../models/modelpack/training.md)
+Since the dataset provided in the demo contains 2D annotations (bounding boxes and segmentation masks) we can train a Vision model using ModelPack. For instructions to train a Vision model, please refer to [Training ModelPack Tutorial](../models/modelpack/training.md)
 
 ### 8. Validate Model
 
@@ -208,13 +208,13 @@ Once the model is trained, you can now start validating the performance of the m
 <figcaption>Preview: Validation Options</figcaption>
 </figure>
 
-For instructions to validate a Vision model, please refer to [Validating Modelpack Tutorial](../models/modelpack/validation.md)
+For instructions to validate a Vision model, please refer to [Validating ModelPack Tutorial](../models/modelpack/validation.md)
 
 ### 9. Deploy Model
 
 Once the model has been validated and deemed the performance to be reasonable for deployment, you can now deploy the model on an EdgeFirst Platform and start running inference on the model. 
 
-To deploy Modelpack on an EdgeFirst Platform, please see the [Modelpack Deployment](../models/modelpack/deployment.md) instructions.
+To deploy ModelPack on an EdgeFirst Platform, please see the [ModelPack Deployment](../models/modelpack/deployment.md) instructions.
 
 <figure markdown="span">
 ![Segmentation Sample](../models/assets/deployment/segmentation-sample-1.jpg){ align=center }

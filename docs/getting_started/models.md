@@ -1,18 +1,18 @@
 # Model Training, Validation, and Deployment
 
-EdgeFirst Studio supports *Vision Models* trained using **Modelpack** and *Spatial Perception Models* also known as **Fusion** models.
+EdgeFirst Studio supports *Vision Models* trained using **ModelPack** and *Spatial Perception Models* also known as **Fusion** models.
 
 ## ModelPack Tutorials
 
-Modelpack is a single-sensor (single-input) architecture of a Vision model tasked with detecting objects in an image via bounding boxes, segmentation masks, or both. A Vision model is a type of model that interprets images or videos to perform tasks such as object recognition, image classification, and much more. EdgeFirst Studio supports Vision models tasked with object recognition.
+ModelPack is a single-sensor (single-input) architecture of a Vision model tasked with detecting objects in an image via bounding boxes, segmentation masks, or both. A Vision model is a type of model that interprets images or videos to perform tasks such as object recognition, image classification, and much more. EdgeFirst Studio supports Vision models tasked with object recognition.
 
-* [Training Modelpack](../models/modelpack/training.md)
-* [Validating Modelpack](../models/modelpack/validation.md)
-* [Deploying Modelpack](../models/modelpack/deployment.md)
+* [Training ModelPack](../models/modelpack/training.md)
+* [Validating ModelPack](../models/modelpack/validation.md)
+* [Deploying ModelPack](../models/modelpack/deployment.md)
 
 ## Sensor Fusion Tutorials
 
-A Sensor Fusion Model is a multi-sensor (multi-input) architecture that fuses Radar and Camera sensors designed for spatial perception tasks. These models can make predictions of the object's position in world coordinates.
+A Sensor Fusion Model is a multi-sensor (multi-input) architecture that fuses Radar and Camera sensors designed for spatial perception tasks. These models can make predictions of the object's position in world coordinates. Fusion models takes the Radar cube and the Camera image as inputs to the model by default. However, either the Camera or the Radar can be turned off to train specific camera-only and radar-only based Fusion models. 
 
 * [Training Fusion Models](../models/fusion/training.md)
 

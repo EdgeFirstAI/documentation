@@ -1,4 +1,4 @@
-# Deploying Modelpack
+# Deploying ModelPack
 
 Now that you have [validated your Vision Model](validation.md), this page will provide a walk-through for deploying Vision models in an [EdgeFirst Platform](../../platforms/index.md). 
 

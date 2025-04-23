@@ -1,11 +1,11 @@
 # Validation Metrics
 
-This page is dedicated to describing the metrics reported after running validation.  EdgeFirst Studio supports validation of Modelpack and Fusion models.
+This page is dedicated to describing the metrics reported after running validation.  EdgeFirst Studio supports validation of ModelPack and Fusion models.
 The following sections will describe the metrics reported for each type of validation.
 
-## Modelpack
+## ModelPack
 
-This section will describe the validation metrics reported in [Modelpack validation sessions](modelpack/validation.md).
+This section will describe the validation metrics reported in [ModelPack validation sessions](modelpack/validation.md).
 
 ### Object Detection Metrics
 
@@ -171,7 +171,7 @@ $$
 
 ### Model Timings
 
-These timings are measured in the same way as Modelpack as described under [Model Timings](#model-timings) in the *Modelpack* section.
+These timings are measured in the same way as ModelPack as described under [Model Timings](#model-timings) in the *ModelPack* section.
 
 ### Precision vs. Recall
 

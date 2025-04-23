@@ -1,6 +1,6 @@
-# Training Modelpack
+# Training ModelPack
 
-This page will provide a walk-through for training Vision models using Modelpack in EdgeFirst Studio.
+This page will provide a walk-through for training Vision models using ModelPack in EdgeFirst Studio. For a walkthrough on [Training Fusion Models](../fusion/training.md) please see the link attached.
 
 ## Verify Dataset
 
@@ -79,7 +79,7 @@ clicking the *NEW SESSION* button as shown below.
 <figcaption>Training Session</figcaption>
 </figure>
 
-Configure the settings on the left panel by specifying *Trainer Type* to *Modelpack* 
+Configure the settings on the left panel by specifying *Trainer Type* to *ModelPack* 
 and provide additional configurations for the name of the session and the dataset to deploy.  
 Next configure the settings on the right panel by specifying training parameters.  
 By default a segmentation model will be trained, however, object detection or 

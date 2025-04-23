@@ -44,10 +44,43 @@ This will create a Zip/Arrow file pair for each sequence in a dataset and stored
 
 ### Upload from Zip/Arrow File
 
+This format is the [EdgeFirst Dataset Format](../datasets/format.md) where the [Zip file](../datasets/format.md#dataset-storage-format) contains sensor reading and measurements and the [Arrow file](../datasets/format.md#dataset-annotation-format) contains dataset annotations. 
+
 1. Go to the snapshots dashboard.
-2. Click on the "FROM FILE" button or drag and drop as a folder containing zip and arrow file pairs on the dashboard.
-3. The name of corresponding zip and arrow files must be same.
-4. If there are multiple zip and arrow pairs, then each pair will become a sequence.
+2. Click on the "FROM FILE" button and then select the Zip and Arrow file pairs to import or drag and drop as a folder containing Zip and Arrow file pairs onto the dashboard. Shown is an example below.
+
+    <figure markdown="span">
+    ![From File](assets/from-file.jpg){ align=center }
+    <figcaption>From File</figcaption>
+    </figure>
+
+    <figure markdown="span">
+    ![Zip and Arrow Files](assets/zip-arrow-files.jpg){ align=center }
+    <figcaption>Zip and Arrow Files</figcaption>
+    </figure>
+
+    <figure markdown="span">
+    ![Zip and Arrow Files Import](assets/zip-arrow-files-import.jpg){ align=center }
+    <figcaption>Zip and Arrow Files Import</figcaption>
+    </figure>
+
+    !!! warning
+        The name of corresponding zip and arrow files must be same.
+
+    !!! info
+        If there are multiple zip and arrow pairs, then each pair will become a sequence.
+
+3. Once the files are selected, this will start the import sequence progress shown below.
+
+    <figure markdown="span">
+    ![Import Progress](assets/import-sequence-progress.jpg){ align=center }
+    <figcaption>Import Progress</figcaption>
+    </figure>
+
+    <figure markdown="span">
+    ![Import Completed](assets/import-sequence-completed.jpg){ align=center }
+    <figcaption>Import Completed</figcaption>
+    </figure>
 
 ## Restore Snapshot
 

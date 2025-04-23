@@ -363,7 +363,7 @@ Once the groups are specified, click *ADD GROUPS* to create the groups. This wil
 
 ## Importing Datasets
 
-This tutorial will show how to import a dataset into EdgeFirst Studio. 
+This tutorial will show how to import a dataset into EdgeFirst Studio. For importing [EdgeFirst Datasets](format.md), please see the instructions for [Upload from Zip/Arrow File](../studio/snapshots.md#upload-from-ziparrow-file).
 
 <div style="text-align: center;">
 <iframe width="560" height="315" src="https://www.youtube.com/embed/DJabdEHaZ8E?start=41" title="Import Dataset" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>

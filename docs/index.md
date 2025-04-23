@@ -65,9 +65,9 @@ This section describes the steps for onboarding new users to EdgeFirst Studio by
 
 ### Initial Steps
 
-Now that you are in the *Projects* or Main page, you will see a public project called "Sample Datasets" containing public datasets and completed experiments. More information about this project will be provided in the [EdgeFirst Studio Overview](getting_started/workflows.md). 
+Now that you are in the *Projects* or Main page, you will see a public project called "Sample Project" containing public datasets and completed experiments. More information about this project will be provided in the [EdgeFirst Studio Overview](getting_started/workflows.md). 
 
-For now, let's start by creating your first project since this is required in future tutorials. You can create a new project by clicking on the "Create" button on the top-right corner of the page.
+For now, let's start by creating your first project since this is required in future tutorials. You can create a new project by clicking on the "New Project" button on the top-right corner of the page.
 
 <figure markdown="span">
 ![Create Project](assets/create-project.jpg){ align=center }
@@ -81,10 +81,10 @@ Provide a name and a description of the project that reflects your goals.  In th
 <figcaption>Project Details</figcaption>
 </figure>
 
-Your newly created project will be placed next to the public project named "Sample Datasets". This public project contains public datasets for users to become familiar with how datasets are managed in EdgeFirst Studio. 
+Your newly created project will be placed next to the public project named "Sample Project". This public project contains public datasets for users to become familiar with how datasets are managed in EdgeFirst Studio. 
 
 !!! Warning
-    The "Sample Datasets" project is **READ ONLY**.  Significant Studios functionality will need write-access to a project and will fail when attempted to be run on this project!
+    The "Sample Project" project is **READ ONLY**.  Significant Studios functionality will need write-access to a project and will fail when attempted to be run on this project!
 
 <figure markdown="span">
 ![New Project](assets/new-project.jpg){ align=center }

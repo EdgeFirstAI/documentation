@@ -6,32 +6,7 @@ This page will provide a walk-through for training Vision models using ModelPack
 
 Before running a training session, ensure the dataset is ready to be used for training.  
 This means that the dataset is properly annotated and the dataset is properly split 
-with training and validation samples.  The sample dataset shown below has a dedicated 
-split for training (1656 samples) and validation (184 samples).
-
-<figure markdown="span">
-![Dataset Groups](../assets/training/vision-dataset-groups.jpg){ align=center }
-<figcaption>Dataset Groups</figcaption>
-</figure>
-
-To verify the annotations, click the button that navigates to the gallery.  This will show the contents of the dataset.  The dataset may be comprised of multiple sequences as shown below.  
-
-<figure markdown="span">
-![Dataset Sequences](../assets/training/vision-dataset-sequences.jpg){ align=center }
-<figcaption>Dataset Sequences</figcaption>
-</figure>
-
-Clicking on any of these sequences will open individual images in the sequence with the visualizations of the annotations.  
-
-!!! info
-    Datasets that train Vision models provide image annotations of the object's 2D bounding box and segmentation mask.  For more information on the dataset annotations, please see [EdgeFirst Dataset Format](../../datasets/format.md#dataset-annotation-format).
-
-<figure markdown="span">
-![Vision Annotations](../assets/training/vision-annotations.jpg){ align=center }
-<figcaption>Vision Annotations</figcaption>
-</figure>
-
-For cases where the annotations need corrections, please see [Dataset Tutorials](../../datasets/tutorials.md#audit-annotations) for more details.
+with training and validation samples. The tutorial [Verifying Datasets](../../datasets/tutorials.md#verifying-datasets) will show what to look for in a dataset before deploying it for training.
 
 ## Select the Trainer Tool
 
@@ -82,8 +57,6 @@ clicking the *NEW SESSION* button as shown below.
 Configure the settings on the left panel by specifying *Trainer Type* to *ModelPack* 
 and provide additional configurations for the name of the session and the dataset to deploy.  
 Next configure the settings on the right panel by specifying training parameters.  
-By default a segmentation model will be trained, however, object detection or 
-multi-task based models are possible variations.  
 
 !!! note
     Additional information on these parameters are provided by hovering over the info button.

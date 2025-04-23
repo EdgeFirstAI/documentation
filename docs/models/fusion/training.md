@@ -11,37 +11,9 @@ This page will provide a walk-through for training Fusion models in EdgeFirst St
 
 ## Verify Dataset
 
-Before running a training session, ensure the dataset is ready to be used for training.  This means that the dataset is properly annotated and the dataset is properly split with training and validation samples.  
-
-<div style="text-align: center;">
-    <iframe width="560" height="315" src="https://www.youtube.com/embed/Q8uiYJb1HJ4?start=81&end=118" title="Indoor Dataset Overview" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-</div>
-
-The sample dataset shown below has a dedicated split for training (20066 samples) and validation (2229 samples).
-
-<figure markdown="span">
-![Dataset Groups](../assets/training/fusion-dataset-groups.jpg){ align=center }
-<figcaption>Dataset Groups</figcaption>
-</figure>
-
-To verify the annotations, click the button that navigates to the gallery.  This will show the contents of the dataset.  The dataset may be comprised of multiple sequences as shown below.  
-
-<figure markdown="span">
-![Dataset Sequences](../assets/training/fusion-dataset-sequences.jpg){ align=center }
-<figcaption>Dataset Sequences</figcaption>
-</figure>
-
-Clicking on any of these sequences will open individual images in the sequence with the visualizations of the annotations.  
-
-!!! info
-    Datasets that train Fusion models provide world annotations of the object's 3D bounding box.  For more information on the dataset annotations, please see [EdgeFirst Dataset Format](../../datasets/format.md#dataset-annotation-format).
-
-<figure markdown="span">
-![Fusion Annotations](../assets/training/fusion-annotations.jpg){ align=center }
-<figcaption>Fusion Annotations</figcaption>
-</figure>
-
-For cases where the annotations need corrections, please see [Dataset Tutorials](../../datasets/tutorials.md#audit-annotations) for more details.
+Before running a training session, ensure the dataset is ready to be used for training.  
+This means that the dataset is properly annotated and the dataset is properly split 
+with training and validation samples. The tutorial [Verifying Datasets](../../datasets/tutorials.md#verifying-datasets) will show what to look for in a dataset before deploying it for training.
 
 ## Select the Trainer Tool
 

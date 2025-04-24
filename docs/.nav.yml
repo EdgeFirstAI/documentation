@@ -55,6 +55,8 @@ nav:
       - Schema Examples:
           - perception/examples.md
           - perception/examples/gps.md
+          - perception/examples/lidar.md
+          - perception/examples/pcd.md
       - perception/custom.md
       - Developer Guide:
           - perception/dev.md

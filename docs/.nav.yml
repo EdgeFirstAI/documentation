@@ -52,6 +52,9 @@ nav:
       - Topics:
           - perception/topics.md
           - perception/topics/camera.md
+      - Schema Examples:
+          - perception/examples.md
+          - perception/examples/gps.md
       - perception/custom.md
       - Developer Guide:
           - perception/dev.md

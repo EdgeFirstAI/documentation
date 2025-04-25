@@ -44,16 +44,15 @@ the experiment.  Give a name and a description that reflects your goals in this 
 <figcaption>Create New Experiment</figcaption>
 </figure>
 
-Click on the "CREATE NEW EXPERIMENT" button to create your new training experiment. This will show
+Click on the "CREATE NEW EXPERIMENT" button to create your new training experiment.  This will show
 the created experiment. 
 
 <figure markdown="span">
-![Created Experiment](../assets/training/created-experiment.jpg){ align=center }
+![Created Experiment](../assets/training/vision-created-experiment.jpg){ align=center }
 <figcaption>Created Experiment</figcaption>
 </figure>
 
-Open the created experiment by clicking on the experiment. Inside the experiment, we can create multiple training sessions. 
-Each training session will train Vision models which we will explore next.
+Open the created experiment by clicking on the experiment.  Inside the experiment, we can create multiple training sessions.  Each training session will train Vision models which we will explore next.
 
 <figure markdown="span">
 ![Inside the Experiment](../assets/training/open-experiment.jpg){ align=center }
@@ -73,9 +72,8 @@ Configure the settings on the left panel by specifying "Trainer Type" to "ModelP
 and provide additional configurations for the name of the session and the dataset to deploy.  
 Next configure the settings on the right panel by specifying training parameters.  
 
-!!! note
-    Additional information on these parameters are provided by hovering over the info button.
-    For more information on available vision augmentations please see [Vision Augmentations](../augmentations.md).
+Additional information on these parameters are provided by hovering over the info button.
+For more information on available vision augmentations please see [Vision Augmentations](../augmentations.md).
 
 <figure markdown="span">
 ![Training Options](../assets/training/modelpack-training-options.jpg){ align=center }
@@ -84,7 +82,7 @@ Next configure the settings on the right panel by specifying training parameters
 
 ## Start the Session
 
-Start the session by clicking the *START SESSION* button on the bottom right.
+Start the session by clicking the "START SESSION" button on the bottom right.
 
 <figure markdown="span">
 ![Start Session](../assets/validation/start-session.jpg){ align=center }
@@ -124,6 +122,9 @@ The training metrics are shown by clicking the button that views the training ch
 
 The training metrics are shown on the left and the trained model files are listed on the right. 
 The trained Keras, TFLite, ONNX, and RTM models can be downloaded by clicking on the downward arrows on the right.
+
+!!! info
+    You can visualize the architecture of these models using [https://netron.app/](https://netron.app/).
 
 ## Next Steps 
 

@@ -57,6 +57,9 @@ nav:
           - perception/examples/gps.md
           - perception/examples/lidar.md
           - perception/examples/pcd.md
+          - perception/examples/camera.md
+          - perception/examples/model.md
+          - perception/examples/fusion.md
       - perception/custom.md
       - Developer Guide:
           - perception/dev.md

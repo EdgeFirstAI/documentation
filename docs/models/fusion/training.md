@@ -1,6 +1,6 @@
 # Training Fusion Models
 
-This page will provide a walk-through for training **Fusion** models in EdgeFirst Studio. For a walk-through on training Vision models, please see [Training Modelpack](../modelpack/training.md).
+This page will provide a walk-through for training **Fusion** models in EdgeFirst Studio.  For a walk-through on training Vision models, please see [Training ModelPack](../modelpack/training.md).
 
 <div style="text-align: center;">
     <iframe width="560" height="315" src="https://www.youtube.com/embed/Q8uiYJb1HJ4" title="Fusion Training Workflow" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
@@ -12,7 +12,7 @@ Checkout our full video tutorial above as part of the [EdgeFirst Studio Series](
 
 Before running a training session, ensure the dataset is ready to be used for training.  
 This means that the dataset is properly annotated and the dataset is properly split 
-with training and validation samples. The tutorial [Verifying Datasets](../../datasets/tutorials.md#verifying-datasets) will show what to look for in a dataset before deploying it for training.
+with training and validation samples.  The tutorial [Verifying Datasets](../../datasets/tutorials.md#verifying-datasets) will show what to look for in a dataset before deploying it for training.
 
 ## Select the Trainer Tool
 
@@ -93,7 +93,7 @@ For more information on available vision augmentations please see [Vision Augmen
 </figure>
 
 !!! note
-    For an indoor setting, the "Radar Range Mode" is typically set to "Ultra Short (9m)" and the "Object Detection Range" is set to 9 meters. This is the maximum range of detection, further distances are ignored. 
+    For an indoor setting, the "Radar Range Mode" is typically set to "Ultra Short (9m)" and the "Object Detection Range" is set to 9 meters.  This is the maximum range of detection, further distances are ignored. 
 
 ## Start the Session
 
@@ -164,7 +164,7 @@ Once completed, the status will be shown as complete.
     <iframe width="560" height="315" src="https://www.youtube.com/embed/Q8uiYJb1HJ4?start=1530&end=1830" title="Downloading Model" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 </div>
 
-The trained Keras, TFLite, and ONNX models are listed on the right. These models can be downloaded by clicking on the downward arrows on the right.
+The trained Keras, TFLite, and ONNX models are listed on the right.  These models can be downloaded by clicking on the downward arrows on the right.
 
 <figure markdown="span">
 ![Session Details](../assets/training/fusion-session-details.jpg){ align=center }

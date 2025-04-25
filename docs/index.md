@@ -31,7 +31,7 @@ This section describes the steps for onboarding new users to EdgeFirst Studio by
 
 ### Sign Up
 
-1. If you haven't already created an EdgeFirst Studio Account, start by [creating an account][signup]. If you've already created an account, but you [forget your password](studio/access.md#forgot-password), click on the link to change your password.
+1. If you haven't already created an EdgeFirst Studio Account, start by [creating an account][signup]. If you've already created an account, but you [forget your password](studio/access.md#forgot-password), click on the link for instructions to reset your password.
 
 2. When creating your account, enter the required fields denoted by the asterisk (*) and then create your account once completed.
 
@@ -65,7 +65,7 @@ This section describes the steps for onboarding new users to EdgeFirst Studio by
 
 ### Initial Steps
 
-Now that you are in the *Projects* or Main page, you will see a public project called "Sample Project" containing public datasets and completed experiments. More information about this project will be provided in the [EdgeFirst Studio Overview](getting_started/workflows.md). 
+Now that you are in the *Projects* or Main page, you will see a public project called "Sample Project" containing public datasets and completed experiments. More information about this project will be provided in the [EdgeFirst Studio Overview](getting_started/studio.md). 
 
 For now, let's start by creating your first project since this is required in future tutorials. You can create a new project by clicking on the "New Project" button on the top-right corner of the page.
 
@@ -74,7 +74,7 @@ For now, let's start by creating your first project since this is required in fu
 <figcaption>The location of the "Create" button</figcaption>
 </figure>
 
-Provide a name and a description of the project that reflects your goals.  In this example, the project will be named "People Detection", which will be used in all future tutorials requiring a user-created project.
+Provide a name and a description of the project that reflects your goals.  In this example, the project will be named "Object Detection", which will be used in all future tutorials requiring a user-created project. Click "CREATE" to create your new project.
 
 <figure markdown="span">
 ![Project Details](assets/create-project-fields.jpg){ align=center }
@@ -93,8 +93,8 @@ Your newly created project will be placed next to the public project named "Samp
 
 In this Quickstart guide, you have created your EdgeFirst Studio Account, logged in to EdgeFirst Studio, and created your very first project. The following links will provide additional tutorials for user onboarding in EdgeFirst Studio.
 
+* [EdgeFirst Studio: Overview](getting_started/studio.md)
 * [EdgeFirst Studio: From Start to Deployment](getting_started/workflows.md)
-* [Navigating EdgeFirst Studio](getting_started/studio.md)
 * [Dataset Management](getting_started/datasets.md)
 * [Model Training, Validation, and Deployment](getting_started/models.md)
 * [Command-Line Interface: Using the EdgeFirst Studio Middleware](getting_started/perception.md)

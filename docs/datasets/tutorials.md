@@ -303,14 +303,14 @@ To create a dataset, first select the project to store the new dataset. Next cli
 <figcaption>Dataset Button</figcaption>
 </figure>
 
-Next create a new dataset by clicking the *CREATE* button highlighted in red.
+Next create a new dataset by clicking the "NEW DATASET" button highlighted in red on the top right.
 
 <figure markdown="span">
 ![Create Dataset Button](assets/create-dataset-button.jpg){ align=center }
 <figcaption>Create Dataset Button</figcaption>
 </figure>
 
-Provide the dataset name and the dataset desciption for this new dataset. In this example the name is the same as the original dataset source. Once the fields are filled, click the *CREATE* button on the bottom left of the window dialog.
+Provide the dataset name and the dataset desciption for this new dataset. In this example the name is the same as the original dataset source. Once the fields are filled, click the "CREATE" button on the bottom left of the window dialog.
 
 <figure markdown="span">
 ![Create Dataset Fields](assets/create-dataset-fields.jpg){ align=center }
@@ -319,14 +319,14 @@ Provide the dataset name and the dataset desciption for this new dataset. In thi
 
 Once created, define an annotation set. The annotation set is a container for storing
 the annotations in the original dataset. To create an annotation set, click the "+" button
-in the *Annotation Sets* field. 
+in the "Annotation Sets" field. 
 
 <figure markdown="span">
 ![Create Annotation Set](assets/create-annotation-set.jpg){ align=center }
 <figcaption>Create Annotation Set</figcaption>
 </figure>
 
-Next provide the name and description for the annotation container as shown below. Once provided, click *CREATE NEW SET* to create the annotation set.
+Next provide the name and description for the annotation container as shown below. Once provided, click "CREATE NEW SET" to create the annotation set.
 
 <figure markdown="span">
 ![Annotation Set Fields](assets/annotation-set-fields.jpg){ align=center }
@@ -348,7 +348,7 @@ This tutorial will show how to copy the dataset to a different container.
     <iframe width="560" height="315" src="https://www.youtube.com/embed/qLv8ayxQ-Ns?start=326&end=372" title="Copying Datasets" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 </div>
 
-To copy a dataset, first [create a dataset](#creating-datasets) container. Once created, select the *Copy Dataset* from the dataset options on the newly created dataset container as shown below.
+To copy a dataset, first [create a dataset](#creating-datasets) container. Once created, select the "Copy Dataset" from the dataset options on the newly created dataset container as shown below.
 
 <figure markdown="span">
 ![Copy Dataset](assets/copy-dataset-option.jpg){ align=center }
@@ -362,7 +362,7 @@ This will open a new dialog for the user to specify the source dataset and the d
 <figcaption>Copy Dataset Options</figcaption>
 </figure>
 
-The options provided above specifies the source information such as the project to be the public project "Sample Datasets" and the dataset to be *Raivin Pedestrians (ultra-short range) 2025.03*. Next the destination dataset is the dataset and annotation containers that was created. Once the options are specified, go ahead and click *APPLY* to start the copy process.
+The options provided above specifies the source dataset to originate from the public dataset "Raivin Ultra Short 2025.03" inide the public project "Sample Project". Next the destination dataset is the dataset and annotation containers that was created. Once the options are specified, go ahead and click "APPLY" to start the copy process.
 
 <figure markdown="span">
 ![Copy Dataset Process](assets/dataset-copy-process.jpg){ align=center }

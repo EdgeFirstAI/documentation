@@ -65,7 +65,7 @@ In EdgeFirst Studio, select *Data Snapshots* under the tool options.
 </figure>
 
 !!! note
-    A project has already been created intended for people detection. This step
+    A project has already been created intended for object detection. This step
     has been covered in [Getting Started](../index.md#initial-steps).
 
 Once you are in the *Data Snapshots* page, upload the recorded MCAP by clicking *FROM FILE* which opens a new window dialog for selecting the MCAP downloaded in your PC.

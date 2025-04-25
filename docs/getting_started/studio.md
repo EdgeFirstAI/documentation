@@ -77,7 +77,7 @@ For more details regarding deploying training sessions, please see
 
 ### Validation Sessions
 
-The sample project will contain completed validation sessions using the models trained in the training sessions. The validation session shown belows is based on the training session from training a Vision model using the dataset *COCO*.
+The sample project will contain completed validation sessions using the models trained in the training sessions. The validation session shown below is based on the training session from training a Vision model using the dataset *COCO*.
 
 <figure markdown="span">
 ![Sample Validation Session](assets/validation-session.jpg){ align=center }

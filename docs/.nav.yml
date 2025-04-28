@@ -55,6 +55,7 @@ nav:
       - Schema Examples:
           - perception/examples.md
           - perception/examples/gps.md
+          - perception/examples/imu.md
           - perception/examples/lidar.md
           - perception/examples/pcd.md
           - perception/examples/camera.md

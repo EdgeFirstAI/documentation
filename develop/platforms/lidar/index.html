@@ -15,6 +15,10 @@
         <link rel="canonical" href="https://doc.edgefirst.ai/develop/platforms/lidar/">
       
       
+        <link rel="prev" href="../radar/">
+      
+      
+        <link rel="next" href="../issues/">
       
       
       <link rel="icon" href="../../assets/favicon.png">
@@ -326,10 +330,12 @@
   
   
   
+    
+  
   
     
     
-      <li class="md-tabs__item">
+      <li class="md-tabs__item md-tabs__item--active">
         <a href="../" class="md-tabs__link">
           
   
@@ -2489,6 +2495,8 @@
       
   
   
+    
+  
   
   
     
@@ -2520,18 +2528,23 @@
       
         
       
-    
-    
-    
-      
+        
       
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" checked>
         
           
           <div class="md-nav__link md-nav__container">
@@ -2548,13 +2561,13 @@
             </a>
             
               
-              <label class="md-nav__link " for="__nav_6" id="__nav_6_label" tabindex="0">
+              <label class="md-nav__link " for="__nav_6" id="__nav_6_label" tabindex="">
                 <span class="md-nav__icon md-icon"></span>
               </label>
             
           </div>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_6">
             <span class="md-nav__icon md-icon"></span>
             Platforms
@@ -2742,6 +2755,179 @@
   
 
       </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    LiDAR Module
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    LiDAR Module
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#specifications" class="md-nav__link">
+    <span class="md-ellipsis">
+      Specifications
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ouster-studio" class="md-nav__link">
+    <span class="md-ellipsis">
+      Ouster Studio
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Ouster Studio">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#desktop-application" class="md-nav__link">
+    <span class="md-ellipsis">
+      Desktop Application
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sensor-configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      Sensor configuration
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#firmware-requirements" class="md-nav__link">
+    <span class="md-ellipsis">
+      Firmware Requirements
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Firmware Requirements">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#data-format" class="md-nav__link">
+    <span class="md-ellipsis">
+      Data Format
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      Configuration
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Configuration">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#azimuth-orientation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Azimuth Orientation
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#data-visualization" class="md-nav__link">
+    <span class="md-ellipsis">
+      Data Visualization
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#additional-resources" class="md-nav__link">
+    <span class="md-ellipsis">
+      Additional Resources
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -2975,6 +3161,8 @@
 
 <h1 id="lidar-module">LiDAR Module</h1>
 <p>The Raivin configuration includes an integrated <a href="https://ouster.com/products/os1-lidar-sensor/">Ouster OS1-64 LiDAR sensor</a> which provides high-resolution 3D point cloud data. The LiDAR sensor is connected to the Raivin through a Gigabit Ethernet interface, providing both data communication and power over Ethernet (PoE) capabilities.</p>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/LuA3JlRUfVY?si=FFKDY7dBWih5aG2W" title="Raivin Unboxing and LiDAR Mounting" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
 <h2 id="specifications">Specifications</h2>
 <p>The Ouster OS1-64 is a high-resolution imaging LiDAR sensor with the following key specifications:</p>
 <ul>

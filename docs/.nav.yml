@@ -2,8 +2,8 @@ nav:
 #   - Home: https://edgefirst.studio
   - Getting Started:
       - index.md
-      - getting_started/workflows.md
       - getting_started/studio.md
+      - getting_started/workflows.md
       - getting_started/datasets.md
       - getting_started/models.md
       - getting_started/perception.md
@@ -28,7 +28,7 @@ nav:
       - datasets/zoo.md
   - Models:
       - models/index.md
-      - Modelpack:
+      - ModelPack:
           - models/modelpack/index.md
           - models/modelpack/training.md
           - models/modelpack/validation.md

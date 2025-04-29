@@ -52,19 +52,24 @@ nav:
       - Topics:
           - perception/topics.md
           - perception/topics/camera.md
-      - Schema Examples:
-          - perception/examples.md
-          - perception/examples/gps.md
-          - perception/examples/imu.md
-          - perception/examples/lidar.md
-          - perception/examples/pcd.md
-          - perception/examples/camera.md
-          - perception/examples/model.md
-          - perception/examples/fusion.md
+          - perception/topics/fusion.md
+          - perception/topics/imu.md
+          - perception/topics/lidar.md
+          - perception/topics/model.md
+          - perception/topics/navsat.md
+          - perception/topics/radar.md
+          
       - perception/custom.md
       - Developer Guide:
           - perception/dev.md
-          - perception/dev/python.md
+          - Examples:
+            - perception/dev/examples/gps.md
+            - perception/dev/examples/imu.md
+            - perception/dev/examples/lidar.md
+            - perception/dev/examples/pcd.md
+            - perception/dev/examples/camera.md
+            - perception/dev/examples/model.md
+            - perception/dev/examples/fusion.md
       - API Reference:
           - perception/api.md
           - perception/api/edgefirst_msgs.md

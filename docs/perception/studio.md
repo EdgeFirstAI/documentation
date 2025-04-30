@@ -28,7 +28,7 @@ Once installed you can confirm you can communicate with the EdgeFirst Studio Ser
 
 ```
 $ edgefirst-client version
-Deep View Enterprise 3.6.6a
+edgefirst-client 1.3.1
 ```
 
 ## Authentication
@@ -49,49 +49,55 @@ To query the token use the following command:
 edgefirst-client token
 ```
 
-## Usage
+## Dataset Preparation
 
-Usage information is provided by the `help` command.
+Once data is been recorder by using the WebUI interface and we have access to the mcap files, it is very simple to upload the files into a project. The next thing we have to do is to Create an Snapshot and then restored it as a Dataset (optionally using AGTG for auto annotate the images)
+
+### Create an Snapshot
+
+To create an snapshot locate the folder with the mcaps and run the following command:
 
 ```shell
-$ edgefirst-client help
-Usage: edgefirst-client [OPTIONS] <COMMAND>
-
-Commands:
-  version            Returns the Deep View Enterprise Server version
-  login              Login to the Deep View Enterprise Server with the provided username and password.  The token is stored in the application configuration file
-  logout             Logout by removing the token from the application configuration file
-  token              Returns the DVE authentication token for the provided username and password.  This would typically be stored into the DVE_TOKEN environment variable for subsequent commands to avoid re-entering username/password
-  projects           List all projects available to the authenticated user
-  project            Retrieve project information for the provided project ID
-  find-projects       Find a project by name
-  datasets           List all datasets available to the authenticated user.  If a project ID is provided, only datasets for that project are listed
-  dataset            Retrieve dataset information for the provided dataset ID.  The cloud key can be printed with the --cloud-key option, this requires additional AWS S3 permissions to access the bucket
-  find-dataset       Find a dataset by name.  If a project ID is provided, only datasets for that project are searched.  A project name can also be provided which will be used to find the project ID
-  download-dataset   Download a dataset to the local filesystem.  The dataset ID is required along with an optional output file path, if none is provided the dataset is downloaded to the current working directory
-  annotation-sets    List available annotation sets for the provided dataset ID
-  annotations        Fetch annotations for the provided dataset and annotation set ID. The retrieved annotations are filtered by annotation type. The annotations are printed in JSON format
-  snapshots          List available snapshots
-  snapshot           Retrieve snapshot information for the provided snapshot ID
-  find-snapshots     Find snapshots containing the provided description
-  create-snapshot    Create a new snapshot from the provided path which can be a file or directory.  The snapshot name will be the base name of the path
-  download-snapshot  Downloads a snapshot to the local filesystem.  The snapshot ID is required along with an optional output file path, if none is provided the snapshot is downloaded to the current working directory
-  restore-snapshot   Restore a snapshot to the provided project ID.  The snapshot ID is required along with optional flags to restore the depth generator and AGTG pipeline.  The dataset name and description can also be provided to override the snapshot name, otherwise the snapshot name is used and the description is set to the snapshot timestamp
-  trainers           List training experiments for the provided project ID (optional).  The trainers are groups of "experiments" in mlflow parlance, training jobs can be queried through the trainer-session commands
-  trainer            Retrieve trainer information for the provided trainer ID
-  trainer-sessions   List training sessions for the provided trainer ID (optional).  The sessions are individual training jobs that can be queried for more detailed information
-  trainer-session    Retrieve training session information for the provided session ID.  The trainer session ID can be either be an integer or a string with the format t-xxx where xxx is the session ID in hex as shown in the DVE UI
-  download-artifact  Download an artifact from the provided session ID.  The session ID can be either be an integer or a string with the format t-xxx where xxx is the session ID in hex as shown in the DVE UI.  The artifact name is the name of the file to download.  The output file path is optional, if none is provided the artifact is downloaded to the current working directory
-  help               Print this message or the help of the given subcommand(s)
-
-Options:
-      --server <SERVER>      DVE Server Name
-      --username <USERNAME>  DVE Username
-      --password <PASSWORD>  DVE Password
-      --token <TOKEN>        DVE Token
-  -h, --help                 Print help
-  -V, --version              Print version
+$ edgefirst-client create-snapshot path
+# Output
+[SNAPSHOT_ID] status: Name of the folder
 ```
+where `path` is the path to the folder containing the mcap files. Notice that the snapshot can only be restored if `status` is `available` (keyword after the [ID]).
+
+Also, available snapshots can be listed by calling:
+
+```shell
+$ edgefirst-client snapshots
+
+```
+
+### Restore Snapshots
+To restore a snapshot as a dataset, we need to get the project ID where the dataset is going to be stored:
+
+```shell
+
+$ edgefirst-client projects
+# Output
+# List of all the projects
+[PROJECT_ID] Name: Description
+```
+
+and then given an ID we restore the snapshot as follow.
+
+```shell
+$ edgefirst-client restore-snapshot PROJECT_ID SNAPSHOT_ID --dataset-name "Dataset Name" --dataset-description "Dataset Description"
+```
+
+The command above will spin up some cloud services to transform input data into datasets. 
+The `restore-snapshot` command provides several options to customize the dataset creation process:
+
+- `--autodepth`: Enables automatic depth map generation for the dataset
+- `--autolabel`: Specifies labels for automatic annotation of objects in the dataset (e.g. `person`, `car`)
+- `--topics`: Filters which topics from the mcap files to include in the dataset (if not specified, all topics are included)
+- `--dataset-name`: Sets the name for the new dataset
+- `--dataset-description`: Provides a description for the dataset
+
+For example, to create a dataset with automatic depth maps and annotations for "person" and "car" objects:
 
 ## Command Reference
 
@@ -247,5 +253,46 @@ Each command supports various options and flags that can be viewed using the `--
 edgefirst-client projects --help
 ```
 
-This will display detailed usage information, including available options and examples for that specific command.
+## Usage
 
+Usage information is provided by the `help` command.
+
+```shell
+$ edgefirst-client help
+Usage: edgefirst-client [OPTIONS] <COMMAND>
+
+Commands:
+  version            Returns the Deep View Enterprise Server version
+  login              Login to the Deep View Enterprise Server with the provided username and password.  The token is stored in the application configuration file
+  logout             Logout by removing the token from the application configuration file
+  token              Returns the DVE authentication token for the provided username and password.  This would typically be stored into the DVE_TOKEN environment variable for subsequent commands to avoid re-entering username/password
+  projects           List all projects available to the authenticated user
+  project            Retrieve project information for the provided project ID
+  find-projects       Find a project by name
+  datasets           List all datasets available to the authenticated user.  If a project ID is provided, only datasets for that project are listed
+  dataset            Retrieve dataset information for the provided dataset ID.  The cloud key can be printed with the --cloud-key option, this requires additional AWS S3 permissions to access the bucket
+  find-dataset       Find a dataset by name.  If a project ID is provided, only datasets for that project are searched.  A project name can also be provided which will be used to find the project ID
+  download-dataset   Download a dataset to the local filesystem.  The dataset ID is required along with an optional output file path, if none is provided the dataset is downloaded to the current working directory
+  annotation-sets    List available annotation sets for the provided dataset ID
+  annotations        Fetch annotations for the provided dataset and annotation set ID. The retrieved annotations are filtered by annotation type. The annotations are printed in JSON format
+  snapshots          List available snapshots
+  snapshot           Retrieve snapshot information for the provided snapshot ID
+  find-snapshots     Find snapshots containing the provided description
+  create-snapshot    Create a new snapshot from the provided path which can be a file or directory.  The snapshot name will be the base name of the path
+  download-snapshot  Downloads a snapshot to the local filesystem.  The snapshot ID is required along with an optional output file path, if none is provided the snapshot is downloaded to the current working directory
+  restore-snapshot   Restore a snapshot to the provided project ID.  The snapshot ID is required along with optional flags to restore the depth generator and AGTG pipeline.  The dataset name and description can also be provided to override the snapshot name, otherwise the snapshot name is used and the description is set to the snapshot timestamp
+  trainers           List training experiments for the provided project ID (optional).  The trainers are groups of "experiments" in mlflow parlance, training jobs can be queried through the trainer-session commands
+  trainer            Retrieve trainer information for the provided trainer ID
+  trainer-sessions   List training sessions for the provided trainer ID (optional).  The sessions are individual training jobs that can be queried for more detailed information
+  trainer-session    Retrieve training session information for the provided session ID.  The trainer session ID can be either be an integer or a string with the format t-xxx where xxx is the session ID in hex as shown in the DVE UI
+  download-artifact  Download an artifact from the provided session ID.  The session ID can be either be an integer or a string with the format t-xxx where xxx is the session ID in hex as shown in the DVE UI.  The artifact name is the name of the file to download.  The output file path is optional, if none is provided the artifact is downloaded to the current working directory
+  help               Print this message or the help of the given subcommand(s)
+
+Options:
+      --server <SERVER>      DVE Server Name
+      --username <USERNAME>  DVE Username
+      --password <PASSWORD>  DVE Password
+      --token <TOKEN>        DVE Token
+  -h, --help                 Print help
+  -V, --version              Print version
+```

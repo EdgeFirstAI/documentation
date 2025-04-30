@@ -43,6 +43,12 @@ Password: ****
 
 This will generate an authentication token which remains valid for 7 days and save it in the edgefirst-client configuration file.  At any time you can use the `logout` command to forget the token and remove it from the configuration file.
 
+To query the token use the following command:
+
+```
+edgefirst-client token
+```
+
 ## Usage
 
 Usage information is provided by the `help` command.
@@ -58,7 +64,7 @@ Commands:
   token              Returns the DVE authentication token for the provided username and password.  This would typically be stored into the DVE_TOKEN environment variable for subsequent commands to avoid re-entering username/password
   projects           List all projects available to the authenticated user
   project            Retrieve project information for the provided project ID
-  find-project       Find a project by name
+  find-projects       Find a project by name
   datasets           List all datasets available to the authenticated user.  If a project ID is provided, only datasets for that project are listed
   dataset            Retrieve dataset information for the provided dataset ID.  The cloud key can be printed with the --cloud-key option, this requires additional AWS S3 permissions to access the bucket
   find-dataset       Find a dataset by name.  If a project ID is provided, only datasets for that project are searched.  A project name can also be provided which will be used to find the project ID
@@ -86,3 +92,160 @@ Options:
   -h, --help                 Print help
   -V, --version              Print version
 ```
+
+## Command Reference
+
+The EdgeFirst Studio Client provides a comprehensive set of commands for interacting with the EdgeFirst Studio Server. Here's a detailed explanation of the available commands:
+
+### Authentication Commands
+- `version`: Displays the current Deep View Enterprise Server version
+  ```shell
+  edgefirst-client version
+  # Output: edgefirst-client 1.3.1
+  ```
+- `login`: Authenticates with the server and stores the token in the configuration file
+  ```shell
+  edgefirst-client login
+  # Username: your_username
+  # Password: ****
+  ```
+- `logout`: Removes the stored authentication token
+  ```shell
+  edgefirst-client logout
+  ```
+- `token`: Displays the current authentication token
+  ```shell
+  edgefirst-client token
+  # Output: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...
+  ```
+
+### Project Management
+- `projects`: Lists all projects accessible to the authenticated user
+  ```shell
+  edgefirst-client projects
+  # Output:
+  # [25] MultiTask: This project contains datasets for both object detection and segmentation
+  # [54] ObjectDetection: This project contains datasets that only support object detection task
+  ```
+- `project`: Retrieves detailed information for a specific project using its ID
+  ```shell
+  edgefirst-client project 54
+  ```
+- `find-projects`: Searches for projects by name
+  ```shell
+  edgefirst-client find-projects ObjectDetection
+  # Output:
+  # [54] ObjectDetection: This project contains datasets that only support object detection task
+  ```
+
+### Dataset Operations
+- `datasets`: Lists all datasets (optionally filtered by project ID). If project ID is not provided all the datasets will be listed
+  ```shell
+  edgefirst-client datasets 54
+  # Output:
+  # [32] Playingcards: A dataset for detecting playingcards
+  ```
+- `dataset`: Retrieves detailed information for a specific dataset using its ID
+  ```shell
+  edgefirst-client dataset 32
+  ```
+- `find-datasets`: Searches for datasets by name (optionally filtered by project)
+  ```shell
+  edgefirst-client find-datasets Playingcards --project-id 54
+  ```
+- `download-dataset`: Downloads a dataset to the local filesystem
+  ```shell
+  edgefirst-client download-dataset 32 --output ./my_dataset
+  ```
+
+### Annotation Management
+A single dataset is allowed to have multiple annotations sets. That is the reason why annotations are separated from `dataset-download` commands.
+
+- `annotation-sets`: Lists available annotation sets for a specific dataset
+  ```shell
+  edgefirst-client annotation-sets 32
+  # Output:
+  # [1] Default Annotation Set
+  # [2] Validation Set
+  ```
+- `annotations`: Retrieves annotations for a dataset and annotation set, filtered by types. Types could be any of the following options: `box2d`, `box3d`, `segmentation`. By default this command will return a json file. However, the user can always return a Arrow dataframe by adding the `--arrow` 
+  ```shell
+  edgefirst-client annotations 32 --types box2d
+  # Output
+  ...
+  "object_id": "605152ea-e681-4f02-a60a-a70e525e9acd",
+    "label_name": "suitcase",
+    "group": "train",
+    "box2d": {
+      "h": 0.21910417,
+      "w": 0.23835938,
+      "x": 0.69021099,
+      "y": 0.874552085
+    }
+  ...
+  ```
+
+### Snapshot Operations
+- `snapshots`: Lists available snapshots
+  ```shell
+  edgefirst-client snapshots
+  # Output:
+  # [101] Snapshot 2023-01-01
+  # [102] Snapshot 2023-02-01
+  ```
+- `snapshot`: Retrieves detailed information for a specific snapshot
+  ```shell
+  edgefirst-client snapshot 101
+  ```
+- `find-snapshots`: Searches for snapshots by description
+  ```shell
+  edgefirst-client find-snapshots "January 2023"
+  ```
+- `create-snapshot`: Creates a new snapshot from a local file or directory
+  ```shell
+  edgefirst-client create-snapshot ./my_dataset --name "March 2023 Dataset"
+  ```
+- `download-snapshot`: Downloads a snapshot to the local filesystem
+  ```shell
+  edgefirst-client download-snapshot 101 --output ./snapshot_2023_01
+  ```
+- `restore-snapshot`: Restores a snapshot to a project
+  ```shell
+  edgefirst-client restore-snapshot 101 --project-id 54 --name "Restored Dataset"
+  ```
+
+### Training Management
+- `trainers`: Lists training experiments (optionally filtered by project)
+  ```shell
+  edgefirst-client trainers 54
+  # Output:
+  # [201] YOLOv5 Training
+  # [202] Faster R-CNN Training
+  ```
+- `trainer`: Retrieves detailed information for a specific trainer
+  ```shell
+  edgefirst-client trainer 201
+  ```
+- `trainer-sessions`: Lists training sessions (optionally filtered by trainer)
+  ```shell
+  edgefirst-client trainer-sessions 201
+  # Output:
+  # [301] Session 1 - 2023-01-15
+  # [302] Session 2 - 2023-01-20
+  ```
+- `trainer-session`: Retrieves detailed information for a specific training session
+  ```shell
+  edgefirst-client trainer-session 301
+  ```
+- `download-artifact`: Downloads artifacts from a training session
+  ```shell
+  edgefirst-client download-artifact 301 --artifact-name model.pt --output ./models
+  ```
+
+Each command supports various options and flags that can be viewed using the `--help` flag with any command. For example:
+```shell
+edgefirst-client projects --help
+```
+
+This will display detailed usage information, including available options and examples for that specific command.
+

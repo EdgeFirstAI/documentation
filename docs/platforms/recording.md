@@ -70,8 +70,8 @@ At the bottom of the "File Details" modal, there is a "Close" button to close th
 
 Any MCAP recording can be deleted by clicking its "Delete" button and confirming that you wish to delete the recording.
 
-### Downloading and Analysis
-Click the "Download" button to save the MCAP file to your PC.  You can also use a [SSH client to copy files](./ssh.md#secure-copy) off the Raivin.  Once the MCAP recording is saved on to your PC, you can use an MCAP reader such as [Foxglove Studio](./foxglove.md) to analyze the recorded data.
+## Downloading and Analysis
+Click the "Download" button to save the MCAP file to your PC.  You can also use a [SSH client to copy files](./ssh.md#secure-copy) off the Raivin.
 
 ## Configuration
 The Recorder Service can have the following settings configured:
@@ -81,6 +81,30 @@ The Recorder Service can have the following settings configured:
 - Recording compression
 
 These settings can be configured in the [MCAP Recorder Settings Page](./configuration.md#mcap-recorder-settings-page).
+
+## Recording On Boot-up
+The Recording Service can be set up to automatically start on boot-up.
+!!! warning
+     Having the Recording Service run for prolonged periods of time will fill the SD card of the Raivin.  Use this functionality with caution.
+
+On the [Services Status](./configuration.md#service-status) page, you can use the Recorder Service status card to enable the recorder service to start on boot.
+<figure markdown="span">
+![Recording Service](../assets/Recorder_Service_Card.png){align=center}  
+<figcaption>Recorder Service status card</figcaption>
+</figure>
+Flip the Enable/Disable switch to enable to enable the Recorder Service on boot.
+<figure markdown="span">
+![Recording Service Enabled](../assets/Recorder_Service_Card_enabled.png){align=center}  
+<figcaption>Recorder Service enabled</figcaption>
+</figure>
+!!! note
+     You can start and stop the Recording Service here as well as on the MCAP Recording Page by flipping the Start/Stop switch.
+
+## Next Steps
+Now that you have your MCAP, there are many things you can do with it, such as:
+- Use [Foxglove Studio](./foxglove.md) to view the downloaded MCAP, especially with some [advanced Foxglove understanding](./advanced_foxglove.md)
+- Use the [Replay Service](./replay.md) to view the recorded MCAP on the device
+- [Publish the downloaded MCAP to Studio](./../studio/snapshots.md#upload-from-mcap-file)
 
 [ros2]: https://www.ros.org/
 [mcap]: https://mcap.dev/

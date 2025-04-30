@@ -136,14 +136,10 @@ Next [navigate to the gallery](#viewing-datasets) of the dataset by clicking on 
 ![Annotation 1](assets/annotation-1.jpg) | ![Annotation 2](assets/annotation-2.jpg) | ![Annotation 3](assets/annotation-3.jpg)
 
 
-##### Audit Annotations
+##### Audit 2D Annotations
 
 This step requires verifying the outputs of the auto-annotations and to make
 corrections if necessary in order to have a proper fully annotated dataset.
-
-<div style="text-align: center;">
-    <iframe width="560" height="315" src="https://www.youtube.com/embed/j-75Q5-_dC0?start=1536&end=2144" title="Visualize Annotations" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-</div>
 
 Some annotations were missed from the auto-annotations and to correct those errors, we can utilize the auto-segment tool.
 Start by enabling an AI Assisted Ground Truth server by navigating to the *Cloud Instances* under the tool options.
@@ -191,6 +187,97 @@ Click *SUBMIT* to accept the annotation.
 </figure>
 
 Part of the audit process is to go over each sample in the dataset and correcting any missed annotations or incorrect annotations.
+
+#### Audit 3D annotations
+
+This step requires verifying the outputs of the auto-annotations and to make
+corrections if necessary in order to have a proper fully annotated dataset.
+
+<div style="text-align: center;">
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/j-75Q5-_dC0?start=1536&end=2144" title="Visualize Annotations" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+</div>
+
+First [navigate to the gallery](#viewing-datasets) and enable edit mode.
+
+<figure markdown="span">
+![Edit Mode](assets/edit-mode-3d.jpg){ align=center }
+<figcaption>Edit Mode</figcaption>
+</figure>
+
+Ensure the point clouds and the 3D bounding box annotations are toggled visible.
+
+<figure markdown="span">
+![Visible 3D Annotations](assets/visible-3d-annotations.jpg){ align=center }
+<figcaption>Visible 3D Annotations</figcaption>
+</figure>
+
+##### Scale 3D Annotation
+
+The error in the current annotation is that the bounding box is not scaled properly. Click on the option on the left sidebar to enable 3D bounding box scaling as highlighted in red.
+
+<figure markdown="span">
+![Scale 3D Annotations](assets/scale-3d-box.jpg){ align=center }
+<figcaption>Scale 3D Annotations</figcaption>
+</figure>
+
+Click on the current 3D bounding box to scale and this will provide cursors to scale the 3D bounding box in the 3-axis.
+
+<figure markdown="span">
+![Scaling 3D Annotations](assets/scale-3d-box-axis.jpg){ align=center }
+<figcaption>Scaling 3D Annotations</figcaption>
+</figure>
+
+The 3D bounding box was adjusted with proper scaling to the LiDAR point clouds of the object.
+
+| Scaled YZ Plane             | Scaled XY Plane           | Scaled XZ             |
+|-----------------------------|---------------------------|-----------------------|
+| ![YZ](assets/box-3d-scaleyz.jpg) | ![XY](assets/box-3d-scalexy.jpg) | ![Positive Shift](assets/box-3d-scalexz.jpg) |
+
+##### Translate 3D Annotation
+
+Next the adjusted 3D bounding box needs to be properly translated. Click on the option on the left sidebar to enable 3D bounding box translation as highlighted in red.
+
+<figure markdown="span">
+![Translate 3D Annotations](assets/translate-3d-box.jpg){ align=center }
+<figcaption>Translate 3D Annotations</figcaption>
+</figure>
+
+Similar to the workflow as scaling the 3D bounding boxes, move the three cursors for each axis to translate the bounding box for each axis.
+
+| Translate YZ Plane          | Translate XY Plane        | Translate XZ          |
+|-----------------------------|---------------------------|-----------------------|
+| ![YZ](assets/box-3d-translateyz.jpg) | ![XY](assets/box-3d-translatexy.jpg) | ![Positive Shift](assets/box-3d-translatexz.jpg) |
+
+
+Once the 3D bounding box annotation is properly oriented, click "SUBMIT" to save the changes.
+
+<figure markdown="span">
+![Submit 3D Annotations](assets/submit-audit-3d-boxes.jpg){ align=center }
+<figcaption>Submit 3D Annotations</figcaption>
+</figure>
+
+##### Add 3D Annotation
+
+To add a missing 3D bounding box, click on the option on the left sidebar to add a new 3D bounding box annotation as highlighted in red.
+
+<figure markdown="span">
+![Add 3D Annotations](assets/add-3d-box.jpg){ align=center }
+<figcaption>Add 3D Annotations</figcaption>
+</figure>
+
+Now click on the grid to add a new 3D bounding box on the position of the click.
+
+<figure markdown="span">
+![Added 3D Annotations](assets/added-3d-box.jpg){ align=center }
+<figcaption>Added 3D Annotations</figcaption>
+</figure>
+
+This newly added 3D bounding box may not be scaled or translated properly. Follow instructions for [scaling](#scale-3d-annotation) and [translating](#translate-3d-annotation) a 3D bounding box to properly center the bounding box around the LiDAR point cloud as shown below. Once the annotation is properly scaled and translated, click "SUBMIT" to save the annotation.
+
+<figure markdown="span">
+![Submit 3D Annotations](assets/submit-added-3d-box.jpg){ align=center }
+<figcaption>Submit 3D Annotations</figcaption>
+</figure>
 
 ## Viewing Datasets
 

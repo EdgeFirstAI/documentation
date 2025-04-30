@@ -1,5 +1,6 @@
 # LiDAR Module
-The Raivin configuration includes an integrated [Ouster OS1-64 LiDAR sensor][ouster] which provides high-resolution 3D point cloud data. The LiDAR sensor is connected to the Raivin through a Gigabit Ethernet interface, providing both data communication and power over Ethernet (PoE) capabilities.
+
+The Raivin configuration includes optional support for the [Ouster OS1-64 LiDAR sensor][ouster] which provides high-resolution 3D point cloud data useful for creating ground-truth annotations.  A mounting kit for the Ouster is available from Au-Zone to attach the Raivin to the Ouster and calibration profiles for this mounting configuration are provided.  The LiDAR sensor is connected to the Raivin through a Gigabit Ethernet interface, providing both data communication and power over Ethernet (PoE) capabilities.
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/LuA3JlRUfVY?si=FFKDY7dBWih5aG2W" title="Raivin Unboxing and LiDAR Mounting" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 

@@ -130,11 +130,11 @@ First, create an experiment to store all training sessions related to this datas
 
 Experiments are useful for comparing parameters across the same dataset and task, and for staying organized.
 
-Inside the experiment, create a New Session and name it `nano-musicbox`. This name is also assigned to the cloud instance under the Studio console.
+Inside the experiment, create a New Session and name it `musicbox-detector`. This name is also assigned to the cloud instance under the Studio console.
 
 - **Trainer**: `ModelPack`
 
-- **Description**: `Object Detection | nano`
+- **Description**: `Object Detection`
 
 - **Dataset**: `MusicBoxTutorial`
 
@@ -144,15 +144,15 @@ Most hyperparameters are auto-tuned by ModelPack, but some can be customized:
 
 - **Input Resolution**: `640x360
 `
-- **Model Name**: `Nano`
+- **Model Name**: `Legacy` (more model variants are going to be integrated in future versions)
 
-- **Epochs**: `100 (default)`
+- **Epochs**: `50 (default)`
 
 - **Batch Size**: `Default is 16.`
 
 For small datasets, a large batch size may produce poor results. Use a batch size of 4 or 8.
 
-Since our dataset is small, we need to use strong data augmentation to prevent overfitting. Set augmentation to 90% — meaning there's a 90% chance of augmenting each sample. Feel free to tweak this value.
+Since our dataset is small, we need to use strong data augmentation to prevent overfitting and it is recommended to increase a bit the probability for each augmentation technique.
 
 ![New Training Session](./assets/training-session-new.png)
 
@@ -160,14 +160,14 @@ After creation, your session should look like this:
 
 ![Taining Session Card](./assets/training-session-view-on-experiment.png)
 
-You’ll find general training info in this summarized view. Additional actions are available via the top buttons (highlighted in orange).
+You’ll find general training info in this summarized view. Additional actions are available via the top buttons (top-right of the training card).
 
 ![Training Progress Finished](./assets/training-progress-finished.png)
 
 The training process begins with cloud instance initialization. Then the dataset is downloaded and cached. Training starts afterward.
 At the end of the training process, ModelPack quantizes the model and publishes the checkpoints.
 
-Clicking the expanded view shows training logs and checkpoints.
+Clicking the training card will show the expanded view containing all the logs and checkpoints.
 
 ![Expanded View](./assets/expanded-view.png)
 
@@ -179,9 +179,42 @@ In the expanded session view, download the **TFLite** model and copy it to the M
 
 `scp modelpack.tflite torizon@verdin-imxmp-xxxxx:~/modelpack.tflite`
 
-Then SSH into the device and run the model using:
+From this point, there are two different options to deploy the new trained model. The first one is to change the model path from the WebUI on the device and the second one is changing the path to the model in the service configuration file.
 
-`sudo maivin-model --model modelpack.tflite -i 0.25 -t 0.4`
+### Model Deployment via WebUI
+
+From the WebUI the user must access to the Model Settings view and change the model location there:
+
+![Deployment Results](./assets/model_location_webui.png)
+
+Remember to save the configurations at the end of the process. The  Model Configuration page can be accessed via the following url:
+`https://verdin-imx8mp-xxxxx/config/model`
+
+### Manual Model Deployment
+
+In case the manual deployment is needed, you need to connect to the device via ssh:
+
+```shell
+$ ssh torizon@verdin-imx8mp-15141030
+```
+
+and edit the model parameters in `/etc/default/model`
+
+```shell
+$ vi /etc/default/model
+```
+
+then restart the model service using the `systemctl` command
+
+```shell
+$ sudo systemctl stop model
+$ sudo systemctl start model 
+```
+
+!!! tip "Model Excecution" 
+    Rember to use **sudo** to start and stop model services
+
+Now the model is running, open the browser and check the camera to see the model detection the object.
 
 ![Deployment Results](./assets/deployment-results.png)
 

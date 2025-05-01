@@ -8,24 +8,12 @@ ModelPack (MPK) is an advanced computer vision solution developed by Au-Zone Tec
 
 
 
-MPK is optimized for real-time vision applications such as industrial automation, robotics, and autonomous systems. It combines object detection—locating multiple objects within an image using bounding boxes—with instance segmentation, which outlines each object’s exact shape at the pixel level. This unified approach enables detailed scene understanding at the edge and can contribute in a late fusion with the radar model.
-
-
-The architecture is higly configurable form the API via width and height parameters. These hyperparameters expand the model in both directions, width and depth. There are 4 predifined versions of ModelPack which are mainluy focused for embedded deployments: nano, tiny, small and medium. 
-
-
-|   Variant           | Parameters | Width | Height | COCO mAP |
-|---------------------|------------|-------|--------|----------|
-| **modelpack-nano**  |    2.5M    | 0.25  | 0.33   |     -    |
-| **modelpack-tiny**  |    5.5M    | 0.35  | 0.33   |     -    |
-| **modelpack-small** |    9.7M    | 0.5   | 0.33   |     -    |
-| **modelpack-medium**|    31M     | 0.75  | 0.67   |     -    |
-
+ModelPack is optimized for real-time vision applications such as industrial automation, robotics, and autonomous systems. It combines object detection—locating multiple objects within an image using bounding boxes—with instance segmentation, which outlines each object’s exact shape at the pixel level. This unified approach enables detailed scene understanding at the edge and can contribute in a late fusion with the radar model.
 
 
 ## Quick Start Guide
 
-This section includes several tutorials useful to understand how to operate ModelPack from EdgeFirst Studio. At this point the user should know how to [Record/Capture Datasets](../../datasets/tutorials.md) from either Maivin or Raivin.
+This section includes a  tutorial useful to understand how to operate ModelPack from EdgeFirst Studio. At this point the user should know how to [Record/Capture Datasets](../../datasets/tutorials.md) from either Maivin or Raivin.
 
 
 ### Musicbox Detector

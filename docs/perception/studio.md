@@ -28,7 +28,7 @@ Once installed you can confirm you can communicate with the EdgeFirst Studio Ser
 
 ```
 $ edgefirst-client version
-edgefirst-client 1.3.1
+edgefirst-client 1.3.3
 ```
 
 ## Authentication
@@ -51,7 +51,7 @@ edgefirst-client token
 
 ## Dataset Preparation
 
-Once data is been recorder by using the WebUI interface and we have access to the mcap files, it is very simple to upload the files into a project. The next thing we have to do is to Create an Snapshot and then restored it as a Dataset (optionally using AGTG for auto annotate the images)
+Once data is been recorder by using the WebUI interface and we have access to the mcap files, it is very simple to upload the files into a project. The next step we have to do is to Create an Snapshot and then restored it as a Dataset (optionally using AGTG for auto annotate the images)
 
 ### Create an Snapshot
 
@@ -59,30 +59,28 @@ To create an snapshot locate the folder with the mcaps and run the following com
 
 ```shell
 $ edgefirst-client create-snapshot path
-# Output
 [SNAPSHOT_ID] status: Name of the folder
 ```
-where `path` is the path to the folder containing the mcap files. Notice that the snapshot can only be restored if `status` is `available` (keyword after the [ID]).
+where `path` is the path to the folder containing the mcap files. Notice that the snapshot can only be restored if `status` is `available` (keyword after the `[ID]`, `status` can also be `unavailable` if any error happens).
 
 Also, available snapshots can be listed by calling:
 
 ```shell
 $ edgefirst-client snapshots
+[SNAPSHOT_ID] available: Snapshot Name (folder name from above)
+[OTHER_ID] unavailable: Snapshot Name (a different name)
 
 ```
 
 ### Restore Snapshots
-To restore a snapshot as a dataset, we need to get the project ID where the dataset is going to be stored:
+To restore any snapshot as a dataset, we need to get the project ID where the dataset is going to be stored:
 
 ```shell
 
 $ edgefirst-client projects
-# Output
-# List of all the projects
-[PROJECT_ID] Name: Description
+[PROJECT_ID] ProjectName: Description
 ```
-
-and then given an ID we restore the snapshot as follow.
+and then given the ID, we restore the snapshot as follow.
 
 ```shell
 $ edgefirst-client restore-snapshot PROJECT_ID SNAPSHOT_ID --dataset-name "Dataset Name" --dataset-description "Dataset Description"
@@ -97,7 +95,16 @@ The `restore-snapshot` command provides several options to customize the dataset
 - `--dataset-name`: Sets the name for the new dataset
 - `--dataset-description`: Provides a description for the dataset
 
-For example, to create a dataset with automatic depth maps and annotations for "person" and "car" objects:
+For example, to create a dataset with automatic depth maps and annotations for `person` and `car` objects, run the following command:
+
+
+```shell
+$ edgefirst-client restore-snapshot PROJECT_ID SNAPSHOT_ID --dataset-name "Dataset Name" --dataset-description "Dataset Description" --autolabel person car
+```
+
+!!! tip "Dataset Download"
+
+    To download datasets using edgefirst-client does not work because it requieres AWS Credentials to be set
 
 ## Command Reference
 
@@ -106,78 +113,70 @@ The EdgeFirst Studio Client provides a comprehensive set of commands for interac
 ### Authentication Commands
 - `version`: Displays the current Deep View Enterprise Server version
   ```shell
-  edgefirst-client version
-  # Output: edgefirst-client 1.3.1
+  $ edgefirst-client version
+  edgefirst-client 1.3.3
   ```
 - `login`: Authenticates with the server and stores the token in the configuration file
   ```shell
-  edgefirst-client login
-  # Username: your_username
-  # Password: ****
+  $ edgefirst-client login
+  Username: your_username
+  Password: ****
   ```
 - `logout`: Removes the stored authentication token
   ```shell
-  edgefirst-client logout
+  $ edgefirst-client logout
   ```
 - `token`: Displays the current authentication token
   ```shell
-  edgefirst-client token
-  # Output: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...
+  $ edgefirst-client token
+  eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...
   ```
 
 ### Project Management
 - `projects`: Lists all projects accessible to the authenticated user
   ```shell
-  edgefirst-client projects
-  # Output:
-  # [25] MultiTask: This project contains datasets for both object detection and segmentation
-  # [54] ObjectDetection: This project contains datasets that only support object detection task
+  $ edgefirst-client projects
+  [25] MultiTask: This project contains datasets for both object detection and segmentation
+  [54] ObjectDetection: This project contains datasets that only support object detection task
   ```
 - `project`: Retrieves detailed information for a specific project using its ID
   ```shell
-  edgefirst-client project 54
+  $ edgefirst-client project 54
   ```
 - `find-projects`: Searches for projects by name
   ```shell
-  edgefirst-client find-projects ObjectDetection
-  # Output:
-  # [54] ObjectDetection: This project contains datasets that only support object detection task
+  $ edgefirst-client find-projects ObjectDetection
+  [54] ObjectDetection: This project contains datasets that only support object detection task
   ```
 
 ### Dataset Operations
 - `datasets`: Lists all datasets (optionally filtered by project ID). If project ID is not provided all the datasets will be listed
   ```shell
-  edgefirst-client datasets 54
-  # Output:
-  # [32] Playingcards: A dataset for detecting playingcards
+  $ edgefirst-client datasets 54
+  [32] Playingcards: A dataset for detecting playingcards
   ```
 - `dataset`: Retrieves detailed information for a specific dataset using its ID
   ```shell
-  edgefirst-client dataset 32
+  $ edgefirst-client dataset 32
   ```
 - `find-datasets`: Searches for datasets by name (optionally filtered by project)
   ```shell
-  edgefirst-client find-datasets Playingcards --project-id 54
+  $ edgefirst-client find-datasets Playingcards --project-id 54
   ```
-- `download-dataset`: Downloads a dataset to the local filesystem
-  ```shell
-  edgefirst-client download-dataset 32 --output ./my_dataset
-  ```
+
 
 ### Annotation Management
 A single dataset is allowed to have multiple annotations sets. That is the reason why annotations are separated from `dataset-download` commands.
 
 - `annotation-sets`: Lists available annotation sets for a specific dataset
   ```shell
-  edgefirst-client annotation-sets 32
-  # Output:
-  # [1] Default Annotation Set
-  # [2] Validation Set
+  $ edgefirst-client annotation-sets 32
+  [1] Default Annotation Set
+  [2] Validation Set
   ```
 - `annotations`: Retrieves annotations for a dataset and annotation set, filtered by types. Types could be any of the following options: `box2d`, `box3d`, `segmentation`. By default this command will return a json file. However, the user can always return a Arrow dataframe by adding the `--arrow` 
   ```shell
-  edgefirst-client annotations 32 --types box2d
-  # Output
+  $ edgefirst-client annotations 32 --types box2d
   ...
   "object_id": "605152ea-e681-4f02-a60a-a70e525e9acd",
     "label_name": "suitcase",
@@ -194,58 +193,46 @@ A single dataset is allowed to have multiple annotations sets. That is the reaso
 ### Snapshot Operations
 - `snapshots`: Lists available snapshots
   ```shell
-  edgefirst-client snapshots
-  # Output:
-  # [101] Snapshot 2023-01-01
-  # [102] Snapshot 2023-02-01
+  $ edgefirst-client snapshots
+  [101] Snapshot 2023-01-01
+  [102] Snapshot 2023-02-01
   ```
 - `snapshot`: Retrieves detailed information for a specific snapshot
   ```shell
-  edgefirst-client snapshot 101
+  $ edgefirst-client snapshot 101
   ```
 - `find-snapshots`: Searches for snapshots by description
   ```shell
-  edgefirst-client find-snapshots "January 2023"
+  $ edgefirst-client find-snapshots "January 2023"
   ```
 - `create-snapshot`: Creates a new snapshot from a local file or directory
   ```shell
-  edgefirst-client create-snapshot ./my_dataset --name "March 2023 Dataset"
+  $ edgefirst-client create-snapshot ./my_dataset
   ```
 - `download-snapshot`: Downloads a snapshot to the local filesystem
   ```shell
-  edgefirst-client download-snapshot 101 --output ./snapshot_2023_01
+  $ edgefirst-client download-snapshot 101 --output ./snapshot_2023_01
   ```
 - `restore-snapshot`: Restores a snapshot to a project
   ```shell
-  edgefirst-client restore-snapshot 101 --project-id 54 --name "Restored Dataset"
+  $  edgefirst-client restore-snapshot 101 54 --name "Restored Dataset" --topics "list of topics" --autolabel "list of labels"
   ```
 
 ### Training Management
-- `trainers`: Lists training experiments (optionally filtered by project)
-  ```shell
-  edgefirst-client trainers 54
-  # Output:
-  # [201] YOLOv5 Training
-  # [202] Faster R-CNN Training
-  ```
-- `trainer`: Retrieves detailed information for a specific trainer
-  ```shell
-  edgefirst-client trainer 201
-  ```
 - `trainer-sessions`: Lists training sessions (optionally filtered by trainer)
   ```shell
-  edgefirst-client trainer-sessions 201
-  # Output:
-  # [301] Session 1 - 2023-01-15
-  # [302] Session 2 - 2023-01-20
+  $ edgefirst-client trainer-sessions
+  [456] ... Artifact { name: "modelpack.h5", model_type: "modelpack" },...]
+  [324] ... Artifact { name: "modelpack.h5", model_type: "modelpack" },...]
   ```
 - `trainer-session`: Retrieves detailed information for a specific training session
   ```shell
-  edgefirst-client trainer-session 301
+  edgefirst-client trainer-session 324
+  [324] ... Artifact { name: "modelpack.h5", model_type: "modelpack" },...]
   ```
-- `download-artifact`: Downloads artifacts from a training session
+- `download-artifact`: Downloads artifacts from a training session. Notice this command requieres the `output` parameter is pointing to a file and not to a folder
   ```shell
-  edgefirst-client download-artifact 301 --artifact-name model.pt --output ./models
+  edgefirst-client download-artifact 324 labels.txt --output /home/reinier/labels.txt
   ```
 
 Each command supports various options and flags that can be viewed using the `--help` flag with any command. For example:

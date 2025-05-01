@@ -172,7 +172,6 @@ Start and launch a new server to host the auto-segmentation backend.
 <figcaption>Start a Server</figcaption>
 </figure>
 
-
 navigate to the "Object Detection" project that was created in the [EdgeFirst Studio Quickstart](../index.md#edgefirst-studio-quickstart) and click on the datasets icon that is indicated in red.
 
 <figure markdown="span">

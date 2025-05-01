@@ -85,7 +85,7 @@ Once the MCAP file is selected, this would start the upload progress in EdgeFirs
 
 This tutorial shows how to annotate an uploaded MCAP recording shown in [Upload Recorded Data Tutorial](#upload-recorded-data-to-edgefirst-studio).
 
-##### Auto Annotations
+##### Auto Annotations via Snapshot
 
 To reduce the effort required by the user to annotate the data, part of this process is to run auto-annotations on the uploaded data. 
 
@@ -135,6 +135,78 @@ Next [navigate to the gallery](#viewing-datasets) of the dataset by clicking on 
 :------------------:|:------------------:|:------------------:
 ![Annotation 1](assets/annotation-1.jpg) | ![Annotation 2](assets/annotation-2.jpg) | ![Annotation 3](assets/annotation-3.jpg)
 
+##### Auto Annotations via Gallery
+
+Another method for running auto-annotations is to utilize the propagation feature in the gallery.
+
+Start by enabling an AI Assisted Ground Truth server by navigating to the *Cloud Instances* under the tool options.
+
+<figure markdown="span">
+![Cloud Instances](assets/cloud-instances.jpg){ align=center }
+<figcaption>Cloud Instances</figcaption>
+</figure>
+
+Start and launch a new server to host the auto-segmentation backend.
+
+<figure markdown="span">
+![Start a Server](assets/launch-ai-server.jpg){ align=center }
+<figcaption>Start a Server</figcaption>
+</figure>
+
+Next navigate back to the [dataset gallery](#viewing-datasets) and enable edit mode.
+
+<figure markdown="span">
+![Select the Video Segment Tool](assets/video-segment-tool.jpg){ align=center }
+<figcaption>Select the Video Segment Tool</figcaption>
+</figure>
+
+Click on the Video Segment Tool as indicated in red above. Next click the "Initialize State". This will load the indicated starting frame (current) to the stop frame (end) to SAM-2 for tracking the object across these frames for auto annotations. 
+
+<figure markdown="span">
+![Initialize the Video State](assets/video-initialize-state.jpg){ align=center }
+<figcaption>Initialize the Video State</figcaption>
+</figure>
+
+Once the state has been initialized, additional options will be provided to allow the user to provide prompts to SAM for propagation. Start by selecting the box tool as indicated in red. This will allow the user to draw bounding box prompts to the initial annotation for propagation.
+
+<figure markdown="span">
+![Select the Box Tool](assets/video-box-tool.jpg){ align=center }
+<figcaption>Select the Box Tool</figcaption>
+</figure>
+
+Now draw a bounding box prompt (white) around the object to annotate. In this case the person on the frame will be annotated. Once the bounding box is drawn, the segmentation mask will be drawn and the associated bounding box for the mask (yellow). Next click on "Propagate" to propagate this annotation (mask and bounding box) across frames using SAM-2 tracking and propagation. 
+
+<figure markdown="span">
+![Initial Annotation](assets/video-box-prompt.jpg){ align=center }
+<figcaption>Initial Annotation</figcaption>
+</figure>
+
+This will start the propagation progress across the frames specified.
+
+<figure markdown="span">
+![Propagation Progress](assets/video-propagation-progress.jpg){ align=center }
+<figcaption>Propagation Progress</figcaption>
+</figure>
+
+Once the propagation is completed, click "Save Pending Segmentations" to save the propagated annotations. 
+
+<figure markdown="span">
+![Save Pending Segmentations](assets/video-save-pending-segmentations.jpg){ align=center }
+<figcaption>Save Pending Segmentations</figcaption>
+</figure>
+
+For cases where the object exits and then re-enters the frame, the object might not be tracked properly. Repeat the steps as necessary to annotate objects that were missed.
+
+<figure markdown="span">
+![Repeat Propagation](assets/video-repeat-propagation.jpg){ align=center }
+<figcaption>Repeat Propagation</figcaption>
+</figure>
+
+A completed propagation will show the annotations with masks and bounding boxes for subsequent frames as follows.
+
+| Annotation 1             | Annotation 2           | Annotation 3           |
+|--------------------------|------------------------|------------------------|
+| ![YZ](assets/video-annotation-1.jpg) | ![XY](assets/video-annotation-2.jpg) | ![Positive Shift](assets/video-annotation-3.jpg) |
 
 ##### Audit 2D Annotations
 
@@ -156,7 +228,7 @@ Start and launch a new server to host the auto-segmentation backend.
 <figcaption>Start a Server</figcaption>
 </figure>
 
-Navigate back to the dataset and enable edit mode.
+Navigate back to the [dataset gallery](#viewing-datasets) and enable edit mode.
 
 <figure markdown="span">
 ![Edit Mode](assets/edit-mode.jpg){ align=center }

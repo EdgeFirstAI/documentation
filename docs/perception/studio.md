@@ -26,7 +26,7 @@ Once installed you can confirm you can communicate with the EdgeFirst Studio Ser
 
 ```
 $ edgefirst-client version
-edgefirst-client 1.3.3
+EdgeFirst Studio Server: 3.7.3-f0b4eee Client: 1.3.3
 ```
 
 ## Authentication

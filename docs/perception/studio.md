@@ -1,10 +1,9 @@
 # Studio Client
-The EdgeFirst Studio Client, `edgefirst-client`, provides an API and command-line interface (CLI) into the EdgeFirst Studio Server.  This client provides programmatic and command-line access to many of the features of the EdgeFirst Studio.  
+The EdgeFirst Studio Client, `edgefirst-client`, provides an API and command-line interface (CLI) into the [EdgeFirst Studio](../studio/index.md).  This client provides programmatic and command-line access to many of the features of the EdgeFirst Studio, specifically related to the upload of MCAP file into [snapshots](../studio/snapshots.md) and snapshot conversion or *restoration* into datasets. The commands below will mirror the UI actions described in the snapshot walkthrough linked above.
 
-This page describes the command-line interface, the API is documented under the Developer Guide.
+This page describes the command-line interface, the [Bridge In API](../studio/dataio.md) is documented under the [EdgeFirst Studio documentation](../studio/index.md).
 
 A summary of the core features is listed below:
-
 - Project List & Search
 - Dataset List & Search & Export
 - Annotations Listing & Export to JSON and Arrow
@@ -50,16 +49,16 @@ $ edgefirst-client token
 eyJhbGciOiJIUzI1NiIsInR5cCI6IkpX...
 ```
 ## Dataset Preparation
-Once data is been recorder by using the WebUI interface and we have access to the mcap files, it is very simple to upload the files into a project. The next step we have to do is to Create an Snapshot and then restored it as a Dataset (optionally using AGTG for auto annotate the images)
+Once data is been recorded using the [MCAP Recording Service](../platforms/recording.md) of the Raivin, and we have access to the mcap files, it is very simple to upload the files into a project. The next step we have to do is to create an snapshot and then restored it as a dataset (optionally using AGTG for auto annotate the images).
 
 ### Create an Snapshot
-To create an snapshot locate the folder with the mcaps and run the following command:
+To create an snapshot, locate the folder with the MCAP files and run the following command:
 
 ```shell
 $ edgefirst-client create-snapshot path
 [SNAPSHOT_ID] status: Name of the folder
 ```
-where `path` is the path to the folder containing the mcap files. Notice that the snapshot can only be restored if `status` is `available` (keyword after the `[ID]`, `status` can also be `unavailable` if any error happens).
+where `path` is the path to the folder containing the MCAP files - refer to the [MCAP Recording page](../platforms/recording.md) for more information. Notice that the snapshot can only be restored if `status` is `available` (keyword after the `[ID]`, `status` can also be `unavailable` if any error happens).
 
 This command and its successful output would looks as follows:
 ```shell

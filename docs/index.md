@@ -104,10 +104,9 @@ Otherwise, the following links will provide additional information for user onbo
 * [Command-Line Interface: Using the EdgeFirst Studio Middleware](getting_started/perception.md)
 * [EdgeFirst Platforms: Setup and Boot Guide](getting_started/platforms.md)
 
-
 #### Workflows
 
-Edgefirst Studio provides specific workflows tailored towards specific user personas depending on the hardware requirements and resources available to the user.
+Edgefirst Studio provides specific workflows tailored towards various user personas depending on the hardware requirements and resources available to the user.
 
 <div style="text-align: center;">
     <iframe width="560" height="315" src="https://www.youtube.com/embed/MmoDCXj72jk?si=I8gTw2VCtcts69ks" title="EdgeFirst Studio Overview" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
@@ -115,15 +114,11 @@ Edgefirst Studio provides specific workflows tailored towards specific user pers
 
 1. [Web-Based Workflow](getting_started/web.md)
 
-    This workflow is intended for users with a personal computer and a device with a camera with access to a web browser. The examples shown in this workflow will be from a Windows computer and an Android phone for recording images. To proceed to this workflow, click on the link above.
+    This workflow is intended for users with a personal computer and a device with a camera with access to wifi and a web browser. The examples shown in this workflow will be from a Windows computer and an Android phone for recording images. To proceed to this workflow, click on the link above.
 
-2. [Maivin Workflow](getting_started/workflows.md)
+2. [EdgeFirst Platform Workflow](getting_started/workflows.md)
 
-    This workflow is intended for users with a personal computer and a Maivin platform with access to a web browser. To proceed to this workflow, click on the link above.
-
-3. Raivin Workflow
-
-    TBA.
+    This workflow is intended for users with a personal computer with access to wifi and a web browser and a Maivin or a Raivin platform. To proceed to this workflow, click on the link above.
 
 
 [signup]: #

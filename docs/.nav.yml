@@ -9,7 +9,7 @@ nav:
       - getting_started/perception.md
       - getting_started/platforms.md
       - getting_started/web.md
-      # - getting_started/workflows.md
+      - getting_started/workflows.md
   - Studio:
       - studio/index.md
       - studio/navigation.md

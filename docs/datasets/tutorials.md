@@ -139,7 +139,7 @@ Next [navigate to the gallery](#viewing-datasets) of the dataset by clicking on 
 ##### Audit 2D Annotations
 
 This step requires verifying the outputs of the auto-annotations and to make
-corrections if necessary in order to have a proper fully annotated dataset.
+corrections to the 2D annotations if necessary in order to have a proper fully annotated dataset.
 
 Some annotations were missed from the auto-annotations and to correct those errors, we can utilize the auto-segment tool.
 Start by enabling an AI Assisted Ground Truth server by navigating to the *Cloud Instances* under the tool options.
@@ -191,7 +191,7 @@ Part of the audit process is to go over each sample in the dataset and correctin
 #### Audit 3D annotations
 
 This step requires verifying the outputs of the auto-annotations and to make
-corrections if necessary in order to have a proper fully annotated dataset.
+corrections to the 3D bounding box annotations if necessary in order to have a proper fully annotated dataset.
 
 <div style="text-align: center;">
     <iframe width="560" height="315" src="https://www.youtube.com/embed/j-75Q5-_dC0?start=1536&end=2144" title="Visualize Annotations" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>

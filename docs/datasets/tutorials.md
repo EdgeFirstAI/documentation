@@ -85,7 +85,7 @@ Once the MCAP file is selected, this would start the upload progress in EdgeFirs
 
 This tutorial shows how to annotate an uploaded MCAP recording shown in [Upload Recorded Data Tutorial](#upload-recorded-data-to-edgefirst-studio).
 
-##### Auto Annotations
+##### Auto Annotations via Snapshot
 
 To reduce the effort required by the user to annotate the data, part of this process is to run auto-annotations on the uploaded data. 
 
@@ -135,15 +135,83 @@ Next [navigate to the gallery](#viewing-datasets) of the dataset by clicking on 
 :------------------:|:------------------:|:------------------:
 ![Annotation 1](assets/annotation-1.jpg) | ![Annotation 2](assets/annotation-2.jpg) | ![Annotation 3](assets/annotation-3.jpg)
 
+##### Auto Annotations via Gallery
 
-##### Audit Annotations
+Another method for running auto-annotations is to utilize the propagation feature in the gallery.
+
+Start by enabling an AI Assisted Ground Truth server by navigating to the *Cloud Instances* under the tool options.
+
+<figure markdown="span">
+![Cloud Instances](assets/cloud-instances.jpg){ align=center }
+<figcaption>Cloud Instances</figcaption>
+</figure>
+
+Start and launch a new server to host the auto-segmentation backend.
+
+<figure markdown="span">
+![Start a Server](assets/launch-ai-server.jpg){ align=center }
+<figcaption>Start a Server</figcaption>
+</figure>
+
+Next navigate back to the [dataset gallery](#viewing-datasets) and enable edit mode.
+
+<figure markdown="span">
+![Select the Video Segment Tool](assets/video-segment-tool.jpg){ align=center }
+<figcaption>Select the Video Segment Tool</figcaption>
+</figure>
+
+Click on the Video Segment Tool as indicated in red above. Next click the "Initialize State". This will load the indicated starting frame (current) to the stop frame (end) to SAM-2 for tracking the object across these frames for auto annotations. 
+
+<figure markdown="span">
+![Initialize the Video State](assets/video-initialize-state.jpg){ align=center }
+<figcaption>Initialize the Video State</figcaption>
+</figure>
+
+Once the state has been initialized, additional options will be provided to allow the user to provide prompts to SAM for propagation. Start by selecting the box tool as indicated in red. This will allow the user to draw bounding box prompts to the initial annotation for propagation.
+
+<figure markdown="span">
+![Select the Box Tool](assets/video-box-tool.jpg){ align=center }
+<figcaption>Select the Box Tool</figcaption>
+</figure>
+
+Now draw a bounding box prompt (white) around the object to annotate. In this case the person on the frame will be annotated. Once the bounding box is drawn, the segmentation mask will be drawn and the associated bounding box for the mask (yellow). Next click on "Propagate" to propagate this annotation (mask and bounding box) across frames using SAM-2 tracking and propagation. 
+
+<figure markdown="span">
+![Initial Annotation](assets/video-box-prompt.jpg){ align=center }
+<figcaption>Initial Annotation</figcaption>
+</figure>
+
+This will start the propagation progress across the frames specified.
+
+<figure markdown="span">
+![Propagation Progress](assets/video-propagation-progress.jpg){ align=center }
+<figcaption>Propagation Progress</figcaption>
+</figure>
+
+Once the propagation is completed, click "Save Pending Segmentations" to save the propagated annotations. 
+
+<figure markdown="span">
+![Save Pending Segmentations](assets/video-save-pending-segmentations.jpg){ align=center }
+<figcaption>Save Pending Segmentations</figcaption>
+</figure>
+
+For cases where the object exits and then re-enters the frame, the object might not be tracked properly. Repeat the steps as necessary to annotate objects that were missed.
+
+<figure markdown="span">
+![Repeat Propagation](assets/video-repeat-propagation.jpg){ align=center }
+<figcaption>Repeat Propagation</figcaption>
+</figure>
+
+A completed propagation will show the annotations with masks and bounding boxes for subsequent frames as follows.
+
+| Annotation 1             | Annotation 2           | Annotation 3           |
+|--------------------------|------------------------|------------------------|
+| ![YZ](assets/video-annotation-1.jpg) | ![XY](assets/video-annotation-2.jpg) | ![Positive Shift](assets/video-annotation-3.jpg) |
+
+##### Audit 2D Annotations
 
 This step requires verifying the outputs of the auto-annotations and to make
-corrections if necessary in order to have a proper fully annotated dataset.
-
-<div style="text-align: center;">
-    <iframe width="560" height="315" src="https://www.youtube.com/embed/j-75Q5-_dC0?start=1536&end=2144" title="Visualize Annotations" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-</div>
+corrections to the 2D annotations if necessary in order to have a proper fully annotated dataset.
 
 Some annotations were missed from the auto-annotations and to correct those errors, we can utilize the auto-segment tool.
 Start by enabling an AI Assisted Ground Truth server by navigating to the *Cloud Instances* under the tool options.
@@ -160,7 +228,7 @@ Start and launch a new server to host the auto-segmentation backend.
 <figcaption>Start a Server</figcaption>
 </figure>
 
-Navigate back to the dataset and enable edit mode.
+Navigate back to the [dataset gallery](#viewing-datasets) and enable edit mode.
 
 <figure markdown="span">
 ![Edit Mode](assets/edit-mode.jpg){ align=center }
@@ -191,6 +259,97 @@ Click *SUBMIT* to accept the annotation.
 </figure>
 
 Part of the audit process is to go over each sample in the dataset and correcting any missed annotations or incorrect annotations.
+
+#### Audit 3D annotations
+
+This step requires verifying the outputs of the auto-annotations and to make
+corrections to the 3D bounding box annotations if necessary in order to have a proper fully annotated dataset.
+
+<div style="text-align: center;">
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/j-75Q5-_dC0?start=1536&end=2144" title="Visualize Annotations" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+</div>
+
+First [navigate to the gallery](#viewing-datasets) and enable edit mode.
+
+<figure markdown="span">
+![Edit Mode](assets/edit-mode-3d.jpg){ align=center }
+<figcaption>Edit Mode</figcaption>
+</figure>
+
+Ensure the point clouds and the 3D bounding box annotations are toggled visible.
+
+<figure markdown="span">
+![Visible 3D Annotations](assets/visible-3d-annotations.jpg){ align=center }
+<figcaption>Visible 3D Annotations</figcaption>
+</figure>
+
+##### Scale 3D Annotation
+
+The error in the current annotation is that the bounding box is not scaled properly. Click on the option on the left sidebar to enable 3D bounding box scaling as highlighted in red.
+
+<figure markdown="span">
+![Scale 3D Annotations](assets/scale-3d-box.jpg){ align=center }
+<figcaption>Scale 3D Annotations</figcaption>
+</figure>
+
+Click on the current 3D bounding box to scale and this will provide cursors to scale the 3D bounding box in the 3-axis.
+
+<figure markdown="span">
+![Scaling 3D Annotations](assets/scale-3d-box-axis.jpg){ align=center }
+<figcaption>Scaling 3D Annotations</figcaption>
+</figure>
+
+The 3D bounding box was adjusted with proper scaling to the LiDAR point clouds of the object.
+
+| Scaled YZ Plane             | Scaled XY Plane           | Scaled XZ             |
+|-----------------------------|---------------------------|-----------------------|
+| ![YZ](assets/box-3d-scaleyz.jpg) | ![XY](assets/box-3d-scalexy.jpg) | ![Positive Shift](assets/box-3d-scalexz.jpg) |
+
+##### Translate 3D Annotation
+
+Next the adjusted 3D bounding box needs to be properly translated. Click on the option on the left sidebar to enable 3D bounding box translation as highlighted in red.
+
+<figure markdown="span">
+![Translate 3D Annotations](assets/translate-3d-box.jpg){ align=center }
+<figcaption>Translate 3D Annotations</figcaption>
+</figure>
+
+Similar to the workflow as scaling the 3D bounding boxes, move the three cursors for each axis to translate the bounding box for each axis.
+
+| Translate YZ Plane          | Translate XY Plane        | Translate XZ          |
+|-----------------------------|---------------------------|-----------------------|
+| ![YZ](assets/box-3d-translateyz.jpg) | ![XY](assets/box-3d-translatexy.jpg) | ![Positive Shift](assets/box-3d-translatexz.jpg) |
+
+
+Once the 3D bounding box annotation is properly oriented, click "SUBMIT" to save the changes.
+
+<figure markdown="span">
+![Submit 3D Annotations](assets/submit-audit-3d-boxes.jpg){ align=center }
+<figcaption>Submit 3D Annotations</figcaption>
+</figure>
+
+##### Add 3D Annotation
+
+To add a missing 3D bounding box, click on the option on the left sidebar to add a new 3D bounding box annotation as highlighted in red.
+
+<figure markdown="span">
+![Add 3D Annotations](assets/add-3d-box.jpg){ align=center }
+<figcaption>Add 3D Annotations</figcaption>
+</figure>
+
+Now click on the grid to add a new 3D bounding box on the position of the click.
+
+<figure markdown="span">
+![Added 3D Annotations](assets/added-3d-box.jpg){ align=center }
+<figcaption>Added 3D Annotations</figcaption>
+</figure>
+
+This newly added 3D bounding box may not be scaled or translated properly. Follow instructions for [scaling](#scale-3d-annotation) and [translating](#translate-3d-annotation) a 3D bounding box to properly center the bounding box around the LiDAR point cloud as shown below. Once the annotation is properly scaled and translated, click "SUBMIT" to save the annotation.
+
+<figure markdown="span">
+![Submit 3D Annotations](assets/submit-added-3d-box.jpg){ align=center }
+<figcaption>Submit 3D Annotations</figcaption>
+</figure>
 
 ## Viewing Datasets
 

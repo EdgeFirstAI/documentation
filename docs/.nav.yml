@@ -3,11 +3,13 @@ nav:
   - Getting Started:
       - index.md
       - getting_started/studio.md
-      - getting_started/workflows.md
+      # - getting_started/pricing.md
       - getting_started/datasets.md
       - getting_started/models.md
       - getting_started/perception.md
       - getting_started/platforms.md
+      # - getting_started/web.md
+      - getting_started/workflows.md
   - Studio:
       - studio/index.md
       - studio/navigation.md

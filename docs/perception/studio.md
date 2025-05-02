@@ -4,6 +4,7 @@ The EdgeFirst Studio Client, `edgefirst-client`, provides an API and command-lin
 This page describes the command-line interface, the [Bridge In API](../studio/dataio.md) is documented under the [EdgeFirst Studio documentation](../studio/index.md).
 
 A summary of the core features is listed below:
+
 - Project List & Search
 - Dataset List & Search & Export
 - Annotations Listing & Export to JSON and Arrow
@@ -15,7 +16,9 @@ A summary of the core features is listed below:
 ## Installation
 The Python package includes the command-line application and is an easy way to install the binary.
 
-`pip install edgefirst-client`
+```shell
+pip install edgefirst-client
+```
 
 !!! tip "Included with EdgeFirst Middleware"
 
@@ -29,7 +32,7 @@ EdgeFirst Studio Server: 3.7.3-f0b4eee Client: 1.3.3
 ```
 
 ## Authentication
-Authentication to the EdgeFirst Studio Server is done using the standard login you would use from the web interface.  To avoid having to type your username and password each time an authentication token can be generated and saved using the `login` command.
+Authentication to the EdgeFirst Studio Server is done using the standard login you would use from the web interface.  To avoid having to type your username and password each time, an authentication token can be generated and saved using the `login` command.
 
 ```shell
 $ edgefirst-client login
@@ -43,76 +46,94 @@ To query the token, use the following command:
 ```shell
 edgefirst-client token
 ```
-This should produce output similiar to:
+This should produce an output similiar to:
 ```shell
 $ edgefirst-client token
 eyJhbGciOiJIUzI1NiIsInR5cCI6IkpX...
 ```
+
 ## Dataset Preparation
-Once data is been recorded using the [MCAP Recording Service](../platforms/recording.md) of the Raivin, and we have access to the mcap files, it is very simple to upload the files into a project. The next step we have to do is to create an snapshot and then restored it as a dataset (optionally using AGTG for auto annotate the images).
+Once data has been recorded using the [MCAP Recording Service](../platforms/recording.md) of the Raivin, and we have access to the mcap files, it is very simple to upload the files into a project. The next step we have to do is to create a snapshot and then restore it as a dataset (optionally using AGTG for auto annotation of the images).
 
-### Create an Snapshot
-To create an snapshot, locate the folder with the MCAP files and run the following command:
+### Create a Snapshot
+To create a snapshot, locate the folder with the MCAP files and run the following command:
 
 ```shell
-$ edgefirst-client create-snapshot path
-[SNAPSHOT_ID] status: Name of the folder
+$ edgefirst-client create-snapshot <path>
+[<SNAPSHOT_ID>] <status>: <Name of the folder or file specified>
 ```
-where `path` is the path to the folder containing the MCAP files - refer to the [MCAP Recording page](../platforms/recording.md) for more information. Notice that the snapshot can only be restored if `status` is `available` (keyword after the `[ID]`, `status` can also be `unavailable` if any error happens).
+where `path` is the path to the folder containing the MCAP files or the path to the mcap file. Refer to the [MCAP Recording page](../platforms/recording.md) for more information. Notice that the snapshot can only be restored if `status` is `available` (keyword after the `[ID]`, `status` can also be `unavailable` if any error occurs).
 
-This command and its successful output would looks as follows:
+This command with a successful output would looks as follows:
 ```shell
-$ edgefirst-client create-snapshot /media/DATA/verdin-imx8mp-07130049_2025_04_09_12_44_12.mcap
-[365] available: verdin-imx8mp-07130049_2025_04_09_12_44_12.mcap
+$ edgefirst-client create-snapshot /media/DATA/verdin-imx8mp-15141091_2025_01_31_14_21_58.mcap
+[1816] available: verdin-imx8mp-15141091_2025_01_31_14_21_58.mcap
 ```
+
+The created snapshot will be listed under the "Data Snapshots" page in EdgeFirst Studio
+
+<figure markdown="span">
+![Created Snapshot](assets/studio-created-snapshot.jpg){ align=center }
+<figcaption>Created Snapshot</figcaption>
+</figure>
 
 Also, available snapshots can be listed by calling:
 
 ```shell
 $ edgefirst-client snapshots
-[SNAPSHOT_ID] available: Snapshot Name (folder name from above)
-[OTHER_ID] unavailable: Snapshot Name (a different name)
+[<SNAPSHOT_ID>] available: <Snapshot Name (folder name from above)>
+[<OTHER_ID>] unavailable: <Snapshot Name (a different name)>
 ```
 Example output would look like:
 ```shell
 $ edgefirst-client snapshots
-[331] available: dataset_cards
-[364] available: verdin-imx8mp-07130049_2025_04_04_18_20_50.mcap
-[365] available: verdin-imx8mp-07130049_2025_04_09_12_44_12.mcap
+[1651] available: verdin-imx8mp-15140753_2025_04_02_16_54_35
+[1816] available: verdin-imx8mp-15141091_2025_01_31_14_21_58.mcap
 ```
+
+Make a note of the snapshot ID that was created. In this case, the snapshot ID is `1816`.
+
 ### Restore Snapshots
 !!! warning
     Restoring snapshots to datasets will deduct funds from your EdgeFirst Studios account.
 
-To restore any snapshot as a dataset, we need to get the project ID where the dataset is going to be stored:
+To restore any snapshot as a dataset, we need to get the project ID where the dataset is going to be stored. Available projects can be listed by calling:
 
 ```shell
 $ edgefirst-client projects
-[PROJECT_ID] ProjectName: Description
+[<PROJECT_ID>] <Project Name>: <Project Description>
 ```
 For example:
 ```shell
 $ edgefirst-client projects
-[597] Sample Datasets: EdgeFirst Studio Sample Datasets.  This project includes datasets, trained models ready for deployment and with full validation results.
-
-The datasets are read-only but can be copied to user projects to modify and re-train.
-[760] RW Test Project: A place for read-write datasets and actions
+[265] Sample Project: Sample project contains a collection of datasets to help users get started on the platform.
+[628] Object Detection: This project trains and deploys Vision models for detecting objects. 
 ```
-Now that we have the project ID `760` and the snapshot ID `365`, we can restore the snapshot using the `restore-snapshot` command.
+
+Make a note of the project ID where the dataset will be stored. In this case the project ID is `628`.
+
+Now that we have the project ID `628` and the snapshot ID `1816`, we can restore the snapshot using the `restore-snapshot` command.
 ```shell
-$ edgefirst-client restore-snapshot PROJECT_ID SNAPSHOT_ID --dataset-name "Dataset Name" --dataset-description "Dataset Description"
+$ edgefirst-client restore-snapshot <PROJECT_ID> <SNAPSHOT_ID> --dataset-name "Dataset Name" --dataset-description "Dataset Description"
 ```
 For example:
 ```shell
-edgefirst-client restore-snapshot 760 365 --dataset-name "Upload from 07130049" --dataset-description "This is a dataset generated from Raivin 07130049 on April 9, 2025"
-[task: 3103] Upload from 07130049: verdin-imx8mp-07130049_2025_04_09_12_44_12.mcap
+edgefirst-client restore-snapshot 628 1816 --dataset-name "Upload from verdin-imx8mp-15141091" --dataset-description "This is a dataset generated from Raivin verdin-imx8mp-15141091 on January 31, 2025"
+[task: 3499] Upload from verdin-imx8mp-15141091: verdin-imx8mp-15141091_2025_01_31_14_21_58.mcap
 ```
 The command above will spin up some cloud services to transform input data into datasets and output a task ID that is running on the services to restore the snapshot.
 
-We can use the `datasets` command to confirm that the dataset was uploaded to the project with ID `760`:
-```bash
-$ edgefirst-client datasets 760
-[3004] Upload from 07130049: This is a dataset generated from Raivin 07130049 on April 9, 2025
+The dataset upload process will be shown in EdgeFirst Studio.
+
+<figure markdown="span">
+![Restoring Snapshot](assets/studio-restored-dataset.jpg){ align=center }
+<figcaption>Restoring Snapshot</figcaption>
+</figure>
+
+We can use the `datasets` command to confirm that the dataset was uploaded to the project with ID `628`:
+```shell
+$ edgefirst-client datasets 628
+[2080] Upload from verdin-imx8mp-15141091: This is a dataset generated from Raivin verdin-imx8mp-15141091 on January 31, 2025
 ```
 
 The `restore-snapshot` command provides several options to customize the dataset creation process:
@@ -124,31 +145,34 @@ The `restore-snapshot` command provides several options to customize the dataset
 - `--dataset-description`: Provides a description for the dataset
 
 !!! warning
-    Automated depth generation and labelling services will incur additional costs on top of snapshot restoration.
+    Automated depth generation and labelling services will incur additional costs on top of the snapshot restoration.
 
 For example, to create a dataset with automatic depth maps and annotations for `person` and `car` objects, run the following command:
 
 ```shell
-$ edgefirst-client restore-snapshot PROJECT_ID SNAPSHOT_ID --dataset-name "Dataset Name" --dataset-description "Dataset Description" --autodepth --autolabel person car
+$ edgefirst-client restore-snapshot <PROJECT_ID> <SNAPSHOT_ID> --dataset-name "Dataset Name" --dataset-description "Dataset Description" --autodepth --autolabel "person car"
+```
+For example:
+```shell
+$ edgefirst-client restore-snapshot 628 1816 --dataset-name "Upload from verdin-imx8mp-15141091 with AGTG" --dataset-description "This is a dataset generated from Raivin verdin-imx8mp-15141091 on January 31, 2025 with depth map generation and automated labelling for the class person and car." --autolabel "person car" --autodepth
 ```
 
-With example output:
-```shell
-$ edgefirst-client restore-snapshot 760 365 --dataset-name "Upload from 07130049 with
-DT and AGTG" --dataset-description "This is a dataset generated from Raivin 07130049 on April 9, 2025 with automated dep
-th generation and labelling" --autolabel person --autodepth
-[task: 3104] Upload from 07130049 with DT and AGTG: verdin-imx8mp-07130049_2025_04_09_12_44_12.mcap
-```
+The `--autolabel` parameter currently supports [COCO labels](../datasets/zoo.md#coco-labels). We can list any class found in the COCO labels list to auto annotate these classes. In EdgeFirst Studio, we can [visualize](../datasets/tutorials.md#viewing-datasets) the results of the auto-annotations when restoring the snapshot. In this example, "person" and "car" are being shown as specified from the command above.
+
+<figure markdown="span">
+![Restore Snapshot Results](assets/restore-snapshot-results.jpg){ align=center }
+<figcaption>Restore Snapshot Results</figcaption>
+</figure>
 
 !!! warning
 
-    Downloading datasets from EdgeFirst Studioes using `edgefirst-client` is currently not supported because it requires AWS Credentials.
+    Downloading datasets from EdgeFirst Studios using `edgefirst-client` is currently not supported because it requires AWS Credentials.
 
 ## Command Reference
-The EdgeFirst Studio Client provides a comprehensive set of commands for interacting with the EdgeFirst Studio Server. Here's a detailed explanation of the available commands:
+The EdgeFirst Studio Client provides a comprehensive set of commands for interacting with EdgeFirst Studio. Here's a detailed explanation of the available commands:
 
 ### Authentication Commands
-- `version`: Displays the current Deep View Enterprise Server version
+- `version`: Displays the current EdgeFirst Studio Server version
   ```shell
   $ edgefirst-client version
   edgefirst-client 1.3.3
@@ -210,7 +234,7 @@ A single dataset is allowed to have multiple annotations sets. That is the reaso
   [1] Default Annotation Set
   [2] Validation Set
   ```
-- `annotations`: Retrieves annotations for a dataset and annotation set, filtered by types. Types could be any of the following options: `box2d`, `box3d`, `segmentation`. By default this command will return a json file. However, the user can always return a Arrow dataframe by adding the `--arrow` 
+- `annotations`: Retrieves annotations for a dataset and annotation set, filtered by types. Types could be any of the following options: `box2d`, `box3d`, `segmentation`. By default this command will return a JSON file. However, the user can always return an Arrow dataframe by adding the `--arrow` 
   ```shell
   $ edgefirst-client annotations 32 --types box2d
   ...

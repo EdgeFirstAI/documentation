@@ -1,23 +1,15 @@
-# EdgeFirst Studio: From Start to Deployment
+# EdgeFirst Platform Workflow
 
-This page will walk you through a high-level overview of getting started with EdgeFirst Studio by introducing the concepts used in Studio and their corresponding UI elements and then using those concepts and elements as part of a high-level workflow from collecting and curating datasets to training, validating, and deploying EdgeFirst models.
+This page will walk you through a high-level overview of EdgeFirst Studio by introducing a high-level workflow from collecting and curating datasets using an [EdgeFirst Platform](../platforms/index.md) to training, validating, and deploying EdgeFirst models.
 
-<div style="text-align: center;">
-    <iframe width="560" height="315" src="https://www.youtube.com/embed/MmoDCXj72jk?si=I8gTw2VCtcts69ks" title="EdgeFirst Studio Overview" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-</div>
+This workflow follows from the steps in the [Getting Started](../index.md#edgefirst-studio-quickstart) which requires the user to have signed up to EdgeFirst Studio, logged in to EdgeFirst Studio, and created their first project.
 
-## Hands-on Workflow
-
-This workflow follows from the steps in the [Getting Started](../index.md#edgefirst-studio-quickstart) which requires the user to have signed up for
-EdgeFirst Studio, logged in to EdgeFirst Studio, and created their first project.
-
-This workflow is a tutorial for showing the process of recording data from scratch, annotating data
-in EdgeFirst Studio, training and validating models, and then finally deploying 
-models in an EdgeFirst Platform. 
+This workflow is a tutorial for showing the process of recording data from scratch using an EdgeFirst Platform, annotating data
+in EdgeFirst Studio from a PC, training and validating models, and then finally deploying models in an EdgeFirst Platform. 
 
 !!! note
     This tutorial will provide examples on training, validating, and deploying
-    *Vision models* described in [ModelPack Tutorials](models.md#modelpack-tutorials).
+    *Vision models* described in [ModelPack Tutorials](models.md#modelpack-tutorials). For tutorials on training, validating, and deploying *Fusion models*, visit [Sensor Fusion Tutorials](models.md#sensor-fusion-tutorials).
 
 If you have an EdgeFirst Platform, please proceed to step 1. Otherwise, proceed to step 5 for using a provided public dataset. However, feel free to follow along all the steps laid out to become familiar with the workflow.
 

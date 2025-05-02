@@ -486,29 +486,6 @@
   
   
     <li class="md-nav__item">
-      <a href="../../getting_started/workflows/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    EdgeFirst Studio: From Start to Deployment
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
       <a href="../../getting_started/datasets/" class="md-nav__link">
         
   
@@ -584,6 +561,29 @@
   
   <span class="md-ellipsis">
     EdgeFirst Platforms: Setup and Boot Guide
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../getting_started/workflows/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    EdgeFirst Platform Workflow
     
   </span>
   
@@ -1653,6 +1653,19 @@
         
       
       
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    Publishing
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <a href="./" class="md-nav__link md-nav__link--active">
         
   
@@ -1664,6 +1677,61 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#pre-requisites" class="md-nav__link">
+    <span class="md-ellipsis">
+      Pre-requisites
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#method-1-download-the-mcap-from-the-raivin-and-publish-to-studio" class="md-nav__link">
+    <span class="md-ellipsis">
+      Method 1: Download the MCAP from the Raivin and Publish to Studio
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#method-2-publish-the-mcap-directly-using-the-edgefirst-client" class="md-nav__link">
+    <span class="md-ellipsis">
+      Method 2: Publish the MCAP directly using the EdgeFirst Client
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#next-steps" class="md-nav__link">
+    <span class="md-ellipsis">
+      Next Steps
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
       
     </li>
   
@@ -3253,6 +3321,50 @@
     
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#pre-requisites" class="md-nav__link">
+    <span class="md-ellipsis">
+      Pre-requisites
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#method-1-download-the-mcap-from-the-raivin-and-publish-to-studio" class="md-nav__link">
+    <span class="md-ellipsis">
+      Method 1: Download the MCAP from the Raivin and Publish to Studio
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#method-2-publish-the-mcap-directly-using-the-edgefirst-client" class="md-nav__link">
+    <span class="md-ellipsis">
+      Method 2: Publish the MCAP directly using the EdgeFirst Client
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#next-steps" class="md-nav__link">
+    <span class="md-ellipsis">
+      Next Steps
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -3268,6 +3380,73 @@
 
 
 <h1 id="publishing">Publishing</h1>
+<p>Once you have a MCAP created from the <a href="../recording/">Recording Service</a>, you can upload it as a <a href="../../datasets/">dataset</a> to <a href="../../studio/">EdgeFirst Studios</a> to <a href="../../studio/agtg/">auto-annotation</a> and <a href="../../models/">train additional models</a> from.  There are two methods to upload the MCAP to EdgeFirst Studio:  download the MCAP from Raivin and use EdgeFirst Studio to create a snapshot, or use the <a href="../../perception/studio/">EdgeFirst studio client</a> on the Raivin device to directly upload the file from the Raivin to the Studio as a snapshot.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Uploading snapshots should not deduct funds from your EdgeFirst Studio account. However, creating datasets from snapshots, called <em>restoring</em> snapshots, will absolutely incur costs. </p>
+</div>
+<p>For the examples below, we will use the Raivin with a hostname of <code>verdin-imx8mp-07130049</code> with a MCAP save directory of <code>/media/DATA</code> and the MCAP file to copy named <code>verdin-imx8mp-07130049_2025_04_09_12_44_12.mcap</code>. Here is the screenshot of the MCAP Recording page of such a device:</p>
+<figure>
+<img align="center" alt="Recording Service" src="../../assets/Publishing-example.png" /><br />
+<figcaption>Example MCAP Recorder Page</figcaption>
+</figure>
+<h2 id="pre-requisites">Pre-requisites</h2>
+<p>It is assumed you have followed the steps in the <a href="../recording/">Recording Service page</a> and have an MCAP file as well as working knowledge of the page.</p>
+<p>You must have followed the steps in the <a href="../../#edgefirst-studio-quickstart">EdgeFirst Studio Quick Start</a> to create a user account, login to the account, and create an initial project. You will need the username and password for both publishing methods.</p>
+<p>Most of the workflows below require working knowledge with <a href="../ssh/">SSH and command-line interfaces</a>. It is recommended that you read and follow the steps on that page to confirm SSH connectivity with the Raivin.</p>
+<h2 id="method-1-download-the-mcap-from-the-raivin-and-publish-to-studio">Method 1: Download the MCAP from the Raivin and Publish to Studio</h2>
+<p>The first method is to download the MCAP from the Raivin.  This can be accomplished in two ways:<br />
+- use the <a href="../recording/#downloading-and-analysis">download</a> button for the MCAP on the Recording Service page to download the MCAP to your PC via the Raivin's WebUI.<br />
+- use <a href="../ssh/#secure-copy">SCP</a> to download the file to your PC via the command-line interface. </p>
+<p>For our example above, you would click the second green "download" button from the top or run the following command on your PC:
+<div class="highlight"><pre><span></span><code>scp<span class="w"> </span>torizon@verdin-imx8mp-07130049:/media/DATA/verdin-imx8mp-07130049_2025_04_09_12_44_12.mcap<span class="w"> </span>.
+</code></pre></div></p>
+<p>Once the MCAP file is downloaded to your PC, you can login to EdgeFirst Studio and use the <a href="../../studio/snapshots/">EdgeFist Studio Snapshot page</a> to upload the MCAP file to Studio.</p>
+<h2 id="method-2-publish-the-mcap-directly-using-the-edgefirst-client">Method 2: Publish the MCAP directly using the EdgeFirst Client</h2>
+<p>The second method is use the <a href="../../perception/studio/">EdgeFirst studio client</a> on the device to directly upload the MCAP to EdgeFirst Studios as a snapshot. This requires that you SSH into the device and run commands on the Linux shell of the Raivin.</p>
+<p>First, you would need to use the SSH client to log into the device:
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>ssh<span class="w"> </span>torizon@verdin-imx8mp-07130049
+Last<span class="w"> </span>login:<span class="w"> </span>Fri<span class="w"> </span>Apr<span class="w"> </span><span class="m">25</span><span class="w"> </span><span class="m">15</span>:29:08<span class="w"> </span><span class="m">2025</span><span class="w"> </span>from<span class="w"> </span><span class="m">10</span>.10.20.3
+torizon@verdin-imx8mp-07130049:~$
+</code></pre></div>
+Confirm that the version of your EdgeFirst Client is 1.3.3 or higher:
+<div class="highlight"><pre><span></span><code>torizon@verdin-imx8mp-07130049:~$<span class="w"> </span>edgefirst-client<span class="w"> </span>-V
+edgefirst-client<span class="w"> </span><span class="m">1</span>.3.3
+torizon@verdin-imx8mp-07130049:~$
+</code></pre></div>
+From here, you should run a directory listing to see the files in the MCAP save directory:
+<div class="highlight"><pre><span></span><code>torizon@verdin-imx8mp-07130049:~$<span class="w"> </span>ls<span class="w"> </span>-l<span class="w"> </span>/media/DATA/
+total<span class="w"> </span><span class="m">496109120</span>
+-rw-r--r--<span class="w"> </span><span class="m">1</span><span class="w"> </span>torizon<span class="w"> </span>torizon<span class="w">     </span><span class="m">14445456</span><span class="w"> </span>Apr<span class="w">  </span><span class="m">4</span><span class="w"> </span><span class="m">18</span>:20<span class="w"> </span>verdin-imx8mp-07130049_2025_04_04_18_20_50.mcap
+-rw-r--r--<span class="w"> </span><span class="m">1</span><span class="w"> </span>torizon<span class="w"> </span>torizon<span class="w">    </span><span class="m">228244643</span><span class="w"> </span>Apr<span class="w">  </span><span class="m">8</span><span class="w"> </span><span class="m">12</span>:53<span class="w"> </span>verdin-imx8mp-07130049_2025_04_08_12_51_19.mcap
+-rw-r--r--<span class="w"> </span><span class="m">1</span><span class="w"> </span>torizon<span class="w"> </span>torizon<span class="w">     </span><span class="m">66462206</span><span class="w"> </span>Apr<span class="w">  </span><span class="m">9</span><span class="w"> </span><span class="m">12</span>:44<span class="w"> </span>verdin-imx8mp-07130049_2025_04_09_12_44_12.mcap
+-rw-r--r--<span class="w"> </span><span class="m">1</span><span class="w"> </span>torizon<span class="w"> </span>torizon<span class="w"> </span><span class="m">507706576896</span><span class="w"> </span>Apr<span class="w"> </span><span class="m">22</span><span class="w"> </span><span class="m">11</span>:28<span class="w"> </span>verdin-imx8mp-07130049_2025_04_18_01_24_06.mcap
+torizon@verdin-imx8mp-07130049:~$
+</code></pre></div>
+From here, we can run the EdgeFirst Client for the <code>/media/DATA/verdin-imx8mp-07130049_2025_04_09_12_44_12.mcap</code> file. Enter your username and password on the command-line in lieu of the <code>XXXXXXXX</code>.
+<div class="highlight"><pre><span></span><code>torizon@verdin-imx8mp-07130049:~$<span class="w"> </span>edgefirst-client<span class="w"> </span>--username<span class="w"> </span>XXXXXXXX<span class="w"> </span>--password<span class="w"> </span>XXXXXXXX<span class="w"> </span>create-snapshot<span class="w"> </span>/media/DATA/verdin-imx8mp-07130049_2025_04_09_12_44_12.mcap
+<span class="o">[</span><span class="m">365</span><span class="o">]</span><span class="w"> </span>available:<span class="w"> </span>verdin-imx8mp-07130049_2025_04_09_12_44_12.mcap
+torizon@verdin-imx8mp-07130049:~$
+</code></pre></div>
+The output line shows the the snapshot for the file was created, is available to be restored, and has snapshot ID of 365.  We can confirm that the snapshot is created by using the EdgeFirst client to list the snapshots.
+<div class="highlight"><pre><span></span><code>torizon@verdin-imx8mp-07130049:~$<span class="w"> </span>edgefirst-client<span class="w"> </span>--username<span class="w"> </span>XXXXXXXX<span class="w"> </span>--password<span class="w"> </span>XXXXXXXX<span class="w"> </span>snapshots
+<span class="o">[</span><span class="m">331</span><span class="o">]</span><span class="w"> </span>available:<span class="w"> </span>dataset_cards
+<span class="o">[</span><span class="m">364</span><span class="o">]</span><span class="w"> </span>available:<span class="w"> </span>verdin-imx8mp-07130049_2025_04_04_18_20_50.mcap
+<span class="o">[</span><span class="m">365</span><span class="o">]</span><span class="w"> </span>available:<span class="w"> </span>verdin-imx8mp-07130049_2025_04_09_12_44_12.mcap
+torizon@verdin-imx8mp-07130049:~$
+</code></pre></div>
+We can see that the newly created snapshot is in this list.</p>
+<p>We can also confirm the snapshot on the EdgeFirst Studio Snapshot screen.</p>
+<figure>
+<img align="center" alt="Recording Service" src="../../assets/Publishing-studioSnapshots.png" /><br />
+<figcaption>EdgeFirst Studio Snapshots</figcaption>
+</figure>
+<h2 id="next-steps">Next Steps</h2>
+<p>Once the MCAP is uploaded as a snapshot to EdgeFirst Studio, you can <a href="../../studio/snapshots/#restore-snapshot">restore the snapshot</a> into the initial project you created as part of the <a href="../">Studio Quickstart</a>.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Restoring a snapshot into a dataset will accrue costs from your EdgeFirst Studio account.</p>
+</div>
 
 
 

@@ -489,29 +489,6 @@
   
   
     <li class="md-nav__item">
-      <a href="getting_started/workflows/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    EdgeFirst Studio: From Start to Deployment
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
       <a href="getting_started/datasets/" class="md-nav__link">
         
   
@@ -587,6 +564,29 @@
   
   <span class="md-ellipsis">
     EdgeFirst Platforms: Setup and Boot Guide
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="getting_started/workflows/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    EdgeFirst Platform Workflow
     
   </span>
   
@@ -3265,9 +3265,9 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#sign-up" class="md-nav__link">
+  <a href="#sign-up-and-log-in" class="md-nav__link">
     <span class="md-ellipsis">
-      Sign Up
+      Sign Up and Log In
     </span>
   </a>
   
@@ -3279,6 +3279,30 @@
       Initial Steps
     </span>
   </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#next-steps" class="md-nav__link">
+    <span class="md-ellipsis">
+      Next Steps
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Next Steps">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#workflows" class="md-nav__link">
+    <span class="md-ellipsis">
+      Workflows
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
         
@@ -3341,7 +3365,7 @@ the <a href="platforms/quickstart/">EdgeFirst Platforms Quickstart</a> and then 
 </div>
 <h2 id="edgefirst-studio-quickstart">EdgeFirst Studio Quickstart</h2>
 <p>This section describes the steps for onboarding new users to EdgeFirst Studio by creating their account, logging into EdgeFirst Studio, and creating their first project. </p>
-<h3 id="sign-up">Sign Up</h3>
+<h3 id="sign-up-and-log-in">Sign Up and Log In</h3>
 <ol>
 <li>
 <p>If you haven't already created an EdgeFirst Studio Account, start by <a href="#">creating an account</a>. If you've already created an account, but you <a href="studio/access/#forgot-password">forget your password</a>, click on the link for instructions to reset your password.</p>
@@ -3383,14 +3407,14 @@ the <a href="platforms/quickstart/">EdgeFirst Platforms Quickstart</a> and then 
 <p>For now, let's start by creating your first project since this is required in future tutorials. You can create a new project by clicking on the "New Project" button on the top-right corner of the page.</p>
 <figure>
 <img align="center" alt="Create Project" src="assets/create-project.jpg" />
-<figcaption>The location of the "Create" button</figcaption>
+<figcaption>The location of the "New Project" button</figcaption>
 </figure>
 <p>Provide a name and a description of the project that reflects your goals.  In this example, the project will be named "Object Detection", which will be used in all future tutorials requiring a user-created project. Click "CREATE" to create your new project.</p>
 <figure>
 <img align="center" alt="Project Details" src="assets/create-project-fields.jpg" />
 <figcaption>Project Details</figcaption>
 </figure>
-<p>Your newly created project will be placed next to the public project named "Sample Project". This public project contains public datasets for users to become familiar with how datasets are managed in EdgeFirst Studio. </p>
+<p>Your newly created project will be placed next to the public project named "Sample Project". This public project contains public datasets for users to become familiar with <a href="getting_started/datasets/">how datasets are managed</a> in EdgeFirst Studio. </p>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
 <p>The "Sample Project" project is <strong>READ ONLY</strong>.  Significant Studios functionality will need write-access to a project and will fail when attempted to be run on this project!</p>
@@ -3399,15 +3423,32 @@ the <a href="platforms/quickstart/">EdgeFirst Platforms Quickstart</a> and then 
 <img align="center" alt="New Project" src="assets/new-project.jpg" />
 <figcaption>Both Projects</figcaption>
 </figure>
-<p>In this Quickstart guide, you have created your EdgeFirst Studio Account, logged in to EdgeFirst Studio, and created your very first project. The following links will provide additional tutorials for user onboarding in EdgeFirst Studio.</p>
+<p>In this Quickstart guide, you have created your EdgeFirst Studio Account, logged in to EdgeFirst Studio, and created your very first project. Proceed to the section below for a deeper dive into EdgeFirst Studio workflows. </p>
+<h3 id="next-steps">Next Steps</h3>
+<p>For these next steps, it is recommended for new users to be familiar with the concepts and UI elements in EdgeFirst Studio as described in the <a href="getting_started/studio/">EdgeFirst Studio: Overview</a>. Next, users are invited to follow along various workflows that are tailored towards various hardware requirements and resources available to the user. These workflows are described in the next section below.</p>
+<p>Otherwise, the following links will provide additional information for user onboarding in EdgeFirst Studio.</p>
 <ul>
-<li><a href="getting_started/studio/">EdgeFirst Studio: Overview</a></li>
-<li><a href="getting_started/workflows/">EdgeFirst Studio: From Start to Deployment</a></li>
 <li><a href="getting_started/datasets/">Dataset Management</a></li>
 <li><a href="getting_started/models/">Model Training, Validation, and Deployment</a></li>
 <li><a href="getting_started/perception/">Command-Line Interface: Using the EdgeFirst Studio Middleware</a></li>
 <li><a href="getting_started/platforms/">EdgeFirst Platforms: Setup and Boot Guide</a></li>
 </ul>
+<h4 id="workflows">Workflows</h4>
+<p>Edgefirst Studio provides specific workflows tailored towards various user personas depending on the hardware requirements and resources available to the user.</p>
+<div style="text-align: center;">
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/MmoDCXj72jk?si=I8gTw2VCtcts69ks" title="EdgeFirst Studio Overview" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+</div>
+
+<ol>
+<li>
+<p>Web-Based Workflow (<em>coming soon</em>)</p>
+<p>This workflow is intended for users with a personal computer and a device with a camera with access to Wifi and a web browser. The examples shown in this workflow will be from a Windows computer and an Android phone for recording images. To proceed to this workflow, click on the link above.</p>
+</li>
+<li>
+<p><a href="getting_started/workflows/">EdgeFirst Platform Workflow</a></p>
+<p>This workflow is intended for users with a personal computer with access to Wifi and a web browser and a Maivin or a Raivin platform. To proceed to this workflow, click on the link above.</p>
+</li>
+</ol>
 
 
 

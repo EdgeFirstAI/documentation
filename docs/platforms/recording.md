@@ -101,10 +101,10 @@ Flip the Enable/Disable switch to enable to enable the Recorder Service on boot.
      You can start and stop the Recording Service here as well as on the MCAP Recording Page by flipping the Start/Stop switch.
 
 ## Next Steps
-Now that you have your MCAP, there are many things you can do with it, such as:
-- Use [Foxglove Studio](./foxglove.md) to view the downloaded MCAP, especially with some [advanced Foxglove understanding](./advanced_foxglove.md)
-- Use the [Replay Service](./replay.md) to view the recorded MCAP on the device
-- [Publish the downloaded MCAP to Studio](./../studio/snapshots.md#upload-from-mcap-file)
+Now that you have your MCAP, there are many things you can do with it, such as:  
+- Use [Foxglove Studio](./foxglove.md) to view the downloaded MCAP, especially with some [advanced Foxglove understanding](./advanced_foxglove.md)  
+- Use the [Replay Service](./replay.md) to view the recorded MCAP on the device  
+- [Publish the MCAP to EdgeFirst Studio](./publishing.md)  
 
 [ros2]: https://www.ros.org/
 [mcap]: https://mcap.dev/

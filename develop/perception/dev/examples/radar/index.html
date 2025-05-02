@@ -26,7 +26,7 @@
     
     
       
-        <title>LIDAR Schema Example - EdgeFirst Studio Documentation</title>
+        <title>Radar Schema Example - EdgeFirst Studio Documentation</title>
       
     
     
@@ -80,7 +80,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#lidar-schema-example" class="md-skip">
+        <a href="#radar-schema-example" class="md-skip">
           Skip to content
         </a>
       
@@ -119,7 +119,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              LIDAR Schema Example
+              Radar Schema Example
             
           </span>
         </div>
@@ -2186,7 +2186,7 @@
   
   
   <span class="md-ellipsis">
-    LIDAR Schema Example
+    Radar Schema Example
     
   </span>
   
@@ -2199,7 +2199,7 @@
   
   
   <span class="md-ellipsis">
-    LIDAR Schema Example
+    Radar Schema Example
     
   </span>
   
@@ -3681,7 +3681,7 @@
 
 
 
-<h1 id="lidar-schema-example">LIDAR Schema Example</h1>
+<h1 id="radar-schema-example">Radar Schema Example</h1>
 <p>This example will go through how to connect to the radar topic published on your EdgeFirst Platform and how to display the information on the command line as well as through the Rerun visualizer.</p>
 <h2 id="radartargets">/radar/targets</h2>
 <h3 id="setting-up-subscriber">Setting up subscriber</h3>
@@ -3720,7 +3720,7 @@
 <div class="tabbed-block">
 <div class="highlight"><pre><span></span><code><span class="k">use</span><span class="w"> </span><span class="n">edgefirst_schemas</span><span class="p">::</span><span class="n">sensor_msgs</span><span class="p">::</span><span class="n">PointCloud2</span><span class="p">;</span>
 
-<span class="c1">// Create a subscriber for &quot;rt/lidar/cluster&quot;</span>
+<span class="c1">// Create a subscriber for &quot;rt/radar/cluster&quot;</span>
 <span class="kd">let</span><span class="w"> </span><span class="n">msg</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">subscriber</span><span class="p">.</span><span class="n">recv</span><span class="p">().</span><span class="n">unwrap</span><span class="p">()</span>
 
 <span class="kd">let</span><span class="w"> </span><span class="n">pcd</span><span class="p">:</span><span class="w"> </span><span class="nc">PointCloud2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">cdr</span><span class="p">::</span><span class="n">deserialize</span><span class="p">(</span><span class="o">&amp;</span><span class="n">msg</span><span class="p">.</span><span class="n">payload</span><span class="p">().</span><span class="n">to_bytes</span><span class="p">())</span><span class="o">?</span><span class="p">;</span>
@@ -3843,7 +3843,7 @@
 <div class="tabbed-block">
 <div class="highlight"><pre><span></span><code><span class="k">use</span><span class="w"> </span><span class="n">edgefirst_schemas</span><span class="p">::</span><span class="n">sensor_msgs</span><span class="p">::</span><span class="n">PointCloud2</span><span class="p">;</span>
 
-<span class="c1">// Create a subscriber for &quot;rt/lidar/cluster&quot;</span>
+<span class="c1">// Create a subscriber for &quot;rt/radar/cluster&quot;</span>
 <span class="kd">let</span><span class="w"> </span><span class="n">msg</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">subscriber</span><span class="p">.</span><span class="n">recv</span><span class="p">().</span><span class="n">unwrap</span><span class="p">()</span>
 
 <span class="kd">let</span><span class="w"> </span><span class="n">pcd</span><span class="p">:</span><span class="w"> </span><span class="nc">PointCloud2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">cdr</span><span class="p">::</span><span class="n">deserialize</span><span class="p">(</span><span class="o">&amp;</span><span class="n">msg</span><span class="p">.</span><span class="n">payload</span><span class="p">().</span><span class="n">to_bytes</span><span class="p">())</span><span class="o">?</span><span class="p">;</span>

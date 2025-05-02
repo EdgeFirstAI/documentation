@@ -66,3 +66,14 @@ We will now pull out the IMU data from the decoded Imu message and send the quat
     let my_quat = rerun::Quaternion([x,y,z,w]);
     let _ = rec.log("box", &rerun::Transform3D::default().with_quaternion(my_quat));
     ```
+
+### Results
+The command line output will appear as the following
+```
+X: -0.0125 Y: 0.0383 Z: 0.0698 W: 0.9968
+X: -0.0125 Y: 0.0383 Z: 0.0698 W: 0.9968
+X: -0.0125 Y: 0.0383 Z: 0.0698 W: 0.9968
+```
+
+When displaying the results through Rerun you will see a solid cube that is matching the orientation of your EdgeFirst Platform
+![alt text](assets/imu.png)

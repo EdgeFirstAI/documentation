@@ -114,6 +114,16 @@ We can now process the data. In this example we will find the maximum and minimu
         .fold(f64::NEG_INFINITY, f64::max);
     ```
 
+### Results
+The command line output will appear as the following
+```
+Recieved 24448 lidar points. Values: x: [-15.72, -0.01] y: [-10.52, 4.92]       z: [-2.96, 3.44]        reflect: [0.00, 167.00]
+Recieved 24448 lidar points. Values: x: [-15.77, -0.01] y: [-10.54, 4.87]       z: [-1.76, 3.43]        reflect: [0.00, 166.00]
+Recieved 24448 lidar points. Values: x: [-15.71, -0.01] y: [-10.50, 4.94]       z: [-2.30, 3.44]        reflect: [0.00, 178.00]
+```
+
+When displaying the results through Rerun you will see the pointcloud data gathered by the lidar.
+![alt text](assets/lidar_points.png)
 
 ## /lidar/clusters
 
@@ -199,6 +209,17 @@ We will now collect all the clustered points, which are all the points with `clu
     ``` rust
     let clustered_points: Vec<_> = points.iter().filter(|x| x.fields.get("cluster_id") > 0.0).collect();
     ```
+
+### Results
+The command line output will appear as the following
+```
+Recieved 24448 lidar points. 12193 are clustered
+Recieved 24448 lidar points. 12219 are clustered
+Recieved 24448 lidar points. 12237 are clustered
+```
+
+When displaying the results through Rerun you will see the pointcloud cluster data provided by the LiDAR.
+![alt text](assets/lidar_clusters.png)
 
 ## /lidar/depth
 
@@ -301,6 +322,17 @@ We can now process the data. In this example we will find the maximum and minimu
     let max_depth_mm = *depth_vals.iter().max().unwrap();
     ```
 
+### Results
+The command line output will appear as the following
+```
+Recieved 382x64 depth image. Depth: [0, 19016]
+Recieved 382x64 depth image. Depth: [0, 18968]
+Recieved 382x64 depth image. Depth: [0, 18944]
+```
+
+When displaying the results through Rerun you will see a depth map of what the lidar can see.
+![alt text](assets/lidar_depth.png)
+
 ## /lidar/reflect
 
 ### Setting up subscriber
@@ -388,3 +420,14 @@ We can now process the data. In this example we will find the maximum and minimu
     let min_reflect_mm = *reflect_vals.iter().min().unwrap();
     let max_reflect_mm = *reflect_vals.iter().max().unwrap();
     ```
+
+### Results
+The command line output will appear as the following
+```
+Recieved 382x64 reflect image. reflect: [0, 175]
+Recieved 382x64 reflect image. reflect: [0, 166]
+Recieved 382x64 reflect image. reflect: [0, 181]
+```
+
+When displaying the results through Rerun you will see the reflection data gathered by the lidar.
+![alt text](assets/lidar_reflect.png)

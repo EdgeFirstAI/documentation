@@ -62,7 +62,7 @@ def decode_pcd(pcd: PointCloud2) -> list[Point]:
                 elif f.name == "z":
                     point.z = val
                 else:
-                    point.field[f.name] = val
+                    point.fields[f.name] = val
             points.append(point)
     return points
 ```

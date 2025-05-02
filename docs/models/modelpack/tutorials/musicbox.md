@@ -6,20 +6,17 @@ In this tutorial, we will demonstrate how to execute the four most important ste
 
 ![Machine Learning Steps](./assets/ml-steps.png)
 
-The process begins with the [Maivin Platform](../../../platforms/index.md). Using the web interface on the device, we can start the recording process. Once data is recorded, we can access the recording files and import them into Studio. Studio will create a dataset. Once the dataset is created, we can begin the annotation process to produce both bounding boxes and segmentation masks. For this tutorial, we will focus solely on bounding boxes.
+The process begins with the [Raivin Platform](../../../platforms/index.md). Using the web interface on the device, we can start the recording process. Once data is recorded, we can access the recording files and import them into [EdgeFirst Studio](../../../studio/index.md). Studio will create a dataset from the recording. Once the dataset is created, we can begin the annotation process to produce both bounding boxes and segmentation masks. For this tutorial, we will focus solely on bounding boxes.
 
 The duration of the annotation process depends on the dataset size. For this specific dataset, which contains approximately 150 images, the entire annotation process takes around 3 minutes. After annotation, we need to partition the dataset and use ModelPack for training. The training process will generate the model checkpoints, which will be deployed to the target device in the final step.
 
 ## Data Collection
 
-To begin recording a dataset, power on the Maivin platform and connect it to a network in order to access the Web Interface (WebUI).
+To begin recording a dataset, power on the Maivin platform and connect it to a network in order to access the [Web User Interface (WebUI)](../../../platforms/walkthrough.md).
 
 ![WebUI](./assets/webui.png)
 
-
-
-The default interface will load once you open the homepage on the target device in your browser (Google Chrome is recommended).
-For this tutorial, we’ll use only two out of the four options available on the WebUI:
+The default interface will load once you open the homepage on the target device in your browser (Google Chrome is recommended).  For this tutorial, we’ll use only two out of the four options available on the WebUI:
 
 - **Segmentation Model**: Displays the live camera feed along with the default people segmentation model.
 
@@ -27,12 +24,11 @@ For this tutorial, we’ll use only two out of the four options available on the
 
 For a detailed walkthrough, see [Web UI Walkthrough](../../../platforms/walkthrough.md)
 
-
 The first recommended step is to go to the **Segmentation** view to check the camera’s field of view and ensure your target object is visible.
 
 ![Camera View](./assets/musicbox-camera-view.png).
 
-Once the object is clearly visible, return to the homepage and select the MCAP option to start recording. Click the Recording button (toggle on the left side).
+Once the object is clearly visible, return to the homepage and select the [MCAP](../../../platforms/recording.md) option to start recording. Click the Recording button (toggle on the left side).
 
 ![Recording View](./assets/mcap-recording-view.png)
 
@@ -46,11 +42,11 @@ The recording process takes a few seconds to initialize all services on the devi
 | ![04](./assets/tiles/04.png) | ![05](./assets/tiles/05.png) | ![06](./assets/tiles/06.png) |
 
 
-!!! Remainder
+!!! reminder
     Randomness helps improve dataset quality and enhances the model’s generalization ability.
 
 
-Now it’s time to download the dataset from the unit and upload it to Studio for annotation and model training. On the MCAP page, click the download icon next to each MCAP file and save it to your local PC.
+Now it is time to download the dataset from the unit and upload it to Studio for annotation and model training. On the MCAP page, click the download icon next to each MCAP file and save it to your local PC.
 
 ![Download MCAP](./assets/mcap-download.png)
 
@@ -65,6 +61,8 @@ In the GUI, click the **FROM FILE** button (top-right corner). This opens a mult
 Before restoring the dataset, you need to [Create a Project](../../../studio/projects.md) and name it *Tutorials*
 
 ### Restore Snapshot
+!!! warning
+    Restoring a snapshot will incur costs against your EdgeFirst Studio account.
 
 In the Snapshot interface, hover over *MusicBoxTutorial* (renamed above). A three-dot menu will appear on the right side of the GUI (next to "Available"). 
 Click it and select Restore. See [Restore Snapshots](../../../studio/snapshots.md) for details.
@@ -105,14 +103,12 @@ Your dataset should now look like this in the Gallery (disable the *Show Sequenc
 
 ## Dataset Partition
 
-To train the model, it is essential to create training and validation groups within the dataset.
-The training set teaches the model, while the validation set is used to evaluate model performance during training.
+To train the model, it is essential to create training and validation groups within the dataset.  The training set teaches the model, while the validation set is used to evaluate model performance during training.
 
-On the dataset card, click the + button next to *Group* and create two groups: `train` and `val`.
-Assign 80% of the data to training and 20% to validation.
+On the dataset card, click the + button next to *Group* and create two groups: `train` and `val`. Assign 80% of the data to training and 20% to validation.  If there are previous groups configured for the dataset, remove them prior to recreating the `train` and `val` groups.
 
 
-The data is randomly distributed between both groups.
+The images are randomly distributed between both groups.
 
 ![Train Val Groups](./assets/train-val-groups.png)
 
@@ -174,15 +170,15 @@ Clicking the training card will show the expanded view containing all the logs a
 From the available checkpoints, download the **TFLite** model - optimized for embedded devices — and deploy it to the Maivin unit for edge inference.
 
 ## Model Deployment
+The steps below are an abbreviated walkthrough of the [Model Upload Walkthrough](../../../platforms/model_upload.md). We recommend familiarizing yourself with that walkthrough.
 
-In the expanded session view, download the **TFLite** model and copy it to the Maivin device using scp:
+In the expanded session view, download the **TFLite** model and copy it to the Maivin device using [SCP](../../../platforms/ssh.md#secure-copy):
 
 `scp modelpack.tflite torizon@verdin-imxmp-xxxxx:~/modelpack.tflite`
 
 From this point, there are two different options to deploy the new trained model. The first one is to change the model path from the WebUI on the device and the second one is changing the path to the model in the service configuration file.
 
 ### Model Deployment via WebUI
-
 From the WebUI the user must access to the Model Settings view and change the model location there:
 
 ![Deployment Results](./assets/model_location_webui.png)
@@ -191,8 +187,7 @@ Remember to save the configurations at the end of the process. The  Model Config
 `https://verdin-imx8mp-xxxxx/config/model`
 
 ### Manual Model Deployment
-
-In case the manual deployment is needed, you need to connect to the device via ssh:
+In case the manual deployment is needed, you need to connect to the device via [SSH](../../../platforms/ssh.md):
 
 ```shell
 $ ssh torizon@verdin-imx8mp-15141030

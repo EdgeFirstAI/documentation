@@ -63,13 +63,14 @@ nav:
       - Developer Guide:
           - perception/dev.md
           - Examples:
+            - perception/dev/examples/camera.md
+            - perception/dev/examples/fusion.md
             - perception/dev/examples/gps.md
             - perception/dev/examples/imu.md
             - perception/dev/examples/lidar.md
-            - perception/dev/examples/pcd.md
-            - perception/dev/examples/camera.md
             - perception/dev/examples/model.md
-            - perception/dev/examples/fusion.md
+            - perception/dev/examples/pcd.md
+            - perception/dev/examples/radar.md
       - API Reference:
           - perception/api.md
           - perception/api/edgefirst_msgs.md

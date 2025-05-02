@@ -51,7 +51,7 @@ The MCAP files are listed under the list of MCAP files which can then be downloa
 
 ## Upload Recorded Data to EdgeFirst Studio
 
-This tutorial shows how to upload a downloaded MCAP recording shown in [Download Recorded Data Tutorial](#download-recorded-data).
+This tutorial shows how to upload a downloaded MCAP recording shown in [Download Recorded Data Tutorial](#download-recorded-data). For uploading [EdgeFirst Datasets](format.md), please see the instructions for [Upload from Zip/Arrow File](../studio/snapshots.md#upload-from-ziparrow-file).
 
 <div style="text-align: center;">
     <iframe width="560" height="315" src="https://www.youtube.com/embed/j-75Q5-_dC0?start=558&end=720" title="Upload MCAP" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
@@ -65,7 +65,7 @@ In EdgeFirst Studio, select *Data Snapshots* under the tool options.
 </figure>
 
 !!! note
-    A project has already been created intended for people detection. This step
+    A project has already been created intended for object detection. This step
     has been covered in [Getting Started](../index.md#initial-steps).
 
 Once you are in the *Data Snapshots* page, upload the recorded MCAP by clicking *FROM FILE* which opens a new window dialog for selecting the MCAP downloaded in your PC.
@@ -234,6 +234,60 @@ When the sequence is clicked, you will now see the frames stored in the sequence
 <figcaption>Dataset Sequence</figcaption>
 </figure>
 
+## Verifying Datasets
+
+This tutorial will show an example of a dataset that is ready for training. 
+
+<div style="text-align: center;">
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/Q8uiYJb1HJ4?start=81&end=118" title="Indoor Dataset Overview" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+</div>
+
+Verify that the dataset has a training and validation split.  The sample dataset shown below has a dedicated split for training (20066 samples) and validation (2229 samples).
+
+<figure markdown="span">
+![Dataset Groups](assets/fusion-dataset-groups.jpg){ align=center }
+<figcaption>Fusion Dataset Groups</figcaption>
+</figure>
+
+Another sample dataset shown below is for training Vision models which has a dedicated split for training (1656 samples) and validation (184 samples).
+
+<figure markdown="span">
+![Dataset Groups](assets/vision-dataset-groups.jpg){ align=center }
+<figcaption>Vision Dataset Groups</figcaption>
+</figure>
+
+Verify the contents of the dataset and the annotations.  Click the button that navigates to the gallery.  This will show the contents of the dataset.  The dataset may be comprised of multiple sequences as shown below.  
+
+<figure markdown="span">
+![Dataset Sequences](assets/fusion-dataset-sequences.jpg){ align=center }
+<figcaption>Fusion Dataset Sequences</figcaption>
+</figure>
+
+<figure markdown="span">
+![Dataset Sequences](assets/vision-dataset-sequences.jpg){ align=center }
+<figcaption>Vision Dataset Sequences</figcaption>
+</figure>
+
+Clicking on any of these sequences will open individual images in the sequence with the visualizations of the annotations.  For more information please see [Viewing Datasets](#viewing-datasets) above.
+
+!!! info
+    Datasets that train Fusion models provide world annotations of the object's 3D bounding box.  For more information on the dataset annotations, please see [EdgeFirst Dataset Format](format.md#dataset-annotation-format).
+
+<figure markdown="span">
+![Fusion Annotations](assets/fusion-annotations.jpg){ align=center }
+<figcaption>Fusion Annotations</figcaption>
+</figure>
+
+!!! info
+    Datasets that train Vision models provide image annotations of the object's 2D bounding box and segmentation mask.  For more information on the dataset annotations, please see [EdgeFirst Dataset Format](format.md#dataset-annotation-format).
+
+<figure markdown="span">
+![Vision Annotations](assets/vision-annotations.jpg){ align=center }
+<figcaption>Vision Annotations</figcaption>
+</figure>
+
+For cases where the annotations need corrections, please see [Dataset Tutorials](#audit-annotations) for more details.
+
 ## Creating Datasets
 
 This tutorial will show how to create an empty dataset container in EdgeFirst Studio. This container is needed for [copying](#copying-datasets) or [combining](#combining-datasets) datasets as shown in the next sections.
@@ -249,14 +303,14 @@ To create a dataset, first select the project to store the new dataset. Next cli
 <figcaption>Dataset Button</figcaption>
 </figure>
 
-Next create a new dataset by clicking the *CREATE* button highlighted in red.
+Next create a new dataset by clicking the "NEW DATASET" button highlighted in red on the top right.
 
 <figure markdown="span">
 ![Create Dataset Button](assets/create-dataset-button.jpg){ align=center }
 <figcaption>Create Dataset Button</figcaption>
 </figure>
 
-Provide the dataset name and the dataset desciption for this new dataset. In this example the name is the same as the original dataset source. Once the fields are filled, click the *CREATE* button on the bottom left of the window dialog.
+Provide the dataset name and the dataset desciption for this new dataset. In this example the name is the same as the original dataset source. Once the fields are filled, click the "CREATE" button on the bottom left of the window dialog.
 
 <figure markdown="span">
 ![Create Dataset Fields](assets/create-dataset-fields.jpg){ align=center }
@@ -265,14 +319,14 @@ Provide the dataset name and the dataset desciption for this new dataset. In thi
 
 Once created, define an annotation set. The annotation set is a container for storing
 the annotations in the original dataset. To create an annotation set, click the "+" button
-in the *Annotation Sets* field. 
+in the "Annotation Sets" field. 
 
 <figure markdown="span">
 ![Create Annotation Set](assets/create-annotation-set.jpg){ align=center }
 <figcaption>Create Annotation Set</figcaption>
 </figure>
 
-Next provide the name and description for the annotation container as shown below. Once provided, click *CREATE NEW SET* to create the annotation set.
+Next provide the name and description for the annotation container as shown below. Once provided, click "CREATE NEW SET" to create the annotation set.
 
 <figure markdown="span">
 ![Annotation Set Fields](assets/annotation-set-fields.jpg){ align=center }
@@ -294,7 +348,7 @@ This tutorial will show how to copy the dataset to a different container.
     <iframe width="560" height="315" src="https://www.youtube.com/embed/qLv8ayxQ-Ns?start=326&end=372" title="Copying Datasets" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 </div>
 
-To copy a dataset, first [create a dataset](#creating-datasets) container. Once created, select the *Copy Dataset* from the dataset options on the newly created dataset container as shown below.
+To copy a dataset, first [create a dataset](#creating-datasets) container. Once created, select the "Copy Dataset" from the dataset options on the newly created dataset container as shown below.
 
 <figure markdown="span">
 ![Copy Dataset](assets/copy-dataset-option.jpg){ align=center }
@@ -308,7 +362,7 @@ This will open a new dialog for the user to specify the source dataset and the d
 <figcaption>Copy Dataset Options</figcaption>
 </figure>
 
-The options provided above specifies the source information such as the project to be the public project "Sample Datasets" and the dataset to be *Raivin Pedestrians (ultra-short range) 2025.03*. Next the destination dataset is the dataset and annotation containers that was created. Once the options are specified, go ahead and click *APPLY* to start the copy process.
+The options provided above specifies the source dataset to originate from the public dataset "Raivin Ultra Short 2025.03" inide the public project "Sample Project". Next the destination dataset is the dataset and annotation containers that was created. Once the options are specified, go ahead and click "APPLY" to start the copy process.
 
 <figure markdown="span">
 ![Copy Dataset Process](assets/dataset-copy-process.jpg){ align=center }
@@ -363,7 +417,7 @@ Once the groups are specified, click *ADD GROUPS* to create the groups. This wil
 
 ## Importing Datasets
 
-This tutorial will show how to import a dataset into EdgeFirst Studio. 
+This tutorial will show how to import a dataset into EdgeFirst Studio. For importing [EdgeFirst Datasets](format.md), please see the instructions for [Upload from Zip/Arrow File](../studio/snapshots.md#upload-from-ziparrow-file).
 
 <div style="text-align: center;">
 <iframe width="560" height="315" src="https://www.youtube.com/embed/DJabdEHaZ8E?start=41" title="Import Dataset" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>

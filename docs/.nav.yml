@@ -2,8 +2,8 @@ nav:
 #   - Home: https://edgefirst.studio
   - Getting Started:
       - index.md
-      - getting_started/workflows.md
       - getting_started/studio.md
+      - getting_started/workflows.md
       - getting_started/datasets.md
       - getting_started/models.md
       - getting_started/perception.md
@@ -28,7 +28,7 @@ nav:
       - datasets/zoo.md
   - Models:
       - models/index.md
-      - Modelpack:
+      - ModelPack:
           - models/modelpack/index.md
           - models/modelpack/training.md
           - models/modelpack/validation.md
@@ -52,10 +52,25 @@ nav:
       - Topics:
           - perception/topics.md
           - perception/topics/camera.md
+          - perception/topics/fusion.md
+          - perception/topics/imu.md
+          - perception/topics/lidar.md
+          - perception/topics/model.md
+          - perception/topics/navsat.md
+          - perception/topics/radar.md
+          
       - perception/custom.md
       - Developer Guide:
           - perception/dev.md
-          - perception/dev/python.md
+          - Examples:            
+            - perception/dev/examples/camera.md
+            - perception/dev/examples/radar.md
+            - perception/dev/examples/lidar.md
+            - perception/dev/examples/pcd.md
+            - perception/dev/examples/gps.md
+            - perception/dev/examples/imu.md
+            - perception/dev/examples/model.md
+            - perception/dev/examples/fusion.md
       - API Reference:
           - perception/api.md
           - perception/api/edgefirst_msgs.md
@@ -68,14 +83,22 @@ nav:
           - perception/api/studio.md
   - Platforms:
       - platforms/index.md
-      - platforms/quickstart.md
-      - platforms/walkthrough.md
-      - platforms/configuration.md
-      - platforms/architecture.md
-      - platforms/networking.md
-      - platforms/ssh.md
-      - platforms/hardware.md
-      - platforms/radar.md
-      - platforms/issues.md
-      - platforms/release_notes.md
-      - platforms/updates.md
+      - Getting Started:
+        - platforms/quickstart.md
+        - platforms/walkthrough.md
+        - platforms/architecture.md
+      - Hardware:
+        - platforms/hardware.md
+        - platforms/radar.md
+        - platforms/lidar.md
+      - Software:
+        - platforms/configuration.md
+        - platforms/model_uploads.md
+        - platforms/updates.md
+        - platforms/release_notes.md
+        - platforms/issues.md
+      - Networking:
+        - platforms/networking.md
+        - platforms/ssh.md
+
+

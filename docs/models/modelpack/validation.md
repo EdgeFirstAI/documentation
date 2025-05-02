@@ -1,10 +1,10 @@
-# Validating Modelpack
+# Validating ModelPack
 
-This page will provide a walk-through for validating the performance of Vision models that have been trained using Modelpack in EdgeFirst Studio, through the [QuickStart Guide](../../index.md) or [Training Modelpack](training.md).  This page will focus only on the validation of Modelpack.
+This page will provide a walk-through for validating the performance of **Vision** models that have been trained using ModelPack in EdgeFirst Studio, through the [end-to-end worklow](../../getting_started/workflows.md) or [Training ModelPack](training.md).  This page will focus only on the validation of Vision models. Please see the link attached for instructions on [Validating Fusion Models](../fusion/validation.md). 
 
 ## Select the Validator Tool
 
-Select *Validator* from the tool options.
+Select "Validate Sessions" from the tool options.
 
 <figure markdown="span">
 ![Validator Tool](../assets/validation/validator-tool.jpg){ align=center }
@@ -22,7 +22,7 @@ Specify the project to run validation at the center of the top menu bar.
 
 ## Create Validation Session
  
-Create a new validation session by clicking the *create* button on the top right of the page.
+Create a new validation session by clicking the "NEW SESSION" button on the top right.
 
 <figure markdown="span">
 ![Create New Session](../assets/validation/create-button.jpg){ align=center }
@@ -31,10 +31,8 @@ Create a new validation session by clicking the *create* button on the top right
 
 Configure the settings on the left panel by specifying the name of the validation session, 
 the model file to validate, and the dataset to deploy.  Next configure the settings 
-on the right panel by specifying the validation parameters.
-
-!!! note
-    Additional information on these parameters are provided by hovering over the info button.
+on the right panel by specifying the validation parameters.  Additional information on these 
+parameters are provided by hovering over the info button.
 
 <figure markdown="span">
 ![Validation Options](../assets/validation/modelpack-validation-options.jpg){ align=center }
@@ -43,7 +41,7 @@ on the right panel by specifying the validation parameters.
 
 ## Start the Session 
 
-Start the session by clicking the *START SESSION* button on the bottom right.
+Start the session by clicking the "START SESSION" button on the bottom right.
 
 <figure markdown="span">
 ![Start Session](../assets/validation/start-session.jpg){ align=center }
@@ -60,11 +58,6 @@ panel and additional information and status is shown on the right panel.
 <figcaption>Validation Session</figcaption>
 </figure>
 
-<figure markdown="span">
-![Validation Session Attributes](../assets/validation/validation-session-attributes.jpg){ align=center }
-<figcaption>Validation Session Attributes</figcaption>
-</figure>
-
 ## Completed Session
 
 Once completed, the status will be shown as complete.
@@ -72,6 +65,11 @@ Once completed, the status will be shown as complete.
 <figure markdown="span">
 ![Completed Session](../assets/validation/modelpack-completed-session.jpg){ align=center }
 <figcaption>Completed Session</figcaption>
+</figure>
+
+<figure markdown="span">
+![Validation Session Attributes](../assets/validation/validation-session-attributes.jpg){ align=center }
+<figcaption>Validation Session Attributes</figcaption>
 </figure>
 
 ## Validation Metrics 
@@ -83,8 +81,7 @@ The metrics are shown by clicking the button that views the validation charts on
 <figcaption>Validation Metrics</figcaption>
 </figure>
 
-!!! note
-    See [Validation Metrics](../metrics.md#modelpack) for further details.
+See [Validation Metrics](../metrics.md#modelpack) for further details.
 
 ## Comparing Metrics
 
@@ -96,7 +93,7 @@ This is done by checking the checkboxes on the top left of the session cards.
 <figcaption>Comparing Sessions</figcaption>
 </figure>
 
-Compare the validation sessions by clicking the *COMPARE VALIDATE SESSION* button on the top left.  This will display the validation metrics side by side for the specified validation sessions.
+Compare the validation sessions by clicking the "COMPARE VALIDATE SESSION" button.  This will display the validation metrics side by side for the specified validation sessions.
 
 <figure markdown="span">
 ![Metrics Side-by-Side](../assets/validation/modelpack-metrics-side-by-side.jpg){ align=center }

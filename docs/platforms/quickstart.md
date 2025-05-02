@@ -1,5 +1,5 @@
 # Quick Start
-This article will walk you through the Raivin setup and then lead you to resources for using additional features.
+This article will walk you through the Raivin hardware setup and then lead you to resources for using additional features.
 
 ## Unboxing
 The Maivin/Raivin box contains the following items:
@@ -88,3 +88,10 @@ and for a Maivin:
 
 !!! note
     The ultra-short model included in this release was trained for fixed camera and mostly tested indoors.
+
+## Next Steps
+Now that you have completed these initial steps, we recommend that you read the following walk-throughs:  
+- [Raivin WebUI Walkthrough](./walkthrough.md), to see what each UI card on the splash screen does  
+- [SSH Walkthrough](./ssh.md), to learn how to SSH into your Raivin and basic command-line operations  
+- [Raivin Recording Walkthrough](./recording.md), to learn how to record datasets and download them to your PC  
+- [Model Upload Walkthrough](./model_uploads.md), to learn how to upload vision and radar fusion models to your Raivin  

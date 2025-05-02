@@ -1,4 +1,4 @@
-# LIDAR Schema Example
+# Radar Schema Example
 
 This example will go through how to connect to the radar topic published on your EdgeFirst Platform and how to display the information on the command line as well as through the Rerun visualizer.
 
@@ -47,7 +47,7 @@ We can now recieve a message on the subcriber. After recieving the message, we w
     ``` rust
     use edgefirst_schemas::sensor_msgs::PointCloud2;
 
-    // Create a subscriber for "rt/lidar/cluster"
+    // Create a subscriber for "rt/radar/cluster"
     let msg = subscriber.recv().unwrap()
 
     let pcd: PointCloud2 = cdr::deserialize(&msg.payload().to_bytes())?;
@@ -182,7 +182,7 @@ We can now recieve a message on the subcriber. After recieving the message, we w
     ``` rust
     use edgefirst_schemas::sensor_msgs::PointCloud2;
 
-    // Create a subscriber for "rt/lidar/cluster"
+    // Create a subscriber for "rt/radar/cluster"
     let msg = subscriber.recv().unwrap()
 
     let pcd: PointCloud2 = cdr::deserialize(&msg.payload().to_bytes())?;

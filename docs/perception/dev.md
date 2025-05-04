@@ -39,7 +39,7 @@ This is the closest to the "Hello, World!" example, discovering and printing out
 
     !!! tip "Complete Python Sample"
 
-        [https://github.com/EdgeFirstAI/samples/blob/main/edgefirst/samples/list-topics/__main__.py](https://github.com/EdgeFirstAI/samples/blob/main/edgefirst/samples/list-topics/__main__.py)
+        [https://github.com/EdgeFirstAI/samples/blob/main/edgefirst/samples/list-topics.py](https://github.com/EdgeFirstAI/samples/blob/main/edgefirst/samples/list-topics.py)
 
 === "Rust"
 
@@ -132,7 +132,7 @@ Running this sample on the target will list the available topics.  The example c
 
 !!! tip "Remote Targets"
 
-    If running these examples remotely you will need to provide the remote endpoint, for example if your target device has the address 10.1.1.10 then you would use `--connect tcp/10.1.1.10:7447` to connect using TCP on the default Zenoh port.
+    If running these examples remotely you will need to provide the remote endpoint, for example if your target device has the address 10.1.1.10 then you would use `--remote tcp/10.1.1.10:7447` to connect using TCP on the default Zenoh port.
 
 === "Python"
 

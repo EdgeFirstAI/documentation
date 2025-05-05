@@ -60,3 +60,14 @@ We will now pull out the latitude/longitude data from the decoded NavSatFix mess
     // println!("Latitude: {} Longitude: {}",lat, long);
     let _ = rec.log("CurrentLoc", &rerun::GeoPoints::from_lat_lon([(lat, long)]));
     ```
+
+### Results
+The command line output will appear as the following
+```
+Latitude: 51.036506 Longitude: -114.034886
+Latitude: 51.036506 Longitude: -114.034886
+Latitude: 51.036506 Longitude: -114.034886
+```
+
+When displaying the results through Rerun you will see a map with the location of your EdgeFirst Platform marked.
+![alt text](assets/gps.png)

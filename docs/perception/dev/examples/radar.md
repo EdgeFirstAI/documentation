@@ -1,4 +1,4 @@
-# LIDAR Schema Example
+# Radar Schema Example
 
 This example will go through how to connect to the radar topic published on your EdgeFirst Platform and how to display the information on the command line as well as through the Rerun visualizer.
 
@@ -47,7 +47,7 @@ We can now recieve a message on the subcriber. After recieving the message, we w
     ``` rust
     use edgefirst_schemas::sensor_msgs::PointCloud2;
 
-    // Create a subscriber for "rt/lidar/cluster"
+    // Create a subscriber for "rt/radar/cluster"
     let msg = subscriber.recv().unwrap()
 
     let pcd: PointCloud2 = cdr::deserialize(&msg.payload().to_bytes())?;
@@ -137,6 +137,17 @@ We can now process the data. In this example we will find the maximum and minimu
         .fold(f64::NEG_INFINITY, f64::max);
     ```
 
+### Results
+The command line output will appear as the following
+```
+Recieved 23 radar points. Values: x: [2.04, 9.48]       y: [-2.99, 4.74]        z: [-2.07, 2.09]        rcs: [-13.80, 17.60]
+Recieved 23 radar points. Values: x: [2.04, 9.47]       y: [-2.99, 4.21]        z: [-2.11, 2.09]        rcs: [-13.80, 17.60]
+Recieved 23 radar points. Values: x: [2.04, 9.47]       y: [-2.97, 4.22]        z: [-2.09, 2.07]        rcs: [-14.00, 17.60]
+```
+
+When displaying the results through Rerun you will see the pointcloud radar data.
+![alt text](assets/radar_targets.png)
+
 
 ## /radar/clusters
 
@@ -182,7 +193,7 @@ We can now recieve a message on the subcriber. After recieving the message, we w
     ``` rust
     use edgefirst_schemas::sensor_msgs::PointCloud2;
 
-    // Create a subscriber for "rt/lidar/cluster"
+    // Create a subscriber for "rt/radar/cluster"
     let msg = subscriber.recv().unwrap()
 
     let pcd: PointCloud2 = cdr::deserialize(&msg.payload().to_bytes())?;
@@ -221,6 +232,17 @@ We will now collect all the clustered points, which are all the points with `clu
     ``` rust
     let clustered_points: Vec<_> = points.iter().filter(|x| x.fields.get("cluster_id") > 0.0).collect();
     ```
+
+### Results
+The command line output will appear as the following
+```
+Recieved 137 radar points. 134 are clustered
+Recieved 136 radar points. 133 are clustered
+Recieved 138 radar points. 135 are clustered
+```
+
+When displaying the results through Rerun you will see the cluster data.
+![alt text](assets/radar_clusters.png)
 
 ## /radar/info
 
@@ -300,6 +322,17 @@ The RadarInfo message contains information about the radar configuration. Variou
     let cube = radar_info.cube;
     ```
 
+### Results
+The command line output will appear as the following
+```
+The radar configuration is: center frequency: low   frequency sweep: ultra-short   range toggle: off   detection sensitivity: high   sending cube: true
+The radar configuration is: center frequency: low   frequency sweep: ultra-short   range toggle: off   detection sensitivity: high   sending cube: true
+The radar configuration is: center frequency: low   frequency sweep: ultra-short   range toggle: off   detection sensitivity: high   sending cube: true
+```
+
+When displaying the results through Rerun you will see a log of the radar configuration.
+![alt text](assets/radar_info.png)
+
 ## /radar/cube
 
 ### Setting up subscriber
@@ -369,3 +402,14 @@ The RadarCube message contains data from the RadarCube.
     let shape = radar_cube.shape;
     let cube = radar_cube.cube;
     ```
+
+### Results
+The command line output will appear as the following
+```
+The radar cube has shape: [2, 200, 4, 256]
+The radar cube has shape: [2, 200, 4, 256]
+The radar cube has shape: [2, 200, 4, 256]
+```
+
+When displaying the results through Rerun you will see the radar cube displayed.
+![alt text](assets/radar_cube.png)

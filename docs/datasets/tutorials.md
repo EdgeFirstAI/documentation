@@ -445,7 +445,7 @@ Clicking on any of these sequences will open individual images in the sequence w
 <figcaption>Vision Annotations</figcaption>
 </figure>
 
-For cases where the annotations need corrections, please see [Dataset Tutorials](#audit-annotations) for more details.
+For cases where the annotations need corrections, please see [Audit 2D Annotations](#audit-2d-annotations) for more details.
 
 ## Creating Datasets
 

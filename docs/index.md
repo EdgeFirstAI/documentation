@@ -112,7 +112,7 @@ Edgefirst Studio provides specific workflows tailored towards various user perso
     <iframe width="560" height="315" src="https://www.youtube.com/embed/MmoDCXj72jk?si=I8gTw2VCtcts69ks" title="EdgeFirst Studio Overview" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 </div>
 
-1. Web-Based Workflow (*coming soon*)
+1. [Web-Based Workflow](getting_started/web.md)
 
     This workflow is intended for users with a personal computer and a device with a camera with access to Wifi and a web browser. The examples shown in this workflow will be from a Windows computer and an Android phone for recording images. To proceed to this workflow, click on the link above.
 

@@ -1,6 +1,6 @@
 # Web-Based Workflow
 
-In this workflow, we will explore recording a video or capturing images using a mobile device and then upload the captured data into EdgeFirst Studio for annotation, model training, model validation, and then model deployment using the PC. This workflow requires the user to have signed up and logged in to EdgeFirst Studio and followed the initial steps described in the [EdgeFirst Studio Quickstart](../index.md#edgefirst-studio-quickstart).
+In this workflow, we will explore recording a video or capturing images using a mobile device and then upload the captured data into EdgeFirst Studio for annotation and then model training, model validation, and model deployment using the PC. This workflow requires the user to have signed up and logged in to EdgeFirst Studio and followed the initial steps described in the [EdgeFirst Studio Quickstart](../index.md#edgefirst-studio-quickstart).
 
 !!! warning
     It is recommended to use a mobile device connected to a Wifi network. A device connected to mobile data might be subject to intense usage when uploading files as video files or image files can be large in size. In the examples below, the video file used was ~15MB and the image files were ~2MB.
@@ -25,7 +25,7 @@ Furthermore, we will also capture images of coffee cups as shown below.
 
 ## 2. Visit EdgeFirst Studio
 
-Once you have captured your video and some sample images for your dataset on your mobile device, next navigate to a web browser on your mobile device and [login][login] to EdgeFirst Studio. Once logged in to EdgeFirst Studio, navigate to the "Object Detection" project that was created in the [EdgeFirst Studio Quickstart](../index.md#edgefirst-studio-quickstart) and click on the datasets icon that is indicated in red.
+Once you have captured your video and some sample images for your dataset on your mobile device, navigate to a web browser on your mobile device and [login][login] to EdgeFirst Studio. Once logged in to EdgeFirst Studio, navigate to the "Object Detection" project that was created in the [EdgeFirst Studio Quickstart](../index.md#initial-steps) and click on the datasets button that is indicated in red.
 
 <figure markdown="span">
 ![Object Detection Project](assets/workflows/mobile-projects.jpg){ align=center }
@@ -55,21 +55,21 @@ Your created dataset will look as follows.
 
 ## 3. Upload Data to EdgeFirst Studio
 
-Once the dataset container has been created, click on the dataset extended menu (three vertical dots) and select import.
+Once the dataset container has been created, click on the dataset extended menu (three dots) and select import.
 
 <figure markdown="span">
 ![Dataset Import Option](assets/workflows/mobile-dataset-import-option.jpg){ align=center }
 <figcaption>Dataset Import Option</figcaption>
 </figure>
 
-This will bring your to the "Import Dataset" page.
+This will bring you to the "Import Dataset" page.
 
 <figure markdown="span">
 ![Dataset Import](assets/workflows/mobile-import-dataset.jpg){ align=center }
 <figcaption>Dataset Import</figcaption>
 </figure>
 
-First we will be importing the video recording. Click on the dropdown that says "Select an Import Type" and then specify "Video" and then click "Done" as shown below. 
+First we will be importing the video recording from [step 1](#1-capture-data-using-a-mobile-device). Click on the dropdown that says "Select an Import Type" and then specify "Video" and then click "Done" as shown below. 
 
 <figure markdown="span">
 ![Dataset Video Import](assets/workflows/mobile-video-import-type.jpg){ align=center }
@@ -112,7 +112,7 @@ This will start the import process and once it is completed, you should see the 
 </figure>
 
 Next we will import the captured images from [step 1](#1-capture-data-using-a-mobile-device). 
-Navigate back to the "Import Dataset" page.
+Navigate back to the "Import Dataset" page (refer to the [top](#3-upload-data-to-edgefirst-studio)).
 
 <figure markdown="span">
 ![Dataset Import](assets/workflows/mobile-import-dataset.jpg){ align=center }
@@ -126,7 +126,7 @@ Click on "Click to select images". This will bring up the option to specify the 
 <figcaption>Android Mobile Media Picker</figcaption>
 </figure>
 
-In my current setup, I have selected "Media Picker" from the options above and then I have multi-seleted the images I want to import.
+In my current setup, I have selected "Media Picker" from the options above and then I have multi-selected the images I want to import by press and hold on a single image to enable multi-select. To import, I pressed "Select".
 
 <figure markdown="span">
 ![Android Multiselect Images](assets/workflows/mobile-multi-select-images.jpg){ align=center }
@@ -140,14 +140,21 @@ Once the image files have been selected, the progress for the image import will 
 <figcaption>Image Import Progress</figcaption>
 </figure>
 
-Once it completes, you should see the number of images in the dataset increase by the amount of selected images.
+Once it completes, you should see the number of images in the dataset increase by the amount of selected images. If you do not see any changes, refresh your browser.
 
 <figure markdown="span">
 ![Imported Images](assets/workflows/imported-images-outcome.jpg){ align=center }
 <figcaption>Imported Images</figcaption>
 </figure>
 
-Once all the captured data has been uploaded to the dataset container, we will now assign groups to the data to split the data into training and validation sets. First delete the empty default groups that were created. Follow the [tutorial for creating groups](../datasets/tutorials.md#splitting-datasets) with an 80% partition to training and 20% partition to validation. The final outcome for the groups should look as follows.
+Next [view the gallery of the dataset](../datasets/tutorials.md#viewing-datasets) to confirm all the captured data has been uploaded. You should see the imported video file and images in the gallery.
+
+<figure markdown="span">
+![Coffee Cup Gallery](assets/workflows/pc-dataset-gallery.jpg){ align=center }
+<figcaption>Coffee Cup Gallery</figcaption>
+</figure>
+
+Once all the captured data has been uploaded to the dataset container, we will now assign groups to the data to split the data into training and validation sets. First delete the empty default groups that were created (if currently present). Follow the [tutorial for creating groups](../datasets/tutorials.md#splitting-datasets) with an 80% partition to training and 20% partition to validation. The final outcome for the groups should look as follows.
 
 <figure markdown="span">
 ![Dataset Groups](assets/workflows/dataset-groups.jpg){ align=center }
@@ -158,48 +165,9 @@ Now that we have imported some data into EdgeFirst Studio and have split the cap
 
 ## 4. Annotate Data in EdgeFirst Studio
 
-In this step, we will be using a personal computer with access to Wifi to [log in][login] to EdgeFirst Studio for annotating the captured data. When annotating the dataset, we will be using AI assistance to annotate the ground truth to perform auto segmentation and bounding boxes on the objects of interest in the frame. Once logged in to EdgeFirst Studio, we can start by enabling an AI Assisted Ground Truth server by navigating to the Cloud Instances under the tool options.
+In this step, we will be using a personal computer with access to Wifi to [log in][login] to EdgeFirst Studio for annotating the captured data. When annotating the dataset, we will be using AI assistance to annotate the ground truth to perform auto segmentation and bounding boxes on the objects of interest in the frame. Once logged in to EdgeFirst Studio, follow instructions for [auto-annotating the dataset](../datasets/tutorials.md#auto-annotations-via-gallery). Otherwise, for auditing individual annotations, following instructions from [Audit 2D Annotations](../datasets/tutorials.md#audit-2d-annotations).
 
-<figure markdown="span">
-![Cloud Instances](../datasets/assets/cloud-instances.jpg){ align=center }
-<figcaption>Cloud Instances</figcaption>
-</figure>
-
-Start and launch a new server to host the auto-segmentation backend.
-
-<figure markdown="span">
-![Start a Server](../datasets/assets/launch-ai-server.jpg){ align=center }
-<figcaption>Start a Server</figcaption>
-</figure>
-
-navigate to the "Object Detection" project that was created in the [EdgeFirst Studio Quickstart](../index.md#edgefirst-studio-quickstart) and click on the datasets icon that is indicated in red.
-
-<figure markdown="span">
-![Object Detection Project](assets/workflows/pc-projects.jpg){ align=center }
-<figcaption>Object Detection Project</figcaption>
-</figure>
-
-This will bring you to the Datasets page of the selected project. Click on the gallery indicated in red of the dataset with imported data from the previous steps.
-
-<figure markdown="span">
-![Object Detection Datasets](assets/workflows/pc-datasets.jpg){ align=center }
-<figcaption>Object Detection Datasets</figcaption>
-</figure>
-
-This will bring you to the dataset gallery. You will see the imported video file and images in the gallery.
-
-<figure markdown="span">
-![Coffee Cup Gallery](assets/workflows/pc-dataset-gallery.jpg){ align=center }
-<figcaption>Coffee Cup Gallery</figcaption>
-</figure>
-
-We will start with annotating the video file. First click on the video file card on the gallery. This will open the video for playback. To add annotations to the video, click on "START EDITING" indicated in red.
-
-<figure markdown="span">
-![Video Sequence](assets/workflows/pc-video-sequence.jpg){ align=center }
-<figcaption>Video Sequence</figcaption>
-</figure>
-
+A dataset with proper annotations should look as follows.
 
 
 ## 5. Train a Model from the Annotated Data

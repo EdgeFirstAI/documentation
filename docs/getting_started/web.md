@@ -167,14 +167,16 @@ Now that we have imported some data into EdgeFirst Studio and have split the cap
 
 In this step, we will be using a personal computer with access to Wifi to [log in][login] to EdgeFirst Studio for annotating the captured data. When annotating the dataset, we will be using AI assistance to annotate the ground truth to perform auto segmentation and bounding boxes on the objects of interest in the frame. Once logged in to EdgeFirst Studio, follow instructions for [auto-annotating the dataset](../datasets/tutorials.md#auto-annotations-via-gallery). Otherwise, for auditing individual annotations, following instructions from [Audit 2D Annotations](../datasets/tutorials.md#audit-2d-annotations).
 
-A dataset with proper annotations should look as follows.
-
-
 ## 5. Train a Model from the Annotated Data
+
+TBA.
 
 ## 6. Validate the Trained Model
 
+TBA.
+
 ## 7. Deploy the Model
 
+TBA.
 
 [login]: #

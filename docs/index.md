@@ -112,6 +112,122 @@ Edgefirst Studio provides specific workflows tailored towards various user perso
     <iframe width="560" height="315" src="https://www.youtube.com/embed/MmoDCXj72jk?si=I8gTw2VCtcts69ks" title="EdgeFirst Studio Overview" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 </div>
 
+The following diagram describes the workflow for identifying the user personas depending on the hardware requirements.
+
+```mermaid
+%%{init: {"flowchart": {"defaultRenderer": "elk"}} }%%
+flowchart LR
+    %% User Definitions
+    user([User])
+    platform{Has a platform?}
+    edgefirst_platform{Has an EdgeFirst Platform?}
+    raivin_platform{Has a Raivin?}
+    record{Will use a smartphone to create a dataset?}
+    annotate_pd{Will explore annotating datasets?}
+    with_lidar{Has LiDAR integrated?}
+    tba[TBA]
+
+    tourist([Tourist]):::blue
+    tourist_plus([Tourist+]):::teal
+    web_user([Web]):::orange
+    maivin_user([Maivin]):::green
+    raivin_user([Raivin]):::purple
+    raivin_lidar_user([LiDAR]):::coral
+
+    classDef blue fill:#89cff0;
+    classDef teal fill:#17becf;
+    classDef orange fill:#ff7f0e;
+    classDef green fill:#2ca02c;
+    classDef purple fill:#9467bd;
+    classDef coral fill:#ff6f61;
+
+    %% Flowchart
+    user --> platform
+    platform -- Yes --> edgefirst_platform
+    platform -- No --> record
+    record -- Yes --> web_user
+    record -- No --> annotate_pd
+    annotate_pd -- Yes --> tourist_plus
+    annotate_pd -- No --> tourist
+    edgefirst_platform -- Yes --> raivin_platform 
+    edgefirst_platform -- No --> tba
+    raivin_platform -- Yes --> with_lidar
+    with_lidar -- Yes --> raivin_lidar_user
+    with_lidar -- No --> raivin_user
+    raivin_platform -- No --> maivin_user
+```
+
+The following diagram describes the workflows for each user persona identified above.
+
+```mermaid
+%%{init: {"flowchart": {"defaultRenderer": "elk"}} }%%
+%%{init: {"themeVariables": { "fontSize": "40px" }}}%%
+flowchart LR
+    %% User Definitions
+    tourist([Tourist]):::blue
+    tourist_plus([Tourist+]):::teal
+    web_user([Web]):::orange
+    maivin_user([Maivin]):::green
+    raivin_user([Raivin]):::purple
+    raivin_lidar_user([LiDAR]):::coral
+
+    classDef blue fill:#89cff0;
+    classDef teal fill:#17becf;
+    classDef orange fill:#ff7f0e;
+    classDef green fill:#2ca02c;
+    classDef purple fill:#9467bd;
+    classDef coral fill:#ff6f61;
+    classDef all fill:#CBAACB;
+
+    %% Hardware Definitions
+    raivin_lidar_hardware[Raivin + LiDAR Quickstart]
+    raivin_hardware[Raivin Quickstart]
+    maivin_hardware[Maivin Quickstart]
+
+    %% Dataset Definitions
+    record_mcap[Record MCAP]
+    capture[Take video/images from smartphone]
+    snapshot[Create and restore snapshot]
+    copy_dataset[Copy public dataset]
+    audit_3d[Auto Annotate 3D]
+    audit_2d[Auto Annotate 2D]
+
+    %% Model Definitions [train, validate, deploy 2D and 3D]
+    train_2d[Train Vision Model]
+    validate_2d[Validate Vision Model]
+    jupyter_2d[Deploy Vision Model on the PC]
+    maivin_2d[Deploy Vision Model on the Maivin]
+
+    train_3d[Train Fusion Model]
+    validate_3d[Validate Fusion Model]
+    raivin_3d[Deploy Fusion Model on the Raivin]
+
+    %% Flowchart Starting Points
+    raivin_lidar_user --> raivin_lidar_hardware --> record_mcap
+    raivin_user --> raivin_hardware --> record_mcap
+    maivin_user --> maivin_hardware --> record_mcap
+    web_user --> capture
+    tourist_plus --> copy_dataset
+    tourist --> copy_dataset
+
+    %% Flowchart Dataset Processes
+    record_mcap --> snapshot 
+    snapshot --> audit_2d --> train_2d
+    snapshot --Raivin/LiDAR Only--> audit_3d --> train_3d
+    capture --> audit_2d
+    copy_dataset --Tourist+ Only--> audit_2d 
+    copy_dataset --Tourist Only--> train_2d
+
+    %% Flowchart Model Processes
+    train_2d --> validate_2d 
+    validate_2d --> jupyter_2d
+    validate_2d --Maivin/Raivin/LiDAR Only--> maivin_2d
+    train_3d --> validate_3d --> raivin_3d
+
+    %% linkStyle 0 stroke:#ff6f61
+    %% linkStyle 1 stroke:#ff6f61
+```
+
 1. [Web-Based Workflow](getting_started/web.md)
 
     This workflow is intended for users with a personal computer and a device with a camera with access to Wifi and a web browser. The examples shown in this workflow will be from a Windows computer and an Android phone for recording images. To proceed to this workflow, click on the link above.

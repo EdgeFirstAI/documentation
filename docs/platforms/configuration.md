@@ -94,7 +94,7 @@ The camera mirror setting can flip the camera image to match the orientation of 
 ### H.264 Bitrate
 Controls the H.264 streaming compression level.  The higher the bitrate, the better the quality of the image.  The actual bitrate remains variable based on the scene but this value sets the cap. Possible values are "auto", "mbps5", "mbps25", "mbps50", and "mbps100".  The "auto" setting is about 10 Mbps on the Raivin. This also impacts MCAP recording size.
 
-### H.264 Streaiming
+### H.264 Streaming
 This setting enables or disables the /camera/h.264 topic.
 
 ### JPEG Streaming.

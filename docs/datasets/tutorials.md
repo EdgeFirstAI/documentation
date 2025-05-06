@@ -374,7 +374,7 @@ You will now see the datasets contained in the project. Each dataset has a galle
 <figcaption>Gallery Button</figcaption>
 </figure>
 
-When clicking the gallery button, you will either see the images in the dataset for [Image-Based Datasets](../datasets/types.md#image-based) or sequences for [Sequence-Based Datasets](../datasets/types.md#sequence-based).
+When clicking the gallery button, you will either see the images in the dataset for [Image-Based Datasets](../datasets/structure.md#image-based) or sequences for [Sequence-Based Datasets](../datasets/structure.md#sequence-based).
 
 For sequence-based datasets, you need to specify which sequence you would like to view. This can be done by clicking on the sequence.
 

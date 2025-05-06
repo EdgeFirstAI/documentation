@@ -2227,9 +2227,18 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#process-the-data" class="md-nav__link">
+  <a href="#process-and-log-the-data" class="md-nav__link">
     <span class="md-ellipsis">
-      Process the Data
+      Process and Log the Data
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#results" class="md-nav__link">
+    <span class="md-ellipsis">
+      Results
     </span>
   </a>
   
@@ -2269,9 +2278,18 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#process-the-data_1" class="md-nav__link">
+  <a href="#process-and-log-the-data_1" class="md-nav__link">
     <span class="md-ellipsis">
-      Process the Data
+      Process and Log the Data
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#results_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Results
     </span>
   </a>
   
@@ -2311,9 +2329,18 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#process-the-data_2" class="md-nav__link">
+  <a href="#process-and-log-the-data_2" class="md-nav__link">
     <span class="md-ellipsis">
-      Process the Data
+      Process and Log the Data
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#results_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      Results
     </span>
   </a>
   
@@ -3448,9 +3475,18 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#process-the-data" class="md-nav__link">
+  <a href="#process-and-log-the-data" class="md-nav__link">
     <span class="md-ellipsis">
-      Process the Data
+      Process and Log the Data
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#results" class="md-nav__link">
+    <span class="md-ellipsis">
+      Results
     </span>
   </a>
   
@@ -3490,9 +3526,18 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#process-the-data_1" class="md-nav__link">
+  <a href="#process-and-log-the-data_1" class="md-nav__link">
     <span class="md-ellipsis">
-      Process the Data
+      Process and Log the Data
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#results_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Results
     </span>
   </a>
   
@@ -3532,9 +3577,18 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#process-the-data_2" class="md-nav__link">
+  <a href="#process-and-log-the-data_2" class="md-nav__link">
     <span class="md-ellipsis">
-      Process the Data
+      Process and Log the Data
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#results_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      Results
     </span>
   </a>
   
@@ -3589,11 +3643,7 @@
 <div class="tabbed-content">
 <div class="tabbed-block">
 <div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">edgefirst.schemas.sensor_msgs</span><span class="w"> </span><span class="kn">import</span> <span class="n">CameraInfo</span>
-
-<span class="c1"># Receive a message</span>
 <span class="n">msg</span> <span class="o">=</span> <span class="n">subscriber</span><span class="o">.</span><span class="n">recv</span><span class="p">()</span>
-
-<span class="c1"># deserialize message</span>
 <span class="n">info</span> <span class="o">=</span> <span class="n">CameraInfo</span><span class="o">.</span><span class="n">deserialize</span><span class="p">(</span><span class="n">msg</span><span class="o">.</span><span class="n">payload</span><span class="o">.</span><span class="n">to_bytes</span><span class="p">())</span>
 </code></pre></div>
 </div>
@@ -3608,21 +3658,29 @@
 </div>
 </div>
 </div>
-<h3 id="process-the-data">Process the Data</h3>
+<h3 id="process-and-log-the-data">Process and Log the Data</h3>
 <p>The CameraInfo message contains camera calibration and configuration information. You can access various fields like:</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="3:2"><input checked="checked" id="__tabbed_3_1" name="__tabbed_3" type="radio" /><input id="__tabbed_3_2" name="__tabbed_3" type="radio" /><div class="tabbed-labels"><label for="__tabbed_3_1">Python</label><label for="__tabbed_3_2">Rust</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="3:1"><input checked="checked" id="__tabbed_3_1" name="__tabbed_3" type="radio" /><div class="tabbed-labels"><label for="__tabbed_3_1">Python</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <div class="highlight"><pre><span></span><code><span class="c1"># Access camera parameters</span>
 <span class="n">width</span> <span class="o">=</span> <span class="n">info</span><span class="o">.</span><span class="n">width</span>
 <span class="n">height</span> <span class="o">=</span> <span class="n">info</span><span class="o">.</span><span class="n">height</span>
 <span class="n">distortion_model</span> <span class="o">=</span> <span class="n">info</span><span class="o">.</span><span class="n">distortion_model</span>
-<span class="n">D</span> <span class="o">=</span> <span class="n">info</span><span class="o">.</span><span class="n">D</span>  <span class="c1"># Distortion parameters</span>
-<span class="n">K</span> <span class="o">=</span> <span class="n">info</span><span class="o">.</span><span class="n">K</span>  <span class="c1"># Intrinsic camera matrix</span>
-<span class="n">R</span> <span class="o">=</span> <span class="n">info</span><span class="o">.</span><span class="n">R</span>  <span class="c1"># Rectification matrix</span>
-<span class="n">P</span> <span class="o">=</span> <span class="n">info</span><span class="o">.</span><span class="n">P</span>  <span class="c1"># Projection matrix</span>
+<span class="n">D</span> <span class="o">=</span> <span class="n">info</span><span class="o">.</span><span class="n">d</span>  <span class="c1"># Distortion parameters</span>
+<span class="n">K</span> <span class="o">=</span> <span class="n">info</span><span class="o">.</span><span class="n">k</span>  <span class="c1"># Intrinsic camera matrix</span>
+<span class="n">R</span> <span class="o">=</span> <span class="n">info</span><span class="o">.</span><span class="n">r</span>  <span class="c1"># Rectification matrix</span>
+<span class="n">P</span> <span class="o">=</span> <span class="n">info</span><span class="o">.</span><span class="n">p</span>  <span class="c1"># Projection matrix</span>
+<span class="n">rr</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="s2">&quot;CameraInfo&quot;</span><span class="p">,</span> <span class="n">rr</span><span class="o">.</span><span class="n">TextLog</span><span class="p">(</span><span class="s2">&quot;Camera Width: </span><span class="si">%d</span><span class="s2"> Camera Height: </span><span class="si">%d</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">width</span><span class="p">,</span> <span class="n">height</span><span class="p">)))</span>
 </code></pre></div>
 </div>
+</div>
+</div>
+<h3 id="results">Results</h3>
+<p>When displaying the results through Rerun you will see a log of the camera width and height.
+<img alt="alt text" src="../assets/camera_info.png" /></p>
+<div class="tabbed-set tabbed-alternate" data-tabs="4:1"><input checked="checked" id="__tabbed_4_1" name="__tabbed_4" type="radio" /><div class="tabbed-labels"><label for="__tabbed_4_1">Rust</label></div>
+<div class="tabbed-content">
 <div class="tabbed-block">
 <div class="highlight"><pre><span></span><code><span class="c1">// Access camera parameters</span>
 <span class="kd">let</span><span class="w"> </span><span class="n">width</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">info</span><span class="p">.</span><span class="n">width</span><span class="p">;</span>
@@ -3638,12 +3696,15 @@
 </div>
 <h2 id="camerah264">/camera/h264</h2>
 <h3 id="setting-up-subscriber_1">Setting up subscriber</h3>
-<p>After setting up the Zenoh session, we will create a subscriber to the <code>camera/h264</code> topic</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="4:2"><input checked="checked" id="__tabbed_4_1" name="__tabbed_4" type="radio" /><input id="__tabbed_4_2" name="__tabbed_4" type="radio" /><div class="tabbed-labels"><label for="__tabbed_4_1">Python</label><label for="__tabbed_4_2">Rust</label></div>
+<p>After setting up the Zenoh session, we will create a subscriber to the <code>camera/h264</code> topic and initialize a container for the H264 feed</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="5:2"><input checked="checked" id="__tabbed_5_1" name="__tabbed_5" type="radio" /><input id="__tabbed_5_2" name="__tabbed_5" type="radio" /><div class="tabbed-labels"><label for="__tabbed_5_1">Python</label><label for="__tabbed_5_2">Rust</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <div class="highlight"><pre><span></span><code><span class="c1"># Create a subscriber for &quot;rt/camera/h264&quot;</span>
 <span class="n">subscriber</span> <span class="o">=</span> <span class="n">session</span><span class="o">.</span><span class="n">declare_subscriber</span><span class="p">(</span><span class="s1">&#39;rt/camera/h264&#39;</span><span class="p">)</span>
+<span class="n">raw_data</span> <span class="o">=</span> <span class="n">io</span><span class="o">.</span><span class="n">BytesIO</span><span class="p">()</span>
+<span class="n">container</span> <span class="o">=</span> <span class="n">av</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">raw_data</span><span class="p">,</span> <span class="nb">format</span><span class="o">=</span><span class="s1">&#39;h264&#39;</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s1">&#39;r&#39;</span><span class="p">)</span>
+<span class="n">frame_position</span> <span class="o">=</span> <span class="mi">0</span>
 </code></pre></div>
 </div>
 <div class="tabbed-block">
@@ -3658,16 +3719,13 @@
 </div>
 <h3 id="receive-a-message_1">Receive a message</h3>
 <p>We can now receive a message on the subscriber. After receiving the message, we will need to deserialize it.</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="5:2"><input checked="checked" id="__tabbed_5_1" name="__tabbed_5" type="radio" /><input id="__tabbed_5_2" name="__tabbed_5" type="radio" /><div class="tabbed-labels"><label for="__tabbed_5_1">Python</label><label for="__tabbed_5_2">Rust</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="6:2"><input checked="checked" id="__tabbed_6_1" name="__tabbed_6" type="radio" /><input id="__tabbed_6_2" name="__tabbed_6" type="radio" /><div class="tabbed-labels"><label for="__tabbed_6_1">Python</label><label for="__tabbed_6_2">Rust</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">edgefirst.schemas.foxglove_msgs</span><span class="w"> </span><span class="kn">import</span> <span class="n">CompressedVideo</span>
 
 <span class="c1"># Receive a message</span>
 <span class="n">msg</span> <span class="o">=</span> <span class="n">subscriber</span><span class="o">.</span><span class="n">recv</span><span class="p">()</span>
-
-<span class="c1"># deserialize message</span>
-<span class="n">video</span> <span class="o">=</span> <span class="n">CompressedVideo</span><span class="o">.</span><span class="n">deserialize</span><span class="p">(</span><span class="n">msg</span><span class="o">.</span><span class="n">payload</span><span class="o">.</span><span class="n">to_bytes</span><span class="p">())</span>
 </code></pre></div>
 </div>
 <div class="tabbed-block">
@@ -3681,15 +3739,20 @@
 </div>
 </div>
 </div>
-<h3 id="process-the-data_1">Process the Data</h3>
-<p>The CompressedVideo message contains H.264 encoded video data. You can access various fields like:</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="6:2"><input checked="checked" id="__tabbed_6_1" name="__tabbed_6" type="radio" /><input id="__tabbed_6_2" name="__tabbed_6" type="radio" /><div class="tabbed-labels"><label for="__tabbed_6_1">Python</label><label for="__tabbed_6_2">Rust</label></div>
+<h3 id="process-and-log-the-data_1">Process and Log the Data</h3>
+<p>The CompressedVideo message contains H.264 encoded video data. You can convert </p>
+<div class="tabbed-set tabbed-alternate" data-tabs="7:2"><input checked="checked" id="__tabbed_7_1" name="__tabbed_7" type="radio" /><input id="__tabbed_7_2" name="__tabbed_7" type="radio" /><div class="tabbed-labels"><label for="__tabbed_7_1">Python</label><label for="__tabbed_7_2">Rust</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="c1"># Access video parameters</span>
-<span class="n">width</span> <span class="o">=</span> <span class="n">video</span><span class="o">.</span><span class="n">width</span>
-<span class="n">height</span> <span class="o">=</span> <span class="n">video</span><span class="o">.</span><span class="n">height</span>
-<span class="n">data</span> <span class="o">=</span> <span class="n">video</span><span class="o">.</span><span class="n">data</span>  <span class="c1"># H.264 encoded video data</span>
+<div class="highlight"><pre><span></span><code><span class="n">raw_data</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">msg</span><span class="o">.</span><span class="n">payload</span><span class="o">.</span><span class="n">to_bytes</span><span class="p">())</span>
+<span class="n">raw_data</span><span class="o">.</span><span class="n">seek</span><span class="p">(</span><span class="n">frame_position</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">packet</span> <span class="ow">in</span> <span class="n">container</span><span class="o">.</span><span class="n">demux</span><span class="p">():</span>
+    <span class="k">if</span> <span class="n">packet</span><span class="o">.</span><span class="n">size</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>  <span class="c1"># Skip empty packets</span>
+        <span class="k">continue</span>
+    <span class="n">frame_position</span> <span class="o">+=</span> <span class="n">packet</span><span class="o">.</span><span class="n">size</span>  <span class="c1"># Update frame position</span>
+    <span class="k">for</span> <span class="n">frame</span> <span class="ow">in</span> <span class="n">packet</span><span class="o">.</span><span class="n">decode</span><span class="p">():</span>  <span class="c1"># Decode video frames</span>
+        <span class="n">frame_array</span> <span class="o">=</span> <span class="n">frame</span><span class="o">.</span><span class="n">to_ndarray</span><span class="p">(</span><span class="nb">format</span><span class="o">=</span><span class="s1">&#39;rgb24&#39;</span><span class="p">)</span>  <span class="c1"># Convert frame to numpy array</span>
+        <span class="n">rr</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="s1">&#39;image&#39;</span><span class="p">,</span> <span class="n">rr</span><span class="o">.</span><span class="n">Image</span><span class="p">(</span><span class="n">frame_array</span><span class="p">))</span>
 </code></pre></div>
 </div>
 <div class="tabbed-block">
@@ -3701,10 +3764,13 @@
 </div>
 </div>
 </div>
+<h3 id="results_1">Results</h3>
+<p>When displaying the results through Rerun you will see the live camera feed from your EdgeFirst Platform.
+<img alt="alt text" src="../assets/h264.png" /></p>
 <h2 id="camerajpeg">/camera/jpeg</h2>
 <h3 id="setting-up-subscriber_2">Setting up subscriber</h3>
 <p>After setting up the Zenoh session, we will create a subscriber to the <code>camera/jpeg</code> topic</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="7:2"><input checked="checked" id="__tabbed_7_1" name="__tabbed_7" type="radio" /><input id="__tabbed_7_2" name="__tabbed_7" type="radio" /><div class="tabbed-labels"><label for="__tabbed_7_1">Python</label><label for="__tabbed_7_2">Rust</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="8:2"><input checked="checked" id="__tabbed_8_1" name="__tabbed_8" type="radio" /><input id="__tabbed_8_2" name="__tabbed_8" type="radio" /><div class="tabbed-labels"><label for="__tabbed_8_1">Python</label><label for="__tabbed_8_2">Rust</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <div class="highlight"><pre><span></span><code><span class="c1"># Create a subscriber for &quot;rt/camera/jpeg&quot;</span>
@@ -3723,7 +3789,7 @@
 </div>
 <h3 id="receive-a-message_2">Receive a message</h3>
 <p>We can now receive a message on the subscriber. After receiving the message, we will need to deserialize it.</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="8:2"><input checked="checked" id="__tabbed_8_1" name="__tabbed_8" type="radio" /><input id="__tabbed_8_2" name="__tabbed_8" type="radio" /><div class="tabbed-labels"><label for="__tabbed_8_1">Python</label><label for="__tabbed_8_2">Rust</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="9:2"><input checked="checked" id="__tabbed_9_1" name="__tabbed_9" type="radio" /><input id="__tabbed_9_2" name="__tabbed_9" type="radio" /><div class="tabbed-labels"><label for="__tabbed_9_1">Python</label><label for="__tabbed_9_2">Rust</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">edgefirst.schemas.sensor_msgs</span><span class="w"> </span><span class="kn">import</span> <span class="n">CompressedImage</span>
@@ -3746,16 +3812,15 @@
 </div>
 </div>
 </div>
-<h3 id="process-the-data_2">Process the Data</h3>
-<p>The CompressedImage message contains JPEG encoded image data. You can access various fields like:</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="9:2"><input checked="checked" id="__tabbed_9_1" name="__tabbed_9" type="radio" /><input id="__tabbed_9_2" name="__tabbed_9" type="radio" /><div class="tabbed-labels"><label for="__tabbed_9_1">Python</label><label for="__tabbed_9_2">Rust</label></div>
+<h3 id="process-and-log-the-data_2">Process and Log the Data</h3>
+<p>The CompressedImage message contains JPEG encoded image data. You can process the data with the following</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="10:2"><input checked="checked" id="__tabbed_10_1" name="__tabbed_10" type="radio" /><input id="__tabbed_10_2" name="__tabbed_10" type="radio" /><div class="tabbed-labels"><label for="__tabbed_10_1">Python</label><label for="__tabbed_10_2">Rust</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="c1"># Access image parameters</span>
-<span class="n">width</span> <span class="o">=</span> <span class="n">image</span><span class="o">.</span><span class="n">width</span>
-<span class="n">height</span> <span class="o">=</span> <span class="n">image</span><span class="o">.</span><span class="n">height</span>
-<span class="nb">format</span> <span class="o">=</span> <span class="n">image</span><span class="o">.</span><span class="n">format</span>  <span class="c1"># Should be &quot;jpeg&quot;</span>
-<span class="n">data</span> <span class="o">=</span> <span class="n">image</span><span class="o">.</span><span class="n">data</span>  <span class="c1"># JPEG encoded image data</span>
+<div class="highlight"><pre><span></span><code><span class="n">np_arr</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">frombuffer</span><span class="p">(</span><span class="nb">bytearray</span><span class="p">(</span><span class="n">image</span><span class="o">.</span><span class="n">data</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">uint8</span><span class="p">)</span>
+<span class="n">im</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">imdecode</span><span class="p">(</span><span class="n">np_arr</span><span class="p">,</span> <span class="n">cv2</span><span class="o">.</span><span class="n">IMREAD_COLOR</span><span class="p">)</span>
+<span class="n">im</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">cvtColor</span><span class="p">(</span><span class="n">im</span><span class="p">,</span> <span class="n">cv2</span><span class="o">.</span><span class="n">COLOR_BGR2RGB</span><span class="p">)</span>
+<span class="n">rr</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="s1">&#39;image&#39;</span><span class="p">,</span> <span class="n">rr</span><span class="o">.</span><span class="n">Image</span><span class="p">(</span><span class="n">im</span><span class="p">))</span>
 </code></pre></div>
 </div>
 <div class="tabbed-block">
@@ -3768,6 +3833,9 @@
 </div>
 </div>
 </div>
+<h3 id="results_2">Results</h3>
+<p>When displaying the results through Rerun you will see the JPEG image feed.
+<img alt="alt text" src="../assets/h264.png" /></p>
 
 
 

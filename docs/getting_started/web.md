@@ -1,6 +1,6 @@
 # Web-Based Workflow
 
-In this workflow, we will explore recording a video or capturing images using a mobile device and then upload the captured data into EdgeFirst Studio for annotation and then model training, model validation, and model deployment using the PC. This workflow requires the user to have signed up and logged in to EdgeFirst Studio and followed the initial steps described in the [EdgeFirst Studio Quickstart](../index.md#edgefirst-studio-quickstart).
+In this workflow, we will explore recording a video or capturing images using a mobile device and then upload the captured data into EdgeFirst Studio for annotation and then model training, validation, and deployment using the PC. This workflow requires the user to have signed up and logged in to EdgeFirst Studio and followed the initial steps described in the [EdgeFirst Studio Quickstart](../index.md#initial-steps).
 
 !!! warning
     It is recommended to use a mobile device connected to a Wifi network. A device connected to mobile data might be subject to intense usage when uploading files as video files or image files can be large in size. In the examples below, the video file used was ~15MB and the image files were ~2MB.
@@ -167,13 +167,36 @@ Now that we have imported some data into EdgeFirst Studio and have split the cap
 
 In this step, we will be using a personal computer with access to Wifi to [log in][login] to EdgeFirst Studio for annotating the captured data. When annotating the dataset, we will be using AI assistance to annotate the ground truth to perform auto segmentation and bounding boxes on the objects of interest in the frame. Once logged in to EdgeFirst Studio, follow instructions for [auto-annotating the dataset](../datasets/tutorials.md#auto-annotations-via-gallery). Otherwise, for auditing individual annotations, following instructions from [Audit 2D Annotations](../datasets/tutorials.md#audit-2d-annotations).
 
+A complete annotation will have a segmentation mask and a bounding box for each object in the frame. Shown below is an example. 
+
+<figure markdown="span">
+![Sample Annotation](assets/workflows/sample-2d-annotation.jpg){ align=center }
+<figcaption>Sample Annotation</figcaption>
+</figure>
+
 ## 5. Train a Model from the Annotated Data
 
-TBA.
+Once you have a proper dataset that is fully annotated and split into training and validation groups, you can now start training your Vision model. For instructions to train a Vision model, please refer to the [Training ModelPack Tutorial](../models/modelpack/training.md).
+
+A completed training session will look like the following figure.
+
+<figure markdown="span">
+![Training Session](assets/workflows/completed-training-session.jpg){ align=center }
+<figcaption>Training Session</figcaption>
+</figure>
 
 ## 6. Validate the Trained Model
 
-TBA.
+Once the model is trained, you can now start validating the performance of the model to verify if the model is ready for deployment. 
+
+For instructions to validate a Vision model, please refere to the [Validating ModelPack Tutorial](../models/modelpack/validation.md).
+
+Once the validation session completes, the metrics will be displayed like the following figure.
+
+<figure markdown="span">
+![Validation Metrics](assets/workflows/sample-validation-metrics.jpg){ align=center }
+<figcaption>Validation Metrics</figcaption>
+</figure>
 
 ## 7. Deploy the Model
 

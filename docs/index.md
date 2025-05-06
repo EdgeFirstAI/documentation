@@ -246,7 +246,7 @@ flowchart LR
     %% linkStyle 1 stroke:#ff6f61
 ```
 
-1. Web Workflow (*Coming Soon*)
+1. [Web Workflow](getting_started/web.md)
 
     This workflow is intended for users with a personal computer and a device with a camera with access to Wifi and a web browser. The examples shown in this workflow will be from a Windows computer and an Android phone for recording images. To proceed to this workflow, click on the link above.
 

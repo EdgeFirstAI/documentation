@@ -70,4 +70,4 @@ The `/camera/h264` topic uses Foxglove's [CompressedVideo](../api/foxglove_msgs.
 
 ## /camera/jpeg
 
-The `/camera/jpeg` topic uses ROS2's [CompressedImage](../api/sensor_msgs.md#compressedimage) schema to publish JPEG encoded camera frames.  Each frame is a complete JPEG image and can be decoded using any standard JPEG decoder.
+The `/camera/jpeg` topic uses ROS2's [CompressedImage](../api/sensor_msgs.md#compressedimage) schema to publish JPEG encoded camera frames.  Each frame is a complete JPEG image and can be decoded using any standard JPEG decoder. The JPEG topic will not be enabled by default. In order to enable the JPEG topic, please follow the guide noted in [configuration](../../platforms/configuration/#h264-streaming)

@@ -7,7 +7,7 @@ Let's discuss how to install our custom plug-ins once you've installed Foxglove 
 ### Installing EdgeFirst Plugin
 
 !!! note
-      These guidelines describes installation of version 1.0.2 of the EdgeFirst plug-in for Foxglove, which is current as of time of writing.
+      These guidelines describes installation of version 1.1.3 of the EdgeFirst plug-in for Foxglove, which is current as of time of writing.
 
 1. Open Foxglove Studio
 
@@ -20,7 +20,7 @@ Let's discuss how to install our custom plug-ins once you've installed Foxglove 
       <figcaption>Foxglove Settings</figcaption>
       </figure>
 
-   - Click the EdgeFirst Detect plugin.
+   - Click the EdgeFirst Schemas plugin (or the older EdgeFirst Detect plugin)
 
       <figure markdown="span">
       ![Foxglove Extension View](assets/foxglove_extension_view.png){align=center}
@@ -30,7 +30,7 @@ Let's discuss how to install our custom plug-ins once you've installed Foxglove 
    - Click the "Uninstall" button.
 
       <figure markdown="span">
-      ![Foxglove Install Extenstion](assets/foxglove_install_extenstion.png){align=center}
+      ![Foxglove Install Extenstion](assets/foxglove_uninstall_extenstion.png){align=center}
       <figcaption>Foxglove Install Extension</figcaption>
       </figure>
 
@@ -49,17 +49,17 @@ Let's discuss how to install our custom plug-ins once you've installed Foxglove 
    - Click the "Install local extension..." button.  
 
       <figure markdown="span">
-      ![Foxglove Extension View](assets/foxglove_extension_view.png){align=center}
+      ![Foxglove Extension View](assets/foxglove_install_extension.png){align=center}
       <figcaption>Foxglove Extension View</figcaption>
       </figure>
 
-   - Select the `edgefirst.detect-1.0.2.foxe` file or a later version from the downloads directory.
+   - Select the `edgefirst.edgefirst-schemas-1.1.3.foxe` file or a later version from the downloads directory.
 
-4. Confirm that the 1.0.2 version was installed or the latest version available. 
+4. Confirm that the 1.1.3 version was installed or the latest version available. 
 
       <figure markdown="span">
-      ![Foxglove Extension View with 1.0.2](assets/foxglove_extension_view_1.0.2.png){align=center}
-      <figcaption>Foxglove Extension View with 1.0.2</figcaption>
+      ![Foxglove Extension View with 1.1.3](assets/foxglove_extension_view.png){align=center}
+      <figcaption>Foxglove Extension View with 1.1.3</figcaption>
       </figure>
 
 5. Close Foxglove Studio and restart it.
@@ -214,5 +214,5 @@ For more detailed information about Foxglove Studio features, visit the [Foxglov
 [foxglove]: https://foxglove.dev/
 [foxglove_dl]: https://foxglove.dev/download
 [foxglove_doc]: https://docs.foxglove.dev/docs/introduction/
-[github_edgefirst_dl]: https://github.com/MaivinAI/foxglove-edgefirst/releases/latest
+[github_edgefirst_dl]: https://github.com/EdgeFirstAI/foxglove/releases/latest
 [ros]: https://ros.org/

@@ -112,6 +112,8 @@ Edgefirst Studio provides specific workflows tailored towards various user perso
     <iframe width="560" height="315" src="https://www.youtube.com/embed/MmoDCXj72jk?si=I8gTw2VCtcts69ks" title="EdgeFirst Studio Overview" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 </div>
 
+##### Personas 
+
 The following diagram describes the workflow for identifying the user personas depending on the hardware requirements.
 
 ```mermaid
@@ -156,6 +158,22 @@ flowchart LR
     with_lidar -- No --> raivin_user
     raivin_platform -- No --> maivin_user
 ```
+
+!!! warning "PC Requirement"
+    It is expected that for all personas identified above, the user has a PC with Wifi access.
+
+We've identified six workflows: Tourist, Tourist+, Web, Maivin, Raivin, LiDAR. The hardware requirements and the available features increases starting with the Tourist as the most basic. 
+
+| Persona        | Hardware              | Features                                                                |
+|----------------|-----------------------|-------------------------------------------------------------------------|
+| Tourist        | PC                    | Train, Validate, Deploy Offline                                         |
+| Tourist+       | PC                    | Annotate 2D, Train, Validate, Deploy Offline                            |
+| Web            | PC + Smartphone       | Record, Annotate 2D, Train, Validate, Deploy Offline                    |
+| Maivin         | PC + Maivin           | Record, Annotate 2D, Train, Validate, Deploy on Device                  |
+| Raivin         | PC + Raivin w/ Radar  | Record, Annotate 2D + 3D, Train, Validate, Deploy on Device             |
+| LiDAR          | PC + Raivin w/ LiDAR  | Record, Annotate 2D + 3D (enhanced), Train, Validate, Deploy on Device  |
+
+##### User Journey
 
 The following diagram describes the workflows for each user persona identified above.
 
@@ -228,7 +246,7 @@ flowchart LR
     %% linkStyle 1 stroke:#ff6f61
 ```
 
-1. [Web-Based Workflow](getting_started/web.md)
+1. Web Workflow (*Coming Soon*)
 
     This workflow is intended for users with a personal computer and a device with a camera with access to Wifi and a web browser. The examples shown in this workflow will be from a Windows computer and an Android phone for recording images. To proceed to this workflow, click on the link above.
 

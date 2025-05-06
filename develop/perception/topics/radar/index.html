@@ -2014,6 +2014,15 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#radarinfo" class="md-nav__link">
+    <span class="md-ellipsis">
+      /radar/info
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#radartargets" class="md-nav__link">
     <span class="md-ellipsis">
       /radar/targets
@@ -2035,15 +2044,6 @@
   <a href="#radarcube" class="md-nav__link">
     <span class="md-ellipsis">
       /radar/cube
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#radarinfo" class="md-nav__link">
-    <span class="md-ellipsis">
-      /radar/info
     </span>
   </a>
   
@@ -3328,6 +3328,15 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#radarinfo" class="md-nav__link">
+    <span class="md-ellipsis">
+      /radar/info
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#radartargets" class="md-nav__link">
     <span class="md-ellipsis">
       /radar/targets
@@ -3349,15 +3358,6 @@
   <a href="#radarcube" class="md-nav__link">
     <span class="md-ellipsis">
       /radar/cube
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#radarinfo" class="md-nav__link">
-    <span class="md-ellipsis">
-      /radar/info
     </span>
   </a>
   
@@ -3387,6 +3387,8 @@
 <li>DBScan clustering of radar points</li>
 </ul>
 <p>The radars topics are published under the <code>/radar</code> namespace and offers the following sub-topics: <code>/radar/targets</code>, <code>/radar/clusters</code>, <code>/radar/cube</code>, and <code>/radar/info</code>. Clustering parameters are configurable through the <code>radarpub</code> service. See radarpub service configuration documentation for details.</p>
+<h2 id="radarinfo">/radar/info</h2>
+<p>The <code>/radar/info</code> topic publishes information about the current radar configuration. It describes the state of the center frequency, frequency sweep, range toggle, and detection frequency of the radar. </p>
 <h2 id="radartargets">/radar/targets</h2>
 <p>The <code>/radar/targets</code> topic publishes information about the received radar points using the <a href="../../api/sensor_msgs/#pointcloud2">PointCloud2</a> schema. The point cloud will have the fields <code>x</code>, <code>y</code>, <code>z</code>, <code>speed</code>, <code>power</code>, and <code>rcs</code> (radar cross section), all with the Float32 datatype. </p>
 <p>The XYZ coordinate system follows the <a href="https://www.ros.org/reps/rep-0103.html#coordinate-frame-conventions">standard ROS convention</a> of x forward, y left, z up.</p>
@@ -3396,9 +3398,10 @@
 <p>This topic is only published if the radarpub service is configured with the clustering task enabled.</p>
 <h2 id="radarcube">/radar/cube</h2>
 <p>The <code>/radar/cube</code> topic publishes information about the received radar sensor data using the custom <a href="../../api/edgefirst_msgs/#radarcube">RadarCube</a> schema. </p>
-<p>This topic is only published if the radarpub service is configured with the radar cube task enabled.</p>
-<h2 id="radarinfo">/radar/info</h2>
-<p>The <code>/radar/info</code> topic publishes information about the current radar configuration. It describes the state of the center frequency, frequency sweep, range toggle, and detection frequency of the radar. </p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This topic is only published if the radarpub service is configured with the radar cube publishing enabled.</p>
+</div>
 
 
 

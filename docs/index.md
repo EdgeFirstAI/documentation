@@ -29,9 +29,9 @@ the [EdgeFirst Platforms Quickstart](platforms/quickstart.md) and then come back
 
 This section describes the steps for onboarding new users to EdgeFirst Studio by creating their account, logging into EdgeFirst Studio, and creating their first project. 
 
-### Sign Up
+### Sign Up and Log In
 
-1. If you haven't already created an EdgeFirst Studio Account, start by [creating an account][signup]. 
+1. If you haven't already created an EdgeFirst Studio Account, start by [creating an account][signup]. If you've already created an account, but you [forget your password](studio/access.md#forgot-password), click on the link for instructions to reset your password.
 
 2. When creating your account, enter the required fields denoted by the asterisk (*) and then create your account once completed.
 
@@ -65,40 +65,61 @@ This section describes the steps for onboarding new users to EdgeFirst Studio by
 
 ### Initial Steps
 
-Now that you are in the *Projects* or Main page, you will see a public project called "Sample Datasets" containing public datasets and completed experiments. More information about this project will be provided in the [EdgeFirst Studio Overview](getting_started/workflows.md). 
+Now that you are in the *Projects* or Main page, you will see a public project called "Sample Project" containing public datasets and completed experiments. More information about this project will be provided in the [EdgeFirst Studio Overview](getting_started/studio.md). 
 
-For now, let's start by creating your first project since this is required in future tutorials. You can create a new project by clicking on the "Create" button on the top-right corner of the page.
+For now, let's start by creating your first project since this is required in future tutorials. You can create a new project by clicking on the "New Project" button on the top-right corner of the page.
 
 <figure markdown="span">
 ![Create Project](assets/create-project.jpg){ align=center }
-<figcaption>The location of the "Create" button</figcaption>
+<figcaption>The location of the "New Project" button</figcaption>
 </figure>
 
-Provide a name and a description of the project that reflects your goals.  In this example, the project will be named "People Detection", which will be used in all future tutorials requiring a user-created project.
+Provide a name and a description of the project that reflects your goals.  In this example, the project will be named "Object Detection", which will be used in all future tutorials requiring a user-created project. Click "CREATE" to create your new project.
 
 <figure markdown="span">
 ![Project Details](assets/create-project-fields.jpg){ align=center }
 <figcaption>Project Details</figcaption>
 </figure>
 
-Your newly created project will be placed next to the public project named "Sample Datasets". This public project contains public datasets for users to become familiar with how datasets are managed in EdgeFirst Studio. 
+Your newly created project will be placed next to the public project named "Sample Project". This public project contains public datasets for users to become familiar with [how datasets are managed](getting_started/datasets.md) in EdgeFirst Studio. 
 
 !!! Warning
-    The "Sample Datasets" project is **READ ONLY**.  Significant Studios functionality will need write-access to a project and will fail when attempted to be run on this project!
+    The "Sample Project" project is **READ ONLY**.  Significant Studios functionality will need write-access to a project and will fail when attempted to be run on this project!
 
 <figure markdown="span">
 ![New Project](assets/new-project.jpg){ align=center }
 <figcaption>Both Projects</figcaption>
 </figure>
 
-In this Quickstart guide, you have created your EdgeFirst Studio Account, logged in to EdgeFirst Studio, and created your very first project. The following links will provide additional tutorials for user onboarding in EdgeFirst Studio.
+In this Quickstart guide, you have created your EdgeFirst Studio Account, logged in to EdgeFirst Studio, and created your very first project. Proceed to the section below for a deeper dive into EdgeFirst Studio workflows. 
 
-* [EdgeFirst Studio: From Start to Deployment](getting_started/workflows.md)
-* [Navigating EdgeFirst Studio](getting_started/studio.md)
+### Next Steps
+
+For these next steps, it is recommended for new users to be familiar with the concepts and UI elements in EdgeFirst Studio as described in the [EdgeFirst Studio: Overview](getting_started/studio.md). Next, users are invited to follow along various workflows that are tailored towards various hardware requirements and resources available to the user. These workflows are described in the next section below.
+
+Otherwise, the following links will provide additional information for user onboarding in EdgeFirst Studio.
+
 * [Dataset Management](getting_started/datasets.md)
 * [Model Training, Validation, and Deployment](getting_started/models.md)
 * [Command-Line Interface: Using the EdgeFirst Studio Middleware](getting_started/perception.md)
 * [EdgeFirst Platforms: Setup and Boot Guide](getting_started/platforms.md)
+
+#### Workflows
+
+Edgefirst Studio provides specific workflows tailored towards various user personas depending on the hardware requirements and resources available to the user.
+
+<div style="text-align: center;">
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/MmoDCXj72jk?si=I8gTw2VCtcts69ks" title="EdgeFirst Studio Overview" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+</div>
+
+1. Web-Based Workflow (*coming soon*)
+
+    This workflow is intended for users with a personal computer and a device with a camera with access to Wifi and a web browser. The examples shown in this workflow will be from a Windows computer and an Android phone for recording images. To proceed to this workflow, click on the link above.
+
+2. [EdgeFirst Platform Workflow](getting_started/workflows.md)
+
+    This workflow is intended for users with a personal computer with access to Wifi and a web browser and a Maivin or a Raivin platform. To proceed to this workflow, click on the link above.
+
 
 [signup]: #
 [login]: #

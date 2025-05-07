@@ -4,10 +4,50 @@ This page describes security protocols in EdgeFirst Studio.
 
 ## User Credentials
 
-When initially deployed, the portal has one admin user for the organization.  The user credentials are provided by the AuZone Team. After login, the user can change their password. The organization information may not exist at this stage. The admin user can create the organization and its information. 
+When initially deployed, the portal has one admin user for the organization.  The user credentials are provided by the AuZone Team. After login, the user can change their password. If the user has forgotten their password and cannot login, please see the section [Forgot Password?](#forgot-password). The organization information may not exist at this stage. The admin user can create the organization and its information. 
 
 !!! note
     The admin user can add other users with different permissions. 
+
+### Forgot Password?
+
+Visit the [login page][login] and click on the link "Forgot password?" as shown below.
+
+<figure markdown="span">
+![Forgot Password](assets/forgot-password.jpg){ align=center }
+<figcaption>Forgot Password</figcaption>
+</figure>
+
+You will then be prompted to enter the email associated to your account. Go ahead and enter your email and then click "RESET PASSWORD".
+
+<figure markdown="span">
+![Enter your Email](assets/forgot-password-email.jpg){ align=center }
+<figcaption>Enter your Email</figcaption>
+</figure>
+
+You will be notified to check your email for instructions to reset your password. Check your email for these instructions. 
+
+<figure markdown="span">
+![Resetting your Password](assets/resetting-password.jpg){ align=center }
+<figcaption>Resetting Your Password</figcaption>
+</figure>
+
+A link will be provided in the sent email. Click on the link to continue to reset your password.
+
+<figure markdown="span">
+![Resetting your Password](assets/resetting-password-link.jpg){ align=center }
+<figcaption>Resetting Your Password</figcaption>
+</figure>
+
+You will then be prompted to enter a new password. Once entered, click "RESET PASSWORD" to submit.
+
+<figure markdown="span">
+![Enter New Password](assets/new-password.jpg){ align=center }
+<figcaption>Enter New Password</figcaption>
+</figure>
+
+Done! You will then be prompted back to the login page for you to enter your new credentials. 
+
 
 ## User Management
 
@@ -105,3 +145,5 @@ User can selectively add other users as viewers and editors. A users can be in o
 ### Private
 
 Available to the creator of the projects only.
+
+[login]: #

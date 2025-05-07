@@ -51,7 +51,7 @@ The MCAP files are listed under the list of MCAP files which can then be downloa
 
 ## Upload Recorded Data to EdgeFirst Studio
 
-This tutorial shows how to upload a downloaded MCAP recording shown in [Download Recorded Data Tutorial](#download-recorded-data).
+This tutorial shows how to upload a downloaded MCAP recording shown in [Download Recorded Data Tutorial](#download-recorded-data). For uploading [EdgeFirst Datasets](format.md), please see the instructions for [Upload from Zip/Arrow File](../studio/snapshots.md#upload-from-ziparrow-file).
 
 <div style="text-align: center;">
     <iframe width="560" height="315" src="https://www.youtube.com/embed/j-75Q5-_dC0?start=558&end=720" title="Upload MCAP" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
@@ -65,7 +65,7 @@ In EdgeFirst Studio, select *Data Snapshots* under the tool options.
 </figure>
 
 !!! note
-    A project has already been created intended for people detection. This step
+    A project has already been created intended for object detection. This step
     has been covered in [Getting Started](../index.md#initial-steps).
 
 Once you are in the *Data Snapshots* page, upload the recorded MCAP by clicking *FROM FILE* which opens a new window dialog for selecting the MCAP downloaded in your PC.
@@ -85,7 +85,7 @@ Once the MCAP file is selected, this would start the upload progress in EdgeFirs
 
 This tutorial shows how to annotate an uploaded MCAP recording shown in [Upload Recorded Data Tutorial](#upload-recorded-data-to-edgefirst-studio).
 
-##### Auto Annotations
+##### Auto Annotations via Snapshot
 
 To reduce the effort required by the user to annotate the data, part of this process is to run auto-annotations on the uploaded data. 
 
@@ -135,15 +135,83 @@ Next [navigate to the gallery](#viewing-datasets) of the dataset by clicking on 
 :------------------:|:------------------:|:------------------:
 ![Annotation 1](assets/annotation-1.jpg) | ![Annotation 2](assets/annotation-2.jpg) | ![Annotation 3](assets/annotation-3.jpg)
 
+##### Auto Annotations via Gallery
 
-##### Audit Annotations
+Another method for running auto-annotations is to utilize the propagation feature in the gallery.
+
+Start by enabling an AI Assisted Ground Truth server by navigating to the *Cloud Instances* under the tool options.
+
+<figure markdown="span">
+![Cloud Instances](assets/cloud-instances.jpg){ align=center }
+<figcaption>Cloud Instances</figcaption>
+</figure>
+
+Start and launch a new server to host the auto-segmentation backend.
+
+<figure markdown="span">
+![Start a Server](assets/launch-ai-server.jpg){ align=center }
+<figcaption>Start a Server</figcaption>
+</figure>
+
+Next navigate back to the [dataset gallery](#viewing-datasets) and enable edit mode.
+
+<figure markdown="span">
+![Select the Video Segment Tool](assets/video-segment-tool.jpg){ align=center }
+<figcaption>Select the Video Segment Tool</figcaption>
+</figure>
+
+Click on the Video Segment Tool as indicated in red above. Next click the "Initialize State". This will load the indicated starting frame (current) to the stop frame (end) to SAM-2 for tracking the object across these frames for auto annotations. 
+
+<figure markdown="span">
+![Initialize the Video State](assets/video-initialize-state.jpg){ align=center }
+<figcaption>Initialize the Video State</figcaption>
+</figure>
+
+Once the state has been initialized, additional options will be provided to allow the user to provide prompts to SAM for propagation. Start by selecting the box tool as indicated in red. This will allow the user to draw bounding box prompts to the initial annotation for propagation.
+
+<figure markdown="span">
+![Select the Box Tool](assets/video-box-tool.jpg){ align=center }
+<figcaption>Select the Box Tool</figcaption>
+</figure>
+
+Now draw a bounding box prompt (white) around the object to annotate. In this case the person on the frame will be annotated. Once the bounding box is drawn, the segmentation mask will be drawn and the associated bounding box for the mask (yellow). Next click on "Propagate" to propagate this annotation (mask and bounding box) across frames using SAM-2 tracking and propagation. 
+
+<figure markdown="span">
+![Initial Annotation](assets/video-box-prompt.jpg){ align=center }
+<figcaption>Initial Annotation</figcaption>
+</figure>
+
+This will start the propagation progress across the frames specified.
+
+<figure markdown="span">
+![Propagation Progress](assets/video-propagation-progress.jpg){ align=center }
+<figcaption>Propagation Progress</figcaption>
+</figure>
+
+Once the propagation is completed, click "Save Pending Segmentations" to save the propagated annotations. 
+
+<figure markdown="span">
+![Save Pending Segmentations](assets/video-save-pending-segmentations.jpg){ align=center }
+<figcaption>Save Pending Segmentations</figcaption>
+</figure>
+
+For cases where the object exits and then re-enters the frame, the object might not be tracked properly. Repeat the steps as necessary to annotate objects that were missed.
+
+<figure markdown="span">
+![Repeat Propagation](assets/video-repeat-propagation.jpg){ align=center }
+<figcaption>Repeat Propagation</figcaption>
+</figure>
+
+A completed propagation will show the annotations with masks and bounding boxes for subsequent frames as follows.
+
+| Annotation 1             | Annotation 2           | Annotation 3           |
+|--------------------------|------------------------|------------------------|
+| ![YZ](assets/video-annotation-1.jpg) | ![XY](assets/video-annotation-2.jpg) | ![Positive Shift](assets/video-annotation-3.jpg) |
+
+##### Audit 2D Annotations
 
 This step requires verifying the outputs of the auto-annotations and to make
-corrections if necessary in order to have a proper fully annotated dataset.
-
-<div style="text-align: center;">
-    <iframe width="560" height="315" src="https://www.youtube.com/embed/j-75Q5-_dC0?start=1536&end=2144" title="Visualize Annotations" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-</div>
+corrections to the 2D annotations if necessary in order to have a proper fully annotated dataset.
 
 Some annotations were missed from the auto-annotations and to correct those errors, we can utilize the auto-segment tool.
 Start by enabling an AI Assisted Ground Truth server by navigating to the *Cloud Instances* under the tool options.
@@ -160,7 +228,7 @@ Start and launch a new server to host the auto-segmentation backend.
 <figcaption>Start a Server</figcaption>
 </figure>
 
-Navigate back to the dataset and enable edit mode.
+Navigate back to the [dataset gallery](#viewing-datasets) and enable edit mode.
 
 <figure markdown="span">
 ![Edit Mode](assets/edit-mode.jpg){ align=center }
@@ -191,6 +259,97 @@ Click *SUBMIT* to accept the annotation.
 </figure>
 
 Part of the audit process is to go over each sample in the dataset and correcting any missed annotations or incorrect annotations.
+
+#### Audit 3D annotations
+
+This step requires verifying the outputs of the auto-annotations and to make
+corrections to the 3D bounding box annotations if necessary in order to have a proper fully annotated dataset.
+
+<div style="text-align: center;">
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/j-75Q5-_dC0?start=1536&end=2144" title="Visualize Annotations" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+</div>
+
+First [navigate to the gallery](#viewing-datasets) and enable edit mode.
+
+<figure markdown="span">
+![Edit Mode](assets/edit-mode-3d.jpg){ align=center }
+<figcaption>Edit Mode</figcaption>
+</figure>
+
+Ensure the point clouds and the 3D bounding box annotations are toggled visible.
+
+<figure markdown="span">
+![Visible 3D Annotations](assets/visible-3d-annotations.jpg){ align=center }
+<figcaption>Visible 3D Annotations</figcaption>
+</figure>
+
+##### Scale 3D Annotation
+
+The error in the current annotation is that the bounding box is not scaled properly. Click on the option on the left sidebar to enable 3D bounding box scaling as highlighted in red.
+
+<figure markdown="span">
+![Scale 3D Annotations](assets/scale-3d-box.jpg){ align=center }
+<figcaption>Scale 3D Annotations</figcaption>
+</figure>
+
+Click on the current 3D bounding box to scale and this will provide cursors to scale the 3D bounding box in the 3-axis.
+
+<figure markdown="span">
+![Scaling 3D Annotations](assets/scale-3d-box-axis.jpg){ align=center }
+<figcaption>Scaling 3D Annotations</figcaption>
+</figure>
+
+The 3D bounding box was adjusted with proper scaling to the LiDAR point clouds of the object.
+
+| Scaled YZ Plane             | Scaled XY Plane           | Scaled XZ             |
+|-----------------------------|---------------------------|-----------------------|
+| ![YZ](assets/box-3d-scaleyz.jpg) | ![XY](assets/box-3d-scalexy.jpg) | ![Positive Shift](assets/box-3d-scalexz.jpg) |
+
+##### Translate 3D Annotation
+
+Next the adjusted 3D bounding box needs to be properly translated. Click on the option on the left sidebar to enable 3D bounding box translation as highlighted in red.
+
+<figure markdown="span">
+![Translate 3D Annotations](assets/translate-3d-box.jpg){ align=center }
+<figcaption>Translate 3D Annotations</figcaption>
+</figure>
+
+Similar to the workflow as scaling the 3D bounding boxes, move the three cursors for each axis to translate the bounding box for each axis.
+
+| Translate YZ Plane          | Translate XY Plane        | Translate XZ          |
+|-----------------------------|---------------------------|-----------------------|
+| ![YZ](assets/box-3d-translateyz.jpg) | ![XY](assets/box-3d-translatexy.jpg) | ![Positive Shift](assets/box-3d-translatexz.jpg) |
+
+
+Once the 3D bounding box annotation is properly oriented, click "SUBMIT" to save the changes.
+
+<figure markdown="span">
+![Submit 3D Annotations](assets/submit-audit-3d-boxes.jpg){ align=center }
+<figcaption>Submit 3D Annotations</figcaption>
+</figure>
+
+##### Add 3D Annotation
+
+To add a missing 3D bounding box, click on the option on the left sidebar to add a new 3D bounding box annotation as highlighted in red.
+
+<figure markdown="span">
+![Add 3D Annotations](assets/add-3d-box.jpg){ align=center }
+<figcaption>Add 3D Annotations</figcaption>
+</figure>
+
+Now click on the grid to add a new 3D bounding box on the position of the click.
+
+<figure markdown="span">
+![Added 3D Annotations](assets/added-3d-box.jpg){ align=center }
+<figcaption>Added 3D Annotations</figcaption>
+</figure>
+
+This newly added 3D bounding box may not be scaled or translated properly. Follow instructions for [scaling](#scale-3d-annotation) and [translating](#translate-3d-annotation) a 3D bounding box to properly center the bounding box around the LiDAR point cloud as shown below. Once the annotation is properly scaled and translated, click "SUBMIT" to save the annotation.
+
+<figure markdown="span">
+![Submit 3D Annotations](assets/submit-added-3d-box.jpg){ align=center }
+<figcaption>Submit 3D Annotations</figcaption>
+</figure>
 
 ## Viewing Datasets
 
@@ -234,6 +393,60 @@ When the sequence is clicked, you will now see the frames stored in the sequence
 <figcaption>Dataset Sequence</figcaption>
 </figure>
 
+## Verifying Datasets
+
+This tutorial will show an example of a dataset that is ready for training. 
+
+<div style="text-align: center;">
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/Q8uiYJb1HJ4?start=81&end=118" title="Indoor Dataset Overview" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+</div>
+
+Verify that the dataset has a training and validation split.  The sample dataset shown below has a dedicated split for training (20066 samples) and validation (2229 samples).
+
+<figure markdown="span">
+![Dataset Groups](assets/fusion-dataset-groups.jpg){ align=center }
+<figcaption>Fusion Dataset Groups</figcaption>
+</figure>
+
+Another sample dataset shown below is for training Vision models which has a dedicated split for training (1656 samples) and validation (184 samples).
+
+<figure markdown="span">
+![Dataset Groups](assets/vision-dataset-groups.jpg){ align=center }
+<figcaption>Vision Dataset Groups</figcaption>
+</figure>
+
+Verify the contents of the dataset and the annotations.  Click the button that navigates to the gallery.  This will show the contents of the dataset.  The dataset may be comprised of multiple sequences as shown below.  
+
+<figure markdown="span">
+![Dataset Sequences](assets/fusion-dataset-sequences.jpg){ align=center }
+<figcaption>Fusion Dataset Sequences</figcaption>
+</figure>
+
+<figure markdown="span">
+![Dataset Sequences](assets/vision-dataset-sequences.jpg){ align=center }
+<figcaption>Vision Dataset Sequences</figcaption>
+</figure>
+
+Clicking on any of these sequences will open individual images in the sequence with the visualizations of the annotations.  For more information please see [Viewing Datasets](#viewing-datasets) above.
+
+!!! info
+    Datasets that train Fusion models provide world annotations of the object's 3D bounding box.  For more information on the dataset annotations, please see [EdgeFirst Dataset Format](format.md#dataset-annotation-format).
+
+<figure markdown="span">
+![Fusion Annotations](assets/fusion-annotations.jpg){ align=center }
+<figcaption>Fusion Annotations</figcaption>
+</figure>
+
+!!! info
+    Datasets that train Vision models provide image annotations of the object's 2D bounding box and segmentation mask.  For more information on the dataset annotations, please see [EdgeFirst Dataset Format](format.md#dataset-annotation-format).
+
+<figure markdown="span">
+![Vision Annotations](assets/vision-annotations.jpg){ align=center }
+<figcaption>Vision Annotations</figcaption>
+</figure>
+
+For cases where the annotations need corrections, please see [Dataset Tutorials](#audit-annotations) for more details.
+
 ## Creating Datasets
 
 This tutorial will show how to create an empty dataset container in EdgeFirst Studio. This container is needed for [copying](#copying-datasets) or [combining](#combining-datasets) datasets as shown in the next sections.
@@ -249,14 +462,14 @@ To create a dataset, first select the project to store the new dataset. Next cli
 <figcaption>Dataset Button</figcaption>
 </figure>
 
-Next create a new dataset by clicking the *CREATE* button highlighted in red.
+Next create a new dataset by clicking the "NEW DATASET" button highlighted in red on the top right.
 
 <figure markdown="span">
 ![Create Dataset Button](assets/create-dataset-button.jpg){ align=center }
 <figcaption>Create Dataset Button</figcaption>
 </figure>
 
-Provide the dataset name and the dataset desciption for this new dataset. In this example the name is the same as the original dataset source. Once the fields are filled, click the *CREATE* button on the bottom left of the window dialog.
+Provide the dataset name and the dataset desciption for this new dataset. In this example the name is the same as the original dataset source. Once the fields are filled, click the "CREATE" button on the bottom left of the window dialog.
 
 <figure markdown="span">
 ![Create Dataset Fields](assets/create-dataset-fields.jpg){ align=center }
@@ -265,14 +478,14 @@ Provide the dataset name and the dataset desciption for this new dataset. In thi
 
 Once created, define an annotation set. The annotation set is a container for storing
 the annotations in the original dataset. To create an annotation set, click the "+" button
-in the *Annotation Sets* field. 
+in the "Annotation Sets" field. 
 
 <figure markdown="span">
 ![Create Annotation Set](assets/create-annotation-set.jpg){ align=center }
 <figcaption>Create Annotation Set</figcaption>
 </figure>
 
-Next provide the name and description for the annotation container as shown below. Once provided, click *CREATE NEW SET* to create the annotation set.
+Next provide the name and description for the annotation container as shown below. Once provided, click "CREATE NEW SET" to create the annotation set.
 
 <figure markdown="span">
 ![Annotation Set Fields](assets/annotation-set-fields.jpg){ align=center }
@@ -294,7 +507,7 @@ This tutorial will show how to copy the dataset to a different container.
     <iframe width="560" height="315" src="https://www.youtube.com/embed/qLv8ayxQ-Ns?start=326&end=372" title="Copying Datasets" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 </div>
 
-To copy a dataset, first [create a dataset](#creating-datasets) container. Once created, select the *Copy Dataset* from the dataset options on the newly created dataset container as shown below.
+To copy a dataset, first [create a dataset](#creating-datasets) container. Once created, select the "Copy Dataset" from the dataset options on the newly created dataset container as shown below.
 
 <figure markdown="span">
 ![Copy Dataset](assets/copy-dataset-option.jpg){ align=center }
@@ -308,7 +521,7 @@ This will open a new dialog for the user to specify the source dataset and the d
 <figcaption>Copy Dataset Options</figcaption>
 </figure>
 
-The options provided above specifies the source information such as the project to be the public project "Sample Datasets" and the dataset to be *Raivin Pedestrians (ultra-short range) 2025.03*. Next the destination dataset is the dataset and annotation containers that was created. Once the options are specified, go ahead and click *APPLY* to start the copy process.
+The options provided above specifies the source dataset to originate from the public dataset "Raivin Ultra Short 2025.03" inide the public project "Sample Project". Next the destination dataset is the dataset and annotation containers that was created. Once the options are specified, go ahead and click "APPLY" to start the copy process.
 
 <figure markdown="span">
 ![Copy Dataset Process](assets/dataset-copy-process.jpg){ align=center }
@@ -363,7 +576,7 @@ Once the groups are specified, click *ADD GROUPS* to create the groups. This wil
 
 ## Importing Datasets
 
-This tutorial will show how to import a dataset into EdgeFirst Studio. 
+This tutorial will show how to import a dataset into EdgeFirst Studio. For importing [EdgeFirst Datasets](format.md), please see the instructions for [Upload from Zip/Arrow File](../studio/snapshots.md#upload-from-ziparrow-file).
 
 <div style="text-align: center;">
 <iframe width="560" height="315" src="https://www.youtube.com/embed/DJabdEHaZ8E?start=41" title="Import Dataset" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>

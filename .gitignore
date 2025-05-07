@@ -1,4 +1,6 @@
 /venv/
 /site/
-
+.venv/
+.vscode/
+.idea/
 .DS_Store

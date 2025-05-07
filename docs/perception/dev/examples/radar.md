@@ -49,7 +49,7 @@ We can now recieve a message on the subcriber. After recieving the message, we w
     ``` rust
     use edgefirst_schemas::sensor_msgs::PointCloud2;
 
-    // Create a subscriber for "rt/lidar/cluster"
+    // Create a subscriber for "rt/radar/cluster"
     let msg = subscriber.recv().unwrap()
 
     let pcd: PointCloud2 = cdr::deserialize(&msg.payload().to_bytes())?;
@@ -197,7 +197,7 @@ We can now recieve a message on the subcriber. After recieving the message, we w
     ``` rust
     use edgefirst_schemas::sensor_msgs::PointCloud2;
 
-    // Create a subscriber for "rt/lidar/cluster"
+    // Create a subscriber for "rt/radar/cluster"
     let msg = subscriber.recv().unwrap()
 
     let pcd: PointCloud2 = cdr::deserialize(&msg.payload().to_bytes())?;

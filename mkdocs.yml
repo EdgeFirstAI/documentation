@@ -98,6 +98,7 @@ extra:
   version:
     default: latest
     provider: mike
+    alias: true
   consent:
     title: Privacy Settings
     description: >-

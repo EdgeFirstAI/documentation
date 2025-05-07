@@ -4034,8 +4034,7 @@ The following sections will describe the metrics reported for each type of valid
 <p>The object detection metrics describe the mean average precision (mAP), recall (mAR), and accuracy (mACC) at IoU thresholds 0.50, 0.75, and 0.50-0.95.  These metrics are represented as a bar chart.  Shown below is an example.</p>
 <figure>
   <img align="center" alt="Detection Metrics" src="../assets/metrics/modelpack-detection-metrics.jpg" />
-<br />
-<figcaption>Detection Metrics</figcaption>
+  <figcaption>Detection Metrics</figcaption>
 </figure>
 <h4 id="mean-average-precision">Mean Average Precision</h4>
 <p>The mAP is based on the area under the precision vs. recall curve which plots the tradeoff between precision and recall by adjusting the IoU thresholds.  The average precision is first calculated by finding the area under the precision vs. recall curve for each class at varying IoU thresholds.  The mAP at 0.50 and 0.75 is the mean of the average precision across all classes, but only at the IoU threshold values of 0.50 and 0.75.  For the case of mAP at 0.50-0.95, the average precision at 0.50-0.95 is first calculated by taking the mean of the average precision (area under the curve) across IoU thresholds 0.50 to 0.95 in 0.05 steps.  This process is done per class and the final mAP at 0.50-0.95 is the mean of the average precision at 0.50-0.95 values across all classes.</p>
@@ -4071,8 +4070,7 @@ The mean average accuracy at IoU thresholds 0.50 and 0.75 are calculated based o
 <p>The segmentation metrics describe precision, recall, accuracy, and IoU.  These metrics are represented as a bar chart.  Shown below is an example.</p>
 <figure>
   <img align="center" alt="Segmentation Metrics" src="../assets/metrics/modelpack-segmentation-metrics.jpg" />
-<br />
-<figcaption>Segmentation Metrics</figcaption>
+  <figcaption>Segmentation Metrics</figcaption>
 </figure>
 <h4 id="precision">Precision</h4>
 <p>This metric is calculated based on the equation for precision shown in the <a href="#glossary">Glossary</a>.  A true positive is when the prediction label matches the true (actual) label.  A false positive is when the prediction label does not match the true (actual) label.</p>
@@ -4086,22 +4084,19 @@ The mean average accuracy at IoU thresholds 0.50 and 0.75 are calculated based o
 <p>The model inference timings are represented as a histogram where the y-axis shows the frequency of occurences in each bin in the x-axis.  We can expect the speed of the model to be based on the bin with the highest frequency.  However, the timings could be distributed across the bins to show variations in the model inference times.</p>
 <figure>
   <img align="center" alt="Model Timings" src="../assets/metrics/model-timings.jpg" />
-<br />
-<figcaption>Model Timings</figcaption>
+  <figcaption>Model Timings</figcaption>
 </figure>
 <h3 id="confusion-matrix">Confusion Matrix</h3>
 <p>The Confusion Matrix provides a summary of the prediction results by comparing the predicted labels with the ground truth (actual) labels.  This matrix will show the ground truth labels along the x-axis and the predicted labels along the y-axis.  Along the diagonal where both ground truth labels and prediction labels match shows the true positive (correct predictions) counts of that class.  However, throughout validation, the matrix shows the cases where the model can misidentify labels or fail to find the labels.</p>
 <figure>
   <img align="center" alt="Confusion Matrix" src="../assets/metrics/modelpack-confusion-matrix.jpg" />
-<br />
-<figcaption>Confusion Matrix</figcaption>
+  <figcaption>Confusion Matrix</figcaption>
 </figure>
 <h3 id="precision-vs-recall">Precision vs. Recall</h3>
 <p>The precision vs. recall curve shows the tradeoff between precision and recall.  At lower thresholds, precision will tend to be lower due to increased leniency for valid detections.  However, more detections will tend to result in higher recall as the model finds more ground truth labels.  Increasing the threshold will start to increase precision for more precise detections, but will start to reduce recall due to the reduction of model detections.  The following curve shows the precision vs. recall trend for each of the classes in the dataset, along with the average curve for all the classes.  A higher area under the curve, the better the model performance as this indicates maximized values for precision and recall throughout the varying thresholds.  </p>
 <figure>
   <img align="center" alt="Precision vs. Recall" src="../assets/metrics/modelpack-precision-vs-recall.jpg" />
-<br />
-<figcaption>Precision vs. Recall</figcaption>
+  <figcaption>Precision vs. Recall</figcaption>
 </figure>
 <h2 id="fusion">Fusion</h2>
 <p>This section will describe the validation metrics reported in <a href="../fusion/validation/">Fusion validation sessions</a>.</p>
@@ -4109,8 +4104,7 @@ The mean average accuracy at IoU thresholds 0.50 and 0.75 are calculated based o
 <p>The Fusion validation sessions reports the metrics for precision, recall, F1-score, and IoU represented as a bar chart.  Shown below is an example.  </p>
 <figure>
   <img align="center" alt="Base Metrics" src="../assets/metrics/fusion-base-metrics.jpg" />
-<br />
-<figcaption>Base Metrics</figcaption>
+  <figcaption>Base Metrics</figcaption>
 </figure>
 <p>By default, these metrics are calculated based on the kernel sizes 1x1 and 3x3 which can be configured when starting a new session (<em>See <a href="../fusion/training/#create-training-session">Radar Validation</a></em>).  The kernel size is the window size setting where a kernel size of 1x1 indicates a 1-to-1 match between the ground truth and the model occupancy grid.  A prediction can only be correct in a 1x1 kernel if the position of the prediction is in the same position as the ground truth.  However, increasing the kernel size is more lenient by allowing predictions to be correct if their positions are within 3 meters away (3x3 kernel) from the ground truth.  </p>
 <p>The metrics and their equations are described below.</p>
@@ -4122,8 +4116,7 @@ The mean average accuracy at IoU thresholds 0.50 and 0.75 are calculated based o
 <p>This metric is based on both precision and recall.  It measures how well the model performs overall in terms of how well the model makes correct predictions and finds the ground truth.  The following table demonstrates the nature of the F1-score as a function of precision and recall.</p>
 <figure>
   <img align="center" alt="F1-Score" src="../assets/metrics/F1-table.jpg" />
-<br />
-<figcaption>F1-Score</figcaption>
+  <figcaption>F1-Score</figcaption>
 </figure>
 <p>The table highlights how F1 is the average between precision and recall over the diagonal where both precision and recall are equal.  Furthermore, it also highlights how the F1-score needs both precision and recall to have very good scores in order to have a very good F1-score.  As an example, consider a recall of 0.90, but a precision of 0.10, the final value of the F1-score is 0.18 which is quite poor.  The same is true if the roles were switched where precision is 0.90, but recall is 0.10.  The nature of the F1-score indicates that a well performing model requires both precision and recall to be high.  </p>
 <p>It is also important to note that for certain use-cases precision is more important over recall and vice versa.  For example, an application in the farming industry for identifying good crops vs. bad crops, one would argue that precision is more important than recall.  It would be better to miss a bad crop than to identify a good crop as a bad crop.  Another example for an application in safety that requires detection of people, one would argue that recall is more important than precision.  It is better to misidentify an object for being a person than to miss an actual person in the scene.   </p>
@@ -4135,8 +4128,7 @@ The mean average accuracy at IoU thresholds 0.50 and 0.75 are calculated based o
 <p>This metric is defined as the intersection over union.  It also measures how well the model performs overall by comparing the amount of correct predictions over the total amount of ground truths and the model predictions.  This metric, however, is not as lenient as the F1-score as demonstrated by the following table.</p>
 <figure>
   <img align="center" alt="IoU Score" src="../assets/metrics/iou-table.jpg" />
-<br />
-<figcaption>IoU Score</figcaption>
+  <figcaption>IoU Score</figcaption>
 </figure>
 <p>Along the diagonal, it is easier to see why the IoU metric is not as lenient as the F1-score.  It shows how for an equal value of precision and recall, the final IoU score is lower than the average.  For example, a precision of 0.10 and a recall of 0.10, the IoU is 0.05 which is half of the average value.  The scores are always lower than the average between the precision and recall, but as both precision and recall increases, the final IoU score approaches the average, but still does not reach it.  Furthermore, the IoU scores also requires both precision and recall to have very high scores in order for the IoU to have a very high score.  For example, if recall is 0.90 and precision is 0.10, the final IoU score is 0.10.  The same is true if precision is 0.90 and recall is 0.10.  This shows that a well performing model have very good scores for both precision and recall.  </p>
 <p>The equation for the IoU score is shown below.</p>
@@ -4149,14 +4141,12 @@ The mean average accuracy at IoU thresholds 0.50 and 0.75 are calculated based o
 <p>The precision vs. recall curve is based on varying detection thresholds from 0 to 1 in 0.05 steps.  The principle in practice is that for lower thresholds precision is low, but recall is high and as the threshold increases, precision increases and recall decreases.  This shows the tradeoff between precision and recall.  The nature of this tradeoff is due to increased detections at low threshold thus capturing more ground truths (high recall) but much more prone to false predictions (low precision).  The opposite is true for high thresholds.  A well performing model shows a high area under the curve of the precision vs. recall curve.  </p>
 <figure>
   <img align="center" alt="Precision vs. Recall" src="../assets/metrics/fusion-precision-v-recall.jpg" />
-<br />
-<figcaption>Precision vs. Recall</figcaption>
+  <figcaption>Precision vs. Recall</figcaption>
 </figure>
 <p>Another representation of the precision vs. recall is to incorporate the varying threshold in the plot.  The following curve shows the precision and recall vs. thresholds curve.  As mentioned, at lower thresholds precision is low and recall is high, but increasing the threshold we can see precision and recall converge to a point.  The point of convergence indicates the ideal threshold to use for deploying the model.  This is the optimum threshold where precision and recall are balanced such that one is not sacrificing the other.  </p>
 <figure>
   <img align="center" alt="Precision and Recall vs Thresholds" src="../assets/metrics/fusion-precision-recall-thresholds.jpg" />
-<br />
-<figcaption>Precision and Recall vs Thresholds</figcaption>
+  <figcaption>Precision and Recall vs Thresholds</figcaption>
 </figure>
 <h3 id="bev-heatmaps">BEV Heatmaps</h3>
 <p>There are four BEV heatmaps generated.  The heatmaps are a representation of the occupancy grid that is the output of the Radar model.  This occupancy grid is the field of view of the model that represents positions in the scene in meters.  The BEV heatmaps provides indications where the model is generally making right or wrong predictions.  Furthermore, the heatmaps also indicate how the ground truth is distributed across the dataset.  </p>
@@ -4167,8 +4157,7 @@ The mean average accuracy at IoU thresholds 0.50 and 0.75 are calculated based o
 <h4 id="true-positives-heatmap">True Positives Heatmap</h4>
 <figure>
   <img align="center" alt="True Positive Heatmap" src="../assets/metrics/tp-heatmap.jpg" />
-<br />
-<figcaption>True Positive Heatmap</figcaption>
+  <figcaption>True Positive Heatmap</figcaption>
 </figure>
 <p>The measurement is based on each cell.  For each cell, what % of the sum of true positives, false positives, and false negatives were true positives.  The equation for this heatmap is the following.</p>
 <div class="arithmatex">\[
@@ -4177,8 +4166,7 @@ The mean average accuracy at IoU thresholds 0.50 and 0.75 are calculated based o
 <h4 id="false-negatives-heatmap">False Negatives Heatmap</h4>
 <figure>
   <img align="center" alt="False Negative Heatmap" src="../assets/metrics/fn-heatmap.jpg" />
-<br />
-<figcaption>False Negative Heatmap</figcaption>
+  <figcaption>False Negative Heatmap</figcaption>
 </figure>
 <p>The measurement is based on each cell.  For each cell, what % of the sum of true positives, false positives, and false negatives were false negatives.  The equation for this heatmap is the following.</p>
 <div class="arithmatex">\[
@@ -4187,8 +4175,7 @@ The mean average accuracy at IoU thresholds 0.50 and 0.75 are calculated based o
 <h4 id="false-positives-heatmap">False Positives Heatmap</h4>
 <figure>
   <img align="center" alt="False Positive Heatmap" src="../assets/metrics/fp-heatmap.jpg" />
-<br />
-<figcaption>False Positive Heatmap</figcaption>
+  <figcaption>False Positive Heatmap</figcaption>
 </figure>
 <p>This measurement is based on each cell.  For each cell, what % of the sum of true positives, false positives, and false negatives were false positives.  The equation for this heatmap is the following.</p>
 <div class="arithmatex">\[
@@ -4197,8 +4184,7 @@ The mean average accuracy at IoU thresholds 0.50 and 0.75 are calculated based o
 <h4 id="ground-truth-heatmap">Ground Truth Heatmap</h4>
 <figure>
   <img align="center" alt="Ground Truth Heatmap" src="../assets/metrics/gt-heatmap.jpg" />
-<br />
-<figcaption>Ground Truth Heatmap</figcaption>
+  <figcaption>Ground Truth Heatmap</figcaption>
 </figure>
 <p>This measurement is purely based on the ground truth counts.  This heatmap provides indications of the concentration of samples in the dataset.  This heatmap has no equation, it is the collection of ground truth counts throughout the experiment.</p>
 <h2 id="glossary">Glossary</h2>

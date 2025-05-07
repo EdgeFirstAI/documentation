@@ -3667,13 +3667,11 @@
 <p>As mentioned under the <a href="../training/#trained-models">Trained Models</a> section, the trained models can be downloaded by clicking the "View Session Details" button.</p>
 <figure>
 <img align="center" alt="Training Session Attributes" src="../../assets/training/training-session-attributes.jpg" />
-
 <figcaption>Training Session Attributes</figcaption>
 </figure>
 <p>This will open the session details and the models are listed on the right with downward arrow buttons that downloads the models to your PC. In this example, we will be deploying the TFLite model on device. </p>
 <figure>
 <img align="center" alt="Session Details" src="../../assets/deployment/raivin-session-details-tflite-model.jpg" />
-
 <figcaption>Session Details</figcaption>
 </figure>
 <p>Once the model is downloaded in your PC, you can SCP the model to the EdgeFirst Platform by using this command template.</p>
@@ -3712,7 +3710,6 @@ Password:<span class="w"> </span>****
 <p>You should be greeted with the following page.</p>
 <figure>
 <img align="center" alt="WebUI" src="../../assets/deployment/raivin-webui.jpg" />
-
 <figcaption>WebUI</figcaption>
 </figure>
 <p>For more information, please see the <a href="../../../platforms/walkthrough/">Web UI Walkthrough</a>.</p>
@@ -3721,63 +3718,53 @@ Password:<span class="w"> </span>****
 <p>Click the settings icon on the top right corner of the page.</p>
 <figure>
 <img align="center" alt="Settings" src="../../assets/deployment/raivin-settings.jpg" />
-
 <figcaption>Settings</figcaption>
 </figure>
 <p>Select "Model Settings".</p>
 <figure>
 <img align="center" alt="Model Settings" src="../../assets/deployment/raivin-model-settings.jpg" />
-
 <figcaption>Model Settings</figcaption>
 </figure>
 <p>Configure the path to the model in your device as specified under "MODEL:".  Once configured, click "Save Configuration" to save your changes.</p>
 <figure>
 <img align="center" alt="Model Path" src="../../assets/deployment/configure-model-path.jpg" />
-
 <figcaption>Model Path</figcaption>
 </figure>
 <h2 id="enable-and-start-the-camera-and-model-services">Enable and Start the Camera and Model Services</h2>
 <p>Ensure that all services are enabled.  To verify, go back to the settings and click on the "Service Status" button.</p>
 <figure>
 <img align="center" alt="Service Status" src="../../assets/deployment/raivin-service-status.jpg" />
-
 <figcaption>Service Status</figcaption>
 </figure>
 <p>You will be greeted with the "Service Overview" page.  Ensure that all services are enabled and running by toggling the "Enable" and "Start" button as shown. Only "Enable" the "recorder" service as shown.  We will start the recorder service in <a href="#mcap-recording">MCAP Recording</a>.</p>
 <figure>
 <img align="center" alt="Service Overview" src="../../assets/deployment/raivin-service-overview.jpg" />
-
 <figcaption>Service Overview</figcaption>
 </figure>
 <h2 id="live-view-segmentation-app">Live View (Segmentation App)</h2>
 <p>Once all services are enabled, go back to the main page and then select the "Segmentation View" application as shown.</p>
 <figure>
 <img align="center" alt="Segmentation App" src="../../assets/deployment/raivin-segmentation-app.jpg" />
-
 <figcaption>Segmentation App</figcaption>
 </figure>
 <p>This will run inference on the model specified to generate segmentation masks of identified objects on the camera feed and highlights the radar point clouds on the occupancy grid marking the positions of the objects in world coordinates.  Examples are shown below.</p>
 <figure>
 <img align="center" alt="Sample 1" src="../../assets/deployment/occupancy-sample-1.jpg" />
-
 <figcaption>Sample 1</figcaption>
 </figure>
 <figure>
 <img align="center" alt="Sample 2" src="../../assets/deployment/occupancy-sample-2.jpg" />
-
 <figcaption>Sample 2</figcaption>
 </figure>
 <h2 id="mcap-recording">MCAP Recording</h2>
 <p>Once all services are enabled, go back to the main page and then select the "MCAP" application as shown.</p>
 <figure>
 <img align="center" alt="MCAP Recorder" src="../../assets/deployment/raivin-recorder-app.jpg" />
-
 <figcaption>MCAP Recorder</figcaption>
 </figure>
 <p>You will be greeted with the MCAP recording page.</p>
 <figure>
 <img align="center" alt="MCAP Recording Page" src="../../../datasets/assets/mcap-recording-page.jpg" />
-
 <figcaption>MCAP Recording Page</figcaption>
 </figure>
 <p>Toggle the "Recording" button as shown to start recording the video feed.  To stop the recording, toggle the same button and then the recording will be stored as an MCAP file.</p>
@@ -3786,13 +3773,11 @@ Password:<span class="w"> </span>****
 <p>The MCAP recordings are listed under the list of "MCAP Files" which can then be downloaded to your PC.</p>
 <figure>
 <img align="center" alt="MCAP Files" src="../../../datasets/assets/recorded-mcap.jpg" />
-
 <figcaption>MCAP Files</figcaption>
 </figure>
 <p>Once the MCAP recording has been downloaded, we can use Foxglove Studio to see the playback of MCAP recordings and the model inference.  The following preview shows the segmentation mask from the model identifying the person in the frame (right) and the occupancy grid highlighting the radar clusters that correspond to the person's position in world coordinates.</p>
 <figure>
 <img align="center" alt="Foxglove Sample 1" src="../../../platforms/assets/adv_foxglove-finished_fusion.png" />
-
 <figcaption>Foxglove Sample 1</figcaption>
 </figure>
 <p>For more information on the MCAP playback in <a href="../../../platforms/foxglove/">Foxglove Studio</a> and modifying panels shown in <a href="../../../platforms/advanced_foxglove/">Advanced Foxglove</a>, please see the links attached.</p>

@@ -3,7 +3,9 @@
 This example will go through how to connect to the radar topic published on your EdgeFirst Platform and how to display the information on the command line as well as through the Rerun visualizer.
 
 
-## /radar/targets
+## Radar Targets
+Topic: [/radar/targets](../../topics/radar.md#radartargets)  
+Message: [PointCloud2](../../api/sensor_msgs.md#pointcloud2)
 
 ### Setting up subscriber
 
@@ -149,7 +151,9 @@ When displaying the results through Rerun you will see the pointcloud radar data
 ![alt text](assets/radar_targets.png)
 
 
-## /radar/clusters
+## Radar Clusters
+Topic: [/radar/clusters](../../topics/radar.md#radarclusters)  
+Message: [PointCloud2](../../api/sensor_msgs.md#pointcloud2)
 
 ### Setting up subscriber
 
@@ -159,7 +163,7 @@ After setting up the Zenoh session, we will create a subscriber to the `radar/cl
 
     ``` python
     # Create a subscriber for "rt/radar/cluster"
-    subscriber = session.declare_subscriber('rt/radar/cluster')
+    subscriber = session.declare_subscriber('rt/radar/clusters')
     ```
 
 === "Rust"
@@ -244,7 +248,9 @@ Recieved 138 radar points. 135 are clustered
 When displaying the results through Rerun you will see the cluster data.
 ![alt text](assets/radar_clusters.png)
 
-## /radar/info
+## Radar Info
+Topic: [/radar/info](../../topics/radar.md#radarinfo)  
+Message: [RadarInfo](../../api/edgefirst_msgs.md#radarinfo)
 
 ### Setting up subscriber
 
@@ -333,7 +339,9 @@ The radar configuration is: center frequency: low   frequency sweep: ultra-short
 When displaying the results through Rerun you will see a log of the radar configuration.
 ![alt text](assets/radar_info.png)
 
-## /radar/cube
+## Radar Cube
+Topic: [/radar/cube](../../topics/radar.md#radarcube)  
+Message: [RadarCube](../../api/edgefirst_msgs.md#radarcube)
 
 ### Setting up subscriber
 

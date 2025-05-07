@@ -91,6 +91,7 @@ nav:
       - platforms/ssh.md
       - platforms/hardware.md
       - platforms/radar.md
+      - platforms/lidar.md
       - platforms/issues.md
       - platforms/release_notes.md
       - platforms/updates.md

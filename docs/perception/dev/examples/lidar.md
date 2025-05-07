@@ -3,7 +3,9 @@
 This example will go through how to connect to the lidar topic published on your EdgeFirst Platform and how to display the information on the command line as well as through the Rerun visualizer.
 
 
-## /lidar/points
+## Lidar Points
+Topic: [/lidar/points](../../topics/lidar.md#lidarpoints)  
+Message: [Image](../../api/sensor_msgs.md#pointcloud2)
 
 ### Setting up subscriber
 
@@ -125,7 +127,9 @@ Recieved 24448 lidar points. Values: x: [-15.71, -0.01] y: [-10.50, 4.94]       
 When displaying the results through Rerun you will see the pointcloud data gathered by the lidar.
 ![alt text](assets/lidar_points.png)
 
-## /lidar/clusters
+## Lidar Clusters
+Topic: [/lidar/clusters](../../topics/lidar.md#lidarclusters)  
+Message: [PointCloud2](../../api/sensor_msgs.md#pointcloud2)
 
 ### Setting up subscriber
 
@@ -135,7 +139,7 @@ After setting up the Zenoh session, we will create a subscriber to the `lidar/cl
 
     ``` python
     # Create a subscriber for "rt/lidar/cluster"
-    subscriber = session.declare_subscriber('rt/lidar/cluster')
+    subscriber = session.declare_subscriber('rt/lidar/clusters')
     ```
 
 === "Rust"
@@ -221,7 +225,9 @@ Recieved 24448 lidar points. 12237 are clustered
 When displaying the results through Rerun you will see the pointcloud cluster data provided by the LiDAR.
 ![alt text](assets/lidar_clusters.png)
 
-## /lidar/depth
+## Lidar Depth
+Topic: [/lidar/depth](../../topics/lidar.md#lidardepth)  
+Message: [Image](../../api/sensor_msgs.md#image)
 
 
 ### Setting up subscriber
@@ -333,7 +339,9 @@ Recieved 382x64 depth image. Depth: [0, 18944]
 When displaying the results through Rerun you will see a depth map of what the lidar can see.
 ![alt text](assets/lidar_depth.png)
 
-## /lidar/reflect
+## Lidar Reflect
+Topic: [/lidar/reflect](../../topics/lidar.md#lidarreflect)  
+Message: [Image](../../api/sensor_msgs.md#image)
 
 ### Setting up subscriber
 

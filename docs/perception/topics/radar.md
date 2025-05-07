@@ -14,6 +14,12 @@ The `/radar/targets` topic publishes information about the received radar points
 
 The XYZ coordinate system follows the [standard ROS convention](https://www.ros.org/reps/rep-0103.html#coordinate-frame-conventions) of x forward, y left, z up.
 
+**Usage** | **Link**
+:------------------:|:------------------:
+WebUI | []()
+Foxglove | []()
+SDK | [Radar Targets Example](../dev/examples/radar.md#radar-targets)
+
 ## /radar/clusters
 The `/radar/clusters` topic publishes information about the received radar points using the [PointCloud2](../api/sensor_msgs.md#pointcloud2) schema. The point cloud will have the fields `x`, `y`, `z`, `speed`, `power`, `rcs` (radar cross section), and `cluster_id`, all with the Float32 datatype. While `cluster_id` is formatted as a Float32 datatype, the values contained by the field will be an integer. A cluster ID of 0 means the point is not considered in a cluster, otherwise any points with the same cluster ID are in the same cluster.
 
@@ -21,11 +27,28 @@ The XYZ coordinate system follows the [standard ROS convention](https://www.ros.
 
 This topic is only published if the radarpub service is configured with the clustering task enabled.
 
+**Usage** | **Link**
+:------------------:|:------------------:
+WebUI | []()
+Foxglove | []()
+SDK | [Radar Clusters Example](../dev/examples/radar.md#radar-clusters)
+
 ## /radar/cube
 The `/radar/cube` topic publishes information about the received radar sensor data using the custom [RadarCube](../api/edgefirst_msgs.md#radarcube) schema. 
 
-
 This topic is only published if the radarpub service is configured with the radar cube task enabled.
+
+**Usage** | **Link**
+:------------------:|:------------------:
+WebUI | []()
+Foxglove | [Viewing Radar Cube](../../platforms/foxglove.md#viewing-radarcube-messages)
+SDK | [Radar Cube Example](../dev/examples/radar.md#radar-cube)
 
 ## /radar/info
 The `/radar/info` topic publishes information about the current radar configuration. It describes the state of the center frequency, frequency sweep, range toggle, and detection frequency of the radar. 
+
+**Usage** | **Link**
+:------------------:|:------------------:
+WebUI | []()
+Foxglove | []()
+SDK | [Radar Info Example](../dev/examples/radar.md#radar-info)

@@ -6,7 +6,7 @@ In this tutorial, we will demonstrate how to execute the four most important ste
 
 ![Machine Learning Steps](./assets/ml-steps.png)
 
-The process begins with the [Raivin Platform](../../../platforms/index.md). Using the web interface on the device, we can start the recording process. Once data is recorded, we can access the recording files and import them into [EdgeFirst Studio](../../../studio/index.md). Studio will create a dataset from the recording. Once the dataset is created, we can begin the annotation process to produce both bounding boxes and segmentation masks. For this tutorial, we will focus solely on bounding boxes.
+The process begins with the [Maivin Platform](../../../platforms/index.md). Using the web interface on the device, we can start the recording process. Once data is recorded, we can access the recording files and import them into [EdgeFirst Studio](../../../studio/index.md). Studio will create a dataset from the recording. Once the dataset is created, we can begin the annotation process to produce both bounding boxes and segmentation masks. For this tutorial, we will focus solely on bounding boxes.
 
 The duration of the annotation process depends on the dataset size. For this specific dataset, which contains approximately 150 images, the entire annotation process takes around 3 minutes. After annotation, we need to partition the dataset and use ModelPack for training. The training process will generate the model checkpoints, which will be deployed to the target device in the final step.
 

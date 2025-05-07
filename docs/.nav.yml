@@ -42,7 +42,7 @@ nav:
           - models/fusion/deployment.md
       - Developer Guide:
           - Examples: 
-              - models/dev/examples/object-detection.ipynb
+              - Deploying Vision Models: models/dev/examples/object-detection.ipynb
       - models/augmentations.md
       - models/metrics.md
   - Perception:

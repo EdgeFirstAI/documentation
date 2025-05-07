@@ -3414,8 +3414,52 @@
 </div>
 <h2 id="camerah264">/camera/h264</h2>
 <p>The <code>/camera/h264</code> topic uses Foxglove's <a href="../../api/foxglove_msgs/#compressedvideo">CompressedVideo</a> schema to publish h.264 encoded video frames.  The h.264 encoder uses key-frames, I-Frames, at a typical rate of 1Hz with the frames in-between encoded as P/B-Frames.  The decoder requires an initial I-Frame before it can decode additional frames.  This is typically handled transparently but means when sending <code>CompressedVideo</code> data to the h.264 decoder it could take up to a second until valid output is produced.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: center;"><strong>Usage</strong></th>
+<th style="text-align: center;"><strong>Link</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;">WebUI</td>
+<td style="text-align: center;"><a href=""></a></td>
+</tr>
+<tr>
+<td style="text-align: center;">Foxglove</td>
+<td style="text-align: center;"><a href="../../../platforms/foxglove/#viewing-detection-messages">CompressedVideo Example</a></td>
+</tr>
+<tr>
+<td style="text-align: center;">SDK</td>
+<td style="text-align: center;"><a href="../../dev/examples/camera/#h264-camera-feed">H264 Example</a></td>
+</tr>
+</tbody>
+</table>
 <h2 id="camerajpeg">/camera/jpeg</h2>
 <p>The <code>/camera/jpeg</code> topic uses ROS2's <a href="../../api/sensor_msgs/#compressedimage">CompressedImage</a> schema to publish JPEG encoded camera frames.  Each frame is a complete JPEG image and can be decoded using any standard JPEG decoder. The JPEG topic will not be enabled by default. In order to enable the JPEG topic, please follow the guide noted in <a href="../../platforms/configuration/#h264-streaming">configuration</a></p>
+<table>
+<thead>
+<tr>
+<th style="text-align: center;"><strong>Usage</strong></th>
+<th style="text-align: center;"><strong>Link</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;">WebUI</td>
+<td style="text-align: center;"><a href=""></a></td>
+</tr>
+<tr>
+<td style="text-align: center;">Foxglove</td>
+<td style="text-align: center;"><a href="">Compressed Image Example</a></td>
+</tr>
+<tr>
+<td style="text-align: center;">SDK</td>
+<td style="text-align: center;"><a href="../../dev/examples/camera/#jpeg-camera-feed">JPEG Example</a></td>
+</tr>
+</tbody>
+</table>
 
 
 

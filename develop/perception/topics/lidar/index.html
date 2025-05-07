@@ -1969,6 +1969,15 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#lidarclusters" class="md-nav__link">
+    <span class="md-ellipsis">
+      /lidar/clusters
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -3320,6 +3329,15 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#lidarclusters" class="md-nav__link">
+    <span class="md-ellipsis">
+      /lidar/clusters
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -3341,14 +3359,104 @@
 <ul>
 <li>Ouster OS1</li>
 </ul>
-<p>The lidar topics are published under the <code>/lidar</code> namespace and offers the following sub-topics: <code>/lidar/points</code>, <code>/lidar/reflect</code>, and <code>/radar/depth</code>. The density of the lidar points, the frequency of updates, and the field of view of the lidar are configurable through the <code>lidarpub</code> service. See lidarpub service configuration documentation for details.</p>
+<p>The lidar topics are published under the <code>/lidar</code> namespace and offers the following sub-topics: <code>/lidar/points</code>, <code>/lidar/reflect</code>, <code>/lidar/depth</code>, and <code>/lidar/clusters</code>. The density of the lidar points, the frequency of updates, and the field of view of the lidar are configurable through the <code>lidarpub</code> service. See lidarpub service configuration documentation for details.</p>
 <h2 id="lidarpoints">/lidar/points</h2>
 <p>The <code>/lidar/points</code> topic publishes information about the lidar points using the <a href="../../api/sensor_msgs/#pointcloud2">PointCloud2</a> schema. The point cloud will have the fields <code>x</code>, <code>y</code>, <code>z</code>, and <code>reflect</code>, all with the Float32 datatype. </p>
+<table>
+<thead>
+<tr>
+<th style="text-align: center;"><strong>Usage</strong></th>
+<th style="text-align: center;"><strong>Link</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;">WebUI</td>
+<td style="text-align: center;"><a href=""></a></td>
+</tr>
+<tr>
+<td style="text-align: center;">Foxglove</td>
+<td style="text-align: center;"><a href="">PointCloud2 Example</a></td>
+</tr>
+<tr>
+<td style="text-align: center;">SDK</td>
+<td style="text-align: center;"><a href="../../dev/examples/lidar/#lidar-points">Lidar Points Example</a></td>
+</tr>
+</tbody>
+</table>
 <p>The XYZ coordinate system follows the <a href="https://www.ros.org/reps/rep-0103.html#coordinate-frame-conventions">standard ROS convention</a> of x forward, y left, z up. However, note that the <code>lidar</code> frame is rotated 180 degrees from the <code>base_link</code> frame, with forward facing the back of the camera.</p>
 <h2 id="lidarreflect">/lidar/reflect</h2>
 <p>The <code>/lidar/reflect</code> topic publishes the reflectivity map using the <a href="../../api/sensor_msgs/#image">Image</a> schema. The encoding of the image is <code>mono8</code>. The value of a pixel is the reflectivity of that point. The width of a pixel depends on the number of columns configured on the lidar. </p>
+<table>
+<thead>
+<tr>
+<th style="text-align: center;"><strong>Usage</strong></th>
+<th style="text-align: center;"><strong>Link</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;">WebUI</td>
+<td style="text-align: center;"><a href=""></a></td>
+</tr>
+<tr>
+<td style="text-align: center;">Foxglove</td>
+<td style="text-align: center;"><a href="">Image Example</a></td>
+</tr>
+<tr>
+<td style="text-align: center;">SDK</td>
+<td style="text-align: center;"><a href="../../dev/examples/lidar/#lidar-reflect">Lidar Reflect Example</a></td>
+</tr>
+</tbody>
+</table>
 <h2 id="lidardepth">/lidar/depth</h2>
 <p>The <code>/lidar/depth</code> topic publishes the depth map using the <a href="../../api/sensor_msgs/#image">Image</a> schema. The encoding of the image is <code>mono16</code>. The value of a pixel is the distance from the lidar to the point in millimeters. The width of a pixel depends on the number of columns configured on the lidar. </p>
+<table>
+<thead>
+<tr>
+<th style="text-align: center;"><strong>Usage</strong></th>
+<th style="text-align: center;"><strong>Link</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;">WebUI</td>
+<td style="text-align: center;"><a href=""></a></td>
+</tr>
+<tr>
+<td style="text-align: center;">Foxglove</td>
+<td style="text-align: center;"><a href="">Image Example</a></td>
+</tr>
+<tr>
+<td style="text-align: center;">SDK</td>
+<td style="text-align: center;"><a href="../../dev/examples/lidar/#lidar-depth">Lidar Depth Example</a></td>
+</tr>
+</tbody>
+</table>
+<h2 id="lidarclusters">/lidar/clusters</h2>
+<p>The <code>/lidar/clusters</code> topic publishes the lidar clusters pointcloud using the <a href="../../api/sensor_msgs/#pointcloud2">PointCloud2</a> schema.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: center;"><strong>Usage</strong></th>
+<th style="text-align: center;"><strong>Link</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;">WebUI</td>
+<td style="text-align: center;"><a href=""></a></td>
+</tr>
+<tr>
+<td style="text-align: center;">Foxglove</td>
+<td style="text-align: center;"><a href="">PointCloud2 Example</a></td>
+</tr>
+<tr>
+<td style="text-align: center;">SDK</td>
+<td style="text-align: center;"><a href="../../dev/examples/lidar/#lidar-clusters">Lidar Clusters Example</a></td>
+</tr>
+</tbody>
+</table>
 
 
 

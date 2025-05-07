@@ -2266,13 +2266,13 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#lidarpoints" class="md-nav__link">
+  <a href="#lidar-points" class="md-nav__link">
     <span class="md-ellipsis">
-      /lidar/points
+      Lidar Points
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="/lidar/points">
+    <nav class="md-nav" aria-label="Lidar Points">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -2326,13 +2326,13 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#lidarclusters" class="md-nav__link">
+  <a href="#lidar-clusters" class="md-nav__link">
     <span class="md-ellipsis">
-      /lidar/clusters
+      Lidar Clusters
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="/lidar/clusters">
+    <nav class="md-nav" aria-label="Lidar Clusters">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -2386,13 +2386,13 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#lidardepth" class="md-nav__link">
+  <a href="#lidar-depth" class="md-nav__link">
     <span class="md-ellipsis">
-      /lidar/depth
+      Lidar Depth
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="/lidar/depth">
+    <nav class="md-nav" aria-label="Lidar Depth">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -2446,13 +2446,13 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#lidarreflect" class="md-nav__link">
+  <a href="#lidar-reflect" class="md-nav__link">
     <span class="md-ellipsis">
-      /lidar/reflect
+      Lidar Reflect
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="/lidar/reflect">
+    <nav class="md-nav" aria-label="Lidar Reflect">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -3509,13 +3509,13 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#lidarpoints" class="md-nav__link">
+  <a href="#lidar-points" class="md-nav__link">
     <span class="md-ellipsis">
-      /lidar/points
+      Lidar Points
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="/lidar/points">
+    <nav class="md-nav" aria-label="Lidar Points">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -3569,13 +3569,13 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#lidarclusters" class="md-nav__link">
+  <a href="#lidar-clusters" class="md-nav__link">
     <span class="md-ellipsis">
-      /lidar/clusters
+      Lidar Clusters
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="/lidar/clusters">
+    <nav class="md-nav" aria-label="Lidar Clusters">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -3629,13 +3629,13 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#lidardepth" class="md-nav__link">
+  <a href="#lidar-depth" class="md-nav__link">
     <span class="md-ellipsis">
-      /lidar/depth
+      Lidar Depth
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="/lidar/depth">
+    <nav class="md-nav" aria-label="Lidar Depth">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -3689,13 +3689,13 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#lidarreflect" class="md-nav__link">
+  <a href="#lidar-reflect" class="md-nav__link">
     <span class="md-ellipsis">
-      /lidar/reflect
+      Lidar Reflect
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="/lidar/reflect">
+    <nav class="md-nav" aria-label="Lidar Reflect">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -3766,7 +3766,9 @@
 
 <h1 id="lidar-schema-example">LIDAR Schema Example</h1>
 <p>This example will go through how to connect to the lidar topic published on your EdgeFirst Platform and how to display the information on the command line as well as through the Rerun visualizer.</p>
-<h2 id="lidarpoints">/lidar/points</h2>
+<h2 id="lidar-points">Lidar Points</h2>
+<p>Topic: <a href="../../../topics/lidar/#lidarpoints">/lidar/points</a><br />
+Message: <a href="../../../api/sensor_msgs/#pointcloud2">Image</a></p>
 <h3 id="setting-up-subscriber">Setting up subscriber</h3>
 <p>After setting up the Zenoh session, we will create a subscriber to the <code>lidar/points</code> topic</p>
 <div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">Python</label><label for="__tabbed_1_2">Rust</label></div>
@@ -3874,14 +3876,16 @@ Recieved 24448 lidar points. Values: x: [-15.71, -0.01] y: [-10.50, 4.94]       
 </code></pre></div></p>
 <p>When displaying the results through Rerun you will see the pointcloud data gathered by the lidar.
 <img alt="alt text" src="../assets/lidar_points.png" /></p>
-<h2 id="lidarclusters">/lidar/clusters</h2>
+<h2 id="lidar-clusters">Lidar Clusters</h2>
+<p>Topic: <a href="../../../topics/lidar/#lidarclusters">/lidar/clusters</a><br />
+Message: <a href="../../../api/sensor_msgs/#pointcloud2">PointCloud2</a></p>
 <h3 id="setting-up-subscriber_1">Setting up subscriber</h3>
 <p>After setting up the Zenoh session, we will create a subscriber to the <code>lidar/clusters</code> topic</p>
 <div class="tabbed-set tabbed-alternate" data-tabs="5:2"><input checked="checked" id="__tabbed_5_1" name="__tabbed_5" type="radio" /><input id="__tabbed_5_2" name="__tabbed_5" type="radio" /><div class="tabbed-labels"><label for="__tabbed_5_1">Python</label><label for="__tabbed_5_2">Rust</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <div class="highlight"><pre><span></span><code><span class="c1"># Create a subscriber for &quot;rt/lidar/cluster&quot;</span>
-<span class="n">subscriber</span> <span class="o">=</span> <span class="n">session</span><span class="o">.</span><span class="n">declare_subscriber</span><span class="p">(</span><span class="s1">&#39;rt/lidar/cluster&#39;</span><span class="p">)</span>
+<span class="n">subscriber</span> <span class="o">=</span> <span class="n">session</span><span class="o">.</span><span class="n">declare_subscriber</span><span class="p">(</span><span class="s1">&#39;rt/lidar/clusters&#39;</span><span class="p">)</span>
 </code></pre></div>
 </div>
 <div class="tabbed-block">
@@ -3956,7 +3960,9 @@ Recieved 24448 lidar points. 12237 are clustered
 </code></pre></div></p>
 <p>When displaying the results through Rerun you will see the pointcloud cluster data provided by the LiDAR.
 <img alt="alt text" src="../assets/lidar_clusters.png" /></p>
-<h2 id="lidardepth">/lidar/depth</h2>
+<h2 id="lidar-depth">Lidar Depth</h2>
+<p>Topic: <a href="../../../topics/lidar/#lidardepth">/lidar/depth</a><br />
+Message: <a href="../../../api/sensor_msgs/#image">Image</a></p>
 <h3 id="setting-up-subscriber_2">Setting up subscriber</h3>
 <p>After setting up the Zenoh session, we will create a subscriber to the <code>lidar/depth</code> topic</p>
 <div class="tabbed-set tabbed-alternate" data-tabs="9:2"><input checked="checked" id="__tabbed_9_1" name="__tabbed_9" type="radio" /><input id="__tabbed_9_2" name="__tabbed_9" type="radio" /><div class="tabbed-labels"><label for="__tabbed_9_1">Python</label><label for="__tabbed_9_2">Rust</label></div>
@@ -4056,7 +4062,9 @@ Recieved 382x64 depth image. Depth: [0, 18944]
 </code></pre></div></p>
 <p>When displaying the results through Rerun you will see a depth map of what the lidar can see.
 <img alt="alt text" src="../assets/lidar_depth.png" /></p>
-<h2 id="lidarreflect">/lidar/reflect</h2>
+<h2 id="lidar-reflect">Lidar Reflect</h2>
+<p>Topic: <a href="../../../topics/lidar/#lidarreflect">/lidar/reflect</a><br />
+Message: <a href="../../../api/sensor_msgs/#image">Image</a></p>
 <h3 id="setting-up-subscriber_3">Setting up subscriber</h3>
 <p>After setting up the Zenoh session, we will create a subscriber to the <code>lidar/reflect</code> topic</p>
 <div class="tabbed-set tabbed-alternate" data-tabs="13:2"><input checked="checked" id="__tabbed_13_1" name="__tabbed_13" type="radio" /><input id="__tabbed_13_2" name="__tabbed_13" type="radio" /><div class="tabbed-labels"><label for="__tabbed_13_1">Python</label><label for="__tabbed_13_2">Rust</label></div>

@@ -2335,13 +2335,13 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#radartargets" class="md-nav__link">
+  <a href="#radar-targets" class="md-nav__link">
     <span class="md-ellipsis">
-      /radar/targets
+      Radar Targets
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="/radar/targets">
+    <nav class="md-nav" aria-label="Radar Targets">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -2395,13 +2395,13 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#radarclusters" class="md-nav__link">
+  <a href="#radar-clusters" class="md-nav__link">
     <span class="md-ellipsis">
-      /radar/clusters
+      Radar Clusters
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="/radar/clusters">
+    <nav class="md-nav" aria-label="Radar Clusters">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -2455,13 +2455,13 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#radarinfo" class="md-nav__link">
+  <a href="#radar-info" class="md-nav__link">
     <span class="md-ellipsis">
-      /radar/info
+      Radar Info
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="/radar/info">
+    <nav class="md-nav" aria-label="Radar Info">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -2506,13 +2506,13 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#radarcube" class="md-nav__link">
+  <a href="#radar-cube" class="md-nav__link">
     <span class="md-ellipsis">
-      /radar/cube
+      Radar Cube
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="/radar/cube">
+    <nav class="md-nav" aria-label="Radar Cube">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -3491,13 +3491,13 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#radartargets" class="md-nav__link">
+  <a href="#radar-targets" class="md-nav__link">
     <span class="md-ellipsis">
-      /radar/targets
+      Radar Targets
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="/radar/targets">
+    <nav class="md-nav" aria-label="Radar Targets">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -3551,13 +3551,13 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#radarclusters" class="md-nav__link">
+  <a href="#radar-clusters" class="md-nav__link">
     <span class="md-ellipsis">
-      /radar/clusters
+      Radar Clusters
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="/radar/clusters">
+    <nav class="md-nav" aria-label="Radar Clusters">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -3611,13 +3611,13 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#radarinfo" class="md-nav__link">
+  <a href="#radar-info" class="md-nav__link">
     <span class="md-ellipsis">
-      /radar/info
+      Radar Info
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="/radar/info">
+    <nav class="md-nav" aria-label="Radar Info">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -3662,13 +3662,13 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#radarcube" class="md-nav__link">
+  <a href="#radar-cube" class="md-nav__link">
     <span class="md-ellipsis">
-      /radar/cube
+      Radar Cube
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="/radar/cube">
+    <nav class="md-nav" aria-label="Radar Cube">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -3730,7 +3730,9 @@
 
 <h1 id="radar-schema-example">Radar Schema Example</h1>
 <p>This example will go through how to connect to the radar topic published on your EdgeFirst Platform and how to display the information on the command line as well as through the Rerun visualizer.</p>
-<h2 id="radartargets">/radar/targets</h2>
+<h2 id="radar-targets">Radar Targets</h2>
+<p>Topic: <a href="../../../topics/radar/#radartargets">/radar/targets</a><br />
+Message: <a href="../../../api/sensor_msgs/#pointcloud2">PointCloud2</a></p>
 <h3 id="setting-up-subscriber">Setting up subscriber</h3>
 <p>After setting up the Zenoh session, we will create a subscriber to the <code>radar/targets</code> topic</p>
 <div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">Python</label><label for="__tabbed_1_2">Rust</label></div>
@@ -3861,14 +3863,16 @@ Recieved 23 radar points. Values: x: [2.04, 9.47]       y: [-2.97, 4.22]        
 </code></pre></div></p>
 <p>When displaying the results through Rerun you will see the pointcloud radar data.
 <img alt="alt text" src="../assets/radar_targets.png" /></p>
-<h2 id="radarclusters">/radar/clusters</h2>
+<h2 id="radar-clusters">Radar Clusters</h2>
+<p>Topic: <a href="../../../topics/radar/#radarclusters">/radar/clusters</a><br />
+Message: <a href="../../../api/sensor_msgs/#pointcloud2">PointCloud2</a></p>
 <h3 id="setting-up-subscriber_1">Setting up subscriber</h3>
 <p>After setting up the Zenoh session, we will create a subscriber to the <code>radar/clusters</code> topic</p>
 <div class="tabbed-set tabbed-alternate" data-tabs="5:2"><input checked="checked" id="__tabbed_5_1" name="__tabbed_5" type="radio" /><input id="__tabbed_5_2" name="__tabbed_5" type="radio" /><div class="tabbed-labels"><label for="__tabbed_5_1">Python</label><label for="__tabbed_5_2">Rust</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <div class="highlight"><pre><span></span><code><span class="c1"># Create a subscriber for &quot;rt/radar/cluster&quot;</span>
-<span class="n">subscriber</span> <span class="o">=</span> <span class="n">session</span><span class="o">.</span><span class="n">declare_subscriber</span><span class="p">(</span><span class="s1">&#39;rt/radar/cluster&#39;</span><span class="p">)</span>
+<span class="n">subscriber</span> <span class="o">=</span> <span class="n">session</span><span class="o">.</span><span class="n">declare_subscriber</span><span class="p">(</span><span class="s1">&#39;rt/radar/clusters&#39;</span><span class="p">)</span>
 </code></pre></div>
 </div>
 <div class="tabbed-block">
@@ -3942,7 +3946,9 @@ Recieved 138 radar points. 135 are clustered
 </code></pre></div></p>
 <p>When displaying the results through Rerun you will see the cluster data.
 <img alt="alt text" src="../assets/radar_clusters.png" /></p>
-<h2 id="radarinfo">/radar/info</h2>
+<h2 id="radar-info">Radar Info</h2>
+<p>Topic: <a href="../../../topics/radar/#radarinfo">/radar/info</a><br />
+Message: <a href="../../../api/edgefirst_msgs/#radarinfo">RadarInfo</a></p>
 <h3 id="setting-up-subscriber_2">Setting up subscriber</h3>
 <p>After setting up the Zenoh session, we will create a subscriber to the <code>radar/info</code> topic</p>
 <div class="tabbed-set tabbed-alternate" data-tabs="9:2"><input checked="checked" id="__tabbed_9_1" name="__tabbed_9" type="radio" /><input id="__tabbed_9_2" name="__tabbed_9" type="radio" /><div class="tabbed-labels"><label for="__tabbed_9_1">Python</label><label for="__tabbed_9_2">Rust</label></div>
@@ -4020,7 +4026,9 @@ The radar configuration is: center frequency: low   frequency sweep: ultra-short
 </code></pre></div></p>
 <p>When displaying the results through Rerun you will see a log of the radar configuration.
 <img alt="alt text" src="../assets/radar_info.png" /></p>
-<h2 id="radarcube">/radar/cube</h2>
+<h2 id="radar-cube">Radar Cube</h2>
+<p>Topic: <a href="../../../topics/radar/#radarcube">/radar/cube</a><br />
+Message: <a href="../../../api/edgefirst_msgs/#radarcube">RadarCube</a></p>
 <h3 id="setting-up-subscriber_3">Setting up subscriber</h3>
 <p>After setting up the Zenoh session, we will create a subscriber to the <code>radar/cube</code> topic</p>
 <div class="tabbed-set tabbed-alternate" data-tabs="12:2"><input checked="checked" id="__tabbed_12_1" name="__tabbed_12" type="radio" /><input id="__tabbed_12_2" name="__tabbed_12" type="radio" /><div class="tabbed-labels"><label for="__tabbed_12_1">Python</label><label for="__tabbed_12_2">Rust</label></div>

@@ -2174,13 +2174,13 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#camerainfo" class="md-nav__link">
+  <a href="#camera-info" class="md-nav__link">
     <span class="md-ellipsis">
-      /camera/info
+      Camera Info
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="/camera/info">
+    <nav class="md-nav" aria-label="Camera Info">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -2225,13 +2225,13 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#camerah264" class="md-nav__link">
+  <a href="#h264-camera-feed" class="md-nav__link">
     <span class="md-ellipsis">
-      /camera/h264
+      H264 Camera Feed
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="/camera/h264">
+    <nav class="md-nav" aria-label="H264 Camera Feed">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -2276,13 +2276,13 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#camerajpeg" class="md-nav__link">
+  <a href="#jpeg-camera-feed" class="md-nav__link">
     <span class="md-ellipsis">
-      /camera/jpeg
+      JPEG Camera Feed
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="/camera/jpeg">
+    <nav class="md-nav" aria-label="JPEG Camera Feed">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -3422,13 +3422,13 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#camerainfo" class="md-nav__link">
+  <a href="#camera-info" class="md-nav__link">
     <span class="md-ellipsis">
-      /camera/info
+      Camera Info
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="/camera/info">
+    <nav class="md-nav" aria-label="Camera Info">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -3473,13 +3473,13 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#camerah264" class="md-nav__link">
+  <a href="#h264-camera-feed" class="md-nav__link">
     <span class="md-ellipsis">
-      /camera/h264
+      H264 Camera Feed
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="/camera/h264">
+    <nav class="md-nav" aria-label="H264 Camera Feed">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -3524,13 +3524,13 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#camerajpeg" class="md-nav__link">
+  <a href="#jpeg-camera-feed" class="md-nav__link">
     <span class="md-ellipsis">
-      /camera/jpeg
+      JPEG Camera Feed
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="/camera/jpeg">
+    <nav class="md-nav" aria-label="JPEG Camera Feed">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -3592,7 +3592,9 @@
 
 <h1 id="camera-schema-examples">Camera Schema Examples</h1>
 <p>These examples demonstrate how to connect to various camera topics published on your EdgeFirst Platform and how to display the information through the command line.</p>
-<h2 id="camerainfo">/camera/info</h2>
+<h2 id="camera-info">Camera Info</h2>
+<p>Topic: <a href="../../../topics/camera/#camerainfo">/camera/info</a><br />
+Message: <a href="../../../api/sensor_msgs/#camerainfo">Image</a></p>
 <h3 id="setting-up-subscriber">Setting up subscriber</h3>
 <p>After setting up the Zenoh session, we will create a subscriber to the <code>camera/info</code> topic</p>
 <div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">Python</label><label for="__tabbed_1_2">Rust</label></div>
@@ -3669,7 +3671,9 @@
 </div>
 </div>
 </div>
-<h2 id="camerah264">/camera/h264</h2>
+<h2 id="h264-camera-feed">H264 Camera Feed</h2>
+<p>Topic: <a href="../../../topics/camera/#camerah264">/camera/h264</a><br />
+Message: <a href="../../../api/foxglove_msgs/#compressedvideo">CompressedVideo</a></p>
 <h3 id="setting-up-subscriber_1">Setting up subscriber</h3>
 <p>After setting up the Zenoh session, we will create a subscriber to the <code>camera/h264</code> topic and initialize a container for the H264 feed</p>
 <div class="tabbed-set tabbed-alternate" data-tabs="5:2"><input checked="checked" id="__tabbed_5_1" name="__tabbed_5" type="radio" /><input id="__tabbed_5_2" name="__tabbed_5" type="radio" /><div class="tabbed-labels"><label for="__tabbed_5_1">Python</label><label for="__tabbed_5_2">Rust</label></div>
@@ -3742,7 +3746,9 @@
 <h3 id="results_1">Results</h3>
 <p>When displaying the results through Rerun you will see the live camera feed from your EdgeFirst Platform.
 <img alt="alt text" src="../assets/h264.png" /></p>
-<h2 id="camerajpeg">/camera/jpeg</h2>
+<h2 id="jpeg-camera-feed">JPEG Camera Feed</h2>
+<p>Topic: <a href="../../../topics/camera/#camerajpeg">/camera/jpeg</a><br />
+Message: <a href="../../../api/sensor_msgs/#compressedimage">CompressedImage</a></p>
 <h3 id="setting-up-subscriber_2">Setting up subscriber</h3>
 <p>After setting up the Zenoh session, we will create a subscriber to the <code>camera/jpeg</code> topic</p>
 <div class="tabbed-set tabbed-alternate" data-tabs="8:2"><input checked="checked" id="__tabbed_8_1" name="__tabbed_8" type="radio" /><input id="__tabbed_8_2" name="__tabbed_8" type="radio" /><div class="tabbed-labels"><label for="__tabbed_8_1">Python</label><label for="__tabbed_8_2">Rust</label></div>

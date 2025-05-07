@@ -8,7 +8,7 @@ nav:
       - getting_started/models.md
       - getting_started/perception.md
       - getting_started/platforms.md
-      # - getting_started/web.md
+      - getting_started/web.md
       - getting_started/workflows.md
   - Studio:
       - studio/index.md
@@ -26,7 +26,7 @@ nav:
       - datasets/index.md
       - datasets/tutorials.md
       - datasets/format.md
-    #   - datasets/types.md
+      - datasets/structure.md
       - datasets/zoo.md
   - Models:
       - models/index.md
@@ -40,6 +40,9 @@ nav:
           - models/fusion/training.md
           - models/fusion/validation.md
           - models/fusion/deployment.md
+      - Developer Guide:
+          - Examples: 
+              - Deploying Vision Models: models/dev/examples/object-detection.ipynb
       - models/augmentations.md
       - models/metrics.md
   - Perception:

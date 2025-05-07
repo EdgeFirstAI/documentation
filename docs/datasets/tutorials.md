@@ -374,7 +374,7 @@ You will now see the datasets contained in the project. Each dataset has a galle
 <figcaption>Gallery Button</figcaption>
 </figure>
 
-When clicking the gallery button, you will either see the images in the dataset for [Image-Based Datasets](../datasets/types.md#image-based) or sequences for [Sequence-Based Datasets](../datasets/types.md#sequence-based).
+When clicking the gallery button, you will either see the images in the dataset for [Image-Based Datasets](../datasets/structure.md#image-based) or sequences for [Sequence-Based Datasets](../datasets/structure.md#sequence-based).
 
 For sequence-based datasets, you need to specify which sequence you would like to view. This can be done by clicking on the sequence.
 
@@ -445,7 +445,7 @@ Clicking on any of these sequences will open individual images in the sequence w
 <figcaption>Vision Annotations</figcaption>
 </figure>
 
-For cases where the annotations need corrections, please see [Dataset Tutorials](#audit-annotations) for more details.
+For cases where the annotations need corrections, please see [Audit 2D Annotations](#audit-2d-annotations) for more details.
 
 ## Creating Datasets
 

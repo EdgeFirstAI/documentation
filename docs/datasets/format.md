@@ -13,10 +13,10 @@ includes object label, 2D bounding boxes, segmentations masks, 3D bounding boxes
 
 ## Dataset Storage Format
 
-The ZIP format was chosen as the container for the sensor data as it is
+The ZIP format is the typical container for the sensor data as it is
 a widely supported standard format which has been around for a long time, 
 every system supports ZIP (ZIP64 was standardized in 2001). The ZIP format 
-supports random access as it uses a file index, then each individual file is optionally compressed. 
+supports random access as it uses a file index, then each individual file is optionally compressed.  However, containers can also be regular directories. 
 
 ### Dataset Hierarchy
 
@@ -33,7 +33,7 @@ name but add the frame number and file extension.
     been cropped or downsampled, what’s important is the frame number is unique 
     for the given sequence and contains all the sample datatypes.
 
-```
+```text
 * Dataset
     * hostname_date_time
         * hostname_date_time_frame.camera.jpeg (camera frame)
@@ -132,7 +132,7 @@ in order to maintain consistency in data representations. However, the schema re
 dynamic where new columns can be added. The following schema is a typical representation
 of the annotations. 
 
-```
+```text
 ('name', Categorical(ordering='physical')),
 ('frame', UInt64),
 ('group', Enum(categories=['train', 'val'])),

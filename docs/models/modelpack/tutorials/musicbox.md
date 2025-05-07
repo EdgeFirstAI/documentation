@@ -169,49 +169,8 @@ Clicking the training card will show the expanded view containing all the logs a
 
 From the available checkpoints, download the **TFLite** model - optimized for embedded devices — and deploy it to the Maivin unit for edge inference.
 
-## Model Deployment
-The steps below are an abbreviated walkthrough of the [Model Upload Walkthrough](../../../platforms/model_upload.md). We recommend familiarizing yourself with that walkthrough.
-
-In the expanded session view, download the **TFLite** model and copy it to the Maivin device using [SCP](../../../platforms/ssh.md#secure-copy):
-
-`scp modelpack.tflite torizon@verdin-imxmp-xxxxx:~/modelpack.tflite`
-
-From this point, there are two different options to deploy the new trained model. The first one is to change the model path from the WebUI on the device and the second one is changing the path to the model in the service configuration file.
-
-### Model Deployment via WebUI
-From the WebUI the user must access to the Model Settings view and change the model location there:
-
-![Deployment Results](./assets/model_location_webui.png)
-
-Remember to save the configurations at the end of the process. The  Model Configuration page can be accessed via the following url:
-`https://verdin-imx8mp-xxxxx/config/model`
-
-### Manual Model Deployment
-In case the manual deployment is needed, you need to connect to the device via [SSH](../../../platforms/ssh.md):
-
-```shell
-$ ssh torizon@verdin-imx8mp-15141030
-```
-
-and edit the model parameters in `/etc/default/model`
-
-```shell
-$ vi /etc/default/model
-```
-
-then restart the model service using the `systemctl` command
-
-```shell
-$ sudo systemctl stop model
-$ sudo systemctl start model 
-```
-
-!!! tip "Model Excecution" 
-    Rember to use **sudo** to start and stop model services
-
-Now the model is running, open the browser and check the camera to see the model detection the object.
-
-![Deployment Results](./assets/deployment-results.png)
+{!discrete/upload_models.md!}
+{!discrete/deploy_model_service.md!}
 
 Begin testing the model with the object. If the model does not perform as expected, record a few more minutes of data and repeat the training process. Use this opportunity to identify edge cases and collect additional samples that can help improve the model's performance.
 

@@ -12,21 +12,25 @@
         <meta name="author" content="Au-Zone Technologies">
       
       
-        <link rel="canonical" href="https://doc.edgefirst.ai/develop/datasets/types/">
+        <link rel="canonical" href="https://doc.edgefirst.ai/develop/datasets/structure/">
       
       
+        <link rel="prev" href="../format/">
+      
+      
+        <link rel="next" href="../zoo/">
       
       
       <link rel="icon" href="../../assets/favicon.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.11">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.12">
     
     
       
-        <title>Dataset Types - EdgeFirst Studio Documentation</title>
+        <title>Dataset File Structure - EdgeFirst Studio Documentation</title>
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/main.4af4bdda.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.2afb09e1.min.css">
       
         
         <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
@@ -49,6 +53,12 @@
     
     
       <link rel="stylesheet" href="../../assets/_mkdocstrings.css">
+    
+      <link rel="stylesheet" href="../../css/ansi-colours.css">
+    
+      <link rel="stylesheet" href="../../css/jupyter-cells.css">
+    
+      <link rel="stylesheet" href="../../css/pandas-dataframe.css">
     
     <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
@@ -76,7 +86,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#dataset-types" class="md-skip">
+        <a href="#dataset-file-structure" class="md-skip">
           Skip to content
         </a>
       
@@ -115,7 +125,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Dataset Types
+              Dataset File Structure
             
           </span>
         </div>
@@ -260,10 +270,12 @@
   
   
   
+    
+  
   
     
     
-      <li class="md-tabs__item">
+      <li class="md-tabs__item md-tabs__item--active">
         <a href="../" class="md-tabs__link">
           
   
@@ -393,6 +405,8 @@
       
         
           
+        
+      
         
       
         
@@ -555,6 +569,29 @@
   
   <span class="md-ellipsis">
     EdgeFirst Platforms: Setup and Boot Guide
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../getting_started/web/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Web-Based Workflow
     
   </span>
   
@@ -928,6 +965,8 @@
       
   
   
+    
+  
   
   
     
@@ -943,18 +982,23 @@
       
         
       
-    
-    
-    
-      
+        
       
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
         
           
           <div class="md-nav__link md-nav__container">
@@ -971,13 +1015,13 @@
             </a>
             
               
-              <label class="md-nav__link " for="__nav_3" id="__nav_3_label" tabindex="0">
+              <label class="md-nav__link " for="__nav_3" id="__nav_3_label" tabindex="">
                 <span class="md-nav__icon md-icon"></span>
               </label>
             
           </div>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_3">
             <span class="md-nav__icon md-icon"></span>
             Datasets
@@ -1036,6 +1080,98 @@
                 
   
   
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    Dataset File Structure
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    Dataset File Structure
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#sequence-based" class="md-nav__link">
+    <span class="md-ellipsis">
+      Sequence-Based
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#image-based" class="md-nav__link">
+    <span class="md-ellipsis">
+      Image-Based
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mixed" class="md-nav__link">
+    <span class="md-ellipsis">
+      Mixed
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
   
   
     <li class="md-nav__item">
@@ -1073,6 +1209,8 @@
       
         
           
+        
+      
         
       
         
@@ -1391,6 +1529,135 @@
   
 
       </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_4" id="__nav_4_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Developer Guide
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_4">
+            <span class="md-nav__icon md-icon"></span>
+            Developer Guide
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_4_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_4_1" id="__nav_4_4_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Examples
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_4_4_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_4_1">
+            <span class="md-nav__icon md-icon"></span>
+            Examples
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../models/dev/examples/object-detection/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Deploying Vision Models
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
     </li>
   
 
@@ -3229,6 +3496,15 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#mixed" class="md-nav__link">
+    <span class="md-ellipsis">
+      Mixed
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -3245,9 +3521,59 @@
 
 
 
-<h1 id="dataset-types">Dataset Types</h1>
+<h1 id="dataset-file-structure">Dataset File Structure</h1>
+<p>We propose different file structures for datasets that fall into two categories: Sequence-Based, Image-Based, and Mixed.  Sequence-Based datasets are imported from a video recording with sequential frames and these datasets preserve the order of the frames from start to end.  Image-Based datasets do not have frames, but images without any specific order.  Mixed datasets contains both sequences and image-based samples. </p>
+<p>Before reading further, it is highly recommended to be familiar with the <a href="../format/">EdgeFirst Dataset Format</a> as this describes the dataset format presented by EdgeFirst Studio to distinguish sensor and annotation containers.  Recall that sensor containers contain the images captured by the camera that is stored in either a Zip file or a standard directory. The distinction between the file structures presented in this page is based on whether or not the sensor container stores video frames (sequences) or images.  Lastly, the annotations for each sample are stored in an Arrow file. </p>
+<p>A typical Arrow file has the following contents.</p>
+<figure>
+<img align="center" alt="Sample DataFrame" src="../assets/arrow-table-sample.jpg" />
+<figcaption>Sample DataFrame</figcaption>
+</figure>
+<p>For a sequence, the "name" column lists the sequence names and the "frame" column lists the frame indices.  For images, the "name" column is the name of the image and the "frame" will contain <code>Null</code>. </p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The Arrow file in the file structures below is stored inside the dataset directory.  However, the user can specify the location of the Arrow file when using <a href="../../perception/studio/#annotation-management">EdgeFirst-Client</a>.</p>
+</div>
 <h2 id="sequence-based">Sequence-Based</h2>
+<p>As noted above, these datasets contain video frames where the samples have a defined order from start to end (sequential). These datasets could originate from recordings using an EdgeFirst Platform which records an MCAP file or from a typical video file such as an MP4.  There could be multiple sequences stored for any given dataset.  The dataset structure of this type is organized in the following order.</p>
+<div class="highlight"><pre><span></span><code>&lt;dataset name&gt;/
+├── &lt;sequence one&gt;/
+│   ├── *.&lt;ext&gt;
+├── &lt;sequence two&gt;/
+|   ├── *.&lt;ext&gt;
+...
+├── &lt;sequence x&gt;/
+|   ├── *.&lt;ext&gt;
+└── &lt;dataset&gt;.arrow
+</code></pre></div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Elements surrounded by <code>&lt;&gt;</code> means that these elements are flexible and can be specified by any string.  Similarly, <code>*.&lt;ext&gt;</code> indicates any type of image extension.  For example, the directory could contain image files with <code>.camera.jpeg</code>, <code>.jpg</code>, <code>.png</code>, etc. </p>
+</div>
 <h2 id="image-based">Image-Based</h2>
+<p>As noted above, these datasets contain image files where there is no order between images.  These datasets could originate from external datasets such as <a href="https://docs.ultralytics.com/datasets/detect/coco/">COCO</a> or images captured from a mobile device.  The dataset structure of this type is organized in the following order.</p>
+<div class="highlight"><pre><span></span><code>&lt;dataset name&gt;/
+├── *.&lt;ext&gt;
+└── &lt;dataset&gt;.arrow
+</code></pre></div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><code>*.&lt;ext&gt;</code> indicates all the image files with any type of image extension.  For example, the directory could contain image files with <code>.camera.jpeg</code>, <code>.jpg</code>, <code>.png</code>, etc.</p>
+</div>
+<h2 id="mixed">Mixed</h2>
+<p>These datasets contain both sequences and standard non-sequence images.  The dataset structure of this type is organized in the following order.</p>
+<div class="highlight"><pre><span></span><code>&lt;dataset name&gt;/
+├── &lt;sequence one&gt;/
+│   ├── *.&lt;ext&gt;
+├── &lt;sequence two&gt;/
+|   ├── *.&lt;ext&gt;
+...
+├── &lt;sequence x&gt;/
+|   ├── *.&lt;ext&gt;
+├── *.&lt;ext&gt;
+└── &lt;dataset&gt;.arrow
+</code></pre></div>
+<p>Sequences have designated sub-directories in the dataset to store the frames.  Images are stored in the dataset directory. </p>
 
 
 

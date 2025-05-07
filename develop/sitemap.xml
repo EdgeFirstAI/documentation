@@ -13,11 +13,11 @@
          <lastmod>2025-05-07</lastmod>
     </url>
     <url>
-         <loc>https://doc.edgefirst.ai/develop/datasets/tutorials/</loc>
+         <loc>https://doc.edgefirst.ai/develop/datasets/structure/</loc>
          <lastmod>2025-05-07</lastmod>
     </url>
     <url>
-         <loc>https://doc.edgefirst.ai/develop/datasets/types/</loc>
+         <loc>https://doc.edgefirst.ai/develop/datasets/tutorials/</loc>
          <lastmod>2025-05-07</lastmod>
     </url>
     <url>
@@ -66,6 +66,10 @@
     </url>
     <url>
          <loc>https://doc.edgefirst.ai/develop/models/metrics/</loc>
+         <lastmod>2025-05-07</lastmod>
+    </url>
+    <url>
+         <loc>https://doc.edgefirst.ai/develop/models/dev/examples/object-detection/</loc>
          <lastmod>2025-05-07</lastmod>
     </url>
     <url>

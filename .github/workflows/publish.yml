@@ -1,0 +1,39 @@
+name: publish
+
+on:
+  push:
+    branches:
+      - test
+      - stage
+      - saas
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: github-pages
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: 3.10
+          
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Extract branch name
+        shell: bash
+        run: echo "##[set-output name=branch;]$(echo ${GITHUB_REF#refs/heads/})"
+        id: extract_branch
+
+      - name: Deploy to GitHub Pages
+        run: mike deploy --push ${{ steps.extract_branch.outputs.branch }}

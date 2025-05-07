@@ -12,13 +12,13 @@
   {
     "version": "saas",
     "title": "saas",
-    "aliases": []
+    "aliases": [
+      "latest"
+    ]
   },
   {
     "version": "develop",
     "title": "develop",
-    "aliases": [
-      "latest"
-    ]
+    "aliases": []
   }
 ]

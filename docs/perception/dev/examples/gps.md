@@ -1,4 +1,6 @@
 # GPS Schema Example
+Topic: [/gps](../../topics/navsat.md#gps)  
+Message: [NavSatFix](../../api/sensor_msgs.md#navsatfix)
 
 This example will go through how to connect to the GPS topic published on your EdgeFirst Platform and how to display the information through the Rerun visualizer.
 

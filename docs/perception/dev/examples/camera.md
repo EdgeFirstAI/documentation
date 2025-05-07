@@ -2,7 +2,9 @@
 
 These examples demonstrate how to connect to various camera topics published on your EdgeFirst Platform and how to display the information through the command line.
 
-## /camera/info
+## Camera Info 
+Topic: [/camera/info](../../topics/camera.md#camerainfo)  
+Message: [Image](../../api/sensor_msgs.md#camerainfo)
 
 ### Setting up subscriber
 
@@ -83,7 +85,9 @@ When displaying the results through Rerun you will see a log of the camera width
     let P = info.P;  // Projection matrix
     ```
 
-## /camera/h264
+## H264 Camera Feed
+Topic: [/camera/h264](../../topics/camera.md#camerah264)  
+Message: [CompressedVideo](../../api/foxglove_msgs.md#compressedvideo)
 
 ### Setting up subscriber
 
@@ -164,7 +168,9 @@ The CompressedVideo message contains H.264 encoded video data. You can convert
 When displaying the results through Rerun you will see the live camera feed from your EdgeFirst Platform.
 ![alt text](assets/h264.png)
 
-## /camera/jpeg
+## JPEG Camera Feed
+Topic: [/camera/jpeg](../../topics/camera.md#camerajpeg)  
+Message: [CompressedImage](../../api/sensor_msgs.md#compressedimage)
 
 ### Setting up subscriber
 

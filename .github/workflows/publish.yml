@@ -35,7 +35,10 @@ jobs:
           git config --local user.email "support@edgefirst.ai"
           git config --local user.name "EdgeFirst AI"
 
+      - name: Fetch gh-pages
+        run: git fetch origin gh-pages --depth=1
+
       - name: Deploy to GitHub Pages
-        run: |
-          git fetch origin gh-pages --depth=1
-          mike deploy --push ${{ github.ref_name }}
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: mike deploy --push ${{ github.ref_name }}

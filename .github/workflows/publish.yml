@@ -36,4 +36,6 @@ jobs:
           git config --local user.name "EdgeFirst AI"
 
       - name: Deploy to GitHub Pages
-        run: mike deploy --push $GITHUB_REF_NAME
+        run: |
+          git fetch origin gh-pages --depth=1
+          mike deploy --push ${{ github.ref_name }}

@@ -5,6 +5,11 @@
     "aliases": []
   },
   {
+    "version": "stage",
+    "title": "stage",
+    "aliases": []
+  },
+  {
     "version": "develop",
     "title": "develop",
     "aliases": [

@@ -60,8 +60,6 @@ nav:
           - perception/topics/model.md
           - perception/topics/navsat.md
           - perception/topics/radar.md
-          
-      - perception/custom.md
       - Developer Guide:
           - perception/dev.md
           - Examples:
@@ -102,5 +100,3 @@ nav:
       - Networking:
         - platforms/networking.md
         - platforms/ssh.md
-
-

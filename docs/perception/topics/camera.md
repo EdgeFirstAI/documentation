@@ -68,6 +68,18 @@ sequenceDiagram
 
 The `/camera/h264` topic uses Foxglove's [CompressedVideo](../api/foxglove_msgs.md#compressedvideo) schema to publish h.264 encoded video frames.  The h.264 encoder uses key-frames, I-Frames, at a typical rate of 1Hz with the frames in-between encoded as P/B-Frames.  The decoder requires an initial I-Frame before it can decode additional frames.  This is typically handled transparently but means when sending `CompressedVideo` data to the h.264 decoder it could take up to a second until valid output is produced.
 
+**Usage** | **Link**
+:------------------:|:------------------:
+WebUI | []()
+Foxglove | [CompressedVideo Example](../../platforms/foxglove.md#viewing-detection-messages)
+SDK | [H264 Example](../dev/examples/camera.md#h264-camera-feed)
+
 ## /camera/jpeg
 
-The `/camera/jpeg` topic uses ROS2's [CompressedImage](../api/sensor_msgs.md#compressedimage) schema to publish JPEG encoded camera frames.  Each frame is a complete JPEG image and can be decoded using any standard JPEG decoder.
+The `/camera/jpeg` topic uses ROS2's [CompressedImage](../api/sensor_msgs.md#compressedimage) schema to publish JPEG encoded camera frames.  Each frame is a complete JPEG image and can be decoded using any standard JPEG decoder. The JPEG topic will not be enabled by default. In order to enable the JPEG topic, please follow the guide noted in [configuration](../../platforms/configuration/#h264-streaming)
+
+**Usage** | **Link**
+:------------------:|:------------------:
+WebUI | []()
+Foxglove | [Compressed Image Example]()
+SDK | [JPEG Example](../dev/examples/camera.md#jpeg-camera-feed)

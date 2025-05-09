@@ -9,7 +9,7 @@ This section will describe the validation metrics reported in [ModelPack validat
 
 ### Object Detection Metrics
 
-The object detection metrics describe the mean average precision (mAP), recall (mAR), and accuracy (mACC) at IoU thresholds 0.50, 0.75, and 0.50-0.95.  These metrics are represented as a bar chart.  Shown below is an example.
+The object detection metrics describe the mean average precision (mAP), recall (mAR), and accuracy (mACC) at IoU thresholds 0.50, 0.75, and 0.50:0.95.  These metrics are represented as a bar chart.  Shown below is an example.
 
 <figure markdown="span">
   ![Detection Metrics](assets/metrics/modelpack-detection-metrics.jpg){ align=center }
@@ -18,7 +18,7 @@ The object detection metrics describe the mean average precision (mAP), recall (
 
 #### Mean Average Precision
 
-The mAP is based on the area under the precision vs. recall curve which plots the tradeoff between precision and recall by adjusting the IoU thresholds.  The average precision is first calculated by finding the area under the precision vs. recall curve for each class at varying IoU thresholds.  The mAP at 0.50 and 0.75 is the mean of the average precision across all classes, but only at the IoU threshold values of 0.50 and 0.75.  For the case of mAP at 0.50-0.95, the average precision at 0.50-0.95 is first calculated by taking the mean of the average precision (area under the curve) across IoU thresholds 0.50 to 0.95 in 0.05 steps.  This process is done per class and the final mAP at 0.50-0.95 is the mean of the average precision at 0.50-0.95 values across all classes.
+The mAP is based on the area under the precision vs. recall curve which plots the tradeoff between precision and recall by adjusting the IoU thresholds.  The average precision is first calculated by finding the area under the precision vs. recall curve for each class at varying IoU thresholds.  The mAP at 0.50 and 0.75 is the mean of the average precision across all classes, but only at the IoU threshold values of 0.50 and 0.75.  For the case of mAP at 0.50:0.95, the average precision at 0.50:0.95 is first calculated by taking the mean of the average precision (area under the curve) across IoU thresholds 0.50 to 0.95 in 0.05 steps.  This process is done per class and the final mAP at 0.50:0.95 is the mean of the average precision at 0.50:0.95 values across all classes.
 
 #### Mean Average Recall
 
@@ -32,7 +32,7 @@ $$
 !!! note
     The equation for recall is shown in the [Glossary](#glossary).
 
-The metric for mAR 0.50-0.95 is calculated by taking the sum of mAR values at IoU thresholds 0.50, 0.55, ..., 0.95 and then dividing by the number of validation IoU thresholds (in this case 10).  
+The metric for mAR 0.50:0.95 is calculated by taking the sum of mAR values at IoU thresholds 0.50, 0.55, ..., 0.95 and then dividing by the number of validation IoU thresholds (in this case 10).  
 
 $$
 \text{mAR}_{0.50-0.95} = \frac{1}{10}\sum_{i=0.50}^{n}\text{mAR}_{i}, i = \text{0.50, 0.55, 0.60, ..., 0.95}
@@ -50,7 +50,7 @@ $$
 !!! note
     The equation for accuracy is shown in the [Glossary](#glossary).
 
-The following equation below calculates the mean average accuracy for a range of IoU thresholds from 0.50-0.95 which is calculated similarly to mean average recall.  
+The following equation below calculates the mean average accuracy for a range of IoU thresholds from 0.50:0.95 which is calculated similarly to mean average recall.  
 
 $$
 \text{mACC}_{0.50-0.95} = \frac{1}{10}\sum_{i=0.50}^{n}\text{mACC}_{i}, i = \text{0.50, 0.55, 0.60, ..., 0.95}
@@ -58,28 +58,96 @@ $$
 
 ### Segmentation Metrics
 
-The segmentation metrics describe precision, recall, accuracy, and IoU.  These metrics are represented as a bar chart.  Shown below is an example.
+The segmentation metrics describe the average precision, recall, and accuracy.  These metrics are represented as a bar chart.  Shown below is an example.
 
 <figure markdown="span">
   ![Segmentation Metrics](assets/metrics/modelpack-segmentation-metrics.jpg){ align=center }
   <figcaption>Segmentation Metrics</figcaption>
 </figure>
 
-#### Precision
+The equations for precision, recall, and accuracy are similar to object detection, except that in segmentation we are classifying predictions as either true or false on a pixel-by-pixel basis.  Shown below are the equations for precision, recall, and accuracy. 
 
-This metric is calculated based on the equation for precision shown in the [Glossary](#glossary).  A true positive is when the prediction label matches the true (actual) label.  A false positive is when the prediction label does not match the true (actual) label.
+$$
+\text{precision} = \frac{\text{true predictions}}{\text{total predictions}}
+$$
 
-#### Recall
+$$
+\text{recall} = \frac{\text{true predictions}}{\text{total ground truths}}
+$$
 
-This metric is calculated based on the equation for recall shown in the [Glossary](#glossary).  A true positive is when the prediction label matches the true (actual) label.  A false negative is when the prediction label is a positive class, but the true (actual) label is a negative class (background).
+$$
+\text{accuracy} = \frac{\text{true predictions}}{\text{predictions U ground truths}}
+$$
 
-#### Accuracy
+The average precision, recall, and accuracy is the sum of precision, recall, and accuracy per class divided by the number of classes.  
 
-This metric is based on the proportion of the correct predictions over the total predictions.  A correct prediction is where the prediction labels equals the true (actual) labels.  
+$$
+\text{AP} = \frac{1}{n}\sum_{i=1}^{n}\text{precision}_{i}, n = \text{number of classes}
+$$
 
-#### IoU
+$$
+\text{AR} = \frac{1}{n}\sum_{i=1}^{n}\text{recall}_{i}, n = \text{number of classes}
+$$
 
-This metric is the intersection over union.  The intersection is based on the logical AND operation of the true (actual) labels and the prediction labels.  The union is based on the logical OR operation of the true (actual) labels and the prediction labels.  
+$$
+\text{aACC} = \frac{1}{n}\sum_{i=1}^{n}\text{accuracy}_{i}, n = \text{number of classes}
+$$
+
+The next section will show an example of the metric computations on a small sample.
+
+#### Sample Computation
+
+This section will show an example of how segmentation metrics are calculated.  Consider the following 5x2 segmentation masks for the ground truth and the model prediction with classes background (BG), A, and B.
+
+<figure markdown="span">
+  ![Ground Truth Mask](assets/metrics/mask-gt.jpg){ align=center }
+  <figcaption>Ground Truth Mask</figcaption>
+</figure>
+
+<figure markdown="span">
+  ![Prediction Mask](assets/metrics/mask-dt.jpg){ align=center }
+  <figcaption>Prediction Mask</figcaption>
+</figure>
+
+We start by calculating the metrics per class which is the precision, recall, and accuracy for class A and B.  Class background is not included in the computations because it dilutes the revelant classes A and B since most of the area in the mask is typically classified as background. 
+
+**Class A Metrics**
+
+The following table shows the classifications for class A where T is denoted as a true prediction, F is denoted as a false prediction, and NULL are placed on the positions that do not involve class A.
+
+<figure markdown="span">
+  ![Classification A](assets/metrics/mask-a.jpg){ align=center }
+  <figcaption>Classification A</figcaption>
+</figure>
+
+Using the equations for precision, recall, and accuracy above, these are the metrics for class A.
+
+* $\text{precision} = \frac{2}{3}$
+* $\text{recall} = \frac{2}{2}$
+* $\text{accuracy} = \frac{2}{3}$
+
+**Class B Metrics**
+
+The following table shows the classifications for class B.
+
+<figure markdown="span">
+  ![Classification B](assets/metrics/mask-b.jpg){ align=center }
+  <figcaption>Classification B</figcaption>
+</figure>
+
+These are the metrics for class B.
+
+* $\text{precision} = \frac{2}{2}$
+* $\text{recall} = \frac{2}{5}$
+* $\text{accuracy} = \frac{2}{5}$
+
+**Resulting Metrics**
+
+Based on the metrics of each class shown above, the average metrics can now be calculated.
+
+* $\text{AP} = \frac{(\frac{2}{3} + \frac{2}{2})}{2} = \frac{5}{6} \approx 0.83$
+* $\text{AR} = \frac{(\frac{2}{2} + \frac{2}{5})}{2} = \frac{7}{10} = 0.70$
+* $\text{aACC} = \frac{(\frac{2}{3} + \frac{2}{5})}{2} = \frac{8}{15} \approx 0.53$
 
 ### Model Timings
 
@@ -92,7 +160,7 @@ The model inference timings are represented as a histogram where the y-axis show
 
 ### Confusion Matrix
 
-The Confusion Matrix provides a summary of the prediction results by comparing the predicted labels with the ground truth (actual) labels.  This matrix will show the ground truth labels along the x-axis and the predicted labels along the y-axis.  Along the diagonal where both ground truth labels and prediction labels match shows the true positive (correct predictions) counts of that class.  However, throughout validation, the matrix shows the cases where the model can misidentify labels or fail to find the labels.
+The Confusion Matrix provides a summary of the prediction results by comparing the predicted labels with the ground truth (actual) labels.  This matrix will show the ground truth labels along the x-axis and the predicted labels along the y-axis.  Along the diagonal where both ground truth labels and prediction labels match shows the true positive (correct predictions) counts of that class.  However, throughout validation, the matrix shows the cases where the model can misidentify labels (false positives) or fail to find the labels (false negatives).  The first column where the ground truth label is "background" indicates the number of false positives are based on the model blindly detecting objects that are not really in the image.  The last row where the prediction label is "background" indicates the number of false negatives where the model did not detect any objects that are in the image. 
 
 <figure markdown="span">
   ![Confusion Matrix](assets/metrics/modelpack-confusion-matrix.jpg){ align=center }

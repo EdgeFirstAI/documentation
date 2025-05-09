@@ -153,6 +153,20 @@ Start and launch a new server to host the auto-segmentation backend.
 <figcaption>Start a Server</figcaption>
 </figure>
 
+!!! warning
+
+    This server is costing credits to run.  An inactivity of 15 minutes will auto-terminate this server.  Otherwise, once you have completed the annotations, please ensure to terminate this server to avoid spending more of your credits. 
+
+    <figure markdown="span">
+    ![Select AI Server](assets/select-ai-server.jpg){ align=center }
+    <figcaption>Select AI Server</figcaption>
+    </figure>
+
+    <figure markdown="span">
+    ![Terminate AI Server](assets/terminate-ai-server.jpg){ align=center }
+    <figcaption>Terminate AI Server</figcaption>
+    </figure>
+
 Next navigate back to the [dataset gallery](#viewing-datasets) and enable edit mode.
 
 <figure markdown="span">

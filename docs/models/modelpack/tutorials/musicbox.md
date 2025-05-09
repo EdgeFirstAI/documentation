@@ -1,4 +1,4 @@
-# Tutorial 1: The MusicBox Detector
+# Tutorial 2: The MusicBox Detector
 
 ![MusicBox](./assets/musicbox-tutorial-header.png)
 

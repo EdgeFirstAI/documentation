@@ -13,7 +13,7 @@ Data collection process starts as simple as collecting pictures and videos of th
 
 ![Data Collection](assets/measurement_tap/data_collection.png)
 
-The image above shows measurement tape images captured from different angles and positions using an iPhone 15. We recorded both images and videos with varying camera orientations to ensure diverse perspectives.
+The image above shows measurement tape images captured from different angles and positions using an iPhone, though any camera will work you just need to be able to transfer the photos and videos to your PC. We recorded both images and videos with varying camera orientations to ensure diverse perspectives.
 
 To create a dataset in EdgeFirst Studio, navigate to the Tutorials project and click the `Create New` button. Name the dataset "MeasurementTape" and add a single label: `tape`. You can keep the default `Annotations Set Name` or modify it as needed. Adding a description will be useful when accessing the dataset through the `edgefirst-client` API.
 
@@ -65,7 +65,7 @@ You are now ready to begin model training.
 
 ## Model Training
 
-Unlike many Machine Learning frameworks, training a model in EdgeFirst Studio is straightforward. The first step is to ensure your dataset contains training and validation groups. If the GUI shows 0 Groups, you'll need to create them before starting training. Click the **`(+)`** button in the groups section to randomly shuffle the data and create the groups.
+We will now walk you through training a detection and segmentation model, but first there's a few house keeping steps to prepare the dataset. The first step is to ensure your dataset contains training and validation groups. If the GUI shows 0 Groups, you'll need to create them before starting training. Click the **`(+)`** button in the groups section to randomly shuffle the data and create the groups.  This will also need to be done after adding additional images and videos to the dataset.
 
 ![Create Groups](assets/measurement_tap/create_dataset_groups.png)
 
@@ -94,7 +94,7 @@ Now that training has started, wait for the model to finish processing and for t
 
 ## Model Inference on PC 
 
-Now that ModelPack has been trained on our dataset, we can download the modelpack.onnx file from the artifacts and run inference. In this section, we'll walk through the steps required to run the model and visualize the results.
+Now that ModelPack has been trained on our dataset, we can download the `modelpack.onnx` file from the artifacts and run inference. In this section, we'll walk through the steps required to run the model and visualize the results.
 
 ![Input Image](assets/measurement_tap/input_image.png)
 

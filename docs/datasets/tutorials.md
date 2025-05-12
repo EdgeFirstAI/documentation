@@ -139,140 +139,158 @@ Next [navigate to the gallery](#viewing-datasets) of the dataset by clicking on 
 
 Another method for running auto-annotations is to utilize the propagation feature in the gallery.  This feature will preload all frames in a *video* sequence in the dataset into SAM-2 to generate segmentation masks, 2D bounding boxes, 3D bounding boxes (For Raivin/LiDAR Only) by tracking the object across the frames. 
 
-Start by enabling an AI Assisted Ground Truth server by navigating to the *Cloud Instances* under the tool options.
+First [navigate to the dataset gallery](#viewing-datasets) and click on the Video Segment Tool as indicated in red below.
 
 <figure markdown="span">
-![Cloud Instances](assets/cloud-instances.jpg){ align=center }
-<figcaption>Cloud Instances</figcaption>
+![Select the Video Segment Tool](assets/agtg-segment-tool.jpg){ align=center }
+<figcaption>Select the Video Segment Tool</figcaption>
 </figure>
 
-Start and launch a new server to host the auto-segmentation backend.
+Next click on "Launch AGTG Server" on the right. This will take some time to initialize the server. A progress will appear with an indication of the length of time to launch the server.  
 
 <figure markdown="span">
-![Start a Server](assets/launch-ai-server.jpg){ align=center }
-<figcaption>Start a Server</figcaption>
+![Launch AGTG Server](assets/launch-agtg-server.jpg){ align=center }
+<figcaption>Launch AGTG Server</figcaption>
+</figure>
+
+<figure markdown="span">
+![Launching Progress](assets/agtg-server-progress.jpg){ align=center }
+<figcaption>Launching Progress</figcaption>
 </figure>
 
 !!! warning
 
-    This server is costing credits to run.  An inactivity of 15 minutes will auto-terminate this server.  Otherwise, once you have completed the annotations, please ensure to terminate this server to avoid spending more of your credits. 
+    This server is costing credits to run.  An inactivity of 15 minutes will auto-terminate this server.  Otherwise, once you have completed the annotations, please ensure to [terminate the AGTG server](#terminate-agtg-server) to avoid spending more of your credits. 
 
-    <figure markdown="span">
-    ![Select AI Server](assets/select-ai-server.jpg){ align=center }
-    <figcaption>Select AI Server</figcaption>
-    </figure>
-
-    <figure markdown="span">
-    ![Terminate AI Server](assets/terminate-ai-server.jpg){ align=center }
-    <figcaption>Terminate AI Server</figcaption>
-    </figure>
-
-Next navigate back to the [dataset gallery](#viewing-datasets) and enable edit mode.
+Once the server has been initialized, you can now specify the starting frame (default to the current frame) and the stop frame (default to the end frame) of the annotation propagation. This setting specifies the window of propagation where SAM-2 will only propagate across these video frames specified. Once this setting has been specified, click on "Initialize State" to load the specified video frames into SAM-2. This step may take some time to initialize.  
 
 <figure markdown="span">
-![Select the Video Segment Tool](assets/video-segment-tool.jpg){ align=center }
-<figcaption>Select the Video Segment Tool</figcaption>
-</figure>
-
-Click on the Video Segment Tool as indicated in red above. Next click the "Initialize State". This will load the indicated starting frame (current) to the stop frame (end) to SAM-2 for tracking the object across these frames for auto annotations. 
-
-<figure markdown="span">
-![Initialize the Video State](assets/video-initialize-state.jpg){ align=center }
+![Initialize the Video State](assets/agtg-initialize-state.jpg){ align=center }
 <figcaption>Initialize the Video State</figcaption>
 </figure>
 
-Once the state has been initialized, additional options will be provided to allow the user to provide prompts to SAM for propagation. Start by selecting the box tool as indicated in red. This will allow the user to draw bounding box prompts to the initial annotation for propagation.
+Once the state has been initialized, let's first add a new object to annotate by clicking on the "+" next to "Select Objects".
 
 <figure markdown="span">
-![Select the Box Tool](assets/video-box-tool.jpg){ align=center }
-<figcaption>Select the Box Tool</figcaption>
+![Add New Object](assets/agtg-add-new-object.jpg){ align=center }
+<figcaption>Add New Object</figcaption>
 </figure>
 
-Now draw a bounding box prompt (white) around the object to annotate. In this case the person on the frame will be annotated. Once the bounding box is drawn, the segmentation mask will be drawn and the associated bounding box for the mask (yellow). Next click on "Propagate" to propagate this annotation (mask and bounding box) across frames using SAM-2 tracking and propagation. 
+You can now provide prompts to SAM-2 to specify the object to segment. You can either provide bounding boxes (mouse click and drag) or points (mouse clicks) to highlight the object. By default prompts via bounding box is selected. To draw a bounding box, click anywhere on the frame and then drag the mouse to expand the bounding box. The bounding box should cover the object to annotate in the frame. The figure below shows the resulting SAM-2 mask and bounding box annotations (green) for the first object after providing a bounding box prompt (white).
 
 <figure markdown="span">
-![Initial Annotation](assets/video-box-prompt.jpg){ align=center }
-<figcaption>Initial Annotation</figcaption>
+![Resulting Annotation using SAM Box Tool](assets/agtg-sam-box-tool.jpg){ align=center }
+<figcaption>Resulting Annotation using SAM Box Tool</figcaption>
 </figure>
 
-This will start the propagation progress across the frames specified.
+!!! warning
+    
+    The initial annotation may take some time to generate.
+
+For multiple objects in the frame, click on the "+" again. For every object in the frame, a new object must be added to SAM-2. The figure below shows new objects "Coffee Cup 2" and 
+"Coffee Cup 3" annotated using points as prompts by clicking anywhere on the frame to specify the object.
 
 <figure markdown="span">
-![Propagation Progress](assets/video-propagation-progress.jpg){ align=center }
+![Distinct Frame Annotations](assets/agtg-initial-annotations.jpg){ align=center }
+<figcaption>Distinct Frame Annotations</figcaption>
+</figure>
+
+Once you have all the annotations completed in the current frame, click on "Propagate" as indicated in red above. This will utilize SAM-2 video tracking to run forward auto annotations of the prompted objects across the frame window specified above. Optionally, "Reverse Propagation" can be specified by toggling the checkbox as indicated to run reverse auto annotations of the prompted objects. 
+
+During propagation, the progress and the frame counter will update as shown on the bottom right. Optionally, the user can stop the propagation by clicking on "Stop Propagation". 
+
+<figure markdown="span">
+![Propagation Progress](assets/agtg-propagation-progress.jpg){ align=center }
 <figcaption>Propagation Progress</figcaption>
 </figure>
 
-Once the propagation is completed, click "Save Pending Segmentations" to save the propagated annotations. 
+Once the propagation completes, click on "Save Pending Annotations" to save the annotations. A completed propagation will show the 2D annotations with masks and 2D bounding boxes for each object across the video frames.
 
 <figure markdown="span">
-![Save Pending Segmentations](assets/video-save-pending-segmentations.jpg){ align=center }
-<figcaption>Save Pending Segmentations</figcaption>
+![Save Pending Annotations](assets/agtg-save-pending-annotations.jpg){ align=center }
+<figcaption>Save Pending Annotations</figcaption>
 </figure>
 
-For cases where the object exits and then re-enters the frame, the object might not be tracked properly. Repeat the steps as necessary to annotate objects that were missed.
+!!! warning
 
-<figure markdown="span">
-![Repeat Propagation](assets/video-repeat-propagation.jpg){ align=center }
-<figcaption>Repeat Propagation</figcaption>
-</figure>
+    For cases where the object exits and then re-enters the frame, the object might not be tracked properly. Repeat the steps as necessary to annotate the objects that were missed.
 
-A completed propagation will show the annotations with masks and bounding boxes for subsequent frames as follows.
-
-| Annotation 1             | Annotation 2           | Annotation 3           |
-|--------------------------|------------------------|------------------------|
-| ![YZ](assets/video-annotation-1.jpg) | ![XY](assets/video-annotation-2.jpg) | ![Positive Shift](assets/video-annotation-3.jpg) |
+For steps that describe adding annotations manually on a frame-per-frame basis, follow the steps in the [next section](#audit-2d-annotations) below. 
 
 ##### Audit 2D Annotations
 
-This step requires verifying the outputs of the auto-annotations and to make
-corrections to the 2D annotations if necessary in order to have a proper fully annotated dataset.
+This tutorial is based on reviewing the 2D annotations which may require manual annotations on the frame to make corrections to the resulting 2D annotations from the auto annotations described above. This step is necessary in order to have a proper fully annotated dataset. 
 
-Some annotations were missed from the auto-annotations and to correct those errors, we can utilize the auto-segment tool.
-Start by enabling an AI Assisted Ground Truth server by navigating to the *Cloud Instances* under the tool options.
+###### Add 2D Annotations
 
-<figure markdown="span">
-![Cloud Instances](assets/cloud-instances.jpg){ align=center }
-<figcaption>Cloud Instances</figcaption>
-</figure>
-
-Start and launch a new server to host the auto-segmentation backend.
-
-<figure markdown="span">
-![Start a Server](assets/launch-ai-server.jpg){ align=center }
-<figcaption>Start a Server</figcaption>
-</figure>
-
-Navigate back to the [dataset gallery](#viewing-datasets) and enable edit mode.
-
-<figure markdown="span">
-![Edit Mode](assets/edit-mode.jpg){ align=center }
-<figcaption>Edit Mode</figcaption>
-</figure>
-
-Select the *AI Image Segment Tool* and then enable the *SAM Box Tool*
+First [navigate to the dataset gallery](#viewing-datasets) and let's start by adding a single 2D annotation on a frame. Select the "AI Image Segment Tool". This tool will use SAM-1 to auto-segment an object in the frame. 
 
 <figure markdown="span">
 ![Auto Segment Mode](assets/enable-auto-segment-tool.jpg){ align=center }
 <figcaption>Auto Segment Mode</figcaption>
 </figure>
 
-Draw a bounding box around the person that was missed and then click *CREATE ANNOTATION* to create
-the drawn segmentation mask. Click *SUBMIT* to accept the annotation. 
+Enable the "SAM Box Tool".
 
 <figure markdown="span">
-![Segment Tool](assets/segment-tool.jpg){ align=center }
-<figcaption>Segment Tool</figcaption>
+![SAM Box Tool](assets/sam-box-tool.jpg){ align=center }
+<figcaption>SAM Box Tool</figcaption>
 </figure>
 
-Draw a bounding box annotation around the person that was missed by selecting the *Box Tool*.
-Click *SUBMIT* to accept the annotation. 
+Draw the bounding box around the object by clicking on the frame and then dragging the mouse to expand the bounding box. This will start segmenting the object. Once the object is properly segmented, go ahead and click "Create Annotation" as indicated in red to accept the annotation.
 
 <figure markdown="span">
-![Box Tool](assets/box-tool.jpg){ align=center }
-<figcaption>Box Tool</figcaption>
+![Draw Bounding Box Prompt](assets/use-sam-box-tool.jpg){ align=center }
+<figcaption>Draw Bounding Box Prompt</figcaption>
 </figure>
 
-Part of the audit process is to go over each sample in the dataset and correcting any missed annotations or incorrect annotations.
+This will preview the newly created 2D annotation with the segmentation mask and the bounding box. Once the annotation is properly drawn, go ahead and click "Submit" as indicated in red to save the annotation and to move forward with the next image.
+
+<figure markdown="span">
+![Submit Annotations](assets/submit-2d-annotation.jpg){ align=center }
+<figcaption>Submit Annotations</figcaption>
+</figure>
+
+###### Adjust 2D Annotations
+
+To resize a 2D bounding box annotation, select the bounding box from the dropdown on the left under "2D Bounding Box". 
+
+<figure markdown="span">
+![Resize Bounding Box](assets/2d-box-annotation.jpg){ align=center }
+<figcaption>Resize Bounding Box</figcaption>
+</figure>
+
+This will show the target points around the bounding box allowing the user to click on these points and drag the mouse to resize the bounding box. 
+
+Similarly, to adjust the 2D segmentation mask annotation, select the segmentation mask from the dropdown on the left under "2D Polygon". This will also show the target points around the mask polygon allowing the user to adjust the mask.
+
+<figure markdown="span">
+![Adjust Segmentation Mask](assets/2d-mask-annotation.jpg){ align=center }
+<figcaption>Adjust Segmentation Mask</figcaption>
+</figure>
+
+###### Delete 2D Annotations
+
+To delete an annotation, click on the annotation. This will first highlight the bounding box annotation. To delete the annotation, press the "Delete" key on your keyboard.
+
+<figure markdown="span">
+![Delete Bounding Box](assets/2d-box-annotation.jpg){ align=center }
+<figcaption>Delete Bounding Box</figcaption>
+</figure>
+
+Next repeat the same process for the segmentation mask. Click on the mask annotation to highlight the mask. To delete the annotation, press the "Delete" key on your keyboard.
+
+<figure markdown="span">
+![Delete Segmentation Mask](assets/delete-segmentation-mask.jpg){ align=center }
+<figcaption>Delete Segmentation Mask</figcaption>
+</figure>
+
+The annotations will be deleted after following the steps above.
+
+<figure markdown="span">
+![Deleted Annotations](assets/deleted-2d-annotation.jpg){ align=center }
+<figcaption>Deleted Annotations</figcaption>
+</figure>
 
 #### Audit 3D annotations
 
@@ -283,7 +301,7 @@ corrections to the 3D bounding box annotations if necessary in order to have a p
     <iframe width="560" height="315" src="https://www.youtube.com/embed/j-75Q5-_dC0?start=1536&end=2144" title="Visualize Annotations" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 </div>
 
-First [navigate to the gallery](#viewing-datasets) and enable edit mode.
+First [navigate to the dataset gallery](#viewing-datasets) and enable edit mode.
 
 <figure markdown="span">
 ![Edit Mode](assets/edit-mode-3d.jpg){ align=center }
@@ -363,6 +381,29 @@ This newly added 3D bounding box may not be scaled or translated properly. Follo
 <figure markdown="span">
 ![Submit 3D Annotations](assets/submit-added-3d-box.jpg){ align=center }
 <figcaption>Submit 3D Annotations</figcaption>
+</figure>
+
+#### Terminate AGTG Server
+
+Navigate to the *Cloud Instances* under the tool options.
+
+<figure markdown="span">
+![Cloud Instances](assets/cloud-instances.jpg){ align=center }
+<figcaption>Cloud Instances</figcaption>
+</figure>
+
+Select the AGTG server.
+
+<figure markdown="span">
+![Select AGTG Server](assets/select-ai-server.jpg){ align=center }
+<figcaption>Select AGTG Server</figcaption>
+</figure>
+
+Click "Stop" to stop the AGTG server.
+
+<figure markdown="span">
+![Terminate AGTG Server](assets/terminate-ai-server.jpg){ align=center }
+<figcaption>Terminate AGTG Server</figcaption>
 </figure>
 
 ## Viewing Datasets

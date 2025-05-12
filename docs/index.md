@@ -104,5 +104,5 @@ Otherwise, the following links will provide additional information for user onbo
 * [Command-Line Interface: Using the EdgeFirst Studio Middleware](getting_started/perception.md)
 * [EdgeFirst Platforms: Setup and Boot Guide](getting_started/platforms.md)
 
-[signup]: https://dveml.com/#/signup
-[login]: https://dveml.com/#/login
+[signup]: https://edgefirst.studio/#/signup
+[login]: https://edgefirst.studio/#/login

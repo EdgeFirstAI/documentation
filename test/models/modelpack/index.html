@@ -18,7 +18,7 @@
         <link rel="prev" href="../">
       
       
-        <link rel="next" href="training/">
+        <link rel="next" href="tutorials/measurement_tape/">
       
       
       <link rel="icon" href="../../assets/favicon.png">
@@ -1323,6 +1323,8 @@
       
         
       
+        
+      
     
     
     
@@ -1364,6 +1366,107 @@
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
             
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_2_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_2_2" id="__nav_5_2_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Quick Start Guide
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_5_2_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_2_2">
+            <span class="md-nav__icon md-icon"></span>
+            Quick Start Guide
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="tutorials/measurement_tape/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Tutorial 1: Detection and Segmentation of Measurement tapes
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="tutorials/musicbox/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Tutorial 2: The MusicBox Detector
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
               
             
               
@@ -3519,30 +3622,6 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#quick-start-guide" class="md-nav__link">
-    <span class="md-ellipsis">
-      Quick Start Guide
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Quick Start Guide">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#musicbox-detector" class="md-nav__link">
-    <span class="md-ellipsis">
-      Musicbox Detector
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#modelpack-architecture" class="md-nav__link">
     <span class="md-ellipsis">
       ModelPack Architecture
@@ -3586,19 +3665,6 @@
 </tbody>
 </table>
 <p>ModelPack is optimized for real-time vision applications such as industrial automation, robotics, and autonomous systems. It combines object detection — locating multiple objects within an image using bounding boxes — with instance segmentation, which outlines each object’s exact shape at the pixel level. This unified approach enables detailed scene understanding at the edge and can contribute in a late fusion with the radar model.</p>
-<h2 id="quick-start-guide">Quick Start Guide</h2>
-<p>This section includes a  tutorial useful to understand how to operate ModelPack from EdgeFirst Studio. At this point the user should know how to <a href="../../datasets/tutorials/">Record/Capture Datasets</a> from either Maivin or Raivin.</p>
-<h3 id="musicbox-detector">Musicbox Detector</h3>
-<p>The <a href="tutorials/musicbox/">MusicBox Tutorial</a> shows the whole ModelPack live cycle, from data collection to model deployment. At the end of this tutorial, the user will be able to go outside and record data to play with ModelPack at any scale.</p>
-<p><img alt="MusicBox" src="tutorials/assets/musicbox-tutorial-header.png" /></p>
-<!-- ModelPack exposes two different outputs that can be combined depending on the problem. The first one is a regression output for object detection that decode bounding boxes and classes. The second output is a classification output that assign a class to each pixel. Segmentation output is aproximatelly half of the input size. 
-
-Modelpack is a single-sensor (single-input) architecture of a Vision model tasked with detecting objects in an image via bounding boxes, segmentation masks, or both. A Vision model is a type of model that interprets images or videos to perform tasks such as object recognition, image classification, and much more. There are three types of Vision models that are supported in EdgeFirst Studio. 
-
-1. Detection: Models that output bounding boxes and scores that provide 4-point coordinates on the image marking the locations of the object.
-2. Segmentation: Models that output segmentation masks with the same shape as the input image to distinguish pixels belonging to the object or its background. 
-3. Multitask: A combination of object detection and segmentation. These models outputs bounding boxes, scores, and segmentation masks. -->
-
 <h2 id="modelpack-architecture">ModelPack Architecture</h2>
 <p>ModelPack is a modern object detector and it adopts similar scaling strategies than Yolo familiy models. 
 The model expands and contracts based on the width and height parameters. 

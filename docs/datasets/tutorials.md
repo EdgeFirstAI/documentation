@@ -137,7 +137,7 @@ Next [navigate to the gallery](#viewing-datasets) of the dataset by clicking on 
 
 ##### Auto Annotations via Gallery
 
-Another method for running auto-annotations is to utilize the propagation feature in the gallery.
+Another method for running auto-annotations is to utilize the propagation feature in the gallery.  This feature will preload all frames in a *video* sequence in the dataset into SAM-2 to generate segmentation masks, 2D bounding boxes, 3D bounding boxes (For Raivin/LiDAR Only) by tracking the object across the frames. 
 
 Start by enabling an AI Assisted Ground Truth server by navigating to the *Cloud Instances* under the tool options.
 
@@ -152,6 +152,20 @@ Start and launch a new server to host the auto-segmentation backend.
 ![Start a Server](assets/launch-ai-server.jpg){ align=center }
 <figcaption>Start a Server</figcaption>
 </figure>
+
+!!! warning
+
+    This server is costing credits to run.  An inactivity of 15 minutes will auto-terminate this server.  Otherwise, once you have completed the annotations, please ensure to terminate this server to avoid spending more of your credits. 
+
+    <figure markdown="span">
+    ![Select AI Server](assets/select-ai-server.jpg){ align=center }
+    <figcaption>Select AI Server</figcaption>
+    </figure>
+
+    <figure markdown="span">
+    ![Terminate AI Server](assets/terminate-ai-server.jpg){ align=center }
+    <figcaption>Terminate AI Server</figcaption>
+    </figure>
 
 Next navigate back to the [dataset gallery](#viewing-datasets) and enable edit mode.
 

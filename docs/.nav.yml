@@ -1,15 +1,17 @@
 nav:
-#   - Home: https://edgefirst.studio
+  - Home: https://edgefirst.studio
   - Getting Started:
       - index.md
       - getting_started/studio.md
+      - User Workflows:
+        - getting_started/workflows/index.md
+        - getting_started/workflows/web.md
+        - getting_started/workflows/edgefirst.md
       # - getting_started/pricing.md
       - getting_started/datasets.md
       - getting_started/models.md
       - getting_started/perception.md
       - getting_started/platforms.md
-      - getting_started/web.md
-      - getting_started/workflows.md
   - Studio:
       - studio/index.md
       - studio/navigation.md

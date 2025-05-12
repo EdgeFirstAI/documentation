@@ -149,7 +149,7 @@ First [navigate to the dataset gallery](#viewing-datasets) and click on the Vide
 Next click on "Launch AGTG Server" on the right. This will take some time to initialize the server. A progress will appear with an indication of the length of time to launch the server.  
 
 <figure markdown="span">
-![Launch AGTG Server](assets/launch-agtg-server.jpg){ align=center }
+![Launch AGTG Server](assets/video-launch-agtg-server.jpg){ align=center }
 <figcaption>Launch AGTG Server</figcaption>
 </figure>
 
@@ -230,7 +230,25 @@ First [navigate to the dataset gallery](#viewing-datasets) and let's start by ad
 <figcaption>Auto Segment Mode</figcaption>
 </figure>
 
-Enable the "SAM Box Tool".
+If there is currently no AGTG server available, go ahead and click on "Launch AGTG Server" indicated in red below.
+
+<figure markdown="span">
+![Launch AGTG Server](assets/image-launch-agtg-server.jpg){ align=center }
+<figcaption>Launch AGTG Server</figcaption>
+</figure>
+
+This will open a dialog to confirm to launch an AGTG server. Go ahead and click "Launch AGTG Server" on the bottom right.
+
+<figure markdown="span">
+![Launch AGTG Server](assets/confirm-agtg-server-launch.jpg){ align=center }
+<figcaption>Launch AGTG Server</figcaption>
+</figure>
+
+!!! warning
+
+    This server is costing credits to run.  An inactivity of 15 minutes will auto-terminate this server.  Otherwise, once you have completed the annotations, please ensure to [terminate the AGTG server](#terminate-agtg-server) to avoid spending more of your credits. 
+
+Once there is a dedicated AGTG server to host SAM-1, enable the "SAM Box Tool".
 
 <figure markdown="span">
 ![SAM Box Tool](assets/sam-box-tool.jpg){ align=center }

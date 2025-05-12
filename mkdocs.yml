@@ -118,6 +118,10 @@ extra:
             using our <a href="..." target="_blank" rel="noopener">feedback form</a>.
   consent:
     title: Privacy Settings
+    cookies:
+      analytics:
+        name: Google Analytics
+        checked: true
     description: >-
       We use cookies to recognize your repeated visits and preferences, as well
       as to measure the effectiveness of our documentation and whether users

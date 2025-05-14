@@ -43,9 +43,9 @@ Each request will have a different endpoint. The url starts with the link to [Ed
 
 To upload a sequence call the POST endpoint.
 
-<!-- ```
-https://test.dveml.com/samples/upload
-``` -->
+```
+https://test.edgefirst.studio.com/samples/upload
+```
 
 The arguments, for example, are in a JSON format: 
 
@@ -169,7 +169,7 @@ In the datasets page, select the dropdown on the top-right of a dataset, then se
 
 ## Get List of Samples with Pre Signed URLs
 
-<!-- Endpoint: https://dveml.com/samples/export -->
+Endpoint: https://edgefirst.studio.com/samples/export
 
 Method: HTTP GET
 
@@ -196,7 +196,7 @@ Return:
 
 ## Get List of Samples Without File URLs
 
-<!-- Endpoint: https://dveml.com/samples/list -->
+Endpoint: https://edgefirst.studio.com/samples/list
 
 Method: HTTP GET
 
@@ -215,7 +215,7 @@ Return:
 - No of S3 Presigned Urls for images or file-type annotations.
 - Error message if an error occurred.
 - Get Detailed Info for Samples.
-<!-- - Endpoint: https://dveml.com/samples/get -->
+- Endpoint: https://edgefirst.studio.com/samples/get
 
 Method: HTTP GET
 

@@ -1,6 +1,6 @@
 # Web-Based Workflow
 
-In this workflow, we will explore recording a video or capturing images using a mobile device and then upload the captured data into EdgeFirst Studio for annotation and then model training, validation, and deployment using the PC. This workflow requires the user to have signed up and logged in to EdgeFirst Studio and followed the initial steps described in the [EdgeFirst Studio Quickstart](../../index.md#initial-steps).
+In this workflow, we will explore recording a video or capturing images using a mobile device and then upload the captured data into EdgeFirst Studio for annotation and then model training, validation, and deployment using the PC. This workflow requires the user to have signed up and logged in to EdgeFirst Studio and followed the initial steps described in the [EdgeFirst Studio Quickstart](../../index.md).
 
 !!! warning
     It is recommended to use a mobile device connected to a Wifi network. A device connected to mobile data might be subject to intense usage when uploading files as video files or image files can be large in size. In the examples below, the video file used was ~15MB and the image files were ~2MB.
@@ -25,7 +25,7 @@ Furthermore, we will also capture images of coffee cups as shown below.
 
 ## 2. Visit EdgeFirst Studio
 
-Once you have captured your video and some sample images for your dataset on your mobile device, navigate to a web browser on your mobile device and [login][login] to EdgeFirst Studio. Once logged in to EdgeFirst Studio, navigate to the "Object Detection" project that was created in the [EdgeFirst Studio Quickstart](../../index.md#initial-steps) and click on the datasets button that is indicated in red.
+Once you have captured your video and some sample images for your dataset on your mobile device, navigate to a web browser on your mobile device and [login][login] to EdgeFirst Studio. Once logged in to EdgeFirst Studio, navigate to the "Object Detection" project that was created in the [EdgeFirst Studio Quickstart](../../index.md#create-project) and click on the datasets button that is indicated in red.
 
 <figure markdown="span">
 ![Object Detection Project](../assets/workflows/mobile-projects.jpg){ align=center }

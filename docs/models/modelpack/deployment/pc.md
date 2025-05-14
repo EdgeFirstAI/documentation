@@ -60,7 +60,7 @@ client.projects_sync() # This will list all the projects available to the user
 [Project { id: 365, name: "Object Detection", description: "This project trains and deploys Vision models for detecting objects." }, Project { id: 35, name: "Sample Project", description: "" }]
 ```
 
-By following the [EdgeFirst Studio Quickstart](../../../index.md#initial-steps), you should have created a project.  In this example, the project that was created is called "Object Detection".  Make a note of your project ID.  In this case, it is `365`.  Adjust the code block below to replace with your project ID.
+By following the [EdgeFirst Studio Quickstart](../../../index.md#create-project), you should have created a project.  In this example, the project that was created is called "Object Detection".  Make a note of your project ID.  In this case, it is `365`.  Adjust the code block below to replace with your project ID.
 
 ```python
 # Retrieve the project ID where the dataset is stored (all experiments/training/validation sessions are stored in the same project)

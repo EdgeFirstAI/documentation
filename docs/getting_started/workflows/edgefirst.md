@@ -2,7 +2,7 @@
 
 This page will walk you through a high-level overview of EdgeFirst Studio by introducing a high-level workflow from collecting and curating datasets using an [EdgeFirst Platform](../../platforms/index.md) to training, validating, and deploying EdgeFirst models.
 
-This workflow follows from the steps in the [Getting Started](../../index.md#edgefirst-studio-quickstart) which requires the user to have signed up to EdgeFirst Studio, logged in to EdgeFirst Studio, and created their first project.
+This workflow follows from the steps in the [Getting Started](../../index.md) which requires the user to have signed up to EdgeFirst Studio, logged in to EdgeFirst Studio, and created their first project.
 
 This workflow is a tutorial for showing the process of recording data from scratch using an EdgeFirst Platform, annotating data
 in EdgeFirst Studio from a PC, training and validating models, and then finally deploying models in an EdgeFirst Platform. 

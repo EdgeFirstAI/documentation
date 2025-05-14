@@ -183,7 +183,7 @@ This will start the import process and once it is completed, you should see the 
 </figure>
 
 Next we will import the captured images from [step 1](#1-capture-data-using-a-mobile-device). 
-Navigate back to the "Import Dataset" page (refer to the [top](#3-upload-data-to-edgefirst-studio)).
+Navigate back to the "Import Dataset" page (refer to the [top](#3-upload-data)).
 
 <figure markdown="span">
 ![Dataset Import](getting_started/assets/workflows/mobile-import-dataset.jpg){ align=center }

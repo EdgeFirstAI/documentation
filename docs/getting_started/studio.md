@@ -12,7 +12,7 @@ This page breaks down important concepts used in EdgeFirst Studio, namely:
 
 ## Project Structure
 
-As you saw from the [initial steps](../index.md#initial-steps), when you first login, you will be greeted by the "Projects" page which contains a sample project called "Sample Project". 
+As you saw from the [initial steps](../index.md#log-in), when you first login, you will be greeted by the "Projects" page which contains a sample project called "Sample Project". 
 
 To return to this splash page from any other page, you can:
 

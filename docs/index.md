@@ -275,6 +275,10 @@ Once you have validated your trained model, let's take a look at an example of h
 
 In this Quickstart guide, you have created your EdgeFirst Studio Account, logged in to EdgeFirst Studio, and created your very first project and ran your first experiment by capturing data, annotating data, training a detection model, validating the trained model, and deployed the model back into the PC for inference. 
 
+## Next Steps
+
+For these next steps, it is recommended for new users to be familiar with the concepts and UI elements in EdgeFirst Studio as described in the [EdgeFirst Studio: Overview](getting_started/studio.md).  Next, users are invited to follow along other various [User Workflows](getting_started/workflows/index.md) that are tailored towards various hardware requirements and resources available to the user.
+
 !!! tip "Need Help?"
     📬 Have questions or ran into an issue?  
     Feel free to [email our support team](mailto:support@edgefirst.ai) — we’re here to help!

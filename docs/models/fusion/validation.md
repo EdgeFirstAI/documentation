@@ -132,4 +132,4 @@ specified validation sessions.
 ## Next Steps
 
 Now that you have validated your Fusion model, follow these next steps
-for [deploying your Fusion model](deployment.md).
+for [deploying your Fusion model](../../getting_started/models/deployment.md#fusion).

@@ -9,7 +9,7 @@ in EdgeFirst Studio from a PC, training and validating models, and then finally 
 
 !!! note
     This tutorial will provide examples on training, validating, and deploying
-    *Vision models* described in [ModelPack Tutorials](../models.md#modelpack-tutorials). For tutorials on training, validating, and deploying *Fusion models*, visit [Sensor Fusion Tutorials](../models.md#sensor-fusion-tutorials).
+    *Vision models* described in [ModelPack Tutorials](../models/index.md#modelpack). For tutorials on training, validating, and deploying *Fusion models*, visit [Sensor Fusion Tutorials](../models/index.md#fusion).
 
 If you have an EdgeFirst Platform, please proceed to step 1. Otherwise, proceed to step 5 for using a provided public dataset. However, feel free to follow along all the steps laid out to become familiar with the workflow.
 
@@ -70,16 +70,16 @@ For instructions to validate a Vision model, please refer to the [Validating Mod
 
 ### 9. Deploy Model
 
-Once the model has been validated and deemed the performance to be reasonable for deployment, you can now deploy the model on an EdgeFirst Platform and start running inference on the model. 
+Once the model has been validated and deemed the performance to be reasonable for deployment, you can now deploy the model on a Maivin Platform and start running inference on the model. 
 
-To deploy ModelPack on an EdgeFirst Platform, please see the [ModelPack Deployment](../../models/modelpack/deployment.md) instructions.
+To deploy ModelPack on a Maivin Platform, please see the [ModelPack Deployment](../../models/modelpack/deployment/maivin.md) instructions.
 
 <figure markdown="span">
 ![Segmentation Sample](../../models/assets/deployment/segmentation-sample-1.jpg){ align=center }
 <figcaption>Preview: Segmentation Inference</figcaption>
 </figure>
 
-To deploy Fusion models on an EdgeFirst Platform, please see the [Fusion Deployment](../../models/fusion/deployment.md) instructions.
+To deploy Fusion models on an EdgeFirst Platform, please see the [Fusion Deployment](../../models/fusion/deployment/raivin.md) instructions.
 
 <figure markdown="span">
 ![Segmentation Sample](../../models/assets/deployment/occupancy-sample-2.jpg){ align=center }

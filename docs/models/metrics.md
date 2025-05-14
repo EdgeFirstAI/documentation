@@ -32,7 +32,7 @@ $$
 !!! note
     The equation for recall is shown in the [Glossary](#glossary).
 
-The metric for mAR 0.50:0.95 is calculated by taking the sum of mAR values at IoU thresholds 0.50, 0.55, ..., 0.95 and then dividing by the number of validation IoU thresholds (in this case 10).  
+The metric for `mAR[0.50:0.95]` is calculated by taking the sum of mAR values at IoU thresholds 0.50, 0.55, ..., 0.95 and then dividing by the number of validation IoU thresholds (in this case 10).  
 
 $$
 \text{mAR}_{0.50-0.95} = \frac{1}{10}\sum_{i=0.50}^{n}\text{mAR}_{i}, i = \text{0.50, 0.55, 0.60, ..., 0.95}

@@ -100,7 +100,7 @@ For these next steps, it is recommended for new users to be familiar with the co
 Otherwise, the following links will provide additional information for user onboarding in EdgeFirst Studio.
 
 * [Dataset Management](getting_started/datasets.md)
-* [Model Training, Validation, and Deployment](getting_started/models.md)
+* [Model Training, Validation, and Deployment](getting_started/models/index.md)
 * [Command-Line Interface: Using the EdgeFirst Studio Middleware](getting_started/perception.md)
 * [EdgeFirst Platforms: Setup and Boot Guide](getting_started/platforms.md)
 

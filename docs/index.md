@@ -283,5 +283,5 @@ For these next steps, it is recommended for new users to be familiar with the co
     📬 Have questions or ran into an issue?  
     Feel free to [email our support team](mailto:support@edgefirst.ai) — we’re here to help!
 
-[signup]: https://test.edgefirst.studio/#/signup
-[login]: https://test.edgefirst.studio/#/login
+[signup]: https://stage.edgefirst.studio/#/signup
+[login]: https://stage.edgefirst.studio/#/login

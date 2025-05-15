@@ -146,4 +146,4 @@ User can selectively add other users as viewers and editors. A users can be in o
 
 Available to the creator of the projects only.
 
-[login]: https://test.edgefirst.studio/#/login
+[login]: https://stage.edgefirst.studio/#/login

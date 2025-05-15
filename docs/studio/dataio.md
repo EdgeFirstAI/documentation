@@ -169,7 +169,7 @@ In the datasets page, select the dropdown on the top-right of a dataset, then se
 
 ## Get List of Samples with Pre Signed URLs
 
-Endpoint: https://edgefirst.studio/samples/export
+Endpoint: https://test.edgefirst.studio/samples/export
 
 Method: HTTP GET
 
@@ -196,7 +196,7 @@ Return:
 
 ## Get List of Samples Without File URLs
 
-Endpoint: https://edgefirst.studio/samples/list
+Endpoint: https://test.edgefirst.studio/samples/list
 
 Method: HTTP GET
 
@@ -215,7 +215,7 @@ Return:
 - No of S3 Presigned Urls for images or file-type annotations.
 - Error message if an error occurred.
 - Get Detailed Info for Samples.
-- Endpoint: https://edgefirst.studio/samples/get
+- Endpoint: https://test.edgefirst.studio/samples/get
 
 Method: HTTP GET
 

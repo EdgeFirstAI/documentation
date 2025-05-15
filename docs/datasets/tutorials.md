@@ -66,7 +66,7 @@ In EdgeFirst Studio, select *Data Snapshots* under the tool options.
 
 !!! note
     A project has already been created intended for object detection. This step
-    has been covered in [Getting Started](../index.md#initial-steps).
+    has been covered in [Getting Started](../index.md#create-project).
 
 Once you are in the *Data Snapshots* page, upload the recorded MCAP by clicking *FROM FILE* which opens a new window dialog for selecting the MCAP downloaded in your PC.
 
@@ -139,14 +139,14 @@ Next [navigate to the gallery](#viewing-datasets) of the dataset by clicking on 
 
 Another method for running auto-annotations is to utilize the propagation feature in the gallery.  This feature will preload all frames in a *video* sequence in the dataset into SAM-2 to generate segmentation masks, 2D bounding boxes, 3D bounding boxes (For Raivin/LiDAR Only) by tracking the object across the frames. 
 
-First [navigate to the dataset gallery](#viewing-datasets) and click on the Video Segment Tool as indicated in red below.
+First [navigate to the dataset gallery](#viewing-datasets) and click on the Video Segment Tool as indicated in red below to open the Automatic Ground Truth Generation (AGTG) Manager View.
 
 <figure markdown="span">
 ![Select the Video Segment Tool](assets/agtg-segment-tool.jpg){ align=center }
 <figcaption>Select the Video Segment Tool</figcaption>
 </figure>
 
-Next click on "Launch AGTG Server" on the right. This will take some time to initialize the server. A progress will appear with an indication of the length of time to launch the server.  
+On first use, you'll find that there are no AGTG servers currently launched. Click on "Launch AGTG Server" on the right. This will take some time to initialize the server. A progress will appear with an indication of the length of time to launch the server.  
 
 <figure markdown="span">
 ![Launch AGTG Server](assets/video-launch-agtg-server.jpg){ align=center }
@@ -187,7 +187,7 @@ You can now provide prompts to SAM-2 to specify the object to segment. You can e
     
     The initial annotation may take some time to generate.
 
-For multiple objects in the frame, click on the "+" again. For every object in the frame, a new object must be added to SAM-2. The figure below shows new objects "Coffee Cup 2" and 
+For multiple objects in the frame, click on the "+" again. For every object in the frame, a new object must be added to SAM-2 so the tracker can assign a unique ID. The figure below shows new objects "Coffee Cup 2" and 
 "Coffee Cup 3" annotated using points as prompts by clicking anywhere on the frame to specify the object.
 
 <figure markdown="span">
@@ -613,7 +613,11 @@ The process of combining datasets consists of multiple copy processes on a given
 
 ## Splitting Datasets
 
-A proper dataset has samples reserved for training and validation. This tutorial will show how to split the samples in the dataset into training and validation groups.
+A proper dataset has samples reserved for training and validation. This tutorial will show how to split the samples in the dataset into training and validation groups. This operation randomly shuffles the data prior to assigning them to the specified groups. 
+
+!!! warning
+    
+    This operation needs to be done whenever new sample images or frames are added to the dataset. Newly added samples are not automatically added to any group that already exists. 
 
 <div style="text-align: center;">
     <iframe width="560" height="315" src="https://www.youtube.com/embed/qLv8ayxQ-Ns?start=0&end=64" title="Splitting Datasets" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
@@ -633,7 +637,7 @@ To create the dataset groups, click on the "+" button in the *Groups* field.
 <figcaption>Add Groups</figcaption>
 </figure>
 
-This will open a new dialog to list the groups needed by the user and the percentages dedicated for each group. Often the groups "train" and "val" are created, but the user is free to specify their own groups.
+This will open a new dialog to specify the percentages of the partition belonging to the "Training" group or "Validation" group. By default 80% of the samples will be dedicated to training and 20% remaining will be dedicated towards the validation samples.
 
 <figure markdown="span">
 ![Groups Field](assets/groups-field.jpg){ align=center }

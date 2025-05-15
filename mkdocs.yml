@@ -50,7 +50,6 @@ exclude_docs: |
   /discrete
 
 plugins:
-  - mknotebooks:
   - awesome-nav:
   - autorefs:
   - search:

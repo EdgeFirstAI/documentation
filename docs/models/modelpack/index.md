@@ -17,14 +17,14 @@ The model expands and contracts based on the width and height parameters.
 Modelpack shares a Darknet53 backbone similar to [YOLOx](https://arxiv.org/pdf/2107.08430v2). 
 Different than YOLOx, ModelPack is NOT anchor free, which makes the model more accurate and stable after quantization.
 
-![Darknet-53 Backbone](assets/darknet-53-backbone.png)
+![Darknet-53 Backbone](../assets/darknet-53-backbone.png)
 Figure reproduced from: [Yang, L., Chen, G. & Ci, W. Multiclass objects detection](https://asp-eurasipjournals.springeropen.com/articles/10.1186/s13634-023-01045-8)
 
 As mentioned above, ModelPack merges Semantic Segmentation and Object Detection on the same model and it is user reponsibility depending on problem requirements.  Semantic Segmentation only uses two scales (Scale 1 and Scale 2). On the other hand, Object Detection task uses the three scales.
 
 While solving both tasks in the same inference cycle, the three scales are used.
 
-![ModelPack Architecture](assets/modelpack-arch.png)
+![ModelPack Architecture](../assets/modelpack-arch.png)
 
 ModelPack outputs can be configured on Studio User Interface as explained in ModelPack training guide ([here](training.md)).
 

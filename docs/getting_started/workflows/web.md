@@ -1,6 +1,6 @@
 # Web-Based Workflow
 
-In this workflow, we will explore recording a video or capturing images using a mobile device and then upload the captured data into EdgeFirst Studio for annotation and then model training, validation, and deployment using the PC. This workflow requires the user to have signed up and logged in to EdgeFirst Studio and followed the initial steps described in the [EdgeFirst Studio Quickstart](../../index.md#initial-steps).
+In this workflow, we will explore recording a video or capturing images using a mobile device and then upload the captured data into EdgeFirst Studio for annotation and then model training, validation, and deployment using the PC. This workflow requires the user to have signed up and logged in to EdgeFirst Studio and followed the initial steps described in the [EdgeFirst Studio Quickstart](../../index.md).
 
 !!! warning
     It is recommended to use a mobile device connected to a Wifi network. A device connected to mobile data might be subject to intense usage when uploading files as video files or image files can be large in size. In the examples below, the video file used was ~15MB and the image files were ~2MB.
@@ -25,7 +25,7 @@ Furthermore, we will also capture images of coffee cups as shown below.
 
 ## 2. Visit EdgeFirst Studio
 
-Once you have captured your video and some sample images for your dataset on your mobile device, navigate to a web browser on your mobile device and [login][login] to EdgeFirst Studio. Once logged in to EdgeFirst Studio, navigate to the "Object Detection" project that was created in the [EdgeFirst Studio Quickstart](../../index.md#initial-steps) and click on the datasets button that is indicated in red.
+Once you have captured your video and some sample images for your dataset on your mobile device, navigate to a web browser on your mobile device and [login][login] to EdgeFirst Studio. Once logged in to EdgeFirst Studio, navigate to the "Object Detection" project that was created in the [EdgeFirst Studio Quickstart](../../index.md#create-project) and click on the datasets button that is indicated in red.
 
 <figure markdown="span">
 ![Object Detection Project](../assets/workflows/mobile-projects.jpg){ align=center }
@@ -39,7 +39,7 @@ This will bring you to the Datasets page of the selected project. Create a new d
 <figcaption>New Dataset</figcaption>
 </figure>
 
-Add the dataset and annotation container name, labels, and dataset description as indicated by the fields below. This information can be specified by the user and does not have to strictly follow the example shown below. Click the "CREATE" button once the fields have been filled.
+Add the dataset and annotation container name, labels, and dataset description as indicated by the fields below. Adding a dataset description is optional, but it will be useful when accessing the dataset through the [edgefirst-client](../../perception/studio.md#dataset-operations) API. This information can be specified by the user and does not have to strictly follow the example shown below. Click the "CREATE" button once the fields have been filled.
 
 <figure markdown="span">
 ![Dataset Fields](../assets/workflows/mobile-dataset-details.jpg){ align=center }
@@ -97,7 +97,11 @@ In my current setup, I have selected "My Files" from the options above and then 
 <figcaption>Android File Manager</figcaption>
 </figure>
 
-Once the video file has been selected, go ahead and click "START IMPORT" to start importing the video file. 
+!!! warning
+    
+    Only one video can be imported at a time.
+
+Once the video file has been selected, set the desired FPS (frames per second) ratio, and then go ahead and click "START IMPORT" to start importing the video file. 
 
 <figure markdown="span">
 ![Import Fields](../assets/workflows/mobile-video-import-fields.jpg){ align=center }
@@ -147,12 +151,16 @@ Once it completes, you should see the number of images in the dataset increase b
 <figcaption>Imported Images</figcaption>
 </figure>
 
-Next [view the gallery of the dataset](../../datasets/tutorials.md#viewing-datasets) to confirm all the captured data has been uploaded. You should see the imported video file and images in the gallery.
+Next [view the gallery of the dataset](../../datasets/tutorials.md#viewing-datasets) to confirm all the captured data has been uploaded. You should see the imported video file and images in the gallery. Note that videos appear as sequences with a play button overlay on the preview thumbnail.
 
 <figure markdown="span">
 ![Coffee Cup Gallery](../assets/workflows/pc-dataset-gallery.jpg){ align=center }
 <figcaption>Coffee Cup Gallery</figcaption>
 </figure>
+
+!!! tip
+
+    We recommend using videos rather than individual images. This is because Automatic Ground Truth Generation (AGTG) leverages SAM-2 with tracking information which only needs a single annotation to annotate all frames. However, individual images requires the annotation of each image separately.
 
 Once all the captured data has been uploaded to the dataset container, we will now assign groups to the data to split the data into training and validation sets. Follow the [tutorial for creating groups](../../datasets/tutorials.md#splitting-datasets) with an 80% partition to training and 20% partition to validation. The final outcome for the groups should look as follows.
 
@@ -165,7 +173,7 @@ Now that we have imported some data into EdgeFirst Studio and have split the cap
 
 ## 4. Annotate Data in EdgeFirst Studio
 
-In this step, we will be using a personal computer with access to Wifi to [log in][login] to EdgeFirst Studio for annotating the captured data. When annotating the dataset, we will be using AI assistance to annotate the ground truth to perform auto segmentation and bounding boxes on the objects in the frame. Once logged in to EdgeFirst Studio, follow instructions for [auto-annotating the dataset](../../datasets/tutorials.md#auto-annotations-via-gallery). Otherwise, for auditing individual annotations, following instructions from [Audit 2D Annotations](../../datasets/tutorials.md#audit-2d-annotations).
+In this step, we will be using a personal computer with access to Wifi to [log in][login] to EdgeFirst Studio for annotating the captured data. When annotating the dataset, we will be using AI assistance to annotate the ground truth to perform auto segmentation and bounding boxes on the objects in the frame. Once logged in to EdgeFirst Studio, follow the [Auto Annotations](../../datasets/tutorials.md#auto-annotations-via-gallery) instructions to auto-annotate the video sequence that was imported. Otherwise, follow the [Audit 2D Annotations](../../datasets/tutorials.md#audit-2d-annotations) instructions for annotating the images captured.
 
 A complete annotation will have a segmentation mask and a bounding box for each object in the frame. Shown below is an example. 
 
@@ -200,6 +208,6 @@ Once the validation session completes, the metrics will be displayed like the fo
 
 ## 7. Deploy the Model
 
-Once you have validated your trained model, let's take a look at an example of how this model can be deployed in your PC by following the tutorial [Deploying Vision Models](../../models/dev/examples/object-detection.ipynb). 
+Once you have validated your trained model, let's take a look at an example of how this model can be deployed in your PC by following the tutorial [Deploying Vision Models](../../models/modelpack/deployment/pc.md). 
 
-[login]: https://dveml.com/#/login
+[login]: https://edgefirst.studio/#/login

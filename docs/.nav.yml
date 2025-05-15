@@ -9,7 +9,11 @@ nav:
         - getting_started/workflows/edgefirst.md
       # - getting_started/pricing.md
       - getting_started/datasets.md
-      - getting_started/models.md
+      - Model Tutorials:
+        - getting_started/models/index.md
+        - getting_started/models/training.md
+        - getting_started/models/validation.md
+        - getting_started/models/deployment.md
       - getting_started/perception.md
       - getting_started/platforms.md
   - Studio:
@@ -39,15 +43,16 @@ nav:
                 - models/modelpack/tutorials/musicbox.md
           - models/modelpack/training.md
           - models/modelpack/validation.md
-          - models/modelpack/deployment.md
+          - Deploying ModelPack:
+             - models/modelpack/deployment/pc.md
+            #  - models/modelpack/deployment/evk.md
+             - models/modelpack/deployment/maivin.md
       - Fusion:
           - models/fusion/index.md
           - models/fusion/training.md
           - models/fusion/validation.md
-          - models/fusion/deployment.md
-      - Developer Guide:
-          - Examples: 
-              - Deploying Vision Models: models/dev/examples/object-detection.ipynb
+          - Deploying Fusion:
+             - models/fusion/deployment/raivin.md
       - models/augmentations.md
       - models/metrics.md
   - Perception:

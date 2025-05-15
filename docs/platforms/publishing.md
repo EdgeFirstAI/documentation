@@ -13,7 +13,7 @@ For the examples below, we will use the Raivin with a hostname of `verdin-imx8mp
 ## Pre-requisites
 It is assumed you have followed the steps in the [Recording Service page](./recording.md) and have an MCAP file as well as working knowledge of the page.
 
-You must have followed the steps in the [EdgeFirst Studio Quick Start](../index.md#edgefirst-studio-quickstart) to create a user account, login to the account, and create an initial project. You will need the username and password for both publishing methods.
+You must have followed the steps in the [EdgeFirst Studio Quick Start](../index.md) to create a user account, login to the account, and create an initial project. You will need the username and password for both publishing methods.
 
 Most of the workflows below require working knowledge with [SSH and command-line interfaces](./ssh.md). It is recommended that you read and follow the steps on that page to confirm SSH connectivity with the Raivin.
 

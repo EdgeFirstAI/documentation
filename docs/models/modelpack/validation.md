@@ -102,4 +102,4 @@ Compare the validation sessions by clicking the "COMPARE VALIDATE SESSION" butto
 
 ## Next Steps
 
-Now that you have validated your Vision model, follow these next steps for [deploying your Vision model](deployment.md).
+Now that you have validated your Vision model, follow these next steps for [deploying your Vision model](../../getting_started/models/deployment.md#modelpack).

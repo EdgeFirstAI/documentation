@@ -12,7 +12,7 @@ This page breaks down important concepts used in EdgeFirst Studio, namely:
 
 ## Project Structure
 
-As you saw from the [initial steps](../index.md#initial-steps), when you first login, you will be greeted by the "Projects" page which contains a sample project called "Sample Project". 
+As you saw from the [initial steps](../index.md#log-in), when you first login, you will be greeted by the "Projects" page which contains a sample project called "Sample Project". 
 
 To return to this splash page from any other page, you can:
 
@@ -87,13 +87,11 @@ An experiment will contain child training and validation sessions.  The training
 
 Training sessions take in datasets and synthesize from them new AI models -- for object recognition (Vision) or object perception (Fusion).
 
-From the "Model Experiments" page, we can click on the "Training Sessions" button with the icon ![Trainers Button](assets/trainers_button.png) to see the training sessions in the experiment. 
-
-The sample project will contain completed training sessions using the public datasets provided.  The training session shown below is based on training a Vision model from the public dataset *COCO*.
+From the "Model Experiments" page, we can click on the "Training Sessions" button with the icon ![Trainers Button](assets/trainers_button.png) to see the training sessions in the experiment.  The figure below shows the layout of the training session cards under the "Training Sessions" page.
 
 <figure markdown="span">
-![Sample Training Session](assets/training-session.jpg){ align=center }
-<figcaption>Sample Training Session</figcaption>
+![Training Sessions](assets/training-sessions.jpg){ align=center }
+<figcaption>Training Sessions</figcaption>
 </figure>
 
 The following figure describes the attributes of any given training session.
@@ -103,17 +101,29 @@ The following figure describes the attributes of any given training session.
 <figcaption>Training Session Attributes</figcaption>
 </figure>
 
+To compare all the training charts of each session, click on "All Charts" at the top right corner of the "Training Sessions" page.  This will show the charts from each session overlayed on top of one another for a quick comparison. 
+
+<figure markdown="span">
+![All Charts](assets/all-charts.jpg){ align=center }
+<figcaption>All Charts</figcaption>
+</figure>
+
+All the training charts will be displayed with a legend that indicates the training session.
+
+<figure markdown="span">
+![All Charts](assets/all-training-charts.jpg){ align=center }
+<figcaption>All Charts</figcaption>
+</figure>
+
 For more details regarding deploying training sessions, please see [Training ModelPack](../models/modelpack/training.md) for training Vision models and [Training Fusion](../models/fusion/training.md) for training Fusion models.
 
 #### Validation Sessions
 
-The validation sessions will assess the performance of the models in the training sessions.  A training session can have any number of validation sessions.  From the "Model Experiments" page, we can click on the "Validation Sessions" button with the icon ![Validation Button](assets/validation-button.jpg) to see the validation sessions in the experiment. 
-
-The sample project will contain completed validation sessions using the models trained in the training sessions.  The validation session shown below is based on the training session from training a Vision model using the dataset *COCO*.
+The validation sessions will assess the performance of the models in the training sessions.  A training session can have any number of validation sessions.  From the "Model Experiments" page, we can click on the "Validation Sessions" button with the icon ![Validation Button](assets/validation-button.jpg) to see the validation sessions in the experiment.  The figure below shows the layout of the validation session cards under the "Validation Sessions" page.
 
 <figure markdown="span">
-![Sample Validation Session](assets/validation-session.jpg){ align=center }
-<figcaption>Sample Validation Session</figcaption>
+![Validation Sessions](assets/validation-sessions.jpg){ align=center }
+<figcaption>Validation Sessions</figcaption>
 </figure>
 
 The following figure describes the attributes of any given validation session.
@@ -121,6 +131,27 @@ The following figure describes the attributes of any given validation session.
 <figure markdown="span">
 ![Validation Session Attributes](../models/assets/validation/validation-session-attributes.jpg){ align=center }
 <figcaption>Validation Session Attributes</figcaption>
+</figure>
+
+To compare the validation charts of each session, click on "Compare" at the top right corner of the "Validate Sessions" page.  This will show the charts of each validation session side-by-side for a quick comparison.
+
+<figure markdown="span">
+![Compare Validation Sessions](assets/compare-validation-sessions.jpg){ align=center }
+<figcaption>Compare Validation Sessions</figcaption>
+</figure>
+
+Next select the validation session results you wish to compare.  Once select, click "Compare" to show the validation charts side-by-side.
+
+<figure markdown="span">
+![Select Validation Sessions](assets/validation-sessions-to-compare.jpg){ align=center }
+<figcaption>Select Validation Sessions</figcaption>
+</figure>
+
+Now the charts for each session are displayed side-by-side.  All the charts for a single training session will be shown in one column.  A new column indicates another session. 
+
+<figure markdown="span">
+![Comparing Validation Sessions](assets/validation-charts-comparison.jpg){ align=center }
+<figcaption>Comparing Validation Sessions</figcaption>
 </figure>
 
 For more details regarding deploying validation sessions, please see [Validating ModelPack](../models/modelpack/validation.md) for validating Vision models and [Validating Fusion](../models/fusion/validation.md) for validating Fusion models.

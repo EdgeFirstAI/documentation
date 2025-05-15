@@ -1,12 +1,37 @@
 # Training ModelPack
 
-This page will provide a walk-through for training **Vision** models using ModelPack in EdgeFirst Studio.  For a walkthrough on [Training Fusion Models](../fusion/training.md) please see the link attached.
+This tutorial describes the steps to train **ModelPack Vision** models in EdgeFirst Studio.  For a tutorial to train Fusion models, see [Training Fusion Models](../fusion/training.md).  It is highly recommended for users to be familiar with the concepts and UI elements in EdgeFirst Studio as described in the [EdgeFirst Studio: Overview](../../getting_started/studio.md).
 
 ## Verify Dataset
 
-Before running a training session, ensure the dataset is ready to be used for training.  
-This means that the dataset is properly annotated and the dataset is properly split 
-with training and validation samples.  The tutorial [Verifying Datasets](../../datasets/tutorials.md#verifying-datasets) will show what to look for in a dataset before deploying it for training.
+First ensure the dataset is ready to be used for training.  This means that the dataset is properly annotated and the dataset is properly split into training and validation samples.  The section in [Verifying Datasets](../../datasets/tutorials.md#verifying-datasets) will show what to look for in a dataset before deploying it for training.
+
+## Specify Project Experiments
+
+From the projects page, choose the project that contains the dataset you plan to use.  In this example, the project chosen is the  "Object Detection" project which was created in the [Quickstart Guide](../../index.md#create-project).  Next click the "Model Experiments" button as indicated in red.
+
+<figure markdown="span">
+![Model Experiments](../assets/training/modelpack-model-experiments.jpg){ align=center }
+<figcaption>Model Experiments</figcaption>
+</figure>
+
+## Create Model Experiment
+
+You will be greeted with the "Model Experiments" page.  A new project will not have any experiments as shown below.  You will need to first create a model experiment.  As mentioned in the [EgdeFirst Studio Overview](../../getting_started/studio.md#model-experiments), model experiments will contain the training and validation sessions. 
+
+<figure markdown="span">
+![Model Experiments Page](../assets/training/modelpack-model-experiments-page.jpg){ align=center }
+<figcaption>Model Experiments Page</figcaption>
+</figure>
+
+Click on the "New Experiment" button as shown on the top right corner of the page.
+
+<figure markdown="span">
+![New Experiment Button](../assets/training/new-experiment-button.jpg){ align=center }
+<figcaption>New Experiment Button</figcaption>
+</figure>
+
+
 
 ## Select the Trainer Tool
 

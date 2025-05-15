@@ -15,10 +15,6 @@
         <link rel="canonical" href="https://doc.edgefirst.ai/test/studio/dataio/">
       
       
-        <link rel="prev" href="../snapshots/">
-      
-      
-        <link rel="next" href="../../datasets/">
       
       
       <link rel="icon" href="../../assets/favicon.png">
@@ -232,7 +228,7 @@
   
   
     <li class="md-tabs__item">
-      <a href="https://edgefirst.studio" class="md-tabs__link">
+      <a href="https://test.edgefirst.studio" class="md-tabs__link">
         
   
   
@@ -271,12 +267,10 @@
   
   
   
-    
-  
   
     
     
-      <li class="md-tabs__item md-tabs__item--active">
+      <li class="md-tabs__item">
         <a href="../" class="md-tabs__link">
           
   
@@ -424,7 +418,7 @@
   
   
     <li class="md-nav__item">
-      <a href="https://edgefirst.studio" class="md-nav__link">
+      <a href="https://test.edgefirst.studio" class="md-nav__link">
         
   
   
@@ -863,8 +857,6 @@
       
   
   
-    
-  
   
   
     
@@ -886,23 +878,18 @@
       
         
       
-        
-      
     
     
     
       
-        
-        
-      
       
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
         
           
           <div class="md-nav__link md-nav__container">
@@ -919,13 +906,13 @@
             </a>
             
               
-              <label class="md-nav__link " for="__nav_3" id="__nav_3_label" tabindex="">
+              <label class="md-nav__link " for="__nav_3" id="__nav_3_label" tabindex="0">
                 <span class="md-nav__icon md-icon"></span>
               </label>
             
           </div>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_3">
             <span class="md-nav__icon md-icon"></span>
             Studio
@@ -1158,116 +1145,6 @@
   
 
       </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-    
-  
-  
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  
-  <span class="md-ellipsis">
-    Bridge In API
-    
-  </span>
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
-        
-  
-  
-  <span class="md-ellipsis">
-    Bridge In API
-    
-  </span>
-  
-
-      </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#generating-token" class="md-nav__link">
-    <span class="md-ellipsis">
-      Generating Token
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#generating-bridge-token-via-api-call" class="md-nav__link">
-    <span class="md-ellipsis">
-      Generating Bridge Token via API Call
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#sending-request" class="md-nav__link">
-    <span class="md-ellipsis">
-      Sending Request
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#uploading-sequences" class="md-nav__link">
-    <span class="md-ellipsis">
-      Uploading Sequences
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#upload-image-and-annotation-files" class="md-nav__link">
-    <span class="md-ellipsis">
-      Upload Image and Annotation Files
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -3924,7 +3801,7 @@ Description:
 </div>
 <h2 id="uploading-sequences">Uploading Sequences</h2>
 <p>To upload a sequence call the POST endpoint.</p>
-<div class="highlight"><pre><span></span><code>https://test.edgefirst.studio.com/samples/upload
+<div class="highlight"><pre><span></span><code>https://test.edgefirst.studio/samples/upload
 </code></pre></div>
 <p>The arguments, for example, are in a JSON format: </p>
 <div class="highlight"><pre><span></span><code>[
@@ -4029,7 +3906,7 @@ Description:
 <figcaption>Generated API Token</figcaption>
 </figure>
 <h2 id="get-list-of-samples-with-pre-signed-urls">Get List of Samples with Pre Signed URLs</h2>
-<p>Endpoint: https://edgefirst.studio.com/samples/export</p>
+<p>Endpoint: https://test.edgefirst.studio/samples/export</p>
 <p>Method: HTTP GET</p>
 <p>Payload:</p>
 <div class="highlight"><pre><span></span><code>[{
@@ -4049,7 +3926,7 @@ Description:
 <li>Error message if an error occurred.</li>
 </ul>
 <h2 id="get-list-of-samples-without-file-urls">Get List of Samples Without File URLs</h2>
-<p>Endpoint: https://edgefirst.studio.com/samples/list</p>
+<p>Endpoint: https://test.edgefirst.studio/samples/list</p>
 <p>Method: HTTP GET</p>
 <p>Payload:</p>
 <div class="highlight"><pre><span></span><code>{
@@ -4063,7 +3940,7 @@ Description:
 <li>No of S3 Presigned Urls for images or file-type annotations.</li>
 <li>Error message if an error occurred.</li>
 <li>Get Detailed Info for Samples.</li>
-<li>Endpoint: https://edgefirst.studio.com/samples/get</li>
+<li>Endpoint: https://test.edgefirst.studio/samples/get</li>
 </ul>
 <p>Method: HTTP GET</p>
 <p>Payload:

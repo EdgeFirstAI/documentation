@@ -1,6 +1,6 @@
 # Validating ModelPack
 
-This page will provide a walk-through for validating the performance of **Vision** models that have been trained using ModelPack in EdgeFirst Studio, through the [end-to-end worklows](../../getting_started/workflows/index.md) or [Training ModelPack](training.md).  This page will focus only on the validation of Vision models. Please see the link attached for instructions on [Validating Fusion Models](../fusion/validation.md). 
+This tutorial will describe the steps to validate the performance of **ModelPack Vision** models in EdgeFirst Studio that have been trained through the [end-to-end worklows](../../getting_started/workflows/index.md) or [Training ModelPack](training.md).  This page will focus only on the validation of Vision models. Please see the link attached for instructions on [Validating Fusion Models](../fusion/validation.md). 
 
 ## Select the Validator Tool
 

@@ -1,5 +1,5 @@
 nav:
-  - Home: https://edgefirst.studio
+  - Home: https://test.edgefirst.studio
   - Getting Started:
       - index.md
       - getting_started/studio.md
@@ -27,7 +27,7 @@ nav:
           - studio/datasets/annotations.md
       - studio/agtg.md
       - studio/snapshots.md
-      - studio/dataio.md
+    #   - studio/dataio.md
   - Datasets:
       - datasets/index.md
       - datasets/tutorials.md

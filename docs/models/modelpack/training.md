@@ -126,11 +126,6 @@ The trained model artifacts can be downloaded by clicking the "View Additional D
 |----------------------------------------------------------------|-------------------------------------------------------------------------------|
 | ![session](../assets/training/modelpack-session-details.jpg) | ![artifacts](../assets/training/modelpack-session-artifacts.jpg) | 
 
-<figure markdown="span">
-![Training Metrics](../assets/training/modelpack-training-metrics.jpg){ align=center }
-<figcaption>Training Metrics</figcaption>
-</figure>
-
 It is also possible to compare the training metrics for multiple sessions.  See [Training Sessions](../../getting_started/studio.md#training-sessions) in the EdgeFirst Studio Overview for further details. 
 
 !!! info

@@ -1,6 +1,6 @@
 # Training ModelPack
 
-This tutorial describes the steps to train **ModelPack Vision** models in EdgeFirst Studio.  For a tutorial to train Fusion models, see [Training Fusion Models](../fusion/training.md).  It is highly recommended for users to be familiar with the concepts and UI elements in EdgeFirst Studio as described in the [EdgeFirst Studio: Overview](../../getting_started/studio.md).
+This tutorial describes the steps to train **ModelPack Vision** models in EdgeFirst Studio.  For a tutorial to train Fusion models, see [Training Fusion Models](../fusion/training.md).  It is highly recommended to be familiar with the concepts and UI elements in EdgeFirst Studio as described in the [EdgeFirst Studio: Overview](../../getting_started/studio.md).
 
 ## Verify Dataset
 
@@ -17,7 +17,7 @@ From the projects page, choose the project that contains the dataset you plan to
 
 ## Create Model Experiment
 
-You will be greeted with the "Model Experiments" page.  A new project will not have any experiments as shown below.  You will need to first create a model experiment.  As mentioned in the [EgdeFirst Studio Overview](../../getting_started/studio.md#model-experiments), model experiments will contain the training and validation sessions. 
+You will be greeted with the "Model Experiments" page.  A new project will not have any experiments as shown below.  You will need to first create a model experiment.  As mentioned in the [EgdeFirst Studio: Overview](../../getting_started/studio.md#model-experiments), model experiments will contain both training and validation sessions. 
 
 <figure markdown="span">
 ![Model Experiments Page](../assets/training/modelpack-model-experiments-page.jpg){ align=center }
@@ -54,7 +54,7 @@ In the experiment card, click the "Training Sessions" button as indicated in red
 <figcaption>Training Sessions</figcaption>
 </figure>
 
-You will be greeted to the ModelPack "Training Sessions" page as shown below.  
+You will be greeted to the "Training Sessions" page as shown below.  
 
 <figure markdown="span">
 ![Training Sessions Page](../assets/training/modelpack-training-sessions-page.jpg){ align=center }

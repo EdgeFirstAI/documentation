@@ -1,13 +1,14 @@
 # Validating Fusion Models
 
-This page will provide a walk-through validating the performance of 
-**Fusion** models that have been trained in EdgeFirst Studio, through the [end-to-end workflows](../../getting_started/workflows/index.md) or [Training Fusion](training.md).  This page will focus only on the validation of Fusion models.  For instructions on how to validate Vision models, please see [Validating ModelPack](../modelpack/validation.md).
+This tutorial will describe the steps to validate the performance of **Fusion** models in EdgeFirst Studio that have been trained through the [end-to-end workflows](../../getting_started/workflows/index.md) or [Training Fusion](training.md).  For a tutorial to validate ModelPack Vision models, see [Validating ModelPack](../modelpack/validation.md).
 
 <div style="text-align: center;">
     <iframe width="560" height="315" src="https://www.youtube.com/embed/oKh4k0CCLmU" title="Fusion Validation Workflow" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 </div>
 
 Checkout our video tutorial above as part of the [EdgeFirst Studio Series](https://youtube.com/playlist?list=PLtgoOooyxY45Kl6pztdm4una-tHUjuIXz&si=DAmpo-gTvaSNktjw) to showcase the steps for running Fusion validation in EdgeFirst Studio.  Otherwise, follow the steps below with section specific timestamps of the video.
+
+## Specify Project Experiments
 
 ## Select the Validator Tool
 

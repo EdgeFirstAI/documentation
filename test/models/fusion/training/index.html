@@ -1845,27 +1845,18 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#select-the-trainer-tool" class="md-nav__link">
+  <a href="#specify-project-experiments" class="md-nav__link">
     <span class="md-ellipsis">
-      Select the Trainer Tool
+      Specify Project Experiments
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#specify-the-project" class="md-nav__link">
+  <a href="#create-model-experiment" class="md-nav__link">
     <span class="md-ellipsis">
-      Specify the Project
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#create-training-experiment" class="md-nav__link">
-    <span class="md-ellipsis">
-      Create Training Experiment
+      Create Model Experiment
     </span>
   </a>
   
@@ -1881,18 +1872,18 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#start-the-session" class="md-nav__link">
+  <a href="#session-progress" class="md-nav__link">
     <span class="md-ellipsis">
-      Start the Session
+      Session Progress
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#session-progress" class="md-nav__link">
+  <a href="#completed-session" class="md-nav__link">
     <span class="md-ellipsis">
-      Session Progress
+      Completed Session
     </span>
   </a>
   
@@ -1912,15 +1903,6 @@
   <a href="#training-metrics" class="md-nav__link">
     <span class="md-ellipsis">
       Training Metrics
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#completed-session" class="md-nav__link">
-    <span class="md-ellipsis">
-      Completed Session
     </span>
   </a>
   
@@ -3882,27 +3864,18 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#select-the-trainer-tool" class="md-nav__link">
+  <a href="#specify-project-experiments" class="md-nav__link">
     <span class="md-ellipsis">
-      Select the Trainer Tool
+      Specify Project Experiments
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#specify-the-project" class="md-nav__link">
+  <a href="#create-model-experiment" class="md-nav__link">
     <span class="md-ellipsis">
-      Specify the Project
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#create-training-experiment" class="md-nav__link">
-    <span class="md-ellipsis">
-      Create Training Experiment
+      Create Model Experiment
     </span>
   </a>
   
@@ -3918,18 +3891,18 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#start-the-session" class="md-nav__link">
+  <a href="#session-progress" class="md-nav__link">
     <span class="md-ellipsis">
-      Start the Session
+      Session Progress
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#session-progress" class="md-nav__link">
+  <a href="#completed-session" class="md-nav__link">
     <span class="md-ellipsis">
-      Session Progress
+      Completed Session
     </span>
   </a>
   
@@ -3949,15 +3922,6 @@
   <a href="#training-metrics" class="md-nav__link">
     <span class="md-ellipsis">
       Training Metrics
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#completed-session" class="md-nav__link">
-    <span class="md-ellipsis">
-      Completed Session
     </span>
   </a>
   
@@ -4003,110 +3967,100 @@
 
 
 <h1 id="training-fusion-models">Training Fusion Models</h1>
-<p>This page will provide a walk-through for training <strong>Fusion</strong> models in EdgeFirst Studio.  For a walk-through on training Vision models, please see <a href="../../modelpack/training/">Training ModelPack</a>.</p>
+<p>This tutorial describes the steps to train <strong>Fusion</strong> models in EdgeFirst Studio.  For a tutorial to train ModelPack Vision models, see <a href="../../modelpack/training/">Training ModelPack</a>.  It is highly recommended for users to be familiar with the concepts and UI elements in EdgeFirst Studio as described in the <a href="../../../getting_started/studio/">EdgeFirst Studio: Overview</a>.</p>
 <div style="text-align: center;">
     <iframe width="560" height="315" src="https://www.youtube.com/embed/Q8uiYJb1HJ4" title="Fusion Training Workflow" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 </div>
 
 <p>Checkout our full video tutorial above as part of the <a href="https://youtube.com/playlist?list=PLtgoOooyxY45Kl6pztdm4una-tHUjuIXz&amp;si=DAmpo-gTvaSNktjw">EdgeFirst Studio Series</a> to showcase the steps for running Fusion training in EdgeFirst Studio.  Otherwise, follow along the steps shown below with section specific timestamps of the video.</p>
 <h2 id="verify-dataset">Verify Dataset</h2>
-<p>Before running a training session, ensure the dataset is ready to be used for training.<br />
-This means that the dataset is properly annotated and the dataset is properly split 
-with training and validation samples.  The tutorial <a href="../../../datasets/tutorials/#verifying-datasets">Verifying Datasets</a> will show what to look for in a dataset before deploying it for training.</p>
-<h2 id="select-the-trainer-tool">Select the Trainer Tool</h2>
-<div style="text-align: center;">
-    <iframe width="560" height="315" src="https://www.youtube.com/embed/Q8uiYJb1HJ4?start=117&end=217" title="EdgeFirst Fusion Trainer" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-</div>
-
-<p>Once the training dataset is ready, select "Train Experiments" from the tool options.  </p>
+<p>First ensure the dataset is ready to be used for training.  This means that the dataset is properly annotated and the dataset is properly split with training and validation samples.  The tutorial <a href="../../../datasets/tutorials/#verifying-datasets">Verifying Datasets</a> will show what to look for in a dataset before deploying it for training.</p>
+<h2 id="specify-project-experiments">Specify Project Experiments</h2>
+<p>From the projects page, choose the project that contains the dataset you plan to use.  In this example, the project chosen is called "Spatial Perception" project.  Next click the "Model Experiments" button as indicated in red. </p>
 <figure>
-<img align="center" alt="Trainer Tool" src="../../assets/training/trainer-tool.jpg" />
+<img align="center" alt="Model Experiments" src="../../assets/training/fusion-model-experiments.jpg" />
 
-<figcaption>Tool Options</figcaption>
+<figcaption>Model Experiments</figcaption>
 </figure>
-<h2 id="specify-the-project">Specify the Project</h2>
-<p>Specify the project to run training at the center of the top menu bar.</p>
+<h2 id="create-model-experiment">Create Model Experiment</h2>
+<p>You will be greeted with the "Model Experiments" page.  A new project wil not have any experiments as shown below.  You will need to first create a model experiment.  As mentioned in the <a href="../../../getting_started/studio/#model-experiments">EdgeFirst Studio: Overview</a>, model experiments will contain both training and validation sessions. </p>
 <figure>
-<img align="center" alt="Project Selection" src="../../assets/training/trainer-project-selection.jpg" />
+<img align="center" alt="Model Experiments Page" src="../../assets/training/fusion-model-experiments-page.jpg" />
 
-<figcaption>Project Selection</figcaption>
+<figcaption>Model Experiments Page</figcaption>
 </figure>
-<h2 id="create-training-experiment">Create Training Experiment</h2>
-<p>If you haven't already done so, create a training experiment.  Create a new 
-training experiment by clicking the "NEW EXPERIMENT" button on the top right.</p>
+<p>Click on the "New Experiment" button as shown on the top right corner of the page.</p>
 <figure>
-<img align="center" alt="Create New Experiment" src="../../assets/training/new-experiment.jpg" />
+<img align="center" alt="New Experiment Button" src="../../assets/training/new-experiment-button.jpg" />
 
-<figcaption>Create New Experiment</figcaption>
+<figcaption>New Experiment Button</figcaption>
 </figure>
-<p>This will provide pop-up for the user to specify the name and description of 
-the experiment.  Give a name and a description that reflects your goals in this experiment.</p>
+<p>Enter the name and the description of the experiment marked by the fields shown below.  Click on the "Create New Experiment" button to create your experiment.</p>
 <figure>
-<img align="center" alt="Create New Experiment" src="../../assets/training/fusion-based-experiment.jpg" />
+<img align="center" alt="Experiment Fields" src="../../assets/training/fusion-model-experiments-fields.jpg" />
 
-<figcaption>Create New Experiment</figcaption>
+<figcaption>Experiment Fields</figcaption>
 </figure>
-<p>Click on the "CREATE NEW EXPERIMENT" button to create your new training experiment.  This will show
-the created experiment.</p>
+<p>Your created experiment will appear like the following below.  At the start, this experiment will contain zero training and validation sessions.  The next step will show how to start your first training session on this experiment using the dataset in the project. </p>
 <figure>
 <img align="center" alt="Created Experiment" src="../../assets/training/fusion-created-experiment.jpg" />
 
 <figcaption>Created Experiment</figcaption>
-</figure>
-<p>Open the created experiment by clicking on the experiment.  Inside the experiment, we can create multiple training sessions.  Each training session will train Fusion models which we will explore next.</p>
-<figure>
-<img align="center" alt="Inside the Experiment" src="../../assets/training/open-experiment.jpg" />
-
-<figcaption>Inside the Experiment</figcaption>
 </figure>
 <h2 id="create-training-session">Create Training Session</h2>
 <div style="text-align: center;">
     <iframe width="560" height="315" src="https://www.youtube.com/embed/Q8uiYJb1HJ4?start=217&end=863" title="Training Session" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 </div>
 
-<p>Create a new training session within this experiment by clicking the "NEW SESSION" button as shown below.</p>
+<p>In the experiment card, click the "Training Sessions" button as indicated in red below.</p>
 <figure>
-<img align="center" alt="Training Session" src="../../assets/training/training-session.jpg" />
+<img align="center" alt="Training Sessions" src="../../assets/training/fusion-training-sessions.jpg" />
 
-<figcaption>Training Session</figcaption>
+<figcaption>Training Sessions</figcaption>
 </figure>
-<p>Configure the settings on the left panel by specifying "Trainer Type" to "EdgeFirst Fusion" and provide additional configurations for the name of the session and the dataset to deploy.  Next configure the settings on the right panel by specifying training parameters.  By default the Fusion model is configured with both camera and radar inputs, however, a Camera-Only or Radar-Only model are possible variations.  </p>
-<p>Additional information on these parameters are provided by hovering over the info button.
-For more information on available vision augmentations please see <a href="../../augmentations/">Vision Augmentations</a>.</p>
+<p>You will be greeted to the "Training Sessions" page as shown below.  </p>
 <figure>
-<img align="center" alt="Training Options" src="../../assets/training/fusion-training-options.jpg" />
+<img align="center" alt="Training Sessions Page" src="../../assets/training/fusion-training-sessions-page.jpg" />
 
-<figcaption>Training Options</figcaption>
+<figcaption>Training Sessions Page</figcaption>
 </figure>
+<p>Start a training session by clicking on the "New Session" button on the top right corner of the page.</p>
+<figure>
+<img align="center" alt="New Session Button" src="../../assets/training/new-session-button.jpg" />
+
+<figcaption>New Session Button</figcaption>
+</figure>
+<p>You will be greeted with the training session configuration window.  In this window, specify the "Trainer Type" to "EdgeFirst Fusion" and provide a name and description of the training session as shown below.  Next specify the dataset to be used with training and validation partitions.  In this example, the dataset specified is the "Raivin Ultra Short 25.03 (Copy)" dataset.  Next specify the training parameters.  By default, the model will be trained using both the Camera and the Radar sensors.  However, you can specify one of the sensors turned off.  This model will output an occupancy grid highlighting the positions of people in world coordinates.  Additional information on these parameters are provided by hovering over the info buttons indicated in red below.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>For an indoor setting, the "Radar Range Mode" is typically set to "Ultra Short (9m)" and the "Object Detection Range" is set to 9 meters.  This is the maximum range of detection, further distances are ignored. </p>
 </div>
-<h2 id="start-the-session">Start the Session</h2>
-<p>Start the session by clicking the "START SESSION" button on the bottom right.</p>
+<p>For more information on available "Data Augmentations" please see <a href="../../augmentations/">Vision Augmentations</a>.</p>
 <figure>
-<img align="center" alt="Start Session" src="../../assets/validation/start-session.jpg" />
+<img align="center" alt="Training Session Fields" src="../../assets/training/fusion-session-fields.jpg" />
 
-<figcaption>Start the Session</figcaption>
+<figcaption>Training Session Fields</figcaption>
 </figure>
+<p>Once the configuration have been made, go ahead and click on the "Start Session" buttin on the bottom right of the window.  This will start the training session which will train the model for the number of epochs specified. </p>
 <h2 id="session-progress">Session Progress</h2>
 <div style="text-align: center;">
     <iframe width="560" height="315" src="https://www.youtube.com/embed/Q8uiYJb1HJ4?start=863&end=1050" title="Training Started" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 </div>
 
-<p>The training session has now started while the progress is tracked on the left 
-panel and additional information and status is shown on the right panel.</p>
+<p>Once the training session has started, the progress with the stages will be shown on the left and additional information and status is shown on the right. </p>
 <figure>
-<img align="center" alt="Training Session" src="../../assets/training/fusion-training-session.jpg" />
+<img align="center" alt="Training Session" src="../../assets/training/fusion-session-progress.jpg" />
 
 <figcaption>Training Session</figcaption>
 </figure>
-<p>The completed session will look as follows.</p>
+<h2 id="completed-session">Completed Session</h2>
+<p>The completed session will look as follows with the status set to "Complete".</p>
 <figure>
 <img align="center" alt="Completed Session" src="../../assets/training/fusion-completed-session.jpg" />
 
 <figcaption>Completed Session</figcaption>
 </figure>
+<p>The attributes of the training session are labeled below. </p>
 <figure>
 <img align="center" alt="Training Session Attributes" src="../../assets/training/training-session-attributes.jpg" />
 
@@ -4118,34 +4072,39 @@ panel and additional information and status is shown on the right panel.</p>
     <iframe width="560" height="315" src="https://www.youtube.com/embed/Q8uiYJb1HJ4?start=1050&end=1355" title="Training Summary Metrics" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 </div>
 
-<p>The training metrics are shown by clicking the button that views the training charts on the top right of the session card.  </p>
+<p>You can view the training charts by clicking the "View Training Charts" button on the top of the session card.</p>
 <figure>
-<img align="center" alt="Training Metrics" src="../../assets/training/fusion-training-metrics.jpg" />
+<img align="center" alt="Training Charts" src="../../assets/training/fusion-charts.jpg" />
 
-<figcaption>Training Metrics</figcaption>
+<figcaption>Training Charts</figcaption>
 </figure>
-<h3 id="completed-session">Completed Session</h3>
-<div style="text-align: center;">
-    <iframe width="560" height="315" src="https://www.youtube.com/embed/Q8uiYJb1HJ4?start=1358&end=1529" title="Training Completed" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-</div>
-
-<p>Once completed, the status will be shown as complete.</p>
+<p>You can go back to the training session card by pressing the "Back" button as indicated in red below on the top left corner of the page. </p>
 <figure>
-<img align="center" alt="Completed Session" src="../../assets/training/fusion-completed-session.jpg" />
+<img align="center" alt="Back to the Session Card" src="../../assets/training/back-button.jpg" />
 
-<figcaption>Completed Session</figcaption>
+<figcaption>Back to the Session Card</figcaption>
 </figure>
 <h3 id="trained-models">Trained Models</h3>
 <div style="text-align: center;">
     <iframe width="560" height="315" src="https://www.youtube.com/embed/Q8uiYJb1HJ4?start=1530&end=1830" title="Downloading Model" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 </div>
 
-<p>The trained Keras, TFLite, and ONNX models are listed on the right.  These models can be downloaded by clicking on the downward arrows on the right.</p>
-<figure>
-<img align="center" alt="Session Details" src="../../assets/training/fusion-session-details.jpg" />
-
-<figcaption>Session Details</figcaption>
-</figure>
+<p>The trained model artifacts can be downloaded by clicking the "View Additional Details" button on the training session card in EdgeFirst Studio.  This will open the session details and the models are listed under the "Artifacts" tab as shown below.  Click on the downward arrow indicated in red to download the models to your PC.</p>
+<table>
+<thead>
+<tr>
+<th>Session Details</th>
+<th>Artifacts</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><img alt="session" src="../../assets/training/fusion-session-details.jpg" /></td>
+<td><img alt="artifacts" src="../../assets/training/fusion-session-artifacts.jpg" /></td>
+</tr>
+</tbody>
+</table>
+<p>It is also possible to compare the training metrics for multiple sessions.  See <a href="../../../getting_started/studio/#training-sessions">Training Sessions</a> in the EdgeFirst Studio Overview for further details. </p>
 <div class="admonition info">
 <p class="admonition-title">Info</p>
 <p>You can visualize the architecture of these models using <a href="https://netron.app/">https://netron.app/</a>.</p>

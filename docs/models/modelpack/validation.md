@@ -20,7 +20,7 @@ In the experiment card, click the "Validate Sessions" button as indicated in red
 <figcaption>Validate Sessions</figcaption>
 </figure>
 
-You will be greeted to the ModelPack "Validate Sessions" page as shown below. 
+You will be greeted to the "Validate Sessions" page as shown below. 
 
 <figure markdown="span">
 ![Validate Sessions Page](../assets/validation/modelpack-validation-sessions-page.jpg){ align=center }
@@ -34,7 +34,7 @@ Start a validation session by clicking on the "New Session" button on the top ri
 <figcaption>New Session Button</figcaption>
 </figure>
 
-You will be greeted with the validation session configuration window.  In this window, specify the name of the validation session, the model to validate, and the dataset to deploy.  In this example, the TFLite model will be validated and the Coffee Cup dataset with the validation partition will be used.  Next specify, the validation parameters such as the IoU and score thresholds.  Additional information on these parameters are provided by hovering over the info buttons as indicated in red below. 
+You will be greeted with the validation session configuration window.  In this window, specify the name of the validation session, the model to validate, and the dataset to deploy.  In this example, the TFLite model will be validated and the "Coffee Cup" dataset with the validation partition will be used.  Next specify, the validation parameters such as the IoU and score thresholds.  Additional information on these parameters are provided by hovering over the info buttons as indicated in red below. 
 
 <figure markdown="span">
 ![Validation Session Fields](../assets/validation/modelpack-session-fields.jpg){ align=center }

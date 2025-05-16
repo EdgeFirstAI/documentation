@@ -8,7 +8,7 @@ First ensure the dataset is ready to be used for training.  This means that the 
 
 ## Specify Project Experiments
 
-From the projects page, choose the project that contains the dataset you plan to use.  In this example, the project chosen is the  "Object Detection" project which was created in the [Quickstart Guide](../../index.md#create-project).  Next click the "Model Experiments" button as indicated in red.
+From the projects page, choose the project that contains the dataset you plan to use.  In this example, the project chosen is the "Object Detection" project which was created in the [Quickstart Guide](../../index.md#create-project).  Next click the "Model Experiments" button as indicated in red.
 
 <figure markdown="span">
 ![Model Experiments](../assets/training/modelpack-model-experiments.jpg){ align=center }
@@ -88,7 +88,9 @@ Once the training session has started, the progress with the stages will be show
 <figcaption>Training Session</figcaption>
 </figure>
 
-The completed session will look as follows.
+## Completed Session
+
+The completed session will look as follows with the status set to "Complete".
 
 <figure markdown="span">
 ![Completed Session](../assets/training/modelpack-completed-session.jpg){ align=center }
@@ -128,6 +130,8 @@ The trained model artifacts can be downloaded by clicking the "View Additional D
 ![Training Metrics](../assets/training/modelpack-training-metrics.jpg){ align=center }
 <figcaption>Training Metrics</figcaption>
 </figure>
+
+It is also possible to compare the training metrics for multiple sessions.  See [Training Sessions](../../getting_started/studio.md#training-sessions) in the EdgeFirst Studio Overview for further details. 
 
 !!! info
     You can visualize the architecture of these models using [https://netron.app/](https://netron.app/).

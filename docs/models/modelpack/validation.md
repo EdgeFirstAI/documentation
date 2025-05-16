@@ -1,71 +1,67 @@
 # Validating ModelPack
 
-This tutorial will describe the steps to validate the performance of **ModelPack Vision** models in EdgeFirst Studio that have been trained through the [end-to-end worklows](../../getting_started/workflows/index.md) or [Training ModelPack](training.md).  This page will focus only on the validation of Vision models. Please see the link attached for instructions on [Validating Fusion Models](../fusion/validation.md). 
+This tutorial will describe the steps to validate the performance of **ModelPack Vision** models in EdgeFirst Studio that have been trained through the [end-to-end worklows](../../getting_started/workflows/index.md) or [Training ModelPack](training.md).  For a tutorial to validate Fusion models, see [Validating Fusion Models](../fusion/validation.md). 
 
-## Select the Validator Tool
+## Specify Project Experiments
 
-Select "Validate Sessions" from the tool options.
-
-<figure markdown="span">
-![Validator Tool](../assets/validation/validator-tool.jpg){ align=center }
-<figcaption>Tool Options</figcaption>
-</figure>
-
-## Specify the Project
-
-Specify the project to run validation at the center of the top menu bar.
+From the projects page, choose the project that contains the training session with the models you want to validate.  In this example, the project chosen is the "Object Detection" project that was created in the [Quickstart Guide](../../index.md#create-project).  Next click the "Model Experiments" button as indicated in red.
 
 <figure markdown="span">
-![Project Selection](../assets/validation/validator-project-selection.jpg){ align=center }
-<figcaption>Project Selection</figcaption>
+![Model Experiments](../assets/training/modelpack-model-experiments.jpg){ align=center }
+<figcaption>Model Experiments</figcaption>
 </figure>
 
 ## Create Validation Session
- 
-Create a new validation session by clicking the "NEW SESSION" button on the top right.
+
+In the experiment card, click the "Validate Sessions" button as indicated in red below.
 
 <figure markdown="span">
-![Create New Session](../assets/validation/create-button.jpg){ align=center }
-<figcaption>Create New Session</figcaption>
+![Validate Sessions](../assets/validation/modelpack-validation-sessions.jpg){ align=center }
+<figcaption>Validate Sessions</figcaption>
 </figure>
 
-Configure the settings on the left panel by specifying the name of the validation session, 
-the model file to validate, and the dataset to deploy.  Next configure the settings 
-on the right panel by specifying the validation parameters.  Additional information on these 
-parameters are provided by hovering over the info button.
+You will be greeted to the ModelPack "Validate Sessions" page as shown below. 
 
 <figure markdown="span">
-![Validation Options](../assets/validation/modelpack-validation-options.jpg){ align=center }
-<figcaption>Validation Options</figcaption>
+![Validate Sessions Page](../assets/validation/modelpack-validation-sessions-page.jpg){ align=center }
+<figcaption>Validate Sessions Page</figcaption>
 </figure>
 
-## Start the Session 
-
-Start the session by clicking the "START SESSION" button on the bottom right.
+Start a validation session by clicking on the "New Session" button on the top right corner of the page. 
 
 <figure markdown="span">
-![Start Session](../assets/validation/start-session.jpg){ align=center }
-<figcaption>Start the Session</figcaption>
+![New Session Button](../assets/training/new-session-button.jpg){ align=center }
+<figcaption>New Session Button</figcaption>
 </figure>
+
+You will be greeted with the validation session configuration window.  In this window, specify the name of the validation session, the model to validate, and the dataset to deploy.  In this example, the TFLite model will be validated and the Coffee Cup dataset with the validation partition will be used.  Next specify, the validation parameters such as the IoU and score thresholds.  Additional information on these parameters are provided by hovering over the info buttons as indicated in red below. 
+
+<figure markdown="span">
+![Validation Session Fields](../assets/validation/modelpack-session-fields.jpg){ align=center }
+<figcaption>Validation Session Fields</figcaption>
+</figure>
+
+Once the configurations have been made, go ahead and click on the "Start Session" button on the bottom right of the window.  This will start the validation session which will validate the model using the validation partition of the dataset.
 
 ## Session Progress
 
-The validation session has now started while the progress is tracked on the left 
-panel and additional information and status is shown on the right panel.  
+Once the validation session has started, the progress with the stages will be shown on the left and additional information and status is shown on the right.
 
 <figure markdown="span">
-![Validation Session](../assets/validation/modelpack-validation-session.jpg){ align=center }
+![Validation Session](../assets/validation/modelpack-session-progress.jpg){ align=center }
 <figcaption>Validation Session</figcaption>
 </figure>
 
 ## Completed Session
 
-Once completed, the status will be shown as complete.
+The completed session will look as follows with the status set to "Complete".
 
 <figure markdown="span">
 ![Completed Session](../assets/validation/modelpack-completed-session.jpg){ align=center }
 <figcaption>Completed Session</figcaption>
 </figure>
+
+The attributes of the validation session are labeled below.
 
 <figure markdown="span">
 ![Validation Session Attributes](../assets/validation/validation-session-attributes.jpg){ align=center }
@@ -74,32 +70,26 @@ Once completed, the status will be shown as complete.
 
 ## Validation Metrics 
 
-The metrics are shown by clicking the button that views the validation charts on the top left of the session card.  
+Once the validation session completes, you can view the validation metrics by clicking the "View Validation Charts" button on the top of the session card.
 
 <figure markdown="span">
-![Validation Metrics](../assets/validation/modelpack-validation-metrics.jpg){ align=center }
-<figcaption>Validation Metrics</figcaption>
+![Validation Charts](../assets/validation/modelpack-charts.jpg){ align=center }
+<figcaption>Validation Charts</figcaption>
 </figure>
 
 See [Validation Metrics](../metrics.md#modelpack) for further details.
 
+You can go back to the validation session card by pressing the "Back" button as indicated in red below on the top left corner of the page. 
+
+<figure markdown="span">
+![Back to the Session Card](../assets/validation/back-button.jpg){ align=center }
+<figcaption>Back to the Session Card</figcaption>
+</figure>
+
 ## Comparing Metrics
 
-It is also possible to compare validation metrics for multiple sessions.  
-This is done by checking the checkboxes on the top left of the session cards.
-
-<figure markdown="span">
-![Comparing Sessions](../assets/validation/modelpack-selecting-sessions.jpg){ align=center }
-<figcaption>Comparing Sessions</figcaption>
-</figure>
-
-Compare the validation sessions by clicking the "COMPARE VALIDATE SESSION" button.  This will display the validation metrics side by side for the specified validation sessions.
-
-<figure markdown="span">
-![Metrics Side-by-Side](../assets/validation/modelpack-metrics-side-by-side.jpg){ align=center }
-<figcaption>Metrics Side-by-Side</figcaption>
-</figure>
+It is also possible to compare validation metrics for multiple sessions.  See [Validation Sessions](../../getting_started/studio.md#validation-sessions) in the EdgeFirst Studio Overview for further details. 
 
 ## Next Steps
 
-Now that you have validated your Vision model, follow these next steps for [deploying your Vision model](../../getting_started/models/deployment.md#modelpack).
+Now that you have validated your Vision model, you can find examples for deploying your model in the [PC](deployment/pc.md) and in the [Maivin Platform](deployment/maivin.md). 

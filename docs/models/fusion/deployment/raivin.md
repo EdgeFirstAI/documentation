@@ -1,4 +1,4 @@
-# Deploying in the Raivin
+# Deploying to the Raivin
 
 Now that you have [validated your Fusion model](../validation.md), this page will provide a walk-through for deploying Fusion models in a [Raivin Platform](../../../platforms/index.md).  This page will showcase two types of deployments.
 

@@ -1,4 +1,4 @@
-# Deploying in the Maivin
+# Deploying to the Maivin
 
 Now that you have [validated your Vision Model](../validation.md), this page will provide a walk-through for deploying Vision models in a [Maivin Platform](../../../platforms/index.md).  This page will showcase two types of deployments.
 

@@ -273,6 +273,12 @@ Once the validation session completes, the metrics will be displayed like the fo
 
 Once you have validated your trained model, let's take a look at an example of how this model can be deployed in your PC by following the tutorial [Deploying Vision Models](models/modelpack/deployment/pc.md). 
 
+If you have an NXP i.MX 8M Plus EVK you can also run your model directly on the device using the EdgeFirst Middleware by following the tutorial [Deploying to Embedded Targets](models/modelpack/deployment/evk.md).
+
+!!! note
+
+    Support for additional platforms beyond the NXP i.MX 8M Plus will be available soon.  Let us know which platform you'd like to see supported next!
+
 In this Quickstart guide, you have created your EdgeFirst Studio Account, logged in to EdgeFirst Studio, and created your very first project and ran your first experiment by capturing data, annotating data, training a detection model, validating the trained model, and deployed the model back into the PC for inference. 
 
 ## Next Steps

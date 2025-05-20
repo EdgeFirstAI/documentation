@@ -148,25 +148,25 @@ The ModelOutput message contains fused model output data. You can access various
     let masks = output.masks;  // Segmentation masks
     ```
 
-## /fusion/mask_output_tracked
+## /fusion/mask_output/tracked
 
 ### Setting up subscriber
 
-After setting up the Zenoh session, we will create a subscriber to the `fusion/mask_output_tracked` topic
+After setting up the Zenoh session, we will create a subscriber to the `fusion/mask_output/tracked` topic
 
 === "Python"
 
     ``` python
-    # Create a subscriber for "rt/fusion/mask_output_tracked"
-    subscriber = session.declare_subscriber('rt/fusion/mask_output_tracked')
+    # Create a subscriber for "rt/fusion/mask_output/tracked"
+    subscriber = session.declare_subscriber('rt/fusion/mask_output/tracked')
     ```
 
 === "Rust"
 
     ``` rust
-    // Create a subscriber for "rt/fusion/mask_output_tracked"
+    // Create a subscriber for "rt/fusion/mask_output/tracked"
     let subscriber = session
-        .declare_subscriber("rt/fusion/mask_output_tracked")
+        .declare_subscriber("rt/fusion/mask_output/tracked")
         .await
         .unwrap();
     ```
@@ -495,3 +495,83 @@ Recieved 523 lidar points with non-background vision_class. Values: x: [3.39, 3.
 When displaying the results through Rerun you will see the pointcloud lidar data.
 ![alt text](assets/fusion_lidar.png)
 
+## /fusion/boxes3d
+
+### Setting up subscriber
+
+After setting up the Zenoh session, we will create a subscriber to the `fusion/boxes3d` topic
+
+=== "Python"
+
+    ``` python
+    # Create a subscriber for "rt/fusion/boxes3d"
+    subscriber = session.declare_subscriber('rt/fusion/boxes3d')
+    ```
+
+=== "Rust"
+
+    ``` rust
+    // Create a subscriber for "rt/fusion/boxes3d"
+    let subscriber = session
+        .declare_subscriber("rt/fusion/boxes3d")
+        .await
+        .unwrap();
+    ```
+
+### Receive a message
+
+We can now receive a message on the subscriber. After receiving the message, we will need to deserialize it.
+
+=== "Python"
+
+    ``` python
+    from edgefirst.schemas.edgefirst_msgs import Detect
+
+    # Receive a message
+    msg = subscriber.recv()
+
+    # deserialize message
+    boxes = Detect.deserialize(msg.payload.to_bytes())
+    ```
+
+=== "Rust"
+
+    ``` rust
+    use edgefirst_schemas::edgefirst_msgs::Detect;
+
+    // Receive a message
+    let msg = subscriber.recv().unwrap();
+
+    let boxes: Detect = cdr::deserialize(&msg.payload().to_bytes())?;
+    ```
+
+### Process the Data
+
+The message contains a 2D bounding box with distances. Following the optical frame standard, the `center_x` and `width` fields measure the left-right position and size of the box. The `center_y` and `height` measure the up-down position and size of the box. The distance measures how far forward the box is.
+
+=== "Python"
+
+    ``` python
+    # Access box parameters
+    for b in boxes.boxes:
+        right = b.center_x
+        down = b.center_y
+        width = b.width
+        height = b.height
+        label = b.label
+        distance = b.distance
+    ```
+
+=== "Rust"
+
+    ``` rust
+    // Access box parameters
+    for b in boxes.boxes {
+        let x = b.center_x;
+        let y = b.center_y;
+        let width = b.width;
+        let height = b.height;
+        let label = b.label;
+        let distance = b.distance;
+    }
+    ```

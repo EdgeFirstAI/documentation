@@ -271,7 +271,7 @@ Once the validation session completes, the metrics will be displayed like the fo
 
 ### 7. Deploy the Model
 
-Once you have validated your trained model, let's take a look at an example of how this model can be deployed in your PC by following the tutorial [Deploying Vision Models](models/modelpack/deployment/pc.md). 
+Once you have validated your trained model, let's take a look at an example of how this model can be deployed in your PC by following the tutorial [Deploying to the PC](models/modelpack/deployment/pc.md). 
 
 If you have an NXP i.MX 8M Plus EVK you can also run your model directly on the device using the EdgeFirst Middleware by following the tutorial [Deploying to Embedded Targets](models/modelpack/deployment/evk.md).
 

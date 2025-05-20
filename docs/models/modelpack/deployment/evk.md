@@ -55,6 +55,8 @@ Once you have your MCAP download to your PC you may upload it to EdgeFirst Studi
 
 ### Services
 
+The `edgefirst` launcher is the preferred method of launching multiple services as user-mode whereas system-mode would prefer using systemd to manage services.  The services are described below which is intended for more advanced manual configuration of the services. 
+
 #### Camera Service
 
 The Camera Service or EdgeFirst Camera Publisher implements the standard ROS2 camera interfaces plus a proprietary extension to provide DMA support.  As with all EdgeFirst services the ROS2 interfaces are implemented over Zenoh and can plug into a true ROS2 setup using the zenoh-bridge-dds service.

@@ -61,14 +61,14 @@ Welcome to EdgeFirst Studio (formerly Deep View Enterprise)!  Follow this Quicks
     <figcaption>Both Projects</figcaption>
     </figure>
 
-The next sections will invite you to follow along the end-to-end workflow for recording a video or capturing images using a mobile device and then upload the captured data into EdgeFirst Studio for annotation and then model training, validation, and deployment on various platforms. 
+The next sections will invite you to follow along the end-to-end workflow for recording a video or capturing images using a phone and then upload the captured data into EdgeFirst Studio for annotation and then model training, validation, and deployment on various platforms. 
 
 !!! warning
-    It is recommended to use a mobile device connected to a Wifi network. A device connected to mobile data might be subject to intense usage when uploading files as video files or image files can be large in size. In the examples below, the video file used was ~15MB and the image files were ~2MB.
+    It is recommended to use a phone connected to a Wifi network. A device connected to mobile data might be subject to intense usage when uploading files as video files or image files can be large in size. In the examples below, the video file used was ~15MB and the image files were ~2MB.
 
-## Capture Data Using a Mobile Device
+## Capture with a Phone
 
-The examples below will show capturing image samples of coffee cups for training a Vision model that detects coffee cups. However, you can choose any type of objects in your dataset.
+The examples below will show capturing image samples of coffee cups using a phone for training a Vision model that detects coffee cups. However, you can choose any type of objects in your dataset.
 
 To capture samples of coffee cups, you can record a video as shown below.  In this example, a five second video was recorded. 
 
@@ -134,7 +134,7 @@ This will bring you to the "Import Dataset" page.
 <figcaption>Dataset Import</figcaption>
 </figure>
 
-First you will be importing the video recording from [step 1](#capture-data-using-a-mobile-device).  Click on the dropdown that says "Select an Import Type" and then specify "Video" and then click "Done" as shown below. 
+First you will be importing the video recording from [step 1](#capture-with-a-phone).  Click on the dropdown that says "Select an Import Type" and then specify "Video" and then click "Done" as shown below. 
 
 <figure markdown="span">
 ![Dataset Video Import](getting_started/assets/workflows/mobile-video-import-type.jpg){ align=center }
@@ -180,7 +180,7 @@ This will start the import process and once it is completed, you should see the 
 <figcaption>Imported Video</figcaption>
 </figure>
 
-Next, if you have captured images from [step 1](#capture-data-using-a-mobile-device) you will import the captured images.  Navigate back to the "Import Dataset" page (refer to the [top](#upload-videos-or-images)).
+Next, if you have captured images from [step 1](#capture-with-a-phone) you will import the captured images.  Navigate back to the "Import Dataset" page (refer to the [top](#upload-videos-or-images)).
 
 <figure markdown="span">
 ![Dataset Import](getting_started/assets/workflows/mobile-import-dataset.jpg){ align=center }

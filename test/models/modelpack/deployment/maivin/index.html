@@ -1795,9 +1795,9 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#visit-the-webui-service" class="md-nav__link">
+  <a href="#visit-the-web-ui-service" class="md-nav__link">
     <span class="md-ellipsis">
-      Visit the WebUI Service
+      Visit the Web UI Service
     </span>
   </a>
   
@@ -1809,6 +1809,30 @@
       Update the Model Path
     </span>
   </a>
+  
+    <nav class="md-nav" aria-label="Update the Model Path">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#web-ui" class="md-nav__link">
+    <span class="md-ellipsis">
+      Web UI
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#command-line" class="md-nav__link">
+    <span class="md-ellipsis">
+      Command Line
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -3912,9 +3936,9 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#visit-the-webui-service" class="md-nav__link">
+  <a href="#visit-the-web-ui-service" class="md-nav__link">
     <span class="md-ellipsis">
-      Visit the WebUI Service
+      Visit the Web UI Service
     </span>
   </a>
   
@@ -3926,6 +3950,30 @@
       Update the Model Path
     </span>
   </a>
+  
+    <nav class="md-nav" aria-label="Update the Model Path">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#web-ui" class="md-nav__link">
+    <span class="md-ellipsis">
+      Web UI
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#command-line" class="md-nav__link">
+    <span class="md-ellipsis">
+      Command Line
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -4002,7 +4050,7 @@
 
 <figcaption>Training Session Attributes</figcaption>
 </figure>
-<p>This will open the session details and the models are listed under the "Artifacts" tab as shown below.  Click on the downward arrow indicated in red to download the models to your PC.  In this example, we will be deploying the TFLite model in the Maivin.</p>
+<p>This will open the session details and the models are listed under the "Artifacts" tab as shown below.  Click on the downward arrow indicated in red to download the models to your PC.  In this example, you will be deploying the TFLite model in the Maivin.</p>
 <table>
 <thead>
 <tr>
@@ -4025,7 +4073,7 @@
 </code></pre></div>
 <p>For more information, please visit <a href="../../../../platforms/ssh/#secure-copy">Secure Copy</a>.</p>
 <h3 id="download-using-the-client">Download using the Client</h3>
-<p>This method expects you to have already connected to the Maivin via <a href="../../../../platforms/ssh/">SSH</a>.  The <a href="../../../../perception/studio/">EdgeFirst Client</a> will already come pre installed in the device.  You can verify the installation with the client version command.</p>
+<p>This method expects you to have already connected to the Maivin via <a href="../../../../platforms/ssh/">SSH</a>.  The <a href="../../../../perception/studio/">EdgeFirst Client</a> can be installed via <code>pip3 install edgefirst-client</code>.  You can verify the installation with the client version command.</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>edgefirst-client<span class="w"> </span>version
 EdgeFirst<span class="w"> </span>Studio<span class="w"> </span>Server:<span class="w"> </span><span class="m">3</span>.7.5-def7735<span class="w"> </span>Client:<span class="w"> </span><span class="m">1</span>.3.4
 </code></pre></div>
@@ -4043,22 +4091,24 @@ Password:<span class="w"> </span>****
 <li>model name: Pass the specific model that will be downloaded to the device.  Usually this is <code>modelpack.tflite</code>.</li>
 <li>download path (optional): Specify the path to download the model.  If not provided, it will download to the current working directory.</li>
 </ul>
-<p>Please see <a href="../../../../perception/studio/">EdgeFirst Client</a> for more information on using the client via the command line.</p>
-<h2 id="visit-the-webui-service">Visit the WebUI Service</h2>
-<p>Visit the WebUI service by entering the URL <code>https://&lt;hostname&gt;/</code> in your browser.</p>
+<p>You can find more information on using the <a href="../../../../perception/studio/">EdgeFirst Client</a> in the command line.</p>
+<h2 id="visit-the-web-ui-service">Visit the Web UI Service</h2>
+<p>Visit the Web UI service by entering the URL <code>https://&lt;hostname&gt;/</code> in your browser.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>Replace <code>&lt;hostname&gt;</code> with the hostname of your device.</p>
 </div>
 <p>You should be greeted with the following page.</p>
 <figure>
-<img align="center" alt="WebUI" src="../../../assets/deployment/maivin-webui.jpg" />
+<img align="center" alt="Web UI" src="../../../assets/deployment/maivin-webui.jpg" />
 
-<figcaption>WebUI</figcaption>
+<figcaption>Web UI</figcaption>
 </figure>
 <p>For more information, please see the <a href="../../../../platforms/walkthrough/">Web UI Walkthrough</a>.</p>
 <h2 id="update-the-model-path">Update the Model Path</h2>
-<p>Once you are in the WebUI main page, you will need to first specify the path to the model in the device.</p>
+<p>Next you will need to specify the path to the model in the device.  You can either update the model path in the Web UI or via the command line.</p>
+<h3 id="web-ui">Web UI</h3>
+<p>Once you are in the Web UI main page, you can specify the path to the model by following the steps below.</p>
 <p>Click the settings icon on the top right corner of the page.</p>
 <figure>
 <img align="center" alt="Settings" src="../../../assets/deployment/maivin-settings.jpg" />
@@ -4077,6 +4127,19 @@ Password:<span class="w"> </span>****
 
 <figcaption>Model Path</figcaption>
 </figure>
+<h3 id="command-line">Command Line</h3>
+<p>To update the model path using the command line in the device, edit the following file using <code>sudo vi /etc/default/model</code>.</p>
+<p>Next, you will see the file with the following contents.</p>
+<div class="highlight"><pre><span></span><code># This is the configuration file for the model systemd service file.  When
+# running systemctl start detect the service will use these configurations.
+# If running model directly, you must continue to use the command-line options.
+
+# A model is required for the model application. This can be a segmentation model
+# and/or a detection model.
+MODEL = &quot;path/to/mymodel.tflite&quot;
+</code></pre></div>
+<p>Edit the following line <code>MODEL = "path/to/mymodel.tflite"</code> to point to the specific path to your model.  To edit, press <code>i</code> to enter into "Insert Mode".  You should now be able to edit the lines.  To exit "Insert Mode", press the ESC key on your keyboard.  Next save and exit the file by typing <code>:wq</code> on your keyboard.  More examples for using vim can be found <a href="https://coderwall.com/p/adv71w/basic-vim-commands-for-getting-started">here</a>.</p>
+<p>Once the path to the model has been updated, restart the model service using <code>sudo systemctl restart model</code>.</p>
 <h2 id="enable-and-start-the-services">Enable and Start the Services</h2>
 <p>Once the model path in the device is specifed, ensure that the Camera, Model, and Recorder services are enabled.  To verify, go back to the settings and click on the "Service Status" button.</p>
 <figure>
@@ -4084,14 +4147,14 @@ Password:<span class="w"> </span>****
 
 <figcaption>Service Status</figcaption>
 </figure>
-<p>You will be greeted with the "Service Overview" page.  Ensure that the "camera" and "model" services are enabled and running by toggling the "Enable" and "Start" buttons as shown.  Only "Enable" the "recorder" service as shown.  We will be using the recorder service in <a href="#mcap-recording">MCAP Recording</a>.</p>
+<p>You will be greeted with the "Service Overview" page.  Ensure that the "camera" and "model" services are enabled and running by toggling the "Enable" and "Start" buttons as shown.  Only "Enable" the "recorder" service as shown.  You will be using the recorder service in <a href="#mcap-recording">MCAP Recording</a>.</p>
 <figure>
 <img align="center" alt="Service Overview" src="../../../assets/deployment/maivin-service-overview.jpg" />
 
 <figcaption>Service Overview</figcaption>
 </figure>
 <h2 id="live-view-segmentation-app">Live View (Segmentation App)</h2>
-<p>Now we will demonstrate a live inference of the model in the device.  Once the model and camera services are enabled, go back to the main page and then select the "Segmentation" application as shown.</p>
+<p>Now you will see live inference of the model in the device.  Once the model and camera services are enabled, go back to the main page and then select the "Segmentation" application as shown.</p>
 <figure>
 <img align="center" alt="Segmentation App" src="../../../assets/deployment/maivin-segmentation-app.jpg" />
 
@@ -4109,7 +4172,7 @@ Password:<span class="w"> </span>****
 <figcaption>Sample 2</figcaption>
 </figure>
 <h2 id="mcap-recording">MCAP Recording</h2>
-<p>Now we will demonstrate running a recording on the device, saving the model inferences, and then visualizing the recording using Foxglove Studio.  Once the model, camera, and recorder services are enabled, go back to the main page and then select the "MCAP" application as shown.</p>
+<p>Now you will run a recording on the device, saving the model inferences, and then visualizing the recording using Foxglove Studio.  Once the model, camera, and recorder services are enabled, go back to the main page and then select the "MCAP" application as shown.</p>
 <figure>
 <img align="center" alt="MCAP Recorder" src="../../../assets/deployment/maivin-recorder-app.jpg" />
 
@@ -4130,7 +4193,7 @@ Password:<span class="w"> </span>****
 
 <figcaption>MCAP Files</figcaption>
 </figure>
-<p>Once the MCAP recording has been downloaded, we can use Foxglove Studio to see the playback of MCAP recordings and the model inference.  The following preview is a frame from the MCAP with the model inference masks overlaid on top of the video. </p>
+<p>Once the MCAP recording has been downloaded, you can use Foxglove Studio to see the playback of MCAP recordings and the model inference.  The following preview is a frame from the MCAP with the model inference masks overlaid on top of the video. </p>
 <figure>
 <img align="center" alt="Foxglove Sample 1" src="../../../assets/deployment/foxglove-sample-1.jpg" />
 

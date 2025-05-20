@@ -1766,6 +1766,48 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#services" class="md-nav__link">
+    <span class="md-ellipsis">
+      Services
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Services">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#camera-service" class="md-nav__link">
+    <span class="md-ellipsis">
+      Camera Service
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#model-service" class="md-nav__link">
+    <span class="md-ellipsis">
+      Model Service
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#webserver-service" class="md-nav__link">
+    <span class="md-ellipsis">
+      Webserver Service
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -3846,6 +3888,48 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#services" class="md-nav__link">
+    <span class="md-ellipsis">
+      Services
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Services">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#camera-service" class="md-nav__link">
+    <span class="md-ellipsis">
+      Camera Service
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#model-service" class="md-nav__link">
+    <span class="md-ellipsis">
+      Model Service
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#webserver-service" class="md-nav__link">
+    <span class="md-ellipsis">
+      Webserver Service
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -3873,7 +3957,7 @@
 <h2 id="installation">Installation</h2>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
-<p>This workflow is currently only supported on NXP i.MX 8M Plus EVK platforms running the NXP Yocto BSP.</p>
+<p>This workflow is currently only supported on NXP i.MX 8M Plus EVK platforms running the <a href="https://www.nxp.com/design/design-center/software/embedded-software/i-mx-software/embedded-linux-for-i-mx-applications-processors:IMXLINUX">NXP Yocto BSP</a>.</p>
 </div>
 <p>The EdgeFirst Middleware can be easily installed on embedded targets using the Python package manager to install the middleware binaries and sample models.  Simply run the following command to install the middleware.</p>
 <div class="highlight"><pre><span></span><code>pip3<span class="w"> </span>install<span class="w"> </span>edgefirst
@@ -3900,6 +3984,40 @@ pip3<span class="w"> </span>install<span class="w"> </span>edgefirst
 <p><img alt="MCAP Recorder Controls" src="../assets/evk-recorder-controls.png" /></p>
 <p>You can also access the MCAP recordings from the working directory where the <code>edgefirst live</code> command was run.</p>
 <p>Once you have your MCAP download to your PC you may upload it to EdgeFirst Studio to annotate and further train your model.  Uploading MCAP recordings is done through the <a href="../../../../studio/snapshots/">Snapshot Dashboard</a>.</p>
+<h3 id="services">Services</h3>
+<p>The <code>edgefirst</code> launcher is the preferred method of launching multiple services as user-mode whereas system-mode would prefer using systemd to manage services.  The services are described below which is intended for more advanced manual configuration of the services. </p>
+<h4 id="camera-service">Camera Service</h4>
+<p>The Camera Service or EdgeFirst Camera Publisher implements the standard ROS2 camera interfaces plus a proprietary extension to provide DMA support.  As with all EdgeFirst services the ROS2 interfaces are implemented over Zenoh and can plug into a true ROS2 setup using the zenoh-bridge-dds service.</p>
+<p>Deploy this service in your target with the following command.  The <code>&amp;</code> parameter will run the service in the background allowing you to continue using the terminal.  We also specify <code>--mirror none</code> to avoid any horizontal or vertical flip to the camera feed.  By default, the camera is flipped both horizontally and vertically to compensate for the orientation of the Maivin camera which is installed upside-down. </p>
+<div class="highlight"><pre><span></span><code>edgefirst-camera<span class="w"> </span>--h264<span class="w"> </span>--mirror<span class="w"> </span>none<span class="w"> </span><span class="p">&amp;</span>
+</code></pre></div>
+<p>The command below lists all available parameters from this service.</p>
+<div class="highlight"><pre><span></span><code>edgefirst-camera<span class="w"> </span>-h
+</code></pre></div>
+<div class="admonition info">
+<p class="admonition-title">Info</p>
+<p>To bring background executed commands to the foreground, enter <code>fg</code> allowing you to exit the program via CTRL-C.</p>
+</div>
+<h4 id="model-service">Model Service</h4>
+<p>The Model Service or Maivin Detection Service deploys a ModelPack Detection and Segmentation model for inference to output bounding boxes or segmentation masks on the detected objects in the camera feed. </p>
+<p>Deploy this service in your target with the following command.  In this command specify the path to the model denoted by <code>--model</code>.  We recommend using a quantized TFLite model in embedded targets.</p>
+<div class="highlight"><pre><span></span><code>edgefirst-model<span class="w"> </span>--model<span class="w"> </span>mymodel.tflite<span class="w"> </span><span class="p">&amp;</span>
+</code></pre></div>
+<p>The command below lists all available parameters from this service.</p>
+<div class="highlight"><pre><span></span><code>edgefirst-camera<span class="w"> </span>-h
+</code></pre></div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>The camera service needs to be running in the background as described <a href="#camera-service">above</a> to fetch camera frames for model inference. </p>
+</div>
+<h4 id="webserver-service">Webserver Service</h4>
+<p>The Webserver Service or the EdgeFirst Web UI Server deploys a webserver on target to provide a GUI that's accessible using the target's IP address as the endpoint on a browser <code>https://MY_DEVICE_IP</code>.  The GUI would provide visualizations from the camera feed and model inferences and exposed the features for recording an MCAP, downloading an MCAP locally, deleting an MCAP, or listing the recorded MCAPs as shown in the <a href="#live-camera-mode">Live Camera Mode</a> section.</p>
+<p>If a virtual environment was created, deploy this service using the command below.  The <code>--docroot</code> directory needs to be specified.</p>
+<div class="highlight"><pre><span></span><code>edgefirst-websrv<span class="w"> </span>--docroot<span class="w"> </span>venv/share/edgefirst/webui
+</code></pre></div>
+<p>If a virtual environment was not created, deploy this service using the command below.</p>
+<div class="highlight"><pre><span></span><code>edgefirst-websrv<span class="w"> </span>--docroot<span class="w"> </span>/usr/share/edgefirst/webui/
+</code></pre></div>
 
 
 

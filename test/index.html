@@ -3765,80 +3765,65 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#end-to-end-workflow" class="md-nav__link">
+  <a href="#capture-with-a-phone" class="md-nav__link">
     <span class="md-ellipsis">
-      End-to-End Workflow
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="End-to-End Workflow">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#1-capture-data-using-a-mobile-device" class="md-nav__link">
-    <span class="md-ellipsis">
-      1. Capture Data Using a Mobile Device
+      Capture with a Phone
     </span>
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
-  <a href="#2-create-dataset" class="md-nav__link">
+      
+        <li class="md-nav__item">
+  <a href="#create-a-dataset" class="md-nav__link">
     <span class="md-ellipsis">
-      2. Create Dataset
+      Create a Dataset
     </span>
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
-  <a href="#3-upload-data" class="md-nav__link">
+      
+        <li class="md-nav__item">
+  <a href="#upload-videos-or-images" class="md-nav__link">
     <span class="md-ellipsis">
-      3. Upload Data
+      Upload Videos or Images
     </span>
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
-  <a href="#4-annotate-data" class="md-nav__link">
+      
+        <li class="md-nav__item">
+  <a href="#annotate-the-dataset" class="md-nav__link">
     <span class="md-ellipsis">
-      4. Annotate Data
+      Annotate the Dataset
     </span>
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
-  <a href="#5-train-a-model" class="md-nav__link">
+      
+        <li class="md-nav__item">
+  <a href="#train-a-vision-model" class="md-nav__link">
     <span class="md-ellipsis">
-      5. Train a Model
+      Train a Vision Model
     </span>
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
-  <a href="#6-validate-the-model" class="md-nav__link">
+      
+        <li class="md-nav__item">
+  <a href="#validate-the-trained-model" class="md-nav__link">
     <span class="md-ellipsis">
-      6. Validate the Model
+      Validate the Trained Model
     </span>
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
-  <a href="#7-deploy-the-model" class="md-nav__link">
+      
+        <li class="md-nav__item">
+  <a href="#deploy-the-model" class="md-nav__link">
     <span class="md-ellipsis">
-      7. Deploy the Model
+      Deploy the Model
     </span>
   </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
@@ -3933,21 +3918,20 @@
 </figure></p>
 </li>
 </ol>
-<h2 id="end-to-end-workflow">End-to-End Workflow</h2>
-<p>In this workflow, we will explore recording a video or capturing images using a mobile device and then upload the captured data into EdgeFirst Studio for annotation and then model training, validation, and deployment using the PC. </p>
+<p>The next sections will invite you to follow along the end-to-end workflow for recording a video or capturing images using a phone and then upload the captured data into EdgeFirst Studio for annotation and then model training, validation, and deployment on various platforms. </p>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
-<p>It is recommended to use a mobile device connected to a Wifi network. A device connected to mobile data might be subject to intense usage when uploading files as video files or image files can be large in size. In the examples below, the video file used was ~15MB and the image files were ~2MB.</p>
+<p>It is recommended to use a phone connected to a Wifi network. A device connected to mobile data might be subject to intense usage when uploading files as video files or image files can be large in size. In the examples below, the video file used was ~15MB and the image files were ~2MB.</p>
 </div>
-<h3 id="1-capture-data-using-a-mobile-device">1. Capture Data Using a Mobile Device</h3>
-<p>In this workflow, we will be exploring capturing data with samples of coffee cups for training a detection model that detects coffee cups. However, you can choose any type of objects in your dataset.</p>
-<p>In this workflow, we will be recording a 5 second video on coffee cups as shown below. </p>
+<h2 id="capture-with-a-phone">Capture with a Phone</h2>
+<p>The examples below will show capturing image samples of coffee cups using a phone for training a Vision model that detects coffee cups. However, you can choose any type of objects in your dataset.</p>
+<p>To capture samples of coffee cups, you can record a video as shown below.  In this example, a five second video was recorded. </p>
 <figure>
 <img align="center" alt="Mobile Video Capture" src="getting_started/assets/workflows/mobile-video-capture.jpg" />
 
 <figcaption>Android Mobile Video Capture</figcaption>
 </figure>
-<p>Furthermore, we will also capture images of coffee cups as shown below. </p>
+<p>Furthermore, you can also capture individual images of coffee cups as shown below. </p>
 <figure>
 <img align="center" alt="Mobile Image Capture" src="getting_started/assets/workflows/mobile-image-capture.jpg" />
 
@@ -3955,22 +3939,22 @@
 </figure>
 <div class="admonition tip">
 <p class="admonition-title">Tip</p>
-<p>We recommend using videos rather than individual images. This is because Automatic Ground Truth Generation (AGTG) leverages SAM-2 with tracking information which only needs a single annotation to annotate all frames. However, individual images requires the annotation of each image separately.</p>
+<p>It is recommended to use videos rather than individual images.  This is because the Automatic Ground Truth Generation (AGTG) feature leverages SAM-2 with tracking information which only needs a single annotation to annotate all frames.  However, individual images requires more effort to annotate each image separately.</p>
 </div>
-<h3 id="2-create-dataset">2. Create Dataset</h3>
-<p>Once you have captured your video and some sample images for your dataset, navigate to a web browser on your mobile device and <a href="https://test.edgefirst.studio/#/login">login</a> to EdgeFirst Studio. Once logged in to EdgeFirst Studio, navigate to the "Object Detection" project that was created and click on the datasets button that is indicated in red.</p>
+<h2 id="create-a-dataset">Create a Dataset</h2>
+<p>Once you have captured your video and some sample images for your dataset, navigate to a web browser on your mobile device and <a href="https://test.edgefirst.studio/#/login">login</a> to EdgeFirst Studio.  Once logged in to EdgeFirst Studio, navigate to the "Object Detection" project that was created and click on the datasets button that is indicated in red.</p>
 <figure>
 <img align="center" alt="Object Detection Project" src="getting_started/assets/workflows/mobile-projects.jpg" />
 
 <figcaption>Object Detection Project</figcaption>
 </figure>
-<p>This will bring you to the Datasets page of the selected project. Create a new dataset container by clicking the "New Dataset" button indicated in red.</p>
+<p>This will bring you to the "Datasets" page of the selected project.  Create a new dataset container by clicking the "New Dataset" button that is indicated in red.</p>
 <figure>
 <img align="center" alt="New Dataset" src="getting_started/assets/workflows/mobile-new-dataset.jpg" />
 
 <figcaption>New Dataset</figcaption>
 </figure>
-<p>Add the dataset and annotation container name, labels, and dataset description as indicated by the fields below.  The information in the fields can be specified by the user and does not have to strictly follow the example shown below. Click the "Create" button once the fields have been filled.</p>
+<p>Add the dataset and annotation container name, labels, and dataset description as indicated by the fields below.  It is up to you to specify the information in the fields and you do not have to strictly follow the example shown below.  Click the "Create" button once the fields have been filled.</p>
 <figure>
 <img align="center" alt="Dataset Fields" src="getting_started/assets/workflows/mobile-dataset-details.jpg" />
 
@@ -3982,7 +3966,7 @@
 
 <figcaption>Created Dataset</figcaption>
 </figure>
-<h3 id="3-upload-data">3. Upload Data</h3>
+<h2 id="upload-videos-or-images">Upload Videos or Images</h2>
 <p>Once the dataset container has been created, click on the dataset extended menu (three dots) and select import.</p>
 <figure>
 <img align="center" alt="Dataset Import Option" src="getting_started/assets/workflows/mobile-dataset-import-option.jpg" />
@@ -3995,7 +3979,7 @@
 
 <figcaption>Dataset Import</figcaption>
 </figure>
-<p>First we will be importing the video recording from <a href="#1-capture-data-using-a-mobile-device">step 1</a>. Click on the dropdown that says "Select an Import Type" and then specify "Video" and then click "Done" as shown below. </p>
+<p>First you will be importing the video recording from <a href="#capture-with-a-phone">step 1</a>.  Click on the dropdown that says "Select an Import Type" and then specify "Video" and then click "Done" as shown below. </p>
 <figure>
 <img align="center" alt="Dataset Video Import" src="getting_started/assets/workflows/mobile-video-import-type.jpg" />
 
@@ -4029,26 +4013,25 @@
 
 <figcaption>Import Fields</figcaption>
 </figure>
-<p>This will start the import process and once it is completed, you should see the number of images in the dataset increased. If you do not see any changes, refresh the browser. </p>
+<p>This will start the import process and once it is completed, you should see the number of images in the dataset increased.  If you do not see any changes, refresh the browser. </p>
 <figure>
 <img align="center" alt="Imported Video" src="getting_started/assets/workflows/imported-video-outcome.jpg" />
 
 <figcaption>Imported Video</figcaption>
 </figure>
-<p>Next we will import the captured images from <a href="#1-capture-data-using-a-mobile-device">step 1</a>. 
-Navigate back to the "Import Dataset" page (refer to the <a href="#3-upload-data">top</a>).</p>
+<p>Next, if you have captured images from <a href="#capture-with-a-phone">step 1</a> you will import the captured images.  Navigate back to the "Import Dataset" page (refer to the <a href="#upload-videos-or-images">top</a>).</p>
 <figure>
 <img align="center" alt="Dataset Import" src="getting_started/assets/workflows/mobile-import-dataset.jpg" />
 
 <figcaption>Dataset Import</figcaption>
 </figure>
-<p>Click on "Click to select images". This will bring up the option to specify the location of the files.</p>
+<p>Click on "Click to select images".  This will bring up the option to specify the location of the files.</p>
 <figure>
 <img align="center" alt="Android Mobile Media Picker" src="getting_started/assets/workflows/mobile-media-picker.jpg" />
 
 <figcaption>Android Mobile Media Picker</figcaption>
 </figure>
-<p>In my current setup, I have selected "Media Picker" from the options above and then I have multi-selected the images I want to import by press and hold on a single image to enable multi-select. To import, I pressed "Select".</p>
+<p>In my current setup, I have selected "Media Picker" from the options above and then I have multi-selected the images I want to import by press and hold on a single image to enable multi-select.  To import, I pressed "Select".</p>
 <figure>
 <img align="center" alt="Android Multiselect Images" src="getting_started/assets/workflows/mobile-multi-select-images.jpg" />
 
@@ -4060,60 +4043,61 @@ Navigate back to the "Import Dataset" page (refer to the <a href="#3-upload-data
 
 <figcaption>Image Import Progress</figcaption>
 </figure>
-<p>Once it completes, you should see the number of images in the dataset increase by the amount of selected images. If you do not see any changes, refresh your browser.</p>
+<p>Once it completes, you should see the number of images in the dataset increase by the amount of selected images.  If you do not see any changes, refresh your browser.</p>
 <figure>
 <img align="center" alt="Imported Images" src="getting_started/assets/workflows/imported-images-outcome.jpg" />
 
 <figcaption>Imported Images</figcaption>
 </figure>
-<p>Next <a href="datasets/tutorials/#viewing-datasets">view the gallery of the dataset</a> to confirm all the captured data has been uploaded. You should see the imported video file and images in the gallery. Note that videos appear as sequences with a play button overlay on the preview thumbnail.</p>
+<p>Next <a href="datasets/tutorials/#viewing-datasets">view the gallery of the dataset</a> to confirm all the captured data has been uploaded.  You should see the imported video file and images in the gallery.  Note that videos appear as sequences with a play button overlay on the preview thumbnail.</p>
 <figure>
 <img align="center" alt="Coffee Cup Gallery" src="getting_started/assets/workflows/pc-dataset-gallery.jpg" />
 
 <figcaption>Coffee Cup Gallery</figcaption>
 </figure>
-<p>Once all the captured data has been uploaded to the dataset container, we will now assign groups to the data to split the data into training and validation sets. Follow the <a href="datasets/tutorials/#splitting-datasets">tutorial for creating groups</a> with an 80% partition to training and 20% partition to validation. The final outcome for the groups should look as follows.</p>
+<p>Once all the captured data has been uploaded to the dataset container, you will now assign groups to the data to split the data into training and validation sets.  Follow the <a href="datasets/tutorials/#splitting-datasets">tutorial for creating groups</a> with an 80% partition to training and 20% partition to validation.  The final outcome for the groups should look as follows.</p>
 <figure>
 <img align="center" alt="Dataset Groups" src="getting_started/assets/workflows/dataset-groups.jpg" />
 
 <figcaption>Dataset Groups</figcaption>
 </figure>
-<p>Now that we have imported some data into EdgeFirst Studio and have split the captured data into training and validation partitions, we can now start annotating our data as shown in the next section below.</p>
-<h3 id="4-annotate-data">4. Annotate Data</h3>
-<p>In this step, we will be using a personal computer with access to Wifi to <a href="https://test.edgefirst.studio/#/login">log in</a> to EdgeFirst Studio for annotating the captured data. When annotating the dataset, we will be using AI assistance to annotate the ground truth to perform auto segmentation and bounding boxes on the objects in the frame. Once logged in to EdgeFirst Studio, follow the <a href="datasets/tutorials/#auto-annotations-via-gallery">Auto Annotations</a> instructions to auto-annotate the video sequence that was imported. Otherwise, follow the <a href="datasets/tutorials/#audit-2d-annotations">Audit 2D Annotations</a> instructions for annotating the images captured.</p>
-<p>A complete annotation will have a segmentation mask and a bounding box for each object in the frame. Shown below is an example. </p>
+<p>Now that you have imported captured images or videos into EdgeFirst Studio and have split the captured data into training and validation partitions, you can now start annotating your data as shown in the next section below.</p>
+<h2 id="annotate-the-dataset">Annotate the Dataset</h2>
+<p>In this step, you will need a personal computer (PC) with access to Wifi to <a href="https://test.edgefirst.studio/#/login">log in</a> to EdgeFirst Studio for annotating the dataset.  When annotating the dataset, you will be using AI assistance to reduce the effort by running auto segmentation and bounding boxes on the objects in the frame.  Once logged in to EdgeFirst Studio, follow the <a href="datasets/tutorials/#auto-annotations-via-gallery">Auto Annotations</a> instructions to auto-annotate the video sequence that was imported.  Otherwise, follow the <a href="datasets/tutorials/#audit-2d-annotations">Audit 2D Annotations</a> instructions to annotate the images captured.</p>
+<p>A complete annotation will have a segmentation mask and a bounding box for each object in the frame.  Shown below is an example. </p>
 <figure>
 <img align="center" alt="Sample Annotation" src="getting_started/assets/workflows/sample-2d-annotation.jpg" />
 
 <figcaption>Sample Annotation</figcaption>
 </figure>
-<h3 id="5-train-a-model">5. Train a Model</h3>
-<p>Once you have a proper dataset that is fully annotated and split into training and validation groups, you can now start training your Vision model. For instructions to train a Vision model, please refer to the <a href="models/modelpack/training/">Training ModelPack Tutorial</a>.</p>
+<h2 id="train-a-vision-model">Train a Vision Model</h2>
+<p>Once you have a proper dataset that is fully annotated and split into training and validation groups, you can now start training your Vision model.  For instructions to train a Vision model, please refer to the <a href="models/modelpack/training/">Training ModelPack Tutorial</a>.</p>
 <p>A completed training session will look like the following figure.</p>
 <figure>
 <img align="center" alt="Training Session" src="getting_started/assets/workflows/completed-training-session.jpg" />
 
 <figcaption>Training Session</figcaption>
 </figure>
-<h3 id="6-validate-the-model">6. Validate the Model</h3>
+<h2 id="validate-the-trained-model">Validate the Trained Model</h2>
 <p>Once the model is trained, you can now start validating the performance of the model to verify if the model is ready for deployment. </p>
-<p>For instructions to validate a Vision model, please refere to the <a href="models/modelpack/validation/">Validating ModelPack Tutorial</a>.</p>
+<p>For instructions to validate a Vision model, please refer to the <a href="models/modelpack/validation/">Validating ModelPack Tutorial</a>.</p>
 <p>Once the validation session completes, the metrics will be displayed like the following figure.</p>
 <figure>
 <img align="center" alt="Validation Metrics" src="getting_started/assets/workflows/sample-validation-metrics.jpg" />
 
 <figcaption>Validation Metrics</figcaption>
 </figure>
-<h3 id="7-deploy-the-model">7. Deploy the Model</h3>
-<p>Once you have validated your trained model, let's take a look at an example of how this model can be deployed in your PC by following the tutorial <a href="models/modelpack/deployment/pc/">Deploying Vision Models</a>. </p>
+<h2 id="deploy-the-model">Deploy the Model</h2>
+<p>Once you have validated your trained model, let's take a look at an example of how this model can be deployed in your PC by following the tutorial <a href="models/modelpack/deployment/pc/">Deploying to the PC</a>. </p>
 <p>If you have an NXP i.MX 8M Plus EVK you can also run your model directly on the device using the EdgeFirst Middleware by following the tutorial <a href="models/modelpack/deployment/evk/">Deploying to Embedded Targets</a>.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>Support for additional platforms beyond the NXP i.MX 8M Plus will be available soon.  Let us know which platform you'd like to see supported next!</p>
 </div>
-<p>In this Quickstart guide, you have created your EdgeFirst Studio Account, logged in to EdgeFirst Studio, and created your very first project and ran your first experiment by capturing data, annotating data, training a detection model, validating the trained model, and deployed the model back into the PC for inference. </p>
+<p>If you have an <a href="platforms/">EdgeFirst Platform</a> such as the Maivin or Raivin then you can deploy and run the model using the bundled EdgeFirst Middleware by following the tutorial <a href="models/modelpack/deployment/maivin/">Deploying to EdgeFirst Platforms</a>.</p>
+<p>In this Quickstart guide, you have created your EdgeFirst Studio Account, logged in to EdgeFirst Studio, and created your very first project and ran your first experiment by capturing images and videos, annotating datasets, training a Vision model, validating the trained model, and deploying the model back into the PC, EdgeFirst Plaform, or the i.MX 8M Plus EVK. </p>
 <h2 id="next-steps">Next Steps</h2>
-<p>For these next steps, it is recommended for new users to be familiar with the concepts and UI elements in EdgeFirst Studio as described in the <a href="getting_started/studio/">EdgeFirst Studio: Overview</a>.  Next, users are invited to follow along other various <a href="getting_started/workflows/">User Workflows</a> that are tailored towards various hardware requirements and resources available to the user.</p>
+<p>For these next steps, it is recommended to be familiar with the concepts and UI elements in EdgeFirst Studio as described in the <a href="getting_started/studio/">EdgeFirst Studio: Overview</a>.  Next, users are invited to follow along other various <a href="getting_started/workflows/">User Workflows</a> that are tailored towards various hardware requirements and resources available to the user.</p>
 <div class="admonition tip">
 <p class="admonition-title">Need Help?</p>
 <p>📬 Have questions or ran into an issue?<br />

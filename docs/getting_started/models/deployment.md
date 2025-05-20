@@ -6,11 +6,11 @@ We provide support for model deployment on various platforms.  Deploying ModelPa
 
 We provide examples and tutorials for deploying ModelPack on various platforms.  
 
-1. [Deploying in the PC](../../models/modelpack/deployment/pc.md)
-2. [Deploying in the EVK](../../models/modelpack/deployment/evk.md)
-3. Deploying in the Nvidia Jetson (*coming soon*) 
-4. [Deploying in the Maivin](../../models/modelpack/deployment/maivin.md)
+1. [Deploying to the PC](../../models/modelpack/deployment/pc.md)
+2. [Deploying to the EVK](../../models/modelpack/deployment/evk.md)
+3. Deploying to the Nvidia Jetson (*coming soon*) 
+4. [Deploying to the Maivin](../../models/modelpack/deployment/maivin.md)
 
 ## Fusion
 
-1. [Deploying in the Raivin](../../models/fusion/deployment/raivin.md)
+1. [Deploying to the Raivin](../../models/fusion/deployment/raivin.md)

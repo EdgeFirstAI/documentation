@@ -1,4 +1,4 @@
-# Deploying in the PC
+# Deploying to the PC
 
 In this tutorial, we are going to give you the tools needed to run Vision models on a PC for object detection, segmentation, or multitask allowing you to build your own applications in just a few lines of code!
 

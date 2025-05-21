@@ -1364,29 +1364,6 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../datasets/tutorials/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    Dataset Tutorials
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
       <a href="../../../datasets/format/" class="md-nav__link">
         
   
@@ -1421,6 +1398,145 @@
   
 
       </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_4" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../datasets/tutorials/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    Dataset Tutorials
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_4_4" id="__nav_4_4_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_4">
+            <span class="md-nav__icon md-icon"></span>
+            Dataset Tutorials
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../datasets/tutorials/capture/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Dataset Capture
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../datasets/tutorials/annotations/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Dataset Annotations
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../datasets/tutorials/management/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Dataset Management
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
     </li>
   
 
@@ -3974,28 +4090,25 @@ in EdgeFirst Studio from a PC, training and validating models, and then finally 
 <p>If you have an EdgeFirst Platform, please proceed to step 1. Otherwise, proceed to step 5 for using a provided public dataset. However, feel free to follow along all the steps laid out to become familiar with the workflow.</p>
 <h3 id="1-record-data">1. Record Data</h3>
 <p>When starting from scratch, it is common to start recording your own data to build your own dataset. This step requires an <a href="../../../platforms/quickstart/">EdgeFirst Platform</a> for recording data. However, we also provide <a href="../../studio/#datasets">Public Datasets</a> for users without an EdgeFirst Platform. </p>
-<p>For instructions on capturing and recording data, refer to the <a href="../../../datasets/tutorials/#capturerecord-data">Capture/Record Data Tutorial</a>.</p>
+<p>For instructions on capturing and recording data, refer to the <a href="../../../datasets/tutorials/capture/#record-mcaps">Capture/Record Data Tutorial</a>.</p>
 <h3 id="2-download-recorded-data">2. Download Recorded Data</h3>
 <p>Once data is recorded which is stored as an MCAP file, download the MCAP file.</p>
-<p>For instructions on downloading the recorded MCAP file, refer to the <a href="../../../datasets/tutorials/#download-recorded-data">Download Captured Data Tutorial</a>.</p>
+<p>For instructions on downloading the recorded MCAP file, refer to the <a href="../../../datasets/tutorials/capture/#download-recorded-mcaps">Download Captured Data Tutorial</a>.</p>
 <h3 id="3-upload-recorded-data-to-edgefirst-studio">3. Upload Recorded Data to EdgeFirst Studio</h3>
 <p>Once an MCAP file has been downloaded, upload the MCAP recording to EdgeFirst Studio.</p>
-<p>For instructions on uploading the recorded MCAP file to EdgeFirst Studio, refer to the <a href="../../../datasets/tutorials/#upload-recorded-data-to-edgefirst-studio">Upload Recorded Data Tutorial</a>.</p>
+<p>For instructions on uploading the recorded MCAP file to EdgeFirst Studio, refer to the <a href="../../../datasets/tutorials/management/#upload-mcaps">Upload Recorded Data Tutorial</a>.</p>
 <h3 id="4-annotate-dataset">4. Annotate Dataset</h3>
-<p>Once an MCAP recording has been uploaded to EdgeFirst Studio, we can then run auto-annotations on the recording to reduce the effort needed from the user. Otherwise, the user can manually annotate the dataset.</p>
-<p>For instructions on annotating the uploaded data, refer to the <a href="../../../datasets/tutorials/#data-dataset-annotating-data">Annotating Data Tutorial</a>.</p>
+<p>Once an MCAP recording has been uploaded to EdgeFirst Studio, we can then run <a href="../../../datasets/tutorials/annotations/#auto-annotations-via-snapshot">auto-annotations</a> on the recording to reduce the effort needed from the user. Otherwise, the user can manually annotate <a href="../../../datasets/tutorials/annotations/#audit-2d-annotations">2D</a> or <a href="../../../datasets/tutorials/annotations/#audit-3d-annotations">3D</a> annotations on the dataset.</p>
 <h3 id="5-combine-multiple-datasets">5. Combine Multiple Datasets</h3>
-<p>This step utilizes the <a href="../../../datasets/tutorials/#copying-datasets">copy dataset feature</a> in EdgeFirst Studio. This feature
+<p>This step utilizes the <a href="../../../datasets/tutorials/management/#copying-datasets">copy dataset feature</a> in EdgeFirst Studio. This feature
 allows copying of <em>read-only</em> datasets into your own dataset to give write permissions. This feature can also copy multiple datasets into a single container to expand the overall dataset. </p>
-<p>For users that do not have an EdgeFirst Platform, but would like to use the public <em>read-only</em> datasets provided, follow the instructions for <a href="../../../datasets/tutorials/#copying-datasets">Copying Datasets</a> into
+<p>For users that do not have an EdgeFirst Platform, but would like to use the public <em>read-only</em> datasets provided, follow the instructions for <a href="../../../datasets/tutorials/management/#copying-datasets">Copying Datasets</a> into
 a dataset container with write access.</p>
 <p>For users that followed steps 1-4 and would like to expand their dataset, follow the
-instructions for <a href="../../../datasets/tutorials/#combining-datasets">Combining Datasets</a></p>
+instructions for <a href="../../../datasets/tutorials/management/#combining-datasets">Combining Datasets</a></p>
 <h3 id="6-split-dataset">6. Split Dataset</h3>
-<p>Before training your model, it is highly suggested to split your dataset into
-dedicated training and validation groups. This intention is to reserve samples 
-only for training and samples only for validation.</p>
-<p>For instructions on splitting the dataset in train and validation groups, refer to the <a href="../../../datasets/tutorials/#splitting-datasets">Splitting Datasets Tutorial</a></p>
+<p>Before training your model, it is highly suggested to split your dataset into dedicated training and validation groups. This intention is to reserve samples only for training and samples only for validation.</p>
+<p>For instructions on splitting the dataset in train and validation groups, refer to the <a href="../../../datasets/tutorials/management/#splitting-datasets">Splitting Datasets Tutorial</a></p>
 <h3 id="7-train-model">7. Train Model</h3>
 <p>Once you have a proper dataset that is fully annotated and split into training and validation groups, you can now start training your model.</p>
 <p>Since the dataset provided in the demo contains 2D annotations (bounding boxes and segmentation masks) we can train a Vision model using ModelPack. For instructions to train a Vision model, please refer to the <a href="../../../models/modelpack/training/">Training ModelPack Tutorial</a>. For instructions to train a Fusion model, please refer to the <a href="../../../models/fusion/training/">Training Fusion Tutorial</a>.</p>

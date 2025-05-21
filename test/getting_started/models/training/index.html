@@ -1301,29 +1301,6 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../datasets/tutorials/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    Dataset Tutorials
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
       <a href="../../../datasets/format/" class="md-nav__link">
         
   
@@ -1358,6 +1335,145 @@
   
 
       </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_4" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../datasets/tutorials/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    Dataset Tutorials
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_4_4" id="__nav_4_4_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_4">
+            <span class="md-nav__icon md-icon"></span>
+            Dataset Tutorials
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../datasets/tutorials/capture/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Dataset Capture
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../datasets/tutorials/annotations/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Dataset Annotations
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../datasets/tutorials/management/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Dataset Management
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
     </li>
   
 
@@ -3836,11 +3952,12 @@
 
 
 <h1 id="model-training">Model Training</h1>
-<p>EdgeFirst Studio supports training of <em>Vision</em> models using ModelPack tasked for image object detection.  EdgeFirst Studio also supports training of "Fusion" models tasked for detecting the object's position in the field.  In this stage, we use annotated datasets with 2D annotations (segmentation masks and 2D bounding boxes) for training ModelPack or 3D annotations (3D bounding boxes) for training Fusion. </p>
+<p>EdgeFirst Studio supports training of <em>Vision</em> models using ModelPack tasked for image object detection.  EdgeFirst Studio also supports training of "Fusion" models tasked for detecting the object's position in the field.  In this stage, datasets with 2D annotations (segmentation masks and 2D bounding boxes) are used for training ModelPack and 3D annotations (3D bounding boxes) are used for training Fusion. </p>
+<p><a href="../../../models/augmentations/">Vision augmentation techniques</a> are also applied during training to enhance the model's performance in a variety of conditions and to increase the number of training samples. </p>
 <h2 id="modelpack">ModelPack</h2>
-<p>For training <em>Vision</em> models tasked with detecting objects in an image, follow tutorials for <a href="../../../models/modelpack/training/">Training ModelPack</a>.  EdgeFirst Studio supports <em>Vision</em> models tasked with performing object detection via bounding boxes, segmentation masks, or multi-task (bounding boxes and segmentation masks).</p>
+<p>For training <em>Vision</em> models tasked with detecting objects in an image, follow tutorials for <a href="../../../models/modelpack/training/">Training ModelPack</a> in EdgeFirst Studio.  EdgeFirst Studio supports <em>Vision</em> models tasked with performing object detection via bounding boxes, segmentation masks, or multi-task (bounding boxes and segmentation masks).</p>
 <h2 id="fusion">Fusion</h2>
-<p>For training <em>Spatial Perception Models</em> tasked with detecting the position of the object in the field, follow tutorials for <a href="../../../models/fusion/training/">Training Fusion</a>.  EdgeFirst Studio trains these models by fusing sensor outputs (Camera or Radar) as model inputs. These models are better known as <em>Fusion</em> models.  EdgeFirst Studio provides options for toggling these sensors on/off at the start of training.  However, by default training uses both the Camera and the Radar outputs.</p>
+<p>For training <em>Spatial Perception Models</em> tasked with detecting the position of the object in the field, follow tutorials for <a href="../../../models/fusion/training/">Training Fusion Models</a> in EdgeFirst Studio.  EdgeFirst Studio trains these models by fusing sensor outputs (Camera or Radar) as model inputs.  These models are better known as <em>Fusion</em> models.  EdgeFirst Studio provides options for toggling these sensors on/off at the start of training.  However, by default training uses both the Camera and the Radar outputs.</p>
 <div style="text-align: center;">
     <iframe width="560" height="315" src="https://www.youtube.com/embed/Q8uiYJb1HJ4" title="EdgeFirst Training" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 </div>

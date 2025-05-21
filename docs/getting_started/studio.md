@@ -47,7 +47,7 @@ This hierarchy describes the span of deletion of the project attributes.  When a
 
 ### Datasets
 
-From the "Projects" page, we can click on the "Datasets" ![Dataset Button](../assets/datasets_button.png) button to see the three datasets associated with this project: "COCO", "Ravin Ultra Short 2025.03", and "CARDS".  These public datasets are readily available for user onboarding and trials, but these datasets are **READ-ONLY** datasets.  By default, users can [view the datasets](../datasets/tutorials.md#viewing-datasets).  Otherwise, in order to have full access to the dataset, users **MUST** [copy the dataset](../datasets/tutorials.md#copying-datasets) into the project they've created. 
+From the "Projects" page, we can click on the "Datasets" ![Dataset Button](../assets/datasets_button.png) button to see the three datasets associated with this project: "COCO", "Ravin Ultra Short 2025.03", and "CARDS".  These public datasets are readily available for user onboarding and trials, but these datasets are **READ-ONLY** datasets.  By default, users can [view the datasets](../datasets/tutorials/management.md#viewing-datasets).  Otherwise, in order to have full access to the dataset, users **MUST** [copy the dataset](../datasets/tutorials/management.md#copying-datasets) into the project they've created. 
 
 <figure markdown="span">
 ![Public Datasets](assets/public-datasets.jpg){ align=center }
@@ -63,7 +63,7 @@ The following figure breaks down the elements of a "Dataset" card.
 <figcaption>Dataset Card UI Breakdown</figcaption>
 </figure>
 
-For an in-depth tutorial for managing datasets in EdgeFirst Studio from capture and annotation to export and deployment, see our [Dataset Tutorials](../datasets/tutorials.md).
+For an in-depth tutorial for managing datasets in EdgeFirst Studio from capture and annotation to export and deployment, see our [Dataset Tutorials](../datasets/tutorials/index.md).
 
 ### Model Experiments
 

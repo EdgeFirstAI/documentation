@@ -151,7 +151,7 @@ Once it completes, you should see the number of images in the dataset increase b
 <figcaption>Imported Images</figcaption>
 </figure>
 
-Next [view the gallery of the dataset](../../datasets/tutorials.md#viewing-datasets) to confirm all the captured data has been uploaded. You should see the imported video file and images in the gallery. Note that videos appear as sequences with a play button overlay on the preview thumbnail.
+Next [view the gallery of the dataset](../../datasets/tutorials/management.md#viewing-datasets) to confirm all the captured data has been uploaded. You should see the imported video file and images in the gallery. Note that videos appear as sequences with a play button overlay on the preview thumbnail.
 
 <figure markdown="span">
 ![Coffee Cup Gallery](../assets/workflows/pc-dataset-gallery.jpg){ align=center }
@@ -162,7 +162,7 @@ Next [view the gallery of the dataset](../../datasets/tutorials.md#viewing-datas
 
     We recommend using videos rather than individual images. This is because Automatic Ground Truth Generation (AGTG) leverages SAM-2 with tracking information which only needs a single annotation to annotate all frames. However, individual images requires the annotation of each image separately.
 
-Once all the captured data has been uploaded to the dataset container, we will now assign groups to the data to split the data into training and validation sets. Follow the [tutorial for creating groups](../../datasets/tutorials.md#splitting-datasets) with an 80% partition to training and 20% partition to validation. The final outcome for the groups should look as follows.
+Once all the captured data has been uploaded to the dataset container, we will now assign groups to the data to split the data into training and validation sets. Follow the [tutorial for creating groups](../../datasets/tutorials/management.md#splitting-datasets) with an 80% partition to training and 20% partition to validation. The final outcome for the groups should look as follows.
 
 <figure markdown="span">
 ![Dataset Groups](../assets/workflows/dataset-groups.jpg){ align=center }
@@ -173,7 +173,7 @@ Now that we have imported some data into EdgeFirst Studio and have split the cap
 
 ## 4. Annotate Data in EdgeFirst Studio
 
-In this step, we will be using a personal computer with access to Wifi to [log in][login] to EdgeFirst Studio for annotating the captured data. When annotating the dataset, we will be using AI assistance to annotate the ground truth to perform auto segmentation and bounding boxes on the objects in the frame. Once logged in to EdgeFirst Studio, follow the [Auto Annotations](../../datasets/tutorials.md#auto-annotations-via-gallery) instructions to auto-annotate the video sequence that was imported. Otherwise, follow the [Audit 2D Annotations](../../datasets/tutorials.md#audit-2d-annotations) instructions for annotating the images captured.
+In this step, we will be using a personal computer with access to Wifi to [log in][login] to EdgeFirst Studio for annotating the captured data. When annotating the dataset, we will be using AI assistance to annotate the ground truth to perform auto segmentation and bounding boxes on the objects in the frame. Once logged in to EdgeFirst Studio, follow the [Auto Annotations](../../datasets/tutorials/annotations.md#auto-annotations-via-gallery) instructions to auto-annotate the video sequence that was imported. Otherwise, follow the [Audit 2D Annotations](../../datasets/tutorials/annotations.md#audit-2d-annotations) instructions for annotating the images captured.
 
 A complete annotation will have a segmentation mask and a bounding box for each object in the frame. Shown below is an example. 
 

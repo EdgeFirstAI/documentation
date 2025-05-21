@@ -1,6 +1,12 @@
 # Deploying to the Maivin
 
-Now that you have [validated your Vision Model](../validation.md), this page will provide a walk-through for deploying Vision models in a [Maivin Platform](../../../platforms/index.md).  This page will showcase two types of deployments.
+Now that you have [validated your Vision Model](../validation.md), this guide will walk you through deploying Vision models in a [Maivin Platform](../../../platforms/index.md).  
+
+**Maivin 1** | **Maivin 2** 
+:------------------:|:------------------:
+![Maivin 1](../../../platforms/assets/maivin-1.png) | ![Maivin 2](../../../platforms/assets/maivin-2.png) 
+
+This guide will showcase two methods of deploying the model.
 
 1. [Live View (Segmentation App)](#live-view-segmentation-app)
 2. [MCAP Recording](#mcap-recording)

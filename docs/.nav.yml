@@ -30,9 +30,13 @@ nav:
     #   - studio/dataio.md
   - Datasets:
       - datasets/index.md
-      - datasets/tutorials.md
       - datasets/format.md
       - datasets/structure.md
+      - Dataset Tutorials:
+          - datasets/tutorials/index.md
+          - datasets/tutorials/capture.md
+          - datasets/tutorials/annotations.md
+          - datasets/tutorials/management.md
       - datasets/zoo.md
   - Models:
       - models/index.md

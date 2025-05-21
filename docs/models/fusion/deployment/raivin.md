@@ -1,6 +1,12 @@
 # Deploying to the Raivin
 
-Now that you have [validated your Fusion model](../validation.md), this page will provide a walk-through for deploying Fusion models in a [Raivin Platform](../../../platforms/index.md).  This page will showcase two types of deployments.
+Now that you have [validated your Fusion model](../validation.md), this guide will walk you through deploying Fusion models in a [Raivin Platform](../../../platforms/index.md).  
+
+<figure markdown="span">
+![Raivin](../../../platforms/assets/raivin.png){ align=center }
+</figure>
+
+This guide will showcase two methods of deploying the model.
 
 1. [Live View (Segmentation App)](#live-view-segmentation-app)
 2. [MCAP Recording](#mcap-recording)
@@ -69,9 +75,9 @@ The `download-artifact` expects three arguments.
 
 Please see [EdgeFirst Client](../../../perception/studio.md) For more information on using the client via command line.
 
-## Visit the WebUI Service
+## Visit the Web UI Service
 
-Visit the WebUI service by entering the URL `https://<hostname>/` in your browser.
+Visit the Web UI service by entering the URL `https://<hostname>/` in your browser.
 
 !!! note
     Replace `<hostname>` with the hostname of your device.
@@ -79,15 +85,15 @@ Visit the WebUI service by entering the URL `https://<hostname>/` in your browse
 You should be greeted with the following page.
 
 <figure markdown="span">
-![WebUI](../../assets/deployment/raivin-webui.jpg){ align=center }
-<figcaption>WebUI</figcaption>
+![Web UI](../../assets/deployment/raivin-webui.jpg){ align=center }
+<figcaption>Web UI</figcaption>
 </figure>
 
 For more information, please see the [Web UI Walkthrough](../../../platforms/walkthrough.md).
 
 ## Update the Model Path
 
-Once you are in the WebUI main page, specify the path to the model in the device.
+Once you are in the Web UI main page, specify the path to the model in the device.
 
 Click the settings icon on the top right corner of the page.
 

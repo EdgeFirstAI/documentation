@@ -77,7 +77,7 @@ Change the name or description of the dataset.
 
 The dataset access control allows dataset resources to be selectively available to different users. 
 
-For more information pease visit [Access Control](../access.md).
+For more information pease visit [Access Control](../user/organization.md#roles).
 
 ### Copy Dataset
 

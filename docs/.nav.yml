@@ -73,6 +73,7 @@ nav:
       - platforms/foxglove.md
       - platforms/advanced_foxglove.md
     - perception/studio.md
+    - perception/launcher.md
     - Topics:
       - perception/topics.md
       - perception/topics/camera.md

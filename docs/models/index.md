@@ -6,7 +6,7 @@ EdgeFirst Studio supports two model architectures: ModelPack and Fusion
 
     ModelPack is a single-sensor (single-input) architecture of a Vision model tasked with detecting objects in an image via bounding boxes, segmentation masks, or both. A Vision model is a type of model that interprets images or videos to perform tasks such as object recognition, image classification, and much more. EdgeFirst Studio supports Vision models tasked with object recognition.
 
-    * [Quick Start Guide](modelpack/quick_start_guide.md)
+    * [Quick Start Guide](modelpack/tutorials/index.md)
     * [Training ModelPack](modelpack/training.md)
     * [Validating ModelPack](modelpack/validation.md)
     * [Deploying ModelPack](../getting_started/models/deployment.md#model-deployment)

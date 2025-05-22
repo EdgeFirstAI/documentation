@@ -47,6 +47,7 @@ nav:
     - ModelPack:
       - models/modelpack/index.md
       - Quick Start Guide:
+        - models/modelpack/tutorials/index.md
         - models/modelpack/tutorials/measurement_tape.md
         - models/modelpack/tutorials/musicbox.md
       - models/modelpack/training.md

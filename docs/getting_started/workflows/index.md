@@ -30,12 +30,13 @@ flowchart LR
     raivin_user([Raivin]):::purple
     raivin_lidar_user([LiDAR]):::coral
 
-    classDef blue fill:#89cff0;
-    classDef teal fill:#17becf;
-    classDef orange fill:#ff7f0e;
-    classDef green fill:#2ca02c;
-    classDef purple fill:#9467bd;
-    classDef coral fill:#ff6f61;
+    classDef blue fill:#d0ecff,font-weight:bold;
+    classDef teal fill:#a2e8ed,font-weight:bold;
+    classDef orange fill:#ffd699,font-weight:bold;
+    classDef green fill:#a9e5bb,font-weight:bold;
+    classDef purple fill:#d6c1f5,font-weight:bold;
+    classDef coral fill:#ffc2b,font-weight:bold;
+    classDef all fill:#f0e6f5,font-weight:bold;
 
     %% Flowchart
     user --> platform
@@ -83,13 +84,13 @@ flowchart LR
     raivin_user([Raivin]):::purple
     raivin_lidar_user([LiDAR]):::coral
 
-    classDef blue fill:#89cff0;
-    classDef teal fill:#17becf;
-    classDef orange fill:#ff7f0e;
-    classDef green fill:#2ca02c;
-    classDef purple fill:#9467bd;
-    classDef coral fill:#ff6f61;
-    classDef all fill:#CBAACB;
+    classDef blue fill:#d0ecff,font-weight:bold;
+    classDef teal fill:#a2e8ed,font-weight:bold;
+    classDef orange fill:#ffd699,font-weight:bold;
+    classDef green fill:#a9e5bb,font-weight:bold;
+    classDef purple fill:#d6c1f5,font-weight:bold;
+    classDef coral fill:#ffc2b,font-weight:bold;
+    classDef all fill:#f0e6f5,font-weight:bold;
 
     %% Hardware Definitions
     raivin_lidar_hardware[Raivin + LiDAR Quickstart]
@@ -139,6 +140,9 @@ flowchart LR
     %% linkStyle 0 stroke:#ff6f61
     %% linkStyle 1 stroke:#ff6f61
 ```
+
+!!! note
+    Labeled arrows suggests that only certain type of users can enter the stages pointed by the arrow.  For example, only Raivin and LiDAR users can "Auto Annotate 3D".
 
 1. [Web Workflow](web.md)
 

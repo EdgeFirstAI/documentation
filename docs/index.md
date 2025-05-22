@@ -1,42 +1,10 @@
 # Getting Started
 
-Welcome to EdgeFirst Studio (formerly Deep View Enterprise)!  Follow this Quickstart for user onboarding from start to finish.
+Welcome to EdgeFirst Studio!  Follow this Quickstart for user onboarding from start to finish.
 
-## Sign Up 
+{!discrete/signup.md!}
 
-1. If you haven't already created an EdgeFirst Studio Account, start by [creating an account][signup].  If you've already created an account, but you [forget your password](studio/access.md#forgot-password), click on the link for instructions to reset your password.
-
-2. When creating your account, enter the required fields denoted by the asterisk (*) and then create your account once completed.
-
-    <figure markdown="span">
-    ![Create a New Account](assets/signup-page.jpg){ align=center }
-    <figcaption>Create a New Account</figcaption>
-    </figure>
-
-3. An email will be sent to verify the email you provided.  Go ahead and click on the link provided to verify your email.
-
-    <figure markdown="span">
-    ![Email Verification](assets/email-verification.jpg){ align=center }
-    <figcaption>Email Verification</figcaption>
-    </figure>
-
-4. Once the email is verified, you can now [login][login] to EdgeFirst Studio.
-
-## Log In
-
-1. When logging in, enter your username and password you specified.  Next click the "Sign In" button to sign in.
-
-    <figure markdown="span">
-    ![Login Page](assets/login-page.jpg){ align=center }
-    <figcaption>Login Page</figcaption>
-    </figure>
-
-2. Once logged in to EdgeFirst Studio, you will be greeted with the following [Projects](./studio/projects.md) page.
-
-    <figure markdown="span">
-    ![Starting Page](assets/studio-from-scratch.jpg){ align=center }
-    <figcaption>Projects Splash Page</figcaption>
-    </figure>
+{!discrete/login.md!}
 
 ## Create Project
 
@@ -287,6 +255,3 @@ For these next steps, it is recommended to be familiar with the concepts and UI 
 !!! tip "Need Help?"
     📬 Have questions or ran into an issue?  
     Feel free to [email our support team](mailto:support@edgefirst.ai) — we’re here to help!
-
-[signup]: https://test.edgefirst.studio/#/signup
-[login]: https://test.edgefirst.studio/#/login

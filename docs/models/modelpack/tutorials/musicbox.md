@@ -169,8 +169,8 @@ Clicking the training card will show the expanded view containing all the logs a
 
 From the available checkpoints, download the **TFLite** model - optimized for embedded devices — and deploy it to the Maivin unit for edge inference.
 
-{!discrete/upload_models.md!}
-{!discrete/deploy_model_service.md!}
+{% include-markdown "discrete/upload_models.md" %}
+{% include-markdown "discrete/deploy_model_service.md" %}
 
 Begin testing the model with the object. If the model does not perform as expected, record a few more minutes of data and repeat the training process. Use this opportunity to identify edge cases and collect additional samples that can help improve the model's performance.
 

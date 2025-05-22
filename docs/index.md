@@ -2,9 +2,9 @@
 
 Welcome to EdgeFirst Studio!  Follow this Quickstart for user onboarding from start to finish.
 
-{!discrete/signup.md!}
+{% include-markdown "discrete/signup.md" %}
 
-{!discrete/login.md!}
+{% include-markdown "discrete/login.md" %}
 
 ## Create Project
 

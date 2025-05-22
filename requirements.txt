@@ -5,4 +5,4 @@ mkdocs-autorefs
 mkdocs-awesome-nav
 mkdocs-material
 mkdocstrings-python
-markdown-include
+mkdocs-include-markdown-plugin

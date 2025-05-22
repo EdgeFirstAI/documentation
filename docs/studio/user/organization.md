@@ -34,9 +34,9 @@ This will bring you to the page that provides input fields to edit the details a
 
 ## Image Limit
 
-Under "Security", you can set a warning if the number of images in your organization exceeds the limit specified.  The storage of images costs credits and increasing volumes of images will incur more costs.  This feature was added to provide warnings that the amount of images stored has exceeded the limit you've specified.  You can find more information under[Billing Information](billing.md).
+Under "Security", you can set a warning if the number of images in your organization exceeds the limit specified.  The storage of images costs credits and increasing volumes of images will incur more costs.  This feature was added to provide warnings that the amount of images stored has exceeded the limit you've specified.  You can find more information under [Billing Information](billing.md).
 
-You can set the image limit warning as shown below.  Once the value has been set, go ahead and click apply to set the limit.  Otherwise, you can click on "Cancel" to abort changes.
+You can set the image limit warning as shown below.  Once the value has been set, go ahead and click "Apply" to set the limit.  Otherwise, you can click on "Cancel" to abort changes.
 
 <figure markdown="span">
 ![Set Image Limit](../assets/user/set-image-limit.jpg){ align=center }
@@ -56,7 +56,7 @@ This section will provide details about the users in your organization.  The fol
 
 1. A user belongs to one organization.
 2. A user cannot change organizations.
-3. An admin user can create accounts for other users in the organization.
+3. An admin user creates the accounts for other users in the organization.
 4. Any user cannot invite other users in different organizations.
 
 The user who signs up is the admin of the organization.  However, this user can also set other users in the organization as admin or other roles.  More information about the roles and permissions of users in the [section below](#roles). 
@@ -70,7 +70,7 @@ You can see the list of all users in your organization by clicking on "User Mana
 <figcaption>User Manager</figcaption>
 </figure>
 
-As an admin user, you can edit the information of each user by clicking the "pencil" ![Pencil Button](../assets/user/edit-user-button.jpg) button next to their profiles.  This will bring the page that allows you to modify the user's profile information.  From this page you can change the first and lastname of the user and their email.  You can also set the user's role or custom permissions.  More information on the [user's roles](#roles) are provided in the section below.  You can either click "Apply" to save the changes or "Cancel" to abort any changes.  Lastly, you can also change the user's password. 
+As an admin user, you can edit the information of each user by clicking the "pencil" ![Pencil Button](../assets/user/edit-user-button.jpg) button next to their profiles.  This will bring the page that allows you to modify the user's profile information.  From this page you can change the first and last name of the user and their email.  You can also set the user's role or custom permissions.  More information on the [user's roles](#roles) are provided in the section below.  You can either click "Apply" to save the changes or "Cancel" to abort any changes.  Lastly, you can also change the user's password. 
 
 <figure markdown="span">
 ![Modify User Information](../assets/user/modify-user-information.jpg){ align=center }
@@ -79,7 +79,7 @@ As an admin user, you can edit the information of each user by clicking the "pen
 
 ### Roles
 
-The roles available that can be designated for each user in the organization would be "Admin", "Audit & Label", and "Custom Permissions".
+The roles available that can be designated to each user in the organization would be "Admin", "Audit & Label", and "Custom Permissions".
 
 <figure markdown="span">
 ![User Roles](../assets/user/user-roles.jpg){ align=center }
@@ -88,9 +88,9 @@ The roles available that can be designated for each user in the organization wou
 
 The "Admin" user has read and write access to all projects, datasets, and model experiments in the organization.  The admin can also add new users, remove existing users, or edit user information in the organization.  This user has full access to the organization.
 
-The "Audit & Label" user has limited access to EdgeFirst Studio.  The only features available to this type of user are auditing and labelling in the task board.
+The "Audit & Label" user has limited access to EdgeFirst Studio.  The only features available to this type of user are auditing and labelling datasets using the task board.
 
-The user with "Custom Permissions" has specific permissions on different elements of EdgeFirst Studio.  These elements are "Projects", "Datasets", "Trainer", and "Task Board".  You can set "Read-Only" permissions to allow users for view-only.  The permission for "Write" allows the users to make changes to the elements such as creating their own datasets or modifying current datasets.  You can find more information on these elements under the [EdgeFirst Studio: Overview](../../getting_started/studio.md)
+The user with "Custom Permissions" has specific permissions on different elements of EdgeFirst Studio.  These elements are "Projects", "Datasets", "Trainer", and "Task Board".  You can set "Read-Only" permissions to allow users for view-only.  The permission for "Write" allows the users to make changes to the elements such as creating their own datasets or modifying current datasets.  You can find more information on these elements under the [EdgeFirst Studio: Overview](../../getting_started/studio.md).
 
 ### New Users
 

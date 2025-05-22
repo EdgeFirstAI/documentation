@@ -933,13 +933,75 @@
   
   
   
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../../studio/user/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    User Management
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_3_2" id="__nav_3_2_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_2">
+            <span class="md-nav__icon md-icon"></span>
+            User Management
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
     <li class="md-nav__item">
-      <a href="../../../../studio/navigation/" class="md-nav__link">
+      <a href="../../../../studio/user/profile/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
-    Navigating EdgeFirst Studio
+    User Profile
     
   </span>
   
@@ -957,12 +1019,66 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../studio/access/" class="md-nav__link">
+      <a href="../../../../studio/user/organization/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
-    Access Management
+    Organization Management
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../studio/user/billing/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Billing Information
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../studio/navigation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Navigating EdgeFirst Studio
     
   </span>
   
@@ -4253,12 +4369,12 @@ At the end of the training process, ModelPack quantizes the model and publishes 
 <p><img alt="Expanded View" src="../assets/expanded-view.png" /></p>
 <p>From the available checkpoints, download the <strong>TFLite</strong> model - optimized for embedded devices — and deploy it to the Maivin unit for edge inference.</p>
 <h2 id="uploading-models-to-the-raivin">Uploading Models to the Raivin</h2>
-<p>In the <a href="/docs/platforms/ssh.md#secure-copy">SCP section in the SSH Tutorial</a>, files can be uploaded to the Raivin using the command:
+<p>In the <a href="/platforms/ssh#secure-copy">SCP section in the SSH Tutorial</a>, files can be uploaded to the Raivin using the command:
 <div class="highlight"><pre><span></span><code>scp<span class="w"> </span>input_file<span class="w"> </span>torizon@verdin-imx8mp-XXXXXXX:.
 </code></pre></div></p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>The above command assumes you have an SSH client, such as OpenSSH, installed.  Please review the <a href="/docs/platforms/ssh.md">SSH documentation</a> to confirm.</p>
+<p>The above command assumes you have an SSH client, such as OpenSSH, installed.  Please review the <a href="/platforms/ssh/">SSH documentation</a> to confirm.</p>
 </div>
 <p>For the following examples, we will have the Fusion model of <code>fusion.tflite</code> and the ModelPack model <code>modelpack.rtm</code> that we want to upload to target device <code>verdin-imx8mp-07130049</code>.</p>
 <p>First, we need to upload the files to the Raivin target using SCP:
@@ -4273,12 +4389,12 @@ These files will be the <code>/home/torizon</code> directory, so their absolute 
 <h2 id="deploying-a-new-model-to-the-model-service">Deploying a New Model to the Model Service</h2>
 <p>There are two ways to deploy a new, 2D model to the Raivin's Model Service: the Web UI Interface or via the command-line.</p>
 <h3 id="from-the-raivin-web-ui">From the Raivin Web UI</h3>
-<p>From the <a href="/docs/platforms/configuration.md#model-configuration">Model Service Configuration page</a>, enter the absolute filename <code>/home/torizon/modelpack.rtm</code> in the "MODEL" text-box.  Also, confirm the "Draw Boxes" check box is enabled, as the current trainer only supports 2D Box detection.  Hit the "Save Configuration" box and continue on.</p>
+<p>From the <a href="/platforms/configuration#model-configuration">Model Service Configuration page</a>, enter the absolute filename <code>/home/torizon/modelpack.rtm</code> in the "MODEL" text-box.  Also, confirm the "Draw Boxes" check box is enabled, as the current trainer only supports 2D Box detection.  Hit the "Save Configuration" box and continue on.</p>
 <p><img alt="Model Configuration Page" src="/assets/model_location_webui.png" /></p>
 <p>Remember to save the configurations at the end of the process. The  Model Configuration page can be accessed via the following url:
 <code>https://verdin-imx8mp-xxxxx/config/model</code></p>
 <h3 id="manual-model-deployment">Manual Model Deployment</h3>
-<p>In case the manual deployment is needed, you need to connect to the device via <a href="/docs/platforms/ssh.md">SSH</a>:</p>
+<p>In case the manual deployment is needed, you need to connect to the device via <a href="/platforms/ssh/">SSH</a>:</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>ssh<span class="w"> </span>torizon@verdin-imx8mp-15141030
 </code></pre></div>
 <p>and edit the model parameters in <code>/etc/default/model</code></p>
@@ -4292,7 +4408,7 @@ $<span class="w"> </span>sudo<span class="w"> </span>systemctl<span class="w"> <
 <p class="admonition-title">Note</p>
 <p>Rember to use <strong>sudo</strong> to start and stop model services</p>
 </div>
-<p>Now the model is running, open the Raivin's WebUI, go to the <a href="/docs/platforms/walkthrough.md#the-segmentation-page">Segmentation Page</a>, and check the camera to see the model detection the object.<br />
+<p>Now the model is running, open the Raivin's WebUI, go to the <a href="/platforms/walkthrough#the-segmentation-page">Segmentation Page</a>, and check the camera to see the model detection the object.<br />
 <img alt="Deployment Results" src="/assets/deployment-results.png" /></p>
 <p>Begin testing the model with the object. If the model does not perform as expected, record a few more minutes of data and repeat the training process. Use this opportunity to identify edge cases and collect additional samples that can help improve the model's performance.</p>
 <h2 id="conclusion">Conclusion</h2>

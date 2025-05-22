@@ -1,115 +1,123 @@
 nav:
   - Home: https://stage.edgefirst.studio
   - Getting Started:
-      - index.md
-      - getting_started/studio.md
-      - User Workflows:
-        - getting_started/workflows/index.md
-        - getting_started/workflows/web.md
-        - getting_started/workflows/edgefirst.md
-      # - getting_started/pricing.md
-      - getting_started/datasets.md
-      - Model Tutorials:
-        - getting_started/models/index.md
-        - getting_started/models/training.md
-        - getting_started/models/validation.md
-        - getting_started/models/deployment.md
-      - getting_started/perception.md
-      - getting_started/platforms.md
+    - index.md
+    - getting_started/studio.md
+    - User Workflows:
+      - getting_started/workflows/index.md
+      - getting_started/workflows/web.md
+      - getting_started/workflows/edgefirst.md
+    # - getting_started/pricing.md
+    - getting_started/datasets.md
+    - Model Tutorials:
+      - getting_started/models/index.md
+      - getting_started/models/training.md
+      - getting_started/models/validation.md
+      - getting_started/models/deployment.md
+    - getting_started/perception.md
+    - getting_started/platforms.md
   - Studio:
-      - studio/index.md
-      - studio/navigation.md
-      - studio/access.md
-      - studio/projects.md
-      - Datasets:
-          - studio/datasets/index.md
-          - studio/datasets/gallery.md
-          - studio/datasets/annotations.md
-      - studio/agtg.md
-      - studio/snapshots.md
-    #   - studio/dataio.md
+    - studio/index.md
+    - User Management:
+      - studio/user/index.md
+      - studio/user/profile.md
+      - studio/user/organization.md
+      - studio/user/billing.md
+    - studio/navigation.md
+    - studio/projects.md
+    - Datasets:
+      - studio/datasets/index.md
+      - studio/datasets/gallery.md
+      - studio/datasets/annotations.md
+    - studio/agtg.md
+    - studio/snapshots.md
+#   - studio/dataio.md
   - Datasets:
-      - datasets/index.md
-      - datasets/tutorials.md
-      - datasets/format.md
-      - datasets/structure.md
-      - datasets/zoo.md
+    - datasets/index.md
+    - datasets/format.md
+    - datasets/structure.md
+    - Dataset Tutorials:
+      - datasets/tutorials/index.md
+      - datasets/tutorials/capture.md
+      - datasets/tutorials/annotations.md
+      - datasets/tutorials/management.md
+    - datasets/zoo.md
   - Models:
-      - models/index.md
-      - ModelPack:
-          - models/modelpack/index.md
-          - Quick Start Guide:
-                - models/modelpack/tutorials/measurement_tape.md
-                - models/modelpack/tutorials/musicbox.md
-          - models/modelpack/training.md
-          - models/modelpack/validation.md
-          - Deploying ModelPack:
-             - models/modelpack/deployment/pc.md
-             - models/modelpack/deployment/evk.md
-             - models/modelpack/deployment/maivin.md
-      - Fusion:
-          - models/fusion/index.md
-          - models/fusion/training.md
-          - models/fusion/validation.md
-          - Deploying Fusion:
-             - models/fusion/deployment/raivin.md
-      - models/augmentations.md
-      - models/metrics.md
+    - models/index.md
+    - ModelPack:
+      - models/modelpack/index.md
+      - Quick Start Guide:
+        - models/modelpack/tutorials/measurement_tape.md
+        - models/modelpack/tutorials/musicbox.md
+      - models/modelpack/training.md
+      - models/modelpack/validation.md
+      - Deploying ModelPack:
+        - models/modelpack/deployment/pc.md
+        - models/modelpack/deployment/evk.md
+        - models/modelpack/deployment/maivin.md
+    - Fusion:
+      - models/fusion/index.md
+      - models/fusion/training.md
+      - models/fusion/validation.md
+      - Deploying Fusion:
+        - models/fusion/deployment/raivin.md
+    - models/augmentations.md
+    - models/metrics.md
   - Perception:
-      - perception/index.md
-      - Dataset Collection Middleware:
-          - platforms/recording.md
-          - platforms/replay.md
-          - platforms/publishing.md
-          - platforms/foxglove.md
-          - platforms/advanced_foxglove.md
-      - perception/studio.md
-      - Topics:
-          - perception/topics.md
-          - perception/topics/camera.md
-          - perception/topics/fusion.md
-          - perception/topics/imu.md
-          - perception/topics/lidar.md
-          - perception/topics/model.md
-          - perception/topics/navsat.md
-          - perception/topics/radar.md
-      - Developer Guide:
-          - perception/dev.md
-          - Examples:
-            - perception/dev/examples/camera.md
-            - perception/dev/examples/fusion.md
-            - perception/dev/examples/gps.md
-            - perception/dev/examples/imu.md
-            - perception/dev/examples/lidar.md
-            - perception/dev/examples/model.md
-            - perception/dev/examples/pcd.md
-            - perception/dev/examples/radar.md
-      - API Reference:
-          - perception/api.md
-          - perception/api/edgefirst_msgs.md
-          - perception/api/foxglove_msgs.md
-          - perception/api/geometry_msgs.md
-          - perception/api/nav_msgs.md
-          - perception/api/sensor_msgs.md
-          - perception/api/std_msgs.md
-          - perception/api/builtin_interfaces.md
-          - perception/api/studio.md
+    - perception/index.md
+    - Dataset Collection Middleware:
+      - platforms/recording.md
+      - platforms/replay.md
+      - platforms/publishing.md
+      - platforms/foxglove.md
+      - platforms/advanced_foxglove.md
+    - perception/studio.md
+    - Topics:
+      - perception/topics.md
+      - perception/topics/camera.md
+      - perception/topics/fusion.md
+      - perception/topics/imu.md
+      - perception/topics/lidar.md
+      - perception/topics/model.md
+      - perception/topics/navsat.md
+      - perception/topics/radar.md
+    - Developer Guide:
+      - perception/dev.md
+      - Examples:
+        - perception/dev/examples/camera.md
+        - perception/dev/examples/fusion.md
+        - perception/dev/examples/gps.md
+        - perception/dev/examples/imu.md
+        - perception/dev/examples/lidar.md
+        - perception/dev/examples/model.md
+        - perception/dev/examples/pcd.md
+        - perception/dev/examples/radar.md
+    - API Reference:
+      - perception/api.md
+      - perception/api/edgefirst_msgs.md
+      - perception/api/foxglove_msgs.md
+      - perception/api/geometry_msgs.md
+      - perception/api/nav_msgs.md
+      - perception/api/sensor_msgs.md
+      - perception/api/std_msgs.md
+      - perception/api/builtin_interfaces.md
+      - perception/api/studio.md
   - Platforms:
-      - platforms/index.md
-      - Getting Started:
-        - platforms/quickstart.md
-        - platforms/walkthrough.md
-        - platforms/architecture.md
-      - Hardware:
-        - platforms/hardware.md
-        - platforms/radar.md
-        - platforms/lidar.md
-      - Software:
-        - platforms/configuration.md
-        - platforms/model_uploads.md
-        - platforms/updates.md
-        - platforms/release_notes.md
-        - platforms/issues.md
-      - Networking:
-        - platforms/networking.md
-        - platforms/ssh.md
+    - platforms/index.md
+    - Getting Started:
+      - platforms/quickstart.md
+      - platforms/walkthrough.md
+      - platforms/architecture.md
+    - Hardware:
+      - platforms/hardware.md
+      - platforms/radar.md
+      - platforms/lidar.md
+    - Software:
+      - platforms/configuration.md
+      - platforms/model_uploads.md
+      - platforms/updates.md
+      - platforms/release_notes.md
+      - platforms/issues.md
+    - Networking:
+      - platforms/networking.md
+      - platforms/ssh.md

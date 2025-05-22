@@ -35,4 +35,4 @@ The *Projects Dashboard* is the main page of the portal which organizes data int
 
 Project access control allows project resources to be selectively available to different users. 
 
-For more information please visit [Access Control](access.md).
+For more information please visit [Access Control](user/organization.md#roles).

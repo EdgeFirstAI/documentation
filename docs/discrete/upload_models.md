@@ -1,10 +1,10 @@
 # Uploading Models to the Raivin
-In the [SCP section in the SSH Tutorial](/docs/platforms/ssh.md#secure-copy), files can be uploaded to the Raivin using the command:
+In the [SCP section in the SSH Tutorial](/platforms/ssh#secure-copy), files can be uploaded to the Raivin using the command:
 ```bash
 scp input_file torizon@verdin-imx8mp-XXXXXXX:.
 ```
 !!! note
-    The above command assumes you have an SSH client, such as OpenSSH, installed.  Please review the [SSH documentation](/docs/platforms/ssh.md) to confirm.
+    The above command assumes you have an SSH client, such as OpenSSH, installed.  Please review the [SSH documentation](/platforms/ssh/) to confirm.
 
 For the following examples, we will have the Fusion model of `fusion.tflite` and the ModelPack model `modelpack.rtm` that we want to upload to target device `verdin-imx8mp-07130049`.
 

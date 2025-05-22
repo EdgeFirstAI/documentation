@@ -1,42 +1,10 @@
 # Getting Started
 
-Welcome to EdgeFirst Studio (formerly Deep View Enterprise)!  Follow this Quickstart for user onboarding from start to finish.
+Welcome to EdgeFirst Studio!  Follow this Quickstart for user onboarding from start to finish.
 
-## Sign Up 
+{!discrete/signup.md!}
 
-1. If you haven't already created an EdgeFirst Studio Account, start by [creating an account][signup].  If you've already created an account, but you [forget your password](studio/access.md#forgot-password), click on the link for instructions to reset your password.
-
-2. When creating your account, enter the required fields denoted by the asterisk (*) and then create your account once completed.
-
-    <figure markdown="span">
-    ![Create a New Account](assets/signup-page.jpg){ align=center }
-    <figcaption>Create a New Account</figcaption>
-    </figure>
-
-3. An email will be sent to verify the email you provided.  Go ahead and click on the link provided to verify your email.
-
-    <figure markdown="span">
-    ![Email Verification](assets/email-verification.jpg){ align=center }
-    <figcaption>Email Verification</figcaption>
-    </figure>
-
-4. Once the email is verified, you can now [login][login] to EdgeFirst Studio.
-
-## Log In
-
-1. When logging in, enter your username and password you specified.  Next click the "Sign In" button to sign in.
-
-    <figure markdown="span">
-    ![Login Page](assets/login-page.jpg){ align=center }
-    <figcaption>Login Page</figcaption>
-    </figure>
-
-2. Once logged in to EdgeFirst Studio, you will be greeted with the following [Projects](./studio/projects.md) page.
-
-    <figure markdown="span">
-    ![Starting Page](assets/studio-from-scratch.jpg){ align=center }
-    <figcaption>Projects Splash Page</figcaption>
-    </figure>
+{!discrete/login.md!}
 
 ## Create Project
 
@@ -215,14 +183,14 @@ Once it completes, you should see the number of images in the dataset increase b
 <figcaption>Imported Images</figcaption>
 </figure>
 
-Next [view the gallery of the dataset](datasets/tutorials.md#viewing-datasets) to confirm all the captured data has been uploaded.  You should see the imported video file and images in the gallery.  Note that videos appear as sequences with a play button overlay on the preview thumbnail.
+Next [view the gallery of the dataset](datasets/tutorials/management.md#viewing-datasets) to confirm all the captured data has been uploaded.  You should see the imported video file and images in the gallery.  Note that videos appear as sequences with a play button overlay on the preview thumbnail.
 
 <figure markdown="span">
 ![Coffee Cup Gallery](getting_started/assets/workflows/pc-dataset-gallery.jpg){ align=center }
 <figcaption>Coffee Cup Gallery</figcaption>
 </figure>
 
-Once all the captured data has been uploaded to the dataset container, you will now assign groups to the data to split the data into training and validation sets.  Follow the [tutorial for creating groups](datasets/tutorials.md#splitting-datasets) with an 80% partition to training and 20% partition to validation.  The final outcome for the groups should look as follows.
+Once all the captured data has been uploaded to the dataset container, you will now assign groups to the data to split the data into training and validation sets.  Follow the [tutorial for creating groups](datasets/tutorials/management.md#splitting-datasets) with an 80% partition to training and 20% partition to validation.  The final outcome for the groups should look as follows.
 
 <figure markdown="span">
 ![Dataset Groups](getting_started/assets/workflows/dataset-groups.jpg){ align=center }
@@ -233,7 +201,7 @@ Now that you have imported captured images or videos into EdgeFirst Studio and h
 
 ## Annotate the Dataset
 
-In this step, you will need a personal computer (PC) with access to Wifi to [log in][login] to EdgeFirst Studio for annotating the dataset.  When annotating the dataset, you will be using AI assistance to reduce the effort by running auto segmentation and bounding boxes on the objects in the frame.  Once logged in to EdgeFirst Studio, follow the [Auto Annotations](datasets/tutorials.md#auto-annotations-via-gallery) instructions to auto-annotate the video sequence that was imported.  Otherwise, follow the [Audit 2D Annotations](datasets/tutorials.md#audit-2d-annotations) instructions to annotate the images captured.
+In this step, you will need a personal computer (PC) with access to Wifi to [log in][login] to EdgeFirst Studio for annotating the dataset.  When annotating the dataset, you will be using AI assistance to reduce the effort by running auto segmentation and bounding boxes on the objects in the frame.  Once logged in to EdgeFirst Studio, follow the [Auto Annotations](datasets/tutorials/annotations.md#auto-annotations-via-gallery) instructions to auto-annotate the video sequence that was imported.  Otherwise, follow the [Audit 2D Annotations](datasets/tutorials/annotations.md#audit-2d-annotations) instructions to annotate the images captured.
 
 A complete annotation will have a segmentation mask and a bounding box for each object in the frame.  Shown below is an example. 
 
@@ -287,6 +255,3 @@ For these next steps, it is recommended to be familiar with the concepts and UI 
 !!! tip "Need Help?"
     📬 Have questions or ran into an issue?  
     Feel free to [email our support team](mailto:support@edgefirst.ai) — we’re here to help!
-
-[signup]: https://stage.edgefirst.studio/#/signup
-[login]: https://stage.edgefirst.studio/#/login

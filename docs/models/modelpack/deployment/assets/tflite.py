@@ -1,3 +1,14 @@
+"""
+This script is an example for deplying TFLite models in a PC. 
+
+Modify the following lines to your specification.
+
+57: model_path = "modelpack.tflite"
+77: image_path = "sample-coffee-cup.jpg"
+
+Run the script using `python tflite_example.py`
+"""
+
 import os
 import numpy as np
 from PIL import Image, ImageFont, ImageDraw

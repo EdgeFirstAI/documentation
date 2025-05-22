@@ -2,7 +2,7 @@
 
 This guide will walk you through installing the EdgeFirst Middleware in "user-mode" on a target device.  If you're using a Maivin or Raivin refer to the [Deploying to the Maivin](maivin.md) guide instead.
 
-![NXP i.MX 8M Plus EVK](assets/imx8mpevk.png)
+![NXP i.MX 8M Plus EVK](../../assets/deployment/imx8mpevk.png)
 
 ## Installation
 
@@ -43,11 +43,11 @@ edgefirst live
 
 Once launched, you can access the live camera view and model overlays by pointing your browser to your device's IP address using `https://MY_DEVICE_IP`.  You'll see something like the following.
 
-![EdgeFirst Live Mode on EVK](assets/evk-live.png)
+![EdgeFirst Live Mode on EVK](../../assets/deployment/evk-live.png)
 
 If testing a model trained using a few images collected on a phone you'll notice the performance is probably poor.  With small datasets it is especially important to include samples captured with the target device's camera which is luckily easy to do from the web interface.  There is a toggle button in the top-right of the screen which will start an MCAP recording.
 
-![MCAP Recorder Controls](assets/evk-recorder-controls.png)
+![MCAP Recorder Controls](../../assets/deployment/evk-recorder-controls.png)
 
 You can also access the MCAP recordings from the working directory where the `edgefirst live` command was run.
 

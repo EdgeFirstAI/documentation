@@ -59,14 +59,14 @@ flowchart LR
 
 We've identified six workflows: Tourist, Tourist+, Web, Maivin, Raivin, LiDAR.  The hardware requirements and the available features increases starting with the Tourist as the most basic. 
 
-| Persona        | Hardware              | Features                                                                |
-|----------------|-----------------------|-------------------------------------------------------------------------|
-| Tourist        | PC                    | Train, Validate, Deploy Offline                                         |
-| Tourist+       | PC                    | Annotate 2D, Train, Validate, Deploy Offline                            |
-| Web            | PC + Smartphone       | Record, Annotate 2D, Train, Validate, Deploy Offline                    |
-| Maivin         | PC + Maivin           | Record, Annotate 2D, Train, Validate, Deploy on Device                  |
-| Raivin         | PC + Raivin w/ Radar  | Record, Annotate 2D + 3D, Train, Validate, Deploy on Device             |
-| LiDAR          | PC + Raivin w/ LiDAR  | Record, Annotate 2D + 3D (enhanced), Train, Validate, Deploy on Device  |
+| Persona                | Hardware              | Features                                                                |
+|------------------------|-----------------------|-------------------------------------------------------------------------|
+| Tourist                | PC                    | Train, Validate, Deploy Offline                                         |
+| Tourist+               | PC                    | Annotate 2D, Train, Validate, Deploy Offline                            |
+| [Web](web.md)          | PC + Smartphone       | Record, Annotate 2D, Train, Validate, Deploy Offline                    |
+| [Maivin](edgefirst.md) | PC + Maivin           | Record, Annotate 2D, Train, Validate, Deploy on Device                  |
+| [Raivin](edgefirst.md) | PC + Raivin w/ Radar  | Record, Annotate 2D + 3D, Train, Validate, Deploy on Device             |
+| [LiDAR](edgefirst.md)  | PC + Raivin w/ LiDAR  | Record, Annotate 2D + 3D (enhanced), Train, Validate, Deploy on Device  |
 
 ## User Journey
 

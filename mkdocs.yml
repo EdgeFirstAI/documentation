@@ -1,5 +1,5 @@
 site_name: EdgeFirst Studio Documentation
-site_url: https://doc.edgefirst.ai
+site_url: https://doc.edgefirst.ai/
 site_description: EdgeFirst Studio Documentation
 site_author: Au-Zone Technologies
 theme:
@@ -53,6 +53,9 @@ plugins:
   - awesome-nav:
   - autorefs:
   - search:
+  - include-markdown:
+      rewrite_relative_urls: true
+      heading_offset: 1
   - mkdocstrings:
       default_handler: python
       handlers:
@@ -86,10 +89,7 @@ markdown_extensions:
           format: !!python/name:pymdownx.superfences.fence_code_format
   - pymdownx.tabbed:
       alternate_style: true  
-  - markdown_include.include:
-      base_path: docs
-      headingOffset: 1
-
+      
 extra_javascript:
   - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
 

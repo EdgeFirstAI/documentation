@@ -50,7 +50,7 @@ edgefirst-camera -h
 
 #### Webserver Service
 
-The Webserver Service or the EdgeFirst Web UI Server deploys a webserver on target to provide a GUI that's accessible using the target's IP address as the endpoint on a browser `https://MY_DEVICE_IP`.  The GUI would provide visualizations from the camera feed and model inferences and exposed the features for recording an MCAP, downloading an MCAP locally, deleting an MCAP, or listing the recorded MCAPs as shown in the [Live Camera Mode](#live-camera-mode) section.
+The Webserver Service or the EdgeFirst Web UI Server deploys a webserver on target to provide a GUI that's accessible using the target's IP address as the endpoint on a browser `https://MY_DEVICE_IP`.  The GUI would provide visualizations from the camera feed and model inferences and exposed the features for recording an MCAP, downloading an MCAP locally, deleting an MCAP, or listing the recorded MCAPs as shown in the [Live Camera Mode](../models/modelpack/deployment/evk.md#live-camera-mode) section.
 
 If a virtual environment was created, deploy this service using the command below.  The `--docroot` directory needs to be specified.
 

@@ -117,10 +117,6 @@
          <lastmod>2025-05-22</lastmod>
     </url>
     <url>
-         <loc>https://doc.edgefirst.ai/saas/models/modelpack/quick_start_guide/</loc>
-         <lastmod>2025-05-22</lastmod>
-    </url>
-    <url>
          <loc>https://doc.edgefirst.ai/saas/models/modelpack/training/</loc>
          <lastmod>2025-05-22</lastmod>
     </url>
@@ -138,6 +134,10 @@
     </url>
     <url>
          <loc>https://doc.edgefirst.ai/saas/models/modelpack/deployment/pc/</loc>
+         <lastmod>2025-05-22</lastmod>
+    </url>
+    <url>
+         <loc>https://doc.edgefirst.ai/saas/models/modelpack/tutorials/</loc>
          <lastmod>2025-05-22</lastmod>
     </url>
     <url>

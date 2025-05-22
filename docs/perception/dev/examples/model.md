@@ -2,7 +2,9 @@
 
 These examples demonstrate how to connect to various model topics published on your EdgeFirst Platform and how to display the information through the command line.
 
-## /model/info
+## Model Info
+Topic: [/model/info](../../topics/model.md#modelinfo)  
+Message: [ModelInfo](../../api/edgefirst_msgs.md#modelinfo)
 
 ### Setting up subscriber
 
@@ -32,11 +34,10 @@ We can now receive a message on the subscriber. After receiving the message, we 
 === "Python"
 
     ``` python
-    from edgefirst.schemas.model_msgs import ModelInfo
+    from edgefirst.schemas.edgefirst_msgs import ModelInfo
 
     # Receive a message
     msg = subscriber.recv()
-
     # deserialize message
     info = ModelInfo.deserialize(msg.payload.to_bytes())
     ```
@@ -44,11 +45,10 @@ We can now receive a message on the subscriber. After receiving the message, we 
 === "Rust"
 
     ``` rust
-    use edgefirst_schemas::model_msgs::ModelInfo;
+    use edgefirst_schemas::edgefirst_msgs::ModelInfo;
 
     // Receive a message
     let msg = subscriber.recv().unwrap();
-
     let info: ModelInfo = cdr::deserialize(&msg.payload().to_bytes())?;
     ```
 
@@ -60,23 +60,23 @@ The ModelInfo message contains information about the model configuration. You ca
 
     ``` python
     # Access model parameters
-    model_name = info.model_name
-    input_shape = info.input_shape
-    output_shape = info.output_shape
-    classes = info.classes
+    m_type = info.model_type
+    m_name = info.model_name
+    rr.log("ModelInfo", rr.TextLog("Model Name: %s Model Type: %s" % (m_name, m_type)))
     ```
 
 === "Rust"
 
     ``` rust
-    // Access model parameters
-    let model_name = info.model_name;
-    let input_shape = info.input_shape;
-    let output_shape = info.output_shape;
-    let classes = info.classes;
+    let m_type = info.model_type;
+    let m_name = info.model_name;
+    let text = "Model Name: ".to_owned() + &m_name + " Model Type: " + &m_type;
+    let _ = rr.log("ModelInfo", &rerun::TextLog::new(text));
     ```
 
-## /model/boxes2d
+## Boxes2D
+Topic: [/model/boxes2d](../../topics/model.md#modelboxes2d)  
+Message: [ModelInfo](../../api/edgefirst_msgs.md#detect)
 
 ### Setting up subscriber
 
@@ -106,24 +106,23 @@ We can now receive a message on the subscriber. After receiving the message, we 
 === "Python"
 
     ``` python
-    from edgefirst.schemas.model_msgs import Boxes2D
+    from edgefirst.schemas.edgefirst_msgs import Detect
 
     # Receive a message
     msg = subscriber.recv()
 
     # deserialize message
-    boxes = Boxes2D.deserialize(msg.payload.to_bytes())
+    detection = Detect.deserialize(msg.payload.to_bytes())
     ```
 
 === "Rust"
 
     ``` rust
-    use edgefirst_schemas::model_msgs::Boxes2D;
+    use edgefirst_schemas::edgefirst_msgs::Detect;
 
     // Receive a message
     let msg = subscriber.recv().unwrap();
-
-    let boxes: Boxes2D = cdr::deserialize(&msg.payload().to_bytes())?;
+    let detection: Detect = cdr::deserialize(&msg.payload().to_bytes())?;
     ```
 
 ### Process the Data
@@ -133,31 +132,35 @@ The Boxes2D message contains 2D bounding box detections. You can access various 
 === "Python"
 
     ``` python
-    # Access box parameters
-    for box in boxes.boxes:
-        x = box.x
-        y = box.y
-        width = box.width
-        height = box.height
-        class_id = box.class_id
-        confidence = box.confidence
+    centers = []
+    sizes = []
+    labels = []
+    for box in detection.boxes:
+        centers.append((box.center_x, box.center_y))
+        sizes.append((box.width, box.height))
+        labels.append(box.label)
+    rr.log("boxes", rr.Boxes2D(centers=centers, sizes=sizes, labels=labels))
     ```
 
 === "Rust"
 
     ``` rust
-    // Access box parameters
-    for box in boxes.boxes {
-        let x = box.x;
-        let y = box.y;
-        let width = box.width;
-        let height = box.height;
-        let class_id = box.class_id;
-        let confidence = box.confidence;
+    let mut centers = Vec::new();
+    let mut sizes = Vec::new();
+    let mut labels = Vec::new();
+
+    for b in detection.boxes {
+        centers.push([b.center_x, b.center_y]);
+        sizes.push([b.width, b.height]);
+        labels.push(b.label);
     }
+
+    let _ = rr.log("boxes", &rerun::Boxes2D::from_centers_and_sizes(centers, sizes).with_labels(labels))?;
     ```
 
-## /model/mask
+## Model Mask
+Topic: [/model/mask](../../topics/model.md#modelmask)  
+Message: [Mask](../../api/edgefirst_msgs.md#mask)
 
 ### Setting up subscriber
 
@@ -187,23 +190,19 @@ We can now receive a message on the subscriber. After receiving the message, we 
 === "Python"
 
     ``` python
-    from edgefirst.schemas.model_msgs import Mask
+    from edgefirst.schemas.edgefirst_msgs import Mask
 
-    # Receive a message
     msg = subscriber.recv()
-
-    # deserialize message
     mask = Mask.deserialize(msg.payload.to_bytes())
     ```
 
 === "Rust"
 
     ``` rust
-    use edgefirst_schemas::model_msgs::Mask;
+    use edgefirst_schemas::edgefirst_msgs::Mask;
 
     // Receive a message
     let msg = subscriber.recv().unwrap();
-
     let mask: Mask = cdr::deserialize(&msg.payload().to_bytes())?;
     ```
 
@@ -214,24 +213,49 @@ The Mask message contains segmentation mask data. You can access various fields 
 === "Python"
 
     ``` python
-    # Access mask parameters
-    width = mask.width
-    height = mask.height
-    data = mask.data  # Binary mask data
-    class_id = mask.class_id
+    np_arr = np.asarray(mask.mask, dtype=np.uint8)
+    np_arr = np.reshape(np_arr, [mask.height, mask.width, -1])
+    np_arr = np.argmax(np_arr, axis=2)
+    rr.log("/", rr.AnnotationContext([(0, "background", (0,0,0)), (1, "person", (0,255,0))]))
+    rr.log("mask", rr.SegmentationImage(np_arr))
     ```
 
 === "Rust"
 
     ``` rust
-    // Access mask parameters
-    let width = mask.width;
-    let height = mask.height;
-    let data = mask.data;  // Binary mask data
-    let class_id = mask.class_id;
+    let h = mask.height as usize;
+    let w = mask.width as usize;
+    let total_len = mask.mask.len() as u32;
+    let c = (total_len / (h as u32 * w as u32)) as usize;
+
+    let arr3 = Array::from_shape_vec((h, w, c), mask.mask.clone())?;
+    
+    // Compute argmax along the last axis (class channel)
+    let array2: Array2<u8> = arr3
+        .map_axis(ndarray::Axis(2), |class_scores| {
+            class_scores
+                .iter()
+                .enumerate()
+                .max_by_key(|(_, val)| *val)
+                .map(|(idx, _)| idx as u8)
+                .unwrap_or(0)
+        });
+
+    // Log annotation context
+    rr.log(
+        "/",
+        &AnnotationContext::new([
+            (0, "background", rerun::Rgba32::from_rgb(0, 0, 0)),
+            (1, "person", rerun::Rgba32::from_rgb(0, 255, 0))])
+    )?;
+
+    // Log segmentation mask
+    let _ = rr.log("mask", &SegmentationImage::try_from(array2)?)?;
     ```
 
-## /model/compressed_mask
+## Model Mask Compressed
+Topic: [/model/mask](../../topics/model.md#modelmask_compressed)  
+Message: [Mask](../../api/edgefirst_msgs.md#mask)
 
 ### Setting up subscriber
 
@@ -240,18 +264,17 @@ After setting up the Zenoh session, we will create a subscriber to the `model/co
 === "Python"
 
     ``` python
-    # Create a subscriber for "rt/model/compressed_mask"
-    subscriber = session.declare_subscriber('rt/model/compressed_mask')
+    # Create a subscriber for "rt/model/mask_compressed"
+    subscriber = session.declare_subscriber('rt/model/mask_compressed')
     ```
 
 === "Rust"
 
     ``` rust
     // Create a subscriber for "rt/model/compressed_mask"
-    let subscriber = session
-        .declare_subscriber("rt/model/compressed_mask")
-        .await
-        .unwrap();
+    let subscriber = session.declare_subscriber("rt/model/mask_compressed")
+    .await
+    .unwrap();
     ```
 
 ### Receive a message
@@ -261,24 +284,20 @@ We can now receive a message on the subscriber. After receiving the message, we 
 === "Python"
 
     ``` python
-    from edgefirst.schemas.model_msgs import CompressedMask
+    from edgefirst.schemas.edgefirst_msgs import Mask
 
-    # Receive a message
     msg = subscriber.recv()
-
-    # deserialize message
-    mask = CompressedMask.deserialize(msg.payload.to_bytes())
+    mask = Mask.deserialize(msg.payload.to_bytes())
     ```
 
 === "Rust"
 
     ``` rust
-    use edgefirst_schemas::model_msgs::CompressedMask;
+    use edgefirst_schemas::edgefirst_msgs::Mask;
 
     // Receive a message
     let msg = subscriber.recv().unwrap();
-
-    let mask: CompressedMask = cdr::deserialize(&msg.payload().to_bytes())?;
+    let mask: Mask = cdr::deserialize(&msg.payload().to_bytes())?;
     ```
 
 ### Process the Data
@@ -288,19 +307,45 @@ The CompressedMask message contains compressed segmentation mask data. You can a
 === "Python"
 
     ``` python
-    # Access compressed mask parameters
-    width = mask.width
-    height = mask.height
-    data = mask.data  # Compressed mask data
-    class_id = mask.class_id
+    decoded_array = zstd.decompress(bytes(mask.mask))
+    np_arr = np.frombuffer(decoded_array, np.uint8)
+    np_arr = np.reshape(np_arr, [mask.height, mask.width, -1])
+    np_arr = np.argmax(np_arr, axis=2)
+    rr.log("/", rr.AnnotationContext([(0, "background", (0,0,0)), (1, "person", (0,255,0))]))
+    rr.log("mask", rr.SegmentationImage(np_arr))
     ```
 
 === "Rust"
 
     ``` rust
-    // Access compressed mask parameters
-    let width = mask.width;
-    let height = mask.height;
-    let data = mask.data;  // Compressed mask data
-    let class_id = mask.class_id;
+    let decompressed_bytes = decode_all(Cursor::new(&mask.mask))?;
+        
+    let h = mask.height as usize;
+    let w = mask.width as usize;
+    let total_len = mask.mask.len() as u32;
+    let c = (total_len / (h as u32 * w as u32)) as usize;
+
+    let arr3 = Array::from_shape_vec([h, w, c], decompressed_bytes.clone())?;
+    
+    // Compute argmax along the last axis (class channel)
+    let array2: Array2<u8> = arr3
+        .map_axis(ndarray::Axis(2), |class_scores| {
+            class_scores
+                .iter()
+                .enumerate()
+                .max_by_key(|(_, val)| *val)
+                .map(|(idx, _)| idx as u8)
+                .unwrap_or(0)
+        });
+
+    // Log annotation context
+    rr.log(
+        "/",
+        &AnnotationContext::new([
+            (0, "background", rerun::Rgba32::from_rgb(0, 0, 0)),
+            (1, "person", rerun::Rgba32::from_rgb(0, 255, 0))])
+    )?;
+
+    // Log segmentation mask
+    let _ = rr.log("mask", &SegmentationImage::try_from(array2)?)?;
     ``` 

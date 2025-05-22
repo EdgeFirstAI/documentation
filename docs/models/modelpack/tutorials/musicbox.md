@@ -169,8 +169,64 @@ Clicking the training card will show the expanded view containing all the logs a
 
 From the available checkpoints, download the **TFLite** model - optimized for embedded devices — and deploy it to the Maivin unit for edge inference.
 
-{!discrete/upload_models.md!}
-{!discrete/deploy_model_service.md!}
+## Uploading Models to the Raivin
+In the [SCP section in the SSH Tutorial](../../../platforms/ssh.md#secure-copy), files can be uploaded to the Raivin using the command:
+```bash
+scp input_file torizon@verdin-imx8mp-XXXXXXX:.
+```
+!!! note
+    The above command assumes you have an SSH client, such as OpenSSH, installed.  Please review the [SSH documentation](../../../platforms/ssh.md) to confirm.
+
+For the following examples, we will have the Fusion model of `fusion.tflite` and the ModelPack model `modelpack.rtm` that we want to upload to target device `verdin-imx8mp-07130049`.
+
+First, we need to upload the files to the Raivin target using SCP:
+```bash
+$ scp fusion.tflite torizon@verdin-imx8mp-07130049:.
+$ scp modelpack.rtm torizon@verdin-imx8mp-07130049:.
+```
+We should be able to confirm the files are there by using commands via SSH.
+```bash
+$ ssh torizon@verdin-imx8mp-07130049 ls fusion.rtm modelpack.rtm
+fusion.tflite  modelpack.rtm
+```
+These files will be the `/home/torizon` directory, so their absolute filenames will be `/home/torizon/fusion.tflite` and `/home/torizon/modelpack.rtm`.  Once the files have been uploaded, we can then configure the device with the files.
+
+## Deploying a New Model to the Model Service
+There are two ways to deploy a new, 2D model to the Raivin's Model Service: the Web UI Interface or via the command-line.
+
+### From the Raivin Web UI
+From the [Model Service Configuration page](../../../platforms/configuration.md#model-configuration), enter the absolute filename `/home/torizon/modelpack.rtm` in the "MODEL" text-box.  Also, confirm the "Draw Boxes" check box is enabled, as the current trainer only supports 2D Box detection.  Hit the "Save Configuration" box and continue on.
+
+![Model Configuration Page](../../../assets/model_location_webui.png)
+
+Remember to save the configurations at the end of the process. The  Model Configuration page can be accessed via the following url:
+`https://verdin-imx8mp-xxxxx/config/model`
+
+### Manual Model Deployment
+In case the manual deployment is needed, you need to connect to the device via [SSH](../../../platforms/ssh.md):
+
+```shell
+$ ssh torizon@verdin-imx8mp-15141030
+```
+
+and edit the model parameters in `/etc/default/model`
+
+```shell
+$ vi /etc/default/model
+```
+
+then restart the model service using the `systemctl` command
+
+```shell
+$ sudo systemctl stop model
+$ sudo systemctl start model 
+```
+
+!!! note
+    Rember to use **sudo** to start and stop model services
+
+Now the model is running, open the Raivin's WebUI, go to the [Segmentation Page](../../../platforms/walkthrough.md#the-segmentation-page), and check the camera to see the model detection the object.  
+![Deployment Results](../../../assets/deployment-results.png)
 
 Begin testing the model with the object. If the model does not perform as expected, record a few more minutes of data and repeat the training process. Use this opportunity to identify edge cases and collect additional samples that can help improve the model's performance.
 

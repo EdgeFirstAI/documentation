@@ -28,7 +28,7 @@ This will navigate you to your profile information you've set when you first sig
 
 ## Edit Information
 
-You can edit your information by clicking on the "Edit Info" button on the left.
+Now that you can [see your profile information](#profile-information).  You can edit your information by clicking on the "Edit Info" button on the left.
 
 <figure markdown="span">
 ![Edit Profile Button](../assets/user/edit-profile-button.jpg){ align=center }

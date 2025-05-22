@@ -1,6 +1,6 @@
 # Organization Management
 
-When you first [sign up](profile.md#sign-up) to EdgeFirst Studio, you will also automatically create your own organization.  An organization allows multiple users to access your projects, but at the start, you will be the only user in your organization.  However, you can [create multiple users/profiles](#new-users) in your organization to allow collaboration between members in your team.  In this way, multiple members can be assigned to your organization. 
+When you first [sign up](profile.md#sign-up) to EdgeFirst Studio, you will also automatically create your own organization.  An organization allows multiple users to access your projects, but at the start, you will be the only user in your organization.  However, you can [create multiple users/profiles](#add-new-users) in your organization to allow collaboration between members in your team.  In this way, multiple members can be assigned to your organization. 
 
 You can find the information of your organization by clicking on the "User" button that is found on the top right of the navigation bar as shown below.  You will see three different options, click on the "Admin Console" button.
 
@@ -92,20 +92,6 @@ The "Audit & Label" user has limited access to EdgeFirst Studio.  The only featu
 
 The user with "Custom Permissions" has specific permissions on different elements of EdgeFirst Studio.  These elements are "Projects", "Datasets", "Trainer", and "Task Board".  You can set "Read-Only" permissions to allow users for view-only.  The permission for "Write" allows the users to make changes to the elements such as creating their own datasets or modifying current datasets.  You can find more information on these elements under the [EdgeFirst Studio: Overview](../../getting_started/studio.md).
 
-### New Users
-
-From the "User Manager" page, we can create new accounts/profiles for new users by clicking either the "Create New User" button or the "New User" button as shown below.
-
-<figure markdown="span">
-![New User](../assets/user/new-user-buttons.jpg){ align=center }
-<figcaption>New User</figcaption>
-</figure>
-
-This will bring you to the page that allows you to specify the new user's information as shown below.  Here you can specify the new user's first and last name, their login credentials such as their username and password.  Finally you will need to specify their email and their [role in the organization](#roles). 
-
-<figure markdown="span">
-![New User Fields](../assets/user/new-user-fields.jpg){ align=center }
-<figcaption>New User Fields</figcaption>
-</figure>
+{% include-markdown "discrete/new_users.md" %}
 
 This page has shown how to manage your organization and the users in your organization.  For information on how the billing in your organization is handled, see [Billing Information](billing.md).

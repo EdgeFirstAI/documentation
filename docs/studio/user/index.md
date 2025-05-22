@@ -10,3 +10,28 @@ A new organization is given $20.00 worth of credits to allow trials of the featu
 
 ## Inviting New Users
 
+This guide will walk you through inviting new users to your organization once you have [logged in][login] to EdgeFirst Studio.  By signing up, you are the admin of your organization. You will create the accounts for other users in your organization that will be shown below. 
+
+### Visit the Admin Console
+
+When you log in, you will be first directed to the "Projects Page". Click on the "User" button that is found on the top right of the navigation bar as shown below. You will see three different options, click on the "Admin Console" button.
+
+<figure markdown="span">
+![User Button](../assets/user/admin-button.jpg){ align=center }
+<figcaption>The location of the "User" button</figcaption>
+</figure>
+
+This will navigate you to the "Organization Information" page.  Shown below is an example.
+
+<figure markdown="span">
+![Organization Information](../assets/user/organization-information.jpg){ align=center }
+<figcaption>Your Organization Information</figcaption>
+</figure>
+
+Proceed to the next section below for creating the accounts for the new users in your organization
+
+{% include-markdown "discrete/new_users.md" %}
+
+This worklow has shown how to invite new users to your organization.  To start experimenting with various features in EdgeFirst Studio, the end-to-end workflow in the [Quickstart](../../index.md#create-project) provides more guidance. 
+
+[login]: https://test.edgefirst.studio/#/login

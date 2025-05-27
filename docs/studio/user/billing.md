@@ -18,7 +18,7 @@ This will navigate you to the "Organization Information" page.  Click on the "Us
 <figcaption>The location of the "Usage & Billing" button</figcaption>
 </figure>
 
-This page may take some time to render.  Once rendered, the following page will show which describes the current usages of EdgeFirst Studio features and the billing details under.
+This page may take some time to render.  Once rendered, this page will describe the current usages of EdgeFirst Studio features and the billing details as shown below. The next sections will break down the components of this page in more detail. 
 
 <figure markdown="span">
 ![Usage & Billing Page](../assets/user/usage-billing-page.jpg){ align=center }
@@ -27,11 +27,18 @@ This page may take some time to render.  Once rendered, the following page will 
 
 ### Remaining Funds
 
-Initially, the remaining funds will show as `USD 20.00`.  This is free for trial users to experience EdgeFirst Studio and its features.  However, as you use EdgeFirst Studio such as importing datasets you incur storage costs or deploying training and validation incur server costs, you will see that these remaining funds will start to decrease.  Once the remaining funds run out, you will no longer be able to use any features in EdgeFirst Studio and your datasets will be parked, training and validation sessions will be paused or terminated.  It is recommended to always check the remaining funds in your organization before running experiments to ensure you have enough funds to support the cost of the experiment.  The cost of the features in EdgeFirst Studio will be discussed in more detail in the section [below](#features-and-associated-costs).
+Initially, the remaining funds will show as `USD 20.00`.  This is free for trial users to experience EdgeFirst Studio and its features.  However, as you use EdgeFirst Studio such as importing datasets you incur storage costs or deploying training and validation incur server costs, you will see that these remaining funds will start to decrease.  Once the remaining funds run out, you will no longer be able to use any features in EdgeFirst Studio and your datasets will be parked, training and validation sessions will be paused or terminated.  It is recommended to always check the remaining funds in your organization before running experiments to ensure you have enough funds to support the cost of the experiment.  The cost of the features in EdgeFirst Studio will be discussed in more detail in the section [below](#features-and-associated-costs).  For options to add more funds into your organization, please reach out and [email our support team](mailto:support@edgefirst.ai).
 
 ### Features and Associated Costs
 
-In the current usage, there is a summary of the features used in EdgeFirst Studio with the associated time measurements during deployments.  For example, all training sessions in the organization accumulated to 7 minutes.  Furthermore, active datasets incur storage costs.  The billing details provide more information on the cost of each feature as shown below.
+Under the "Current Usage", there is a summary of the features used in EdgeFirst Studio with the associated time measurements during deployments.  For example, all training sessions in the organization accumulated to 7 minutes.  Furthermore, active datasets incur storage costs.  
+
+<figure markdown="span">
+![Current Usage](../assets/user/current-usage-section.jpg){ align=center }
+<figcaption>Current Usage</figcaption>
+</figure>
+
+The billing details provide more information on the cost of each feature as shown below.
 
 <figure markdown="span">
 ![Billing Details](../assets/user/billing-details.jpg){ align=center }

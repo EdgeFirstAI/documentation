@@ -12,7 +12,7 @@ This page provides details on your profile information.  To get started, you can
 
 ## Profile Information
 
-You can find your profile information by clicking on the "User" button that is found on the top right of the navigation baras shown below.  You will see three different options, click on the "Profile" button as shown below. 
+You can find your profile information by clicking on the "User" button that is found on the top right of the navigation bar shown below.  You will see three different options, click on the "Profile" button as shown below. 
 
 <figure markdown="span">
 ![The location of the "Profile" button](../assets/user/profile-button.jpg){ align=center }
@@ -28,7 +28,7 @@ This will navigate you to your profile information you've set when you first sig
 
 ## Edit Information
 
-You can edit your information by clicking on the "Edit Info" button on the left.
+Now that you can [see your profile information](#profile-information).  You can edit your information by clicking on the "Edit Info" button on the left.
 
 <figure markdown="span">
 ![Edit Profile Button](../assets/user/edit-profile-button.jpg){ align=center }
@@ -46,4 +46,4 @@ After making the changes, click "Apply" to save your changes. Otherwise, click "
 
 ### Change Password
 
-To change your password, navigate to your profile information and edit your profile information by following the [steps above](#profile-information).  Next under "Change Password", input your new password twice to confirm.  Click "Apply" to save your new password.
+To change your password, navigate to your [profile information](#profile-information) and [edit your profile information](#edit-information).  Next under "Change Password", input your new password twice to confirm.  Click "Apply" to save your new password.

@@ -1,6 +1,6 @@
 # Forgot Password
 
-Visit the [login page][login] and click on the link "Forgot password?" as shown below.
+If you have an EdgeFirst Studio account, but you forgot your password.  Follow this tutorial for resetting your password.  Visit the [login page][login] and click on the link "Forgot password?" as shown below.
 
 <figure markdown="span">
 ![Forgot Password](../assets/user/forgot-password.jpg){ align=center }
@@ -35,6 +35,6 @@ You will then be prompted to enter a new password. Once entered, click "RESET PA
 <figcaption>Enter New Password</figcaption>
 </figure>
 
-Done! You will then be prompted back to the login page for you to enter your new credentials. 
+Done! You will then be prompted back to the [login page][login] for you to enter your new credentials. 
 
 [login]: https://test.edgefirst.studio/#/login

@@ -31,8 +31,11 @@ Welcome to EdgeFirst Studio!  Follow this Quickstart for user onboarding from st
 
 The next sections will invite you to follow along the end-to-end workflow for recording a video or capturing images using a phone and then upload the captured data into EdgeFirst Studio for annotation and then model training, validation, and deployment on various platforms. 
 
-!!! warning
+!!! warning "Data Usage"
     It is recommended to use a phone connected to a Wifi network. A device connected to mobile data might be subject to intense usage when uploading files as video files or image files can be large in size. In the examples below, the video file used was ~15MB and the image files were ~2MB.
+
+!!! info "Workflows"
+    The workflow below is based on the *Web-Based Workflow* which requires only a phone and a PC.  There are other [workflows](getting_started/workflows/index.md) that support different hardware requirements. 
 
 ## Capture with a Phone
 
@@ -55,6 +58,9 @@ Furthermore, you can also capture individual images of coffee cups as shown belo
 !!! tip
 
     It is recommended to use videos rather than individual images.  This is because the Automatic Ground Truth Generation (AGTG) feature leverages SAM-2 with tracking information which only needs a single annotation to annotate all frames.  However, individual images requires more effort to annotate each image separately.
+
+!!! warning
+    For demo purposes, the dataset is kept small.  However, training on limited datasets will result in poor model performances when the model is deployed under conditions that differs from the dataset samples.  It is suggested to increase the amount of training data under various conditions to train a more robust model.
 
 ## Create a Dataset
 

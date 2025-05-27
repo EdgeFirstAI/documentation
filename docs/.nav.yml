@@ -7,15 +7,11 @@ nav:
       - getting_started/workflows/index.md
       - getting_started/workflows/web.md
       - getting_started/workflows/edgefirst.md
-    # - getting_started/pricing.md
-    - getting_started/datasets.md
     - Model Tutorials:
       - getting_started/models/index.md
       - getting_started/models/training.md
       - getting_started/models/validation.md
       - getting_started/models/deployment.md
-    - getting_started/perception.md
-    - getting_started/platforms.md
   - Studio:
     - studio/index.md
     - User Management:
@@ -73,6 +69,7 @@ nav:
       - platforms/foxglove.md
       - platforms/advanced_foxglove.md
     - perception/studio.md
+    - perception/launcher.md
     - Topics:
       - perception/topics.md
       - perception/topics/camera.md

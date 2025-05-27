@@ -2,390 +2,390 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
          <loc>https://doc.edgefirst.ai/saas/</loc>
-         <lastmod>2025-05-22</lastmod>
+         <lastmod>2025-05-27</lastmod>
     </url>
     <url>
          <loc>https://doc.edgefirst.ai/saas/datasets/</loc>
-         <lastmod>2025-05-22</lastmod>
+         <lastmod>2025-05-27</lastmod>
     </url>
     <url>
          <loc>https://doc.edgefirst.ai/saas/datasets/format/</loc>
-         <lastmod>2025-05-22</lastmod>
+         <lastmod>2025-05-27</lastmod>
     </url>
     <url>
          <loc>https://doc.edgefirst.ai/saas/datasets/structure/</loc>
-         <lastmod>2025-05-22</lastmod>
+         <lastmod>2025-05-27</lastmod>
     </url>
     <url>
          <loc>https://doc.edgefirst.ai/saas/datasets/zoo/</loc>
-         <lastmod>2025-05-22</lastmod>
+         <lastmod>2025-05-27</lastmod>
     </url>
     <url>
          <loc>https://doc.edgefirst.ai/saas/datasets/tutorials/</loc>
-         <lastmod>2025-05-22</lastmod>
+         <lastmod>2025-05-27</lastmod>
     </url>
     <url>
          <loc>https://doc.edgefirst.ai/saas/datasets/tutorials/annotations/</loc>
-         <lastmod>2025-05-22</lastmod>
+         <lastmod>2025-05-27</lastmod>
     </url>
     <url>
          <loc>https://doc.edgefirst.ai/saas/datasets/tutorials/capture/</loc>
-         <lastmod>2025-05-22</lastmod>
+         <lastmod>2025-05-27</lastmod>
     </url>
     <url>
          <loc>https://doc.edgefirst.ai/saas/datasets/tutorials/management/</loc>
-         <lastmod>2025-05-22</lastmod>
+         <lastmod>2025-05-27</lastmod>
     </url>
     <url>
          <loc>https://doc.edgefirst.ai/saas/getting_started/datasets/</loc>
-         <lastmod>2025-05-22</lastmod>
+         <lastmod>2025-05-27</lastmod>
     </url>
     <url>
          <loc>https://doc.edgefirst.ai/saas/getting_started/perception/</loc>
-         <lastmod>2025-05-22</lastmod>
+         <lastmod>2025-05-27</lastmod>
     </url>
     <url>
          <loc>https://doc.edgefirst.ai/saas/getting_started/platforms/</loc>
-         <lastmod>2025-05-22</lastmod>
+         <lastmod>2025-05-27</lastmod>
     </url>
     <url>
          <loc>https://doc.edgefirst.ai/saas/getting_started/pricing/</loc>
-         <lastmod>2025-05-22</lastmod>
+         <lastmod>2025-05-27</lastmod>
     </url>
     <url>
          <loc>https://doc.edgefirst.ai/saas/getting_started/studio/</loc>
-         <lastmod>2025-05-22</lastmod>
+         <lastmod>2025-05-27</lastmod>
     </url>
     <url>
          <loc>https://doc.edgefirst.ai/saas/getting_started/models/</loc>
-         <lastmod>2025-05-22</lastmod>
+         <lastmod>2025-05-27</lastmod>
     </url>
     <url>
          <loc>https://doc.edgefirst.ai/saas/getting_started/models/deployment/</loc>
-         <lastmod>2025-05-22</lastmod>
+         <lastmod>2025-05-27</lastmod>
     </url>
     <url>
          <loc>https://doc.edgefirst.ai/saas/getting_started/models/training/</loc>
-         <lastmod>2025-05-22</lastmod>
+         <lastmod>2025-05-27</lastmod>
     </url>
     <url>
          <loc>https://doc.edgefirst.ai/saas/getting_started/models/validation/</loc>
-         <lastmod>2025-05-22</lastmod>
+         <lastmod>2025-05-27</lastmod>
     </url>
     <url>
          <loc>https://doc.edgefirst.ai/saas/getting_started/workflows/</loc>
-         <lastmod>2025-05-22</lastmod>
+         <lastmod>2025-05-27</lastmod>
     </url>
     <url>
          <loc>https://doc.edgefirst.ai/saas/getting_started/workflows/edgefirst/</loc>
-         <lastmod>2025-05-22</lastmod>
+         <lastmod>2025-05-27</lastmod>
     </url>
     <url>
          <loc>https://doc.edgefirst.ai/saas/getting_started/workflows/web/</loc>
-         <lastmod>2025-05-22</lastmod>
+         <lastmod>2025-05-27</lastmod>
     </url>
     <url>
          <loc>https://doc.edgefirst.ai/saas/models/</loc>
-         <lastmod>2025-05-22</lastmod>
+         <lastmod>2025-05-27</lastmod>
     </url>
     <url>
          <loc>https://doc.edgefirst.ai/saas/models/augmentations/</loc>
-         <lastmod>2025-05-22</lastmod>
+         <lastmod>2025-05-27</lastmod>
     </url>
     <url>
          <loc>https://doc.edgefirst.ai/saas/models/metrics/</loc>
-         <lastmod>2025-05-22</lastmod>
+         <lastmod>2025-05-27</lastmod>
     </url>
     <url>
          <loc>https://doc.edgefirst.ai/saas/models/fusion/</loc>
-         <lastmod>2025-05-22</lastmod>
+         <lastmod>2025-05-27</lastmod>
     </url>
     <url>
          <loc>https://doc.edgefirst.ai/saas/models/fusion/training/</loc>
-         <lastmod>2025-05-22</lastmod>
+         <lastmod>2025-05-27</lastmod>
     </url>
     <url>
          <loc>https://doc.edgefirst.ai/saas/models/fusion/validation/</loc>
-         <lastmod>2025-05-22</lastmod>
+         <lastmod>2025-05-27</lastmod>
     </url>
     <url>
          <loc>https://doc.edgefirst.ai/saas/models/fusion/deployment/raivin/</loc>
-         <lastmod>2025-05-22</lastmod>
+         <lastmod>2025-05-27</lastmod>
     </url>
     <url>
          <loc>https://doc.edgefirst.ai/saas/models/modelpack/</loc>
-         <lastmod>2025-05-22</lastmod>
+         <lastmod>2025-05-27</lastmod>
     </url>
     <url>
          <loc>https://doc.edgefirst.ai/saas/models/modelpack/training/</loc>
-         <lastmod>2025-05-22</lastmod>
+         <lastmod>2025-05-27</lastmod>
     </url>
     <url>
          <loc>https://doc.edgefirst.ai/saas/models/modelpack/validation/</loc>
-         <lastmod>2025-05-22</lastmod>
+         <lastmod>2025-05-27</lastmod>
     </url>
     <url>
          <loc>https://doc.edgefirst.ai/saas/models/modelpack/deployment/evk/</loc>
-         <lastmod>2025-05-22</lastmod>
+         <lastmod>2025-05-27</lastmod>
     </url>
     <url>
          <loc>https://doc.edgefirst.ai/saas/models/modelpack/deployment/maivin/</loc>
-         <lastmod>2025-05-22</lastmod>
+         <lastmod>2025-05-27</lastmod>
     </url>
     <url>
          <loc>https://doc.edgefirst.ai/saas/models/modelpack/deployment/pc/</loc>
-         <lastmod>2025-05-22</lastmod>
+         <lastmod>2025-05-27</lastmod>
     </url>
     <url>
          <loc>https://doc.edgefirst.ai/saas/models/modelpack/tutorials/</loc>
-         <lastmod>2025-05-22</lastmod>
+         <lastmod>2025-05-27</lastmod>
     </url>
     <url>
          <loc>https://doc.edgefirst.ai/saas/models/modelpack/tutorials/measurement_tape/</loc>
-         <lastmod>2025-05-22</lastmod>
+         <lastmod>2025-05-27</lastmod>
     </url>
     <url>
          <loc>https://doc.edgefirst.ai/saas/models/modelpack/tutorials/musicbox/</loc>
-         <lastmod>2025-05-22</lastmod>
+         <lastmod>2025-05-27</lastmod>
     </url>
     <url>
          <loc>https://doc.edgefirst.ai/saas/perception/</loc>
-         <lastmod>2025-05-22</lastmod>
+         <lastmod>2025-05-27</lastmod>
     </url>
     <url>
          <loc>https://doc.edgefirst.ai/saas/perception/api/</loc>
-         <lastmod>2025-05-22</lastmod>
+         <lastmod>2025-05-27</lastmod>
     </url>
     <url>
          <loc>https://doc.edgefirst.ai/saas/perception/dev/</loc>
-         <lastmod>2025-05-22</lastmod>
+         <lastmod>2025-05-27</lastmod>
     </url>
     <url>
          <loc>https://doc.edgefirst.ai/saas/perception/studio/</loc>
-         <lastmod>2025-05-22</lastmod>
+         <lastmod>2025-05-27</lastmod>
     </url>
     <url>
          <loc>https://doc.edgefirst.ai/saas/perception/topics/</loc>
-         <lastmod>2025-05-22</lastmod>
+         <lastmod>2025-05-27</lastmod>
     </url>
     <url>
          <loc>https://doc.edgefirst.ai/saas/perception/api/builtin_interfaces/</loc>
-         <lastmod>2025-05-22</lastmod>
+         <lastmod>2025-05-27</lastmod>
     </url>
     <url>
          <loc>https://doc.edgefirst.ai/saas/perception/api/edgefirst_msgs/</loc>
-         <lastmod>2025-05-22</lastmod>
+         <lastmod>2025-05-27</lastmod>
     </url>
     <url>
          <loc>https://doc.edgefirst.ai/saas/perception/api/foxglove_msgs/</loc>
-         <lastmod>2025-05-22</lastmod>
+         <lastmod>2025-05-27</lastmod>
     </url>
     <url>
          <loc>https://doc.edgefirst.ai/saas/perception/api/geometry_msgs/</loc>
-         <lastmod>2025-05-22</lastmod>
+         <lastmod>2025-05-27</lastmod>
     </url>
     <url>
          <loc>https://doc.edgefirst.ai/saas/perception/api/nav_msgs/</loc>
-         <lastmod>2025-05-22</lastmod>
+         <lastmod>2025-05-27</lastmod>
     </url>
     <url>
          <loc>https://doc.edgefirst.ai/saas/perception/api/sensor_msgs/</loc>
-         <lastmod>2025-05-22</lastmod>
+         <lastmod>2025-05-27</lastmod>
     </url>
     <url>
          <loc>https://doc.edgefirst.ai/saas/perception/api/std_msgs/</loc>
-         <lastmod>2025-05-22</lastmod>
+         <lastmod>2025-05-27</lastmod>
     </url>
     <url>
          <loc>https://doc.edgefirst.ai/saas/perception/api/studio/</loc>
-         <lastmod>2025-05-22</lastmod>
+         <lastmod>2025-05-27</lastmod>
     </url>
     <url>
          <loc>https://doc.edgefirst.ai/saas/perception/dev/examples/camera/</loc>
-         <lastmod>2025-05-22</lastmod>
+         <lastmod>2025-05-27</lastmod>
     </url>
     <url>
          <loc>https://doc.edgefirst.ai/saas/perception/dev/examples/fusion/</loc>
-         <lastmod>2025-05-22</lastmod>
+         <lastmod>2025-05-27</lastmod>
     </url>
     <url>
          <loc>https://doc.edgefirst.ai/saas/perception/dev/examples/gps/</loc>
-         <lastmod>2025-05-22</lastmod>
+         <lastmod>2025-05-27</lastmod>
     </url>
     <url>
          <loc>https://doc.edgefirst.ai/saas/perception/dev/examples/imu/</loc>
-         <lastmod>2025-05-22</lastmod>
+         <lastmod>2025-05-27</lastmod>
     </url>
     <url>
          <loc>https://doc.edgefirst.ai/saas/perception/dev/examples/lidar/</loc>
-         <lastmod>2025-05-22</lastmod>
+         <lastmod>2025-05-27</lastmod>
     </url>
     <url>
          <loc>https://doc.edgefirst.ai/saas/perception/dev/examples/model/</loc>
-         <lastmod>2025-05-22</lastmod>
+         <lastmod>2025-05-27</lastmod>
     </url>
     <url>
          <loc>https://doc.edgefirst.ai/saas/perception/dev/examples/pcd/</loc>
-         <lastmod>2025-05-22</lastmod>
+         <lastmod>2025-05-27</lastmod>
     </url>
     <url>
          <loc>https://doc.edgefirst.ai/saas/perception/dev/examples/radar/</loc>
-         <lastmod>2025-05-22</lastmod>
+         <lastmod>2025-05-27</lastmod>
     </url>
     <url>
          <loc>https://doc.edgefirst.ai/saas/perception/topics/camera/</loc>
-         <lastmod>2025-05-22</lastmod>
+         <lastmod>2025-05-27</lastmod>
     </url>
     <url>
          <loc>https://doc.edgefirst.ai/saas/perception/topics/fusion/</loc>
-         <lastmod>2025-05-22</lastmod>
+         <lastmod>2025-05-27</lastmod>
     </url>
     <url>
          <loc>https://doc.edgefirst.ai/saas/perception/topics/imu/</loc>
-         <lastmod>2025-05-22</lastmod>
+         <lastmod>2025-05-27</lastmod>
     </url>
     <url>
          <loc>https://doc.edgefirst.ai/saas/perception/topics/lidar/</loc>
-         <lastmod>2025-05-22</lastmod>
+         <lastmod>2025-05-27</lastmod>
     </url>
     <url>
          <loc>https://doc.edgefirst.ai/saas/perception/topics/model/</loc>
-         <lastmod>2025-05-22</lastmod>
+         <lastmod>2025-05-27</lastmod>
     </url>
     <url>
          <loc>https://doc.edgefirst.ai/saas/perception/topics/navsat/</loc>
-         <lastmod>2025-05-22</lastmod>
+         <lastmod>2025-05-27</lastmod>
     </url>
     <url>
          <loc>https://doc.edgefirst.ai/saas/perception/topics/radar/</loc>
-         <lastmod>2025-05-22</lastmod>
+         <lastmod>2025-05-27</lastmod>
     </url>
     <url>
          <loc>https://doc.edgefirst.ai/saas/platforms/</loc>
-         <lastmod>2025-05-22</lastmod>
+         <lastmod>2025-05-27</lastmod>
     </url>
     <url>
          <loc>https://doc.edgefirst.ai/saas/platforms/advanced_foxglove/</loc>
-         <lastmod>2025-05-22</lastmod>
+         <lastmod>2025-05-27</lastmod>
     </url>
     <url>
          <loc>https://doc.edgefirst.ai/saas/platforms/architecture/</loc>
-         <lastmod>2025-05-22</lastmod>
+         <lastmod>2025-05-27</lastmod>
     </url>
     <url>
          <loc>https://doc.edgefirst.ai/saas/platforms/configuration/</loc>
-         <lastmod>2025-05-22</lastmod>
+         <lastmod>2025-05-27</lastmod>
     </url>
     <url>
          <loc>https://doc.edgefirst.ai/saas/platforms/foxglove/</loc>
-         <lastmod>2025-05-22</lastmod>
+         <lastmod>2025-05-27</lastmod>
     </url>
     <url>
          <loc>https://doc.edgefirst.ai/saas/platforms/hardware/</loc>
-         <lastmod>2025-05-22</lastmod>
+         <lastmod>2025-05-27</lastmod>
     </url>
     <url>
          <loc>https://doc.edgefirst.ai/saas/platforms/issues/</loc>
-         <lastmod>2025-05-22</lastmod>
+         <lastmod>2025-05-27</lastmod>
     </url>
     <url>
          <loc>https://doc.edgefirst.ai/saas/platforms/lidar/</loc>
-         <lastmod>2025-05-22</lastmod>
+         <lastmod>2025-05-27</lastmod>
     </url>
     <url>
          <loc>https://doc.edgefirst.ai/saas/platforms/model_uploads/</loc>
-         <lastmod>2025-05-22</lastmod>
+         <lastmod>2025-05-27</lastmod>
     </url>
     <url>
          <loc>https://doc.edgefirst.ai/saas/platforms/networking/</loc>
-         <lastmod>2025-05-22</lastmod>
+         <lastmod>2025-05-27</lastmod>
     </url>
     <url>
          <loc>https://doc.edgefirst.ai/saas/platforms/publishing/</loc>
-         <lastmod>2025-05-22</lastmod>
+         <lastmod>2025-05-27</lastmod>
     </url>
     <url>
          <loc>https://doc.edgefirst.ai/saas/platforms/quickstart/</loc>
-         <lastmod>2025-05-22</lastmod>
+         <lastmod>2025-05-27</lastmod>
     </url>
     <url>
          <loc>https://doc.edgefirst.ai/saas/platforms/radar/</loc>
-         <lastmod>2025-05-22</lastmod>
+         <lastmod>2025-05-27</lastmod>
     </url>
     <url>
          <loc>https://doc.edgefirst.ai/saas/platforms/recording/</loc>
-         <lastmod>2025-05-22</lastmod>
+         <lastmod>2025-05-27</lastmod>
     </url>
     <url>
          <loc>https://doc.edgefirst.ai/saas/platforms/release_notes/</loc>
-         <lastmod>2025-05-22</lastmod>
+         <lastmod>2025-05-27</lastmod>
     </url>
     <url>
          <loc>https://doc.edgefirst.ai/saas/platforms/replay/</loc>
-         <lastmod>2025-05-22</lastmod>
+         <lastmod>2025-05-27</lastmod>
     </url>
     <url>
          <loc>https://doc.edgefirst.ai/saas/platforms/ssh/</loc>
-         <lastmod>2025-05-22</lastmod>
+         <lastmod>2025-05-27</lastmod>
     </url>
     <url>
          <loc>https://doc.edgefirst.ai/saas/platforms/updates/</loc>
-         <lastmod>2025-05-22</lastmod>
+         <lastmod>2025-05-27</lastmod>
     </url>
     <url>
          <loc>https://doc.edgefirst.ai/saas/platforms/walkthrough/</loc>
-         <lastmod>2025-05-22</lastmod>
+         <lastmod>2025-05-27</lastmod>
     </url>
     <url>
          <loc>https://doc.edgefirst.ai/saas/studio/</loc>
-         <lastmod>2025-05-22</lastmod>
+         <lastmod>2025-05-27</lastmod>
     </url>
     <url>
          <loc>https://doc.edgefirst.ai/saas/studio/agtg/</loc>
-         <lastmod>2025-05-22</lastmod>
+         <lastmod>2025-05-27</lastmod>
     </url>
     <url>
          <loc>https://doc.edgefirst.ai/saas/studio/dataio/</loc>
-         <lastmod>2025-05-22</lastmod>
+         <lastmod>2025-05-27</lastmod>
     </url>
     <url>
          <loc>https://doc.edgefirst.ai/saas/studio/navigation/</loc>
-         <lastmod>2025-05-22</lastmod>
+         <lastmod>2025-05-27</lastmod>
     </url>
     <url>
          <loc>https://doc.edgefirst.ai/saas/studio/projects/</loc>
-         <lastmod>2025-05-22</lastmod>
+         <lastmod>2025-05-27</lastmod>
     </url>
     <url>
          <loc>https://doc.edgefirst.ai/saas/studio/snapshots/</loc>
-         <lastmod>2025-05-22</lastmod>
+         <lastmod>2025-05-27</lastmod>
     </url>
     <url>
          <loc>https://doc.edgefirst.ai/saas/studio/datasets/</loc>
-         <lastmod>2025-05-22</lastmod>
+         <lastmod>2025-05-27</lastmod>
     </url>
     <url>
          <loc>https://doc.edgefirst.ai/saas/studio/datasets/annotations/</loc>
-         <lastmod>2025-05-22</lastmod>
+         <lastmod>2025-05-27</lastmod>
     </url>
     <url>
          <loc>https://doc.edgefirst.ai/saas/studio/datasets/gallery/</loc>
-         <lastmod>2025-05-22</lastmod>
+         <lastmod>2025-05-27</lastmod>
     </url>
     <url>
          <loc>https://doc.edgefirst.ai/saas/studio/user/</loc>
-         <lastmod>2025-05-22</lastmod>
+         <lastmod>2025-05-27</lastmod>
     </url>
     <url>
          <loc>https://doc.edgefirst.ai/saas/studio/user/billing/</loc>
-         <lastmod>2025-05-22</lastmod>
+         <lastmod>2025-05-27</lastmod>
     </url>
     <url>
          <loc>https://doc.edgefirst.ai/saas/studio/user/organization/</loc>
-         <lastmod>2025-05-22</lastmod>
+         <lastmod>2025-05-27</lastmod>
     </url>
     <url>
          <loc>https://doc.edgefirst.ai/saas/studio/user/profile/</loc>
-         <lastmod>2025-05-22</lastmod>
+         <lastmod>2025-05-27</lastmod>
     </url>
 </urlset>

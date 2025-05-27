@@ -1,3 +1,14 @@
+"""
+This script is an example for deplying ONNX models in a PC. 
+
+Modify the following lines to your specification.
+
+53: model_path = "modelpack.onnx"
+66: image_path = "sample-coffee-cup.jpg"
+
+Run the script using `python onnx_example.py`
+"""
+
 import numpy as np
 from PIL import Image, ImageFont, ImageDraw
 import onnxruntime

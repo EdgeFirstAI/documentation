@@ -15,6 +15,9 @@
 ## Model
 ::: edgefirst.schemas.edgefirst_msgs.Model
 
+## ModelInfo
+::: edgefirst.schemas.edgefirst_msgs.ModelInfo
+
 ## RadarCube
 ::: edgefirst.schemas.edgefirst_msgs.RadarCube
 

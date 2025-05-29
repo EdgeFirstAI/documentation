@@ -7,7 +7,16 @@ The lidar topics are managed by the `lidarpub` service and handles interfacing w
 The lidar topics are published under the `/lidar` namespace and offers the following sub-topics: `/lidar/points`, `/lidar/reflect`, `/lidar/depth`, and `/lidar/clusters`. The density of the lidar points, the frequency of updates, and the field of view of the lidar are configurable through the `lidarpub` service. See lidarpub service configuration documentation for details.
 
 ## /lidar/points
-The `/lidar/points` topic publishes information about the lidar points using the [PointCloud2](../api/sensor_msgs.md#pointcloud2) schema. The point cloud will have the fields `x`, `y`, `z`, and `reflect`, all with the Float32 datatype. 
+The `/lidar/points` topic publishes information about the lidar points using the [PointCloud2](../api/sensor_msgs.md#pointcloud2) schema. The point cloud will have the fields `x`, `y`, `z`, and `reflect`.
+
+| Field Name | Datatype | Units | Notes                               |
+|------------|----------|-------|-------------------------------------|
+| x          | float32  | m     | Represent XYZ location of the point |
+| y          | float32  | m     | Represent XYZ location of the point |
+| z          | float32  | m     | Represent XYZ location of the point |
+| reflect    | uint8    |       | Intensity of reflected LiDAR beam   |
+
+The XYZ coordinate system follows the [standard ROS convention](https://www.ros.org/reps/rep-0103.html#coordinate-frame-conventions) of x forward, y left, z up. However, note that the `lidar` frame is rotated 180 degrees from the `base_link` frame, with forward facing the back of the camera.
 
 **Usage** | **Link**
 :------------------:|:------------------:
@@ -15,7 +24,7 @@ WebUI | []()
 Foxglove | [PointCloud2 Example]()
 SDK | [Lidar Points Example](../dev/examples/lidar.md#lidar-points)
 
-The XYZ coordinate system follows the [standard ROS convention](https://www.ros.org/reps/rep-0103.html#coordinate-frame-conventions) of x forward, y left, z up. However, note that the `lidar` frame is rotated 180 degrees from the `base_link` frame, with forward facing the back of the camera.
+
 
 ## /lidar/reflect
 The `/lidar/reflect` topic publishes the reflectivity map using the [Image](../api/sensor_msgs.md#image) schema. The encoding of the image is `mono8`. The value of a pixel is the reflectivity of that point. The width of a pixel depends on the number of columns configured on the lidar. 
@@ -36,7 +45,19 @@ Foxglove | [Image Example]()
 SDK | [Lidar Depth Example](../dev/examples/lidar.md#lidar-depth)
 
 ## /lidar/clusters
-The `/lidar/clusters` topic publishes the lidar clusters pointcloud using the [PointCloud2](../api/sensor_msgs.md#pointcloud2) schema.
+The `/lidar/clusters` topic publishes the lidar clusters pointcloud using the [PointCloud2](../api/sensor_msgs.md#pointcloud2) schema. The point cloud will have the fields `x`, `y`, `z`, `cluster_id`, and `reflect`.
+
+| Field Name | Datatype | Units | Notes                                                                |
+|------------|----------|-------|----------------------------------------------------------------------|
+| x          | float32  | m     | Represent XYZ location of the point                                  |
+| y          | float32  | m     | Represent XYZ location of the point                                  |
+| z          | float32  | m     | Represent XYZ location of the point                                  |
+| cluster_id | uint32   |       | 0 means not clustered.  Otherwise same cluster id means same cluster |
+| reflect    | uint8    |       | Intensity of reflected LiDAR beam                                    |
+
+The XYZ coordinate system follows the [standard ROS convention](https://www.ros.org/reps/rep-0103.html#coordinate-frame-conventions) of x forward, y left, z up. However, note that the `lidar` frame is rotated 180 degrees from the `base_link` frame, with forward facing the back of the camera.
+
+This topic is only published if the lidarpub service is configured with the clustering task enabled.
 
 **Usage** | **Link**
 :------------------:|:------------------:

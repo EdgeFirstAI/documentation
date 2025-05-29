@@ -151,7 +151,7 @@ In this demo, we will show running the Vision model fetched above for multitask 
 To run inference on the model you need to have an input image.  You can capture an image with a mobile device.  A sample image is shown below.
 
 <figure markdown="span">
-![Sample Coffee Cup Image](assets/sample-coffee-cup.jpg){align=center}
+![Sample Coffee Cup Image](../../assets/deployment/sample-coffee-cup.jpg){align=center}
 <figcaption>Sample Coffee Cup Image</figcaption>
 </figure>
 
@@ -438,17 +438,17 @@ This output visualization will look like the following for the models ran.
 
 | ONNX Output                     | TFLite Output               | 
 |---------------------------------|-----------------------------|
-| ![ONNX](assets/output_onnx.png) | ![TFLite](assets/output_tflite.png) |
+| ![ONNX](../../assets/deployment/output_onnx.png) | ![TFLite](../../assets/deployment/output_tflite.png) |
 
 ## Appendix
 
 ### ONNX Python Script
 
-The python example provided above for deploying the ONNX model can be downloaded as a single python script by clicking on this [link](assets/onnx.py){: download="onnx_example.py" }. 
+The python example provided above for deploying the ONNX model can be downloaded as a single python script by clicking on this [link](assets/onnx.py){: download="onnx_example.py" }.  Ensure to modify the lines that points to the ONNX model and the input image and then run the script using `python onnx_example.py`.
 
 ### TFLite Python Script
 
-The python example provided above for deploying the TFLite model can be downloaded as a single python script by clicking on this [link](assets/tflite.py){: download="tflite_example.py" }. 
+The python example provided above for deploying the TFLite model can be downloaded as a single python script by clicking on this [link](assets/tflite.py){: download="tflite_example.py" }.  Ensure to modify the lines that points to the TFLite model and the input image and then run the script using `python tflite_example.py`.
 
 ### NMS Code Snippet
 

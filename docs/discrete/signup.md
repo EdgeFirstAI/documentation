@@ -9,7 +9,7 @@
     <figcaption>Create a New Account</figcaption>
     </figure>
 
-    When you first sign up to EdgeFirst Studio, you will also automatically create your own organization.  You can specify the name of your organization when you first sign up denoted by the "Organization" field.  An organization allows multiple users to access your projects, but at the start, you will be the only user in your organization.  However, you can create multiple users/profiles in your organization to allow collaboration between members in your team.  In this way, multiple members can be assigned to your organization.  You can find more information for [managing your organization](../studio/user/organization.md).
+    When you first sign up to EdgeFirst Studio, you will also automatically create your own organization.  You can specify the name of your organization when you first sign up denoted by the "Organization" field.  An organization allows multiple users to access your projects, but at the start, you will be the only user in your organization.  However, you can create multiple users/profiles in your organization to allow collaboration between members in your team.  In this way, multiple members can be assigned to your organization.  You can find more information for [managing your organization](../studio/user/organization.md). Otherwise, follow this [workflow](../studio/user/index.md#inviting-new-users) for inviting new users to your organization.
 
     A new organization is given $20.00 worth of credits to allow trials of the features in EdgeFirst Studio.  The credits in the organization will be shared amongst the members.  You can find more information on the [billing details](../studio/user/billing.md). 
 

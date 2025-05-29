@@ -14,6 +14,15 @@ The `/radar/info` topic publishes information about the current radar configurat
 ## /radar/targets
 The `/radar/targets` topic publishes information about the received radar points using the [PointCloud2](../api/sensor_msgs.md#pointcloud2) schema. The point cloud will have the fields `x`, `y`, `z`, `speed`, `power`, and `rcs` (radar cross section), all with the Float32 datatype. 
 
+| Field Name | Datatype | Units | Notes                                              |
+|------------|----------|-------|----------------------------------------------------|
+| x          | float32  | m     | Represent XYZ location of the point                |
+| y          | float32  | m     | Represent XYZ location of the point                |
+| z          | float32  | m     | Represent XYZ location of the point                |
+| speed      | float32  | m/s   | Only measures speed towards or away from the radar |
+| power      | float32  |       |                                                    |
+| rcs        | float32  |       | Radar cross section                                |
+
 The XYZ coordinate system follows the [standard ROS convention](https://www.ros.org/reps/rep-0103.html#coordinate-frame-conventions) of x forward, y left, z up.
 
 **Usage** | **Link**
@@ -23,7 +32,17 @@ Foxglove | []()
 SDK | [Radar Targets Example](../dev/examples/radar.md#radar-targets)
 
 ## /radar/clusters
-The `/radar/clusters` topic publishes information about the received radar points using the [PointCloud2](../api/sensor_msgs.md#pointcloud2) schema. The point cloud will have the fields `x`, `y`, `z`, `speed`, `power`, `rcs` (radar cross section), and `cluster_id`, all with the Float32 datatype. While `cluster_id` is formatted as a Float32 datatype, the values contained by the field will be an integer. A cluster ID of 0 means the point is not considered in a cluster, otherwise any points with the same cluster ID are in the same cluster.
+The `/radar/clusters` topic publishes information about the received radar points using the [PointCloud2](../api/sensor_msgs.md#pointcloud2) schema. The point cloud will have the fields `x`, `y`, `z`, `speed`, `power`, `rcs` (radar cross section), and `cluster_id`.
+
+| Field Name | Datatype | Units | Notes                                                                                              |
+|------------|----------|-------|----------------------------------------------------------------------------------------------------|
+| x          | float32  | m     | Represent XYZ location of the point                                                                |
+| y          | float32  | m     | Represent XYZ location of the point                                                                |
+| z          | float32  | m     | Represent XYZ location of the point                                                                |
+| speed      | float32  | m/s   | Only measures speed towards or away from the radar                                                 |
+| power      | float32  |       |                                                                                                    |
+| rcs        | float32  |       | Radar cross section                                                                                |
+| cluster_id | float32  |       | Will always be integer valued. 0 means not clustered. Otherwise same cluster id means same cluster |
 
 The XYZ coordinate system follows the [standard ROS convention](https://www.ros.org/reps/rep-0103.html#coordinate-frame-conventions) of x forward, y left, z up. 
 

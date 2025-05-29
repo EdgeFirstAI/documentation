@@ -9,19 +9,56 @@ The fusion topics are managed by the `fusion` service and handles running radar 
 The model topics are published under the `/fusion` namespace and offers the following sub-topics: `/fusion/targets`, `/fusion/occupancy`, `/fusion/model_output`. Fusion parameters are configurable through the `fusion` service. See fusion service configuration documentation for details.
 
 
-## /fusion/targets
+## /fusion/radar
 
-The `/fusion/targets` topic publishes information about the received radar points using the [PointCloud2](../api/sensor_msgs.md#pointcloud2) schema. The point cloud will contain the same fields and data as the input point cloud (by default, `/radar/targets`), and two additional fields: `fusion_class` and `vision_class`. The two additional fields are both Float32 datatype, but the values is always integer. The `fusion_class` is the class of the radar point as determined by the radar fusion model. The `vision_class` is the class of the radar point as determined by projection of the radar point onto the camera segmentation. If the input data is clustered, points with the same non-zero cluster ID will have the same fusion/vision class. 
+The `/fusion/radar` topic publishes information about the received radar points using the [PointCloud2](../api/sensor_msgs.md#pointcloud2) schema. The point cloud will contain the same fields and data as the input point cloud (by default, `/radar/clusters`), and two additional fields: `fusion_class` and `vision_class`. The two additional fields are both Float32 datatype, but the values is always integer. The `fusion_class` is the class of the radar point as determined by the radar fusion model. The `vision_class` is the class of the radar point as determined by projection of the radar point onto the camera segmentation. If the input data is clustered, points with the same non-zero cluster ID will have the same fusion/vision class. 
 
-The XYZ coordinate system follows the input data.
+| Field Name   | Datatype | Units | Notes                                                                                              |
+|--------------|----------|-------|----------------------------------------------------------------------------------------------------|
+| x            | float32  | m     | Represent XYZ location of the point                                                                |
+| y            | float32  | m     | Represent XYZ location of the point                                                                |
+| z            | float32  | m     | Represent XYZ location of the point                                                                |
+| speed        | float32  | m/s   | Only measures speed towards or away from the radar                                                 |
+| power        | float32  |       |                                                                                                    |
+| rcs          | float32  |       | Radar cross section                                                                                |
+| cluster_id   | float32  |       | Will always be integer valued. 0 means not clustered. Otherwise same cluster id means same cluster |
+| fusion_class | uint8    |       | Points in the same cluster will have the same class                                                |
+| vision_class | uint8    |       | Points in the same cluster will have the same class                                                |
+
+The XYZ coordinate system follows the [standard ROS convention](https://www.ros.org/reps/rep-0103.html#coordinate-frame-conventions) of x forward, y left, z up. 
+
+## /fusion/lidar
+
+The `/fusion/lidar` topic publishes information about the received lidar points using the [PointCloud2](../api/sensor_msgs.md#pointcloud2) schema. The point cloud will contain the same fields and data as the input point cloud (by default, `/lidar/clusters`), and two additional fields: `fusion_class` and `vision_class`. The `fusion_class` is the class of the radar point as determined by the radar fusion model. The `vision_class` is the class of the radar point as determined by projection of the radar point onto the camera segmentation. If the input data is clustered, points with the same non-zero cluster ID will have the same fusion/vision class. 
+
+| Field Name   | Datatype | Units | Notes                                                               |
+|--------------|----------|-------|---------------------------------------------------------------------|
+| x            | float32  | m     | Represent XYZ location of the point                                 |
+| y            | float32  | m     | Represent XYZ location of the point                                 |
+| z            | float32  | m     | Represent XYZ location of the point                                 |
+| reflect      | uint8    |       | Only measures speed towards or away from the radar                  |
+| cluster_id   | uint32   |       | 0 means not clustered. Otherwise same cluster id means same cluster |
+| fusion_class | uint8    |       | Points in the same cluster will have the same class                 |
+| vision_class | uint8    |       | Points in the same cluster will have the same class                 |
+
+The XYZ coordinate system follows the [standard ROS convention](https://www.ros.org/reps/rep-0103.html#coordinate-frame-conventions) of x forward, y left, z up. 
 
 ## /fusion/occupancy
 
-The `/fusion/targets` topic publishes information about location of detected objects using the [PointCloud2](../api/sensor_msgs.md#pointcloud2) schema.
+The `/fusion/occupancy` topic publishes information about location of detected objects using the [PointCloud2](../api/sensor_msgs.md#pointcloud2) schema.
 
-If the input data is clustered, the point cloud will have the fields `x`, `y`, `z`, `speed`, `vision_class`, `fusion_class`, `count` and `cluster_id`, all with the Float32 datatype. There will only be one point for each cluster id, located at the centriod of the cluster. The count will contain the number of points in the cluster. The values of the `vision_class`, `fusion_class`, `count` and `cluster_id` will be integer. The XYZ coordinate system follows the input data.
+The point cloud will have the fields `x`, `y`, `z`, `cluster_id`, `vision_class`, `fusion_class`. If the input data is clustered, there will only be one point for each cluster id, located at the centriod of the cluster. If the input data is not clustered, the points will be located at the center of cells on a radial grid, as defined in the fusion service configuration.
 
-If the input data is not clustered, the point cloud will have the fields `x`, `y`, `z`, `speed`, `vision_class`, `fusion_class`, `count`, all with the Float32 datatype. The points will be located at the center of cells on a radial grid, as defined in the fusion service configuration. The count will contain the number of points in the cell. The values of the `vision_class`, `fusion_class`, `count` and `cluster_id` will be integer. The XYZ coordinate system follows the [standard ROS convention](https://www.ros.org/reps/rep-0103.html#coordinate-frame-conventions) of x forward, y left, z up.
+| Field Name   | Datatype | Units | Notes                                                               |
+|--------------|----------|-------|---------------------------------------------------------------------|
+| x            | float32  | m     | Represent XYZ location of the point                                 |
+| y            | float32  | m     | Represent XYZ location of the point                                 |
+| z            | float32  | m     | Represent XYZ location of the point                                 |
+| cluster_id   | uint32   |       | 0 means not clustered. Otherwise same cluster id means same cluster |
+| fusion_class | uint8    |       | Points in the same cluster will have the same class                 |
+| vision_class | uint8    |       | Points in the same cluster will have the same class                 |
+
+The XYZ coordinate system follows the [standard ROS convention](https://www.ros.org/reps/rep-0103.html#coordinate-frame-conventions) of x forward, y left, z up. 
 
 ## /fusion/model_output
-The `/fusion/targets` topic publishes information about the output grid the fusion model the custom [Mask](../api/edgefirst_msgs.md#mask) schema. This contains the fusion model output as a mask. This can be used to confirm the model is working as expected.
+The `/fusion/model_output` topic publishes information about the output grid the fusion model with the custom [Mask](../api/edgefirst_msgs.md#mask) schema. This contains the fusion model output as a mask. This can be used to confirm the model is working as expected.

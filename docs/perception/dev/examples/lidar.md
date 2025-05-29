@@ -73,55 +73,38 @@ The next step is to decode the PCD data. Please see [examples/pcd](./pcd.md) for
     let points = decode_pcd(pcd);
     ```
 
-
 ### Process the Data
 
-We can now process the data. In this example we will find the maximum and minimum values for x, y, z, and reflect
+We can now process the data. In this example we will find the values for x, y, z, and reflect.
+The PCD contains x, y, z, and reflect values. The x, y, z are float32 and represent the point's location, in meters. The reflect is uint8 and represents the intensity of the reflected light.
 
 === "Python"
 
     ``` python
-    min_x = min([p.x for p in points])
-    max_x = max([p.x for p in points])
-
-    min_y = min([p.y for p in points])
-    max_y = max([p.y for p in points])
-
-    min_z = min([p.z for p in points])
-    max_z = max([p.z for p in points])
-
-    min_refl = min([p.fields["reflect"] for p in points])
-    max_refl = max([p.fields["reflect"] for p in points])
+    x_vals = [p.x for p in points]
+    y_vals = [p.y for p in points]
+    z_vals = [p.z for p in points]
+    reflect = [p.fields["reflect"] for p in points]
     ```
 
 === "Rust"
 
     ``` rust
-    let min_x = points.iter().map(|p| p.x).fold(f64::INFINITY, f64::min);
-    let max_x = points.iter().map(|p| p.x).fold(f64::NEG_INFINITY, f64::max);
-
-    let min_y = points.iter().map(|p| p.y).fold(f64::INFINITY, f64::min);
-    let max_y = points.iter().map(|p| p.y).fold(f64::NEG_INFINITY, f64::max);
-
-    let min_z = points.iter().map(|p| p.z).fold(f64::INFINITY, f64::min);
-    let max_z = points.iter().map(|p| p.z).fold(f64::NEG_INFINITY, f64::max);
-
-    let min_refl = points
+    let x_vals: Vec<_> = points.iter().map(|p| p.x).collect();
+    let y_vals: Vec<_> = points.iter().map(|p| p.y).collect();
+    let z_vals: Vec<_> = points.iter().map(|p| p.z).collect();
+    let reflect = points
         .iter()
         .map(|p| *p.fields.get("reflect").unwrap())
-        .fold(f64::INFINITY, f64::min);
-    let max_refl = points
-        .iter()
-        .map(|p| *p.fields.get("reflect").unwrap())
-        .fold(f64::NEG_INFINITY, f64::max);
+        .collect();
     ```
 
 ### Results
 The command line output will appear as the following
 ```
-Recieved 24448 lidar points. Values: x: [-15.72, -0.01] y: [-10.52, 4.92]       z: [-2.96, 3.44]        reflect: [0.00, 167.00]
-Recieved 24448 lidar points. Values: x: [-15.77, -0.01] y: [-10.54, 4.87]       z: [-1.76, 3.43]        reflect: [0.00, 166.00]
-Recieved 24448 lidar points. Values: x: [-15.71, -0.01] y: [-10.50, 4.94]       z: [-2.30, 3.44]        reflect: [0.00, 178.00]
+Recieved 24448 lidar points.
+Recieved 24448 lidar points.
+Recieved 24448 lidar points.
 ```
 
 When displaying the results through Rerun you will see the pointcloud data gathered by the lidar.
@@ -312,28 +295,30 @@ Because the depth image is `mono16` encoded, we need to decode the byte array in
     ```
 
 ### Process the Data
-We can now process the data. In this example we will find the maximum and minimum depth values.
+We can now process the data. In this example we will reshape the depth values into an image. The image will be in L8 format, so we need
+to divide by 256.
 
 === "Python"
 
     ``` python
-    min_depth_mm = min(depth_vals)
-    max_depth_mm = max(depth_vals)
+    data = (np.array(depth_vals).reshape((depth.height, depth.width)) / 256).astype(np.uint8)
+    rerun.log("lidar/depth", rr.Image(data))
     ```
 
 === "Rust"
 
     ``` rust
-    let min_depth_mm = *depth_vals.iter().min().unwrap();
-    let max_depth_mm = *depth_vals.iter().max().unwrap();
+    let img: Vec<_> = depth_vals.iter().map(|f| (f / 256) as u8).collect();
+    let img = rerun::Image::from_l8(img, [depth.width, depth.height]);
+    rerun_rec.log("lidar/depth", &img)?;
     ```
 
 ### Results
 The command line output will appear as the following
 ```
-Recieved 382x64 depth image. Depth: [0, 19016]
-Recieved 382x64 depth image. Depth: [0, 18968]
-Recieved 382x64 depth image. Depth: [0, 18944]
+Recieved 382x64 depth image.
+Recieved 382x64 depth image.
+Recieved 382x64 depth image.
 ```
 
 When displaying the results through Rerun you will see a depth map of what the lidar can see.

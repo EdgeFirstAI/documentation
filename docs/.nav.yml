@@ -38,7 +38,7 @@ nav:
       - datasets/tutorials/annotations.md
       - datasets/tutorials/management.md
       - datasets/tutorials/import.md
-    - datasets/zoo.md
+    # - datasets/zoo.md
   - Models:
     - models/index.md
     - ModelPack:

@@ -4096,6 +4096,54 @@
 <p>The <code>/radar/info</code> topic publishes information about the current radar configuration. It describes the state of the center frequency, frequency sweep, range toggle, and detection frequency of the radar. </p>
 <h2 id="radartargets">/radar/targets</h2>
 <p>The <code>/radar/targets</code> topic publishes information about the received radar points using the <a href="../../api/sensor_msgs/#pointcloud2">PointCloud2</a> schema. The point cloud will have the fields <code>x</code>, <code>y</code>, <code>z</code>, <code>speed</code>, <code>power</code>, and <code>rcs</code> (radar cross section), all with the Float32 datatype. </p>
+<table>
+<thead>
+<tr>
+<th>Field Name</th>
+<th>Datatype</th>
+<th>Units</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>x</td>
+<td>float32</td>
+<td>m</td>
+<td>Represent XYZ location of the point</td>
+</tr>
+<tr>
+<td>y</td>
+<td>float32</td>
+<td>m</td>
+<td>Represent XYZ location of the point</td>
+</tr>
+<tr>
+<td>z</td>
+<td>float32</td>
+<td>m</td>
+<td>Represent XYZ location of the point</td>
+</tr>
+<tr>
+<td>speed</td>
+<td>float32</td>
+<td>m/s</td>
+<td>Only measures speed towards or away from the radar</td>
+</tr>
+<tr>
+<td>power</td>
+<td>float32</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>rcs</td>
+<td>float32</td>
+<td></td>
+<td>Radar cross section</td>
+</tr>
+</tbody>
+</table>
 <p>The XYZ coordinate system follows the <a href="https://www.ros.org/reps/rep-0103.html#coordinate-frame-conventions">standard ROS convention</a> of x forward, y left, z up.</p>
 <table>
 <thead>
@@ -4120,7 +4168,61 @@
 </tbody>
 </table>
 <h2 id="radarclusters">/radar/clusters</h2>
-<p>The <code>/radar/clusters</code> topic publishes information about the received radar points using the <a href="../../api/sensor_msgs/#pointcloud2">PointCloud2</a> schema. The point cloud will have the fields <code>x</code>, <code>y</code>, <code>z</code>, <code>speed</code>, <code>power</code>, <code>rcs</code> (radar cross section), and <code>cluster_id</code>, all with the Float32 datatype. While <code>cluster_id</code> is formatted as a Float32 datatype, the values contained by the field will be an integer. A cluster ID of 0 means the point is not considered in a cluster, otherwise any points with the same cluster ID are in the same cluster.</p>
+<p>The <code>/radar/clusters</code> topic publishes information about the received radar points using the <a href="../../api/sensor_msgs/#pointcloud2">PointCloud2</a> schema. The point cloud will have the fields <code>x</code>, <code>y</code>, <code>z</code>, <code>speed</code>, <code>power</code>, <code>rcs</code> (radar cross section), and <code>cluster_id</code>.</p>
+<table>
+<thead>
+<tr>
+<th>Field Name</th>
+<th>Datatype</th>
+<th>Units</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>x</td>
+<td>float32</td>
+<td>m</td>
+<td>Represent XYZ location of the point</td>
+</tr>
+<tr>
+<td>y</td>
+<td>float32</td>
+<td>m</td>
+<td>Represent XYZ location of the point</td>
+</tr>
+<tr>
+<td>z</td>
+<td>float32</td>
+<td>m</td>
+<td>Represent XYZ location of the point</td>
+</tr>
+<tr>
+<td>speed</td>
+<td>float32</td>
+<td>m/s</td>
+<td>Only measures speed towards or away from the radar</td>
+</tr>
+<tr>
+<td>power</td>
+<td>float32</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>rcs</td>
+<td>float32</td>
+<td></td>
+<td>Radar cross section</td>
+</tr>
+<tr>
+<td>cluster_id</td>
+<td>float32</td>
+<td></td>
+<td>Will always be integer valued. 0 means not clustered. Otherwise same cluster id means same cluster</td>
+</tr>
+</tbody>
+</table>
 <p>The XYZ coordinate system follows the <a href="https://www.ros.org/reps/rep-0103.html#coordinate-frame-conventions">standard ROS convention</a> of x forward, y left, z up. </p>
 <p>This topic is only published if the radarpub service is configured with the clustering task enabled.</p>
 <table>

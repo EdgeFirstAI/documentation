@@ -4073,7 +4073,44 @@
 </ul>
 <p>The lidar topics are published under the <code>/lidar</code> namespace and offers the following sub-topics: <code>/lidar/points</code>, <code>/lidar/reflect</code>, <code>/lidar/depth</code>, and <code>/lidar/clusters</code>. The density of the lidar points, the frequency of updates, and the field of view of the lidar are configurable through the <code>lidarpub</code> service. See lidarpub service configuration documentation for details.</p>
 <h2 id="lidarpoints">/lidar/points</h2>
-<p>The <code>/lidar/points</code> topic publishes information about the lidar points using the <a href="../../api/sensor_msgs/#pointcloud2">PointCloud2</a> schema. The point cloud will have the fields <code>x</code>, <code>y</code>, <code>z</code>, and <code>reflect</code>, all with the Float32 datatype. </p>
+<p>The <code>/lidar/points</code> topic publishes information about the lidar points using the <a href="../../api/sensor_msgs/#pointcloud2">PointCloud2</a> schema. The point cloud will have the fields <code>x</code>, <code>y</code>, <code>z</code>, and <code>reflect</code>.</p>
+<table>
+<thead>
+<tr>
+<th>Field Name</th>
+<th>Datatype</th>
+<th>Units</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>x</td>
+<td>float32</td>
+<td>m</td>
+<td>Represent XYZ location of the point</td>
+</tr>
+<tr>
+<td>y</td>
+<td>float32</td>
+<td>m</td>
+<td>Represent XYZ location of the point</td>
+</tr>
+<tr>
+<td>z</td>
+<td>float32</td>
+<td>m</td>
+<td>Represent XYZ location of the point</td>
+</tr>
+<tr>
+<td>reflect</td>
+<td>uint8</td>
+<td></td>
+<td>Intensity of reflected LiDAR beam</td>
+</tr>
+</tbody>
+</table>
+<p>The XYZ coordinate system follows the <a href="https://www.ros.org/reps/rep-0103.html#coordinate-frame-conventions">standard ROS convention</a> of x forward, y left, z up. However, note that the <code>lidar</code> frame is rotated 180 degrees from the <code>base_link</code> frame, with forward facing the back of the camera.</p>
 <table>
 <thead>
 <tr>
@@ -4096,7 +4133,6 @@
 </tr>
 </tbody>
 </table>
-<p>The XYZ coordinate system follows the <a href="https://www.ros.org/reps/rep-0103.html#coordinate-frame-conventions">standard ROS convention</a> of x forward, y left, z up. However, note that the <code>lidar</code> frame is rotated 180 degrees from the <code>base_link</code> frame, with forward facing the back of the camera.</p>
 <h2 id="lidarreflect">/lidar/reflect</h2>
 <p>The <code>/lidar/reflect</code> topic publishes the reflectivity map using the <a href="../../api/sensor_msgs/#image">Image</a> schema. The encoding of the image is <code>mono8</code>. The value of a pixel is the reflectivity of that point. The width of a pixel depends on the number of columns configured on the lidar. </p>
 <table>
@@ -4146,7 +4182,51 @@
 </tbody>
 </table>
 <h2 id="lidarclusters">/lidar/clusters</h2>
-<p>The <code>/lidar/clusters</code> topic publishes the lidar clusters pointcloud using the <a href="../../api/sensor_msgs/#pointcloud2">PointCloud2</a> schema.</p>
+<p>The <code>/lidar/clusters</code> topic publishes the lidar clusters pointcloud using the <a href="../../api/sensor_msgs/#pointcloud2">PointCloud2</a> schema. The point cloud will have the fields <code>x</code>, <code>y</code>, <code>z</code>, <code>cluster_id</code>, and <code>reflect</code>.</p>
+<table>
+<thead>
+<tr>
+<th>Field Name</th>
+<th>Datatype</th>
+<th>Units</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>x</td>
+<td>float32</td>
+<td>m</td>
+<td>Represent XYZ location of the point</td>
+</tr>
+<tr>
+<td>y</td>
+<td>float32</td>
+<td>m</td>
+<td>Represent XYZ location of the point</td>
+</tr>
+<tr>
+<td>z</td>
+<td>float32</td>
+<td>m</td>
+<td>Represent XYZ location of the point</td>
+</tr>
+<tr>
+<td>cluster_id</td>
+<td>uint32</td>
+<td></td>
+<td>0 means not clustered.  Otherwise same cluster id means same cluster</td>
+</tr>
+<tr>
+<td>reflect</td>
+<td>uint8</td>
+<td></td>
+<td>Intensity of reflected LiDAR beam</td>
+</tr>
+</tbody>
+</table>
+<p>The XYZ coordinate system follows the <a href="https://www.ros.org/reps/rep-0103.html#coordinate-frame-conventions">standard ROS convention</a> of x forward, y left, z up. However, note that the <code>lidar</code> frame is rotated 180 degrees from the <code>base_link</code> frame, with forward facing the back of the camera.</p>
+<p>This topic is only published if the lidarpub service is configured with the clustering task enabled.</p>
 <table>
 <thead>
 <tr>

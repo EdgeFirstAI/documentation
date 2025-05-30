@@ -13,17 +13,17 @@ To reduce the effort required during the annotation process, EdgeFirst Studio pr
 
 The auto-annotation feature is found in the dataset gallery in EdgeFirst Studio.  This feature will preload all frames of a *video* sequence in the dataset into SAM-2 to generate segmentation masks, 2D bounding boxes, 3D bounding boxes (For Raivin/LiDAR Only) by tracking the object across the frames. 
 
-First [navigate to the dataset gallery](management.md#viewing-datasets) and click on the "Video Segment Tool" as indicated in red below to open the Automatic Ground Truth Generation (AGTG) Manager View.
+First [navigate to the dataset gallery](management.md#viewing-datasets) and click on the "AI Segment Tool" as indicated in red below to open the Automatic Ground Truth Generation (AGTG) Manager View.
 
 <figure markdown="span">
 ![Select the Video Segment Tool](../assets/agtg-segment-tool.jpg){ align=center }
-<figcaption>Select the Video Segment Tool</figcaption>
+<figcaption>Select the AI Segment Tool</figcaption>
 </figure>
 
-On first use, you'll find that there are no AGTG servers currently launched.  Click on "Launch AGTG Server" on the right.  This will take some time to initialize the server.  A progress will appear with an indication of the length of time to launch the server.  
+On first use, you will be shown a dialog say that a new AGTG server will be launched. This server will remain active while active even if the screen is closed. The AGTG server terminate automatically after 15 minutes of inactivity or manually terminating the server. The server takes 3-5 minutes for initialization.  A progress will appear with an indication of the length of time to launch the server.  
 
 <figure markdown="span">
-![Launch AGTG Server](../assets/video-launch-agtg-server.jpg){ align=center }
+![Launch AGTG Server](image.png){ align=center }
 <figcaption>Launch AGTG Server</figcaption>
 </figure>
 
@@ -36,14 +36,8 @@ On first use, you'll find that there are no AGTG servers currently launched.  Cl
 
     This server is costing credits to run.  An inactivity of 15 minutes will auto-terminate this server.  Otherwise, once you have completed the annotations, please ensure to [terminate the AGTG server](#terminate-agtg-server) to avoid spending more of your credits. 
 
-Once the server has been initialized, you can now specify the starting frame (default to the current frame) and the stop frame (default to the end frame) of the annotation propagation.  This setting specifies the window of propagation where SAM-2 will only propagate across these video frames specified.  Once this setting has been specified, click on "Initialize State" to load the specified video frames into SAM-2.  This step may take some time to initialize.  
 
-<figure markdown="span">
-![Initialize the Video State](../assets/agtg-initialize-state.jpg){ align=center }
-<figcaption>Initialize the Video State</figcaption>
-</figure>
-
-Once the state has been initialized, let's first add a new object to annotate by clicking on the "+" next to "Select Objects".
+Once the server has been initialized, let's first add a new object to annotate by clicking on the "+" next to "Select Objects".
 
 <figure markdown="span">
 ![Add New Object](../assets/agtg-add-new-object.jpg){ align=center }

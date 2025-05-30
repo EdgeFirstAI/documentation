@@ -49,7 +49,7 @@ This process is used to generate 2D Bounding boxes, 2D segmentation masks, and 3
 
 <figure markdown="span">
 ![Video Segment Tool](assets/video-segment-tool.png){ align=center }
-<figcaption>Video Segment Tool</figcaption>
+<figcaption>AI Segment Tool</figcaption>
 </figure>
 
 6. Select the AGTG server (as started above) if not already selected.

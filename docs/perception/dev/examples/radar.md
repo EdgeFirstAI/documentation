@@ -421,3 +421,96 @@ The radar cube has shape: [2, 200, 4, 256]
 
 When displaying the results through Rerun you will see the radar cube displayed.
 ![alt text](assets/radar_cube.png)
+
+## Combined Example
+
+This example will demonstrate how to combine the camera feed with the radar messages to create a composite Rerun view. The main difference when using multiple messages in a script, is that we will change from waiting on the message to be received to having a callback function for when a message is received. Using the initial method, the script would hang while waiting for a message topic to be published, so if the messages are being published at different rates, the slowest message rate will limit the others.
+
+Sample Code: [Python](https://github.com/EdgeFirstAI/samples/blob/main/python/combined/camera_radar.py) 
+
+### Setting up the subscribers
+
+After setting up the Zenoh session, we will create a subscriber to the three topics
+
+=== "Python"
+
+    ``` python
+    # Create the necessary subscribers
+    cam_subscriber = session.declare_subscriber('rt/camera/h264', h264_callback)
+    boxes2d_subscriber = session.declare_subscriber('rt/model/boxes2d', boxes2d_callback)
+    radar_clusters_subscriber = session.declare_subscriber('rt/radar/clusters', radar_clusters_callback)
+    ```
+
+### Subscriber Callbacks
+We will now go through the callback functions that are in use for this example. These callback functions will make use of a global variable frame size to allow the script to properly resize the boxes to overlap the camera feed correctly. Each callback will receive the Zenoh message as the argument.
+
+=== "Python"
+
+    ``` python
+    raw_data = io.BytesIO() # Necessary for H264 decoding
+    container = av.open(raw_data, format='h264', mode='r') # Necessary for H264 decoding
+    frame_size = []
+    ```
+
+#### H264 Callback
+The H264 callback will receive the CompressedVideo message and decode it, loop through each frame received and log those frames to Rerun in addition to updating frame size.
+
+=== "Python"
+
+    ``` python
+    def h264_callback(msg):
+        global frame_size
+        raw_data.write(msg.payload.to_bytes())
+        raw_data.seek(0)
+        for packet in container.demux():
+            try:
+                if packet.size == 0:  # Skip empty packets
+                    continue
+                raw_data.seek(0)
+                raw_data.truncate(0)
+                for frame in packet.decode():  # Decode video frames
+                    frame_array = frame.to_ndarray(format='rgb24')  # Convert frame to numpy array
+                    frame_size = [frame_array.shape[1], frame_array.shape[0]]
+                    rr.log('camera', rr.Image(frame_array))
+            except Exception:  # Handle exceptions
+                continue  # Continue processing next packets
+    ```
+
+#### Boxes2D Callback
+The Boxes2D callback will receive the Detect message, loop through all detections found and then create lists of the centers and sizes received properly scaled by the frame size that was determined from the camera feed.
+
+=== "Python"
+
+    ``` python
+    def boxes2d_callback(msg):
+        detection = Detect.deserialize(msg.payload.to_bytes())    
+        for box in detection.boxes:
+            centers.append((int(box.center_x * frame_size[0]), int(box.center_y * frame_size[1])))
+            sizes.append((int(box.width * frame_size[0]), int(box.height * frame_size[1])))
+            print(centers)
+            print(sizes)
+            labels.append(box.label)
+        rr.log("camera/boxes", rr.Boxes2D(centers=centers, sizes=sizes, labels=labels))
+    ```
+
+#### Radar Callback
+The Radar callback will receive the pointcloud message, perform post-processing on the resultant data and then be sent to Rerun.
+
+=== "Python"
+
+    ``` python
+    def radar_clusters_callback(msg):
+        from edgefirst.schemas.sensor_msgs import PointCloud2
+        from edgefirst.schemas import decode_pcd, colormap, turbo_colormap
+        pcd = PointCloud2.deserialize(msg.payload.to_bytes())
+        points = decode_pcd(pcd)
+        clusters = [p for p in points if p.id > 0]
+        max_id = max(max([p.id for p in clusters]), 1)
+        pos = [[p.x, p.y, p.z] for p in clusters]
+        colors = [colormap(turbo_colormap, p.id/max_id) for p in clusters]
+        rr.log("/pointcloud/radar/clusters", rr.Points3D(pos, colors=colors))
+    ```
+
+### Results
+When displaying the results through Rerun you will see the combined image of the camera feed with boxes and the radar pointcloud.
+![alt text](assets/camera_radar.png)

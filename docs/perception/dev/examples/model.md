@@ -390,16 +390,6 @@ After setting up the Zenoh session, we will create a subscriber to the three top
     subscriber3 = session.declare_subscriber('rt/model/mask_compressed', mask_callback)
     ```
 
-=== "Rust"
-
-    ``` rust
-    // Create a subscriber for "rt/camera/info"
-    let subscriber = session
-        .declare_subscriber("rt/camera/info")
-        .await
-        .unwrap();
-    ```
-
 ### Subscriber Callbacks
 We will now go through the callback functions that are in use for this example. These callback functions will make use of a global variable frame size to allow the script to properly resize the segmentation mask and boxes to overlap the camera feed correctly. Each callback will receive the Zenoh message as the argument.
 

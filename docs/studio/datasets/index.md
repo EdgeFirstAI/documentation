@@ -90,9 +90,9 @@ To copy datasets proceed with the steps as follows:
 1. Open the dataset extended menu.
 2. Select *Copy Dataset*.
 3. Source project, dataset, and annotation set (if applicable) are auto-filled, but you can select a different source if required.
-3. Destination project is selected by default. If *New Dataset (Dataset name)* is selected, a new dataset along with any annotation set from source will be created in the destination project. Otherwise, you can choose a dataset and an annotation set as destination.
-4. Optionally select *Copy Selected Annotation Types Only* to only copy annotations and files that match the checked types.
-5. Select filters if required. Please refer to [Gallery Filters](gallery.md) for more information.  
+4. Destination project is selected by default. If *New Dataset (Dataset name)* is selected, a new dataset along with any annotation set from source will be created in the destination project. Otherwise, you can choose a dataset and an annotation set as destination.
+5. Optionally select *Copy Selected Annotation Types Only* to only copy annotations and files that match the checked types.
+6. Select filters if required. Please refer to [Gallery Filters](gallery.md) for more information.  
 
 ### Import Dataset
 

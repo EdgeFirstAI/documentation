@@ -20,7 +20,7 @@ This process is used to generate 2D Bounding boxes, 2D segmentation masks, and 3
 5. Select *AI Segment Tool*.
 
 <figure markdown="span">
-![AI Segment Tool](../assets/agtg/agtg-tool.png){ align=center }
+![AI Segment Tool](../assets/agtg/agtg_tool.png){ align=center }
 <figcaption>AI Segment Tool</figcaption>
 </figure>
 
@@ -28,7 +28,7 @@ This process is used to generate 2D Bounding boxes, 2D segmentation masks, and 3
 5. When the server is ready, start drawing bounding boxes or use clicks to create masks.
 
 <figure markdown="span">
-![AGTG Sidebar](../assets/agtgsidebar.png){ align=center }
+![AGTG Sidebar](../assets/agtg/sidebar.png){ align=center }
 <figcaption>AGTG Sidebar</figcaption>
 </figure>
 

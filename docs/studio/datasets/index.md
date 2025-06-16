@@ -103,7 +103,7 @@ There are several import types available:
 <figcaption>Importing Datasets</figcaption>
 </figure>
 
-Select an import type. EdgeFirst Dataset is the proprietary format used by many operations in EdgeFirst Studio. Please refer to [EdgeFirst Dataset Format](datasets/format.md) for more information.
+Select an import type. EdgeFirst Dataset is the proprietary format used by many operations in EdgeFirst Studio. Please refer to [EdgeFirst Dataset Format](../../datasets/format.md) for more information.
 
 1. Pre-create an annotation set where annotations are to be imported. If only images are imported, then this step is not required.
 2. Drag and drop a folder or group of files.

@@ -13,65 +13,34 @@ This functionality is available at the time of restoring a snapshot. To invoke t
 
 This process is used to generate 2D Bounding boxes, 2D segmentation masks, and 3D bounding boxes using AI assisted pipelines in EdgeFirst Studio.
 
-### Starting an AGTG Server
-
-1. Select *Cloud Instances* dashboard from the apps menu.
-
-<figure markdown="span">
-![Cloud Instances](assets/cloud-instances.png){ align=center }
-<figcaption>Cloud Instances</figcaption>
-</figure>
-
-2. Click on the *Start* button.
-3. Enter A desired name and select AI Assisted Ground Truth.
-
-<figure markdown="span">
-![AI Server](assets/launch-ai-server.png){ align=center }
-<figcaption>AI Server</figcaption>
-</figure>
-
-4. This will create a server. Please refresh to see the status of the server. The server takes about 5 to 10 minutes to fully initialize.
-5. Once initialized, it is ready for usage in next steps.
-
 ### Creating AI Assisted Annotations
 
-1. Open a database and go to its gallery.
-2. Click on a sequence that is intended to be edited.
-3. Go to the frame where editing begins.
-4. Enable the editing of annotations.
+1. Open a dataset and go to its gallery.
+2. Click on a sequence or image.
+5. Select *AI Segment Tool*.
 
 <figure markdown="span">
-![Enable Edit Annotations](assets/edit-annotations.png){ align=center }
-<figcaption>Enable Edit Annotations</figcaption>
+![AI Segment Tool](assets/agtg/agtg-tool.png){ align=center }
+<figcaption>AI Segment Tool</figcaption>
 </figure>
 
-5. Select *Video Segment Tool*.
+6. Start the Automated Ground Truth Server. Note that you will be billed while the server is running.
+7. When the server is ready, start drawing bounding boxes or use clicks to create masks.
 
 <figure markdown="span">
-![Video Segment Tool](assets/video-segment-tool.png){ align=center }
-<figcaption>Video Segment Tool</figcaption>
+![AGTG Sidebar](assets/agtgsidebar.png){ align=center }
+<figcaption>AGTG Sidebar</figcaption>
 </figure>
-
-6. Select the AGTG server (as started above) if not already selected.
-7. Click *INITIALIZE STATE*. By default, all frames of the sequence are selected - If only a portion of a sequence is to be edited then enter the starting and ending frame numbers. This will decrease the initialization time.
-8. Once initialized, the first object is created without any segmentation masks. The explanation of icons on the object card is shown below.
-
-<figure markdown="span">
-![AI Segment Options](assets/ai-segment-options.png){ align=center }
-<figcaption>AI Segment Options</figcaption>
-</figure>
-
-9. Select an object on the image using a rectangle or inclusion points. 
-10. The object should now be segmented.
 
 <figure markdown="span">
 ![Segmented Annotation](assets/segmented-annotation.png){ align=center }
 <figcaption>Segmented Annotation</figcaption>
 </figure>
 
-11. Click *PROPAGATE*.
-12. This will start a counter and propagate the object from the starting frame to the ending frame.
-13. Scroll through the frames to see if the propagation is correct.
-14. If satisfied, click on the *SAVE PENDING SEGMENTATIONS* to store the annotations to the dataset.
-15. If the dataset has LIDAR, then 3D bounding boxes are also created for the same object.
-16. Repeat for other objects as necessary.
+8. For a sequence, you can select choose how many frames from current frame to propagate and click *PROPAGATE*.
+9. You can also select *Reverse Propagate* to apply propagation backwards from current frame.
+10. This will start a counter and propagate the object from the starting frame to the ending frame.
+11. If satisfied, click on the *SAVE ANNOTATIONS* to store the annotations to the dataset.
+12. If the dataset has LIDAR, then 3D bounding boxes are also created for the same object.
+13. Click *CLEAR ANNOTATIONS* to clear every unsaved annotation. Use this to restart AI-Assisted Annotation.
+14. Repeat for other objects as necessary.

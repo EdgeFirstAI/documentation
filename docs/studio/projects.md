@@ -1,7 +1,7 @@
 # Project Dashboard
 
 <figure markdown="span">
-![Project Dashboard](assets/project-dashboard.png){ align=center }
+![Project Dashboard](assets/projects/project-dashboard.png){ align=center }
 <figcaption>Project Dashboard</figcaption>
 </figure>
 
@@ -14,7 +14,7 @@ The *Projects Dashboard* is the main page of the portal which organizes data int
 2. Click *Create*.
 
 <figure markdown="span">
-![Create New Project](assets/create-project.png){ align=center }
+![Create New Project](assets/projects/create-project.png){ align=center }
 <figcaption>Create New Project</figcaption>
 </figure>
 

@@ -3,7 +3,7 @@
 Snapshots are frozen and compact form of datasets. The snapshot can be opened from the apps menu.
 
 <figure markdown="span">
-![Data Snapshots](assets/data-snapshots.png){ align=center }
+![Data Snapshots](assets/snapshots/data-snapshots.png){ align=center }
 <figcaption>Data Snapshots</figcaption>
 </figure>
 
@@ -26,16 +26,17 @@ A snapshot can be created by the following ways:
 
 This will create a Zip/Arrow file pair for each sequence in a dataset and stored in the cloud storage. This snapshot can be later restored (into another dataset) or can be downloaded to a local folder on a PC.
 
-1. From the dataset card, open the context menu and select "Generate API Token"
+1. From the dataset card, open the context menu and select "Create Snapshot"
 
 <figure markdown="span">
-![Generate API Token](assets/generate-api-token.png){ align=center }
-<figcaption>Generate API Token</figcaption>
+![Create Snapshot from Dataset](assets/snapshots/snapshot-from-dataset.png){ align=center }
+<figcaption>Create Snapshot from Dataset</figcaption>
 </figure>
 
-2. This will trigger the creation of a snapshot.
-3. The status of the snapshot generation will be shown in the dataset card.
-4. When completed, the snapshot will appear in the snapshots dashboard.
+2. Select the dataset and annotation set to create a snapshot from and give it a description.
+3. This will trigger the creation of a snapshot.
+4. The status of the snapshot generation will be shown in the dataset card.
+5. When completed, the snapshot will appear in the snapshots dashboard.
 
 ### Upload from MCAP File
 
@@ -115,11 +116,6 @@ This action will take an MCAP or Zip/Arrow files and create a dataset in EdgeFir
 
 1. Click on the snapshot context menu (three dots).
 2. Select "Download".
-
-<figure markdown="span">
-![Snapshot Options](assets/options.png){ align=center }
-<figcaption>Snapshot Options</figcaption>
-</figure>
 
 ## Delete Snapshot
 

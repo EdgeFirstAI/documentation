@@ -3,7 +3,7 @@
 Navigating to different functionalities in the EdgeFirst Studio portal is facilitated through the top navigation bar.
 
 <figure markdown="span">
-![Navigation Bar](assets/navigation-bar.png){ align=center }
+![Navigation Bar](assets/navigation/navigation-bar.png){ align=center }
 <figcaption>Navigation Bar</figcaption>
 </figure>
 
@@ -12,7 +12,7 @@ Navigating to different functionalities in the EdgeFirst Studio portal is facili
 The Apps Menu provides selections towards the various tools provided in EdgeFirst Studio.
 
 <figure markdown="span">
-![Apps Menu](assets/apps-menu.png){ align=center }
+![Apps Menu](assets/navigation/apps-menu.png){ align=center }
 <figcaption>Apps Menu</figcaption>
 </figure>
 
@@ -22,23 +22,24 @@ Clicking on *Projects* takes the user to the projects dashboard. This operation 
 
 ### Datasets
 
-Clicking on *Datasets* takes the user to the dataset dashboard for the currently selected project.
+This page lists all datasets available to the user in the selected project.
 
-### Trainer
+### Auditing Tasks
 
-Clicking on *Trainer* takes the user to the trainer dashboard for the currently selected project.
+This page lists all auditing tasks. Auditing tasks are formal operation to edit, approve, or remove annotations 
 
-### Automation
+### Model Experiments
 
-Clicking on *Automation* takes the user to the auto annotation page.
+This page contains all training sessions and validate sessions. Compare training charts and validate metrics.
 
-### Edit / Audit Annotations
-
-This page provides functionality to create tasks for editing or auditing annotations. 
 
 ### Cloud Instances
 
 This page allows user to view the currently running cloud instances, start or stop a cloud instance, etc.
+
+### Data Snapshots
+
+This page allows user to create and restore snapshots. This is a method to preserve the current state of the dataset.
 
 ### Recycling Bin
 
@@ -47,10 +48,9 @@ This page is used for managing the recycling bin. The deletions of the following
 1. Project
 2. Dataset
 3. Annotation Set
-4. Training Experiment
+4. Model Experiment
 5. Training Session
-6. Automation Task
-7. Validation Session
+6. Validatie Session
 
 ## Alerts
 
@@ -61,14 +61,14 @@ This link provides information about general alerts (if present).
 This submenu provides the ability to go to the help pages, submit feedback, view release notes, download image downloader tool, and also look at the currently deployed version. 
 
 <figure markdown="span">
-![Help Options](assets/help-options.png){ align=center }
+![Help Options](assets/navigation/help-options.png){ align=center }
 <figcaption>Help Options</figcaption>
 </figure>
 
 ## User and Organization Management
 
 <figure markdown="span">
-![Admin Options](assets/admin-options.png){ align=center }
+![Admin Options](assets/navigation/admin-options.png){ align=center }
 <figcaption>Admin Options</figcaption>
 </figure>
 
@@ -82,15 +82,7 @@ An admin user can manage organizational users, edit organizational details, and 
 
 Any user can manage their profile and change their password.
 
-### Plans and Pricing
-
-View Plans and proving models.
-
-### Dark Mode
-
-Toggle Dark Mode.
-
 ### Logout
 
-Logout.
+Logout of Edgefirst Studio.
 

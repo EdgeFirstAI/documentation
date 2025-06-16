@@ -3,7 +3,7 @@
 Snapshots are frozen and compact form of datasets. The snapshot can be opened from the apps menu.
 
 <figure markdown="span">
-![Data Snapshots](assets/snapshots/data-snapshots.png){ align=center }
+![Data Snapshots](../assets/snapshots/data-snapshots.png){ align=center }
 <figcaption>Data Snapshots</figcaption>
 </figure>
 
@@ -29,7 +29,7 @@ This will create a Zip/Arrow file pair for each sequence in a dataset and stored
 1. From the dataset card, open the context menu and select "Create Snapshot"
 
 <figure markdown="span">
-![Create Snapshot from Dataset](assets/snapshots/snapshot-from-dataset.png){ align=center }
+![Create Snapshot from Dataset](../assets/snapshots/snapshot-from-dataset.png){ align=center }
 <figcaption>Create Snapshot from Dataset</figcaption>
 </figure>
 

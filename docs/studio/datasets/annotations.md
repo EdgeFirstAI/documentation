@@ -6,146 +6,126 @@ An annotation set is a container in EdgeFirst Studio for storing dataset annotat
 
 There are two modes of operations:
 
-1.	Edit images from gallery (Adhoc).
-2.	Edit Images from the Edit/Audit Dashboard (Multi-user editing environment).
+1.	Edit images from gallery.
+2.	Edit Images from Auditing Tasks board.
 
 ## Multi-User Annotation Audit / Edit 
 
-EdgeFirst Studio allows multiple users to remotely access a single dataset and annotation set and make changes without interfering with each other.
+EdgeFirst Studio allows multiple users to remotely access a single dataset and annotation set and make changes without interfering with each other. Users can navigate to this page using the menu dropdown.
 
-### Difference between Audit and Edit
+<figure markdown="span">
+![Auditing Tasks](../../assets/datasets/auditing-tasks.png){ align=center }
+<figcaption>Auditing Tasks</figcaption>
+</figure>
 
-#### Edit
+### Difference between Label and Audit
 
-User works on one annotation set, makes changes and saves in the same annotations set.
+#### Label
+
+User works on one annotation set, then create or edit annotations.
 
 #### Audit
 
-User reviews annotations in the source annotation set: 
-- Accepted annotations move to the destination annotation set.  
-- Rejected annotation are not copied to the destination annotation set.
-- Edited annotations are copied with edits to teh destination annotation set.
-- To create a multi-user Edit Task select "Edit/Audit Annotations" from the Apps Menu.
+User reviews annotations in the reference annotation set: 
+- Accepted annotations move to the target annotation set.  
+- Rejected annotation are not copied to the target annotation set.
+- Edited annotations are copied with edits to the target annotation set.
+
+### Creating a new task
 
 <figure markdown="span">
-![Audit Annotations](../assets/datasets/audit-annotations.png){ align=center }
-<figcaption>Audit Annotations</figcaption>
+![The Task](../../assets/datasets/create-task.png){ align=center }
+<figcaption>New Task</figcaption>
 </figure>
 
-- Click "CREATE"
+- Enter task name and description.
+- Select a dataset from the current project you want to work on.
+- Select target annotation set. If *New annotation set* is selected then the result will be stored here
+- If *Audit* type is selected. A reference annotation set is required. You will be performing audits on annotations from this set.
 
-<figure markdown="span">
-![Create Task](../assets/datasets/create-task.png){ align=center }
-<figcaption>Create Task</figcaption>
-</figure>
-
-- Select Task name and description.
-- Select Dataset.
-- Select Destination Dataset - Where changes will be saved.
-- Select Source Dataset only if Audit task only. For editing task leave Source Annotation set empty as Source and Destination annotation sets are the same as destination annotation set.
-- Select Sharing - With entire organization or few selected users.
-- Click "CREATE TASK".
-
-Task entry ius created in the Edit Dashboard. There are three columns: 
+Task entry is created in the Task board. There are three columns: 
 
 1. Open - Created but no work has started.
 2. In Progress - Some images have been worked on - the remaining images are shown.
 3. Completed - All images have been worked on.
 
 <figure markdown="span">
-![Task Board](../assets/datasets/task-board.png){ align=center }
+![Task Board](../../assets/datasets/task-board.png){ align=center }
 <figcaption>Task Board</figcaption>
 </figure>
 
-Click on any task entry and start editing. Teh actual editing process is same for task based or ad-hoc editing. The editing process is described below.
+Click on any task entry and start editing. The editing process is described below.
 
 ## Edit images from gallery
-Open the image gallery
 
-<figure markdown="span">
-![Image Gallery](../assets/datasets/image-gallery.png){ align=center }
-<figcaption>Click on an image and expand Annotation Sets</figcaption>
-</figure>
+1. Open the image gallery
+2. Click on an image and expand Annotation Sets
 
-Click on an image and expand Annotation Sets
-
-<figure markdown="span">
-![Annotation Sets](../assets/datasets/annotation-sets.png){ align=center }
-<figcaption>Click on the pencil icon for the annotation set to edit</figcaption>
-</figure>
-
-Click on the pencil icon for the annotation set to edit
-
-<figure markdown="span">
-![Edit Annotations](../assets/datasets/edit-annotations.png){ align=center }
-<figcaption>Edit Annotation Set</figcaption>
-</figure>
 
 <figure markdown="span">
 ![Edit Options](../assets/datasets/edit-options.png){ align=center }
 <figcaption>Annotation Editing Options</figcaption>
 </figure>
 
-### Add a Rectangular Annotation
-1.	Expand the Labels Section
-2.	Click on a label class – all boxes drawn will be of this class
-3.	Click on the Detection Bounding Box Mode
-4.	Click and drag on image to draw as many rectangular bounding boxes
-5.	Select any other class and add boxes for that class
-6.	Click on SUBMIT ALL ANNOTATIONS to finalize the annotations 
+### Add a Bounding Box
+1.	Click on a label from Labels section – all boxes drawn will be of this class.
+2.	Click on the Detection Bounding Box Mode (or press b).
+3.	Click and drag on image to draw as many rectangular bounding boxes.
+4.	Select any other class and add boxes for that class.
+5.	Click on *SAVE ANNOTATIONS* to finalize the annotations.
 
-### Add a Polygon Annotation with vertices
-1.	Expand the Labels Section
-2.	Click on a label class – all polygons drawn will be of this class
-3.	Click on the Segmentation Vertex Mode
-4.	Click-click on image to draw as many vertices of the polygon as required.
-5.	Select any other class and ad polygons for that class
-6.	Select Pointer mode to click-drag any vertices
-7.	Click on SUBMIT ALL ANNOTATIONS to finalize the annotations 
+### Add a Polygon Annotation with Vertices
+1.	Click on a label from Labels section – all polygons drawn will be of this class.
+2.	Click on the Segmentation Vertex Mode (or press p).
+3.	Continuously click on image to draw as many vertices of the polygon as required.
+4.	Select any other class and ad polygons for that class.
+5.	Select Pointer mode (q) to edit any vertices.
+6.	Click on *SAVE ANNOTATIONS* to finalize the annotations.
 
 ### Add a Polygon Annotation with Brush
-1.	Expand the Labels Section
-2.	Click on a label class – all polygons drawn will be of this class
-3.	Click on the Segmentation Brush Mode
-4.	Click-drag on image to draw the polygon as required.
-5.	Select any other class and ad polygons for that class
-6.	Select Pointer mode to click-drag any vertices
-7.	Select Segmentation Eraser mode to erase parts of the polygon by click-drag
-8.	NOTE: Only the polygon selected (using pointer tool) will be erased 
-9.	Use [+]  [-]  icons to make the brush/eraser larger or smaller.
-10.	Click on SUBMIT ALL ANNOTATIONS to finalize the annotations 
+1.	Click on a label from Labels section – all polygons drawn will be of this class.
+2.	Click on the Segmentation Brush Mode (or press w).
+3.	Hold mouse down on image to draw the polygon as required.
+4.	Select any other class and add polygons for that class.
+5.	Select Pointer mode (q) to edit any vertex.
+6.	Select Segmentation Eraser mode (e) to erase parts of the polygon.
+7.	NOTE: Only the polygon selected (using pointer tool) will be erased. 
+8.	Use [+]  [-]  icons to make the brush/eraser larger or smaller.
+9.	Click on *SAVE ANNOTATIONS* to finalize the annotations. 
 
 ### Change Class Label of an Annotation 
-1.	Expand the Labels Section
-2.	Click on a label class – all annotations clicked after this will be changed to this class
-3.	Click on the Change Label Mode
-4.	Click on ant annotation to change its class top the selected class
-5.	Click on any other class in the Labels section on the left.
-6.	Then clicking on any annotation after this will change the class of the annotation to this label 
-7.	Select Pointer mode to click-drag any vertices
+1.	Click on a label from Labels section – all annotations clicked will be of this class.
+3.	Click on the Change Label Mode (or press l)
+4.	Click on any annotation to change its class to the selected class.
 
 ### Edit Images from the Edit/Audit Dashboard
 
-Go to the Edit /Audit Dashboard
+Go to the Auditing Tasks board
 
 <figure markdown="span">
-![Audit Annotations](../assets/datasets/audit-annotations.png){ align=center }
+![Audit Annotations](../../assets/datasets/auditing-tasks.png){ align=center }
 <figcaption>Audit Annotations</figcaption>
 </figure>
 
-Create a new task or continue an existing task
+Create a new task or continue an existing task.
+
+####  Label: 
+Add, delete, edit annotations in one annotation set in the target annotation set and save in the same annotation set.
+
 #### Audit: 
-Review annotations in one annotation set (Source Annotation Set), approve, reject or edit annotation and put in a new annotation set (Destination Annotation Set).
+Review annotations in the reference annotation set then approve, reject or edit annotation and put in a the reference annotation set.
 
-####  Edit: 
-Add, delete, edit annotations in one annotation set (Source Annotation Set) and save back in the same annotation set.
-
-There are two modes:
-1.	Image based editing
+There are two auditing modes:
+1.	Image based audit
 2.	Annotation based audit
 
-### Image Based Editing
-Clicking on the dashboard tasks takes directly to the image mode editing. All the editing is the same as described in the Gallery based Editing above.
+<figure markdown="span">
+![Start Auditing](../../assets/datasets/task.png){ align=center }
+<figcaption>Start Auditing</figcaption>
+</figure>
+
+### Image Based Audit
+Clicking on the task takes you directly to the image mode auditing. All the editing is the same as described in the Gallery based Editing above.
 User can switch between Image based editing/audit and annotation based Audit from the top header: 
 
 <figure markdown="span">
@@ -154,13 +134,13 @@ User can switch between Image based editing/audit and annotation based Audit fro
 </figure>
 
 ### Annotation Based Audit
-In this mode only one annotation is shown at a time. The user can edit the with single click and next annotation is automatically presented:
+In this mode only one annotation is shown at a time. The user can edit the with single click and next annotation is automatically presented. Hotkeys are provided to speed up the process:
 
-1.	ENTER – accept annotation
-2.	SPACE – reject annotation
-3.	<- Goto previous annotation – no change to the current  annotation 
-4.	-> Goto next annotation – no change to the current annotation 
-5.	Z – Toggle zoom to annotation view and full image
-6.	1-9 change the annotation class from 1 to 9
-7.	SHIFT 0-9, change the annotation class from 10 to 19
-User can edit the size of the annotation by mouse click and drag
+1.	(ENTER) – accept annotation.
+2.	(SPACE) – reject annotation.
+3.	(<--) Go to previous annotation – no change to the current annotation.
+4.	(-->) Go to next annotation – no change to the current annotation. 
+5.	(Z) – Toggle zoom to annotation view and full image.
+6.	(1-9) - change the annotation class from 1 to 9.
+7.	(SHIFT 0-9) - change the annotation class from 10 to 19.
+User can edit the size of the annotation by mouse click and drag.

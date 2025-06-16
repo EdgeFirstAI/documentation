@@ -3,7 +3,7 @@
 Navigating to different functionalities in the EdgeFirst Studio portal is facilitated through the top navigation bar.
 
 <figure markdown="span">
-![Navigation Bar](assets/navigation/navigation-bar.png){ align=center }
+![Navigation Bar](../assets/navigation/navigation-bar.png){ align=center }
 <figcaption>Navigation Bar</figcaption>
 </figure>
 
@@ -12,7 +12,7 @@ Navigating to different functionalities in the EdgeFirst Studio portal is facili
 The Apps Menu provides selections towards the various tools provided in EdgeFirst Studio.
 
 <figure markdown="span">
-![Apps Menu](assets/navigation/apps-menu.png){ align=center }
+![Apps Menu](../assets/navigation/apps-menu.png){ align=center }
 <figcaption>Apps Menu</figcaption>
 </figure>
 
@@ -61,14 +61,14 @@ This link provides information about general alerts (if present).
 This submenu provides the ability to go to the help pages, submit feedback, view release notes, download image downloader tool, and also look at the currently deployed version. 
 
 <figure markdown="span">
-![Help Options](assets/navigation/help-options.png){ align=center }
+![Help Options](../assets/navigation/help-options.png){ align=center }
 <figcaption>Help Options</figcaption>
 </figure>
 
 ## User and Organization Management
 
 <figure markdown="span">
-![Admin Options](assets/navigation/admin-options.png){ align=center }
+![Admin Options](../assets/navigation/admin-options.png){ align=center }
 <figcaption>Admin Options</figcaption>
 </figure>
 

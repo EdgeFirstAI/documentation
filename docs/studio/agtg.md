@@ -20,15 +20,15 @@ This process is used to generate 2D Bounding boxes, 2D segmentation masks, and 3
 5. Select *AI Segment Tool*.
 
 <figure markdown="span">
-![AI Segment Tool](assets/agtg/agtg-tool.png){ align=center }
+![AI Segment Tool](../assets/agtg/agtg-tool.png){ align=center }
 <figcaption>AI Segment Tool</figcaption>
 </figure>
 
-6. Start the Automated Ground Truth Server. Note that you will be billed while the server is running.
-7. When the server is ready, start drawing bounding boxes or use clicks to create masks.
+4. Start the Automated Ground Truth Server. Note that you will be billed while the server is running.
+5. When the server is ready, start drawing bounding boxes or use clicks to create masks.
 
 <figure markdown="span">
-![AGTG Sidebar](assets/agtgsidebar.png){ align=center }
+![AGTG Sidebar](../assets/agtgsidebar.png){ align=center }
 <figcaption>AGTG Sidebar</figcaption>
 </figure>
 
@@ -37,10 +37,10 @@ This process is used to generate 2D Bounding boxes, 2D segmentation masks, and 3
 <figcaption>Segmented Annotation</figcaption>
 </figure>
 
-8. For a sequence, you can select choose how many frames from current frame to propagate and click *PROPAGATE*.
-9. You can also select *Reverse Propagate* to apply propagation backwards from current frame.
-10. This will start a counter and propagate the object from the starting frame to the ending frame.
-11. If satisfied, click on the *SAVE ANNOTATIONS* to store the annotations to the dataset.
-12. If the dataset has LIDAR, then 3D bounding boxes are also created for the same object.
-13. Click *CLEAR ANNOTATIONS* to clear every unsaved annotation. Use this to restart AI-Assisted Annotation.
-14. Repeat for other objects as necessary.
+6. For a sequence, you can select choose how many frames from current frame to propagate and click *PROPAGATE*.
+7. You can also select *Reverse Propagate* to apply propagation backwards from current frame.
+8. This will start a counter and propagate the object from the starting frame to the ending frame.
+9. If satisfied, click on the *SAVE ANNOTATIONS* to store the annotations to the dataset.
+10. If the dataset has LIDAR, then 3D bounding boxes are also created for the same object.
+11. Click *CLEAR ANNOTATIONS* to clear every unsaved annotation. Use this to restart AI-Assisted Annotation.
+12. Repeat for other objects as necessary.

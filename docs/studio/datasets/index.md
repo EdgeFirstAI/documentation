@@ -3,7 +3,7 @@
 The *Dataset Dashboard* show a list of datasets in a project with a summary of datasets in each dataset card.
 
 <figure markdown="span">
-![Dataset Dashboard](../assets/datasets/dataset-dashboard.png){ align=center }
+![Dataset Dashboard](../../assets/datasets/dataset-dashboard.png){ align=center }
 <figcaption>Dataset Dashboard</figcaption>
 </figure>
 
@@ -29,7 +29,7 @@ Each dataset can have multiple *Annotations Sets*. An *Annotation Set* is a cont
 Click on labels (i) icon to open the dialog to edit labels.
 
 <figure markdown="span">
-![Editing Labels](../assets/datasets/edit-label.png){ align=center }
+![Editing Labels](../../assets/datasets/edit-label.png){ align=center }
 <figcaption>Editing Labels</figcaption>
 </figure>
 
@@ -45,14 +45,13 @@ The edit dialog allows to:
 
 - Groups allow images to be associated with a certain functionality such as training images, validation images, images with errors, etc.
 - One image can be associated with zero or only one group at a time.
-- A Group can have any name.
-- Click on the groups (+) icon to add groups.
-- Multiple groups can be added at one time.
+- Use the slider to adjust percentages for each group.
+- If *Only ungrouped images* is unchecked, all images will be shuffled and assigned new groups.
 
-The following image shows a dialog to add two groups by the name AA abd BB and randomly add 70% and 30% images to each group.
+The following image shows a dialog to split ungrouped images into 2 groups, *Training* and *Validation*
 
 <figure markdown="span">
-![Assigning Groups](../assets/datasets/assign-groups.png){ align=center }
+![Assigning Groups](../../assets/datasets/assign-groups.png){ align=center }
 <figcaption>Assigning Groups</figcaption>
 </figure>
 
@@ -61,7 +60,7 @@ The following image shows a dialog to add two groups by the name AA abd BB and r
 Click on the three dots on dataset card to open the extended menu.
 
 <figure markdown="span">
-![Extended Dataset Menu](../assets/datasets/dataset-menus.png){ align=center }
+![Extended Dataset Menu](../../assets/datasets/dataset-menus.png){ align=center }
 <figcaption>Extended Dataset Menu</figcaption>
 </figure>
 
@@ -81,75 +80,69 @@ For more information pease visit [Access Control](../user/organization.md#roles)
 
 ### Copy Dataset
 
-To copy datasets proceed with the steps as follows:
-
-1. Open the dataset extended menu (three vertically aligned dots).
-2. Select *Copy Dataset*.
-
 <figure markdown="span">
-![Copying Datasets](../assets/datasets/copy-datasets.png){ align=center }
+![Copying Datasets](../../assets/datasets/copy-datasets.png){ align=center }
 <figcaption>Copying Datasets</figcaption>
 </figure>
 
-3. Select the source project (datasets from other projects can be copied into the currently selected project).
-4. Select the source dataset.
-5. Select the groups to copy (or all groups - default).
-6. Select the source annotation set - if none is selected then annotations will not be copied.
-7. Optional select 'Copy Annotations for Duplicate Images'. Normally images with same names are not copied to avoid image duplications. In this case the annotations of duplication images are also not copied. This option (selected) copies the annotations even if the image is duplicated. This is useful if two datasets have the same images but only annotations are required to be copied from one dataset to another.
-8. Select filters if required. Please refer to [Gallery Filters](gallery.md) for more information.
-9. Select the destination dataset(s). Please note that multiple destination datasets can be selected to split the source dataset images into multiple datasets.
-10. Finally select the percentage of the images to be copied. If less that 100% of the images are selected then random subset of the images will be copied.  
+To copy datasets proceed with the steps as follows:
+
+1. Open the dataset extended menu.
+2. Select *Copy Dataset*.
+3. Source project, dataset, and annotation set (if applicable) are auto-filled, but you can select a different source if required.
+3. Destination project is selected by default. If *New Dataset (Dataset name)* is selected, a new dataset along with any annotation set from source will be created in the destination project. Otherwise, you can choose a dataset and an annotation set as destination.
+4. Optionally select *Copy Selected Annotation Types Only* to only copy annotations and files that match the checked types.
+5. Select filters if required. Please refer to [Gallery Filters](gallery.md) for more information.  
 
 ### Import Dataset
 
 There are several import types available:
 
 <figure markdown="span">
-![Importing Datasets](../assets/datasets/import-dataset.png){ align=center }
+![Importing Datasets](../../assets/datasets/import-datasets.png){ align=center }
 <figcaption>Importing Datasets</figcaption>
 </figure>
 
-Select the import type. The most common import is the *Darknet format*.
+Select an import type. EdgeFirst Dataset is the proprietary format used by many operations in EdgeFirst Studio. Please refer to [EdgeFirst Dataset Format](datasets/format.md) for more information.
 
 1. Pre-create an annotation set where annotations are to be imported. If only images are imported, then this step is not required.
-2. Select the folder where the data is located. For Darknet format datasets, browse to the images images folder.
-3. If "Create image groups from folders" is selected, then the importer will automatically create groups based on the folders in the images folder (for example train, val).
-4. Select an annotation set.
-5. Click *START IMPORT*.
-6. Import will start in the background and the status is shown in the task progress bar.
+2. Drag and drop a folder or group of files.
+3. Select an annotation set if the annotation type allows annotation import.
+4. Click *START IMPORT*.
+5. Import will start in the background and the status is shown in the task progress popup.
 
 <figure markdown="span">
-![Import Taskbar](../assets/datasets/import-taskbar.png){ align=center }
-<figcaption>Import Taskbar</figcaption>
+![Taskbar](../assets/datasets/import-taskbar.png){ align=center }
+<figcaption>Task Dialog</figcaption>
 </figure>
 
 !!! warning
-    Although the import process is running in the background, closing the web browser or the tab will kill the import. Moving to other pages in the studio is still fine.
+    Although the import process is running in the background, closing the web browser or the tab will terminate all uploads in the *Local* tab of the task dialog. Moving to other pages in the studio is still fine.
 
 ### Export Dataset
 
 The *Export Dataset* downloads the data from EdgeFirst Studio to the local folder in your PC.
 
 <figure markdown="span">
-![Export Dataset](../assets/datasets/export-dataset.png){ align=center }
+![Export Dataset](../../assets/datasets/export-datasets.png){ align=center }
 <figcaption>Export Dataset</figcaption>
 </figure>
 
-1. Select the dataset type: Detection (bounding box) or Segmentation (Polygons).
+1. Select the dataset type: Detection (Bounding boxes) or Segmentation (Masks).
 2. Select the export format.
-3. Select the annotation set to be exported (none if annotations are not to be exported).
+3. Select the annotation set to be exported if required.
 4. Select Mode:
     - Dataset - Exports images and annotations. Exports a zip file in the downloads folder.
     - Annotations Only - Exports only the annotations. Exports a zip file in the downloads folder.
     - Image URLS only - Useful for larger datasets. Exports a file with image urls in the downloads folder.
-5. For datasets larger than 10000 images, import image URLS and annotations separately and then use a python script (downloadable from help menu) to download images.
+5. For datasets larger than 10000 images, import image URLS and annotations separately and then use a script to download images.
 
 ### Analytics
 
 Click on Analytics to see information about the dataset.
 
 <figure markdown="span">
-![Dataset Analytics](../assets/datasets/dataset-analytics.png){ align=center }
+![Dataset Analytics](../../assets/datasets/analytics.png){ align=center }
 <figcaption>Dataset Analytics</figcaption>
 </figure>
 
@@ -163,34 +156,16 @@ When importing a dataset, the GPS location can be imported in the two following 
 If GPS location is present, then the annotation can be viewed on the map by using the View on Map option.
 
 <figure markdown="span">
-![Dataset Maps](../assets/datasets/dataset-maps.png){ align=center }
+![Dataset Maps](../../assets/datasets/dataset-maps.png){ align=center }
 <figcaption>Dataset Maps</figcaption>
 </figure>
-
-### Generate API Token
-
-An API token is used for Bridge In and Bridge out API. To generate the API.  The API has an encrypted Java Web Token (JWT) with embedded information about the dataset and the annotation set.
-
-<figure markdown="span">
-![Generate an API Token](../assets/datasets/api-token.png){ align=center }
-<figcaption>Generate an API Token</figcaption>
-</figure>
-
-Specify the Dataset and the Annotation set and click *GENERATE*.
-
-<figure markdown="span">
-![Generated API Token](../assets/datasets/generated-api-token.png){ align=center }
-<figcaption>Generated API Token</figcaption>
-</figure>
-
-Copy the API token in green and use it for Bridge In or Bridge out API.
 
 ### Park Dataset
 
 Datasets that are not used often can be parked. The advantages of Parking a dataset are:
 
-1. Reduced Storage Cost.
-2. Dataset is segregated and un-corruptable.
+1. Reduced storage cost.
+2. Dataset is frozen and can not be modified.
 
 Datasets can be un-parked at any time for normal usage.
 
@@ -201,7 +176,7 @@ Datasets can be un-parked at any time for normal usage.
 
 ### Remove Dataset
 
-To delete a dataset, click *Remove Dataset*. This deletes all the images in the dataset and its associated annotation.
+To delete a dataset, click *Move to Recycle Bin*. This moves the dataset and all of its contents to the recyle bin
 
 !!! note
 

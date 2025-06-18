@@ -92,7 +92,9 @@ After setting up the Zenoh session, we will create a subscriber to the `model/bo
 
     ``` python
     # Create a subscriber for "rt/model/boxes2d"
-    subscriber = session.declare_subscriber('rt/model/boxes2d')
+    loop = asyncio.get_running_loop()
+    drain = MessageDrain(loop)
+    session.declare_subscriber('rt/model/boxes2d', drain.callback)
     ```
 
 === "Rust"
@@ -107,18 +109,21 @@ After setting up the Zenoh session, we will create a subscriber to the `model/bo
 
 ### Receive a message
 
-We can now receive a message on the subscriber. After receiving the message, we will need to deserialize it.
+We can now await a message from that subscriber from an asynchronous function. After receiving the message, we will pass that message along to our processing function in a new thread to avoid missing messages.
 
 === "Python"
 
     ``` python
-    from edgefirst.schemas.edgefirst_msgs import Detect
+    async def boxes2d_handler(drain):
+    while True:
+        msg = await drain.get_latest()
 
-    # Receive a message
-    msg = subscriber.recv()
-
-    # deserialize message
-    detection = Detect.deserialize(msg.payload.to_bytes())
+        thread = threading.Thread(target=boxes2d_worker, args=[msg])
+        thread.start()
+        
+        while thread.is_alive():
+            await asyncio.sleep(0.001)
+        thread.join()
     ```
 
 === "Rust"
@@ -133,19 +138,23 @@ We can now receive a message on the subscriber. After receiving the message, we 
 
 ### Process the Data
 
-The Boxes2D message contains 2D bounding box detections. You can access various fields like:
+The Boxes2D message contains 2D bounding box detections. The message will be sent to be processed, deserializing the message, accessing the required information and logging the boxes to Rerun.
 
 === "Python"
 
     ``` python
-    centers = []
-    sizes = []
-    labels = []
-    for box in detection.boxes:
-        centers.append((box.center_x, box.center_y))
-        sizes.append((box.width, box.height))
-        labels.append(box.label)
-    rr.log("boxes", rr.Boxes2D(centers=centers, sizes=sizes, labels=labels))
+    from edgefirst.schemas.edgefirst_msgs import Detect
+
+    def boxes2d_worker(msg):
+        detection = Detect.deserialize(msg.payload.to_bytes())
+        centers = []
+        sizes = []
+        labels = []
+        for box in detection.boxes:
+            centers.append((box.center_x, box.center_y))
+            sizes.append((box.width, box.height))
+            labels.append(box.label)
+        rr.log("boxes", rr.Boxes2D(centers=centers, sizes=sizes, labels=labels))
     ```
 
 === "Rust"
@@ -163,6 +172,34 @@ The Boxes2D message contains 2D bounding box detections. You can access various 
 
     let _ = rr.log("boxes", &rerun::Boxes2D::from_centers_and_sizes(centers, sizes).with_labels(labels))?;
     ```
+
+### Box Tracking
+On your EdgeFirst Platform you can also allow tracking of the boxes and this can then be logged during the publishing of the boxes. The documentation for the settings to turn on tracking can be found [here](../../../platforms/configuration.md#track-settings). You can update your code to match the [tracked example](https://github.com/EdgeFirstAI/samples/blob/main/python/model/boxes2d_tracked.py) from the regular boxes2d example by changing the boxes2d_worker to the following.
+
+=== "Python"
+
+    ``` python
+    def boxes2d_worker(msg, boxes_tracked):
+        detection = Detect.deserialize(msg.payload.to_bytes())
+        centers = []
+        sizes = []
+        labels = []
+        colors = []
+        for box in detection.boxes:
+            if box.track.id and box.track.id not in boxes_tracked:
+                boxes_tracked[box.track.id] = [box.label + ": " + box.track.id[:6], list(np.random.choice(range(256), size=3))]
+            if box.track.id:
+                colors.append(boxes_tracked[box.track.id][1])
+                labels.append(boxes_tracked[box.track.id][0])
+            else:
+                colors.append([0,255,0])
+                labels.append(box.label)
+            centers.append((box.center_x, box.center_y))
+            sizes.append((box.width, box.height))
+        rr.log("boxes", rr.Boxes2D(centers=centers, sizes=sizes, labels=labels, colors=colors))
+    ```
+
+The main adjustments are that a color will be specified and each tracked box will have its own color as well as that we will add in the unique ID for the box into the label. All of this is contingent on tracking being enabled. 
 
 ### Results
 When displaying the results through Rerun you will see the boxes without any camera, to see the combined example please see the[Combined Example](#combined-example).

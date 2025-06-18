@@ -171,7 +171,11 @@ The Boxes2D message contains 2D bounding box detections. The message will be sen
     }
 
     let _ = rr.log("boxes", &rerun::Boxes2D::from_centers_and_sizes(centers, sizes).with_labels(labels))?;
-    ```
+    ``` 
+
+### Results
+When displaying the results through Rerun you will see the boxes without any camera, to see the combined example please see the[Combined Example](#combined-example).
+![alt text](assets/model_boxes2d.png)
 
 ### Box Tracking
 On your EdgeFirst Platform you can also allow tracking of the boxes and this can then be logged during the publishing of the boxes. The documentation for the settings to turn on tracking can be found [here](../../../platforms/configuration.md#track-settings). You can update your code to match the [tracked example](https://github.com/EdgeFirstAI/samples/blob/main/python/model/boxes2d_tracked.py) from the regular boxes2d example by changing the boxes2d_worker to the following.
@@ -199,11 +203,9 @@ On your EdgeFirst Platform you can also allow tracking of the boxes and this can
         rr.log("boxes", rr.Boxes2D(centers=centers, sizes=sizes, labels=labels, colors=colors))
     ```
 
-The main adjustments are that a color will be specified and each tracked box will have its own color as well as that we will add in the unique ID for the box into the label. All of this is contingent on tracking being enabled. 
+The main adjustments are that a color will be specified and each tracked box will have its own color as well as that we will add in the unique ID for the box into the label. All of this is contingent on tracking being enabled.
 
-### Results
-When displaying the results through Rerun you will see the boxes without any camera, to see the combined example please see the[Combined Example](#combined-example).
-![alt text](assets/model_boxes2d.png)
+![Boxes2D Tracking](assets/boxes2d_tracking.gif)
 
 ## Model Mask
 Topic: [/model/mask](../../topics/model.md#modelmask)  

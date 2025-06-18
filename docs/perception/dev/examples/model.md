@@ -203,7 +203,7 @@ On your EdgeFirst Platform you can also allow tracking of the boxes and this can
         rr.log("boxes", rr.Boxes2D(centers=centers, sizes=sizes, labels=labels, colors=colors))
     ```
 
-The main adjustments are that a color will be specified and each tracked box will have its own color as well as that we will add in the unique ID for the box into the label. All of this is contingent on tracking being enabled.
+The main adjustments are that a color will be specified and each tracked box will have its own color as well as that we will add in the unique ID for the box into the label. All of this is contingent on tracking being enabled. The following image is taken when applied to a combined example.
 
 ![Boxes2D Tracking](assets/boxes2d_tracking.gif)
 

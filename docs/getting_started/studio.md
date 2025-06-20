@@ -154,7 +154,7 @@ Now the charts for each session are displayed side-by-side.  All the charts for 
 <figcaption>Comparing Validation Sessions</figcaption>
 </figure>
 
-For more details regarding deploying validation sessions, please see [Validating ModelPack](../models/modelpack/validation.md) for validating Vision models and [Validating Fusion](../models/fusion/validation.md) for validating Fusion models.
+For more details regarding deploying validation sessions, please see [Validating ModelPack](../models/tutorials/validation.md) for validating Vision models and [Validating Fusion](../models/fusion/validation.md) for validating Fusion models.
 
 ## Next Steps
 

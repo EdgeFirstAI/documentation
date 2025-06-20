@@ -1,6 +1,6 @@
 # Deploying to the Maivin
 
-Now that you have [validated your Vision Model](../validation.md), this guide will walk you through deploying Vision models in a [Maivin Platform](../../../platforms/index.md).  
+Now that you have validated your Vision Model from either a [managed](../validation/managed.md) or [user-managed](../validation/user_managed.md) session, this guide will walk you through deploying Vision models in a [Maivin Platform](../../../platforms/index.md).  
 
 **Maivin 1** | **Maivin 2** 
 :------------------:|:------------------:
@@ -217,4 +217,4 @@ More information on the MCAP playback is provided in [Foxglove Studio](../../../
 
 In this tutorial, you have fetched the trained and validated model from EdgeFirst Studio, copied the model in the Maivin, configured the Maivin model services, and ran inference on the model in the device.  You have seen the model running live using the Maivin's camera and ran a Maivin MCAP recording to capture the model inference in the frames that can be visualized using Foxglove Studio. 
 
-For examples on deploying ModelPack in other platforms, see [Model Deployment](../../../getting_started/models/deployment.md).
+For examples on deploying ModelPack in other platforms, see [Model Deployment](../../tutorials/deployment.md).

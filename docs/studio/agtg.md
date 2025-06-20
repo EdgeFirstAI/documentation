@@ -15,22 +15,22 @@ This process is used to generate 2D Bounding boxes, 2D segmentation masks, and 3
 
 
 
-First [navigate to the dataset gallery](management.md#viewing-datasets) and click on the "AI Segment Tool" as indicated in red below to open the Automatic Ground Truth Generation (AGTG) Manager View.
+First [navigate to the dataset gallery](../datasets/tutorials/management.md#viewing-datasets) and click on the "AI Segment Tool" as indicated in red below to open the Automatic Ground Truth Generation (AGTG) Manager View.
 
 <figure markdown="span">
-![Select the Video Segment Tool](../assets/agtg-segment-tool.jpg){ align=center }
+![Select the Video Segment Tool](assets/agtg-segment-tool.jpg){ align=center }
 <figcaption>Select the AI Segment Tool</figcaption>
 </figure>
 
 On first use, you will be shown a dialog say that a new AGTG server will be launched. This server will remain active while active even if the screen is closed. The AGTG server terminate automatically after 15 minutes of inactivity or manually terminating the server. The server takes 3-5 minutes for initialization.  A progress will appear with an indication of the length of time to launch the server.  
 
 <figure markdown="span">
-![Launch AGTG Server](../assets/agtg-server-start.png){ align=center }
+![Launch AGTG Server](assets/agtg-server-start.png){ align=center }
 <figcaption>Launch AGTG Server</figcaption>
 </figure>
 
 <figure markdown="span">
-![Launching Progress](../assets/agtg-server-progress.jpg){ align=center }
+![Launching Progress](assets/agtg-server-progress.jpg){ align=center }
 <figcaption>Launching Progress</figcaption>
 </figure>
 
@@ -45,14 +45,14 @@ Note: For adding subsequent objects you need to press the "+" icon besides the "
 
 
 <figure markdown="span">
-![Add New Object](image-1.png){ align=center }
+![Add New Object](assets/agtg_new_object.png){ align=center }
 <figcaption>Add New Object</figcaption>
 </figure>
 
 You can now provide prompts to specify the object to segment.  You can either provide bounding boxes (mouse click and drag) or points (mouse clicks) to highlight the object.  By default prompts via bounding box is selected.  To draw a bounding box, click anywhere on the frame and then drag the mouse to expand the bounding box.  The bounding box should cover the object to annotate in the frame.  The figure below shows the resulting SAM-2 mask and bounding box annotations (green) for the first object after providing a bounding box prompt (white).
 
 <figure markdown="span">
-![Resulting Annotation using SAM Box Tool](../assets/seg_annotation.png){ align=center }
+![Resulting Annotation using SAM Box Tool](assets/seg_annotation.png){ align=center }
 <figcaption>Resulting Annotation using Auto Annotation</figcaption>
 </figure>
 
@@ -63,7 +63,7 @@ You can now provide prompts to specify the object to segment.  You can either pr
 For multiple objects in the frame, click on the "+" again.  For every object in the frame, a new object must be added so that the tracker can assign a unique tracking ID.  The figure below shows new objects "Coffee Cup 2" and "Coffee Cup 3" annotated using points as prompts by clicking anywhere on the frame to specify the object.
 
 <figure markdown="span">
-![Distinct Frame Annotations](../assets/multi_annotations.png){ align=center }
+![Distinct Frame Annotations](assets/multi_annotations.png){ align=center }
 <figcaption>Distinct Frame Annotations</figcaption>
 </figure>
 
@@ -74,14 +74,14 @@ Then click the PROPAGATE button.
 During propagation, the progress and the frame counter will update as shown on the bottom right.  Optionally, you can stop the propagation by clicking on "Stop Propagation". 
 
 <figure markdown="span">
-![Propagation Progress](../assets/agtg_propagate.png){ align=center }
+![Propagation Progress](assets/agtg_propagate.png){ align=center }
 <figcaption>Propagation Progress</figcaption>
 </figure>
 
 Once the propagation completes, click on "Save Pending Annotations" to save the annotations.  A completed propagation will show the 2D annotations with masks and 2D bounding boxes for each object across the video frames.
 
 <figure markdown="span">
-![Save Pending Annotations](../assets/agtg_save_pending.png){ align=center }
+![Save Pending Annotations](assets/agtg_save_pending.png){ align=center }
 <figcaption>Save Pending Annotations</figcaption>
 </figure>
 

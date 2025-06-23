@@ -13,8 +13,6 @@ This functionality is available at the time of restoring a snapshot. To invoke t
 
 This process is used to generate 2D Bounding boxes, 2D segmentation masks, and 3D bounding boxes using AI assisted pipelines in EdgeFirst Studio.
 
-
-
 First [navigate to the dataset gallery](../datasets/tutorials/management.md#viewing-datasets) and click on the "AI Segment Tool" as indicated in red below to open the Automatic Ground Truth Generation (AGTG) Manager View.
 
 <figure markdown="span">
@@ -25,8 +23,8 @@ First [navigate to the dataset gallery](../datasets/tutorials/management.md#view
 On first use, you will be shown a dialog say that a new AGTG server will be launched. This server will remain active while active even if the screen is closed. The AGTG server terminate automatically after 15 minutes of inactivity or manually terminating the server. The server takes 3-5 minutes for initialization.  A progress will appear with an indication of the length of time to launch the server.  
 
 <figure markdown="span">
-![Launch AGTG Server](assets/agtg-server-start.png){ align=center }
-<figcaption>Launch AGTG Server</figcaption>
+![Launch AIGT Server](assets/agtg-server-start.png){ align=center }
+<figcaption>Launch AIGT Server</figcaption>
 </figure>
 
 <figure markdown="span">
@@ -40,6 +38,15 @@ On first use, you will be shown a dialog say that a new AGTG server will be laun
 
 
 Once the server has been initialized, the 2D boxes for the initial prompt can be added. 
+
+The object card in shown in the right panel. Its details are shown below:
+
+<figure markdown="span">
+![AGTG Object Card](assets/agtg-object-card.png){ align=center }
+<figcaption>AGTG Object Card </figcaption>
+</figure>
+
+
 
 Note: For adding subsequent objects you need to press the "+" icon besides the "Select Objects". Also note that Object class (label) should be selection from the object label drop down.
 

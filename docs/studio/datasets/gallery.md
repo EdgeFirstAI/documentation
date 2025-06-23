@@ -3,14 +3,14 @@
 To open a dataset gallery, click the gallery icon on the dataset card.
 
 <figure markdown="span">
-![Gallery Button](../assets/datasets/gallery-button.png){ align=center }
+![Gallery Button](../../assets/datasets/gallery-button.png){ align=center }
 <figcaption>Gallery Button</figcaption>
 </figure>
 
 The gallery is multi-page with 40 images per page.
 
 <figure markdown="span">
-![Gallery](../assets/datasets/gallery.png){ align=center }
+![Gallery](../../assets/datasets/gallery.png){ align=center }
 <figcaption>Gallery</figcaption>
 </figure>
 
@@ -25,7 +25,7 @@ Filters allow user to select images based on the filter conditions. The number o
 
 ## Tag an Image
 
-User can create tags for images. These tags can be used to filter out images of certain tags. Tags can be added from the "ACTIONS" dropdown and can be filtered using the IMAGE TAGS filter.
+You can create tags for images. These tags can be used to filter out images of certain tags. Tags can be added from the *ACTIONS* dropdown and can be filtered using the *IMAGE TAGS* filter.
 
 - Display tags: enable "Show Tags" under "Display Image Options".
 
@@ -58,6 +58,20 @@ User can create tags for images. These tags can be used to filter out images of 
 - Apply and unapply tags: at least one image must be selected to apply or unapply tags. Click on any tag under the dropdown to select it. Applied tags are denoted by a check icon. To remove the applied tags, click on it again.
 
 <figure markdown="span">
-![Apply Tag](../assets/datasets/apply-tags.png){ align=center }
+![Apply Tag](../../assets/datasets/apply-tags.png){ align=center }
 <figcaption>Apply Tag</figcaption>
 </figure>
+
+## Copy Selected Items
+You can copy selected items to another dataset. This operation can be found under *ACTIONS* dropdown. The copy dialog will appear
+
+<figure markdown="span">
+![Copy Selected Items](../../assets/datasets/copy-selected-items.png){ align=center }
+<figcaption>Copy Selected Items</figcaption>
+</figure>
+
+1. Source is auto-filled using the current dataset and first annotation set if applicable. You can select a different source annotation set.
+2. Destination will be defaulted to a new dataset along with any selected annotation set. You can select another dataset and annotation if needed.
+3. Selected file names that will be copied are shown at the bottom.
+4. Progress can be tracked in the task progress popup.
+

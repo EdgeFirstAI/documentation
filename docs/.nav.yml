@@ -64,7 +64,7 @@ nav:
       - models/tutorials/training.md
       - models/tutorials/validation.md
       - models/tutorials/deployment.md
-      - models/tutorials/metadata.md
+      # - models/tutorials/metadata.md
     - models/augmentations.md
   - Perception:
     - perception/index.md

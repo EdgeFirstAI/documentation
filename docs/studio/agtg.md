@@ -39,7 +39,12 @@ On first use, you will be shown a dialog say that a new AGTG server will be laun
 
 Once the server has been initialized, the 2D boxes for the initial prompt can be added. 
 
-The object card in shown in the right panel. Its details are shown below:
+Below is a detailed breakdown of the sidebar.
+
+<figure markdown="span">
+![AGTG Sibebar](../../assets/agtg/sidebar.png){ align=center }
+<figcaption>AGTG Sidebar </figcaption>
+</figure>
 
 <figure markdown="span">
 ![AGTG Object Card](assets/agtg-object-card.png){ align=center }
@@ -63,9 +68,6 @@ You can now provide prompts to specify the object to segment.  You can either pr
 <figcaption>Resulting Annotation using Auto Annotation</figcaption>
 </figure>
 
-!!! warning
-    
-    The initial annotation may take some time to generate.
 
 For multiple objects in the frame, click on the "+" again.  For every object in the frame, a new object must be added so that the tracker can assign a unique tracking ID.  The figure below shows new objects "Coffee Cup 2" and "Coffee Cup 3" annotated using points as prompts by clicking anywhere on the frame to specify the object.
 

@@ -15,7 +15,9 @@ After setting up the Zenoh session, we will create a subscriber to the `radar/ta
 
     ``` python
     # Create a subscriber for "rt/radar/targets"
-    subscriber = session.declare_subscriber('rt/radar/targets')
+    loop = asyncio.get_running_loop()
+    drain = MessageDrain(loop)
+    session.declare_subscriber('rt/radar/targets', drain.callback)
     ```
 
 === "Rust"
@@ -35,13 +37,15 @@ We can now recieve a message on the subcriber. After recieving the message, we w
 === "Python"
 
     ``` python
-    from edgefirst.schemas.sensor_msgs import PointCloud2
-
-    # Recieve a message
-    msg = subscriber.recv()
-
-    # deserialize message
-    pcd = PointCloud2.deserialize(msg.payload.to_bytes())
+    async def targets_handler(drain):
+        while True:
+            msg = await drain.get_latest()
+            thread = threading.Thread(target=targets_worker, args=[msg])
+            thread.start()
+            
+            while thread.is_alive():
+                await asyncio.sleep(0.001)
+            thread.join()
     ```
 
 === "Rust"
@@ -63,7 +67,9 @@ The next step is to decode the PCD data. Please see [examples/pcd](./pcd.md) for
 === "Python"
 
     ``` python
-    points = decode_pcd(pcd)
+    def targets_worker(msg):
+        pcd = PointCloud2.deserialize(msg.payload.to_bytes())
+        points = decode_pcd(pcd)
     ```
 
 === "Rust"
@@ -80,23 +86,8 @@ We can now process the data. In this example we will find the maximum and minimu
 === "Python"
 
     ``` python
-    min_x = min([p.x for p in points])
-    max_x = max([p.x for p in points])
-
-    min_y = min([p.y for p in points])
-    max_y = max([p.y for p in points])
-
-    min_z = min([p.z for p in points])
-    max_z = max([p.z for p in points])
-
-    min_speed = min([p.fields["speed"] for p in points])
-    max_speed = max([p.fields["speed"] for p in points])
-
-    min_power = min([p.fields["power"] for p in points])
-    max_power = max([p.fields["power"] for p in points])
-
-    min_rcs = min([p.fields["rcs"] for p in points])
-    max_rcs = max([p.fields["rcs"] for p in points])
+    pos = [[p.x, p.y, p.z] for p in points]
+    rr.log("radar/targets", rr.Points3D(pos))
     ```
 
 === "Rust"
@@ -163,7 +154,9 @@ After setting up the Zenoh session, we will create a subscriber to the `radar/cl
 
     ``` python
     # Create a subscriber for "rt/radar/cluster"
-    subscriber = session.declare_subscriber('rt/radar/clusters')
+    loop = asyncio.get_running_loop()
+    drain = MessageDrain(loop)
+    session.declare_subscriber('rt/radar/clusters', drain.callback)
     ```
 
 === "Rust"
@@ -183,13 +176,15 @@ We can now recieve a message on the subcriber. After recieving the message, we w
 === "Python"
 
     ``` python
-    from edgefirst.schemas.sensor_msgs import PointCloud2
-
-    # Recieve a message
-    msg = subscriber.recv()
-
-    # deserialize message
-    pcd = PointCloud2.deserialize(msg.payload.to_bytes())
+    async def clusters_handler(drain):
+        while True:
+            msg = await drain.get_latest()
+            thread = threading.Thread(target=clusters_worker, args=[msg])
+            thread.start()
+            
+            while thread.is_alive():
+                await asyncio.sleep(0.001)
+            thread.join()
     ```
 
 === "Rust"
@@ -211,7 +206,9 @@ The next step is to decode the PCD data. Please see [examples/pcd](./pcd.md) for
 === "Python"
 
     ``` python
-    points = decode_pcd(pcd)
+    def clusters_worker(msg):
+        pcd = PointCloud2.deserialize(msg.payload.to_bytes())
+        points = decode_pcd(pcd)
     ```
 
 === "Rust"
@@ -228,7 +225,15 @@ We will now collect all the clustered points, which are all the points with `clu
 === "Python"
 
     ``` python
-    clustered_points = [p for p in points if p.fields["cluster_id"] > 0]
+    clusters = [p for p in points if p.cluster_id > 0]
+    if not clusters:
+        rr.log("radar/clusters", rr.Points3D([], colors=[]))  
+        return
+    max_id = max(p.cluster_id for p in clusters)
+    pos = [[p.x, p.y, p.z] for p in clusters]
+    colors = [colormap(turbo_colormap, p.cluster_id / max_id)
+            for p in clusters]
+    rr.log("radar/clusters", rr.Points3D(pos, colors=colors))
     ```
 
 === "Rust"
@@ -260,7 +265,9 @@ After setting up the Zenoh session, we will create a subscriber to the `radar/in
 
     ``` python
     # Create a subscriber for "rt/radar/info"
-    subscriber = session.declare_subscriber('rt/radar/info')
+    loop = asyncio.get_running_loop()
+    drain = MessageDrain(loop)
+    session.declare_subscriber('rt/radar/info', drain.callback)
     ```
 
 === "Rust"
@@ -280,13 +287,15 @@ We can now recieve a message on the subcriber. After recieving the message, we w
 === "Python"
 
     ``` python
-    from edgefirst.schemas.edgefirst_msgs import RadarInfo
-
-    # Recieve a message
-    msg = subscriber.recv()
-
-    # deserialize message
-    radar_info = RadarInfo.deserialize(msg.payload.to_bytes())
+    async def info_handler(drain):
+        while True:
+            msg = await drain.get_latest()
+            thread = threading.Thread(target=info_worker, args=[msg])
+            thread.start()
+            
+            while thread.is_alive():
+                await asyncio.sleep(0.001)
+            thread.join()
     ```
 
 === "Rust"
@@ -309,12 +318,13 @@ The RadarInfo message contains information about the radar configuration. Variou
 === "Python"
 
     ``` python
-    # Access radar configuration
-    center_frequency = radar_info.center_frequency
-    frequency_sweep = radar_info.frequency_sweep
-    range_toggle = radar_info.range_toggle
-    detection_sensitivity = radar_info.detection_sensitivity
-    cube = radar_info.cube
+    def info_worker(msg):
+        radar_info = RadarInfo.deserialize(msg.payload.to_bytes())
+        radar_log = "Range Mode: %s\n" % str(radar_info.frequency_sweep)
+        radar_log += "Center Band: %s\n" % str(radar_info.center_frequency)
+        radar_log += "Sensitivity: %s\n" % str(radar_info.detection_sensitivity)
+        radar_log += "Range Toggle: %s\n" % str(radar_info.range_toggle)
+        rr.log("RadarInfo", rr.TextLog(radar_log))
     ```
 
 === "Rust"
@@ -351,7 +361,9 @@ After setting up the Zenoh session, we will create a subscriber to the `radar/cu
 
     ``` python
     # Create a subscriber for "rt/radar/cube"
-    subscriber = session.declare_subscriber('rt/radar/cube')
+    loop = asyncio.get_running_loop()
+    drain = MessageDrain(loop)
+    session.declare_subscriber('rt/radar/cube', drain.callback)
     ```
 
 === "Rust"
@@ -371,13 +383,15 @@ We can now recieve a message on the subcriber. After recieving the message, we w
 === "Python"
 
     ``` python
-    from edgefirst.schemas.edgefirst_msgs import RadarCube
-
-    # Recieve a message
-    msg = subscriber.recv()
-
-    # deserialize message
-    radar_cube = RadarCube.deserialize(msg.payload.to_bytes())
+    async def cube_handler(drain):
+        while True:
+            msg = await drain.get_latest()
+            thread = threading.Thread(target=cube_worker, args=[msg])
+            thread.start()
+            
+            while thread.is_alive():
+                await asyncio.sleep(0.001)
+            thread.join()
     ```
 
 === "Rust"
@@ -398,9 +412,13 @@ The RadarCube message contains data from the RadarCube.
 === "Python"
 
     ``` python
-    # Access radar cube information
-    shape = radar_cube.shape
-    cube = radar_cube.cube
+    def cube_worker(msg):
+        radar_cube = RadarCube.deserialize(msg.payload.to_bytes())
+        data = np.array(radar_cube.cube).reshape(radar_cube.shape)
+        # Take the absolute value of the data to improve visualization.
+        data = np.abs(data)
+        rr.log("radar/cube",
+                rr.Tensor(data, dim_names=["SEQ", "RANGE", "RX", "DOPPLER"]))
     ```
 
 === "Rust"
@@ -421,3 +439,144 @@ The radar cube has shape: [2, 200, 4, 256]
 
 When displaying the results through Rerun you will see the radar cube displayed.
 ![alt text](assets/radar_cube.png)
+
+## Combined Example
+
+This example will demonstrate how to combine the camera feed with the radar messages to create a composite Rerun view. The main difference when using multiple messages in a script, is that we will change from waiting on the message to be received to having a callback function for when a message is received. Using the initial method, the script would hang while waiting for a message topic to be published, so if the messages are being published at different rates, the slowest message rate will limit the others.
+
+Sample Code: [Python](https://github.com/EdgeFirstAI/samples/blob/main/python/combined/camera_radar.py) 
+
+### Setting up the subscribers
+
+After setting up the Zenoh session, we will create a subscriber to the three topics
+
+=== "Python"
+
+    ``` python
+    loop = asyncio.get_running_loop()
+    h264_drain = MessageDrain(loop)
+    boxes2d_drain = MessageDrain(loop)
+    radar_drain = MessageDrain(loop)
+    frame_size_storage = FrameSize()
+
+    # Declare subscribers
+    session.declare_subscriber('rt/camera/h264', h264_drain.callback)
+    session.declare_subscriber('rt/model/boxes2d', boxes2d_drain.callback)
+    session.declare_subscriber('rt/radar/clusters', radar_drain.callback)
+    ```
+
+### Subscriber Callbacks
+We will now go through the handler functions that are in use for this example. These handler functions will independently handle each of the messages received through the MessageDrain. Additionally, we will make use of a FrameSize object to communicate the frame size of the camera to the boxes and segmentation mask so they can be resized appropriately.
+
+=== "Python"
+
+    ``` python
+    await asyncio.gather(h264_handler(h264_drain, frame_size_storage), 
+                         boxes2d_handler(boxes_drain, frame_size_storage),
+                         mask_handler(mask_drain, frame_size_storage, args.remote))
+    ```
+
+#### H264 Handler
+The H264 handler will receive the CompressedVideo message from the MessageDrain and after initializing the required containers will pass that message to the worker, where the message will be processed and logged to Rerun.
+
+=== "Python"
+
+    ``` python
+    async def h264_handler(drain, frame_storage):
+        raw_data = io.BytesIO()
+        container = av.open(raw_data, format='h264', mode='r')
+
+        while True:
+            msg = await drain.get_latest()
+            thread = threading.Thread(target=h264_worker, args=[msg, frame_storage, raw_data, container])
+            thread.start()
+            
+            while thread.is_alive():
+                await asyncio.sleep(0.001)
+            thread.join()
+    
+    def h264_worker(msg, frame_storage, raw_data, container):
+        raw_data.write(msg.payload.to_bytes())
+        raw_data.seek(0)
+        for packet in container.demux():
+            try:
+                if packet.size == 0:
+                    continue
+                raw_data.seek(0)
+                raw_data.truncate(0)
+                for frame in packet.decode():
+                    frame_array = frame.to_ndarray(format='rgb24')
+                    frame_storage.set(frame_array.shape[1], frame_array.shape[0])
+                    rr.log('/camera', rr.Image(frame_array))
+            except Exception:
+                continue
+    ```
+
+#### Boxes2D Handler
+The Boxes2D callback will wait for a Detect message from the MessageDrain and will pass that message to the worker, where the message will be processed and logged to Rerun. The boxes logged will use tracking when available. Additionally, this handler will wait until the camera has started and logged a frame size so it knows what the height and width will be to resize the boxes.
+
+=== "Python"
+
+    ``` python
+    async def boxes2d_handler(drain, frame_storage):
+        boxes_tracked = {}
+        _ = await frame_storage.get()
+        while True:
+            msg = await drain.get_latest()
+            frame_size = await frame_storage.get()
+            thread = threading.Thread(target=boxes2d_worker, args=[msg, boxes_tracked, frame_size])
+            thread.start()
+            
+            while thread.is_alive():
+                await asyncio.sleep(0.001)
+            thread.join()
+
+    def boxes2d_worker(msg, boxes_tracked, frame_size):
+        detection = Detect.deserialize(msg.payload.to_bytes())
+        centers, sizes, labels, colors = [], [], [], []
+        for box in detection.boxes:
+            if box.track.id and box.track.id not in boxes_tracked:
+                boxes_tracked[box.track.id] = [box.label + ": " + box.track.id[:6], list(np.random.choice(range(256), size=3))]
+            if box.track.id:
+                colors.append(boxes_tracked[box.track.id][1])
+                labels.append(boxes_tracked[box.track.id][0])
+            else:
+                colors.append([0,255,0])
+                labels.append(box.label)
+            centers.append((int(box.center_x * frame_size[0]), int(box.center_y * frame_size[1])))
+            sizes.append((int(box.width * frame_size[0]), int(box.height * frame_size[1])))
+        rr.log("/camera/boxes", rr.Boxes2D(centers=centers, sizes=sizes, labels=labels, colors=colors))
+    ```
+#### Radar Handler
+The Lidar callback will receive the pointcloud message, perform post-processing on the resultant data and then be sent to Rerun.
+
+=== "Python"
+
+    ``` python
+    async def clusters_handler(drain):
+        while True:
+            msg = await drain.get_latest()
+            thread = threading.Thread(target=clusters_worker, args=[msg])
+            thread.start()
+            
+            while thread.is_alive():
+                await asyncio.sleep(0.001)
+            thread.join()
+
+    def clusters_worker(msg):
+        pcd = PointCloud2.deserialize(msg.payload.to_bytes())
+        points = decode_pcd(pcd)
+        clusters = [p for p in points if p.cluster_id > 0]
+        if not clusters:
+            rr.log("/pointcloud/clusters", rr.Points3D([], colors=[]))  
+            return
+        max_id = max(p.cluster_id for p in clusters)
+        pos = [[p.x, p.y, p.z] for p in clusters]
+        colors = [colormap(turbo_colormap, p.cluster_id / max_id)
+                for p in clusters]
+        rr.log("/pointcloud/clusters", rr.Points3D(pos, colors=colors))
+    ```
+
+### Results
+When displaying the results through Rerun you will see the combined image of the camera feed with boxes and the radar pointcloud.
+![alt text](assets/camera_radar.png)

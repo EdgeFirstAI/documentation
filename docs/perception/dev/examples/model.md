@@ -15,7 +15,9 @@ After setting up the Zenoh session, we will create a subscriber to the `model/in
 
     ``` python
     # Create a subscriber for "rt/model/info"
-    subscriber = session.declare_subscriber('rt/model/info')
+    loop = asyncio.get_running_loop()
+    drain = MessageDrain(loop)
+    session.declare_subscriber('rt/model/info', drain.callback)
     ```
 
 === "Rust"
@@ -30,17 +32,20 @@ After setting up the Zenoh session, we will create a subscriber to the `model/in
 
 ### Receive a message
 
-We can now receive a message on the subscriber. After receiving the message, we will need to deserialize it.
+We can now await a message from that subscriber. After receiving the message, we will pass that message along to our processing function in a new thread to avoid missing messages.
 
 === "Python"
 
     ``` python
-    from edgefirst.schemas.edgefirst_msgs import ModelInfo
-
-    # Receive a message
-    msg = subscriber.recv()
-    # deserialize message
-    info = ModelInfo.deserialize(msg.payload.to_bytes())
+    async def info_handler(drain):
+        while True:
+            msg = await drain.get_latest()
+            thread = threading.Thread(target=info_worker, args=[msg])
+            thread.start()
+            
+            while thread.is_alive():
+                await asyncio.sleep(0.001)
+            thread.join()
     ```
 
 === "Rust"
@@ -60,10 +65,11 @@ The ModelInfo message contains information about the model configuration. You ca
 === "Python"
 
     ``` python
-    # Access model parameters
-    m_type = info.model_type
-    m_name = info.model_name
-    rr.log("ModelInfo", rr.TextLog("Model Name: %s Model Type: %s" % (m_name, m_type)))
+    def info_worker(msg):
+        info = ModelInfo.deserialize(msg.payload.to_bytes())
+        m_type = info.model_type
+        m_name = info.model_name
+        rr.log("ModelInfo", rr.TextLog("Model Name: %s Model Type: %s" % (m_name, m_type)))
     ```
 
 === "Rust"
@@ -92,7 +98,9 @@ After setting up the Zenoh session, we will create a subscriber to the `model/bo
 
     ``` python
     # Create a subscriber for "rt/model/boxes2d"
-    subscriber = session.declare_subscriber('rt/model/boxes2d')
+    loop = asyncio.get_running_loop()
+    drain = MessageDrain(loop)
+    session.declare_subscriber('rt/model/boxes2d', drain.callback)
     ```
 
 === "Rust"
@@ -107,18 +115,21 @@ After setting up the Zenoh session, we will create a subscriber to the `model/bo
 
 ### Receive a message
 
-We can now receive a message on the subscriber. After receiving the message, we will need to deserialize it.
+We can now await a message from that subscriber. After receiving the message, we will pass that message along to our processing function in a new thread to avoid missing messages.
 
 === "Python"
 
     ``` python
-    from edgefirst.schemas.edgefirst_msgs import Detect
+    async def boxes2d_handler(drain):
+    while True:
+        msg = await drain.get_latest()
 
-    # Receive a message
-    msg = subscriber.recv()
-
-    # deserialize message
-    detection = Detect.deserialize(msg.payload.to_bytes())
+        thread = threading.Thread(target=boxes2d_worker, args=[msg])
+        thread.start()
+        
+        while thread.is_alive():
+            await asyncio.sleep(0.001)
+        thread.join()
     ```
 
 === "Rust"
@@ -133,19 +144,23 @@ We can now receive a message on the subscriber. After receiving the message, we 
 
 ### Process the Data
 
-The Boxes2D message contains 2D bounding box detections. You can access various fields like:
+The Boxes2D message contains 2D bounding box detections. The message will be sent to be processed, deserializing the message, accessing the required information and logging the boxes to Rerun.
 
 === "Python"
 
     ``` python
-    centers = []
-    sizes = []
-    labels = []
-    for box in detection.boxes:
-        centers.append((box.center_x, box.center_y))
-        sizes.append((box.width, box.height))
-        labels.append(box.label)
-    rr.log("boxes", rr.Boxes2D(centers=centers, sizes=sizes, labels=labels))
+    from edgefirst.schemas.edgefirst_msgs import Detect
+
+    def boxes2d_worker(msg):
+        detection = Detect.deserialize(msg.payload.to_bytes())
+        centers = []
+        sizes = []
+        labels = []
+        for box in detection.boxes:
+            centers.append((box.center_x, box.center_y))
+            sizes.append((box.width, box.height))
+            labels.append(box.label)
+        rr.log("boxes", rr.Boxes2D(centers=centers, sizes=sizes, labels=labels))
     ```
 
 === "Rust"
@@ -162,11 +177,41 @@ The Boxes2D message contains 2D bounding box detections. You can access various 
     }
 
     let _ = rr.log("boxes", &rerun::Boxes2D::from_centers_and_sizes(centers, sizes).with_labels(labels))?;
-    ```
+    ``` 
 
 ### Results
 When displaying the results through Rerun you will see the boxes without any camera, to see the combined example please see the[Combined Example](#combined-example).
 ![alt text](assets/model_boxes2d.png)
+
+### Box Tracking
+On your EdgeFirst Platform you can also allow tracking of the boxes and this can then be logged during the publishing of the boxes. The documentation for the settings to turn on tracking can be found [here](../../../platforms/configuration.md#track-settings). You can update your code to match the [tracked example](https://github.com/EdgeFirstAI/samples/blob/main/python/model/boxes2d_tracked.py) from the regular boxes2d example by changing the boxes2d_worker to the following.
+
+=== "Python"
+
+    ``` python
+    def boxes2d_worker(msg, boxes_tracked):
+        detection = Detect.deserialize(msg.payload.to_bytes())
+        centers = []
+        sizes = []
+        labels = []
+        colors = []
+        for box in detection.boxes:
+            if box.track.id and box.track.id not in boxes_tracked:
+                boxes_tracked[box.track.id] = [box.label + ": " + box.track.id[:6], list(np.random.choice(range(256), size=3))]
+            if box.track.id:
+                colors.append(boxes_tracked[box.track.id][1])
+                labels.append(boxes_tracked[box.track.id][0])
+            else:
+                colors.append([0,255,0])
+                labels.append(box.label)
+            centers.append((box.center_x, box.center_y))
+            sizes.append((box.width, box.height))
+        rr.log("boxes", rr.Boxes2D(centers=centers, sizes=sizes, labels=labels, colors=colors))
+    ```
+
+The main adjustments are that a color will be specified and each tracked box will have its own color as well as that we will add in the unique ID for the box into the label. All of this is contingent on tracking being enabled. The following image is taken when applied to a combined example.
+
+![Boxes2D Tracking](assets/boxes2d_tracking.gif)
 
 ## Model Mask
 Topic: [/model/mask](../../topics/model.md#modelmask)  
@@ -181,7 +226,9 @@ After setting up the Zenoh session, we will create a subscriber to the `model/ma
 
     ``` python
     # Create a subscriber for "rt/model/mask"
-    subscriber = session.declare_subscriber('rt/model/mask')
+    loop = asyncio.get_running_loop()
+    drain = MessageDrain(loop)
+    session.declare_subscriber('rt/model/mask', drain.callback)
     ```
 
 === "Rust"
@@ -196,21 +243,35 @@ After setting up the Zenoh session, we will create a subscriber to the `model/ma
 
 ### Receive a message
 
-We can now receive a message on the subscriber. After receiving the message, we will need to deserialize it.
+We can now await a message from that subscriber. After receiving the message, we will pass that message along to our processing function in a new thread to avoid missing messages. In addition we will log the annotations so Rerun knows what colors to use for each class.
 
 === "Python"
 
     ``` python
-    from edgefirst.schemas.edgefirst_msgs import Mask
-
-    msg = subscriber.recv()
-    mask = Mask.deserialize(msg.payload.to_bytes())
+    async def mask_handler(drain):
+        rr.log("/", rr.AnnotationContext([(0, "background", (0,0,0)), (1, "person", (0,255,0))]))
+        while True:
+            msg = await drain.get_latest()
+            thread = threading.Thread(target=mask_worker, args=[msg])
+            thread.start()
+            
+            while thread.is_alive():
+                await asyncio.sleep(0.001)
+            thread.join()
     ```
 
 === "Rust"
 
     ``` rust
     use edgefirst_schemas::edgefirst_msgs::Mask;
+
+    // Log annotation context
+    rr.log(
+        "/",
+        &AnnotationContext::new([
+            (0, "background", rerun::Rgba32::from_rgb(0, 0, 0)),
+            (1, "person", rerun::Rgba32::from_rgb(0, 255, 0))])
+    )?;
 
     // Receive a message
     let msg = subscriber.recv().unwrap();
@@ -219,16 +280,17 @@ We can now receive a message on the subscriber. After receiving the message, we 
 
 ### Process the Data
 
-The Mask message contains segmentation mask data. You can access various fields like:
+The Mask message contains segmentation mask data. The worker will perform argmax on the result to get the resultant class for each pixel to be logged.
 
 === "Python"
 
     ``` python
-    np_arr = np.asarray(mask.mask, dtype=np.uint8)
-    np_arr = np.reshape(np_arr, [mask.height, mask.width, -1])
-    np_arr = np.argmax(np_arr, axis=2)
-    rr.log("/", rr.AnnotationContext([(0, "background", (0,0,0)), (1, "person", (0,255,0))]))
-    rr.log("mask", rr.SegmentationImage(np_arr))
+    def mask_worker(msg):
+        mask = Mask.deserialize(msg.payload.to_bytes())
+        np_arr = np.asarray(mask.mask, dtype=np.uint8)
+        np_arr = np.reshape(np_arr, [mask.height, mask.width, -1])
+        np_arr = np.argmax(np_arr, axis=2)
+        rr.log("mask", rr.SegmentationImage(np_arr))
     ```
 
 === "Rust"
@@ -252,14 +314,6 @@ The Mask message contains segmentation mask data. You can access various fields 
                 .unwrap_or(0)
         });
 
-    // Log annotation context
-    rr.log(
-        "/",
-        &AnnotationContext::new([
-            (0, "background", rerun::Rgba32::from_rgb(0, 0, 0)),
-            (1, "person", rerun::Rgba32::from_rgb(0, 255, 0))])
-    )?;
-
     // Log segmentation mask
     let _ = rr.log("mask", &SegmentationImage::try_from(array2)?)?;
     ```
@@ -275,13 +329,15 @@ Sample Code: [Python](https://github.com/EdgeFirstAI/samples/blob/main/python/mo
 
 ### Setting up subscriber
 
-After setting up the Zenoh session, we will create a subscriber to the `model/compressed_mask` topic
+After setting up the Zenoh session, we will create a subscriber to the `model/mask_compressed` topic
 
 === "Python"
 
     ``` python
     # Create a subscriber for "rt/model/mask_compressed"
-    subscriber = session.declare_subscriber('rt/model/mask_compressed')
+    loop = asyncio.get_running_loop()
+    drain = MessageDrain(loop)
+    session.declare_subscriber('rt/model/mask_compressed', drain.callback)
     ```
 
 === "Rust"
@@ -295,15 +351,21 @@ After setting up the Zenoh session, we will create a subscriber to the `model/co
 
 ### Receive a message
 
-We can now receive a message on the subscriber. After receiving the message, we will need to deserialize it.
+We can now await a message from that subscriber from an asynchronous function. After receiving the message, we will pass that message along to our processing function in a new thread to avoid missing messages. In addition we will log the annotations so Rerun knows what colors to use for each class.
 
 === "Python"
 
     ``` python
-    from edgefirst.schemas.edgefirst_msgs import Mask
-
-    msg = subscriber.recv()
-    mask = Mask.deserialize(msg.payload.to_bytes())
+    async def mask_handler(drain):
+        rr.log("/", rr.AnnotationContext([(0, "background", (0,0,0)), (1, "person", (0,255,0))]))
+        while True:
+            msg = await drain.get_latest()
+            thread = threading.Thread(target=mask_worker, args=[msg])
+            thread.start()
+            
+            while thread.is_alive():
+                await asyncio.sleep(0.001)
+            thread.join()
     ```
 
 === "Rust"
@@ -318,17 +380,19 @@ We can now receive a message on the subscriber. After receiving the message, we 
 
 ### Process the Data
 
-The CompressedMask message contains compressed segmentation mask data. You can access various fields like:
+The Mask message contains segmentation mask data. The worker will decompress the data and then perform argmax on the result to get the resultant class for each pixel to be logged.
 
 === "Python"
 
     ``` python
-    decoded_array = zstd.decompress(bytes(mask.mask))
-    np_arr = np.frombuffer(decoded_array, np.uint8)
-    np_arr = np.reshape(np_arr, [mask.height, mask.width, -1])
-    np_arr = np.argmax(np_arr, axis=2)
-    rr.log("/", rr.AnnotationContext([(0, "background", (0,0,0)), (1, "person", (0,255,0))]))
-    rr.log("mask", rr.SegmentationImage(np_arr))
+    def mask_worker(msg):
+        mask = Mask.deserialize(msg.payload.to_bytes())
+        decoded_array = zstd.decompress(bytes(mask.mask))
+        np_arr = np.frombuffer(decoded_array, np.uint8)
+        np_arr = np.reshape(np_arr, [mask.height, mask.width, -1])
+        np_arr = np.argmax(np_arr, axis=2)
+        
+        rr.log("mask", rr.SegmentationImage(np_arr))
     ```
 
 === "Rust"
@@ -379,94 +443,139 @@ Sample Code: [Python](https://github.com/EdgeFirstAI/samples/blob/main/python/co
 
 ### Setting up the subscribers
 
-After setting up the Zenoh session, we will create a subscriber to the three topics
+After setting up the Zenoh session, we will create a subscriber to the three topics, camera, boxes and segmentation. A FrameSize is additionally created to pass the stream size from the camera to the boxes and segmentation mask so they can be resized appropriately.
 
 === "Python"
 
     ``` python
     # Create the necessary subscribers
-    subscriber1 = session.declare_subscriber('rt/camera/h264', h264_callback)
-    subscriber2 = session.declare_subscriber('rt/model/boxes2d', boxes2d_callback)
-    subscriber3 = session.declare_subscriber('rt/model/mask_compressed', mask_callback)
-    ```
-
-=== "Rust"
-
-    ``` rust
-    // Create a subscriber for "rt/camera/info"
-    let subscriber = session
-        .declare_subscriber("rt/camera/info")
-        .await
-        .unwrap();
+    loop = asyncio.get_running_loop()
+    h264_drain = MessageDrain(loop)
+    boxes_drain = MessageDrain(loop)
+    mask_drain = MessageDrain(loop)
+    frame_size_storage = FrameSize()
+    session.declare_subscriber('rt/camera/h264', h264_drain.callback)
+    session.declare_subscriber('rt/model/boxes2d', boxes_drain.callback)
+    if args.remote:
+        session.declare_subscriber('rt/model/mask_compressed', mask_drain.callback)
+    else:
+        session.declare_subscriber('rt/model/mask', mask_drain.callback)
     ```
 
 ### Subscriber Callbacks
-We will now go through the callback functions that are in use for this example. These callback functions will make use of a global variable frame size to allow the script to properly resize the segmentation mask and boxes to overlap the camera feed correctly. Each callback will receive the Zenoh message as the argument.
+We will now go through the handler functions that are in use for this example. These handler functions will independently handle each of the messages received through the MessageDrain. Additionally, we will make use of a FrameSize object to communicate the frame size of the camera to the boxes and segmentation mask so they can be resized appropriately.
 
 === "Python"
 
     ``` python
-    raw_data = io.BytesIO() # Necessary for H264 decoding
-    container = av.open(raw_data, format='h264', mode='r') # Necessary for H264 decoding
-    frame_size = []
+    await asyncio.gather(h264_handler(h264_drain, frame_size_storage), 
+                         boxes2d_handler(boxes_drain, frame_size_storage),
+                         mask_handler(mask_drain, frame_size_storage, args.remote))
     ```
 
-#### H264 Callback
-The H264 callback will receive the CompressedVideo message and decode it, loop through each frame received and log those frames to Rerun in addition to updating frame size.
+#### H264 Handler
+The H264 handler will receive the CompressedVideo message from the MessageDrain and after initializing the required containers will pass that message to the worker, where the message will be processed and logged to Rerun.
 
 === "Python"
 
     ``` python
-    def h264_callback(msg):
-        global frame_size
+    async def h264_handler(drain, frame_storage):
+        raw_data = io.BytesIO()
+        container = av.open(raw_data, format='h264', mode='r')
+
+        while True:
+            msg = await drain.get_latest()
+            thread = threading.Thread(target=h264_worker, args=[msg, frame_storage, raw_data, container])
+            thread.start()
+            
+            while thread.is_alive():
+                await asyncio.sleep(0.001)
+            thread.join()
+    
+    def h264_worker(msg, frame_storage, raw_data, container):
         raw_data.write(msg.payload.to_bytes())
         raw_data.seek(0)
         for packet in container.demux():
             try:
-                if packet.size == 0:  # Skip empty packets
+                if packet.size == 0:
                     continue
                 raw_data.seek(0)
                 raw_data.truncate(0)
-                for frame in packet.decode():  # Decode video frames
-                    frame_array = frame.to_ndarray(format='rgb24')  # Convert frame to numpy array
-                    frame_size = [frame_array.shape[1], frame_array.shape[0]]
-                    rr.log('camera', rr.Image(frame_array))
-            except Exception:  # Handle exceptions
-                continue  # Continue processing next packets
+                for frame in packet.decode():
+                    frame_array = frame.to_ndarray(format='rgb24')
+                    frame_storage.set(frame_array.shape[1], frame_array.shape[0])
+                    rr.log('/camera', rr.Image(frame_array))
+            except Exception:
+                continue
     ```
 
-#### Boxes2D Callback
-The Boxes2D callback will receive the Detect message, loop through all detections found and then create lists of the centers and sizes received properly scaled by the frame size that was determined from the camera feed.
+#### Boxes2D Handler
+The Boxes2D callback will wait for a Detect message from the MessageDrain and will pass that message to the worker, where the message will be processed and logged to Rerun. The boxes logged will use tracking when available. Additionally, this handler will wait until the camera has started and logged a frame size so it knows what the height and width will be to resize the boxes.
 
 === "Python"
 
     ``` python
-    def boxes2d_callback(msg):
-        detection = Detect.deserialize(msg.payload.to_bytes())    
+    async def boxes2d_handler(drain, frame_storage):
+        boxes_tracked = {}
+        _ = await frame_storage.get()
+        while True:
+            msg = await drain.get_latest()
+            frame_size = await frame_storage.get()
+            thread = threading.Thread(target=boxes2d_worker, args=[msg, boxes_tracked, frame_size])
+            thread.start()
+            
+            while thread.is_alive():
+                await asyncio.sleep(0.001)
+            thread.join()
+
+    def boxes2d_worker(msg, boxes_tracked, frame_size):
+        detection = Detect.deserialize(msg.payload.to_bytes())
+        centers, sizes, labels, colors = [], [], [], []
         for box in detection.boxes:
+            if box.track.id and box.track.id not in boxes_tracked:
+                boxes_tracked[box.track.id] = [box.label + ": " + box.track.id[:6], list(np.random.choice(range(256), size=3))]
+            if box.track.id:
+                colors.append(boxes_tracked[box.track.id][1])
+                labels.append(boxes_tracked[box.track.id][0])
+            else:
+                colors.append([0,255,0])
+                labels.append(box.label)
             centers.append((int(box.center_x * frame_size[0]), int(box.center_y * frame_size[1])))
             sizes.append((int(box.width * frame_size[0]), int(box.height * frame_size[1])))
-            print(centers)
-            print(sizes)
-            labels.append(box.label)
-        rr.log("camera/boxes", rr.Boxes2D(centers=centers, sizes=sizes, labels=labels))
+        rr.log("/camera/boxes", rr.Boxes2D(centers=centers, sizes=sizes, labels=labels, colors=colors))
     ```
 
-#### Mask Callback
-The Mask callback will receive the Mask message, decompress the message (if using the mask_compressed message remotely), and then scale the mask to the frame size determined from the camera feed. This mask will then be processed to log the results to Rerun following the AnnotationContext created.
+#### Mask Handler
+The Mask callback will wait for a Mask message from the MessageDrain and will pass that message to the worker, where the message will be processed and logged to Rerun. The mask_handler requires the remote field to be passed so it knows whether to decompress the mask data or not. Additionally, this handler will wait until the camera has started and logged a frame size so it knows what the height and width will be to resize the mask.
 
 === "Python"
 
     ``` python
-    def mask_callback(msg):
+    async def mask_handler(drain, frame_storage, remote):
+        _ = await frame_storage.get()
+        rr.log("/", rr.AnnotationContext([(0, "background", (0, 0, 0, 0)), (1, "person", (0, 255, 0))]))
+        while True:
+            msg = await drain.get_latest()
+            frame_size = await frame_storage.get()
+            thread = threading.Thread(target=mask_worker, args=[msg, frame_size, remote])
+            thread.start()
+            
+            while thread.is_alive():
+                await asyncio.sleep(0.001)
+            thread.join()
+
+    def mask_worker(msg, frame_size, remote):
         mask = Mask.deserialize(msg.payload.to_bytes())
-        decoded_array = zstd.decompress(bytes(mask.mask))
-        np_arr = np.frombuffer(decoded_array, np.uint8)
-        np_arr = np.reshape(np_arr, [mask.height, mask.width, -1])
+        if remote:
+            decoded_array = zstd.decompress(bytes(mask.mask))
+            np_arr = np.frombuffer(decoded_array, np.uint8).reshape(mask.height, mask.width, -1)
+        else:
+            np_arr = np.asarray(mask.mask, dtype=np.uint8)
+            np_arr = np.reshape(np_arr, [mask.height, mask.width, -1])
         np_arr = cv2.resize(np_arr, frame_size)
         np_arr = np.argmax(np_arr, axis=2)
-        rr.log("/", rr.AnnotationContext([(0, "background", (0,0,0,0)), (1, "person", (0,255,0))]))
-        rr.log("camera/mask", rr.SegmentationImage(np_arr))
+        
+        rr.log("/camera/mask", rr.SegmentationImage(np_arr))
     ```
 
 ### Results

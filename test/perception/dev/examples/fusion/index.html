@@ -2945,6 +2945,15 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#results" class="md-nav__link">
+    <span class="md-ellipsis">
+      Results
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -3081,7 +3090,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#results" class="md-nav__link">
+  <a href="#results_1" class="md-nav__link">
     <span class="md-ellipsis">
       Results
     </span>
@@ -3141,7 +3150,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#results_1" class="md-nav__link">
+  <a href="#results_2" class="md-nav__link">
     <span class="md-ellipsis">
       Results
     </span>
@@ -4305,6 +4314,15 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#results" class="md-nav__link">
+    <span class="md-ellipsis">
+      Results
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -4441,7 +4459,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#results" class="md-nav__link">
+  <a href="#results_1" class="md-nav__link">
     <span class="md-ellipsis">
       Results
     </span>
@@ -4501,7 +4519,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#results_1" class="md-nav__link">
+  <a href="#results_2" class="md-nav__link">
     <span class="md-ellipsis">
       Results
     </span>
@@ -4581,7 +4599,9 @@
 <div class="tabbed-content">
 <div class="tabbed-block">
 <div class="highlight"><pre><span></span><code><span class="c1"># Create a subscriber for &quot;rt/fusion/occupancy&quot;</span>
-<span class="n">subscriber</span> <span class="o">=</span> <span class="n">session</span><span class="o">.</span><span class="n">declare_subscriber</span><span class="p">(</span><span class="s1">&#39;rt/fusion/occupancy&#39;</span><span class="p">)</span>
+<span class="n">loop</span> <span class="o">=</span> <span class="n">asyncio</span><span class="o">.</span><span class="n">get_running_loop</span><span class="p">()</span>
+<span class="n">drain</span> <span class="o">=</span> <span class="n">MessageDrain</span><span class="p">(</span><span class="n">loop</span><span class="p">)</span>
+<span class="n">session</span><span class="o">.</span><span class="n">declare_subscriber</span><span class="p">(</span><span class="s1">&#39;rt/fusion/occupancy&#39;</span><span class="p">,</span> <span class="n">drain</span><span class="o">.</span><span class="n">callback</span><span class="p">)</span>
 </code></pre></div>
 </div>
 <div class="tabbed-block">
@@ -4595,17 +4615,19 @@
 </div>
 </div>
 <h3 id="receive-a-message">Receive a message</h3>
-<p>We can now receive a message on the subscriber. After receiving the message, we will need to deserialize it.</p>
+<p>We can now await a message from that subscriber. After receiving the message, we will pass that message along to our processing function in a new thread to avoid missing messages.</p>
 <div class="tabbed-set tabbed-alternate" data-tabs="2:2"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><input id="__tabbed_2_2" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="__tabbed_2_1">Python</label><label for="__tabbed_2_2">Rust</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">edgefirst.schemas.fusion_msgs</span><span class="w"> </span><span class="kn">import</span> <span class="n">Occupancy</span>
+<div class="highlight"><pre><span></span><code><span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">occupancy_handler</span><span class="p">(</span><span class="n">drain</span><span class="p">):</span>
+    <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+        <span class="n">msg</span> <span class="o">=</span> <span class="k">await</span> <span class="n">drain</span><span class="o">.</span><span class="n">get_latest</span><span class="p">()</span>
+        <span class="n">thread</span> <span class="o">=</span> <span class="n">threading</span><span class="o">.</span><span class="n">Thread</span><span class="p">(</span><span class="n">target</span><span class="o">=</span><span class="n">occupancy_worker</span><span class="p">,</span> <span class="n">args</span><span class="o">=</span><span class="p">[</span><span class="n">msg</span><span class="p">])</span>
+        <span class="n">thread</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
 
-<span class="c1"># Receive a message</span>
-<span class="n">msg</span> <span class="o">=</span> <span class="n">subscriber</span><span class="o">.</span><span class="n">recv</span><span class="p">()</span>
-
-<span class="c1"># deserialize message</span>
-<span class="n">occupancy</span> <span class="o">=</span> <span class="n">Occupancy</span><span class="o">.</span><span class="n">deserialize</span><span class="p">(</span><span class="n">msg</span><span class="o">.</span><span class="n">payload</span><span class="o">.</span><span class="n">to_bytes</span><span class="p">())</span>
+        <span class="k">while</span> <span class="n">thread</span><span class="o">.</span><span class="n">is_alive</span><span class="p">():</span>
+            <span class="k">await</span> <span class="n">asyncio</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mf">0.001</span><span class="p">)</span>
+        <span class="n">thread</span><span class="o">.</span><span class="n">join</span><span class="p">()</span>
 </code></pre></div>
 </div>
 <div class="tabbed-block">
@@ -4620,15 +4642,21 @@
 </div>
 </div>
 <h3 id="process-the-data">Process the Data</h3>
-<p>The Occupancy message contains occupancy grid data. You can access various fields like:</p>
+<p>The Occupancy message contains occupancy grid data. You can log the data through the following</p>
 <div class="tabbed-set tabbed-alternate" data-tabs="3:2"><input checked="checked" id="__tabbed_3_1" name="__tabbed_3" type="radio" /><input id="__tabbed_3_2" name="__tabbed_3" type="radio" /><div class="tabbed-labels"><label for="__tabbed_3_1">Python</label><label for="__tabbed_3_2">Rust</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="c1"># Access occupancy parameters</span>
-<span class="n">width</span> <span class="o">=</span> <span class="n">occupancy</span><span class="o">.</span><span class="n">width</span>
-<span class="n">height</span> <span class="o">=</span> <span class="n">occupancy</span><span class="o">.</span><span class="n">height</span>
-<span class="n">resolution</span> <span class="o">=</span> <span class="n">occupancy</span><span class="o">.</span><span class="n">resolution</span>
-<span class="n">data</span> <span class="o">=</span> <span class="n">occupancy</span><span class="o">.</span><span class="n">data</span>  <span class="c1"># Occupancy grid data</span>
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">occupancy_worker</span><span class="p">(</span><span class="n">msg</span><span class="p">):</span>
+    <span class="n">pcd</span> <span class="o">=</span> <span class="n">PointCloud2</span><span class="o">.</span><span class="n">deserialize</span><span class="p">(</span><span class="n">msg</span><span class="o">.</span><span class="n">payload</span><span class="o">.</span><span class="n">to_bytes</span><span class="p">())</span>
+    <span class="n">points</span> <span class="o">=</span> <span class="n">decode_pcd</span><span class="p">(</span><span class="n">pcd</span><span class="p">)</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">points</span><span class="p">:</span>
+        <span class="n">rr</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="s2">&quot;fusion/occupancy&quot;</span><span class="p">,</span> <span class="n">rr</span><span class="o">.</span><span class="n">Points3D</span><span class="p">(</span><span class="n">positions</span><span class="o">=</span><span class="p">[],</span> <span class="n">colors</span><span class="o">=</span><span class="p">[]))</span> 
+        <span class="k">return</span>
+    <span class="n">max_class</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="nb">max</span><span class="p">([</span><span class="n">p</span><span class="o">.</span><span class="n">vision_class</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">points</span><span class="p">]),</span> <span class="mi">1</span><span class="p">)</span>
+    <span class="n">pos</span> <span class="o">=</span> <span class="p">[[</span><span class="n">p</span><span class="o">.</span><span class="n">x</span><span class="p">,</span> <span class="n">p</span><span class="o">.</span><span class="n">y</span><span class="p">,</span> <span class="n">p</span><span class="o">.</span><span class="n">z</span><span class="p">]</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">points</span><span class="p">]</span>
+    <span class="n">colors</span> <span class="o">=</span> <span class="p">[</span>
+        <span class="n">colormap</span><span class="p">(</span><span class="n">turbo_colormap</span><span class="p">,</span> <span class="n">p</span><span class="o">.</span><span class="n">vision_class</span><span class="o">/</span><span class="n">max_class</span><span class="p">)</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">points</span><span class="p">]</span>
+    <span class="n">rr</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="s2">&quot;fusion/occupancy&quot;</span><span class="p">,</span> <span class="n">rr</span><span class="o">.</span><span class="n">Points3D</span><span class="p">(</span><span class="n">positions</span><span class="o">=</span><span class="n">pos</span><span class="p">,</span> <span class="n">colors</span><span class="o">=</span><span class="n">colors</span><span class="p">))</span>
 </code></pre></div>
 </div>
 <div class="tabbed-block">
@@ -4641,6 +4669,9 @@
 </div>
 </div>
 </div>
+<h3 id="results">Results</h3>
+<p>When displaying the results through Rerun you will see the Occupancy pointcloud.
+<img alt="alt text" src="../assets/fusion_occupancy.png" /></p>
 <h2 id="fusionmodel_output">/fusion/model_output</h2>
 <h3 id="setting-up-subscriber_1">Setting up subscriber</h3>
 <p>After setting up the Zenoh session, we will create a subscriber to the <code>fusion/model_output</code> topic</p>
@@ -4648,7 +4679,10 @@
 <div class="tabbed-content">
 <div class="tabbed-block">
 <div class="highlight"><pre><span></span><code><span class="c1"># Create a subscriber for &quot;rt/fusion/model_output&quot;</span>
-<span class="n">subscriber</span> <span class="o">=</span> <span class="n">session</span><span class="o">.</span><span class="n">declare_subscriber</span><span class="p">(</span><span class="s1">&#39;rt/fusion/model_output&#39;</span><span class="p">)</span>
+<span class="n">loop</span> <span class="o">=</span> <span class="n">asyncio</span><span class="o">.</span><span class="n">get_running_loop</span><span class="p">()</span>
+<span class="n">drain</span> <span class="o">=</span> <span class="n">MessageDrain</span><span class="p">(</span><span class="n">loop</span><span class="p">)</span>
+
+<span class="n">session</span><span class="o">.</span><span class="n">declare_subscriber</span><span class="p">(</span><span class="s1">&#39;rt/fusion/model_output&#39;</span><span class="p">,</span> <span class="n">drain</span><span class="o">.</span><span class="n">callback</span><span class="p">)</span>
 </code></pre></div>
 </div>
 <div class="tabbed-block">
@@ -4662,17 +4696,19 @@
 </div>
 </div>
 <h3 id="receive-a-message_1">Receive a message</h3>
-<p>We can now receive a message on the subscriber. After receiving the message, we will need to deserialize it.</p>
+<p>We can now receive a message on the subscriber. After receiving the message, we will set it up for processing.</p>
 <div class="tabbed-set tabbed-alternate" data-tabs="5:2"><input checked="checked" id="__tabbed_5_1" name="__tabbed_5" type="radio" /><input id="__tabbed_5_2" name="__tabbed_5" type="radio" /><div class="tabbed-labels"><label for="__tabbed_5_1">Python</label><label for="__tabbed_5_2">Rust</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">edgefirst.schemas.fusion_msgs</span><span class="w"> </span><span class="kn">import</span> <span class="n">ModelOutput</span>
+<div class="highlight"><pre><span></span><code><span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">model_output_handler</span><span class="p">(</span><span class="n">drain</span><span class="p">):</span>
+    <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+        <span class="n">msg</span> <span class="o">=</span> <span class="k">await</span> <span class="n">drain</span><span class="o">.</span><span class="n">get_latest</span><span class="p">()</span>
+        <span class="n">thread</span> <span class="o">=</span> <span class="n">threading</span><span class="o">.</span><span class="n">Thread</span><span class="p">(</span><span class="n">target</span><span class="o">=</span><span class="n">model_output_worker</span><span class="p">,</span> <span class="n">args</span><span class="o">=</span><span class="p">[</span><span class="n">msg</span><span class="p">])</span>
+        <span class="n">thread</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
 
-<span class="c1"># Receive a message</span>
-<span class="n">msg</span> <span class="o">=</span> <span class="n">subscriber</span><span class="o">.</span><span class="n">recv</span><span class="p">()</span>
-
-<span class="c1"># deserialize message</span>
-<span class="n">output</span> <span class="o">=</span> <span class="n">ModelOutput</span><span class="o">.</span><span class="n">deserialize</span><span class="p">(</span><span class="n">msg</span><span class="o">.</span><span class="n">payload</span><span class="o">.</span><span class="n">to_bytes</span><span class="p">())</span>
+        <span class="k">while</span> <span class="n">thread</span><span class="o">.</span><span class="n">is_alive</span><span class="p">():</span>
+            <span class="k">await</span> <span class="n">asyncio</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mf">0.001</span><span class="p">)</span>
+        <span class="n">thread</span><span class="o">.</span><span class="n">join</span><span class="p">()</span>
 </code></pre></div>
 </div>
 <div class="tabbed-block">
@@ -4687,14 +4723,20 @@
 </div>
 </div>
 <h3 id="process-the-data_1">Process the Data</h3>
-<p>The ModelOutput message contains fused model output data. You can access various fields like:</p>
+<p>The ModelOutput message contains fused model output data. You can log the data through the following</p>
 <div class="tabbed-set tabbed-alternate" data-tabs="6:2"><input checked="checked" id="__tabbed_6_1" name="__tabbed_6" type="radio" /><input id="__tabbed_6_2" name="__tabbed_6" type="radio" /><div class="tabbed-labels"><label for="__tabbed_6_1">Python</label><label for="__tabbed_6_2">Rust</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="c1"># Access model output parameters</span>
-<span class="n">timestamp</span> <span class="o">=</span> <span class="n">output</span><span class="o">.</span><span class="n">timestamp</span>
-<span class="n">boxes</span> <span class="o">=</span> <span class="n">output</span><span class="o">.</span><span class="n">boxes</span>  <span class="c1"># 2D bounding boxes</span>
-<span class="n">masks</span> <span class="o">=</span> <span class="n">output</span><span class="o">.</span><span class="n">masks</span>  <span class="c1"># Segmentation masks</span>
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">model_output_worker</span><span class="p">(</span><span class="n">msg</span><span class="p">):</span>
+    <span class="n">mask</span> <span class="o">=</span> <span class="n">Mask</span><span class="o">.</span><span class="n">deserialize</span><span class="p">(</span><span class="n">msg</span><span class="o">.</span><span class="n">payload</span><span class="o">.</span><span class="n">to_bytes</span><span class="p">())</span>
+    <span class="n">np_arr</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">mask</span><span class="o">.</span><span class="n">mask</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">uint8</span><span class="p">)</span>
+    <span class="n">np_arr</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">np_arr</span><span class="p">,</span> <span class="p">[</span><span class="n">mask</span><span class="o">.</span><span class="n">height</span><span class="p">,</span> <span class="n">mask</span><span class="o">.</span><span class="n">width</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">])</span>
+    <span class="n">np_arr</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">argmax</span><span class="p">(</span><span class="n">np_arr</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+    <span class="n">rr</span><span class="o">.</span><span class="n">log</span><span class="p">(</span>
+        <span class="s2">&quot;/&quot;</span><span class="p">,</span> <span class="n">rr</span><span class="o">.</span><span class="n">AnnotationContext</span><span class="p">([</span>
+            <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="s2">&quot;background&quot;</span><span class="p">,</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)),</span>
+            <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="s2">&quot;person&quot;</span><span class="p">,</span> <span class="p">(</span><span class="mi">255</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">))]))</span>
+    <span class="n">rr</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="s2">&quot;mask&quot;</span><span class="p">,</span> <span class="n">rr</span><span class="o">.</span><span class="n">SegmentationImage</span><span class="p">(</span><span class="n">np_arr</span><span class="p">))</span>
 </code></pre></div>
 </div>
 <div class="tabbed-block">
@@ -4713,7 +4755,9 @@
 <div class="tabbed-content">
 <div class="tabbed-block">
 <div class="highlight"><pre><span></span><code><span class="c1"># Create a subscriber for &quot;rt/fusion/mask_output/tracked&quot;</span>
-<span class="n">subscriber</span> <span class="o">=</span> <span class="n">session</span><span class="o">.</span><span class="n">declare_subscriber</span><span class="p">(</span><span class="s1">&#39;rt/fusion/mask_output/tracked&#39;</span><span class="p">)</span>
+<span class="n">loop</span> <span class="o">=</span> <span class="n">asyncio</span><span class="o">.</span><span class="n">get_running_loop</span><span class="p">()</span>
+<span class="n">drain</span> <span class="o">=</span> <span class="n">MessageDrain</span><span class="p">(</span><span class="n">loop</span><span class="p">)</span>
+<span class="n">session</span><span class="o">.</span><span class="n">declare_subscriber</span><span class="p">(</span><span class="s1">&#39;rt/fusion/model_output/tracked&#39;</span><span class="p">,</span> <span class="n">drain</span><span class="o">.</span><span class="n">callback</span><span class="p">)</span>
 </code></pre></div>
 </div>
 <div class="tabbed-block">
@@ -4727,17 +4771,19 @@
 </div>
 </div>
 <h3 id="receive-a-message_2">Receive a message</h3>
-<p>We can now receive a message on the subscriber. After receiving the message, we will need to deserialize it.</p>
+<p>We can now receive a message on the subscriber. After receiving the message, we will set it up for processing.</p>
 <div class="tabbed-set tabbed-alternate" data-tabs="8:2"><input checked="checked" id="__tabbed_8_1" name="__tabbed_8" type="radio" /><input id="__tabbed_8_2" name="__tabbed_8" type="radio" /><div class="tabbed-labels"><label for="__tabbed_8_1">Python</label><label for="__tabbed_8_2">Rust</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">edgefirst.schemas.fusion_msgs</span><span class="w"> </span><span class="kn">import</span> <span class="n">MaskOutputTracked</span>
+<div class="highlight"><pre><span></span><code><span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">model_output_handler</span><span class="p">(</span><span class="n">drain</span><span class="p">):</span>
+    <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+        <span class="n">msg</span> <span class="o">=</span> <span class="k">await</span> <span class="n">drain</span><span class="o">.</span><span class="n">get_latest</span><span class="p">()</span>
+        <span class="n">thread</span> <span class="o">=</span> <span class="n">threading</span><span class="o">.</span><span class="n">Thread</span><span class="p">(</span><span class="n">target</span><span class="o">=</span><span class="n">model_output_worker</span><span class="p">,</span> <span class="n">args</span><span class="o">=</span><span class="p">[</span><span class="n">msg</span><span class="p">])</span>
+        <span class="n">thread</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
 
-<span class="c1"># Receive a message</span>
-<span class="n">msg</span> <span class="o">=</span> <span class="n">subscriber</span><span class="o">.</span><span class="n">recv</span><span class="p">()</span>
-
-<span class="c1"># deserialize message</span>
-<span class="n">tracked</span> <span class="o">=</span> <span class="n">MaskOutputTracked</span><span class="o">.</span><span class="n">deserialize</span><span class="p">(</span><span class="n">msg</span><span class="o">.</span><span class="n">payload</span><span class="o">.</span><span class="n">to_bytes</span><span class="p">())</span>
+        <span class="k">while</span> <span class="n">thread</span><span class="o">.</span><span class="n">is_alive</span><span class="p">():</span>
+            <span class="k">await</span> <span class="n">asyncio</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mf">0.001</span><span class="p">)</span>
+        <span class="n">thread</span><span class="o">.</span><span class="n">join</span><span class="p">()</span>
 </code></pre></div>
 </div>
 <div class="tabbed-block">
@@ -4752,14 +4798,20 @@
 </div>
 </div>
 <h3 id="process-the-data_2">Process the Data</h3>
-<p>The MaskOutputTracked message contains tracked segmentation mask data. You can access various fields like:</p>
+<p>The MaskOutputTracked message contains fused model output data. You can log the data through the following</p>
 <div class="tabbed-set tabbed-alternate" data-tabs="9:2"><input checked="checked" id="__tabbed_9_1" name="__tabbed_9" type="radio" /><input id="__tabbed_9_2" name="__tabbed_9" type="radio" /><div class="tabbed-labels"><label for="__tabbed_9_1">Python</label><label for="__tabbed_9_2">Rust</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="c1"># Access tracked mask parameters</span>
-<span class="n">timestamp</span> <span class="o">=</span> <span class="n">tracked</span><span class="o">.</span><span class="n">timestamp</span>
-<span class="n">track_id</span> <span class="o">=</span> <span class="n">tracked</span><span class="o">.</span><span class="n">track_id</span>
-<span class="n">mask</span> <span class="o">=</span> <span class="n">tracked</span><span class="o">.</span><span class="n">mask</span>  <span class="c1"># Segmentation mask</span>
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">model_output_worker</span><span class="p">(</span><span class="n">msg</span><span class="p">):</span>
+    <span class="n">mask</span> <span class="o">=</span> <span class="n">Mask</span><span class="o">.</span><span class="n">deserialize</span><span class="p">(</span><span class="n">msg</span><span class="o">.</span><span class="n">payload</span><span class="o">.</span><span class="n">to_bytes</span><span class="p">())</span>
+    <span class="n">np_arr</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">mask</span><span class="o">.</span><span class="n">mask</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">uint8</span><span class="p">)</span>
+    <span class="n">np_arr</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">np_arr</span><span class="p">,</span> <span class="p">[</span><span class="n">mask</span><span class="o">.</span><span class="n">height</span><span class="p">,</span> <span class="n">mask</span><span class="o">.</span><span class="n">width</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">])</span>
+    <span class="n">np_arr</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">argmax</span><span class="p">(</span><span class="n">np_arr</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+    <span class="n">rr</span><span class="o">.</span><span class="n">log</span><span class="p">(</span>
+        <span class="s2">&quot;/&quot;</span><span class="p">,</span> <span class="n">rr</span><span class="o">.</span><span class="n">AnnotationContext</span><span class="p">([</span>
+            <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="s2">&quot;background&quot;</span><span class="p">,</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)),</span>
+            <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="s2">&quot;person&quot;</span><span class="p">,</span> <span class="p">(</span><span class="mi">255</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">))]))</span>
+    <span class="n">rr</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="s2">&quot;mask&quot;</span><span class="p">,</span> <span class="n">rr</span><span class="o">.</span><span class="n">SegmentationImage</span><span class="p">(</span><span class="n">np_arr</span><span class="p">))</span>
 </code></pre></div>
 </div>
 <div class="tabbed-block">
@@ -4778,7 +4830,9 @@
 <div class="tabbed-content">
 <div class="tabbed-block">
 <div class="highlight"><pre><span></span><code><span class="c1"># Create a subscriber for &quot;rt/fusion/radar&quot;</span>
-<span class="n">subscriber</span> <span class="o">=</span> <span class="n">session</span><span class="o">.</span><span class="n">declare_subscriber</span><span class="p">(</span><span class="s1">&#39;rt/fusion/radar&#39;</span><span class="p">)</span>
+<span class="n">loop</span> <span class="o">=</span> <span class="n">asyncio</span><span class="o">.</span><span class="n">get_running_loop</span><span class="p">()</span>
+<span class="n">drain</span> <span class="o">=</span> <span class="n">MessageDrain</span><span class="p">(</span><span class="n">loop</span><span class="p">)</span>
+<span class="n">session</span><span class="o">.</span><span class="n">declare_subscriber</span><span class="p">(</span><span class="s1">&#39;rt/fusion/radar&#39;</span><span class="p">,</span> <span class="n">drain</span><span class="o">.</span><span class="n">callback</span><span class="p">)</span>
 </code></pre></div>
 </div>
 <div class="tabbed-block">
@@ -4792,17 +4846,19 @@
 </div>
 </div>
 <h3 id="receive-a-message_3">Receive a message</h3>
-<p>We can now receive a message on the subscriber. After receiving the message, we will need to deserialize it.</p>
+<p>We can now receive a message on the subscriber. After receiving the message, we will set it up for processing.</p>
 <div class="tabbed-set tabbed-alternate" data-tabs="11:2"><input checked="checked" id="__tabbed_11_1" name="__tabbed_11" type="radio" /><input id="__tabbed_11_2" name="__tabbed_11" type="radio" /><div class="tabbed-labels"><label for="__tabbed_11_1">Python</label><label for="__tabbed_11_2">Rust</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">edgefirst.schemas.sensor_msgs</span><span class="w"> </span><span class="kn">import</span> <span class="n">PointCloud2</span>
+<div class="highlight"><pre><span></span><code><span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">radar_handler</span><span class="p">(</span><span class="n">drain</span><span class="p">):</span>
+    <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+        <span class="n">msg</span> <span class="o">=</span> <span class="k">await</span> <span class="n">drain</span><span class="o">.</span><span class="n">get_latest</span><span class="p">()</span>
+        <span class="n">thread</span> <span class="o">=</span> <span class="n">threading</span><span class="o">.</span><span class="n">Thread</span><span class="p">(</span><span class="n">target</span><span class="o">=</span><span class="n">radar_worker</span><span class="p">,</span> <span class="n">args</span><span class="o">=</span><span class="p">[</span><span class="n">msg</span><span class="p">])</span>
+        <span class="n">thread</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
 
-<span class="c1"># Receive a message</span>
-<span class="n">msg</span> <span class="o">=</span> <span class="n">subscriber</span><span class="o">.</span><span class="n">recv</span><span class="p">()</span>
-
-<span class="c1"># deserialize message</span>
-<span class="n">pcd</span> <span class="o">=</span> <span class="n">PointCloud2</span><span class="o">.</span><span class="n">deserialize</span><span class="p">(</span><span class="n">msg</span><span class="o">.</span><span class="n">payload</span><span class="o">.</span><span class="n">to_bytes</span><span class="p">())</span>
+        <span class="k">while</span> <span class="n">thread</span><span class="o">.</span><span class="n">is_alive</span><span class="p">():</span>
+            <span class="k">await</span> <span class="n">asyncio</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mf">0.001</span><span class="p">)</span>
+        <span class="n">thread</span><span class="o">.</span><span class="n">join</span><span class="p">()</span>
 </code></pre></div>
 </div>
 <div class="tabbed-block">
@@ -4821,8 +4877,9 @@
 <div class="tabbed-set tabbed-alternate" data-tabs="12:2"><input checked="checked" id="__tabbed_12_1" name="__tabbed_12" type="radio" /><input id="__tabbed_12_2" name="__tabbed_12" type="radio" /><div class="tabbed-labels"><label for="__tabbed_12_1">Python</label><label for="__tabbed_12_2">Rust</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">edgefirst.schemas</span><span class="w"> </span><span class="kn">import</span> <span class="n">decode_pcd</span>
-<span class="n">points</span> <span class="o">=</span> <span class="n">decode_pcd</span><span class="p">(</span><span class="n">pcd</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">radar_worker</span><span class="p">(</span><span class="n">msg</span><span class="p">):</span>
+    <span class="n">pcd</span> <span class="o">=</span> <span class="n">PointCloud2</span><span class="o">.</span><span class="n">deserialize</span><span class="p">(</span><span class="n">msg</span><span class="o">.</span><span class="n">payload</span><span class="o">.</span><span class="n">to_bytes</span><span class="p">())</span>
+    <span class="n">points</span> <span class="o">=</span> <span class="n">decode_pcd</span><span class="p">(</span><span class="n">pcd</span><span class="p">)</span>
 </code></pre></div>
 </div>
 <div class="tabbed-block">
@@ -4837,16 +4894,15 @@
 <div class="tabbed-set tabbed-alternate" data-tabs="13:2"><input checked="checked" id="__tabbed_13_1" name="__tabbed_13" type="radio" /><input id="__tabbed_13_2" name="__tabbed_13" type="radio" /><div class="tabbed-labels"><label for="__tabbed_13_1">Python</label><label for="__tabbed_13_2">Rust</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="n">points</span> <span class="o">=</span> <span class="p">[</span><span class="n">p</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">points</span> <span class="k">if</span> <span class="n">p</span><span class="o">.</span><span class="n">fields</span><span class="p">[</span><span class="s2">&quot;vision_class&quot;</span><span class="p">]</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">]</span>
-
-<span class="n">min_x</span> <span class="o">=</span> <span class="nb">min</span><span class="p">([</span><span class="n">p</span><span class="o">.</span><span class="n">x</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">points</span><span class="p">],</span> <span class="n">default</span><span class="o">=</span><span class="nb">float</span><span class="p">(</span><span class="s2">&quot;inf&quot;</span><span class="p">))</span>
-<span class="n">max_x</span> <span class="o">=</span> <span class="nb">max</span><span class="p">([</span><span class="n">p</span><span class="o">.</span><span class="n">x</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">points</span><span class="p">],</span> <span class="n">default</span><span class="o">=</span><span class="nb">float</span><span class="p">(</span><span class="s2">&quot;-inf&quot;</span><span class="p">))</span>
-
-<span class="n">min_y</span> <span class="o">=</span> <span class="nb">min</span><span class="p">([</span><span class="n">p</span><span class="o">.</span><span class="n">y</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">points</span><span class="p">],</span> <span class="n">default</span><span class="o">=</span><span class="nb">float</span><span class="p">(</span><span class="s2">&quot;inf&quot;</span><span class="p">))</span>
-<span class="n">max_y</span> <span class="o">=</span> <span class="nb">max</span><span class="p">([</span><span class="n">p</span><span class="o">.</span><span class="n">y</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">points</span><span class="p">],</span> <span class="n">default</span><span class="o">=</span><span class="nb">float</span><span class="p">(</span><span class="s2">&quot;-inf&quot;</span><span class="p">))</span>
-
-<span class="n">min_z</span> <span class="o">=</span> <span class="nb">min</span><span class="p">([</span><span class="n">p</span><span class="o">.</span><span class="n">z</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">points</span><span class="p">],</span> <span class="n">default</span><span class="o">=</span><span class="nb">float</span><span class="p">(</span><span class="s2">&quot;inf&quot;</span><span class="p">))</span>
-<span class="n">max_z</span> <span class="o">=</span> <span class="nb">max</span><span class="p">([</span><span class="n">p</span><span class="o">.</span><span class="n">z</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">points</span><span class="p">],</span> <span class="n">default</span><span class="o">=</span><span class="nb">float</span><span class="p">(</span><span class="s2">&quot;-inf&quot;</span><span class="p">))</span>
+<div class="highlight"><pre><span></span><code><span class="n">clusters</span> <span class="o">=</span> <span class="p">[</span><span class="n">p</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">points</span> <span class="k">if</span> <span class="n">p</span><span class="o">.</span><span class="n">cluster_id</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">]</span>
+<span class="k">if</span> <span class="ow">not</span> <span class="n">clusters</span><span class="p">:</span>
+    <span class="n">rr</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="s2">&quot;fusion/radar&quot;</span><span class="p">,</span> <span class="n">rr</span><span class="o">.</span><span class="n">Points3D</span><span class="p">([],</span> <span class="n">colors</span><span class="o">=</span><span class="p">[]))</span>  
+    <span class="k">return</span>
+<span class="n">max_id</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">p</span><span class="o">.</span><span class="n">cluster_id</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">clusters</span><span class="p">)</span>
+<span class="n">pos</span> <span class="o">=</span> <span class="p">[[</span><span class="n">p</span><span class="o">.</span><span class="n">x</span><span class="p">,</span> <span class="n">p</span><span class="o">.</span><span class="n">y</span><span class="p">,</span> <span class="n">p</span><span class="o">.</span><span class="n">z</span><span class="p">]</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">clusters</span><span class="p">]</span>
+<span class="n">colors</span> <span class="o">=</span> <span class="p">[</span><span class="n">colormap</span><span class="p">(</span><span class="n">turbo_colormap</span><span class="p">,</span> <span class="n">p</span><span class="o">.</span><span class="n">cluster_id</span> <span class="o">/</span> <span class="n">max_id</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">clusters</span><span class="p">]</span>
+<span class="n">rr</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="s2">&quot;fusion/radar&quot;</span><span class="p">,</span> <span class="n">rr</span><span class="o">.</span><span class="n">Points3D</span><span class="p">(</span><span class="n">pos</span><span class="p">,</span> <span class="n">colors</span><span class="o">=</span><span class="n">colors</span><span class="p">))</span>
 </code></pre></div>
 </div>
 <div class="tabbed-block">
@@ -4864,7 +4920,7 @@
 </div>
 </div>
 </div>
-<h3 id="results">Results</h3>
+<h3 id="results_1">Results</h3>
 <div class="tabbed-set tabbed-alternate" data-tabs="14:2"><input checked="checked" id="__tabbed_14_1" name="__tabbed_14" type="radio" /><input id="__tabbed_14_2" name="__tabbed_14" type="radio" /><div class="tabbed-labels"><label for="__tabbed_14_1">Python</label><label for="__tabbed_14_2">Rust</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
@@ -4904,7 +4960,9 @@ or set command line argument --lidar-output-topic=rt/fusion/lidar</p>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <div class="highlight"><pre><span></span><code><span class="c1"># Create a subscriber for &quot;rt/fusion/lidar&quot;</span>
-<span class="n">subscriber</span> <span class="o">=</span> <span class="n">session</span><span class="o">.</span><span class="n">declare_subscriber</span><span class="p">(</span><span class="s1">&#39;rt/fusion/lidar&#39;</span><span class="p">)</span>
+<span class="n">loop</span> <span class="o">=</span> <span class="n">asyncio</span><span class="o">.</span><span class="n">get_running_loop</span><span class="p">()</span>
+<span class="n">drain</span> <span class="o">=</span> <span class="n">MessageDrain</span><span class="p">(</span><span class="n">loop</span><span class="p">)</span>
+<span class="n">session</span><span class="o">.</span><span class="n">declare_subscriber</span><span class="p">(</span><span class="s1">&#39;rt/fusion/lidar&#39;</span><span class="p">,</span> <span class="n">drain</span><span class="o">.</span><span class="n">callback</span><span class="p">)</span>
 </code></pre></div>
 </div>
 <div class="tabbed-block">
@@ -4922,13 +4980,15 @@ or set command line argument --lidar-output-topic=rt/fusion/lidar</p>
 <div class="tabbed-set tabbed-alternate" data-tabs="16:2"><input checked="checked" id="__tabbed_16_1" name="__tabbed_16" type="radio" /><input id="__tabbed_16_2" name="__tabbed_16" type="radio" /><div class="tabbed-labels"><label for="__tabbed_16_1">Python</label><label for="__tabbed_16_2">Rust</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">edgefirst.schemas.sensor_msgs</span><span class="w"> </span><span class="kn">import</span> <span class="n">PointCloud2</span>
+<div class="highlight"><pre><span></span><code><span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">lidar_handler</span><span class="p">(</span><span class="n">drain</span><span class="p">):</span>
+    <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+        <span class="n">msg</span> <span class="o">=</span> <span class="k">await</span> <span class="n">drain</span><span class="o">.</span><span class="n">get_latest</span><span class="p">()</span>
+        <span class="n">thread</span> <span class="o">=</span> <span class="n">threading</span><span class="o">.</span><span class="n">Thread</span><span class="p">(</span><span class="n">target</span><span class="o">=</span><span class="n">lidar_worker</span><span class="p">,</span> <span class="n">args</span><span class="o">=</span><span class="p">[</span><span class="n">msg</span><span class="p">])</span>
+        <span class="n">thread</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
 
-<span class="c1"># Receive a message</span>
-<span class="n">msg</span> <span class="o">=</span> <span class="n">subscriber</span><span class="o">.</span><span class="n">recv</span><span class="p">()</span>
-
-<span class="c1"># deserialize message</span>
-<span class="n">pcd</span> <span class="o">=</span> <span class="n">PointCloud2</span><span class="o">.</span><span class="n">deserialize</span><span class="p">(</span><span class="n">msg</span><span class="o">.</span><span class="n">payload</span><span class="o">.</span><span class="n">to_bytes</span><span class="p">())</span>
+        <span class="k">while</span> <span class="n">thread</span><span class="o">.</span><span class="n">is_alive</span><span class="p">():</span>
+            <span class="k">await</span> <span class="n">asyncio</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mf">0.001</span><span class="p">)</span>
+        <span class="n">thread</span><span class="o">.</span><span class="n">join</span><span class="p">()</span>
 </code></pre></div>
 </div>
 <div class="tabbed-block">
@@ -4947,8 +5007,9 @@ or set command line argument --lidar-output-topic=rt/fusion/lidar</p>
 <div class="tabbed-set tabbed-alternate" data-tabs="17:2"><input checked="checked" id="__tabbed_17_1" name="__tabbed_17" type="radio" /><input id="__tabbed_17_2" name="__tabbed_17" type="radio" /><div class="tabbed-labels"><label for="__tabbed_17_1">Python</label><label for="__tabbed_17_2">Rust</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">edgefirst.schemas</span><span class="w"> </span><span class="kn">import</span> <span class="n">decode_pcd</span>
-<span class="n">points</span> <span class="o">=</span> <span class="n">decode_pcd</span><span class="p">(</span><span class="n">pcd</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">lidar_worker</span><span class="p">(</span><span class="n">msg</span><span class="p">):</span>
+    <span class="n">pcd</span> <span class="o">=</span> <span class="n">PointCloud2</span><span class="o">.</span><span class="n">deserialize</span><span class="p">(</span><span class="n">msg</span><span class="o">.</span><span class="n">payload</span><span class="o">.</span><span class="n">to_bytes</span><span class="p">())</span>
+    <span class="n">points</span> <span class="o">=</span> <span class="n">decode_pcd</span><span class="p">(</span><span class="n">pcd</span><span class="p">)</span>
 </code></pre></div>
 </div>
 <div class="tabbed-block">
@@ -4963,16 +5024,15 @@ or set command line argument --lidar-output-topic=rt/fusion/lidar</p>
 <div class="tabbed-set tabbed-alternate" data-tabs="18:2"><input checked="checked" id="__tabbed_18_1" name="__tabbed_18" type="radio" /><input id="__tabbed_18_2" name="__tabbed_18" type="radio" /><div class="tabbed-labels"><label for="__tabbed_18_1">Python</label><label for="__tabbed_18_2">Rust</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="n">points</span> <span class="o">=</span> <span class="p">[</span><span class="n">p</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">points</span> <span class="k">if</span> <span class="n">p</span><span class="o">.</span><span class="n">fields</span><span class="p">[</span><span class="s2">&quot;vision_class&quot;</span><span class="p">]</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">]</span>
-
-<span class="n">min_x</span> <span class="o">=</span> <span class="nb">min</span><span class="p">([</span><span class="n">p</span><span class="o">.</span><span class="n">x</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">points</span><span class="p">],</span> <span class="n">default</span><span class="o">=</span><span class="nb">float</span><span class="p">(</span><span class="s2">&quot;inf&quot;</span><span class="p">))</span>
-<span class="n">max_x</span> <span class="o">=</span> <span class="nb">max</span><span class="p">([</span><span class="n">p</span><span class="o">.</span><span class="n">x</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">points</span><span class="p">],</span> <span class="n">default</span><span class="o">=</span><span class="nb">float</span><span class="p">(</span><span class="s2">&quot;-inf&quot;</span><span class="p">))</span>
-
-<span class="n">min_y</span> <span class="o">=</span> <span class="nb">min</span><span class="p">([</span><span class="n">p</span><span class="o">.</span><span class="n">y</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">points</span><span class="p">],</span> <span class="n">default</span><span class="o">=</span><span class="nb">float</span><span class="p">(</span><span class="s2">&quot;inf&quot;</span><span class="p">))</span>
-<span class="n">max_y</span> <span class="o">=</span> <span class="nb">max</span><span class="p">([</span><span class="n">p</span><span class="o">.</span><span class="n">y</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">points</span><span class="p">],</span> <span class="n">default</span><span class="o">=</span><span class="nb">float</span><span class="p">(</span><span class="s2">&quot;-inf&quot;</span><span class="p">))</span>
-
-<span class="n">min_z</span> <span class="o">=</span> <span class="nb">min</span><span class="p">([</span><span class="n">p</span><span class="o">.</span><span class="n">z</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">points</span><span class="p">],</span> <span class="n">default</span><span class="o">=</span><span class="nb">float</span><span class="p">(</span><span class="s2">&quot;inf&quot;</span><span class="p">))</span>
-<span class="n">max_z</span> <span class="o">=</span> <span class="nb">max</span><span class="p">([</span><span class="n">p</span><span class="o">.</span><span class="n">z</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">points</span><span class="p">],</span> <span class="n">default</span><span class="o">=</span><span class="nb">float</span><span class="p">(</span><span class="s2">&quot;-inf&quot;</span><span class="p">))</span>
+<div class="highlight"><pre><span></span><code><span class="n">clusters</span> <span class="o">=</span> <span class="p">[</span><span class="n">p</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">points</span> <span class="k">if</span> <span class="n">p</span><span class="o">.</span><span class="n">cluster_id</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">]</span>
+<span class="k">if</span> <span class="ow">not</span> <span class="n">clusters</span><span class="p">:</span>
+    <span class="n">rr</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="s2">&quot;fusion/lidar&quot;</span><span class="p">,</span> <span class="n">rr</span><span class="o">.</span><span class="n">Points3D</span><span class="p">([],</span> <span class="n">colors</span><span class="o">=</span><span class="p">[]))</span>  
+    <span class="k">return</span>
+<span class="n">max_id</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">p</span><span class="o">.</span><span class="n">cluster_id</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">clusters</span><span class="p">)</span>
+<span class="n">pos</span> <span class="o">=</span> <span class="p">[[</span><span class="n">p</span><span class="o">.</span><span class="n">x</span><span class="p">,</span> <span class="n">p</span><span class="o">.</span><span class="n">y</span><span class="p">,</span> <span class="n">p</span><span class="o">.</span><span class="n">z</span><span class="p">]</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">clusters</span><span class="p">]</span>
+<span class="n">colors</span> <span class="o">=</span> <span class="p">[</span><span class="n">colormap</span><span class="p">(</span><span class="n">turbo_colormap</span><span class="p">,</span> <span class="n">p</span><span class="o">.</span><span class="n">cluster_id</span> <span class="o">/</span> <span class="n">max_id</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">clusters</span><span class="p">]</span>
+<span class="n">rr</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="s2">&quot;fusion/lidar&quot;</span><span class="p">,</span> <span class="n">rr</span><span class="o">.</span><span class="n">Points3D</span><span class="p">(</span><span class="n">pos</span><span class="p">,</span> <span class="n">colors</span><span class="o">=</span><span class="n">colors</span><span class="p">))</span>
 </code></pre></div>
 </div>
 <div class="tabbed-block">
@@ -4990,7 +5050,7 @@ or set command line argument --lidar-output-topic=rt/fusion/lidar</p>
 </div>
 </div>
 </div>
-<h3 id="results_1">Results</h3>
+<h3 id="results_2">Results</h3>
 <div class="tabbed-set tabbed-alternate" data-tabs="19:2"><input checked="checked" id="__tabbed_19_1" name="__tabbed_19" type="radio" /><input id="__tabbed_19_2" name="__tabbed_19" type="radio" /><div class="tabbed-labels"><label for="__tabbed_19_1">Python</label><label for="__tabbed_19_2">Rust</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
@@ -5026,7 +5086,9 @@ Recieved 523 lidar points with non-background vision_class. Values: x: [3.39, 3.
 <div class="tabbed-content">
 <div class="tabbed-block">
 <div class="highlight"><pre><span></span><code><span class="c1"># Create a subscriber for &quot;rt/fusion/boxes3d&quot;</span>
-<span class="n">subscriber</span> <span class="o">=</span> <span class="n">session</span><span class="o">.</span><span class="n">declare_subscriber</span><span class="p">(</span><span class="s1">&#39;rt/fusion/boxes3d&#39;</span><span class="p">)</span>
+<span class="n">loop</span> <span class="o">=</span> <span class="n">asyncio</span><span class="o">.</span><span class="n">get_running_loop</span><span class="p">()</span>
+<span class="n">drain</span> <span class="o">=</span> <span class="n">MessageDrain</span><span class="p">(</span><span class="n">loop</span><span class="p">)</span>
+<span class="n">session</span><span class="o">.</span><span class="n">declare_subscriber</span><span class="p">(</span><span class="s1">&#39;rt/fusion/boxes3d&#39;</span><span class="p">,</span> <span class="n">drain</span><span class="o">.</span><span class="n">callback</span><span class="p">)</span>
 </code></pre></div>
 </div>
 <div class="tabbed-block">
@@ -5044,13 +5106,15 @@ Recieved 523 lidar points with non-background vision_class. Values: x: [3.39, 3.
 <div class="tabbed-set tabbed-alternate" data-tabs="21:2"><input checked="checked" id="__tabbed_21_1" name="__tabbed_21" type="radio" /><input id="__tabbed_21_2" name="__tabbed_21" type="radio" /><div class="tabbed-labels"><label for="__tabbed_21_1">Python</label><label for="__tabbed_21_2">Rust</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">edgefirst.schemas.edgefirst_msgs</span><span class="w"> </span><span class="kn">import</span> <span class="n">Detect</span>
+<div class="highlight"><pre><span></span><code><span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">boxes3d_handler</span><span class="p">(</span><span class="n">drain</span><span class="p">):</span>
+    <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+        <span class="n">msg</span> <span class="o">=</span> <span class="k">await</span> <span class="n">drain</span><span class="o">.</span><span class="n">get_latest</span><span class="p">()</span>
+        <span class="n">thread</span> <span class="o">=</span> <span class="n">threading</span><span class="o">.</span><span class="n">Thread</span><span class="p">(</span><span class="n">target</span><span class="o">=</span><span class="n">boxes3d_worker</span><span class="p">,</span> <span class="n">args</span><span class="o">=</span><span class="p">[</span><span class="n">msg</span><span class="p">])</span>
+        <span class="n">thread</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
 
-<span class="c1"># Receive a message</span>
-<span class="n">msg</span> <span class="o">=</span> <span class="n">subscriber</span><span class="o">.</span><span class="n">recv</span><span class="p">()</span>
-
-<span class="c1"># deserialize message</span>
-<span class="n">boxes</span> <span class="o">=</span> <span class="n">Detect</span><span class="o">.</span><span class="n">deserialize</span><span class="p">(</span><span class="n">msg</span><span class="o">.</span><span class="n">payload</span><span class="o">.</span><span class="n">to_bytes</span><span class="p">())</span>
+        <span class="k">while</span> <span class="n">thread</span><span class="o">.</span><span class="n">is_alive</span><span class="p">():</span>
+            <span class="k">await</span> <span class="n">asyncio</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mf">0.001</span><span class="p">)</span>
+        <span class="n">thread</span><span class="o">.</span><span class="n">join</span><span class="p">()</span>
 </code></pre></div>
 </div>
 <div class="tabbed-block">
@@ -5069,14 +5133,16 @@ Recieved 523 lidar points with non-background vision_class. Values: x: [3.39, 3.
 <div class="tabbed-set tabbed-alternate" data-tabs="22:2"><input checked="checked" id="__tabbed_22_1" name="__tabbed_22" type="radio" /><input id="__tabbed_22_2" name="__tabbed_22" type="radio" /><div class="tabbed-labels"><label for="__tabbed_22_1">Python</label><label for="__tabbed_22_2">Rust</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="c1"># Access box parameters</span>
-<span class="k">for</span> <span class="n">b</span> <span class="ow">in</span> <span class="n">boxes</span><span class="o">.</span><span class="n">boxes</span><span class="p">:</span>
-    <span class="n">right</span> <span class="o">=</span> <span class="n">b</span><span class="o">.</span><span class="n">center_x</span>
-    <span class="n">down</span> <span class="o">=</span> <span class="n">b</span><span class="o">.</span><span class="n">center_y</span>
-    <span class="n">width</span> <span class="o">=</span> <span class="n">b</span><span class="o">.</span><span class="n">width</span>
-    <span class="n">height</span> <span class="o">=</span> <span class="n">b</span><span class="o">.</span><span class="n">height</span>
-    <span class="n">label</span> <span class="o">=</span> <span class="n">b</span><span class="o">.</span><span class="n">label</span>
-    <span class="n">distance</span> <span class="o">=</span> <span class="n">b</span><span class="o">.</span><span class="n">distance</span>
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">boxes3d_worker</span><span class="p">(</span><span class="n">msg</span><span class="p">):</span>
+    <span class="n">detection</span> <span class="o">=</span> <span class="n">Detect</span><span class="o">.</span><span class="n">deserialize</span><span class="p">(</span><span class="n">msg</span><span class="o">.</span><span class="n">payload</span><span class="o">.</span><span class="n">to_bytes</span><span class="p">())</span>
+    <span class="c1"># The 3D boxes are in an _optical frame of reference, where x is right, y is down, and z (distance) is forward</span>
+    <span class="c1"># We will convert them to a normal frame of reference, where x is forward, y is left, and z is up</span>
+    <span class="n">centers</span> <span class="o">=</span> <span class="p">[(</span><span class="n">x</span><span class="o">.</span><span class="n">distance</span><span class="p">,</span> <span class="o">-</span><span class="n">x</span><span class="o">.</span><span class="n">center_x</span><span class="p">,</span> <span class="o">-</span><span class="n">x</span><span class="o">.</span><span class="n">center_y</span><span class="p">)</span>
+                <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">detection</span><span class="o">.</span><span class="n">boxes</span><span class="p">]</span>
+    <span class="n">sizes</span> <span class="o">=</span> <span class="p">[(</span><span class="n">x</span><span class="o">.</span><span class="n">width</span><span class="p">,</span> <span class="n">x</span><span class="o">.</span><span class="n">width</span><span class="p">,</span> <span class="n">x</span><span class="o">.</span><span class="n">height</span><span class="p">)</span>
+                <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">detection</span><span class="o">.</span><span class="n">boxes</span><span class="p">]</span>
+
+    <span class="n">rr</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="s2">&quot;/pointcloud/fusion/boxes&quot;</span><span class="p">,</span> <span class="n">rr</span><span class="o">.</span><span class="n">Boxes3D</span><span class="p">(</span><span class="n">centers</span><span class="o">=</span><span class="n">centers</span><span class="p">,</span> <span class="n">sizes</span><span class="o">=</span><span class="n">sizes</span><span class="p">))</span>
 </code></pre></div>
 </div>
 <div class="tabbed-block">

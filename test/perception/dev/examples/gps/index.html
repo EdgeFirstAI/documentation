@@ -2941,18 +2941,18 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#decode-gps-data" class="md-nav__link">
+  <a href="#receive-the-message" class="md-nav__link">
     <span class="md-ellipsis">
-      Decode GPS Data
+      Receive the Message
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#get-latitudelongitude-values-and-post-to-rerun" class="md-nav__link">
+  <a href="#process-the-gps-data" class="md-nav__link">
     <span class="md-ellipsis">
-      Get Latitude/Longitude Values and Post to Rerun
+      Process the GPS Data
     </span>
   </a>
   
@@ -4026,18 +4026,18 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#decode-gps-data" class="md-nav__link">
+  <a href="#receive-the-message" class="md-nav__link">
     <span class="md-ellipsis">
-      Decode GPS Data
+      Receive the Message
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#get-latitudelongitude-values-and-post-to-rerun" class="md-nav__link">
+  <a href="#process-the-gps-data" class="md-nav__link">
     <span class="md-ellipsis">
-      Get Latitude/Longitude Values and Post to Rerun
+      Process the GPS Data
     </span>
   </a>
   
@@ -4078,7 +4078,9 @@ Message: <a href="../../../api/sensor_msgs/#navsatfix">NavSatFix</a></p>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <div class="highlight"><pre><span></span><code><span class="c1"># Create a subscriber for &quot;rt/gps&quot;</span>
-<span class="n">subscriber</span> <span class="o">=</span> <span class="n">session</span><span class="o">.</span><span class="n">declare_subscriber</span><span class="p">(</span><span class="s1">&#39;rt/gps&#39;</span><span class="p">)</span>
+<span class="n">loop</span> <span class="o">=</span> <span class="n">asyncio</span><span class="o">.</span><span class="n">get_running_loop</span><span class="p">()</span>
+<span class="n">drain</span> <span class="o">=</span> <span class="n">MessageDrain</span><span class="p">(</span><span class="n">loop</span><span class="p">)</span>
+<span class="n">session</span><span class="o">.</span><span class="n">declare_subscriber</span><span class="p">(</span><span class="s1">&#39;rt/gps&#39;</span><span class="p">,</span> <span class="n">drain</span><span class="o">.</span><span class="n">callback</span><span class="p">)</span>
 </code></pre></div>
 </div>
 <div class="tabbed-block">
@@ -4090,14 +4092,20 @@ Message: <a href="../../../api/sensor_msgs/#navsatfix">NavSatFix</a></p>
 </div>
 </div>
 </div>
-<h3 id="decode-gps-data">Decode GPS Data</h3>
-<p>We can now recieve message on the subcriber that will be handled by the gps_listener function. After recieving the message, we will need to deserialize it.</p>
+<h3 id="receive-the-message">Receive the Message</h3>
+<p>We can now receive a message on the subscriber. After receiving the message, we will set it up for processing.</p>
 <div class="tabbed-set tabbed-alternate" data-tabs="2:2"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><input id="__tabbed_2_2" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="__tabbed_2_1">Python</label><label for="__tabbed_2_2">Rust</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">edgefirst.schemas.sensor_msgs</span><span class="w"> </span><span class="kn">import</span> <span class="n">NavSatFix</span>
-<span class="n">msg</span> <span class="o">=</span> <span class="n">subscriber</span><span class="o">.</span><span class="n">recv</span><span class="p">()</span>
-<span class="n">gps</span> <span class="o">=</span> <span class="n">NavSatFix</span><span class="o">.</span><span class="n">deserialize</span><span class="p">(</span><span class="n">msg</span><span class="o">.</span><span class="n">payload</span><span class="o">.</span><span class="n">to_bytes</span><span class="p">())</span>
+<div class="highlight"><pre><span></span><code><span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">gps_handler</span><span class="p">(</span><span class="n">drain</span><span class="p">):</span>
+    <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+        <span class="n">msg</span> <span class="o">=</span> <span class="k">await</span> <span class="n">drain</span><span class="o">.</span><span class="n">get_latest</span><span class="p">()</span>
+        <span class="n">thread</span> <span class="o">=</span> <span class="n">threading</span><span class="o">.</span><span class="n">Thread</span><span class="p">(</span><span class="n">target</span><span class="o">=</span><span class="n">gps_worker</span><span class="p">,</span> <span class="n">args</span><span class="o">=</span><span class="p">[</span><span class="n">msg</span><span class="p">])</span>
+        <span class="n">thread</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
+
+        <span class="k">while</span> <span class="n">thread</span><span class="o">.</span><span class="n">is_alive</span><span class="p">():</span>
+            <span class="k">await</span> <span class="n">asyncio</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mf">0.001</span><span class="p">)</span>
+        <span class="n">thread</span><span class="o">.</span><span class="n">join</span><span class="p">()</span>
 </code></pre></div>
 </div>
 <div class="tabbed-block">
@@ -4108,15 +4116,15 @@ Message: <a href="../../../api/sensor_msgs/#navsatfix">NavSatFix</a></p>
 </div>
 </div>
 </div>
-<h3 id="get-latitudelongitude-values-and-post-to-rerun">Get Latitude/Longitude Values and Post to Rerun</h3>
+<h3 id="process-the-gps-data">Process the GPS Data</h3>
 <p>We will now pull out the latitude/longitude data from the decoded NavSatFix message and log the data to Rerun.</p>
 <div class="tabbed-set tabbed-alternate" data-tabs="3:2"><input checked="checked" id="__tabbed_3_1" name="__tabbed_3" type="radio" /><input id="__tabbed_3_2" name="__tabbed_3" type="radio" /><div class="tabbed-labels"><label for="__tabbed_3_1">Python</label><label for="__tabbed_3_2">Rust</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="n">lat</span> <span class="o">=</span> <span class="n">gps</span><span class="o">.</span><span class="n">latitude</span>
-<span class="n">long</span> <span class="o">=</span> <span class="n">gps</span><span class="o">.</span><span class="n">longitude</span>
-<span class="c1"># print(&quot;Latitude: %.6f Longitude: %.6f&quot; % (lat, long))</span>
-<span class="n">rr</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="s2">&quot;Current Location&quot;</span><span class="p">,</span> <span class="n">rr</span><span class="o">.</span><span class="n">GeoPoints</span><span class="p">(</span><span class="n">lat_lon</span><span class="o">=</span><span class="p">[</span><span class="n">lat</span><span class="p">,</span> <span class="n">long</span><span class="p">]))</span>
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">gps_worker</span><span class="p">(</span><span class="n">msg</span><span class="p">):</span>
+    <span class="n">gps</span> <span class="o">=</span> <span class="n">NavSatFix</span><span class="o">.</span><span class="n">deserialize</span><span class="p">(</span><span class="n">msg</span><span class="o">.</span><span class="n">payload</span><span class="o">.</span><span class="n">to_bytes</span><span class="p">())</span>
+    <span class="n">rr</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="s2">&quot;CurrentLoc&quot;</span><span class="p">,</span>
+            <span class="n">rr</span><span class="o">.</span><span class="n">GeoPoints</span><span class="p">(</span><span class="n">lat_lon</span><span class="o">=</span><span class="p">[</span><span class="n">gps</span><span class="o">.</span><span class="n">latitude</span><span class="p">,</span> <span class="n">gps</span><span class="o">.</span><span class="n">longitude</span><span class="p">]))</span>
 </code></pre></div>
 </div>
 <div class="tabbed-block">

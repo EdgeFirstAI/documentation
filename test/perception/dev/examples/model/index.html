@@ -3097,6 +3097,15 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#box-tracking" class="md-nav__link">
+    <span class="md-ellipsis">
+      Box Tracking
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -3234,27 +3243,27 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#h264-callback" class="md-nav__link">
+  <a href="#h264-handler" class="md-nav__link">
     <span class="md-ellipsis">
-      H264 Callback
+      H264 Handler
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#boxes2d-callback" class="md-nav__link">
+  <a href="#boxes2d-handler" class="md-nav__link">
     <span class="md-ellipsis">
-      Boxes2D Callback
+      Boxes2D Handler
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#mask-callback" class="md-nav__link">
+  <a href="#mask-handler" class="md-nav__link">
     <span class="md-ellipsis">
-      Mask Callback
+      Mask Handler
     </span>
   </a>
   
@@ -4356,6 +4365,15 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#box-tracking" class="md-nav__link">
+    <span class="md-ellipsis">
+      Box Tracking
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -4493,27 +4511,27 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#h264-callback" class="md-nav__link">
+  <a href="#h264-handler" class="md-nav__link">
     <span class="md-ellipsis">
-      H264 Callback
+      H264 Handler
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#boxes2d-callback" class="md-nav__link">
+  <a href="#boxes2d-handler" class="md-nav__link">
     <span class="md-ellipsis">
-      Boxes2D Callback
+      Boxes2D Handler
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#mask-callback" class="md-nav__link">
+  <a href="#mask-handler" class="md-nav__link">
     <span class="md-ellipsis">
-      Mask Callback
+      Mask Handler
     </span>
   </a>
   
@@ -4566,7 +4584,9 @@ Sample Code: <a href="https://github.com/EdgeFirstAI/samples/blob/main/python/mo
 <div class="tabbed-content">
 <div class="tabbed-block">
 <div class="highlight"><pre><span></span><code><span class="c1"># Create a subscriber for &quot;rt/model/info&quot;</span>
-<span class="n">subscriber</span> <span class="o">=</span> <span class="n">session</span><span class="o">.</span><span class="n">declare_subscriber</span><span class="p">(</span><span class="s1">&#39;rt/model/info&#39;</span><span class="p">)</span>
+<span class="n">loop</span> <span class="o">=</span> <span class="n">asyncio</span><span class="o">.</span><span class="n">get_running_loop</span><span class="p">()</span>
+<span class="n">drain</span> <span class="o">=</span> <span class="n">MessageDrain</span><span class="p">(</span><span class="n">loop</span><span class="p">)</span>
+<span class="n">session</span><span class="o">.</span><span class="n">declare_subscriber</span><span class="p">(</span><span class="s1">&#39;rt/model/info&#39;</span><span class="p">,</span> <span class="n">drain</span><span class="o">.</span><span class="n">callback</span><span class="p">)</span>
 </code></pre></div>
 </div>
 <div class="tabbed-block">
@@ -4580,16 +4600,19 @@ Sample Code: <a href="https://github.com/EdgeFirstAI/samples/blob/main/python/mo
 </div>
 </div>
 <h3 id="receive-a-message">Receive a message</h3>
-<p>We can now receive a message on the subscriber. After receiving the message, we will need to deserialize it.</p>
+<p>We can now await a message from that subscriber. After receiving the message, we will pass that message along to our processing function in a new thread to avoid missing messages.</p>
 <div class="tabbed-set tabbed-alternate" data-tabs="2:2"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><input id="__tabbed_2_2" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="__tabbed_2_1">Python</label><label for="__tabbed_2_2">Rust</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">edgefirst.schemas.edgefirst_msgs</span><span class="w"> </span><span class="kn">import</span> <span class="n">ModelInfo</span>
+<div class="highlight"><pre><span></span><code><span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">info_handler</span><span class="p">(</span><span class="n">drain</span><span class="p">):</span>
+    <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+        <span class="n">msg</span> <span class="o">=</span> <span class="k">await</span> <span class="n">drain</span><span class="o">.</span><span class="n">get_latest</span><span class="p">()</span>
+        <span class="n">thread</span> <span class="o">=</span> <span class="n">threading</span><span class="o">.</span><span class="n">Thread</span><span class="p">(</span><span class="n">target</span><span class="o">=</span><span class="n">info_worker</span><span class="p">,</span> <span class="n">args</span><span class="o">=</span><span class="p">[</span><span class="n">msg</span><span class="p">])</span>
+        <span class="n">thread</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
 
-<span class="c1"># Receive a message</span>
-<span class="n">msg</span> <span class="o">=</span> <span class="n">subscriber</span><span class="o">.</span><span class="n">recv</span><span class="p">()</span>
-<span class="c1"># deserialize message</span>
-<span class="n">info</span> <span class="o">=</span> <span class="n">ModelInfo</span><span class="o">.</span><span class="n">deserialize</span><span class="p">(</span><span class="n">msg</span><span class="o">.</span><span class="n">payload</span><span class="o">.</span><span class="n">to_bytes</span><span class="p">())</span>
+        <span class="k">while</span> <span class="n">thread</span><span class="o">.</span><span class="n">is_alive</span><span class="p">():</span>
+            <span class="k">await</span> <span class="n">asyncio</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mf">0.001</span><span class="p">)</span>
+        <span class="n">thread</span><span class="o">.</span><span class="n">join</span><span class="p">()</span>
 </code></pre></div>
 </div>
 <div class="tabbed-block">
@@ -4607,10 +4630,11 @@ Sample Code: <a href="https://github.com/EdgeFirstAI/samples/blob/main/python/mo
 <div class="tabbed-set tabbed-alternate" data-tabs="3:2"><input checked="checked" id="__tabbed_3_1" name="__tabbed_3" type="radio" /><input id="__tabbed_3_2" name="__tabbed_3" type="radio" /><div class="tabbed-labels"><label for="__tabbed_3_1">Python</label><label for="__tabbed_3_2">Rust</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="c1"># Access model parameters</span>
-<span class="n">m_type</span> <span class="o">=</span> <span class="n">info</span><span class="o">.</span><span class="n">model_type</span>
-<span class="n">m_name</span> <span class="o">=</span> <span class="n">info</span><span class="o">.</span><span class="n">model_name</span>
-<span class="n">rr</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="s2">&quot;ModelInfo&quot;</span><span class="p">,</span> <span class="n">rr</span><span class="o">.</span><span class="n">TextLog</span><span class="p">(</span><span class="s2">&quot;Model Name: </span><span class="si">%s</span><span class="s2"> Model Type: </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">m_name</span><span class="p">,</span> <span class="n">m_type</span><span class="p">)))</span>
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">info_worker</span><span class="p">(</span><span class="n">msg</span><span class="p">):</span>
+    <span class="n">info</span> <span class="o">=</span> <span class="n">ModelInfo</span><span class="o">.</span><span class="n">deserialize</span><span class="p">(</span><span class="n">msg</span><span class="o">.</span><span class="n">payload</span><span class="o">.</span><span class="n">to_bytes</span><span class="p">())</span>
+    <span class="n">m_type</span> <span class="o">=</span> <span class="n">info</span><span class="o">.</span><span class="n">model_type</span>
+    <span class="n">m_name</span> <span class="o">=</span> <span class="n">info</span><span class="o">.</span><span class="n">model_name</span>
+    <span class="n">rr</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="s2">&quot;ModelInfo&quot;</span><span class="p">,</span> <span class="n">rr</span><span class="o">.</span><span class="n">TextLog</span><span class="p">(</span><span class="s2">&quot;Model Name: </span><span class="si">%s</span><span class="s2"> Model Type: </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">m_name</span><span class="p">,</span> <span class="n">m_type</span><span class="p">)))</span>
 </code></pre></div>
 </div>
 <div class="tabbed-block">
@@ -4635,7 +4659,9 @@ Sample Code: <a href="https://github.com/EdgeFirstAI/samples/blob/main/python/mo
 <div class="tabbed-content">
 <div class="tabbed-block">
 <div class="highlight"><pre><span></span><code><span class="c1"># Create a subscriber for &quot;rt/model/boxes2d&quot;</span>
-<span class="n">subscriber</span> <span class="o">=</span> <span class="n">session</span><span class="o">.</span><span class="n">declare_subscriber</span><span class="p">(</span><span class="s1">&#39;rt/model/boxes2d&#39;</span><span class="p">)</span>
+<span class="n">loop</span> <span class="o">=</span> <span class="n">asyncio</span><span class="o">.</span><span class="n">get_running_loop</span><span class="p">()</span>
+<span class="n">drain</span> <span class="o">=</span> <span class="n">MessageDrain</span><span class="p">(</span><span class="n">loop</span><span class="p">)</span>
+<span class="n">session</span><span class="o">.</span><span class="n">declare_subscriber</span><span class="p">(</span><span class="s1">&#39;rt/model/boxes2d&#39;</span><span class="p">,</span> <span class="n">drain</span><span class="o">.</span><span class="n">callback</span><span class="p">)</span>
 </code></pre></div>
 </div>
 <div class="tabbed-block">
@@ -4649,17 +4675,20 @@ Sample Code: <a href="https://github.com/EdgeFirstAI/samples/blob/main/python/mo
 </div>
 </div>
 <h3 id="receive-a-message_1">Receive a message</h3>
-<p>We can now receive a message on the subscriber. After receiving the message, we will need to deserialize it.</p>
+<p>We can now await a message from that subscriber. After receiving the message, we will pass that message along to our processing function in a new thread to avoid missing messages.</p>
 <div class="tabbed-set tabbed-alternate" data-tabs="5:2"><input checked="checked" id="__tabbed_5_1" name="__tabbed_5" type="radio" /><input id="__tabbed_5_2" name="__tabbed_5" type="radio" /><div class="tabbed-labels"><label for="__tabbed_5_1">Python</label><label for="__tabbed_5_2">Rust</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">edgefirst.schemas.edgefirst_msgs</span><span class="w"> </span><span class="kn">import</span> <span class="n">Detect</span>
+<div class="highlight"><pre><span></span><code><span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">boxes2d_handler</span><span class="p">(</span><span class="n">drain</span><span class="p">):</span>
+<span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+    <span class="n">msg</span> <span class="o">=</span> <span class="k">await</span> <span class="n">drain</span><span class="o">.</span><span class="n">get_latest</span><span class="p">()</span>
 
-<span class="c1"># Receive a message</span>
-<span class="n">msg</span> <span class="o">=</span> <span class="n">subscriber</span><span class="o">.</span><span class="n">recv</span><span class="p">()</span>
+    <span class="n">thread</span> <span class="o">=</span> <span class="n">threading</span><span class="o">.</span><span class="n">Thread</span><span class="p">(</span><span class="n">target</span><span class="o">=</span><span class="n">boxes2d_worker</span><span class="p">,</span> <span class="n">args</span><span class="o">=</span><span class="p">[</span><span class="n">msg</span><span class="p">])</span>
+    <span class="n">thread</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
 
-<span class="c1"># deserialize message</span>
-<span class="n">detection</span> <span class="o">=</span> <span class="n">Detect</span><span class="o">.</span><span class="n">deserialize</span><span class="p">(</span><span class="n">msg</span><span class="o">.</span><span class="n">payload</span><span class="o">.</span><span class="n">to_bytes</span><span class="p">())</span>
+    <span class="k">while</span> <span class="n">thread</span><span class="o">.</span><span class="n">is_alive</span><span class="p">():</span>
+        <span class="k">await</span> <span class="n">asyncio</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mf">0.001</span><span class="p">)</span>
+    <span class="n">thread</span><span class="o">.</span><span class="n">join</span><span class="p">()</span>
 </code></pre></div>
 </div>
 <div class="tabbed-block">
@@ -4673,18 +4702,22 @@ Sample Code: <a href="https://github.com/EdgeFirstAI/samples/blob/main/python/mo
 </div>
 </div>
 <h3 id="process-the-data_1">Process the Data</h3>
-<p>The Boxes2D message contains 2D bounding box detections. You can access various fields like:</p>
+<p>The Boxes2D message contains 2D bounding box detections. The message will be sent to be processed, deserializing the message, accessing the required information and logging the boxes to Rerun.</p>
 <div class="tabbed-set tabbed-alternate" data-tabs="6:2"><input checked="checked" id="__tabbed_6_1" name="__tabbed_6" type="radio" /><input id="__tabbed_6_2" name="__tabbed_6" type="radio" /><div class="tabbed-labels"><label for="__tabbed_6_1">Python</label><label for="__tabbed_6_2">Rust</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="n">centers</span> <span class="o">=</span> <span class="p">[]</span>
-<span class="n">sizes</span> <span class="o">=</span> <span class="p">[]</span>
-<span class="n">labels</span> <span class="o">=</span> <span class="p">[]</span>
-<span class="k">for</span> <span class="n">box</span> <span class="ow">in</span> <span class="n">detection</span><span class="o">.</span><span class="n">boxes</span><span class="p">:</span>
-    <span class="n">centers</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">box</span><span class="o">.</span><span class="n">center_x</span><span class="p">,</span> <span class="n">box</span><span class="o">.</span><span class="n">center_y</span><span class="p">))</span>
-    <span class="n">sizes</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">box</span><span class="o">.</span><span class="n">width</span><span class="p">,</span> <span class="n">box</span><span class="o">.</span><span class="n">height</span><span class="p">))</span>
-    <span class="n">labels</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">box</span><span class="o">.</span><span class="n">label</span><span class="p">)</span>
-<span class="n">rr</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="s2">&quot;boxes&quot;</span><span class="p">,</span> <span class="n">rr</span><span class="o">.</span><span class="n">Boxes2D</span><span class="p">(</span><span class="n">centers</span><span class="o">=</span><span class="n">centers</span><span class="p">,</span> <span class="n">sizes</span><span class="o">=</span><span class="n">sizes</span><span class="p">,</span> <span class="n">labels</span><span class="o">=</span><span class="n">labels</span><span class="p">))</span>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">edgefirst.schemas.edgefirst_msgs</span><span class="w"> </span><span class="kn">import</span> <span class="n">Detect</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">boxes2d_worker</span><span class="p">(</span><span class="n">msg</span><span class="p">):</span>
+    <span class="n">detection</span> <span class="o">=</span> <span class="n">Detect</span><span class="o">.</span><span class="n">deserialize</span><span class="p">(</span><span class="n">msg</span><span class="o">.</span><span class="n">payload</span><span class="o">.</span><span class="n">to_bytes</span><span class="p">())</span>
+    <span class="n">centers</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">sizes</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">labels</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">box</span> <span class="ow">in</span> <span class="n">detection</span><span class="o">.</span><span class="n">boxes</span><span class="p">:</span>
+        <span class="n">centers</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">box</span><span class="o">.</span><span class="n">center_x</span><span class="p">,</span> <span class="n">box</span><span class="o">.</span><span class="n">center_y</span><span class="p">))</span>
+        <span class="n">sizes</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">box</span><span class="o">.</span><span class="n">width</span><span class="p">,</span> <span class="n">box</span><span class="o">.</span><span class="n">height</span><span class="p">))</span>
+        <span class="n">labels</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">box</span><span class="o">.</span><span class="n">label</span><span class="p">)</span>
+    <span class="n">rr</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="s2">&quot;boxes&quot;</span><span class="p">,</span> <span class="n">rr</span><span class="o">.</span><span class="n">Boxes2D</span><span class="p">(</span><span class="n">centers</span><span class="o">=</span><span class="n">centers</span><span class="p">,</span> <span class="n">sizes</span><span class="o">=</span><span class="n">sizes</span><span class="p">,</span> <span class="n">labels</span><span class="o">=</span><span class="n">labels</span><span class="p">))</span>
 </code></pre></div>
 </div>
 <div class="tabbed-block">
@@ -4706,17 +4739,48 @@ Sample Code: <a href="https://github.com/EdgeFirstAI/samples/blob/main/python/mo
 <h3 id="results_1">Results</h3>
 <p>When displaying the results through Rerun you will see the boxes without any camera, to see the combined example please see the<a href="#combined-example">Combined Example</a>.
 <img alt="alt text" src="../assets/model_boxes2d.png" /></p>
+<h3 id="box-tracking">Box Tracking</h3>
+<p>On your EdgeFirst Platform you can also allow tracking of the boxes and this can then be logged during the publishing of the boxes. The documentation for the settings to turn on tracking can be found <a href="../../../../platforms/configuration/#track-settings">here</a>. You can update your code to match the <a href="https://github.com/EdgeFirstAI/samples/blob/main/python/model/boxes2d_tracked.py">tracked example</a> from the regular boxes2d example by changing the boxes2d_worker to the following.</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="7:1"><input checked="checked" id="__tabbed_7_1" name="__tabbed_7" type="radio" /><div class="tabbed-labels"><label for="__tabbed_7_1">Python</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">boxes2d_worker</span><span class="p">(</span><span class="n">msg</span><span class="p">,</span> <span class="n">boxes_tracked</span><span class="p">):</span>
+    <span class="n">detection</span> <span class="o">=</span> <span class="n">Detect</span><span class="o">.</span><span class="n">deserialize</span><span class="p">(</span><span class="n">msg</span><span class="o">.</span><span class="n">payload</span><span class="o">.</span><span class="n">to_bytes</span><span class="p">())</span>
+    <span class="n">centers</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">sizes</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">labels</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">colors</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">box</span> <span class="ow">in</span> <span class="n">detection</span><span class="o">.</span><span class="n">boxes</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">box</span><span class="o">.</span><span class="n">track</span><span class="o">.</span><span class="n">id</span> <span class="ow">and</span> <span class="n">box</span><span class="o">.</span><span class="n">track</span><span class="o">.</span><span class="n">id</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">boxes_tracked</span><span class="p">:</span>
+            <span class="n">boxes_tracked</span><span class="p">[</span><span class="n">box</span><span class="o">.</span><span class="n">track</span><span class="o">.</span><span class="n">id</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="n">box</span><span class="o">.</span><span class="n">label</span> <span class="o">+</span> <span class="s2">&quot;: &quot;</span> <span class="o">+</span> <span class="n">box</span><span class="o">.</span><span class="n">track</span><span class="o">.</span><span class="n">id</span><span class="p">[:</span><span class="mi">6</span><span class="p">],</span> <span class="nb">list</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">256</span><span class="p">),</span> <span class="n">size</span><span class="o">=</span><span class="mi">3</span><span class="p">))]</span>
+        <span class="k">if</span> <span class="n">box</span><span class="o">.</span><span class="n">track</span><span class="o">.</span><span class="n">id</span><span class="p">:</span>
+            <span class="n">colors</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">boxes_tracked</span><span class="p">[</span><span class="n">box</span><span class="o">.</span><span class="n">track</span><span class="o">.</span><span class="n">id</span><span class="p">][</span><span class="mi">1</span><span class="p">])</span>
+            <span class="n">labels</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">boxes_tracked</span><span class="p">[</span><span class="n">box</span><span class="o">.</span><span class="n">track</span><span class="o">.</span><span class="n">id</span><span class="p">][</span><span class="mi">0</span><span class="p">])</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">colors</span><span class="o">.</span><span class="n">append</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="mi">255</span><span class="p">,</span><span class="mi">0</span><span class="p">])</span>
+            <span class="n">labels</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">box</span><span class="o">.</span><span class="n">label</span><span class="p">)</span>
+        <span class="n">centers</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">box</span><span class="o">.</span><span class="n">center_x</span><span class="p">,</span> <span class="n">box</span><span class="o">.</span><span class="n">center_y</span><span class="p">))</span>
+        <span class="n">sizes</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">box</span><span class="o">.</span><span class="n">width</span><span class="p">,</span> <span class="n">box</span><span class="o">.</span><span class="n">height</span><span class="p">))</span>
+    <span class="n">rr</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="s2">&quot;boxes&quot;</span><span class="p">,</span> <span class="n">rr</span><span class="o">.</span><span class="n">Boxes2D</span><span class="p">(</span><span class="n">centers</span><span class="o">=</span><span class="n">centers</span><span class="p">,</span> <span class="n">sizes</span><span class="o">=</span><span class="n">sizes</span><span class="p">,</span> <span class="n">labels</span><span class="o">=</span><span class="n">labels</span><span class="p">,</span> <span class="n">colors</span><span class="o">=</span><span class="n">colors</span><span class="p">))</span>
+</code></pre></div>
+</div>
+</div>
+</div>
+<p>The main adjustments are that a color will be specified and each tracked box will have its own color as well as that we will add in the unique ID for the box into the label. All of this is contingent on tracking being enabled. The following image is taken when applied to a combined example.</p>
+<p><img alt="Boxes2D Tracking" src="../assets/boxes2d_tracking.gif" /></p>
 <h2 id="model-mask">Model Mask</h2>
 <p>Topic: <a href="../../../topics/model/#modelmask">/model/mask</a><br />
 Message: <a href="../../../api/edgefirst_msgs/#mask">Mask</a><br />
 Sample Code: <a href="https://github.com/EdgeFirstAI/samples/blob/main/python/model/mask.py">Python</a> / <a href="https://github.com/EdgeFirstAI/samples/blob/main/rust/model/mask.rs">Rust</a></p>
 <h3 id="setting-up-subscriber_2">Setting up subscriber</h3>
 <p>After setting up the Zenoh session, we will create a subscriber to the <code>model/mask</code> topic</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="7:2"><input checked="checked" id="__tabbed_7_1" name="__tabbed_7" type="radio" /><input id="__tabbed_7_2" name="__tabbed_7" type="radio" /><div class="tabbed-labels"><label for="__tabbed_7_1">Python</label><label for="__tabbed_7_2">Rust</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="8:2"><input checked="checked" id="__tabbed_8_1" name="__tabbed_8" type="radio" /><input id="__tabbed_8_2" name="__tabbed_8" type="radio" /><div class="tabbed-labels"><label for="__tabbed_8_1">Python</label><label for="__tabbed_8_2">Rust</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <div class="highlight"><pre><span></span><code><span class="c1"># Create a subscriber for &quot;rt/model/mask&quot;</span>
-<span class="n">subscriber</span> <span class="o">=</span> <span class="n">session</span><span class="o">.</span><span class="n">declare_subscriber</span><span class="p">(</span><span class="s1">&#39;rt/model/mask&#39;</span><span class="p">)</span>
+<span class="n">loop</span> <span class="o">=</span> <span class="n">asyncio</span><span class="o">.</span><span class="n">get_running_loop</span><span class="p">()</span>
+<span class="n">drain</span> <span class="o">=</span> <span class="n">MessageDrain</span><span class="p">(</span><span class="n">loop</span><span class="p">)</span>
+<span class="n">session</span><span class="o">.</span><span class="n">declare_subscriber</span><span class="p">(</span><span class="s1">&#39;rt/model/mask&#39;</span><span class="p">,</span> <span class="n">drain</span><span class="o">.</span><span class="n">callback</span><span class="p">)</span>
 </code></pre></div>
 </div>
 <div class="tabbed-block">
@@ -4730,18 +4794,32 @@ Sample Code: <a href="https://github.com/EdgeFirstAI/samples/blob/main/python/mo
 </div>
 </div>
 <h3 id="receive-a-message_2">Receive a message</h3>
-<p>We can now receive a message on the subscriber. After receiving the message, we will need to deserialize it.</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="8:2"><input checked="checked" id="__tabbed_8_1" name="__tabbed_8" type="radio" /><input id="__tabbed_8_2" name="__tabbed_8" type="radio" /><div class="tabbed-labels"><label for="__tabbed_8_1">Python</label><label for="__tabbed_8_2">Rust</label></div>
+<p>We can now await a message from that subscriber. After receiving the message, we will pass that message along to our processing function in a new thread to avoid missing messages. In addition we will log the annotations so Rerun knows what colors to use for each class.</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="9:2"><input checked="checked" id="__tabbed_9_1" name="__tabbed_9" type="radio" /><input id="__tabbed_9_2" name="__tabbed_9" type="radio" /><div class="tabbed-labels"><label for="__tabbed_9_1">Python</label><label for="__tabbed_9_2">Rust</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">edgefirst.schemas.edgefirst_msgs</span><span class="w"> </span><span class="kn">import</span> <span class="n">Mask</span>
+<div class="highlight"><pre><span></span><code><span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">mask_handler</span><span class="p">(</span><span class="n">drain</span><span class="p">):</span>
+    <span class="n">rr</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="s2">&quot;/&quot;</span><span class="p">,</span> <span class="n">rr</span><span class="o">.</span><span class="n">AnnotationContext</span><span class="p">([(</span><span class="mi">0</span><span class="p">,</span> <span class="s2">&quot;background&quot;</span><span class="p">,</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">)),</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="s2">&quot;person&quot;</span><span class="p">,</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">255</span><span class="p">,</span><span class="mi">0</span><span class="p">))]))</span>
+    <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+        <span class="n">msg</span> <span class="o">=</span> <span class="k">await</span> <span class="n">drain</span><span class="o">.</span><span class="n">get_latest</span><span class="p">()</span>
+        <span class="n">thread</span> <span class="o">=</span> <span class="n">threading</span><span class="o">.</span><span class="n">Thread</span><span class="p">(</span><span class="n">target</span><span class="o">=</span><span class="n">mask_worker</span><span class="p">,</span> <span class="n">args</span><span class="o">=</span><span class="p">[</span><span class="n">msg</span><span class="p">])</span>
+        <span class="n">thread</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
 
-<span class="n">msg</span> <span class="o">=</span> <span class="n">subscriber</span><span class="o">.</span><span class="n">recv</span><span class="p">()</span>
-<span class="n">mask</span> <span class="o">=</span> <span class="n">Mask</span><span class="o">.</span><span class="n">deserialize</span><span class="p">(</span><span class="n">msg</span><span class="o">.</span><span class="n">payload</span><span class="o">.</span><span class="n">to_bytes</span><span class="p">())</span>
+        <span class="k">while</span> <span class="n">thread</span><span class="o">.</span><span class="n">is_alive</span><span class="p">():</span>
+            <span class="k">await</span> <span class="n">asyncio</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mf">0.001</span><span class="p">)</span>
+        <span class="n">thread</span><span class="o">.</span><span class="n">join</span><span class="p">()</span>
 </code></pre></div>
 </div>
 <div class="tabbed-block">
 <div class="highlight"><pre><span></span><code><span class="k">use</span><span class="w"> </span><span class="n">edgefirst_schemas</span><span class="p">::</span><span class="n">edgefirst_msgs</span><span class="p">::</span><span class="n">Mask</span><span class="p">;</span>
+
+<span class="c1">// Log annotation context</span>
+<span class="n">rr</span><span class="p">.</span><span class="n">log</span><span class="p">(</span>
+<span class="w">    </span><span class="s">&quot;/&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="o">&amp;</span><span class="n">AnnotationContext</span><span class="p">::</span><span class="n">new</span><span class="p">([</span>
+<span class="w">        </span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;background&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">rerun</span><span class="p">::</span><span class="n">Rgba32</span><span class="p">::</span><span class="n">from_rgb</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">)),</span>
+<span class="w">        </span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;person&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">rerun</span><span class="p">::</span><span class="n">Rgba32</span><span class="p">::</span><span class="n">from_rgb</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">255</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">))])</span>
+<span class="p">)</span><span class="o">?</span><span class="p">;</span>
 
 <span class="c1">// Receive a message</span>
 <span class="kd">let</span><span class="w"> </span><span class="n">msg</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">subscriber</span><span class="p">.</span><span class="n">recv</span><span class="p">().</span><span class="n">unwrap</span><span class="p">();</span>
@@ -4751,15 +4829,16 @@ Sample Code: <a href="https://github.com/EdgeFirstAI/samples/blob/main/python/mo
 </div>
 </div>
 <h3 id="process-the-data_2">Process the Data</h3>
-<p>The Mask message contains segmentation mask data. You can access various fields like:</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="9:2"><input checked="checked" id="__tabbed_9_1" name="__tabbed_9" type="radio" /><input id="__tabbed_9_2" name="__tabbed_9" type="radio" /><div class="tabbed-labels"><label for="__tabbed_9_1">Python</label><label for="__tabbed_9_2">Rust</label></div>
+<p>The Mask message contains segmentation mask data. The worker will perform argmax on the result to get the resultant class for each pixel to be logged.</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="10:2"><input checked="checked" id="__tabbed_10_1" name="__tabbed_10" type="radio" /><input id="__tabbed_10_2" name="__tabbed_10" type="radio" /><div class="tabbed-labels"><label for="__tabbed_10_1">Python</label><label for="__tabbed_10_2">Rust</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="n">np_arr</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">mask</span><span class="o">.</span><span class="n">mask</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">uint8</span><span class="p">)</span>
-<span class="n">np_arr</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">np_arr</span><span class="p">,</span> <span class="p">[</span><span class="n">mask</span><span class="o">.</span><span class="n">height</span><span class="p">,</span> <span class="n">mask</span><span class="o">.</span><span class="n">width</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">])</span>
-<span class="n">np_arr</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">argmax</span><span class="p">(</span><span class="n">np_arr</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
-<span class="n">rr</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="s2">&quot;/&quot;</span><span class="p">,</span> <span class="n">rr</span><span class="o">.</span><span class="n">AnnotationContext</span><span class="p">([(</span><span class="mi">0</span><span class="p">,</span> <span class="s2">&quot;background&quot;</span><span class="p">,</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">)),</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="s2">&quot;person&quot;</span><span class="p">,</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">255</span><span class="p">,</span><span class="mi">0</span><span class="p">))]))</span>
-<span class="n">rr</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="s2">&quot;mask&quot;</span><span class="p">,</span> <span class="n">rr</span><span class="o">.</span><span class="n">SegmentationImage</span><span class="p">(</span><span class="n">np_arr</span><span class="p">))</span>
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">mask_worker</span><span class="p">(</span><span class="n">msg</span><span class="p">):</span>
+    <span class="n">mask</span> <span class="o">=</span> <span class="n">Mask</span><span class="o">.</span><span class="n">deserialize</span><span class="p">(</span><span class="n">msg</span><span class="o">.</span><span class="n">payload</span><span class="o">.</span><span class="n">to_bytes</span><span class="p">())</span>
+    <span class="n">np_arr</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">mask</span><span class="o">.</span><span class="n">mask</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">uint8</span><span class="p">)</span>
+    <span class="n">np_arr</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">np_arr</span><span class="p">,</span> <span class="p">[</span><span class="n">mask</span><span class="o">.</span><span class="n">height</span><span class="p">,</span> <span class="n">mask</span><span class="o">.</span><span class="n">width</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">])</span>
+    <span class="n">np_arr</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">argmax</span><span class="p">(</span><span class="n">np_arr</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+    <span class="n">rr</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="s2">&quot;mask&quot;</span><span class="p">,</span> <span class="n">rr</span><span class="o">.</span><span class="n">SegmentationImage</span><span class="p">(</span><span class="n">np_arr</span><span class="p">))</span>
 </code></pre></div>
 </div>
 <div class="tabbed-block">
@@ -4781,14 +4860,6 @@ Sample Code: <a href="https://github.com/EdgeFirstAI/samples/blob/main/python/mo
 <span class="w">            </span><span class="p">.</span><span class="n">unwrap_or</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
 <span class="w">    </span><span class="p">});</span>
 
-<span class="c1">// Log annotation context</span>
-<span class="n">rr</span><span class="p">.</span><span class="n">log</span><span class="p">(</span>
-<span class="w">    </span><span class="s">&quot;/&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="o">&amp;</span><span class="n">AnnotationContext</span><span class="p">::</span><span class="n">new</span><span class="p">([</span>
-<span class="w">        </span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;background&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">rerun</span><span class="p">::</span><span class="n">Rgba32</span><span class="p">::</span><span class="n">from_rgb</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">)),</span>
-<span class="w">        </span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;person&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">rerun</span><span class="p">::</span><span class="n">Rgba32</span><span class="p">::</span><span class="n">from_rgb</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">255</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">))])</span>
-<span class="p">)</span><span class="o">?</span><span class="p">;</span>
-
 <span class="c1">// Log segmentation mask</span>
 <span class="kd">let</span><span class="w"> </span><span class="n">_</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">rr</span><span class="p">.</span><span class="n">log</span><span class="p">(</span><span class="s">&quot;mask&quot;</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">SegmentationImage</span><span class="p">::</span><span class="n">try_from</span><span class="p">(</span><span class="n">array2</span><span class="p">)</span><span class="o">?</span><span class="p">)</span><span class="o">?</span><span class="p">;</span>
 </code></pre></div>
@@ -4803,12 +4874,14 @@ Sample Code: <a href="https://github.com/EdgeFirstAI/samples/blob/main/python/mo
 Message: <a href="../../../api/edgefirst_msgs/#mask">Mask</a><br />
 Sample Code: <a href="https://github.com/EdgeFirstAI/samples/blob/main/python/model/compressed_mask.py">Python</a> / <a href="https://github.com/EdgeFirstAI/samples/blob/main/rust/model/compressed_mask.rs">Rust</a></p>
 <h3 id="setting-up-subscriber_3">Setting up subscriber</h3>
-<p>After setting up the Zenoh session, we will create a subscriber to the <code>model/compressed_mask</code> topic</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="10:2"><input checked="checked" id="__tabbed_10_1" name="__tabbed_10" type="radio" /><input id="__tabbed_10_2" name="__tabbed_10" type="radio" /><div class="tabbed-labels"><label for="__tabbed_10_1">Python</label><label for="__tabbed_10_2">Rust</label></div>
+<p>After setting up the Zenoh session, we will create a subscriber to the <code>model/mask_compressed</code> topic</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="11:2"><input checked="checked" id="__tabbed_11_1" name="__tabbed_11" type="radio" /><input id="__tabbed_11_2" name="__tabbed_11" type="radio" /><div class="tabbed-labels"><label for="__tabbed_11_1">Python</label><label for="__tabbed_11_2">Rust</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <div class="highlight"><pre><span></span><code><span class="c1"># Create a subscriber for &quot;rt/model/mask_compressed&quot;</span>
-<span class="n">subscriber</span> <span class="o">=</span> <span class="n">session</span><span class="o">.</span><span class="n">declare_subscriber</span><span class="p">(</span><span class="s1">&#39;rt/model/mask_compressed&#39;</span><span class="p">)</span>
+<span class="n">loop</span> <span class="o">=</span> <span class="n">asyncio</span><span class="o">.</span><span class="n">get_running_loop</span><span class="p">()</span>
+<span class="n">drain</span> <span class="o">=</span> <span class="n">MessageDrain</span><span class="p">(</span><span class="n">loop</span><span class="p">)</span>
+<span class="n">session</span><span class="o">.</span><span class="n">declare_subscriber</span><span class="p">(</span><span class="s1">&#39;rt/model/mask_compressed&#39;</span><span class="p">,</span> <span class="n">drain</span><span class="o">.</span><span class="n">callback</span><span class="p">)</span>
 </code></pre></div>
 </div>
 <div class="tabbed-block">
@@ -4821,14 +4894,20 @@ Sample Code: <a href="https://github.com/EdgeFirstAI/samples/blob/main/python/mo
 </div>
 </div>
 <h3 id="receive-a-message_3">Receive a message</h3>
-<p>We can now receive a message on the subscriber. After receiving the message, we will need to deserialize it.</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="11:2"><input checked="checked" id="__tabbed_11_1" name="__tabbed_11" type="radio" /><input id="__tabbed_11_2" name="__tabbed_11" type="radio" /><div class="tabbed-labels"><label for="__tabbed_11_1">Python</label><label for="__tabbed_11_2">Rust</label></div>
+<p>We can now await a message from that subscriber from an asynchronous function. After receiving the message, we will pass that message along to our processing function in a new thread to avoid missing messages. In addition we will log the annotations so Rerun knows what colors to use for each class.</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="12:2"><input checked="checked" id="__tabbed_12_1" name="__tabbed_12" type="radio" /><input id="__tabbed_12_2" name="__tabbed_12" type="radio" /><div class="tabbed-labels"><label for="__tabbed_12_1">Python</label><label for="__tabbed_12_2">Rust</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">edgefirst.schemas.edgefirst_msgs</span><span class="w"> </span><span class="kn">import</span> <span class="n">Mask</span>
+<div class="highlight"><pre><span></span><code><span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">mask_handler</span><span class="p">(</span><span class="n">drain</span><span class="p">):</span>
+    <span class="n">rr</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="s2">&quot;/&quot;</span><span class="p">,</span> <span class="n">rr</span><span class="o">.</span><span class="n">AnnotationContext</span><span class="p">([(</span><span class="mi">0</span><span class="p">,</span> <span class="s2">&quot;background&quot;</span><span class="p">,</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">)),</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="s2">&quot;person&quot;</span><span class="p">,</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">255</span><span class="p">,</span><span class="mi">0</span><span class="p">))]))</span>
+    <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+        <span class="n">msg</span> <span class="o">=</span> <span class="k">await</span> <span class="n">drain</span><span class="o">.</span><span class="n">get_latest</span><span class="p">()</span>
+        <span class="n">thread</span> <span class="o">=</span> <span class="n">threading</span><span class="o">.</span><span class="n">Thread</span><span class="p">(</span><span class="n">target</span><span class="o">=</span><span class="n">mask_worker</span><span class="p">,</span> <span class="n">args</span><span class="o">=</span><span class="p">[</span><span class="n">msg</span><span class="p">])</span>
+        <span class="n">thread</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
 
-<span class="n">msg</span> <span class="o">=</span> <span class="n">subscriber</span><span class="o">.</span><span class="n">recv</span><span class="p">()</span>
-<span class="n">mask</span> <span class="o">=</span> <span class="n">Mask</span><span class="o">.</span><span class="n">deserialize</span><span class="p">(</span><span class="n">msg</span><span class="o">.</span><span class="n">payload</span><span class="o">.</span><span class="n">to_bytes</span><span class="p">())</span>
+        <span class="k">while</span> <span class="n">thread</span><span class="o">.</span><span class="n">is_alive</span><span class="p">():</span>
+            <span class="k">await</span> <span class="n">asyncio</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mf">0.001</span><span class="p">)</span>
+        <span class="n">thread</span><span class="o">.</span><span class="n">join</span><span class="p">()</span>
 </code></pre></div>
 </div>
 <div class="tabbed-block">
@@ -4842,16 +4921,18 @@ Sample Code: <a href="https://github.com/EdgeFirstAI/samples/blob/main/python/mo
 </div>
 </div>
 <h3 id="process-the-data_3">Process the Data</h3>
-<p>The CompressedMask message contains compressed segmentation mask data. You can access various fields like:</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="12:2"><input checked="checked" id="__tabbed_12_1" name="__tabbed_12" type="radio" /><input id="__tabbed_12_2" name="__tabbed_12" type="radio" /><div class="tabbed-labels"><label for="__tabbed_12_1">Python</label><label for="__tabbed_12_2">Rust</label></div>
+<p>The Mask message contains segmentation mask data. The worker will decompress the data and then perform argmax on the result to get the resultant class for each pixel to be logged.</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="13:2"><input checked="checked" id="__tabbed_13_1" name="__tabbed_13" type="radio" /><input id="__tabbed_13_2" name="__tabbed_13" type="radio" /><div class="tabbed-labels"><label for="__tabbed_13_1">Python</label><label for="__tabbed_13_2">Rust</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="n">decoded_array</span> <span class="o">=</span> <span class="n">zstd</span><span class="o">.</span><span class="n">decompress</span><span class="p">(</span><span class="nb">bytes</span><span class="p">(</span><span class="n">mask</span><span class="o">.</span><span class="n">mask</span><span class="p">))</span>
-<span class="n">np_arr</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">frombuffer</span><span class="p">(</span><span class="n">decoded_array</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">uint8</span><span class="p">)</span>
-<span class="n">np_arr</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">np_arr</span><span class="p">,</span> <span class="p">[</span><span class="n">mask</span><span class="o">.</span><span class="n">height</span><span class="p">,</span> <span class="n">mask</span><span class="o">.</span><span class="n">width</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">])</span>
-<span class="n">np_arr</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">argmax</span><span class="p">(</span><span class="n">np_arr</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
-<span class="n">rr</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="s2">&quot;/&quot;</span><span class="p">,</span> <span class="n">rr</span><span class="o">.</span><span class="n">AnnotationContext</span><span class="p">([(</span><span class="mi">0</span><span class="p">,</span> <span class="s2">&quot;background&quot;</span><span class="p">,</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">)),</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="s2">&quot;person&quot;</span><span class="p">,</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">255</span><span class="p">,</span><span class="mi">0</span><span class="p">))]))</span>
-<span class="n">rr</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="s2">&quot;mask&quot;</span><span class="p">,</span> <span class="n">rr</span><span class="o">.</span><span class="n">SegmentationImage</span><span class="p">(</span><span class="n">np_arr</span><span class="p">))</span>
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">mask_worker</span><span class="p">(</span><span class="n">msg</span><span class="p">):</span>
+    <span class="n">mask</span> <span class="o">=</span> <span class="n">Mask</span><span class="o">.</span><span class="n">deserialize</span><span class="p">(</span><span class="n">msg</span><span class="o">.</span><span class="n">payload</span><span class="o">.</span><span class="n">to_bytes</span><span class="p">())</span>
+    <span class="n">decoded_array</span> <span class="o">=</span> <span class="n">zstd</span><span class="o">.</span><span class="n">decompress</span><span class="p">(</span><span class="nb">bytes</span><span class="p">(</span><span class="n">mask</span><span class="o">.</span><span class="n">mask</span><span class="p">))</span>
+    <span class="n">np_arr</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">frombuffer</span><span class="p">(</span><span class="n">decoded_array</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">uint8</span><span class="p">)</span>
+    <span class="n">np_arr</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">np_arr</span><span class="p">,</span> <span class="p">[</span><span class="n">mask</span><span class="o">.</span><span class="n">height</span><span class="p">,</span> <span class="n">mask</span><span class="o">.</span><span class="n">width</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">])</span>
+    <span class="n">np_arr</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">argmax</span><span class="p">(</span><span class="n">np_arr</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+
+    <span class="n">rr</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="s2">&quot;mask&quot;</span><span class="p">,</span> <span class="n">rr</span><span class="o">.</span><span class="n">SegmentationImage</span><span class="p">(</span><span class="n">np_arr</span><span class="p">))</span>
 </code></pre></div>
 </div>
 <div class="tabbed-block">
@@ -4896,95 +4977,142 @@ Sample Code: <a href="https://github.com/EdgeFirstAI/samples/blob/main/python/mo
 <p>This example will demonstrate how to combine the camera feed with the model messages to create a composite Rerun view. The main difference when using multiple messages in a script, is that we will change from waiting on the message to be received to having a callback function for when a message is received. Using the initial method, the script would hang while waiting for a message topic to be published, so if the messages are being published at different rates, the slowest message rate will limit the others.</p>
 <p>Sample Code: <a href="https://github.com/EdgeFirstAI/samples/blob/main/python/combined/camera_model.py">Python</a> </p>
 <h3 id="setting-up-the-subscribers">Setting up the subscribers</h3>
-<p>After setting up the Zenoh session, we will create a subscriber to the three topics</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="13:2"><input checked="checked" id="__tabbed_13_1" name="__tabbed_13" type="radio" /><input id="__tabbed_13_2" name="__tabbed_13" type="radio" /><div class="tabbed-labels"><label for="__tabbed_13_1">Python</label><label for="__tabbed_13_2">Rust</label></div>
+<p>After setting up the Zenoh session, we will create a subscriber to the three topics, camera, boxes and segmentation. A FrameSize is additionally created to pass the stream size from the camera to the boxes and segmentation mask so they can be resized appropriately.</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="14:1"><input checked="checked" id="__tabbed_14_1" name="__tabbed_14" type="radio" /><div class="tabbed-labels"><label for="__tabbed_14_1">Python</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <div class="highlight"><pre><span></span><code><span class="c1"># Create the necessary subscribers</span>
-<span class="n">subscriber1</span> <span class="o">=</span> <span class="n">session</span><span class="o">.</span><span class="n">declare_subscriber</span><span class="p">(</span><span class="s1">&#39;rt/camera/h264&#39;</span><span class="p">,</span> <span class="n">h264_callback</span><span class="p">)</span>
-<span class="n">subscriber2</span> <span class="o">=</span> <span class="n">session</span><span class="o">.</span><span class="n">declare_subscriber</span><span class="p">(</span><span class="s1">&#39;rt/model/boxes2d&#39;</span><span class="p">,</span> <span class="n">boxes2d_callback</span><span class="p">)</span>
-<span class="n">subscriber3</span> <span class="o">=</span> <span class="n">session</span><span class="o">.</span><span class="n">declare_subscriber</span><span class="p">(</span><span class="s1">&#39;rt/model/mask_compressed&#39;</span><span class="p">,</span> <span class="n">mask_callback</span><span class="p">)</span>
-</code></pre></div>
-</div>
-<div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="c1">// Create a subscriber for &quot;rt/camera/info&quot;</span>
-<span class="kd">let</span><span class="w"> </span><span class="n">subscriber</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">session</span>
-<span class="w">    </span><span class="p">.</span><span class="n">declare_subscriber</span><span class="p">(</span><span class="s">&quot;rt/camera/info&quot;</span><span class="p">)</span>
-<span class="w">    </span><span class="p">.</span><span class="k">await</span>
-<span class="w">    </span><span class="p">.</span><span class="n">unwrap</span><span class="p">();</span>
+<span class="n">loop</span> <span class="o">=</span> <span class="n">asyncio</span><span class="o">.</span><span class="n">get_running_loop</span><span class="p">()</span>
+<span class="n">h264_drain</span> <span class="o">=</span> <span class="n">MessageDrain</span><span class="p">(</span><span class="n">loop</span><span class="p">)</span>
+<span class="n">boxes_drain</span> <span class="o">=</span> <span class="n">MessageDrain</span><span class="p">(</span><span class="n">loop</span><span class="p">)</span>
+<span class="n">mask_drain</span> <span class="o">=</span> <span class="n">MessageDrain</span><span class="p">(</span><span class="n">loop</span><span class="p">)</span>
+<span class="n">frame_size_storage</span> <span class="o">=</span> <span class="n">FrameSize</span><span class="p">()</span>
+<span class="n">session</span><span class="o">.</span><span class="n">declare_subscriber</span><span class="p">(</span><span class="s1">&#39;rt/camera/h264&#39;</span><span class="p">,</span> <span class="n">h264_drain</span><span class="o">.</span><span class="n">callback</span><span class="p">)</span>
+<span class="n">session</span><span class="o">.</span><span class="n">declare_subscriber</span><span class="p">(</span><span class="s1">&#39;rt/model/boxes2d&#39;</span><span class="p">,</span> <span class="n">boxes_drain</span><span class="o">.</span><span class="n">callback</span><span class="p">)</span>
+<span class="k">if</span> <span class="n">args</span><span class="o">.</span><span class="n">remote</span><span class="p">:</span>
+    <span class="n">session</span><span class="o">.</span><span class="n">declare_subscriber</span><span class="p">(</span><span class="s1">&#39;rt/model/mask_compressed&#39;</span><span class="p">,</span> <span class="n">mask_drain</span><span class="o">.</span><span class="n">callback</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="n">session</span><span class="o">.</span><span class="n">declare_subscriber</span><span class="p">(</span><span class="s1">&#39;rt/model/mask&#39;</span><span class="p">,</span> <span class="n">mask_drain</span><span class="o">.</span><span class="n">callback</span><span class="p">)</span>
 </code></pre></div>
 </div>
 </div>
 </div>
 <h3 id="subscriber-callbacks">Subscriber Callbacks</h3>
-<p>We will now go through the callback functions that are in use for this example. These callback functions will make use of a global variable frame size to allow the script to properly resize the segmentation mask and boxes to overlap the camera feed correctly. Each callback will receive the Zenoh message as the argument.</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="14:1"><input checked="checked" id="__tabbed_14_1" name="__tabbed_14" type="radio" /><div class="tabbed-labels"><label for="__tabbed_14_1">Python</label></div>
+<p>We will now go through the handler functions that are in use for this example. These handler functions will independently handle each of the messages received through the MessageDrain. Additionally, we will make use of a FrameSize object to communicate the frame size of the camera to the boxes and segmentation mask so they can be resized appropriately.</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="15:1"><input checked="checked" id="__tabbed_15_1" name="__tabbed_15" type="radio" /><div class="tabbed-labels"><label for="__tabbed_15_1">Python</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="n">raw_data</span> <span class="o">=</span> <span class="n">io</span><span class="o">.</span><span class="n">BytesIO</span><span class="p">()</span> <span class="c1"># Necessary for H264 decoding</span>
-<span class="n">container</span> <span class="o">=</span> <span class="n">av</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">raw_data</span><span class="p">,</span> <span class="nb">format</span><span class="o">=</span><span class="s1">&#39;h264&#39;</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s1">&#39;r&#39;</span><span class="p">)</span> <span class="c1"># Necessary for H264 decoding</span>
-<span class="n">frame_size</span> <span class="o">=</span> <span class="p">[]</span>
+<div class="highlight"><pre><span></span><code><span class="k">await</span> <span class="n">asyncio</span><span class="o">.</span><span class="n">gather</span><span class="p">(</span><span class="n">h264_handler</span><span class="p">(</span><span class="n">h264_drain</span><span class="p">,</span> <span class="n">frame_size_storage</span><span class="p">),</span> 
+                     <span class="n">boxes2d_handler</span><span class="p">(</span><span class="n">boxes_drain</span><span class="p">,</span> <span class="n">frame_size_storage</span><span class="p">),</span>
+                     <span class="n">mask_handler</span><span class="p">(</span><span class="n">mask_drain</span><span class="p">,</span> <span class="n">frame_size_storage</span><span class="p">,</span> <span class="n">args</span><span class="o">.</span><span class="n">remote</span><span class="p">))</span>
 </code></pre></div>
 </div>
 </div>
 </div>
-<h4 id="h264-callback">H264 Callback</h4>
-<p>The H264 callback will receive the CompressedVideo message and decode it, loop through each frame received and log those frames to Rerun in addition to updating frame size.</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="15:1"><input checked="checked" id="__tabbed_15_1" name="__tabbed_15" type="radio" /><div class="tabbed-labels"><label for="__tabbed_15_1">Python</label></div>
+<h4 id="h264-handler">H264 Handler</h4>
+<p>The H264 handler will receive the CompressedVideo message from the MessageDrain and after initializing the required containers will pass that message to the worker, where the message will be processed and logged to Rerun.</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="16:1"><input checked="checked" id="__tabbed_16_1" name="__tabbed_16" type="radio" /><div class="tabbed-labels"><label for="__tabbed_16_1">Python</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">h264_callback</span><span class="p">(</span><span class="n">msg</span><span class="p">):</span>
-    <span class="k">global</span> <span class="n">frame_size</span>
+<div class="highlight"><pre><span></span><code><span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">h264_handler</span><span class="p">(</span><span class="n">drain</span><span class="p">,</span> <span class="n">frame_storage</span><span class="p">):</span>
+    <span class="n">raw_data</span> <span class="o">=</span> <span class="n">io</span><span class="o">.</span><span class="n">BytesIO</span><span class="p">()</span>
+    <span class="n">container</span> <span class="o">=</span> <span class="n">av</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">raw_data</span><span class="p">,</span> <span class="nb">format</span><span class="o">=</span><span class="s1">&#39;h264&#39;</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s1">&#39;r&#39;</span><span class="p">)</span>
+
+    <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+        <span class="n">msg</span> <span class="o">=</span> <span class="k">await</span> <span class="n">drain</span><span class="o">.</span><span class="n">get_latest</span><span class="p">()</span>
+        <span class="n">thread</span> <span class="o">=</span> <span class="n">threading</span><span class="o">.</span><span class="n">Thread</span><span class="p">(</span><span class="n">target</span><span class="o">=</span><span class="n">h264_worker</span><span class="p">,</span> <span class="n">args</span><span class="o">=</span><span class="p">[</span><span class="n">msg</span><span class="p">,</span> <span class="n">frame_storage</span><span class="p">,</span> <span class="n">raw_data</span><span class="p">,</span> <span class="n">container</span><span class="p">])</span>
+        <span class="n">thread</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
+
+        <span class="k">while</span> <span class="n">thread</span><span class="o">.</span><span class="n">is_alive</span><span class="p">():</span>
+            <span class="k">await</span> <span class="n">asyncio</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mf">0.001</span><span class="p">)</span>
+        <span class="n">thread</span><span class="o">.</span><span class="n">join</span><span class="p">()</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">h264_worker</span><span class="p">(</span><span class="n">msg</span><span class="p">,</span> <span class="n">frame_storage</span><span class="p">,</span> <span class="n">raw_data</span><span class="p">,</span> <span class="n">container</span><span class="p">):</span>
     <span class="n">raw_data</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">msg</span><span class="o">.</span><span class="n">payload</span><span class="o">.</span><span class="n">to_bytes</span><span class="p">())</span>
     <span class="n">raw_data</span><span class="o">.</span><span class="n">seek</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
     <span class="k">for</span> <span class="n">packet</span> <span class="ow">in</span> <span class="n">container</span><span class="o">.</span><span class="n">demux</span><span class="p">():</span>
         <span class="k">try</span><span class="p">:</span>
-            <span class="k">if</span> <span class="n">packet</span><span class="o">.</span><span class="n">size</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>  <span class="c1"># Skip empty packets</span>
+            <span class="k">if</span> <span class="n">packet</span><span class="o">.</span><span class="n">size</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
                 <span class="k">continue</span>
             <span class="n">raw_data</span><span class="o">.</span><span class="n">seek</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
             <span class="n">raw_data</span><span class="o">.</span><span class="n">truncate</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
-            <span class="k">for</span> <span class="n">frame</span> <span class="ow">in</span> <span class="n">packet</span><span class="o">.</span><span class="n">decode</span><span class="p">():</span>  <span class="c1"># Decode video frames</span>
-                <span class="n">frame_array</span> <span class="o">=</span> <span class="n">frame</span><span class="o">.</span><span class="n">to_ndarray</span><span class="p">(</span><span class="nb">format</span><span class="o">=</span><span class="s1">&#39;rgb24&#39;</span><span class="p">)</span>  <span class="c1"># Convert frame to numpy array</span>
-                <span class="n">frame_size</span> <span class="o">=</span> <span class="p">[</span><span class="n">frame_array</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">frame_array</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]]</span>
-                <span class="n">rr</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="s1">&#39;camera&#39;</span><span class="p">,</span> <span class="n">rr</span><span class="o">.</span><span class="n">Image</span><span class="p">(</span><span class="n">frame_array</span><span class="p">))</span>
-        <span class="k">except</span> <span class="ne">Exception</span><span class="p">:</span>  <span class="c1"># Handle exceptions</span>
-            <span class="k">continue</span>  <span class="c1"># Continue processing next packets</span>
+            <span class="k">for</span> <span class="n">frame</span> <span class="ow">in</span> <span class="n">packet</span><span class="o">.</span><span class="n">decode</span><span class="p">():</span>
+                <span class="n">frame_array</span> <span class="o">=</span> <span class="n">frame</span><span class="o">.</span><span class="n">to_ndarray</span><span class="p">(</span><span class="nb">format</span><span class="o">=</span><span class="s1">&#39;rgb24&#39;</span><span class="p">)</span>
+                <span class="n">frame_storage</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">frame_array</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">frame_array</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+                <span class="n">rr</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="s1">&#39;/camera&#39;</span><span class="p">,</span> <span class="n">rr</span><span class="o">.</span><span class="n">Image</span><span class="p">(</span><span class="n">frame_array</span><span class="p">))</span>
+        <span class="k">except</span> <span class="ne">Exception</span><span class="p">:</span>
+            <span class="k">continue</span>
 </code></pre></div>
 </div>
 </div>
 </div>
-<h4 id="boxes2d-callback">Boxes2D Callback</h4>
-<p>The Boxes2D callback will receive the Detect message, loop through all detections found and then create lists of the centers and sizes received properly scaled by the frame size that was determined from the camera feed.</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="16:1"><input checked="checked" id="__tabbed_16_1" name="__tabbed_16" type="radio" /><div class="tabbed-labels"><label for="__tabbed_16_1">Python</label></div>
-<div class="tabbed-content">
-<div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">boxes2d_callback</span><span class="p">(</span><span class="n">msg</span><span class="p">):</span>
-    <span class="n">detection</span> <span class="o">=</span> <span class="n">Detect</span><span class="o">.</span><span class="n">deserialize</span><span class="p">(</span><span class="n">msg</span><span class="o">.</span><span class="n">payload</span><span class="o">.</span><span class="n">to_bytes</span><span class="p">())</span>    
-    <span class="k">for</span> <span class="n">box</span> <span class="ow">in</span> <span class="n">detection</span><span class="o">.</span><span class="n">boxes</span><span class="p">:</span>
-        <span class="n">centers</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="nb">int</span><span class="p">(</span><span class="n">box</span><span class="o">.</span><span class="n">center_x</span> <span class="o">*</span> <span class="n">frame_size</span><span class="p">[</span><span class="mi">0</span><span class="p">]),</span> <span class="nb">int</span><span class="p">(</span><span class="n">box</span><span class="o">.</span><span class="n">center_y</span> <span class="o">*</span> <span class="n">frame_size</span><span class="p">[</span><span class="mi">1</span><span class="p">])))</span>
-        <span class="n">sizes</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="nb">int</span><span class="p">(</span><span class="n">box</span><span class="o">.</span><span class="n">width</span> <span class="o">*</span> <span class="n">frame_size</span><span class="p">[</span><span class="mi">0</span><span class="p">]),</span> <span class="nb">int</span><span class="p">(</span><span class="n">box</span><span class="o">.</span><span class="n">height</span> <span class="o">*</span> <span class="n">frame_size</span><span class="p">[</span><span class="mi">1</span><span class="p">])))</span>
-        <span class="nb">print</span><span class="p">(</span><span class="n">centers</span><span class="p">)</span>
-        <span class="nb">print</span><span class="p">(</span><span class="n">sizes</span><span class="p">)</span>
-        <span class="n">labels</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">box</span><span class="o">.</span><span class="n">label</span><span class="p">)</span>
-    <span class="n">rr</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="s2">&quot;camera/boxes&quot;</span><span class="p">,</span> <span class="n">rr</span><span class="o">.</span><span class="n">Boxes2D</span><span class="p">(</span><span class="n">centers</span><span class="o">=</span><span class="n">centers</span><span class="p">,</span> <span class="n">sizes</span><span class="o">=</span><span class="n">sizes</span><span class="p">,</span> <span class="n">labels</span><span class="o">=</span><span class="n">labels</span><span class="p">))</span>
-</code></pre></div>
-</div>
-</div>
-</div>
-<h4 id="mask-callback">Mask Callback</h4>
-<p>The Mask callback will receive the Mask message, decompress the message (if using the mask_compressed message remotely), and then scale the mask to the frame size determined from the camera feed. This mask will then be processed to log the results to Rerun following the AnnotationContext created.</p>
+<h4 id="boxes2d-handler">Boxes2D Handler</h4>
+<p>The Boxes2D callback will wait for a Detect message from the MessageDrain and will pass that message to the worker, where the message will be processed and logged to Rerun. The boxes logged will use tracking when available. Additionally, this handler will wait until the camera has started and logged a frame size so it knows what the height and width will be to resize the boxes.</p>
 <div class="tabbed-set tabbed-alternate" data-tabs="17:1"><input checked="checked" id="__tabbed_17_1" name="__tabbed_17" type="radio" /><div class="tabbed-labels"><label for="__tabbed_17_1">Python</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">mask_callback</span><span class="p">(</span><span class="n">msg</span><span class="p">):</span>
+<div class="highlight"><pre><span></span><code><span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">boxes2d_handler</span><span class="p">(</span><span class="n">drain</span><span class="p">,</span> <span class="n">frame_storage</span><span class="p">):</span>
+    <span class="n">boxes_tracked</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="n">_</span> <span class="o">=</span> <span class="k">await</span> <span class="n">frame_storage</span><span class="o">.</span><span class="n">get</span><span class="p">()</span>
+    <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+        <span class="n">msg</span> <span class="o">=</span> <span class="k">await</span> <span class="n">drain</span><span class="o">.</span><span class="n">get_latest</span><span class="p">()</span>
+        <span class="n">frame_size</span> <span class="o">=</span> <span class="k">await</span> <span class="n">frame_storage</span><span class="o">.</span><span class="n">get</span><span class="p">()</span>
+        <span class="n">thread</span> <span class="o">=</span> <span class="n">threading</span><span class="o">.</span><span class="n">Thread</span><span class="p">(</span><span class="n">target</span><span class="o">=</span><span class="n">boxes2d_worker</span><span class="p">,</span> <span class="n">args</span><span class="o">=</span><span class="p">[</span><span class="n">msg</span><span class="p">,</span> <span class="n">boxes_tracked</span><span class="p">,</span> <span class="n">frame_size</span><span class="p">])</span>
+        <span class="n">thread</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
+
+        <span class="k">while</span> <span class="n">thread</span><span class="o">.</span><span class="n">is_alive</span><span class="p">():</span>
+            <span class="k">await</span> <span class="n">asyncio</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mf">0.001</span><span class="p">)</span>
+        <span class="n">thread</span><span class="o">.</span><span class="n">join</span><span class="p">()</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">boxes2d_worker</span><span class="p">(</span><span class="n">msg</span><span class="p">,</span> <span class="n">boxes_tracked</span><span class="p">,</span> <span class="n">frame_size</span><span class="p">):</span>
+    <span class="n">detection</span> <span class="o">=</span> <span class="n">Detect</span><span class="o">.</span><span class="n">deserialize</span><span class="p">(</span><span class="n">msg</span><span class="o">.</span><span class="n">payload</span><span class="o">.</span><span class="n">to_bytes</span><span class="p">())</span>
+    <span class="n">centers</span><span class="p">,</span> <span class="n">sizes</span><span class="p">,</span> <span class="n">labels</span><span class="p">,</span> <span class="n">colors</span> <span class="o">=</span> <span class="p">[],</span> <span class="p">[],</span> <span class="p">[],</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">box</span> <span class="ow">in</span> <span class="n">detection</span><span class="o">.</span><span class="n">boxes</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">box</span><span class="o">.</span><span class="n">track</span><span class="o">.</span><span class="n">id</span> <span class="ow">and</span> <span class="n">box</span><span class="o">.</span><span class="n">track</span><span class="o">.</span><span class="n">id</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">boxes_tracked</span><span class="p">:</span>
+            <span class="n">boxes_tracked</span><span class="p">[</span><span class="n">box</span><span class="o">.</span><span class="n">track</span><span class="o">.</span><span class="n">id</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="n">box</span><span class="o">.</span><span class="n">label</span> <span class="o">+</span> <span class="s2">&quot;: &quot;</span> <span class="o">+</span> <span class="n">box</span><span class="o">.</span><span class="n">track</span><span class="o">.</span><span class="n">id</span><span class="p">[:</span><span class="mi">6</span><span class="p">],</span> <span class="nb">list</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">256</span><span class="p">),</span> <span class="n">size</span><span class="o">=</span><span class="mi">3</span><span class="p">))]</span>
+        <span class="k">if</span> <span class="n">box</span><span class="o">.</span><span class="n">track</span><span class="o">.</span><span class="n">id</span><span class="p">:</span>
+            <span class="n">colors</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">boxes_tracked</span><span class="p">[</span><span class="n">box</span><span class="o">.</span><span class="n">track</span><span class="o">.</span><span class="n">id</span><span class="p">][</span><span class="mi">1</span><span class="p">])</span>
+            <span class="n">labels</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">boxes_tracked</span><span class="p">[</span><span class="n">box</span><span class="o">.</span><span class="n">track</span><span class="o">.</span><span class="n">id</span><span class="p">][</span><span class="mi">0</span><span class="p">])</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">colors</span><span class="o">.</span><span class="n">append</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="mi">255</span><span class="p">,</span><span class="mi">0</span><span class="p">])</span>
+            <span class="n">labels</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">box</span><span class="o">.</span><span class="n">label</span><span class="p">)</span>
+        <span class="n">centers</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="nb">int</span><span class="p">(</span><span class="n">box</span><span class="o">.</span><span class="n">center_x</span> <span class="o">*</span> <span class="n">frame_size</span><span class="p">[</span><span class="mi">0</span><span class="p">]),</span> <span class="nb">int</span><span class="p">(</span><span class="n">box</span><span class="o">.</span><span class="n">center_y</span> <span class="o">*</span> <span class="n">frame_size</span><span class="p">[</span><span class="mi">1</span><span class="p">])))</span>
+        <span class="n">sizes</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="nb">int</span><span class="p">(</span><span class="n">box</span><span class="o">.</span><span class="n">width</span> <span class="o">*</span> <span class="n">frame_size</span><span class="p">[</span><span class="mi">0</span><span class="p">]),</span> <span class="nb">int</span><span class="p">(</span><span class="n">box</span><span class="o">.</span><span class="n">height</span> <span class="o">*</span> <span class="n">frame_size</span><span class="p">[</span><span class="mi">1</span><span class="p">])))</span>
+    <span class="n">rr</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="s2">&quot;/camera/boxes&quot;</span><span class="p">,</span> <span class="n">rr</span><span class="o">.</span><span class="n">Boxes2D</span><span class="p">(</span><span class="n">centers</span><span class="o">=</span><span class="n">centers</span><span class="p">,</span> <span class="n">sizes</span><span class="o">=</span><span class="n">sizes</span><span class="p">,</span> <span class="n">labels</span><span class="o">=</span><span class="n">labels</span><span class="p">,</span> <span class="n">colors</span><span class="o">=</span><span class="n">colors</span><span class="p">))</span>
+</code></pre></div>
+</div>
+</div>
+</div>
+<h4 id="mask-handler">Mask Handler</h4>
+<p>The Mask callback will wait for a Mask message from the MessageDrain and will pass that message to the worker, where the message will be processed and logged to Rerun. The mask_handler requires the remote field to be passed so it knows whether to decompress the mask data or not. Additionally, this handler will wait until the camera has started and logged a frame size so it knows what the height and width will be to resize the mask.</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="18:1"><input checked="checked" id="__tabbed_18_1" name="__tabbed_18" type="radio" /><div class="tabbed-labels"><label for="__tabbed_18_1">Python</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">mask_handler</span><span class="p">(</span><span class="n">drain</span><span class="p">,</span> <span class="n">frame_storage</span><span class="p">,</span> <span class="n">remote</span><span class="p">):</span>
+    <span class="n">_</span> <span class="o">=</span> <span class="k">await</span> <span class="n">frame_storage</span><span class="o">.</span><span class="n">get</span><span class="p">()</span>
+    <span class="n">rr</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="s2">&quot;/&quot;</span><span class="p">,</span> <span class="n">rr</span><span class="o">.</span><span class="n">AnnotationContext</span><span class="p">([(</span><span class="mi">0</span><span class="p">,</span> <span class="s2">&quot;background&quot;</span><span class="p">,</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)),</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="s2">&quot;person&quot;</span><span class="p">,</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">255</span><span class="p">,</span> <span class="mi">0</span><span class="p">))]))</span>
+    <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+        <span class="n">msg</span> <span class="o">=</span> <span class="k">await</span> <span class="n">drain</span><span class="o">.</span><span class="n">get_latest</span><span class="p">()</span>
+        <span class="n">frame_size</span> <span class="o">=</span> <span class="k">await</span> <span class="n">frame_storage</span><span class="o">.</span><span class="n">get</span><span class="p">()</span>
+        <span class="n">thread</span> <span class="o">=</span> <span class="n">threading</span><span class="o">.</span><span class="n">Thread</span><span class="p">(</span><span class="n">target</span><span class="o">=</span><span class="n">mask_worker</span><span class="p">,</span> <span class="n">args</span><span class="o">=</span><span class="p">[</span><span class="n">msg</span><span class="p">,</span> <span class="n">frame_size</span><span class="p">,</span> <span class="n">remote</span><span class="p">])</span>
+        <span class="n">thread</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
+
+        <span class="k">while</span> <span class="n">thread</span><span class="o">.</span><span class="n">is_alive</span><span class="p">():</span>
+            <span class="k">await</span> <span class="n">asyncio</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mf">0.001</span><span class="p">)</span>
+        <span class="n">thread</span><span class="o">.</span><span class="n">join</span><span class="p">()</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">mask_worker</span><span class="p">(</span><span class="n">msg</span><span class="p">,</span> <span class="n">frame_size</span><span class="p">,</span> <span class="n">remote</span><span class="p">):</span>
     <span class="n">mask</span> <span class="o">=</span> <span class="n">Mask</span><span class="o">.</span><span class="n">deserialize</span><span class="p">(</span><span class="n">msg</span><span class="o">.</span><span class="n">payload</span><span class="o">.</span><span class="n">to_bytes</span><span class="p">())</span>
-    <span class="n">decoded_array</span> <span class="o">=</span> <span class="n">zstd</span><span class="o">.</span><span class="n">decompress</span><span class="p">(</span><span class="nb">bytes</span><span class="p">(</span><span class="n">mask</span><span class="o">.</span><span class="n">mask</span><span class="p">))</span>
-    <span class="n">np_arr</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">frombuffer</span><span class="p">(</span><span class="n">decoded_array</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">uint8</span><span class="p">)</span>
-    <span class="n">np_arr</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">np_arr</span><span class="p">,</span> <span class="p">[</span><span class="n">mask</span><span class="o">.</span><span class="n">height</span><span class="p">,</span> <span class="n">mask</span><span class="o">.</span><span class="n">width</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">])</span>
+    <span class="k">if</span> <span class="n">remote</span><span class="p">:</span>
+        <span class="n">decoded_array</span> <span class="o">=</span> <span class="n">zstd</span><span class="o">.</span><span class="n">decompress</span><span class="p">(</span><span class="nb">bytes</span><span class="p">(</span><span class="n">mask</span><span class="o">.</span><span class="n">mask</span><span class="p">))</span>
+        <span class="n">np_arr</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">frombuffer</span><span class="p">(</span><span class="n">decoded_array</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">uint8</span><span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">mask</span><span class="o">.</span><span class="n">height</span><span class="p">,</span> <span class="n">mask</span><span class="o">.</span><span class="n">width</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">np_arr</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">mask</span><span class="o">.</span><span class="n">mask</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">uint8</span><span class="p">)</span>
+        <span class="n">np_arr</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">np_arr</span><span class="p">,</span> <span class="p">[</span><span class="n">mask</span><span class="o">.</span><span class="n">height</span><span class="p">,</span> <span class="n">mask</span><span class="o">.</span><span class="n">width</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">])</span>
     <span class="n">np_arr</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">resize</span><span class="p">(</span><span class="n">np_arr</span><span class="p">,</span> <span class="n">frame_size</span><span class="p">)</span>
     <span class="n">np_arr</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">argmax</span><span class="p">(</span><span class="n">np_arr</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
-    <span class="n">rr</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="s2">&quot;/&quot;</span><span class="p">,</span> <span class="n">rr</span><span class="o">.</span><span class="n">AnnotationContext</span><span class="p">([(</span><span class="mi">0</span><span class="p">,</span> <span class="s2">&quot;background&quot;</span><span class="p">,</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">)),</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="s2">&quot;person&quot;</span><span class="p">,</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">255</span><span class="p">,</span><span class="mi">0</span><span class="p">))]))</span>
-    <span class="n">rr</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="s2">&quot;camera/mask&quot;</span><span class="p">,</span> <span class="n">rr</span><span class="o">.</span><span class="n">SegmentationImage</span><span class="p">(</span><span class="n">np_arr</span><span class="p">))</span>
+
+    <span class="n">rr</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="s2">&quot;/camera/mask&quot;</span><span class="p">,</span> <span class="n">rr</span><span class="o">.</span><span class="n">SegmentationImage</span><span class="p">(</span><span class="n">np_arr</span><span class="p">))</span>
 </code></pre></div>
 </div>
 </div>

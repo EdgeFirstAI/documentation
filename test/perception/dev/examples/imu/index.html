@@ -2964,18 +2964,18 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#decode-imu-data" class="md-nav__link">
+  <a href="#receive-the-message" class="md-nav__link">
     <span class="md-ellipsis">
-      Decode IMU Data
+      Receive the Message
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#get-imu-values-and-post-to-rerun" class="md-nav__link">
+  <a href="#process-the-imu-data" class="md-nav__link">
     <span class="md-ellipsis">
-      Get IMU Values and Post to Rerun
+      Process the IMU Data
     </span>
   </a>
   
@@ -4026,18 +4026,18 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#decode-imu-data" class="md-nav__link">
+  <a href="#receive-the-message" class="md-nav__link">
     <span class="md-ellipsis">
-      Decode IMU Data
+      Receive the Message
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#get-imu-values-and-post-to-rerun" class="md-nav__link">
+  <a href="#process-the-imu-data" class="md-nav__link">
     <span class="md-ellipsis">
-      Get IMU Values and Post to Rerun
+      Process the IMU Data
     </span>
   </a>
   
@@ -4077,8 +4077,14 @@ Message: <a href="../../../api/sensor_msgs/#imu">Imu</a></p>
 <div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">Python</label><label for="__tabbed_1_2">Rust</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="c1"># Create a subscriber for &quot;rt/imu&quot;</span>
-<span class="n">subscriber</span> <span class="o">=</span> <span class="n">session</span><span class="o">.</span><span class="n">declare_subscriber</span><span class="p">(</span><span class="s1">&#39;rt/imu&#39;</span><span class="p">,</span> <span class="n">imu_listener</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="c1"># Log the initial orientation</span>
+<span class="n">rr</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="s2">&quot;/imu&quot;</span><span class="p">,</span> <span class="n">rr</span><span class="o">.</span><span class="n">Boxes3D</span><span class="p">(</span><span class="n">half_sizes</span><span class="o">=</span><span class="p">[[</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">]],</span> <span class="n">fill_mode</span><span class="o">=</span><span class="s2">&quot;solid&quot;</span><span class="p">))</span>
+<span class="n">rr</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="s2">&quot;/imu&quot;</span><span class="p">,</span> <span class="n">rr</span><span class="o">.</span><span class="n">Transform3D</span><span class="p">(</span><span class="n">axis_length</span><span class="o">=</span><span class="mi">2</span><span class="p">))</span>
+
+<span class="c1"># Create a subscriber for &quot;rt/imu&quot;</span>
+<span class="n">loop</span> <span class="o">=</span> <span class="n">asyncio</span><span class="o">.</span><span class="n">get_running_loop</span><span class="p">()</span>
+<span class="n">drain</span> <span class="o">=</span> <span class="n">MessageDrain</span><span class="p">(</span><span class="n">loop</span><span class="p">)</span>
+<span class="n">session</span><span class="o">.</span><span class="n">declare_subscriber</span><span class="p">(</span><span class="s1">&#39;rt/imu&#39;</span><span class="p">,</span> <span class="n">drain</span><span class="o">.</span><span class="n">callback</span><span class="p">)</span>
 </code></pre></div>
 </div>
 <div class="tabbed-block">
@@ -4090,14 +4096,20 @@ Message: <a href="../../../api/sensor_msgs/#imu">Imu</a></p>
 </div>
 </div>
 </div>
-<h3 id="decode-imu-data">Decode IMU Data</h3>
+<h3 id="receive-the-message">Receive the Message</h3>
 <p>We can now recieve message on the subcriber. After recieving the message, we will need to deserialize it.</p>
 <div class="tabbed-set tabbed-alternate" data-tabs="2:2"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><input id="__tabbed_2_2" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="__tabbed_2_1">Python</label><label for="__tabbed_2_2">Rust</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">edgefirst.schemas.sensor_msgs</span><span class="w"> </span><span class="kn">import</span> <span class="n">Imu</span>
-<span class="n">msg</span> <span class="o">=</span> <span class="n">subscriber</span><span class="o">.</span><span class="n">recv</span><span class="p">()</span>
-<span class="n">imu</span> <span class="o">=</span> <span class="n">Imu</span><span class="o">.</span><span class="n">deserialize</span><span class="p">(</span><span class="n">msg</span><span class="o">.</span><span class="n">payload</span><span class="o">.</span><span class="n">to_bytes</span><span class="p">())</span>
+<div class="highlight"><pre><span></span><code><span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">imu_handler</span><span class="p">(</span><span class="n">drain</span><span class="p">):</span>
+    <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+        <span class="n">msg</span> <span class="o">=</span> <span class="k">await</span> <span class="n">drain</span><span class="o">.</span><span class="n">get_latest</span><span class="p">()</span>
+        <span class="n">thread</span> <span class="o">=</span> <span class="n">threading</span><span class="o">.</span><span class="n">Thread</span><span class="p">(</span><span class="n">target</span><span class="o">=</span><span class="n">imu_worker</span><span class="p">,</span> <span class="n">args</span><span class="o">=</span><span class="p">[</span><span class="n">msg</span><span class="p">])</span>
+        <span class="n">thread</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
+
+        <span class="k">while</span> <span class="n">thread</span><span class="o">.</span><span class="n">is_alive</span><span class="p">():</span>
+            <span class="k">await</span> <span class="n">asyncio</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mf">0.001</span><span class="p">)</span>
+        <span class="n">thread</span><span class="o">.</span><span class="n">join</span><span class="p">()</span>
 </code></pre></div>
 </div>
 <div class="tabbed-block">
@@ -4109,17 +4121,20 @@ Message: <a href="../../../api/sensor_msgs/#imu">Imu</a></p>
 </div>
 </div>
 </div>
-<h3 id="get-imu-values-and-post-to-rerun">Get IMU Values and Post to Rerun</h3>
+<h3 id="process-the-imu-data">Process the IMU Data</h3>
 <p>We will now pull out the IMU data from the decoded Imu message and send the quaternion to Rerun.</p>
 <div class="tabbed-set tabbed-alternate" data-tabs="3:2"><input checked="checked" id="__tabbed_3_1" name="__tabbed_3" type="radio" /><input id="__tabbed_3_2" name="__tabbed_3" type="radio" /><div class="tabbed-labels"><label for="__tabbed_3_1">Python</label><label for="__tabbed_3_2">Rust</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="n">x</span> <span class="o">=</span> <span class="n">imu</span><span class="o">.</span><span class="n">orientation</span><span class="o">.</span><span class="n">x</span>
-<span class="n">y</span> <span class="o">=</span> <span class="n">imu</span><span class="o">.</span><span class="n">orientation</span><span class="o">.</span><span class="n">y</span>
-<span class="n">z</span> <span class="o">=</span> <span class="n">imu</span><span class="o">.</span><span class="n">orientation</span><span class="o">.</span><span class="n">z</span>
-<span class="n">w</span> <span class="o">=</span> <span class="n">imu</span><span class="o">.</span><span class="n">orientation</span><span class="o">.</span><span class="n">w</span>
-<span class="c1"># print(&quot;X: %.4f Y: %.4f Z: %.4f W: %.4f&quot; % (x, y, z, w))</span>
-<span class="n">rr</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="s2">&quot;box&quot;</span><span class="p">,</span> <span class="n">rr</span><span class="o">.</span><span class="n">Transform3D</span><span class="p">(</span><span class="n">clear</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">quaternion</span><span class="o">=</span><span class="n">Quaternion</span><span class="p">(</span><span class="n">xyzw</span><span class="o">=</span><span class="p">[</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="n">z</span><span class="p">,</span><span class="n">w</span><span class="p">])))</span>
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">imu_worker</span><span class="p">(</span><span class="n">msg</span><span class="p">):</span>
+    <span class="n">imu</span> <span class="o">=</span> <span class="n">Imu</span><span class="o">.</span><span class="n">deserialize</span><span class="p">(</span><span class="n">msg</span><span class="o">.</span><span class="n">payload</span><span class="o">.</span><span class="n">to_bytes</span><span class="p">())</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">imu</span><span class="o">.</span><span class="n">orientation</span><span class="o">.</span><span class="n">x</span>
+    <span class="n">y</span> <span class="o">=</span> <span class="n">imu</span><span class="o">.</span><span class="n">orientation</span><span class="o">.</span><span class="n">y</span>
+    <span class="n">z</span> <span class="o">=</span> <span class="n">imu</span><span class="o">.</span><span class="n">orientation</span><span class="o">.</span><span class="n">z</span>
+    <span class="n">w</span> <span class="o">=</span> <span class="n">imu</span><span class="o">.</span><span class="n">orientation</span><span class="o">.</span><span class="n">w</span>
+    <span class="n">rr</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="s2">&quot;/imu&quot;</span><span class="p">,</span>
+            <span class="n">rr</span><span class="o">.</span><span class="n">Transform3D</span><span class="p">(</span><span class="n">clear</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+                            <span class="n">quaternion</span><span class="o">=</span><span class="n">Quaternion</span><span class="p">(</span><span class="n">xyzw</span><span class="o">=</span><span class="p">[</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span><span class="p">,</span> <span class="n">w</span><span class="p">])))</span>
 </code></pre></div>
 </div>
 <div class="tabbed-block">

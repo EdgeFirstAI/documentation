@@ -2,6 +2,11 @@
 
 These examples demonstrate how to connect to various camera topics published on your EdgeFirst Platform and how to display the information through the command line.
 
+!!! warning
+
+    If the Rerun live feed appears to lag, your computer may lack the processing necessary for that stream size, either reduce the [stream size](../../../platforms/configuration.md#stream-size) or use the --save argument to save it as a .rrd file which you can replay afterwards
+
+
 ## Camera Info 
 Topic: [/camera/info](../../topics/camera.md#camerainfo)  
 Message: [Image](../../api/sensor_msgs.md#camerainfo)  
@@ -15,7 +20,9 @@ After setting up the Zenoh session, we will create a subscriber to the `camera/i
 
     ``` python
     # Create a subscriber for "rt/camera/info"
-    subscriber = session.declare_subscriber('rt/camera/info')
+    loop = asyncio.get_running_loop()
+    drain = MessageDrain(loop)
+    session.declare_subscriber('rt/camera/info', drain.callback)
     ```
 
 === "Rust"
@@ -30,14 +37,20 @@ After setting up the Zenoh session, we will create a subscriber to the `camera/i
 
 ### Receive a message
 
-We can now receive a message on the subscriber. After receiving the message, we will need to deserialize it.
+We can now await a message from that subscriber. After receiving the message, we will pass that message along to our processing function in a new thread to avoid missing messages.
 
 === "Python"
 
     ``` python
-    from edgefirst.schemas.sensor_msgs import CameraInfo
-    msg = subscriber.recv()
-    info = CameraInfo.deserialize(msg.payload.to_bytes())
+    async def info_handler(drain):
+        while True:
+            msg = await drain.get_latest()
+            thread = threading.Thread(target=info_worker, args=[msg])
+            thread.start()
+            
+            while thread.is_alive():
+                await asyncio.sleep(0.001)
+            thread.join()
     ```
 
 === "Rust"
@@ -50,17 +63,18 @@ We can now receive a message on the subscriber. After receiving the message, we 
     let info: CameraInfo = cdr::deserialize(&msg.payload().to_bytes())?;
     ```
 
-### Process and Log the Data
+### Process the Data
 
 The CameraInfo message contains camera calibration and configuration information. You can access various fields like:
 
 === "Python"
 
     ``` python
-    # Access camera parameters
-    width = info.width
-    height = info.height
-    rr.log("CameraInfo", rr.TextLog("Camera Width: %d Camera Height: %d" % (width, height)))
+    def info_worker(msg):
+        info = CameraInfo.deserialize(msg.payload.to_bytes())
+        width = info.width
+        height = info.height
+        rr.log("CameraInfo", rr.TextLog("Camera Width: %d Camera Height: %d" % (width, height)))
     ```
 
 ### Results
@@ -92,7 +106,9 @@ After setting up the Zenoh session, we will create a subscriber to the `camera/d
 
     ``` python
     # Create a subscriber for "rt/camera/dma"
-    subscriber = session.declare_subscriber('rt/camera/dma')
+    loop = asyncio.get_running_loop()
+    drain = MessageDrain(loop)
+    session.declare_subscriber('rt/camera/dma', drain.callback)
     ```
 
 === "Rust"
@@ -107,15 +123,20 @@ After setting up the Zenoh session, we will create a subscriber to the `camera/d
 
 ### Receive a message
 
-We can now receive a message on the subscriber. After receiving the message, we will need to deserialize it.
+We can now await a message from that subscriber. After receiving the message, we will pass that message along to our processing function in a new thread to avoid missing messages.
 
 === "Python"
 
     ``` python
-    from edgefirst.schemas.edgefirst_msgs import DmaBuffer
-    # Receive a message
-    msg = subscriber.recv()
-    dma_buf = DmaBuffer.deserialize(msg.payload.to_bytes())
+    async def dma_handler(drain):
+        while True:
+            msg = await drain.get_latest()
+            thread = threading.Thread(target=dma_worker, args=[msg])
+            thread.start()
+            
+            while thread.is_alive():
+                await asyncio.sleep(0.001)
+            thread.join()
     ```
 
 === "Rust"
@@ -127,25 +148,32 @@ We can now receive a message on the subscriber. After receiving the message, we 
     let dma_buf: DmaBuf = cdr::deserialize(&msg.payload().to_bytes()).unwrap();
     ```
 
-### Process and Log the Data
+### Process the Data
 
 The DmaBuffer message contains the process ID of the service that created the DMA buffer and the file descriptor of the DMA buffer, both of which will be necessary to access the image.
 
 === "Python"
 
     ``` python
-    pidfd = pidfd_open(dma_buf.pid)
-    fd = pidfd_getfd(pidfd, dma_buf.fd, GETFD_FLAGS)
+    def dma_worker(msg):
+        dma_buf = DmaBuffer.deserialize(msg.payload.to_bytes())
+        pidfd = pidfd_open(dma_buf.pid)
+        if pidfd < 0:
+            return
 
-    # Now fd can be used as a file descriptor
-    mm = mmap.mmap(fd, dma_buf.length)
-    rr.log("image", rr.Image(bytes=mm[:], 
-                             width=dma_buf.width, 
-                             height=dma_buf.height, 
-                             pixel_format=rr.PixelFormat.YUY2))
-    mm.close()
-    os.close(fd)
-    os.close(pidfd)
+        fd = pidfd_getfd(pidfd, dma_buf.fd, GETFD_FLAGS)
+        if fd < 0:
+            return
+
+        # Now fd can be used as a file descriptor
+        mm = mmap.mmap(fd, dma_buf.length)
+        rr.log("/camera", rr.Image(bytes=mm[:], 
+                                    width=dma_buf.width, 
+                                    height=dma_buf.height, 
+                                    pixel_format=rr.PixelFormat.YUY2))
+        mm.close()
+        os.close(fd)
+        os.close(pidfd)
     ```
 
 === "Rust"
@@ -192,15 +220,15 @@ Sample Code: [Python](https://github.com/EdgeFirstAI/samples/blob/main/python/ca
 
 ### Setting up subscriber
 
-After setting up the Zenoh session, we will create a subscriber to the `camera/h264` topic and initialize a container for the H264 feed
+After setting up the Zenoh session, we will create a subscriber to the `camera/h264` topic.
 
 === "Python"
 
     ``` python
     # Create a subscriber for "rt/camera/h264"
-    subscriber = session.declare_subscriber('rt/camera/h264')
-    raw_data = io.BytesIO()
-    container = av.open(raw_data, format='h264', mode='r')
+    loop = asyncio.get_running_loop()
+    drain = MessageDrain(loop)
+    session.declare_subscriber('rt/camera/h264', drain.callback)
     ```
 
 === "Rust"
@@ -217,14 +245,22 @@ After setting up the Zenoh session, we will create a subscriber to the `camera/h
 
 ### Receive a message
 
-We can now receive a message on the subscriber. After receiving the message, we will need to deserialize it.
+We can now await a message from that subscriber. After receiving the message, we will pass that message along to our processing function in a new thread to avoid missing messages.
 
 === "Python"
 
     ``` python
-    from edgefirst.schemas.foxglove_msgs import CompressedVideo
-    # Receive a message
-    msg = subscriber.recv()
+    async def h264_handler(drain):
+        raw_data = io.BytesIO()
+        container = av.open(raw_data, format='h264', mode='r')
+        while True:
+            msg = await drain.get_latest()
+            thread = threading.Thread(target=h264_worker, args=[msg, raw_data, container])
+            thread.start()
+            
+            while thread.is_alive():
+                await asyncio.sleep(0.001)
+            thread.join()
     ```
 
 === "Rust"
@@ -238,22 +274,25 @@ We can now receive a message on the subscriber. After receiving the message, we 
 
 ### Process and Log the Data
 
-The CompressedVideo message contains H.264 encoded video data. You can convert 
+The CompressedVideo message contains H.264 encoded video data. This data can be logged by the following
 
 === "Python"
 
     ``` python
-    raw_data.write(msg.payload.to_bytes())
-    raw_data.seek(0)
-    for packet in container.demux():
-        try:
-            if packet.size == 0:  # Skip empty packets
+    def h264_worker(msg, raw_data, container):
+        raw_data.write(msg.payload.to_bytes())
+        raw_data.seek(0)
+        for packet in container.demux():
+            try:
+                if packet.size == 0:
+                    continue
+                raw_data.seek(0)
+                raw_data.truncate(0)
+                for frame in packet.decode():
+                    frame_array = frame.to_ndarray(format='rgb24')
+                    rr.log('/camera', rr.Image(frame_array))
+            except Exception:
                 continue
-            raw_data.seek(0)
-            raw_data.truncate(0)
-            for frame in packet.decode():  # Decode video frames
-                frame_array = frame.to_ndarray(format='rgb24')  # Convert frame to numpy array
-                rr.log('image', rr.Image(frame_array))
     ```
 
 === "Rust"
@@ -292,7 +331,9 @@ After setting up the Zenoh session, we will create a subscriber to the `camera/j
 
     ``` python
     # Create a subscriber for "rt/camera/jpeg"
-    subscriber = session.declare_subscriber('rt/camera/jpeg')
+    loop = asyncio.get_running_loop()
+    drain = MessageDrain(loop)
+    session.declare_subscriber('rt/camera/jpeg', drain.callback)
     ```
 
 === "Rust"
@@ -307,17 +348,20 @@ After setting up the Zenoh session, we will create a subscriber to the `camera/j
 
 ### Receive a message
 
-We can now receive a message on the subscriber. After receiving the message, we will need to deserialize it.
+We can now await a message from that subscriber. After receiving the message, we will pass that message along to our processing function in a new thread to avoid missing messages.
 
 === "Python"
 
     ``` python
-    from edgefirst.schemas.sensor_msgs import CompressedImage
-
-    # Receive a message
-    msg = subscriber.recv()
-    # deserialize message
-    image = CompressedImage.deserialize(msg.payload.to_bytes())
+    async def jpeg_handler(drain):
+        while True:
+            msg = await drain.get_latest()
+            thread = threading.Thread(target=jpeg_worker, args=[msg])
+            thread.start()
+            
+            while thread.is_alive():
+                await asyncio.sleep(0.001)
+            thread.join()
     ```
 
 === "Rust"
@@ -329,17 +373,19 @@ We can now receive a message on the subscriber. After receiving the message, we 
     let msg = subscriber.recv().unwrap();
     ```
 
-### Process and Log the Data
+### Process the Data
 
 The CompressedImage message contains JPEG encoded image data. You can process the data with the following
 
 === "Python"
 
     ``` python
-    np_arr = np.frombuffer(bytearray(image.data), np.uint8)
-    im = cv2.imdecode(np_arr, cv2.IMREAD_COLOR)
-    im = cv2.cvtColor(im, cv2.COLOR_BGR2RGB)
-    rr.log('image', rr.Image(im))
+    def jpeg_worker(msg):
+        image = CompressedImage.deserialize(msg.payload.to_bytes())
+        np_arr = np.frombuffer(bytearray(image.data), np.uint8)
+        im = cv2.imdecode(np_arr, cv2.IMREAD_COLOR)
+        im = cv2.cvtColor(im, cv2.COLOR_BGR2RGB)
+        rr.log('/camera', rr.Image(im))
     ```
 
 === "Rust"

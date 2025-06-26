@@ -224,6 +224,10 @@ The EdgeFirst Studio Client provides a comprehensive set of commands for interac
   ```shell
   $ edgefirst-client find-datasets Playingcards --project-id 54
   ```
+- `download-dataset`: Downloads the dataset by specifying the dataset ID.
+  ```shell
+  $ edgefirst-client download-dataset 32
+  ```
 
 ### Annotation Management
 A single dataset is allowed to have multiple annotations sets. That is the reason why annotations are separated from `dataset-download` commands.
@@ -234,21 +238,30 @@ A single dataset is allowed to have multiple annotations sets. That is the reaso
   [1] Default Annotation Set
   [2] Validation Set
   ```
-- `annotations`: Retrieves annotations for a dataset and annotation set, filtered by types. Types could be any of the following options: `box2d`, `box3d`, `segmentation`. By default this command will return a JSON file. However, the user can always return an Arrow dataframe by adding the `--arrow` 
-  ```shell
-  $ edgefirst-client annotations 32 --types box2d
-  ...
-  "object_id": "605152ea-e681-4f02-a60a-a70e525e9acd",
-    "label_name": "suitcase",
-    "group": "train",
-    "box2d": {
-      "h": 0.21910417,
-      "w": 0.23835938,
-      "x": 0.69021099,
-      "y": 0.874552085
-    }
-  ...
-  ```
+- `annotations`: Retrieves annotations for a dataset and annotation set, filtered by types. Types could be any of the following options: `box2d`, `box3d`, `segmentation`. By default this command will return a JSON file. However, the user can always return an Arrow dataframe by adding the `--arrow` as shown below.
+
+=== "JSON"
+
+    ```shell
+    $ edgefirst-client annotations 32 --types box2d,segmentation
+    ...
+    "object_id": "605152ea-e681-4f02-a60a-a70e525e9acd",
+      "label_name": "suitcase",
+      "group": "train",
+      "box2d": {
+        "h": 0.21910417,
+        "w": 0.23835938,
+        "x": 0.69021099,
+        "y": 0.874552085
+      }
+    ...
+    ```
+
+=== "Arrow"
+
+    ```shell
+    edgefirst-client annotations 32 --arrow dataset.arrow --types box2d,segmentation
+    ```
 
 ### Snapshot Operations
 - `snapshots`: Lists available snapshots

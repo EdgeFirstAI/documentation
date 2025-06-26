@@ -184,7 +184,7 @@ When displaying the results through Rerun you will see the boxes without any cam
 ![alt text](assets/model_boxes2d.png)
 
 ### Box Tracking
-On your EdgeFirst Platform you can also allow tracking of the boxes and this can then be logged during the publishing of the boxes. The documentation for the settings to turn on tracking can be found [here](../../../platforms/configuration.md#track-settings). You can update your code to match the [tracked example](https://github.com/EdgeFirstAI/samples/blob/main/python/model/boxes2d_tracked.py) from the regular boxes2d example by changing the boxes2d_worker to the following.
+On your EdgeFirst Platform you can also allow tracking of the boxes and this can then be logged during the publishing of the boxes. The documentation for the settings to turn on tracking can be found [here](../../../platforms/configuration.md#track-settings). You can update your code to match the [Python example](https://github.com/EdgeFirstAI/samples/blob/main/python/model/boxes2d_tracked.py) or [Rust example](https://github.com/EdgeFirstAI/samples/blob/main/rust/model/boxes2d_tracked.rs) from the regular boxes2d example by changing the boxes2d_worker to the following.
 
 === "Python"
 
@@ -207,6 +207,48 @@ On your EdgeFirst Platform you can also allow tracking of the boxes and this can
             centers.append((box.center_x, box.center_y))
             sizes.append((box.width, box.height))
         rr.log("boxes", rr.Boxes2D(centers=centers, sizes=sizes, labels=labels, colors=colors))
+    ```
+
+=== "Rust"
+
+    ``` rust
+    let detection: Detect = cdr::deserialize(&msg.payload().to_bytes())?;
+    let mut centers = Vec::new();
+    let mut sizes = Vec::new();
+    let mut labels = Vec::new();
+    let mut colors = Vec::new();
+
+    for b in detection.boxes {
+        if !b.track.id.is_empty() {
+            // Insert into map if not already present
+            let entry = boxes_tracked.entry(b.track.id.clone()).or_insert_with(|| {
+                let mut rng_maker = rng();
+                let random_color = [
+                    rng_maker.random_range(0..=255),
+                    rng_maker.random_range(0..=255),
+                    rng_maker.random_range(0..=255),
+                ];
+                let short_id = &b.track.id[..6.min(b.track.id.len())];
+                let label = format!("{}: {}", b.label, short_id);
+                (label, random_color)
+            });
+
+            labels.push(entry.0.clone());
+            colors.push(entry.1);
+        } else {
+            labels.push(b.label.clone());
+            colors.push([0, 255, 0]);
+        }
+
+        centers.push([b.center_x, b.center_y]);
+        sizes.push([b.width, b.height]);
+    }
+
+    let boxes = Boxes2D::from_centers_and_sizes(centers, sizes)
+        .with_labels(labels)
+        .with_colors(colors);
+
+    rr.log("boxes", &boxes)?;
     ```
 
 The main adjustments are that a color will be specified and each tracked box will have its own color as well as that we will add in the unique ID for the box into the label. All of this is contingent on tracking being enabled. The following image is taken when applied to a combined example.

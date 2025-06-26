@@ -164,9 +164,6 @@ The `--autolabel` parameter currently supports [COCO labels](../datasets/zoo.md#
 <figcaption>Restore Snapshot Results</figcaption>
 </figure>
 
-!!! warning
-
-    Downloading datasets from EdgeFirst Studios using `edgefirst-client` is currently not supported because it requires AWS Credentials.
 
 ## Command Reference
 The EdgeFirst Studio Client provides a comprehensive set of commands for interacting with EdgeFirst Studio. Here's a detailed explanation of the available commands:

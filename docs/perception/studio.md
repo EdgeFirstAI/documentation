@@ -224,10 +224,6 @@ The EdgeFirst Studio Client provides a comprehensive set of commands for interac
   ```shell
   $ edgefirst-client find-datasets Playingcards --project-id 54
   ```
-- `download-dataset`: Downloads the dataset by specifying the dataset ID.
-  ```shell
-  $ edgefirst-client download-dataset 32
-  ```
 
 ### Annotation Management
 A single dataset is allowed to have multiple annotations sets. That is the reason why annotations are separated from `dataset-download` commands.

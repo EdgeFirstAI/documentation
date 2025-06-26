@@ -34,9 +34,6 @@ edgefirst-client --server <> login
 !!! note
     Specify the EdgeFirst Studio server among these variations: "test", "stage", "saas".  This is an optional parameter as the default is set to "saas". 
 
-Next download the dataset using edgefirst-client by following the commands shown
-for downloading the [dataset](../../../perception/studio.md#dataset-operations) and the [annotations](../../../perception/studio.md#annotation-management).
-
 Once the validator is installed and authenticated, run validation using the following command.
 
 ```shell

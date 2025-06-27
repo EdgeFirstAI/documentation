@@ -7,11 +7,6 @@ nav:
       - getting_started/workflows/index.md
       - getting_started/workflows/web.md
       - getting_started/workflows/edgefirst.md
-    - Model Tutorials:
-      - getting_started/models/index.md
-      - getting_started/models/training.md
-      - getting_started/models/validation.md
-      - getting_started/models/deployment.md
   - Studio:
     - studio/index.md
     - User Management:
@@ -48,7 +43,9 @@ nav:
         - models/modelpack/tutorials/measurement_tape.md
         - models/modelpack/tutorials/musicbox.md
       - models/modelpack/training.md
-      - models/modelpack/validation.md
+      - Validating ModelPack:
+        - models/modelpack/validation/managed.md
+        - models/modelpack/validation/user_managed.md
       - Deploying ModelPack:
         - models/modelpack/deployment/pc.md
         - models/modelpack/deployment/evk.md
@@ -59,8 +56,16 @@ nav:
       - models/fusion/validation.md
       - Deploying Fusion:
         - models/fusion/deployment/raivin.md
+    - Model Metrics:
+      - models/metrics/detection.md
+      - models/metrics/segmentation.md
+      - models/metrics/fusion.md
+    - Model Tutorials:
+      - models/tutorials/training.md
+      - models/tutorials/validation.md
+      - models/tutorials/deployment.md
+      # - models/tutorials/metadata.md
     - models/augmentations.md
-    - models/metrics.md
   - Perception:
     - perception/index.md
     - Dataset Collection Middleware:

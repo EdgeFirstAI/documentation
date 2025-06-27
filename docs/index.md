@@ -231,7 +231,7 @@ A completed training session will look like the following figure.
 
 Once the model is trained, you can now start validating the performance of the model to verify if the model is ready for deployment. 
 
-For instructions to validate a Vision model, please refer to the [Validating ModelPack Tutorial](models/modelpack/validation.md).
+For instructions to validate a Vision model, please refer to the [Validating ModelPack Tutorial](models/modelpack/validation/managed.md).
 
 Once the validation session completes, the metrics will be displayed like the following figure.
 

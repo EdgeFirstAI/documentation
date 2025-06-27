@@ -12,28 +12,28 @@
         <meta name="author" content="Au-Zone Technologies">
       
       
-        <link rel="canonical" href="https://doc.edgefirst.ai/test/getting_started/models/deployment/">
+        <link rel="canonical" href="https://doc.edgefirst.ai/test/models/modelpack/validation/user_managed/">
       
       
-        <link rel="prev" href="../validation/">
+        <link rel="prev" href="../managed/">
       
       
-        <link rel="next" href="../../../studio/">
+        <link rel="next" href="../../deployment/pc/">
       
       
-      <link rel="icon" href="../../../assets/favicon.png">
+      <link rel="icon" href="../../../../assets/favicon.png">
       <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.14">
     
     
       
-        <title>Model Deployment - EdgeFirst Studio Documentation</title>
+        <title>User Managed Validation - EdgeFirst Studio Documentation</title>
       
     
     
-      <link rel="stylesheet" href="../../../assets/stylesheets/main.342714a4.min.css">
+      <link rel="stylesheet" href="../../../../assets/stylesheets/main.342714a4.min.css">
       
         
-        <link rel="stylesheet" href="../../../assets/stylesheets/palette.06af60db.min.css">
+        <link rel="stylesheet" href="../../../../assets/stylesheets/palette.06af60db.min.css">
       
       
 
@@ -52,9 +52,9 @@
       
     
     
-      <link rel="stylesheet" href="../../../assets/_mkdocstrings.css">
+      <link rel="stylesheet" href="../../../../assets/_mkdocstrings.css">
     
-    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("../../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
   
@@ -90,7 +90,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#model-deployment" class="md-skip">
+        <a href="#user-managed-validation" class="md-skip">
           Skip to content
         </a>
       
@@ -110,9 +110,9 @@
 
 <header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href="../../.." title="EdgeFirst Studio Documentation" class="md-header__button md-logo" aria-label="EdgeFirst Studio Documentation" data-md-component="logo">
+    <a href="../../../.." title="EdgeFirst Studio Documentation" class="md-header__button md-logo" aria-label="EdgeFirst Studio Documentation" data-md-component="logo">
       
-  <img src="../../../assets/logo.png" alt="logo">
+  <img src="../../../../assets/logo.png" alt="logo">
 
     </a>
     <label class="md-header__button md-icon" for="__drawer">
@@ -129,7 +129,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Model Deployment
+              User Managed Validation
             
           </span>
         </div>
@@ -249,13 +249,11 @@
   
   
   
-    
-  
   
     
     
-      <li class="md-tabs__item md-tabs__item--active">
-        <a href="../../.." class="md-tabs__link">
+      <li class="md-tabs__item">
+        <a href="../../../.." class="md-tabs__link">
           
   
   
@@ -277,7 +275,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../../studio/" class="md-tabs__link">
+        <a href="../../../../studio/" class="md-tabs__link">
           
   
   
@@ -299,7 +297,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../../datasets/" class="md-tabs__link">
+        <a href="../../../../datasets/" class="md-tabs__link">
           
   
   
@@ -317,11 +315,13 @@
   
   
   
+    
+  
   
     
     
-      <li class="md-tabs__item">
-        <a href="../../../models/" class="md-tabs__link">
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../../../" class="md-tabs__link">
           
   
   
@@ -343,7 +343,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../../perception/" class="md-tabs__link">
+        <a href="../../../../perception/" class="md-tabs__link">
           
   
   
@@ -365,7 +365,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../../platforms/" class="md-tabs__link">
+        <a href="../../../../platforms/" class="md-tabs__link">
           
   
   
@@ -407,9 +407,9 @@
 
 <nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="../../.." title="EdgeFirst Studio Documentation" class="md-nav__button md-logo" aria-label="EdgeFirst Studio Documentation" data-md-component="logo">
+    <a href="../../../.." title="EdgeFirst Studio Documentation" class="md-nav__button md-logo" aria-label="EdgeFirst Studio Documentation" data-md-component="logo">
       
-  <img src="../../../assets/logo.png" alt="logo">
+  <img src="../../../../assets/logo.png" alt="logo">
 
     </a>
     EdgeFirst Studio Documentation
@@ -443,8 +443,6 @@
       
   
   
-    
-  
   
   
     
@@ -458,27 +456,22 @@
       
         
       
-        
-      
     
     
     
       
-        
-        
-      
       
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../.." class="md-nav__link ">
+            <a href="../../../.." class="md-nav__link ">
               
   
   
@@ -491,13 +484,13 @@
             </a>
             
               
-              <label class="md-nav__link " for="__nav_2" id="__nav_2_label" tabindex="">
+              <label class="md-nav__link " for="__nav_2" id="__nav_2_label" tabindex="0">
                 <span class="md-nav__icon md-icon"></span>
               </label>
             
           </div>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_2">
             <span class="md-nav__icon md-icon"></span>
             Getting Started
@@ -513,7 +506,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../studio/" class="md-nav__link">
+      <a href="../../../../getting_started/studio/" class="md-nav__link">
         
   
   
@@ -561,7 +554,7 @@
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../workflows/" class="md-nav__link ">
+            <a href="../../../../getting_started/workflows/" class="md-nav__link ">
               
   
   
@@ -596,7 +589,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../workflows/web/" class="md-nav__link">
+      <a href="../../../../getting_started/workflows/web/" class="md-nav__link">
         
   
   
@@ -619,7 +612,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../workflows/edgefirst/" class="md-nav__link">
+      <a href="../../../../getting_started/workflows/edgefirst/" class="md-nav__link">
         
   
   
@@ -630,207 +623,6 @@
   
 
       </a>
-    </li>
-  
-
-              
-            
-          </ul>
-        </nav>
-      
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-    
-  
-  
-  
-    
-    
-      
-        
-          
-        
-      
-        
-      
-        
-      
-        
-      
-    
-    
-    
-      
-      
-    
-    
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
-      
-        
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_4" checked>
-        
-          
-          <div class="md-nav__link md-nav__container">
-            <a href="../" class="md-nav__link ">
-              
-  
-  
-  <span class="md-ellipsis">
-    Model Tutorials
-    
-  </span>
-  
-
-            </a>
-            
-              
-              <label class="md-nav__link " for="__nav_2_4" id="__nav_2_4_label" tabindex="0">
-                <span class="md-nav__icon md-icon"></span>
-              </label>
-            
-          </div>
-        
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_4_label" aria-expanded="true">
-          <label class="md-nav__title" for="__nav_2_4">
-            <span class="md-nav__icon md-icon"></span>
-            Model Tutorials
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../training/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    Model Training
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../validation/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    Model Validation
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-    
-  
-  
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  
-  <span class="md-ellipsis">
-    Model Deployment
-    
-  </span>
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
-        
-  
-  
-  <span class="md-ellipsis">
-    Model Deployment
-    
-  </span>
-  
-
-      </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#modelpack" class="md-nav__link">
-    <span class="md-ellipsis">
-      ModelPack
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#fusion" class="md-nav__link">
-    <span class="md-ellipsis">
-      Fusion
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -891,7 +683,7 @@
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../../studio/" class="md-nav__link ">
+            <a href="../../../../studio/" class="md-nav__link ">
               
   
   
@@ -953,7 +745,7 @@
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../../studio/user/" class="md-nav__link ">
+            <a href="../../../../studio/user/" class="md-nav__link ">
               
   
   
@@ -988,7 +780,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../studio/user/profile/" class="md-nav__link">
+      <a href="../../../../studio/user/profile/" class="md-nav__link">
         
   
   
@@ -1011,7 +803,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../studio/user/organization/" class="md-nav__link">
+      <a href="../../../../studio/user/organization/" class="md-nav__link">
         
   
   
@@ -1034,7 +826,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../studio/user/billing/" class="md-nav__link">
+      <a href="../../../../studio/user/billing/" class="md-nav__link">
         
   
   
@@ -1065,7 +857,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../studio/navigation/" class="md-nav__link">
+      <a href="../../../../studio/navigation/" class="md-nav__link">
         
   
   
@@ -1088,7 +880,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../studio/projects/" class="md-nav__link">
+      <a href="../../../../studio/projects/" class="md-nav__link">
         
   
   
@@ -1136,7 +928,7 @@
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../../studio/datasets/" class="md-nav__link ">
+            <a href="../../../../studio/datasets/" class="md-nav__link ">
               
   
   
@@ -1171,7 +963,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../studio/datasets/gallery/" class="md-nav__link">
+      <a href="../../../../studio/datasets/gallery/" class="md-nav__link">
         
   
   
@@ -1194,7 +986,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../studio/datasets/annotations/" class="md-nav__link">
+      <a href="../../../../studio/datasets/annotations/" class="md-nav__link">
         
   
   
@@ -1225,7 +1017,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../studio/agtg/" class="md-nav__link">
+      <a href="../../../../studio/agtg/" class="md-nav__link">
         
   
   
@@ -1248,7 +1040,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../studio/snapshots/" class="md-nav__link">
+      <a href="../../../../studio/snapshots/" class="md-nav__link">
         
   
   
@@ -1305,7 +1097,7 @@
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../../datasets/" class="md-nav__link ">
+            <a href="../../../../datasets/" class="md-nav__link ">
               
   
   
@@ -1340,7 +1132,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../datasets/format/" class="md-nav__link">
+      <a href="../../../../datasets/format/" class="md-nav__link">
         
   
   
@@ -1363,7 +1155,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../datasets/structure/" class="md-nav__link">
+      <a href="../../../../datasets/structure/" class="md-nav__link">
         
   
   
@@ -1415,7 +1207,7 @@
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../../datasets/tutorials/" class="md-nav__link ">
+            <a href="../../../../datasets/tutorials/" class="md-nav__link ">
               
   
   
@@ -1450,7 +1242,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../datasets/tutorials/capture/" class="md-nav__link">
+      <a href="../../../../datasets/tutorials/capture/" class="md-nav__link">
         
   
   
@@ -1473,7 +1265,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../datasets/tutorials/annotations/" class="md-nav__link">
+      <a href="../../../../datasets/tutorials/annotations/" class="md-nav__link">
         
   
   
@@ -1496,7 +1288,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../datasets/tutorials/management/" class="md-nav__link">
+      <a href="../../../../datasets/tutorials/management/" class="md-nav__link">
         
   
   
@@ -1519,7 +1311,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../datasets/tutorials/import/" class="md-nav__link">
+      <a href="../../../../datasets/tutorials/import/" class="md-nav__link">
         
   
   
@@ -1554,6 +1346,8 @@
       
   
   
+    
+  
   
   
     
@@ -1571,22 +1365,27 @@
       
         
       
-    
-    
-    
-      
+        
       
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" checked>
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../../models/" class="md-nav__link ">
+            <a href="../../../" class="md-nav__link ">
               
   
   
@@ -1599,13 +1398,13 @@
             </a>
             
               
-              <label class="md-nav__link " for="__nav_5" id="__nav_5_label" tabindex="0">
+              <label class="md-nav__link " for="__nav_5" id="__nav_5_label" tabindex="">
                 <span class="md-nav__icon md-icon"></span>
               </label>
             
           </div>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_5">
             <span class="md-nav__icon md-icon"></span>
             Models
@@ -1618,6 +1417,8 @@
                 
   
   
+    
+  
   
   
     
@@ -1642,15 +1443,15 @@
       
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_2" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_2" checked>
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../../models/modelpack/" class="md-nav__link ">
+            <a href="../../" class="md-nav__link ">
               
   
   
@@ -1669,7 +1470,7 @@
             
           </div>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_2_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_2_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_5_2">
             <span class="md-nav__icon md-icon"></span>
             ModelPack
@@ -1710,7 +1511,7 @@
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../../models/modelpack/tutorials/" class="md-nav__link ">
+            <a href="../../tutorials/" class="md-nav__link ">
               
   
   
@@ -1745,7 +1546,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../models/modelpack/tutorials/measurement_tape/" class="md-nav__link">
+      <a href="../../tutorials/measurement_tape/" class="md-nav__link">
         
   
   
@@ -1768,7 +1569,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../models/modelpack/tutorials/musicbox/" class="md-nav__link">
+      <a href="../../tutorials/musicbox/" class="md-nav__link">
         
   
   
@@ -1799,7 +1600,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../models/modelpack/training/" class="md-nav__link">
+      <a href="../../training/" class="md-nav__link">
         
   
   
@@ -1819,11 +1620,33 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../../../models/modelpack/validation/" class="md-nav__link">
+  
+    
+    
+      
         
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_2_4" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_5_2_4" id="__nav_5_2_4_label" tabindex="0">
+            
   
   
   <span class="md-ellipsis">
@@ -1832,7 +1655,170 @@
   </span>
   
 
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_5_2_4_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_5_2_4">
+            <span class="md-nav__icon md-icon"></span>
+            Validating ModelPack
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../managed/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Managed Validation
+    
+  </span>
+  
+
       </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    User Managed Validation
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    User Managed Validation
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#specify-project-experiments" class="md-nav__link">
+    <span class="md-ellipsis">
+      Specify Project Experiments
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#create-validation-session" class="md-nav__link">
+    <span class="md-ellipsis">
+      Create Validation Session
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#session-progress" class="md-nav__link">
+    <span class="md-ellipsis">
+      Session Progress
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#completed-session" class="md-nav__link">
+    <span class="md-ellipsis">
+      Completed Session
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#validation-metrics" class="md-nav__link">
+    <span class="md-ellipsis">
+      Validation Metrics
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#comparing-metrics" class="md-nav__link">
+    <span class="md-ellipsis">
+      Comparing Metrics
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#next-steps" class="md-nav__link">
+    <span class="md-ellipsis">
+      Next Steps
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
     </li>
   
 
@@ -1894,7 +1880,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../models/modelpack/deployment/pc/" class="md-nav__link">
+      <a href="../../deployment/pc/" class="md-nav__link">
         
   
   
@@ -1917,7 +1903,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../models/modelpack/deployment/evk/" class="md-nav__link">
+      <a href="../../deployment/evk/" class="md-nav__link">
         
   
   
@@ -1940,7 +1926,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../models/modelpack/deployment/maivin/" class="md-nav__link">
+      <a href="../../deployment/maivin/" class="md-nav__link">
         
   
   
@@ -2006,7 +1992,7 @@
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../../models/fusion/" class="md-nav__link ">
+            <a href="../../../fusion/" class="md-nav__link ">
               
   
   
@@ -2041,7 +2027,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../models/fusion/training/" class="md-nav__link">
+      <a href="../../../fusion/training/" class="md-nav__link">
         
   
   
@@ -2064,7 +2050,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../models/fusion/validation/" class="md-nav__link">
+      <a href="../../../fusion/validation/" class="md-nav__link">
         
   
   
@@ -2132,7 +2118,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../models/fusion/deployment/raivin/" class="md-nav__link">
+      <a href="../../../fusion/deployment/raivin/" class="md-nav__link">
         
   
   
@@ -2170,13 +2156,62 @@
   
   
   
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_4" id="__nav_5_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Model Metrics
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_4">
+            <span class="md-nav__icon md-icon"></span>
+            Model Metrics
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
     <li class="md-nav__item">
-      <a href="../../../models/augmentations/" class="md-nav__link">
+      <a href="../../../metrics/detection/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
-    Vision Augmentations
+    Detection Metrics
     
   </span>
   
@@ -2194,12 +2229,192 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../models/metrics/" class="md-nav__link">
+      <a href="../../../metrics/segmentation/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
-    Validation Metrics
+    Segmentation Metrics
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../metrics/fusion/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Fusion Metrics
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_5" id="__nav_5_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Model Tutorials
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_5">
+            <span class="md-nav__icon md-icon"></span>
+            Model Tutorials
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../tutorials/training/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Training
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../tutorials/validation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Validation
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../tutorials/deployment/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Deployment
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../augmentations/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Vision Augmentations
     
   </span>
   
@@ -2257,7 +2472,7 @@
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../../perception/" class="md-nav__link ">
+            <a href="../../../../perception/" class="md-nav__link ">
               
   
   
@@ -2345,7 +2560,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../platforms/recording/" class="md-nav__link">
+      <a href="../../../../platforms/recording/" class="md-nav__link">
         
   
   
@@ -2368,7 +2583,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../platforms/replay/" class="md-nav__link">
+      <a href="../../../../platforms/replay/" class="md-nav__link">
         
   
   
@@ -2391,7 +2606,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../platforms/publishing/" class="md-nav__link">
+      <a href="../../../../platforms/publishing/" class="md-nav__link">
         
   
   
@@ -2414,7 +2629,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../platforms/foxglove/" class="md-nav__link">
+      <a href="../../../../platforms/foxglove/" class="md-nav__link">
         
   
   
@@ -2437,7 +2652,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../platforms/advanced_foxglove/" class="md-nav__link">
+      <a href="../../../../platforms/advanced_foxglove/" class="md-nav__link">
         
   
   
@@ -2468,7 +2683,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../perception/studio/" class="md-nav__link">
+      <a href="../../../../perception/studio/" class="md-nav__link">
         
   
   
@@ -2491,7 +2706,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../perception/launcher/" class="md-nav__link">
+      <a href="../../../../perception/launcher/" class="md-nav__link">
         
   
   
@@ -2573,7 +2788,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../perception/topics/" class="md-nav__link">
+      <a href="../../../../perception/topics/" class="md-nav__link">
         
   
   
@@ -2596,7 +2811,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../perception/topics/camera/" class="md-nav__link">
+      <a href="../../../../perception/topics/camera/" class="md-nav__link">
         
   
   
@@ -2619,7 +2834,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../perception/topics/fusion/" class="md-nav__link">
+      <a href="../../../../perception/topics/fusion/" class="md-nav__link">
         
   
   
@@ -2642,7 +2857,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../perception/topics/imu/" class="md-nav__link">
+      <a href="../../../../perception/topics/imu/" class="md-nav__link">
         
   
   
@@ -2665,7 +2880,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../perception/topics/lidar/" class="md-nav__link">
+      <a href="../../../../perception/topics/lidar/" class="md-nav__link">
         
   
   
@@ -2688,7 +2903,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../perception/topics/model/" class="md-nav__link">
+      <a href="../../../../perception/topics/model/" class="md-nav__link">
         
   
   
@@ -2711,7 +2926,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../perception/topics/navsat/" class="md-nav__link">
+      <a href="../../../../perception/topics/navsat/" class="md-nav__link">
         
   
   
@@ -2734,7 +2949,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../perception/topics/radar/" class="md-nav__link">
+      <a href="../../../../perception/topics/radar/" class="md-nav__link">
         
   
   
@@ -2812,7 +3027,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../perception/dev/" class="md-nav__link">
+      <a href="../../../../perception/dev/" class="md-nav__link">
         
   
   
@@ -2894,7 +3109,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../perception/dev/examples/camera/" class="md-nav__link">
+      <a href="../../../../perception/dev/examples/camera/" class="md-nav__link">
         
   
   
@@ -2917,7 +3132,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../perception/dev/examples/fusion/" class="md-nav__link">
+      <a href="../../../../perception/dev/examples/fusion/" class="md-nav__link">
         
   
   
@@ -2940,7 +3155,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../perception/dev/examples/gps/" class="md-nav__link">
+      <a href="../../../../perception/dev/examples/gps/" class="md-nav__link">
         
   
   
@@ -2963,7 +3178,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../perception/dev/examples/imu/" class="md-nav__link">
+      <a href="../../../../perception/dev/examples/imu/" class="md-nav__link">
         
   
   
@@ -2986,7 +3201,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../perception/dev/examples/lidar/" class="md-nav__link">
+      <a href="../../../../perception/dev/examples/lidar/" class="md-nav__link">
         
   
   
@@ -3009,7 +3224,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../perception/dev/examples/model/" class="md-nav__link">
+      <a href="../../../../perception/dev/examples/model/" class="md-nav__link">
         
   
   
@@ -3032,7 +3247,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../perception/dev/examples/pcd/" class="md-nav__link">
+      <a href="../../../../perception/dev/examples/pcd/" class="md-nav__link">
         
   
   
@@ -3055,7 +3270,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../perception/dev/examples/radar/" class="md-nav__link">
+      <a href="../../../../perception/dev/examples/radar/" class="md-nav__link">
         
   
   
@@ -3155,7 +3370,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../perception/api/" class="md-nav__link">
+      <a href="../../../../perception/api/" class="md-nav__link">
         
   
   
@@ -3178,7 +3393,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../perception/api/edgefirst_msgs/" class="md-nav__link">
+      <a href="../../../../perception/api/edgefirst_msgs/" class="md-nav__link">
         
   
   
@@ -3201,7 +3416,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../perception/api/foxglove_msgs/" class="md-nav__link">
+      <a href="../../../../perception/api/foxglove_msgs/" class="md-nav__link">
         
   
   
@@ -3224,7 +3439,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../perception/api/geometry_msgs/" class="md-nav__link">
+      <a href="../../../../perception/api/geometry_msgs/" class="md-nav__link">
         
   
   
@@ -3247,7 +3462,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../perception/api/nav_msgs/" class="md-nav__link">
+      <a href="../../../../perception/api/nav_msgs/" class="md-nav__link">
         
   
   
@@ -3270,7 +3485,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../perception/api/sensor_msgs/" class="md-nav__link">
+      <a href="../../../../perception/api/sensor_msgs/" class="md-nav__link">
         
   
   
@@ -3293,7 +3508,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../perception/api/std_msgs/" class="md-nav__link">
+      <a href="../../../../perception/api/std_msgs/" class="md-nav__link">
         
   
   
@@ -3316,7 +3531,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../perception/api/builtin_interfaces/" class="md-nav__link">
+      <a href="../../../../perception/api/builtin_interfaces/" class="md-nav__link">
         
   
   
@@ -3339,7 +3554,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../perception/api/studio/" class="md-nav__link">
+      <a href="../../../../perception/api/studio/" class="md-nav__link">
         
   
   
@@ -3406,7 +3621,7 @@
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../../platforms/" class="md-nav__link ">
+            <a href="../../../../platforms/" class="md-nav__link ">
               
   
   
@@ -3490,7 +3705,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../platforms/quickstart/" class="md-nav__link">
+      <a href="../../../../platforms/quickstart/" class="md-nav__link">
         
   
   
@@ -3513,7 +3728,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../platforms/walkthrough/" class="md-nav__link">
+      <a href="../../../../platforms/walkthrough/" class="md-nav__link">
         
   
   
@@ -3536,7 +3751,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../platforms/architecture/" class="md-nav__link">
+      <a href="../../../../platforms/architecture/" class="md-nav__link">
         
   
   
@@ -3616,7 +3831,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../platforms/hardware/" class="md-nav__link">
+      <a href="../../../../platforms/hardware/" class="md-nav__link">
         
   
   
@@ -3639,7 +3854,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../platforms/radar/" class="md-nav__link">
+      <a href="../../../../platforms/radar/" class="md-nav__link">
         
   
   
@@ -3662,7 +3877,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../platforms/lidar/" class="md-nav__link">
+      <a href="../../../../platforms/lidar/" class="md-nav__link">
         
   
   
@@ -3746,7 +3961,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../platforms/configuration/" class="md-nav__link">
+      <a href="../../../../platforms/configuration/" class="md-nav__link">
         
   
   
@@ -3769,7 +3984,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../platforms/model_uploads/" class="md-nav__link">
+      <a href="../../../../platforms/model_uploads/" class="md-nav__link">
         
   
   
@@ -3792,7 +4007,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../platforms/updates/" class="md-nav__link">
+      <a href="../../../../platforms/updates/" class="md-nav__link">
         
   
   
@@ -3815,7 +4030,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../platforms/release_notes/" class="md-nav__link">
+      <a href="../../../../platforms/release_notes/" class="md-nav__link">
         
   
   
@@ -3838,7 +4053,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../platforms/issues/" class="md-nav__link">
+      <a href="../../../../platforms/issues/" class="md-nav__link">
         
   
   
@@ -3916,7 +4131,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../platforms/networking/" class="md-nav__link">
+      <a href="../../../../platforms/networking/" class="md-nav__link">
         
   
   
@@ -3939,7 +4154,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../platforms/ssh/" class="md-nav__link">
+      <a href="../../../../platforms/ssh/" class="md-nav__link">
         
   
   
@@ -3997,18 +4212,63 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#modelpack" class="md-nav__link">
+  <a href="#specify-project-experiments" class="md-nav__link">
     <span class="md-ellipsis">
-      ModelPack
+      Specify Project Experiments
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#fusion" class="md-nav__link">
+  <a href="#create-validation-session" class="md-nav__link">
     <span class="md-ellipsis">
-      Fusion
+      Create Validation Session
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#session-progress" class="md-nav__link">
+    <span class="md-ellipsis">
+      Session Progress
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#completed-session" class="md-nav__link">
+    <span class="md-ellipsis">
+      Completed Session
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#validation-metrics" class="md-nav__link">
+    <span class="md-ellipsis">
+      Validation Metrics
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#comparing-metrics" class="md-nav__link">
+    <span class="md-ellipsis">
+      Comparing Metrics
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#next-steps" class="md-nav__link">
+    <span class="md-ellipsis">
+      Next Steps
     </span>
   </a>
   
@@ -4030,20 +4290,104 @@
 
 
 
-<h1 id="model-deployment">Model Deployment</h1>
-<p>There is support for model deployment on various platforms.  Deploying ModelPack requires an input image.  This could either be from an image file, video file, or live on a device with a camera.  Deploying Fusion requires an input image and an input Radar cube.  Currently deployment is supported on a Raivin which contains a camera and a Radar module. </p>
-<h2 id="modelpack">ModelPack</h2>
-<p>You can find examples and tutorials for deploying ModelPack on various platforms.  </p>
-<ol>
-<li><a href="../../../models/modelpack/deployment/pc/">Deploying to the PC</a></li>
-<li><a href="../../../models/modelpack/deployment/evk/">Deploying to the EVK</a></li>
-<li><a href="../../../models/modelpack/deployment/maivin/">Deploying to the Maivin</a></li>
-</ol>
-<h2 id="fusion">Fusion</h2>
-<p>The deployment of Fusion models is currently only supported in Raivin platforms. </p>
-<ol>
-<li><a href="../../../models/fusion/deployment/raivin/">Deploying to the Raivin</a></li>
-</ol>
+<h1 id="user-managed-validation">User Managed Validation</h1>
+<p>This tutorial will describe the steps to validate the performance of <strong>ModelPack Vision</strong> models as user-managed sessions in EdgeFirst Studio that have been trained through the <a href="../../../../getting_started/workflows/">end-to-end worklows</a> or <a href="../../training/">Training ModelPack</a>.  A user-managed validation session is hosted in an embedded platform for a proper measurement of the model inference times when deployed on target.  A <a href="../managed/">managed validation</a> session creates an EC2 server to deploy the model for validation.</p>
+<h3 id="specify-project-experiments">Specify Project Experiments</h3>
+<p>From the projects page, choose the project that contains the training session with the models you want to validate.  In this example, the project chosen is the "Object Detection" project that was created in the <a href="../../../../#create-project">Quickstart Guide</a>.  Next click the "Model Experiments" button as indicated in red.</p>
+<figure>
+<img align="center" alt="Model Experiments" src="../../../assets/training/modelpack-model-experiments.jpg" />
+
+<figcaption>Model Experiments</figcaption>
+</figure>
+<h3 id="create-validation-session">Create Validation Session</h3>
+<p>In the experiment card, click the "Validate Sessions" button as indicated in red below.</p>
+<figure>
+<img align="center" alt="Validate Sessions" src="../../../assets/validation/modelpack-validation-sessions.jpg" />
+
+<figcaption>Validate Sessions</figcaption>
+</figure>
+<p>You will be greeted to the "Validate Sessions" page as shown below. </p>
+<figure>
+<img align="center" alt="Validate Sessions Page" src="../../../assets/validation/modelpack-validation-sessions-page.jpg" />
+
+<figcaption>Validate Sessions Page</figcaption>
+</figure>
+<p>Start a validation session by clicking on the "New Session" button on the top right corner of the page. </p>
+<figure>
+<img align="center" alt="New Session Button" src="../../../assets/training/new-session-button.jpg" />
+
+<figcaption>New Session Button</figcaption>
+</figure>
+<p>You will be greeted with the validation session configuration window.  In this window, specify the "User Managed Validator" to true as shown in red. Next specify the name of the validation session, the model to validate, and the dataset to deploy.  In this example, the TFLite model will be validated and the "Coffee Cup" dataset with the validation partition will be used.  Next specify, the validation parameters on the right.  Additional information on these parameters are provided by hovering over the info buttons as indicated in red below. </p>
+<figure>
+<img align="center" alt="Validation Session Fields" src="../../../assets/validation/user-managed-modelpack-session-fields.jpg" />
+
+<figcaption>Validation Session Fields</figcaption>
+</figure>
+<p>Once the configurations have been made, go ahead and click on the "Start Session" button on the bottom right of the window.  This will create the validation session to track validation progress that will run in the embedded platform. </p>
+<h2 id="session-progress">Session Progress</h2>
+<p>Once the validation session has been created, <a href="../../../../platforms/ssh/">SSH</a> into the platform and install the following dependencies. </p>
+<div class="admonition warning">
+<p class="admonition-title">Virtual Environment</p>
+<p>To avoid reinstallation of existing system packages, we recommend setting up a python virtual environment
+prior to running the pip installations below.</p>
+</div>
+<div class="highlight"><pre><span></span><code>pip<span class="w"> </span>install<span class="w"> </span>edgefirst-validator
+</code></pre></div>
+<p>Next login to your account in EdgeFirst Studio by using the <a href="../../../../perception/studio/">EdgeFirst Client</a> which comes installed with the validator package. The command below will prompt you to enter your EdgeFirst Studio credentials. </p>
+<div class="highlight"><pre><span></span><code>edgefirst-client --server &lt;&gt; login
+</code></pre></div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Specify the EdgeFirst Studio server among these variations: "test", "stage", "saas".  This is an optional parameter as the default is set to "saas". </p>
+</div>
+<p>Once the validator is installed and authenticated, run validation using the following command.</p>
+<div class="highlight"><pre><span></span><code>edgefirst-validator<span class="w"> </span>--session-id<span class="w"> </span>v-800
+</code></pre></div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Replace the session ID parameter specific to the validation session ID in your project.</p>
+</div>
+<p>Once entered, the following validation progress should now be indicated in EdgeFirst Studio as shown below.</p>
+<figure>
+<img align="center" alt="Validation Session" src="../../../assets/validation/user-managed-modelpack-session-progress.jpg" />
+
+<figcaption>Validation Session</figcaption>
+</figure>
+<h2 id="completed-session">Completed Session</h2>
+<p>The completed session will look as follows with the status set to "Complete".</p>
+<figure>
+<img align="center" alt="Completed Session" src="../../../assets/validation/user-managed-modelpack-completed-session.jpg" />
+
+<figcaption>Completed Session</figcaption>
+</figure>
+<p>The attributes of the validation session are labeled below.</p>
+<figure>
+<img align="center" alt="Validation Session Attributes" src="../../../assets/validation/validation-session-attributes.jpg" />
+
+<figcaption>Validation Session Attributes</figcaption>
+</figure>
+<h2 id="validation-metrics">Validation Metrics</h2>
+<p>Once the validation session completes, you can view the validation metrics by clicking the "View Validation Charts" button on the top of the session card.</p>
+<figure>
+<img align="center" alt="Validation Charts" src="../../../assets/validation/modelpack-charts.jpg" />
+
+<figcaption>Validation Charts</figcaption>
+</figure>
+<div class="admonition info">
+<p class="admonition-title">Info</p>
+<p>See <a href="../../../metrics/detection/">detection</a> and <a href="../../../metrics/segmentation/">segmentation</a> metrics for further details.</p>
+</div>
+<p>You can go back to the validation session card by pressing the "Back" button as indicated in red below on the top left corner of the page. </p>
+<figure>
+<img align="center" alt="Back to the Session Card" src="../../../assets/validation/back-button.jpg" />
+
+<figcaption>Back to the Session Card</figcaption>
+</figure>
+<h2 id="comparing-metrics">Comparing Metrics</h2>
+<p>It is also possible to compare validation metrics for multiple sessions.  See <a href="../../../../getting_started/studio/#validation-sessions">Validation Sessions</a> in EdgeFirst Studio Overview for further details. </p>
+<h2 id="next-steps">Next Steps</h2>
+<p>Now that you have validated your Vision model, you can find examples for deploying your model in the <a href="../../deployment/pc/">PC</a>, in the <a href="../../deployment/evk/">EVK</a>, and in the <a href="../../deployment/maivin/">Maivin Platform</a>. </p>
 
 
 
@@ -4219,10 +4563,10 @@
     
     
       
-      <script id="__config" type="application/json">{"base": "../../..", "features": ["content.code.copy", "content.tabs.link", "navigation.tracking", "navigation.tabs", "navigation.tabs.sticky", "navigation.path", "navigation.indexes", "navigation.top", "toc.follow"], "search": "../../../assets/javascripts/workers/search.d50fe291.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"alias": true, "default": "latest", "provider": "mike"}}</script>
+      <script id="__config" type="application/json">{"base": "../../../..", "features": ["content.code.copy", "content.tabs.link", "navigation.tracking", "navigation.tabs", "navigation.tabs.sticky", "navigation.path", "navigation.indexes", "navigation.top", "toc.follow"], "search": "../../../../assets/javascripts/workers/search.d50fe291.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"alias": true, "default": "latest", "provider": "mike"}}</script>
     
     
-      <script src="../../../assets/javascripts/bundle.13a4f30d.min.js"></script>
+      <script src="../../../../assets/javascripts/bundle.13a4f30d.min.js"></script>
       
         <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
       

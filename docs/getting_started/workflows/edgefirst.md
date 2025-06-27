@@ -8,8 +8,7 @@ This workflow is a tutorial for showing the process of recording data from scrat
 in EdgeFirst Studio from a PC, training and validating models, and then finally deploying models in an EdgeFirst Platform. 
 
 !!! note
-    This tutorial will provide examples on training, validating, and deploying
-    *Vision models* described in [ModelPack Tutorials](../models/index.md#modelpack). For tutorials on training, validating, and deploying *Fusion models*, visit [Sensor Fusion Tutorials](../models/index.md#fusion).
+    This tutorial will provide examples on training, validating, and deploying *Vision models* described in [ModelPack Tutorials](../../models/index.md). 
 
 If you have an EdgeFirst Platform, please proceed to step 1. Otherwise, proceed to step 5 for using a provided public dataset. However, feel free to follow along all the steps laid out to become familiar with the workflow.
 
@@ -62,7 +61,7 @@ Since the dataset provided in the demo contains 2D annotations (bounding boxes a
 
 Once the model is trained, you can now start validating the performance of the model to verify if the model is ready for deployment. 
 
-For instructions to validate a Vision model, please refer to the [Validating ModelPack Tutorial](../../models/modelpack/validation.md). For instructions to validate a Fusion model, please refer to the [Validating Fusion Tutorial](../../models/fusion/validation.md).
+For instructions to validate a Vision model, please refer to the [Validating ModelPack Tutorial](../../models/modelpack/validation/user_managed.md). For instructions to validate a Fusion model, please refer to the [Validating Fusion Tutorial](../../models/fusion/validation.md).
 
 ### 9. Deploy Model
 

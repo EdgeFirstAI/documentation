@@ -1,6 +1,6 @@
 # Validating Fusion Models
 
-This tutorial will describe the steps to validate the performance of **Fusion** models in EdgeFirst Studio that have been trained through the [end-to-end workflows](../../getting_started/workflows/index.md) or [Training Fusion](training.md).  For a tutorial to validate ModelPack Vision models, see [Validating ModelPack](../modelpack/validation.md).
+This tutorial will describe the steps to validate the performance of **Fusion** models in EdgeFirst Studio that have been trained through the [end-to-end workflows](../../getting_started/workflows/index.md) or [Training Fusion](training.md).  For a tutorial to validate ModelPack Vision models, see [Validating ModelPack](../tutorials/validation.md).
 
 <div style="text-align: center;">
     <iframe width="560" height="315" src="https://www.youtube.com/embed/oKh4k0CCLmU" title="Fusion Validation Workflow" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
@@ -96,7 +96,8 @@ Once the validation session completes, you can view the validation metrics by cl
 The metrics provides the precision, recall, F1, and IoU scores of the model at the specified window sizes.  Additional charts are provided for the precision vs. recall and bird’s eye view 
 heatmaps describing where the model performs well and where the model makes errors.  
 
-See [Validation Metrics](../metrics.md#modelpack) for further details.
+!!! info
+    See [Fusion Metrics](../metrics/fusion.md) for further details.
 
 You can go back to the validation session card by pressing the "Back" button as indicated in red below on the top left corner of the page. 
 
@@ -111,7 +112,7 @@ You can go back to the validation session card by pressing the "Back" button as 
     <iframe width="560" height="315" src="https://www.youtube.com/embed/oKh4k0CCLmU?start=713&end=975" title="Comparing Validation Metrics" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 </div>
 
-It is also possible to compare validation metrics for multiple sessions.  See [Validation Sessions](../../getting_started/studio.md#validation-sessions) in the EdgeFirst Studio Overview for further details. 
+It is also possible to compare validation metrics for multiple sessions.  See [Validation Sessions](../../getting_started/studio.md#validation-sessions) in EdgeFirst Studio Overview for further details. 
 
 ## Next Steps
 

@@ -11,8 +11,14 @@ After setting up the Zenoh session, we will create a subscriber to the `rt/imu` 
 === "Python"
 
     ``` python
+    # Log the initial orientation
+    rr.log("/imu", rr.Boxes3D(half_sizes=[[0.5, 0.5, 0.5]], fill_mode="solid"))
+    rr.log("/imu", rr.Transform3D(axis_length=2))
+
     # Create a subscriber for "rt/imu"
-    subscriber = session.declare_subscriber('rt/imu', imu_listener)
+    loop = asyncio.get_running_loop()
+    drain = MessageDrain(loop)
+    session.declare_subscriber('rt/imu', drain.callback)
     ```
 === "Rust"
 
@@ -23,16 +29,22 @@ After setting up the Zenoh session, we will create a subscriber to the `rt/imu` 
         .unwrap();
     ```
 
-### Decode IMU Data
+### Receive the Message
 
 We can now recieve message on the subcriber. After recieving the message, we will need to deserialize it.
 
 === "Python"
 
     ``` python
-    from edgefirst.schemas.sensor_msgs import Imu
-    msg = subscriber.recv()
-    imu = Imu.deserialize(msg.payload.to_bytes())
+    async def imu_handler(drain):
+        while True:
+            msg = await drain.get_latest()
+            thread = threading.Thread(target=imu_worker, args=[msg])
+            thread.start()
+            
+            while thread.is_alive():
+                await asyncio.sleep(0.001)
+            thread.join()
     ```
 === "Rust"
 
@@ -43,19 +55,22 @@ We can now recieve message on the subcriber. After recieving the message, we wil
     }
     ```
 
-### Get IMU Values and Post to Rerun
+### Process the IMU Data
 
 We will now pull out the IMU data from the decoded Imu message and send the quaternion to Rerun.
 
 === "Python"
 
     ``` python
-    x = imu.orientation.x
-    y = imu.orientation.y
-    z = imu.orientation.z
-    w = imu.orientation.w
-    # print("X: %.4f Y: %.4f Z: %.4f W: %.4f" % (x, y, z, w))
-    rr.log("box", rr.Transform3D(clear=False, quaternion=Quaternion(xyzw=[x,y,z,w])))
+    def imu_worker(msg):
+        imu = Imu.deserialize(msg.payload.to_bytes())
+        x = imu.orientation.x
+        y = imu.orientation.y
+        z = imu.orientation.z
+        w = imu.orientation.w
+        rr.log("/imu",
+                rr.Transform3D(clear=False,
+                                quaternion=Quaternion(xyzw=[x, y, z, w])))
     ```
 === "Rust"
 

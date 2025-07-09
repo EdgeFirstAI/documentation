@@ -31,14 +31,14 @@ Underneath the MCAP navbar, we have the current MCAP recording directory -- in t
 Under all of that, we have a list of MCAP files in the recording directory.  For each MCAP file, the following elements and information exist, starting from left to right:
 
 - A selection checkbox.
-- A playback button. Clicking this will put the device into ["Replay Mode"](./replay.md), replaying the sensor information from this MCAP file.
+- A playback button !["Replay Button"](./assets/replay_play.png). Clicking this will put the device into ["Replay Mode"](./replay.md), replaying the sensor information from this MCAP file.
 - The filename of the MCAP
 - The size of the MCAP, in MB
 - The creation date and time of the MCAP
 - Three Action buttons, which are:
-     - The "Details" button, which shows information about the topics recorded in the MCAP file (see below).
-     - The "Download" button, which will download the MCAP file to your local machine.
-     - The "Delete" button, which will remove the MCAP file.
+     - The "Info" button !["Info Button"](./assets/mcap_information.png), which shows information about the topics recorded in the MCAP file (see below).
+     - The "Download" button !["Download Button"](./assets/mcap_download.png), which will download the MCAP file to your local machine.
+     - The "Delete" button !["Delete Button"](./assets/mcap_delete.png), which will remove the MCAP file.
 
 To leave the MCAP Modal, click the "X" close button in the top right corner of the modal.
 
@@ -63,6 +63,13 @@ If you were to open the MCAP Details Modal while recording, you would see a new 
 !!! note
      It may take up to 30 seconds for a recording to start, depending on topic tracked.
 
+!!! warning
+     If there is not enough room on the drive to record a MCAP, recording will aautomatically stop and you will get a "Low Disk Space" error.
+     <figure markdown="span">
+     ![MCAP Low Disk Space Warning](assets/mcap_low-disk-space.png){align=center}  
+     <figcaption>MCAP Low Disk Space Warning</figcaption>
+     </figure>
+
 To stop recording, click the "Recording" button a second time.
 
 ### Managing Recordings
@@ -84,7 +91,7 @@ At the bottom of the "File Details" modal, there is a "Close" button to close th
      - _YYYY_mm_DD_ is the zero-padded year, month, and day that the recording was started
      - _HH_MM_SS_ is the UTC time the recording started in 24-hour notation
 
-Any MCAP recording can be deleted by clicking its "Delete" button and confirming that you wish to delete the recording.
+Any MCAP recording can be deleted by clicking its "Delete" button and confirming that you wish to delete the recording, as well as clicking its checkbox and clicking the "Delete Selected" button.
 
 ## Downloading and Analysis
 Click the "Download" button to save the MCAP file to your PC.  You can also use a [SSH client to copy files](./ssh.md#secure-copy) off the Raivin.

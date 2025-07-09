@@ -12,7 +12,17 @@ The Replay Service offers:
 - Seamless integration with live system operations
 
 ## Using the Replay Service
-The Replay Service is built into the [MCAP Recorder Modal](./recording.md).  You can visit the page by clicking the "MCAP Details" Button on any Raivin Page.
+The Replay Service is built into the [MCAP Recorder Modal](./recording.md).
+<figure markdown="span">
+![MCAP Recorder Interface](assets/quickStart-mcap.png){align=center}
+<figcaption>MCAP Modal</figcaption>
+</figure>
+
+You can visit the page by clicking the "MCAP Details" Button on any Raivin Page.
+<figure markdown="span">
+![MCAP Recording and Details Buttons](assets/mcap-RecordingButton_McapDetailsButton.png){align=center}
+<figcaption>MCAP Recording and Details Buttons</figcaption>
+</figure>
 
 ### Starting Playback
 1. Locate your desired MCAP file in the file list
@@ -66,13 +76,10 @@ The Replay Service supports a hybrid mode where you can:
 - Use recorded data for some systems while maintaining live data for others
 - Mix and match recorded and live data sources based on your testing needs
 
-# Status Monitoring
+## Status Monitoring
 This section describes the various states the system can be in and how they are reported.
 
-## System Status Bar
-The status bar provides real-time information about your system's operational state and service health.
-
-### Status Indicator Button
+### Status Indicator Button (Maivin/Raivin only)
 Located in the top-right corner, the status indicator button shows status and state:
 
 - **Live Mode** (Green): System mode is operating with live data and system status is working normally.

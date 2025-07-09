@@ -12,52 +12,68 @@ When active, the Recorder Service:
 - Provides real-time recording status
 
 ## Using the Recorder
-The MCAP Recording Service is managed on its own visualization page, which can be accessed by clicking the "MCAP" card on the Raivin Main Page or by typing `https://<hostname>/mcap` in your browser window.  
+The MCAP Recording Service is managed on its own modal, which can be accessed by clicking the "MCAP Details" button on the top navbar of any Raivin Web UI Page.  MCAP recordings can be started and stopped using the Recording Button, also on the top navbar.
 
 <figure markdown="span">
-![MCAP Recorder Interface](assets/mcap_recorder.png){align=center}
-<figcaption>MCAP Recorder Interface</figcaption>
+![MCAP Recording and Details Buttons](assets/mcap-RecordingButton_McapDetailsButton.png){align=center}
+<figcaption>MCAP Recording and Details Buttons</figcaption>
 </figure>
 
-At the top of page, under the ribbon, we have the Recording Toggle, which will start or end an MCAP recording.  We also have the "Live Mode" button, which will take the Raivin out of ["Replay Mode"](./replay.md) and back to "Live Mode".
+At the top ribbon of the MCAP Modal we have the title, the Disk Usage Infobar, and the "Live Mode" button.  under the ribbon, we have the Recording Toggle, which will start or end an MCAP recording.  We also have the "Live Mode" button, which will take the Raivin out of ["Replay Mode"](./replay.md) and back to "Live Mode".
 
-Under this, we have the listing of MCAP files currently the MCAP recording directory.  This directory is noted at the top of the list -- in the above image, it is `/media/DATA`.
+<figure markdown="span">
+![MCAP Recorder Interface](assets/quickStart-mcap.png){align=center}
+<figcaption>MCAP Modal</figcaption>
+</figure>
 
-For each MCAP file, the following elements and information exist, starting from left to right:
+Underneath the MCAP navbar, we have the current MCAP recording directory -- in the above image, it is `/media/DATA`.  Under this directory text, we have a "select all" checkbox which can be used to select every MCAP for deletion; the "Delete Selected" button which will delete the MCAP selected by the checkboxes, and the "Search files..." textfield if we need to search for a specific file.
 
+Under all of that, we have a list of MCAP files in the recording directory.  For each MCAP file, the following elements and information exist, starting from left to right:
+
+- A selection checkbox.
 - A playback button. Clicking this will put the device into ["Replay Mode"](./replay.md), replaying the sensor information from this MCAP file.
 - The filename of the MCAP
 - The size of the MCAP, in MB
 - The creation date and time of the MCAP
-- The video length of the MCAP
-- Four Action buttons, which are:
+- Three Action buttons, which are:
      - The "Details" button, which shows information about the topics recorded in the MCAP file (see below).
-     - The greyed-out and currently non-functionality "Upload" button.
      - The "Download" button, which will download the MCAP file to your local machine.
      - The "Delete" button, which will remove the MCAP file.
 
+To leave the MCAP Modal, click the "X" close button in the top right corner of the modal.
+
 ### Starting a Recording
-To start a recording, simply click the "Recording" toggle to begin capturing data.
+To start a recording, simply click the "Recording" button to begin capturing data.
+
+!!! note
+     You must close all modals to be able to click the "Recording" Button.
 
 <figure markdown="span">
 ![MCAP Recording](assets/mcap_recording.png){align=center}  
 <figcaption>MCAP Recording</figcaption>
 </figure>
 
-Note the the red text describing that recording is in progress with the filename of the recording.  Also notice the the Recording notification on the top ribbon is now on.
+If you were to open the MCAP Details Modal while recording, you would see a new MCAP file in the MCAP list.
+
+<figure markdown="span">
+![MCAP Modal While Recording](assets/mcap_modal_while_recording.png){align=center}  
+<figcaption>MCAP Modal While Recording</figcaption>
+</figure>
 
 !!! note
      It may take up to 30 seconds for a recording to start, depending on topic tracked.
 
-To stop recording, click the "Recording" toggle a second time.
+To stop recording, click the "Recording" button a second time.
 
 ### Managing Recordings
-Once a recording is complete, you can see the size in MB and duration in seconds of the captured data on the MCAP page.  You can also get more detailed metadata, such as the topics recorded, by clicking the "Details" button for the MCAP recording.
+Once a recording is complete, you can see the size in MB of the captured data on the MCAP page.  You can also get more detailed metadata, such as the topics recorded, by clicking the "Details" button for the MCAP recording.
 
 <figure markdown="span">
 ![MCAP File Details](assets/mcap_detail.png){align=center}  
 <figcaption>MCAP File Details</figcaption>
 </figure>
+
+The details modal contains the filename, size, duration in seconds, and a list of each topic captured with frame count and frames per second of data for the topic.
 
 At the bottom of the "File Details" modal, there is a "Close" button to close the modal.
 

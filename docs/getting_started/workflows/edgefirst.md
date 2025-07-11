@@ -16,13 +16,13 @@ If you have an EdgeFirst Platform, please proceed to step 1. Otherwise, proceed 
 
 When starting from scratch, it is common to start recording your own data to build your own dataset. This step requires an [EdgeFirst Platform](../../platforms/quickstart.md) for recording data. However, we also provide [Public Datasets](../studio.md#datasets) for users without an EdgeFirst Platform. 
 
-For instructions on capturing and recording data, refer to the [Capture/Record Data Tutorial](../../datasets/tutorials/capture.md#record-mcaps).
+For instructions on capturing and recording data, refer to the [Capture/Record Data Tutorial](../../datasets/tutorials/capture.md#recording-an-mcap).
 
 ### 2. Download Recorded Data
 
 Once data is recorded which is stored as an MCAP file, download the MCAP file.
 
-For instructions on downloading the recorded MCAP file, refer to the [Download Captured Data Tutorial](../../datasets/tutorials/capture.md#download-recorded-mcaps).
+For instructions on downloading the recorded MCAP file, refer to the [Download Captured Data Tutorial](../../datasets/tutorials/capture.md#downloading-the-mcap-recording).
 
 ### 3. Upload Recorded Data to EdgeFirst Studio
 

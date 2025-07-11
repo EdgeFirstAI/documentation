@@ -9,7 +9,7 @@ Now that you have [validated your Fusion model](../validation.md), this guide wi
 This guide will showcase two methods of deploying the model.
 
 1. [Live View (Segmentation App)](#live-view-segmentation-app)
-2. [MCAP Recording](#mcap-recording)
+2. [MCAP Recording](#recording-an-mcap)
 
 ## Download the Model
 
@@ -82,11 +82,11 @@ Visit the Web UI service by entering the URL `https://<hostname>/` in your brows
 !!! note
     Replace `<hostname>` with the hostname of your device.
 
-You should be greeted with the following page.
+You will be greeted with the Maivin [WebUI Main Page](../../../platforms/walkthrough.md) page.
 
 <figure markdown="span">
-![Web UI](../../assets/deployment/raivin-webui.jpg){ align=center }
-<figcaption>Web UI</figcaption>
+![WebUI Main Page](../../../platforms/assets/ui-maivinMain.png){ align=center }
+<figcaption>WebUI Main Page</figcaption>
 </figure>
 
 For more information, please see the [Web UI Walkthrough](../../../platforms/walkthrough.md).
@@ -125,7 +125,7 @@ Once the model path in the device is specified, ensure that all services are ena
 <figcaption>Service Status</figcaption>
 </figure>
 
-You will be greeted with the "Service Overview" page.  Ensure that all services are enabled and running by toggling the "Enable" and "Start" buttons as shown.  Only "Enable" the "recorder" service as shown.  We will be using the recorder service in [MCAP Recording](#mcap-recording).
+You will be greeted with the "Service Overview" page.  Ensure that all services are enabled and running by toggling the "Enable" and "Start" buttons as shown.  Only "Enable" the "recorder" service as shown.  We will be using the recorder service in [MCAP Recording](#recording-an-mcap).
 
 <figure markdown="span">
 ![Service Overview](../../assets/deployment/raivin-service-overview.jpg){ align=center }
@@ -153,35 +153,12 @@ This will run inference on the model specified to generate segmentation masks of
 <figcaption>Sample 2</figcaption>
 </figure>
 
-## MCAP Recording
+Now that the model has been upaded, we can make new recordings using the model's inference and then visualizing the recording using Foxglove Studio.
 
-Now we will demonstrate running a recording on the device, saving the model inference, and then visualizing the recording using Foxglove Studio.  Once all services are enabled, go back to the main page and then select the "MCAP" application as shown.
+{% include-markdown "discrete/recording_mcap_on_device.md" %}
+{% include-markdown "discrete/downloading_mcap_from_device.md" %}
 
-<figure markdown="span">
-![MCAP Recorder](../../assets/deployment/raivin-recorder-app.jpg){ align=center }
-<figcaption>MCAP Recorder</figcaption>
-</figure>
-
-You will be greeted with the MCAP recording page.
-
-<figure markdown="span">
-![MCAP Recording Page](../../../datasets/assets/mcap-recording-page.jpg){ align=center }
-<figcaption>MCAP Recording Page</figcaption>
-</figure>
-
-Toggle the "Recording" button as shown to start recording the video feed.  To stop the recording, toggle the same button and then the recording will be stored as an MCAP file.
-
-For more information on MCAP recordings, please see the [MCAP Recording Service](../../../platforms/recording.md).
-
-### Inference Visualization in Foxglove
-
-The MCAP recordings are listed under the list of "MCAP Files" which can then be downloaded to your PC.
-
-<figure markdown="span">
-![MCAP Files](../../../datasets/assets/recorded-mcap.jpg){ align=center }
-<figcaption>MCAP Files</figcaption>
-</figure>
-
+## Inference Visualization in Foxglove
 Once the MCAP recording has been downloaded, we can use Foxglove Studio to see the playback of MCAP recordings and the model inference.  The following preview shows the segmentation mask from the model identifying the person in the frame (right) and the occupancy grid highlighting the radar clusters that correspond to the person's position in world coordinates.
 
 <figure markdown="span">

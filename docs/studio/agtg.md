@@ -42,7 +42,7 @@ Once the server has been initialized, the 2D boxes for the initial prompt can be
 Below is a detailed breakdown of the sidebar.
 
 <figure markdown="span">
-![AGTG Sibebar](../../assets/agtg/sidebar.png){ align=center }
+![AGTG Sibebar](../assets/agtg/sidebar.png){ align=center }
 <figcaption>AGTG Sidebar </figcaption>
 </figure>
 
@@ -50,8 +50,6 @@ Below is a detailed breakdown of the sidebar.
 ![AGTG Object Card](assets/agtg-object-card.png){ align=center }
 <figcaption>AGTG Object Card </figcaption>
 </figure>
-
-
 
 Note: For adding subsequent objects you need to press the "+" icon besides the "Select Objects". Also note that Object class (label) should be selection from the object label drop down.
 

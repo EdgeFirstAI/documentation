@@ -18,8 +18,8 @@ You must have followed the steps in the [EdgeFirst Studio Quick Start](../index.
 Most of the workflows below require working knowledge with [SSH and command-line interfaces](./ssh.md). It is recommended that you read and follow the steps on that page to confirm SSH connectivity with the Raivin.
 
 ## Method 1: Download the MCAP from the Raivin and Publish to Studio
-The first method is to download the MCAP from the Raivin.  This can be accomplished in two ways:  
-- use the [download](./recording.md#downloading-and-analysis) button for the MCAP on the Recording Service page to download the MCAP to your PC via the Raivin's WebUI.  
+The first method is to download the MCAP from the Raivin.  This can be accomplished in [two ways](./recording.md#downloading-the-mcap-recording) :  
+- use the download button for the MCAP on the [MCAP Details Modal](./recording.md#the-mcap-modal) to download the MCAP to your PC via the Raivin's WebUI.  
 - use [SCP](./ssh.md#secure-copy) to download the file to your PC via the command-line interface. 
 
 For our example above, you would click the second green "download" button from the top or run the following command on your PC:

@@ -9,7 +9,7 @@ Now that you have validated your Vision Model from either a [managed](../validat
 This guide will showcase two methods of deploying the model.
 
 1. [Live View (Segmentation App)](#live-view-segmentation-app)
-2. [MCAP Recording](#mcap-recording)
+2. [MCAP Recording](#recording-an-mcap)
 
 ## Download the Model
 
@@ -136,7 +136,7 @@ Next, you will see the file with the following contents.
 MODEL = "path/to/mymodel.tflite"
 ```
 
-Edit the following line `MODEL = "path/to/mymodel.tflite"` to point to the specific path to your model.  To edit, press `i` to enter into "Insert Mode".  You should now be able to edit the lines.  To exit "Insert Mode", press the ESC key on your keyboard.  Next save and exit the file by typing `:wq` on your keyboard.  More examples for using vim can be found [here](https://coderwall.com/p/adv71w/basic-vim-commands-for-getting-started).
+Edit the following line `MODEL = "path/to/mymodel.tflite"` to point to the specific path to your model.  To edit, press `i` to enter into "Insert Mode".  You should now be able to edit the lines.  To exit "Insert Mode", press the ESC key on your keyboard.  Next save and exit the file by typing `:wq` on your keyboard.  More examples for using `vi` can be found [here](https://coderwall.com/p/adv71w/basic-vim-commands-for-getting-started).
 
 Once the path to the model has been updated, restart the model service using `sudo systemctl restart model`.
 
@@ -149,7 +149,7 @@ Once the model path in the device is specifed, ensure that the Camera, Model, an
 <figcaption>Service Status</figcaption>
 </figure>
 
-You will be greeted with the "Service Overview" page.  Ensure that the "camera" and "model" services are enabled and running by toggling the "Enable" and "Start" buttons as shown.  Only "Enable" the "recorder" service as shown.  You will be using the recorder service in [MCAP Recording](#mcap-recording).
+You will be greeted with the "Service Overview" page.  Ensure that the "camera" and "model" services are enabled and running by toggling the "Enable" and "Start" buttons as shown.  Only "Enable" the "recorder" service as shown.  You will be using the recorder service in [MCAP Recording](#recording-an-mcap).
 
 <figure markdown="span">
 ![Service Overview](../../assets/deployment/maivin-service-overview.jpg){ align=center }
@@ -177,36 +177,13 @@ This will run inference on the model specified to generate segmentation masks on
 <figcaption>Sample 2</figcaption>
 </figure>
 
-## MCAP Recording
+Now that the model has been upaded, we can make new recordings using the model's inference and then visualizing the recording using Foxglove Studio.
 
-Now you will run a recording on the device, saving the model inferences, and then visualizing the recording using Foxglove Studio.  Once the model, camera, and recorder services are enabled, go back to the main page and then select the "MCAP" application as shown.
+{% include-markdown "discrete/recording_mcap_on_device.md" %}
+{% include-markdown "discrete/downloading_mcap_from_device.md" %}
 
-<figure markdown="span">
-![MCAP Recorder](../../assets/deployment/maivin-recorder-app.jpg){ align=center }
-<figcaption>MCAP Recorder</figcaption>
-</figure>
-
-You will be greeted with the MCAP recording page.
-
-<figure markdown="span">
-![MCAP Recording Page](../../../datasets/assets/mcap-recording-page.jpg){ align=center }
-<figcaption>MCAP Recording Page</figcaption>
-</figure>
-
-Toggle the "Recording" button as shown to start recording the video feed.  To stop the recording, toggle the same button and then the recording will be stored as an MCAP file.
-
-For more information on MCAP recordings, please see the [MCAP Recording Service](../../../platforms/recording.md).
-
-### Inference Visualization in Foxglove
-
-The MCAP recordings are listed under the list of "MCAP Files" which can then be downloaded to your PC.
-
-<figure markdown="span">
-![MCAP Files](../../../datasets/assets/recorded-mcap.jpg){ align=center }
-<figcaption>MCAP Files</figcaption>
-</figure>
-
-Once the MCAP recording has been downloaded, you can use Foxglove Studio to see the playback of MCAP recordings and the model inference.  The following preview is a frame from the MCAP with the model inference masks overlaid on top of the video. 
+## Inference Visualization in Foxglove
+Once the MCAP recording has been downloaded, we can use Foxglove Studio to see the playback of MCAP recordings and the model inference.  The following preview is a frame from the MCAP with the model inference masks overlaid on top of the video. 
 
 <figure markdown="span">
 ![Foxglove Sample 1](../../assets/deployment/foxglove-sample-1.jpg){ align=center }

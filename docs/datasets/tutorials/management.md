@@ -4,7 +4,7 @@ This page will provide tutorials for managing datasets in EdgeFirst Studio.
 
 ## Upload MCAPs
 
-This tutorial shows how to upload a [MCAP recording](capture.md#record-mcaps).  For uploading [EdgeFirst Datasets](../format.md), please see the instructions for [Upload from Zip/Arrow File](../../studio/snapshots.md#upload-from-ziparrow-file).
+This tutorial shows how to upload a [MCAP recording](capture.md#recording-an-mcap).  For uploading [EdgeFirst Datasets](../format.md), please see the instructions for [Upload from Zip/Arrow File](../../studio/snapshots.md#upload-from-ziparrow-file).
 
 <div style="text-align: center;">
     <iframe width="560" height="315" src="https://www.youtube.com/embed/j-75Q5-_dC0?start=558&end=720" title="Upload MCAP" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>

@@ -42,7 +42,7 @@ Once the server has been initialized, the 2D boxes for the initial prompt can be
 Below is a detailed breakdown of the sidebar.
 
 <figure markdown="span">
-![AGTG Sibebar](../../assets/agtg/sidebar.png){ align=center }
+![AGTG Sibebar](../assets/agtg/sidebar.png){ align=center }
 <figcaption>AGTG Sidebar </figcaption>
 </figure>
 

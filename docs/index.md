@@ -56,7 +56,6 @@ Furthermore, you can also capture individual images of coffee cups as shown belo
 </figure>
 
 !!! tip
-
     It is recommended to use videos rather than individual images.  This is because the Automatic Ground Truth Generation (AGTG) feature leverages SAM-2 with tracking information which only needs a single annotation to annotate all frames.  However, individual images requires more effort to annotate each image separately.
 
 !!! warning

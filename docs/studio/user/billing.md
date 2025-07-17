@@ -1,6 +1,6 @@
 # Billing Information
 
-This page will describe the billing information that is subjected to the user's organization.  Prior to reading the contents in this page, it is recommended to be familiar with the [Organization Management](organization.md).  A new organization is given $20.00 worth of credits to allow trials of the features in EdgeFirst Studio as shown in the [Quickstart Guide](../../index.md).  The credits in the organization will be shared amongst the members.  
+This page will describe the billing information that is subjected to the user's organization.  Prior to reading the contents in this page, it is recommended to be familiar with the [Organization Management](organization.md).  A new organization is given 20.00 USD worth of credits to allow trials of the features in EdgeFirst Studio as shown in the [Quickstart Guide](../../index.md).  The credits in the organization will be shared amongst the members.  
 
 ## Usage & Billing
 
@@ -18,7 +18,7 @@ This will navigate you to the "Organization Information" page.  Click on the "Us
 <figcaption>The location of the "Usage & Billing" button</figcaption>
 </figure>
 
-This page may take some time to render.  Once rendered, this page will describe the current usages of EdgeFirst Studio features and the billing details as shown below. The next sections will break down the components of this page in more detail. 
+This page may take some time to load.  Once the page loads, it will describe the current usages of EdgeFirst Studio features and the billing details as shown below.  The next sections will break down the components of this page in more detail. 
 
 <figure markdown="span">
 ![Usage & Billing Page](../assets/user/usage-billing-page.jpg){ align=center }
@@ -27,7 +27,7 @@ This page may take some time to render.  Once rendered, this page will describe 
 
 ### Remaining Funds
 
-Initially, the remaining funds will show as `USD 20.00`.  This is free for trial users to experience EdgeFirst Studio and its features.  However, as you use EdgeFirst Studio such as importing datasets you incur storage costs or deploying training and validation incur server costs, you will see that these remaining funds will start to decrease.  Once the remaining funds run out, you will no longer be able to use any features in EdgeFirst Studio and your datasets will be parked, training and validation sessions will be paused or terminated.  It is recommended to always check the remaining funds in your organization before running experiments to ensure you have enough funds to support the cost of the experiment.  The cost of the features in EdgeFirst Studio will be discussed in more detail in the section [below](#features-and-associated-costs).  For options to add more funds into your organization, please reach out and [email our support team](mailto:support@edgefirst.ai).
+Initially, for free trial users the remaining funds will show as "USD 20.00".  As you use EdgeFirst Studio such as importing datasets you will incur storage costs or deploying training and validation will incur server costs, and then you will see that these remaining funds will be deducted.  Once the remaining funds depletes, you will no longer be able to use any features in EdgeFirst Studio and your datasets will be parked, training and validation sessions will be paused or terminated.  It is recommended to always check the remaining funds in your organization before running experiments to ensure you have enough funds to support the cost of those experiments.  The cost of the features in EdgeFirst Studio will be discussed in more detail in the section [below](#features-and-associated-costs).  For options to add more funds into your organization, please reach out and [email our support team](mailto:support@au-zone.com).
 
 ### Features and Associated Costs
 
@@ -45,14 +45,6 @@ The billing details provide more information on the cost of each feature as show
 <figcaption>Billing Details</figcaption>
 </figure>
 
-The cost of each feature is summarized below:
-
-* AI Assisted Ground Truth: `$6/hour`
-* Dataset Annotations Storage: `c0.1/1000 annotations/month`
-* Dataset Images Storage: `c0.2/1000 images/month`
-* Training Session: `$12/hour`
-* Validation Session: `12/hour`
-
 ## Transactions
 
 The "Transactions" page will show your purchases or the amount of credits allocated to your organization.  This page can be accessed by clicking on the "Transactions" button as shown below.
@@ -62,6 +54,6 @@ The "Transactions" page will show your purchases or the amount of credits alloca
 <figcaption>Transactions Summary</figcaption>
 </figure>
 
-Since this is a trial account, the only transaction shown is the `$20.00` credits allocated to my organization upon signup. 
+Since this is a trial account, the only transaction shown is the 20.00 USD credits allocated to my organization upon signup. 
 
 This page has described billing information and the cost of each feature in EdgeFirst Studio.  Explore more by using these features in your trial account by following one of the [end-to-end workflows](../../getting_started/workflows/index.md).

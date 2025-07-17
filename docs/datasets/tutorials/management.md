@@ -110,10 +110,6 @@ To view the dataset, refer to the instructions provided in [Viewing Datasets](#v
 
 This tutorial will show how to open the gallery of the dataset to see the individual samples in the dataset.
 
-<div style="text-align: center;">
-    <iframe width="560" height="315" src="https://www.youtube.com/embed/afPsj7_7SnU" title="Viewing Datasets" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-</div>
-
 From the "Projects" page, you can click on the dataset button indicated in red to view the datasets contained in the project.
 
 <figure markdown="span">
@@ -198,13 +194,7 @@ Clicking on any of these sequences will open individual images in the sequence w
 
 For cases where the annotations need corrections, please see [Audit 2D Annotations](annotations.md#audit-2d-annotations) or [Audit 3D Annotations](annotations.md#audit-3d-annotations) for more details.
 
-## Creating Datasets
-
-This tutorial will show how to create an empty dataset container in EdgeFirst Studio.  
-
-<div style="text-align: center;">
-    <iframe width="560" height="315" src="https://www.youtube.com/embed/DJabdEHaZ8E?start=42&end=94" title="Creating Datasets" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-</div>
+## Creating Datasets 
 
 To create a dataset, first select the project to store the new dataset.  Next click the dataset button indicated in red to view the datasets in that selected project.
 
@@ -249,12 +239,6 @@ You have now created a dataset and an annotation set container as shown below.  
 </figure>
 
 ## Copying Datasets
-
-This tutorial will show how to copy datasets.
-
-<div style="text-align: center;">
-    <iframe width="560" height="315" src="https://www.youtube.com/embed/qLv8ayxQ-Ns?start=326&end=372" title="Copying Datasets" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-</div>
 
 To copy a dataset, navigate to the dataset you would like to copy.  On the dataset card, select the "Copy Dataset" from the dataset options as shown below.
 

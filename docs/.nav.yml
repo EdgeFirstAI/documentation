@@ -27,13 +27,14 @@ nav:
     - datasets/index.md
     - datasets/format.md
     - datasets/structure.md
+    - Dataset Zoo:
+      - datasets/coco2017.md
     - Dataset Tutorials:
       - datasets/tutorials/index.md
       - datasets/tutorials/capture.md
       - datasets/tutorials/annotations.md
       - datasets/tutorials/management.md
       - datasets/tutorials/import.md
-    # - datasets/zoo.md
   - Models:
     - models/index.md
     - ModelPack:

@@ -19,11 +19,11 @@ The MCAP Recording Service is managed on its own modal, which can be accessed by
 <figcaption>MCAP Modal</figcaption>
 </figure>
 
-At the top ribbon of the MCAP Modal we have the title, the Disk Usage Infobar, and the "Live Mode" button.  under the ribbon, we have the Recording Toggle, which will start or end an MCAP recording.  We also have the "Live Mode" button, which will take the Raivin out of ["Replay Mode"](./replay.md) and back to "Live Mode".
+At the top ribbon of the MCAP Modal we have the title, the Disk Usage Infobar, and the "Live Mode" button. Under the ribbon, we have the Recording Toggle, which will start or end an MCAP recording. We also have the "Live Mode" button, which will take the Raivin out of ["Replay Mode"](./replay.md) and back to "Live Mode".
 
-Underneath the MCAP navbar, we have the current MCAP recording directory -- in the above image, it is `/media/DATA`.  Under this directory text, we have a "select all" checkbox which can be used to select every MCAP for deletion; the "Delete Selected" button which will delete the MCAP selected by the checkboxes, and the "Search files..." textfield if we need to search for a specific file.
+Underneath the MCAP navbar, we have the current MCAP recording directory -- in the above image, it is `/media/DATA`. Under this directory text, we have a "select all" checkbox which can be used to select every MCAP for deletion; the "Delete Selected" button which will delete the MCAP selected by the checkboxes, and the "Search files..." textfield if we need to search for a specific file.
 
-Under all of that, we have a list of MCAP files in the recording directory.  For each MCAP file, the following elements and information exist, starting from left to right:
+Under all of that, we have a list of MCAP files in the recording directory. For each MCAP file, the following elements and information exist, starting from left to right:
 
 - A selection checkbox.
 - A playback button !["Replay Button"](./assets/replay_play.png). Clicking this will put the device into ["Replay Mode"](./replay.md), replaying the sensor information from this MCAP file.

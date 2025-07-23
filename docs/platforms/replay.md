@@ -38,7 +38,7 @@ You can visit the page by clicking the "MCAP Details" Button on any Raivin Page.
 
 4. Click "Start" to begin playback
 
-During playback, the currently playing file will be have its "Play" button become a "Stop" button.  The State Indicator top ribbon will also note the platform is in "Replay Mode".  
+During playback, the currently playing file will have its "Play" button become a "Stop" button.  The State Indicator top ribbon will also note the platform is in "Replay Mode".  
 
 <figure markdown="span">
 ![MCAP Replay Options](assets/replay_mode.png){align=center}

@@ -6,7 +6,7 @@ MCAP recordings can be started and stopped using the Recording Button at the dev
 </figure>
 Both of these buttons are available on every page of the Maivin, Raivin, and other edge devices running the EdgeFirst middleware.
 !!! note
-     You must close all modals to be able to click the "Recording" or Details Buttons.
+     You must close all modals to be able to click the "Recording" and "Details" Buttons.
 
 For more information about recording MCAPs, please read the [MCAP Recording section](../platforms/recording.md).
 
@@ -22,7 +22,7 @@ To start a recording, simply click the "Recording" button to begin capturing dat
      It may take up to 30 seconds for a recording to start, depending on topic tracked.
 
 !!! warning
-     If there is not enough room on the drive to record a MCAP, recording will aautomatically stop and you will get a "Low Disk Space" error.
+     If there is not enough room on the drive to record a MCAP, recording will automatically stop and you will get a "Low Disk Space" error.
      <figure markdown="span">
      ![MCAP Low Disk Space Warning](../platforms/assets/mcap_low-disk-space.png){align=center}  
      <figcaption>MCAP Low Disk Space Warning</figcaption>

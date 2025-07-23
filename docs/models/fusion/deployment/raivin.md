@@ -125,7 +125,7 @@ Once the model path in the device is specified, ensure that all services are ena
 <figcaption>Service Status</figcaption>
 </figure>
 
-You will be greeted with the "Service Overview" page.  Ensure that all services are enabled and running by toggling the "Enable" and "Start" buttons as shown.  Only "Enable" the "recorder" service as shown.  We will be using the recorder service in [MCAP Recording](#recording-an-mcap).
+You will be greeted with the "Service Overview" page.  Ensure that all services are enabled and running by toggling the "Enable" and "Start" buttons as shown.  Only "Enable" the "recorder" service as shown.  You will be using the recorder service in [MCAP Recording](#recording-an-mcap).
 
 <figure markdown="span">
 ![Service Overview](../../assets/deployment/raivin-service-overview.jpg){ align=center }
@@ -153,13 +153,13 @@ This will run inference on the model specified to generate segmentation masks of
 <figcaption>Sample 2</figcaption>
 </figure>
 
-Now that the model has been upaded, we can make new recordings using the model's inference and then visualizing the recording using Foxglove Studio.
+Now that the model has been updated, you can make new recordings using the model's inference and then visualizing the recording using Foxglove Studio.
 
 {% include-markdown "discrete/recording_mcap_on_device.md" %}
 {% include-markdown "discrete/downloading_mcap_from_device.md" %}
 
 ## Inference Visualization in Foxglove
-Once the MCAP recording has been downloaded, we can use Foxglove Studio to see the playback of MCAP recordings and the model inference.  The following preview shows the segmentation mask from the model identifying the person in the frame (right) and the occupancy grid highlighting the radar clusters that correspond to the person's position in world coordinates.
+Once the MCAP recording has been downloaded, you can use Foxglove Studio to see the playback of MCAP recordings and the model inference.  The following preview shows the segmentation mask from the model identifying the person in the frame (right) and the occupancy grid highlighting the radar clusters that correspond to the person's position in world coordinates.
 
 <figure markdown="span">
 ![Foxglove Sample 1](../../../platforms/assets/adv_foxglove-finished_fusion.png){ align=center }

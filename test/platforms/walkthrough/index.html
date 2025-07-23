@@ -22,7 +22,7 @@
       
       
       <link rel="icon" href="../../assets/favicon.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.14">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.15">
     
     
       
@@ -3690,6 +3690,15 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#the-mcap-modal" class="md-nav__link">
+    <span class="md-ellipsis">
+      The MCAP Modal
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#system-status-indicator" class="md-nav__link">
     <span class="md-ellipsis">
       System Status Indicator
@@ -3741,18 +3750,18 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#the-imu-page" class="md-nav__link">
+  <a href="#the-lidar-view-page-raivin-only" class="md-nav__link">
     <span class="md-ellipsis">
-      The IMU Page
+      The Lidar View Page (Raivin-only)
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#the-mcap-recording-page" class="md-nav__link">
+  <a href="#the-imu-page" class="md-nav__link">
     <span class="md-ellipsis">
-      The MCAP Recording Page
+      The IMU Page
     </span>
   </a>
   
@@ -4259,6 +4268,15 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#the-mcap-modal" class="md-nav__link">
+    <span class="md-ellipsis">
+      The MCAP Modal
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#system-status-indicator" class="md-nav__link">
     <span class="md-ellipsis">
       System Status Indicator
@@ -4310,18 +4328,18 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#the-imu-page" class="md-nav__link">
+  <a href="#the-lidar-view-page-raivin-only" class="md-nav__link">
     <span class="md-ellipsis">
-      The IMU Page
+      The Lidar View Page (Raivin-only)
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#the-mcap-recording-page" class="md-nav__link">
+  <a href="#the-imu-page" class="md-nav__link">
     <span class="md-ellipsis">
-      The MCAP Recording Page
+      The IMU Page
     </span>
   </a>
   
@@ -4367,23 +4385,26 @@
 <ul>
 <li><strong>GPS</strong>: This page displays a map with the current location of the device, along with GPS co-ordinates.</li>
 <li><strong>IMU</strong>: This page displays the 3D orientation of the device with current pitch, yaw, and roll values.</li>
-<li><strong>MCAP</strong>: This page contains the visual/radar recordings management interface.</li>
-<li><strong>Segmentation View</strong>: This page shows the camera with running segmentation and/or detection pipeline.  For Raivins equipped with a radar module, it will also show the radar grid.</li>
 <li><strong>Occupancy Grid</strong>: (Raivin only) This will show the radar grid.</li>
+<li><strong>Segmentation View</strong>: This page shows the camera with running segmentation and/or detection pipeline.  For Raivins equipped with a radar module, it will also show the radar grid.</li>
+<li><strong>Lidar View</strong>: (Raivin only) This will show the Lidar View, which will include the camera, radar grid, and LiDAR grid.</li>
 </ul>
 <h3 id="the-top-ribbon">The Top Ribbon</h3>
-<p>The ribbon at the top of the Raivin web interface is available on every page of the web interface.  The following three elements are available on every page of the Raivin web interface.</p>
+<p>The ribbon at the top of the Raivin web interface is available on every page of the web interface.  The following six elements are available on every page of the Raivin web interface.</p>
 <ol>
 <li>On the left, the "Home" button with the Au-Zone icon, which will return the user to the Main Page.</li>
 <li>In the middle, the title of the current page.</li>
+<li>On the right side, we first have the Recording Indicator, shown as a grey oval with "REC" when not recording from the sensors and a red oval when recording.</li>
+<li>The MCAP Details Modal button, which opens the MCAP Modal.</li>
+<li>The System Status Indicator and Dropdown button.</li>
 <li>The farthest rightmost button, with the gear icon, is the Settings Buttons and will take you to the <a href="../configuration/">Settings Page</a>.</li>
 </ol>
-<p>On the right side of the ribbon, we have a grouping of two indicators on a dropdown menu.  These items are only shown on the Main Page and the pages clicked from the five cards on the Main Page.  These elements, from left to right, are:</p>
-<ol>
-<li>The Recording Indicator, shown as a red circle when recording from the sensors.</li>
-<li>The System Status Indicator.</li>
-<li>The Status Information Dropdown button.</li>
-</ol>
+<h3 id="the-mcap-modal">The MCAP Modal</h3>
+<p>The MCAP Modal is the interface to manage MCAP recordings, including getting information about recorded MCAP files, disk usage, deletion and downloading files.  More information about the MCAP Modal and recording MCAPs is in the <a href="../recording/">Recording section</a></p>
+<figure>
+<img align="center" alt="Dropdown reporting bad" src="../assets/quickStart-mcap.png" /><br />
+<figcaption>The Radar Publishing service is down.</figcaption>
+</figure>
 <h3 id="system-status-indicator">System Status Indicator</h3>
 <p>Mousing over the System Status Indicator field will give a brief summary of any problems.  </p>
 <figure>
@@ -4395,6 +4416,11 @@
 <figcaption>The Radar Publishing service is down.</figcaption>
 </figure>
 <p>More on these status can be found in the <a href="../replay/#status-monitoring">Status Monitoring section</a>.</p>
+<p>Clicking on the indicator will bring up the Service Status Modal, which contains a list of services and, if available, clickable gear icons that link to the service's configuration page.</p>
+<figure>
+<img align="center" alt="Service Status Modal" src="../assets/quickStart-serviceStatusModal.png" /><br />
+<figcaption>Service Status Modal</figcaption>
+</figure>
 <h2 id="the-visualization-pages">The Visualization Pages</h2>
 <p>These pages contain the user-facing functionality of the vision module.</p>
 <h3 id="the-segmentation-page">The Segmentation Page</h3>
@@ -4426,6 +4452,13 @@
 <figcaption>GPS Page</figcaption>
 </figure>
 <p>This should be familiar to anyone who has used standard map web interfaces.  The map can be moved by dragging with left-mouse button (or touch with a touchscreen-enabled device).  The "+" and "-" buttons on the left will zoom-in and zoom-out on the map.  The "Refresh" button will re-center the map on the device's location.  The latitude and longitude are also reported on the web interface.</p>
+<h3 id="the-lidar-view-page-raivin-only">The Lidar View Page (Raivin-only)</h3>
+<p>This page shows the segmentation view, the occupancy grid, and the 3D LiDAR view.  The 3D LiDAR view will be blank if the device does not have a LiDAR unit connected.</p>
+<figure>
+<img align="center" alt="GPS Page" src="../assets/quickStart-lidar.png" />
+
+<figcaption>Lidar View Page</figcaption>
+</figure>
 <h3 id="the-imu-page">The IMU Page</h3>
 <p>The IMU page shows the device's orientation in 3D.  </p>
 <figure>
@@ -4434,14 +4467,6 @@
 <figcaption>IMU Page</figcaption>
 </figure>
 <p>By physically moving the device, it's virtual counterpart should move the same way.  Roll, pitch, and yaw values are reported.  If the device's virtual orientation does not match the physical orientation, keep the device's bottom flat and hit the "Reset Orientation" button.</p>
-<h3 id="the-mcap-recording-page">The MCAP Recording Page</h3>
-<p>The MCAP Recording Page manages the device's operational state as well as the current recordings on the device.  </p>
-<figure>
-<img align="center" alt="MCAP Page" src="../assets/quickStart-mcap.png" />
-
-<figcaption>MCAP Page</figcaption>
-</figure>
-<p>More information for this page can be found in the <a href="../recording/">Recording section</a>.</p>
 
 
 
@@ -4620,7 +4645,7 @@
       <script id="__config" type="application/json">{"base": "../..", "features": ["content.code.copy", "content.tabs.link", "navigation.tracking", "navigation.tabs", "navigation.tabs.sticky", "navigation.path", "navigation.indexes", "navigation.top", "toc.follow"], "search": "../../assets/javascripts/workers/search.d50fe291.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"alias": true, "default": "latest", "provider": "mike"}}</script>
     
     
-      <script src="../../assets/javascripts/bundle.13a4f30d.min.js"></script>
+      <script src="../../assets/javascripts/bundle.56ea9cef.min.js"></script>
       
         <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
       

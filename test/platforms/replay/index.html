@@ -22,7 +22,7 @@
       
       
       <link rel="icon" href="../../assets/favicon.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.14">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.15">
     
     
       
@@ -2591,6 +2591,39 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#status-monitoring" class="md-nav__link">
+    <span class="md-ellipsis">
+      Status Monitoring
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Status Monitoring">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#status-indicator-button-maivinraivin-only" class="md-nav__link">
+    <span class="md-ellipsis">
+      Status Indicator Button (Maivin/Raivin only)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#recording-button" class="md-nav__link">
+    <span class="md-ellipsis">
+      Recording Button
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -4278,6 +4311,39 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#status-monitoring" class="md-nav__link">
+    <span class="md-ellipsis">
+      Status Monitoring
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Status Monitoring">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#status-indicator-button-maivinraivin-only" class="md-nav__link">
+    <span class="md-ellipsis">
+      Status Indicator Button (Maivin/Raivin only)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#recording-button" class="md-nav__link">
+    <span class="md-ellipsis">
+      Recording Button
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -4306,11 +4372,22 @@
 <li>Seamless integration with live system operations</li>
 </ul>
 <h2 id="using-the-replay-service">Using the Replay Service</h2>
-<p>The Replay Service is built into the <a href="../recording/">MCAP Recorder Page</a>.  You can visit the page by clicking the "MCAP" card on Raivin Main Page or typing <code>https://&lt;hostname&gt;/mcap</code> in your web browser.</p>
+<p>The Replay Service is built into the <a href="../recording/">MCAP Recorder Modal</a>.</p>
+<figure>
+<img align="center" alt="MCAP Recorder Interface" src="../assets/quickStart-mcap.png" />
+
+<figcaption>MCAP Modal</figcaption>
+</figure>
+<p>You can visit the page by clicking the "MCAP Details" Button on any Raivin Page.</p>
+<figure>
+<img align="center" alt="MCAP Recording and Details Buttons" src="../assets/mcap-RecordingButton_McapDetailsButton.png" />
+
+<figcaption>MCAP Recording and Details Buttons</figcaption>
+</figure>
 <h3 id="starting-playback">Starting Playback</h3>
 <ol>
 <li>Locate your desired MCAP file in the file list</li>
-<li>Click the "Play" button (▶️) next to the file</li>
+<li>Click the "Play" button <img alt="MCAP Replay Play Button" src="../assets/replay_play.png" /> next to the file</li>
 <li>
 <p>In the playback options dialog, choose your preferred settings:</p>
 <ul>
@@ -4328,11 +4405,11 @@
 <p>Click "Start" to begin playback</p>
 </li>
 </ol>
-<p>During playback, the currently playing file will be highlighted and marked as "Now Playing".  The State Indicator at the right in the top ribbon also notes we are in "Replay Mode".  </p>
+<p>During playback, the currently playing file will have its "Play" button become a "Stop" button.  The State Indicator top ribbon will also note the platform is in "Replay Mode".  </p>
 <figure>
 <img align="center" alt="MCAP Replay Options" src="../assets/replay_mode.png" />
 
-<figcaption>MCAP Replay Options</figcaption>
+<figcaption>MCAP Replay Mode</figcaption>
 </figure>
 <p>Now that the device is in "Replay Mode", the inputs to the Segmentation, Occupancy, GPS, and IMU pages will come from the MCAP file instead of from the live sensors.</p>
 <h3 id="playback-controls">Playback Controls</h3>
@@ -4346,7 +4423,7 @@
 </figure>
 <ul>
 <li>
-<p>Click the stop button (⏹️) on the playing file to end playback</p>
+<p>Click the stop button <img alt="MCAP Replay Stop Button" src="../assets/replay_stop.png" /> on the playing file to end playback</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>Stopping a file from replaying will not put the device back into "Live Mode".  You must click the "Live Mode" button to return to "Live Mode".</p>
@@ -4372,31 +4449,54 @@
 </li>
 <li>Mix and match recorded and live data sources based on your testing needs</li>
 </ul>
-<h1 id="status-monitoring">Status Monitoring</h1>
+<h2 id="status-monitoring">Status Monitoring</h2>
 <p>This section describes the various states the system can be in and how they are reported.</p>
-<h2 id="system-status-bar">System Status Bar</h2>
-<p>The status bar provides real-time information about your system's operational state and service health.</p>
-<h3 id="status-indicator">Status Indicator</h3>
-<p>Located in the top-right corner, the status indicator shows:</p>
+<h3 id="status-indicator-button-maivinraivin-only">Status Indicator Button (Maivin/Raivin only)</h3>
+<p>Located in the top-right corner, the status indicator button shows status and state:</p>
 <ul>
-<li><strong>Live Mode</strong> (Green): System is operating with live data</li>
-<li><strong>Replay Mode</strong> (Blue): System is playing back an MCAP file</li>
-<li><strong>Degraded Mode</strong> (Amber): Some services are not operating optimally</li>
-<li><strong>Critical Mode</strong> (Red): Critical services are not functioning</li>
+<li><strong>Live Mode</strong> (Green): System mode is operating with live data and system status is working normally.</li>
 </ul>
-<h3 id="recording-indicator">Recording Indicator</h3>
-<p>A pulsing red circle appears when the system is actively recording.  </p>
 <figure>
-<img align="center" alt="MCAP Replay Options" src="../assets/recorder_running.png" />
+<img alt="Live Mode Status" src="../assets/replay_livemode.png" />
 
-<figcaption>MCAP Replay Options</figcaption>
+<figcaption>Live Mode Status</figcaption>
 </figure>
-<h3 id="service-status">Service Status</h3>
-<p>Click the information (ℹ️) button to view detailed service status, which shows the individual service states (Running/Stopped).  </p>
+<ul>
+<li><strong>Replay Mode</strong> (Blue): System is playing back an MCAP file and system status is working normally.</li>
+</ul>
 <figure>
-<img align="center" alt="MCAP Replay Options" src="../assets/system_status.png" />
+<img alt="Replay Mode Status" src="../assets/replay_replay_mode.png" />
 
-<figcaption>MCAP Replay Options</figcaption>
+<figcaption>Replay Mode Status</figcaption>
+</figure>
+<ul>
+<li><strong>Stopped</strong> (Red):  System is not playing back an MCAP nor operating with live data.  </li>
+</ul>
+<figure>
+<img alt="Stopped Status" src="../assets/replay_stopped.png" />
+
+<figcaption>Stopped Status</figcaption>
+</figure>
+<ul>
+<li><strong>Degraded Mode</strong> (Amber): The system status is some expected services are not enabled.</li>
+</ul>
+<figure>
+<img alt="Degraded Status" src="../assets/replay_degraded_mode.png" />
+
+<figcaption>Degraded Status</figcaption>
+</figure>
+<p>Click this button to view detailed service status, which shows the individual service states (Running/Stopped).  </p>
+<figure>
+<img align="center" alt="Service Status Modal" src="../assets/quickStart-serviceStatusModal.png" />
+
+<figcaption>Service Status Modal</figcaption>
+</figure>
+<h3 id="recording-button">Recording Button</h3>
+<p>The button changes to contain a pulsing white circle and non-pulsing text on a red background when the system is actively recording.  </p>
+<figure>
+<img align="center" alt="MCAP Recording" src="../assets/mcap_recording.png" />
+
+<figcaption>Recording</figcaption>
 </figure>
 
 
@@ -4576,7 +4676,7 @@
       <script id="__config" type="application/json">{"base": "../..", "features": ["content.code.copy", "content.tabs.link", "navigation.tracking", "navigation.tabs", "navigation.tabs.sticky", "navigation.path", "navigation.indexes", "navigation.top", "toc.follow"], "search": "../../assets/javascripts/workers/search.d50fe291.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"alias": true, "default": "latest", "provider": "mike"}}</script>
     
     
-      <script src="../../assets/javascripts/bundle.13a4f30d.min.js"></script>
+      <script src="../../assets/javascripts/bundle.56ea9cef.min.js"></script>
       
         <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
       

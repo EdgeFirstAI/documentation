@@ -22,7 +22,7 @@
       
       
       <link rel="icon" href="../../../assets/favicon.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.14">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.15">
     
     
       
@@ -1299,19 +1299,37 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#record-mcaps" class="md-nav__link">
+  <a href="#remote-device-web-interface" class="md-nav__link">
     <span class="md-ellipsis">
-      Record MCAPs
+      Remote Device Web Interface
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Record MCAPs">
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#recording-an-mcap" class="md-nav__link">
+    <span class="md-ellipsis">
+      Recording an MCAP
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Recording an MCAP">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#download-recorded-mcaps" class="md-nav__link">
+  <a href="#starting-a-recording" class="md-nav__link">
     <span class="md-ellipsis">
-      Download Recorded MCAPs
+      Starting a Recording
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#stopping-a-recording" class="md-nav__link">
+    <span class="md-ellipsis">
+      Stopping a Recording
     </span>
   </a>
   
@@ -1319,6 +1337,33 @@
         
       </ul>
     </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#downloading-the-mcap-recording" class="md-nav__link">
+    <span class="md-ellipsis">
+      Downloading the MCAP Recording
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#video-tutorials" class="md-nav__link">
+    <span class="md-ellipsis">
+      Video Tutorials
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#next-steps" class="md-nav__link">
+    <span class="md-ellipsis">
+      Next Steps
+    </span>
+  </a>
   
 </li>
       
@@ -4171,19 +4216,37 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#record-mcaps" class="md-nav__link">
+  <a href="#remote-device-web-interface" class="md-nav__link">
     <span class="md-ellipsis">
-      Record MCAPs
+      Remote Device Web Interface
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Record MCAPs">
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#recording-an-mcap" class="md-nav__link">
+    <span class="md-ellipsis">
+      Recording an MCAP
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Recording an MCAP">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#download-recorded-mcaps" class="md-nav__link">
+  <a href="#starting-a-recording" class="md-nav__link">
     <span class="md-ellipsis">
-      Download Recorded MCAPs
+      Starting a Recording
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#stopping-a-recording" class="md-nav__link">
+    <span class="md-ellipsis">
+      Stopping a Recording
     </span>
   </a>
   
@@ -4191,6 +4254,33 @@
         
       </ul>
     </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#downloading-the-mcap-recording" class="md-nav__link">
+    <span class="md-ellipsis">
+      Downloading the MCAP Recording
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#video-tutorials" class="md-nav__link">
+    <span class="md-ellipsis">
+      Video Tutorials
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#next-steps" class="md-nav__link">
+    <span class="md-ellipsis">
+      Next Steps
+    </span>
+  </a>
   
 </li>
       
@@ -4212,43 +4302,78 @@
 
 <h1 id="dataset-capture">Dataset Capture</h1>
 <p>This page will provide tutorials for capturing datasets.  Datasets can be captured using any device with a camera such as a phone.  However, these datasets will only train <a href="../../../models/modelpack/">Vision models</a>.  Datasets that were captured using a <a href="../../../platforms/">Raivin Platform</a> with Radar or LiDAR modules can train <a href="../../../models/fusion/">Fusion models</a>.</p>
-<h2 id="record-mcaps">Record MCAPs</h2>
-<p>This tutorial provides high-level instructions for recording MCAPs using an <a href="../../../platforms/">EdgeFirst Platform</a>.  For an in depth tutorial, please refer to the <a href="../../../platforms/recording/">MCAP Recording Service</a>.</p>
-<div style="text-align: center;">
-    <iframe width="560" height="315" src="https://www.youtube.com/embed/GVlkq9p0G5c" title="Dataset Recording" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-</div>
-
-<p>On your browser, enter the following URL <code>https://&lt;hostname&gt;/</code>.</p>
+<h2 id="remote-device-web-interface">Remote Device Web Interface</h2>
+<p>Use your browser to connect to the Web UI of the remote device, enter the following URL <code>https://&lt;hostname&gt;/</code>.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>Replace <code>&lt;hostname&gt;</code> with the hostname of your device.</p>
 </div>
-<p>You will be greeted to the <a href="../../../platforms/walkthrough/">Web UI Service</a> page.</p>
+<p>You will be greeted with the Maivin <a href="../../../platforms/walkthrough/">WebUI Main Page</a> page.</p>
 <figure>
-<img align="center" alt="Web UI Service Page" src="../../assets/webui-service-page.jpg" />
+<img align="center" alt="WebUI Main Page" src="../../../platforms/assets/ui-maivinMain.png" />
 
-<figcaption>Web UI Service Page</figcaption>
+<figcaption>WebUI Main Page</figcaption>
 </figure>
-<p>To record data, click on the "MCAP Recorder" service indicated in red above.  Once clicked, you will be greeted with the <a href="../../../platforms/walkthrough/#the-mcap-recording-page">MCAP Recording Service</a> page.</p>
+<h2 id="recording-an-mcap">Recording an MCAP</h2>
+<p>MCAP recordings can be started and stopped using the Recording Button at the device's <a href="../../../platforms/walkthrough/#the-top-ribbon">top navbar</a>.  It is to the left of the MCAP Details hamburger button, which is used to open the <a href="../../../platforms/recording/#the-mcap-modal">MCAP Details Modal</a>.</p>
 <figure>
-<img align="center" alt="MCAP Recording Page" src="../../assets/mcap-recording-page.jpg" />
+<img align="center" alt="MCAP Recording and Details Buttons" src="../../../platforms/assets/mcap-RecordingButton_McapDetailsButton.png" />
 
-<figcaption>MCAP Recording Page</figcaption>
+<figcaption>MCAP Recording and Details Buttons</figcaption>
 </figure>
-<p>To start recording toggle/enable the <em>Recording</em> button indicated above and to stop the recording re-toggle/disable the same button. </p>
-<p>For more information on managing recordings, please see the <a href="../../../platforms/recording/#managing-recordings">Managing Recordings Tutorial</a>.</p>
-<h3 id="download-recorded-mcaps">Download Recorded MCAPs</h3>
-<p>This tutorial shows how to download recorded MCAPs.  For more information on downloading MCAPs, please see <a href="../../../platforms/recording/#downloading-and-analysis">Downloading and Analysis</a>.</p>
+<p>Both of these buttons are available on every page of the Maivin, Raivin, and other edge devices running the EdgeFirst middleware.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>You must close all modals to be able to click the "Recording" and "Details" Buttons.</p>
+</div>
+<p>For more information about recording MCAPs, please read the <a href="../../../platforms/recording/">MCAP Recording section</a>.</p>
+<h3 id="starting-a-recording">Starting a Recording</h3>
+<p>To start a recording, simply click the "Recording" button to begin capturing data.</p>
+<figure>
+<img align="center" alt="MCAP Recording" src="../../../platforms/assets/mcap_recording.png" /><br />
+<figcaption>MCAP Recording</figcaption>
+</figure>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>It may take up to 30 seconds for a recording to start, depending on topic tracked.</p>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>If there is not enough room on the drive to record a MCAP, recording will automatically stop and you will get a "Low Disk Space" error.
+ <figure markdown="span">
+ <img align="center" alt="MCAP Low Disk Space Warning" src="../../../platforms/assets/mcap_low-disk-space.png" /><br />
+ <figcaption>MCAP Low Disk Space Warning</figcaption>
+ </figure></p>
+</div>
+<p>If you were to open the MCAP Details Modal while recording, you would see a new MCAP file in the MCAP list.</p>
+<figure>
+<img align="center" alt="MCAP Modal While Recording" src="../../../platforms/assets/mcap_modal_while_recording.png" /><br />
+<figcaption>MCAP Modal While Recording</figcaption>
+</figure>
+<h3 id="stopping-a-recording">Stopping a Recording</h3>
+<p>To stop recording, click the "Recording" button a second time.</p>
+<h2 id="downloading-the-mcap-recording">Downloading the MCAP Recording</h2>
+<p>To download an MCAP recording from the device, click the MCAP Details hamburger button to open the MCAP Details Modal.</p>
+<figure>
+<img align="center" alt="MCAP Recorder Interface" src="../../../platforms/assets/quickStart-mcap.png" />
+
+<figcaption>MCAP Modal</figcaption>
+</figure>
+<p>Use the "Download" button <img alt="&quot;Download Button&quot;" src="../../../platforms/assets/mcap_download.png" /> in the row containing the name of the MCAP file you want to download, which will download the MCAP file to your local machine.</p>
+<p>You can also use an <a href="../../../platforms/ssh/#secure-copy">SSH client to copy files</a> off the Raivin.</p>
+<h2 id="video-tutorials">Video Tutorials</h2>
+<p>This tutorial provides high-level instructions for recording MCAPs using an <a href="../../../platforms/">EdgeFirst Platform</a>.  For in-depth documentation, please refer to the <a href="../../../platforms/recording/">MCAP Recording Service</a>.</p>
+<div style="text-align: center;">
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/GVlkq9p0G5c" title="Dataset Recording" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+</div>
+
+<p>This tutorial shows how to download recorded MCAPs.  </p>
 <div style="text-align: center;">
     <iframe width="560" height="315" src="https://www.youtube.com/embed/j-75Q5-_dC0?start=0&end=558" title="Download Recording" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 </div>
 
-<p>The MCAP files are listed under the list of MCAP files which can then be downloaded to your PC.</p>
-<figure>
-<img align="center" alt="Recorded MCAP" src="../../assets/recorded-mcap.jpg" />
-
-<figcaption>Recorded MCAP</figcaption>
-</figure>
+<p>For more information on managing recordings, please see the <a href="../../../platforms/recording/#managing-recordings">Managing Recordings Section</a>.</p>
+<h2 id="next-steps">Next Steps</h2>
 <p>To upload the downloaded MCAPs into EdgeFirst Studio, follow the instructions for <a href="../management/#upload-mcaps">uploading MCAPs</a>.</p>
 
 
@@ -4428,7 +4553,7 @@
       <script id="__config" type="application/json">{"base": "../../..", "features": ["content.code.copy", "content.tabs.link", "navigation.tracking", "navigation.tabs", "navigation.tabs.sticky", "navigation.path", "navigation.indexes", "navigation.top", "toc.follow"], "search": "../../../assets/javascripts/workers/search.d50fe291.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"alias": true, "default": "latest", "provider": "mike"}}</script>
     
     
-      <script src="../../../assets/javascripts/bundle.13a4f30d.min.js"></script>
+      <script src="../../../assets/javascripts/bundle.56ea9cef.min.js"></script>
       
         <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
       

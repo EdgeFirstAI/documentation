@@ -22,7 +22,7 @@
       
       
       <link rel="icon" href="../../assets/favicon.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.14">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.15">
     
     
       
@@ -2521,19 +2521,28 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#the-mcap-modal" class="md-nav__link">
+    <span class="md-ellipsis">
+      The MCAP Modal
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#using-the-recorder" class="md-nav__link">
+  <a href="#recording-an-mcap" class="md-nav__link">
     <span class="md-ellipsis">
-      Using the Recorder
+      Recording an MCAP
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Using the Recorder">
+    <nav class="md-nav" aria-label="Recording an MCAP">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -2546,9 +2555,9 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#managing-recordings" class="md-nav__link">
+  <a href="#stopping-a-recording" class="md-nav__link">
     <span class="md-ellipsis">
-      Managing Recordings
+      Stopping a Recording
     </span>
   </a>
   
@@ -2560,9 +2569,18 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#downloading-and-analysis" class="md-nav__link">
+  <a href="#downloading-the-mcap-recording" class="md-nav__link">
     <span class="md-ellipsis">
-      Downloading and Analysis
+      Downloading the MCAP Recording
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#managing-recordings" class="md-nav__link">
+    <span class="md-ellipsis">
+      Managing Recordings
     </span>
   </a>
   
@@ -4258,19 +4276,28 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#the-mcap-modal" class="md-nav__link">
+    <span class="md-ellipsis">
+      The MCAP Modal
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#using-the-recorder" class="md-nav__link">
+  <a href="#recording-an-mcap" class="md-nav__link">
     <span class="md-ellipsis">
-      Using the Recorder
+      Recording an MCAP
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Using the Recorder">
+    <nav class="md-nav" aria-label="Recording an MCAP">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -4283,9 +4310,9 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#managing-recordings" class="md-nav__link">
+  <a href="#stopping-a-recording" class="md-nav__link">
     <span class="md-ellipsis">
-      Managing Recordings
+      Stopping a Recording
     </span>
   </a>
   
@@ -4297,9 +4324,18 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#downloading-and-analysis" class="md-nav__link">
+  <a href="#downloading-the-mcap-recording" class="md-nav__link">
     <span class="md-ellipsis">
-      Downloading and Analysis
+      Downloading the MCAP Recording
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#managing-recordings" class="md-nav__link">
+    <span class="md-ellipsis">
+      Managing Recordings
     </span>
   </a>
   
@@ -4359,48 +4395,84 @@
 <li>Automatically saves the file upon service termination</li>
 <li>Provides real-time recording status</li>
 </ul>
-<h2 id="using-the-recorder">Using the Recorder</h2>
-<p>The MCAP Recording Service is managed on its own visualization page, which can be accessed by clicking the "MCAP" card on the Raivin Main Page or by typing <code>https://&lt;hostname&gt;/mcap</code> in your browser window.  </p>
+<h3 id="the-mcap-modal">The MCAP Modal</h3>
+<p>The MCAP Recording Service is managed on its own modal, which can be accessed by clicking the "MCAP Details" button on the top navbar of any Raivin Web UI Page.</p>
 <figure>
-<img align="center" alt="MCAP Recorder Interface" src="../assets/mcap_recorder.png" />
+<img align="center" alt="MCAP Recorder Interface" src="../assets/quickStart-mcap.png" />
 
-<figcaption>MCAP Recorder Interface</figcaption>
+<figcaption>MCAP Modal</figcaption>
 </figure>
-<p>At the top of page, under the ribbon, we have the Recording Toggle, which will start or end an MCAP recording.  We also have the "Live Mode" button, which will take the Raivin out of <a href="../replay/">"Replay Mode"</a> and back to "Live Mode".</p>
-<p>Under this, we have the listing of MCAP files currently the MCAP recording directory.  This directory is noted at the top of the list -- in the above image, it is <code>/media/DATA</code>.</p>
-<p>For each MCAP file, the following elements and information exist, starting from left to right:</p>
+<p>At the top ribbon of the MCAP Modal we have the title, the Disk Usage Infobar, and the "Live Mode" button. Under the ribbon, we have the Recording Toggle, which will start or end an MCAP recording. We also have the "Live Mode" button, which will take the Raivin out of <a href="../replay/">"Replay Mode"</a> and back to "Live Mode".</p>
+<p>Underneath the MCAP navbar, we have the current MCAP recording directory -- in the above image, it is <code>/media/DATA</code>. Under this directory text, we have a "select all" checkbox which can be used to select every MCAP for deletion; the "Delete Selected" button which will delete the MCAP selected by the checkboxes, and the "Search files..." textfield if we need to search for a specific file.</p>
+<p>Under all of that, we have a list of MCAP files in the recording directory. For each MCAP file, the following elements and information exist, starting from left to right:</p>
 <ul>
-<li>A playback button. Clicking this will put the device into <a href="../replay/">"Replay Mode"</a>, replaying the sensor information from this MCAP file.</li>
+<li>A selection checkbox.</li>
+<li>A playback button <img alt="&quot;Replay Button&quot;" src="../assets/replay_play.png" />. Clicking this will put the device into <a href="../replay/">"Replay Mode"</a>, replaying the sensor information from this MCAP file.</li>
 <li>The filename of the MCAP</li>
 <li>The size of the MCAP, in MB</li>
 <li>The creation date and time of the MCAP</li>
-<li>The video length of the MCAP</li>
-<li>Four Action buttons, which are:<ul>
-<li>The "Details" button, which shows information about the topics recorded in the MCAP file (see below).</li>
-<li>The greyed-out and currently non-functionality "Upload" button.</li>
-<li>The "Download" button, which will download the MCAP file to your local machine.</li>
-<li>The "Delete" button, which will remove the MCAP file.</li>
+<li>Three Action buttons, which are:<ul>
+<li>The "Info" button <img alt="&quot;Info Button&quot;" src="../assets/mcap_information.png" />, which shows information about the topics recorded in the MCAP file (see below).</li>
+<li>The "Download" button <img alt="&quot;Download Button&quot;" src="../assets/mcap_download.png" />, which will download the MCAP file to your local machine.</li>
+<li>The "Delete" button <img alt="&quot;Delete Button&quot;" src="../assets/mcap_delete.png" />, which will remove the MCAP file.</li>
 </ul>
 </li>
 </ul>
+<p>To leave the MCAP Modal, click the "X" close button in the top right corner of the modal.</p>
+<h2 id="recording-an-mcap">Recording an MCAP</h2>
+<p>MCAP recordings can be started and stopped using the Recording Button at the device's <a href="../walkthrough/#the-top-ribbon">top navbar</a>.  It is to the left of the MCAP Details hamburger button, which is used to open the <a href="./#the-mcap-modal">MCAP Details Modal</a>.</p>
+<figure>
+<img align="center" alt="MCAP Recording and Details Buttons" src="../assets/mcap-RecordingButton_McapDetailsButton.png" />
+
+<figcaption>MCAP Recording and Details Buttons</figcaption>
+</figure>
+<p>Both of these buttons are available on every page of the Maivin, Raivin, and other edge devices running the EdgeFirst middleware.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>You must close all modals to be able to click the "Recording" and "Details" Buttons.</p>
+</div>
+<p>For more information about recording MCAPs, please read the <a href="./">MCAP Recording section</a>.</p>
 <h3 id="starting-a-recording">Starting a Recording</h3>
-<p>To start a recording, simply click the "Recording" toggle to begin capturing data.</p>
+<p>To start a recording, simply click the "Recording" button to begin capturing data.</p>
 <figure>
 <img align="center" alt="MCAP Recording" src="../assets/mcap_recording.png" /><br />
 <figcaption>MCAP Recording</figcaption>
 </figure>
-<p>Note the the red text describing that recording is in progress with the filename of the recording.  Also notice the the Recording notification on the top ribbon is now on.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>It may take up to 30 seconds for a recording to start, depending on topic tracked.</p>
 </div>
-<p>To stop recording, click the "Recording" toggle a second time.</p>
-<h3 id="managing-recordings">Managing Recordings</h3>
-<p>Once a recording is complete, you can see the size in MB and duration in seconds of the captured data on the MCAP page.  You can also get more detailed metadata, such as the topics recorded, by clicking the "Details" button for the MCAP recording.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>If there is not enough room on the drive to record a MCAP, recording will automatically stop and you will get a "Low Disk Space" error.
+ <figure markdown="span">
+ <img align="center" alt="MCAP Low Disk Space Warning" src="../assets/mcap_low-disk-space.png" /><br />
+ <figcaption>MCAP Low Disk Space Warning</figcaption>
+ </figure></p>
+</div>
+<p>If you were to open the MCAP Details Modal while recording, you would see a new MCAP file in the MCAP list.</p>
+<figure>
+<img align="center" alt="MCAP Modal While Recording" src="../assets/mcap_modal_while_recording.png" /><br />
+<figcaption>MCAP Modal While Recording</figcaption>
+</figure>
+<h3 id="stopping-a-recording">Stopping a Recording</h3>
+<p>To stop recording, click the "Recording" button a second time.</p>
+<h2 id="downloading-the-mcap-recording">Downloading the MCAP Recording</h2>
+<p>To download an MCAP recording from the device, click the MCAP Details hamburger button to open the MCAP Details Modal.</p>
+<figure>
+<img align="center" alt="MCAP Recorder Interface" src="../assets/quickStart-mcap.png" />
+
+<figcaption>MCAP Modal</figcaption>
+</figure>
+<p>Use the "Download" button <img alt="&quot;Download Button&quot;" src="../assets/mcap_download.png" /> in the row containing the name of the MCAP file you want to download, which will download the MCAP file to your local machine.</p>
+<p>You can also use an <a href="../ssh/#secure-copy">SSH client to copy files</a> off the Raivin.</p>
+<h2 id="managing-recordings">Managing Recordings</h2>
+<p>Once a recording is complete, you can see the size in MB of the captured data on the MCAP page.  You can also get more detailed metadata, such as the topics recorded, by clicking the "Details" button for the MCAP recording.</p>
 <figure>
 <img align="center" alt="MCAP File Details" src="../assets/mcap_detail.png" /><br />
 <figcaption>MCAP File Details</figcaption>
 </figure>
+<p>The details modal contains the filename, size, duration in seconds, and a list of each topic captured with frame count and frames per second of data for the topic.</p>
 <p>At the bottom of the "File Details" modal, there is a "Close" button to close the modal.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
@@ -4411,9 +4483,7 @@
 <li><em>HH_MM_SS</em> is the UTC time the recording started in 24-hour notation</li>
 </ul>
 </div>
-<p>Any MCAP recording can be deleted by clicking its "Delete" button and confirming that you wish to delete the recording.</p>
-<h2 id="downloading-and-analysis">Downloading and Analysis</h2>
-<p>Click the "Download" button to save the MCAP file to your PC.  You can also use a <a href="../ssh/#secure-copy">SSH client to copy files</a> off the Raivin.</p>
+<p>Any MCAP recording can be deleted by clicking its "Delete" button and confirming that you wish to delete the recording, as well as clicking its checkbox and clicking the "Delete Selected" button.</p>
 <h2 id="configuration">Configuration</h2>
 <p>The Recorder Service can have the following settings configured:</p>
 <ul>
@@ -4625,7 +4695,7 @@
       <script id="__config" type="application/json">{"base": "../..", "features": ["content.code.copy", "content.tabs.link", "navigation.tracking", "navigation.tabs", "navigation.tabs.sticky", "navigation.path", "navigation.indexes", "navigation.top", "toc.follow"], "search": "../../assets/javascripts/workers/search.d50fe291.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"alias": true, "default": "latest", "provider": "mike"}}</script>
     
     
-      <script src="../../assets/javascripts/bundle.13a4f30d.min.js"></script>
+      <script src="../../assets/javascripts/bundle.56ea9cef.min.js"></script>
       
         <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
       

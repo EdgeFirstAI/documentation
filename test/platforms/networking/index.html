@@ -22,7 +22,7 @@
       
       
       <link rel="icon" href="../../assets/favicon.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.14">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.15">
     
     
       
@@ -4540,16 +4540,16 @@ network0:958cc5e3-1bbf-3d64-beeb-020d4414e254:802-3-ethernet:ethernet0
 </code></pre></div>
 <p>The following steps are then followed to configure the static IP address.  Note that the network bitmask (or netmask) is provided in <a href="https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing">Classless Inter-Domain Routing (CIDR)</a> format.  This lists the numbers of bits to set in the IP address as belonging to the network.  For example, the netmask '255.255.255.0' has the first 24 bits set (each 255 is 8 bits), so the netmask is set using <code>/24</code>.  You may need to adjust this according to your specific network configuration.</p>
 <ol>
-<li>Set the static IP address:</li>
-<li><code>nmcli con mod network0 ipv4.addresses 192.168.1.10/24</code></li>
-<li>Set the gateway, if required:</li>
-<li><code>nmcli con mod network0 ipv4.gateway 192.168.1.1</code></li>
-<li>Set the DNS, if required:</li>
-<li><code>nmcli con mod network0 ipv4.dns 8.8.8.8</code></li>
-<li>Set the IPv4 method to manual:</li>
-<li><code>nmcli con mod network0 ipv4.method manual</code></li>
-<li>Finally, bring up the new configuration (or sudo reboot the unit):</li>
-<li><code>nmcli con up network0</code></li>
+<li>Set the static IP address:<br />
+<code>nmcli con mod network0 ipv4.addresses 192.168.1.10/24</code></li>
+<li>Set the gateway, if required:<br />
+<code>nmcli con mod network0 ipv4.gateway 192.168.1.1</code></li>
+<li>Set the DNS, if required:<br />
+<code>nmcli con mod network0 ipv4.dns 8.8.8.8</code></li>
+<li>Set the IPv4 method to manual:<br />
+<code>nmcli con mod network0 ipv4.method manual</code></li>
+<li>Finally, bring up the new configuration (or sudo reboot the unit):<br />
+<code>nmcli con up network0</code></li>
 </ol>
 <p>The device should now be configured with the new static IP address.</p>
 <div class="admonition warning">
@@ -4567,16 +4567,16 @@ network0:958cc5e3-1bbf-3d64-beeb-020d4414e254:802-3-ethernet:ethernet0
 <h3 id="re-enable-dhcp">Re-enable DHCP</h3>
 <p>To revert the connection to using DHCP you must follow these steps.</p>
 <ol>
-<li>Configure automatic (DHCP) mode:</li>
-<li><code>nmcli con mod network0 ipv4.method auto</code></li>
-<li>Remove the previous static addresses:</li>
-<li><code>nmcli con mod network0 ipv4.addresses ""</code></li>
-<li>Remove the previous gateway:</li>
-<li><code>nmcli con mod network0 ipv4.gateway ""</code></li>
-<li>Remove the previous DNS:</li>
-<li><code>nmcli con mod network0 ipv4.dns ""</code></li>
-<li>Activate the changes:</li>
-<li><code>nmcli con up network0</code></li>
+<li>Configure automatic (DHCP) mode:<br />
+<code>nmcli con mod network0 ipv4.method auto</code></li>
+<li>Remove the previous gateway:<br />
+<code>nmcli con mod network0 ipv4.gateway ""</code></li>
+<li>Remove the previous static addresses:<br />
+<code>nmcli con mod network0 ipv4.addresses ""</code></li>
+<li>Remove the previous DNS:<br />
+<code>nmcli con mod network0 ipv4.dns ""</code></li>
+<li>Activate the changes:<br />
+<code>nmcli con up network0</code></li>
 </ol>
 <h3 id="mixed-static-and-dhcp">Mixed Static and DHCP</h3>
 <p>NetworkManager allows mixed static and DHCP configurations.   If you configure <code>ipv4.method auto</code> you can still configure some of the other IPv4 parameters statically.</p>
@@ -4588,13 +4588,13 @@ network0:958cc5e3-1bbf-3d64-beeb-020d4414e254:802-3-ethernet:ethernet0
 </div>
 <p>NetworkManager handles the WiFi client configuration.  Follow these steps to connect to an AP, you will need to know the AP Service Set Identifer (SSID, usually the network name) and the password, if required.</p>
 <ol>
-<li>First scan for available WiFi networks to join:</li>
-<li><code>nmcli device wifi list</code></li>
-<li>Connect to the desired WiFi network using the SSID:</li>
-<li><code>nmcli -a device wifi connect &lt;SSID&gt;</code></li>
+<li>First scan for available WiFi networks to join:<br />
+<code>nmcli device wifi list</code></li>
+<li>Connect to the desired WiFi network using the SSID:<br />
+<code>nmcli -a device wifi connect &lt;SSID&gt;</code></li>
 <li>Enter the password, if needed, when prompted.</li>
-<li>Confirm the <code>mlan0</code> interface is up and has received an IP address:</li>
-<li><code>ifconfig mlan0</code></li>
+<li>Confirm the <code>mlan0</code> interface is up and has received an IP address:<br />
+<code>ifconfig mlan0</code></li>
 </ol>
 <h2 id="wifi-ap-setup">WiFi AP Setup</h2>
 <p>Maivin units with WiFi can be configured as an AP allowing client devices to connect to the Maivin.  Instead of using NetworkManager, we use the <a href="https://wireless.docs.kernel.org/en/latest/en/users/documentation/hostapd.html">Host AP daemon (hostapd)</a>.</p>
@@ -4907,7 +4907,7 @@ sudo<span class="w"> </span>systemctl<span class="w"> </span>start<span class="w
       <script id="__config" type="application/json">{"base": "../..", "features": ["content.code.copy", "content.tabs.link", "navigation.tracking", "navigation.tabs", "navigation.tabs.sticky", "navigation.path", "navigation.indexes", "navigation.top", "toc.follow"], "search": "../../assets/javascripts/workers/search.d50fe291.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"alias": true, "default": "latest", "provider": "mike"}}</script>
     
     
-      <script src="../../assets/javascripts/bundle.13a4f30d.min.js"></script>
+      <script src="../../assets/javascripts/bundle.56ea9cef.min.js"></script>
       
         <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
       

@@ -51,8 +51,6 @@ Below is a detailed breakdown of the sidebar.
 <figcaption>AGTG Object Card </figcaption>
 </figure>
 
-
-
 Note: For adding subsequent objects you need to press the "+" icon besides the "Select Objects". Also note that Object class (label) should be selection from the object label drop down.
 
 

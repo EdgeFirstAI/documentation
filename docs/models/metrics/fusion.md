@@ -72,7 +72,7 @@ The precision vs. recall curve is based on varying detection thresholds from 0 t
   <figcaption>Precision vs. Recall</figcaption>
 </figure>
 
-Another representation of the precision vs. recall is to incorporate the varying threshold in the plot.  The following curve shows the precision and recall vs. thresholds curve.  As mentioned, at lower thresholds precision is low and recall is high, but increasing the threshold we can see precision and recall converge to a point.  The point of convergence indicates the ideal threshold to use for deploying the model.  This is the optimum threshold where precision and recall are balanced such that one is not sacrificing the other.  
+Another representation of the precision vs. recall is to incorporate the varying threshold in the plot.  The following curve shows the "Precision and Recall versus Thresholds" curve.  At lower thresholds, precision is low and recall is high.  By increasing the threshold, we can see precision and recall converge.  The point of convergence indicates the ideal threshold to use for deploying the model.  This is the optimum threshold where precision and recall are balanced such that one is not sacrificing the other.  
 
 <figure markdown="span">
   ![Precision and Recall vs Thresholds](../assets/metrics/fusion-precision-recall-thresholds.jpg){ align=center }

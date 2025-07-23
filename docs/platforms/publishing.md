@@ -10,7 +10,7 @@ For the examples below, we will use the Raivin with a hostname of `verdin-imx8mp
 <figcaption>Example MCAP Recorder Page</figcaption>
 </figure>
 
-## Pre-requisites
+## Prerequisites
 It is assumed you have followed the steps in the [Recording Service page](./recording.md) and have an MCAP file as well as working knowledge of the page.
 
 You must have followed the steps in the [EdgeFirst Studio Quick Start](../index.md) to create a user account, login to the account, and create an initial project. You will need the username and password for both publishing methods.

@@ -16,7 +16,7 @@ The dataset attributes are shown below.
 
 ## Annotation Sets
 
-Each dataset can have multiple *Annotations Sets*. An *Annotation Set* is a container for storing the annotations in the datast. Each *Annotation Set* contains annotations from a different source (i.e. different annotation teams, or inferences from models).
+Each dataset can have multiple *Annotations Sets*. An *Annotation Set* is a container for storing the annotations in the dataset. Each *Annotation Set* contains annotations from a different source (i.e. different annotation teams, or inferences from models).
 
 ### Annotation Set Operation
 
@@ -46,9 +46,9 @@ The edit dialog allows to:
 - Groups allow images to be associated with a certain functionality such as training images, validation images, images with errors, etc.
 - One image can be associated with zero or only one group at a time.
 - Use the slider to adjust percentages for each group.
-- If *Only ungrouped images* is unchecked, all images will be shuffled and assigned new groups.
+- If *Only non-grouped images* is unchecked, all images will be shuffled and assigned new groups.
 
-The following image shows a dialog to split ungrouped images into 2 groups, *Training* and *Validation*
+The following image shows a dialog to split non-grouped images into 2 groups, *Training* and *Validation*
 
 <figure markdown="span">
 ![Assigning Groups](../../assets/datasets/assign-groups.png){ align=center }
@@ -76,7 +76,7 @@ Change the name or description of the dataset.
 
 The dataset access control allows dataset resources to be selectively available to different users. 
 
-For more information pease visit [Access Control](../user/organization.md#roles).
+For more information please visit [Access Control](../user/organization.md#roles).
 
 ### Copy Dataset
 
@@ -105,7 +105,7 @@ There are several import types available:
 
 Select an import type. EdgeFirst Dataset is the proprietary format used by many operations in EdgeFirst Studio. Please refer to [EdgeFirst Dataset Format](../../datasets/format.md) for more information.
 
-1. Pre-create an annotation set where annotations are to be imported. If only images are imported, then this step is not required.
+1. Create an annotation set where annotations are to be imported. If only images are imported, then this step is not required.
 2. Drag and drop a folder or group of files.
 3. Select an annotation set if the annotation type allows annotation import.
 4. Click *START IMPORT*.
@@ -176,8 +176,8 @@ Datasets can be un-parked at any time for normal usage.
 
 ### Remove Dataset
 
-To delete a dataset, click *Move to Recycle Bin*. This moves the dataset and all of its contents to the recyle bin
+To delete a dataset, click *Move to Recycle Bin*. This moves the dataset and all of its contents to the recycle bin
 
 !!! note
 
-    The deleted dataset goes to the recycling bin and can be undeleted. The storage used by the dataset is only released when the dateset is purged from the recycling bin.
+    The deleted dataset goes to the recycle bin that can be restored. The storage used by the dataset is only released when the dataset is purged from the recycle bin.

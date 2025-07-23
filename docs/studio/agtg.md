@@ -67,14 +67,14 @@ You can now provide prompts to specify the object to segment.  You can either pr
 </figure>
 
 
-For multiple objects in the frame, click on the "+" again.  For every object in the frame, a new object must be added so that the tracker can assign a unique tracking ID.  The figure below shows multiple instances of coffee cup annotated using teh AI assisted annotations as described above.
+For multiple objects in the frame, click on the "+" again.  For every object in the frame, a new object must be added so that the tracker can assign a unique tracking ID.  The figure below shows multiple instances of coffee cup annotated using the AI assisted annotations as described above.
 
 <figure markdown="span">
 ![Distinct Frame Annotations](assets/multi_annotations.png){ align=center }
 <figcaption>Distinct Frame Annotations</figcaption>
 </figure>
 
-In order to propagate (track) the selected objects in the image to multiple frames, select the ending frames. Please note that the starting frame is fixed to the current frame. Click "Reverse Propagate" if ypu require to track objects from current frame to previous frames.
+In order to propagate (track) the selected objects in the image to multiple frames, select the ending frames. Please note that the starting frame is fixed to the current frame. Click "Reverse Propagate" if you require to track objects from current frame to previous frames.
 
 Then click the PROPAGATE button. 
 

@@ -210,7 +210,7 @@ Next create a new dataset by clicking the "New Dataset" button indicated in red 
 <figcaption>Create Dataset Button</figcaption>
 </figure>
 
-Provide the dataset name and the dataset desciption for this new dataset.  Once the fields are filled, click the "Create" button on the bottom left of the window dialog.
+Provide the dataset name and the dataset description for this new dataset.  Once the fields are filled, click the "Create" button on the bottom left of the window dialog.
 
 <figure markdown="span">
 ![Create Dataset Fields](../assets/create-dataset-fields.jpg){ align=center }

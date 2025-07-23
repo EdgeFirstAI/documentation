@@ -20,7 +20,7 @@ Different than YOLOx, ModelPack is NOT anchor free, which makes the model more a
 ![Darknet-53 Backbone](../assets/darknet-53-backbone.png)
 Figure reproduced from: [Yang, L., Chen, G. & Ci, W. Multiclass objects detection](https://asp-eurasipjournals.springeropen.com/articles/10.1186/s13634-023-01045-8)
 
-As mentioned above, ModelPack merges Semantic Segmentation and Object Detection on the same model and it is user reponsibility depending on problem requirements.  Semantic Segmentation only uses two scales (Scale 1 and Scale 2). On the other hand, Object Detection task uses the three scales.
+As mentioned above, ModelPack merges Semantic Segmentation and Object Detection on the same model and it is user responsibility depending on problem requirements.  Semantic Segmentation only uses two scales (Scale 1 and Scale 2). On the other hand, Object Detection task uses the three scales.
 
 While solving both tasks in the same inference cycle, the three scales are used.
 

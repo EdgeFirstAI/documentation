@@ -50,7 +50,7 @@ This page is used for managing the recycling bin. The deletions of the following
 3. Annotation Set
 4. Model Experiment
 5. Training Session
-6. Validatie Session
+6. Validate Session
 
 ## Alerts
 

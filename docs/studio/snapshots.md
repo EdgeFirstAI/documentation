@@ -85,7 +85,7 @@ This format is the [EdgeFirst Dataset Format](../datasets/format.md) where the [
 
 ## Restore Snapshot
 
-This action will take an MCAP or Zip/Arrow files and create a dataset in EdgeFirst Studio. The Backend pipelines of auto depthmap generation, object detection, and Automated Ground Truth Generation can also be selected at this time while restoring.
+This action will take an MCAP or Zip/Arrow files and create a dataset in EdgeFirst Studio. The backend pipelines for auto depth map generation, object detection, and Automated Ground Truth Generation can also be selected at this time while restoring.
 
 1. Click on the snapshot context menu (three dots).
 2. Select "Restore".

@@ -15,7 +15,7 @@ This is a combination of manual and AI assisted workflows.
 
 ### AI Assisted Annotation
 
-This feature allows users to annotate 2D,3D or 2D segments with just a 2D box prompt. For details of this workflow please refer to [AI Assited Annotation](../../studio/agtg.md).
+This feature allows users to annotate 2D,3D or 2D segments with just a 2D box prompt. For details of this workflow please refer to [AI Assisted Annotation](../../studio/agtg.md).
 
 ### Manual Annotation
 
@@ -54,7 +54,7 @@ Select the annotation ste to edit from the left panel (shown in red box).
 #### Changing Object label of a 2D Box
 
 1. Click on the label mode in 2D editing panel(shown in red box).
-2. Select the label ine the left panel (shown in red box).
+2. Select the label in the left panel (shown in red box).
 3. Click on any annotation box to change its label.
 
 ![alt text](../assets/manual_ann_3.png){: style="height:300px;align=center; "}
@@ -105,7 +105,7 @@ Select the annotation ste to edit from the left panel (shown in red box).
 #### Changing Object label of a 3D Box
 
 1. Click on the label mode in 3D editing panel(shown in red box)
-2. Select the label ine the left panel (shown in red box)
+2. Select the label in the left panel (shown in red box)
 3. Click on any annotation box to change its label.
 
 ![alt text](../assets/manual_ann_3d_label.png){: style="height:200px;align=center; "}

@@ -101,7 +101,7 @@ The following figure describes the attributes of any given training session.
 <figcaption>Training Session Attributes</figcaption>
 </figure>
 
-To compare all the training charts of each session, click on "All Charts" at the top right corner of the "Training Sessions" page.  This will show the charts from each session overlayed on top of one another for a quick comparison. 
+To compare all the training charts of each session, click on "All Charts" at the top right corner of the "Training Sessions" page.  This will show the charts from each session overlaid on top of one another for a quick comparison. 
 
 <figure markdown="span">
 ![All Charts](assets/all-charts.jpg){ align=center }

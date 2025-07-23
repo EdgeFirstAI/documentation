@@ -393,7 +393,7 @@ After setting up the Zenoh session, we will create a subscriber to the `model/ma
 
 ### Receive a message
 
-We can now await a message from that subscriber from an asynchronous function. After receiving the message, we will pass that message along to our processing function in a new thread to avoid missing messages. In addition we will log the annotations so Rerun knows what colors to use for each class.
+We can now await a message from that subscriber from an asynchronous function. After receiving the message, we will pass that message along to our processing function in a new thread to avoid missing messages. In addition we will log the annotations so Rerun knows what colours to use for each class.
 
 === "Python"
 

@@ -30,9 +30,9 @@ After setting up the Zenoh session, we will create a subscriber to the `lidar/po
         .unwrap();
     ```
 
-### Recieve a message
+### Receive a message
 
-We can now recieve a message on the subcriber. After recieving the message, we will need to deserialize it.
+We can now receive a message on the subscriber. After receiving the message, we will need to deserialize it.
 
 === "Python"
 
@@ -53,7 +53,7 @@ We can now recieve a message on the subcriber. After recieving the message, we w
     ``` rust
     use edgefirst_schemas::sensor_msgs::PointCloud2;
 
-    // Recieve a message
+    // Receive a message
     let msg = subscriber.recv().unwrap()
 
     // Deserialize message
@@ -141,9 +141,9 @@ After setting up the Zenoh session, we will create a subscriber to the `lidar/cl
         .unwrap();
     ```
 
-### Recieve a message
+### Receive a message
 
-We can now recieve a message on the subcriber. After recieving the message, we will need to deserialize it.
+We can now receive a message on the subscriber. After receiving the message, we will need to deserialize it.
 
 === "Python"
 
@@ -164,7 +164,7 @@ We can now recieve a message on the subcriber. After recieving the message, we w
     ``` rust
     use edgefirst_schemas::sensor_msgs::PointCloud2;
 
-    // Recieve a message
+    // Receive a message
     let msg = subscriber.recv().unwrap()
 
     // Deserialize message
@@ -254,9 +254,9 @@ After setting up the Zenoh session, we will create a subscriber to the `lidar/de
         .unwrap();
     ```
 
-### Recieve a message
+### Receive a message
 
-We can now recieve a message on the subcriber. After recieving the message, we will need to deserialize it.
+We can now receive a message on the subscriber. After receiving the message, we will need to deserialize it.
 
 === "Python"
 
@@ -277,7 +277,7 @@ We can now recieve a message on the subcriber. After recieving the message, we w
     ``` rust
     use edgefirst_schemas::sensor_msgs::Image;
 
-    // Recieve a message
+    // Receive a message
     let msg = subscriber.recv().unwrap()
 
     // Deserialize message
@@ -378,9 +378,9 @@ After setting up the Zenoh session, we will create a subscriber to the `lidar/re
         .unwrap();
     ```
 
-### Recieve a message
+### Receive a message
 
-We can now recieve a message on the subcriber. After recieving the message, we will need to deserialize it.
+We can now receive a message on the subscriber. After receiving the message, we will need to deserialize it.
 
 === "Python"
 
@@ -401,7 +401,7 @@ We can now recieve a message on the subcriber. After recieving the message, we w
     ``` rust
     use edgefirst_schemas::sensor_msgs::Image;
 
-    // Recieve a message
+    // Receive a message
     let msg = subscriber.recv().unwrap()
 
     // Deserialize message

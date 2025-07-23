@@ -118,7 +118,7 @@ Example:
 - cube: filename.
 - scales: filename.
  
-This will return an array of s3 keys and pre-signed url as follows:
+This will return an array of s3 keys and presigned url as follows:
 
 ```
 {
@@ -148,7 +148,7 @@ This will return an array of s3 keys and pre-signed url as follows:
 
 This interface allows applications to retrieve data from a dataset. The application requires an access token as follows:
 
-In the datasets page, select the dropdown on the top-right of a dataset, then select "Generate API Token". This token will be used with every bridge API to upload or access samples. This token does not expire and can be reused.
+In the datasets page, select the drop-down on the top-right of a dataset, then select "Generate API Token". This token will be used with every bridge API to upload or access samples. This token does not expire and can be reused.
 
 <figure markdown="span">
 ![Generate API Token](assets/generate-api-token.png){ align=center }

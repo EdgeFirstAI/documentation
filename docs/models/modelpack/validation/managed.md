@@ -1,6 +1,6 @@
 # Managed Validation
 
-This tutorial will describe the steps to validate the performance of **ModelPack Vision** models as managed sessions in EdgeFirst Studio that have been trained through the [end-to-end worklows](../../../getting_started/workflows/index.md) or [Training ModelPack](../training.md).  For a tutorial to validate Fusion models, see [Validating Fusion Models](../../fusion/validation.md).  A managed validation session is self hosted in an EC2 instance which is suited for users that do not have an embedded platform available to host the validation process.  A [user-managed validation](user_managed.md) session deploys the model in an embedded platform for validation.
+This tutorial will describe the steps to validate the performance of **ModelPack Vision** models as managed sessions in EdgeFirst Studio that have been trained through the [end-to-end workflows](../../../getting_started/workflows/index.md) or [Training ModelPack](../training.md).  For a tutorial to validate Fusion models, see [Validating Fusion Models](../../fusion/validation.md).  A managed validation session is self hosted in an EC2 instance which is suited for users that do not have an embedded platform available to host the validation process.  A [user-managed validation](user_managed.md) session deploys the model in an embedded platform for validation.
 
 {% include-markdown "discrete/create_mpk_validation_session.md" %}
 

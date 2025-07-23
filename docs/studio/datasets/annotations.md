@@ -78,7 +78,7 @@ Click on any task entry and start editing. The editing process is described belo
 1.	Click on a label from Labels section – all polygons drawn will be of this class.
 2.	Click on the Segmentation Vertex Mode (or press p).
 3.	Continuously click on image to draw as many vertices of the polygon as required.
-4.	Select any other class and ad polygons for that class.
+4.	Select any other class and polygons for that class.
 5.	Select Pointer mode (q) to edit any vertices.
 6.	Click on *SAVE ANNOTATIONS* to finalize the annotations.
 

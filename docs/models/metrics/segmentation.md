@@ -55,7 +55,7 @@ This section will show an example of how segmentation metrics are calculated.  C
   <figcaption>Prediction Mask</figcaption>
 </figure>
 
-We start by calculating the metrics per class which is the precision, recall, and accuracy for class A and B.  Class background is not included in the computations because it dilutes the revelant classes A and B since most of the area in the mask is typically classified as background. 
+We start by calculating the metrics per class which is the precision, recall, and accuracy for class A and B.  Class background is not included in the computations because it dilutes the relevant classes A and B since most of the area in the mask is typically classified as background. 
 
 **Class A Metrics**
 

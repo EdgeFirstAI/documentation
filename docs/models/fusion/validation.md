@@ -93,8 +93,8 @@ Once the validation session completes, you can view the validation metrics by cl
 <figcaption>Validation Metrics</figcaption>
 </figure>
 
-The metrics provides the precision, recall, F1, and IoU scores of the model at the specified window sizes.  Additional charts are provided for the precision vs. recall and bird’s eye view 
-heatmaps describing where the model performs well and where the model makes errors.  
+The metrics provides the precision, recall, F1, and IoU scores of the model at the specified window sizes.  Additional charts are provided for the Precision versus Recall and bird’s-eye view 
+heatmap describing where the model performs well and where the model makes errors.  
 
 !!! info
     See [Fusion Metrics](../metrics/fusion.md) for further details.

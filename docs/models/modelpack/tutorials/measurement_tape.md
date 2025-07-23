@@ -107,7 +107,7 @@ pip install Pillow
 pip install onnxruntime 
 ```
 
-### Infrence
+### Inference
 
 
 Before running inference we need to load the model into an ONNX Inference Session.
@@ -144,7 +144,7 @@ image = image / 255.0 # Unsigned normalization is requiered for float ModelPack
 input_data = np.expand_dims(image, axis=0)
 ```
 
-with the tensor already prepared, we can run the infrence by calling:
+with the tensor already prepared, we can run the inference by calling:
 
 ```python
 # Call the Model
@@ -252,7 +252,7 @@ In our case, the output looks like:
 ![Model Output](assets/measurement_tap/model_output.png)
 
 
-## Apendix 1: NMS Code snippet
+## Appendix 1: NMS Code snippet
 
 
 ```python

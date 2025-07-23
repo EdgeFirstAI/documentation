@@ -4,6 +4,7 @@ The EdgeFirst Documentation provides tutorials and information related to EdgeFi
 
 # Deployment
 
+## MkDocs
 Follow these steps for deploying the documentation locally on your machine.
 
 `pip install -r requirements.txt`
@@ -11,6 +12,8 @@ Follow these steps for deploying the documentation locally on your machine.
 `mkdocs serve`
 
 You should now be able to see the documentation on your browser by visiting this link `http://localhost:8000/`.
+
+## Mike
 
 **Alternatively**, use `mike` which is typically used for extra verification that the links are not broken.
 
@@ -25,6 +28,10 @@ This will create a local branch for the documentation that will show like the fo
 To delete the local branches that's created, run `mike delete <identifier>` [Example: `mike delete DE-1941-doc-fixes`]
 
 More information for using `mike` can be found [here](https://github.com/jimporter/mike?tab=readme-ov-file#building-your-docs).
+
+## Spell Check
+
+Run a spell checker on the documentation using `mkdocs build -s`.
 
 # Conventions
 

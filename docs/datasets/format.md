@@ -1,15 +1,15 @@
 # EdgeFirst Dataset Format
 
 This article describes the structure of the *EdgeFirst Dataset Format*. EdgeFirst 
-Datasets support various sample datatypes, they are split into sensor data 
+Datasets support various sample data types, they are split into sensor data 
 and annotation data. Sensor data should be treated as static and not changed after capture. 
-Meanwhile, annotation datatypes are dynamic and will be created and edited many times after capture 
+Meanwhile, annotation data types are dynamic and will be created and edited many times after capture 
 as we first generate automated annotations and then perform audits on these automatic annotations.
 
 The *Dataset Storage Format* is the container used to store sensor data from the
 MCAP recordings which includes the camera, LiDAR, Radar, and Depth estimations. The
 *Dataset Annotation Format* is the container used to store dataset annotations which 
-includes object label, 2D bounding boxes, segmentations masks, 3D bounding boxes, etc.
+includes object label, 2D bounding boxes, segmentation masks, 3D bounding boxes, etc.
 
 ## Dataset Storage Format
 
@@ -29,9 +29,9 @@ maintain this for directories as `hostname_date_time`, then the samples repeat t
 name but add the frame number and file extension.  
 
 !!! note
-    The frame numbers are not necessarily continuous nor complete, the MCAP could’ve 
+    The frame numbers are not necessarily continuous nor complete, the MCAP could have 
     been cropped or downsampled, what’s important is the frame number is unique 
-    for the given sequence and contains all the sample datatypes.
+    for the given sequence and contains all the sample data types.
 
 ```text
 * Dataset
@@ -117,7 +117,7 @@ The Arrow file format was chosen as the container for the dataset annotations.
 The [Apache Arrow](https://arrow.apache.org/) is an open source, column-oriented 
 data file format designed for in-memory computing and efficient data storage and retrieval. 
 It provides high performance compression and encoding schemes to handle complex data 
-in bulk and is supported in many programming languages and analytics tools.
+in bulk and is supported in many programming languages and analytic tools.
 
 We use [Polars](https://pola.rs/) to interface with the Arrow files. Polars has an 
 SDK for [Python](https://pypi.org/project/polars/), [Javascript](https://www.npmjs.com/package/nodejs-polars), and 
@@ -234,8 +234,7 @@ and Yaw of the camera in degrees.
 
 #### Degradation
 
-This column is optional, but it is mentionable to highlight the dynamic schemas 
-characteristic. This column identifies the level of degradation imposed
+This column is optional, but it is worth mentioning to show the dynamic schema. This column identifies the level of degradation imposed
 on the images during recording. The values can either be `[None, "low", "medium", "high"]`.
 None could indicate the camera is not obstructed at all and the objects are
 entirely visible. A low degradation could indicate there is some level of obstruction on the

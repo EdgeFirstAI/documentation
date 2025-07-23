@@ -36,7 +36,7 @@ over topics is handled by the Zenoh library.  Zenoh topics are by default availa
 protocol.  Messages published over Zenoh support various encodings defined through MIME types.  The EdgeFirst Middleware uses
 the Common Data Representation (CDR) encoding for messages, this is an open standard encoding and the same used by ROS2.  The
 CDR encoding uses schemas to represent each type of message, the EdgeFirst Middleware uses the ROS2 common interfaces whenever
-possible and provides custom schemas when required.  The schemas are published on Github and we provide pre-made bindings for
+possible and provides custom schemas when required.  The schemas are published on Github and we provide premade bindings for
 Python and Rust.  The schemas can be installed into a ROS2 system, we cover EdgeFirst Middleware with ROS2 integration in the
 Zenoh ROS2 Bridge chapter.
 

@@ -64,7 +64,7 @@ Note that this procedure skips the AGTG pipeline since the dataset already conta
 </figure>
 
 
-# Apendix I
+# Appendix I
 
 This appendix includes the code used to handle automation in COCO dataset.
 

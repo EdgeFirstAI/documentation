@@ -46,7 +46,7 @@ To query the token, use the following command:
 ```shell
 edgefirst-client token
 ```
-This should produce an output similiar to:
+This should produce an output similar to:
 ```shell
 $ edgefirst-client token
 eyJhbGciOiJIUzI1NiIsInR5cCI6IkpX...
@@ -145,7 +145,7 @@ The `restore-snapshot` command provides several options to customize the dataset
 - `--dataset-description`: Provides a description for the dataset
 
 !!! warning
-    Automated depth generation and labelling services will incur additional costs on top of the snapshot restoration.
+    Automated depth generation and labeling services will incur additional costs on top of the snapshot restoration.
 
 For example, to create a dataset with automatic depth maps and annotations for `person` and `car` objects, run the following command:
 
@@ -295,7 +295,7 @@ A single dataset is allowed to have multiple annotations sets. That is the reaso
   edgefirst-client trainer-session 324
   [324] ... Artifact { name: "modelpack.h5", model_type: "modelpack" },...]
   ```
-- `download-artifact`: Downloads artifacts from a training session. Notice this command requieres the `output` parameter is pointing to a file and not to a folder
+- `download-artifact`: Downloads artifacts from a training session. Notice this command requires the `output` parameter is pointing to a file and not to a folder
   ```shell
   edgefirst-client download-artifact 324 labels.txt --output /home/reinier/labels.txt
   ```

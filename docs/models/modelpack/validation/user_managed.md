@@ -1,6 +1,6 @@
 # User Managed Validation
 
-This tutorial will describe the steps to validate the performance of **ModelPack Vision** models as user-managed sessions in EdgeFirst Studio that have been trained through the [end-to-end worklows](../../../getting_started/workflows/index.md) or [Training ModelPack](../training.md).  A user-managed validation session is hosted in an embedded platform for a proper measurement of the model inference times when deployed on target.  A [managed validation](managed.md) session creates an EC2 server to deploy the model for validation.
+This tutorial will describe the steps to validate the performance of **ModelPack Vision** models as user-managed sessions in EdgeFirst Studio that have been trained through the [end-to-end workflows](../../../getting_started/workflows/index.md) or [Training ModelPack](../training.md).  A user-managed validation session is hosted in an embedded platform for a proper measurement of the model inference times when deployed on target.  A [managed validation](managed.md) session creates an EC2 server to deploy the model for validation.
 
 {% include-markdown "discrete/create_mpk_validation_session.md" %}
 
@@ -18,7 +18,7 @@ Once the configurations have been made, go ahead and click on the "Start Session
 Once the validation session has been created, [SSH](../../../platforms/ssh.md) into the platform and install the following dependencies. 
 
 !!! warning "Virtual Environment"
-    To avoid reinstallation of existing system packages, we recommend setting up a python virtual environment
+    To avoid re-installation of existing system packages, we recommend setting up a python virtual environment
     prior to running the pip installations below.
 
 ```shell

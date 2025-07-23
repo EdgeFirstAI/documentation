@@ -34,7 +34,7 @@ This metric is based on both precision and recall.  It measures how well the mod
 
 The table highlights how F1 is the average between precision and recall over the diagonal where both precision and recall are equal.  Furthermore, it also highlights how the F1-score needs both precision and recall to have very good scores in order to have a very good F1-score.  As an example, consider a recall of 0.90, but a precision of 0.10, the final value of the F1-score is 0.18 which is quite poor.  The same is true if the roles were switched where precision is 0.90, but recall is 0.10.  The nature of the F1-score indicates that a well performing model requires both precision and recall to be high.  
 
-It is also important to note that for certain use-cases precision is more important over recall and vice versa.  For example, an application in the farming industry for identifying good crops vs. bad crops, one would argue that precision is more important than recall.  It would be better to miss a bad crop than to identify a good crop as a bad crop.  Another example for an application in safety that requires detection of people, one would argue that recall is more important than precision.  It is better to misidentify an object for being a person than to miss an actual person in the scene.   
+It is also important to note that for certain use-cases precision is more important over recall and vice versa.  For example, an application in the farming industry for identifying good crops versus bad crops, one would argue that precision is more important than recall.  It would be better to miss a bad crop than to identify a good crop as a bad crop.  Another example for an application in safety that requires detection of people, one would argue that recall is more important than precision.  It is better to misidentify an object for being a person than to miss an actual person in the scene.   
 
 The equation for the F1-score is shown below.
 
@@ -63,16 +63,16 @@ $$
 
 These timings are measured in the same way as ModelPack as described under the [Model Timings](detection.md#model-timings) section.
 
-## Precision vs. Recall
+## Precision versus Recall
 
-The precision vs. recall curve is based on varying detection thresholds from 0 to 1 in 0.05 steps.  The principle in practice is that for lower thresholds precision is low, but recall is high and as the threshold increases, precision increases and recall decreases.  This shows the tradeoff between precision and recall.  The nature of this tradeoff is due to increased detections at low threshold thus capturing more ground truths (high recall) but much more prone to false predictions (low precision).  The opposite is true for high thresholds.  A well performing model shows a high area under the curve of the precision vs. recall curve.  
+The Precision versus Recall curve is based on varying detection thresholds from 0 to 1 in 0.05 steps.  The principle in practice is that for lower thresholds precision is low, but recall is high and as the threshold increases, precision increases and recall decreases.  This shows the tradeoff between precision and recall.  The nature of this tradeoff is due to increased detections at low threshold thus capturing more ground truths (high recall) but much more prone to false predictions (low precision).  The opposite is true for high thresholds.  A well performing model shows a high area under the curve of the Precision versus Recall curve.  
 
 <figure markdown="span">
-  ![Precision vs. Recall](../assets/metrics/fusion-precision-v-recall.jpg){ align=center }
-  <figcaption>Precision vs. Recall</figcaption>
+  ![Precision versus Recall](../assets/metrics/fusion-precision-v-recall.jpg){ align=center }
+  <figcaption>Precision versus Recall</figcaption>
 </figure>
 
-Another representation of the precision vs. recall is to incorporate the varying threshold in the plot.  The following curve shows the "Precision and Recall versus Thresholds" curve.  At lower thresholds, precision is low and recall is high.  By increasing the threshold, we can see precision and recall converge.  The point of convergence indicates the ideal threshold to use for deploying the model.  This is the optimum threshold where precision and recall are balanced such that one is not sacrificing the other.  
+Another representation of the Precision versus Recall is to incorporate the varying threshold in the plot.  The following curve shows the "Precision and Recall versus Thresholds" curve.  At lower thresholds, precision is low and recall is high.  By increasing the threshold, we can see precision and recall converge.  The point of convergence indicates the ideal threshold to use for deploying the model.  This is the optimum threshold where precision and recall are balanced such that one is not sacrificing the other.  
 
 <figure markdown="span">
   ![Precision and Recall vs Thresholds](../assets/metrics/fusion-precision-recall-thresholds.jpg){ align=center }

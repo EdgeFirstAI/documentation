@@ -13,7 +13,7 @@ The EdgeFirst detection metrics describe the mean average precision (mAP), recal
 
 ### Mean Average Precision
 
-The mAP is based on the area under the precision vs. recall curve which plots the tradeoff between precision and recall by adjusting the IoU thresholds.  The average precision is first calculated by finding the area under the precision vs. recall curve for each class at varying IoU thresholds.  The mAP at 0.50 and 0.75 is the mean of the average precision across all classes, but only at the IoU threshold values of 0.50 and 0.75.  For the case of mAP at 0.50:0.95, the average precision at 0.50:0.95 is first calculated by taking the mean of the average precision (area under the curve) across IoU thresholds 0.50 to 0.95 in 0.05 steps.  This process is done per class and the final mAP at 0.50:0.95 is the mean of the average precision at 0.50:0.95 values across all classes.
+The mAP is based on the area under the Precision versus Recall curve which plots the trade-off between precision and recall by adjusting the IoU thresholds.  The average precision is first calculated by finding the area under the Precision versus Recall curve for each class at varying IoU thresholds.  The mAP at 0.50 and 0.75 is the mean of the average precision across all classes, but only at the IoU threshold values of 0.50 and 0.75.  For the case of mAP at 0.50:0.95, the average precision at 0.50:0.95 is first calculated by taking the mean of the average precision (area under the curve) across IoU thresholds 0.50 to 0.95 in 0.05 steps.  This process is done per class and the final mAP at 0.50:0.95 is the mean of the average precision at 0.50:0.95 values across all classes.
 
 ### Mean Average Recall
 
@@ -76,13 +76,13 @@ The Confusion Matrix provides a summary of the prediction results by comparing t
   <figcaption>Confusion Matrix</figcaption>
 </figure>
 
-## Precision vs. Recall
+## Precision versus Recall
 
-The precision vs. recall curve shows the tradeoff between precision and recall.  At lower thresholds, precision will tend to be lower due to increased leniency for valid detections.  However, more detections will tend to result in higher recall as the model finds more ground truth labels.  Increasing the threshold will start to increase precision for more precise detections, but will start to reduce recall due to the reduction of model detections.  The following curve shows the precision vs. recall trend for each of the classes in the dataset, along with the average curve for all the classes.  A higher area under the curve, the better the model performance as this indicates maximized values for precision and recall throughout the varying thresholds.  
+The Precision versus Recall curve shows the trade-off between precision and recall.  At lower thresholds, precision will tend to be lower due to increased leniency for valid detections.  However, more detections will tend to result in higher recall as the model finds more ground truth labels.  Increasing the threshold will start to increase precision for more precise detections, but will start to reduce recall due to the reduction of model detections.  The following curve shows the Precision versus Recall trend for each of the classes in the dataset, along with the average curve for all the classes.  A higher area under the curve, the better the model performance as this indicates maximized values for precision and recall throughout the varying thresholds.  
 
 <figure markdown="span">
-  ![Precision vs. Recall](../assets/metrics/modelpack-precision-vs-recall.jpg){ align=center }
-  <figcaption>Precision vs. Recall</figcaption>
+  ![Precision versus Recall](../assets/metrics/modelpack-precision-vs-recall.jpg){ align=center }
+  <figcaption>Precision versus Recall</figcaption>
 </figure>
 
 
@@ -97,5 +97,5 @@ This section will explain the definitions of key terms frequently mentioned thro
 | **False Negative** | The absence of model predictions.  For cases where the ground truth is a positive class, but the model prediction is a negative class (background).  |
 | **Precision** | Proportion of correct predictions over total predictions.  $\text{precision} = \frac{\text{true positives}}{\text{true positives} + \text{false positives}}$ |
 | **Recall** | Proportion of correct predictions over total ground truth.  $\text{recall} = \frac{\text{true positives}}{\text{true positives} + \text{false negatives}}$ |
-| **Accuracy** | Propertion of correct predictions over the union of total predictions and ground truth.  $\text{accuracy} = \frac{\text{true positives}}{\text{true positives} + \text{false negatives} + \text{false positives}}$ |
+| **Accuracy** | Proportion of correct predictions over the union of total predictions and ground truth.  $\text{accuracy} = \frac{\text{true positives}}{\text{true positives} + \text{false negatives} + \text{false positives}}$ |
 | **IoU** | The intersection over union.  $\text{IoU} = \frac{\text{intersection}}{\text{union}} = \frac{\text{true positives}}{\text{true positives} + \text{false positives} + \text{false negatives}}$ |

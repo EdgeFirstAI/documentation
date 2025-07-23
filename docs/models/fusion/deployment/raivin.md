@@ -46,7 +46,7 @@ For more information, please visit [Secure Copy](../../../platforms/ssh.md#secur
 
 ### Download using the Client
 
-This method expects you to have already connected to the Raivin via [SSH](../../../platforms/ssh.md).  The [EdgeFirst Client](../../../perception/studio.md) will already come pre installed in the device.  You can verify the installation with the client version command.
+This method expects you to have already connected to the Raivin via [SSH](../../../platforms/ssh.md).  The [EdgeFirst Client](../../../perception/studio.md) will already come preinstalled in the device.  You can verify the installation with the client version command.
 
 ```shell
 $ edgefirst-client version

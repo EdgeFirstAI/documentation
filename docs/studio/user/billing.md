@@ -54,6 +54,6 @@ The "Transactions" page will show your purchases or the amount of credits alloca
 <figcaption>Transactions Summary</figcaption>
 </figure>
 
-Since this is a trial account, the only transaction shown is the 20.00 USD credits allocated to my organization upon signup. 
+Since this is a trial account, the only transaction shown is the 20.00 USD credits allocated to my organization upon sign up. 
 
 This page has described billing information and the cost of each feature in EdgeFirst Studio.  Explore more by using these features in your trial account by following one of the [end-to-end workflows](../../getting_started/workflows/index.md).

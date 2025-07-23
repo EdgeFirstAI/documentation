@@ -107,7 +107,7 @@ This will bring you to the "Import Dataset" page.
 <figcaption>Dataset Import</figcaption>
 </figure>
 
-First you will be importing the video recording from [step 1](#capture-with-a-phone).  Click on the dropdown that says "Select an Import Type" and then specify "Video" and then click "Done" as shown below. 
+First you will be importing the video recording from [step 1](#capture-with-a-phone).  Click on the drop-down that says "Select an Import Type" and then specify "Video" and then click "Done" as shown below. 
 
 <figure markdown="span">
 ![Dataset Video Import](getting_started/assets/workflows/mobile-video-import-type.jpg){ align=center }
@@ -170,8 +170,8 @@ Click on "Click to select images".  This will bring up the option to specify the
 In my current setup, I have selected "Media Picker" from the options above and then I have multi-selected the images I want to import by press and hold on a single image to enable multi-select.  To import, I pressed "Select".
 
 <figure markdown="span">
-![Android Multiselect Images](getting_started/assets/workflows/mobile-multi-select-images.jpg){ align=center }
-<figcaption>Android Multiselect Images</figcaption>
+![Android Multi-select Images](getting_started/assets/workflows/mobile-multi-select-images.jpg){ align=center }
+<figcaption>Android Multi-select Images</figcaption>
 </figure>
 
 Once the image files have been selected, the progress for the image import will be shown. 
@@ -251,7 +251,7 @@ If you have an NXP i.MX 8M Plus EVK you can also run your model directly on the 
 
 If you have an [EdgeFirst Platform](platforms/index.md) such as the Maivin or Raivin then you can deploy and run the model using the bundled EdgeFirst Middleware by following the tutorial [Deploying to EdgeFirst Platforms](models/modelpack/deployment/maivin.md).
 
-In this Quickstart guide, you have created your EdgeFirst Studio Account, logged in to EdgeFirst Studio, and created your very first project and ran your first experiment by capturing images and videos, annotating datasets, training a Vision model, validating the trained model, and deploying the model back into the PC, EdgeFirst Plaform, or the i.MX 8M Plus EVK. 
+In this Quickstart guide, you have created your EdgeFirst Studio Account, logged in to EdgeFirst Studio, and created your very first project and ran your first experiment by capturing images and videos, annotating datasets, training a Vision model, validating the trained model, and deploying the model back into the PC, EdgeFirst Platform, or the i.MX 8M Plus EVK. 
 
 ## Next Steps
 

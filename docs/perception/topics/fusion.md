@@ -47,7 +47,7 @@ The XYZ coordinate system follows the [standard ROS convention](https://www.ros.
 
 The `/fusion/occupancy` topic publishes information about location of detected objects using the [PointCloud2](../api/sensor_msgs.md#pointcloud2) schema.
 
-The point cloud will have the fields `x`, `y`, `z`, `cluster_id`, `vision_class`, `fusion_class`. If the input data is clustered, there will only be one point for each cluster id, located at the centriod of the cluster. If the input data is not clustered, the points will be located at the center of cells on a radial grid, as defined in the fusion service configuration.
+The point cloud will have the fields `x`, `y`, `z`, `cluster_id`, `vision_class`, `fusion_class`. If the input data is clustered, there will only be one point for each cluster id, located at the centroid of the cluster. If the input data is not clustered, the points will be located at the center of cells on a radial grid, as defined in the fusion service configuration.
 
 | Field Name   | Datatype | Units | Notes                                                               |
 |--------------|----------|-------|---------------------------------------------------------------------|

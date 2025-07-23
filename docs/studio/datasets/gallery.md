@@ -55,7 +55,7 @@ You can create tags for images. These tags can be used to filter out images of c
 <figcaption>Remove Tag</figcaption>
 </figure>
 
-- Apply and unapply tags: at least one image must be selected to apply or unapply tags. Click on any tag under the dropdown to select it. Applied tags are denoted by a check icon. To remove the applied tags, click on it again.
+- Apply and revert tags: at least one image must be selected to apply or revert tags. Click on any tag under the dropdown to select it. Applied tags are denoted by a check icon. To remove the applied tags, click on it again.
 
 <figure markdown="span">
 ![Apply Tag](../../assets/datasets/apply-tags.png){ align=center }

@@ -23,7 +23,7 @@ From the projects page, choose the project that contains the dataset you plan to
 
 ## Create Model Experiment
 
-You will be greeted with the "Model Experiments" page.  A new project wil not have any experiments as shown below.  You will need to first create a model experiment.  As mentioned in the [EdgeFirst Studio: Overview](../../getting_started/studio.md#model-experiments), model experiments will contain both training and validation sessions. 
+You will be greeted with the "Model Experiments" page.  A new project will not have any experiments as shown below.  You will need to first create a model experiment.  As mentioned in the [EdgeFirst Studio: Overview](../../getting_started/studio.md#model-experiments), model experiments will contain both training and validation sessions. 
 
 <figure markdown="span">
 ![Model Experiments Page](../assets/training/fusion-model-experiments-page.jpg){ align=center }
@@ -90,7 +90,7 @@ For more information on available "Data Augmentations" please see [Vision Augmen
 <figcaption>Training Session Fields</figcaption>
 </figure>
 
-Once the configuration have been made, go ahead and click on the "Start Session" buttin on the bottom right of the window.  This will start the training session which will train the model for the number of epochs specified. 
+Once the configuration have been made, go ahead and click on the "Start Session" button on the bottom right of the window.  This will start the training session which will train the model for the number of epochs specified. 
 
 ## Session Progress
 

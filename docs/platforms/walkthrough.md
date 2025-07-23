@@ -22,7 +22,7 @@ There are five cards on the Main Page that link to the Visualization pages:
 - **GPS**: This page displays a map with the current location of the device, along with GPS co-ordinates.
 - **IMU**: This page displays the 3D orientation of the device with current pitch, yaw, and roll values.
 - **Occupancy Grid**: (Raivin only) This will show the radar grid.
-- **Segmentation View**: This page shows the camera with running segmentation and/or detection pipeline.  For Raivins equipped with a radar module, it will also show the radar grid.
+- **Segmentation View**: This page shows the camera with running segmentation and/or detection pipeline.  For Raivin devices equipped with a radar module, it will also show the radar grid.
 - **Lidar View**: (Raivin only) This will show the Lidar View, which will include the camera, radar grid, and LiDAR grid.
 
 ### The Top Ribbon
@@ -30,7 +30,7 @@ The ribbon at the top of the Raivin web interface is available on every page of 
 
 1. On the left, the "Home" button with the Au-Zone icon, which will return the user to the Main Page.
 2. In the middle, the title of the current page.
-3. On the right side, we first have the Recording Indicator, shown as a grey oval with "REC" when not recording from the sensors and a red oval when recording.
+3. On the right side, we first have the Recording Indicator, shown as a gray oval with "REC" when not recording from the sensors and a red oval when recording.
 5. The MCAP Details Modal button, which opens the MCAP Modal.
 6. The System Status Indicator and Dropdown button.
 3. The farthest rightmost button, with the gear icon, is the Settings Buttons and will take you to the [Settings Page](./configuration.md).
@@ -86,7 +86,7 @@ For the Maivin, its Segmentation Page does not include the Occupancy Grid at the
 </figure>
 
 ### The Occupancy Page (Raivin-only)
-The Occupancy Page shows the raw, radar data, coloured by radar cross-section (RCS) size.  
+The Occupancy Page shows the raw, radar data, colored by radar cross-section (RCS) size.  
 
 <figure markdown="span">
 ![Occupancy Page](assets/quickStart-occupancy.png){align=center}

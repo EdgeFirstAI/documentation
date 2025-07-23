@@ -142,7 +142,7 @@ Once the path to the model has been updated, restart the model service using `su
 
 ## Enable and Start the Services
 
-Once the model path in the device is specifed, ensure that the Camera, Model, and Recorder services are enabled.  To verify, go back to the settings and click on the "Service Status" button.
+Once the model path in the device is specified, ensure that the Camera, Model, and Recorder services are enabled.  To verify, go back to the settings and click on the "Service Status" button.
 
 <figure markdown="span">
 ![Service Status](../../assets/deployment/maivin-service-status.jpg){ align=center }

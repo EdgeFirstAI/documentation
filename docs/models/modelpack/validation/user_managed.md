@@ -2,7 +2,7 @@
 
 This tutorial will describe the steps to validate the performance of **ModelPack Vision** models as user-managed sessions in EdgeFirst Studio that have been trained through the [end-to-end workflows](../../../getting_started/workflows/index.md) or [Training ModelPack](../training.md).  A user-managed validation session is hosted in an embedded platform for a proper measurement of the model inference times when deployed on target.  A [managed validation](managed.md) session creates an EC2 server to deploy the model for validation.
 
-{% include-markdown "discrete/create_mpk_validation_session.md" %}
+{% include-markdown "discrete/studio/create_mpk_validation_session.md" %}
 
 You will be greeted with the validation session configuration window.  In this window, specify the "User Managed Validator" to true as shown in red. Next specify the name of the validation session, the model to validate, and the dataset to deploy.  In this example, the TFLite model will be validated and the "Coffee Cup" dataset with the validation partition will be used.  Next specify, the validation parameters on the right.  Additional information on these parameters are provided by hovering over the info buttons as indicated in red below. 
 

@@ -155,8 +155,8 @@ This will run inference on the model specified to generate segmentation masks of
 
 Now that the model has been updated, you can make new recordings using the model's inference and then visualizing the recording using Foxglove Studio.
 
-{% include-markdown "discrete/recording_mcap_on_device.md" %}
-{% include-markdown "discrete/downloading_mcap_from_device.md" %}
+{% include-markdown "discrete/datasets/recording_mcap_on_device.md" %}
+{% include-markdown "discrete/datasets/downloading_mcap_from_device.md" %}
 
 ## Inference Visualization in Foxglove
 Once the MCAP recording has been downloaded, you can use Foxglove Studio to see the playback of MCAP recordings and the model inference.  The following preview shows the segmentation mask from the model identifying the person in the frame (right) and the occupancy grid highlighting the radar clusters that correspond to the person's position in world coordinates.

@@ -179,8 +179,8 @@ This will run inference on the model specified to generate segmentation masks on
 
 Now that the model has been updated, you can make new recordings using the model's inference and then visualizing the recording using Foxglove Studio.
 
-{% include-markdown "discrete/recording_mcap_on_device.md" %}
-{% include-markdown "discrete/downloading_mcap_from_device.md" %}
+{% include-markdown "discrete/datasets/recording_mcap_on_device.md" %}
+{% include-markdown "discrete/datasets/downloading_mcap_from_device.md" %}
 
 ## Inference Visualization in Foxglove
 Once the MCAP recording has been downloaded, you can use Foxglove Studio to see the playback of MCAP recordings and the model inference.  The following preview is a frame from the MCAP with the model inference masks overlaid on top of the video. 

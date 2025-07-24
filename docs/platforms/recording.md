@@ -37,8 +37,8 @@ Under all of that, we have a list of MCAP files in the recording directory. For 
 
 To leave the MCAP Modal, click the "X" close button in the top right corner of the modal.
 
-{% include-markdown "discrete/recording_mcap_on_device.md" %}
-{% include-markdown "discrete/downloading_mcap_from_device.md" %}
+{% include-markdown "discrete/datasets/recording_mcap_on_device.md" %}
+{% include-markdown "discrete/datasets/downloading_mcap_from_device.md" %}
 
 ## Managing Recordings
 Once a recording is complete, you can see the size in MB of the captured data on the MCAP page.  You can also get more detailed metadata, such as the topics recorded, by clicking the "Details" button for the MCAP recording.

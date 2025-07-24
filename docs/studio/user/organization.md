@@ -92,6 +92,6 @@ The "Audit & Label" user has limited access to EdgeFirst Studio.  The only featu
 
 The user with "Custom Permissions" has specific permissions on different elements of EdgeFirst Studio.  These elements are "Projects", "Datasets", "Trainer", and "Task Board".  You can set "Read-Only" permissions to allow users for view-only.  The permission for "Write" allows the users to make changes to the elements such as creating their own datasets or modifying current datasets.  You can find more information on these elements under the [EdgeFirst Studio: Overview](../../getting_started/studio.md).
 
-{% include-markdown "discrete/new_users.md" %}
+{% include-markdown "discrete/user/new_users.md" heading-offset=2 %}
 
 This page has shown how to manage your organization and the users in your organization.  For information on how the billing in your organization is handled, see [Billing Information](billing.md).

@@ -6,9 +6,9 @@ This page provides details on your profile information.  To get started, you can
 
     If your profile was created by the admin of your [organization](organization.md), it is recommended to change your password.  There are two methods for changing your password.  The first method is to [edit your password](#change-password) under your profile information.  Otherwise, you can also [forget your password](#forgot-password).
 
-{% include-markdown "discrete/signup.md" %}
-{% include-markdown "discrete/login.md" %}
-{% include-markdown "discrete/forget_password.md" %}
+{% include-markdown "discrete/user/signup.md" %}
+{% include-markdown "discrete/user/login.md" %}
+{% include-markdown "discrete/user/forget_password.md" %}
 
 ## Profile Information
 

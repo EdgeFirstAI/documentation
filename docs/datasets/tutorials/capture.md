@@ -18,11 +18,11 @@ If you have an EdgeFirst Platform, follow this tutorial to see how to capture an
 !!! note
     Replace `<hostname>` with the hostname of your device.
 
-You will be greeted with the Maivin [WebUI Main Page](../../platforms/walkthrough.md) page.
+You will be greeted with the Maivin [Web UI Main Page](../../platforms/walkthrough.md) page.
 
 <figure markdown="span">
-![WebUI Main Page](../../platforms/assets/ui-maivinMain.png){ align=center }
-<figcaption>WebUI Main Page</figcaption>
+![Web UI Main Page](../../platforms/assets/ui-maivinMain.png){ align=center }
+<figcaption>Web UI Main Page</figcaption>
 </figure>
 
 {% include-markdown "discrete/datasets/recording_mcap_on_device.md" heading-offset=2 %}

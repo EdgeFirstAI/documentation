@@ -77,16 +77,16 @@ You can find more information on using the [EdgeFirst Client](../../../perceptio
 
 ## Visit the Web UI Service
 
-Visit the Web UI service by entering the URL `https://<hostname>/` in your browser.
+Use your browser to connect to the Web UI of the remote device, enter the following URL `https://<hostname>/`.
 
 !!! note
     Replace `<hostname>` with the hostname of your device.
 
-You should be greeted with the following page.
+You will be greeted with the Maivin [Web UI Main Page](../../../platforms/walkthrough.md) page.
 
 <figure markdown="span">
-![Web UI](../../assets/deployment/maivin-webui.jpg){ align=center }
-<figcaption>Web UI</figcaption>
+![Web UI Main Page](../../../platforms/assets/ui-maivinMain.png){ align=center }
+<figcaption>Web UI Main Page</figcaption>
 </figure>
 
 For more information, please see the [Web UI Walkthrough](../../../platforms/walkthrough.md).
@@ -102,7 +102,7 @@ Once you are in the Web UI main page, you can specify the path to the model by f
 Click the settings icon on the top right corner of the page.
 
 <figure markdown="span">
-![Settings](../../assets/deployment/maivin-settings.jpg){ align=center }
+![Settings](../../assets/deployment/maivin-settings.png){ align=center }
 <figcaption>Settings</figcaption>
 </figure>
 
@@ -161,7 +161,7 @@ You will be greeted with the "Service Overview" page.  Ensure that the "camera" 
 Now you will see live inference of the model in the device.  Once the model and camera services are enabled, go back to the main page and then select the "Segmentation" application as shown.
 
 <figure markdown="span">
-![Segmentation App](../../assets/deployment/maivin-segmentation-app.jpg){ align=center }
+![Segmentation App](../../assets/deployment/maivin-segmentation-app.png){ align=center }
 <figcaption>Segmentation App</figcaption>
 </figure>
 

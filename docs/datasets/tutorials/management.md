@@ -163,10 +163,6 @@ A proper dataset has samples reserved for training and validation.  This tutoria
     
     This operation needs to be done whenever new sample images or frames are added to the dataset.  Newly added samples are not automatically added to any group that already exists. 
 
-<div style="text-align: center;">
-    <iframe width="560" height="315" src="https://www.youtube.com/embed/qLv8ayxQ-Ns?start=0&end=64" title="Splitting Datasets" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-</div>
-
 Consider the following dataset without any groups reserved.
 
 <figure markdown="span">

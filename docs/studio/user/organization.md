@@ -1,6 +1,6 @@
 # Organization Management
 
-When you first [sign up](profile.md#sign-up) to EdgeFirst Studio, you will also automatically create your own organization.  An organization allows multiple users to access your projects, but at the start, you will be the only user in your organization.  However, you can [create multiple users/profiles](#add-new-users) in your organization to allow collaboration between members in your team.  In this way, multiple members can be assigned to your organization. 
+When you first [sign up](profile.md#sign-up) to EdgeFirst Studio, you will also automatically create your own organization.  For multi-user tiers, an organization allows multiple users to access your projects, but at the start, you will be the only user in your organization.  However, you can [create multiple users/profiles](#add-new-users) in your organization to allow collaboration between members in your team.  In this way, multiple members can be assigned to your organization. 
 
 You can find the information of your organization by clicking on the "User" button that is found on the top right of the navigation bar as shown below.  You will see three different options, click on the "Admin Console" button.
 

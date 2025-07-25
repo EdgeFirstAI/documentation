@@ -1,6 +1,6 @@
 # Billing Information
 
-This page will describe the billing information that is subjected to the user's organization.  Prior to reading the contents in this page, it is recommended to be familiar with the [Organization Management](organization.md).  A new organization is given 20.00 USD worth of credits to allow trials of the features in EdgeFirst Studio as shown in the [Quickstart Guide](../../index.md).  The credits in the organization will be shared amongst the members.  
+This page will describe the billing information that is subjected to the user's organization.  Prior to reading the contents in this page, it is recommended to be familiar with the [Organization Management](organization.md).  A trial user (Individual Tier) is given 20.00 USD worth of credits to experience the features in EdgeFirst Studio as shown in the [Quickstart Guide](../../index.md).  However, for multi-user tiers, the credits in the organization will be shared amongst the members.  
 
 ## Usage & Billing
 

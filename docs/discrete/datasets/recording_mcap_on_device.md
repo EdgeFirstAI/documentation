@@ -1,4 +1,4 @@
-# Recording an MCAP
+# Record MCAP
 MCAP recordings can be started and stopped using the Recording Button at the device's [top navbar](../../platforms/walkthrough.md#the-top-ribbon).  It is to the left of the MCAP Details hamburger button, which is used to open the [MCAP Details Modal](../../platforms/recording.md#the-mcap-modal).
 <figure markdown="span">
 ![MCAP Recording and Details Buttons](../../platforms/assets/mcap-RecordingButton_McapDetailsButton.png){align=center}
@@ -10,7 +10,7 @@ Both of these buttons are available on every page of the Maivin, Raivin, and oth
 
 For more information about recording MCAPs, please read the [MCAP Recording section](../../platforms/recording.md).
 
-## Starting a Recording
+## Start Recording
 To start a recording, simply click the "Recording" button to begin capturing data.
 
 <figure markdown="span">
@@ -21,7 +21,7 @@ To start a recording, simply click the "Recording" button to begin capturing dat
 !!! note
      It may take up to 30 seconds for a recording to start, depending on topic tracked.
 
-!!! warning
+!!! warning "Low Disk Space"
      If there is not enough room on the drive to record a MCAP, recording will automatically stop and you will get a "Low Disk Space" error.
      <figure markdown="span">
      ![MCAP Low Disk Space Warning](../../platforms/assets/mcap_low-disk-space.png){align=center}  
@@ -35,5 +35,5 @@ If you were to open the MCAP Details Modal while recording, you would see a new 
 <figcaption>MCAP Modal While Recording</figcaption>
 </figure>
 
-## Stopping a Recording
+## Stop Recording
 To stop recording, click the "Recording" button a second time.

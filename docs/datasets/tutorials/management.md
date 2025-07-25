@@ -2,110 +2,6 @@
 
 This page will provide tutorials for managing datasets in EdgeFirst Studio. 
 
-## Upload MCAPs
-
-This tutorial shows how to upload a [MCAP recording](capture.md#recording-an-mcap).  For uploading [EdgeFirst Datasets](../format.md), please see the instructions for [Upload from Zip/Arrow File](../../studio/snapshots.md#upload-from-ziparrow-file).
-
-<div style="text-align: center;">
-    <iframe width="560" height="315" src="https://www.youtube.com/embed/j-75Q5-_dC0?start=558&end=720" title="Upload MCAP" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-</div>
-
-In EdgeFirst Studio, select "Data Snapshots" under the tool options.
-
-<figure markdown="span">
-![Data Snapshots](../assets/data-snapshots.jpg){ align=center }
-<figcaption>Data Snapshots</figcaption>
-</figure>
-
-!!! note
-    A project has already been created intended for object detection.  This step
-    has been covered in [Getting Started](../../index.md#create-project).
-
-Once you are in the "Data Snapshots" page, upload the recorded MCAP by clicking "From File" which opens a new window dialog for selecting the MCAP downloaded in your PC.
-
-<figure markdown="span">
-![Upload MCAP](../assets/mcap-upload.jpg){ align=center }
-<figcaption>Upload MCAP</figcaption>
-</figure>
-
-Once the MCAP file is selected, this would start the upload progress in EdgeFirst Studio.  This upload progress may take several minutes depending on the size of the MCAP. Once the upload is complete, the status will be shown like the figure on the right. 
-
-**Upload Progress** | **Completed Upload** 
-:------------------:|:------------------:
-![Progress](../assets/upload-progress.jpg) | ![Complete](../assets/upload-completed.jpg)
-
-For instructions on auto-annotating uploaded MCAPs, see [Auto Annotations via Snapshot](annotations.md#auto-annotations-via-snapshot).
-
-## Importing Darknet Datasets
-
-This tutorial will show how to import a darknet dataset into EdgeFirst Studio.  For importing [EdgeFirst Datasets](../format.md), please see the instructions for [Upload from Zip/Arrow File](../../studio/snapshots.md#upload-from-ziparrow-file).
-
-<div style="text-align: center;">
-<iframe width="560" height="315" src="https://www.youtube.com/embed/DJabdEHaZ8E?start=41" title="Import Dataset" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-</div>
-
-This tutorial will show importing a dataset such as [COCO128](https://www.kaggle.com/datasets/ultralytics/coco128) as an example.
-
-To import a dataset, first [create a dataset](#creating-datasets) container. The following dataset is created with the name set to "Coco128" and the description as "Demo import".  Furthermore, an annotation set has also been created called "Ground Truth".
-
-<figure markdown="span">
-![COCO128 Dataset Container](../assets/coco128-container.jpg){ align=center }
-<figcaption>COCO128 Dataset Container</figcaption>
-</figure>
-
-For an example dataset, [COCO128](https://www.kaggle.com/datasets/ultralytics/coco128?resource=download) was downloaded using the link provided.  This will download a ZIP archive which can then be extracted.
-
-Once a container has been created, open the dataset options denoted by the three vertical dots on the top right corner of the dataset card.
-
-<figure markdown="span">
-![Dataset Options](../assets/coco128-options.jpg){ align=center }
-<figcaption>Dataset Options</figcaption>
-</figure>
-
-Select "Import".
-
-<figure markdown="span">
-![Import Option](../assets/coco128-import-option.jpg){ align=center }
-<figcaption>Import Option</figcaption>
-</figure>
-
-This will popup a new window for you to specify the dataset to be imported.  In these options, select the "Import Type" to be "Darknet".  Specify the dataset folder "coco128" to be imported.  Specify the annotation set to the "Ground Truth" annotation set.  The following figure shows the specifications.
-
-<figure markdown="span">
-![Import Options](../assets/coco128-import-options.jpg){ align=center }
-<figcaption>Import Options</figcaption>
-</figure>
-
-The "coco128" dataset that was specified contains the "images" and "labels" subdirectories. 
-
-<figure markdown="span">
-![COCO128](../assets/coco128-directories.jpg){ align=center }
-<figcaption>COCO128</figcaption>
-</figure>
-
-Select "Start Import" at the bottom right to start the import process.
-
-<figure markdown="span">
-![Start Import](../assets/coco128-start-import.jpg){ align=center }
-<figcaption>Start Import</figcaption>
-</figure>
-
-This will start the import process as shown.
-
-<figure markdown="span">
-![Import Process](../assets/coco128-import-process.jpg){ align=center }
-<figcaption>Import Process</figcaption>
-</figure>
-
-Once completed, refresh the page to see the changes.  The dataset container will now contain 128 images from COCO and the annotations stored in the "Ground Truth" container.
-
-<figure markdown="span">
-![Imported COCO128 Dataset](../assets/coco128-imported.jpg){ align=center }
-<figcaption>Imported COCO128 Dataset</figcaption>
-</figure>
-
-To view the dataset, refer to the instructions provided in [Viewing Datasets](#viewing-datasets).
-
 ## Viewing Datasets
 
 This tutorial will show how to open the gallery of the dataset to see the individual samples in the dataset.
@@ -138,6 +34,29 @@ When the sequence is clicked, you will now see the frames stored in the sequence
 <figure markdown="span">
 ![Dataset Sequence](../assets/sample-dataset-image.jpg){ align=center }
 <figcaption>Dataset Sequence</figcaption>
+</figure>
+
+## Edit Dataset Information
+
+The dataset name and description can be edited by clicking on the dataset extended menu on the top right portion of the dataset card.  This should bring up the options and "Edit Info" as the first in the list.  Click on "Edit Info".
+
+<figure markdown="span">
+![Edit Info](../assets/dataset-edit-info.jpg){ align=center }
+<figcaption>Edit Info</figcaption>
+</figure>
+
+This will bring up the window to edit the dataset "Name" and the "Description".  Once the changes are made, click "Apply Changes" to save the changes.
+
+<figure markdown="span">
+![Edit Info Fields](../assets/dataset-edit-info-fields.jpg){ align=center }
+<figcaption>Edit Info Fields</figcaption>
+</figure>
+
+The changes should appear on the dataset card as shown below.
+
+<figure markdown="span">
+![Edited Info](../assets/dataset-edited-info.jpg){ align=center }
+<figcaption>Edited Info</figcaption>
 </figure>
 
 ## Verifying Datasets
@@ -194,49 +113,7 @@ Clicking on any of these sequences will open individual images in the sequence w
 
 For cases where the annotations need corrections, please see [Audit 2D Annotations](annotations.md#audit-2d-annotations) or [Audit 3D Annotations](annotations.md#audit-3d-annotations) for more details.
 
-## Creating Datasets 
-
-To create a dataset, first select the project to store the new dataset.  Next click the dataset button indicated in red to view the datasets in that selected project.
-
-<figure markdown="span">
-![Dataset Button](../assets/user-project-dataset-button.jpg){ align=center }
-<figcaption>Dataset Button</figcaption>
-</figure>
-
-Next create a new dataset by clicking the "New Dataset" button indicated in red on the top right.
-
-<figure markdown="span">
-![Create Dataset Button](../assets/create-dataset-button.jpg){ align=center }
-<figcaption>Create Dataset Button</figcaption>
-</figure>
-
-Provide the dataset name and the dataset description for this new dataset.  Once the fields are filled, click the "Create" button on the bottom left of the window dialog.
-
-<figure markdown="span">
-![Create Dataset Fields](../assets/create-dataset-fields.jpg){ align=center }
-<figcaption>Create Dataset Fields</figcaption>
-</figure>
-
-Once created, define an annotation set.  The annotation set is a container for storing the annotations.  To create an annotation set, click the "+" button in the "Annotation Sets" field. 
-
-<figure markdown="span">
-![Create Annotation Set](../assets/create-annotation-set.jpg){ align=center }
-<figcaption>Create Annotation Set</figcaption>
-</figure>
-
-Next provide the name and description for the annotation container as shown below.  Once provided, click "Create New Set" to create the annotation set.
-
-<figure markdown="span">
-![Annotation Set Fields](../assets/annotation-set-fields.jpg){ align=center }
-<figcaption>Annotation Set Fields</figcaption>
-</figure>
-
-You have now created a dataset and an annotation set container as shown below.  This container can be used to store [copied](#copying-datasets) or [combined](#combining-datasets) datasets.
-
-<figure markdown="span">
-![Created Dataset](../assets/empty-dataset-container.jpg){ align=center }
-<figcaption>Created Dataset</figcaption>
-</figure>
+{% include-markdown "discrete/datasets/create_dataset_container.md" %}
 
 ## Copying Datasets
 

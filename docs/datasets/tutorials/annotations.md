@@ -1,13 +1,98 @@
 # Dataset Annotations
 
-This page will provide tutorials for annotating EdgeFirst Datasets in EdgeFirst Studio.  As described in the [EdgeFirst Dataset Format](../format.md), a dataset can have 2D and 3D annotations.  Shown below is an example of 2D annotations (left) and 3D annotations (right).  A 2D annotation is a combination of 2D bounding boxes and segmentation masks for any given object that are pixel-based image coordinates.  A 3D annotation is a 3D bounding box surrounding the object in real world coordinates.
+This page will provide tutorials for annotating datasets in EdgeFirst Studio.  As described in the [EdgeFirst Dataset Format](../format.md), a dataset can have 2D and 3D annotations.  Shown below is an example of 2D annotations (left) and 3D annotations (right).  A 2D annotation is a combination of 2D bounding boxes and segmentation masks for any given object that are semantic pixel-based image coordinates.  A 3D annotation is a 3D bounding box surrounding the object in real world coordinates (meters).
 
 <figure markdown="span">
 ![Sample Annotations](../assets/sample-studio-annotations.jpg){ align=center }
 <figcaption>Sample Annotations</figcaption>
 </figure>
 
-To reduce the effort required during the annotation process, EdgeFirst Studio provides tools to auto annotate either a single image or a series of frames in a sequence in a dataset.  The next sections that describes the auto-annotations will showcase this feature. Please note that it is not always a guarantee that the auto-annotations will yield correct results, so EdgeFirst Studio provides the tools to audit the existing annotations that will be described in the audit sections below.
+To reduce the effort required during the annotation process, EdgeFirst Studio provides the tools to auto annotate either a single image or a sequential set of frames in a dataset by leveraging SAM-2 auto-segment and tracking capabilities.  The following sections will describe this auto-annotation feature.  Please note that it is not always guaranteed that the auto-annotations will yeild 100% accuracy, so EdgeFirst Studio provides the tools to audit the existing annotations to correct any mistaked which will be described in the audit sections below.
+
+## Dataset Labels
+
+Each annotation has a label associated to it.  The label identifies the object that is being annotated.  For example, a dataset containing coffee cups contains multiple, but varying objects of coffee cups, but tagged with a single label given as "Coffee Cup".
+
+<figure markdown="span">
+![Sample Coffee Cups](../assets/coffee-cups-annotations.jpg){ align=center }
+<figcaption>Sample Coffee Cups</figcaption>
+</figure>
+
+### Edit Label
+
+EdgeFirst Studio provides features for updating the labels in the dataset.  To update the label "Coffee Cup" to "coffeecup", click on the button with a pencil icon under "Labels" on the dataset card.
+
+<figure markdown="span">
+![Edit Labels](../assets/edit-labels.jpg){ align=center }
+<figcaption>Edit Labels</figcaption>
+</figure>
+
+This will bring the option to edit the label, the color associated to the label, and the index.  The index controls the label order which is relevant in multi-class datasets (more than one label).  The first label is given the index 0.  Since this dataset only has one label, its index is 0.  Here the label color was modified to blue and the label was modified to "coffeecup".
+
+<figure markdown="span">
+![Edited Label](../assets/edited-label.jpg){ align=center }
+<figcaption>Edited Label</figcaption>
+</figure>
+
+The changes should now be reflected in the gallery as shown below.
+
+<figure markdown="span">
+![Edited Sample Coffee Cups](../assets/coffee-cups-annotations-edited.jpg){ align=center }
+<figcaption>Edited Sample Coffee Cups</figcaption>
+</figure>
+
+### Add Label
+
+To add a new label, click on the button with a pencil icon under "Labels" on the dataset card.
+
+<figure markdown="span">
+![Edit Labels](../assets/edit-labels.jpg){ align=center }
+<figcaption>Edit Labels</figcaption>
+</figure>
+
+This will bring the option to edit the labels.  Click on the "+" button on the top right and this will add a new label as shown below.  By default it will show as "NewLabel" with no color associated to it.  
+
+<figure markdown="span">
+![Add Label](../assets/add-new-label-via-pencil.jpg){ align=center }
+<figcaption>Add Label</figcaption>
+</figure>
+
+You can follow the steps shown for [editing the label](#edit-label) to modify the label from "NewLabel" to something else like "plate" with color green as shown below.
+
+<figure markdown="span">
+![Added Label](../assets/new-plate-label.jpg){ align=center }
+<figcaption>Added Label</figcaption>
+</figure>
+
+**Alternatively**, you can also add multiple labels by clicking the button with the "+" icon next to the "Labels" on the dataset card.  This will bring the option for adding comma separated labels. 
+
+<figure markdown="span">
+![Add Label Multiple](../assets/add-multiple-labels.jpg){ align=center }
+<figcaption>Add Multiple Labels</figcaption>
+</figure>
+
+When a new label is added, this allows you to create new annotations with this label as shown in the dropdown in the gallery.
+
+<figure markdown="span">
+![Added Plate Label in Gallery](../assets/plate-label-added.jpg){ align=center }
+<figcaption>Added Plate Label in Gallery</figcaption>
+</figure>
+
+### Remove Label
+
+To remove a label, click on the button with a pencil icon under "Labels" on the dataset card.
+
+<figure markdown="span">
+![Edit Labels](../assets/edit-labels.jpg){ align=center }
+<figcaption>Edit Labels</figcaption>
+</figure>
+
+This will show the list of existing labels.  Click on the "x" button shown on the right of the label when hovering over it.  This will delete the label from the list along with the annotations with this label. 
+
+<figure markdown="span">
+![Added Label](../assets/delete-plate-label.jpg){ align=center }
+<figcaption>Added Label</figcaption>
+</figure>
 
 ## Auto Annotations via Gallery
 

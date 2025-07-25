@@ -1,4 +1,4 @@
-# Downloading the MCAP Recording
+# Download MCAP
 To download an MCAP recording from the device, click the MCAP Details hamburger button to open the MCAP Details Modal.
 <figure markdown="span">
 ![MCAP Recorder Interface](../../platforms/assets/quickStart-mcap.png){align=center}

@@ -55,4 +55,6 @@ For more information on managing recordings, please see the [Managing Recordings
 
 See the imported files by viewing the [dataset gallery](management.md#viewing-datasets).
 
-For auto-annotating datasets, see [AI Assisted Annotations](annotations.md#ai-assisted-annotation).  Otherwise, see this [tutorial for performing your own manual annotations](annotations.md#manual-annotation) in EdgeFirst Studio. 
+EdgeFirst Studio also supports [import of existing datasets](import.md) and its annotations with various formats.
+
+For auto-annotating datasets, see the [Automatic Ground Truth Generation (AGTG)](annotations/automatic.md). Otherwise, you can perform [manual annotations](annotations/manual.md) which is typically used to correct errors or make some adjustments in the annotations.

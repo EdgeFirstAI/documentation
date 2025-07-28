@@ -46,7 +46,7 @@ For more information, please visit [Secure Copy](../../../platforms/ssh.md#secur
 
 ### Download using the Client
 
-This method expects you to have already connected to the Raivin via [SSH](../../../platforms/ssh.md).  The [EdgeFirst Client](../../../perception/studio.md) will already come preinstalled in the device.  You can verify the installation with the client version command.
+This method expects you to have already connected to the Raivin via [SSH](../../../platforms/ssh.md).  The [EdgeFirst Client](../../../perception/studio.md) can be installed via `pip3 install edgefirst-client`.  You can verify the installation with the client version command.
 
 ```shell
 $ edgefirst-client version
@@ -82,10 +82,10 @@ Visit the Web UI service by entering the URL `https://<hostname>/` in your brows
 !!! note
     Replace `<hostname>` with the hostname of your device.
 
-You will be greeted with the Maivin [WebUI Main Page](../../../platforms/walkthrough.md) page.
+You will be greeted with the Raivin [WebUI Main Page](../../../platforms/walkthrough.md) page.
 
 <figure markdown="span">
-![WebUI Main Page](../../../platforms/assets/ui-maivinMain.png){ align=center }
+![WebUI Main Page](../../../platforms/assets/ui-raivinMain.png){ align=center }
 <figcaption>WebUI Main Page</figcaption>
 </figure>
 
@@ -93,12 +93,16 @@ For more information, please see the [Web UI Walkthrough](../../../platforms/wal
 
 ## Update the Model Path
 
-Once you are in the Web UI main page, specify the path to the model in the device.
+Next you will need to specify the path to the model in the device.  You can either update the model path in the Web UI or via the command line.
+
+### Web UI
+
+Once you are in the Web UI main page, you can specify the path to the model by following the steps below.
 
 Click the settings icon on the top right corner of the page.
 
 <figure markdown="span">
-![Settings](../../assets/deployment/raivin-settings.jpg){ align=center }
+![Settings](../../assets/deployment/raivin-settings.png){ align=center }
 <figcaption>Settings</figcaption>
 </figure>
 
@@ -112,9 +116,29 @@ Select "Model Settings".
 Configure the path to the model in your device as specified under "MODEL:".  Once configured, click "Save Configuration" to save your changes.
 
 <figure markdown="span">
-![Model Path](../../assets/deployment/configure-model-path.jpg){ align=center }
+![Model Path](../../assets/deployment/configure-model-path-raivin.jpg){ align=center }
 <figcaption>Model Path</figcaption>
 </figure>
+
+### Command Line
+
+To update the model path using the command line in the device, edit the following file using `sudo vi /etc/default/model`.
+
+Next, you will see the file with the following contents.
+
+```vi
+# This is the configuration file for the model systemd service file.  When
+# running systemctl start detect the service will use these configurations.
+# If running model directly, you must continue to use the command-line options.
+
+# A model is required for the model application. This can be a segmentation model
+# and/or a detection model.
+MODEL = "path/to/mymodel.tflite"
+```
+
+Edit the following line `MODEL = "path/to/mymodel.tflite"` to point to the specific path to your model.  To edit, press `i` to enter into "Insert Mode".  You should now be able to edit the lines.  To exit "Insert Mode", press the ESC key on your keyboard.  Next save and exit the file by typing `:wq` on your keyboard.  More examples for using `vi` can be found [here](https://coderwall.com/p/adv71w/basic-vim-commands-for-getting-started).
+
+Once the path to the model has been updated, restart the model service using `sudo systemctl restart model`.
 
 ## Enable and Start the Camera and Model Services
 
@@ -134,10 +158,10 @@ You will be greeted with the "Service Overview" page.  Ensure that all services 
 
 ## Live View (Segmentation App)
 
-Now we will demonstrate a live inference of the model in the device.  Once all services are enabled, go back to the main page and then select the "Segmentation View" application as shown.
+Now you will see a live inference of the model in the device.  Once all services are enabled, go back to the main page and then select the "Segmentation View" application as shown.
 
 <figure markdown="span">
-![Segmentation App](../../assets/deployment/raivin-segmentation-app.jpg){ align=center }
+![Segmentation App](../../assets/deployment/raivin-segmentation-app.png){ align=center }
 <figcaption>Segmentation App</figcaption>
 </figure>
 

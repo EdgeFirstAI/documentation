@@ -116,7 +116,7 @@ Select "Model Settings".
 Configure the path to the model in your device as specified under "MODEL:".  Once configured, click "Save Configuration" to save your changes.
 
 <figure markdown="span">
-![Model Path](../../assets/deployment/configure-model-path.jpg){ align=center }
+![Model Path](../../assets/deployment/configure-model-path-maivin.jpg){ align=center }
 <figcaption>Model Path</figcaption>
 </figure>
 
@@ -165,16 +165,11 @@ Now you will see live inference of the model in the device.  Once the model and 
 <figcaption>Segmentation App</figcaption>
 </figure>
 
-This will run inference on the model specified to generate segmentation masks on the detected objects.  In this case, the model is identifying people in the video feed.  Examples are shown below.
+This will run inference on the model specified to generate segmentation masks on the detected objects.  In this case, the model is identifying people in the video feed.  An example is shown below.
 
 <figure markdown="span">
 ![Segmentation Sample 1](../../assets/deployment/segmentation-sample-1.jpg){ align=center }
 <figcaption>Sample 1</figcaption>
-</figure>
-
-<figure markdown="span">
-![Segmentation Sample 2](../../assets/deployment/segmentation-sample-2.jpg){ align=center }
-<figcaption>Sample 2</figcaption>
 </figure>
 
 Now that the model has been updated, you can make new recordings using the model's inference and then visualizing the recording using Foxglove Studio.
@@ -192,6 +187,8 @@ Once the MCAP recording has been downloaded, you can use Foxglove Studio to see 
 
 More information on the MCAP playback is provided in [Foxglove Studio](../../../platforms/foxglove.md).
 
+## Next Steps
+
 In this tutorial, you have fetched the trained and validated model from EdgeFirst Studio, copied the model in the Maivin, configured the Maivin model services, and ran inference on the model in the device.  You have seen the model running live using the Maivin's camera and ran a Maivin MCAP recording to capture the model inference in the frames that can be visualized using Foxglove Studio. 
 
-For examples on deploying ModelPack in other platforms, see [Model Deployment](../../tutorials/deployment.md).
+For more examples on deploying ModelPack in other platforms, see [Model Deployment](../../tutorials/deployment.md).

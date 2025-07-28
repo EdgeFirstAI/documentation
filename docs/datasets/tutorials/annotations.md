@@ -7,7 +7,7 @@ This page will provide tutorials for annotating datasets in EdgeFirst Studio.  A
 <figcaption>Sample Annotations</figcaption>
 </figure>
 
-To reduce the effort required during the annotation process, EdgeFirst Studio provides the tools to auto annotate either a single image or a sequential set of frames in a dataset by leveraging SAM-2 auto-segment and tracking capabilities.  The following sections will describe this auto-annotation feature.  Please note that it is not always guaranteed that the auto-annotations will yeild 100% accuracy, so EdgeFirst Studio provides the tools to audit the existing annotations to correct any mistaked which will be described in the audit sections below.
+To reduce the effort required during the annotation process, EdgeFirst Studio provides the tools to auto annotate either a single image or a sequential set of frames in a dataset by leveraging SAM-2 auto-segment and tracking capabilities.  The following sections will describe this auto-annotation feature.  Please note that it is not always guaranteed that the auto-annotations will yeild 100% accuracy, so EdgeFirst Studio provides the tools to audit the existing annotations to correct any mistakes which will be described in the audit sections below.
 
 ## Dataset Labels
 
@@ -34,7 +34,7 @@ This will bring the option to edit the label, the color associated to the label,
 <figcaption>Edited Label</figcaption>
 </figure>
 
-The changes should now be reflected in the gallery as shown below.
+The changes should now be reflected in the [gallery](management.md#viewing-datasets) as shown below.
 
 <figure markdown="span">
 ![Edited Sample Coffee Cups](../assets/coffee-cups-annotations-edited.jpg){ align=center }

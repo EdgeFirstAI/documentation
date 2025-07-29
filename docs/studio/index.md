@@ -17,7 +17,6 @@ Additionally, users should be familiar with the annotation process described in 
 
 * [Automatic Ground Truth Generation](agtg.md)
 * [Building Snapshots](snapshots.md)
-* Annotation Audits (*coming soon*)
 
 Finally, EdgeFirst Studio provides security protocols described in [User Access Management](user/organization.md#roles).
 

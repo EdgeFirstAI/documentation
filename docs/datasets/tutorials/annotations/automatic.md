@@ -7,7 +7,7 @@ The [AGTG pipeline](../../../studio/agtg.md) describes the stages for automating
 
 ## Fully Automatic Ground Truth Generation
 
-This annotation feature is available at the time of importing the dataset via [snapshot restoration](../../../studio/snapshots.md#restore-snapshot).  The auto-annotation process is done in the background allowing the user to focus on separate tasks.  This section will show the steps for performing this type of auto-annotation in EdgeFirst Studio.  However, this feature can also be deployed using the [EdgeFirst Client](../../perception/studio.md#restore-snapshots) in the command line.
+This annotation feature is available at the time of importing the dataset via [snapshot restoration](../../../studio/snapshots.md#restore-snapshot).  The auto-annotation process is done in the background allowing the user to focus on separate tasks.  This section will show the steps for performing this type of auto-annotation in EdgeFirst Studio.  However, this feature can also be deployed using the [EdgeFirst Client](../../../perception/studio.md#restore-snapshots) in the command line.
 
 A complete description of this feature along with the buttons associated in this tutorial can be found under [Studio](../../../studio/snapshots.md)
 
@@ -75,6 +75,13 @@ Recall that [snapshots](../../../studio/snapshots.md) are frozen and compact for
     ![Zip/Arrow Import Snapshot](../../assets/zip-arrow-files-import.jpg){ align=center }
     <figcaption>Zip/Arrow Import Snapshot</figcaption>
     </figure>
+
+    !!! warning "Uniform Names"
+        The name of corresponding Zip and Arrow files must be same.
+
+    !!! info "Zip/Arrow File pairs"
+        The upload must come into Zip and Arrow file pairs. 
+        If there are multiple Zip and Arrow pairs, then each pair will become a sequence.
 
 A snapshot can be created from one of the three ways as described above: *Create from Existing Dataset*, *Upload from MCAP File*, *Upload from Zip/Arrow File*.  The next section will show how to restore these created snapshots for auto-annotations. 
 
@@ -178,6 +185,12 @@ By default, the prompts provided to SAM-2 are bounding boxes (mouse click and dr
 Once the first frame has been annotated (*prompts for SAM-2*), specify the "End Frame" which marks the point where SAM-2 stops propagating.  By default this is the end of the sequence (last frame).  Once this has been specified, click on "Propagate" to start the propagation process. 
 
 As the frames propagate, you should see the frames being auto-annotated.  To stop the propagation process click on "Stop Propagation".
+
+<figure markdown="span">
+![Propagation Process](../../assets/propagation-process.jpg){ align=center }
+<figcaption>Propagation Process</figcaption>
+</figure>
+
 
 ## Video Tutorials
 

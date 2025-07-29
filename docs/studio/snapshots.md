@@ -55,22 +55,6 @@ This format is the [EdgeFirst Dataset Format](../datasets/format.md) where the [
     <figcaption>From File</figcaption>
     </figure>
 
-    <figure markdown="span">
-    ![Zip and Arrow Files](assets/zip-arrow-files.jpg){ align=center }
-    <figcaption>Zip and Arrow Files</figcaption>
-    </figure>
-
-    <figure markdown="span">
-    ![Zip and Arrow Files Import](assets/zip-arrow-files-import.jpg){ align=center }
-    <figcaption>Zip and Arrow Files Import</figcaption>
-    </figure>
-
-    !!! warning
-        The name of corresponding zip and arrow files must be same.
-
-    !!! info
-        If there are multiple zip and arrow pairs, then each pair will become a sequence.
-
 3. Once the files are selected, this will start the import sequence progress shown below.
 
     <figure markdown="span">

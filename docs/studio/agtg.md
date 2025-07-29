@@ -92,6 +92,6 @@ Once the propagation completes, click on "SAVE ANNOTATIONS" to save the annotati
 
     For cases where the object exits and then re-enters the frame, the object might not be tracked properly.  Repeat the steps as necessary to annotate the objects that were missed.
 
-If you notice any errors on the annotations or missing annotations, follow the tutorial for [auditing 2D annotations](#audit-2d-annotations).  Furthermore, there is also a tutorial for [auditing 3D annotations](#audit-3d-annotations). 
+
 
 

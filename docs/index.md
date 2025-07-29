@@ -64,7 +64,7 @@ Now that you have imported captured images or videos into EdgeFirst Studio and h
 
 ## Annotate the Dataset
 
-In this step, you will need a personal computer (PC) with access to Wifi to [log in][login] to EdgeFirst Studio for annotating the dataset.  When annotating the dataset, you will be using AI assistance to reduce the effort by running auto segmentation and bounding boxes on the objects in the frame.  Once logged in to EdgeFirst Studio, follow the [Auto Annotations](datasets/tutorials/annotations.md#auto-annotations-via-gallery) instructions to auto-annotate the video sequence that was imported.  Otherwise, follow the [Audit 2D Annotations](datasets/tutorials/annotations.md#audit-2d-annotations) instructions to annotate the images captured.
+In this step, you will need a personal computer (PC) with access to Wifi to [log in][login] to EdgeFirst Studio for annotating the dataset.  When annotating the dataset, you will be using AI assistance to reduce the effort by running auto segmentation and bounding boxes on the objects in the frame.  Once logged in to EdgeFirst Studio, follow the [Auto Annotations](datasets/tutorials/annotations/automatic.md) instructions to auto-annotate the video sequence that was imported.  Otherwise, follow the [Manual 2D Annotations](datasets/tutorials/annotations/manual.md) instructions to annotate the images captured.
 
 A complete annotation will have a segmentation mask and a bounding box for each object in the frame.  Shown below is an example. 
 

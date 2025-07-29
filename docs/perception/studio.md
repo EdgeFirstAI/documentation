@@ -157,7 +157,7 @@ For example:
 $ edgefirst-client restore-snapshot 628 1816 --dataset-name "Upload from verdin-imx8mp-15141091 with AGTG" --dataset-description "This is a dataset generated from Raivin verdin-imx8mp-15141091 on January 31, 2025 with depth map generation and automated labelling for the class person and car." --autolabel "person car" --autodepth
 ```
 
-The `--autolabel` parameter currently supports [COCO labels](../datasets/coco2017.md#coco-labels). We can list any class found in the COCO labels list to auto annotate these classes. In EdgeFirst Studio, we can [visualize](../datasets/tutorials/management.md#viewing-datasets) the results of the auto-annotations when restoring the snapshot. In this example, "person" and "car" are being shown as specified from the command above.
+The `--autolabel` parameter currently supports [COCO labels](../datasets/coco/index.md#coco-labels). We can list any class found in the COCO labels list to auto annotate these classes. In EdgeFirst Studio, we can [visualize](../datasets/tutorials/management.md#viewing-datasets) the results of the auto-annotations when restoring the snapshot. In this example, "person" and "car" are being shown as specified from the command above.
 
 <figure markdown="span">
 ![Restore Snapshot Results](assets/restore-snapshot-results.jpg){ align=center }

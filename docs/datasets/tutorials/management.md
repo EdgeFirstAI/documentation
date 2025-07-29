@@ -111,7 +111,7 @@ Clicking on any of these sequences will open individual images in the sequence w
 <figcaption>Vision Annotations</figcaption>
 </figure>
 
-For cases where the annotations need corrections, please see [Audit 2D Annotations](annotations.md#audit-2d-annotations) or [Audit 3D Annotations](annotations.md#audit-3d-annotations) for more details.
+For cases where the annotations need corrections, please see [Manual 2D Annotations](annotations/manual.md#manual-2d-annotations) or [Manual 3D Annotations](annotations/manual.md#manual-3d-annotations) for more details.
 
 {% include-markdown "discrete/datasets/create_dataset_container.md" %}
 
@@ -124,7 +124,7 @@ To copy a dataset, navigate to the dataset you would like to copy.  On the datas
 <figcaption>Copy Dataset</figcaption>
 </figure>
 
-This will open a new dialog for the user to specify the "Destination Dataset".  The "Destination Dataset" will be the location of the copied dataset.  The "Source Dataset" will be set by default to the current dataset card you've selected.  However, you can also modify the location here.  In the example below, the original dataset is the "Source Dataset" which is the "Raivin Ultra Short 25.03" dataset from the "Sample Project".  The copied dataset will be placed as specified in the "Destination Dataset" fields.  By default a new dataset container will be created in the specified project.  However, you can [create a dataset container](#creating-datasets) before copying and specify this dataset container under "Dataset" in the "Destination Dataset" fields.
+This will open a new dialog for the user to specify the "Destination Dataset".  The "Destination Dataset" will be the location of the copied dataset.  The "Source Dataset" will be set by default to the current dataset card you've selected.  However, you can also modify the location here.  In the example below, the original dataset is the "Source Dataset" which is the "Raivin Ultra Short 25.03" dataset from the "Sample Project".  The copied dataset will be placed as specified in the "Destination Dataset" fields.  By default a new dataset container will be created in the specified project.  However, you can [create a dataset container](#create-dataset) before copying and specify this dataset container under "Dataset" in the "Destination Dataset" fields.
 
 <figure markdown="span">
 ![Copy Dataset Options](../assets/copy-dataset-options.jpg){ align=center }
@@ -153,7 +153,7 @@ Once the copying process completes, the frames and the annotations have been cop
 
 ## Combining Datasets
 
-The process of combining datasets consists of multiple copy processes on a given dataset container.  To combine datasets, first [create a dataset](#creating-datasets) container.  Follow the process for [copying a dataset](#copying-datasets) onto the destination dataset container that was created.  The copy process will copy the selected dataset onto the same dataset container and thus combining multiple datasets.
+The process of combining datasets consists of multiple copy processes on a given dataset container.  To combine datasets, first [create a dataset](#create-dataset) container.  Follow the process for [copying a dataset](#copying-datasets) onto the destination dataset container that was created.  The copy process will copy the selected dataset onto the same dataset container and thus combining multiple datasets.
 
 ## Splitting Datasets
 

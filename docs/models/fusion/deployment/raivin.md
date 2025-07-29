@@ -9,7 +9,7 @@ Now that you have [validated your Fusion model](../validation.md), this guide wi
 This guide will showcase two methods of deploying the model.
 
 1. [Live View (Segmentation App)](#live-view-segmentation-app)
-2. [MCAP Recording](#recording-an-mcap)
+2. [MCAP Recording](#record-mcap)
 
 ## Download the Model
 
@@ -149,7 +149,7 @@ Once the model path in the device is specified, ensure that all services are ena
 <figcaption>Service Status</figcaption>
 </figure>
 
-You will be greeted with the "Service Overview" page.  Ensure that all services are enabled and running by toggling the "Enable" and "Start" buttons as shown.  Only "Enable" the "recorder" service as shown.  You will be using the recorder service in [MCAP Recording](#recording-an-mcap).
+You will be greeted with the "Service Overview" page.  Ensure that all services are enabled and running by toggling the "Enable" and "Start" buttons as shown.  Only "Enable" the "recorder" service as shown.  You will be using the recorder service in [MCAP Recording](#record-mcap).
 
 <figure markdown="span">
 ![Service Overview](../../assets/deployment/raivin-service-overview.jpg){ align=center }

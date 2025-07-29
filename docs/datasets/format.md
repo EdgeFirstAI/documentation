@@ -4,7 +4,7 @@ This article describes the structure of the *EdgeFirst Dataset Format*. EdgeFirs
 Datasets support various sample data types, they are split into sensor data 
 and annotation data. Sensor data should be treated as static and not changed after capture. 
 Meanwhile, annotation data types are dynamic and will be created and edited many times after capture 
-as we first generate automated annotations and then perform audits on these automatic annotations.
+as we first generate automated annotations and then perform audits on the generated annotations.
 
 The *Dataset Storage Format* is the container used to store sensor data from the
 MCAP recordings which includes the camera, LiDAR, Radar, and Depth estimations. The

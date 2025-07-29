@@ -16,23 +16,23 @@ If you have an EdgeFirst Platform, please proceed to step 1. Otherwise, proceed 
 
 When starting from scratch, it is common to start recording your own data to build your own dataset. This step requires an [EdgeFirst Platform](../../platforms/quickstart.md) for recording data. However, we also provide [Public Datasets](../studio.md#datasets) for users without an EdgeFirst Platform. 
 
-For instructions on capturing and recording data, refer to the [Capture/Record Data Tutorial](../../datasets/tutorials/capture.md#recording-an-mcap).
+For instructions on capturing and recording data, refer to the [Capture/Record Data Tutorial](../../datasets/tutorials/capture.md#capture-with-an-edgefirst-platform).
 
 ### 2. Download Recorded Data
 
 Once data is recorded which is stored as an MCAP file, download the MCAP file.
 
-For instructions on downloading the recorded MCAP file, refer to the [Download Captured Data Tutorial](../../datasets/tutorials/capture.md#downloading-the-mcap-recording).
+For instructions on downloading the recorded MCAP file, refer to the [Download Captured Data Tutorial](../../datasets/tutorials/capture.md#download-mcap).
 
 ### 3. Upload Recorded Data to EdgeFirst Studio
 
 Once an MCAP file has been downloaded, upload the MCAP recording to EdgeFirst Studio.
 
-For instructions on uploading the recorded MCAP file to EdgeFirst Studio, refer to the [Upload Recorded Data Tutorial](../../datasets/tutorials/management.md#upload-mcaps).
+For instructions on uploading the recorded MCAP file to EdgeFirst Studio, refer to the [Upload Recorded Data Tutorial](../../datasets/tutorials/capture.md#upload-mcap).
 
 ### 4. Annotate Dataset
 
-Once an MCAP recording has been uploaded to EdgeFirst Studio, we can then run [auto-annotations](../../datasets/tutorials/annotations.md#auto-annotations-via-snapshot) on the recording to reduce the effort needed from the user. Otherwise, the user can manually annotate [2D](../../datasets/tutorials/annotations.md#audit-2d-annotations) or [3D](../../datasets/tutorials/annotations.md#audit-3d-annotations) annotations on the dataset.
+Once an MCAP recording has been uploaded to EdgeFirst Studio, we can then run [auto-annotations](../../datasets/tutorials/annotations/automatic.md#fully-automatic-ground-truth-generation) on the recording to reduce the effort needed from the user. Otherwise, the user can manually annotate [2D](../../datasets/tutorials/annotations/manual.md#manual-2d-annotations) or [3D](../../datasets/tutorials/annotations/manual.md#manual-3d-annotations) annotations on the dataset.
 
 ### 5. Combine Multiple Datasets
 

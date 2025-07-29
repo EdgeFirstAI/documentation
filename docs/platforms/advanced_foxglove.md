@@ -4,7 +4,7 @@ This section will describe two, more advanced tasks with [Foxglove Studio](foxgl
 1. Using the 3D Panel to view the post-processed [Radar](radar.md) outputs contained in the "Fusion Targets" topics.
 2. Using the "User Scripts" panel to create a short Typescript script that also outputs the values for those topics.
 
-It is assumed you have read the [introduction to Foxglove Studio](foxglove.md), familiarized yourself with the application, and have [downloaded an MCAP](recording.md#downloading-the-mcap-recording) that has recorded the [`/fusion/targets` topic](configuration.md#fusion-recording).
+It is assumed you have read the [introduction to Foxglove Studio](foxglove.md), familiarized yourself with the application, and have [downloaded an MCAP](recording.md#download-mcap) that has recorded the [`/fusion/targets` topic](configuration.md#fusion-recording).
 
 ## The Fusion Targets Topic
 The "Fusion Targets" topic contains post-processed radar outputs that identify targets as people.  For each target it detects, it returns the following information about the target:

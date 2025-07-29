@@ -173,7 +173,7 @@ Now that we have imported some data into EdgeFirst Studio and have split the cap
 
 ## 4. Annotate Data in EdgeFirst Studio
 
-In this step, we will be using a personal computer with access to Wifi to [log in][login] to EdgeFirst Studio for annotating the captured data. When annotating the dataset, we will be using AI assistance to annotate the ground truth to perform auto segmentation and bounding boxes on the objects in the frame. Once logged in to EdgeFirst Studio, follow the [Auto Annotations](../../datasets/tutorials/annotations.md#auto-annotations-via-gallery) instructions to auto-annotate the video sequence that was imported. Otherwise, follow the [Audit 2D Annotations](../../datasets/tutorials/annotations.md#audit-2d-annotations) instructions for annotating the images captured.
+In this step, we will be using a personal computer with access to Wifi to [log in][login] to EdgeFirst Studio for annotating the captured data. When annotating the dataset, we will be using AI assistance to annotate the ground truth to perform auto segmentation and bounding boxes on the objects in the frame. Once logged in to EdgeFirst Studio, follow the [Auto Annotations](../../datasets/tutorials/annotations/automatic.md#semi-automatic-ground-truth-generation) instructions to auto-annotate the video sequence that was imported. Otherwise, follow the [Manual 2D Annotations](../../datasets/tutorials/annotations/manual.md#manual-2d-annotations) instructions for annotating the images captured.
 
 A complete annotation will have a segmentation mask and a bounding box for each object in the frame. Shown below is an example. 
 

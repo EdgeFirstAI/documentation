@@ -42,16 +42,41 @@ Recall that [snapshots](../../../studio/snapshots.md) are frozen and compact for
 
 2. Upload from MCAP File
 
-An MCAP file is a [recording captured](../capture.md#capture-with-an-edgefirst-platform) by an [EdgeFirst Platform (Maivin or Raivin)](../../../platforms/quickstart.md). 
+    An MCAP file is a [recording captured](../capture.md#capture-with-an-edgefirst-platform) by an [EdgeFirst Platform (Maivin or Raivin)](../../../platforms/quickstart.md). 
 
-To create a snapshot from an MCAP file, visit the "Data Snapshots" page.
+    To create a snapshot from an MCAP file, visit the "Data Snapshots" page.
 
-<figure markdown="span">
-![Data Snapshots](../../assets/data-snapshots.jpg){ align=center }
-<figcaption>Data Snapshots</figcaption>
-</figure>
+    <figure markdown="span">
+    ![Data Snapshots](../../assets/data-snapshots.jpg){ align=center }
+    <figcaption>Data Snapshots</figcaption>
+    </figure>
+
+    Either drag and drop an MCAP file into the page OR click on the "From File" button to allow selection of the MCAP file from your directories.
+
+    <figure markdown="span">
+    ![MCAP Import Snapshot](../../assets/mcap-file-import.jpg){ align=center }
+    <figcaption>MCAP Import Snapshot</figcaption>
+    </figure>
 
 3. Upload from Zip/Arrow (EdgeFirst Dataset) Files
+
+    The Zip/Arrow files together creates the [EdgeFirst Dataset Format](../../format.md).
+
+    To create a snapshot from a Zip/Arrow files, visit the "Data Snapshots" page.
+
+    <figure markdown="span">
+    ![Data Snapshots](../../assets/data-snapshots.jpg){ align=center }
+    <figcaption>Data Snapshots</figcaption>
+    </figure>
+
+    Either drag and drop the Zip/Arrow files into the page OR click on the "From File" button to allow selection of the Zip/Arrow files from your directories.
+
+    <figure markdown="span">
+    ![Zip/Arrow Import Snapshot](../../assets/zip-arrow-files-import.jpg){ align=center }
+    <figcaption>Zip/Arrow Import Snapshot</figcaption>
+    </figure>
+
+A snapshot can be created from one of the three ways as described above: *Create from Existing Dataset*, *Upload from MCAP File*, *Upload from Zip/Arrow File*.  The next section will show how to restore these created snapshots for auto-annotations. 
 
 ### Restore Snapshot
 

@@ -39,7 +39,6 @@ nav:
         - datasets/tutorials/annotations/index.md
         - datasets/tutorials/annotations/automatic.md
         - datasets/tutorials/annotations/manual.md
-      - datasets/tutorials/annotations-2.md
       - datasets/tutorials/management.md
   - Models:
     - models/index.md

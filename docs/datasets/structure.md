@@ -66,3 +66,7 @@ These datasets contain both sequences and standard non-sequence images.  The dat
 ```
 
 Sequences have designated sub-directories in the dataset to store the frames.  Images are stored in the dataset directory. 
+
+## Further Reading
+
+In this article, we have described how EdgeFirst Datasets are structured depending if the dataset is sequence-based, image-based, or mixed.  Next, explore how datasets are created from scratch in EdgeFirst Studio from capture to annotation by following the [Dataset Tutorials](tutorials/index.md).

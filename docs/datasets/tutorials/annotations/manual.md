@@ -189,3 +189,7 @@ This is a high-level video tutorial showing adjustments to the 3D annotations.
 <div style="text-align: center;">
     <iframe width="560" height="315" src="https://www.youtube.com/embed/j-75Q5-_dC0?start=1536&end=2144" title="Visualize Annotations" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 </div>
+
+## Next Steps
+
+Once you have verified that your dataset has been properly annotated, you can now proceed to training your [Vision](../../../models/modelpack/training.md) or [Fusion](../../../models/fusion/training.md) model. 

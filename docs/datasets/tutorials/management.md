@@ -20,16 +20,9 @@ You will now see the datasets contained in the project.  Each dataset has a gall
 <figcaption>Gallery Button</figcaption>
 </figure>
 
-When clicking the gallery button, you will either see the images in the dataset for [Image-Based Datasets](../structure.md#image-based) or sequences for [Sequence-Based Datasets](../structure.md#sequence-based).
+When clicking the gallery button, you will either see individual [images](../structure.md#image-based) or [sequences](../structure.md#sequence-based).
 
-For sequence-based datasets, you need to specify which sequence you would like to view.  This can be done by clicking on the sequence.
-
-<figure markdown="span">
-![Dataset Sequence](../assets/public-dataset-sequence.jpg){ align=center }
-<figcaption>Dataset Sequence</figcaption>
-</figure>
-
-When the sequence is clicked, you will now see the frames stored in the sequence along with the annotations.
+Sequences contain the following sequence icon !["Sequence Icon"](../../assets/buttons/studio-sequence-icon.jpg) on the lower left of the card.  Clicking on any sequences will provide video playback.  Otherwise individual images do not have this icon on their cards. 
 
 <figure markdown="span">
 ![Dataset Sequence](../assets/sample-dataset-image.jpg){ align=center }

@@ -9,7 +9,7 @@ The [AGTG pipeline](../../../studio/agtg.md) describes the stages for automating
 
 This annotation feature is available at the time of importing the dataset via [snapshot restoration](../../../studio/snapshots.md#restore-snapshot).  The auto-annotation process is done in the background allowing the user to focus on separate tasks.  This section will show the steps for performing this type of auto-annotation in EdgeFirst Studio.  However, this feature can also be deployed using the [EdgeFirst Client](../../../perception/studio.md#restore-snapshots) in the command line.
 
-A complete description of this feature along with the buttons associated in this tutorial can be found under [Studio](../../../studio/snapshots.md)
+A complete description of this feature along with the buttons associated in this tutorial can be found under [Studio](../../../studio/snapshots.md).
 
 This feature is a two-step process: *Create Snapshot* and *Restore Snapshot*.
 
@@ -130,7 +130,7 @@ Next [navigate to the gallery](../management.md#viewing-datasets) of the dataset
 :------------------:|:------------------:|:------------------:
 ![Annotation 1]() | ![Annotation 2]() | ![Annotation 3]()
 
-The next section will describe the Semi-Automatic Ground Truth Generation for increased user control during the auto-annotation process.
+The next section will describe the *Semi-Automatic Ground Truth Generation* for additional user control during the auto-annotation process.
 
 ## Semi-Automatic Ground Truth Generation
 
@@ -191,6 +191,12 @@ As the frames propagate, you should see the frames being auto-annotated.  To sto
 <figcaption>Propagation Process</figcaption>
 </figure>
 
+Once the propagation completes as it reached the end frame, click on "Save Annotations" to save the generated annotations.
+
+<figure markdown="span">
+![Propagation Completed](../../assets/agtg-propagation-completed.jpg){ align=center }
+<figcaption>Propagation Completed</figcaption>
+</figure>
 
 ## Video Tutorials
 

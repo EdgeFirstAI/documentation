@@ -20,7 +20,7 @@ For an example dataset, [COCO128](https://www.kaggle.com/datasets/ultralytics/co
 <figcaption>COCO128</figcaption>
 </figure>
 
-Once a container has been created, open the dataset extended menu denoted by the three vertical dots on the top right corner of the dataset card.
+Once a container has been created, open the dataset context menu denoted by the three vertical dots on the top right corner of the dataset card.
 
 <figure markdown="span">
 ![Dataset Options](../assets/coco128-options.jpg){ align=center }
@@ -81,7 +81,7 @@ To import a dataset, first [create a dataset](management.md#create-dataset) cont
 <figcaption>COCO2017 Dataset Container</figcaption>
 </figure>
 
-Once a container has been created, open the dataset extended menu denoted by the three vertical dots on the top right corner of the dataset card.
+Once a container has been created, open the dataset context menu denoted by the three vertical dots on the top right corner of the dataset card.
 
 <figure markdown="span">
 ![Dataset Options](../assets/coco2017-options.jpg){ align=center }
@@ -115,3 +115,5 @@ This will start the import process as shown.
 ![Import Process](../assets/coco2017-import-process.jpg){ align=center }
 <figcaption>Import Process</figcaption>
 </figure>
+
+See the dataset and its annotations by following the tutorial for [viewing the dataset gallery](management.md#viewing-datasets).

@@ -1,13 +1,13 @@
 # EdgeFirst Dataset Format
 
-This article describes the structure of the *EdgeFirst Dataset Format*. EdgeFirst 
+This page describes the format of the *EdgeFirst Dataset Format*. EdgeFirst 
 Datasets support various sample data types, they are split into sensor data 
-and annotation data. Sensor data should be treated as static and not changed after capture. 
-Meanwhile, annotation data types are dynamic and will be created and edited many times after capture 
-as we first generate automated annotations and then perform audits on the generated annotations.
+and annotation data. Sensor data should be treated as static and unchangeable types after capture. 
+Meanwhile, annotation data types are dynamic that will be edited many times after capture 
+from auto-annotations towards annotations audits.
 
 The *Dataset Storage Format* is the container used to store sensor data from the
-MCAP recordings which includes the camera, LiDAR, Radar, and Depth estimations. The
+[MCAP recordings](../platforms/recording.md) which includes the camera, LiDAR, Radar, and Depth estimations. The
 *Dataset Annotation Format* is the container used to store dataset annotations which 
 includes object label, 2D bounding boxes, segmentation masks, 3D bounding boxes, etc.
 
@@ -40,9 +40,9 @@ name but add the frame number and file extension.
         * hostname_date_time_frame.depth.png (camera depthmap)
         * hostname_date_time_frame.radar.png (radar cube)
         * hostname_date_time_frame.radar.pcd (radar point cloud)
-        * hostname_date_time_frame.lidar.png (lidar depth map)
-        * hostname_date_time_frame.lidar.pcd (lidar point cloud)
-        * hostname_date_time_frame.lidar.jpeg (lidar reflectivity)
+        * hostname_date_time_frame.lidar.png (LiDAR depth map)
+        * hostname_date_time_frame.lidar.pcd (LiDAR point cloud)
+        * hostname_date_time_frame.lidar.jpeg (LiDAR reflectivity)
 ```
 
 The following figure is a visualization of the typical contents in a Zip file.
@@ -162,7 +162,7 @@ which for a dataset with only people in it would mean images without annotations
 
 It is also important to consider the inputs to our model when reading samples from the archive 
 so that we only pull samples that include our desired input type. The *EdgeFirst Dataset Format* 
-supports various input types: camera images, radar data cubes, radar point-clouds, and lidar point-clouds. 
+supports various input types: camera images, radar data cubes, radar point-clouds, and LiDAR point-clouds. 
 When querying samples from the archive we should filter for those that include all our desired input types.
 
 #### Name
@@ -252,3 +252,9 @@ attention as denoted by the "edit" status. An "edit" status is based on an incom
 set of annotations. For example, a segmentation mask could exist for this annotation,
 but it is missing a 3D bounding box, etc. A "valid" status indicates a complete
 set of annotations a 2D bounding box, segmentation mask, and a 3D bounding box.
+
+## Further Reading
+
+In this article, we have described the EdgeFirst Dataset Format which is designed to place sensor types (static) and annotation types (dynamic) into separate containers (Zip and Arrow).  Although these data types are still directly correlated, they are better managed by keeping them separate.  There are multiple sensor types stored in unique files to contain the sensor readings and measurements for dataset creation.  Similarly, there are multiple annotation types used to describe the object either in 2D camera-based coordinates or 3D world-based coordinates. 
+
+Next, take a look at the conventions followed for the [EdgeFirst Dataset Structure](structure.md) which describes how the file structure is organized depending if the dataset is sequence-based or not. 

@@ -1,6 +1,6 @@
 # Upload Images
 
-Image files can be uploaded into any dataset container in EdgeFirst Studio.  Choose the dataset container to upload image files.  In this case, the dataset is called "Coffee Cup".  Click on the dataset extended menu (three dots) and select import.
+Image files can be uploaded into any dataset container in EdgeFirst Studio.  Choose the dataset container to upload image files.  In this case, the dataset is called "Coffee Cup".  Click on the dataset context menu (three dots) and select import.
 
 <figure markdown="span">
 ![Dataset Import Option](../../getting_started/assets/workflows/mobile-dataset-import-option.jpg){ align=center }
@@ -14,14 +14,14 @@ This will bring you to the "Import Dataset" page.
 <figcaption>Dataset Import</figcaption>
 </figure>
 
-Click on "Click to select images".  This will bring up the option to specify the location of the files.
+Click on "select files".  This will bring up the option to specify the location of the files.
 
 <figure markdown="span">
 ![Android Mobile Media Picker](../../getting_started/assets/workflows/mobile-media-picker.jpg){ align=center }
 <figcaption>Android Mobile Media Picker</figcaption>
 </figure>
 
-In my current setup, I have selected "Media Picker" from the options above and then I have multi-selected the images I want to import by press and hold on a single image to enable multi-select.  To import, I pressed "Select".
+In my current setup, I have selected "Photos & Videos" from the options above and then I have multi-selected the images I want to import by press and hold on a single image to enable multi-select.  To import, I pressed "Select".
 
 <figure markdown="span">
 ![Android Multi-select Images](../../getting_started/assets/workflows/mobile-multi-select-images.jpg){ align=center }

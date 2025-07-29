@@ -1,9 +1,6 @@
 # Upload Video 
 
-Video files can be uploaded into any dataset container in EdgeFirst Studio.  Choose the dataset container to upload the video file.  In this case, the dataset is called "Coffee Cup".  Click on the dataset extended menu (three dots) and select import.
-
-!!! Note
-    Only one video can be imported at a time.
+Video files can be uploaded into any dataset container in EdgeFirst Studio.  Choose the dataset container to upload the video file.  In this case, the dataset is called "Coffee Cup".  Click on the dataset context menu (three dots) and select import.
 
 <figure markdown="span">
 ![Dataset Import Option](../../getting_started/assets/workflows/mobile-dataset-import-option.jpg){ align=center }
@@ -17,14 +14,14 @@ This will bring you to the "Import Dataset" page.
 <figcaption>Dataset Import</figcaption>
 </figure>
 
-Click on the drop-down that says "Select an Import Type" and then specify "Video" and then click "Done" as shown below. 
+Click on the drop-down that says "Import Type" and then specify "Videos" and then click "Done" as shown below. 
 
 <figure markdown="span">
 ![Dataset Video Import](../../getting_started/assets/workflows/mobile-video-import-type.jpg){ align=center }
 <figcaption>Dataset Video Import</figcaption>
 </figure>
 
-Now that the import type is specified to a video file, click on "Select File" as indicated.
+Now that the import type is specified to a "Videos", click on "select files" as indicated.
 
 <figure markdown="span">
 ![Select Video File](../../getting_started/assets/workflows/mobile-select-video-file.jpg){ align=center }
@@ -45,7 +42,7 @@ In my current setup, I have selected "My Files" from the options above and then 
 <figcaption>Android File Manager</figcaption>
 </figure>
 
-Once the video file has been selected, set the desired FPS (frames per second) ratio, and then go ahead and click the "Start Import" button to start importing the video file. 
+Once the video file has been selected, set the desired FPS (frames per second), and then go ahead and click the "Start Import" button to start importing the video file. 
 
 <figure markdown="span">
 ![Import Fields](../../getting_started/assets/workflows/mobile-video-import-fields.jpg){ align=center }

@@ -1,5 +1,5 @@
 # Dataset Capture
-This page has tutorials for capturing or collecting samples for datasets and then uploading the samples into EdgeFirst Studio for annotation.  At the bare minimum, datasets can be captured with any device with a camera such as a phone.  However, [EdgeFirst Platforms](../../platforms/index.md) such as a Maivin or a Raivin can also capture dataset samples for model training which can then be deployed back into the platform for model inference.  Image samples will [train Vision models](../../models/modelpack/training.md).  However, devices that are custom fitted with Radar or LiDAR modules such as a Raivin platform can capture dataset samples suited to [train Fusion models](../../models/fusion/training.md).
+This page has tutorials for capturing or collecting samples for datasets and then uploading the samples into EdgeFirst Studio for [annotation](annotations/index.md).  At the bare minimum, datasets can be captured with any device with a camera such as a phone.  However, [EdgeFirst Platforms](../../platforms/index.md) such as a Maivin or a Raivin can also capture dataset samples for model training which can then be deployed back into the platform for model inference.  Image samples will [train Vision models](../../models/modelpack/training.md).  However, devices that are custom fitted with Radar or LiDAR modules such as a Raivin platform can capture dataset samples suited to [train Fusion models](../../models/fusion/training.md).
 
 ## Capture with a Phone
 If you have a phone or any device with a camera with Wifi access, follow this tutorial to see how to capture and upload datasets into EdgeFirst Studio. 
@@ -11,6 +11,8 @@ If you have a phone or any device with a camera with Wifi access, follow this tu
 {% include-markdown "discrete/datasets/uploading_video_to_studio.md" heading-offset=2 %}
 
 {% include-markdown "discrete/datasets/uploading_images_to_studio.md" heading-offset=2 %}
+
+In this tutorial you have seen how to capture videos and images from your mobile phone and uploaded the videos and images into EdgeFirst Studio. Proceed to the [Next Steps](#next-steps) to see what's next in your dataset creation. 
 
 ## Capture with an EdgeFirst Platform
 If you have an EdgeFirst Platform, follow this tutorial to see how to capture and upload datasets into EdgeFirst Studio.  Use your browser to connect to the Web UI of the remote device, enter the following URL `https://<hostname>/`.
@@ -30,6 +32,8 @@ You will be greeted with the Maivin [Web UI Main Page](../../platforms/walkthrou
 {% include-markdown "discrete/datasets/downloading_mcap_from_device.md" heading-offset=2 %}
 
 {% include-markdown "discrete/datasets/uploading_mcap_to_studio.md" heading-offset=2 %}
+
+In this tutorial you have seen how to record MCAPs using an EdgeFirst Platform and downloaded and uploaded the MCAP recording into EdgeFirst Studio. Proceed to the [Next Steps](#next-steps) to see what's next in your dataset creation. 
 
 ### Video Tutorials
 This video tutorial provides high-level instructions for recording MCAPs using an [EdgeFirst Platform](../../platforms/index.md).  For in-depth documentation, please refer to the [MCAP Recording Service](../../platforms/recording.md).

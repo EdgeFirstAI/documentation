@@ -86,18 +86,17 @@ Verify the contents of the dataset and the annotations.  Click the button that n
 <figcaption>Vision Dataset Sequences</figcaption>
 </figure>
 
-Clicking on any of these sequences will open individual images in the sequence with the visualizations of the annotations.  For more information please see [Viewing Datasets](#viewing-datasets) above.
+Clicking on any of these sequences will open individual images in the sequence with the visualizations of the annotations.  For more information please see [viewing datasets](#viewing-datasets).
 
-!!! info
-    Datasets that train Fusion models provide annotations of the object's 3D bounding box.  For more information on the dataset annotations, please see [EdgeFirst Dataset Format](../format.md#dataset-annotation-format).
+
+Datasets that train Fusion models provide annotations of the object's 3D bounding box.  For more information on the dataset annotations, please see the [EdgeFirst Dataset Format](../format.md#dataset-annotation-format).
 
 <figure markdown="span">
 ![Fusion Annotations](../assets/fusion-annotations.jpg){ align=center }
 <figcaption>Fusion Annotations</figcaption>
 </figure>
 
-!!! info
-    Datasets that train Vision models provide image annotations of the object's 2D bounding box and segmentation mask.  For more information on the dataset annotations, please see [EdgeFirst Dataset Format](../format.md#dataset-annotation-format).
+Datasets that train Vision models provide image annotations of the object's 2D bounding box and segmentation mask.  For more information on the dataset annotations, please see the [EdgeFirst Dataset Format](../format.md#dataset-annotation-format).
 
 <figure markdown="span">
 ![Vision Annotations](../assets/vision-annotations.jpg){ align=center }
@@ -117,21 +116,14 @@ To copy a dataset, navigate to the dataset you would like to copy.  On the datas
 <figcaption>Copy Dataset</figcaption>
 </figure>
 
-This will open a new dialog for the user to specify the "Destination Dataset".  The "Destination Dataset" will be the location of the copied dataset.  The "Source Dataset" will be set by default to the current dataset card you've selected.  However, you can also modify the location here.  In the example below, the original dataset is the "Source Dataset" which is the "Raivin Ultra Short 25.03" dataset from the "Sample Project".  The copied dataset will be placed as specified in the "Destination Dataset" fields.  By default a new dataset container will be created in the specified project.  However, you can [create a dataset container](#create-dataset) before copying and specify this dataset container under "Dataset" in the "Destination Dataset" fields.
+This will open a new dialog for the user to specify the "Destination".  The "Destination" will be the location of the copied dataset.  The "Source" will be set by default to the current dataset card you've selected.  However, you can also modify the location here.  In the example below, the original dataset is the "Source" which is the "Coffee Cup" dataset from the "Sample Project".  The copied dataset will be placed as specified in the "Destination" fields.  By default a new dataset container will be created in the specified project.  However, you can [create a dataset container](#create-dataset) before copying and specify this dataset container in the "Destination" fields.
 
 <figure markdown="span">
 ![Copy Dataset Options](../assets/copy-dataset-options.jpg){ align=center }
 <figcaption>Copy Dataset Options</figcaption>
 </figure>
 
-Once the options are specified, go ahead and click "Apply" at the bottom right to start the copy process.
-
-<figure markdown="span">
-![Copy Dataset Process](../assets/copy-dataset-process.jpg){ align=center }
-<figcaption>Copy Dataset Process</figcaption>
-</figure>
-
-The progress for the dataset copy will be shown on the new dataset card that was created in the project destination that was specified.
+Once the options are specified, go ahead and click "Apply" at the bottom right to start the copy process.  The progress for the dataset copy will be shown on the new dataset card that was created in the project destination that was specified.
 
 <figure markdown="span">
 ![Copy Dataset Progress](../assets/copy-dataset-progress.jpg){ align=center }
@@ -153,8 +145,7 @@ The process of combining datasets consists of multiple copy processes on a given
 A proper dataset has samples reserved for training and validation.  This tutorial will show how to split the samples in the dataset into training and validation groups.  This operation randomly shuffles the data prior to assigning them to the specified groups. 
 
 !!! warning
-    
-    This operation needs to be done whenever new sample images or frames are added to the dataset.  Newly added samples are not automatically added to any group that already exists. 
+    The dataset needs to be re-split whenever new sample images or frames are added to the dataset.  Newly added samples are not automatically added to any group that already exists. 
 
 Consider the following dataset without any groups reserved.
 
@@ -177,7 +168,7 @@ This will open a new dialog to specify the percentages of the partition belongin
 <figcaption>Groups Field</figcaption>
 </figure>
 
-Once the groups are specified, click "Add Groups" to create the groups.  This will automatically divide the samples in the dataset based on the percentages of each group specified.
+Once the groups are specified, click "Split" to create the groups.  This will automatically divide the samples in the dataset based on the percentages of each group specified.
 
 <figure markdown="span">
 ![Dataset Groups](../assets/dataset-with-groups.jpg){ align=center }

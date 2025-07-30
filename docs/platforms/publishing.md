@@ -1,5 +1,5 @@
 # Publishing
-Once you have a MCAP created from the [Recording Service](./recording.md), you can upload it as a [dataset](../datasets/index.md) to [EdgeFirst Studios](../studio/index.md) to [auto-annotation](../studio/agtg.md) and [train additional models](../models/index.md) from.  There are two methods to upload the MCAP to EdgeFirst Studio:  download the MCAP from Raivin and use EdgeFirst Studio to create a snapshot, or use the [EdgeFirst studio client](../perception/studio.md) on the Raivin device to directly upload the file from the Raivin to the Studio as a snapshot.
+Once you have a MCAP created from the [Recording Service](./recording.md), you can upload it as a [dataset](../datasets/index.md) to [EdgeFirst Studio](../studio/index.md) to [auto-annotation](../studio/agtg.md) and [train additional models](../models/index.md) from.  There are two methods to upload the MCAP to EdgeFirst Studio:  download the MCAP from Raivin and use EdgeFirst Studio to create a snapshot, or use the [EdgeFirst studio client](../perception/studio.md) on the Raivin device to directly upload the file from the Raivin to the Studio as a snapshot.
 
 !!! warning
     Uploading snapshots should not deduct funds from your EdgeFirst Studio account. However, creating datasets from snapshots, called *restoring* snapshots, will absolutely incur costs. 
@@ -30,7 +30,7 @@ scp torizon@verdin-imx8mp-07130049:/media/DATA/verdin-imx8mp-07130049_2025_04_09
 Once the MCAP file is downloaded to your PC, you can login to EdgeFirst Studio and use the [EdgeFist Studio Snapshot page](../studio/snapshots.md) to upload the MCAP file to Studio.
 
 ## Method 2: Publish the MCAP directly using the EdgeFirst Client
-The second method is use the [EdgeFirst studio client](../perception/studio.md) on the device to directly upload the MCAP to EdgeFirst Studios as a snapshot. This requires that you SSH into the device and run commands on the Linux shell of the Raivin.
+The second method is use the [EdgeFirst studio client](../perception/studio.md) on the device to directly upload the MCAP to EdgeFirst Studio as a snapshot. This requires that you SSH into the device and run commands on the Linux shell of the Raivin.
 
 First, you would need to use the SSH client to log into the device:
 ```bash

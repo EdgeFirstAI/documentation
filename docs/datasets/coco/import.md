@@ -17,7 +17,7 @@ coco.download('./dataset')
 
 ## Export COCO Dataset into EdgeFirst format
 
-After downloading the dataset, we need to convert it from the COCO format to the EdgeFirst format. The `to_edgefirst(...)` function handles this conversion, transforming the standard COCO dataset structure into the EdgeFirst-compatible format.
+After downloading the dataset, we need to convert it from the COCO format to the [EdgeFirst Dataset format](../format.md). The `to_edgefirst(...)` function handles this conversion, transforming the standard COCO dataset structure into the EdgeFirst-compatible format.
 
 ```python
 
@@ -56,7 +56,7 @@ coco.upload_dataset(
 )
 ```
 
-Note that this procedure skips the AGTG pipeline since the dataset already contains annotations. The import process will take few minutes depending on the bandwidth. Once the process finishes, you can login into Edgefirst Studio and check the dataset `COCO2017-Subset` is there
+Note that this procedure skips the AGTG pipeline since the dataset already contains annotations. The import process will take few minutes depending on the bandwidth. Once the process finishes, you can login into Edgefirst Studio and check the dataset `COCO2017-Subset` is there.
 
 <figure markdown="span">
 ![COCO2017 Subset](../assets/coco-subset.png){ align=center }

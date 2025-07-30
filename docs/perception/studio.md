@@ -95,7 +95,7 @@ Make a note of the snapshot ID that was created. In this case, the snapshot ID i
 
 ### Restore Snapshots
 !!! warning
-    Restoring snapshots to datasets will deduct funds from your EdgeFirst Studios account.
+    Restoring snapshots to datasets will deduct funds from your EdgeFirst Studio account.
 
 To restore any snapshot as a dataset, we need to get the project ID where the dataset is going to be stored. Available projects can be listed by calling:
 

@@ -6,28 +6,7 @@ Welcome to EdgeFirst Studio!  Follow this Quickstart for user onboarding from st
 
 {% include-markdown "discrete/user/login.md" %}
 
-## Create Project
-
-1. Now that you are in the *Projects* or Main page, create your first project by clicking on the "New Project" button on the top-right corner of the page.
-
-    <figure markdown="span">
-    ![Create Project](assets/create-project.jpg){ align=center }
-    <figcaption>The location of the "New Project" button</figcaption>
-    </figure>
-
-2. Provide a name and a description of the project as shown in the example below.  Click the "Create" button to create your new project.
-
-    <figure markdown="span">
-    ![Project Details](assets/create-project-fields.jpg){ align=center }
-    <figcaption>Project Details</figcaption>
-    </figure>
-
-3. Your created project will be shown like the example below.  
-
-    <figure markdown="span">
-    ![New Project](assets/new-project.jpg){ align=center }
-    <figcaption>Both Projects</figcaption>
-    </figure>
+{% include-markdown "discrete/studio/create_project.md" %}
 
 The next sections will invite you to follow along the end-to-end workflow for recording a video or capturing images using a phone and then upload the captured data into EdgeFirst Studio for annotation and then model training, validation, and deployment on various platforms. 
 
@@ -113,7 +92,7 @@ In this Quickstart guide, you have created your EdgeFirst Studio Account, logged
 
 ## Next Steps
 
-For these next steps, it is recommended to be familiar with the concepts and UI elements in EdgeFirst Studio as described in the [EdgeFirst Studio: Overview](getting_started/studio.md).  Next, users are invited to follow along other various [User Workflows](getting_started/workflows/index.md) that are tailored towards various hardware requirements and resources available to the user.
+For these next steps, it is recommended to be familiar in [navigating EdgeFirst Studio](studio/navigation.md).  Next, users are invited to follow along other various [User Workflows](getting_started/workflows/index.md) that are tailored towards various hardware requirements and resources available to the user.
 
 !!! tip "Need Help?"
     📬 Have questions or ran into an issue?  

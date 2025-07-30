@@ -1,6 +1,6 @@
 # Training ModelPack
 
-This tutorial describes the steps to train **ModelPack Vision** models in EdgeFirst Studio.  For a tutorial to train Fusion models, see [Training Fusion Models](../fusion/training.md).  It is highly recommended to be familiar with the concepts and UI elements in EdgeFirst Studio as described in the [EdgeFirst Studio: Overview](../../getting_started/studio.md).
+This tutorial describes the steps to train **ModelPack Vision** models in EdgeFirst Studio.  For a tutorial to train Fusion models, see [Training Fusion Models](../fusion/training.md).  It is highly recommended to be familiar [navigating EdgeFirst Studio](../../studio/navigation.md).
 
 ## Verify Dataset
 
@@ -17,7 +17,7 @@ From the projects page, choose the project that contains the dataset you plan to
 
 ## Create Model Experiment
 
-You will be greeted with the "Model Experiments" page.  A new project will not have any experiments as shown below.  You will need to first create a model experiment.  As mentioned in the [EgdeFirst Studio: Overview](../../getting_started/studio.md#model-experiments), model experiments will contain both training and validation sessions. 
+You will be greeted with the "Model Experiments" page.  A new project will not have any experiments as shown below.  You will need to first create a model experiment.  As mentioned in the [Model Experiments Dashboard](../../studio/models.md), model experiments will contain both training and validation sessions. 
 
 <figure markdown="span">
 ![Model Experiments Page](../assets/training/modelpack-model-experiments-page.jpg){ align=center }
@@ -126,7 +126,7 @@ The trained model artifacts can be downloaded by clicking the "View Additional D
 |----------------------------------------------------------------|-------------------------------------------------------------------------------|
 | ![session](../assets/training/modelpack-session-details.jpg) | ![artifacts](../assets/training/modelpack-session-artifacts.jpg) | 
 
-It is also possible to compare the training metrics for multiple sessions.  See [Training Sessions](../../getting_started/studio.md#training-sessions) in the EdgeFirst Studio Overview for further details. 
+It is also possible to compare the training metrics for multiple sessions.  See [Training Sessions](../../studio/models.md#training-sessions) in the EdgeFirst Studio Overview for further details. 
 
 !!! info
     You can visualize the architecture of these models using [https://netron.app/](https://netron.app/).

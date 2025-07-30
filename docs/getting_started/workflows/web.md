@@ -210,4 +210,4 @@ Once the validation session completes, the metrics will be displayed like the fo
 
 Once you have validated your trained model, let's take a look at an example of how this model can be deployed in your PC by following the tutorial [Deploying Vision Models](../../models/modelpack/deployment/pc.md). 
 
-[login]: https://test.edgefirst.studio/#/login
+[login]: https://test.edgefirst.studio/login

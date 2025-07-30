@@ -1,17 +1,19 @@
 # Dataset Dashboard
 
-The *Dataset Dashboard* show a list of datasets in a project with a summary of datasets in each dataset card.
+The Dataset Dashboard show a list of datasets in a project with a summary of datasets in each dataset card.  For an in depth tutorial for creating datasets from capture to annotation, see the [Dataset Tutorials](../../datasets/tutorials/index.md). From the "Projects" page, we can click on the "Datasets" ![Dataset Button](../../assets/buttons/datasets_button.png) button on the project card to see the project's datasets.  The public sample project will contain the following dataset.
 
 <figure markdown="span">
-![Dataset Dashboard](../../assets/datasets/dataset-dashboard.png){ align=center }
-<figcaption>Dataset Dashboard</figcaption>
+![Public Datasets](../assets/datasets/public-datasets.jpg){ align=center }
+<figcaption>Public Datasets</figcaption>
 </figure>
+
+These public datasets are readily available for user onboarding and trials, but these datasets are **READ-ONLY** datasets.  By default, users can [view the datasets](../../datasets/tutorials/management.md#viewing-datasets).  Otherwise, in order to have full access to the dataset, users **MUST** [copy the dataset](../../datasets/tutorials/management.md#copying-datasets) into the project they've created. 
 
 The dataset attributes are shown below.
 
 <figure markdown="span">
 ![Dataset Attributes](../assets/datasets/dataset-attributes.jpg){ align=center }
-<figcaption>Dataset Attributes</figcaption>
+<figcaption>Dataset Card UI Breakdown</figcaption>
 </figure>
 
 ## Annotation Sets

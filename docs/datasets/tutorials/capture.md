@@ -12,7 +12,7 @@ If you have a phone or any device with a camera with Wifi access, follow this tu
 
 {% include-markdown "discrete/datasets/uploading_images_to_studio.md" heading-offset=2 %}
 
-In this tutorial you have seen how to capture videos and images from your mobile phone and uploaded the videos and images into EdgeFirst Studio. Proceed to the [Next Steps](#next-steps) to see what's next in your dataset creation. 
+In this tutorial you have seen how to capture videos and images from your mobile phone and upload the videos and images into EdgeFirst Studio. Proceed to the [Next Steps](#next-steps) to see what's next in your dataset creation. 
 
 ## Capture with an EdgeFirst Platform
 If you have an EdgeFirst Platform, follow this tutorial to see how to capture and upload datasets into EdgeFirst Studio.  Use your browser to connect to the Web UI of the remote device, enter the following URL `https://<hostname>/`.

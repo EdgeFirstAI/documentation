@@ -14,7 +14,7 @@ If you have an EdgeFirst Platform, please proceed to step 1. Otherwise, proceed 
 
 ### 1. Record Data
 
-When starting from scratch, it is common to start recording your own data to build your own dataset. This step requires an [EdgeFirst Platform](../../platforms/quickstart.md) for recording data. However, we also provide [Public Datasets](../studio.md#datasets) for users without an EdgeFirst Platform. 
+When starting from scratch, it is common to start recording your own data to build your own dataset. This step requires an [EdgeFirst Platform](../../platforms/quickstart.md) for recording data. However, we also provide [Public Datasets](../../studio/datasets/index.md) for users without an EdgeFirst Platform. 
 
 For instructions on capturing and recording data, refer to the [Capture/Record Data Tutorial](../../datasets/tutorials/capture.md#capture-with-an-edgefirst-platform).
 

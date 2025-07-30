@@ -112,7 +112,7 @@ You can go back to the validation session card by pressing the "Back" button as 
     <iframe width="560" height="315" src="https://www.youtube.com/embed/oKh4k0CCLmU?start=713&end=975" title="Comparing Validation Metrics" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 </div>
 
-It is also possible to compare validation metrics for multiple sessions.  See [Validation Sessions](../../getting_started/studio.md#validation-sessions) in EdgeFirst Studio Overview for further details. 
+It is also possible to compare validation metrics for multiple sessions.  See [Validation Sessions](../../studio/models.md#validation-sessions) in EdgeFirst Studio Overview for further details. 
 
 ## Next Steps
 

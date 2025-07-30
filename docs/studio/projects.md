@@ -1,35 +1,57 @@
 # Project Dashboard
 
 <figure markdown="span">
-![Project Dashboard](../assets/projects/project-dashboard.png){ align=center }
-<figcaption>Project Dashboard</figcaption>
+![Starting Page](../assets/studio-from-scratch.jpg){ align=center }
+<figcaption>Projects Splash Page</figcaption>
 </figure>
 
-The *Projects Dashboard* is the main page of the portal which organizes data into logical project partitions.
+The "Projects" page is the main page of the portal which organizes data into logical project partitions.  When you first login, you will be directed to this page which already contains a sample project called "Sample Project".
 
-## Create Project
+To return to this splash page from any other page, you can:
 
-1. Click on *CREATE* on the project dash board at the top right of the portal.
-2. Enter project name and description.
-2. Click *Create*.
+* click your browser's "Back" button until back here.
+* click the Apps ![Apps Button](../assets/buttons/studio_apps_button.png) waffle button and select the "Projects" menu item.
+* click on the "Au-Zone" Home button in the top-left corner.
+
+The following figure describes the UI elements of the "Project" card.  Take special note of the project attributes (datasets, auditing tasks, etc.) as these are the buttons that lead into further parts of the project. 
 
 <figure markdown="span">
-![Create New Project](../assets/projects/create-project.png){ align=center }
-<figcaption>Create New Project</figcaption>
+![Project Attributes](../studio/assets/project-attributes.jpg){ align=center }
+<figcaption>Project UI Breakdown</figcaption>
 </figure>
+
+A project will contain datasets and model experiments.  A model experiment will contain training and validation sessions.  The project structure hierarchy is shown below.
+
+<div style="text-align: center;">
+    ```mermaid
+    ---
+    title: Project Hierarchy
+    ---
+    graph TD
+    project[Project] --> datasets[Datasets]
+    datasets --> audit[Auditing Tasks]
+    project --> model[Model Experiments]
+    model --> train[Training Sessions]
+    train --> validation[Validation Sessions]
+    ```
+</div>
+
+This hierarchy describes the span of deletion of the project attributes.  When a project is deleted, all elements in the project including datasets and model experiments will be deleted.  When a dataset is deleted, only its child element such as auditing tasks will be deleted.  When a model experiment is deleted, only its child elements will be deleted such as training and validation sessions.
+
+{% include-markdown "discrete/studio/create_project.md" %}
 
 ## Delete Project
 
-1. Click on project menu drop down (three vertically aligned dots) on the project card.
-2. Click *Remove Project*.
-2. The project is moved to the recycling bin. Remove the project from the recycling bin to actually free the storage space.
+1. Click on project extended menu drop down (three vertically aligned dots) on the project card.
+2. Click "Move to Recycle Bin".
+2. The project is moved to the recycle bin.  Remove the project from the recycle bin to actually free the storage space.
 
 ## Edit Project
 
 1. Click on project menu drop down (three vertically aligned dots) on the project card.
-2. Click *Edit*.
+2. Click "Edit".
 3. Change the name or description as desired.
-4. Click *Apply Changes*.
+4. Click "Apply Changes".
 
 ## Project Access Control
 

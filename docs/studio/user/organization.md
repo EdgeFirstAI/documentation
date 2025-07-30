@@ -70,7 +70,7 @@ You can see the list of all users in your organization by clicking on "User Mana
 <figcaption>User Manager</figcaption>
 </figure>
 
-As an admin user, you can edit the information of each user by clicking the "pencil" ![Pencil Button](../assets/user/edit-user-button.jpg) button next to their profiles.  This will bring the page that allows you to modify the user's profile information.  From this page you can change the first and last name of the user and their email.  You can also set the user's role or custom permissions.  More information on the [user's roles](#roles) are provided in the section below.  You can either click "Apply" to save the changes or "Cancel" to abort any changes.  Lastly, you can also change the user's password. 
+As an admin user, you can edit the information of each user by clicking the "pencil" ![Pencil Button](../../assets/buttons/studio-edit-user-button.jpg) button next to their profiles.  This will bring the page that allows you to modify the user's profile information.  From this page you can change the first and last name of the user and their email.  You can also set the user's role or custom permissions.  More information on the [user's roles](#roles) are provided in the section below.  You can either click "Apply" to save the changes or "Cancel" to abort any changes.  Lastly, you can also change the user's password. 
 
 <figure markdown="span">
 ![Modify User Information](../assets/user/modify-user-information.jpg){ align=center }
@@ -90,7 +90,7 @@ The "Admin" user has read and write access to all projects, datasets, and model 
 
 The "Audit & Label" user has limited access to EdgeFirst Studio.  The only features available to this type of user are auditing and labeling datasets using the task board.
 
-The user with "Custom Permissions" has specific permissions on different elements of EdgeFirst Studio.  These elements are "Projects", "Datasets", "Trainer", and "Task Board".  You can set "Read-Only" permissions to allow users for view-only.  The permission for "Write" allows the users to make changes to the elements such as creating their own datasets or modifying current datasets.  You can find more information on these elements under the [EdgeFirst Studio: Overview](../../getting_started/studio.md).
+The user with "Custom Permissions" has specific permissions on different elements of EdgeFirst Studio.  These elements are "Projects", "Datasets", "Trainer", and "Task Board".  You can set "Read-Only" permissions to allow users for view-only.  The permission for "Write" allows the users to make changes to the elements such as creating their own datasets or modifying current datasets. 
 
 {% include-markdown "discrete/user/new_users.md" heading-offset=2 %}
 

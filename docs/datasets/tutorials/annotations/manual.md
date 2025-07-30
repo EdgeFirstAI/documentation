@@ -10,7 +10,7 @@ This section describes the steps for adjusting 2D annotations in the dataset.
 
 ### Add 2D Annotations
 
-First [navigate to the dataset gallery](../management.md#viewing-datasets) and start by adding a single 2D annotation on a frame.  Select the "AI Image Segment Tool".  This tool will use SAM-2 to auto-segment and auto-box an object in the frame. 
+First [navigate to the dataset gallery](../management.md#viewing-datasets) and start by adding a single 2D annotation on an image.  Select the "AI Image Segment Tool".  This tool will use SAM-2 to auto-segment and auto-box an object in the image. 
 
 <figure markdown="span">
 ![Auto Segment Mode](../../assets/enable-auto-segment-tool.jpg){ align=center }
@@ -34,7 +34,7 @@ Please wait while the server is being initialized.
 !!! warning "Active AGTG Server"
     This server is costing credits to run.  An inactivity of 15 minutes will auto-terminate this server.  Otherwise, once you have completed the annotations, please ensure to [terminate the AGTG server](index.md#terminate-agtg-server) to avoid spending more of your credits. 
 
-Once the server is initialized, draw the bounding box around the object by clicking on the frame and then dragging the mouse to expand the bounding box.  This will start segmenting the object.  Once the object is properly segmented, go ahead and click "Save Annotations" as indicated in red to save the annotation and to move forward to the next image.
+Once the server is initialized, draw the bounding box around the object by clicking on the image and then dragging the mouse to expand the bounding box.  This will start segmenting the object.  Once the object is properly segmented, go ahead and click "Save Annotations" as indicated in red to save the annotation and to move forward to the next image.
 
 <figure markdown="span">
 ![Draw Bounding Box Prompt](../../assets/use-sam-box-tool.jpg){ align=center }

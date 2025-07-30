@@ -2,8 +2,8 @@
 
 The [AGTG pipeline](../../../studio/agtg.md) describes the stages for automating the annotation process of a dataset. There are two modes of operation.
 
-1. Fully Automatic Ground Truth Generation: A background operation invoked at the time of dataset import as a [snapshot](../../../studio/snapshots.md).
-2. Semi-Automatic Ground Truth Generation: User controlled dataset annotation process.
+1. *Fully Automatic*: This is invoked at the time of importing the dataset as a [snapshot](../../../studio/snapshots.md) and as a background process which deploys a detection model to drive SAM-2.
+2. *Semi-Automatic*: This is invoked when users trigger the AI assisted annotations in the dataset gallery.  Users can select portions of the dataset to auto-annotate, but SAM-2 requires initial annotations from the users as prompts.
 
 ## Fully Automatic Ground Truth Generation
 

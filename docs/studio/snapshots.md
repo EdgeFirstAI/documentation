@@ -110,3 +110,7 @@ This action will take an MCAP or Zip/Arrow files and create a dataset in EdgeFir
 ![Snapshot Options](assets/options.png){ align=center }
 <figcaption>Snapshot Options</figcaption>
 </figure>
+
+## Next Steps
+
+Now that you have been introduced to the auto-annotation features in EdgeFirst Studio, proceed to the [Datasets](../datasets/index.md) section to learn more about managing your own datasets from following the capture and annotation workflows. 

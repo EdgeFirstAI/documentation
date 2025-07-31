@@ -58,3 +58,7 @@ This hierarchy describes the span of deletion of the project attributes.  When a
 Project access control allows project resources to be selectively available to different users. 
 
 For more information please visit [Access Control](user/organization.md#roles).
+
+## Next Steps
+
+Now that you are familiar with the Project Dashboard, learn more about the [Datasets Dashboard](datasets/index.md) next.

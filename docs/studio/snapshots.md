@@ -3,14 +3,14 @@
 Snapshots are frozen and compact form of datasets. The snapshot can be opened from the apps menu.
 
 <figure markdown="span">
-![Data Snapshots](../assets/snapshots/data-snapshots.png){ align=center }
+![Data Snapshots](assets/snapshots/data-snapshots.png){ align=center }
 <figcaption>Data Snapshots</figcaption>
 </figure>
 
 The snapshots menu shows the list of snapshots with its name and status.
 
 <figure markdown="span">
-![Snapshot List](assets/snapshot-list.png){ align=center }
+![Snapshot List](assets/snapshots/snapshot-list.png){ align=center }
 <figcaption>Snapshot List</figcaption>
 </figure>
 
@@ -29,7 +29,7 @@ This will create a Zip/Arrow file pair for each sequence in a dataset and stored
 1. From the dataset card, open the context menu and select "Create Snapshot"
 
 <figure markdown="span">
-![Create Snapshot from Dataset](../assets/snapshots/snapshot-from-dataset.png){ align=center }
+![Create Snapshot from Dataset](assets/snapshots/snapshot-from-dataset.png){ align=center }
 <figcaption>Create Snapshot from Dataset</figcaption>
 </figure>
 
@@ -51,19 +51,19 @@ This format is the [EdgeFirst Dataset Format](../datasets/format.md) where the [
 2. Click on the "FROM FILE" button and then select the Zip and Arrow file pairs to import or drag and drop as a folder containing Zip and Arrow file pairs onto the dashboard. Shown is an example below.
 
     <figure markdown="span">
-    ![From File](assets/from-file.jpg){ align=center }
+    ![From File](assets/snapshots/from-file.jpg){ align=center }
     <figcaption>From File</figcaption>
     </figure>
 
 3. Once the files are selected, this will start the import sequence progress shown below.
 
     <figure markdown="span">
-    ![Import Progress](assets/import-sequence-progress.jpg){ align=center }
+    ![Import Progress](assets/snapshots/import-sequence-progress.jpg){ align=center }
     <figcaption>Import Progress</figcaption>
     </figure>
 
     <figure markdown="span">
-    ![Import Completed](assets/import-sequence-completed.jpg){ align=center }
+    ![Import Completed](assets/snapshots/import-sequence-completed.jpg){ align=center }
     <figcaption>Import Completed</figcaption>
     </figure>
 
@@ -75,14 +75,14 @@ This action will take an MCAP or Zip/Arrow files and create a dataset in EdgeFir
 2. Select "Restore".
 
 <figure markdown="span">
-![Snapshot Options](assets/options.png){ align=center }
+![Snapshot Options](assets/snapshots/options.png){ align=center }
 <figcaption>Snapshot Options</figcaption>
 </figure>
 
 3. This will open the restore dialog for specifying the options.
 
 <figure markdown="span">
-![Restore Options](assets/restore-dialog.png){ align=center }
+![Restore Options](assets/snapshots/restore-dialog.png){ align=center }
 <figcaption>Restore Options</figcaption>
 </figure>
 
@@ -107,7 +107,7 @@ This action will take an MCAP or Zip/Arrow files and create a dataset in EdgeFir
 2. Select "Remove".
 
 <figure markdown="span">
-![Snapshot Options](assets/options.png){ align=center }
+![Snapshot Options](assets/snapshots/options.png){ align=center }
 <figcaption>Snapshot Options</figcaption>
 </figure>
 

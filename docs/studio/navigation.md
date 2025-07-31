@@ -10,14 +10,14 @@ This page describes how to navigate towards different functionalities in the Edg
 Navigation towards different functionalities in the EdgeFirst Studio portal is facilitated through the top navigation bar as shown below.
 
 <figure markdown="span">
-![Navigation Bar](../assets/navigation/navigation-bar.png){ align=center }
+![Navigation Bar](assets/navigation/navigation-bar.png){ align=center }
 <figcaption>Navigation Bar</figcaption>
 </figure>
 
 ## User Menu
 
 <figure markdown="span">
-![Admin Options](../assets/navigation/admin-options.png){ align=center }
+![Admin Options](assets/navigation/admin-options.png){ align=center }
 <figcaption>Admin Options</figcaption>
 </figure>
 
@@ -44,7 +44,7 @@ We provide various methods of assistance from accessing the EdgeFirst documentat
 This menu provides the options to go to the help pages, submit feedback, view release notes, and to see the currently deployed version of EdgeFirst Studio as shown below.
 
 <figure markdown="span">
-![Help Options](../assets/navigation/help-options.png){ align=center }
+![Help Options](assets/navigation/help-options.png){ align=center }
 <figcaption>Help Options</figcaption>
 </figure>
 
@@ -57,7 +57,7 @@ The "Help" button will point towards the link in the EdgeFirst documentation tha
 The Apps Menu provides selections towards the various tools provided in EdgeFirst Studio.
 
 <figure markdown="span">
-![Apps Menu](../assets/navigation/apps-menu.png){ align=center }
+![Apps Menu](assets/navigation/apps-menu.png){ align=center }
 <figcaption>Apps Menu</figcaption>
 </figure>
 
@@ -71,7 +71,7 @@ Clicking on "Datasets" takes the user to the [Datasets Dashboard](datasets/index
 
 ### Auditing Tasks
 
-Clicking on "Auditing Tasks" takes the user to the Auditing Tasks Dashboard.  This page lists all auditing tasks for any dataset in the selected project.  Auditing tasks are formal operations of editing, approving, or removing annotations.  However, other methods of annotating datasets are described in the [Dataset Annotations](../datasets/tutorials/annotations/index.md) sections. 
+Clicking on "Auditing Tasks" takes the user to the [Auditing Tasks Dashboard](datasets/annotations.md#auditing-tasks-board).  This page lists all auditing tasks for any dataset in the selected project.  Auditing tasks are formal operations of editing, approving, or removing annotations.  However, other methods of annotating datasets are described in the [Dataset Annotations](../datasets/tutorials/annotations/index.md) sections. 
 
 ### Model Experiments
 

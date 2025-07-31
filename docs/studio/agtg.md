@@ -50,12 +50,12 @@ Once the AGTG server has been initialized, you can now proceed to the next step 
 Below is a detailed breakdown of the sidebar.
 
 <figure markdown="span">
-![AGTG Sibebar](../assets/agtg/sidebar.png){ align=center }
+![AGTG Sibebar](assets/agtg/sidebar.png){ align=center }
 <figcaption>AGTG Sidebar </figcaption>
 </figure>
 
 <figure markdown="span">
-![AGTG Object Card](assets/agtg-object-card.png){ align=center }
+![AGTG Object Card](assets/agtg/agtg-object-card.png){ align=center }
 <figcaption>AGTG Object Card </figcaption>
 </figure>
 
@@ -63,7 +63,7 @@ An object is a single annotation or a single instance of an object in the image.
 
 **Markers** | **Boxes**
 :------------------:|:------------------:
-![Markers](assets/agtg-markers.jpg) | ![Boxes](assets/agtg-boxes.jpg) 
+![Markers](assets/agtg/agtg-markers.jpg) | ![Boxes](assets/agtg/agtg-boxes.jpg) 
 
 !!! Note "Multiple Objects"
     For adding subsequent objects you need to press the "+" button besides the "Select Objects". Also the object class (label) should be selected from the object label drop down.

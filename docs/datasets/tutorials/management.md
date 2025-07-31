@@ -4,7 +4,7 @@ This page will provide tutorials for managing datasets in EdgeFirst Studio.
 
 ## Viewing Datasets
 
-This tutorial will show how to open the gallery of the dataset to see the individual samples in the dataset.
+This tutorial will show how to open the [gallery](../../studio/datasets/gallery.md) of the dataset to see the individual samples in the dataset.
 
 From the "Projects" page, you can click on the dataset button indicated in red to view the datasets contained in the project.
 

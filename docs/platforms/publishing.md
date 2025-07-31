@@ -6,7 +6,7 @@ Once you have a MCAP created from the [Recording Service](./recording.md), you c
 
 For the examples below, we will use the Raivin with a hostname of `verdin-imx8mp-07130049` with a MCAP save directory of `/media/DATA` and the MCAP file to copy named `verdin-imx8mp-07130049_2025_04_09_12_44_12.mcap`. Here is the screenshot of the MCAP Recording page of such a device:
 <figure markdown="span">
-![Recording Service](../assets/Publishing-example.png){align=center}  
+![Recording Service](assets/publishing-example.png){align=center}  
 <figcaption>Example MCAP Recorder Page</figcaption>
 </figure>
 
@@ -72,7 +72,7 @@ We can see that the newly created snapshot is in this list.
 
 We can also confirm the snapshot on the EdgeFirst Studio Snapshot screen.
 <figure markdown="span">
-![Recording Service](../assets/Publishing-studioSnapshots.png){align=center}  
+![Recording Service](assets/Publishing-studioSnapshots.png){align=center}  
 <figcaption>EdgeFirst Studio Snapshots</figcaption>
 </figure>
 

@@ -3,14 +3,14 @@
 A model experiment is a container of the training and validation sessions in the experiment.  The following figure shown is the "Model Experiments" page.  This page will contain all the experiments that were started by the user. 
 
 <figure markdown="span">
-![Project Experiments](assets/experiments-page.jpg){ align=center }
+![Project Experiments](assets/models/experiments-page.jpg){ align=center }
 <figcaption>Project Experiments</figcaption>
 </figure>
 
 The following figure breaks down the elements of an "Experiment" card.
 
 <figure markdown="span">
-![Experiment Attributes](assets/model-experiment-attributes.jpg){ align=center }
+![Experiment Attributes](assets/models/model-experiment-attributes.jpg){ align=center }
 <figcaption>Experiment Card UI Breakdown</figcaption>
 </figure>
 
@@ -23,7 +23,7 @@ Training sessions take in datasets and synthesize from them new AI models for ob
 From the "Model Experiments" page, we can click on the "Training Sessions" button with the icon ![Trainers Button](../assets/buttons/studio-trainers-button.png) to see the training sessions in the experiment.  The figure below shows the layout of the training session cards under the "Training Sessions" page.
 
 <figure markdown="span">
-![Training Sessions](assets/training-sessions.jpg){ align=center }
+![Training Sessions](assets/models/training-sessions.jpg){ align=center }
 <figcaption>Training Sessions</figcaption>
 </figure>
 
@@ -37,14 +37,14 @@ The following figure describes the attributes of any given training session.
 To compare all the training charts of each session, click on "All Charts" at the top right corner of the "Training Sessions" page.  This will show the charts from each session overlaid on top of one another for a quick comparison. 
 
 <figure markdown="span">
-![All Charts](assets/all-charts.jpg){ align=center }
+![All Charts](assets/models/all-charts.jpg){ align=center }
 <figcaption>All Charts</figcaption>
 </figure>
 
 All the training charts will be displayed with a legend that indicates the training session.
 
 <figure markdown="span">
-![All Charts](assets/all-training-charts.jpg){ align=center }
+![All Charts](assets/models/all-training-charts.jpg){ align=center }
 <figcaption>All Charts</figcaption>
 </figure>
 
@@ -55,7 +55,7 @@ For more details regarding deploying training sessions, please see [Training Mod
 The validation sessions will assess the performance of the models in the training sessions.  A training session can have any number of validation sessions.  From the "Model Experiments" page, we can click on the "Validation Sessions" button with the icon ![Validation Button](../assets/buttons/studio-validation-button.jpg) to see the validation sessions in the experiment.  The figure below shows the layout of the validation session cards under the "Validation Sessions" page.
 
 <figure markdown="span">
-![Validation Sessions](assets/validation-sessions.jpg){ align=center }
+![Validation Sessions](assets/models/validation-sessions.jpg){ align=center }
 <figcaption>Validation Sessions</figcaption>
 </figure>
 
@@ -69,21 +69,21 @@ The following figure describes the attributes of any given validation session.
 To compare the validation charts of each session, click on "Compare" at the top right corner of the "Validate Sessions" page.  This will show the charts of each validation session side-by-side for a quick comparison.
 
 <figure markdown="span">
-![Compare Validation Sessions](assets/compare-validation-sessions.jpg){ align=center }
+![Compare Validation Sessions](assets/models/compare-validation-sessions.jpg){ align=center }
 <figcaption>Compare Validation Sessions</figcaption>
 </figure>
 
 Next select the validation session results you wish to compare.  Once select, click "Compare" to show the validation charts side-by-side.
 
 <figure markdown="span">
-![Select Validation Sessions](assets/validation-sessions-to-compare.jpg){ align=center }
+![Select Validation Sessions](assets/models/validation-sessions-to-compare.jpg){ align=center }
 <figcaption>Select Validation Sessions</figcaption>
 </figure>
 
 Now the charts for each session are displayed side-by-side.  All the charts for a single training session will be shown in one column.  A new column indicates another session. 
 
 <figure markdown="span">
-![Comparing Validation Sessions](assets/validation-charts-comparison.jpg){ align=center }
+![Comparing Validation Sessions](assets/models/validation-charts-comparison.jpg){ align=center }
 <figcaption>Comparing Validation Sessions</figcaption>
 </figure>
 

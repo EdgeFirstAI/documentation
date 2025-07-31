@@ -1,4 +1,4 @@
-# Snapshot Dashboard
+# Snapshots Dashboard
 
 Snapshots are frozen and compact form of datasets. The snapshot can be opened from the apps menu.
 

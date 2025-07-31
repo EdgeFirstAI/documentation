@@ -94,4 +94,6 @@ The user with "Custom Permissions" has specific permissions on different element
 
 {% include-markdown "discrete/user/new_users.md" heading-offset=2 %}
 
+## Next Steps
+
 This page has shown how to manage your organization and the users in your organization.  For information on how the billing in your organization is handled, see [Billing Information](billing.md).

@@ -44,6 +44,10 @@ This will bring you to the page to edit your profile information such as your us
 
 After making the changes, click "Apply" to save your changes. Otherwise, click "Cancel" to abort your changes.  
 
-### Change Password
+## Change Password
 
 To change your password, navigate to your [profile information](#profile-information) and [edit your profile information](#edit-information).  Next under "Change Password", input your new password twice to confirm.  Click "Apply" to save your new password.
+
+## Next Steps
+
+This page has shown you how to manage your profile.  Next we invite you to learn more about [managing your organization](organization.md). 

@@ -3,7 +3,7 @@
 This page describes how to navigate towards different functionalities in the EdgeFirst Studio.  When first logged in to EdgeFirst Studio, you will be directed to the "Projects" page as shown below.  This page is the main landmark in EdgeFirst Studio. 
 
 <figure markdown="span">
-![Starting Page](../assets/studio-from-scratch.jpg){ align=center }
+![Starting Page](assets/projects/studio-from-scratch.jpg){ align=center }
 <figcaption>Projects Splash Page</figcaption>
 </figure>
 
@@ -75,15 +75,15 @@ Clicking on "Auditing Tasks" takes the user to the Auditing Tasks Dashboard.  Th
 
 ### Model Experiments
 
-Clicking on "Model Experiments" takes the user to the Model Experiments Dashboard.  This page contains all training sessions and validation sessions.  Additional features for compare training charts and validation metrics are also available.  More information can be found in [model training](../models/tutorials/training.md) and [model validation](../models/tutorials/validation.md) sections.  A model experiment is a high-level collections of training and validation sessions.  A training session is the functionality of converting datasets into vision- and radar-based models that can be deployed back to the [EdgeFirst platforms/devices](../platforms/quickstart.md).  A validation session is the functionality to take a model and measure its performance against other models or a standardized validation set to see if it is ready for deployment. 
+Clicking on "Model Experiments" takes the user to the [Model Experiments Dashboard](models.md).  This page contains all training sessions and validation sessions.  Additional features for comparing training charts and validation metrics are also available.  More information can be found in the [model training](../models/tutorials/training.md) and [model validation](../models/tutorials/validation.md) sections.  A model experiment is a high-level collections of training and validation sessions.  A training session is the functionality of converting datasets into vision- and radar-based models that can be deployed back to the [EdgeFirst platforms/devices](../platforms/quickstart.md).  A validation session is the functionality to take a model and measure its performance against other models or a standardized validation set to see if it is ready for deployment. 
 
 ### Cloud Instances
 
-Clicking on the "Cloud Instances" takes the user to the Cloud Instances page. This page allows user to view currently running cloud instances and to stop a running cloud instance in here.  A cloud instance is a server dedicated to hosting any operations such as model training and validation, or [AGTG](agtg.md) operations. 
+Clicking on the "Cloud Instances" takes the user to the [Cloud Instances Dashboard](instances.md). This page allows user to view currently running cloud instances and to stop a running cloud instance in here.  A cloud instance is a server dedicated to hosting any operations such as model training and validation, or [AGTG](agtg.md) operations. 
 
 ### Data Snapshots
 
-Clicking on the "Data Snapshots" takes the user to the [Data Snapshots](snapshots.md).  This page allows users to create and restore snapshots.  This is a method to preserve the current state of the dataset.  A snapshot is a frozen and compact form of a dataset represented in the [EdgeFirst Dataset Format](../datasets/format.md).
+Clicking on the "Data Snapshots" takes the user to the [Snapshots Dashboard](snapshots.md).  This page allows users to create and restore snapshots.  This is a method to preserve the current state of the dataset.  A snapshot is a frozen and compact form of a dataset represented in the [EdgeFirst Dataset Format](../datasets/format.md).
 
 ### Recycling Bin
 
@@ -98,4 +98,8 @@ Clicking on the "Recycle Bin" takes the user to the Recycle Bin page.  This page
 
 ## Alerts
 
-This link provides information about general alerts (if present).  An alert can be triggered by setting the image limit as shown [here](user/organization.md#image-limit). 
+This link provides information about general alerts (if present).  For example, an alert can be triggered by setting the image limit as shown [here](user/organization.md#image-limit). 
+
+## Next Steps
+
+Now that you are familiar with navigating EdgeFirst Studio, learn more about the [Automatic Ground Truth Generation (AGTG)](agtg.md) next which describes the auto-annotation features in EdgeFirst Studio to make the annotation process as seamless as possible. 

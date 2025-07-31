@@ -9,17 +9,18 @@ nav:
   - Studio:
     - studio/index.md
     - studio/navigation.md
+    - User Management:
+      - studio/user/index.md
+      - studio/user/profile.md
+      - studio/user/organization.md
+      - studio/user/billing.md
     - studio/projects.md
     - Datasets Dashboard:
       - studio/datasets/index.md
       - studio/datasets/gallery.md
       - studio/datasets/annotations.md
     - studio/models.md
-    - User Management:
-      - studio/user/index.md
-      - studio/user/profile.md
-      - studio/user/organization.md
-      - studio/user/billing.md
+    - studio/instances.md
     - studio/agtg.md
     - studio/snapshots.md
   - Datasets:

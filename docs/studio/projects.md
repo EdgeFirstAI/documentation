@@ -1,7 +1,7 @@
 # Project Dashboard
 
 <figure markdown="span">
-![Starting Page](../assets/studio-from-scratch.jpg){ align=center }
+![Starting Page](assets/projects/studio-from-scratch.jpg){ align=center }
 <figcaption>Projects Splash Page</figcaption>
 </figure>
 
@@ -10,13 +10,13 @@ The "Projects" page is the main page of the portal which organizes data into log
 To return to this splash page from any other page, you can:
 
 * click your browser's "Back" button until back here.
-* click the Apps ![Apps Button](../assets/buttons/studio_apps_button.png) waffle button and select the "Projects" menu item.
+* click the Apps Menu ![Apps Button](../assets/buttons/studio_apps_button.png) waffle button and select the "Projects" menu item.
 * click on the "Au-Zone" Home button in the top-left corner.
 
-The following figure describes the UI elements of the "Project" card.  Take special note of the project attributes (datasets, auditing tasks, etc.) as these are the buttons that lead into further parts of the project. 
+The following figure describes the UI elements of the "Project" card.  Take special note of the project attributes (datasets, auditing tasks, etc.) as these are the buttons that lead into further parts of the project.  Furthermore, the figure below describes the "Sample Project" which is a **Read-Only** public project and therefore, the project context menu is unavailable.  For your own created projects, this option will be available. 
 
 <figure markdown="span">
-![Project Attributes](../studio/assets/project-attributes.jpg){ align=center }
+![Project Attributes](assets/projects/project-attributes.jpg){ align=center }
 <figcaption>Project UI Breakdown</figcaption>
 </figure>
 
@@ -42,13 +42,13 @@ This hierarchy describes the span of deletion of the project attributes.  When a
 
 ## Delete Project
 
-1. Click on project extended menu drop down (three vertically aligned dots) on the project card.
+1. Click on project contect menu (three vertically aligned dots) on the project card.
 2. Click "Move to Recycle Bin".
 2. The project is moved to the recycle bin.  Remove the project from the recycle bin to actually free the storage space.
 
 ## Edit Project
 
-1. Click on project menu drop down (three vertically aligned dots) on the project card.
+1. Click on project context menu (three vertically aligned dots) on the project card.
 2. Click "Edit".
 3. Change the name or description as desired.
 4. Click "Apply Changes".

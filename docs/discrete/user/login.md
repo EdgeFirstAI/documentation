@@ -10,6 +10,6 @@
 2. Once logged in to EdgeFirst Studio, you will be greeted with the following [Projects](../../studio/projects.md) page.
 
     <figure markdown="span">
-    ![Starting Page](../../assets/studio-from-scratch.jpg){ align=center }
+    ![Starting Page](../../studio/assets/projects/studio-from-scratch.jpg){ align=center }
     <figcaption>Projects Splash Page</figcaption>
     </figure>

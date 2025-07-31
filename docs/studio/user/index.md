@@ -32,6 +32,8 @@ Proceed to the next section below for creating the accounts for the new users in
 
 {% include-markdown "discrete/user/new_users.md" heading-offset=2 %}
 
-This workflow has shown how to invite new users to your organization.  To start experimenting with various features in EdgeFirst Studio, the end-to-end workflow in the [Quickstart](../../index.md#create-project) provides more guidance. 
+### Next Steps
+
+This workflow has shown how to invite new users to your organization.  To start experimenting with various features in EdgeFirst Studio, the [end-to-end workflows](../../getting_started/workflows/index.md) provides more guidance. 
 
 [login]: https://test.edgefirst.studio/login

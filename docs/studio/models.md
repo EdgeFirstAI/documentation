@@ -1,6 +1,6 @@
 # Model Experiments Dashboard
 
-A model experiment is a container of the training and validation sessions in the experiment.  The following figure shown is the "Model Experiments" page.  This page will contain all the experiments that were started by the user. 
+A model experiment is a container of training and validation sessions in the experiment.  The following figure shown is the "Model Experiments" page.  This page will contain all the experiments that were started by the user. 
 
 <figure markdown="span">
 ![Project Experiments](assets/models/experiments-page.jpg){ align=center }
@@ -73,7 +73,7 @@ To compare the validation charts of each session, click on "Compare" at the top 
 <figcaption>Compare Validation Sessions</figcaption>
 </figure>
 
-Next select the validation session results you wish to compare.  Once select, click "Compare" to show the validation charts side-by-side.
+Next select the validation session results you wish to compare.  Once selected, click "Compare" to show the validation charts side-by-side.
 
 <figure markdown="span">
 ![Select Validation Sessions](assets/models/validation-sessions-to-compare.jpg){ align=center }
@@ -87,14 +87,8 @@ Now the charts for each session are displayed side-by-side.  All the charts for 
 <figcaption>Comparing Validation Sessions</figcaption>
 </figure>
 
-For more details regarding deploying validation sessions, please see [Validating ModelPack](../models/tutorials/validation.md) for validating Vision models and [Validating Fusion](../models/fusion/validation.md) for validating Fusion models.
+For more details regarding deploying validation sessions, please see [Validating ModelPack](../models/modelpack/validation/managed.md) for validating Vision models and [Validating Fusion](../models/fusion/validation.md) for validating Fusion models.
 
 ## Next Steps
 
-Now that you are familiar with the layout of EdgeFirst Studio including the element definitions and it's hierarchy, checkout our end-to-end [User Workflows](../getting_started/workflows/index.md) to start experimenting with data capture, model training, and model deployment. 
-
-It is also recommended for new users to visit the following tutorials for more details in the layout and features of EdgeFirst Studio.
-
-* [Navigating EdgeFirst Studio](../studio/navigation.md)
-* [Project Dashboard](../studio/projects.md)
-* [Dataset Dashboard](../studio/datasets/index.md)
+Now that you are familiar with the layout of the Model Experiments Dashboard, proceed to the next section for learning more about the context of the [Cloud Instances Dashboard](instances.md). 

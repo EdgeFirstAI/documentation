@@ -7,7 +7,7 @@ Before reading further, it is highly recommended to be familiar with the [EdgeFi
 A typical Arrow file has the following contents.
 
 <figure markdown="span">
-![Sample DataFrame](assets/arrow-table-sample.jpg){ align=center }
+![Sample DataFrame](assets/format/arrow-table-sample.jpg){ align=center }
 <figcaption>Sample DataFrame</figcaption>
 </figure>
 

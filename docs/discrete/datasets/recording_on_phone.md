@@ -5,7 +5,7 @@
 Using a smartphone, you can record a video with the camera application as shown below.  Typically, the video recording can be started by pressing the red circular button. The video can be stopped by pressing the same button again. 
 
 <figure markdown="span">
-![Mobile Video Capture](../../getting_started/assets/workflows/mobile-video-capture.jpg){ align=center }
+![Mobile Video Capture](../../datasets/assets/capture/mobile-video-capture.jpg){ align=center }
 <figcaption>Android Mobile Video Capture</figcaption>
 </figure>
 
@@ -13,7 +13,7 @@ Using a smartphone, you can record a video with the camera application as shown 
 Furthermore, you can also capture individual images as shown below.  You can take image snapshots from the camera by pressing the white circular button. 
 
 <figure markdown="span">
-![Mobile Image Capture](../../getting_started/assets/workflows/mobile-image-capture.jpg){ align=center }
+![Mobile Image Capture](../../datasets/assets/capture/mobile-image-capture.jpg){ align=center }
 <figcaption>Android Mobile Image Capture</figcaption>
 </figure>
 

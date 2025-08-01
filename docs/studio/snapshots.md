@@ -21,7 +21,7 @@ The tutorial for creating snapshots can be found under the [Dataset Annotations]
 The stages for creating a snapshot are shown below.
 
 <figure markdown="span">
-![Create Snapshot Stages](../datasets/assets/snapshot-creation-process.png){ align=center }
+![Create Snapshot Stages](../datasets/assets/annotations/automatic/snapshot-creation-process.png){ align=center }
 <figcaption>Create Snapshot Stages</figcaption>
 </figure>
 
@@ -30,7 +30,6 @@ A snapshot can be created by the following ways:
 1. Create from Existing Dataset.
 2. Upload from MCAP File.
 3. Upload from Zip/Arrow File
-
 
 ### Create from Existing Dataset
 
@@ -62,7 +61,7 @@ The tutorial for restoring snapshots can be found under the [Dataset Annotations
 The stages for restoring a snapshot are shown below.
 
 <figure markdown="span">
-![Restore Snapshot Stages](../datasets/assets/snapshot-restore-process.jpg){ align=center }
+![Restore Snapshot Stages](../datasets/assets/annotations/automatic/snapshot-restore-process.jpg){ align=center }
 <figcaption>Restore Snapshot Stages</figcaption>
 </figure>
 

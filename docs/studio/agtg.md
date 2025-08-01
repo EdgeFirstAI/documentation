@@ -10,7 +10,7 @@ The AGTG allows datasets to have annotations populated on a dataset with minimal
 A complete annotation set will have 2D and 3D annotations as shown below which is a sample snapshot from the AGTG process.  The 2D annotations are shown on the left which are pixel-based bounding boxes and masks on the image.  The 3D annotations are shown on the right which are world-based 3D boxes surrounding the object in meters. 
 
 <figure markdown="span">
-![Sample Annotations](../datasets/assets/sample-studio-annotations.jpg){ align=center }
+![Sample Annotations](../datasets/assets/annotations/sample-studio-annotations.jpg){ align=center }
 <figcaption>Sample Annotations</figcaption>
 </figure>
 
@@ -25,7 +25,7 @@ This functionality is available after importing the dataset into EdgeFirst Studi
 This AGTG feature can be found in the [dataset gallery](datasets/gallery.md).  The dataset gallery can contain sequences or images which are distinguished by the presence of the sequence icon ![Sequence Icon](../assets/buttons/studio-sequence-icon.jpg) on the image card as shown below. 
 
 <figure markdown="span">
-![Dataset Sequence](../datasets/assets/sample-dataset-image.jpg){ align=center }
+![Dataset Sequence](../datasets/assets/management/sample-dataset-image.jpg){ align=center }
 <figcaption>Dataset Sequence</figcaption>
 </figure>
 
@@ -34,14 +34,14 @@ The SAM-2 propagation step is only available for sequences.  However, images can
 There are three steps involved in this process: *Initialize AGTG Server*, *Annotate Starting Frame*, *Propagate*.  This AGTG feature can be invoked by clicking on the "AI Segment Tool" button inside the dataset gallery as shown below.
 
 <figure markdown="span">
-![Select the AI Segment Tool](../datasets/assets/agtg-segment-tool.jpg){ align=center }
+![Select the AI Segment Tool](../datasets/assets/annotations/automatic/agtg-segment-tool.jpg){ align=center }
 <figcaption>Select the AI Segment Tool</figcaption>
 </figure>
 
 Clicking on this feature will prompt you to [start an AGTG server](../datasets/tutorials/annotations/automatic.md#initialize-agtg-server).  This is a cloud based server that hosts SAM-2 and the AGTG backend.  As indicated, this server will take some time (~3 minutes) to initialize and once initialized, 15 minutes of inactivity will auto-terminate the server.  This is a safety mechanism to prevent extreme usage of the credits available in your account.  As a safety precaution, ensure that all unused [servers are terminated](../datasets/tutorials/annotations/index.md#terminate-agtg-server) to prevent any unnecessary server costs.
 
 <figure markdown="span">
-![Launch AGTG Server](../datasets/assets/confirm-agtg-server-launch.jpg){ align=center }
+![Launch AGTG Server](../datasets/assets/annotations/manual/confirm-agtg-server-launch.jpg){ align=center }
 <figcaption>Launch AGTG Server</figcaption>
 </figure>
 
@@ -71,7 +71,7 @@ An object is a single annotation or a single instance of an object in the image.
 The figure below shows multiple instances of coffee cup annotated using the AI assisted annotations as described above.
 
 <figure markdown="span">
-![AGTG Initial Prompts](../datasets/assets/agtg-prompts.jpg){ align=center }
+![AGTG Initial Prompts](../datasets/assets/annotations/automatic/agtg-prompts.jpg){ align=center }
 <figcaption>AGTG Initial Prompts</figcaption>
 </figure>
 
@@ -80,7 +80,7 @@ Once the current frame has been annotated, you can move forward to the last step
 Click the PROPAGATE button for SAM-2 to start tracking and annotating the objects throughout the frames.  During propagation, the frame and the counter will update as shown below.  Optionally, you can stop the propagation by clicking the "Stop Propagation" button. 
 
 <figure markdown="span">
-![Propagation Process](../datasets/assets/propagation-process.jpg){ align=center }
+![Propagation Process](../datasets/assets/annotations/automatic/propagation-process.jpg){ align=center }
 <figcaption>Propagation Process</figcaption>
 </figure>
 

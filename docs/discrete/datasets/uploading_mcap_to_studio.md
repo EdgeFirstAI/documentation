@@ -3,7 +3,7 @@
 To upload an MCAP Recording into EdgeFirst Studio, first [login][login] to EdgeFirst Studio.  Once logged in to EdgeFirst Studio, navigate to the "Data Snapshots" under the tool options. 
 
 <figure markdown="span">
-![Data Snapshots](../../datasets/assets/data-snapshots.jpg){ align=center }
+![Data Snapshots](../../datasets/assets/annotations/automatic/data-snapshots.jpg){ align=center }
 <figcaption>Data Snapshots</figcaption>
 </figure>
 
@@ -17,7 +17,7 @@ Once you are in the "Data Snapshots" page, upload the recorded MCAP by clicking 
     You can also drag and drop [EdgeFirst Datasets](../../datasets/format.md) Zip and Arrow files in the "Data Snapshots".
 
 <figure markdown="span">
-![Upload MCAP](../../datasets/assets/mcap-upload.jpg){ align=center }
+![Upload MCAP](../../datasets/assets/capture/mcap-upload.jpg){ align=center }
 <figcaption>Upload MCAP</figcaption>
 </figure>
 
@@ -25,6 +25,6 @@ Once the MCAP file is selected, this would start the upload progress in EdgeFirs
 
 **Upload Progress** | **Completed Upload** 
 :------------------:|:------------------:
-![Progress](../../datasets/assets/upload-progress.jpg) | ![Complete](../../datasets/assets/upload-completed.jpg)
+![Progress](../../datasets/assets/capture/upload-progress.jpg) | ![Complete](../../datasets/assets/capture/upload-completed.jpg)
 
 [login]: https://test.edgefirst.studio/login

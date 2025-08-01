@@ -22,21 +22,21 @@ Recall that [snapshots](../../../studio/snapshots.md) are frozen and compact for
     On the dataset card, open the dataset context menu and select "Create Snapshot".
 
     <figure markdown="span">
-    ![Create Snapshot From Dataset](../../assets/create-snapshot.jpg){ align=center }
+    ![Create Snapshot From Dataset](../../assets/annotations/automatic/create-snapshot.jpg){ align=center }
     <figcaption>Create Snapshot From Dataset</figcaption>
     </figure>
 
     Next enter the name for the dataset snapshot.  Click on "Add Snapshot" to begin the snapshot creation. 
 
     <figure markdown="span">
-    ![Name the Snapshot](../../assets/create-snapshot-fields.jpg){ align=center }
+    ![Name the Snapshot](../../assets/annotations/automatic/create-snapshot-fields.jpg){ align=center }
     <figcaption>Name the Snapshot</figcaption>
     </figure>
 
     The snapshot creation process will be shown like the following.
 
     <figure markdown="span">
-    ![Snapshot Process](../../assets/snapshot-creation-process.png){ align=center }
+    ![Snapshot Process](../../assets/annotations/automatic/snapshot-creation-process.png){ align=center }
     <figcaption>Snapshot Process</figcaption>
     </figure>
 
@@ -47,14 +47,14 @@ Recall that [snapshots](../../../studio/snapshots.md) are frozen and compact for
     To create a snapshot from an MCAP file, visit the "Data Snapshots" page.
 
     <figure markdown="span">
-    ![Data Snapshots](../../assets/data-snapshots.jpg){ align=center }
+    ![Data Snapshots](../../assets/annotations/automatic/data-snapshots.jpg){ align=center }
     <figcaption>Data Snapshots</figcaption>
     </figure>
 
     Either drag and drop an MCAP file into the page OR click on the "From File" button to allow selection of the MCAP file from your directories.
 
     <figure markdown="span">
-    ![MCAP Import Snapshot](../../assets/mcap-file-import.jpg){ align=center }
+    ![MCAP Import Snapshot](../../assets/annotations/automatic/mcap-file-import.jpg){ align=center }
     <figcaption>MCAP Import Snapshot</figcaption>
     </figure>
 
@@ -65,14 +65,14 @@ Recall that [snapshots](../../../studio/snapshots.md) are frozen and compact for
     To create a snapshot from a Zip/Arrow files, visit the "Data Snapshots" page.
 
     <figure markdown="span">
-    ![Data Snapshots](../../assets/data-snapshots.jpg){ align=center }
+    ![Data Snapshots](../../assets/annotations/automatic/data-snapshots.jpg){ align=center }
     <figcaption>Data Snapshots</figcaption>
     </figure>
 
     Either drag and drop the Zip/Arrow files into the page OR click on the "From File" button to allow selection of the Zip/Arrow files from your directories.
 
     <figure markdown="span">
-    ![Zip/Arrow Import Snapshot](../../assets/zip-arrow-files-import.jpg){ align=center }
+    ![Zip/Arrow Import Snapshot](../../assets/annotations/automatic/zip-arrow-files-import.jpg){ align=center }
     <figcaption>Zip/Arrow Import Snapshot</figcaption>
     </figure>
 
@@ -95,28 +95,28 @@ The snapshot restoration process involves several dataset transformations such a
 The created snapshots can be found under "Data Snapshots".
 
 <figure markdown="span">
-![Data Snapshots](../../assets/data-snapshots.jpg){ align=center }
+![Data Snapshots](../../assets/annotations/automatic/data-snapshots.jpg){ align=center }
 <figcaption>Data Snapshots</figcaption>
 </figure>
 
 To restore the snapshot, click on the snapshot context menu and select "Restore".
 
 <figure markdown="span">
-![Restore Snapshots](../../assets/restore-snapshot.jpg){ align=center }
+![Restore Snapshots](../../assets/annotations/automatic/restore-snapshot.jpg){ align=center }
 <figcaption>Restore Snapshots</figcaption>
 </figure>
 
 Restoring a snapshot will create a new dataset entirely with annotations.  Specify the project to contain this new dataset and specify the name and the description of the dataset.  Furthermore, toggle the "AI Ground Truth Generation" to auto annotate the dataset samples.  The rest of the settings can be kept in their defaults for this tutorial.  Click "Restore" to start the restoration process. 
 
 <figure markdown="span">
-![Restore Snapshots Fields](../../assets/restore-snapshot-fields.jpg){ align=center }
+![Restore Snapshots Fields](../../assets/annotations/automatic/restore-snapshot-fields.jpg){ align=center }
 <figcaption>Restore Snapshots Fields</figcaption>
 </figure>
 
 The snapshot restore process can be found under the project datasets.
 
 <figure markdown="span">
-![Restore Snapshots Progress](../../assets/snapshot-restore-process.jpg){ align=center }
+![Restore Snapshots Progress](../../assets/annotations/automatic/snapshot-restore-process.jpg){ align=center }
 <figcaption>Restore Snapshots Progress</figcaption>
 </figure>
 
@@ -146,21 +146,21 @@ This feature is a three-step process: *Initialize AGTG Server*, *Annotate Starti
 Inside the dataset gallery, click on the "AI Segment Tool" to start the AGTG server.
 
 <figure markdown="span">
-![Auto Segment Mode](../../assets/agtg-segment-tool.jpg){ align=center }
+![Auto Segment Mode](../../assets/annotations/automatic/agtg-segment-tool.jpg){ align=center }
 <figcaption>Auto Segment Mode</figcaption>
 </figure>
 
 If there is currently no AGTG server available, go ahead and click on "Launch AGTG Server".
 
 <figure markdown="span">
-![Launch AGTG Server](../../assets/confirm-agtg-server-launch.jpg){ align=center }
+![Launch AGTG Server](../../assets/annotations/manual/confirm-agtg-server-launch.jpg){ align=center }
 <figcaption>Launch AGTG Server</figcaption>
 </figure>
 
 Please wait while the server is being initialized.
 
 <figure markdown="span">
-![Launch AGTG Server](../../assets/agtg-server-initialization.jpg){ align=center }
+![Launch AGTG Server](../../assets/annotations/manual/agtg-server-initialization.jpg){ align=center }
 <figcaption>Launch AGTG Server</figcaption>
 </figure>
 
@@ -176,7 +176,7 @@ Start by drawing a bounding box for the first object by clicking and dragging.  
 By default, the prompts provided to SAM-2 are bounding boxes (mouse click and drag) which should cover the object to be annotated in the frame.  However, points can also be provided (mouse clicks) by clicking areas that are part of the object. 
 
 <figure markdown="span">
-![AGTG Initial Prompts](../../assets/agtg-prompts.jpg){ align=center }
+![AGTG Initial Prompts](../../assets/annotations/automatic/agtg-prompts.jpg){ align=center }
 <figcaption>AGTG Initial Prompts</figcaption>
 </figure>
 
@@ -187,14 +187,14 @@ Once the first frame has been annotated (*prompts for SAM-2*), specify the "End 
 As the frames propagate, you should see the frames being auto-annotated.  To stop the propagation process click on "Stop Propagation".
 
 <figure markdown="span">
-![Propagation Process](../../assets/propagation-process.jpg){ align=center }
+![Propagation Process](../../assets/annotations/automatic/propagation-process.jpg){ align=center }
 <figcaption>Propagation Process</figcaption>
 </figure>
 
 Once the propagation completes as it reached the end frame, click on "Save Annotations" to save the generated annotations.
 
 <figure markdown="span">
-![Propagation Completed](../../assets/agtg-propagation-completed.jpg){ align=center }
+![Propagation Completed](../../assets/annotations/automatic/agtg-propagation-completed.jpg){ align=center }
 <figcaption>Propagation Completed</figcaption>
 </figure>
 

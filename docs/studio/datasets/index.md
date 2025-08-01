@@ -7,7 +7,7 @@ The Dataset Dashboard shows a list of datasets in a project with a dataset summa
 <figcaption>Public Datasets</figcaption>
 </figure>
 
-Public datasets are readily available for user onboarding and trials, but these datasets are **READ-ONLY** datasets.  By default, users can [view the datasets](../../datasets/tutorials/management.md#viewing-datasets).  Otherwise, in order to have full access to the dataset, users **MUST** [copy the dataset](../../datasets/tutorials/management.md#copying-datasets) into the project they've created. 
+Public datasets are readily available for user onboarding and trials, but these datasets are **READ-ONLY** datasets.  By default, users can [view the datasets](../../datasets/tutorials/management.md#view-dataset).  Otherwise, in order to have full access to the dataset, users **MUST** [copy the dataset](../../datasets/tutorials/management.md#copy-dataset) into the project they've created. 
 
 The dataset attributes are shown below.
 
@@ -23,7 +23,7 @@ For the elements encircled in red, these features will not be available to publi
 <figcaption>Dataset Write Access Context Menu</figcaption>
 </figure>
 
-This gives the user the options for [editing the dataset info](../../datasets/tutorials/management.md#edit-dataset-information), [importing existing datasets](../../datasets/tutorials/import.md), [exporting datasets into your local machine](../../datasets/tutorials/management.md#exporting-datasets), [creating snapshots](../snapshots.md#create-snapshot), and [copying datasets](../../datasets/tutorials/management.md#copying-datasets).  The rest of the options are described in the sections below such as the [dataset analytics](#analytics), [view on map](#view-on-map), [park datasets](#park-dataset), and [removing datasets](#remove-dataset). 
+This gives the user the options for [editing the dataset info](../../datasets/tutorials/management.md#edit-dataset-information), [importing existing datasets](../../datasets/tutorials/import.md), [exporting datasets into your local machine](../../datasets/tutorials/management.md#export-dataset), [creating snapshots](../snapshots.md#create-snapshot), and [copying datasets](../../datasets/tutorials/management.md#copy-dataset).  The rest of the options are described in the sections below such as the [dataset analytics](#analytics), [view on map](#view-on-map), [park datasets](#park-dataset), and [removing datasets](#remove-dataset). 
 
 ## Labels
 
@@ -58,7 +58,7 @@ The following image shows a dialog to split non-grouped images into 2 groups, *T
 <figcaption>Assigning Groups</figcaption>
 </figure>
 
-The tutorial for splitting the images in the dataset into groups can be found under the [Dataset Management](../../datasets/tutorials/management.md#splitting-datasets) section.
+The tutorial for splitting the images in the dataset into groups can be found under the [Dataset Management](../../datasets/tutorials/management.md#split-dataset) section.
 
 ## Dataset Extended Menu
 
@@ -86,7 +86,7 @@ For more information please visit [Access Control](../user/organization.md#roles
 <figcaption>Copying Datasets</figcaption>
 </figure>
 
-To copy datasets proceed with the steps as follows or follow this in-depth tutorial for [copying datasets](../../datasets/tutorials/management.md#copying-datasets).
+To copy datasets proceed with the steps as follows or follow this in-depth tutorial for [copying datasets](../../datasets/tutorials/management.md#copy-dataset).
 
 1. Open the dataset extended menu.
 2. Select "Copy Dataset".
@@ -130,7 +130,7 @@ The "Export Dataset" downloads the data from EdgeFirst Studio to the local folde
 <figcaption>Export Dataset</figcaption>
 </figure>
 
-To export datasets proceed with the steps as follows or follow this in-depth tutorial for [exporting datasets](../../datasets/tutorials/management.md#exporting-datasets).
+To export datasets proceed with the steps as follows or follow this in-depth tutorial for [exporting datasets](../../datasets/tutorials/management.md#export-dataset).
 
 1. Select the dataset type: Detection (Bounding boxes) or Segmentation (Masks).
 2. Select the export format.

@@ -10,7 +10,7 @@ This section describes the steps for adjusting 2D annotations in the dataset.
 
 ### Add 2D Annotations
 
-First [navigate to the dataset gallery](../management.md#viewing-datasets) and start by adding a single 2D annotation on an image.  Select the "AI Image Segment Tool".  This tool will use SAM-2 to auto-segment and auto-box an object in the image. 
+First [navigate to the dataset gallery](../management.md#view-dataset) and start by adding a single 2D annotation on an image.  Select the "AI Image Segment Tool".  This tool will use SAM-2 to auto-segment and auto-box an object in the image. 
 
 <figure markdown="span">
 ![Auto Segment Mode](../../assets/annotations/manual/enable-auto-segment-tool.jpg){ align=center }
@@ -102,7 +102,7 @@ The annotations will be deleted after following the steps above.
 
 This section describes the steps for adjusting 3D annotations in the dataset.
 
-First [navigate to the dataset gallery](../management.md#viewing-datasets).  Ensure that the LiDAR and/or Radar point clouds, and the 3D bounding box annotations are toggled visible. 
+First [navigate to the dataset gallery](../management.md#view-dataset).  Ensure that the LiDAR and/or Radar point clouds, and the 3D bounding box annotations are toggled visible. 
 
 <figure markdown="span">
 ![Visible 3D Annotations](../../assets/annotations/manual/visible-3d-annotations.jpg){ align=center }

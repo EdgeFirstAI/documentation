@@ -63,7 +63,7 @@ the annotations stored in the "annotations" container.
 <figcaption>Imported COCO128 Dataset</figcaption>
 </figure>
 
-See the dataset and its annotations by following the tutorial for [viewing the dataset gallery](management.md#viewing-datasets).
+See the dataset and its annotations by following the tutorial for [viewing the dataset gallery](management.md#view-dataset).
 
 ## Import EdgeFirst Datasets
 
@@ -116,4 +116,8 @@ This will start the import process as shown.
 <figcaption>Import Process</figcaption>
 </figure>
 
-See the dataset and its annotations by following the tutorial for [viewing the dataset gallery](management.md#viewing-datasets).
+See the dataset and its annotations by following the tutorial for [viewing the dataset gallery](management.md#view-dataset).
+
+## Next Steps
+
+Now that you have seen how to import datasets in EdgeFirst Studio, see how the [annotations](annotations/index.md) are being managed in EdgeFirst Studio.

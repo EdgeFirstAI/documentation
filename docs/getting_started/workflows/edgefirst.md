@@ -36,20 +36,20 @@ Once an MCAP recording has been uploaded to EdgeFirst Studio, we can then run [a
 
 ### 5. Combine Multiple Datasets
 
-This step utilizes the [copy dataset feature](../../datasets/tutorials/management.md#copying-datasets) in EdgeFirst Studio. This feature
+This step utilizes the [copy dataset feature](../../datasets/tutorials/management.md#copy-dataset) in EdgeFirst Studio. This feature
 allows copying of *read-only* datasets into your own dataset to give write permissions. This feature can also copy multiple datasets into a single container to expand the overall dataset. 
 
-For users that do not have an EdgeFirst Platform, but would like to use the public *read-only* datasets provided, follow the instructions for [Copying Datasets](../../datasets/tutorials/management.md#copying-datasets) into
+For users that do not have an EdgeFirst Platform, but would like to use the public *read-only* datasets provided, follow the instructions for [Copying Datasets](../../datasets/tutorials/management.md#copy-dataset) into
 a dataset container with write access.
 
 For users that followed steps 1-4 and would like to expand their dataset, follow the
-instructions for [Combining Datasets](../../datasets/tutorials/management.md#combining-datasets)
+instructions for [Combining Datasets](../../datasets/tutorials/management.md#combine-datasets)
 
 ### 6. Split Dataset
 
 Before training your model, it is highly suggested to split your dataset into dedicated training and validation groups. This intention is to reserve samples only for training and samples only for validation.
 
-For instructions on splitting the dataset in train and validation groups, refer to the [Splitting Datasets Tutorial](../../datasets/tutorials/management.md#splitting-datasets)
+For instructions on splitting the dataset in train and validation groups, refer to the [Splitting Datasets Tutorial](../../datasets/tutorials/management.md#split-dataset)
 
 ### 7. Train Model
 

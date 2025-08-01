@@ -144,11 +144,15 @@ flowchart LR
 !!! note
     Labeled arrows suggests that only certain type of users can enter the stages pointed by the arrow.  For example, only Raivin and LiDAR users can "Auto Annotate 3D".
 
-1. [Web Workflow](web.md)
+1. [Tourist Workflow](tourist.md)
+
+    This workflow is intended for users with a personal computer with access to Wifi that want to use the sample datasets available for training and deploying Vision models. 
+
+2. [Web Workflow](web.md)
 
     This workflow is intended for users with a personal computer and a device with a camera with access to Wifi and a web browser.  The examples shown in this workflow will be from a Windows computer and an Android phone for recording images.  To proceed to this workflow, click on the link above.
 
-2. [EdgeFirst Platform Workflow](edgefirst.md)
+3. [EdgeFirst Platform Workflow](edgefirst.md)
 
     This workflow is intended for users with a personal computer with access to Wifi and a web browser and a Maivin or a Raivin platform.  To proceed to this workflow, click on the link above.
 

@@ -10,14 +10,14 @@ The examples below will show recording of a five second video and image captures
 
 {% include-markdown "discrete/datasets/uploading_images_to_studio.md" heading-offset=0 %}
 
-Next [view the gallery of the dataset](../../datasets/tutorials/management.md#viewing-datasets) to confirm all the captured data has been uploaded.  You should see the imported video file and images in the gallery.  Note that videos appear as sequences with a play button overlay on the preview thumbnail.
+Next [view the gallery of the dataset](../../datasets/tutorials/management.md#view-dataset) to confirm all the captured data has been uploaded.  You should see the imported video file and images in the gallery.  Note that videos appear as sequences with a play button overlay on the preview thumbnail.
 
 <figure markdown="span">
 ![Coffee Cup Gallery](../../getting_started/assets/workflows/pc-dataset-gallery.jpg){ align=center }
 <figcaption>Coffee Cup Gallery</figcaption>
 </figure>
 
-Once all the captured data has been uploaded to the dataset container, you will now assign groups to the data to split the data into training and validation sets.  Follow the [tutorial for creating groups](../../datasets/tutorials/management.md#splitting-datasets) with an 80% partition to training and 20% partition to validation.  The final outcome for the groups should look as follows.
+Once all the captured data has been uploaded to the dataset container, you will now assign groups to the data to split the data into training and validation sets.  Follow the [tutorial for creating groups](../../datasets/tutorials/management.md#split-dataset) with an 80% partition to training and 20% partition to validation.  The final outcome for the groups should look as follows.
 
 <figure markdown="span">
 ![Dataset Groups](../../getting_started/assets/workflows/dataset-groups.jpg){ align=center }
@@ -37,29 +37,9 @@ A complete annotation will have a segmentation mask and a bounding box for each 
 <figcaption>Sample Annotation</figcaption>
 </figure>
 
-# Train a Vision Model 
+{% include-markdown "discrete/models/train_vision.md" heading-offset=0 %}
 
-Once you have a proper dataset that is fully annotated and split into training and validation groups, you can now start training your Vision model.  For instructions to train a Vision model, please refer to the [Training ModelPack Tutorial](../../models/modelpack/training.md).
-
-A completed training session will look like the following figure.
-
-<figure markdown="span">
-![Training Session](../../getting_started/assets/workflows/completed-training-session.jpg){ align=center }
-<figcaption>Training Session</figcaption>
-</figure>
-
-# Validate the Trained Model
-
-Once the model is trained, you can now start validating the performance of the model to verify if the model is ready for deployment. 
-
-For instructions to validate a Vision model, please refer to the [Validating ModelPack Tutorial](../../models/modelpack/validation/managed.md).
-
-Once the validation session completes, the metrics will be displayed like the following figure.
-
-<figure markdown="span">
-![Validation Metrics](../../getting_started/assets/workflows/sample-validation-metrics.jpg){ align=center }
-<figcaption>Validation Metrics</figcaption>
-</figure>
+{% include-markdown "discrete/models/validate_vision.md" heading-offset=0 %}
 
 # Deploy the Model
 

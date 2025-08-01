@@ -10,7 +10,7 @@ Checkout our full video tutorial above as part of the [EdgeFirst Studio Series](
 
 ## Verify Dataset
 
-First ensure the dataset is ready to be used for training.  This means that the dataset is properly annotated and the dataset is properly split with training and validation samples.  The tutorial [Verifying Datasets](../../datasets/tutorials/management.md#verifying-datasets) will show what to look for in a dataset before deploying it for training.
+First ensure the dataset is ready to be used for training.  This means that the dataset is properly annotated and the dataset is properly split with training and validation samples.  The tutorial [Verifying Datasets](../../datasets/tutorials/management.md#verify-dataset) will show what to look for in a dataset before deploying it for training.
 
 ## Specify Project Experiments
 

@@ -33,6 +33,12 @@ More information for using `mike` can be found [here](https://github.com/jimport
 
 Run a spell checker on the documentation using `mkdocs build -s`.
 
+## Discrete Documentations
+
+Discrete documentations allow a single doc file to appear in multiple locations.  The doc file needs to be maintained once and the changes will be propagated in all pages that contains the doc file. All discrete documentations are placed under the directory `/discrete`.  The syntax for adding the contents of the discrete doc in another doc is provided below.
+
+Example: `{% include-markdown "discrete/workflows/web.md" %}`
+
 # Conventions
 
 Follow these conventions when working on the documentation.

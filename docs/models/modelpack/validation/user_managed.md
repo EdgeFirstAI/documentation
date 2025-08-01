@@ -4,10 +4,10 @@ This tutorial will describe the steps to validate the performance of **ModelPack
 
 {% include-markdown "discrete/studio/create_mpk_validation_session.md" %}
 
-You will be greeted with the validation session configuration window.  In this window, specify the "User Managed Validator" to true as shown in red. Next specify the name of the validation session, the model to validate, and the dataset to deploy.  In this example, the TFLite model will be validated and the "Coffee Cup" dataset with the validation partition will be used.  Next specify, the validation parameters on the right.  Additional information on these parameters are provided by hovering over the info buttons as indicated in red below. 
+You will be greeted with a validation session dialog.  In this dialog, check the "User Managed Validator" checkbox.  Next specify the name of the validation session, the model to validate, and the dataset to deploy.  In this example, the TFLite model will be validated and the "Coffee Cup" dataset with the validation partition will be used.  Next specify, the validation parameters on the right.  Additional information on these parameters are provided by hovering over the info button ![Info Button](../../../assets/buttons/studio-info-button.jpg). 
 
 <figure markdown="span">
-![Validation Session Fields](../../assets/validation/user-managed-modelpack-session-fields.jpg){ align=center }
+![Validation Session Fields](../../assets/validation/user-managed-vision-session-fields.jpg){ align=center }
 <figcaption>Validation Session Fields</figcaption>
 </figure>
 
@@ -46,7 +46,7 @@ edgefirst-validator --session-id v-800
 Once entered, the following validation progress should now be indicated in EdgeFirst Studio as shown below.
 
 <figure markdown="span">
-![Validation Session](../../assets/validation/user-managed-modelpack-session-progress.jpg){ align=center }
+![Validation Session](../../assets/validation/user-managed-vision-session-progress.jpg){ align=center }
 <figcaption>Validation Session</figcaption>
 </figure>
 
@@ -55,11 +55,11 @@ Once entered, the following validation progress should now be indicated in EdgeF
 The completed session will look as follows with the status set to "Complete".
 
 <figure markdown="span">
-![Completed Session](../../assets/validation/user-managed-modelpack-completed-session.jpg){ align=center }
+![Completed Session](../../assets/validation/user-managed-vision-completed-session.jpg){ align=center }
 <figcaption>Completed Session</figcaption>
 </figure>
 
-The attributes of the validation session are labeled below.
+The attributes of the validation sessions in EdgeFirst Studio are labeled below.
 
 <figure markdown="span">
 ![Validation Session Attributes](../../assets/validation/validation-session-attributes.jpg){ align=center }
@@ -71,7 +71,7 @@ The attributes of the validation session are labeled below.
 Once the validation session completes, you can view the validation metrics by clicking the "View Validation Charts" button on the top of the session card.
 
 <figure markdown="span">
-![Validation Charts](../../assets/validation/modelpack-charts.jpg){ align=center }
+![Validation Charts](../../assets/validation/vision-charts.jpg){ align=center }
 <figcaption>Validation Charts</figcaption>
 </figure>
 
@@ -87,8 +87,8 @@ You can go back to the validation session card by pressing the "Back" button as 
 
 ## Comparing Metrics
 
-It is also possible to compare validation metrics for multiple sessions.  See [Validation Sessions](../../../studio/models.md#validation-sessions) in EdgeFirst Studio Overview for further details. 
+It is also possible to compare validation metrics for multiple sessions.  See [Validation Sessions](../../../studio/models.md#validation-sessions) in the Model Experiments Dashboard.
 
 ## Next Steps
 
-Now that you have validated your Vision model, you can find examples for deploying your model in the [PC](../deployment/pc.md), in the [EVK](../deployment/evk.md), and in the [Maivin Platform](../deployment/maivin.md). 
+Now that you have validated your Vision model, you can find examples for deploying your model in the [PC](../deployment/pc.md), [EVK](../deployment/evk.md), and [Maivin Platform](../deployment/maivin.md). 

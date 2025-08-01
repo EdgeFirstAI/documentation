@@ -4,6 +4,7 @@ nav:
     - index.md
     - User Workflows:
       - getting_started/workflows/index.md
+      - getting_started/workflows/tourist.md
       - getting_started/workflows/web.md
       - getting_started/workflows/edgefirst.md
   - Studio:

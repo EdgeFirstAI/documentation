@@ -124,7 +124,7 @@ Once completed, the dataset will now contain annotations that resulted from the 
 
 [Insert Image]
 
-Next [navigate to the gallery](../management.md#viewing-datasets) of the dataset by clicking on the gallery button.  The figure below shows a side-by-side display of the annotations from frames 1-3.  The 2D annotations for both segmentation masks and bounding boxes were auto-generated in the background.
+Next [navigate to the gallery](../management.md#view-dataset) of the dataset by clicking on the gallery button.  The figure below shows a side-by-side display of the annotations from frames 1-3.  The 2D annotations for both segmentation masks and bounding boxes were auto-generated in the background.
 
 **Frame 1** | **Frame 2** | **Frame 3** 
 :------------------:|:------------------:|:------------------:
@@ -134,7 +134,7 @@ The next section will describe the *Semi-Automatic Ground Truth Generation* for 
 
 ## Semi-Automatic Ground Truth Generation
 
-This annotation feature is available after [capturing the dataset](../capture.md) into EdgeFirst Studio.  This process occurs in the [dataset gallery](../management.md#viewing-datasets) where the user has more
+This annotation feature is available after [capturing the dataset](../capture.md) into EdgeFirst Studio.  This process occurs in the [dataset gallery](../management.md#view-dataset) where the user has more
 control over the annotation process.  This feature will preload all frames of a *video* sequence in the dataset into SAM-2 to generate segmentation masks, 2D bounding boxes, 3D bounding boxes (For Raivin/LiDAR Only) by tracking the object across the frames. 
 
 A complete description of this feature along with the functionalities of each buttons shown in this tutorial can be found under [Studio](../../../studio/agtg.md#semi-automatic-ground-truth-generation).

@@ -37,7 +37,7 @@ This will bring the option to edit the label, the color associated to the label,
 <figcaption>Edited Label</figcaption>
 </figure>
 
-The changes should now be reflected in the [gallery](../management.md#viewing-datasets) as shown below.
+The changes should now be reflected in the [gallery](../management.md#view-dataset) as shown below.
 
 <figure markdown="span">
 ![Edited Sample Coffee Cups](../../assets/annotations/coffee-cups-annotations-edited.jpg){ align=center }

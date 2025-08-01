@@ -2,7 +2,7 @@
 
 This page will provide tutorials for managing datasets in EdgeFirst Studio. 
 
-## Viewing Datasets
+## View Dataset
 
 This tutorial will show how to open the [gallery](../../studio/datasets/gallery.md) of the dataset to see the individual samples in the dataset.
 
@@ -52,7 +52,7 @@ The changes should appear on the dataset card as shown below.
 <figcaption>Edited Info</figcaption>
 </figure>
 
-## Verifying Datasets
+## Verify Dataset
 
 This tutorial will show an example of a dataset that is ready for training. 
 
@@ -86,7 +86,7 @@ Verify the contents of the dataset and the annotations.  Click the button that n
 <figcaption>Vision Dataset Sequences</figcaption>
 </figure>
 
-Clicking on any of these sequences will open individual images in the sequence with the visualizations of the annotations.  For more information please see [viewing datasets](#viewing-datasets).
+Clicking on any of these sequences will open individual images in the sequence with the visualizations of the annotations.  For more information please see [viewing datasets](#view-dataset).
 
 
 Datasets that train Fusion models provide annotations of the object's 3D bounding box.  For more information on the dataset annotations, please see the [EdgeFirst Dataset Format](../format.md#dataset-annotation-format).
@@ -107,40 +107,13 @@ For cases where the annotations need corrections, please see [Manual 2D Annotati
 
 {% include-markdown "discrete/datasets/create_dataset_container.md" %}
 
-## Copying Datasets
+{% include-markdown "discrete/datasets/copy_dataset.md" %}
 
-To copy a dataset, navigate to the dataset you would like to copy.  On the dataset card, select the "Copy Dataset" from the dataset options as shown below.
+## Combine Datasets
 
-<figure markdown="span">
-![Copy Dataset](../assets/management/copy-dataset-option.jpg){ align=center }
-<figcaption>Copy Dataset</figcaption>
-</figure>
+The process of combining datasets consists of multiple copy processes on a given dataset container.  To combine datasets, first [create a dataset](#create-dataset) container.  Follow the process for [copying a dataset](#copy-dataset) onto the destination dataset container that was created.  The copy process will copy the selected dataset onto the same dataset container and thus combining multiple datasets.
 
-This will open a new dialog for the user to specify the "Destination".  The "Destination" will be the location of the copied dataset.  The "Source" will be set by default to the current dataset card you've selected.  However, you can also modify the location here.  In the example below, the original dataset is the "Source" which is the "Coffee Cup" dataset from the "Sample Project".  The copied dataset will be placed as specified in the "Destination" fields.  By default a new dataset container will be created in the specified project.  However, you can [create a dataset container](#create-dataset) before copying and specify this dataset container in the "Destination" fields.
-
-<figure markdown="span">
-![Copy Dataset Options](../assets/management/copy-dataset-options.jpg){ align=center }
-<figcaption>Copy Dataset Options</figcaption>
-</figure>
-
-Once the options are specified, go ahead and click "Apply" at the bottom right to start the copy process.  The progress for the dataset copy will be shown on the new dataset card that was created in the project destination that was specified.
-
-<figure markdown="span">
-![Copy Dataset Progress](../assets/management/copy-dataset-progress.jpg){ align=center }
-<figcaption>Copy Dataset Progress</figcaption>
-</figure>
-
-Once the copying process completes, the frames and the annotations have been copied.
-
-**Original Dataset** | **Copied Dataset**
-:------------------:|:------------------:
-![Original](../assets/management/original-public-dataset.jpg) | ![Copied](../assets/management/copied-dataset-result.jpg)
-
-## Combining Datasets
-
-The process of combining datasets consists of multiple copy processes on a given dataset container.  To combine datasets, first [create a dataset](#create-dataset) container.  Follow the process for [copying a dataset](#copying-datasets) onto the destination dataset container that was created.  The copy process will copy the selected dataset onto the same dataset container and thus combining multiple datasets.
-
-## Splitting Datasets
+## Split Dataset
 
 A proper dataset has samples reserved for training and validation.  This tutorial will show how to split the samples in the dataset into training and validation groups.  This operation randomly shuffles the data prior to assigning them to the specified groups. 
 
@@ -175,6 +148,6 @@ Once the groups are specified, click "Split" to create the groups.  This will au
 <figcaption>Dataset Groups</figcaption>
 </figure>
 
-## Exporting Datasets
+## Export Dataset
 
 *Coming Soon*

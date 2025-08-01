@@ -57,7 +57,7 @@ For more information on managing recordings, please see the [Managing Recordings
 
 ## Next Steps
 
-See the imported files by viewing the [dataset gallery](management.md#viewing-datasets).
+See the imported files by viewing the [dataset gallery](management.md#view-dataset).
 
 EdgeFirst Studio also supports [import of existing datasets](import.md) and its annotations with various formats.
 

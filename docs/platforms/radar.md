@@ -10,7 +10,7 @@ The radar module is connected to the Raivin using two networking interfaces.  Th
 
 ### CAN Configuration
 
-The CAN bus interface is managed through the systemd networking framework using the configuration file `/etc/systemd/network/can0.network`.  The CAN bus interface will be pre-configured by Torizon for Maivin but is covered in this section.
+The CAN bus interface is managed through the systemd networking framework using the configuration file `/etc/systemd/network/can0.network`.  The CAN bus interface will be preconfigured by Torizon for Maivin but is covered in this section.
 
 ```
 [Match]

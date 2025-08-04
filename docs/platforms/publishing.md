@@ -1,16 +1,16 @@
 # Publishing
-Once you have a MCAP created from the [Recording Service](./recording.md), you can upload it as a [dataset](../datasets/index.md) to [EdgeFirst Studios](../studio/index.md) to [auto-annotation](../studio/agtg.md) and [train additional models](../models/index.md) from.  There are two methods to upload the MCAP to EdgeFirst Studio:  download the MCAP from Raivin and use EdgeFirst Studio to create a snapshot, or use the [EdgeFirst studio client](../perception/studio.md) on the Raivin device to directly upload the file from the Raivin to the Studio as a snapshot.
+Once you have a MCAP created from the [Recording Service](./recording.md), you can upload it as a [dataset](../datasets/index.md) to [EdgeFirst Studio](../studio/index.md) to [auto-annotation](../studio/agtg.md) and [train additional models](../models/index.md) from.  There are two methods to upload the MCAP to EdgeFirst Studio:  download the MCAP from Raivin and use EdgeFirst Studio to create a snapshot, or use the [EdgeFirst studio client](../perception/studio.md) on the Raivin device to directly upload the file from the Raivin to the Studio as a snapshot.
 
 !!! warning
     Uploading snapshots should not deduct funds from your EdgeFirst Studio account. However, creating datasets from snapshots, called *restoring* snapshots, will absolutely incur costs. 
 
 For the examples below, we will use the Raivin with a hostname of `verdin-imx8mp-07130049` with a MCAP save directory of `/media/DATA` and the MCAP file to copy named `verdin-imx8mp-07130049_2025_04_09_12_44_12.mcap`. Here is the screenshot of the MCAP Recording page of such a device:
 <figure markdown="span">
-![Recording Service](../assets/Publishing-example.png){align=center}  
+![Recording Service](assets/publishing-example.png){align=center}  
 <figcaption>Example MCAP Recorder Page</figcaption>
 </figure>
 
-## Pre-requisites
+## Prerequisites
 It is assumed you have followed the steps in the [Recording Service page](./recording.md) and have an MCAP file as well as working knowledge of the page.
 
 You must have followed the steps in the [EdgeFirst Studio Quick Start](../index.md) to create a user account, login to the account, and create an initial project. You will need the username and password for both publishing methods.
@@ -18,7 +18,7 @@ You must have followed the steps in the [EdgeFirst Studio Quick Start](../index.
 Most of the workflows below require working knowledge with [SSH and command-line interfaces](./ssh.md). It is recommended that you read and follow the steps on that page to confirm SSH connectivity with the Raivin.
 
 ## Method 1: Download the MCAP from the Raivin and Publish to Studio
-The first method is to download the MCAP from the Raivin.  This can be accomplished in [two ways](./recording.md#downloading-the-mcap-recording) :  
+The first method is to download the MCAP from the Raivin.  This can be accomplished in [two ways](./recording.md#download-mcap) :  
 - use the download button for the MCAP on the [MCAP Details Modal](./recording.md#the-mcap-modal) to download the MCAP to your PC via the Raivin's WebUI.  
 - use [SCP](./ssh.md#secure-copy) to download the file to your PC via the command-line interface. 
 
@@ -30,7 +30,7 @@ scp torizon@verdin-imx8mp-07130049:/media/DATA/verdin-imx8mp-07130049_2025_04_09
 Once the MCAP file is downloaded to your PC, you can login to EdgeFirst Studio and use the [EdgeFist Studio Snapshot page](../studio/snapshots.md) to upload the MCAP file to Studio.
 
 ## Method 2: Publish the MCAP directly using the EdgeFirst Client
-The second method is use the [EdgeFirst studio client](../perception/studio.md) on the device to directly upload the MCAP to EdgeFirst Studios as a snapshot. This requires that you SSH into the device and run commands on the Linux shell of the Raivin.
+The second method is use the [EdgeFirst studio client](../perception/studio.md) on the device to directly upload the MCAP to EdgeFirst Studio as a snapshot. This requires that you SSH into the device and run commands on the Linux shell of the Raivin.
 
 First, you would need to use the SSH client to log into the device:
 ```bash
@@ -72,7 +72,7 @@ We can see that the newly created snapshot is in this list.
 
 We can also confirm the snapshot on the EdgeFirst Studio Snapshot screen.
 <figure markdown="span">
-![Recording Service](../assets/Publishing-studioSnapshots.png){align=center}  
+![Recording Service](assets/Publishing-studioSnapshots.png){align=center}  
 <figcaption>EdgeFirst Studio Snapshots</figcaption>
 </figure>
 

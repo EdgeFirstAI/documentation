@@ -135,7 +135,7 @@ There are three settings for drawing the Point Cloud Data (PCD):
 
 - **Grid Draw PCD**: This controls drawing the PCD on the Occupancy Page.
 - **Combined Grid Draw PCD**: This controls drawing the PCD on the Occupancy Grid on the Segmentation Page.
-- **Combined Camera Draw PCD**: This controls drawing the PCD on the Segementation View on the Segmentation Page.
+- **Combined Camera Draw PCD**: This controls drawing the PCD on the Segmentation View on the Segmentation Page.
 
 Each of these settings can be configured to disable drawing the PCD, or draw it based on radar power, radar cross-section (RCS) area, speed of object, or post-processed output from the Fusion model, Vision model, or Combined from both.
 
@@ -209,13 +209,13 @@ The high confidence threshold for the ByteTrack algorithm.
 The tracking IoU threshold for box association. Higher values will require boxes to have higher IoU to the predicted track location to be associated.
 
 #### TRACK_UPDATE
-The tracking update factor. Higher update factor will mean less smoothing but more rapid response to change. Use values from 0.0 to 1.0. Values outside this range will cause unexpected behaviour.
+The tracking update factor. Higher update factor will mean less smoothing but more rapid response to change. Use values from 0.0 to 1.0. Values outside this range will cause unexpected behavior.
 
 ### Segmentation-only Settings
 The following setting will only impact segmentation-based output in the `/model/mask_compressed` or `/model/mask` topics with models that output segmentation results.
 
 #### MASK_COMPRESSION
-Enable compression for segmentation masks.  When enabled, both the `/model/mask` and `/model/mask_compressed` topics will be available.  The compressed mask should be used from remote connections while the un-compressed topic should be used from local connections to avoid redundant compress/decompress steps.
+Enable compression for segmentation masks.  When enabled, both the `/model/mask` and `/model/mask_compressed` topics will be available.  The compressed mask should be used from remote connections while the uncompressed topic should be used from local connections to avoid redundant compress/decompress steps.
 
 !!! warning
     Turning off mask compression will disable the `/model/mask_compressed` topic.  The WebUI will need to have its [Mask Topic](./configuration.md#topics) changed to `/model/mask`.  The segmentation mask will also not be recorded.
@@ -293,7 +293,7 @@ Enable clustering the radar targets into the `/radar/clusters` topic.
 Temporal clustering of the radar targets using the window size.  The window size is the number of frames to cluster, each frame representing 55ms.  The window clustering is a rolling window so it does not incur any additional latency.
 
 #### Clustering EPS
-The eplison value to be used for Density-Based Spatial Clustering and Apllication with Noise (DBSCAN) clustering. Higher values mean points further from each other can be clustered together.
+The epsilon value to be used for Density-Based Spatial Clustering and Application with Noise (DBSCAN) clustering. Higher values mean points further from each other can be clustered together.
 
 #### Clustering Parameter Scale
 Clustering DBSCAN parameter scaling. Parameter order is x, y, z, speed. Set the appropriate axis to 0 to ignore that axis. Default setting of `[0.5 1.0 0.0 0.0]` means that only xy distances are taken into account.

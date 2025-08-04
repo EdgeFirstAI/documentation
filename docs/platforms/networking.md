@@ -24,7 +24,7 @@ The Maivin includes a number of networking interfaces: Ethernet, WiFi, and an op
 The Maivin ships with the Ethernet interface setup as a DHCP client and should automatically get an IP address on a network which provides DHCP.  Otherwise the Maivin will fallback to a link-local IP.  In either scenario, the Maivin can be accessed using the `verdin-imx8mp-XXXXXXXX.local` hostname.
 
 !!! note
-    The Maivin also supports IPv6 which will be available through a link-local address.  This IPv6 link-local address will be assocated with the `verdin-imx8mp-XXXXXXXX.local` hostname.
+    The Maivin also supports IPv6 which will be available through a link-local address.  This IPv6 link-local address will be associated with the `verdin-imx8mp-XXXXXXXX.local` hostname.
 
 !!! tip
     If connecting to the Maivin using a Windows PC, either with an SSH client or a web browser, adding the ".local" suffix is optional.  For Linux or Mac machines, the suffix must be used.
@@ -117,9 +117,9 @@ NetworkManager allows mixed static and DHCP configurations.   If you configure `
 Maivin units with WiFi can be configured to connect to a WiFi Access Point (AP).  Refer to the next section if you instead want to use your Maivin as a WiFi AP.
 
 !!! warning
-    FCC regulations require special certifications for colocated transmitters (a device with multiple RF transmitters).  Maivin and Raivin are not currently certified for colocated transmitters so users must not enable more than one of the WiFi, Modem, or Radar without first receiving FCC certification.  Refer to regulatory boards in your jurisdiction for your relevant regulations.
+    FCC regulations require special certifications for collocated transmitters (a device with multiple RF transmitters).  Maivin and Raivin are not currently certified for collocated transmitters so users must not enable more than one of the WiFi, Modem, or Radar without first receiving FCC certification.  Refer to regulatory boards in your jurisdiction for your relevant regulations.
 
-NetworkManager handles the WiFi client configuration.  Follow these steps to connect to an AP, you will need to know the AP Service Set Identifer (SSID, usually the network name) and the password, if required.
+NetworkManager handles the WiFi client configuration.  Follow these steps to connect to an AP, you will need to know the AP Service Set Identifier (SSID, usually the network name) and the password, if required.
 
 1. First scan for available WiFi networks to join:  
    `nmcli device wifi list`
@@ -134,7 +134,7 @@ NetworkManager handles the WiFi client configuration.  Follow these steps to con
 Maivin units with WiFi can be configured as an AP allowing client devices to connect to the Maivin.  Instead of using NetworkManager, we use the [Host AP daemon (hostapd)][hostapd].
 
 !!! warning
-    FCC regulations require special certifications for colocated transmitters (a device with multiple RF transmitters).  Maivin and Raivin are not currently certified for colocated transmitters so users must not enable more than one of the WiFi, Modem, or Radar without first receiving FCC certification.  Refer to regulatory boards in your jurisdiction for your relevant regulations.
+    FCC regulations require special certifications for collocated transmitters (a device with multiple RF transmitters).  Maivin and Raivin are not currently certified for collocated transmitters so users must not enable more than one of the WiFi, Modem, or Radar without first receiving FCC certification.  Refer to regulatory boards in your jurisdiction for your relevant regulations.
 
 WiFi AP mode is configured using the `hostapd` service in Linux.  We describe a common WiFi AP configuration; for more advanced setup, please refer to the [hostapd documentation][hostapd].
 
@@ -198,10 +198,10 @@ PoolSize=100
 
 ## LTE Modem Setup
 
-Maivin provides an m.2 expansion port which can be used to add an LTE modem to the device.  We offer Maivin and Raivin units pre-configured with an LTE modem and SIM card or a modem can be added by customers themselves following the instructions at the end of this section.
+Maivin provides an m.2 expansion port which can be used to add an LTE modem to the device.  We offer Maivin and Raivin units preconfigured with an LTE modem and SIM card or a modem can be added by customers themselves following the instructions at the end of this section.
 
 !!! warning
-    FCC regulations require special certifications for colocated transmitters (a device with multiple RF transmitters).  Maivin and Raivin are not currently certified for colocated transmitters so users must not enable more than one of the WiFi, Modem, or Radar without first receiving FCC certification.  Refer to regulatory boards in your jurisdiction for your relevant regulations.
+    FCC regulations require special certifications for collocated transmitters (a device with multiple RF transmitters).  Maivin and Raivin are not currently certified for collocated transmitters so users must not enable more than one of the WiFi, Modem, or Radar without first receiving FCC certification.  Refer to regulatory boards in your jurisdiction for your relevant regulations.
 
 ### Modem Configuration
 
@@ -285,7 +285,7 @@ Once properly configured the `wwan0` interface can also be queried through `ifco
 The modem installation can be performed by customers by following these instructions.  If your modem and service provide require physical SIM card installation that is also possible during installation.
 
 !!! warning
-    Installing an LTE modem is an advanced configuration which requires opening up the Maivin.  Extreme caution should be followed during this procedure.  We suggest ordering Maivin or Raivin units with the LTE option pre-configured.
+    Installing an LTE modem is an advanced configuration which requires opening up the Maivin.  Extreme caution should be followed during this procedure.  We suggest ordering Maivin or Raivin units with the LTE option preconfigured.
 
 ## Radar Networking
 

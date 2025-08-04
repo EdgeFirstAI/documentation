@@ -2,7 +2,7 @@
 
 In this tutorial, we are going to give you the tools needed to run Vision models on a PC for object detection, segmentation, or multitask allowing you to build your own applications in just a few lines of code!
 
-It is important to go through the [User Worklows](../../../getting_started/workflows/index.md#user-journey) first before moving forward with the tutorials in this notebook.  The workflows presented ultimately stop at the the model deployment stages which will be the primary focus of this notebook. 
+It is important to go through the [User Workflows](../../../getting_started/workflows/index.md#user-journey) first before moving forward with the tutorials in this notebook.  The workflows presented ultimately stop at the the model deployment stages which will be the primary focus of this notebook. 
 
 !!! warning
     The tutorials presented in this notebook requires a trained and validated Vision model. 
@@ -269,9 +269,9 @@ Invoke the model for inference.
     model.invoke()
     ```
 
-#### Output Postprocessing
+#### Output Post-processing
 
-Next we will post process the model outputs such as parsing the outputs from the model and passing the outputs to the NMS for filtered boxes.
+Next we will post-process the model outputs such as parsing the outputs from the model and passing the outputs to the NMS for filtered boxes.
 
 ##### Parsing Outputs
 
@@ -379,7 +379,7 @@ masks = masks.resize((original.width, original.height), Image.NEAREST)
 
 #### Output Visualization
 
-Next we will load the `labels.txt` files to convert model output indices into meaningful names. Each bounding box gets a label, the next steps will show visualization of the postprocessed model outputs with meaningful labels. 
+Next we will load the `labels.txt` files to convert model output indices into meaningful names. Each bounding box gets a label, the next steps will show visualization of the post-processed model outputs with meaningful labels. 
 
 ```python
 with open('labels.txt', 'r') as f:

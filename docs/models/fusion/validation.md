@@ -93,8 +93,8 @@ Once the validation session completes, you can view the validation metrics by cl
 <figcaption>Validation Metrics</figcaption>
 </figure>
 
-The metrics provides the precision, recall, F1, and IoU scores of the model at the specified window sizes.  Additional charts are provided for the precision vs. recall and bird’s eye view 
-heatmaps describing where the model performs well and where the model makes errors.  
+The metrics provides the precision, recall, F1, and IoU scores of the model at the specified window sizes.  Additional charts are provided for the Precision versus Recall and bird’s-eye view 
+heatmap describing where the model performs well and where the model makes errors.  
 
 !!! info
     See [Fusion Metrics](../metrics/fusion.md) for further details.
@@ -112,7 +112,7 @@ You can go back to the validation session card by pressing the "Back" button as 
     <iframe width="560" height="315" src="https://www.youtube.com/embed/oKh4k0CCLmU?start=713&end=975" title="Comparing Validation Metrics" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 </div>
 
-It is also possible to compare validation metrics for multiple sessions.  See [Validation Sessions](../../getting_started/studio.md#validation-sessions) in EdgeFirst Studio Overview for further details. 
+It is also possible to compare validation metrics for multiple sessions.  See [Validation Sessions](../../studio/models.md#validation-sessions) in EdgeFirst Studio Overview for further details. 
 
 ## Next Steps
 

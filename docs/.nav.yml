@@ -2,38 +2,45 @@ nav:
   - Home: https://test.edgefirst.studio
   - Getting Started:
     - index.md
-    - getting_started/studio.md
     - User Workflows:
       - getting_started/workflows/index.md
+      - getting_started/workflows/tourist.md
       - getting_started/workflows/web.md
       - getting_started/workflows/edgefirst.md
   - Studio:
     - studio/index.md
+    - studio/navigation.md
     - User Management:
       - studio/user/index.md
       - studio/user/profile.md
       - studio/user/organization.md
       - studio/user/billing.md
-    - studio/navigation.md
     - studio/projects.md
-    - Datasets:
+    - Datasets Dashboard:
       - studio/datasets/index.md
       - studio/datasets/gallery.md
       - studio/datasets/annotations.md
-    - studio/agtg.md
+    - studio/models.md
+    - studio/instances.md
     - studio/snapshots.md
-#   - studio/dataio.md
+    - studio/agtg.md
   - Datasets:
     - datasets/index.md
     - datasets/format.md
     - datasets/structure.md
+    - Dataset Zoo:
+      - COCO:
+        - datasets/coco/index.md
+        - datasets/coco/import.md
     - Dataset Tutorials:
       - datasets/tutorials/index.md
       - datasets/tutorials/capture.md
-      - datasets/tutorials/annotations.md
-      - datasets/tutorials/management.md
       - datasets/tutorials/import.md
-    # - datasets/zoo.md
+      - Dataset Annotations:
+        - datasets/tutorials/annotations/index.md
+        - datasets/tutorials/annotations/automatic.md
+        - datasets/tutorials/annotations/manual.md
+      - datasets/tutorials/management.md
   - Models:
     - models/index.md
     - ModelPack:

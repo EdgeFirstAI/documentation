@@ -1,6 +1,6 @@
 # Software Updates
 
-The Maivin platform runs a Linux operating system which is based on the [Torizon][torizon] distribution.  The Maivin version of the distribution is refered to as Torizon for Maivin.  This Torizon for Maivin distribution uses [OSTree][ostree] to manage software updates, this updates both the Linux operating system including the kernel, drivers, and core system packages as well as the EdgeFirst Middleware which provides the perception stack.
+The Maivin platform runs a Linux operating system which is based on the [Torizon][torizon] distribution.  The Maivin version of the distribution is referred to as Torizon for Maivin.  This Torizon for Maivin distribution uses [OSTree][ostree] to manage software updates, this updates both the Linux operating system including the kernel, drivers, and core system packages as well as the EdgeFirst Middleware which provides the perception stack.
 
 The version naming for the Torizon for Maivin distribution follows the YEAR.MONTH.PATCH format.  The YEAR and MONTH refer to the data of the initial release of the software and the PATCH is the incremental patch release within this release cycle.  The upstream Torizon OS version number is documented in the release notes.
 
@@ -14,7 +14,7 @@ The Torizon for Maivin OSTree repository uses branches to manage the different v
 - **torizon/maivin/testing**
     - The testing branch is used for testing new software releases.  This branch tracks the latest YEAR.MONTH.PATCHrcX release candidates.
 - **torizon/maivin/develop**
-    - The dev branch is used for development of new features.  This branch is updated frequently and is likely to contain breaking or undocumented changes.  This branch should only be used by developers working on the platform.
+    - The develop branch is used for development of new features.  This branch is updated frequently and is likely to contain breaking or undocumented changes.  This branch should only be used by developers working on the platform.
 
 !!! note
 

@@ -7,7 +7,7 @@ Before reading further, it is highly recommended to be familiar with the [EdgeFi
 A typical Arrow file has the following contents.
 
 <figure markdown="span">
-![Sample DataFrame](assets/arrow-table-sample.jpg){ align=center }
+![Sample DataFrame](assets/format/arrow-table-sample.jpg){ align=center }
 <figcaption>Sample DataFrame</figcaption>
 </figure>
 
@@ -66,3 +66,7 @@ These datasets contain both sequences and standard non-sequence images.  The dat
 ```
 
 Sequences have designated sub-directories in the dataset to store the frames.  Images are stored in the dataset directory. 
+
+## Further Reading
+
+In this article, we have described how EdgeFirst Datasets are structured depending if the dataset is sequence-based, image-based, or mixed.  Next, explore how datasets are created from scratch in EdgeFirst Studio from capture to annotation by following the [Dataset Tutorials](tutorials/index.md).

@@ -73,6 +73,18 @@ plugins:
           load_external_modules: true
           inventories:
           - https://docs.python.org/3/objects.inv
+  - spellcheck:
+      backends:
+      - symspellpy 
+      - codespell: 
+          dictionaries: [clear, en-GB_to_en-US]
+      known_words: assets/known_words.txt
+      ignore_code: yes
+      min_length: 2
+      allow_unicode: no
+      skip_files:
+      - .nav.yml
+      strict_only: yes
 
 markdown_extensions:
   - admonition  

@@ -14,42 +14,42 @@ If you have an EdgeFirst Platform, please proceed to step 1. Otherwise, proceed 
 
 ### 1. Record Data
 
-When starting from scratch, it is common to start recording your own data to build your own dataset. This step requires an [EdgeFirst Platform](../../platforms/quickstart.md) for recording data. However, we also provide [Public Datasets](../studio.md#datasets) for users without an EdgeFirst Platform. 
+When starting from scratch, it is common to start recording your own data to build your own dataset. This step requires an [EdgeFirst Platform](../../platforms/quickstart.md) for recording data. However, we also provide [Public Datasets](../../studio/datasets/index.md) for users without an EdgeFirst Platform. 
 
-For instructions on capturing and recording data, refer to the [Capture/Record Data Tutorial](../../datasets/tutorials/capture.md#recording-an-mcap).
+For instructions on capturing and recording data, refer to the [Capture/Record Data Tutorial](../../datasets/tutorials/capture.md#capture-with-an-edgefirst-platform).
 
 ### 2. Download Recorded Data
 
 Once data is recorded which is stored as an MCAP file, download the MCAP file.
 
-For instructions on downloading the recorded MCAP file, refer to the [Download Captured Data Tutorial](../../datasets/tutorials/capture.md#downloading-the-mcap-recording).
+For instructions on downloading the recorded MCAP file, refer to the [Download Captured Data Tutorial](../../datasets/tutorials/capture.md#download-mcap).
 
 ### 3. Upload Recorded Data to EdgeFirst Studio
 
 Once an MCAP file has been downloaded, upload the MCAP recording to EdgeFirst Studio.
 
-For instructions on uploading the recorded MCAP file to EdgeFirst Studio, refer to the [Upload Recorded Data Tutorial](../../datasets/tutorials/management.md#upload-mcaps).
+For instructions on uploading the recorded MCAP file to EdgeFirst Studio, refer to the [Upload Recorded Data Tutorial](../../datasets/tutorials/capture.md#upload-mcap).
 
 ### 4. Annotate Dataset
 
-Once an MCAP recording has been uploaded to EdgeFirst Studio, we can then run [auto-annotations](../../datasets/tutorials/annotations.md#auto-annotations-via-snapshot) on the recording to reduce the effort needed from the user. Otherwise, the user can manually annotate [2D](../../datasets/tutorials/annotations.md#audit-2d-annotations) or [3D](../../datasets/tutorials/annotations.md#audit-3d-annotations) annotations on the dataset.
+Once an MCAP recording has been uploaded to EdgeFirst Studio, we can then run [auto-annotations](../../datasets/tutorials/annotations/automatic.md#fully-automatic-ground-truth-generation) on the recording to reduce the effort needed from the user. Otherwise, the user can manually annotate [2D](../../datasets/tutorials/annotations/manual.md#manual-2d-annotations) or [3D](../../datasets/tutorials/annotations/manual.md#manual-3d-annotations) annotations on the dataset.
 
 ### 5. Combine Multiple Datasets
 
-This step utilizes the [copy dataset feature](../../datasets/tutorials/management.md#copying-datasets) in EdgeFirst Studio. This feature
+This step utilizes the [copy dataset feature](../../datasets/tutorials/management.md#copy-dataset) in EdgeFirst Studio. This feature
 allows copying of *read-only* datasets into your own dataset to give write permissions. This feature can also copy multiple datasets into a single container to expand the overall dataset. 
 
-For users that do not have an EdgeFirst Platform, but would like to use the public *read-only* datasets provided, follow the instructions for [Copying Datasets](../../datasets/tutorials/management.md#copying-datasets) into
+For users that do not have an EdgeFirst Platform, but would like to use the public *read-only* datasets provided, follow the instructions for [Copying Datasets](../../datasets/tutorials/management.md#copy-dataset) into
 a dataset container with write access.
 
 For users that followed steps 1-4 and would like to expand their dataset, follow the
-instructions for [Combining Datasets](../../datasets/tutorials/management.md#combining-datasets)
+instructions for [Combining Datasets](../../datasets/tutorials/management.md#combine-datasets)
 
 ### 6. Split Dataset
 
 Before training your model, it is highly suggested to split your dataset into dedicated training and validation groups. This intention is to reserve samples only for training and samples only for validation.
 
-For instructions on splitting the dataset in train and validation groups, refer to the [Splitting Datasets Tutorial](../../datasets/tutorials/management.md#splitting-datasets)
+For instructions on splitting the dataset in train and validation groups, refer to the [Splitting Datasets Tutorial](../../datasets/tutorials/management.md#split-dataset)
 
 ### 7. Train Model
 

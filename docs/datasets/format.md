@@ -1,15 +1,15 @@
 # EdgeFirst Dataset Format
 
-This article describes the structure of the *EdgeFirst Dataset Format*. EdgeFirst 
-Datasets support various sample datatypes, they are split into sensor data 
-and annotation data. Sensor data should be treated as static and not changed after capture. 
-Meanwhile, annotation datatypes are dynamic and will be created and edited many times after capture 
-as we first generate automated annotations and then perform audits on these automatic annotations.
+This page describes the format of the *EdgeFirst Dataset Format*. EdgeFirst 
+Datasets support various sample data types, they are split into sensor data 
+and annotation data. Sensor data should be treated as static and unchangeable types after capture. 
+Meanwhile, annotation data types are dynamic that will be edited many times after capture 
+from auto-annotations towards annotations audits.
 
 The *Dataset Storage Format* is the container used to store sensor data from the
-MCAP recordings which includes the camera, LiDAR, Radar, and Depth estimations. The
+[MCAP recordings](../platforms/recording.md) which includes the camera, LiDAR, Radar, and Depth estimations. The
 *Dataset Annotation Format* is the container used to store dataset annotations which 
-includes object label, 2D bounding boxes, segmentations masks, 3D bounding boxes, etc.
+includes object label, 2D bounding boxes, segmentation masks, 3D bounding boxes, etc.
 
 ## Dataset Storage Format
 
@@ -29,9 +29,9 @@ maintain this for directories as `hostname_date_time`, then the samples repeat t
 name but add the frame number and file extension.  
 
 !!! note
-    The frame numbers are not necessarily continuous nor complete, the MCAP could’ve 
+    The frame numbers are not necessarily continuous nor complete, the MCAP could have 
     been cropped or downsampled, what’s important is the frame number is unique 
-    for the given sequence and contains all the sample datatypes.
+    for the given sequence and contains all the sample data types.
 
 ```text
 * Dataset
@@ -40,15 +40,15 @@ name but add the frame number and file extension.
         * hostname_date_time_frame.depth.png (camera depthmap)
         * hostname_date_time_frame.radar.png (radar cube)
         * hostname_date_time_frame.radar.pcd (radar point cloud)
-        * hostname_date_time_frame.lidar.png (lidar depth map)
-        * hostname_date_time_frame.lidar.pcd (lidar point cloud)
-        * hostname_date_time_frame.lidar.jpeg (lidar reflectivity)
+        * hostname_date_time_frame.lidar.png (LiDAR depth map)
+        * hostname_date_time_frame.lidar.pcd (LiDAR point cloud)
+        * hostname_date_time_frame.lidar.jpeg (LiDAR reflectivity)
 ```
 
 The following figure is a visualization of the typical contents in a Zip file.
 
 <figure markdown="span">
-![Sample Zip Contents](assets/zip-contents-sample.jpg){ align=center }
+![Sample Zip Contents](assets/format/zip-contents-sample.jpg){ align=center }
 <figcaption>Sample Zip Contents</figcaption>
 </figure>
 
@@ -117,7 +117,7 @@ The Arrow file format was chosen as the container for the dataset annotations.
 The [Apache Arrow](https://arrow.apache.org/) is an open source, column-oriented 
 data file format designed for in-memory computing and efficient data storage and retrieval. 
 It provides high performance compression and encoding schemes to handle complex data 
-in bulk and is supported in many programming languages and analytics tools.
+in bulk and is supported in many programming languages and analytic tools.
 
 We use [Polars](https://pola.rs/) to interface with the Arrow files. Polars has an 
 SDK for [Python](https://pypi.org/project/polars/), [Javascript](https://www.npmjs.com/package/nodejs-polars), and 
@@ -149,7 +149,7 @@ of the annotations.
 The following figure visualizes the contents in a sample dataframe.
 
 <figure markdown="span">
-![Sample DataFrame](assets/arrow-table-sample.jpg){ align=center }
+![Sample DataFrame](assets/format/arrow-table-sample.jpg){ align=center }
 <figcaption>Sample DataFrame</figcaption>
 </figure>
 
@@ -162,7 +162,7 @@ which for a dataset with only people in it would mean images without annotations
 
 It is also important to consider the inputs to our model when reading samples from the archive 
 so that we only pull samples that include our desired input type. The *EdgeFirst Dataset Format* 
-supports various input types: camera images, radar data cubes, radar point-clouds, and lidar point-clouds. 
+supports various input types: camera images, radar data cubes, radar point-clouds, and LiDAR point-clouds. 
 When querying samples from the archive we should filter for those that include all our desired input types.
 
 #### Name
@@ -234,8 +234,7 @@ and Yaw of the camera in degrees.
 
 #### Degradation
 
-This column is optional, but it is mentionable to highlight the dynamic schemas 
-characteristic. This column identifies the level of degradation imposed
+This column is optional, but it is worth mentioning to show the dynamic schema. This column identifies the level of degradation imposed
 on the images during recording. The values can either be `[None, "low", "medium", "high"]`.
 None could indicate the camera is not obstructed at all and the objects are
 entirely visible. A low degradation could indicate there is some level of obstruction on the
@@ -253,3 +252,9 @@ attention as denoted by the "edit" status. An "edit" status is based on an incom
 set of annotations. For example, a segmentation mask could exist for this annotation,
 but it is missing a 3D bounding box, etc. A "valid" status indicates a complete
 set of annotations a 2D bounding box, segmentation mask, and a 3D bounding box.
+
+## Further Reading
+
+In this article, we have described the EdgeFirst Dataset Format which is designed to place sensor types (static) and annotation types (dynamic) into separate containers (Zip and Arrow).  Although these data types are still directly correlated, they are better managed by keeping them separate.  There are multiple sensor types stored in unique files to contain the sensor readings and measurements for dataset creation.  Similarly, there are multiple annotation types used to describe the object either in 2D camera-based coordinates or 3D world-based coordinates. 
+
+Next, take a look at the conventions followed for the [EdgeFirst Dataset Structure](structure.md) which describes how the file structure is organized depending if the dataset is sequence-based or not. 

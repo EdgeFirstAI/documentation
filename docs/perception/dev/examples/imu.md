@@ -31,7 +31,7 @@ After setting up the Zenoh session, we will create a subscriber to the `rt/imu` 
 
 ### Receive the Message
 
-We can now recieve message on the subcriber. After recieving the message, we will need to deserialize it.
+We can now receive message on the subscriber. After receiving the message, we will need to deserialize it.
 
 === "Python"
 

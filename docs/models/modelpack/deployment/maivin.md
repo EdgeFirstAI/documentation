@@ -9,7 +9,7 @@ Now that you have validated your Vision Model from either a [managed](../validat
 This guide will showcase two methods of deploying the model.
 
 1. [Live View (Segmentation App)](#live-view-segmentation-app)
-2. [MCAP Recording](#recording-an-mcap)
+2. [MCAP Recording](#record-mcap)
 
 ## Download the Model
 
@@ -77,16 +77,16 @@ You can find more information on using the [EdgeFirst Client](../../../perceptio
 
 ## Visit the Web UI Service
 
-Visit the Web UI service by entering the URL `https://<hostname>/` in your browser.
+Use your browser to connect to the Web UI of the remote device, enter the following URL `https://<hostname>/`.
 
 !!! note
     Replace `<hostname>` with the hostname of your device.
 
-You should be greeted with the following page.
+You will be greeted with the Maivin [Web UI Main Page](../../../platforms/walkthrough.md) page.
 
 <figure markdown="span">
-![Web UI](../../assets/deployment/maivin-webui.jpg){ align=center }
-<figcaption>Web UI</figcaption>
+![Web UI Main Page](../../../platforms/assets/ui-maivinMain.png){ align=center }
+<figcaption>Web UI Main Page</figcaption>
 </figure>
 
 For more information, please see the [Web UI Walkthrough](../../../platforms/walkthrough.md).
@@ -102,7 +102,7 @@ Once you are in the Web UI main page, you can specify the path to the model by f
 Click the settings icon on the top right corner of the page.
 
 <figure markdown="span">
-![Settings](../../assets/deployment/maivin-settings.jpg){ align=center }
+![Settings](../../assets/deployment/maivin-settings.png){ align=center }
 <figcaption>Settings</figcaption>
 </figure>
 
@@ -116,7 +116,7 @@ Select "Model Settings".
 Configure the path to the model in your device as specified under "MODEL:".  Once configured, click "Save Configuration" to save your changes.
 
 <figure markdown="span">
-![Model Path](../../assets/deployment/configure-model-path.jpg){ align=center }
+![Model Path](../../assets/deployment/configure-model-path-maivin.jpg){ align=center }
 <figcaption>Model Path</figcaption>
 </figure>
 
@@ -142,14 +142,14 @@ Once the path to the model has been updated, restart the model service using `su
 
 ## Enable and Start the Services
 
-Once the model path in the device is specifed, ensure that the Camera, Model, and Recorder services are enabled.  To verify, go back to the settings and click on the "Service Status" button.
+Once the model path in the device is specified, ensure that the Camera, Model, and Recorder services are enabled.  To verify, go back to the settings and click on the "Service Status" button.
 
 <figure markdown="span">
 ![Service Status](../../assets/deployment/maivin-service-status.jpg){ align=center }
 <figcaption>Service Status</figcaption>
 </figure>
 
-You will be greeted with the "Service Overview" page.  Ensure that the "camera" and "model" services are enabled and running by toggling the "Enable" and "Start" buttons as shown.  Only "Enable" the "recorder" service as shown.  You will be using the recorder service in [MCAP Recording](#recording-an-mcap).
+You will be greeted with the "Service Overview" page.  Ensure that the "camera" and "model" services are enabled and running by toggling the "Enable" and "Start" buttons as shown.  Only "Enable" the "recorder" service as shown.  You will be using the recorder service in [MCAP Recording](#record-mcap).
 
 <figure markdown="span">
 ![Service Overview](../../assets/deployment/maivin-service-overview.jpg){ align=center }
@@ -161,26 +161,21 @@ You will be greeted with the "Service Overview" page.  Ensure that the "camera" 
 Now you will see live inference of the model in the device.  Once the model and camera services are enabled, go back to the main page and then select the "Segmentation" application as shown.
 
 <figure markdown="span">
-![Segmentation App](../../assets/deployment/maivin-segmentation-app.jpg){ align=center }
+![Segmentation App](../../assets/deployment/maivin-segmentation-app.png){ align=center }
 <figcaption>Segmentation App</figcaption>
 </figure>
 
-This will run inference on the model specified to generate segmentation masks on the detected objects.  In this case, the model is identifying people in the video feed.  Examples are shown below.
+This will run inference on the model specified to generate segmentation masks on the detected objects.  In this case, the model is identifying people in the video feed.  An example is shown below.
 
 <figure markdown="span">
 ![Segmentation Sample 1](../../assets/deployment/segmentation-sample-1.jpg){ align=center }
 <figcaption>Sample 1</figcaption>
 </figure>
 
-<figure markdown="span">
-![Segmentation Sample 2](../../assets/deployment/segmentation-sample-2.jpg){ align=center }
-<figcaption>Sample 2</figcaption>
-</figure>
-
 Now that the model has been updated, you can make new recordings using the model's inference and then visualizing the recording using Foxglove Studio.
 
-{% include-markdown "discrete/recording_mcap_on_device.md" %}
-{% include-markdown "discrete/downloading_mcap_from_device.md" %}
+{% include-markdown "discrete/datasets/recording_mcap_on_device.md" %}
+{% include-markdown "discrete/datasets/downloading_mcap_from_device.md" %}
 
 ## Inference Visualization in Foxglove
 Once the MCAP recording has been downloaded, you can use Foxglove Studio to see the playback of MCAP recordings and the model inference.  The following preview is a frame from the MCAP with the model inference masks overlaid on top of the video. 
@@ -192,6 +187,8 @@ Once the MCAP recording has been downloaded, you can use Foxglove Studio to see 
 
 More information on the MCAP playback is provided in [Foxglove Studio](../../../platforms/foxglove.md).
 
+## Next Steps
+
 In this tutorial, you have fetched the trained and validated model from EdgeFirst Studio, copied the model in the Maivin, configured the Maivin model services, and ran inference on the model in the device.  You have seen the model running live using the Maivin's camera and ran a Maivin MCAP recording to capture the model inference in the frames that can be visualized using Foxglove Studio. 
 
-For examples on deploying ModelPack in other platforms, see [Model Deployment](../../tutorials/deployment.md).
+For more examples on deploying ModelPack in other platforms, see [Model Deployment](../../tutorials/deployment.md).

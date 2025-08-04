@@ -18,7 +18,7 @@ The camera augmentations are distinguished into two categories: *Geometric* and 
 
 ## Geometric
 
-These augmentations are based on transformations of the spatial orientation of the image.  For these type of augmentations, the ground truth annotations needs to adhere to the changes in the orientation of the objects in the image aswell.  The augmentations below provide visualizations for demonstrating the image and ground truth transformation.
+These augmentations are based on transformations of the spatial orientation of the image.  For these type of augmentations, the ground truth annotations needs to adhere to the changes in the orientation of the objects in the image as well.  The augmentations below provide visualizations for demonstrating the image and ground truth transformation.
 
 ### Shift
 
@@ -30,7 +30,7 @@ This type of augmentation translates the image in either x, y, or both axis caus
 
 ### Scale
 
-This type of augmentation resizes the actual image either smaller or larger, but maintaining the original image resolution.  For the example of image downscaling in the middle, the actual image is positioned on the top left corner, but grayed out areas are added to maintain the original image resolution.  For the example of image upscaling on the right, the image has the effect of being zoomed in, thus leaving out certain portions of the image.  However, for both types of augmentations, the ground truth annotation around the person is maintained.
+This type of augmentation resizes the actual image either smaller or larger, but maintaining the original image resolution.  For the example of image downscaling in the middle, the actual image is positioned on the top left corner, but grayed out areas are added to maintain the original image resolution.  For the example of image upscaled on the right, the image has the effect of being zoomed in, thus leaving out certain portions of the image.  However, for both types of augmentations, the ground truth annotation around the person is maintained.
 
 | Original Scaling            | 0.50 Scaling                | 1.50 Scaling                  |
 |-----------------------------|-----------------------------|-------------------------------|
@@ -108,7 +108,7 @@ This augmentation shifts the color of the image along the HSV color space.  A pa
 
 ### Saturation
 
-This augmentation applies saturation in the HSV (Hue, Saturation, Value) color space.  This augmentation either increases the intensity of the colors in the image for increased vibrancy or a decrease in intensity to become much more grayscale or monotone.  The following side-by-side figures shows the original image on the left and the transformed image on the right with saturation set to 150 for maximum effect.
+This augmentation applies saturation in the HSV (Hue, Saturation, Value) color space.  This augmentation either increases the intensity of the colours in the image for increased vibrancy or a decrease in intensity to become much more grayscale or monotone.  The following side-by-side figures shows the original image on the left and the transformed image on the right with saturation set to 150 for maximum effect.
 
 | Original                       | With Saturation Adjustments              |
 |--------------------------------|------------------------------------------|

@@ -1,6 +1,6 @@
-# Tutorial 2: The MusicBox Detector
+# Tutorial 2: The Music Box Detector
 
-![MusicBox](./assets/musicbox-tutorial-header.png)
+![Music Box](./assets/musicbox-tutorial-header.png)
 
 In this tutorial, we will demonstrate how to execute the four most important steps in every Machine Learning pipeline: **Data Collection**, **Data Annotation**, **Model Training**, and **Model Deployment**.
 
@@ -50,7 +50,7 @@ Now it is time to download the dataset from the unit and upload it to Studio for
 
 ![Download MCAP](./assets/mcap-download.png)
 
-Once stored locally, you’re ready to import the MCAPs into Studio via the [Snapshot Dashboad](../../../studio/snapshots.md).
+Once stored locally, you are ready to import the MCAPs into Studio via the [Snapshot Dashboard](../../../studio/snapshots.md).
 
 ![Snapshot](./assets/snaphot.png)
 
@@ -90,7 +90,7 @@ Once the dataset is exported, we can see all the recorded sequences.
 
 Once the dataset is exported, you will see all the recorded sequences.
 
-In the dataset view, add the classes to be annotated. For now, we will add a single class: musicbox.
+In the dataset view, add the classes to be annotated. For now, we will add a single class: `musicbox`.
 Now we can start annotating the sequences. It's important that the dataset was imported as sequences, so the AGTG pipeline can use timing and tracking data to annotate most frames automatically.
 
 Select any sequence to visualize it. Remember that MCAPs were exported at one frame per second.
@@ -136,7 +136,7 @@ Inside the experiment, create a New Session and name it `musicbox-detector`. Thi
 
 - **Groups**: Select `train` and `val`
 
-Most hyperparameters are auto-tuned by ModelPack, but some can be customized:
+Most hyper parameters are auto-tuned by ModelPack, but some can be customized:
 
 - **Input Resolution**: `640x360
 `
@@ -156,11 +156,11 @@ After creation, your session should look like this:
 
 ![Taining Session Card](./assets/training-session-view-on-experiment.png)
 
-You’ll find general training info in this summarized view. Additional actions are available via the top buttons (top-right of the training card).
+You will find general training info in this summarized view. Additional actions are available via the top buttons (top-right of the training card).
 
 ![Training Progress Finished](./assets/training-progress-finished.png)
 
-The training process begins with cloud instance initialization. Then the dataset is downloaded and cached. Training starts afterward.
+The training process begins with cloud instance initialization. Then the dataset is downloaded and cached. Training starts afterwards.
 At the end of the training process, ModelPack quantizes the model and publishes the checkpoints.
 
 Clicking the training card will show the expanded view containing all the logs and checkpoints.
@@ -169,8 +169,8 @@ Clicking the training card will show the expanded view containing all the logs a
 
 From the available checkpoints, download the **TFLite** model - optimized for embedded devices — and deploy it to the Maivin unit for edge inference.
 
-{% include-markdown "discrete/upload_models.md" %}
-{% include-markdown "discrete/deploy_model_service.md" %}
+{% include-markdown "discrete/platforms/upload_models.md" %}
+{% include-markdown "discrete/platforms/deploy_model_service.md" %}
 
 Begin testing the model with the object. If the model does not perform as expected, record a few more minutes of data and repeat the training process. Use this opportunity to identify edge cases and collect additional samples that can help improve the model's performance.
 
@@ -188,7 +188,7 @@ In this tutorial, we walked through the complete process of building and deployi
 
 This workflow is not limited to object detection, the same process applies to any dataset type and to both segmentation and detection tasks, making it a powerful and consistent pipeline for embedded AI development.
 
-Thanks to the **Automatic Ground Truth Generation** (AGTG) feature, the annotation process becomes significantly faster and easier—often requiring just a few clicks per sequence to annotate large volumes of data. This dramatically reduces manual labeling effort while maintaining high-quality ground truth data.
+Thanks to the **Automatic Ground Truth Generation** (AGTG) feature, the annotation process becomes significantly faster and easier often requiring just a few clicks per sequence to annotate large volumes of data. This dramatically reduces manual labeling effort while maintaining high-quality ground truth data.
 
 By following this tutorial, you now have a practical understanding of how to:
 
@@ -200,5 +200,5 @@ By following this tutorial, you now have a practical understanding of how to:
 
 - Deploy models to the edge for real-time inference
 
-Using this workflow ensures repeatability, scalability, and efficient development for embedded machine learning applications. Whether you're building a smart camera, an industrial monitor, or a self driving vehicle, or an edge AI prototype, this pipeline helps you go from raw data to deployment quickly and effectively.
+Using this workflow ensures repeatability, scalability, and efficient development for embedded machine learning applications. Whether you are building a smart camera, an industrial monitor, or a self driving vehicle, or an edge AI prototype, this pipeline helps you go from raw data to deployment quickly and effectively.
 

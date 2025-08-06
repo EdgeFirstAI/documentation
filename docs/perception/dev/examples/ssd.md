@@ -4,7 +4,7 @@ These examples demonstrate how to deploy a MobileNet SSD model using the NPU of 
 
 ## Image Inference
 
-In this example, the MobileNet SSD model and the sample image was taken from the [ssd-tflite repository](https://github.com/apivovarov/ssd-tflite/tree/master).  This example has modified the Python script provided in the repository to deploy the model with the OpenVX delegate to run on the NPU.  Furthermore, minimum dependencies are used to ensure no additional venv/pip installations are needed.  The only dependencies required are `tflite_runtime`, `numpy`, and `pillow` which should already come pre-installed in the Maivin's BSP.  Lastly, the model outputs are then drawn onto the image for visualization.
+In this example, the sample pretrained MobileNet SSD models and the sample image can be found in [ML-Zoo](https://github.com/Arm-Examples/ML-zoo/tree/master/models/object_detection/ssd_mobilenet_v1) and [ssd-tflite repository](https://github.com/apivovarov/ssd-tflite/tree/master).  This example has modified the Python script provided in the "ssd-tflite" repository to deploy the model with the OpenVX delegate to run on the NPU.  Furthermore, minimum dependencies are used to ensure no additional venv/pip installations are needed.  The only dependencies required are `tflite_runtime`, `numpy`, and `pillow` which should already come pre-installed in the Maivin's BSP.  Lastly, the model outputs are then drawn onto the image for visualization.
 
 For a quick demonstration, download the following files for running the example.
 
@@ -59,16 +59,23 @@ The following breakdown of the script describing the steps of the model inferenc
     ip.invoke()
     ```
 
-4. Preprocess input image by resizing to the input shape of the model and with signed normalization for quantized models.
+4. Preprocess input image by resizing to the input shape of the model and type-casting the values to the input data type requirements of the model.
 
-    ```
-    is_quant = "quant" in model_path.lower()
+    ```python
     image_path = "dog.jpg"
-    out_size = (300, 300)
 
-    img = np.array(Image.open(image_path).resize(out_size))
-    if not(is_quant):
-        img = img.astype(np.float32) / 128 - 1
+    input_det = ip.get_input_details()[0]
+    _, height, width, _ = input_det.get("shape")
+    img = np.array(Image.open(image_path).resize((width, height)))
+
+    # is TFLite quantized int8 model
+    int8 = input_det["dtype"] == np.int8
+    # is TFLite quantized uint8 model
+    uint8 = input_det["dtype"] == np.uint8
+    if int8 or uint8:
+        img = img.astype(np.uint8) if uint8 else img.astype(np.int8)
+    else:
+        img = img.astype(np.float32)
     img = np.array([img]) 
     ```
 

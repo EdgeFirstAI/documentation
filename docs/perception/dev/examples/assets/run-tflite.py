@@ -95,10 +95,18 @@ image_classes = {
     90: 'toothbrush'
 }
 
-def get_mobilenet_input(image_path, out_size=(300, 300), is_quant=True):
-    img = np.array(Image.open(image_path).resize(out_size))
-    if not(is_quant):
-        img = img.astype(np.float32) / 128 - 1
+def get_mobilenet_input(image_path, input_details):
+    _, height, width, _ = input_details.get("shape")
+    img = np.array(Image.open(image_path).resize((width, height)))
+
+    # is TFLite quantized int8 model
+    int8 = input_details["dtype"] == np.int8
+    # is TFLite quantized uint8 model
+    uint8 = input_details["dtype"] == np.uint8
+    if int8 or uint8:
+        img = img.astype(np.uint8) if uint8 else img.astype(np.int8)
+    else:
+        img = img.astype(np.float32)
     return np.array([img]) 
 
 
@@ -153,8 +161,6 @@ if __name__ == '__main__':
     save_path = "img_vis.jpg"
     delegate = "/usr/lib/libvx_delegate.so"
 
-    is_quant = "quant" in model_path.lower()
-
     if os.path.exists(delegate):
         ext_delegate = load_delegate(delegate, {})
         ip = Interpreter(model_path=model_path, experimental_delegates=[ext_delegate])
@@ -164,14 +170,15 @@ if __name__ == '__main__':
     ip.allocate_tensors()
     ip.invoke() # Model warmup
 
-    inp_id = ip.get_input_details()[0]["index"]
+    input_det = ip.get_input_details()
+    inp_id = input_det[0]["index"]
     out_det = ip.get_output_details()
     out_id0 = out_det[0]["index"]
     out_id1 = out_det[1]["index"]
     out_id2 = out_det[2]["index"]
     out_id3 = out_det[3]["index"]
 
-    img = get_mobilenet_input(image_path, is_quant=is_quant)
+    img = get_mobilenet_input(image_path, input_det[0])
     
     t0 = ms()
     ip.set_tensor(inp_id, img)

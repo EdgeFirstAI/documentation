@@ -180,7 +180,7 @@ def dma_worker(msg, ip, ids, session, args):
     # Now fd can be used as a file descriptor
     mm = mmap.mmap(fd, dma_buf.length)
     yuy2_bytes = mm[:dma_buf.length]
-    yuy2_np = np.frombuffer(yuy2_bytes, dtype=np.uint8)
+    im_buf = np.frombuffer(yuy2_bytes, dtype=np.uint8)
     mm.close()
     os.close(fd)
     os.close(pidfd)
@@ -188,11 +188,22 @@ def dma_worker(msg, ip, ids, session, args):
     input_shape = [int(x) for x in args.shape.split(',')]
     if len(input_shape) != 2:
         raise AssertionError("Input shape should be only the height and width, ie. 300,300")
+
+    fourcc_str = "".join([chr((dma_buf.fourcc >> (8 * i)) & 0xFF) for i in range(4)])
+    
     # YUY2 is 2 bytes per pixel, so shape is (height, width * 2)
-    yuy2_np = yuy2_np.reshape((dma_buf.width, dma_buf.height, 2))
-    # Convert YUY2 to RGB
-    rgb_img = cv2.cvtColor(yuy2_np, cv2.COLOR_YUV2RGB_YUY2)
-    rgb_img = cv2.resize(rgb_img, (input_shape[1], input_shape[0]))
+    if fourcc_str == "YUYV":
+        yuy2_np = im_buf.reshape((dma_buf.height, dma_buf.width, 2))
+        # Convert YUY2 to RGB
+        rgb_img = cv2.cvtColor(yuy2_np, cv2.COLOR_YUV2RGB_YUY2)
+    elif fourcc_str == "RGBA":
+        rgb_img = im_buf.reshape((dma_buf.height, dma_buf.width, 4))
+        rgb_img = cv2.cvtColor(rgb_img, cv2.COLOR_RGBA2RGB)
+    else:
+        print("Image type %s currently unsupported for this sample")
+        return
+
+    rgb_img = cv2.resize(rgb_img, (input_shape[0], input_shape[1]))
     rgb_img = np.transpose(rgb_img, [1,0,2])
     rgb_img = np.reshape(rgb_img, [1] + list(rgb_img.shape))
     
@@ -243,13 +254,19 @@ def dma_worker(msg, ip, ids, session, args):
 
 async def dma_handler(drain, ip, ids, session, args):
     while True:
-        msg = await drain.get_latest()
-        thread = threading.Thread(target=dma_worker, args=[msg, ip, ids, session, args])
-        thread.start()
-        
-        while thread.is_alive():
-            await asyncio.sleep(0.001)
-        thread.join()
+        try:
+            msg = await drain.get_latest()
+            thread = threading.Thread(target=dma_worker, args=[msg, ip, ids, session, args])
+            thread.start()
+            
+            while thread.is_alive():
+                await asyncio.sleep(0.001)
+            thread.join()
+        except KeyboardInterrupt:
+            while thread.is_alive():
+                await asyncio.sleep(0.001)
+            thread.join()
+            break
     
 async def main_async(args):
     # Setup rerun
@@ -281,10 +298,11 @@ async def main_async(args):
     ids.append(ip.get_input_details()[0]["index"])
 
     session.declare_subscriber('rt/camera/dma', drain.callback)
-    await asyncio.gather((dma_handler(drain, ip, ids, session, args)))
-
-    while True:
-        asyncio.sleep(0.001)
+    try:
+        await asyncio.gather((dma_handler(drain, ip, ids, session, args)))
+    except KeyboardInterrupt:
+        session.close()
+        sys.exit(0)
 
 
 def main():
@@ -296,10 +314,9 @@ def main():
     args.add_argument('-s', '--shape', type=str, default="300,300",
                       help="Comma delimited input shape of the model h,w")
     args = args.parse_args()
-    try:
-        asyncio.run(main_async(args))
-    except KeyboardInterrupt:
-        sys.exit(0)
+
+    asyncio.run(main_async(args))
+
 
 if __name__ == "__main__":
     main()

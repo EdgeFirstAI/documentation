@@ -165,3 +165,32 @@ These are the postprocessed model outputs which can then be visualized.
 
     Output decoding which includes NMS postprocessing is already embedded inside the model.
     The model outputs a maximum of 10 detections.  Currently there is no option to set the NMS parameters such as IoU and score thresholds using this model. 
+
+## Publisher Server
+Additionally, this can be all integrated to simulate the model service using any pre-defined SSD model, for this example we will use the pretrained TFLite SSD model. This can be done with the provided [Publisher Script](assets/boxes2d_publisher.py){: download="boxes2d_publisher.py"}
+
+This script is required to run on the target as it will use the DMA Buffer topic to provide the images for the model. Additionally, the script will need to be run using sudo as it needs to access the file descriptor to get the DMA buffer and cannot without sudo. 
+
+1. Disable the current model service
+
+    ```shell
+    sudo systemctl stop model
+    ```
+
+2. You can then run the script using the following
+
+    ```shell
+    sudo python3 boxes2d_publisher.py --model model.tflite --threshold 0.5 --shape 300,300
+    ```
+
+    The --model argument will be the path to the SSD model to be used to perform inference on the model and return boxes.
+    The --threshold argument will set the score threshold for a box to be published by the server.
+    The --shape argument is the input height,width of the model, comma delimited.
+
+3. The rt/model/boxes2d will now be published once again and can be subscribed to by any other example.
+
+Once you disable the server, you should restart the model service
+```
+sudo systemctl restart model
+```
+

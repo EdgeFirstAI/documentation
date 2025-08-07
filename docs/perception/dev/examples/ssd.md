@@ -6,11 +6,12 @@ These examples demonstrate how to deploy a MobileNet SSD model using the NPU of 
 
 In this example, the sample pretrained MobileNet SSD models and the sample image can be found in [ML-Zoo](https://github.com/Arm-Examples/ML-zoo/tree/master/models/object_detection/ssd_mobilenet_v1) and [ssd-tflite repository](https://github.com/apivovarov/ssd-tflite/tree/master).  This example has modified the Python script provided in the "ssd-tflite" repository to deploy the model with the OpenVX delegate to run on the NPU.  Furthermore, minimum dependencies are used to ensure no additional venv/pip installations are needed.  The only dependencies required are `tflite_runtime`, `numpy`, and `pillow` which should already come pre-installed in the Maivin's BSP.  Lastly, the model outputs are then drawn onto the image for visualization.
 
-For a quick demonstration, download the following files for running the example.
+For a quick demonstration, go to the "ssd-tflite" repository and download the following files.
 
 1. [MobileNet SSD Model](https://github.com/apivovarov/ssd-tflite/blob/master/ssd_mobilenet_v1_0.75_depth_quantized_300x300_coco14_sync_2018_07_18.tflite) 
 2. [Sample Image](https://github.com/apivovarov/ssd-tflite/blob/master/dog.jpg)
-3. [Python Script](assets/run-tflite.py){: download="run-tflite.py"}
+
+Download our [Python Script](assets/run-tflite.py){: download="run-tflite.py"} for running the example.
 
 !!! note
     The model downloaded is "ssd_mobilenet_v1_0.75_depth_quantized_300x300_coco14_sync_2018_07_18.tflite"
@@ -92,6 +93,11 @@ The following breakdown of the script describing the steps of the model inferenc
     ext_delegate = load_delegate(delegate, {})
     ip = Interpreter(model_path=model_path, experimental_delegates=[ext_delegate])
     ```
+
+    !!! note "OpenVX Delegate"
+        The OpenVX delegate is specified with `experimental_delegates=[ext_delegate]`. 
+        To use the CPU, remove this specification.
+
 
 2. Allocate tensors to allocate memory and sets up input/output tensor bindings.
 

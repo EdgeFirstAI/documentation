@@ -1,6 +1,6 @@
 # MobileNet SSD Examples
 
-These examples demonstrate how to deploy a MobileNet SSD model using the NPU of an embedded platform such as a [Maivin](../../../platforms/quickstart.md).  The examples below are split into two parts; model inference on a single image and live model inference using the device's [WebUI](../../../platforms/walkthrough.md).
+These examples demonstrate how to deploy a MobileNet SSD model using the NPU of an embedded platform such as a [Maivin](../../../platforms/quickstart.md).  The examples below are split into two parts; model inference on a single image and a model inference publisher.
 
 ## Image Inference
 

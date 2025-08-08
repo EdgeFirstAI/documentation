@@ -17,7 +17,7 @@ First download the model from EdgeFirst Studio into the Maivin Platform.  There 
 
 ### Download and SCP
 
-As mentioned under the [Trained Models](../training.md#training-outcomes) section, the trained models can be downloaded by clicking the "View Additional Details" button on the training session card in EdgeFirst Studio. 
+As mentioned under the [Training Outcomes](../training.md#training-outcomes) section, the trained models can be downloaded by clicking the "View Additional Details" button on the training session card in EdgeFirst Studio. 
 
 <figure markdown="span">
 ![Training Session Attributes](../../assets/training/training-session-attributes.jpg){ align=center }

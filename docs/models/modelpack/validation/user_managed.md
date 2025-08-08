@@ -18,7 +18,7 @@ Once the configurations have been made, go ahead and click on the "Start Session
 Once the validation session has been created, [SSH](../../../platforms/ssh.md) into the platform and install the following dependencies. 
 
 !!! warning "Virtual Environment"
-    To avoid re-installation of existing system packages, we recommend setting up a python virtual environment
+    To avoid re-installation of existing system packages, we recommend setting up a [python virtual environment](https://docs.python.org/3/library/venv.html#creating-virtual-environments)
     prior to running the pip installations below.
 
 ```shell
@@ -31,13 +31,13 @@ Next login to your account in EdgeFirst Studio by using the [EdgeFirst Client](.
 edgefirst-client --server <> login
 ```
 
-!!! note
+!!! note "Server Specification"
     Specify the EdgeFirst Studio server among these variations: "test", "stage", "saas".  This is an optional parameter as the default is set to "saas". 
 
 Once the validator is installed and authenticated, run validation using the following command.
 
 ```shell
-edgefirst-validator --session-id v-800
+edgefirst-validator --session-id v-c1f
 ```
 
 !!! note

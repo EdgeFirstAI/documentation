@@ -50,7 +50,7 @@ def NMS(bboxes, psocres, threshold):
 
 # Loading the Model
 providers = ['CUDAExecutionProvider', 'CPUExecutionProvider']
-model_path = "modelpack.onnx"
+model_path = "Coffee Cup Detection-t-f58.onnx"
 model = onnxruntime.InferenceSession(model_path, providers=providers)
 
 inputs = model.get_inputs()

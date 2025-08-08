@@ -4,7 +4,7 @@ This tutorial describes the steps to train **ModelPack Vision** models in EdgeFi
 
 ## Verify Dataset
 
-First ensure that the dataset is ready to be used for training.  This means that the dataset is properly annotated and the dataset is properly split into training and validation groups.  The section in [Verifying Datasets](../../datasets/tutorials/management.md#verify-dataset) will show what to look for in a dataset before deploying it for training.
+First ensure that the dataset is ready to be used for training.  This means that the dataset is properly annotated and the dataset is properly split into training and validation groups.  The section in [Verify Dataset](../../datasets/tutorials/management.md#verify-dataset) will show what to look for in a dataset before deploying it for training.
 
 ## Specify Project Experiments
 

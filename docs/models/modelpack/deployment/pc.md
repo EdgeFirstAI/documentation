@@ -2,7 +2,7 @@
 
 In this tutorial, we are going to give you the tools needed to run Vision models on a PC for object detection, segmentation, or multitask allowing you to build your own applications in just a few lines of code!
 
-It is important to go through the [User Workflows](../../../getting_started/workflows/index.md#user-journey) first before moving forward with the tutorials in this notebook.  The workflows presented ultimately stop at the the model deployment stages which will be the primary focus of this notebook. 
+Before deploying your model, it is recommended to first [validate](../../tutorials/validation.md) your model.
 
 !!! warning
     The tutorials presented in this notebook requires a trained and validated Vision model. 
@@ -16,11 +16,11 @@ To run the examples, let's first install the following dependencies.
 
 ```shell
 $ pip install edgefirst-client
-$ pip install 'numpy<2.0.0'
+$ pip install numpy
 $ pip install pillow
 $ pip install matplotlib
 $ pip install onnxruntime-gpu
-$ pip install tflite-runtime
+$ pip install tensorflow
 ```
 
 ## Connect to EdgeFirst Client
@@ -33,7 +33,7 @@ from edgefirst_client import Client
 username = 'username'
 password = 'password'
 
-client = Client()
+client = Client() # For a specific server, specify `server=<>` from "test", "stage", "saas" (default).
 client.login_sync(username, password)
 ```
 
@@ -43,7 +43,7 @@ Once you have connected to EdgeFirst Client, you can find the training session I
 
 There are two possible ways to get the artifacts from the training session:
 
-1. Manually download `modelpack.onnx` or `modelpack.tflite` and `labels.txt` from the [EdgeFirst Studio training session](../../modelpack/training.md#training-outcomes).
+1. Manually download `<model>.onnx` or `<model>.tflite` and `labels.txt` from the [EdgeFirst Studio training session](../../modelpack/training.md#training-outcomes).
 2. Using `edgefirst-client` command line interface.
 
 In this tutorial, you will explore option two which is to run the `edgefirst-client` command to fetch the model artifacts.
@@ -57,14 +57,15 @@ client.projects_sync() # This will list all the projects available to the user
 **Output:**
 
 ```text
-[Project { id: 365, name: "Object Detection", description: "This project trains and deploys Vision models for detecting objects." }, Project { id: 35, name: "Sample Project", description: "" }]
+[Project { id: 463, name: "Object Detection", description: "This project trains and deploys Vision models for detecting objects. " },
+Project { id: 1123, name: "Sample Project", description: "Official Datasets from AuZone Technologies Inc" }]
 ```
 
-By following the [EdgeFirst Studio Quickstart](../../../index.md#create-project), you should have created a project.  In this example, the project that was created is called "Object Detection".  Make a note of your project ID.  In this case, it is `365`.  Adjust the code block below to replace with your project ID.
+By following the [EdgeFirst Studio Quickstart](../../../index.md#create-project), you should have created a project.  In this example, the project that was created is called "Object Detection".  Make a note of your project ID.  In this case, it is `463`.  Adjust the code block below to replace with your project ID.
 
 ```python
 # Retrieve the project ID where the dataset is stored (all experiments/training/validation sessions are stored in the same project)
-project_id = 365
+project_id = 463
 
 # List all the experiments/training/validation sessions available for the project
 client.experiments_sync(project_id)
@@ -73,14 +74,14 @@ client.experiments_sync(project_id)
 **Output**:
 
 ```text
-[Experiment { id: 496, project_id: 365, name: "Coffee Cup", description: "Training a Coffee Cup Detection Model." }, Experiment { id: 529, project_id: 365, name: "ModelPack", description: "" }]
+[Experiment { id: 2212, project_id: 463, name: "Coffee Cup", description: "This experiment will train and validate models that detect coffee cups. " }]
 ```
 
-The command above will list all experiments in your project.  Make a note of the experiment ID that contains the training and validation sessions you deployed.  In this case, it is `496`.  Adjust the code block below to replace with your experiment ID.
+The command above will list all experiments in your project.  Make a note of the experiment ID that contains the training and validation sessions you deployed.  In this case, it is `2212`.  Adjust the code block below to replace with your experiment ID.
 
 ```python
 # By using the experiment ID, the user can retrieve all the training sessions available for that experiment.
-experiment_id = 496
+experiment_id = 2212
 
 trainers = client.trainer_sessions_sync(experiment_id)
 for i, trainer in enumerate(trainers):
@@ -90,13 +91,13 @@ for i, trainer in enumerate(trainers):
 **Output**:
 
 ```text
-session 1: ID [859], Name: @NO_TERMINATE | Coffee Cup Detection 
+session 1: ID [3928], Name: Coffee Cup Detection
 ```
 
-The command above will list all the training sessions in your experiment.  Make a note of the training session ID that contains your model artifacts.  In this case it is `859`.  Now that you have isolated the training session that contains your model artifacts, run the code block below to list the artifacts stored in the training session.  Adjust the code block to replace with your training session ID. 
+The command above will list all the training sessions in your experiment.  Make a note of the training session ID that contains your model artifacts.  In this case it is `3928`.  Now that you have isolated the training session that contains your model artifacts, run the code block below to list the artifacts stored in the training session.  Adjust the code block to replace with your training session ID. 
 
 ```python
-session_id = 859
+session_id = 3928
 
 # The user can also list the artifacts stored in the training session by using the trainer session ID
 client.artifacts_sync(session_id)
@@ -105,33 +106,34 @@ client.artifacts_sync(session_id)
 **Output**:
 
 ```text
-[Artifact { name: "labels.txt", model_type: "modelpack" },
-Artifact { name: "modelpack.keras", model_type: "modelpack" },
-Artifact { name: "modelpack.onnx", model_type: "modelpack" },
-Artifact { name: "modelpack.tflite", model_type: "modelpack" }]
+[Artifact { name: "Coffee Cup Detection-t-f58.h5", model_type: "modelpack" },
+ Artifact { name: "Coffee Cup Detection-t-f58.onnx", model_type: "modelpack" },
+ Artifact { name: "Coffee Cup Detection-t-f58.tflite", model_type: "modelpack" },
+ Artifact { name: "config.yaml", model_type: "modelpack" },
+ Artifact { name: "labels.txt", model_type: "modelpack" }]
 ```
 
 ## Download the Model Artifacts
 
-Now that you have located the training session ID containing your artifacts, you can move forward with downloading the model artifacts locally.  Execute the code block below to download the artifacts `modelpack.onnx` (model file) or `modelpack.tflite` and `labels.txt` (unique labels).  Ensure these files exist.  Otherwise, update the code block to match your model file names.
+Now that you have located the training session ID containing your artifacts, you can move forward with downloading the model artifacts locally.  Execute the code block below to download the artifacts `Coffee Cup Detection-t-f58.onnx` (model file) or `Coffee Cup Detection-t-f58.tflite` and `labels.txt` (unique labels).  Ensure these files exist.  Otherwise, update the code block to match your model file names.
 
 === "ONNX"
 
     ```python
     # Download the artifacts
-    client.download_artifact_sync(session_id, 'modelpack.onnx', filename='modelpack.onnx')
-    client.download_artifact_sync(session_id, 'labels.txt', filename='labels.txt')
+    client.download_artifact_sync(session_id, 'Coffee Cup Detection-t-f58.onnx', filename='Coffee Cup Detection-t-f58.onnx', progress=None)
+    client.download_artifact_sync(session_id, 'labels.txt', filename='labels.txt', progress=None)
     ```
 
 === "TFLite"
 
     ```python
     # Download the artifacts
-    client.download_artifact_sync(session_id, 'modelpack.tflite', filename='modelpack.tflite')
-    client.download_artifact_sync(session_id, 'labels.txt', filename='labels.txt')
+    client.download_artifact_sync(session_id, 'Coffee Cup Detection-t-f58.tflite', filename='Coffee Cup Detection-t-f58.tflite', progress=None)
+    client.download_artifact_sync(session_id, 'labels.txt', filename='labels.txt', progress=None)
     ```
 
-Next take a look at the contents of the labels.  Ensure that these labels are expected.  In this case, the only class in the dataset is "Coffee Cup".
+Next take a look at the contents of the labels.  Ensure that these labels are expected.  In this case, the only class in the dataset is "background" and "coffeecup".
 
 ```shell
 $ !cat ./labels.txt
@@ -141,12 +143,12 @@ $ !cat ./labels.txt
 
 ```text
 background
-Coffee Cup
+coffeecup
 ```
 
 ## Model Deployment
 
-In this demo, we will show running the Vision model fetched above for multitask with the ONNX and TFlite models showing examples in python.  The ONNX model is a float model suited for inference in the PC, ideally using the GPU.  The TFLite model is a quantized model suited for inference in edge devices.  These models will generate bounding boxes and segmentation masks on the detected objects in the image. 
+In this demo, we will show running the Vision model fetched above for multitask with the ONNX and TFlite models showing examples in Python.  The ONNX model is a float model suited for inference in the PC, ideally using the GPU.  The TFLite model is a quantized model suited for inference in edge devices, ideally using the NPU.  These models will generate bounding boxes and segmentation masks on the detected objects in the image. 
 
 To run inference on the model you need to have an input image.  You can capture an image with a mobile device.  A sample image is shown below.
 
@@ -177,7 +179,7 @@ Next load the model for inference.  The examples below show methods for both the
 
     # Loading the Model
     providers = ['CUDAExecutionProvider', 'CPUExecutionProvider']
-    model_path = "modelpack.onnx"
+    model_path = 'Coffee Cup Detection-t-f58.onnx'
     model = onnxruntime.InferenceSession(model_path, providers=providers)
 
     inputs = model.get_inputs()
@@ -193,13 +195,13 @@ Next load the model for inference.  The examples below show methods for both the
 === "TFLite"
 
     ```python
-    from tflite_runtime.interpreter import (
-        Interpreter,
-        load_delegate
-    )
+    import tensorflow as tf 
+
+    Interpreter = tf.lite.Interpreter
+    load_delegate = tf.lite.experimental.load_delegate
 
     delegate = '/usr/lib/libvx_delegate.so' # Edge device NPU delegate (Optional).
-    model_path = "modelpack.tflite"
+    model_path = "Coffee Cup Detection-t-f58.tflite"
 
     if os.path.exists(delegate) and delegate.endswith(".so"):
         ext_delegate = load_delegate(delegate, {})
@@ -214,7 +216,6 @@ Next load the model for inference.  The examples below show methods for both the
     input_details = model.get_input_details()
     output_details = model.get_output_details()
     
-    dtype = "uint8"
     shape = input_details[0]['shape'][1:3]
     height, width = shape
     ```

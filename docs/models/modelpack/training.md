@@ -70,6 +70,12 @@ Start a training session by clicking on the "New Session" button on the top righ
 
 You will be greeted with a training session dialog.  In this dialog, specify the "Trainer Type" to "ModelPack" and provide a name and description of the training session as shown below.  Next specify the dataset to be used with training and validation partitions.  In this example, the dataset specified is the "Coffee Cup" dataset which was created in the [Getting Started](../../index.md).  Next specify the training parameters.  By default, an object detection (bounding boxes) model will be trained.  However, you can specify either "Segmentation" or "Multitask" as shown below.  This model will output both bounding boxes and segmentation masks.  Additional information on these parameters are provided by hovering over the info button ![Info Button](../../assets/buttons/studio-info-button.jpg).
 
+!!! tip "Input Resolution"
+    We recommend changing the input resolution to 640x360 to maximize detection rates on small datasets.
+
+!!! warning "Large Batch Size"
+    For small datasets, a large batch size may produce poor results. Use a batch size of 4 or 8.
+
 For more information on available "Data Augmentations" please see [Vision Augmentations](../augmentations.md).
 
 <figure markdown="span">
@@ -87,6 +93,9 @@ Once the training session has started, the progress with the stages will be show
 ![Training Session](../assets/training/vision-session-progress.jpg){ align=center }
 <figcaption>Training Session</figcaption>
 </figure>
+
+The training process begins with cloud instance initialization. Then the dataset is downloaded and cached. Training starts afterwards.
+At the end of the training process, ModelPack quantizes the model and publishes the checkpoints.
 
 ## Completed Session
 

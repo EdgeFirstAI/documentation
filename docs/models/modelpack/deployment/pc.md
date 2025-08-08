@@ -226,7 +226,7 @@ Now that the model has been loaded, you can pass the input image to the model fo
 
 #### Input Preprocessing 
 
-Change the path to the image file as needed.  First preprocess the input image to match the input requirements of the model such as the image resolution and data type.
+Change the path to the image file as needed.  First preprocess the input image to match the input requirements of the model such as the image resolution and data type.  You can query the input parameters in order to resize the input tensor to the correct dimensions.
 
 ```python
 # Loading the Image
@@ -249,7 +249,7 @@ plt.imshow(image)
 
 #### Run Inference
 
-Invoke the model for inference.
+Once the input tensor has been prepared, invoke the model for inference.
 
 === "ONNX"
 
@@ -272,7 +272,7 @@ Invoke the model for inference.
 
 #### Output Post-processing
 
-Next we will post-process the model outputs such as parsing the outputs from the model and passing the outputs to the NMS for filtered boxes.
+Next we will post-process the model outputs such as parsing the outputs from the model and passing the outputs to the NMS for filtered boxes.  The model produces four outputs: bounding boxes, classes, scores, and segmentation masks.  These outputs require post-processing to filter out unnecessary boxes (NMS) and extract class IDs.  For mask decoding, we select the highest probability index for each pixel. 
 
 ##### Parsing Outputs
 
@@ -355,7 +355,7 @@ boxes = boxes[mask]
 classes = classes[mask]
 ```
 
-Next we can apply NMS on the boxes and scores from the model outputs. The NMS code snippet is placed in the [Appendix](#nms-code-snippet) below.
+Next we can apply NMS on the boxes and scores from the model outputs to remove boxes with overlap greater than 0.50.  The NMS code snippet is placed in the [Appendix](#nms-code-snippet) below.
 
 ```python
 keep = NMS(
@@ -429,7 +429,7 @@ for label in unique_labels[1:]:
     )
 ```
 
-We can save the visualization output.
+Finally, we can save the visualization output.
 
 ```python
 original.save("output.png")
@@ -452,6 +452,8 @@ The python example provided above for deploying the ONNX model can be downloaded
 The python example provided above for deploying the TFLite model can be downloaded as a single python script by clicking on this [link](assets/tflite.py){: download="tflite_example.py" }.  Ensure to modify the lines that points to the TFLite model and the input image and then run the script using `python tflite_example.py`.
 
 ### NMS Code Snippet
+
+This link points to the original [source of the NMS code](https://github.com/amusi/Non-Maximum-Suppression/blob/master/nms.py).
 
 === "Python"
 

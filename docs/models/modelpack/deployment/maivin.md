@@ -8,8 +8,8 @@ Now that you have validated your Vision Model from either a [managed](../validat
 
 This guide will showcase two methods of deploying the model.
 
-1. [Live View (Segmentation App)](#live-view-segmentation-app)
-2. [MCAP Recording](#record-mcap)
+1. [Live View (Segmentation App)](#live-view-segmentation-app): Displays the live camera feed using the default model provided.
+2. [MCAP Recording](#record-mcap): Allows control of the recording options and provides download file options to replay the recording.
 
 ## Download the Model
 

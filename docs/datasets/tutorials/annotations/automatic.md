@@ -134,7 +134,7 @@ Please wait while the server is being initialized.
 
 ### Annotate Starting Frame
 
-Once the server has been initialized, annotate the starting frame.  This is the only annotation required by the user. The rest of the frames will be annotated by SAM-2 and the AGTG process.
+Once the server has been initialized, annotate the starting frame.  This is the only annotation required by the user. The rest of the frames will be annotated by SAM-2 and the AGTG process.  This step is also known as initializing the SAM-2 state.  Each object must be annotated independently so the tracker can assign a unique ID. 
 
 Start by drawing a bounding box for the first object by clicking and dragging.  For multiple objects in the frame, click "+" to add a new object as shown in red below.  The process for each object should be: *Add a new object* -> *Draw object prompt*. 
 

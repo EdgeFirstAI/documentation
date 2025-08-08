@@ -104,6 +104,7 @@ nav:
         - perception/dev/examples/model.md
         - perception/dev/examples/pcd.md
         - perception/dev/examples/radar.md
+        - perception/dev/examples/ssd.md
     - API Reference:
       - perception/api.md
       - perception/api/edgefirst_msgs.md

@@ -95,6 +95,9 @@ For more information, please see the [Web UI Walkthrough](../../../platforms/wal
 
 Next you will need to specify the path to the model in the device.  You can either update the model path in the Web UI or via the command line.
 
+!!! note "Configure Model Settings"
+    Whenever a new model has been updated, ensure that the [model settings](../../../platforms/configuration.md#model-configuration) such as the score and the IoU thresholds are ideally set for this model. 
+
 ### Web UI
 
 Once you are in the Web UI main page, you can specify the path to the model by following the steps below.

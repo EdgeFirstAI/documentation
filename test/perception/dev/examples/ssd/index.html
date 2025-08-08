@@ -12,28 +12,28 @@
         <meta name="author" content="Au-Zone Technologies">
       
       
-        <link rel="canonical" href="https://doc.edgefirst.ai/test/models/tutorials/training/">
+        <link rel="canonical" href="https://doc.edgefirst.ai/test/perception/dev/examples/ssd/">
       
       
-        <link rel="prev" href="../../metrics/fusion/">
+        <link rel="prev" href="../radar/">
       
       
-        <link rel="next" href="../validation/">
+        <link rel="next" href="../../../api/">
       
       
-      <link rel="icon" href="../../../assets/favicon.png">
+      <link rel="icon" href="../../../../assets/favicon.png">
       <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.16">
     
     
       
-        <title>Training - EdgeFirst Studio Documentation</title>
+        <title>MobileNet SSD Examples - EdgeFirst Studio Documentation</title>
       
     
     
-      <link rel="stylesheet" href="../../../assets/stylesheets/main.7e37652d.min.css">
+      <link rel="stylesheet" href="../../../../assets/stylesheets/main.7e37652d.min.css">
       
         
-        <link rel="stylesheet" href="../../../assets/stylesheets/palette.06af60db.min.css">
+        <link rel="stylesheet" href="../../../../assets/stylesheets/palette.06af60db.min.css">
       
       
 
@@ -52,9 +52,9 @@
       
     
     
-      <link rel="stylesheet" href="../../../assets/_mkdocstrings.css">
+      <link rel="stylesheet" href="../../../../assets/_mkdocstrings.css">
     
-    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("../../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
   
@@ -90,7 +90,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#training" class="md-skip">
+        <a href="#mobilenet-ssd-examples" class="md-skip">
           Skip to content
         </a>
       
@@ -110,9 +110,9 @@
 
 <header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href="../../.." title="EdgeFirst Studio Documentation" class="md-header__button md-logo" aria-label="EdgeFirst Studio Documentation" data-md-component="logo">
+    <a href="../../../.." title="EdgeFirst Studio Documentation" class="md-header__button md-logo" aria-label="EdgeFirst Studio Documentation" data-md-component="logo">
       
-  <img src="../../../assets/logo.png" alt="logo">
+  <img src="../../../../assets/logo.png" alt="logo">
 
     </a>
     <label class="md-header__button md-icon" for="__drawer">
@@ -129,7 +129,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Training
+              MobileNet SSD Examples
             
           </span>
         </div>
@@ -253,7 +253,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../.." class="md-tabs__link">
+        <a href="../../../.." class="md-tabs__link">
           
   
   
@@ -275,7 +275,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../../studio/" class="md-tabs__link">
+        <a href="../../../../studio/" class="md-tabs__link">
           
   
   
@@ -297,7 +297,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../../datasets/" class="md-tabs__link">
+        <a href="../../../../datasets/" class="md-tabs__link">
           
   
   
@@ -315,13 +315,11 @@
   
   
   
-    
-  
   
     
     
-      <li class="md-tabs__item md-tabs__item--active">
-        <a href="../../" class="md-tabs__link">
+      <li class="md-tabs__item">
+        <a href="../../../../models/" class="md-tabs__link">
           
   
   
@@ -339,11 +337,13 @@
   
   
   
+    
+  
   
     
     
-      <li class="md-tabs__item">
-        <a href="../../../perception/" class="md-tabs__link">
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../../../" class="md-tabs__link">
           
   
   
@@ -365,7 +365,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../../platforms/" class="md-tabs__link">
+        <a href="../../../../platforms/" class="md-tabs__link">
           
   
   
@@ -407,9 +407,9 @@
 
 <nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="../../.." title="EdgeFirst Studio Documentation" class="md-nav__button md-logo" aria-label="EdgeFirst Studio Documentation" data-md-component="logo">
+    <a href="../../../.." title="EdgeFirst Studio Documentation" class="md-nav__button md-logo" aria-label="EdgeFirst Studio Documentation" data-md-component="logo">
       
-  <img src="../../../assets/logo.png" alt="logo">
+  <img src="../../../../assets/logo.png" alt="logo">
 
     </a>
     EdgeFirst Studio Documentation
@@ -469,7 +469,7 @@
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../.." class="md-nav__link ">
+            <a href="../../../.." class="md-nav__link ">
               
   
   
@@ -531,7 +531,7 @@
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../../getting_started/workflows/" class="md-nav__link ">
+            <a href="../../../../getting_started/workflows/" class="md-nav__link ">
               
   
   
@@ -566,7 +566,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../getting_started/workflows/tourist/" class="md-nav__link">
+      <a href="../../../../getting_started/workflows/tourist/" class="md-nav__link">
         
   
   
@@ -589,7 +589,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../getting_started/workflows/web/" class="md-nav__link">
+      <a href="../../../../getting_started/workflows/web/" class="md-nav__link">
         
   
   
@@ -612,7 +612,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../getting_started/workflows/edgefirst/" class="md-nav__link">
+      <a href="../../../../getting_started/workflows/edgefirst/" class="md-nav__link">
         
   
   
@@ -687,7 +687,7 @@
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../../studio/" class="md-nav__link ">
+            <a href="../../../../studio/" class="md-nav__link ">
               
   
   
@@ -722,7 +722,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../studio/navigation/" class="md-nav__link">
+      <a href="../../../../studio/navigation/" class="md-nav__link">
         
   
   
@@ -772,7 +772,7 @@
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../../studio/user/" class="md-nav__link ">
+            <a href="../../../../studio/user/" class="md-nav__link ">
               
   
   
@@ -807,7 +807,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../studio/user/profile/" class="md-nav__link">
+      <a href="../../../../studio/user/profile/" class="md-nav__link">
         
   
   
@@ -830,7 +830,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../studio/user/organization/" class="md-nav__link">
+      <a href="../../../../studio/user/organization/" class="md-nav__link">
         
   
   
@@ -853,7 +853,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../studio/user/billing/" class="md-nav__link">
+      <a href="../../../../studio/user/billing/" class="md-nav__link">
         
   
   
@@ -884,7 +884,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../studio/projects/" class="md-nav__link">
+      <a href="../../../../studio/projects/" class="md-nav__link">
         
   
   
@@ -932,7 +932,7 @@
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../../studio/datasets/" class="md-nav__link ">
+            <a href="../../../../studio/datasets/" class="md-nav__link ">
               
   
   
@@ -967,7 +967,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../studio/datasets/gallery/" class="md-nav__link">
+      <a href="../../../../studio/datasets/gallery/" class="md-nav__link">
         
   
   
@@ -990,7 +990,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../studio/datasets/annotations/" class="md-nav__link">
+      <a href="../../../../studio/datasets/annotations/" class="md-nav__link">
         
   
   
@@ -1021,7 +1021,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../studio/models/" class="md-nav__link">
+      <a href="../../../../studio/models/" class="md-nav__link">
         
   
   
@@ -1044,7 +1044,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../studio/instances/" class="md-nav__link">
+      <a href="../../../../studio/instances/" class="md-nav__link">
         
   
   
@@ -1067,7 +1067,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../studio/snapshots/" class="md-nav__link">
+      <a href="../../../../studio/snapshots/" class="md-nav__link">
         
   
   
@@ -1090,7 +1090,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../studio/agtg/" class="md-nav__link">
+      <a href="../../../../studio/agtg/" class="md-nav__link">
         
   
   
@@ -1149,7 +1149,7 @@
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../../datasets/" class="md-nav__link ">
+            <a href="../../../../datasets/" class="md-nav__link ">
               
   
   
@@ -1184,7 +1184,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../datasets/format/" class="md-nav__link">
+      <a href="../../../../datasets/format/" class="md-nav__link">
         
   
   
@@ -1207,7 +1207,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../datasets/structure/" class="md-nav__link">
+      <a href="../../../../datasets/structure/" class="md-nav__link">
         
   
   
@@ -1298,7 +1298,7 @@
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../../datasets/coco/" class="md-nav__link ">
+            <a href="../../../../datasets/coco/" class="md-nav__link ">
               
   
   
@@ -1333,7 +1333,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../datasets/coco/import/" class="md-nav__link">
+      <a href="../../../../datasets/coco/import/" class="md-nav__link">
         
   
   
@@ -1401,7 +1401,7 @@
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../../datasets/tutorials/" class="md-nav__link ">
+            <a href="../../../../datasets/tutorials/" class="md-nav__link ">
               
   
   
@@ -1436,7 +1436,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../datasets/tutorials/capture/" class="md-nav__link">
+      <a href="../../../../datasets/tutorials/capture/" class="md-nav__link">
         
   
   
@@ -1459,7 +1459,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../datasets/tutorials/import/" class="md-nav__link">
+      <a href="../../../../datasets/tutorials/import/" class="md-nav__link">
         
   
   
@@ -1507,7 +1507,7 @@
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../../datasets/tutorials/annotations/" class="md-nav__link ">
+            <a href="../../../../datasets/tutorials/annotations/" class="md-nav__link ">
               
   
   
@@ -1542,7 +1542,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../datasets/tutorials/annotations/automatic/" class="md-nav__link">
+      <a href="../../../../datasets/tutorials/annotations/automatic/" class="md-nav__link">
         
   
   
@@ -1565,7 +1565,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../datasets/tutorials/annotations/manual/" class="md-nav__link">
+      <a href="../../../../datasets/tutorials/annotations/manual/" class="md-nav__link">
         
   
   
@@ -1596,7 +1596,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../datasets/tutorials/management/" class="md-nav__link">
+      <a href="../../../../datasets/tutorials/management/" class="md-nav__link">
         
   
   
@@ -1631,8 +1631,6 @@
       
   
   
-    
-  
   
   
     
@@ -1656,21 +1654,18 @@
     
     
       
-        
-        
-      
       
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../" class="md-nav__link ">
+            <a href="../../../../models/" class="md-nav__link ">
               
   
   
@@ -1683,13 +1678,13 @@
             </a>
             
               
-              <label class="md-nav__link " for="__nav_5" id="__nav_5_label" tabindex="">
+              <label class="md-nav__link " for="__nav_5" id="__nav_5_label" tabindex="0">
                 <span class="md-nav__icon md-icon"></span>
               </label>
             
           </div>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_5">
             <span class="md-nav__icon md-icon"></span>
             Models
@@ -1734,7 +1729,7 @@
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../modelpack/" class="md-nav__link ">
+            <a href="../../../../models/modelpack/" class="md-nav__link ">
               
   
   
@@ -1794,7 +1789,7 @@
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../modelpack/tutorials/" class="md-nav__link ">
+            <a href="../../../../models/modelpack/tutorials/" class="md-nav__link ">
               
   
   
@@ -1829,7 +1824,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../modelpack/tutorials/measurement_tape/" class="md-nav__link">
+      <a href="../../../../models/modelpack/tutorials/measurement_tape/" class="md-nav__link">
         
   
   
@@ -1852,7 +1847,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../modelpack/tutorials/musicbox/" class="md-nav__link">
+      <a href="../../../../models/modelpack/tutorials/musicbox/" class="md-nav__link">
         
   
   
@@ -1883,7 +1878,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../modelpack/training/" class="md-nav__link">
+      <a href="../../../../models/modelpack/training/" class="md-nav__link">
         
   
   
@@ -1953,7 +1948,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../modelpack/validation/managed/" class="md-nav__link">
+      <a href="../../../../models/modelpack/validation/managed/" class="md-nav__link">
         
   
   
@@ -1976,7 +1971,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../modelpack/validation/user_managed/" class="md-nav__link">
+      <a href="../../../../models/modelpack/validation/user_managed/" class="md-nav__link">
         
   
   
@@ -2056,7 +2051,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../modelpack/deployment/pc/" class="md-nav__link">
+      <a href="../../../../models/modelpack/deployment/pc/" class="md-nav__link">
         
   
   
@@ -2079,7 +2074,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../modelpack/deployment/evk/" class="md-nav__link">
+      <a href="../../../../models/modelpack/deployment/evk/" class="md-nav__link">
         
   
   
@@ -2102,7 +2097,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../modelpack/deployment/maivin/" class="md-nav__link">
+      <a href="../../../../models/modelpack/deployment/maivin/" class="md-nav__link">
         
   
   
@@ -2168,7 +2163,7 @@
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../fusion/" class="md-nav__link ">
+            <a href="../../../../models/fusion/" class="md-nav__link ">
               
   
   
@@ -2203,7 +2198,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../fusion/training/" class="md-nav__link">
+      <a href="../../../../models/fusion/training/" class="md-nav__link">
         
   
   
@@ -2226,7 +2221,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../fusion/validation/" class="md-nav__link">
+      <a href="../../../../models/fusion/validation/" class="md-nav__link">
         
   
   
@@ -2294,7 +2289,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../fusion/deployment/raivin/" class="md-nav__link">
+      <a href="../../../../models/fusion/deployment/raivin/" class="md-nav__link">
         
   
   
@@ -2382,7 +2377,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../metrics/detection/" class="md-nav__link">
+      <a href="../../../../models/metrics/detection/" class="md-nav__link">
         
   
   
@@ -2405,7 +2400,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../metrics/segmentation/" class="md-nav__link">
+      <a href="../../../../models/metrics/segmentation/" class="md-nav__link">
         
   
   
@@ -2428,7 +2423,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../metrics/fusion/" class="md-nav__link">
+      <a href="../../../../models/metrics/fusion/" class="md-nav__link">
         
   
   
@@ -2456,10 +2451,8 @@
                 
   
   
-    
   
   
-  
     
     
       
@@ -2476,11 +2469,11 @@
       
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_5" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_5" >
         
           
           <label class="md-nav__link" for="__nav_5_5" id="__nav_5_5_label" tabindex="0">
@@ -2496,7 +2489,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_5_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_5_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_5_5">
             <span class="md-nav__icon md-icon"></span>
             Model Tutorials
@@ -2507,32 +2500,10 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  
-  <span class="md-ellipsis">
-    Training
-    
-  </span>
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../../../../models/tutorials/training/" class="md-nav__link">
         
   
   
@@ -2543,44 +2514,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#modelpack" class="md-nav__link">
-    <span class="md-ellipsis">
-      ModelPack
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#fusion" class="md-nav__link">
-    <span class="md-ellipsis">
-      Fusion
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -2593,7 +2526,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../validation/" class="md-nav__link">
+      <a href="../../../../models/tutorials/validation/" class="md-nav__link">
         
   
   
@@ -2616,7 +2549,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../deployment/" class="md-nav__link">
+      <a href="../../../../models/tutorials/deployment/" class="md-nav__link">
         
   
   
@@ -2647,7 +2580,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../augmentations/" class="md-nav__link">
+      <a href="../../../../models/augmentations/" class="md-nav__link">
         
   
   
@@ -2674,6 +2607,8 @@
       
   
   
+    
+  
   
   
     
@@ -2699,18 +2634,21 @@
     
     
       
+        
+        
+      
       
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" checked>
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../../perception/" class="md-nav__link ">
+            <a href="../../../" class="md-nav__link ">
               
   
   
@@ -2723,13 +2661,13 @@
             </a>
             
               
-              <label class="md-nav__link " for="__nav_6" id="__nav_6_label" tabindex="0">
+              <label class="md-nav__link " for="__nav_6" id="__nav_6_label" tabindex="">
                 <span class="md-nav__icon md-icon"></span>
               </label>
             
           </div>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_6">
             <span class="md-nav__icon md-icon"></span>
             Perception
@@ -2798,7 +2736,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../platforms/recording/" class="md-nav__link">
+      <a href="../../../../platforms/recording/" class="md-nav__link">
         
   
   
@@ -2821,7 +2759,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../platforms/replay/" class="md-nav__link">
+      <a href="../../../../platforms/replay/" class="md-nav__link">
         
   
   
@@ -2844,7 +2782,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../platforms/publishing/" class="md-nav__link">
+      <a href="../../../../platforms/publishing/" class="md-nav__link">
         
   
   
@@ -2867,7 +2805,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../platforms/foxglove/" class="md-nav__link">
+      <a href="../../../../platforms/foxglove/" class="md-nav__link">
         
   
   
@@ -2890,7 +2828,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../platforms/advanced_foxglove/" class="md-nav__link">
+      <a href="../../../../platforms/advanced_foxglove/" class="md-nav__link">
         
   
   
@@ -2921,7 +2859,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../perception/studio/" class="md-nav__link">
+      <a href="../../../studio/" class="md-nav__link">
         
   
   
@@ -2944,7 +2882,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../perception/launcher/" class="md-nav__link">
+      <a href="../../../launcher/" class="md-nav__link">
         
   
   
@@ -3026,7 +2964,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../perception/topics/" class="md-nav__link">
+      <a href="../../../topics/" class="md-nav__link">
         
   
   
@@ -3049,7 +2987,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../perception/topics/camera/" class="md-nav__link">
+      <a href="../../../topics/camera/" class="md-nav__link">
         
   
   
@@ -3072,7 +3010,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../perception/topics/fusion/" class="md-nav__link">
+      <a href="../../../topics/fusion/" class="md-nav__link">
         
   
   
@@ -3095,7 +3033,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../perception/topics/imu/" class="md-nav__link">
+      <a href="../../../topics/imu/" class="md-nav__link">
         
   
   
@@ -3118,7 +3056,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../perception/topics/lidar/" class="md-nav__link">
+      <a href="../../../topics/lidar/" class="md-nav__link">
         
   
   
@@ -3141,7 +3079,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../perception/topics/model/" class="md-nav__link">
+      <a href="../../../topics/model/" class="md-nav__link">
         
   
   
@@ -3164,7 +3102,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../perception/topics/navsat/" class="md-nav__link">
+      <a href="../../../topics/navsat/" class="md-nav__link">
         
   
   
@@ -3187,7 +3125,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../perception/topics/radar/" class="md-nav__link">
+      <a href="../../../topics/radar/" class="md-nav__link">
         
   
   
@@ -3215,8 +3153,10 @@
                 
   
   
+    
   
   
+  
     
     
       
@@ -3231,11 +3171,11 @@
       
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_6" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_6" checked>
         
           
           <label class="md-nav__link" for="__nav_6_6" id="__nav_6_6_label" tabindex="0">
@@ -3251,7 +3191,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_6_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_6_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_6_6">
             <span class="md-nav__icon md-icon"></span>
             Developer Guide
@@ -3265,7 +3205,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../perception/dev/" class="md-nav__link">
+      <a href="../../" class="md-nav__link">
         
   
   
@@ -3285,8 +3225,10 @@
                 
   
   
+    
   
   
+  
     
     
       
@@ -3315,11 +3257,11 @@
       
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_6_2" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_6_2" checked>
         
           
           <label class="md-nav__link" for="__nav_6_6_2" id="__nav_6_6_2_label" tabindex="0">
@@ -3335,7 +3277,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_6_6_2_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_6_6_2_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_6_6_2">
             <span class="md-nav__icon md-icon"></span>
             Examples
@@ -3349,7 +3291,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../perception/dev/examples/camera/" class="md-nav__link">
+      <a href="../camera/" class="md-nav__link">
         
   
   
@@ -3372,7 +3314,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../perception/dev/examples/fusion/" class="md-nav__link">
+      <a href="../fusion/" class="md-nav__link">
         
   
   
@@ -3395,7 +3337,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../perception/dev/examples/gps/" class="md-nav__link">
+      <a href="../gps/" class="md-nav__link">
         
   
   
@@ -3418,7 +3360,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../perception/dev/examples/imu/" class="md-nav__link">
+      <a href="../imu/" class="md-nav__link">
         
   
   
@@ -3441,7 +3383,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../perception/dev/examples/lidar/" class="md-nav__link">
+      <a href="../lidar/" class="md-nav__link">
         
   
   
@@ -3464,7 +3406,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../perception/dev/examples/model/" class="md-nav__link">
+      <a href="../model/" class="md-nav__link">
         
   
   
@@ -3487,7 +3429,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../perception/dev/examples/pcd/" class="md-nav__link">
+      <a href="../pcd/" class="md-nav__link">
         
   
   
@@ -3510,7 +3452,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../perception/dev/examples/radar/" class="md-nav__link">
+      <a href="../radar/" class="md-nav__link">
         
   
   
@@ -3530,10 +3472,32 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../../../perception/dev/examples/ssd/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    MobileNet SSD Examples
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   
@@ -3544,6 +3508,44 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#image-inference" class="md-nav__link">
+    <span class="md-ellipsis">
+      Image Inference
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#publisher-server" class="md-nav__link">
+    <span class="md-ellipsis">
+      Publisher Server
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -3633,7 +3635,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../perception/api/" class="md-nav__link">
+      <a href="../../../api/" class="md-nav__link">
         
   
   
@@ -3656,7 +3658,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../perception/api/edgefirst_msgs/" class="md-nav__link">
+      <a href="../../../api/edgefirst_msgs/" class="md-nav__link">
         
   
   
@@ -3679,7 +3681,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../perception/api/foxglove_msgs/" class="md-nav__link">
+      <a href="../../../api/foxglove_msgs/" class="md-nav__link">
         
   
   
@@ -3702,7 +3704,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../perception/api/geometry_msgs/" class="md-nav__link">
+      <a href="../../../api/geometry_msgs/" class="md-nav__link">
         
   
   
@@ -3725,7 +3727,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../perception/api/nav_msgs/" class="md-nav__link">
+      <a href="../../../api/nav_msgs/" class="md-nav__link">
         
   
   
@@ -3748,7 +3750,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../perception/api/sensor_msgs/" class="md-nav__link">
+      <a href="../../../api/sensor_msgs/" class="md-nav__link">
         
   
   
@@ -3771,7 +3773,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../perception/api/std_msgs/" class="md-nav__link">
+      <a href="../../../api/std_msgs/" class="md-nav__link">
         
   
   
@@ -3794,7 +3796,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../perception/api/builtin_interfaces/" class="md-nav__link">
+      <a href="../../../api/builtin_interfaces/" class="md-nav__link">
         
   
   
@@ -3817,7 +3819,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../perception/api/studio/" class="md-nav__link">
+      <a href="../../../api/studio/" class="md-nav__link">
         
   
   
@@ -3884,7 +3886,7 @@
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../../platforms/" class="md-nav__link ">
+            <a href="../../../../platforms/" class="md-nav__link ">
               
   
   
@@ -3968,7 +3970,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../platforms/quickstart/" class="md-nav__link">
+      <a href="../../../../platforms/quickstart/" class="md-nav__link">
         
   
   
@@ -3991,7 +3993,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../platforms/walkthrough/" class="md-nav__link">
+      <a href="../../../../platforms/walkthrough/" class="md-nav__link">
         
   
   
@@ -4014,7 +4016,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../platforms/architecture/" class="md-nav__link">
+      <a href="../../../../platforms/architecture/" class="md-nav__link">
         
   
   
@@ -4094,7 +4096,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../platforms/hardware/" class="md-nav__link">
+      <a href="../../../../platforms/hardware/" class="md-nav__link">
         
   
   
@@ -4117,7 +4119,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../platforms/radar/" class="md-nav__link">
+      <a href="../../../../platforms/radar/" class="md-nav__link">
         
   
   
@@ -4140,7 +4142,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../platforms/lidar/" class="md-nav__link">
+      <a href="../../../../platforms/lidar/" class="md-nav__link">
         
   
   
@@ -4224,7 +4226,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../platforms/configuration/" class="md-nav__link">
+      <a href="../../../../platforms/configuration/" class="md-nav__link">
         
   
   
@@ -4247,7 +4249,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../platforms/model_uploads/" class="md-nav__link">
+      <a href="../../../../platforms/model_uploads/" class="md-nav__link">
         
   
   
@@ -4270,7 +4272,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../platforms/updates/" class="md-nav__link">
+      <a href="../../../../platforms/updates/" class="md-nav__link">
         
   
   
@@ -4293,7 +4295,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../platforms/release_notes/" class="md-nav__link">
+      <a href="../../../../platforms/release_notes/" class="md-nav__link">
         
   
   
@@ -4316,7 +4318,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../platforms/issues/" class="md-nav__link">
+      <a href="../../../../platforms/issues/" class="md-nav__link">
         
   
   
@@ -4394,7 +4396,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../platforms/networking/" class="md-nav__link">
+      <a href="../../../../platforms/networking/" class="md-nav__link">
         
   
   
@@ -4417,7 +4419,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../platforms/ssh/" class="md-nav__link">
+      <a href="../../../../platforms/ssh/" class="md-nav__link">
         
   
   
@@ -4475,18 +4477,18 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#modelpack" class="md-nav__link">
+  <a href="#image-inference" class="md-nav__link">
     <span class="md-ellipsis">
-      ModelPack
+      Image Inference
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#fusion" class="md-nav__link">
+  <a href="#publisher-server" class="md-nav__link">
     <span class="md-ellipsis">
-      Fusion
+      Publisher Server
     </span>
   </a>
   
@@ -4508,18 +4510,179 @@
 
 
 
-<h1 id="training">Training</h1>
-<p>EdgeFirst Studio supports training of <em>Vision</em> models using ModelPack tasked for image object detection and the training of "Fusion" models tasked for predicting the object's position in the field.  During training, the datasets with 2D annotations (segmentation masks and 2D bounding boxes) are used for training ModelPack and 3D annotations (3D bounding boxes) are used for training Fusion. </p>
-<p><a href="../../augmentations/">Vision augmentation techniques</a> are also applied during training to enhance the model's performance in a variety of conditions and to increase the number of training samples. </p>
-<h2 id="modelpack">ModelPack</h2>
-<p><a href="../../modelpack/">ModelPack</a> is a single-sensor (single-input) architecture of Vision models tasked with detecting objects in an image via bounding boxes, segmentation masks, or both.  A Vision model is a type of model that interprets images or videos to perform tasks such as object detection, image classification, and much more.  EdgeFirst Studio supports Vision models tasked with object detection.</p>
-<p>For training <em>Vision</em> models tasked with detecting objects in an image, follow tutorials for <a href="../../modelpack/training/">Training ModelPack</a> in EdgeFirst Studio.  </p>
-<h2 id="fusion">Fusion</h2>
-<p>A <a href="../../fusion/">Sensor Fusion Model</a> is a multi-sensor (multi-input) architecture that fuses Radar and Camera sensors designed for spatial perception tasks.  These models can make predictions of the object's position in world coordinates.  Fusion models takes the Radar cube and the Camera image as inputs to the model by default.  However, the Camera or the Radar can be turned off to train specific camera-only and radar-only based Fusion models. </p>
-<p>For training <em>Spatial Perception Models</em> tasked with detecting the position of the object in the field, follow tutorials for <a href="../../fusion/training/">Training Fusion Models</a> in EdgeFirst Studio. </p>
-<div style="text-align: center;">
-    <iframe width="560" height="315" src="https://www.youtube.com/embed/Q8uiYJb1HJ4" title="EdgeFirst Training" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+<h1 id="mobilenet-ssd-examples">MobileNet SSD Examples</h1>
+<p>These examples demonstrate how to deploy a MobileNet SSD model using the NPU of an embedded platform such as a <a href="../../../../platforms/quickstart/">Maivin</a>.  The examples below are split into two parts; model inference on a single image and a model inference publisher.</p>
+<h2 id="image-inference">Image Inference</h2>
+<p>In this example, the sample pretrained MobileNet SSD models and the sample image can be found in <a href="https://github.com/Arm-Examples/ML-zoo/tree/master/models/object_detection/ssd_mobilenet_v1">ML-Zoo</a> and <a href="https://github.com/apivovarov/ssd-tflite/tree/master">ssd-tflite repository</a>.  This example has modified the Python script provided in the "ssd-tflite" repository to deploy the model with the OpenVX delegate to run on the NPU.  Furthermore, minimum dependencies are used to ensure no additional venv/pip installations are needed.  The only dependencies required are <code>tflite_runtime</code>, <code>numpy</code>, and <code>pillow</code> which should already come pre-installed in the Maivin's BSP.  Lastly, the model outputs are then drawn onto the image for visualization.</p>
+<p>For a quick demonstration, go to the "ssd-tflite" repository and download the following files.</p>
+<ol>
+<li><a href="https://github.com/apivovarov/ssd-tflite/blob/master/ssd_mobilenet_v1_0.75_depth_quantized_300x300_coco14_sync_2018_07_18.tflite">MobileNet SSD Model</a> </li>
+<li><a href="https://github.com/apivovarov/ssd-tflite/blob/master/dog.jpg">Sample Image</a></li>
+</ol>
+<p>Download our <a download="run-tflite.py" href="../assets/run-tflite.py">Python Script</a> for running the example.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The model downloaded is "ssd_mobilenet_v1_0.75_depth_quantized_300x300_coco14_sync_2018_07_18.tflite"</p>
 </div>
+<p>Once the files have been downloaded, <a href="../../../../platforms/ssh/#secure-copy">SCP</a> the files into the embedded platform.</p>
+<p>Run the script with the command <code>python3 run-tflite.py</code>.  The script should print the inference time in milliseconds and the model detections as follows.</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>python3<span class="w"> </span>run-tflite.py
+Vx<span class="w"> </span>delegate:<span class="w"> </span>allowed_cache_mode<span class="w"> </span><span class="nb">set</span><span class="w"> </span>to<span class="w"> </span><span class="m">0</span>.
+Vx<span class="w"> </span>delegate:<span class="w"> </span>device<span class="w"> </span>num<span class="w"> </span><span class="nb">set</span><span class="w"> </span>to<span class="w"> </span><span class="m">0</span>.
+Vx<span class="w"> </span>delegate:<span class="w"> </span>allowed_builtin_code<span class="w"> </span><span class="nb">set</span><span class="w"> </span>to<span class="w"> </span><span class="m">0</span>.
+Vx<span class="w"> </span>delegate:<span class="w"> </span>error_during_init<span class="w"> </span><span class="nb">set</span><span class="w"> </span>to<span class="w"> </span><span class="m">0</span>.
+Vx<span class="w"> </span>delegate:<span class="w"> </span>error_during_prepare<span class="w"> </span><span class="nb">set</span><span class="w"> </span>to<span class="w"> </span><span class="m">0</span>.
+Vx<span class="w"> </span>delegate:<span class="w"> </span>error_during_invoke<span class="w"> </span><span class="nb">set</span><span class="w"> </span>to<span class="w"> </span><span class="m">0</span>.
+WARNING:<span class="w"> </span>Fallback<span class="w"> </span>unsupported<span class="w"> </span>op<span class="w"> </span><span class="m">32</span><span class="w"> </span>to<span class="w"> </span>TfLite
+INFO:<span class="w"> </span>Created<span class="w"> </span>TensorFlow<span class="w"> </span>Lite<span class="w"> </span>XNNPACK<span class="w"> </span>delegate<span class="w"> </span><span class="k">for</span><span class="w"> </span>CPU.
+W<span class="w"> </span><span class="o">[</span>HandleLayoutInfer:281<span class="o">]</span>Op<span class="w"> </span><span class="m">162</span>:<span class="w"> </span>default<span class="w"> </span>layout<span class="w"> </span>inference<span class="w"> </span>pass.
+W<span class="w"> </span><span class="o">[</span>HandleLayoutInfer:281<span class="o">]</span>Op<span class="w"> </span><span class="m">162</span>:<span class="w"> </span>default<span class="w"> </span>layout<span class="w"> </span>inference<span class="w"> </span>pass.
+W<span class="w"> </span><span class="o">[</span>HandleLayoutInfer:281<span class="o">]</span>Op<span class="w"> </span><span class="m">162</span>:<span class="w"> </span>default<span class="w"> </span>layout<span class="w"> </span>inference<span class="w"> </span>pass.
+W<span class="w"> </span><span class="o">[</span>HandleLayoutInfer:281<span class="o">]</span>Op<span class="w"> </span><span class="m">162</span>:<span class="w"> </span>default<span class="w"> </span>layout<span class="w"> </span>inference<span class="w"> </span>pass.
+W<span class="w"> </span><span class="o">[</span>HandleLayoutInfer:281<span class="o">]</span>Op<span class="w"> </span><span class="m">162</span>:<span class="w"> </span>default<span class="w"> </span>layout<span class="w"> </span>inference<span class="w"> </span>pass.
+W<span class="w"> </span><span class="o">[</span>HandleLayoutInfer:281<span class="o">]</span>Op<span class="w"> </span><span class="m">162</span>:<span class="w"> </span>default<span class="w"> </span>layout<span class="w"> </span>inference<span class="w"> </span>pass.
+W<span class="w"> </span><span class="o">[</span>HandleLayoutInfer:281<span class="o">]</span>Op<span class="w"> </span><span class="m">162</span>:<span class="w"> </span>default<span class="w"> </span>layout<span class="w"> </span>inference<span class="w"> </span>pass.
+W<span class="w"> </span><span class="o">[</span>HandleLayoutInfer:281<span class="o">]</span>Op<span class="w"> </span><span class="m">162</span>:<span class="w"> </span>default<span class="w"> </span>layout<span class="w"> </span>inference<span class="w"> </span>pass.
+W<span class="w"> </span><span class="o">[</span>HandleLayoutInfer:281<span class="o">]</span>Op<span class="w"> </span><span class="m">162</span>:<span class="w"> </span>default<span class="w"> </span>layout<span class="w"> </span>inference<span class="w"> </span>pass.
+W<span class="w"> </span><span class="o">[</span>HandleLayoutInfer:281<span class="o">]</span>Op<span class="w"> </span><span class="m">162</span>:<span class="w"> </span>default<span class="w"> </span>layout<span class="w"> </span>inference<span class="w"> </span>pass.
+W<span class="w"> </span><span class="o">[</span>HandleLayoutInfer:281<span class="o">]</span>Op<span class="w"> </span><span class="m">162</span>:<span class="w"> </span>default<span class="w"> </span>layout<span class="w"> </span>inference<span class="w"> </span>pass.
+W<span class="w"> </span><span class="o">[</span>HandleLayoutInfer:281<span class="o">]</span>Op<span class="w"> </span><span class="m">162</span>:<span class="w"> </span>default<span class="w"> </span>layout<span class="w"> </span>inference<span class="w"> </span>pass.
+W<span class="w"> </span><span class="o">[</span>HandleLayoutInfer:281<span class="o">]</span>Op<span class="w"> </span><span class="m">162</span>:<span class="w"> </span>default<span class="w"> </span>layout<span class="w"> </span>inference<span class="w"> </span>pass.
+Time:<span class="w"> </span><span class="m">8</span><span class="w"> </span>ms
+Found<span class="w"> </span>objects:
+<span class="w">   </span><span class="m">2</span><span class="w"> </span>bicycle<span class="w"> </span><span class="m">0</span>.74609375<span class="w"> </span><span class="o">[</span><span class="m">0</span>.22455344<span class="w"> </span><span class="m">0</span>.15004507<span class="w"> </span><span class="m">0</span>.7796775<span class="w">  </span><span class="m">0</span>.79142797<span class="o">]</span>
+<span class="w">   </span><span class="m">3</span><span class="w"> </span>car<span class="w"> </span><span class="m">0</span>.72265625<span class="w"> </span><span class="o">[</span><span class="m">0</span>.13997436<span class="w"> </span><span class="m">0</span>.603076<span class="w">   </span><span class="m">0</span>.29882038<span class="w"> </span><span class="m">0</span>.910733<span class="w">  </span><span class="o">]</span>
+<span class="w">   </span><span class="m">18</span><span class="w"> </span>dog<span class="w"> </span><span class="m">0</span>.6328125<span class="w"> </span><span class="o">[</span><span class="m">0</span>.34737465<span class="w"> </span><span class="m">0</span>.17417745<span class="w"> </span><span class="m">0</span>.9401951<span class="w">  </span><span class="m">0</span>.4078675<span class="w"> </span><span class="o">]</span>
+<span class="w">   </span><span class="m">3</span><span class="w"> </span>car<span class="w"> </span><span class="m">0</span>.60546875<span class="w"> </span><span class="o">[</span><span class="m">0</span>.11568993<span class="w"> </span><span class="m">0</span>.57076305<span class="w"> </span><span class="m">0</span>.27453592<span class="w"> </span><span class="m">0</span>.84135157<span class="o">]</span>
+</code></pre></div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>When running the script, you may see some warning messages.</p>
+<p><div class="highlight"><pre><span></span><code>WARNING:<span class="w"> </span>Fallback<span class="w"> </span>unsupported<span class="w"> </span>op<span class="w"> </span><span class="m">32</span><span class="w"> </span>to<span class="w"> </span>TfLite
+INFO:<span class="w"> </span>Created<span class="w"> </span>TensorFlow<span class="w"> </span>Lite<span class="w"> </span>XNNPACK<span class="w"> </span>delegate<span class="w"> </span><span class="k">for</span><span class="w"> </span>CPU.
+</code></pre></div>
+This is due to the NMS embedded in the model falls back to using the CPU. However, most of the backbone processes are being performed in the NPU.</p>
+<p>This can be quickly tested by removing the delegate specification when loading the model.  This will use the CPU which is ~30x slower.</p>
+<div class="highlight"><pre><span></span><code>INFO:<span class="w"> </span>Created<span class="w"> </span>TensorFlow<span class="w"> </span>Lite<span class="w"> </span>XNNPACK<span class="w"> </span>delegate<span class="w"> </span><span class="k">for</span><span class="w"> </span>CPU.
+Time:<span class="w"> </span><span class="m">225</span><span class="w"> </span>ms
+Found<span class="w"> </span>objects:
+<span class="w">    </span><span class="m">2</span><span class="w"> </span>bicycle<span class="w"> </span><span class="m">0</span>.74609375<span class="w"> </span><span class="o">[</span><span class="m">0</span>.23085383<span class="w"> </span><span class="m">0</span>.1440031<span class="w">  </span><span class="m">0</span>.77203083<span class="w"> </span><span class="m">0</span>.7495213<span class="w"> </span><span class="o">]</span>
+<span class="w">    </span><span class="m">3</span><span class="w"> </span>car<span class="w"> </span><span class="m">0</span>.72265625<span class="w"> </span><span class="o">[</span><span class="m">0</span>.14111352<span class="w"> </span><span class="m">0</span>.603076<span class="w">   </span><span class="m">0</span>.29995954<span class="w"> </span><span class="m">0</span>.910733<span class="w">  </span><span class="o">]</span>
+<span class="w">    </span><span class="m">18</span><span class="w"> </span>dog<span class="w"> </span><span class="m">0</span>.6328125<span class="w"> </span><span class="o">[</span><span class="m">0</span>.34737465<span class="w"> </span><span class="m">0</span>.17417745<span class="w"> </span><span class="m">0</span>.9401951<span class="w">  </span><span class="m">0</span>.4078675<span class="w"> </span><span class="o">]</span>
+<span class="w">    </span><span class="m">3</span><span class="w"> </span>car<span class="w"> </span><span class="m">0</span>.60546875<span class="w"> </span><span class="o">[</span><span class="m">0</span>.11568993<span class="w"> </span><span class="m">0</span>.57076305<span class="w"> </span><span class="m">0</span>.27453592<span class="w"> </span><span class="m">0</span>.84135157<span class="o">]</span>
+</code></pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Box Format</p>
+<p>The bounding boxes should be in the normalized format [ymin, xmin, ymax, xmax].</p>
+</div>
+<p>Furthermore, a new image should be saved <code>img_vis.jpg</code> showing the model output visualizations.</p>
+<figure>
+<img align="center" alt="Model Inference" src="../assets/img_vis.jpg" />
+
+<figcaption>Model Inference</figcaption>
+</figure>
+<p>The following breakdown of the script describing the steps of the model inference is provided below.</p>
+<ol>
+<li>
+<p>Load the model specifying the external delegate to use the device's NPU.</p>
+<div class="highlight"><pre><span></span><code><span class="n">model_path</span> <span class="o">=</span> <span class="s2">&quot;ssd_mobilenet_v1_0.75_depth_quantized_300x300_coco14_sync_2018_07_18.tflite&quot;</span>
+<span class="n">delegate</span> <span class="o">=</span> <span class="s2">&quot;/usr/lib/libvx_delegate.so&quot;</span>
+
+<span class="n">ext_delegate</span> <span class="o">=</span> <span class="n">load_delegate</span><span class="p">(</span><span class="n">delegate</span><span class="p">,</span> <span class="p">{})</span>
+<span class="n">ip</span> <span class="o">=</span> <span class="n">Interpreter</span><span class="p">(</span><span class="n">model_path</span><span class="o">=</span><span class="n">model_path</span><span class="p">,</span> <span class="n">experimental_delegates</span><span class="o">=</span><span class="p">[</span><span class="n">ext_delegate</span><span class="p">])</span>
+</code></pre></div>
+<div class="admonition note">
+<p class="admonition-title">OpenVX Delegate</p>
+<p>The OpenVX delegate is specified with <code>experimental_delegates=[ext_delegate]</code>. 
+To use the CPU, remove this specification.</p>
+</div>
+</li>
+<li>
+<p>Allocate tensors to allocate memory and sets up input/output tensor bindings.</p>
+<div class="highlight"><pre><span></span><code><span class="n">ip</span><span class="o">.</span><span class="n">allocate_tensors</span><span class="p">()</span>
+</code></pre></div>
+</li>
+<li>
+<p>Call invoke() once at the start as a model warmup since the first call may take up to 9 seconds to run. </p>
+<div class="highlight"><pre><span></span><code><span class="n">ip</span><span class="o">.</span><span class="n">invoke</span><span class="p">()</span>
+</code></pre></div>
+</li>
+<li>
+<p>Preprocess input image by resizing to the input shape of the model and type-casting the values to the input data type requirements of the model.</p>
+<div class="highlight"><pre><span></span><code><span class="n">image_path</span> <span class="o">=</span> <span class="s2">&quot;dog.jpg&quot;</span>
+
+<span class="n">input_det</span> <span class="o">=</span> <span class="n">ip</span><span class="o">.</span><span class="n">get_input_details</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">_</span><span class="p">,</span> <span class="n">height</span><span class="p">,</span> <span class="n">width</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">input_det</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;shape&quot;</span><span class="p">)</span>
+<span class="n">img</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">Image</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">image_path</span><span class="p">)</span><span class="o">.</span><span class="n">resize</span><span class="p">((</span><span class="n">width</span><span class="p">,</span> <span class="n">height</span><span class="p">)))</span>
+
+<span class="c1"># is TFLite quantized int8 model</span>
+<span class="n">int8</span> <span class="o">=</span> <span class="n">input_det</span><span class="p">[</span><span class="s2">&quot;dtype&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="n">np</span><span class="o">.</span><span class="n">int8</span>
+<span class="c1"># is TFLite quantized uint8 model</span>
+<span class="n">uint8</span> <span class="o">=</span> <span class="n">input_det</span><span class="p">[</span><span class="s2">&quot;dtype&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="n">np</span><span class="o">.</span><span class="n">uint8</span>
+<span class="k">if</span> <span class="n">int8</span> <span class="ow">or</span> <span class="n">uint8</span><span class="p">:</span>
+    <span class="n">img</span> <span class="o">=</span> <span class="n">img</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">uint8</span><span class="p">)</span> <span class="k">if</span> <span class="n">uint8</span> <span class="k">else</span> <span class="n">img</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">int8</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="n">img</span> <span class="o">=</span> <span class="n">img</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
+<span class="n">img</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">img</span><span class="p">])</span> 
+</code></pre></div>
+</li>
+<li>
+<p>Query inputs from the model's input details and set the input tensor.</p>
+<div class="highlight"><pre><span></span><code><span class="n">inp_id</span> <span class="o">=</span> <span class="n">ip</span><span class="o">.</span><span class="n">get_input_details</span><span class="p">()[</span><span class="mi">0</span><span class="p">][</span><span class="s2">&quot;index&quot;</span><span class="p">]</span>
+<span class="n">ip</span><span class="o">.</span><span class="n">set_tensor</span><span class="p">(</span><span class="n">inp_id</span><span class="p">,</span> <span class="n">img</span><span class="p">)</span>
+</code></pre></div>
+</li>
+<li>
+<p>Run model inference by calling the invoke() function.</p>
+<div class="highlight"><pre><span></span><code><span class="n">ip</span><span class="o">.</span><span class="n">invoke</span><span class="p">()</span>
+</code></pre></div>
+</li>
+<li>
+<p>Query model outputs from the model's output details.</p>
+<div class="highlight"><pre><span></span><code><span class="n">out_det</span> <span class="o">=</span> <span class="n">ip</span><span class="o">.</span><span class="n">get_output_details</span><span class="p">()</span>
+<span class="n">out_id0</span> <span class="o">=</span> <span class="n">out_det</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="s2">&quot;index&quot;</span><span class="p">]</span>
+<span class="n">out_id1</span> <span class="o">=</span> <span class="n">out_det</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="s2">&quot;index&quot;</span><span class="p">]</span>
+<span class="n">out_id2</span> <span class="o">=</span> <span class="n">out_det</span><span class="p">[</span><span class="mi">2</span><span class="p">][</span><span class="s2">&quot;index&quot;</span><span class="p">]</span>
+<span class="n">out_id3</span> <span class="o">=</span> <span class="n">out_det</span><span class="p">[</span><span class="mi">3</span><span class="p">][</span><span class="s2">&quot;index&quot;</span><span class="p">]</span>
+
+<span class="n">boxes</span> <span class="o">=</span> <span class="n">ip</span><span class="o">.</span><span class="n">get_tensor</span><span class="p">(</span><span class="n">out_id0</span><span class="p">)</span><span class="o">.</span><span class="n">squeeze</span><span class="p">()</span>
+<span class="n">classes</span> <span class="o">=</span> <span class="n">ip</span><span class="o">.</span><span class="n">get_tensor</span><span class="p">(</span><span class="n">out_id1</span><span class="p">)</span><span class="o">.</span><span class="n">squeeze</span><span class="p">()</span>
+<span class="n">scores</span> <span class="o">=</span> <span class="n">ip</span><span class="o">.</span><span class="n">get_tensor</span><span class="p">(</span><span class="n">out_id2</span><span class="p">)</span><span class="o">.</span><span class="n">squeeze</span><span class="p">()</span>
+<span class="n">num_det</span> <span class="o">=</span> <span class="n">ip</span><span class="o">.</span><span class="n">get_tensor</span><span class="p">(</span><span class="n">out_id3</span><span class="p">)</span><span class="o">.</span><span class="n">squeeze</span><span class="p">()</span>
+</code></pre></div>
+</li>
+</ol>
+<p>These are the postprocessed model outputs which can then be visualized.</p>
+<div class="admonition note">
+<p class="admonition-title">Output Decoding</p>
+<p>Output decoding which includes NMS postprocessing is already embedded inside the model.
+The model outputs a maximum of 10 detections.  Currently there is no option to set the NMS parameters such as IoU and score thresholds using this model. </p>
+</div>
+<h2 id="publisher-server">Publisher Server</h2>
+<p>Additionally, this can be all integrated to simulate the model service using any pre-defined SSD model, for this example we will use the pretrained TFLite SSD model. This can be done with the provided <a download="boxes2d_publisher.py" href="../assets/boxes2d_publisher.py">Publisher Script</a></p>
+<p>This script is required to run on the target as it will use the DMA Buffer topic to provide the images for the model. Additionally, the script will need to be run using sudo as it needs to access the file descriptor to get the DMA buffer and cannot without sudo. </p>
+<ol>
+<li>
+<p>Disable the current model service</p>
+<div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>systemctl<span class="w"> </span>stop<span class="w"> </span>model
+</code></pre></div>
+</li>
+<li>
+<p>You can then run the script using the following</p>
+<div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>python3<span class="w"> </span>boxes2d_publisher.py<span class="w"> </span>--model<span class="w"> </span>model.tflite<span class="w"> </span>--threshold<span class="w"> </span><span class="m">0</span>.5<span class="w"> </span>--shape<span class="w"> </span><span class="m">300</span>,300
+</code></pre></div>
+<p>The --model argument will be the path to the SSD model to be used to perform inference on the model and return boxes.
+The --threshold argument will set the score threshold for a box to be published by the server.
+The --shape argument is the input height,width of the model, comma delimited.</p>
+</li>
+<li>
+<p>The rt/model/boxes2d will now be published once again and can be subscribed to by any other example.</p>
+</li>
+</ol>
+<p>Once you disable the server, you should restart the model service
+<div class="highlight"><pre><span></span><code>sudo systemctl restart model
+</code></pre></div></p>
 
 
 
@@ -4695,10 +4858,10 @@
     
     
       
-      <script id="__config" type="application/json">{"base": "../../..", "features": ["content.code.copy", "content.tabs.link", "navigation.tracking", "navigation.tabs", "navigation.tabs.sticky", "navigation.path", "navigation.indexes", "navigation.top", "toc.follow"], "search": "../../../assets/javascripts/workers/search.d50fe291.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"alias": true, "default": "latest", "provider": "mike"}}</script>
+      <script id="__config" type="application/json">{"base": "../../../..", "features": ["content.code.copy", "content.tabs.link", "navigation.tracking", "navigation.tabs", "navigation.tabs.sticky", "navigation.path", "navigation.indexes", "navigation.top", "toc.follow"], "search": "../../../../assets/javascripts/workers/search.d50fe291.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"alias": true, "default": "latest", "provider": "mike"}}</script>
     
     
-      <script src="../../../assets/javascripts/bundle.50899def.min.js"></script>
+      <script src="../../../../assets/javascripts/bundle.50899def.min.js"></script>
       
         <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
       

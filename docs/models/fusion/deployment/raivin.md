@@ -30,7 +30,7 @@ This will open the session details and the models are listed under the "Artifact
 |----------------------------------------------------------------|-------------------------------------------------------------------------------|
 | ![session](../../assets/deployment/raivin-session-details.jpg) | ![artifacts](../../assets/deployment/raivin-session-details-tflite-model.jpg) | 
 
-Once the model is downloaded in your PC, you can `SCP` the model to the Raivin by using this command template.
+Once the model is downloaded in your PC, you can [SCP](../../../platforms/ssh.md#secure-copy) the model to the Raivin by using this command template.
 
 ```shell
 scp <path to the downloaded TFLite model> <destination path>
@@ -42,15 +42,13 @@ An example command is shown below.
 scp fusion.tflite torizon@verdin-imx8mp-07130049:~
 ```
 
-For more information, please visit [Secure Copy](../../../platforms/ssh.md#secure-copy).
-
 ### Download using the Client
 
 This method expects you to have already connected to the Raivin via [SSH](../../../platforms/ssh.md).  The [EdgeFirst Client](../../../perception/studio.md) can be installed via `pip3 install edgefirst-client`.  You can verify the installation with the client version command.
 
 ```shell
 $ edgefirst-client version
-EdgeFirst Studio Server: 3.7.5-def7735 Client: 1.3.4
+EdgeFirst Studio Server: 3.7.8-a50429e Client: 1.3.3
 ```
 
 Next login to the client with the command.
@@ -73,7 +71,7 @@ The `download-artifact` expects three arguments.
 * model name: Pass the specific model that will be downloaded to the device. Usually this is `fusion.tflite`.
 * download path (optional): Specify the path to download the model.  If not provided, it will download to the current working directory.
 
-Please see [EdgeFirst Client](../../../perception/studio.md) For more information on using the client via command line.
+You can find more information on using the [EdgeFirst Client](../../../perception/studio.md) in the command line.
 
 ## Visit the Web UI Service
 
@@ -94,6 +92,9 @@ For more information, please see the [Web UI Walkthrough](../../../platforms/wal
 ## Update the Model Path
 
 Next you will need to specify the path to the model in the device.  You can either update the model path in the Web UI or via the command line.
+
+!!! note "Configure Model Settings"
+    Whenever a new model has been updated, ensure that the [model settings](../../../platforms/configuration.md#model-configuration) such as the score and the IoU thresholds are ideally set for this model. 
 
 ### Web UI
 

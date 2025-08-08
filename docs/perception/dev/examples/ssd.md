@@ -73,7 +73,7 @@ Found objects:
     ```
 
 !!! note "Box Format"
-    The bounding boxes should be in the normalized format [ymin, xmin, ymax, xmax].
+    The bounding boxes should be in the normalized format \[ymin, xmin, ymax, xmax].
 
 Furthermore, a new image should be saved `img_vis.jpg` showing the model output visualizations.
 

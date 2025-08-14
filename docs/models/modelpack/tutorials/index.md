@@ -1,14 +1,21 @@
 # Quick Start Guide
 
-This section includes several tutorials that guide users through the complete Embedded Machine Learning process, from data collection and annotation to model training, validation, and deployment (either on edge devices or PCs).
+This section includes several tutorials that guide users through the complete Machine Learning Operations (MLOps) in EdgeFirst Studio for ModelPack.  Starting from data collection and annotation to model training, validation, and deployment (either on Edge Devices or PCs).
 
-### [Tutorial 1: Detection and Segmentation of Measurement tapes](measurement_tape.md)
+## [Tutorial 1: Measurement Tape Detector](measurement_tape.md)
 
-The Measurement Tape tutorial demonstrates how to collect data using a **video recording device**, import it into EdgeFirst Studio for annotation, and train a ModelPack instance that performs both detection and segmentation tasks in a single inference cycle.
+The Measurement Tape tutorial demonstrates how to collect data using a phone and then import the data into EdgeFirst Studio for annotation, and finally train a ModelPack Vision model that performs both detection and segmentation in a single inference cycle.
 
-### [Tutorial 2: Musicbox Detector](musicbox.md)
+<figure markdown="span">
+![Measurement Tape Inference](../../assets/tutorials/measurement_tape/model_output.png){ align=center }
+<figcaption>Measurement Tape Inference</figcaption>
+</figure>
 
-The MusicBox Tutorial demonstrates the complete workflow using **Maivin devices**. Users will learn how to collect data, import it into EdgeFirst Studio, annotate it, train a model, and deploy it back to the target device. By the end of this tutorial, users will have the knowledge and tools to collect their own data and experiment with ModelPack at any scale.
+## [Tutorial 2: Musicbox Detector](musicbox.md)
 
-![MusicBox](assets/musicbox-tutorial-header.png)
+The MusicBox tutorial demonstrates the complete workflow using [Maivin](../../../platforms/quickstart.md) platform.  Users will learn how to collect data, import data into EdgeFirst Studio, annotate data, train a model, and deploy the model back to the device.  By the end of this tutorial, users will have the knowledge and tools to collect their own data and experiment with ModelPack at any scale.
 
+<figure markdown="span">
+![MusicBox Inference](../../assets/tutorials/musicbox/musicbox-tutorial-header.png){ align=center }
+<figcaption>MusicBox Inference</figcaption>
+</figure>

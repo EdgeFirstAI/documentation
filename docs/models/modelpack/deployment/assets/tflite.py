@@ -12,10 +12,10 @@ Run the script using `python tflite_example.py`
 import os
 import numpy as np
 from PIL import Image, ImageFont, ImageDraw
-from tflite_runtime.interpreter import (
-    Interpreter,
-    load_delegate
-)
+import tensorflow as tf 
+
+Interpreter = tf.lite.Interpreter
+load_delegate = tf.lite.experimental.load_delegate
 
 # NMS implementation in Python and Numpy
 def NMS(bboxes, psocres, threshold):
@@ -54,7 +54,7 @@ def NMS(bboxes, psocres, threshold):
 
 # Loading the Model
 delegate = '/usr/lib/libvx_delegate.so' # Edge device NPU delegate (Optional).
-model_path = "modelpack.tflite"
+model_path = "Coffee Cup Detection-t-f58.tflite"
 
 if os.path.exists(delegate) and delegate.endswith(".so"):
     ext_delegate = load_delegate(delegate, {})
@@ -69,7 +69,6 @@ model.allocate_tensors()
 input_details = model.get_input_details()
 output_details = model.get_output_details()
 
-dtype = "uint8"
 shape = input_details[0]['shape'][1:3]
 height, width = shape
 
@@ -79,7 +78,14 @@ original = Image.open(image_path)
 
 # Image Preprocessing
 image = original.resize((width, height))
-image = np.array(image).astype(np.uint8) 
+# is TFLite quantized int8 model
+int8 = input_details[0]["dtype"] == np.int8
+# is TFLite quantized uint8 model
+uint8 = input_details[0]["dtype"] == np.uint8
+if int8 or uint8:
+    image = np.array(image).astype(np.uint8) if uint8 else np.array(image).astype(np.int8)
+else:
+    image = np.array(image).astype(np.float32)
 input_tensor = np.expand_dims(image, axis=0)
 
 # Model Inference

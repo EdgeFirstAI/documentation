@@ -51,4 +51,4 @@ If testing a model trained using a few images collected on a phone you'll notice
 
 You can also access the MCAP recordings from the working directory where the `edgefirst live` command was run.
 
-Once you have your MCAP download to your PC you may upload it to EdgeFirst Studio to annotate and further train your model.  Uploading MCAP recordings is done through the [Snapshot Dashboard](../../../studio/snapshots.md).
+Once you have your MCAP download to your PC you may upload it to EdgeFirst Studio to annotate and further train your model.  Uploading MCAP recordings is done through the [Snapshot Dashboard](../../../studio/snapshots.md#upload-from-mcap-file).

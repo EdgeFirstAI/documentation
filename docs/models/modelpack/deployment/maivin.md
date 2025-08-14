@@ -3,13 +3,13 @@
 Now that you have validated your Vision Model from either a [managed](../validation/managed.md) or [user-managed](../validation/user_managed.md) session, this guide will walk you through deploying Vision models in a [Maivin Platform](../../../platforms/index.md).  
 
 **Maivin 1** | **Maivin 2** 
-:------------------:|:------------------:
+:-----------:|:--------------:
 ![Maivin 1](../../../platforms/assets/maivin-1.png) | ![Maivin 2](../../../platforms/assets/maivin-2.png) 
 
 This guide will showcase two methods of deploying the model.
 
-1. [Live View (Segmentation App)](#live-view-segmentation-app)
-2. [MCAP Recording](#record-mcap)
+1. [Live View (Segmentation App)](#live-view-segmentation-app): Displays the live camera feed using the default model provided.
+2. [MCAP Recording](#record-mcap): Allows control of the recording options and provides download file options to replay the recording.
 
 ## Download the Model
 
@@ -17,7 +17,7 @@ First download the model from EdgeFirst Studio into the Maivin Platform.  There 
 
 ### Download and SCP
 
-As mentioned under the [Trained Models](../training.md#training-outcomes) section, the trained models can be downloaded by clicking the "View Additional Details" button on the training session card in EdgeFirst Studio. 
+As mentioned under the [Training Outcomes](../training.md#training-outcomes) section, the trained models can be downloaded by clicking the "View Additional Details" button on the training session card in EdgeFirst Studio. 
 
 <figure markdown="span">
 ![Training Session Attributes](../../assets/training/training-session-attributes.jpg){ align=center }
@@ -28,9 +28,9 @@ This will open the session details and the models are listed under the "Artifact
 
 | Session Details                                                | Artifacts                                                                     |
 |----------------------------------------------------------------|-------------------------------------------------------------------------------|
-| ![session](../../assets/deployment/maivin-session-details.jpg) | ![artifacts](../../assets/deployment/maivin-session-details-tflite-model.jpg) | 
+| ![session](../../assets/training/vision-session-details.jpg) | ![artifacts](../../assets/training/vision-session-artifacts.jpg) | 
 
-Once the model is downloaded in your PC, you can `SCP` the model to the Maivin by using this command template.
+Once the model is downloaded in your PC, you can [SCP](../../../platforms/ssh.md#secure-copy) the model to the Maivin by using this command template.
 
 ```shell
 scp <path to the downloaded TFLite model> <destination path>
@@ -42,15 +42,13 @@ An example command is shown below.
 scp modelpack.tflite torizon@verdin-imx8mp-15140753:~
 ```
 
-For more information, please visit [Secure Copy](../../../platforms/ssh.md#secure-copy).
-
 ### Download using the Client
 
 This method expects you to have already connected to the Maivin via [SSH](../../../platforms/ssh.md).  The [EdgeFirst Client](../../../perception/studio.md) can be installed via `pip3 install edgefirst-client`.  You can verify the installation with the client version command.
 
 ```shell
 $ edgefirst-client version
-EdgeFirst Studio Server: 3.7.5-def7735 Client: 1.3.4
+EdgeFirst Studio Server: 3.7.8-a50429e Client: 1.3.3
 ```
 
 Next login to the client with the command.
@@ -70,7 +68,7 @@ edgefirst-client download-artifact <session ID> <model name>
 The `download-artifact` expects three arguments.
 
 * session ID: Pass the integer trainer or validation session ID associated with the models.
-* model name: Pass the specific model that will be downloaded to the device.  Usually this is `modelpack.tflite`.
+* model name: Pass the specific model that will be downloaded to the device.  Usually this is `mymodel.tflite`.
 * download path (optional): Specify the path to download the model.  If not provided, it will download to the current working directory.
 
 You can find more information on using the [EdgeFirst Client](../../../perception/studio.md) in the command line.
@@ -168,7 +166,7 @@ Now you will see live inference of the model in the device.  Once the model and 
 <figcaption>Segmentation App</figcaption>
 </figure>
 
-This will run inference on the model specified to generate segmentation masks on the detected objects.  In this case, the model is identifying people in the video feed.  An example is shown below.
+This will run inference on the model specified to generate segmentation masks on the detected objects.  In this case, the model is identifying coffee cups in the video feed.  An example is shown below.
 
 <figure markdown="span">
 ![Segmentation Sample 1](../../assets/deployment/segmentation-sample-1.jpg){ align=center }

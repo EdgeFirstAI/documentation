@@ -52,6 +52,15 @@ This format is the [EdgeFirst Dataset Format](../datasets/format.md) where the [
 2. Click on the "FROM FILE" button and then select the Zip and Arrow file pairs to import or drag and drop as a folder containing Zip and Arrow file pairs onto the dashboard. 
 3. Once the files are selected, this will start the import sequence progress shown below.
 
+### Pipeline
+When creating a snapshot a pipeline with the following stages are deployed.
+
+1. Server Initialization: Initialize the backend server for handling the processes.
+2. Downloading Files from Cloud Storage: Fetches the dataset images from the S3 bucket.
+3. Exporting Files from Database: Fetches the dataset annotations from the Studio database.
+4. Zipping Files for Upload: Formulation of the [EdgeFirst Dataset Format](../datasets/format.md) and placing the fetched dataset files as a single Zip file.
+5. Uploading Snapshot to Cloud Storage: Uploading the dataset into S3 bucket.
+
 ## Restore Snapshot
 
 This action will take an MCAP or Zip/Arrow files and create a dataset in EdgeFirst Studio.  The backend pipelines for auto depth map generation, object detection, and Automated Ground Truth Generation can also be selected at this time while restoring.
@@ -89,6 +98,16 @@ The stages for restoring a snapshot are shown below.
 10. Click "RESTORE SNAPSHOT".
 11. The dataset dashboard will have a new dataset with progress indication.
 12. The progress for different stages will be at different rates.
+
+### Pipeline
+When restoring a snapshot a pipeline with the following stages are deployed.
+
+1. Download Snapshot from Cloud Storage: Fetches the dataset from the S3 server.
+2. Converting MCAP to Dataset: This is only present when the method of [creating a snapshot](#upload-from-mcap-file) is from an MCAP file.
+3. Automatic Annotations Generation: Runs AGTG to auto annotate the dataset with COCO labels.
+4. Prepare Data for Upload: Data preparation processes.
+5. Importing Images and Annotations to Database: Uploading the images and annotations to the Studio database.
+6. Uploading Files to Cloud Storage: Uploading the annotated dataset back into S3 bucket.
 
 ## Download Snapshot
 

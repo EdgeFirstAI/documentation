@@ -84,7 +84,7 @@ Click the PROPAGATE button for SAM-2 to start tracking and annotating the object
 <figcaption>Propagation Process</figcaption>
 </figure>
 
-Once the propagation completes, click on "SAVE ANNOTATIONS" to save the annotations.  A completed propagation will show the 2D annotations with masks and 2D bounding boxes for each object across the video frames.  If LiDAR or Radar readings are available in the dataset, the 3D annotations will also be generated. 
+Once the propagation completes, click on "SAVE ANNOTATIONS" to save the annotations.  The "SAVE ANNOTATIONS" button will save the edited, deleted, or created annotations for this image.  Otherwise, moving to any other image or going to another page will discard the changes.  A completed propagation will show the 2D annotations with masks and 2D bounding boxes for each object across the video frames.  If LiDAR or Radar readings are available in the dataset, the 3D annotations will also be generated. 
 
 !!! tip
     For cases where the object exits and then re-enters the frame, the object might not be tracked properly.  Repeat the steps as necessary to annotate the objects that were missed.

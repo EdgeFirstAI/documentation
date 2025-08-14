@@ -516,6 +516,8 @@
       
         
       
+        
+      
     
     
     
@@ -589,12 +591,12 @@
   
   
     <li class="md-nav__item">
-      <a href="../../getting_started/workflows/web/" class="md-nav__link">
+      <a href="../../getting_started/workflows/tourist_plus/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
-    Web-Based Workflow
+    Tourist Plus Workflow
     
   </span>
   
@@ -612,12 +614,35 @@
   
   
     <li class="md-nav__item">
-      <a href="../../getting_started/workflows/edgefirst/" class="md-nav__link">
+      <a href="../../getting_started/workflows/web/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
-    EdgeFirst Platform Workflow
+    Web Workflow
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../getting_started/workflows/maivin/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Maivin Workflow
     
   </span>
   
@@ -1158,6 +1183,15 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#pipeline" class="md-nav__link">
+    <span class="md-ellipsis">
+      Pipeline
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -1169,6 +1203,21 @@
       Restore Snapshot
     </span>
   </a>
+  
+    <nav class="md-nav" aria-label="Restore Snapshot">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#pipeline_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Pipeline
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -1954,7 +2003,7 @@
   
   
   <span class="md-ellipsis">
-    Tutorial 1: Detection and Segmentation of Measurement tapes
+    Tutorial 1: Measurement Tape Detector
     
   </span>
   
@@ -1977,7 +2026,7 @@
   
   
   <span class="md-ellipsis">
-    Tutorial 2: The Music Box Detector
+    Tutorial 2: MusicBox Detector
     
   </span>
   
@@ -4569,6 +4618,15 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#pipeline" class="md-nav__link">
+    <span class="md-ellipsis">
+      Pipeline
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -4580,6 +4638,21 @@
       Restore Snapshot
     </span>
   </a>
+  
+    <nav class="md-nav" aria-label="Restore Snapshot">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#pipeline_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Pipeline
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -4673,6 +4746,15 @@
 <li>Click on the "FROM FILE" button and then select the Zip and Arrow file pairs to import or drag and drop as a folder containing Zip and Arrow file pairs onto the dashboard. </li>
 <li>Once the files are selected, this will start the import sequence progress shown below.</li>
 </ol>
+<h3 id="pipeline">Pipeline</h3>
+<p>When creating a snapshot a pipeline with the following stages are deployed.</p>
+<ol>
+<li>Server Initialization: Initialize the backend server for handling the processes.</li>
+<li>Downloading Files from Cloud Storage: Fetches the dataset images from the S3 bucket.</li>
+<li>Exporting Files from Database: Fetches the dataset annotations from the Studio database.</li>
+<li>Zipping Files for Upload: Formulation of the <a href="../../datasets/format/">EdgeFirst Dataset Format</a> and placing the fetched dataset files as a single Zip file.</li>
+<li>Uploading Snapshot to Cloud Storage: Uploading the dataset into S3 bucket.</li>
+</ol>
 <h2 id="restore-snapshot">Restore Snapshot</h2>
 <p>This action will take an MCAP or Zip/Arrow files and create a dataset in EdgeFirst Studio.  The backend pipelines for auto depth map generation, object detection, and Automated Ground Truth Generation can also be selected at this time while restoring.</p>
 <p>The tutorial for restoring snapshots can be found under the <a href="../../datasets/tutorials/annotations/automatic/#restore-snapshot">Dataset Annotations</a> section.</p>
@@ -4709,6 +4791,16 @@
 <li>Click "RESTORE SNAPSHOT".</li>
 <li>The dataset dashboard will have a new dataset with progress indication.</li>
 <li>The progress for different stages will be at different rates.</li>
+</ol>
+<h3 id="pipeline_1">Pipeline</h3>
+<p>When restoring a snapshot a pipeline with the following stages are deployed.</p>
+<ol>
+<li>Download Snapshot from Cloud Storage: Fetches the dataset from the S3 server.</li>
+<li>Converting MCAP to Dataset: This is only present when the method of <a href="#upload-from-mcap-file">creating a snapshot</a> is from an MCAP file.</li>
+<li>Automatic Annotations Generation: Runs AGTG to auto annotate the dataset with COCO labels.</li>
+<li>Prepare Data for Upload: Data preparation processes.</li>
+<li>Importing Images and Annotations to Database: Uploading the images and annotations to the Studio database.</li>
+<li>Uploading Files to Cloud Storage: Uploading the annotated dataset back into S3 bucket.</li>
 </ol>
 <h2 id="download-snapshot">Download Snapshot</h2>
 <ol>

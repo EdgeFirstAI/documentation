@@ -516,6 +516,8 @@
       
         
       
+        
+      
     
     
     
@@ -589,12 +591,12 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../getting_started/workflows/web/" class="md-nav__link">
+      <a href="../../../getting_started/workflows/tourist_plus/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
-    Web-Based Workflow
+    Tourist Plus Workflow
     
   </span>
   
@@ -612,12 +614,35 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../getting_started/workflows/edgefirst/" class="md-nav__link">
+      <a href="../../../getting_started/workflows/web/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
-    EdgeFirst Platform Workflow
+    Web Workflow
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../getting_started/workflows/maivin/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Maivin Workflow
     
   </span>
   
@@ -1834,7 +1859,7 @@
   
   
   <span class="md-ellipsis">
-    Tutorial 1: Detection and Segmentation of Measurement tapes
+    Tutorial 1: Measurement Tape Detector
     
   </span>
   
@@ -1857,7 +1882,7 @@
   
   
   <span class="md-ellipsis">
-    Tutorial 2: The Music Box Detector
+    Tutorial 2: MusicBox Detector
     
   </span>
   
@@ -4599,7 +4624,7 @@
 
 
 <h1 id="validating-fusion-models">Validating Fusion Models</h1>
-<p>This tutorial will describe the steps to validate the performance of <strong>Fusion</strong> models in EdgeFirst Studio that have been trained through the <a href="../../../getting_started/workflows/">end-to-end workflows</a> or <a href="../training/">Training Fusion</a>.  For a tutorial to validate ModelPack Vision models, see <a href="../../tutorials/validation/">Validating ModelPack</a>.</p>
+<p>This tutorial will describe the steps to validate the performance of <strong>Fusion</strong> models in EdgeFirst Studio that have been trained through the <a href="../../../getting_started/workflows/">end-to-end workflows</a> or <a href="../training/">Training Fusion</a>.  For a tutorial to validate ModelPack Vision models, see <a href="../../tutorials/validation/#modelpack">Validating ModelPack</a>.</p>
 <div style="text-align: center;">
     <iframe width="560" height="315" src="https://www.youtube.com/embed/oKh4k0CCLmU" title="Fusion Validation Workflow" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 </div>
@@ -4635,7 +4660,7 @@
 
 <figcaption>New Session Button</figcaption>
 </figure>
-<p>You will be greeted with the validation session configuration window.  In this window, specify the name of the validation session, the model to validate, and the dataset to deploy.  In this example, the TFLite model will be validated and the "Raivin Ultra Short 25.03" dataset with the validation partition will be used.  Next specify, the validation parameters such as the detection window size and the detection threshold.  Additional information on these parameters are provided by hovering over the info buttons as indicated in red below. </p>
+<p>You will be greeted with the validation session dialog.  In this dialog, specify the name of the validation session, the model to validate, and the dataset to deploy.  In this example, the TFLite model will be validated and the "Raivin Ultra Short 25.03 (Copy)" dataset with the validation partition will be used.  Next specify, the validation parameters such as the detection window size and the detection threshold.  Additional information on these parameters are provided by hovering over the info button <img alt="Info Button" src="../../../assets/buttons/studio-info-button.jpg" />. </p>
 <p>The only augmentation available for this type of validation is <code>blur</code>.  See <a href="../../augmentations/#blur">Vision Augmentations</a> for further details.</p>
 <figure>
 <img align="center" alt="Validation Session Fields" src="../../assets/validation/fusion-session-fields.jpg" />

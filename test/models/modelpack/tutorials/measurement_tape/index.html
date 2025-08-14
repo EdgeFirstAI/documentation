@@ -26,7 +26,7 @@
     
     
       
-        <title>Tutorial 1: Detection and Segmentation of Measurement tapes - EdgeFirst Studio Documentation</title>
+        <title>Tutorial 1: Measurement Tape Detector - EdgeFirst Studio Documentation</title>
       
     
     
@@ -90,7 +90,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#tutorial-1-detection-and-segmentation-of-measurement-tapes" class="md-skip">
+        <a href="#tutorial-1-measurement-tape-detector" class="md-skip">
           Skip to content
         </a>
       
@@ -129,7 +129,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Tutorial 1: Detection and Segmentation of Measurement tapes
+              Tutorial 1: Measurement Tape Detector
             
           </span>
         </div>
@@ -516,6 +516,8 @@
       
         
       
+        
+      
     
     
     
@@ -589,12 +591,12 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../getting_started/workflows/web/" class="md-nav__link">
+      <a href="../../../../getting_started/workflows/tourist_plus/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
-    Web-Based Workflow
+    Tourist Plus Workflow
     
   </span>
   
@@ -612,12 +614,35 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../getting_started/workflows/edgefirst/" class="md-nav__link">
+      <a href="../../../../getting_started/workflows/web/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
-    EdgeFirst Platform Workflow
+    Web Workflow
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../getting_started/workflows/maivin/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Maivin Workflow
     
   </span>
   
@@ -1847,7 +1872,7 @@
   
   
   <span class="md-ellipsis">
-    Tutorial 1: Detection and Segmentation of Measurement tapes
+    Tutorial 1: Measurement Tape Detector
     
   </span>
   
@@ -1860,7 +1885,7 @@
   
   
   <span class="md-ellipsis">
-    Tutorial 1: Detection and Segmentation of Measurement tapes
+    Tutorial 1: Measurement Tape Detector
     
   </span>
   
@@ -1916,39 +1941,6 @@
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Model Inference on PC">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#requirements" class="md-nav__link">
-    <span class="md-ellipsis">
-      Requirements
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#inference" class="md-nav__link">
-    <span class="md-ellipsis">
-      Inference
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#appendix-1-nms-code-snippet" class="md-nav__link">
-    <span class="md-ellipsis">
-      Appendix 1: NMS Code snippet
-    </span>
-  </a>
-  
 </li>
       
     </ul>
@@ -1972,7 +1964,7 @@
   
   
   <span class="md-ellipsis">
-    Tutorial 2: The Music Box Detector
+    Tutorial 2: MusicBox Detector
     
   </span>
   
@@ -4561,39 +4553,6 @@
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Model Inference on PC">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#requirements" class="md-nav__link">
-    <span class="md-ellipsis">
-      Requirements
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#inference" class="md-nav__link">
-    <span class="md-ellipsis">
-      Inference
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#appendix-1-nms-code-snippet" class="md-nav__link">
-    <span class="md-ellipsis">
-      Appendix 1: NMS Code snippet
-    </span>
-  </a>
-  
 </li>
       
     </ul>
@@ -4612,212 +4571,61 @@
 
 
 
-<h1 id="tutorial-1-detection-and-segmentation-of-measurement-tapes">Tutorial 1: Detection and Segmentation of Measurement tapes</h1>
-<p>This tutorial shows step by step the whole Machine Learning process on Edgefirst Studio. The tutorial is split in the following sections:</p>
+<h1 id="tutorial-1-measurement-tape-detector">Tutorial 1: Measurement Tape Detector</h1>
+<p>This tutorial shows the step by step Machine Learning process in Edgefirst Studio.</p>
 <ul>
 <li><a href="#data-collection">Data Collection</a></li>
-<li><a href="#data-annotation-using-agtg">Data Annotation using AGTG</a></li>
+<li><a href="#data-annotation-using-agtg">Data Annotation</a></li>
 <li><a href="#model-training">Model Training</a></li>
 <li><a href="#model-inference-on-pc">Model Inference on PC</a></li>
 </ul>
 <h2 id="data-collection">Data Collection</h2>
-<p>Data collection process starts as simple as collecting pictures and videos of the objects. </p>
-<p><img alt="Data Collection" src="../assets/measurement_tap/data_collection.png" /></p>
-<p>The image above shows measurement tape images captured from different angles and positions using an iPhone, though any camera will work you just need to be able to transfer the photos and videos to your PC. We recorded both images and videos with varying camera orientations to ensure diverse perspectives.</p>
-<p>To create a dataset in EdgeFirst Studio, navigate to the Tutorials project and click the <code>Create New</code> button. Name the dataset "MeasurementTape" and add a single label: <code>tape</code>. You can keep the default <code>Annotations Set Name</code> or modify it as needed. Adding a description will be useful when accessing the dataset through the <code>edgefirst-client</code> API.</p>
-<p><img alt="Create New Dataset Dialog" src="../assets/measurement_tap/create_new_dataset.png" /></p>
-<p>Once the dataset is created, click the menu in the top-right corner of the dataset card to import data from your PC or smartphone.</p>
-<p><img alt="Import Dataset Menu" src="../assets/measurement_tap/import_dataset.png" /></p>
-<p>In the Import Dialog, you can choose between importing an Images Folder or Video. For images, you can drag and drop multiple files at once. For videos, you can only import one at a time and set the FPS (Frames per Second) ratio.</p>
-<p><img alt="Import Dialog" src="../assets/measurement_tap/import_dialow.png" /></p>
-<p>After importing, check the gallery view to verify that all data (videos and images) has been imported successfully.</p>
-<p><img alt="Dataset Galery" src="../assets/measurement_tap/dataset_view.png" /></p>
-<p>Note that videos appear as sequences with a play button overlay on the preview.</p>
-<div class="admonition info">
-<p class="admonition-title">Info</p>
-<p>We recommend using videos rather than individual images. This is because AGTG leverages tracking information, allowing you to annotate just a single frame. With individual images, you'll need to annotate each one separately.</p>
+<p>Data collection process starts as simple as collecting pictures and videos of the objects.  In this example, the objects to detect are measurement tapes.</p>
+<figure>
+<img align="center" alt="Data Collection" src="../../../assets/tutorials/measurement_tape/data_collection.png" />
+
+<figcaption>Data Collection</figcaption>
+</figure>
+<p>The image above shows measurement tape images captured from different angles and positions using an iPhone, though any camera will work you just need to be able to transfer the photos and videos to your PC. We recorded both images and videos with varying camera orientations to ensure diverse perspectives.  </p>
+<p>Follow this <a href="../../../../datasets/tutorials/capture/#capture-with-a-phone">tutorial</a> for capturing images and videos with your phone and uploading the files into EdgeFirst Studio for annotation.</p>
+<p>After uploading the files, check the <a href="../../../../datasets/tutorials/management/#view-dataset">gallery</a> view to verify that all data (videos and images) has been imported successfully.</p>
+<figure>
+<img align="center" alt="Dataset Gallery" src="../../../assets/tutorials/measurement_tape/dataset_view.png" />
+
+<figcaption>Dataset Gallery</figcaption>
+</figure>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Videos appear as sequences with a play button overlay on the preview thumbnail.</p>
 </div>
 <h2 id="data-annotation-using-agtg">Data Annotation using AGTG</h2>
-<p>Once the dataset is loaded, you can start the AGTG server from the gallery view. Select any dataset instance (image or video) from the gallery view to automatically enter editing mode.</p>
-<p><img alt="AGTG Start Server" src="../assets/measurement_tap/start_agtg_server.png" /></p>
-<p>Click the AI-assisted button on the left side of the GUI to open the AGTG Manager View. On first use, you'll see an empty server list. Click the LAUNCH AGTG SERVER button and wait a few minutes for the server to initialize.</p>
-<p><img alt="AGTG Ready" src="../assets/measurement_tap/agtg_ready.png" /></p>
-<p>The annotation process is straightforward. For each video, you'll need to initialize the state and begin annotating. You can use multiple prompts per object (Boxes, Points). Each object must be annotated independently so the tracker can assign a unique ID. Use the <strong><code>(+)</code></strong> button to add more objects. In the example below, we used box prompts. Click the <strong><code>SAVE PENDING ANNOTATIONS</code></strong> button to save your work. Continue this process until you've annotated the entire dataset.</p>
-<p>You can also annotate in reverse mode by starting with the last occurrence of an object and tracking backwards.</p>
-<p><img alt="AGTG annotations" src="../assets/measurement_tap/agtg_annotate.png" /></p>
-<div class="admonition info">
-<p class="admonition-title">Info</p>
-<p>The first object in each sequence may take a few seconds to initialize, which is normal.</p>
-</div>
+<p>Once the dataset samples has been uploaded to EdgeFirst Studio, you can start annotating the samples via <a href="../../../../datasets/tutorials/annotations/automatic/#semi-automatic-ground-truth-generation">Automatic Ground Truth Generation (AGTG)</a>. </p>
 <p>After completing the annotations, the gallery will display previews of all annotated videos and images.</p>
-<p><img alt="Annotations Preview" src="../assets/measurement_tap/gallery_full_annotations_view.png" /></p>
-<p>You are now ready to begin model training.</p>
+<figure>
+<img align="center" alt="Annotations Preview" src="../../../assets/tutorials/measurement_tape/gallery_full_annotations_view.png" />
+
+<figcaption>Annotations Preview</figcaption>
+</figure>
+<p>Once your dataset has been fully annotated, you are now ready to begin model training.</p>
 <h2 id="model-training">Model Training</h2>
-<p>We will now walk you through training a detection and segmentation model, but first there's a few house keeping steps to prepare the dataset. The first step is to ensure your dataset contains training and validation groups. If the GUI shows 0 Groups, you'll need to create them before starting training. Click the <strong><code>(+)</code></strong> button in the groups section to randomly shuffle the data and create the groups.  This will also need to be done after adding additional images and videos to the dataset.</p>
-<p><img alt="Create Groups" src="../assets/measurement_tap/create_dataset_groups.png" /></p>
-<p>Once the groups are created, you can select a training session for ModelPack from the Model Experiments menu.</p>
-<p><img alt="Model Experiments" src="../assets/measurement_tap/model_experiments.png" /></p>
-<p>Create a <strong><code>New Experiment</code></strong> and name it <em>Measurement Tape Tutorial</em></p>
-<p><img alt="New Experiment" src="../assets/measurement_tap/new_experiment_creation.png" /></p>
-<p>After creating the experiment, a new preview will appear in the GUI showing statistics about experiments made on this dataset (everything will be empty at creation time).</p>
-<p><img alt="Experiment Card" src="../assets/measurement_tap/expriment_card.png" /></p>
-<p>Select the experiment and create a new instance of ModelPack by clicking the training section on the preview card. Click the <strong><code>NEW SESSION</code></strong> button to configure ModelPack parameters. You must select a dataset and provide a descriptive name. Remember to check segmentation to enable training on both tasks. We recommend changing the input resolution to 640x360 to maximize detection rates on small datasets. Once the GUI is configured, click <strong><code>START SESSION</code></strong> and wait a few minutes for the model to complete training and quantization.</p>
-<p><img alt="New ModelPack training session" src="../assets/measurement_tap/new_modelpack_training_session.png" /></p>
-<p>Now that training has started, wait for the model to finish processing and for the status to change from <code>Running</code> to <code>Complete</code></p>
-<p><img alt="Status Training" src="../assets/measurement_tap/training_status.png" /></p>
-<p><img alt="Training Complete" src="../assets/measurement_tap/training_complete.png" /></p>
+<p>We will now walk you through training a detection and segmentation model (multitask), but first ensure that your dataset contains training and validation groups.  If the GUI shows 0 Groups, you'll need to <a href="../../../../datasets/tutorials/management/#split-dataset">create training and validation groups</a> before starting training. </p>
+<p>Once the groups have been created, follow these steps for <a href="../../training/">training your model</a>. </p>
 <h2 id="model-inference-on-pc">Model Inference on PC</h2>
-<p>Now that ModelPack has been trained on our dataset, we can download the <code>modelpack.onnx</code> file from the artifacts and run inference. In this section, we'll walk through the steps required to run the model and visualize the results.</p>
-<p><img alt="Input Image" src="../assets/measurement_tap/input_image.png" /></p>
-<h3 id="requirements">Requirements</h3>
-<p>Install the following dependencies in your local python environment:</p>
-<div class="highlight"><pre><span></span><code>pip<span class="w"> </span>install<span class="w"> </span>Pillow
-pip<span class="w"> </span>install<span class="w"> </span>onnxruntime<span class="w"> </span>
-</code></pre></div>
-<h3 id="inference">Inference</h3>
-<p>Before running inference we need to load the model into an ONNX Inference Session.</p>
-<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">onnxruntime</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">ort</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">PIL</span><span class="w"> </span><span class="kn">import</span> <span class="n">Image</span><span class="p">,</span> <span class="n">ImageDraw</span><span class="p">,</span> <span class="n">ImageFont</span>
-<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
-
-<span class="n">session</span> <span class="o">=</span> <span class="n">ort</span><span class="o">.</span><span class="n">InferenceSession</span><span class="p">(</span><span class="n">model_path</span><span class="p">,</span> <span class="n">providers</span><span class="o">=</span><span class="n">providers</span><span class="p">)</span>
-</code></pre></div>
-<p>Once the session is loaded we can query the model input parameters in order to resize the input tensor to the correct dimensions.</p>
-<div class="highlight"><pre><span></span><code><span class="c1"># Get input and output details</span>
-<span class="n">input_name</span> <span class="o">=</span> <span class="n">session</span><span class="o">.</span><span class="n">get_inputs</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">name</span>
-<span class="n">input_shape</span> <span class="o">=</span> <span class="n">session</span><span class="o">.</span><span class="n">get_inputs</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">shape</span>
-<span class="n">output_names</span> <span class="o">=</span> <span class="p">[</span><span class="n">output</span><span class="o">.</span><span class="n">name</span> <span class="k">for</span> <span class="n">output</span> <span class="ow">in</span> <span class="n">session</span><span class="o">.</span><span class="n">get_outputs</span><span class="p">()]</span>
-
-<span class="c1"># Assume input shape: [1, height, width, 3] or [1, 3, height, width]</span>
-<span class="n">_</span><span class="p">,</span> <span class="n">height</span><span class="p">,</span> <span class="n">width</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">input_shape</span> <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">input_shape</span><span class="p">)</span> <span class="o">==</span> <span class="mi">4</span> <span class="k">else</span> <span class="p">(</span>
-    <span class="kc">None</span><span class="p">,</span> <span class="n">input_shape</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="n">input_shape</span><span class="p">[</span><span class="mi">3</span><span class="p">],</span> <span class="n">input_shape</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
-
-<span class="c1"># Load the image</span>
-<span class="n">original</span> <span class="o">=</span> <span class="n">Image</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">image_path</span><span class="p">)</span><span class="o">.</span><span class="n">convert</span><span class="p">(</span><span class="s2">&quot;RGB&quot;</span><span class="p">)</span>
-
-<span class="c1"># Resize The Image and build the input tensor</span>
-<span class="n">image</span> <span class="o">=</span> <span class="n">original</span><span class="o">.</span><span class="n">resize</span><span class="p">((</span><span class="n">width</span><span class="p">,</span> <span class="n">height</span><span class="p">))</span>
-<span class="n">image</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">image</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
-<span class="n">image</span> <span class="o">=</span> <span class="n">image</span> <span class="o">/</span> <span class="mf">255.0</span> <span class="c1"># Unsigned normalization is requiered for float ModelPack</span>
-<span class="n">input_data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">expand_dims</span><span class="p">(</span><span class="n">image</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
-</code></pre></div>
-<p>with the tensor already prepared, we can run the inference by calling:</p>
-<div class="highlight"><pre><span></span><code><span class="c1"># Call the Model</span>
-<span class="n">boxes</span><span class="p">,</span> <span class="n">scores</span><span class="p">,</span> <span class="n">masks</span> <span class="o">=</span> <span class="n">session</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">output_names</span><span class="p">,</span> <span class="p">{</span><span class="n">input_name</span><span class="p">:</span> <span class="n">input_data</span><span class="p">})</span>
-</code></pre></div>
-<p>The model produces three outputs: bounding boxes, class scores, and segmentation masks.
-These outputs require post-processing to filter out unnecessary boxes and extract class IDs.</p>
-<p>For mask decoding, we select the highest probability index for each pixel:</p>
-<div class="highlight"><pre><span></span><code><span class="n">masks</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">argmax</span><span class="p">(</span><span class="n">masks</span><span class="p">,</span> <span class="n">axis</span><span class="o">=-</span><span class="mi">1</span><span class="p">)</span>
-<span class="n">masks</span> <span class="o">=</span> <span class="n">masks</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">uint8</span><span class="p">)</span>
-
-<span class="c1"># Visualize the results</span>
-<span class="n">masks</span> <span class="o">=</span> <span class="n">Image</span><span class="o">.</span><span class="n">fromarray</span><span class="p">(</span><span class="n">masks</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
-<span class="n">masks</span> <span class="o">=</span> <span class="n">masks</span><span class="o">.</span><span class="n">resize</span><span class="p">((</span><span class="n">original</span><span class="o">.</span><span class="n">width</span><span class="p">,</span> <span class="n">original</span><span class="o">.</span><span class="n">height</span><span class="p">),</span> <span class="n">Image</span><span class="o">.</span><span class="n">NEAREST</span><span class="p">)</span>
-
-<span class="c1"># Overlay masks on the original image</span>
-<span class="n">unique_labels</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">unique</span><span class="p">(</span><span class="n">masks</span><span class="p">)</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span>
-<span class="n">unique_labels</span><span class="o">.</span><span class="n">sort</span><span class="p">()</span>
-<span class="n">colors</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">256</span><span class="p">,</span> <span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">unique_labels</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span>
-
-<span class="k">for</span> <span class="n">label</span> <span class="ow">in</span> <span class="n">unique_labels</span><span class="p">[</span><span class="mi">1</span><span class="p">:]:</span>
-    <span class="n">mask</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">masks</span><span class="p">)</span>
-    <span class="n">mask</span> <span class="o">=</span> <span class="n">mask</span> <span class="o">==</span> <span class="n">label</span>
-    <span class="n">color_mask</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">original</span><span class="p">)</span>
-    <span class="n">color_mask</span><span class="p">[</span><span class="n">mask</span><span class="p">]</span> <span class="o">=</span> <span class="n">colors</span><span class="p">[</span><span class="n">label</span> <span class="o">-</span> <span class="mi">1</span><span class="p">]</span>
-    <span class="n">original</span> <span class="o">=</span> <span class="n">Image</span><span class="o">.</span><span class="n">blend</span><span class="p">(</span>
-        <span class="n">original</span><span class="o">.</span><span class="n">convert</span><span class="p">(</span><span class="s1">&#39;RGBA&#39;</span><span class="p">),</span>
-        <span class="n">Image</span><span class="o">.</span><span class="n">fromarray</span><span class="p">(</span><span class="n">color_mask</span><span class="p">)</span><span class="o">.</span><span class="n">convert</span><span class="p">(</span><span class="s1">&#39;RGBA&#39;</span><span class="p">),</span>
-        <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span>
-    <span class="p">)</span>
-</code></pre></div>
-<p>To filter the bounding boxes, we will use the Non-Maximum Suppression (NMS) algorithm. Before applying NMS, we first remove predictions with confidence scores below a threshold of 0.25.</p>
-<div class="highlight"><pre><span></span><code><span class="c1"># Reshape boxes and scores and compute classes</span>
-<span class="n">boxes</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">boxes</span><span class="p">,</span> <span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
-<span class="n">scores</span> <span class="o">=</span> <span class="n">scores</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="o">...</span><span class="p">,</span> <span class="mi">1</span><span class="p">:]</span>  <span class="c1"># remove background boxes first</span>
-<span class="n">classes</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">argmax</span><span class="p">(</span><span class="n">scores</span><span class="p">,</span> <span class="n">axis</span><span class="o">=-</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
-
-<span class="c1"># Prefilter boxes and scores by minimum score</span>
-<span class="n">max_scores</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">scores</span><span class="p">,</span> <span class="n">axis</span><span class="o">=-</span><span class="mi">1</span><span class="p">)</span>
-<span class="n">mask</span> <span class="o">=</span> <span class="n">max_scores</span> <span class="o">&gt;=</span> <span class="mf">0.25</span>
-
-<span class="c1"># Prefilter the boxes, scores and classes IDs</span>
-<span class="n">scores</span> <span class="o">=</span> <span class="n">max_scores</span><span class="p">[</span><span class="n">mask</span><span class="p">]</span>
-<span class="n">boxes</span> <span class="o">=</span> <span class="n">boxes</span><span class="p">[</span><span class="n">mask</span><span class="p">]</span>
-<span class="n">classes</span> <span class="o">=</span> <span class="n">classes</span><span class="p">[</span><span class="n">mask</span><span class="p">]</span>
-</code></pre></div>
-<p>Now we are ready to run the NMS algorithm and remove boxes with overlap higher than 0.5:</p>
-<div class="highlight"><pre><span></span><code><span class="n">keep</span> <span class="o">=</span> <span class="n">NMS</span><span class="p">(</span>
-    <span class="n">boxes</span><span class="p">,</span>
-    <span class="n">scores</span><span class="p">,</span>
-    <span class="n">threshold</span><span class="o">=</span><span class="mf">0.5</span>
-<span class="p">)</span>
-</code></pre></div>
-<p>One more time, we need to filter the boxes, scores and classes by <code>keep</code> indices:</p>
-<div class="highlight"><pre><span></span><code><span class="c1"># Filter boxes, scores, and classes</span>
-<span class="n">boxes</span> <span class="o">=</span> <span class="n">boxes</span><span class="p">[</span><span class="n">keep</span><span class="p">]</span>
-<span class="n">scores</span> <span class="o">=</span> <span class="n">scores</span><span class="p">[</span><span class="n">keep</span><span class="p">]</span>
-<span class="n">classes</span> <span class="o">=</span> <span class="n">classes</span><span class="p">[</span><span class="n">keep</span><span class="p">]</span>
-
-<span class="c1"># Visualize the results</span>
-<span class="n">font</span> <span class="o">=</span> <span class="n">ImageFont</span><span class="o">.</span><span class="n">load_default</span><span class="p">()</span>
-<span class="n">font</span><span class="o">.</span><span class="n">_size</span> <span class="o">=</span> <span class="mi">100</span>
-
-<span class="k">for</span> <span class="n">box</span><span class="p">,</span> <span class="n">score</span><span class="p">,</span> <span class="bp">cls</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">boxes</span><span class="p">,</span> <span class="n">scores</span><span class="p">,</span> <span class="n">classes</span><span class="p">):</span>
-    <span class="n">xmin</span><span class="p">,</span> <span class="n">ymin</span><span class="p">,</span> <span class="n">xmax</span><span class="p">,</span> <span class="n">ymax</span> <span class="o">=</span> <span class="n">box</span>
-    <span class="c1"># Resize boxes to original size</span>
-    <span class="n">xmin</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">xmin</span> <span class="o">*</span> <span class="n">original</span><span class="o">.</span><span class="n">width</span><span class="p">)</span>
-    <span class="n">ymin</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">ymin</span> <span class="o">*</span> <span class="n">original</span><span class="o">.</span><span class="n">height</span><span class="p">)</span>
-    <span class="n">xmax</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">xmax</span> <span class="o">*</span> <span class="n">original</span><span class="o">.</span><span class="n">width</span><span class="p">)</span>
-    <span class="n">ymax</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">ymax</span> <span class="o">*</span> <span class="n">original</span><span class="o">.</span><span class="n">height</span><span class="p">)</span>
-    <span class="c1"># Draw boxes into original image</span>
-    <span class="n">draw</span> <span class="o">=</span> <span class="n">ImageDraw</span><span class="o">.</span><span class="n">Draw</span><span class="p">(</span><span class="n">original</span><span class="p">)</span>
-    <span class="n">draw</span><span class="o">.</span><span class="n">rectangle</span><span class="p">((</span><span class="n">xmin</span><span class="p">,</span> <span class="n">ymin</span><span class="p">,</span> <span class="n">xmax</span><span class="p">,</span> <span class="n">ymax</span><span class="p">),</span>
-                    <span class="n">outline</span><span class="o">=</span><span class="nb">tuple</span><span class="p">(</span><span class="n">colors</span><span class="p">[</span><span class="bp">cls</span> <span class="o">-</span> <span class="mi">1</span><span class="p">]),</span> <span class="n">width</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
-    <span class="n">draw</span><span class="o">.</span><span class="n">text</span><span class="p">((</span><span class="n">xmin</span><span class="p">,</span> <span class="n">ymin</span><span class="p">),</span>
-                <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">labels</span><span class="p">[</span><span class="bp">cls</span><span class="p">]</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">score</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">fill</span><span class="o">=</span><span class="nb">tuple</span><span class="p">(</span><span class="n">colors</span><span class="p">[</span><span class="bp">cls</span> <span class="o">-</span> <span class="mi">1</span><span class="p">]),</span> <span class="n">font</span><span class="o">=</span><span class="n">font</span><span class="p">)</span>
-</code></pre></div>
-<p>Finally, we can save the output image by calling the following function:</p>
-<div class="highlight"><pre><span></span><code><span class="n">original</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="s2">&quot;output_onnx.png&quot;</span><span class="p">)</span>
-</code></pre></div>
-<p>In our case, the output looks like:</p>
-<p><img alt="Model Output" src="../assets/measurement_tap/model_output.png" /></p>
-<h2 id="appendix-1-nms-code-snippet">Appendix 1: NMS Code snippet</h2>
-<div class="highlight"><pre><span></span><code><span class="c1"># NMS implementation in Python and Numpy</span>
-<span class="k">def</span><span class="w"> </span><span class="nf">NMS</span><span class="p">(</span><span class="n">bboxes</span><span class="p">,</span> <span class="n">psocres</span><span class="p">,</span> <span class="n">threshold</span><span class="p">):</span>
-
-    <span class="n">xmin</span> <span class="o">=</span> <span class="n">bboxes</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">]</span>
-    <span class="n">ymin</span> <span class="o">=</span> <span class="n">bboxes</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">]</span>
-    <span class="n">xmax</span> <span class="o">=</span> <span class="n">bboxes</span><span class="p">[:,</span> <span class="mi">2</span><span class="p">]</span>
-    <span class="n">ymax</span> <span class="o">=</span> <span class="n">bboxes</span><span class="p">[:,</span> <span class="mi">3</span><span class="p">]</span>
-
-    <span class="n">sorted_idx</span> <span class="o">=</span> <span class="n">psocres</span><span class="o">.</span><span class="n">argsort</span><span class="p">()[::</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
-    <span class="n">areas</span> <span class="o">=</span> <span class="p">(</span><span class="n">xmax</span> <span class="o">-</span> <span class="n">xmin</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="n">ymax</span> <span class="o">-</span> <span class="n">ymin</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
-
-    <span class="n">keep</span> <span class="o">=</span> <span class="p">[]</span>
-    <span class="k">while</span> <span class="nb">len</span><span class="p">(</span><span class="n">sorted_idx</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
-        <span class="n">rbbox_i</span> <span class="o">=</span> <span class="n">sorted_idx</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
-        <span class="n">keep</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">rbbox_i</span><span class="p">)</span>
-
-        <span class="n">overlap_xmins</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">maximum</span><span class="p">(</span><span class="n">xmin</span><span class="p">[</span><span class="n">rbbox_i</span><span class="p">],</span> <span class="n">xmin</span><span class="p">[</span><span class="n">sorted_idx</span><span class="p">[</span><span class="mi">1</span><span class="p">:]])</span>
-        <span class="n">overlap_ymins</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">maximum</span><span class="p">(</span><span class="n">ymin</span><span class="p">[</span><span class="n">rbbox_i</span><span class="p">],</span> <span class="n">ymin</span><span class="p">[</span><span class="n">sorted_idx</span><span class="p">[</span><span class="mi">1</span><span class="p">:]])</span>
-        <span class="n">overlap_xmaxs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">minimum</span><span class="p">(</span><span class="n">xmax</span><span class="p">[</span><span class="n">rbbox_i</span><span class="p">],</span> <span class="n">xmax</span><span class="p">[</span><span class="n">sorted_idx</span><span class="p">[</span><span class="mi">1</span><span class="p">:]])</span>
-        <span class="n">overlap_ymaxs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">minimum</span><span class="p">(</span><span class="n">ymax</span><span class="p">[</span><span class="n">rbbox_i</span><span class="p">],</span> <span class="n">ymax</span><span class="p">[</span><span class="n">sorted_idx</span><span class="p">[</span><span class="mi">1</span><span class="p">:]])</span>
-
-        <span class="n">overlap_widths</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">maximum</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="p">(</span><span class="n">overlap_xmaxs</span> <span class="o">-</span> <span class="n">overlap_xmins</span><span class="o">+</span><span class="mi">1</span><span class="p">))</span>
-        <span class="n">overlap_heights</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">maximum</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="p">(</span><span class="n">overlap_ymaxs</span> <span class="o">-</span> <span class="n">overlap_ymins</span><span class="o">+</span><span class="mi">1</span><span class="p">))</span>
-        <span class="n">overlap_areas</span> <span class="o">=</span> <span class="n">overlap_widths</span> <span class="o">*</span> <span class="n">overlap_heights</span>
-
-        <span class="n">ious</span> <span class="o">=</span> <span class="n">overlap_areas</span> <span class="o">/</span> \
-            <span class="p">(</span><span class="n">areas</span><span class="p">[</span><span class="n">rbbox_i</span><span class="p">]</span> <span class="o">+</span> <span class="n">areas</span><span class="p">[</span><span class="n">sorted_idx</span><span class="p">[</span><span class="mi">1</span><span class="p">:]]</span> <span class="o">-</span> <span class="n">overlap_areas</span><span class="p">)</span>
-
-        <span class="n">delete_idx</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">ious</span> <span class="o">&gt;</span> <span class="n">threshold</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span><span class="o">+</span><span class="mi">1</span>
-        <span class="n">delete_idx</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">(([</span><span class="mi">0</span><span class="p">],</span> <span class="n">delete_idx</span><span class="p">))</span>
-
-        <span class="n">sorted_idx</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">delete</span><span class="p">(</span><span class="n">sorted_idx</span><span class="p">,</span> <span class="n">delete_idx</span><span class="p">)</span>
-
-    <span class="k">return</span> <span class="n">keep</span>
-</code></pre></div>
+<p>Now that ModelPack has been trained on your dataset, you can start <a href="../../deployment/pc/">deploying the trained models</a> on your PC. </p>
+<table>
+<thead>
+<tr>
+<th>Input Image</th>
+<th>Model Output</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><img alt="Input Image" src="../../../assets/tutorials/measurement_tape/input_image.png" /></td>
+<td><img alt="Model Output" src="../../../assets/tutorials/measurement_tape/model_output.png" /></td>
+</tr>
+</tbody>
+</table>
 
 
 

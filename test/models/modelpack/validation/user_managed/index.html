@@ -516,6 +516,8 @@
       
         
       
+        
+      
     
     
     
@@ -589,12 +591,12 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../getting_started/workflows/web/" class="md-nav__link">
+      <a href="../../../../getting_started/workflows/tourist_plus/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
-    Web-Based Workflow
+    Tourist Plus Workflow
     
   </span>
   
@@ -612,12 +614,35 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../getting_started/workflows/edgefirst/" class="md-nav__link">
+      <a href="../../../../getting_started/workflows/web/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
-    EdgeFirst Platform Workflow
+    Web Workflow
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../getting_started/workflows/maivin/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Maivin Workflow
     
   </span>
   
@@ -1836,7 +1861,7 @@
   
   
   <span class="md-ellipsis">
-    Tutorial 1: Detection and Segmentation of Measurement tapes
+    Tutorial 1: Measurement Tape Detector
     
   </span>
   
@@ -1859,7 +1884,7 @@
   
   
   <span class="md-ellipsis">
-    Tutorial 2: The Music Box Detector
+    Tutorial 2: MusicBox Detector
     
   </span>
   
@@ -4639,7 +4664,7 @@
 <p>Once the validation session has been created, <a href="../../../../platforms/ssh/">SSH</a> into the platform and install the following dependencies. </p>
 <div class="admonition warning">
 <p class="admonition-title">Virtual Environment</p>
-<p>To avoid re-installation of existing system packages, we recommend setting up a python virtual environment
+<p>To avoid re-installation of existing system packages, we recommend setting up a <a href="https://docs.python.org/3/library/venv.html#creating-virtual-environments">python virtual environment</a>
 prior to running the pip installations below.</p>
 </div>
 <div class="highlight"><pre><span></span><code>pip<span class="w"> </span>install<span class="w"> </span>edgefirst-validator
@@ -4648,11 +4673,11 @@ prior to running the pip installations below.</p>
 <div class="highlight"><pre><span></span><code>edgefirst-client --server &lt;&gt; login
 </code></pre></div>
 <div class="admonition note">
-<p class="admonition-title">Note</p>
+<p class="admonition-title">Server Specification</p>
 <p>Specify the EdgeFirst Studio server among these variations: "test", "stage", "saas".  This is an optional parameter as the default is set to "saas". </p>
 </div>
 <p>Once the validator is installed and authenticated, run validation using the following command.</p>
-<div class="highlight"><pre><span></span><code>edgefirst-validator<span class="w"> </span>--session-id<span class="w"> </span>v-800
+<div class="highlight"><pre><span></span><code>edgefirst-validator<span class="w"> </span>--session-id<span class="w"> </span>v-c1f
 </code></pre></div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>

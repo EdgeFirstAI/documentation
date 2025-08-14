@@ -523,6 +523,8 @@
       
         
       
+        
+      
     
     
     
@@ -596,12 +598,12 @@
   
   
     <li class="md-nav__item">
-      <a href="web/" class="md-nav__link">
+      <a href="tourist_plus/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
-    Web-Based Workflow
+    Tourist Plus Workflow
     
   </span>
   
@@ -619,12 +621,35 @@
   
   
     <li class="md-nav__item">
-      <a href="edgefirst/" class="md-nav__link">
+      <a href="web/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
-    EdgeFirst Platform Workflow
+    Web Workflow
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="maivin/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Maivin Workflow
     
   </span>
   
@@ -1836,7 +1861,7 @@
   
   
   <span class="md-ellipsis">
-    Tutorial 1: Detection and Segmentation of Measurement tapes
+    Tutorial 1: Measurement Tape Detector
     
   </span>
   
@@ -1859,7 +1884,7 @@
   
   
   <span class="md-ellipsis">
-    Tutorial 2: The Music Box Detector
+    Tutorial 2: MusicBox Detector
     
   </span>
   
@@ -4508,38 +4533,45 @@ flowchart LR
 <th>Persona</th>
 <th>Hardware</th>
 <th>Features</th>
+<th>Cost</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>Tourist</td>
+<td><a href="tourist/">Tourist</a></td>
 <td>PC</td>
 <td>Train, Validate, Deploy Offline</td>
+<td>TBA</td>
 </tr>
 <tr>
-<td>Tourist+</td>
+<td><a href="tourist_plus/">Tourist+</a></td>
 <td>PC</td>
 <td>Annotate 2D, Train, Validate, Deploy Offline</td>
+<td>TBA</td>
 </tr>
 <tr>
 <td><a href="web/">Web</a></td>
 <td>PC + Smartphone</td>
 <td>Record, Annotate 2D, Train, Validate, Deploy Offline</td>
+<td>TBA</td>
 </tr>
 <tr>
-<td><a href="edgefirst/">Maivin</a></td>
+<td><a href="maivin/">Maivin</a></td>
 <td>PC + Maivin</td>
 <td>Record, Annotate 2D, Train, Validate, Deploy on Device</td>
+<td>TBA</td>
 </tr>
 <tr>
-<td><a href="edgefirst/">Raivin</a></td>
+<td>Raivin (<em>coming soon</em>)</td>
 <td>PC + Raivin w/ Radar</td>
 <td>Record, Annotate 2D + 3D, Train, Validate, Deploy on Device</td>
+<td>TBA</td>
 </tr>
 <tr>
-<td><a href="edgefirst/">LiDAR</a></td>
+<td>LiDAR (<em>coming soon</em>)</td>
 <td>PC + Raivin w/ LiDAR</td>
 <td>Record, Annotate 2D + 3D (enhanced), Train, Validate, Deploy on Device</td>
+<td>TBA</td>
 </tr>
 </tbody>
 </table>
@@ -4618,20 +4650,24 @@ flowchart LR
 <ol>
 <li>
 <p><a href="tourist/">Tourist Workflow</a></p>
-<p>This workflow is intended for users with a personal computer with access to Wifi that want to use the sample datasets available for training and deploying Vision models. </p>
+<p>This workflow is intended for users with a personal computer with access to Wifi that want to use the sample datasets available for training, validating, and deploying Vision models. </p>
+</li>
+<li>
+<p><a href="tourist_plus/">Tourist Plus Workflow</a></p>
+<p>This workflow is intended for users with a personal computer with access to Wifi that want to use the same datasets available for annotating, training, validating, and deploying Vision models.</p>
 </li>
 <li>
 <p><a href="web/">Web Workflow</a></p>
-<p>This workflow is intended for users with a personal computer and a device with a camera with access to Wifi and a web browser.  The examples shown in this workflow will be from a Windows computer and an Android phone for recording images.  To proceed to this workflow, click on the link above.</p>
+<p>This workflow is intended for users with a personal computer and a device with a camera with access to Wifi and a web browser.  The examples shown in this workflow will be from a Windows computer and an Android phone for recording images.  Proceed to this workflow to see capturing and annotating datasets that will be used to train, validate, and deploy Vision models.</p>
 </li>
 <li>
-<p><a href="edgefirst/">EdgeFirst Platform Workflow</a></p>
-<p>This workflow is intended for users with a personal computer with access to Wifi and a web browser and a Maivin or a Raivin platform.  To proceed to this workflow, click on the link above.</p>
+<p><a href="maivin/">Maivin Workflow</a></p>
+<p>This workflow is intended for users with a personal computer with access to Wifi and a web browser and a Maivin platform.  To proceed to this workflow, click on the link above.</p>
 </li>
 </ol>
 <div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>The maivin, raivin, and LiDAR persona are currently based on the EdgeFirst Platform Workflow identified as the second workflow above.  Future work will introduce separate workflows for each of these personas to highlight their differences. </p>
+<p class="admonition-title">Future Work</p>
+<p>The Raivin and LiDAR workflows are currently unavailable. </p>
 </div>
 
 

@@ -516,6 +516,8 @@
       
         
       
+        
+      
     
     
     
@@ -589,12 +591,12 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../getting_started/workflows/web/" class="md-nav__link">
+      <a href="../../../getting_started/workflows/tourist_plus/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
-    Web-Based Workflow
+    Tourist Plus Workflow
     
   </span>
   
@@ -612,12 +614,35 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../getting_started/workflows/edgefirst/" class="md-nav__link">
+      <a href="../../../getting_started/workflows/web/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
-    EdgeFirst Platform Workflow
+    Web Workflow
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../getting_started/workflows/maivin/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Maivin Workflow
     
   </span>
   
@@ -1836,7 +1861,7 @@
   
   
   <span class="md-ellipsis">
-    Tutorial 1: Detection and Segmentation of Measurement tapes
+    Tutorial 1: Measurement Tape Detector
     
   </span>
   
@@ -1859,7 +1884,7 @@
   
   
   <span class="md-ellipsis">
-    Tutorial 2: The Music Box Detector
+    Tutorial 2: MusicBox Detector
     
   </span>
   
@@ -4619,7 +4644,7 @@
 <h1 id="training-modelpack">Training ModelPack</h1>
 <p>This tutorial describes the steps to train <strong>ModelPack Vision</strong> models in EdgeFirst Studio.  For a tutorial to train Fusion models, see <a href="../../fusion/training/">Training Fusion Models</a>. </p>
 <h2 id="verify-dataset">Verify Dataset</h2>
-<p>First ensure that the dataset is ready to be used for training.  This means that the dataset is properly annotated and the dataset is properly split into training and validation groups.  The section in <a href="../../../datasets/tutorials/management/#verify-dataset">Verifying Datasets</a> will show what to look for in a dataset before deploying it for training.</p>
+<p>First ensure that the dataset is ready to be used for training.  This means that the dataset is properly annotated and the dataset is properly split into training and validation groups.  The section in <a href="../../../datasets/tutorials/management/#verify-dataset">Verify Dataset</a> will show what to look for in a dataset before deploying it for training.</p>
 <h2 id="specify-project-experiments">Specify Project Experiments</h2>
 <p>From the projects page, choose the project that contains the dataset you plan to use.  In this example, the project chosen is the "Object Detection" project which was created in the <a href="../../../#create-project">Quickstart Guide</a>.  Next click the "Model Experiments" button as indicated in red.</p>
 <figure>
@@ -4672,6 +4697,14 @@
 <figcaption>New Session Button</figcaption>
 </figure>
 <p>You will be greeted with a training session dialog.  In this dialog, specify the "Trainer Type" to "ModelPack" and provide a name and description of the training session as shown below.  Next specify the dataset to be used with training and validation partitions.  In this example, the dataset specified is the "Coffee Cup" dataset which was created in the <a href="../../../">Getting Started</a>.  Next specify the training parameters.  By default, an object detection (bounding boxes) model will be trained.  However, you can specify either "Segmentation" or "Multitask" as shown below.  This model will output both bounding boxes and segmentation masks.  Additional information on these parameters are provided by hovering over the info button <img alt="Info Button" src="../../../assets/buttons/studio-info-button.jpg" />.</p>
+<div class="admonition tip">
+<p class="admonition-title">Input Resolution</p>
+<p>We recommend changing the input resolution to 640x360 to maximize detection rates on small datasets.</p>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Large Batch Size</p>
+<p>For small datasets, a large batch size may produce poor results. Use a batch size of 4 or 8.</p>
+</div>
 <p>For more information on available "Data Augmentations" please see <a href="../../augmentations/">Vision Augmentations</a>.</p>
 <figure>
 <img align="center" alt="Training Session Fields" src="../../assets/training/vision-train-settings.jpg" />
@@ -4686,6 +4719,8 @@
 
 <figcaption>Training Session</figcaption>
 </figure>
+<p>The training process begins with cloud instance initialization. Then the dataset is downloaded and cached. Training starts afterwards.
+At the end of the training process, ModelPack quantizes the model and publishes the checkpoints.</p>
 <h2 id="completed-session">Completed Session</h2>
 <p>The completed session will look as follows with the status set to "Complete".</p>
 <figure>

@@ -516,6 +516,8 @@
       
         
       
+        
+      
     
     
     
@@ -589,12 +591,12 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../getting_started/workflows/web/" class="md-nav__link">
+      <a href="../../../getting_started/workflows/tourist_plus/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
-    Web-Based Workflow
+    Tourist Plus Workflow
     
   </span>
   
@@ -612,12 +614,35 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../getting_started/workflows/edgefirst/" class="md-nav__link">
+      <a href="../../../getting_started/workflows/web/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
-    EdgeFirst Platform Workflow
+    Web Workflow
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../getting_started/workflows/maivin/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Maivin Workflow
     
   </span>
   
@@ -1834,7 +1859,7 @@
   
   
   <span class="md-ellipsis">
-    Tutorial 1: Detection and Segmentation of Measurement tapes
+    Tutorial 1: Measurement Tape Detector
     
   </span>
   
@@ -1857,7 +1882,7 @@
   
   
   <span class="md-ellipsis">
-    Tutorial 2: The Music Box Detector
+    Tutorial 2: MusicBox Detector
     
   </span>
   
@@ -4665,14 +4690,14 @@
 
 
 <h1 id="training-fusion-models">Training Fusion Models</h1>
-<p>This tutorial describes the steps to train <strong>Fusion</strong> models in EdgeFirst Studio.  For a tutorial to train ModelPack Vision models, see <a href="../../modelpack/training/">Training ModelPack</a>.  It is highly recommended for users to be familiar in <a href="../../../studio/navigation/">navigating EdgeFirst Studio</a>.</p>
+<p>This tutorial describes the steps to train <strong>Fusion</strong> models in EdgeFirst Studio.  For a tutorial to train ModelPack Vision models, see <a href="../../modelpack/training/">Training ModelPack</a>. </p>
 <div style="text-align: center;">
     <iframe width="560" height="315" src="https://www.youtube.com/embed/Q8uiYJb1HJ4" title="Fusion Training Workflow" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 </div>
 
-<p>Checkout our full video tutorial above as part of the <a href="https://youtube.com/playlist?list=PLtgoOooyxY45Kl6pztdm4una-tHUjuIXz&amp;si=DAmpo-gTvaSNktjw">EdgeFirst Studio Series</a> to showcase the steps for running Fusion training in EdgeFirst Studio.  Otherwise, follow along the steps shown below with section specific timestamps of the video.</p>
+<p>Checkout our full video tutorial above as part of the <a href="https://youtube.com/playlist?list=PLtgoOooyxY45Kl6pztdm4una-tHUjuIXz&amp;si=DAmpo-gTvaSNktjw">EdgeFirst Studio Series</a> to showcase the steps for running Fusion training in EdgeFirst Studio.  Otherwise, follow along the steps shown below.</p>
 <h2 id="verify-dataset">Verify Dataset</h2>
-<p>First ensure the dataset is ready to be used for training.  This means that the dataset is properly annotated and the dataset is properly split with training and validation samples.  The tutorial <a href="../../../datasets/tutorials/management/#verify-dataset">Verifying Datasets</a> will show what to look for in a dataset before deploying it for training.</p>
+<p>First ensure the dataset is ready to be used for training.  This means that the dataset is properly annotated and the dataset is properly split with training and validation samples.  The tutorial <a href="../../../datasets/tutorials/management/#verify-dataset">Verify Dataset</a> will show what to look for in a dataset before deploying it for training.</p>
 <h2 id="specify-project-experiments">Specify Project Experiments</h2>
 <p>From the projects page, choose the project that contains the dataset you plan to use.  In this example, the project chosen is called "Spatial Perception" project.  Next click the "Model Experiments" button as indicated in red. </p>
 <figure>
@@ -4728,7 +4753,7 @@
 
 <figcaption>New Session Button</figcaption>
 </figure>
-<p>You will be greeted with the training session configuration window.  In this window, specify the "Trainer Type" to "EdgeFirst Fusion" and provide a name and description of the training session as shown below.  Next specify the dataset to be used with training and validation partitions.  In this example, the dataset specified is the "Raivin Ultra Short 25.03 (Copy)" dataset.  Next specify the training parameters.  By default, the model will be trained using both the Camera and the Radar sensors.  However, you can specify one of the sensors turned off.  This model will output an occupancy grid highlighting the positions of people in world coordinates.  Additional information on these parameters are provided by hovering over the info buttons indicated in red below.</p>
+<p>You will be greeted with the training session dialog.  In this dialog, specify the "Trainer Type" to "EdgeFirst Fusion" and provide a name and description of the training session as shown below.  Next specify the dataset to be used with training and validation partitions.  In this example, the dataset specified is the "Raivin Ultra Short 25.03 (Copy)" dataset.  Next specify the training parameters.  By default, the model will be trained using both the Camera and the Radar sensors.  However, you can specify one of the sensors turned off.  This model will output an occupancy grid highlighting the positions of people in world coordinates.  Additional information on these parameters are provided by hovering over the info button <img alt="Info Button" src="../../../assets/buttons/studio-info-button.jpg" />.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>For an indoor setting, the "Radar Range Mode" is typically set to "Ultra Short (9m)" and the "Object Detection Range" is set to 9 meters.  This is the maximum range of detection, further distances are ignored. </p>
@@ -4739,7 +4764,7 @@
 
 <figcaption>Training Session Fields</figcaption>
 </figure>
-<p>Once the configuration have been made, go ahead and click on the "Start Session" button on the bottom right of the window.  This will start the training session which will train the model for the number of epochs specified. </p>
+<p>Once the configurations have been made, go ahead and click on the "Start Session" button on the bottom right of the window.  This will start the training session which will train the model for the number of epochs specified. </p>
 <h2 id="session-progress">Session Progress</h2>
 <div style="text-align: center;">
     <iframe width="560" height="315" src="https://www.youtube.com/embed/Q8uiYJb1HJ4?start=863&end=1050" title="Training Started" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>

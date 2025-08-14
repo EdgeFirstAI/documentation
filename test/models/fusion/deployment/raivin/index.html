@@ -516,6 +516,8 @@
       
         
       
+        
+      
     
     
     
@@ -589,12 +591,12 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../getting_started/workflows/web/" class="md-nav__link">
+      <a href="../../../../getting_started/workflows/tourist_plus/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
-    Web-Based Workflow
+    Tourist Plus Workflow
     
   </span>
   
@@ -612,12 +614,35 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../getting_started/workflows/edgefirst/" class="md-nav__link">
+      <a href="../../../../getting_started/workflows/web/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
-    EdgeFirst Platform Workflow
+    Web Workflow
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../getting_started/workflows/maivin/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Maivin Workflow
     
   </span>
   
@@ -1834,7 +1859,7 @@
   
   
   <span class="md-ellipsis">
-    Tutorial 1: Detection and Segmentation of Measurement tapes
+    Tutorial 1: Measurement Tape Detector
     
   </span>
   
@@ -1857,7 +1882,7 @@
   
   
   <span class="md-ellipsis">
-    Tutorial 2: The Music Box Detector
+    Tutorial 2: MusicBox Detector
     
   </span>
   
@@ -4796,17 +4821,16 @@
 </tr>
 </tbody>
 </table>
-<p>Once the model is downloaded in your PC, you can <code>SCP</code> the model to the Raivin by using this command template.</p>
+<p>Once the model is downloaded in your PC, you can <a href="../../../../platforms/ssh/#secure-copy">SCP</a> the model to the Raivin by using this command template.</p>
 <div class="highlight"><pre><span></span><code>scp<span class="w"> </span>&lt;path<span class="w"> </span>to<span class="w"> </span>the<span class="w"> </span>downloaded<span class="w"> </span>TFLite<span class="w"> </span>model&gt;<span class="w"> </span>&lt;destination<span class="w"> </span>path&gt;
 </code></pre></div>
 <p>An example command is shown below.</p>
 <div class="highlight"><pre><span></span><code>scp<span class="w"> </span>fusion.tflite<span class="w"> </span>torizon@verdin-imx8mp-07130049:~
 </code></pre></div>
-<p>For more information, please visit <a href="../../../../platforms/ssh/#secure-copy">Secure Copy</a>.</p>
 <h3 id="download-using-the-client">Download using the Client</h3>
 <p>This method expects you to have already connected to the Raivin via <a href="../../../../platforms/ssh/">SSH</a>.  The <a href="../../../../perception/studio/">EdgeFirst Client</a> can be installed via <code>pip3 install edgefirst-client</code>.  You can verify the installation with the client version command.</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>edgefirst-client<span class="w"> </span>version
-EdgeFirst<span class="w"> </span>Studio<span class="w"> </span>Server:<span class="w"> </span><span class="m">3</span>.7.5-def7735<span class="w"> </span>Client:<span class="w"> </span><span class="m">1</span>.3.4
+EdgeFirst<span class="w"> </span>Studio<span class="w"> </span>Server:<span class="w"> </span><span class="m">3</span>.7.8-a50429e<span class="w"> </span>Client:<span class="w"> </span><span class="m">1</span>.3.3
 </code></pre></div>
 <p>Next login to the client with the command.</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>edgefirst-client<span class="w"> </span>login
@@ -4822,7 +4846,7 @@ Password:<span class="w"> </span>****
 <li>model name: Pass the specific model that will be downloaded to the device. Usually this is <code>fusion.tflite</code>.</li>
 <li>download path (optional): Specify the path to download the model.  If not provided, it will download to the current working directory.</li>
 </ul>
-<p>Please see <a href="../../../../perception/studio/">EdgeFirst Client</a> For more information on using the client via command line.</p>
+<p>You can find more information on using the <a href="../../../../perception/studio/">EdgeFirst Client</a> in the command line.</p>
 <h2 id="visit-the-web-ui-service">Visit the Web UI Service</h2>
 <p>Visit the Web UI service by entering the URL <code>https://&lt;hostname&gt;/</code> in your browser.</p>
 <div class="admonition note">
@@ -4838,6 +4862,10 @@ Password:<span class="w"> </span>****
 <p>For more information, please see the <a href="../../../../platforms/walkthrough/">Web UI Walkthrough</a>.</p>
 <h2 id="update-the-model-path">Update the Model Path</h2>
 <p>Next you will need to specify the path to the model in the device.  You can either update the model path in the Web UI or via the command line.</p>
+<div class="admonition note">
+<p class="admonition-title">Configure Model Settings</p>
+<p>Whenever a new model has been updated, ensure that the <a href="../../../../platforms/configuration/#model-configuration">model settings</a> such as the score and the IoU thresholds are ideally set for this model. </p>
+</div>
 <h3 id="web-ui">Web UI</h3>
 <p>Once you are in the Web UI main page, you can specify the path to the model by following the steps below.</p>
 <p>Click the settings icon on the top right corner of the page.</p>

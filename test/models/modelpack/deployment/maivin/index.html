@@ -516,6 +516,8 @@
       
         
       
+        
+      
     
     
     
@@ -589,12 +591,12 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../getting_started/workflows/web/" class="md-nav__link">
+      <a href="../../../../getting_started/workflows/tourist_plus/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
-    Web-Based Workflow
+    Tourist Plus Workflow
     
   </span>
   
@@ -612,12 +614,35 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../getting_started/workflows/edgefirst/" class="md-nav__link">
+      <a href="../../../../getting_started/workflows/web/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
-    EdgeFirst Platform Workflow
+    Web Workflow
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../getting_started/workflows/maivin/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Maivin Workflow
     
   </span>
   
@@ -1836,7 +1861,7 @@
   
   
   <span class="md-ellipsis">
-    Tutorial 1: Detection and Segmentation of Measurement tapes
+    Tutorial 1: Measurement Tape Detector
     
   </span>
   
@@ -1859,7 +1884,7 @@
   
   
   <span class="md-ellipsis">
-    Tutorial 2: The Music Box Detector
+    Tutorial 2: MusicBox Detector
     
   </span>
   
@@ -4798,13 +4823,13 @@
 </table>
 <p>This guide will showcase two methods of deploying the model.</p>
 <ol>
-<li><a href="#live-view-segmentation-app">Live View (Segmentation App)</a></li>
-<li><a href="#record-mcap">MCAP Recording</a></li>
+<li><a href="#live-view-segmentation-app">Live View (Segmentation App)</a>: Displays the live camera feed using the default model provided.</li>
+<li><a href="#record-mcap">MCAP Recording</a>: Allows control of the recording options and provides download file options to replay the recording.</li>
 </ol>
 <h2 id="download-the-model">Download the Model</h2>
 <p>First download the model from EdgeFirst Studio into the Maivin Platform.  There are two methods for downloading the model.  The first method is to download the model from EdgeFirst Studio and then SCP the model file to the Maivin Platform.  The second method is to use the EdgeFirst Client to download the model directly in the device.</p>
 <h3 id="download-and-scp">Download and SCP</h3>
-<p>As mentioned under the <a href="../../training/#training-outcomes">Trained Models</a> section, the trained models can be downloaded by clicking the "View Additional Details" button on the training session card in EdgeFirst Studio. </p>
+<p>As mentioned under the <a href="../../training/#training-outcomes">Training Outcomes</a> section, the trained models can be downloaded by clicking the "View Additional Details" button on the training session card in EdgeFirst Studio. </p>
 <figure>
 <img align="center" alt="Training Session Attributes" src="../../../assets/training/training-session-attributes.jpg" />
 
@@ -4820,22 +4845,21 @@
 </thead>
 <tbody>
 <tr>
-<td><img alt="session" src="../../../assets/deployment/maivin-session-details.jpg" /></td>
-<td><img alt="artifacts" src="../../../assets/deployment/maivin-session-details-tflite-model.jpg" /></td>
+<td><img alt="session" src="../../../assets/training/vision-session-details.jpg" /></td>
+<td><img alt="artifacts" src="../../../assets/training/vision-session-artifacts.jpg" /></td>
 </tr>
 </tbody>
 </table>
-<p>Once the model is downloaded in your PC, you can <code>SCP</code> the model to the Maivin by using this command template.</p>
+<p>Once the model is downloaded in your PC, you can <a href="../../../../platforms/ssh/#secure-copy">SCP</a> the model to the Maivin by using this command template.</p>
 <div class="highlight"><pre><span></span><code>scp<span class="w"> </span>&lt;path<span class="w"> </span>to<span class="w"> </span>the<span class="w"> </span>downloaded<span class="w"> </span>TFLite<span class="w"> </span>model&gt;<span class="w"> </span>&lt;destination<span class="w"> </span>path&gt;
 </code></pre></div>
 <p>An example command is shown below.</p>
 <div class="highlight"><pre><span></span><code>scp<span class="w"> </span>modelpack.tflite<span class="w"> </span>torizon@verdin-imx8mp-15140753:~
 </code></pre></div>
-<p>For more information, please visit <a href="../../../../platforms/ssh/#secure-copy">Secure Copy</a>.</p>
 <h3 id="download-using-the-client">Download using the Client</h3>
 <p>This method expects you to have already connected to the Maivin via <a href="../../../../platforms/ssh/">SSH</a>.  The <a href="../../../../perception/studio/">EdgeFirst Client</a> can be installed via <code>pip3 install edgefirst-client</code>.  You can verify the installation with the client version command.</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>edgefirst-client<span class="w"> </span>version
-EdgeFirst<span class="w"> </span>Studio<span class="w"> </span>Server:<span class="w"> </span><span class="m">3</span>.7.5-def7735<span class="w"> </span>Client:<span class="w"> </span><span class="m">1</span>.3.4
+EdgeFirst<span class="w"> </span>Studio<span class="w"> </span>Server:<span class="w"> </span><span class="m">3</span>.7.8-a50429e<span class="w"> </span>Client:<span class="w"> </span><span class="m">1</span>.3.3
 </code></pre></div>
 <p>Next login to the client with the command.</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>edgefirst-client<span class="w"> </span>login
@@ -4848,7 +4872,7 @@ Password:<span class="w"> </span>****
 <p>The <code>download-artifact</code> expects three arguments.</p>
 <ul>
 <li>session ID: Pass the integer trainer or validation session ID associated with the models.</li>
-<li>model name: Pass the specific model that will be downloaded to the device.  Usually this is <code>modelpack.tflite</code>.</li>
+<li>model name: Pass the specific model that will be downloaded to the device.  Usually this is <code>mymodel.tflite</code>.</li>
 <li>download path (optional): Specify the path to download the model.  If not provided, it will download to the current working directory.</li>
 </ul>
 <p>You can find more information on using the <a href="../../../../perception/studio/">EdgeFirst Client</a> in the command line.</p>
@@ -4924,7 +4948,7 @@ MODEL = &quot;path/to/mymodel.tflite&quot;
 
 <figcaption>Segmentation App</figcaption>
 </figure>
-<p>This will run inference on the model specified to generate segmentation masks on the detected objects.  In this case, the model is identifying people in the video feed.  An example is shown below.</p>
+<p>This will run inference on the model specified to generate segmentation masks on the detected objects.  In this case, the model is identifying coffee cups in the video feed.  An example is shown below.</p>
 <figure>
 <img align="center" alt="Segmentation Sample 1" src="../../../assets/deployment/segmentation-sample-1.jpg" />
 

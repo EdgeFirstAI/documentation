@@ -4511,19 +4511,19 @@
 
 
 <h1 id="mobilenet-ssd-examples">MobileNet SSD Examples</h1>
-<p>These examples demonstrate how to deploy a MobileNet SSD model using the NPU of an embedded platform such as a <a href="../../../../platforms/quickstart/">Maivin</a>.  The examples below are split into two parts; model inference on a single image and a model inference publisher.</p>
+<p>These examples demonstrate how to deploy a MobileNet SSD V1 model using the NPU of an embedded platform such as a <a href="../../../../platforms/quickstart/">Maivin</a>.  The examples below are split into two parts; model inference on a single image and a model inference publisher. These examples have been tested on the TFLite files found in <a href="https://github.com/apivovarov/ssd-tflite/tree/master">this SSD-TFLite repository</a>, and in <a href="https://github.com/Arm-Examples/ML-zoo/tree/master/models/object_detection/ssd_mobilenet_v1">ML-Zoo</a>.  </p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>In a future release of the EdgeFirst middleware, the Model Service will be able to run MobileNet SSD V1 models natively, again, testing on the above examples.</p>
+</div>
 <h2 id="image-inference">Image Inference</h2>
-<p>In this example, the sample pretrained MobileNet SSD models and the sample image can be found in <a href="https://github.com/Arm-Examples/ML-zoo/tree/master/models/object_detection/ssd_mobilenet_v1">ML-Zoo</a> and <a href="https://github.com/apivovarov/ssd-tflite/tree/master">ssd-tflite repository</a>.  This example has modified the Python script provided in the "ssd-tflite" repository to deploy the model with the OpenVX delegate to run on the NPU.  Furthermore, minimum dependencies are used to ensure no additional venv/pip installations are needed.  The only dependencies required are <code>tflite_runtime</code>, <code>numpy</code>, and <code>pillow</code> which should already come pre-installed in the Maivin's BSP.  Lastly, the model outputs are then drawn onto the image for visualization.</p>
+<p>This example will run inference from a MobileNet SSD V1 model on a sample picture.  It has been modified from the Python script provided in the "ssd-tflite" repository to deploy the model with the OpenVX delegate to run on the NPU.  Furthermore, minimum dependencies are used to ensure no additional venv/pip installations are needed.  The only dependencies required are <code>tflite_runtime</code>, <code>numpy</code>, and <code>pillow</code> which should already come pre-installed in the Maivin's BSP.  Lastly, the model outputs are then drawn onto the image for visualization.</p>
 <p>For a quick demonstration, go to the "ssd-tflite" repository and download the following files.</p>
 <ol>
-<li><a href="https://github.com/apivovarov/ssd-tflite/blob/master/ssd_mobilenet_v1_0.75_depth_quantized_300x300_coco14_sync_2018_07_18.tflite">MobileNet SSD Model</a> </li>
+<li><a href="https://github.com/apivovarov/ssd-tflite/blob/master/ssd_mobilenet_v1_0.75_depth_quantized_300x300_coco14_sync_2018_07_18.tflite">MobileNet SSD Model <code>ssd_mobilenet_v1_0.75_depth_quantized_300x300_coco14_sync_2018_07_18.tflite</code></a> </li>
 <li><a href="https://github.com/apivovarov/ssd-tflite/blob/master/dog.jpg">Sample Image</a></li>
 </ol>
 <p>Download our <a download="run-tflite.py" href="../assets/run-tflite.py">Python Script</a> for running the example.</p>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>The model downloaded is "ssd_mobilenet_v1_0.75_depth_quantized_300x300_coco14_sync_2018_07_18.tflite"</p>
-</div>
 <p>Once the files have been downloaded, <a href="../../../../platforms/ssh/#secure-copy">SCP</a> the files into the embedded platform.</p>
 <p>Run the script with the command <code>python3 run-tflite.py</code>.  The script should print the inference time in milliseconds and the model detections as follows.</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>python3<span class="w"> </span>run-tflite.py
@@ -4664,23 +4664,25 @@ The model outputs a maximum of 10 detections.  Currently there is no option to s
 <p>This script is required to run on the target as it will use the DMA Buffer topic to provide the images for the model. Additionally, the script will need to be run using sudo as it needs to access the file descriptor to get the DMA buffer and cannot without sudo. </p>
 <ol>
 <li>
-<p>Disable the current model service</p>
+<p>Disable the current model service with the following command:</p>
 <div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>systemctl<span class="w"> </span>stop<span class="w"> </span>model
 </code></pre></div>
 </li>
 <li>
-<p>You can then run the script using the following</p>
-<div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>python3<span class="w"> </span>boxes2d_publisher.py<span class="w"> </span>--model<span class="w"> </span>model.tflite<span class="w"> </span>--threshold<span class="w"> </span><span class="m">0</span>.5<span class="w"> </span>--shape<span class="w"> </span><span class="m">300</span>,300
+<p>You can then run the script using the following invocation:</p>
+<div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>-E<span class="w"> </span>python3<span class="w"> </span>boxes2d_publisher.py<span class="w"> </span>--model<span class="w"> </span>model.tflite<span class="w"> </span>--threshold<span class="w"> </span><span class="m">0</span>.5<span class="w"> </span>--shape<span class="w"> </span><span class="m">300</span>,300
 </code></pre></div>
-<p>The --model argument will be the path to the SSD model to be used to perform inference on the model and return boxes.
-The --threshold argument will set the score threshold for a box to be published by the server.
-The --shape argument is the input height,width of the model, comma delimited.</p>
+<ul>
+<li>the <code>--model</code> argument will be the path to the SSD model to be used to perform inference on the model and return boxes.  </li>
+<li>the <code>--threshold</code> argument will set the score threshold for a box to be published by the server.  </li>
+<li>the <code>--shape</code> argument is the input height,width of the model, comma delimited.  </li>
+</ul>
 </li>
 <li>
-<p>The rt/model/boxes2d will now be published once again and can be subscribed to by any other example.</p>
+<p>The <code>/rt/model/boxes2d</code> topic will now be published once again and can be subscribed to by any other example.</p>
 </li>
 </ol>
-<p>Once you disable the server, you should restart the model service
+<p>Once you disable the server, you should restart the model service with the following command.
 <div class="highlight"><pre><span></span><code>sudo systemctl restart model
 </code></pre></div></p>
 

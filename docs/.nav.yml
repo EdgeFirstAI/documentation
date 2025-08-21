@@ -64,6 +64,10 @@ nav:
       - models/fusion/validation.md
       - Deploying Fusion:
         - models/fusion/deployment/raivin.md
+    - Custom Models: 
+      - models/custom/index.md
+      - models/custom/quantize.md
+      - models/custom/npu.md
     - Model Metrics:
       - models/metrics/detection.md
       - models/metrics/segmentation.md
@@ -72,7 +76,7 @@ nav:
       - models/tutorials/training.md
       - models/tutorials/validation.md
       - models/tutorials/deployment.md
-      # - models/tutorials/metadata.md
+      - models/tutorials/metadata.md
     - models/augmentations.md
   - Perception:
     - perception/index.md

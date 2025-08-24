@@ -61,7 +61,7 @@ $$
 
 ## Model Timings
 
-These timings are measured in the same way as ModelPack as described under the [Model Timings](detection.md#model-timings) section.
+These timings are measured as described under the [Model Timings](detection.md#model-timings) section.
 
 ## Precision versus Recall
 

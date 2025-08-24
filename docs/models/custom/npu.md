@@ -4,7 +4,7 @@ This section will provide a demo for deploying a quantized ONNX and TFLite model
 
 ## Deploying Quantized ONNX 
 
-In this example, we have taken the pretrained quantized [ONNX model zoo](https://github.com/onnx/models/tree/main/validated/vision/object_detection_segmentation/ssd-mobilenetv1).   In particular the SSD-MobilenetV1-12-int8 was downloaded. 
+In this example, we have taken the pretrained quantized ONNX model from the [ONNX model zoo](https://github.com/onnx/models/tree/main/validated/vision/object_detection_segmentation/ssd-mobilenetv1).   In particular the SSD-MobilenetV1-12-int8 was downloaded. 
 
 !!! tip "ONNX Deployment"
     When deploying ONNX models on target, it is recommended to quantize the ONNX to deploy on the NPU using these providers `['NnapiExecutionProvider', 'VsiNpuExecutionProvider']` or convert it to FP16 to deploy on the GPU using this provider `["CUDAExecutionProvider"]`.
@@ -94,7 +94,7 @@ These outputs can then be taken and visualized as shown in the Python script.
 
 ## Deploying Quantized TFLite
 
-In this example, we have taken the [small PyTorch segmentation model](https://github.com/ultralytics/assets/releases/download/v8.3.0/yolo11s-seg.pt) from ultralytics and exported the model to a quantized ONNX using this command `yolo export model=yolo11s-seg.pt format=tflite int8=True`.  You can find more information on [exporting models in Ultralytics](https://docs.ultralytics.com/modes/export/) or you can follow these steps for [quantizing ONNX to TFLite](quantize.md#onnx-to-tflite).  Once the TFLite is ready, we can deploy it on target as shown below. 
+In this example, we have taken the [small PyTorch segmentation model](https://github.com/ultralytics/assets/releases/download/v8.3.0/yolo11s-seg.pt) from ultralytics and exported the model to a quantized TFLite using this command `yolo export model=yolo11s-seg.pt format=tflite int8=True`.  You can find more information on [exporting models in Ultralytics](https://docs.ultralytics.com/modes/export/) or you can follow these steps for [quantizing ONNX to TFLite](quantize.md#onnx-to-tflite).  Once the TFLite is ready, we can deploy it on target as shown below. 
 
 Download our [Python Script](assets/run-tflite.py){: download="run-tflite.py"} for running the example. 
 

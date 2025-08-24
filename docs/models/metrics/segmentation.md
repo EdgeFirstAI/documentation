@@ -1,6 +1,10 @@
 # Segmentation Metrics
 
-This section will describe the validation metrics reported in [ModelPack validation sessions](../tutorials/validation.md#modelpack) for segmentation.  The different types of validation methods available are Ultralytics, EdgeFirst, and YOLOv7.  These validation methods have been implemented in EdgeFirst Validator to reproduce specific metrics seen in other applications.  These metrics and their differences will be described in more detail below.
+This section will describe the validation metrics reported in [ModelPack validation sessions](../tutorials/validation.md#modelpack) for segmentation.  The different types of validation methods available are Ultralytics, EdgeFirst, and YOLOv7.  These validation methods have been implemented in EdgeFirst Validator to reproduce specific metrics seen in other applications.  These metrics and their differences will be described in more detail below. 
+
+## Ultralytics Segmentation Metrics
+
+We define the same metrics for segmentation as object detection for Ultralytics by providing scores for Mean Precision, Mean Recall, F1, and the mean Average Precision (mAP) as described under the [Object Detection Metrics](detection.md#ultralytics-detection-metrics) section. 
 
 ## EdgeFirst Segmentation Metrics
 
@@ -97,4 +101,4 @@ Based on the metrics of each class shown above, the average metrics can now be c
 
 ## Model Timings
 
-These timings are measured in the same way as ModelPack as described under the [Model Timings](detection.md#model-timings) section.
+These timings are measured as described under the [Model Timings](detection.md#model-timings) section.

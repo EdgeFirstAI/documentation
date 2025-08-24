@@ -2,6 +2,44 @@
 
 This section will describe the validation metrics reported in [ModelPack validation sessions](../tutorials/validation.md#modelpack) for object detection.  The different types of validation methods available are Ultralytics, EdgeFirst, and YOLOv7.  These validation methods have been implemented in EdgeFirst Validator to reproduce specific metrics seen in other applications.  These metrics and their differences will be described in more detail below.
 
+## Ultralytics Detection Metrics
+
+### Mean Precision
+
+This metric is defined as the average of the per-class precision values at the threshold where the mean F1 score is highest.  This score reflects the overall ability of the model to avoid false positives across all classes.
+
+### Mean Recall
+
+This metric is defined as the average of the per-class recall values at the where the mean F1 score is highest.  This score reflects the model’s ability to find all relevant objects (true positives) across all classes.
+
+### F1 Score
+
+The F1 score is the harmonic mean between precision and recall giving a single metric that balances both values — especially useful in object detection when you want to evaluate the trade-off between detecting objects correctly (recall) and avoiding false positives (precision).
+
+The F1 equation is given as:
+
+$$
+\text{F1} = \frac{2 * precision * recall}{precision + recall}
+$$
+
+!!! note
+  The equations for precision and recall are provided in the [glossary](#glossary).
+
+### Mean Average Precision (mAP)
+
+The mAP (mean Average Precision) is one of the most important metrics for evaluating object detection models.  It measures how well your model balances precision and recall across different confidence thresholds and IoU thresholds.
+
+* Precision: How many predicted positives are correct.
+* Recall: How many actual positives were found.
+* AP (Average Precision): The area under the precision–recall curve for a given class and IoU threshold.
+* mAP (mean AP): The mean of all class-wise AP values, giving a single number for the model performance.
+
+We provide the mAP score at the IoU thresholds (0.50, 0.75, and 0.50-0.95).
+
+* mAP@0.50: Measures detection quality with lenient IoU threshold (0.50). This measures how many detections are correct (IoU ≥ 0.50).
+* mAP@0.75: Stricter IoU requirement — better localization is required. This measures how many detections are correct (IoU ≥ 0.75).
+* mAP@0.50-0.95: Average of APs from IoU 0.50 to 0.95 (step 0.05) — COCO metric. This is the standard COCO metric, averaged over 10 IoU thresholds.
+
 ## EdgeFirst Detection Metrics
 
 The EdgeFirst detection metrics describe the mean average precision (mAP), recall (mAR), and accuracy (mACC) at IoU thresholds 0.50, 0.75, and 0.50:0.95.  These metrics are represented as a bar chart.  Shown below is an example.

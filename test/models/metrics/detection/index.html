@@ -15,14 +15,14 @@
         <link rel="canonical" href="https://doc.edgefirst.ai/test/models/metrics/detection/">
       
       
-        <link rel="prev" href="../../fusion/deployment/raivin/">
+        <link rel="prev" href="../../custom/npu/">
       
       
         <link rel="next" href="../segmentation/">
       
       
       <link rel="icon" href="../../../assets/favicon.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.16">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.18">
     
     
       
@@ -1677,6 +1677,8 @@
       
         
       
+        
+      
     
     
     
@@ -2355,6 +2357,120 @@
                 
   
   
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_4" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../custom/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    Custom Models
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_5_4" id="__nav_5_4_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_4">
+            <span class="md-nav__icon md-icon"></span>
+            Custom Models
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../custom/quantize/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Model Quantization
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../custom/npu/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Deploying Models on the Target
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
     
   
   
@@ -2379,10 +2495,10 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_4" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_5" checked>
         
           
-          <label class="md-nav__link" for="__nav_5_4" id="__nav_5_4_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_5_5" id="__nav_5_5_label" tabindex="0">
             
   
   
@@ -2395,8 +2511,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_4_label" aria-expanded="true">
-          <label class="md-nav__title" for="__nav_5_4">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_5_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_5_5">
             <span class="md-nav__icon md-icon"></span>
             Model Metrics
           </label>
@@ -2457,6 +2573,57 @@
       Table of contents
     </label>
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#ultralytics-detection-metrics" class="md-nav__link">
+    <span class="md-ellipsis">
+      Ultralytics Detection Metrics
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Ultralytics Detection Metrics">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#mean-precision" class="md-nav__link">
+    <span class="md-ellipsis">
+      Mean Precision
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mean-recall" class="md-nav__link">
+    <span class="md-ellipsis">
+      Mean Recall
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#f1-score" class="md-nav__link">
+    <span class="md-ellipsis">
+      F1 Score
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mean-average-precision-map" class="md-nav__link">
+    <span class="md-ellipsis">
+      Mean Average Precision (mAP)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
       
         <li class="md-nav__item">
   <a href="#edgefirst-detection-metrics" class="md-nav__link">
@@ -2614,6 +2781,8 @@
       
         
       
+        
+      
     
     
     
@@ -2625,10 +2794,10 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_5" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_6" >
         
           
-          <label class="md-nav__link" for="__nav_5_5" id="__nav_5_5_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_5_6" id="__nav_5_6_label" tabindex="0">
             
   
   
@@ -2641,8 +2810,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_5_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_5_5">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_6">
             <span class="md-nav__icon md-icon"></span>
             Model Tutorials
           </label>
@@ -2707,6 +2876,29 @@
   
   <span class="md-ellipsis">
     Deployment
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tutorials/metadata/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Model Metadata
     
   </span>
   
@@ -4560,6 +4752,57 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#ultralytics-detection-metrics" class="md-nav__link">
+    <span class="md-ellipsis">
+      Ultralytics Detection Metrics
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Ultralytics Detection Metrics">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#mean-precision" class="md-nav__link">
+    <span class="md-ellipsis">
+      Mean Precision
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mean-recall" class="md-nav__link">
+    <span class="md-ellipsis">
+      Mean Recall
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#f1-score" class="md-nav__link">
+    <span class="md-ellipsis">
+      F1 Score
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mean-average-precision-map" class="md-nav__link">
+    <span class="md-ellipsis">
+      Mean Average Precision (mAP)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#edgefirst-detection-metrics" class="md-nav__link">
     <span class="md-ellipsis">
       EdgeFirst Detection Metrics
@@ -4655,6 +4898,35 @@
 
 <h1 id="detection-metrics">Detection Metrics</h1>
 <p>This section will describe the validation metrics reported in <a href="../../tutorials/validation/#modelpack">ModelPack validation sessions</a> for object detection.  The different types of validation methods available are Ultralytics, EdgeFirst, and YOLOv7.  These validation methods have been implemented in EdgeFirst Validator to reproduce specific metrics seen in other applications.  These metrics and their differences will be described in more detail below.</p>
+<h2 id="ultralytics-detection-metrics">Ultralytics Detection Metrics</h2>
+<h3 id="mean-precision">Mean Precision</h3>
+<p>This metric is defined as the average of the per-class precision values at the threshold where the mean F1 score is highest.  This score reflects the overall ability of the model to avoid false positives across all classes.</p>
+<h3 id="mean-recall">Mean Recall</h3>
+<p>This metric is defined as the average of the per-class recall values at the where the mean F1 score is highest.  This score reflects the model’s ability to find all relevant objects (true positives) across all classes.</p>
+<h3 id="f1-score">F1 Score</h3>
+<p>The F1 score is the harmonic mean between precision and recall giving a single metric that balances both values — especially useful in object detection when you want to evaluate the trade-off between detecting objects correctly (recall) and avoiding false positives (precision).</p>
+<p>The F1 equation is given as:</p>
+<div class="arithmatex">\[
+\text{F1} = \frac{2 * precision * recall}{precision + recall}
+\]</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+</div>
+<p>The equations for precision and recall are provided in the <a href="#glossary">glossary</a>.</p>
+<h3 id="mean-average-precision-map">Mean Average Precision (mAP)</h3>
+<p>The mAP (mean Average Precision) is one of the most important metrics for evaluating object detection models.  It measures how well your model balances precision and recall across different confidence thresholds and IoU thresholds.</p>
+<ul>
+<li>Precision: How many predicted positives are correct.</li>
+<li>Recall: How many actual positives were found.</li>
+<li>AP (Average Precision): The area under the precision–recall curve for a given class and IoU threshold.</li>
+<li>mAP (mean AP): The mean of all class-wise AP values, giving a single number for the model performance.</li>
+</ul>
+<p>We provide the mAP score at the IoU thresholds (0.50, 0.75, and 0.50-0.95).</p>
+<ul>
+<li>mAP@0.50: Measures detection quality with lenient IoU threshold (0.50). This measures how many detections are correct (IoU ≥ 0.50).</li>
+<li>mAP@0.75: Stricter IoU requirement — better localization is required. This measures how many detections are correct (IoU ≥ 0.75).</li>
+<li>mAP@0.50-0.95: Average of APs from IoU 0.50 to 0.95 (step 0.05) — COCO metric. This is the standard COCO metric, averaged over 10 IoU thresholds.</li>
+</ul>
 <h2 id="edgefirst-detection-metrics">EdgeFirst Detection Metrics</h2>
 <p>The EdgeFirst detection metrics describe the mean average precision (mAP), recall (mAR), and accuracy (mACC) at IoU thresholds 0.50, 0.75, and 0.50:0.95.  These metrics are represented as a bar chart.  Shown below is an example.</p>
 <figure>
@@ -4934,10 +5206,10 @@ The mean average accuracy at IoU thresholds 0.50 and 0.75 are calculated based o
     
     
       
-      <script id="__config" type="application/json">{"base": "../../..", "features": ["content.code.copy", "content.tabs.link", "navigation.tracking", "navigation.tabs", "navigation.tabs.sticky", "navigation.path", "navigation.indexes", "navigation.top", "toc.follow"], "search": "../../../assets/javascripts/workers/search.d50fe291.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"alias": true, "default": "latest", "provider": "mike"}}</script>
+      <script id="__config" type="application/json">{"base": "../../..", "features": ["content.code.copy", "content.tabs.link", "navigation.tracking", "navigation.tabs", "navigation.tabs.sticky", "navigation.path", "navigation.indexes", "navigation.top", "toc.follow"], "search": "../../../assets/javascripts/workers/search.973d3a69.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"alias": true, "default": "latest", "provider": "mike"}}</script>
     
     
-      <script src="../../../assets/javascripts/bundle.50899def.min.js"></script>
+      <script src="../../../assets/javascripts/bundle.92b07e13.min.js"></script>
       
         <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
       

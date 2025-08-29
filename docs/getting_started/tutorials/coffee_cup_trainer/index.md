@@ -25,3 +25,12 @@ The aim of this walkthrough is to capture video using mobile phone, upload to Ed
 
 
 
+
+
+
+In this Quickstart guide, you have created your EdgeFirst Studio Account, logged in to EdgeFirst Studio, and created your very first project and ran your first experiment by capturing images and videos, annotating datasets, training a Vision model, validating the trained model, and deploying the model back into the PC, EdgeFirst Platform, or the i.MX 8M Plus EVK.
+
+
+
+
+

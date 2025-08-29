@@ -8,6 +8,11 @@ nav:
       - getting_started/workflows/tourist_plus.md
       - getting_started/workflows/web.md
       - getting_started/workflows/maivin.md
+    - Tutorials:
+      - getting_started/tutorials/index.md  
+      - getting_started/tutorials/coffee_cup_trainer/index.md
+      - getting_started/tutorials/3d_visualization/index.md  
+      - getting_started/tutorials/3d_annotation/index.md  
   - Studio:
     - studio/index.md
     - studio/navigation.md

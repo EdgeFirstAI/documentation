@@ -15,7 +15,7 @@ Click on Goto project to go to the [Projects](../../studio/projects.md) page. A 
 <figcaption>Projects Page</figcaption>
 </figure>
 
-Please feel free to view these datasets. If ypu want to make any changes make a copy of the dataset and make changes as teh original dataset are read only. 
+Please feel free to view these datasets. If ypu want to make any changes make a copy of the dataset and make changes as the original dataset are read only. 
 
 # Next Steps
 

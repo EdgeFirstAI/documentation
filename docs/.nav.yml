@@ -80,6 +80,12 @@ nav:
     - models/augmentations.md
   - Perception:
     - perception/index.md
+    - Deep View Middleware:
+      - perception/middleware/index.md
+      - perception/middleware/deepviewrt.md
+      - perception/middleware/converter.md
+      - perception/middleware/HAL.md
+
     - Dataset Collection Middleware:
       - platforms/recording.md
       - platforms/replay.md

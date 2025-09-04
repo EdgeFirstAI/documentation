@@ -33,7 +33,7 @@ ImageNet is a large-scale dataset with over 14 million images, widely used for t
 
 COCO (Common Objects in Context) is a large-scale dataset with over 330K images and 80 object categories, widely used for object detection, segmentation, and keypoint estimation. It emphasizes understanding objects in complex, real-world scenes. Here, we benchmark ModelPack variants on COCO to evaluate detection accuracy and model scalability.
 
-**Table: CSPDarknet53 ImageNet Results - RGB - (224x224)**
+**Table: ModelPack on COCO - 100 Epochs Benchmark - 640x640**
 
 
 | Model             | mAP@0.5 | mAP@0.5..0.95 |

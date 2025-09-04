@@ -28,7 +28,7 @@ and they have the following distribution across the dataset:
 | csp19-medium      | 0.946     |   0.754    | 
 | csp19-large       | 0.944     |   0.769    | 
 | csp53-nano        | 0.924     |   0.774    | 
-| csp19-small       | 0.945     |   0.791    | 
+| csp53-small       | 0.945     |   0.791    | 
 | yolov8n           | 0.551     |   0.641    | 
 
 

@@ -62,4 +62,4 @@ The Playing Cards dataset is a custom object detection dataset containing over 1
 | csp53-nano        | 0.924     |   0.774    | 
 | csp19-small       | 0.945     |   0.791    | 
 
-Visit the full COCO dataset [Benchmark here](../../datasets/playingcards/index.md/#object-detection-benchmark-100-epochs)
+Visit the full **Playingcards** dataset [Benchmark here](../../datasets/playingcards/index.md/#object-detection-benchmark-100-epochs)

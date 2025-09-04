@@ -33,6 +33,8 @@ nav:
       - COCO:
         - datasets/coco/index.md
         - datasets/coco/import.md
+      - Playingcards:
+        - datasets/playingcards/index.md
     - Dataset Tutorials:
       - datasets/tutorials/index.md
       - datasets/tutorials/capture.md

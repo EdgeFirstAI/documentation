@@ -178,6 +178,18 @@ hair drier
 toothbrush
 ```
 
+## Object Detection Benchmark (100 epochs)
+
+**Table: COCO Metrics - RGB - (640x640)**
+
+| Model             | mAP@0.5 | mAP@0.5..0.95 |
+|-------------------|-----------|-----------|
+| csp19-large      | 0.153      |   0.085 | 
+| yolov8n          | 0.235      |   0.182 | 
+
+
+
+
 [coco]: https://cocodataset.org/#home
 [consort]: https://cocodataset.org/#people
 [terms]: https://cocodataset.org/#termsofuse

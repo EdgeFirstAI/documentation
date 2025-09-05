@@ -1,19 +1,17 @@
 # Playingcards Dataset
 
-PlayingCards is an experimental object detection dataset developed at Au-Zone Technologies to evaluate embedded models in indoor scenarios. It contains 1,476 images, split into 1,327 for training and 148 for validation, covering 13 classes with various poses.
+PlayingCards is an experimental object detection dataset developed at Au-Zone Technologies to evaluate embedded models in indoor scenarios. 
 
-While bounding box prediction is relatively straightforward due to the uniform rectangular shape of all cards, classification presents a greater challenge. Models often overgeneralize card locations because of the consistent geometry, yet struggle to distinguish between visually similar classes such as jack, queen, and king.
 
-## Dataset Labels
+## Dataset Information
 
-The labels on the dataset are the following:
+- **Groups**:
+    - train: 1327 Images
+    - val: 148 images
 
-```
-ace, eight, five, four, jack, king, nine, queen, seven,
-six, ten, three, two
-```
 
-and they have the following distribution across the dataset:
+It contains 1,476 images in total and 13 classes
+
 
 ![Class Distribution](./assets/label-count.png){align=center}
 

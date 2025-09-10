@@ -25,6 +25,8 @@ source venv/bin/activate
 pip3 install edgefirst
 ```
 
+{% include-markdown "discrete/models/download_model.md" %}
+
 ## Usage
 
 Once installed, the applications can be launched using the `edgefirst` launcher which handles running the various [services](../../../perception/launcher.md#services).  The applications can also be run directly, for example `edgefirst-camera` to run the camera service.  The launcher is an optional but convenient way to run all the applications in "user-mode" in contrast to having the middleware integrated into the system as "system-mode" where the applications will be managed by systemd.
@@ -52,3 +54,11 @@ If testing a model trained using a few images collected on a phone you'll notice
 You can also access the MCAP recordings from the working directory where the `edgefirst live` command was run.
 
 Once you have your MCAP download to your PC you may upload it to EdgeFirst Studio to annotate and further train your model.  Uploading MCAP recordings is done through the [Snapshot Dashboard](../../../studio/snapshots.md#upload-from-mcap-file).
+
+## Next Steps
+
+In this tutorial, you have fetched the trained and validated model from EdgeFirst Studio, copied the model to the EVK and ran the model live using the EdgeFirst Live application and the EVK's camera. 
+
+See our [developer guide](../../../perception/dev/examples/model.md) for examples to query the model outputs using Rust or Python.
+
+For more examples on deploying ModelPack in other platforms, see [Model Deployment](../../tutorials/deployment.md).

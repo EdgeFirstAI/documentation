@@ -22,7 +22,7 @@
       
       
       <link rel="icon" href="../../../../assets/favicon.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.18">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.19">
     
     
       
@@ -2169,6 +2169,15 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#download-the-model" class="md-nav__link">
+    <span class="md-ellipsis">
+      Download the Model
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#usage" class="md-nav__link">
     <span class="md-ellipsis">
       Usage
@@ -2189,6 +2198,15 @@
         
       </ul>
     </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#next-steps" class="md-nav__link">
+    <span class="md-ellipsis">
+      Next Steps
+    </span>
+  </a>
   
 </li>
       
@@ -4667,6 +4685,15 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#download-the-model" class="md-nav__link">
+    <span class="md-ellipsis">
+      Download the Model
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#usage" class="md-nav__link">
     <span class="md-ellipsis">
       Usage
@@ -4687,6 +4714,15 @@
         
       </ul>
     </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#next-steps" class="md-nav__link">
+    <span class="md-ellipsis">
+      Next Steps
+    </span>
+  </a>
   
 </li>
       
@@ -4723,6 +4759,61 @@ python3<span class="w"> </span>-m<span class="w"> </span>virtualenv<span class="
 <span class="nb">source</span><span class="w"> </span>venv/bin/activate
 pip3<span class="w"> </span>install<span class="w"> </span>edgefirst
 </code></pre></div>
+<h2 id="download-the-model">Download the Model</h2>
+<p>Download the model from EdgeFirst Studio into the device.  There are two methods for downloading the model.  The first method is to download the model from EdgeFirst Studio and then SCP the model file to the device.  The second method is to use the EdgeFirst Client to download the model directly in the device.</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">Download using SCP</label><label for="__tabbed_1_2">Download using EdgeFirst Client</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<p>As mentioned under the <a href="../../training/#training-outcomes">Training Outcomes</a> section, the trained models can be downloaded by clicking the "View Additional Details" button on the training session card in EdgeFirst Studio. </p>
+<p><figure markdown="span">
+<img align="center" alt="Training Session Attributes" src="../../../assets/training/training-session-attributes.jpg" />
+<figcaption>Training Session Attributes</figcaption>
+</figure></p>
+<p>This will open the session details and the models are listed under the "Artifacts" tab as shown below.  Click on the downward arrow indicated in red to download the models to your PC.  In this example, you will be deploying the TFLite model in the device.</p>
+<table>
+<thead>
+<tr>
+<th>Session Details</th>
+<th>Artifacts</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><img alt="session" src="../../../assets/training/vision-session-details.jpg" /></td>
+<td><img alt="artifacts" src="../../../assets/training/vision-session-artifacts.jpg" /></td>
+</tr>
+</tbody>
+</table>
+<p>Once the model is downloaded in your PC, you can <a href="../../../../platforms/ssh/#secure-copy">SCP</a> the model to the device by using this command template.</p>
+<div class="highlight"><pre><span></span><code>scp<span class="w"> </span>&lt;path<span class="w"> </span>to<span class="w"> </span>the<span class="w"> </span>downloaded<span class="w"> </span>TFLite<span class="w"> </span>model&gt;<span class="w"> </span>&lt;destination<span class="w"> </span>path&gt;
+</code></pre></div>
+<p>An example command is shown below.</p>
+<div class="highlight"><pre><span></span><code>scp<span class="w"> </span>modelpack.tflite<span class="w"> </span>torizon@verdin-imx8mp-15140753:~
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<p>This method expects you to have already connected to the device via <a href="../../../../platforms/ssh/">SSH</a>.  The <a href="../../../../perception/studio/">EdgeFirst Client</a> can be installed via <code>pip3 install edgefirst-client</code>.  You can verify the installation with the client version command.</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>edgefirst-client<span class="w"> </span>version
+EdgeFirst<span class="w"> </span>Studio<span class="w"> </span>Server:<span class="w"> </span><span class="m">3</span>.7.8-a50429e<span class="w"> </span>Client:<span class="w"> </span><span class="m">1</span>.3.3
+</code></pre></div>
+<p>Next login to EdgeFirst Studio with the command.</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>edgefirst-client<span class="w"> </span>login
+Username:<span class="w"> </span>user
+Password:<span class="w"> </span>****
+</code></pre></div>
+<p>You can download the model on the device using the <code>download-artifact</code> command as shown below.</p>
+<div class="highlight"><pre><span></span><code>edgefirst-client<span class="w"> </span>download-artifact<span class="w"> </span>&lt;session<span class="w"> </span>ID&gt;<span class="w"> </span>&lt;model<span class="w"> </span>name&gt;
+</code></pre></div>
+<p>For example <code>edgefirst-client download-artifact 3928 'Coffee Cup Detection-t-f58.tflite'</code>. This command will download to the current working directory.</p>
+<p>The <code>download-artifact</code> expects three arguments.</p>
+<ul>
+<li>session ID: Pass the trainer or validation integer session ID associated with the models.</li>
+<li>model name: Pass the specific model that will be downloaded to the device.  Usually this is <code>mymodel.tflite</code>.</li>
+</ul>
+<p>You can find more information on using the <a href="../../../../perception/studio/">EdgeFirst Client</a> in the command line.</p>
+</div>
+</div>
+</div>
 <h2 id="usage">Usage</h2>
 <p>Once installed, the applications can be launched using the <code>edgefirst</code> launcher which handles running the various <a href="../../../../perception/launcher/#services">services</a>.  The applications can also be run directly, for example <code>edgefirst-camera</code> to run the camera service.  The launcher is an optional but convenient way to run all the applications in "user-mode" in contrast to having the middleware integrated into the system as "system-mode" where the applications will be managed by systemd.</p>
 <h3 id="live-camera-mode">Live Camera Mode</h3>
@@ -4739,6 +4830,10 @@ pip3<span class="w"> </span>install<span class="w"> </span>edgefirst
 <p><img alt="MCAP Recorder Controls" src="../../../assets/deployment/evk-recorder-controls.png" /></p>
 <p>You can also access the MCAP recordings from the working directory where the <code>edgefirst live</code> command was run.</p>
 <p>Once you have your MCAP download to your PC you may upload it to EdgeFirst Studio to annotate and further train your model.  Uploading MCAP recordings is done through the <a href="../../../../studio/snapshots/#upload-from-mcap-file">Snapshot Dashboard</a>.</p>
+<h2 id="next-steps">Next Steps</h2>
+<p>In this tutorial, you have fetched the trained and validated model from EdgeFirst Studio, copied the model to the EVK and ran the model live using the EdgeFirst Live application and the EVK's camera. </p>
+<p>See our <a href="../../../../perception/dev/examples/model/">developer guide</a> for examples to query the model outputs using Rust or Python.</p>
+<p>For more examples on deploying ModelPack in other platforms, see <a href="../../../tutorials/deployment/">Model Deployment</a>.</p>
 
 
 

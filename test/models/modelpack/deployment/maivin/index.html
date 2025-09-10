@@ -22,7 +22,7 @@
       
       
       <link rel="icon" href="../../../../assets/favicon.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.18">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.19">
     
     
       
@@ -2189,30 +2189,6 @@
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Download the Model">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#download-and-scp" class="md-nav__link">
-    <span class="md-ellipsis">
-      Download and SCP
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#download-using-the-client" class="md-nav__link">
-    <span class="md-ellipsis">
-      Download using the Client
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
 </li>
       
         <li class="md-nav__item">
@@ -2270,48 +2246,6 @@
   <a href="#live-view-segmentation-app" class="md-nav__link">
     <span class="md-ellipsis">
       Live View (Segmentation App)
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#record-mcap" class="md-nav__link">
-    <span class="md-ellipsis">
-      Record MCAP
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Record MCAP">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#start-recording" class="md-nav__link">
-    <span class="md-ellipsis">
-      Start Recording
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#stop-recording" class="md-nav__link">
-    <span class="md-ellipsis">
-      Stop Recording
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#download-mcap" class="md-nav__link">
-    <span class="md-ellipsis">
-      Download MCAP
     </span>
   </a>
   
@@ -4784,30 +4718,6 @@
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Download the Model">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#download-and-scp" class="md-nav__link">
-    <span class="md-ellipsis">
-      Download and SCP
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#download-using-the-client" class="md-nav__link">
-    <span class="md-ellipsis">
-      Download using the Client
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
 </li>
       
         <li class="md-nav__item">
@@ -4871,48 +4781,6 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#record-mcap" class="md-nav__link">
-    <span class="md-ellipsis">
-      Record MCAP
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Record MCAP">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#start-recording" class="md-nav__link">
-    <span class="md-ellipsis">
-      Start Recording
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#stop-recording" class="md-nav__link">
-    <span class="md-ellipsis">
-      Stop Recording
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#download-mcap" class="md-nav__link">
-    <span class="md-ellipsis">
-      Download MCAP
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#inference-visualization-in-foxglove" class="md-nav__link">
     <span class="md-ellipsis">
       Inference Visualization in Foxglove
@@ -4968,15 +4836,16 @@
 <li><a href="#record-mcap">MCAP Recording</a>: Allows control of the recording options and provides download file options to replay the recording.</li>
 </ol>
 <h2 id="download-the-model">Download the Model</h2>
-<p>First download the model from EdgeFirst Studio into the Maivin Platform.  There are two methods for downloading the model.  The first method is to download the model from EdgeFirst Studio and then SCP the model file to the Maivin Platform.  The second method is to use the EdgeFirst Client to download the model directly in the device.</p>
-<h3 id="download-and-scp">Download and SCP</h3>
+<p>Download the model from EdgeFirst Studio into the device.  There are two methods for downloading the model.  The first method is to download the model from EdgeFirst Studio and then SCP the model file to the device.  The second method is to use the EdgeFirst Client to download the model directly in the device.</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">Download using SCP</label><label for="__tabbed_1_2">Download using EdgeFirst Client</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
 <p>As mentioned under the <a href="../../training/#training-outcomes">Training Outcomes</a> section, the trained models can be downloaded by clicking the "View Additional Details" button on the training session card in EdgeFirst Studio. </p>
-<figure>
+<p><figure markdown="span">
 <img align="center" alt="Training Session Attributes" src="../../../assets/training/training-session-attributes.jpg" />
-
 <figcaption>Training Session Attributes</figcaption>
-</figure>
-<p>This will open the session details and the models are listed under the "Artifacts" tab as shown below.  Click on the downward arrow indicated in red to download the models to your PC.  In this example, you will be deploying the TFLite model in the Maivin.</p>
+</figure></p>
+<p>This will open the session details and the models are listed under the "Artifacts" tab as shown below.  Click on the downward arrow indicated in red to download the models to your PC.  In this example, you will be deploying the TFLite model in the device.</p>
 <table>
 <thead>
 <tr>
@@ -4991,18 +4860,19 @@
 </tr>
 </tbody>
 </table>
-<p>Once the model is downloaded in your PC, you can <a href="../../../../platforms/ssh/#secure-copy">SCP</a> the model to the Maivin by using this command template.</p>
+<p>Once the model is downloaded in your PC, you can <a href="../../../../platforms/ssh/#secure-copy">SCP</a> the model to the device by using this command template.</p>
 <div class="highlight"><pre><span></span><code>scp<span class="w"> </span>&lt;path<span class="w"> </span>to<span class="w"> </span>the<span class="w"> </span>downloaded<span class="w"> </span>TFLite<span class="w"> </span>model&gt;<span class="w"> </span>&lt;destination<span class="w"> </span>path&gt;
 </code></pre></div>
 <p>An example command is shown below.</p>
 <div class="highlight"><pre><span></span><code>scp<span class="w"> </span>modelpack.tflite<span class="w"> </span>torizon@verdin-imx8mp-15140753:~
 </code></pre></div>
-<h3 id="download-using-the-client">Download using the Client</h3>
-<p>This method expects you to have already connected to the Maivin via <a href="../../../../platforms/ssh/">SSH</a>.  The <a href="../../../../perception/studio/">EdgeFirst Client</a> can be installed via <code>pip3 install edgefirst-client</code>.  You can verify the installation with the client version command.</p>
+</div>
+<div class="tabbed-block">
+<p>This method expects you to have already connected to the device via <a href="../../../../platforms/ssh/">SSH</a>.  The <a href="../../../../perception/studio/">EdgeFirst Client</a> can be installed via <code>pip3 install edgefirst-client</code>.  You can verify the installation with the client version command.</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>edgefirst-client<span class="w"> </span>version
 EdgeFirst<span class="w"> </span>Studio<span class="w"> </span>Server:<span class="w"> </span><span class="m">3</span>.7.8-a50429e<span class="w"> </span>Client:<span class="w"> </span><span class="m">1</span>.3.3
 </code></pre></div>
-<p>Next login to the client with the command.</p>
+<p>Next login to EdgeFirst Studio with the command.</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>edgefirst-client<span class="w"> </span>login
 Username:<span class="w"> </span>user
 Password:<span class="w"> </span>****
@@ -5010,13 +4880,16 @@ Password:<span class="w"> </span>****
 <p>You can download the model on the device using the <code>download-artifact</code> command as shown below.</p>
 <div class="highlight"><pre><span></span><code>edgefirst-client<span class="w"> </span>download-artifact<span class="w"> </span>&lt;session<span class="w"> </span>ID&gt;<span class="w"> </span>&lt;model<span class="w"> </span>name&gt;
 </code></pre></div>
+<p>For example <code>edgefirst-client download-artifact 3928 'Coffee Cup Detection-t-f58.tflite'</code>. This command will download to the current working directory.</p>
 <p>The <code>download-artifact</code> expects three arguments.</p>
 <ul>
-<li>session ID: Pass the integer trainer or validation session ID associated with the models.</li>
+<li>session ID: Pass the trainer or validation integer session ID associated with the models.</li>
 <li>model name: Pass the specific model that will be downloaded to the device.  Usually this is <code>mymodel.tflite</code>.</li>
-<li>download path (optional): Specify the path to download the model.  If not provided, it will download to the current working directory.</li>
 </ul>
 <p>You can find more information on using the <a href="../../../../perception/studio/">EdgeFirst Client</a> in the command line.</p>
+</div>
+</div>
+</div>
 <h2 id="visit-the-web-ui-service">Visit the Web UI Service</h2>
 <p>Use your browser to connect to the Web UI of the remote device, enter the following URL <code>https://&lt;hostname&gt;/</code>.</p>
 <div class="admonition note">
@@ -5095,54 +4968,7 @@ MODEL = &quot;path/to/mymodel.tflite&quot;
 
 <figcaption>Sample 1</figcaption>
 </figure>
-<p>Now that the model has been updated, you can make new recordings using the model's inference and then visualizing the recording using Foxglove Studio.</p>
-<h2 id="record-mcap">Record MCAP</h2>
-<p>MCAP recordings can be started and stopped using the Recording Button at the device's <a href="../../../../platforms/walkthrough/#the-top-ribbon">top navbar</a>.  It is to the left of the MCAP Details hamburger button, which is used to open the <a href="../../../../platforms/recording/#the-mcap-modal">MCAP Details Modal</a>.</p>
-<figure>
-<img align="center" alt="MCAP Recording and Details Buttons" src="../../../../platforms/assets/mcap-RecordingButton_McapDetailsButton.png" />
-
-<figcaption>MCAP Recording and Details Buttons</figcaption>
-</figure>
-<p>Both of these buttons are available on every page of the Maivin, Raivin, and other edge devices running the EdgeFirst middleware.</p>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>You must close all modals to be able to click the "Recording" and "Details" Buttons.</p>
-</div>
-<p>For more information about recording MCAPs, please read the <a href="../../../../platforms/recording/">MCAP Recording section</a>.</p>
-<h3 id="start-recording">Start Recording</h3>
-<p>To start a recording, simply click the "Recording" button to begin capturing data.</p>
-<figure>
-<img align="center" alt="MCAP Recording" src="../../../../platforms/assets/mcap_recording.png" /><br />
-<figcaption>MCAP Recording</figcaption>
-</figure>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>It may take up to 30 seconds for a recording to start, depending on topic tracked.</p>
-</div>
-<div class="admonition warning">
-<p class="admonition-title">Low Disk Space</p>
-<p>If there is not enough room on the drive to record an MCAP, recording will automatically stop and you will get a "Low Disk Space" error.
- <figure markdown="span">
- <img align="center" alt="MCAP Low Disk Space Warning" src="../../../../platforms/assets/mcap_low-disk-space.png" /><br />
- <figcaption>MCAP Low Disk Space Warning</figcaption>
- </figure></p>
-</div>
-<p>If you were to open the MCAP Details Modal while recording, you would see a new MCAP file in the MCAP list.</p>
-<figure>
-<img align="center" alt="MCAP Modal While Recording" src="../../../../platforms/assets/mcap_modal_while_recording.png" /><br />
-<figcaption>MCAP Modal While Recording</figcaption>
-</figure>
-<h3 id="stop-recording">Stop Recording</h3>
-<p>To stop recording, click the "Recording" button a second time.</p>
-<h2 id="download-mcap">Download MCAP</h2>
-<p>To download an MCAP recording from the device, click the MCAP Details hamburger button <img alt="&quot;MCAP Details Button&quot;" src="../../../../assets/buttons/mcap_details_button.jpg" /> to open the MCAP Details Modal.</p>
-<figure>
-<img align="center" alt="MCAP Recorder Interface" src="../../../../platforms/assets/quickStart-mcap.png" />
-
-<figcaption>MCAP Modal</figcaption>
-</figure>
-<p>Use the "Download" button <img alt="&quot;Download Button&quot;" src="../../../../assets/buttons/mcap_download_button.png" /> in the row containing the name of the MCAP file you want to download, which will download the MCAP file to your local machine.</p>
-<p>You can also use an <a href="../../../../platforms/ssh/#secure-copy">SSH client to copy files</a> off the Raivin.</p>
+<p>Now that the model has been updated, you can <a href="../../../../platforms/recording/#record-mcap">make new recordings</a> using the model's inference and then <a href="../../../../platforms/foxglove/">visualize the recording using Foxglove Studio</a>.</p>
 <h2 id="inference-visualization-in-foxglove">Inference Visualization in Foxglove</h2>
 <p>Once the MCAP recording has been downloaded, you can use Foxglove Studio to see the playback of MCAP recordings and the model inference.  The following preview is a frame from the MCAP with the model inference masks overlaid on top of the video. </p>
 <figure>
@@ -5153,6 +4979,7 @@ MODEL = &quot;path/to/mymodel.tflite&quot;
 <p>More information on the MCAP playback is provided in <a href="../../../../platforms/foxglove/">Foxglove Studio</a>.</p>
 <h2 id="next-steps">Next Steps</h2>
 <p>In this tutorial, you have fetched the trained and validated model from EdgeFirst Studio, copied the model in the Maivin, configured the Maivin model services, and ran inference on the model in the device.  You have seen the model running live using the Maivin's camera and ran a Maivin MCAP recording to capture the model inference in the frames that can be visualized using Foxglove Studio. </p>
+<p>See our <a href="../../../../perception/dev/examples/model/">developer guide</a> for examples to query the model outputs using Rust or Python.</p>
 <p>For more examples on deploying ModelPack in other platforms, see <a href="../../../tutorials/deployment/">Model Deployment</a>.</p>
 
 

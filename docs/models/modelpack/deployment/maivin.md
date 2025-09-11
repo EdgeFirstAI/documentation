@@ -9,7 +9,7 @@ Now that you have validated your Vision Model from either a [managed](../validat
 This guide will showcase two methods of deploying the model.
 
 1. [Live View (Segmentation App)](#live-view-segmentation-app): Displays the live camera feed using the default model provided.
-2. [MCAP Recording](#record-mcap): Allows control of the recording options and provides download file options to replay the recording.
+2. [MCAP Recording](../../../platforms/recording.md#record-mcap): Allows control of the recording options and provides download file options to replay the recording.
 
 {% include-markdown "discrete/models/download_model.md" %}
 
@@ -90,7 +90,7 @@ Once the model path in the device is specified, ensure that the Camera, Model, a
 <figcaption>Service Status</figcaption>
 </figure>
 
-You will be greeted with the "Service Overview" page.  Ensure that the "camera" and "model" services are enabled and running by toggling the "Enable" and "Start" buttons as shown.  Only "Enable" the "recorder" service as shown.  You will be using the recorder service in [MCAP Recording](#record-mcap).
+You will be greeted with the "Service Overview" page.  Ensure that the "camera" and "model" services are enabled and running by toggling the "Enable" and "Start" buttons as shown.  Only "Enable" the "recorder" service as shown.  You will be using the recorder service in [MCAP Recording](../../../platforms/recording.md#record-mcap).
 
 <figure markdown="span">
 ![Service Overview](../../assets/deployment/maivin-service-overview.jpg){ align=center }

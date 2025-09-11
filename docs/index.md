@@ -2,11 +2,30 @@
 
 Welcome to EdgeFirst Studio!  Follow this Quickstart for user onboarding from start to finish.
 
-{% include-markdown "discrete/user/signup.md" %}
+=== "Sign Up"
 
-{% include-markdown "discrete/user/login.md" %}
+    {% include-markdown "discrete/user/signup.md" heading-offset=2 %}
 
-{% include-markdown "discrete/studio/create_project.md" %}
+    <div class="wizard-actions" markdown>
+    [Next → Login](#login){ .md-button .md-button--primary }
+    </div>
+
+=== "Login"
+
+    {% include-markdown "discrete/user/login.md" heading-offset=2 %}
+
+    <div class="wizard-actions" markdown>
+    [← Back](#select-framework){ .md-button }
+    [Next → Create Project](#create-project){ .md-button .md-button--primary }
+    </div>
+
+=== "Create Project"
+
+    {% include-markdown "discrete/studio/create_project.md" heading-offset=2 %}
+
+    <div class="wizard-actions" markdown>
+    [← Back](#select-framework){ .md-button }
+    </div>
 
 The next sections will invite you to follow along the end-to-end workflow for recording a video or capturing images using a phone and then upload the captured data into EdgeFirst Studio for annotation and then model training, validation, and deployment on various platforms. 
 

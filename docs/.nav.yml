@@ -65,6 +65,8 @@ nav:
         - models/modelpack/deployment/evk.md
         - models/modelpack/deployment/maivin.md
       - Benchmarks: models/modelpack/benchmarks.md
+    - Ultralytics:
+        - models/ultralytics/index.md
     - Fusion:
       - models/fusion/index.md
       - models/fusion/training.md

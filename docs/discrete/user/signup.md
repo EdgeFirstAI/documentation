@@ -18,5 +18,5 @@
 
 4. Once the email is verified, you can now [login][login] to EdgeFirst Studio.
 
-[signup]: https://test.edgefirst.studio/signup
-[login]: https://test.edgefirst.studio/login
+[signup]: https://stage.edgefirst.studio/signup
+[login]: https://stage.edgefirst.studio/login

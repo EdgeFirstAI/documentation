@@ -14,5 +14,5 @@ It is recommended for new users to be familiar with [Navigating EdgeFirst Studio
 
 Lastly, new users are invited to learn more about the auto-annotation process in EdgeFirst Studio known as [Automatic Ground Truth Generation (AGTG)](agtg.md) that aims to make the annotation process as effortless as possible for the user. 
 
-[pricing_tiers]: https://test.edgefirst.studio/#/
-[signup]: https://test.edgefirst.studio/#/signup
+[pricing_tiers]: https://stage.edgefirst.studio/#/
+[signup]: https://stage.edgefirst.studio/#/signup

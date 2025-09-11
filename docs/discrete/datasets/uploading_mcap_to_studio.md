@@ -27,4 +27,4 @@ Once the MCAP file is selected, this would start the upload progress in EdgeFirs
 :------------------:|:------------------:
 ![Progress](../../datasets/assets/capture/upload-progress.jpg) | ![Complete](../../datasets/assets/capture/upload-completed.jpg)
 
-[login]: https://test.edgefirst.studio/login
+[login]: https://stage.edgefirst.studio/login

@@ -12,7 +12,9 @@ After setting up the Zenoh session, we will create a subscriber to the `rt/gps` 
 
     ``` python
     # Create a subscriber for "rt/gps"
-    subscriber = session.declare_subscriber('rt/gps')
+    loop = asyncio.get_running_loop()
+    drain = MessageDrain(loop)
+    session.declare_subscriber('rt/gps', drain.callback)
     ```
 === "Rust"
 
@@ -23,16 +25,22 @@ After setting up the Zenoh session, we will create a subscriber to the `rt/gps` 
         .unwrap();
     ```
 
-### Decode GPS Data
+### Receive the Message
 
-We can now recieve message on the subcriber that will be handled by the gps_listener function. After recieving the message, we will need to deserialize it.
+We can now receive a message on the subscriber. After receiving the message, we will set it up for processing.
 
 === "Python"
 
     ``` python
-    from edgefirst.schemas.sensor_msgs import NavSatFix
-    msg = subscriber.recv()
-    gps = NavSatFix.deserialize(msg.payload.to_bytes())
+    async def gps_handler(drain):
+        while True:
+            msg = await drain.get_latest()
+            thread = threading.Thread(target=gps_worker, args=[msg])
+            thread.start()
+            
+            while thread.is_alive():
+                await asyncio.sleep(0.001)
+            thread.join()
     ```
 === "Rust"
 
@@ -42,17 +50,17 @@ We can now recieve message on the subcriber that will be handled by the gps_list
     let gps: NavSatFix = cdr::deserialize(&msg.payload().to_bytes())?;
     ```
 
-### Get Latitude/Longitude Values and Post to Rerun
+### Process the GPS Data
 
 We will now pull out the latitude/longitude data from the decoded NavSatFix message and log the data to Rerun.
 
 === "Python"
 
     ``` python
-    lat = gps.latitude
-    long = gps.longitude
-    # print("Latitude: %.6f Longitude: %.6f" % (lat, long))
-    rr.log("Current Location", rr.GeoPoints(lat_lon=[lat, long]))
+    def gps_worker(msg):
+        gps = NavSatFix.deserialize(msg.payload.to_bytes())
+        rr.log("CurrentLoc",
+                rr.GeoPoints(lat_lon=[gps.latitude, gps.longitude]))
     ```
 === "Rust"
 

@@ -20,16 +20,16 @@ If you wish to mount your Raivin to the tripod, it should be done now before con
 
 Next, connect a standard Category 5 network cable (not included) from your shared network into the device.
 
-Optionally, you can connect an antenna to the SMA connecter on the top-right corner of the back of the device to enhance GPS reception.
+Optionally, you can connect an antenna to the SMA connector on the top-right corner of the back of the device to enhance GPS reception.
 
-Chose the proper power adapter plug from your region and connect it to the power cable.  Then connect the M12 connector of the power cable to the connection at the back of the module, making sure to align the tab at the top of the connecter to its corresponding slot.  
+Chose the proper power adapter plug from your region and connect it to the power cable.  Then connect the M12 connector of the power cable to the connection at the back of the module, making sure to align the tab at the top of the connector to its corresponding slot.  
 
 <figure markdown="span">
 ![M12 Connector](assets/quickStart-m12.png){align=center}
 <figcaption>M12 Connector</figcaption>
 </figure>
 
-The device should boot up as soon as it is connected.  A blue light above and to the right of the power connecter should start blinking.  
+The device should boot up as soon as it is connected.  A blue light above and to the right of the power connector should start blinking.  
 
 <figure markdown="span">
 ![Raivin Back Picture](assets/quickStart-backPic.png){align=center}
@@ -90,7 +90,7 @@ and for a Maivin:
     The ultra-short model included in this release was trained for fixed camera and mostly tested indoors.
 
 ## Next Steps
-Now that you have completed these initial steps, we recommend that you read the following walk-throughs:  
+Now that you have completed these initial steps, we recommend that you read the following walkthroughs:  
 - [Raivin WebUI Walkthrough](./walkthrough.md), to see what each UI card on the splash screen does  
 - [SSH Walkthrough](./ssh.md), to learn how to SSH into your Raivin and basic command-line operations  
 - [Raivin Recording Walkthrough](./recording.md), to learn how to record datasets and download them to your PC  

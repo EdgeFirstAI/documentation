@@ -4,13 +4,13 @@ This section will describe two, more advanced tasks with [Foxglove Studio](foxgl
 1. Using the 3D Panel to view the post-processed [Radar](radar.md) outputs contained in the "Fusion Targets" topics.
 2. Using the "User Scripts" panel to create a short Typescript script that also outputs the values for those topics.
 
-It is assumed you have read the [introduction to Foxglove Studio](foxglove.md), familiarized yourself with the application, and have [downloaded an MCAP](recording.md#downloading-and-analysis) that has recorded the [`/fusion/targets` topic](configuration.md#fusion-recording).
+It is assumed you have read the [introduction to Foxglove Studio](foxglove.md), familiarized yourself with the application, and have [downloaded an MCAP](recording.md#download-mcap) that has recorded the [`/fusion/targets` topic](configuration.md#fusion-recording).
 
 ## The Fusion Targets Topic
 The "Fusion Targets" topic contains post-processed radar outputs that identify targets as people.  For each target it detects, it returns the following information about the target:
 
 * x, y, z coordinates of the target, in meters
-* speed in metres per second
+* speed in meters per second
 * power
 * radar cross section
 * cluster ID
@@ -36,7 +36,7 @@ The Fusion and Vision Class are produced by Fusion service on the Raivin.  They 
 ## 3D Panes for Fusion
 To Create a 3D view for the Fusion Class:
 
-1. From a panel in Foxglove, click the "More" kebob icon and change the panel to a "3D" panel.  
+1. From a panel in Foxglove, click the "More" kebab icon and change the panel to a "3D" panel.  
 
     <figure markdown="span">
     ![Change to 3D](assets/adv_foxglove-change_panel.png){align=center}
@@ -92,7 +92,7 @@ Once all that is finished, you should have a panel that looks as the left panel 
 ### Adding Vision Class
 The steps above can be followed for the Vision Class as well, but please note - you cannot have both classes on the same 3D panel, as each topic is only allowed once.  If you want, you can also do these in an easier fashion.
 
-1. On the "More" kebob icon of the fusion class, split the panel (in this case, down)
+1. On the "More" kebab icon of the fusion class, split the panel (in this case, down)
 
     <figure markdown="span">
     ![Split Down](assets/adv_foxglove-splitdown.png){align=center}
@@ -129,7 +129,7 @@ When you change a panel to a User Scripts panel, you will see the Welcome splash
 <figcaption>User Scripts</figcaption>
 </figure>
 
-The important icon in the left sidebar is the top one, the "Scripts" scroll icon, which will open any scripts you have created for editing.  The "Utilities" toolbox icon, which displays the various importable libraries, is also important and worth reviewing.  If we have a script already created, we can click on it to edit it.  It is recommended that you open the "User Scripts" panel in fullscreen if you create scripts in it.
+The important icon in the left sidebar is the top one, the "Scripts" scroll icon, which will open any scripts you have created for editing.  The "Utilities" toolbox icon, which displays the various importable libraries, is also important and worth reviewing.  If we have a script already created, we can click on it to edit it.  It is recommended that you open the "User Scripts" panel in full-screen if you create scripts in it.
 
 <figure markdown="span">
 ![User Scripts](assets/adv_foxglove-scripts.png){align=center}
@@ -172,7 +172,7 @@ export default function script(event: Input<"/fusion/targets">): {
 
 We first need to import the "Input" class from the "./types" library as it is the class type of input topics.  We also need a reader to parse the 32-bit Floating Point numbers in from the 8-bit unsigned integer data array.  Lastly, we need to declare the input and output topics we will be using in the script.
 
-This default function will take an inputed topic and return an array of strings with the name of "Person".  Referring back to the image in the previous section, we see that this is a Raw Messages Panel for the output topic, `/studio_script/output_topic` which comes from the script `fusion_decoder`, and is a list of strings named "Person".
+This default function will take an inputted topic and return an array of strings with the name of "Person".  Referring back to the image in the previous section, we see that this is a Raw Messages Panel for the output topic, `/studio_script/output_topic` which comes from the script `fusion_decoder`, and is a list of strings named "Person".
 
 As `event` is the variable name for the `/fusion/targets` topic, we can use the `message` instance variable to access the topic elements.  For example, `event.message.width` and `event.message.point_step` refer to the "width" and "point steps" fields discussed above.  We set the topic data to a Uint8Array named `d` for short-hand and initialize the output array.
 

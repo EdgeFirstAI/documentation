@@ -1,316 +1,292 @@
-# Import COCO Dataset
+# Dataset Import
 
-In this tutorial, you'll learn how to import the COCO dataset into EdgeFirst Studio using the `edgefirst-client` Python API. To get started, you'll need to create a helper script that will handle the dataset processing. Copy the code from **Appendix I** into a new file named `coco.py` - we'll use this implementation throughout the tutorial to process and prepare the COCO dataset for import.
+This page will provide tutorials for importing annotated datasets with various formats in EdgeFirst Studio.  
 
-## Download COCO Dataset
+## Import Darknet Datasets
 
-To download the dataset, instantiate the `COCODataset` class and invoke the `download(...)` method, providing the destination folder path as a parameter.
+There are two methods for importing Darknet Datasets.
 
-```python
+1. *Pre-Split*: The dataset directory already contains training and validation splits.
+2. *No Split*: The dataset directory does not have a training and validation split. All samples are inside the image and labels directories.
 
-from coco import COCODataset
+### Pre-Split
 
-coco = COCODataset()
-coco.download('./dataset')
+Consider a Darknet dataset with training and validation splits structured in the following way.
 
+```text
+<coco128>/
+├── images/
+│   ├── <train>/
+│   │   └── *.jpg/png/jpeg/..
+│   └── <val>/
+|   |   └── *.jpg/png/jpeg/...
+├── labels/
+│   ├── <train>/
+│   │   └── *.txt
+│   └── <val>/
+│       └── *.txt
 ```
 
-## Export COCO Dataset into EdgeFirst format
+To import this dataset and to preserve the train and validation splits in EdgeFirst Studio, the dataset needs to be restructured in the following way with one directory containing standalone training samples and another directory with the validation samples.
 
-After downloading the dataset, we need to convert it from the COCO format to the EdgeFirst format. The `to_edgefirst(...)` function handles this conversion, transforming the standard COCO dataset structure into the EdgeFirst-compatible format.
+1. Training Samples
 
-```python
+    ```text
+    <coco128-train>/
+    ├── images/
+    │   └── *.jpg/png/jpeg/..
+    ├── labels/
+    │   └── *.txt
+    ```
 
-coco.to_edgefirst(path='./edgefirst-coco-subset', classes=['person', 'car', 'truck'])
+2. Validation Samples
 
-```
+    ```text
+    <coco128-val>/
+    ├── images/
+    │   └── *.jpg/png/jpeg/..
+    ├── labels/
+    │   └── *.txt
+    ```
 
-The `to_edgefirst` function takes two parameters: `path` specifies the destination folder for the converted dataset, while `classes` lets you filter which object classes to include. If you don't specify any classes (i.e., `classes=None`), the function will include annotations for all 80 COCO classes in the output.
+!!! note
+    The elements enclosed by <> can be any arbitrary name in your machine. 
 
-## Import Dataset into Studio
-
-To import data into EdgeFirst Studio, you must first log in to set up your credentials.
-
-```python
-
-server_name = 'saas' # This is the name of the server you are using
-username = 'username' # this is your username
-coco.login(server=server_name, username=username)
-
-```
-
-To view all available projects and their IDs, use the following code:
-
-```python
-coco.list_projects()
-```
-
-The dataset import process is executed through a two-step API workflow: `create_snapshot` followed by `restore_snapshot`. For detailed implementation details, refer to **Appendix I**.
-
-```python
-project_id = 100 # this is a valid project ID returned from project list
-coco.upload_dataset(
-    path='./edgefirst-coco-subset',  # path to the dataset location
-    project=project_id,  
-    name='COCO2017-Subset' # Dataset name displayed on the GUI
-)
-```
-
-Note that this procedure skips the AGTG pipeline since the dataset already contains annotations. The import process will take few minutes depending on the bandwidth. Once the process finishes, you can login into Edgefirst Studio and check the dataset `COCO2017-Subset` is there
+Let's first import the training samples.  To import a dataset, first [create a dataset](management.md#create-dataset) container in EdgeFirst Studio. The following dataset is created with the name set to "COCO128" and the description as "Demo import".  Furthermore, an annotation set has also been created called "annotations".
 
 <figure markdown="span">
-![COCO2017 Subset](../assets/coco-subset.png){ align=center }
-<figcaption>COCO 2017 Subset with classes people, car and truck</figcaption>
+![COCO128 Dataset Container](../assets/import/coco128-container.jpg){ align=center }
+<figcaption>COCO128 Dataset Container</figcaption>
 </figure>
 
+Once a container has been created, open the dataset context menu denoted by the three vertical dots on the top right corner of the dataset card.
 
-# Apendix I
+<figure markdown="span">
+![Dataset Options](../assets/import/coco128-options.jpg){ align=center }
+<figcaption>Dataset Options</figcaption>
+</figure>
 
-This appendix includes the code used to handle automation in COCO dataset.
+Select "Import".
 
-```python
+<figure markdown="span">
+![Import Option](../assets/import/coco128-import-option.jpg){ align=center }
+<figcaption>Import Option</figcaption>
+</figure>
 
-from edgefirst_client import Client as StudioClient
-from getpass import getuser, getpass
-from pycocotools.coco import COCO
-from tqdm import tqdm
-import polars as pl
-import numpy as np
-import requests
-import zipfile
-import shutil
-import glob
-import cv2
-import os
+This will popup a new window for you to specify the dataset to be imported.  In these options, select the "Import Type" to be "Darknet Dataset".  Specify the dataset folder "coco128-train" to be imported.  Specify the annotation set to the "annotations" annotation set.  The following figure shows the specifications.
 
+<figure markdown="span">
+![Import Options](../assets/import/coco128-train-import-options.jpg){ align=center }
+<figcaption>Import Options</figcaption>
+</figure>
 
-class COCODataset:
-    def __init__(
-        self
-    ):
-        # URLs for the different parts of the COCO dataset
-        self.urls = {
-            'train': 'http://images.cocodataset.org/zips/train2017.zip',
-            'val': 'http://images.cocodataset.org/zips/val2017.zip',
-            'annotations': 'http://images.cocodataset.org/annotations/annotations_trainval2017.zip'
-        }
-        self.client = None
-        self.server = None
-        self.token = None
+Select "Start Import" at the bottom right to start the import process. This will start the import process as shown.
 
-    def login(self, server: str, username: str):
-        self.server = server
-        self.client = StudioClient(
-            server=server,
-            token=None
-        )
+<figure markdown="span">
+![Import Process](../assets/import/coco128-import-process.jpg){ align=center }
+<figcaption>Import Process</figcaption>
+</figure>
 
-        password = getpass()
-        self.client.login_sync(username, password)
-        self.token = self.client.token_sync()
+Once completed, all the training samples have been imported to the dataset container.
 
-    def _download_file(self, url: str, filename: str, path: str) -> None:
-        """ Helper method to download a file with a progress bar """
-        filepath = os.path.join(path, filename)
-        if os.path.exists(filepath):
-            print(f"   - Found at {filepath}")
-            return
+<figure markdown="span">
+![Imported COCO128 Training Samples](../assets/import/coco128-train-imported.jpg){ align=center }
+<figcaption>Imported COCO128 Training Samples</figcaption>
+</figure>
 
-        response = requests.get(url, stream=True)
-        total_size_in_bytes = int(response.headers.get('content-length', 0))
+Next specify all imported samples towards the training group.
 
-        with open(filepath, 'wb') as file, tqdm(
-            desc=filename,
-            total=total_size_in_bytes,
-            unit='B',
-            unit_scale=True,
-        ) as bar:
-            for data in response.iter_content(chunk_size=1024):
-                bar.update(len(data))
-                file.write(data)
+<figure markdown="span">
+![Add Training Group](../assets/import/coco128-add-group.jpg){ align=center }
+<figcaption>Add Training Group</figcaption>
+</figure>
 
-    def download(self, path) -> None:
-        self.base_path = path
-        os.makedirs(path, exist_ok=True)
+Once the slider has been set to 100% training, click "Split" to group all samples into the training group.
 
-        for set_name, url in self.urls.items():
-            filename = url.split("/")[-1]  # Extract filename from URL
-            print(f"Downloading {set_name}...")
-            self._download_file(url, filename, path)
+<figure markdown="span">
+![100% Training Samples](../assets/import/coco128-split-all-training.jpg){ align=center }
+<figcaption>100% Training Samples</figcaption>
+</figure>
 
-    def _extract_zip(self, zip_file: str, extract_to: str) -> None:
-        """ Extracts the contents of a zip file into the specified path """
-        with zipfile.ZipFile(zip_file, 'r') as zip_ref:
-            total_files = len(zip_ref.infolist())
-            with tqdm(total=total_files, desc=f"Extracting {zip_file}", unit="file") as bar:
-                for file_info in zip_ref.infolist():
-                    zip_ref.extract(file_info, extract_to)
-                    bar.update(1)
+All of the samples should now be set towards the training group.
 
-    def _annotations_to_dataframe(self, annotations: str, group: str, classes: list = None) -> pl.DataFrame:
-        """This function loads COCO annotations from JSON file and produces a pl.Dataframe
+<figure markdown="span">
+![100% Training Samples](../assets/import/coco128-all-training-samples.jpg){ align=center }
+<figcaption>100% Training Samples</figcaption>
+</figure>
 
-        Parameters
-        ----------
-        annotations : str
-            Path to annotations file *.json
-        group: str
-            Name of the group. (train, val, test, )
+Next, import the validation samples by going back to the "Import" feature.
 
-        Returns
-        -------
-        pl.DataFrame
-            _description_
-        """
-        ds = COCO(annotation_file=annotations)
-        categories = ds.loadCats(ds.getCatIds())
-        if classes is None:
-            classes = [category['name'] for category in categories]
+<figure markdown="span">
+![Import Option](../assets/import/coco128-import-option.jpg){ align=center }
+<figcaption>Import Option</figcaption>
+</figure>
 
-        names = []
-        frames = []
-        groups = []
-        labels = []
-        masks = []
-        boxes2d = []
-        boxes3d = []
-        quality = []
+Specify the "Import Type" to "Darknet Dataset" again, but specify the dataset folder "coco128-val" to be imported.  Specify the annotation set to the "annotations" annotation set.  The following figure shows the specifications.
 
-        images = ds.getImgIds()
-        for id in tqdm(images):
-            img = ds.loadImgs(id)[0]
-            ann_ids = ds.getAnnIds(imgIds=img['id'], iscrowd=None)
-            anns = ds.loadAnns(ann_ids)
-            anns = [
-                ann for ann in anns if ds.cats[ann["category_id"]]['name'] in classes]
-            file_name = img['file_name']
-            fname = os.path.splitext(file_name)[0]
+<figure markdown="span">
+![Import Options](../assets/import/coco128-val-import-options.jpg){ align=center }
+<figcaption>Import Options</figcaption>
+</figure>
 
-            if len(anns) > 0:
-                dims = np.array([img['width'], img['height']]).tolist()
-                for ann in anns:
-                    bbox = ann['bbox']
-                    x, y, w, h = bbox
-                    label = ds.cats[ann["category_id"]]['name']
-                    normalized_x = (x + w/2) / dims[0]
-                    normalized_y = (y + h/2) / dims[1]
-                    normalized_w = w / dims[0]
-                    normalized_h = h / dims[1]
+Click "Start Import" and after it completed, the number of samples on the dataset should have increased.
 
-                    names.append(fname)
-                    frames.append(None)
-                    groups.append(group)
-                    labels.append(label)
-                    boxes2d.append([normalized_x, normalized_y,
-                                    normalized_w, normalized_h])
-                    boxes3d.append(None)
-                    quality.append(None)
-                    mask = ds.annToMask(ann)
-                    contours, _ = cv2.findContours(
-                        mask, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
-                    polygons = []
-                    for c in contours:
-                        c = np.array(c) / dims
-                        polygons.extend(c.flatten().tolist())
-                        polygons.append(np.nan)
-                    polygons = polygons[:-1]
-                    masks.append(polygons)
-            else:
-                names.append(fname)
-                frames.append(None)
-                groups.append(group)
-                labels.append(None)
-                masks.append(None)
-                boxes2d.append(None)
-                boxes3d.append(None)
-                quality.append(None)
+<figure markdown="span">
+![Imported COCO128 Training Samples](../assets/import/coco128-val-imported.jpg){ align=center }
+<figcaption>Imported COCO128 Training Samples</figcaption>
+</figure>
 
-        df = pl.DataFrame({
-            "name": names,
-            "frame": frames,
-            "group": groups,
-            "label": labels,
-            "mask": masks,
-            "box2d": boxes2d,
-            "box3d": boxes3d,
-            "degradation": quality
-        }, schema={
-            "name": pl.Categorical,
-            "frame": pl.UInt32,
-            "group": pl.Enum(["train", "val", "test"]),
-            "label": pl.Enum(classes),
-            "mask": pl.List(pl.Float32),
-            "box2d": pl.Array(pl.Float32, 4),
-            "box3d": pl.Array(pl.Float32, 6),
-            "degradation": pl.Enum(["low", "medium", "high"]),
-        })
+These newly added samples for validation have not been grouped yet.  Next assign groups to these samples.  Click on the "+" button again to add a validation group.
 
-        return df, classes
+<figure markdown="span">
+![Add Training Group](../assets/import/coco128-add-val-group.jpg){ align=center }
+<figcaption>Add Training Group</figcaption>
+</figure>
 
-    def to_edgefirst(self, path: str, classes: list = None) -> None:
-        dataset = os.path.join(path, "dataset")
-        os.makedirs(dataset, exist_ok=True)
+Set the slider to 100% Validation and check "Only ungrouped images" as this will transfer all recently imported ungrouped validation samples towards the validation group. 
 
-        for zipFile in ["train2017.zip", "val2017.zip", "annotations_trainval2017.zip"]:
-            zipFile = os.path.join(self.base_path, zipFile)
-            self._extract_zip(zip_file=zipFile, extract_to=dataset)
+<figure markdown="span">
+![100% Validation Samples](../assets/import/coco128-split-all-validation.jpg){ align=center }
+<figcaption>100% Validation Samples</figcaption>
+</figure>
 
-        images = glob.glob(os.path.join(dataset, "train2017", "*")) + \
-            glob.glob(os.path.join(dataset, "val2017", "*"))
+Click the "Split" button to group the samples.  This dataset container should now retain the training and validation split as provided from the dataset.
 
-        zip_filename = os.path.join(path, 'dataset.zip')
+<figure markdown="span">
+![COCO128 with Groups](../assets/import/coco128-split.jpg){ align=center }
+<figcaption>COCO128 with Groups</figcaption>
+</figure>
 
-        print("Building dataset images file...")
-        with zipfile.ZipFile(zip_filename, 'w') as zipf:
-            for file in tqdm(images):
-                zipf.write(file, arcname=os.path.basename(file))
+Verify in the [gallery](management.md#view-dataset) that the samples imported match the samples in the local machine.
 
-        train_df, classes = self._annotations_to_dataframe(
-            os.path.join(dataset, 'annotations', 'instances_train2017.json'),
-            group='train',
-            classes=classes
-        )
-        val_df, _ = self._annotations_to_dataframe(
-            os.path.join(dataset, 'annotations', 'instances_val2017.json'),
-            group='val',
-            classes=classes
-        )
+<figure markdown="span">
+![Validation Samples in Studio](../assets/import/coco128-val-studio.jpg){ align=center }
+<figcaption>Validation Samples in Studio</figcaption>
+</figure>
 
-        df = pl.concat([train_df, val_df])
-        df.write_ipc(os.path.join(path, 'dataset.arrow'))
+<figure markdown="span">
+![Validation Samples in the PC](../assets/import/coco128-val-pc.jpg){ align=center }
+<figcaption>Validation Samples in the PC</figcaption>
+</figure>
 
-        shutil.rmtree(path=dataset, ignore_errors=True)
+### No Split
 
-    def _create_snapshot(
-        self,
-        source: str
-    ) -> None:
-        with tqdm(total=0, unit='B', unit_scale=True, unit_divisor=1024) as bar:
-            def progress(current, total):
-                if total != bar.total:
-                    bar.reset(total),
-                bar.update(current - bar.n)
-            return self.client.create_snapshot_sync(source, progress)
+This tutorial will show how to import a Darknet dataset such as [COCO128](https://www.kaggle.com/datasets/ultralytics/coco128) into EdgeFirst Studio which has no training and validation split.  This dataset is only meant as a tutorial dataset for [YOLOv5](https://github.com/ultralytics/yolov5), but this tutorial is meant to show the functionality of importing existing public datasets into EdgeFirst Studio. 
 
-    def upload_dataset(self, path: str, project: int, name: str = "COCO2017") -> None:
-        snapshot = self._create_snapshot(source=path)
-        self.client.restore_snapshot_sync(
-            project_id=project,
-            snapshot_id=snapshot.id(),
-            dataset_name=name,
-            dataset_description="COCO 2017 dataset for research purposes only"
-        )
+To import a dataset, first [create a dataset](management.md#create-dataset) container in EdgeFirst Studio. The following dataset is created with the name set to "COCO128" and the description as "Demo import".  Furthermore, an annotation set has also been created called "annotations".
 
-    def list_projects(self):
+<figure markdown="span">
+![COCO128 Dataset Container](../assets/import/coco128-container.jpg){ align=center }
+<figcaption>COCO128 Dataset Container</figcaption>
+</figure>
 
-        projects = self.client.projects_sync()
-        for p in projects:
-            print(f"Project ID {p.id()} - Name: {p.name()}")
+For an example dataset, [COCO128](https://www.kaggle.com/datasets/ultralytics/coco128?resource=download) was downloaded using the link provided.  This will download a ZIP archive which can then be extracted into a "coco128" directory which contains "images" and "labels" subdirectories.
 
-    def list_datasets_in_project(self, project_id: int) -> None:
-        datasets = self.client.datasets_sync(project_id)
-        for d in datasets:
-            print(f"Dataset ID {d.id()} - Name: {d.name()}")
+<figure markdown="span">
+![COCO128](../assets/import/coco128-directories.jpg){ align=center }
+<figcaption>COCO128</figcaption>
+</figure>
 
+Once a container has been created, open the dataset context menu denoted by the three vertical dots on the top right corner of the dataset card.
 
-```
+<figure markdown="span">
+![Dataset Options](../assets/import/coco128-options.jpg){ align=center }
+<figcaption>Dataset Options</figcaption>
+</figure>
+
+Select "Import".
+
+<figure markdown="span">
+![Import Option](../assets/import/coco128-import-option.jpg){ align=center }
+<figcaption>Import Option</figcaption>
+</figure>
+
+This will popup a new window for you to specify the dataset to be imported.  In these options, select the "Import Type" to be "Darknet Dataset".  Specify the dataset folder "coco128" to be imported.  Specify the annotation set to the "annotations" annotation set.  The following figure shows the specifications.
+
+<figure markdown="span">
+![Import Options](../assets/import/coco128-import-options.jpg){ align=center }
+<figcaption>Import Options</figcaption>
+</figure>
+
+Select "Start Import" at the bottom right to start the import process.
+
+<figure markdown="span">
+![Start Import](../assets/import/coco128-start-import.jpg){ align=center }
+<figcaption>Start Import</figcaption>
+</figure>
+
+This will start the import process as shown.
+
+<figure markdown="span">
+![Import Process](../assets/import/coco128-import-process.jpg){ align=center }
+<figcaption>Import Process</figcaption>
+</figure>
+
+Once completed, the dataset container will now contain 128 images from COCO and 
+the annotations stored in the "annotations" container.
+
+<figure markdown="span">
+![Imported COCO128 Dataset](../assets/import/coco128-imported.jpg){ align=center }
+<figcaption>Imported COCO128 Dataset</figcaption>
+</figure>
+
+Next [split the dataset](management.md#split-dataset) into training and validations samples.
+
+See the dataset and its annotations by following the tutorial for [viewing the dataset gallery](management.md#view-dataset).
+
+## Import EdgeFirst Datasets
+
+This tutorial will show how to import an [EdgeFirst Dataset](../format.md) into EdgeFirst Studio. This tutorial will show importing a dataset such as COCO2017 that is structured as an EdgeFirst Dataset as shown below.
+
+<figure markdown="span">
+![COCO2017 EdgeFirst Dataset](../assets/import/edgefirst-dataset-coco.jpg){ align=center }
+<figcaption>COCO2017 EdgeFirst Dataset</figcaption>
+</figure>
+
+To import a dataset, first [create a dataset](management.md#create-dataset) container in EdgeFirst Studio. The following dataset is created with the name set to "COCO2017" and the description as "Demo Import".  Furthermore, an annotation set has also been created called "annotations".
+
+<figure markdown="span">
+![COCO2017 Dataset Container](../assets/import/coco2017-container.jpg){ align=center }
+<figcaption>COCO2017 Dataset Container</figcaption>
+</figure>
+
+Once a container has been created, open the dataset context menu denoted by the three vertical dots on the top right corner of the dataset card.
+
+<figure markdown="span">
+![Dataset Options](../assets/import/coco2017-options.jpg){ align=center }
+<figcaption>Dataset Options</figcaption>
+</figure>
+
+Select "Import".
+
+<figure markdown="span">
+![Import Option](../assets/import/coco2017-import-option.jpg){ align=center }
+<figcaption>Import Option</figcaption>
+</figure>
+
+This will popup a new window for you to specify the dataset to be imported.  In these options, select the "Import Type" to be "EdgeFirst Dataset".  Specify the Zip and Arrow file in your machine to be imported.  Specify the annotation set to the "annotations" annotation set to store the dataset annotations.  The following figure shows the specifications.
+
+<figure markdown="span">
+![Import Options](../assets/import/coco2017-import-options.jpg){ align=center }
+<figcaption>Import Options</figcaption>
+</figure>
+
+Select "Start Import" at the bottom right to start the import process.
+
+<figure markdown="span">
+![Start Import](../assets/import/coco2017-start-import.jpg){ align=center }
+<figcaption>Start Import</figcaption>
+</figure>
+
+This will start the import process as shown.
+
+<figure markdown="span">
+![Import Process](../assets/import/coco2017-import-process.jpg){ align=center }
+<figcaption>Import Process</figcaption>
+</figure>
+
+See the dataset and its annotations by following the tutorial for [viewing the dataset gallery](management.md#view-dataset).
+
+## Next Steps
+
+Now that you have seen how to import datasets in EdgeFirst Studio, see how the [annotations](annotations/index.md) are being managed in EdgeFirst Studio.

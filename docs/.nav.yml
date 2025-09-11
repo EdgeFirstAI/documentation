@@ -2,43 +2,46 @@ nav:
   - Home: https://stage.edgefirst.studio
   - Getting Started:
     - index.md
-    - getting_started/studio.md
     - User Workflows:
       - getting_started/workflows/index.md
+      - getting_started/workflows/tourist.md
+      - getting_started/workflows/tourist_plus.md
       - getting_started/workflows/web.md
-      - getting_started/workflows/edgefirst.md
-    - Model Tutorials:
-      - getting_started/models/index.md
-      - getting_started/models/training.md
-      - getting_started/models/validation.md
-      - getting_started/models/deployment.md
+      - getting_started/workflows/maivin.md
   - Studio:
     - studio/index.md
+    - studio/navigation.md
     - User Management:
       - studio/user/index.md
       - studio/user/profile.md
       - studio/user/organization.md
       - studio/user/billing.md
-    - studio/navigation.md
     - studio/projects.md
-    - Datasets:
+    - Datasets Dashboard:
       - studio/datasets/index.md
       - studio/datasets/gallery.md
       - studio/datasets/annotations.md
-    - studio/agtg.md
+    - studio/models.md
+    - studio/instances.md
     - studio/snapshots.md
-#   - studio/dataio.md
+    - studio/agtg.md
   - Datasets:
     - datasets/index.md
     - datasets/format.md
     - datasets/structure.md
+    - Dataset Zoo:
+      - COCO:
+        - datasets/coco/index.md
+        - datasets/coco/import.md
     - Dataset Tutorials:
       - datasets/tutorials/index.md
       - datasets/tutorials/capture.md
-      - datasets/tutorials/annotations.md
-      - datasets/tutorials/management.md
       - datasets/tutorials/import.md
-    # - datasets/zoo.md
+      - Dataset Annotations:
+        - datasets/tutorials/annotations/index.md
+        - datasets/tutorials/annotations/automatic.md
+        - datasets/tutorials/annotations/manual.md
+      - datasets/tutorials/management.md
   - Models:
     - models/index.md
     - ModelPack:
@@ -48,7 +51,9 @@ nav:
         - models/modelpack/tutorials/measurement_tape.md
         - models/modelpack/tutorials/musicbox.md
       - models/modelpack/training.md
-      - models/modelpack/validation.md
+      - Validating ModelPack:
+        - models/modelpack/validation/managed.md
+        - models/modelpack/validation/user_managed.md
       - Deploying ModelPack:
         - models/modelpack/deployment/pc.md
         - models/modelpack/deployment/evk.md
@@ -59,8 +64,20 @@ nav:
       - models/fusion/validation.md
       - Deploying Fusion:
         - models/fusion/deployment/raivin.md
+    - Custom Models: 
+      - models/custom/index.md
+      - models/custom/quantize.md
+      - models/custom/npu.md
+    - Model Metrics:
+      - models/metrics/detection.md
+      - models/metrics/segmentation.md
+      - models/metrics/fusion.md
+    - Model Tutorials:
+      - models/tutorials/training.md
+      - models/tutorials/validation.md
+      - models/tutorials/deployment.md
+      - models/tutorials/metadata.md
     - models/augmentations.md
-    - models/metrics.md
   - Perception:
     - perception/index.md
     - Dataset Collection Middleware:
@@ -91,6 +108,7 @@ nav:
         - perception/dev/examples/model.md
         - perception/dev/examples/pcd.md
         - perception/dev/examples/radar.md
+        - perception/dev/examples/ssd.md
     - API Reference:
       - perception/api.md
       - perception/api/edgefirst_msgs.md

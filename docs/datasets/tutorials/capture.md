@@ -1,51 +1,64 @@
 # Dataset Capture
+This page has tutorials for capturing or collecting samples for datasets and then uploading the samples into EdgeFirst Studio for [annotation](annotations/index.md).  At the bare minimum, datasets can be captured with any device with a camera such as a phone.  However, [EdgeFirst Platforms](../../platforms/index.md) such as a Maivin or a Raivin can also capture dataset samples for model training which can then be deployed back into the platform for model inference.  Image samples will [train Vision models](../../models/modelpack/training.md).  However, devices that are custom fitted with Radar or LiDAR modules such as a Raivin platform can capture dataset samples suited to [train Fusion models](../../models/fusion/training.md).
 
-This page will provide tutorials for capturing datasets.  Datasets can be captured using any device with a camera such as a phone.  However, these datasets will only train [Vision models](../../models/modelpack/index.md).  Datasets that were captured using a [Raivin Platform](../../platforms/index.md) with Radar or LiDAR modules can train [Fusion models](../../models/fusion/index.md).
+## Capture with a Phone
+If you have a phone or any device with a camera with Wifi access, follow this tutorial to see how to capture and upload datasets into EdgeFirst Studio. 
 
-## Record MCAPs 
+{% include-markdown "discrete/datasets/recording_on_phone.md" heading-offset=2 %}
 
-This tutorial provides high-level instructions for recording MCAPs using an [EdgeFirst Platform](../../platforms/index.md).  For an in depth tutorial, please refer to the [MCAP Recording Service](../../platforms/recording.md).
+{% include-markdown "discrete/datasets/create_dataset_container.md" heading-offset=2 %}
+
+{% include-markdown "discrete/datasets/uploading_video_to_studio.md" heading-offset=2 %}
+
+{% include-markdown "discrete/datasets/uploading_images_to_studio.md" heading-offset=2 %}
+
+In this tutorial you have seen how to capture videos and images from your mobile phone and upload the videos and images into EdgeFirst Studio. Proceed to the [Next Steps](#next-steps) to see what's next in your dataset creation. 
+
+## Capture with an EdgeFirst Platform
+If you have an EdgeFirst Platform, follow this tutorial to see how to capture and upload datasets into EdgeFirst Studio.  Use your browser to connect to the Web UI of the remote device, enter the following URL `https://<hostname>/`.
+
+!!! note
+    Replace `<hostname>` with the hostname of your device.
+
+You will be greeted with the Maivin [Web UI Main Page](../../platforms/walkthrough.md) page.
+
+<figure markdown="span">
+![Web UI Main Page](../../platforms/assets/ui-maivinMain.png){ align=center }
+<figcaption>Web UI Main Page</figcaption>
+</figure>
+
+{% include-markdown "discrete/datasets/recording_mcap_on_device.md" heading-offset=2 %}
+
+{% include-markdown "discrete/datasets/downloading_mcap_from_device.md" heading-offset=2 %}
+
+{% include-markdown "discrete/datasets/uploading_mcap_to_studio.md" heading-offset=2 %}
+
+In this tutorial you have seen how to record MCAPs using an EdgeFirst Platform and downloaded and uploaded the MCAP recording into EdgeFirst Studio. Proceed to the [Next Steps](#next-steps) to see what's next in your dataset creation. 
+
+### Video Tutorials
+This video tutorial provides high-level instructions for recording MCAPs using an [EdgeFirst Platform](../../platforms/index.md).  For in-depth documentation, please refer to the [MCAP Recording Service](../../platforms/recording.md).
 
 <div style="text-align: center;">
     <iframe width="560" height="315" src="https://www.youtube.com/embed/GVlkq9p0G5c" title="Dataset Recording" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 </div>
 
-On your browser, enter the following URL `https://<hostname>/`.
-
-!!! note
-    Replace `<hostname>` with the hostname of your device.
-
-You will be greeted to the [Web UI Service](../../platforms/walkthrough.md) page.
-
-<figure markdown="span">
-![Web UI Service Page](../assets/webui-service-page.jpg){ align=center }
-<figcaption>Web UI Service Page</figcaption>
-</figure>
-
-To record data, click on the "MCAP Recorder" service indicated in red above.  Once clicked, you will be greeted with the [MCAP Recording Service](../../platforms/walkthrough.md#the-mcap-recording-page) page.
-
-<figure markdown="span">
-![MCAP Recording Page](../assets/mcap-recording-page.jpg){ align=center }
-<figcaption>MCAP Recording Page</figcaption>
-</figure>
-
-To start recording toggle/enable the *Recording* button indicated above and to stop the recording re-toggle/disable the same button. 
-
-For more information on managing recordings, please see the [Managing Recordings Tutorial](../../platforms/recording.md#managing-recordings).
-
-### Download Recorded MCAPs
-
-This tutorial shows how to download recorded MCAPs.  For more information on downloading MCAPs, please see [Downloading and Analysis](../../platforms/recording.md#downloading-and-analysis).
-
+This video tutorial shows how to download recorded MCAPs.  
 <div style="text-align: center;">
     <iframe width="560" height="315" src="https://www.youtube.com/embed/j-75Q5-_dC0?start=0&end=558" title="Download Recording" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 </div>
 
-The MCAP files are listed under the list of MCAP files which can then be downloaded to your PC.
+This video tutorial shows how to upload recorded MCAPs into EdgeFirst Studio.
 
-<figure markdown="span">
-![Recorded MCAP](../assets/recorded-mcap.jpg){ align=center }
-<figcaption>Recorded MCAP</figcaption>
-</figure>
+<div style="text-align: center;">
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/j-75Q5-_dC0?start=558&end=720" title="Upload MCAP" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+</div>
 
-To upload the downloaded MCAPs into EdgeFirst Studio, follow the instructions for [uploading MCAPs](management.md#upload-mcaps).
+For more information on managing recordings, please see the [Managing Recordings Section](../../platforms/recording.md#managing-recordings).
+
+## Next Steps
+
+See the imported files by viewing the [dataset gallery](management.md#view-dataset).
+
+EdgeFirst Studio also supports [import of existing datasets](import.md) and its annotations with various formats.
+
+For auto-annotating datasets, see the [Automatic Ground Truth Generation (AGTG)](annotations/automatic.md). Otherwise, you can perform [manual annotations](annotations/manual.md) which is typically used to correct errors or make some adjustments in the annotations.

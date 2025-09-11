@@ -11,53 +11,44 @@ When active, the Recorder Service:
 - Automatically saves the file upon service termination
 - Provides real-time recording status
 
-## Using the Recorder
-The MCAP Recording Service is managed on its own visualization page, which can be accessed by clicking the "MCAP" card on the Raivin Main Page or by typing `https://<hostname>/mcap` in your browser window.  
+### The MCAP Modal
+The MCAP Recording Service is managed on its own modal, which can be accessed by clicking the "MCAP Details" button on the top navbar of any Raivin Web UI Page.
 
 <figure markdown="span">
-![MCAP Recorder Interface](assets/mcap_recorder.png){align=center}
-<figcaption>MCAP Recorder Interface</figcaption>
+![MCAP Recorder Interface](assets/quickStart-mcap.png){align=center}
+<figcaption>MCAP Modal</figcaption>
 </figure>
 
-At the top of page, under the ribbon, we have the Recording Toggle, which will start or end an MCAP recording.  We also have the "Live Mode" button, which will take the Raivin out of ["Replay Mode"](./replay.md) and back to "Live Mode".
+At the top ribbon of the MCAP Modal we have the title, the Disk Usage Infobar, and the "Live Mode" button. Under the ribbon, we have the Recording Toggle, which will start or end an MCAP recording. We also have the "Live Mode" button, which will take the Raivin out of ["Replay Mode"](replay.md) and back to "Live Mode".
 
-Under this, we have the listing of MCAP files currently the MCAP recording directory.  This directory is noted at the top of the list -- in the above image, it is `/media/DATA`.
+Underneath the MCAP navbar, we have the current MCAP recording directory -- in the above image, it is `/media/DATA`. Under this directory text, we have a "select all" checkbox which can be used to select every MCAP for deletion; the "Delete Selected" button which will delete the MCAP selected by the checkboxes, and the "Search files..." textfield if we need to search for a specific file.
 
-For each MCAP file, the following elements and information exist, starting from left to right:
+Under all of that, we have a list of MCAP files in the recording directory. For each MCAP file, the following elements and information exist, starting from left to right:
 
-- A playback button. Clicking this will put the device into ["Replay Mode"](./replay.md), replaying the sensor information from this MCAP file.
+- A selection checkbox.
+- A playback button !["Replay Button"](assets/replay_play.png). Clicking this will put the device into ["Replay Mode"](replay.md), replaying the sensor information from this MCAP file.
 - The filename of the MCAP
 - The size of the MCAP, in MB
 - The creation date and time of the MCAP
-- The video length of the MCAP
-- Four Action buttons, which are:
-     - The "Details" button, which shows information about the topics recorded in the MCAP file (see below).
-     - The greyed-out and currently non-functionality "Upload" button.
-     - The "Download" button, which will download the MCAP file to your local machine.
-     - The "Delete" button, which will remove the MCAP file.
+- Three Action buttons, which are:
+     - The "Info" button !["Info Button"](assets/mcap_information.png), which shows information about the topics recorded in the MCAP file (see below).
+     - The "Download" button !["Download Button"](../assets/buttons/mcap_download_button.png), which will download the MCAP file to your local machine.
+     - The "Delete" button !["Delete Button"](assets/mcap_delete.png), which will remove the MCAP file.
 
-### Starting a Recording
-To start a recording, simply click the "Recording" toggle to begin capturing data.
+To leave the MCAP Modal, click the "X" close button in the top right corner of the modal.
 
-<figure markdown="span">
-![MCAP Recording](assets/mcap_recording.png){align=center}  
-<figcaption>MCAP Recording</figcaption>
-</figure>
+{% include-markdown "discrete/datasets/recording_mcap_on_device.md" %}
+{% include-markdown "discrete/datasets/downloading_mcap_from_device.md" %}
 
-Note the the red text describing that recording is in progress with the filename of the recording.  Also notice the the Recording notification on the top ribbon is now on.
-
-!!! note
-     It may take up to 30 seconds for a recording to start, depending on topic tracked.
-
-To stop recording, click the "Recording" toggle a second time.
-
-### Managing Recordings
-Once a recording is complete, you can see the size in MB and duration in seconds of the captured data on the MCAP page.  You can also get more detailed metadata, such as the topics recorded, by clicking the "Details" button for the MCAP recording.
+## Managing Recordings
+Once a recording is complete, you can see the size in MB of the captured data on the MCAP page.  You can also get more detailed metadata, such as the topics recorded, by clicking the "Details" button for the MCAP recording.
 
 <figure markdown="span">
 ![MCAP File Details](assets/mcap_detail.png){align=center}  
 <figcaption>MCAP File Details</figcaption>
 </figure>
+
+The details modal contains the filename, size, duration in seconds, and a list of each topic captured with frame count and frames per second of data for the topic.
 
 At the bottom of the "File Details" modal, there is a "Close" button to close the modal.
 
@@ -68,10 +59,7 @@ At the bottom of the "File Details" modal, there is a "Close" button to close th
      - _YYYY_mm_DD_ is the zero-padded year, month, and day that the recording was started
      - _HH_MM_SS_ is the UTC time the recording started in 24-hour notation
 
-Any MCAP recording can be deleted by clicking its "Delete" button and confirming that you wish to delete the recording.
-
-## Downloading and Analysis
-Click the "Download" button to save the MCAP file to your PC.  You can also use a [SSH client to copy files](./ssh.md#secure-copy) off the Raivin.
+Any MCAP recording can be deleted by clicking its "Delete" button and confirming that you wish to delete the recording, as well as clicking its checkbox and clicking the "Delete Selected" button.
 
 ## Configuration
 The Recorder Service can have the following settings configured:
@@ -80,21 +68,21 @@ The Recorder Service can have the following settings configured:
 - Location of the recording file
 - Recording compression
 
-These settings can be configured in the [MCAP Recorder Settings Page](./configuration.md#mcap-recorder-settings-page).
+These settings can be configured in the [MCAP Recorder Settings Page](configuration.md#mcap-recorder-settings-page).
 
 ## Recording On Boot-up
 The Recording Service can be set up to automatically start on boot-up.
 !!! warning
      Having the Recording Service run for prolonged periods of time will fill the SD card of the Raivin.  Use this functionality with caution.
 
-On the [Services Status](./configuration.md#service-status) page, you can use the Recorder Service status card to enable the recorder service to start on boot.
+On the [Services Status](configuration.md#service-status) page, you can use the Recorder Service status card to enable the recorder service to start on boot.
 <figure markdown="span">
-![Recording Service](../assets/Recorder_Service_Card.png){align=center}  
+![Recording Service](assets/Recorder_Service_Card.png){align=center}  
 <figcaption>Recorder Service status card</figcaption>
 </figure>
 Flip the Enable/Disable switch to enable to enable the Recorder Service on boot.
 <figure markdown="span">
-![Recording Service Enabled](../assets/Recorder_Service_Card_enabled.png){align=center}  
+![Recording Service Enabled](assets/Recorder_Service_Card_enabled.png){align=center}  
 <figcaption>Recorder Service enabled</figcaption>
 </figure>
 !!! note
@@ -102,9 +90,9 @@ Flip the Enable/Disable switch to enable to enable the Recorder Service on boot.
 
 ## Next Steps
 Now that you have your MCAP, there are many things you can do with it, such as:  
-- Use [Foxglove Studio](./foxglove.md) to view the downloaded MCAP, especially with some [advanced Foxglove understanding](./advanced_foxglove.md)  
-- Use the [Replay Service](./replay.md) to view the recorded MCAP on the device  
-- [Publish the MCAP to EdgeFirst Studio](./publishing.md)  
+- Use [Foxglove Studio](foxglove.md) to view the downloaded MCAP, especially with some [advanced Foxglove understanding](advanced_foxglove.md)  
+- Use the [Replay Service](replay.md) to view the recorded MCAP on the device  
+- [Publish the MCAP to EdgeFirst Studio](publishing.md)  
 
 [ros2]: https://www.ros.org/
 [mcap]: https://mcap.dev/

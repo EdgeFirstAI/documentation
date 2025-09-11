@@ -59,14 +59,14 @@ flowchart LR
 
 We've identified six workflows: Tourist, Tourist+, Web, Maivin, Raivin, LiDAR.  The hardware requirements and the available features increases starting with the Tourist as the most basic. 
 
-| Persona                | Hardware              | Features                                                                |
-|------------------------|-----------------------|-------------------------------------------------------------------------|
-| Tourist                | PC                    | Train, Validate, Deploy Offline                                         |
-| Tourist+               | PC                    | Annotate 2D, Train, Validate, Deploy Offline                            |
-| [Web](web.md)          | PC + Smartphone       | Record, Annotate 2D, Train, Validate, Deploy Offline                    |
-| [Maivin](edgefirst.md) | PC + Maivin           | Record, Annotate 2D, Train, Validate, Deploy on Device                  |
-| [Raivin](edgefirst.md) | PC + Raivin w/ Radar  | Record, Annotate 2D + 3D, Train, Validate, Deploy on Device             |
-| [LiDAR](edgefirst.md)  | PC + Raivin w/ LiDAR  | Record, Annotate 2D + 3D (enhanced), Train, Validate, Deploy on Device  |
+| Persona                     | Hardware             | Features                                                               | Cost |
+|-----------------------------|----------------------|------------------------------------------------------------------------|------|
+| [Tourist](tourist.md)       | PC                   | Train, Validate, Deploy Offline                                        | TBA  |
+| [Tourist+](tourist_plus.md) | PC                   | Annotate 2D, Train, Validate, Deploy Offline                           | TBA  |
+| [Web](web.md)               | PC + Smartphone      | Record, Annotate 2D, Train, Validate, Deploy Offline                   | TBA  |
+| [Maivin](maivin.md)      | PC + Maivin          | Record, Annotate 2D, Train, Validate, Deploy on Device                 | TBA  |
+| Raivin (*coming soon*)      | PC + Raivin w/ Radar | Record, Annotate 2D + 3D, Train, Validate, Deploy on Device            | TBA  |
+| LiDAR (*coming soon*)       | PC + Raivin w/ LiDAR | Record, Annotate 2D + 3D (enhanced), Train, Validate, Deploy on Device | TBA  |
 
 ## User Journey
 
@@ -144,14 +144,23 @@ flowchart LR
 !!! note
     Labeled arrows suggests that only certain type of users can enter the stages pointed by the arrow.  For example, only Raivin and LiDAR users can "Auto Annotate 3D".
 
-1. [Web Workflow](web.md)
+1. [Tourist Workflow](tourist.md)
 
-    This workflow is intended for users with a personal computer and a device with a camera with access to Wifi and a web browser.  The examples shown in this workflow will be from a Windows computer and an Android phone for recording images.  To proceed to this workflow, click on the link above.
+    This workflow is intended for users with a personal computer with access to Wifi that want to use the sample datasets available for training, validating, and deploying Vision models. 
 
-2. [EdgeFirst Platform Workflow](edgefirst.md)
+2. [Tourist Plus Workflow](tourist_plus.md)
 
-    This workflow is intended for users with a personal computer with access to Wifi and a web browser and a Maivin or a Raivin platform.  To proceed to this workflow, click on the link above.
+    This workflow is intended for users with a personal computer with access to Wifi that want to use the same datasets available for annotating, training, validating, and deploying Vision models.
 
-!!! note
+3. [Web Workflow](web.md)
 
-    The maivin, raivin, and LiDAR persona are currently based on the EdgeFirst Platform Workflow identified as the second workflow above.  Future work will introduce separate workflows for each of these personas to highlight their differences. 
+    This workflow is intended for users with a personal computer and a device with a camera with access to Wifi and a web browser.  The examples shown in this workflow will be from a Windows computer and an Android phone for recording images.  Proceed to this workflow to see capturing and annotating datasets that will be used to train, validate, and deploy Vision models.
+
+4. [Maivin Workflow](maivin.md)
+
+    This workflow is intended for users with a personal computer with access to Wifi and a web browser and a Maivin platform.  To proceed to this workflow, click on the link above.
+
+!!! note "Future Work"
+
+    The Raivin and LiDAR workflows are currently unavailable. 
+    

@@ -46,7 +46,7 @@ To query the token, use the following command:
 ```shell
 edgefirst-client token
 ```
-This should produce an output similiar to:
+This should produce an output similar to:
 ```shell
 $ edgefirst-client token
 eyJhbGciOiJIUzI1NiIsInR5cCI6IkpX...
@@ -95,7 +95,7 @@ Make a note of the snapshot ID that was created. In this case, the snapshot ID i
 
 ### Restore Snapshots
 !!! warning
-    Restoring snapshots to datasets will deduct funds from your EdgeFirst Studios account.
+    Restoring snapshots to datasets will deduct funds from your EdgeFirst Studio account.
 
 To restore any snapshot as a dataset, we need to get the project ID where the dataset is going to be stored. Available projects can be listed by calling:
 
@@ -145,7 +145,7 @@ The `restore-snapshot` command provides several options to customize the dataset
 - `--dataset-description`: Provides a description for the dataset
 
 !!! warning
-    Automated depth generation and labelling services will incur additional costs on top of the snapshot restoration.
+    Automated depth generation and labeling services will incur additional costs on top of the snapshot restoration.
 
 For example, to create a dataset with automatic depth maps and annotations for `person` and `car` objects, run the following command:
 
@@ -157,16 +157,12 @@ For example:
 $ edgefirst-client restore-snapshot 628 1816 --dataset-name "Upload from verdin-imx8mp-15141091 with AGTG" --dataset-description "This is a dataset generated from Raivin verdin-imx8mp-15141091 on January 31, 2025 with depth map generation and automated labelling for the class person and car." --autolabel "person car" --autodepth
 ```
 
-The `--autolabel` parameter currently supports [COCO labels](../datasets/zoo.md#coco-labels). We can list any class found in the COCO labels list to auto annotate these classes. In EdgeFirst Studio, we can [visualize](../datasets/tutorials/management.md#viewing-datasets) the results of the auto-annotations when restoring the snapshot. In this example, "person" and "car" are being shown as specified from the command above.
+The `--autolabel` parameter currently supports [COCO labels](../datasets/coco/index.md#coco-labels). We can list any class found in the COCO labels list to auto annotate these classes. In EdgeFirst Studio, we can [visualize](../datasets/tutorials/management.md#view-dataset) the results of the auto-annotations when restoring the snapshot. In this example, "person" and "car" are being shown as specified from the command above.
 
 <figure markdown="span">
 ![Restore Snapshot Results](assets/restore-snapshot-results.jpg){ align=center }
 <figcaption>Restore Snapshot Results</figcaption>
 </figure>
-
-!!! warning
-
-    Downloading datasets from EdgeFirst Studios using `edgefirst-client` is currently not supported because it requires AWS Credentials.
 
 ## Command Reference
 The EdgeFirst Studio Client provides a comprehensive set of commands for interacting with EdgeFirst Studio. Here's a detailed explanation of the available commands:
@@ -234,21 +230,30 @@ A single dataset is allowed to have multiple annotations sets. That is the reaso
   [1] Default Annotation Set
   [2] Validation Set
   ```
-- `annotations`: Retrieves annotations for a dataset and annotation set, filtered by types. Types could be any of the following options: `box2d`, `box3d`, `segmentation`. By default this command will return a JSON file. However, the user can always return an Arrow dataframe by adding the `--arrow` 
-  ```shell
-  $ edgefirst-client annotations 32 --types box2d
-  ...
-  "object_id": "605152ea-e681-4f02-a60a-a70e525e9acd",
-    "label_name": "suitcase",
-    "group": "train",
-    "box2d": {
-      "h": 0.21910417,
-      "w": 0.23835938,
-      "x": 0.69021099,
-      "y": 0.874552085
-    }
-  ...
-  ```
+- `annotations`: Retrieves annotations for a dataset and annotation set, filtered by types. Types could be any of the following options: `box2d`, `box3d`, `segmentation`. By default this command will return a JSON file. However, the user can always return an Arrow dataframe by adding the `--arrow` as shown below.
+
+=== "JSON"
+
+    ```shell
+    $ edgefirst-client annotations 32 --types box2d,segmentation
+    ...
+    "object_id": "605152ea-e681-4f02-a60a-a70e525e9acd",
+      "label_name": "suitcase",
+      "group": "train",
+      "box2d": {
+        "h": 0.21910417,
+        "w": 0.23835938,
+        "x": 0.69021099,
+        "y": 0.874552085
+      }
+    ...
+    ```
+
+=== "Arrow"
+
+    ```shell
+    edgefirst-client annotations 32 --arrow dataset.arrow --types box2d,segmentation
+    ```
 
 ### Snapshot Operations
 - `snapshots`: Lists available snapshots
@@ -290,7 +295,7 @@ A single dataset is allowed to have multiple annotations sets. That is the reaso
   edgefirst-client trainer-session 324
   [324] ... Artifact { name: "modelpack.h5", model_type: "modelpack" },...]
   ```
-- `download-artifact`: Downloads artifacts from a training session. Notice this command requieres the `output` parameter is pointing to a file and not to a folder
+- `download-artifact`: Downloads artifacts from a training session. Notice this command requires the `output` parameter is pointing to a file and not to a folder
   ```shell
   edgefirst-client download-artifact 324 labels.txt --output /home/reinier/labels.txt
   ```

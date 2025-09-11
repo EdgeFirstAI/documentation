@@ -1,6 +1,6 @@
 # Radar Topics
 
-The radar topics are managed by the `radarpub` service and handles interfacing with a conencted radar to produce radar point clouds and radar cubes.  The service can also stack successive radar points and cluster radar points based on their proximity to each other.  The following is a list of key features provided by the radar service.
+The radar topics are managed by the `radarpub` service and handles interfacing with a connected radar to produce radar point clouds and radar cubes.  The service can also stack successive radar points and cluster radar points based on their proximity to each other.  The following is a list of key features provided by the radar service.
 
 - SmartMicro Radars
 - Output raw Radarcube

@@ -1,26 +1,26 @@
 # Training ModelPack
 
-This tutorial describes the steps to train **ModelPack Vision** models in EdgeFirst Studio.  For a tutorial to train Fusion models, see [Training Fusion Models](../fusion/training.md).  It is highly recommended to be familiar with the concepts and UI elements in EdgeFirst Studio as described in the [EdgeFirst Studio: Overview](../../getting_started/studio.md).
+This tutorial describes the steps to train **ModelPack Vision** models in EdgeFirst Studio.  For a tutorial to train Fusion models, see [Training Fusion Models](../fusion/training.md). 
 
 ## Verify Dataset
 
-First ensure the dataset is ready to be used for training.  This means that the dataset is properly annotated and the dataset is properly split into training and validation samples.  The section in [Verifying Datasets](../../datasets/tutorials/management.md#verifying-datasets) will show what to look for in a dataset before deploying it for training.
+First ensure that the dataset is ready to be used for training.  This means that the dataset is properly annotated and the dataset is properly split into training and validation groups.  The section in [Verify Dataset](../../datasets/tutorials/management.md#verify-dataset) will show what to look for in a dataset before deploying it for training.
 
 ## Specify Project Experiments
 
 From the projects page, choose the project that contains the dataset you plan to use.  In this example, the project chosen is the "Object Detection" project which was created in the [Quickstart Guide](../../index.md#create-project).  Next click the "Model Experiments" button as indicated in red.
 
 <figure markdown="span">
-![Model Experiments](../assets/training/modelpack-model-experiments.jpg){ align=center }
+![Model Experiments](../assets/training/vision-model-experiments.jpg){ align=center }
 <figcaption>Model Experiments</figcaption>
 </figure>
 
 ## Create Model Experiment
 
-You will be greeted with the "Model Experiments" page.  A new project will not have any experiments as shown below.  You will need to first create a model experiment.  As mentioned in the [EgdeFirst Studio: Overview](../../getting_started/studio.md#model-experiments), model experiments will contain both training and validation sessions. 
+You will be greeted with the "Model Experiments" page.  A new project will not have any experiments as shown below.  You will need to first create a model experiment.  As mentioned in the [Model Experiments Dashboard](../../studio/models.md), model experiments will contain both training and validation sessions. 
 
 <figure markdown="span">
-![Model Experiments Page](../assets/training/modelpack-model-experiments-page.jpg){ align=center }
+![Model Experiments Page](../assets/training/vision-model-experiments-page.jpg){ align=center }
 <figcaption>Model Experiments Page</figcaption>
 </figure>
 
@@ -34,14 +34,14 @@ Click on the "New Experiment" button as shown on the top right corner of the pag
 Enter the name and the description of the experiment marked by the fields shown below.  Click on the "Create New Experiment" button to create your experiment.
 
 <figure markdown="span">
-![Experiment Fields](../assets/training/modelpack-model-experiments-fields.jpg){ align=center }
+![Experiment Fields](../assets/training/vision-model-experiments-fields.jpg){ align=center }
 <figcaption>Experiment Fields</figcaption>
 </figure>
 
 Your created experiment will appear like the following below.  At the start, this experiment will contain zero training and validation sessions.  The next step will show how to start your first training session on this experiment using the dataset in the project. 
 
 <figure markdown="span">
-![Created Experiment](../assets/training/modelpack-created-experiment.jpg){ align=center }
+![Created Experiment](../assets/training/vision-created-experiment.jpg){ align=center }
 <figcaption>Created Experiment</figcaption>
 </figure>
 
@@ -50,14 +50,14 @@ Your created experiment will appear like the following below.  At the start, thi
 In the experiment card, click the "Training Sessions" button as indicated in red below.
 
 <figure markdown="span">
-![Training Sessions](../assets/training/modelpack-training-sessions.jpg){ align=center }
+![Training Sessions](../assets/training/vision-training-sessions.jpg){ align=center }
 <figcaption>Training Sessions</figcaption>
 </figure>
 
 You will be greeted to the "Training Sessions" page as shown below.  
 
 <figure markdown="span">
-![Training Sessions Page](../assets/training/modelpack-training-sessions-page.jpg){ align=center }
+![Training Sessions Page](../assets/training/vision-training-sessions-page.jpg){ align=center }
 <figcaption>Training Sessions Page</figcaption>
 </figure>
 
@@ -68,12 +68,18 @@ Start a training session by clicking on the "New Session" button on the top righ
 <figcaption>New Session Button</figcaption>
 </figure>
 
-You will be greeted with the training session configuration window.  In this window, specify the "Trainer Type" to "ModelPack" and provide a name and description of the training session as shown below.  Next specify the dataset to be used with training and validation partitions.  In this example, the dataset specified is the "Coffee Cup" dataset which was created in the [QuickStart](../../index.md) guide.  Next specify the training parameters.  By default, an object detection (bounding boxes) model will be trained.  However, you can specify either "Segmentation" or "Multitask" as shown below.  This model will output both bounding boxes and segmentation masks.  Additional information on these parameters are provided by hovering over the info buttons indicated in red below.
+You will be greeted with a training session dialog.  In this dialog, specify the "Trainer Type" to "ModelPack" and provide a name and description of the training session as shown below.  Next specify the dataset to be used with training and validation partitions.  In this example, the dataset specified is the "Coffee Cup" dataset which was created in the [Getting Started](../../index.md).  Next specify the training parameters.  By default, an object detection (bounding boxes) model will be trained.  However, you can specify either "Segmentation" or "Multitask" as shown below.  This model will output both bounding boxes and segmentation masks.  Additional information on these parameters are provided by hovering over the info button ![Info Button](../../assets/buttons/studio-info-button.jpg).
+
+!!! tip "Input Resolution"
+    We recommend changing the input resolution to 640x360 to maximize detection rates on small datasets.
+
+!!! warning "Large Batch Size"
+    For small datasets, a large batch size may produce poor results. Use a batch size of 4 or 8.
 
 For more information on available "Data Augmentations" please see [Vision Augmentations](../augmentations.md).
 
 <figure markdown="span">
-![Training Session Fields](../assets/training/modelpack-session-fields.jpg){ align=center }
+![Training Session Fields](../assets/training/vision-train-settings.jpg){ align=center }
 <figcaption>Training Session Fields</figcaption>
 </figure>
 
@@ -84,20 +90,23 @@ Once the configurations have been made, go ahead and click on the "Start Session
 Once the training session has started, the progress with the stages will be shown on the left and additional information and status is shown on the right.
 
 <figure markdown="span">
-![Training Session](../assets/training/modelpack-session-progress.jpg){ align=center }
+![Training Session](../assets/training/vision-session-progress.jpg){ align=center }
 <figcaption>Training Session</figcaption>
 </figure>
+
+The training process begins with cloud instance initialization. Then the dataset is downloaded and cached. Training starts afterwards.
+At the end of the training process, ModelPack quantizes the model and publishes the checkpoints.
 
 ## Completed Session
 
 The completed session will look as follows with the status set to "Complete".
 
 <figure markdown="span">
-![Completed Session](../assets/training/modelpack-completed-session.jpg){ align=center }
+![Completed Session](../assets/training/vision-completed-session.jpg){ align=center }
 <figcaption>Completed Session</figcaption>
 </figure>
 
-The attributes of the training session are labeled below.
+The attributes of the training sessions in EdgeFirst Studio are labeled below.
 
 <figure markdown="span">
 ![Training Session Attributes](../assets/training/training-session-attributes.jpg){ align=center }
@@ -109,7 +118,7 @@ The attributes of the training session are labeled below.
 Once the training session completes, you can view the training charts by clicking the "View Training Charts" button on the top of the session card.
 
 <figure markdown="span">
-![Training Charts](../assets/training/modelpack-charts.jpg){ align=center }
+![Training Charts](../assets/training/vision-charts.jpg){ align=center }
 <figcaption>Training Charts</figcaption>
 </figure>
 
@@ -120,18 +129,17 @@ You can go back to the training session card by pressing the "Back" button as in
 <figcaption>Back to the Session Card</figcaption>
 </figure>
 
-The trained model artifacts can be downloaded by clicking the "View Additional Details" button on the training session card in EdgeFirst Studio.  This will open the session details and the models are listed under the "Artifacts" tab as shown below.  Click on the downward arrow indicated in red to download the models to your PC.
+The trained model artifacts can be downloaded by clicking the "View Additional Details" button on the training session card in EdgeFirst Studio.  This will open the session details and the models are listed under the "Artifacts" tab as shown below.  Click on the downward arrows to download the models to your PC.
 
 | Session Details                                                | Artifacts                                                                     |
 |----------------------------------------------------------------|-------------------------------------------------------------------------------|
-| ![session](../assets/training/modelpack-session-details.jpg) | ![artifacts](../assets/training/modelpack-session-artifacts.jpg) | 
+| ![session](../assets/training/vision-session-details.jpg) | ![artifacts](../assets/training/vision-session-artifacts.jpg) | 
 
-It is also possible to compare the training metrics for multiple sessions.  See [Training Sessions](../../getting_started/studio.md#training-sessions) in the EdgeFirst Studio Overview for further details. 
+It is also possible to compare the training metrics for multiple sessions.  See [Training Sessions](../../studio/models.md#training-sessions) in the Model Experiments Dashboard for further details. 
 
-!!! info
+!!! info "Netron"
     You can visualize the architecture of these models using [https://netron.app/](https://netron.app/).
 
 ## Next Steps 
 
-Now that you have generated your Vision model, follow these next steps
-for [validating your model](validation.md).
+Now that you have generated your Vision model, follow along the next steps for validating your model either through [managed](validation/managed.md) or [user-managed](validation/user_managed.md) validation sessions.

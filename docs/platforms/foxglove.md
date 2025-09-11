@@ -2,7 +2,7 @@
 [Foxglove Studio][foxglove] is an open source application developed by FoxGlove Technologies, Inc.  It is part of the [Robot Operating System (ROS)][ros] ecosystem and supports playback for MCAP recordings.  You can [download Foxglove Studio][foxglove_dl] as well as our [EdgeFirst plug-in for Foxglove][github_edgefirst_dl] and customized [Raivin Foxglove layout](assets/Raivin_Foxglove_Layout.json){: download="Raivin_Foxglove_Layout.json" }
 
 ## Getting Started
-Let's discuss how to install our custom plug-ins once you've installed Foxglove Studios.
+Let's discuss how to install our custom plugins once you've installed Foxglove Studio.
 
 ### Installing EdgeFirst Plugin
 
@@ -69,7 +69,7 @@ We have included a [Custom Raivin Layout for Foxglove Studio](assets/Raivin_Foxg
 
 1. Open Foxglove Studio.
 2. Load an MCAP file downloaded from the Raivin.
-3. Click the "Layout" buttom in the top taskbar.
+3. Click the "Layout" button in the top taskbar.
 4. Select the "Import from file..." option in the Layout menu.  
 
 	<figure markdown="span">
@@ -89,8 +89,8 @@ We have included a [Custom Raivin Layout for Foxglove Studio](assets/Raivin_Foxg
 The default Raivin layout includes:
 
 - Top panel: H.264 camera stream with bounding box overlays
-      - Shows detection results (i.e. the coloured boxes around people when using a detection model)
-      - Shows segementation masks (i.e. the coloured blobs covering detected objects when using a segmentation model)
+      - Shows detection results (i.e. the colored boxes around people when using a detection model)
+      - Shows segmentation masks (i.e. the coloured blobs covering detected objects when using a segmentation model)
 - Bottom right panel: GPS coordinates map view
       - Interactive map with zoomable blue target showing camera position
 - Bottom left panel: IMU sensor readings

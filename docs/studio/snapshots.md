@@ -1,20 +1,29 @@
-# Snapshot Dashboard
+# Snapshots Dashboard
 
-Snapshots are frozen and compact form of datasets. The snapshot can be opened from the apps menu.
+Snapshots are frozen and compact form of datasets. The snapshot can be opened from the Apps Menu.
 
 <figure markdown="span">
-![Data Snapshots](assets/data-snapshots.png){ align=center }
+![Data Snapshots](assets/snapshots/data-snapshots.png){ align=center }
 <figcaption>Data Snapshots</figcaption>
 </figure>
 
 The snapshots menu shows the list of snapshots with its name and status.
 
 <figure markdown="span">
-![Snapshot List](assets/snapshot-list.png){ align=center }
+![Snapshot List](assets/snapshots/snapshot-list.png){ align=center }
 <figcaption>Snapshot List</figcaption>
 </figure>
 
 ## Create Snapshot
+
+The tutorial for creating snapshots can be found under the [Dataset Annotations](../datasets/tutorials/annotations/automatic.md#create-snapshot) section.  This will create a Zip/Arrow file pair also known as an [EdgeFirst Dataset](../datasets/format.md) for each sequence in a dataset and stored in the cloud storage.  This snapshot can be later restored (into another dataset) or can be downloaded to a local folder on a PC.
+
+The stages for creating a snapshot are shown below.
+
+<figure markdown="span">
+![Create Snapshot Stages](../datasets/assets/annotations/automatic/snapshot-creation-process.png){ align=center }
+<figcaption>Create Snapshot Stages</figcaption>
+</figure>
 
 A snapshot can be created by the following ways:
 
@@ -24,18 +33,11 @@ A snapshot can be created by the following ways:
 
 ### Create from Existing Dataset
 
-This will create a Zip/Arrow file pair for each sequence in a dataset and stored in the cloud storage. This snapshot can be later restored (into another dataset) or can be downloaded to a local folder on a PC.
-
-1. From the dataset card, open the context menu and select "Generate API Token"
-
-<figure markdown="span">
-![Generate API Token](assets/generate-api-token.png){ align=center }
-<figcaption>Generate API Token</figcaption>
-</figure>
-
-2. This will trigger the creation of a snapshot.
-3. The status of the snapshot generation will be shown in the dataset card.
-4. When completed, the snapshot will appear in the snapshots dashboard.
+1. From the dataset card, open the context menu and select "Create Snapshot".
+2. Select the dataset and annotation set to create a snapshot from and give it a description.
+3. This will trigger the creation of a snapshot.
+4. The status of the snapshot generation will be shown in the dataset card.
+5. When completed, the snapshot will appear in the snapshots dashboard.
 
 ### Upload from MCAP File
 
@@ -47,57 +49,43 @@ This will create a Zip/Arrow file pair for each sequence in a dataset and stored
 This format is the [EdgeFirst Dataset Format](../datasets/format.md) where the [Zip file](../datasets/format.md#dataset-storage-format) contains sensor reading and measurements and the [Arrow file](../datasets/format.md#dataset-annotation-format) contains dataset annotations. 
 
 1. Go to the snapshots dashboard.
-2. Click on the "FROM FILE" button and then select the Zip and Arrow file pairs to import or drag and drop as a folder containing Zip and Arrow file pairs onto the dashboard. Shown is an example below.
-
-    <figure markdown="span">
-    ![From File](assets/from-file.jpg){ align=center }
-    <figcaption>From File</figcaption>
-    </figure>
-
-    <figure markdown="span">
-    ![Zip and Arrow Files](assets/zip-arrow-files.jpg){ align=center }
-    <figcaption>Zip and Arrow Files</figcaption>
-    </figure>
-
-    <figure markdown="span">
-    ![Zip and Arrow Files Import](assets/zip-arrow-files-import.jpg){ align=center }
-    <figcaption>Zip and Arrow Files Import</figcaption>
-    </figure>
-
-    !!! warning
-        The name of corresponding zip and arrow files must be same.
-
-    !!! info
-        If there are multiple zip and arrow pairs, then each pair will become a sequence.
-
+2. Click on the "FROM FILE" button and then select the Zip and Arrow file pairs to import or drag and drop as a folder containing Zip and Arrow file pairs onto the dashboard. 
 3. Once the files are selected, this will start the import sequence progress shown below.
 
-    <figure markdown="span">
-    ![Import Progress](assets/import-sequence-progress.jpg){ align=center }
-    <figcaption>Import Progress</figcaption>
-    </figure>
+### Pipeline
+When creating a snapshot a pipeline with the following stages are deployed.
 
-    <figure markdown="span">
-    ![Import Completed](assets/import-sequence-completed.jpg){ align=center }
-    <figcaption>Import Completed</figcaption>
-    </figure>
+1. Server Initialization: Initialize the backend server for handling the processes.
+2. Downloading Files from Cloud Storage: Fetches the dataset images from the S3 bucket.
+3. Exporting Files from Database: Fetches the dataset annotations from the Studio database.
+4. Zipping Files for Upload: Formulation of the [EdgeFirst Dataset Format](../datasets/format.md) and placing the fetched dataset files as a single Zip file.
+5. Uploading Snapshot to Cloud Storage: Uploading the dataset into S3 bucket.
 
 ## Restore Snapshot
 
-This action will take an MCAP or Zip/Arrow files and create a dataset in EdgeFirst Studio. The Backend pipelines of auto depthmap generation, object detection, and Automated Ground Truth Generation can also be selected at this time while restoring.
+This action will take an MCAP or Zip/Arrow files and create a dataset in EdgeFirst Studio.  The backend pipelines for auto depth map generation, object detection, and Automated Ground Truth Generation can also be selected at this time while restoring.
+
+The tutorial for restoring snapshots can be found under the [Dataset Annotations](../datasets/tutorials/annotations/automatic.md#restore-snapshot) section.
+
+The stages for restoring a snapshot are shown below.
+
+<figure markdown="span">
+![Restore Snapshot Stages](../datasets/assets/annotations/automatic/snapshot-restore-process.jpg){ align=center }
+<figcaption>Restore Snapshot Stages</figcaption>
+</figure>
 
 1. Click on the snapshot context menu (three dots).
 2. Select "Restore".
 
 <figure markdown="span">
-![Snapshot Options](assets/options.png){ align=center }
+![Snapshot Options](assets/snapshots/options.png){ align=center }
 <figcaption>Snapshot Options</figcaption>
 </figure>
 
 3. This will open the restore dialog for specifying the options.
 
 <figure markdown="span">
-![Restore Options](assets/restore-dialog.png){ align=center }
+![Restore Options](assets/snapshots/restore-dialog.png){ align=center }
 <figcaption>Restore Options</figcaption>
 </figure>
 
@@ -111,15 +99,22 @@ This action will take an MCAP or Zip/Arrow files and create a dataset in EdgeFir
 11. The dataset dashboard will have a new dataset with progress indication.
 12. The progress for different stages will be at different rates.
 
+### Pipeline
+When restoring a snapshot a pipeline with the following stages are deployed.
+
+1. Download Snapshot from Cloud Storage: Fetches the dataset from the S3 server.
+2. Converting MCAP to Dataset: This is only present when the method of [creating a snapshot](#upload-from-mcap-file) is from an MCAP file.
+3. Automatic Annotations Generation: Runs AGTG to auto annotate the dataset with COCO labels.
+4. Prepare Data for Upload: Data preparation processes.
+5. Importing Images and Annotations to Database: Uploading the images and annotations to the Studio database.
+6. Uploading Files to Cloud Storage: Uploading the annotated dataset back into S3 bucket.
+
 ## Download Snapshot
 
 1. Click on the snapshot context menu (three dots).
 2. Select "Download".
 
-<figure markdown="span">
-![Snapshot Options](assets/options.png){ align=center }
-<figcaption>Snapshot Options</figcaption>
-</figure>
+This will download the snapshot as Zip/Arrow to your local machine.
 
 ## Delete Snapshot
 
@@ -127,6 +122,10 @@ This action will take an MCAP or Zip/Arrow files and create a dataset in EdgeFir
 2. Select "Remove".
 
 <figure markdown="span">
-![Snapshot Options](assets/options.png){ align=center }
+![Snapshot Options](assets/snapshots/options.png){ align=center }
 <figcaption>Snapshot Options</figcaption>
 </figure>
+
+## Next Steps
+
+Now that you are familiar with the Snapshots Dashboard, proceed to the next section for a proper introduction to the auto-annotation process in EdgeFirst Studio known as [Automatic Ground Truth Generation (AGTG)](agtg.md).

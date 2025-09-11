@@ -12,7 +12,9 @@ After setting up the Zenoh session, we will create a subscriber to the `fusion/o
 
     ``` python
     # Create a subscriber for "rt/fusion/occupancy"
-    subscriber = session.declare_subscriber('rt/fusion/occupancy')
+    loop = asyncio.get_running_loop()
+    drain = MessageDrain(loop)
+    session.declare_subscriber('rt/fusion/occupancy', drain.callback)
     ```
 
 === "Rust"
@@ -27,18 +29,20 @@ After setting up the Zenoh session, we will create a subscriber to the `fusion/o
 
 ### Receive a message
 
-We can now receive a message on the subscriber. After receiving the message, we will need to deserialize it.
+We can now await a message from that subscriber. After receiving the message, we will pass that message along to our processing function in a new thread to avoid missing messages.
 
 === "Python"
 
     ``` python
-    from edgefirst.schemas.fusion_msgs import Occupancy
-
-    # Receive a message
-    msg = subscriber.recv()
-
-    # deserialize message
-    occupancy = Occupancy.deserialize(msg.payload.to_bytes())
+    async def occupancy_handler(drain):
+        while True:
+            msg = await drain.get_latest()
+            thread = threading.Thread(target=occupancy_worker, args=[msg])
+            thread.start()
+            
+            while thread.is_alive():
+                await asyncio.sleep(0.001)
+            thread.join()
     ```
 
 === "Rust"
@@ -54,16 +58,22 @@ We can now receive a message on the subscriber. After receiving the message, we 
 
 ### Process the Data
 
-The Occupancy message contains occupancy grid data. You can access various fields like:
+The Occupancy message contains occupancy grid data. You can log the data through the following
 
 === "Python"
 
     ``` python
-    # Access occupancy parameters
-    width = occupancy.width
-    height = occupancy.height
-    resolution = occupancy.resolution
-    data = occupancy.data  # Occupancy grid data
+    def occupancy_worker(msg):
+        pcd = PointCloud2.deserialize(msg.payload.to_bytes())
+        points = decode_pcd(pcd)
+        if not points:
+            rr.log("fusion/occupancy", rr.Points3D(positions=[], colors=[])) 
+            return
+        max_class = max(max([p.vision_class for p in points]), 1)
+        pos = [[p.x, p.y, p.z] for p in points]
+        colors = [
+            colormap(turbo_colormap, p.vision_class/max_class) for p in points]
+        rr.log("fusion/occupancy", rr.Points3D(positions=pos, colors=colors))
     ```
 
 === "Rust"
@@ -76,6 +86,10 @@ The Occupancy message contains occupancy grid data. You can access various field
     let data = occupancy.data;  // Occupancy grid data
     ```
 
+### Results
+When displaying the results through Rerun you will see the Occupancy Point Cloud.
+![alt text](assets/fusion_occupancy.png)
+
 ## /fusion/model_output
 
 ### Setting up subscriber
@@ -86,7 +100,10 @@ After setting up the Zenoh session, we will create a subscriber to the `fusion/m
 
     ``` python
     # Create a subscriber for "rt/fusion/model_output"
-    subscriber = session.declare_subscriber('rt/fusion/model_output')
+    loop = asyncio.get_running_loop()
+    drain = MessageDrain(loop)
+
+    session.declare_subscriber('rt/fusion/model_output', drain.callback)
     ```
 
 === "Rust"
@@ -101,18 +118,20 @@ After setting up the Zenoh session, we will create a subscriber to the `fusion/m
 
 ### Receive a message
 
-We can now receive a message on the subscriber. After receiving the message, we will need to deserialize it.
+We can now receive a message on the subscriber. After receiving the message, we will set it up for processing.
 
 === "Python"
 
     ``` python
-    from edgefirst.schemas.fusion_msgs import ModelOutput
-
-    # Receive a message
-    msg = subscriber.recv()
-
-    # deserialize message
-    output = ModelOutput.deserialize(msg.payload.to_bytes())
+    async def model_output_handler(drain):
+        while True:
+            msg = await drain.get_latest()
+            thread = threading.Thread(target=model_output_worker, args=[msg])
+            thread.start()
+            
+            while thread.is_alive():
+                await asyncio.sleep(0.001)
+            thread.join()
     ```
 
 === "Rust"
@@ -128,15 +147,21 @@ We can now receive a message on the subscriber. After receiving the message, we 
 
 ### Process the Data
 
-The ModelOutput message contains fused model output data. You can access various fields like:
+The ModelOutput message contains fused model output data. You can log the data through the following
 
 === "Python"
 
     ``` python
-    # Access model output parameters
-    timestamp = output.timestamp
-    boxes = output.boxes  # 2D bounding boxes
-    masks = output.masks  # Segmentation masks
+    def model_output_worker(msg):
+        mask = Mask.deserialize(msg.payload.to_bytes())
+        np_arr = np.asarray(mask.mask, dtype=np.uint8)
+        np_arr = np.reshape(np_arr, [mask.height, mask.width, -1])
+        np_arr = np.argmax(np_arr, axis=2)
+        rr.log(
+            "/", rr.AnnotationContext([
+                (0, "background", (0, 0, 0)),
+                (1, "person", (255, 0, 0))]))
+        rr.log("mask", rr.SegmentationImage(np_arr))
     ```
 
 === "Rust"
@@ -158,7 +183,9 @@ After setting up the Zenoh session, we will create a subscriber to the `fusion/m
 
     ``` python
     # Create a subscriber for "rt/fusion/mask_output/tracked"
-    subscriber = session.declare_subscriber('rt/fusion/mask_output/tracked')
+    loop = asyncio.get_running_loop()
+    drain = MessageDrain(loop)
+    session.declare_subscriber('rt/fusion/model_output/tracked', drain.callback)
     ```
 
 === "Rust"
@@ -173,18 +200,20 @@ After setting up the Zenoh session, we will create a subscriber to the `fusion/m
 
 ### Receive a message
 
-We can now receive a message on the subscriber. After receiving the message, we will need to deserialize it.
+We can now receive a message on the subscriber. After receiving the message, we will set it up for processing.
 
 === "Python"
 
     ``` python
-    from edgefirst.schemas.fusion_msgs import MaskOutputTracked
-
-    # Receive a message
-    msg = subscriber.recv()
-
-    # deserialize message
-    tracked = MaskOutputTracked.deserialize(msg.payload.to_bytes())
+    async def model_output_handler(drain):
+        while True:
+            msg = await drain.get_latest()
+            thread = threading.Thread(target=model_output_worker, args=[msg])
+            thread.start()
+            
+            while thread.is_alive():
+                await asyncio.sleep(0.001)
+            thread.join()
     ```
 
 === "Rust"
@@ -200,15 +229,21 @@ We can now receive a message on the subscriber. After receiving the message, we 
 
 ### Process the Data
 
-The MaskOutputTracked message contains tracked segmentation mask data. You can access various fields like:
+The MaskOutputTracked message contains fused model output data. You can log the data through the following
 
 === "Python"
 
     ``` python
-    # Access tracked mask parameters
-    timestamp = tracked.timestamp
-    track_id = tracked.track_id
-    mask = tracked.mask  # Segmentation mask
+    def model_output_worker(msg):
+        mask = Mask.deserialize(msg.payload.to_bytes())
+        np_arr = np.asarray(mask.mask, dtype=np.uint8)
+        np_arr = np.reshape(np_arr, [mask.height, mask.width, -1])
+        np_arr = np.argmax(np_arr, axis=2)
+        rr.log(
+            "/", rr.AnnotationContext([
+                (0, "background", (0, 0, 0)),
+                (1, "person", (255, 0, 0))]))
+        rr.log("mask", rr.SegmentationImage(np_arr))
     ```
 
 === "Rust"
@@ -230,7 +265,9 @@ After setting up the Zenoh session, we will create a subscriber to the `fusion/r
 
     ``` python
     # Create a subscriber for "rt/fusion/radar"
-    subscriber = session.declare_subscriber('rt/fusion/radar')
+    loop = asyncio.get_running_loop()
+    drain = MessageDrain(loop)
+    session.declare_subscriber('rt/fusion/radar', drain.callback)
     ```
 
 === "Rust"
@@ -245,18 +282,20 @@ After setting up the Zenoh session, we will create a subscriber to the `fusion/r
 
 ### Receive a message
 
-We can now receive a message on the subscriber. After receiving the message, we will need to deserialize it.
+We can now receive a message on the subscriber. After receiving the message, we will set it up for processing.
 
 === "Python"
 
     ``` python
-    from edgefirst.schemas.sensor_msgs import PointCloud2
-
-    # Receive a message
-    msg = subscriber.recv()
-
-    # deserialize message
-    pcd = PointCloud2.deserialize(msg.payload.to_bytes())
+    async def radar_handler(drain):
+        while True:
+            msg = await drain.get_latest()
+            thread = threading.Thread(target=radar_worker, args=[msg])
+            thread.start()
+            
+            while thread.is_alive():
+                await asyncio.sleep(0.001)
+            thread.join()
     ```
 
 === "Rust"
@@ -278,8 +317,9 @@ The next step is to decode the PCD data. Please see [examples/pcd](./pcd.md) for
 === "Python"
 
     ``` python
-    from edgefirst.schemas import decode_pcd
-    points = decode_pcd(pcd)
+    def radar_worker(msg):
+        pcd = PointCloud2.deserialize(msg.payload.to_bytes())
+        points = decode_pcd(pcd)
     ```
 
 === "Rust"
@@ -296,16 +336,15 @@ We can now process the data. In this example we will find the maximum and minimu
 === "Python"
 
     ``` python
-    points = [p for p in points if p.fields["vision_class"] != 0]
-
-    min_x = min([p.x for p in points], default=float("inf"))
-    max_x = max([p.x for p in points], default=float("-inf"))
-
-    min_y = min([p.y for p in points], default=float("inf"))
-    max_y = max([p.y for p in points], default=float("-inf"))
-
-    min_z = min([p.z for p in points], default=float("inf"))
-    max_z = max([p.z for p in points], default=float("-inf"))
+    clusters = [p for p in points if p.cluster_id > 0]
+    if not clusters:
+        rr.log("fusion/radar", rr.Points3D([], colors=[]))  
+        return
+    max_id = max(p.cluster_id for p in clusters)
+    pos = [[p.x, p.y, p.z] for p in clusters]
+    colors = [colormap(turbo_colormap, p.cluster_id / max_id)
+            for p in clusters]
+    rr.log("fusion/radar", rr.Points3D(pos, colors=colors))
     ```
 
 === "Rust"
@@ -352,7 +391,7 @@ Recieved 11 radar points with non-background vision_class. Values: x: [1.15, 1.4
 Recieved 10 radar points with non-background vision_class. Values: x: [1.15, 1.46]      y: [0.52, 0.75] z: [-0.31, 0.19]
 ```
 
-When displaying the results through Rerun you will see the pointcloud radar data.
+When displaying the results through Rerun you will see the point cloud radar data.
 ![alt text](assets/fusion_radar.png)
 
 ## /fusion/lidar
@@ -370,7 +409,9 @@ After setting up the Zenoh session, we will create a subscriber to the `fusion/l
 
     ``` python
     # Create a subscriber for "rt/fusion/lidar"
-    subscriber = session.declare_subscriber('rt/fusion/lidar')
+    loop = asyncio.get_running_loop()
+    drain = MessageDrain(loop)
+    session.declare_subscriber('rt/fusion/lidar', drain.callback)
     ```
 
 === "Rust"
@@ -390,13 +431,15 @@ We can now receive a message on the subscriber. After receiving the message, we 
 === "Python"
 
     ``` python
-    from edgefirst.schemas.sensor_msgs import PointCloud2
-
-    # Receive a message
-    msg = subscriber.recv()
-
-    # deserialize message
-    pcd = PointCloud2.deserialize(msg.payload.to_bytes())
+    async def lidar_handler(drain):
+        while True:
+            msg = await drain.get_latest()
+            thread = threading.Thread(target=lidar_worker, args=[msg])
+            thread.start()
+            
+            while thread.is_alive():
+                await asyncio.sleep(0.001)
+            thread.join()
     ```
 
 === "Rust"
@@ -418,8 +461,9 @@ The next step is to decode the PCD data. Please see [examples/pcd](./pcd.md) for
 === "Python"
 
     ``` python
-    from edgefirst.schemas import decode_pcd
-    points = decode_pcd(pcd)
+    def lidar_worker(msg):
+        pcd = PointCloud2.deserialize(msg.payload.to_bytes())
+        points = decode_pcd(pcd)
     ```
 
 === "Rust"
@@ -436,16 +480,15 @@ We can now process the data. In this example we will find the maximum and minimu
 === "Python"
 
     ``` python
-    points = [p for p in points if p.fields["vision_class"] != 0]
-
-    min_x = min([p.x for p in points], default=float("inf"))
-    max_x = max([p.x for p in points], default=float("-inf"))
-
-    min_y = min([p.y for p in points], default=float("inf"))
-    max_y = max([p.y for p in points], default=float("-inf"))
-
-    min_z = min([p.z for p in points], default=float("inf"))
-    max_z = max([p.z for p in points], default=float("-inf"))
+    clusters = [p for p in points if p.cluster_id > 0]
+    if not clusters:
+        rr.log("fusion/lidar", rr.Points3D([], colors=[]))  
+        return
+    max_id = max(p.cluster_id for p in clusters)
+    pos = [[p.x, p.y, p.z] for p in clusters]
+    colors = [colormap(turbo_colormap, p.cluster_id / max_id)
+            for p in clusters]
+    rr.log("fusion/lidar", rr.Points3D(pos, colors=colors))
     ```
 
 === "Rust"
@@ -492,7 +535,7 @@ Recieved 507 lidar points with non-background vision_class. Values: x: [3.41, 3.
 Recieved 523 lidar points with non-background vision_class. Values: x: [3.39, 3.77]     y: [0.47, 1.07] z: [-0.96, 0.69]
 ```
 
-When displaying the results through Rerun you will see the pointcloud lidar data.
+When displaying the results through Rerun you will see the point cloud lidar data.
 ![alt text](assets/fusion_lidar.png)
 
 ## /fusion/boxes3d
@@ -505,7 +548,9 @@ After setting up the Zenoh session, we will create a subscriber to the `fusion/b
 
     ``` python
     # Create a subscriber for "rt/fusion/boxes3d"
-    subscriber = session.declare_subscriber('rt/fusion/boxes3d')
+    loop = asyncio.get_running_loop()
+    drain = MessageDrain(loop)
+    session.declare_subscriber('rt/fusion/boxes3d', drain.callback)
     ```
 
 === "Rust"
@@ -525,13 +570,15 @@ We can now receive a message on the subscriber. After receiving the message, we 
 === "Python"
 
     ``` python
-    from edgefirst.schemas.edgefirst_msgs import Detect
-
-    # Receive a message
-    msg = subscriber.recv()
-
-    # deserialize message
-    boxes = Detect.deserialize(msg.payload.to_bytes())
+    async def boxes3d_handler(drain):
+        while True:
+            msg = await drain.get_latest()
+            thread = threading.Thread(target=boxes3d_worker, args=[msg])
+            thread.start()
+            
+            while thread.is_alive():
+                await asyncio.sleep(0.001)
+            thread.join()
     ```
 
 === "Rust"
@@ -552,14 +599,16 @@ The message contains a 2D bounding box with distances. Following the optical fra
 === "Python"
 
     ``` python
-    # Access box parameters
-    for b in boxes.boxes:
-        right = b.center_x
-        down = b.center_y
-        width = b.width
-        height = b.height
-        label = b.label
-        distance = b.distance
+    def boxes3d_worker(msg):
+        detection = Detect.deserialize(msg.payload.to_bytes())
+        # The 3D boxes are in an _optical frame of reference, where x is right, y is down, and z (distance) is forward
+        # We will convert them to a normal frame of reference, where x is forward, y is left, and z is up
+        centers = [(x.distance, -x.center_x, -x.center_y)
+                    for x in detection.boxes]
+        sizes = [(x.width, x.width, x.height)
+                    for x in detection.boxes]
+
+        rr.log("/pointcloud/fusion/boxes", rr.Boxes3D(centers=centers, sizes=sizes))
     ```
 
 === "Rust"

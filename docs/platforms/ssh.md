@@ -8,7 +8,7 @@ This section describes how to SSH into a Raivin using the default "torizon" acco
 
 You need an SSH client ([OpenSSH][openssh], [PuTTY][putty], etc.) to SSH into the Maivin.
 
-## The Intial SSH Session
+## The Initial SSH Session
 First, verify that your Maivin is turned on and connected to the network.  You can follow the [Quick Start instructions](./quickstart.md#on-boot-up) to get the hostname of the device, which for the examples in this section will be `verdin-imx8mp-06976895.local`.
 
 !!! tip

@@ -17,11 +17,27 @@
          <lastmod>2025-09-12</lastmod>
     </url>
     <url>
+         <loc>https://doc.edgefirst.ai/test/datasets/bdd100k/</loc>
+         <lastmod>2025-09-12</lastmod>
+    </url>
+    <url>
          <loc>https://doc.edgefirst.ai/test/datasets/coco/</loc>
          <lastmod>2025-09-12</lastmod>
     </url>
     <url>
          <loc>https://doc.edgefirst.ai/test/datasets/coco/import/</loc>
+         <lastmod>2025-09-12</lastmod>
+    </url>
+    <url>
+         <loc>https://doc.edgefirst.ai/test/datasets/coco_people/</loc>
+         <lastmod>2025-09-12</lastmod>
+    </url>
+    <url>
+         <loc>https://doc.edgefirst.ai/test/datasets/coffeecup/</loc>
+         <lastmod>2025-09-12</lastmod>
+    </url>
+    <url>
+         <loc>https://doc.edgefirst.ai/test/datasets/playingcards/</loc>
          <lastmod>2025-09-12</lastmod>
     </url>
     <url>
@@ -153,6 +169,10 @@
          <lastmod>2025-09-12</lastmod>
     </url>
     <url>
+         <loc>https://doc.edgefirst.ai/test/models/modelpack/benchmarks/</loc>
+         <lastmod>2025-09-12</lastmod>
+    </url>
+    <url>
          <loc>https://doc.edgefirst.ai/test/models/modelpack/training/</loc>
          <lastmod>2025-09-12</lastmod>
     </url>
@@ -202,6 +222,14 @@
     </url>
     <url>
          <loc>https://doc.edgefirst.ai/test/models/tutorials/validation/</loc>
+         <lastmod>2025-09-12</lastmod>
+    </url>
+    <url>
+         <loc>https://doc.edgefirst.ai/test/models/ultralytics/</loc>
+         <lastmod>2025-09-12</lastmod>
+    </url>
+    <url>
+         <loc>https://doc.edgefirst.ai/test/models/ultralytics/benchmark/</loc>
          <lastmod>2025-09-12</lastmod>
     </url>
     <url>
@@ -406,10 +434,6 @@
     </url>
     <url>
          <loc>https://doc.edgefirst.ai/test/studio/agtg/</loc>
-         <lastmod>2025-09-12</lastmod>
-    </url>
-    <url>
-         <loc>https://doc.edgefirst.ai/test/studio/dataio/</loc>
          <lastmod>2025-09-12</lastmod>
     </url>
     <url>

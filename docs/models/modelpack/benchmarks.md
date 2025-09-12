@@ -41,7 +41,7 @@ This page presents comprehensive benchmark results for ModelPack, a versatile mo
 
     | Model             | mAP@0.5 | mAP@0.5..0.95 |
     |-------------------|-----------|-----------|
-    | coffecup-csp19-medium-640x640-rgb   | -    |   -  |  
+    | modelpack-csp19-medium-640x640-rgb   | -    |   -  |  
 
     
     **Table: ModelPack on CoffeeCup - RGB - (640x640) - TFLite - i.MX 8M Plus**

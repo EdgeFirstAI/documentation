@@ -24,18 +24,26 @@
 
 === "Coffee Cup"
 
-    **Table: ModelPack on CoffeeCup - RGB - (640x640) | ONNX**
+    
+    ## Object Detection and Segmentation Metrcis
 
-    | Model             | mAP@0.5 | mAP@0.5..0.95 |
-    |-------------------|-----------|-----------|
-    | ultralytics-yolov8n-640x640-rgb   | -    |   -  |  
+    **Table: Ultralytics on CoffeeCup - RGB - (640x640) | ONNX**
+
+    | Model             | mAP@0.5 | mAP@0.5..0.95 | seg-mAP@0.5 | seg-mAP@0.5..0.95 |  
+    |-------------------|-----------|-----------|-------------|--------------|
+    | ultralytics-yolov8n-640x640-rgb   | 0.993    |  0.991  | 0.993 | 0.981|
 
     
-    **Table: ModelPack on CoffeeCup - RGB - (640x640) - TFLite - i.MX 8M Plus**
+    **Table: Ultralytics on CoffeeCup - RGB - (640x640) - TFLite - i.MX 8M Plus**
 
-    | Model             | mAP@0.5 | mAP@0.5..0.95 | Time (ms) |
-    |-------------------|-----------|-----------|---------------|
-    | ultralytics-yolov8n-640x640-rgb    | -    | -    | -    |  
+    | Model             | mAP@0.5 | mAP@0.5..0.95 | seg-mAP@0.5 | seg-mAP@0.5..0.95 | Time (ms) |
+    |-------------------|-----------|-----------|---------------|----------|-----------------|
+    | ultralytics-yolov8n-640x640-rgb    | 0.995    | 0.891  | 0.995 | 0.969 | 170.8    |  
+
+    
+
+
+    ## Segmentation Metrcis
 
     Visit the full **Coffee Cup** dataset [Benchmark here](../../datasets/coffecup/index.md)
 

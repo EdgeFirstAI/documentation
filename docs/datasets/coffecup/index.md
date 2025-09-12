@@ -8,12 +8,14 @@ Coffe Cup dataset is part of our [Data Capture Tutorial](../../datasets/tutorial
 
 === "ONNX"
 
+    ## Object Detection and Segmentation Metrcis
+
     **COCO Metrics - RGB - (640x640) | ONNX**
 
-    | Model             | mAP@0.5 | mAP@0.5..0.95 |
-    |-------------------|-----------|-----------|
-    | modelpack-csp19-large-640x640-rgb       | -    |   -  |  
-    | ultralytics-yolov8n-640x640-rgb | -| - |
+    | Model             | mAP@0.5 | mAP@0.5..0.95 | seg-mAP@0.5 | seg-mAP@0.5..0.95 |  
+    |-------------------|-----------|-----------|-------------|--------------|
+    | modelpack-csp19-medium-640x640-rgb   | 0.995    |   0.978  |  0.899 | 0.863 |
+    | ultralytics-yolov8n-640x640-rgb   | 0.993    |  0.991  | 0.993 | 0.981|
 
     !!! note
         Time information is not included in this validation because they can change dependening on the hardware quality
@@ -22,10 +24,11 @@ Coffe Cup dataset is part of our [Data Capture Tutorial](../../datasets/tutorial
 
     **COCO Metrics - RGB - (640x640) | TFLite | INT8**
 
-    | Model             | mAP@0.5 | mAP@0.5..0.95 | Time (ms) |
-    |-------------------|-----------|-----------|---------------|
-    | modelpack-csp19-large-640x640-rgb     | -    | -    | -    |  
-    | ultralytics-yolov8n-640x640-rgb       | -    | -    | -    | 
+    | Model             | mAP@0.5 | mAP@0.5..0.95 | seg-mAP@0.5 | seg-mAP@0.5..0.95 | Time (ms) |
+    |-------------------|-----------|-----------|---------------|----------|-----------------|
+    | modelpack-csp19-medium-640x640-rgb    | 0.995    | 0.911   | 0.884 | 0.856 | 45.53    |  
+    | ultralytics-yolov8n-640x640-rgb    | 0.995    | 0.891  | 0.995 | 0.969 | 170.8    |  
+
 
     !!! note
         **i.MX 8M Plus** is running BSP 6.12

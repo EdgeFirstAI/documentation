@@ -36,19 +36,21 @@ This page presents comprehensive benchmark results for ModelPack, a versatile mo
 
 
 === "Coffee Cup"
-
+    
+    ## Object Detection and Segmentation Metrcis
+    
     **Table: ModelPack on CoffeeCup - RGB - (640x640) | ONNX**
 
-    | Model             | mAP@0.5 | mAP@0.5..0.95 |
-    |-------------------|-----------|-----------|
-    | modelpack-csp19-medium-640x640-rgb   | -    |   -  |  
+    | Model             | mAP@0.5 | mAP@0.5..0.95 | seg-mAP@0.5 | seg-mAP@0.5..0.95 |  
+    |-------------------|-----------|-----------|-------------|--------------|
+    | modelpack-csp19-medium-640x640-rgb   | 0.995    |   0.978  |  0.899 | 0.863 |
 
     
     **Table: ModelPack on CoffeeCup - RGB - (640x640) - TFLite - i.MX 8M Plus**
 
-    | Model             | mAP@0.5 | mAP@0.5..0.95 | Time (ms) |
-    |-------------------|-----------|-----------|---------------|
-    | modelpack-csp19-medium-640x640-rgb    | -    | -    | -    |  
+    | Model             | mAP@0.5 | mAP@0.5..0.95 | seg-mAP@0.5 | seg-mAP@0.5..0.95 | Time (ms) |
+    |-------------------|-----------|-----------|---------------|----------|-----------------|
+    | modelpack-csp19-medium-640x640-rgb    | 0.995    | 0.911   | 0.884 | 0.856 | 45.53    |  
      
     Visit the full **Coffee Cup** dataset [Benchmark here](../../datasets/coffecup/index.md)
 

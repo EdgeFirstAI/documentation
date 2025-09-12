@@ -454,6 +454,20 @@
       
         
       
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
     
     
     
@@ -503,6 +517,167 @@
   
   
   
+    <li class="md-nav__item">
+      <a href="../../getting_started/login/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Log In
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../getting_started/create_project/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Create Project
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../getting_started/capture_data/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Capture with a Phone
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../getting_started/annotate_dataset/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Annotate Dataset
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../getting_started/train_vision/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Train a Vision Model
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../getting_started/validate_vision/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Validate Vision Model
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../getting_started/deploy_model/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Deploy the Model
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
     
     
       
@@ -529,7 +704,7 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_2" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_9" >
         
           
           <div class="md-nav__link md-nav__container">
@@ -546,14 +721,14 @@
             </a>
             
               
-              <label class="md-nav__link " for="__nav_2_2" id="__nav_2_2_label" tabindex="0">
+              <label class="md-nav__link " for="__nav_2_9" id="__nav_2_9_label" tabindex="0">
                 <span class="md-nav__icon md-icon"></span>
               </label>
             
           </div>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_2_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_2_2">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_9_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_9">
             <span class="md-nav__icon md-icon"></span>
             User Workflows
           </label>
@@ -5079,7 +5254,7 @@ eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...
 </code></pre></div></li>
 <li><code>annotations</code>: Retrieves annotations for a dataset and annotation set, filtered by types. Types could be any of the following options: <code>box2d</code>, <code>box3d</code>, <code>segmentation</code>. By default this command will return a JSON file. However, the user can always return an Arrow dataframe by adding the <code>--arrow</code> as shown below.</li>
 </ul>
-<div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">JSON</label><label for="__tabbed_1_2">Arrow</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="json" name="__tabbed_1" type="radio" /><input id="arrow" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="json">JSON</label><label for="arrow">Arrow</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>edgefirst-client<span class="w"> </span>annotations<span class="w"> </span><span class="m">32</span><span class="w"> </span>--types<span class="w"> </span>box2d,segmentation

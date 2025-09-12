@@ -454,6 +454,20 @@
       
         
       
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
     
     
     
@@ -503,6 +517,167 @@
   
   
   
+    <li class="md-nav__item">
+      <a href="../../../../getting_started/login/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Log In
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../getting_started/create_project/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Create Project
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../getting_started/capture_data/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Capture with a Phone
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../getting_started/annotate_dataset/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Annotate Dataset
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../getting_started/train_vision/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Train a Vision Model
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../getting_started/validate_vision/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Validate Vision Model
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../getting_started/deploy_model/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Deploy the Model
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
     
     
       
@@ -529,7 +704,7 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_2" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_9" >
         
           
           <div class="md-nav__link md-nav__container">
@@ -546,14 +721,14 @@
             </a>
             
               
-              <label class="md-nav__link " for="__nav_2_2" id="__nav_2_2_label" tabindex="0">
+              <label class="md-nav__link " for="__nav_2_9" id="__nav_2_9_label" tabindex="0">
                 <span class="md-nav__icon md-icon"></span>
               </label>
             
           </div>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_2_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_2_2">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_9_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_9">
             <span class="md-nav__icon md-icon"></span>
             User Workflows
           </label>
@@ -5239,7 +5414,7 @@
 <h2 id="fusionoccupancy">/fusion/occupancy</h2>
 <h3 id="setting-up-subscriber">Setting up subscriber</h3>
 <p>After setting up the Zenoh session, we will create a subscriber to the <code>fusion/occupancy</code> topic</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">Python</label><label for="__tabbed_1_2">Rust</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="python" name="__tabbed_1" type="radio" /><input id="rust" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="python">Python</label><label for="rust">Rust</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <div class="highlight"><pre><span></span><code><span class="c1"># Create a subscriber for &quot;rt/fusion/occupancy&quot;</span>
@@ -5260,7 +5435,7 @@
 </div>
 <h3 id="receive-a-message">Receive a message</h3>
 <p>We can now await a message from that subscriber. After receiving the message, we will pass that message along to our processing function in a new thread to avoid missing messages.</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="2:2"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><input id="__tabbed_2_2" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="__tabbed_2_1">Python</label><label for="__tabbed_2_2">Rust</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="2:2"><input checked="checked" id="python_1" name="__tabbed_2" type="radio" /><input id="rust_1" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="python_1">Python</label><label for="rust_1">Rust</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <div class="highlight"><pre><span></span><code><span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">occupancy_handler</span><span class="p">(</span><span class="n">drain</span><span class="p">):</span>
@@ -5287,7 +5462,7 @@
 </div>
 <h3 id="process-the-data">Process the Data</h3>
 <p>The Occupancy message contains occupancy grid data. You can log the data through the following</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="3:2"><input checked="checked" id="__tabbed_3_1" name="__tabbed_3" type="radio" /><input id="__tabbed_3_2" name="__tabbed_3" type="radio" /><div class="tabbed-labels"><label for="__tabbed_3_1">Python</label><label for="__tabbed_3_2">Rust</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="3:2"><input checked="checked" id="python_2" name="__tabbed_3" type="radio" /><input id="rust_2" name="__tabbed_3" type="radio" /><div class="tabbed-labels"><label for="python_2">Python</label><label for="rust_2">Rust</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">occupancy_worker</span><span class="p">(</span><span class="n">msg</span><span class="p">):</span>
@@ -5319,7 +5494,7 @@
 <h2 id="fusionmodel_output">/fusion/model_output</h2>
 <h3 id="setting-up-subscriber_1">Setting up subscriber</h3>
 <p>After setting up the Zenoh session, we will create a subscriber to the <code>fusion/model_output</code> topic</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="4:2"><input checked="checked" id="__tabbed_4_1" name="__tabbed_4" type="radio" /><input id="__tabbed_4_2" name="__tabbed_4" type="radio" /><div class="tabbed-labels"><label for="__tabbed_4_1">Python</label><label for="__tabbed_4_2">Rust</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="4:2"><input checked="checked" id="python_3" name="__tabbed_4" type="radio" /><input id="rust_3" name="__tabbed_4" type="radio" /><div class="tabbed-labels"><label for="python_3">Python</label><label for="rust_3">Rust</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <div class="highlight"><pre><span></span><code><span class="c1"># Create a subscriber for &quot;rt/fusion/model_output&quot;</span>
@@ -5341,7 +5516,7 @@
 </div>
 <h3 id="receive-a-message_1">Receive a message</h3>
 <p>We can now receive a message on the subscriber. After receiving the message, we will set it up for processing.</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="5:2"><input checked="checked" id="__tabbed_5_1" name="__tabbed_5" type="radio" /><input id="__tabbed_5_2" name="__tabbed_5" type="radio" /><div class="tabbed-labels"><label for="__tabbed_5_1">Python</label><label for="__tabbed_5_2">Rust</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="5:2"><input checked="checked" id="python_4" name="__tabbed_5" type="radio" /><input id="rust_4" name="__tabbed_5" type="radio" /><div class="tabbed-labels"><label for="python_4">Python</label><label for="rust_4">Rust</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <div class="highlight"><pre><span></span><code><span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">model_output_handler</span><span class="p">(</span><span class="n">drain</span><span class="p">):</span>
@@ -5368,7 +5543,7 @@
 </div>
 <h3 id="process-the-data_1">Process the Data</h3>
 <p>The ModelOutput message contains fused model output data. You can log the data through the following</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="6:2"><input checked="checked" id="__tabbed_6_1" name="__tabbed_6" type="radio" /><input id="__tabbed_6_2" name="__tabbed_6" type="radio" /><div class="tabbed-labels"><label for="__tabbed_6_1">Python</label><label for="__tabbed_6_2">Rust</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="6:2"><input checked="checked" id="python_5" name="__tabbed_6" type="radio" /><input id="rust_5" name="__tabbed_6" type="radio" /><div class="tabbed-labels"><label for="python_5">Python</label><label for="rust_5">Rust</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">model_output_worker</span><span class="p">(</span><span class="n">msg</span><span class="p">):</span>
@@ -5395,7 +5570,7 @@
 <h2 id="fusionmask_outputtracked">/fusion/mask_output/tracked</h2>
 <h3 id="setting-up-subscriber_2">Setting up subscriber</h3>
 <p>After setting up the Zenoh session, we will create a subscriber to the <code>fusion/mask_output/tracked</code> topic</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="7:2"><input checked="checked" id="__tabbed_7_1" name="__tabbed_7" type="radio" /><input id="__tabbed_7_2" name="__tabbed_7" type="radio" /><div class="tabbed-labels"><label for="__tabbed_7_1">Python</label><label for="__tabbed_7_2">Rust</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="7:2"><input checked="checked" id="python_6" name="__tabbed_7" type="radio" /><input id="rust_6" name="__tabbed_7" type="radio" /><div class="tabbed-labels"><label for="python_6">Python</label><label for="rust_6">Rust</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <div class="highlight"><pre><span></span><code><span class="c1"># Create a subscriber for &quot;rt/fusion/mask_output/tracked&quot;</span>
@@ -5416,7 +5591,7 @@
 </div>
 <h3 id="receive-a-message_2">Receive a message</h3>
 <p>We can now receive a message on the subscriber. After receiving the message, we will set it up for processing.</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="8:2"><input checked="checked" id="__tabbed_8_1" name="__tabbed_8" type="radio" /><input id="__tabbed_8_2" name="__tabbed_8" type="radio" /><div class="tabbed-labels"><label for="__tabbed_8_1">Python</label><label for="__tabbed_8_2">Rust</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="8:2"><input checked="checked" id="python_7" name="__tabbed_8" type="radio" /><input id="rust_7" name="__tabbed_8" type="radio" /><div class="tabbed-labels"><label for="python_7">Python</label><label for="rust_7">Rust</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <div class="highlight"><pre><span></span><code><span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">model_output_handler</span><span class="p">(</span><span class="n">drain</span><span class="p">):</span>
@@ -5443,7 +5618,7 @@
 </div>
 <h3 id="process-the-data_2">Process the Data</h3>
 <p>The MaskOutputTracked message contains fused model output data. You can log the data through the following</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="9:2"><input checked="checked" id="__tabbed_9_1" name="__tabbed_9" type="radio" /><input id="__tabbed_9_2" name="__tabbed_9" type="radio" /><div class="tabbed-labels"><label for="__tabbed_9_1">Python</label><label for="__tabbed_9_2">Rust</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="9:2"><input checked="checked" id="python_8" name="__tabbed_9" type="radio" /><input id="rust_8" name="__tabbed_9" type="radio" /><div class="tabbed-labels"><label for="python_8">Python</label><label for="rust_8">Rust</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">model_output_worker</span><span class="p">(</span><span class="n">msg</span><span class="p">):</span>
@@ -5470,7 +5645,7 @@
 <h2 id="fusionradar">/fusion/radar</h2>
 <h3 id="setting-up-subscriber_3">Setting up subscriber</h3>
 <p>After setting up the Zenoh session, we will create a subscriber to the <code>fusion/radar</code> topic</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="10:2"><input checked="checked" id="__tabbed_10_1" name="__tabbed_10" type="radio" /><input id="__tabbed_10_2" name="__tabbed_10" type="radio" /><div class="tabbed-labels"><label for="__tabbed_10_1">Python</label><label for="__tabbed_10_2">Rust</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="10:2"><input checked="checked" id="python_9" name="__tabbed_10" type="radio" /><input id="rust_9" name="__tabbed_10" type="radio" /><div class="tabbed-labels"><label for="python_9">Python</label><label for="rust_9">Rust</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <div class="highlight"><pre><span></span><code><span class="c1"># Create a subscriber for &quot;rt/fusion/radar&quot;</span>
@@ -5491,7 +5666,7 @@
 </div>
 <h3 id="receive-a-message_3">Receive a message</h3>
 <p>We can now receive a message on the subscriber. After receiving the message, we will set it up for processing.</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="11:2"><input checked="checked" id="__tabbed_11_1" name="__tabbed_11" type="radio" /><input id="__tabbed_11_2" name="__tabbed_11" type="radio" /><div class="tabbed-labels"><label for="__tabbed_11_1">Python</label><label for="__tabbed_11_2">Rust</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="11:2"><input checked="checked" id="python_10" name="__tabbed_11" type="radio" /><input id="rust_10" name="__tabbed_11" type="radio" /><div class="tabbed-labels"><label for="python_10">Python</label><label for="rust_10">Rust</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <div class="highlight"><pre><span></span><code><span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">radar_handler</span><span class="p">(</span><span class="n">drain</span><span class="p">):</span>
@@ -5518,7 +5693,7 @@
 </div>
 <h3 id="decode-pcd-data">Decode PCD Data</h3>
 <p>The next step is to decode the PCD data. Please see <a href="../pcd/">examples/pcd</a> for a guide on how to decode the PointCloud2 data.</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="12:2"><input checked="checked" id="__tabbed_12_1" name="__tabbed_12" type="radio" /><input id="__tabbed_12_2" name="__tabbed_12" type="radio" /><div class="tabbed-labels"><label for="__tabbed_12_1">Python</label><label for="__tabbed_12_2">Rust</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="12:2"><input checked="checked" id="python_11" name="__tabbed_12" type="radio" /><input id="rust_11" name="__tabbed_12" type="radio" /><div class="tabbed-labels"><label for="python_11">Python</label><label for="rust_11">Rust</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">radar_worker</span><span class="p">(</span><span class="n">msg</span><span class="p">):</span>
@@ -5535,7 +5710,7 @@
 </div>
 <h3 id="process-the-data_3">Process the Data</h3>
 <p>We can now process the data. In this example we will find the maximum and minimum values for x, y, z, of points with non-zero vision_class </p>
-<div class="tabbed-set tabbed-alternate" data-tabs="13:2"><input checked="checked" id="__tabbed_13_1" name="__tabbed_13" type="radio" /><input id="__tabbed_13_2" name="__tabbed_13" type="radio" /><div class="tabbed-labels"><label for="__tabbed_13_1">Python</label><label for="__tabbed_13_2">Rust</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="13:2"><input checked="checked" id="python_12" name="__tabbed_13" type="radio" /><input id="rust_12" name="__tabbed_13" type="radio" /><div class="tabbed-labels"><label for="python_12">Python</label><label for="rust_12">Rust</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <div class="highlight"><pre><span></span><code><span class="n">clusters</span> <span class="o">=</span> <span class="p">[</span><span class="n">p</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">points</span> <span class="k">if</span> <span class="n">p</span><span class="o">.</span><span class="n">cluster_id</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">]</span>
@@ -5565,7 +5740,7 @@
 </div>
 </div>
 <h3 id="results_1">Results</h3>
-<div class="tabbed-set tabbed-alternate" data-tabs="14:2"><input checked="checked" id="__tabbed_14_1" name="__tabbed_14" type="radio" /><input id="__tabbed_14_2" name="__tabbed_14" type="radio" /><div class="tabbed-labels"><label for="__tabbed_14_1">Python</label><label for="__tabbed_14_2">Rust</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="14:2"><input checked="checked" id="python_13" name="__tabbed_14" type="radio" /><input id="rust_13" name="__tabbed_14" type="radio" /><div class="tabbed-labels"><label for="python_13">Python</label><label for="rust_13">Rust</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <div class="highlight"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Recieved </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">points</span><span class="p">)</span><span class="si">}</span><span class="s2"> radar points with non-background vision_class. Values: x: [</span><span class="si">{</span><span class="n">min_x</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">, </span><span class="si">{</span><span class="n">max_x</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">]</span><span class="se">\t</span><span class="s2">y: [</span><span class="si">{</span><span class="n">min_y</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">, </span><span class="si">{</span><span class="n">max_y</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">]</span><span class="se">\t</span><span class="s2">z: [</span><span class="si">{</span><span class="n">min_z</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">, </span><span class="si">{</span><span class="n">max_z</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">]&quot;</span><span class="p">)</span>
@@ -5600,7 +5775,7 @@ To enable it, configure the env LIDAR_OUTPUT_TOPIC="rt/fusion/lidar"
 or set command line argument --lidar-output-topic=rt/fusion/lidar</p>
 <h3 id="setting-up-subscriber_4">Setting up subscriber</h3>
 <p>After setting up the Zenoh session, we will create a subscriber to the <code>fusion/lidar</code> topic</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="15:2"><input checked="checked" id="__tabbed_15_1" name="__tabbed_15" type="radio" /><input id="__tabbed_15_2" name="__tabbed_15" type="radio" /><div class="tabbed-labels"><label for="__tabbed_15_1">Python</label><label for="__tabbed_15_2">Rust</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="15:2"><input checked="checked" id="python_14" name="__tabbed_15" type="radio" /><input id="rust_14" name="__tabbed_15" type="radio" /><div class="tabbed-labels"><label for="python_14">Python</label><label for="rust_14">Rust</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <div class="highlight"><pre><span></span><code><span class="c1"># Create a subscriber for &quot;rt/fusion/lidar&quot;</span>
@@ -5621,7 +5796,7 @@ or set command line argument --lidar-output-topic=rt/fusion/lidar</p>
 </div>
 <h3 id="receive-a-message_4">Receive a message</h3>
 <p>We can now receive a message on the subscriber. After receiving the message, we will need to deserialize it.</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="16:2"><input checked="checked" id="__tabbed_16_1" name="__tabbed_16" type="radio" /><input id="__tabbed_16_2" name="__tabbed_16" type="radio" /><div class="tabbed-labels"><label for="__tabbed_16_1">Python</label><label for="__tabbed_16_2">Rust</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="16:2"><input checked="checked" id="python_15" name="__tabbed_16" type="radio" /><input id="rust_15" name="__tabbed_16" type="radio" /><div class="tabbed-labels"><label for="python_15">Python</label><label for="rust_15">Rust</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <div class="highlight"><pre><span></span><code><span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">lidar_handler</span><span class="p">(</span><span class="n">drain</span><span class="p">):</span>
@@ -5648,7 +5823,7 @@ or set command line argument --lidar-output-topic=rt/fusion/lidar</p>
 </div>
 <h3 id="decode-pcd-data_1">Decode PCD Data</h3>
 <p>The next step is to decode the PCD data. Please see <a href="../pcd/">examples/pcd</a> for a guide on how to decode the PointCloud2 data.</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="17:2"><input checked="checked" id="__tabbed_17_1" name="__tabbed_17" type="radio" /><input id="__tabbed_17_2" name="__tabbed_17" type="radio" /><div class="tabbed-labels"><label for="__tabbed_17_1">Python</label><label for="__tabbed_17_2">Rust</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="17:2"><input checked="checked" id="python_16" name="__tabbed_17" type="radio" /><input id="rust_16" name="__tabbed_17" type="radio" /><div class="tabbed-labels"><label for="python_16">Python</label><label for="rust_16">Rust</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">lidar_worker</span><span class="p">(</span><span class="n">msg</span><span class="p">):</span>
@@ -5665,7 +5840,7 @@ or set command line argument --lidar-output-topic=rt/fusion/lidar</p>
 </div>
 <h3 id="process-the-data_4">Process the Data</h3>
 <p>We can now process the data. In this example we will find the maximum and minimum values for x, y, z, of points with non-zero vision_class </p>
-<div class="tabbed-set tabbed-alternate" data-tabs="18:2"><input checked="checked" id="__tabbed_18_1" name="__tabbed_18" type="radio" /><input id="__tabbed_18_2" name="__tabbed_18" type="radio" /><div class="tabbed-labels"><label for="__tabbed_18_1">Python</label><label for="__tabbed_18_2">Rust</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="18:2"><input checked="checked" id="python_17" name="__tabbed_18" type="radio" /><input id="rust_17" name="__tabbed_18" type="radio" /><div class="tabbed-labels"><label for="python_17">Python</label><label for="rust_17">Rust</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <div class="highlight"><pre><span></span><code><span class="n">clusters</span> <span class="o">=</span> <span class="p">[</span><span class="n">p</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">points</span> <span class="k">if</span> <span class="n">p</span><span class="o">.</span><span class="n">cluster_id</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">]</span>
@@ -5695,7 +5870,7 @@ or set command line argument --lidar-output-topic=rt/fusion/lidar</p>
 </div>
 </div>
 <h3 id="results_2">Results</h3>
-<div class="tabbed-set tabbed-alternate" data-tabs="19:2"><input checked="checked" id="__tabbed_19_1" name="__tabbed_19" type="radio" /><input id="__tabbed_19_2" name="__tabbed_19" type="radio" /><div class="tabbed-labels"><label for="__tabbed_19_1">Python</label><label for="__tabbed_19_2">Rust</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="19:2"><input checked="checked" id="python_18" name="__tabbed_19" type="radio" /><input id="rust_18" name="__tabbed_19" type="radio" /><div class="tabbed-labels"><label for="python_18">Python</label><label for="rust_18">Rust</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <div class="highlight"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Recieved </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">points</span><span class="p">)</span><span class="si">}</span><span class="s2"> lidar points with non-background vision_class. Values: x: [</span><span class="si">{</span><span class="n">min_x</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">, </span><span class="si">{</span><span class="n">max_x</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">]</span><span class="se">\t</span><span class="s2">y: [</span><span class="si">{</span><span class="n">min_y</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">, </span><span class="si">{</span><span class="n">max_y</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">]</span><span class="se">\t</span><span class="s2">z: [</span><span class="si">{</span><span class="n">min_z</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">, </span><span class="si">{</span><span class="n">max_z</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">]&quot;</span><span class="p">)</span>
@@ -5726,7 +5901,7 @@ Recieved 523 lidar points with non-background vision_class. Values: x: [3.39, 3.
 <h2 id="fusionboxes3d">/fusion/boxes3d</h2>
 <h3 id="setting-up-subscriber_5">Setting up subscriber</h3>
 <p>After setting up the Zenoh session, we will create a subscriber to the <code>fusion/boxes3d</code> topic</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="20:2"><input checked="checked" id="__tabbed_20_1" name="__tabbed_20" type="radio" /><input id="__tabbed_20_2" name="__tabbed_20" type="radio" /><div class="tabbed-labels"><label for="__tabbed_20_1">Python</label><label for="__tabbed_20_2">Rust</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="20:2"><input checked="checked" id="python_19" name="__tabbed_20" type="radio" /><input id="rust_19" name="__tabbed_20" type="radio" /><div class="tabbed-labels"><label for="python_19">Python</label><label for="rust_19">Rust</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <div class="highlight"><pre><span></span><code><span class="c1"># Create a subscriber for &quot;rt/fusion/boxes3d&quot;</span>
@@ -5747,7 +5922,7 @@ Recieved 523 lidar points with non-background vision_class. Values: x: [3.39, 3.
 </div>
 <h3 id="receive-a-message_5">Receive a message</h3>
 <p>We can now receive a message on the subscriber. After receiving the message, we will need to deserialize it.</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="21:2"><input checked="checked" id="__tabbed_21_1" name="__tabbed_21" type="radio" /><input id="__tabbed_21_2" name="__tabbed_21" type="radio" /><div class="tabbed-labels"><label for="__tabbed_21_1">Python</label><label for="__tabbed_21_2">Rust</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="21:2"><input checked="checked" id="python_20" name="__tabbed_21" type="radio" /><input id="rust_20" name="__tabbed_21" type="radio" /><div class="tabbed-labels"><label for="python_20">Python</label><label for="rust_20">Rust</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <div class="highlight"><pre><span></span><code><span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">boxes3d_handler</span><span class="p">(</span><span class="n">drain</span><span class="p">):</span>
@@ -5774,7 +5949,7 @@ Recieved 523 lidar points with non-background vision_class. Values: x: [3.39, 3.
 </div>
 <h3 id="process-the-data_5">Process the Data</h3>
 <p>The message contains a 2D bounding box with distances. Following the optical frame standard, the <code>center_x</code> and <code>width</code> fields measure the left-right position and size of the box. The <code>center_y</code> and <code>height</code> measure the up-down position and size of the box. The distance measures how far forward the box is.</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="22:2"><input checked="checked" id="__tabbed_22_1" name="__tabbed_22" type="radio" /><input id="__tabbed_22_2" name="__tabbed_22" type="radio" /><div class="tabbed-labels"><label for="__tabbed_22_1">Python</label><label for="__tabbed_22_2">Rust</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="22:2"><input checked="checked" id="python_21" name="__tabbed_22" type="radio" /><input id="rust_21" name="__tabbed_22" type="radio" /><div class="tabbed-labels"><label for="python_21">Python</label><label for="rust_21">Rust</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">boxes3d_worker</span><span class="p">(</span><span class="n">msg</span><span class="p">):</span>

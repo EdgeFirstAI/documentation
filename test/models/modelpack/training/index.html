@@ -454,6 +454,20 @@
       
         
       
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
     
     
     
@@ -503,6 +517,167 @@
   
   
   
+    <li class="md-nav__item">
+      <a href="../../../getting_started/login/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Log In
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../getting_started/create_project/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Create Project
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../getting_started/capture_data/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Capture with a Phone
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../getting_started/annotate_dataset/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Annotate Dataset
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../getting_started/train_vision/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Train a Vision Model
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../getting_started/validate_vision/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Validate Vision Model
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../getting_started/deploy_model/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Deploy the Model
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
     
     
       
@@ -529,7 +704,7 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_2" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_9" >
         
           
           <div class="md-nav__link md-nav__container">
@@ -546,14 +721,14 @@
             </a>
             
               
-              <label class="md-nav__link " for="__nav_2_2" id="__nav_2_2_label" tabindex="0">
+              <label class="md-nav__link " for="__nav_2_9" id="__nav_2_9_label" tabindex="0">
                 <span class="md-nav__icon md-icon"></span>
               </label>
             
           </div>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_2_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_2_2">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_9_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_9">
             <span class="md-nav__icon md-icon"></span>
             User Workflows
           </label>
@@ -4787,7 +4962,7 @@
 <h2 id="verify-dataset">Verify Dataset</h2>
 <p>First ensure that the dataset is ready to be used for training.  This means that the dataset is properly annotated and the dataset is properly split into training and validation groups.  The section in <a href="../../../datasets/tutorials/management/#verify-dataset">Verify Dataset</a> will show what to look for in a dataset before deploying it for training.</p>
 <h2 id="specify-project-experiments">Specify Project Experiments</h2>
-<p>From the projects page, choose the project that contains the dataset you plan to use.  In this example, the project chosen is the "Object Detection" project which was created in the <a href="../../../#create-project">Quickstart Guide</a>.  Next click the "Model Experiments" button as indicated in red.</p>
+<p>From the projects page, choose the project that contains the dataset you plan to use.  In this example, the project chosen is the "Object Detection" project which was created in the <a href="../../../getting_started/create_project/">Quickstart Guide</a>.  Next click the "Model Experiments" button as indicated in red.</p>
 <figure>
 <img align="center" alt="Model Experiments" src="../../assets/training/vision-model-experiments.jpg" />
 
@@ -4837,7 +5012,7 @@
 
 <figcaption>New Session Button</figcaption>
 </figure>
-<p>You will be greeted with a training session dialog.  In this dialog, specify the "Trainer Type" to "ModelPack" and provide a name and description of the training session as shown below.  Next specify the dataset to be used with training and validation partitions.  In this example, the dataset specified is the "Coffee Cup" dataset which was created in the <a href="../../../">Getting Started</a>.  Next specify the training parameters.  By default, an object detection (bounding boxes) model will be trained.  However, you can specify either "Segmentation" or "Multitask" as shown below.  This model will output both bounding boxes and segmentation masks.  Additional information on these parameters are provided by hovering over the info button <img alt="Info Button" src="../../../assets/buttons/studio-info-button.jpg" />.</p>
+<p>You will be greeted with a training session dialog.  In this dialog, specify the "Trainer Type" to "ModelPack" and provide a name and description of the training session as shown below.  Next specify the dataset to be used with training and validation partitions.  In this example, the dataset specified is the "Coffee Cup" dataset which was created in the <a href="../../../getting_started/capture_data/">Getting Started</a>.  Next specify the training parameters.  By default, an object detection (bounding boxes) model will be trained.  However, you can specify either "Segmentation" or "Multitask" as shown below.  This model will output both bounding boxes and segmentation masks.  Additional information on these parameters are provided by hovering over the info button <img alt="Info Button" src="../../../assets/buttons/studio-info-button.jpg" />.</p>
 <div class="admonition tip">
 <p class="admonition-title">Input Resolution</p>
 <p>We recommend changing the input resolution to 640x360 to maximize detection rates on small datasets.</p>

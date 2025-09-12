@@ -454,6 +454,20 @@
       
         
       
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
     
     
     
@@ -503,6 +517,167 @@
   
   
   
+    <li class="md-nav__item">
+      <a href="../../../../getting_started/login/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Log In
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../getting_started/create_project/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Create Project
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../getting_started/capture_data/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Capture with a Phone
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../getting_started/annotate_dataset/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Annotate Dataset
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../getting_started/train_vision/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Train a Vision Model
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../getting_started/validate_vision/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Validate Vision Model
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../getting_started/deploy_model/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Deploy the Model
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
     
     
       
@@ -529,7 +704,7 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_2" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_9" >
         
           
           <div class="md-nav__link md-nav__container">
@@ -546,14 +721,14 @@
             </a>
             
               
-              <label class="md-nav__link " for="__nav_2_2" id="__nav_2_2_label" tabindex="0">
+              <label class="md-nav__link " for="__nav_2_9" id="__nav_2_9_label" tabindex="0">
                 <span class="md-nav__icon md-icon"></span>
               </label>
             
           </div>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_2_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_2_2">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_9_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_9">
             <span class="md-nav__icon md-icon"></span>
             User Workflows
           </label>
@@ -4833,11 +5008,11 @@
 <p>This guide will showcase two methods of deploying the model.</p>
 <ol>
 <li><a href="#live-view-segmentation-app">Live View (Segmentation App)</a>: Displays the live camera feed using the default model provided.</li>
-<li><a href="#record-mcap">MCAP Recording</a>: Allows control of the recording options and provides download file options to replay the recording.</li>
+<li><a href="../../../../platforms/recording/#record-mcap">MCAP Recording</a>: Allows control of the recording options and provides download file options to replay the recording.</li>
 </ol>
 <h2 id="download-the-model">Download the Model</h2>
 <p>Download the model from EdgeFirst Studio into the device.  There are two methods for downloading the model.  The first method is to download the model from EdgeFirst Studio and then SCP the model file to the device.  The second method is to use the EdgeFirst Client to download the model directly in the device.</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">Download using SCP</label><label for="__tabbed_1_2">Download using EdgeFirst Client</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="download-using-scp" name="__tabbed_1" type="radio" /><input id="download-using-edgefirst-client" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="download-using-scp">Download using SCP</label><label for="download-using-edgefirst-client">Download using EdgeFirst Client</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <p>As mentioned under the <a href="../../training/#training-outcomes">Training Outcomes</a> section, the trained models can be downloaded by clicking the "View Additional Details" button on the training session card in EdgeFirst Studio. </p>
@@ -4949,7 +5124,7 @@ MODEL = &quot;path/to/mymodel.tflite&quot;
 
 <figcaption>Service Status</figcaption>
 </figure>
-<p>You will be greeted with the "Service Overview" page.  Ensure that the "camera" and "model" services are enabled and running by toggling the "Enable" and "Start" buttons as shown.  Only "Enable" the "recorder" service as shown.  You will be using the recorder service in <a href="#record-mcap">MCAP Recording</a>.</p>
+<p>You will be greeted with the "Service Overview" page.  Ensure that the "camera" and "model" services are enabled and running by toggling the "Enable" and "Start" buttons as shown.  Only "Enable" the "recorder" service as shown.  You will be using the recorder service in <a href="../../../../platforms/recording/#record-mcap">MCAP Recording</a>.</p>
 <figure>
 <img align="center" alt="Service Overview" src="../../../assets/deployment/maivin-service-overview.jpg" />
 

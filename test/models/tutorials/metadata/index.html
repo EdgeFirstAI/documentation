@@ -454,6 +454,20 @@
       
         
       
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
     
     
     
@@ -503,6 +517,167 @@
   
   
   
+    <li class="md-nav__item">
+      <a href="../../../getting_started/login/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Log In
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../getting_started/create_project/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Create Project
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../getting_started/capture_data/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Capture with a Phone
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../getting_started/annotate_dataset/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Annotate Dataset
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../getting_started/train_vision/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Train a Vision Model
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../getting_started/validate_vision/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Validate Vision Model
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../getting_started/deploy_model/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Deploy the Model
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
     
     
       
@@ -529,7 +704,7 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_2" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_9" >
         
           
           <div class="md-nav__link md-nav__container">
@@ -546,14 +721,14 @@
             </a>
             
               
-              <label class="md-nav__link " for="__nav_2_2" id="__nav_2_2_label" tabindex="0">
+              <label class="md-nav__link " for="__nav_2_9" id="__nav_2_9_label" tabindex="0">
                 <span class="md-nav__icon md-icon"></span>
               </label>
             
           </div>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_2_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_2_2">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_9_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_9">
             <span class="md-nav__icon md-icon"></span>
             User Workflows
           </label>
@@ -4871,7 +5046,7 @@
 <h2 id="reading-metadata">Reading Metadata</h2>
 <p>A TFLite model is in the Zip format file that embeds the files <code>config.yaml</code> and <code>labels.txt</code>.  ONNX models supports embedded metadata directly into the model which merges the contents of both <code>config.yaml</code> and <code>labels.txt</code>.</p>
 <p>Reading these files can be done using the python snippets below.</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">config.yaml</label><label for="__tabbed_1_2">labels.txt</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="configyaml" name="__tabbed_1" type="radio" /><input id="labelstxt" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="configyaml">config.yaml</label><label for="labelstxt">labels.txt</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <div class="highlight"><pre><span></span><code><span class="k">if</span> <span class="n">zipfile</span><span class="o">.</span><span class="n">is_zipfile</span><span class="p">(</span><span class="n">model_path</span><span class="p">):</span>

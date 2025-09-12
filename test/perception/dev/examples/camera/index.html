@@ -454,6 +454,20 @@
       
         
       
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
     
     
     
@@ -503,6 +517,167 @@
   
   
   
+    <li class="md-nav__item">
+      <a href="../../../../getting_started/login/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Log In
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../getting_started/create_project/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Create Project
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../getting_started/capture_data/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Capture with a Phone
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../getting_started/annotate_dataset/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Annotate Dataset
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../getting_started/train_vision/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Train a Vision Model
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../getting_started/validate_vision/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Validate Vision Model
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../getting_started/deploy_model/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Deploy the Model
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
     
     
       
@@ -529,7 +704,7 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_2" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_9" >
         
           
           <div class="md-nav__link md-nav__container">
@@ -546,14 +721,14 @@
             </a>
             
               
-              <label class="md-nav__link " for="__nav_2_2" id="__nav_2_2_label" tabindex="0">
+              <label class="md-nav__link " for="__nav_2_9" id="__nav_2_9_label" tabindex="0">
                 <span class="md-nav__icon md-icon"></span>
               </label>
             
           </div>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_2_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_2_2">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_9_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_9">
             <span class="md-nav__icon md-icon"></span>
             User Workflows
           </label>
@@ -5060,7 +5235,7 @@ Message: <a href="../../../api/sensor_msgs/#camerainfo">Image</a><br />
 Sample Code: <a href="https://github.com/EdgeFirstAI/samples/blob/main/python/camera/camera_info.py">Python</a> / <a href="https://github.com/EdgeFirstAI/samples/blob/main/rust/camera/camera_info.rs">Rust</a></p>
 <h3 id="setting-up-subscriber">Setting up subscriber</h3>
 <p>After setting up the Zenoh session, we will create a subscriber to the <code>camera/info</code> topic</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">Python</label><label for="__tabbed_1_2">Rust</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="python" name="__tabbed_1" type="radio" /><input id="rust" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="python">Python</label><label for="rust">Rust</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <div class="highlight"><pre><span></span><code><span class="c1"># Create a subscriber for &quot;rt/camera/info&quot;</span>
@@ -5081,7 +5256,7 @@ Sample Code: <a href="https://github.com/EdgeFirstAI/samples/blob/main/python/ca
 </div>
 <h3 id="receive-a-message">Receive a message</h3>
 <p>We can now await a message from that subscriber. After receiving the message, we will pass that message along to our processing function in a new thread to avoid missing messages.</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="2:2"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><input id="__tabbed_2_2" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="__tabbed_2_1">Python</label><label for="__tabbed_2_2">Rust</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="2:2"><input checked="checked" id="python_1" name="__tabbed_2" type="radio" /><input id="rust_1" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="python_1">Python</label><label for="rust_1">Rust</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <div class="highlight"><pre><span></span><code><span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">info_handler</span><span class="p">(</span><span class="n">drain</span><span class="p">):</span>
@@ -5107,7 +5282,7 @@ Sample Code: <a href="https://github.com/EdgeFirstAI/samples/blob/main/python/ca
 </div>
 <h3 id="process-the-data">Process the Data</h3>
 <p>The CameraInfo message contains camera calibration and configuration information. You can access various fields like:</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="3:1"><input checked="checked" id="__tabbed_3_1" name="__tabbed_3" type="radio" /><div class="tabbed-labels"><label for="__tabbed_3_1">Python</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="3:1"><input checked="checked" id="python_2" name="__tabbed_3" type="radio" /><div class="tabbed-labels"><label for="python_2">Python</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">info_worker</span><span class="p">(</span><span class="n">msg</span><span class="p">):</span>
@@ -5122,7 +5297,7 @@ Sample Code: <a href="https://github.com/EdgeFirstAI/samples/blob/main/python/ca
 <h3 id="results">Results</h3>
 <p>When displaying the results through Rerun you will see a log of the camera width and height.
 <img alt="alt text" src="../assets/camera_info.png" /></p>
-<div class="tabbed-set tabbed-alternate" data-tabs="4:1"><input checked="checked" id="__tabbed_4_1" name="__tabbed_4" type="radio" /><div class="tabbed-labels"><label for="__tabbed_4_1">Rust</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="4:1"><input checked="checked" id="rust_2" name="__tabbed_4" type="radio" /><div class="tabbed-labels"><label for="rust_2">Rust</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <div class="highlight"><pre><span></span><code><span class="c1">// Access camera parameters</span>
@@ -5144,7 +5319,7 @@ Sample Code: <a href="https://github.com/EdgeFirstAI/samples/blob/main/python/ca
 </div>
 <h3 id="setting-up-subscriber_1">Setting up subscriber</h3>
 <p>After setting up the Zenoh session, we will create a subscriber to the <code>camera/dma</code> topic</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="5:2"><input checked="checked" id="__tabbed_5_1" name="__tabbed_5" type="radio" /><input id="__tabbed_5_2" name="__tabbed_5" type="radio" /><div class="tabbed-labels"><label for="__tabbed_5_1">Python</label><label for="__tabbed_5_2">Rust</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="5:2"><input checked="checked" id="python_3" name="__tabbed_5" type="radio" /><input id="rust_3" name="__tabbed_5" type="radio" /><div class="tabbed-labels"><label for="python_3">Python</label><label for="rust_3">Rust</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <div class="highlight"><pre><span></span><code><span class="c1"># Create a subscriber for &quot;rt/camera/dma&quot;</span>
@@ -5165,7 +5340,7 @@ Sample Code: <a href="https://github.com/EdgeFirstAI/samples/blob/main/python/ca
 </div>
 <h3 id="receive-a-message_1">Receive a message</h3>
 <p>We can now await a message from that subscriber. After receiving the message, we will pass that message along to our processing function in a new thread to avoid missing messages.</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="6:2"><input checked="checked" id="__tabbed_6_1" name="__tabbed_6" type="radio" /><input id="__tabbed_6_2" name="__tabbed_6" type="radio" /><div class="tabbed-labels"><label for="__tabbed_6_1">Python</label><label for="__tabbed_6_2">Rust</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="6:2"><input checked="checked" id="python_4" name="__tabbed_6" type="radio" /><input id="rust_4" name="__tabbed_6" type="radio" /><div class="tabbed-labels"><label for="python_4">Python</label><label for="rust_4">Rust</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <div class="highlight"><pre><span></span><code><span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">dma_handler</span><span class="p">(</span><span class="n">drain</span><span class="p">):</span>
@@ -5190,7 +5365,7 @@ Sample Code: <a href="https://github.com/EdgeFirstAI/samples/blob/main/python/ca
 </div>
 <h3 id="process-the-data_1">Process the Data</h3>
 <p>The DmaBuffer message contains the process ID of the service that created the DMA buffer and the file descriptor of the DMA buffer, both of which will be necessary to access the image.</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="7:2"><input checked="checked" id="__tabbed_7_1" name="__tabbed_7" type="radio" /><input id="__tabbed_7_2" name="__tabbed_7" type="radio" /><div class="tabbed-labels"><label for="__tabbed_7_1">Python</label><label for="__tabbed_7_2">Rust</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="7:2"><input checked="checked" id="python_5" name="__tabbed_7" type="radio" /><input id="rust_5" name="__tabbed_7" type="radio" /><div class="tabbed-labels"><label for="python_5">Python</label><label for="rust_5">Rust</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">dma_worker</span><span class="p">(</span><span class="n">msg</span><span class="p">):</span>
@@ -5256,7 +5431,7 @@ Message: <a href="../../../api/foxglove_msgs/#compressedvideo">CompressedVideo</
 Sample Code: <a href="https://github.com/EdgeFirstAI/samples/blob/main/python/camera/h264.py">Python</a> / <a href="https://github.com/EdgeFirstAI/samples/blob/main/rust/camera/h264.rs">Rust</a></p>
 <h3 id="setting-up-subscriber_2">Setting up subscriber</h3>
 <p>After setting up the Zenoh session, we will create a subscriber to the <code>camera/h264</code> topic.</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="8:2"><input checked="checked" id="__tabbed_8_1" name="__tabbed_8" type="radio" /><input id="__tabbed_8_2" name="__tabbed_8" type="radio" /><div class="tabbed-labels"><label for="__tabbed_8_1">Python</label><label for="__tabbed_8_2">Rust</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="8:2"><input checked="checked" id="python_6" name="__tabbed_8" type="radio" /><input id="rust_6" name="__tabbed_8" type="radio" /><div class="tabbed-labels"><label for="python_6">Python</label><label for="rust_6">Rust</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <div class="highlight"><pre><span></span><code><span class="c1"># Create a subscriber for &quot;rt/camera/h264&quot;</span>
@@ -5279,7 +5454,7 @@ Sample Code: <a href="https://github.com/EdgeFirstAI/samples/blob/main/python/ca
 </div>
 <h3 id="receive-a-message_2">Receive a message</h3>
 <p>We can now await a message from that subscriber. After receiving the message, we will pass that message along to our processing function in a new thread to avoid missing messages.</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="9:2"><input checked="checked" id="__tabbed_9_1" name="__tabbed_9" type="radio" /><input id="__tabbed_9_2" name="__tabbed_9" type="radio" /><div class="tabbed-labels"><label for="__tabbed_9_1">Python</label><label for="__tabbed_9_2">Rust</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="9:2"><input checked="checked" id="python_7" name="__tabbed_9" type="radio" /><input id="rust_7" name="__tabbed_9" type="radio" /><div class="tabbed-labels"><label for="python_7">Python</label><label for="rust_7">Rust</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <div class="highlight"><pre><span></span><code><span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">h264_handler</span><span class="p">(</span><span class="n">drain</span><span class="p">):</span>
@@ -5306,7 +5481,7 @@ Sample Code: <a href="https://github.com/EdgeFirstAI/samples/blob/main/python/ca
 </div>
 <h3 id="process-and-log-the-data">Process and Log the Data</h3>
 <p>The CompressedVideo message contains H.264 encoded video data. This data can be logged by the following</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="10:2"><input checked="checked" id="__tabbed_10_1" name="__tabbed_10" type="radio" /><input id="__tabbed_10_2" name="__tabbed_10" type="radio" /><div class="tabbed-labels"><label for="__tabbed_10_1">Python</label><label for="__tabbed_10_2">Rust</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="10:2"><input checked="checked" id="python_8" name="__tabbed_10" type="radio" /><input id="rust_8" name="__tabbed_10" type="radio" /><div class="tabbed-labels"><label for="python_8">Python</label><label for="rust_8">Rust</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">h264_worker</span><span class="p">(</span><span class="n">msg</span><span class="p">,</span> <span class="n">raw_data</span><span class="p">,</span> <span class="n">container</span><span class="p">):</span>
@@ -5353,7 +5528,7 @@ Message: <a href="../../../api/sensor_msgs/#compressedimage">CompressedImage</a>
 Sample Code: <a href="https://github.com/EdgeFirstAI/samples/blob/main/python/camera/jpeg.py">Python</a> / <a href="https://github.com/EdgeFirstAI/samples/blob/main/rust/camera/">Rust</a></p>
 <h3 id="setting-up-subscriber_3">Setting up subscriber</h3>
 <p>After setting up the Zenoh session, we will create a subscriber to the <code>camera/jpeg</code> topic</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="11:2"><input checked="checked" id="__tabbed_11_1" name="__tabbed_11" type="radio" /><input id="__tabbed_11_2" name="__tabbed_11" type="radio" /><div class="tabbed-labels"><label for="__tabbed_11_1">Python</label><label for="__tabbed_11_2">Rust</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="11:2"><input checked="checked" id="python_9" name="__tabbed_11" type="radio" /><input id="rust_9" name="__tabbed_11" type="radio" /><div class="tabbed-labels"><label for="python_9">Python</label><label for="rust_9">Rust</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <div class="highlight"><pre><span></span><code><span class="c1"># Create a subscriber for &quot;rt/camera/jpeg&quot;</span>
@@ -5374,7 +5549,7 @@ Sample Code: <a href="https://github.com/EdgeFirstAI/samples/blob/main/python/ca
 </div>
 <h3 id="receive-a-message_3">Receive a message</h3>
 <p>We can now await a message from that subscriber. After receiving the message, we will pass that message along to our processing function in a new thread to avoid missing messages.</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="12:2"><input checked="checked" id="__tabbed_12_1" name="__tabbed_12" type="radio" /><input id="__tabbed_12_2" name="__tabbed_12" type="radio" /><div class="tabbed-labels"><label for="__tabbed_12_1">Python</label><label for="__tabbed_12_2">Rust</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="12:2"><input checked="checked" id="python_10" name="__tabbed_12" type="radio" /><input id="rust_10" name="__tabbed_12" type="radio" /><div class="tabbed-labels"><label for="python_10">Python</label><label for="rust_10">Rust</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <div class="highlight"><pre><span></span><code><span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">jpeg_handler</span><span class="p">(</span><span class="n">drain</span><span class="p">):</span>
@@ -5399,7 +5574,7 @@ Sample Code: <a href="https://github.com/EdgeFirstAI/samples/blob/main/python/ca
 </div>
 <h3 id="process-the-data_2">Process the Data</h3>
 <p>The CompressedImage message contains JPEG encoded image data. You can process the data with the following</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="13:2"><input checked="checked" id="__tabbed_13_1" name="__tabbed_13" type="radio" /><input id="__tabbed_13_2" name="__tabbed_13" type="radio" /><div class="tabbed-labels"><label for="__tabbed_13_1">Python</label><label for="__tabbed_13_2">Rust</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="13:2"><input checked="checked" id="python_11" name="__tabbed_13" type="radio" /><input id="rust_11" name="__tabbed_13" type="radio" /><div class="tabbed-labels"><label for="python_11">Python</label><label for="rust_11">Rust</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">jpeg_worker</span><span class="p">(</span><span class="n">msg</span><span class="p">):</span>

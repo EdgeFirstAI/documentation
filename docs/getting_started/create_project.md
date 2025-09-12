@@ -1,4 +1,4 @@
-{% include-markdown "discrete/studio/create_project.md" %}
+{% include-markdown "discrete/studio/create_project.md" heading-offset=0 %}
 
 The next sections will invite you to follow along the end-to-end workflow for recording a video or capturing images using a phone and then upload the captured data into EdgeFirst Studio for annotation and then model training, validation, and deployment on various platforms. 
 

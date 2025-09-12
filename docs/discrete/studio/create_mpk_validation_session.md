@@ -1,6 +1,6 @@
 # Specify Project Experiments
 
-From the projects page, choose the project that contains the training session with the models you want to validate.  In this example, the project chosen is the "Object Detection" project that was created in the [Getting Started](../../index.md#create-project).  Next click the "Model Experiments" button as indicated in red.
+From the projects page, choose the project that contains the training session with the models you want to validate.  In this example, the project chosen is the "Object Detection" project that was created in the [Getting Started](../../getting_started/create_project.md).  Next click the "Model Experiments" button as indicated in red.
 
 <figure markdown="span">
 ![Model Experiments](../../models/assets/training/vision-model-experiments.jpg){ align=center }

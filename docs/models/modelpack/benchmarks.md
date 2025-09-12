@@ -32,7 +32,7 @@ This page presents comprehensive benchmark results for ModelPack, a versatile mo
     | modelpack-csp53-small-640x640-rgb     | 0.928    | 0.692    | 80.29    |  
 
     
-    Visit the full **Playingcards** dataset [Benchmark here](../../datasets/playingcards/index.md/#object-detection-benchmark-100-epochs)
+    Visit the full **Playingcards** dataset [Benchmark here](../../datasets/playingcards/index.md)
 
 
 === "Coffee Cup"
@@ -76,7 +76,7 @@ This page presents comprehensive benchmark results for ModelPack, a versatile mo
     | modelpack-csp53-nano-640x640-rgb      | 0.403     |   0.193    |  45.07|
 
     
-    Visit the full **BDD100K** dataset [Benchmark here](../../datasets/bdd100k/index.md/#object-detection-benchmark-100-epochs)
+    Visit the full **BDD100K** dataset [Benchmark here](../../datasets/bdd100k/index.md)
 
 
 === "Coco People"

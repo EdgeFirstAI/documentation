@@ -20,7 +20,7 @@
     |-------------------|-----------|-----------|---------------|
     | ultralytics-yolov8n-640x640-rgb       | 0.809    | 0.671    | 138.13    | 
     
-    Visit the full **Playingcards** dataset [Benchmark here](../../datasets/playingcards/index.md/#object-detection-benchmark-100-epochs)
+    Visit the full **Playingcards** dataset [Benchmark here](../../datasets/playingcards/index.md)
 
 === "Coffee Cup"
 
@@ -66,7 +66,7 @@
     |-------------------|-----------|-----------|---------|
     | ultralytics-yolov8n-640x640-rgb   | 0.272 | 0.138 | 137.39 |
 
-    Visit the full **BDD100K** dataset [Benchmark here](../../datasets/bdd100k/index.md/#object-detection-benchmark-100-epochs)
+    Visit the full **BDD100K** dataset [Benchmark here](../../datasets/bdd100k/index.md)
 
 === "Coco People"
     

@@ -21,7 +21,7 @@ pip uninstall deepview-converter deepview-converter-rtm deepview-converter-tflit
 
 The converter is a Python-based tool and as such can be installed directly through pip using the following
 ``` shell
-pip install deepview-converter-rtm
+pip install rtm-converter
 ```
 Now you are all set up to use the Deep View Converter with any model you are looking to run on your EdgeFirst Platform.
 

@@ -52,7 +52,7 @@ This page presents comprehensive benchmark results for ModelPack, a versatile mo
     |-------------------|-----------|-----------|---------------|----------|-----------------|
     | modelpack-csp19-medium-640x640-rgb    | 0.995    | 0.911   | 0.884 | 0.856 | 45.53    |  
      
-    Visit the full **Coffee Cup** dataset [Benchmark here](../../datasets/coffecup/index.md)
+    Visit the full **Coffee Cup** dataset [Benchmark here](../../datasets/coffeecup/index.md)
 
 === "BDD100K"
 

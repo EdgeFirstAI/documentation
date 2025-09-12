@@ -1,7 +1,7 @@
 # Studio Client
 The EdgeFirst Studio Client, `edgefirst-client`, provides an API and command-line interface (CLI) into the [EdgeFirst Studio](../studio/index.md).  This client provides programmatic and command-line access to many of the features of the EdgeFirst Studio, specifically related to the upload of MCAP file into [snapshots](../studio/snapshots.md) and snapshot conversion or *restoration* into datasets. The commands below will mirror the UI actions described in the snapshot walkthrough linked above.
 
-This page describes the command-line interface, the [Bridge In API](../studio/dataio.md) is documented under the [EdgeFirst Studio documentation](../studio/index.md).
+This page describes the command-line interface, the Bridge In API documentation is yet to be added.
 
 A summary of the core features is listed below:
 

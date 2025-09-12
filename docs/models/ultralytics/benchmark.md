@@ -45,7 +45,7 @@
 
     ## Segmentation Metrcis
 
-    Visit the full **Coffee Cup** dataset [Benchmark here](../../datasets/coffecup/index.md)
+    Visit the full **Coffee Cup** dataset [Benchmark here](../../datasets/coffeecup/index.md)
 
 === "BDD100K"
 

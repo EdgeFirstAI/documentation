@@ -11,6 +11,8 @@ YoloV8 and YoloV11 can be trained now in Edgefirst Studio using a Graphical User
 
 === "Select Framework"
 
+    <h2 id="select-framework" style="display: none;"></h2>
+
     1. Select **Ultralytics** within the available training frameworks.
 
     ![Select Ultralytics Training Framework](./assets/ultralytics-train-01.png){ align=center }
@@ -20,6 +22,8 @@ YoloV8 and YoloV11 can be trained now in Edgefirst Studio using a Graphical User
     </div>
 
 === "Name Session"
+
+    <h2 id="name-session" style="display: none;"></h2>
 
     2. Set a **name** and **description** *(optional)* for the training session.
 
@@ -32,6 +36,8 @@ YoloV8 and YoloV11 can be trained now in Edgefirst Studio using a Graphical User
 
 === "Select Dataset"
 
+    <h2 id="select-dataset" style="display: none;"></h2>
+
     3. Choose your **dataset**.
 
     ![Select a Dataset](./assets/ultralytics-train-03.png){ align=center }
@@ -42,6 +48,8 @@ YoloV8 and YoloV11 can be trained now in Edgefirst Studio using a Graphical User
     </div>
 
 === "Train"
+
+    <h2 id="train" style="display: none;"></h2>
 
     4. **Configure model parameters** (architecture, input size, epochs, etc.) and start **Training**.
 

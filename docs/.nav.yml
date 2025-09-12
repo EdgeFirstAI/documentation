@@ -36,6 +36,8 @@ nav:
         - datasets/playingcards/index.md
       - BDD100K:
         - datasets/bdd100k/index.md
+      - COCO People:
+        - datasets/coco_people/index.md
       - COCO:
         - datasets/coco/index.md
         - datasets/coco/import.md
@@ -65,14 +67,15 @@ nav:
         - models/modelpack/deployment/evk.md
         - models/modelpack/deployment/maivin.md
       - Benchmarks: models/modelpack/benchmarks.md
-    - Ultralytics:
-        - models/ultralytics/index.md
     - Fusion:
       - models/fusion/index.md
       - models/fusion/training.md
       - models/fusion/validation.md
       - Deploying Fusion:
         - models/fusion/deployment/raivin.md
+    - Ultralytics:
+        - models/ultralytics/index.md
+        - Benchmarks: models/ultralytics/benchmark.md
     - Custom Models: 
       - models/custom/index.md
       - models/custom/quantize.md

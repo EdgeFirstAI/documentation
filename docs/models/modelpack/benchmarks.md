@@ -1,65 +1,140 @@
-# Welcome to the ModelPack Benchmark Suite
+# ModelPack Benchmark Suite
 
 This page presents comprehensive benchmark results for ModelPack, a versatile model collection featuring multiple backbone architectures and size variants (nano, small, medium, large). ModelPack is designed for flexibility and performance across a wide range of computer vision tasks. Here, we evaluate its performance on several key datasets, including ImageNet for classification, PlayingCards for object detection, and COCO for detection and segmentation . Each benchmark includes metrics such as accuracy, model size, and inference efficiency, helping developers and researchers choose the right configuration for their specific use case. Explore the tables below to compare performance across backbones and deployment scenarios.
 
-## Imagenet
-
-ImageNet is a large-scale dataset with over 14 million images, widely used for training and benchmarking computer vision models. It enables standardized evaluation using top-1 and top-5 accuracy metrics. Here, we benchmark CSPDarknet-based models on ImageNet to assess their accuracy and efficiency. ([Curious about Ultralytics on Imagenet... ?](https://docs.ultralytics.com/datasets/classify/imagenet/)).
-
-**Table: CSPDarknet19 ImageNet Results - RGB - (224x224)**
-
-| Model             | Top-1 Acc | Top-5 Acc | Top-10 Acc | Batch Size | Parameters |
-|------------------|-----------|-----------|------------|------------|------------|
-| csp19-nano   | 0.52      | 0.76      | 0.86       | 256        | 1.42M      |
-| csp19-small  | 0.62      | 0.84      | 0.89       | 256        | 2.48M      |
-| csp19-medium | 0.66      | 0.87      | 0.91       | 256        | 4.18M      |
-| csp19-large  |  -        | -         | -          | -          | -          |
-
----
-
-**Table: CSPDarknet53 ImageNet Results - RGB - (224x224)**
 
 
-| Model             | Top-1 Acc | Top-5 Acc | Top-10 Acc | Batch Size | Parameters |
-|------------------|-----------|-----------|------------|------------|------------|
-| csp53-nano   | 0.72      | 0.91      | 0.94       | 256        | 2.70M      |
-| csp53-small  | 0.83      | 0.95      | 0.98       | 128        | 7.40M      |
-| csp53-medium | 0.91      | 0.99      | 0.99       | 128        | 22.8M      |
-| csp53-large  | -         | -         | -          | 128        | 49.7M      |
+=== "Playingcards"
+
+    ## Playing Cards
+
+    The Playing Cards dataset is a custom object detection dataset containing over 1,000 images annotated across 13 card classes (e.g., Ace to King). It focuses on detecting cards in varied orientations and real-world settings. We use this dataset to benchmark ModelPack models for lightweight, task-specific detection performance. 
+
+    **Table: ModelPack on PlayingCards - RGB - (640x640) - ONNX - (50 epochs)**
+
+    | Model             | mAP@0.5 | mAP@0.5..0.95 |
+    |-------------------|-----------|-----------|
+    | modelpack-csp19-small-640x640-rgb       | 0.874    |   0.69  | 
+    | modelpack-csp19-medium-640x640-rgb       | 0.909    |   0.683  | 
+    | modelpack-csp19-large-640x640-rgb       | 0.926    |   0.731  | 
+    | modelpack-csp53-nano-640x640-rgb       | 0.876    |   0.706    | 
+    | modelpack-csp53-small-640x640-rgb       | 0.931    |   0.755    | 
 
 
+    **Table: ModelPack on PlayingCards - RGB - (640x640) - TFLite - i.MX 8M Plus**
 
-## COCO 
+    | Model             | mAP@0.5 | mAP@0.5..0.95 | Time (ms) |
+    |-------------------|-----------|-----------|---------------|
+    | modelpack-csp19-small-640x640-rgb     | 0.867    | 0.642    | 16.0    |  
+    | modelpack-csp19-medium-640x640-rgb    | 0.861    | 0.643    | 20.6    |  
+    | modelpack-csp19-large-640x640-rgb     | 0.91    | 0.658    | 24.46    |  
+    | modelpack-csp53-nano-640x640-rgb      | 0.862    | 0.642    | 44.08    |  
+    | modelpack-csp53-small-640x640-rgb     | 0.928    | 0.692    | 80.29    |  
 
-COCO (Common Objects in Context) is a large-scale dataset with over 330K images and 80 object categories, widely used for object detection, segmentation, and keypoint estimation. It emphasizes understanding objects in complex, real-world scenes. Here, we benchmark ModelPack variants on COCO to evaluate detection accuracy and model scalability.
-
-**Table: ModelPack on COCO - 100 Epochs Benchmark - 640x640**
-
-
-| Model             | mAP@0.5 | mAP@0.5..0.95 |
-|-------------------|-----------|-----------|
-| csp19-large       | 0.153      |   0.085 | 
-
-Visit the full COCO dataset [Benchmark here](../../datasets/coco/index.md/#object-detection-benchmark-100-epochs)
-
-## BDD100K
-
-BDD100K is a large-scale autonomous driving dataset with 100K images annotated for tasks like object detection, lane detection, and segmentation. It features diverse weather, lighting, and geographic conditions. We benchmark ModelPack models on BDD100K to evaluate performance in real-world driving scenarios.
+    
+    Visit the full **Playingcards** dataset [Benchmark here](../../datasets/playingcards/index.md/#object-detection-benchmark-100-epochs)
 
 
+=== "Coffee Cup"
 
-## Playing Cards
+    **Table: ModelPack on CoffeeCup - RGB - (640x640) | ONNX**
 
-The Playing Cards dataset is a custom object detection dataset containing over 1,000 images annotated across 13 card classes (e.g., Ace to King). It focuses on detecting cards in varied orientations and real-world settings. We use this dataset to benchmark ModelPack models for lightweight, task-specific detection performance. 
+    | Model             | mAP@0.5 | mAP@0.5..0.95 |
+    |-------------------|-----------|-----------|
+    | coffecup-csp19-medium-640x640-rgb   | -    |   -  |  
 
-**Table: ModelPack on PlayingCards - RGB - (640x640)**
+    
+    **Table: ModelPack on CoffeeCup - RGB - (640x640) - TFLite - i.MX 8M Plus**
 
-| Model             | mAP@0.5 | mAP@0.5..0.95 |
-|-------------------|-----------|-----------|
-| csp19-small       | 0.920     |   0.747    | 
-| csp19-medium      | 0.946     |   0.754    | 
-| csp19-large       | 0.944     |   0.769    | 
-| csp53-nano        | 0.924     |   0.774    | 
-| csp19-small       | 0.945     |   0.791    | 
+    | Model             | mAP@0.5 | mAP@0.5..0.95 | Time (ms) |
+    |-------------------|-----------|-----------|---------------|
+    | modelpack-csp19-medium-640x640-rgb    | -    | -    | -    |  
+     
+    Visit the full **Coffee Cup** dataset [Benchmark here](../../datasets/coffecup/index.md)
 
-Visit the full **Playingcards** dataset [Benchmark here](../../datasets/playingcards/index.md/#object-detection-benchmark-100-epochs)
+=== "BDD100K"
+
+    ## BDD100K
+
+    BDD100K is a large-scale autonomous driving dataset with 100K images annotated for tasks like object detection, lane detection, and segmentation. It features diverse weather, lighting, and geographic conditions. We benchmark ModelPack models on BDD100K to evaluate performance in real-world driving scenarios.
+
+    **Table: ModelPack on BDD100K - RGB - (640x640) - ONNX - (100 epochs)**
+
+    | Model             | mAP@0.5 | mAP@0.5..0.95 |
+    |-------------------|-----------|-----------|
+    | modelpack-csp19-large-640x640-rgb       | 0.423     |   0.227    | 
+    | modelpack-csp53-nano-640x640-rgb      | 0.466     |   262    |
+
+
+    **Table: ModelPack on BDD100K - RGB - (640x640) - TFLite - i.MX 8M Plus**
+
+    | Model             | mAP@0.5 | mAP@0.5..0.95 | Time (ms)|
+    |-------------------|-----------|-----------|---------|
+    | modelpack-csp19-large-640x640-rgb       | 0.375     |   0.175    |  19.38 |
+    | modelpack-csp53-nano-640x640-rgb      | 0.403     |   0.193    |  45.07|
+
+    
+    Visit the full **BDD100K** dataset [Benchmark here](../../datasets/bdd100k/index.md/#object-detection-benchmark-100-epochs)
+
+
+=== "Coco People"
+    
+    This dataset contains only annotations for person class from original dataset. However, all the images are included during training as negative samples
+
+    **Table: ModelPack on COCO People - RGB - (640x640) - ONNX - (100 epochs)**
+
+    | Model             | mAP@0.5 | mAP@0.5..0.95 |
+    |-------------------|-----------|-----------|
+    | modelpack-csp19-nano-640x640-rgb       | 0.48    |   0.223  | 
+    
+
+
+    **Table: ModelPack on COCO People - RGB - (640x640) - TFLite - i.MX 8M Plus**
+
+    | Model             | mAP@0.5 | mAP@0.5..0.95 | Time (ms)|
+    |-------------------|-----------|-----------|---------|
+    | modelpack-csp19-nano-640x640-rgb       | 0.196   | 0.073    |  10.63    | 
+
+    
+    Visit the full **COCO People** dataset [Benchmark here](../../datasets/coco_people/index.md)
+
+   
+=== "Coco 2017"
+
+    !!! note
+        COCO benchmark is coming soon !!!
+
+=== "ImageNet"
+
+    ## Imagenet
+
+    ImageNet is a large-scale dataset with over 14 million images, widely used for training and benchmarking computer vision models. It enables standardized evaluation using top-1 and top-5 accuracy metrics. Here, we benchmark CSPDarknet-based models on ImageNet to assess their accuracy and efficiency. ([Curious about Ultralytics on Imagenet... ?](https://docs.ultralytics.com/datasets/classify/imagenet/)).
+
+    **Table: CSPDarknet19 ImageNet Results - RGB - (224x224)**
+
+    | Model             | Top-1 Acc | Top-5 Acc | Top-10 Acc | Batch Size | Parameters |
+    |------------------|-----------|-----------|------------|------------|------------|
+    | csp19-nano   | 0.52      | 0.76      | 0.86       | 256        | 1.42M      |
+    | csp19-small  | 0.62      | 0.84      | 0.89       | 256        | 2.48M      |
+    | csp19-medium | 0.66      | 0.87      | 0.91       | 256        | 4.18M      |
+    | csp19-large  |  -        | -         | -          | -          | -          |
+
+    ---
+
+    **Table: CSPDarknet53 ImageNet Results - RGB - (224x224)**
+
+
+    | Model             | Top-1 Acc | Top-5 Acc | Top-10 Acc | Batch Size | Parameters |
+    |------------------|-----------|-----------|------------|------------|------------|
+    | csp53-nano   | 0.72      | 0.91      | 0.94       | 256        | 2.70M      |
+    | csp53-small  | 0.83      | 0.95      | 0.98       | 128        | 7.40M      |
+    | csp53-medium | 0.91      | 0.99      | 0.99       | 128        | 22.8M      |
+    | csp53-large  | -         | -         | -          | 128        | 49.7M      |
+
+
+    !!! note
+        All modelpack backbones are pretrained on Imagenet. If you want to reproduce the experiments or metrics on this dataset, please contact <a href="mailto:support@edgefirst.ai">support@edgefirst.ai</a>
+
+
+!!! tip
+    **i.MX 8M Plus** us running BSP 6.12

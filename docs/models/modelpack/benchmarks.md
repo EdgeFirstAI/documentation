@@ -12,7 +12,7 @@ This page presents comprehensive benchmark results for ModelPack, a versatile mo
 
     | Model                              | mAP@0.5 | mAP@0.5..0.95 |
     |------------------------------------|---------|---------------|
-    | modelpack-csp19-small-640x640-rgb  | 0.874   | 0.69          | 
+    | modelpack-csp19-small-640x640-rgb  | 0.874   | 0.687         | 
     | modelpack-csp19-medium-640x640-rgb | 0.909   | 0.683         | 
     | modelpack-csp19-large-640x640-rgb  | 0.926   | 0.731         | 
     | modelpack-csp53-nano-640x640-rgb   | 0.876   | 0.706         | 
@@ -22,11 +22,11 @@ This page presents comprehensive benchmark results for ModelPack, a versatile mo
 
     | Model                              | mAP@0.5 | mAP@0.5..0.95 | Time (ms) |
     |------------------------------------|---------|---------------|-----------|
-    | modelpack-csp19-small-640x640-rgb  | 0.867   | 0.642         | 16.0      |  
-    | modelpack-csp19-medium-640x640-rgb | 0.861   | 0.643         | 20.6      |  
-    | modelpack-csp19-large-640x640-rgb  | 0.91    | 0.658         | 24.46     |  
+    | modelpack-csp19-small-640x640-rgb  | 0.867   | 0.642         | 15.99     |  
+    | modelpack-csp19-medium-640x640-rgb | 0.901   | 0.643         | 20.60     |  
+    | modelpack-csp19-large-640x640-rgb  | 0.909   | 0.658         | 24.46     |  
     | modelpack-csp53-nano-640x640-rgb   | 0.862   | 0.642         | 44.08     |  
-    | modelpack-csp53-small-640x640-rgb  | 0.928   | 0.692         | 80.29     |  
+    | modelpack-csp53-small-640x640-rgb  | 0.928   | 0.692         | 79.29     |  
 
     Visit the full **Playingcards** dataset [Benchmark here](../../datasets/playingcards/index.md)
 
@@ -38,13 +38,13 @@ This page presents comprehensive benchmark results for ModelPack, a versatile mo
 
     | Model                              | mAP@0.5 | mAP@0.5..0.95 | seg-mAP@0.5 | seg-mAP@0.5..0.95 |  
     |------------------------------------|---------|---------------|-------------|-------------------|
-    | modelpack-csp19-medium-640x640-rgb | 0.995   | 0.978         | 0.899       | 0.863             |
+    | modelpack-csp19-medium-640x640-rgb | 0.995   | 0.978         | 0.891       | 0.863             |
 
     **Table: ModelPack on CoffeeCup - RGB - (640x640) - TFLite - i.MX 8M Plus**
 
-    | Model             | mAP@0.5 | mAP@0.5..0.95 | seg-mAP@0.5 | seg-mAP@0.5..0.95 | Time (ms) |
-    |-------------------|-----------|-----------|---------------|----------|-----------------|
-    | modelpack-csp19-medium-640x640-rgb    | 0.995    | 0.911   | 0.884 | 0.856 | 45.53    |  
+    | Model                              | mAP@0.5 | mAP@0.5..0.95 | seg-mAP@0.5 | seg-mAP@0.5..0.95 | Time (ms) |
+    |------------------------------------|---------|---------------|-------------|-------------------|-----------|
+    | modelpack-csp19-medium-640x640-rgb | 0.995   | 0.911         | 0.884       | 0.856             | 45.53     |  
      
     Visit the full **Coffee Cup** dataset [Benchmark here](../../datasets/coffeecup/index.md)
 
@@ -66,12 +66,12 @@ This page presents comprehensive benchmark results for ModelPack, a versatile mo
 
     | Model                             | mAP@0.5 | mAP@0.5..0.95 | Time (ms) |
     |-----------------------------------|---------|---------------|-----------|
-    | modelpack-csp19-large-640x640-rgb | 0.375   | 0.175         |  19.38    |
-    | modelpack-csp53-nano-640x640-rgb  | 0.403   | 0.193         |  45.07    |
+    | modelpack-csp19-large-640x640-rgb | 0.375   | 0.175         |  19.28    |
+    | modelpack-csp53-nano-640x640-rgb  | 0.403   | 0.194         |  45.15    |
 
     Visit the full **BDD100K** dataset [Benchmark here](../../datasets/bdd100k/index.md)
 
-=== "Coco People"
+=== "COCO People"
     
     This dataset contains only annotations for person class from original dataset. However, all the images are included during training as negative samples
 
@@ -89,7 +89,7 @@ This page presents comprehensive benchmark results for ModelPack, a versatile mo
     
     Visit the full **COCO People** dataset [Benchmark here](../../datasets/coco_people/index.md)
 
-=== "Coco 2017"
+=== "COCO 2017"
 
     !!! note
         COCO benchmark is coming soon !!!

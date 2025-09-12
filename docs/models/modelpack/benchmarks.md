@@ -10,28 +10,25 @@ This page presents comprehensive benchmark results for ModelPack, a versatile mo
 
     **Table: ModelPack on PlayingCards - RGB - (640x640) - ONNX - (50 epochs)**
 
-    | Model             | mAP@0.5 | mAP@0.5..0.95 |
-    |-------------------|-----------|-----------|
-    | modelpack-csp19-small-640x640-rgb       | 0.874    |   0.69  | 
-    | modelpack-csp19-medium-640x640-rgb       | 0.909    |   0.683  | 
-    | modelpack-csp19-large-640x640-rgb       | 0.926    |   0.731  | 
-    | modelpack-csp53-nano-640x640-rgb       | 0.876    |   0.706    | 
-    | modelpack-csp53-small-640x640-rgb       | 0.931    |   0.755    | 
-
+    | Model                              | mAP@0.5 | mAP@0.5..0.95 |
+    |------------------------------------|---------|---------------|
+    | modelpack-csp19-small-640x640-rgb  | 0.874   | 0.69          | 
+    | modelpack-csp19-medium-640x640-rgb | 0.909   | 0.683         | 
+    | modelpack-csp19-large-640x640-rgb  | 0.926   | 0.731         | 
+    | modelpack-csp53-nano-640x640-rgb   | 0.876   | 0.706         | 
+    | modelpack-csp53-small-640x640-rgb  | 0.931   | 0.755         | 
 
     **Table: ModelPack on PlayingCards - RGB - (640x640) - TFLite - i.MX 8M Plus**
 
-    | Model             | mAP@0.5 | mAP@0.5..0.95 | Time (ms) |
-    |-------------------|-----------|-----------|---------------|
-    | modelpack-csp19-small-640x640-rgb     | 0.867    | 0.642    | 16.0    |  
-    | modelpack-csp19-medium-640x640-rgb    | 0.861    | 0.643    | 20.6    |  
-    | modelpack-csp19-large-640x640-rgb     | 0.91    | 0.658    | 24.46    |  
-    | modelpack-csp53-nano-640x640-rgb      | 0.862    | 0.642    | 44.08    |  
-    | modelpack-csp53-small-640x640-rgb     | 0.928    | 0.692    | 80.29    |  
+    | Model                              | mAP@0.5 | mAP@0.5..0.95 | Time (ms) |
+    |------------------------------------|---------|---------------|-----------|
+    | modelpack-csp19-small-640x640-rgb  | 0.867   | 0.642         | 16.0      |  
+    | modelpack-csp19-medium-640x640-rgb | 0.861   | 0.643         | 20.6      |  
+    | modelpack-csp19-large-640x640-rgb  | 0.91    | 0.658         | 24.46     |  
+    | modelpack-csp53-nano-640x640-rgb   | 0.862   | 0.642         | 44.08     |  
+    | modelpack-csp53-small-640x640-rgb  | 0.928   | 0.692         | 80.29     |  
 
-    
     Visit the full **Playingcards** dataset [Benchmark here](../../datasets/playingcards/index.md)
-
 
 === "Coffee Cup"
     
@@ -39,11 +36,10 @@ This page presents comprehensive benchmark results for ModelPack, a versatile mo
     
     **Table: ModelPack on CoffeeCup - RGB - (640x640) | ONNX**
 
-    | Model             | mAP@0.5 | mAP@0.5..0.95 | seg-mAP@0.5 | seg-mAP@0.5..0.95 |  
-    |-------------------|-----------|-----------|-------------|--------------|
-    | modelpack-csp19-medium-640x640-rgb   | 0.995    |   0.978  |  0.899 | 0.863 |
+    | Model                              | mAP@0.5 | mAP@0.5..0.95 | seg-mAP@0.5 | seg-mAP@0.5..0.95 |  
+    |------------------------------------|---------|---------------|-------------|-------------------|
+    | modelpack-csp19-medium-640x640-rgb | 0.995   | 0.978         | 0.899       | 0.863             |
 
-    
     **Table: ModelPack on CoffeeCup - RGB - (640x640) - TFLite - i.MX 8M Plus**
 
     | Model             | mAP@0.5 | mAP@0.5..0.95 | seg-mAP@0.5 | seg-mAP@0.5..0.95 | Time (ms) |
@@ -60,22 +56,20 @@ This page presents comprehensive benchmark results for ModelPack, a versatile mo
 
     **Table: ModelPack on BDD100K - RGB - (640x640) - ONNX - (100 epochs)**
 
-    | Model             | mAP@0.5 | mAP@0.5..0.95 |
-    |-------------------|-----------|-----------|
-    | modelpack-csp19-large-640x640-rgb       | 0.423     |   0.227    | 
-    | modelpack-csp53-nano-640x640-rgb      | 0.466     |   262    |
+    | Model                             | mAP@0.5 | mAP@0.5..0.95 |
+    |-----------------------------------|---------|---------------|
+    | modelpack-csp19-large-640x640-rgb | 0.423   | 0.227         | 
+    | modelpack-csp53-nano-640x640-rgb  | 0.466   | 262           |
 
 
     **Table: ModelPack on BDD100K - RGB - (640x640) - TFLite - i.MX 8M Plus**
 
-    | Model             | mAP@0.5 | mAP@0.5..0.95 | Time (ms)|
-    |-------------------|-----------|-----------|---------|
-    | modelpack-csp19-large-640x640-rgb       | 0.375     |   0.175    |  19.38 |
-    | modelpack-csp53-nano-640x640-rgb      | 0.403     |   0.193    |  45.07|
+    | Model                             | mAP@0.5 | mAP@0.5..0.95 | Time (ms) |
+    |-----------------------------------|---------|---------------|-----------|
+    | modelpack-csp19-large-640x640-rgb | 0.375   | 0.175         |  19.38    |
+    | modelpack-csp53-nano-640x640-rgb  | 0.403   | 0.193         |  45.07    |
 
-    
     Visit the full **BDD100K** dataset [Benchmark here](../../datasets/bdd100k/index.md)
-
 
 === "Coco People"
     
@@ -83,22 +77,18 @@ This page presents comprehensive benchmark results for ModelPack, a versatile mo
 
     **Table: ModelPack on COCO People - RGB - (640x640) - ONNX - (100 epochs)**
 
-    | Model             | mAP@0.5 | mAP@0.5..0.95 |
-    |-------------------|-----------|-----------|
-    | modelpack-csp19-nano-640x640-rgb       | 0.48    |   0.223  | 
+    | Model                            | mAP@0.5 | mAP@0.5..0.95 |
+    |----------------------------------|---------|---------------|
+    | modelpack-csp19-nano-640x640-rgb | 0.48    | 0.223         | 
     
-
-
     **Table: ModelPack on COCO People - RGB - (640x640) - TFLite - i.MX 8M Plus**
 
-    | Model             | mAP@0.5 | mAP@0.5..0.95 | Time (ms)|
-    |-------------------|-----------|-----------|---------|
-    | modelpack-csp19-nano-640x640-rgb       | 0.196   | 0.073    |  10.63    | 
-
+    | Model                            | mAP@0.5 | mAP@0.5..0.95 | Time (ms) |
+    |----------------------------------|---------|---------------|-----------|
+    | modelpack-csp19-nano-640x640-rgb | 0.196   | 0.073         |  10.63    | 
     
     Visit the full **COCO People** dataset [Benchmark here](../../datasets/coco_people/index.md)
 
-   
 === "Coco 2017"
 
     !!! note
@@ -112,8 +102,8 @@ This page presents comprehensive benchmark results for ModelPack, a versatile mo
 
     **Table: CSPDarknet19 ImageNet Results - RGB - (224x224)**
 
-    | Model             | Top-1 Acc | Top-5 Acc | Top-10 Acc | Batch Size | Parameters |
-    |------------------|-----------|-----------|------------|------------|------------|
+    | Model        | Top-1 Acc | Top-5 Acc | Top-10 Acc | Batch Size | Parameters |
+    |--------------|-----------|-----------|------------|------------|------------|
     | csp19-nano   | 0.52      | 0.76      | 0.86       | 256        | 1.42M      |
     | csp19-small  | 0.62      | 0.84      | 0.89       | 256        | 2.48M      |
     | csp19-medium | 0.66      | 0.87      | 0.91       | 256        | 4.18M      |
@@ -123,18 +113,15 @@ This page presents comprehensive benchmark results for ModelPack, a versatile mo
 
     **Table: CSPDarknet53 ImageNet Results - RGB - (224x224)**
 
-
-    | Model             | Top-1 Acc | Top-5 Acc | Top-10 Acc | Batch Size | Parameters |
-    |------------------|-----------|-----------|------------|------------|------------|
+    | Model        | Top-1 Acc | Top-5 Acc | Top-10 Acc | Batch Size | Parameters |
+    |--------------|-----------|-----------|------------|------------|------------|
     | csp53-nano   | 0.72      | 0.91      | 0.94       | 256        | 2.70M      |
     | csp53-small  | 0.83      | 0.95      | 0.98       | 128        | 7.40M      |
     | csp53-medium | 0.91      | 0.99      | 0.99       | 128        | 22.8M      |
     | csp53-large  | -         | -         | -          | 128        | 49.7M      |
 
-
     !!! note
         All modelpack backbones are pretrained on Imagenet. If you want to reproduce the experiments or metrics on this dataset, please contact <a href="mailto:support@edgefirst.ai">support@edgefirst.ai</a>
 
-
-!!! tip
-    **i.MX 8M Plus** us running BSP 6.12
+!!! note "BSP Version"
+    **i.MX 8M Plus** is flashed with [NXP Yocto BSP](https://www.nxp.com/design/design-center/software/embedded-software/i-mx-software/embedded-linux-for-i-mx-applications-processors:IMXLINUX) 6.12.

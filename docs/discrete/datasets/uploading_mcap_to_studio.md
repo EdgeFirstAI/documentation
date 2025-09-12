@@ -9,7 +9,7 @@ To upload an MCAP Recording into EdgeFirst Studio, first [login][login] to EdgeF
 
 !!! note
     A project has already been created intended for object detection.  This step
-    has been covered in [Getting Started](../../index.md#create-project).
+    has been covered in [Getting Started](../../getting_started/create_project.md).
 
 Once you are in the "Data Snapshots" page, upload the recorded MCAP by clicking "From File" which opens a new window dialog for selecting the MCAP downloaded in your PC.
 

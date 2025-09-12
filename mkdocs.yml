@@ -41,7 +41,7 @@ theme:
     - navigation.tabs.sticky
     - navigation.path
     - navigation.indexes
-    - navigation.top
+    - navigation.top    
     - toc.follow
 
 validation:

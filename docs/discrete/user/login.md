@@ -7,9 +7,9 @@
     <figcaption>Login Page</figcaption>
     </figure>
 
-2. Once logged in to EdgeFirst Studio, you will be greeted with the following [Projects](../../studio/projects.md) page.
+2. Once logged in to EdgeFirst Studio, you will be greeted with the following splash page.
 
     <figure markdown="span">
-    ![Starting Page](../../studio/assets/projects/studio-from-scratch.jpg){ align=center }
+    ![Starting Page](../../studio/assets/user/splash-page.jpg){ align=center }
     <figcaption>Projects Splash Page</figcaption>
     </figure>

@@ -8,7 +8,7 @@ First ensure that the dataset is ready to be used for training.  This means that
 
 ## Specify Project Experiments
 
-From the projects page, choose the project that contains the dataset you plan to use.  In this example, the project chosen is the "Object Detection" project which was created in the [Quickstart Guide](../../index.md#create-project).  Next click the "Model Experiments" button as indicated in red.
+From the projects page, choose the project that contains the dataset you plan to use.  In this example, the project chosen is the "Object Detection" project which was created in the [Quickstart Guide](../../getting_started/create_project.md).  Next click the "Model Experiments" button as indicated in red.
 
 <figure markdown="span">
 ![Model Experiments](../assets/training/vision-model-experiments.jpg){ align=center }
@@ -68,7 +68,7 @@ Start a training session by clicking on the "New Session" button on the top righ
 <figcaption>New Session Button</figcaption>
 </figure>
 
-You will be greeted with a training session dialog.  In this dialog, specify the "Trainer Type" to "ModelPack" and provide a name and description of the training session as shown below.  Next specify the dataset to be used with training and validation partitions.  In this example, the dataset specified is the "modelpack-coffecup-640x640-rgba" dataset which was created in the [Getting Started](../../index.md).  Next specify the training parameters.  By default, an object detection (bounding boxes) model will be trained.  However, you can specify either "Segmentation" or "Multitask" as shown below.  This model will output both bounding boxes and segmentation masks.  Additional information on these parameters are provided by hovering over the info button ![Info Button](../../assets/buttons/studio-info-button.jpg).
+You will be greeted with a training session dialog.  In this dialog, specify the "Trainer Type" to "ModelPack" and provide a name and description of the training session as shown below.  Next specify the dataset to be used with training and validation partitions.  In this example, the dataset specified is the "Coffee Cup" dataset which was created in the [Getting Started](../../getting_started/capture_data.md).  Next specify the training parameters.  By default, an object detection (bounding boxes) model will be trained.  However, you can specify either "Segmentation" or "Multitask" as shown below.  This model will output both bounding boxes and segmentation masks.  Additional information on these parameters are provided by hovering over the info button ![Info Button](../../assets/buttons/studio-info-button.jpg).
 
 !!! tip "Input Resolution"
     We recommend changing the input resolution to 640x360 to maximize detection rates on small datasets.

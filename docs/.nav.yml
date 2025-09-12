@@ -2,6 +2,13 @@ nav:
   - Home: https://test.edgefirst.studio
   - Getting Started:
     - index.md
+    - getting_started/login.md
+    - getting_started/create_project.md
+    - getting_started/capture_data.md
+    - getting_started/annotate_dataset.md
+    - getting_started/train_vision.md
+    - getting_started/validate_vision.md
+    - getting_started/deploy_model.md
     - User Workflows:
       - getting_started/workflows/index.md
       - getting_started/workflows/tourist.md

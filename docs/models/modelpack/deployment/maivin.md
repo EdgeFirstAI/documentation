@@ -9,69 +9,9 @@ Now that you have validated your Vision Model from either a [managed](../validat
 This guide will showcase two methods of deploying the model.
 
 1. [Live View (Segmentation App)](#live-view-segmentation-app): Displays the live camera feed using the default model provided.
-2. [MCAP Recording](#record-mcap): Allows control of the recording options and provides download file options to replay the recording.
+2. [MCAP Recording](../../../platforms/recording.md#record-mcap): Allows control of the recording options and provides download file options to replay the recording.
 
-## Download the Model
-
-First download the model from EdgeFirst Studio into the Maivin Platform.  There are two methods for downloading the model.  The first method is to download the model from EdgeFirst Studio and then SCP the model file to the Maivin Platform.  The second method is to use the EdgeFirst Client to download the model directly in the device.
-
-### Download and SCP
-
-As mentioned under the [Training Outcomes](../training.md#training-outcomes) section, the trained models can be downloaded by clicking the "View Additional Details" button on the training session card in EdgeFirst Studio. 
-
-<figure markdown="span">
-![Training Session Attributes](../../assets/training/training-session-attributes.jpg){ align=center }
-<figcaption>Training Session Attributes</figcaption>
-</figure>
-
-This will open the session details and the models are listed under the "Artifacts" tab as shown below.  Click on the downward arrow indicated in red to download the models to your PC.  In this example, you will be deploying the TFLite model in the Maivin.
-
-| Session Details                                                | Artifacts                                                                     |
-|----------------------------------------------------------------|-------------------------------------------------------------------------------|
-| ![session](../../assets/training/vision-session-details.jpg) | ![artifacts](../../assets/training/vision-session-artifacts.jpg) | 
-
-Once the model is downloaded in your PC, you can [SCP](../../../platforms/ssh.md#secure-copy) the model to the Maivin by using this command template.
-
-```shell
-scp <path to the downloaded TFLite model> <destination path>
-```
-
-An example command is shown below.
-
-```shell
-scp modelpack.tflite torizon@verdin-imx8mp-15140753:~
-```
-
-### Download using the Client
-
-This method expects you to have already connected to the Maivin via [SSH](../../../platforms/ssh.md).  The [EdgeFirst Client](../../../perception/studio.md) can be installed via `pip3 install edgefirst-client`.  You can verify the installation with the client version command.
-
-```shell
-$ edgefirst-client version
-EdgeFirst Studio Server: 3.7.8-a50429e Client: 1.3.3
-```
-
-Next login to the client with the command.
-
-```shell
-$ edgefirst-client login
-Username: user
-Password: ****
-```
-
-You can download the model on the device using the `download-artifact` command as shown below.
-
-```shell
-edgefirst-client download-artifact <session ID> <model name>
-```
-
-The `download-artifact` expects three arguments.
-
-* session ID: Pass the integer trainer or validation session ID associated with the models.
-* model name: Pass the specific model that will be downloaded to the device.  Usually this is `mymodel.tflite`.
-* download path (optional): Specify the path to download the model.  If not provided, it will download to the current working directory.
-
-You can find more information on using the [EdgeFirst Client](../../../perception/studio.md) in the command line.
+{% include-markdown "discrete/models/download_model.md" %}
 
 ## Visit the Web UI Service
 
@@ -150,7 +90,7 @@ Once the model path in the device is specified, ensure that the Camera, Model, a
 <figcaption>Service Status</figcaption>
 </figure>
 
-You will be greeted with the "Service Overview" page.  Ensure that the "camera" and "model" services are enabled and running by toggling the "Enable" and "Start" buttons as shown.  Only "Enable" the "recorder" service as shown.  You will be using the recorder service in [MCAP Recording](#record-mcap).
+You will be greeted with the "Service Overview" page.  Ensure that the "camera" and "model" services are enabled and running by toggling the "Enable" and "Start" buttons as shown.  Only "Enable" the "recorder" service as shown.  You will be using the recorder service in [MCAP Recording](../../../platforms/recording.md#record-mcap).
 
 <figure markdown="span">
 ![Service Overview](../../assets/deployment/maivin-service-overview.jpg){ align=center }
@@ -173,10 +113,7 @@ This will run inference on the model specified to generate segmentation masks on
 <figcaption>Sample 1</figcaption>
 </figure>
 
-Now that the model has been updated, you can make new recordings using the model's inference and then visualizing the recording using Foxglove Studio.
-
-{% include-markdown "discrete/datasets/recording_mcap_on_device.md" %}
-{% include-markdown "discrete/datasets/downloading_mcap_from_device.md" %}
+Now that the model has been updated, you can [make new recordings](../../../platforms/recording.md#record-mcap) using the model's inference and then [visualize the recording using Foxglove Studio](../../../platforms/foxglove.md).
 
 ## Inference Visualization in Foxglove
 Once the MCAP recording has been downloaded, you can use Foxglove Studio to see the playback of MCAP recordings and the model inference.  The following preview is a frame from the MCAP with the model inference masks overlaid on top of the video. 
@@ -191,5 +128,7 @@ More information on the MCAP playback is provided in [Foxglove Studio](../../../
 ## Next Steps
 
 In this tutorial, you have fetched the trained and validated model from EdgeFirst Studio, copied the model in the Maivin, configured the Maivin model services, and ran inference on the model in the device.  You have seen the model running live using the Maivin's camera and ran a Maivin MCAP recording to capture the model inference in the frames that can be visualized using Foxglove Studio. 
+
+See our [developer guide](../../../perception/dev/examples/model.md) for examples to query the model outputs using Rust or Python.
 
 For more examples on deploying ModelPack in other platforms, see [Model Deployment](../../tutorials/deployment.md).

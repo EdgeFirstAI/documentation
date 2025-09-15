@@ -28,11 +28,14 @@ pip install edgefirst-validator
 Next login to your account in EdgeFirst Studio by using the [EdgeFirst Client](../../../perception/studio.md) which comes installed with the validator package. The command below will prompt you to enter your EdgeFirst Studio credentials. 
 
 ```
-edgefirst-client --server <> login
+edgefirst-client login
 ```
 
 !!! note "Server Specification"
-    Specify the EdgeFirst Studio server among these variations: "test", "stage", "saas".  This is an optional parameter as the default is set to "saas". 
+    Specify the EdgeFirst Studio server using `--server` among these variations: "test", "stage", "saas".  This is an optional parameter as the default is set to "saas". 
+
+!!! info "EdgeFirst Studio Token"
+    Once logged in, an EdgeFirst Studio Token will be saved under `.config/edgefirststudio/config.toml` granting access to the EdgeFirst Studio API which will remain valid for a period of time, usually 12 hours. Using this token will refresh the expiration timer. 
 
 Once the validator is installed and authenticated, run validation using the following command.
 

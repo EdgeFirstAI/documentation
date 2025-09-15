@@ -7,14 +7,13 @@ ModelPack is an advanced computer vision solution developed by Au-Zone Technolog
 | ![Detection](../assets/detection-sample.png) | ![Segmentation](../assets/segmentation-sample.png) | ![Multitask](../assets/multitask-sample.png) |
 
 
-
 ModelPack is optimized for real-time vision applications such as industrial automation, robotics, and autonomous systems. It combines object detection — locating multiple objects within an image using bounding boxes — with instance segmentation, which outlines each object’s exact shape at the pixel level. This unified approach enables detailed scene understanding at the edge and can contribute in a late fusion with the radar model.
 
 
 ## ModelPack Architecture
 ModelPack is a modern object detector and it adopts similar scaling strategies seen in the YOLO family models. 
 The model expands and contracts based on the width and height parameters. 
-Modelpack shares a Darknet53 backbone similar to [YOLOx](https://arxiv.org/pdf/2107.08430v2). 
+Modelpack shares two main backbones: a Darknet53 backbone similar to [YOLOx](https://arxiv.org/pdf/2107.08430v2) which maximizes accuracy and a Darknet19 backbone for boosting inference time. 
 Different than YOLOx, ModelPack is NOT anchor free, which makes the model more accurate and stable after quantization.
 
 ![Darknet-53 Backbone](../assets/darknet-53-backbone.png)

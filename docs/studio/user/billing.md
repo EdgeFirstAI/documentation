@@ -1,6 +1,6 @@
 # Billing Information
 
-This page will describe the billing information that is subjected to the user's organization.  Prior to reading the contents in this page, it is recommended to be familiar with the [Organization Management](organization.md).  A trial user (Individual Tier) is given 20.00 USD worth of credits to experience the features in EdgeFirst Studio as shown in the [Quickstart Guide](../../index.md).  However, for multi-user tiers, the credits in the organization will be shared amongst the members.  
+This page will describe the billing information that is subjected to the user's organization.  Prior to reading the contents in this page, it is recommended to be familiar with the [Organization Management](organization.md).  A trial user (Individual Tier) is given 20.00 USD worth of credits to experience the features in EdgeFirst Studio.  However, for multi-user tiers, the credits in the organization will be shared amongst the members.  
 
 ## Usage & Billing
 
@@ -27,7 +27,7 @@ This page may take some time to load.  Once the page loads, it will describe the
 
 ### Remaining Funds
 
-Initially, for free trial users the remaining funds will show as "USD 20.00".  As you use EdgeFirst Studio such as importing datasets you will incur storage costs or deploying training and validation will incur server costs, and then you will see that these remaining funds will be deducted.  Once the remaining funds depletes, you will no longer be able to use any features in EdgeFirst Studio and your datasets will be parked, training and validation sessions will be paused or terminated.  It is recommended to always check the remaining funds in your organization before running experiments to ensure you have enough funds to support the cost of those experiments.  The cost of the features in EdgeFirst Studio will be discussed in more detail in the section [below](#features-and-associated-costs).  For options to add more funds into your organization, please reach out and [email our support team](mailto:support@au-zone.com).
+Initially, for free trial users the remaining funds will show as "USD 20.00".  As you use EdgeFirst Studio such as importing datasets you will incur storage costs or deploying training and validation will incur server costs, and then you will see that these remaining funds will be deducted.  Once the remaining funds depletes, you will no longer be able to use any features in EdgeFirst Studio and your datasets will be parked, training and validation sessions will be paused or terminated.  It is recommended to always check the remaining funds in your organization before running experiments to ensure you have enough funds to support the cost of those experiments.  The cost of the features in EdgeFirst Studio will be discussed in more detail in the section [below](#features-and-associated-costs).  For options to add more funds into your organization, please reach out and [email our support team](mailto:support@edgefirst.ai).
 
 ### Features and Associated Costs
 

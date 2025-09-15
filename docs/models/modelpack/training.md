@@ -8,7 +8,7 @@ First ensure that the dataset is ready to be used for training.  This means that
 
 ## Specify Project Experiments
 
-From the projects page, choose the project that contains the dataset you plan to use.  In this example, the project chosen is the "Object Detection" project which was created in the [Quickstart Guide](../../index.md#create-project).  Next click the "Model Experiments" button as indicated in red.
+From the projects page, choose the project that contains the dataset you plan to use.  In this example, the project chosen is the "Object Detection" project which was created in the [Quickstart Guide](../../getting_started/create_project.md).  Next click the "Model Experiments" button as indicated in red.
 
 <figure markdown="span">
 ![Model Experiments](../assets/training/vision-model-experiments.jpg){ align=center }
@@ -68,7 +68,7 @@ Start a training session by clicking on the "New Session" button on the top righ
 <figcaption>New Session Button</figcaption>
 </figure>
 
-You will be greeted with a training session dialog.  In this dialog, specify the "Trainer Type" to "ModelPack" and provide a name and description of the training session as shown below.  Next specify the dataset to be used with training and validation partitions.  In this example, the dataset specified is the "Coffee Cup" dataset which was created in the [Getting Started](../../index.md).  Next specify the training parameters.  By default, an object detection (bounding boxes) model will be trained.  However, you can specify either "Segmentation" or "Multitask" as shown below.  This model will output both bounding boxes and segmentation masks.  Additional information on these parameters are provided by hovering over the info button ![Info Button](../../assets/buttons/studio-info-button.jpg).
+You will be greeted with a training session dialog.  In this dialog, specify the "Trainer Type" to "ModelPack" and provide a name and description of the training session as shown below.  Next specify the dataset to be used with training and validation partitions.  In this example, the dataset specified is the "Coffee Cup" dataset which was created in the [Getting Started](../../getting_started/capture_data.md).  Next specify the training parameters.  By default, an object detection (bounding boxes) model will be trained.  However, you can specify either "Segmentation" or "Multitask" as shown below.  This model will output both bounding boxes and segmentation masks.  Additional information on these parameters are provided by hovering over the info button ![Info Button](../../assets/buttons/studio-info-button.jpg).
 
 !!! tip "Input Resolution"
     We recommend changing the input resolution to 640x360 to maximize detection rates on small datasets.
@@ -83,7 +83,24 @@ For more information on available "Data Augmentations" please see [Vision Augmen
 <figcaption>Training Session Fields</figcaption>
 </figure>
 
-Once the configurations have been made, go ahead and click on the "Start Session" button on the bottom right of the window.  This will start the training session which will train the model for the number of epochs specified.
+ 1. Model Name: This field specify the name of the trining session and will be used to name the artifacts (e.g. `modelpack-coffecup-640x640-rgba.tflie`, `modelpack-coffecup-640x640-rgba.onnx`)
+ 2. Description: This fiels is used to add some hints about the training session. Commonly used to highlight some parameters.
+ 3. Training Data: In this section the user must select the dataset as well as train/val groups
+ 4. Input Resolution: The user can pick predifined input resulutions. Even when ModelPack accepts any resolution we keep this option as simpler as possible. In case you need a different resolution to be supported, please get in touch with our team.
+ 5. Camera Adaptor: ModelPack accepts three different input optimizations. It could be either of rgb, rgba, or yuyv.
+ 6. Model Parameters: This section configures the model architecture. 
+    1. Model Backbone: Model backbone exposes a CSPDarknet19 optimized for boosting inference time and a CSPDarknet53 optimized for accuracy.
+    2. Model Size: Similar to modern architectures, ModelPack also accept dynamic scaling factors (`width in [0.25, 0.5, 0.75, 1.0]`, `depth in [0.33, 0.33, 0.66, 1.0]`).
+    3. Activation Function: Thids parameter defines the main activation used in the model. Exposed values are ReLU, ReLU6 and SiLU. The best tradeoff between speed and accuracy is produced by ReLU6 activation in most of the cases.
+    4. Interpolation Method: Model upsample layers are ruled by a resize operation. This operation can run with two different algorithms: `Bilinear` or `Nearest`
+    5. Object Detection: Enables object detection task (enabled by default)
+    6. Segmentation: Enables Semantic Segmentation
+    7. Space to Depth: This feaute enables the Space to Depth Transformation to the input in order to reduce model complexity on higher resolutions.
+    8. Split Decoder: Remove the decoder from the model and use a very optimized one from edgefirst. This feature is very useful when the location of the boxes has to be precise (0-offset)
+ 7. Training Parameters: In this section the user is able to specify the number of epochs to train the model as well as the batch size. Remember the larger the input reslution the smaller the batch size. 
+ 8. Data Augmentation: This section controls the probablity of each augmentation technique. This feature is crucial for training models  and reduce overfitting, specially in small datasets.
+ 9. Start Session: This button will start the training session
+
 
 ## Session Progress
 

@@ -2,6 +2,13 @@ nav:
   - Home: https://stage.edgefirst.studio
   - Getting Started:
     - index.md
+    - getting_started/login.md
+    - getting_started/create_project.md
+    - getting_started/capture_data.md
+    - getting_started/annotate_dataset.md
+    - getting_started/train_vision.md
+    - getting_started/validate_vision.md
+    - getting_started/deploy_model.md
     - User Workflows:
       - getting_started/workflows/index.md
       - getting_started/workflows/tourist.md
@@ -30,6 +37,14 @@ nav:
     - datasets/format.md
     - datasets/structure.md
     - Dataset Zoo:
+      - Coffee Cup:
+        - datasets/coffeecup/index.md
+      - Playing Cards:
+        - datasets/playingcards/index.md
+      - BDD100K:
+        - datasets/bdd100k/index.md
+      - COCO People:
+        - datasets/coco_people/index.md
       - COCO:
         - datasets/coco/index.md
         - datasets/coco/import.md
@@ -58,12 +73,16 @@ nav:
         - models/modelpack/deployment/pc.md
         - models/modelpack/deployment/evk.md
         - models/modelpack/deployment/maivin.md
+      - Benchmarks: models/modelpack/benchmarks.md
     - Fusion:
       - models/fusion/index.md
       - models/fusion/training.md
       - models/fusion/validation.md
       - Deploying Fusion:
         - models/fusion/deployment/raivin.md
+    - Ultralytics:
+        - models/ultralytics/index.md
+        - Benchmarks: models/ultralytics/benchmark.md
     - Custom Models: 
       - models/custom/index.md
       - models/custom/quantize.md

@@ -5,7 +5,7 @@
 <figcaption>Projects Splash Page</figcaption>
 </figure>
 
-The "Projects" page is the main page of the portal which organizes data into logical project partitions.  When you first login, you will be directed to this page which already contains a sample project called "Sample Project".
+The "Projects" page organizes data into logical project partitions.  When you first login, this page will already contain a sample project called "Sample Project".
 
 To return to this splash page from any other page, you can:
 

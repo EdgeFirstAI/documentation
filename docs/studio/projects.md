@@ -7,11 +7,7 @@
 
 The "Projects" page organizes data into logical project partitions.  When you first login, this page will already contain a sample project called "Sample Project".
 
-To return to this splash page from any other page, you can:
-
-* click your browser's "Back" button until back here.
-* click the Apps Menu ![Apps Button](../assets/buttons/studio_apps_button.png) waffle button and select the "Projects" menu item.
-* click on the "Au-Zone" Home button in the top-left corner.
+To return to this page from any other page, you can click the Apps Menu ![Apps Button](../assets/buttons/studio_apps_button.png) waffle button and select the "Projects" menu item.
 
 The following figure describes the UI elements of the "Project" card.  Take special note of the project attributes (datasets, auditing tasks, etc.) as these are the buttons that lead into further parts of the project.  Furthermore, the figure below describes the "Sample Project" which is a **Read-Only** public project and therefore, the project context menu is unavailable.  For your own created projects, this option will be available. 
 

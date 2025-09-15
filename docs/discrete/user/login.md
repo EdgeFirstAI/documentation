@@ -7,9 +7,9 @@
     <figcaption>Login Page</figcaption>
     </figure>
 
-2. Once logged in to EdgeFirst Studio, you will be greeted with the following splash page.
+2. Once logged in to EdgeFirst Studio, you will be greeted with the following [User Home Page](../../studio/home.md). Click that link for more information regarding the User Home Page.
 
     <figure markdown="span">
-    ![Starting Page](../../studio/assets/user/splash-page.jpg){ align=center }
-    <figcaption>Projects Splash Page</figcaption>
+    ![Starting Page](../../studio/assets/user/home-page.png){ align=center }
+    <figcaption>User Home Page</figcaption>
     </figure>

@@ -58,4 +58,4 @@ Since this is a trial account, the only transaction shown is the 20.00 USD credi
 
 ## Next Steps
 
-This page has described billing information and the cost of each feature in EdgeFirst Studio.  Next we invite you by trying these features described in the [end-to-end workflows](../../getting_started/workflows/index.md).
+This page has described billing information and the cost of each feature in EdgeFirst Studio.  Next we invite you to learn more about [managing your projects](../projects.md) in EdgeFirst Studio. 

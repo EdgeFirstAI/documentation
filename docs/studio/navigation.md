@@ -70,6 +70,7 @@ You can request additional funds via the "Request Funds" button. This will bring
 ![Apps Menu](assets/navigation/request-funds.png){ align=center }
 <figcaption>Request Funds Modal</figcaption>
 </figure>
+
 ## Apps Menu
 
 The Apps Menu provides selections towards the various tools provided in EdgeFirst Studio.

@@ -20,9 +20,9 @@ The elements of the navbar are:
 3. Page-specific elements. On the Home page, this will be a "Go To Projects" buttons.  On other pages, it will usually be a "Projects" drop-down to navigate to other projects.  
 4. The current amount of funds and "Request Funds" button.  
 5. The Help Button.  This will take the user to the page's corresponding documentation page.  
-6. The Apps Waffle Button.  This will take the user to the [Apps Menu](navigation.md#apps-menu)  
-7. The Help Center Button.  This will take the user to the [General Help Center](navigation.md#general-help)  
-8. The User Menu Button.  This will take the [User Menu](navigation.md#user-menu)
+6. The Apps Waffle Button.  This will take the user to the [Apps Menu](navigation.md#apps-menu).  
+7. The Help Center Button.  This will take the user to the [General Help Center](navigation.md#general-help).  
+8. The User Menu Button.  This will take the [User Menu](navigation.md#user-menu).
 
 ## User Menu
 
@@ -120,4 +120,4 @@ This link provides information about general alerts (if present).  For example, 
 
 ## Next Steps
 
-Now that you are familiar with navigating EdgeFirst Studio, learn more about the [Automatic Ground Truth Generation (AGTG)](agtg.md) next which describes the auto-annotation features in EdgeFirst Studio to make the annotation process as seamless as possible. 
+Now that you are familiar with navigating EdgeFirst Studio, learn more about [managing users in your organization](user/index.md) next.

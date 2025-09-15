@@ -1,4 +1,4 @@
-The creation of [projects](../studio/projects.md) is the single most important step a user needs to do before using the functionality provided by EdgeFirst Studio.  Projects are workspaces that users can use to separate their datasets and keep the various model experiments -- training and validation sessions -- seperate and linked to their respective datasets.
+The creation of [projects](../studio/projects.md) is the single most important step a user needs to do before using the functionality provided by EdgeFirst Studio.  Projects are workspaces that users can use to separate their datasets and keep the various model experiments -- training and validation sessions -- separate and linked to their respective datasets.
 
 {% include-markdown "discrete/studio/create_project.md" heading-offset=0 %}
 

@@ -48,3 +48,5 @@ Follow these conventions when working on the documentation.
 3. Use well descriptive names for the images. Avoid a name like "image-1" for example. 
 4. Either keep assets as a sub-folder to where the documentation using these assets lives, or a sub-folder of the root assets with the same hierarchy. (Former is currently being followed).
 5. Do NOT use screenshots from private customer data in the documentation. We should be using our own custom datasets. Exception would be documentation for a specific dataset such as COCO.
+6. Use powerpoint slidedeck `images_with_layers.pptx` to add images with drawing. Adopt a size of 1005x660 for home screen images of EdgeFirst Studio. 
+7. Avoid any unused images in the assets folder. Any unused images should be removed. 

@@ -1,9 +1,9 @@
 # Create Project
 
-1. From the main splash screen, click on "Go To Projects".
+1. From the [User Home Page](../../studio/home.md) screen, click the "Go To Projects" button.
 
     <figure markdown="span">
-    ![Go To Projects](../../studio/assets/user/splash-page-goto-projects.jpg){ align=center }
+    ![Go To Projects](../../studio/assets/user/home-page-goto-projects.png){ align=center }
     <figcaption>The location of the "Projects" button</figcaption>
     </figure>
 

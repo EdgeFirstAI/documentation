@@ -17,6 +17,7 @@ nav:
       - getting_started/workflows/maivin.md
   - Studio:
     - studio/index.md
+    - studio/home.md
     - studio/navigation.md
     - User Management:
       - studio/user/index.md

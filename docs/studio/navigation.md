@@ -1,10 +1,10 @@
 # Navigating EdgeFirst Studio
 
-This page describes how to navigate towards different functionalities in the EdgeFirst Studio.  When first logged in to EdgeFirst Studio, you will be directed to the "Projects" page as shown below.  This page is the main landmark in EdgeFirst Studio. 
+This page describes how to navigate towards different functionalities in the EdgeFirst Studio.  When first logged in to EdgeFirst Studio, you will be directed to the [User Home Page](home.md) as shown below.
 
 <figure markdown="span">
-![Starting Page](assets/projects/studio-from-scratch.jpg){ align=center }
-<figcaption>Projects Splash Page</figcaption>
+![Starting Page](assets/user/home-page.png){ align=center }
+<figcaption>User Home Page</figcaption>
 </figure>
 
 Navigation towards different functionalities in the EdgeFirst Studio portal is facilitated through the top navigation bar as shown below.
@@ -13,6 +13,16 @@ Navigation towards different functionalities in the EdgeFirst Studio portal is f
 ![Navigation Bar](assets/navigation/navigation-bar.png){ align=center }
 <figcaption>Navigation Bar</figcaption>
 </figure>
+
+The elements of the navbar are:  
+1. The Au-Zone Home Button. This button will return a user to their [User Home Page](home.md).  
+2. The Page Title.  
+3. Page-specific elements. On the Home page, this will be a "Go To Projects" buttons.  On other pages, it will usually be a "Projects" drop-down to navigate to other projects.  
+4. The current amount of funds and "Request Funds" button.  
+5. The Help Button.  This will take the user to the page's corresponding documentation page.  
+6. The Apps Waffle Button.  This will take the user to the [Apps Menu](navigation.md#apps-menu)  
+7. The Help Center Button.  This will take the user to the [General Help Center](navigation.md#general-help)  
+8. The User Menu Button.  This will take the [User Menu](navigation.md#user-menu)
 
 ## User Menu
 
@@ -52,6 +62,14 @@ This menu provides the options to go to the help pages, submit feedback, view re
 
 The "Help" button will point towards the link in the EdgeFirst documentation that describes the features and context of the current page being visited. 
 
+## Requesting Funds
+
+You can request additional funds via the "Request Funds" button. This will bring up the Request Funds modal. Here you can request funds from us and set a reason why.
+
+<figure markdown="span">
+![Apps Menu](assets/navigation/request-funds.png){ align=center }
+<figcaption>Request Funds Modal</figcaption>
+</figure>
 ## Apps Menu
 
 The Apps Menu provides selections towards the various tools provided in EdgeFirst Studio.

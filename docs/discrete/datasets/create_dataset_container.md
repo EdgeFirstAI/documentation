@@ -30,4 +30,4 @@ Your created dataset will look as follows.
 <figcaption>Created Dataset</figcaption>
 </figure>
 
-[login]: https://stage.edgefirst.studio/login
+[login]: https://edgefirst.studio/login

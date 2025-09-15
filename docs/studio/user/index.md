@@ -36,4 +36,4 @@ Proceed to the next section below for creating the accounts for the new users in
 
 This workflow has shown how to invite new users to your organization.  To start experimenting with various features in EdgeFirst Studio, the [end-to-end workflows](../../getting_started/workflows/index.md) provides more guidance. 
 
-[login]: https://stage.edgefirst.studio/login
+[login]: https://edgefirst.studio/login

@@ -33,6 +33,14 @@ nav:
     - studio/instances.md
     - studio/snapshots.md
     - studio/agtg.md
+  - 3D MLOps:
+    - 3D/index.md
+    - 3D/viewers.md
+    - Workflows:
+      - 3D/annotation.md
+      - 3D/training.md
+      - 3D/validation.md
+      - 3D/deployment.md
   - Datasets:
     - datasets/index.md
     - datasets/format.md

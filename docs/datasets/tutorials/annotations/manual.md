@@ -193,3 +193,5 @@ This is a high-level video tutorial showing adjustments to the 3D annotations.
 ## Next Steps
 
 Once you have verified that your dataset has been properly annotated, you can now proceed to training your [Vision](../../../models/modelpack/training.md) or [Fusion](../../../models/fusion/training.md) model. 
+
+Otherwise, additional dataset tutorials are provided under [Dataset Management](../management.md).

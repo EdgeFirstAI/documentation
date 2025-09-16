@@ -10,7 +10,7 @@ We offer various [pricing tiers][pricing_tiers] depending on your needs.  These 
 !!! tip "Choose Your Tier"
     📬 If you would like to know more on the various pricing tiers available or you would like to sign up for a specific tier feel free to [email our support team](mailto:support@edgefirst.ai) — we’re here to help!
 
-It is recommended for new users to be familiar with [Navigating EdgeFirst Studio](navigation.md) that describes what/where are various features and dashboards in EdgeFirst Studio.
+It is recommended for new users to be familiar with the [User Home Page](home.md) and [Navigating EdgeFirst Studio](navigation.md).  These describe what/where are various features and dashboards in EdgeFirst Studio.
 
 Lastly, new users are invited to learn more about the auto-annotation process in EdgeFirst Studio known as [Automatic Ground Truth Generation (AGTG)](agtg.md) that aims to make the annotation process as effortless as possible for the user. 
 

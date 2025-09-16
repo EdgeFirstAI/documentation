@@ -1,6 +1,6 @@
 # 3D MLOps
 
-EdgeFirst Studio offers 3D Machine Learning Operations using a [Raivin platform](../platforms/quickstart.md) that support dataset annotations using world coordinates and model training to detect the position of objects for practical applications such as object awareness or perception. 
+EdgeFirst Studio offers 3D Machine Learning Operations using a [Raivin platform](../platforms/index.md) that support dataset annotations using world coordinates and model training to detect the position of objects for practical applications such as object awareness or perception. 
 
 The following is a sample 3D annotation (right) in EdgeFirst Studio represented as 3D bounding boxes around the objects of interest.  The 2D image (left) are shown beside with the 2D annotations represented as segmentation masks and 2D bounding boxes covering the objects of interest in the image. 
 

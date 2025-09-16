@@ -9,6 +9,3 @@ If you have an NXP i.MX 8M Plus EVK you can also run your model directly on the 
     Support for additional platforms beyond the NXP i.MX 8M Plus will be available soon.  Let us know which platform you'd like to see supported next!
 
 If you have an [EdgeFirst Platform](../../platforms/index.md) such as the Maivin or Raivin then you can deploy and run the model using the bundled EdgeFirst Middleware by following the tutorial [Deploying to EdgeFirst Platforms](../../models/modelpack/deployment/maivin.md).
-
-!!! Note "No Studio Costs"
-    Deployment of Vision models will not cost any credits from Studio.

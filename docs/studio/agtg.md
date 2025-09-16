@@ -89,6 +89,52 @@ Once the propagation completes, click on "SAVE ANNOTATIONS" to save the annotati
 !!! tip
     For cases where the object exits and then re-enters the frame, the object might not be tracked properly.  Repeat the steps as necessary to annotate the objects that were missed.
 
+## The AGTG Algorithm
+
+The AGTG algorithm is designed to generate the ground truth annotations of a sequential dataset.  The annotations are categorized as image-based 2D annotations and spatial-based 3D annotations.  Image-based annotations are 2D bounding boxes and segmentation masks marking the objects in an image in pixel coordinates.  Spatial-based annotations are 3D bounding boxes around objects in world coordinates such as meters.  More information regarding these annotation types are found [here](../datasets/format.md#annotation-schema).
+
+Image-based annotations are generated using Vision models.  A YOLOx ONNX model is used to generate 2D bounding boxes.  The large [SAM-2 PyTorch model](https://github.com/facebookresearch/sam2) is used to generate 2D segmentation masks by taking advantage of the model’s object tracking and propagation capabilities.
+
+Spatial-based annotations are generated using sensor information such as the LiDAR and Radar and model predictions such as the 2D annotations (bounding boxes and masks) and depth estimations from a large ONNX depth model from [Metrics3D](https://github.com/YvanYin/Metric3D).  These annotations will be generated for recordings captured using the Raivin with either a Radar or a LiDAR module attached.
+
+The AGTG Algorithm can be visualized using the following flow chart.
+
+```mermaid
+%%{init: {"flowchart": {"defaultRenderer": "elk"}} }%%
+flowchart TB
+    %% Definitions
+    lidar{Has LiDAR PCDs?}
+    yolox[YOLOx COCO Detections]
+    propagation_type[Set SAM-2 Propagation Direction]
+    propagation[SAM-2 Propagation]
+    2D[SAM-2 Masks to 2D Bounding Boxes]
+
+    filter[Mask and LiDAR PCD Filter]
+    lidar_cluster[LiDAR PCD DBSCAN Clustering]
+    specify_cluster[PCD Cluster Specification]
+    3D[3D Box Formulation]
+
+    depth_map[Depth Map Localization]
+    projection[2D Annotations to 3D Projections]
+    radar_cluster[Radar PCD DBSCAN Clustering ]
+
+    %% Flowchart
+    yolox --> propagation_type--> propagation --> 2D --> lidar
+    lidar -- Yes --> filter --> lidar_cluster --> specify_cluster --> 3D
+    lidar -- No --> radar_cluster --> projection --> depth_map --> 3D
+```
+
+The logic shown starts with object detection using the YOLOx model.  These detections are used to drive the SAM-2 propagation which relies on the input frames and bounding box prompts around the objects in these frames.  The segmentation masks are then converted into an array of polygons and a 2D bounding box is formulated for each mask completing the set of 2D annotations. 
+
+The spatial-based annotations are formulated based on one of the following sensors and 2D annotation combinations.
+
+1.	Radar Point Clouds + Depth map Estimations + Segmentation Masks
+2.	LiDAR Points Clouds + Segmentation Masks 
+
+For Raivin recordings without the LiDAR PCDs, the first combination is applied to formulate 3D bounding box annotations using Radar PCDs instead.  This process applies a DBSCAN clustering algorithm to the Radar PCDs to cluster groups of points belonging to a single object.  Next the process intends to find the Radar PCD cluster that corresponds to the object that is segmented in the image.  The logic here is to project the 2D bounding box into world coordinates and to take the depth estimations enclosed by the segmentation mask to find the nearest distance between the (x, y) coordinates and the cluster’s centroid.  The cluster with the smallest distance from the estimated coordinates is the PCD cluster that represents the object.  The 3D bounding box is formulated by taking the x, y, z center coordinates (centroid) of the cluster and the depth, width, height of the bounding box are taken from both the 2D image projections and the dimensions of the cluster.
+
+For Raivin recordings with the LiDAR module, the second combination is applied to formulate the 3D bounding box annotations.  Since the LiDAR PCDs have higher resolution over Radar, there is no clustering needed to be applied to the PCDs at the start.  The process starts by filtering the LiDAR PCDs that intersects only with the segmentation mask.  However, the PCDs that intersect with the mask are not always guaranteed to belong to the object, a DBSCAN clustering algorithm is applied to the set of filtered PCDs.  The cluster with the highest number of points is taken as the cluster that represents the object segmented in the image.  Finally, the 3D bounding box is formulated by taking the x, y, z center coordinates (centroid) of the cluster and the depth, width, height dimensions of the cluster. 
+
 ## Next Steps
 
 Now that you have been introduced to the auto-annotation features in EdgeFirst Studio, proceed to the [Datasets](../datasets/index.md) section to learn more about managing your own datasets from following the capture and annotation workflows. 

@@ -4,4 +4,13 @@ This section describes how datasets are being handled in EdgeFirst.  The dataset
 
 The [EdgeFirst Dataset Format](format.md) is purposely designed to efficiently store multiple annotation types and sensor types.  There are 2D and 3D types of annotations that correlate with each other. For example, a 2D annotation is a set of pixel-based bounding boxes and segmentation masks whereas a 3D annotation is a set of 3D bounding boxes in meters.  However, a single object can be described by all three linked annotation types: a 2D bounding box, a 2D mask, and a 3D bounding box.  There could be multiple sensors involved in creating the dataset such as the camera, Radar and/or LiDAR, etc.  The readings from these sensors is rarely modified and needs to be disinguished in the dataset.  Thus, the EdgeFirst Dataset is known for its file pairs (typically Zip and Arrow) for storing the sensor data and annotations separately.  The [EdgeFirst Dataset File Structure](structure.md) comes in various forms depending if the data is a sequence or not. 
 
-We provide public EdgeFirst Datasets and commercially clean datasets which can be licensed from Au-Zone Technologies.  Some example third-party datasets such as [COCO](coco/index.md) are also provided for evaluation and research purposes only.  Refer to their respective licensing restrictions.
+We provide public EdgeFirst Datasets and commercially clean datasets which can be licensed from Au-Zone Technologies as described under the Dataset Zoo.  
+
+* [Coffee Cup](coffeecup/index.md)
+* [Playing Cards](playingcards/index.md)
+
+Some example third-party datasets are also provided for evaluation and research purposes only.  Refer to their respective licensing restrictions.
+
+* [BDD100K](bdd100k/index.md)
+* [COCO People](coco_people/index.md)
+* [COCO](coco/index.md)

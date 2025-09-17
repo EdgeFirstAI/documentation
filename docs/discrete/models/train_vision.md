@@ -32,6 +32,9 @@ Create a new training session by clicking on the "New Session" button on the top
 
 Follow the settings indicated and keep the rest of the settings by their default.  Click "Start Session" to start the training session. 
 
+!!! warning "Session Name"
+    Do not include any forward slash "/" in the session names as this can result in missing model artifacts.
+
 <figure markdown="span">
 ![Start Training Session](../../models/assets/training/vision-train-settings.jpg){ align=center }
 <figcaption>Start Training Session</figcaption>

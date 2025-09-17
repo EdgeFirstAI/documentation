@@ -1,6 +1,6 @@
 # EdgeFirst Studio Model Zoo
 
-The EdgeFirst Studio Model Zoo provides training support for multiple models, including [ModelPack](modelpack/index.md), [EdgeFirst Fusion](fusion/index.md) and [Ultralytics](ultralytics/index.md). These frameworks are fully integrated and can be configured directly through the user interface.
+The EdgeFirst Studio Model Zoo provides training support for multiple models, including [ModelPack](modelpack/index.md), [EdgeFirst Fusion](fusion/index.md), and [Ultralytics](ultralytics/index.md). These frameworks are fully integrated and can be configured directly through the user interface.
 
 === "ModelPack"
 
@@ -13,8 +13,8 @@ The EdgeFirst Studio Model Zoo provides training support for multiple models, in
         - [User-Managed](modelpack/validation/user_managed.md)
     * [Deploying ModelPack](tutorials/deployment.md#modelpack)
 
-    <div class="wizard-actions" markdown>
-    [Read More → ](modelpack/index.md){ .md-button }
+    <div style="max-width: fit-content; margin-left: auto; margin-right: auto;" class="wizard-actions" markdown>
+    [Read More](modelpack/index.md){ .md-button }
     </div>
 
 === "EdgeFirst Fusion"
@@ -27,19 +27,22 @@ The EdgeFirst Studio Model Zoo provides training support for multiple models, in
         - User Managed (*Coming Soon*)
     * [Deploying Fusion Models ](tutorials/deployment.md#fusion)
 
-    [Read More → ](fusion/index.md){ .md-button }
+    <div style="max-width: fit-content; margin-left: auto; margin-right: auto;" class="wizard-actions" markdown>
+    [Read More](fusion/index.md){ .md-button }
+    </div>
 
 === "Ultralytics"
 
     [Ultralytics](https://docs.ultralytics.com/) YOLO which is a popular implementation of the ubiquitous 
     YOLO architecture for one-shot detection models, and capable for being applied to various other tasks such as instance segmentation
     
-    [Read More → ](ultralytics/index.md){ .md-button }
+    <div style="max-width: fit-content; margin-left: auto; margin-right: auto;" class="wizard-actions" markdown>
+    [Read More](ultralytics/index.md){ .md-button }
+    </div>
 
-
-
-!!! tip
-    If you need support for additional models, please do not hesitate and emal <a href="mailto:support@edgefirst.ai">support@edgefirst.ai</a>
+!!! tip "Build Your Own Model (BYOM)"
+    📬 If you need support for additional models,
+    please do not hesitate and [email our support team](mailto:support@edgefirst.ai) — we’re here to help!
 
 ## Related Articles
 

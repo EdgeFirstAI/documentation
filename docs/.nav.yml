@@ -57,6 +57,8 @@ nav:
       - COCO:
         - datasets/coco/index.md
         - datasets/coco/import.md
+      - Raivin Ultra Short:
+        - datasets/raivin_ultra_short/index.md
     - Dataset Tutorials:
       - datasets/tutorials/index.md
       - datasets/tutorials/capture.md

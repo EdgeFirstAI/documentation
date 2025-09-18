@@ -28,7 +28,7 @@ This page presents comprehensive benchmark results for ModelPack, a versatile mo
     | modelpack-csp53-nano-640x640-rgb   | 0.862   | 0.642         | 44.08     |  
     | modelpack-csp53-small-640x640-rgb  | 0.928   | 0.692         | 79.29     |  
 
-    Visit the full **Playingcards** dataset [Benchmark here](../../datasets/playingcards/index.md)
+    Visit the full **Playingcards** dataset [Benchmark here](../../datasets/playingcards/index.md).
 
 === "Coffee Cup"
     
@@ -46,7 +46,7 @@ This page presents comprehensive benchmark results for ModelPack, a versatile mo
     |------------------------------------|---------|---------------|-------------|-------------------|-----------|
     | modelpack-csp19-medium-640x640-rgb | 0.995   | 0.911         | 0.884       | 0.856             | 45.53     |  
      
-    Visit the full **Coffee Cup** dataset [Benchmark here](../../datasets/coffeecup/index.md)
+    Visit the full **Coffee Cup** dataset [Benchmark here](../../datasets/coffeecup/index.md).
 
 === "BDD100K"
 
@@ -69,7 +69,7 @@ This page presents comprehensive benchmark results for ModelPack, a versatile mo
     | modelpack-csp19-large-640x640-rgb | 0.375   | 0.175         |  19.28    |
     | modelpack-csp53-nano-640x640-rgb  | 0.403   | 0.194         |  45.15    |
 
-    Visit the full **BDD100K** dataset [Benchmark here](../../datasets/bdd100k/index.md)
+    Visit the full **BDD100K** dataset [Benchmark here](../../datasets/bdd100k/index.md).
 
 === "COCO People"
     
@@ -87,7 +87,7 @@ This page presents comprehensive benchmark results for ModelPack, a versatile mo
     |----------------------------------|---------|---------------|-----------|
     | modelpack-csp19-nano-640x640-rgb | 0.196   | 0.073         |  10.63    | 
     
-    Visit the full **COCO People** dataset [Benchmark here](../../datasets/coco_people/index.md)
+    Visit the full **COCO People** dataset [Benchmark here](../../datasets/coco_people/index.md).
 
 === "COCO 2017"
 
@@ -121,7 +121,7 @@ This page presents comprehensive benchmark results for ModelPack, a versatile mo
     | csp53-large  | -         | -         | -          | 128        | 49.7M      |
 
     !!! note
-        All modelpack backbones are pretrained on Imagenet. If you want to reproduce the experiments or metrics on this dataset, please contact <a href="mailto:support@edgefirst.ai">support@edgefirst.ai</a>
+        All modelpack backbones are pretrained on Imagenet.  If you want to reproduce the experiments or metrics on this dataset, please contact <a href="mailto:support@edgefirst.ai">support@edgefirst.ai</a>.
 
 !!! note "BSP Version"
     **i.MX 8M Plus** is flashed with [NXP Yocto BSP](https://www.nxp.com/design/design-center/software/embedded-software/i-mx-software/embedded-linux-for-i-mx-applications-processors:IMXLINUX) 6.12.

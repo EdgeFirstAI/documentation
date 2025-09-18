@@ -20,7 +20,7 @@ This page provides a summary of the benchmarks gathered for Ultralytics across v
     |---------------------------------|---------|---------------|-----------|
     | ultralytics-yolov8n-640x640-rgb | 0.809   | 0.671         | 138.13    | 
     
-    Visit the full **Playingcards** dataset [Benchmark here](../../datasets/playingcards/index.md)
+    Visit the full **Playingcards** dataset [Benchmark here](../../datasets/playingcards/index.md).
 
 === "Coffee Cup"
 
@@ -41,7 +41,7 @@ This page provides a summary of the benchmarks gathered for Ultralytics across v
 
     ## Segmentation Metrcis
 
-    Visit the full **Coffee Cup** dataset [Benchmark here](../../datasets/coffeecup/index.md)
+    Visit the full **Coffee Cup** dataset [Benchmark here](../../datasets/coffeecup/index.md).
 
 === "BDD100K"
 
@@ -61,11 +61,11 @@ This page provides a summary of the benchmarks gathered for Ultralytics across v
     |---------------------------------|---------|---------------|-----------|
     | ultralytics-yolov8n-640x640-rgb | 0.272   | 0.138         | 137.66    |
 
-    Visit the full **BDD100K** dataset [Benchmark here](../../datasets/bdd100k/index.md)
+    Visit the full **BDD100K** dataset [Benchmark here](../../datasets/bdd100k/index.md).
 
-=== "Coco People"
+=== "COCO People"
     
-    This dataset contains only annotations for person class from original dataset. However, all the images are included during training as negative samples
+    This dataset contains only annotations for person class from original dataset.  However, all the images are included during training as negative samples
 
     **Table: Ultralytics on COCO People - RGB - (640x640) - ONNX - (100 epochs)**
 
@@ -79,9 +79,9 @@ This page provides a summary of the benchmarks gathered for Ultralytics across v
     |---------------------------------|---------|---------------|-----------|
     | ultralytics-yolov8n-640x640-rgb | 0.583   | 0.374         |  137.43   | 
 
-    Visit the full **COCO People** dataset [Benchmark here](../../datasets/coco_people/index.md)
+    Visit the full **COCO People** dataset [Benchmark here](../../datasets/coco_people/index.md).
     
-=== "Coco 2017"
+=== "COCO 2017"
 
     !!! note
         COCO benchmark is coming soon !!!
@@ -89,7 +89,7 @@ This page provides a summary of the benchmarks gathered for Ultralytics across v
 === "ImageNet"
 
     !!! note
-        To see Imagenet metrics visit Ultralytics: [Ultralytics ImageNet](https://docs.ultralytics.com/datasets/classify/imagenet/)
+        To see Imagenet metrics visit Ultralytics: [Ultralytics ImageNet](https://docs.ultralytics.com/datasets/classify/imagenet/).
 
 !!! note "BSP Version"
     **i.MX 8M Plus** is flashed with [NXP Yocto BSP](https://www.nxp.com/design/design-center/software/embedded-software/i-mx-software/embedded-linux-for-i-mx-applications-processors:IMXLINUX) 6.12.

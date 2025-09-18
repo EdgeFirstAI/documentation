@@ -4,7 +4,23 @@ The Raivin Ultra Short dataset is a 3D dataset created by Au-Zone Technologies t
 
 ## Fusion Benchmark (50 epochs)
 
-TBA
+=== "ONNX"
+
+    **Fusion BEV Metrics - (480x270) | ONNX**
+
+    | Model                       | Kernel Size | Precision | Recall | IoU   | F1    |
+    |-----------------------------|-------------|-----------|--------|-------|-------|
+    | fusion-ultra-short-480x270  | 1           | 0.757     | 0.739  | 0.597 | 0.748 |
+    |                             | 3           | 0.851     | 0.831  | 0.725 | 0.841 |
+
+=== "TFLite"
+
+    **Fusion BEV Metrics - (480x270) | TFLite**
+
+    | Model                       | Kernel Size | Precision | Recall | IoU   | F1    |
+    |-----------------------------|-------------|-----------|--------|-------|-------|
+    | fusion-ultra-short-480x270  | 1           | 0.757     | 0.738  | 0.597 | 0.748 |
+    |                             | 3           | 0.851     | 0.830  | 0.725 | 0.841 |
 
 ## Dataset Information
 

@@ -1,6 +1,6 @@
 # Validate Fusion Model
 
-Now that you have trained a Fusion model, you can now start validating your model.  This will briefly show the steps for validating a model, but for an in depth tutorial, please see [Validating Fusion](../../models/fusion/validation.md).
+Now that you have trained a Fusion model, you can now start validating your model.  This will briefly show the steps for validating a model, but for an in depth tutorial, please see [Validating Fusion Models](../../models/validation/fusion/managed.md).
 
 On the train session card, expand the session details.
 

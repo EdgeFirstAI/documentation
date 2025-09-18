@@ -1,17 +1,17 @@
 # Fusion Metrics
 
-This section will describe the validation metrics reported in [Fusion validation sessions](../tutorials/validation.md#fusion).  
+This section will describe the validation metrics reported in [Validating Fusion Models](../fusion/managed.md).  
 
 ## Base Metrics
 
 The Fusion validation sessions reports the metrics for precision, recall, F1-score, and IoU represented as a bar chart.  Shown below is an example.  
 
 <figure markdown="span">
-  ![Base Metrics](../assets/metrics/fusion-base-metrics.jpg){ align=center }
+  ![Base Metrics](../../assets/metrics/fusion-base-metrics.jpg){ align=center }
   <figcaption>Base Metrics</figcaption>
 </figure>
 
-By default, these metrics are calculated based on the kernel sizes 1x1 and 3x3 which can be configured when starting a new session (*See [Fusion Validation](../fusion/validation.md#create-validation-session)*).  The kernel size is the window size setting where a kernel size of 1x1 indicates a 1-to-1 match between the ground truth and the model occupancy grid.  A prediction can only be correct in a 1x1 kernel if the position of the prediction is in the same position as the ground truth.  However, increasing the kernel size is more lenient by allowing predictions to be correct if their positions are within 3 meters away (3x3 kernel) from the ground truth.  
+By default, these metrics are calculated based on the kernel sizes 1x1 and 3x3 which can be configured when starting a new session (*See [Fusion Validation](../fusion/managed.md#create-validation-session)*).  The kernel size is the window size setting where a kernel size of 1x1 indicates a 1-to-1 match between the ground truth and the model occupancy grid.  A prediction can only be correct in a 1x1 kernel if the position of the prediction is in the same position as the ground truth.  However, increasing the kernel size is more lenient by allowing predictions to be correct if their positions are within 3 meters away (3x3 kernel) from the ground truth.  
 
 The metrics and their equations are described below.
 
@@ -28,7 +28,7 @@ This metric is based on how well the model finds the ground truth.  In other wor
 This metric is based on both precision and recall.  It measures how well the model performs overall in terms of how well the model makes correct predictions and finds the ground truth.  The following table demonstrates the nature of the F1-score as a function of precision and recall.
 
 <figure markdown="span">
-  ![F1-Score](../assets/metrics/F1-table.jpg){ align=center }
+  ![F1-Score](../../assets/metrics/F1-table.jpg){ align=center }
   <figcaption>F1-Score</figcaption>
 </figure>
 
@@ -47,7 +47,7 @@ $$
 This metric is defined as the intersection over union.  It also measures how well the model performs overall by comparing the amount of correct predictions over the total amount of ground truths and the model predictions.  This metric, however, is not as lenient as the F1-score as demonstrated by the following table.
 
 <figure markdown="span">
-  ![IoU Score](../assets/metrics/iou-table.jpg){ align=center }
+  ![IoU Score](../../assets/metrics/iou-table.jpg){ align=center }
   <figcaption>IoU Score</figcaption>
 </figure>
 
@@ -68,14 +68,14 @@ These timings are measured as described under the [Model Timings](detection.md#m
 The Precision versus Recall curve is based on varying detection thresholds from 0 to 1 in 0.05 steps.  The principle in practice is that for lower thresholds precision is low, but recall is high and as the threshold increases, precision increases and recall decreases.  This shows the tradeoff between precision and recall.  The nature of this tradeoff is due to increased detections at low threshold thus capturing more ground truths (high recall) but much more prone to false predictions (low precision).  The opposite is true for high thresholds.  A well performing model shows a high area under the curve of the Precision versus Recall curve.  
 
 <figure markdown="span">
-  ![Precision versus Recall](../assets/metrics/fusion-precision-v-recall.jpg){ align=center }
+  ![Precision versus Recall](../../assets/metrics/fusion-precision-v-recall.jpg){ align=center }
   <figcaption>Precision versus Recall</figcaption>
 </figure>
 
 Another representation of the Precision versus Recall is to incorporate the varying threshold in the plot.  The following curve shows the "Precision and Recall versus Thresholds" curve.  At lower thresholds, precision is low and recall is high.  By increasing the threshold, we can see precision and recall converge.  The point of convergence indicates the ideal threshold to use for deploying the model.  This is the optimum threshold where precision and recall are balanced such that one is not sacrificing the other.  
 
 <figure markdown="span">
-  ![Precision and Recall vs Thresholds](../assets/metrics/fusion-precision-recall-thresholds.jpg){ align=center }
+  ![Precision and Recall vs Thresholds](../../assets/metrics/fusion-precision-recall-thresholds.jpg){ align=center }
   <figcaption>Precision and Recall vs Thresholds</figcaption>
 </figure>
 
@@ -89,7 +89,7 @@ There are four BEV heatmaps generated.  The heatmaps are a representation of the
 ### True Positives Heatmap
 
 <figure markdown="span">
-  ![True Positive Heatmap](../assets/metrics/tp-heatmap.jpg){ align=center }
+  ![True Positive Heatmap](../../assets/metrics/tp-heatmap.jpg){ align=center }
   <figcaption>True Positive Heatmap</figcaption>
 </figure>
 
@@ -102,7 +102,7 @@ $$
 ### False Negatives Heatmap
 
 <figure markdown="span">
-  ![False Negative Heatmap](../assets/metrics/fn-heatmap.jpg){ align=center }
+  ![False Negative Heatmap](../../assets/metrics/fn-heatmap.jpg){ align=center }
   <figcaption>False Negative Heatmap</figcaption>
 </figure>
 
@@ -115,7 +115,7 @@ $$
 ### False Positives Heatmap
 
 <figure markdown="span">
-  ![False Positive Heatmap](../assets/metrics/fp-heatmap.jpg){ align=center }
+  ![False Positive Heatmap](../../assets/metrics/fp-heatmap.jpg){ align=center }
   <figcaption>False Positive Heatmap</figcaption>
 </figure>
 
@@ -128,7 +128,7 @@ $$
 ### Ground Truth Heatmap
 
 <figure markdown="span">
-  ![Ground Truth Heatmap](../assets/metrics/gt-heatmap.jpg){ align=center }
+  ![Ground Truth Heatmap](../../assets/metrics/gt-heatmap.jpg){ align=center }
   <figcaption>Ground Truth Heatmap</figcaption>
 </figure>
 

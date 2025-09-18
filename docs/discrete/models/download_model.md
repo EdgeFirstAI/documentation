@@ -4,7 +4,7 @@ Download the model from EdgeFirst Studio into the device.  There are two methods
 
 === "Download using SCP"
 
-    As mentioned under the [Training Outcomes](../../models/modelpack/training.md#training-outcomes) section, the trained models can be downloaded by clicking the "View Additional Details" button on the training session card in EdgeFirst Studio. 
+    As mentioned under the [Training Outcomes](../../models/training/vision.md#training-outcomes) section, the trained models can be downloaded by clicking the "View Additional Details" button on the training session card in EdgeFirst Studio. 
 
     <figure markdown="span">
     ![Training Session Attributes](../../models/assets/training/training-session-attributes.jpg){ align=center }

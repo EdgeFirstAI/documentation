@@ -36,7 +36,7 @@ Reading these files can be done using the python snippets below.
         return labels
     ```
 
-The `labels.txt` file is a text file that lists all the labels in the dataset that the model was trained on.  The model outputs indices which can be converted into the string representation using this file.  As an example, the contents of this file would appear like the [COCO labels](../../datasets/coco/index.md#coco-labels).
+The `labels.txt` file is a text file that lists all the labels in the dataset that the model was trained on.  The model outputs indices which can be converted into the string representation using this file.  As an example, the contents of this file would appear like the [COCO labels](../datasets/coco/index.md#coco-labels).
 
 The `config.yaml` is formatted like a dictionary and contains more information on how the model was trained in EdgeFirst Studio and how the outputs can be decoded into boxes, scores, and/or masks. This file contains the following sections below.
 
@@ -65,7 +65,7 @@ validation:
 
 ### Augmentation
 
-This section in the metadata lists the augmentation techniques and the probabilities used for each technique during training.  More information can be found for these [augmentation techniques](../augmentations.md). 
+This section in the metadata lists the augmentation techniques and the probabilities used for each technique during training.  More information can be found for these [augmentation techniques](augmentations.md). 
 
 ```
 augmentation:
@@ -82,7 +82,7 @@ augmentation:
 
 ### Deployment
 
-This section of the metadata stores information specified in EdgeFirst Studio when specifying the name, description, and model upon [creating the training session](../modelpack/training.md#create-training-session).
+This section of the metadata stores information specified in EdgeFirst Studio when specifying the name, description, and model upon [creating the training session](training/vision.md#create-training-session).
 
 ```
 deployment:

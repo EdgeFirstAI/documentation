@@ -25,4 +25,4 @@ While solving both tasks in the same inference cycle, the three scales are used.
 
 ![ModelPack Architecture](../assets/modelpack-arch.png)
 
-ModelPack outputs can be configured on Studio User Interface as explained in the [ModelPack training guide](training.md).
+ModelPack outputs can be configured on Studio User Interface as explained in the [ModelPack training guide](../training/vision.md).

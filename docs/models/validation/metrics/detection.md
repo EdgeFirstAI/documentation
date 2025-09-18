@@ -1,6 +1,6 @@
 # Detection Metrics
 
-This section will describe the validation metrics reported in [ModelPack validation sessions](../tutorials/validation.md#modelpack) for object detection.  The different types of validation methods available are Ultralytics, EdgeFirst, and YOLOv7.  These validation methods have been implemented in EdgeFirst Validator to reproduce specific metrics seen in other applications.  These metrics and their differences will be described in more detail below.
+This section will describe the validation metrics reported in [Validating Vision Models](../vision/managed.md) for object detection.  The different types of validation methods available are Ultralytics, EdgeFirst, and YOLOv7.  These validation methods have been implemented in EdgeFirst Validator to reproduce specific metrics seen in other applications.  These metrics and their differences will be described in more detail below.
 
 ## Ultralytics Detection Metrics
 
@@ -45,7 +45,7 @@ We provide the mAP score at the IoU thresholds (0.50, 0.75, and 0.50-0.95).
 The EdgeFirst detection metrics describe the mean average precision (mAP), recall (mAR), and accuracy (mACC) at IoU thresholds 0.50, 0.75, and 0.50:0.95.  These metrics are represented as a bar chart.  Shown below is an example.
 
 <figure markdown="span">
-  ![Detection Metrics](../assets/metrics/modelpack-detection-metrics.jpg){ align=center }
+  ![Detection Metrics](../../assets/metrics/modelpack-detection-metrics.jpg){ align=center }
   <figcaption>Detection Metrics</figcaption>
 </figure>
 
@@ -94,14 +94,14 @@ $$
 The model timings measures the input time, inference time, and the output time.  The input time is the time that it takes to preprocess the images which includes image normalization and image transformations such as resizing, letterbox, or padding.  The inference time is the time that it takes to run model inference on a single image.  The output time is the time that it takes to decode the model outputs into bounding boxes, masks, and scores.  These timings are represented as a bar chart showing their minimum, maximum, and average.
 
 <figure markdown="span">
-  ![Model Timings](../assets/metrics/model-timings.jpg){ align=center }
+  ![Model Timings](../../assets/metrics/model-timings.jpg){ align=center }
   <figcaption>Model Timings</figcaption>
 </figure>
 
 Furthermore, the distribution of the average timings are also shown below as a pie chart. 
 
 <figure markdown="span">
-  ![Average Timings](../assets/metrics/timing-distribution.jpg){ align=center }
+  ![Average Timings](../../assets/metrics/timing-distribution.jpg){ align=center }
   <figcaption>Average Timings</figcaption>
 </figure>
 
@@ -110,7 +110,7 @@ Furthermore, the distribution of the average timings are also shown below as a p
 The Confusion Matrix provides a summary of the prediction results by comparing the predicted labels with the ground truth (actual) labels.  This matrix will show the ground truth labels along the x-axis and the predicted labels along the y-axis.  Along the diagonal where both ground truth labels and prediction labels match shows the true positive (correct predictions) counts of that class.  However, throughout validation, the matrix shows the cases where the model can misidentify labels (false positives) or fail to find the labels (false negatives).  The first column where the ground truth label is "background" indicates the number of false positives are based on the model blindly detecting objects that are not in the image.  The last row where the prediction label is "background" indicates the number of false negatives where the model did not detect any objects that are in the image. 
 
 <figure markdown="span">
-  ![Confusion Matrix](../assets/metrics/modelpack-confusion-matrix.jpg){ align=center }
+  ![Confusion Matrix](../../assets/metrics/modelpack-confusion-matrix.jpg){ align=center }
   <figcaption>Confusion Matrix</figcaption>
 </figure>
 
@@ -119,7 +119,7 @@ The Confusion Matrix provides a summary of the prediction results by comparing t
 The Precision versus Recall curve shows the trade-off between precision and recall.  At lower thresholds, precision will tend to be lower due to increased leniency for valid detections.  However, more detections will tend to result in higher recall as the model finds more ground truth labels.  Increasing the threshold will start to increase precision for more precise detections, but will start to reduce recall due to the reduction of model detections.  The following curve shows the Precision versus Recall trend for each of the classes in the dataset, along with the average curve for all the classes.  A higher area under the curve, the better the model performance as this indicates maximized values for precision and recall throughout the varying thresholds.  
 
 <figure markdown="span">
-  ![Precision versus Recall](../assets/metrics/modelpack-precision-vs-recall.jpg){ align=center }
+  ![Precision versus Recall](../../assets/metrics/modelpack-precision-vs-recall.jpg){ align=center }
   <figcaption>Precision versus Recall</figcaption>
 </figure>
 

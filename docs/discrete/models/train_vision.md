@@ -1,6 +1,6 @@
 # Train a Vision Model
 
-Now that you have a fully annotated dataset that is split into training and validation samples, you can start training a Vision model.  This will briefly show the steps for training a model, but for an in depth tutorial, please see [Training ModelPack](../../models/modelpack/training.md).
+Now that you have a fully annotated dataset that is split into training and validation samples, you can start training a Vision model.  This will briefly show the steps for training a model, but for an in depth tutorial, please see [Training Vision Models](../../models/training/vision.md).
 
 From the "Projects" page, click on "Model Experiments" of your project. 
 

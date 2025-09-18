@@ -1,6 +1,6 @@
 # Managed Validation
 
-This tutorial will describe the steps to validate the performance of **ModelPack Vision** models as managed sessions in EdgeFirst Studio that have been trained through the [end-to-end workflows](../../../getting_started/workflows/index.md) or [Training ModelPack](../training.md).  For a tutorial to validate Fusion models, see [Validating Fusion Models](../../fusion/validation.md).  A managed validation session is self hosted in an EC2 instance which is suited for users that do not have an embedded platform available to host the validation process.  A [user-managed validation](user_managed.md) session deploys the model in an embedded platform for validation.
+This tutorial will describe the steps to validate the performance of **Vision** models as managed sessions in EdgeFirst Studio that have been trained through the [end-to-end workflows](../../../getting_started/workflows/index.md) or [Training Vision](../../training/vision.md).  For a tutorial to validate Fusion models, see [Validating Fusion Models](../fusion/managed.md).  A managed validation session is self hosted in an EC2 instance which is suited for users that do not have an embedded platform available to host the validation process.  A [user-managed validation](user_managed.md) session deploys the model in an embedded platform for validation.
 
 {% include-markdown "discrete/studio/create_mpk_validation_session.md" %}
 
@@ -48,7 +48,7 @@ Once the validation session completes, you can view the validation metrics by cl
 </figure>
 
 !!! info
-    See [detection](../../metrics/detection.md) and [segmentation](../../metrics/segmentation.md) metrics for further details.
+    See [detection](../metrics/detection.md) and [segmentation](../metrics/segmentation.md) metrics for further details.
 
 You can go back to the validation session card by pressing the "Back" button as indicated in red below on the top left corner of the page. 
 
@@ -63,4 +63,4 @@ It is also possible to compare validation metrics for multiple sessions.  See [V
 
 ## Next Steps
 
-Now that you have validated your Vision model, you can find examples for deploying your model in the [PC](../deployment/pc.md), [EVK](../deployment/evk.md), and [Maivin Platform](../deployment/maivin.md). 
+Now that you have validated your Vision model, you can find examples for deploying your model in the [PC](../../deployment/pc.md), [EVK](../../deployment/evk.md), and [Maivin Platform](../../deployment/maivin.md). 

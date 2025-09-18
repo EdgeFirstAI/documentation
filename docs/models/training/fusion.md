@@ -1,12 +1,6 @@
 # Training Fusion Models
 
-This tutorial describes the steps to train **Fusion** models in EdgeFirst Studio.  For a tutorial to train ModelPack Vision models, see [Training ModelPack](../modelpack/training.md). 
-
-<div style="text-align: center;">
-    <iframe width="560" height="315" src="https://www.youtube.com/embed/Q8uiYJb1HJ4" title="Fusion Training Workflow" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-</div>
-
-Checkout our full video tutorial above as part of the [EdgeFirst Studio Series](https://youtube.com/playlist?list=PLtgoOooyxY45Kl6pztdm4una-tHUjuIXz&si=DAmpo-gTvaSNktjw) to showcase the steps for running Fusion training in EdgeFirst Studio.  Otherwise, follow along the steps shown below.
+This tutorial describes the steps to train **Fusion** models in EdgeFirst Studio.  For a tutorial to train Vision models, see [Training Vision Models](vision.md). 
 
 ## Verify Dataset
 
@@ -53,10 +47,6 @@ Your created experiment will appear like the following below.  At the start, thi
 
 ## Create Training Session
 
-<div style="text-align: center;">
-    <iframe width="560" height="315" src="https://www.youtube.com/embed/Q8uiYJb1HJ4?start=217&end=863" title="Training Session" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-</div>
-
 In the experiment card, click the "Training Sessions" button as indicated in red below.
 
 <figure markdown="span">
@@ -78,7 +68,7 @@ Start a training session by clicking on the "New Session" button on the top righ
 <figcaption>New Session Button</figcaption>
 </figure>
 
-You will be greeted with the training session dialog.  In this dialog, specify the "Trainer Type" to "EdgeFirst Fusion" and provide a name and description of the training session as shown below.  Next specify the dataset to be used with training and validation partitions.  In this example, the dataset specified is the "Raivin Ultra Short 25.03 (Copy)" dataset.  Next specify the training parameters.  By default, the model will be trained using both the Camera and the Radar sensors.  However, you can specify one of the sensors turned off.  This model will output an occupancy grid highlighting the positions of people in world coordinates.  Additional information on these parameters are provided by hovering over the info button ![Info Button](../../assets/buttons/studio-info-button.jpg).
+You will be greeted with the training session dialog.  In this dialog, specify the "Trainer Type" to "EdgeFirst Fusion" and provide a name and description of the training session as shown below.  Next specify the dataset to be used with training and validation partitions.  In this example, the dataset specified is the "Raivin Ultra Short" dataset.  Next specify the training parameters.  By default, the model will be trained using both the Camera and the Radar sensors.  However, you can specify one of the sensors turned off.  This model will output an occupancy grid highlighting the positions of people in world coordinates.  Additional information on these parameters are provided by hovering over the info button ![Info Button](../../assets/buttons/studio-info-button.jpg).
 
 !!! note
     For an indoor setting, the "Radar Range Mode" is typically set to "Ultra Short (9m)" and the "Object Detection Range" is set to 9 meters.  This is the maximum range of detection, further distances are ignored. 
@@ -86,7 +76,7 @@ You will be greeted with the training session dialog.  In this dialog, specify t
 For more information on available "Data Augmentations" please see [Vision Augmentations](../augmentations.md).
 
 <figure markdown="span">
-![Training Session Fields](../assets/training/fusion-session-fields.jpg){ align=center }
+![Training Session Fields](../assets/training/fusion-train-settings.jpg){ align=center }
 <figcaption>Training Session Fields</figcaption>
 </figure>
 
@@ -94,16 +84,15 @@ Once the configurations have been made, go ahead and click on the "Start Session
 
 ## Session Progress
 
-<div style="text-align: center;">
-    <iframe width="560" height="315" src="https://www.youtube.com/embed/Q8uiYJb1HJ4?start=863&end=1050" title="Training Started" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-</div>
-
 Once the training session has started, the progress with the stages will be shown on the left and additional information and status is shown on the right. 
 
 <figure markdown="span">
 ![Training Session](../assets/training/fusion-session-progress.jpg){ align=center }
 <figcaption>Training Session</figcaption>
 </figure>
+
+The training process begins with cloud instance initialization. Then the dataset is downloaded and cached.  Training starts afterwards.
+At the end of the training process, the model is quantized and the checkpoints are published.
 
 ## Completed Session
 
@@ -163,4 +152,4 @@ It is also possible to compare the training metrics for multiple sessions.  See 
 ## Next Steps
 
 Now that you have generated your Fusion model, follow these next steps
-for [validating your Fusion model](validation.md).
+for [validating your Fusion model](../validation/fusion/managed.md).

@@ -269,7 +269,6 @@ The decoded outputs can then be taken and visualized as shown above.
 !!! note "Output Decoding"
     For the decoding steps 8-9, see the python script provided above to see the functions `decode_boxes` and `decode_masks`. 
 
-
 ## Next Steps
 
-You can find more examples for deploying models in various platforms [here](../tutorials/deployment.md).
+You can find more examples for deploying models in various platforms by following the [User Workflows](../../getting_started/workflows/index.md).

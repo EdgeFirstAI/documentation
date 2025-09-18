@@ -2,7 +2,7 @@
 
 In this tutorial, we are going to give you the tools needed to run Vision models on a PC for object detection, segmentation, or multitask allowing you to build your own applications in just a few lines of code!
 
-Before deploying your model, it is recommended to first [validate](../../tutorials/validation.md) your model.
+Before deploying your model, it is recommended to first [validate](../../models/validation/vision/managed.md) your model.
 
 !!! warning
     The tutorials presented in this notebook requires a trained and validated Vision model. 
@@ -25,7 +25,7 @@ $ pip install tensorflow
 
 ## Connect to EdgeFirst Client
 
-First take a look at using [EdgeFirst Client](../../../perception/studio.md) to fetch the model artifacts from EdgeFirst Studio.  Once all the dependencies have been installed, the client needs to be connected to EdgeFirst Studio to fetch the model artifacts to your PC.  Run the following code block below to connect the EdgeFirst Client to the Studio.  Modify the "username" and "password" to be your own.  The code block will execute successfully if the credentials are correct.
+First take a look at using [EdgeFirst Client](../../perception/studio.md) to fetch the model artifacts from EdgeFirst Studio.  Once all the dependencies have been installed, the client needs to be connected to EdgeFirst Studio to fetch the model artifacts to your PC.  Run the following code block below to connect the EdgeFirst Client to the Studio.  Modify the "username" and "password" to be your own.  The code block will execute successfully if the credentials are correct.
 
 ```python
 from edgefirst_client import Client
@@ -43,7 +43,7 @@ Once you have connected to EdgeFirst Client, you can find the training session I
 
 There are two possible ways to get the artifacts from the training session:
 
-1. Manually download `<model>.onnx` or `<model>.tflite` and `labels.txt` from the [EdgeFirst Studio training session](../../modelpack/training.md#training-outcomes).
+1. Manually download `<model>.onnx` or `<model>.tflite` and `labels.txt` from the [EdgeFirst Studio training session](../../models/training/vision.md#training-outcomes).
 2. Using `edgefirst-client` command line interface.
 
 In this tutorial, you will explore option two which is to run the `edgefirst-client` command to fetch the model artifacts.
@@ -61,7 +61,7 @@ client.projects_sync() # This will list all the projects available to the user
 Project { id: 1123, name: "Sample Project", description: "Official Datasets from AuZone Technologies Inc" }]
 ```
 
-By following the [EdgeFirst Studio Quickstart](../../../getting_started/create_project.md), you should have created a project.  In this example, the project that was created is called "Object Detection".  Make a note of your project ID.  In this case, it is `463`.  Adjust the code block below to replace with your project ID.
+By following the [EdgeFirst Studio Quickstart](../../getting_started/create_project.md), you should have created a project.  In this example, the project that was created is called "Object Detection".  Make a note of your project ID.  In this case, it is `463`.  Adjust the code block below to replace with your project ID.
 
 ```python
 # Retrieve the project ID where the dataset is stored (all experiments/training/validation sessions are stored in the same project)
@@ -153,7 +153,7 @@ In this demo, we will show running the Vision model fetched above for multitask 
 To run inference on the model you need to have an input image.  You can capture an image with a mobile device.  A sample image is shown below.
 
 <figure markdown="span">
-![Sample Coffee Cup Image](../../assets/deployment/sample-coffee-cup.jpg){align=center}
+![Sample Coffee Cup Image](../assets/deployment/sample-coffee-cup.jpg){align=center}
 <figcaption>Sample Coffee Cup Image</figcaption>
 </figure>
 
@@ -245,7 +245,7 @@ plt.imshow(image)
 <matplotlib.image.AxesImage at 0x7fae37b88a30>
 ```
 
-![Sample Coffee Cup Image](../../assets/deployment/pc-sample-coffee-cup.jpg){align=center}
+![Sample Coffee Cup Image](../assets/deployment/pc-sample-coffee-cup.jpg){align=center}
 
 #### Run Inference
 
@@ -439,7 +439,7 @@ This output visualization will look like the following for the models ran.
 
 | ONNX Output                     | TFLite Output               | 
 |---------------------------------|-----------------------------|
-| ![ONNX](../../assets/deployment/output_onnx.png) | ![TFLite](../../assets/deployment/output_tflite.png) |
+| ![ONNX](../assets/deployment/output_onnx.png) | ![TFLite](../assets/deployment/output_tflite.png) |
 
 ## Appendix
 

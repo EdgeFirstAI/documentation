@@ -1,6 +1,6 @@
 # Train a Fusion Model
 
-A fully annotated dataset that is split into training and validation samples is required to start training a Fusion model.  This will briefly show the steps for training a model, but for an in depth tutorial, please see [Training Fusion](../../models/fusion/training.md).
+A fully annotated dataset that is split into training and validation samples is required to start training a Fusion model.  This will briefly show the steps for training a model, but for an in depth tutorial, please see [Training Fusion Models](../../models/training/fusion.md).
 
 From the "Projects" page, click on "Model Experiments" of your project. 
 
@@ -36,7 +36,7 @@ Follow the settings indicated and keep the rest of the settings by their default
     Do not include any forward slash "/" in the session names as this can result in missing model artifacts.
 
 <figure markdown="span">
-![Start Training Session](../../models/assets/training/fusion-session-fields.jpg){ align=center }
+![Start Training Session](../../models/assets/training/fusion-train-settings.jpg){ align=center }
 <figcaption>Start Training Session</figcaption>
 </figure>
 

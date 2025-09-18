@@ -1,6 +1,6 @@
 # Segmentation Metrics
 
-This section will describe the validation metrics reported in [ModelPack validation sessions](../tutorials/validation.md#modelpack) for segmentation.  The different types of validation methods available are Ultralytics, EdgeFirst, and YOLOv7.  These validation methods have been implemented in EdgeFirst Validator to reproduce specific metrics seen in other applications.  These metrics and their differences will be described in more detail below. 
+This section will describe the validation metrics reported in [Validating Vision Models](../vision/managed.md) for segmentation.  The different types of validation methods available are Ultralytics, EdgeFirst, and YOLOv7.  These validation methods have been implemented in EdgeFirst Validator to reproduce specific metrics seen in other applications.  These metrics and their differences will be described in more detail below. 
 
 ## Ultralytics Segmentation Metrics
 
@@ -11,7 +11,7 @@ We define the same metrics for segmentation as object detection for Ultralytics 
 The segmentation metrics describe the average precision, recall, and accuracy.  These metrics are represented as a bar chart.  Shown below is an example.
 
 <figure markdown="span">
-  ![Segmentation Metrics](../assets/metrics/modelpack-segmentation-metrics.jpg){ align=center }
+  ![Segmentation Metrics](../../assets/metrics/modelpack-segmentation-metrics.jpg){ align=center }
   <figcaption>Segmentation Metrics</figcaption>
 </figure>
 
@@ -50,12 +50,12 @@ The next section will show an example of the metric computations on a small samp
 This section will show an example of how segmentation metrics are calculated.  Consider the following 5x2 segmentation masks for the ground truth and the model prediction with classes background (BG), A, and B.
 
 <figure markdown="span">
-  ![Ground Truth Mask](../assets/metrics/mask-gt.jpg){ align=center }
+  ![Ground Truth Mask](../../assets/metrics/mask-gt.jpg){ align=center }
   <figcaption>Ground Truth Mask</figcaption>
 </figure>
 
 <figure markdown="span">
-  ![Prediction Mask](../assets/metrics/mask-dt.jpg){ align=center }
+  ![Prediction Mask](../../assets/metrics/mask-dt.jpg){ align=center }
   <figcaption>Prediction Mask</figcaption>
 </figure>
 
@@ -66,7 +66,7 @@ We start by calculating the metrics per class which is the precision, recall, an
 The following table shows the classifications for class A where T is denoted as a true prediction, F is denoted as a false prediction, and NULL are placed on the positions that do not involve class A.
 
 <figure markdown="span">
-  ![Classification A](../assets/metrics/mask-a.jpg){ align=center }
+  ![Classification A](../../assets/metrics/mask-a.jpg){ align=center }
   <figcaption>Classification A</figcaption>
 </figure>
 
@@ -81,7 +81,7 @@ Using the equations for precision, recall, and accuracy above, these are the met
 The following table shows the classifications for class B.
 
 <figure markdown="span">
-  ![Classification B](../assets/metrics/mask-b.jpg){ align=center }
+  ![Classification B](../../assets/metrics/mask-b.jpg){ align=center }
   <figcaption>Classification B</figcaption>
 </figure>
 

@@ -6,13 +6,6 @@ The EdgeFirst Studio Model Zoo provides training support for multiple models, in
 
     ModelPack is a single-sensor (single-input) architecture of a Vision model tasked with detecting objects in an image via bounding boxes, segmentation masks, or both.  A Vision model is a type of model that interprets images or videos to perform tasks such as object detection, image classification, and much more.  EdgeFirst Studio supports Vision models tasked with object detection.
 
-    * [Quick Start Guide](modelpack/tutorials/index.md)
-    * [Training ModelPack](training/vision.md)
-    * Validating ModelPack
-        - [Managed](validation/vision/managed.md)
-        - [User-Managed](validation/vision/user_managed.md)
-    * [Deploying ModelPack](deployment/maivin.md)
-
     <div style="max-width: fit-content; margin-left: auto; margin-right: auto;" class="wizard-actions" markdown>
     [Read More](modelpack/index.md){ .md-button }
     </div>
@@ -20,12 +13,6 @@ The EdgeFirst Studio Model Zoo provides training support for multiple models, in
 === "EdgeFirst Fusion"
 
     A Sensor Fusion Model is a multi-sensor (multi-input) architecture that fuses Radar and Camera sensors designed for spatial perception tasks.  These models can make predictions of the object's position in world coordinates.  Fusion models takes the Radar cube and the Camera image as inputs to the model by default.  However, either the Camera or the Radar can be turned off to train specific camera-only and radar-only based Fusion models. 
-
-    * [Training Fusion Models](training/fusion.md)
-    * Validating Fusion Models
-        - [Managed](validation/fusion/managed.md)
-        - User Managed (*Coming Soon*)
-    * [Deploying Fusion Models ](deployment/raivin.md)
 
     <div style="max-width: fit-content; margin-left: auto; margin-right: auto;" class="wizard-actions" markdown>
     [Read More](fusion/index.md){ .md-button }

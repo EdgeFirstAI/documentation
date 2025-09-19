@@ -83,11 +83,14 @@ nav:
         - models/validation/metrics/detection.md
         - models/validation/metrics/segmentation.md
         - models/validation/metrics/fusion.md
-    - Model Deployment:
+    - 2D Model Deployment:
       - models/deployment/pc.md
       - models/deployment/evk.md
+      - models/deployment/2d-edgefirst-platforms.md
       - models/deployment/maivin.md
       - models/deployment/raivin.md
+    - 3D Model Deployment:
+      - models/deployment/3d-raivin.md
     - Model Zoo:
       - ModelPack:
         - models/modelpack/index.md

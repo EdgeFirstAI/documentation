@@ -1,6 +1,6 @@
 # Deploying to the Raivin
 
-Now that you have [validated your Vision model](../validation/fusion/managed.md), this guide will walk you through deploying Fusion models in a [Raivin Platform](../../platforms/index.md).  
+Now that you have [validated your Fusion model](../validation/fusion/managed.md), this guide will walk you through deploying Fusion models in a [Raivin Platform](../../platforms/index.md).  
 
 <figure markdown="span">
 ![Raivin](../../platforms/assets/raivin.png){ align=center }

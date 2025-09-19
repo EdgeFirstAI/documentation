@@ -11,7 +11,7 @@ To deploy Vision models on a Maivin, please see the [ModelPack Deployment](../..
 <figcaption>Preview: Segmentation Inference</figcaption>
 </figure>
 
-To deploy Fusion models on a Raivin, please see the [Fusion Deployment](../../models/deployment/raivin.md) instructions.
+To deploy Fusion models on a Raivin, please see the [Fusion Deployment](../../models/deployment/3d_raivin.md) instructions.
 
 <figure markdown="span">
 ![Segmentation Sample](../../models/assets/deployment/occupancy-sample-2.jpg){ align=center }

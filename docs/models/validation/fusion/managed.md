@@ -107,4 +107,4 @@ It is also possible to compare validation metrics for multiple sessions.  See [V
 ## Next Steps
 
 Now that you have validated your Fusion model, follow these next steps
-for [deploying your Fusion model](../../deployment/raivin.md) in a Raivin Platform.
+for [deploying your Fusion model](../../deployment/3d_raivin.md) in a Raivin Platform.

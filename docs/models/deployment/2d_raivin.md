@@ -1,6 +1,6 @@
 # Deploying to the Raivin
 
-Now that you have [validated your Vision model](../validation/fusion/managed.md), this guide will walk you through deploying Fusion models in a [Raivin Platform](../../platforms/index.md).  
+Now that you have validated your Vision Model from either a [managed](../validation/vision/managed.md) or [user-managed](../validation/vision/user_managed.md) session, this guide will walk you through deploying Vision models in an [EdgeFirst Platform](../../platforms/index.md) such as a Maivin or a Raivin.
 
 <figure markdown="span">
 ![Raivin](../../platforms/assets/raivin.png){ align=center }
@@ -36,7 +36,7 @@ Next you will need to specify the path to the model in the device.  You can eith
 !!! note "Configure Model Settings"
     Whenever a new model has been updated, ensure that the [model settings](../../platforms/configuration.md#model-configuration) such as the score and the IoU thresholds are ideally set for this model. 
 
-=== "via Web UI"
+=== "via Raivin Web UI"
 
     Once you are in the Web UI main page, you can specify the path to the model by following the steps below.
 
@@ -57,11 +57,11 @@ Next you will need to specify the path to the model in the device.  You can eith
     Configure the path to the model in your device as specified under "MODEL:".  Once configured, click "Save Configuration" to save your changes.
 
     <figure markdown="span">
-    ![Model Path](../assets/deployment/configure-model-path-raivin.jpg){ align=center }
+    ![Model Path](../assets/deployment/configure-model-path-maivin.jpg){ align=center }
     <figcaption>Model Path</figcaption>
     </figure>
 
-=== "via Command Line"
+=== "via Raivin Command Line"
 
     To update the model path using the command line in the device, edit the following file using `sudo vi /etc/default/model`.
 
@@ -106,26 +106,21 @@ Now you will see a live inference of the model in the device.  Once all services
 <figcaption>Segmentation App</figcaption>
 </figure>
 
-This will run inference on the model specified to generate segmentation masks of identified objects on the camera feed and highlights the radar point clouds on the occupancy grid marking the positions of the objects in world coordinates.  Examples are shown below.
+This will run inference on the model specified to generate segmentation masks and/or bounding boxes of identified objects on the camera feed.  In this case, the model is identifying coffee cups in the video feed.  An example is shown below.
 
 <figure markdown="span">
-![Sample 1](../assets/deployment/occupancy-sample-1.jpg){ align=center }
+![Segmentation Sample 1](../assets/deployment/segmentation-sample-1.jpg){ align=center }
 <figcaption>Sample 1</figcaption>
-</figure>
-
-<figure markdown="span">
-![Sample 2](../assets/deployment/occupancy-sample-2.jpg){ align=center }
-<figcaption>Sample 2</figcaption>
 </figure>
 
 Now that the model has been updated, you can [make new recordings](../../platforms/recording.md#record-mcap) using the model's inference and then [visualize the recording using Foxglove Studio](../../platforms/foxglove.md).
 
 ## Inference Visualization in Foxglove
 
-Once the MCAP recording has been downloaded, you can use Foxglove Studio to see the playback of MCAP recordings and the model inference.  The following preview shows the segmentation mask from the model identifying the person in the frame (right) and the occupancy grid highlighting the radar clusters that correspond to the person's position in world coordinates.
+Once the MCAP recording has been downloaded, you can use Foxglove Studio to see the playback of MCAP recordings and the model inference.  The following preview is a frame from the MCAP with the model inference masks overlaid on top of the video. 
 
 <figure markdown="span">
-![Foxglove Sample 1](../../platforms/assets/adv_foxglove-finished_fusion.png){ align=center }
+![Foxglove Sample 1](../assets/deployment/foxglove-sample-1.jpg){ align=center }
 <figcaption>Foxglove Sample 1</figcaption>
 </figure>
 

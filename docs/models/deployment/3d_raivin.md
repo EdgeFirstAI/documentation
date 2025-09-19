@@ -1,6 +1,6 @@
 # Deploying to the Raivin
 
-Now that you have [validated your Fusion model](../validation/fusion/managed.md), this guide will walk you through deploying Fusion models in a [Raivin Platform](../../platforms/index.md).  
+Now that you have [validated your Fusion model](../validation/fusion/managed.md), this guide will walk you through deploying Fusion models in a [Raivin Platform](../../platforms/index.md) for spatial inference.  
 
 <figure markdown="span">
 ![Raivin](../../platforms/assets/raivin.png){ align=center }
@@ -11,7 +11,7 @@ This guide will showcase two methods of deploying the model.
 1. [Live View (Segmentation App)](#live-view-segmentation-app): Displays the live camera feed using the default model provided.
 2. [MCAP Recording](../../platforms/recording.md#record-mcap): Allows control of the recording options and provides download file options to replay the recording.
 
-{% include-markdown "discrete/models/download_model.md" %}
+{% include-markdown "discrete/models/download_fusion_model.md" %}
 
 ## Visit the Web UI Service
 
@@ -47,14 +47,14 @@ Next you will need to specify the path to the model in the device.  You can eith
     <figcaption>Settings</figcaption>
     </figure>
 
-    Select "Model Settings".
+    Select "Fusion Settings".
 
     <figure markdown="span">
-    ![Model Settings](../assets/deployment/raivin-model-settings.jpg){ align=center }
+    ![Model Settings](../assets/deployment/raivin-fusion-settings.jpg){ align=center }
     <figcaption>Model Settings</figcaption>
     </figure>
 
-    Configure the path to the model in your device as specified under "MODEL:".  Once configured, click "Save Configuration" to save your changes.
+    Configure the path to the model in your device as specified under "The Radar model".  Once configured, click "Save Configuration" to save your changes.
 
     <figure markdown="span">
     ![Model Path](../assets/deployment/configure-model-path-raivin.jpg){ align=center }
@@ -63,21 +63,14 @@ Next you will need to specify the path to the model in the device.  You can eith
 
 === "via Command Line"
 
-    To update the model path using the command line in the device, edit the following file using `sudo vi /etc/default/model`.
-
-    Next, you will see the file with the following contents.
-
-    ```vi
-    # This is the configuration file for the model systemd service file.  When
-    # running systemctl start detect the service will use these configurations.
-    # If running model directly, you must continue to use the command-line options.
-
-    # A model is required for the model application. This can be a segmentation model
-    # and/or a detection model.
-    MODEL = "path/to/mymodel.tflite"
-    ```
+    To update the model path using the command line in the device, edit the following file using `sudo vi /etc/default/fusion`.
 
     Edit the following line `MODEL = "path/to/mymodel.tflite"` to point to the specific path to your model.  To edit, press `i` to enter into "Insert Mode".  You should now be able to edit the lines.  To exit "Insert Mode", press the ESC key on your keyboard.  Next save and exit the file by typing `:wq` on your keyboard.  More examples for using `vi` can be found [here](https://coderwall.com/p/adv71w/basic-vim-commands-for-getting-started).
+
+    ```vi
+    # The radar fusion model
+    MODEL = "path/to/mymodel.tflite"
+    ```
 
     Once the path to the model has been updated, restart the model service using `sudo systemctl restart model`.
 

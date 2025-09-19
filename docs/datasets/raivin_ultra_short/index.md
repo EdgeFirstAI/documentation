@@ -47,4 +47,4 @@ It contains 24,746 images in total and a single class "person".
 
 ## License
 
-TBA
+{% include-markdown "discrete/datasets/au-zone_license.md" %}

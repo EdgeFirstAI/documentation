@@ -59,4 +59,4 @@ It contains 1,476 images in total and 13 classes.
 
 ## License
 
-TBA
+{% include-markdown "discrete/datasets/au-zone_license.md" %}

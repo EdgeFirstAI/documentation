@@ -17,6 +17,9 @@ Download the model from EdgeFirst Studio into the device.  There are two methods
     |----------------------------------------------------------------|-------------------------------------------------------------------------------|
     | ![session](../../models/assets/training/fusion-session-details.jpg) | ![artifacts](../../models/assets/training/fusion-session-artifacts.jpg) | 
 
+    !!! note "Deployment Tab"
+        You may have noticed the "Deployment" tab to the right of the "Artifacts" tab. This is a placeholder for future functionality, so please don't worry about it.
+
     Once the model is downloaded in your PC, you can [SCP](../../platforms/ssh.md#secure-copy) the model to the device by using this command template.
 
     ```shell

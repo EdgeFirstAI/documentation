@@ -13,17 +13,17 @@ The model topics are published under the `/fusion` namespace and offers the foll
 
 The `/fusion/radar` topic publishes information about the received radar points using the [PointCloud2](../api/sensor_msgs.md#pointcloud2) schema. The point cloud will contain the same fields and data as the input point cloud (by default, `/radar/clusters`), and two additional fields: `fusion_class` and `vision_class`. The two additional fields are both Float32 datatype, but the values is always integer. The `fusion_class` is the class of the radar point as determined by the radar fusion model. The `vision_class` is the class of the radar point as determined by projection of the radar point onto the camera segmentation. If the input data is clustered, points with the same non-zero cluster ID will have the same fusion/vision class. 
 
-| Field Name   | Datatype | Units | Notes                                                                                              |
-|--------------|----------|-------|----------------------------------------------------------------------------------------------------|
-| x            | float32  | m     | Represent XYZ location of the point                                                                |
-| y            | float32  | m     | Represent XYZ location of the point                                                                |
-| z            | float32  | m     | Represent XYZ location of the point                                                                |
-| speed        | float32  | m/s   | Only measures speed towards or away from the radar                                                 |
-| power        | float32  |       |                                                                                                    |
-| rcs          | float32  |       | Radar cross section                                                                                |
-| cluster_id   | float32  |       | Will always be integer valued. 0 means not clustered. Otherwise same cluster id means same cluster |
-| fusion_class | uint8    |       | Points in the same cluster will have the same class                                                |
-| vision_class | uint8    |       | Points in the same cluster will have the same class                                                |
+| Field Name   | Datatype | Units | Notes                                                               |
+| ------------ | -------- | ----- | ------------------------------------------------------------------- |
+| x            | float32  | m     | Represent XYZ location of the point                                 |
+| y            | float32  | m     | Represent XYZ location of the point                                 |
+| z            | float32  | m     | Represent XYZ location of the point                                 |
+| speed        | float32  | m/s   | Only measures speed towards or away from the radar                  |
+| power        | float32  |       |                                                                     |
+| rcs          | float32  |       | Radar cross section                                                 |
+| cluster_id   | uint16   |       | 0 means not clustered. Otherwise same cluster id means same cluster |
+| fusion_class | uint8    |       | Points in the same cluster will have the same class                 |
+| vision_class | uint8    |       | Points in the same cluster will have the same class                 |
 
 The XYZ coordinate system follows the [standard ROS convention](https://www.ros.org/reps/rep-0103.html#coordinate-frame-conventions) of x forward, y left, z up. 
 
@@ -37,7 +37,7 @@ The `/fusion/lidar` topic publishes information about the received lidar points 
 | y            | float32  | m     | Represent XYZ location of the point                                 |
 | z            | float32  | m     | Represent XYZ location of the point                                 |
 | reflect      | uint8    |       | Only measures speed towards or away from the radar                  |
-| cluster_id   | uint32   |       | 0 means not clustered. Otherwise same cluster id means same cluster |
+| cluster_id   | uint16   |       | 0 means not clustered. Otherwise same cluster id means same cluster |
 | fusion_class | uint8    |       | Points in the same cluster will have the same class                 |
 | vision_class | uint8    |       | Points in the same cluster will have the same class                 |
 
@@ -54,7 +54,7 @@ The point cloud will have the fields `x`, `y`, `z`, `cluster_id`, `vision_class`
 | x            | float32  | m     | Represent XYZ location of the point                                 |
 | y            | float32  | m     | Represent XYZ location of the point                                 |
 | z            | float32  | m     | Represent XYZ location of the point                                 |
-| cluster_id   | uint32   |       | 0 means not clustered. Otherwise same cluster id means same cluster |
+| cluster_id   | uint16   |       | 0 means not clustered. Otherwise same cluster id means same cluster |
 | fusion_class | uint8    |       | Points in the same cluster will have the same class                 |
 | vision_class | uint8    |       | Points in the same cluster will have the same class                 |
 

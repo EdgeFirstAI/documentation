@@ -1,6 +1,6 @@
 # Validate Vision Model
 
-Now that you have trained a Vision model, you can now start validating your Vision model.  This will briefly show the steps for validating a model, but for an in depth tutorial, please see [Validating ModelPack](../../models/modelpack/validation/managed.md).
+Now that you have trained a Vision model, you can now start validating your Vision model.  This will briefly show the steps for validating a model, but for an in depth tutorial, please see [Validating Vision Models](../../models/validation/vision/managed.md).
 
 On the train session card, expand the session details.
 

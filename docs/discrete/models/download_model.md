@@ -4,7 +4,7 @@ Download the model from EdgeFirst Studio into the device.  There are two methods
 
 === "Download using SCP"
 
-    As mentioned under the [Training Outcomes](../../models/modelpack/training.md#training-outcomes) section, the trained models can be downloaded by clicking the "View Additional Details" button on the training session card in EdgeFirst Studio. 
+    As mentioned under the [Training Outcomes](../../models/training/vision.md#training-outcomes) section, the trained models can be downloaded by clicking the "View Additional Details" button on the training session card in EdgeFirst Studio. 
 
     <figure markdown="span">
     ![Training Session Attributes](../../models/assets/training/training-session-attributes.jpg){ align=center }
@@ -16,6 +16,9 @@ Download the model from EdgeFirst Studio into the device.  There are two methods
     | Session Details                                                | Artifacts                                                                     |
     |----------------------------------------------------------------|-------------------------------------------------------------------------------|
     | ![session](../../models/assets/training/vision-session-details.jpg) | ![artifacts](../../models/assets/training/vision-session-artifacts.jpg) | 
+
+    !!! note "Deployment Tab"
+        You may have noticed the "Deployment" tab to the right of the "Artifacts" tab. This is a placeholder for future functionality, so please don't worry about it.
 
     Once the model is downloaded in your PC, you can [SCP](../../platforms/ssh.md#secure-copy) the model to the device by using this command template.
 

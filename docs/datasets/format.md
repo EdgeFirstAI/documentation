@@ -146,7 +146,14 @@ of the annotations.
 ('status', Enum(categories=['valid','edit']))
 ```
 
-The following figure visualizes the contents in a sample dataframe.
+The following figure visualizes the contents in a sample dataframe.  This dataframe can be visualized using the polars library which is installed using `pip install polars`.  The steps for visualizing the dataframe is as follows.
+
+```shell
+$ python3
+>>> import polars as pl
+>>> df = pl.read_ipc("path to dataset.arrow")
+>>> df
+```
 
 <figure markdown="span">
 ![Sample DataFrame](assets/format/arrow-table-sample.jpg){ align=center }

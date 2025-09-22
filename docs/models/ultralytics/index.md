@@ -29,7 +29,7 @@ YOLOv8 and YOLOv11 can be trained now in Edgefirst Studio using a Graphical User
     ![Set Name and Description](../assets/ultralytics/ultralytics-train-02.png){ align=center }
 
     <div class="wizard-actions" style="max-width: fit-content; margin-left: auto; margin-right: auto;" markdown>
-    [Select Framework ← Back](#select-framework){ .md-button }
+    [1. Select Framework ← Back](#select-framework){ .md-button }
     [Next → 3. Select Dataset](#select-dataset){ .md-button .md-button--primary }
     </div>
 
@@ -42,7 +42,7 @@ YOLOv8 and YOLOv11 can be trained now in Edgefirst Studio using a Graphical User
     ![Select a Dataset](../assets/ultralytics/ultralytics-train-03.png){ align=center }
 
     <div class="wizard-actions" style="max-width: fit-content; margin-left: auto; margin-right: auto;" markdown>
-    [Name Session ← Back](#name-session){ .md-button }
+    [2. Name Session ← Back](#name-session){ .md-button }
     [Next → 4. Configure & Train](#train){ .md-button .md-button--primary }
     </div>
 
@@ -55,8 +55,8 @@ YOLOv8 and YOLOv11 can be trained now in Edgefirst Studio using a Graphical User
     ![Configure and Train](../assets/ultralytics/ultralytics-train-04.png){ align=center }
 
     <div class="wizard-actions" style="max-width: fit-content; margin-left: auto; margin-right: auto;" markdown>
-    [Select Dataset ← Back](#select-dataset){ .md-button }
-    [Next → 1. Select Framework](#select-framework){ .md-button  .md-button--primary }
+    [3. Select Dataset ← Back](#select-dataset){ .md-button }
+    [Next → 5. Validate](../validation/vision/managed.md){ .md-button  .md-button--primary }
     </div>
 
 !!! note "Important"

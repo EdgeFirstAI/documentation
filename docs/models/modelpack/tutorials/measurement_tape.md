@@ -47,11 +47,11 @@ Once your dataset has been fully annotated, you are now ready to begin model tra
 
 We will now walk you through training a detection and segmentation model (multitask), but first ensure that your dataset contains training and validation groups.  If the GUI shows 0 Groups, you'll need to [create training and validation groups](../../../datasets/tutorials/management.md#split-dataset) before starting training. 
 
-Once the groups have been created, follow these steps for [training your model](../training.md). 
+Once the groups have been created, follow these steps for [training your model](../../training/vision.md). 
 
 ## Model Inference on PC 
 
-Now that ModelPack has been trained on your dataset, you can start [deploying the trained models](../deployment/pc.md) on your PC. 
+Now that ModelPack has been trained on your dataset, you can start [deploying the trained models](../../deployment/pc.md) on your PC. 
 
 | Input Image | Model Output |
 |-----------------|-----------|

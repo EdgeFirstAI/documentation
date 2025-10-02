@@ -1,7 +1,5 @@
-# Deep View RT Middleware
-The Deep View Middleware toolset includes a wide variety of tools that can be used for each step of the deployment pipeline. We have the Deep View Converter to handle conversion and optimization of models to our propietary model format. These models have been optimized for our EdgeFirst Platforms and in a wide range of scenarios will provide an increase in inference.
-
-We have our backend engine in Deep View RT that is capable of inference and can be built into applications or workflows using the models converted. The Deep View RT engine is capable of running inference on many different devices and EdgeFirst Platforms in addition to running inference on the CPU, GPU, and NPU.
+# Deep View RT
+Deep View RT has two components currently and is being expanded further for each step of the deployment pipeline. We have the Deep View RT Edge-Optimized Inference Engine that is capable of inference and can be built into applications or workflows using converted models. The Deep View RT Edge-Optimized Inference Engine is capable of running inference on many different devices and EdgeFirst Platforms in addition to running inference on the CPU, GPU, and NPU. We then have the Deep View Converter to handle conversion and optimization of models to our propietary model format. These models have been optimized for our EdgeFirst Platforms and in a wide range of scenarios will provide an increase in inference.
 
 Finally, in development is our HAL (Hardware Abstraction Library), which will simplify the deployment pipeline and allow for minimally coded application pipelines to be highly optimized on whichever EdgeFirst Platform you are using for inference.
 
@@ -108,14 +106,14 @@ This code can be combined with any code developed to quantize your model through
 
 The first step is the optimization step which takes as an argument the filename of your model. The Optimizer will first decode your model into a generic graph format which then runs through a variety of optimizations that combines various operations and removes time ineffective operations for better optimized operations. 
 
-After that step, you use the Exporter, which takes that graph from the Optimizer to encode the newly optimized graph into the RTM format which can be run using the Deep View RT Engine, which we will cover next.
+After that step, you use the Exporter, which takes that graph from the Optimizer to encode the newly optimized graph into the RTM format which can be run using the Deep View RT Edge-Optimized Inference Engine, which we will cover next.
 
 Finally, you will save the output FlatBuffer, which is used for the RTM format, to whichever file you desire.
 
-## Deep View RT Engine
-The Deep View RT engine is a C based library that provides easy to use tools for developing applications with your model that are optimized for the EdgeFirst Platforms. The main component of the Deep View RT engine is the engine itself and there are many optimizations that are performed to benefit the inference and overall pipeline time. The Deep View RT engine makes use of various plugins that allow for accelerated inference on whichever processor is specified, whether it is using OpenCL for float models on the GPU or OpenVX for quantized models on the GPU or NPU.
+## Deep View RT Edge-Optimized Inference Engine
+The Deep View RT Edge-Optimized Inference Engine is a C based library that provides easy to use tools for developing applications with your model that are optimized for the EdgeFirst Platforms. The main component of the Deep View RT Inference Engine is the engine itself and there are many optimizations that are performed to benefit the inference and overall pipeline time. The Deep View RT Inference Engine makes use of various plugins that allow for accelerated inference on whichever processor is specified, whether it is using OpenCL for float models on the GPU or OpenVX for quantized models on the GPU or NPU.
 
-With the API provided you can build native C applications that take advantage of the Deep View RT engine, and additionally we provide Python bindings for the engine that can installed through pip with the following
+With the API provided you can build native C applications that take advantage of the Deep View RT Inference Engine, and additionally we provide Python bindings for the engine that can installed through pip with the following
 
 ``` shell
 pip install deepview-rt

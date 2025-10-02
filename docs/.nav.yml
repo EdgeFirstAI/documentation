@@ -113,6 +113,8 @@ nav:
     - models/augmentations.md
   - Perception:
     - perception/index.md
+    - Deep View RT:
+      - perception/middleware/index.md
     - Dataset Collection Middleware:
       - platforms/recording.md
       - platforms/replay.md

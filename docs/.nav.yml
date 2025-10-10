@@ -113,8 +113,6 @@ nav:
     - models/augmentations.md
   - Perception:
     - perception/index.md
-    - Deep View RT:
-      - perception/middleware/index.md
     - Dataset Collection Middleware:
       - platforms/recording.md
       - platforms/replay.md
@@ -154,6 +152,8 @@ nav:
       - perception/api/std_msgs.md
       - perception/api/builtin_interfaces.md
       - perception/api/studio.md
+    - Deep View RT:
+      - perception/deepviewrt/index.md
   - Platforms:
     - platforms/index.md
     - Getting Started:

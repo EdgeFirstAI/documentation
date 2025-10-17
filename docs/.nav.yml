@@ -100,6 +100,7 @@ nav:
           - models/modelpack/tutorials/musicbox.md
         - Architecture: models/modelpack/architecture.md
         - Benchmarks: models/modelpack/benchmarks.md
+        - BDD100K: models/modelpack/bdd100k.md
       - Ultralytics:
           - models/ultralytics/index.md
           - Benchmarks: models/ultralytics/benchmarks.md

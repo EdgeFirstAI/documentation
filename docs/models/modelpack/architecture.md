@@ -192,7 +192,21 @@ Similar to CSPDarkNet19, `Output 1`, `Output 2` and `Output 3` are mainly involv
 
 ## Classification Model
 
-CSPDarknet19 and CSPDarknet53 were both pretrained on ImageNet 1K. The last output on each backbone was used as feature extractor and fedded into a classifier in the following way
+CSPDarknet19 and CSPDarknet53 were both pretrained on ImageNet 1K. For each backbone, the last output was used to fed the classification head `Output2` from CSPDarknet19 and `Output3` from CSPDarknet53.
+The classification head was built in this way:
+
+```mermaid
+
+flowchart LR
+    A[Features] --> B{ConvBlock<br>1024 features}
+    B --> D{Dropout<br>2%}
+    D --> E[GlobalAVGPooling2D]
+    E --> F{Dense<br>n=1000}
+    F --> G[Softmax]
+    G --> H[Output]
+```
+
+The feature map is expanded to 1024 in order to magnify the receptive field before feeding the classificaiton layer. To trian the model a CCE loss was used during 100 epochs. We used Adam optimizer and a 3% WarmUp with 97% Cosine Decay.
 
 
 # References

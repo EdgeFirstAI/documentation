@@ -9,7 +9,7 @@ Now that you have [validated your Fusion model](../validation/fusion/managed.md)
 This guide will showcase two methods of deploying the model.
 
 1. [Live View (Segmentation App)](#live-view-segmentation-app): Displays the live camera feed using the default model provided.
-2. [MCAP Recording](../../platforms/recording.md#record-mcap): Allows control of the recording options and provides download file options to replay the recording.
+2. [MCAP Recording](../../platforms/recording.md): Allows control of the recording options and provides download file options to replay the recording.
 
 {% include-markdown "discrete/models/download_fusion_model.md" %}
 
@@ -34,7 +34,7 @@ For more information, please see the [Web UI Walkthrough](../../platforms/walkth
 Next you will need to specify the path to the model in the device.  You can either update the model path in the Web UI or via the command line.
 
 !!! note "Configure Model Settings"
-    Whenever a new model has been updated, ensure that the [model settings](../../platforms/configuration.md#model-configuration) such as the score and the IoU thresholds are ideally set for this model. 
+    Whenever a new model has been updated, ensure that the [model settings](../../platforms/configuration/model.md) such as the score and the IoU thresholds are ideally set for this model. 
 
 === "via Web UI"
 
@@ -83,7 +83,7 @@ Once the model path in the device is specified, ensure that all services are ena
 <figcaption>Service Status</figcaption>
 </figure>
 
-You will be greeted with the "Service Overview" page.  Ensure that all services are enabled and running by toggling the "Enable" and "Start" buttons as shown.  Only "Enable" the "recorder" service as shown.  You will be using the recorder service in [MCAP Recording](../../platforms/recording.md#record-mcap).
+You will be greeted with the "Service Overview" page.  Ensure that all services are enabled and running by toggling the "Enable" and "Start" buttons as shown.  Only "Enable" the "recorder" service as shown.  You will be using the recorder service in [MCAP Recording](../../platforms/recording.md).
 
 <figure markdown="span">
 ![Service Overview](../assets/deployment/raivin-service-overview.jpg){ align=center }
@@ -111,7 +111,7 @@ This will run inference on the model specified to generate segmentation masks of
 <figcaption>Sample 2</figcaption>
 </figure>
 
-Now that the model has been updated, you can [make new recordings](../../platforms/recording.md#record-mcap) using the model's inference and then [visualize the recording using Foxglove Studio](../../platforms/foxglove.md).
+Now that the model has been updated, you can [make new recordings](../../platforms/recording.md) using the model's inference and then [visualize the recording using Foxglove Studio](../../platforms/foxglove.md).
 
 ## Inference Visualization in Foxglove
 

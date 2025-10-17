@@ -9,7 +9,7 @@ Now that you have validated your Vision Model from either a [managed](../validat
 This guide will showcase two methods of deploying the model.
 
 1. [Live View (Segmentation App)](#live-view-segmentation-app): Displays the live camera feed using the default model provided.
-2. [MCAP Recording](../../platforms/recording.md#record-mcap): Allows control of the recording options and provides download file options to replay the recording.
+2. [MCAP Recording](../../platforms/recording.md): Allows control of the recording options and provides download file options to replay the recording.
 
 {% include-markdown "discrete/models/download_model.md" %}
 
@@ -34,7 +34,7 @@ For more information, please see the [Web UI Walkthrough](../../platforms/walkth
 Next you will need to specify the path to the model in the device.  You can either update the model path in the Web UI or via the command line.
 
 !!! note "Configure Model Settings"
-    Whenever a new model has been updated, ensure that the [model settings](../../platforms/configuration.md#model-configuration) such as the score and the IoU thresholds are ideally set for this model. 
+    Whenever a new model has been updated, ensure that the [model settings](../../platforms/configuration/model.md) such as the score and the IoU thresholds are ideally set for this model. 
 
 === "via Raivin Web UI"
 
@@ -83,14 +83,14 @@ Next you will need to specify the path to the model in the device.  You can eith
 
 ## Enable and Start the Camera and Model Services
 
-Once the model path in the device is specified, ensure that all services are enabled.  To verify, go back to the settings and click on the "Service Status" button.
+Once the model path in the device is specified, ensure that the model and camera services are enabled and running.  To verify, go back to the settings and click on the "Service Status" button.
 
 <figure markdown="span">
 ![Service Status](../assets/deployment/raivin-service-status.jpg){ align=center }
 <figcaption>Service Status</figcaption>
 </figure>
 
-You will be greeted with the "Service Overview" page.  Ensure that all services are enabled and running by toggling the "Enable" and "Start" buttons as shown.  Only "Enable" the "recorder" service as shown.  You will be using the recorder service in [MCAP Recording](../../platforms/recording.md#record-mcap).
+You will be greeted with the "Service Overview" page.  Ensure that the model and camera services are enabled and running as shown.  You do not need to enable or start the recorder service, as we will be starting the recorder service as described in [MCAP Recording](../../platforms/recording.md).
 
 <figure markdown="span">
 ![Service Overview](../assets/deployment/raivin-service-overview.jpg){ align=center }
@@ -113,7 +113,7 @@ This will run inference on the model specified to generate segmentation masks an
 <figcaption>Sample 1</figcaption>
 </figure>
 
-Now that the model has been updated, you can [make new recordings](../../platforms/recording.md#record-mcap) using the model's inference and then [visualize the recording using Foxglove Studio](../../platforms/foxglove.md).
+Now that the model has been updated, you can [make new recordings](../../platforms/recording.md) using the model's inference and then [visualize the recording using Foxglove Studio](../../platforms/foxglove.md).
 
 ## Inference Visualization in Foxglove
 

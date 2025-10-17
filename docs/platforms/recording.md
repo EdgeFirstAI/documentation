@@ -68,14 +68,14 @@ The Recorder Service can have the following settings configured:
 - Location of the recording file
 - Recording compression
 
-These settings can be configured in the [MCAP Recorder Settings Page](configuration.md#mcap-recorder-settings-page).
+These settings can be configured in the [MCAP Recorder Settings Page](configuration/mcap_recording.md).
 
 ## Recording On Boot-up
 The Recording Service can be set up to automatically start on boot-up.
 !!! warning
      Having the Recording Service run for prolonged periods of time will fill the SD card of the Raivin.  Use this functionality with caution.
 
-On the [Services Status](configuration.md#service-status) page, you can use the Recorder Service status card to enable the recorder service to start on boot.
+On the [Services Status](configuration/service_status.md) page, you can use the Recorder Service status card to enable the recorder service to start on boot.
 <figure markdown="span">
 ![Recording Service](assets/Recorder_Service_Card.png){align=center}  
 <figcaption>Recorder Service status card</figcaption>

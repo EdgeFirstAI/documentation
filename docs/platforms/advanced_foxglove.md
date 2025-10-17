@@ -4,7 +4,7 @@ This section will describe two, more advanced tasks with [Foxglove Studio](foxgl
 1. Using the 3D Panel to view the post-processed [Radar](radar.md) outputs contained in the "Fusion Targets" topics.
 2. Using the "User Scripts" panel to create a short Typescript script that also outputs the values for those topics.
 
-It is assumed you have read the [introduction to Foxglove Studio](foxglove.md), familiarized yourself with the application, and have [downloaded an MCAP](recording.md#download-mcap) that has recorded the [`/fusion/targets` topic](configuration.md#fusion-recording).
+It is assumed you have read the [introduction to Foxglove Studio](foxglove.md), familiarized yourself with the application, and have [downloaded an MCAP](recording.md) that has recorded the [`/fusion/targets` topic](configuration/mcap_recording.md#fusion-recording-raivin-only).
 
 ## The Fusion Targets Topic
 The "Fusion Targets" topic contains post-processed radar outputs that identify targets as people.  For each target it detects, it returns the following information about the target:
@@ -31,7 +31,7 @@ Each target takes up 36 bytes of data which is noted in the "point_step" field. 
 <figcaption>Top Level Fields</figcaption>
 </figure>
 
-The Fusion and Vision Class are produced by Fusion service on the Raivin.  They will report 0 for any cluster not identified as a person and 1 for any cluster as belonging to a human.  The Raivin WebUI can use [either class or both classes together](configuration.md#draw-pcd) to determine if any radar target is a person or not.
+The Fusion and Vision Class are produced by Fusion service on the Raivin.  They will report 0 for any cluster not identified as a person and 1 for any cluster as belonging to a human.  The Raivin WebUI can use [either class or both classes together](configuration/webui.md#draw-pcd) to determine if any radar target is a person or not.
 
 ## 3D Panes for Fusion
 To Create a 3D view for the Fusion Class:

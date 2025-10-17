@@ -184,7 +184,7 @@ When displaying the results through Rerun you will see the boxes without any cam
 ![alt text](assets/model_boxes2d.png)
 
 ### Box Tracking
-On your EdgeFirst Platform you can also allow tracking of the boxes and this can then be logged during the publishing of the boxes. The documentation for the settings to turn on tracking can be found [here](../../../platforms/configuration.md#track-settings). You can update your code to match the [Python example](https://github.com/EdgeFirstAI/samples/blob/main/python/model/boxes2d_tracked.py) or [Rust example](https://github.com/EdgeFirstAI/samples/blob/main/rust/model/boxes2d_tracked.rs) from the regular boxes2d example by changing the boxes2d_worker to the following.
+On your EdgeFirst Platform you can also allow tracking of the boxes and this can then be logged during the publishing of the boxes. The documentation for the settings to turn on tracking can be found [here](../../../platforms/configuration/model.md#track-settings). You can update your code to match the [Python example](https://github.com/EdgeFirstAI/samples/blob/main/python/model/boxes2d_tracked.py) or [Rust example](https://github.com/EdgeFirstAI/samples/blob/main/rust/model/boxes2d_tracked.rs) from the regular boxes2d example by changing the boxes2d_worker to the following.
 
 === "Python"
 

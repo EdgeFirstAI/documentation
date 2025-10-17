@@ -76,7 +76,7 @@ SDK | [H264 Example](../dev/examples/camera.md#h264-camera-feed)
 
 ## /camera/jpeg
 
-The `/camera/jpeg` topic uses ROS2's [CompressedImage](../api/sensor_msgs.md#compressedimage) schema to publish JPEG encoded camera frames.  Each frame is a complete JPEG image and can be decoded using any standard JPEG decoder. The JPEG topic will not be enabled by default. In order to enable the JPEG topic, please follow the guide noted in [configuration](../../platforms/configuration.md#h264-streaming)
+The `/camera/jpeg` topic uses ROS2's [CompressedImage](../api/sensor_msgs.md#compressedimage) schema to publish JPEG encoded camera frames.  Each frame is a complete JPEG image and can be decoded using any standard JPEG decoder. The JPEG topic will not be enabled by default. In order to enable the JPEG topic, please follow the guide noted in [configuration](../../platforms/configuration/camera.md#h264-streaming)
 
 **Usage** | **Link**
 :------------------:|:------------------:

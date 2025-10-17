@@ -164,6 +164,16 @@ nav:
       - platforms/hardware.md
       - platforms/radar.md
       - platforms/lidar.md
+    - Configuration:
+      - platforms/configuration/index.md
+      - platforms/configuration/mcap_recording.md
+      - platforms/configuration/camera.md
+      - platforms/configuration/webui.md
+      - platforms/configuration/model.md
+      - platforms/configuration/service_status.md
+      - platforms/configuration/radar.md
+      - platforms/configuration/fusion.md
+      - platforms/configuration/lidar.md
     - Software:
       - platforms/configuration.md
       - platforms/model_uploads.md

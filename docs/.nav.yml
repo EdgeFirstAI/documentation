@@ -98,6 +98,7 @@ nav:
           - models/modelpack/tutorials/index.md
           - models/modelpack/tutorials/measurement_tape.md
           - models/modelpack/tutorials/musicbox.md
+        - Architecture: models/modelpack/architecture.md
         - Benchmarks: models/modelpack/benchmarks.md
       - Ultralytics:
           - models/ultralytics/index.md

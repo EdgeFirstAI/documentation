@@ -66,7 +66,10 @@ There are several settings that will stop or change specific topics, which may r
     - [Disabling H264 streaming](./camera.md#h264-streaming) will stop the `/camera/h264` topic
     - [Enabling JPEG streaming](./camera.md#jpeg-streaming) will create the `/camera/jpeg` topic
 
-Topics that have been stopped by a configuration change cannot be recorded into an MCAP file. However, the new topics created by the above changes are not automatically added to the MCAP recorder.  They will need to be added manually to the `TOPICS` line in the `/etc/default/recorder` configuration file.  To edit this file, you need to run the `sudo vi /etc/default/recorder` command.
+Topics that have been stopped by a configuration change cannot be recorded into an MCAP file. However, the new topics created by the above changes are not automatically added to the MCAP recorder and will need to be added manually.
+
+### Adding Topics Manually to the Recording Service
+Topics that are not included by the WebUI front-end to be recorded must be added manually at the platform command-line interface. You will need to [SSH into the platform](../../platforms/ssh.md). Then, the topics willl need to be added manually to the `TOPICS` line in the `/etc/default/recorder` configuration file.  To edit this file, you need to run the `sudo vi /etc/default/recorder` command.
 
 !!! Tip
     If you are unfamiliar with `vi`, please read a [quick tutorial][vi].

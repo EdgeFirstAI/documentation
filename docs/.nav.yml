@@ -154,6 +154,12 @@ nav:
       - perception/api/studio.md
     - Deep View RT:
       - perception/deepviewrt/index.md
+    - 4K Video:
+      - perception/4k/index.md
+      - perception/4k/camera_4k.md
+      - perception/4k/webui_4k.md
+      - perception/4k/publisher_4k.md
+      - perception/4k/foxglove_4k.md
   - Platforms:
     - platforms/index.md
     - Getting Started:
@@ -175,7 +181,6 @@ nav:
       - platforms/configuration/fusion.md
       - platforms/configuration/lidar.md
     - Software:
-      - platforms/configuration.md
       - platforms/model_uploads.md
       - platforms/updates.md
       - platforms/release_notes.md

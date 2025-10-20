@@ -13,7 +13,7 @@ This page configures the camera service that interacts with the Raivin's [OmniVi
 This configures what camera device the camera service will use, which on Raivin will be `/dev/video3`.
 
 ## Camera Size
-This sets the camera resolution which is used for the camera capture and separate from the streaming resolution. The camera resolution can be set to any resolution supported by the camera.  If the camera size is set to "3840 2160", it will put the camera service into [4K Mode](../../perception/4k/camera_4k.md).
+This sets the camera resolution which is used for the camera capture and separate from the streaming resolution. The camera resolution can be set to any resolution supported by the camera.  If the camera size is set to "3840 2160", it will put the camera service into [4K Mode](../../perception/4k/index.md).
 
 ## Stream Size
 This configures the streaming resolution for the H.264 and JPEG streaming.  The H.264 stream supports up to HD resolution (1920x1080).  The JPEG stream supports all resolutions but is encoded on the CPU so the practical limit is around 960x540 or 640x360 to maintain 16:9 aspect ratio.

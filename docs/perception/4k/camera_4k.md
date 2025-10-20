@@ -33,9 +33,9 @@ export H264_BITRATE=auto
 export CAMERA_SIZE="3840 2160"
 ```
 
-## Usage Examples
+### Usage Examples
 
-### Basic 4K Tile Streaming
+#### Basic 4K Tile Streaming
 ```bash
 ./edgefirst-camera \
   --h264-tiles \
@@ -44,7 +44,7 @@ export CAMERA_SIZE="3840 2160"
   --h264-tiles-fps 15
 ```
 
-### Custom Topic Configuration
+#### Custom Topic Configuration
 ```bash
 ./edgefirst-camera \
   --h264-tiles \
@@ -52,7 +52,7 @@ export CAMERA_SIZE="3840 2160"
   --camera-size 3840 2160
 ```
 
-### High Performance Setup
+#### High Performance Setup
 ```bash
 ./edgefirst-camera \
   --h264-tiles \
@@ -61,6 +61,9 @@ export CAMERA_SIZE="3840 2160"
   --camera-size 3840 2160 \
   --tracy  # Enable profiling
 ```
+
+## WebUI Configuration
+There is no configuration item in the WebUI to specifically enable 4K tiling; however, you can set the [Camera Size](../../platforms/configuration/camera.md#camera-size) to `3840 2160` to implicitly enter 4K tiling.
 
 ## Troubleshooting
 

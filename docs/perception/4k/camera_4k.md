@@ -1,8 +1,8 @@
 # The 4K Camera Service
-The Camera service on the Maivin/Raivin supports 4k video in multiple fashions, including command-line configuration as well as through the WebUI.
+The Camera service on the Maivin/Raivin supports 4k video in multiple fashions, including command-line configuration, adding the parameters to the camera configuration file, as well as through the WebUI.
 
 ## Command Line Configuration
-The following command-line options for the camera service are described below.
+The camera service can be run at the platform's command-line interface.  The first step would be to log on to the platform via [SSH](../../platforms/ssh.md).  Then stop the current camera service with the `sudo systemctl stop camera`.  The following command-line options for the camera service are described below.
 
 ```bash
 # Enable 4K tile streaming
@@ -21,7 +21,7 @@ The following command-line options for the camera service are described below.
 --camera-size 3840 2160
 
 # How to Run
-sudo ./edgefirst-camera --h264-tiles --h264-tiles-fps 30 --camera-size 3840 2160
+sudo camera --h264-tiles --h264-tiles-fps 30 --camera-size 3840 2160
 ```
 
 You can also export these as environment variables prior to running the executable.
@@ -37,7 +37,7 @@ export CAMERA_SIZE="3840 2160"
 
 #### Basic 4K Tile Streaming
 ```bash
-./edgefirst-camera \
+sudo camera \
   --h264-tiles \
   --camera-size 3840 2160 \
   --h264-bitrate mbps25 \
@@ -46,7 +46,7 @@ export CAMERA_SIZE="3840 2160"
 
 #### Custom Topic Configuration
 ```bash
-./edgefirst-camera \
+sudo camera \
   --h264-tiles \
   --h264-tiles-topics "camera/tl camera/tr camera/bl camera/br" \
   --camera-size 3840 2160
@@ -54,13 +54,21 @@ export CAMERA_SIZE="3840 2160"
 
 #### High Performance Setup
 ```bash
-./edgefirst-camera \
+sudo camera \
   --h264-tiles \
   --h264-bitrate mbps50 \
   --h264-tiles-fps 30 \
   --camera-size 3840 2160 \
   --tracy  # Enable profiling
 ```
+
+## SystemD Configuration file
+You can add the above paramaters to the camera configuration file located at `/etc/default/camera`.  The following lines can be added to the configuraiton file:
+```
+H264_TILES = true
+H264_TILES_FPS = 15
+```
+Do not add quotes to the values in the lines.
 
 ## WebUI Configuration
 There is no configuration item in the WebUI to specifically enable 4K tiling; however, you can set the [Camera Size](../../platforms/configuration/camera.md#camera-size) to `3840 2160` to implicitly enter 4K tiling.

@@ -96,13 +96,9 @@ Such heterogeneity makes BDD100K more representative of real-world driving than 
 
 ## 3. ModelPack
 
-<div align="justify">
-ModelPack is a modular deep-learning framework developed for edge-optimized computer vision. Built on Keras 3.x and the Functional API, it provides a unified environment for training, evaluating, and deploying object detection, segmentation, and multitask models on embedded devices such as NPUs, Jetson platforms, and EdgeTPUs. The framework is centered around reusable building blocks—Convolutional, Residual, CSP, and Spatial Pyramid Pooling (SPP)—that can be iteratively combined to construct scalable backbones. ModelPack introduces two compound-scaled families, CSPDarknet19 and CSPDarknet53, each exposed in nano, small, medium, and large variants to balance accuracy and computational cost. By integrating standardized preprocessing that includes native non-squared input resolutions, mixed precision, and export flows to ONNX and TFLite, ModelPack enables seamless transition from research to deployment while preserving high accuracy under strict memory and latency constraints.
-</div></br>
+ModelPack is a modular deep-learning framework developed for edge-optimized computer vision. Built on Keras 3.x and the Functional API, it provides a unified environment for training, evaluating, and deploying object detection, segmentation, and multitask models on embedded devices such as NPUs, Jetson platforms, and EdgeTPUs. The framework is centered around reusable building blocks—Convolutional, Residual, CSP, and Spatial Pyramid Pooling (SPP)—that can be iteratively combined to construct scalable backbones. Unlike YOLOv5, which employs a fixed CSPDarknet53 variant augmented with custom detection and neck layers, ModelPack generalizes the YOLOv4 CSP19 and CSP53 backbones using a compound-scaling strategy inspired by MobileNet and EfficientDet. This approach systematically adjusts both the network width (number of filters) and depth (number of blocks) to create balanced nano, small, medium, and large variants, optimized for different resource and performance targets. Additionally, ModelPack extends the original design with native non-squared input support, mixed-precision training, and standardized export flows to ONNX and TFLite, enabling seamless transition from research to real-time deployment while maintaining high accuracy under strict memory and latency constraints.
 
-<div align="justify">
-ModelPack has evolved through multiple real-world deployments, reflecting a continuous process of refinement across diverse industries. Its origins trace back to Arrow Electronics’ “Sam Car” project, where adaptive vision systems were deployed on embedded automotive platforms for assistive driving. The framework was later extended to support The Ocean Cleanup initiative, enabling efficient detection of floating debris under dynamic lighting and motion conditions. ModelPack has also been used by Aigen Robotics to power edge-based perception in autonomous agricultural, combining detection and segmentation for precision weed removal. These cross-domain applications have shaped ModelPack into a robust, production-ready ecosystem—one designed not just for benchmark performance, but for reliability, portability, and energy efficiency in real embedded environments.
-</div>
+ModelPack has evolved through multiple real-world deployments, reflecting a continuous process of refinement across diverse industries. It has been applied in automotive systems, environmental monitoring, and agricultural robotics, where edge-deployed vision models must operate reliably under constrained hardware and diverse environmental conditions. Beyond object detection and semantic segmentation, ModelPack has been extended to support additional perception tasks such as head-pose estimation, debris recognition at high input resolution (4k), and vegetation analysis. These cross-domain applications have shaped ModelPack into a robust, production-ready ecosystem—one designed not just for benchmark performance, but for reliability, portability, and energy efficiency in real embedded environments.
 
 ### 3.1 Training Configuration and Cloud Support
 
@@ -143,12 +139,23 @@ Notably, despite having similar or fewer parameters, ModelPack demonstrated high
 
 To assess deployability on embedded platforms, all trained models were quantized to INT8 and benchmarked on an NXP i.MX8M Plus with its integrated NPU (2.3 TOPS). ModelPack demonstrated a significant efficiency advantage, with inference latencies well below those of comparable YOLO architectures:
 
-| Model                        | Avg. Inference Time (ms) | Relative Speedup          |
-| ---------------------------- | ------------------------ | ------------------------- |
-| modelpack-csp19-medium       | **19 ms**                | **3.5× faster** than YOLO |
-| modelpack-csp19-large        | **23 ms**                | **≈3× faster**            |
-| modelpack-csp53-nano         | **42 ms**                | **≈1.6× faster**          |
-| yolov5n / yolov8n / yolov11n | ~66 ms and beyond        | —                         |
+| Model                        | Avg. Inference Time (ms) | Relative Speedup          | mAP@[0.5] int8  | mAP@[0.5:0.95] int8  |
+| ---------------------------- | ------------------------ | ------------------------- | -------------------- | -------------------- |
+| modelpack-csp19-medium       | **19 ms**                | **3.3× faster**           |      0.409          |   0.199    |
+| modelpack-csp19-large        | **23 ms**                | **≈3× faster**            |      0.412          |   0.201    |
+| modelpack-csp53-nano         | **42 ms**                | **≈1.6× faster**          |      0.464          |   0.236    |
+| yolov5n                      | 62.9 ms                  | baseline                         |       —             |    —       |
+| yolov8n                      | 66.7 ms                  | —                         |       —             |    —       |
+| yolov11n                     | 93.4 ms                  | —                         |       —             |    —       |
+
+
+!!! note "Ultralytics Quantization"
+    We are working on having ultralytics models properly quantized on BDD100k. 
+    Results are going to be published once the quantization issue gets resolved
+
+
+!!! info "Relative Speed"
+    Relative speedup is computed relative to the fastest model: yolov5n
 
 
 These results confirm that ModelPack maintains higher accuracy at substantially lower latency, achieving up to 3.5× faster inference than standard YOLO models on the same hardware. The combination of lightweight backbones, efficient feature aggregation, and quantization-aware design makes ModelPack particularly well suited for real-time edge deployment on constrained processors such as the i.MX8M Plus.

@@ -31,9 +31,9 @@ The BDD100K dataset is a large-scale driving video dataset containing 100,000 vi
     | modelpack-csp19-medium-640x640-rgb | 0.418   | 0.201         |  22.2    |
     | modelpack-csp19-large-640x640-rgb | 0.408   | 0.199         |  25.02    |
     | modelpack-csp53-nano-640x640-rgb  | 0.466   | 0.239         |  47.8    |
-    | yolov85-det-640x640-rgb           | -   | -         |  137.5    |
-    | yolov8n-det-640x640-rgb           | -   | -         |  136.5    |
-    | yolov8n-det-640x640-rgb           | -   | -         |  136.5    |
+    | yolov5n-det-640x640-rgb           | -   | -         |  62.9    |
+    | yolov8n-det-640x640-rgb           | -   | -         |  66.7    |
+    | yolo11n-det-640x640-rgb           | -   | -         |  93.4    |
 
     !!! note "BSP Version"
         **i.MX 8M Plus** is flashed with [NXP Yocto BSP](https://www.nxp.com/design/design-center/software/embedded-software/i-mx-software/embedded-linux-for-i-mx-applications-processors:IMXLINUX) 6.12.

@@ -29,9 +29,11 @@ You can also export these as environment variables prior to running the executab
 ```bash
 export H264_TILES=true
 export H264_TILES_FPS=15
+export TRACY=true
 export H264_BITRATE=auto
 export CAMERA_SIZE="3840 2160"
 ```
+The H264 tile topics environment variable is not available at this time.
 
 ### Usage Examples
 
@@ -48,7 +50,7 @@ sudo camera \
 ```bash
 sudo camera \
   --h264-tiles \
-  --h264-tiles-topics "camera/tl camera/tr camera/bl camera/br" \
+  --h264-tiles-topics rt/camera/tl rt/camera/tr rt/camera/bl rt/camera/br \
   --camera-size 3840 2160
 ```
 
@@ -65,13 +67,14 @@ sudo camera \
 ## SystemD Configuration file
 You can add the above paramaters to the camera configuration file located at `/etc/default/camera`.  The following lines can be added to the configuraiton file:
 ```
-H264_TILES = true
-H264_TILES_FPS = 15
+H264_TILES = "true"
+H264_TILES_FPS = "15"
+TRACY = "true"
 ```
-Do not add quotes to the values in the lines.
+The parameters for `CAMERA_SIZE` and `H264_BITRATE` already exist in `/etc/default/camera`.  The H264 tile topics parameter is not available at this time.
 
 ## WebUI Configuration
-There is no configuration item in the WebUI to specifically enable 4K tiling; however, you can set the [Camera Size](../../platforms/configuration/camera.md#camera-size) to `3840 2160` to implicitly enter 4K tiling.
+There is no configuration item in the WebUI to specifically enable 4K tiling; however, you can set the [Camera Size](../../platforms/configuration/camera.md#camera-size) to `3840 2160` to implicitly enter 4K tiling. As well, you can set the [H264 Bitrate](../../platforms/configuration/camera.md#h264-bitrate) here as well.
 
 ## Troubleshooting
 

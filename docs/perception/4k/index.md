@@ -177,7 +177,20 @@ FoxgloveCompressedVideo {
 - **Publishing Errors**: Individual tile failures don't affect others
 
 ## Monitoring and Debugging
-Monitoring is handled via [Tracy][tracy].
+Monitoring is handled via [Tracy][tracy]. Current release has been tested against [Tracy Profiler 0.12.2][0.12.2] for Windows and will not work on 0.11.1 and earlier. Please read the documentation on how to run Tracy for full details. For a quickstart, once you download the download the `windows-0.12.2.zip` file from the repository and unzip it, you can run the profiler with `tracy-profiler.exe` command. This will open the following window:
+<figure markdown="span">
+![Tracy Profiler](../assets/index_4k_tracy_profiler.jpg){ align=center }
+<figcaption>Tracy Profiler</figcaption>
+</figure>
+
+This should discover any services running Tracy monitoring clients.
+<figure markdown="span">
+![Tracy Profiler Discovered](../assets/index_4k_tracy_profiler_discovered.jpg){ align=center }
+<figcaption>Tracy Profiler Discovered Camera Service</figcaption>
+</figure>
+
+Clicking on the newly discovered client should take you to the monitoring screen.
+
 ### Tracy Profiling
 - **Frame Marks**: Visual frame boundaries in Tracy
 - **Bitrate Plotting**: Real-time bitrate monitoring
@@ -189,3 +202,4 @@ Monitoring is handled via [Tracy][tracy].
 - **Performance Warnings**: FPS monitoring and alerts
 
 [tracy]: https://github.com/wolfpld/tracy
+[0.12.2]: https://github.com/wolfpld/tracy/releases/tag/v0.12.2

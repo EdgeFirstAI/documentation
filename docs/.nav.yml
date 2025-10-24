@@ -143,7 +143,7 @@ nav:
         - perception/dev/examples/radar.md
         - perception/dev/examples/ssd.md
     - API Reference:
-      - perception/api.md
+      - perception/api/index.md
       - perception/api/edgefirst_msgs.md
       - perception/api/foxglove_msgs.md
       - perception/api/geometry_msgs.md

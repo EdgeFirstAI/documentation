@@ -122,7 +122,7 @@ nav:
     - perception/studio.md
     - perception/launcher.md
     - Topics:
-      - perception/topics.md
+      - perception/topics/index.md
       - perception/topics/camera.md
       - perception/topics/fusion.md
       - perception/topics/imu.md

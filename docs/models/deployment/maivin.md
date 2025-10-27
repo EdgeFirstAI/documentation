@@ -9,7 +9,7 @@ Now that you have validated your Vision Model from either a [managed](../validat
 This guide will showcase two methods of deploying the model.
 
 1. [Live View (Segmentation App)](#live-view-segmentation-app): Displays the live camera feed using the default model provided.
-2. [MCAP Recording](../../platforms/recording.md): Allows control of the recording options and provides download file options to replay the recording.
+2. [MCAP Recording](../../platforms/recording.md#record-mcap): Allows control of the recording options and provides download file options to replay the recording.
 
 {% include-markdown "discrete/models/download_model.md" %}
 
@@ -113,7 +113,7 @@ This will run inference on the model specified to generate segmentation masks on
 <figcaption>Sample 1</figcaption>
 </figure>
 
-Now that the model has been updated, you can [make new recordings](../../platforms/recording.md) using the model's inference and then [visualize the recording using Foxglove Studio](../../platforms/foxglove.md).
+Now that the model has been updated, you can [make new recordings](../../platforms/recording.md#record-mcap) using the model's inference and then [visualize the recording using Foxglove Studio](../../platforms/foxglove.md).
 
 ## Inference Visualization in Foxglove
 

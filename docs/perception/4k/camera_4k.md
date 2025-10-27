@@ -74,7 +74,7 @@ TRACY = "true"
 The parameters for `CAMERA_SIZE` and `H264_BITRATE` already exist in `/etc/default/camera`.  The H264 tile topics parameter is not available at this time.
 
 ## WebUI Configuration
-There is no configuration item in the WebUI to specifically enable 4K tiling; however, you can set the [Camera Size](../../platforms/configuration/camera.md#camera-size) to `3840 2160` to implicitly enter 4K tiling. As well, you can set the [H264 Bitrate](../../platforms/configuration/camera.md#h264-bitrate) here as well.
+There is no configuration item in the WebUI to specifically enable 4K tiling; however, you can set the [Camera Size](../../platforms/configuration/camera.md#camera-size) to `3840 2160` to implicitly enter 4K tiling. As well, you can set the [H264 Bitrate](../../platforms/configuration/camera.md#h264-bitrate) here as well.  Lastly, it is recommended that you [disable H264 streaming](../../platforms/configuration/camera.md#h264-streaming) to disable the 1K video stream `/camera/h264`.
 
 ## Troubleshooting
 
@@ -82,6 +82,7 @@ There is no configuration item in the WebUI to specifically enable 4K tiling; ho
    - Check camera resolution settings  
    - Verify hardware encoding support  
    - Monitor system resources  
+   - Turn off Radar Publishing and Fusion services if running and unneeded
 
 ### Encoding Failures
    - Ensure 4K camera resolution is set  
@@ -97,8 +98,10 @@ There is no configuration item in the WebUI to specifically enable 4K tiling; ho
 
 ### Bitrate Selection
    - `auto`: Let encoder decide (recommended)
+   - `mbps5`: Low quality, low bandwidth
    - `mbps25`: Good balance for most use cases
    - `mbps50`: High quality, requires more bandwidth
+   - `mbps100`: Very high quality, but requires tremendous bandwidth
 
 ### Frame Rate Optimization
    - Lower tile FPS reduces CPU usage

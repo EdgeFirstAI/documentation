@@ -105,14 +105,14 @@ The CSP2 layer is a more compact variation of the standard Cross Stage Partial (
 
 # ModelPack Backbones
 
-ModelPack is versatile framework designated for Object Detection and Semantic Segmentation, initially inspired by YoloV4 architecture (Bochkovskiy 2020). The framework exposes two different backbones, the CSPDarknet19 and CSPDaknet53. Different to original implementation that only provided the large and tiny architectures, we adopt the approach proposed by EfficientDet (Tan 2020) and expose the compound scaling factors to produce the nano, small, medium and large architectures for each backbone. This approach considerably reduces the number of parameters on each model and speeds up the inference on embedded devices.
+ModelPack is versatile framework designated for Object Detection and Semantic Segmentation, initially inspired by YOLOv4 architecture (Bochkovskiy 2020). The framework exposes two different backbones, the CSPDarknet19 and CSPDaknet53. Different to original implementation that only provided the large and tiny architectures, we adopt the approach proposed by EfficientDet (Tan 2020) and expose the compound scaling factors to produce the nano, small, medium, and large architectures for each backbone. This approach considerably reduces the number of parameters on each model and speeds up the inference on embedded devices.
 
 ## Compound Scaling Factors
 
 The scaling factor moves in two different directions, affecting in that way the width and height of the model. The width parameter modifies the number of filters on each convolutional layer: nano (0.25), small (0.5), medium (0.75) and large (1.0). The height parameter affects the number of convolutional blocks at different levels: nano (0.33), small (0.33), medium (0.66) and large (1.0). For the case of the CSPDarknet19 backbone, we only modify the expansion on the width direction to avoid overlapping with CSPDarknet53 backbone.
 
 
-| Backbone             | Parameters |
+| Backbone              | Parameters |
 |-----------------------|------------|
 | CSPDarknet19-nano     | 1.42M      |
 | CSPDarknet19-small    | 2.48M      |
@@ -145,12 +145,12 @@ flowchart LR
     L --> M[Output 2]
 ```
 
-`Output 1` and `Output 2` are designated features maps used for training detection and segmentation models. For the case of classification. The `Output2` is used.
+`Output 1` and `Output 2` are designated features maps used for training detection and segmentation models. For the case of classification, the `Output2` is used.
 
 ### **ImageNet Results (RGB, ReLU6, 224×224) — CSPDarknet19**
 
-| Model            | Top-1 Acc | Top-5 Acc | Top-10 Acc | Batch | Params |
-|------------------|-----------|-----------|------------|--------|---------|
+| Model        | Top-1 Acc | Top-5 Acc | Top-10 Acc | Batch  | Params  |
+|--------------|-----------|-----------|------------|--------|---------|
 | csp19-nano   | 0.52      | 0.76      | 0.86       | 256    | 1.42 M  |
 | csp19-small  | 0.62      | 0.84      | 0.89       | 256    | 2.48 M  |
 | csp19-medium | 0.66      | 0.87      | 0.91       | 256    | 4.18 M  |
@@ -182,8 +182,8 @@ Similar to CSPDarkNet19, `Output 1`, `Output 2` and `Output 3` are mainly involv
 
 ### **ImageNet Results (RGB, ReLU6, 224×224) — CSPDarknet53**
 
-| Model            | Top-1 Acc | Top-5 Acc | Top-10 Acc | Batch | Params |
-|------------------|-----------|-----------|------------|--------|---------|
+| Model        | Top-1 Acc | Top-5 Acc | Top-10 Acc | Batch  | Params  |
+|--------------|-----------|-----------|------------|--------|---------|
 | csp53-nano   | 0.72      | 0.91      | 0.94       | 256    | 2.70 M  |
 | csp53-small  | 0.83      | 0.95      | 0.98       | 128    | 7.40 M  |
 | csp53-medium | 0.91      | 0.99      | 0.99       | 128    | 22.8 M  |

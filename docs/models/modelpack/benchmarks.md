@@ -2,7 +2,6 @@
 
 This page presents comprehensive benchmark results for ModelPack, a versatile model collection featuring multiple backbone architectures and size variants (nano, small, medium, large). ModelPack is designed for flexibility and performance across a wide range of computer vision tasks. Here, we evaluate its performance on several key datasets, including ImageNet for classification, PlayingCards for object detection, and COCO for detection and segmentation . Each benchmark includes metrics such as accuracy, model size, and inference efficiency, helping developers and researchers choose the right configuration for their specific use case. Explore the tables below to compare performance across backbones and deployment scenarios.
 
-
 === "BDD100K"
 
     ## BDD100K
@@ -11,21 +10,19 @@ This page presents comprehensive benchmark results for ModelPack, a versatile mo
 
     **Table: ModelPack on BDD100K - RGB - (640x640) - ONNX - (100 epochs)**
 
-    | Model                             | mAP@0.5 | mAP@0.5..0.95 |
-    |-----------------------------------|---------|---------------|
+    | Model                              | mAP@0.5 | mAP@0.5..0.95 |
+    |------------------------------------|---------|---------------|
     | modelpack-csp19-medium-640x640-rgb | 0.466   | 0.259         | 
-    | modelpack-csp19-large-640x640-rgb | 0.479   | 0.273         | 
-    | modelpack-csp53-nano-640x640-rgb  | 0.525   | 0.31           |
-    
-
+    | modelpack-csp19-large-640x640-rgb  | 0.479   | 0.273         | 
+    | modelpack-csp53-nano-640x640-rgb   | 0.525   | 0.31          |
 
     **Table: ModelPack on BDD100K - RGB - (640x640) - TFLite - i.MX 8M Plus**
 
-    | Model                             | mAP@0.5 | mAP@0.5..0.95 | Time (ms) |
-    |-----------------------------------|---------|---------------|-----------|
-    | modelpack-csp19-medium-640x640-rgb | 0.418   | 0.201         |  22.2    |
-    | modelpack-csp19-large-640x640-rgb | 0.408   | 0.199         |  25.02    |
-    | modelpack-csp53-nano-640x640-rgb  | 0.466   | 0.239         |  47.8    |
+    | Model                              | mAP@0.5 | mAP@0.5..0.95 | Time (ms) |
+    |------------------------------------|---------|---------------|-----------|
+    | modelpack-csp19-medium-640x640-rgb | 0.418   | 0.201         |  22.2     |
+    | modelpack-csp19-large-640x640-rgb  | 0.408   | 0.199         |  25.02    |
+    | modelpack-csp53-nano-640x640-rgb   | 0.466   | 0.239         |  47.8     |
 
     Visit the full **BDD100K** dataset [Benchmark here](../../datasets/bdd100k/index.md).
 

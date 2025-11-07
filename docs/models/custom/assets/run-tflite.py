@@ -101,12 +101,10 @@ def get_input(image_path: str, input_details: dict) -> np.ndarray:
 
     # is TFLite quantized int8 model
     int8 = input_details["dtype"] == np.int8
-    # is TFLite quantized uint8 model
-    uint8 = input_details["dtype"] == np.uint8
-    if int8 or uint8:
-        img = img.astype(np.uint8) if uint8 else img.astype(np.int8)
-    else:
-        img = img.astype(np.float32)
+    _, zp = input_details["quantization"]
+    if int8:
+        zp = abs(zp)
+        img = (img.astype(np.int16) - zp).astype(np.int8)
     return np.array([img]), size
 
 def numpy_nms(dets: np.ndarray, scores: np.ndarray, thresh: float) -> list:

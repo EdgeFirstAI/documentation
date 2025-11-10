@@ -85,6 +85,7 @@ nav:
         - models/validation/metrics/detection.md
         - models/validation/metrics/segmentation.md
         - models/validation/metrics/fusion.md
+        - models/validation/metrics/matching.md
     - Model Deployment:
       - 2D Model Deployment:
         - models/deployment/pc.md

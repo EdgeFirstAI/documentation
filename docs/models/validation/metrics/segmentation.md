@@ -15,7 +15,7 @@ The segmentation metrics describe the average precision, recall, and accuracy.  
   <figcaption>Segmentation Metrics</figcaption>
 </figure>
 
-The equations for precision, recall, and accuracy are similar to object detection, except that in segmentation we are classifying predictions as either true or false on a pixel-by-pixel basis.  Shown below are the equations for precision, recall, and accuracy. 
+The equations for precision, recall, and accuracy are similar to object detection, except that in segmentation we are classifying predictions as either true or false on a pixel-by-pixel basis.  Shown below are the equations for precision, recall, and accuracy/F1. 
 
 $$
 \text{precision} = \frac{\text{true predictions}}{\text{total predictions}}
@@ -27,6 +27,10 @@ $$
 
 $$
 \text{accuracy} = \frac{\text{true predictions}}{\text{predictions U ground truths}}
+$$
+
+$$
+\text{F1} = \frac{2 * \text{precision} * \text{recall}}{\text{precision} + \text{recall}}
 $$
 
 The average precision, recall, and accuracy is the sum of precision, recall, and accuracy per class divided by the number of classes.  

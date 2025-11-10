@@ -182,6 +182,10 @@ Furthermore, the distribution of the average timings are also shown below as a p
   <figcaption>Average Timings</figcaption>
 </figure>
 
+## Further Reading
+
+This page has described the validation metrics and the formulas behind these computations.  To better understand how detections are classified into true positives, false positives, and false negatives, see [Object Detection Classifications](classifications.md).
+
 ## Glossary
 
 This section will explain the definitions of key terms frequently mentioned throughout this page.

@@ -4,6 +4,9 @@ This tutorial will show the steps for running validation on target.  This type o
 
 Another type of validation is the [On Cloud Validation](managed.md) which is hosted as a managed validation session in EdgeFirst Studio.  A managed validation session creates an EC2 server to deploy the model for validation.
 
+!!! info "i.MX 95 Validation"
+    To deploy TFLite models in the i.MX 95, first [convert the models using eIQ's Neutron Converter](../../custom/neutron.md) prior to deploying the model in the platform.  This modifies the model's architecture to allow deployment using the device's Neutron NPU delegate.
+
 {% include-markdown "discrete/studio/create_mpk_validation_session.md" %}
 
 You will be greeted with a validation session dialog.  In this dialog, check the "User Managed Validator" checkbox.  Next specify the name of the validation session, the model to validate, and the dataset to deploy.  In this example, the TFLite model will be validated and the "Coffee Cup" dataset with the validation partition will be used.  Next specify, the validation parameters on the right.  Additional information on these parameters are provided by hovering over the info button ![Info Button](../../../assets/buttons/studio-info-button.jpg). 
@@ -20,7 +23,7 @@ Once the configurations have been made, go ahead and click on the "Start Session
 Once the validation session has been created, [SSH](../../../platforms/ssh.md) into the platform and install the following dependencies. 
 
 !!! warning "Virtual Environment"
-    To avoid re-installation of existing system packages, we recommend setting up a [python virtual environment](https://docs.python.org/3/library/venv.html#creating-virtual-environments)
+    To avoid re-installation of existing system packages, we recommend setting up a [Python virtual environment](https://docs.python.org/3/library/venv.html#creating-virtual-environments)
     prior to running the pip installations below.  Append `--system-site-packages` when creating the environment to include existing packages in the system.  For example:
 
     * Linux `python3 -m venv /path/to/myvenv --system-site-packages`

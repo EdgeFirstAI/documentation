@@ -9,7 +9,7 @@ In this example, we have taken the pretrained quantized ONNX model from the [ONN
 !!! tip "ONNX Deployment"
     When deploying ONNX models on target, it is recommended to quantize the ONNX to deploy on the NPU using these providers `['NnapiExecutionProvider', 'VsiNpuExecutionProvider']` or convert it to FP16 to deploy on the GPU using this provider `["CUDAExecutionProvider"]`.
 
-Download our [Python Script](assets/run-tflite.py){: download="run-tflite.py"} for running the example. 
+Download our [Python Script](assets/run-onnx.py){: download="run-onnx.py"} for running the example. 
 
 Lastly, you can try this sample image [000000000064.jpg](assets/000000000064.jpg){: download="000000000064.jpg" } taken from [COCO128](https://www.kaggle.com/datasets/ultralytics/coco128). 
 
@@ -191,13 +191,11 @@ The following breakdown of the script describing the steps of the model inferenc
     img = np.array(image.resize((width, height)))
 
     # is TFLite quantized int8 model
-    int8 = input_det["dtype"] == np.int8
-    # is TFLite quantized uint8 model
-    uint8 = input_det["dtype"] == np.uint8
-    if int8 or uint8:
-        img = img.astype(np.uint8) if uint8 else img.astype(np.int8)
-    else:
-        img = img.astype(np.float32)
+    int8 = input_details["dtype"] == np.int8
+    scale, zp = input_details["quantization"]
+    if int8:
+        zp = abs(zp)
+        img = (img.astype(np.int16) - zp).astype(np.int8)
     img = np.array([img]) 
     ```
 

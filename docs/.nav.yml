@@ -109,6 +109,7 @@ nav:
         - models/custom/index.md
         - models/custom/quantize.md
         - models/custom/npu.md
+        - models/custom/neutron.md
     - models/metadata.md
     - models/augmentations.md
   - Perception:

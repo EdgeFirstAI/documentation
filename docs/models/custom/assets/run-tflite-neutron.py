@@ -101,7 +101,10 @@ def get_input(image_path: str, input_details: dict) -> np.ndarray:
 
     # is TFLite quantized int8 model
     int8 = input_details["dtype"] == np.int8
-    _, zp = input_details["quantization"]
+    # is TFLite quantized uint8 model
+    uint8 = input_details["dtype"] == np.uint8
+    
+    scale, zp = input_details["quantization"]
     if int8:
         zp = abs(zp)
         img = (img.astype(np.int16) - zp).astype(np.int8)
@@ -238,10 +241,10 @@ if __name__ == '__main__':
 
     ms = lambda: int(round(time.time() * 1000))
 
-    model_path = "yolo11s-seg.tflite"
+    model_path = "yolov8s-seg_full_integer_quant_converted.tflite"
     image_path = "000000000064.jpg"
     save_path = "img_vis.jpg"
-    delegate = "/usr/lib/libvx_delegate.so"
+    delegate = "/usr/lib/libneutron_delegate.so"
     score_threshold = 0.25
     iou_threshold = 0.70
     nc = len(image_classes)

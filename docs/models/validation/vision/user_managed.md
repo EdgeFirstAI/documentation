@@ -1,6 +1,8 @@
-# User Managed Validation
+# On Target Validation
 
-This tutorial will describe the steps to validate the performance of **Vision** models as user-managed sessions in EdgeFirst Studio that have been trained through the [end-to-end workflows](../../../getting_started/workflows/index.md) or [Training Vision](../../training/vision.md).  A user-managed validation session is hosted in an embedded platform for a proper measurement of the model inference times when deployed on target.  A [managed validation](managed.md) session creates an EC2 server to deploy the model for validation.
+This tutorial will show the steps for running validation on target.  This type of validation is hosted as a user-managed validation session in EdgeFirst Studio.  A user-managed validation session is hosted in an embedded platform for a proper assessment of the model performance and timings when deployed on target.  In this tutorial, you will validate a **Vision** model that was trained through the [end-to-end workflows](../../../getting_started/workflows/index.md) or [Training Vision](../../training/vision.md).   
+
+Another type of validation is the [On Cloud Validation](managed.md) which is hosted as a managed validation session in EdgeFirst Studio.  A managed validation session creates an EC2 server to deploy the model for validation.
 
 {% include-markdown "discrete/studio/create_mpk_validation_session.md" %}
 

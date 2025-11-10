@@ -60,7 +60,7 @@ Recall that [snapshots](../../../studio/snapshots.md) are frozen and compact for
 
 3. Upload from Zip/Arrow (EdgeFirst Dataset) Files
 
-    The Zip/Arrow files together creates the [EdgeFirst Dataset Format](../../format.md).
+    The Zip/Arrow files together creates the [EdgeFirst Dataset Format](../../format/index.md).
 
     To create a snapshot from a Zip/Arrow files, visit the "Data Snapshots" page.
 

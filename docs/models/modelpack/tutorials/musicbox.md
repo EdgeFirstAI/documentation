@@ -76,7 +76,7 @@ Click **RESTORE SNAPSHOT**.  The dialog will close, and the dataset API will exp
 <figcaption>Dataset UI</figcaption>
 </figure>
 
-The dataset is exported in [EdgeFirst Studio Format](../../../datasets/format.md).
+The dataset is exported in [EdgeFirst Studio Format](../../../datasets/format/index.md).
 
 ## Data Annotation
 

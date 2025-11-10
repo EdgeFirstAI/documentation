@@ -17,7 +17,7 @@ coco.download('./dataset')
 
 ## Export COCO Dataset into EdgeFirst format
 
-After downloading the dataset, we need to convert it from the COCO format to the [EdgeFirst Dataset format](../format.md). The `to_edgefirst(...)` function handles this conversion, transforming the standard COCO dataset structure into the EdgeFirst-compatible format.
+After downloading the dataset, we need to convert it from the COCO format to the [EdgeFirst Dataset format](../format/index.md). The `to_edgefirst(...)` function handles this conversion, transforming the standard COCO dataset structure into the EdgeFirst-compatible format.
 
 ```python
 

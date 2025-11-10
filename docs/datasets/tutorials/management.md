@@ -89,14 +89,14 @@ Verify the contents of the dataset and the annotations.  Click the button that n
 Clicking on any of these sequences will open individual images in the sequence with the visualizations of the annotations.  For more information please see [viewing datasets](#view-dataset).
 
 
-Datasets that train Fusion models provide annotations of the object's 3D bounding box.  For more information on the dataset annotations, please see the [EdgeFirst Dataset Format](../format.md#dataset-annotation-format).
+Datasets that train Fusion models provide annotations of the object's 3D bounding box.  For more information on the dataset annotations, please see the [EdgeFirst Dataset Format](../format/index.md#dataset-annotation-format).
 
 <figure markdown="span">
 ![Fusion Annotations](../assets/management/fusion-annotations.jpg){ align=center }
 <figcaption>Fusion Annotations</figcaption>
 </figure>
 
-Datasets that train Vision models provide image annotations of the object's 2D bounding box and segmentation mask.  For more information on the dataset annotations, please see the [EdgeFirst Dataset Format](../format.md#dataset-annotation-format).
+Datasets that train Vision models provide image annotations of the object's 2D bounding box and segmentation mask.  For more information on the dataset annotations, please see the [EdgeFirst Dataset Format](../format/index.md#dataset-annotation-format).
 
 <figure markdown="span">
 ![Vision Annotations](../assets/management/vision-annotations.jpg){ align=center }

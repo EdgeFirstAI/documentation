@@ -21,7 +21,15 @@ Once the validation session has been created, [SSH](../../../platforms/ssh.md) i
 
 !!! warning "Virtual Environment"
     To avoid re-installation of existing system packages, we recommend setting up a [python virtual environment](https://docs.python.org/3/library/venv.html#creating-virtual-environments)
-    prior to running the pip installations below.
+    prior to running the pip installations below.  Append `--system-site-packages` when creating the environment to include existing packages in the system.  For example:
+
+    * Linux `python3 -m venv /path/to/myvenv --system-site-packages`
+    * Windows `python -m venv /path/to/myenv --system-site-packages`
+
+    Activate the environment via:
+
+    * Linux: `source /path/to/myenv/bin/activate`
+    * Windows: `/path/to/myenv/Scripts/activate`
 
 ```shell
 pip install edgefirst-validator
@@ -34,10 +42,10 @@ edgefirst-client login
 ```
 
 !!! note "Server Specification"
-    Specify the EdgeFirst Studio server using `--server` among these variations: "test", "stage", "saas".  This is an optional parameter as the default is set to "saas". 
+    Specify the EdgeFirst Studio server using `--server` among these variations: "test", "stage", "saas".  This is an optional parameter as the default is set to "saas".  To modify the studio server, first `edgefirst-client logout` then `edgefirst-client --server <server> login`.
 
 !!! info "EdgeFirst Studio Token"
-    Once logged in, an EdgeFirst Studio Token will be saved under `.config/edgefirststudio/config.toml` granting access to the EdgeFirst Studio API which will remain valid for a period of time, usually 12 hours. Using this token will refresh the expiration timer. 
+    Once logged in, an EdgeFirst Studio Token will be saved under `~/.config/edgefirststudio/token` granting access to the EdgeFirst Studio API which will remain valid for a period of time, usually 12 hours. Using this token will refresh the expiration timer. 
 
 Once the validator is installed and authenticated, run validation using the following command.
 
@@ -46,7 +54,9 @@ edgefirst-validator --session-id v-c1f
 ```
 
 !!! note
-    Replace the session ID parameter specific to the validation session ID in your project.
+    Replace the session ID parameter specific to the validation session ID in your session.
+
+If the model already exists in your system, you can run this command `edgefirst-validator /path/to/mymodel.tflite --session-id v-c1f`.  Otherwise, the model will be downloaded as an artifact from the EdgeFirst Studio training session.
 
 Once entered, the following validation progress should now be indicated in EdgeFirst Studio as shown below.
 

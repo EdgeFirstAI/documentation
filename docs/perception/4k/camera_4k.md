@@ -1,5 +1,5 @@
 # The 4K Camera Service
-The Camera service on the Maivin/Raivin supports 4k video in multiple fashions, including command-line configuration, adding the parameters to the camera configuration file, as well as through the WebUI.
+The Camera service on the Maivin/Raivin supports 4K video in multiple fashions, including command-line configuration, adding the parameters to the camera configuration file, as well as through the WebUI.
 
 ## Command Line Configuration
 The camera service can be run at the platform's command-line interface.  The first step would be to log on to the platform via [SSH](../../platforms/ssh.md).  Then stop the current camera service with the `sudo systemctl stop camera`.  The following command-line options for the camera service are described below.
@@ -65,7 +65,7 @@ sudo camera \
 ```
 
 ## SystemD Configuration file
-You can add the above paramaters to the camera configuration file located at `/etc/default/camera`.  The following lines can be added to the configuraiton file:
+You can add the above parameters to the camera configuration file located at `/etc/default/camera`.  The following lines can be added to the configuraiton file:
 ```
 H264_TILES = "true"
 H264_TILES_FPS = "15"

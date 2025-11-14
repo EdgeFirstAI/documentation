@@ -17,7 +17,6 @@ Manually creating a layout to reproduce the tiling format is straight-forward an
 <figcaption>4K Topics tiled in Foxglove</figcaption>
 </figure>
 
-A sample layout is available [here](./layout_for_4k_tiles.json).
+A sample layout is available [here](layout_for_4k_tiles.json){: download="layout_for_4k_tiles.json"}.
 
 [foxglove]: https://foxglove.dev/
-

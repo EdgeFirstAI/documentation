@@ -140,6 +140,7 @@ if (mode === 'tiles') {
 ### Debug Information
 
 The system provides detailed console logging:
+
 - Connection status for each tile
 - Data reception confirmation
 - Synchronization timing

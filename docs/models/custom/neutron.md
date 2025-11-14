@@ -1,12 +1,6 @@
-# Neutron Model Conversion
+# iMX.95 Neutron Model Conversion
 
-In this section, you will find instructions for converting a quantized TFLite model using NXP's eIQ Neutron Converter to allow deployment of the model in the i.MX 95 EVK platform.
-
-You can follow along these three steps to get you started.
-
-1. Install eIQ Toolkit
-2. Run Neutron Converter
-3. Deploy the model in the i.MX 95 platform
+In this section, you will find instructions for converting a quantized TFLite model using [NXP's eIQ Neutron Converter Tool in the eIQ Toolkit](https://community.nxp.com/t5/MCX-Microcontrollers-Knowledge/eIQ-Neutron-NPU-Lab-Guides/ta-p/1799233) to allow deployment of the model in the [NXP i.MX 95](https://www.nxp.com/products/i.MX95) EVK platform.  This will allow you to take [YOLOv8](https://yolov8.com/) TFLite quantized models and run them on the i.MX 95 EVK platform.
 
 ## Install eIQ Toolkit
 
@@ -19,7 +13,7 @@ Visit the eIQ Toolkit [Downloads page](https://www.nxp.com/design/design-center/
 
 !!! info "NXP Account"
 
-    You will need to be signed in to nxp.com to download the installer.
+    You will need to be signed in to the [NXP website](https://www.nxp.com) to download the installer.
 
 
 Once downloaded, click on the executable to start the installation process.
@@ -72,7 +66,9 @@ Linux imx95evk 6.12.20-lts-next-gdfaf2136deb2 #1 SMP PREEMPT Wed Jun  4 10:15:09
 Now, check that Neutron Converter is installed in your system with the version that matches your target's BSP (6.12.20).
 
 ```shell
->C:\nxp\eIQ_Toolkit_v1.17.0\bin\neutron-converter\MCU_SDK_25.06.00+Linux_6.12.20_2.0.0\neutron-converter.exe --version
+C:\nxp\eIQ_Toolkit_v1.17.0>cd "bin\neutron-converter\MCU_SDK_25.06.00+Linux_6.12.20_2.0.0"
+
+C:\nxp\eIQ_Toolkit_v1.17.0\bin\neutron-converter\MCU_SDK_25.06.00+Linux_6.12.20_2.0.0>neutron-converter.exe --version
 eIQ neutron-converter.exe version 2.0.2+0X0cebb80a
 ```
 
@@ -80,14 +76,14 @@ eIQ neutron-converter.exe version 2.0.2+0X0cebb80a
 
     You can find the options and descriptions with the command.
 
-    ```
-    >C:\nxp\eIQ_Toolkit_v1.17.0\bin\neutron-converter\MCU_SDK_25.06.00+Linux_6.12.20_2.0.0\neutron-converter.exe --help
+    ```shell
+    C:\nxp\eIQ_Toolkit_v1.17.0\bin\neutron-converter\MCU_SDK_25.06.00+Linux_6.12.20_2.0.0>neutron-converter.exe --help
     ```
 
-Once that the right version of Neutron Converter is available in your system, you can start converting quantized TFLite models to be executable in i.MX 95 platforms with the command below.  You can find instructions for quantizing ONNX to TFLite in the [Model Quantization section](quantize.md).  In this example, the TFLite model `yolov8s-seg_full_integer_quant.tflite` from Ultralytics will be used.
+Once that the right version of Neutron Converter is available in your system, you can start converting quantized TFLite models to be executable in i.MX 95 platforms with the command below.  You can find instructions for quantizing ONNX to TFLite in the [Model Quantization section](quantize.md).  In this example, the TFLite model [`yolov8s-seg_full_integer_quant.tflite`](assets/yolov8s-seg_full_integer_quant.tflite){: download="yolov8s-seg_full_integer_quant.tflite"} has been pre-generated using the instructions above on the YOLOv8 Segmentation model.
 
 ```shell
->C:\nxp\eIQ_Toolkit_v1.17.0\bin\neutron-converter\MCU_SDK_25.06.00+Linux_6.12.20_2.0.0\neutron-converter.exe --input yolov8s-seg_full_integer_quant.tflite --target imx95
+C:\nxp\eIQ_Toolkit_v1.17.0\bin\neutron-converter\MCU_SDK_25.06.00+Linux_6.12.20_2.0.0>neutron-converter.exe --input yolov8s-seg_full_integer_quant.tflite --target imx95
 Converting model with the following options:
   Input  = yolov8s-seg_full_integer_quant.tflite
   Output = yolov8s-seg_full_integer_quant_converted.tflite
@@ -112,17 +108,11 @@ Time for extraction   = 0.459354 (seconds)
 Time for generation   = 154.223 (seconds)
 ```
 
-!!! note "Model Input"
-
-    --input takes the path to the TFLite model. 
-
-A new model file will be generated with the suffix "_converted" in the model name.  This converted model will be ready for deployment in the i.MX 95 platform.
+A new model file will be generated with the suffix "_converted".  This converted model will be ready for deployment to the i.MX 95 platform.
 
 ## Deploy the model in the i.MX 95 platform
 
-Follow the instructions shown in [Deploying Quantized TFLite](npu.md#deploying-quantized-tflite) for more details.  Otherwise, the steps below show python examples for loading and running the model for inference in the device.  You can download the Python script
-
-You can download our [Python Script](assets/run-tflite-neutron.py){: download="run-tflite.py"} and this sample image [000000000064.jpg](assets/000000000064.jpg){: download="000000000064.jpg" } taken from [COCO128](https://www.kaggle.com/datasets/ultralytics/coco128) for running the example on the target using the command below.
+Follow the instructions shown in [Deploying Quantized TFLite](npu.md#deploying-quantized-tflite) for more details.  Otherwise, the steps below show python examples for loading and running the model for inference in the device.  You can download our Python sample [Run Model](assets/run-tflite-neutron.py){: download="run-tflite.py"} script and this sample image [000000000064.jpg](assets/000000000064.jpg){: download="000000000064.jpg" } taken from [COCO128](https://www.kaggle.com/datasets/ultralytics/coco128) for running the example on the target using the command below.
 
 ```shell
 # python3 run-tflite.py
@@ -137,6 +127,9 @@ Found objects:
    74 label 0.76635945 [0.22352152 0.07450718 0.5428379  0.30867255]
    2 label 0.29802865 [0.1170827 0.5428379 0.266097  0.6067012]
 ```
+
+## Walkthrough of the Run Model script
+The `run-tflite.py` script executes the following steps to run the TFLite model on the i.MX 95 Neutron NPU.
 
 1. Load the model specifying the external delegate to use the device's NPU.
 

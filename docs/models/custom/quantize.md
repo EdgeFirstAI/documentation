@@ -1,12 +1,14 @@
-# Model Quantization
+# YOLO v8 ONNX Ultralytic Model Conversion
 
-In this section, you will find instructions for exporting and quantizing float models.
+<!-- TO-DO separate the ModelPack and Ultralytics stuff -->
+
+To run YOLOv8 ONNX Ultralytics models -- either trained by Studio or downloaded from Ultralytics -- on an i.MX 95 platform, the model will need to be quantized prior to conversion to TFLite.  The steps below describe this process.
+
+**Alternatively**, you can follow [instructions provided by Ultralytics](https://docs.ultralytics.com/modes/export/) for exporting PyTorch models to ONNX, and then to TFLite using the commands below.
 
 ## ONNX to TFLite
 
-You can follow these steps to export a float ONNX model to a quantized TFLite.
-
-**Alternatively**, you can follow [instructions provided by Ultralytics](https://docs.ultralytics.com/modes/export/) for exporting PyTorch models to ONNX, and then to TFLite using the commands below.
+You can follow these steps to export a floating-point ONNX model to a quantized TFLite.
 
 ```shell
 wget https://github.com/ultralytics/assets/releases/download/v8.3.0/yolo11s-seg.pt

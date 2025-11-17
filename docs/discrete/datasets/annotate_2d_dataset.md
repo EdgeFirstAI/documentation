@@ -51,4 +51,4 @@ Once the starting frame has been annotate, go ahead and [propagate the annotatio
 <figcaption>Propagation Process</figcaption>
 </figure>
 
-Repeat the steps for all the sequences in the dataset.  For the case of individual images, the same steps apply except there is no propagation step.  More details are provided in the [manual annotations](../../datasets/tutorials/annotations/manual.md#add-2d-annotations). 
+Repeat the steps for all the sequences in the dataset.  For the case of individual images, the same steps apply except there is no propagation step.  You can still use the AGTG feature to quickly annotate images as shown in [Add 2D annotations](../../datasets/tutorials/annotations/manual.md#add-2d-annotations). 

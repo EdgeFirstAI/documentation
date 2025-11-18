@@ -2,6 +2,13 @@
 
 Now that you have a fully annotated dataset that is split into training and validation samples, you can start training a Vision model.  This will briefly show the steps for training a model, but for an in depth tutorial, please see [Training Vision Models](../../models/training/vision.md).
 
+Navigate back to the "Projects" page.  You can go back to the "Projects" page by clicking the Apps Menu waffle button on the top right of the Navigation bar.  Click the first selection to take you to the "Projects page".
+
+<figure markdown="span">
+![Apps Menu](../../studio/assets/navigation/apps-menu.png){ align=center }
+<figcaption>Apps Menu</figcaption>
+</figure>
+
 From the "Projects" page, click on "Model Experiments" of your project. 
 
 <figure markdown="span">

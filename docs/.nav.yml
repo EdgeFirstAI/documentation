@@ -90,7 +90,9 @@ nav:
         - models/validation/metrics/classifications.md
     - Model Deployment:
       - 2D Model Deployment:
-        - models/deployment/pc.md
+        - Deploying to the PC:
+          - models/deployment/pc/mpk.md
+          - models/deployment/pc/ultralytics.md
         - models/deployment/evk.md
         - models/deployment/maivin.md
         - models/deployment/2d_raivin.md

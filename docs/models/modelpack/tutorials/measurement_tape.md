@@ -51,7 +51,7 @@ Once the groups have been created, follow these steps for [training your model](
 
 ## Model Inference on PC 
 
-Now that ModelPack has been trained on your dataset, you can start [deploying the trained models](../../deployment/pc.md) on your PC. 
+Now that ModelPack has been trained on your dataset, you can start [deploying the trained models](../../deployment/pc/mpk.md) on your PC. 
 
 | Input Image | Model Output |
 |-----------------|-----------|

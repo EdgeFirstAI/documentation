@@ -10,9 +10,12 @@ The BDD100K dataset is a large-scale driving video dataset containing 100,000 vi
 
     | Model                             | mAP@0.5   | mAP@0.5..0.95 |
     |-----------------------------------|-----------|---------------|
-    | modelpack-csp19-large-640x640-rgb | 0.423     | 0.227         | 
-    | modelpack-csp53-nano-640x640-rgb  | 0.465     | 0.262         |
-    | ultralytics-yolov8n-640x640-rgb   | 0.325     | 0.173         |
+    | modelpack-csp19-medium-640x640-rgb | 0.466   | 0.259         | 
+    | modelpack-csp19-large-640x640-rgb | 0.479   | 0.273         | 
+    | **modelpack-csp53-nano-640x640-rgb**  | **0.525**   | **0.31**           |
+    | yolov5n-det-640x64-rgb            | 0.443   | 0.241           |
+    | yolov8n-det-640x640-rgb           | 0.436   | 0.25           |
+    | yolo11-det-640x640-rgb           | 0.449   | 0.249           |
 
     !!! note "Timing Benchmark"
         Time information is not included in this validation because they can change depending on the hardware quality of the cloud servers in EdgeFirst Studio. The timing benchmarks are provided when the models are run on specific platforms such as the [i.MX 8M Plus](#imx-8m-plus).
@@ -25,9 +28,12 @@ The BDD100K dataset is a large-scale driving video dataset containing 100,000 vi
 
     | Model                             | mAP@0.5 | mAP@0.5..0.95 | Time (ms) |
     |-----------------------------------|---------|---------------|-----------|
-    | modelpack-csp19-large-640x640-rgb | 0.375   | 0.175         | 19.28     |
-    | modelpack-csp53-nano-640x640-rgb  | 0.403   | 0.194         | 45.15     |
-    | ultralytics-yolov8n-640x640-rgb   | 0.272   | 0.138         | 137.66    |
+    | modelpack-csp19-medium-640x640-rgb | 0.418   | 0.201         |  22.2    |
+    | modelpack-csp19-large-640x640-rgb | 0.408   | 0.199         |  25.02    |
+    | modelpack-csp53-nano-640x640-rgb  | 0.466   | 0.239         |  47.8    |
+    | yolov5n-det-640x640-rgb           | -   | -         |  62.9    |
+    | yolov8n-det-640x640-rgb           | -   | -         |  66.7    |
+    | yolo11n-det-640x640-rgb           | -   | -         |  93.4    |
 
     !!! note "BSP Version"
         **i.MX 8M Plus** is flashed with [NXP Yocto BSP](https://www.nxp.com/design/design-center/software/embedded-software/i-mx-software/embedded-linux-for-i-mx-applications-processors:IMXLINUX) 6.12.

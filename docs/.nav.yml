@@ -6,6 +6,7 @@ nav:
     - getting_started/create_project.md
     - getting_started/capture_data.md
     - getting_started/annotate_dataset.md
+    - getting_started/audit_dataset.md
     - getting_started/train_vision.md
     - getting_started/validate_vision.md
     - getting_started/deploy_model.md
@@ -43,7 +44,9 @@ nav:
       - 3D/deployment.md
   - Datasets:
     - datasets/index.md
-    - datasets/format.md
+    - EdgeFirst Dataset Format:
+      - datasets/format/index.md
+      - datasets/format/box_format.md
     - datasets/structure.md
     - Dataset Zoo:
       - Coffee Cup:
@@ -57,6 +60,8 @@ nav:
       - COCO:
         - datasets/coco/index.md
         - datasets/coco/import.md
+      - Raivin Ultra Short:
+        - datasets/raivin_ultra_short/index.md
     - Dataset Tutorials:
       - datasets/tutorials/index.md
       - datasets/tutorials/capture.md
@@ -68,43 +73,51 @@ nav:
       - datasets/tutorials/management.md
   - Models:
     - models/index.md
-    - ModelPack:
-      - models/modelpack/index.md
-      - Quick Start Guide:
-        - models/modelpack/tutorials/index.md
-        - models/modelpack/tutorials/measurement_tape.md
-        - models/modelpack/tutorials/musicbox.md
-      - models/modelpack/training.md
-      - Validating ModelPack:
-        - models/modelpack/validation/managed.md
-        - models/modelpack/validation/user_managed.md
-      - Deploying ModelPack:
-        - models/modelpack/deployment/pc.md
-        - models/modelpack/deployment/evk.md
-        - models/modelpack/deployment/maivin.md
-      - Benchmarks: models/modelpack/benchmarks.md
-    - Fusion:
-      - models/fusion/index.md
-      - models/fusion/training.md
-      - models/fusion/validation.md
-      - Deploying Fusion:
-        - models/fusion/deployment/raivin.md
-    - Ultralytics:
-        - models/ultralytics/index.md
-        - Benchmarks: models/ultralytics/benchmark.md
-    - Custom Models: 
-      - models/custom/index.md
-      - models/custom/quantize.md
-      - models/custom/npu.md
-    - Model Metrics:
-      - models/metrics/detection.md
-      - models/metrics/segmentation.md
-      - models/metrics/fusion.md
-    - Model Tutorials:
-      - models/tutorials/training.md
-      - models/tutorials/validation.md
-      - models/tutorials/deployment.md
-      - models/tutorials/metadata.md
+    - Model Training:
+      - models/training/vision.md
+      - models/training/fusion.md
+    - Model Validation:
+      - Validating Vision Models:
+        - models/validation/vision/managed.md
+        - models/validation/vision/user_managed.md
+      - Validating Fusion Models:
+        - models/validation/fusion/managed.md
+      - Model Metrics:
+        - models/validation/metrics/detection.md
+        - models/validation/metrics/segmentation.md
+        - models/validation/metrics/fusion.md
+        - models/validation/metrics/matching.md
+        - models/validation/metrics/classifications.md
+    - Model Deployment:
+      - 2D Model Deployment:
+        - Deploying to the PC:
+          - models/deployment/pc/mpk.md
+          - models/deployment/pc/ultralytics.md
+        - models/deployment/evk.md
+        - models/deployment/maivin.md
+        - models/deployment/2d_raivin.md
+      - 3D Model Deployment:
+        - models/deployment/3d_raivin.md
+    - Model Zoo:
+      - ModelPack:
+        - models/modelpack/index.md
+        - Quick Start Guide:
+          - models/modelpack/tutorials/index.md
+          - models/modelpack/tutorials/measurement_tape.md
+          - models/modelpack/tutorials/musicbox.md
+        - Benchmarks: models/modelpack/benchmarks.md
+        - models/modelpack/quantize.md
+        - models/modelpack/npu.md
+      - Ultralytics:
+          - models/ultralytics/index.md
+          - Benchmarks: models/ultralytics/benchmarks.md
+          - models/ultralytics/quantize.md
+          - models/ultralytics/neutron.md
+          - models/ultralytics/npu.md
+      - Fusion:
+        - models/fusion/index.md
+        - Benchmarks: models/fusion/benchmarks.md
+    - models/metadata.md
     - models/augmentations.md
   - Perception:
     - perception/index.md
@@ -147,6 +160,8 @@ nav:
       - perception/api/std_msgs.md
       - perception/api/builtin_interfaces.md
       - perception/api/studio.md
+    - Deep View RT:
+      - perception/deepviewrt/index.md
   - Platforms:
     - platforms/index.md
     - Getting Started:

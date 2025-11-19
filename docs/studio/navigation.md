@@ -94,7 +94,7 @@ Clicking on "Auditing Tasks" takes the user to the [Auditing Tasks Dashboard](da
 
 ### Model Experiments
 
-Clicking on "Model Experiments" takes the user to the [Model Experiments Dashboard](models.md).  This page contains all training sessions and validation sessions.  Additional features for comparing training charts and validation metrics are also available.  More information can be found in the [model training](../models/tutorials/training.md) and [model validation](../models/tutorials/validation.md) sections.  A model experiment is a high-level collections of training and validation sessions.  A training session is the functionality of converting datasets into vision- and radar-based models that can be deployed back to the [EdgeFirst platforms/devices](../platforms/quickstart.md).  A validation session is the functionality to take a model and measure its performance against other models or a standardized validation set to see if it is ready for deployment. 
+Clicking on "Model Experiments" takes the user to the [Model Experiments Dashboard](models.md).  This page contains all training sessions and validation sessions.  Additional features for comparing training charts and validation metrics are also available.  More information can be found in the [model training](../models/training/vision.md) and [model validation](../models/validation/vision/managed.md) sections.  A model experiment is a high-level collections of training and validation sessions.  A training session is the functionality of converting datasets into vision- and radar-based models that can be deployed back to the [EdgeFirst platforms/devices](../platforms/quickstart.md).  A validation session is the functionality to take a model and measure its performance against other models or a standardized validation set to see if it is ready for deployment. 
 
 ### Cloud Instances
 
@@ -102,7 +102,7 @@ Clicking on the "Cloud Instances" takes the user to the [Cloud Instances Dashboa
 
 ### Data Snapshots
 
-Clicking on the "Data Snapshots" takes the user to the [Snapshots Dashboard](snapshots.md).  This page allows users to create and restore snapshots.  This is a method to preserve the current state of the dataset.  A snapshot is a frozen and compact form of a dataset represented in the [EdgeFirst Dataset Format](../datasets/format.md).
+Clicking on the "Data Snapshots" takes the user to the [Snapshots Dashboard](snapshots.md).  This page allows users to create and restore snapshots.  This is a method to preserve the current state of the dataset.  A snapshot is a frozen and compact form of a dataset represented in the [EdgeFirst Dataset Format](../datasets/format/index.md).
 
 ### Recycling Bin
 

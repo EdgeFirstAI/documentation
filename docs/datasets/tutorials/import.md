@@ -236,7 +236,7 @@ See the dataset and its annotations by following the tutorial for [viewing the d
 
 ## Import EdgeFirst Datasets
 
-This tutorial will show how to import an [EdgeFirst Dataset](../format.md) into EdgeFirst Studio. This tutorial will show importing a dataset such as COCO2017 that is structured as an EdgeFirst Dataset as shown below.
+This tutorial will show how to import an [EdgeFirst Dataset](../format/index.md) into EdgeFirst Studio. This tutorial will show importing a dataset such as COCO2017 that is structured as an EdgeFirst Dataset as shown below.
 
 <figure markdown="span">
 ![COCO2017 EdgeFirst Dataset](../assets/import/edgefirst-dataset-coco.jpg){ align=center }

@@ -24,6 +24,7 @@ Once all the captured data has been uploaded to the dataset container, you will 
 Now that you have imported captured images or videos into EdgeFirst Studio and have split the captured data into training and validation partitions, you can now start annotating your data as shown in the next section below.
 
 {% include-markdown "discrete/datasets/annotate_2d_dataset.md" heading-offset=0 %}
+{% include-markdown "discrete/datasets/audit_2d_dataset.md" heading-offset=0 %}
 {% include-markdown "discrete/models/train_vision.md" heading-offset=0 %}
 {% include-markdown "discrete/models/validate_vision.md" heading-offset=0 %}
 {% include-markdown "discrete/models/deploy_model.md" heading-offset=0 %}

@@ -9,7 +9,7 @@
     <figcaption>Create a New Account</figcaption>
     </figure>
 
-3. An email will be sent to verify the email you provided.  Go ahead and click on the link provided to verify your email.
+3. An email will be sent to verify the email you provided.  Go ahead and click on "Verify Email" provided to verify your email.
 
     <figure markdown="span">
     ![Email Verification](../../studio/assets/user/email-verification.jpg){ align=center }

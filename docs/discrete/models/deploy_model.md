@@ -1,11 +1,24 @@
 # Deploy the Model
 
-Once you have validated your trained model, let's take a look at an example of how this model can be deployed in your PC by following the tutorial [Deploying to the PC](../../models/modelpack/deployment/pc.md). 
+Once you have validated your trained model, take a look at examples of deploying this model across different platforms.  You can find a checklist of supported devices.  We support validation on specific targets and applications for live video inference.  Certain platforms are still under development. 
 
-If you have an NXP i.MX 8M Plus EVK you can also run your model directly on the device using the EdgeFirst Middleware by following the tutorial [Deploying to Embedded Targets](../../models/modelpack/deployment/evk.md).
+| Platform                                                    | On Target Validation | Live Video | In Development |
+|-------------------------------------------------------------|----------------------|------------|----------------|
+| [PC / Linux](../../models/deployment/pc/mpk.md)             |         ✓            |            |                |
+| Mac/MacOS                                                   |                      |             |        ✓       |
+| [i.MX 8M Plus EVK](../../models/deployment/evk.md)          |         ✓            |     ✓      |                |
+| NVIDIA Orin                                                 |         ✓            |            |                |
+| Kinara ARA-2                                                |                      |             |        ✓      |
+| [Raivin Radar Fusion](../../models/deployment/3d_raivin.md) |         ✓            |     ✓      |        ✓      |
+| [i.MX 95 EVK](../../models/deployment/evk.md)               |         ✓            |     ✓      |                |
+
+If you wish to run validation on device, please follow instructions below.
+
+<div style="max-width: fit-content; margin-left: auto; margin-right: auto;" markdown="1">
+[Instructions for On Target Validation](../../models/validation/vision/user_managed.md){ .md-button }
+</div>
 
 !!! note "Additional Platforms"
 
-    Support for additional platforms beyond the NXP i.MX 8M Plus will be available soon.  Let us know which platform you'd like to see supported next!
-
-If you have an [EdgeFirst Platform](../../platforms/index.md) such as the Maivin or Raivin then you can deploy and run the model using the bundled EdgeFirst Middleware by following the tutorial [Deploying to EdgeFirst Platforms](../../models/modelpack/deployment/maivin.md).
+    Support for additional platforms beyond these listed will be available soon.  [Let us know](mailto:support@edgefirst.ai) which platform you'd like to see supported next!
+    

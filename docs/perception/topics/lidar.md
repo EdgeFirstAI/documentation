@@ -52,7 +52,7 @@ The `/lidar/clusters` topic publishes the lidar clusters pointcloud using the [P
 | x          | float32  | m     | Represent XYZ location of the point                                  |
 | y          | float32  | m     | Represent XYZ location of the point                                  |
 | z          | float32  | m     | Represent XYZ location of the point                                  |
-| cluster_id | uint32   |       | 0 means not clustered.  Otherwise same cluster id means same cluster |
+| cluster_id | uint16   |       | 0 means not clustered.  Otherwise same cluster id means same cluster |
 | reflect    | uint8    |       | Intensity of reflected LiDAR beam                                    |
 
 The XYZ coordinate system follows the [standard ROS convention](https://www.ros.org/reps/rep-0103.html#coordinate-frame-conventions) of x forward, y left, z up. However, note that the `lidar` frame is rotated 180 degrees from the `base_link` frame, with forward facing the back of the camera.

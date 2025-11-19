@@ -6,6 +6,7 @@ This example will go through how to connect to the lidar topic published on your
 ## Lidar Points
 Topic: [/lidar/points](../../topics/lidar.md#lidarpoints)  
 Message: [Image](../../api/sensor_msgs.md#pointcloud2)
+Sample Code: [Python](https://github.com/EdgeFirstAI/samples/blob/main/python/lidar/points.py) / [Rust](https://github.com/EdgeFirstAI/samples/blob/main/rust/lidar/points.rs)
 
 ### Setting up subscriber
 
@@ -117,6 +118,7 @@ When displaying the results through Rerun you will see the pointcloud data gathe
 ## Lidar Clusters
 Topic: [/lidar/clusters](../../topics/lidar.md#lidarclusters)  
 Message: [PointCloud2](../../api/sensor_msgs.md#pointcloud2)
+Sample Code: [Python](https://github.com/EdgeFirstAI/samples/blob/main/python/lidar/clusters.py) / [Rust](https://github.com/EdgeFirstAI/samples/blob/main/rust/lidar/clusters.rs)
 
 ### Setting up subscriber
 
@@ -229,6 +231,7 @@ When displaying the results through Rerun you will see the pointcloud cluster da
 ## Lidar Depth
 Topic: [/lidar/depth](../../topics/lidar.md#lidardepth)  
 Message: [Image](../../api/sensor_msgs.md#image)
+Sample Code: [Python](https://github.com/EdgeFirstAI/samples/blob/main/python/lidar/depth.py) / [Rust](https://github.com/EdgeFirstAI/samples/blob/main/rust/lidar/depth.rs)
 
 
 ### Setting up subscriber
@@ -354,6 +357,7 @@ When displaying the results through Rerun you will see a depth map of what the l
 ## Lidar Reflect
 Topic: [/lidar/reflect](../../topics/lidar.md#lidarreflect)  
 Message: [Image](../../api/sensor_msgs.md#image)
+Sample Code: [Python](https://github.com/EdgeFirstAI/samples/blob/main/python/lidar/reflect.py) / [Rust](https://github.com/EdgeFirstAI/samples/blob/main/rust/lidar/reflect.rs)
 
 ### Setting up subscriber
 
@@ -465,7 +469,7 @@ When displaying the results through Rerun you will see the reflection data gathe
 
 This example will demonstrate how to combine the camera feed with the lidar messages to create a composite Rerun view. The main difference when using multiple messages in a script, is that we will change from waiting on the message to be received to having a callback function for when a message is received. Using the initial method, the script would hang while waiting for a message topic to be published, so if the messages are being published at different rates, the slowest message rate will limit the others.
 
-Sample Code: [Python](https://github.com/EdgeFirstAI/samples/blob/main/python/combined/camera_lidar.py) 
+Sample Code: [Python](https://github.com/EdgeFirstAI/samples/blob/main/python/combined/camera_lidar.py) / [Rust](https://github.com/EdgeFirstAI/samples/blob/main/rust/combined/mega_sample.rs)
 
 ### Setting up the subscribers
 

@@ -6,6 +6,7 @@ This example will go through how to connect to the radar topic published on your
 ## Radar Targets
 Topic: [/radar/targets](../../topics/radar.md#radartargets)  
 Message: [PointCloud2](../../api/sensor_msgs.md#pointcloud2)
+Sample Code: [Python](https://github.com/EdgeFirstAI/samples/blob/main/python/radar/targets.py) / [Rust](https://github.com/EdgeFirstAI/samples/blob/main/rust/radar/targets.rs)
 
 ### Setting up subscriber
 
@@ -70,12 +71,21 @@ The next step is to decode the PCD data. Please see [examples/pcd](./pcd.md) for
     def targets_worker(msg):
         pcd = PointCloud2.deserialize(msg.payload.to_bytes())
         points = decode_pcd(pcd)
+        pos = [[p.x, p.y, p.z] for p in points]
+        rr.log("radar/targets", rr.Points3D(pos))
     ```
 
 === "Rust"
 
     ``` rust
-    let points = decode_pcd(pcd);
+    let points = decode_pcd(&pcd);
+    let points = Points3D::new(
+        points
+            .iter()
+            .map(|p| Position3D::new(p.x as f32, p.y as f32, p.z as f32)),
+    );
+
+    rr.log("radar/targets", &points)?;
     ```
 
 
@@ -145,6 +155,7 @@ When displaying the results through Rerun you will see the pointcloud radar data
 ## Radar Clusters
 Topic: [/radar/clusters](../../topics/radar.md#radarclusters)  
 Message: [PointCloud2](../../api/sensor_msgs.md#pointcloud2)
+Sample Code: [Python](https://github.com/EdgeFirstAI/samples/blob/main/python/radar/clusters.py) / [Rust](https://github.com/EdgeFirstAI/samples/blob/main/rust/radar/clusters.rs)
 
 ### Setting up subscriber
 
@@ -227,35 +238,48 @@ We will now collect all the clustered points, which are all the points with `clu
     ``` python
     clusters = [p for p in points if p.cluster_id > 0]
     if not clusters:
-        rr.log("radar/clusters", rr.Points3D([], colors=[]))  
+        rr.log("radar/clusters", rr.Points3D([], colors=[]))
         return
     max_id = max(p.cluster_id for p in clusters)
     pos = [[p.x, p.y, p.z] for p in clusters]
-    colors = [colormap(turbo_colormap, p.cluster_id / max_id)
-            for p in clusters]
+    colors = [colormap(turbo_colormap, p.cluster_id / max_id) for p in clusters]
     rr.log("radar/clusters", rr.Points3D(pos, colors=colors))
     ```
 
 === "Rust"
 
     ``` rust
-    let clustered_points: Vec<_> = points.iter().filter(|x| x.fields.get("cluster_id") > 0.0).collect();
+    let clustered_points: Vec<_> = points.iter().filter(|x| x.id > 0).collect();
+    let max_cluster_id = clustered_points
+        .iter()
+        .map(|x| x.id)
+        .max()
+        .unwrap_or(1)
+        .max(1);
+
+    let points = Points3D::new(
+        clustered_points
+            .iter()
+            .map(|p| Position3D::new(p.x as f32, p.y as f32, p.z as f32)),
+    )
+    .with_colors(clustered_points.iter().map(|p| {
+        let (r, g, b) = colorous::TURBO
+            .eval_continuous(p.id as f64 / max_cluster_id as f64)
+            .as_tuple();
+        Color::from_rgb(r, g, b)
+    }));
+
+    rr.log("radar/clusters", &points)?;
     ```
 
 ### Results
-The command line output will appear as the following
-```
-Recieved 137 radar points. 134 are clustered
-Recieved 136 radar points. 133 are clustered
-Recieved 138 radar points. 135 are clustered
-```
-
 When displaying the results through Rerun you will see the cluster data.
 ![alt text](assets/radar_clusters.png)
 
 ## Radar Info
 Topic: [/radar/info](../../topics/radar.md#radarinfo)  
 Message: [RadarInfo](../../api/edgefirst_msgs.md#radarinfo)
+Sample Code: [Python](https://github.com/EdgeFirstAI/samples/blob/main/python/radar/info.py) / [Rust](https://github.com/EdgeFirstAI/samples/blob/main/rust/radar/info.rs)
 
 ### Setting up subscriber
 
@@ -352,6 +376,7 @@ When displaying the results through Rerun you will see a log of the radar config
 ## Radar Cube
 Topic: [/radar/cube](../../topics/radar.md#radarcube)  
 Message: [RadarCube](../../api/edgefirst_msgs.md#radarcube)
+Sample Code: [Python](https://github.com/EdgeFirstAI/samples/blob/main/python/radar/cube.py) / [Rust](https://github.com/EdgeFirstAI/samples/blob/main/rust/radar/cube.rs)
 
 ### Setting up subscriber
 
@@ -424,9 +449,16 @@ The RadarCube message contains data from the RadarCube.
 === "Rust"
 
     ``` rust
-    // Access radar cube information
-    let shape = radar_cube.shape;
-    let cube = radar_cube.cube;
+    let data = Array::<u16, _>::from_shape_vec(
+        radar.shape.iter().map(|&x| x as usize).collect::<Vec<_>>(),
+        radar
+            .cube
+            .iter()
+            .map(|x| x.unsigned_abs())
+            .collect::<Vec<_>>(),
+    )?;
+    let tensor = Tensor::try_from(data)?.with_dim_names(["SEQ", "RANGE", "RX", "DOPPLER"]);
+    rr.log("radar/cube", &tensor)?;
     ```
 
 ### Results
@@ -444,7 +476,7 @@ When displaying the results through Rerun you will see the radar cube displayed.
 
 This example will demonstrate how to combine the camera feed with the radar messages to create a composite Rerun view. The main difference when using multiple messages in a script, is that we will change from waiting on the message to be received to having a callback function for when a message is received. Using the initial method, the script would hang while waiting for a message topic to be published, so if the messages are being published at different rates, the slowest message rate will limit the others.
 
-Sample Code: [Python](https://github.com/EdgeFirstAI/samples/blob/main/python/combined/camera_radar.py) 
+Sample Code: [Python](https://github.com/EdgeFirstAI/samples/blob/main/python/combined/camera_radar.py) / [Rust](https://github.com/EdgeFirstAI/samples/blob/main/rust/combined/mega_sample.rs)
 
 ### Setting up the subscribers
 

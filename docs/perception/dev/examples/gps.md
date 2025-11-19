@@ -1,6 +1,7 @@
 # GPS Schema Example
 Topic: [/gps](../../topics/navsat.md#gps)  
 Message: [NavSatFix](../../api/sensor_msgs.md#navsatfix)
+Sample Code: [Python](https://github.com/EdgeFirstAI/samples/blob/main/python/gps.py) / [Rust](https://github.com/EdgeFirstAI/samples/blob/main/rust/gps.rs)
 
 This example will go through how to connect to the GPS topic published on your EdgeFirst Platform and how to display the information through the Rerun visualizer.
 

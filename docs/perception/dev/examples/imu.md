@@ -1,6 +1,7 @@
 # IMU Schema Example
 Topic: [/imu](../../topics/imu.md#imu)  
 Message: [Imu](../../api/sensor_msgs.md#imu)
+Sample Code: [Python](https://github.com/EdgeFirstAI/samples/blob/main/python/imu.py) / [Rust](https://github.com/EdgeFirstAI/samples/blob/main/rust/imu.rs)
 
 This example will go through how to connect to the IMU topic published on your EdgeFirst Platform and how to display the information through the Rerun visualizer.
 

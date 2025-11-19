@@ -2,7 +2,7 @@
 
 We propose different file structures for datasets that fall into two categories: Sequence-Based, Image-Based, and Mixed.  Sequence-Based datasets are imported from a video recording with sequential frames and these datasets preserve the order of the frames from start to end.  Image-Based datasets do not have frames, but images without any specific order.  Mixed datasets contains both sequences and image-based samples. 
 
-Before reading further, it is highly recommended to be familiar with the [EdgeFirst Dataset Format](format.md) as this describes the dataset format presented by EdgeFirst Studio to distinguish sensor and annotation containers.  Recall that sensor containers contain the images captured by the camera that is stored in either a Zip file or a standard directory. The distinction between the file structures presented in this page is based on whether or not the sensor container stores video frames (sequences) or images.  Lastly, the annotations for each sample are stored in an Arrow file. 
+Before reading further, it is highly recommended to be familiar with the [EdgeFirst Dataset Format](format/index.md) as this describes the dataset format presented by EdgeFirst Studio to distinguish sensor and annotation containers.  Recall that sensor containers contain the images captured by the camera that is stored in either a Zip file or a standard directory. The distinction between the file structures presented in this page is based on whether or not the sensor container stores video frames (sequences) or images.  Lastly, the annotations for each sample are stored in an Arrow file. 
 
 A typical Arrow file has the following contents.
 

@@ -4,6 +4,6 @@ This is the EdgeFirst Platforms User Manual.  It provides information on how to 
 
 The following devices are recognized EdgeFirst Platforms.
 
-**Maivin 1** | **Maivin 2** | **Raivin**
-:------------------:|:------------------:|:------------------:
-![Maivin 1](assets/maivin-1.png) | ![Maivin 2](assets/maivin-2.png) | ![Raivin](assets/raivin.png)
+**Maivin** | **Raivin**
+:------------------:|:------------------:
+![Maivin](assets/maivin-2.png) | ![Raivin](assets/raivin.png)

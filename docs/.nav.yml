@@ -6,6 +6,7 @@ nav:
     - getting_started/create_project.md
     - getting_started/capture_data.md
     - getting_started/annotate_dataset.md
+    - getting_started/audit_dataset.md
     - getting_started/train_vision.md
     - getting_started/validate_vision.md
     - getting_started/deploy_model.md
@@ -43,7 +44,9 @@ nav:
       - 3D/deployment.md
   - Datasets:
     - datasets/index.md
-    - datasets/format.md
+    - EdgeFirst Dataset Format:
+      - datasets/format/index.md
+      - datasets/format/box_format.md
     - datasets/structure.md
     - Dataset Zoo:
       - Coffee Cup:
@@ -83,9 +86,13 @@ nav:
         - models/validation/metrics/detection.md
         - models/validation/metrics/segmentation.md
         - models/validation/metrics/fusion.md
+        - models/validation/metrics/matching.md
+        - models/validation/metrics/classifications.md
     - Model Deployment:
       - 2D Model Deployment:
-        - models/deployment/pc.md
+        - Deploying to the PC:
+          - models/deployment/pc/mpk.md
+          - models/deployment/pc/ultralytics.md
         - models/deployment/evk.md
         - models/deployment/maivin.md
         - models/deployment/2d_raivin.md

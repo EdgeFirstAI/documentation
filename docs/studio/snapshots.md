@@ -16,7 +16,7 @@ The snapshots menu shows the list of snapshots with its name and status.
 
 ## Create Snapshot
 
-The tutorial for creating snapshots can be found under the [Dataset Annotations](../datasets/tutorials/annotations/automatic.md#create-snapshot) section.  This will create a Zip/Arrow file pair also known as an [EdgeFirst Dataset](../datasets/format.md) for each sequence in a dataset and stored in the cloud storage.  This snapshot can be later restored (into another dataset) or can be downloaded to a local folder on a PC.
+The tutorial for creating snapshots can be found under the [Dataset Annotations](../datasets/tutorials/annotations/automatic.md#create-snapshot) section.  This will create a Zip/Arrow file pair also known as an [EdgeFirst Dataset](../datasets/format/index.md) for each sequence in a dataset and stored in the cloud storage.  This snapshot can be later restored (into another dataset) or can be downloaded to a local folder on a PC.
 
 The stages for creating a snapshot are shown below.
 
@@ -46,7 +46,7 @@ A snapshot can be created by the following ways:
 
 ### Upload from Zip/Arrow File
 
-This format is the [EdgeFirst Dataset Format](../datasets/format.md) where the [Zip file](../datasets/format.md#dataset-storage-format) contains sensor reading and measurements and the [Arrow file](../datasets/format.md#dataset-annotation-format) contains dataset annotations. 
+This format is the [EdgeFirst Dataset Format](../datasets/format/index.md) where the [Zip file](../datasets/format/index.md#dataset-storage-format) contains sensor reading and measurements and the [Arrow file](../datasets/format/index.md#dataset-annotation-format) contains dataset annotations. 
 
 1. Go to the snapshots dashboard.
 2. Click on the "FROM FILE" button and then select the Zip and Arrow file pairs to import or drag and drop as a folder containing Zip and Arrow file pairs onto the dashboard. 
@@ -58,7 +58,7 @@ When creating a snapshot a pipeline with the following stages are deployed.
 1. Server Initialization: Initialize the backend server for handling the processes.
 2. Downloading Files from Cloud Storage: Fetches the dataset images from the S3 bucket.
 3. Exporting Files from Database: Fetches the dataset annotations from the Studio database.
-4. Zipping Files for Upload: Formulation of the [EdgeFirst Dataset Format](../datasets/format.md) and placing the fetched dataset files as a single Zip file.
+4. Zipping Files for Upload: Formulation of the [EdgeFirst Dataset Format](../datasets/format/index.md) and placing the fetched dataset files as a single Zip file.
 5. Uploading Snapshot to Cloud Storage: Uploading the dataset into S3 bucket.
 
 ## Restore Snapshot

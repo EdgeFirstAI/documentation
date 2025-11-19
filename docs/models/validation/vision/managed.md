@@ -1,6 +1,8 @@
-# Managed Validation
+# On Cloud Validation
 
-This tutorial will describe the steps to validate the performance of **Vision** models as managed sessions in EdgeFirst Studio that have been trained through the [end-to-end workflows](../../../getting_started/workflows/index.md) or [Training Vision](../../training/vision.md).  For a tutorial to validate Fusion models, see [Validating Fusion Models](../fusion/managed.md).  A managed validation session is self hosted in an EC2 instance which is suited for users that do not have an embedded platform available to host the validation process.  A [user-managed validation](user_managed.md) session deploys the model in an embedded platform for validation.
+This tutorial will show the steps for running validation on the cloud. This type of validation is hosted as a managed validation session in EdgeFirst Studio.  A managed validation session is self hosted in an EC2 instance which is suited for users that do not have an embedded platform available to host the validation process.  In this tutorial, you will validate a **Vision** model that was trained through the [end-to-end workflows](../../../getting_started/workflows/index.md) or [Training Vision](../../training/vision.md).  For a tutorial to validate Fusion models, see [Validating Fusion Models](../fusion/managed.md).
+
+Another type of validation is the [On Target Validation](user_managed.md) which is hosted as a user-managed validation session in EdgeFirst Studio.  A user-managed validation session deploys the model in an embedded platform.
 
 {% include-markdown "discrete/studio/create_mpk_validation_session.md" %}
 
@@ -63,4 +65,4 @@ It is also possible to compare validation metrics for multiple sessions.  See [V
 
 ## Next Steps
 
-Now that you have validated your Vision model, you can find examples for deploying your model in the [PC](../../deployment/pc.md), [EVK](../../deployment/evk.md), and [Maivin Platform](../../deployment/maivin.md). 
+Now that you have validated your Vision model, you can find examples for deploying your model in the [EVK](../../deployment/evk.md) or the [Maivin Platform](../../deployment/maivin.md).  Furthermore, you can also find examples for running your [ModelPack model](../../deployment/pc/mpk.md) or [Ultralytics model](../../deployment/pc/ultralytics.md) in your PC.

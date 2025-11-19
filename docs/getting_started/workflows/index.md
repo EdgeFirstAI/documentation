@@ -64,7 +64,7 @@ We've identified six workflows: Tourist, Tourist+, Web, Maivin, Raivin, LiDAR.  
 | [Tourist](tourist.md)       | PC                   | Train, Validate, Deploy Offline                                        | TBA  |
 | [Tourist+](tourist_plus.md) | PC                   | Annotate 2D, Train, Validate, Deploy Offline                           | TBA  |
 | [Web](web.md)               | PC + Smartphone      | Record, Annotate 2D, Train, Validate, Deploy Offline                   | TBA  |
-| [Maivin](maivin.md)      | PC + Maivin          | Record, Annotate 2D, Train, Validate, Deploy on Device                 | TBA  |
+| [Maivin](maivin.md)         | PC + Maivin          | Record, Annotate 2D, Train, Validate, Deploy on Device                 | TBA  |
 | Raivin (*coming soon*)      | PC + Raivin w/ Radar | Record, Annotate 2D + 3D, Train, Validate, Deploy on Device            | TBA  |
 | LiDAR (*coming soon*)       | PC + Raivin w/ LiDAR | Record, Annotate 2D + 3D (enhanced), Train, Validate, Deploy on Device | TBA  |
 

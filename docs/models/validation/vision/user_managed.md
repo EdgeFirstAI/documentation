@@ -1,6 +1,11 @@
-# User Managed Validation
+# On Target Validation
 
-This tutorial will describe the steps to validate the performance of **Vision** models as user-managed sessions in EdgeFirst Studio that have been trained through the [end-to-end workflows](../../../getting_started/workflows/index.md) or [Training Vision](../../training/vision.md).  A user-managed validation session is hosted in an embedded platform for a proper measurement of the model inference times when deployed on target.  A [managed validation](managed.md) session creates an EC2 server to deploy the model for validation.
+This tutorial will show the steps for running validation on target.  This type of validation is hosted as a user-managed validation session in EdgeFirst Studio.  A user-managed validation session is hosted in an embedded platform for a proper assessment of the model performance and timings when deployed on target.  In this tutorial, you will validate a **Vision** model that was trained through the [end-to-end workflows](../../../getting_started/workflows/index.md) or [Training Vision](../../training/vision.md).   
+
+Another type of validation is the [On Cloud Validation](managed.md) which is hosted as a managed validation session in EdgeFirst Studio.  A managed validation session creates an EC2 server to deploy the model for validation.
+
+!!! info "i.MX 95 Validation"
+    To deploy TFLite models in the i.MX 95, first [convert the models using eIQ's Neutron Converter](../../ultralytics/neutron.md) prior to deploying the model in the platform.  This modifies the model's architecture to allow deployment using the device's Neutron NPU delegate.
 
 {% include-markdown "discrete/studio/create_mpk_validation_session.md" %}
 
@@ -18,8 +23,16 @@ Once the configurations have been made, go ahead and click on the "Start Session
 Once the validation session has been created, [SSH](../../../platforms/ssh.md) into the platform and install the following dependencies. 
 
 !!! warning "Virtual Environment"
-    To avoid re-installation of existing system packages, we recommend setting up a [python virtual environment](https://docs.python.org/3/library/venv.html#creating-virtual-environments)
-    prior to running the pip installations below.
+    To avoid re-installation of existing system packages, we recommend setting up a [Python virtual environment](https://docs.python.org/3/library/venv.html#creating-virtual-environments)
+    prior to running the pip installations below.  Append `--system-site-packages` when creating the environment to include existing packages in the system.  For example:
+
+    * Linux `python3 -m venv /path/to/myvenv --system-site-packages`
+    * Windows `python -m venv /path/to/myenv --system-site-packages`
+
+    Activate the environment via:
+
+    * Linux: `source /path/to/myenv/bin/activate`
+    * Windows: `/path/to/myenv/Scripts/activate`
 
 ```shell
 pip install edgefirst-validator
@@ -32,10 +45,10 @@ edgefirst-client login
 ```
 
 !!! note "Server Specification"
-    Specify the EdgeFirst Studio server using `--server` among these variations: "test", "stage", "saas".  This is an optional parameter as the default is set to "saas". 
+    Specify the EdgeFirst Studio server using `--server` among these variations: "test", "stage", "saas".  This is an optional parameter as the default is set to "saas".  To modify the studio server, first `edgefirst-client logout` then `edgefirst-client --server <server> login`.
 
 !!! info "EdgeFirst Studio Token"
-    Once logged in, an EdgeFirst Studio Token will be saved under `.config/edgefirststudio/config.toml` granting access to the EdgeFirst Studio API which will remain valid for a period of time, usually 12 hours. Using this token will refresh the expiration timer. 
+    Once logged in, an EdgeFirst Studio Token will be saved under `~/.config/edgefirststudio/token` granting access to the EdgeFirst Studio API which will remain valid for a period of time, usually 12 hours. Using this token will refresh the expiration timer. 
 
 Once the validator is installed and authenticated, run validation using the following command.
 
@@ -44,7 +57,9 @@ edgefirst-validator --session-id v-c1f
 ```
 
 !!! note
-    Replace the session ID parameter specific to the validation session ID in your project.
+    Replace the session ID parameter specific to the validation session ID in your session.
+
+If the model already exists in your system, you can run this command `edgefirst-validator /path/to/mymodel.tflite --session-id v-c1f`.  Otherwise, the model will be downloaded as an artifact from the EdgeFirst Studio training session.
 
 Once entered, the following validation progress should now be indicated in EdgeFirst Studio as shown below.
 
@@ -94,4 +109,4 @@ It is also possible to compare validation metrics for multiple sessions.  See [V
 
 ## Next Steps
 
-Now that you have validated your Vision model, you can find examples for deploying your model in the [PC](../../deployment/pc.md), [EVK](../../deployment/evk.md), and [Maivin Platform](../../deployment/maivin.md). 
+Now that you have validated your Vision model, you can find examples for deploying your model in the [EVK](../../deployment/evk.md) or the [Maivin Platform](../../deployment/maivin.md).  Furthermore, you can also find examples for running your [ModelPack model](../../deployment/pc/mpk.md) or [Ultralytics model](../../deployment/pc/ultralytics.md) in your PC.

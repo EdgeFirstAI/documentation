@@ -23,6 +23,10 @@ Specify the name of the validation session and the model and the dataset for val
 <figcaption>Start Validation Session</figcaption>
 </figure>
 
+!!! warning "No Datasets Available"
+
+    In case there are no datasets visible on the dropdown.  Please refresh your browser.
+
 The validation session progress will appear in the "Validation" page as shown below.
 
 <figure markdown="span">

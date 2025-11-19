@@ -15,7 +15,7 @@
         <link rel="canonical" href="https://doc.edgefirst.ai/test/models/ultralytics/">
       
       
-        <link rel="prev" href="../modelpack/benchmarks/">
+        <link rel="prev" href="../modelpack/npu/">
       
       
         <link rel="next" href="benchmarks/">
@@ -3739,8 +3739,6 @@
       
         
       
-        
-      
     
     
     
@@ -3795,6 +3793,10 @@
       
         
           
+        
+      
+        
+      
         
       
         
@@ -4014,6 +4016,62 @@
 
               
             
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../modelpack/quantize/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ModelPack Quantization
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../modelpack/npu/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Running Quantized ModelPack on Target
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
           </ul>
         </nav>
       
@@ -4035,6 +4093,12 @@
       
         
           
+        
+      
+        
+      
+        
+      
         
       
         
@@ -4106,6 +4170,90 @@
     
   
     Benchmarks
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="quantize/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Ultralytics Quantization
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="neutron/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    iMX.95 Neutron Model Conversion
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="npu/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Deploying Models on the Target
   
 
     
@@ -4209,139 +4357,6 @@
     
   
     Benchmarks
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-          </ul>
-        </nav>
-      
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    
-    
-      
-        
-          
-        
-      
-        
-      
-        
-      
-    
-    
-    
-      
-      
-    
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-        
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_5_4" >
-        
-          
-          <div class="md-nav__link md-nav__container">
-            <a href="../custom/" class="md-nav__link ">
-              
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Custom Models
-  
-
-    
-  </span>
-  
-  
-
-            </a>
-            
-              
-              <label class="md-nav__link " for="__nav_6_5_4" id="__nav_6_5_4_label" tabindex="0">
-                <span class="md-nav__icon md-icon"></span>
-              </label>
-            
-          </div>
-        
-        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_6_5_4_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_6_5_4">
-            <span class="md-nav__icon md-icon"></span>
-            
-  
-    Custom Models
-  
-
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../custom/quantize/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Model Quantization
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../custom/npu/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Deploying Models on the Target
   
 
     
@@ -6654,6 +6669,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#custom-models" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Custom Models
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#license" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -6811,6 +6837,14 @@
 <div class="admonition note">
 <p class="admonition-title">Important</p>
 <p>Datasets and default weights are handled internally by Edgefirst Studio.  There’s no need to migrate or store data locally.</p>
+</div>
+<h2 id="custom-models">Custom Models</h2>
+<p>If you have a custom float model, it is highly recommended to export to a quantized model to deploy and maximize the model's performance using the target's NPU.  In this section, we will show examples of <a href="quantize/">quantizing float ONNX to a TFLite</a>.  We will also be showing examples of <a href="npu/">deploying a quantized ONNX or TFLite</a> in the NXP <strong>i.MX 8M Plus EVK</strong> using the NPU execution providers from onnxruntime or the OpenVX delegate for tflite-runtime to deploy the model in the NPU. </p>
+<p>Deploying a quantized TFLite on the <strong>i.MX 95 EVK</strong> requires an extra step of <a href="neutron/">converting the model using NXP's eIQ neutron converter</a>.  This will allow the model to be deployed on the i.MX 95 using the Neutron delegate in the platform. </p>
+<div class="admonition warning">
+<p class="admonition-title">Specific BSP versions required</p>
+<p>The latest BSP available for the Maivin lacks the <code>onnxruntime</code> library needed to run ONNX on the NPU.</p>
+<p>On the i.MX 8M Plus EVK, BSP v5.15 are used in the examples which was noted to have the providers needed for ONNX to run on the NPU <code>NnapiExecutionProvider</code>, <code>VsiNpuExecutionProvider</code>.  Later BSPs such as v6.12 did not have these providers.  This still needs confirmation from NXP as to why these providers were removed. </p>
 </div>
 <h2 id="license">License</h2>
 <p>Ultralytics YOLO is covered by the GNU AGPL-3.0 license which allows for free use of this model within the constraints of the license.  Ultralytics offers <a href="https://www.ultralytics.com/license">commercial licensing options</a>.</p>

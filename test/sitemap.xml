@@ -157,18 +157,6 @@
          <lastmod>2025-11-19</lastmod>
     </url>
     <url>
-         <loc>https://doc.edgefirst.ai/test/models/custom/</loc>
-         <lastmod>2025-11-19</lastmod>
-    </url>
-    <url>
-         <loc>https://doc.edgefirst.ai/test/models/custom/npu/</loc>
-         <lastmod>2025-11-19</lastmod>
-    </url>
-    <url>
-         <loc>https://doc.edgefirst.ai/test/models/custom/quantize/</loc>
-         <lastmod>2025-11-19</lastmod>
-    </url>
-    <url>
          <loc>https://doc.edgefirst.ai/test/models/deployment/2d_raivin/</loc>
          <lastmod>2025-11-19</lastmod>
     </url>
@@ -205,6 +193,14 @@
          <lastmod>2025-11-19</lastmod>
     </url>
     <url>
+         <loc>https://doc.edgefirst.ai/test/models/modelpack/npu/</loc>
+         <lastmod>2025-11-19</lastmod>
+    </url>
+    <url>
+         <loc>https://doc.edgefirst.ai/test/models/modelpack/quantize/</loc>
+         <lastmod>2025-11-19</lastmod>
+    </url>
+    <url>
          <loc>https://doc.edgefirst.ai/test/models/modelpack/tutorials/</loc>
          <lastmod>2025-11-19</lastmod>
     </url>
@@ -230,6 +226,18 @@
     </url>
     <url>
          <loc>https://doc.edgefirst.ai/test/models/ultralytics/benchmarks/</loc>
+         <lastmod>2025-11-19</lastmod>
+    </url>
+    <url>
+         <loc>https://doc.edgefirst.ai/test/models/ultralytics/neutron/</loc>
+         <lastmod>2025-11-19</lastmod>
+    </url>
+    <url>
+         <loc>https://doc.edgefirst.ai/test/models/ultralytics/npu/</loc>
+         <lastmod>2025-11-19</lastmod>
+    </url>
+    <url>
+         <loc>https://doc.edgefirst.ai/test/models/ultralytics/quantize/</loc>
          <lastmod>2025-11-19</lastmod>
     </url>
     <url>

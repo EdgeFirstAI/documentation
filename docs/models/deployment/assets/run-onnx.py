@@ -149,7 +149,6 @@ def print_output(res: list, labels: list):
     for j in range(len(boxes)):
         cl_id = int(classes[j])
         label = labels[cl_id]
-        label = "label"
         score = scores[j]
         box = boxes[j]
         print("  ", cl_id, label, score, box)

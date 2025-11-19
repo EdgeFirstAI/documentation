@@ -106,17 +106,17 @@ nav:
           - models/modelpack/tutorials/measurement_tape.md
           - models/modelpack/tutorials/musicbox.md
         - Benchmarks: models/modelpack/benchmarks.md
+        - models/modelpack/quantize.md
+        - models/modelpack/npu.md
       - Ultralytics:
           - models/ultralytics/index.md
           - Benchmarks: models/ultralytics/benchmarks.md
+          - models/ultralytics/quantize.md
+          - models/ultralytics/neutron.md
+          - models/ultralytics/npu.md
       - Fusion:
         - models/fusion/index.md
         - Benchmarks: models/fusion/benchmarks.md
-      - Custom Models: 
-        - models/custom/index.md
-        - models/custom/quantize.md
-        - models/custom/npu.md
-        - models/custom/neutron.md
     - models/metadata.md
     - models/augmentations.md
   - Perception:

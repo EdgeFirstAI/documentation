@@ -33,10 +33,6 @@
          <lastmod>2025-11-19</lastmod>
     </url>
     <url>
-         <loc>https://doc.edgefirst.ai/test/datasets/format/</loc>
-         <lastmod>2025-11-19</lastmod>
-    </url>
-    <url>
          <loc>https://doc.edgefirst.ai/test/datasets/structure/</loc>
          <lastmod>2025-11-19</lastmod>
     </url>
@@ -58,6 +54,14 @@
     </url>
     <url>
          <loc>https://doc.edgefirst.ai/test/datasets/coffeecup/</loc>
+         <lastmod>2025-11-19</lastmod>
+    </url>
+    <url>
+         <loc>https://doc.edgefirst.ai/test/datasets/format/</loc>
+         <lastmod>2025-11-19</lastmod>
+    </url>
+    <url>
+         <loc>https://doc.edgefirst.ai/test/datasets/format/box_format/</loc>
          <lastmod>2025-11-19</lastmod>
     </url>
     <url>
@@ -98,6 +102,10 @@
     </url>
     <url>
          <loc>https://doc.edgefirst.ai/test/getting_started/annotate_dataset/</loc>
+         <lastmod>2025-11-19</lastmod>
+    </url>
+    <url>
+         <loc>https://doc.edgefirst.ai/test/getting_started/audit_dataset/</loc>
          <lastmod>2025-11-19</lastmod>
     </url>
     <url>
@@ -173,7 +181,11 @@
          <lastmod>2025-11-19</lastmod>
     </url>
     <url>
-         <loc>https://doc.edgefirst.ai/test/models/deployment/pc/</loc>
+         <loc>https://doc.edgefirst.ai/test/models/deployment/pc/mpk/</loc>
+         <lastmod>2025-11-19</lastmod>
+    </url>
+    <url>
+         <loc>https://doc.edgefirst.ai/test/models/deployment/pc/ultralytics/</loc>
          <lastmod>2025-11-19</lastmod>
     </url>
     <url>
@@ -245,11 +257,19 @@
          <lastmod>2025-11-19</lastmod>
     </url>
     <url>
+         <loc>https://doc.edgefirst.ai/test/models/validation/metrics/classifications/</loc>
+         <lastmod>2025-11-19</lastmod>
+    </url>
+    <url>
          <loc>https://doc.edgefirst.ai/test/models/validation/metrics/detection/</loc>
          <lastmod>2025-11-19</lastmod>
     </url>
     <url>
          <loc>https://doc.edgefirst.ai/test/models/validation/metrics/fusion/</loc>
+         <lastmod>2025-11-19</lastmod>
+    </url>
+    <url>
+         <loc>https://doc.edgefirst.ai/test/models/validation/metrics/matching/</loc>
          <lastmod>2025-11-19</lastmod>
     </url>
     <url>

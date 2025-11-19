@@ -10,8 +10,7 @@ Once you have validated your trained model, take a look at examples of deploying
 | NVIDIA Orin                                                 |          ✓           |             |                |
 | Kinara ARA-2                                                |                      |             |        ✓      |
 | [Raivin Radar Fusion](../../models/deployment/3d_raivin.md) |                      |     ✓       |        ✓      |
-| [i.MX 95 EVK](../../models/deployment/evk.md)               |         ✓            |             |                |
-| Toradex Verdin                                              |                      |             |        ✓       |
+| [i.MX 95 EVK](../../models/deployment/evk.md)               |         ✓            |     ✓       |                |
 
 If you wish to run validation on device, please follow instructions below.
 

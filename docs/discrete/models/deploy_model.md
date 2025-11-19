@@ -4,13 +4,13 @@ Once you have validated your trained model, take a look at examples of deploying
 
 | Platform                                                    | On Target Validation | Live Video | In Development |
 |-------------------------------------------------------------|----------------------|------------|----------------|
-| [PC / Linux](../../models/deployment/pc/mpk.md)             |          ✓           |            |                |
+| [PC / Linux](../../models/deployment/pc/mpk.md)             |         ✓            |            |                |
 | Mac/MacOS                                                   |                      |             |        ✓       |
-| [i.MX 8M Plus EVK](../../models/deployment/evk.md)          |          ✓           |     ✓      |                |
-| NVIDIA Orin                                                 |          ✓           |             |                |
+| [i.MX 8M Plus EVK](../../models/deployment/evk.md)          |         ✓            |     ✓      |                |
+| NVIDIA Orin                                                 |         ✓            |            |                |
 | Kinara ARA-2                                                |                      |             |        ✓      |
-| [Raivin Radar Fusion](../../models/deployment/3d_raivin.md) |                      |     ✓       |        ✓      |
-| [i.MX 95 EVK](../../models/deployment/evk.md)               |         ✓            |     ✓       |                |
+| [Raivin Radar Fusion](../../models/deployment/3d_raivin.md) |         ✓            |     ✓      |        ✓      |
+| [i.MX 95 EVK](../../models/deployment/evk.md)               |         ✓            |     ✓      |                |
 
 If you wish to run validation on device, please follow instructions below.
 

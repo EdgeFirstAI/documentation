@@ -104,14 +104,12 @@ nav:
       - Ultralytics:
           - models/ultralytics/index.md
           - Benchmarks: models/ultralytics/benchmarks.md
+          - models/ultralytics/quantize.md
+          - models/ultralytics/neutron.md
+          - models/ultralytics/npu.md
       - Fusion:
         - models/fusion/index.md
         - Benchmarks: models/fusion/benchmarks.md
-      - Custom Models: 
-        - models/custom/index.md
-        - models/custom/quantize.md
-        - models/custom/neutron.md
-        - models/custom/npu.md
     - models/metadata.md
     - models/augmentations.md
   - Perception:

@@ -56,10 +56,10 @@ If you have an ONNX model, download the [run-onnx.py Python script](../assets/ru
 
     === "ONNX"
 
-        If you have downloaded the sample images and the ONNX model above, run this command to use the script.  Otherwise modify the path to the model and the images specific to your system. 
+        If you have downloaded the sample images and the ONNX model above, run this command to use the script.  Otherwise modify the path to the model and the images specific to your system.  If you have multiple labels in your dataset specify them as `--labels bench coco` for example.
 
         ```shell
-        $ python run-onnx.py coffeecup-modelpack-multitask-t-1f54.onnx coffeecup/*.jpg
+        $ python run-onnx.py coffeecup-modelpack-multitask-t-1f54.onnx coffeecup/*.jpg --labels coffeecup
         2025-11-18 13:39:07.683129404 [W:onnxruntime:Default, device_discovery.cc:164 DiscoverDevicesForPlatform] GPU device discovery failed: device_discovery.cc:89 ReadFileContents Failed to open file: "/sys/class/drm/card0/device/vendor"
         Using Execution Providers: ['CUDAExecutionProvider', 'CPUExecutionProvider']
         Objects found in image:  20250430_172430_17.jpg
@@ -77,10 +77,10 @@ If you have an ONNX model, download the [run-onnx.py Python script](../assets/ru
 
     === "TFLite"
 
-        If you have downloaded the sample images and the TFLite model above, run this command to use the script.  Otherwise modify the path to the model and the images specific to your system. 
+        If you have downloaded the sample images and the TFLite model above, run this command to use the script.  Otherwise modify the path to the model and the images specific to your system.  If you have multiple labels in your dataset specify them as `--labels bench coco` for example.
 
         ```shell
-        $ python run-tflite.py coffeecup-modelpack-multitask-t-1f54.tflite coffeecup/*.jpg
+        $ python run-tflite.py coffeecup-modelpack-multitask-t-1f54.tflite coffeecup/*.jpg --labels coffeecup
         2025-11-18 14:01:30.182493: I tensorflow/core/platform/cpu_feature_guard.cc:210] This TensorFlow binary is optimized to use available CPU instructions in performance-critical operations.
         To enable the following instructions: AVX2 FMA, in other operations, rebuild TensorFlow with the appropriate compiler flags.
         /home/johns/Repositories/validator/delenv/lib/python3.10/site-packages/tensorflow/lite/python/interpreter.py:457: UserWarning:     Warning: tf.lite.Interpreter is deprecated and is scheduled for deletion in

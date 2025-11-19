@@ -15,6 +15,68 @@ from PIL import Image, ImageDraw, ImageFont
 Interpreter = tf.lite.Interpreter
 load_delegate = tf.lite.experimental.load_delegate
 
+
+class Colors:
+    def __init__(self):
+        hexs = (
+            "042AFF",  # strong blue
+            "FF444F",  # strong red
+            "00DFB7",  # teal
+            "BD00FF",  # purple
+            "A2FF0B",  # lime
+            "FC6D2F",  # orange
+            "FF6FDD",  # pink
+            "00B4FF",  # cyan
+            "111F68",  # navy
+            "26C000",  # bright green
+            "DD00BA",  # magenta
+            "01FFB3",  # aqua green
+            "7D24FF",  # violet
+            "FF1B6C",  # pink-red
+            "7B0068",  # deep purple
+            "0BDBEB",  # light teal
+            "00FFFF",  # light cyan
+            "F3F3F3",  # *gray moved to near end*
+        )
+        self.palette = [self.hex2rgb(f"#{c}") for c in hexs]
+        self.n = len(self.palette)
+        self.pose_palette = np.array(
+            [
+                [255, 128, 0],
+                [255, 153, 51],
+                [255, 178, 102],
+                [230, 230, 0],
+                [255, 153, 255],
+                [153, 204, 255],
+                [255, 102, 255],
+                [255, 51, 255],
+                [102, 178, 255],
+                [51, 153, 255],
+                [255, 153, 153],
+                [255, 102, 102],
+                [255, 51, 51],
+                [153, 255, 153],
+                [102, 255, 102],
+                [51, 255, 51],
+                [0, 255, 0],
+                [0, 0, 255],
+                [255, 0, 0],
+                [255, 255, 255],
+            ],
+            dtype=np.uint8,
+        )
+
+    def __call__(self, i: int, bgr: bool = False) -> tuple:
+        c = self.palette[int(i) % self.n]
+        return (c[2], c[1], c[0]) if bgr else c
+
+    @staticmethod
+    def hex2rgb(h: str) -> tuple:
+        return tuple(int(h[1 + i: 1 + i + 2], 16) for i in (0, 2, 4))
+
+COLORS = Colors()
+
+
 def get_input(image_path: str, input_details: dict) -> np.ndarray:
     _, height, width, _ = input_details.get("shape")
     image = Image.open(image_path)
@@ -98,17 +160,21 @@ def print_output(res: list, labels: list):
 
 
 def mask_image(image: Image.Image, mask: np.ndarray):
-    # Transform dimension of masks from a 2D numpy array to 4D with RGBA
-    # channels.
-    mask_4_channels = np.stack((mask,) * 4, axis=-1)
-    # Assign all classes with color white.
-    mask_4_channels[mask_4_channels == 1] = 255
-    # Temporarily unpack the bands for readability.
-    red, green, blue, _ = mask_4_channels.T
-    # Areas of all classes.
-    u_areas = (red == 255) & (blue == 255) & (green == 255)
-    # Color all classes with blue.
-    mask_4_channels[..., :][u_areas.T] = (0, 0, 255, 100)
+
+    # Transform dimension of masks from a 2D numpy array to 4D into RGBA.
+    if len(mask.shape) > 2:
+        _, height, width = mask.shape
+    else:
+        height, width = mask.shape
+    mask_4_channels = np.zeros((height, width, 4), dtype=np.uint8)
+
+    labels = np.sort(np.unique(mask))
+    for label in labels:
+        if label != 0:
+            # Designate a color for each class.
+            mask_4_channels[mask == label] = \
+                np.append(COLORS(label), 130)
+
     # Convert array to image object for image processing.
     mask = Image.fromarray(mask_4_channels.astype(np.uint8))
 
@@ -126,7 +192,7 @@ def draw_output(res: list, labels: list, image_path: str, save_path: str):
     draw = ImageDraw.Draw(image)
 
     for j in range(len(boxes)):
-        cl_id = int(classes[j]) 
+        cl_id = int(classes[j])
         label = labels[cl_id]
         score = scores[j]
         box = boxes[j]
@@ -137,10 +203,10 @@ def draw_output(res: list, labels: list, image_path: str, save_path: str):
         xmin, ymin = (int(box[0] * image.width), int(box[1] * image.height))
         xmax, ymax = (int(box[2] * image.width), int(box[3] * image.height))
         draw.rectangle(((xmin, ymin), (xmax, ymax)),
-                        outline="RoyalBlue",
-                        width=3)
+                       outline=COLORS(cl_id),
+                       width=3)
         draw.rectangle(((xmin, ymin), (xmin + text_width, ymin + text_height)),
-                       fill="RoyalBlue")
+                       fill=COLORS(cl_id))
         draw.text((xmin, ymin), text, font=font, align="left", fill="White")
 
     image.save(save_path)
@@ -204,7 +270,7 @@ if __name__ == '__main__':
             outputs.append(x)
 
             shape = out.get("shape")
-            if len(shape) == 4 and shape[-1] == 4:
+            if len(shape) == 4 and shape[-1] == 4 and shape[-2] == 1:
                 box_id = i
             elif len(shape) == 3:
                 if shape[-1] == nc:

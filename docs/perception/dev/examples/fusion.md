@@ -2,7 +2,10 @@
 
 These examples demonstrate how to connect to various fusion topics published on your EdgeFirst Platform and how to display the information through the command line.
 
-## /fusion/occupancy
+## Fusion Occupancy
+Topic: [/fusion/occupancy](../../topics/fusion.md#fusionoccupancy)  
+Message: [PointCloud2](../../api/sensor_msgs.md#pointcloud2)  
+Sample Code: [Python](https://github.com/EdgeFirstAI/samples/blob/main/python/fusion/occupancy.py) / [Rust](https://github.com/EdgeFirstAI/samples/blob/main/rust/fusion/occupancy.rs)
 
 ### Setting up subscriber
 
@@ -48,12 +51,12 @@ We can now await a message from that subscriber. After receiving the message, we
 === "Rust"
 
     ``` rust
-    use edgefirst_schemas::fusion_msgs::Occupancy;
+    use edgefirst_schemas::sensor_msgs::PointCloud2;
 
     // Receive a message
     let msg = subscriber.recv().unwrap();
 
-    let occupancy: Occupancy = cdr::deserialize(&msg.payload().to_bytes())?;
+    let pcd: PointCloud2 = cdr::deserialize(&msg.payload().to_bytes())?;
     ```
 
 ### Process the Data
@@ -79,18 +82,36 @@ The Occupancy message contains occupancy grid data. You can log the data through
 === "Rust"
 
     ``` rust
-    // Access occupancy parameters
-    let width = occupancy.width;
-    let height = occupancy.height;
-    let resolution = occupancy.resolution;
-    let data = occupancy.data;  // Occupancy grid data
+    let points = decode_pcd(&pcd);
+    let max_class = points
+        .iter()
+        .map(|x| x.fields["vision_class"] as isize)
+        .max()
+        .unwrap_or(1)
+        .max(1);
+
+    let rr_points = Points3D::new(
+        points
+            .iter()
+            .map(|p| Position3D::new(p.x as f32, p.y as f32, p.z as f32)),
+    )
+    .with_colors(points.iter().map(|p| {
+        let (r, g, b) = colorous::TURBO
+            .eval_continuous(p.fields["vision_class"] / max_class as f64)
+            .as_tuple();
+        Color::from_rgb(r, g, b)
+    }));
+    let _ = rec.log("fusion/occupancy", &rr_points);
     ```
 
 ### Results
 When displaying the results through Rerun you will see the Occupancy Point Cloud.
 ![alt text](assets/fusion_occupancy.png)
 
-## /fusion/model_output
+## Fusion Output Grid
+Topic: [/fusion/model_output](../../topics/fusion.md#fusionmodel_output)  
+Message: [Mask](../../api/edgefirst_msgs.md#mask)  
+Sample Code: [Python](https://github.com/EdgeFirstAI/samples/blob/main/python/fusion/model_output.py) / [Rust](https://github.com/EdgeFirstAI/samples/blob/main/rust/fusion/model_output.rs)
 
 ### Setting up subscriber
 
@@ -137,12 +158,12 @@ We can now receive a message on the subscriber. After receiving the message, we 
 === "Rust"
 
     ``` rust
-    use edgefirst_schemas::fusion_msgs::ModelOutput;
+    use edgefirst_schemas::edgefirst_msgs::Mask;
 
     // Receive a message
     let msg = subscriber.recv().unwrap();
 
-    let output: ModelOutput = cdr::deserialize(&msg.payload().to_bytes())?;
+    let mask: Mask = cdr::deserialize(&msg.payload().to_bytes())?;
     ```
 
 ### Process the Data
@@ -167,13 +188,25 @@ The ModelOutput message contains fused model output data. You can log the data t
 === "Rust"
 
     ``` rust
-    // Access model output parameters
-    let timestamp = output.timestamp;
-    let boxes = output.boxes;  // 2D bounding boxes
-    let masks = output.masks;  // Segmentation masks
+    let mask_classes = mask.mask.len() / mask.width as usize / mask.height as usize;
+    let mask_argmax: Vec<u8> = mask
+        .mask
+        .chunks_exact(mask_classes)
+        .map(argmax_slice)
+        .collect();
+    let mask = ndarray::Array2::from_shape_vec(
+        [mask.width as usize, mask.height as usize],
+        mask_argmax,
+    )
+    .unwrap();
+    let rr_seg_image = SegmentationImage::try_from(mask).unwrap();
+    let _ = rec.log("fusion/model_output", &rr_seg_image);
     ```
 
-## /fusion/mask_output/tracked
+## Tracked Fusion Output Grid
+Topic: [/fusion/model_output/tracked](../../topics/fusion.md#fusionmodel_outputtracked)  
+Message: [Mask](../../api/edgefirst_msgs.md#mask)  
+Sample Code: [Python](https://github.com/EdgeFirstAI/samples/blob/main/python/fusion/model_output_tracked.py) / [Rust](https://github.com/EdgeFirstAI/samples/blob/main/rust/fusion/model_output_tracked.rs)
 
 ### Setting up subscriber
 
@@ -219,12 +252,12 @@ We can now receive a message on the subscriber. After receiving the message, we 
 === "Rust"
 
     ``` rust
-    use edgefirst_schemas::fusion_msgs::MaskOutputTracked;
+    use edgefirst_schemas::edgefirst_msgs::Mask;
 
     // Receive a message
     let msg = subscriber.recv().unwrap();
 
-    let tracked: MaskOutputTracked = cdr::deserialize(&msg.payload().to_bytes())?;
+    let mask: Mask = cdr::deserialize(&msg.payload().to_bytes())?;
     ```
 
 ### Process the Data
@@ -249,13 +282,25 @@ The MaskOutputTracked message contains fused model output data. You can log the 
 === "Rust"
 
     ``` rust
-    // Access tracked mask parameters
-    let timestamp = tracked.timestamp;
-    let track_id = tracked.track_id;
-    let mask = tracked.mask;  // Segmentation mask
+    let mask_classes = mask.mask.len() / mask.width as usize / mask.height as usize;
+    let mask_argmax: Vec<u8> = mask
+        .mask
+        .chunks_exact(mask_classes)
+        .map(argmax_slice)
+        .collect();
+    let mask = ndarray::Array2::from_shape_vec(
+        [mask.width as usize, mask.height as usize],
+        mask_argmax,
+    )
+    .unwrap();
+    let rr_seg_image = SegmentationImage::try_from(mask).unwrap();
+    let _ = rec.log("fusion/model_output/tracked", &rr_seg_image);
     ```
 
-## /fusion/radar
+## Fusion Radar
+Topic: [/fusion/radar](../../topics/fusion.md#fusionradar)  
+Message: [PointCloud2](../../api/sensor_msgs.md#pointcloud2)  
+Sample Code: [Python](https://github.com/EdgeFirstAI/samples/blob/main/python/fusion/radar.py) / [Rust](https://github.com/EdgeFirstAI/samples/blob/main/rust/fusion/radar.rs)
 
 ### Setting up subscriber
 
@@ -394,7 +439,10 @@ Recieved 10 radar points with non-background vision_class. Values: x: [1.15, 1.4
 When displaying the results through Rerun you will see the point cloud radar data.
 ![alt text](assets/fusion_radar.png)
 
-## /fusion/lidar
+## Fusion Lidar
+Topic: [/fusion/lidar](../../topics/fusion.md#fusionlidar)  
+Message: [PointCloud2](../../api/sensor_msgs.md#pointcloud2)  
+Sample Code: [Python](https://github.com/EdgeFirstAI/samples/blob/main/python/fusion/lidar.py) / [Rust](https://github.com/EdgeFirstAI/samples/blob/main/rust/fusion/lidar.rs)
 
 This demo requires lidar output to be enabled on `fusion` to work.
 By default the rt/fusion/lidar output is not enabled for `fusion`.
@@ -538,7 +586,10 @@ Recieved 523 lidar points with non-background vision_class. Values: x: [3.39, 3.
 When displaying the results through Rerun you will see the point cloud lidar data.
 ![alt text](assets/fusion_lidar.png)
 
-## /fusion/boxes3d
+## Fusion Boxes3D
+Topic: [/fusion/boxes3d](../../topics/fusion.md#fusionboxes3d)  
+Message: [Detect](../../api/edgefirst_msgs.md#detect)  
+Sample Code: [Python](https://github.com/EdgeFirstAI/samples/blob/main/python/fusion/boxes3d.py) / [Rust](https://github.com/EdgeFirstAI/samples/blob/main/rust/fusion/boxes3d.rs)
 
 ### Setting up subscriber
 

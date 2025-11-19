@@ -130,7 +130,7 @@ nav:
     - perception/studio.md
     - perception/launcher.md
     - Topics:
-      - perception/topics.md
+      - perception/topics/index.md
       - perception/topics/camera.md
       - perception/topics/fusion.md
       - perception/topics/imu.md
@@ -139,7 +139,7 @@ nav:
       - perception/topics/navsat.md
       - perception/topics/radar.md
     - Developer Guide:
-      - perception/dev.md
+      - perception/dev/index.md
       - Examples:
         - perception/dev/examples/camera.md
         - perception/dev/examples/fusion.md
@@ -151,7 +151,7 @@ nav:
         - perception/dev/examples/radar.md
         - perception/dev/examples/ssd.md
     - API Reference:
-      - perception/api.md
+      - perception/api/index.md
       - perception/api/edgefirst_msgs.md
       - perception/api/foxglove_msgs.md
       - perception/api/geometry_msgs.md
@@ -162,6 +162,12 @@ nav:
       - perception/api/studio.md
     - Deep View RT:
       - perception/deepviewrt/index.md
+    - 4K Video:
+      - perception/4k/index.md
+      - perception/4k/camera_4k.md
+      - perception/4k/webui_4k.md
+      - perception/4k/publisher_4k.md
+      - perception/4k/foxglove_4k.md
   - Platforms:
     - platforms/index.md
     - Getting Started:
@@ -172,8 +178,17 @@ nav:
       - platforms/hardware.md
       - platforms/radar.md
       - platforms/lidar.md
+    - Configuration:
+      - platforms/configuration/index.md
+      - platforms/configuration/mcap_recording.md
+      - platforms/configuration/camera.md
+      - platforms/configuration/webui.md
+      - platforms/configuration/model.md
+      - platforms/configuration/service_status.md
+      - platforms/configuration/radar.md
+      - platforms/configuration/fusion.md
+      - platforms/configuration/lidar.md
     - Software:
-      - platforms/configuration.md
       - platforms/model_uploads.md
       - platforms/updates.md
       - platforms/release_notes.md

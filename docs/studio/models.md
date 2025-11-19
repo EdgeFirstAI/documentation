@@ -48,7 +48,7 @@ All the training charts will be displayed with a legend that indicates the train
 <figcaption>All Charts</figcaption>
 </figure>
 
-For more details regarding deploying training sessions, please see [Training ModelPack](../models/modelpack/training.md) for training Vision models and [Training Fusion](../models/fusion/training.md) for training Fusion models.
+For more details regarding deploying training sessions, please see [Training Vision Models](../models/training/vision.md) and [Training Fusion Models](../models/training/fusion.md) for training Fusion models.
 
 #### Validation Sessions
 
@@ -87,7 +87,9 @@ Now the charts for each session are displayed side-by-side.  All the charts for 
 <figcaption>Comparing Validation Sessions</figcaption>
 </figure>
 
-For more details regarding deploying validation sessions, please see [Validating ModelPack](../models/modelpack/validation/managed.md) for validating Vision models and [Validating Fusion](../models/fusion/validation.md) for validating Fusion models.
+There are two types of validation: **managed** and **user-managed**. Managed validations are set to default in EdgeFirst Studio which triggers an EC2 instance that downloads the dataset and the inference model for validation. This type of validation is best used if you do not have an embedded platform to deploy the model. User-managed validations are hosted in embedded platforms where the dataset and the inference model will be downloaded. This type of validation is best used if you have an embedded platform available to verify how the model would perform in the platform and determine the model's inference time when deployed.
+
+For more details regarding deploying validation sessions, please see [Validating Vision Models](../models/validation/vision/managed.md) and [Validating Fusion Models](../models/validation/fusion/managed.md) for validating Fusion models.
 
 ## Next Steps
 

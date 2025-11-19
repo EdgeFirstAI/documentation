@@ -76,7 +76,7 @@ Click **RESTORE SNAPSHOT**.  The dialog will close, and the dataset API will exp
 <figcaption>Dataset UI</figcaption>
 </figure>
 
-The dataset is exported in [EdgeFirst Studio Format](../../../datasets/format.md).
+The dataset is exported in [EdgeFirst Studio Format](../../../datasets/format/index.md).
 
 ## Data Annotation
 
@@ -111,7 +111,7 @@ To train the model, it is essential to [create training and validation](../../..
 
 ## Model Training
 
-As with other Studio features, model training has a dedicated user interface.  See [Model Training](./../training.md) for details. 
+As with other Studio features, model training has a dedicated user interface.  See [Model Training](../../training/vision.md) for details. 
 
 Inside the experiment, create a New Session and name it `musicbox-detector`. This name is also assigned to the cloud instance under the Studio console.
 
@@ -149,7 +149,7 @@ After creation, your session should look like the following.
 
 ## Model Deployment
 
-Once training completes, follow these steps for [deploying the model](../deployment/maivin.md) to the Maivin platform.
+Once training completes, follow these steps for [deploying the model](../../deployment/maivin.md) to the Maivin platform.
 
 Begin testing the model with the object. If the model does not perform as expected, record a few more minutes of data and repeat the training process.  Use this opportunity to identify edge cases and collect additional samples that can help improve the model's performance.
 

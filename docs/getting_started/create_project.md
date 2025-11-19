@@ -3,12 +3,14 @@ The creation of [projects](../studio/projects.md) is the single most important s
 {% include-markdown "discrete/studio/create_project.md" heading-offset=0 %}
 
 The next sections will invite you to follow along the *Web Workflow* -- the end-to-end workflow that demonstrates:  
+
 1. recording a video or capturing images using a phone,  
 2. uploading the captured data into EdgeFirst Studio,  
-3. annotating the images,  
-4. training a model based on the images,  
-5. validating the trained model, and  
-6. deploying the model on various platforms. 
+3. annotating the images, 
+4. auditing the annotations, 
+5. training a model based on the images,  
+6. validating the trained model, and  
+7. deploying the model on the PC. 
 
 This workflow requires only a phone and a PC.  There are other [workflows](workflows/index.md) that support different hardware requirements. 
 

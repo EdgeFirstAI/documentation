@@ -6,6 +6,60 @@ The EdgeFirst Fusion model performs early fusion using the low-level raw radar r
 
 ![EdgeFirst Fusion Overview](../assets/fusion-overview.png)
 
+## Getting Started
+
+ModelPack can be trained now in Edgefirst Studio using a Graphical User Interface by following four simple steps:
+
+=== "Select Framework"
+
+    <h2 id="select-framework" style="display: none;"></h2>
+
+    1. Select **EdgeFirst Fusion** within the available training frameworks.
+
+    ![Select Fusion Training Framework](../assets/fusion/fusion-train-01.jpg){ align=center }
+
+    <div class="wizard-actions" style="max-width: fit-content; margin-left: auto; margin-right: auto;" markdown>
+    [Next → 2. Name Session](#name-session){ .md-button .md-button--primary }
+    </div>
+
+=== "Name Session"
+
+    <h2 id="name-session" style="display: none;"></h2>
+
+    2. Set a **name** and **description** *(optional)* for the training session.
+
+    ![Set Name and Description](../assets/fusion/fusion-train-02.jpg){ align=center }
+
+    <div class="wizard-actions" style="max-width: fit-content; margin-left: auto; margin-right: auto;" markdown>
+    [1. Select Framework ← Back](#select-framework){ .md-button }
+    [Next → 3. Select Dataset](#select-dataset){ .md-button .md-button--primary }
+    </div>
+
+=== "Select Dataset"
+
+    <h2 id="select-dataset" style="display: none;"></h2>
+
+    3. Choose your **dataset**.
+
+    ![Select a Dataset](../assets/fusion/fusion-train-03.jpg){ align=center }
+
+    <div class="wizard-actions" style="max-width: fit-content; margin-left: auto; margin-right: auto;" markdown>
+    [2. Name Session ← Back](#name-session){ .md-button }
+    [Next → 4. Configure & Train](#train){ .md-button .md-button--primary }
+    </div>
+
+=== "Train"
+
+    <h2 id="train" style="display: none;"></h2>
+
+    4. **Configure model parameters** (architecture, input size, epochs, etc.) and start **Training**.
+
+    ![Configure and Train](../assets/fusion/fusion-train-04.jpg){ align=center }
+
+    <div class="wizard-actions" style="max-width: fit-content; margin-left: auto; margin-right: auto;" markdown>
+    [3. Select Dataset ← Back](#select-dataset){ .md-button }
+    [Next → 5. Validate](../validation/fusion/managed.md){ .md-button  .md-button--primary }
+    </div>
 
 ## Low-Level Fusion
 

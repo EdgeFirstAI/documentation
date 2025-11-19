@@ -89,14 +89,14 @@ Verify the contents of the dataset and the annotations.  Click the button that n
 Clicking on any of these sequences will open individual images in the sequence with the visualizations of the annotations.  For more information please see [viewing datasets](#view-dataset).
 
 
-Datasets that train Fusion models provide annotations of the object's 3D bounding box.  For more information on the dataset annotations, please see the [EdgeFirst Dataset Format](../format.md#dataset-annotation-format).
+Datasets that train Fusion models provide annotations of the object's 3D bounding box.  For more information on the dataset annotations, please see the [EdgeFirst Dataset Format](../format/index.md#dataset-annotation-format).
 
 <figure markdown="span">
 ![Fusion Annotations](../assets/management/fusion-annotations.jpg){ align=center }
 <figcaption>Fusion Annotations</figcaption>
 </figure>
 
-Datasets that train Vision models provide image annotations of the object's 2D bounding box and segmentation mask.  For more information on the dataset annotations, please see the [EdgeFirst Dataset Format](../format.md#dataset-annotation-format).
+Datasets that train Vision models provide image annotations of the object's 2D bounding box and segmentation mask.  For more information on the dataset annotations, please see the [EdgeFirst Dataset Format](../format/index.md#dataset-annotation-format).
 
 <figure markdown="span">
 ![Vision Annotations](../assets/management/vision-annotations.jpg){ align=center }
@@ -113,40 +113,7 @@ For cases where the annotations need corrections, please see [Manual 2D Annotati
 
 The process of combining datasets consists of multiple copy processes on a given dataset container.  To combine datasets, first [create a dataset](#create-dataset) container.  Follow the process for [copying a dataset](#copy-dataset) onto the destination dataset container that was created.  The copy process will copy the selected dataset onto the same dataset container and thus combining multiple datasets.
 
-## Split Dataset
-
-A proper dataset has samples reserved for training and validation.  This tutorial will show how to split the samples in the dataset into training and validation groups.  This operation randomly shuffles the data prior to assigning them to the specified groups. 
-
-!!! warning
-    The dataset needs to be re-split whenever new sample images or frames are added to the dataset.  Newly added samples are not automatically added to any group that already exists. 
-
-Consider the following dataset without any groups reserved.
-
-<figure markdown="span">
-![No Groups](../assets/management/dataset-no-groups.jpg){ align=center }
-<figcaption>No Groups</figcaption>
-</figure>
-
-To create the dataset groups, click on the "+" button in the "Groups" field. 
-
-<figure markdown="span">
-![Add Groups](../assets/management/add-groups-button.jpg){ align=center }
-<figcaption>Add Groups</figcaption>
-</figure>
-
-This will open a new dialog to specify the percentages of the partition belonging to the "Training" group or "Validation" group. By default 80% of the samples will be dedicated to training and 20% remaining will be dedicated towards the validation samples.
-
-<figure markdown="span">
-![Groups Field](../assets/management/groups-field.jpg){ align=center }
-<figcaption>Groups Field</figcaption>
-</figure>
-
-Once the groups are specified, click "Split" to create the groups.  This will automatically divide the samples in the dataset based on the percentages of each group specified.
-
-<figure markdown="span">
-![Dataset Groups](../assets/management/dataset-with-groups.jpg){ align=center }
-<figcaption>Dataset Groups</figcaption>
-</figure>
+{% include-markdown "discrete/datasets/split_dataset.md" %}
 
 ## Export Dataset
 

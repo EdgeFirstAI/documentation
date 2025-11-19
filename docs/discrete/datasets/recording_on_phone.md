@@ -2,7 +2,7 @@
     It is recommended to use a phone connected to a Wifi network. A device connected to mobile data might be subject to intense usage when uploading files; video files or image files can be large in size. In the examples below, the video file used was ~15MB and the image files were ~2MB each.
 
 # Record Video
-Using a smartphone, you can record a video with the camera application as shown below.  Typically, the video recording can be started by pressing the red circular button. The video can be stopped by pressing the same button again. 
+Using a smartphone, try to record a 30 second or more video with the camera application showing various orientations of coffee cups.  Typically, the video recording can be started by pressing the red circular button. The video can be stopped by pressing the same button again. 
 
 <figure markdown="span">
 ![Mobile Video Capture](../../datasets/assets/capture/mobile-video-capture.jpg){ align=center }

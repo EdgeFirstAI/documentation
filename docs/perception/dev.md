@@ -2,7 +2,7 @@
 
 This is the EdgeFirst Developer's Guide.  In this guide we will walk you through the API behind the EdgeFirst Middleware, before reading this guide you should be familiar with the general architecture of the middleware so you can understand how the services fit together and the topics that bind them.
 
-The examples can all be run on a device running the EdgeFirst Middleware or from a remote platform, such as a PC running Windows, Mac, or Linux.  If running these examples remotely make sure you have correctly enabled the `zenohd` router on the target device running the EdgeFirst Middleware.
+The examples can all be run on a device running the EdgeFirst Middleware or from a remote platform, such as a PC running Windows, Mac, or Linux.  If running these examples remotely make sure you have correctly enabled the `zenohd` router on the target device running the EdgeFirst Middleware. When running the samples on the device, the topics will be discovered automatically.
 
 !!! tip Enable Zenohd Router
 

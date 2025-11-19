@@ -1,6 +1,6 @@
 # Validate Vision Model
 
-Now that you have trained a Vision model, you can now start validating your Vision model.  This will briefly show the steps for validating a model, but for an in depth tutorial, please see [Validating ModelPack](../../models/modelpack/validation/managed.md).
+Now that you have trained a Vision model, you can now start validating your Vision model.  This will briefly show the steps for validating a model, but for an in depth tutorial, please see [Validating Vision Models](../../models/validation/vision/managed.md).
 
 On the train session card, expand the session details.
 
@@ -22,6 +22,10 @@ Specify the name of the validation session and the model and the dataset for val
 ![Start Validation Session](../../models/assets/validation/vision-validate-settings.jpg){ align=center }
 <figcaption>Start Validation Session</figcaption>
 </figure>
+
+!!! warning "No Datasets Available"
+
+    In case there are no datasets visible on the dropdown.  Please refresh your browser.
 
 The validation session progress will appear in the "Validation" page as shown below.
 

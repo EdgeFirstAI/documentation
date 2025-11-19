@@ -42,12 +42,16 @@ In my current setup, I have selected "My Files" from the options above and then 
 <figcaption>Android File Manager</figcaption>
 </figure>
 
-Once the video file has been selected, set the desired FPS (frames per second), and then go ahead and click the "Start Import" button to start importing the video file. 
+Once the video file has been selected, the FPS (frames per second) is then set to 1 by default, however you can specify this to your desired FPS.  Finally, go ahead and click the "Start Import" button to start importing the video file. 
 
 <figure markdown="span">
 ![Import Fields](../../datasets/assets/capture/mobile-video-import-fields.jpg){ align=center }
 <figcaption>Import Fields</figcaption>
 </figure>
+
+!!! warning "Import Duration"
+
+    Importing a 30 second video could take up to 6 minutes.
 
 This will start the import process and once it is completed, you should see the number of images in the dataset increased.  If you do not see any changes, refresh the browser. 
 

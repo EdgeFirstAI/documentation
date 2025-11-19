@@ -14,7 +14,7 @@ To upload an MCAP Recording into EdgeFirst Studio, first [login][login] to EdgeF
 Once you are in the "Data Snapshots" page, upload the recorded MCAP by clicking "From File" which opens a new window dialog for selecting the MCAP downloaded in your PC.
 
 !!! note "EdgeFirst Datasets"
-    You can also drag and drop [EdgeFirst Datasets](../../datasets/format.md) Zip and Arrow files in the "Data Snapshots".
+    You can also drag and drop [EdgeFirst Datasets](../../datasets/format/index.md) Zip and Arrow files in the "Data Snapshots".
 
 <figure markdown="span">
 ![Upload MCAP](../../datasets/assets/capture/mcap-upload.jpg){ align=center }

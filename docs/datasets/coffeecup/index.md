@@ -58,4 +58,4 @@ The dataset contains a total of 1399 images and one class.
 
 ## License
 
-TBA
+{% include-markdown "discrete/datasets/au-zone_license.md" %}

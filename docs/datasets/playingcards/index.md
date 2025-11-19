@@ -1,6 +1,6 @@
 # Playing Cards Dataset
 
-Playing Cards is an experimental object detection dataset developed at Au-Zone Technologies to evaluate embedded models in indoor scenarios. 
+The Playing Cards dataset is an experimental object detection dataset developed at Au-Zone Technologies to evaluate embedded models in indoor scenarios. 
 
 ## Object Detection Benchmark (50 epochs)
 
@@ -59,4 +59,4 @@ It contains 1,476 images in total and 13 classes.
 
 ## License
 
-TBA
+{% include-markdown "discrete/datasets/au-zone_license.md" %}

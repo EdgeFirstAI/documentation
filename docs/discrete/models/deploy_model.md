@@ -15,7 +15,7 @@ Once you have validated your trained model, take a look at examples of deploying
 If you wish to run validation on device, please follow instructions below.
 
 <div style="max-width: fit-content; margin-left: auto; margin-right: auto;" markdown="1">
-[instructions for On Target Validation](../../models/validation/vision/user_managed.md){ .md-button }
+[Instructions for On Target Validation](../../models/validation/vision/user_managed.md){ .md-button }
 </div>
 
 !!! note "Additional Platforms"

@@ -47,6 +47,10 @@ Follow the settings indicated and keep the rest of the settings by their default
 <figcaption>Start Training Session</figcaption>
 </figure>
 
+!!! warning "No Datasets Available"
+
+    In case there are no datasets visible on the dropdown (3).  Please refresh your browser.
+
 The session progress will be shown like the following below.
 
 <figure markdown="span">

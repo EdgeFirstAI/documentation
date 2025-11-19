@@ -5,7 +5,7 @@ This tutorial will show the steps for running validation on target.  This type o
 Another type of validation is the [On Cloud Validation](managed.md) which is hosted as a managed validation session in EdgeFirst Studio.  A managed validation session creates an EC2 server to deploy the model for validation.
 
 !!! info "i.MX 95 Validation"
-    To deploy TFLite models in the i.MX 95, first [convert the models using eIQ's Neutron Converter](../../custom/neutron.md) prior to deploying the model in the platform.  This modifies the model's architecture to allow deployment using the device's Neutron NPU delegate.
+    To deploy TFLite models in the i.MX 95, first [convert the models using eIQ's Neutron Converter](../../ultralytics/neutron.md) prior to deploying the model in the platform.  This modifies the model's architecture to allow deployment using the device's Neutron NPU delegate.
 
 {% include-markdown "discrete/studio/create_mpk_validation_session.md" %}
 

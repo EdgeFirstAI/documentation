@@ -6,6 +6,7 @@ Run the script using `python run-onnx.py path/to/model.onnx path/to/*.jpg --labe
 
 import os
 import time
+import glob
 import argparse
 
 import numpy as np
@@ -244,6 +245,9 @@ if __name__ == '__main__':
     else:
         labels = args.labels
     nc = len(labels)  # number of classes
+
+    if len(args.images) == 1:
+        args.images = glob.glob(args.images[0])
 
     for image_path in args.images:
         image, size = get_input(image_path, inputs)

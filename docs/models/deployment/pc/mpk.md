@@ -1,6 +1,8 @@
 # Deploying ModelPack in the PC
  
-If you have an ONNX or a TFLite ModelPack model file, you can follow these instructions for running the model on your PC using a simple Python script.  This script will load the model for inference across multiple images and saves the images with visualizations in your PC.
+If you have an ONNX or a TFLite ModelPack model file, you can follow these instructions for running the model on your PC.  You will need [Python 3.10](https://www.python.org/downloads/) to run this example. 
+
+If you have an ONNX model, download the [run-onnx.py Python script](../assets/run-onnx.py){: download="run-onnx.py"}.  Otherwise, if you have a TFLite model, download the [run-tflite.py Python script](../assets/run-tflite.py){: download="run-tflite.py"}.  These scripts will load the model for inference across multiple images and saves the images with visualizations in your PC.  Run the scripts with the steps shown below. 
 
 As mentioned under [Quickstart -> Train a Vision Model](../../../getting_started/train_vision.md), you can find the trained model artifacts (.onnx or .tflite) in the training session details which you can then download into your PC.
 
@@ -9,8 +11,6 @@ As mentioned under [Quickstart -> Train a Vision Model](../../../getting_started
 | ![session](../../../models/assets/training/vision-session-details.jpg) | ![artifacts](../../../models/assets/training/vision-session-artifacts.jpg) | 
 
 For this Python script you will need a set of images and a model file.  You can click on the following link and download these [set of images with coffee cup samples](../assets/coffeecup.zip){: download="coffeecup.zip"}.  Once downloaded, unzip the file into a directory.  Next download a sample [ONNX](../assets/coffeecup-modelpack-multitask-t-1f54.onnx){: download="coffeecup-modelpack-multitask-t-1f54.onnx"} or [TFLite](../assets/coffeecup-modelpack-multitask-t-1f54.tflite){: download="coffeecup-modelpack-multitask-t-1f54.tflite"} model to run the following examples.
-
-If you have an ONNX model, download the [run-onnx.py Python script](../assets/run-onnx.py){: download="run-onnx.py"}.  Otherwise, if you have a TFLite model, download the [run-tflite.py Python script](../assets/run-tflite.py){: download="run-tflite.py"}.  Run the scripts with the steps shown below. 
 
 1. Install required dependencies.
 
@@ -56,10 +56,10 @@ If you have an ONNX model, download the [run-onnx.py Python script](../assets/ru
 
     === "ONNX"
 
-        If you have downloaded the sample images and the ONNX model above, run this command to use the script.  Otherwise modify the path to the model and the images specific to your system. 
+        If you have downloaded the sample images and the ONNX model above, run this command to use the script.  Otherwise modify the path to the model and the images specific to your system.  If you have multiple labels in your dataset specify them as `--labels bench coco` for example.
 
         ```shell
-        $ python run-onnx.py coffeecup-modelpack-multitask-t-1f54.onnx coffeecup/*.jpg
+        $ python run-onnx.py coffeecup-modelpack-multitask-t-1f54.onnx coffeecup/*.jpg --labels coffeecup
         2025-11-18 13:39:07.683129404 [W:onnxruntime:Default, device_discovery.cc:164 DiscoverDevicesForPlatform] GPU device discovery failed: device_discovery.cc:89 ReadFileContents Failed to open file: "/sys/class/drm/card0/device/vendor"
         Using Execution Providers: ['CUDAExecutionProvider', 'CPUExecutionProvider']
         Objects found in image:  20250430_172430_17.jpg
@@ -77,10 +77,10 @@ If you have an ONNX model, download the [run-onnx.py Python script](../assets/ru
 
     === "TFLite"
 
-        If you have downloaded the sample images and the TFLite model above, run this command to use the script.  Otherwise modify the path to the model and the images specific to your system. 
+        If you have downloaded the sample images and the TFLite model above, run this command to use the script.  Otherwise modify the path to the model and the images specific to your system.  If you have multiple labels in your dataset specify them as `--labels bench coco` for example.
 
         ```shell
-        $ python run-tflite.py coffeecup-modelpack-multitask-t-1f54.tflite coffeecup/*.jpg
+        $ python run-tflite.py coffeecup-modelpack-multitask-t-1f54.tflite coffeecup/*.jpg --labels coffeecup
         2025-11-18 14:01:30.182493: I tensorflow/core/platform/cpu_feature_guard.cc:210] This TensorFlow binary is optimized to use available CPU instructions in performance-critical operations.
         To enable the following instructions: AVX2 FMA, in other operations, rebuild TensorFlow with the appropriate compiler flags.
         /home/johns/Repositories/validator/delenv/lib/python3.10/site-packages/tensorflow/lite/python/interpreter.py:457: UserWarning:     Warning: tf.lite.Interpreter is deprecated and is scheduled for deletion in

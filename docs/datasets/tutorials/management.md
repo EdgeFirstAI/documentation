@@ -13,21 +13,9 @@ From the "Projects" page, you can click on the dataset button indicated in red t
 <figcaption>View Datasets</figcaption>
 </figure>
 
-You will now see the datasets contained in the project.  Each dataset has a gallery.  To see the images in the gallery, open the gallery by clicking the gallery button indicated in red.
+You will now see the datasets contained in the project.  Each dataset has a gallery.  
 
-<figure markdown="span">
-![Gallery Button](../assets/management/project-datasets.jpg){ align=center }
-<figcaption>Gallery Button</figcaption>
-</figure>
-
-When clicking the gallery button, you will either see individual [images](../structure.md#image-based) or [sequences](../structure.md#sequence-based).
-
-Sequences contain the following sequence icon !["Sequence Icon"](../../assets/buttons/studio-sequence-icon.jpg) on the lower left of the card.  Clicking on any sequences will provide video playback.  Otherwise individual images do not have this icon on their cards. 
-
-<figure markdown="span">
-![Dataset Sequence](../assets/management/sample-dataset-image.jpg){ align=center }
-<figcaption>Dataset Sequence</figcaption>
-</figure>
+{% include-markdown "discrete/datasets/explore_2d_dataset.md" heading-offset=0 %}
 
 ## Edit Dataset Information
 
@@ -52,7 +40,7 @@ The changes should appear on the dataset card as shown below.
 <figcaption>Edited Info</figcaption>
 </figure>
 
-## Verify Dataset
+## View Fusion Dataset
 
 This tutorial will show an example of a dataset that is ready for training. 
 

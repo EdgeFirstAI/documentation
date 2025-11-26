@@ -13,4 +13,4 @@ The auditing step may require [adding new annotations](../../datasets/tutorials/
 
 Once you have audited the dataset and verified that it's properly annotated, split the dataset into training and validation groups.  
 
-{% include-markdown "discrete/datasets/split_dataset.md" %}
+{% include-markdown "discrete/datasets/split_dataset.md" heading-offset=0 %}

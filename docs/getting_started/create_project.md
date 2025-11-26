@@ -2,19 +2,17 @@ The creation of [projects](../studio/projects.md) is the single most important s
 
 {% include-markdown "discrete/studio/create_project.md" heading-offset=0 %}
 
-The next sections will invite you to follow along the *Web Workflow* -- the end-to-end workflow that demonstrates:  
+The next sections will invite you to follow along the *Tourist Workflow* -- the end-to-end workflow that demonstrates:  
 
-1. recording a video or capturing images using a phone,  
-2. uploading the captured data into EdgeFirst Studio,  
-3. annotating the images, 
-4. auditing the annotations, 
-5. training a model based on the images,  
-6. validating the trained model, and  
-7. deploying the model on the PC. 
+1. copying a public dataset,
+2. exploring the images and annotations of the copied dataset,
+3. training a model based on the copied dataset,  
+4. validating the trained model, and  
+5. deploying the model on the PC. 
 
-This workflow requires only a phone and a PC.  There are other [workflows](workflows/index.md) that support different hardware requirements. 
+This workflow requires only a PC.  There are other [workflows](workflows/index.md) that support different hardware requirements.  If you would like to bring in your own dataset with images captured from your phone, follow the [Web Workflow](workflows/web.md).
 
 <div style="max-width: fit-content; margin-left: auto; margin-right: auto;" markdown="1">
 [Login ← Back](login.md){ .md-button }
-[Next → Capture Data](capture_data.md){ .md-button .md-button--primary .align-right }
+[Next → Copy Dataset](copy_dataset.md){ .md-button .md-button--primary .align-right }
 </div>

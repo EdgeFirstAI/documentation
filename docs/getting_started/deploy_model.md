@@ -8,5 +8,5 @@ In this Quickstart guide, you have created your EdgeFirst Studio account, logged
 
 ## Next Steps
 
-Now that you have reached the end of the QuickStart guide, learn more about [EdgeFirst Studio](../studio/index.md).  Ready for more advanced end-to-end workflows? Follow along the [User Workflows](workflows/index.md) that are tailored towards various hardware requirements and resources available to the user.
+Now that you have reached the end of the Quickstart guide, learn more about [EdgeFirst Studio](../studio/index.md).  Ready for more advanced end-to-end workflows? Follow along the [User Workflows](workflows/index.md) that are tailored towards various hardware requirements and resources available to the user.
 

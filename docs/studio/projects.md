@@ -34,6 +34,8 @@ A project will contain datasets and model experiments.  A model experiment will 
 
 This hierarchy describes the span of deletion of the project attributes.  When a project is deleted, all elements in the project including datasets and model experiments will be deleted.  When a dataset is deleted, only its child element such as auditing tasks will be deleted.  When a model experiment is deleted, only its child elements will be deleted such as training and validation sessions.
 
+## Create Project
+
 {% include-markdown "discrete/studio/create_project.md" %}
 
 ## Delete Project

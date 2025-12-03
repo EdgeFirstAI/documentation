@@ -4,6 +4,6 @@ In this workflow, you will explore recording a video or capturing images using a
 
 {% include-markdown "discrete/workflows/web.md" %}
 
-## Nest Steps
+## Next Steps
 
 Explore more features by following the [Maivin Workflow](maivin.md).

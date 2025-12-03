@@ -95,6 +95,8 @@ For cases where the annotations need corrections, please see [Manual 2D Annotati
 
 {% include-markdown "discrete/datasets/create_dataset_container.md" %}
 
+## Copy Dataset
+
 {% include-markdown "discrete/datasets/copy_dataset.md" %}
 
 ## Combine Datasets

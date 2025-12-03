@@ -1,13 +1,21 @@
 # User Profile
 
-This page provides details on your profile information.  To get started, you can create your profile by [signing up](#sign-up) to EdgeFirst Studio.  Once you have signed up, you can [log in](#log-in) to EdgeFirst Studio.  Once you have logged in, you can see your [profile information](#profile-information) and [make any changes to your profile](#edit-information). 
+This page provides details on your profile information.  To get started, you can create your profile by [signing up](#sign-up) to EdgeFirst Studio.  Once you have signed up, you can [log in](#login) to EdgeFirst Studio.  Once you have logged in, you can see your [profile information](#profile-information) and [make any changes to your profile](#edit-information). 
 
 !!! note
 
     If your profile was created by the admin of your [organization](organization.md), it is recommended to change your password.  There are two methods for changing your password.  The first method is to [edit your password](#change-password) under your profile information.  Otherwise, you can also [forget your password](#forgot-password).
 
+## Sign Up
+
 {% include-markdown "discrete/user/signup.md" %}
+
+## Login
+
 {% include-markdown "discrete/user/login.md" %}
+
+## Forgot Password
+
 {% include-markdown "discrete/user/forget_password.md" %}
 
 ## Profile Information

@@ -20,7 +20,7 @@ You will now see the datasets contained in the project.  Each dataset has a gall
 <figcaption>Gallery Button</figcaption>
 </figure>
 
-When clicking the gallery button, you will either see individual [images](../structure.md#image-based) or [sequences](../structure.md#sequence-based).
+When clicking the gallery button, you will either see individual [images](../format/structure.md#image-based) or [sequences](../format/structure.md#sequence-based).
 
 Sequences contain the following sequence icon !["Sequence Icon"](../../assets/buttons/studio-sequence-icon.jpg) on the lower left of the card.  Clicking on any sequences will provide video playback.  Otherwise individual images do not have this icon on their cards. 
 
@@ -89,14 +89,14 @@ Verify the contents of the dataset and the annotations.  Click the button that n
 Clicking on any of these sequences will open individual images in the sequence with the visualizations of the annotations.  For more information please see [viewing datasets](#view-dataset).
 
 
-Datasets that train Fusion models provide annotations of the object's 3D bounding box.  For more information on the dataset annotations, please see the [EdgeFirst Dataset Format](../format/index.md#dataset-annotation-format).
+Datasets that train Fusion models provide annotations of the object's 3D bounding box.  For more information on the dataset annotations, please see the [EdgeFirst Dataset Format](../format/index.md#annotation-data).
 
 <figure markdown="span">
 ![Fusion Annotations](../assets/management/fusion-annotations.jpg){ align=center }
 <figcaption>Fusion Annotations</figcaption>
 </figure>
 
-Datasets that train Vision models provide image annotations of the object's 2D bounding box and segmentation mask.  For more information on the dataset annotations, please see the [EdgeFirst Dataset Format](../format/index.md#dataset-annotation-format).
+Datasets that train Vision models provide image annotations of the object's 2D bounding box and segmentation mask.  For more information on the dataset annotations, please see the [EdgeFirst Dataset Format](../format/index.md#annotation-data).
 
 <figure markdown="span">
 ![Vision Annotations](../assets/management/vision-annotations.jpg){ align=center }

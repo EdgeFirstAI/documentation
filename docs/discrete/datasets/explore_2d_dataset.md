@@ -12,6 +12,6 @@ Click on the ![Dataset Gallery button](../../assets/buttons/studio-gallery-butto
 <figcaption>Sequences and Images</figcaption>
 </figure>
 
-This dataset will contain both [sequences](../../datasets/structure.md#sequence-based) (videos) ![Sequences](../../assets/buttons/studio-sequence-icon.jpg) and images.  Clicking on the sequences will provide video playback.  Otherwise, clicking on images will expand the image view.
+This dataset will contain both [sequences](../../datasets/format/structure.md#sequence-based) (videos) ![Sequences](../../assets/buttons/studio-sequence-icon.jpg) and images.  Clicking on the sequences will provide video playback.  Otherwise, clicking on images will expand the image view.
 
 This dataset will have a complete set of 2D annotations (masks and bounding boxes) of coffee cups.  This dataset was quickly annotated using the [Automatic Ground Truth Generatation (AGTG) feature in EdgeFirst Studio](../../studio/agtg.md).

@@ -45,7 +45,8 @@ EdgeFirst metadata provides complete traceability through these key fields:
 
 | Field | Location | Purpose |
 |-------|----------|---------|
-| `studio_server` | `host.studio_server` | Which [EdgeFirst Studio](../studio/index.md) instance (dev, test, stage, saas) |
+| `studio_server` | `host.studio_server` | Full hostname of [EdgeFirst Studio](../studio/index.md) instance (e.g., test.edgefirst.studio) |
+| `project_id` | `host.project_id` | Project ID for constructing Studio URLs |
 | `session_id` | `host.session` | [Training session](../studio/models.md#training-sessions) ID for accessing logs, metrics, artifacts |
 | `dataset_id` | `dataset.id` | [Dataset](../datasets/index.md) identifier for reproducing training data |
 | `dataset` | `dataset.name` | Human-readable dataset name |
@@ -59,12 +60,22 @@ Given a deployed model, you can trace back to its origins:
 metadata = get_edgefirst_metadata(model_path)
 
 # Construct EdgeFirst Studio URLs
-server = metadata['host']['studio_server']  # e.g., 'saas'
-session = metadata['host']['session']       # e.g., 't-abc123'
-dataset_id = metadata['dataset']['id']      # e.g., 'ds-xyz789'
+studio_server = metadata['host']['studio_server']  # e.g., 'test.edgefirst.studio'
+project_id = metadata['host']['project_id']        # e.g., '1123'
+session = metadata['host']['session']              # e.g., 't-2110'
+dataset_id = metadata['dataset']['id']             # e.g., 'ds-1c8'
 
-# Access training session: https://{server}.edgefirst.ai/training/{session}
-# Access dataset: https://{server}.edgefirst.ai/datasets/{dataset_id}
+# Note: Studio URL parameters require integer IDs. Metadata stores hex values
+# with prefixes (t-, ds-). Convert by stripping the prefix and parsing as hex:
+#   't-2110' -> int('2110', 16) -> 8464
+#   'ds-1c8' -> int('1c8', 16)  -> 456
+
+# Access training session: https://{studio_server}/{project_id}/experiment/training/details?train_session_id={session_int}
+# Example: https://test.edgefirst.studio/1123/experiment/training/details?train_session_id=8464
+
+# Access dataset: https://{studio_server}/{project_id}/datasets/gallery/main?dataset={dataset_int}
+# Example: https://test.edgefirst.studio/1123/datasets/gallery/main?dataset=456
+
 # View training logs, metrics, and original configuration
 ```
 
@@ -197,7 +208,8 @@ The EdgeFirst metadata schema is organized into logical sections. All sections a
 ```yaml
 # Traceability & Identification
 host:
-  studio_server: string    # EdgeFirst Studio server (dev/test/stage/saas)
+  studio_server: string    # Full EdgeFirst Studio hostname (e.g., test.edgefirst.studio)
+  project_id: string       # Project ID for Studio URLs
   session: string          # Training session ID
   username: string         # User who initiated training
 
@@ -213,7 +225,7 @@ author: string             # Organization (typically "Au-Zone Technologies")
 
 # Model Configuration (see ModelPack and Ultralytics documentation)
 input:
-  size: string             # Input resolution as "WIDTHxHEIGHT"
+  shape: [int]           # Input tensor shape (NCHW or NHWC depending on model)
   color_adaptor: string    # Color format (rgb, rgba, yuyv)
 
 model:
@@ -246,8 +258,11 @@ augmentation:  # See Vision Augmentations documentation
   # ... additional augmentation parameters
 
 validation:
-  validation_iou: float    # NMS IoU threshold
-  validation_threshold: float  # NMS score threshold
+  iou: float               # NMS IoU threshold
+  score: float             # NMS score threshold
+  normalization: string    # Input normalization (unsigned, signed)
+  preprocessing: string    # Preprocessing method (resize, letterbox)
+  skip_validation_steps: int  # Steps to skip between validations
 
 export:  # See Quantization documentation for ModelPack and Ultralytics
   export: boolean          # Whether model was quantized
@@ -448,9 +463,11 @@ The metadata's `outputs` section reports shapes in the model's native format. Wh
 
 ```yaml
 input:
-  size: "640x640"        # Width x Height (always WxH regardless of layout)
-  color_adaptor: rgb     # Channel order (rgb, bgr, yuyv)
-  # Data layout is implicit: TFLite=NHWC, ONNX=NCHW
+  shape: [1, 640, 640, 3]  # Input tensor shape (layout varies by model)
+  color_adaptor: rgb       # Channel order (rgb, bgr, yuyv)
+  # Common layouts:
+  # - NHWC: [batch, height, width, channels] e.g., [1, 640, 640, 3]
+  # - NCHW: [batch, channels, height, width] e.g., [1, 3, 640, 640]
 
 outputs:
   - name: "output_0"
@@ -470,8 +487,9 @@ Models expect input images at the resolution specified in metadata. How images a
 
 ```yaml
 input:
-  size: "640x640"        # Target dimensions (width x height)
-  color_adaptor: rgb     # Expected color format
+  shape: [1, 640, 640, 3]  # NHWC example: [batch, height, width, channels]
+  # shape: [1, 3, 640, 640]  # NCHW example: [batch, channels, height, width]
+  color_adaptor: rgb       # Expected color format
 ```
 
 **Native Aspect Ratio (typical for purpose-built datasets):**
@@ -673,7 +691,8 @@ Custom metadata properties (all string values):
 | `name` | Model name | Quick access (no JSON parsing) |
 | `description` | Model description | Quick access |
 | `author` | Author/organization | Quick access |
-| `studio_server` | Server name | Quick access for traceability |
+| `studio_server` | Full hostname | Quick access for traceability |
+| `project_id` | Project ID | Quick access for traceability |
 | `session_id` | Session ID | Quick access for traceability |
 | `dataset` | Dataset name | Quick access |
 | `dataset_id` | Dataset ID | Quick access for traceability |
@@ -691,7 +710,7 @@ For basic [EdgeFirst Perception](../perception/index.md) stack compatibility:
 
 ```yaml
 input:
-  size: "640x640"
+  shape: [1, 640, 640, 3]  # Input tensor shape (NHWC or NCHW)
   color_adaptor: rgb
 
 model:
@@ -718,8 +737,9 @@ For production MLOps integration with [EdgeFirst Studio](../studio/index.md):
 
 ```yaml
 host:
-  studio_server: saas
-  session: t-abc123
+  studio_server: test.edgefirst.studio
+  project_id: "1123"
+  session: t-2110              # Hex value, convert to int for URLs
 
 dataset:
   name: "My Dataset"
@@ -801,6 +821,7 @@ def add_edgefirst_metadata(onnx_path: str, config: dict, labels: List[str]):
         'description': config.get('description', ''),
         'author': config.get('author', ''),
         'studio_server': config.get('host', {}).get('studio_server', ''),
+        'project_id': str(config.get('host', {}).get('project_id', '')),
         'session_id': config.get('host', {}).get('session', ''),
         'dataset': config.get('dataset', {}).get('name', ''),
         'dataset_id': str(config.get('dataset', {}).get('id', '')),
@@ -865,10 +886,17 @@ The host section identifies the [EdgeFirst Studio](../studio/index.md) instance 
 
 ```yaml
 host:
-  studio_server: test    # EdgeFirst Studio server identifier
-  session: t-abc123      # Training session ID (prefix: t-)
-  username: john.doe     # User who initiated training
+  studio_server: test.edgefirst.studio  # Full EdgeFirst Studio hostname
+  project_id: "1123"                    # Project ID for Studio URLs
+  session: t-2110                       # Training session ID (hex, prefix t-)
+  username: john.doe                    # User who initiated training
 ```
+
+!!! note "Converting IDs for Studio URLs"
+    Session and dataset IDs in metadata use hexadecimal values with prefixes (`t-` for training sessions, `ds-` for datasets). To construct Studio URLs, strip the prefix and convert from hex to decimal:
+    
+    - `t-2110` → `int('2110', 16)` → `8464`
+    - `ds-1c8` → `int('1c8', 16)` → `456`
 
 ### Dataset Section
 
@@ -900,12 +928,12 @@ The input section specifies image preprocessing requirements. See [Vision Augmen
 
 ```yaml
 input:
-  size: "640x640"        # Width x Height
-  color_adaptor: rgb     # rgb, rgba, yuyv, bgr
-  # Note: Data layout is format-dependent
-  # - TFLite: NHWC [batch, height, width, channels]
-  # - ONNX: NCHW [batch, channels, height, width]
+  shape: [1, 640, 640, 3]  # Input tensor shape
+  color_adaptor: rgb       # rgb, rgba, yuyv, bgr
 ```
+
+!!! note "Data Layout"
+    The `shape` field uses the model's native tensor layout. This can be either NHWC `[batch, height, width, channels]` or NCHW `[batch, channels, height, width]` depending on how the model was exported. While TFLite typically uses NHWC and ONNX typically uses NCHW, both formats can support either layout — always check the actual shape values.
 
 ### Model Section
 

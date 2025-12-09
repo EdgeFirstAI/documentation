@@ -497,8 +497,6 @@
       
         
       
-        
-      
     
     
     
@@ -593,7 +591,7 @@
   <span class="md-ellipsis">
     
   
-    Create project
+    Create Project
   
 
     
@@ -614,14 +612,14 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../getting_started/capture_data/" class="md-nav__link">
+      <a href="../../../../getting_started/copy_dataset/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    Capture with a Phone
+    Copy Dataset
   
 
     
@@ -642,42 +640,14 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../getting_started/annotate_dataset/" class="md-nav__link">
+      <a href="../../../../getting_started/explore_dataset/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    Annotate Dataset
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../../getting_started/audit_dataset/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Audit Dataset
+    Explore dataset
   
 
     
@@ -705,7 +675,7 @@
   <span class="md-ellipsis">
     
   
-    Train a Vision Model
+    Train Vision Model
   
 
     
@@ -807,7 +777,7 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_10" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_9" >
         
           
           <div class="md-nav__link md-nav__container">
@@ -829,14 +799,14 @@
             </a>
             
               
-              <label class="md-nav__link " for="__nav_2_10" id="__nav_2_10_label" tabindex="0">
+              <label class="md-nav__link " for="__nav_2_9" id="__nav_2_9_label" tabindex="0">
                 <span class="md-nav__icon md-icon"></span>
               </label>
             
           </div>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_10_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_2_10">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_9_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_9">
             <span class="md-nav__icon md-icon"></span>
             
   
@@ -7247,6 +7217,12 @@
 <figcaption>Validation Session Fields</figcaption>
 </figure>
 <p>Once the configurations have been made, go ahead and click on the "Start Session" button on the bottom right of the window.  This will create the validation session to track validation progress that will run in the embedded platform. </p>
+<p>The validation session card will appear like the following below.  Each session has a session ID.  Make a note of the session ID circled in red below.  In this case it is <code>v-c1f</code>.</p>
+<figure>
+<img align="center" alt="Validation Session ID" src="../../../assets/validation/user-managed-vision-session-id.jpg" />
+
+<figcaption>Validation Session ID</figcaption>
+</figure>
 <h2 id="session-progress">Session Progress</h2>
 <p>Once the validation session has been created, <a href="../../../../platforms/ssh/">SSH</a> into the platform and install the following dependencies. </p>
 <div class="admonition warning">
@@ -7276,7 +7252,7 @@ prior to running the pip installations below.  Append <code>--system-site-packag
 <p class="admonition-title">EdgeFirst Studio Token</p>
 <p>Once logged in, an EdgeFirst Studio Token will be saved under <code>~/.config/edgefirststudio/token</code> granting access to the EdgeFirst Studio API which will remain valid for a period of time, usually 12 hours. Using this token will refresh the expiration timer. </p>
 </div>
-<p>Once the validator is installed and authenticated, run validation using the following command.</p>
+<p>Once the validator is installed and authenticated, run validation using the following command.  Replace the session ID specific to your session card.</p>
 <div class="highlight"><pre><span></span><code>edgefirst-validator<span class="w"> </span>--session-id<span class="w"> </span>v-c1f
 </code></pre></div>
 <div class="admonition note">

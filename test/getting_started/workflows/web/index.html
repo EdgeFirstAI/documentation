@@ -499,8 +499,6 @@
       
         
       
-        
-      
     
     
     
@@ -598,7 +596,7 @@
   <span class="md-ellipsis">
     
   
-    Create project
+    Create Project
   
 
     
@@ -619,14 +617,14 @@
   
   
     <li class="md-nav__item">
-      <a href="../../capture_data/" class="md-nav__link">
+      <a href="../../copy_dataset/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    Capture with a Phone
+    Copy Dataset
   
 
     
@@ -647,42 +645,14 @@
   
   
     <li class="md-nav__item">
-      <a href="../../annotate_dataset/" class="md-nav__link">
+      <a href="../../explore_dataset/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    Annotate Dataset
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../audit_dataset/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Audit Dataset
+    Explore dataset
   
 
     
@@ -710,7 +680,7 @@
   <span class="md-ellipsis">
     
   
-    Train a Vision Model
+    Train Vision Model
   
 
     
@@ -814,7 +784,7 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_10" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_9" checked>
         
           
           <div class="md-nav__link md-nav__container">
@@ -836,14 +806,14 @@
             </a>
             
               
-              <label class="md-nav__link " for="__nav_2_10" id="__nav_2_10_label" tabindex="0">
+              <label class="md-nav__link " for="__nav_2_9" id="__nav_2_9_label" tabindex="0">
                 <span class="md-nav__icon md-icon"></span>
               </label>
             
           </div>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_10_label" aria-expanded="true">
-          <label class="md-nav__title" for="__nav_2_10">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_9_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2_9">
             <span class="md-nav__icon md-icon"></span>
             
   
@@ -1069,10 +1039,9 @@
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Audit Dataset">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
+</li>
+      
+        <li class="md-nav__item">
   <a href="#split-dataset" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -1082,17 +1051,12 @@
   </a>
   
 </li>
-        
-      </ul>
-    </nav>
-  
-</li>
       
         <li class="md-nav__item">
-  <a href="#train-a-vision-model" class="md-nav__link">
+  <a href="#train-vision-model" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Train a Vision Model
+        Train Vision Model
       
     </span>
   </a>
@@ -1122,10 +1086,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#nest-steps" class="md-nav__link">
+  <a href="#next-steps" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Nest Steps
+        Next Steps
       
     </span>
   </a>
@@ -7206,10 +7170,9 @@
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Audit Dataset">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
+</li>
+      
+        <li class="md-nav__item">
   <a href="#split-dataset" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -7219,17 +7182,12 @@
   </a>
   
 </li>
-        
-      </ul>
-    </nav>
-  
-</li>
       
         <li class="md-nav__item">
-  <a href="#train-a-vision-model" class="md-nav__link">
+  <a href="#train-vision-model" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Train a Vision Model
+        Train Vision Model
       
     </span>
   </a>
@@ -7259,10 +7217,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#nest-steps" class="md-nav__link">
+  <a href="#next-steps" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Nest Steps
+        Next Steps
       
     </span>
   </a>
@@ -7559,7 +7517,7 @@
 </figure>
 <p>The auditing step may require <a href="../../../datasets/tutorials/annotations/manual/#add-2d-annotations">adding new annotations</a> for objects that were missed during the AGTG process.  Or it may require <a href="../../../datasets/tutorials/annotations/manual/#delete-2d-annotations">removing annotations</a> for objects that were improperly annotated.  Lastly, for annotations that require minor adjustments, EdgeFirst Studio has the features for <a href="../../../datasets/tutorials/annotations/manual/#adjust-2d-annotations">adjusting annotations</a>.  Please click on the links as provided for further instructions on each of these features.</p>
 <p>Once you have audited the dataset and verified that it's properly annotated, split the dataset into training and validation groups.  </p>
-<h3 id="split-dataset">Split Dataset</h3>
+<h2 id="split-dataset">Split Dataset</h2>
 <p>Partitioning the dataset is crucial in reserving dataset portions used for training and portions used for validation to assess the performance of the model.  In EdgeFirst Studio, the partitions are 80% towards training and 20% towards validation.  This operation randomly shuffles the data prior to assigning them to the specified groups. </p>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
@@ -7589,7 +7547,7 @@
 
 <figcaption>Dataset Groups</figcaption>
 </figure>
-<h2 id="train-a-vision-model">Train a Vision Model</h2>
+<h2 id="train-vision-model">Train Vision Model</h2>
 <p>Now that you have a fully annotated dataset that is split into training and validation samples, you can start training a Vision model.  This will briefly show the steps for training a model, but for an in depth tutorial, please see <a href="../../../models/training/vision/">Training Vision Models</a>.</p>
 <p>Navigate back to the "Projects" page.  You can go back to the "Projects" page by clicking the Apps Menu waffle button on the top right of the Navigation bar.  Click the first selection to take you to the "Projects page".</p>
 <figure>
@@ -7716,7 +7674,7 @@
 <figcaption>Validation Charts</figcaption>
 </figure>
 <h2 id="deploy-the-model">Deploy the Model</h2>
-<p>Once you have validated your trained model, take a look at examples of deploying this model across different platforms.  You can find a checklist of supported devices.  We support validation on specific targets and applications for live video inference.  Certain platforms are still under development. </p>
+<p>Once you have validated your trained model, take a look at examples of deploying this model across different platforms.  You can find a checklist of supported devices.  We support <a href="../../../models/validation/vision/user_managed/">validation on specific targets</a> and applications for live video inference with links provided below.  </p>
 <table>
 <thead>
 <tr>
@@ -7771,15 +7729,11 @@
 </tr>
 </tbody>
 </table>
-<p>If you wish to run validation on device, please follow instructions below.</p>
-<div style="max-width: fit-content; margin-left: auto; margin-right: auto;">
-<p><a class="md-button" href="../../../models/validation/vision/user_managed/">Instructions for On Target Validation</a></p>
-</div>
 <div class="admonition note">
 <p class="admonition-title">Additional Platforms</p>
-<p>Support for additional platforms beyond these listed will be available soon.  <a href="mailto:support@edgefirst.ai">Let us know</a> which platform you'd like to see supported next!</p>
+<p>Certain platforms are still under development and support for platforms beyond these listed will be available soon.  <a href="mailto:support@edgefirst.ai">Let us know</a> which platform you'd like to see supported next!</p>
 </div>
-<h2 id="nest-steps">Nest Steps</h2>
+<h2 id="next-steps">Next Steps</h2>
 <p>Explore more features by following the <a href="../maivin/">Maivin Workflow</a>.</p>
 
 

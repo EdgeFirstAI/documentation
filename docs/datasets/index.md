@@ -64,7 +64,26 @@ The EdgeFirst Studio Dataset Zoo provides commercially clean public EdgeFirst Da
     📬 If you need support for additional datasets,
     please do not hesitate and [email our support team](mailto:support@edgefirst.ai) — we’re here to help!
 
-The [EdgeFirst Dataset Format](format/index.md) is purposely designed to efficiently store multiple annotation types and sensor types.  There are 2D and 3D types of annotations that correlate with each other. For example, a 2D annotation is a set of pixel-based bounding boxes and segmentation masks whereas a 3D annotation is a set of 3D bounding boxes in meters.  However, a single object can be described by all three linked annotation types: a 2D bounding box, a 2D mask, and a 3D bounding box.  There could be multiple sensors involved in creating the dataset such as the camera, Radar and/or LiDAR, etc.  The readings from these sensors is rarely modified and needs to be disinguished in the dataset.  Thus, the EdgeFirst Dataset is known for its file pairs (typically Zip and Arrow) for storing the sensor data and annotations separately.  The [EdgeFirst Dataset File Structure](structure.md) comes in various forms depending if the data is a sequence or not. 
+The [EdgeFirst Dataset Format](format/index.md) is purposely designed to efficiently store multiple annotation types and sensor types.
+
+## Format Quick Reference
+
+| Component | Contents | Purpose |
+|-----------|----------|---------|
+| **ZIP file** | Images, point clouds, sensor data | Raw captured data organized by sequence/frame |
+| **Arrow file** | Annotations, labels, metadata | Efficient columnar storage for ML training |
+
+This format is used throughout EdgeFirst Studio:
+
+- **[Snapshots](../studio/snapshots.md)**: Portable ZIP+Arrow pairs for download and sharing
+- **[MCAP uploads](../platforms/publishing.md)**: Converted to this format when restored as datasets
+- **[Training](../models/training/vision.md)**: Arrow annotations feed directly into model training
+
+Learn more in the [Format Documentation](format/index.md).
+
+---
+
+There are 2D and 3D types of annotations that correlate with each other. For example, a 2D annotation is a set of pixel-based bounding boxes and segmentation masks whereas a 3D annotation is a set of 3D bounding boxes in meters.  However, a single object can be described by all three linked annotation types: a 2D bounding box, a 2D mask, and a 3D bounding box.  There could be multiple sensors involved in creating the dataset such as the camera, Radar and/or LiDAR, etc.  The readings from these sensors is rarely modified and needs to be distinguished in the dataset.  Thus, the EdgeFirst Dataset is known for its file pairs (typically Zip and Arrow) for storing the sensor data and annotations separately.  The [EdgeFirst Dataset File Structure](format/structure.md) comes in various forms depending if the data is a sequence or not. 
 
 ## Related Articles
 

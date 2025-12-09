@@ -919,7 +919,7 @@ host:
 
 ### Dataset Section
 
-The dataset section references the [dataset](../datasets/index.md) used for training. See the [Dataset Zoo](../datasets/index.md) for available datasets and [Dataset Structure](../datasets/structure.md) for format details.
+The dataset section references the [dataset](../datasets/index.md) used for training. See the [Dataset Zoo](../datasets/index.md) for available datasets and [Dataset Structure](../datasets/format/index.md) for format details.
 
 ```yaml
 dataset:

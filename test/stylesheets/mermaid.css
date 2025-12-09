@@ -1,0 +1,10 @@
+/* Scale Mermaid diagrams to 75% for better readability */
+.mermaid {
+  display: flex;
+  justify-content: center;
+}
+
+.mermaid svg {
+  max-width: 75%;
+  height: auto;
+}

@@ -86,8 +86,9 @@ TFLite models are ZIP-format files containing embedded `edgefirst.yaml` and `lab
 ```python
 import zipfile
 import yaml
+from typing import Optional, List
 
-def get_edgefirst_metadata(model_path: str) -> dict | None:
+def get_edgefirst_metadata(model_path: str) -> Optional[dict]:
     """Extract EdgeFirst metadata from a TFLite model."""
     if not zipfile.is_zipfile(model_path):
         return None
@@ -105,7 +106,7 @@ def get_edgefirst_metadata(model_path: str) -> dict | None:
                         return yaml.safe_load(content)
     return None
 
-def get_labels(model_path: str) -> list[str]:
+def get_labels(model_path: str) -> List[str]:
     """Extract class labels from a TFLite model."""
     if not zipfile.is_zipfile(model_path):
         return []
@@ -126,8 +127,9 @@ ONNX models store metadata directly in the model's custom properties:
 ```python
 import onnx
 import json
+from typing import Optional, List
 
-def get_edgefirst_metadata(model_path: str) -> dict | None:
+def get_edgefirst_metadata(model_path: str) -> Optional[dict]:
     """Extract EdgeFirst metadata from an ONNX model."""
     model = onnx.load(model_path)
     
@@ -136,7 +138,7 @@ def get_edgefirst_metadata(model_path: str) -> dict | None:
             return json.loads(prop.value)
     return None
 
-def get_labels(model_path: str) -> list[str]:
+def get_labels(model_path: str) -> List[str]:
     """Extract class labels from an ONNX model."""
     model = onnx.load(model_path)
     
@@ -734,8 +736,9 @@ author: "My Organization"
 from tensorflow_lite_support.metadata.python.metadata_writers import metadata_writer, writer_utils
 from tensorflow_lite_support.metadata import metadata_schema_py_generated as schema
 import yaml
+from typing import List
 
-def add_edgefirst_metadata(tflite_path: str, config: dict, labels: list[str]):
+def add_edgefirst_metadata(tflite_path: str, config: dict, labels: List[str]):
     """Add EdgeFirst metadata to a TFLite model."""
     
     # Write config and labels to temp files
@@ -767,8 +770,9 @@ def add_edgefirst_metadata(tflite_path: str, config: dict, labels: list[str]):
 ```python
 import onnx
 import json
+from typing import List
 
-def add_edgefirst_metadata(onnx_path: str, config: dict, labels: list[str]):
+def add_edgefirst_metadata(onnx_path: str, config: dict, labels: List[str]):
     """Add EdgeFirst metadata to an ONNX model."""
     
     model = onnx.load(onnx_path)

@@ -86,6 +86,7 @@ TFLite models are ZIP-format files containing embedded `edgefirst.yaml` and `lab
 ```python
 import zipfile
 import yaml
+import json
 from typing import Optional, List
 
 def get_edgefirst_metadata(model_path: str) -> Optional[dict]:
@@ -100,7 +101,6 @@ def get_edgefirst_metadata(model_path: str) -> Optional[dict]:
                 with zf.open(filename) as f:
                     content = f.read().decode('utf-8')
                     if filename.endswith('.json'):
-                        import json
                         return json.loads(content)
                     else:
                         return yaml.safe_load(content)

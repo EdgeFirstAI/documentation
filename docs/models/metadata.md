@@ -303,7 +303,7 @@ Per-pixel classification **without object instances**. Each pixel is assigned a 
 
 **Use cases:**
 
-- Driveable surface detection
+- Drivable surface detection
 - Lane segmentation
 - Sky/ground separation
 - Terrain classification

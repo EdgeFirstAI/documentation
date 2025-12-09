@@ -1,5 +1,3 @@
-# Create Project
-
 1. From the [User Home Page](../../studio/home.md) screen, click the "Go To Projects" button.
 
     <figure markdown="span">

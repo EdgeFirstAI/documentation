@@ -1,5 +1,3 @@
-# Sign Up 
-
 1. If you haven't already created an EdgeFirst Studio Account, start by [creating an account][signup].  If you've already created an account, but you [forget your password](../../studio/user/profile.md#forgot-password), click on the link for instructions to reset your password.
 
 2. When creating your account, enter the required fields denoted by the asterisk (*) and then create your account once completed.

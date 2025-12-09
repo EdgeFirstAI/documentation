@@ -2,9 +2,9 @@
 
 This tutorial describes the steps to train **Vision** models in EdgeFirst Studio.  For a tutorial to train Fusion models, see [Training Fusion Models](fusion.md). 
 
-## Verify Dataset
+## View Dataset
 
-First ensure that the dataset is ready to be used for training.  This means that the dataset is properly annotated and the dataset is properly split into training and validation groups.  The section in [Verify Dataset](../../datasets/tutorials/management.md#verify-dataset) will show what to look for in a dataset before deploying it for training.
+First ensure that the dataset is ready to be used for training.  This means that the dataset is properly annotated and the dataset is properly split into training and validation groups.  The section in [View Dataset](../../datasets/tutorials/management.md#view-dataset) will show what to look for in a dataset before deploying it for training.
 
 ## Specify Project Experiments
 

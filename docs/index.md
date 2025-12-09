@@ -1,6 +1,8 @@
 # Getting Started
 
-Welcome to EdgeFirst Studio!  Follow this Quickstart for user onboarding from start to finish.  If already have an account on EdgeFirst Studio, feel free to skip on to the [login steps](getting_started/login.md).
+Welcome to EdgeFirst Studio!  Follow this Quickstart for user onboarding from start to finish.  If you already have an account on EdgeFirst Studio, feel free to skip on to the [login steps](getting_started/login.md).
+
+## Sign Up
 
 {% include-markdown "discrete/user/signup.md" heading-offset=0 %}
 

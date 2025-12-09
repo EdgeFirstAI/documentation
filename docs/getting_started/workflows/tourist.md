@@ -4,6 +4,6 @@ In this workflow, you will explore copying the Coffee Cup dataset from the Sampl
 
 {% include-markdown "discrete/workflows/tourist.md" %}
 
-## Nest Steps
+## Next Steps
 
 Explore more features by following the [Tourist Plus Workflow](tourist_plus.md).

@@ -18,6 +18,13 @@ You will be greeted with a validation session dialog.  In this dialog, check the
 
 Once the configurations have been made, go ahead and click on the "Start Session" button on the bottom right of the window.  This will create the validation session to track validation progress that will run in the embedded platform. 
 
+The validation session card will appear like the following below.  Each session has a session ID.  Make a note of the session ID circled in red below.  In this case it is `v-c1f`.
+
+<figure markdown="span">
+![Validation Session ID](../../assets/validation/user-managed-vision-session-id.jpg){ align=center }
+<figcaption>Validation Session ID</figcaption>
+</figure>
+
 ## Session Progress
 
 Once the validation session has been created, [SSH](../../../platforms/ssh.md) into the platform and install the following dependencies. 
@@ -50,7 +57,7 @@ edgefirst-client login
 !!! info "EdgeFirst Studio Token"
     Once logged in, an EdgeFirst Studio Token will be saved under `~/.config/edgefirststudio/token` granting access to the EdgeFirst Studio API which will remain valid for a period of time, usually 12 hours. Using this token will refresh the expiration timer. 
 
-Once the validator is installed and authenticated, run validation using the following command.
+Once the validator is installed and authenticated, run validation using the following command.  Replace the session ID specific to your session card.
 
 ```shell
 edgefirst-validator --session-id v-c1f

@@ -1,5 +1,3 @@
-# Forgot Password
-
 If you have an EdgeFirst Studio account, but you forgot your password.  Follow this tutorial for resetting your password.  Visit the [login page][login] and click on the link "Forgot password?" as shown below.
 
 <figure markdown="span">

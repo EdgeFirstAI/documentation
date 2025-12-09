@@ -734,32 +734,38 @@ author: "My Organization"
 from tensorflow_lite_support.metadata.python.metadata_writers import metadata_writer, writer_utils
 from tensorflow_lite_support.metadata import metadata_schema_py_generated as schema
 import yaml
+import tempfile
+import os
 
 def add_edgefirst_metadata(tflite_path: str, config: dict, labels: list[str]):
     """Add EdgeFirst metadata to a TFLite model."""
     
-    # Write config and labels to temp files
-    with open('/tmp/edgefirst.yaml', 'w') as f:
-        yaml.dump(config, f)
-    
-    with open('/tmp/labels.txt', 'w') as f:
-        f.write('\n'.join(labels))
-    
-    # Create model metadata
-    model_meta = schema.ModelMetadataT()
-    model_meta.name = config.get('name', '')
-    model_meta.description = config.get('description', '')
-    model_meta.author = config.get('author', '')
-    
-    # Load and populate
-    tflite_buffer = writer_utils.load_file(tflite_path)
-    writer = metadata_writer.MetadataWriter.create_from_metadata(
-        model_buffer=tflite_buffer,
-        model_metadata=model_meta,
-        associated_files=['/tmp/labels.txt', '/tmp/edgefirst.yaml']
-    )
-    
-    writer_utils.save_file(writer.populate(), tflite_path)
+    # Write config and labels to temp files in a cross-platform way
+    with tempfile.TemporaryDirectory() as tmpdir:
+        config_path = os.path.join(tmpdir, 'edgefirst.yaml')
+        labels_path = os.path.join(tmpdir, 'labels.txt')
+
+        with open(config_path, 'w') as f:
+            yaml.dump(config, f)
+
+        with open(labels_path, 'w') as f:
+            f.write('\n'.join(labels))
+
+        # Create model metadata
+        model_meta = schema.ModelMetadataT()
+        model_meta.name = config.get('name', '')
+        model_meta.description = config.get('description', '')
+        model_meta.author = config.get('author', '')
+
+        # Load and populate
+        tflite_buffer = writer_utils.load_file(tflite_path)
+        writer = metadata_writer.MetadataWriter.create_from_metadata(
+            model_buffer=tflite_buffer,
+            model_metadata=model_meta,
+            associated_files=[labels_path, config_path]
+        )
+
+        writer_utils.save_file(writer.populate(), tflite_path)
 ```
 
 ### Embedding Metadata in ONNX

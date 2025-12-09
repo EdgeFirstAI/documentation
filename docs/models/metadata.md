@@ -393,6 +393,7 @@ outputs:
 | `num_features` | Feature dimension (box coords + classes + mask coefficients) |
 | `num_boxes` | Number of detection boxes/anchors |
 | `num_protos` | Number of prototype masks (instance segmentation) |
+| `num_anchors_x_features` | Combined anchor and feature dimension for ModelPack grid outputs (anchors × features per anchor) |
 
 ### Decoding Information
 

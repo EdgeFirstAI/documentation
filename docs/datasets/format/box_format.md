@@ -170,9 +170,9 @@ box3d: Array(Float32, shape=(6,))  # [x, y, z, width, height, length]
 | 0 | `x` | Center X in meters |
 | 1 | `y` | Center Y in meters |
 | 2 | `z` | Center Z in meters |
-| 3 | `width` | Width (Y-axis) |
-| 4 | `height` | Height (Z-axis) |
-| 5 | `length` | Length (X-axis) |
+| 3 | `length` | Length (X-axis) |
+| 4 | `width` | Width (Y-axis) |
+| 5 | `height` | Height (Z-axis) |
 
 **Coordinate frame**: ROS convention (X=forward, Y=left, Z=up)
 

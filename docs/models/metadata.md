@@ -753,6 +753,12 @@ author: "My Organization"
 
 ### Embedding Metadata in TFLite
 
+!!! note "Dependencies"
+    This example requires the `tflite-support` and `pyyaml` packages:
+    ```bash
+    pip install tflite-support pyyaml
+    ```
+
 ```python
 from tensorflow_lite_support.metadata.python.metadata_writers import metadata_writer, writer_utils
 from tensorflow_lite_support.metadata import metadata_schema_py_generated as schema
@@ -793,6 +799,12 @@ def add_edgefirst_metadata(tflite_path: str, config: dict, labels: List[str]):
 ```
 
 ### Embedding Metadata in ONNX
+
+!!! note "Dependencies"
+    This example requires the `onnx` package:
+    ```bash
+    pip install onnx
+    ```
 
 ```python
 import onnx
@@ -843,6 +855,13 @@ def add_edgefirst_metadata(onnx_path: str, config: dict, labels: List[str]):
 ### Updating TFLite Metadata
 
 Since TFLite models are ZIP archives, you can update embedded files:
+
+!!! note "zip command"
+    The `zip` command is available on most platforms but may need to be installed:
+    
+    - **macOS**: Pre-installed
+    - **Linux**: `sudo apt install zip` (Debian/Ubuntu) or `sudo yum install zip` (RHEL/CentOS)
+    - **Windows**: Available via [Git Bash](https://git-scm.com/), WSL, or [Info-ZIP](http://infozip.sourceforge.net/)
 
 ```bash
 # Update edgefirst.yaml

@@ -7,7 +7,7 @@ This page describes the different sensor data types that EdgeFirst datasets can 
 Sensor data typically flows through this pipeline:
 
 ```mermaid
-flowchart LR
+flowchart TD
     A["📹 Device Recording<br>(Raivin/Maivin)"] -->|"ROS2 topics"| B["📦 MCAP File"]
     B -->|"Upload"| C["☁️ Snapshot"]
     C -->|"Restore"| D["🗂️ Dataset"]

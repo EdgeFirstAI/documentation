@@ -148,8 +148,8 @@ See [Annotation Schema](schema.md) for the complete field reference.
 !!! tip "How boxes are created"
     In EdgeFirst Studio, bounding boxes can be created through:
 
-    - **[Manual annotation](../../studio/agtg.md)**: Draw boxes directly on images in the Instance Dashboard
-    - **[Automatic annotation (AGTG)](../../studio/agtg.md)**: AI-powered detection using SAM-2 generates `box2d` automatically
+    - **[Manual annotation](../tutorials/annotations/manual.md)**: Draw boxes directly on images in the Instance Dashboard
+    - **[Automatic annotation (AGTG)](../tutorials/annotations/automatic.md)**: AI-powered detection using SAM-2 generates `box2d` automatically
     - **[Model inference](../../models/index.md)**: Running trained models on datasets creates predicted boxes
     
     All methods store boxes in the center-based format in the Arrow file.

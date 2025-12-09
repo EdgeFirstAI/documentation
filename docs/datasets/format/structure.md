@@ -50,7 +50,7 @@ See [Format Conversion](conversion.md) for details on converting existing datase
 
 ### 3. Simple Videos and Images
 
-For quick experimentation, you can also upload videos or images directly to Studio for auto-annotation—no format conversion required. This is covered in the [Capture Data](../../getting_started/capture_data.md) tutorial.
+For quick experimentation, you can also upload videos or images directly to Studio for auto-annotation—no format conversion required. This is covered in the [Capture Data](../tutorials/capture.md#capture-with-a-phone) tutorial.
 
 !!! info "ZIP + Arrow = EdgeFirst Dataset Format"
     Whether you're downloading a snapshot or sharing a dataset, the format is always the same:

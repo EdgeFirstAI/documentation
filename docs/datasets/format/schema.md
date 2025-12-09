@@ -8,8 +8,8 @@ Annotations in EdgeFirst are created through several methods:
 
 | Method | Fields Populated | Source |
 |--------|------------------|--------|
-| **[Manual annotation](../../studio/agtg.md)** | `label`, `box2d`, `mask` | User draws in Instance Dashboard |
-| **[AGTG (Automatic)](../../studio/agtg.md)** | `label`, `box2d`, `mask`, `status` | SAM-2 AI auto-detection |
+| **[Manual annotation](../tutorials/annotations/manual.md)** | `label`, `box2d`, `mask` | User draws in Instance Dashboard |
+| **[AGTG (Automatic)](../tutorials/annotations/automatic.md)** | `label`, `box2d`, `mask`, `status` | SAM-2 AI auto-detection |
 | **[Model inference](../../models/index.md)** | `label`, `box2d`, `box3d` | Trained model predictions |
 | **[Import from snapshot](../../studio/snapshots.md)** | All fields | Restored from Arrow file |
 
@@ -167,16 +167,16 @@ Learn more in [Bounding Box Formats](box_format.md).
 ### box3d
 
 **Type**: `Array(Float32, shape=(6,))`  
-**Format**: `[x, y, z, width, height, length]`  
+**Format**: `[x, y, z, length, width, height]`  
 **Coordinate system**: ROS/Ouster (X=forward, Y=left, Z=up)  
 **Units**: Meters (normalized 0–1 in some contexts)
 
 **Values**:
 
 - `x, y, z`: Box center in 3D world space
-- `width`: Dimension along Y axis
-- `height`: Dimension along Z axis (typically vertical)
 - `length`: Dimension along X axis (forward/backward)
+- `width`: Dimension along Y axis  (left)
+- `height`: Dimension along Z axis (typically vertical/up)
 
 **Example**: `[5.0, -2.0, 1.5, 2.0, 1.8, 4.5]` means an object 5m ahead, 2m to the right, 1.5m high
 

@@ -313,14 +313,6 @@
          <lastmod>2025-12-17</lastmod>
     </url>
     <url>
-         <loc>https://doc.edgefirst.ai/test/perception/api/</loc>
-         <lastmod>2025-12-17</lastmod>
-    </url>
-    <url>
-         <loc>https://doc.edgefirst.ai/test/perception/dev/</loc>
-         <lastmod>2025-12-17</lastmod>
-    </url>
-    <url>
          <loc>https://doc.edgefirst.ai/test/perception/launcher/</loc>
          <lastmod>2025-12-17</lastmod>
     </url>
@@ -329,7 +321,27 @@
          <lastmod>2025-12-17</lastmod>
     </url>
     <url>
-         <loc>https://doc.edgefirst.ai/test/perception/topics/</loc>
+         <loc>https://doc.edgefirst.ai/test/perception/4k/</loc>
+         <lastmod>2025-12-17</lastmod>
+    </url>
+    <url>
+         <loc>https://doc.edgefirst.ai/test/perception/4k/camera_4k/</loc>
+         <lastmod>2025-12-17</lastmod>
+    </url>
+    <url>
+         <loc>https://doc.edgefirst.ai/test/perception/4k/foxglove_4k/</loc>
+         <lastmod>2025-12-17</lastmod>
+    </url>
+    <url>
+         <loc>https://doc.edgefirst.ai/test/perception/4k/publisher_4k/</loc>
+         <lastmod>2025-12-17</lastmod>
+    </url>
+    <url>
+         <loc>https://doc.edgefirst.ai/test/perception/4k/webui_4k/</loc>
+         <lastmod>2025-12-17</lastmod>
+    </url>
+    <url>
+         <loc>https://doc.edgefirst.ai/test/perception/api/</loc>
          <lastmod>2025-12-17</lastmod>
     </url>
     <url>
@@ -369,6 +381,10 @@
          <lastmod>2025-12-17</lastmod>
     </url>
     <url>
+         <loc>https://doc.edgefirst.ai/test/perception/dev/</loc>
+         <lastmod>2025-12-17</lastmod>
+    </url>
+    <url>
          <loc>https://doc.edgefirst.ai/test/perception/dev/examples/camera/</loc>
          <lastmod>2025-12-17</lastmod>
     </url>
@@ -402,6 +418,10 @@
     </url>
     <url>
          <loc>https://doc.edgefirst.ai/test/perception/dev/examples/ssd/</loc>
+         <lastmod>2025-12-17</lastmod>
+    </url>
+    <url>
+         <loc>https://doc.edgefirst.ai/test/perception/topics/</loc>
          <lastmod>2025-12-17</lastmod>
     </url>
     <url>
@@ -442,10 +462,6 @@
     </url>
     <url>
          <loc>https://doc.edgefirst.ai/test/platforms/architecture/</loc>
-         <lastmod>2025-12-17</lastmod>
-    </url>
-    <url>
-         <loc>https://doc.edgefirst.ai/test/platforms/configuration/</loc>
          <lastmod>2025-12-17</lastmod>
     </url>
     <url>
@@ -506,6 +522,42 @@
     </url>
     <url>
          <loc>https://doc.edgefirst.ai/test/platforms/walkthrough/</loc>
+         <lastmod>2025-12-17</lastmod>
+    </url>
+    <url>
+         <loc>https://doc.edgefirst.ai/test/platforms/configuration/</loc>
+         <lastmod>2025-12-17</lastmod>
+    </url>
+    <url>
+         <loc>https://doc.edgefirst.ai/test/platforms/configuration/camera/</loc>
+         <lastmod>2025-12-17</lastmod>
+    </url>
+    <url>
+         <loc>https://doc.edgefirst.ai/test/platforms/configuration/fusion/</loc>
+         <lastmod>2025-12-17</lastmod>
+    </url>
+    <url>
+         <loc>https://doc.edgefirst.ai/test/platforms/configuration/lidar/</loc>
+         <lastmod>2025-12-17</lastmod>
+    </url>
+    <url>
+         <loc>https://doc.edgefirst.ai/test/platforms/configuration/mcap_recording/</loc>
+         <lastmod>2025-12-17</lastmod>
+    </url>
+    <url>
+         <loc>https://doc.edgefirst.ai/test/platforms/configuration/model/</loc>
+         <lastmod>2025-12-17</lastmod>
+    </url>
+    <url>
+         <loc>https://doc.edgefirst.ai/test/platforms/configuration/radar/</loc>
+         <lastmod>2025-12-17</lastmod>
+    </url>
+    <url>
+         <loc>https://doc.edgefirst.ai/test/platforms/configuration/service_status/</loc>
+         <lastmod>2025-12-17</lastmod>
+    </url>
+    <url>
+         <loc>https://doc.edgefirst.ai/test/platforms/configuration/webui/</loc>
          <lastmod>2025-12-17</lastmod>
     </url>
     <url>

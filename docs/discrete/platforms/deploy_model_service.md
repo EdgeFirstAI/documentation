@@ -2,7 +2,7 @@
 There are two ways to deploy a new, 2D model to the Raivin's Model Service: the Web UI Interface or via the command-line.
 
 ## From the Raivin Web UI
-From the [Model Service Configuration page](../../platforms/configuration.md#model-configuration), enter the absolute filename `/home/torizon/modelpack.rtm` in the "MODEL" text-box.  Also, confirm the "Draw Boxes" check box is enabled, as the current trainer only supports 2D Box detection.  Hit the "Save Configuration" box and continue on.
+From the [Model Service Configuration page](../../platforms/configuration/model.md), enter the absolute filename `/home/torizon/modelpack.tflite` in the "MODEL" text-box.  Also, confirm the "Draw Boxes" check box is enabled, as the current trainer only supports 2D Box detection.  Hit the "Save Configuration" box and continue on.
 
 ![Model Configuration Page](../../models/assets/deployment/model_location_webui.png)
 

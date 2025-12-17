@@ -33,7 +33,7 @@ The ribbon at the top of the Raivin web interface is available on every page of 
 3. On the right side, we first have the Recording Indicator, shown as a gray oval with "REC" when not recording from the sensors and a red oval when recording.
 5. The MCAP Details Modal button, which opens the MCAP Modal.
 6. The System Status Indicator and Dropdown button.
-3. The farthest rightmost button, with the gear icon, is the Settings Buttons and will take you to the [Settings Page](./configuration.md).
+3. The farthest rightmost button, with the gear icon, is the Settings Buttons and will take you to the [Settings Page](./configuration/index.md).
 
 ### The MCAP Modal
 The MCAP Modal is the interface to manage MCAP recordings, including getting information about recorded MCAP files, disk usage, deletion and downloading files.  More information about the MCAP Modal and recording MCAPs is in the [Recording section](./recording.md)

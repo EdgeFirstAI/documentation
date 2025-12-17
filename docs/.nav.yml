@@ -1,5 +1,4 @@
 nav:
-  - Home: https://test.edgefirst.studio
   - Getting Started:
     - index.md
     - getting_started/login.md

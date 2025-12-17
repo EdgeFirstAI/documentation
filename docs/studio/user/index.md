@@ -1,6 +1,6 @@
 # User Management
 
-To get started with EdgeFirst Studio, you can [sign up](profile.md#sign-up) to create your profile.  If you have an EdgeFirst Studio account, you can [login](profile.md#log-in) to EdgeFirst Studio.  If you have an EdgeFirst Studio account, but you forgot your password, follow the steps to [forget your password](profile.md#forgot-password) to change your password.
+To get started with EdgeFirst Studio, you can [sign up](profile.md#sign-up) to create your profile.  If you have an EdgeFirst Studio account, you can [login](profile.md#login) to EdgeFirst Studio.  If you have an EdgeFirst Studio account, but you forgot your password, follow the steps to [forget your password](profile.md#forgot-password) to change your password.
 
 You can see your [profile information](profile.md#profile-information) and [make changes to your information](profile.md#edit-information) as you wish.  
 

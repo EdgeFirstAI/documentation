@@ -1,5 +1,3 @@
-# Copy Dataset
-
 To copy a dataset, navigate to the dataset you would like to copy.  On the dataset card, select the "Copy Dataset" from the dataset options as shown below.
 
 <figure markdown="span">

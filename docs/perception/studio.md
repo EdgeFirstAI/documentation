@@ -1,6 +1,14 @@
 # Studio Client
 The EdgeFirst Studio Client, `edgefirst-client`, provides an API and command-line interface (CLI) into the [EdgeFirst Studio](../studio/index.md).  This client provides programmatic and command-line access to many of the features of the EdgeFirst Studio, specifically related to the upload of MCAP file into [snapshots](../studio/snapshots.md) and snapshot conversion or *restoration* into datasets. The commands below will mirror the UI actions described in the snapshot walkthrough linked above.
 
+!!! info "Data Format"
+    The client works with the [EdgeFirst Dataset Format](../datasets/format/index.md):
+    
+    - **Snapshots**: Downloaded as ZIP + Arrow file pairs
+    - **Annotations**: Can be exported as JSON or Arrow format
+    
+    See the [Format Documentation](../datasets/format/index.md) for details on the file structure.
+
 This page describes the command-line interface, the Bridge In API documentation is yet to be added.
 
 A summary of the core features is listed below:
@@ -274,7 +282,7 @@ A single dataset is allowed to have multiple annotations sets. That is the reaso
   ```shell
   $ edgefirst-client create-snapshot ./my_dataset
   ```
-- `download-snapshot`: Downloads a snapshot to the local filesystem
+- `download-snapshot`: Downloads a snapshot to the local filesystem as a ZIP + Arrow file pair (see [EdgeFirst Dataset Format](../datasets/format/index.md))
   ```shell
   $ edgefirst-client download-snapshot 101 --output ./snapshot_2023_01
   ```

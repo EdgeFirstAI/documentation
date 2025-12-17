@@ -1,6 +1,11 @@
 # Snapshots Dashboard
 
-Snapshots are frozen and compact form of datasets. The snapshot can be opened from the Apps Menu.
+Snapshots are portable, frozen copies of datasets in the [EdgeFirst Dataset Format](../datasets/format/index.md). Each snapshot consists of a **ZIP + Arrow file pair**:
+
+- **ZIP file**: Contains sensor data (images, point clouds, etc.)
+- **Arrow file**: Contains annotations (labels, bounding boxes, masks, metadata)
+
+This format makes snapshots easy to download, share, archive, and re-import into any EdgeFirst Studio project.
 
 <figure markdown="span">
 ![Data Snapshots](assets/snapshots/data-snapshots.png){ align=center }
@@ -46,7 +51,7 @@ A snapshot can be created by the following ways:
 
 ### Upload from Zip/Arrow File
 
-This format is the [EdgeFirst Dataset Format](../datasets/format/index.md) where the [Zip file](../datasets/format/index.md#dataset-storage-format) contains sensor reading and measurements and the [Arrow file](../datasets/format/index.md#dataset-annotation-format) contains dataset annotations. 
+This format is the [EdgeFirst Dataset Format](../datasets/format/index.md) where the [Zip file](../datasets/format/index.md#overview) contains sensor reading and measurements and the [Arrow file](../datasets/format/index.md#annotation-data) contains dataset annotations. 
 
 1. Go to the snapshots dashboard.
 2. Click on the "FROM FILE" button and then select the Zip and Arrow file pairs to import or drag and drop as a folder containing Zip and Arrow file pairs onto the dashboard. 
@@ -114,7 +119,21 @@ When restoring a snapshot a pipeline with the following stages are deployed.
 1. Click on the snapshot context menu (three dots).
 2. Select "Download".
 
-This will download the snapshot as Zip/Arrow to your local machine.
+This downloads the snapshot as a **ZIP + Arrow file pair** to your local machine:
+
+```
+my_snapshot.zip       # Sensor data (images, point clouds)
+my_snapshot.arrow     # Annotations (labels, boxes, masks)
+```
+
+These files follow the [EdgeFirst Dataset Format](../datasets/format/index.md) and can be:
+
+- Re-imported into any EdgeFirst Studio project as a new snapshot
+- Used for offline analysis with Python/Polars
+- Shared with collaborators or archived for backup
+- Processed by custom ML pipelines outside of Studio
+
+See [Dataset Organization](../datasets/format/structure.md) for details on the internal structure of these files.
 
 ## Delete Snapshot
 

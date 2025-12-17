@@ -4,9 +4,8 @@ nav:
     - index.md
     - getting_started/login.md
     - getting_started/create_project.md
-    - getting_started/capture_data.md
-    - getting_started/annotate_dataset.md
-    - getting_started/audit_dataset.md
+    - getting_started/copy_dataset.md
+    - getting_started/explore_dataset.md
     - getting_started/train_vision.md
     - getting_started/validate_vision.md
     - getting_started/deploy_model.md
@@ -46,8 +45,12 @@ nav:
     - datasets/index.md
     - EdgeFirst Dataset Format:
       - datasets/format/index.md
+      - datasets/format/structure.md
       - datasets/format/box_format.md
-    - datasets/structure.md
+      - datasets/format/schema.md
+      - datasets/format/sensors.md
+      - datasets/format/formats.md
+      - datasets/format/conversion.md
     - Dataset Zoo:
       - Coffee Cup:
         - datasets/coffeecup/index.md

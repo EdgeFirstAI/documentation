@@ -2,7 +2,7 @@
 The Camera service on the Maivin/Raivin supports 4K video in multiple fashions, including command-line configuration, adding the parameters to the camera configuration file, as well as through the WebUI.
 
 ## Command Line Configuration
-The camera service can be run at the platform's command-line interface.  The first step would be to log on to the platform via [SSH](../../platforms/ssh.md).  Then stop the current camera service with the `sudo systemctl stop camera`.  The following command-line options for the camera service are described below.
+The camera service can be run at the platform's command-line interface. The first step would be to log on to the platform via [SSH](../../platforms/ssh.md). Then stop the current camera service with the `sudo systemctl stop camera`. The following command-line options for the camera service are described below.
 
 ```bash
 # Enable 4K tile streaming
@@ -65,16 +65,16 @@ sudo camera \
 ```
 
 ## SystemD Configuration file
-You can add the above parameters to the camera configuration file located at `/etc/default/camera`.  The following lines can be added to the configuraiton file:
+You can add the above parameters to the camera configuration file located at `/etc/default/camera`. The following lines can be added to the configuration file:
 ```
 H264_TILES = "true"
 H264_TILES_FPS = "15"
 TRACY = "true"
 ```
-The parameters for `CAMERA_SIZE` and `H264_BITRATE` already exist in `/etc/default/camera`.  The H264 tile topics parameter is not available at this time.
+The parameters for `CAMERA_SIZE` and `H264_BITRATE` already exist in `/etc/default/camera`. The H264 tile topics parameter is not available at this time.
 
 ## WebUI Configuration
-There is no configuration item in the WebUI to specifically enable 4K tiling; however, you can set the [Camera Size](../../platforms/configuration/camera.md#camera-size) to `3840 2160` to implicitly enter 4K tiling. As well, you can set the [H264 Bitrate](../../platforms/configuration/camera.md#h264-bitrate) here as well.  Lastly, it is recommended that you [disable H264 streaming](../../platforms/configuration/camera.md#h264-streaming) to disable the 1K video stream `/camera/h264`.
+There is no configuration item in the WebUI to specifically enable 4K tiling; however, you can set the [Camera Size](../../platforms/configuration/camera.md#camera-size) to `3840 2160` to implicitly enter 4K tiling. As well, you can set the [H264 Bitrate](../../platforms/configuration/camera.md#h264-bitrate) here as well. Lastly, it is recommended that you [disable H264 streaming](../../platforms/configuration/camera.md#h264-streaming) to disable the 1K video stream `/camera/h264`.
 
 ## Troubleshooting
 

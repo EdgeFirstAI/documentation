@@ -3,6 +3,7 @@
 .venv/
 .vscode/
 .idea/
+.cache/
 .DS_Store
 *.log
 TODO.md

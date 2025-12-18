@@ -16,8 +16,8 @@ The topics documentation gives a breakdown of the available topics and the schem
 - [EdgeFirst Messages](edgefirst_msgs.md)
 - [Foxglove Messages](foxglove_msgs.md)
 - ROS2 Common Interfaces
-    - [Builtin Interfaces](builtin_interfaces.md)
-    - [Geometry Messages](geometry_msgs.md)
-    - [Navigation Messages](nav_msgs.md)
-    - [Sensor Messages](sensor_msgs.md)
-    - [Standard Messages](std_msgs.md)    
+  - [Builtin Interfaces](builtin_interfaces.md)
+  - [Geometry Messages](geometry_msgs.md)
+  - [Navigation Messages](nav_msgs.md)
+  - [Sensor Messages](sensor_msgs.md)
+  - [Standard Messages](std_msgs.md)

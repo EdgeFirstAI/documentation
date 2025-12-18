@@ -1,7 +1,9 @@
 # EdgeFirst Studio Dataset Zoo
 
+The EdgeFirst Studio Dataset Zoo offers two types of datasets:
 
-The EdgeFirst Studio Dataset Zoo provides commercially clean public EdgeFirst Datasets which can be licensed from Au-Zone Technologies and aswell as third-party datasets that's provided for evaluation and research purposes only.  Please refer to their respective licensing restrictions.
+- **EdgeFirst Datasets**: Commercially clean datasets you can license from Au-Zone Technologies
+- **Third-party Datasets**: Datasets for evaluation and research only (see their licensing restrictions)
 
 === "Coffee Cup"
 
@@ -83,7 +85,7 @@ Learn more in the [Format Documentation](format/index.md).
 
 ---
 
-There are 2D and 3D types of annotations that correlate with each other. For example, a 2D annotation is a set of pixel-based bounding boxes and segmentation masks whereas a 3D annotation is a set of 3D bounding boxes in meters.  However, a single object can be described by all three linked annotation types: a 2D bounding box, a 2D mask, and a 3D bounding box.  There could be multiple sensors involved in creating the dataset such as the camera, Radar and/or LiDAR, etc.  The readings from these sensors is rarely modified and needs to be distinguished in the dataset.  Thus, the EdgeFirst Dataset is known for its file pairs (typically Zip and Arrow) for storing the sensor data and annotations separately.  The [EdgeFirst Dataset File Structure](format/structure.md) comes in various forms depending if the data is a sequence or not. 
+There are 2D and 3D types of annotations that correlate with each other. For example, a 2D annotation is a set of pixel-based bounding boxes and segmentation masks whereas a 3D annotation is a set of 3D bounding boxes in meters.  However, a single object can be described by all three linked annotation types: a 2D bounding box, a 2D mask, and a 3D bounding box.  There could be multiple sensors involved in creating the dataset such as the camera, Radar and/or LiDAR, etc.  The readings from these sensors is rarely modified and needs to be distinguished in the dataset.  Thus, the EdgeFirst Dataset is known for its file pairs (typically Zip and Arrow) for storing the sensor data and annotations separately.  The [EdgeFirst Dataset File Structure](format/structure.md) comes in various forms depending if the data is a sequence or not.
 
 ## Related Articles
 

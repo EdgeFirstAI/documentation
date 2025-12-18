@@ -57,7 +57,7 @@ Once you have your MCAP download to your PC you may upload it to EdgeFirst Studi
 
 ## Next Steps
 
-In this tutorial, you have fetched the trained and validated model from EdgeFirst Studio, copied the model to the EVK and ran the model live using the EdgeFirst Live application and the EVK's camera. 
+In this tutorial, you have fetched the trained and validated model from EdgeFirst Studio, copied the model to the EVK and ran the model live using the EdgeFirst Live application and the EVK's camera.
 
 See our [developer guide](../../perception/dev/examples/model.md) for examples to query the model outputs using Rust or Python.
 

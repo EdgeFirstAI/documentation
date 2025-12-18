@@ -1,19 +1,18 @@
 # Middleware Overview
 
-The EdgeFirst Perception Middleware is a modular software stack designed as a collection of services
-communicating over a ROS2-like communication middleware called Zenoh. The various application services 
-are each focused on a general task.  For example a camera service is charged with interfacing with the 
-camera and ISP (Image Signal Processor) to efficiently deliver camera frames to other services which
-require access to the camera.  The camera service is also responsible for encoding camera frames using 
-a video codec into H.265 video for efficient recording or remote streaming, this feature of the camera
-service can be configured or disabled if recording or streaming are not required.
+The EdgeFirst Perception Middleware provides a modular software stack built on Zenoh, a ROS2-like communication middleware.
 
-The middleware services communicate with each other using the Zenoh networking middleware which provides 
-a highly efficient publisher/subscriber communications stack.  While we do not directly depend on ROS2
-the services do encode their messages using the ROS2 CDR (Common Data Representation). The middleware
-uses the ROS2 standard schemas where applicable and augment them with custom schemas where required.
-The Recorder and Foxglove chapters go into more detail on how this allows efficient streaming and 
-recording of messages and interoperability with industry standard tools.
+## Architecture
+
+Each service handles a specific task:
+
+- **Camera Service**: Interfaces with the camera and ISP (Image Signal Processor) to deliver frames to other services. It also encodes frames to H.265 video for recording or streaming. You can configure or disable encoding if not needed.
+
+## Communication
+
+Services communicate through Zenoh, a high-performance publisher/subscriber stack. While EdgeFirst doesn't depend on ROS2, services encode messages using ROS2 CDR (Common Data Representation). The middleware uses ROS2 standard schemas where applicable and custom schemas where needed.
+
+See the [Recording](../platforms/recording.md) and [Foxglove](../platforms/foxglove.md) sections for details on streaming, recording, and tool interoperability.
 
 ```mermaid
 graph LR

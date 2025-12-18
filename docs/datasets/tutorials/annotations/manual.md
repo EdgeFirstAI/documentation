@@ -2,7 +2,7 @@
 
 This page will describe the steps for manually adding annotations in the dataset.  Ideally, the dataset is mostly already [annotated via AGTG](automatic.md).  However, for any errors in the annotations that requires adjustments and corrections, the features described below will allow you to audit the annotations.
 
-As mentioned, a dataset can have 2D and 3D annotations.  This page is split into tutorials for manually annotating 2D and 3D annotations. 
+As mentioned, a dataset can have 2D and 3D annotations.  This page is split into tutorials for manually annotating 2D and 3D annotations.
 
 {% include-markdown "discrete/datasets/manual_2d.md" %}
 
@@ -18,6 +18,6 @@ This is a high-level video tutorial showing adjustments to the 3D annotations.
 
 ## Next Steps
 
-Once you have verified that your dataset has been properly annotated, you can now proceed to training your [Vision](../../../models/training/vision.md) or [Fusion](../../../models/training/fusion.md) model. 
+Once you have verified that your dataset has been properly annotated, you can now proceed to training your [Vision](../../../models/training/vision.md) or [Fusion](../../../models/training/fusion.md) model.
 
 Otherwise, additional dataset tutorials are provided under [Dataset Management](../management.md).

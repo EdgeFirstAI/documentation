@@ -50,7 +50,7 @@ To import this dataset and to preserve the train and validation splits in EdgeFi
     ```
 
 !!! note
-    The elements enclosed by <> can be any arbitrary name in your machine. 
+    The elements enclosed by <> can be any arbitrary name in your machine.
 
 Let's first import the training samples.  To import a dataset, first [create a dataset](management.md#create-dataset) container in EdgeFirst Studio. The following dataset is created with the name set to "COCO128" and the description as "Demo import".  Furthermore, an annotation set has also been created called "annotations".
 
@@ -143,7 +143,7 @@ These newly added samples for validation have not been grouped yet.  Next assign
 <figcaption>Add Training Group</figcaption>
 </figure>
 
-Set the slider to 100% Validation and check "Only ungrouped images" as this will transfer all recently imported ungrouped validation samples towards the validation group. 
+Set the slider to 100% Validation and check "Only ungrouped images" as this will transfer all recently imported ungrouped validation samples towards the validation group.
 
 <figure markdown="span">
 ![100% Validation Samples](../assets/import/coco128-split-all-validation.jpg){ align=center }
@@ -171,7 +171,7 @@ Verify in the [gallery](management.md#view-dataset) that the samples imported ma
 
 ### No Split
 
-This tutorial will show how to import a Darknet dataset such as [COCO128](https://www.kaggle.com/datasets/ultralytics/coco128) into EdgeFirst Studio which has no training and validation split.  This dataset is only meant as a tutorial dataset for [YOLOv5](https://github.com/ultralytics/yolov5), but this tutorial is meant to show the functionality of importing existing public datasets into EdgeFirst Studio. 
+This tutorial will show how to import a Darknet dataset such as [COCO128](https://www.kaggle.com/datasets/ultralytics/coco128) into EdgeFirst Studio which has no training and validation split.  This dataset is only meant as a tutorial dataset for [YOLOv5](https://github.com/ultralytics/yolov5), but this tutorial is meant to show the functionality of importing existing public datasets into EdgeFirst Studio.
 
 To import a dataset, first [create a dataset](management.md#create-dataset) container in EdgeFirst Studio. The following dataset is created with the name set to "COCO128" and the description as "Demo import".  Furthermore, an annotation set has also been created called "annotations".
 
@@ -222,7 +222,7 @@ This will start the import process as shown.
 <figcaption>Import Process</figcaption>
 </figure>
 
-Once completed, the dataset container will now contain 128 images from COCO and 
+Once completed, the dataset container will now contain 128 images from COCO and
 the annotations stored in the "annotations" container.
 
 <figure markdown="span">

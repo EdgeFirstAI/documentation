@@ -1,6 +1,7 @@
 # Home Page
 
 ## Introduction
+
 The User Home Page is the first page that a user sees when they log into EdgeFirst Studio.  It contains a summary of the relevant information a user needs at their fingertips, as well as pertinent links to the additional information.
 <figure markdown="span">
 ![Starting Page](assets/user/home-page.png){ align=center }
@@ -13,6 +14,7 @@ To return to this splash page from any other page, you can:
 * click on the "Au-Zone" Home button in the top-left corner.
 
 ## User Home Page Breakdown
+
 Let's explain the elements contained in the User Home Page.
 <figure markdown="span">
 ![Marked User Home Pagee](assets/user/home-page-breakdown.png){ align=center }
@@ -25,4 +27,5 @@ Information regarding the user's organization, including the ID, current subscri
 On the right sidebar, we have the news panel (5) that links to [our news page](https://www.edgefirst.ai/news) and a tutorial panel (6) to help users guides through some of our most common workflows.
 
 ## Next Steps
-Now that you've read about the User Home Page, the next step would be to learn more about [Navigating EdgeFirst Studio](navigation.md), which introduces how to get to the various features and dashboards in EdgeFirst Studio. 
+
+Now that you've read about the User Home Page, the next step would be to learn more about [Navigating EdgeFirst Studio](navigation.md), which introduces how to get to the various features and dashboards in EdgeFirst Studio.

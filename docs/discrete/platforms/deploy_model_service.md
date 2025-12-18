@@ -1,7 +1,9 @@
 # Deploying a New Model to the Model Service
+
 There are two ways to deploy a new, 2D model to the Raivin's Model Service: the Web UI Interface or via the command-line.
 
 ## From the Raivin Web UI
+
 From the [Model Service Configuration page](../../platforms/configuration/model.md), enter the absolute filename `/home/torizon/modelpack.tflite` in the "MODEL" text-box.  Also, confirm the "Draw Boxes" check box is enabled, as the current trainer only supports 2D Box detection.  Hit the "Save Configuration" box and continue on.
 
 ![Model Configuration Page](../../models/assets/deployment/model_location_webui.png)
@@ -10,23 +12,24 @@ Remember to save the configurations at the end of the process. The  Model Config
 `https://verdin-imx8mp-xxxxx/config/model`
 
 ## Manual Model Deployment
+
 In case the manual deployment is needed, you need to connect to the device via [SSH](../../platforms/ssh.md):
 
 ```shell
-$ ssh torizon@verdin-imx8mp-15141030
+ssh torizon@verdin-imx8mp-15141030
 ```
 
 and edit the model parameters in `/etc/default/model`
 
 ```shell
-$ vi /etc/default/model
+vi /etc/default/model
 ```
 
 then restart the model service using the `systemctl` command
 
 ```shell
-$ sudo systemctl stop model
-$ sudo systemctl start model 
+sudo systemctl stop model
+sudo systemctl start model 
 ```
 
 !!! note

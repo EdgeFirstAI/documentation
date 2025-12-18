@@ -19,7 +19,7 @@ To restore the snapshot, click on the snapshot context menu and select "Restore"
 <figcaption>Restore Snapshots</figcaption>
 </figure>
 
-Restoring a snapshot will create a new dataset entirely with annotations.  Specify the project to contain this new dataset and specify the name and the description of the dataset.  Furthermore, toggle the "AI Ground Truth Generation" to auto annotate the dataset samples.  The rest of the settings can be kept in their defaults for this tutorial.  Click "Restore" to start the restoration process. 
+Restoring a snapshot will create a new dataset entirely with annotations.  Specify the project to contain this new dataset and specify the name and the description of the dataset.  Furthermore, toggle the "AI Ground Truth Generation" to auto annotate the dataset samples.  The rest of the settings can be kept in their defaults for this tutorial.  Click "Restore" to start the restoration process.
 
 <figure markdown="span">
 ![Restore Snapshots Fields](../../datasets/assets/annotations/automatic/restore-snapshot-fields.jpg){ align=center }

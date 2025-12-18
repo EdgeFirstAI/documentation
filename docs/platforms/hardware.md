@@ -13,7 +13,7 @@ training can be found in the Deep View Enterprise User Manual.
 
 - Small, optimized form factor for easy deployment for true application testing with enclosure.
 - 2 board architecture with Processor Board, and Images Sensor board.  Allows different image sensors to be used.
-- 12-24V power input with protection for flexible installations. 
+- 12-24V power input with protection for flexible installations.
 - Flexible communications options including RS-485, Ethernet, and Wi-Fi.
 - M.2 PCIe and USB expansion interface:
   - Wireless LAN modem support
@@ -27,16 +27,12 @@ training can be found in the Deep View Enterprise User Manual.
 - M12 waterproof circular connectors for Power/Communications
 - Waterproof RJ45 for Ethernet
 
-
 ## Hardware Specifications
 
-
 ## Electrical Specifications
-
 
 ## Mechanical Specifications
 
 ![Maivin Mechanical Drawing](assets/mechanical.png){align=center}
 
 ## Connectors
-

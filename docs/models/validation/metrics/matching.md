@@ -32,7 +32,7 @@ Recap: False positives are categorized into localization and classification.
 
 ## Rule 4: Unique Matches
 
-There exists only one detection (true positive or classification false positive) that is matched per ground truth. 
+There exists only one detection (true positive or classification false positive) that is matched per ground truth.
 
 ### Rule 4.1: True Positive Count
 
@@ -62,9 +62,9 @@ If a detection meets the requirements of a true positive, it will be matched to 
 
 ### Rule 5.1: Matching Labels Are Prioritized Over IoU
 
-Considering two detections and one ground truth, the detection with a lower IoU, but with the same label as the ground truth should be matched over a detection with a higher IoU, but with a mismatching label as long as both detections have IoU >= IoU threshold. 
+Considering two detections and one ground truth, the detection with a lower IoU, but with the same label as the ground truth should be matched over a detection with a higher IoU, but with a mismatching label as long as both detections have IoU >= IoU threshold.
 
-The following images provides visualization to this rule.  The IoU threshold is set to 0.10 and the score threshold is set to 0.50 in these cases. 
+The following images provides visualization to this rule.  The IoU threshold is set to 0.10 and the score threshold is set to 0.50 in these cases.
 
 <figure markdown="span">
   ![Playing Cards v7; 000000000127.png](../../assets/metrics/rule_5.1_000000000127.png){ align=center }
@@ -92,14 +92,14 @@ Otherwise, if these detections, are lower than the IoU threshold, they will be r
 
 For cases where multiple detections have labels that matches the ground truth, the highest IoU is matched.
 
-The following image shows visualization of this rule where the IoU threshold is set to 0.10 and the score threshold is set to 0.50. 
+The following image shows visualization of this rule where the IoU threshold is set to 0.10 and the score threshold is set to 0.50.
 
 <figure markdown="span">
   ![Playing Cards V7; 000000000145.png](../../assets/metrics/rule_5.2_000000000145.png){ align=center }
   <figcaption>Playing Cards V7; 000000000145.png</figcaption>
 </figure>
 
-These detections have the same label as the ground truth, but the IoU varies, each detection overlaps the ground truth.  The greatest overlap is taken as the match.  Since this match meets the criteria of a true positive, it is classified as such. 
+These detections have the same label as the ground truth, but the IoU varies, each detection overlaps the ground truth.  The greatest overlap is taken as the match.  Since this match meets the criteria of a true positive, it is classified as such.
 
 ### Rule 5.3: Matching Labels, Highest IoU Matches
 
@@ -112,7 +112,7 @@ The following image shows a visualization of this rule following the same IoU th
   <figcaption>Playing Cards v7; 000000000134.png</figcaption>
 </figure>
 
-In this case, matching labels are prioritized and the highest IoU is taken as the match. 
+In this case, matching labels are prioritized and the highest IoU is taken as the match.
 
 ### Rule 5.4: Mismatching Labels, Highest IoU Matches
 
@@ -127,7 +127,7 @@ The following image with visualization shows an IoU threshold set to 0.50.
 
 Despite a detection with a matching label of "ace" as the ground truth being present, it is still regarded as a localization false positive since it does not meet the IoU requirements.  The detection with the highest IoU is matched instead which is with the label "king".
 
-Otherwise, if all detections do not meet the IoU threshold requirements, they will be treated as localization false positives and one false negative for the ground truth as shown in the image results below. 
+Otherwise, if all detections do not meet the IoU threshold requirements, they will be treated as localization false positives and one false negative for the ground truth as shown in the image results below.
 
 <figure markdown="span">
   ![Playing Cards v7; 000000000134.png](../../assets/metrics/rule_5.4_000000000134_locfp.png){ align=center }
@@ -136,7 +136,7 @@ Otherwise, if all detections do not meet the IoU threshold requirements, they wi
 
 ### Rule 5.5: Matches Meets IoU Threshold Requirements
 
-Any detections that do not overlap any ground truth or any detections with IoU < IoU threshold will be regarded as localization false positives. 
+Any detections that do not overlap any ground truth or any detections with IoU < IoU threshold will be regarded as localization false positives.
 
 <figure markdown="span">
   ![Playing Cards v7; 000000000148.png](../../assets/metrics/rule_5.5_000000000148.png){ align=center }
@@ -145,4 +145,4 @@ Any detections that do not overlap any ground truth or any detections with IoU <
 
 ## Conclusion
 
-This article has shown the rules established in EdgeFirst Validator that governs the behaviour of the matching and classification algorithms to process the raw detections into their classifications of true positives, false positives, and false negatives.  Rules 1-3 shows the requirements of these classifications.  Rule 4 describes the limits to the count of these classifications.  Rule 5 shows the prioritization of matches to ensure classification requirements are met by prioritizing finding of true positives first, then classification false positives, and then localization false positives. 
+This article has shown the rules established in EdgeFirst Validator that governs the behaviour of the matching and classification algorithms to process the raw detections into their classifications of true positives, false positives, and false negatives.  Rules 1-3 shows the requirements of these classifications.  Rule 4 describes the limits to the count of these classifications.  Rule 5 shows the prioritization of matches to ensure classification requirements are met by prioritizing finding of true positives first, then classification false positives, and then localization false positives.

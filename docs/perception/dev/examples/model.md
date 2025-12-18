@@ -3,6 +3,7 @@
 These examples demonstrate how to connect to various model topics published on your EdgeFirst Platform and how to display the information through the command line.
 
 ## Model Info
+
 Topic: [/model/info](../../topics/model.md#modelinfo)  
 Message: [ModelInfo](../../api/edgefirst_msgs.md#modelinfo)  
 Sample Code: [Python](https://github.com/EdgeFirstAI/samples/blob/main/python/model/model_info.py) / [Rust](https://github.com/EdgeFirstAI/samples/blob/main/rust/model/model_info.rs)
@@ -82,10 +83,12 @@ The ModelInfo message contains information about the model configuration. You ca
     ```
 
 ### Results
+
 When displaying the results through Rerun you will see the model info.
 ![alt text](assets/model_info.png)
 
 ## Boxes2D
+
 Topic: [/model/boxes2d](../../topics/model.md#modelboxes2d)  
 Message: [ModelInfo](../../api/edgefirst_msgs.md#detect)  
 Sample Code: [Python](https://github.com/EdgeFirstAI/samples/blob/main/python/model/boxes2d.py) / [Rust](https://github.com/EdgeFirstAI/samples/blob/main/rust/model/boxes2d.rs)
@@ -180,10 +183,12 @@ The Boxes2D message contains 2D bounding box detections. The message will be sen
     ``` 
 
 ### Results
+
 When displaying the results through Rerun you will see the boxes without any camera, to see the combined example please see the[Combined Example](#combined-example).
 ![alt text](assets/model_boxes2d.png)
 
 ### Box Tracking
+
 On your EdgeFirst Platform you can also allow tracking of the boxes and this can then be logged during the publishing of the boxes. The documentation for the settings to turn on tracking can be found [here](../../../platforms/configuration/model.md#track-settings). You can update your code to match the [Python example](https://github.com/EdgeFirstAI/samples/blob/main/python/model/boxes2d_tracked.py) or [Rust example](https://github.com/EdgeFirstAI/samples/blob/main/rust/model/boxes2d_tracked.rs) from the regular boxes2d example by changing the boxes2d_worker to the following.
 
 === "Python"
@@ -256,6 +261,7 @@ The main adjustments are that a color will be specified and each tracked box wil
 ![Boxes2D Tracking](assets/boxes2d_tracking.gif)
 
 ## Model Mask
+
 Topic: [/model/mask](../../topics/model.md#modelmask)  
 Message: [Mask](../../api/edgefirst_msgs.md#mask)  
 Sample Code: [Python](https://github.com/EdgeFirstAI/samples/blob/main/python/model/mask.py) / [Rust](https://github.com/EdgeFirstAI/samples/blob/main/rust/model/mask.rs)
@@ -361,10 +367,12 @@ The Mask message contains segmentation mask data. The worker will perform argmax
     ```
 
 ### Results
+
 When displaying the results through Rerun you will see the segmentation without any camera, to see the combined example please see the[Combined Example](#combined-example).
 ![alt text](assets/model_mask.png)
 
 ## Model Mask Compressed
+
 Topic: [/model/mask](../../topics/model.md#modelmask_compressed)  
 Message: [Mask](../../api/edgefirst_msgs.md#mask)  
 Sample Code: [Python](https://github.com/EdgeFirstAI/samples/blob/main/python/model/compressed_mask.py) / [Rust](https://github.com/EdgeFirstAI/samples/blob/main/rust/model/compressed_mask.rs)
@@ -481,7 +489,7 @@ When displaying the results through Rerun you will see the segmentation without 
 
 This example will demonstrate how to combine the camera feed with the model messages to create a composite Rerun view. The main difference when using multiple messages in a script, is that we will change from waiting on the message to be received to having a callback function for when a message is received. Using the initial method, the script would hang while waiting for a message topic to be published, so if the messages are being published at different rates, the slowest message rate will limit the others.
 
-Sample Code: [Python](https://github.com/EdgeFirstAI/samples/blob/main/python/combined/camera_model.py) / [Rust](https://github.com/EdgeFirstAI/samples/blob/main/rust/combined/mega_sample.rs) 
+Sample Code: [Python](https://github.com/EdgeFirstAI/samples/blob/main/python/combined/camera_model.py) / [Rust](https://github.com/EdgeFirstAI/samples/blob/main/rust/combined/mega_sample.rs)
 
 ### Setting up the subscribers
 
@@ -505,6 +513,7 @@ After setting up the Zenoh session, we will create a subscriber to the three top
     ```
 
 ### Subscriber Callbacks
+
 We will now go through the handler functions that are in use for this example. These handler functions will independently handle each of the messages received through the MessageDrain. Additionally, we will make use of a FrameSize object to communicate the frame size of the camera to the boxes and segmentation mask so they can be resized appropriately.
 
 === "Python"
@@ -516,6 +525,7 @@ We will now go through the handler functions that are in use for this example. T
     ```
 
 #### H264 Handler
+
 The H264 handler will receive the CompressedVideo message from the MessageDrain and after initializing the required containers will pass that message to the worker, where the message will be processed and logged to Rerun.
 
 === "Python"
@@ -552,6 +562,7 @@ The H264 handler will receive the CompressedVideo message from the MessageDrain 
     ```
 
 #### Boxes2D Handler
+
 The Boxes2D callback will wait for a Detect message from the MessageDrain and will pass that message to the worker, where the message will be processed and logged to Rerun. The boxes logged will use tracking when available. Additionally, this handler will wait until the camera has started and logged a frame size so it knows what the height and width will be to resize the boxes.
 
 === "Python"
@@ -588,6 +599,7 @@ The Boxes2D callback will wait for a Detect message from the MessageDrain and wi
     ```
 
 #### Mask Handler
+
 The Mask callback will wait for a Mask message from the MessageDrain and will pass that message to the worker, where the message will be processed and logged to Rerun. The mask_handler requires the remote field to be passed so it knows whether to decompress the mask data or not. Additionally, this handler will wait until the camera has started and logged a frame size so it knows what the height and width will be to resize the mask.
 
 === "Python"
@@ -621,5 +633,6 @@ The Mask callback will wait for a Mask message from the MessageDrain and will pa
     ```
 
 ### Results
+
 When displaying the results through Rerun you will see the combined image of the camera feed, segmentation image and boxes.
 ![alt text](assets/camera_model_combined.png)

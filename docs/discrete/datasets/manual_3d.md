@@ -2,7 +2,7 @@
 
 This section describes the steps for adjusting 3D annotations in the dataset.
 
-First [navigate to the dataset gallery](../../datasets/tutorials/management.md#view-dataset).  Ensure that the LiDAR and/or Radar point clouds, and the 3D bounding box annotations are toggled visible. 
+First [navigate to the dataset gallery](../../datasets/tutorials/management.md#view-dataset).  Ensure that the LiDAR and/or Radar point clouds, and the 3D bounding box annotations are toggled visible.
 
 <figure markdown="span">
 ![Visible 3D Annotations](../../datasets/assets/annotations/manual/visible-3d-annotations.jpg){ align=center }

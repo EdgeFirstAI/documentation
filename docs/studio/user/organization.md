@@ -1,6 +1,6 @@
 # Organization Management
 
-When you first [sign up](profile.md#sign-up) to EdgeFirst Studio, you will also automatically create your own organization.  For multi-user tiers, an organization allows multiple users to access your projects, but at the start, you will be the only user in your organization.  However, you can [create multiple users/profiles](#add-new-users) in your organization to allow collaboration between members in your team.  In this way, multiple members can be assigned to your organization. 
+When you first [sign up](profile.md#sign-up) to EdgeFirst Studio, you will also automatically create your own organization.  For multi-user tiers, an organization allows multiple users to access your projects, but at the start, you will be the only user in your organization.  However, you can [create multiple users/profiles](#add-new-users) in your organization to allow collaboration between members in your team.  In this way, multiple members can be assigned to your organization.
 
 You can find the information of your organization by clicking on the "User" button that is found on the top right of the navigation bar as shown below.  You will see three different options, click on the "Admin Console" button.
 
@@ -18,14 +18,14 @@ This will navigate you to the "Organization Information" page.  Shown below is a
 
 ## Edit Organization Information
 
-You can edit your organization's information by clicking either the "Edit" button or the "Edit Info" button from the "Organization Information" page as shown below. 
+You can edit your organization's information by clicking either the "Edit" button or the "Edit Info" button from the "Organization Information" page as shown below.
 
 <figure markdown="span">
 ![Edit Organization Information](../assets/user/edit-organization-information.jpg){ align=center }
 <figcaption>Edit Your Organization Information</figcaption>
 </figure>
 
-This will bring you to the page that provides input fields to edit the details about your organization.  Add the details of your organization.  Next click "Apply" to save the changes or "Cancel" to abort the changes.  Shown below is an example. 
+This will bring you to the page that provides input fields to edit the details about your organization.  Add the details of your organization.  Next click "Apply" to save the changes or "Cancel" to abort the changes.  Shown below is an example.
 
 <figure markdown="span">
 ![Organization Details](../assets/user/edit-organization-fields.jpg){ align=center }
@@ -59,7 +59,7 @@ This section will provide details about the users in your organization.  The fol
 3. An admin user creates the accounts for other users in the organization.
 4. Any user cannot invite other users in different organizations.
 
-The user who signs up is the admin of the organization.  However, this user can also set other users in the organization as admin or other roles.  More information about the roles and permissions of users in the [section below](#roles). 
+The user who signs up is the admin of the organization.  However, this user can also set other users in the organization as admin or other roles.  More information about the roles and permissions of users in the [section below](#roles).
 
 ### Current Users
 
@@ -70,7 +70,7 @@ You can see the list of all users in your organization by clicking on "User Mana
 <figcaption>User Manager</figcaption>
 </figure>
 
-As an admin user, you can edit the information of each user by clicking the "pencil" ![Pencil Button](../../assets/buttons/studio-edit-user-button.jpg) button next to their profiles.  This will bring the page that allows you to modify the user's profile information.  From this page you can change the first and last name of the user and their email.  You can also set the user's role or custom permissions.  More information on the [user's roles](#roles) are provided in the section below.  You can either click "Apply" to save the changes or "Cancel" to abort any changes.  Lastly, you can also change the user's password. 
+As an admin user, you can edit the information of each user by clicking the "pencil" ![Pencil Button](../../assets/buttons/studio-edit-user-button.jpg) button next to their profiles.  This will bring the page that allows you to modify the user's profile information.  From this page you can change the first and last name of the user and their email.  You can also set the user's role or custom permissions.  More information on the [user's roles](#roles) are provided in the section below.  You can either click "Apply" to save the changes or "Cancel" to abort any changes.  Lastly, you can also change the user's password.
 
 <figure markdown="span">
 ![Modify User Information](../assets/user/modify-user-information.jpg){ align=center }
@@ -90,7 +90,7 @@ The "Admin" user has read and write access to all projects, datasets, and model 
 
 The "Audit & Label" user has limited access to EdgeFirst Studio.  The only features available to this type of user are auditing and labeling datasets using the task board.
 
-The user with "Custom Permissions" has specific permissions on different elements of EdgeFirst Studio.  These elements are "Projects", "Datasets", "Trainer", and "Task Board".  You can set "Read-Only" permissions to allow users for view-only.  The permission for "Write" allows the users to make changes to the elements such as creating their own datasets or modifying current datasets. 
+The user with "Custom Permissions" has specific permissions on different elements of EdgeFirst Studio.  These elements are "Projects", "Datasets", "Trainer", and "Task Board".  You can set "Read-Only" permissions to allow users for view-only.  The permission for "Write" allows the users to make changes to the elements such as creating their own datasets or modifying current datasets.
 
 {% include-markdown "discrete/user/new_users.md" heading-offset=2 %}
 

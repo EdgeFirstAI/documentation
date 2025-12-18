@@ -1,4 +1,5 @@
 # Configuration
+
 This section describes the various settings pages and what they do. The root Settings Page can be reached by clicking the rightmost gear icon on the top ribbon of any page of the Raivin web-interface.
 
 <figure markdown="span">

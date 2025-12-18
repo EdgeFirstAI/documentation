@@ -7,7 +7,7 @@ From the projects page, choose the project that contains the training session wi
 <figcaption>Model Experiments</figcaption>
 </figure>
 
-# Create Validation Session
+## Create Validation Session
 
 In the experiment card, click the "Validate Sessions" button as indicated in red below.
 
@@ -16,14 +16,14 @@ In the experiment card, click the "Validate Sessions" button as indicated in red
 <figcaption>Validate Sessions</figcaption>
 </figure>
 
-You will be greeted to the "Validate Sessions" page as shown below. 
+You will be greeted to the "Validate Sessions" page as shown below.
 
 <figure markdown="span">
 ![Validate Sessions Page](../../models/assets/validation/vision-validation-sessions-page.jpg){ align=center }
 <figcaption>Validate Sessions Page</figcaption>
 </figure>
 
-Start a validation session by clicking on the "New Session" button on the top right corner of the page. 
+Start a validation session by clicking on the "New Session" button on the top right corner of the page.
 
 <figure markdown="span">
 ![New Session Button](../../models/assets/training/new-session-button.jpg){ align=center }

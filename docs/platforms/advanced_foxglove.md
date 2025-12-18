@@ -1,4 +1,5 @@
 # Advanced Foxglove
+
 This section will describe two, more advanced tasks with [Foxglove Studio](foxglove.md):
 
 1. Using the 3D Panel to view the post-processed [Radar](radar.md) outputs contained in the "Fusion Targets" topics.
@@ -7,6 +8,7 @@ This section will describe two, more advanced tasks with [Foxglove Studio](foxgl
 It is assumed you have read the [introduction to Foxglove Studio](foxglove.md), familiarized yourself with the application, and have [downloaded an MCAP](recording.md#download-mcap) that has recorded the [`/fusion/targets` topic](configuration/mcap_recording.md#fusion-recording-raivin-only).
 
 ## The Fusion Targets Topic
+
 The "Fusion Targets" topic contains post-processed radar outputs that identify targets as people.  For each target it detects, it returns the following information about the target:
 
 * x, y, z coordinates of the target, in meters
@@ -34,6 +36,7 @@ Each target takes up 36 bytes of data which is noted in the "point_step" field. 
 The Fusion and Vision Class are produced by Fusion service on the Raivin.  They will report 0 for any cluster not identified as a person and 1 for any cluster as belonging to a human.  The Raivin WebUI can use [either class or both classes together](configuration/webui.md#draw-pcd) to determine if any radar target is a person or not.
 
 ## 3D Panes for Fusion
+
 To Create a 3D view for the Fusion Class:
 
 1. From a panel in Foxglove, click the "More" kebab icon and change the panel to a "3D" panel.  
@@ -76,7 +79,7 @@ To Create a 3D view for the Fusion Class:
 
     1. Set Size and Divisions to "12"
     2. Set the "Position X" setting to "6"  
-    
+
     <figure markdown="span">
     ![Grid Settings](assets/adv_foxglove-grid.png){align=center}
     <figcaption>Grid Settings</figcaption>
@@ -90,6 +93,7 @@ Once all that is finished, you should have a panel that looks as the left panel 
 </figure>
 
 ### Adding Vision Class
+
 The steps above can be followed for the Vision Class as well, but please note - you cannot have both classes on the same 3D panel, as each topic is only allowed once.  If you want, you can also do these in an easier fashion.
 
 1. On the "More" kebab icon of the fusion class, split the panel (in this case, down)
@@ -104,10 +108,10 @@ The steps above can be followed for the Vision Class as well, but please note - 
     1. Change the "Title" to "Vision Class"
     2. In the "/fusion/targets" settings, change "Color by" to "vision_class" and the right gradient to "ff8300ff" (orange)
 
-	<figure markdown="span">
+ <figure markdown="span">
     ![Vision Class](assets/adv_foxglove-vision_class.png){align=center}
-	<figcaption>Vision Class</figcaption>
-	</figure>
+ <figcaption>Vision Class</figcaption>
+ </figure>
 
 The new panels should looks as below.
 
@@ -119,9 +123,11 @@ The new panels should looks as below.
 In the bottom right corner of this screenshot, we see a "/studio_script/output_topic" Raw Messages Panel.  This is the output of TypeScript user script created in FoxGlove that we will describe in the next subsection.
 
 ## User Scripting
+
 FoxGlove has a ["User Scripts"][fg_us] panel that uses [TypeScript][typescript] to manipulate the MCAP topics.  This section will show a script created to extract the "fusion_class" and "vision_class" values of each target and output if either class is reporting a person from the radar output.
 
 ### The User Script Interface
+
 When you change a panel to a User Scripts panel, you will see the Welcome splash screen.  
 
 <figure markdown="span">
@@ -139,6 +145,7 @@ The important icon in the left sidebar is the top one, the "Scripts" scroll icon
 There is one script, "fusion_decoder", which is the script we can look at. Since you do not have this script, it is included below - you can copy-and-paste this into a new script panel.
 
 ### The Script
+
 Here is the "fusion_decoder" script.
 
 ```TypeScript

@@ -52,4 +52,4 @@ yolo export model=path/to/model.pt format=tflite int8=True
 
 ## Next Steps
 
-Once you have a quantized TFLite, you can follow these instructions for [Deploying Models on the Target](npu.md). 
+Once you have a quantized TFLite, you can follow these instructions for [Deploying Models on the Target](npu.md).

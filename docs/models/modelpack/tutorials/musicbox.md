@@ -25,7 +25,7 @@ To begin recording a dataset, power on the [Maivin](../../../platforms/quickstar
 <figcaption>Web UI Main Page</figcaption>
 </figure>
 
-Follow these instructions for [capturing data](../../../datasets/tutorials/capture.md#capture-with-an-edgefirst-platform) using an EdgeFirst Platform. 
+Follow these instructions for [capturing data](../../../datasets/tutorials/capture.md#capture-with-an-edgefirst-platform) using an EdgeFirst Platform.
 
 <figure markdown="span">
 ![Segmentation View](../../assets/tutorials/musicbox/musicbox-camera-view.png){ align=center }
@@ -51,7 +51,7 @@ Once you have completed your recording, you can find instructions for [downloadi
 !!! warning
     Restoring a snapshot will incur costs against your EdgeFirst Studio account.
 
-In the Snapshot interface, hover over "MusicBoxTutorial" (renamed above). A three-dot menu will appear on the right side of the GUI (next to "Available"). 
+In the Snapshot interface, hover over "MusicBoxTutorial" (renamed above). A three-dot menu will appear on the right side of the GUI (next to "Available").
 Click it and select Restore.  See [Restore Snapshots](../../../studio/snapshots.md#restore-snapshot) for details.
 
 <figure markdown="span">
@@ -66,7 +66,7 @@ The GUI will prompt you to select a project and dataset name.  Choose the "Tutor
 <figcaption>Restore Snapshot Dialog</figcaption>
 </figure>
 
-!!! tip "Additional Options" 
+!!! tip "Additional Options"
     The restore dialog provides advance options like *Topic Selection*, *Frame Rate*, *Depth Generation*, and *Automatic Ground Truth Generation*.  Leave all options at their default settings.  These features are explained in [AGTG](../../../studio/agtg.md).
 
 Click **RESTORE SNAPSHOT**.  The dialog will close, and the dataset API will export the selected MCAP topics into a dataset, which will appear in the Dataset User Interface.  Progress is shown in the Dataset UI.
@@ -92,7 +92,7 @@ Now we can start annotating the sequences.  It's important that the dataset was 
 
 Select any sequence to visualize it.  Remember that MCAPs were exported at one frame per second.
 
-If you are new to Studio, refer to [Automatic Ground Truth Generation (AGTG)](../../../datasets/tutorials/annotations/automatic.md#semi-automatic-ground-truth-generation) to learn how to annotate the dataset. 
+If you are new to Studio, refer to [Automatic Ground Truth Generation (AGTG)](../../../datasets/tutorials/annotations/automatic.md#semi-automatic-ground-truth-generation) to learn how to annotate the dataset.
 Your dataset should now look like this in the Gallery (disable the "Show Sequences" option).
 
 <figure markdown="span">
@@ -111,27 +111,27 @@ To train the model, it is essential to [create training and validation](../../..
 
 ## Model Training
 
-As with other Studio features, model training has a dedicated user interface.  See [Model Training](../../training/vision.md) for details. 
+As with other Studio features, model training has a dedicated user interface.  See [Model Training](../../training/vision.md) for details.
 
 Inside the experiment, create a New Session and name it `musicbox-detector`. This name is also assigned to the cloud instance under the Studio console.
 
-- **Trainer**: `ModelPack`
+* **Trainer**: `ModelPack`
 
-- **Description**: `Object Detection`
+* **Description**: `Object Detection`
 
-- **Dataset**: `MusicBoxTutorial`
+* **Dataset**: `MusicBoxTutorial`
 
-- **Groups**: Select `train` and `val`
+* **Groups**: Select `train` and `val`
 
 Most hyper parameters are auto-tuned by ModelPack, but some can be customized:
 
-- **Input Resolution**: `640x360
+* **Input Resolution**: `640x360
 `
-- **Model Name**: `Legacy` (more model variants are going to be integrated in future versions)
+* **Model Name**: `Legacy` (more model variants are going to be integrated in future versions)
 
-- **Epochs**: `50 (default)`
+* **Epochs**: `50 (default)`
 
-- **Batch Size**: `Default is 16.`
+* **Batch Size**: `Default is 16.`
 
 Since our dataset is small, we need to use strong data augmentation to prevent overfitting and it is recommended to slightly increase the probability for each augmentation technique.
 
@@ -157,10 +157,10 @@ Begin testing the model with the object. If the model does not perform as expect
 
 In this tutorial, we walked through the complete process of building and deploying an object detection model on an embedded device using the Maivin Platform, EdgeFirst Studio, and ModelPack.  From data collection to model deployment, we covered a few essential steps of the machine learning pipeline:
 
-- Data Collection using the Maivin Web Interface
-- Data Annotation with EdgeFirst Studio
-- Model Training with ModelPack
-- Model Deployment on the Maivin unit
+* Data Collection using the Maivin Web Interface
+* Data Annotation with EdgeFirst Studio
+* Model Training with ModelPack
+* Model Deployment on the Maivin unit
 
 This workflow is not limited to object detection, the same process applies to any dataset type and to both segmentation and detection tasks, making it a powerful and consistent pipeline for embedded AI development.
 
@@ -168,9 +168,9 @@ Thanks to the **Automatic Ground Truth Generation** ([AGTG](../../../studio/agtg
 
 By following this tutorial, you now have a practical understanding of how to:
 
-- Collect and prepare real-world data using the Maivin platform
-- Use AGTG to automate the annotation process
-- Train compact, optimized models with ModelPack
-- Deploy models to the edge for real-time inference
+* Collect and prepare real-world data using the Maivin platform
+* Use AGTG to automate the annotation process
+* Train compact, optimized models with ModelPack
+* Deploy models to the edge for real-time inference
 
 This workflow ensures repeatability, scalability, and efficient development for embedded machine learning applications.  Whether you are building a smart camera, an industrial monitor, or a self driving vehicle, or an edge AI prototype, this pipeline helps you go from raw data to deployment quickly and effectively.

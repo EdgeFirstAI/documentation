@@ -10,7 +10,7 @@
 *[GPS]: Global Positioning System
 *[IMU]: Inertial Measurement Unit
 *[LiDAR]: Light Detection and Ranging
-*[MCAP]: MCAP file format for robotics data
+*[MCAP]: Binary container format for robotics log data
 *[SSD]: Solid State Drive
 *[SSL]: Secure Sockets Layer
 *[HTTPS]: Hypertext Transfer Protocol Secure

@@ -276,14 +276,14 @@ outputs:
     index: int             # Tensor index
     output_index: int      # Output order
     shape: [int]           # Tensor shape
-    dshape:                # Named dimensions (see dshape section)
-      batch: int
-      height: int          # For spatial outputs
-      width: int           # For spatial outputs
-      num_features: int    # For detection outputs
-      num_boxes: int       # For detection outputs
-      num_protos: int      # For instance segmentation
-      num_classes: int     # For semantic segmentation
+    dshape:                # Named dimensions as ordered array (see dshape section)
+      - batch: int
+      - height: int          # For spatial outputs
+      - width: int           # For spatial outputs
+      - num_features: int    # For detection outputs
+      - num_boxes: int       # For detection outputs
+      - num_protos: int      # For instance segmentation
+      - num_classes: int     # For semantic segmentation
     dtype: string          # Data type (float32, uint8, int8)
     type: string           # Semantic type (detection, segmentation, boxes, scores, masks, protos)
     decode: boolean        # Whether decoding is required
@@ -333,10 +333,10 @@ outputs:
     type: segmentation
     shape: [1, 480, 640, 5]    # [batch, H, W, num_classes]
     dshape:
-      batch: 1
-      height: 480
-      width: 640
-      num_classes: 5
+      - batch: 1
+      - height: 480
+      - width: 640
+      - num_classes: 5
     decoder: modelpack
 ```
 
@@ -360,9 +360,9 @@ outputs:
     type: detection
     shape: [1, 116, 8400]      # [batch, 4+nc+32, num_boxes] - includes 32 mask coefficients
     dshape:
-      batch: 1
-      num_features: 116        # 4 box coords + 80 classes + 32 mask coefficients
-      num_boxes: 8400
+      - batch: 1
+      - num_features: 116        # 4 box coords + 80 classes + 32 mask coefficients
+      - num_boxes: 8400
     decoder: ultralytics
 
   # Prototype masks for instance computation
@@ -370,10 +370,10 @@ outputs:
     type: protos
     shape: [1, 32, 160, 160]   # [batch, num_protos, H, W] NCHW
     dshape:
-      batch: 1
-      num_protos: 32
-      height: 160
-      width: 160
+      - batch: 1
+      - num_protos: 32
+      - height: 160
+      - width: 160
     decoder: ultralytics
 ```
 
@@ -393,10 +393,10 @@ The `dshape` field provides **named dimensions** for easier interpretation of te
 outputs:
   - name: "output_0"
     shape: [1, 84, 8400]       # Raw shape
-    dshape:                    # Named dimensions
-      batch: 1
-      num_features: 84         # 4 box coords + 80 classes
-      num_boxes: 8400
+    dshape:                    # Named dimensions as ordered array
+      - batch: 1
+      - num_features: 84         # 4 box coords + 80 classes
+      - num_boxes: 8400
 ```
 
 **Standard dimension names:**
@@ -994,10 +994,10 @@ outputs:
     output_index: 0
     shape: [1, 40, 40, 54]
     dshape:
-      batch: 1
-      height: 40
-      width: 40
-      num_anchors_x_features: 54   # 3 anchors × (5 + 13 classes)
+      - batch: 1
+      - height: 40
+      - width: 40
+      - num_anchors_x_features: 54   # 3 anchors × (5 + 13 classes)
     dtype: float32
     type: detection
     decode: true
@@ -1016,9 +1016,9 @@ outputs:
     output_index: 0
     shape: [1, 84, 8400]           # NCHW: [batch, 4+nc, num_boxes]
     dshape:
-      batch: 1
-      num_features: 84             # 4 box coords + 80 classes
-      num_boxes: 8400
+      - batch: 1
+      - num_features: 84             # 4 box coords + 80 classes
+      - num_boxes: 8400
     dtype: float32
     type: detection
     decode: true
@@ -1032,10 +1032,10 @@ outputs:
     output_index: 1
     shape: [1, 32, 160, 160]       # NCHW: [batch, protos, H, W]
     dshape:
-      batch: 1
-      num_protos: 32
-      height: 160
-      width: 160
+      - batch: 1
+      - num_protos: 32
+      - height: 160
+      - width: 160
     dtype: float32
     type: protos
     decode: true

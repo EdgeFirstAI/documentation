@@ -31,8 +31,8 @@ consumers, it can also publish the `/camera/h264` or `/camera/jpeg` topics for c
 as when recording or streaming the camera over the network.
 
 Topics are identified by these path-like names and the underlying discovery and network connections to publish and subscribe
-over topics is handled by the Zenoh library.  Zenoh topics are by default available only on the local device, a service named
-`zenohd` can be run to allow remote connections to the device's topics through a router interface defined as part of the Zenohd
+over topics is handled by the [Zenoh][zenoh] library.  Zenoh topics are by default available only on the local device, a service named
+`zenohd` can be run to allow remote connections to the device's topics through a router interface defined as part of the Zenoh
 protocol.  Messages published over Zenoh support various encodings defined through MIME types.  The EdgeFirst Middleware uses
 the Common Data Representation (CDR) encoding for messages, this is an open standard encoding and the same used by ROS2.  The
 CDR encoding uses schemas to represent each type of message, the EdgeFirst Middleware uses the ROS2 common interfaces whenever
@@ -44,8 +44,10 @@ User applications interface with the EdgeFirst Middleware by subscribing to the 
 an application to display the camera feed with bounding boxes drawn from the detection model we would write an application
 which subscribes to the camera and model topics.  This application would be responsible for drawing the camera pixels and
 then drawing the bounding box pixels over the camera and finally displaying the results for the user.  We provide a few
-examples of such applications, the first you're likely to see is the Web User Interface (REFER TO WEBUI CHAPTER).  Our sample
+examples of such applications, the first you're likely to see is the [Web User Interface](../../platforms/walkthrough.md).  Our sample
 code includes many examples which use the Rerun framework for drawing and demonstrate how to subscribe to topics and how
 to interpret the results, such as reading bounding boxes and drawing them over the camera feed.  You'll see these examples
 using Rerun for display throughout our examples, but there is no direct connection to Rerun and user applications could use
 any UI of their choosing.
+
+[zenoh]: https://zenoh.io/

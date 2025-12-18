@@ -1,0 +1,264 @@
+{
+  "configById": {
+    "Image!270bl1h": {
+      "cameraState": {
+        "distance": 20,
+        "perspective": true,
+        "phi": 60,
+        "target": [
+          0,
+          0,
+          0
+        ],
+        "targetOffset": [
+          0,
+          0,
+          0
+        ],
+        "targetOrientation": [
+          0,
+          0,
+          0,
+          1
+        ],
+        "thetaOffset": 45,
+        "fovy": 45,
+        "near": 0.5,
+        "far": 5000
+      },
+      "followMode": "follow-pose",
+      "scene": {},
+      "transforms": {},
+      "topics": {},
+      "layers": {},
+      "publish": {
+        "type": "point",
+        "poseTopic": "/move_base_simple/goal",
+        "pointTopic": "/clicked_point",
+        "poseEstimateTopic": "/initialpose",
+        "poseEstimateXDeviation": 0.5,
+        "poseEstimateYDeviation": 0.5,
+        "poseEstimateThetaDeviation": 0.26179939
+      },
+      "imageMode": {
+        "imageTopic": "/camera/h264/tl",
+        "calibrationTopic": "/camera/info",
+        "annotations": {
+          "/model/boxes2d": {
+            "visible": false
+          },
+          "/model/mask_compressed": {
+            "visible": false
+          }
+        }
+      }
+    },
+    "Image!4aes6cj": {
+      "cameraState": {
+        "distance": 20,
+        "perspective": true,
+        "phi": 60,
+        "target": [
+          0,
+          0,
+          0
+        ],
+        "targetOffset": [
+          0,
+          0,
+          0
+        ],
+        "targetOrientation": [
+          0,
+          0,
+          0,
+          1
+        ],
+        "thetaOffset": 45,
+        "fovy": 45,
+        "near": 0.5,
+        "far": 5000
+      },
+      "followMode": "follow-pose",
+      "scene": {},
+      "transforms": {},
+      "topics": {},
+      "layers": {},
+      "publish": {
+        "type": "point",
+        "poseTopic": "/move_base_simple/goal",
+        "pointTopic": "/clicked_point",
+        "poseEstimateTopic": "/initialpose",
+        "poseEstimateXDeviation": 0.5,
+        "poseEstimateYDeviation": 0.5,
+        "poseEstimateThetaDeviation": 0.26179939
+      },
+      "imageMode": {
+        "imageTopic": "/camera/h264/bl",
+        "calibrationTopic": "/camera/info",
+        "annotations": {
+          "/model/boxes2d": {
+            "visible": false
+          },
+          "/model/mask_compressed": {
+            "visible": false
+          }
+        }
+      }
+    },
+    "Image!36x9os8": {
+      "cameraState": {
+        "distance": 20,
+        "perspective": true,
+        "phi": 60,
+        "target": [
+          0,
+          0,
+          0
+        ],
+        "targetOffset": [
+          0,
+          0,
+          0
+        ],
+        "targetOrientation": [
+          0,
+          0,
+          0,
+          1
+        ],
+        "thetaOffset": 45,
+        "fovy": 45,
+        "near": 0.5,
+        "far": 5000
+      },
+      "followMode": "follow-pose",
+      "scene": {},
+      "transforms": {},
+      "topics": {},
+      "layers": {},
+      "publish": {
+        "type": "point",
+        "poseTopic": "/move_base_simple/goal",
+        "pointTopic": "/clicked_point",
+        "poseEstimateTopic": "/initialpose",
+        "poseEstimateXDeviation": 0.5,
+        "poseEstimateYDeviation": 0.5,
+        "poseEstimateThetaDeviation": 0.26179939
+      },
+      "imageMode": {
+        "imageTopic": "/camera/h264/tr",
+        "calibrationTopic": "/camera/info",
+        "annotations": {
+          "/model/boxes2d": {
+            "visible": false
+          },
+          "/model/mask_compressed": {
+            "visible": false
+          }
+        }
+      }
+    },
+    "Image!3wczysx": {
+      "cameraState": {
+        "distance": 20,
+        "perspective": true,
+        "phi": 60,
+        "target": [
+          0,
+          0,
+          0
+        ],
+        "targetOffset": [
+          0,
+          0,
+          0
+        ],
+        "targetOrientation": [
+          0,
+          0,
+          0,
+          1
+        ],
+        "thetaOffset": 45,
+        "fovy": 45,
+        "near": 0.5,
+        "far": 5000
+      },
+      "followMode": "follow-pose",
+      "scene": {},
+      "transforms": {},
+      "topics": {},
+      "layers": {},
+      "publish": {
+        "type": "point",
+        "poseTopic": "/move_base_simple/goal",
+        "pointTopic": "/clicked_point",
+        "poseEstimateTopic": "/initialpose",
+        "poseEstimateXDeviation": 0.5,
+        "poseEstimateYDeviation": 0.5,
+        "poseEstimateThetaDeviation": 0.26179939
+      },
+      "imageMode": {
+        "imageTopic": "/camera/h264/br",
+        "calibrationTopic": "/camera/info",
+        "annotations": {
+          "/model/boxes2d": {
+            "visible": false
+          },
+          "/model/mask_compressed": {
+            "visible": false
+          }
+        }
+      }
+    },
+    "map!1nr27jw": {
+      "zoomLevel": 4
+    },
+    "RawMessages!2rs2wx1": {
+      "diffEnabled": false,
+      "diffMethod": "custom",
+      "diffTopicPath": "",
+      "showFullMessageForDiff": false,
+      "topicPath": "/gps",
+      "expansion": {
+        "header": "c",
+        "stamp~header": "c",
+        "status": "e",
+        "position_covariance": "e"
+      },
+      "fontSize": 12
+    }
+  },
+  "globalVariables": {
+    "box_label": "label-score"
+  },
+  "userNodes": {},
+  "playbackConfig": {
+    "speed": 1
+  },
+  "layout": {
+    "first": {
+      "first": {
+        "first": "Image!270bl1h",
+        "second": "Image!4aes6cj",
+        "direction": "column"
+      },
+      "second": {
+        "first": "Image!36x9os8",
+        "second": "Image!3wczysx",
+        "direction": "column"
+      },
+      "direction": "row",
+      "splitPercentage": 49.941927990708486
+    },
+    "second": {
+      "first": "map!1nr27jw",
+      "second": "RawMessages!2rs2wx1",
+      "direction": "column",
+      "splitPercentage": 63.17567567567568
+    },
+    "direction": "row",
+    "splitPercentage": 79.03225806451613
+  }
+}

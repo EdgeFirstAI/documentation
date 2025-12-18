@@ -4,7 +4,7 @@ These examples demonstrate how to connect to various camera topics published on 
 
 !!! warning
 
-    If the Rerun live feed appears to lag, your computer may lack the processing necessary for that stream size, either reduce the [stream size](../../../platforms/configuration.md#stream-size) or use the --save argument to save it as a .rrd file which you can replay afterwards
+    If the Rerun live feed appears to lag, your computer may lack the processing necessary for that stream size, either reduce the [stream size](../../../platforms/configuration/camera.md#stream-size) or use the --save argument to save it as a .rrd file which you can replay afterwards
 
 
 ## Camera Info 

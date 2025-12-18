@@ -13,11 +13,11 @@ code for all schemas currently in use are available from these three repositorie
 
 The topics documentation gives a breakdown of the available topics and the schemas they use, referencing them in this API Reference.
 
-- [EdgeFirst Messages](api/edgefirst_msgs.md)
-- [Foxglove Messages](api/foxglove_msgs.md)
+- [EdgeFirst Messages](edgefirst_msgs.md)
+- [Foxglove Messages](foxglove_msgs.md)
 - ROS2 Common Interfaces
-    - [Builtin Interfaces](api/builtin_interfaces.md)
-    - [Geometry Messages](api/geometry_msgs.md)
-    - [Navigation Messages](api/nav_msgs.md)
-    - [Sensor Messages](api/sensor_msgs.md)
-    - [Standard Messages](api/std_msgs.md)    
+    - [Builtin Interfaces](builtin_interfaces.md)
+    - [Geometry Messages](geometry_msgs.md)
+    - [Navigation Messages](nav_msgs.md)
+    - [Sensor Messages](sensor_msgs.md)
+    - [Standard Messages](std_msgs.md)    

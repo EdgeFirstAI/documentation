@@ -35,14 +35,19 @@ theme:
       accent: amber
   features:
     - content.code.copy
+    - content.code.annotate
     - content.tabs.link
     - navigation.tracking
     - navigation.tabs
     - navigation.tabs.sticky
     - navigation.path
     - navigation.indexes
-    - navigation.top    
+    - navigation.top
+    - navigation.footer
     - toc.follow
+    - search.suggest
+    - search.highlight
+  custom_dir: overrides
 
 validation:
   absolute_links: ignore
@@ -53,6 +58,10 @@ plugins:
   - awesome-nav:
   - autorefs:
   - search:
+  - social:
+      cards_layout: default
+      cards_layout_options:
+        background_color: "#4051b5"
   - include-markdown:
       rewrite_relative_urls: true
       heading_offset: 1
@@ -87,13 +96,17 @@ plugins:
       strict_only: yes
 
 markdown_extensions:
-  - admonition  
-  - attr_list 
-  - md_in_html   
+  - abbr
+  - admonition
+  - attr_list
+  - md_in_html
   - pymdownx.arithmatex:
       generic: true
   - pymdownx.blocks.caption
-  - pymdownx.details  
+  - pymdownx.details
+  - pymdownx.snippets:
+      auto_append:
+        - docs/includes/abbreviations.md
   - pymdownx.superfences:
       custom_fences:
         - name: mermaid
@@ -148,6 +161,16 @@ extra:
       as to measure the effectiveness of our documentation and whether users
       find what they're searching for. With your consent, you're helping us to
       make our documentation better.
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/EdgeFirstAI
+      name: EdgeFirst on GitHub
+    - icon: fontawesome/brands/linkedin
+      link: https://ca.linkedin.com/company/au-zone-technologies
+      name: Au-Zone Technologies on LinkedIn
+    - icon: fontawesome/brands/x-twitter
+      link: https://x.com/au_zone
+      name: Au-Zone on X
 copyright: >
   Copyright &copy; 2025 Au-Zone Technologies &mdash;
   <a href="#__consent">Privacy Settings</a>

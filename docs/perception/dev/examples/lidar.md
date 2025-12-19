@@ -2,8 +2,8 @@
 
 This example will go through how to connect to the lidar topic published on your EdgeFirst Platform and how to display the information on the command line as well as through the Rerun visualizer.
 
-
 ## Lidar Points
+
 Topic: [/lidar/points](../../topics/lidar.md#lidarpoints)  
 Message: [Image](../../api/sensor_msgs.md#pointcloud2)
 Sample Code: [Python](https://github.com/EdgeFirstAI/samples/blob/main/python/lidar/points.py) / [Rust](https://github.com/EdgeFirstAI/samples/blob/main/rust/lidar/points.rs)
@@ -65,7 +65,6 @@ We can now receive a message on the subscriber. After receiving the message, we 
 
 The next step is to decode the PCD data. Please see [examples/pcd](./pcd.md) for a guide on how to decode the PointCloud2 data.
 
-
 === "Python"
 
     ``` python
@@ -105,7 +104,9 @@ The PCD contains x, y, z, and reflect values. The x, y, z are float32 and repres
     ```
 
 ### Results
+
 The command line output will appear as the following
+
 ```
 Recieved 24448 lidar points.
 Recieved 24448 lidar points.
@@ -116,6 +117,7 @@ When displaying the results through Rerun you will see the pointcloud data gathe
 ![alt text](assets/lidar_points.png)
 
 ## Lidar Clusters
+
 Topic: [/lidar/clusters](../../topics/lidar.md#lidarclusters)  
 Message: [PointCloud2](../../api/sensor_msgs.md#pointcloud2)
 Sample Code: [Python](https://github.com/EdgeFirstAI/samples/blob/main/python/lidar/clusters.py) / [Rust](https://github.com/EdgeFirstAI/samples/blob/main/rust/lidar/clusters.rs)
@@ -177,7 +179,6 @@ We can now receive a message on the subscriber. After receiving the message, we 
 
 The next step is to decode the PCD data. Please see [examples/pcd](./pcd.md) for a guide on how to decode the PointCloud2 data.
 
-
 === "Python"
 
     ``` python
@@ -191,7 +192,6 @@ The next step is to decode the PCD data. Please see [examples/pcd](./pcd.md) for
     ``` rust
     let points = decode_pcd(pcd);
     ```
-
 
 ### Collect the Clustered Points
 
@@ -218,7 +218,9 @@ We will now collect all the clustered points, which are all the points with `clu
     ```
 
 ### Results
+
 The command line output will appear as the following
+
 ```
 Recieved 24448 lidar points. 12193 are clustered
 Recieved 24448 lidar points. 12219 are clustered
@@ -229,10 +231,10 @@ When displaying the results through Rerun you will see the pointcloud cluster da
 ![alt text](assets/lidar_clusters.png)
 
 ## Lidar Depth
+
 Topic: [/lidar/depth](../../topics/lidar.md#lidardepth)  
 Message: [Image](../../api/sensor_msgs.md#image)
 Sample Code: [Python](https://github.com/EdgeFirstAI/samples/blob/main/python/lidar/depth.py) / [Rust](https://github.com/EdgeFirstAI/samples/blob/main/rust/lidar/depth.rs)
-
 
 ### Setting up subscriber
 
@@ -324,6 +326,7 @@ Because the depth image is `mono16` encoded, we need to decode the byte array in
     ```
 
 ### Process the Data
+
 We can now process the data. In this example we will reshape the depth values into an image. The image will be in L8 format, so we need
 to divide by 256.
 
@@ -344,7 +347,9 @@ to divide by 256.
     ```
 
 ### Results
+
 The command line output will appear as the following
+
 ```
 Recieved 382x64 depth image.
 Recieved 382x64 depth image.
@@ -355,6 +360,7 @@ When displaying the results through Rerun you will see a depth map of what the l
 ![alt text](assets/lidar_depth.png)
 
 ## Lidar Reflect
+
 Topic: [/lidar/reflect](../../topics/lidar.md#lidarreflect)  
 Message: [Image](../../api/sensor_msgs.md#image)
 Sample Code: [Python](https://github.com/EdgeFirstAI/samples/blob/main/python/lidar/reflect.py) / [Rust](https://github.com/EdgeFirstAI/samples/blob/main/rust/lidar/reflect.rs)
@@ -437,6 +443,7 @@ Because the reflect image is `mono8` encoded, we don't need to decode the byte a
     ```
 
 ### Process the Data
+
 We can now process the data. In this example we will find the maximum and minimum reflect values.
 
 === "Python"
@@ -455,7 +462,9 @@ We can now process the data. In this example we will find the maximum and minimu
     ```
 
 ### Results
+
 The command line output will appear as the following
+
 ```
 Recieved 382x64 reflect image. reflect: [0, 175]
 Recieved 382x64 reflect image. reflect: [0, 166]
@@ -492,6 +501,7 @@ After setting up the Zenoh session, we will create a subscriber to the three top
     ```
 
 ### Subscriber Callbacks
+
 We will now go through the handler functions that are in use for this example. These handler functions will independently handle each of the messages received through the MessageDrain. Additionally, we will make use of a FrameSize object to communicate the frame size of the camera to the boxes and segmentation mask so they can be resized appropriately.
 
 === "Python"
@@ -503,6 +513,7 @@ We will now go through the handler functions that are in use for this example. T
     ```
 
 #### H264 Handler
+
 The H264 handler will receive the CompressedVideo message from the MessageDrain and after initializing the required containers will pass that message to the worker, where the message will be processed and logged to Rerun.
 
 === "Python"
@@ -539,6 +550,7 @@ The H264 handler will receive the CompressedVideo message from the MessageDrain 
     ```
 
 #### Boxes2D Handler
+
 The Boxes2D callback will wait for a Detect message from the MessageDrain and will pass that message to the worker, where the message will be processed and logged to Rerun. The boxes logged will use tracking when available. Additionally, this handler will wait until the camera has started and logged a frame size so it knows what the height and width will be to resize the boxes.
 
 === "Python"
@@ -575,6 +587,7 @@ The Boxes2D callback will wait for a Detect message from the MessageDrain and wi
     ```
 
 #### Lidar Handler
+
 The Lidar callback will receive the pointcloud message, perform post-processing on the resultant data and then be sent to Rerun.
 
 === "Python"
@@ -605,5 +618,6 @@ The Lidar callback will receive the pointcloud message, perform post-processing 
     ```
 
 ### Results
+
 When displaying the results through Rerun you will see the combined image of the camera feed with boxes and the lidar pointcloud.
 ![alt text](assets/camera_radar.png)

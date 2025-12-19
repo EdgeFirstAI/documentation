@@ -51,13 +51,14 @@ A snapshot can be created by the following ways:
 
 ### Upload from Zip/Arrow File
 
-This format is the [EdgeFirst Dataset Format](../datasets/format/index.md) where the [Zip file](../datasets/format/index.md#overview) contains sensor reading and measurements and the [Arrow file](../datasets/format/index.md#annotation-data) contains dataset annotations. 
+This format is the [EdgeFirst Dataset Format](../datasets/format/index.md) where the [Zip file](../datasets/format/index.md#overview) contains sensor reading and measurements and the [Arrow file](../datasets/format/index.md#annotation-data) contains dataset annotations.
 
 1. Go to the snapshots dashboard.
-2. Click on the "FROM FILE" button and then select the Zip and Arrow file pairs to import or drag and drop as a folder containing Zip and Arrow file pairs onto the dashboard. 
+2. Click on the "FROM FILE" button and then select the Zip and Arrow file pairs to import or drag and drop as a folder containing Zip and Arrow file pairs onto the dashboard.
 3. Once the files are selected, this will start the import sequence progress shown below.
 
 ### Pipeline
+
 When creating a snapshot a pipeline with the following stages are deployed.
 
 1. Server Initialization: Initialize the backend server for handling the processes.
@@ -105,6 +106,7 @@ The stages for restoring a snapshot are shown below.
 12. The progress for different stages will be at different rates.
 
 ### Pipeline
+
 When restoring a snapshot a pipeline with the following stages are deployed.
 
 1. Download Snapshot from Cloud Storage: Fetches the dataset from the S3 server.

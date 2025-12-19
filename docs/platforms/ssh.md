@@ -1,7 +1,8 @@
 # SSH
+
 This section describes how to SSH into a Raivin using the default "torizon" account, and some basic commands you can use to provide some basic information about your Raivin if you have found an issue.
 !!! warning
-    The "torizon" account is effectively the root account of the Maivin device.  Using this account can cause irreparable harm to the software internals of the device. 
+    The "torizon" account is effectively the root account of the Maivin device.  Using this account can cause irreparable harm to the software internals of the device.
 
 !!! warning
     As part of the initial SSH session, you will be asked to change the default password.  PLEASE RECORD THIS PASSWORD!  If you forget it, you will be unable to SSH into the device without a reinstall.  
@@ -9,6 +10,7 @@ This section describes how to SSH into a Raivin using the default "torizon" acco
 You need an SSH client ([OpenSSH][openssh], [PuTTY][putty], etc.) to SSH into the Maivin.
 
 ## The Initial SSH Session
+
 First, verify that your Maivin is turned on and connected to the network.  You can follow the [Quick Start instructions](./quickstart.md#on-boot-up) to get the hostname of the device, which for the examples in this section will be `verdin-imx8mp-06976895.local`.
 
 !!! tip
@@ -32,7 +34,7 @@ ssh torizon@Maivin-hostname
 For example:  
 
 <figure markdown="span">
-![Are you Sure?](assets/ssh-areYouSure.png){align=center} 
+![Are you Sure?](assets/ssh-areYouSure.png){align=center}
 <figcaption>Are you Sure?</figcaption>
 </figure>
 
@@ -55,6 +57,7 @@ Once you've finished those steps, the next and all future SSH sessions should lo
 You are now at the Linux command-line prompt for the Raivin!
 
 ## Standard Debugging Commands
+
 The version of Raivin you are running can be found using `ostree admin status`.
 
 ```shell
@@ -66,7 +69,9 @@ $ ostree admin status
     Version: develop-24
     origin refspec: torizon/maivin/develop
 ```
+
 and in the `/etc/os-release` file.
+
 ```shell
 $ cat /etc/os-release
 ID=torizon-maivin
@@ -79,7 +84,9 @@ BUILD_ID="2"
 ANSI_COLOR="1;34"
 VARIANT="Maivin"
 ```
+
 The status of a specific service can be determined by running `systemctl status <service name>`.  For example, we can see the status of the camera service:
+
 ```shell
 $ systemctl status camera
 ● camera.service - Maivin Camera Service
@@ -96,7 +103,9 @@ Jan 29 10:31:04 verdin-imx8mp-15141029 systemd[1]: Stopped Maivin Camera Service
 Jan 29 10:31:04 verdin-imx8mp-15141029 systemd[1]: Starting Maivin Camera Service...
 Jan 29 10:31:34 verdin-imx8mp-15141029 systemd[1]: Started Maivin Camera Service.
 ```
+
 The logs can be viewed using the `journalctl` command, though this will print all of the logs.  Specific services can be viewed with the `-u` option.
+
 ```shell
 journalctl -u camera | more
 Jan 29 10:28:58 verdin-imx8mp-15141029 systemd[1]: Stopping Maivin Camera Service...
@@ -105,16 +114,21 @@ Jan 29 10:28:59 verdin-imx8mp-15141029 systemd[1]: Stopped Maivin Camera Service
 Jan 29 10:28:59 verdin-imx8mp-15141029 systemd[1]: Starting Maivin Camera Service...
 Jan 29 10:29:29 verdin-imx8mp-15141029 systemd[1]: Started Maivin Camera Service.
 ```
+
 To exit the SSH session, type `exit`.
 
 ### Additional Examples
 
 #### MCAP Recorder Service
+
 Check the status of the MCAP Recorder Service.
+
 ```shell
-$ systemctl status recorder.service
+systemctl status recorder.service
 ```
+
 If the Recorder Service is inactive, the following status will be displayed on the terminal.
+
 ```shell
 ○ recorder.service - Maivin MCAP Recorder Service
      Loaded: loaded (/usr/lib/systemd/system/recorder.service; disabled; vendor preset: disabled)
@@ -122,11 +136,15 @@ If the Recorder Service is inactive, the following status will be displayed on t
              └─override.conf
      Active: inactive (dead)
 ```
+
 To start the Recorder Service, run the following command.
+
 ```shell
 sudo systemctl start recorder.service
 ```
+
 An active Recorder Service will display the following status on the terminal.
+
 ```shell
 ● recorder.service - Maivin MCAP Recorder Service
      Loaded: loaded (/usr/lib/systemd/system/recorder.service; disabled; vendor preset: disabled)
@@ -141,21 +159,29 @@ An active Recorder Service will display the following status on the terminal.
 ```
 
 #### WebUI
+
 Check the status of the WebUI
+
 ```shell
-$ systemctl status webui
+systemctl status webui
 ```
+
 If the WebUI is inactive, the following status will be displayed on the terminal.
+
 ```shell
 ○ webui.service - Maivin Web UI Server
      Loaded: loaded (/usr/lib/systemd/system/webui.service; enabled; vendor preset: enabled)
      Active: inactive (dead)
 ```
+
 To start the WebUI, run the following command.
+
 ```shell
-$ sudo systemctl start webui
+sudo systemctl start webui
 ```
+
 An active WebUI service will display the following status on the terminal.
+
 ```shell
 ● webui.service - Maivin Web UI Server
      Loaded: loaded (/usr/lib/systemd/system/webui.service; enabled; vendor preset: enabled)
@@ -168,25 +194,33 @@ An active WebUI service will display the following status on the terminal.
 ```
 
 ## Secure Copy
+
 We can use secure copy (SCP) to move files to and from the device.  Basic command usage is:
+
 ```shell
 scp <source file> <destination file>.
 ```
+
 To describe files on the Raivin, both source and destination, they are formatted as:
+
 ```
 torizon@verdin-imx8mp-<id>:/absolute/path/filename
 ```
+
 The path is not needed for files in the `torizon` home directory `/home/torizon`, and relative paths from `/home/torizon` can be used.
 
 If the destination file will be named the same as the source file, a period `.` can be used instead.
 
 For example, if we want to upload the "test.mcap" file to the device from the current working directory on our local machine to remote device `verdin-imx8mp-15141029`, we can run the command:
+
 ```
 scp test.mcap torizon@verdin-imx8mp-15141029:.
 ```
+
 This would copy the file to `/home/torizon/test.mcap`.
 
 To copy an MCAP recording from the `/media/DATA/` directory on our device, we could use the following command:
+
 ```
 scp torizon@verdin-imx8mp-15141029:/media/DATA/verdin-imx8mp-15141029_2025_01_29_14_35_23.mcap .
 ```

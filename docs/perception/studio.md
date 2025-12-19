@@ -1,9 +1,10 @@
 # Studio Client
+
 The EdgeFirst Studio Client, `edgefirst-client`, provides an API and command-line interface (CLI) into the [EdgeFirst Studio](../studio/index.md).  This client provides programmatic and command-line access to many of the features of the EdgeFirst Studio, specifically related to the upload of MCAP file into [snapshots](../studio/snapshots.md) and snapshot conversion or *restoration* into datasets. The commands below will mirror the UI actions described in the snapshot walkthrough linked above.
 
 !!! info "Data Format"
     The client works with the [EdgeFirst Dataset Format](../datasets/format/index.md):
-    
+
     - **Snapshots**: Downloaded as ZIP + Arrow file pairs
     - **Annotations**: Can be exported as JSON or Arrow format
     
@@ -22,6 +23,7 @@ A summary of the core features is listed below:
 - Validator List & Search
 
 ## Installation
+
 The Python package includes the command-line application and is an easy way to install the binary.
 
 ```shell
@@ -40,6 +42,7 @@ EdgeFirst Studio Server: 3.7.3-f0b4eee Client: 1.3.3
 ```
 
 ## Authentication
+
 Authentication to the EdgeFirst Studio Server is done using the standard login you would use from the web interface.  To avoid having to type your username and password each time, an authentication token can be generated and saved using the `login` command.
 
 ```shell
@@ -48,31 +51,39 @@ $ edgefirst-client login
 > EdgeFirst Studio Password ********
 [2025-05-01T18:08:59Z INFO  edgefirst_client] Saved configuration to /home/torizon/.config/edgefirststudio/config.toml
 ```
+
 This will generate an authentication token in `/home/torizon/.config/edgefirststudio/config.toml` which remains valid for 7 days.  At any time you can use the `logout` command to forget the token and remove it from the configuration file, or re-run the `login` command to regenerate it.
 
 To query the token, use the following command:
+
 ```shell
 edgefirst-client token
 ```
+
 This should produce an output similar to:
+
 ```shell
 $ edgefirst-client token
 eyJhbGciOiJIUzI1NiIsInR5cCI6IkpX...
 ```
 
 ## Dataset Preparation
+
 Once data has been recorded using the [MCAP Recording Service](../platforms/recording.md) of the Raivin, and we have access to the mcap files, it is very simple to upload the files into a project. The next step we have to do is to create a snapshot and then restore it as a dataset (optionally using AGTG for auto annotation of the images).
 
 ### Create a Snapshot
+
 To create a snapshot, locate the folder with the MCAP files and run the following command:
 
 ```shell
 $ edgefirst-client create-snapshot <path>
 [<SNAPSHOT_ID>] <status>: <Name of the folder or file specified>
 ```
+
 where `path` is the path to the folder containing the MCAP files or the path to the mcap file. Refer to the [MCAP Recording page](../platforms/recording.md) for more information. Notice that the snapshot can only be restored if `status` is `available` (keyword after the `[ID]`, `status` can also be `unavailable` if any error occurs).
 
 This command with a successful output would looks as follows:
+
 ```shell
 $ edgefirst-client create-snapshot /media/DATA/verdin-imx8mp-15141091_2025_01_31_14_21_58.mcap
 [1816] available: verdin-imx8mp-15141091_2025_01_31_14_21_58.mcap
@@ -92,7 +103,9 @@ $ edgefirst-client snapshots
 [<SNAPSHOT_ID>] available: <Snapshot Name (folder name from above)>
 [<OTHER_ID>] unavailable: <Snapshot Name (a different name)>
 ```
+
 Example output would look like:
+
 ```shell
 $ edgefirst-client snapshots
 [1651] available: verdin-imx8mp-15140753_2025_04_02_16_54_35
@@ -102,6 +115,7 @@ $ edgefirst-client snapshots
 Make a note of the snapshot ID that was created. In this case, the snapshot ID is `1816`.
 
 ### Restore Snapshots
+
 !!! warning
     Restoring snapshots to datasets will deduct funds from your EdgeFirst Studio account.
 
@@ -111,7 +125,9 @@ To restore any snapshot as a dataset, we need to get the project ID where the da
 $ edgefirst-client projects
 [<PROJECT_ID>] <Project Name>: <Project Description>
 ```
+
 For example:
+
 ```shell
 $ edgefirst-client projects
 [265] Sample Project: Sample project contains a collection of datasets to help users get started on the platform.
@@ -121,14 +137,18 @@ $ edgefirst-client projects
 Make a note of the project ID where the dataset will be stored. In this case the project ID is `628`.
 
 Now that we have the project ID `628` and the snapshot ID `1816`, we can restore the snapshot using the `restore-snapshot` command.
+
 ```shell
-$ edgefirst-client restore-snapshot <PROJECT_ID> <SNAPSHOT_ID> --dataset-name "Dataset Name" --dataset-description "Dataset Description"
+edgefirst-client restore-snapshot <PROJECT_ID> <SNAPSHOT_ID> --dataset-name "Dataset Name" --dataset-description "Dataset Description"
 ```
+
 For example:
+
 ```shell
 edgefirst-client restore-snapshot 628 1816 --dataset-name "Upload from verdin-imx8mp-15141091" --dataset-description "This is a dataset generated from Raivin verdin-imx8mp-15141091 on January 31, 2025"
 [task: 3499] Upload from verdin-imx8mp-15141091: verdin-imx8mp-15141091_2025_01_31_14_21_58.mcap
 ```
+
 The command above will spin up some cloud services to transform input data into datasets and output a task ID that is running on the services to restore the snapshot.
 
 The dataset upload process will be shown in EdgeFirst Studio.
@@ -139,6 +159,7 @@ The dataset upload process will be shown in EdgeFirst Studio.
 </figure>
 
 We can use the `datasets` command to confirm that the dataset was uploaded to the project with ID `628`:
+
 ```shell
 $ edgefirst-client datasets 628
 [2080] Upload from verdin-imx8mp-15141091: This is a dataset generated from Raivin verdin-imx8mp-15141091 on January 31, 2025
@@ -158,11 +179,13 @@ The `restore-snapshot` command provides several options to customize the dataset
 For example, to create a dataset with automatic depth maps and annotations for `person` and `car` objects, run the following command:
 
 ```shell
-$ edgefirst-client restore-snapshot <PROJECT_ID> <SNAPSHOT_ID> --dataset-name "Dataset Name" --dataset-description "Dataset Description" --autodepth --autolabel "person car"
+edgefirst-client restore-snapshot <PROJECT_ID> <SNAPSHOT_ID> --dataset-name "Dataset Name" --dataset-description "Dataset Description" --autodepth --autolabel "person car"
 ```
+
 For example:
+
 ```shell
-$ edgefirst-client restore-snapshot 628 1816 --dataset-name "Upload from verdin-imx8mp-15141091 with AGTG" --dataset-description "This is a dataset generated from Raivin verdin-imx8mp-15141091 on January 31, 2025 with depth map generation and automated labelling for the class person and car." --autolabel "person car" --autodepth
+edgefirst-client restore-snapshot 628 1816 --dataset-name "Upload from verdin-imx8mp-15141091 with AGTG" --dataset-description "This is a dataset generated from Raivin verdin-imx8mp-15141091 on January 31, 2025 with depth map generation and automated labelling for the class person and car." --autolabel "person car" --autodepth
 ```
 
 The `--autolabel` parameter currently supports [COCO labels](../datasets/coco/index.md#coco-labels). We can list any class found in the COCO labels list to auto annotate these classes. In EdgeFirst Studio, we can [visualize](../datasets/tutorials/management.md#view-dataset) the results of the auto-annotations when restoring the snapshot. In this example, "person" and "car" are being shown as specified from the command above.
@@ -173,71 +196,95 @@ The `--autolabel` parameter currently supports [COCO labels](../datasets/coco/in
 </figure>
 
 ## Command Reference
+
 The EdgeFirst Studio Client provides a comprehensive set of commands for interacting with EdgeFirst Studio. Here's a detailed explanation of the available commands:
 
 ### Authentication Commands
+
 - `version`: Displays the current EdgeFirst Studio Server version
+
   ```shell
   $ edgefirst-client version
   edgefirst-client 1.3.3
   ```
+
 - `login`: Authenticates with the server and stores the token in the configuration file
+
   ```shell
   $ edgefirst-client login
   Username: your_username
   Password: ****
   ```
+
 - `logout`: Removes the stored authentication token
+
   ```shell
-  $ edgefirst-client logout
+  edgefirst-client logout
   ```
+
 - `token`: Displays the current authentication token
+
   ```shell
   $ edgefirst-client token
   eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...
   ```
 
 ### Project Management
+
 - `projects`: Lists all projects accessible to the authenticated user
+
   ```shell
   $ edgefirst-client projects
   [25] MultiTask: This project contains datasets for both object detection and segmentation
   [54] ObjectDetection: This project contains datasets that only support object detection task
   ```
+
 - `project`: Retrieves detailed information for a specific project using its ID
+
   ```shell
-  $ edgefirst-client project 54
+  edgefirst-client project 54
   ```
+
 - `find-projects`: Searches for projects by name
+
   ```shell
   $ edgefirst-client find-projects ObjectDetection
   [54] ObjectDetection: This project contains datasets that only support object detection task
   ```
 
 ### Dataset Operations
+
 - `datasets`: Lists all datasets (optionally filtered by project ID). If project ID is not provided all the datasets will be listed
+
   ```shell
   $ edgefirst-client datasets 54
   [32] Playingcards: A dataset for detecting playingcards
   ```
+
 - `dataset`: Retrieves detailed information for a specific dataset using its ID
+
   ```shell
-  $ edgefirst-client dataset 32
+  edgefirst-client dataset 32
   ```
+
 - `find-datasets`: Searches for datasets by name (optionally filtered by project)
+
   ```shell
-  $ edgefirst-client find-datasets Playingcards --project-id 54
+  edgefirst-client find-datasets Playingcards --project-id 54
   ```
 
 ### Annotation Management
+
 A single dataset is allowed to have multiple annotations sets. That is the reason why annotations are separated from `dataset-download` commands.
 
 - `annotation-sets`: Lists available annotation sets for a specific dataset
+
   ```shell
   $ edgefirst-client annotation-sets 32
   [1] Default Annotation Set
   [2] Validation Set
   ```
+
 - `annotations`: Retrieves annotations for a dataset and annotation set, filtered by types. Types could be any of the following options: `box2d`, `box3d`, `segmentation`. By default this command will return a JSON file. However, the user can always return an Arrow dataframe by adding the `--arrow` as shown below.
 
 === "JSON"
@@ -264,51 +311,70 @@ A single dataset is allowed to have multiple annotations sets. That is the reaso
     ```
 
 ### Snapshot Operations
+
 - `snapshots`: Lists available snapshots
+
   ```shell
   $ edgefirst-client snapshots
   [101] Snapshot 2023-01-01
   [102] Snapshot 2023-02-01
   ```
+
 - `snapshot`: Retrieves detailed information for a specific snapshot
+
   ```shell
-  $ edgefirst-client snapshot 101
+  edgefirst-client snapshot 101
   ```
+
 - `find-snapshots`: Searches for snapshots by description
+
   ```shell
-  $ edgefirst-client find-snapshots "January 2023"
+  edgefirst-client find-snapshots "January 2023"
   ```
+
 - `create-snapshot`: Creates a new snapshot from a local file or directory
+
   ```shell
-  $ edgefirst-client create-snapshot ./my_dataset
+  edgefirst-client create-snapshot ./my_dataset
   ```
+
 - `download-snapshot`: Downloads a snapshot to the local filesystem as a ZIP + Arrow file pair (see [EdgeFirst Dataset Format](../datasets/format/index.md))
+
   ```shell
-  $ edgefirst-client download-snapshot 101 --output ./snapshot_2023_01
+  edgefirst-client download-snapshot 101 --output ./snapshot_2023_01
   ```
+
 - `restore-snapshot`: Restores a snapshot to a project
+
   ```shell
-  $  edgefirst-client restore-snapshot 101 54 --name "Restored Dataset" --topics "list of topics" --autolabel "list of labels"
+  edgefirst-client restore-snapshot 101 54 --name "Restored Dataset" --topics "list of topics" --autolabel "list of labels"
   ```
 
 ### Training Management
+
 - `trainer-sessions`: Lists training sessions (optionally filtered by trainer)
+
   ```shell
   $ edgefirst-client trainer-sessions
   [456] ... Artifact { name: "modelpack.h5", model_type: "modelpack" },...]
   [324] ... Artifact { name: "modelpack.h5", model_type: "modelpack" },...]
   ```
+
 - `trainer-session`: Retrieves detailed information for a specific training session
+
   ```shell
   edgefirst-client trainer-session 324
   [324] ... Artifact { name: "modelpack.h5", model_type: "modelpack" },...]
   ```
+
 - `download-artifact`: Downloads artifacts from a training session. Notice this command requires the `output` parameter is pointing to a file and not to a folder
+
   ```shell
   edgefirst-client download-artifact 324 labels.txt --output /home/reinier/labels.txt
   ```
 
 Each command supports various options and flags that can be viewed using the `--help` flag with any command. For example:
+
 ```shell
 $ edgefirst-client projects --help
 List all projects available to the authenticated user

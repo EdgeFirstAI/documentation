@@ -858,7 +858,7 @@ Since TFLite models are ZIP archives, you can update embedded files:
 
 !!! note "zip command"
     The `zip` command is available on most platforms but may need to be installed:
-    
+
     - **macOS**: Pre-installed
     - **Linux**: `sudo apt install zip` (Debian/Ubuntu) or `sudo yum install zip` (RHEL/CentOS)
     - **Windows**: Available via [Git Bash](https://git-scm.com/), WSL, or [Info-ZIP](http://infozip.sourceforge.net/)
@@ -913,7 +913,7 @@ host:
 
 !!! note "Converting IDs for Studio URLs"
     Session and dataset IDs in metadata use hexadecimal values with prefixes (`t-` for training sessions, `ds-` for datasets). To construct Studio URLs, strip the prefix and convert from hex to decimal:
-    
+
     - `t-2110` → `int('2110', 16)` → `8464`
     - `ds-1c8` → `int('1c8', 16)` → `456`
 

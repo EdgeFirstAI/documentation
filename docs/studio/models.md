@@ -1,6 +1,6 @@
 # Model Experiments Dashboard
 
-A model experiment is a container of training and validation sessions in the experiment.  The following figure shown is the "Model Experiments" page.  This page will contain all the experiments that were started by the user. 
+A model experiment is a container of training and validation sessions in the experiment.  The following figure shown is the "Model Experiments" page.  This page will contain all the experiments that were started by the user.
 
 <figure markdown="span">
 ![Project Experiments](assets/models/experiments-page.jpg){ align=center }
@@ -14,7 +14,7 @@ The following figure breaks down the elements of an "Experiment" card.
 <figcaption>Experiment Card UI Breakdown</figcaption>
 </figure>
 
-An experiment will contain child training and validation sessions.  The training sessions and validation sessions will be described in more detail in the sections below. 
+An experiment will contain child training and validation sessions.  The training sessions and validation sessions will be described in more detail in the sections below.
 
 #### Training Sessions
 
@@ -34,7 +34,7 @@ The following figure describes the attributes of any given training session.
 <figcaption>Training Session Attributes</figcaption>
 </figure>
 
-To compare all the training charts of each session, click on "All Charts" at the top right corner of the "Training Sessions" page.  This will show the charts from each session overlaid on top of one another for a quick comparison. 
+To compare all the training charts of each session, click on "All Charts" at the top right corner of the "Training Sessions" page.  This will show the charts from each session overlaid on top of one another for a quick comparison.
 
 <figure markdown="span">
 ![All Charts](assets/models/all-charts.jpg){ align=center }
@@ -80,7 +80,7 @@ Next select the validation session results you wish to compare.  Once selected, 
 <figcaption>Select Validation Sessions</figcaption>
 </figure>
 
-Now the charts for each session are displayed side-by-side.  All the charts for a single training session will be shown in one column.  A new column indicates another session. 
+Now the charts for each session are displayed side-by-side.  All the charts for a single training session will be shown in one column.  A new column indicates another session.
 
 <figure markdown="span">
 ![Comparing Validation Sessions](assets/models/validation-charts-comparison.jpg){ align=center }
@@ -93,4 +93,4 @@ For more details regarding deploying validation sessions, please see [Validating
 
 ## Next Steps
 
-Now that you are familiar with the layout of the Model Experiments Dashboard, proceed to the next section for learning more about the context of the [Cloud Instances Dashboard](instances.md). 
+Now that you are familiar with the layout of the Model Experiments Dashboard, proceed to the next section for learning more about the context of the [Cloud Instances Dashboard](instances.md).

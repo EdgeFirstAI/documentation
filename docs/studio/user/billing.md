@@ -4,7 +4,7 @@ This page will describe the billing information that is subjected to the user's 
 
 ## Usage & Billing
 
-You can find the details on the remaining funds and the cost breakdown in your organization by visiting the "Usage & Billing" page.  To navigate to this page, click on the "User" button that is found on the top right of the navigation bar as shown below.  You will see three different options, click on the "Admin Console" button. 
+You can find the details on the remaining funds and the cost breakdown in your organization by visiting the "Usage & Billing" page.  To navigate to this page, click on the "User" button that is found on the top right of the navigation bar as shown below.  You will see three different options, click on the "Admin Console" button.
 
 <figure markdown="span">
 ![User Button](../assets/user/admin-button.jpg){ align=center }
@@ -18,7 +18,7 @@ This will navigate you to the "Organization Information" page.  Click on the "Us
 <figcaption>The location of the "Usage & Billing" button</figcaption>
 </figure>
 
-This page may take some time to load.  Once the page loads, it will describe the current usages of EdgeFirst Studio features and the billing details as shown below.  The next sections will break down the components of this page in more detail. 
+This page may take some time to load.  Once the page loads, it will describe the current usages of EdgeFirst Studio features and the billing details as shown below.  The next sections will break down the components of this page in more detail.
 
 <figure markdown="span">
 ![Usage & Billing Page](../assets/user/usage-billing-page.jpg){ align=center }
@@ -54,8 +54,8 @@ The "Transactions" page will show your purchases or the amount of credits alloca
 <figcaption>Transactions Summary</figcaption>
 </figure>
 
-Since this is a trial account, the only transaction shown is the 20.00 USD credits allocated to my organization upon sign up. 
+Since this is a trial account, the only transaction shown is the 20.00 USD credits allocated to my organization upon sign up.
 
 ## Next Steps
 
-This page has described billing information and the cost of each feature in EdgeFirst Studio.  Next we invite you to learn more about [managing your projects](../projects.md) in EdgeFirst Studio. 
+This page has described billing information and the cost of each feature in EdgeFirst Studio.  Next we invite you to learn more about [managing your projects](../projects.md) in EdgeFirst Studio.

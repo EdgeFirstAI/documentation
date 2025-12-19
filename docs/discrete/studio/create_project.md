@@ -25,4 +25,3 @@
     ![New Project](../../studio/assets/projects/new-project.jpg){ align=center }
     <figcaption>Both Projects</figcaption>
     </figure>
-    

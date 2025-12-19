@@ -12,7 +12,7 @@ You will then be prompted to enter the email associated to your account. Go ahea
 <figcaption>Enter your Email</figcaption>
 </figure>
 
-You will be notified to check your email for instructions to reset your password. Check your email for these instructions. 
+You will be notified to check your email for instructions to reset your password. Check your email for these instructions.
 
 <figure markdown="span">
 ![Resetting your Password](../../studio/assets/user/resetting-password.jpg){ align=center }
@@ -33,6 +33,6 @@ You will then be prompted to enter a new password. Once entered, click "RESET PA
 <figcaption>Enter New Password</figcaption>
 </figure>
 
-Done! You will then be prompted back to the [login page][login] for you to enter your new credentials. 
+Done! You will then be prompted back to the [login page][login] for you to enter your new credentials.
 
 [login]: https://test.edgefirst.studio/login

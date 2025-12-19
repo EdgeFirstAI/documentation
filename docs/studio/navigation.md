@@ -15,6 +15,7 @@ Navigation towards different functionalities in the EdgeFirst Studio portal is f
 </figure>
 
 The elements of the navbar are:  
+
 1. The Au-Zone Home Button. This button will return a user to their [User Home Page](home.md).  
 2. The Page Title.  
 3. Page-specific elements. On the Home page, this will be a "Go To Projects" buttons.  On other pages, it will usually be a "Projects" drop-down to navigate to other projects.  
@@ -60,7 +61,7 @@ This menu provides the options to go to the help pages, submit feedback, view re
 
 ### Documentation
 
-The "Help" button will point towards the link in the EdgeFirst documentation that describes the features and context of the current page being visited. 
+The "Help" button will point towards the link in the EdgeFirst documentation that describes the features and context of the current page being visited.
 
 ## Requesting Funds
 
@@ -82,23 +83,23 @@ The Apps Menu provides selections towards the various tools provided in EdgeFirs
 
 ### Projects
 
-Clicking on "Projects" takes the user to the [Projects Dashboard](projects.md).  This operation is the same as clicking on the Au-Zone Icon on the left of the top navigation bar.  A project is a high-level collections of sensor datatasets, model experiments, and other automation and management tasks associated with the dataset inputs and model outputs. 
+Clicking on "Projects" takes the user to the [Projects Dashboard](projects.md).  This operation is the same as clicking on the Au-Zone Icon on the left of the top navigation bar.  A project is a high-level collections of sensor datatasets, model experiments, and other automation and management tasks associated with the dataset inputs and model outputs.
 
 ### Datasets
 
-Clicking on "Datasets" takes the user to the [Datasets Dashboard](datasets/index.md).  This page lists all datasets available to the user in the selected project.  A dataset is a collection of sensor data, such as images, videos (sequences), radar cubes, etc. logically grouped together by the user.  Usually, each dataset contained within a project will come from a single recording session. 
+Clicking on "Datasets" takes the user to the [Datasets Dashboard](datasets/index.md).  This page lists all datasets available to the user in the selected project.  A dataset is a collection of sensor data, such as images, videos (sequences), radar cubes, etc. logically grouped together by the user.  Usually, each dataset contained within a project will come from a single recording session.
 
 ### Auditing Tasks
 
-Clicking on "Auditing Tasks" takes the user to the [Auditing Tasks Dashboard](datasets/annotations.md#auditing-tasks-board).  This page lists all auditing tasks for any dataset in the selected project.  Auditing tasks are formal operations of editing, approving, or removing annotations.  However, other methods of annotating datasets are described in the [Dataset Annotations](../datasets/tutorials/annotations/index.md) sections. 
+Clicking on "Auditing Tasks" takes the user to the [Auditing Tasks Dashboard](datasets/annotations.md#auditing-tasks-board).  This page lists all auditing tasks for any dataset in the selected project.  Auditing tasks are formal operations of editing, approving, or removing annotations.  However, other methods of annotating datasets are described in the [Dataset Annotations](../datasets/tutorials/annotations/index.md) sections.
 
 ### Model Experiments
 
-Clicking on "Model Experiments" takes the user to the [Model Experiments Dashboard](models.md).  This page contains all training sessions and validation sessions.  Additional features for comparing training charts and validation metrics are also available.  More information can be found in the [model training](../models/training/vision.md) and [model validation](../models/validation/vision/managed.md) sections.  A model experiment is a high-level collections of training and validation sessions.  A training session is the functionality of converting datasets into vision- and radar-based models that can be deployed back to the [EdgeFirst platforms/devices](../platforms/quickstart.md).  A validation session is the functionality to take a model and measure its performance against other models or a standardized validation set to see if it is ready for deployment. 
+Clicking on "Model Experiments" takes the user to the [Model Experiments Dashboard](models.md).  This page contains all training sessions and validation sessions.  Additional features for comparing training charts and validation metrics are also available.  More information can be found in the [model training](../models/training/vision.md) and [model validation](../models/validation/vision/managed.md) sections.  A model experiment is a high-level collections of training and validation sessions.  A training session is the functionality of converting datasets into vision- and radar-based models that can be deployed back to the [EdgeFirst platforms/devices](../platforms/quickstart.md).  A validation session is the functionality to take a model and measure its performance against other models or a standardized validation set to see if it is ready for deployment.
 
 ### Cloud Instances
 
-Clicking on the "Cloud Instances" takes the user to the [Cloud Instances Dashboard](instances.md). This page allows user to view currently running cloud instances and to stop a running cloud instance in here.  A cloud instance is a server dedicated to hosting any operations such as model training and validation, or [AGTG](agtg.md) operations. 
+Clicking on the "Cloud Instances" takes the user to the [Cloud Instances Dashboard](instances.md). This page allows user to view currently running cloud instances and to stop a running cloud instance in here.  A cloud instance is a server dedicated to hosting any operations such as model training and validation, or [AGTG](agtg.md) operations.
 
 ### Data Snapshots
 
@@ -117,7 +118,7 @@ Clicking on the "Recycle Bin" takes the user to the Recycle Bin page.  This page
 
 ## Alerts
 
-This link provides information about general alerts (if present).  For example, an alert can be triggered by setting the image limit as shown [here](user/organization.md#image-limit). 
+This link provides information about general alerts (if present).  For example, an alert can be triggered by setting the image limit as shown [here](user/organization.md#image-limit).
 
 ## Next Steps
 

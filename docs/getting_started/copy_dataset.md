@@ -14,7 +14,7 @@ Under "Sample Projects", click on the "Datasets" button.
 <figcaption>Sample Datasets Button</figcaption>
 </figure>
 
-Inside the "Sample Projects", you will find a sample dataset called "Coffee Cup".  You will be copying this dataset to train a Vision model for detecting coffee cups on images. 
+Inside the "Sample Projects", you will find a sample dataset called "Coffee Cup".  You will be copying this dataset to train a Vision model for detecting coffee cups on images.
 
 {% include-markdown "discrete/datasets/copy_dataset.md" heading-offset=0 %}
 

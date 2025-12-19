@@ -1,6 +1,6 @@
 # Dataset Management
 
-This page will provide tutorials for managing datasets in EdgeFirst Studio. 
+This page will provide tutorials for managing datasets in EdgeFirst Studio.
 
 ## View Dataset
 
@@ -42,7 +42,7 @@ The changes should appear on the dataset card as shown below.
 
 ## View Fusion Dataset
 
-This tutorial will show an example of a dataset that is ready for training. 
+This tutorial will show an example of a dataset that is ready for training.
 
 <div style="text-align: center;">
     <iframe width="560" height="315" src="https://www.youtube.com/embed/Q8uiYJb1HJ4?start=81&end=118" title="Indoor Dataset Overview" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
@@ -75,7 +75,6 @@ Verify the contents of the dataset and the annotations.  Click the button that n
 </figure>
 
 Clicking on any of these sequences will open individual images in the sequence with the visualizations of the annotations.  For more information please see [viewing datasets](#view-dataset).
-
 
 Datasets that train Fusion models provide annotations of the object's 3D bounding box.  For more information on the dataset annotations, please see the [EdgeFirst Dataset Format](../format/index.md#annotation-data).
 

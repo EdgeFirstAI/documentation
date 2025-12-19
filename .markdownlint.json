@@ -12,10 +12,15 @@
       "br",
       "sub",
       "sup",
-      "mark"
+      "mark",
+      "figure",
+      "figcaption",
+      "div",
+      "iframe"
     ]
   },
   "MD034": false,
   "MD036": false,
+  "MD046": false,
   "MD060": false
 }

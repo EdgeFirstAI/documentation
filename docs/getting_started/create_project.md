@@ -10,7 +10,7 @@ The next sections will invite you to follow along the *Tourist Workflow* -- the 
 2. exploring the images and annotations of the copied dataset,
 3. training a model based on the copied dataset,  
 4. validating the trained model, and  
-5. deploying the model on the PC. 
+5. deploying the model on the PC.
 
 This workflow requires only a PC.  There are other [workflows](workflows/index.md) that support different hardware requirements.  If you would like to bring in your own dataset with images captured from your phone, follow the [Web Workflow](workflows/web.md).
 

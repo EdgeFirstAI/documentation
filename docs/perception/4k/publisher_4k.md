@@ -11,7 +11,7 @@ The Maivin Publisher supports automatic 4K tile stitching for MCAP files contain
 The system automatically detects when all 4 required tile topics are present in the MCAP file:
 
 - `/camera/h264/tl` (Top Left)
-- `/camera/h264/tr` (Top Right) 
+- `/camera/h264/tr` (Top Right)
 - `/camera/h264/bl` (Bottom Left)
 - `/camera/h264/br` (Bottom Right)
 
@@ -24,14 +24,17 @@ MCAP File → H.264 Decode → Tile Stitching → 4K JPEG → ZIP Export
 ```
 
 #### Step 1: H.264 Decoding
+
 - Each tile is decoded from H.264 to RGB using stream accumulation
 - Handles partial frames and keyframe detection
 - Maintains separate decoders for each tile position
 - Uses fallback frames when decode fails
 
 #### Step 2: Tile Stitching
+
 - Combines 4 individual 1920x1080 tiles into one 3840x2160 image
 - Arranges tiles in 2x2 grid:
+
 <div class="grid cards" markdown style="text-align:center;">
 - Top Left
 - Top Right
@@ -41,14 +44,17 @@ MCAP File → H.264 Decode → Tile Stitching → 4K JPEG → ZIP Export
 - Creates high-quality JPEG output (85% quality)
 
 #### Step 3: ZIP Integration
+
 - Stitched 4K images replace individual tile images in ZIP export
 - Uses sequential matching (stitched frame 0 → sample 0, etc.)
 - Falls back to original images when no stitched frames are available
 
 ## Recording the 4K Topics
+
 The [Recording Service](../../platforms/recording.md), by default, [cannot be configured through the WebUI to capture the 4K video tiling topics](../../platforms/configuration/mcap_recording.md#caveats), but it can be [configured manually](../../platforms/configuration/mcap_recording.md#adding-topics-manually-to-the-recording-service). Please follow the instructions here to configure the recorder service before starting to record the 4K streams.
 
 ## Usage
+
 The Publisher binary is included on the platform and you must [SSH](../../platforms/ssh.md) onto platform to run the command.
 
 ### Command Line
@@ -62,6 +68,7 @@ The system automatically detects tile topics and switches to stitching mode - no
 ### Output
 
 When tile stitching is active, you'll see logs like:
+
 ```
 [INFO] Successfully created 198 stitched 4K frames
 [INFO] Using stitched frame 0 for sample 0 (timestamp: 4037102265000)
@@ -94,11 +101,13 @@ TilePosition::BottomRight → (1920, 1080)
 ## Performance
 
 ### Processing Speed
+
 - Typical processing: ~200-400 frames per second
 - Memory usage: Optimized with stream accumulation
 - Disk I/O: Minimal - processes in memory
 
 ### Quality Settings
+
 - JPEG quality: 85% (configurable)
 - Color space: RGB
 - Compression: Optimized for quality/size balance
@@ -106,16 +115,19 @@ TilePosition::BottomRight → (1920, 1080)
 ## Error Handling
 
 ### Decode Failures
+
 - Uses fallback frames from previous successful decode
 - Continues processing other tiles
 - Logs warnings for failed tiles
 
 ### Missing Tiles
+
 - Processes available tiles (partial stitching)
 - Logs information about missing tile positions
 - Graceful degradation
 
 ### Timestamp Mismatches
+
 - Uses sequential matching instead of timestamp-based matching
 - Handles different time bases between samples and video frames
 - Robust fallback to original images
@@ -123,7 +135,9 @@ TilePosition::BottomRight → (1920, 1080)
 ## Configuration
 
 ### Tile Topics
+
 The system looks for these specific topic names:
+
 ```rust
 let tile_topics = [
     "/camera/h264/tl",
@@ -134,6 +148,7 @@ let tile_topics = [
 ```
 
 ### Frame Processing
+
 - **Cleanup threshold**: 1000ms (incomplete frames older than 1 second are discarded)
 - **Force process threshold**: 100ms (frames with 3+ tiles are processed after 100ms)
 - **Accumulation limit**: 200KB per tile (prevents memory issues)
@@ -141,11 +156,13 @@ let tile_topics = [
 ## File Structure
 
 ### Source Files
+
 - `src/tile_stitcher.rs` - Main stitching logic
 - `src/zip.rs` - ZIP export integration
 - `src/main.rs` - CLI integration
 
 ### Key Functions
+
 - `has_tile_topics()` - Detects if all 4 tile topics are present
 - `process_mcap_tiles_for_zip()` - Processes tiles and creates stitched frames
 - `write_all_with_stitched_images()` - ZIP export with stitched images
@@ -161,6 +178,7 @@ let tile_topics = [
 ### Debug Logging
 
 Enable debug logging to see detailed processing information:
+
 ```bash
 RUST_LOG=debug sudo ./edgefirst-publisher zip --out test your_file.mcap
 ```

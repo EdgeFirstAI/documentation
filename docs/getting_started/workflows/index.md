@@ -1,12 +1,12 @@
 # User Workflows
 
-Edgefirst Studio provides specific workflows tailored towards various user personas depending on the hardware requirements and resources available to the user.
+EdgeFirst Studio offers workflows tailored to your hardware and resources.
 
 <div style="text-align: center;">
     <iframe width="560" height="315" src="https://www.youtube.com/embed/MmoDCXj72jk?si=I8gTw2VCtcts69ks" title="EdgeFirst Studio Overview" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 </div>
 
-## User Personas 
+## User Personas
 
 The following diagram describes the workflow for identifying the user personas depending on the hardware requirements.
 
@@ -57,7 +57,7 @@ flowchart LR
 !!! warning "PC Requirement"
     It is expected that for all personas identified above, the user has a PC with Wifi access.
 
-We've identified six workflows: Tourist, Tourist+, Web, Maivin, Raivin, LiDAR.  The hardware requirements and the available features increases starting with the Tourist as the most basic. 
+We've identified six workflows: Tourist, Tourist+, Web, Maivin, Raivin, LiDAR.  The hardware requirements and the available features increases starting with the Tourist as the most basic.
 
 | Persona                     | Hardware             | Features                                                               | Cost |
 |-----------------------------|----------------------|------------------------------------------------------------------------|------|
@@ -146,7 +146,7 @@ flowchart LR
 
 1. [Tourist Workflow](tourist.md)
 
-    This workflow is intended for users with a personal computer with access to Wifi that want to use the sample datasets available for training, validating, and deploying Vision models. 
+    This workflow is intended for users with a personal computer with access to Wifi that want to use the sample datasets available for training, validating, and deploying Vision models.
 
 2. [Tourist Plus Workflow](tourist_plus.md)
 

@@ -16,7 +16,7 @@ A new annotation set was created called "new-annotations".
 <figcaption>New Annotation Set</figcaption>
 </figure>
 
-Next, open the dataset gallery, by clicking on the gallery button ![Gallery Button](../../assets/buttons/studio-gallery-button.jpg) on the top left of the dataset card.  The dataset will contain sequences (video) ![Sequences Icon](../../assets/buttons/studio-sequence-icon.jpg) and images.  Click on any sequence card to start [annotating sequences](../../datasets/tutorials/annotations/automatic.md#semi-automatic-ground-truth-generation). 
+Next, open the dataset gallery, by clicking on the gallery button ![Gallery Button](../../assets/buttons/studio-gallery-button.jpg) on the top left of the dataset card.  The dataset will contain sequences (video) ![Sequences Icon](../../assets/buttons/studio-sequence-icon.jpg) and images.  Click on any sequence card to start [annotating sequences](../../datasets/tutorials/annotations/automatic.md#semi-automatic-ground-truth-generation).
 
 <figure markdown="span">
 ![Coffee Cup Gallery](../../datasets/assets/annotations/coffee-cup-gallery.jpg){ align=center }
@@ -58,4 +58,4 @@ Once the propagation completes, click "Save Annotations" to save the propagated 
 <figcaption>Propagation Completed</figcaption>
 </figure>
 
-Repeat the steps for all the sequences in the dataset.  For the case of individual images, the same steps apply except there is no propagation step.  You can still use the AGTG feature to quickly annotate images as shown in [Add 2D annotations](../../datasets/tutorials/annotations/manual.md#add-2d-annotations). 
+Repeat the steps for all the sequences in the dataset.  For the case of individual images, the same steps apply except there is no propagation step.  You can still use the AGTG feature to quickly annotate images as shown in [Add 2D annotations](../../datasets/tutorials/annotations/manual.md#add-2d-annotations).

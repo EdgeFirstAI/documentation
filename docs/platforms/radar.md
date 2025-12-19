@@ -1,7 +1,9 @@
 # Radar Module
+
 The Raivin configuration includes an integrated [DRVEGRD-169 radar module][radar] from [smartmicro][smart].  The radar module is internally connected to the Raivin which provides power and data communications interfaces.  The primary data and control interface uses the CAN bus protocol.  The radar module is also connected through an internal Gigabit Ethernet interface which is used to transmit the [radar data cube][cube] used by the RadarExp Fusion model.
 
 ## Specifications
+
 The DRVEGRD 169 radar module is a 79GHz radar sensor for multiple automotive applications that features 4D/PxHD technology.  The sensor’s antenna aims at ultra-short, short and medium range applications with a very wide, horizontal angular coverage of 140°.  A full set of the radar module specifications can be found [here][radar].
 
 ## Networking
@@ -21,7 +23,6 @@ BitRate=500K
 ```
 
 The `can0` interface is configured for 500kbps.  The Radar Publishing Service manages the radar configuration and reading of the point-cloud data over CAN and publishing the results over Zenoh.  Refer to the [Radar Publishing Service](./radar.md) for details.
-
 
 ### Ethernet Configuration
 

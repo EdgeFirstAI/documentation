@@ -1,16 +1,21 @@
 # ROS2 Navigation Messages
 
-# GridCells
+## GridCells
+
 ::: edgefirst.schemas.nav_msgs.GridCells
 
-# MapMetaData
+## MapMetaData
+
 ::: edgefirst.schemas.nav_msgs.MapMetaData
 
-# OccupancyGrid
+## OccupancyGrid
+
 ::: edgefirst.schemas.nav_msgs.OccupancyGrid
 
-# Odometry
+## Odometry
+
 ::: edgefirst.schemas.nav_msgs.Odometry
 
-# Path
+## Path
+
 ::: edgefirst.schemas.nav_msgs.Path

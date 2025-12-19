@@ -7,8 +7,8 @@ theme:
   logo: assets/logo.png
   favicon: assets/favicon.png
   font:
-    text: Roboto
-    code: Roboto Mono
+    text: Barlow
+    code: JetBrains Mono
   palette:
     # Palette toggle for automatic mode
     - media: "(prefers-color-scheme)"
@@ -37,6 +37,7 @@ theme:
     - content.code.copy
     - content.code.annotate
     - content.tabs.link
+    - navigation.instant
     - navigation.tracking
     - navigation.tabs
     - navigation.tabs.sticky
@@ -44,6 +45,7 @@ theme:
     - navigation.indexes
     - navigation.top
     - navigation.footer
+    - navigation.prune
     - toc.follow
     - search.suggest
     - search.highlight
@@ -61,7 +63,7 @@ plugins:
   - social:
       cards_layout: default
       cards_layout_options:
-        background_color: "#4051b5"
+        background_color: "#3E3371"
   - include-markdown:
       rewrite_relative_urls: true
       heading_offset: 1
@@ -126,6 +128,7 @@ extra_javascript:
   - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
 
 extra_css:
+  - stylesheets/extra.css
   - stylesheets/mermaid.css
 
 extra:

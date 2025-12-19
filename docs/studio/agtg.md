@@ -7,7 +7,7 @@ The AGTG allows datasets to have annotations populated on a dataset with minimal
 1. *Fully Automatic*: This is invoked at the time of importing the dataset as a background process which deploys a detection model to drive SAM-2.
 2. *Semi-Automatic*: This is invoked when users trigger the AI assisted annotations in the dataset gallery.  Users can select portions of the dataset to auto-annotate, but SAM-2 requires initial annotations from the user as prompts.
 
-A complete annotation set will have 2D and 3D annotations as shown below which is a sample snapshot from the AGTG process.  The 2D annotations are shown on the left which are pixel-based bounding boxes and masks on the image.  The 3D annotations are shown on the right which are world-based 3D boxes surrounding the object in meters. 
+A complete annotation set will have 2D and 3D annotations as shown below which is a sample snapshot from the AGTG process.  The 2D annotations are shown on the left which are pixel-based bounding boxes and masks on the image.  The 3D annotations are shown on the right which are world-based 3D boxes surrounding the object in meters.
 
 <figure markdown="span">
 ![Sample Annotations](../datasets/assets/annotations/sample-studio-annotations.jpg){ align=center }
@@ -22,14 +22,14 @@ This functionality is available at the time of restoring a snapshot.  To invoke 
 
 This functionality is available after importing the dataset into EdgeFirst Studio.  This type of AGTG requires user annotations in the starting frame to give SAM-2 context as to which objects to annotate throughout the rest of the frames.  This section will describe this type of AGTG.  However, the tutorial for this workflow is found under [Dataset Annotations](../datasets/tutorials/annotations/automatic.md#semi-automatic-ground-truth-generation).
 
-This AGTG feature can be found in the [dataset gallery](datasets/gallery.md).  The dataset gallery can contain sequences or images which are distinguished by the presence of the sequence icon ![Sequence Icon](../assets/buttons/studio-sequence-icon.jpg) on the image card as shown below. 
+This AGTG feature can be found in the [dataset gallery](datasets/gallery.md).  The dataset gallery can contain sequences or images which are distinguished by the presence of the sequence icon ![Sequence Icon](../assets/buttons/studio-sequence-icon.jpg) on the image card as shown below.
 
 <figure markdown="span">
 ![Dataset Sequence](../datasets/assets/management/sample-dataset-image.jpg){ align=center }
 <figcaption>Dataset Sequence</figcaption>
 </figure>
 
-The SAM-2 propagation step is only available for sequences.  However, images can still be annotated using SAM-2, but through individual annotations which requires more effort over sequences as shown in the [Manual Annotations](../datasets/tutorials/annotations/manual.md#add-2d-annotations). 
+The SAM-2 propagation step is only available for sequences.  However, images can still be annotated using SAM-2, but through individual annotations which requires more effort over sequences as shown in the [Manual Annotations](../datasets/tutorials/annotations/manual.md#add-2d-annotations).
 
 There are three steps involved in this process: *Initialize AGTG Server*, *Annotate Starting Frame*, *Propagate*.  This AGTG feature can be invoked by clicking on the "AI Segment Tool" button inside the dataset gallery as shown below.
 
@@ -45,7 +45,7 @@ Clicking on this feature will prompt you to [start an AGTG server](../datasets/t
 <figcaption>Launch AGTG Server</figcaption>
 </figure>
 
-Once the AGTG server has been initialized, you can now proceed to the next step which is to [annotate the starting frame](../datasets/tutorials/annotations/automatic.md#annotate-starting-frame) in the sequence.  This will bring the extended sidebar which contains the AGTG features to control the annotation process.  This step is necessary in order to give SAM-2 context of the objects to track in the current frame. 
+Once the AGTG server has been initialized, you can now proceed to the next step which is to [annotate the starting frame](../datasets/tutorials/annotations/automatic.md#annotate-starting-frame) in the sequence.  This will bring the extended sidebar which contains the AGTG features to control the annotation process.  This step is necessary in order to give SAM-2 context of the objects to track in the current frame.
 
 Below is a detailed breakdown of the sidebar.
 
@@ -59,11 +59,11 @@ Below is a detailed breakdown of the sidebar.
 <figcaption>AGTG Object Card </figcaption>
 </figure>
 
-An object is a single annotation or a single instance of an object in the image.  The number of object cards should equate to the number of objects in the image.  For each object, annotate by either drawing a bounding box (click and drag) around the object or markers (mouse clicks) to specify the region that contains the object.  To draw a bounding box, click anywhere on the frame and then drag the mouse to expand the bounding box.  The bounding box should cover the object to annotate in the frame. 
+An object is a single annotation or a single instance of an object in the image.  The number of object cards should equate to the number of objects in the image.  For each object, annotate by either drawing a bounding box (click and drag) around the object or markers (mouse clicks) to specify the region that contains the object.  To draw a bounding box, click anywhere on the frame and then drag the mouse to expand the bounding box.  The bounding box should cover the object to annotate in the frame.
 
 **Markers** | **Boxes**
 :------------------:|:------------------:
-![Markers](assets/agtg/agtg-markers.jpg) | ![Boxes](assets/agtg/agtg-boxes.jpg) 
+![Markers](assets/agtg/agtg-markers.jpg) | ![Boxes](assets/agtg/agtg-boxes.jpg)
 
 !!! Note "Multiple Objects"
     For adding subsequent objects you need to press the "+" button besides the "Select Objects". Also the object class (label) should be selected from the object label drop down.
@@ -77,14 +77,14 @@ The figure below shows multiple instances of coffee cup annotated using the AI a
 
 Once the current frame has been annotated, you can move forward to the last step which is to [propagate](../datasets/tutorials/annotations/automatic.md#propagate).  In order to propagate (track) the selected objects in the current frame to subsequent frames, select the ending frames. Please note that the starting frame is fixed to the current frame.  Click "Reverse Propagate" if you require to track objects from current frame to previous frames.
 
-Click the PROPAGATE button for SAM-2 to start tracking and annotating the objects throughout the frames.  During propagation, the frame and the counter will update as shown below.  Optionally, you can stop the propagation by clicking the "Stop Propagation" button. 
+Click the PROPAGATE button for SAM-2 to start tracking and annotating the objects throughout the frames.  During propagation, the frame and the counter will update as shown below.  Optionally, you can stop the propagation by clicking the "Stop Propagation" button.
 
 <figure markdown="span">
 ![Propagation Process](../datasets/assets/annotations/automatic/propagation-process.jpg){ align=center }
 <figcaption>Propagation Process</figcaption>
 </figure>
 
-Once the propagation completes, click on "SAVE ANNOTATIONS" to save the annotations.  The "SAVE ANNOTATIONS" button will save the edited, deleted, or created annotations for this image.  Otherwise, moving to any other image or going to another page will discard the changes.  A completed propagation will show the 2D annotations with masks and 2D bounding boxes for each object across the video frames.  If LiDAR or Radar readings are available in the dataset, the 3D annotations will also be generated. 
+Once the propagation completes, click on "SAVE ANNOTATIONS" to save the annotations.  The "SAVE ANNOTATIONS" button will save the edited, deleted, or created annotations for this image.  Otherwise, moving to any other image or going to another page will discard the changes.  A completed propagation will show the 2D annotations with masks and 2D bounding boxes for each object across the video frames.  If LiDAR or Radar readings are available in the dataset, the 3D annotations will also be generated.
 
 !!! tip
     For cases where the object exits and then re-enters the frame, the object might not be tracked properly.  Repeat the steps as necessary to annotate the objects that were missed.
@@ -124,17 +124,17 @@ flowchart TB
     lidar -- No --> radar_cluster --> projection --> depth_map --> 3D
 ```
 
-The logic shown starts with object detection using the YOLOx model.  These detections are used to drive the SAM-2 propagation which relies on the input frames and bounding box prompts around the objects in these frames.  The segmentation masks are then converted into an array of polygons and a 2D bounding box is formulated for each mask completing the set of 2D annotations. 
+The logic shown starts with object detection using the YOLOx model.  These detections are used to drive the SAM-2 propagation which relies on the input frames and bounding box prompts around the objects in these frames.  The segmentation masks are then converted into an array of polygons and a 2D bounding box is formulated for each mask completing the set of 2D annotations.
 
 The spatial-based annotations are formulated based on one of the following sensors and 2D annotation combinations.
 
-1.	Radar Point Clouds + Depth map Estimations + Segmentation Masks
-2.	LiDAR Points Clouds + Segmentation Masks 
+1. Radar Point Clouds + Depth map Estimations + Segmentation Masks
+2. LiDAR Points Clouds + Segmentation Masks
 
 For Raivin recordings without the LiDAR PCDs, the first combination is applied to formulate 3D bounding box annotations using Radar PCDs instead.  This process applies a DBSCAN clustering algorithm to the Radar PCDs to cluster groups of points belonging to a single object.  Next the process intends to find the Radar PCD cluster that corresponds to the object that is segmented in the image.  The logic here is to project the 2D bounding box into world coordinates and to take the depth estimations enclosed by the segmentation mask to find the nearest distance between the (x, y) coordinates and the cluster’s centroid.  The cluster with the smallest distance from the estimated coordinates is the PCD cluster that represents the object.  The 3D bounding box is formulated by taking the x, y, z center coordinates (centroid) of the cluster and the depth, width, height of the bounding box are taken from both the 2D image projections and the dimensions of the cluster.
 
-For Raivin recordings with the LiDAR module, the second combination is applied to formulate the 3D bounding box annotations.  Since the LiDAR PCDs have higher resolution over Radar, there is no clustering needed to be applied to the PCDs at the start.  The process starts by filtering the LiDAR PCDs that intersects only with the segmentation mask.  However, the PCDs that intersect with the mask are not always guaranteed to belong to the object, a DBSCAN clustering algorithm is applied to the set of filtered PCDs.  The cluster with the highest number of points is taken as the cluster that represents the object segmented in the image.  Finally, the 3D bounding box is formulated by taking the x, y, z center coordinates (centroid) of the cluster and the depth, width, height dimensions of the cluster. 
+For Raivin recordings with the LiDAR module, the second combination is applied to formulate the 3D bounding box annotations.  Since the LiDAR PCDs have higher resolution over Radar, there is no clustering needed to be applied to the PCDs at the start.  The process starts by filtering the LiDAR PCDs that intersects only with the segmentation mask.  However, the PCDs that intersect with the mask are not always guaranteed to belong to the object, a DBSCAN clustering algorithm is applied to the set of filtered PCDs.  The cluster with the highest number of points is taken as the cluster that represents the object segmented in the image.  Finally, the 3D bounding box is formulated by taking the x, y, z center coordinates (centroid) of the cluster and the depth, width, height dimensions of the cluster.
 
 ## Next Steps
 
-Now that you have been introduced to the auto-annotation features in EdgeFirst Studio, proceed to the [Datasets](../datasets/index.md) section to learn more about managing your own datasets from following the capture and annotation workflows. 
+Now that you have been introduced to the auto-annotation features in EdgeFirst Studio, proceed to the [Datasets](../datasets/index.md) section to learn more about managing your own datasets from following the capture and annotation workflows.

@@ -5,12 +5,13 @@ The Raivin configuration includes optional support for the [Ouster OS1-64 LiDAR 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/LuA3JlRUfVY?si=FFKDY7dBWih5aG2W" title="Raivin Unboxing and LiDAR Mounting" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
 ## Specifications
+
 The Ouster OS1-64 is a high-resolution imaging LiDAR sensor with the following key specifications:
 
-- **Range**: 
+- **Range**:
   - 100m @ >90% detection probability (80% Lambertian reflectivity)
   - 45m @ >90% detection probability (10% Lambertian reflectivity)
-- **Field of View**: 
+- **Field of View**:
   - Vertical: 45° (+22.5° to -22.5°)
   - Horizontal: 360°
 - **Resolution**:
@@ -29,31 +30,38 @@ A full set of the LiDAR sensor specifications can be found in the [Ouster OS1 da
 Ouster Studio is a free digital LiDAR visualizer available for both web and desktop platforms. It provides a comprehensive solution for viewing, organizing, and sharing LiDAR point cloud data captured by Ouster OS series sensors. Download the [Ouster Studio][studio]
 
 #### Desktop Application
+
 - Live streaming and recording of LiDAR data
 - Real-time visualization
 - Sensor discovery and configuration
 - Cloud integration for data uploading and sharing
 
 ### Sensor configuration
+
 Once you have downloaded Ouster Studio it can be used get the device name as well as make modifications to the Static IP of the device. It is recommended that the user sets a static ip as shown in the image below.
 ![Ouster Config](assets/ouster-config.png){align=center}
 
-After making all the changes required you can hit "Configure and Visualize" and it will show a LiDAR PCD as follow 
+After making all the changes required you can hit "Configure and Visualize" and it will show a LiDAR PCD as follow
 ![Ouster PCD](assets/ouster-pcd.png){align=center}
 
 ## Firmware Requirements
+
 The sensor should be running firmware version v2.5.3 or later. The sensor's local information page can be accessed at:
+
 ```
 http://os-<serial_number>.local/
 ```
 
 ### Data Format
+
 The LiDAR sensor outputs data in the following formats:
+
 - MCAP files for recorded data
 - PCAP files for recorded data
 - Live UDP stream over Ethernet
 
 Each point in the point cloud contains:
+
 - Range
 - Signal
 - Reflectivity
@@ -64,9 +72,10 @@ Each point in the point cloud contains:
 
 ## Configuration
 
-
 ### Azimuth Orientation
+
 The 0° azimuth angle aligns with the RJ45 Ethernet connector on the Ouster OS1 sensor. Azimuth angles increase counterclockwise when viewed from above:
+
 - 0°: Towards the Ethernet connector
 - 90°: A quarter turn counterclockwise
 - 180°: Opposite the connector
@@ -76,12 +85,15 @@ The LiDAR settings can be configured using the webui LiDAR config page
 ![LiDAR Azimuth Orientation](assets/lidar-config.png){align=center}
 
 ## Data Visualization
+
 The LiDAR data can be visualized using:
+
 1. Raivin Webui for both live and recorded MCAPs
 2. Rerun visualization tool for both PCAP files and live data
 3. Ouster Studio for live or recorded data
 
 ## Additional Resources
+
 - [Ouster Sensor Documentation][docs]
 - [Ouster OS1 Datasheet][datasheet]
 - [Sensor Data Format Documentation][dataformat]

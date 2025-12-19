@@ -14,9 +14,9 @@ The Cloud Instances Dashboard lists all the active cloud servers that are runnin
 <figcaption>Cloud Instances Page</figcaption>
 </figure>
 
-From this page you can click "Refresh" to refresh the page to see the latest active servers.  You can also select an active server and click "Stop" to terminate this server. 
+From this page you can click "Refresh" to refresh the page to see the latest active servers.  You can also select an active server and click "Stop" to terminate this server.
 
-It is important to stop any running servers that are idle to prevent any unnecessary deductions from your credits.  For example, the AGTG server has an auto-termination mechanism after 15 minutes of inactivity.  However, it is recommended to [stop this server](../datasets/tutorials/annotations/index.md#terminate-agtg-server) if it is no longer being used. 
+It is important to stop any running servers that are idle to prevent any unnecessary deductions from your credits.  For example, the AGTG server has an auto-termination mechanism after 15 minutes of inactivity.  However, it is recommended to [stop this server](../datasets/tutorials/annotations/index.md#terminate-agtg-server) if it is no longer being used.
 
 ## Next Steps
 

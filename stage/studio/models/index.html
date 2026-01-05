@@ -25,7 +25,7 @@
       
       
       <link rel="icon" href="../../assets/favicon.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.0">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.1">
     
     
       
@@ -33,7 +33,7 @@
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/main.618322db.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
       
         
         <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
@@ -1525,6 +1525,17 @@
     <span class="md-ellipsis">
       
         Validation Sessions
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#running-a-model" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Running a model
       
     </span>
   </a>
@@ -7013,6 +7024,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#running-a-model" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Running a model
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#next-steps" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -7120,6 +7142,28 @@
 </figure>
 <p>There are two types of validation: <strong>managed</strong> and <strong>user-managed</strong>. Managed validations are set to default in EdgeFirst Studio which triggers an EC2 instance that downloads the dataset and the inference model for validation. This type of validation is best used if you do not have an embedded platform to deploy the model. User-managed validations are hosted in embedded platforms where the dataset and the inference model will be downloaded. This type of validation is best used if you have an embedded platform available to verify how the model would perform in the platform and determine the model's inference time when deployed.</p>
 <p>For more details regarding deploying validation sessions, please see <a href="../../models/validation/vision/managed/">Validating Vision Models</a> and <a href="../../models/validation/fusion/managed/">Validating Fusion Models</a> for validating Fusion models.</p>
+<h2 id="running-a-model">Running a model</h2>
+<p>Edgefirst Studio allows you to run trained models directly in the web browser. After a model has been trained, open the model details page by clicking on the trainer card. Only models trained on Modelpack are support for live running. From there, click the Run Model button to start running the model.</p>
+<figure>
+<img alt="Model Runner Button" src="../assets/run_model_button.png" />
+
+<figcaption>Model Runner Button</figcaption>
+</figure>
+<p>This will open the model runner dashboard.</p>
+<figure>
+<img alt="Model Runner Dashboard" src="../assets/model_runner_dash.png" />
+
+<figcaption>Model Runner Dashboard</figcaption>
+</figure>
+<p>Please wait while the model loads. This may take up to 60 seconds, depending on the model size.
+Once the model is loaded, select a mode: Live to run the model on images from a camera stream, or Upload to choose a file from local storage.</p>
+<p>The model will run automatically, and the results will be displayed on the screen. The output (segmentation or detection) depends on the type of model being used.</p>
+<p>The count shows the number of interations of model runner.</p>
+<figure>
+<img alt="Model Runner Results" src="../assets/model_runner_results.png" />
+
+<figcaption>Model Runner Results</figcaption>
+</figure>
 <h2 id="next-steps">Next Steps</h2>
 <p>Now that you are familiar with the layout of the Model Experiments Dashboard, proceed to the next section for learning more about the context of the <a href="../instances/">Cloud Instances Dashboard</a>. </p>
 
@@ -7298,10 +7342,10 @@
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["content.code.copy", "content.tabs.link", "navigation.tracking", "navigation.tabs", "navigation.tabs.sticky", "navigation.path", "navigation.indexes", "navigation.top", "toc.follow"], "search": "../../assets/javascripts/workers/search.7a47a382.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"alias": true, "default": "latest", "provider": "mike"}}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["content.code.copy", "content.tabs.link", "navigation.tracking", "navigation.tabs", "navigation.tabs.sticky", "navigation.path", "navigation.indexes", "navigation.top", "toc.follow"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"alias": true, "default": "latest", "provider": "mike"}}</script>
     
     
-      <script src="../../assets/javascripts/bundle.e71a0d61.min.js"></script>
+      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
       
         <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
       

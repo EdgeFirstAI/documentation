@@ -93,7 +93,7 @@ For more details regarding deploying validation sessions, please see [Validating
 
 ## Running a model
 
-Edgefirst Studio allows you to run trained models directly in the web browser. After a model has been trained, open the model details page by clicking on the trainer card. From there, click the Run Model button to start running the model.
+Edgefirst Studio allows you to run trained models directly in the web browser. After a model has been trained, open the model details page by clicking on the trainer card. Only models trained on Modelpack are support for live running. From there, click the Run Model button to start running the model.
 
 <figure markdown="span">
 ![Model Runner Button](assets/run_model_button.png)

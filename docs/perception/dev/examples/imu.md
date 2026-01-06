@@ -1,4 +1,5 @@
 # IMU Schema Example
+
 Topic: [/imu](../../topics/imu.md#imu)  
 Message: [Imu](../../api/sensor_msgs.md#imu)
 Sample Code: [Python](https://github.com/EdgeFirstAI/samples/blob/main/python/imu.py) / [Rust](https://github.com/EdgeFirstAI/samples/blob/main/rust/imu.rs)
@@ -86,7 +87,9 @@ We will now pull out the IMU data from the decoded Imu message and send the quat
     ```
 
 ### Results
+
 The command line output will appear as the following
+
 ```
 X: -0.0125 Y: 0.0383 Z: 0.0698 W: 0.9968
 X: -0.0125 Y: 0.0383 Z: 0.0698 W: 0.9968

@@ -1,4 +1,5 @@
 # Record MCAP
+
 MCAP recordings can be started and stopped using the Recording Button at the device's [top navbar](../../platforms/walkthrough.md#the-top-ribbon).  It is to the left of the MCAP Details hamburger button, which is used to open the [MCAP Details Modal](../../platforms/recording.md#the-mcap-modal).
 <figure markdown="span">
 ![MCAP Recording and Details Buttons](../../platforms/assets/mcap-RecordingButton_McapDetailsButton.png){align=center}
@@ -11,6 +12,7 @@ Both of these buttons are available on every page of the Maivin, Raivin, and oth
 For more information about recording MCAPs, please read the [MCAP Recording section](../../platforms/recording.md).
 
 ## Start Recording
+
 To start a recording, simply click the "Recording" button to begin capturing data.
 
 <figure markdown="span">
@@ -36,4 +38,5 @@ If you were to open the MCAP Details Modal while recording, you would see a new 
 </figure>
 
 ## Stop Recording
+
 To stop recording, click the "Recording" button a second time.

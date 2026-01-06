@@ -30,6 +30,12 @@ jobs:
       - name: Install dependencies
         run: pip install -r requirements.txt
 
+      - name: Lint Markdown
+        run: |
+          npm install -g markdownlint-cli2
+          markdownlint-cli2 "docs/**/*.md" || true
+        continue-on-error: true
+
       - name: Configure Git user
         run: |
           git config --local user.email "support@edgefirst.ai"
@@ -42,3 +48,9 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: mike deploy --push ${{ github.ref_name }}
+
+      - name: Set default version
+        if: github.ref_name == 'saas'
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: mike set-default --push latest

@@ -35,9 +35,9 @@ The BDD100K dataset is a large-scale driving video dataset containing 100,000 vi
 ## Dataset Information
 
 - **Groups**:
-    - train: 70000 images
-    - val: 10000 images
-    - test: 20000 images
+  - train: 70000 images
+  - val: 10000 images
+  - test: 20000 images
 
 The dataset contains a total of 100,000 images and 10 different classes.
 

@@ -1,10 +1,10 @@
 # Segmentation Metrics
 
-This section will describe the validation metrics reported in [Validating Vision Models](../vision/managed.md) for segmentation.  The different types of validation methods available are Ultralytics, EdgeFirst, and YOLOv7.  These validation methods have been implemented in EdgeFirst Validator to reproduce specific metrics seen in other applications.  These metrics and their differences will be described in more detail below. 
+This section will describe the validation metrics reported in [Validating Vision Models](../vision/managed.md) for segmentation.  The different types of validation methods available are Ultralytics, EdgeFirst, and YOLOv7.  These validation methods have been implemented in EdgeFirst Validator to reproduce specific metrics seen in other applications.  These metrics and their differences will be described in more detail below.
 
 ## Ultralytics Segmentation Metrics
 
-We define the same metrics for segmentation as object detection for Ultralytics by providing scores for Mean Precision, Mean Recall, F1, and the mean Average Precision (mAP) as described under the [Object Detection Metrics](detection.md#ultralytics-detection-metrics) section. 
+We define the same metrics for segmentation as object detection for Ultralytics by providing scores for Mean Precision, Mean Recall, F1, and the mean Average Precision (mAP) as described under the [Object Detection Metrics](detection.md#ultralytics-detection-metrics) section.
 
 ## EdgeFirst Segmentation Metrics
 
@@ -15,7 +15,7 @@ The segmentation metrics describe the average precision, recall, and accuracy.  
   <figcaption>Segmentation Metrics</figcaption>
 </figure>
 
-The equations for precision, recall, and accuracy are similar to object detection, except that in segmentation we are classifying predictions as either true or false on a pixel-by-pixel basis.  Shown below are the equations for precision, recall, and accuracy/F1. 
+The equations for precision, recall, and accuracy are similar to object detection, except that in segmentation we are classifying predictions as either true or false on a pixel-by-pixel basis.  Shown below are the equations for precision, recall, and accuracy/F1.
 
 $$
 \text{precision} = \frac{\text{true predictions}}{\text{total predictions}}
@@ -63,7 +63,7 @@ This section will show an example of how segmentation metrics are calculated.  C
   <figcaption>Prediction Mask</figcaption>
 </figure>
 
-We start by calculating the metrics per class which is the precision, recall, and accuracy for class A and B.  Class background is not included in the computations because it dilutes the relevant classes A and B since most of the area in the mask is typically classified as background. 
+We start by calculating the metrics per class which is the precision, recall, and accuracy for class A and B.  Class background is not included in the computations because it dilutes the relevant classes A and B since most of the area in the mask is typically classified as background.
 
 **Class A Metrics**
 

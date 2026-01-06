@@ -2,9 +2,9 @@
 
 Now that you have validated your Vision Model from either a [managed](../validation/vision/managed.md) or [user-managed](../validation/vision/user_managed.md) session, this guide will walk you through deploying Vision models in a [Maivin Platform](../../platforms/index.md).  
 
-**Maivin 1** | **Maivin 2** 
+**Maivin 1** | **Maivin 2**
 :-----------:|:--------------:
-![Maivin 1](../../platforms/assets/maivin-1.png) | ![Maivin 2](../../platforms/assets/maivin-2.png) 
+![Maivin 1](../../platforms/assets/maivin-1.png) | ![Maivin 2](../../platforms/assets/maivin-2.png)
 
 This guide will showcase two methods of deploying the model.
 
@@ -29,12 +29,12 @@ You will be greeted with the Maivin [Web UI Main Page](../../platforms/walkthrou
 
 For more information, please see the [Web UI Walkthrough](../../platforms/walkthrough.md).
 
-## Update the Model Path 
+## Update the Model Path
 
 Next you will need to specify the path to the model in the device.  You can either update the model path in the Web UI or via the command line.
 
 !!! note "Configure Model Settings"
-    Whenever a new model has been updated, ensure that the [model settings](../../platforms/configuration.md#model-configuration) such as the score and the IoU thresholds are ideally set for this model. 
+    Whenever a new model has been updated, ensure that the [model settings](../../platforms/configuration/model.md) such as the score and the IoU thresholds are ideally set for this model.
 
 === "via Web UI"
 
@@ -117,7 +117,7 @@ Now that the model has been updated, you can [make new recordings](../../platfor
 
 ## Inference Visualization in Foxglove
 
-Once the MCAP recording has been downloaded, you can use Foxglove Studio to see the playback of MCAP recordings and the model inference.  The following preview is a frame from the MCAP with the model inference masks overlaid on top of the video. 
+Once the MCAP recording has been downloaded, you can use Foxglove Studio to see the playback of MCAP recordings and the model inference.  The following preview is a frame from the MCAP with the model inference masks overlaid on top of the video.
 
 <figure markdown="span">
 ![Foxglove Sample 1](../assets/deployment/foxglove-sample-1.jpg){ align=center }
@@ -128,7 +128,7 @@ More information on the MCAP playback is provided in [Foxglove Studio](../../pla
 
 ## Next Steps
 
-In this tutorial, you have fetched the trained and validated model from EdgeFirst Studio, copied the model in the Maivin, configured the Maivin model services, and ran inference on the model in the device.  You have seen the model running live using the Maivin's camera and ran a Maivin MCAP recording to capture the model inference in the frames that can be visualized using Foxglove Studio. 
+In this tutorial, you have fetched the trained and validated model from EdgeFirst Studio, copied the model in the Maivin, configured the Maivin model services, and ran inference on the model in the device.  You have seen the model running live using the Maivin's camera and ran a Maivin MCAP recording to capture the model inference in the frames that can be visualized using Foxglove Studio.
 
 See our [developer guide](../../perception/dev/examples/model.md) for examples to query the model outputs using Rust or Python.
 

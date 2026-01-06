@@ -7,4 +7,6 @@ mkdocs-material
 mkdocstrings-python
 mkdocs-include-markdown-plugin
 mkdocs-spellcheck[codespell,symspellpy]
+pillow
+cairosvg
 black

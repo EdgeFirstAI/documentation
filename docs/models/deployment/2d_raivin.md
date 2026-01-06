@@ -34,7 +34,7 @@ For more information, please see the [Web UI Walkthrough](../../platforms/walkth
 Next you will need to specify the path to the model in the device.  You can either update the model path in the Web UI or via the command line.
 
 !!! note "Configure Model Settings"
-    Whenever a new model has been updated, ensure that the [model settings](../../platforms/configuration.md#model-configuration) such as the score and the IoU thresholds are ideally set for this model. 
+    Whenever a new model has been updated, ensure that the [model settings](../../platforms/configuration/model.md) such as the score and the IoU thresholds are ideally set for this model.
 
 === "via Raivin Web UI"
 
@@ -83,14 +83,14 @@ Next you will need to specify the path to the model in the device.  You can eith
 
 ## Enable and Start the Camera and Model Services
 
-Once the model path in the device is specified, ensure that all services are enabled.  To verify, go back to the settings and click on the "Service Status" button.
+Once the model path in the device is specified, ensure that the model and camera services are enabled and running.  To verify, go back to the settings and click on the "Service Status" button.
 
 <figure markdown="span">
 ![Service Status](../assets/deployment/raivin-service-status.jpg){ align=center }
 <figcaption>Service Status</figcaption>
 </figure>
 
-You will be greeted with the "Service Overview" page.  Ensure that all services are enabled and running by toggling the "Enable" and "Start" buttons as shown.  Only "Enable" the "recorder" service as shown.  You will be using the recorder service in [MCAP Recording](../../platforms/recording.md#record-mcap).
+You will be greeted with the "Service Overview" page.  Ensure that the model and camera services are enabled and running as shown.  You do not need to enable or start the recorder service, as we will be starting the recorder service as described in [MCAP Recording](../../platforms/recording.md).
 
 <figure markdown="span">
 ![Service Overview](../assets/deployment/raivin-service-overview.jpg){ align=center }
@@ -117,7 +117,7 @@ Now that the model has been updated, you can [make new recordings](../../platfor
 
 ## Inference Visualization in Foxglove
 
-Once the MCAP recording has been downloaded, you can use Foxglove Studio to see the playback of MCAP recordings and the model inference.  The following preview is a frame from the MCAP with the model inference masks overlaid on top of the video. 
+Once the MCAP recording has been downloaded, you can use Foxglove Studio to see the playback of MCAP recordings and the model inference.  The following preview is a frame from the MCAP with the model inference masks overlaid on top of the video.
 
 <figure markdown="span">
 ![Foxglove Sample 1](../assets/deployment/foxglove-sample-1.jpg){ align=center }
@@ -128,7 +128,7 @@ More information on the MCAP playback is provided in [Foxglove Studio](../../pla
 
 ## Next Steps
 
-In this tutorial, you have fetched the trained and validated model from EdgeFirst Studio, copied the model in the Raivin, configured the Raivin model services, and ran inference on the model in the device.  You have seen the model running live using the Raivin's camera and Radar module, and ran a Raivin MCAP recording to capture the model inferences in the frame that can be visualized using Foxglove Studio. 
+In this tutorial, you have fetched the trained and validated model from EdgeFirst Studio, copied the model in the Raivin, configured the Raivin model services, and ran inference on the model in the device.  You have seen the model running live using the Raivin's camera and Radar module, and ran a Raivin MCAP recording to capture the model inferences in the frame that can be visualized using Foxglove Studio.
 
 See our [developer guide](../../perception/dev/examples/model.md) for examples to query the model outputs using Rust or Python.
 

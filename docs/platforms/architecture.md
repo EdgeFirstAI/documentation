@@ -7,8 +7,8 @@ vision and AI (Python, OpenCV, etc...).
 
 Central to the EdgeFirst Perception Modules is the EdgeFirst Perception Middleware, what we call our
 collection of applications and libraries used in the implementation of the perception stack.  The
-details of the low-level libraries are covered in the EdgeFirst Perception Developer Guide, for 
-this document we focus on describing the application services and how they fit together to deliver 
+details of the low-level libraries are covered in the EdgeFirst Perception Developer Guide, for
+this document we focus on describing the application services and how they fit together to deliver
 the perception middleware.
 
 ## Middleware Services

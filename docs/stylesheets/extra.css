@@ -1,0 +1,172 @@
+/* EdgeFirst Brand Stylesheet
+ * Applies EdgeFirst brand colors and styling to MkDocs Material theme
+ */
+
+:root {
+  /* EdgeFirst Primary Colors */
+  --color-navy: #3E3371;
+  --color-gold-primary: #E8B820;
+  --color-gold-secondary: #E3A501;
+
+  /* EdgeFirst Secondary Colors */
+  --color-teal: #1FA0A8;
+  --color-blue: #8FA3D4;
+  --color-indigo-deep: #4B0082;
+
+  /* EdgeFirst Backgrounds */
+  --color-violet-light: #E6E6FA;
+  --color-violet-whisper: #F0EDF8;
+
+  /* Override Material Theme - Light Mode */
+  --md-primary-fg-color: var(--color-navy);
+  --md-primary-fg-color--light: #5a4d8a;
+  --md-primary-fg-color--dark: #2d2555;
+  --md-primary-bg-color: #FFFFFF;
+  --md-primary-bg-color--light: #FFFFFF;
+  --md-accent-fg-color: var(--color-gold-primary);
+  --md-accent-fg-color--transparent: rgba(232, 184, 32, 0.1);
+  --md-accent-bg-color: var(--color-navy);
+  --md-accent-bg-color--light: var(--color-violet-light);
+
+  /* Link colors */
+  --md-typeset-a-color: var(--color-teal);
+}
+
+/* Dark mode overrides */
+[data-md-color-scheme="slate"] {
+  --md-primary-fg-color: var(--color-navy);
+  --md-primary-fg-color--light: #5a4d8a;
+  --md-primary-fg-color--dark: #2d2555;
+  --md-accent-fg-color: var(--color-gold-primary);
+  --md-accent-fg-color--transparent: rgba(232, 184, 32, 0.1);
+  --md-typeset-a-color: var(--color-teal);
+
+  /* Code block background */
+  --md-code-bg-color: #1e1e1e;
+}
+
+/* Header styling */
+.md-header {
+  background-color: var(--color-navy);
+}
+
+/* Navigation tabs */
+.md-tabs {
+  background-color: var(--color-navy);
+}
+
+/* Link hover state */
+.md-typeset a:hover {
+  color: var(--color-gold-primary);
+}
+
+/* Admonition customizations */
+
+/* Note - Light Violet */
+.md-typeset .admonition.note,
+.md-typeset details.note {
+  border-color: var(--color-navy);
+}
+.md-typeset .note > .admonition-title,
+.md-typeset .note > summary {
+  background-color: var(--color-violet-light);
+}
+.md-typeset .note > .admonition-title::before,
+.md-typeset .note > summary::before {
+  background-color: var(--color-navy);
+}
+
+/* Tip - Light Teal */
+.md-typeset .admonition.tip,
+.md-typeset details.tip {
+  border-color: var(--color-teal);
+}
+.md-typeset .tip > .admonition-title,
+.md-typeset .tip > summary {
+  background-color: #E6F7F8;
+}
+.md-typeset .tip > .admonition-title::before,
+.md-typeset .tip > summary::before {
+  background-color: var(--color-teal);
+}
+
+/* Warning - Light Gold */
+.md-typeset .admonition.warning,
+.md-typeset details.warning {
+  border-color: var(--color-gold-primary);
+}
+.md-typeset .warning > .admonition-title,
+.md-typeset .warning > summary {
+  background-color: #FFF8E6;
+}
+.md-typeset .warning > .admonition-title::before,
+.md-typeset .warning > summary::before {
+  background-color: var(--color-gold-primary);
+}
+
+/* Info admonition - use Teal */
+.md-typeset .admonition.info,
+.md-typeset details.info {
+  border-color: var(--color-teal);
+}
+.md-typeset .info > .admonition-title,
+.md-typeset .info > summary {
+  background-color: #E6F7F8;
+}
+.md-typeset .info > .admonition-title::before,
+.md-typeset .info > summary::before {
+  background-color: var(--color-teal);
+}
+
+/* Button styling */
+.md-typeset .md-button--primary {
+  background-color: var(--color-navy);
+  border-color: var(--color-navy);
+}
+
+.md-typeset .md-button--primary:hover {
+  background-color: var(--color-gold-primary);
+  border-color: var(--color-gold-primary);
+  color: var(--color-navy);
+}
+
+/* Footer styling */
+.md-footer {
+  background-color: var(--color-navy);
+}
+
+/* Announcement banner styling */
+.md-banner {
+  background-color: var(--color-navy);
+}
+
+.md-banner a,
+.md-banner__inner {
+  color: var(--color-gold-primary);
+}
+
+.md-banner a:hover {
+  color: #ffffff;
+}
+
+.md-banner svg {
+  fill: var(--color-gold-primary);
+}
+
+.md-banner a:hover svg {
+  fill: #ffffff;
+}
+
+/* Search highlight */
+.md-search__form {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+/* Table header styling */
+.md-typeset table:not([class]) th {
+  background-color: var(--color-violet-whisper);
+}
+
+[data-md-color-scheme="slate"] .md-typeset table:not([class]) th {
+  background-color: rgba(62, 51, 113, 0.3);
+}

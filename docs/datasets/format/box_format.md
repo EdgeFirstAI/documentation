@@ -1,132 +1,217 @@
-# 2D Bounding Box Formats
+# Bounding Box Formats
 
-This section describes the different formats of 2D bounding box annotations.  These annotation formats are different ways of representing the same annotation and position of the bounding boxes surrounding the objects in an image.
+This page explains how 2D bounding boxes work in the EdgeFirst Dataset Format, including coordinate systems, normalized coordinates, and the differences between Arrow and JSON formats.
 
-## Annotation Formats
+## Understanding Normalized Coordinates
 
-Currently, there are three recognized formats:
+All coordinates in EdgeFirst are **normalized to 0–1 range**. This makes annotations independent of image resolution—the same annotation works for 640×480 images or 4K (3840×2160) images.
 
-1. [YOLO](https://docs.ultralytics.com/datasets/detect/)
-2. [PASCAL VOC](https://labelformat.com/formats/object-detection/pascalvoc/)
-3. [COCO](https://cocodataset.org/#format-data)
-
-### YOLO Format
-
-The YOLO format describes the bounding boxes in the following way: `class xc yc width height`.
-
-The class is an integer which represents the object class ID.  The object class ID represents the index of the object in a unique set of labels.
-
-For example, if the unique set of labels is the following below.
-
-```
-background
-person
-car
+```text
+normalized_x = pixel_x / image_width
+normalized_y = pixel_y / image_height
 ```
 
-If the object class ID is 1, then the object label would be "person". Similarly, 2 would point to "car" and 0 is "background".
+### Why Normalization?
 
-Consider the following image below as a reference with a bounding box around the person in the center of the image.
-
-<figure markdown="span">
-![YOLO Format](../assets/format/yolo_format.png){ align=center }
-<figcaption>YOLO Format</figcaption>
-</figure>
-
-The coordinate *xc* represents the center of the bounding box normalized to the image width, *W*.  This means that if *x_center* is the x-coordinate of the center of the bounding box in pixels, then 
-
-```
-xc = x_center/W
-xc = 646/1280 = 0.5046875
-```
-
-The coordinate *yc* has the same idea, except that this coordinate is normalized to the image height, *H*.  This means that if *y_center* is the y-coordinate of the center of the bounding box in pixels, then
-
-```
-yc = y_center/H
-yc = 403/720 = 0.5597222
+```mermaid
+%%{init: {'flowchart': {'padding': '40'}}}%%
+graph TB
+    subgraph Raw["Pixel Coordinates (Resolution-Specific)"]
+        P1["640×480 image - pixel 320,240"]
+        P2["3840×2160 image - pixel 1920,1080"]
+    end
+    
+    subgraph Norm["Normalized (Universal)"]
+        N["Both = (0.5, 0.5) - center of image"]
+    end
+    
+    P1 -->|"÷ 640, ÷ 480"| N
+    P2 -->|"÷ 3840, ÷ 2160"| N
+    
+    style Raw fill:#fff9c4,stroke:#f57f17,stroke-width:2px
+    style Norm fill:#c8e6c9,stroke:#388e3c,stroke-width:2px
 ```
 
-The *width* is not the width of the image.  The *width* is the normalized width of the bounding box.  This means that if *bbx_width* represents the width of the bounding box in pixels, then
+**Benefits**:
 
-```
-width = bbx_width/W
-width = 188/1280 = 0.146875
-```
+- Resize images without updating annotations
+- Combine datasets with different resolutions
+- Share models across camera resolutions
 
-The *height* has the same idea, except that this dimension is normalized to the height of the image.  This means that if *bbx_height* represents the height of the bounding box in pixels, then
+## Coordinate Systems
 
-```
-height = bbx_height/H
-height = 460/720 = 0.6388889
-```
+EdgeFirst uses **top-left origin** for image coordinates (same as most image libraries):
 
-!!! note
-    The values for *xc, yc, width, and height* are floating-point values. 
-
-Finally, a text file annotation in a Darknet dataset would contain the line `1 0.5046875 0.5597222 0.146875 0.6388889`.
-
-### PascalVOC Format
-
-The PASCAL VOC format describes the bounding boxes in the following way: `class x1 y1 x2 y2`.
-
-The class follows the same idea as the YOLO format above.  However, the coordinates are represented differently.
-
-Consider the following image below as a reference with a bounding box around the person in the center of the image.
-
-<figure markdown="span">
-![PascalVOC Format](../assets/format/pascalvoc_format.png){ align=center }
-<figcaption>PascalVOC Format</figcaption>
-</figure>
-
-The coordinates point to the corners of the bounding box in pixels as shown below.
-
-<figure markdown="span">
-![Box Corners](../assets/format/pascalvoc_format_2.png){ align=center }
-<figcaption>Box Corners</figcaption>
-</figure>
-
-If the width of the image is *W*, and the height of the image is *H*, then the coordinates in PascalVOC format are described below.
-
-```
-x1 = Xmin/W = 552/1280 = 0.43125
-y1 = Ymin/H = 174/720 = 0.241667
-x2 = Xmax/W = 740/1280 = 0.578125
-y2 = Ymax/H = 634/720 = 0.880556
+```text
+(0,0) ─────────────────> x (normalized: 0 to 1)
+  │
+  │     Box example:
+  │     ┌─────┐ (cx, cy) = center
+  │     │  ●  │ 
+  │     └─────┘
+  │     width, height
+  ▼
+  y (normalized: 0 to 1)
 ```
 
-!!! note
-    The coordinates x1, y1, x2, and y2 are all floating-point values.
+## EdgeFirst Box2D Format
 
-Finally, a text file annotation in a Darknet dataset would contain the line `1 0.43125 0.241667 0.578125 0.880556`.
+In the EdgeFirst Dataset Format, 2D bounding boxes are stored in the `box2d` column as a fixed-size array.
 
-### COCO Format
+### Arrow Format (Primary)
 
-The COCO format is a combination of both YOLO and PascalVOC format and describes the bounding boxes in the following way: `class x1 y1 width height`.
+The Arrow file stores `box2d` as a **center-based** array:
 
-The class follows the same idea as the YOLO format.  In addition, *x1* and *y1* follow the same calculations as the *x1* and *y1* in PascalVOC format.  Finally, the *width* and the *height* follow the same calculations as the YOLO format as these represent the normalized width and the height of the bounding box respectively. 
-
-Consider the following image below as a reference with a bounding box around the person in the center of the image.
-
-<figure markdown="span">
-![COCO Format](../assets/format/coco_format.png){ align=center }
-<figcaption>COCO Format</figcaption>
-</figure>
-
-```
-x1 = Xmin/W = 552/1280 = 0.43125
-y1 = Ymin/H = 174/720 = 0.241667
-width = bbx_width/W = 188/1280 = 0.146875
-height = bbx_height/H = 460/720 = 0.638889
+```python
+box2d: Array(Float32, shape=(4,))  # [cx, cy, width, height]
 ```
 
-!!! note
-    The coordinates x1, y1, x2, and y2 are all floating-point values.
+| Index | Field | Description |
+|-------|-------|-------------|
+| 0 | `cx` | Center X coordinate (normalized 0–1) |
+| 1 | `cy` | Center Y coordinate (normalized 0–1) |
+| 2 | `width` | Box width (normalized 0–1) |
+| 3 | `height` | Box height (normalized 0–1) |
 
-Finally, a text file annotation in a Darknet dataset would contain the line `1 0.43125 0.241667 0.146875 0.638889`
+**Example**:
+
+```python
+box2d = [0.691406, 0.368056, 0.015104, 0.050926]
+#        cx        cy        width     height
+```
+
+This format aligns with ML frameworks like YOLO, making it efficient for training pipelines.
+
+### JSON Format (Legacy)
+
+The JSON format uses a **top-left corner** representation for legacy Studio API compatibility:
+
+```json
+{
+  "box2d": {
+    "x": 0.683854,
+    "y": 0.342593,
+    "w": 0.015104,
+    "h": 0.050926
+  }
+}
+```
+
+| Field | Description |
+|-------|-------------|
+| `x` | Left edge (normalized 0–1) |
+| `y` | Top edge (normalized 0–1) |
+| `w` | Box width (normalized 0–1) |
+| `h` | Box height (normalized 0–1) |
+
+!!! warning "Format Difference"
+    The Arrow and JSON formats use different coordinate origins:
+
+    - **Arrow**: Center-based `[cx, cy, w, h]`
+    - **JSON**: Top-left `{x, y, w, h}` (legacy)
+    
+    The [`edgefirst_client`](../../perception/api/studio.md) library handles these conversions automatically.
+
+### Conversion Between Formats
+
+**Arrow → JSON** (center to top-left):
+
+```python
+x = cx - width / 2
+y = cy - height / 2
+# w, h stay the same
+```
+
+**JSON → Arrow** (top-left to center):
+
+```python
+cx = x + width / 2
+cy = y + height / 2
+# w, h stay the same
+```
+
+## Box2D in the Schema
+
+The `box2d` field is one column in the annotation schema. Related fields include:
+
+| Column | Type | Description |
+|--------|------|-------------|
+| `label` | Categorical | Object class (e.g., "person", "car") |
+| `label_index` | UInt64 | Numeric index for ML models |
+| `box2d` | Array(Float32, 4) | 2D bounding box `[cx, cy, w, h]` |
+| `box3d` | Array(Float32, 6) | 3D bounding box |
+| `mask` | List(Float32) | Segmentation polygon |
+| `object_id` | String | UUID for tracking across frames |
+
+See [Annotation Schema](schema.md) for the complete field reference.
+
+!!! tip "How boxes are created"
+    In EdgeFirst Studio, bounding boxes can be created through:
+
+    - **[Manual annotation](../tutorials/annotations/manual.md)**: Draw boxes directly on images in the Instance Dashboard
+    - **[Automatic annotation (AGTG)](../tutorials/annotations/automatic.md)**: AI-powered detection using SAM-2 generates `box2d` automatically
+    - **[Model inference](../../models/index.md)**: Running trained models on datasets creates predicted boxes
+    
+    All methods store boxes in the center-based format in the Arrow file.
+
+!!! tip "edgefirst-client abstracts format differences"
+    The [`edgefirst_client`](../../perception/api/studio.md#edgefirst_client.Box2d) Python library handles format conversions automatically, allowing you to work with your preferred coordinate system regardless of how annotations are stored internally.
+
+## 3D Bounding Boxes
+
+The `box3d` column stores 3D bounding boxes in world coordinates:
+
+```python
+box3d: Array(Float32, shape=(6,))  # [x, y, z, width, height, length]
+```
+
+| Index | Field | Description |
+|-------|-------|-------------|
+| 0 | `x` | Center X in meters |
+| 1 | `y` | Center Y in meters |
+| 2 | `z` | Center Z in meters |
+| 3 | `width` | Width (Y-axis) |
+| 4 | `height` | Height (Z-axis) |
+| 5 | `length` | Length (X-axis) |
+
+**Coordinate frame**: ROS convention (X=forward, Y=left, Z=up)
+
+**Origin**: Center of capture device (e.g., Maivin) at (0, 0, 0)
+
+!!! note "Consistent format"
+    Unlike `box2d`, the `box3d` format is **identical** in both Arrow and JSON—both use center-point representation.
+
+## Common Box Format Standards
+
+For reference, here's how EdgeFirst compares to other common formats:
+
+| Format | Representation | Used By |
+|--------|---------------|---------|
+| **EdgeFirst Arrow** | `[cx, cy, w, h]` (center) | Arrow files, ML training |
+| **EdgeFirst JSON** | `{x, y, w, h}` (top-left) | Legacy Studio API |
+| **YOLO** | `cx cy w h` (center, normalized) | Darknet, Ultralytics |
+| **COCO** | `[x, y, w, h]` (top-left, pixels) | MS COCO dataset |
+| **Pascal VOC** | `[x1, y1, x2, y2]` (corners, pixels) | Pascal VOC dataset |
+
+The EdgeFirst Arrow format aligns with YOLO conventions, making it straightforward to use with popular ML frameworks.
+
+## Debugging Boxes
+
+If your boxes look wrong, check these common issues:
+
+| Problem | Cause | Fix |
+|---------|-------|-----|
+| Box appears too small | Coordinates in pixels, not normalized | Divide by image width/height |
+| Box off-center | Using JSON format as Arrow | Convert: `cx = x + w/2` |
+| Box position wrong | Coordinate origin confusion | Verify top-left (0,0) origin |
+| Box too large | Swapped width/height | Check order of w and h |
 
 ## Further Reading
 
-This section has described three different annotation formats for describing 2D bounding box annotations: YOLO, PascalVOC, and COCO. 
-
-Next, take a look at the conventions followed for the [EdgeFirst Dataset Structure](../structure.md) which describes how the file structure is organized depending if the dataset is sequence-based or not.
+- [Annotation Schema](schema.md) — Complete field reference for all annotation columns
+- [Sensors](sensors.md) — Understand camera specifications and EXIF data
+- [Dataset Organization](structure.md) — How files are organized on disk
+- [Format Conversion](conversion.md) — Converting between Arrow and JSON
+- [AGTG (Automatic Annotation)](../../studio/agtg.md) — Auto-generate box annotations using AI
+- [Model Training](../../models/training/vision.md) — Train object detection models with your boxes
+- [edgefirst-client API](../../perception/api/studio.md) — Python API for working with annotations

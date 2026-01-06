@@ -64,7 +64,7 @@ You can create tags for images.  These tags can be used to filter out images of 
 
 ## Copy Selected Items
 
-You can copy selected items to another dataset.  This operation can be found under the "ACTIONS" dropdown.  The copy dialog will appear. 
+You can copy selected items to another dataset.  This operation can be found under the "ACTIONS" dropdown.  The copy dialog will appear.
 
 <figure markdown="span">
 ![Copy Selected Items](../assets/datasets/copy-selected-items.png){ align=center }

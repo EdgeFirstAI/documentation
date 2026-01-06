@@ -34,7 +34,7 @@ For more information, please see the [Web UI Walkthrough](../../platforms/walkth
 Next you will need to specify the path to the model in the device.  You can either update the model path in the Web UI or via the command line.
 
 !!! note "Configure Model Settings"
-    Whenever a new model has been updated, ensure that the [model settings](../../platforms/configuration.md#model-configuration) such as the score and the IoU thresholds are ideally set for this model. 
+    Whenever a new model has been updated, ensure that the [model settings](../../platforms/configuration/model.md) such as the score and the IoU thresholds are ideally set for this model.
 
 === "via Web UI"
 
@@ -83,7 +83,7 @@ Once the model path in the device is specified, ensure that all services are ena
 <figcaption>Service Status</figcaption>
 </figure>
 
-You will be greeted with the "Service Overview" page.  Ensure that all services are enabled and running by toggling the "Enable" and "Start" buttons as shown.  Only "Enable" the "recorder" service as shown.  You will be using the recorder service in [MCAP Recording](../../platforms/recording.md#record-mcap).
+You will be greeted with the "Service Overview" page.  Ensure that all services are enabled and running by toggling the "Enable" and "Start" buttons as shown.  Only "Enable" the "recorder" service as shown.  You will be using the recorder service in [MCAP Recording](../../platforms/recording.md).
 
 <figure markdown="span">
 ![Service Overview](../assets/deployment/raivin-service-overview.jpg){ align=center }
@@ -126,7 +126,7 @@ More information on the MCAP playback is provided in [Foxglove Studio](../../pla
 
 ## Next Steps
 
-In this tutorial, you have fetched the trained and validated model from EdgeFirst Studio, copied the model in the Raivin, configured the Raivin model services, and ran inference on the model in the device.  You have seen the model running live using the Raivin's camera and Radar module, and ran a Raivin MCAP recording to capture the model inferences in the frame that can be visualized using Foxglove Studio. 
+In this tutorial, you have fetched the trained and validated model from EdgeFirst Studio, copied the model in the Raivin, configured the Raivin model services, and ran inference on the model in the device.  You have seen the model running live using the Raivin's camera and Radar module, and ran a Raivin MCAP recording to capture the model inferences in the frame that can be visualized using Foxglove Studio.
 
 See our [developer guide](../../perception/dev/examples/model.md) for examples to query the model outputs using Rust or Python.
 

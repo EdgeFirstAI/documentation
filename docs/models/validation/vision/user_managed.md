@@ -1,6 +1,6 @@
 # On Target Validation
 
-This tutorial will show the steps for running validation on target.  This type of validation is hosted as a user-managed validation session in EdgeFirst Studio.  A user-managed validation session is hosted in an embedded platform for a proper assessment of the model performance and timings when deployed on target.  In this tutorial, you will validate a **Vision** model that was trained through the [end-to-end workflows](../../../getting_started/workflows/index.md) or [Training Vision](../../training/vision.md).   
+This tutorial will show the steps for running validation on target.  This type of validation is hosted as a user-managed validation session in EdgeFirst Studio.  A user-managed validation session is hosted in an embedded platform for a proper assessment of the model performance and timings when deployed on target.  In this tutorial, you will validate a **Vision** model that was trained through the [end-to-end workflows](../../../getting_started/workflows/index.md) or [Training Vision](../../training/vision.md).
 
 Another type of validation is the [On Cloud Validation](managed.md) which is hosted as a managed validation session in EdgeFirst Studio.  A managed validation session creates an EC2 server to deploy the model for validation.
 
@@ -9,18 +9,25 @@ Another type of validation is the [On Cloud Validation](managed.md) which is hos
 
 {% include-markdown "discrete/studio/create_mpk_validation_session.md" %}
 
-You will be greeted with a validation session dialog.  In this dialog, check the "User Managed Validator" checkbox.  Next specify the name of the validation session, the model to validate, and the dataset to deploy.  In this example, the TFLite model will be validated and the "Coffee Cup" dataset with the validation partition will be used.  Next specify, the validation parameters on the right.  Additional information on these parameters are provided by hovering over the info button ![Info Button](../../../assets/buttons/studio-info-button.jpg). 
+You will be greeted with a validation session dialog.  In this dialog, check the "User Managed Validator" checkbox.  Next specify the name of the validation session, the model to validate, and the dataset to deploy.  In this example, the TFLite model will be validated and the "Coffee Cup" dataset with the validation partition will be used.  Next specify, the validation parameters on the right.  Additional information on these parameters are provided by hovering over the info button ![Info Button](../../../assets/buttons/studio-info-button.jpg).
 
 <figure markdown="span">
 ![Validation Session Fields](../../assets/validation/user-managed-vision-session-fields.jpg){ align=center }
 <figcaption>Validation Session Fields</figcaption>
 </figure>
 
-Once the configurations have been made, go ahead and click on the "Start Session" button on the bottom right of the window.  This will create the validation session to track validation progress that will run in the embedded platform. 
+Once the configurations have been made, go ahead and click on the "Start Session" button on the bottom right of the window.  This will create the validation session to track validation progress that will run in the embedded platform.
+
+The validation session card will appear like the following below.  Each session has a session ID.  Make a note of the session ID circled in red below.  In this case it is `v-c1f`.
+
+<figure markdown="span">
+![Validation Session ID](../../assets/validation/user-managed-vision-session-id.jpg){ align=center }
+<figcaption>Validation Session ID</figcaption>
+</figure>
 
 ## Session Progress
 
-Once the validation session has been created, [SSH](../../../platforms/ssh.md) into the platform and install the following dependencies. 
+Once the validation session has been created, [SSH](../../../platforms/ssh.md) into the platform and install the following dependencies.
 
 !!! warning "Virtual Environment"
     To avoid re-installation of existing system packages, we recommend setting up a [Python virtual environment](https://docs.python.org/3/library/venv.html#creating-virtual-environments)
@@ -38,7 +45,7 @@ Once the validation session has been created, [SSH](../../../platforms/ssh.md) i
 pip install edgefirst-validator
 ```
 
-Next login to your account in EdgeFirst Studio by using the [EdgeFirst Client](../../../perception/studio.md) which comes installed with the validator package. The command below will prompt you to enter your EdgeFirst Studio credentials. 
+Next login to your account in EdgeFirst Studio by using the [EdgeFirst Client](../../../perception/studio.md) which comes installed with the validator package. The command below will prompt you to enter your EdgeFirst Studio credentials.
 
 ```
 edgefirst-client login
@@ -48,9 +55,9 @@ edgefirst-client login
     Specify the EdgeFirst Studio server using `--server` among these variations: "test", "stage", "saas".  This is an optional parameter as the default is set to "saas".  To modify the studio server, first `edgefirst-client logout` then `edgefirst-client --server <server> login`.
 
 !!! info "EdgeFirst Studio Token"
-    Once logged in, an EdgeFirst Studio Token will be saved under `~/.config/edgefirststudio/token` granting access to the EdgeFirst Studio API which will remain valid for a period of time, usually 12 hours. Using this token will refresh the expiration timer. 
+    Once logged in, an EdgeFirst Studio Token will be saved under `~/.config/edgefirststudio/token` granting access to the EdgeFirst Studio API which will remain valid for a period of time, usually 12 hours. Using this token will refresh the expiration timer.
 
-Once the validator is installed and authenticated, run validation using the following command.
+Once the validator is installed and authenticated, run validation using the following command.  Replace the session ID specific to your session card.
 
 ```shell
 edgefirst-validator --session-id v-c1f
@@ -84,7 +91,7 @@ The attributes of the validation sessions in EdgeFirst Studio are labeled below.
 <figcaption>Validation Session Attributes</figcaption>
 </figure>
 
-## Validation Metrics 
+## Validation Metrics
 
 Once the validation session completes, you can view the validation metrics by clicking the "View Validation Charts" button on the top of the session card.
 
@@ -96,7 +103,7 @@ Once the validation session completes, you can view the validation metrics by cl
 !!! info
     See [detection](../metrics/detection.md) and [segmentation](../metrics/segmentation.md) metrics for further details.
 
-You can go back to the validation session card by pressing the "Back" button as indicated in red below on the top left corner of the page. 
+You can go back to the validation session card by pressing the "Back" button as indicated in red below on the top left corner of the page.
 
 <figure markdown="span">
 ![Back to the Session Card](../../assets/validation/back-button.jpg){ align=center }

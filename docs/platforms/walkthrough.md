@@ -3,6 +3,7 @@
 This chapter will walk you through the Raivin's and Maivin's Web User Interface (WebUI).
 
 ## The Main Page
+
 The Main Page of the Raivin web interface should look as follows:  
 
 <figure markdown="span">
@@ -26,6 +27,7 @@ There are five cards on the Main Page that link to the Visualization pages:
 - **Lidar View**: (Raivin only) This will show the Lidar View, which will include the camera, radar grid, and LiDAR grid.
 
 ### The Top Ribbon
+
 The ribbon at the top of the Raivin web interface is available on every page of the web interface.  The following six elements are available on every page of the Raivin web interface.
 
 1. On the left, the "Home" button with the Au-Zone icon, which will return the user to the Main Page.
@@ -33,9 +35,10 @@ The ribbon at the top of the Raivin web interface is available on every page of 
 3. On the right side, we first have the Recording Indicator, shown as a gray oval with "REC" when not recording from the sensors and a red oval when recording.
 5. The MCAP Details Modal button, which opens the MCAP Modal.
 6. The System Status Indicator and Dropdown button.
-3. The farthest rightmost button, with the gear icon, is the Settings Buttons and will take you to the [Settings Page](./configuration.md).
+3. The farthest rightmost button, with the gear icon, is the Settings Buttons and will take you to the [Settings Page](./configuration/index.md).
 
 ### The MCAP Modal
+
 The MCAP Modal is the interface to manage MCAP recordings, including getting information about recorded MCAP files, disk usage, deletion and downloading files.  More information about the MCAP Modal and recording MCAPs is in the [Recording section](./recording.md)
 
 <figure markdown="span">
@@ -44,6 +47,7 @@ The MCAP Modal is the interface to manage MCAP recordings, including getting inf
 </figure>
 
 ### System Status Indicator
+
 Mousing over the System Status Indicator field will give a brief summary of any problems.  
 
 <figure markdown="span">
@@ -66,9 +70,11 @@ Clicking on the indicator will bring up the Service Status Modal, which contains
 </figure>
 
 ## The Visualization Pages
+
 These pages contain the user-facing functionality of the vision module.
 
 ### The Segmentation Page
+
 The Segmentation page shows camera overlain with the current visual model output.  For Raivin modules, this will also includes the occupancy grid at the bottom.  
 
 <figure markdown="span">
@@ -86,6 +92,7 @@ For the Maivin, its Segmentation Page does not include the Occupancy Grid at the
 </figure>
 
 ### The Occupancy Page (Raivin-only)
+
 The Occupancy Page shows the raw, radar data, colored by radar cross-section (RCS) size.  
 
 <figure markdown="span">
@@ -94,6 +101,7 @@ The Occupancy Page shows the raw, radar data, colored by radar cross-section (RC
 </figure>
 
 ### The GPS Page
+
 The GPS page shows an interactive map centered on the device's location.  
 
 <figure markdown="span">
@@ -104,6 +112,7 @@ The GPS page shows an interactive map centered on the device's location.
 This should be familiar to anyone who has used standard map web interfaces.  The map can be moved by dragging with left-mouse button (or touch with a touchscreen-enabled device).  The "+" and "-" buttons on the left will zoom-in and zoom-out on the map.  The "Refresh" button will re-center the map on the device's location.  The latitude and longitude are also reported on the web interface.
 
 ### The Lidar View Page (Raivin-only)
+
 This page shows the segmentation view, the occupancy grid, and the 3D LiDAR view.  The 3D LiDAR view will be blank if the device does not have a LiDAR unit connected.
 
 <figure markdown="span">
@@ -112,6 +121,7 @@ This page shows the segmentation view, the occupancy grid, and the 3D LiDAR view
 </figure>
 
 ### The IMU Page
+
 The IMU page shows the device's orientation in 3D.  
 
 <figure markdown="span">

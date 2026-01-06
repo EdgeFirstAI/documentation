@@ -63,8 +63,7 @@ Note that this procedure skips the AGTG pipeline since the dataset already conta
 <figcaption>COCO 2017 Subset with classes people, car and truck</figcaption>
 </figure>
 
-
-# Appendix I
+## Appendix I
 
 This appendix includes the code used to handle automation in COCO dataset.
 

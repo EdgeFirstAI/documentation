@@ -15,7 +15,6 @@ Visit the eIQ Toolkit [Downloads page](https://www.nxp.com/design/design-center/
 
     You will need to be signed in to the [NXP website](https://www.nxp.com) to download the installer.
 
-
 Once downloaded, click on the executable to start the installation process.
 
 <figure markdown="span">

@@ -2,8 +2,10 @@
 
 These are primitive types which do not have schema definitions but are the basic primitive building blocks for schemas.
 
-# Duration
+## Duration
+
 ::: edgefirst.schemas.builtin_interfaces.Duration
 
-# Time
+## Time
+
 ::: edgefirst.schemas.builtin_interfaces.Time

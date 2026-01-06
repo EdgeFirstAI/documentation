@@ -1,4 +1,5 @@
 # Capture with an EdgeFirst Platform
+
 If you have an EdgeFirst Platform, follow this tutorial to see how to capture and upload datasets into EdgeFirst Studio.  Use your browser to connect to the Web UI of the remote device, enter the following URL `https://<hostname>/`.
 
 !!! note

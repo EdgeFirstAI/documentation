@@ -3,6 +3,7 @@
 This example will go through how to decode PointCloud2 data. This will give an array of `Point`s which will contain the `x`, `y`, `z` values of each point, as well a dictionary/hashmap with all the other fields. If only a specific field is needed, that field can be added directly, similar to the `x`, `y`, `z` fields, and the dictionary/hashmap can be removed to increase performance.
 
 === "Python"
+
 ``` python
 class Point:
     def __init__(self):
@@ -68,6 +69,7 @@ def decode_pcd(pcd: PointCloud2) -> list[Point]:
 ```
 
 === "Rust"
+
 ``` rust
 
 use edgefirst_schemas::sensor_msgs::{PointCloud2, PointField, point_field};

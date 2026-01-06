@@ -6,7 +6,7 @@ Another type of validation is the [On Target Validation](user_managed.md) which 
 
 {% include-markdown "discrete/studio/create_mpk_validation_session.md" %}
 
-You will be greeted with a validation session dialog.  In this dialog, specify the name of the validation session, the model to validate, and the dataset to deploy.  In this example, the TFLite model will be validated and the "Coffee Cup" dataset with the validation partition will be used.  Next specify, the validation parameters on the right.  Additional information on these parameters are provided by hovering over the info button ![Info Button](../../../assets/buttons/studio-info-button.jpg). 
+You will be greeted with a validation session dialog.  In this dialog, specify the name of the validation session, the model to validate, and the dataset to deploy.  In this example, the TFLite model will be validated and the "Coffee Cup" dataset with the validation partition will be used.  Next specify, the validation parameters on the right.  Additional information on these parameters are provided by hovering over the info button ![Info Button](../../../assets/buttons/studio-info-button.jpg).
 
 <figure markdown="span">
 ![Validation Session Fields](../../assets/validation/vision-validate-settings.jpg){ align=center }
@@ -40,7 +40,7 @@ The attributes of the validation sessions in EdgeFirst Studio are labeled below.
 <figcaption>Validation Session Attributes</figcaption>
 </figure>
 
-## Validation Metrics 
+## Validation Metrics
 
 Once the validation session completes, you can view the validation metrics by clicking the "View Validation Charts" button on the top of the session card.
 
@@ -52,7 +52,7 @@ Once the validation session completes, you can view the validation metrics by cl
 !!! info
     See [detection](../metrics/detection.md) and [segmentation](../metrics/segmentation.md) metrics for further details.
 
-You can go back to the validation session card by pressing the "Back" button as indicated in red below on the top left corner of the page. 
+You can go back to the validation session card by pressing the "Back" button as indicated in red below on the top left corner of the page.
 
 <figure markdown="span">
 ![Back to the Session Card](../../assets/validation/back-button.jpg){ align=center }

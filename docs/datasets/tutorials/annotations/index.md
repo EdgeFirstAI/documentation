@@ -78,7 +78,7 @@ You can follow the steps shown for [editing the label](#edit-label) to modify th
 <figcaption>Added Label</figcaption>
 </figure>
 
-**Alternatively**, you can also add multiple labels by clicking the button with the "+" icon next to the "Labels" on the dataset card.  This will bring the option for adding comma separated labels. 
+**Alternatively**, you can also add multiple labels by clicking the button with the "+" icon next to the "Labels" on the dataset card.  This will bring the option for adding comma separated labels.
 
 <figure markdown="span">
 ![Add Label Multiple](../../assets/annotations/add-multiple-labels.jpg){ align=center }
@@ -101,7 +101,7 @@ To remove a label, click on the button with a pencil icon under "Labels" on the 
 <figcaption>Edit Labels</figcaption>
 </figure>
 
-This will show the list of existing labels.  Click on the "x" button shown on the right of the label when hovering over it.  This will delete the label from the list along with the annotations with this label. 
+This will show the list of existing labels.  Click on the "x" button shown on the right of the label when hovering over it.  This will delete the label from the list along with the annotations with this label.
 
 <figure markdown="span">
 ![Added Label](../../assets/annotations/delete-plate-label.jpg){ align=center }

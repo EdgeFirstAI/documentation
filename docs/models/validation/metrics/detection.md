@@ -69,7 +69,7 @@ This accuracy metric provides a better representation of the overall model perfo
 
 $$
 \text{accuracy} = \frac{\text{TP}}{\text{TP} + \text{FN} + \text{FP}_\text{all}}
-$$ 
+$$
 
 ### Mean Average Precision
 
@@ -84,7 +84,7 @@ $$
 \text{mAR} = \frac{1}{n}\sum_{i=1}^{n}\text{recall}_{i}, n = \text{number of classes}
 $$
 
-This metric is calculated as the sum of the recall values of each class over the number of classes.  Specifying the IoU thresholds determines the strictness of true positive definitions.  A detection is a true positive if it correctly identifies the ground truth, if it has a score greater than the score threshold, and if it has an IoU greater than the IoU threshold. 
+This metric is calculated as the sum of the recall values of each class over the number of classes.  Specifying the IoU thresholds determines the strictness of true positive definitions.  A detection is a true positive if it correctly identifies the ground truth, if it has a score greater than the score threshold, and if it has an IoU greater than the IoU threshold.
 
 !!! note
     The equation for recall is shown in the [Glossary](#glossary).
@@ -130,13 +130,13 @@ Taking from Vignesh-Babu (2020) and Padilla, Passos, Dias, Netto, & Da Silva (20
 
 $$
 \text{precision} = \frac{\text{TP}}{\text{TP} + \text{FP}} = \frac{\text{TP}}{\text{all predictions}}
-$$ 
+$$
 
 $$
 \text{recall} = \frac{\text{TP}}{\text{TP} + \text{FN}} = \frac{\text{TP}}{\text{all ground truths}}
 $$
 
-However, on the account of the EdgeFirst Validator's method of classifying detections where false positives are further categorized as localization and classification false positives, then the total number of detections is really the sum of true positives, classification false positives, and localization false positives.  The total number of ground truths is the sum of true positives, false negatives, and classification false positives as shown in the resulting image below. 
+However, on the account of the EdgeFirst Validator's method of classifying detections where false positives are further categorized as localization and classification false positives, then the total number of detections is really the sum of true positives, classification false positives, and localization false positives.  The total number of ground truths is the sum of true positives, false negatives, and classification false positives as shown in the resulting image below.
 
 <figure markdown="span">
   ![playing_cards_v7; 000000000027.png](../../assets/metrics/tp_fp_fn_claim.png){ align=center }
@@ -147,7 +147,7 @@ In this image there are two true positives, one false negative, one classificati
 
 $$
 \text{precision} = \frac{\text{TP}}{\text{TP} + \text{FP}_{\text{all}}} = \frac{\text{TP}}{\text{all predictions}}
-$$ 
+$$
 
 $$\text{FP}_{\text{all}} = \text{classification FP} + \text{localization FP}$$
 
@@ -159,7 +159,7 @@ $$\text{FP}_{\text{c}} = \text{classification FP}$$
 
 ## Confusion Matrix
 
-The Confusion Matrix provides a summary of the prediction results by comparing the predicted labels with the ground truth (actual) labels.  This matrix will show the ground truth labels along the x-axis and the predicted labels along the y-axis.  Along the diagonal where both ground truth labels and prediction labels match shows the true positive (correct predictions) counts of that class.  However, throughout validation, the matrix shows the cases where the model can misidentify labels (false positives) or fail to find the labels (false negatives).  The first column where the ground truth label is "background" indicates the number of false positives are based on the model blindly detecting objects that are not in the image.  The last row where the prediction label is "background" indicates the number of false negatives where the model did not detect any objects that are in the image. 
+The Confusion Matrix provides a summary of the prediction results by comparing the predicted labels with the ground truth (actual) labels.  This matrix will show the ground truth labels along the x-axis and the predicted labels along the y-axis.  Along the diagonal where both ground truth labels and prediction labels match shows the true positive (correct predictions) counts of that class.  However, throughout validation, the matrix shows the cases where the model can misidentify labels (false positives) or fail to find the labels (false negatives).  The first column where the ground truth label is "background" indicates the number of false positives are based on the model blindly detecting objects that are not in the image.  The last row where the prediction label is "background" indicates the number of false negatives where the model did not detect any objects that are in the image.
 
 <figure markdown="span">
   ![Confusion Matrix](../../assets/metrics/modelpack-confusion-matrix.jpg){ align=center }
@@ -175,7 +175,7 @@ The model timings measures the input time, inference time, and the output time. 
   <figcaption>Model Timings</figcaption>
 </figure>
 
-Furthermore, the distribution of the average timings are also shown below as a pie chart. 
+Furthermore, the distribution of the average timings are also shown below as a pie chart.
 
 <figure markdown="span">
   ![Average Timings](../../assets/metrics/timing-distribution.jpg){ align=center }
@@ -206,7 +206,7 @@ Fränti, P., & Mariescu-Istodor, R. (2023, March 1). Soft precision and recall. 
 
 Babu, G. V. (2021, December 13). Metrics on Object Detection - gandham vignesh babu - Medium. Retrieved from [Metrics on Object Detection](https://vignesh943628.medium.com/metrics-on-object-detection-b9fe3f1bac59)
 
-Padilla, R., Passos, W. L., Dias, T. L. B., Netto, S. L., & Da Silva, E. A. B. (2021, January 25). A Comparative Analysis of Object Detection Metrics with a Companion Open-Source Toolkit. 
+Padilla, R., Passos, W. L., Dias, T. L. B., Netto, S. L., & Da Silva, E. A. B. (2021, January 25). A Comparative Analysis of Object Detection Metrics with a Companion Open-Source Toolkit.
 [A Comparative Analysis of Object Detection Metrics with a Companion Open-Source Toolkit | MDPI](https://doi.org/10.3390/electronics10030279)
 
 Blogger, T. (2023, November 7). Mean Average Precision (mAP): Definitions & Misconceptions | Medium. Retrieved from [Mean Average Precision (mAP): Common Definitions, Myths & Misconceptions](https://medium.com/@tenyks_blogger/mean-average-precision-definition-and-common-myths-c679a809807a)

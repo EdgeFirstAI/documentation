@@ -1,6 +1,4 @@
-Once you've signed up for EdgeFirst Studio, you can log in to begin.
-!!! warning "Verification Email"
-    If you log in but your credentials are not accepted, you may not have clicked the "Verify Email" link in the email.  Please confirm you have done this.
+# Login
 
 {% include-markdown "discrete/user/login.md" heading-offset=0 %}
 

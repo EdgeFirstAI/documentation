@@ -27,12 +27,12 @@ After uploading the files, check the [gallery](../../../datasets/tutorials/manag
 <figcaption>Dataset Gallery</figcaption>
 </figure>
 
-!!! note 
+!!! note
     Videos appear as sequences with a play button overlay on the preview thumbnail.
 
 ## Data Annotation using AGTG
 
-Once the dataset samples has been uploaded to EdgeFirst Studio, you can start annotating the samples via [Automatic Ground Truth Generation (AGTG)](../../../datasets/tutorials/annotations/automatic.md#semi-automatic-ground-truth-generation). 
+Once the dataset samples has been uploaded to EdgeFirst Studio, you can start annotating the samples via [Automatic Ground Truth Generation (AGTG)](../../../datasets/tutorials/annotations/automatic.md#semi-automatic-ground-truth-generation).
 
 After completing the annotations, the gallery will display previews of all annotated videos and images.
 
@@ -45,13 +45,13 @@ Once your dataset has been fully annotated, you are now ready to begin model tra
 
 ## Model Training
 
-We will now walk you through training a detection and segmentation model (multitask), but first ensure that your dataset contains training and validation groups.  If the GUI shows 0 Groups, you'll need to [create training and validation groups](../../../datasets/tutorials/management.md#split-dataset) before starting training. 
+We will now walk you through training a detection and segmentation model (multitask), but first ensure that your dataset contains training and validation groups.  If the GUI shows 0 Groups, you'll need to [create training and validation groups](../../../datasets/tutorials/management.md#split-dataset) before starting training.
 
-Once the groups have been created, follow these steps for [training your model](../../training/vision.md). 
+Once the groups have been created, follow these steps for [training your model](../../training/vision.md).
 
-## Model Inference on PC 
+## Model Inference on PC
 
-Now that ModelPack has been trained on your dataset, you can start [deploying the trained models](../../deployment/pc/mpk.md) on your PC. 
+Now that ModelPack has been trained on your dataset, you can start [deploying the trained models](../../deployment/pc/mpk.md) on your PC.
 
 | Input Image | Model Output |
 |-----------------|-----------|

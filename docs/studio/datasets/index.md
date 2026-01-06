@@ -7,7 +7,7 @@ The Dataset Dashboard shows a list of datasets in a project with a dataset summa
 <figcaption>Public Datasets</figcaption>
 </figure>
 
-Public datasets are readily available for user onboarding and trials, but these datasets are **READ-ONLY** datasets.  By default, users can [view the datasets](../../datasets/tutorials/management.md#view-dataset).  Otherwise, in order to have full access to the dataset, users **MUST** [copy the dataset](../../datasets/tutorials/management.md#copy-dataset) into the project they've created. 
+Public datasets are readily available for user onboarding and trials, but these datasets are **READ-ONLY** datasets.  By default, users can [view the datasets](../../datasets/tutorials/management.md#view-dataset).  Otherwise, in order to have full access to the dataset, users **MUST** [copy the dataset](../../datasets/tutorials/management.md#copy-dataset) into the project they've created.
 
 The dataset attributes are shown below.
 
@@ -23,7 +23,7 @@ For the elements encircled in red, these features will not be available to publi
 <figcaption>Dataset Write Access Context Menu</figcaption>
 </figure>
 
-This gives the user the options for [editing the dataset info](../../datasets/tutorials/management.md#edit-dataset-information), [importing existing datasets](../../datasets/tutorials/import.md), [exporting datasets into your local machine](../../datasets/tutorials/management.md#export-dataset), [creating snapshots](../snapshots.md#create-snapshot), and [copying datasets](../../datasets/tutorials/management.md#copy-dataset).  The rest of the options are described in the sections below such as the [dataset analytics](#analytics), [view on map](#view-on-map), [park datasets](#park-dataset), and [removing datasets](#remove-dataset). 
+This gives the user the options for [editing the dataset info](../../datasets/tutorials/management.md#edit-dataset-information), [importing existing datasets](../../datasets/tutorials/import.md), [exporting datasets into your local machine](../../datasets/tutorials/management.md#export-dataset), [creating snapshots](../snapshots.md#create-snapshot), and [copying datasets](../../datasets/tutorials/management.md#copy-dataset).  The rest of the options are described in the sections below such as the [dataset analytics](#analytics), [view on map](#view-on-map), [park datasets](#park-dataset), and [removing datasets](#remove-dataset).
 
 ## Labels
 
@@ -75,7 +75,7 @@ Change the name or description of the dataset as shown in [editing dataset infor
 
 ### Manage Access
 
-The dataset access control allows dataset resources to be selectively available to different users. 
+The dataset access control allows dataset resources to be selectively available to different users.
 
 For more information please visit [Access Control](../user/organization.md#roles).
 
@@ -106,7 +106,7 @@ There are several import types available.
 
 To import datasets proceed with the steps as follows or follow this in-depth tutorial for [importing datasets](../../datasets/tutorials/import.md).
 
-1. Select an import type.  The [EdgeFirst Dataset Format](../../datasets/format/index.md) is the proprietary format used by many operations in EdgeFirst Studio. 
+1. Select an import type.  The [EdgeFirst Dataset Format](../../datasets/format/index.md) is the proprietary format used by many operations in EdgeFirst Studio.
 2. Create an annotation set where annotations are to be imported.  If only images are imported, then this step is not required.
 3. Drag and drop a folder or group of files.
 4. Select an annotation set if the annotation type allows annotation import.
@@ -140,7 +140,7 @@ To export datasets proceed with the steps as follows or follow this in-depth tut
     - Annotations Only - Exports only the annotations. Exports a zip file in the downloads folder.
     - Image URLS only - Useful for larger datasets. Exports a file with image urls in the downloads folder.
 
-!!! tip "Large Datasets" 
+!!! tip "Large Datasets"
     For datasets larger than 10000 images, export image URLS and annotations separately and then use a script to download images.
 
 ### Analytics
@@ -154,7 +154,7 @@ Click on Analytics to see more statistical information about the dataset.
 
 ### View on Map
 
-When importing a dataset, the GPS location can be imported in the two following ways: 
+When importing a dataset, the GPS location can be imported in the two following ways:
 
 1. GPS location in the image EXIF.
 2. GPS location as an annotation type.
@@ -180,7 +180,7 @@ Datasets can be un-parked at any time for normal usage.
 <figcaption>Park Dataset</figcaption>
 </figure>
 
-You can find more information regarding the [billing](../user/billing.md). 
+You can find more information regarding the [billing](../user/billing.md).
 
 ### Remove Dataset
 

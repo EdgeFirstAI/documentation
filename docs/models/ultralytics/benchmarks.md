@@ -64,7 +64,7 @@ This page provides a summary of the benchmarks gathered for Ultralytics across v
     Visit the full **BDD100K** dataset [Benchmark here](../../datasets/bdd100k/index.md).
 
 === "COCO People"
-    
+
     This dataset contains only annotations for person class from original dataset.  However, all the images are included during training as negative samples
 
     **Table: Ultralytics on COCO People - RGB - (640x640) - ONNX - (100 epochs)**

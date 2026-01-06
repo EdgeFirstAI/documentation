@@ -122,7 +122,6 @@ This augmentation applies a random plasma texture on the image using a Gaussian-
 |--------------------------------|-------------------------------|
 | ![Original](assets/augmentations/original.jpg) | ![Plasma](assets/augmentations/plasma.jpg) |
 
-
 ### Random Patch
 
 This augmentation generates a random patch within the image space.  Then runs a random augmentation from the augmentations described above on that patch.  The following side-by-side figures shows the original image on the left and the transformed image on the right with a random patch augmentation.  

@@ -11,6 +11,7 @@ We maintain a copy of the latest version of the COCO dataset (the 2017 version) 
 While individual images may be available for commercial use, the dataset as a whole should not be considered available for commercial use.
 
 ## Terms of Use
+
 The COCO dataset has two, separate [terms of use][terms]:
 
 * The annotation set belongs to the COCO Consortium and is licensed under the [Creative Commons Attribution 4.0 License][creative].
@@ -19,6 +20,7 @@ The COCO dataset has two, separate [terms of use][terms]:
 If you use the dataset in your research or development work, it is requested that you also cite the [Microsoft COCO: Common Objects in Context][paper] paper describing the dataset.
 
 ### How to find the license for a specific image
+
 The license for specific images can be found by:
 
 1. In the COCO 2017 Public dataset in EdgeFirst Studio, get the file name of the image.  Partial file names work as well.
@@ -34,6 +36,7 @@ The license for specific images can be found by:
     </figure>
 3. Unzip the "instances_train2017.json" and "instances_val2017.json" into a directory.
 4. In the same directory, copy the following Python script.
+
     ```python
     import json
     import sys
@@ -63,7 +66,9 @@ The license for specific images can be found by:
         search_anno_json("instances_train2017.json", sys.argv[1])
         search_anno_json("instances_val2017.json", sys.argv[1])
     ```
+
 4. Run the script, with the image file name as the only argument:
+
     ```shell
     python .\find_license.py 147328
     In 'instances_train2017.json', image '000000147328.jpg' has license 'Attribution-NonCommercial License ( http://creativecommons.org/licenses/by-nc/2.0/ )'
@@ -72,6 +77,7 @@ The license for specific images can be found by:
 The specific Creative Commons sublicence types are described [here][sublic].
 
 ### How to find the specific creator of a COCO image
+
 Most of the images in the COCO dataset will require you to attribute the image to its original creator. The following process will get you this information.
 
 1. As mentioned above, get the file name of the image.
@@ -93,6 +99,7 @@ Most of the images in the COCO dataset will require you to attribute the image t
     </figure>
 
 ## COCO Labels
+
 These are the list of 80 labels or classes in the COCO dataset.
 
 ```shell
@@ -177,8 +184,6 @@ teddy bear
 hair drier
 toothbrush
 ```
-
-
 
 [coco]: https://cocodataset.org/#home
 [consort]: https://cocodataset.org/#people

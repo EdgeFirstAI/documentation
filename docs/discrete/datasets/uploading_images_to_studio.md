@@ -1,7 +1,7 @@
 # Upload Images
 
 !!! warning "HEIC is not fully supported"
-    Apple devices capture HEIC image formats by default.  This format has not been fully supported yet in EdgeFirst Studio.  Please make sure to use JPEGs, JPGs, or PNGs for uploading images to EdgeFirst Studio. 
+    Apple devices capture HEIC image formats by default.  This format has not been fully supported yet in EdgeFirst Studio.  Please make sure to use JPEGs, JPGs, or PNGs for uploading images to EdgeFirst Studio.
 
 Image files can be uploaded into any dataset container in EdgeFirst Studio.  Choose the dataset container to upload image files.  In this case, the dataset is called "Coffee Cup".  Click on the dataset context menu (three dots) and select import.
 
@@ -31,7 +31,7 @@ In my current setup, I have selected "Photos & Videos" from the options above an
 <figcaption>Android Multi-select Images</figcaption>
 </figure>
 
-Once the image files have been selected, the progress for the image import will be shown. 
+Once the image files have been selected, the progress for the image import will be shown.
 
 <figure markdown="span">
 ![Image Import Progress](../../datasets/assets/capture/image-import-progress.jpg){ align=center }

@@ -1,6 +1,6 @@
 # Create Dataset
 
-If you have a video recording or sample images for your dataset, you can create a dataset container in EdgeFirst Studio to contain your video frames or images and annotations. 
+If you have a video recording or sample images for your dataset, you can create a dataset container in EdgeFirst Studio to contain your video frames or images and annotations.
 
 Navigate to a web browser and [login][login] to EdgeFirst Studio.  Once logged in to EdgeFirst Studio, navigate to your project.  In this case the project name is "Object Detection".  Click on the "Datasets" button that is indicated in red below.
 

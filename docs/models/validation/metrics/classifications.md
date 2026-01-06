@@ -6,7 +6,7 @@ This section describes how EdgeFirst Validator classifies the detections into tr
 
 ### Intersection Over Union (IoU)
 
-The IoU is a ratio of the intersection area of the bounding boxes over the area of union. 
+The IoU is a ratio of the intersection area of the bounding boxes over the area of union.
 
 <figure markdown="span">
   ![IoU Visualization](../../assets/metrics/iou_visualization.png){ align=center }
@@ -43,17 +43,17 @@ Model detections will be classified using the confusion matrix.
 **False Positive**:
 
 * Classification: Model detections that do not match the ground truth label and the calculated IoU is equal to or greater than the validation IoU threshold.
-* Localization: Model detections that are not matched to any ground truths.  These false positives can also be predictions that have an IoU less than the validation IoU threshold. 
+* Localization: Model detections that are not matched to any ground truths.  These false positives can also be predictions that have an IoU less than the validation IoU threshold.
 
-**False Negative**: These are missed detections.  Any ground truth bounding box without a predicted bounding box. 
+**False Negative**: These are missed detections.  Any ground truth bounding box without a predicted bounding box.
 
 **True Negative**: This category is not used.
 
 #### Example Cases
 
-This section will show examples of each of the classifications explained above.  For the cases below, the blue bounding box represents the ground truth and the red or the green bounding boxes represents the model detections.  Green represents a true positive detection whereas red represents a false positive detection.  The detection labels include the label, the confidence score denoted as a percentage, and the IoU score normalized between 0 and 1.  Localization false positive detections will be denoted with the label 'LOC' and then the detection label and the confidence score.  Classification false positive detections will be denoted with the label 'CLF' and then the detection label, confidence score, and IoU. 
+This section will show examples of each of the classifications explained above.  For the cases below, the blue bounding box represents the ground truth and the red or the green bounding boxes represents the model detections.  Green represents a true positive detection whereas red represents a false positive detection.  The detection labels include the label, the confidence score denoted as a percentage, and the IoU score normalized between 0 and 1.  Localization false positive detections will be denoted with the label 'LOC' and then the detection label and the confidence score.  Classification false positive detections will be denoted with the label 'CLF' and then the detection label, confidence score, and IoU.
 
-!!! note    
+!!! note
     The image samples below are now deprecated in terms of the labeling format: "Extra" is now denoted as "LOC" and a misclassification includes a "CLF" (seen in EdgeFirst Validator 3.0.9 and higher).
 
 <figure markdown="span">
@@ -77,7 +77,7 @@ This section will show examples of each of the classifications explained above. 
   <figcaption>Example 3</figcaption>
 </figure>
 
-* The model prediction that is in red would be classified as a localization false positive because the prediction does not correlate to any ground truth.  The person annotation on the top right shown in blue is a false negative because there are not pairing model predictions for this annotation.  The model predictions shown in green are true positives as it meets the requirements of a true positive described above. 
+* The model prediction that is in red would be classified as a localization false positive because the prediction does not correlate to any ground truth.  The person annotation on the top right shown in blue is a false negative because there are not pairing model predictions for this annotation.  The model predictions shown in green are true positives as it meets the requirements of a true positive described above.
 
 ## Further Reading
 

@@ -1,16 +1,16 @@
 # User Management
 
-To get started with EdgeFirst Studio, you can [sign up](profile.md#sign-up) to create your profile.  If you have an EdgeFirst Studio account, you can [login](profile.md#log-in) to EdgeFirst Studio.  If you have an EdgeFirst Studio account, but you forgot your password, follow the steps to [forget your password](profile.md#forgot-password) to change your password.
+To get started with EdgeFirst Studio, you can [sign up](profile.md#sign-up) to create your profile.  If you have an EdgeFirst Studio account, you can [login](profile.md#login) to EdgeFirst Studio.  If you have an EdgeFirst Studio account, but you forgot your password, follow the steps to [forget your password](profile.md#forgot-password) to change your password.
 
 You can see your [profile information](profile.md#profile-information) and [make changes to your information](profile.md#edit-information) as you wish.  
 
-When you first sign up to EdgeFirst Studio, you will also automatically create your own organization.  You can find more information for [managing your organization](organization.md).  For multi-tier users, follow the [workflow below](#inviting-new-users) for inviting new users to your organization. 
+When you first sign up to EdgeFirst Studio, you will also automatically create your own organization.  You can find more information for [managing your organization](organization.md).  For multi-tier users, follow the [workflow below](#inviting-new-users) for inviting new users to your organization.
 
 A trial user (Individual Tier) is given 20.00 USD worth of credits to experience the features in EdgeFirst Studio.  Note that for multi-user tiers, the credits in the organization will be shared amongst the members.  You can find more information on the [billing details](billing.md).
 
 ## Inviting New Users
 
-This guide will walk you through inviting new users to your organization once you have [logged in][login] to EdgeFirst Studio.  By signing up, you are the admin of your organization. You will create the accounts for other users in your organization that will be shown below. 
+This guide will walk you through inviting new users to your organization once you have [logged in][login] to EdgeFirst Studio.  By signing up, you are the admin of your organization. You will create the accounts for other users in your organization that will be shown below.
 
 ### Visit the Admin Console
 
@@ -34,6 +34,6 @@ Proceed to the next section below for creating the accounts for the new users in
 
 ### Next Steps
 
-This workflow has shown how to invite new users to your organization.  For more information, see how to [edit the profile](profile.md) of new users. 
+This workflow has shown how to invite new users to your organization.  For more information, see how to [edit the profile](profile.md) of new users.
 
 [login]: https://stage.edgefirst.studio/login

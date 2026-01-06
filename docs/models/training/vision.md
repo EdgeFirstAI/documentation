@@ -1,10 +1,10 @@
 # Training Vision Models
 
-This tutorial describes the steps to train **Vision** models in EdgeFirst Studio.  For a tutorial to train Fusion models, see [Training Fusion Models](fusion.md). 
+This tutorial describes the steps to train **Vision** models in EdgeFirst Studio.  For a tutorial to train Fusion models, see [Training Fusion Models](fusion.md).
 
-## Verify Dataset
+## View Dataset
 
-First ensure that the dataset is ready to be used for training.  This means that the dataset is properly annotated and the dataset is properly split into training and validation groups.  The section in [Verify Dataset](../../datasets/tutorials/management.md#verify-dataset) will show what to look for in a dataset before deploying it for training.
+First ensure that the dataset is ready to be used for training.  This means that the dataset is properly annotated and the dataset is properly split into training and validation groups.  The section in [View Dataset](../../datasets/tutorials/management.md#view-dataset) will show what to look for in a dataset before deploying it for training.
 
 ## Specify Project Experiments
 
@@ -17,7 +17,7 @@ From the projects page, choose the project that contains the dataset you plan to
 
 ## Create Model Experiment
 
-You will be greeted with the "Model Experiments" page.  A new project will not have any experiments as shown below.  You will need to first create a model experiment.  As mentioned in the [Model Experiments Dashboard](../../studio/models.md), model experiments will contain both training and validation sessions. 
+You will be greeted with the "Model Experiments" page.  A new project will not have any experiments as shown below.  You will need to first create a model experiment.  As mentioned in the [Model Experiments Dashboard](../../studio/models.md), model experiments will contain both training and validation sessions.
 
 <figure markdown="span">
 ![Model Experiments Page](../assets/training/vision-model-experiments-page.jpg){ align=center }
@@ -38,7 +38,7 @@ Enter the name and the description of the experiment marked by the fields shown 
 <figcaption>Experiment Fields</figcaption>
 </figure>
 
-Your created experiment will appear like the following below.  At the start, this experiment will contain zero training and validation sessions.  The next step will show how to start your first training session on this experiment using the dataset in the project. 
+Your created experiment will appear like the following below.  At the start, this experiment will contain zero training and validation sessions.  The next step will show how to start your first training session on this experiment using the dataset in the project.
 
 <figure markdown="span">
 ![Created Experiment](../assets/training/vision-created-experiment.jpg){ align=center }
@@ -88,7 +88,7 @@ For more information on available "Data Augmentations" please see [Vision Augmen
  3. **Training Data**: In this section the user must select the dataset as well as train/val groups.
  4. **Input Resolution**: The user can pick predefined input resulutions.  Even when ModelPack accepts any resolution we keep this option as simple as possible.  In case you need a different resolution to be supported, please reach out and [email our support team](mailto:support@edgefirst.ai).
  5. **Camera Adaptor**: ModelPack accepts three different input optimizations.  It could be either of RGB, RGBA, or YUYV.
- 6. **Model Parameters**: This section configures the model architecture. 
+ 6. **Model Parameters**: This section configures the model architecture.
     1. **Model Backbone**: Model backbone exposes a CSPDarknet19 optimized for boosting inference time and a CSPDarknet53 optimized for accuracy.
     2. **Model Size**: Similar to modern architectures, ModelPack also accepts dynamic scaling factors (`width in [0.25, 0.5, 0.75, 1.0]`, `depth in [0.33, 0.33, 0.66, 1.0]`).
     3. **Activation Function**: This parameter defines the main activation used in the model. Exposed values are ReLU, ReLU6 and SiLU.  The best tradeoff between speed and accuracy is produced by ReLU6 activation in most of the cases.
@@ -97,7 +97,7 @@ For more information on available "Data Augmentations" please see [Vision Augmen
     6. **Segmentation**: Enables Semantic Segmentation.
     7. **Space to Depth**: This feature enables the Space to Depth Transformation to the input in order to reduce model complexity on higher resolutions.
     8. **Split Decoder**: Remove the decoder from the model and use a very optimized one from EdgeFirst.  This feature is very useful when the location of the boxes has to be precise (0-offset).
- 7. **Training Parameters**: In this section the user is able to specify the number of epochs to train the model as well as the batch size.  Remember the larger the input resolution the smaller the batch size. 
+ 7. **Training Parameters**: In this section the user is able to specify the number of epochs to train the model as well as the batch size.  Remember the larger the input resolution the smaller the batch size.
  8. **Data Augmentation**: This section controls the probablity of each augmentation technique.  This feature is crucial for training models and reduce overfitting, especially in small datasets.
  9. **Start Session**: This button will start the training session.
 
@@ -138,7 +138,7 @@ Once the training session completes, you can view the training charts by clickin
 <figcaption>Training Charts</figcaption>
 </figure>
 
-You can go back to the training session card by pressing the "Back" button as indicated in red below on the top left corner of the page. 
+You can go back to the training session card by pressing the "Back" button as indicated in red below on the top left corner of the page.
 
 <figure markdown="span">
 ![Back to the Session Card](../assets/training/back-button.jpg){ align=center }
@@ -149,13 +149,13 @@ The trained model artifacts can be downloaded by clicking the "View Additional D
 
 | Session Details                                                | Artifacts                                                                     |
 |----------------------------------------------------------------|-------------------------------------------------------------------------------|
-| ![session](../assets/training/vision-session-details.jpg) | ![artifacts](../assets/training/vision-session-artifacts.jpg) | 
+| ![session](../assets/training/vision-session-details.jpg) | ![artifacts](../assets/training/vision-session-artifacts.jpg) |
 
-It is also possible to compare the training metrics for multiple sessions.  See [Training Sessions](../../studio/models.md#training-sessions) in the Model Experiments Dashboard for further details. 
+It is also possible to compare the training metrics for multiple sessions.  See [Training Sessions](../../studio/models.md#training-sessions) in the Model Experiments Dashboard for further details.
 
 !!! info "Netron"
     You can visualize the architecture of these models using [https://netron.app/](https://netron.app/).
 
-## Next Steps 
+## Next Steps
 
 Now that you have generated your Vision model, follow along the next steps for validating your model either through [managed](../validation/vision/managed.md) or [user-managed](../validation/vision/user_managed.md) validation sessions.

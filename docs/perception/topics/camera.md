@@ -4,13 +4,13 @@ The camera topics are managed by the `maivin-camera` service and handles interfa
 
 - Video4Linux2 Cameras
 - i.MX 8M Plus ISP
-    - Using the VSI ISP driver
-    - Publishes camera intrinsic parameters from ISP configuration
+  - Using the VSI ISP driver
+  - Publishes camera intrinsic parameters from ISP configuration
 - Zero-Copy frame publishing using Linux [dma-buf](https://docs.kernel.org/driver-api/dma-buf.html)
 - Hardware H.264 Encoder
-    - VSI Hantro (i.MX 8M Plus)
-    - 1080 @ 60FPS
-    - 4K @ 30FPS (special extension)
+  - VSI Hantro (i.MX 8M Plus)
+  - 1080 @ 60FPS
+  - 4K @ 30FPS (special extension)
 - Software JPEG Encoder
 
 The camera topic is published under the `/camera` namespace and offers the following sub-topics.  Some topics are optional and might not be available on the current system, refer to the camera service configuration documentation for details.
@@ -57,12 +57,9 @@ sequenceDiagram
 
     The client application will not be able to call pidfd_getfd if the client application runs at a lower permission level than the camera service. If this error occurs, try running the client application as `sudo` or as a service.
 
-
 !!! tip "Mapping DMA Buffers"
 
     Mapping DMA buffers into user-space requires additional synchronization primitives around accesses.  We cover these details in our camera sample application.  Further details are documented in the Linux Kernel Manual under [CPU Access to DMA Buffer Objects](https://docs.kernel.org/driver-api/dma-buf.html#cpu-access-to-dma-buffer-objects).
-
-
 
 ## /camera/h264
 
@@ -76,7 +73,7 @@ SDK | [H264 Example](../dev/examples/camera.md#h264-camera-feed)
 
 ## /camera/jpeg
 
-The `/camera/jpeg` topic uses ROS2's [CompressedImage](../api/sensor_msgs.md#compressedimage) schema to publish JPEG encoded camera frames.  Each frame is a complete JPEG image and can be decoded using any standard JPEG decoder. The JPEG topic will not be enabled by default. In order to enable the JPEG topic, please follow the guide noted in [configuration](../../platforms/configuration.md#h264-streaming)
+The `/camera/jpeg` topic uses ROS2's [CompressedImage](../api/sensor_msgs.md#compressedimage) schema to publish JPEG encoded camera frames.  Each frame is a complete JPEG image and can be decoded using any standard JPEG decoder. The JPEG topic will not be enabled by default. In order to enable the JPEG topic, please follow the guide noted in [configuration](../../platforms/configuration/camera.md#h264-streaming)
 
 **Usage** | **Link**
 :------------------:|:------------------:

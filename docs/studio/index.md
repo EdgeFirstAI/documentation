@@ -1,18 +1,31 @@
-# EdgeFirst Studio 
+# EdgeFirst Studio
 
 ![EdgeFirst Studio](../assets/studio.png#only-light)
 ![EdgeFirst Studio](../assets/studio-dark.png#only-dark)
 
-EdgeFirst Studio (Formerly Deep View Enterprise) is a multi stack platform for performing various Machine Learning Operations (MLOps). 
+EdgeFirst Studio (formerly Deep View Enterprise) provides a complete platform for Machine Learning Operations (MLOps).
 
-We offer various [pricing tiers][pricing_tiers] depending on your needs.  These tiers are known as "Individual", "Team", "Business", and "Enterprise".  Note that the features and the pricing rates vary for each tier.  The default tier upon [sign up][signup] is set to "Individual" which is for trial users provided with 20.00 USD worth of credits to experience the features in EdgeFirst Studio.  An "Individual" user will **NOT** be able to add new users in their organization.  Users with the multi-user tiers can add multiple members to collaborate under one organization.  You can find more information for [managing your organization](user/organization.md). Otherwise, follow this workflow for [inviting new users](user/index.md#inviting-new-users) to your organization.  The credits in the organization will be shared amongst the members.  You can find more information on the [billing details](user/billing.md). Lastly, all users have the ability to view or update their [profile information](user/profile.md).
+## Pricing Tiers
+
+EdgeFirst Studio offers four [pricing tiers][pricing_tiers]: Individual, Team, Business, and Enterprise. Each tier includes different features and pricing. When you [sign up][signup], you start on the Individual tier with 20.00 USD in credits to explore EdgeFirst Studio's features.
+
+**Individual** accounts cannot add team members. **Multi-user tiers** (Team, Business, Enterprise) allow you to invite collaborators to your organization. All members share the organization's credits.
+
+Learn more about:
+
+- [Managing your organization](user/organization.md)
+- [Inviting new users](user/index.md#inviting-new-users)
+- [Billing details](user/billing.md)
+- [Profile settings](user/profile.md)
 
 !!! tip "Choose Your Tier"
-    📬 If you would like to know more on the various pricing tiers available or you would like to sign up for a specific tier feel free to [email our support team](mailto:support@edgefirst.ai) — we’re here to help!
+    📬 Want to learn more about pricing tiers or sign up for a specific tier? [Email our support team](mailto:support@edgefirst.ai) — we're here to help!
 
-It is recommended for new users to be familiar with the [User Home Page](home.md) and [Navigating EdgeFirst Studio](navigation.md).  These describe what/where are various features and dashboards in EdgeFirst Studio.
+## Getting Started
 
-Lastly, new users are invited to learn more about the auto-annotation process in EdgeFirst Studio known as [Automatic Ground Truth Generation (AGTG)](agtg.md) that aims to make the annotation process as effortless as possible for the user. 
+New users should start with the [User Home Page](home.md) and [Navigating EdgeFirst Studio](navigation.md). These guides explain the main features and dashboards.
+
+Then explore [Automatic Ground Truth Generation (AGTG)](agtg.md) to learn how EdgeFirst Studio automates the annotation process.
 
 [pricing_tiers]: https://stage.edgefirst.studio/#/
 [signup]: https://stage.edgefirst.studio/#/signup

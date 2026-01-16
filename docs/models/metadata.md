@@ -278,12 +278,15 @@ outputs:
     shape: [int]           # Tensor shape
     dshape:                # Named dimensions as ordered array (see dshape section)
       - batch: int
-      - height: int          # For spatial outputs
-      - width: int           # For spatial outputs
-      - num_features: int    # For detection outputs
-      - num_boxes: int       # For detection outputs
-      - num_protos: int      # For instance segmentation
-      - num_classes: int     # For semantic segmentation
+      - height: int                 # For spatial outputs
+      - width: int                  # For spatial outputs
+      - num_features: int           # For detection outputs
+      - num_boxes: int              # For detection outputs
+      - padding: int                # For detection outputs
+      - box_coords: int             # For detection outputs
+      - num_classes: int            # For detection outputs
+      - num_anchors_x_features: int # For detection outputs
+      - num_protos: int             # For instance segmentation
     dtype: string          # Data type (float32, uint8, int8)
     type: string           # Semantic type (detection, segmentation, boxes, scores, masks, protos)
     decode: boolean        # Whether decoding is required
@@ -301,14 +304,27 @@ The `outputs` section is critical for inference — it tells the runtime how to 
 
 ### Output Types
 
-| Type | Description | Typical Shape | Framework |
-|------|-------------|---------------|-----------|
-| `detection` | Raw detection output (needs decoding) | `[1, num_features, num_boxes]` | Both |
-| `boxes` | Decoded bounding boxes | `[1, N, 4]` | ModelPack |
-| `scores` | Decoded class scores | `[1, N, classes]` | ModelPack |
-| `segmentation` | Semantic segmentation output | `[1, H, W, classes]` | ModelPack |
-| `masks` | Semantic segmentation masks | `[1, H, W]` or `[1, H, W, classes]` | ModelPack |
-| `protos` | Instance segmentation prototypes | `[1, num_protos, H, W]` (NCHW) | Ultralytics |
+For Ultralytics framework models, the following output types are used
+
+
+| Type                  | Description                                  | Typical Shape                    |
+| --------------------- | -------------------------------------------- | -------------------------------- |
+| `detection`         | Raw detection output (Needs to be split)     | `[1, num_features, num_boxes]` |
+| `boxes`             | Split bounding boxes                         | `[1, 4, num_boxes]`            |
+| `scores`            | Split class scores                           | `[1, classes, num_boxes]`      |
+| `mask_coefficients` | Split coefficients for instance segmentation | `[1, num_protos, num_boxes]`   |
+| `protos`            | Instance segmentation prototypes             | `[1, H, W, num_protos]` (NHWC) |
+
+
+For ModelPack framework models the following output types are used
+
+| Type             | Description                           | Typical Shape                             |
+| ---------------- | ------------------------------------- | ----------------------------------------- |
+| `detection`    | Raw detection output (needs decoding) | `[1, H, W, num_anchors_x_features]` |
+| `boxes`        | Bounding boxes                        | `[1, num_boxes, 1, 4]`                  |
+| `scores`       | Class scores                          | `[1, num_boxes, classes]`               |
+| `segmentation` | Semantic segmentation output          | `[1, H, W, classes]`                    |
+| `masks`        | Semantic segmentation masks           | `[1, H, W]`                             |
 
 ### Segmentation Types
 
@@ -401,16 +417,18 @@ outputs:
 
 **Standard dimension names:**
 
-| Name | Description |
-|------|-------------|
-| `batch` | Batch size (typically 1 for inference) |
-| `height` | Spatial height |
-| `width` | Spatial width |
-| `num_classes` | Number of classification classes |
-| `num_features` | Feature dimension (box coords + classes + mask coefficients) |
-| `num_boxes` | Number of detection boxes/anchors |
-| `num_protos` | Number of prototype masks (instance segmentation) |
+| Name                       | Description                                                                                       |
+| -------------------------- | ------------------------------------------------------------------------------------------------- |
+| `batch`                  | Batch size (typically 1 for inference)                                                            |
+| `height`                 | Spatial height                                                                                    |
+| `width`                  | Spatial width                                                                                     |
+| `num_classes`            | Number of classification classes                                                                  |
+| `num_features`           | Feature dimension (box coords + classes + mask coefficients)                                      |
+| `num_boxes`              | Number of detection boxes/anchors                                                                 |
+| `num_protos`             | Number of prototype masks (instance segmentation)                                                 |
 | `num_anchors_x_features` | Combined anchor and feature dimension for ModelPack grid outputs (anchors × features per anchor) |
+| `padding`                | A padded dimension. Must be 1                                                                     |
+| `box_coords`             | The coordinates of the boxes. Must be 4                                                           |
 
 ### Decoding Information
 
@@ -423,7 +441,11 @@ outputs:
     decode: true
     decoder: modelpack
     shape: [1, 40, 40, 54]      # Grid output
-    stride: [16, 16]            # Downsampling factor
+    dshape:
+      - batch: 1
+      - height: 40
+      - width: 40
+      - num_anchors_x_features: 54
     anchors:                    # Normalized anchor boxes
       - [0.054, 0.065]
       - [0.089, 0.139]

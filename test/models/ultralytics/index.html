@@ -755,6 +755,8 @@
       
         
       
+        
+      
     
     
     
@@ -1455,6 +1457,34 @@
 
               
             
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cameraadaptor/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Camera Adaptor
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
           </ul>
         </nav>
       
@@ -1640,6 +1670,28 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#supported-versions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Supported Versions
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#camera-adaptor" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Camera Adaptor
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#custom-models" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -1755,9 +1807,10 @@
 
 <h1 id="ultralytics">Ultralytics</h1>
 <p>The EdgeFirst Studio Model Zoo includes the <a href="https://docs.ultralytics.com/">Ultralytics</a> <abbr title="You Only Look Once">YOLO</abbr> which is a popular implementation of the ubiquitous <abbr title="You Only Look Once">YOLO</abbr> architecture for one-shot detection models, and capable of being applied to various other tasks such as instance segmentation.  This document describes the integration into EdgeFirst Studio, supported features, and optimized deployment strategies.  For further details of the Ultralytics implementation of the <abbr title="You Only Look Once">YOLO</abbr> architecture, please refer to their documentation.</p>
+<p>EdgeFirst Studio uses the EdgeFirst fork of Ultralytics available at <a href="https://github.com/EdgeFirstAI/ultralytics">github.com/EdgeFirstAI/ultralytics</a> (branch: <code>edgefirst</code>), which includes <a href="../cameraadaptor/">Camera Adaptor</a> integration for native camera format support during training.</p>
 <p>Our Model Zoo ecosystem provides a collection of models to be re-trained through EdgeFirst Studio and deployed to a wide range of devices using a consistent workflow to achieve the best performance and latency at the edge.</p>
 <h2 id="getting-started">Getting Started</h2>
-<p>YOLOv8 and YOLOv11 can be trained now in Edgefirst Studio using a Graphical User Interface by following four simple steps:</p>
+<p>YOLOv5, YOLOv8, YOLO11, and YOLO26 can be trained in EdgeFirst Studio using a Graphical User Interface by following four simple steps:</p>
 <div class="tabbed-set tabbed-alternate" data-tabs="1:4"><input checked="checked" id="select-framework" name="__tabbed_1" type="radio" /><input id="name-session" name="__tabbed_1" type="radio" /><input id="select-dataset" name="__tabbed_1" type="radio" /><input id="train" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="select-framework">Select Framework</label><label for="name-session">Name Session</label><label for="select-dataset">Select Dataset</label><label for="train">Train</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
@@ -1807,8 +1860,45 @@
 </div>
 <div class="admonition note">
 <p class="admonition-title">Important</p>
-<p>Datasets and default weights are handled internally by Edgefirst Studio.  There’s no need to migrate or store data locally.</p>
+<p>Datasets and default weights are handled internally by EdgeFirst Studio.  There's no need to migrate or store data locally.</p>
 </div>
+<h2 id="supported-versions">Supported Versions</h2>
+<p>EdgeFirst Studio supports the following Ultralytics <abbr title="You Only Look Once">YOLO</abbr> versions:</p>
+<table>
+<thead>
+<tr>
+<th>Version</th>
+<th>Architecture</th>
+<th>Key Features</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>YOLOv5</td>
+<td>C3 backbone</td>
+<td>Classic anchor-based detection</td>
+</tr>
+<tr>
+<td>YOLOv8</td>
+<td>C2f backbone</td>
+<td>Anchor-free detection with DFL</td>
+</tr>
+<tr>
+<td>YOLO11</td>
+<td>C3k2, C2PSA</td>
+<td>Efficient architecture with depthwise convolutions</td>
+</tr>
+<tr>
+<td>YOLO26</td>
+<td>C3k2, A2C2f</td>
+<td>Latest architecture with area-attention</td>
+</tr>
+</tbody>
+</table>
+<p>All versions share the same anchor-free <code>Detect</code> head and use the same decoder at inference time. See <a href="../metadata/">Model Metadata</a> for details on how the decoder works across versions.</p>
+<h2 id="camera-adaptor">Camera Adaptor</h2>
+<p>The <strong>Camera Adaptor</strong> dropdown is available when configuring a training session, allowing you to select the target camera format for your deployment platform. This trains the model to accept native camera output (BGR, RGBA, YUYV, etc.) without runtime conversion.</p>
+<p>See <a href="../cameraadaptor/">Camera Adaptor</a> for details on supported formats and platform guidance.</p>
 <h2 id="custom-models">Custom Models</h2>
 <p>If you have a custom float model, it is highly recommended to export to a quantized model to deploy and maximize the model's performance using the target's <abbr title="Neural Processing Unit">NPU</abbr>.  In this section, we will show examples of <a href="quantize/">quantizing float <abbr title="Open Neural Network Exchange">ONNX</abbr> to a TFLite</a>.  We will also be showing examples of <a href="npu/">deploying a quantized <abbr title="Open Neural Network Exchange">ONNX</abbr> or TFLite</a> in the NXP <strong>i.MX 8M Plus EVK</strong> using the <abbr title="Neural Processing Unit">NPU</abbr> execution providers from onnxruntime or the OpenVX delegate for tflite-runtime to deploy the model in the <abbr title="Neural Processing Unit">NPU</abbr>.</p>
 <p>Deploying a quantized TFLite on the <strong>i.MX 95 EVK</strong> requires an extra step of <a href="neutron/">converting the model using NXP's eIQ neutron converter</a>.  This will allow the model to be deployed on the i.MX 95 using the Neutron delegate in the platform.</p>

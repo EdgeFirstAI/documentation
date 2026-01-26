@@ -2998,12 +2998,15 @@
 <span class="w">    </span><span class="nt">shape</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">int</span><span class="p p-Indicator">]</span><span class="w">           </span><span class="c1"># Tensor shape</span>
 <span class="w">    </span><span class="nt">dshape</span><span class="p">:</span><span class="w">                </span><span class="c1"># Named dimensions as ordered array (see dshape section)</span>
 <span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">batch</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">int</span>
-<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">height</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">int</span><span class="w">          </span><span class="c1"># For spatial outputs</span>
-<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">width</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">int</span><span class="w">           </span><span class="c1"># For spatial outputs</span>
-<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">num_features</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">int</span><span class="w">    </span><span class="c1"># For detection outputs</span>
-<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">num_boxes</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">int</span><span class="w">       </span><span class="c1"># For detection outputs</span>
-<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">num_protos</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">int</span><span class="w">      </span><span class="c1"># For instance segmentation</span>
-<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">num_classes</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">int</span><span class="w">     </span><span class="c1"># For semantic segmentation</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">height</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">int</span><span class="w">                 </span><span class="c1"># For spatial outputs</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">width</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">int</span><span class="w">                  </span><span class="c1"># For spatial outputs</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">num_features</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">int</span><span class="w">           </span><span class="c1"># For detection outputs</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">num_boxes</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">int</span><span class="w">              </span><span class="c1"># For detection outputs</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">padding</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">int</span><span class="w">                </span><span class="c1"># For detection outputs</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">box_coords</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">int</span><span class="w">             </span><span class="c1"># For detection outputs</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">num_classes</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">int</span><span class="w">            </span><span class="c1"># For detection outputs</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">num_anchors_x_features</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">int</span><span class="w"> </span><span class="c1"># For detection outputs</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">num_protos</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">int</span><span class="w">             </span><span class="c1"># For instance segmentation</span>
 <span class="w">    </span><span class="nt">dtype</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">string</span><span class="w">          </span><span class="c1"># Data type (float32, uint8, int8)</span>
 <span class="w">    </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">string</span><span class="w">           </span><span class="c1"># Semantic type (detection, segmentation, boxes, scores, masks, protos)</span>
 <span class="w">    </span><span class="nt">decode</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">boolean</span><span class="w">        </span><span class="c1"># Whether decoding is required</span>
@@ -3016,51 +3019,77 @@
 <h2 id="output-specification">Output Specification</h2>
 <p>The <code>outputs</code> section is critical for inference — it tells the runtime how to interpret model outputs.</p>
 <h3 id="output-types">Output Types</h3>
+<p>For Ultralytics framework models, the following output types are used:</p>
 <table>
 <thead>
 <tr>
 <th>Type</th>
 <th>Description</th>
 <th>Typical Shape</th>
-<th>Framework</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>detection</code></td>
+<td>Raw detection output (needs to be split)</td>
+<td><code>[1, num_features, num_boxes]</code></td>
+</tr>
+<tr>
+<td><code>boxes</code></td>
+<td>Split bounding boxes</td>
+<td><code>[1, 4, num_boxes]</code></td>
+</tr>
+<tr>
+<td><code>scores</code></td>
+<td>Split class scores</td>
+<td><code>[1, classes, num_boxes]</code></td>
+</tr>
+<tr>
+<td><code>mask_coefficients</code></td>
+<td>Split coefficients for instance segmentation</td>
+<td><code>[1, num_protos, num_boxes]</code></td>
+</tr>
+<tr>
+<td><code>protos</code></td>
+<td>Instance segmentation prototypes</td>
+<td><code>[1, H, W, num_protos]</code> (NHWC)</td>
+</tr>
+</tbody>
+</table>
+<p>For ModelPack framework models the following output types are used:</p>
+<table>
+<thead>
+<tr>
+<th>Type</th>
+<th>Description</th>
+<th>Typical Shape</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td><code>detection</code></td>
 <td>Raw detection output (needs decoding)</td>
-<td><code>[1, num_features, num_boxes]</code></td>
-<td>Both</td>
+<td><code>[1, H, W, num_anchors_x_features]</code></td>
 </tr>
 <tr>
 <td><code>boxes</code></td>
-<td>Decoded bounding boxes</td>
-<td><code>[1, N, 4]</code></td>
-<td>ModelPack</td>
+<td>Bounding boxes</td>
+<td><code>[1, num_boxes, 1, 4]</code></td>
 </tr>
 <tr>
 <td><code>scores</code></td>
-<td>Decoded class scores</td>
-<td><code>[1, N, classes]</code></td>
-<td>ModelPack</td>
+<td>Class scores</td>
+<td><code>[1, num_boxes, classes]</code></td>
 </tr>
 <tr>
 <td><code>segmentation</code></td>
 <td>Semantic segmentation output</td>
 <td><code>[1, H, W, classes]</code></td>
-<td>ModelPack</td>
 </tr>
 <tr>
 <td><code>masks</code></td>
 <td>Semantic segmentation masks</td>
-<td><code>[1, H, W]</code> or <code>[1, H, W, classes]</code></td>
-<td>ModelPack</td>
-</tr>
-<tr>
-<td><code>protos</code></td>
-<td>Instance segmentation prototypes</td>
-<td><code>[1, num_protos, H, W]</code> (NCHW)</td>
-<td>Ultralytics</td>
+<td><code>[1, H, W]</code></td>
 </tr>
 </tbody>
 </table>
@@ -3175,6 +3204,14 @@
 <td><code>num_anchors_x_features</code></td>
 <td>Combined anchor and feature dimension for ModelPack grid outputs (anchors × features per anchor)</td>
 </tr>
+<tr>
+<td><code>padding</code></td>
+<td>Padding/alignment dimension used to satisfy expected tensor shapes. Must always be 1</td>
+</tr>
+<tr>
+<td><code>box_coords</code></td>
+<td>The coordinates of the boxes. Must be 4</td>
+</tr>
 </tbody>
 </table>
 <h3 id="decoding-information">Decoding Information</h3>
@@ -3185,7 +3222,11 @@
 <span class="w">    </span><span class="nt">decode</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
 <span class="w">    </span><span class="nt">decoder</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">modelpack</span>
 <span class="w">    </span><span class="nt">shape</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">1</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">40</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">40</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">54</span><span class="p p-Indicator">]</span><span class="w">      </span><span class="c1"># Grid output</span>
-<span class="w">    </span><span class="nt">stride</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">16</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">16</span><span class="p p-Indicator">]</span><span class="w">            </span><span class="c1"># Downsampling factor</span>
+<span class="w">    </span><span class="nt">dshape</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">batch</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">height</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">40</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">width</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">40</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">num_anchors_x_features</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">54</span>
 <span class="w">    </span><span class="nt">anchors</span><span class="p">:</span><span class="w">                    </span><span class="c1"># Normalized anchor boxes</span>
 <span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">0.054</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">0.065</span><span class="p p-Indicator">]</span>
 <span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">0.089</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">0.139</span><span class="p p-Indicator">]</span>

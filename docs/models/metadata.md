@@ -25,7 +25,7 @@ EdgeFirst models from the [Model Zoo](index.md) (including [ModelPack](modelpack
 | Framework | Decoder | Architecture | Use Case |
 |-----------|---------|--------------|----------|
 | [ModelPack](modelpack/index.md) | `modelpack` | Anchor-based YOLO | Semantic segmentation, detection |
-| [Ultralytics](ultralytics/index.md) | `ultralytics` | Anchor-free DFL (YOLOv5/v8/v11) | Instance segmentation, detection |
+| [Ultralytics](ultralytics/index.md) | `ultralytics` | Anchor-free DFL (YOLOv5/v8/v11/v26) | Instance segmentation, detection |
 
 !!! note
     These metadata fields are automatically read and handled by [`edgefirst-validator`](validation/vision/user_managed.md) and the [EdgeFirst Perception Middleware](../perception/index.md). In most cases, developers don't need to worry about these details — the EdgeFirst ecosystem "Just Works." This documentation exists so developers understand what's happening under the hood when needed.
@@ -226,7 +226,7 @@ author: string             # Organization (typically "Au-Zone Technologies")
 # Model Configuration (see ModelPack and Ultralytics documentation)
 input:
   shape: [int]           # Input tensor shape (NCHW or NHWC depending on model)
-  color_adaptor: string    # Color format (rgb, rgba, yuyv)
+  cameraadaptor: string    # Camera format (rgb, bgr, rgba, bgra, grey, yuyv)
 
 model:
   backbone: string         # Backbone architecture (e.g., cspdarknet19, cspdarknet53)
@@ -486,7 +486,7 @@ The metadata's `outputs` section reports shapes in the model's native format. Wh
 ```yaml
 input:
   shape: [1, 640, 640, 3]  # Input tensor shape (layout varies by model)
-  color_adaptor: rgb       # Channel order (rgb, bgr, yuyv)
+  cameraadaptor: rgb       # Channel order (rgb, bgr, yuyv)
   # Common layouts:
   # - NHWC: [batch, height, width, channels] e.g., [1, 640, 640, 3]
   # - NCHW: [batch, channels, height, width] e.g., [1, 3, 640, 640]
@@ -511,7 +511,7 @@ Models expect input images at the resolution specified in metadata. How images a
 input:
   shape: [1, 640, 640, 3]  # NHWC example: [batch, height, width, channels]
   # shape: [1, 3, 640, 640]  # NCHW example: [batch, channels, height, width]
-  color_adaptor: rgb       # Expected color format
+  cameraadaptor: rgb       # Expected color format
 ```
 
 **Native Aspect Ratio (typical for purpose-built datasets):**
@@ -544,15 +544,17 @@ normalized = pixels.astype(np.float32) / 255.0
 
 For quantized models (INT8), the quantization parameters handle the scaling internally — raw uint8 pixel values can often be used directly.
 
-### Color Format
+### Camera Adaptor
 
-The `color_adaptor` field specifies the expected channel format:
+The `cameraadaptor` field specifies the expected input format for the model. See [Camera Adaptor](cameraadaptor.md) for details on how this enables models to consume native camera formats without runtime conversion.
 
 | Value | Description | Channel Order |
 |-------|-------------|---------------|
 | `rgb` | Standard RGB | Red, Green, Blue |
 | `bgr` | OpenCV default | Blue, Green, Red |
 | `rgba` | RGB with alpha | Red, Green, Blue, Alpha |
+| `bgra` | BGR with alpha | Blue, Green, Red, Alpha |
+| `grey` | Greyscale | Single channel |
 | `yuyv` | YUV 4:2:2 packed | For direct camera sensor input |
 
 ---
@@ -654,13 +656,13 @@ outputs:
 
 ##### `ultralytics` — Anchor-Free DFL Decoder
 
-Used by [Ultralytics](ultralytics/index.md) models (YOLOv5, YOLOv8, YOLO11). Modern anchor-free detection using Distribution Focal Loss (DFL).
+Used by [Ultralytics](ultralytics/index.md) models (YOLOv5, YOLOv8, YOLO11, YOLO26). Modern anchor-free detection using Distribution Focal Loss (DFL).
 
 **Characteristics:**
 
 - **Anchor-free**: Uses anchor points (grid centers) instead of pre-defined boxes
 - **DFL regression**: Converts 16-bin distribution to box coordinates
-- **Unified architecture**: Same decoder for YOLOv5, YOLOv8, and YOLO11
+- **Unified architecture**: Same decoder for YOLOv5, YOLOv8, YOLO11, and YOLO26
 
 **Decoding formula:**
 
@@ -691,6 +693,7 @@ All Ultralytics versions use the same anchor-free `Detect` class. Differences ar
 | YOLOv5  | C3              | Conv→Conv→Conv2d    |
 | YOLOv8  | C2f             | Conv→Conv→Conv2d    |
 | YOLO11  | C3k2, C2PSA     | DWConv→Conv (efficient) |
+| YOLO26  | C3k2, A2C2f     | DWConv→Conv (efficient) |
 
 ---
 
@@ -733,7 +736,7 @@ For basic [EdgeFirst Perception](../perception/index.md) stack compatibility:
 ```yaml
 input:
   shape: [1, 640, 640, 3]  # Input tensor shape (NHWC or NCHW)
-  color_adaptor: rgb
+  cameraadaptor: rgb
 
 model:
   detection: true
@@ -970,7 +973,7 @@ The input section specifies image preprocessing requirements. See [Vision Augmen
 ```yaml
 input:
   shape: [1, 640, 640, 3]  # Input tensor shape
-  color_adaptor: rgb       # rgb, rgba, yuyv, bgr
+  cameraadaptor: rgb       # rgb, rgba, yuyv, bgr
 ```
 
 !!! note "Data Layout"
@@ -1070,13 +1073,14 @@ outputs:
 
 ## Related Articles
 
-1. [ModelPack Overview](modelpack/index.md) - Architecture details and training parameters
-2. [Ultralytics Integration](ultralytics/index.md) - YOLOv8/v11 training and deployment
-3. [Training Vision Models](training/vision.md) - Step-by-step training workflow
-4. [On Cloud Validation](validation/vision/managed.md) - Managed validation sessions
-5. [On Target Validation](validation/vision/user_managed.md) - User-managed validation with `edgefirst-validator`
-6. [ModelPack Quantization](modelpack/quantize.md) - Converting ONNX to quantized TFLite
-7. [Deploying to Embedded Targets](deployment/evk.md) - Model deployment workflow
-8. [EdgeFirst Perception Middleware](../perception/index.md) - Runtime inference stack
-9. [Dataset Zoo](../datasets/index.md) - Available datasets for training
-10. [Model Experiments Dashboard](../studio/models.md) - Managing training and validation sessions
+1. [Camera Adaptor](cameraadaptor.md) - Native camera format support for edge deployment
+2. [ModelPack Overview](modelpack/index.md) - Architecture details and training parameters
+3. [Ultralytics Integration](ultralytics/index.md) - YOLOv8/v11/v26 training and deployment
+4. [Training Vision Models](training/vision.md) - Step-by-step training workflow
+5. [On Cloud Validation](validation/vision/managed.md) - Managed validation sessions
+6. [On Target Validation](validation/vision/user_managed.md) - User-managed validation with `edgefirst-validator`
+7. [ModelPack Quantization](modelpack/quantize.md) - Converting ONNX to quantized TFLite
+8. [Deploying to Embedded Targets](deployment/evk.md) - Model deployment workflow
+9. [EdgeFirst Perception Middleware](../perception/index.md) - Runtime inference stack
+10. [Dataset Zoo](../datasets/index.md) - Available datasets for training
+11. [Model Experiments Dashboard](../studio/models.md) - Managing training and validation sessions

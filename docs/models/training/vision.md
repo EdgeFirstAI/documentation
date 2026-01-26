@@ -87,7 +87,7 @@ For more information on available "Data Augmentations" please see [Vision Augmen
  2. **Description**: This field is used to add some hints about the training session.  Commonly used to highlight some parameters.
  3. **Training Data**: In this section the user must select the dataset as well as train/val groups.
  4. **Input Resolution**: The user can pick predefined input resulutions.  Even when ModelPack accepts any resolution we keep this option as simple as possible.  In case you need a different resolution to be supported, please reach out and [email our support team](mailto:support@edgefirst.ai).
- 5. **Camera Adaptor**: ModelPack accepts three different input optimizations.  It could be either of RGB, RGBA, or YUYV.
+ 5. **Camera Adaptor**: Select the target camera format for your deployment platform. See [Camera Adaptor](../cameraadaptor.md) for details on available formats and platform guidance.
  6. **Model Parameters**: This section configures the model architecture.
     1. **Model Backbone**: Model backbone exposes a CSPDarknet19 optimized for boosting inference time and a CSPDarknet53 optimized for accuracy.
     2. **Model Size**: Similar to modern architectures, ModelPack also accepts dynamic scaling factors (`width in [0.25, 0.5, 0.75, 1.0]`, `depth in [0.33, 0.33, 0.66, 1.0]`).

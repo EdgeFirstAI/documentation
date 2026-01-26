@@ -121,6 +121,7 @@ nav:
         - Benchmarks: models/fusion/benchmarks.md
     - models/metadata.md
     - models/augmentations.md
+    - models/cameraadaptor.md
   - Perception:
     - perception/index.md
     - Dataset Collection Middleware:

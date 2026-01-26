@@ -2,11 +2,13 @@
 
 The EdgeFirst Studio Model Zoo includes the [Ultralytics](https://docs.ultralytics.com/) YOLO which is a popular implementation of the ubiquitous YOLO architecture for one-shot detection models, and capable of being applied to various other tasks such as instance segmentation.  This document describes the integration into EdgeFirst Studio, supported features, and optimized deployment strategies.  For further details of the Ultralytics implementation of the YOLO architecture, please refer to their documentation.
 
+EdgeFirst Studio uses the EdgeFirst fork of Ultralytics available at [github.com/EdgeFirstAI/ultralytics](https://github.com/EdgeFirstAI/ultralytics) (branch: `edgefirst`), which includes [Camera Adaptor](../cameraadaptor.md) integration for native camera format support during training.
+
 Our Model Zoo ecosystem provides a collection of models to be re-trained through EdgeFirst Studio and deployed to a wide range of devices using a consistent workflow to achieve the best performance and latency at the edge.
 
 ## Getting Started
 
-YOLOv8 and YOLOv11 can be trained now in Edgefirst Studio using a Graphical User Interface by following four simple steps:
+YOLOv5, YOLOv8, YOLO11, and YOLO26 can be trained in EdgeFirst Studio using a Graphical User Interface by following four simple steps:
 
 === "Select Framework"
 
@@ -60,7 +62,26 @@ YOLOv8 and YOLOv11 can be trained now in Edgefirst Studio using a Graphical User
     </div>
 
 !!! note "Important"
-    Datasets and default weights are handled internally by Edgefirst Studio.  There’s no need to migrate or store data locally.
+    Datasets and default weights are handled internally by EdgeFirst Studio.  There's no need to migrate or store data locally.
+
+## Supported Versions
+
+EdgeFirst Studio supports the following Ultralytics YOLO versions:
+
+| Version | Architecture | Key Features |
+|---------|-------------|--------------|
+| YOLOv5 | C3 backbone | Classic anchor-based detection |
+| YOLOv8 | C2f backbone | Anchor-free detection with DFL |
+| YOLO11 | C3k2, C2PSA | Efficient architecture with depthwise convolutions |
+| YOLO26 | C3k2, A2C2f | Latest architecture with area-attention |
+
+All versions share the same anchor-free `Detect` head and use the same decoder at inference time. See [Model Metadata](../metadata.md) for details on how the decoder works across versions.
+
+## Camera Adaptor
+
+The **Camera Adaptor** dropdown is available when configuring a training session, allowing you to select the target camera format for your deployment platform. This trains the model to accept native camera output (BGR, RGBA, YUYV, etc.) without runtime conversion.
+
+See [Camera Adaptor](../cameraadaptor.md) for details on supported formats and platform guidance.
 
 ## Custom Models
 

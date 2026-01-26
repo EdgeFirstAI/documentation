@@ -304,19 +304,19 @@ The `outputs` section is critical for inference — it tells the runtime how to 
 
 ### Output Types
 
-For Ultralytics framework models, the following output types are used
+For Ultralytics framework models, the following output types are used:
 
 
 | Type                  | Description                                  | Typical Shape                    |
 | --------------------- | -------------------------------------------- | -------------------------------- |
-| `detection`         | Raw detection output (Needs to be split)     | `[1, num_features, num_boxes]` |
+| `detection`         | Raw detection output (needs to be split)     | `[1, num_features, num_boxes]` |
 | `boxes`             | Split bounding boxes                         | `[1, 4, num_boxes]`            |
 | `scores`            | Split class scores                           | `[1, classes, num_boxes]`      |
 | `mask_coefficients` | Split coefficients for instance segmentation | `[1, num_protos, num_boxes]`   |
 | `protos`            | Instance segmentation prototypes             | `[1, H, W, num_protos]` (NHWC) |
 
 
-For ModelPack framework models the following output types are used
+For ModelPack framework models the following output types are used:
 
 | Type             | Description                           | Typical Shape                             |
 | ---------------- | ------------------------------------- | ----------------------------------------- |
@@ -426,8 +426,8 @@ outputs:
 | `num_features`           | Feature dimension (box coords + classes + mask coefficients)                                      |
 | `num_boxes`              | Number of detection boxes/anchors                                                                 |
 | `num_protos`             | Number of prototype masks (instance segmentation)                                                 |
-| `num_anchors_x_features` | Combined anchor and feature dimension for ModelPack grid outputs (anchors × features per anchor) |
-| `padding`                | A padded dimension. Must be 1                                                                     |
+| `num_anchors_x_features` | Combined anchor and feature dimension for ModelPack grid outputs (anchors × features per anchor)  |
+| `padding`                | Padding/alignment dimension used to satisfy expected tensor shapes. Must always be 1              |
 | `box_coords`             | The coordinates of the boxes. Must be 4                                                           |
 
 ### Decoding Information

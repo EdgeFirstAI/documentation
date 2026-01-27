@@ -260,6 +260,7 @@ augmentation:  # See Vision Augmentations documentation
 validation:
   iou: float               # NMS IoU threshold
   score: float             # NMS score threshold
+  nms: string              # NMS algorithm (none, numpy, hal, tensorflow, torch)
   normalization: string    # Input normalization (unsigned, signed)
   preprocessing: string    # Preprocessing method (resize, letterbox)
   skip_validation_steps: int  # Steps to skip between validations
@@ -294,6 +295,7 @@ outputs:
     quantization: [float, int]  # [scale, zero_point] for quantized models
     stride: [int, int]     # Spatial stride for this output (ModelPack)
     anchors: [[[float, float]]]  # Normalized anchors for this output level (ModelPack only)
+    score_format: string   # Score encoding: 'per_class' or 'obj_x_class' (Ultralytics only)
 ```
 
 ---
@@ -315,6 +317,14 @@ For Ultralytics framework models, the following output types are used:
 | `mask_coefficients` | Split coefficients for instance segmentation | `[1, num_protos, num_boxes]`   |
 | `protos`            | Instance segmentation prototypes             | `[1, H, W, num_protos]` (NHWC) |
 
+**`score_format` field** (Ultralytics only):
+
+| Value | Description | Architecture |
+|-------|-------------|--------------|
+| `per_class` | Each anchor outputs `[nc]` class probabilities directly | YOLOv8, YOLO11, YOLO26 |
+| `obj_x_class` | Each anchor outputs `[1 + nc]` where final score = objectness × class confidence | YOLOv5 |
+
+When `score_format` is absent, the validator falls back to a shape-based heuristic (`nc+5` columns implies `obj_x_class`).
 
 For ModelPack framework models the following output types are used:
 
@@ -559,6 +569,43 @@ The `cameraadaptor` field specifies the expected input format for the model. See
 
 ---
 
+## Validation Parameters
+
+The `validation` section records the recommended settings based on how the model was trained. These parameters are **informational preferences** — they document the model author's intended configuration for validation and inference.
+
+### Parameter Semantics
+
+| Parameter | Description | Default | Override at Runtime? |
+|-----------|-------------|---------|---------------------|
+| `iou` | NMS IoU threshold | `0.7` | Yes |
+| `score` | NMS confidence score threshold | `0.001` | Yes |
+| `nms` | NMS algorithm | *(not set)* | See below |
+| `normalization` | Input pixel normalization | `unsigned` | Yes |
+| `preprocessing` | Image preprocessing method | `letterbox` | Yes |
+
+Most parameters (`iou`, `score`, `normalization`, `preprocessing`, and NMS algorithm choices like `hal`/`tensorflow`/`numpy`/`torch`) can be overridden at runtime based on deployment preferences.
+
+**Exception: `nms: none`** must be respected because the model does not produce outputs compatible with external NMS. This applies to two cases:
+
+1. **Architectural end-to-end models** (e.g., YOLO26) — NMS is part of the model architecture via one-to-one matching heads. The model graph itself produces final predictions.
+2. **Engine-embedded NMS** — Models exported with NMS operations appended to the inference graph (ONNX, TensorRT, TFLite). NMS is not part of the original model architecture but was added during export or conversion.
+
+Both produce post-NMS output in `[x1, y1, x2, y2, conf, class, ...]` format. Detection models output `(1, max_det, 6)`. Segmentation models output `(1, max_det, 6 + nm)` plus prototype masks — the mask coefficients for NMS-selected detections are preserved, so only the `coefficients × prototypes` step is needed externally. Use `--nms none` (CLI) or `validation.nms: none` (metadata) for either case.
+
+### Allowed `nms` Values
+
+| Value | Description |
+|-------|-------------|
+| `none` | No external NMS. For models with embedded NMS — either architectural end-to-end (YOLO26) or engine-embedded (ONNX/TRT/TFLite with NMS ops appended). Supports both detection and segmentation |
+| `numpy` | NumPy-based NMS implementation (default fallback) |
+| `hal` | EdgeFirst HAL decoder NMS |
+| `tensorflow` | TensorFlow NMS |
+| `torch` | PyTorch (torchvision) NMS |
+
+When `--override` is set, the validator reads `validation.nms` from the model metadata and applies it automatically.
+
+---
+
 ## Post-Processing & Split Decoder
 
 ### What is Split Decoder?
@@ -653,6 +700,9 @@ outputs:
       - [0.089, 0.139]
     stride: [16, 16]      # Required - spatial stride
 ```
+
+!!! warning "Deprecated: `decoder: yolov8`"
+    The decoder value `yolov8` is deprecated. Use `ultralytics` instead. Existing models with `decoder: yolov8` will continue to work — the validator automatically normalizes `yolov8` to `ultralytics` with a deprecation warning.
 
 ##### `ultralytics` — Anchor-Free DFL Decoder
 
@@ -1050,6 +1100,7 @@ outputs:
     decoder: ultralytics
     quantization: null             # Float model
     anchors: null                  # Anchor-free
+    score_format: per_class        # YOLOv8/v11/v26: class probabilities directly
 
 # Ultralytics instance segmentation protos example
   - name: "output1"
@@ -1067,6 +1118,7 @@ outputs:
     decoder: ultralytics
     quantization: null
     anchors: null
+    score_format: null             # Not applicable to protos output
 ```
 
 ---

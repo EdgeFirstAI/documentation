@@ -324,7 +324,7 @@ For Ultralytics framework models, the following output types are used:
 | `per_class` | Each anchor outputs `[nc]` class probabilities directly | YOLOv8, YOLO11, YOLO26 |
 | `obj_x_class` | Each anchor outputs `[1 + nc]` where final score = objectness × class confidence | YOLOv5 |
 
-When `score_format` is absent, the validator falls back to a shape-based heuristic (`nc+5` columns implies `obj_x_class`).
+When `score_format` is absent, the validator falls back to a shape-based heuristic on the feature dimension: `nc+5` features per anchor (4 box coordinates + 1 objectness + `nc` class probabilities) implies `obj_x_class` (e.g., `[1, 85, 8400]` for 80 classes).
 
 For ModelPack framework models the following output types are used:
 
@@ -590,7 +590,7 @@ Most parameters (`iou`, `score`, `normalization`, `preprocessing`, and NMS algor
 1. **Architectural end-to-end models** (e.g., YOLO26) — NMS is part of the model architecture via one-to-one matching heads. The model graph itself produces final predictions.
 2. **Engine-embedded NMS** — Models exported with NMS operations appended to the inference graph (ONNX, TensorRT, TFLite). NMS is not part of the original model architecture but was added during export or conversion.
 
-Both produce post-NMS output in `[x1, y1, x2, y2, conf, class, ...]` format. Detection models output `(1, max_det, 6)`. Segmentation models output `(1, max_det, 6 + nm)` plus prototype masks — the mask coefficients for NMS-selected detections are preserved, so only the `coefficients × prototypes` step is needed externally. Use `--nms none` (CLI) or `validation.nms: none` (metadata) for either case.
+Both produce post-NMS output in `[x1, y1, x2, y2, conf, class, ...]` format. Detection models output `(1, max_det, 6)`. Segmentation models output `(1, max_det, 6 + nm)` plus prototype masks — the mask coefficients for NMS-selected detections are preserved, so only the mask decode step is needed externally (`mask = sigmoid(coefficients @ prototypes)`). Use `--nms none` (CLI) or `validation.nms: none` (metadata) for either case.
 
 ### Allowed `nms` Values
 

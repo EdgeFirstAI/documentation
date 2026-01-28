@@ -296,6 +296,7 @@ outputs:
     stride: [int, int]     # Spatial stride for this output (ModelPack)
     anchors: [[[float, float]]]  # Normalized anchors for this output level (ModelPack only)
     score_format: string   # Score encoding: 'per_class' or 'obj_x_class' (Ultralytics only)
+    normalized: boolean    # Box coordinates in [0,1] range (true) or pixels (false). Optional field.
 ```
 
 ---
@@ -603,6 +604,42 @@ Both produce post-NMS output in `[x1, y1, x2, y2, conf, class, ...]` format. Det
 | `torch` | PyTorch (torchvision) NMS |
 
 When `--override` is set, the validator reads `validation.nms` from the model metadata and applies it automatically.
+
+### Box Coordinate Format (`normalized`)
+
+The `normalized` field on detection and boxes outputs specifies the coordinate format:
+
+| Value | Description | Coordinate Range |
+|-------|-------------|------------------|
+| `true` | Normalized coordinates relative to model input dimensions | `[0.0, 1.0]` |
+| `false` | Pixel coordinates relative to model input (letterboxed frame) | `[0, width]` / `[0, height]` |
+| *(absent)* | Must be inferred from output values | Check if any coordinate > 1.0 |
+
+**When `normalized` is absent**, the coordinate format must be inferred by examining the output values. If any bounding box coordinate exceeds `1.0`, the coordinates are in pixels; otherwise, assume normalized.
+
+**Normalized coordinates are preferred** because they:
+
+- Don't require knowledge of model input resolution for downstream processing
+- Quantize better (smaller dynamic range)
+- Work consistently across different model input sizes
+
+**Pixel coordinates** are typically used by:
+
+- End-to-end models with embedded NMS (YOLO26, engine-embedded NMS)
+- Models exported with specific output coordinate conventions
+
+!!! note
+    Coordinates are always relative to the **letterboxed model input**, not the original image aspect ratio. The caller must apply the inverse letterbox transform to map boxes back to original image coordinates regardless of whether `normalized` is `true` or `false`.
+
+```yaml
+# Example: End-to-end model with pixel coordinates
+outputs:
+  - name: "output0"
+    type: detection
+    shape: [1, 100, 6]    # [batch, max_det, x1+y1+x2+y2+conf+class]
+    normalized: false      # Pixel coordinates
+    decoder: ultralytics
+```
 
 ---
 

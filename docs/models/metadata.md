@@ -271,6 +271,10 @@ export:  # See Quantization documentation for ModelPack and Ultralytics
   export_output_type: string  # Output quantization type
   calibration_samples: int    # Samples used for calibration
 
+# Decoder Configuration (Ultralytics only)
+decoder_version: string    # YOLO architecture version: yolov5, yolov8, yolo11, yolo26
+nms: string                # NMS mode for HAL decoder: class_agnostic, class_aware
+
 # Output Specification (Critical for Inference)
 outputs:
   - name: string           # Output tensor name
@@ -781,6 +785,92 @@ All Ultralytics versions use the same anchor-free `Detect` class. Differences ar
 | YOLOv8  | C2f             | Conv→Conv→Conv2d    |
 | YOLO11  | C3k2, C2PSA     | DWConv→Conv (efficient) |
 | YOLO26  | C3k2, A2C2f     | DWConv→Conv (efficient) |
+
+### Decoder Version Field
+
+The `decoder_version` field specifies the YOLO architecture version for Ultralytics models. This field is critical for determining the correct decoding strategy, especially for end-to-end models.
+
+```yaml
+decoder_version: yolo26    # End-to-end model with embedded NMS
+# or
+decoder_version: yolov8    # Traditional model requiring external NMS
+```
+
+**Supported values:**
+
+| Value | Architecture | NMS Handling |
+|-------|--------------|--------------|
+| `yolov5` | YOLOv5 | External NMS required |
+| `yolov8` | YOLOv8 | External NMS required |
+| `yolo11` | YOLO11 | External NMS required |
+| `yolo26` | YOLO26 | Embedded NMS (end-to-end) |
+
+!!! note "Naming Convention"
+    The naming follows Ultralytics conventions: `yolov5` and `yolov8` include the 'v' prefix, while `yolo11` and `yolo26` do not (Ultralytics dropped the 'v' starting with YOLO11).
+
+**When `decoder_version` is `yolo26`:**
+
+- The model uses one-to-one matching heads with NMS embedded in the architecture
+- Output format is `[x1, y1, x2, y2, conf, class, ...]` (post-NMS)
+- The HAL decoder uses end-to-end model types regardless of the `nms` field
+- No external NMS is applied
+
+**When `decoder_version` is absent or any other value:**
+
+- Traditional YOLO architecture requiring external NMS
+- The `nms` field controls which NMS algorithm the HAL decoder uses
+
+### HAL NMS Field
+
+The `nms` field at the config root level controls the HAL decoder's NMS behavior:
+
+```yaml
+nms: class_agnostic    # Suppress overlapping boxes regardless of class (default)
+# or
+nms: class_aware       # Only suppress boxes with the same class label
+```
+
+| Value | Behavior |
+|-------|----------|
+| `class_agnostic` | Suppress overlapping boxes regardless of class label (default) |
+| `class_aware` | Only suppress boxes that share the same class AND overlap |
+
+!!! warning "Different from `validation.nms`"
+    The root-level `nms` field controls **HAL decoder behavior** (class-agnostic vs class-aware). The `validation.nms` field in the validation section specifies the **NMS implementation** to use during validation (hal, numpy, tensorflow, etc.) or `none` for models with embedded NMS.
+
+**Example configuration for YOLO26 end-to-end model:**
+
+```yaml
+decoder_version: yolo26
+outputs:
+  - decoder: ultralytics
+    type: detection
+    shape: [1, 100, 6]
+    normalized: false
+    dshape:
+      - batch: 1
+      - num_boxes: 100
+      - num_features: 6
+validation:
+  nms: none    # Model has embedded NMS
+```
+
+**Example configuration for traditional YOLOv8 model:**
+
+```yaml
+decoder_version: yolov8
+nms: class_agnostic
+outputs:
+  - decoder: ultralytics
+    type: detection
+    shape: [1, 84, 8400]
+    dshape:
+      - batch: 1
+      - num_features: 84
+      - num_boxes: 8400
+validation:
+  nms: hal    # Use HAL decoder NMS
+```
 
 ---
 

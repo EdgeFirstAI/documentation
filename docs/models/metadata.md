@@ -260,6 +260,7 @@ augmentation:  # See Vision Augmentations documentation
 validation:
   iou: float               # NMS IoU threshold
   score: float             # NMS score threshold
+  nms: string              # NMS algorithm (none, numpy, hal, tensorflow, torch)
   normalization: string    # Input normalization (unsigned, signed)
   preprocessing: string    # Preprocessing method (resize, letterbox)
   skip_validation_steps: int  # Steps to skip between validations
@@ -269,6 +270,10 @@ export:  # See Quantization documentation for ModelPack and Ultralytics
   export_input_type: string   # Input quantization type
   export_output_type: string  # Output quantization type
   calibration_samples: int    # Samples used for calibration
+
+# Decoder Configuration (Ultralytics only)
+decoder_version: string    # YOLO architecture version: yolov5, yolov8, yolo11, yolo26
+nms: string                # NMS mode for HAL decoder: class_agnostic, class_aware
 
 # Output Specification (Critical for Inference)
 outputs:
@@ -294,6 +299,8 @@ outputs:
     quantization: [float, int]  # [scale, zero_point] for quantized models
     stride: [int, int]     # Spatial stride for this output (ModelPack)
     anchors: [[[float, float]]]  # Normalized anchors for this output level (ModelPack only)
+    score_format: string   # Score encoding: 'per_class' or 'obj_x_class' (Ultralytics only)
+    normalized: boolean    # Box coordinates in [0,1] range (true) or pixels (false). Optional field.
 ```
 
 ---
@@ -315,6 +322,14 @@ For Ultralytics framework models, the following output types are used:
 | `mask_coefficients` | Split coefficients for instance segmentation | `[1, num_protos, num_boxes]`   |
 | `protos`            | Instance segmentation prototypes             | `[1, H, W, num_protos]` (NHWC) |
 
+**`score_format` field** (Ultralytics only):
+
+| Value | Description | Architecture |
+|-------|-------------|--------------|
+| `per_class` | Each anchor outputs `[nc]` class probabilities directly | YOLOv8, YOLO11, YOLO26 |
+| `obj_x_class` | Each anchor outputs `[1 + nc]` where final score = objectness × class confidence | YOLOv5 |
+
+When `score_format` is absent, the validator falls back to a shape-based heuristic on the feature dimension: `nc+5` features per anchor (4 box coordinates + 1 objectness + `nc` class probabilities) implies `obj_x_class` (e.g., `[1, 85, 8400]` for 80 classes).
 
 For ModelPack framework models the following output types are used:
 
@@ -559,6 +574,79 @@ The `cameraadaptor` field specifies the expected input format for the model. See
 
 ---
 
+## Validation Parameters
+
+The `validation` section records the recommended settings based on how the model was trained. These parameters are **informational preferences** — they document the model author's intended configuration for validation and inference.
+
+### Parameter Semantics
+
+| Parameter | Description | Default | Override at Runtime? |
+|-----------|-------------|---------|---------------------|
+| `iou` | NMS IoU threshold | `0.7` | Yes |
+| `score` | NMS confidence score threshold | `0.001` | Yes |
+| `nms` | NMS algorithm | *(not set)* | See below |
+| `normalization` | Input pixel normalization | `unsigned` | Yes |
+| `preprocessing` | Image preprocessing method | `letterbox` | Yes |
+
+Most parameters (`iou`, `score`, `normalization`, `preprocessing`, and NMS algorithm choices like `hal`/`tensorflow`/`numpy`/`torch`) can be overridden at runtime based on deployment preferences.
+
+**Exception: `nms: none`** must be respected because the model does not produce outputs compatible with external NMS. This applies to two cases:
+
+1. **Architectural end-to-end models** (e.g., YOLO26) — NMS is part of the model architecture via one-to-one matching heads. The model graph itself produces final predictions.
+2. **Engine-embedded NMS** — Models exported with NMS operations appended to the inference graph (ONNX, TensorRT, TFLite). NMS is not part of the original model architecture but was added during export or conversion.
+
+Both produce post-NMS output in `[x1, y1, x2, y2, conf, class, ...]` format. Detection models output `(1, max_det, 6)`. Segmentation models output `(1, max_det, 6 + nm)` plus prototype masks — the mask coefficients for NMS-selected detections are preserved, so only the mask decode step is needed externally (`mask = sigmoid(coefficients @ prototypes)`). Use `--nms none` (CLI) or `validation.nms: none` (metadata) for either case.
+
+### Allowed `nms` Values
+
+| Value | Description |
+|-------|-------------|
+| `none` | No external NMS. For models with embedded NMS — either architectural end-to-end (YOLO26) or engine-embedded (ONNX/TRT/TFLite with NMS ops appended). Supports both detection and segmentation |
+| `numpy` | NumPy-based NMS implementation (default fallback) |
+| `hal` | EdgeFirst HAL decoder NMS |
+| `tensorflow` | TensorFlow NMS |
+| `torch` | PyTorch (torchvision) NMS |
+
+When `--override` is set, the validator reads `validation.nms` from the model metadata and applies it automatically.
+
+### Box Coordinate Format (`normalized`)
+
+The `normalized` field on detection and boxes outputs specifies the coordinate format:
+
+| Value | Description | Coordinate Range |
+|-------|-------------|------------------|
+| `true` | Normalized coordinates relative to model input dimensions | `[0.0, 1.0]` |
+| `false` | Pixel coordinates relative to model input (letterboxed frame) | `[0, width]` / `[0, height]` |
+| *(absent)* | Must be inferred from output values | Check if any coordinate > 1.0 |
+
+**When `normalized` is absent**, the coordinate format must be inferred by examining the output values. If any bounding box coordinate exceeds `1.0`, the coordinates are in pixels; otherwise, assume normalized.
+
+**Normalized coordinates are preferred** because they:
+
+- Don't require knowledge of model input resolution for downstream processing
+- Quantize better (smaller dynamic range)
+- Work consistently across different model input sizes
+
+**Pixel coordinates** are typically used by:
+
+- End-to-end models with embedded NMS (YOLO26, engine-embedded NMS)
+- Models exported with specific output coordinate conventions
+
+!!! note
+    Coordinates are always relative to the **letterboxed model input**, not the original image aspect ratio. The caller must apply the inverse letterbox transform to map boxes back to original image coordinates regardless of whether `normalized` is `true` or `false`.
+
+```yaml
+# Example: End-to-end model with pixel coordinates
+outputs:
+  - name: "output0"
+    type: detection
+    shape: [1, 100, 6]    # [batch, max_det, x1+y1+x2+y2+conf+class]
+    normalized: false      # Pixel coordinates
+    decoder: ultralytics
+```
+
+---
+
 ## Post-Processing & Split Decoder
 
 ### What is Split Decoder?
@@ -654,6 +742,9 @@ outputs:
     stride: [16, 16]      # Required - spatial stride
 ```
 
+!!! warning "Deprecated: `decoder: yolov8`"
+    The decoder value `yolov8` is deprecated. Use `ultralytics` instead. Existing models with `decoder: yolov8` will continue to work — the validator automatically normalizes `yolov8` to `ultralytics` with a deprecation warning.
+
 ##### `ultralytics` — Anchor-Free DFL Decoder
 
 Used by [Ultralytics](ultralytics/index.md) models (YOLOv5, YOLOv8, YOLO11, YOLO26). Modern anchor-free detection using Distribution Focal Loss (DFL).
@@ -694,6 +785,92 @@ All Ultralytics versions use the same anchor-free `Detect` class. Differences ar
 | YOLOv8  | C2f             | Conv→Conv→Conv2d    |
 | YOLO11  | C3k2, C2PSA     | DWConv→Conv (efficient) |
 | YOLO26  | C3k2, A2C2f     | DWConv→Conv (efficient) |
+
+### Decoder Version Field
+
+The `decoder_version` field specifies the YOLO architecture version for Ultralytics models. This field is critical for determining the correct decoding strategy, especially for end-to-end models.
+
+```yaml
+decoder_version: yolo26    # End-to-end model with embedded NMS
+# or
+decoder_version: yolov8    # Traditional model requiring external NMS
+```
+
+**Supported values:**
+
+| Value | Architecture | NMS Handling |
+|-------|--------------|--------------|
+| `yolov5` | YOLOv5 | External NMS required |
+| `yolov8` | YOLOv8 | External NMS required |
+| `yolo11` | YOLO11 | External NMS required |
+| `yolo26` | YOLO26 | Embedded NMS (end-to-end) |
+
+!!! note "Naming Convention"
+    The naming follows Ultralytics conventions: `yolov5` and `yolov8` include the 'v' prefix, while `yolo11` and `yolo26` do not (Ultralytics dropped the 'v' starting with YOLO11).
+
+**When `decoder_version` is `yolo26`:**
+
+- The model uses one-to-one matching heads with NMS embedded in the architecture
+- Output format is `[x1, y1, x2, y2, conf, class, ...]` (post-NMS)
+- The HAL decoder uses end-to-end model types regardless of the `nms` field
+- No external NMS is applied
+
+**When `decoder_version` is absent or any other value:**
+
+- Traditional YOLO architecture requiring external NMS
+- The `nms` field controls which NMS algorithm the HAL decoder uses
+
+### HAL NMS Field
+
+The `nms` field at the config root level controls the HAL decoder's NMS behavior:
+
+```yaml
+nms: class_agnostic    # Suppress overlapping boxes regardless of class (default)
+# or
+nms: class_aware       # Only suppress boxes with the same class label
+```
+
+| Value | Behavior |
+|-------|----------|
+| `class_agnostic` | Suppress overlapping boxes regardless of class label (default) |
+| `class_aware` | Only suppress boxes that share the same class AND overlap |
+
+!!! warning "Different from `validation.nms`"
+    The root-level `nms` field controls **HAL decoder behavior** (class-agnostic vs class-aware). The `validation.nms` field in the validation section specifies the **NMS implementation** to use during validation (hal, numpy, tensorflow, etc.) or `none` for models with embedded NMS.
+
+**Example configuration for YOLO26 end-to-end model:**
+
+```yaml
+decoder_version: yolo26
+outputs:
+  - decoder: ultralytics
+    type: detection
+    shape: [1, 100, 6]
+    normalized: false
+    dshape:
+      - batch: 1
+      - num_boxes: 100
+      - num_features: 6
+validation:
+  nms: none    # Model has embedded NMS
+```
+
+**Example configuration for traditional YOLOv8 model:**
+
+```yaml
+decoder_version: yolov8
+nms: class_agnostic
+outputs:
+  - decoder: ultralytics
+    type: detection
+    shape: [1, 84, 8400]
+    dshape:
+      - batch: 1
+      - num_features: 84
+      - num_boxes: 8400
+validation:
+  nms: hal    # Use HAL decoder NMS
+```
 
 ---
 
@@ -1050,6 +1227,7 @@ outputs:
     decoder: ultralytics
     quantization: null             # Float model
     anchors: null                  # Anchor-free
+    score_format: per_class        # YOLOv8/v11/v26: class probabilities directly
 
 # Ultralytics instance segmentation protos example
   - name: "output1"
@@ -1067,6 +1245,7 @@ outputs:
     decoder: ultralytics
     quantization: null
     anchors: null
+    score_format: null             # Not applicable to protos output
 ```
 
 ---

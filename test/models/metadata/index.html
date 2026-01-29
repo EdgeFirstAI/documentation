@@ -1475,6 +1475,56 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#validation-parameters" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Validation Parameters
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Validation Parameters">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#parameter-semantics" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Parameter Semantics
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#allowed-nms-values" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Allowed nms Values
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#box-coordinate-format-normalized" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Box Coordinate Format (normalized)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#post-processing-split-decoder" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -1583,6 +1633,28 @@
         
       </ul>
     </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#decoder-version-field" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Decoder Version Field
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#hal-nms-field" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        HAL NMS Field
+      
+    </span>
+  </a>
   
 </li>
         
@@ -2369,6 +2441,56 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#validation-parameters" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Validation Parameters
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Validation Parameters">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#parameter-semantics" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Parameter Semantics
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#allowed-nms-values" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Allowed nms Values
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#box-coordinate-format-normalized" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Box Coordinate Format (normalized)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#post-processing-split-decoder" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2477,6 +2599,28 @@
         
       </ul>
     </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#decoder-version-field" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Decoder Version Field
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#hal-nms-field" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        HAL NMS Field
+      
+    </span>
+  </a>
   
 </li>
         
@@ -3010,6 +3154,7 @@
 <span class="nt">validation</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">iou</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">float</span><span class="w">               </span><span class="c1"># NMS IoU threshold</span>
 <span class="w">  </span><span class="nt">score</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">float</span><span class="w">             </span><span class="c1"># NMS score threshold</span>
+<span class="w">  </span><span class="nt">nms</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">string</span><span class="w">              </span><span class="c1"># NMS algorithm (none, numpy, hal, tensorflow, torch)</span>
 <span class="w">  </span><span class="nt">normalization</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">string</span><span class="w">    </span><span class="c1"># Input normalization (unsigned, signed)</span>
 <span class="w">  </span><span class="nt">preprocessing</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">string</span><span class="w">    </span><span class="c1"># Preprocessing method (resize, letterbox)</span>
 <span class="w">  </span><span class="nt">skip_validation_steps</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">int</span><span class="w">  </span><span class="c1"># Steps to skip between validations</span>
@@ -3019,6 +3164,10 @@
 <span class="w">  </span><span class="nt">export_input_type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">string</span><span class="w">   </span><span class="c1"># Input quantization type</span>
 <span class="w">  </span><span class="nt">export_output_type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">string</span><span class="w">  </span><span class="c1"># Output quantization type</span>
 <span class="w">  </span><span class="nt">calibration_samples</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">int</span><span class="w">    </span><span class="c1"># Samples used for calibration</span>
+
+<span class="c1"># Decoder Configuration (Ultralytics only)</span>
+<span class="nt">decoder_version</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">string</span><span class="w">    </span><span class="c1"># YOLO architecture version: yolov5, yolov8, yolo11, yolo26</span>
+<span class="nt">nms</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">string</span><span class="w">                </span><span class="c1"># NMS mode for HAL decoder: class_agnostic, class_aware</span>
 
 <span class="c1"># Output Specification (Critical for Inference)</span>
 <span class="nt">outputs</span><span class="p">:</span>
@@ -3044,6 +3193,8 @@
 <span class="w">    </span><span class="nt">quantization</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">float</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">int</span><span class="p p-Indicator">]</span><span class="w">  </span><span class="c1"># [scale, zero_point] for quantized models</span>
 <span class="w">    </span><span class="nt">stride</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">int</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">int</span><span class="p p-Indicator">]</span><span class="w">     </span><span class="c1"># Spatial stride for this output (ModelPack)</span>
 <span class="w">    </span><span class="nt">anchors</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[[[</span><span class="nv">float</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">float</span><span class="p p-Indicator">]]]</span><span class="w">  </span><span class="c1"># Normalized anchors for this output level (ModelPack only)</span>
+<span class="w">    </span><span class="nt">score_format</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">string</span><span class="w">   </span><span class="c1"># Score encoding: &#39;per_class&#39; or &#39;obj_x_class&#39; (Ultralytics only)</span>
+<span class="w">    </span><span class="nt">normalized</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">boolean</span><span class="w">    </span><span class="c1"># Box coordinates in [0,1] range (true) or pixels (false). Optional field.</span>
 </code></pre></div>
 <hr />
 <h2 id="output-specification">Output Specification</h2>
@@ -3086,6 +3237,29 @@
 </tr>
 </tbody>
 </table>
+<p><strong><code>score_format</code> field</strong> (Ultralytics only):</p>
+<table>
+<thead>
+<tr>
+<th>Value</th>
+<th>Description</th>
+<th>Architecture</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>per_class</code></td>
+<td>Each anchor outputs <code>[nc]</code> class probabilities directly</td>
+<td>YOLOv8, YOLO11, YOLO26</td>
+</tr>
+<tr>
+<td><code>obj_x_class</code></td>
+<td>Each anchor outputs <code>[1 + nc]</code> where final score = objectness × class confidence</td>
+<td>YOLOv5</td>
+</tr>
+</tbody>
+</table>
+<p>When <code>score_format</code> is absent, the validator falls back to a shape-based heuristic on the feature dimension: <code>nc+5</code> features per anchor (4 box coordinates + 1 objectness + <code>nc</code> class probabilities) implies <code>obj_x_class</code> (e.g., <code>[1, 85, 8400]</code> for 80 classes).</p>
 <p>For ModelPack framework models the following output types are used:</p>
 <table>
 <thead>
@@ -3394,6 +3568,143 @@
 </tbody>
 </table>
 <hr />
+<h2 id="validation-parameters">Validation Parameters</h2>
+<p>The <code>validation</code> section records the recommended settings based on how the model was trained. These parameters are <strong>informational preferences</strong> — they document the model author's intended configuration for validation and inference.</p>
+<h3 id="parameter-semantics">Parameter Semantics</h3>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+<th>Default</th>
+<th>Override at Runtime?</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>iou</code></td>
+<td><abbr title="Non-Maximum Suppression">NMS</abbr> <abbr title="Intersection over Union">IoU</abbr> threshold</td>
+<td><code>0.7</code></td>
+<td>Yes</td>
+</tr>
+<tr>
+<td><code>score</code></td>
+<td><abbr title="Non-Maximum Suppression">NMS</abbr> confidence score threshold</td>
+<td><code>0.001</code></td>
+<td>Yes</td>
+</tr>
+<tr>
+<td><code>nms</code></td>
+<td><abbr title="Non-Maximum Suppression">NMS</abbr> algorithm</td>
+<td><em>(not set)</em></td>
+<td>See below</td>
+</tr>
+<tr>
+<td><code>normalization</code></td>
+<td>Input pixel normalization</td>
+<td><code>unsigned</code></td>
+<td>Yes</td>
+</tr>
+<tr>
+<td><code>preprocessing</code></td>
+<td>Image preprocessing method</td>
+<td><code>letterbox</code></td>
+<td>Yes</td>
+</tr>
+</tbody>
+</table>
+<p>Most parameters (<code>iou</code>, <code>score</code>, <code>normalization</code>, <code>preprocessing</code>, and <abbr title="Non-Maximum Suppression">NMS</abbr> algorithm choices like <code>hal</code>/<code>tensorflow</code>/<code>numpy</code>/<code>torch</code>) can be overridden at runtime based on deployment preferences.</p>
+<p><strong>Exception: <code>nms: none</code></strong> must be respected because the model does not produce outputs compatible with external <abbr title="Non-Maximum Suppression">NMS</abbr>. This applies to two cases:</p>
+<ol>
+<li><strong>Architectural end-to-end models</strong> (e.g., YOLO26) — <abbr title="Non-Maximum Suppression">NMS</abbr> is part of the model architecture via one-to-one matching heads. The model graph itself produces final predictions.</li>
+<li><strong>Engine-embedded <abbr title="Non-Maximum Suppression">NMS</abbr></strong> — Models exported with <abbr title="Non-Maximum Suppression">NMS</abbr> operations appended to the inference graph (<abbr title="Open Neural Network Exchange">ONNX</abbr>, TensorRT, TFLite). <abbr title="Non-Maximum Suppression">NMS</abbr> is not part of the original model architecture but was added during export or conversion.</li>
+</ol>
+<p>Both produce post-<abbr title="Non-Maximum Suppression">NMS</abbr> output in <code>[x1, y1, x2, y2, conf, class, ...]</code> format. Detection models output <code>(1, max_det, 6)</code>. Segmentation models output <code>(1, max_det, 6 + nm)</code> plus prototype masks — the mask coefficients for <abbr title="Non-Maximum Suppression">NMS</abbr>-selected detections are preserved, so only the mask decode step is needed externally (<code>mask = sigmoid(coefficients @ prototypes)</code>). Use <code>--nms none</code> (CLI) or <code>validation.nms: none</code> (metadata) for either case.</p>
+<h3 id="allowed-nms-values">Allowed <code>nms</code> Values</h3>
+<table>
+<thead>
+<tr>
+<th>Value</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>none</code></td>
+<td>No external <abbr title="Non-Maximum Suppression">NMS</abbr>. For models with embedded <abbr title="Non-Maximum Suppression">NMS</abbr> — either architectural end-to-end (YOLO26) or engine-embedded (<abbr title="Open Neural Network Exchange">ONNX</abbr>/TRT/TFLite with <abbr title="Non-Maximum Suppression">NMS</abbr> ops appended). Supports both detection and segmentation</td>
+</tr>
+<tr>
+<td><code>numpy</code></td>
+<td>NumPy-based <abbr title="Non-Maximum Suppression">NMS</abbr> implementation (default fallback)</td>
+</tr>
+<tr>
+<td><code>hal</code></td>
+<td>EdgeFirst HAL decoder <abbr title="Non-Maximum Suppression">NMS</abbr></td>
+</tr>
+<tr>
+<td><code>tensorflow</code></td>
+<td>TensorFlow <abbr title="Non-Maximum Suppression">NMS</abbr></td>
+</tr>
+<tr>
+<td><code>torch</code></td>
+<td>PyTorch (torchvision) <abbr title="Non-Maximum Suppression">NMS</abbr></td>
+</tr>
+</tbody>
+</table>
+<p>When <code>--override</code> is set, the validator reads <code>validation.nms</code> from the model metadata and applies it automatically.</p>
+<h3 id="box-coordinate-format-normalized">Box Coordinate Format (<code>normalized</code>)</h3>
+<p>The <code>normalized</code> field on detection and boxes outputs specifies the coordinate format:</p>
+<table>
+<thead>
+<tr>
+<th>Value</th>
+<th>Description</th>
+<th>Coordinate Range</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>true</code></td>
+<td>Normalized coordinates relative to model input dimensions</td>
+<td><code>[0.0, 1.0]</code></td>
+</tr>
+<tr>
+<td><code>false</code></td>
+<td>Pixel coordinates relative to model input (letterboxed frame)</td>
+<td><code>[0, width]</code> / <code>[0, height]</code></td>
+</tr>
+<tr>
+<td><em>(absent)</em></td>
+<td>Must be inferred from output values</td>
+<td>Check if any coordinate &gt; 1.0</td>
+</tr>
+</tbody>
+</table>
+<p><strong>When <code>normalized</code> is absent</strong>, the coordinate format must be inferred by examining the output values. If any bounding box coordinate exceeds <code>1.0</code>, the coordinates are in pixels; otherwise, assume normalized.</p>
+<p><strong>Normalized coordinates are preferred</strong> because they:</p>
+<ul>
+<li>Don't require knowledge of model input resolution for downstream processing</li>
+<li>Quantize better (smaller dynamic range)</li>
+<li>Work consistently across different model input sizes</li>
+</ul>
+<p><strong>Pixel coordinates</strong> are typically used by:</p>
+<ul>
+<li>End-to-end models with embedded <abbr title="Non-Maximum Suppression">NMS</abbr> (YOLO26, engine-embedded <abbr title="Non-Maximum Suppression">NMS</abbr>)</li>
+<li>Models exported with specific output coordinate conventions</li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Coordinates are always relative to the <strong>letterboxed model input</strong>, not the original image aspect ratio. The caller must apply the inverse letterbox transform to map boxes back to original image coordinates regardless of whether <code>normalized</code> is <code>true</code> or <code>false</code>.</p>
+</div>
+<div class="highlight"><pre><span></span><code><span class="c1"># Example: End-to-end model with pixel coordinates</span>
+<span class="nt">outputs</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;output0&quot;</span>
+<span class="w">    </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">detection</span>
+<span class="w">    </span><span class="nt">shape</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">1</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">100</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">6</span><span class="p p-Indicator">]</span><span class="w">    </span><span class="c1"># [batch, max_det, x1+y1+x2+y2+conf+class]</span>
+<span class="w">    </span><span class="nt">normalized</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span><span class="w">      </span><span class="c1"># Pixel coordinates</span>
+<span class="w">    </span><span class="nt">decoder</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ultralytics</span>
+</code></pre></div>
+<hr />
 <h2 id="post-processing-split-decoder">Post-Processing &amp; Split Decoder</h2>
 <h3 id="what-is-split-decoder">What is Split Decoder?</h3>
 <p>The <code>split_decoder</code> field indicates whether the model's detection outputs require external decoding:</p>
@@ -3481,6 +3792,10 @@
 <span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">0.089</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">0.139</span><span class="p p-Indicator">]</span>
 <span class="w">    </span><span class="nt">stride</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">16</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">16</span><span class="p p-Indicator">]</span><span class="w">      </span><span class="c1"># Required - spatial stride</span>
 </code></pre></div>
+<div class="admonition warning">
+<p class="admonition-title">Deprecated: <code>decoder: yolov8</code></p>
+<p>The decoder value <code>yolov8</code> is deprecated. Use <code>ultralytics</code> instead. Existing models with <code>decoder: yolov8</code> will continue to work — the validator automatically normalizes <code>yolov8</code> to <code>ultralytics</code> with a deprecation warning.</p>
+</div>
 <h5 id="ultralytics-anchor-free-dfl-decoder"><code>ultralytics</code> — Anchor-Free DFL Decoder</h5>
 <p>Used by <a href="../ultralytics/">Ultralytics</a> models (YOLOv5, YOLOv8, YOLO11, YOLO26). Modern anchor-free detection using Distribution Focal Loss (DFL).</p>
 <p><strong>Characteristics:</strong></p>
@@ -3537,6 +3852,116 @@ All Ultralytics versions use the same anchor-free <code>Detect</code> class. Dif
 </tr>
 </tbody>
 </table>
+<h3 id="decoder-version-field">Decoder Version Field</h3>
+<p>The <code>decoder_version</code> field specifies the <abbr title="You Only Look Once">YOLO</abbr> architecture version for Ultralytics models. This field is critical for determining the correct decoding strategy, especially for end-to-end models.</p>
+<div class="highlight"><pre><span></span><code><span class="nt">decoder_version</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">yolo26</span><span class="w">    </span><span class="c1"># End-to-end model with embedded NMS</span>
+<span class="c1"># or</span>
+<span class="nt">decoder_version</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">yolov8</span><span class="w">    </span><span class="c1"># Traditional model requiring external NMS</span>
+</code></pre></div>
+<p><strong>Supported values:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Value</th>
+<th>Architecture</th>
+<th><abbr title="Non-Maximum Suppression">NMS</abbr> Handling</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>yolov5</code></td>
+<td>YOLOv5</td>
+<td>External <abbr title="Non-Maximum Suppression">NMS</abbr> required</td>
+</tr>
+<tr>
+<td><code>yolov8</code></td>
+<td>YOLOv8</td>
+<td>External <abbr title="Non-Maximum Suppression">NMS</abbr> required</td>
+</tr>
+<tr>
+<td><code>yolo11</code></td>
+<td>YOLO11</td>
+<td>External <abbr title="Non-Maximum Suppression">NMS</abbr> required</td>
+</tr>
+<tr>
+<td><code>yolo26</code></td>
+<td>YOLO26</td>
+<td>Embedded <abbr title="Non-Maximum Suppression">NMS</abbr> (end-to-end)</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition note">
+<p class="admonition-title">Naming Convention</p>
+<p>The naming follows Ultralytics conventions: <code>yolov5</code> and <code>yolov8</code> include the 'v' prefix, while <code>yolo11</code> and <code>yolo26</code> do not (Ultralytics dropped the 'v' starting with YOLO11).</p>
+</div>
+<p><strong>When <code>decoder_version</code> is <code>yolo26</code>:</strong></p>
+<ul>
+<li>The model uses one-to-one matching heads with <abbr title="Non-Maximum Suppression">NMS</abbr> embedded in the architecture</li>
+<li>Output format is <code>[x1, y1, x2, y2, conf, class, ...]</code> (post-<abbr title="Non-Maximum Suppression">NMS</abbr>)</li>
+<li>The HAL decoder uses end-to-end model types regardless of the <code>nms</code> field</li>
+<li>No external <abbr title="Non-Maximum Suppression">NMS</abbr> is applied</li>
+</ul>
+<p><strong>When <code>decoder_version</code> is absent or any other value:</strong></p>
+<ul>
+<li>Traditional <abbr title="You Only Look Once">YOLO</abbr> architecture requiring external <abbr title="Non-Maximum Suppression">NMS</abbr></li>
+<li>The <code>nms</code> field controls which <abbr title="Non-Maximum Suppression">NMS</abbr> algorithm the HAL decoder uses</li>
+</ul>
+<h3 id="hal-nms-field">HAL <abbr title="Non-Maximum Suppression">NMS</abbr> Field</h3>
+<p>The <code>nms</code> field at the config root level controls the HAL decoder's <abbr title="Non-Maximum Suppression">NMS</abbr> behavior:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">nms</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">class_agnostic</span><span class="w">    </span><span class="c1"># Suppress overlapping boxes regardless of class (default)</span>
+<span class="c1"># or</span>
+<span class="nt">nms</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">class_aware</span><span class="w">       </span><span class="c1"># Only suppress boxes with the same class label</span>
+</code></pre></div>
+<table>
+<thead>
+<tr>
+<th>Value</th>
+<th>Behavior</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>class_agnostic</code></td>
+<td>Suppress overlapping boxes regardless of class label (default)</td>
+</tr>
+<tr>
+<td><code>class_aware</code></td>
+<td>Only suppress boxes that share the same class AND overlap</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition warning">
+<p class="admonition-title">Different from <code>validation.nms</code></p>
+<p>The root-level <code>nms</code> field controls <strong>HAL decoder behavior</strong> (class-agnostic vs class-aware). The <code>validation.nms</code> field in the validation section specifies the <strong><abbr title="Non-Maximum Suppression">NMS</abbr> implementation</strong> to use during validation (hal, numpy, tensorflow, etc.) or <code>none</code> for models with embedded <abbr title="Non-Maximum Suppression">NMS</abbr>.</p>
+</div>
+<p><strong>Example configuration for YOLO26 end-to-end model:</strong></p>
+<div class="highlight"><pre><span></span><code><span class="nt">decoder_version</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">yolo26</span>
+<span class="nt">outputs</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">decoder</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ultralytics</span>
+<span class="w">    </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">detection</span>
+<span class="w">    </span><span class="nt">shape</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">1</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">100</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">6</span><span class="p p-Indicator">]</span>
+<span class="w">    </span><span class="nt">normalized</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
+<span class="w">    </span><span class="nt">dshape</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">batch</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">num_boxes</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">100</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">num_features</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">6</span>
+<span class="nt">validation</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">nms</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">none</span><span class="w">    </span><span class="c1"># Model has embedded NMS</span>
+</code></pre></div>
+<p><strong>Example configuration for traditional YOLOv8 model:</strong></p>
+<div class="highlight"><pre><span></span><code><span class="nt">decoder_version</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">yolov8</span>
+<span class="nt">nms</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">class_agnostic</span>
+<span class="nt">outputs</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">decoder</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ultralytics</span>
+<span class="w">    </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">detection</span>
+<span class="w">    </span><span class="nt">shape</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">1</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">84</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">8400</span><span class="p p-Indicator">]</span>
+<span class="w">    </span><span class="nt">dshape</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">batch</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">num_features</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">84</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">num_boxes</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">8400</span>
+<span class="nt">validation</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">nms</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">hal</span><span class="w">    </span><span class="c1"># Use HAL decoder NMS</span>
+</code></pre></div>
 <hr />
 <h2 id="onnx-specific-metadata"><abbr title="Open Neural Network Exchange">ONNX</abbr>-Specific Metadata</h2>
 <p><abbr title="Open Neural Network Exchange">ONNX</abbr> models exported from <a href="../modelpack/">ModelPack</a> or <a href="../ultralytics/">Ultralytics</a> include additional official metadata fields:</p>
@@ -3920,6 +4345,7 @@ zip<span class="w"> </span>mymodel.tflite<span class="w"> </span>edgefirst.json
 <span class="w">    </span><span class="nt">decoder</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ultralytics</span>
 <span class="w">    </span><span class="nt">quantization</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">null</span><span class="w">             </span><span class="c1"># Float model</span>
 <span class="w">    </span><span class="nt">anchors</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">null</span><span class="w">                  </span><span class="c1"># Anchor-free</span>
+<span class="w">    </span><span class="nt">score_format</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">per_class</span><span class="w">        </span><span class="c1"># YOLOv8/v11/v26: class probabilities directly</span>
 
 <span class="c1"># Ultralytics instance segmentation protos example</span>
 <span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;output1&quot;</span>
@@ -3937,6 +4363,7 @@ zip<span class="w"> </span>mymodel.tflite<span class="w"> </span>edgefirst.json
 <span class="w">    </span><span class="nt">decoder</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ultralytics</span>
 <span class="w">    </span><span class="nt">quantization</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">null</span>
 <span class="w">    </span><span class="nt">anchors</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">null</span>
+<span class="w">    </span><span class="nt">score_format</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">null</span><span class="w">             </span><span class="c1"># Not applicable to protos output</span>
 </code></pre></div>
 <hr />
 <h2 id="related-articles">Related Articles</h2>

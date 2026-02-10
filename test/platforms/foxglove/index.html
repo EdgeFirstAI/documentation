@@ -2025,26 +2025,24 @@
 <li>Open Foxglove Studio.</li>
 <li>Load an <abbr title="Binary container format for robotics log data">MCAP</abbr> file downloaded from the Raivin.</li>
 <li>Click the "Layout" button in the top taskbar.</li>
-<li>Select the "Import from file..." option in the Layout menu.  </li>
+<li>
+<p>Select the "Import from file..." option in the Layout menu.  </p>
+<p><figure markdown="span">
+  <img align="center" alt="Foxglove Layout" src="../assets/foxglove_layout.png" />
+  <figcaption>Foxglove Layout</figcaption>
+  </figure></p>
+</li>
+<li>
+<p>Go to the download directory holding the JSON layout file and select the file.</p>
+</li>
+<li>
+<p>Confirm the layout JSON file is loaded.  </p>
+<p><figure markdown="span">
+  <img align="center" alt="Foxglove Scene" src="../assets/foxglove_scene.png" />
+  <figcaption>Foxglove Scene</figcaption>
+  </figure></p>
+</li>
 </ol>
-<figure markdown="span">
- ![Foxglove Layout](assets/foxglove_layout.png){align=center}
- 
-
-<figcaption>Foxglove Layout</figcaption>
-
- </figure>
-<ol>
-<li>Go to the download directory holding the JSON layout file and select the file.</li>
-<li>Confirm the layout JSON file is loaded.  </li>
-</ol>
-<figure markdown="span">
- ![Foxglove Scene](assets/foxglove_scene.png){align=center}
- 
-
-<figcaption>Foxglove Scene</figcaption>
-
- </figure>
 <h3 id="layout-features">Layout Features</h3>
 <p>The default Raivin layout includes:</p>
 <ul>
@@ -2073,37 +2071,32 @@
 <p>Not all vision models are able produce detection results.  The default model on the Raivin can produce both detection and segmentation results.</p>
 <ol>
 <li>Record a <abbr title="Binary container format for robotics log data">MCAP</abbr> file that captures the <code>/model/boxes2d</code> topic.</li>
-<li>Confirm with the "Details" button that the newly recorded <abbr title="Binary container format for robotics log data">MCAP</abbr> has a <code>/model/boxes2d</code> topic.  </li>
-</ol>
-<figure markdown="span">
-    ![MCAP Details](assets/foxglove_mcap_details.png){align=center}
- 
-
-<figcaption>MCAP Details</figcaption>
-
- </figure>
-<ol>
-<li>Download the file from the Raivin and load it in Foxglove Studio.</li>
+<li>
+<p>Confirm with the "Details" button that the newly recorded <abbr title="Binary container format for robotics log data">MCAP</abbr> has a <code>/model/boxes2d</code> topic.  </p>
+<p><figure markdown="span">
+  <img align="center" alt="MCAP Details" src="../assets/foxglove_mcap_details.png" />
+  <figcaption><abbr title="Binary container format for robotics log data">MCAP</abbr> Details</figcaption>
+  </figure></p>
+</li>
+<li>
+<p>Download the file from the Raivin and load it in Foxglove Studio.</p>
+</li>
 <li>Click the "Settings" gear icon on the right side of the <code>/camera/h264/</code> panel task bar.</li>
-<li>The <code>/model/boxes2d</code> option should appear in the "Image annotations" dropdown menu in the "Image Panel" settings sidebar (bottom left of image below).  </li>
+<li>
+<p>The <code>/model/boxes2d</code> option should appear in the "Image annotations" dropdown menu in the "Image Panel" settings sidebar (bottom left of image below).  </p>
+<p><figure markdown="span">
+  <img align="center" alt="Foxglove Detect Plugin View" src="../assets/foxglove_detect_plugin_view.png" />
+  <figcaption>Foxglove Detect Plugin View</figcaption>
+  </figure></p>
+</li>
+<li>
+<p>Enable the <code>/model/boxes2d</code> image annotations by clicking the closed eye icon. This will draw boxes around the detected objects.  </p>
+<p><figure markdown="span">
+  <img align="center" alt="Foxglove Detect Boxes Enabled" src="../assets/foxglove_open_box_eye.png" />
+  <figcaption>Foxglove Detect Boxes Enabled</figcaption>
+  </figure></p>
+</li>
 </ol>
-<figure markdown="span">
-    ![Foxglove Detect Plugin View](assets/foxglove_detect_plugin_view.png){align=center}
- 
-
-<figcaption>Foxglove Detect Plugin View</figcaption>
-
- </figure>
-<ol>
-<li>Enable the <code>/model/boxes2d</code> image annotations by clicking the closed eye icon. This will draw boxes around the detected objects.  </li>
-</ol>
-<figure markdown="span">
-    ![Foxglove Detect Boxes Enabled](assets/foxglove_open_box_eye.png){align=center}
- 
-
-<figcaption>Foxglove Detect Boxes Enabled</figcaption>
-
- </figure>
 <h3 id="viewing-segmentation-messages">Viewing Segmentation Messages</h3>
 <p>Segmentation masks are contained in the <code>/model/mask_compressed</code> topic which is enabled on the Raivin by default.  Because of the amount of data included within this stream, it is not compatible with the default Image drawing <abbr title="Application Programming Interface">API</abbr> in Foxglove Studio. To visualize the Segmentation Mask, the EdgeFirst Foxglove plug-in must be installed to view segmentation masks in Foxglove.</p>
 <p>The instructions to view these masks are the same as above but using the <code>/model/mask_compressed</code> topic instead of the <code>/model/boxes2d</code> topic.</p>
@@ -2117,35 +2110,34 @@
 <ol>
 <li>Record a <abbr title="Binary container format for robotics log data">MCAP</abbr> file that has the <code>/radar/cube</code> message in it. See Maivin Dataset Recording for details.</li>
 <li>Play the <abbr title="Binary container format for robotics log data">MCAP</abbr> file in Foxglove Studio. See Playback <abbr title="Binary container format for robotics log data">MCAP</abbr> with Foxglove Studio for details.</li>
-<li>In the image panel, the <code>/radar/cube</code> topic should appear under the list of valid image topics.  </li>
+<li>
+<p>In the image panel, the <code>/radar/cube</code> topic should appear under the list of valid image topics.  </p>
+<p><figure markdown="span">
+  <img align="center" alt="Foxglove Radar Mask" src="../assets/foxglove_radar_mask.png" />
+  <figcaption>Foxglove Radar Mask</figcaption>
+  </figure></p>
+</li>
+<li>
+<p>Select the <code>/radar/cube</code> topic.</p>
+</li>
+<li>
+<p>Change the color mode to Color Map, and select Turbo for the color map.  </p>
+<p><figure markdown="span">
+  <img align="center" alt="Foxglove Radar Message" src="../assets/foxglove_radar_msg.png" />
+  <figcaption>Foxglove Radar Message</figcaption>
+  </figure></p>
+</li>
+<li>
+<p>Leave the value min and value max on auto.</p>
+</li>
+<li>
+<p>You can now see the <code>/radar/cube</code> message.  </p>
+<p><figure markdown="span">
+  <img align="center" alt="Foxglove Final Radar View" src="../assets/foxglove_final_radar_view.png" />
+  <figcaption>Foxglove Final Radar View</figcaption>
+  </figure></p>
+</li>
 </ol>
-<figure markdown="span">
- ![Foxglove Radar Mask](assets/foxglove_radar_mask.png){align=center}
- 
-
-<figcaption>Foxglove Radar Mask</figcaption>
-
- </figure>
-<ol>
-<li>Select the <code>/radar/cube</code> topic.</li>
-<li>Change the color mode to Color Map, and select Turbo for the color map.  </li>
-</ol>
-<figure markdown="span">
- ![Foxglove Radar Message](assets/foxglove_radar_msg.png){align=center}
- 
-
-<figcaption>Foxglove Radar Message</figcaption>
-
- </figure>
-<ol>
-<li>Leave the value min and value max on auto.</li>
-<li>You can now see the <code>/radar/cube</code> message.  </li>
-</ol>
-<figure>
-<img align="center" alt="Foxglove Final Radar View" src="../assets/foxglove_final_radar_view.png" />
-
-<figcaption>Foxglove Final Radar View</figcaption>
-</figure>
 <h3 id="imu-data-plotting"><abbr title="Inertial Measurement Unit">IMU</abbr> Data Plotting</h3>
 <p>To create <abbr title="Inertial Measurement Unit">IMU</abbr> sensor plots:</p>
 <ol>
@@ -2153,50 +2145,34 @@
 <li>Click "Add a Series"</li>
 <li>Select <code>/imu</code> as the topic</li>
 <li>Choose desired parameters (e.g, angular_velocity, x, y, z)</li>
-<li>Repeat to add additional plot series as needed.</li>
+<li>
+<p>Repeat to add additional plot series as needed.</p>
+<p><figure markdown="span">
+  <img align="center" alt="IMU" src="../assets/imu.png" />
+  <figcaption><abbr title="Inertial Measurement Unit">IMU</abbr></figcaption>
+  </figure></p>
+<p><figure markdown="span">
+  <img align="center" alt="IMU to Plot" src="../assets/imu_to_plot.png" />
+  <figcaption><abbr title="Inertial Measurement Unit">IMU</abbr> to Plot</figcaption>
+  </figure></p>
+<p><figure markdown="span">
+  <img align="center" alt="Plot" src="../assets/plot.png" />
+  <figcaption>Plot</figcaption>
+  </figure></p>
+<p><figure markdown="span">
+  <img align="center" alt="IMU Message" src="../assets/imu_msg.png" />
+  <figcaption><abbr title="Inertial Measurement Unit">IMU</abbr> Message</figcaption>
+  </figure></p>
+<p><figure markdown="span">
+  <img align="center" alt="IMU Velocity" src="../assets/imu_velocity.png" />
+  <figcaption><abbr title="Inertial Measurement Unit">IMU</abbr> Velocity</figcaption>
+  </figure></p>
+<p><figure markdown="span">
+  <img align="center" alt="IMU Final View" src="../assets/imu_final_view.png" />
+  <figcaption><abbr title="Inertial Measurement Unit">IMU</abbr> Final View</figcaption>
+  </figure></p>
+</li>
 </ol>
-<figure markdown="span">
-    ![IMU](assets/imu.png){align=center}
- 
-
-<figcaption>IMU</figcaption>
-
- </figure>
-<figure markdown="span">
-    ![IMU to Plot](assets/imu_to_plot.png){align=center}
- 
-
-<figcaption>IMU to Plot</figcaption>
-
- </figure>
-<figure markdown="span">
-    ![Plot](assets/plot.png){align=center}
- 
-
-<figcaption>Plot</figcaption>
-
- </figure>
-<figure markdown="span">
-    ![IMU Message](assets/imu_msg.png){align=center}
- 
-
-<figcaption>IMU Message</figcaption>
-
- </figure>
-<figure markdown="span">
-    ![IMU Velocity](assets/imu_velocity.png){align=center}
- 
-
-<figcaption>IMU Velocity</figcaption>
-
- </figure>
-<figure markdown="span">
-    ![IMU Final View](assets/imu_final_view.png){align=center}
- 
-
-<figcaption>IMU Final View</figcaption>
-
- </figure>
 <h2 id="additional-resources">Additional Resources</h2>
 <p>For more detailed information about Foxglove Studio features, visit the <a href="https://docs.foxglove.dev/docs/introduction/">Foxglove Documentation website</a>.</p>
 

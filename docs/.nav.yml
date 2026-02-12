@@ -3,6 +3,7 @@ nav:
   - Getting Started:
     - index.md
     - getting_started/login.md
+    - getting_started/running_pretrained_model.md
     - getting_started/create_project.md
     - getting_started/capture_data.md
     - getting_started/annotate_dataset.md

@@ -2882,7 +2882,7 @@
 <tr>
 <td>TFLite</td>
 <td>ZIP archive (associated files)</td>
-<td><code>edgefirst.yaml</code></td>
+<td><code>edgefirst.json</code> (preferred), <code>edgefirst.yaml</code></td>
 <td><code>labels.txt</code></td>
 </tr>
 <tr>
@@ -3119,8 +3119,10 @@
 
 <span class="c1"># Model Configuration (see ModelPack and Ultralytics documentation)</span>
 <span class="nt">input</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">shape</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">int</span><span class="p p-Indicator">]</span><span class="w">           </span><span class="c1"># Input tensor shape (NCHW or NHWC depending on model)</span>
+<span class="w">  </span><span class="nt">shape</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">int</span><span class="p p-Indicator">]</span><span class="w">             </span><span class="c1"># Input tensor shape (NCHW or NHWC depending on model)</span>
 <span class="w">  </span><span class="nt">cameraadaptor</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">string</span><span class="w">    </span><span class="c1"># Camera format (rgb, bgr, rgba, bgra, grey, yuyv)</span>
+<span class="w">  </span><span class="nt">input_channels</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">int</span><span class="w">      </span><span class="c1"># Channels from camera (3=RGB, 4=RGBA, 1=grey)</span>
+<span class="w">  </span><span class="nt">output_channels</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">int</span><span class="w">     </span><span class="c1"># Channels after CameraAdaptor transform</span>
 
 <span class="nt">model</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">backbone</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">string</span><span class="w">         </span><span class="c1"># Backbone architecture (e.g., cspdarknet19, cspdarknet53)</span>
@@ -3260,6 +3262,10 @@
 </tbody>
 </table>
 <p>When <code>score_format</code> is absent, the validator falls back to a shape-based heuristic on the feature dimension: <code>nc+5</code> features per anchor (4 box coordinates + 1 objectness + <code>nc</code> class probabilities) implies <code>obj_x_class</code> (e.g., <code>[1, 85, 8400]</code> for 80 classes).</p>
+<div class="admonition note">
+<p class="admonition-title">HAL Score Format</p>
+<p>HAL determines score format from <code>decoder_version</code> rather than <code>score_format</code>. <code>yolov5</code> applies objectness × class; all other versions use per-class scores directly.</p>
+</div>
 <p>For ModelPack framework models the following output types are used:</p>
 <table>
 <thead>
@@ -3707,25 +3713,26 @@
 <hr />
 <h2 id="post-processing-split-decoder">Post-Processing &amp; Split Decoder</h2>
 <h3 id="what-is-split-decoder">What is Split Decoder?</h3>
-<p>The <code>split_decoder</code> field indicates whether the model's detection outputs require external decoding:</p>
+<p>The <code>split_decoder</code> field indicates the model's outputs have been modified from the standard architecture to improve INT8 quantization performance. The details are framework-specific:</p>
+<ul>
+<li><strong>ModelPack</strong>: Raw grid features instead of decoded boxes (dequantize before anchor decode)</li>
+<li><strong>Ultralytics</strong>: Detection tensor split into separate <code>boxes</code>, <code>scores</code>, <code>mask_coefficients</code> tensors (per-tensor quantization)</li>
+</ul>
 <div class="highlight"><pre><span></span><code><span class="nt">model</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">split_decoder</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span><span class="w">    </span><span class="c1"># Outputs need external anchor-based decoding</span>
-<span class="w">  </span><span class="nt">split_decoder</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span><span class="w">   </span><span class="c1"># Outputs are fully decoded (ready-to-use boxes)</span>
+<span class="w">  </span><span class="nt">split_decoder</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span><span class="w">    </span><span class="c1"># Outputs modified for quantization (see framework docs)</span>
+<span class="w">  </span><span class="nt">split_decoder</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span><span class="w">   </span><span class="c1"># Standard output format</span>
 </code></pre></div>
+<p>See framework documentation for implementation details.</p>
 <h3 id="why-split-decoder-exists">Why Split Decoder Exists</h3>
-<p><strong>For <a href="../modelpack/quantize/">quantized INT8 models</a></strong>, <a href="../modelpack/">ModelPack</a> uses a "split decoder" architecture where:</p>
-<ol>
-<li><strong>Model outputs raw grid features</strong> — not decoded bounding boxes</li>
-<li><strong>Decoding happens after dequantization</strong> — in float32 precision</li>
-<li><strong>Anchor-based box calculation</strong> — uses the anchors specified in metadata</li>
-</ol>
-<p><strong>The reason:</strong> Quantization introduces precision loss. For small objects or high-resolution inputs, applying anchor calculations in INT8 would compound rounding errors, leading to inaccurate bounding boxes. By deferring decoding until after dequantization, we preserve box accuracy.</p>
+<p>Quantization introduces precision loss. Split decoder addresses this differently per framework:</p>
+<p><strong><a href="../modelpack/">ModelPack</a></strong>: For small objects or high-resolution inputs, applying anchor calculations in INT8 would compound rounding errors. By deferring decoding until after dequantization, we preserve box accuracy.</p>
+<p><strong><a href="../ultralytics/">Ultralytics</a></strong>: The monolithic detection tensor contains boxes, scores, and mask coefficients with very different value ranges. Splitting them into separate tensors allows per-tensor quantization scales, preserving accuracy for each component independently.</p>
 <h3 id="decoding-process">Decoding Process</h3>
 <p>When <code>split_decoder: true</code>, the inference pipeline must:</p>
 <ol>
-<li><strong>Run model inference</strong> → Get quantized grid outputs</li>
-<li><strong>Dequantize outputs</strong> → Convert INT8 to float32 using scale/zero_point</li>
-<li><strong>Apply anchor decoding</strong> → Transform grid predictions to bounding boxes</li>
+<li><strong>Run model inference</strong> → Get quantized outputs</li>
+<li><strong>Dequantize outputs</strong> → Convert INT8 to float32 using per-output scale/zero_point</li>
+<li><strong>Apply decoding</strong> → Framework-specific: anchor decode (ModelPack) or box format conversion (Ultralytics)</li>
 <li><strong>Run <abbr title="Non-Maximum Suppression">NMS</abbr></strong> → Filter overlapping detections</li>
 </ol>
 <div class="highlight"><pre><span></span><code><span class="c1"># Example decoding flow for split_decoder models</span>
@@ -3733,32 +3740,44 @@
     <span class="k">if</span> <span class="n">output_spec</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;decode&#39;</span><span class="p">,</span> <span class="kc">False</span><span class="p">):</span>
         <span class="c1"># Dequantize first</span>
         <span class="n">scale</span><span class="p">,</span> <span class="n">zp</span> <span class="o">=</span> <span class="n">output_spec</span><span class="p">[</span><span class="s1">&#39;quantization&#39;</span><span class="p">]</span>
-        <span class="n">grid_float</span> <span class="o">=</span> <span class="p">(</span><span class="n">grid_int8</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span> <span class="o">-</span> <span class="n">zp</span><span class="p">)</span> <span class="o">*</span> <span class="n">scale</span>
-        
-        <span class="c1"># Then decode with anchors</span>
-        <span class="n">anchors</span> <span class="o">=</span> <span class="n">output_spec</span><span class="p">[</span><span class="s1">&#39;anchors&#39;</span><span class="p">]</span>
-        <span class="n">stride</span> <span class="o">=</span> <span class="n">output_spec</span><span class="p">[</span><span class="s1">&#39;stride&#39;</span><span class="p">]</span>
-        <span class="n">boxes</span> <span class="o">=</span> <span class="n">decode_yolo_grid</span><span class="p">(</span><span class="n">grid_float</span><span class="p">,</span> <span class="n">anchors</span><span class="p">,</span> <span class="n">stride</span><span class="p">)</span>
+        <span class="n">raw_float</span> <span class="o">=</span> <span class="p">(</span><span class="n">raw_int8</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span> <span class="o">-</span> <span class="n">zp</span><span class="p">)</span> <span class="o">*</span> <span class="n">scale</span>
+
+        <span class="c1"># Then decode (framework-specific)</span>
+        <span class="k">if</span> <span class="n">output_spec</span><span class="p">[</span><span class="s1">&#39;decoder&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;modelpack&#39;</span><span class="p">:</span>
+            <span class="n">boxes</span> <span class="o">=</span> <span class="n">decode_yolo_grid</span><span class="p">(</span><span class="n">raw_float</span><span class="p">,</span> <span class="n">output_spec</span><span class="p">[</span><span class="s1">&#39;anchors&#39;</span><span class="p">],</span> <span class="n">output_spec</span><span class="p">[</span><span class="s1">&#39;stride&#39;</span><span class="p">])</span>
+        <span class="k">elif</span> <span class="n">output_spec</span><span class="p">[</span><span class="s1">&#39;decoder&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;ultralytics&#39;</span><span class="p">:</span>
+            <span class="c1"># boxes, scores, mask_coefficients are separate outputs</span>
+            <span class="k">pass</span>  <span class="c1"># Use output type to determine handling</span>
 </code></pre></div>
 <h3 id="output-types-with-split-decoder">Output Types with Split Decoder</h3>
 <table>
 <thead>
 <tr>
+<th>Framework</th>
 <th><code>split_decoder</code></th>
-<th>Output Type</th>
-<th>Description</th>
+<th>Output Types</th>
 </tr>
 </thead>
 <tbody>
 <tr>
+<td>ModelPack</td>
 <td><code>true</code></td>
-<td><code>detection</code></td>
-<td>Raw grid features, requires anchor decoding</td>
+<td><code>detection</code> (raw grid, needs anchor decode)</td>
 </tr>
 <tr>
+<td>ModelPack</td>
 <td><code>false</code></td>
-<td><code>boxes</code>, <code>scores</code></td>
-<td>Decoded boxes ready for <abbr title="Non-Maximum Suppression">NMS</abbr></td>
+<td><code>boxes</code>, <code>scores</code> (decoded)</td>
+</tr>
+<tr>
+<td>Ultralytics</td>
+<td><code>true</code></td>
+<td><code>boxes</code>, <code>scores</code>, <code>mask_coefficients</code>, <code>protos</code></td>
+</tr>
+<tr>
+<td>Ultralytics</td>
+<td><code>false</code></td>
+<td><code>detection</code>, <code>protos</code> (monolithic)</td>
 </tr>
 </tbody>
 </table>
@@ -4300,11 +4319,13 @@ zip<span class="w"> </span>mymodel.tflite<span class="w"> </span>edgefirst.json
 <span class="c1"># Ultralytics model configuration</span>
 <span class="nt">model</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">model_version</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v8</span><span class="w">      </span><span class="c1"># v5, v8, v11</span>
-<span class="w">  </span><span class="nt">model_task</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">detect</span><span class="w">     </span><span class="c1"># detect, segment</span>
+<span class="w">  </span><span class="nt">model_task</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">segment</span><span class="w">    </span><span class="c1"># detect, segment</span>
 <span class="w">  </span><span class="nt">model_size</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">n</span><span class="w">          </span><span class="c1"># n (nano), s (small), m (medium), l (large), x (xlarge)</span>
-<span class="w">  </span><span class="nt">detection</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
-<span class="w">  </span><span class="nt">segmentation</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
-<span class="w">  </span><span class="nt">split_decoder</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span><span class="w">   </span><span class="c1"># Ultralytics models have decoder built-in</span>
+<span class="w">  </span><span class="nt">detection</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
+<span class="w">  </span><span class="nt">segmentation</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">  </span><span class="nt">split_decoder</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span><span class="w">    </span><span class="c1"># true = split outputs (boxes, scores, mask_coefficients, protos)</span>
+<span class="w">                         </span><span class="c1"># false = monolithic detection tensor</span>
+<span class="w">                         </span><span class="c1"># Default true for quantized segmentation models</span>
 </code></pre></div>
 <h3 id="outputs-section">Outputs Section</h3>
 <div class="highlight"><pre><span></span><code><span class="c1"># ModelPack detection output example</span>

@@ -17,7 +17,7 @@ EdgeFirst models from the [Model Zoo](index.md) (including [ModelPack](modelpack
 
 | Format | Metadata Location | Config Format | Labels |
 |--------|-------------------|---------------|--------|
-| TFLite | ZIP archive (associated files) | `edgefirst.yaml` | `labels.txt` |
+| TFLite | ZIP archive (associated files) | `edgefirst.json` (preferred), `edgefirst.yaml` | `labels.txt` |
 | ONNX | Custom metadata properties | `edgefirst` (JSON) | `labels` (JSON array) |
 
 ### Supported Training Frameworks
@@ -225,8 +225,10 @@ author: string             # Organization (typically "Au-Zone Technologies")
 
 # Model Configuration (see ModelPack and Ultralytics documentation)
 input:
-  shape: [int]           # Input tensor shape (NCHW or NHWC depending on model)
+  shape: [int]             # Input tensor shape (NCHW or NHWC depending on model)
   cameraadaptor: string    # Camera format (rgb, bgr, rgba, bgra, grey, yuyv)
+  input_channels: int      # Channels from camera (3=RGB, 4=RGBA, 1=grey)
+  output_channels: int     # Channels after CameraAdaptor transform
 
 model:
   backbone: string         # Backbone architecture (e.g., cspdarknet19, cspdarknet53)
@@ -330,6 +332,9 @@ For Ultralytics framework models, the following output types are used:
 | `obj_x_class` | Each anchor outputs `[1 + nc]` where final score = objectness × class confidence | YOLOv5 |
 
 When `score_format` is absent, the validator falls back to a shape-based heuristic on the feature dimension: `nc+5` features per anchor (4 box coordinates + 1 objectness + `nc` class probabilities) implies `obj_x_class` (e.g., `[1, 85, 8400]` for 80 classes).
+
+!!! note "HAL Score Format"
+    HAL determines score format from `decoder_version` rather than `score_format`. `yolov5` applies objectness × class; all other versions use per-class scores directly.
 
 For ModelPack framework models the following output types are used:
 
@@ -651,31 +656,34 @@ outputs:
 
 ### What is Split Decoder?
 
-The `split_decoder` field indicates whether the model's detection outputs require external decoding:
+The `split_decoder` field indicates the model's outputs have been modified from the standard architecture to improve INT8 quantization performance. The details are framework-specific:
+
+- **ModelPack**: Raw grid features instead of decoded boxes (dequantize before anchor decode)
+- **Ultralytics**: Detection tensor split into separate `boxes`, `scores`, `mask_coefficients` tensors (per-tensor quantization)
 
 ```yaml
 model:
-  split_decoder: true    # Outputs need external anchor-based decoding
-  split_decoder: false   # Outputs are fully decoded (ready-to-use boxes)
+  split_decoder: true    # Outputs modified for quantization (see framework docs)
+  split_decoder: false   # Standard output format
 ```
+
+See framework documentation for implementation details.
 
 ### Why Split Decoder Exists
 
-**For [quantized INT8 models](modelpack/quantize.md)**, [ModelPack](modelpack/index.md) uses a "split decoder" architecture where:
+Quantization introduces precision loss. Split decoder addresses this differently per framework:
 
-1. **Model outputs raw grid features** — not decoded bounding boxes
-2. **Decoding happens after dequantization** — in float32 precision
-3. **Anchor-based box calculation** — uses the anchors specified in metadata
+**[ModelPack](modelpack/index.md)**: For small objects or high-resolution inputs, applying anchor calculations in INT8 would compound rounding errors. By deferring decoding until after dequantization, we preserve box accuracy.
 
-**The reason:** Quantization introduces precision loss. For small objects or high-resolution inputs, applying anchor calculations in INT8 would compound rounding errors, leading to inaccurate bounding boxes. By deferring decoding until after dequantization, we preserve box accuracy.
+**[Ultralytics](ultralytics/index.md)**: The monolithic detection tensor contains boxes, scores, and mask coefficients with very different value ranges. Splitting them into separate tensors allows per-tensor quantization scales, preserving accuracy for each component independently.
 
 ### Decoding Process
 
 When `split_decoder: true`, the inference pipeline must:
 
-1. **Run model inference** → Get quantized grid outputs
-2. **Dequantize outputs** → Convert INT8 to float32 using scale/zero_point
-3. **Apply anchor decoding** → Transform grid predictions to bounding boxes
+1. **Run model inference** → Get quantized outputs
+2. **Dequantize outputs** → Convert INT8 to float32 using per-output scale/zero_point
+3. **Apply decoding** → Framework-specific: anchor decode (ModelPack) or box format conversion (Ultralytics)
 4. **Run NMS** → Filter overlapping detections
 
 ```python
@@ -684,20 +692,24 @@ for output_spec in metadata['outputs']:
     if output_spec.get('decode', False):
         # Dequantize first
         scale, zp = output_spec['quantization']
-        grid_float = (grid_int8.astype(np.float32) - zp) * scale
-        
-        # Then decode with anchors
-        anchors = output_spec['anchors']
-        stride = output_spec['stride']
-        boxes = decode_yolo_grid(grid_float, anchors, stride)
+        raw_float = (raw_int8.astype(np.float32) - zp) * scale
+
+        # Then decode (framework-specific)
+        if output_spec['decoder'] == 'modelpack':
+            boxes = decode_yolo_grid(raw_float, output_spec['anchors'], output_spec['stride'])
+        elif output_spec['decoder'] == 'ultralytics':
+            # boxes, scores, mask_coefficients are separate outputs
+            pass  # Use output type to determine handling
 ```
 
 ### Output Types with Split Decoder
 
-| `split_decoder` | Output Type | Description |
-|-----------------|-------------|-------------|
-| `true` | `detection` | Raw grid features, requires anchor decoding |
-| `false` | `boxes`, `scores` | Decoded boxes ready for NMS |
+| Framework | `split_decoder` | Output Types |
+|-----------|-----------------|--------------|
+| ModelPack | `true` | `detection` (raw grid, needs anchor decode) |
+| ModelPack | `false` | `boxes`, `scores` (decoded) |
+| Ultralytics | `true` | `boxes`, `scores`, `mask_coefficients`, `protos` |
+| Ultralytics | `false` | `detection`, `protos` (monolithic) |
 
 ### Decoder Field
 
@@ -1179,11 +1191,13 @@ model:
 # Ultralytics model configuration
 model:
   model_version: v8      # v5, v8, v11
-  model_task: detect     # detect, segment
+  model_task: segment    # detect, segment
   model_size: n          # n (nano), s (small), m (medium), l (large), x (xlarge)
-  detection: true
-  segmentation: false
-  split_decoder: false   # Ultralytics models have decoder built-in
+  detection: false
+  segmentation: true
+  split_decoder: true    # true = split outputs (boxes, scores, mask_coefficients, protos)
+                         # false = monolithic detection tensor
+                         # Default true for quantized segmentation models
 ```
 
 ### Outputs Section

@@ -298,7 +298,11 @@ outputs:
     type: string           # Semantic type (detection, segmentation, boxes, scores, masks, protos)
     decode: boolean        # Whether decoding is required
     decoder: string        # Decoder type: 'modelpack' or 'ultralytics'
-    quantization: [float, int]  # [scale, zero_point] for quantized models
+    quantization:              # Quantization parameters (null if float model)
+      scale: float or [float]  #   Scale factor(s). Scalar=per-tensor, array=per-channel
+      zero_point: int or [int] #   Zero point(s). Omit for symmetric (see Quantization Parameters)
+      axis: int                #   Per-channel dimension index (required when scale is array)
+      dtype: string            #   Quantized type: int8, uint8, int16, uint16, float16
     stride: [int, int]     # Spatial stride for this output (ModelPack)
     anchors: [[[float, float]]]  # Normalized anchors for this output level (ModelPack only)
     score_format: string   # Score encoding: 'per_class' or 'obj_x_class' (Ultralytics only)
@@ -470,18 +474,105 @@ outputs:
       - [0.054, 0.065]
       - [0.089, 0.139]
       - [0.195, 0.196]
-    quantization: [0.176, 198]  # For dequantization
+    quantization:               # For dequantization
+      scale: 0.176
+      zero_point: 198
+      dtype: uint8
 ```
 
 ### Quantization Parameters
 
-For quantized models (TFLite INT8), each output includes quantization parameters:
+Quantized models store integer values instead of floats. Each output tensor includes parameters to convert back to floating-point using the dequantization formula:
+
+```
+real_value = scale * (quantized_value - zero_point)
+```
+
+EdgeFirst supports two quantization granularities and two quantization modes:
+
+- **Per-tensor**: A single scale (and optional zero_point) applies to the entire tensor
+- **Per-channel** (per-axis): Each slice along a specified axis has its own scale (and optional zero_point)
+- **Symmetric**: The quantized range is centered on zero; `zero_point` is 0 and can be omitted
+- **Asymmetric** (affine): The quantized range is offset; `zero_point` shifts the range so floating-point 0.0 is exactly representable
+
+For detailed specifications, see the [ONNX QuantizeLinear operator](https://onnx.ai/onnx/operators/onnx__QuantizeLinear.html) and [LiteRT 8-bit quantization specification](https://ai.google.dev/edge/litert/conversion/tensorflow/quantization/quantization_spec).
+
+#### Quantization Object Schema
+
+| Field | Type | Required | Description |
+|-------|------|----------|-------------|
+| `scale` | float or \[float\] | Yes | Scale factor(s). Scalar = per-tensor, array = per-channel |
+| `zero_point` | int or \[int\] | No | Zero point offset(s). Omit for symmetric quantization (implies 0) |
+| `axis` | int | When per-channel | Tensor dimension index that the scale/zero_point arrays correspond to |
+| `dtype` | string | Yes | Quantized data type: `int8`, `uint8`, `int16`, `uint16`, `float16` |
+
+**Rules:**
+
+- When `scale` is a scalar: per-tensor quantization
+- When `scale` is an array: per-channel quantization; `axis` is required; array length must equal `tensor.shape[axis]`
+- When `zero_point` is absent: symmetric quantization (zero_point = 0)
+- When `zero_point` is present: asymmetric (affine) quantization
+- `quantization: null` means the tensor is not quantized (float model)
+
+#### Examples
+
+```yaml
+# Per-tensor symmetric
+quantization:
+  scale: 0.176
+  dtype: int8
+
+# Per-tensor asymmetric
+quantization:
+  scale: 0.176
+  zero_point: 198
+  dtype: uint8
+
+# Per-channel symmetric
+quantization:
+  scale: [0.054, 0.089, 0.195]
+  axis: 0
+  dtype: int8
+
+# Per-channel asymmetric
+quantization:
+  scale: [0.054, 0.089, 0.195]
+  zero_point: [10, 12, 8]
+  axis: 0
+  dtype: uint8
+
+# Float model (not quantized)
+quantization: null
+```
+
+#### Dequantization Code
 
 ```python
-# Dequantize output
-scale, zero_point = output_spec['quantization']
-float_output = (quantized_output - zero_point) * scale
+import numpy as np
+
+def dequantize(raw_output: np.ndarray, quantization: dict) -> np.ndarray:
+    """Dequantize a quantized tensor using EdgeFirst metadata."""
+    scale = np.array(quantization['scale'], dtype=np.float32)
+    zero_point = np.array(quantization.get('zero_point', 0))
+
+    # For per-channel: reshape scale/zero_point to broadcast along axis
+    if scale.ndim > 0 and 'axis' in quantization:
+        shape = [1] * raw_output.ndim
+        shape[quantization['axis']] = -1
+        scale = scale.reshape(shape)
+        zero_point = zero_point.reshape(shape)
+
+    return (raw_output.astype(np.float32) - zero_point) * scale
 ```
+
+#### Framework Conventions
+
+| Framework | Per-Tensor | Per-Channel | Symmetric | Axis Field |
+|-----------|-----------|-------------|-----------|------------|
+| ONNX | Scalar scale | 1-D scale + `axis` | Implicit (zero_point=0) | `axis` (default 1) |
+| TFLite/LiteRT | Scalar (1-element array) | 1-D scale + `quantized_dimension` | Implicit (zero_point=0 for weights) | `quantized_dimension` |
+| TensorRT | Scalar scale | Per-channel scale | Always symmetric | Output channel axis |
+| PyTorch | Scalar scale | 1-D scale + `axis` | Explicit `qscheme` enum | `axis` parameter |
 
 ---
 
@@ -659,7 +750,7 @@ outputs:
 The `split_decoder` field indicates the model's outputs have been modified from the standard architecture to improve INT8 quantization performance. The details are framework-specific:
 
 - **ModelPack**: Raw grid features instead of decoded boxes (dequantize before anchor decode)
-- **Ultralytics**: Detection tensor split into separate `boxes`, `scores`, `mask_coefficients` tensors (per-tensor quantization)
+- **Ultralytics**: Detection tensor split into separate tensors for per-tensor quantization — `boxes` and `scores` for detection (2 outputs), or `boxes`, `scores`, `mask_coefficients`, and `protos` for segmentation (4 outputs). Box coordinates are normalized to [0,1]
 
 ```yaml
 model:
@@ -675,7 +766,7 @@ Quantization introduces precision loss. Split decoder addresses this differently
 
 **[ModelPack](modelpack/index.md)**: For small objects or high-resolution inputs, applying anchor calculations in INT8 would compound rounding errors. By deferring decoding until after dequantization, we preserve box accuracy.
 
-**[Ultralytics](ultralytics/index.md)**: The monolithic detection tensor contains boxes, scores, and mask coefficients with very different value ranges. Splitting them into separate tensors allows per-tensor quantization scales, preserving accuracy for each component independently.
+**[Ultralytics](ultralytics/index.md)**: The monolithic detection tensor contains boxes, scores, and mask coefficients with very different value ranges. Splitting them into separate tensors allows per-tensor quantization scales, preserving accuracy for each component independently. Box coordinates are normalized to [0,1] for both detection and segmentation, which reduces the dynamic range and further improves INT8 quantization accuracy. See [Ultralytics Quantization](ultralytics/quantize.md) for details and accuracy benchmarks.
 
 ### Decoding Process
 
@@ -691,8 +782,11 @@ When `split_decoder: true`, the inference pipeline must:
 for output_spec in metadata['outputs']:
     if output_spec.get('decode', False):
         # Dequantize first
-        scale, zp = output_spec['quantization']
+        quant = output_spec['quantization']
+        scale = np.float32(quant['scale'])
+        zp = quant.get('zero_point', 0)
         raw_float = (raw_int8.astype(np.float32) - zp) * scale
+        # For per-channel quantization, use the dequantize() function above
 
         # Then decode (framework-specific)
         if output_spec['decoder'] == 'modelpack':
@@ -704,12 +798,14 @@ for output_spec in metadata['outputs']:
 
 ### Output Types with Split Decoder
 
-| Framework | `split_decoder` | Output Types |
-|-----------|-----------------|--------------|
-| ModelPack | `true` | `detection` (raw grid, needs anchor decode) |
-| ModelPack | `false` | `boxes`, `scores` (decoded) |
-| Ultralytics | `true` | `boxes`, `scores`, `mask_coefficients`, `protos` |
-| Ultralytics | `false` | `detection`, `protos` (monolithic) |
+| Framework | `split_decoder` | Task | Output Types |
+|-----------|-----------------|------|--------------|
+| ModelPack | `true` | Detection | `detection` (raw grid, needs anchor decode) |
+| ModelPack | `false` | Detection | `boxes`, `scores` (decoded) |
+| Ultralytics | `true` | Detection | `boxes`, `scores` |
+| Ultralytics | `true` | Segmentation | `boxes`, `scores`, `mask_coefficients`, `protos` |
+| Ultralytics | `false` | Detection | `detection` (monolithic) |
+| Ultralytics | `false` | Segmentation | `detection`, `protos` (monolithic) |
 
 ### Decoder Field
 
@@ -776,7 +872,7 @@ box = dfl(raw_box)  # [batch, 64, anchors] → [batch, 4, anchors]
 # dist2bbox converts LTRB distances to boxes
 x1y1 = anchor_points - lt
 x2y2 = anchor_points + rb
-# Returns xywh or xyxy in pixel coordinates
+# Returns xywh in pixel coordinates (ONNX float) or [0,1] normalized (TFLite INT8)
 ```
 
 **Metadata structure:**
@@ -1195,9 +1291,11 @@ model:
   model_size: n          # n (nano), s (small), m (medium), l (large), x (xlarge)
   detection: false
   segmentation: true
-  split_decoder: true    # true = split outputs (boxes, scores, mask_coefficients, protos)
+  split_decoder: true    # true = split outputs for per-tensor INT8 quantization
+                         #   Detection: boxes, scores (2 outputs)
+                         #   Segmentation: boxes, scores, mask_coefficients, protos (4 outputs)
                          # false = monolithic detection tensor
-                         # Default true for quantized segmentation models
+                         # Default true for all quantized TFLite models
 ```
 
 ### Outputs Section
@@ -1218,7 +1316,10 @@ outputs:
     type: detection
     decode: true
     decoder: modelpack
-    quantization: [0.176, 198]
+    quantization:
+      scale: 0.176
+      zero_point: 198
+      dtype: uint8
     stride: [16, 16]
     anchors:
       - [0.054, 0.065]

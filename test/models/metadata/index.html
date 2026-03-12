@@ -25,7 +25,7 @@
       
       
       <link rel="icon" href="../../assets/favicon.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.4">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.5">
     
     
       
@@ -1378,6 +1378,56 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="Quantization Parameters">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#quantization-object-schema" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Quantization Object Schema
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#examples" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Examples
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dequantization-code" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Dequantization Code
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#framework-conventions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Framework Conventions
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
         
       </ul>
@@ -2344,6 +2394,56 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="Quantization Parameters">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#quantization-object-schema" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Quantization Object Schema
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#examples" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Examples
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dequantization-code" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Dequantization Code
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#framework-conventions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Framework Conventions
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
         
       </ul>
@@ -2882,7 +2982,7 @@
 <tr>
 <td>TFLite</td>
 <td>ZIP archive (associated files)</td>
-<td><code>edgefirst.json</code> (preferred), <code>edgefirst.yaml</code></td>
+<td><code>edgefirst.json</code></td>
 <td><code>labels.txt</code></td>
 </tr>
 <tr>
@@ -3002,9 +3102,8 @@
 <hr />
 <h2 id="reading-metadata">Reading Metadata</h2>
 <h3 id="tflite-models">TFLite Models</h3>
-<p>TFLite models are ZIP-format files containing embedded <code>edgefirst.yaml</code> and <code>labels.txt</code>:</p>
+<p>TFLite models are ZIP-format files containing embedded <code>edgefirst.json</code> and <code>labels.txt</code>:</p>
 <div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">zipfile</span>
-<span class="kn">import</span><span class="w"> </span><span class="nn">yaml</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">json</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">Optional</span><span class="p">,</span> <span class="n">List</span>
 
@@ -3012,17 +3111,11 @@
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Extract EdgeFirst metadata from a TFLite model.&quot;&quot;&quot;</span>
     <span class="k">if</span> <span class="ow">not</span> <span class="n">zipfile</span><span class="o">.</span><span class="n">is_zipfile</span><span class="p">(</span><span class="n">model_path</span><span class="p">):</span>
         <span class="k">return</span> <span class="kc">None</span>
-    
+
     <span class="k">with</span> <span class="n">zipfile</span><span class="o">.</span><span class="n">ZipFile</span><span class="p">(</span><span class="n">model_path</span><span class="p">)</span> <span class="k">as</span> <span class="n">zf</span><span class="p">:</span>
-        <span class="c1"># Try JSON first (preferred), then YAML fallback</span>
-        <span class="k">for</span> <span class="n">filename</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;edgefirst.json&#39;</span><span class="p">,</span> <span class="s1">&#39;edgefirst.yaml&#39;</span><span class="p">]:</span>
-            <span class="k">if</span> <span class="n">filename</span> <span class="ow">in</span> <span class="n">zf</span><span class="o">.</span><span class="n">namelist</span><span class="p">():</span>
-                <span class="k">with</span> <span class="n">zf</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">filename</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
-                    <span class="n">content</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">read</span><span class="p">()</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="s1">&#39;utf-8&#39;</span><span class="p">)</span>
-                    <span class="k">if</span> <span class="n">filename</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="s1">&#39;.json&#39;</span><span class="p">):</span>
-                        <span class="k">return</span> <span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">content</span><span class="p">)</span>
-                    <span class="k">else</span><span class="p">:</span>
-                        <span class="k">return</span> <span class="n">yaml</span><span class="o">.</span><span class="n">safe_load</span><span class="p">(</span><span class="n">content</span><span class="p">)</span>
+        <span class="k">if</span> <span class="s1">&#39;edgefirst.json&#39;</span> <span class="ow">in</span> <span class="n">zf</span><span class="o">.</span><span class="n">namelist</span><span class="p">():</span>
+            <span class="k">with</span> <span class="n">zf</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="s1">&#39;edgefirst.json&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+                <span class="k">return</span> <span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">f</span><span class="o">.</span><span class="n">read</span><span class="p">()</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="s1">&#39;utf-8&#39;</span><span class="p">))</span>
     <span class="k">return</span> <span class="kc">None</span>
 
 <span class="k">def</span><span class="w"> </span><span class="nf">get_labels</span><span class="p">(</span><span class="n">model_path</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]:</span>
@@ -3125,8 +3218,11 @@
 <span class="w">  </span><span class="nt">output_channels</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">int</span><span class="w">     </span><span class="c1"># Channels after CameraAdaptor transform</span>
 
 <span class="nt">model</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">string</span><span class="w">             </span><span class="c1"># Model/session name from training (artifact naming)</span>
+<span class="w">  </span><span class="nt">version</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">string</span><span class="w">          </span><span class="c1"># Training framework version (e.g., &quot;8.4.9+edgefirst-1.4.2&quot;)</span>
+<span class="w">  </span><span class="nt">task</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">string</span><span class="w">             </span><span class="c1"># Training task: detection, segmentation, pose, classify</span>
 <span class="w">  </span><span class="nt">backbone</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">string</span><span class="w">         </span><span class="c1"># Backbone architecture (e.g., cspdarknet19, cspdarknet53)</span>
-<span class="w">  </span><span class="nt">model_size</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">string</span><span class="w">       </span><span class="c1"># Size variant (nano, small, medium, large)</span>
+<span class="w">  </span><span class="nt">size</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">string</span><span class="w">             </span><span class="c1"># Size variant (nano, small, medium, large, xlarge)</span>
 <span class="w">  </span><span class="nt">activation</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">string</span><span class="w">       </span><span class="c1"># Activation function (relu, relu6, silu)</span>
 <span class="w">  </span><span class="nt">detection</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">boolean</span><span class="w">       </span><span class="c1"># Detection task enabled</span>
 <span class="w">  </span><span class="nt">segmentation</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">boolean</span><span class="w">    </span><span class="c1"># Segmentation task enabled</span>
@@ -3192,7 +3288,11 @@
 <span class="w">    </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">string</span><span class="w">           </span><span class="c1"># Semantic type (detection, segmentation, boxes, scores, masks, protos)</span>
 <span class="w">    </span><span class="nt">decode</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">boolean</span><span class="w">        </span><span class="c1"># Whether decoding is required</span>
 <span class="w">    </span><span class="nt">decoder</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">string</span><span class="w">        </span><span class="c1"># Decoder type: &#39;modelpack&#39; or &#39;ultralytics&#39;</span>
-<span class="w">    </span><span class="nt">quantization</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">float</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">int</span><span class="p p-Indicator">]</span><span class="w">  </span><span class="c1"># [scale, zero_point] for quantized models</span>
+<span class="w">    </span><span class="nt">quantization</span><span class="p">:</span><span class="w">              </span><span class="c1"># Quantization parameters (null if float model)</span>
+<span class="w">      </span><span class="nt">scale</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">float or [float]</span><span class="w">  </span><span class="c1">#   Scale factor(s). Scalar=per-tensor, array=per-channel</span>
+<span class="w">      </span><span class="nt">zero_point</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">int or [int]</span><span class="w"> </span><span class="c1">#   Zero point(s). Omit for symmetric (see Quantization Parameters)</span>
+<span class="w">      </span><span class="nt">axis</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">int</span><span class="w">                </span><span class="c1">#   Per-channel dimension index (required when scale is array)</span>
+<span class="w">      </span><span class="nt">dtype</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">string</span><span class="w">            </span><span class="c1">#   Quantized type: int8, uint8, int16, uint16, float16</span>
 <span class="w">    </span><span class="nt">stride</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">int</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">int</span><span class="p p-Indicator">]</span><span class="w">     </span><span class="c1"># Spatial stride for this output (ModelPack)</span>
 <span class="w">    </span><span class="nt">anchors</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[[[</span><span class="nv">float</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">float</span><span class="p p-Indicator">]]]</span><span class="w">  </span><span class="c1"># Normalized anchors for this output level (ModelPack only)</span>
 <span class="w">    </span><span class="nt">score_format</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">string</span><span class="w">   </span><span class="c1"># Score encoding: &#39;per_class&#39; or &#39;obj_x_class&#39; (Ultralytics only)</span>
@@ -3226,6 +3326,11 @@
 <td><code>scores</code></td>
 <td>Split class scores</td>
 <td><code>[1, classes, num_boxes]</code></td>
+</tr>
+<tr>
+<td><code>classes</code></td>
+<td>Class label indices (end-to-end split models)</td>
+<td><code>[1, num_boxes, 1]</code></td>
 </tr>
 <tr>
 <td><code>mask_coefficients</code></td>
@@ -3441,14 +3546,155 @@
 <span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">0.054</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">0.065</span><span class="p p-Indicator">]</span>
 <span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">0.089</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">0.139</span><span class="p p-Indicator">]</span>
 <span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">0.195</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">0.196</span><span class="p p-Indicator">]</span>
-<span class="w">    </span><span class="nt">quantization</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">0.176</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">198</span><span class="p p-Indicator">]</span><span class="w">  </span><span class="c1"># For dequantization</span>
+<span class="w">    </span><span class="nt">quantization</span><span class="p">:</span><span class="w">               </span><span class="c1"># For dequantization</span>
+<span class="w">      </span><span class="nt">scale</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.176</span>
+<span class="w">      </span><span class="nt">zero_point</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">198</span>
+<span class="w">      </span><span class="nt">dtype</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">uint8</span>
 </code></pre></div>
 <h3 id="quantization-parameters">Quantization Parameters</h3>
-<p>For quantized models (TFLite INT8), each output includes quantization parameters:</p>
-<div class="highlight"><pre><span></span><code><span class="c1"># Dequantize output</span>
-<span class="n">scale</span><span class="p">,</span> <span class="n">zero_point</span> <span class="o">=</span> <span class="n">output_spec</span><span class="p">[</span><span class="s1">&#39;quantization&#39;</span><span class="p">]</span>
-<span class="n">float_output</span> <span class="o">=</span> <span class="p">(</span><span class="n">quantized_output</span> <span class="o">-</span> <span class="n">zero_point</span><span class="p">)</span> <span class="o">*</span> <span class="n">scale</span>
+<p>Quantized models store integer values instead of floats. Each output tensor includes parameters to convert back to floating-point using the dequantization formula:</p>
+<div class="highlight"><pre><span></span><code>real_value = scale * (quantized_value - zero_point)
 </code></pre></div>
+<p>EdgeFirst supports two quantization granularities and two quantization modes:</p>
+<ul>
+<li><strong>Per-tensor</strong>: A single scale (and optional zero_point) applies to the entire tensor</li>
+<li><strong>Per-channel</strong> (per-axis): Each slice along a specified axis has its own scale (and optional zero_point)</li>
+<li><strong>Symmetric</strong>: The quantized range is centered on zero; <code>zero_point</code> is 0 and can be omitted</li>
+<li><strong>Asymmetric</strong> (affine): The quantized range is offset; <code>zero_point</code> shifts the range so floating-point 0.0 is exactly representable</li>
+</ul>
+<p>For detailed specifications, see the <a href="https://onnx.ai/onnx/operators/onnx__QuantizeLinear.html"><abbr title="Open Neural Network Exchange">ONNX</abbr> QuantizeLinear operator</a> and <a href="https://ai.google.dev/edge/litert/conversion/tensorflow/quantization/quantization_spec">LiteRT 8-bit quantization specification</a>.</p>
+<h4 id="quantization-object-schema">Quantization Object Schema</h4>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>scale</code></td>
+<td>float or [float]</td>
+<td>Yes</td>
+<td>Scale factor(s). Scalar = per-tensor, array = per-channel</td>
+</tr>
+<tr>
+<td><code>zero_point</code></td>
+<td>int or [int]</td>
+<td>No</td>
+<td>Zero point offset(s). Omit for symmetric quantization (implies 0)</td>
+</tr>
+<tr>
+<td><code>axis</code></td>
+<td>int</td>
+<td>When per-channel</td>
+<td>Tensor dimension index that the scale/zero_point arrays correspond to</td>
+</tr>
+<tr>
+<td><code>dtype</code></td>
+<td>string</td>
+<td>Yes</td>
+<td>Quantized data type: <code>int8</code>, <code>uint8</code>, <code>int16</code>, <code>uint16</code>, <code>float16</code></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Rules:</strong></p>
+<ul>
+<li>When <code>scale</code> is a scalar: per-tensor quantization</li>
+<li>When <code>scale</code> is an array: per-channel quantization; <code>axis</code> is required; array length must equal <code>tensor.shape[axis]</code></li>
+<li>When <code>zero_point</code> is absent: symmetric quantization (zero_point = 0)</li>
+<li>When <code>zero_point</code> is present: asymmetric (affine) quantization</li>
+<li><code>quantization: null</code> means the tensor is not quantized (float model)</li>
+</ul>
+<h4 id="examples">Examples</h4>
+<div class="highlight"><pre><span></span><code><span class="c1"># Per-tensor symmetric</span>
+<span class="nt">quantization</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">scale</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.176</span>
+<span class="w">  </span><span class="nt">dtype</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">int8</span>
+
+<span class="c1"># Per-tensor asymmetric</span>
+<span class="nt">quantization</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">scale</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.176</span>
+<span class="w">  </span><span class="nt">zero_point</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">198</span>
+<span class="w">  </span><span class="nt">dtype</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">uint8</span>
+
+<span class="c1"># Per-channel symmetric</span>
+<span class="nt">quantization</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">scale</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">0.054</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">0.089</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">0.195</span><span class="p p-Indicator">]</span>
+<span class="w">  </span><span class="nt">axis</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0</span>
+<span class="w">  </span><span class="nt">dtype</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">int8</span>
+
+<span class="c1"># Per-channel asymmetric</span>
+<span class="nt">quantization</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">scale</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">0.054</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">0.089</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">0.195</span><span class="p p-Indicator">]</span>
+<span class="w">  </span><span class="nt">zero_point</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">10</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">12</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">8</span><span class="p p-Indicator">]</span>
+<span class="w">  </span><span class="nt">axis</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0</span>
+<span class="w">  </span><span class="nt">dtype</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">uint8</span>
+
+<span class="c1"># Float model (not quantized)</span>
+<span class="nt">quantization</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">null</span>
+</code></pre></div>
+<h4 id="dequantization-code">Dequantization Code</h4>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">dequantize</span><span class="p">(</span><span class="n">raw_output</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">quantization</span><span class="p">:</span> <span class="nb">dict</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Dequantize a quantized tensor using EdgeFirst metadata.&quot;&quot;&quot;</span>
+    <span class="n">scale</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">quantization</span><span class="p">[</span><span class="s1">&#39;scale&#39;</span><span class="p">],</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
+    <span class="n">zero_point</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">quantization</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;zero_point&#39;</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>
+
+    <span class="c1"># For per-channel: reshape scale/zero_point to broadcast along axis</span>
+    <span class="k">if</span> <span class="n">scale</span><span class="o">.</span><span class="n">ndim</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="ow">and</span> <span class="s1">&#39;axis&#39;</span> <span class="ow">in</span> <span class="n">quantization</span><span class="p">:</span>
+        <span class="n">shape</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">*</span> <span class="n">raw_output</span><span class="o">.</span><span class="n">ndim</span>
+        <span class="n">shape</span><span class="p">[</span><span class="n">quantization</span><span class="p">[</span><span class="s1">&#39;axis&#39;</span><span class="p">]]</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span>
+        <span class="n">scale</span> <span class="o">=</span> <span class="n">scale</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">shape</span><span class="p">)</span>
+        <span class="n">zero_point</span> <span class="o">=</span> <span class="n">zero_point</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">shape</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="p">(</span><span class="n">raw_output</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span> <span class="o">-</span> <span class="n">zero_point</span><span class="p">)</span> <span class="o">*</span> <span class="n">scale</span>
+</code></pre></div>
+<h4 id="framework-conventions">Framework Conventions</h4>
+<table>
+<thead>
+<tr>
+<th>Framework</th>
+<th>Per-Tensor</th>
+<th>Per-Channel</th>
+<th>Symmetric</th>
+<th>Axis Field</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><abbr title="Open Neural Network Exchange">ONNX</abbr></td>
+<td>Scalar scale</td>
+<td>1-D scale + <code>axis</code></td>
+<td>Implicit (zero_point=0)</td>
+<td><code>axis</code> (default 1)</td>
+</tr>
+<tr>
+<td>TFLite/LiteRT</td>
+<td>Scalar (1-element array)</td>
+<td>1-D scale + <code>quantized_dimension</code></td>
+<td>Implicit (zero_point=0 for weights)</td>
+<td><code>quantized_dimension</code></td>
+</tr>
+<tr>
+<td>TensorRT</td>
+<td>Scalar scale</td>
+<td>Per-channel scale</td>
+<td>Always symmetric</td>
+<td>Output channel axis</td>
+</tr>
+<tr>
+<td>PyTorch</td>
+<td>Scalar scale</td>
+<td>1-D scale + <code>axis</code></td>
+<td>Explicit <code>qscheme</code> enum</td>
+<td><code>axis</code> parameter</td>
+</tr>
+</tbody>
+</table>
 <hr />
 <h2 id="data-layout-nchw-vs-nhwc">Data Layout (NCHW vs NHWC)</h2>
 <p>Deep learning frameworks use different memory layouts for tensor data. The metadata accurately reflects each format's native layout:</p>
@@ -3716,7 +3962,7 @@
 <p>The <code>split_decoder</code> field indicates the model's outputs have been modified from the standard architecture to improve INT8 quantization performance. The details are framework-specific:</p>
 <ul>
 <li><strong>ModelPack</strong>: Raw grid features instead of decoded boxes (dequantize before anchor decode)</li>
-<li><strong>Ultralytics</strong>: Detection tensor split into separate <code>boxes</code>, <code>scores</code>, <code>mask_coefficients</code> tensors (per-tensor quantization)</li>
+<li><strong>Ultralytics</strong>: Detection tensor split into separate tensors for per-tensor quantization — <code>boxes</code> and <code>scores</code> for detection (2 outputs), or <code>boxes</code>, <code>scores</code>, <code>mask_coefficients</code>, and <code>protos</code> for segmentation (4 outputs). Box coordinates are normalized to [0,1]</li>
 </ul>
 <div class="highlight"><pre><span></span><code><span class="nt">model</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">split_decoder</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span><span class="w">    </span><span class="c1"># Outputs modified for quantization (see framework docs)</span>
@@ -3726,7 +3972,7 @@
 <h3 id="why-split-decoder-exists">Why Split Decoder Exists</h3>
 <p>Quantization introduces precision loss. Split decoder addresses this differently per framework:</p>
 <p><strong><a href="../modelpack/">ModelPack</a></strong>: For small objects or high-resolution inputs, applying anchor calculations in INT8 would compound rounding errors. By deferring decoding until after dequantization, we preserve box accuracy.</p>
-<p><strong><a href="../ultralytics/">Ultralytics</a></strong>: The monolithic detection tensor contains boxes, scores, and mask coefficients with very different value ranges. Splitting them into separate tensors allows per-tensor quantization scales, preserving accuracy for each component independently.</p>
+<p><strong><a href="../ultralytics/">Ultralytics</a></strong>: The monolithic detection tensor contains boxes, scores, and mask coefficients with very different value ranges. Splitting them into separate tensors allows per-tensor quantization scales, preserving accuracy for each component independently. Box coordinates are normalized to [0,1] for both detection and segmentation, which reduces the dynamic range and further improves INT8 quantization accuracy. See <a href="../ultralytics/quantize/">Ultralytics Quantization</a> for details and accuracy benchmarks.</p>
 <h3 id="decoding-process">Decoding Process</h3>
 <p>When <code>split_decoder: true</code>, the inference pipeline must:</p>
 <ol>
@@ -3739,8 +3985,11 @@
 <span class="k">for</span> <span class="n">output_spec</span> <span class="ow">in</span> <span class="n">metadata</span><span class="p">[</span><span class="s1">&#39;outputs&#39;</span><span class="p">]:</span>
     <span class="k">if</span> <span class="n">output_spec</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;decode&#39;</span><span class="p">,</span> <span class="kc">False</span><span class="p">):</span>
         <span class="c1"># Dequantize first</span>
-        <span class="n">scale</span><span class="p">,</span> <span class="n">zp</span> <span class="o">=</span> <span class="n">output_spec</span><span class="p">[</span><span class="s1">&#39;quantization&#39;</span><span class="p">]</span>
+        <span class="n">quant</span> <span class="o">=</span> <span class="n">output_spec</span><span class="p">[</span><span class="s1">&#39;quantization&#39;</span><span class="p">]</span>
+        <span class="n">scale</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">(</span><span class="n">quant</span><span class="p">[</span><span class="s1">&#39;scale&#39;</span><span class="p">])</span>
+        <span class="n">zp</span> <span class="o">=</span> <span class="n">quant</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;zero_point&#39;</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
         <span class="n">raw_float</span> <span class="o">=</span> <span class="p">(</span><span class="n">raw_int8</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span> <span class="o">-</span> <span class="n">zp</span><span class="p">)</span> <span class="o">*</span> <span class="n">scale</span>
+        <span class="c1"># For per-channel quantization, use the dequantize() function above</span>
 
         <span class="c1"># Then decode (framework-specific)</span>
         <span class="k">if</span> <span class="n">output_spec</span><span class="p">[</span><span class="s1">&#39;decoder&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;modelpack&#39;</span><span class="p">:</span>
@@ -3755,6 +4004,7 @@
 <tr>
 <th>Framework</th>
 <th><code>split_decoder</code></th>
+<th>Task</th>
 <th>Output Types</th>
 </tr>
 </thead>
@@ -3762,22 +4012,50 @@
 <tr>
 <td>ModelPack</td>
 <td><code>true</code></td>
+<td>Detection</td>
 <td><code>detection</code> (raw grid, needs anchor decode)</td>
 </tr>
 <tr>
 <td>ModelPack</td>
 <td><code>false</code></td>
+<td>Detection</td>
 <td><code>boxes</code>, <code>scores</code> (decoded)</td>
 </tr>
 <tr>
 <td>Ultralytics</td>
 <td><code>true</code></td>
+<td>Detection</td>
+<td><code>boxes</code>, <code>scores</code></td>
+</tr>
+<tr>
+<td>Ultralytics</td>
+<td><code>true</code></td>
+<td>Segmentation</td>
 <td><code>boxes</code>, <code>scores</code>, <code>mask_coefficients</code>, <code>protos</code></td>
 </tr>
 <tr>
 <td>Ultralytics</td>
 <td><code>false</code></td>
+<td>Detection</td>
+<td><code>detection</code> (monolithic)</td>
+</tr>
+<tr>
+<td>Ultralytics</td>
+<td><code>false</code></td>
+<td>Segmentation</td>
 <td><code>detection</code>, <code>protos</code> (monolithic)</td>
+</tr>
+<tr>
+<td>Ultralytics (end-to-end)</td>
+<td>n/a</td>
+<td>Detection</td>
+<td><code>boxes</code>, <code>scores</code>, <code>classes</code></td>
+</tr>
+<tr>
+<td>Ultralytics (end-to-end)</td>
+<td>n/a</td>
+<td>Segmentation</td>
+<td><code>boxes</code>, <code>scores</code>, <code>classes</code>, <code>mask_coefficients</code>, <code>protos</code></td>
 </tr>
 </tbody>
 </table>
@@ -3830,7 +4108,7 @@
 <span class="c1"># dist2bbox converts LTRB distances to boxes</span>
 <span class="n">x1y1</span> <span class="o">=</span> <span class="n">anchor_points</span> <span class="o">-</span> <span class="n">lt</span>
 <span class="n">x2y2</span> <span class="o">=</span> <span class="n">anchor_points</span> <span class="o">+</span> <span class="n">rb</span>
-<span class="c1"># Returns xywh or xyxy in pixel coordinates</span>
+<span class="c1"># Returns xywh in pixel coordinates (ONNX float) or [0,1] normalized (TFLite INT8)</span>
 </code></pre></div>
 <p><strong>Metadata structure:</strong></p>
 <div class="highlight"><pre><span></span><code><span class="nt">outputs</span><span class="p">:</span>
@@ -4323,9 +4601,11 @@ zip<span class="w"> </span>mymodel.tflite<span class="w"> </span>edgefirst.json
 <span class="w">  </span><span class="nt">model_size</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">n</span><span class="w">          </span><span class="c1"># n (nano), s (small), m (medium), l (large), x (xlarge)</span>
 <span class="w">  </span><span class="nt">detection</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
 <span class="w">  </span><span class="nt">segmentation</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
-<span class="w">  </span><span class="nt">split_decoder</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span><span class="w">    </span><span class="c1"># true = split outputs (boxes, scores, mask_coefficients, protos)</span>
+<span class="w">  </span><span class="nt">split_decoder</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span><span class="w">    </span><span class="c1"># true = split outputs for per-tensor INT8 quantization</span>
+<span class="w">                         </span><span class="c1">#   Detection: boxes, scores (2 outputs)</span>
+<span class="w">                         </span><span class="c1">#   Segmentation: boxes, scores, mask_coefficients, protos (4 outputs)</span>
 <span class="w">                         </span><span class="c1"># false = monolithic detection tensor</span>
-<span class="w">                         </span><span class="c1"># Default true for quantized segmentation models</span>
+<span class="w">                         </span><span class="c1"># Default true for all quantized TFLite models</span>
 </code></pre></div>
 <h3 id="outputs-section">Outputs Section</h3>
 <div class="highlight"><pre><span></span><code><span class="c1"># ModelPack detection output example</span>
@@ -4343,7 +4623,10 @@ zip<span class="w"> </span>mymodel.tflite<span class="w"> </span>edgefirst.json
 <span class="w">    </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">detection</span>
 <span class="w">    </span><span class="nt">decode</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
 <span class="w">    </span><span class="nt">decoder</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">modelpack</span>
-<span class="w">    </span><span class="nt">quantization</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">0.176</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">198</span><span class="p p-Indicator">]</span>
+<span class="w">    </span><span class="nt">quantization</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">scale</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.176</span>
+<span class="w">      </span><span class="nt">zero_point</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">198</span>
+<span class="w">      </span><span class="nt">dtype</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">uint8</span>
 <span class="w">    </span><span class="nt">stride</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">16</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">16</span><span class="p p-Indicator">]</span>
 <span class="w">    </span><span class="nt">anchors</span><span class="p">:</span>
 <span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">0.054</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">0.065</span><span class="p p-Indicator">]</span>

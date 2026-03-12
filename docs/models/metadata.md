@@ -17,7 +17,7 @@ EdgeFirst models from the [Model Zoo](index.md) (including [ModelPack](modelpack
 
 | Format | Metadata Location | Config Format | Labels |
 |--------|-------------------|---------------|--------|
-| TFLite | ZIP archive (associated files) | `edgefirst.json` (preferred), `edgefirst.yaml` | `labels.txt` |
+| TFLite | ZIP archive (associated files) | `edgefirst.json` | `labels.txt` |
 | ONNX | Custom metadata properties | `edgefirst` (JSON) | `labels` (JSON array) |
 
 ### Supported Training Frameworks
@@ -92,11 +92,10 @@ This enables:
 
 ### TFLite Models
 
-TFLite models are ZIP-format files containing embedded `edgefirst.yaml` and `labels.txt`:
+TFLite models are ZIP-format files containing embedded `edgefirst.json` and `labels.txt`:
 
 ```python
 import zipfile
-import yaml
 import json
 from typing import Optional, List
 
@@ -104,17 +103,11 @@ def get_edgefirst_metadata(model_path: str) -> Optional[dict]:
     """Extract EdgeFirst metadata from a TFLite model."""
     if not zipfile.is_zipfile(model_path):
         return None
-    
+
     with zipfile.ZipFile(model_path) as zf:
-        # Try JSON first (preferred), then YAML fallback
-        for filename in ['edgefirst.json', 'edgefirst.yaml']:
-            if filename in zf.namelist():
-                with zf.open(filename) as f:
-                    content = f.read().decode('utf-8')
-                    if filename.endswith('.json'):
-                        return json.loads(content)
-                    else:
-                        return yaml.safe_load(content)
+        if 'edgefirst.json' in zf.namelist():
+            with zf.open('edgefirst.json') as f:
+                return json.loads(f.read().decode('utf-8'))
     return None
 
 def get_labels(model_path: str) -> List[str]:
@@ -231,8 +224,11 @@ input:
   output_channels: int     # Channels after CameraAdaptor transform
 
 model:
+  name: string             # Model/session name from training (artifact naming)
+  version: string          # Training framework version (e.g., "8.4.9+edgefirst-1.4.2")
+  task: string             # Training task: detection, segmentation, pose, classify
   backbone: string         # Backbone architecture (e.g., cspdarknet19, cspdarknet53)
-  model_size: string       # Size variant (nano, small, medium, large)
+  size: string             # Size variant (nano, small, medium, large, xlarge)
   activation: string       # Activation function (relu, relu6, silu)
   detection: boolean       # Detection task enabled
   segmentation: boolean    # Segmentation task enabled
@@ -325,6 +321,7 @@ For Ultralytics framework models, the following output types are used:
 | `detection`         | Raw detection output (needs to be split)     | `[1, num_features, num_boxes]` |
 | `boxes`             | Split bounding boxes                         | `[1, 4, num_boxes]`            |
 | `scores`            | Split class scores                           | `[1, classes, num_boxes]`      |
+| `classes`           | Class label indices (end-to-end split models) | `[1, num_boxes, 1]`           |
 | `mask_coefficients` | Split coefficients for instance segmentation | `[1, num_protos, num_boxes]`   |
 | `protos`            | Instance segmentation prototypes             | `[1, H, W, num_protos]` (NHWC) |
 
@@ -806,6 +803,8 @@ for output_spec in metadata['outputs']:
 | Ultralytics | `true` | Segmentation | `boxes`, `scores`, `mask_coefficients`, `protos` |
 | Ultralytics | `false` | Detection | `detection` (monolithic) |
 | Ultralytics | `false` | Segmentation | `detection`, `protos` (monolithic) |
+| Ultralytics (end-to-end) | n/a | Detection | `boxes`, `scores`, `classes` |
+| Ultralytics (end-to-end) | n/a | Segmentation | `boxes`, `scores`, `classes`, `mask_coefficients`, `protos` |
 
 ### Decoder Field
 

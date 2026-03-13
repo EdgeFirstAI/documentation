@@ -3325,7 +3325,7 @@
 <tr>
 <td><code>scores</code></td>
 <td>Split class scores</td>
-<td><code>[1, classes, num_boxes]</code></td>
+<td><code>[1, num_classes, num_boxes]</code></td>
 </tr>
 <tr>
 <td><code>classes</code></td>
@@ -3394,12 +3394,12 @@
 <tr>
 <td><code>scores</code></td>
 <td>Class scores</td>
-<td><code>[1, num_boxes, classes]</code></td>
+<td><code>[1, num_boxes, num_classes]</code></td>
 </tr>
 <tr>
 <td><code>segmentation</code></td>
 <td>Semantic segmentation output</td>
-<td><code>[1, H, W, classes]</code></td>
+<td><code>[1, H, W, num_classes]</code></td>
 </tr>
 <tr>
 <td><code>masks</code></td>

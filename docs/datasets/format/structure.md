@@ -30,7 +30,7 @@ flowchart LR
     D -->|"Import"| B
 ```
 
-1. **MCAP files** are [recorded on devices](../../platforms/recording.md) and [uploaded to Studio](../../platforms/publishing.md)
+1. **MCAP files** are [recorded on devices](../../perception/data_collection/recording.md) and [uploaded to Studio](../../perception/data_collection/publishing.md)
 2. **Snapshots** are the portable format—a ZIP file (sensor data) paired with an Arrow file (annotations)
 3. **Datasets** are expanded snapshots that you can browse, annotate, and train on
 4. **When you create a snapshot** from a dataset, Studio generates the ZIP+Arrow pair for download and sharing
@@ -358,4 +358,4 @@ for root, dirs, files in os.walk(sensor_dir):
 - [Bounding Box Formats](box_format.md) — Learn coordinate systems and conversions
 - [Sensor Data](sensors.md) — Details on camera, radar, and LiDAR formats
 - [Snapshots Dashboard](../../studio/snapshots.md) — Download and restore snapshots in Studio
-- [Publishing Workflows](../../platforms/publishing.md) — Upload MCAP recordings as snapshots
+- [Publishing Workflows](../../perception/data_collection/publishing.md) — Upload MCAP recordings as snapshots

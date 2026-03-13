@@ -4,7 +4,7 @@ The Camera service on the Maivin/Raivin supports 4K video in multiple fashions, 
 
 ## Command Line Configuration
 
-The camera service can be run at the platform's command-line interface. The first step would be to log on to the platform via [SSH](../../platforms/ssh.md). Then stop the current camera service with the `sudo systemctl stop camera`. The following command-line options for the camera service are described below.
+The camera service can be run at the platform's command-line interface. The first step would be to log on to the platform via [SSH](../../platforms/networking/ssh.md). Then stop the current camera service with the `sudo systemctl stop camera`. The following command-line options for the camera service are described below.
 
 ```bash
 # Enable 4K tile streaming

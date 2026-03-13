@@ -22,7 +22,7 @@ Name=can0
 BitRate=500K
 ```
 
-The `can0` interface is configured for 500kbps.  The Radar Publishing Service manages the radar configuration and reading of the point-cloud data over CAN and publishing the results over Zenoh.  Refer to the [Radar Publishing Service](./radar.md) for details.
+The `can0` interface is configured for 500kbps.  The Radar Publishing Service manages the radar configuration and reading of the point-cloud data over CAN and publishing the results over Zenoh.  Refer to the [Radar Publishing Service](radar.md) for details.
 
 ### Ethernet Configuration
 

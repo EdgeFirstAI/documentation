@@ -125,11 +125,11 @@ nav:
   - Perception:
     - perception/index.md
     - Dataset Collection Middleware:
-      - platforms/recording.md
-      - platforms/replay.md
-      - platforms/publishing.md
-      - platforms/foxglove.md
-      - platforms/advanced_foxglove.md
+      - perception/data_collection/recording.md
+      - perception/data_collection/replay.md
+      - perception/data_collection/publishing.md
+      - perception/data_collection/foxglove.md
+      - perception/data_collection/advanced_foxglove.md
     - perception/studio.md
     - perception/launcher.md
     - Topics:
@@ -177,10 +177,6 @@ nav:
       - platforms/quickstart.md
       - platforms/walkthrough.md
       - platforms/architecture.md
-    - Hardware:
-      - platforms/hardware.md
-      - platforms/radar.md
-      - platforms/lidar.md
     - Configuration:
       - platforms/configuration/index.md
       - platforms/configuration/mcap_recording.md
@@ -191,11 +187,15 @@ nav:
       - platforms/configuration/radar.md
       - platforms/configuration/fusion.md
       - platforms/configuration/lidar.md
+    - Hardware:
+      - platforms/hardware/hardware.md
+      - platforms/hardware/radar.md
+      - platforms/hardware/lidar.md
     - Software:
-      - platforms/model_uploads.md
-      - platforms/updates.md
-      - platforms/release_notes.md
-      - platforms/issues.md
+      - platforms/software/model_uploads.md
+      - platforms/software/updates.md
+      - platforms/software/release_notes.md
+      - platforms/software/issues.md
     - Networking:
-      - platforms/networking.md
-      - platforms/ssh.md
+      - platforms/networking/networking.md
+      - platforms/networking/ssh.md

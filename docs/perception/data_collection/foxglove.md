@@ -1,6 +1,6 @@
 # Foxglove Studio
 
-[Foxglove Studio][foxglove] is an open source application developed by FoxGlove Technologies, Inc.  It is part of the [Robot Operating System (ROS)][ros] ecosystem and supports playback for MCAP recordings.  You can [download Foxglove Studio][foxglove_dl] as well as our [EdgeFirst plug-in for Foxglove][github_edgefirst_dl] and customized [Raivin Foxglove layout](assets/Raivin_Foxglove_Layout.json){: download="Raivin_Foxglove_Layout.json" }
+[Foxglove Studio][foxglove] is an open source application developed by FoxGlove Technologies, Inc.  It is part of the [Robot Operating System (ROS)][ros] ecosystem and supports playback for MCAP recordings.  You can [download Foxglove Studio][foxglove_dl] as well as our [EdgeFirst plug-in for Foxglove][github_edgefirst_dl] and customized [Raivin Foxglove layout](../assets/Raivin_Foxglove_Layout.json){: download="Raivin_Foxglove_Layout.json" }
 
 ## Getting Started
 
@@ -18,21 +18,21 @@ Let's discuss how to install our custom plugins once you've installed Foxglove S
    - Select the Extensions option in the pull-down menu.
 
       <figure markdown="span">
-      ![Foxglove Settings](assets/foxglove_setting.png){align=center}
+      ![Foxglove Settings](../assets/foxglove_setting.png){align=center}
       <figcaption>Foxglove Settings</figcaption>
       </figure>
 
    - Click the EdgeFirst Schemas plugin (or the older EdgeFirst Detect plugin)
 
       <figure markdown="span">
-      ![Foxglove Extension View](assets/foxglove_extension_view.png){align=center}
+      ![Foxglove Extension View](../assets/foxglove_extension_view.png){align=center}
       <figcaption>Foxglove Extension View</figcaption>
       </figure>
 
    - Click the "Uninstall" button.
 
       <figure markdown="span">
-      ![Foxglove Install Extenstion](assets/foxglove_uninstall_extenstion.png){align=center}
+      ![Foxglove Install Extenstion](../assets/foxglove_uninstall_extenstion.png){align=center}
       <figcaption>Foxglove Install Extension</figcaption>
       </figure>
 
@@ -44,14 +44,14 @@ Let's discuss how to install our custom plugins once you've installed Foxglove S
    - Select the Extensions option in the pull-down menu.  
 
       <figure markdown="span">
-      ![Foxglove Settings](assets/foxglove_setting.png){align=center}
+      ![Foxglove Settings](../assets/foxglove_setting.png){align=center}
       <figcaption>Foxglove Settings</figcaption>
       </figure>
 
    - Click the "Install local extension..." button.  
 
       <figure markdown="span">
-      ![Foxglove Extension View](assets/foxglove_install_extension.png){align=center}
+      ![Foxglove Extension View](../assets/foxglove_install_extension.png){align=center}
       <figcaption>Foxglove Extension View</figcaption>
       </figure>
 
@@ -60,7 +60,7 @@ Let's discuss how to install our custom plugins once you've installed Foxglove S
 4. Confirm that the 1.1.3 version was installed or the latest version available.
 
       <figure markdown="span">
-      ![Foxglove Extension View with 1.1.3](assets/foxglove_extension_view.png){align=center}
+      ![Foxglove Extension View with 1.1.3](../assets/foxglove_extension_view.png){align=center}
       <figcaption>Foxglove Extension View with 1.1.3</figcaption>
       </figure>
 
@@ -68,7 +68,7 @@ Let's discuss how to install our custom plugins once you've installed Foxglove S
 
 ### Installing Foxglove Layout
 
-We have included a [Custom Raivin Layout for Foxglove Studio](assets/Raivin_Foxglove_Layout.json){: download="Raivin_Foxglove_Layout.json" }. Please download it and follow the instructions below.
+We have included a [Custom Raivin Layout for Foxglove Studio](../assets/Raivin_Foxglove_Layout.json){: download="Raivin_Foxglove_Layout.json" }. Please download it and follow the instructions below.
 
 1. Open Foxglove Studio.
 2. Load an MCAP file downloaded from the Raivin.
@@ -76,7 +76,7 @@ We have included a [Custom Raivin Layout for Foxglove Studio](assets/Raivin_Foxg
 4. Select the "Import from file..." option in the Layout menu.  
 
       <figure markdown="span">
-      ![Foxglove Layout](assets/foxglove_layout.png){align=center}
+      ![Foxglove Layout](../assets/foxglove_layout.png){align=center}
       <figcaption>Foxglove Layout</figcaption>
       </figure>
 
@@ -84,7 +84,7 @@ We have included a [Custom Raivin Layout for Foxglove Studio](assets/Raivin_Foxg
 6. Confirm the layout JSON file is loaded.  
 
       <figure markdown="span">
-      ![Foxglove Scene](assets/foxglove_scene.png){align=center}
+      ![Foxglove Scene](../assets/foxglove_scene.png){align=center}
       <figcaption>Foxglove Scene</figcaption>
       </figure>
 
@@ -116,7 +116,7 @@ The detection boxes are contained in the `/model/boxes2d` topic.  By default, th
 2. Confirm with the "Details" button that the newly recorded MCAP has a `/model/boxes2d` topic.  
 
       <figure markdown="span">
-      ![MCAP Details](assets/foxglove_mcap_details.png){align=center}
+      ![MCAP Details](../assets/foxglove_mcap_details.png){align=center}
       <figcaption>MCAP Details</figcaption>
       </figure>
 
@@ -125,14 +125,14 @@ The detection boxes are contained in the `/model/boxes2d` topic.  By default, th
 5. The `/model/boxes2d` option should appear in the "Image annotations" dropdown menu in the "Image Panel" settings sidebar (bottom left of image below).  
 
       <figure markdown="span">
-      ![Foxglove Detect Plugin View](assets/foxglove_detect_plugin_view.png){align=center}
+      ![Foxglove Detect Plugin View](../assets/foxglove_detect_plugin_view.png){align=center}
       <figcaption>Foxglove Detect Plugin View</figcaption>
       </figure>
 
 6. Enable the `/model/boxes2d` image annotations by clicking the closed eye icon. This will draw boxes around the detected objects.  
 
       <figure markdown="span">
-      ![Foxglove Detect Boxes Enabled](assets/foxglove_open_box_eye.png){align=center}
+      ![Foxglove Detect Boxes Enabled](../assets/foxglove_open_box_eye.png){align=center}
       <figcaption>Foxglove Detect Boxes Enabled</figcaption>
       </figure>
 
@@ -143,7 +143,7 @@ Segmentation masks are contained in the `/model/mask_compressed` topic which is 
 The instructions to view these masks are the same as above but using the `/model/mask_compressed` topic instead of the `/model/boxes2d` topic.
 
 <figure markdown="span">
-![Foxglove Detect Boxes Enabled](assets/foxglove_open_seg_eye.png){align=center}
+![Foxglove Detect Boxes Enabled](../assets/foxglove_open_seg_eye.png){align=center}
 <figcaption>Foxglove Detect Boxes Enabled</figcaption>
 </figure>
 
@@ -156,7 +156,7 @@ By default, none of the radar topics are recorded as part of an MCAP file.  The 
 3. In the image panel, the `/radar/cube` topic should appear under the list of valid image topics.  
 
       <figure markdown="span">
-      ![Foxglove Radar Mask](assets/foxglove_radar_mask.png){align=center}
+      ![Foxglove Radar Mask](../assets/foxglove_radar_mask.png){align=center}
       <figcaption>Foxglove Radar Mask</figcaption>
       </figure>
 
@@ -164,7 +164,7 @@ By default, none of the radar topics are recorded as part of an MCAP file.  The 
 5. Change the color mode to Color Map, and select Turbo for the color map.  
 
       <figure markdown="span">
-      ![Foxglove Radar Message](assets/foxglove_radar_msg.png){align=center}
+      ![Foxglove Radar Message](../assets/foxglove_radar_msg.png){align=center}
       <figcaption>Foxglove Radar Message</figcaption>
       </figure>
  
@@ -172,7 +172,7 @@ By default, none of the radar topics are recorded as part of an MCAP file.  The 
 7. You can now see the `/radar/cube` message.  
 
       <figure markdown="span">
-      ![Foxglove Final Radar View](assets/foxglove_final_radar_view.png){align=center}
+      ![Foxglove Final Radar View](../assets/foxglove_final_radar_view.png){align=center}
       <figcaption>Foxglove Final Radar View</figcaption>
       </figure>
 
@@ -187,32 +187,32 @@ To create IMU sensor plots:
 5. Repeat to add additional plot series as needed.
 
       <figure markdown="span">
-      ![IMU](assets/imu.png){align=center}
+      ![IMU](../assets/imu.png){align=center}
       <figcaption>IMU</figcaption>
       </figure>
 
       <figure markdown="span">
-      ![IMU to Plot](assets/imu_to_plot.png){align=center}
+      ![IMU to Plot](../assets/imu_to_plot.png){align=center}
       <figcaption>IMU to Plot</figcaption>
       </figure>
 
       <figure markdown="span">
-      ![Plot](assets/plot.png){align=center}
+      ![Plot](../assets/plot.png){align=center}
       <figcaption>Plot</figcaption>
       </figure>
 
       <figure markdown="span">
-      ![IMU Message](assets/imu_msg.png){align=center}
+      ![IMU Message](../assets/imu_msg.png){align=center}
       <figcaption>IMU Message</figcaption>
       </figure>
 
       <figure markdown="span">
-      ![IMU Velocity](assets/imu_velocity.png){align=center}
+      ![IMU Velocity](../assets/imu_velocity.png){align=center}
       <figcaption>IMU Velocity</figcaption>
       </figure>
 
       <figure markdown="span">
-      ![IMU Final View](assets/imu_final_view.png){align=center}
+      ![IMU Final View](../assets/imu_final_view.png){align=center}
       <figcaption>IMU Final View</figcaption>
       </figure>
 

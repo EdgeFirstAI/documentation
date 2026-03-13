@@ -16,7 +16,7 @@ For a quick demonstration, go to the "ssd-tflite" repository and download the fo
 
 Download our [Python Script](assets/run-tflite.py){: download="run-tflite.py"} for running the example.
 
-Once the files have been downloaded, [SCP](../../../platforms/ssh.md#secure-copy) the files into the embedded platform.
+Once the files have been downloaded, [SCP](../../../platforms/networking/ssh.md#secure-copy) the files into the embedded platform.
 
 Run the script with the command `python3 run-tflite.py`.  The script should print the inference time in milliseconds and the model detections as follows.
 

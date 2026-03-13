@@ -78,7 +78,7 @@ The [EdgeFirst Dataset Format](format/index.md) is purposely designed to efficie
 This format is used throughout EdgeFirst Studio:
 
 - **[Snapshots](../studio/snapshots.md)**: Portable ZIP+Arrow pairs for download and sharing
-- **[MCAP uploads](../platforms/publishing.md)**: Converted to this format when restored as datasets
+- **[MCAP uploads](../perception/data_collection/publishing.md)**: Converted to this format when restored as datasets
 - **[Training](../models/training/vision.md)**: Arrow annotations feed directly into model training
 
 Learn more in the [Format Documentation](format/index.md).

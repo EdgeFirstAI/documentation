@@ -35,7 +35,7 @@ The Torizon for Maivin system can be updated using the OSTree client.  The clien
 
 To update the release:
 
-1. Access your Maivin through [SSH](ssh.md)
+1. Access your Maivin through [SSH](../networking/ssh.md)
 2. Pull the latest Maivin release update with the `ostree pull` command:
 
     ```bash

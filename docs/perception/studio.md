@@ -69,7 +69,7 @@ eyJhbGciOiJIUzI1NiIsInR5cCI6IkpX...
 
 ## Dataset Preparation
 
-Once data has been recorded using the [MCAP Recording Service](../platforms/recording.md) of the Raivin, and we have access to the mcap files, it is very simple to upload the files into a project. The next step we have to do is to create a snapshot and then restore it as a dataset (optionally using AGTG for auto annotation of the images).
+Once data has been recorded using the [MCAP Recording Service](data_collection/recording.md) of the Raivin, and we have access to the mcap files, it is very simple to upload the files into a project. The next step we have to do is to create a snapshot and then restore it as a dataset (optionally using AGTG for auto annotation of the images).
 
 ### Create a Snapshot
 
@@ -80,7 +80,7 @@ $ edgefirst-client create-snapshot <path>
 [<SNAPSHOT_ID>] <status>: <Name of the folder or file specified>
 ```
 
-where `path` is the path to the folder containing the MCAP files or the path to the mcap file. Refer to the [MCAP Recording page](../platforms/recording.md) for more information. Notice that the snapshot can only be restored if `status` is `available` (keyword after the `[ID]`, `status` can also be `unavailable` if any error occurs).
+where `path` is the path to the folder containing the MCAP files or the path to the mcap file. Refer to the [MCAP Recording page](data_collection/recording.md) for more information. Notice that the snapshot can only be restored if `status` is `available` (keyword after the `[ID]`, `status` can also be `unavailable` if any error occurs).
 
 This command with a successful output would looks as follows:
 

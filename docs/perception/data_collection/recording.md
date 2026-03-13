@@ -18,7 +18,7 @@ When active, the Recorder Service:
 The MCAP Recording Service is managed on its own modal, which can be accessed by clicking the "MCAP Details" button on the top navbar of any Raivin Web UI Page.
 
 <figure markdown="span">
-![MCAP Recorder Interface](assets/quickStart-mcap.png){align=center}
+![MCAP Recorder Interface](../../platforms/assets/quickStart-mcap.png){align=center}
 <figcaption>MCAP Modal</figcaption>
 </figure>
 
@@ -29,14 +29,14 @@ Underneath the MCAP navbar, we have the current MCAP recording directory -- in t
 Under all of that, we have a list of MCAP files in the recording directory. For each MCAP file, the following elements and information exist, starting from left to right:
 
 - A selection checkbox.
-- A playback button !["Replay Button"](assets/replay_play.png). Clicking this will put the device into ["Replay Mode"](replay.md), replaying the sensor information from this MCAP file.
+- A playback button !["Replay Button"](../assets/replay_play.png). Clicking this will put the device into ["Replay Mode"](replay.md), replaying the sensor information from this MCAP file.
 - The filename of the MCAP
 - The size of the MCAP, in MB
 - The creation date and time of the MCAP
 - Three Action buttons, which are:
-  - The "Info" button !["Info Button"](assets/mcap_information.png), which shows information about the topics recorded in the MCAP file (see below).
-  - The "Download" button !["Download Button"](../assets/buttons/mcap_download_button.png), which will download the MCAP file to your local machine.
-  - The "Delete" button !["Delete Button"](assets/mcap_delete.png), which will remove the MCAP file.
+  - The "Info" button !["Info Button"](../assets/mcap_information.png), which shows information about the topics recorded in the MCAP file (see below).
+  - The "Download" button !["Download Button"](../../assets/buttons/mcap_download_button.png), which will download the MCAP file to your local machine.
+  - The "Delete" button !["Delete Button"](../assets/mcap_delete.png), which will remove the MCAP file.
 
 To leave the MCAP Modal, click the "X" close button in the top right corner of the modal.
 
@@ -48,7 +48,7 @@ To leave the MCAP Modal, click the "X" close button in the top right corner of t
 Once a recording is complete, you can see the size in MB of the captured data on the MCAP page.  You can also get more detailed metadata, such as the topics recorded, by clicking the "Details" button for the MCAP recording.
 
 <figure markdown="span">
-![MCAP File Details](assets/mcap_detail.png){align=center}  
+![MCAP File Details](../assets/mcap_detail.png){align=center}  
 <figcaption>MCAP File Details</figcaption>
 </figure>
 
@@ -73,7 +73,7 @@ The Recorder Service can have the following settings configured:
 - Location of the recording file
 - Recording compression
 
-These settings can be configured in the [MCAP Recorder Settings Page](configuration/mcap_recording.md).
+These settings can be configured in the [MCAP Recorder Settings Page](../../platforms/configuration/mcap_recording.md).
 
 ## Recording On Boot-up
 
@@ -81,14 +81,14 @@ The Recording Service can be set up to automatically start on boot-up.
 !!! warning
      Having the Recording Service run for prolonged periods of time will fill the SD card of the Raivin.  Use this functionality with caution.
 
-On the [Services Status](configuration/service_status.md) page, you can use the Recorder Service status card to enable the recorder service to start on boot.
+On the [Services Status](../../platforms/configuration/service_status.md) page, you can use the Recorder Service status card to enable the recorder service to start on boot.
 <figure markdown="span">
-![Recording Service](assets/Recorder_Service_Card.png){align=center}  
+![Recording Service](../assets/Recorder_Service_Card.png){align=center}  
 <figcaption>Recorder Service status card</figcaption>
 </figure>
 Flip the Enable/Disable switch to enable to enable the Recorder Service on boot.
 <figure markdown="span">
-![Recording Service Enabled](assets/Recorder_Service_Card_enabled.png){align=center}  
+![Recording Service Enabled](../assets/Recorder_Service_Card_enabled.png){align=center}  
 <figcaption>Recorder Service enabled</figcaption>
 </figure>
 !!! note

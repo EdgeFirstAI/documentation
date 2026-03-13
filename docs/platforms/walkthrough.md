@@ -35,11 +35,11 @@ The ribbon at the top of the Raivin web interface is available on every page of 
 3. On the right side, we first have the Recording Indicator, shown as a gray oval with "REC" when not recording from the sensors and a red oval when recording.
 5. The MCAP Details Modal button, which opens the MCAP Modal.
 6. The System Status Indicator and Dropdown button.
-3. The farthest rightmost button, with the gear icon, is the Settings Buttons and will take you to the [Settings Page](./configuration/index.md).
+3. The farthest rightmost button, with the gear icon, is the Settings Buttons and will take you to the [Settings Page](configuration/index.md).
 
 ### The MCAP Modal
 
-The MCAP Modal is the interface to manage MCAP recordings, including getting information about recorded MCAP files, disk usage, deletion and downloading files.  More information about the MCAP Modal and recording MCAPs is in the [Recording section](./recording.md)
+The MCAP Modal is the interface to manage MCAP recordings, including getting information about recorded MCAP files, disk usage, deletion and downloading files.  More information about the MCAP Modal and recording MCAPs is in the [Recording section](../perception//data_collection/recording.md)
 
 <figure markdown="span">
 ![Dropdown reporting bad](assets/quickStart-mcap.png){align=center}  
@@ -60,7 +60,7 @@ Mousing over the System Status Indicator field will give a brief summary of any 
 <figcaption>The Radar Publishing service is down.</figcaption>
 </figure>
 
-More on these status can be found in the [Status Monitoring section](./replay.md#status-monitoring).
+More on these status can be found in the [Status Monitoring section](../perception/data_collection/replay.md#status-monitoring).
 
 Clicking on the indicator will bring up the Service Status Modal, which contains a list of services and, if available, clickable gear icons that link to the service's configuration page.
 

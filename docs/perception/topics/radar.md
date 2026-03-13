@@ -68,7 +68,7 @@ The `/radar/cube` topic publishes information about the received radar sensor da
 **Usage** | **Link**
 :------------------:|:------------------:
 WebUI | []()
-Foxglove | [Viewing Radar Cube](../../platforms/foxglove.md#viewing-radarcube-messages)
+Foxglove | [Viewing Radar Cube](../data_collection/foxglove.md#viewing-radarcube-messages)
 SDK | [Radar Cube Example](../dev/examples/radar.md#radar-cube)
 
 ## /radar/info

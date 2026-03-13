@@ -289,7 +289,7 @@ The modem installation can be performed by customers by following these instruct
 
 ## Radar Networking
 
-The `ethernet1` and `can0` interfaces are reserved for internal communications with the radar module on Raivin configurations.  Refer to the [Radar page](./radar.md) for details.
+The `ethernet1` and `can0` interfaces are reserved for internal communications with the radar module on Raivin configurations.  Refer to the [Radar page](../hardware/radar.md) for details.
 
 [nm]: https://networkmanager.dev
 [mm]: https://modemmanager.org

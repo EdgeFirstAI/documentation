@@ -11,7 +11,7 @@ You need an SSH client ([OpenSSH][openssh], [PuTTY][putty], etc.) to SSH into th
 
 ## The Initial SSH Session
 
-First, verify that your Maivin is turned on and connected to the network.  You can follow the [Quick Start instructions](./quickstart.md#on-boot-up) to get the hostname of the device, which for the examples in this section will be `verdin-imx8mp-06976895.local`.
+First, verify that your Maivin is turned on and connected to the network.  You can follow the [Quick Start instructions](../quickstart.md#on-boot-up) to get the hostname of the device, which for the examples in this section will be `verdin-imx8mp-06976895.local`.
 
 !!! tip
     Windows does not need the `.local` hostname suffix.
@@ -19,7 +19,7 @@ First, verify that your Maivin is turned on and connected to the network.  You c
 In a command prompt, ping the Maivin's hostname.  
 
 <figure markdown="span">
-![Ping Results](assets/ssh-ping.png){align=center}  
+![Ping Results](../assets/ssh-ping.png){align=center}  
 <figcaption>Ping Results</figcaption>
 </figure>
 
@@ -34,7 +34,7 @@ ssh torizon@Maivin-hostname
 For example:  
 
 <figure markdown="span">
-![Are you Sure?](assets/ssh-areYouSure.png){align=center}
+![Are you Sure?](../assets/ssh-areYouSure.png){align=center}
 <figcaption>Are you Sure?</figcaption>
 </figure>
 
@@ -43,14 +43,14 @@ On the first log of a new or updated Maivin, you may get the "authenticity of ho
 On a new Raivin, it will ask you to change the default password to a new password.  Re-enter the 'torizon' password, and then enter a new password twice.  After you change the default password, the SSH session will close so you can re-login with the new password.  
 
 <figure markdown="span">
-![New Password](assets/ssh-changePassword.png){align=center}  
+![New Password](../assets/ssh-changePassword.png){align=center}  
 <figcaption>New Password</figcaption>
 </figure>
 
 Once you've finished those steps, the next and all future SSH sessions should look as follows:  
 
 <figure markdown="span">
-![SSH Session](assets/ssh-login.png){align=center}  
+![SSH Session](../assets/ssh-login.png){align=center}  
 <figcaption>SSH Session</figcaption>
 </figure>
 

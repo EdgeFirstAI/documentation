@@ -5,7 +5,7 @@ The EdgeFirst Dataset Format is designed to handle multi-sensor datasets with ri
 !!! tip "When Do You Need This?"
     **Most users can skip these details.** EdgeFirst Studio handles dataset formats automatically when you:
 
-    - Record MCAP files on a [Raivin platform](../../platforms/recording.md) and [publish them as snapshots](../../platforms/publishing.md)
+    - Record MCAP files on a [Raivin platform](../../perception/data_collection/recording.md) and [publish them as snapshots](../../perception/data_collection/publishing.md)
     - [Import existing datasets](../tutorials/import.md) through the Studio UI
     - [Export datasets](../../studio/datasets/index.md#export-dataset) for offline use
     - Train models using [ModelPack](../../models/modelpack/index.md) or [Ultralytics](../../models/ultralytics/index.md)

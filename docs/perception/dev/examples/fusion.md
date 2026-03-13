@@ -361,7 +361,7 @@ We can now receive a message on the subscriber. After receiving the message, we 
 
 ### Decode PCD Data
 
-The next step is to decode the PCD data. Please see [examples/pcd](./pcd.md) for a guide on how to decode the PointCloud2 data.
+The next step is to decode the PCD data. Please see [examples/pcd](pcd.md) for a guide on how to decode the PointCloud2 data.
 
 === "Python"
 
@@ -510,7 +510,7 @@ We can now receive a message on the subscriber. After receiving the message, we 
 
 ### Decode PCD Data
 
-The next step is to decode the PCD data. Please see [examples/pcd](./pcd.md) for a guide on how to decode the PointCloud2 data.
+The next step is to decode the PCD data. Please see [examples/pcd](pcd.md) for a guide on how to decode the PointCloud2 data.
 
 === "Python"
 

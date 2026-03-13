@@ -68,7 +68,7 @@ The `/camera/h264` topic uses Foxglove's [CompressedVideo](../api/foxglove_msgs.
 **Usage** | **Link**
 :------------------:|:------------------:
 WebUI | []()
-Foxglove | [CompressedVideo Example](../../platforms/foxglove.md#viewing-detection-messages)
+Foxglove | [CompressedVideo Example](../data_collection/foxglove.md#viewing-detection-messages)
 SDK | [H264 Example](../dev/examples/camera.md#h264-camera-feed)
 
 ## /camera/jpeg

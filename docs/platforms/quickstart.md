@@ -44,7 +44,7 @@ The device should boot up as soon as it is connected.  A blue light above and to
 
 ## On Boot Up
 
-The Raivin will have an eight-digit number on the back of the device.  This is the ID number.  The hostname of the Raivin will be "verdin-imx8mp-**ID**.local", which is advertised over Multicast Domain Name System (mDMS).  For the steps below, the eight-digit number is "15141029".  The device will have a hostname of `verdin-imx8mp-15141029.local`.  This hostname can be used to connect to the device over [SSH](./ssh.md) and HTTP.
+The Raivin will have an eight-digit number on the back of the device.  This is the ID number.  The hostname of the Raivin will be "verdin-imx8mp-**ID**.local", which is advertised over Multicast Domain Name System (mDMS).  For the steps below, the eight-digit number is "15141029".  The device will have a hostname of `verdin-imx8mp-15141029.local`.  This hostname can be used to connect to the device over [SSH](networking/ssh.md) and HTTP.
 !!! Tip
     On Windows machines, you will not need to add the '.local' suffix.
 
@@ -62,7 +62,7 @@ This is expected and nothing to worry about -- the HTTPS connection needs a SSL 
 <figcaption>Raivin Advanced Information</figcaption>
 </figure>
 
-After all that, you should see the [Raivin Main Page](./walkthrough.md).
+After all that, you should see the [Raivin Main Page](walkthrough.md).
 
 <figure markdown="span">
 ![Raivin Main Page](assets/quickStart-mainPage.png){align=center}.  
@@ -97,7 +97,7 @@ and for a Maivin:
 
 Now that you have completed these initial steps, we recommend that you read the following walkthroughs:  
 
-- [Raivin WebUI Walkthrough](./walkthrough.md), to see what each UI card on the splash screen does  
-- [SSH Walkthrough](./ssh.md), to learn how to SSH into your Raivin and basic command-line operations  
-- [Raivin Recording Walkthrough](./recording.md), to learn how to record datasets and download them to your PC  
-- [Model Upload Walkthrough](./model_uploads.md), to learn how to upload vision and radar fusion models to your Raivin  
+- [Raivin WebUI Walkthrough](walkthrough.md), to see what each UI card on the splash screen does  
+- [SSH Walkthrough](networking/ssh.md), to learn how to SSH into your Raivin and basic command-line operations  
+- [Raivin Recording Walkthrough](../perception/data_collection/recording.md), to learn how to record datasets and download them to your PC  
+- [Model Upload Walkthrough](software/model_uploads.md), to learn how to upload vision and radar fusion models to your Raivin  

@@ -1,6 +1,6 @@
 # Hardware
 
-The Maivin Perception Platform is available in two configurations: Maivin and Raivin.  The Maivin configuration is a vision-only platform while the Raivin configuration includes an [integrated radar module](./radar.md).  The Raivin configuration is built on the core Maivin configuration and both run the same software stack.  The Raivin configuration also runs the additional radar and sensor fusion software.
+The Maivin Perception Platform is available in two configurations: Maivin and Raivin.  The Maivin configuration is a vision-only platform while the Raivin configuration includes an [integrated radar module](radar.md).  The Raivin configuration is built on the core Maivin configuration and both run the same software stack.  The Raivin configuration also runs the additional radar and sensor fusion software.
 
 The Maivin configuration provides a vision-based perception stack for use in harsh environments, providing an IP66/67 waterproof enclosure and connectors.  The Maivin platform is built on the NXP i.MX 8M Plus processor which includes a 2 TOPS AI accelerator.  The EdgeFirst Perception Middleware leverages the AI-accelerator enabling this vision sensor to be deployed in the field to deliver real-time edge perception applications.
 
@@ -33,6 +33,6 @@ training can be found in the Deep View Enterprise User Manual.
 
 ## Mechanical Specifications
 
-![Maivin Mechanical Drawing](assets/mechanical.png){align=center}
+![Maivin Mechanical Drawing](../assets/mechanical.png){align=center}
 
 ## Connectors

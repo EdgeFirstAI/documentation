@@ -13,7 +13,7 @@ Remember to save the configurations at the end of the process. The  Model Config
 
 ## Manual Model Deployment
 
-In case the manual deployment is needed, you need to connect to the device via [SSH](../../platforms/ssh.md):
+In case the manual deployment is needed, you need to connect to the device via [SSH](../../platforms/networking/ssh.md):
 
 ```shell
 ssh torizon@verdin-imx8mp-15141030

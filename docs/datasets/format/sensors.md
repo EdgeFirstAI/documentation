@@ -15,8 +15,8 @@ flowchart TD
     E -->|"Download"| F["📥 ZIP + Arrow"]
 ```
 
-1. **Recording**: [Raivin or Maivin devices](../../platforms/recording.md) record sensor data as ROS2 topics into MCAP files
-2. **Upload**: MCAP files are [uploaded as snapshots](../../platforms/publishing.md) to EdgeFirst Studio  
+1. **Recording**: [Raivin or Maivin devices](../../perception/data_collection/recording.md) record sensor data as ROS2 topics into MCAP files
+2. **Upload**: MCAP files are [uploaded as snapshots](../../perception/data_collection/publishing.md) to EdgeFirst Studio  
 3. **Restore**: Snapshots are [restored into datasets](../../studio/snapshots.md#restore-snapshot), converting MCAP topics to discrete sensor files
 4. **Create Snapshot**: Datasets can be [exported as snapshots](../../studio/snapshots.md#create-snapshot) for download
 5. **Download**: Snapshots are downloaded as ZIP + Arrow file pairs in the [EdgeFirst Dataset Format](index.md)
@@ -346,6 +346,6 @@ for seq, files in sequences.items():
 
 - [Dataset Organization](structure.md) — How sensor files are organized on disk
 - [Annotation Schema](schema.md) — Metadata extracted from EXIF and sensors
-- [Platform Recording](../../platforms/recording.md) — How sensor data is recorded on Raivin/Maivin
-- [Publishing Workflows](../../platforms/publishing.md) — How to upload MCAP recordings as snapshots
+- [Platform Recording](../../perception/data_collection/recording.md) — How sensor data is recorded on Raivin/Maivin
+- [Publishing Workflows](../../perception/data_collection/publishing.md) — How to upload MCAP recordings as snapshots
 - [Snapshots Dashboard](../../studio/snapshots.md) — How to download and restore snapshots

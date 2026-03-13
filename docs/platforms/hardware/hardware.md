@@ -33,6 +33,6 @@ training can be found in the Deep View Enterprise User Manual.
 
 ## Mechanical Specifications
 
-![Maivin Mechanical Drawing](../assets/mechanical.png){align=center}
+![Maivin Mechanical Drawing](../assets/hardware/mechanical.png){align=center}
 
 ## Connectors

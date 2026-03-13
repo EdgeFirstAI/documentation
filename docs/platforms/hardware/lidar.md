@@ -39,10 +39,10 @@ Ouster Studio is a free digital LiDAR visualizer available for both web and desk
 ### Sensor configuration
 
 Once you have downloaded Ouster Studio it can be used get the device name as well as make modifications to the Static IP of the device. It is recommended that the user sets a static ip as shown in the image below.
-![Ouster Config](../assets/ouster-config.png){align=center}
+![Ouster Config](../assets/hardware/ouster-config.png){align=center}
 
 After making all the changes required you can hit "Configure and Visualize" and it will show a LiDAR PCD as follow
-![Ouster PCD](../assets/ouster-pcd.png){align=center}
+![Ouster PCD](../assets/hardware/ouster-pcd.png){align=center}
 
 ## Firmware Requirements
 

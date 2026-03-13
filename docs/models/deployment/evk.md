@@ -2,7 +2,7 @@
 
 This guide will walk you through installing the EdgeFirst Middleware in "user-mode" on a target device.  If you're using a Maivin or Raivin refer to the [Deploying to the Maivin](maivin.md) guide instead.
 
-![NXP i.MX 8M Plus EVK](../assets/deployment/imx8mpevk.png)
+![NXP i.MX 8M Plus EVK](../../platforms/assets/imx8mpevk.png)
 
 ## Installation
 

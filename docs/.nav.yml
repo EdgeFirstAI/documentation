@@ -174,9 +174,27 @@ nav:
   - Platforms:
     - platforms/index.md
     - Getting Started:
-      - platforms/quickstart.md
-      - platforms/walkthrough.md
-      - platforms/architecture.md
+      - Maivin Quick Start:
+        - platforms/quickstart/maivin/index.md
+        - platforms/quickstart/maivin/setup.md
+      - Raivin Quick Start:
+        - platforms/quickstart/raivin/index.md
+        - platforms/quickstart/raivin/setup.md
+      - i.MX 8M Plus Quick Start:
+        - platforms/quickstart/imx8mp/index.md
+        - platforms/quickstart/imx8mp/setup.md
+      - i.MX 95 Quick Start:
+        - platforms/quickstart/imx95/index.md
+        - platforms/quickstart/imx95/setup.md
+      - NVIDIA Jetson Quick Start:
+        - platforms/quickstart/jetson/index.md
+        - platforms/quickstart/jetson/setup.md
+      - Raspberry Pi Quick Start:
+        - platforms/quickstart/raspberrypi/index.md
+        - platforms/quickstart/raspberrypi/setup.md
+      # - platforms/quickstart.md
+      # - platforms/walkthrough.md
+      # - platforms/architecture.md
     - Configuration:
       - platforms/configuration/index.md
       - platforms/configuration/mcap_recording.md

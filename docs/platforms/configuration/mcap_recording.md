@@ -3,7 +3,7 @@
 This page configures how sensor and processed outputs are saved on the [MCAP Recording Page](../../perception/data_collection/recording.md).
 
 <figure markdown="span">
-![MCAP Settings page](../assets/configuration-mcap.png){align=center}
+![MCAP Settings page](../assets/configuration/configuration-mcap.png){align=center}
 <figcaption>MCAP Settings page</figcaption>
 </figure>
 

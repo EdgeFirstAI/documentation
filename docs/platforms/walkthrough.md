@@ -7,14 +7,14 @@ This chapter will walk you through the Raivin's and Maivin's Web User Interface 
 The Main Page of the Raivin web interface should look as follows:  
 
 <figure markdown="span">
-![Raivin Main Page](assets/quickStart-mainPage.png){align=center}
+![Raivin Main Page](assets/setup/quickStart-mainPage.png){align=center}
 <figcaption>Raivin Main Page</figcaption>
 </figure>
 
 The Main Page for the Maivin looks slightly different:  
 
 <figure markdown="span">
-![Maivin Main Page](assets/ui-maivinMain.png){align=center}
+![Maivin Main Page](assets/setup/ui-maivinMain.png){align=center}
 <figcaption>Maivin Main Page</figcaption>
 </figure>
 
@@ -42,7 +42,7 @@ The ribbon at the top of the Raivin web interface is available on every page of 
 The MCAP Modal is the interface to manage MCAP recordings, including getting information about recorded MCAP files, disk usage, deletion and downloading files.  More information about the MCAP Modal and recording MCAPs is in the [Recording section](../perception//data_collection/recording.md)
 
 <figure markdown="span">
-![Dropdown reporting bad](assets/quickStart-mcap.png){align=center}  
+![Dropdown reporting bad](assets/setup/quickStart-mcap.png){align=center}  
 <figcaption>The Radar Publishing service is down.</figcaption>
 </figure>
 
@@ -51,12 +51,12 @@ The MCAP Modal is the interface to manage MCAP recordings, including getting inf
 Mousing over the System Status Indicator field will give a brief summary of any problems.  
 
 <figure markdown="span">
-![Dropdown reporting good](assets/quickStart-statusDropDownGood.png){align=center}  
+![Dropdown reporting good](assets/setup/quickStart-statusDropDownGood.png){align=center}  
 <figcaption>Everything is good!</figcaption>
 </figure>
 
 <figure markdown="span">
-![Dropdown reporting bad](assets/quickStart-statusDropDownDegraded.png){align=center}  
+![Dropdown reporting bad](assets/setup/quickStart-statusDropDownDegraded.png){align=center}  
 <figcaption>The Radar Publishing service is down.</figcaption>
 </figure>
 
@@ -65,7 +65,7 @@ More on these status can be found in the [Status Monitoring section](../percepti
 Clicking on the indicator will bring up the Service Status Modal, which contains a list of services and, if available, clickable gear icons that link to the service's configuration page.
 
 <figure markdown="span">
-![Service Status Modal](assets/quickStart-serviceStatusModal.png){align=center}  
+![Service Status Modal](assets/setup/quickStart-serviceStatusModal.png){align=center}  
 <figcaption>Service Status Modal</figcaption>
 </figure>
 
@@ -78,7 +78,7 @@ These pages contain the user-facing functionality of the vision module.
 The Segmentation page shows camera overlain with the current visual model output.  For Raivin modules, this will also includes the occupancy grid at the bottom.  
 
 <figure markdown="span">
-![Raivin Segmentation Page](assets/quickStart-segmentation.png){align=center}
+![Raivin Segmentation Page](assets/setup/quickStart-segmentation.png){align=center}
 <figcaption>Raivin Segmentation Page</figcaption>
 </figure>
 
@@ -87,7 +87,7 @@ White points are unmatched, raw data from the radar; green points are raw data m
 For the Maivin, its Segmentation Page does not include the Occupancy Grid at the bottom.  
 
 <figure markdown="span">
-![Maivin Segmentation Page](assets/ui-maivinSegmentation.png){align=center}
+![Maivin Segmentation Page](assets/setup/ui-maivinSegmentation.png){align=center}
 <figcaption>Maivin Segmentation Page</figcaption>
 </figure>
 
@@ -96,7 +96,7 @@ For the Maivin, its Segmentation Page does not include the Occupancy Grid at the
 The Occupancy Page shows the raw, radar data, colored by radar cross-section (RCS) size.  
 
 <figure markdown="span">
-![Occupancy Page](assets/quickStart-occupancy.png){align=center}
+![Occupancy Page](assets/setup/quickStart-occupancy.png){align=center}
 <figcaption>Occupancy Page</figcaption>
 </figure>
 
@@ -105,7 +105,7 @@ The Occupancy Page shows the raw, radar data, colored by radar cross-section (RC
 The GPS page shows an interactive map centered on the device's location.  
 
 <figure markdown="span">
-![GPS Page](assets/quickStart-gps.png){align=center}
+![GPS Page](assets/setup/quickStart-gps.png){align=center}
 <figcaption>GPS Page</figcaption>
 </figure>
 
@@ -116,7 +116,7 @@ This should be familiar to anyone who has used standard map web interfaces.  The
 This page shows the segmentation view, the occupancy grid, and the 3D LiDAR view.  The 3D LiDAR view will be blank if the device does not have a LiDAR unit connected.
 
 <figure markdown="span">
-![GPS Page](assets/quickStart-lidar.png){align=center}
+![GPS Page](assets/setup/quickStart-lidar.png){align=center}
 <figcaption>Lidar View Page</figcaption>
 </figure>
 
@@ -125,7 +125,7 @@ This page shows the segmentation view, the occupancy grid, and the 3D LiDAR view
 The IMU page shows the device's orientation in 3D.  
 
 <figure markdown="span">
-![IMU Page](assets/quickStart-imu.png){align=center}
+![IMU Page](assets/setup/quickStart-imu.png){align=center}
 <figcaption>IMU Page</figcaption>
 </figure>
 

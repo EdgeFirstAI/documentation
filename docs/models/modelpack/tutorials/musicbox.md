@@ -21,7 +21,7 @@ The duration of the annotation process depends on the dataset size.  For this sp
 To begin recording a dataset, power on the [Maivin](../../../platforms/quickstart.md) platform and connect it to a network in order to access the [Web User Interface (WebUI)](../../../platforms/walkthrough.md).
 
 <figure markdown="span">
-![Web UI Main Page](../../../platforms/assets/ui-maivinMain.png){ align=center }
+![Web UI Main Page](../../../platforms/assets/setup/ui-maivinMain.png){ align=center }
 <figcaption>Web UI Main Page</figcaption>
 </figure>
 

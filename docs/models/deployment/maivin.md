@@ -23,7 +23,7 @@ Use your browser to connect to the Web UI of the remote device, enter the follow
 You will be greeted with the Maivin [Web UI Main Page](../../platforms/walkthrough.md) page.
 
 <figure markdown="span">
-![Web UI Main Page](../../platforms/assets/ui-maivinMain.png){ align=center }
+![Web UI Main Page](../../platforms/assets/setup/ui-maivinMain.png){ align=center }
 <figcaption>Web UI Main Page</figcaption>
 </figure>
 

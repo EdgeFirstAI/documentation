@@ -3,7 +3,7 @@
 These settings configure the perception engine that is processing input from the video sensor and providing output on the model topics.
 
 <figure markdown="span">
-![Model Settings page](../assets/configuration-model.png){align=center}
+![Model Settings page](../assets/configuration/configuration-model.png){align=center}
 <figcaption>Model Settings page</figcaption>
 </figure>
 

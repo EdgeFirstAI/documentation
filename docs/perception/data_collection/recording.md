@@ -18,7 +18,7 @@ When active, the Recorder Service:
 The MCAP Recording Service is managed on its own modal, which can be accessed by clicking the "MCAP Details" button on the top navbar of any Raivin Web UI Page.
 
 <figure markdown="span">
-![MCAP Recorder Interface](../../platforms/assets/quickStart-mcap.png){align=center}
+![MCAP Recorder Interface](../../platforms/assets/setup/quickStart-mcap.png){align=center}
 <figcaption>MCAP Modal</figcaption>
 </figure>
 

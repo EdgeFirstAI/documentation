@@ -3,7 +3,7 @@
 This page configures the camera service that interacts with the Raivin's [OmniVision OS08A20 image sensor][os08a20]. With the exception of the H.264 Bitrate, camera and stream sizes, it is not recommended that you change these settings.
 
 <figure markdown="span">
-![Camera Settings page](../assets/configuration-camera.png){align=center}
+![Camera Settings page](../assets/configuration/configuration-camera.png){align=center}
 <figcaption>Camera Settings page</figcaption>
 </figure>
 

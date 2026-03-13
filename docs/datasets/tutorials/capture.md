@@ -26,7 +26,7 @@ If you have an EdgeFirst Platform, follow this tutorial to see how to capture an
 You will be greeted with the Maivin [Web UI Main Page](../../platforms/walkthrough.md) page.
 
 <figure markdown="span">
-![Web UI Main Page](../../platforms/assets/ui-maivinMain.png){ align=center }
+![Web UI Main Page](../../platforms/assets/setup/ui-maivinMain.png){ align=center }
 <figcaption>Web UI Main Page</figcaption>
 </figure>
 

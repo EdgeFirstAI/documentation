@@ -17,7 +17,7 @@ The Replay Service offers:
 
 The Replay Service is built into the [MCAP Recorder Modal](recording.md).
 <figure markdown="span">
-![MCAP Recorder Interface](../../platforms/assets/quickStart-mcap.png){align=center}
+![MCAP Recorder Interface](../../platforms/assets/setup/quickStart-mcap.png){align=center}
 <figcaption>MCAP Modal</figcaption>
 </figure>
 
@@ -115,7 +115,7 @@ Located in the top-right corner, the status indicator button shows status and st
 Click this button to view detailed service status, which shows the individual service states (Running/Stopped).  
 
 <figure markdown="span">
-![Service Status Modal](../../platforms/assets/quickStart-serviceStatusModal.png){align=center}
+![Service Status Modal](../../platforms/assets/setup/quickStart-serviceStatusModal.png){align=center}
 <figcaption>Service Status Modal</figcaption>
 </figure>
 

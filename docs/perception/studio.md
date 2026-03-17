@@ -390,41 +390,57 @@ Options:
 Usage information is provided by the `help` command.
 
 ```shell
-$ edgefirst-client help
+EdgeFirst Client Library and CLI
+
 Usage: edgefirst-client [OPTIONS] <COMMAND>
 
 Commands:
-  version            Returns the Deep View Enterprise Server version
-  login              Login to the Deep View Enterprise Server with the provided username and password.  The token is stored in the application configuration file
-  logout             Logout by removing the token from the application configuration file
-  token              Returns the DVE authentication token for the provided username and password.  This would typically be stored into the DVE_TOKEN environment variable for subsequent commands to avoid re-entering username/password
-  projects           List all projects available to the authenticated user
-  project            Retrieve project information for the provided project ID
-  find-projects       Find a project by name
-  datasets           List all datasets available to the authenticated user.  If a project ID is provided, only datasets for that project are listed
-  dataset            Retrieve dataset information for the provided dataset ID.  The cloud key can be printed with the --cloud-key option, this requires additional AWS S3 permissions to access the bucket
-  find-dataset       Find a dataset by name.  If a project ID is provided, only datasets for that project are searched.  A project name can also be provided which will be used to find the project ID
-  download-dataset   Download a dataset to the local filesystem.  The dataset ID is required along with an optional output file path, if none is provided the dataset is downloaded to the current working directory
-  annotation-sets    List available annotation sets for the provided dataset ID
-  annotations        Fetch annotations for the provided dataset and annotation set ID. The retrieved annotations are filtered by annotation type. The annotations are printed in JSON format
-  snapshots          List available snapshots
-  snapshot           Retrieve snapshot information for the provided snapshot ID
-  find-snapshots     Find snapshots containing the provided description
-  create-snapshot    Create a new snapshot from the provided path which can be a file or directory.  The snapshot name will be the base name of the path
-  download-snapshot  Downloads a snapshot to the local filesystem.  The snapshot ID is required along with an optional output file path, if none is provided the snapshot is downloaded to the current working directory
-  restore-snapshot   Restore a snapshot to the provided project ID.  The snapshot ID is required along with optional flags to restore the depth generator and AGTG pipeline.  The dataset name and description can also be provided to override the snapshot name, otherwise the snapshot name is used and the description is set to the snapshot timestamp
-  trainers           List training experiments for the provided project ID (optional).  The trainers are groups of "experiments" in mlflow parlance, training jobs can be queried through the trainer-session commands
-  trainer            Retrieve trainer information for the provided trainer ID
-  trainer-sessions   List training sessions for the provided trainer ID (optional).  The sessions are individual training jobs that can be queried for more detailed information
-  trainer-session    Retrieve training session information for the provided session ID.  The trainer session ID can be either be an integer or a string with the format t-xxx where xxx is the session ID in hex as shown in the DVE UI
-  download-artifact  Download an artifact from the provided session ID.  The session ID can be either be an integer or a string with the format t-xxx where xxx is the session ID in hex as shown in the DVE UI.  The artifact name is the name of the file to download.  The output file path is optional, if none is provided the artifact is downloaded to the current working directory
-  help               Print this message or the help of the given subcommand(s)
+  version                Returns the EdgeFirst Studio Server version
+  login                  Login to the EdgeFirst Studio Server with the provided username and password.  The token is stored in the application configuration file
+  logout                 Logout by removing the token from the application configuration file
+  sleep                  Sleep for the specified number of seconds (for testing purposes)
+  token                  Returns the EdgeFirst Studio authentication token for the provided username and password.  This would typically be stored into the STUDIO_TOKEN environment variable for subsequent commands to avoid re-entering username/password
+  organization           Show the user's organization information
+  projects               List all projects available to the authenticated user
+  project                Retrieve project information for the provided project ID
+  datasets               List all datasets available to the authenticated user.  If a project ID is provided, only datasets for that project are listed
+  dataset                Retrieve dataset information for the provided dataset ID
+  create-dataset         Create a new dataset in the specified project
+  delete-dataset         Delete a dataset by marking it as deleted
+  create-annotation-set  Create a new annotation set for the specified dataset
+  delete-annotation-set  Delete an annotation set by marking it as deleted
+  download-dataset       Download a dataset to the local filesystem from the EdgeFirst Studio server.  The dataset ID is required along with an optional output file path, if none is provided the dataset is downloaded to the current working directory
+  download-annotations   Download dataset annotations to a local file.  This command accompanies the `DownloadDataset` command and is used to download the annotations rather than the dataset file samples (images, radar, lidar, etc.)
+  upload-dataset         Upload samples to a dataset from images and/or Arrow annotations file. Supports flexible workflows: images-only, annotations-only, or both. Arrow file must follow EdgeFirst Dataset Format (https://doc.edgefirst.ai/latest/datasets/format/)
+  experiments            List training experiments for the provided project ID (optional).  The experiments are a method of grouping training sessions together
+  experiment             Retrieve the experiment with the provided ID
+  training-sessions      List training sessions for the provided experiment ID (optional).  The sessions are individual training jobs that can be queried for more detailed information
+  training-session       Retrieve training session information for the provided session ID.  The trainer session ID can be either be an integer or a string with the format t-xxx where xxx is the session ID in hex as shown in the Web UI
+  download-artifact      Download an artifact from the provided session ID.  The session ID can be either be an integer or a string with the format t-xxx where xxx is the session ID in hex as shown in the Web UI.  The artifact name is the name of the file to download.  The output file path is optional, if none is provided the artifact is downloaded to the current working directory
+  upload-artifact        Upload an artifact to the provided training session ID
+  tasks                  List all tasks for the current user
+  task                   Retrieve information about a specific task
+  validation-sessions    List validation sessions for the provided project ID
+  validation-session     Retrieve validation session information for the provided session ID
+  snapshots              List all snapshots available to the user
+  snapshot               Retrieve snapshot information for the provided snapshot ID
+  create-snapshot        Create a snapshot from a local file/directory or server-side dataset
+  download-snapshot      Download a snapshot to local storage
+  restore-snapshot       Restore a snapshot to a dataset in EdgeFirst Studio. Supports MCAP uploads with optional AGTG (auto-annotation) and auto-depth generation
+  delete-snapshot        Delete a snapshot from EdgeFirst Studio
+  generate-arrow         Generate an Arrow annotation file from a folder of images
+  validate-snapshot      Validate a snapshot directory structure
+  coco-to-arrow          Convert COCO annotations to EdgeFirst Arrow format
+  arrow-to-coco          Convert EdgeFirst Arrow format to COCO annotations
+  import-coco            Import COCO dataset into EdgeFirst Studio
+  export-coco            Export EdgeFirst Studio dataset to COCO format
+  help                   Print this message or the help of the given subcommand(s)
 
 Options:
-      --server <SERVER>      DVE Server Name
-      --username <USERNAME>  DVE Username
-      --password <PASSWORD>  DVE Password
-      --token <TOKEN>        DVE Token
+      --server <SERVER>      EdgeFirst Studio Server Name [env: STUDIO_SERVER=]
+      --username <USERNAME>  EdgeFirst Studio Username [env: STUDIO_USERNAME=]
+      --password <PASSWORD>  EdgeFirst Studio Password [env: STUDIO_PASSWORD=]
+      --token <TOKEN>        EdgeFirst Studio Token [env: STUDIO_TOKEN=]
   -h, --help                 Print help
   -V, --version              Print version
 ```

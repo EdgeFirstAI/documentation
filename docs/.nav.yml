@@ -177,24 +177,53 @@ nav:
       - Maivin Quick Start:
         - platforms/quickstart/maivin/index.md
         - platforms/quickstart/maivin/setup.md
+        - platforms/quickstart/maivin/webui.md
+        - platforms/quickstart/maivin/copy_dataset.md
+        - platforms/quickstart/maivin/train.md
+        - platforms/quickstart/maivin/validate.md
+        - platforms/quickstart/maivin/deploy.md
       - Raivin Quick Start:
         - platforms/quickstart/raivin/index.md
         - platforms/quickstart/raivin/setup.md
+        - platforms/quickstart/raivin/webui.md
+        - platforms/quickstart/raivin/copy_dataset.md
+        - platforms/quickstart/raivin/train.md
+        - platforms/quickstart/raivin/validate.md
+        - platforms/quickstart/raivin/deploy.md
       - i.MX 8M Plus Quick Start:
-        - platforms/quickstart/imx8mp/index.md
-        - platforms/quickstart/imx8mp/setup.md
+        - platforms/quickstart/imx8mplus/index.md
+        - platforms/quickstart/imx8mplus/setup.md
+        - platforms/quickstart/imx8mplus/copy_dataset.md
+        - platforms/quickstart/imx8mplus/train.md
+        - platforms/quickstart/imx8mplus/convert_kinara.md
+        - platforms/quickstart/imx8mplus/validate.md
+        - platforms/quickstart/imx8mplus/deploy.md
       - i.MX 95 Quick Start:
         - platforms/quickstart/imx95/index.md
         - platforms/quickstart/imx95/setup.md
+        - platforms/quickstart/imx95/copy_dataset.md
+        - platforms/quickstart/imx95/train.md
+        - platforms/quickstart/imx95/neutron_converter.md
+        - platforms/quickstart/imx95/convert_kinara.md
+        - platforms/quickstart/imx95/validate.md
+        - platforms/quickstart/imx95/deploy.md
       - NVIDIA Jetson Quick Start:
-        - platforms/quickstart/jetson/index.md
-        - platforms/quickstart/jetson/setup.md
+        - platforms/quickstart/jetson_orin/index.md
+        - platforms/quickstart/jetson_orin/setup.md
+        - platforms/quickstart/jetson_orin/copy_dataset.md
+        - platforms/quickstart/jetson_orin/train.md
+        - platforms/quickstart/jetson_orin/convert_tensorrt.md
+        - platforms/quickstart/jetson_orin/validate.md
+        - platforms/quickstart/jetson_orin/deploy.md
       - Raspberry Pi Quick Start:
         - platforms/quickstart/raspberrypi/index.md
         - platforms/quickstart/raspberrypi/setup.md
-      # - platforms/quickstart.md
-      # - platforms/walkthrough.md
-      # - platforms/architecture.md
+        - platforms/quickstart/raspberrypi/copy_dataset.md
+        - platforms/quickstart/raspberrypi/train.md
+        - platforms/quickstart/raspberrypi/validate.md
+        - platforms/quickstart/raspberrypi/deploy.md
+      - platforms/quickstart.md
+      - platforms/walkthrough.md
     - Configuration:
       - platforms/configuration/index.md
       - platforms/configuration/mcap_recording.md

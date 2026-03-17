@@ -19,8 +19,3 @@ Inside the "Sample Projects", you will find a sample dataset called "Coffee Cup"
 {% include-markdown "discrete/datasets/copy_dataset.md" heading-offset=0 %}
 
 Once you have copied the dataset, you can move forward with exploring the dataset to look at the images and annotations of the dataset.
-
-<div style="max-width: fit-content; margin-left: auto; margin-right: auto;" markdown="1">
-[Create Project ← Back](create_project.md){ .md-button }
-[Next → Explore Dataset](explore_dataset.md){ .md-button .md-button--primary .align-right }
-</div>

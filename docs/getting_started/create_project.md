@@ -13,8 +13,3 @@ The next sections will invite you to follow along the *Tourist Workflow* -- the 
 5. deploying the model on the PC.
 
 This workflow requires only a PC.  There are other [workflows](workflows/index.md) that support different hardware requirements.  If you would like to bring in your own dataset with images captured from your phone, follow the [Web Workflow](workflows/web.md).
-
-<div style="max-width: fit-content; margin-left: auto; margin-right: auto;" markdown="1">
-[Login ← Back](login.md){ .md-button }
-[Next → Copy Dataset](copy_dataset.md){ .md-button .md-button--primary .align-right }
-</div>

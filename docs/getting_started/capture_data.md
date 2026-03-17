@@ -22,8 +22,3 @@ Once all the captured data has been uploaded to the dataset container, you will 
 </figure>
 
 Now that you have imported captured images or videos into EdgeFirst Studio and have split the captured data into training and validation partitions, you can now start annotating your data as shown in the next section below.
-
-<div style="max-width: fit-content; margin-left: auto; margin-right: auto;" markdown="1">
-[Create Project ← Back](create_project.md){ .md-button }
-[Next → Annotate Dataset](annotate_dataset.md){ .md-button .md-button--primary .align-right }
-</div>

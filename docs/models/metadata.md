@@ -320,7 +320,7 @@ For Ultralytics framework models, the following output types are used:
 | --------------------- | -------------------------------------------- | -------------------------------- |
 | `detection`         | Raw detection output (needs to be split)     | `[1, num_features, num_boxes]` |
 | `boxes`             | Split bounding boxes                         | `[1, 4, num_boxes]`            |
-| `scores`            | Split class scores                           | `[1, classes, num_boxes]`      |
+| `scores`            | Split class scores                           | `[1, num_classes, num_boxes]`  |
 | `classes`           | Class label indices (end-to-end split models) | `[1, num_boxes, 1]`           |
 | `mask_coefficients` | Split coefficients for instance segmentation | `[1, num_protos, num_boxes]`   |
 | `protos`            | Instance segmentation prototypes             | `[1, H, W, num_protos]` (NHWC) |
@@ -343,8 +343,8 @@ For ModelPack framework models the following output types are used:
 | ---------------- | ------------------------------------- | ----------------------------------------- |
 | `detection`    | Raw detection output (needs decoding) | `[1, H, W, num_anchors_x_features]` |
 | `boxes`        | Bounding boxes                        | `[1, num_boxes, 1, 4]`                  |
-| `scores`       | Class scores                          | `[1, num_boxes, classes]`               |
-| `segmentation` | Semantic segmentation output          | `[1, H, W, classes]`                    |
+| `scores`       | Class scores                          | `[1, num_boxes, num_classes]`           |
+| `segmentation` | Semantic segmentation output          | `[1, H, W, num_classes]`               |
 | `masks`        | Semantic segmentation masks           | `[1, H, W]`                             |
 
 ### Segmentation Types

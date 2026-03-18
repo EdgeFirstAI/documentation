@@ -1,10 +1,10 @@
-# WebUI with 4K
+# Web UI with 4K
 
 ## Overview
 
-The WebUI service has a smart video streaming solution that automatically detects and streams 4K video using a tiling approach, with automatic fallback to single H.264 stream when tiles are not available. The system is designed to provide optimal video quality based on your hardware capabilities and network conditions.
+The Web UI service has a smart video streaming solution that automatically detects and streams 4K video using a tiling approach, with automatic fallback to single H.264 stream when tiles are not available. The system is designed to provide optimal video quality based on your hardware capabilities and network conditions.
 
-Of specific note:  the following is a "behind the scenes" view of how the WebUI manages the 4K outputs from the camera service automatically.  There are no actions the user needs to take to configure the WebUI service to accept 4K video output from the camera service.
+Of specific note:  the following is a "behind the scenes" view of how the Web UI manages the 4K outputs from the camera service automatically.  There are no actions the user needs to take to configure the Web UI service to accept 4K video output from the camera service.
 
 ## 4K Tiling System
 

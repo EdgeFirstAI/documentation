@@ -79,7 +79,7 @@ Topics that have been stopped by a configuration change cannot be recorded into 
 
 ### Adding Topics Manually to the Recording Service
 
-Topics that are not included by the WebUI front-end to be recorded must be added manually at the platform command-line interface. You will need to [SSH into the platform](../../platforms/networking/ssh.md). Then, the topics will need to be added manually to the `TOPICS` line in the `/etc/default/recorder` configuration file. To edit this file, you need to run the `sudo vi /etc/default/recorder` command.
+Topics that are not included by the Web UI front-end to be recorded must be added manually at the platform command-line interface. You will need to [SSH into the platform](../../platforms/networking/ssh.md). Then, the topics will need to be added manually to the `TOPICS` line in the `/etc/default/recorder` configuration file. To edit this file, you need to run the `sudo vi /etc/default/recorder` command.
 
 !!! Tip
     If you are unfamiliar with `vi`, please read a [quick tutorial][vi].

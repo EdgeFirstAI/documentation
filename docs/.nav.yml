@@ -182,6 +182,7 @@ nav:
         - platforms/quickstart/maivin/train.md
         - platforms/quickstart/maivin/validate.md
         - platforms/quickstart/maivin/deploy.md
+        - platforms/quickstart/maivin/deploy_pretrained.md
       - Raivin Quick Start:
         - platforms/quickstart/raivin/index.md
         - platforms/quickstart/raivin/setup.md
@@ -190,6 +191,7 @@ nav:
         - platforms/quickstart/raivin/train.md
         - platforms/quickstart/raivin/validate.md
         - platforms/quickstart/raivin/deploy.md
+        - platforms/quickstart/raivin/deploy_pretrained.md
       - i.MX 8M Plus Quick Start:
         - platforms/quickstart/imx8mplus/index.md
         - platforms/quickstart/imx8mplus/setup.md
@@ -198,6 +200,7 @@ nav:
         - platforms/quickstart/imx8mplus/convert_kinara.md
         - platforms/quickstart/imx8mplus/validate.md
         - platforms/quickstart/imx8mplus/deploy.md
+        - platforms/quickstart/imx8mplus/deploy_pretrained.md
       - i.MX 95 Quick Start:
         - platforms/quickstart/imx95/index.md
         - platforms/quickstart/imx95/setup.md
@@ -207,6 +210,7 @@ nav:
         - platforms/quickstart/imx95/convert_kinara.md
         - platforms/quickstart/imx95/validate.md
         - platforms/quickstart/imx95/deploy.md
+        - platforms/quickstart/imx95/deploy_pretrained.md
       - NVIDIA Jetson Quick Start:
         - platforms/quickstart/jetson_orin/index.md
         - platforms/quickstart/jetson_orin/setup.md
@@ -215,6 +219,7 @@ nav:
         - platforms/quickstart/jetson_orin/convert_tensorrt.md
         - platforms/quickstart/jetson_orin/validate.md
         - platforms/quickstart/jetson_orin/deploy.md
+        - platforms/quickstart/jetson_orin/deploy_pretrained.md
       - Raspberry Pi Quick Start:
         - platforms/quickstart/raspberrypi/index.md
         - platforms/quickstart/raspberrypi/setup.md
@@ -222,8 +227,7 @@ nav:
         - platforms/quickstart/raspberrypi/train.md
         - platforms/quickstart/raspberrypi/validate.md
         - platforms/quickstart/raspberrypi/deploy.md
-      - platforms/quickstart.md
-      - platforms/walkthrough.md
+        - platforms/quickstart/raspberrypi/deploy_pretrained.md
     - Configuration:
       - platforms/configuration/index.md
       - platforms/configuration/mcap_recording.md

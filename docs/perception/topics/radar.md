@@ -29,7 +29,7 @@ The XYZ coordinate system follows the [standard ROS convention](https://www.ros.
 
 **Usage** | **Link**
 :------------------:|:------------------:
-WebUI | []()
+Web UI | []()
 Foxglove | []()
 SDK | [Radar Targets Example](../dev/examples/radar.md#radar-targets)
 
@@ -53,7 +53,7 @@ This topic is only published if the radarpub service is configured with the clus
 
 **Usage** | **Link**
 :------------------:|:------------------:
-WebUI | []()
+Web UI | []()
 Foxglove | []()
 SDK | [Radar Clusters Example](../dev/examples/radar.md#radar-clusters)
 
@@ -67,7 +67,7 @@ The `/radar/cube` topic publishes information about the received radar sensor da
 
 **Usage** | **Link**
 :------------------:|:------------------:
-WebUI | []()
+Web UI | []()
 Foxglove | [Viewing Radar Cube](../data_collection/foxglove.md#viewing-radarcube-messages)
 SDK | [Radar Cube Example](../dev/examples/radar.md#radar-cube)
 
@@ -77,6 +77,6 @@ The `/radar/info` topic publishes information about the current radar configurat
 
 **Usage** | **Link**
 :------------------:|:------------------:
-WebUI | []()
+Web UI | []()
 Foxglove | []()
 SDK | [Radar Info Example](../dev/examples/radar.md#radar-info)

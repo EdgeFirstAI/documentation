@@ -20,14 +20,14 @@ Use your browser to connect to the Web UI of the remote device, enter the follow
 !!! note
     Replace `<hostname>` with the hostname of your device.
 
-You will be greeted with the Maivin [Web UI Main Page](../../platforms/walkthrough.md) page.
+You will be greeted with the Maivin [Web UI Main Page](../../platforms/quickstart/maivin/webui.md) page.
 
 <figure markdown="span">
 ![Web UI Main Page](../../platforms/assets/setup/ui-maivinMain.png){ align=center }
 <figcaption>Web UI Main Page</figcaption>
 </figure>
 
-For more information, please see the [Web UI Walkthrough](../../platforms/walkthrough.md).
+For more information, please see the [Web UI Walkthrough](../../platforms/quickstart/maivin/webui.md).
 
 ## Update the Model Path
 

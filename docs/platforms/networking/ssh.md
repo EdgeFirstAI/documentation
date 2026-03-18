@@ -1,6 +1,10 @@
 # SSH
 
-This section describes how to SSH into a Raivin using the default "torizon" account, and some basic commands you can use to provide some basic information about your Raivin if you have found an issue.
+This section describes how to SSH into a Maivin using the default "torizon" account, and some basic commands you can use to provide some basic information about your Raivin if you have found an issue.
+
+!!! note "Maivin/Raivin Instructions"
+    These instructions applies for both Maivin and Raivin platforms.
+
 !!! warning
     The "torizon" account is effectively the root account of the Maivin device.  Using this account can cause irreparable harm to the software internals of the device.
 
@@ -11,7 +15,7 @@ You need an SSH client ([OpenSSH][openssh], [PuTTY][putty], etc.) to SSH into th
 
 ## The Initial SSH Session
 
-First, verify that your Maivin is turned on and connected to the network.  You can follow the [Quick Start instructions](../quickstart.md#on-boot-up) to get the hostname of the device, which for the examples in this section will be `verdin-imx8mp-06976895.local`.
+First, verify that your Maivin is turned on and connected to the network.  You can follow the [Setup instructions](../quickstart/maivin/setup.md#on-boot-up) to get the hostname of the device, which for the examples in this section will be `verdin-imx8mp-06976895.local`.
 
 !!! tip
     Windows does not need the `.local` hostname suffix.
@@ -158,15 +162,15 @@ An active Recorder Service will display the following status on the terminal.
              └─ 2607 /home/torizon/saksham/maivin-recorder
 ```
 
-#### WebUI
+#### Web UI
 
-Check the status of the WebUI
+Check the status of the Web UI
 
 ```shell
 systemctl status webui
 ```
 
-If the WebUI is inactive, the following status will be displayed on the terminal.
+If the Web UI is inactive, the following status will be displayed on the terminal.
 
 ```shell
 ○ webui.service - Maivin Web UI Server
@@ -174,13 +178,13 @@ If the WebUI is inactive, the following status will be displayed on the terminal
      Active: inactive (dead)
 ```
 
-To start the WebUI, run the following command.
+To start the Web UI, run the following command.
 
 ```shell
 sudo systemctl start webui
 ```
 
-An active WebUI service will display the following status on the terminal.
+An active Web UI service will display the following status on the terminal.
 
 ```shell
 ● webui.service - Maivin Web UI Server

@@ -35,5 +35,5 @@ sudo systemctl start model
 !!! note
     Remember to use **sudo** to start and stop model services
 
-Now the model is running, open the Raivin's WebUI, go to the [Segmentation Page](../../platforms/walkthrough.md#the-segmentation-page), and check the camera to see the model detection the object.  
+Now the model is running, open the Raivin's Web UI, go to the [Segmentation Page](../../platforms/quickstart/maivin/webui.md#the-segmentation-page), and check the camera to see the model detection the object.  
 ![Deployment Results](../../models/assets/deployment/deployment-results.png)

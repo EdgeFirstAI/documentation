@@ -51,7 +51,7 @@ MCAP File → H.264 Decode → Tile Stitching → 4K JPEG → ZIP Export
 
 ## Recording the 4K Topics
 
-The [Recording Service](../data_collection/recording.md), by default, [cannot be configured through the WebUI to capture the 4K video tiling topics](../../platforms/configuration/mcap_recording.md#caveats), but it can be [configured manually](../../platforms/configuration/mcap_recording.md#adding-topics-manually-to-the-recording-service). Please follow the instructions here to configure the recorder service before starting to record the 4K streams.
+The [Recording Service](../data_collection/recording.md), by default, [cannot be configured through the Web UI to capture the 4K video tiling topics](../../platforms/configuration/mcap_recording.md#caveats), but it can be [configured manually](../../platforms/configuration/mcap_recording.md#adding-topics-manually-to-the-recording-service). Please follow the instructions here to configure the recorder service before starting to record the 4K streams.
 
 ## Usage
 

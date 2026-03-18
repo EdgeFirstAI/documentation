@@ -1,10 +1,10 @@
-# WebUI Settings
+# Web UI Settings
 
-This page configures how information is displayed on the [Segmentation Page](../walkthrough.md#the-segmentation-page).
+This page configures how information is displayed on the [Segmentation Page](../quickstart/raivin/webui.md#the-segmentation-page).
 
 <figure markdown="span">
-![WebUI Settings page](../assets/configuration/configuration-webui.png){align=center}
-<figcaption>WebUI Settings page</figcaption>
+![Web UI Settings page](../assets/configuration/configuration-webui.png){align=center}
+<figcaption>Web UI Settings page</figcaption>
 </figure>
 
 !!! tip

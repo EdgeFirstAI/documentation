@@ -21,7 +21,7 @@ The XYZ coordinate system follows the [standard ROS convention](https://www.ros.
 
 **Usage** | **Link**
 :------------------:|:------------------:
-WebUI | []()
+Web UI | []()
 Foxglove | [PointCloud2 Example]()
 SDK | [Lidar Points Example](../dev/examples/lidar.md#lidar-points)
 
@@ -31,7 +31,7 @@ The `/lidar/reflect` topic publishes the reflectivity map using the [Image](../a
 
 **Usage** | **Link**
 :------------------:|:------------------:
-WebUI | []()
+Web UI | []()
 Foxglove | [Image Example]()
 SDK | [Lidar Reflect Example](../dev/examples/lidar.md#lidar-reflect)
 
@@ -41,7 +41,7 @@ The `/lidar/depth` topic publishes the depth map using the [Image](../api/sensor
 
 **Usage** | **Link**
 :------------------:|:------------------:
-WebUI | []()
+Web UI | []()
 Foxglove | [Image Example]()
 SDK | [Lidar Depth Example](../dev/examples/lidar.md#lidar-depth)
 
@@ -63,6 +63,6 @@ This topic is only published if the lidarpub service is configured with the clus
 
 **Usage** | **Link**
 :------------------:|:------------------:
-WebUI | []()
+Web UI | []()
 Foxglove | [PointCloud2 Example]()
 SDK | [Lidar Clusters Example](../dev/examples/lidar.md#lidar-clusters)

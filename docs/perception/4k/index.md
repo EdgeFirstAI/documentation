@@ -7,7 +7,7 @@ The EdgeFirst Perception Middleware ecosystem provides advanced 4K video process
 This system impacts two specific services:  
 
 1. [The Camera Service](camera_4k.md)  
-2. [The WebUI Service](webui_4k.md)  
+2. [The Web UI Service](webui_4k.md)  
 
 There are also two add-ons to this system:  
 

@@ -20,14 +20,14 @@ Use your browser to connect to the Web UI of the remote device, enter the follow
 !!! note
     Replace `<hostname>` with the hostname of your device.
 
-You will be greeted with the Raivin [WebUI Main Page](../../platforms/walkthrough.md) page.
+You will be greeted with the Raivin [Web UI Main Page](../../platforms/quickstart/raivin/webui.md) page.
 
 <figure markdown="span">
-![WebUI Main Page](../../platforms/assets/ui-raivinMain.png){ align=center }
-<figcaption>WebUI Main Page</figcaption>
+![Web UI Main Page](../../platforms/assets/ui-raivinMain.png){ align=center }
+<figcaption>Web UI Main Page</figcaption>
 </figure>
 
-For more information, please see the [Web UI Walkthrough](../../platforms/walkthrough.md).
+For more information, please see the [Web UI Walkthrough](../../platforms/quickstart/raivin/webui.md).
 
 ## Update the Model Path
 

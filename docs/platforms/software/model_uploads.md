@@ -1,6 +1,9 @@
 # Uploading Models
 
-This walkthrough describes how to upload new ModelPack 2D vision models and radar-vision fusion models to the Raivin.
+This walkthrough describes how to upload new ModelPack 2D vision models and radar-vision fusion models to the Raivin.  
+
+!!! note "Maivin Instructions"
+    The examples below are based on a Raivin platform, however, the same instructions can be applied to a Maivin platform for uploading 2D vision models only.
 
 ## Getting New Models
 
@@ -12,4 +15,4 @@ You can [train models using EdgeFirst Studio](../../models/index.md), both [Visi
 
 ## Summary
 
-At this point, the new models should be uploaded to the Raivin and you should be able to the outputs on the [Segmentation View page](../walkthrough.md#the-segmentation-page).
+At this point, the new models should be uploaded to the Raivin and you should be able to the outputs on the [Segmentation View page](../quickstart/raivin/webui.md#the-segmentation-page).

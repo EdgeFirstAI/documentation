@@ -13,7 +13,7 @@ The Measurement Tape tutorial demonstrates how to collect data using a phone and
 
 ## [Tutorial 2: Musicbox Detector](musicbox.md)
 
-The MusicBox tutorial demonstrates the complete workflow using [Maivin](../../../platforms/quickstart.md) platform.  Users will learn how to collect data, import data into EdgeFirst Studio, annotate data, train a model, and deploy the model back to the device.  By the end of this tutorial, users will have the knowledge and tools to collect their own data and experiment with ModelPack at any scale.
+The MusicBox tutorial demonstrates the complete workflow using [Maivin](../../../platforms/index.md) platform.  Users will learn how to collect data, import data into EdgeFirst Studio, annotate data, train a model, and deploy the model back to the device.  By the end of this tutorial, users will have the knowledge and tools to collect their own data and experiment with ModelPack at any scale.
 
 <figure markdown="span">
 ![MusicBox Inference](../../assets/tutorials/musicbox/musicbox-tutorial-header.png){ align=center }

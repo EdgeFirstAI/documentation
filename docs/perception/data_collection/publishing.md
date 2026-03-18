@@ -23,7 +23,7 @@ Most of the workflows below require working knowledge with [SSH and command-line
 
 The first method is to download the MCAP from the Raivin.  This can be accomplished in [two ways](recording.md#download-mcap) :  
 
-- use the download button for the MCAP on the [MCAP Details Modal](recording.md#the-mcap-modal) to download the MCAP to your PC via the Raivin's WebUI.  
+- use the download button for the MCAP on the [MCAP Details Modal](recording.md#the-mcap-modal) to download the MCAP to your PC via the Raivin's Web UI.  
 - use [SCP](../../platforms/networking/ssh.md#secure-copy) to download the file to your PC via the command-line interface.
 
 For our example above, you would click the second green "download" button from the top or run the following command on your PC:

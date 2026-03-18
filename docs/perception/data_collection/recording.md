@@ -4,6 +4,9 @@
 
 The Recorder Service enables you to capture and store [ROS2][ros2] topic data in [MCAP][mcap] format, providing a comprehensive recording solution for your Raivin system. This service acts as a data historian, collecting published topics from various services for later analysis and playback.
 
+!!! note "Maivin Instructions"
+     The instructions below are based on a Raivin platform, however, the same instructions can be applied to a Maivin platform.
+
 ### How It Works
 
 When active, the Recorder Service:

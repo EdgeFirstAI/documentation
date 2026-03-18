@@ -124,14 +124,14 @@ nav:
     - models/cameraadaptor.md
   - Perception:
     - perception/index.md
+    - perception/studio.md
+    - perception/launcher.md
     - Dataset Collection Middleware:
       - perception/data_collection/recording.md
       - perception/data_collection/replay.md
       - perception/data_collection/publishing.md
       - perception/data_collection/foxglove.md
       - perception/data_collection/advanced_foxglove.md
-    - perception/studio.md
-    - perception/launcher.md
     - Topics:
       - perception/topics/index.md
       - perception/topics/camera.md

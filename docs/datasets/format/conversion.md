@@ -17,11 +17,23 @@ import polars as pl
 
 df = pl.read_ipc("dataset.arrow")   # or pl.read_parquet("dataset.parquet")
 
-# Method 1: Check for polygon column (most reliable)
-if "polygon" in df.columns:
+# Method 1 (preferred): Check schema_version metadata
+# Note: Polars metadata API varies by version; use pyarrow for reliable access
+import pyarrow.ipc as ipc
+
+with open("dataset.arrow", "rb") as f:
+    reader = ipc.open_file(f)
+    metadata = reader.schema.metadata or {}
+    schema_version = metadata.get(b"schema_version", b"").decode()
+
+if schema_version:
+    version = schema_version  # e.g. "2026.04"
+
+# Method 2 (fallback): Check for polygon column
+elif "polygon" in df.columns:
     version = "2026.04"
 
-# Method 2: Check mask column type
+# Method 3 (fallback): Check mask column type
 elif "mask" in df.columns:
     mask_dtype = str(df["mask"].dtype)
     if mask_dtype.startswith("List(Float32"):

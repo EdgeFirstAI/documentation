@@ -117,7 +117,7 @@ dataset_name/
 ZIP64 provides:
 
 - Random access via file index
-- Optional per-file compression
+- Uncompressed storage (sensor files are already compressed — JPEG, PCD, etc.)
 - Cross-platform support
 
 ## Sensor File Extensions

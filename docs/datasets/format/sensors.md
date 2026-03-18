@@ -13,10 +13,11 @@ uncompressed ZIP files.
 | Radar PCD | `.radar.pcd` | Point cloud data |
 | LiDAR PCD | `.lidar.pcd` | Point cloud data |
 
-!!! warning "Deprecated in 2026.04"
+!!! warning "Removed in 2026.04"
     The `.lidar.png` (depth map) and `.lidar.jpeg` (reflectivity) projected
-    visualization formats have been **removed** in 2026.04. Consumers that need depth
-    or reflectivity images should project LiDAR PCD data directly.
+    visualization formats have been **removed** from the format specification in 2026.04.
+    The SDK retains read support for backward compatibility but will not write these types.
+    Consumers that need depth or reflectivity images should project LiDAR PCD data directly.
 
 ## Camera
 

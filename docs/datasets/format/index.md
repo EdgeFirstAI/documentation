@@ -53,6 +53,7 @@ df = pl.read_ipc("dataset.arrow")
 df = pl.read_parquet("dataset.parquet")
 
 # Check schema version
+# Robust detection: check schema_version metadata first (see Conversion Guidelines)
 if "polygon" in df.columns:
     print("2026.04 format detected")
     polygons = df["polygon"]       # List<List<f32>> — interleaved xy per ring

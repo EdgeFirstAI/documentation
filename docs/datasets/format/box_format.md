@@ -25,6 +25,10 @@ The `box2d_normalized` metadata key indicates whether coordinates are normalized
 | `"true"` (default) | Coordinates in 0..1 range, resolution-independent |
 | `"false"` | Pixel coordinates |
 
+!!! note "Value representation differs by format"
+    In Arrow/Parquet file metadata, all values are strings (`"true"`, `"false"`).
+    In JSON files, use native boolean values (`true`, `false`).
+
 ### Default Behavior (Metadata Absent)
 
 When `box2d_format` metadata is **absent**, the default depends on the storage format.

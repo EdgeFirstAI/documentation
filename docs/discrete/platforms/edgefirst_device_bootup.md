@@ -1,6 +1,6 @@
 # On Boot Up
 
-On the back of the device, you will find an eight-digit number.  This is the ID number.  The hostname of the device will be "verdin-imx8mp-**ID**.local", which is advertised over Multicast Domain Name System (mDMS).  For the steps below, the eight-digit number is "15141029".  The device will have a hostname of `verdin-imx8mp-15141029.local`.  This hostname can be used to connect to the device over [SSH](../../platforms/networking/ssh.md) and HTTP.
+On the back of the device, you will find an eight-digit number.  This is the ID number.  The hostname of the device will be "verdin-imx8mp-**ID**.local", which is advertised over Multicast Domain Name System (mDNS).  For the steps below, the eight-digit number is "15141029".  The device will have a hostname of `verdin-imx8mp-15141029.local`.  This hostname can be used to connect to the device over [SSH](../../platforms/networking/ssh.md) and HTTP.
 
 !!! Tip
     On Windows machines, you will not need to add the '.local' suffix.

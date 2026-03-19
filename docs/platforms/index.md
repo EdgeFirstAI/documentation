@@ -36,7 +36,7 @@ flowchart LR
     classDef orange fill:#ffd699,font-weight:bold; 
     classDef green fill:#a9e5bb,font-weight:bold; 
     classDef purple fill:#d6c1f5,font-weight:bold; 
-    classDef coral fill:#ffc2b,font-weight:bold; 
+    classDef coral fill:#ffc2bb,font-weight:bold; 
     classDef all fill:#f0e6f5,font-weight:bold;
     classDef invisible fill:transparent,stroke:transparent;
 

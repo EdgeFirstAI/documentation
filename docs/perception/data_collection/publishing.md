@@ -32,7 +32,7 @@ For our example above, you would click the second green "download" button from t
 scp torizon@verdin-imx8mp-07130049:/media/DATA/verdin-imx8mp-07130049_2025_04_09_12_44_12.mcap .
 ```
 
-Once the MCAP file is downloaded to your PC, you can login to EdgeFirst Studio and use the [EdgeFist Studio Snapshot page](../../studio/snapshots.md) to upload the MCAP file to Studio.
+Once the MCAP file is downloaded to your PC, you can login to EdgeFirst Studio and use the [EdgeFirst Studio Snapshot page](../../studio/snapshots.md) to upload the MCAP file to Studio.
 
 ## Method 2: Publish the MCAP directly using the EdgeFirst Client
 

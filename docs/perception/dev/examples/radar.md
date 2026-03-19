@@ -590,7 +590,7 @@ The Boxes2D callback will wait for a Detect message from the MessageDrain and wi
 
 #### Radar Handler
 
-The Lidar callback will receive the pointcloud message, perform post-processing on the resultant data and then be sent to Rerun.
+The radar callback will receive the pointcloud message, perform post-processing on the resultant data and then be sent to Rerun.
 
 === "Python"
 

@@ -10,7 +10,7 @@ ModelPack is optimized for real-time vision applications such as industrial auto
 
 ## Getting Started
 
-ModelPack can be trained now in Edgefirst Studio using a Graphical User Interface by following four simple steps:
+ModelPack can be trained now in EdgeFirst Studio using a Graphical User Interface by following four simple steps:
 
 === "Select Framework"
 

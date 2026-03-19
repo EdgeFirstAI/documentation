@@ -28,8 +28,7 @@ This section covers Quick Start guides for deploying the EdgeFirst workflow in y
 The following diagram describes the workflow you will follow depending on the hardware available.
 
 ```mermaid
-%%{init: {"flowchart": {"defaultRenderer": "elk", "nodeSpacing": 60, "rankSpacing": 80}} }%%
-%%{init: {"themeVariables": { "fontSize": "40px" }}}%%
+%%{init: {"flowchart": {"defaultRenderer": "elk", "nodeSpacing": 60, "rankSpacing": 80}, "themeVariables": { "fontSize": "40px" }} }%%
 
 flowchart LR
     classDef blue fill:#d0ecff,font-weight:bold; 
@@ -37,7 +36,7 @@ flowchart LR
     classDef orange fill:#ffd699,font-weight:bold; 
     classDef green fill:#a9e5bb,font-weight:bold; 
     classDef purple fill:#d6c1f5,font-weight:bold; 
-    classDef coral fill:#ffc2b,font-weight:bold; 
+    classDef coral fill:#ffc2bb,font-weight:bold; 
     classDef all fill:#f0e6f5,font-weight:bold;
     classDef invisible fill:transparent,stroke:transparent;
 

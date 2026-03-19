@@ -7,9 +7,9 @@ The ribbon at the top of the web interface is available on every page of the web
 1. On the left, the "Home" button with the Au-Zone icon, which will return the user to the Main Page
 2. In the middle, the title of the current page
 3. On the right side, we first have the Recording Indicator, shown as a gray oval with "REC" when not recording from the sensors and a red oval when recording
-5. The MCAP Details Modal button, which opens the MCAP Modal
-6. The System Status Indicator and Dropdown button
-3. The farthest rightmost button, with the gear icon, is the Settings Button which will take you to the [Settings Page](../../platforms/configuration/index.md)
+4. The MCAP Details Modal button, which opens the MCAP Modal
+5. The System Status Indicator and Dropdown button
+6. The farthest rightmost button, with the gear icon, is the Settings Button which will take you to the [Settings Page](../../platforms/configuration/index.md)
 
 # The MCAP Modal
 

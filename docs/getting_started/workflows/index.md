@@ -43,7 +43,7 @@ flowchart LR
     classDef darker_orange fill:#ffbb66,font-weight:bold;
     classDef green fill:#a9e5bb,font-weight:bold;
     classDef purple fill:#d6c1f5,font-weight:bold;
-    classDef coral fill:#ffc2b,font-weight:bold;
+    classDef coral fill:#ffc2bb,font-weight:bold;
     classDef all fill:#f0e6f5,font-weight:bold;
 
     %% Flowchart
@@ -89,8 +89,7 @@ We've identified six workflows: Tourist, Tourist+, Web, Maivin, Raivin, LiDAR.  
 The following diagram describes the workflows for each user persona identified above.
 
 ```mermaid
-%%{init: {"flowchart": {"defaultRenderer": "elk", "nodeSpacing": 60, "rankSpacing": 80}} }%%
-%%{init: {"themeVariables": { "fontSize": "60px" }}}%%
+%%{init: {"flowchart": {"defaultRenderer": "elk", "nodeSpacing": 60}, "themeVariables": { "fontSize": "60px" }} }%%
 flowchart LR
     %% ---------------- USERS ----------------
     subgraph Users
@@ -277,7 +276,7 @@ flowchart LR
     classDef darker_orange fill:#ffbb66,font-weight:bold;
     classDef green fill:#a9e5bb,font-weight:bold;
     classDef purple fill:#d6c1f5,font-weight:bold;
-    classDef coral fill:#ffc2b,font-weight:bold;
+    classDef coral fill:#ffc2bb,font-weight:bold;
     classDef invisible fill:transparent,stroke:transparent;
 ```
 

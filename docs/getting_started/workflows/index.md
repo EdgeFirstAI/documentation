@@ -89,8 +89,7 @@ We've identified six workflows: Tourist, Tourist+, Web, Maivin, Raivin, LiDAR.  
 The following diagram describes the workflows for each user persona identified above.
 
 ```mermaid
-%%{init: {"flowchart": {"defaultRenderer": "elk", "nodeSpacing": 60, "rankSpacing": 80}} }%%
-%%{init: {"themeVariables": { "fontSize": "60px" }}}%%
+%%{init: {"flowchart": {"defaultRenderer": "elk", "nodeSpacing": 60}, "themeVariables": { "fontSize": "60px" }} }%%
 flowchart LR
     %% ---------------- USERS ----------------
     subgraph Users

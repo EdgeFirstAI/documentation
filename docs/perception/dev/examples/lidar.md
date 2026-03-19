@@ -1,8 +1,8 @@
-# LIDAR Schema Example
+# LiDAR Schema Example
 
 This example will go through how to connect to the lidar topic published on your EdgeFirst Platform and how to display the information on the command line as well as through the Rerun visualizer.
 
-## Lidar Points
+## LiDAR Points
 
 Topic: [/lidar/points](../../topics/lidar.md#lidarpoints)  
 Message: [Image](../../api/sensor_msgs.md#pointcloud2)
@@ -116,7 +116,7 @@ Recieved 24448 lidar points.
 When displaying the results through Rerun you will see the pointcloud data gathered by the lidar.
 ![alt text](assets/lidar_points.png)
 
-## Lidar Clusters
+## LiDAR Clusters
 
 Topic: [/lidar/clusters](../../topics/lidar.md#lidarclusters)  
 Message: [PointCloud2](../../api/sensor_msgs.md#pointcloud2)
@@ -230,7 +230,7 @@ Recieved 24448 lidar points. 12237 are clustered
 When displaying the results through Rerun you will see the pointcloud cluster data provided by the LiDAR.
 ![alt text](assets/lidar_clusters.png)
 
-## Lidar Depth
+## LiDAR Depth
 
 Topic: [/lidar/depth](../../topics/lidar.md#lidardepth)  
 Message: [Image](../../api/sensor_msgs.md#image)
@@ -359,7 +359,7 @@ Recieved 382x64 depth image.
 When displaying the results through Rerun you will see a depth map of what the lidar can see.
 ![alt text](assets/lidar_depth.png)
 
-## Lidar Reflect
+## LiDAR Reflect
 
 Topic: [/lidar/reflect](../../topics/lidar.md#lidarreflect)  
 Message: [Image](../../api/sensor_msgs.md#image)
@@ -586,9 +586,9 @@ The Boxes2D callback will wait for a Detect message from the MessageDrain and wi
         rr.log("/camera/boxes", rr.Boxes2D(centers=centers, sizes=sizes, labels=labels, colors=colors))
     ```
 
-#### Lidar Handler
+#### LiDAR Handler
 
-The Lidar callback will receive the pointcloud message, perform post-processing on the resultant data and then be sent to Rerun.
+The LiDAR callback will receive the pointcloud message, perform post-processing on the resultant data and then be sent to Rerun.
 
 === "Python"
 

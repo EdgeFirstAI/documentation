@@ -445,7 +445,7 @@ Recieved 10 radar points with non-background vision_class. Values: x: [1.15, 1.4
 When displaying the results through Rerun you will see the point cloud radar data.
 ![alt text](assets/fusion_radar.png)
 
-## Fusion Lidar
+## Fusion LiDAR
 
 Topic: [/fusion/lidar](../../topics/fusion.md#fusionlidar)  
 Message: [PointCloud2](../../api/sensor_msgs.md#pointcloud2)  

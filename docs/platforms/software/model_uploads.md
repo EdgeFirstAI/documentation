@@ -15,4 +15,4 @@ You can [train models using EdgeFirst Studio](../../models/index.md), both [Visi
 
 ## Summary
 
-At this point, the new models should be uploaded to the Raivin and you should be able to the outputs on the [Segmentation View page](../quickstart/raivin/webui.md#the-segmentation-page).
+At this point, the new models should be uploaded to the Raivin and you should be able to see the outputs on the [Segmentation View page](../quickstart/raivin/webui.md#the-segmentation-page).

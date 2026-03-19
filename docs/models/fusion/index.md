@@ -8,7 +8,7 @@ The EdgeFirst Fusion model performs early fusion using the low-level raw radar r
 
 ## Getting Started
 
-Fusion models can be trained now in [Edgefirst Studio](https://edgefirst.studio/) using a Graphical User Interface by following four simple steps:
+Fusion models can be trained now in [EdgeFirst Studio](https://edgefirst.studio/) using a Graphical User Interface by following four simple steps:
 
 === "Select Framework"
 

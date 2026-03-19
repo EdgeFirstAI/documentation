@@ -16,7 +16,7 @@ Central to the EdgeFirst Platforms is the EdgeFirst Perception Middleware, what 
 In this Quick Start, you will find instructions for:
 
 1. [Setting up your Raivin](setup.md)
-2. [Visting the Raivin's Web UI](webui.md)
+2. [Visiting the Raivin's Web UI](webui.md)
 3. [Copying a Sample Dataset in EdgeFirst Studio for Training](copy_dataset.md)
 4. [Training a Fusion Model](train.md)
 5. [Validating the Fusion Model](validate.md)

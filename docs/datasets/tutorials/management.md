@@ -98,6 +98,10 @@ For cases where the annotations need corrections, please see [Manual 2D Annotati
 
 {% include-markdown "discrete/datasets/copy_dataset.md" %}
 
+## Tag Dataset
+
+{% include-markdown "discrete/datasets/tag_dataset.md" %}
+
 ## Combine Datasets
 
 The process of combining datasets consists of multiple copy processes on a given dataset container.  To combine datasets, first [create a dataset](#create-dataset) container.  Follow the process for [copying a dataset](#copy-dataset) onto the destination dataset container that was created.  The copy process will copy the selected dataset onto the same dataset container and thus combining multiple datasets.

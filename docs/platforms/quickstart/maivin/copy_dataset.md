@@ -23,4 +23,6 @@ Inside the "Sample Projects", you will find a sample dataset called "Coffee Cup"
 
 {% include-markdown "discrete/datasets/copy_dataset.md" heading-offset=0 %}
 
-Once you have copied the dataset, you can now begin training your model.
+{% include-markdown "discrete/datasets/tag_dataset.md" heading-offset=0 %}
+
+Once you have copied and tagged the dataset, you can now begin training your model.

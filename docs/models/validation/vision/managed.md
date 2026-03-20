@@ -6,7 +6,7 @@ Another type of validation is the [On Target Validation](user_managed.md) which 
 
 {% include-markdown "discrete/studio/create_mpk_validation_session.md" %}
 
-You will be greeted with a validation session dialog.  In this dialog, specify the name of the validation session, the model to validate, and the dataset to deploy.  In this example, the TFLite model will be validated and the "Coffee Cup" dataset with the validation partition will be used.  Next specify, the validation parameters on the right.  Additional information on these parameters are provided by hovering over the info button ![Info Button](../../../assets/buttons/studio-info-button.jpg).
+You will be greeted with a validation session dialog.  In this dialog, specify the name of the validation session, the model to validate, and the dataset to deploy.  In this example, the TFLite model will be validated and the "Coffee Cup" dataset with the validation partition will be used.  Additional parameters are available on the right for user override. Otherwise the same parameters set in the training session will be used. For more information on these parameters hover over the info button ![Info Button](../../../assets/buttons/studio-info-button.jpg).
 
 <figure markdown="span">
 ![Validation Session Fields](../../assets/validation/vision-validate-settings.jpg){ align=center }

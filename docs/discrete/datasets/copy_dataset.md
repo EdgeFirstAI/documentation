@@ -19,7 +19,7 @@ Once the options are specified, go ahead and click "Apply" at the bottom right t
 <figcaption>Copy Dataset Progress</figcaption>
 </figure>
 
-Once the copying process completes, the frames and the annotations have been copied.
+Once the copying process completes, the frames and the annotations would have been copied.
 
 **Original Dataset** | **Copied Dataset**
 :------------------:|:------------------:

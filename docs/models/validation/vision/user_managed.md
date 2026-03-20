@@ -47,7 +47,7 @@ pip install edgefirst-validator
 
 Next login to your account in EdgeFirst Studio by using the [EdgeFirst Client](../../../perception/studio.md) which comes installed with the validator package. The command below will prompt you to enter your EdgeFirst Studio credentials.
 
-```
+```shell
 edgefirst-client login
 ```
 

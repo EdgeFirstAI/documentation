@@ -1621,7 +1621,7 @@ Each converter section is a free-form object, but should include at minimum:
 |-------|------|-------------|
 | `version` | string | Converter app version |
 | `timestamp` | string | ISO 8601 conversion timestamp |
-| `session` | string | Studio task/session ID for this conversion step |
+| `task` | string | Studio batch task ID for this conversion step (e.g., `bt-3a1f`) |
 
 Additional fields are converter-specific and documented by each converter app.
 
@@ -1639,7 +1639,7 @@ After TFLite quantization of an Ultralytics detection model:
   "tflite_quantizer": {
     "version": "1.0.0",
     "timestamp": "2026-03-20T15:30:00Z",
-    "session": "t-3a1f",
+    "task": "bt-3a1f",
     "input_dtype": "uint8",
     "output_dtype": "int8",
     "calibration": "calibration-ds-2bcc-a1b2c3d4.safetensors",
@@ -1663,7 +1663,7 @@ After TFLite quantization followed by Neutron conversion for i.MX95 deployment:
   "tflite_quantizer": {
     "version": "1.0.0",
     "timestamp": "2026-03-20T15:30:00Z",
-    "session": "t-3a1f",
+    "task": "bt-3a1f",
     "input_dtype": "uint8",
     "output_dtype": "int8",
     "calibration": "calibration-ds-2bcc-a1b2c3d4.safetensors",
@@ -1675,7 +1675,7 @@ After TFLite quantization followed by Neutron conversion for i.MX95 deployment:
   "neutron": {
     "version": "2.1.0",
     "timestamp": "2026-03-20T15:45:00Z",
-    "session": "t-3a20",
+    "task": "bt-3a20",
     "target": "imx95",
     "neutron_version": "1.2.0",
     "delegate": "neutron"
@@ -1685,7 +1685,7 @@ After TFLite quantization followed by Neutron conversion for i.MX95 deployment:
 
 ### Ordering
 
-When a model passes through multiple converters, the chronological order is determined by the `timestamp` field in each converter section. The `session` field links each conversion step back to its Studio task for full audit trail.
+When a model passes through multiple converters, the chronological order is determined by the `timestamp` field in each converter section. The `task` field links each conversion step back to its Studio batch task (e.g., `bt-3a1f`) for full audit trail.
 
 ---
 

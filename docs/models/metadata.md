@@ -274,6 +274,9 @@ export:  # See Quantization documentation for ModelPack and Ultralytics
 decoder_version: string    # YOLO architecture version: yolov5, yolov8, yolo11, yolo26
 nms: string                # NMS mode for HAL decoder: class_agnostic, class_aware
 
+# Calibration Artifact (see Calibration Artifact section)
+calibration: string          # Snapshot filename: calibration-{dataset_id}-{param_hash}.safetensors
+
 # Split Hints (see Split Hints section)
 split_hints:
   - type: string             # Hint type (e.g., "quantization_split")
@@ -1498,9 +1501,51 @@ The training stage always generates calibration data because:
 
 Calibration data is stored in [safetensors](https://huggingface.co/docs/safetensors/) format with named tensors corresponding to model input names.
 
-**Naming convention:** `calibration.safetensors`
+### Naming Convention
 
-**Publishing:** Published as a **hidden artifact** in the training session — accessible via Studio API but not shown in the artifact browser UI.
+Calibration filenames encode the dataset and generation parameters for deterministic caching:
+
+```
+calibration-{dataset_id}-{param_hash}.safetensors
+```
+
+**Example:** `calibration-ds-2bcc-a1b2c3d4.safetensors`
+
+- `{dataset_id}` — Studio dataset label (e.g., `ds-2bcc`)
+- `{param_hash}` — Deterministic hash of the calibration generation parameters
+
+### Parameter Hash
+
+The parameter hash is computed from the inputs that determine calibration content. The hash is over the **parameters**, not the **content** — two trainers using the same parameters will produce the same hash even if they select different samples.
+
+Parameters included in the hash:
+
+| Parameter | Example | Why |
+|-----------|---------|-----|
+| Dataset ID | `ds-2bcc` | Which dataset |
+| Annotation set ID | `as-1a3f` | Which annotation version |
+| Validation group | `val` | Which split |
+| Image size | `640x640` | Resize target |
+| Preprocessing | `normalize_uint8`, `letterbox` | How pixels are transformed |
+| CameraAdaptor | `rgb`, `yuyv`, `grey` | Color space / channel config |
+| Calibration coverage | `10` | Percentage of validation set |
+| Selection algorithm | `greedy_coverage_v1` | Algorithm version (invalidates cache on algorithm changes) |
+
+The hash function and parameter serialization order are defined by each training framework but must be deterministic and consistent across runs.
+
+### Storage: Studio Snapshots
+
+Calibration artifacts are stored as **Studio snapshots**, not session artifacts. The filename is the cache key.
+
+**Trainer workflow:**
+
+1. Compute the parameter hash from calibration generation parameters
+2. Build the filename: `calibration-{dataset_id}-{param_hash}.safetensors`
+3. Look up the snapshot by filename via Studio API
+4. If the snapshot exists → download and use it (skip generation)
+5. If not → generate the calibration set, publish it as a snapshot with this filename
+
+This means a calibration set is generated **once** for a given set of parameters. Subsequent training runs with the same dataset, preprocessing, and coverage reuse the cached snapshot automatically.
 
 ### Tensor Naming
 
@@ -1511,7 +1556,7 @@ Tensor names in the safetensors file **must match the model's input tensor names
 For models with a single image input (e.g., Ultralytics detection or segmentation):
 
 ```
-calibration.safetensors:
+calibration-ds-2bcc-a1b2c3d4.safetensors:
   images: float32 [500, 3, 640, 640]    # [num_samples, channels, height, width]
 ```
 
@@ -1524,7 +1569,7 @@ calibration.safetensors:
 For models with multiple inputs (e.g., camera + radar fusion):
 
 ```
-calibration.safetensors:
+calibration-ds-2bcc-a1b2c3d4.safetensors:
   camera: float32 [500, 3, 360, 640]    # [num_samples, channels, height, width]
   radar:  float32 [500, 200, 128, 8]    # [num_samples, range_bins, doppler_bins, features]
 ```
@@ -1537,15 +1582,16 @@ calibration.safetensors:
 
 Converters consume the calibration artifact as follows:
 
-1. Download `calibration.safetensors` from the training session via Studio API
-2. Load all tensors using any safetensors-compatible library
-3. Match tensor names to model input names
-4. Iterate over samples (first dimension) to feed the calibration generator
+1. Read `edgefirst.json` from the training session to get the calibration filename
+2. Download the calibration snapshot by filename via Studio API
+3. Load all tensors using any safetensors-compatible library
+4. Match tensor names to model input names
+5. Iterate over samples (first dimension) to feed the calibration generator
 
 ```python
 from safetensors import safe_open
 
-with safe_open("calibration.safetensors", framework="numpy") as f:
+with safe_open(calibration_path, framework="numpy") as f:
     tensor_names = f.keys()
     num_samples = f.get_tensor(next(iter(tensor_names))).shape[0]
 
@@ -1596,6 +1642,7 @@ After TFLite quantization of an Ultralytics detection model:
     "session": "t-3a1f",
     "input_dtype": "uint8",
     "output_dtype": "int8",
+    "calibration": "calibration-ds-2bcc-a1b2c3d4.safetensors",
     "calibration_samples": 500,
     "splits_applied": ["quantization_split"],
     "quantizer": "mlir"
@@ -1619,6 +1666,7 @@ After TFLite quantization followed by Neutron conversion for i.MX95 deployment:
     "session": "t-3a1f",
     "input_dtype": "uint8",
     "output_dtype": "int8",
+    "calibration": "calibration-ds-2bcc-a1b2c3d4.safetensors",
     "calibration_samples": 500,
     "splits_applied": [],
     "quantizer": "mlir"

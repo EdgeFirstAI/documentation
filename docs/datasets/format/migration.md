@@ -9,8 +9,9 @@ to migrate existing datasets and code.
 |------|---------|---------|--------|
 | Polygon storage | `mask: List<Float32>` with NaN separators | `polygon: List<List<Float32>>` nested lists | Column name and type changed |
 | Mask type | `List<Float32>` (polygon data) | `List<UInt8>` (raster pixel data) | Column type changed; semantics changed |
-| New columns | N/A | `polygon_score`, `mask_score`, `box2d_score`, `box3d_score`, `timing` | Additive (non-breaking for readers that ignore unknown columns) |
-| File metadata | None | `schema_version`, `box2d_format`, `box2d_normalized`, etc. | Additive |
+| `label_index` semantics | Alphabetically re-indexed (0-based, contiguous) | Source-faithful `category_id` (non-contiguous, preserves gaps) | Existing files remain valid; new exports may differ |
+| New columns | N/A | `polygon_score`, `mask_score`, `box2d_score`, `box3d_score`, `timing`, `iscrowd`, `category_frequency`, `neg_label_indices`, `not_exhaustive_label_indices` | Additive (non-breaking for readers that ignore unknown columns) |
+| File metadata | None | `schema_version`, `box2d_format`, `box2d_normalized`, `category_metadata`, etc. | Additive |
 | JSON structure | Bare array `[...]` | Object wrapper `{"schema_version": ..., "samples": [...]}` | Readers must detect top-level type |
 | LiDAR sensors | `.lidar.png`, `.lidar.jpeg` | **Removed** | Breaking for pipelines that depend on projected LiDAR images |
 | Parquet support | N/A | `.parquet` files supported | New capability |
@@ -185,3 +186,26 @@ polygons and semantic raster masks are both needed.
 
 Check the top-level structure. 2025.10 JSON files are a bare array `[...]`. 2026.04
 files are an object `{"schema_version": "2026.04", "samples": [...]}`.
+
+**Q: My `label_index` values changed after re-importing a dataset. Is that expected?**
+
+Yes, if you are importing a file that was created with the 2025.10 SDK. The 2025.10 SDK
+assigned `label_index` values using alphabetical ordering of category names (0-based,
+contiguous). The 2026.04 SDK preserves the original source `category_id` as `label_index`
+(non-contiguous, may not start at 0). Both are valid; the 2026.04 behavior is correct for
+round-trip fidelity with COCO and LVIS datasets.
+
+**Q: Does the COCO importer support LVIS annotations?**
+
+Yes. The COCO format importer (`--format coco`) handles LVIS extensions automatically.
+LVIS-specific fields (`neg_category_ids`, `not_exhaustive_category_ids`, category
+`frequency`/`synset`/`synonyms`/`def`) are parsed when present and mapped to the
+corresponding EdgeFirst columns and file-level metadata. No separate LVIS mode is needed.
+
+**Q: What are `neg_label_indices` and `not_exhaustive_label_indices`?**
+
+These are LVIS-specific sample-level columns that support the LVIS federated annotation
+evaluation protocol. `neg_label_indices` lists categories confirmed absent from an image
+(valid false positives). `not_exhaustive_label_indices` lists categories with potentially
+incomplete annotation (unmatched predictions are ignored). Both reference `label_index`
+values. They are optional and absent from non-LVIS datasets.

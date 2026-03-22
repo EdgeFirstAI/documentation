@@ -27,7 +27,7 @@ with open("dataset.arrow", "rb") as f:
     schema_version = metadata.get(b"schema_version", b"").decode()
 
 if schema_version:
-    version = schema_version  # e.g. "2026.04"
+    version = schema_version  # e.g. "2025.10" or "2026.04"
 
 # Method 2 (fallback): Check for polygon column
 elif "polygon" in df.columns:
@@ -143,8 +143,17 @@ result = duckdb.sql("""
 | `object_id` | `object_id` | 2026.04 uses `object_id` (not legacy `object_reference`) |
 | `polygon` | `polygon` | JSON: `[[x,y], ...]` pairs; Arrow: interleaved `[x,y,x,y,...]` |
 | `mask` | `mask` | Arrow: `List<UInt8>` row-major; JSON: base64-encoded string |
+| `iscrowd` | `iscrowd` | Same in both formats (`0` or `1`) |
+| `category_frequency` | `category_frequency` | Same in both formats (`"f"`, `"c"`, `"r"`) |
+| `neg_label_indices` | `neg_label_indices` | Arrow: `List<UInt32>`; JSON: array of integers |
+| `not_exhaustive_label_indices` | `not_exhaustive_label_indices` | Arrow: `List<UInt32>`; JSON: array of integers |
 | `pose` | `sensors.imu` | Arrow: `[yaw, pitch, roll]`; JSON: `{yaw, pitch, roll}` object |
 | `location` | `sensors.gps` | Arrow: `[lat, lon]`; JSON: `{latitude, longitude}` object |
+
+File-level metadata keys (`mask_interpretation`, `category_metadata`, `box2d_format`, etc.)
+are not per-row columns. They are stored in the Arrow/Parquet schema metadata or in the
+JSON top-level object. See [File-Level Metadata](schema.md#file-level-metadata) for the
+full list.
 
 ### Full Conversion Example
 
@@ -157,10 +166,10 @@ with open("annotations.json") as f:
 
 if isinstance(data, list):
     samples = data
-    box2d_format = "ltwh"
+    box2d_format = "ltwh"       # JSON default is ltwh (COCO convention)
 else:
     samples = data["samples"]
-    box2d_format = data.get("box2d_format", "ltwh")
+    box2d_format = data.get("box2d_format", "ltwh")  # Arrow default is cxcywh; JSON default is ltwh
 
 rows = []
 for sample in samples:
@@ -197,11 +206,23 @@ for sample in samples:
                 row["box2d"] = [b["cx"], b["cy"], b["w"], b["h"]]
             row["box2d_score"] = ann.get("box2d_score")
 
-        # Box3D
+        # Box3D: x,y,z are center coordinates (not corner)
         if ann.get("box3d"):
             b3 = ann["box3d"]
             row["box3d"] = [b3["x"], b3["y"], b3["z"], b3["w"], b3["h"], b3["l"]]
             row["box3d_score"] = ann.get("box3d_score")
+
+        # Annotation metadata (COCO/LVIS extensions)
+        if "iscrowd" in ann:
+            row["iscrowd"] = ann["iscrowd"]
+        if "category_frequency" in ann:
+            row["category_frequency"] = ann["category_frequency"]
+
+        # Sample-level LVIS fields (repeated per annotation row)
+        if "neg_label_indices" in sample:
+            row["neg_label_indices"] = sample["neg_label_indices"]
+        if "not_exhaustive_label_indices" in sample:
+            row["not_exhaustive_label_indices"] = sample["not_exhaustive_label_indices"]
 
         row["size"] = size
         rows.append(row)
@@ -224,6 +245,10 @@ df.write_ipc("annotations.arrow")       # Arrow IPC
 | 7 | **GPS**: `{latitude, longitude}` to `[lat, lon]` | JSON to DataFrame |
 | 8 | **IMU**: `{yaw, pitch, roll}` to `[yaw, pitch, roll]` | JSON to DataFrame |
 | 9 | **Score columns**: omit entirely for ground truth files | Both |
+| 10 | **`neg_label_indices`** / **`not_exhaustive_label_indices`**: sample-level, repeated per annotation row | JSON to DataFrame |
+| 11 | **`label_index`**: preserved as-is (source-faithful, non-contiguous) | Both |
+| 12 | **`mask_interpretation`**: file-level metadata (`"binary"`, `"confidence"`, `"sigmoid"`, `"logits"`) — set on the Arrow schema, not per-row | Both |
+| 13 | **`category_metadata`**: file-level metadata — JSON-encoded string of per-label synset/synonyms/definition. Extract from LVIS `categories` array when importing; attach to Arrow schema metadata when writing. | Both |
 
 !!! tip "Use the EdgeFirst Client SDK"
     The SDK handles all conversions automatically, including version detection and

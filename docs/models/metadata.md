@@ -1417,8 +1417,8 @@ split_hints:
 |-------|------|----------|-------------|
 | `type` | string | Yes | Hint type identifier. Converters ignore types they do not understand |
 | `target` | string | Yes | Name of the output tensor this hint applies to (must match an entry in `outputs`) |
-| `input_dtype` | string | No | Suggested input quantization dtype (e.g., `uint8`, `float32`). Converter default, overridable by user |
-| `output_dtype` | string | No | Suggested output quantization dtype (e.g., `int8`, `float32`). Converter default, overridable by user |
+| `input_dtype` | string | No | Suggested input quantization dtype. Trainers should always populate when providing hints. Converters use as default, overridable by user settings |
+| `output_dtype` | string | No | Suggested output quantization dtype. Trainers should always populate when providing hints. Converters use as default, overridable by user settings |
 | `description` | string | No | Human-readable description of why this split boundary exists |
 | `boundaries` | array | Yes | Ordered list of channel regions within the target tensor |
 | `boundaries[].name` | string | Yes | Identifier for this region (used in split output naming) |
@@ -1526,7 +1526,7 @@ Parameters included in the hash:
 | Annotation set ID | `as-1a3f` | Which annotation version |
 | Validation group | `val` | Which split |
 | Image size | `640x640` | Resize target |
-| Preprocessing | `normalize_uint8`, `letterbox` | How pixels are transformed |
+| Preprocessing | `letterbox_normalize_uint8` | Combined preprocessing + normalization descriptor |
 | CameraAdaptor | `rgb`, `yuyv`, `grey` | Color space / channel config |
 | Calibration coverage | `10` | Percentage of validation set |
 | Selection algorithm | `greedy_coverage_v1` | Algorithm version (invalidates cache on algorithm changes) |

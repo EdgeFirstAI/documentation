@@ -85,11 +85,14 @@ nav:
       - Validating Fusion Models:
         - models/validation/fusion/managed.md
       - Model Metrics:
-        - models/validation/metrics/detection.md
+        - models/validation/metrics/index.md
+        - Object Detection Metrics:
+          - models/validation/metrics/detection/index.md
+          - models/validation/metrics/detection/matching.md
+          - models/validation/metrics/detection/classifications.md
         - models/validation/metrics/segmentation.md
         - models/validation/metrics/fusion.md
-        - models/validation/metrics/matching.md
-        - models/validation/metrics/classifications.md
+        - models/validation/metrics/timing.md
     - Model Deployment:
       - 2D Model Deployment:
         - Deploying to the PC:

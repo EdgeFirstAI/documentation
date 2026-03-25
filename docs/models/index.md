@@ -36,6 +36,6 @@ The EdgeFirst Studio Model Zoo provides training support for multiple models, in
 1. [Vision Augmentations](augmentations.md) - Describes available vision augmentations for training and validation.
 2. [Model Metadata](metadata.md) - Documents the metadata schema embedded in EdgeFirst models for MLOps traceability.
 3. Validation Metrics - Describes the validation metrics for both architectures in detail.
-    - [Detection](validation/metrics/detection.md)
+    - [Detection](validation/metrics/detection/index.md)
     - [Segmentation](validation/metrics/segmentation.md)
     - [Fusion](validation/metrics/fusion.md)

@@ -10,3 +10,4 @@ mkdocs-spellcheck[codespell,symspellpy]
 pillow
 cairosvg
 black
+click==8.2.1

@@ -67,24 +67,24 @@ Considering two detections and one ground truth, the detection with a lower IoU,
 The following images provides visualization to this rule.  The IoU threshold is set to 0.10 and the score threshold is set to 0.50 in these cases.
 
 <figure markdown="span">
-  ![Playing Cards v7; 000000000127.png](../../assets/metrics/rule_5.1_000000000127.png){ align=center }
+  ![Playing Cards v7; 000000000127.png](../../../assets/metrics/rule_5.1_000000000127.png){ align=center }
   <figcaption>Playing Cards v7; 000000000127.png</figcaption>
 </figure>
 
 <figure markdown="span">
-  ![Playing Cards; 000020.png](../../assets/metrics/rule_5.1_000020.png){ align=center }
+  ![Playing Cards; 000020.png](../../../assets/metrics/rule_5.1_000020.png){ align=center }
   <figcaption>Playing Cards; 000020.png</figcaption>
 </figure>
 
 Otherwise, if these detections, are lower than the IoU threshold, they will be regarded as localization false positives and one false negative from the ground truth as shown below.
 
 <figure markdown="span">
-  ![000000000127.png; IoU threshold = 0.90](../../assets/metrics/rule_5.1_000000000127_fp.png){ align=center }
+  ![000000000127.png; IoU threshold = 0.90](../../../assets/metrics/rule_5.1_000000000127_fp.png){ align=center }
   <figcaption>000000000127.png; IoU threshold = 0.90</figcaption>
 </figure>
 
 <figure markdown="span">
-  ![000020.png; IoU threshold = 0.90](../../assets/metrics/rule_5.1_000020_fp.png){ align=center }
+  ![000020.png; IoU threshold = 0.90](../../../assets/metrics/rule_5.1_000020_fp.png){ align=center }
   <figcaption>000020.png; IoU threshold = 0.90</figcaption>
 </figure>
 
@@ -95,7 +95,7 @@ For cases where multiple detections have labels that matches the ground truth, t
 The following image shows visualization of this rule where the IoU threshold is set to 0.10 and the score threshold is set to 0.50.
 
 <figure markdown="span">
-  ![Playing Cards V7; 000000000145.png](../../assets/metrics/rule_5.2_000000000145.png){ align=center }
+  ![Playing Cards V7; 000000000145.png](../../../assets/metrics/rule_5.2_000000000145.png){ align=center }
   <figcaption>Playing Cards V7; 000000000145.png</figcaption>
 </figure>
 
@@ -108,7 +108,7 @@ For cases that concerns both scenarios as the rules described above.  A match is
 The following image shows a visualization of this rule following the same IoU threshold set to 0.10 and the score threshold set to 0.50.
 
 <figure markdown="span">
-  ![Playing Cards v7; 000000000134.png](../../assets/metrics/rule_5.3_000000000134.png){ align=center }
+  ![Playing Cards v7; 000000000134.png](../../../assets/metrics/rule_5.3_000000000134.png){ align=center }
   <figcaption>Playing Cards v7; 000000000134.png</figcaption>
 </figure>
 
@@ -121,7 +121,7 @@ For cases of having detections with matching labels as the ground truth, but do 
 The following image with visualization shows an IoU threshold set to 0.50.
 
 <figure markdown="span">
-  ![Playing Cards v7; 000000000134.png](../../assets/metrics/rule_5.4_000000000134.png){ align=center }
+  ![Playing Cards v7; 000000000134.png](../../../assets/metrics/rule_5.4_000000000134.png){ align=center }
   <figcaption>Playing Cards v7; 000000000134.png</figcaption>
 </figure>
 
@@ -130,7 +130,7 @@ Despite a detection with a matching label of "ace" as the ground truth being pre
 Otherwise, if all detections do not meet the IoU threshold requirements, they will be treated as localization false positives and one false negative for the ground truth as shown in the image results below.
 
 <figure markdown="span">
-  ![Playing Cards v7; 000000000134.png](../../assets/metrics/rule_5.4_000000000134_locfp.png){ align=center }
+  ![Playing Cards v7; 000000000134.png](../../../assets/metrics/rule_5.4_000000000134_locfp.png){ align=center }
   <figcaption>Playing Cards v7; 000000000134.png</figcaption>
 </figure>
 
@@ -139,7 +139,7 @@ Otherwise, if all detections do not meet the IoU threshold requirements, they wi
 Any detections that do not overlap any ground truth or any detections with IoU < IoU threshold will be regarded as localization false positives.
 
 <figure markdown="span">
-  ![Playing Cards v7; 000000000148.png](../../assets/metrics/rule_5.5_000000000148.png){ align=center }
+  ![Playing Cards v7; 000000000148.png](../../../assets/metrics/rule_5.5_000000000148.png){ align=center }
   <figcaption>Playing Cards v7; 000000000148.png</figcaption>
 </figure>
 

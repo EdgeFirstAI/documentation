@@ -9,7 +9,7 @@ This section describes how EdgeFirst Validator classifies the detections into tr
 The IoU is a ratio of the intersection area of the bounding boxes over the area of union.
 
 <figure markdown="span">
-  ![IoU Visualization](../../assets/metrics/iou_visualization.png){ align=center }
+  ![IoU Visualization](../../../assets/metrics/iou_visualization.png){ align=center }
   <figcaption>IoU Visualization</figcaption>
 </figure>
 
@@ -21,7 +21,7 @@ $$ -->
 Ideally for each prediction, there is an associated ground truth. Both the prediction bounding box (green) and the ground truth bounding box (blue) are drawn on the resulting image. However, the predicted and ground truth boxes may not match exactly. The IoU measures how closely the predictions match the ground truth; values closer to 1 indicate a better match.
 
 <figure markdown="span">
-  ![IoU Example](../../assets/metrics/iou_example.png){ align=center }
+  ![IoU Example](../../../assets/metrics/iou_example.png){ align=center }
   <figcaption>IoU Example</figcaption>
 </figure>
 
@@ -30,7 +30,7 @@ Ideally for each prediction, there is an associated ground truth. Both the predi
 Model detections will be classified using the confusion matrix.
 
 <figure markdown="span">
-  ![Classifications](../../assets/metrics/classifications.png){ align=center }
+  ![Classifications](../../../assets/metrics/classifications.png){ align=center }
   <figcaption>Classifications</figcaption>
 </figure>
 
@@ -57,7 +57,7 @@ This section will show examples of each of the classifications explained above. 
     The image samples below are now deprecated in terms of the labeling format: "Extra" is now denoted as "LOC" and a misclassification includes a "CLF" (seen in EdgeFirst Validator 3.0.9 and higher).
 
 <figure markdown="span">
-  ![Example 1](../../assets/metrics/classification_1.png){ align=center }
+  ![Example 1](../../../assets/metrics/classification_1.png){ align=center }
   <figcaption>Example 1</figcaption>
 </figure>
 
@@ -66,14 +66,14 @@ This section will show examples of each of the classifications explained above. 
 * The model prediction that is in red is a classification false positive for the class 'ace' because it is paired to the ground truth, but the labels are not matching ('ace' and 'three').
 
 <figure markdown="span">
-  ![Example 2](../../assets/metrics/classification_2.png){ align=center }
+  ![Example 2](../../../assets/metrics/classification_2.png){ align=center }
   <figcaption>Example 2</figcaption>
 </figure>
 
 * The model prediction that is in red would be a localization false positive for the class 'car' because it detected another car even though a prediction (car 93% 0.73) is already matched to the ground truth (blue).
 
 <figure markdown="span">
-  ![Example 3](../../assets/metrics/classification_3.png){ align=center }
+  ![Example 3](../../../assets/metrics/classification_3.png){ align=center }
   <figcaption>Example 3</figcaption>
 </figure>
 

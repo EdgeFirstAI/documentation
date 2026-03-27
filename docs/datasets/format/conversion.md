@@ -13,38 +13,40 @@ Always detect the schema version before reading annotation data.
 ### Arrow / Parquet Files
 
 ```python
+import pyarrow.ipc as ipc
+import pyarrow.parquet as pq
 import polars as pl
 
-df = pl.read_ipc("dataset.arrow")   # or pl.read_parquet("dataset.parquet")
-
 # Method 1 (preferred): Check schema_version metadata
-# Note: Polars metadata API varies by version; use pyarrow for reliable access
-import pyarrow.ipc as ipc
+def get_schema_version(path: str) -> str:
+    """Read schema_version from Arrow IPC or Parquet file metadata."""
+    if path.endswith(".parquet"):
+        metadata = pq.read_schema(path).metadata or {}
+    else:
+        with open(path, "rb") as f:
+            metadata = ipc.open_file(f).schema.metadata or {}
+    return metadata.get(b"schema_version", b"").decode()
 
-with open("dataset.arrow", "rb") as f:
-    reader = ipc.open_file(f)
-    metadata = reader.schema.metadata or {}
-    schema_version = metadata.get(b"schema_version", b"").decode()
+schema_version = get_schema_version("dataset.arrow")
 
 if schema_version:
     version = schema_version  # e.g. "2025.10" or "2026.04"
-
-# Method 2 (fallback): Check for polygon column
-elif "polygon" in df.columns:
-    version = "2026.04"
-
-# Method 3 (fallback): Check mask column type
-elif "mask" in df.columns:
-    mask_dtype = str(df["mask"].dtype)
-    if mask_dtype.startswith("List(Float32"):
-        version = "2025.10"    # NaN-separated polygon coordinates
-    elif str(mask_dtype) == "Binary":
-        version = "2026.04"    # PNG-encoded raster pixels
-    else:
-        version = "unknown"
-
 else:
-    version = "2025.10"        # no geometry columns
+    # Method 2 (fallback): Inspect column presence and types
+    df = pl.read_ipc("dataset.arrow")  # or pl.read_parquet(...)
+
+    if "polygon" in df.columns:
+        version = "2026.04"
+    elif "mask" in df.columns:
+        mask_dtype = str(df["mask"].dtype)
+        if mask_dtype.startswith("List(Float32"):
+            version = "2025.10"    # NaN-separated polygon coordinates
+        elif str(mask_dtype) == "Binary":
+            version = "2026.04"    # PNG-encoded raster pixels
+        else:
+            version = "unknown"
+    else:
+        version = "2025.10"        # no geometry columns, no metadata
 ```
 
 ### JSON Files

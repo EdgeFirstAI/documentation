@@ -25,13 +25,15 @@ to migrate existing datasets and code.
 
 ## Migration Command
 
-The EdgeFirst Client SDK provides a migration utility:
+!!! note "Planned for edgefirst-client 2.10.0"
+    The `edgefirst migrate` command is planned for the EdgeFirst Client SDK version 2.10.0.
+    It is not yet available in current releases.
 
 ```bash
 edgefirst migrate <input.arrow> [--output <output.arrow>]
 ```
 
-The migration utility performs these steps:
+The migration utility will perform these steps:
 
 1. Reads the 2025.10 `mask: List<Float32>` column with NaN separators
 2. Converts to `polygon: List<List<Float32>>` (split on NaN, pair coordinates)

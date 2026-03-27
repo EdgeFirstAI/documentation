@@ -2,7 +2,7 @@
 
 Sensor data is always stored **external** to the annotation file. Arrow, Parquet, and
 JSON files contain annotations only — sensor data lives in sibling folders or
-uncompressed ZIP files.
+ZIP files.
 
 ## Sensor Types
 
@@ -14,8 +14,8 @@ uncompressed ZIP files.
 | LiDAR PCD | `.lidar.pcd` | Point cloud data |
 
 !!! warning "Removed in 2026.04"
-    The `.lidar.png` (depth map) and `.lidar.jpeg` (reflectivity) projected
-    visualization formats have been **removed** from the format specification in 2026.04.
+    The `.lidar.png` (depth map) and `.lidar.jpeg` (reflectivity) projected visualization
+    formats have been **removed** from the format specification in 2026.04.
     The SDK retains read support for backward compatibility but will not write these types.
     Consumers that need depth or reflectivity images should project LiDAR PCD data directly.
 

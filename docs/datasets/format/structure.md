@@ -10,13 +10,18 @@ Annotation files use the dataset base name with the format extension:
 ```
 dataset_name/
 ├── dataset_name.arrow          # Arrow IPC (default)
+│   # — OR —
 ├── dataset_name.parquet        # Parquet (transfer)
+│   # — OR —
 ├── dataset_name.json           # JSON (human-readable)
 └── dataset_name/               # Sensor container (directory or .zip)
 ```
 
-Only **one annotation file** per dataset. The sensor container directory name matches
-the dataset base name regardless of annotation file format.
+Exactly **one annotation file** per dataset directory — choose a single format from
+`.arrow`, `.parquet`, or `.json`. The tree above shows the three supported alternatives;
+do not include more than one annotation file for the same dataset. The sensor container
+directory name matches the dataset base name regardless of which annotation file format
+you choose.
 
 ## Dataset Layouts
 
@@ -117,7 +122,7 @@ dataset_name/
 ZIP64 provides:
 
 - Random access via file index
-- Uncompressed storage (sensor files are already compressed — JPEG, PCD, etc.)
+- Uncompressed storage recommended (JPEG and PNG are already compressed; PCD and other formats may benefit from ZIP compression)
 - Cross-platform support
 
 ## Sensor File Extensions

@@ -296,8 +296,8 @@ For reference, the full Polars-style schema:
 
 ## File-Level Metadata
 
-Both Arrow IPC and Parquet files carry key-value metadata at the schema level.
-All metadata values are strings.
+Arrow IPC stores key-value metadata on the schema, while Parquet stores key-value
+metadata in the file footer. In both formats, all metadata values are strings.
 
 | Key | Values | Default (absent) | Description |
 |-----|--------|-------------------|-------------|

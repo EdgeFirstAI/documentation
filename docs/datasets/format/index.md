@@ -46,18 +46,16 @@ graph TB
 ```python
 import polars as pl
 
-# Read Arrow IPC
+# Read Arrow IPC or Parquet
 df = pl.read_ipc("dataset.arrow")
+# df = pl.read_parquet("dataset.parquet")
 
-# Read Parquet
-df = pl.read_parquet("dataset.parquet")
-
-# Check schema version
-# Robust detection: check schema_version metadata first (see Conversion Guidelines)
+# Quick version check — for robust metadata-based detection see Conversion Guidelines
 if "polygon" in df.columns:
-    print("2026.04 format detected")
+    print("2026.04 format (has polygon column)")
     polygons = df["polygon"]       # List<List<f32>> — interleaved xy per ring
-    masks    = df["mask"]          # Binary — PNG-encoded raster pixels
+elif "mask" in df.columns and str(df["mask"].dtype) == "Binary":
+    print("2026.04 format (has Binary mask)")
 else:
     print("2025.10 or earlier format")
 ```

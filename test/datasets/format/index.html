@@ -25,11 +25,11 @@
       
       
       <link rel="icon" href="../../assets/favicon.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.5">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
     
     
       
-        <title>EdgeFirst Dataset Format - EdgeFirst Studio Documentation</title>
+        <title>Dataset Format Overview - EdgeFirst Studio Documentation</title>
       
     
     
@@ -79,7 +79,7 @@
     
   
 <meta property="og:type" content="website" />
-<meta property="og:title" content="EdgeFirst Dataset Format - EdgeFirst Studio Documentation" />
+<meta property="og:title" content="Dataset Format Overview - EdgeFirst Studio Documentation" />
 <meta property="og:description" content="EdgeFirst Studio Documentation" />
 <meta property="og:image" content="https://doc.edgefirst.ai/test/assets/images/social/datasets/format/index.png" />
 <meta property="og:image:type" content="image/png" />
@@ -87,7 +87,7 @@
 <meta property="og:image:height" content="630" />
 <meta property="og:url" content="https://doc.edgefirst.ai/test/datasets/format/" />
 <meta property="twitter:card" content="summary_large_image" />
-<meta property="twitter:title" content="EdgeFirst Dataset Format - EdgeFirst Studio Documentation" />
+<meta property="twitter:title" content="Dataset Format Overview - EdgeFirst Studio Documentation" />
 <meta property="twitter:description" content="EdgeFirst Studio Documentation" />
 <meta property="twitter:image" content="https://doc.edgefirst.ai/test/assets/images/social/datasets/format/index.png" />
 </head>
@@ -109,7 +109,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#edgefirst-dataset-format" class="md-skip">
+        <a href="#dataset-format-overview" class="md-skip">
           Skip to content
         </a>
       
@@ -163,7 +163,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              EdgeFirst Dataset Format
+              Dataset Format Overview
             
           </span>
         </div>
@@ -770,6 +770,8 @@
       
         
       
+        
+      
     
     
     
@@ -838,7 +840,7 @@
   <span class="md-ellipsis">
     
   
-    Dataset Organization
+    Directory Structure
   
 
     
@@ -866,7 +868,7 @@
   <span class="md-ellipsis">
     
   
-    Bounding Box Formats
+    Box Formats
   
 
     
@@ -894,7 +896,7 @@
   <span class="md-ellipsis">
     
   
-    Annotation Schema &amp; Fields
+    Annotation Schema
   
 
     
@@ -950,7 +952,7 @@
   <span class="md-ellipsis">
     
   
-    Annotation Formats: Arrow vs. JSON
+    Storage Formats
   
 
     
@@ -978,7 +980,35 @@
   <span class="md-ellipsis">
     
   
-    Format Conversion: Arrow ↔ JSON
+    Conversion Guidelines
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="migration/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Upgrading from 2025.10 to 2026.04
   
 
     
@@ -1383,18 +1413,6 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#overview" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Overview
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Overview">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
   <a href="#key-principles" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -1404,17 +1422,12 @@
   </a>
   
 </li>
-        
-      </ul>
-    </nav>
-  
-</li>
       
         <li class="md-nav__item">
-  <a href="#dataset-organization" class="md-nav__link">
+  <a href="#quick-start-python" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Dataset Organization
+        Quick Start (Python)
       
     </span>
   </a>
@@ -1422,165 +1435,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#annotation-data" class="md-nav__link">
+  <a href="#section-map" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Annotation Data
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#sensor-data" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Sensor Data
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#whats-inside-this-chapter" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        What's Inside This Chapter
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="What&#39;s Inside This Chapter">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#dataset-organization_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        📁 Dataset Organization
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#bounding-box-formats" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        📏 Bounding Box Formats
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#annotation-schema-fields" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        📊 Annotation Schema &amp; Fields
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#sensor-data_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        📡 Sensor Data
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#format-conversion" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        🔄 Format Conversion
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#important-concepts" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Important Concepts
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Important Concepts">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#samples-vs-annotations" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Samples vs. Annotations
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#normalized-coordinates" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Normalized Coordinates
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#frame-numbers" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Frame Numbers
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#quick-example" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Quick Example
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#next-steps" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Next Steps
+        Section Map
       
     </span>
   </a>
@@ -1653,144 +1511,105 @@
 
 
 
-<h1 id="edgefirst-dataset-format">EdgeFirst Dataset Format</h1>
-<p>The EdgeFirst Dataset Format is designed to handle multi-sensor datasets with rich annotations. It separates <strong>sensor data</strong> (immutable) from <strong>annotation data</strong> (dynamic), allowing both to be managed independently and efficiently.</p>
-<div class="admonition tip">
-<p class="admonition-title">When Do You Need This?</p>
-<p><strong>Most users can skip these details.</strong> EdgeFirst Studio handles dataset formats automatically when you:</p>
-<ul>
-<li>Record <abbr title="Binary container format for robotics log data">MCAP</abbr> files on a <a href="../../platforms/recording/">Raivin platform</a> and <a href="../../platforms/publishing/">publish them as snapshots</a></li>
-<li><a href="../tutorials/import/">Import existing datasets</a> through the Studio UI</li>
-<li><a href="../../studio/datasets/#export-dataset">Export datasets</a> for offline use</li>
-<li>Train models using <a href="../../models/modelpack/">ModelPack</a> or <a href="../../models/ultralytics/">Ultralytics</a></li>
-</ul>
-<p>This chapter is for users who need to:</p>
-<ul>
-<li>Build custom ML pipelines outside of Studio</li>
-<li>Integrate EdgeFirst datasets with third-party tools</li>
-<li>Programmatically generate or modify annotations</li>
-<li>Understand the data structures for advanced debugging</li>
-</ul>
-</div>
-<h2 id="overview">Overview</h2>
+<h1 id="dataset-format-overview">Dataset Format Overview</h1>
+<p>The EdgeFirst Dataset Format provides a structured, self-describing representation for
+multi-sensor annotations. Version <strong>2026.04</strong> introduces Parquet support, polygon geometry,
+raster masks, confidence scores, and file-level metadata that makes every file interpretable
+without external context.</p>
 <pre class="mermaid"><code>graph TB
-    subgraph Dataset["🗂️ EdgeFirst Dataset"]
+    subgraph Dataset["EdgeFirst Dataset"]
         direction TB
-        Storage["📦 Storage Container (ZIP or Directory)"]
-        Annotations["📊 Annotations (Arrow)"]
+        Storage["Storage Container&lt;br/&gt;(ZIP or Directory)"]
+        Annotations["Annotations&lt;br/&gt;(Arrow, Parquet, or JSON)"]
     end
-    
-    Storage --&gt; |"Images, PCD, etc."| Sensor["🎥 Sensor Data (Immutable)"]
-    Annotations --&gt; |"Labels, Boxes, Masks"| Labels["🏷️ Annotation Data (Editable)"]
-    
-    Sensor --&gt; Camera["📷 Camera"]
-    Sensor --&gt; Radar["📡 Radar"]
-    Sensor --&gt; LiDAR["🔦 LiDAR"]
-    
-    Labels --&gt; Box2D["📐 2D Boxes"]
-    Labels --&gt; Box3D["📦 3D Boxes"]
-    Labels --&gt; Masks["🎭 Masks"]
-    
+
+    Storage --&gt; |"Images, PCD, etc."| Sensor["Sensor Data&lt;br/&gt;(Immutable)"]
+    Annotations --&gt; |"Labels, Boxes, Masks"| Labels["Annotation Data&lt;br/&gt;(Editable)"]
+
+    Sensor --&gt; Camera["Camera"]
+    Sensor --&gt; Radar["Radar"]
+    Sensor --&gt; LiDAR["LiDAR"]
+
+    Labels --&gt; Box2D["2D Boxes"]
+    Labels --&gt; Box3D["3D Boxes"]
+    Labels --&gt; Polygons["Polygons"]
+    Labels --&gt; Masks["Raster Masks"]
+
     style Dataset fill:#e1f5ff,stroke:#0277bd,stroke-width:3px
     style Storage fill:#fff3e0,stroke:#ef6c00,stroke-width:2px
     style Annotations fill:#f3e5f5,stroke:#7b1fa2,stroke-width:2px
     style Sensor fill:#e8f5e9,stroke:#2e7d32,stroke-width:2px
     style Labels fill:#fce4ec,stroke:#c2185b,stroke-width:2px</code></pre>
-<h3 id="key-principles">Key Principles</h3>
+<h2 id="key-principles">Key Principles</h2>
 <ul>
-<li><strong>Normalized coordinates</strong>: All spatial data uses 0–1 range (resolution-independent)</li>
-<li><strong>Sensor container</strong>: ZIP or directory holding images and point clouds</li>
-<li><strong>Annotation container</strong>: Apache Arrow file with columnar annotation data</li>
-<li><strong>Multiple sensor types</strong>: Camera, Radar (point cloud + data cube), <abbr title="Light Detection and Ranging">LiDAR</abbr></li>
-<li><strong>Flexible structure</strong>: Supports sequence-based, image-based, or mixed datasets</li>
+<li><strong>Normalized coordinates</strong> — all spatial data uses the 0..1 range (resolution-independent)</li>
+<li><strong>Three storage formats</strong> — Arrow IPC (local performance), Parquet (transfer / interop), JSON (human-readable)</li>
+<li><strong>Self-describing files</strong> — file-level metadata records <code>schema_version</code>, box layouts, and mask interpretation</li>
+<li><strong>One row per instance</strong> — flat columnar layout optimized for ML queries</li>
+<li><strong>Sensor data always external</strong> — Arrow/Parquet/JSON contain annotations only; sensor data lives in sibling folders or ZIP files</li>
+<li><strong>Lossless data representation</strong> — annotation data converts between formats without loss</li>
 </ul>
-<h2 id="dataset-organization">Dataset Organization</h2>
-<p>Datasets can be organized in three patterns depending on your use case:</p>
-<pre class="mermaid"><code>graph TB
-    subgraph Sequence["Sequence-Based"]
-        S1["📹 Sequences&lt;br/&gt;with temporal order"]
-    end
-    
-    subgraph Image["Image-Based"]
-        I1["🖼️ Independent images&lt;br/&gt;no order"]
-    end
-    
-    subgraph Mixed["Mixed"]
-        M1["🎬 Sequences +&lt;br/&gt;🖼️ Images"]
-    end
-    
-    style Sequence fill:#c8e6c9,stroke:#388e3c,stroke-width:2px
-    style Image fill:#ffccbc,stroke:#d84315,stroke-width:2px
-    style Mixed fill:#e1bee7,stroke:#6a1b9a,stroke-width:2px</code></pre>
-<p>Each organization has different directory structures and file naming conventions. See <a href="structure/">Dataset Organization</a> for detailed examples.</p>
-<h2 id="annotation-data">Annotation Data</h2>
-<p>EdgeFirst stores annotations in <strong>Apache Arrow</strong> format—a columnar, high-performance data structure. Think of it as a database table where each row represents an annotation and each column represents an annotation property.</p>
+<h2 id="quick-start-python">Quick Start (Python)</h2>
 <div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">polars</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pl</span>
 
-<span class="c1"># Load and view your annotations</span>
+<span class="c1"># Read Arrow IPC or Parquet</span>
 <span class="n">df</span> <span class="o">=</span> <span class="n">pl</span><span class="o">.</span><span class="n">read_ipc</span><span class="p">(</span><span class="s2">&quot;dataset.arrow&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">())</span>
+<span class="c1"># df = pl.read_parquet(&quot;dataset.parquet&quot;)</span>
+
+<span class="c1"># Quick version check — for robust metadata-based detection see Conversion Guidelines</span>
+<span class="k">if</span> <span class="s2">&quot;polygon&quot;</span> <span class="ow">in</span> <span class="n">df</span><span class="o">.</span><span class="n">columns</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;2026.04 format (has polygon column)&quot;</span><span class="p">)</span>
+    <span class="n">polygons</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s2">&quot;polygon&quot;</span><span class="p">]</span>       <span class="c1"># List&lt;List&lt;f32&gt;&gt; — interleaved xy per ring</span>
+<span class="k">elif</span> <span class="s2">&quot;mask&quot;</span> <span class="ow">in</span> <span class="n">df</span><span class="o">.</span><span class="n">columns</span> <span class="ow">and</span> <span class="nb">str</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;mask&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">dtype</span><span class="p">)</span> <span class="o">==</span> <span class="s2">&quot;Binary&quot;</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;2026.04 format (has Binary mask)&quot;</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;2025.10 or earlier format&quot;</span><span class="p">)</span>
 </code></pre></div>
-<p>Learn more about the annotation schema, field definitions, and sample metadata in <a href="schema/">Annotation Schema</a>.</p>
-<h2 id="sensor-data">Sensor Data</h2>
-<p>EdgeFirst supports multiple sensor types:</p>
-<ul>
-<li><strong>Camera</strong>: JPEG or PNG images with embedded EXIF metadata (<abbr title="Global Positioning System">GPS</abbr>, timestamp)</li>
-<li><strong>Radar</strong>: Point clouds (PCD format) and data cubes (16-bit PNG)</li>
-<li><strong><abbr title="Light Detection and Ranging">LiDAR</abbr></strong>: Point clouds (PCD format) with optional depth and reflectivity maps</li>
-</ul>
-<p>See <a href="sensors/">Sensor Data</a> for detailed specifications on each format.</p>
-<h2 id="whats-inside-this-chapter">What's Inside This Chapter</h2>
-<h3 id="dataset-organization_1">📁 <a href="structure/">Dataset Organization</a></h3>
-<p>How to structure your dataset files depending on whether you have video sequences, standalone images, or both. Includes file naming conventions and directory hierarchies.</p>
-<h3 id="bounding-box-formats">📏 <a href="box_format/">Bounding Box Formats</a></h3>
-<p>Understanding the EdgeFirst bounding box format: center-based coordinates in Arrow files vs. top-left coordinates in the legacy JSON <abbr title="Application Programming Interface">API</abbr>. Includes 3D boxes and polygon masks.</p>
-<h3 id="annotation-schema-fields">📊 <a href="schema/">Annotation Schema &amp; Fields</a></h3>
-<p>Detailed reference for every field in your annotations: sample identifiers, labels, geometry types (masks, boxes), and optional metadata (<abbr title="Global Positioning System">GPS</abbr>, <abbr title="Inertial Measurement Unit">IMU</abbr>, degradation).</p>
-<h3 id="sensor-data_1">📡 <a href="sensors/">Sensor Data</a></h3>
-<p>Complete specification for camera, radar, and <abbr title="Light Detection and Ranging">LiDAR</abbr> data formats, file extensions, and encoding details.</p>
-<h3 id="format-conversion">🔄 <a href="conversion/">Format Conversion</a></h3>
-<p>How to convert between Arrow (for analysis) and JSON (for editing) formats with Python code examples. Understand the key differences between formats.</p>
-<h2 id="important-concepts">Important Concepts</h2>
-<h3 id="samples-vs-annotations">Samples vs. Annotations</h3>
-<ul>
-<li>A <strong>sample</strong> is a single image or frame</li>
-<li>An <strong>annotation</strong> is one labeled object within a sample</li>
-<li>One sample can have <strong>zero or many annotations</strong></li>
-</ul>
-<p>Samples without annotations are still important! They represent images with no objects of interest and should be included in your training dataset.</p>
-<h3 id="normalized-coordinates">Normalized Coordinates</h3>
-<p>All spatial coordinates in EdgeFirst are <strong>normalized to 0–1 range</strong>:</p>
-<div class="highlight"><pre><span></span><code>normalized_x = pixel_x / image_width
-normalized_y = pixel_y / image_height
-</code></pre></div>
-<p>This makes annotations resolution-independent and portable across different image sizes.</p>
-<h3 id="frame-numbers">Frame Numbers</h3>
-<ul>
-<li><strong>For sequences</strong>: Frame numbers indicate temporal order (frame 0, 1, 2, ...)</li>
-<li><strong>For images</strong>: Frame is <code>null</code> (no temporal ordering)</li>
-<li>Frame numbers are <strong>unique within a sequence</strong> but don't need to be continuous (frames can be dropped or downsampled)</li>
-</ul>
-<h2 id="quick-example">Quick Example</h2>
-<p>Here's a typical dataset structure:</p>
-<div class="highlight"><pre><span></span><code>my_dataset/
-├── my_dataset.arrow                    # Annotations
-└── my_dataset/                         # Sensor data
-    ├── sequence_01/                    # First video sequence
-    │   ├── sequence_01_001.camera.jpeg
-    │   ├── sequence_01_002.camera.jpeg
-    │   └── sequence_01_001.radar.pcd
-    ├── image_background.jpg            # Standalone image
-    └── sequence_02/                    # Second video sequence
-        └── sequence_02_001.camera.jpeg
-</code></pre></div>
-<h2 id="next-steps">Next Steps</h2>
-<ol>
-<li>Learn how to <a href="structure/">organize your dataset files</a></li>
-<li>Understand <a href="box_format/">bounding box coordinate systems</a></li>
-<li>Explore the <a href="schema/">annotation schema</a></li>
-<li>Check the <a href="https://github.com/EdgeFirstAI/client/blob/main/DATASET_FORMAT.md">official specification</a> for authoritative technical details</li>
-</ol>
+<div class="admonition tip">
+<p class="admonition-title">Use the EdgeFirst Client <abbr title="Software Development Kit">SDK</abbr></p>
+<p>The <abbr title="Software Development Kit">SDK</abbr> handles version detection, format conversion, and metadata extraction
+automatically. Direct Polars access is shown here for illustration; prefer the
+<abbr title="Software Development Kit">SDK</abbr> for production code.</p>
+</div>
+<h2 id="section-map">Section Map</h2>
+<table>
+<thead>
+<tr>
+<th>Page</th>
+<th>Contents</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="schema/">Schema</a></td>
+<td>Full column definitions, types, and field semantics</td>
+</tr>
+<tr>
+<td><a href="box_format/">Box Formats</a></td>
+<td>Box2D / Box3D layout descriptors and metadata</td>
+</tr>
+<tr>
+<td><a href="formats/">Storage Formats</a></td>
+<td>Arrow IPC, Parquet, and JSON comparison</td>
+</tr>
+<tr>
+<td><a href="conversion/">Conversion</a></td>
+<td>Code examples for reading and converting between formats</td>
+</tr>
+<tr>
+<td><a href="sensors/">Sensors</a></td>
+<td>Camera, Radar, and <abbr title="Light Detection and Ranging">LiDAR</abbr> sensor file types</td>
+</tr>
+<tr>
+<td><a href="structure/">Directory Structure</a></td>
+<td>File naming, directory layout, and ZIP support</td>
+</tr>
+<tr>
+<td><a href="migration/">Migration Guide</a></td>
+<td>Upgrading from 2025.10 to 2026.04</td>
+</tr>
+</tbody>
+</table>
 
 
 
@@ -1897,13 +1716,13 @@ normalized_y = pixel_y / image_height
         
         
           
-          <a href="structure/" class="md-footer__link md-footer__link--next" aria-label="Next: Dataset Organization">
+          <a href="structure/" class="md-footer__link md-footer__link--next" aria-label="Next: Directory Structure">
             <div class="md-footer__title">
               <span class="md-footer__direction">
                 Next
               </span>
               <div class="md-ellipsis">
-                Dataset Organization
+                Directory Structure
               </div>
             </div>
             <div class="md-footer__button md-icon">

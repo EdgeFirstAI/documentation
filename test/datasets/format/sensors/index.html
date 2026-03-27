@@ -25,7 +25,7 @@
       
       
       <link rel="icon" href="../../../assets/favicon.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.5">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
     
     
       
@@ -770,6 +770,8 @@
       
         
       
+        
+      
     
     
     
@@ -838,7 +840,7 @@
   <span class="md-ellipsis">
     
   
-    Dataset Organization
+    Directory Structure
   
 
     
@@ -866,7 +868,7 @@
   <span class="md-ellipsis">
     
   
-    Bounding Box Formats
+    Box Formats
   
 
     
@@ -894,7 +896,7 @@
   <span class="md-ellipsis">
     
   
-    Annotation Schema &amp; Fields
+    Annotation Schema
   
 
     
@@ -975,10 +977,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#how-sensor-data-gets-into-datasets" class="md-nav__link">
+  <a href="#sensor-types" class="md-nav__link">
     <span class="md-ellipsis">
       
-        How Sensor Data Gets Into Datasets
+        Sensor Types
       
     </span>
   </a>
@@ -986,10 +988,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#overview" class="md-nav__link">
+  <a href="#camera" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Overview
+        Camera
       
     </span>
   </a>
@@ -997,22 +999,22 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#camera-data" class="md-nav__link">
+  <a href="#radar" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Camera Data
+        Radar
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Camera Data">
+    <nav class="md-nav" aria-label="Radar">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#file-format" class="md-nav__link">
+  <a href="#point-cloud-data" class="md-nav__link">
     <span class="md-ellipsis">
       
-        File Format
+        Point Cloud Data
       
     </span>
   </a>
@@ -1020,32 +1022,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#file-naming" class="md-nav__link">
+  <a href="#radar-data-cube" class="md-nav__link">
     <span class="md-ellipsis">
       
-        File Naming
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#exif-metadata" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        EXIF Metadata
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#typical-use-case" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Typical Use Case
+        Radar Data Cube
       
     </span>
   </a>
@@ -1058,143 +1038,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#radar-data" class="md-nav__link">
+  <a href="#lidar" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Radar Data
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Radar Data">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#point-cloud-radarpcd" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Point Cloud (.radar.pcd)
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#data-cube-radarpng" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Data Cube (.radar.png)
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#lidar-data" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        LiDAR Data
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="LiDAR Data">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#point-cloud-lidarpcd" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Point Cloud (.lidar.pcd)
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#visualizations" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Visualizations
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#depth-data-optional" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Depth Data (Optional)
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#file-organization-example" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        File Organization Example
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#sensor-data-alignment" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Sensor Data Alignment
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#accessing-sensor-data" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Accessing Sensor Data
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#best-practices" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Best Practices
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#further-reading" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Further Reading
+        LiDAR
       
     </span>
   </a>
@@ -1224,7 +1071,7 @@
   <span class="md-ellipsis">
     
   
-    Annotation Formats: Arrow vs. JSON
+    Storage Formats
   
 
     
@@ -1252,7 +1099,35 @@
   <span class="md-ellipsis">
     
   
-    Format Conversion: Arrow ↔ JSON
+    Conversion Guidelines
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../migration/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Upgrading from 2025.10 to 2026.04
   
 
     
@@ -1657,10 +1532,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#how-sensor-data-gets-into-datasets" class="md-nav__link">
+  <a href="#sensor-types" class="md-nav__link">
     <span class="md-ellipsis">
       
-        How Sensor Data Gets Into Datasets
+        Sensor Types
       
     </span>
   </a>
@@ -1668,10 +1543,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#overview" class="md-nav__link">
+  <a href="#camera" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Overview
+        Camera
       
     </span>
   </a>
@@ -1679,22 +1554,22 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#camera-data" class="md-nav__link">
+  <a href="#radar" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Camera Data
+        Radar
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Camera Data">
+    <nav class="md-nav" aria-label="Radar">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#file-format" class="md-nav__link">
+  <a href="#point-cloud-data" class="md-nav__link">
     <span class="md-ellipsis">
       
-        File Format
+        Point Cloud Data
       
     </span>
   </a>
@@ -1702,32 +1577,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#file-naming" class="md-nav__link">
+  <a href="#radar-data-cube" class="md-nav__link">
     <span class="md-ellipsis">
       
-        File Naming
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#exif-metadata" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        EXIF Metadata
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#typical-use-case" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Typical Use Case
+        Radar Data Cube
       
     </span>
   </a>
@@ -1740,143 +1593,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#radar-data" class="md-nav__link">
+  <a href="#lidar" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Radar Data
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Radar Data">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#point-cloud-radarpcd" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Point Cloud (.radar.pcd)
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#data-cube-radarpng" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Data Cube (.radar.png)
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#lidar-data" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        LiDAR Data
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="LiDAR Data">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#point-cloud-lidarpcd" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Point Cloud (.lidar.pcd)
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#visualizations" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Visualizations
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#depth-data-optional" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Depth Data (Optional)
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#file-organization-example" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        File Organization Example
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#sensor-data-alignment" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Sensor Data Alignment
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#accessing-sensor-data" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Accessing Sensor Data
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#best-practices" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Best Practices
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#further-reading" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Further Reading
+        LiDAR
       
     </span>
   </a>
@@ -1950,279 +1670,99 @@
 
 
 <h1 id="sensor-data">Sensor Data</h1>
-<p>This page describes the different sensor data types that EdgeFirst datasets can contain: camera images, radar point clouds and data cubes, and <abbr title="Light Detection and Ranging">LiDAR</abbr> data.</p>
-<h2 id="how-sensor-data-gets-into-datasets">How Sensor Data Gets Into Datasets</h2>
-<p>Sensor data typically flows through this pipeline:</p>
-<pre class="mermaid"><code>flowchart TD
-    A["📹 Device Recording&lt;br&gt;(Raivin/Maivin)"] --&gt;|"ROS2 topics"| B["📦 MCAP File"]
-    B --&gt;|"Upload"| C["☁️ Snapshot"]
-    C --&gt;|"Restore"| D["🗂️ Dataset"]
-    D --&gt;|"Create Snapshot"| E["☁️ Snapshot"]
-    E --&gt;|"Download"| F["📥 ZIP + Arrow"]</code></pre>
-<ol>
-<li><strong>Recording</strong>: <a href="../../../platforms/recording/">Raivin or Maivin devices</a> record sensor data as <abbr title="Robot Operating System 2">ROS2</abbr> topics into <abbr title="Binary container format for robotics log data">MCAP</abbr> files</li>
-<li><strong>Upload</strong>: <abbr title="Binary container format for robotics log data">MCAP</abbr> files are <a href="../../../platforms/publishing/">uploaded as snapshots</a> to EdgeFirst Studio  </li>
-<li><strong>Restore</strong>: Snapshots are <a href="../../../studio/snapshots/#restore-snapshot">restored into datasets</a>, converting <abbr title="Binary container format for robotics log data">MCAP</abbr> topics to discrete sensor files</li>
-<li><strong>Create Snapshot</strong>: Datasets can be <a href="../../../studio/snapshots/#create-snapshot">exported as snapshots</a> for download</li>
-<li><strong>Download</strong>: Snapshots are downloaded as ZIP + Arrow file pairs in the <a href="../">EdgeFirst Dataset Format</a></li>
-</ol>
-<div class="admonition tip">
-<p class="admonition-title">Snapshots contain sensor data</p>
-<p>When you <a href="../../../studio/snapshots/#download-snapshot">download a snapshot</a>, the ZIP file contains all the sensor data (images, point clouds, etc.) organized by sequence and frame.</p>
+<p>Sensor data is always stored <strong>external</strong> to the annotation file. Arrow, Parquet, and
+JSON files contain annotations only — sensor data lives in sibling folders or
+ZIP files.</p>
+<h2 id="sensor-types">Sensor Types</h2>
+<table>
+<thead>
+<tr>
+<th>Sensor</th>
+<th>Extension</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Camera</td>
+<td><code>.camera.jpeg</code>, <code>.camera.png</code></td>
+<td>JPEG (default) or PNG (lossless)</td>
+</tr>
+<tr>
+<td>Radar cube</td>
+<td><code>.radar.png</code></td>
+<td>16-bit PNG encoding of complex int16 data</td>
+</tr>
+<tr>
+<td>Radar PCD</td>
+<td><code>.radar.pcd</code></td>
+<td>Point cloud data</td>
+</tr>
+<tr>
+<td><abbr title="Light Detection and Ranging">LiDAR</abbr> PCD</td>
+<td><code>.lidar.pcd</code></td>
+<td>Point cloud data</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition warning">
+<p class="admonition-title">Removed in 2026.04</p>
+<p>The <code>.lidar.png</code> (depth map) and <code>.lidar.jpeg</code> (reflectivity) projected visualization
+formats have been <strong>removed</strong> from the format specification in 2026.04.
+The <abbr title="Software Development Kit">SDK</abbr> retains read support for backward compatibility but will not write these types.
+Consumers that need depth or reflectivity images should project <abbr title="Light Detection and Ranging">LiDAR</abbr> PCD data directly.</p>
 </div>
-<h2 id="overview">Overview</h2>
-<p>EdgeFirst datasets support multiple sensor types that are captured simultaneously and stored together:</p>
-<pre class="mermaid"><code>graph TB
-    subgraph Dataset["🗂️ EdgeFirst Dataset"]
-        direction TB
-        Sensors["📦 Sensor Container"]
-    end
-    
-    Sensors --&gt; Camera["📷 Camera - JPEG/PNG Images"]
-    Sensors --&gt; Radar["📡 Radar - Point Clouds + Data Cubes"]
-    Sensors --&gt; LiDAR["🔦 LiDAR - Point Clouds + Visualizations"]
-    Sensors --&gt; Depth["📊 Depth - Depthmaps (Optional)"]
-    
-    style Dataset fill:#e1f5ff,stroke:#0277bd,stroke-width:2px
-    style Sensors fill:#fff3e0,stroke:#ef6c00,stroke-width:2px
-    style Camera fill:#c8e6c9,stroke:#388e3c,stroke-width:2px
-    style Radar fill:#bbdefb,stroke:#1976d2,stroke-width:2px
-    style LiDAR fill:#f8bbd0,stroke:#c2185b,stroke-width:2px
-    style Depth fill:#e1bee7,stroke:#6a1b9a,stroke-width:2px</code></pre>
-<h2 id="camera-data">Camera Data</h2>
-<h3 id="file-format">File Format</h3>
+<h2 id="camera">Camera</h2>
+<p><strong>Format</strong>: JPEG (default) or PNG (lossless)</p>
+<p><strong>Source</strong>: H.265 video from <abbr title="Binary container format for robotics log data">MCAP</abbr> converted to discrete frames</p>
+<p><strong>EXIF metadata</strong> (embedded in images):</p>
 <ul>
-<li><strong>Default</strong>: JPEG (<code>.camera.jpeg</code>) — good compression, standard format</li>
-<li><strong>Lossless</strong>: PNG (<code>.camera.png</code>) — when exact pixel preservation needed</li>
-<li><strong>Encoding</strong>: H.265 from <abbr title="Binary container format for robotics log data">MCAP</abbr> → converted to discrete frames during dataset creation</li>
+<li><abbr title="Global Positioning System">GPS</abbr> coordinates (from <abbr title="Binary container format for robotics log data">MCAP</abbr> <code>/gps</code> topic or NavSat)</li>
+<li>Capture timestamp</li>
+<li>Camera parameters</li>
+<li>Device information</li>
 </ul>
-<h3 id="file-naming">File Naming</h3>
-<div class="highlight"><pre><span></span><code>{sequence_name}_{frame_number}.camera.jpeg
-</code></pre></div>
-<p>Example:</p>
-<div class="highlight"><pre><span></span><code>system_2025_01_15_143022_001.camera.jpeg
-system_2025_01_15_143022_002.camera.jpeg
-</code></pre></div>
-<h3 id="exif-metadata">EXIF Metadata</h3>
-<p>Camera images embed metadata in EXIF tags:</p>
+<p><strong>File extensions</strong>:</p>
 <ul>
-<li><strong><abbr title="Global Positioning System">GPS</abbr> coordinates</strong>: Latitude, longitude (from <abbr title="Binary container format for robotics log data">MCAP</abbr> NavSat topic)</li>
-<li><strong>Timestamp</strong>: When the frame was captured</li>
-<li><strong>Camera parameters</strong>: Intrinsic calibration (if available)</li>
-<li><strong>Device info</strong>: Device/system identifier</li>
+<li><code>.camera.jpeg</code> — camera image (default)</li>
+<li><code>.camera.png</code> — camera image (lossless)</li>
+<li><code>.jpg</code>, <code>.png</code> — generic image formats</li>
 </ul>
-<p>This metadata is automatically extracted and stored in the <a href="../schema/">Annotation Schema</a> as <code>location</code> field.</p>
-<h3 id="typical-use-case">Typical Use Case</h3>
-<p>Primary input for:</p>
-<ul>
-<li>Object detection models</li>
-<li>Segmentation masks (pixel-level)</li>
-<li>Visual analysis and auditing</li>
-<li>2D bounding box annotations</li>
-</ul>
-<hr />
-<h2 id="radar-data">Radar Data</h2>
-<p>Radar provides two complementary representations:</p>
-<pre class="mermaid"><code>graph TB
-    subgraph Radar["📡 Radar Data"]
-        direction TB
-        PCD["Point Cloud (x, y, z, speed, power, ...)"]
-        Cube["Data Cube (Range-Doppler Matrix)"]
-    end
-    
-    PCD --&gt;|"Useful for"| PC_Use["🎯 Annotation - Spatial visualization"]
-    Cube --&gt;|"Useful for"| Cube_Use["🤖 Training - Fusion models"]
-    
-    style PCD fill:#bbdefb,stroke:#1976d2,stroke-width:2px
-    style Cube fill:#c8e6c9,stroke:#388e3c,stroke-width:2px
-    style PC_Use fill:#fff9c4,stroke:#f57f17,stroke-width:2px
-    style Cube_Use fill:#fff9c4,stroke:#f57f17,stroke-width:2px</code></pre>
-<h3 id="point-cloud-radarpcd">Point Cloud (<code>.radar.pcd</code>)</h3>
-<p><strong>Format</strong>: PCD (Point Cloud Data) — standard format for 3D point clouds</p>
+<h2 id="radar">Radar</h2>
+<h3 id="point-cloud-data">Point Cloud Data</h3>
+<p><strong>Format</strong>: PCD (Point Cloud Data)</p>
+<p><strong>Extension</strong>: <code>.radar.pcd</code></p>
 <p><strong>Fields</strong>:</p>
-<ul>
-<li><code>x, y, z</code>: Cartesian position in meters (relative to vehicle)</li>
-<li><code>speed</code>: Doppler velocity (m/s)</li>
-<li><code>power</code>: Signal power</li>
-<li><code>noise</code>: Noise level</li>
-<li><code>rcs</code>: Radar cross-section</li>
-</ul>
-<p><strong>File naming</strong>:</p>
-<div class="highlight"><pre><span></span><code>{sequence_name}_{frame_number}.radar.pcd
+<div class="highlight"><pre><span></span><code>x, y, z          # Cartesian position (meters)
+speed            # Velocity (m/s)
+power            # Signal power
+noise            # Noise level
+rcs              # Radar cross-section
 </code></pre></div>
-<p><strong>Typical use</strong>:</p>
-<ul>
-<li>Visualize spatial detections during annotation</li>
-<li>Verify camera detections against radar</li>
-<li>Point cloud-based 3D object detection</li>
-</ul>
-<p><strong>Example reading</strong> (Python):</p>
-<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">open3d</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">o3d</span>
-
-<span class="n">pcd</span> <span class="o">=</span> <span class="n">o3d</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">read_point_cloud</span><span class="p">(</span><span class="s2">&quot;frame_001.radar.pcd&quot;</span><span class="p">)</span>
-<span class="n">points</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">pcd</span><span class="o">.</span><span class="n">points</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Points: </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">points</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>  <span class="c1"># Number of radar returns</span>
-</code></pre></div>
-<h3 id="data-cube-radarpng">Data Cube (<code>.radar.png</code>)</h3>
-<p><strong>Format</strong>: 16-bit PNG (lossless encoding)</p>
-<p><strong>What it is</strong>: Range-Doppler matrix representing raw radar signal</p>
+<h3 id="radar-data-cube">Radar Data Cube</h3>
+<p><strong>Format</strong>: 16-bit PNG (lossless encoding of complex int16 data)</p>
+<p><strong>Extension</strong>: <code>.radar.png</code></p>
 <p><strong>Dimensions</strong>: <code>[sequence, rx_antenna, range_bins, doppler_bins]</code></p>
 <p><strong>Typical shape</strong>: <code>[2, 4, 200, 256]</code></p>
+<p><strong>PNG encoding</strong>:</p>
 <ul>
-<li>2 sequences (transmit sequences)</li>
-<li>4 RX antennas</li>
-<li>200 range bins</li>
-<li>256 doppler bins</li>
+<li>4 x 2 grid layout (4 columns = RX antennas, 2 rows = sequences)</li>
+<li>Complex int16 split into pair of int16 values (PNG does not support complex)</li>
+<li><strong>int16 shifted to uint16</strong> for PNG storage (shift back to int16 for processing)</li>
+<li>Double-width matrices (complex pairs)</li>
+<li><strong>Output size</strong>: 2048 x 400 pixels for standard cube</li>
 </ul>
-<p><strong>PNG Encoding</strong>:</p>
-<p>The 4D array is laid out as a 4×2 grid in the PNG:</p>
-<div class="highlight"><pre><span></span><code>PNG Image Layout (simplified):
-┌─────────────────────────────────┐
-│  Seq1  │  Seq1  │  Seq1  │  Seq1│  Row 1: 4 columns
-│  RxA0  │  RxA1  │  RxA2  │  RxA3│
-├─────────────────────────────────┤
-│  Seq2  │  Seq2  │  Seq2  │  Seq2│  Row 2: 4 columns
-│  RxA0  │  RxA1  │  RxA2  │  RxA3│
-└─────────────────────────────────┘
-
-Each cell contains:
-- X-axis: 2× doppler bins (complex int16 → two int16 for real/imaginary)
-- Y-axis: range bins
-</code></pre></div>
-<p><strong>Complex data storage</strong>:</p>
-<ul>
-<li>Original: Complex int16 values</li>
-<li>PNG format: Split into real/imaginary pairs (doesn't support complex numbers)</li>
-<li>Width doubled to accommodate: <code>4 * 2 * 256 = 2048</code> pixels</li>
-<li>Height: <code>2 * 200 = 400</code> pixels</li>
-</ul>
-<p><strong>Final image size</strong>: 2048×400 pixels (for typical configuration)</p>
-<p><strong>File naming</strong>:</p>
-<div class="highlight"><pre><span></span><code>{sequence_name}_{frame_number}.radar.png
-</code></pre></div>
-<p><strong>Important notes</strong>:</p>
-<ul>
-<li>Wide dynamic range (most data near zero)</li>
-<li>Difficult to visualize directly (consider log scaling)</li>
-<li>Lossless conversion (no information lost)</li>
-</ul>
-<p><strong>Typical use</strong>:</p>
-<ul>
-<li>Training fusion models that consume low-level radar data</li>
-<li>Radar signal analysis and research</li>
-</ul>
-<hr />
-<h2 id="lidar-data"><abbr title="Light Detection and Ranging">LiDAR</abbr> Data</h2>
-<h3 id="point-cloud-lidarpcd">Point Cloud (<code>.lidar.pcd</code>)</h3>
+<h2 id="lidar"><abbr title="Light Detection and Ranging">LiDAR</abbr></h2>
 <p><strong>Format</strong>: PCD (Point Cloud Data)</p>
-<p><strong>Configuration</strong>: Based on Maivin <abbr title="Binary container format for robotics log data">MCAP</abbr> Recorder settings (specifics subject to configuration)</p>
-<p><strong>File naming</strong>:</p>
-<div class="highlight"><pre><span></span><code>{sequence_name}_{frame_number}.lidar.pcd
-</code></pre></div>
-<h3 id="visualizations">Visualizations</h3>
-<p><strong>Depth Map</strong> (<code>.lidar.png</code>):</p>
-<ul>
-<li>Visualization of depth from <abbr title="Light Detection and Ranging">LiDAR</abbr> returns</li>
-<li>Used for analysis and debugging</li>
-</ul>
-<p><strong>Reflectivity</strong> (<code>.lidar.jpeg</code>):</p>
-<ul>
-<li>Intensity/reflectivity visualization</li>
-<li>Shows how reflective each point is</li>
-</ul>
-<p><strong>File naming</strong>:</p>
-<div class="highlight"><pre><span></span><code>{sequence_name}_{frame_number}.lidar.png       # depth map
-{sequence_name}_{frame_number}.lidar.jpeg      # reflectivity
-</code></pre></div>
-<hr />
-<h2 id="depth-data-optional">Depth Data (Optional)</h2>
-<p>Some datasets include depth estimation from camera frames:</p>
-<p><strong>File format</strong>: <code>.depth.png</code> (16-bit depth map)</p>
-<p><strong>File naming</strong>:</p>
-<div class="highlight"><pre><span></span><code>{sequence_name}_{frame_number}.depth.png
-</code></pre></div>
-<p><strong>Use case</strong>:</p>
-<ul>
-<li>Pseudo-3D from monocular depth estimation</li>
-<li>Training or evaluating depth models</li>
-</ul>
-<hr />
-<h2 id="file-organization-example">File Organization Example</h2>
-<p>Here's a complete example showing all possible sensor types:</p>
-<div class="highlight"><pre><span></span><code>my_dataset/
-├── my_dataset.arrow
-└── my_dataset/
-    └── system_2025_01_15_143022/
-        ├── system_2025_01_15_143022_001.camera.jpeg
-        ├── system_2025_01_15_143022_001.camera.png         (if lossless)
-        ├── system_2025_01_15_143022_001.radar.pcd
-        ├── system_2025_01_15_143022_001.radar.png
-        ├── system_2025_01_15_143022_001.lidar.pcd
-        ├── system_2025_01_15_143022_001.lidar.png
-        ├── system_2025_01_15_143022_001.lidar.jpeg
-        ├── system_2025_01_15_143022_001.depth.png
-        ├── system_2025_01_15_143022_002.camera.jpeg
-        ├── system_2025_01_15_143022_002.radar.pcd
-        ├── system_2025_01_15_143022_002.radar.png
-        └── ... (more frames)
-</code></pre></div>
-<h2 id="sensor-data-alignment">Sensor Data Alignment</h2>
-<p>All sensor data for a given frame is aligned temporally:</p>
-<div class="highlight"><pre><span></span><code>system_2025_01_15_143022_042
-├── .camera.jpeg     ← Captured at T=42
-├── .radar.pcd       ← Measured at T=42
-├── .radar.png       ← Measured at T=42
-└── .lidar.pcd       ← Measured at T=42
-</code></pre></div>
-<p>This means:</p>
-<ul>
-<li>Same frame number across sensors = captured at same moment</li>
-<li>No temporal skew between modalities</li>
-<li>Safe for multi-sensor fusion and training</li>
-</ul>
-<h2 id="accessing-sensor-data">Accessing Sensor Data</h2>
-<p>Once you have your dataset, you can access sensor files:</p>
-<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">pathlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">Path</span>
-
-<span class="n">dataset_root</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="s2">&quot;my_dataset&quot;</span><span class="p">)</span>
-<span class="n">sensor_dir</span> <span class="o">=</span> <span class="n">dataset_root</span> <span class="o">/</span> <span class="s2">&quot;my_dataset&quot;</span>
-
-<span class="c1"># List all camera images</span>
-<span class="n">camera_files</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">sensor_dir</span><span class="o">.</span><span class="n">glob</span><span class="p">(</span><span class="s2">&quot;**/*.camera.jpeg&quot;</span><span class="p">))</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Found </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">camera_files</span><span class="p">)</span><span class="si">}</span><span class="s2"> camera frames&quot;</span><span class="p">)</span>
-
-<span class="c1"># List all radar files</span>
-<span class="n">radar_pcd_files</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">sensor_dir</span><span class="o">.</span><span class="n">glob</span><span class="p">(</span><span class="s2">&quot;**/*.radar.pcd&quot;</span><span class="p">))</span>
-<span class="n">radar_cube_files</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">sensor_dir</span><span class="o">.</span><span class="n">glob</span><span class="p">(</span><span class="s2">&quot;**/*.radar.png&quot;</span><span class="p">))</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Found </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">radar_pcd_files</span><span class="p">)</span><span class="si">}</span><span class="s2"> radar point clouds&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Found </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">radar_cube_files</span><span class="p">)</span><span class="si">}</span><span class="s2"> radar data cubes&quot;</span><span class="p">)</span>
-
-<span class="c1"># Group by sequence</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">collections</span><span class="w"> </span><span class="kn">import</span> <span class="n">defaultdict</span>
-<span class="n">sequences</span> <span class="o">=</span> <span class="n">defaultdict</span><span class="p">(</span><span class="nb">list</span><span class="p">)</span>
-<span class="k">for</span> <span class="n">file</span> <span class="ow">in</span> <span class="n">camera_files</span><span class="p">:</span>
-    <span class="n">seq_name</span> <span class="o">=</span> <span class="n">file</span><span class="o">.</span><span class="n">stem</span><span class="o">.</span><span class="n">rsplit</span><span class="p">(</span><span class="s1">&#39;_&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
-    <span class="n">sequences</span><span class="p">[</span><span class="n">seq_name</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">file</span><span class="p">)</span>
-
-<span class="k">for</span> <span class="n">seq</span><span class="p">,</span> <span class="n">files</span> <span class="ow">in</span> <span class="n">sequences</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
-    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Sequence &#39;</span><span class="si">{</span><span class="n">seq</span><span class="si">}</span><span class="s2">&#39;: </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">files</span><span class="p">)</span><span class="si">}</span><span class="s2"> frames&quot;</span><span class="p">)</span>
-</code></pre></div>
-<h2 id="best-practices">Best Practices</h2>
-<ul>
-<li><strong>Verify alignment</strong>: Ensure matching frame numbers exist for all sensors</li>
-<li><strong>Check completeness</strong>: Not all frames need all sensors (e.g., <abbr title="Light Detection and Ranging">LiDAR</abbr> might be optional)</li>
-<li><strong>Test loading</strong>: Try loading a few files before processing entire dataset</li>
-<li><strong>Handle missing data</strong>: Some frames may lack optional sensors (depth, reflectivity)</li>
-</ul>
-<h2 id="further-reading">Further Reading</h2>
-<ul>
-<li><a href="../structure/">Dataset Organization</a> — How sensor files are organized on disk</li>
-<li><a href="../schema/">Annotation Schema</a> — Metadata extracted from EXIF and sensors</li>
-<li><a href="../../../platforms/recording/">Platform Recording</a> — How sensor data is recorded on Raivin/Maivin</li>
-<li><a href="../../../platforms/publishing/">Publishing Workflows</a> — How to upload <abbr title="Binary container format for robotics log data">MCAP</abbr> recordings as snapshots</li>
-<li><a href="../../../studio/snapshots/">Snapshots Dashboard</a> — How to download and restore snapshots</li>
-</ul>
+<p><strong>Extension</strong>: <code>.lidar.pcd</code></p>
+<p><strong>Configuration</strong>: Based on Maivin <abbr title="Binary container format for robotics log data">MCAP</abbr> Recorder settings.</p>
+<div class="admonition note">
+<p class="admonition-title">Projected visualizations removed</p>
+<p>Prior versions of EdgeFirst supported <code>.lidar.png</code> (depth map) and <code>.lidar.jpeg</code>
+(reflectivity) files that contained 2D projections of <abbr title="Light Detection and Ranging">LiDAR</abbr> point cloud data.
+These have been removed in 2026.04. If your pipeline requires depth or reflectivity
+images, project the PCD data using the <abbr title="Light Detection and Ranging">LiDAR</abbr> sensor calibration parameters.</p>
+</div>
 
 
 
@@ -2312,7 +1852,7 @@ Each cell contains:
       <nav class="md-footer__inner md-grid" aria-label="Footer" >
         
           
-          <a href="../schema/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Annotation Schema &amp;amp; Fields">
+          <a href="../schema/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Annotation Schema">
             <div class="md-footer__button md-icon">
               
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
@@ -2322,20 +1862,20 @@ Each cell contains:
                 Previous
               </span>
               <div class="md-ellipsis">
-                Annotation Schema &amp; Fields
+                Annotation Schema
               </div>
             </div>
           </a>
         
         
           
-          <a href="../formats/" class="md-footer__link md-footer__link--next" aria-label="Next: Annotation Formats: Arrow vs. JSON">
+          <a href="../formats/" class="md-footer__link md-footer__link--next" aria-label="Next: Storage Formats">
             <div class="md-footer__title">
               <span class="md-footer__direction">
                 Next
               </span>
               <div class="md-ellipsis">
-                Annotation Formats: Arrow vs. JSON
+                Storage Formats
               </div>
             </div>
             <div class="md-footer__button md-icon">

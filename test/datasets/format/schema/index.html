@@ -25,11 +25,11 @@
       
       
       <link rel="icon" href="../../../assets/favicon.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.5">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
     
     
       
-        <title>Annotation Schema & Fields - EdgeFirst Studio Documentation</title>
+        <title>Annotation Schema - EdgeFirst Studio Documentation</title>
       
     
     
@@ -79,7 +79,7 @@
     
   
 <meta property="og:type" content="website" />
-<meta property="og:title" content="Annotation Schema &amp; Fields - EdgeFirst Studio Documentation" />
+<meta property="og:title" content="Annotation Schema - EdgeFirst Studio Documentation" />
 <meta property="og:description" content="EdgeFirst Studio Documentation" />
 <meta property="og:image" content="https://doc.edgefirst.ai/test/assets/images/social/datasets/format/schema.png" />
 <meta property="og:image:type" content="image/png" />
@@ -87,7 +87,7 @@
 <meta property="og:image:height" content="630" />
 <meta property="og:url" content="https://doc.edgefirst.ai/test/datasets/format/schema/" />
 <meta property="twitter:card" content="summary_large_image" />
-<meta property="twitter:title" content="Annotation Schema &amp; Fields - EdgeFirst Studio Documentation" />
+<meta property="twitter:title" content="Annotation Schema - EdgeFirst Studio Documentation" />
 <meta property="twitter:description" content="EdgeFirst Studio Documentation" />
 <meta property="twitter:image" content="https://doc.edgefirst.ai/test/assets/images/social/datasets/format/schema.png" />
 </head>
@@ -109,7 +109,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#annotation-schema-fields" class="md-skip">
+        <a href="#annotation-schema" class="md-skip">
           Skip to content
         </a>
       
@@ -163,7 +163,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Annotation Schema &amp; Fields
+              Annotation Schema
             
           </span>
         </div>
@@ -770,6 +770,8 @@
       
         
       
+        
+      
     
     
     
@@ -838,7 +840,7 @@
   <span class="md-ellipsis">
     
   
-    Dataset Organization
+    Directory Structure
   
 
     
@@ -866,7 +868,7 @@
   <span class="md-ellipsis">
     
   
-    Bounding Box Formats
+    Box Formats
   
 
     
@@ -903,7 +905,7 @@
   <span class="md-ellipsis">
     
   
-    Annotation Schema &amp; Fields
+    Annotation Schema
   
 
     
@@ -921,7 +923,7 @@
   <span class="md-ellipsis">
     
   
-    Annotation Schema &amp; Fields
+    Annotation Schema
   
 
     
@@ -947,44 +949,22 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#how-annotations-are-created" class="md-nav__link">
+  <a href="#column-reference" class="md-nav__link">
     <span class="md-ellipsis">
       
-        How Annotations Are Created
+        Column Reference
       
     </span>
   </a>
   
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#understanding-the-annotation-structure" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Understanding the Annotation Structure
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#core-fields" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Core Fields
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Core Fields">
+    <nav class="md-nav" aria-label="Column Reference">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#name" class="md-nav__link">
+  <a href="#identity-classification" class="md-nav__link">
     <span class="md-ellipsis">
       
-        name
+        Identity &amp; Classification
       
     </span>
   </a>
@@ -992,10 +972,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#frame" class="md-nav__link">
+  <a href="#geometry-polygon" class="md-nav__link">
     <span class="md-ellipsis">
       
-        frame
+        Geometry: Polygon
       
     </span>
   </a>
@@ -1003,10 +983,126 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#label" class="md-nav__link">
+  <a href="#geometry-raster-mask" class="md-nav__link">
     <span class="md-ellipsis">
       
-        label
+        Geometry: Raster Mask
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#geometry-2d-bounding-box" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Geometry: 2D Bounding Box
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#geometry-3d-bounding-box" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Geometry: 3D Bounding Box
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#annotation-metadata" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Annotation Metadata
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sample-metadata" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Sample Metadata
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#instrumentation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Instrumentation
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#score-columns" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Score Columns
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#complete-polars-schema" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Complete Polars Schema
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#file-level-metadata" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        File-Level Metadata
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="File-Level Metadata">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#category-metadata" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Category Metadata
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#labels-metadata" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Labels Metadata
       
     </span>
   </a>
@@ -1024,185 +1120,8 @@
   
 </li>
         
-          <li class="md-nav__item">
-  <a href="#object_id" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        object_id
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#group" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        group
-      
-    </span>
-  </a>
-  
-</li>
-        
       </ul>
     </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#geometry-fields" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Geometry Fields
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Geometry Fields">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#box2d" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        box2d
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#box3d" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        box3d
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#mask" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        mask
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#sample-metadata-fields" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Sample Metadata Fields
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Sample Metadata Fields">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#size" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        size
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#location" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        location
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#pose" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        pose
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#degradation" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        degradation
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#complete-example" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Complete Example
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#optional-fields" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Optional Fields
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#querying-annotations" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Querying Annotations
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#further-reading" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Further Reading
-      
-    </span>
-  </a>
   
 </li>
       
@@ -1257,7 +1176,7 @@
   <span class="md-ellipsis">
     
   
-    Annotation Formats: Arrow vs. JSON
+    Storage Formats
   
 
     
@@ -1285,7 +1204,35 @@
   <span class="md-ellipsis">
     
   
-    Format Conversion: Arrow ↔ JSON
+    Conversion Guidelines
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../migration/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Upgrading from 2025.10 to 2026.04
   
 
     
@@ -1690,44 +1637,22 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#how-annotations-are-created" class="md-nav__link">
+  <a href="#column-reference" class="md-nav__link">
     <span class="md-ellipsis">
       
-        How Annotations Are Created
+        Column Reference
       
     </span>
   </a>
   
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#understanding-the-annotation-structure" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Understanding the Annotation Structure
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#core-fields" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Core Fields
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Core Fields">
+    <nav class="md-nav" aria-label="Column Reference">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#name" class="md-nav__link">
+  <a href="#identity-classification" class="md-nav__link">
     <span class="md-ellipsis">
       
-        name
+        Identity &amp; Classification
       
     </span>
   </a>
@@ -1735,10 +1660,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#frame" class="md-nav__link">
+  <a href="#geometry-polygon" class="md-nav__link">
     <span class="md-ellipsis">
       
-        frame
+        Geometry: Polygon
       
     </span>
   </a>
@@ -1746,10 +1671,126 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#label" class="md-nav__link">
+  <a href="#geometry-raster-mask" class="md-nav__link">
     <span class="md-ellipsis">
       
-        label
+        Geometry: Raster Mask
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#geometry-2d-bounding-box" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Geometry: 2D Bounding Box
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#geometry-3d-bounding-box" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Geometry: 3D Bounding Box
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#annotation-metadata" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Annotation Metadata
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sample-metadata" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Sample Metadata
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#instrumentation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Instrumentation
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#score-columns" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Score Columns
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#complete-polars-schema" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Complete Polars Schema
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#file-level-metadata" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        File-Level Metadata
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="File-Level Metadata">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#category-metadata" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Category Metadata
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#labels-metadata" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Labels Metadata
       
     </span>
   </a>
@@ -1767,185 +1808,8 @@
   
 </li>
         
-          <li class="md-nav__item">
-  <a href="#object_id" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        object_id
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#group" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        group
-      
-    </span>
-  </a>
-  
-</li>
-        
       </ul>
     </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#geometry-fields" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Geometry Fields
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Geometry Fields">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#box2d" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        box2d
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#box3d" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        box3d
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#mask" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        mask
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#sample-metadata-fields" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Sample Metadata Fields
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Sample Metadata Fields">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#size" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        size
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#location" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        location
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#pose" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        pose
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#degradation" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        degradation
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#complete-example" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Complete Example
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#optional-fields" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Optional Fields
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#querying-annotations" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Querying Annotations
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#further-reading" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Further Reading
-      
-    </span>
-  </a>
   
 </li>
       
@@ -2015,367 +1879,673 @@
 
 
 
-<h1 id="annotation-schema-fields">Annotation Schema &amp; Fields</h1>
-<p>This page documents all the fields in your EdgeFirst annotations, what they mean, and how to use them.</p>
-<h2 id="how-annotations-are-created">How Annotations Are Created</h2>
-<p>Annotations in EdgeFirst are created through several methods:</p>
+<h1 id="annotation-schema">Annotation Schema</h1>
+<p><strong>Schema version</strong>: <code>2026.04</code></p>
+<p>The EdgeFirst annotation schema uses a flat, columnar layout: <strong>one row per annotation
+instance</strong>. All columns are nullable unless noted otherwise. Optional columns may be
+absent entirely from a file.</p>
+<h2 id="column-reference">Column Reference</h2>
+<h3 id="identity-classification">Identity &amp; Classification</h3>
 <table>
 <thead>
 <tr>
-<th>Method</th>
-<th>Fields Populated</th>
-<th>Source</th>
+<th>Column</th>
+<th>Type</th>
+<th>Description</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td><strong><a href="../../tutorials/annotations/manual/">Manual annotation</a></strong></td>
-<td><code>label</code>, <code>box2d</code>, <code>mask</code></td>
-<td>User draws in Instance Dashboard</td>
+<td><code>name</code></td>
+<td><code>String</code></td>
+<td>Sample identifier (derived from filename)</td>
 </tr>
 <tr>
-<td><strong><a href="../../tutorials/annotations/automatic/">AGTG (Automatic)</a></strong></td>
-<td><code>label</code>, <code>box2d</code>, <code>mask</code>, <code>status</code></td>
-<td>SAM-2 AI auto-detection</td>
+<td><code>frame</code></td>
+<td><code>UInt32</code></td>
+<td>Sequence frame number (null for standalone images)</td>
 </tr>
 <tr>
-<td><strong><a href="../../../models/">Model inference</a></strong></td>
-<td><code>label</code>, <code>box2d</code>, <code>box3d</code></td>
-<td>Trained model predictions</td>
+<td><code>object_id</code></td>
+<td><code>String</code></td>
+<td>Instance tracking UUID</td>
 </tr>
 <tr>
-<td><strong><a href="../../../studio/snapshots/">Import from snapshot</a></strong></td>
-<td>All fields</td>
-<td>Restored from Arrow file</td>
+<td><code>label</code></td>
+<td><code>Categorical</code></td>
+<td>Class label (JSON field: <code>label_name</code>)</td>
+</tr>
+<tr>
+<td><code>label_index</code></td>
+<td><code>UInt64</code></td>
+<td>Source-faithful numeric class index (see <a href="#label_index">label_index details</a>)</td>
+</tr>
+<tr>
+<td><code>group</code></td>
+<td><code>Categorical</code></td>
+<td>Dataset split — <code>train</code>, <code>val</code>, <code>test</code> (JSON field: <code>group_name</code>)</td>
 </tr>
 </tbody>
 </table>
-<div class="admonition tip">
-<p class="admonition-title">AGTG fills annotation fields automatically</p>
-<p>When you run Automatic Ground Truth Generation (AGTG) on a dataset, EdgeFirst Studio uses SAM-2 to detect objects and populate:</p>
-<ul>
-<li><code>label</code>: Object class detected</li>
-<li><code>box2d</code>: Bounding box coordinates (center-based)</li>
-<li><code>mask</code>: Pixel-level segmentation polygon</li>
-<li><code>status</code>: Annotation quality indicator</li>
-</ul>
-<p>You can then review and adjust these annotations in the Instance Dashboard.</p>
+<h3 id="geometry-polygon">Geometry: Polygon</h3>
+<table>
+<thead>
+<tr>
+<th>Column</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>polygon</code></td>
+<td><code>List&lt;List&lt;f32&gt;&gt;</code></td>
+<td>Interleaved <code>[x1, y1, x2, y2, ...]</code> coordinate pairs per ring</td>
+</tr>
+<tr>
+<td><code>polygon_score</code></td>
+<td><code>Float32</code></td>
+<td>Confidence score (0..1), nullable, optional</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition info">
+<p class="admonition-title">New in 2026.04</p>
+<p>The <code>polygon</code> column replaces the 2025.10 <code>mask: List&lt;Float32&gt;</code> column that stored
+NaN-separated polygon coordinates. See <a href="../migration/">Migration Guide</a> for details.</p>
 </div>
-<h2 id="understanding-the-annotation-structure">Understanding the Annotation Structure</h2>
-<p>Each annotation describes <strong>one labeled object</strong> in one sample (image or frame). An annotation contains:</p>
-<pre class="mermaid"><code>%%{init: {'flowchart': {'padding': '40'}}}%%
-graph TB
-    Ann["📝 Annotation"]
-    
-    Ann --&gt;|"Identifies"| What["🏷️ What (label, class)"]
-    Ann --&gt;|"Locates"| Where["📍 Where (box2d, box3d, mask)"]
-    Ann --&gt;|"Tracks"| ID["🔗 Identity (object_id)"]
-    Ann --&gt;|"Categorizes"| Split["📊 Split (group)"]
-    
-    style Ann fill:#e1f5ff,stroke:#0277bd,stroke-width:2px
-    style What fill:#c8e6c9,stroke:#388e3c,stroke-width:2px
-    style Where fill:#fff9c4,stroke:#f57f17,stroke-width:2px
-    style ID fill:#f8bbd0,stroke:#c2185b,stroke-width:2px
-    style Split fill:#d1c4e9,stroke:#5e35b1,stroke-width:2px</code></pre>
-<h2 id="core-fields">Core Fields</h2>
-<h3 id="name">name</h3>
-<p><strong>Type</strong>: <code>String</code><br />
-<strong>What it is</strong>: Sample identifier—links the annotation to a specific image or frame<br />
-<strong>Example</strong>: <code>sequence_001_042</code> or <code>background_image_1</code></p>
-<p><strong>How it's derived</strong>:</p>
+<p><strong>Outer list</strong>: Multiple polygon rings per instance (disjoint parts, holes).</p>
+<p><strong>Inner list</strong>: Interleaved <code>[x1, y1, x2, y2, ...]</code> pairs for one ring. Coordinates
+are always <strong>normalized</strong> (0..1) relative to the full image. Multiply by image dimensions
+to get pixel coordinates.</p>
+<p><strong>Coordinate space</strong>: Polygon coordinates are always image-space normalized, regardless of
+whether <code>box2d</code> coexists on the same row. The box provides object location; the polygon
+provides the precise boundary in full-image coordinates.</p>
+<p><strong>Validity rules</strong>:</p>
 <ul>
-<li><strong>For sequences</strong>: Filename without extension and frame number</li>
-<li><strong>For images</strong>: Filename without extension</li>
+<li>Inner lists must have an <strong>even</strong> number of values (coordinate pairs)</li>
+<li>Minimum <strong>6 values</strong> (3 points) per valid ring</li>
+<li>Odd-length inner lists are invalid — writers reject, readers drop with a warning</li>
 </ul>
-<p>Examples:</p>
-<div class="highlight"><pre><span></span><code>scene_001.camera.jpg      →  name = &quot;scene_001&quot;
-deer_sequence_042.jpg     →  name = &quot;deer_sequence&quot; 
-image_background.png      →  name = &quot;image_background&quot;
-</code></pre></div>
-<h3 id="frame">frame</h3>
-<p><strong>Type</strong>: <code>UInt64</code> (nullable, can be <code>null</code>)<br />
-<strong>What it is</strong>: Frame number within a sequence (0-indexed)<br />
-<strong>Example</strong>: <code>42</code> for the 42nd frame, or <code>null</code> for standalone images</p>
-<p><strong>When it's used</strong>:</p>
+<h3 id="geometry-raster-mask">Geometry: Raster Mask</h3>
+<table>
+<thead>
+<tr>
+<th>Column</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>mask</code></td>
+<td><code>Binary</code></td>
+<td>PNG-encoded grayscale raster pixels</td>
+</tr>
+<tr>
+<td><code>mask_score</code></td>
+<td><code>Float32</code></td>
+<td>Per-instance confidence (0..1), nullable, optional</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition warning">
+<p class="admonition-title">Type changed in 2026.04</p>
+<p>The <code>mask</code> column changed from <code>List&lt;Float32&gt;</code> (NaN-separated polygons in 2025.10)
+to <code>Binary</code> (PNG-encoded raster pixels in 2026.04). Code that assumes <code>Float32</code> will
+fail on 2026.04 files.</p>
+</div>
+<p><strong>Encoding</strong>: Masks are stored as single-channel (grayscale) PNG images within the
+<code>Binary</code> column. The PNG format provides:</p>
 <ul>
-<li><strong>Sequences</strong>: <code>frame = {number}</code> (e.g., <code>0</code>, <code>1</code>, <code>2</code>, ...)</li>
-<li><strong>Standalone images</strong>: <code>frame = null</code></li>
+<li><strong>Self-describing dimensions</strong> — width and height in the PNG header (first 24 bytes),
+  readable without full decode</li>
+<li><strong>Lossless compression</strong> — typically 2–10× smaller than raw pixel arrays</li>
+<li><strong>Variable bit depth</strong> — 1-bit for binary masks, 8-bit for confidence/sigmoid/logits,
+  16-bit for high-precision outputs</li>
 </ul>
-<p>The combination of <code>(name, frame)</code> uniquely identifies a sample in the dataset.</p>
-<h3 id="label">label</h3>
-<p><strong>Type</strong>: <code>String</code> (Categorical)<br />
-<strong>What it is</strong>: The object classification—what is this thing?<br />
-<strong>Examples</strong>: <code>"person"</code>, <code>"car"</code>, <code>"tree"</code>, <code>"bicycle"</code></p>
-<h3 id="label_index">label_index</h3>
-<p><strong>Type</strong>: <code>UInt64</code><br />
-<strong>What it is</strong>: Numeric index for the label (used by ML models)<br />
-<strong>Example</strong>: In COCO dataset, "person"=0, "car"=2, "bicycle"=1</p>
-<p><strong>Why it exists</strong>: Pre-trained models expect numeric indices, not strings. The mapping ensures consistency.</p>
-<h3 id="object_id">object_id</h3>
-<p><strong>Type</strong>: <code>String</code> (UUID strongly recommended)<br />
-<strong>What it is</strong>: Unique identifier for tracking objects across frames and linking annotations<br />
-<strong>Examples</strong>:</p>
-<div class="highlight"><pre><span></span><code>550e8400-e29b-41d4-a716-446655440000  (UUID - recommended)
-car_track_005
-person_01
-</code></pre></div>
-<p><strong>Use cases</strong>:</p>
+<table>
+<thead>
+<tr>
+<th>Source</th>
+<th>PNG bit depth</th>
+<th>Pixel values</th>
+<th>Use case</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Binary mask (any source)</td>
+<td><strong>1-bit (preferred)</strong></td>
+<td>0/1</td>
+<td>Ground truth, thresholded output, COCO RLE import</td>
+</tr>
+<tr>
+<td>Sigmoid scores</td>
+<td>8-bit</td>
+<td>0–255 (quantized)</td>
+<td>Model confidence per-pixel</td>
+</tr>
+<tr>
+<td>High-precision scores</td>
+<td>16-bit</td>
+<td>0–65535</td>
+<td>When 8-bit quantization is insufficient</td>
+</tr>
+</tbody>
+</table>
+<p><strong>1-bit is the preferred encoding for all binary masks</strong>, regardless of source (COCO RLE,
+thresholded model output, ground truth annotations). Alternatives like 8-bit with 0/255
+are valid but wasteful and ambiguous — a reader cannot distinguish "binary mask stored as
+8-bit" from "8-bit score data." 1-bit encoding is self-documenting: if the PNG is 1-bit,
+the mask is binary.</p>
+<p><strong>Dimensions</strong>: Mask dimensions are defined by the PNG image itself, not by the <code>size</code>
+column or <code>box2d</code>. The producer determines the resolution — it could be the original
+image size, model input size, or model output size. Consumers read the PNG header to
+discover the mask dimensions and rescale to the target coordinate space as needed.</p>
+<p><strong>Coverage</strong>: The mask covers the <strong>full image</strong>, not a crop of the bounding box. For
+instance segmentation, most pixels are 0 (background) and the object region has
+confidence scores or binary 1 values. This avoids lossy cropping and handles
+interpolation that extends beyond box bounds.</p>
+<p><strong>Interpretation by context</strong>:</p>
+<table>
+<thead>
+<tr>
+<th>Context</th>
+<th>Pixel values</th>
+<th>Label source</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>mask</code> + <code>box2d</code> (instance seg)</td>
+<td>Sigmoid confidence (0–255) or binary (0/1) for a single instance</td>
+<td><code>label</code> column on the row</td>
+</tr>
+<tr>
+<td><code>mask</code> without <code>box2d</code> (semantic seg)</td>
+<td>Argmax class indices</td>
+<td>Optional file-level <code>labels</code> metadata; index ordering is model-specific</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Interpretation</strong>: Controlled by <code>mask_interpretation</code> file-level metadata. The PNG
+bit depth determines the value range:</p>
+<table>
+<thead>
+<tr>
+<th>Value</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>binary</code></td>
+<td>0/1 values — use 1-bit PNG (default)</td>
+</tr>
+<tr>
+<td><code>confidence</code></td>
+<td>Quantized confidence scores — use 8-bit (0–255) or 16-bit (0–65535) PNG</td>
+</tr>
+<tr>
+<td><code>sigmoid</code></td>
+<td>Quantized sigmoid outputs — use 8-bit or 16-bit PNG</td>
+</tr>
+<tr>
+<td><code>logits</code></td>
+<td>Quantized logit outputs — use 8-bit or 16-bit PNG</td>
+</tr>
+</tbody>
+</table>
+<p><strong>JSON representation</strong>: base64-encoded PNG bytes.</p>
+<p><strong>Relationship to polygon</strong>: <code>polygon</code> and <code>mask</code> can coexist in the same file
+(e.g., panoptic segmentation). Typically a dataset uses one or the other. Both use
+full-image coordinates — polygons are normalized (0..1), masks cover the full image.</p>
+<h3 id="geometry-2d-bounding-box">Geometry: 2D Bounding Box</h3>
+<table>
+<thead>
+<tr>
+<th>Column</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>box2d</code></td>
+<td><code>Array&lt;f32, 4&gt;</code></td>
+<td>Layout described by <code>box2d_format</code> metadata</td>
+</tr>
+<tr>
+<td><code>box2d_score</code></td>
+<td><code>Float32</code></td>
+<td>Confidence score (0..1), nullable, optional</td>
+</tr>
+</tbody>
+</table>
+<p>The array element order depends on the <code>box2d_format</code> file metadata. Default is
+<code>[center_x, center_y, width, height]</code> (<code>cxcywh</code>). See <a href="../box_format/">Box Formats</a>
+for all layouts.</p>
+<h3 id="geometry-3d-bounding-box">Geometry: 3D Bounding Box</h3>
+<table>
+<thead>
+<tr>
+<th>Column</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>box3d</code></td>
+<td><code>Array&lt;f32, 6&gt;</code></td>
+<td>Layout described by <code>box3d_format</code> metadata</td>
+</tr>
+<tr>
+<td><code>box3d_score</code></td>
+<td><code>Float32</code></td>
+<td>Confidence score (0..1), nullable, optional</td>
+</tr>
+</tbody>
+</table>
+<p>Default layout: <code>[center_x, center_y, center_z, width, height, length]</code> (<code>cxcyczwhl</code>).</p>
 <ul>
-<li>Track the same object across multiple frames in a sequence</li>
-<li>Link a 2D box to a segmentation mask on the same object</li>
-<li>Enable object-level queries ("show me all frames with object X")</li>
+<li>Width (w) = X-axis extent</li>
+<li>Height (h) = Y-axis extent</li>
+<li>Length (l) = Z-axis extent</li>
 </ul>
-<p><strong>Best practice</strong>: Use UUIDs for guaranteed uniqueness across datasets</p>
-<h3 id="group">group</h3>
-<p><strong>Type</strong>: <code>String</code> (Categorical, nullable)<br />
-<strong>What it is</strong>: Optional dataset split assignment—which set does this sample belong to?<br />
-<strong>Values</strong>: <code>null</code>, <code>"train"</code>, <code>"val"</code>, <code>"test"</code>, or any custom string</p>
-<p><strong>Default behavior in Studio</strong>: When you split a dataset in EdgeFirst Studio, it assigns <code>"train"</code> and <code>"val"</code> by default. You can also use custom split names for your specific workflow.</p>
-<p><strong>Important</strong>: This is a <strong>sample-level field</strong>, not per-annotation. All annotations from the same sample have the same group value.</p>
-<p><strong>Typical distribution</strong> (when used):</p>
+<p>All coordinates represent the <strong>geometric center</strong> of the bounding box.
+See <a href="../box_format/">Box Formats</a> for details.</p>
+<h3 id="annotation-metadata">Annotation Metadata</h3>
+<table>
+<thead>
+<tr>
+<th>Column</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>iscrowd</code></td>
+<td><code>Boolean</code></td>
+<td><code>true</code> = crowd region, <code>false</code> or absent = single instance. Optional, from COCO.</td>
+</tr>
+<tr>
+<td><code>category_frequency</code></td>
+<td><code>Categorical</code></td>
+<td>Long-tail frequency group: <code>"f"</code>, <code>"c"</code>, or <code>"r"</code>. Optional.</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition info">
+<p class="admonition-title">New in 2026.04</p>
+<p>These columns support COCO/LVIS dataset extensions. They are optional and will be
+absent from files that don't originate from COCO-family datasets.</p>
+</div>
+<p><strong><code>iscrowd</code></strong>: COCO crowd annotations mark regions containing multiple overlapping
+instances. Evaluation protocols treat them differently (matched but not penalized as
+false negatives). LVIS does not use crowd annotations — this column will be absent or
+null for LVIS-sourced data.</p>
+<p><strong><code>category_frequency</code></strong>: LVIS assigns each category to a frequency group based on how
+many training images contain it:</p>
 <ul>
-<li>70% train</li>
-<li>20% validation</li>
-<li>10% test</li>
+<li><code>"f"</code> (frequent) — appears in &gt;100 images</li>
+<li><code>"c"</code> (common) — appears in 11–100 images</li>
+<li><code>"r"</code> (rare) — appears in 1–10 images</li>
 </ul>
-<h2 id="geometry-fields">Geometry Fields</h2>
-<p>These fields describe <strong>where</strong> the object is located in the image or 3D world.</p>
-<h3 id="box2d">box2d</h3>
-<p><strong>Type</strong>: <code>Array(Float32, shape=(4,))</code><br />
-<strong>Format</strong>: <code>[cx, cy, width, height]</code> (center-based)<br />
-<strong>Coordinate system</strong>: Normalized (0–1), top-left origin</p>
-<p><strong>Values</strong>:</p>
-<ul>
-<li><code>cx</code>: Box center x-coordinate (0=left edge, 1=right edge)</li>
-<li><code>cy</code>: Box center y-coordinate (0=top edge, 1=bottom edge)</li>
-<li><code>width</code>: Box width as fraction of image width</li>
-<li><code>height</code>: Box height as fraction of image height</li>
-</ul>
-<p><strong>Example</strong>: <code>[0.5, 0.5, 0.2, 0.3]</code> means a box centered in the image, 20% of image width, 30% of image height</p>
-<p><strong>Visual</strong>:</p>
-<div class="highlight"><pre><span></span><code>Image
-(0,0) ─────────────────────────→ x=1
-  │
-  │       (0.5, 0.5)
-  │         ●───────┐
-  │         │ 0.2w  │ 0.3h
-  │         └───────┘
-  │
-  ▼
-  y=1
-</code></pre></div>
-<p>Learn more in <a href="../box_format/">Bounding Box Formats</a>.</p>
-<h3 id="box3d">box3d</h3>
-<p><strong>Type</strong>: <code>Array(Float32, shape=(6,))</code><br />
-<strong>Format</strong>: <code>[x, y, z, length, width, height]</code><br />
-<strong>Coordinate system</strong>: ROS/Ouster (X=forward, Y=left, Z=up)<br />
-<strong>Units</strong>: Meters (normalized 0–1 in some contexts)</p>
-<p><strong>Values</strong>:</p>
-<ul>
-<li><code>x, y, z</code>: Box center in 3D world space</li>
-<li><code>length</code>: Dimension along X axis (forward/backward)</li>
-<li><code>width</code>: Dimension along Y axis  (left)</li>
-<li><code>height</code>: Dimension along Z axis (typically vertical/up)</li>
-</ul>
-<p><strong>Example</strong>: <code>[5.0, -2.0, 1.5, 2.0, 1.8, 4.5]</code> means an object 5m ahead, 2m to the right, 1.5m high</p>
-<h3 id="mask">mask</h3>
-<p><strong>Type</strong>: <code>List(Float32)</code><br />
-<strong>What it is</strong>: Pixel-level segmentation—precise boundary of the object<br />
-<strong>Format</strong>: Flattened array with NaN separators for multiple polygons</p>
-<p><strong>Structure</strong>:</p>
-<div class="highlight"><pre><span></span><code><span class="c1"># Single polygon: [x1, y1, x2, y2, x3, y3, ...]</span>
-<span class="c1"># Multiple polygons: [x1, y1, x2, y2, ..., NaN, x4, y4, ...]</span>
-<span class="c1">#                                      ↑ polygon separator</span>
-</code></pre></div>
-<p><strong>Example</strong> (single polygon around a person):</p>
-<div class="highlight"><pre><span></span><code><span class="p">[</span><span class="mf">0.4</span><span class="p">,</span> <span class="mf">0.3</span><span class="p">,</span> <span class="mf">0.45</span><span class="p">,</span> <span class="mf">0.25</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.25</span><span class="p">,</span> <span class="mf">0.52</span><span class="p">,</span> <span class="mf">0.28</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.4</span><span class="p">,</span> <span class="mf">0.45</span><span class="p">,</span> <span class="mf">0.42</span><span class="p">,</span> <span class="mf">0.4</span><span class="p">,</span> <span class="mf">0.35</span><span class="p">]</span>
-</code></pre></div>
-<p><strong>Coordinate system</strong>: Normalized (0–1), same as 2D boxes</p>
-<p>Learn more in <a href="./">Annotation Schema</a> and the official format docs.</p>
-<h2 id="sample-metadata-fields">Sample Metadata Fields</h2>
-<p>These fields describe properties of the <strong>sample</strong> (image), not individual annotations. In Arrow format, they're repeated for each annotation row from the same sample.</p>
-<h3 id="size">size</h3>
-<p><strong>Type</strong>: <code>Array(UInt32, shape=(2,))</code><br />
-<strong>Format</strong>: <code>[width, height]</code><br />
-<strong>What it is</strong>: Image dimensions in pixels</p>
-<p><strong>Example</strong>: <code>[1920, 1080]</code> for a Full HD image</p>
-<p><strong>Usage</strong>:</p>
-<div class="highlight"><pre><span></span><code><span class="c1"># Access in Arrow/DataFrame</span>
-<span class="n">width</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;size&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
-<span class="n">height</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;size&#39;</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span>
+<p>This enables disaggregated AP metrics (AP_r, AP_c, AP_f) and long-tail distribution
+analysis. Use with Polars:</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># Count annotations by frequency group</span>
+<span class="n">df</span><span class="o">.</span><span class="n">group_by</span><span class="p">(</span><span class="s2">&quot;category_frequency&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">len</span><span class="p">()</span>
 
-<span class="c1"># Convert from normalized to pixel coordinates</span>
-<span class="n">pixel_x</span> <span class="o">=</span> <span class="n">normalized_x</span> <span class="o">*</span> <span class="n">width</span>
-<span class="n">pixel_y</span> <span class="o">=</span> <span class="n">normalized_y</span> <span class="o">*</span> <span class="n">height</span>
+<span class="c1"># Filter to rare categories only</span>
+<span class="n">rare</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">pl</span><span class="o">.</span><span class="n">col</span><span class="p">(</span><span class="s2">&quot;category_frequency&quot;</span><span class="p">)</span> <span class="o">==</span> <span class="s2">&quot;r&quot;</span><span class="p">)</span>
 </code></pre></div>
-<h3 id="location">location</h3>
-<p><strong>Type</strong>: <code>Array(Float32, shape=(2,))</code><br />
-<strong>Format</strong>: <code>[latitude, longitude]</code><br />
-<strong>What it is</strong>: <abbr title="Global Positioning System">GPS</abbr> coordinates where the image was captured</p>
-<p><strong>Example</strong>: <code>[37.7749, -122.4194]</code> (San Francisco)</p>
-<p><strong>Source</strong>:</p>
+<h3 id="sample-metadata">Sample Metadata</h3>
+<table>
+<thead>
+<tr>
+<th>Column</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>size</code></td>
+<td><code>Array&lt;u32, 2&gt;</code></td>
+<td><code>[width, height]</code> — original image dimensions in pixels. Optional.</td>
+</tr>
+<tr>
+<td><code>location</code></td>
+<td><code>Array&lt;f32, 2&gt;</code></td>
+<td><code>[latitude, longitude]</code> <abbr title="Global Positioning System">GPS</abbr> coordinates</td>
+</tr>
+<tr>
+<td><code>pose</code></td>
+<td><code>Array&lt;f32, 3&gt;</code></td>
+<td><code>[yaw, pitch, roll]</code> <abbr title="Inertial Measurement Unit">IMU</abbr> orientation in degrees</td>
+</tr>
+<tr>
+<td><code>degradation</code></td>
+<td><code>String</code></td>
+<td>Visual quality indicator (<code>none</code>, <code>low</code>, <code>medium</code>, <code>high</code>)</td>
+</tr>
+<tr>
+<td><code>neg_label_indices</code></td>
+<td><code>List&lt;UInt32&gt;</code></td>
+<td><code>label_index</code> values for categories verified absent from this image</td>
+</tr>
+<tr>
+<td><code>not_exhaustive_label_indices</code></td>
+<td><code>List&lt;UInt32&gt;</code></td>
+<td><code>label_index</code> values for categories with possibly incomplete annotation</td>
+</tr>
+</tbody>
+</table>
+<p><strong><code>neg_label_indices</code></strong> and <strong><code>not_exhaustive_label_indices</code></strong> come from LVIS's federated
+annotation protocol. They enable correct evaluation by indicating which categories have
+known annotation status in each image:</p>
 <ul>
-<li>EXIF metadata in image</li>
-<li><abbr title="Binary container format for robotics log data">MCAP</abbr> NavSat topic</li>
-<li>Manual entry</li>
+<li><strong><code>neg_label_indices</code></strong>: Categories confirmed as <strong>not present</strong>. A model prediction for
+  one of these categories is a valid false positive.</li>
+<li><strong><code>not_exhaustive_label_indices</code></strong>: Categories where annotation may be <strong>incomplete</strong>.
+  Unmatched predictions for these categories are ignored during evaluation (not penalized).</li>
 </ul>
-<p><strong>Note</strong>: Altitude may be added in future versions</p>
-<h3 id="pose">pose</h3>
-<p><strong>Type</strong>: <code>Array(Float32, shape=(3,))</code><br />
-<strong>Format</strong>: <code>[roll, pitch, yaw]</code><br />
-<strong>What it is</strong>: <abbr title="Inertial Measurement Unit">IMU</abbr> orientation of the camera when image was captured</p>
-<p><strong>Values in degrees</strong>:</p>
-<ul>
-<li><code>roll</code>: Rotation around X axis (-180 to 180°)</li>
-<li><code>pitch</code>: Rotation around Y axis (-90 to 90°)</li>
-<li><code>yaw</code>: Rotation around Z axis (-180 to 180°)</li>
-</ul>
-<p><strong>Example</strong>: <code>[0.5, -1.2, 45.3]</code> means slightly tilted, pitched down, rotated 45° counterclockwise</p>
-<p><strong>Source</strong>:</p>
-<ul>
-<li><abbr title="Binary container format for robotics log data">MCAP</abbr> <abbr title="Inertial Measurement Unit">IMU</abbr> topic</li>
-<li><abbr title="Inertial Measurement Unit">IMU</abbr> sensor readings</li>
-<li>Manual entry</li>
-</ul>
-<h3 id="degradation">degradation</h3>
-<p><strong>Type</strong>: <code>String</code> (nullable)<br />
-<strong>What it is</strong>: Visual quality indicator—how compromised is the camera view?</p>
-<p><strong>Typical values</strong>:</p>
-<ul>
-<li><code>"none"</code>: Perfect view, objects fully visible</li>
-<li><code>"low"</code>: Slight obstruction, targets clearly visible</li>
-<li><code>"medium"</code>: Higher obstruction, targets visible but not obvious</li>
-<li><code>"high"</code>: Severe obstruction, objects cannot be seen</li>
-</ul>
-<p><strong>Examples of degradation</strong>:</p>
-<ul>
-<li>Fog, rain, snow</li>
-<li>Camera obstruction (dirt, condensation)</li>
-<li>Low light, night</li>
-<li>Backlighting</li>
-</ul>
-<p><strong>Use cases</strong>:</p>
-<ul>
-<li>Filter training data by quality level</li>
-<li>Train robust models for adverse weather</li>
-<li>Identify which sensor to trust (use radar when camera degraded)</li>
-</ul>
-<hr />
-<h2 id="complete-example">Complete Example</h2>
-<p>Here's a complete annotation with all fields:</p>
-<div class="highlight"><pre><span></span><code><span class="p">{</span>
-    <span class="c1"># Sample identification</span>
-    <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;sequence_001_042&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;frame&quot;</span><span class="p">:</span> <span class="mi">42</span><span class="p">,</span>
-    
-    <span class="c1"># Object identification</span>
-    <span class="s2">&quot;label&quot;</span><span class="p">:</span> <span class="s2">&quot;person&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;label_index&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
-    <span class="s2">&quot;object_id&quot;</span><span class="p">:</span> <span class="s2">&quot;550e8400-e29b-41d4-a716-446655440000&quot;</span><span class="p">,</span>
-    
-    <span class="c1"># Dataset split</span>
-    <span class="s2">&quot;group&quot;</span><span class="p">:</span> <span class="s2">&quot;train&quot;</span><span class="p">,</span>
-    
-    <span class="c1"># Geometry</span>
-    <span class="s2">&quot;box2d&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">,</span> <span class="mf">0.3</span><span class="p">],</span>
-    <span class="s2">&quot;box3d&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mf">5.0</span><span class="p">,</span> <span class="o">-</span><span class="mf">2.0</span><span class="p">,</span> <span class="mf">1.5</span><span class="p">,</span> <span class="mf">2.0</span><span class="p">,</span> <span class="mf">1.8</span><span class="p">,</span> <span class="mf">4.5</span><span class="p">],</span>
-    <span class="s2">&quot;mask&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mf">0.48</span><span class="p">,</span> <span class="mf">0.4</span><span class="p">,</span> <span class="mf">0.52</span><span class="p">,</span> <span class="mf">0.4</span><span class="p">,</span> <span class="mf">0.52</span><span class="p">,</span> <span class="mf">0.6</span><span class="p">,</span> <span class="mf">0.48</span><span class="p">,</span> <span class="mf">0.6</span><span class="p">],</span>
-    
-    <span class="c1"># Sample metadata</span>
-    <span class="s2">&quot;size&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">1920</span><span class="p">,</span> <span class="mi">1080</span><span class="p">],</span>
-    <span class="s2">&quot;location&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mf">37.7749</span><span class="p">,</span> <span class="o">-</span><span class="mf">122.4194</span><span class="p">],</span>
-    <span class="s2">&quot;pose&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mf">0.5</span><span class="p">,</span> <span class="o">-</span><span class="mf">1.2</span><span class="p">,</span> <span class="mf">45.3</span><span class="p">],</span>
-    <span class="s2">&quot;degradation&quot;</span><span class="p">:</span> <span class="s2">&quot;low&quot;</span>
-<span class="p">}</span>
-</code></pre></div>
-<h2 id="optional-fields">Optional Fields</h2>
-<p>Some fields may be <code>null</code> or missing depending on your dataset:</p>
+<p>Both columns reference <code>label_index</code> values from the same file. They are sample-level
+fields (repeated per annotation row for a given image).</p>
+<div class="admonition note">
+<p class="admonition-title">UInt32 vs UInt64</p>
+<p>These lists use <code>UInt32</code> elements while <code>label_index</code> is <code>UInt64</code>. This is safe for
+COCO (max ID ~90) and LVIS (max ID ~1723). If you cross-join these columns in Polars,
+cast to a common type first: <code>col("neg_label_indices").cast(List(UInt64))</code>.</p>
+</div>
+<div class="admonition tip">
+<p class="admonition-title">Pose array order</p>
+<p>The <code>pose</code> array is always <code>[yaw, pitch, roll]</code> in degrees. The JSON representation
+uses named fields <code>{yaw, pitch, roll}</code> in the <code>sensors.imu</code> object.</p>
+</div>
+<h3 id="instrumentation">Instrumentation</h3>
+<table>
+<thead>
+<tr>
+<th>Column</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>timing</code></td>
+<td><code>Struct</code></td>
+<td>Pipeline timing data (optional)</td>
+</tr>
+</tbody>
+</table>
+<p>The <code>timing</code> struct contains <code>Int64</code> nanosecond duration fields:</p>
 <table>
 <thead>
 <tr>
 <th>Field</th>
-<th>When Null</th>
-<th>Reason</th>
+<th>Description</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td><code>frame</code></td>
-<td>Always for images</td>
-<td>Images don't have frame numbers</td>
+<td><code>load</code></td>
+<td>Time to load input data</td>
 </tr>
 <tr>
-<td><code>box2d</code></td>
-<td>Sometimes</td>
-<td>Only 3D annotations or image without 2D box</td>
+<td><code>preprocess</code></td>
+<td>Time for preprocessing transforms</td>
 </tr>
 <tr>
-<td><code>box3d</code></td>
-<td>Sometimes</td>
-<td>Only 2D annotations</td>
+<td><code>inference</code></td>
+<td>Model inference time</td>
 </tr>
 <tr>
-<td><code>mask</code></td>
-<td>Often</td>
-<td>Not all datasets include segmentation</td>
-</tr>
-<tr>
-<td><code>object_id</code></td>
-<td>Rarely</td>
-<td>Required for tracking</td>
-</tr>
-<tr>
-<td><code>location</code></td>
-<td>Often</td>
-<td>Not all images have <abbr title="Global Positioning System">GPS</abbr> data</td>
-</tr>
-<tr>
-<td><code>pose</code></td>
-<td>Often</td>
-<td>Not all images have <abbr title="Inertial Measurement Unit">IMU</abbr> data</td>
-</tr>
-<tr>
-<td><code>degradation</code></td>
-<td>Often</td>
-<td>Optional quality indicator</td>
+<td><code>decode</code></td>
+<td>Time for postprocessing / decoding outputs</td>
 </tr>
 </tbody>
 </table>
-<h2 id="querying-annotations">Querying Annotations</h2>
-<p>Once you understand the schema, you can query your annotations:</p>
-<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">polars</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pl</span>
-
-<span class="n">df</span> <span class="o">=</span> <span class="n">pl</span><span class="o">.</span><span class="n">read_ipc</span><span class="p">(</span><span class="s2">&quot;dataset.arrow&quot;</span><span class="p">)</span>
-
-<span class="c1"># Get all person detections</span>
-<span class="n">people</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">pl</span><span class="o">.</span><span class="n">col</span><span class="p">(</span><span class="s2">&quot;label&quot;</span><span class="p">)</span> <span class="o">==</span> <span class="s2">&quot;person&quot;</span><span class="p">)</span>
-
-<span class="c1"># Get training split</span>
-<span class="n">train_data</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">pl</span><span class="o">.</span><span class="n">col</span><span class="p">(</span><span class="s2">&quot;group&quot;</span><span class="p">)</span> <span class="o">==</span> <span class="s2">&quot;train&quot;</span><span class="p">)</span>
-
-<span class="c1"># Find annotations with 3D boxes</span>
-<span class="n">boxes_3d</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">pl</span><span class="o">.</span><span class="n">col</span><span class="p">(</span><span class="s2">&quot;box3d&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">is_not_null</span><span class="p">())</span>
-
-<span class="c1"># Find samples captured in San Francisco</span>
-<span class="n">sf_samples</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span>
-    <span class="p">(</span><span class="n">pl</span><span class="o">.</span><span class="n">col</span><span class="p">(</span><span class="s2">&quot;location&quot;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mf">37.77</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">pl</span><span class="o">.</span><span class="n">col</span><span class="p">(</span><span class="s2">&quot;location&quot;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span> <span class="o">&lt;</span> <span class="mf">37.78</span><span class="p">)</span>
-<span class="p">)</span>
-
-<span class="c1"># Track an object across frames</span>
-<span class="n">object_track</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">pl</span><span class="o">.</span><span class="n">col</span><span class="p">(</span><span class="s2">&quot;object_id&quot;</span><span class="p">)</span> <span class="o">==</span> <span class="s2">&quot;550e8400-e29b-41d4-a716-446655440000&quot;</span><span class="p">)</span>
-
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Total annotations: </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">df</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Unique objects: </span><span class="si">{</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;object_id&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">n_unique</span><span class="p">()</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Date range: </span><span class="si">{</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">min</span><span class="p">()</span><span class="si">}</span><span class="s2"> to </span><span class="si">{</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">max</span><span class="p">()</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<p><strong>Example</strong>:</p>
+<div class="highlight"><pre><span></span><code>timing: {load: 1500000, preprocess: 3200000, inference: 12500000, decode: 800000}
+# = 1.5 ms load, 3.2 ms preprocess, 12.5 ms inference, 0.8 ms decode
 </code></pre></div>
-<h2 id="further-reading">Further Reading</h2>
+<p>Fields are extensible — future fields do not break older readers since Struct access is
+by name.</p>
+<h2 id="score-columns">Score Columns</h2>
+<p><code>box2d_score</code>, <code>box3d_score</code>, <code>polygon_score</code>, and <code>mask_score</code> are independent
+per-geometry confidence values in the range 0..1.</p>
 <ul>
-<li><a href="../box_format/">Bounding Box Formats</a> — Detailed guide to 2D box coordinate systems</li>
-<li><a href="../structure/">Dataset Organization</a> — How samples are organized on disk</li>
-<li><a href="../sensors/">Sensors</a> — Understanding camera and sensor metadata</li>
-<li><a href="../../../studio/agtg/">AGTG (Automatic Annotation)</a> — How AI automatically populates annotation fields</li>
-<li><a href="../../../studio/snapshots/">Snapshots Dashboard</a> — Download and restore datasets with annotations</li>
+<li>A single row may have <strong>different scores</strong> for different geometry types (e.g., high
+  box confidence but lower polygon confidence)</li>
+<li>Raster masks additionally carry <strong>per-pixel</strong> scores via <code>mask_interpretation</code>
+  metadata; <code>mask_score</code> is the per-instance aggregate</li>
+<li><strong>Ground truth files</strong>: score columns should be <strong>omitted entirely</strong> (not filled
+  with nulls). Readers must treat absent score columns as "not applicable."</li>
 </ul>
+<h2 id="complete-polars-schema">Complete Polars Schema</h2>
+<p>For reference, the full Polars-style schema:</p>
+<div class="highlight"><pre><span></span><code><span class="p">(</span>
+    <span class="c1"># ── Identity &amp; Classification ──────────────────────</span>
+    <span class="p">(</span><span class="s1">&#39;name&#39;</span><span class="p">,</span> <span class="n">String</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">&#39;frame&#39;</span><span class="p">,</span> <span class="n">UInt32</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">&#39;object_id&#39;</span><span class="p">,</span> <span class="n">String</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">&#39;label&#39;</span><span class="p">,</span> <span class="n">Categorical</span><span class="p">(</span><span class="n">ordering</span><span class="o">=</span><span class="s1">&#39;physical&#39;</span><span class="p">)),</span>
+    <span class="p">(</span><span class="s1">&#39;label_index&#39;</span><span class="p">,</span> <span class="n">UInt64</span><span class="p">),</span>                    <span class="c1"># source-faithful, may be non-contiguous</span>
+    <span class="p">(</span><span class="s1">&#39;group&#39;</span><span class="p">,</span> <span class="n">Categorical</span><span class="p">(</span><span class="n">ordering</span><span class="o">=</span><span class="s1">&#39;physical&#39;</span><span class="p">)),</span>
+
+    <span class="c1"># ── Geometry: Polygon ──────────────────────────────</span>
+    <span class="p">(</span><span class="s1">&#39;polygon&#39;</span><span class="p">,</span> <span class="n">List</span><span class="p">(</span><span class="n">List</span><span class="p">(</span><span class="n">Float32</span><span class="p">))),</span>           <span class="c1"># interleaved [x1,y1,x2,y2,...] per ring</span>
+    <span class="p">(</span><span class="s1">&#39;polygon_score&#39;</span><span class="p">,</span> <span class="n">Float32</span><span class="p">),</span>                 <span class="c1"># OPTIONAL</span>
+
+    <span class="c1"># ── Geometry: Raster Mask ──────────────────────────</span>
+    <span class="p">(</span><span class="s1">&#39;mask&#39;</span><span class="p">,</span> <span class="n">Binary</span><span class="p">),</span>                            <span class="c1"># PNG-encoded grayscale raster pixels</span>
+    <span class="p">(</span><span class="s1">&#39;mask_score&#39;</span><span class="p">,</span> <span class="n">Float32</span><span class="p">),</span>                    <span class="c1"># OPTIONAL</span>
+
+    <span class="c1"># ── Geometry: 2D Bounding Box ──────────────────────</span>
+    <span class="p">(</span><span class="s1">&#39;box2d&#39;</span><span class="p">,</span> <span class="n">Array</span><span class="p">(</span><span class="n">Float32</span><span class="p">,</span> <span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="mi">4</span><span class="p">,))),</span>      <span class="c1"># layout from metadata</span>
+    <span class="p">(</span><span class="s1">&#39;box2d_score&#39;</span><span class="p">,</span> <span class="n">Float32</span><span class="p">),</span>                   <span class="c1"># OPTIONAL</span>
+
+    <span class="c1"># ── Geometry: 3D Bounding Box ──────────────────────</span>
+    <span class="p">(</span><span class="s1">&#39;box3d&#39;</span><span class="p">,</span> <span class="n">Array</span><span class="p">(</span><span class="n">Float32</span><span class="p">,</span> <span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="mi">6</span><span class="p">,))),</span>      <span class="c1"># [cx, cy, cz, w, h, l]</span>
+    <span class="p">(</span><span class="s1">&#39;box3d_score&#39;</span><span class="p">,</span> <span class="n">Float32</span><span class="p">),</span>                   <span class="c1"># OPTIONAL</span>
+
+    <span class="c1"># ── Annotation Metadata (optional) ─────────────────</span>
+    <span class="p">(</span><span class="s1">&#39;iscrowd&#39;</span><span class="p">,</span> <span class="n">Boolean</span><span class="p">),</span>                       <span class="c1"># OPTIONAL - true = crowd region, false or absent</span>
+    <span class="p">(</span><span class="s1">&#39;category_frequency&#39;</span><span class="p">,</span> <span class="n">Categorical</span><span class="p">(</span><span class="n">ordering</span><span class="o">=</span><span class="s1">&#39;physical&#39;</span><span class="p">)),</span>  <span class="c1"># OPTIONAL - LVIS &quot;f&quot;/&quot;c&quot;/&quot;r&quot;</span>
+
+    <span class="c1"># ── Sample Metadata (optional) ─────────────────────</span>
+    <span class="p">(</span><span class="s1">&#39;size&#39;</span><span class="p">,</span> <span class="n">Array</span><span class="p">(</span><span class="n">UInt32</span><span class="p">,</span> <span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="mi">2</span><span class="p">,))),</span>         <span class="c1"># [width, height]</span>
+    <span class="p">(</span><span class="s1">&#39;location&#39;</span><span class="p">,</span> <span class="n">Array</span><span class="p">(</span><span class="n">Float32</span><span class="p">,</span> <span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="mi">2</span><span class="p">,))),</span>    <span class="c1"># [lat, lon]</span>
+    <span class="p">(</span><span class="s1">&#39;pose&#39;</span><span class="p">,</span> <span class="n">Array</span><span class="p">(</span><span class="n">Float32</span><span class="p">,</span> <span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="mi">3</span><span class="p">,))),</span>        <span class="c1"># [yaw, pitch, roll]</span>
+    <span class="p">(</span><span class="s1">&#39;degradation&#39;</span><span class="p">,</span> <span class="n">String</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">&#39;neg_label_indices&#39;</span><span class="p">,</span> <span class="n">List</span><span class="p">(</span><span class="n">UInt32</span><span class="p">)),</span>          <span class="c1"># OPTIONAL - LVIS negative categories</span>
+    <span class="p">(</span><span class="s1">&#39;not_exhaustive_label_indices&#39;</span><span class="p">,</span> <span class="n">List</span><span class="p">(</span><span class="n">UInt32</span><span class="p">)),</span>  <span class="c1"># OPTIONAL - LVIS incomplete categories</span>
+
+    <span class="c1"># ── Instrumentation (optional) ─────────────────────</span>
+    <span class="p">(</span><span class="s1">&#39;timing&#39;</span><span class="p">,</span> <span class="n">Struct</span><span class="p">({</span>
+        <span class="s1">&#39;load&#39;</span><span class="p">:</span> <span class="n">Int64</span><span class="p">,</span>
+        <span class="s1">&#39;preprocess&#39;</span><span class="p">:</span> <span class="n">Int64</span><span class="p">,</span>
+        <span class="s1">&#39;inference&#39;</span><span class="p">:</span> <span class="n">Int64</span><span class="p">,</span>
+        <span class="s1">&#39;decode&#39;</span><span class="p">:</span> <span class="n">Int64</span><span class="p">,</span>
+    <span class="p">})),</span>
+<span class="p">)</span>
+</code></pre></div>
+<h2 id="file-level-metadata">File-Level Metadata</h2>
+<p>Arrow IPC stores key-value metadata on the schema, while Parquet stores key-value
+metadata in the file footer. In both formats, all metadata values are strings.</p>
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>Values</th>
+<th>Default (absent)</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>schema_version</code></td>
+<td><code>"2026.04"</code></td>
+<td><code>"2025.10"</code></td>
+<td>Format version. Absent = legacy file.</td>
+</tr>
+<tr>
+<td><code>box2d_format</code></td>
+<td><code>"cxcywh"</code>, <code>"xyxy"</code>, <code>"ltwh"</code></td>
+<td><code>"cxcywh"</code></td>
+<td>Box2D layout descriptor</td>
+</tr>
+<tr>
+<td><code>box2d_normalized</code></td>
+<td><code>"true"</code>, <code>"false"</code></td>
+<td><code>"true"</code></td>
+<td>Box2D coordinate system</td>
+</tr>
+<tr>
+<td><code>box3d_format</code></td>
+<td><code>"cxcyczwhl"</code></td>
+<td><code>"cxcyczwhl"</code></td>
+<td>Box3D layout descriptor</td>
+</tr>
+<tr>
+<td><code>box3d_normalized</code></td>
+<td><code>"true"</code>, <code>"false"</code></td>
+<td><code>"true"</code></td>
+<td>Box3D coordinate system</td>
+</tr>
+<tr>
+<td><code>mask_interpretation</code></td>
+<td><code>"binary"</code>, <code>"confidence"</code>, <code>"sigmoid"</code>, <code>"logits"</code></td>
+<td><code>"binary"</code></td>
+<td>Pixel value meaning</td>
+</tr>
+<tr>
+<td><code>category_metadata</code></td>
+<td>JSON string</td>
+<td>absent</td>
+<td>Per-label metadata (synset, synonyms, definition)</td>
+</tr>
+<tr>
+<td><code>labels</code></td>
+<td>JSON array <code>["person", "car", ...]</code></td>
+<td>absent</td>
+<td>Ordered class names for semantic segmentation masks. <code>labels[i]</code> = class name for argmax pixel value <code>i</code>.</td>
+</tr>
+</tbody>
+</table>
+<p>Version format is <code>YYYY.MM</code> with mandatory zero-padding (e.g., <code>"2025.10"</code>, <code>"2026.04"</code>).
+Versions are compared lexicographically. Unknown future versions should trigger a warning
+(not an error) and attempt best-effort reading via schema introspection.</p>
+<h3 id="category-metadata">Category Metadata</h3>
+<p>The <code>category_metadata</code> key stores per-label reference data as a JSON-encoded string.
+This enriches label semantics without adding per-row columns for data that is constant
+across all annotations sharing the same label.</p>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;aerosol_can&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;supercategory&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;accessory&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;synset&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;aerosol.n.02&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;synonyms&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;aerosol_can&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;spray_can&quot;</span><span class="p">],</span>
+<span class="w">    </span><span class="nt">&quot;definition&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;a dispenser that holds a substance under pressure&quot;</span>
+<span class="w">  </span><span class="p">},</span>
+<span class="w">  </span><span class="nt">&quot;person&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;supercategory&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;human&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;synset&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;person.n.01&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;synonyms&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;person&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;individual&quot;</span><span class="p">],</span>
+<span class="w">    </span><span class="nt">&quot;definition&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;a human being&quot;</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>id</code></td>
+<td>integer</td>
+<td>Source category ID (used to reconstruct <code>category_id</code> for categories with no annotations)</td>
+</tr>
+<tr>
+<td><code>supercategory</code></td>
+<td>string</td>
+<td>Parent category name (e.g., <code>"vehicle"</code>, <code>"animal"</code>)</td>
+</tr>
+<tr>
+<td><code>synset</code></td>
+<td>string</td>
+<td>WordNet synset identifier (e.g., <code>"aerosol.n.02"</code>)</td>
+</tr>
+<tr>
+<td><code>synonyms</code></td>
+<td>array of strings</td>
+<td>Alternate names for the category</td>
+</tr>
+<tr>
+<td><code>definition</code></td>
+<td>string</td>
+<td>Natural language definition (LVIS <code>def</code> field, renamed for clarity)</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Source</strong>: When importing from COCO with LVIS extensions, these fields are populated
+from the LVIS <code>categories</code> array. Other datasets with taxonomic metadata can populate
+the same fields.</p>
+<div class="admonition note">
+<p class="admonition-title">Frequency is a column, not metadata</p>
+<p>The <code>frequency</code> field from LVIS is stored as the <code>category_frequency</code> <strong>column</strong>
+(not in <code>category_metadata</code>) because it is directly useful for DataFrame filtering
+and disaggregated metrics. The <code>image_count</code> and <code>instance_count</code> fields from LVIS
+are intentionally not stored — they are recomputable statistics.</p>
+</div>
+<h3 id="labels-metadata">Labels Metadata</h3>
+<div class="admonition info">
+<p class="admonition-title">New in 2026.04</p>
+</div>
+<p>The <code>labels</code> key stores an ordered array of class names as a JSON-encoded string. This
+metadata provides the index-to-name mapping for semantic segmentation masks where each
+pixel value is an argmax class index.</p>
+<p><strong>Structure</strong>: JSON array where <code>labels[i]</code> is the class name for pixel value <code>i</code>:</p>
+<div class="highlight"><pre><span></span><code><span class="p">[</span><span class="s2">&quot;background&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;person&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;car&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;bicycle&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;dog&quot;</span><span class="p">]</span>
+</code></pre></div>
+<p>In this example, pixel value <code>0</code> = <code>"background"</code>, pixel value <code>1</code> = <code>"person"</code>,
+pixel value <code>2</code> = <code>"car"</code>, etc.</p>
+<p><strong>When written</strong>: Optional — only written when the source dataset provides an ordered
+category list (e.g., COCO categories sorted by ID).</p>
+<p><strong>Relationship to <code>category_metadata</code></strong>: The <code>labels</code> array provides index ordering for
+mask pixel interpretation. The <code>category_metadata</code> object provides rich per-label
+reference data (synset, synonyms, definition). Both may be present; they complement
+each other.</p>
+<h3 id="label_index">label_index</h3>
+<p>The <code>label_index</code> column stores the <strong>source-faithful</strong> category identifier. When
+importing from COCO or LVIS, the original <code>category_id</code> is preserved directly as
+<code>label_index</code>.</p>
+<p><strong>Key characteristics</strong>:</p>
+<ul>
+<li><strong>May be non-contiguous</strong> — COCO uses IDs 1–90 for 80 categories (gaps at 12, 26,
+  29, 30, etc.). LVIS uses IDs up to ~1723 for 1,203 categories.</li>
+<li><strong>May not start at zero</strong> — COCO starts at 1, not 0.</li>
+<li><strong>Must be preserved on round-trip</strong> — exporting back to COCO/LVIS reconstructs
+  the original <code>category_id</code> from <code>label_index</code>.</li>
+</ul>
+<div class="admonition warning">
+<p class="admonition-title">Model training note</p>
+<p>Models are typically trained with a dense remapping (e.g., 80 contiguous class
+indices for COCO). This remapping is a <strong>model-specific concern</strong> handled in the
+training pipeline, not in the dataset format. Some legacy models (notably older
+SSDs) are trained with the original gaps and produce 91 outputs (90 categories +
+background); this is likewise a model-specific convention.</p>
+</div>
 
 
 
@@ -2465,7 +2635,7 @@ person_01
       <nav class="md-footer__inner md-grid" aria-label="Footer" >
         
           
-          <a href="../box_format/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Bounding Box Formats">
+          <a href="../box_format/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Box Formats">
             <div class="md-footer__button md-icon">
               
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
@@ -2475,7 +2645,7 @@ person_01
                 Previous
               </span>
               <div class="md-ellipsis">
-                Bounding Box Formats
+                Box Formats
               </div>
             </div>
           </a>

@@ -18,18 +18,18 @@
         <link rel="prev" href="../formats/">
       
       
-        <link rel="next" href="../../coffeecup/">
+        <link rel="next" href="../migration/">
       
       
         
       
       
       <link rel="icon" href="../../../assets/favicon.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.5">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
     
     
       
-        <title>Format Conversion: Arrow ↔ JSON - EdgeFirst Studio Documentation</title>
+        <title>Conversion Guidelines - EdgeFirst Studio Documentation</title>
       
     
     
@@ -79,7 +79,7 @@
     
   
 <meta property="og:type" content="website" />
-<meta property="og:title" content="Format Conversion: Arrow ↔ JSON - EdgeFirst Studio Documentation" />
+<meta property="og:title" content="Conversion Guidelines - EdgeFirst Studio Documentation" />
 <meta property="og:description" content="EdgeFirst Studio Documentation" />
 <meta property="og:image" content="https://doc.edgefirst.ai/test/assets/images/social/datasets/format/conversion.png" />
 <meta property="og:image:type" content="image/png" />
@@ -87,7 +87,7 @@
 <meta property="og:image:height" content="630" />
 <meta property="og:url" content="https://doc.edgefirst.ai/test/datasets/format/conversion/" />
 <meta property="twitter:card" content="summary_large_image" />
-<meta property="twitter:title" content="Format Conversion: Arrow ↔ JSON - EdgeFirst Studio Documentation" />
+<meta property="twitter:title" content="Conversion Guidelines - EdgeFirst Studio Documentation" />
 <meta property="twitter:description" content="EdgeFirst Studio Documentation" />
 <meta property="twitter:image" content="https://doc.edgefirst.ai/test/assets/images/social/datasets/format/conversion.png" />
 </head>
@@ -109,7 +109,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#format-conversion-arrow-json" class="md-skip">
+        <a href="#conversion-guidelines" class="md-skip">
           Skip to content
         </a>
       
@@ -163,7 +163,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Format Conversion: Arrow ↔ JSON
+              Conversion Guidelines
             
           </span>
         </div>
@@ -770,6 +770,8 @@
       
         
       
+        
+      
     
     
     
@@ -838,7 +840,7 @@
   <span class="md-ellipsis">
     
   
-    Dataset Organization
+    Directory Structure
   
 
     
@@ -866,7 +868,7 @@
   <span class="md-ellipsis">
     
   
-    Bounding Box Formats
+    Box Formats
   
 
     
@@ -894,7 +896,7 @@
   <span class="md-ellipsis">
     
   
-    Annotation Schema &amp; Fields
+    Annotation Schema
   
 
     
@@ -950,7 +952,7 @@
   <span class="md-ellipsis">
     
   
-    Annotation Formats: Arrow vs. JSON
+    Storage Formats
   
 
     
@@ -987,7 +989,7 @@
   <span class="md-ellipsis">
     
   
-    Format Conversion: Arrow ↔ JSON
+    Conversion Guidelines
   
 
     
@@ -1005,7 +1007,7 @@
   <span class="md-ellipsis">
     
   
-    Format Conversion: Arrow ↔ JSON
+    Conversion Guidelines
   
 
     
@@ -1031,33 +1033,22 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#why-convert" class="md-nav__link">
+  <a href="#version-detection" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Why Convert?
+        Version Detection
       
     </span>
   </a>
   
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#json-arrow-conversion" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        JSON → Arrow Conversion
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="JSON → Arrow Conversion">
+    <nav class="md-nav" aria-label="Version Detection">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#python-code" class="md-nav__link">
+  <a href="#arrow-parquet-files" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Python Code
+        Arrow / Parquet Files
       
     </span>
   </a>
@@ -1065,10 +1056,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#key-conversions" class="md-nav__link">
+  <a href="#json-files" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Key Conversions
+        JSON Files
       
     </span>
   </a>
@@ -1081,22 +1072,22 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#arrow-json-conversion" class="md-nav__link">
+  <a href="#reading-202604-files" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Arrow → JSON Conversion
+        Reading 2026.04 Files
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Arrow → JSON Conversion">
+    <nav class="md-nav" aria-label="Reading 2026.04 Files">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#python-code_1" class="md-nav__link">
+  <a href="#arrow-ipc-parquet" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Python Code
+        Arrow IPC / Parquet
       
     </span>
   </a>
@@ -1104,10 +1095,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#key-conversions_1" class="md-nav__link">
+  <a href="#reading-parquet-with-duckdb" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Key Conversions
+        Reading Parquet with DuckDB
       
     </span>
   </a>
@@ -1120,22 +1111,22 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#complete-example" class="md-nav__link">
+  <a href="#json-to-dataframe-conversion-202604" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Complete Example
+        JSON to DataFrame Conversion (2026.04)
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Complete Example">
+    <nav class="md-nav" aria-label="JSON to DataFrame Conversion (2026.04)">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#starting-with-json" class="md-nav__link">
+  <a href="#column-name-mapping" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Starting with JSON
+        Column Name Mapping
       
     </span>
   </a>
@@ -1143,10 +1134,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#after-json-arrow-conversion" class="md-nav__link">
+  <a href="#full-conversion-example" class="md-nav__link">
     <span class="md-ellipsis">
       
-        After JSON → Arrow Conversion
+        Full Conversion Example
       
     </span>
   </a>
@@ -1154,10 +1145,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#converting-back-to-json" class="md-nav__link">
+  <a href="#key-conversions-summary" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Converting Back to JSON
+        Key Conversions Summary
       
     </span>
   </a>
@@ -1166,156 +1157,6 @@
         
       </ul>
     </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#box2d-conversion-details" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Box2D Conversion Details
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Box2D Conversion Details">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#arrow-center-json-top-left" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Arrow (Center) → JSON (Top-Left)
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#json-top-left-arrow-center" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        JSON (Top-Left) → Arrow (Center)
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#mask-conversion-details" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Mask Conversion Details
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Mask Conversion Details">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#nested-json-flat-arrow" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Nested (JSON) → Flat (Arrow)
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#flat-arrow-nested-json" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Flat (Arrow) → Nested (JSON)
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#batch-conversion" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Batch Conversion
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#troubleshooting" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Troubleshooting
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Troubleshooting">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#box-positions-are-wrong-after-conversion" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Box positions are wrong after conversion
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#missing-annotations-after-conversion" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Missing annotations after conversion
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#nan-appearing-in-wrong-places" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        NaN appearing in wrong places
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#further-reading" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Further Reading
-      
-    </span>
-  </a>
   
 </li>
       
@@ -1323,6 +1164,34 @@
   
 </nav>
       
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../migration/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Upgrading from 2025.10 to 2026.04
+  
+
+    
+  </span>
+  
+  
+
+      </a>
     </li>
   
 
@@ -1719,33 +1588,22 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#why-convert" class="md-nav__link">
+  <a href="#version-detection" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Why Convert?
+        Version Detection
       
     </span>
   </a>
   
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#json-arrow-conversion" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        JSON → Arrow Conversion
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="JSON → Arrow Conversion">
+    <nav class="md-nav" aria-label="Version Detection">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#python-code" class="md-nav__link">
+  <a href="#arrow-parquet-files" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Python Code
+        Arrow / Parquet Files
       
     </span>
   </a>
@@ -1753,10 +1611,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#key-conversions" class="md-nav__link">
+  <a href="#json-files" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Key Conversions
+        JSON Files
       
     </span>
   </a>
@@ -1769,22 +1627,22 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#arrow-json-conversion" class="md-nav__link">
+  <a href="#reading-202604-files" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Arrow → JSON Conversion
+        Reading 2026.04 Files
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Arrow → JSON Conversion">
+    <nav class="md-nav" aria-label="Reading 2026.04 Files">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#python-code_1" class="md-nav__link">
+  <a href="#arrow-ipc-parquet" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Python Code
+        Arrow IPC / Parquet
       
     </span>
   </a>
@@ -1792,10 +1650,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#key-conversions_1" class="md-nav__link">
+  <a href="#reading-parquet-with-duckdb" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Key Conversions
+        Reading Parquet with DuckDB
       
     </span>
   </a>
@@ -1808,22 +1666,22 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#complete-example" class="md-nav__link">
+  <a href="#json-to-dataframe-conversion-202604" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Complete Example
+        JSON to DataFrame Conversion (2026.04)
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Complete Example">
+    <nav class="md-nav" aria-label="JSON to DataFrame Conversion (2026.04)">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#starting-with-json" class="md-nav__link">
+  <a href="#column-name-mapping" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Starting with JSON
+        Column Name Mapping
       
     </span>
   </a>
@@ -1831,10 +1689,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#after-json-arrow-conversion" class="md-nav__link">
+  <a href="#full-conversion-example" class="md-nav__link">
     <span class="md-ellipsis">
       
-        After JSON → Arrow Conversion
+        Full Conversion Example
       
     </span>
   </a>
@@ -1842,10 +1700,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#converting-back-to-json" class="md-nav__link">
+  <a href="#key-conversions-summary" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Converting Back to JSON
+        Key Conversions Summary
       
     </span>
   </a>
@@ -1854,156 +1712,6 @@
         
       </ul>
     </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#box2d-conversion-details" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Box2D Conversion Details
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Box2D Conversion Details">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#arrow-center-json-top-left" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Arrow (Center) → JSON (Top-Left)
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#json-top-left-arrow-center" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        JSON (Top-Left) → Arrow (Center)
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#mask-conversion-details" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Mask Conversion Details
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Mask Conversion Details">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#nested-json-flat-arrow" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Nested (JSON) → Flat (Arrow)
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#flat-arrow-nested-json" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Flat (Arrow) → Nested (JSON)
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#batch-conversion" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Batch Conversion
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#troubleshooting" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Troubleshooting
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Troubleshooting">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#box-positions-are-wrong-after-conversion" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Box positions are wrong after conversion
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#missing-annotations-after-conversion" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Missing annotations after conversion
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#nan-appearing-in-wrong-places" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        NaN appearing in wrong places
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#further-reading" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Further Reading
-      
-    </span>
-  </a>
   
 </li>
       
@@ -2073,525 +1781,356 @@
 
 
 
-<h1 id="format-conversion-arrow-json">Format Conversion: Arrow ↔ JSON</h1>
-<p>This page shows you how to convert between Arrow and JSON annotation formats when working with datasets outside of EdgeFirst Studio.</p>
-<h2 id="why-convert">Why Convert?</h2>
-<p><strong>Most users don't need to convert formats manually.</strong> EdgeFirst Studio handles all format conversions internally—when you upload snapshots, restore datasets, or export annotations, Studio manages the underlying format automatically.</p>
-<p>Manual conversion is useful when:</p>
-<ul>
-<li><strong>Building custom ML pipelines</strong> outside of Studio that need Arrow's fast columnar queries</li>
-<li><strong>Editing annotations manually</strong> in a text editor (JSON is human-readable)</li>
-<li><strong>Integrating with third-party tools</strong> that expect a specific format</li>
-<li><strong>Analyzing annotation statistics</strong> with Polars or pandas DataFrames</li>
-</ul>
-<pre class="mermaid"><code>graph LR
-    Studio["EdgeFirst Studio"]
-    Arrow["Arrow File"]
-    JSON["JSON File"]
-    ML["Custom ML Pipeline"]
-    Edit["Manual Editing"]
-    
-    Studio --&gt;|"Export"| Arrow
-    Studio --&gt;|"Export"| JSON
-    Arrow --&gt;|"Fast queries"| ML
-    JSON --&gt;|"Text editor"| Edit
-    Edit --&gt;|"Re-import"| Studio
-    
-    style Studio fill:#bbdefb,stroke:#1976d2,stroke-width:2px
-    style Arrow fill:#c8e6c9,stroke:#388e3c,stroke-width:2px
-    style JSON fill:#fff9c4,stroke:#f57f17,stroke-width:2px
-    style ML fill:#e1bee7,stroke:#7b1fa2,stroke-width:2px
-    style Edit fill:#fff9c4,stroke:#f57f17,stroke-width:2px</code></pre>
-<h2 id="json-arrow-conversion">JSON → Arrow Conversion</h2>
-<p>Converting from JSON (human-friendly) to Arrow (ML-optimized).</p>
-<h3 id="python-code">Python Code</h3>
-<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">polars</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pl</span>
-<span class="kn">import</span><span class="w"> </span><span class="nn">json</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">List</span><span class="p">,</span> <span class="n">Dict</span><span class="p">,</span> <span class="n">Any</span>
-
-<span class="k">def</span><span class="w"> </span><span class="nf">json_to_arrow</span><span class="p">(</span><span class="n">json_file</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">output_arrow</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Convert JSON annotations to Arrow format.&quot;&quot;&quot;</span>
-    
-    <span class="c1"># Load JSON data</span>
-    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">json_file</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
-        <span class="n">samples</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
-    
-    <span class="c1"># List to collect all annotation rows</span>
-    <span class="n">rows</span> <span class="o">=</span> <span class="p">[]</span>
-    
-    <span class="k">for</span> <span class="n">sample</span> <span class="ow">in</span> <span class="n">samples</span><span class="p">:</span>
-        <span class="c1"># Extract sample-level metadata (same for all annotations)</span>
-        <span class="n">name</span> <span class="o">=</span> <span class="n">sample</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;image_name&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;.camera.jpeg&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;.jpg&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">)</span>
-        <span class="n">frame</span> <span class="o">=</span> <span class="n">sample</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;frame_number&#39;</span><span class="p">)</span>
-        <span class="n">group</span> <span class="o">=</span> <span class="n">sample</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;group&#39;</span><span class="p">,</span> <span class="s1">&#39;train&#39;</span><span class="p">)</span>
-        
-        <span class="c1"># Extract sample metadata (new in 2025.10)</span>
-        <span class="n">size</span> <span class="o">=</span> <span class="kc">None</span>
-        <span class="k">if</span> <span class="s1">&#39;width&#39;</span> <span class="ow">in</span> <span class="n">sample</span> <span class="ow">and</span> <span class="s1">&#39;height&#39;</span> <span class="ow">in</span> <span class="n">sample</span><span class="p">:</span>
-            <span class="n">size</span> <span class="o">=</span> <span class="p">[</span><span class="n">sample</span><span class="p">[</span><span class="s1">&#39;width&#39;</span><span class="p">],</span> <span class="n">sample</span><span class="p">[</span><span class="s1">&#39;height&#39;</span><span class="p">]]</span>
-        
-        <span class="c1"># GPS coordinates: nested object → array [lat, lon]</span>
-        <span class="n">location</span> <span class="o">=</span> <span class="kc">None</span>
-        <span class="k">if</span> <span class="n">sample</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;sensors&#39;</span><span class="p">,</span> <span class="p">{})</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;gps&#39;</span><span class="p">):</span>
-            <span class="n">gps</span> <span class="o">=</span> <span class="n">sample</span><span class="p">[</span><span class="s1">&#39;sensors&#39;</span><span class="p">][</span><span class="s1">&#39;gps&#39;</span><span class="p">]</span>
-            <span class="n">location</span> <span class="o">=</span> <span class="p">[</span><span class="n">gps</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;latitude&#39;</span><span class="p">),</span> <span class="n">gps</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;longitude&#39;</span><span class="p">)]</span>
-        
-        <span class="c1"># IMU orientation: nested object → array [roll, pitch, yaw]</span>
-        <span class="n">pose</span> <span class="o">=</span> <span class="kc">None</span>
-        <span class="k">if</span> <span class="n">sample</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;sensors&#39;</span><span class="p">,</span> <span class="p">{})</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;imu&#39;</span><span class="p">):</span>
-            <span class="n">imu</span> <span class="o">=</span> <span class="n">sample</span><span class="p">[</span><span class="s1">&#39;sensors&#39;</span><span class="p">][</span><span class="s1">&#39;imu&#39;</span><span class="p">]</span>
-            <span class="n">pose</span> <span class="o">=</span> <span class="p">[</span><span class="n">imu</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;roll&#39;</span><span class="p">),</span> <span class="n">imu</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;pitch&#39;</span><span class="p">),</span> <span class="n">imu</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;yaw&#39;</span><span class="p">)]</span>
-        
-        <span class="n">degradation</span> <span class="o">=</span> <span class="n">sample</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;degradation&#39;</span><span class="p">)</span>
-        
-        <span class="c1"># Process each annotation in the sample</span>
-        <span class="k">for</span> <span class="n">ann</span> <span class="ow">in</span> <span class="n">sample</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;annotations&#39;</span><span class="p">,</span> <span class="p">[]):</span>
-            
-            <span class="c1"># Box2D: JSON {x, y, w, h} → Arrow [cx, cy, w, h]</span>
-            <span class="n">box2d</span> <span class="o">=</span> <span class="kc">None</span>
-            <span class="k">if</span> <span class="s1">&#39;box2d&#39;</span> <span class="ow">in</span> <span class="n">ann</span><span class="p">:</span>
-                <span class="n">b</span> <span class="o">=</span> <span class="n">ann</span><span class="p">[</span><span class="s1">&#39;box2d&#39;</span><span class="p">]</span>
-                <span class="n">box2d</span> <span class="o">=</span> <span class="p">[</span>
-                    <span class="n">b</span><span class="p">[</span><span class="s1">&#39;x&#39;</span><span class="p">]</span> <span class="o">+</span> <span class="n">b</span><span class="p">[</span><span class="s1">&#39;w&#39;</span><span class="p">]</span> <span class="o">/</span> <span class="mi">2</span><span class="p">,</span>    <span class="c1"># cx = left + width/2</span>
-                    <span class="n">b</span><span class="p">[</span><span class="s1">&#39;y&#39;</span><span class="p">]</span> <span class="o">+</span> <span class="n">b</span><span class="p">[</span><span class="s1">&#39;h&#39;</span><span class="p">]</span> <span class="o">/</span> <span class="mi">2</span><span class="p">,</span>    <span class="c1"># cy = top + height/2</span>
-                    <span class="n">b</span><span class="p">[</span><span class="s1">&#39;w&#39;</span><span class="p">],</span>                  <span class="c1"># width</span>
-                    <span class="n">b</span><span class="p">[</span><span class="s1">&#39;h&#39;</span><span class="p">]</span>                   <span class="c1"># height</span>
-                <span class="p">]</span>
-            
-            <span class="c1"># Box3D: JSON object → Array [x, y, z, w, h, l]</span>
-            <span class="n">box3d</span> <span class="o">=</span> <span class="kc">None</span>
-            <span class="k">if</span> <span class="s1">&#39;box3d&#39;</span> <span class="ow">in</span> <span class="n">ann</span><span class="p">:</span>
-                <span class="n">b</span> <span class="o">=</span> <span class="n">ann</span><span class="p">[</span><span class="s1">&#39;box3d&#39;</span><span class="p">]</span>
-                <span class="n">box3d</span> <span class="o">=</span> <span class="p">[</span><span class="n">b</span><span class="p">[</span><span class="s1">&#39;x&#39;</span><span class="p">],</span> <span class="n">b</span><span class="p">[</span><span class="s1">&#39;y&#39;</span><span class="p">],</span> <span class="n">b</span><span class="p">[</span><span class="s1">&#39;z&#39;</span><span class="p">],</span> <span class="n">b</span><span class="p">[</span><span class="s1">&#39;w&#39;</span><span class="p">],</span> <span class="n">b</span><span class="p">[</span><span class="s1">&#39;h&#39;</span><span class="p">],</span> <span class="n">b</span><span class="p">[</span><span class="s1">&#39;l&#39;</span><span class="p">]]</span>
-            
-            <span class="c1"># Mask: JSON nested lists → flat array with NaN separators</span>
-            <span class="n">mask</span> <span class="o">=</span> <span class="kc">None</span>
-            <span class="k">if</span> <span class="s1">&#39;mask&#39;</span> <span class="ow">in</span> <span class="n">ann</span> <span class="ow">and</span> <span class="s1">&#39;polygon&#39;</span> <span class="ow">in</span> <span class="n">ann</span><span class="p">[</span><span class="s1">&#39;mask&#39;</span><span class="p">]:</span>
-                <span class="n">polys</span> <span class="o">=</span> <span class="n">ann</span><span class="p">[</span><span class="s1">&#39;mask&#39;</span><span class="p">][</span><span class="s1">&#39;polygon&#39;</span><span class="p">]</span>
-                <span class="n">flat</span> <span class="o">=</span> <span class="p">[]</span>
-                <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">poly</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">polys</span><span class="p">):</span>
-                    <span class="k">if</span> <span class="n">i</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
-                        <span class="n">flat</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">float</span><span class="p">(</span><span class="s1">&#39;nan&#39;</span><span class="p">))</span>  <span class="c1"># Separator between polygons</span>
-                    <span class="k">for</span> <span class="n">point</span> <span class="ow">in</span> <span class="n">poly</span><span class="p">:</span>
-                        <span class="n">flat</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">point</span><span class="p">)</span>
-                <span class="n">mask</span> <span class="o">=</span> <span class="n">flat</span> <span class="k">if</span> <span class="n">flat</span> <span class="k">else</span> <span class="kc">None</span>
-            
-            <span class="c1"># Create Arrow row</span>
-            <span class="n">row</span> <span class="o">=</span> <span class="p">{</span>
-                <span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="n">name</span><span class="p">,</span>
-                <span class="s1">&#39;frame&#39;</span><span class="p">:</span> <span class="n">frame</span><span class="p">,</span>
-                <span class="s1">&#39;object_id&#39;</span><span class="p">:</span> <span class="n">ann</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;object_id&#39;</span><span class="p">),</span>
-                <span class="s1">&#39;label&#39;</span><span class="p">:</span> <span class="n">ann</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;label_name&#39;</span><span class="p">),</span>
-                <span class="s1">&#39;label_index&#39;</span><span class="p">:</span> <span class="n">ann</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;label_index&#39;</span><span class="p">),</span>
-                <span class="s1">&#39;group&#39;</span><span class="p">:</span> <span class="n">group</span><span class="p">,</span>
-                <span class="s1">&#39;box2d&#39;</span><span class="p">:</span> <span class="n">box2d</span><span class="p">,</span>
-                <span class="s1">&#39;box3d&#39;</span><span class="p">:</span> <span class="n">box3d</span><span class="p">,</span>
-                <span class="s1">&#39;mask&#39;</span><span class="p">:</span> <span class="n">mask</span><span class="p">,</span>
-                <span class="s1">&#39;size&#39;</span><span class="p">:</span> <span class="n">size</span><span class="p">,</span>
-                <span class="s1">&#39;location&#39;</span><span class="p">:</span> <span class="n">location</span><span class="p">,</span>
-                <span class="s1">&#39;pose&#39;</span><span class="p">:</span> <span class="n">pose</span><span class="p">,</span>
-                <span class="s1">&#39;degradation&#39;</span><span class="p">:</span> <span class="n">degradation</span><span class="p">,</span>
-            <span class="p">}</span>
-            
-            <span class="n">rows</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">row</span><span class="p">)</span>
-    
-    <span class="c1"># Create Arrow table and save</span>
-    <span class="n">df</span> <span class="o">=</span> <span class="n">pl</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">rows</span><span class="p">)</span>
-    <span class="n">df</span><span class="o">.</span><span class="n">write_ipc</span><span class="p">(</span><span class="n">output_arrow</span><span class="p">)</span>
-    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;✅ Saved </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">df</span><span class="p">)</span><span class="si">}</span><span class="s2"> annotations to </span><span class="si">{</span><span class="n">output_arrow</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-
-<span class="c1"># Usage</span>
-<span class="n">json_to_arrow</span><span class="p">(</span><span class="s1">&#39;annotations.json&#39;</span><span class="p">,</span> <span class="s1">&#39;dataset.arrow&#39;</span><span class="p">)</span>
-</code></pre></div>
-<h3 id="key-conversions">Key Conversions</h3>
-<table>
-<thead>
-<tr>
-<th>JSON</th>
-<th>→</th>
-<th>Arrow</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>label_name</code></td>
-<td>→</td>
-<td><code>label</code></td>
-</tr>
-<tr>
-<td><code>group</code></td>
-<td>→</td>
-<td><code>group</code></td>
-</tr>
-<tr>
-<td>Box2D <code>{x, y, w, h}</code></td>
-<td>→</td>
-<td><code>[cx, cy, w, h]</code></td>
-</tr>
-<tr>
-<td><abbr title="Global Positioning System">GPS</abbr> nested object</td>
-<td>→</td>
-<td>Array <code>[lat, lon]</code></td>
-</tr>
-<tr>
-<td><abbr title="Inertial Measurement Unit">IMU</abbr> nested object</td>
-<td>→</td>
-<td>Array <code>[roll, pitch, yaw]</code></td>
-</tr>
-<tr>
-<td>Mask nested polygons</td>
-<td>→</td>
-<td>Flat array + NaN separators</td>
-</tr>
-</tbody>
-</table>
-<hr />
-<h2 id="arrow-json-conversion">Arrow → JSON Conversion</h2>
-<p>Converting from Arrow (ML-optimized) to JSON (human-friendly).</p>
-<h3 id="python-code_1">Python Code</h3>
-<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">polars</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pl</span>
-<span class="kn">import</span><span class="w"> </span><span class="nn">json</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">List</span><span class="p">,</span> <span class="n">Dict</span><span class="p">,</span> <span class="n">Any</span>
-
-<span class="k">def</span><span class="w"> </span><span class="nf">arrow_to_json</span><span class="p">(</span><span class="n">arrow_file</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">output_json</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Convert Arrow annotations to JSON format.&quot;&quot;&quot;</span>
-    
-    <span class="c1"># Load Arrow data</span>
-    <span class="n">df</span> <span class="o">=</span> <span class="n">pl</span><span class="o">.</span><span class="n">read_ipc</span><span class="p">(</span><span class="n">arrow_file</span><span class="p">)</span>
-    
-    <span class="c1"># Group by sample (name, frame)</span>
-    <span class="n">samples_dict</span> <span class="o">=</span> <span class="p">{}</span>
-    
-    <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">df</span><span class="o">.</span><span class="n">iter_rows</span><span class="p">(</span><span class="n">named</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
-        <span class="n">sample_key</span> <span class="o">=</span> <span class="p">(</span><span class="n">row</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">],</span> <span class="n">row</span><span class="p">[</span><span class="s1">&#39;frame&#39;</span><span class="p">])</span>
-        
-        <span class="k">if</span> <span class="n">sample_key</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">samples_dict</span><span class="p">:</span>
-            <span class="c1"># Create sample object (only once per unique sample)</span>
-            <span class="n">sample</span> <span class="o">=</span> <span class="p">{</span>
-                <span class="s1">&#39;image_name&#39;</span><span class="p">:</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">row</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">.camera.jpeg&quot;</span><span class="p">,</span>
-                <span class="s1">&#39;frame_number&#39;</span><span class="p">:</span> <span class="n">row</span><span class="p">[</span><span class="s1">&#39;frame&#39;</span><span class="p">],</span>
-                <span class="s1">&#39;group&#39;</span><span class="p">:</span> <span class="n">row</span><span class="p">[</span><span class="s1">&#39;group&#39;</span><span class="p">],</span>
-                <span class="s1">&#39;annotations&#39;</span><span class="p">:</span> <span class="p">[]</span>
-            <span class="p">}</span>
-            
-            <span class="c1"># Add size if available</span>
-            <span class="k">if</span> <span class="n">row</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;size&#39;</span><span class="p">):</span>
-                <span class="n">sample</span><span class="p">[</span><span class="s1">&#39;width&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">row</span><span class="p">[</span><span class="s1">&#39;size&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">])</span>
-                <span class="n">sample</span><span class="p">[</span><span class="s1">&#39;height&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">row</span><span class="p">[</span><span class="s1">&#39;size&#39;</span><span class="p">][</span><span class="mi">1</span><span class="p">])</span>
-            
-            <span class="c1"># Add sensors if available</span>
-            <span class="n">sensors</span> <span class="o">=</span> <span class="p">{}</span>
-            
-            <span class="k">if</span> <span class="n">row</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;location&#39;</span><span class="p">):</span>
-                <span class="n">sensors</span><span class="p">[</span><span class="s1">&#39;gps&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span>
-                    <span class="s1">&#39;latitude&#39;</span><span class="p">:</span> <span class="nb">float</span><span class="p">(</span><span class="n">row</span><span class="p">[</span><span class="s1">&#39;location&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">]),</span>
-                    <span class="s1">&#39;longitude&#39;</span><span class="p">:</span> <span class="nb">float</span><span class="p">(</span><span class="n">row</span><span class="p">[</span><span class="s1">&#39;location&#39;</span><span class="p">][</span><span class="mi">1</span><span class="p">])</span>
-                <span class="p">}</span>
-            
-            <span class="k">if</span> <span class="n">row</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;pose&#39;</span><span class="p">):</span>
-                <span class="n">sensors</span><span class="p">[</span><span class="s1">&#39;imu&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span>
-                    <span class="s1">&#39;roll&#39;</span><span class="p">:</span> <span class="nb">float</span><span class="p">(</span><span class="n">row</span><span class="p">[</span><span class="s1">&#39;pose&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">]),</span>
-                    <span class="s1">&#39;pitch&#39;</span><span class="p">:</span> <span class="nb">float</span><span class="p">(</span><span class="n">row</span><span class="p">[</span><span class="s1">&#39;pose&#39;</span><span class="p">][</span><span class="mi">1</span><span class="p">]),</span>
-                    <span class="s1">&#39;yaw&#39;</span><span class="p">:</span> <span class="nb">float</span><span class="p">(</span><span class="n">row</span><span class="p">[</span><span class="s1">&#39;pose&#39;</span><span class="p">][</span><span class="mi">2</span><span class="p">])</span>
-                <span class="p">}</span>
-            
-            <span class="k">if</span> <span class="n">sensors</span><span class="p">:</span>
-                <span class="n">sample</span><span class="p">[</span><span class="s1">&#39;sensors&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">sensors</span>
-            
-            <span class="c1"># Add degradation if present</span>
-            <span class="k">if</span> <span class="n">row</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;degradation&#39;</span><span class="p">):</span>
-                <span class="n">sample</span><span class="p">[</span><span class="s1">&#39;degradation&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">row</span><span class="p">[</span><span class="s1">&#39;degradation&#39;</span><span class="p">]</span>
-            
-            <span class="n">samples_dict</span><span class="p">[</span><span class="n">sample_key</span><span class="p">]</span> <span class="o">=</span> <span class="n">sample</span>
-        
-        <span class="c1"># Add annotation to sample</span>
-        <span class="n">sample</span> <span class="o">=</span> <span class="n">samples_dict</span><span class="p">[</span><span class="n">sample_key</span><span class="p">]</span>
-        
-        <span class="c1"># Box2D: Arrow [cx, cy, w, h] → JSON {x, y, w, h}</span>
-        <span class="n">ann</span> <span class="o">=</span> <span class="p">{}</span>
-        <span class="k">if</span> <span class="n">row</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;box2d&#39;</span><span class="p">):</span>
-            <span class="n">b</span> <span class="o">=</span> <span class="n">row</span><span class="p">[</span><span class="s1">&#39;box2d&#39;</span><span class="p">]</span>
-            <span class="n">ann</span><span class="p">[</span><span class="s1">&#39;box2d&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span>
-                <span class="s1">&#39;x&#39;</span><span class="p">:</span> <span class="nb">float</span><span class="p">(</span><span class="n">b</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="n">b</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">/</span> <span class="mi">2</span><span class="p">),</span>   <span class="c1"># x = cx - w/2</span>
-                <span class="s1">&#39;y&#39;</span><span class="p">:</span> <span class="nb">float</span><span class="p">(</span><span class="n">b</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">b</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span> <span class="o">/</span> <span class="mi">2</span><span class="p">),</span>   <span class="c1"># y = cy - h/2</span>
-                <span class="s1">&#39;w&#39;</span><span class="p">:</span> <span class="nb">float</span><span class="p">(</span><span class="n">b</span><span class="p">[</span><span class="mi">2</span><span class="p">]),</span>               <span class="c1"># w</span>
-                <span class="s1">&#39;h&#39;</span><span class="p">:</span> <span class="nb">float</span><span class="p">(</span><span class="n">b</span><span class="p">[</span><span class="mi">3</span><span class="p">])</span>                <span class="c1"># h</span>
-            <span class="p">}</span>
-        
-        <span class="c1"># Box3D: Array [x, y, z, w, h, l] → JSON object</span>
-        <span class="k">if</span> <span class="n">row</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;box3d&#39;</span><span class="p">):</span>
-            <span class="n">b</span> <span class="o">=</span> <span class="n">row</span><span class="p">[</span><span class="s1">&#39;box3d&#39;</span><span class="p">]</span>
-            <span class="n">ann</span><span class="p">[</span><span class="s1">&#39;box3d&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span>
-                <span class="s1">&#39;x&#39;</span><span class="p">:</span> <span class="nb">float</span><span class="p">(</span><span class="n">b</span><span class="p">[</span><span class="mi">0</span><span class="p">]),</span>
-                <span class="s1">&#39;y&#39;</span><span class="p">:</span> <span class="nb">float</span><span class="p">(</span><span class="n">b</span><span class="p">[</span><span class="mi">1</span><span class="p">]),</span>
-                <span class="s1">&#39;z&#39;</span><span class="p">:</span> <span class="nb">float</span><span class="p">(</span><span class="n">b</span><span class="p">[</span><span class="mi">2</span><span class="p">]),</span>
-                <span class="s1">&#39;w&#39;</span><span class="p">:</span> <span class="nb">float</span><span class="p">(</span><span class="n">b</span><span class="p">[</span><span class="mi">3</span><span class="p">]),</span>
-                <span class="s1">&#39;h&#39;</span><span class="p">:</span> <span class="nb">float</span><span class="p">(</span><span class="n">b</span><span class="p">[</span><span class="mi">4</span><span class="p">]),</span>
-                <span class="s1">&#39;l&#39;</span><span class="p">:</span> <span class="nb">float</span><span class="p">(</span><span class="n">b</span><span class="p">[</span><span class="mi">5</span><span class="p">])</span>
-            <span class="p">}</span>
-        
-        <span class="c1"># Mask: flat array + NaN separators → nested polygons</span>
-        <span class="k">if</span> <span class="n">row</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;mask&#39;</span><span class="p">):</span>
-            <span class="n">mask_flat</span> <span class="o">=</span> <span class="n">row</span><span class="p">[</span><span class="s1">&#39;mask&#39;</span><span class="p">]</span>
-            <span class="n">polygons</span> <span class="o">=</span> <span class="p">[]</span>
-            <span class="n">current_poly</span> <span class="o">=</span> <span class="p">[]</span>
-            
-            <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">mask_flat</span><span class="p">),</span> <span class="mi">2</span><span class="p">):</span>
-                <span class="k">if</span> <span class="n">i</span> <span class="o">+</span> <span class="mi">1</span> <span class="o">&lt;</span> <span class="nb">len</span><span class="p">(</span><span class="n">mask_flat</span><span class="p">):</span>
-                    <span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">mask_flat</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">mask_flat</span><span class="p">[</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]</span>
-                    
-                    <span class="c1"># Check for NaN separator</span>
-                    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="nb">float</span><span class="p">)</span> <span class="ow">and</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="nb">float</span><span class="p">):</span>
-                        <span class="k">if</span> <span class="n">x</span> <span class="o">!=</span> <span class="n">x</span> <span class="ow">or</span> <span class="n">y</span> <span class="o">!=</span> <span class="n">y</span><span class="p">:</span>  <span class="c1"># NaN check</span>
-                            <span class="k">if</span> <span class="n">current_poly</span><span class="p">:</span>
-                                <span class="n">polygons</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">current_poly</span><span class="p">)</span>
-                                <span class="n">current_poly</span> <span class="o">=</span> <span class="p">[]</span>
-                        <span class="k">else</span><span class="p">:</span>
-                            <span class="n">current_poly</span><span class="o">.</span><span class="n">append</span><span class="p">([</span><span class="nb">float</span><span class="p">(</span><span class="n">x</span><span class="p">),</span> <span class="nb">float</span><span class="p">(</span><span class="n">y</span><span class="p">)])</span>
-            
-            <span class="c1"># Add last polygon</span>
-            <span class="k">if</span> <span class="n">current_poly</span><span class="p">:</span>
-                <span class="n">polygons</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">current_poly</span><span class="p">)</span>
-            
-            <span class="k">if</span> <span class="n">polygons</span><span class="p">:</span>
-                <span class="n">ann</span><span class="p">[</span><span class="s1">&#39;mask&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;polygon&#39;</span><span class="p">:</span> <span class="n">polygons</span><span class="p">}</span>
-        
-        <span class="c1"># Add labels</span>
-        <span class="n">ann</span><span class="p">[</span><span class="s1">&#39;label_name&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">row</span><span class="p">[</span><span class="s1">&#39;label&#39;</span><span class="p">]</span>
-        <span class="n">ann</span><span class="p">[</span><span class="s1">&#39;label_index&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">row</span><span class="p">[</span><span class="s1">&#39;label_index&#39;</span><span class="p">]</span>
-        <span class="n">ann</span><span class="p">[</span><span class="s1">&#39;object_id&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">row</span><span class="p">[</span><span class="s1">&#39;object_id&#39;</span><span class="p">]</span>
-        
-        <span class="n">sample</span><span class="p">[</span><span class="s1">&#39;annotations&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">ann</span><span class="p">)</span>
-    
-    <span class="c1"># Convert to list of samples</span>
-    <span class="n">samples</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">samples_dict</span><span class="o">.</span><span class="n">values</span><span class="p">())</span>
-    
-    <span class="c1"># Save JSON</span>
-    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">output_json</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
-        <span class="n">json</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="n">samples</span><span class="p">,</span> <span class="n">f</span><span class="p">,</span> <span class="n">indent</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
-    
-    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;✅ Saved </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">samples</span><span class="p">)</span><span class="si">}</span><span class="s2"> samples to </span><span class="si">{</span><span class="n">output_json</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-
-<span class="c1"># Usage</span>
-<span class="n">arrow_to_json</span><span class="p">(</span><span class="s1">&#39;dataset.arrow&#39;</span><span class="p">,</span> <span class="s1">&#39;annotations.json&#39;</span><span class="p">)</span>
-</code></pre></div>
-<h3 id="key-conversions_1">Key Conversions</h3>
-<table>
-<thead>
-<tr>
-<th>Arrow</th>
-<th>→</th>
-<th>JSON</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>label</code> column</td>
-<td>→</td>
-<td><code>label_name</code> field</td>
-</tr>
-<tr>
-<td><code>[cx, cy, w, h]</code></td>
-<td>→</td>
-<td>Box2D <code>{x, y, w, h}</code></td>
-</tr>
-<tr>
-<td>Array <code>[lat, lon]</code></td>
-<td>→</td>
-<td><abbr title="Global Positioning System">GPS</abbr> nested object</td>
-</tr>
-<tr>
-<td>Array <code>[roll, pitch, yaw]</code></td>
-<td>→</td>
-<td><abbr title="Inertial Measurement Unit">IMU</abbr> nested object</td>
-</tr>
-<tr>
-<td>Flat array + NaN</td>
-<td>→</td>
-<td>Mask nested polygons</td>
-</tr>
-<tr>
-<td>Grouped by (name, frame)</td>
-<td>→</td>
-<td>Sample with annotations[]</td>
-</tr>
-</tbody>
-</table>
-<hr />
-<h2 id="complete-example">Complete Example</h2>
-<h3 id="starting-with-json">Starting with JSON</h3>
-<div class="highlight"><pre><span></span><code><span class="p">{</span>
-<span class="w">  </span><span class="nt">&quot;image_name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;scene_001.camera.jpeg&quot;</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;frame_number&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;group&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;train&quot;</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;width&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1920</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;height&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1080</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;sensors&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nt">&quot;gps&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="nt">&quot;latitude&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">37.7749</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;longitude&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">-122.4194</span><span class="p">},</span>
-<span class="w">    </span><span class="nt">&quot;imu&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="nt">&quot;roll&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">0.5</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;pitch&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">-1.2</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;yaw&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">45.3</span><span class="p">}</span>
-<span class="w">  </span><span class="p">},</span>
-<span class="w">  </span><span class="nt">&quot;annotations&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
-<span class="w">    </span><span class="p">{</span>
-<span class="w">      </span><span class="nt">&quot;label_name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;person&quot;</span><span class="p">,</span>
-<span class="w">      </span><span class="nt">&quot;label_index&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
-<span class="w">      </span><span class="nt">&quot;object_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;obj-001&quot;</span><span class="p">,</span>
-<span class="w">      </span><span class="nt">&quot;box2d&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="nt">&quot;x&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">0.43</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;y&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">0.24</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;w&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">0.15</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;h&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">0.64</span><span class="p">},</span>
-<span class="w">      </span><span class="nt">&quot;mask&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="nt">&quot;polygon&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[[[</span><span class="mf">0.43</span><span class="p">,</span><span class="w"> </span><span class="mf">0.24</span><span class="p">],</span><span class="w"> </span><span class="p">[</span><span class="mf">0.58</span><span class="p">,</span><span class="w"> </span><span class="mf">0.24</span><span class="p">],</span><span class="w"> </span><span class="p">[</span><span class="mf">0.58</span><span class="p">,</span><span class="w"> </span><span class="mf">0.88</span><span class="p">]]]}</span>
-<span class="w">    </span><span class="p">}</span>
-<span class="w">  </span><span class="p">]</span>
-<span class="p">}</span>
-</code></pre></div>
-<h3 id="after-json-arrow-conversion">After JSON → Arrow Conversion</h3>
-<div class="highlight"><pre><span></span><code><span class="c1"># Row in Arrow DataFrame</span>
-<span class="p">{</span>
-    <span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="s1">&#39;scene_001&#39;</span><span class="p">,</span>
-    <span class="s1">&#39;frame&#39;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
-    <span class="s1">&#39;label&#39;</span><span class="p">:</span> <span class="s1">&#39;person&#39;</span><span class="p">,</span>
-    <span class="s1">&#39;label_index&#39;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
-    <span class="s1">&#39;object_id&#39;</span><span class="p">:</span> <span class="s1">&#39;obj-001&#39;</span><span class="p">,</span>
-    <span class="s1">&#39;group&#39;</span><span class="p">:</span> <span class="s1">&#39;train&#39;</span><span class="p">,</span>
-    <span class="s1">&#39;box2d&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mf">0.505</span><span class="p">,</span> <span class="mf">0.56</span><span class="p">,</span> <span class="mf">0.15</span><span class="p">,</span> <span class="mf">0.64</span><span class="p">],</span>      <span class="c1"># [cx, cy, w, h]</span>
-    <span class="s1">&#39;size&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">1920</span><span class="p">,</span> <span class="mi">1080</span><span class="p">],</span>                     <span class="c1"># [width, height]</span>
-    <span class="s1">&#39;location&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mf">37.7749</span><span class="p">,</span> <span class="o">-</span><span class="mf">122.4194</span><span class="p">],</span>        <span class="c1"># [lat, lon]</span>
-    <span class="s1">&#39;pose&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mf">0.5</span><span class="p">,</span> <span class="o">-</span><span class="mf">1.2</span><span class="p">,</span> <span class="mf">45.3</span><span class="p">],</span>               <span class="c1"># [roll, pitch, yaw]</span>
-    <span class="s1">&#39;mask&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mf">0.43</span><span class="p">,</span> <span class="mf">0.24</span><span class="p">,</span> <span class="mf">0.58</span><span class="p">,</span> <span class="mf">0.24</span><span class="p">,</span> <span class="o">...</span><span class="p">]</span>   <span class="c1"># flattened polygon</span>
-<span class="p">}</span>
-</code></pre></div>
-<h3 id="converting-back-to-json">Converting Back to JSON</h3>
-<div class="highlight"><pre><span></span><code><span class="p">{</span>
-<span class="w">  </span><span class="nt">&quot;image_name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;scene_001.camera.jpeg&quot;</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;frame_number&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;group&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;train&quot;</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;width&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1920</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;height&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1080</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;sensors&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nt">&quot;gps&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="nt">&quot;latitude&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">37.7749</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;longitude&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">-122.4194</span><span class="p">},</span>
-<span class="w">    </span><span class="nt">&quot;imu&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="nt">&quot;roll&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">0.5</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;pitch&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">-1.2</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;yaw&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">45.3</span><span class="p">}</span>
-<span class="w">  </span><span class="p">},</span>
-<span class="w">  </span><span class="nt">&quot;annotations&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
-<span class="w">    </span><span class="p">{</span>
-<span class="w">      </span><span class="nt">&quot;label_name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;person&quot;</span><span class="p">,</span>
-<span class="w">      </span><span class="nt">&quot;label_index&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
-<span class="w">      </span><span class="nt">&quot;object_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;obj-001&quot;</span><span class="p">,</span>
-<span class="w">      </span><span class="nt">&quot;box2d&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="nt">&quot;x&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">0.43</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;y&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">0.24</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;w&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">0.15</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;h&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">0.64</span><span class="p">},</span>
-<span class="w">      </span><span class="nt">&quot;mask&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="nt">&quot;polygon&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[[[</span><span class="mf">0.43</span><span class="p">,</span><span class="w"> </span><span class="mf">0.24</span><span class="p">],</span><span class="w"> </span><span class="p">[</span><span class="mf">0.58</span><span class="p">,</span><span class="w"> </span><span class="mf">0.24</span><span class="p">],</span><span class="w"> </span><span class="p">[</span><span class="mf">0.58</span><span class="p">,</span><span class="w"> </span><span class="mf">0.88</span><span class="p">]]]}</span>
-<span class="w">    </span><span class="p">}</span>
-<span class="w">  </span><span class="p">]</span>
-<span class="p">}</span>
-</code></pre></div>
-<hr />
-<h2 id="box2d-conversion-details">Box2D Conversion Details</h2>
-<p><strong>⚠️ IMPORTANT</strong>: Box2D coordinates change between formats!</p>
-<h3 id="arrow-center-json-top-left">Arrow (Center) → JSON (Top-Left)</h3>
-<div class="highlight"><pre><span></span><code><span class="c1"># Arrow stores center-based: [cx, cy, w, h]</span>
-<span class="n">cx</span><span class="p">,</span> <span class="n">cy</span><span class="p">,</span> <span class="n">w</span><span class="p">,</span> <span class="n">h</span> <span class="o">=</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.3</span><span class="p">,</span> <span class="mf">0.4</span>
-
-<span class="c1"># Convert to JSON legacy: {x, y, w, h} (top-left)</span>
-<span class="n">x</span> <span class="o">=</span> <span class="n">cx</span> <span class="o">-</span> <span class="n">w</span> <span class="o">/</span> <span class="mi">2</span>  <span class="c1"># 0.5 - 0.15 = 0.35</span>
-<span class="n">y</span> <span class="o">=</span> <span class="n">cy</span> <span class="o">-</span> <span class="n">h</span> <span class="o">/</span> <span class="mi">2</span>  <span class="c1"># 0.5 - 0.20 = 0.30</span>
-<span class="c1"># Result: {&quot;x&quot;: 0.35, &quot;y&quot;: 0.30, &quot;w&quot;: 0.3, &quot;h&quot;: 0.4}</span>
-</code></pre></div>
-<h3 id="json-top-left-arrow-center">JSON (Top-Left) → Arrow (Center)</h3>
-<div class="highlight"><pre><span></span><code><span class="c1"># JSON legacy: {x, y, w, h} (top-left)</span>
-<span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">w</span><span class="p">,</span> <span class="n">h</span> <span class="o">=</span> <span class="mf">0.35</span><span class="p">,</span> <span class="mf">0.30</span><span class="p">,</span> <span class="mf">0.3</span><span class="p">,</span> <span class="mf">0.4</span>
-
-<span class="c1"># Convert to Arrow center-based: [cx, cy, w, h]</span>
-<span class="n">cx</span> <span class="o">=</span> <span class="n">x</span> <span class="o">+</span> <span class="n">w</span> <span class="o">/</span> <span class="mi">2</span>  <span class="c1"># 0.35 + 0.15 = 0.50</span>
-<span class="n">cy</span> <span class="o">=</span> <span class="n">y</span> <span class="o">+</span> <span class="n">h</span> <span class="o">/</span> <span class="mi">2</span>  <span class="c1"># 0.30 + 0.20 = 0.50</span>
-<span class="c1"># Result: [0.5, 0.5, 0.3, 0.4]</span>
-</code></pre></div>
-<hr />
-<h2 id="mask-conversion-details">Mask Conversion Details</h2>
-<h3 id="nested-json-flat-arrow">Nested (JSON) → Flat (Arrow)</h3>
-<div class="highlight"><pre><span></span><code><span class="c1"># JSON: nested list of polygons</span>
-<span class="n">mask_json</span> <span class="o">=</span> <span class="p">{</span>
-    <span class="s2">&quot;polygon&quot;</span><span class="p">:</span> <span class="p">[</span>
-        <span class="p">[[</span><span class="mf">0.4</span><span class="p">,</span> <span class="mf">0.3</span><span class="p">],</span> <span class="p">[</span><span class="mf">0.6</span><span class="p">,</span> <span class="mf">0.3</span><span class="p">],</span> <span class="p">[</span><span class="mf">0.6</span><span class="p">,</span> <span class="mf">0.7</span><span class="p">]],</span>  <span class="c1"># polygon 1</span>
-        <span class="p">[[</span><span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">],</span> <span class="p">[</span><span class="mf">0.2</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">],</span> <span class="p">[</span><span class="mf">0.2</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">]]</span>   <span class="c1"># polygon 2</span>
-    <span class="p">]</span>
-<span class="p">}</span>
-
-<span class="c1"># Arrow: flat array with NaN separators</span>
-<span class="n">mask_arrow</span> <span class="o">=</span> <span class="p">[</span>
-    <span class="mf">0.4</span><span class="p">,</span> <span class="mf">0.3</span><span class="p">,</span> <span class="mf">0.6</span><span class="p">,</span> <span class="mf">0.3</span><span class="p">,</span> <span class="mf">0.6</span><span class="p">,</span> <span class="mf">0.7</span><span class="p">,</span>  <span class="c1"># polygon 1</span>
-    <span class="nb">float</span><span class="p">(</span><span class="s1">&#39;nan&#39;</span><span class="p">),</span> <span class="nb">float</span><span class="p">(</span><span class="s1">&#39;nan&#39;</span><span class="p">),</span>     <span class="c1"># NaN separator</span>
-    <span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">,</span> <span class="mf">0.2</span>   <span class="c1"># polygon 2</span>
-<span class="p">]</span>
-</code></pre></div>
-<h3 id="flat-arrow-nested-json">Flat (Arrow) → Nested (JSON)</h3>
-<div class="highlight"><pre><span></span><code><span class="c1"># Split on NaN values</span>
-<span class="kn">import</span><span class="w"> </span><span class="nn">math</span>
-
-<span class="n">mask_arrow</span> <span class="o">=</span> <span class="p">[</span><span class="mf">0.4</span><span class="p">,</span> <span class="mf">0.3</span><span class="p">,</span> <span class="mf">0.6</span><span class="p">,</span> <span class="mf">0.3</span><span class="p">,</span> <span class="mf">0.6</span><span class="p">,</span> <span class="mf">0.7</span><span class="p">,</span> <span class="nb">float</span><span class="p">(</span><span class="s1">&#39;nan&#39;</span><span class="p">),</span> <span class="o">...</span><span class="p">]</span>
-
-<span class="n">polygons</span> <span class="o">=</span> <span class="p">[]</span>
-<span class="n">current_poly</span> <span class="o">=</span> <span class="p">[]</span>
-
-<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">mask_arrow</span><span class="p">),</span> <span class="mi">2</span><span class="p">):</span>
-    <span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">mask_arrow</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">mask_arrow</span><span class="p">[</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]</span>
-    
-    <span class="c1"># Check for NaN</span>
-    <span class="k">if</span> <span class="n">math</span><span class="o">.</span><span class="n">isnan</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="ow">or</span> <span class="n">math</span><span class="o">.</span><span class="n">isnan</span><span class="p">(</span><span class="n">y</span><span class="p">):</span>
-        <span class="n">polygons</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">current_poly</span><span class="p">)</span>
-        <span class="n">current_poly</span> <span class="o">=</span> <span class="p">[]</span>
-    <span class="k">else</span><span class="p">:</span>
-        <span class="n">current_poly</span><span class="o">.</span><span class="n">append</span><span class="p">([</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">])</span>
-
-<span class="c1"># Result: list of polygon coordinate lists</span>
-</code></pre></div>
-<hr />
-<h2 id="batch-conversion">Batch Conversion</h2>
-<p>Convert an entire directory of JSON files:</p>
-<div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">pathlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">Path</span>
+<h1 id="conversion-guidelines">Conversion Guidelines</h1>
+<div class="admonition danger">
+<p class="admonition-title">2025.10 code is incompatible with 2026.04 files</p>
+<p>Code written for the 2025.10 schema (NaN-separated masks, <code>mask: List&lt;Float32&gt;</code>)
+will produce <strong>corrupt data</strong> when applied to 2026.04 files. Always check the
+schema version before processing. See the <a href="../migration/">Migration Guide</a> for
+upgrade instructions.</p>
+</div>
+<h2 id="version-detection">Version Detection</h2>
+<p>Always detect the schema version before reading annotation data.</p>
+<h3 id="arrow-parquet-files">Arrow / Parquet Files</h3>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">pyarrow.ipc</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">ipc</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pyarrow.parquet</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pq</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">polars</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pl</span>
-<span class="kn">import</span><span class="w"> </span><span class="nn">json</span>
 
-<span class="k">def</span><span class="w"> </span><span class="nf">batch_json_to_arrow</span><span class="p">(</span><span class="n">json_dir</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Convert all JSON files in directory to Arrow.&quot;&quot;&quot;</span>
-    
-    <span class="n">all_rows</span> <span class="o">=</span> <span class="p">[]</span>
-    
-    <span class="k">for</span> <span class="n">json_file</span> <span class="ow">in</span> <span class="n">Path</span><span class="p">(</span><span class="n">json_dir</span><span class="p">)</span><span class="o">.</span><span class="n">glob</span><span class="p">(</span><span class="s2">&quot;*.json&quot;</span><span class="p">):</span>
-        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">json_file</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
-            <span class="n">samples</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
-        
-        <span class="c1"># ... (use json_to_arrow logic) ...</span>
-        <span class="c1"># append rows to all_rows</span>
-    
-    <span class="n">df</span> <span class="o">=</span> <span class="n">pl</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">all_rows</span><span class="p">)</span>
-    <span class="n">df</span><span class="o">.</span><span class="n">write_ipc</span><span class="p">(</span><span class="n">Path</span><span class="p">(</span><span class="n">json_dir</span><span class="p">)</span> <span class="o">/</span> <span class="s2">&quot;combined.arrow&quot;</span><span class="p">)</span>
-    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;✅ Saved </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">df</span><span class="p">)</span><span class="si">}</span><span class="s2"> annotations&quot;</span><span class="p">)</span>
+<span class="c1"># Method 1 (preferred): Check schema_version metadata</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">get_schema_version</span><span class="p">(</span><span class="n">path</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Read schema_version from Arrow IPC or Parquet file metadata.&quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="n">path</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="s2">&quot;.parquet&quot;</span><span class="p">):</span>
+        <span class="n">metadata</span> <span class="o">=</span> <span class="n">pq</span><span class="o">.</span><span class="n">read_schema</span><span class="p">(</span><span class="n">path</span><span class="p">)</span><span class="o">.</span><span class="n">metadata</span> <span class="ow">or</span> <span class="p">{}</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="s2">&quot;rb&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+            <span class="n">metadata</span> <span class="o">=</span> <span class="n">ipc</span><span class="o">.</span><span class="n">open_file</span><span class="p">(</span><span class="n">f</span><span class="p">)</span><span class="o">.</span><span class="n">schema</span><span class="o">.</span><span class="n">metadata</span> <span class="ow">or</span> <span class="p">{}</span>
+    <span class="k">return</span> <span class="n">metadata</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="sa">b</span><span class="s2">&quot;schema_version&quot;</span><span class="p">,</span> <span class="sa">b</span><span class="s2">&quot;&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">decode</span><span class="p">()</span>
 
-<span class="c1"># Usage</span>
-<span class="n">batch_json_to_arrow</span><span class="p">(</span><span class="s2">&quot;./annotations/&quot;</span><span class="p">)</span>
+<span class="n">schema_version</span> <span class="o">=</span> <span class="n">get_schema_version</span><span class="p">(</span><span class="s2">&quot;dataset.arrow&quot;</span><span class="p">)</span>
+
+<span class="k">if</span> <span class="n">schema_version</span><span class="p">:</span>
+    <span class="n">version</span> <span class="o">=</span> <span class="n">schema_version</span>  <span class="c1"># e.g. &quot;2025.10&quot; or &quot;2026.04&quot;</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="c1"># Method 2 (fallback): Inspect column presence and types</span>
+    <span class="n">df</span> <span class="o">=</span> <span class="n">pl</span><span class="o">.</span><span class="n">read_ipc</span><span class="p">(</span><span class="s2">&quot;dataset.arrow&quot;</span><span class="p">)</span>  <span class="c1"># or pl.read_parquet(...)</span>
+
+    <span class="k">if</span> <span class="s2">&quot;polygon&quot;</span> <span class="ow">in</span> <span class="n">df</span><span class="o">.</span><span class="n">columns</span><span class="p">:</span>
+        <span class="n">version</span> <span class="o">=</span> <span class="s2">&quot;2026.04&quot;</span>
+    <span class="k">elif</span> <span class="s2">&quot;mask&quot;</span> <span class="ow">in</span> <span class="n">df</span><span class="o">.</span><span class="n">columns</span><span class="p">:</span>
+        <span class="n">mask_dtype</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;mask&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">dtype</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">mask_dtype</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">&quot;List(Float32&quot;</span><span class="p">):</span>
+            <span class="n">version</span> <span class="o">=</span> <span class="s2">&quot;2025.10&quot;</span>    <span class="c1"># NaN-separated polygon coordinates</span>
+        <span class="k">elif</span> <span class="nb">str</span><span class="p">(</span><span class="n">mask_dtype</span><span class="p">)</span> <span class="o">==</span> <span class="s2">&quot;Binary&quot;</span><span class="p">:</span>
+            <span class="n">version</span> <span class="o">=</span> <span class="s2">&quot;2026.04&quot;</span>    <span class="c1"># PNG-encoded raster pixels</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">version</span> <span class="o">=</span> <span class="s2">&quot;unknown&quot;</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">version</span> <span class="o">=</span> <span class="s2">&quot;2025.10&quot;</span>        <span class="c1"># no geometry columns, no metadata</span>
 </code></pre></div>
-<hr />
-<h2 id="troubleshooting">Troubleshooting</h2>
-<h3 id="box-positions-are-wrong-after-conversion">Box positions are wrong after conversion</h3>
-<ul>
-<li>✅ Check if you're using the right coordinate system</li>
-<li>✅ Verify JSON uses top-left <code>{x, y}</code> and Arrow uses center <code>[cx, cy]</code></li>
-<li>✅ Test with a known box: center at (0.5, 0.5) should be <code>{x: 0.35, y: 0.3, w: 0.3, h: 0.4}</code></li>
-</ul>
-<h3 id="missing-annotations-after-conversion">Missing annotations after conversion</h3>
-<ul>
-<li>✅ Check that JSON has <code>"annotations"</code> array</li>
-<li>✅ Verify sample <code>"image_name"</code> or <code>"name"</code> field exists</li>
-<li>✅ Ensure <code>"label_name"</code> field is present (not just <code>"label"</code>)</li>
-</ul>
-<h3 id="nan-appearing-in-wrong-places">NaN appearing in wrong places</h3>
-<ul>
-<li>✅ Make sure mask polygons are properly separated</li>
-<li>✅ Check that coordinates are numbers, not strings</li>
-<li>✅ Verify polygon structure: <code>[[x1, y1], [x2, y2], ...]</code></li>
-</ul>
-<hr />
-<h2 id="further-reading">Further Reading</h2>
-<ul>
-<li><a href="../formats/">Annotation Formats</a> — Choose between Arrow and JSON</li>
-<li><a href="../schema/">Annotation Schema</a> — Understand all field definitions</li>
-<li><a href="../box_format/">Bounding Box Formats</a> — Deep dive into coordinate systems</li>
-</ul>
+<h3 id="json-files">JSON Files</h3>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">json</span>
+
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;annotations.json&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+    <span class="n">data</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
+
+<span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="nb">list</span><span class="p">):</span>
+    <span class="c1"># 2025.10: bare array of samples</span>
+    <span class="n">samples</span> <span class="o">=</span> <span class="n">data</span>
+    <span class="n">version</span> <span class="o">=</span> <span class="s2">&quot;2025.10&quot;</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="c1"># 2026.04: object wrapper with metadata</span>
+    <span class="n">samples</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s2">&quot;samples&quot;</span><span class="p">]</span>
+    <span class="n">version</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;schema_version&quot;</span><span class="p">,</span> <span class="s2">&quot;2025.10&quot;</span><span class="p">)</span>
+</code></pre></div>
+<h2 id="reading-202604-files">Reading 2026.04 Files</h2>
+<h3 id="arrow-ipc-parquet">Arrow IPC / Parquet</h3>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">polars</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pl</span>
+
+<span class="c1"># Arrow IPC</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pl</span><span class="o">.</span><span class="n">read_ipc</span><span class="p">(</span><span class="s2">&quot;dataset.arrow&quot;</span><span class="p">)</span>
+
+<span class="c1"># Parquet</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pl</span><span class="o">.</span><span class="n">read_parquet</span><span class="p">(</span><span class="s2">&quot;dataset.parquet&quot;</span><span class="p">)</span>
+
+<span class="c1"># Access polygon data</span>
+<span class="k">if</span> <span class="s2">&quot;polygon&quot;</span> <span class="ow">in</span> <span class="n">df</span><span class="o">.</span><span class="n">columns</span><span class="p">:</span>
+    <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">df</span><span class="o">.</span><span class="n">iter_rows</span><span class="p">(</span><span class="n">named</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">row</span><span class="p">[</span><span class="s2">&quot;polygon&quot;</span><span class="p">]</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">for</span> <span class="n">ring</span> <span class="ow">in</span> <span class="n">row</span><span class="p">[</span><span class="s2">&quot;polygon&quot;</span><span class="p">]:</span>
+                <span class="c1"># ring is [x1, y1, x2, y2, ...] interleaved</span>
+                <span class="n">points</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="n">ring</span><span class="p">[</span><span class="mi">0</span><span class="p">::</span><span class="mi">2</span><span class="p">],</span> <span class="n">ring</span><span class="p">[</span><span class="mi">1</span><span class="p">::</span><span class="mi">2</span><span class="p">]))</span>
+
+<span class="c1"># Access raster mask data</span>
+<span class="k">if</span> <span class="s2">&quot;mask&quot;</span> <span class="ow">in</span> <span class="n">df</span><span class="o">.</span><span class="n">columns</span><span class="p">:</span>
+    <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">df</span><span class="o">.</span><span class="n">iter_rows</span><span class="p">(</span><span class="n">named</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">row</span><span class="p">[</span><span class="s2">&quot;mask&quot;</span><span class="p">]</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="n">row</span><span class="p">[</span><span class="s2">&quot;size&quot;</span><span class="p">]</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">width</span><span class="p">,</span> <span class="n">height</span> <span class="o">=</span> <span class="n">row</span><span class="p">[</span><span class="s2">&quot;size&quot;</span><span class="p">]</span>
+            <span class="n">png_bytes</span> <span class="o">=</span> <span class="n">row</span><span class="p">[</span><span class="s2">&quot;mask&quot;</span><span class="p">]</span>  <span class="c1"># bytes (PNG-encoded raster pixels)</span>
+
+<span class="c1"># Access box2d — check format metadata</span>
+<span class="c1"># (Schema metadata access depends on Polars version; prefer the EdgeFirst Client SDK)</span>
+<span class="k">if</span> <span class="s2">&quot;box2d&quot;</span> <span class="ow">in</span> <span class="n">df</span><span class="o">.</span><span class="n">columns</span><span class="p">:</span>
+    <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">df</span><span class="o">.</span><span class="n">iter_rows</span><span class="p">(</span><span class="n">named</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">row</span><span class="p">[</span><span class="s2">&quot;box2d&quot;</span><span class="p">]</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="c1"># Default: [cx, cy, w, h] — check box2d_format metadata if available</span>
+            <span class="n">cx</span><span class="p">,</span> <span class="n">cy</span><span class="p">,</span> <span class="n">w</span><span class="p">,</span> <span class="n">h</span> <span class="o">=</span> <span class="n">row</span><span class="p">[</span><span class="s2">&quot;box2d&quot;</span><span class="p">]</span>
+
+<span class="c1"># Access timing instrumentation</span>
+<span class="k">if</span> <span class="s2">&quot;timing&quot;</span> <span class="ow">in</span> <span class="n">df</span><span class="o">.</span><span class="n">columns</span><span class="p">:</span>
+    <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">df</span><span class="o">.</span><span class="n">iter_rows</span><span class="p">(</span><span class="n">named</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">row</span><span class="p">[</span><span class="s2">&quot;timing&quot;</span><span class="p">]</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">t</span> <span class="o">=</span> <span class="n">row</span><span class="p">[</span><span class="s2">&quot;timing&quot;</span><span class="p">]</span>
+            <span class="n">load_ms</span> <span class="o">=</span> <span class="n">t</span><span class="p">[</span><span class="s2">&quot;load&quot;</span><span class="p">]</span> <span class="o">/</span> <span class="mi">1_000_000</span>
+            <span class="n">inference_ms</span> <span class="o">=</span> <span class="n">t</span><span class="p">[</span><span class="s2">&quot;inference&quot;</span><span class="p">]</span> <span class="o">/</span> <span class="mi">1_000_000</span>
+</code></pre></div>
+<h3 id="reading-parquet-with-duckdb">Reading Parquet with DuckDB</h3>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">duckdb</span>
+
+<span class="c1"># Count labels</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">duckdb</span><span class="o">.</span><span class="n">sql</span><span class="p">(</span><span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">    SELECT label, count(*) as count</span>
+<span class="s2">    FROM &#39;dataset.parquet&#39;</span>
+<span class="s2">    GROUP BY label</span>
+<span class="s2">    ORDER BY count DESC</span>
+<span class="s2">&quot;&quot;&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
+
+<span class="c1"># Filter by score</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">duckdb</span><span class="o">.</span><span class="n">sql</span><span class="p">(</span><span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">    SELECT name, label, box2d, box2d_score</span>
+<span class="s2">    FROM &#39;dataset.parquet&#39;</span>
+<span class="s2">    WHERE box2d_score &gt; 0.8</span>
+<span class="s2">&quot;&quot;&quot;</span><span class="p">)</span>
+</code></pre></div>
+<h2 id="json-to-dataframe-conversion-202604">JSON to DataFrame Conversion (2026.04)</h2>
+<h3 id="column-name-mapping">Column Name Mapping</h3>
+<table>
+<thead>
+<tr>
+<th>Arrow / Parquet column</th>
+<th>JSON field</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>label</code></td>
+<td><code>label_name</code></td>
+<td>Historical naming difference</td>
+</tr>
+<tr>
+<td><code>group</code></td>
+<td><code>group_name</code></td>
+<td>Historical naming difference</td>
+</tr>
+<tr>
+<td><code>object_id</code></td>
+<td><code>object_id</code></td>
+<td>2026.04 uses <code>object_id</code> (not legacy <code>object_reference</code>)</td>
+</tr>
+<tr>
+<td><code>polygon</code></td>
+<td><code>polygon</code></td>
+<td>JSON: <code>[[x,y], ...]</code> pairs; Arrow: interleaved <code>[x,y,x,y,...]</code></td>
+</tr>
+<tr>
+<td><code>mask</code></td>
+<td><code>mask</code></td>
+<td>Arrow: <code>Binary</code> (PNG bytes); JSON: base64-encoded PNG string</td>
+</tr>
+<tr>
+<td><code>iscrowd</code></td>
+<td><code>iscrowd</code></td>
+<td><code>Boolean</code> (<code>true</code>/<code>false</code>) in both formats</td>
+</tr>
+<tr>
+<td><code>category_frequency</code></td>
+<td><code>category_frequency</code></td>
+<td>Same in both formats (<code>"f"</code>, <code>"c"</code>, <code>"r"</code>)</td>
+</tr>
+<tr>
+<td><code>neg_label_indices</code></td>
+<td><code>neg_label_indices</code></td>
+<td>Arrow: <code>List&lt;UInt32&gt;</code>; JSON: array of integers</td>
+</tr>
+<tr>
+<td><code>not_exhaustive_label_indices</code></td>
+<td><code>not_exhaustive_label_indices</code></td>
+<td>Arrow: <code>List&lt;UInt32&gt;</code>; JSON: array of integers</td>
+</tr>
+<tr>
+<td><code>pose</code></td>
+<td><code>sensors.imu</code></td>
+<td>Arrow: <code>[yaw, pitch, roll]</code>; JSON: <code>{yaw, pitch, roll}</code> object</td>
+</tr>
+<tr>
+<td><code>location</code></td>
+<td><code>sensors.gps</code></td>
+<td>Arrow: <code>[lat, lon]</code>; JSON: <code>{latitude, longitude}</code> object</td>
+</tr>
+</tbody>
+</table>
+<p>File-level metadata keys (<code>mask_interpretation</code>, <code>category_metadata</code>, <code>box2d_format</code>, etc.)
+are not per-row columns. They are stored in the Arrow/Parquet schema metadata or in the
+JSON top-level object. See <a href="../schema/#file-level-metadata">File-Level Metadata</a> for the
+full list.</p>
+<h3 id="full-conversion-example">Full Conversion Example</h3>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">polars</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pl</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">json</span><span class="o">,</span><span class="w"> </span><span class="nn">base64</span>
+
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;annotations.json&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+    <span class="n">data</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
+
+<span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="nb">list</span><span class="p">):</span>
+    <span class="n">samples</span> <span class="o">=</span> <span class="n">data</span>
+    <span class="n">box2d_format</span> <span class="o">=</span> <span class="s2">&quot;ltwh&quot;</span>       <span class="c1"># JSON default is ltwh (COCO convention)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="n">samples</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s2">&quot;samples&quot;</span><span class="p">]</span>
+    <span class="n">box2d_format</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;box2d_format&quot;</span><span class="p">,</span> <span class="s2">&quot;ltwh&quot;</span><span class="p">)</span>  <span class="c1"># Arrow default is cxcywh; JSON default is ltwh</span>
+
+<span class="n">rows</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">sample</span> <span class="ow">in</span> <span class="n">samples</span><span class="p">:</span>
+    <span class="n">size</span> <span class="o">=</span> <span class="p">[</span><span class="n">sample</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;width&quot;</span><span class="p">),</span> <span class="n">sample</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;height&quot;</span><span class="p">)]</span>
+    <span class="k">for</span> <span class="n">ann</span> <span class="ow">in</span> <span class="n">sample</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;annotations&quot;</span><span class="p">,</span> <span class="p">[]):</span>
+        <span class="n">row</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="n">sample</span><span class="p">[</span><span class="s2">&quot;image_name&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">rsplit</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">,</span> <span class="mi">1</span><span class="p">)[</span><span class="mi">0</span><span class="p">],</span>
+            <span class="s2">&quot;frame&quot;</span><span class="p">:</span> <span class="n">sample</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;frame_number&quot;</span><span class="p">),</span>
+            <span class="s2">&quot;object_id&quot;</span><span class="p">:</span> <span class="n">ann</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;object_id&quot;</span><span class="p">),</span>
+            <span class="s2">&quot;label&quot;</span><span class="p">:</span> <span class="n">ann</span><span class="p">[</span><span class="s2">&quot;label_name&quot;</span><span class="p">],</span>
+            <span class="s2">&quot;label_index&quot;</span><span class="p">:</span> <span class="n">ann</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;label_index&quot;</span><span class="p">),</span>
+            <span class="s2">&quot;group&quot;</span><span class="p">:</span> <span class="n">sample</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;group_name&quot;</span><span class="p">),</span>
+        <span class="p">}</span>
+
+        <span class="c1"># Polygon: JSON [[x,y],...] per ring -&gt; DataFrame [x,y,x,y,...] per ring</span>
+        <span class="k">if</span> <span class="n">ann</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;polygon&quot;</span><span class="p">):</span>
+            <span class="n">row</span><span class="p">[</span><span class="s2">&quot;polygon&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span>
+                <span class="p">[</span><span class="n">coord</span> <span class="k">for</span> <span class="n">pt</span> <span class="ow">in</span> <span class="n">ring</span> <span class="k">for</span> <span class="n">coord</span> <span class="ow">in</span> <span class="n">pt</span><span class="p">]</span>
+                <span class="k">for</span> <span class="n">ring</span> <span class="ow">in</span> <span class="n">ann</span><span class="p">[</span><span class="s2">&quot;polygon&quot;</span><span class="p">]</span>
+            <span class="p">]</span>
+            <span class="n">row</span><span class="p">[</span><span class="s2">&quot;polygon_score&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">ann</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;polygon_score&quot;</span><span class="p">)</span>
+
+        <span class="c1"># Mask: JSON base64 PNG -&gt; DataFrame Binary (PNG bytes)</span>
+        <span class="k">if</span> <span class="n">ann</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;mask&quot;</span><span class="p">)</span> <span class="ow">and</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">ann</span><span class="p">[</span><span class="s2">&quot;mask&quot;</span><span class="p">],</span> <span class="nb">str</span><span class="p">):</span>
+            <span class="n">row</span><span class="p">[</span><span class="s2">&quot;mask&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">base64</span><span class="o">.</span><span class="n">b64decode</span><span class="p">(</span><span class="n">ann</span><span class="p">[</span><span class="s2">&quot;mask&quot;</span><span class="p">])</span>  <span class="c1"># PNG bytes</span>
+            <span class="n">row</span><span class="p">[</span><span class="s2">&quot;mask_score&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">ann</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;mask_score&quot;</span><span class="p">)</span>
+
+        <span class="c1"># Box2D: convert based on format metadata</span>
+        <span class="k">if</span> <span class="n">ann</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;box2d&quot;</span><span class="p">):</span>
+            <span class="n">b</span> <span class="o">=</span> <span class="n">ann</span><span class="p">[</span><span class="s2">&quot;box2d&quot;</span><span class="p">]</span>
+            <span class="k">if</span> <span class="n">box2d_format</span> <span class="o">==</span> <span class="s2">&quot;ltwh&quot;</span><span class="p">:</span>
+                <span class="n">row</span><span class="p">[</span><span class="s2">&quot;box2d&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="n">b</span><span class="p">[</span><span class="s2">&quot;x&quot;</span><span class="p">]</span> <span class="o">+</span> <span class="n">b</span><span class="p">[</span><span class="s2">&quot;w&quot;</span><span class="p">]</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="n">b</span><span class="p">[</span><span class="s2">&quot;y&quot;</span><span class="p">]</span> <span class="o">+</span> <span class="n">b</span><span class="p">[</span><span class="s2">&quot;h&quot;</span><span class="p">]</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="n">b</span><span class="p">[</span><span class="s2">&quot;w&quot;</span><span class="p">],</span> <span class="n">b</span><span class="p">[</span><span class="s2">&quot;h&quot;</span><span class="p">]]</span>
+            <span class="k">elif</span> <span class="n">box2d_format</span> <span class="o">==</span> <span class="s2">&quot;cxcywh&quot;</span><span class="p">:</span>
+                <span class="n">row</span><span class="p">[</span><span class="s2">&quot;box2d&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="n">b</span><span class="p">[</span><span class="s2">&quot;cx&quot;</span><span class="p">],</span> <span class="n">b</span><span class="p">[</span><span class="s2">&quot;cy&quot;</span><span class="p">],</span> <span class="n">b</span><span class="p">[</span><span class="s2">&quot;w&quot;</span><span class="p">],</span> <span class="n">b</span><span class="p">[</span><span class="s2">&quot;h&quot;</span><span class="p">]]</span>
+            <span class="n">row</span><span class="p">[</span><span class="s2">&quot;box2d_score&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">ann</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;box2d_score&quot;</span><span class="p">)</span>
+
+        <span class="c1"># Box3D: x,y,z are center coordinates (not corner)</span>
+        <span class="k">if</span> <span class="n">ann</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;box3d&quot;</span><span class="p">):</span>
+            <span class="n">b3</span> <span class="o">=</span> <span class="n">ann</span><span class="p">[</span><span class="s2">&quot;box3d&quot;</span><span class="p">]</span>
+            <span class="n">row</span><span class="p">[</span><span class="s2">&quot;box3d&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="n">b3</span><span class="p">[</span><span class="s2">&quot;x&quot;</span><span class="p">],</span> <span class="n">b3</span><span class="p">[</span><span class="s2">&quot;y&quot;</span><span class="p">],</span> <span class="n">b3</span><span class="p">[</span><span class="s2">&quot;z&quot;</span><span class="p">],</span> <span class="n">b3</span><span class="p">[</span><span class="s2">&quot;w&quot;</span><span class="p">],</span> <span class="n">b3</span><span class="p">[</span><span class="s2">&quot;h&quot;</span><span class="p">],</span> <span class="n">b3</span><span class="p">[</span><span class="s2">&quot;l&quot;</span><span class="p">]]</span>
+            <span class="n">row</span><span class="p">[</span><span class="s2">&quot;box3d_score&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">ann</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;box3d_score&quot;</span><span class="p">)</span>
+
+        <span class="c1"># Annotation metadata (COCO/LVIS extensions)</span>
+        <span class="k">if</span> <span class="s2">&quot;iscrowd&quot;</span> <span class="ow">in</span> <span class="n">ann</span><span class="p">:</span>
+            <span class="n">row</span><span class="p">[</span><span class="s2">&quot;iscrowd&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="nb">bool</span><span class="p">(</span><span class="n">ann</span><span class="p">[</span><span class="s2">&quot;iscrowd&quot;</span><span class="p">])</span>  <span class="c1"># ensure Boolean (handles legacy 0/1)</span>
+        <span class="k">if</span> <span class="s2">&quot;category_frequency&quot;</span> <span class="ow">in</span> <span class="n">ann</span><span class="p">:</span>
+            <span class="n">row</span><span class="p">[</span><span class="s2">&quot;category_frequency&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">ann</span><span class="p">[</span><span class="s2">&quot;category_frequency&quot;</span><span class="p">]</span>
+
+        <span class="c1"># Sample-level LVIS fields (repeated per annotation row)</span>
+        <span class="k">if</span> <span class="s2">&quot;neg_label_indices&quot;</span> <span class="ow">in</span> <span class="n">sample</span><span class="p">:</span>
+            <span class="n">row</span><span class="p">[</span><span class="s2">&quot;neg_label_indices&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">sample</span><span class="p">[</span><span class="s2">&quot;neg_label_indices&quot;</span><span class="p">]</span>
+        <span class="k">if</span> <span class="s2">&quot;not_exhaustive_label_indices&quot;</span> <span class="ow">in</span> <span class="n">sample</span><span class="p">:</span>
+            <span class="n">row</span><span class="p">[</span><span class="s2">&quot;not_exhaustive_label_indices&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">sample</span><span class="p">[</span><span class="s2">&quot;not_exhaustive_label_indices&quot;</span><span class="p">]</span>
+
+        <span class="n">row</span><span class="p">[</span><span class="s2">&quot;size&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">size</span>
+        <span class="n">rows</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">row</span><span class="p">)</span>
+
+<span class="n">df</span> <span class="o">=</span> <span class="n">pl</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">rows</span><span class="p">)</span>
+<span class="n">df</span><span class="o">.</span><span class="n">write_ipc</span><span class="p">(</span><span class="s2">&quot;annotations.arrow&quot;</span><span class="p">)</span>       <span class="c1"># Arrow IPC</span>
+<span class="c1"># df.write_parquet(&quot;annotations.parquet&quot;)  # or Parquet</span>
+</code></pre></div>
+<h3 id="key-conversions-summary">Key Conversions Summary</h3>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>Conversion</th>
+<th>Direction</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td><strong>Unnest</strong>: one row per annotation</td>
+<td>JSON to DataFrame</td>
+</tr>
+<tr>
+<td>2</td>
+<td><strong>Column names</strong>: <code>label_name</code> to <code>label</code>, <code>group_name</code> to <code>group</code></td>
+<td>JSON to DataFrame</td>
+</tr>
+<tr>
+<td>3</td>
+<td><strong>Polygon</strong>: <code>[[x,y],...]</code> point pairs to <code>[x,y,x,y,...]</code> interleaved</td>
+<td>JSON to DataFrame</td>
+</tr>
+<tr>
+<td>4</td>
+<td><strong>Mask</strong>: base64 PNG string → <code>Binary</code> (PNG bytes)</td>
+<td>JSON to DataFrame</td>
+</tr>
+<tr>
+<td>5</td>
+<td><strong>Box2D</strong>: check <code>box2d_format</code> — convert <code>ltwh</code> to <code>cxcywh</code> if needed</td>
+<td>JSON to DataFrame</td>
+</tr>
+<tr>
+<td>6</td>
+<td><strong>Box3D</strong>: <code>{x,y,z,w,h,l}</code> to <code>[cx,cy,cz,w,h,l]</code></td>
+<td>JSON to DataFrame</td>
+</tr>
+<tr>
+<td>7</td>
+<td><strong><abbr title="Global Positioning System">GPS</abbr></strong>: <code>{latitude, longitude}</code> to <code>[lat, lon]</code></td>
+<td>JSON to DataFrame</td>
+</tr>
+<tr>
+<td>8</td>
+<td><strong><abbr title="Inertial Measurement Unit">IMU</abbr></strong>: <code>{yaw, pitch, roll}</code> to <code>[yaw, pitch, roll]</code></td>
+<td>JSON to DataFrame</td>
+</tr>
+<tr>
+<td>9</td>
+<td><strong>Score columns</strong>: omit entirely for ground truth files</td>
+<td>Both</td>
+</tr>
+<tr>
+<td>10</td>
+<td><strong><code>neg_label_indices</code></strong> / <strong><code>not_exhaustive_label_indices</code></strong>: sample-level, repeated per annotation row</td>
+<td>JSON to DataFrame</td>
+</tr>
+<tr>
+<td>11</td>
+<td><strong><code>label_index</code></strong>: preserved as-is (source-faithful, non-contiguous)</td>
+<td>Both</td>
+</tr>
+<tr>
+<td>12</td>
+<td><strong><code>mask_interpretation</code></strong>: file-level metadata (<code>"binary"</code>, <code>"confidence"</code>, <code>"sigmoid"</code>, <code>"logits"</code>) — set on the Arrow schema, not per-row</td>
+<td>Both</td>
+</tr>
+<tr>
+<td>13</td>
+<td><strong><code>category_metadata</code></strong>: file-level metadata — JSON-encoded string of per-label synset/synonyms/definition. Extract from LVIS <code>categories</code> array when importing; attach to Arrow schema metadata when writing.</td>
+<td>Both</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition tip">
+<p class="admonition-title">Use the EdgeFirst Client <abbr title="Software Development Kit">SDK</abbr></p>
+<p>The <abbr title="Software Development Kit">SDK</abbr> handles all conversions automatically, including version detection and
+backward compatibility. Direct conversion code is shown here for reference and
+for users who need custom pipelines.</p>
+</div>
 
 
 
@@ -2681,7 +2220,7 @@
       <nav class="md-footer__inner md-grid" aria-label="Footer" >
         
           
-          <a href="../formats/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Annotation Formats: Arrow vs. JSON">
+          <a href="../formats/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Storage Formats">
             <div class="md-footer__button md-icon">
               
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
@@ -2691,20 +2230,20 @@
                 Previous
               </span>
               <div class="md-ellipsis">
-                Annotation Formats: Arrow vs. JSON
+                Storage Formats
               </div>
             </div>
           </a>
         
         
           
-          <a href="../../coffeecup/" class="md-footer__link md-footer__link--next" aria-label="Next: Coffee Cup Dataset">
+          <a href="../migration/" class="md-footer__link md-footer__link--next" aria-label="Next: Upgrading from 2025.10 to 2026.04">
             <div class="md-footer__title">
               <span class="md-footer__direction">
                 Next
               </span>
               <div class="md-ellipsis">
-                Coffee Cup Dataset
+                Upgrading from 2025.10 to 2026.04
               </div>
             </div>
             <div class="md-footer__button md-icon">

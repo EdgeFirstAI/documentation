@@ -57,7 +57,7 @@ df = pl.read_parquet("dataset.parquet")
 if "polygon" in df.columns:
     print("2026.04 format detected")
     polygons = df["polygon"]       # List<List<f32>> — interleaved xy per ring
-    masks    = df["mask"]          # List<UInt8> — row-major raster pixels
+    masks    = df["mask"]          # Binary — PNG-encoded raster pixels
 else:
     print("2025.10 or earlier format")
 ```

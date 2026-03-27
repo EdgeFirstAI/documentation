@@ -38,8 +38,8 @@ elif "mask" in df.columns:
     mask_dtype = str(df["mask"].dtype)
     if mask_dtype.startswith("List(Float32"):
         version = "2025.10"    # NaN-separated polygon coordinates
-    elif mask_dtype.startswith("List(UInt8"):
-        version = "2026.04"    # raster pixel data
+    elif str(mask_dtype) == "Binary":
+        version = "2026.04"    # PNG-encoded raster pixels
     else:
         version = "unknown"
 
@@ -91,7 +91,7 @@ if "mask" in df.columns:
     for row in df.iter_rows(named=True):
         if row["mask"] is not None and row["size"] is not None:
             width, height = row["size"]
-            pixels = row["mask"]  # List[int], length = width * height
+            png_bytes = row["mask"]  # bytes (PNG-encoded raster pixels)
 
 # Access box2d — check format metadata
 # (Schema metadata access depends on Polars version; prefer the EdgeFirst Client SDK)
@@ -142,8 +142,8 @@ result = duckdb.sql("""
 | `group` | `group_name` | Historical naming difference |
 | `object_id` | `object_id` | 2026.04 uses `object_id` (not legacy `object_reference`) |
 | `polygon` | `polygon` | JSON: `[[x,y], ...]` pairs; Arrow: interleaved `[x,y,x,y,...]` |
-| `mask` | `mask` | Arrow: `List<UInt8>` row-major; JSON: base64-encoded string |
-| `iscrowd` | `iscrowd` | Same in both formats (`0` or `1`) |
+| `mask` | `mask` | Arrow: `Binary` (PNG bytes); JSON: base64-encoded PNG string |
+| `iscrowd` | `iscrowd` | `Boolean` (`true`/`false`) in both formats |
 | `category_frequency` | `category_frequency` | Same in both formats (`"f"`, `"c"`, `"r"`) |
 | `neg_label_indices` | `neg_label_indices` | Arrow: `List<UInt32>`; JSON: array of integers |
 | `not_exhaustive_label_indices` | `not_exhaustive_label_indices` | Arrow: `List<UInt32>`; JSON: array of integers |
@@ -192,9 +192,9 @@ for sample in samples:
             ]
             row["polygon_score"] = ann.get("polygon_score")
 
-        # Mask: JSON base64 -> DataFrame List<UInt8>
+        # Mask: JSON base64 PNG -> DataFrame Binary (PNG bytes)
         if ann.get("mask") and isinstance(ann["mask"], str):
-            row["mask"] = list(base64.b64decode(ann["mask"]))
+            row["mask"] = base64.b64decode(ann["mask"])  # PNG bytes
             row["mask_score"] = ann.get("mask_score")
 
         # Box2D: convert based on format metadata
@@ -214,7 +214,7 @@ for sample in samples:
 
         # Annotation metadata (COCO/LVIS extensions)
         if "iscrowd" in ann:
-            row["iscrowd"] = ann["iscrowd"]
+            row["iscrowd"] = bool(ann["iscrowd"])  # ensure Boolean (handles legacy 0/1)
         if "category_frequency" in ann:
             row["category_frequency"] = ann["category_frequency"]
 
@@ -239,7 +239,7 @@ df.write_ipc("annotations.arrow")       # Arrow IPC
 | 1 | **Unnest**: one row per annotation | JSON to DataFrame |
 | 2 | **Column names**: `label_name` to `label`, `group_name` to `group` | JSON to DataFrame |
 | 3 | **Polygon**: `[[x,y],...]` point pairs to `[x,y,x,y,...]` interleaved | JSON to DataFrame |
-| 4 | **Mask**: base64 string to `List<UInt8>` | JSON to DataFrame |
+| 4 | **Mask**: base64 PNG string → `Binary` (PNG bytes) | JSON to DataFrame |
 | 5 | **Box2D**: check `box2d_format` — convert `ltwh` to `cxcywh` if needed | JSON to DataFrame |
 | 6 | **Box3D**: `{x,y,z,w,h,l}` to `[cx,cy,cz,w,h,l]` | JSON to DataFrame |
 | 7 | **GPS**: `{latitude, longitude}` to `[lat, lon]` | JSON to DataFrame |

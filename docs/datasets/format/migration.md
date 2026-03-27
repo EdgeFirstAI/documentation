@@ -8,10 +8,11 @@ to migrate existing datasets and code.
 | Area | 2025.10 | 2026.04 | Impact |
 |------|---------|---------|--------|
 | Polygon storage | `mask: List<Float32>` with NaN separators | `polygon: List<List<Float32>>` nested lists | Column name and type changed |
-| Mask type | `List<Float32>` (polygon data) | `List<UInt8>` (raster pixel data) | Column type changed; semantics changed |
+| Mask type | `List<Float32>` (polygon data) | `Binary` (PNG-encoded raster pixels) | Column type changed; semantics changed |
 | `label_index` semantics | Alphabetically re-indexed (0-based, contiguous) | Source-faithful `category_id` (non-contiguous, preserves gaps) | Existing files remain valid; new exports may differ |
+| `iscrowd` type | `UInt8` (0/1) | `Boolean` (true/false) | Column type changed |
 | New columns | N/A | `polygon_score`, `mask_score`, `box2d_score`, `box3d_score`, `timing`, `iscrowd`, `category_frequency`, `neg_label_indices`, `not_exhaustive_label_indices` | Additive (non-breaking for readers that ignore unknown columns) |
-| File metadata | None | `schema_version`, `box2d_format`, `box2d_normalized`, `category_metadata`, etc. | Additive |
+| File metadata | None | `schema_version`, `box2d_format`, `box2d_normalized`, `category_metadata`, `labels`, etc. | Additive |
 | JSON structure | Bare array `[...]` | Object wrapper `{"schema_version": ..., "samples": [...]}` | Readers must detect top-level type |
 | LiDAR sensors | `.lidar.png`, `.lidar.jpeg` | **Removed** | Breaking for pipelines that depend on projected LiDAR images |
 | Parquet support | N/A | `.parquet` files supported | New capability |
@@ -19,7 +20,8 @@ to migrate existing datasets and code.
 !!! danger "Old code will produce corrupt data"
     Code that reads the `mask` column as `List<Float32>` and splits on NaN values
     will fail or produce incorrect results when applied to 2026.04 files where `mask`
-    is `List<UInt8>` raster data. Always check the schema version before processing.
+    is `Binary` (PNG-encoded raster data). Additionally, `iscrowd` changed from `UInt8`
+    to `Boolean`. Always check the schema version before processing.
 
 ## Migration Command
 
@@ -49,11 +51,11 @@ with no migration path (they did not exist in 2025.10).
 | `schema_version` metadata = `"2026.04"` | 2026.04 format |
 | `schema_version` absent + `mask: List<Float32>` | 2025.10 — NaN-separated polygon data in `mask` |
 | `schema_version` absent + no `mask` / no `polygon` | 2025.10 — no geometry |
-| `schema_version` absent + `mask: List<UInt8>` | 2026.04 — type is unambiguous |
+| `schema_version` absent + `mask: Binary` | 2026.04 — type is unambiguous |
 | `polygon` column present | 2026.04 |
 
-**Robustness rule**: If the physical type of the `mask` column is `List<UInt8>`, treat
-as 2026.04 regardless of `schema_version` presence. The column type itself is unambiguous.
+**Robustness rule**: If the physical type of the `mask` column is `Binary`, treat as
+2026.04 regardless of `schema_version` presence. The column type itself is unambiguous.
 
 ### JSON Files
 
@@ -97,7 +99,7 @@ def read_dataset(path: str):
         mask_dtype = str(df["mask"].dtype)
         if mask_dtype.startswith("List(Float32"):
             return read_2025_10(df)
-        elif mask_dtype.startswith("List(UInt8"):
+        elif str(mask_dtype) == "Binary":
             return read_2026_04(df)
 
     # No geometry columns — compatible with either version
@@ -115,7 +117,7 @@ def read_2025_10(df: pl.DataFrame):
 def read_2026_04(df: pl.DataFrame):
     """Handle 2026.04 format with polygon and raster mask columns."""
     # polygon: List<List<f32>> — interleaved xy pairs per ring
-    # mask: List<UInt8> — row-major raster pixels (requires size column)
+    # mask: Binary — PNG-encoded raster pixels
     return df
 ```
 
@@ -161,7 +163,7 @@ depth_image = project_to_depth(pcd, calibration)
 
 **Q: Can I read 2026.04 files with old SDK versions?**
 
-No. SDK versions prior to 3.0 do not understand the `polygon` column or the `List<UInt8>`
+No. SDK versions prior to 3.0 do not understand the `polygon` column or the `Binary`
 mask type. Update the EdgeFirst Client SDK to version 3.0 or later.
 
 **Q: Do I need to migrate all my datasets at once?**
@@ -171,7 +173,7 @@ Migrate when convenient — there is no deadline.
 
 **Q: What happens to raster mask data during migration?**
 
-Raster masks (`List<UInt8>`) are a **new** capability in 2026.04. The 2025.10 `mask`
+Raster masks (`Binary`, PNG-encoded) are a **new** capability in 2026.04. The 2025.10 `mask`
 column contained polygon data (NaN-separated `List<Float32>`), not raster data. Migration
 moves polygon data to the new `polygon` column and removes the old `mask` column. There
 is no raster data to lose.

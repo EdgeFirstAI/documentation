@@ -33,7 +33,12 @@ absent entirely from a file.
 **Outer list**: Multiple polygon rings per instance (disjoint parts, holes).
 
 **Inner list**: Interleaved `[x1, y1, x2, y2, ...]` pairs for one ring. Coordinates
-are always **normalized** (0..1). Multiply by `size` values to get pixel coordinates.
+are always **normalized** (0..1) relative to the full image. Multiply by image dimensions
+to get pixel coordinates.
+
+**Coordinate space**: Polygon coordinates are always image-space normalized, regardless of
+whether `box2d` coexists on the same row. The box provides object location; the polygon
+provides the precise boundary in full-image coordinates.
 
 **Validity rules**:
 
@@ -45,30 +50,67 @@ are always **normalized** (0..1). Multiply by `size` values to get pixel coordin
 
 | Column | Type | Description |
 |--------|------|-------------|
-| `mask` | `List<UInt8>` | Row-major pixel values, `width * height` elements |
+| `mask` | `Binary` | PNG-encoded grayscale raster pixels |
 | `mask_score` | `Float32` | Per-instance confidence (0..1), nullable, optional |
 
 !!! warning "Type changed in 2026.04"
     The `mask` column changed from `List<Float32>` (NaN-separated polygons in 2025.10)
-    to `List<UInt8>` (raster pixels in 2026.04). Code that assumes `Float32` will fail
-    on 2026.04 files.
+    to `Binary` (PNG-encoded raster pixels in 2026.04). Code that assumes `Float32` will
+    fail on 2026.04 files.
 
-**Encoding**: Raw row-major `u8` pixel values.
+**Encoding**: Masks are stored as single-channel (grayscale) PNG images within the
+`Binary` column. The PNG format provides:
 
-**Dimensions**: Derived from the `size` column `[width, height]`. The `size` column is
-**required** when `mask` is populated — a raster mask without dimensions is uninterpretable.
+- **Self-describing dimensions** — width and height in the PNG header (first 24 bytes),
+  readable without full decode
+- **Lossless compression** — typically 2–10× smaller than raw pixel arrays
+- **Variable bit depth** — 1-bit for binary masks, 8-bit for confidence/sigmoid/logits,
+  16-bit for high-precision outputs
 
-**Interpretation**: Controlled by `mask_interpretation` file-level metadata:
+| Source | PNG bit depth | Pixel values | Use case |
+|--------|--------------|--------------|----------|
+| Binary mask (any source) | **1-bit (preferred)** | 0/1 | Ground truth, thresholded output, COCO RLE import |
+| Sigmoid scores | 8-bit | 0–255 (quantized) | Model confidence per-pixel |
+| High-precision scores | 16-bit | 0–65535 | When 8-bit quantization is insufficient |
+
+**1-bit is the preferred encoding for all binary masks**, regardless of source (COCO RLE,
+thresholded model output, ground truth annotations). Alternatives like 8-bit with 0/255
+are valid but wasteful and ambiguous — a reader cannot distinguish "binary mask stored as
+8-bit" from "8-bit score data." 1-bit encoding is self-documenting: if the PNG is 1-bit,
+the mask is binary.
+
+**Dimensions**: Mask dimensions are defined by the PNG image itself, not by the `size`
+column or `box2d`. The producer determines the resolution — it could be the original
+image size, model input size, or model output size. Consumers read the PNG header to
+discover the mask dimensions and rescale to the target coordinate space as needed.
+
+**Coverage**: The mask covers the **full image**, not a crop of the bounding box. For
+instance segmentation, most pixels are 0 (background) and the object region has
+confidence scores or binary 1 values. This avoids lossy cropping and handles
+interpolation that extends beyond box bounds.
+
+**Interpretation by context**:
+
+| Context | Pixel values | Label source |
+|---------|-------------|-------------|
+| `mask` + `box2d` (instance seg) | Sigmoid confidence (0–255) or binary (0/1) for a single instance | `label` column on the row |
+| `mask` without `box2d` (semantic seg) | Argmax class indices | Optional file-level `labels` metadata; index ordering is model-specific |
+
+**Interpretation**: Controlled by `mask_interpretation` file-level metadata. The PNG
+bit depth determines the value range:
 
 | Value | Description |
 |-------|-------------|
-| `binary` | Thresholded 0/1 values (default) |
-| `confidence` | 0–255 quantized confidence scores |
-| `sigmoid` | 0–255 quantized sigmoid outputs |
-| `logits` | 0–255 quantized logit outputs |
+| `binary` | 0/1 values — use 1-bit PNG (default) |
+| `confidence` | Quantized confidence scores — use 8-bit (0–255) or 16-bit (0–65535) PNG |
+| `sigmoid` | Quantized sigmoid outputs — use 8-bit or 16-bit PNG |
+| `logits` | Quantized logit outputs — use 8-bit or 16-bit PNG |
+
+**JSON representation**: base64-encoded PNG bytes.
 
 **Relationship to polygon**: `polygon` and `mask` can coexist in the same file
-(e.g., panoptic segmentation). Typically a dataset uses one or the other.
+(e.g., panoptic segmentation). Typically a dataset uses one or the other. Both use
+full-image coordinates — polygons are normalized (0..1), masks cover the full image.
 
 ### Geometry: 2D Bounding Box
 
@@ -101,7 +143,7 @@ See [Box Formats](box_format.md) for details.
 
 | Column | Type | Description |
 |--------|------|-------------|
-| `iscrowd` | `UInt8` | `1` = crowd region, `0` = single instance. Optional, from COCO. |
+| `iscrowd` | `Boolean` | `true` = crowd region, `false` or absent = single instance. Optional, from COCO. |
 | `category_frequency` | `Categorical` | Long-tail frequency group: `"f"`, `"c"`, or `"r"`. Optional. |
 
 !!! info "New in 2026.04"
@@ -135,7 +177,7 @@ rare = df.filter(pl.col("category_frequency") == "r")
 
 | Column | Type | Description |
 |--------|------|-------------|
-| `size` | `Array<u32, 2>` | `[width, height]` in pixels. **Required when `mask` is populated.** |
+| `size` | `Array<u32, 2>` | `[width, height]` — original image dimensions in pixels. Optional. |
 | `location` | `Array<f32, 2>` | `[latitude, longitude]` GPS coordinates |
 | `pose` | `Array<f32, 3>` | `[yaw, pitch, roll]` IMU orientation in degrees |
 | `degradation` | `String` | Visual quality indicator (`none`, `low`, `medium`, `high`) |
@@ -219,7 +261,7 @@ For reference, the full Polars-style schema:
     ('polygon_score', Float32),                 # OPTIONAL
 
     # ── Geometry: Raster Mask ──────────────────────────
-    ('mask', List(UInt8)),                      # row-major u8 pixels
+    ('mask', Binary),                            # PNG-encoded grayscale raster pixels
     ('mask_score', Float32),                    # OPTIONAL
 
     # ── Geometry: 2D Bounding Box ──────────────────────
@@ -231,7 +273,7 @@ For reference, the full Polars-style schema:
     ('box3d_score', Float32),                   # OPTIONAL
 
     # ── Annotation Metadata (optional) ─────────────────
-    ('iscrowd', UInt8),                         # OPTIONAL - COCO crowd flag
+    ('iscrowd', Boolean),                       # OPTIONAL - true = crowd region, false or absent
     ('category_frequency', Categorical(ordering='physical')),  # OPTIONAL - LVIS "f"/"c"/"r"
 
     # ── Sample Metadata (optional) ─────────────────────
@@ -266,6 +308,7 @@ All metadata values are strings.
 | `box3d_normalized` | `"true"`, `"false"` | `"true"` | Box3D coordinate system |
 | `mask_interpretation` | `"binary"`, `"confidence"`, `"sigmoid"`, `"logits"` | `"binary"` | Pixel value meaning |
 | `category_metadata` | JSON string | absent | Per-label metadata (synset, synonyms, definition) |
+| `labels` | JSON array `["person", "car", ...]` | absent | Ordered class names for semantic segmentation masks. `labels[i]` = class name for argmax pixel value `i`. |
 
 Version format is `YYYY.MM` with mandatory zero-padding (e.g., `"2025.10"`, `"2026.04"`).
 Versions are compared lexicographically. Unknown future versions should trigger a warning
@@ -280,11 +323,15 @@ across all annotations sharing the same label.
 ```json
 {
   "aerosol_can": {
+    "id": 1,
+    "supercategory": "accessory",
     "synset": "aerosol.n.02",
     "synonyms": ["aerosol_can", "spray_can"],
     "definition": "a dispenser that holds a substance under pressure"
   },
   "person": {
+    "id": 1,
+    "supercategory": "human",
     "synset": "person.n.01",
     "synonyms": ["person", "individual"],
     "definition": "a human being"
@@ -294,17 +341,46 @@ across all annotations sharing the same label.
 
 | Field | Type | Description |
 |-------|------|-------------|
+| `id` | integer | Source category ID (used to reconstruct `category_id` for categories with no annotations) |
+| `supercategory` | string | Parent category name (e.g., `"vehicle"`, `"animal"`) |
 | `synset` | string | WordNet synset identifier (e.g., `"aerosol.n.02"`) |
 | `synonyms` | array of strings | Alternate names for the category |
-| `definition` | string | Natural language definition |
+| `definition` | string | Natural language definition (LVIS `def` field, renamed for clarity) |
 
-**Source**: Populated from LVIS `categories` array when importing COCO with LVIS
-extensions. Other datasets with taxonomic metadata can populate the same fields.
+**Source**: When importing from COCO with LVIS extensions, these fields are populated
+from the LVIS `categories` array. Other datasets with taxonomic metadata can populate
+the same fields.
 
 !!! note "Frequency is a column, not metadata"
     The `frequency` field from LVIS is stored as the `category_frequency` **column**
     (not in `category_metadata`) because it is directly useful for DataFrame filtering
-    and disaggregated metrics.
+    and disaggregated metrics. The `image_count` and `instance_count` fields from LVIS
+    are intentionally not stored — they are recomputable statistics.
+
+### Labels Metadata
+
+!!! info "New in 2026.04"
+
+The `labels` key stores an ordered array of class names as a JSON-encoded string. This
+metadata provides the index-to-name mapping for semantic segmentation masks where each
+pixel value is an argmax class index.
+
+**Structure**: JSON array where `labels[i]` is the class name for pixel value `i`:
+
+```json
+["background", "person", "car", "bicycle", "dog"]
+```
+
+In this example, pixel value `0` = `"background"`, pixel value `1` = `"person"`,
+pixel value `2` = `"car"`, etc.
+
+**When written**: Optional — only written when the source dataset provides an ordered
+category list (e.g., COCO categories sorted by ID).
+
+**Relationship to `category_metadata`**: The `labels` array provides index ordering for
+mask pixel interpretation. The `category_metadata` object provides rich per-label
+reference data (synset, synonyms, definition). Both may be present; they complement
+each other.
 
 ### label_index
 

@@ -128,7 +128,7 @@ The Mean Precision metric measures how accurate the model’s predictions are at
 
 ### Mean Recall
 
-This metric is defined as the average of the per-class recall values at the where the mean F1 score is highest.  This score reflects the model’s ability to find all relevant objects (true positives) across all classes.
+This metric is defined as the average of the per-class recall values at the threshold where the mean F1 score is highest.  This score reflects the model’s ability to find all relevant objects (true positives) across all classes.
 
 <figure markdown="span">
 	![Recall versus Confidence](../../../assets/metrics/recall_vs_confidence.png){ align=center }
@@ -151,16 +151,51 @@ The Mean Recall metrics measures how well the model detects ground truth objects
 
 ### Optimal Thresholds
 
+| Optimal Score Threshold         | Optimal IoU Threshold       |
+|---------------------------------|-----------------------------|
+| ![score](../../../assets/metrics/optimal_score_threshold.jpg) | ![iou](../../../assets/metrics/optimal_iou_threshold.jpg) |
+
+The optimal thresholds are the estimated values to use for deploying the model to achieve the highest performance accuracy based on the validation dataset.  As mentioned, the score threshold is calculated based on the highest F1 score across all classes under the *F1 versus Confidence* curve.  For more information, refer to the [F1 Score](#f1-score) section.  
+
+The optimal IoU threshold is determined directly from the validation dataset using a data-driven approach.  Note that the IoU threshold is an NMS parameter that defines when two prediction boxes are considered duplicates based on their overlap.  Lower IoU thresholds make suppression more aggressive (even small overlaps are removed), while higher thresholds allow more overlapping predictions to remain.
+
+To estimate a suitable IoU threshold, IoU values are computed between bounding boxes in the ground truth dataset.  These values represent the natural overlap that occurs in the data.  The highest overlaps in the ground truth dataset are also expected to exist in the model predictions, so **we frame the optimal IoU threshold to also allow the higher overlaps as seen in the dataset**.  Instead of simply taking the maximum overlap (which may be an outlier), the method applies Tukey’s boxplot rule to derive a robust upper bound.
+
+Specifically:
+
+* The first (25th percentile) quartile (Q1), median, and third (75th percentile) quartile (Q3) of the IoU distribution are computed
+
+$$
+p_{25} = Q_1,\quad p_{75} = Q_3,\quad p_{100} = \max(\text{IoU})
+$$
+
+* The interquartile range (IQR) is defined as 
+$$
+\text{IQR} = Q_3 - Q_1
+$$
+* The upper whisker (optimal IoU) is calculated as:
+
+$$
+\text{IoU}_{\text{optimal}} = \min\left(\max(\text{IoU}),\ Q_3 + 1.5 \cdot \text{IQR}\right)
+$$
+
+**What if the dataset does not have any ground truth intersections?**
+
+In some datasets, there may be no overlapping ground truth bounding boxes, meaning it is not possible to estimate an optimal IoU threshold using the IoU distribution of ground truth intersections.  In this case, a fallback strategy is used to choose the IoU threshold that eliminates the highest number of localization false positives (duplicate predictions).  Note that the localization false positives are any predictions not matched to any ground truth primarily due to prediction duplications (not filtered by NMS) or it does not intersect any ground truth bounding box. 
+
+The IoU values for these localization false positives are then collected.  These IoU values represent the duplicated boxes that should have been filtered by NMS.  The IoU values of these false positives are then grouped into a histogram.  The optimal IoU threshold is then selected as the lower edge of the bin with the highest frequency.  In other words, **if there are no ground truth intersections, the bin with the most number of localization false positive is taken as the optimal IoU threshold**.
+
+$$
+\text{IoU}_{\text{optimal}} = b_k \quad \text{where} \quad k = \arg\max_i \ \text{count}(b_i)
+$$
+
+**What if there are no false positives?**
+
+If no false positives are present, or if the computed optimal IoU threshold is 0, the system falls back to report the default NMS IoU threshold of 0.70, which is consistent with the Ultralytics default.
+
 ## Deployment Metrics
 
-As mentioned, the Full-Curve Metrics assess the model performance at varying NMS score thresholds to find the optimal score threshold that yields the max F1-score.  
-
-<figure markdown="span">
-	![Optimal Score Threshold](../../../assets/metrics/optimal_score_threshold.jpg){ align=center }
-	<figcaption>Optimal Score Threshold</figcaption>
-</figure>
-
-This score threshold is then used to filter the predictions.  These filtered predictions are then classified into true positives, false positives (classification, localization), and false negatives. 
+As mentioned, the Full-Curve Metrics assess the model performance at varying NMS score thresholds to find the [optimal score threshold that yields the max F1-score](#f1-score).  This score threshold is then used to filter the predictions.  These filtered predictions are then classified into true positives, false positives (classification, localization), and false negatives. 
 
 !!! note "Classifications"
 	For more information on how these predictions are matched and classified into true positives, false positives, and false negatives, please see [Matching and Classification Rules](matching.md).
@@ -201,7 +236,7 @@ The deployment precision, recall, and accuracy are also calculated based on the 
 The deployment class precision is the average of the precision values of each class.
 
 $$
-\text{deployment class precision} = \frac{1}{n}\sum_{i=1}^{n}\text{precision}_{i}, n = \text{number of classes}
+\text{deployment class precision} = \frac{1}{C}\sum_{i=1}^{C}\text{precision}_{i}, C = \text{number of classes}
 $$
 
 !!! note "Precision Equation"
@@ -214,20 +249,20 @@ Precision measures how well the model outputs correct predictions.  Precision al
 The deployment class recall is the average of the recall values of each class.
 
 $$
-\text{deployment class recall} = \frac{1}{n}\sum_{i=1}^{n}\text{recall}_{i}, n = \text{number of classes}
+\text{deployment class recall} = \frac{1}{C}\sum_{i=1}^{C}\text{recall}_{i}, C = \text{number of classes}
 $$
 
 !!! note "Recall Equation"
 	The equation for recall is shown in the [Glossary](../index.md#glossary).
 
-Recall measures how well the model finds the ground truth annotations.  A similar idea is presented for recall, this metric only considers the ratio of correct detections against the total number of ground truths.  However, it is possible that the model will correctly find all ground truth annotations, but it might have generated large amounts of localization false positives.
+Recall measures how well the model finds the ground truth annotations.  This metric only considers the ratio of correct detections against the total number of ground truths.  However, it is possible that the model will correctly find all ground truth annotations, but it might have generated large amounts of localization false positives.
 
 ### Deployment Class Accuracy
 
 The deployment class accuracy is the average of the accuracy values of each class.
 
 $$
-\text{deployment class accuracy} = \frac{1}{n}\sum_{i=1}^{n}\text{accuracy}_{i}, n = \text{number of classes}
+\text{deployment class accuracy} = \frac{1}{C}\sum_{i=1}^{C}\text{accuracy}_{i}, C = \text{number of classes}
 $$
 
 !!! note "Accuracy Equation"
@@ -267,7 +302,7 @@ However, on the account of the [EdgeFirst Validator's method of classifying dete
   <figcaption>playing_cards_v7; 000000000027.png </figcaption>
 </figure>
 
-In this image there are two true positives, one false negative, one classification false positive, and four ground truth objects.  To agree with the definition of recall being the fraction of all correct detections over all ground truths, the number ground truth becomes the sum of true positives, false negatives, and classification false positives.  The formulas are thus adjusted in the following way which is implemented in EdgeFirst Validator.  
+In this image there are two true positives (green), one false negative (blue), one classification false positive (red), and four ground truth objects (blue).  To agree with the definition of recall being the fraction of all correct detections over all ground truths, the number ground truth becomes the sum of true positives, false negatives, and classification false positives.  The formulas are thus adjusted in the following way which is implemented in EdgeFirst Validator.  
 
 $$
 \text{precision} = \frac{\text{TP}}{\text{TP} + \text{FP}_{\text{all}}} = \frac{\text{TP}}{\text{all predictions}}

@@ -4,7 +4,7 @@ This section describes the validation metrics reported for [Segmentation Validat
 
 ## Instance Segmentation Metrics
 
-We define the same metrics for instance segmentation as object detection by providing scores for Mean Precision, Mean Recall, F1, and the mean Average Precision (mAP) as described in the [Object Detection Metrics](detection/index.md#ultralytics-detection-metrics) section.
+We define the same metrics for instance segmentation as object detection by providing scores for Mean Precision, Mean Recall, F1, and the mean Average Precision (mAP) as described in the [Object Detection Metrics](detection/index.md#full-curve-metrics) section.
 
 ## Semantic Segmentation Metrics
 

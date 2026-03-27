@@ -1,377 +1,404 @@
-# Annotation Schema & Fields
+# Annotation Schema
 
-This page documents all the fields in your EdgeFirst annotations, what they mean, and how to use them.
+**Schema version**: `2026.04`
 
-## How Annotations Are Created
+The EdgeFirst annotation schema uses a flat, columnar layout: **one row per annotation
+instance**. All columns are nullable unless noted otherwise. Optional columns may be
+absent entirely from a file.
 
-Annotations in EdgeFirst are created through several methods:
+## Column Reference
 
-| Method | Fields Populated | Source |
-|--------|------------------|--------|
-| **[Manual annotation](../tutorials/annotations/manual.md)** | `label`, `box2d`, `mask` | User draws in Instance Dashboard |
-| **[AGTG (Automatic)](../tutorials/annotations/automatic.md)** | `label`, `box2d`, `mask`, `status` | SAM-2 AI auto-detection |
-| **[Model inference](../../models/index.md)** | `label`, `box2d`, `box3d` | Trained model predictions |
-| **[Import from snapshot](../../studio/snapshots.md)** | All fields | Restored from Arrow file |
+### Identity & Classification
 
-!!! tip "AGTG fills annotation fields automatically"
-    When you run Automatic Ground Truth Generation (AGTG) on a dataset, EdgeFirst Studio uses SAM-2 to detect objects and populate:
+| Column | Type | Description |
+|--------|------|-------------|
+| `name` | `String` | Sample identifier (derived from filename) |
+| `frame` | `UInt32` | Sequence frame number (null for standalone images) |
+| `object_id` | `String` | Instance tracking UUID |
+| `label` | `Categorical` | Class label (JSON field: `label_name`) |
+| `label_index` | `UInt64` | Source-faithful numeric class index (see [label_index details](#label_index)) |
+| `group` | `Categorical` | Dataset split — `train`, `val`, `test` (JSON field: `group_name`) |
 
-    - `label`: Object class detected
-    - `box2d`: Bounding box coordinates (center-based)
-    - `mask`: Pixel-level segmentation polygon
-    - `status`: Annotation quality indicator
-    
-    You can then review and adjust these annotations in the Instance Dashboard.
+### Geometry: Polygon
 
-## Understanding the Annotation Structure
+| Column | Type | Description |
+|--------|------|-------------|
+| `polygon` | `List<List<f32>>` | Interleaved `[x1, y1, x2, y2, ...]` coordinate pairs per ring |
+| `polygon_score` | `Float32` | Confidence score (0..1), nullable, optional |
 
-Each annotation describes **one labeled object** in one sample (image or frame). An annotation contains:
+!!! info "New in 2026.04"
+    The `polygon` column replaces the 2025.10 `mask: List<Float32>` column that stored
+    NaN-separated polygon coordinates. See [Migration Guide](migration.md) for details.
 
-```mermaid
-%%{init: {'flowchart': {'padding': '40'}}}%%
-graph TB
-    Ann["📝 Annotation"]
-    
-    Ann -->|"Identifies"| What["🏷️ What (label, class)"]
-    Ann -->|"Locates"| Where["📍 Where (box2d, box3d, mask)"]
-    Ann -->|"Tracks"| ID["🔗 Identity (object_id)"]
-    Ann -->|"Categorizes"| Split["📊 Split (group)"]
-    
-    style Ann fill:#e1f5ff,stroke:#0277bd,stroke-width:2px
-    style What fill:#c8e6c9,stroke:#388e3c,stroke-width:2px
-    style Where fill:#fff9c4,stroke:#f57f17,stroke-width:2px
-    style ID fill:#f8bbd0,stroke:#c2185b,stroke-width:2px
-    style Split fill:#d1c4e9,stroke:#5e35b1,stroke-width:2px
-```
+**Outer list**: Multiple polygon rings per instance (disjoint parts, holes).
 
-## Core Fields
+**Inner list**: Interleaved `[x1, y1, x2, y2, ...]` pairs for one ring. Coordinates
+are always **normalized** (0..1) relative to the full image. Multiply by image dimensions
+to get pixel coordinates.
 
-### name
+**Coordinate space**: Polygon coordinates are always image-space normalized, regardless of
+whether `box2d` coexists on the same row. The box provides object location; the polygon
+provides the precise boundary in full-image coordinates.
 
-**Type**: `String`  
-**What it is**: Sample identifier—links the annotation to a specific image or frame  
-**Example**: `sequence_001_042` or `background_image_1`
+**Validity rules**:
 
-**How it's derived**:
+- Inner lists must have an **even** number of values (coordinate pairs)
+- Minimum **6 values** (3 points) per valid ring
+- Odd-length inner lists are invalid — writers reject, readers drop with a warning
 
-- **For sequences**: Filename without extension and frame number
-- **For images**: Filename without extension
+### Geometry: Raster Mask
 
-Examples:
+| Column | Type | Description |
+|--------|------|-------------|
+| `mask` | `Binary` | PNG-encoded grayscale raster pixels |
+| `mask_score` | `Float32` | Per-instance confidence (0..1), nullable, optional |
 
-```text
-scene_001.camera.jpg      →  name = "scene_001"
-deer_sequence_042.jpg     →  name = "deer_sequence" 
-image_background.png      →  name = "image_background"
-```
+!!! warning "Type changed in 2026.04"
+    The `mask` column changed from `List<Float32>` (NaN-separated polygons in 2025.10)
+    to `Binary` (PNG-encoded raster pixels in 2026.04). Code that assumes `Float32` will
+    fail on 2026.04 files.
 
-### frame
+**Encoding**: Masks are stored as single-channel (grayscale) PNG images within the
+`Binary` column. The PNG format provides:
 
-**Type**: `UInt64` (nullable, can be `null`)  
-**What it is**: Frame number within a sequence (0-indexed)  
-**Example**: `42` for the 42nd frame, or `null` for standalone images
+- **Self-describing dimensions** — width and height in the PNG header (first 24 bytes),
+  readable without full decode
+- **Lossless compression** — typically 2–10× smaller than raw pixel arrays
+- **Variable bit depth** — 1-bit for binary masks, 8-bit for confidence/sigmoid/logits,
+  16-bit for high-precision outputs
 
-**When it's used**:
+| Source | PNG bit depth | Pixel values | Use case |
+|--------|--------------|--------------|----------|
+| Binary mask (any source) | **1-bit (preferred)** | 0/1 | Ground truth, thresholded output, COCO RLE import |
+| Sigmoid scores | 8-bit | 0–255 (quantized) | Model confidence per-pixel |
+| High-precision scores | 16-bit | 0–65535 | When 8-bit quantization is insufficient |
 
-- **Sequences**: `frame = {number}` (e.g., `0`, `1`, `2`, ...)
-- **Standalone images**: `frame = null`
+**1-bit is the preferred encoding for all binary masks**, regardless of source (COCO RLE,
+thresholded model output, ground truth annotations). Alternatives like 8-bit with 0/255
+are valid but wasteful and ambiguous — a reader cannot distinguish "binary mask stored as
+8-bit" from "8-bit score data." 1-bit encoding is self-documenting: if the PNG is 1-bit,
+the mask is binary.
 
-The combination of `(name, frame)` uniquely identifies a sample in the dataset.
+**Dimensions**: Mask dimensions are defined by the PNG image itself, not by the `size`
+column or `box2d`. The producer determines the resolution — it could be the original
+image size, model input size, or model output size. Consumers read the PNG header to
+discover the mask dimensions and rescale to the target coordinate space as needed.
 
-### label
+**Coverage**: The mask covers the **full image**, not a crop of the bounding box. For
+instance segmentation, most pixels are 0 (background) and the object region has
+confidence scores or binary 1 values. This avoids lossy cropping and handles
+interpolation that extends beyond box bounds.
 
-**Type**: `String` (Categorical)  
-**What it is**: The object classification—what is this thing?  
-**Examples**: `"person"`, `"car"`, `"tree"`, `"bicycle"`
+**Interpretation by context**:
 
-### label_index
+| Context | Pixel values | Label source |
+|---------|-------------|-------------|
+| `mask` + `box2d` (instance seg) | Sigmoid confidence (0–255) or binary (0/1) for a single instance | `label` column on the row |
+| `mask` without `box2d` (semantic seg) | Argmax class indices | Optional file-level `labels` metadata; index ordering is model-specific |
 
-**Type**: `UInt64`  
-**What it is**: Numeric index for the label (used by ML models)  
-**Example**: In COCO dataset, "person"=0, "car"=2, "bicycle"=1
+**Interpretation**: Controlled by `mask_interpretation` file-level metadata. The PNG
+bit depth determines the value range:
 
-**Why it exists**: Pre-trained models expect numeric indices, not strings. The mapping ensures consistency.
+| Value | Description |
+|-------|-------------|
+| `binary` | 0/1 values — use 1-bit PNG (default) |
+| `confidence` | Quantized confidence scores — use 8-bit (0–255) or 16-bit (0–65535) PNG |
+| `sigmoid` | Quantized sigmoid outputs — use 8-bit or 16-bit PNG |
+| `logits` | Quantized logit outputs — use 8-bit or 16-bit PNG |
 
-### object_id
+**JSON representation**: base64-encoded PNG bytes.
 
-**Type**: `String` (UUID strongly recommended)  
-**What it is**: Unique identifier for tracking objects across frames and linking annotations  
-**Examples**:
+**Relationship to polygon**: `polygon` and `mask` can coexist in the same file
+(e.g., panoptic segmentation). Typically a dataset uses one or the other. Both use
+full-image coordinates — polygons are normalized (0..1), masks cover the full image.
 
-```text
-550e8400-e29b-41d4-a716-446655440000  (UUID - recommended)
-car_track_005
-person_01
-```
+### Geometry: 2D Bounding Box
 
-**Use cases**:
+| Column | Type | Description |
+|--------|------|-------------|
+| `box2d` | `Array<f32, 4>` | Layout described by `box2d_format` metadata |
+| `box2d_score` | `Float32` | Confidence score (0..1), nullable, optional |
 
-- Track the same object across multiple frames in a sequence
-- Link a 2D box to a segmentation mask on the same object
-- Enable object-level queries ("show me all frames with object X")
+The array element order depends on the `box2d_format` file metadata. Default is
+`[center_x, center_y, width, height]` (`cxcywh`). See [Box Formats](box_format.md)
+for all layouts.
 
-**Best practice**: Use UUIDs for guaranteed uniqueness across datasets
+### Geometry: 3D Bounding Box
 
-### group
+| Column | Type | Description |
+|--------|------|-------------|
+| `box3d` | `Array<f32, 6>` | Layout described by `box3d_format` metadata |
+| `box3d_score` | `Float32` | Confidence score (0..1), nullable, optional |
 
-**Type**: `String` (Categorical, nullable)  
-**What it is**: Optional dataset split assignment—which set does this sample belong to?  
-**Values**: `null`, `"train"`, `"val"`, `"test"`, or any custom string
+Default layout: `[center_x, center_y, center_z, width, height, length]` (`cxcyczwhl`).
 
-**Default behavior in Studio**: When you split a dataset in EdgeFirst Studio, it assigns `"train"` and `"val"` by default. You can also use custom split names for your specific workflow.
+- Width (w) = X-axis extent
+- Height (h) = Y-axis extent
+- Length (l) = Z-axis extent
 
-**Important**: This is a **sample-level field**, not per-annotation. All annotations from the same sample have the same group value.
+All coordinates represent the **geometric center** of the bounding box.
+See [Box Formats](box_format.md) for details.
 
-**Typical distribution** (when used):
+### Annotation Metadata
 
-- 70% train
-- 20% validation
-- 10% test
+| Column | Type | Description |
+|--------|------|-------------|
+| `iscrowd` | `Boolean` | `true` = crowd region, `false` or absent = single instance. Optional, from COCO. |
+| `category_frequency` | `Categorical` | Long-tail frequency group: `"f"`, `"c"`, or `"r"`. Optional. |
 
-## Geometry Fields
+!!! info "New in 2026.04"
+    These columns support COCO/LVIS dataset extensions. They are optional and will be
+    absent from files that don't originate from COCO-family datasets.
 
-These fields describe **where** the object is located in the image or 3D world.
+**`iscrowd`**: COCO crowd annotations mark regions containing multiple overlapping
+instances. Evaluation protocols treat them differently (matched but not penalized as
+false negatives). LVIS does not use crowd annotations — this column will be absent or
+null for LVIS-sourced data.
 
-### box2d
+**`category_frequency`**: LVIS assigns each category to a frequency group based on how
+many training images contain it:
 
-**Type**: `Array(Float32, shape=(4,))`  
-**Format**: `[cx, cy, width, height]` (center-based)  
-**Coordinate system**: Normalized (0–1), top-left origin
+- `"f"` (frequent) — appears in >100 images
+- `"c"` (common) — appears in 11–100 images
+- `"r"` (rare) — appears in 1–10 images
 
-**Values**:
-
-- `cx`: Box center x-coordinate (0=left edge, 1=right edge)
-- `cy`: Box center y-coordinate (0=top edge, 1=bottom edge)
-- `width`: Box width as fraction of image width
-- `height`: Box height as fraction of image height
-
-**Example**: `[0.5, 0.5, 0.2, 0.3]` means a box centered in the image, 20% of image width, 30% of image height
-
-**Visual**:
-
-```text
-Image
-(0,0) ─────────────────────────→ x=1
-  │
-  │       (0.5, 0.5)
-  │         ●───────┐
-  │         │ 0.2w  │ 0.3h
-  │         └───────┘
-  │
-  ▼
-  y=1
-```
-
-Learn more in [Bounding Box Formats](box_format.md).
-
-### box3d
-
-**Type**: `Array(Float32, shape=(6,))`  
-**Format**: `[x, y, z, length, width, height]`  
-**Coordinate system**: ROS/Ouster (X=forward, Y=left, Z=up)  
-**Units**: Meters (normalized 0–1 in some contexts)
-
-**Values**:
-
-- `x, y, z`: Box center in 3D world space
-- `length`: Dimension along X axis (forward/backward)
-- `width`: Dimension along Y axis  (left)
-- `height`: Dimension along Z axis (typically vertical/up)
-
-**Example**: `[5.0, -2.0, 1.5, 2.0, 1.8, 4.5]` means an object 5m ahead, 2m to the right, 1.5m high
-
-### mask
-
-**Type**: `List(Float32)`  
-**What it is**: Pixel-level segmentation—precise boundary of the object  
-**Format**: Flattened array with NaN separators for multiple polygons
-
-**Structure**:
+This enables disaggregated AP metrics (AP_r, AP_c, AP_f) and long-tail distribution
+analysis. Use with Polars:
 
 ```python
-# Single polygon: [x1, y1, x2, y2, x3, y3, ...]
-# Multiple polygons: [x1, y1, x2, y2, ..., NaN, x4, y4, ...]
-#                                      ↑ polygon separator
+# Count annotations by frequency group
+df.group_by("category_frequency").len()
+
+# Filter to rare categories only
+rare = df.filter(pl.col("category_frequency") == "r")
 ```
 
-**Example** (single polygon around a person):
+### Sample Metadata
 
-```python
-[0.4, 0.3, 0.45, 0.25, 0.5, 0.25, 0.52, 0.28, 0.5, 0.4, 0.45, 0.42, 0.4, 0.35]
+| Column | Type | Description |
+|--------|------|-------------|
+| `size` | `Array<u32, 2>` | `[width, height]` — original image dimensions in pixels. Optional. |
+| `location` | `Array<f32, 2>` | `[latitude, longitude]` GPS coordinates |
+| `pose` | `Array<f32, 3>` | `[yaw, pitch, roll]` IMU orientation in degrees |
+| `degradation` | `String` | Visual quality indicator (`none`, `low`, `medium`, `high`) |
+| `neg_label_indices` | `List<UInt32>` | `label_index` values for categories verified absent from this image |
+| `not_exhaustive_label_indices` | `List<UInt32>` | `label_index` values for categories with possibly incomplete annotation |
+
+**`neg_label_indices`** and **`not_exhaustive_label_indices`** come from LVIS's federated
+annotation protocol. They enable correct evaluation by indicating which categories have
+known annotation status in each image:
+
+- **`neg_label_indices`**: Categories confirmed as **not present**. A model prediction for
+  one of these categories is a valid false positive.
+- **`not_exhaustive_label_indices`**: Categories where annotation may be **incomplete**.
+  Unmatched predictions for these categories are ignored during evaluation (not penalized).
+
+Both columns reference `label_index` values from the same file. They are sample-level
+fields (repeated per annotation row for a given image).
+
+!!! note "UInt32 vs UInt64"
+    These lists use `UInt32` elements while `label_index` is `UInt64`. This is safe for
+    COCO (max ID ~90) and LVIS (max ID ~1723). If you cross-join these columns in Polars,
+    cast to a common type first: `col("neg_label_indices").cast(List(UInt64))`.
+
+!!! tip "Pose array order"
+    The `pose` array is always `[yaw, pitch, roll]` in degrees. The JSON representation
+    uses named fields `{yaw, pitch, roll}` in the `sensors.imu` object.
+
+### Instrumentation
+
+| Column | Type | Description |
+|--------|------|-------------|
+| `timing` | `Struct` | Pipeline timing data (optional) |
+
+The `timing` struct contains `Int64` nanosecond duration fields:
+
+| Field | Description |
+|-------|-------------|
+| `load` | Time to load input data |
+| `preprocess` | Time for preprocessing transforms |
+| `inference` | Model inference time |
+| `decode` | Time for postprocessing / decoding outputs |
+
+**Example**:
+
+```
+timing: {load: 1500000, preprocess: 3200000, inference: 12500000, decode: 800000}
+# = 1.5 ms load, 3.2 ms preprocess, 12.5 ms inference, 0.8 ms decode
 ```
 
-**Coordinate system**: Normalized (0–1), same as 2D boxes
+Fields are extensible — future fields do not break older readers since Struct access is
+by name.
 
-Learn more in [Annotation Schema](schema.md) and the official format docs.
+## Score Columns
 
-## Sample Metadata Fields
+`box2d_score`, `box3d_score`, `polygon_score`, and `mask_score` are independent
+per-geometry confidence values in the range 0..1.
 
-These fields describe properties of the **sample** (image), not individual annotations. In Arrow format, they're repeated for each annotation row from the same sample.
+- A single row may have **different scores** for different geometry types (e.g., high
+  box confidence but lower polygon confidence)
+- Raster masks additionally carry **per-pixel** scores via `mask_interpretation`
+  metadata; `mask_score` is the per-instance aggregate
+- **Ground truth files**: score columns should be **omitted entirely** (not filled
+  with nulls). Readers must treat absent score columns as "not applicable."
 
-### size
+## Complete Polars Schema
 
-**Type**: `Array(UInt32, shape=(2,))`  
-**Format**: `[width, height]`  
-**What it is**: Image dimensions in pixels
-
-**Example**: `[1920, 1080]` for a Full HD image
-
-**Usage**:
+For reference, the full Polars-style schema:
 
 ```python
-# Access in Arrow/DataFrame
-width = df['size'][0]
-height = df['size'][1]
+(
+    # ── Identity & Classification ──────────────────────
+    ('name', String),
+    ('frame', UInt32),
+    ('object_id', String),
+    ('label', Categorical(ordering='physical')),
+    ('label_index', UInt64),                    # source-faithful, may be non-contiguous
+    ('group', Categorical(ordering='physical')),
 
-# Convert from normalized to pixel coordinates
-pixel_x = normalized_x * width
-pixel_y = normalized_y * height
+    # ── Geometry: Polygon ──────────────────────────────
+    ('polygon', List(List(Float32))),           # interleaved [x1,y1,x2,y2,...] per ring
+    ('polygon_score', Float32),                 # OPTIONAL
+
+    # ── Geometry: Raster Mask ──────────────────────────
+    ('mask', Binary),                            # PNG-encoded grayscale raster pixels
+    ('mask_score', Float32),                    # OPTIONAL
+
+    # ── Geometry: 2D Bounding Box ──────────────────────
+    ('box2d', Array(Float32, shape=(4,))),      # layout from metadata
+    ('box2d_score', Float32),                   # OPTIONAL
+
+    # ── Geometry: 3D Bounding Box ──────────────────────
+    ('box3d', Array(Float32, shape=(6,))),      # [cx, cy, cz, w, h, l]
+    ('box3d_score', Float32),                   # OPTIONAL
+
+    # ── Annotation Metadata (optional) ─────────────────
+    ('iscrowd', Boolean),                       # OPTIONAL - true = crowd region, false or absent
+    ('category_frequency', Categorical(ordering='physical')),  # OPTIONAL - LVIS "f"/"c"/"r"
+
+    # ── Sample Metadata (optional) ─────────────────────
+    ('size', Array(UInt32, shape=(2,))),         # [width, height]
+    ('location', Array(Float32, shape=(2,))),    # [lat, lon]
+    ('pose', Array(Float32, shape=(3,))),        # [yaw, pitch, roll]
+    ('degradation', String),
+    ('neg_label_indices', List(UInt32)),          # OPTIONAL - LVIS negative categories
+    ('not_exhaustive_label_indices', List(UInt32)),  # OPTIONAL - LVIS incomplete categories
+
+    # ── Instrumentation (optional) ─────────────────────
+    ('timing', Struct({
+        'load': Int64,
+        'preprocess': Int64,
+        'inference': Int64,
+        'decode': Int64,
+    })),
+)
 ```
 
-### location
+## File-Level Metadata
 
-**Type**: `Array(Float32, shape=(2,))`  
-**Format**: `[latitude, longitude]`  
-**What it is**: GPS coordinates where the image was captured
+Arrow IPC stores key-value metadata on the schema, while Parquet stores key-value
+metadata in the file footer. In both formats, all metadata values are strings.
 
-**Example**: `[37.7749, -122.4194]` (San Francisco)
+| Key | Values | Default (absent) | Description |
+|-----|--------|-------------------|-------------|
+| `schema_version` | `"2026.04"` | `"2025.10"` | Format version. Absent = legacy file. |
+| `box2d_format` | `"cxcywh"`, `"xyxy"`, `"ltwh"` | `"cxcywh"` | Box2D layout descriptor |
+| `box2d_normalized` | `"true"`, `"false"` | `"true"` | Box2D coordinate system |
+| `box3d_format` | `"cxcyczwhl"` | `"cxcyczwhl"` | Box3D layout descriptor |
+| `box3d_normalized` | `"true"`, `"false"` | `"true"` | Box3D coordinate system |
+| `mask_interpretation` | `"binary"`, `"confidence"`, `"sigmoid"`, `"logits"` | `"binary"` | Pixel value meaning |
+| `category_metadata` | JSON string | absent | Per-label metadata (synset, synonyms, definition) |
+| `labels` | JSON array `["person", "car", ...]` | absent | Ordered class names for semantic segmentation masks. `labels[i]` = class name for argmax pixel value `i`. |
 
-**Source**:
+Version format is `YYYY.MM` with mandatory zero-padding (e.g., `"2025.10"`, `"2026.04"`).
+Versions are compared lexicographically. Unknown future versions should trigger a warning
+(not an error) and attempt best-effort reading via schema introspection.
 
-- EXIF metadata in image
-- MCAP NavSat topic
-- Manual entry
+### Category Metadata
 
-**Note**: Altitude may be added in future versions
+The `category_metadata` key stores per-label reference data as a JSON-encoded string.
+This enriches label semantics without adding per-row columns for data that is constant
+across all annotations sharing the same label.
 
-### pose
-
-**Type**: `Array(Float32, shape=(3,))`  
-**Format**: `[roll, pitch, yaw]`  
-**What it is**: IMU orientation of the camera when image was captured
-
-**Values in degrees**:
-
-- `roll`: Rotation around X axis (-180 to 180°)
-- `pitch`: Rotation around Y axis (-90 to 90°)
-- `yaw`: Rotation around Z axis (-180 to 180°)
-
-**Example**: `[0.5, -1.2, 45.3]` means slightly tilted, pitched down, rotated 45° counterclockwise
-
-**Source**:
-
-- MCAP IMU topic
-- IMU sensor readings
-- Manual entry
-
-### degradation
-
-**Type**: `String` (nullable)  
-**What it is**: Visual quality indicator—how compromised is the camera view?
-
-**Typical values**:
-
-- `"none"`: Perfect view, objects fully visible
-- `"low"`: Slight obstruction, targets clearly visible
-- `"medium"`: Higher obstruction, targets visible but not obvious
-- `"high"`: Severe obstruction, objects cannot be seen
-
-**Examples of degradation**:
-
-- Fog, rain, snow
-- Camera obstruction (dirt, condensation)
-- Low light, night
-- Backlighting
-
-**Use cases**:
-
-- Filter training data by quality level
-- Train robust models for adverse weather
-- Identify which sensor to trust (use radar when camera degraded)
-
----
-
-## Complete Example
-
-Here's a complete annotation with all fields:
-
-```python
+```json
 {
-    # Sample identification
-    "name": "sequence_001_042",
-    "frame": 42,
-    
-    # Object identification
-    "label": "person",
-    "label_index": 0,
-    "object_id": "550e8400-e29b-41d4-a716-446655440000",
-    
-    # Dataset split
-    "group": "train",
-    
-    # Geometry
-    "box2d": [0.5, 0.5, 0.2, 0.3],
-    "box3d": [5.0, -2.0, 1.5, 2.0, 1.8, 4.5],
-    "mask": [0.48, 0.4, 0.52, 0.4, 0.52, 0.6, 0.48, 0.6],
-    
-    # Sample metadata
-    "size": [1920, 1080],
-    "location": [37.7749, -122.4194],
-    "pose": [0.5, -1.2, 45.3],
-    "degradation": "low"
+  "aerosol_can": {
+    "id": 1,
+    "supercategory": "accessory",
+    "synset": "aerosol.n.02",
+    "synonyms": ["aerosol_can", "spray_can"],
+    "definition": "a dispenser that holds a substance under pressure"
+  },
+  "person": {
+    "id": 1,
+    "supercategory": "human",
+    "synset": "person.n.01",
+    "synonyms": ["person", "individual"],
+    "definition": "a human being"
+  }
 }
 ```
 
-## Optional Fields
+| Field | Type | Description |
+|-------|------|-------------|
+| `id` | integer | Source category ID (used to reconstruct `category_id` for categories with no annotations) |
+| `supercategory` | string | Parent category name (e.g., `"vehicle"`, `"animal"`) |
+| `synset` | string | WordNet synset identifier (e.g., `"aerosol.n.02"`) |
+| `synonyms` | array of strings | Alternate names for the category |
+| `definition` | string | Natural language definition (LVIS `def` field, renamed for clarity) |
 
-Some fields may be `null` or missing depending on your dataset:
+**Source**: When importing from COCO with LVIS extensions, these fields are populated
+from the LVIS `categories` array. Other datasets with taxonomic metadata can populate
+the same fields.
 
-| Field | When Null | Reason |
-|-------|-----------|--------|
-| `frame` | Always for images | Images don't have frame numbers |
-| `box2d` | Sometimes | Only 3D annotations or image without 2D box |
-| `box3d` | Sometimes | Only 2D annotations |
-| `mask` | Often | Not all datasets include segmentation |
-| `object_id` | Rarely | Required for tracking |
-| `location` | Often | Not all images have GPS data |
-| `pose` | Often | Not all images have IMU data |
-| `degradation` | Often | Optional quality indicator |
+!!! note "Frequency is a column, not metadata"
+    The `frequency` field from LVIS is stored as the `category_frequency` **column**
+    (not in `category_metadata`) because it is directly useful for DataFrame filtering
+    and disaggregated metrics. The `image_count` and `instance_count` fields from LVIS
+    are intentionally not stored — they are recomputable statistics.
 
-## Querying Annotations
+### Labels Metadata
 
-Once you understand the schema, you can query your annotations:
+!!! info "New in 2026.04"
 
-```python
-import polars as pl
+The `labels` key stores an ordered array of class names as a JSON-encoded string. This
+metadata provides the index-to-name mapping for semantic segmentation masks where each
+pixel value is an argmax class index.
 
-df = pl.read_ipc("dataset.arrow")
+**Structure**: JSON array where `labels[i]` is the class name for pixel value `i`:
 
-# Get all person detections
-people = df.filter(pl.col("label") == "person")
-
-# Get training split
-train_data = df.filter(pl.col("group") == "train")
-
-# Find annotations with 3D boxes
-boxes_3d = df.filter(pl.col("box3d").is_not_null())
-
-# Find samples captured in San Francisco
-sf_samples = df.filter(
-    (pl.col("location")[0] > 37.77) & (pl.col("location")[0] < 37.78)
-)
-
-# Track an object across frames
-object_track = df.filter(pl.col("object_id") == "550e8400-e29b-41d4-a716-446655440000")
-
-print(f"Total annotations: {len(df)}")
-print(f"Unique objects: {df['object_id'].n_unique()}")
-print(f"Date range: {df['name'].min()} to {df['name'].max()}")
+```json
+["background", "person", "car", "bicycle", "dog"]
 ```
 
-## Further Reading
+In this example, pixel value `0` = `"background"`, pixel value `1` = `"person"`,
+pixel value `2` = `"car"`, etc.
 
-- [Bounding Box Formats](box_format.md) — Detailed guide to 2D box coordinate systems
-- [Dataset Organization](structure.md) — How samples are organized on disk
-- [Sensors](sensors.md) — Understanding camera and sensor metadata
-- [AGTG (Automatic Annotation)](../../studio/agtg.md) — How AI automatically populates annotation fields
-- [Snapshots Dashboard](../../studio/snapshots.md) — Download and restore datasets with annotations
+**When written**: Optional — only written when the source dataset provides an ordered
+category list (e.g., COCO categories sorted by ID).
+
+**Relationship to `category_metadata`**: The `labels` array provides index ordering for
+mask pixel interpretation. The `category_metadata` object provides rich per-label
+reference data (synset, synonyms, definition). Both may be present; they complement
+each other.
+
+### label_index
+
+The `label_index` column stores the **source-faithful** category identifier. When
+importing from COCO or LVIS, the original `category_id` is preserved directly as
+`label_index`.
+
+**Key characteristics**:
+
+- **May be non-contiguous** — COCO uses IDs 1–90 for 80 categories (gaps at 12, 26,
+  29, 30, etc.). LVIS uses IDs up to ~1723 for 1,203 categories.
+- **May not start at zero** — COCO starts at 1, not 0.
+- **Must be preserved on round-trip** — exporting back to COCO/LVIS reconstructs
+  the original `category_id` from `label_index`.
+
+!!! warning "Model training note"
+    Models are typically trained with a dense remapping (e.g., 80 contiguous class
+    indices for COCO). This remapping is a **model-specific concern** handled in the
+    training pipeline, not in the dataset format. Some legacy models (notably older
+    SSDs) are trained with the original gaps and produce 91 outputs (90 categories +
+    background); this is likewise a model-specific convention.

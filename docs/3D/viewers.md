@@ -15,7 +15,7 @@ The point clouds for the Radar (1) or LiDAR (2) can be visualized on the 3D canv
 |---------------------------------|-----------------------------|
 | ![Radar](assets/radar_pcds.jpg) | ![LiDAR](assets/lidar_pcds.jpg) |
 
-The 3D bounding boxes (3) can also be displayed on the 3D canvas.  The 3D bounding box is the annotation used for [training 3D perception (Fusion) models](training.md).  More information towards the format used for the 3D bounding box is provided [here](../datasets/format/schema.md#box3d).
+The 3D bounding boxes (3) can also be displayed on the 3D canvas.  The 3D bounding box is the annotation used for [training 3D perception (Fusion) models](training.md).  More information towards the format used for the 3D bounding box is provided [here](../datasets/format/box_format.md#box3d).
 
 | 3D Bounding Boxes               | 3D Bounding Boxes with LiDAR   |
 |---------------------------------|--------------------------------|

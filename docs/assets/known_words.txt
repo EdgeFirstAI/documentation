@@ -159,3 +159,16 @@ heatmap
 heatmaps
 musicbox
 tradeoff
+logit
+logits
+lossy
+thresholded
+recomputable
+nullable
+synset
+interop
+unnest
+pushdown
+postprocessing
+seg
+vs

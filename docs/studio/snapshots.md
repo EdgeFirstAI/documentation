@@ -51,7 +51,7 @@ A snapshot can be created by the following ways:
 
 ### Upload from Zip/Arrow File
 
-This format is the [EdgeFirst Dataset Format](../datasets/format/index.md) where the [Zip file](../datasets/format/index.md#overview) contains sensor reading and measurements and the [Arrow file](../datasets/format/index.md#annotation-data) contains dataset annotations.
+This format is the [EdgeFirst Dataset Format](../datasets/format/index.md) where the [Zip file](../datasets/format/sensors.md) contains sensor readings and measurements and the [Arrow file](../datasets/format/schema.md) contains dataset annotations.
 
 1. Go to the snapshots dashboard.
 2. Click on the "FROM FILE" button and then select the Zip and Arrow file pairs to import or drag and drop as a folder containing Zip and Arrow file pairs onto the dashboard.

@@ -50,6 +50,7 @@ nav:
       - datasets/format/sensors.md
       - datasets/format/formats.md
       - datasets/format/conversion.md
+      - datasets/format/migration.md
     - Dataset Zoo:
       - Coffee Cup:
         - datasets/coffeecup/index.md

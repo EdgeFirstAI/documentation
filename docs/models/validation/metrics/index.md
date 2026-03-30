@@ -1,6 +1,6 @@
 # EdgeFirst Validation Metrics
 
-The EdgeFirst Validation metrics reports the accuracy and timing performance of object detection, segmentation, and fusion models.  The [EdgeFirst Validator](https://pypi.org/project/edgefirst-validator/) performs the model validation hosted in [EdgeFirst Studio](https://edgefirst.studio/) to compute the metrics described in this section.
+The EdgeFirst Validation metrics report the accuracy and timing performance of object detection, segmentation, and fusion models.  The [EdgeFirst Validator](https://pypi.org/project/edgefirst-validator/) performs the model validation hosted in [EdgeFirst Studio](https://edgefirst.studio/) to compute the metrics described in this section.
 
 Validation evaluates a model’s performance before deployment to determine whether it is ready for real-world application.  It measures how the model performs across a range of settings (such as NMS score thresholds and IoU thresholds) and identifies the optimal configuration that yields the best overall performance.
 

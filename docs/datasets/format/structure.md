@@ -1,244 +1,133 @@
-# Dataset Organization
+# Directory Structure
 
-EdgeFirst datasets support three organizational patterns based on your data type. This page explains the differences and shows you how to structure your files correctly.
+EdgeFirst datasets follow a consistent directory layout where the annotation file and
+the sensor data container share the same base name.
 
-## How Datasets Are Created
+## File Naming
 
-There are several ways to get data into EdgeFirst Studio:
+Annotation files use the dataset base name with the format extension:
 
-### 1. From EdgeFirst Platforms (MCAP Recordings)
-
-The primary workflow for [EdgeFirst Perception](../../platforms/index.md) users:
-
-```mermaid
-flowchart LR
-    subgraph Device["📹 Recording"]
-        A["MCAP File"]
-    end
-    subgraph Studio["☁️ EdgeFirst Studio"]
-        B["Snapshot<br>(ZIP + Arrow)"]
-        C["Dataset"]
-    end
-    subgraph Local["💾 Local"]
-        D["Download<br>(ZIP + Arrow)"]
-    end
-    
-    A -->|"Upload"| B
-    B -->|"Restore"| C
-    C -->|"Create Snapshot"| B
-    B -->|"Download"| D
-    D -->|"Import"| B
+```
+dataset_name/
+├── dataset_name.arrow          # Arrow IPC (default)
+│   # — OR —
+├── dataset_name.parquet        # Parquet (transfer)
+│   # — OR —
+├── dataset_name.json           # JSON (human-readable)
+└── dataset_name/               # Sensor container (directory or .zip)
 ```
 
-1. **MCAP files** are [recorded on devices](../../perception/data_collection/recording.md) and [uploaded to Studio](../../perception/data_collection/publishing.md)
-2. **Snapshots** are the portable format—a ZIP file (sensor data) paired with an Arrow file (annotations)
-3. **Datasets** are expanded snapshots that you can browse, annotate, and train on
-4. **When you create a snapshot** from a dataset, Studio generates the ZIP+Arrow pair for download and sharing
+Exactly **one annotation file** per dataset directory — choose a single format from
+`.arrow`, `.parquet`, or `.json`. The tree above shows the three supported alternatives;
+do not include more than one annotation file for the same dataset. The sensor container
+directory name matches the dataset base name regardless of which annotation file format
+you choose.
 
-### 2. From Pre-Annotated Datasets
+## Dataset Layouts
 
-If you have existing annotated datasets (e.g., from COCO, custom collections, or other tools), you can convert them directly to the EdgeFirst Dataset Format:
+EdgeFirst supports three organizational patterns.
 
-```mermaid
-flowchart LR
-    A["📁 Existing Dataset<br>(COCO, custom, etc.)"] -->|"Convert"| B["📦 ZIP + Arrow"]
-    B -->|"Import"| C["☁️ Snapshot"]
-    C -->|"Restore"| D["🗂️ Dataset"]
+### 1. Sequence-Based Datasets
+
+Video frames with temporal ordering (from MCAP recordings or video files):
+
 ```
-
-See [Format Conversion](conversion.md) for details on converting existing datasets.
-
-### 3. Simple Videos and Images
-
-For quick experimentation, you can also upload videos or images directly to Studio for auto-annotation—no format conversion required. This is covered in the [Capture Data](../tutorials/capture.md#capture-with-a-phone) tutorial.
-
-!!! info "ZIP + Arrow = EdgeFirst Dataset Format"
-    Whether you're downloading a snapshot or sharing a dataset, the format is always the same:
-
-    - **ZIP file**: Contains sensor data organized by sequence/frame
-    - **Arrow file**: Contains annotations in columnar format
-    
-    See [Format Overview](index.md) for details.
-
-## The Three Patterns
-
-```mermaid
-graph TB
-    subgraph SeqBased["Sequence-Based"]
-        S["Multiple sequences<br/>with temporal frames"]
-    end
-    
-    subgraph ImgBased["Image-Based"]
-        I["Independent images<br/>no specific order"]
-    end
-    
-    subgraph MixedBased["Mixed"]
-        M["Sequences + standalone<br/>images together"]
-    end
-    
-    style SeqBased fill:#c8e6c9,stroke:#388e3c,stroke-width:2px
-    style ImgBased fill:#ffccbc,stroke:#d84315,stroke-width:2px
-    style MixedBased fill:#e1bee7,stroke:#6a1b9a,stroke-width:2px
-```
-
-### When to Use Each
-
-| Pattern | When | Example |
-|---------|------|---------|
-| **Sequence-Based** | You have video recordings or MCAP files | MCAP from EdgeFirst Platform, MP4 videos |
-| **Image-Based** | You have individual images with no order | COCO dataset, photos from mobile device |
-| **Mixed** | You have both sequences and loose images | MCAP recordings + calibration images |
-
-## 1. Sequence-Based Datasets {#sequence-based}
-
-Use this pattern when your data comes from **video recordings** (MCAP files, MP4, etc.) where frames have temporal order.
-
-### Directory Structure
-
-```text
-my_video_dataset/
-├── my_video_dataset.arrow                          # Annotations
-└── my_video_dataset/                               # Sensor container
-    ├── hostname_date_time_001/                     # First sequence
-    │   ├── hostname_date_time_001_001.camera.jpeg
-    │   ├── hostname_date_time_001_002.camera.jpeg
-    │   ├── hostname_date_time_001_003.camera.jpeg
-    │   ├── hostname_date_time_001_001.radar.pcd
-    │   └── hostname_date_time_001_001.lidar.pcd
-    │
-    ├── hostname_date_time_002/                     # Second sequence
-    │   ├── hostname_date_time_002_001.camera.jpeg
-    │   ├── hostname_date_time_002_002.camera.jpeg
-    │   └── ...
-    │
-    └── hostname_date_time_003/
+deer_dataset/
+├── deer_dataset.arrow
+└── deer_dataset/
+    └── 9331381uhd_3840_2160_24fps/
+        ├── 9331381uhd_3840_2160_24fps_110.camera.jpeg
+        ├── 9331381uhd_3840_2160_24fps_111.camera.jpeg
         └── ...
 ```
 
-### File Naming Convention
+**File naming convention**:
 
-```text
-{sequence_name}_{frame_number}.{sensor}.{extension}
+- Sequence format: `{hostname}_{date}_{time}` (from MCAP)
+- Frame format: `{sequence_name}_{frame_number}.{sensor}.{ext}`
+
+### 2. Image-Based Datasets
+
+Standalone images without temporal ordering:
+
 ```
-
-Where:
-
-- `sequence_name`: Usually `hostname_date_time` (from MCAP filename)
-- `frame_number`: Sequential frame index (001, 002, 003, ...) padded with zeros
-- `sensor`: Type of sensor (`camera`, `radar`, `lidar`, `depth`)
-- `extension`: Image format (`jpeg`, `png`, `pcd`)
-
-### Examples
-
-```text
-9331381uhd_2025_01_15_143022_001.camera.jpeg
-9331381uhd_2025_01_15_143022_002.camera.jpeg
-9331381uhd_2025_01_15_143022_001.radar.pcd
-9331381uhd_2025_01_15_143022_001.lidar.pcd
-```
-
-### Important Notes
-
-- **Frame numbers don't need to be continuous** — MCAP files can be cropped or downsampled
-- **All frames must have matching frame numbers across sensors** — if you have `frame_001.camera.jpeg`, you should have `frame_001.radar.pcd` and `frame_001.lidar.pcd`
-- **Sequential ordering is preserved** — frame 001 comes before frame 002 in the dataset
-
-## 2. Image-Based Datasets {#image-based}
-
-Use this pattern when you have **standalone images without temporal ordering**, like datasets downloaded from COCO or photos taken with a mobile device.
-
-### Directory Structure
-
-```text
-my_image_dataset/
-├── my_image_dataset.arrow            # Annotations
-└── my_image_dataset/                 # Sensor container
-    ├── image_001.jpg
-    ├── image_002.jpg
-    ├── image_003.png
-    ├── street_scene_24.jpg
-    ├── parking_lot_156.jpg
+coco_subset/
+├── coco_subset.arrow
+└── coco_subset/
+    ├── image001.jpg
+    ├── image002.jpg
     └── ...
 ```
 
-### File Naming Convention
+### 3. Mixed Datasets
 
-Any descriptive filename works:
+Combination of sequences and standalone images:
 
-```text
-{descriptive_name}.{extension}
+```
+mixed_dataset/
+├── mixed_dataset.arrow
+└── mixed_dataset/
+    ├── sequence_A/
+    │   ├── sequence_A_001.camera.jpeg
+    │   └── sequence_A_002.camera.jpeg
+    ├── standalone_image1.jpg
+    └── standalone_image2.jpg
 ```
 
-Examples:
+## Multi-Sensor Examples
 
-```text
-person_001.jpg
-dog_standing.png
-traffic_scene_morning.jpg
-beach_sunset.jpg
+A single frame can include multiple sensor modalities:
+
+```
+sensor_fusion/
+├── sensor_fusion.parquet
+└── sensor_fusion/
+    └── drive_2026_03_18/
+        ├── drive_2026_03_18_001.camera.jpeg
+        ├── drive_2026_03_18_001.radar.png
+        ├── drive_2026_03_18_001.radar.pcd
+        ├── drive_2026_03_18_001.lidar.pcd
+        ├── drive_2026_03_18_002.camera.jpeg
+        ├── drive_2026_03_18_002.radar.png
+        └── ...
 ```
 
-### Key Characteristics
+## Flattened Structure
 
-- No `sequence_` prefix required
-- No frame numbers
-- Files can be in any order (annotations will have `frame: null`)
-- Can mix different image sources in same dataset
+As an alternative to nested subdirectories, datasets may use a flat layout with
+sequence prefixes:
 
-## 3. Mixed Datasets
-
-Use this pattern when you have **both sequences and standalone images** in the same dataset.
-
-### Directory Structure
-
-```text
-my_mixed_dataset/
-├── my_mixed_dataset.arrow                    # Annotations
-└── my_mixed_dataset/                         # Sensor container
-    │
-    ├── video_sequence_001/                   # Video sequences
-    │   ├── video_sequence_001_001.camera.jpeg
-    │   ├── video_sequence_001_002.camera.jpeg
-    │   └── video_sequence_001_001.radar.pcd
-    │
-    ├── video_sequence_002/
-    │   └── ...
-    │
-    ├── calibration_image_001.jpg             # Standalone images
-    ├── reference_scene.png
-    ├── test_pattern.jpg
-    └── ...
+```
+dataset_name/
+├── dataset_name.arrow
+└── dataset_name/
+    ├── sequence_A_001.camera.jpeg
+    ├── sequence_A_002.camera.jpeg
+    ├── sequence_B_001.camera.jpeg
+    └── standalone_image.jpg
 ```
 
-### Organization Strategy
+The EdgeFirst Client SDK detects the layout automatically — no manual configuration is needed.
 
-- **Sequences**: In subdirectories (same as sequence-based pattern)
-- **Images**: Directly in dataset root (same as image-based pattern)
-- **Mixed annotations**: Arrow file has `frame: {number}` for sequences, `frame: null` for images
+## ZIP Format
 
-### Example Use Cases
+EdgeFirst supports ZIP64 as an alternative to directories for the sensor container:
 
-- Training set includes video sequences + manually curated reference images
-- Calibration images stored alongside operational video data
-- Augmented dataset combining MCAP recordings + external image sources
-
-## Understanding the Arrow File Location
-
-The Arrow file **always lives at the dataset root level**:
-
-```text
-my_dataset/
-├── my_dataset.arrow                  # ← Always here
-└── my_dataset/
-    └── ... sensor data ...
+```
+dataset_name/
+├── dataset_name.arrow
+└── dataset_name.zip             # sensor data in ZIP
 ```
 
-This centralized location makes it easy to find and load annotations for any dataset structure (sequence, image, or mixed).
+ZIP64 provides:
 
-## File Container Options
+- Random access via file index
+- Uncompressed storage recommended (JPEG and PNG are already compressed; PCD and other formats may benefit from ZIP compression)
+- Cross-platform support
 
-Sensor data can be stored in two ways:
+## Sensor File Extensions
 
+<<<<<<< HEAD
 ### 1. Directory (Recommended for Development)
 
 ```text
@@ -359,3 +248,13 @@ for root, dirs, files in os.walk(sensor_dir):
 - [Sensor Data](sensors.md) — Details on camera, radar, and LiDAR formats
 - [Snapshots Dashboard](../../studio/snapshots.md) — Download and restore snapshots in Studio
 - [Publishing Workflows](../../perception/data_collection/publishing.md) — Upload MCAP recordings as snapshots
+=======
+| Extension | Sensor | Description |
+|-----------|--------|-------------|
+| `.camera.jpeg` | Camera | Camera image (default) |
+| `.camera.png` | Camera | Camera image (lossless) |
+| `.jpg`, `.png` | Camera | Generic image formats |
+| `.radar.pcd` | Radar | Radar point cloud |
+| `.radar.png` | Radar | Radar data cube (16-bit PNG) |
+| `.lidar.pcd` | LiDAR | LiDAR point cloud |
+>>>>>>> test

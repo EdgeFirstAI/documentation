@@ -1,510 +1,258 @@
-# Format Conversion: Arrow ↔ JSON
+# Conversion Guidelines
 
-This page shows you how to convert between Arrow and JSON annotation formats when working with datasets outside of EdgeFirst Studio.
+!!! danger "2025.10 code is incompatible with 2026.04 files"
+    Code written for the 2025.10 schema (NaN-separated masks, `mask: List<Float32>`)
+    will produce **corrupt data** when applied to 2026.04 files. Always check the
+    schema version before processing. See the [Migration Guide](migration.md) for
+    upgrade instructions.
 
-## Why Convert?
+## Version Detection
 
-**Most users don't need to convert formats manually.** EdgeFirst Studio handles all format conversions internally—when you upload snapshots, restore datasets, or export annotations, Studio manages the underlying format automatically.
+Always detect the schema version before reading annotation data.
 
-Manual conversion is useful when:
-
-- **Building custom ML pipelines** outside of Studio that need Arrow's fast columnar queries
-- **Editing annotations manually** in a text editor (JSON is human-readable)
-- **Integrating with third-party tools** that expect a specific format
-- **Analyzing annotation statistics** with Polars or pandas DataFrames
-
-```mermaid
-graph LR
-    Studio["EdgeFirst Studio"]
-    Arrow["Arrow File"]
-    JSON["JSON File"]
-    ML["Custom ML Pipeline"]
-    Edit["Manual Editing"]
-    
-    Studio -->|"Export"| Arrow
-    Studio -->|"Export"| JSON
-    Arrow -->|"Fast queries"| ML
-    JSON -->|"Text editor"| Edit
-    Edit -->|"Re-import"| Studio
-    
-    style Studio fill:#bbdefb,stroke:#1976d2,stroke-width:2px
-    style Arrow fill:#c8e6c9,stroke:#388e3c,stroke-width:2px
-    style JSON fill:#fff9c4,stroke:#f57f17,stroke-width:2px
-    style ML fill:#e1bee7,stroke:#7b1fa2,stroke-width:2px
-    style Edit fill:#fff9c4,stroke:#f57f17,stroke-width:2px
-```
-
-## JSON → Arrow Conversion
-
-Converting from JSON (human-friendly) to Arrow (ML-optimized).
-
-### Python Code
+### Arrow / Parquet Files
 
 ```python
+import pyarrow.ipc as ipc
+import pyarrow.parquet as pq
 import polars as pl
-import json
-from typing import List, Dict, Any
 
-def json_to_arrow(json_file: str, output_arrow: str):
-    """Convert JSON annotations to Arrow format."""
-    
-    # Load JSON data
-    with open(json_file, 'r') as f:
-        samples = json.load(f)
-    
-    # List to collect all annotation rows
-    rows = []
-    
-    for sample in samples:
-        # Extract sample-level metadata (same for all annotations)
-        name = sample.get('image_name', '').replace('.camera.jpeg', '').replace('.jpg', '')
-        frame = sample.get('frame_number')
-        group = sample.get('group', 'train')
-        
-        # Extract sample metadata (new in 2025.10)
-        size = None
-        if 'width' in sample and 'height' in sample:
-            size = [sample['width'], sample['height']]
-        
-        # GPS coordinates: nested object → array [lat, lon]
-        location = None
-        if sample.get('sensors', {}).get('gps'):
-            gps = sample['sensors']['gps']
-            location = [gps.get('latitude'), gps.get('longitude')]
-        
-        # IMU orientation: nested object → array [roll, pitch, yaw]
-        pose = None
-        if sample.get('sensors', {}).get('imu'):
-            imu = sample['sensors']['imu']
-            pose = [imu.get('roll'), imu.get('pitch'), imu.get('yaw')]
-        
-        degradation = sample.get('degradation')
-        
-        # Process each annotation in the sample
-        for ann in sample.get('annotations', []):
-            
-            # Box2D: JSON {x, y, w, h} → Arrow [cx, cy, w, h]
-            box2d = None
-            if 'box2d' in ann:
-                b = ann['box2d']
-                box2d = [
-                    b['x'] + b['w'] / 2,    # cx = left + width/2
-                    b['y'] + b['h'] / 2,    # cy = top + height/2
-                    b['w'],                  # width
-                    b['h']                   # height
-                ]
-            
-            # Box3D: JSON object → Array [x, y, z, w, h, l]
-            box3d = None
-            if 'box3d' in ann:
-                b = ann['box3d']
-                box3d = [b['x'], b['y'], b['z'], b['w'], b['h'], b['l']]
-            
-            # Mask: JSON nested lists → flat array with NaN separators
-            mask = None
-            if 'mask' in ann and 'polygon' in ann['mask']:
-                polys = ann['mask']['polygon']
-                flat = []
-                for i, poly in enumerate(polys):
-                    if i > 0:
-                        flat.append(float('nan'))  # Separator between polygons
-                    for point in poly:
-                        flat.extend(point)
-                mask = flat if flat else None
-            
-            # Create Arrow row
-            row = {
-                'name': name,
-                'frame': frame,
-                'object_id': ann.get('object_id'),
-                'label': ann.get('label_name'),
-                'label_index': ann.get('label_index'),
-                'group': group,
-                'box2d': box2d,
-                'box3d': box3d,
-                'mask': mask,
-                'size': size,
-                'location': location,
-                'pose': pose,
-                'degradation': degradation,
-            }
-            
-            rows.append(row)
-    
-    # Create Arrow table and save
-    df = pl.DataFrame(rows)
-    df.write_ipc(output_arrow)
-    print(f"✅ Saved {len(df)} annotations to {output_arrow}")
-
-# Usage
-json_to_arrow('annotations.json', 'dataset.arrow')
-```
-
-### Key Conversions
-
-| JSON | → | Arrow |
-|------|---|-------|
-| `label_name` | → | `label` |
-| `group` | → | `group` |
-| Box2D `{x, y, w, h}` | → | `[cx, cy, w, h]` |
-| GPS nested object | → | Array `[lat, lon]` |
-| IMU nested object | → | Array `[roll, pitch, yaw]` |
-| Mask nested polygons | → | Flat array + NaN separators |
-
----
-
-## Arrow → JSON Conversion
-
-Converting from Arrow (ML-optimized) to JSON (human-friendly).
-
-### Python Code
-
-```python
-import polars as pl
-import json
-from typing import List, Dict, Any
-
-def arrow_to_json(arrow_file: str, output_json: str):
-    """Convert Arrow annotations to JSON format."""
-    
-    # Load Arrow data
-    df = pl.read_ipc(arrow_file)
-    
-    # Group by sample (name, frame)
-    samples_dict = {}
-    
-    for row in df.iter_rows(named=True):
-        sample_key = (row['name'], row['frame'])
-        
-        if sample_key not in samples_dict:
-            # Create sample object (only once per unique sample)
-            sample = {
-                'image_name': f"{row['name']}.camera.jpeg",
-                'frame_number': row['frame'],
-                'group': row['group'],
-                'annotations': []
-            }
-            
-            # Add size if available
-            if row.get('size'):
-                sample['width'] = int(row['size'][0])
-                sample['height'] = int(row['size'][1])
-            
-            # Add sensors if available
-            sensors = {}
-            
-            if row.get('location'):
-                sensors['gps'] = {
-                    'latitude': float(row['location'][0]),
-                    'longitude': float(row['location'][1])
-                }
-            
-            if row.get('pose'):
-                sensors['imu'] = {
-                    'roll': float(row['pose'][0]),
-                    'pitch': float(row['pose'][1]),
-                    'yaw': float(row['pose'][2])
-                }
-            
-            if sensors:
-                sample['sensors'] = sensors
-            
-            # Add degradation if present
-            if row.get('degradation'):
-                sample['degradation'] = row['degradation']
-            
-            samples_dict[sample_key] = sample
-        
-        # Add annotation to sample
-        sample = samples_dict[sample_key]
-        
-        # Box2D: Arrow [cx, cy, w, h] → JSON {x, y, w, h}
-        ann = {}
-        if row.get('box2d'):
-            b = row['box2d']
-            ann['box2d'] = {
-                'x': float(b[0] - b[2] / 2),   # x = cx - w/2
-                'y': float(b[1] - b[3] / 2),   # y = cy - h/2
-                'w': float(b[2]),               # w
-                'h': float(b[3])                # h
-            }
-        
-        # Box3D: Array [x, y, z, w, h, l] → JSON object
-        if row.get('box3d'):
-            b = row['box3d']
-            ann['box3d'] = {
-                'x': float(b[0]),
-                'y': float(b[1]),
-                'z': float(b[2]),
-                'w': float(b[3]),
-                'h': float(b[4]),
-                'l': float(b[5])
-            }
-        
-        # Mask: flat array + NaN separators → nested polygons
-        if row.get('mask'):
-            mask_flat = row['mask']
-            polygons = []
-            current_poly = []
-            
-            for i in range(0, len(mask_flat), 2):
-                if i + 1 < len(mask_flat):
-                    x, y = mask_flat[i], mask_flat[i + 1]
-                    
-                    # Check for NaN separator
-                    if isinstance(x, float) and isinstance(y, float):
-                        if x != x or y != y:  # NaN check
-                            if current_poly:
-                                polygons.append(current_poly)
-                                current_poly = []
-                        else:
-                            current_poly.append([float(x), float(y)])
-            
-            # Add last polygon
-            if current_poly:
-                polygons.append(current_poly)
-            
-            if polygons:
-                ann['mask'] = {'polygon': polygons}
-        
-        # Add labels
-        ann['label_name'] = row['label']
-        ann['label_index'] = row['label_index']
-        ann['object_id'] = row['object_id']
-        
-        sample['annotations'].append(ann)
-    
-    # Convert to list of samples
-    samples = list(samples_dict.values())
-    
-    # Save JSON
-    with open(output_json, 'w') as f:
-        json.dump(samples, f, indent=2)
-    
-    print(f"✅ Saved {len(samples)} samples to {output_json}")
-
-# Usage
-arrow_to_json('dataset.arrow', 'annotations.json')
-```
-
-### Key Conversions
-
-| Arrow | → | JSON |
-|-------|---|------|
-| `label` column | → | `label_name` field |
-| `[cx, cy, w, h]` | → | Box2D `{x, y, w, h}` |
-| Array `[lat, lon]` | → | GPS nested object |
-| Array `[roll, pitch, yaw]` | → | IMU nested object |
-| Flat array + NaN | → | Mask nested polygons |
-| Grouped by (name, frame) | → | Sample with annotations[] |
-
----
-
-## Complete Example
-
-### Starting with JSON
-
-```json
-{
-  "image_name": "scene_001.camera.jpeg",
-  "frame_number": 0,
-  "group": "train",
-  "width": 1920,
-  "height": 1080,
-  "sensors": {
-    "gps": {"latitude": 37.7749, "longitude": -122.4194},
-    "imu": {"roll": 0.5, "pitch": -1.2, "yaw": 45.3}
-  },
-  "annotations": [
-    {
-      "label_name": "person",
-      "label_index": 0,
-      "object_id": "obj-001",
-      "box2d": {"x": 0.43, "y": 0.24, "w": 0.15, "h": 0.64},
-      "mask": {"polygon": [[[0.43, 0.24], [0.58, 0.24], [0.58, 0.88]]]}
-    }
-  ]
-}
-```
-
-### After JSON → Arrow Conversion
-
-```python
-# Row in Arrow DataFrame
-{
-    'name': 'scene_001',
-    'frame': 0,
-    'label': 'person',
-    'label_index': 0,
-    'object_id': 'obj-001',
-    'group': 'train',
-    'box2d': [0.505, 0.56, 0.15, 0.64],      # [cx, cy, w, h]
-    'size': [1920, 1080],                     # [width, height]
-    'location': [37.7749, -122.4194],        # [lat, lon]
-    'pose': [0.5, -1.2, 45.3],               # [roll, pitch, yaw]
-    'mask': [0.43, 0.24, 0.58, 0.24, ...]   # flattened polygon
-}
-```
-
-### Converting Back to JSON
-
-```json
-{
-  "image_name": "scene_001.camera.jpeg",
-  "frame_number": 0,
-  "group": "train",
-  "width": 1920,
-  "height": 1080,
-  "sensors": {
-    "gps": {"latitude": 37.7749, "longitude": -122.4194},
-    "imu": {"roll": 0.5, "pitch": -1.2, "yaw": 45.3}
-  },
-  "annotations": [
-    {
-      "label_name": "person",
-      "label_index": 0,
-      "object_id": "obj-001",
-      "box2d": {"x": 0.43, "y": 0.24, "w": 0.15, "h": 0.64},
-      "mask": {"polygon": [[[0.43, 0.24], [0.58, 0.24], [0.58, 0.88]]]}
-    }
-  ]
-}
-```
-
----
-
-## Box2D Conversion Details
-
-**⚠️ IMPORTANT**: Box2D coordinates change between formats!
-
-### Arrow (Center) → JSON (Top-Left)
-
-```python
-# Arrow stores center-based: [cx, cy, w, h]
-cx, cy, w, h = 0.5, 0.5, 0.3, 0.4
-
-# Convert to JSON legacy: {x, y, w, h} (top-left)
-x = cx - w / 2  # 0.5 - 0.15 = 0.35
-y = cy - h / 2  # 0.5 - 0.20 = 0.30
-# Result: {"x": 0.35, "y": 0.30, "w": 0.3, "h": 0.4}
-```
-
-### JSON (Top-Left) → Arrow (Center)
-
-```python
-# JSON legacy: {x, y, w, h} (top-left)
-x, y, w, h = 0.35, 0.30, 0.3, 0.4
-
-# Convert to Arrow center-based: [cx, cy, w, h]
-cx = x + w / 2  # 0.35 + 0.15 = 0.50
-cy = y + h / 2  # 0.30 + 0.20 = 0.50
-# Result: [0.5, 0.5, 0.3, 0.4]
-```
-
----
-
-## Mask Conversion Details
-
-### Nested (JSON) → Flat (Arrow)
-
-```python
-# JSON: nested list of polygons
-mask_json = {
-    "polygon": [
-        [[0.4, 0.3], [0.6, 0.3], [0.6, 0.7]],  # polygon 1
-        [[0.1, 0.1], [0.2, 0.1], [0.2, 0.2]]   # polygon 2
-    ]
-}
-
-# Arrow: flat array with NaN separators
-mask_arrow = [
-    0.4, 0.3, 0.6, 0.3, 0.6, 0.7,  # polygon 1
-    float('nan'), float('nan'),     # NaN separator
-    0.1, 0.1, 0.2, 0.1, 0.2, 0.2   # polygon 2
-]
-```
-
-### Flat (Arrow) → Nested (JSON)
-
-```python
-# Split on NaN values
-import math
-
-mask_arrow = [0.4, 0.3, 0.6, 0.3, 0.6, 0.7, float('nan'), ...]
-
-polygons = []
-current_poly = []
-
-for i in range(0, len(mask_arrow), 2):
-    x, y = mask_arrow[i], mask_arrow[i + 1]
-    
-    # Check for NaN
-    if math.isnan(x) or math.isnan(y):
-        polygons.append(current_poly)
-        current_poly = []
+# Method 1 (preferred): Check schema_version metadata
+def get_schema_version(path: str) -> str:
+    """Read schema_version from Arrow IPC or Parquet file metadata."""
+    if path.endswith(".parquet"):
+        metadata = pq.read_schema(path).metadata or {}
     else:
-        current_poly.append([x, y])
+        with open(path, "rb") as f:
+            metadata = ipc.open_file(f).schema.metadata or {}
+    return metadata.get(b"schema_version", b"").decode()
 
-# Result: list of polygon coordinate lists
+schema_version = get_schema_version("dataset.arrow")
+
+if schema_version:
+    version = schema_version  # e.g. "2025.10" or "2026.04"
+else:
+    # Method 2 (fallback): Inspect column presence and types
+    df = pl.read_ipc("dataset.arrow")  # or pl.read_parquet(...)
+
+    if "polygon" in df.columns:
+        version = "2026.04"
+    elif "mask" in df.columns:
+        mask_dtype = str(df["mask"].dtype)
+        if mask_dtype.startswith("List(Float32"):
+            version = "2025.10"    # NaN-separated polygon coordinates
+        elif str(mask_dtype) == "Binary":
+            version = "2026.04"    # PNG-encoded raster pixels
+        else:
+            version = "unknown"
+    else:
+        version = "2025.10"        # no geometry columns, no metadata
 ```
 
----
-
-## Batch Conversion
-
-Convert an entire directory of JSON files:
+### JSON Files
 
 ```python
-from pathlib import Path
-import polars as pl
 import json
 
-def batch_json_to_arrow(json_dir: str):
-    """Convert all JSON files in directory to Arrow."""
-    
-    all_rows = []
-    
-    for json_file in Path(json_dir).glob("*.json"):
-        with open(json_file, 'r') as f:
-            samples = json.load(f)
-        
-        # ... (use json_to_arrow logic) ...
-        # append rows to all_rows
-    
-    df = pl.DataFrame(all_rows)
-    df.write_ipc(Path(json_dir) / "combined.arrow")
-    print(f"✅ Saved {len(df)} annotations")
+with open("annotations.json") as f:
+    data = json.load(f)
 
-# Usage
-batch_json_to_arrow("./annotations/")
+if isinstance(data, list):
+    # 2025.10: bare array of samples
+    samples = data
+    version = "2025.10"
+else:
+    # 2026.04: object wrapper with metadata
+    samples = data["samples"]
+    version = data.get("schema_version", "2025.10")
 ```
 
----
+## Reading 2026.04 Files
 
-## Troubleshooting
+### Arrow IPC / Parquet
 
-### Box positions are wrong after conversion
+```python
+import polars as pl
 
-- ✅ Check if you're using the right coordinate system
-- ✅ Verify JSON uses top-left `{x, y}` and Arrow uses center `[cx, cy]`
-- ✅ Test with a known box: center at (0.5, 0.5) should be `{x: 0.35, y: 0.3, w: 0.3, h: 0.4}`
+# Arrow IPC
+df = pl.read_ipc("dataset.arrow")
 
-### Missing annotations after conversion
+# Parquet
+df = pl.read_parquet("dataset.parquet")
 
-- ✅ Check that JSON has `"annotations"` array
-- ✅ Verify sample `"image_name"` or `"name"` field exists
-- ✅ Ensure `"label_name"` field is present (not just `"label"`)
+# Access polygon data
+if "polygon" in df.columns:
+    for row in df.iter_rows(named=True):
+        if row["polygon"] is not None:
+            for ring in row["polygon"]:
+                # ring is [x1, y1, x2, y2, ...] interleaved
+                points = list(zip(ring[0::2], ring[1::2]))
 
-### NaN appearing in wrong places
+# Access raster mask data
+if "mask" in df.columns:
+    for row in df.iter_rows(named=True):
+        if row["mask"] is not None and row["size"] is not None:
+            width, height = row["size"]
+            png_bytes = row["mask"]  # bytes (PNG-encoded raster pixels)
 
-- ✅ Make sure mask polygons are properly separated
-- ✅ Check that coordinates are numbers, not strings
-- ✅ Verify polygon structure: `[[x1, y1], [x2, y2], ...]`
+# Access box2d — check format metadata
+# (Schema metadata access depends on Polars version; prefer the EdgeFirst Client SDK)
+if "box2d" in df.columns:
+    for row in df.iter_rows(named=True):
+        if row["box2d"] is not None:
+            # Default: [cx, cy, w, h] — check box2d_format metadata if available
+            cx, cy, w, h = row["box2d"]
 
----
+# Access timing instrumentation
+if "timing" in df.columns:
+    for row in df.iter_rows(named=True):
+        if row["timing"] is not None:
+            t = row["timing"]
+            load_ms = t["load"] / 1_000_000
+            inference_ms = t["inference"] / 1_000_000
+```
 
-## Further Reading
+### Reading Parquet with DuckDB
 
-- [Annotation Formats](formats.md) — Choose between Arrow and JSON
-- [Annotation Schema](schema.md) — Understand all field definitions
-- [Bounding Box Formats](box_format.md) — Deep dive into coordinate systems
+```python
+import duckdb
+
+# Count labels
+result = duckdb.sql("""
+    SELECT label, count(*) as count
+    FROM 'dataset.parquet'
+    GROUP BY label
+    ORDER BY count DESC
+""")
+print(result)
+
+# Filter by score
+result = duckdb.sql("""
+    SELECT name, label, box2d, box2d_score
+    FROM 'dataset.parquet'
+    WHERE box2d_score > 0.8
+""")
+```
+
+## JSON to DataFrame Conversion (2026.04)
+
+### Column Name Mapping
+
+| Arrow / Parquet column | JSON field | Notes |
+|------------------------|------------|-------|
+| `label` | `label_name` | Historical naming difference |
+| `group` | `group_name` | Historical naming difference |
+| `object_id` | `object_id` | 2026.04 uses `object_id` (not legacy `object_reference`) |
+| `polygon` | `polygon` | JSON: `[[x,y], ...]` pairs; Arrow: interleaved `[x,y,x,y,...]` |
+| `mask` | `mask` | Arrow: `Binary` (PNG bytes); JSON: base64-encoded PNG string |
+| `iscrowd` | `iscrowd` | `Boolean` (`true`/`false`) in both formats |
+| `category_frequency` | `category_frequency` | Same in both formats (`"f"`, `"c"`, `"r"`) |
+| `neg_label_indices` | `neg_label_indices` | Arrow: `List<UInt32>`; JSON: array of integers |
+| `not_exhaustive_label_indices` | `not_exhaustive_label_indices` | Arrow: `List<UInt32>`; JSON: array of integers |
+| `pose` | `sensors.imu` | Arrow: `[yaw, pitch, roll]`; JSON: `{yaw, pitch, roll}` object |
+| `location` | `sensors.gps` | Arrow: `[lat, lon]`; JSON: `{latitude, longitude}` object |
+
+File-level metadata keys (`mask_interpretation`, `category_metadata`, `box2d_format`, etc.)
+are not per-row columns. They are stored in the Arrow/Parquet schema metadata or in the
+JSON top-level object. See [File-Level Metadata](schema.md#file-level-metadata) for the
+full list.
+
+### Full Conversion Example
+
+```python
+import polars as pl
+import json, base64
+
+with open("annotations.json") as f:
+    data = json.load(f)
+
+if isinstance(data, list):
+    samples = data
+    box2d_format = "ltwh"       # JSON default is ltwh (COCO convention)
+else:
+    samples = data["samples"]
+    box2d_format = data.get("box2d_format", "ltwh")  # Arrow default is cxcywh; JSON default is ltwh
+
+rows = []
+for sample in samples:
+    size = [sample.get("width"), sample.get("height")]
+    for ann in sample.get("annotations", []):
+        row = {
+            "name": sample["image_name"].rsplit(".", 1)[0],
+            "frame": sample.get("frame_number"),
+            "object_id": ann.get("object_id"),
+            "label": ann["label_name"],
+            "label_index": ann.get("label_index"),
+            "group": sample.get("group_name"),
+        }
+
+        # Polygon: JSON [[x,y],...] per ring -> DataFrame [x,y,x,y,...] per ring
+        if ann.get("polygon"):
+            row["polygon"] = [
+                [coord for pt in ring for coord in pt]
+                for ring in ann["polygon"]
+            ]
+            row["polygon_score"] = ann.get("polygon_score")
+
+        # Mask: JSON base64 PNG -> DataFrame Binary (PNG bytes)
+        if ann.get("mask") and isinstance(ann["mask"], str):
+            row["mask"] = base64.b64decode(ann["mask"])  # PNG bytes
+            row["mask_score"] = ann.get("mask_score")
+
+        # Box2D: convert based on format metadata
+        if ann.get("box2d"):
+            b = ann["box2d"]
+            if box2d_format == "ltwh":
+                row["box2d"] = [b["x"] + b["w"]/2, b["y"] + b["h"]/2, b["w"], b["h"]]
+            elif box2d_format == "cxcywh":
+                row["box2d"] = [b["cx"], b["cy"], b["w"], b["h"]]
+            row["box2d_score"] = ann.get("box2d_score")
+
+        # Box3D: x,y,z are center coordinates (not corner)
+        if ann.get("box3d"):
+            b3 = ann["box3d"]
+            row["box3d"] = [b3["x"], b3["y"], b3["z"], b3["w"], b3["h"], b3["l"]]
+            row["box3d_score"] = ann.get("box3d_score")
+
+        # Annotation metadata (COCO/LVIS extensions)
+        if "iscrowd" in ann:
+            row["iscrowd"] = bool(ann["iscrowd"])  # ensure Boolean (handles legacy 0/1)
+        if "category_frequency" in ann:
+            row["category_frequency"] = ann["category_frequency"]
+
+        # Sample-level LVIS fields (repeated per annotation row)
+        if "neg_label_indices" in sample:
+            row["neg_label_indices"] = sample["neg_label_indices"]
+        if "not_exhaustive_label_indices" in sample:
+            row["not_exhaustive_label_indices"] = sample["not_exhaustive_label_indices"]
+
+        row["size"] = size
+        rows.append(row)
+
+df = pl.DataFrame(rows)
+df.write_ipc("annotations.arrow")       # Arrow IPC
+# df.write_parquet("annotations.parquet")  # or Parquet
+```
+
+### Key Conversions Summary
+
+| # | Conversion | Direction |
+|---|------------|-----------|
+| 1 | **Unnest**: one row per annotation | JSON to DataFrame |
+| 2 | **Column names**: `label_name` to `label`, `group_name` to `group` | JSON to DataFrame |
+| 3 | **Polygon**: `[[x,y],...]` point pairs to `[x,y,x,y,...]` interleaved | JSON to DataFrame |
+| 4 | **Mask**: base64 PNG string → `Binary` (PNG bytes) | JSON to DataFrame |
+| 5 | **Box2D**: check `box2d_format` — convert `ltwh` to `cxcywh` if needed | JSON to DataFrame |
+| 6 | **Box3D**: `{x,y,z,w,h,l}` to `[cx,cy,cz,w,h,l]` | JSON to DataFrame |
+| 7 | **GPS**: `{latitude, longitude}` to `[lat, lon]` | JSON to DataFrame |
+| 8 | **IMU**: `{yaw, pitch, roll}` to `[yaw, pitch, roll]` | JSON to DataFrame |
+| 9 | **Score columns**: omit entirely for ground truth files | Both |
+| 10 | **`neg_label_indices`** / **`not_exhaustive_label_indices`**: sample-level, repeated per annotation row | JSON to DataFrame |
+| 11 | **`label_index`**: preserved as-is (source-faithful, non-contiguous) | Both |
+| 12 | **`mask_interpretation`**: file-level metadata (`"binary"`, `"confidence"`, `"sigmoid"`, `"logits"`) — set on the Arrow schema, not per-row | Both |
+| 13 | **`category_metadata`**: file-level metadata — JSON-encoded string of per-label synset/synonyms/definition. Extract from LVIS `categories` array when importing; attach to Arrow schema metadata when writing. | Both |
+
+!!! tip "Use the EdgeFirst Client SDK"
+    The SDK handles all conversions automatically, including version detection and
+    backward compatibility. Direct conversion code is shown here for reference and
+    for users who need custom pipelines.

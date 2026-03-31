@@ -12,10 +12,10 @@
         <meta name="author" content="Au-Zone Technologies">
       
       
-        <link rel="canonical" href="https://doc.edgefirst.ai/test/models/validation/metrics/classifications/">
+        <link rel="canonical" href="https://doc.edgefirst.ai/test/models/validation/metrics/timing/">
       
       
-        <link rel="prev" href="../matching/">
+        <link rel="prev" href="../fusion/">
       
       
         <link rel="next" href="../../../deployment/pc/mpk/">
@@ -29,7 +29,7 @@
     
     
       
-        <title>Object Detection Classifications - EdgeFirst Studio Documentation</title>
+        <title>Timing Metrics - EdgeFirst Studio Documentation</title>
       
     
     
@@ -79,17 +79,17 @@
     
   
 <meta property="og:type" content="website" />
-<meta property="og:title" content="Object Detection Classifications - EdgeFirst Studio Documentation" />
+<meta property="og:title" content="Timing Metrics - EdgeFirst Studio Documentation" />
 <meta property="og:description" content="EdgeFirst Studio Documentation" />
-<meta property="og:image" content="https://doc.edgefirst.ai/test/assets/images/social/models/validation/metrics/classifications.png" />
+<meta property="og:image" content="https://doc.edgefirst.ai/test/assets/images/social/models/validation/metrics/timing.png" />
 <meta property="og:image:type" content="image/png" />
 <meta property="og:image:width" content="1200" />
 <meta property="og:image:height" content="630" />
-<meta property="og:url" content="https://doc.edgefirst.ai/test/models/validation/metrics/classifications/" />
+<meta property="og:url" content="https://doc.edgefirst.ai/test/models/validation/metrics/timing/" />
 <meta property="twitter:card" content="summary_large_image" />
-<meta property="twitter:title" content="Object Detection Classifications - EdgeFirst Studio Documentation" />
+<meta property="twitter:title" content="Timing Metrics - EdgeFirst Studio Documentation" />
 <meta property="twitter:description" content="EdgeFirst Studio Documentation" />
-<meta property="twitter:image" content="https://doc.edgefirst.ai/test/assets/images/social/models/validation/metrics/classifications.png" />
+<meta property="twitter:image" content="https://doc.edgefirst.ai/test/assets/images/social/models/validation/metrics/timing.png" />
 </head>
   
   
@@ -109,7 +109,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#object-detection-classifications" class="md-skip">
+        <a href="#timing-metrics" class="md-skip">
           Skip to content
         </a>
       
@@ -163,7 +163,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Object Detection Classifications
+              Timing Metrics
             
           </span>
         </div>
@@ -1060,6 +1060,8 @@
     
       
         
+          
+        
       
         
       
@@ -1085,8 +1087,9 @@
         <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_3_3" checked>
         
           
-          <label class="md-nav__link" for="__nav_5_3_3" id="__nav_5_3_3_label" tabindex="0">
-            
+          <div class="md-nav__link md-nav__container">
+            <a href="../" class="md-nav__link ">
+              
   
   
   <span class="md-ellipsis">
@@ -1100,8 +1103,14 @@
   
   
 
-            <span class="md-nav__icon md-icon"></span>
-          </label>
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_5_3_3" id="__nav_5_3_3_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
         
         <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_5_3_3_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_5_3_3">
@@ -1115,20 +1124,50 @@
           <ul class="md-nav__list" data-md-scrollfix>
             
               
+            
+              
                 
   
   
   
   
-    <li class="md-nav__item">
-      <a href="../detection/" class="md-nav__link">
+    
+    
+      
         
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../detection/" class="md-nav__link">
+      
   
   
   <span class="md-ellipsis">
     
   
-    Detection Metrics
+    Object Detection Metrics
   
 
     
@@ -1136,7 +1175,13 @@
   
   
 
-      </a>
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
     </li>
   
 
@@ -1202,34 +1247,6 @@
                 
   
   
-  
-  
-    <li class="md-nav__item">
-      <a href="../matching/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Matching and Classification Rules
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
     
   
   
@@ -1242,24 +1259,6 @@
         
       
       
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Object Detection Classifications
-  
-
-    
-  </span>
-  
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
       <a href="./" class="md-nav__link md-nav__link--active">
         
   
@@ -1267,7 +1266,7 @@
   <span class="md-ellipsis">
     
   
-    Object Detection Classifications
+    Timing Metrics
   
 
     
@@ -1276,92 +1275,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#definitions" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Definitions
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Definitions">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#intersection-over-union-iou" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Intersection Over Union (IoU)
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#classifications" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Classifications
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Classifications">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#example-cases" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Example Cases
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#further-reading" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Further Reading
-      
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
       
     </li>
   
@@ -1771,81 +1684,6 @@
     
   
   
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#definitions" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Definitions
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Definitions">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#intersection-over-union-iou" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Intersection Over Union (IoU)
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#classifications" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Classifications
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Classifications">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#example-cases" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Example Cases
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#further-reading" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Further Reading
-      
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
 </nav>
                   </div>
                 </div>
@@ -1914,7 +1752,7 @@
     
     
       <li class="md-path__item">
-        <a href="../detection/" class="md-path__link">
+        <a href="../" class="md-path__link">
           
   <span class="md-ellipsis">
     Model Metrics
@@ -1936,81 +1774,25 @@
 
 
 
-<h1 id="object-detection-classifications">Object Detection Classifications</h1>
-<p>This section describes how EdgeFirst Validator classifies the detections into true positives, false positives, and false negatives that allow computation of the validation metrics.</p>
-<h2 id="definitions">Definitions</h2>
-<h3 id="intersection-over-union-iou">Intersection Over Union (<abbr title="Intersection over Union">IoU</abbr>)</h3>
-<p>The <abbr title="Intersection over Union">IoU</abbr> is a ratio of the intersection area of the bounding boxes over the area of union.</p>
+<h1 id="timing-metrics">Timing Metrics</h1>
+<p>For each type of model validation (object detection, segmentation, fusion), the timing metrics are also reported.  These metrics provide an indication of the end-to-end pipeline latency when the model is deployed.  The timing measurements are based on three stages:</p>
+<ol>
+<li>Input Time: time measured to preprocess the inputs based on the model's requirements.  This can include input normalization, quantization, or transformations such as resizing, letterbox, or padding</li>
+<li>Inference Time: time measured to run the model for inference per sample</li>
+<li>Output Time: time measured to postprocess raw predictions.  This can include decoding and <abbr title="Non-Maximum Suppression">NMS</abbr></li>
+</ol>
+<p>The minimum, maximum, and average timings of each of these stages are represented as a bar chart as shown below.</p>
 <figure>
-  <img align="center" alt="IoU Visualization" src="../../../assets/metrics/iou_visualization.png" />
+  <img align="center" alt="Model Timings" src="../../../assets/metrics/model-timings.jpg" />
 <br />
-<figcaption>IoU Visualization</figcaption>
+<figcaption>Model Timings</figcaption>
 </figure>
-<!-- 
-$$
-\text{IoU} = \frac{(\text{X}_{\text{max,p}} - \text{X}_{\text{min,p}}) * (\text{Y}_{\text{max,g}} - \text{Y}_{\text{min,g}})}{(\text{X}_{\text{max,g}} - \text{X}_{\text{min,g}}) * (\text{Y}_{\text{max,g}} - \text{Y}_{\text{min,g}}) + (\text{X}_{\text{max,p}} - \text{X}_{\text{min,p}}) * (\text{Y}_{\text{max,p}} - \text{Y}_{\text{min,p}}) - intersection}
-$$ -->
-
-<p>Ideally for each prediction, there is an associated ground truth. Both the prediction bounding box (green) and the ground truth bounding box (blue) are drawn on the resulting image. However, the predicted and ground truth boxes may not match exactly. The <abbr title="Intersection over Union">IoU</abbr> measures how closely the predictions match the ground truth; values closer to 1 indicate a better match.</p>
+<p>Furthermore, the distribution of the average timings are represented as a pie chart.  This chart gives an indication of which stage of the pipeline takes the most time.</p>
 <figure>
-  <img align="center" alt="IoU Example" src="../../../assets/metrics/iou_example.png" />
+  <img align="center" alt="Average Timings" src="../../../assets/metrics/timing-distribution.jpg" />
 <br />
-<figcaption>IoU Example</figcaption>
+<figcaption>Average Timings</figcaption>
 </figure>
-<h3 id="classifications">Classifications</h3>
-<p>Model detections will be classified using the confusion matrix.</p>
-<figure>
-  <img align="center" alt="Classifications" src="../../../assets/metrics/classifications.png" />
-<br />
-<figcaption>Classifications</figcaption>
-</figure>
-<p><strong>True Positive</strong>: A true positive detection meets the following criteria.</p>
-<ul>
-<li>Model detections match the ground truth label.</li>
-<li>The calculated <abbr title="Intersection over Union">IoU</abbr> &gt;= <abbr title="Intersection over Union">IoU</abbr> threshold.</li>
-<li>The confidence score &gt;= score threshold.</li>
-</ul>
-<p><strong>False Positive</strong>:</p>
-<ul>
-<li>Classification: Model detections that do not match the ground truth label and the calculated <abbr title="Intersection over Union">IoU</abbr> is equal to or greater than the validation <abbr title="Intersection over Union">IoU</abbr> threshold.</li>
-<li>Localization: Model detections that are not matched to any ground truths.  These false positives can also be predictions that have an <abbr title="Intersection over Union">IoU</abbr> less than the validation <abbr title="Intersection over Union">IoU</abbr> threshold.</li>
-</ul>
-<p><strong>False Negative</strong>: These are missed detections.  Any ground truth bounding box without a predicted bounding box.</p>
-<p><strong>True Negative</strong>: This category is not used.</p>
-<h4 id="example-cases">Example Cases</h4>
-<p>This section will show examples of each of the classifications explained above.  For the cases below, the blue bounding box represents the ground truth and the red or the green bounding boxes represents the model detections.  Green represents a true positive detection whereas red represents a false positive detection.  The detection labels include the label, the confidence score denoted as a percentage, and the <abbr title="Intersection over Union">IoU</abbr> score normalized between 0 and 1.  Localization false positive detections will be denoted with the label 'LOC' and then the detection label and the confidence score.  Classification false positive detections will be denoted with the label 'CLF' and then the detection label, confidence score, and <abbr title="Intersection over Union">IoU</abbr>.</p>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>The image samples below are now deprecated in terms of the labeling format: "Extra" is now denoted as "LOC" and a misclassification includes a "CLF" (seen in EdgeFirst Validator 3.0.9 and higher).</p>
-</div>
-<figure>
-  <img align="center" alt="Example 1" src="../../../assets/metrics/classification_1.png" />
-<br />
-<figcaption>Example 1</figcaption>
-</figure>
-<ul>
-<li>The model predictions that are in green are true positives for the class 'three' because the prediction and the ground truth label match and the IoUs are greater than the set threshold of 0.50.</li>
-<li>The top left card 'three' only shows the ground truth in blue.  This is a false negative for the class 'three' since the model missed to predict this label.</li>
-<li>The model prediction that is in red is a classification false positive for the class 'ace' because it is paired to the ground truth, but the labels are not matching ('ace' and 'three').</li>
-</ul>
-<figure>
-  <img align="center" alt="Example 2" src="../../../assets/metrics/classification_2.png" />
-<br />
-<figcaption>Example 2</figcaption>
-</figure>
-<ul>
-<li>The model prediction that is in red would be a localization false positive for the class 'car' because it detected another car even though a prediction (car 93% 0.73) is already matched to the ground truth (blue).</li>
-</ul>
-<figure>
-  <img align="center" alt="Example 3" src="../../../assets/metrics/classification_3.png" />
-<br />
-<figcaption>Example 3</figcaption>
-</figure>
-<ul>
-<li>The model prediction that is in red would be classified as a localization false positive because the prediction does not correlate to any ground truth.  The person annotation on the top right shown in blue is a false negative because there are not pairing model predictions for this annotation.  The model predictions shown in green are true positives as it meets the requirements of a true positive described above.</li>
-</ul>
-<h2 id="further-reading">Further Reading</h2>
-<p>This page has described how EdgeFirst Validator classifies predictions into true positives, false positives (classification and localization), and false negatives.  To learn more about the rules governing the matching algorithm, please see <a href="../matching/">Matching and Classification Rules</a>.</p>
 
 
 
@@ -2100,7 +1882,7 @@ $$ -->
       <nav class="md-footer__inner md-grid" aria-label="Footer" >
         
           
-          <a href="../matching/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Matching and Classification Rules">
+          <a href="../fusion/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Fusion Metrics">
             <div class="md-footer__button md-icon">
               
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
@@ -2110,7 +1892,7 @@ $$ -->
                 Previous
               </span>
               <div class="md-ellipsis">
-                Matching and Classification Rules
+                Fusion Metrics
               </div>
             </div>
           </a>

@@ -12,31 +12,31 @@
         <meta name="author" content="Au-Zone Technologies">
       
       
-        <link rel="canonical" href="https://doc.edgefirst.ai/test/models/validation/metrics/fusion/">
+        <link rel="canonical" href="https://doc.edgefirst.ai/test/models/validation/metrics/">
       
       
-        <link rel="prev" href="../segmentation/">
+        <link rel="prev" href="../fusion/managed/">
       
       
-        <link rel="next" href="../timing/">
+        <link rel="next" href="detection/">
       
       
         
       
       
-      <link rel="icon" href="../../../../assets/favicon.png">
+      <link rel="icon" href="../../../assets/favicon.png">
       <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
     
     
       
-        <title>Fusion Metrics - EdgeFirst Studio Documentation</title>
+        <title>EdgeFirst Validation Metrics - EdgeFirst Studio Documentation</title>
       
     
     
-      <link rel="stylesheet" href="../../../../assets/stylesheets/main.484c7ddc.min.css">
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.484c7ddc.min.css">
       
         
-        <link rel="stylesheet" href="../../../../assets/stylesheets/palette.ab4e12ef.min.css">
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.ab4e12ef.min.css">
       
       
 
@@ -55,13 +55,13 @@
       
     
     
-      <link rel="stylesheet" href="../../../../assets/_mkdocstrings.css">
+      <link rel="stylesheet" href="../../../assets/_mkdocstrings.css">
     
-      <link rel="stylesheet" href="../../../../stylesheets/extra.css">
+      <link rel="stylesheet" href="../../../stylesheets/extra.css">
     
-      <link rel="stylesheet" href="../../../../stylesheets/mermaid.css">
+      <link rel="stylesheet" href="../../../stylesheets/mermaid.css">
     
-    <script>__md_scope=new URL("../../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
   
@@ -79,17 +79,17 @@
     
   
 <meta property="og:type" content="website" />
-<meta property="og:title" content="Fusion Metrics - EdgeFirst Studio Documentation" />
+<meta property="og:title" content="EdgeFirst Validation Metrics - EdgeFirst Studio Documentation" />
 <meta property="og:description" content="EdgeFirst Studio Documentation" />
-<meta property="og:image" content="https://doc.edgefirst.ai/test/assets/images/social/models/validation/metrics/fusion.png" />
+<meta property="og:image" content="https://doc.edgefirst.ai/test/assets/images/social/models/validation/metrics/index.png" />
 <meta property="og:image:type" content="image/png" />
 <meta property="og:image:width" content="1200" />
 <meta property="og:image:height" content="630" />
-<meta property="og:url" content="https://doc.edgefirst.ai/test/models/validation/metrics/fusion/" />
+<meta property="og:url" content="https://doc.edgefirst.ai/test/models/validation/metrics/" />
 <meta property="twitter:card" content="summary_large_image" />
-<meta property="twitter:title" content="Fusion Metrics - EdgeFirst Studio Documentation" />
+<meta property="twitter:title" content="EdgeFirst Validation Metrics - EdgeFirst Studio Documentation" />
 <meta property="twitter:description" content="EdgeFirst Studio Documentation" />
-<meta property="twitter:image" content="https://doc.edgefirst.ai/test/assets/images/social/models/validation/metrics/fusion.png" />
+<meta property="twitter:image" content="https://doc.edgefirst.ai/test/assets/images/social/models/validation/metrics/index.png" />
 </head>
   
   
@@ -109,7 +109,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#fusion-metrics" class="md-skip">
+        <a href="#edgefirst-validation-metrics" class="md-skip">
           Skip to content
         </a>
       
@@ -144,9 +144,9 @@
 
 <header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href="../../../.." title="EdgeFirst Studio Documentation" class="md-header__button md-logo" aria-label="EdgeFirst Studio Documentation" data-md-component="logo">
+    <a href="../../.." title="EdgeFirst Studio Documentation" class="md-header__button md-logo" aria-label="EdgeFirst Studio Documentation" data-md-component="logo">
       
-  <img src="../../../../assets/logo.png" alt="logo">
+  <img src="../../../assets/logo.png" alt="logo">
 
     </a>
     <label class="md-header__button md-icon" for="__drawer">
@@ -163,7 +163,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Fusion Metrics
+              EdgeFirst Validation Metrics
             
           </span>
         </div>
@@ -270,7 +270,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../../.." class="md-tabs__link">
+        <a href="../../.." class="md-tabs__link">
           
   
   
@@ -292,7 +292,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../../../studio/" class="md-tabs__link">
+        <a href="../../../studio/" class="md-tabs__link">
           
   
   
@@ -314,7 +314,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../../../3D/" class="md-tabs__link">
+        <a href="../../../3D/" class="md-tabs__link">
           
   
   
@@ -336,7 +336,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../../../datasets/" class="md-tabs__link">
+        <a href="../../../datasets/" class="md-tabs__link">
           
   
   
@@ -360,7 +360,7 @@
     
     
       <li class="md-tabs__item md-tabs__item--active">
-        <a href="../../../" class="md-tabs__link">
+        <a href="../../" class="md-tabs__link">
           
   
   
@@ -382,7 +382,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../../../perception/" class="md-tabs__link">
+        <a href="../../../perception/" class="md-tabs__link">
           
   
   
@@ -404,7 +404,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../../../platforms/" class="md-tabs__link">
+        <a href="../../../platforms/" class="md-tabs__link">
           
   
   
@@ -446,9 +446,9 @@
 
 <nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="../../../.." title="EdgeFirst Studio Documentation" class="md-nav__button md-logo" aria-label="EdgeFirst Studio Documentation" data-md-component="logo">
+    <a href="../../.." title="EdgeFirst Studio Documentation" class="md-nav__button md-logo" aria-label="EdgeFirst Studio Documentation" data-md-component="logo">
       
-  <img src="../../../../assets/logo.png" alt="logo">
+  <img src="../../../assets/logo.png" alt="logo">
 
     </a>
     EdgeFirst Studio Documentation
@@ -503,7 +503,7 @@
   
   
   
-    <a href="../../../.." class="md-nav__link">
+    <a href="../../.." class="md-nav__link">
       
   
   
@@ -578,7 +578,7 @@
   
   
   
-    <a href="../../../../studio/" class="md-nav__link">
+    <a href="../../../studio/" class="md-nav__link">
       
   
   
@@ -639,7 +639,7 @@
   
   
   
-    <a href="../../../../3D/" class="md-nav__link">
+    <a href="../../../3D/" class="md-nav__link">
       
   
   
@@ -702,7 +702,7 @@
   
   
   
-    <a href="../../../../datasets/" class="md-nav__link">
+    <a href="../../../datasets/" class="md-nav__link">
       
   
   
@@ -777,7 +777,7 @@
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../../" class="md-nav__link ">
+            <a href="../../" class="md-nav__link ">
               
   
   
@@ -845,7 +845,7 @@
   
   
   
-    <a href="../../../training/vision/" class="md-nav__link">
+    <a href="../../training/vision/" class="md-nav__link">
       
   
   
@@ -965,7 +965,7 @@
   
   
   
-    <a href="../../vision/managed/" class="md-nav__link">
+    <a href="../vision/managed/" class="md-nav__link">
       
   
   
@@ -1021,7 +1021,7 @@
   
   
   
-    <a href="../../fusion/managed/" class="md-nav__link">
+    <a href="../fusion/managed/" class="md-nav__link">
       
   
   
@@ -1088,7 +1088,7 @@
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="../" class="md-nav__link ">
+            <a href="./" class="md-nav__link md-nav__link--active">
               
   
   
@@ -1106,7 +1106,7 @@
             </a>
             
               
-              <label class="md-nav__link " for="__nav_5_3_3" id="__nav_5_3_3_label" tabindex="0">
+              <label class="md-nav__link md-nav__link--active" for="__nav_5_3_3" id="__nav_5_3_3_label" tabindex="0">
                 <span class="md-nav__icon md-icon"></span>
               </label>
             
@@ -1160,7 +1160,7 @@
   
   
   
-    <a href="../detection/" class="md-nav__link">
+    <a href="detection/" class="md-nav__link">
       
   
   
@@ -1194,7 +1194,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../segmentation/" class="md-nav__link">
+      <a href="segmentation/" class="md-nav__link">
         
   
   
@@ -1219,37 +1219,10 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Fusion Metrics
-  
-
-    
-  </span>
-  
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="fusion/" class="md-nav__link">
         
   
   
@@ -1265,159 +1238,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#base-metrics" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Base Metrics
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Base Metrics">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#precision" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Precision
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#recall" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Recall
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#f1-score" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        F1-Score
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#iou" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        IoU
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#precision-versus-recall" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Precision versus Recall
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#bev-heatmaps" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        BEV Heatmaps
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="BEV Heatmaps">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#true-positives-heatmap" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        True Positives Heatmap
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#false-negatives-heatmap" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        False Negatives Heatmap
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#false-positives-heatmap" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        False Positives Heatmap
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#ground-truth-heatmap" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Ground Truth Heatmap
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -1430,7 +1250,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../timing/" class="md-nav__link">
+      <a href="timing/" class="md-nav__link">
         
   
   
@@ -1506,7 +1326,7 @@
   
   
   
-    <a href="../../../deployment/pc/mpk/" class="md-nav__link">
+    <a href="../../deployment/pc/mpk/" class="md-nav__link">
       
   
   
@@ -1574,7 +1394,7 @@
   
   
   
-    <a href="../../../modelpack/" class="md-nav__link">
+    <a href="../../modelpack/" class="md-nav__link">
       
   
   
@@ -1610,7 +1430,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../metadata/" class="md-nav__link">
+      <a href="../../metadata/" class="md-nav__link">
         
   
   
@@ -1638,7 +1458,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../augmentations/" class="md-nav__link">
+      <a href="../../augmentations/" class="md-nav__link">
         
   
   
@@ -1666,7 +1486,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../cameraadaptor/" class="md-nav__link">
+      <a href="../../cameraadaptor/" class="md-nav__link">
         
   
   
@@ -1741,7 +1561,7 @@
   
   
   
-    <a href="../../../../perception/" class="md-nav__link">
+    <a href="../../../perception/" class="md-nav__link">
       
   
   
@@ -1808,7 +1628,7 @@
   
   
   
-    <a href="../../../../platforms/" class="md-nav__link">
+    <a href="../../../platforms/" class="md-nav__link">
       
   
   
@@ -1861,135 +1681,13 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#base-metrics" class="md-nav__link">
+  <a href="#glossary" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Base Metrics
+        Glossary
       
     </span>
   </a>
-  
-    <nav class="md-nav" aria-label="Base Metrics">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#precision" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Precision
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#recall" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Recall
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#f1-score" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        F1-Score
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#iou" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        IoU
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#precision-versus-recall" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Precision versus Recall
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#bev-heatmaps" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        BEV Heatmaps
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="BEV Heatmaps">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#true-positives-heatmap" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        True Positives Heatmap
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#false-negatives-heatmap" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        False Negatives Heatmap
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#false-positives-heatmap" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        False Positives Heatmap
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#ground-truth-heatmap" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Ground Truth Heatmap
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
@@ -2019,7 +1717,7 @@
     
     
       <li class="md-path__item">
-        <a href="../../../" class="md-path__link">
+        <a href="../../" class="md-path__link">
           
   <span class="md-ellipsis">
     Models
@@ -2042,7 +1740,7 @@
     
     
       <li class="md-path__item">
-        <a href="../../vision/managed/" class="md-path__link">
+        <a href="../vision/managed/" class="md-path__link">
           
   <span class="md-ellipsis">
     Model Validation
@@ -2063,7 +1761,7 @@
     
     
       <li class="md-path__item">
-        <a href="../" class="md-path__link">
+        <a href="./" class="md-path__link">
           
   <span class="md-ellipsis">
     Model Metrics
@@ -2085,102 +1783,76 @@
 
 
 
-<h1 id="fusion-metrics">Fusion Metrics</h1>
-<p>This section describes the validation metrics reported for <a href="../../fusion/managed/">Fusion Model Validation</a>.  These metrics are based on how well the model localizes the position of the objects from a BEV perspective based on incoming Radar and camera inputs.</p>
-<h2 id="base-metrics">Base Metrics</h2>
-<p>The Fusion validation sessions reports the metrics for precision, recall, F1-score, and <abbr title="Intersection over Union">IoU</abbr> represented as a bar chart.  Shown below is an example.  </p>
-<figure>
-  <img align="center" alt="Base Metrics" src="../../../assets/metrics/fusion-base-metrics.jpg" />
-<br />
-<figcaption>Base Metrics</figcaption>
-</figure>
-<p>By default, these metrics are calculated based on the kernel sizes 1x1 and 3x3 which can be configured when starting a new session (<em>See <a href="../../fusion/managed/#create-validation-session">Fusion Validation</a></em>).  The kernel size is the window size setting where a kernel size of 1x1 indicates a 1-to-1 match between the ground truth and the model occupancy grid.  A prediction can only be correct in a 1x1 kernel if the position of the prediction is in the same position as the ground truth.  However, increasing the kernel size increases leniency by allowing predictions to be correct if their positions are within 3 meters away (3x3 kernel) from the ground truth.  </p>
-<p>The metrics and their equations are described below.</p>
-<h3 id="precision">Precision</h3>
-<p>This metric is based on how well the model makes correct predictions.  In other words, out of the total predictions, how many of these predictions were correct.  The equation for precision is shown in the <a href="../#glossary">Glossary</a>.</p>
-<h3 id="recall">Recall</h3>
-<p>This metric is based on how well the model finds the ground truth.  In other words, out of the total ground truth, how many were found by the model.  The equation for recall shown in the <a href="../#glossary">Glossary</a>.</p>
-<h3 id="f1-score">F1-Score</h3>
-<p>This metric is based on both precision and recall.  It measures how well the model performs overall in terms of how well the model makes correct predictions and finds the ground truth.  The following table demonstrates the nature of the F1-score as a function of precision and recall.</p>
-<figure>
-  <img align="center" alt="F1-Score" src="../../../assets/metrics/F1-table.jpg" />
-<br />
-<figcaption>F1-Score</figcaption>
-</figure>
-<p>The table highlights how F1 is the average between precision and recall over the diagonal where both precision and recall are equal.  Furthermore, it also highlights how the F1-score needs both precision and recall to have very good scores in order to have a very good F1-score.  As an example, consider a recall of 0.90, but a precision of 0.10, the final value of the F1-score is 0.18 which is quite poor.  The same is true if the roles were switched where precision is 0.90, but recall is 0.10.  The nature of the F1-score indicates that a well performing model requires both precision and recall to be high.  </p>
-<p>It is also important to note that for certain use-cases precision is more important over recall and vice versa.  For example, an application in the farming industry for identifying good crops versus bad crops, one would argue that precision is more important than recall.  It would be better to miss a bad crop than to identify a good crop as a bad crop.  Another example for an application in safety that requires detection of people, one would argue that recall is more important than precision.  It is better to misidentify an object for being a person than to miss an actual person in the scene.</p>
-<p>The equation for the F1-score is shown below.</p>
-<div class="arithmatex">\[
-\text{F1-score} = \frac{2 * precision * recall}{precision + recall}
-\]</div>
-<h3 id="iou"><abbr title="Intersection over Union">IoU</abbr></h3>
-<p>This metric is defined as the intersection over union.  It also measures how well the model performs overall by comparing the amount of correct predictions over the total amount of ground truths and the model predictions.  This metric, however, is not as lenient as the F1-score as demonstrated by the following table.</p>
-<figure>
-  <img align="center" alt="IoU Score" src="../../../assets/metrics/iou-table.jpg" />
-<br />
-<figcaption>IoU Score</figcaption>
-</figure>
-<p>Along the diagonal, it is easier to see why the <abbr title="Intersection over Union">IoU</abbr> metric is not as lenient as the F1-score.  It shows how for an equal value of precision and recall, the final <abbr title="Intersection over Union">IoU</abbr> score is lower than the average.  For example, a precision of 0.10 and a recall of 0.10, the <abbr title="Intersection over Union">IoU</abbr> is 0.05 which is half of the average value.  The scores are always lower than the average between the precision and recall, but as both precision and recall increases, the final <abbr title="Intersection over Union">IoU</abbr> score approaches the average, but still does not reach it.  Furthermore, the <abbr title="Intersection over Union">IoU</abbr> scores also requires both precision and recall to have very high scores in order for the <abbr title="Intersection over Union">IoU</abbr> to have a very high score.  For example, if recall is 0.90 and precision is 0.10, the final <abbr title="Intersection over Union">IoU</abbr> score is 0.10.  The same is true if precision is 0.90 and recall is 0.10.  This shows that a well performing model have very good scores for both precision and recall.  </p>
-<p>The equation for the <abbr title="Intersection over Union">IoU</abbr> score is shown below.</p>
-<div class="arithmatex">\[
-\text{IoU} = \frac{\text{intersection}}{\text{union}} = \frac{\text{true positives}}{\text{true positives} + \text{false positives} + \text{false negatives}}
-\]</div>
-<h2 id="precision-versus-recall">Precision versus Recall</h2>
-<p>The Precision versus Recall curve is based on varying detection thresholds from 0 to 1 in 0.05 steps.  The principle in practice is that for lower thresholds precision is low, but recall is high and as the threshold increases, precision increases and recall decreases.  This shows the tradeoff between precision and recall.  The nature of this tradeoff is due to increased detections at low threshold thus capturing more ground truths (high recall) but much more prone to false predictions (low precision).  The opposite is true for high thresholds.  A well performing model shows a high area under the curve of the Precision versus Recall curve.  </p>
-<figure>
-  <img align="center" alt="Precision versus Recall" src="../../../assets/metrics/fusion-precision-v-recall.jpg" />
-<br />
-<figcaption>Precision versus Recall</figcaption>
-</figure>
-<p>Another representation of the Precision versus Recall is to incorporate the varying threshold in the plot.  The following curve shows the "Precision and Recall versus Thresholds" curve.  At lower thresholds, precision is low and recall is high.  By increasing the threshold, we can see precision and recall converge.  The point of convergence indicates the ideal threshold to use for deploying the model.  This is the optimum threshold where precision and recall are balanced such that one is not sacrificing the other.  This threshold can be used for maximum model performance.</p>
-<figure>
-  <img align="center" alt="Precision and Recall vs Thresholds" src="../../../assets/metrics/fusion-precision-recall-thresholds.jpg" />
-<br />
-<figcaption>Precision and Recall vs Thresholds</figcaption>
-</figure>
-<h2 id="bev-heatmaps">BEV Heatmaps</h2>
-<p>There are four BEV heatmaps generated during validation.  The heatmaps are a representation of the occupancy grid that is the output of the Fusion model.  This occupancy grid is the field of view of the model that represents positions of the scene in meters.  The BEV heatmaps provides indications where the model is generally making right or wrong predictions.  Furthermore, the heatmaps also indicate how the ground truth is distributed across the dataset.  </p>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>On a cell by cell basis, the sum of true positive, false positive, and false negative rates equals 1.</p>
-</div>
-<h3 id="true-positives-heatmap">True Positives Heatmap</h3>
-<figure>
-  <img align="center" alt="True Positive Heatmap" src="../../../assets/metrics/tp-heatmap.jpg" />
-<br />
-<figcaption>True Positive Heatmap</figcaption>
-</figure>
-<p>The measurement is based on each cell.  For each cell, what % of the sum of true positives, false positives, and false negatives were true positives.  In other words, this metric indicates how many predictions were correct in this position.  The equation for this heatmap is the following. </p>
-<div class="arithmatex">\[
-\text{cell outcome} = \frac{\text{true positives}}{\text{true positives} + \text{false positives} + \text{false negatives}}
-\]</div>
-<h3 id="false-negatives-heatmap">False Negatives Heatmap</h3>
-<figure>
-  <img align="center" alt="False Negative Heatmap" src="../../../assets/metrics/fn-heatmap.jpg" />
-<br />
-<figcaption>False Negative Heatmap</figcaption>
-</figure>
-<p>The measurement is based on each cell.  For each cell, what % of the sum of true positives, false positives, and false negatives were false negatives.  In other words, this metric indicates how many objects did the model miss in this position.  The equation for this heatmap is the following.</p>
-<div class="arithmatex">\[
-\text{cell outcome} = \frac{\text{false negatives}}{\text{true positives} + \text{false positives} + \text{false negatives}}
-\]</div>
-<h3 id="false-positives-heatmap">False Positives Heatmap</h3>
-<figure>
-  <img align="center" alt="False Positive Heatmap" src="../../../assets/metrics/fp-heatmap.jpg" />
-<br />
-<figcaption>False Positive Heatmap</figcaption>
-</figure>
-<p>This measurement is based on each cell.  For each cell, what % of the sum of true positives, false positives, and false negatives were false positives.  In other words, this metric indicates how many predictions were incorrect.  The equation for this heatmap is the following.</p>
-<div class="arithmatex">\[
-\text{cell outcome} = \frac{\text{false positives}}{\text{true positives} + \text{false positives} + \text{false negatives}}
-\]</div>
-<h3 id="ground-truth-heatmap">Ground Truth Heatmap</h3>
-<figure>
-  <img align="center" alt="Ground Truth Heatmap" src="../../../assets/metrics/gt-heatmap.jpg" />
-<br />
-<figcaption>Ground Truth Heatmap</figcaption>
-</figure>
-<p>This measurement is purely based on the ground truth counts.  This heatmap provides indications of the concentration of samples in the dataset.  This heatmap has no equation, it is the collection of ground truth counts throughout the experiment.  From the figure above, we can see that most ground truth samples are more concentrated towards the middle front.</p>
+<h1 id="edgefirst-validation-metrics">EdgeFirst Validation Metrics</h1>
+<p>The EdgeFirst Validation metrics report the accuracy and timing performance of object detection, segmentation, and fusion models.  The <a href="https://pypi.org/project/edgefirst-validator/">EdgeFirst Validator</a> performs the model validation hosted in <a href="https://edgefirst.studio/">EdgeFirst Studio</a> to compute the metrics described in this section.</p>
+<p>Validation evaluates a model’s performance before deployment to determine whether it is ready for real-world application.  It measures how the model performs across a range of settings (such as <abbr title="Non-Maximum Suppression">NMS</abbr> score thresholds and <abbr title="Intersection over Union">IoU</abbr> thresholds) and identifies the optimal configuration that yields the best overall performance.</p>
+<p>At this optimal setting, validation summarizes model accuracy by reporting how many predictions are correct, incorrect, or missed.  In addition to accuracy, it also measures performance characteristics such as inference time, as well as preprocessing and postprocessing latency, to estimate the total runtime of the deployment pipeline.</p>
+<p>In short, validation determines both the <strong>best operating configuration</strong> and whether the model meets the accuracy and performance requirements for deployment.</p>
+<pre class="mermaid"><code>graph TB
+    subgraph Metrics["📊 EdgeFirst Validation Metrics"]
+        direction TB
+        Detection["📦 Object Detection"]
+        Segmentation["🧩 Segmentation"]
+        Fusion["🔀 Fusion"]
+    end
+    
+    Detection --&gt; |"Bounding Boxes"| Curve["📈 Full-Curve Metrics"]
+    Curve --&gt; |"Optimal NMS Parameters"| Deployment["🚀 Deployment Metrics"]
+
+    Segmentation --&gt; |"Bounding Boxes, Instance Masks"| Instance["🧱 Instance Segmentation"]
+    Segmentation --&gt; |"Semantic Masks"| Semantic["🗺️ Semantic Segmentation"]
+    Instance --&gt; Curve
+    Semantic --&gt; Pixel["📐 Semantic Metrics"]
+
+    Fusion --&gt; |"BEV Occupancy Grid"| Occupancy["🌐 Fusion Metrics"]
+    
+    style Metrics fill:#e1f5ff,stroke:#0277bd,stroke-width:3px
+    style Detection fill:#fff3e0,stroke:#ef6c00,stroke-width:2px
+    style Segmentation fill:#f3e5f5,stroke:#7b1fa2,stroke-width:2px
+    style Fusion fill:#e8f5e9,stroke:#2e7d32,stroke-width:2px</code></pre>
+<p>This section describes the metrics for <a href="detection/">object detection</a> which assess how well the model detects objects in the image through bounding boxes.  This measurement is based on how well the prediction bounding boxes aligns with the ground truth (dataset) bounding boxes.  These metrics are categorized into <strong>Full-Curve Metrics</strong> and <strong>Deployment Metrics</strong>.  The Full-Curve metrics assess how well the model performs across varying <abbr title="Non-Maximum Suppression">NMS</abbr> score and <abbr title="Intersection over Union">IoU</abbr> thresholds.  The Deployment Metrics assess how well the model performs at the optimal <abbr title="Non-Maximum Suppression">NMS</abbr> settings. </p>
+<p>Furthermore, this section also describes the <a href="segmentation/">segmentation metrics</a> which is categorized into <strong>Instance</strong> and <strong>Semantic</strong> Segmentation.  Instance segmentation tracks each object separately and its metrics are similar to object detection, but it also assess how well the model segments the objects in the image.  This type of metrics requires both bounding boxes and segmentation masks from the model and the ground truth (dataset).  Semantic segmentation classifies each pixel in the image that belong to a specific class. These metrics assess how well the model segments the objects in the image and it requires only segmentation masks from the model and the ground truth (dataset).</p>
+<p>Lastly, the <a href="fusion/">Fusion metrics</a> validates the performance of EdgeFirst Fusion models which assess how well the model localizes the objects in world coordinates in a BEV perspective. Fusion models are trained by combining data from the camera and perception sensors such as the <abbr title="Light Detection and Ranging">LiDAR</abbr> or Radar to enhance the model's detection capabilities especially under adverse weather conditions. More information can be found under <a href="../../fusion/">Fusion</a>.</p>
+<h2 id="glossary">Glossary</h2>
+<p>Common terms and definitions frequently used throughout this section.</p>
+<table>
+<thead>
+<tr>
+<th><strong>Term</strong></th>
+<th><strong>Definition</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>True Positive</strong></td>
+<td>Correct model predictions.  The model prediction label matches the ground truth label.  For object detection, the <abbr title="Intersection over Union">IoU</abbr> and confidence scores must meet the threshold requirements.</td>
+</tr>
+<tr>
+<td><strong>False Positive</strong></td>
+<td>Incorrect model predictions.  The model prediction label does not match the ground truth label.</td>
+</tr>
+<tr>
+<td><strong>False Negative</strong></td>
+<td>The absence of model predictions.  For cases where the ground truth is a positive class, but the model prediction is a negative class (background).</td>
+</tr>
+<tr>
+<td><strong>Precision</strong></td>
+<td>Proportion of correct predictions over total predictions.  <span class="arithmatex">\(\text{precision} = \frac{\text{true positives}}{\text{true positives} + \text{false positives}}\)</span></td>
+</tr>
+<tr>
+<td><strong>Recall</strong></td>
+<td>Proportion of correct predictions over total ground truth.  <span class="arithmatex">\(\text{recall} = \frac{\text{true positives}}{\text{true positives} + \text{false negatives}}\)</span></td>
+</tr>
+<tr>
+<td><strong>Accuracy</strong></td>
+<td>Proportion of correct predictions over the union of total predictions and ground truth.  <span class="arithmatex">\(\text{accuracy} = \frac{\text{true positives}}{\text{true positives} + \text{false negatives} + \text{false positives}}\)</span></td>
+</tr>
+<tr>
+<td><strong><abbr title="Intersection over Union">IoU</abbr></strong></td>
+<td>The intersection over union.  <span class="arithmatex">\(\text{IoU} = \frac{\text{intersection}}{\text{union}} = \frac{\text{true positives}}{\text{true positives} + \text{false positives} + \text{false negatives}}\)</span></td>
+</tr>
+</tbody>
+</table>
 
 
 
@@ -2270,7 +1942,7 @@
       <nav class="md-footer__inner md-grid" aria-label="Footer" >
         
           
-          <a href="../segmentation/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Segmentation Metrics">
+          <a href="../fusion/managed/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Validating Fusion Models">
             <div class="md-footer__button md-icon">
               
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
@@ -2280,20 +1952,20 @@
                 Previous
               </span>
               <div class="md-ellipsis">
-                Segmentation Metrics
+                Validating Fusion Models
               </div>
             </div>
           </a>
         
         
           
-          <a href="../timing/" class="md-footer__link md-footer__link--next" aria-label="Next: Timing Metrics">
+          <a href="detection/" class="md-footer__link md-footer__link--next" aria-label="Next: Object Detection Metrics">
             <div class="md-footer__title">
               <span class="md-footer__direction">
                 Next
               </span>
               <div class="md-ellipsis">
-                Timing Metrics
+                Object Detection Metrics
               </div>
             </div>
             <div class="md-footer__button md-icon">
@@ -2426,10 +2098,10 @@
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": "../../../..", "features": ["content.code.copy", "content.code.annotate", "content.tabs.link", "navigation.instant", "navigation.tracking", "navigation.tabs", "navigation.tabs.sticky", "navigation.path", "navigation.indexes", "navigation.top", "navigation.footer", "navigation.prune", "toc.follow", "search.suggest", "search.highlight"], "search": "../../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"alias": true, "default": "latest", "provider": "mike"}}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["content.code.copy", "content.code.annotate", "content.tabs.link", "navigation.instant", "navigation.tracking", "navigation.tabs", "navigation.tabs.sticky", "navigation.path", "navigation.indexes", "navigation.top", "navigation.footer", "navigation.prune", "toc.follow", "search.suggest", "search.highlight"], "search": "../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"alias": true, "default": "latest", "provider": "mike"}}</script>
     
     
-      <script src="../../../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      <script src="../../../assets/javascripts/bundle.79ae519e.min.js"></script>
       
         <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
       

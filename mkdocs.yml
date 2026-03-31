@@ -57,6 +57,8 @@ exclude_docs: |
   /discrete
 
 plugins:
+  - macros:
+      module_name: macros
   - awesome-nav:
   - autorefs:
   - search:
@@ -132,6 +134,7 @@ extra_css:
   - stylesheets/mermaid.css
 
 extra:
+  show_image_paths: true
   version:
     default: latest
     provider: mike

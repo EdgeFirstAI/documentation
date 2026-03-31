@@ -1,223 +1,88 @@
 # Sensor Data
 
-This page describes the different sensor data types that EdgeFirst datasets can contain: camera images, radar point clouds and data cubes, and LiDAR data.
+Sensor data is always stored **external** to the annotation file. Arrow, Parquet, and
+JSON files contain annotations only — sensor data lives in sibling folders or
+ZIP files.
 
-## How Sensor Data Gets Into Datasets
+## Sensor Types
 
-Sensor data typically flows through this pipeline:
+| Sensor | Extension | Notes |
+|--------|-----------|-------|
+| Camera | `.camera.jpeg`, `.camera.png` | JPEG (default) or PNG (lossless) |
+| Radar cube | `.radar.png` | 16-bit PNG encoding of complex int16 data |
+| Radar PCD | `.radar.pcd` | Point cloud data |
+| LiDAR PCD | `.lidar.pcd` | Point cloud data |
 
-```mermaid
-flowchart TD
-    A["📹 Device Recording<br>(Raivin/Maivin)"] -->|"ROS2 topics"| B["📦 MCAP File"]
-    B -->|"Upload"| C["☁️ Snapshot"]
-    C -->|"Restore"| D["🗂️ Dataset"]
-    D -->|"Create Snapshot"| E["☁️ Snapshot"]
-    E -->|"Download"| F["📥 ZIP + Arrow"]
-```
+!!! warning "Removed in 2026.04"
+    The `.lidar.png` (depth map) and `.lidar.jpeg` (reflectivity) projected visualization
+    formats have been **removed** from the format specification in 2026.04.
+    The SDK retains read support for backward compatibility but will not write these types.
+    Consumers that need depth or reflectivity images should project LiDAR PCD data directly.
 
-1. **Recording**: [Raivin or Maivin devices](../../perception/data_collection/recording.md) record sensor data as ROS2 topics into MCAP files
-2. **Upload**: MCAP files are [uploaded as snapshots](../../perception/data_collection/publishing.md) to EdgeFirst Studio  
-3. **Restore**: Snapshots are [restored into datasets](../../studio/snapshots.md#restore-snapshot), converting MCAP topics to discrete sensor files
-4. **Create Snapshot**: Datasets can be [exported as snapshots](../../studio/snapshots.md#create-snapshot) for download
-5. **Download**: Snapshots are downloaded as ZIP + Arrow file pairs in the [EdgeFirst Dataset Format](index.md)
+## Camera
 
-!!! tip "Snapshots contain sensor data"
-    When you [download a snapshot](../../studio/snapshots.md#download-snapshot), the ZIP file contains all the sensor data (images, point clouds, etc.) organized by sequence and frame.
+**Format**: JPEG (default) or PNG (lossless)
 
-## Overview
+**Source**: H.265 video from MCAP converted to discrete frames
 
-EdgeFirst datasets support multiple sensor types that are captured simultaneously and stored together:
+**EXIF metadata** (embedded in images):
 
-```mermaid
-graph TB
-    subgraph Dataset["🗂️ EdgeFirst Dataset"]
-        direction TB
-        Sensors["📦 Sensor Container"]
-    end
-    
-    Sensors --> Camera["📷 Camera - JPEG/PNG Images"]
-    Sensors --> Radar["📡 Radar - Point Clouds + Data Cubes"]
-    Sensors --> LiDAR["🔦 LiDAR - Point Clouds + Visualizations"]
-    Sensors --> Depth["📊 Depth - Depthmaps (Optional)"]
-    
-    style Dataset fill:#e1f5ff,stroke:#0277bd,stroke-width:2px
-    style Sensors fill:#fff3e0,stroke:#ef6c00,stroke-width:2px
-    style Camera fill:#c8e6c9,stroke:#388e3c,stroke-width:2px
-    style Radar fill:#bbdefb,stroke:#1976d2,stroke-width:2px
-    style LiDAR fill:#f8bbd0,stroke:#c2185b,stroke-width:2px
-    style Depth fill:#e1bee7,stroke:#6a1b9a,stroke-width:2px
-```
+- GPS coordinates (from MCAP `/gps` topic or NavSat)
+- Capture timestamp
+- Camera parameters
+- Device information
 
-## Camera Data
+**File extensions**:
 
-### File Format
+- `.camera.jpeg` — camera image (default)
+- `.camera.png` — camera image (lossless)
+- `.jpg`, `.png` — generic image formats
 
-- **Default**: JPEG (`.camera.jpeg`) — good compression, standard format
-- **Lossless**: PNG (`.camera.png`) — when exact pixel preservation needed
-- **Encoding**: H.265 from MCAP → converted to discrete frames during dataset creation
+## Radar
 
-### File Naming
+### Point Cloud Data
 
-```text
-{sequence_name}_{frame_number}.camera.jpeg
-```
+**Format**: PCD (Point Cloud Data)
 
-Example:
-
-```text
-system_2025_01_15_143022_001.camera.jpeg
-system_2025_01_15_143022_002.camera.jpeg
-```
-
-### EXIF Metadata
-
-Camera images embed metadata in EXIF tags:
-
-- **GPS coordinates**: Latitude, longitude (from MCAP NavSat topic)
-- **Timestamp**: When the frame was captured
-- **Camera parameters**: Intrinsic calibration (if available)
-- **Device info**: Device/system identifier
-
-This metadata is automatically extracted and stored in the [Annotation Schema](schema.md) as `location` field.
-
-### Typical Use Case
-
-Primary input for:
-
-- Object detection models
-- Segmentation masks (pixel-level)
-- Visual analysis and auditing
-- 2D bounding box annotations
-
----
-
-## Radar Data
-
-Radar provides two complementary representations:
-
-```mermaid
-graph TB
-    subgraph Radar["📡 Radar Data"]
-        direction TB
-        PCD["Point Cloud (x, y, z, speed, power, ...)"]
-        Cube["Data Cube (Range-Doppler Matrix)"]
-    end
-    
-    PCD -->|"Useful for"| PC_Use["🎯 Annotation - Spatial visualization"]
-    Cube -->|"Useful for"| Cube_Use["🤖 Training - Fusion models"]
-    
-    style PCD fill:#bbdefb,stroke:#1976d2,stroke-width:2px
-    style Cube fill:#c8e6c9,stroke:#388e3c,stroke-width:2px
-    style PC_Use fill:#fff9c4,stroke:#f57f17,stroke-width:2px
-    style Cube_Use fill:#fff9c4,stroke:#f57f17,stroke-width:2px
-```
-
-### Point Cloud (`.radar.pcd`)
-
-**Format**: PCD (Point Cloud Data) — standard format for 3D point clouds
+**Extension**: `.radar.pcd`
 
 **Fields**:
 
-- `x, y, z`: Cartesian position in meters (relative to vehicle)
-- `speed`: Doppler velocity (m/s)
-- `power`: Signal power
-- `noise`: Noise level
-- `rcs`: Radar cross-section
-
-**File naming**:
-
-```text
-{sequence_name}_{frame_number}.radar.pcd
+```
+x, y, z          # Cartesian position (meters)
+speed            # Velocity (m/s)
+power            # Signal power
+noise            # Noise level
+rcs              # Radar cross-section
 ```
 
-**Typical use**:
+### Radar Data Cube
 
-- Visualize spatial detections during annotation
-- Verify camera detections against radar
-- Point cloud-based 3D object detection
+**Format**: 16-bit PNG (lossless encoding of complex int16 data)
 
-**Example reading** (Python):
-
-```python
-import open3d as o3d
-
-pcd = o3d.io.read_point_cloud("frame_001.radar.pcd")
-points = np.asarray(pcd.points)
-print(f"Points: {len(points)}")  # Number of radar returns
-```
-
-### Data Cube (`.radar.png`)
-
-**Format**: 16-bit PNG (lossless encoding)
-
-**What it is**: Range-Doppler matrix representing raw radar signal
+**Extension**: `.radar.png`
 
 **Dimensions**: `[sequence, rx_antenna, range_bins, doppler_bins]`
 
 **Typical shape**: `[2, 4, 200, 256]`
 
-- 2 sequences (transmit sequences)
-- 4 RX antennas
-- 200 range bins
-- 256 doppler bins
+**PNG encoding**:
 
-**PNG Encoding**:
+- 4 x 2 grid layout (4 columns = RX antennas, 2 rows = sequences)
+- Complex int16 split into pair of int16 values (PNG does not support complex)
+- **int16 shifted to uint16** for PNG storage (shift back to int16 for processing)
+- Double-width matrices (complex pairs)
+- **Output size**: 2048 x 400 pixels for standard cube
 
-The 4D array is laid out as a 4×2 grid in the PNG:
-
-```text
-PNG Image Layout (simplified):
-┌─────────────────────────────────┐
-│  Seq1  │  Seq1  │  Seq1  │  Seq1│  Row 1: 4 columns
-│  RxA0  │  RxA1  │  RxA2  │  RxA3│
-├─────────────────────────────────┤
-│  Seq2  │  Seq2  │  Seq2  │  Seq2│  Row 2: 4 columns
-│  RxA0  │  RxA1  │  RxA2  │  RxA3│
-└─────────────────────────────────┘
-
-Each cell contains:
-- X-axis: 2× doppler bins (complex int16 → two int16 for real/imaginary)
-- Y-axis: range bins
-```
-
-**Complex data storage**:
-
-- Original: Complex int16 values
-- PNG format: Split into real/imaginary pairs (doesn't support complex numbers)
-- Width doubled to accommodate: `4 * 2 * 256 = 2048` pixels
-- Height: `2 * 200 = 400` pixels
-
-**Final image size**: 2048×400 pixels (for typical configuration)
-
-**File naming**:
-
-```text
-{sequence_name}_{frame_number}.radar.png
-```
-
-**Important notes**:
-
-- Wide dynamic range (most data near zero)
-- Difficult to visualize directly (consider log scaling)
-- Lossless conversion (no information lost)
-
-**Typical use**:
-
-- Training fusion models that consume low-level radar data
-- Radar signal analysis and research
-
----
-
-## LiDAR Data
-
-### Point Cloud (`.lidar.pcd`)
+## LiDAR
 
 **Format**: PCD (Point Cloud Data)
 
-**Configuration**: Based on Maivin MCAP Recorder settings (specifics subject to configuration)
+**Extension**: `.lidar.pcd`
 
-**File naming**:
+**Configuration**: Based on Maivin MCAP Recorder settings.
 
+<<<<<<< HEAD
 ```text
 {sequence_name}_{frame_number}.lidar.pcd
 ```
@@ -349,3 +214,10 @@ for seq, files in sequences.items():
 - [Platform Recording](../../perception/data_collection/recording.md) — How sensor data is recorded on Raivin/Maivin
 - [Publishing Workflows](../../perception/data_collection/publishing.md) — How to upload MCAP recordings as snapshots
 - [Snapshots Dashboard](../../studio/snapshots.md) — How to download and restore snapshots
+=======
+!!! note "Projected visualizations removed"
+    Prior versions of EdgeFirst supported `.lidar.png` (depth map) and `.lidar.jpeg`
+    (reflectivity) files that contained 2D projections of LiDAR point cloud data.
+    These have been removed in 2026.04. If your pipeline requires depth or reflectivity
+    images, project the PCD data using the LiDAR sensor calibration parameters.
+>>>>>>> test

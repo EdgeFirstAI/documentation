@@ -35,7 +35,7 @@ Once the validation session completes, you can view the validation metrics by cl
 {{ figure("../../assets/validation/vision-charts.jpg", "Validation Charts") }}
 
 !!! info
-    See [detection](../metrics/detection.md) and [segmentation](../metrics/segmentation.md) metrics for further details.
+    See [detection](../metrics/detection/index.md) and [segmentation](../metrics/segmentation.md) metrics for further details.
 
 You can go back to the validation session card by pressing the "Back" button as indicated in red below on the top left corner of the page.
 

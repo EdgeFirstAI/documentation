@@ -11,3 +11,4 @@ pillow
 cairosvg
 black
 mkdocs-macros-plugin
+click==8.2.1

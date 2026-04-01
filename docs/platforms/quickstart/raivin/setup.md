@@ -28,7 +28,7 @@ The Raivin box contains the following items:
 After all that, you should see the [Raivin Main Page](webui.md).
 
 <figure markdown="span">
-![Raivin Main Page](../../assets/setup/quickStart-mainPage.png){align=center}.  
+![Raivin Main Page](../../assets/setup/quickStart-mainPage.png){align=center} 
 <figcaption>Raivin Main Page</figcaption>
 </figure>
 

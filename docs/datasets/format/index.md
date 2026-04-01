@@ -1,30 +1,9 @@
 # Dataset Format Overview
 
-<<<<<<< HEAD
-The EdgeFirst Dataset Format is designed to handle multi-sensor datasets with rich annotations. It separates **sensor data** (immutable) from **annotation data** (dynamic), allowing both to be managed independently and efficiently.
-
-!!! tip "When Do You Need This?"
-    **Most users can skip these details.** EdgeFirst Studio handles dataset formats automatically when you:
-
-    - Record MCAP files on a [Raivin platform](../../perception/data_collection/recording.md) and [publish them as snapshots](../../perception/data_collection/publishing.md)
-    - [Import existing datasets](../tutorials/import.md) through the Studio UI
-    - [Export datasets](../../studio/datasets/index.md#export-dataset) for offline use
-    - Train models using [ModelPack](../../models/modelpack/index.md) or [Ultralytics](../../models/ultralytics/index.md)
-    
-    This chapter is for users who need to:
-    
-    - Build custom ML pipelines outside of Studio
-    - Integrate EdgeFirst datasets with third-party tools
-    - Programmatically generate or modify annotations
-    - Understand the data structures for advanced debugging
-
-## Overview
-=======
 The EdgeFirst Dataset Format provides a structured, self-describing representation for
 multi-sensor annotations. Version **2026.04** introduces Parquet support, polygon geometry,
 raster masks, confidence scores, and file-level metadata that makes every file interpretable
 without external context.
->>>>>>> test
 
 ```mermaid
 graph TB

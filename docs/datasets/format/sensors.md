@@ -19,15 +19,7 @@ ZIP files.
     The SDK retains read support for backward compatibility but will not write these types.
     Consumers that need depth or reflectivity images should project LiDAR PCD data directly.
 
-<<<<<<< HEAD
-1. **Recording**: [Raivin or Maivin devices](../../perception/data_collection/recording.md) record sensor data as ROS2 topics into MCAP files
-2. **Upload**: MCAP files are [uploaded as snapshots](../../perception/data_collection/publishing.md) to EdgeFirst Studio  
-3. **Restore**: Snapshots are [restored into datasets](../../studio/snapshots.md#restore-snapshot), converting MCAP topics to discrete sensor files
-4. **Create Snapshot**: Datasets can be [exported as snapshots](../../studio/snapshots.md#create-snapshot) for download
-5. **Download**: Snapshots are downloaded as ZIP + Arrow file pairs in the [EdgeFirst Dataset Format](index.md)
-=======
 ## Camera
->>>>>>> test
 
 **Format**: JPEG (default) or PNG (lossless)
 

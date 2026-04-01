@@ -91,10 +91,7 @@ $ edgefirst-client create-snapshot /media/DATA/verdin-imx8mp-15141091_2025_01_31
 
 The created snapshot will be listed under the "Data Snapshots" page in EdgeFirst Studio
 
-<figure markdown="span">
-![Created Snapshot](assets/studio-created-snapshot.jpg){ align=center }
-<figcaption>Created Snapshot</figcaption>
-</figure>
+{{ figure("assets/studio-created-snapshot.jpg", "Created Snapshot") }}
 
 Also, available snapshots can be listed by calling:
 
@@ -153,10 +150,7 @@ The command above will spin up some cloud services to transform input data into 
 
 The dataset upload process will be shown in EdgeFirst Studio.
 
-<figure markdown="span">
-![Restoring Snapshot](assets/studio-restored-dataset.jpg){ align=center }
-<figcaption>Restoring Snapshot</figcaption>
-</figure>
+{{ figure("assets/studio-restored-dataset.jpg", "Restoring Snapshot") }}
 
 We can use the `datasets` command to confirm that the dataset was uploaded to the project with ID `628`:
 
@@ -190,10 +184,7 @@ edgefirst-client restore-snapshot 628 1816 --dataset-name "Upload from verdin-im
 
 The `--autolabel` parameter currently supports [COCO labels](../datasets/coco/index.md#coco-labels). We can list any class found in the COCO labels list to auto annotate these classes. In EdgeFirst Studio, we can [visualize](../datasets/tutorials/management.md#view-dataset) the results of the auto-annotations when restoring the snapshot. In this example, "person" and "car" are being shown as specified from the command above.
 
-<figure markdown="span">
-![Restore Snapshot Results](assets/restore-snapshot-results.jpg){ align=center }
-<figcaption>Restore Snapshot Results</figcaption>
-</figure>
+{{ figure("assets/restore-snapshot-results.jpg", "Restore Snapshot Results") }}
 
 ## Command Reference
 

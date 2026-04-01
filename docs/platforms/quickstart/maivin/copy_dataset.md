@@ -7,17 +7,11 @@ This page will show you how to copy a dataset from the "Sample Projects" in [Edg
 
 Once you have your own project created, you can finally copy a dataset inside your project. Here you can see the newly created project "Object Detection" next to the "Sample Projects".
 
-<figure markdown="span">
-![New Project](../../../studio/assets/projects/new-project.jpg){ align=center }
-<figcaption>Both Projects</figcaption>
-</figure>
+{{ figure("../../../studio/assets/projects/new-project.jpg", "New Project") }}
 
 Under "Sample Projects", click on the "Datasets" button.
 
-<figure markdown="span">
-![Sample Datasets Button](../../../studio/assets/projects/sample-datasets-button.jpg){ align=center }
-<figcaption>Sample Datasets Button</figcaption>
-</figure>
+{{ figure("../../../studio/assets/projects/sample-datasets-button.jpg", "Sample Datasets Button") }}
 
 Inside the "Sample Projects", you will find a sample dataset called "Coffee Cup".  You will be copying this dataset to train a Vision model for detecting coffee cups on images.
 

@@ -2,30 +2,7 @@
 
 Now that you have validated your Vision Model from either a [managed](../validation/vision/managed.md) or [user-managed](../validation/vision/user_managed.md) session, this guide will walk you through deploying Vision models in an [EdgeFirst Platform](../../platforms/index.md) such as a Maivin or a Raivin.
 
-<figure markdown="span">
-![Raivin](../../platforms/assets/raivin.png){ align=center }
-</figure>
-
-This guide will showcase two methods of deploying the model.
-
-1. [Live View (Segmentation App)](#live-view-segmentation-app): Displays the live camera feed using the default model provided.
-2. [MCAP Recording](../../perception/data_collection/recording.md#record-mcap): Allows control of the recording options and provides download file options to replay the recording.
-
-{% include-markdown "discrete/models/download_model.md" %}
-
-## Visit the Web UI Service
-
-Use your browser to connect to the Web UI of the remote device, enter the following URL `https://<hostname>/`.
-
-!!! note
-    Replace `<hostname>` with the hostname of your device.
-
-You will be greeted with the Raivin [Web UI Main Page](../../platforms/quickstart/raivin/webui.md) page.
-
-<figure markdown="span">
-![Web UI Main Page](../../platforms/assets/ui-raivinMain.png){ align=center }
-<figcaption>Web UI Main Page</figcaption>
-</figure>
+{{ figure("../../platforms/assets/raivin.png", "Raivin") }}
 
 For more information, please see the [Web UI Walkthrough](../../platforms/quickstart/raivin/webui.md).
 
@@ -42,24 +19,15 @@ Next you will need to specify the path to the model in the device.  You can eith
 
     Click the settings icon on the top right corner of the page.
 
-    <figure markdown="span">
-    ![Settings](../assets/deployment/raivin-settings.png){ align=center }
-    <figcaption>Settings</figcaption>
-    </figure>
+    {{ figure("../assets/deployment/raivin-settings.png", "Settings") }}
 
     Select "Model Settings".
 
-    <figure markdown="span">
-    ![Model Settings](../assets/deployment/raivin-model-settings.jpg){ align=center }
-    <figcaption>Model Settings</figcaption>
-    </figure>
+    {{ figure("../assets/deployment/raivin-model-settings.jpg", "Model Settings") }}
 
     Configure the path to the model in your device as specified under "MODEL:".  Once configured, click "Save Configuration" to save your changes.
 
-    <figure markdown="span">
-    ![Model Path](../assets/deployment/configure-model-path-maivin.jpg){ align=center }
-    <figcaption>Model Path</figcaption>
-    </figure>
+    {{ figure("../assets/deployment/configure-model-path-maivin.jpg", "Model Path") }}
 
 === "via Raivin Command Line"
 
@@ -85,33 +53,21 @@ Next you will need to specify the path to the model in the device.  You can eith
 
 Once the model path in the device is specified, ensure that the model and camera services are enabled and running.  To verify, go back to the settings and click on the "Service Status" button.
 
-<figure markdown="span">
-![Service Status](../assets/deployment/raivin-service-status.jpg){ align=center }
-<figcaption>Service Status</figcaption>
-</figure>
+{{ figure("../assets/deployment/raivin-service-status.jpg", "Service Status") }}
 
 You will be greeted with the "Service Overview" page.  Ensure that the model and camera services are enabled and running as shown.  You do not need to enable or start the recorder service, as we will be starting the recorder service as described in [MCAP Recording](../../perception/data_collection/recording.md).
 
-<figure markdown="span">
-![Service Overview](../assets/deployment/raivin-service-overview.jpg){ align=center }
-<figcaption>Service Overview</figcaption>
-</figure>
+{{ figure("../assets/deployment/raivin-service-overview.jpg", "Service Overview") }}
 
 ## Live View (Segmentation App)
 
 Now you will see a live inference of the model in the device.  Once all services are enabled, go back to the main page and then select the "Segmentation View" application as shown.
 
-<figure markdown="span">
-![Segmentation App](../assets/deployment/raivin-segmentation-app.png){ align=center }
-<figcaption>Segmentation App</figcaption>
-</figure>
+{{ figure("../assets/deployment/raivin-segmentation-app.png", "Segmentation App") }}
 
 This will run inference on the model specified to generate segmentation masks and/or bounding boxes of identified objects on the camera feed.  In this case, the model is identifying coffee cups in the video feed.  An example is shown below.
 
-<figure markdown="span">
-![Segmentation Sample 1](../assets/deployment/segmentation-sample-1.jpg){ align=center }
-<figcaption>Sample 1</figcaption>
-</figure>
+{{ figure("../assets/deployment/segmentation-sample-1.jpg", "Segmentation Sample 1") }}
 
 Now that the model has been updated, you can [make new recordings](../../perception/data_collection/recording.md#record-mcap) using the model's inference and then [visualize the recording using Foxglove Studio](../../perception/data_collection/foxglove.md).
 
@@ -119,10 +75,7 @@ Now that the model has been updated, you can [make new recordings](../../percept
 
 Once the MCAP recording has been downloaded, you can use Foxglove Studio to see the playback of MCAP recordings and the model inference.  The following preview is a frame from the MCAP with the model inference masks overlaid on top of the video.
 
-<figure markdown="span">
-![Foxglove Sample 1](../assets/deployment/foxglove-sample-1.jpg){ align=center }
-<figcaption>Foxglove Sample 1</figcaption>
-</figure>
+{{ figure("../assets/deployment/foxglove-sample-1.jpg", "Foxglove Sample 1") }}
 
 More information on the MCAP playback is provided in [Foxglove Studio](../../perception/data_collection/foxglove.md).  Modifying panels and customizing various settings are also shown in [Advanced Foxglove](../../perception/data_collection/advanced_foxglove.md).
 

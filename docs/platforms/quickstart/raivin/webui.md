@@ -6,10 +6,7 @@ This article will walk you through the Raivin's Web User Interface (Web UI).
 
 The Main Page of the Raivin web interface should look as follows:
 
-<figure markdown="span">
-![Raivin Main Page](../../assets/setup/quickStart-mainPage.png){align=center}
-<figcaption>Raivin Main Page</figcaption>
-</figure>
+{{ figure("../../assets/setup/quickStart-mainPage.png", "Raivin Main Page") }}
 
 
 There are five cards on the Main Page that link to the Visualization pages:
@@ -30,10 +27,7 @@ These pages contain the user-facing functionality of the vision module.
 
 The Segmentation page shows camera overlain with the current visual model output.  For Raivin modules, this will also include the occupancy grid at the bottom.  
 
-<figure markdown="span">
-![Raivin Segmentation Page](../../assets/setup/quickStart-segmentation.png){align=center}
-<figcaption>Raivin Segmentation Page</figcaption>
-</figure>
+{{ figure("../../assets/setup/quickStart-segmentation.png", "Raivin Segmentation Page") }}
 
 White points are unmatched, raw data from the radar; green points are raw data matched to segmentation masks.
 
@@ -41,10 +35,7 @@ White points are unmatched, raw data from the radar; green points are raw data m
 
 The Occupancy Page shows the raw, radar data, colored by radar cross-section (RCS) size.  
 
-<figure markdown="span">
-![Occupancy Page](../../assets/setup/quickStart-occupancy.png){align=center}
-<figcaption>Occupancy Page</figcaption>
-</figure>
+{{ figure("../../assets/setup/quickStart-occupancy.png", "Occupancy Page") }}
 
 {% include-markdown "discrete/platforms/edgefirst_common_services.md" heading-offset=2 %}
 
@@ -52,10 +43,7 @@ The Occupancy Page shows the raw, radar data, colored by radar cross-section (RC
 
 This page shows the segmentation view, the occupancy grid, and the 3D LiDAR view.  The 3D LiDAR view will be blank if the device does not have a LiDAR unit connected.
 
-<figure markdown="span">
-![LiDAR View Page](../../assets/setup/quickStart-lidar.png){align=center}
-<figcaption>LiDAR View Page</figcaption>
-</figure>
+{{ figure("../../assets/setup/quickStart-lidar.png", "LiDAR View Page") }}
 
 ## Next Steps
 

@@ -2,10 +2,7 @@
 
 These settings configure the perception engine that is processing input from the video sensor and providing output on the model topics.
 
-<figure markdown="span">
-![Model Settings page](../assets/configuration/configuration-model.png){align=center}
-<figcaption>Model Settings page</figcaption>
-</figure>
+{{ figure("../assets/configuration/configuration-model.png", "Model Settings page") }}
 
 !!! tip
     These values are stored in the `/etc/default/model` file on the device and can be hand-edited.  This is not recommended.

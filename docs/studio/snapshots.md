@@ -7,17 +7,11 @@ Snapshots are portable, frozen copies of datasets in the [EdgeFirst Dataset Form
 
 This format makes snapshots easy to download, share, archive, and re-import into any EdgeFirst Studio project.
 
-<figure markdown="span">
-![Data Snapshots](assets/snapshots/data-snapshots.png){ align=center }
-<figcaption>Data Snapshots</figcaption>
-</figure>
+{{ figure("assets/snapshots/data-snapshots.png", "Data Snapshots") }}
 
 The snapshots menu shows the list of snapshots with its name and status.
 
-<figure markdown="span">
-![Snapshot List](assets/snapshots/snapshot-list.png){ align=center }
-<figcaption>Snapshot List</figcaption>
-</figure>
+{{ figure("assets/snapshots/snapshot-list.png", "Snapshot List") }}
 
 ## Create Snapshot
 
@@ -25,10 +19,7 @@ The tutorial for creating snapshots can be found under the [Dataset Annotations]
 
 The stages for creating a snapshot are shown below.
 
-<figure markdown="span">
-![Create Snapshot Stages](../datasets/assets/annotations/automatic/snapshot-creation-process.png){ align=center }
-<figcaption>Create Snapshot Stages</figcaption>
-</figure>
+{{ figure("../datasets/assets/annotations/automatic/snapshot-creation-process.png", "Create Snapshot Stages") }}
 
 A snapshot can be created by the following ways:
 
@@ -75,25 +66,16 @@ The tutorial for restoring snapshots can be found under the [Dataset Annotations
 
 The stages for restoring a snapshot are shown below.
 
-<figure markdown="span">
-![Restore Snapshot Stages](../datasets/assets/annotations/automatic/snapshot-restore-process.jpg){ align=center }
-<figcaption>Restore Snapshot Stages</figcaption>
-</figure>
+{{ figure("../datasets/assets/annotations/automatic/snapshot-restore-process.jpg", "Restore Snapshot Stages") }}
 
 1. Click on the snapshot context menu (three dots).
 2. Select "Restore".
 
-<figure markdown="span">
-![Snapshot Options](assets/snapshots/options.png){ align=center }
-<figcaption>Snapshot Options</figcaption>
-</figure>
+{{ figure("assets/snapshots/options.png", "Snapshot Options") }}
 
 3. This will open the restore dialog for specifying the options.
 
-<figure markdown="span">
-![Restore Options](assets/snapshots/restore-dialog.png){ align=center }
-<figcaption>Restore Options</figcaption>
-</figure>
+{{ figure("assets/snapshots/restore-dialog.png", "Restore Options") }}
 
 4. Select "Project" where the dataset will be created.
 5. Enter the dataset name and description. If the dataset name is not provided a dataset, a dataset with the snapshot name will be created.
@@ -142,10 +124,7 @@ See [Dataset Organization](../datasets/format/structure.md) for details on the i
 1. Click on the snapshot context menu (three dots).
 2. Select "Remove".
 
-<figure markdown="span">
-![Snapshot Options](assets/snapshots/options.png){ align=center }
-<figcaption>Snapshot Options</figcaption>
-</figure>
+{{ figure("assets/snapshots/options.png", "Snapshot Options") }}
 
 ## Next Steps
 

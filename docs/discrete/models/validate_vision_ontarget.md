@@ -4,31 +4,19 @@ Now that you have trained a model, you can validate the model's performance on t
 
 On the training session card, expand the session details.
 
-<figure markdown="span">
-![Training Details](../../models/assets/training/vision-view-train-details.jpg){ align=center }
-<figcaption>Training Details</figcaption>
-</figure>
+{{ figure("/models/assets/training/vision-view-train-details.jpg", "Training Details") }}
 
 On the top right corner of the page, click on the "validate" button as indicated.
 
-<figure markdown="span">
-![Validate Button](../../models/assets/validation/training_validate_button.jpg){ align=center }
-<figcaption>Validate Button</figcaption>
-</figure>
+{{ figure("/models/assets/validation/training_validate_button.jpg", "Validate Button") }}
 
 Select the "User Managed" option. Specify the name of the validation session and the model and the dataset for validation.  The rest of the settings were kept as defaults.  Click "Start Session" at the bottom to start the validation session.
 
-<figure markdown="span">
-![Start Validation Session](../../models/assets/validation/user-managed-vision-session-fields.jpg){ align=center }
-<figcaption>Start Validation Session</figcaption>
-</figure>
+{{ figure("/models/assets/validation/user-managed-vision-session-fields.jpg", "Start Validation Session") }}
 
 The validation session card will appear like the following below.  Each session has a session ID.  Make a note of the session ID circled in red below.  In this case it is `v-c1f`.
 
-<figure markdown="span">
-![Validation Session ID](../../models/assets/validation/user-managed-vision-session-id.jpg){ align=center }
-<figcaption>Validation Session ID</figcaption>
-</figure>
+{{ figure("/models/assets/validation/user-managed-vision-session-id.jpg", "Validation Session ID") }}
 
 Once the validation session has been created, [SSH](../../platforms/networking/ssh.md) into the platform and install the following dependencies.
 
@@ -67,23 +55,14 @@ If the model already exists in your system, you can run this command `edgefirst-
 
 Once entered, the following validation progress should now be indicated in EdgeFirst Studio as shown below.
 
-<figure markdown="span">
-![Validation Session](../../models/assets/validation/user-managed-vision-session-progress.jpg){ align=center }
-<figcaption>Validation Session</figcaption>
-</figure>
+{{ figure("/models/assets/validation/user-managed-vision-session-progress.jpg", "Validation Session") }}
 
 The completed session will look as follows with the status set to "Complete".
 
-<figure markdown="span">
-![Completed Session](../../models/assets/validation/user-managed-vision-completed-session.jpg){ align=center }
-<figcaption>Completed Session</figcaption>
-</figure>
+{{ figure("/models/assets/validation/user-managed-vision-completed-session.jpg", "Completed Session") }}
 
 Once the validation session completes, you can view the validation metrics by clicking the "View Validation Charts" button at the top of the session card.
 
-<figure markdown="span">
-![Validation Charts](../../models/assets/validation/vision-charts.jpg){ align=center }
-<figcaption>Validation Charts</figcaption>
-</figure>
+{{ figure("/models/assets/validation/vision-charts.jpg", "Validation Charts") }}
 
 Now that you have validated the performance of the model, you can move forward to deploying the model on target.

@@ -84,4 +84,5 @@ Latitude: 51.036506 Longitude: -114.034886
 ```
 
 When displaying the results through Rerun you will see a map with the location of your EdgeFirst Platform marked.
-![alt text](assets/gps.png)
+
+{{ figure("assets/gps.png", "GPS") }}

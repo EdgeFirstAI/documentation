@@ -1,10 +1,9 @@
 # Record MCAP
 
 MCAP recordings can be started and stopped using the Recording Button at the device's [top navbar](../../platforms/quickstart/maivin/webui.md#the-top-ribbon).  It is to the left of the MCAP Details hamburger button, which is used to open the [MCAP Details Modal](../../perception/data_collection/recording.md#the-mcap-modal).
-<figure markdown="span">
-![MCAP Recording and Details Buttons](../../perception/assets/mcap-RecordingButton_McapDetailsButton.png){align=center}
-<figcaption>MCAP Recording and Details Buttons</figcaption>
-</figure>
+
+{{ figure("/perception/assets/mcap-RecordingButton_McapDetailsButton.png", "MCAP Recording and Details Buttons") }}
+
 Both of these buttons are available on every page of the Maivin, Raivin, and other edge devices running the EdgeFirst middleware.
 !!! note
      You must close all modals to be able to click the "Recording" and "Details" Buttons.
@@ -15,27 +14,18 @@ For more information about recording MCAPs, please read the [MCAP Recording sect
 
 To start a recording, simply click the "Recording" button to begin capturing data.
 
-<figure markdown="span">
-![MCAP Recording](../../perception/assets/mcap_recording.png){align=center}  
-<figcaption>MCAP Recording</figcaption>
-</figure>
+{{ figure("/perception/assets/mcap_recording.png", "MCAP Recording") }}
 
 !!! note
      It may take up to 30 seconds for a recording to start, depending on topic tracked.
 
 !!! warning "Low Disk Space"
      If there is not enough room on the drive to record an MCAP, recording will automatically stop and you will get a "Low Disk Space" error.
-     <figure markdown="span">
-     ![MCAP Low Disk Space Warning](../../platforms/assets/mcap_low-disk-space.png){align=center}  
-     <figcaption>MCAP Low Disk Space Warning</figcaption>
-     </figure>
+     {{ figure("/platforms/assets/mcap_low-disk-space.png", "MCAP Low Disk Space Warning") }}
 
 If you were to open the MCAP Details Modal while recording, you would see a new MCAP file in the MCAP list.
 
-<figure markdown="span">
-![MCAP Modal While Recording](../../platforms/assets/mcap_modal_while_recording.png){align=center}  
-<figcaption>MCAP Modal While Recording</figcaption>
-</figure>
+{{ figure("/platforms/assets/mcap_modal_while_recording.png", "MCAP Modal While Recording") }}
 
 ## Stop Recording
 

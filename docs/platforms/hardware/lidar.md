@@ -39,10 +39,12 @@ Ouster Studio is a free digital LiDAR visualizer available for both web and desk
 ### Sensor configuration
 
 Once you have downloaded Ouster Studio it can be used get the device name as well as make modifications to the Static IP of the device. It is recommended that the user sets a static ip as shown in the image below.
-![Ouster Config](../assets/hardware/ouster-config.png){align=center}
+
+{{ figure("../assets/hardware/ouster-config.png", "Ouster Config") }}
 
 After making all the changes required you can hit "Configure and Visualize" and it will show a LiDAR PCD as follow
-![Ouster PCD](../assets/hardware/ouster-pcd.png){align=center}
+
+{{ figure("../assets/hardware/ouster-pcd.png", "Ouster PCD") }}
 
 ## Firmware Requirements
 
@@ -82,7 +84,8 @@ The 0° azimuth angle aligns with the RJ45 Ethernet connector on the Ouster OS1 
 - 270°: Three-quarters counterclockwise from the connector
 
 The LiDAR settings can be configured using the webui LiDAR config page
-![LiDAR Azimuth Orientation](../assets/lidar-config.png){align=center}
+
+{{ figure("../assets/lidar-config.png", "LiDAR Azimuth Orientation") }}
 
 ## Data Visualization
 

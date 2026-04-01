@@ -20,10 +20,7 @@ When active, the Recorder Service:
 
 The MCAP Recording Service is managed on its own modal, which can be accessed by clicking the "MCAP Details" button on the top navbar of any Raivin Web UI Page.
 
-<figure markdown="span">
-![MCAP Recorder Interface](../../platforms/assets/setup/quickStart-mcap.png){align=center}
-<figcaption>MCAP Modal</figcaption>
-</figure>
+{{ figure("../../platforms/assets/setup/quickStart-mcap.png", "MCAP Recorder Interface") }}
 
 At the top ribbon of the MCAP Modal we have the title, the Disk Usage Infobar, and the "Live Mode" button. Under the ribbon, we have the Recording Toggle, which will start or end an MCAP recording. We also have the "Live Mode" button, which will take the Raivin out of ["Replay Mode"](replay.md) and back to "Live Mode".
 
@@ -50,10 +47,7 @@ To leave the MCAP Modal, click the "X" close button in the top right corner of t
 
 Once a recording is complete, you can see the size in MB of the captured data on the MCAP page.  You can also get more detailed metadata, such as the topics recorded, by clicking the "Details" button for the MCAP recording.
 
-<figure markdown="span">
-![MCAP File Details](../assets/mcap_detail.png){align=center}  
-<figcaption>MCAP File Details</figcaption>
-</figure>
+{{ figure("../assets/mcap_detail.png", "MCAP File Details") }}
 
 The details modal contains the filename, size, duration in seconds, and a list of each topic captured with frame count and frames per second of data for the topic.
 
@@ -85,15 +79,13 @@ The Recording Service can be set up to automatically start on boot-up.
      Having the Recording Service run for prolonged periods of time will fill the SD card of the Raivin.  Use this functionality with caution.
 
 On the [Services Status](../../platforms/configuration/service_status.md) page, you can use the Recorder Service status card to enable the recorder service to start on boot.
-<figure markdown="span">
-![Recording Service](../assets/Recorder_Service_Card.png){align=center}  
-<figcaption>Recorder Service status card</figcaption>
-</figure>
+
+{{ figure("../assets/Recorder_Service_Card.png", "Recording Service") }}
+
 Flip the Enable/Disable switch to enable to enable the Recorder Service on boot.
-<figure markdown="span">
-![Recording Service Enabled](../assets/Recorder_Service_Card_enabled.png){align=center}  
-<figcaption>Recorder Service enabled</figcaption>
-</figure>
+
+{{ figure("../assets/Recorder_Service_Card_enabled.png", "Recording Service Enabled") }}
+
 !!! note
      You can start and stop the Recording Service here as well as on the MCAP Recording Page by flipping the Start/Stop switch.
 

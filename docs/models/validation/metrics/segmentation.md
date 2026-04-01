@@ -10,10 +10,7 @@ We define the same metrics for segmentation as object detection for Ultralytics 
 
 The segmentation metrics describe the average precision, recall, and accuracy.  These metrics are represented as a bar chart.  Shown below is an example.
 
-<figure markdown="span">
-  ![Segmentation Metrics](../../assets/metrics/modelpack-segmentation-metrics.jpg){ align=center }
-  <figcaption>Segmentation Metrics</figcaption>
-</figure>
+{{ figure("../../assets/metrics/modelpack-segmentation-metrics.jpg", "Segmentation Metrics") }}
 
 The equations for precision, recall, and accuracy are similar to object detection, except that in segmentation we are classifying predictions as either true or false on a pixel-by-pixel basis.  Shown below are the equations for precision, recall, and accuracy/F1.
 
@@ -53,15 +50,9 @@ The next section will show an example of the metric computations on a small samp
 
 This section will show an example of how segmentation metrics are calculated.  Consider the following 5x2 segmentation masks for the ground truth and the model prediction with classes background (BG), A, and B.
 
-<figure markdown="span">
-  ![Ground Truth Mask](../../assets/metrics/mask-gt.jpg){ align=center }
-  <figcaption>Ground Truth Mask</figcaption>
-</figure>
+{{ figure("../../assets/metrics/mask-gt.jpg", "Ground Truth Mask") }}
 
-<figure markdown="span">
-  ![Prediction Mask](../../assets/metrics/mask-dt.jpg){ align=center }
-  <figcaption>Prediction Mask</figcaption>
-</figure>
+{{ figure("../../assets/metrics/mask-dt.jpg", "Prediction Mask") }}
 
 We start by calculating the metrics per class which is the precision, recall, and accuracy for class A and B.  Class background is not included in the computations because it dilutes the relevant classes A and B since most of the area in the mask is typically classified as background.
 
@@ -69,10 +60,7 @@ We start by calculating the metrics per class which is the precision, recall, an
 
 The following table shows the classifications for class A where T is denoted as a true prediction, F is denoted as a false prediction, and NULL are placed on the positions that do not involve class A.
 
-<figure markdown="span">
-  ![Classification A](../../assets/metrics/mask-a.jpg){ align=center }
-  <figcaption>Classification A</figcaption>
-</figure>
+{{ figure("../../assets/metrics/mask-a.jpg", "Classification A") }}
 
 Using the equations for precision, recall, and accuracy above, these are the metrics for class A.
 
@@ -84,10 +72,7 @@ Using the equations for precision, recall, and accuracy above, these are the met
 
 The following table shows the classifications for class B.
 
-<figure markdown="span">
-  ![Classification B](../../assets/metrics/mask-b.jpg){ align=center }
-  <figcaption>Classification B</figcaption>
-</figure>
+{{ figure("../../assets/metrics/mask-b.jpg", "Classification B") }}
 
 These are the metrics for class B.
 

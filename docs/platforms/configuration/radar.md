@@ -3,10 +3,7 @@
 
 This page configures the radar publishing service that interacts with the Raivin's integrated [DRVEGRD-169 radar module][radar] from [smartmicro][smart].  With the exception of the H.264 Bitrate and maybe camera or stream sizes, it is not recommended that you change these settings.
 
-<figure markdown="span">
-![Radar Settings page](../assets/configuration/configuration-radarpub.png){align=center}
-<figcaption>Radar Settings page</figcaption>
-</figure>
+{{ figure("../assets/configuration/configuration-radarpub.png", "Radar Settings page") }}
 
 !!! tip
     These values are stored in the `/etc/default/radarpub` file on the device and can be hand-edited.  This is not recommended.

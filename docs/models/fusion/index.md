@@ -4,7 +4,7 @@ The EdgeFirst Fusion provides a framework for training and deploying camera+rada
 
 The EdgeFirst Fusion model performs early fusion using the low-level raw radar range-doppler data cube along with the camera input.  The middleware stack also allows for mid-level fusion using radar PCD.  Which is best suited depends on the target application, generally speaking the low-level fusion model provides the most robust performance in scenarios where camera degradation is expected.  By contrast the mid-level fusion requires the camera to be operating, but does not require specialized training as the model is trained only on camera data with the radar data fused later in the pipeline.
 
-![EdgeFirst Fusion Overview](../assets/fusion-overview.png)
+{{ figure("../assets/fusion-overview.png", "EdgeFirst Fusion Overview") }}
 
 ## Getting Started
 
@@ -16,7 +16,7 @@ Fusion models can be trained now in [EdgeFirst Studio](https://edgefirst.studio/
 
     1. Select **EdgeFirst Fusion** within the available training frameworks.
 
-    ![Select Fusion Training Framework](../assets/fusion/fusion-train-01.jpg){ align=center }
+    {{ img("../assets/fusion/fusion-train-01.jpg", "Select Fusion Training Framework") }}{ align=center }
 
     <div class="wizard-actions" style="max-width: fit-content; margin-left: auto; margin-right: auto;" markdown>
     [Next → 2. Name Session](#name-session){ .md-button .md-button--primary }
@@ -28,7 +28,7 @@ Fusion models can be trained now in [EdgeFirst Studio](https://edgefirst.studio/
 
     2. Set a **name** and **description** *(optional)* for the training session.
 
-    ![Set Name and Description](../assets/fusion/fusion-train-02.jpg){ align=center }
+    {{ img("../assets/fusion/fusion-train-02.jpg", "Set Name and Description") }}{ align=center }
 
     <div class="wizard-actions" style="max-width: fit-content; margin-left: auto; margin-right: auto;" markdown>
     [1. Select Framework ← Back](#select-framework){ .md-button }
@@ -41,7 +41,7 @@ Fusion models can be trained now in [EdgeFirst Studio](https://edgefirst.studio/
 
     3. Choose your **dataset**.
 
-    ![Select a Dataset](../assets/fusion/fusion-train-03.jpg){ align=center }
+    {{ img("../assets/fusion/fusion-train-03.jpg", "Select a Dataset") }}{ align=center }
 
     <div class="wizard-actions" style="max-width: fit-content; margin-left: auto; margin-right: auto;" markdown>
     [2. Name Session ← Back](#name-session){ .md-button }
@@ -54,7 +54,7 @@ Fusion models can be trained now in [EdgeFirst Studio](https://edgefirst.studio/
 
     4. **Configure model parameters** (architecture, input size, epochs, etc.) and start **Training**.
 
-    ![Configure and Train](../assets/fusion/fusion-train-04.jpg){ align=center }
+    {{ img("../assets/fusion/fusion-train-04.jpg", "Configure and Train") }}{ align=center }
 
     <div class="wizard-actions" style="max-width: fit-content; margin-left: auto; margin-right: auto;" markdown>
     [3. Select Dataset ← Back](#select-dataset){ .md-button }

@@ -4,7 +4,4 @@ If you have a [Raivin Platform](../platforms/index.md) then you can deploy and r
 
 A sample model inference will show like the following on the Raivin Platform.
 
-<figure markdown="span">
-![Model Inference on the Raivin](../models/assets/deployment/occupancy-sample-1.jpg){ align=center }
-<figcaption>Model Inference on the Raivin</figcaption>
-</figure>
+{{ figure("../models/assets/deployment/occupancy-sample-1.jpg", "Model Inference on the Raivin") }}

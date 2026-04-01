@@ -6,10 +6,7 @@ This article will walk you through the Maivin's Web User Interface (Web UI).
 
 The Main Page of the Maivin web interface should look as follows:
 
-<figure markdown="span">
-![Maivin Main Page](../../assets/setup/ui-maivinMain.png){align=center}
-<figcaption>Maivin Main Page</figcaption>
-</figure>
+{{ figure("../../assets/setup/ui-maivinMain.png", "Maivin Main Page") }}
 
 There are three cards on the Main Page that link to the Visualization pages:
 
@@ -27,10 +24,7 @@ These pages contain the user-facing functionality of the vision module.
 
 The Segmentation page shows camera overlain with the current visual model output. 
 
-<figure markdown="span">
-![Maivin Segmentation Page](../../assets/setup/ui-maivinSegmentation.jpg){align=center}
-<figcaption>Maivin Segmentation Page</figcaption>
-</figure>
+{{ figure("../../assets/setup/ui-maivinSegmentation.jpg", "Maivin Segmentation Page") }}
 
 {% include-markdown "discrete/platforms/edgefirst_common_services.md" heading-offset=2 %}
 

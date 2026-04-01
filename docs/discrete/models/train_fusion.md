@@ -4,62 +4,38 @@ A fully annotated dataset that is split into training and validation samples is 
 
 From the "Projects" page, click on "Model Experiments" of your project.
 
-<figure markdown="span">
-![Model Experiments Page](../../models/assets/training/fusion-model-experiments.jpg){ align=center }
-<figcaption>Model Experiments Page</figcaption>
-</figure>
+{{ figure("/models/assets/training/fusion-model-experiments.jpg", "Model Experiments Page") }}
 
 Create a new experiment by clicking "New Experiment" on the top right corner.  Enter the name the description of this experiment.  Click "Create New Experiment".
 
-<figure markdown="span">
-![Model Experiments Page](../../models/assets/training/fusion-create-experiment.jpg){ align=center }
-<figcaption>Model Experiments Page</figcaption>
-</figure>
+{{ figure("/models/assets/training/fusion-create-experiment.jpg", "Model Experiments Page") }}
 
 Navigate to the "Training Sessions".
 
-<figure markdown="span">
-![Training Sessions](../../models/assets/training/fusion-training-sessions.jpg){ align=center }
-<figcaption>Training Sessions</figcaption>
-</figure>
+{{ figure("/models/assets/training/fusion-training-sessions.jpg", "Training Sessions") }}
 
 Create a new training session by clicking on the "New Session" button on the top right corner.
 
-<figure markdown="span">
-![New Session Button](../../models/assets/training/new-session-button.jpg){ align=center }
-<figcaption>New Session Button</figcaption>
-</figure>
+{{ figure("/models/assets/training/new-session-button.jpg", "New Session Button") }}
 
 Follow the settings indicated and keep the rest of the settings by their default.  Click "Start Session" to start the training session.
 
 !!! warning "Session Name"
     Do not include any forward slash "/" in the session names as this can result in missing model artifacts.
 
-<figure markdown="span">
-![Start Training Session](../../models/assets/training/fusion-train-settings.jpg){ align=center }
-<figcaption>Start Training Session</figcaption>
-</figure>
+{{ figure("/models/assets/training/fusion-train-settings.jpg", "Start Training Session") }}
 
 The session progress will be shown like the following below.
 
-<figure markdown="span">
-![Training Session Progress](../../models/assets/training/fusion-session-progress.jpg){ align=center }
-<figcaption>Training Session Progress</figcaption>
-</figure>
+{{ figure("/models/assets/training/fusion-session-progress.jpg", "Training Session Progress") }}
 
 Once completed the session card will appear like the following below.
 
-<figure markdown="span">
-![Completed Session](../../models/assets/training/fusion-completed-session.jpg){ align=center }
-<figcaption>Completed Session</figcaption>
-</figure>
+{{ figure("/models/assets/training/fusion-completed-session.jpg", "Completed Session") }}
 
 On the train session card, expand the session details.
 
-<figure markdown="span">
-![Training Details](../../models/assets/training/fusion-view-train-details.jpg){ align=center }
-<figcaption>Training Details</figcaption>
-</figure>
+{{ figure("/models/assets/training/fusion-view-train-details.jpg", "Training Details") }}
 
 The trained models will be listed under "Artifacts".  
 

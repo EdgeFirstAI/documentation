@@ -7,10 +7,7 @@ If you have an EdgeFirst Platform, follow this tutorial to see how to capture an
 
 You will be greeted with the Maivin [Web UI Main Page](../../platforms/quickstart/maivin/webui.md) page.
 
-<figure markdown="span">
-![Web UI Main Page](../../platforms/assets/setup/ui-maivinMain.png){ align=center }
-<figcaption>Web UI Main Page</figcaption>
-</figure>
+{{ figure("/platforms/assets/setup/ui-maivinMain.png", "Web UI Main Page") }}
 
 {% include-markdown "discrete/datasets/recording_mcap_on_device.md" heading-offset=1 %}
 

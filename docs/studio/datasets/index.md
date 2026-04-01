@@ -2,26 +2,17 @@
 
 The Dataset Dashboard shows a list of datasets in a project with a dataset summary in each dataset card.  For an in depth tutorial for creating datasets from capture to annotation, see the [Dataset Tutorials](../../datasets/tutorials/index.md). From the "Projects" page, we can click on the "Datasets" ![Dataset Button](../../assets/buttons/studio-datasets-button.jpg) button on the project card to see the project's datasets.  The public sample project will contain the following dataset.
 
-<figure markdown="span">
-![Public Datasets](../assets/datasets/public-datasets.jpg){ align=center }
-<figcaption>Public Datasets</figcaption>
-</figure>
+{{ figure("../assets/datasets/public-datasets.jpg", "Public Datasets") }}
 
 Public datasets are readily available for user onboarding and trials, but these datasets are **READ-ONLY** datasets.  By default, users can [view the datasets](../../datasets/tutorials/management.md#view-dataset).  Otherwise, in order to have full access to the dataset, users **MUST** [copy the dataset](../../datasets/tutorials/management.md#copy-dataset) into the project they've created.
 
 The dataset attributes are shown below.
 
-<figure markdown="span">
-![Dataset Attributes](../assets/datasets/dataset-attributes.jpg){ align=center }
-<figcaption>Dataset Card UI Breakdown</figcaption>
-</figure>
+{{ figure("../assets/datasets/dataset-attributes.jpg", "Dataset Attributes") }}
 
 For the elements encircled in red, these features will not be available to public **READ-ONLY** datasets, but these were added as a reference to the features that are available to users that created their own dataset.  For datasets with **WRITE** access, the context menu will be shown like the following.
 
-<figure markdown="span">
-![Dataset Write Access Context Menu](../assets/datasets/write-access-dataset-context-menu.jpg){ align=center }
-<figcaption>Dataset Write Access Context Menu</figcaption>
-</figure>
+{{ figure("../assets/datasets/write-access-dataset-context-menu.jpg", "Dataset Write Access Context Menu") }}
 
 This gives the user the options for [editing the dataset info](../../datasets/tutorials/management.md#edit-dataset-information), [importing existing datasets](../../datasets/tutorials/import.md), [exporting datasets into your local machine](../../datasets/tutorials/management.md#export-dataset), [creating snapshots](../snapshots.md#create-snapshot), and [copying datasets](../../datasets/tutorials/management.md#copy-dataset).  The rest of the options are described in the sections below such as the [dataset analytics](#analytics), [view on map](#view-on-map), [park datasets](#park-dataset), and [removing datasets](#remove-dataset).
 
@@ -29,10 +20,7 @@ This gives the user the options for [editing the dataset info](../../datasets/tu
 
 Click on labels (i) icon to open the dialog to edit labels.
 
-<figure markdown="span">
-![Editing Labels](../assets/datasets/edit-label.png){ align=center }
-<figcaption>Editing Labels</figcaption>
-</figure>
+{{ figure("../assets/datasets/edit-label.png", "Editing Labels") }}
 
 The edit dialog allows to:
 
@@ -53,10 +41,7 @@ Tutorials for these operations can be found under the [Dataset Annotations](../.
 
 The following image shows a dialog to split non-grouped images into 2 groups, *Training* and *Validation*
 
-<figure markdown="span">
-![Assigning Groups](../assets/datasets/assign-groups.png){ align=center }
-<figcaption>Assigning Groups</figcaption>
-</figure>
+{{ figure("../assets/datasets/assign-groups.png", "Assigning Groups") }}
 
 The tutorial for splitting the images in the dataset into groups can be found under the [Dataset Management](../../datasets/tutorials/management.md#split-dataset) section.
 
@@ -64,10 +49,7 @@ The tutorial for splitting the images in the dataset into groups can be found un
 
 Click on the three dots on dataset card to open the extended menu.
 
-<figure markdown="span">
-![Extended Dataset Menu](../assets/datasets/dataset-menus.png){ align=center }
-<figcaption>Extended Dataset Menu</figcaption>
-</figure>
+{{ figure("../assets/datasets/dataset-menus.png", "Extended Dataset Menu") }}
 
 ### Edit Info
 
@@ -81,10 +63,7 @@ For more information please visit [Access Control](../user/organization.md#roles
 
 ### Copy Dataset
 
-<figure markdown="span">
-![Copying Datasets](../assets/datasets/copy-datasets.png){ align=center }
-<figcaption>Copying Datasets</figcaption>
-</figure>
+{{ figure("../assets/datasets/copy-datasets.png", "Copying Datasets") }}
 
 To copy datasets proceed with the steps as follows or follow this in-depth tutorial for [copying datasets](../../datasets/tutorials/management.md#copy-dataset).
 
@@ -99,10 +78,7 @@ To copy datasets proceed with the steps as follows or follow this in-depth tutor
 
 There are several import types available.
 
-<figure markdown="span">
-![Importing Datasets](../assets/datasets/import-datasets.png){ align=center }
-<figcaption>Importing Datasets</figcaption>
-</figure>
+{{ figure("../assets/datasets/import-datasets.png", "Importing Datasets") }}
 
 To import datasets proceed with the steps as follows or follow this in-depth tutorial for [importing datasets](../../datasets/tutorials/import.md).
 
@@ -113,10 +89,7 @@ To import datasets proceed with the steps as follows or follow this in-depth tut
 5. Click "START IMPORT".
 6. Import will start in the background and the status is shown in the task progress popup.
 
-<figure markdown="span">
-![Taskbar](../assets/datasets/import-taskbar.png){ align=center }
-<figcaption>Task Dialog</figcaption>
-</figure>
+{{ figure("../assets/datasets/import-taskbar.png", "Taskbar") }}
 
 !!! warning "Termination of Background Processes"
     Although the import process is running in the background, closing the web browser or the tab will terminate all uploads in the *Local* tab of the task dialog. Moving to other pages in the studio is still fine.
@@ -125,10 +98,7 @@ To import datasets proceed with the steps as follows or follow this in-depth tut
 
 The "Export Dataset" downloads the data from EdgeFirst Studio to the local folder in your PC.
 
-<figure markdown="span">
-![Export Dataset](../assets/datasets/export-dataset.png){ align=center }
-<figcaption>Export Dataset</figcaption>
-</figure>
+{{ figure("../assets/datasets/export-dataset.png", "Export Dataset") }}
 
 To export datasets proceed with the steps as follows or follow this in-depth tutorial for [exporting datasets](../../datasets/tutorials/management.md#export-dataset).
 
@@ -147,10 +117,7 @@ To export datasets proceed with the steps as follows or follow this in-depth tut
 
 Click on Analytics to see more statistical information about the dataset.
 
-<figure markdown="span">
-![Dataset Analytics](../assets/datasets/analytics.png){ align=center }
-<figcaption>Dataset Analytics</figcaption>
-</figure>
+{{ figure("../assets/datasets/analytics.png", "Dataset Analytics") }}
 
 ### View on Map
 
@@ -161,10 +128,7 @@ When importing a dataset, the GPS location can be imported in the two following 
 
 If GPS location is present, then the annotation can be viewed on the map by using the "View on Map" option.
 
-<figure markdown="span">
-![Dataset Maps](../assets/datasets/dataset-maps.png){ align=center }
-<figcaption>Dataset Maps</figcaption>
-</figure>
+{{ figure("../assets/datasets/dataset-maps.png", "Dataset Maps") }}
 
 ### Park Dataset
 
@@ -175,10 +139,7 @@ Datasets that are not used often can be parked. The advantages of parking a data
 
 Datasets can be un-parked at any time for normal usage.
 
-<figure markdown="span">
-![Park Dataset](../assets/datasets/park-dataset.png){ align=center }
-<figcaption>Park Dataset</figcaption>
-</figure>
+{{ figure("../assets/datasets/park-dataset.png", "Park Dataset") }}
 
 You can find more information regarding the [billing](../user/billing.md).
 

@@ -6,10 +6,7 @@ Download the model from EdgeFirst Studio into the device.  There are two methods
 
     As mentioned under the [Training Outcomes](../../models/training/vision.md#training-outcomes) section, the trained models can be downloaded by clicking the "View Additional Details" button on the training session card in EdgeFirst Studio. 
 
-    <figure markdown="span">
-    ![Training Session Attributes](../../models/assets/training/training-session-attributes.jpg){ align=center }
-    <figcaption>Training Session Attributes</figcaption>
-    </figure>
+    {{ figure("/models/assets/training/training-session-attributes.jpg", "Training Session Attributes") }}
 
     This will open the session details and the models are listed under the "Artifacts" tab as shown below.  Click on the downward arrow indicated in red to download the models to your PC.  In this example, you will be deploying the TFLite model in the device.
 

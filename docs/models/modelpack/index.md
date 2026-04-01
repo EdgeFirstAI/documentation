@@ -18,7 +18,7 @@ ModelPack can be trained now in EdgeFirst Studio using a Graphical User Interfac
 
     1. Select **ModelPack** within the available training frameworks.
 
-    ![Select ModelPack Training Framework](../assets/modelpack/modelpack-train-01.jpg){ align=center }
+    {{ img("../assets/modelpack/modelpack-train-01.jpg", "Select ModelPack Training Framework") }}{ align=center }
 
     <div class="wizard-actions" style="max-width: fit-content; margin-left: auto; margin-right: auto;" markdown>
     [Next → 2. Name Session](#name-session){ .md-button .md-button--primary }
@@ -30,7 +30,7 @@ ModelPack can be trained now in EdgeFirst Studio using a Graphical User Interfac
 
     2. Set a **name** and **description** *(optional)* for the training session.
 
-    ![Set Name and Description](../assets/modelpack/modelpack-train-02.jpg){ align=center }
+    {{ img("../assets/modelpack/modelpack-train-02.jpg", "Set Name and Description") }}{ align=center }
 
     <div class="wizard-actions" style="max-width: fit-content; margin-left: auto; margin-right: auto;" markdown>
     [1. Select Framework ← Back](#select-framework){ .md-button }
@@ -43,7 +43,7 @@ ModelPack can be trained now in EdgeFirst Studio using a Graphical User Interfac
 
     3. Choose your **dataset**.
 
-    ![Select a Dataset](../assets/modelpack/modelpack-train-03.jpg){ align=center }
+    {{ img("../assets/modelpack/modelpack-train-03.jpg", "Select a Dataset") }}{ align=center }
 
     <div class="wizard-actions" style="max-width: fit-content; margin-left: auto; margin-right: auto;" markdown>
     [2. Name Session ← Back](#name-session){ .md-button }
@@ -56,7 +56,7 @@ ModelPack can be trained now in EdgeFirst Studio using a Graphical User Interfac
 
     4. **[Configure model parameters](#training-parameters)** (architecture, input size, epochs, etc.) and start **Training**.
 
-    ![Configure and Train](../assets/modelpack/modelpack-train-04.jpg){ align=center }
+    {{ img("../assets/modelpack/modelpack-train-04.jpg", "Configure and Train") }}{ align=center }
 
     <div class="wizard-actions" style="max-width: fit-content; margin-left: auto; margin-right: auto;" markdown>
     [3. Select Dataset ← Back](#select-dataset){ .md-button }
@@ -92,13 +92,14 @@ The model expands and contracts based on the width and height parameters.
 Modelpack shares two main backbones: a Darknet53 backbone similar to [YOLOx](https://arxiv.org/pdf/2107.08430v2) which maximizes accuracy and a Darknet19 backbone for boosting inference time.
 Different than YOLOx, ModelPack is NOT anchor free, which makes the model more accurate and stable after quantization.
 
-![Darknet-53 Backbone](../assets/darknet-53-backbone.png)
+{{ figure("../assets/darknet-53-backbone.png", "Darknet-53 Backbone") }}
+
 Figure reproduced from: [Yang, L., Chen, G. & Ci, W. Multiclass objects detection](https://asp-eurasipjournals.springeropen.com/articles/10.1186/s13634-023-01045-8)
 
 As mentioned above, ModelPack merges Semantic Segmentation and Object Detection on the same model and it is user responsibility depending on problem requirements.  Semantic Segmentation only uses two scales (Scale 1 and Scale 2). On the other hand, Object Detection task uses the three scales.
 
 While solving both tasks in the same inference cycle, the three scales are used.
 
-![ModelPack Architecture](../assets/modelpack-arch.png)
+{{ figure("../assets/modelpack-arch.png", "ModelPack Architecture") }}
 
 ModelPack outputs can be configured on Studio User Interface as explained in the [ModelPack training guide](../training/vision.md).

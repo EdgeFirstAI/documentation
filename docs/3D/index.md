@@ -9,17 +9,11 @@ The following is a sample 3D annotation (right) in EdgeFirst Studio represented 
 
     Au-Zone provides Raivin platforms with just the base Radar module or an added LiDAR module for enhanced 3D perception. 
 
-<figure markdown="span">
-![EdgeFirst Studio Annotations](../datasets/assets/annotations/sample-studio-annotations.jpg){ align=center }
-<figcaption>EdgeFirst Studio Annotations</figcaption>
-</figure>
+{{ figure("../datasets/assets/annotations/sample-studio-annotations.jpg", "EdgeFirst Studio Annotations") }}
 
 The Raivin platform can visualize the model inference using the [Web UI](../platforms/quickstart/raivin/webui.md) service which provide the 2D inference (segmentation masks and bounding boxes) and the 3D inference which is shown using a polar grid highlighting the clusters of Radar points indicating the position of the objects in world coordinates.
 
-<figure markdown="span">
-![Model Inference on the Raivin](../models/assets/deployment/occupancy-sample-1.jpg){ align=center }
-<figcaption>Model Inference on the Raivin</figcaption>
-</figure>
+{{ figure("../models/assets/deployment/occupancy-sample-1.jpg", "Model Inference on the Raivin") }}
 
 In this section, you will explore the 3D MLOps in EdgeFirst Studio.  Start by learning more about the [3D viewers](viewers.md) in EdgeFirst Studio.
 

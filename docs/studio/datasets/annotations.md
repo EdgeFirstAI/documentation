@@ -6,10 +6,7 @@ This page will describe the context of the annotation sets.  For tutorials on an
 
 For these operations please refer to the following figure.
 
-<figure markdown="span">
-![Auditing Tasks](../assets/datasets/annotationset-attributes.jpg){ align=center }
-<figcaption>Auditing Tasks</figcaption>
-</figure>
+{{ figure("../assets/datasets/annotationset-attributes.jpg", "Auditing Tasks") }}
 
 - Click on the add annotation set button (+) to add an annotation set.
 - Each annotation set has an (x) button to delete the annotation set - all associated annotations will also be deleted.  Please note that deleted annotation sets goes the the Recycle Bin and can either be restored or permanently deleted.  The storage is only freed when the Recycling Bin is cleared.  
@@ -26,10 +23,7 @@ There are two modes of operations:
 
 EdgeFirst Studio allows multiple users to remotely access a single dataset and annotation set and make changes without interfering with each other. Users can navigate to this page using the Apps Menu.
 
-<figure markdown="span">
-![Auditing Tasks](../assets/datasets/auditing-tasks.png){ align=center }
-<figcaption>Auditing Tasks</figcaption>
-</figure>
+{{ figure("../assets/datasets/auditing-tasks.png", "Auditing Tasks") }}
 
 Labelling is the process of creating new annotations whereas auditing is the process of reviewing annotations to potentially make any changes to correct any errors in the annotations.
 
@@ -41,10 +35,7 @@ User reviews annotations in the reference annotation set:
 
 Create a new task in the Auditing Task Board.
 
-<figure markdown="span">
-![The Task](../assets/datasets/create-task.png){ align=center }
-<figcaption>New Task</figcaption>
-</figure>
+{{ figure("../assets/datasets/create-task.png", "The Task") }}
 
 - Enter the task name and description.
 - Select a dataset from the current project you want to work on.
@@ -57,10 +48,7 @@ Task entry is created in the Task board. There are three columns:
 2. In Progress - Some images have been worked on - the remaining images are shown.
 3. Completed - All images have been worked on.
 
-<figure markdown="span">
-![Task Board](../assets/datasets/task-board.png){ align=center }
-<figcaption>Task Board</figcaption>
-</figure>
+{{ figure("../assets/datasets/task-board.png", "Task Board") }}
 
 Click on any task entry and start editing. The editing process is described below.
 
@@ -71,10 +59,7 @@ The tutorials for annotating images from the gallery is provided in the [Dataset
 1. Open the dataset [gallery](gallery.md)
 2. Click on an image.
 
-<figure markdown="span">
-![Edit Options](../assets/datasets/edit-options.png){ align=center }
-<figcaption>Annotation Editing Options</figcaption>
-</figure>
+{{ figure("../assets/datasets/edit-options.png", "Edit Options") }}
 
 ### Add a Bounding Box
 
@@ -115,10 +100,7 @@ The tutorials for annotating images from the gallery is provided in the [Dataset
 
 Go to the Auditing Tasks board.
 
-<figure markdown="span">
-![Audit Annotations](../assets/datasets/auditing-tasks.png){ align=center }
-<figcaption>Audit Annotations</figcaption>
-</figure>
+{{ figure("../assets/datasets/auditing-tasks.png", "Audit Annotations") }}
 
 Create a new task or continue an existing task.
 
@@ -135,10 +117,7 @@ There are two auditing modes:
 1. Image-Based Audit
 2. Annotation-Based Audit
 
-<figure markdown="span">
-![Start Auditing](../assets/datasets/task.png){ align=center }
-<figcaption>Start Auditing</figcaption>
-</figure>
+{{ figure("../assets/datasets/task.png", "Start Auditing") }}
 
 ### Image-Based Audit
 
@@ -146,10 +125,7 @@ Clicking on the task takes you directly to the image mode auditing.  All the edi
 
 Users can switch between Image-based and Annotation-Based Audit from the top header.
 
-<figure markdown="span">
-![Audit Tool Type](../assets/datasets/audit-tool-type.png){ align=center }
-<figcaption>Audit Tool Type</figcaption>
-</figure>
+{{ figure("../assets/datasets/audit-tool-type.png", "Audit Tool Type") }}
 
 ### Annotation-Based Audit
 

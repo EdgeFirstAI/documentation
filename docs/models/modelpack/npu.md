@@ -43,10 +43,7 @@ Found objects:
 
 A new image should be saved `img_vis.jpg` showing the model output visualizations.
 
-<figure markdown="span">
-![Model Inference](assets/img_vis.jpg){align=center}
-<figcaption>Model Inference</figcaption>
-</figure>
+{{ figure("assets/img_vis.jpg", "Model Inference") }}
 
 ## Walkthrough of the Run Model script
 

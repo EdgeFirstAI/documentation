@@ -2,17 +2,11 @@
 
 This page describes how to navigate towards different functionalities in the EdgeFirst Studio.  When first logged in to EdgeFirst Studio, you will be directed to the [User Home Page](home.md) as shown below.
 
-<figure markdown="span">
-![Starting Page](assets/user/home-page.png){ align=center }
-<figcaption>User Home Page</figcaption>
-</figure>
+{{ figure("assets/user/home-page.png", "Starting Page") }}
 
 Navigation towards different functionalities in the EdgeFirst Studio portal is facilitated through the top navigation bar as shown below.
 
-<figure markdown="span">
-![Navigation Bar](assets/navigation/navigation-bar.png){ align=center }
-<figcaption>Navigation Bar</figcaption>
-</figure>
+{{ figure("assets/navigation/navigation-bar.png", "Navigation Bar") }}
 
 The elements of the navbar are:  
 
@@ -27,10 +21,7 @@ The elements of the navbar are:
 
 ## User Menu
 
-<figure markdown="span">
-![Admin Options](assets/navigation/admin-options.png){ align=center }
-<figcaption>Admin Options</figcaption>
-</figure>
+{{ figure("assets/navigation/admin-options.png", "Admin Options") }}
 
 This menu can be found on the right side of the top navigation bar.  This menu has the following options.  More information describing this menu can be found in the [user section](user/index.md).
 
@@ -54,10 +45,7 @@ We provide various methods of assistance from accessing the EdgeFirst documentat
 
 This menu provides the options to go to the help pages, submit feedback, view release notes, and to see the currently deployed version of EdgeFirst Studio as shown below.
 
-<figure markdown="span">
-![Help Options](assets/navigation/help-options.png){ align=center }
-<figcaption>Help Options</figcaption>
-</figure>
+{{ figure("assets/navigation/help-options.png", "Help Options") }}
 
 ### Documentation
 
@@ -67,19 +55,13 @@ The "Help" button will point towards the link in the EdgeFirst documentation tha
 
 You can request additional funds via the "Request Funds" button. This will bring up the Request Funds modal. Here you can request funds from us and set a reason why.
 
-<figure markdown="span">
-![Apps Menu](assets/navigation/request-funds.png){ align=center }
-<figcaption>Request Funds Modal</figcaption>
-</figure>
+{{ figure("assets/navigation/request-funds.png", "Apps Menu") }}
 
 ## Apps Menu
 
 The Apps Menu provides selections towards the various tools provided in EdgeFirst Studio.
 
-<figure markdown="span">
-![Apps Menu](assets/navigation/apps-menu.png){ align=center }
-<figcaption>Apps Menu</figcaption>
-</figure>
+{{ figure("assets/navigation/apps-menu.png", "Apps Menu") }}
 
 ### Projects
 

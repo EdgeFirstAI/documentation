@@ -2,10 +2,7 @@
 
 The 3D annotations are a set of 3D bounding boxes in meters that represent the position of the object in the frame in world coordinates.  More information can be found regarding the [format of the 3D bounding boxes](../datasets/format/box_format.md#box3d).
 
-<figure markdown="span">
-![LiDAR](assets/3d_bounding_box_plus_lidar.jpg)
-<figcaption>LiDAR</figcaption>
-</figure>
+{{ figure("assets/3d_bounding_box_plus_lidar.jpg", "LiDAR") }}
 
 ## Automatic Ground Truth Generation
 

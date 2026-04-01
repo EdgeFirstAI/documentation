@@ -11,10 +11,7 @@ This tutorial shows the step by step Machine Learning process in EdgeFirst Studi
 
 Data collection process starts as simple as collecting pictures and videos of the objects.  In this example, the objects to detect are measurement tapes.
 
-<figure markdown="span">
-![Data Collection](../../assets/tutorials/measurement_tape/data_collection.png){ align=center }
-<figcaption>Data Collection</figcaption>
-</figure>
+{{ figure("../../assets/tutorials/measurement_tape/data_collection.png", "Data Collection") }}
 
 The image above shows measurement tape images captured from different angles and positions using an iPhone, though any camera will work you just need to be able to transfer the photos and videos to your PC. We recorded both images and videos with varying camera orientations to ensure diverse perspectives.  
 
@@ -22,10 +19,7 @@ Follow this [tutorial](../../../datasets/tutorials/capture.md#capture-with-a-pho
 
 After uploading the files, check the [gallery](../../../datasets/tutorials/management.md#view-dataset) view to verify that all data (videos and images) has been imported successfully.
 
-<figure markdown="span">
-![Dataset Gallery](../../assets/tutorials/measurement_tape/dataset_view.png){ align=center }
-<figcaption>Dataset Gallery</figcaption>
-</figure>
+{{ figure("../../assets/tutorials/measurement_tape/dataset_view.png", "Dataset Gallery") }}
 
 !!! note
     Videos appear as sequences with a play button overlay on the preview thumbnail.
@@ -36,10 +30,7 @@ Once the dataset samples has been uploaded to EdgeFirst Studio, you can start an
 
 After completing the annotations, the gallery will display previews of all annotated videos and images.
 
-<figure markdown="span">
-![Annotations Preview](../../assets/tutorials/measurement_tape/gallery_full_annotations_view.png){ align=center }
-<figcaption>Annotations Preview</figcaption>
-</figure>
+{{ figure("../../assets/tutorials/measurement_tape/gallery_full_annotations_view.png", "Annotations Preview") }}
 
 Once your dataset has been fully annotated, you are now ready to begin model training.
 

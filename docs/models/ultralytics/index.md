@@ -16,7 +16,7 @@ YOLOv5, YOLOv8, YOLO11, and YOLO26 can be trained in EdgeFirst Studio using a Gr
 
     1. Select **Ultralytics** within the available training frameworks.
 
-    ![Select Ultralytics Training Framework](../assets/ultralytics/ultralytics-train-01.png){ align=center }
+    {{ img("../assets/ultralytics/ultralytics-train-01.png", "Select Ultralytics Training Framework") }}{ align=center }
 
     <div class="wizard-actions" style="max-width: fit-content; margin-left: auto; margin-right: auto;" markdown>
     [Next → 2. Name Session](#name-session){ .md-button .md-button--primary }
@@ -28,7 +28,7 @@ YOLOv5, YOLOv8, YOLO11, and YOLO26 can be trained in EdgeFirst Studio using a Gr
 
     2. Set a **name** and **description** *(optional)* for the training session.
 
-    ![Set Name and Description](../assets/ultralytics/ultralytics-train-02.png){ align=center }
+    {{ img("../assets/ultralytics/ultralytics-train-02.png", "Set Name and Description") }}{ align=center }
 
     <div class="wizard-actions" style="max-width: fit-content; margin-left: auto; margin-right: auto;" markdown>
     [1. Select Framework ← Back](#select-framework){ .md-button }
@@ -41,7 +41,7 @@ YOLOv5, YOLOv8, YOLO11, and YOLO26 can be trained in EdgeFirst Studio using a Gr
 
     3. Choose your **dataset**.
 
-    ![Select a Dataset](../assets/ultralytics/ultralytics-train-03.png){ align=center }
+    {{ img("../assets/ultralytics/ultralytics-train-03.png", "Select a Dataset") }}{ align=center }
 
     <div class="wizard-actions" style="max-width: fit-content; margin-left: auto; margin-right: auto;" markdown>
     [2. Name Session ← Back](#name-session){ .md-button }
@@ -54,7 +54,7 @@ YOLOv5, YOLOv8, YOLO11, and YOLO26 can be trained in EdgeFirst Studio using a Gr
 
     4. **Configure model parameters** (architecture, input size, epochs, etc.) and start **Training**.
 
-    ![Configure and Train](../assets/ultralytics/ultralytics-train-04.png){ align=center }
+    {{ img("../assets/ultralytics/ultralytics-train-04.png", "Configure and Train") }}{ align=center }
 
     <div class="wizard-actions" style="max-width: fit-content; margin-left: auto; margin-right: auto;" markdown>
     [3. Select Dataset ← Back](#select-dataset){ .md-button }

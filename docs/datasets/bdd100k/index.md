@@ -41,15 +41,11 @@ The BDD100K dataset is a large-scale driving video dataset containing 100,000 vi
 
 The dataset contains a total of 100,000 images and 10 different classes.
 
-<figure markdown="span">
-![Class Distribution](../assets/bdd100k/label_count.png){ align=center }
-</figure>
+{{ figure("../assets/bdd100k/label_count.png", "Class Distribution") }}
 
 ## Dataset Gallery
 
-<figure markdown="span">
-![BDD100K Dataset Gallery](../assets/bdd100k/gallery.png){ align=center }
-</figure>
+{{ figure("../assets/bdd100k/gallery.png", "BDD100K Dataset Gallery") }}
 
 ## License
 

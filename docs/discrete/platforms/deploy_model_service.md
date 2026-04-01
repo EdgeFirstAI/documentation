@@ -6,7 +6,7 @@ There are two ways to deploy a new, 2D model to the Raivin's Model Service: the 
 
 From the [Model Service Configuration page](../../platforms/configuration/model.md), enter the absolute filename `/home/torizon/modelpack.tflite` in the "MODEL" text-box.  Also, confirm the "Draw Boxes" check box is enabled, as the current trainer only supports 2D Box detection.  Hit the "Save Configuration" box and continue on.
 
-![Model Configuration Page](../../models/assets/deployment/model_location_webui.png)
+{{ figure("../../models/assets/deployment/model_location_webui.png", "Model Configuration Page") }}
 
 Remember to save the configurations at the end of the process. The  Model Configuration page can be accessed via the following url:
 `https://verdin-imx8mp-xxxxx/config/model`
@@ -36,4 +36,5 @@ sudo systemctl start model
     Remember to use **sudo** to start and stop model services
 
 Now that the model is running, open the Raivin's Web UI, go to the [Segmentation Page](../../platforms/quickstart/raivin/webui.md#the-segmentation-page), and check the camera to see the model's detections.  
-![Deployment Results](../../models/assets/deployment/deployment-results.png)
+
+{{ figure("../../models/assets/deployment/deployment-results.png", "Deployment Results") }}

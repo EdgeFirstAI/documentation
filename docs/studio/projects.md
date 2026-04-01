@@ -1,9 +1,6 @@
 # Project Dashboard
 
-<figure markdown="span">
-![Starting Page](assets/projects/studio-from-scratch.jpg){ align=center }
-<figcaption>Projects Splash Page</figcaption>
-</figure>
+{{ figure("assets/projects/studio-from-scratch.jpg", "Starting Page") }}
 
 The "Projects" page organizes data into logical project partitions.  When you first login, this page will already contain a sample project called "Sample Project".
 
@@ -11,10 +8,7 @@ To return to this page from any other page, you can click the Apps Menu ![Apps B
 
 The following figure describes the UI elements of the "Project" card.  Take special note of the project attributes (datasets, auditing tasks, etc.) as these are the buttons that lead into further parts of the project.  Furthermore, the figure below describes the "Sample Project" which is a **Read-Only** public project and therefore, the project context menu is unavailable.  For your own created projects, this option will be available.
 
-<figure markdown="span">
-![Project Attributes](assets/projects/project-attributes.jpg){ align=center }
-<figcaption>Project UI Breakdown</figcaption>
-</figure>
+{{ figure("assets/projects/project-attributes.jpg", "Project Attributes") }}
 
 A project will contain datasets and model experiments.  A model experiment will contain training and validation sessions.  The project structure hierarchy is shown below.
 

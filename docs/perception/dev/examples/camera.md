@@ -80,7 +80,8 @@ The CameraInfo message contains camera calibration and configuration information
 ### Results
 
 When displaying the results through Rerun you will see a log of the camera width and height.
-![alt text](assets/camera_info.png)
+
+{{ figure("assets/camera_info.png", "Camera Information") }}
 
 === "Rust"
 
@@ -214,7 +215,8 @@ The DmaBuffer message contains the process ID of the service that created the DM
 ### Results
 
 When displaying the results through Rerun you will see the live camera feed from your EdgeFirst Platform.
-![alt text](assets/dma.png)
+
+{{ figure("assets/dma.png", "Live Camera Feed DMA") }}
 
 ## H264 Camera Feed
 
@@ -321,7 +323,8 @@ The CompressedVideo message contains H.264 encoded video data. This data can be 
 ### Results
 
 When displaying the results through Rerun you will see the live camera feed from your EdgeFirst Platform.
-![alt text](assets/h264.png)
+
+{{ figure("assets/h264.png", "Live Camera Feed") }}
 
 ## JPEG Camera Feed
 
@@ -405,4 +408,5 @@ The CompressedImage message contains JPEG encoded image data. You can process th
 ### Results
 
 When displaying the results through Rerun you will see the JPEG image feed.
-![alt text](assets/jpeg.png)
+
+{{ figure("assets/jpeg.png", "JPEG Image Feed") }}

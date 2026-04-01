@@ -50,3 +50,10 @@ Follow these conventions when working on the documentation.
 5. Do NOT use screenshots from private customer data in the documentation. We should be using our own custom datasets. Exception would be documentation for a specific dataset such as COCO.
 6. Use powerpoint slidedeck `images_with_layers.pptx` to add images with drawing. Adopt a size of 1005x660 for home screen images of EdgeFirst Studio. 
 7. Avoid any unused images in the assets folder. Any unused images should be removed. 
+8. Typically, images uses the macro `figure()` with center alignment as shown.
+
+```
+{{ figure("/studio/assets/user/signup-page.jpg", "Create a New Account") }}
+```
+
+9. For production set `show_image_paths: false` under mkdocs.yml `extra: `. This will prevent the image docs from being shown upon mouse hover in the docs which is used mostly for development process to ease the replacement of images. 

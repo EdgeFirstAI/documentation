@@ -22,10 +22,7 @@ First, verify that your Maivin is turned on and connected to the network.  You c
 
 In a command prompt, ping the Maivin's hostname.  
 
-<figure markdown="span">
-![Ping Results](../assets/networking/ssh-ping.png){align=center}  
-<figcaption>Ping Results</figcaption>
-</figure>
+{{ figure("../assets/networking/ssh-ping.png", "Ping Results") }}
 
 If the Maivin does not reply, please confirm the Maivin is powered on and connected to the network.
 
@@ -37,26 +34,17 @@ ssh torizon@Maivin-hostname
 
 For example:  
 
-<figure markdown="span">
-![Are you Sure?](../assets/networking/ssh-areYouSure.png){align=center}
-<figcaption>Are you Sure?</figcaption>
-</figure>
+{{ figure("../assets/networking/ssh-areYouSure.png", "Are you Sure?") }}
 
 On the first log of a new or updated Maivin, you may get the "authenticity of host" error.  This is expected, and type "yes" to continue connecting.
 
 On a new Raivin, it will ask you to change the default password to a new password.  Re-enter the 'torizon' password, and then enter a new password twice.  After you change the default password, the SSH session will close so you can re-login with the new password.  
 
-<figure markdown="span">
-![New Password](../assets/networking/ssh-changePassword.png){align=center}  
-<figcaption>New Password</figcaption>
-</figure>
+{{ figure("../assets/networking/ssh-changePassword.png", "New Password") }}
 
 Once you've finished those steps, the next and all future SSH sessions should look as follows:  
 
-<figure markdown="span">
-![SSH Session](../assets/networking/ssh-login.png){align=center}  
-<figcaption>SSH Session</figcaption>
-</figure>
+{{ figure("../assets/networking/ssh-login.png", "SSH Session") }}
 
 You are now at the Linux command-line prompt for the Raivin!
 

@@ -114,7 +114,8 @@ Recieved 24448 lidar points.
 ```
 
 When displaying the results through Rerun you will see the pointcloud data gathered by the lidar.
-![alt text](assets/lidar_points.png)
+
+{{ figure("assets/lidar_points.png", "LiDAR Pointcloud") }}
 
 ## LiDAR Clusters
 
@@ -228,7 +229,8 @@ Recieved 24448 lidar points. 12237 are clustered
 ```
 
 When displaying the results through Rerun you will see the pointcloud cluster data provided by the LiDAR.
-![alt text](assets/lidar_clusters.png)
+
+{{ figure("assets/lidar_clusters.png", "LiDAR Clusters") }}
 
 ## LiDAR Depth
 
@@ -357,7 +359,8 @@ Recieved 382x64 depth image.
 ```
 
 When displaying the results through Rerun you will see a depth map of what the lidar can see.
-![alt text](assets/lidar_depth.png)
+
+{{ figure("assets/lidar_depth.png", "LiDAR Depth Map") }}
 
 ## LiDAR Reflect
 
@@ -472,7 +475,8 @@ Recieved 382x64 reflect image. reflect: [0, 181]
 ```
 
 When displaying the results through Rerun you will see the reflection data gathered by the lidar.
-![alt text](assets/lidar_reflect.png)
+
+{{ figure("assets/lidar_reflect.png", "LiDAR Reflection Data") }}
 
 ## Combined Example
 
@@ -620,4 +624,5 @@ The LiDAR callback will receive the pointcloud message, perform post-processing 
 ### Results
 
 When displaying the results through Rerun you will see the combined image of the camera feed with boxes and the lidar pointcloud.
-![alt text](assets/camera_radar.png)
+
+{{ figure("assets/camera_radar.png", "Camera + Radar") }}

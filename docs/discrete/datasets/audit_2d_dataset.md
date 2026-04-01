@@ -4,10 +4,7 @@ After the annotation process, review each individual frame or image in the datas
 
 To [view the dataset and the annotations](../../datasets/tutorials/management.md#view-dataset), click on the dataset gallery.
 
-<figure markdown="span">
-![Dataset Gallery](../../datasets/assets/management/project-datasets.jpg){ align=center }
-<figcaption>Dataset Gallery</figcaption>
-</figure>
+{{ figure("/datasets/assets/management/project-datasets.jpg", "Dataset Gallery") }}
 
 The auditing step may require [adding new annotations](../../datasets/tutorials/annotations/manual.md#add-2d-annotations) for objects that were missed during the AGTG process.  Or it may require [removing annotations](../../datasets/tutorials/annotations/manual.md#delete-2d-annotations) for objects that were improperly annotated.  Lastly, for annotations that require minor adjustments, EdgeFirst Studio has the features for [adjusting annotations](../../datasets/tutorials/annotations/manual.md#adjust-2d-annotations).  Please click on the links as provided for further instructions on each of these features.
 

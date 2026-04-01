@@ -13,10 +13,7 @@ Download our [Python Script](assets/run-onnx.py){: download="run-onnx.py"} for r
 
 Lastly, you can try this sample image [000000000064.jpg](assets/000000000064.jpg){: download="000000000064.jpg" } taken from [COCO128](https://www.kaggle.com/datasets/ultralytics/coco128).
 
-<figure markdown="span">
-![Sample COCO Image](assets/000000000064.jpg){ align=center }
-<figcaption>Sample COCO Image</figcaption>
-</figure>
+{{ figure("assets/000000000064.jpg", "Sample COCO Image") }}
 
 Once the files have been downloaded, [SCP](../../platforms/networking/ssh.md#secure-copy) the files into the embedded platform.
 
@@ -35,10 +32,7 @@ Found objects:
 
 A new image should be saved `img_vis.jpg` showing the model output visualizations.
 
-<figure markdown="span">
-![Model Inference](assets/img_vis-onnx.jpg){align=center}
-<figcaption>Model Inference</figcaption>
-</figure>
+{{ figure("assets/img_vis-onnx.jpg", "Model Inference") }}
 
 The following breakdown of the script describing the steps of the model inference is provided below.
 
@@ -104,10 +98,7 @@ In this example, we have taken the [small PyTorch segmentation model](https://gi
 
     Lastly, you can try this sample image [000000000064.jpg](assets/000000000064.jpg){: download="000000000064.jpg" } taken from [COCO128](https://www.kaggle.com/datasets/ultralytics/coco128). 
 
-    <figure markdown="span">
-    ![Sample COCO Image](assets/000000000064.jpg){ align=center }
-    <figcaption>Sample COCO Image</figcaption>
-    </figure>
+    {{ figure("assets/000000000064.jpg", "Sample COCO Image") }}
 
     Once the files have been downloaded, [SCP](../../platforms/networking/ssh.md#secure-copy) the files into the embedded platform.
 
@@ -148,10 +139,7 @@ In this example, we have taken the [small PyTorch segmentation model](https://gi
 
     A new image should be saved `img_vis.jpg` showing the model output visualizations.
 
-    <figure markdown="span">
-    ![Model Inference](assets/img_vis.jpg){align=center}
-    <figcaption>Model Inference</figcaption>
-    </figure>
+    {{ figure("assets/img_vis.jpg", "Model Inference") }}
 
 === "i.MX 95"
 
@@ -161,10 +149,7 @@ In this example, we have taken the [small PyTorch segmentation model](https://gi
 
     Lastly, you can try this sample image [000000000064.jpg](assets/000000000064.jpg){: download="000000000064.jpg" } taken from [COCO128](https://www.kaggle.com/datasets/ultralytics/coco128). 
 
-    <figure markdown="span">
-    ![Sample COCO Image](assets/000000000064.jpg){ align=center }
-    <figcaption>Sample COCO Image</figcaption>
-    </figure>
+    {{ figure("assets/000000000064.jpg", "Sample COCO Image") }}
 
     Once the files have been downloaded, [SCP](../../platforms/networking/ssh.md#secure-copy) the files into the embedded platform.
 
@@ -186,10 +171,7 @@ In this example, we have taken the [small PyTorch segmentation model](https://gi
 
     A new image should be saved `img_vis.jpg` showing the model output visualizations.
 
-    <figure markdown="span">
-    ![Model Inference](assets/img_vis.jpg){align=center}
-    <figcaption>Model Inference</figcaption>
-    </figure>
+    {{ figure("assets/img_vis.jpg", "Model Inference") }}
 
 ## Walkthrough of the Run Model script
 

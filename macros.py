@@ -7,13 +7,22 @@ def define_env(env):
             return f'![{alt}]({path} "{path}")'
         return f'![{alt}]({path})'
     
-    def figure(path, alt):
+    def figure(path, alt, width=None):
         """Return a figure HTML block with image and caption."""
         tooltip = f' "{path}"' if show_paths else ""
-        return f'''<figure markdown="span">
-    ![{alt}]({path}{tooltip}){{ align=center }}
-    <figcaption>{alt}</figcaption>
-</figure>'''
+        if width is None:
+            return \
+            f'''<figure markdown="span">
+            ![{alt}]({path}{tooltip}){{ align=center }}
+            <figcaption>{alt}</figcaption>
+            </figure>'''
+        else:
+            return \
+            f'''<figure markdown="span">
+            ![{alt}]({path}{tooltip}){{ align=center width={width} }}
+            <figcaption>{alt}</figcaption>
+            </figure>'''
+
 
     env.macros.figure = figure
     env.macros.img = img

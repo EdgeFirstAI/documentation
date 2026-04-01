@@ -2,7 +2,7 @@
 
 Now that you have [validated your Fusion model](../validation/fusion/managed.md), this guide will walk you through deploying Fusion models in a [Raivin Platform](../../platforms/index.md) for spatial inference.  
 
-{{ figure("../../platforms/assets/raivin.png", "Raivin") }}
+{{ figure("../../platforms/assets/raivin.png", "Raivin", "50%") }}
 
 For more information, please see the [Web UI Walkthrough](../../platforms/quickstart/raivin/webui.md).
 

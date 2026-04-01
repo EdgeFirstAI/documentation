@@ -1,6 +1,6 @@
 # Raivin Quick Start
 
-{{ img("../../assets/raivin.png", "Raivin") }}{ width="50%" }
+{{ figure("../../assets/raivin.png", "Raivin", "50%") }}
 
 The Raivin configuration further extends the perception capabilities of the [Maivin platform](../maivin/index.md) through the addition of the [integrated radar module](../../hardware/radar.md) or [LiDAR module](../../hardware/lidar.md).  The EdgeFirst Perception Middleware is augmented for Raivin configurations with the [RadarExp Fusion Model](../../../models/fusion/index.md) which provides low-level radar data fusion with the vision data.  The low-level radar data is represented as the range and doppler data cube, the RadarExp module fuses this data with the vision data to provide a more robust perception stack.  The traditional point-cloud data from the radar is also available for use by the Raivin perception stack, and is especially useful for augmenting the object detection and tracking capabilities through the additional parameters offered by the point cloud data.  
 

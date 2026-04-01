@@ -2,7 +2,7 @@
 
 Now that you have validated your Vision Model from either a [managed](../validation/vision/managed.md) or [user-managed](../validation/vision/user_managed.md) session, this guide will walk you through deploying Vision models in an [EdgeFirst Platform](../../platforms/index.md) such as a Maivin or a Raivin.
 
-{{ figure("../../platforms/assets/raivin.png", "Raivin") }}
+{{ figure("../../platforms/assets/raivin.png", "Raivin", "50%") }}
 
 For more information, please see the [Web UI Walkthrough](../../platforms/quickstart/raivin/webui.md).
 

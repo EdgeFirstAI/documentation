@@ -2,7 +2,7 @@
 
 Now that you have validated your Vision Model from either a [managed](../validation/vision/managed.md) or [user-managed](../validation/vision/user_managed.md) session, this guide will walk you through deploying Vision models in a [Maivin Platform](../../platforms/index.md).  
 
-{{ figure("../../platforms/assets/maivin-2.png", "Maivin") }}
+{{ figure("../../platforms/assets/maivin-2.png", "Maivin", "50%") }}
 
 This guide will showcase two methods of deploying the model.
 

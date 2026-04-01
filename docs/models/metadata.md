@@ -10,6 +10,7 @@ EdgeFirst models embed metadata that enables:
 - **Self-Describing Models**: Models contain all information needed for inference without external configuration files
 - **Cross-Platform Compatibility**: Consistent schema across TFLite and ONNX formats
 - **Third-Party Integration**: Any training framework can produce EdgeFirst-compatible models by following this schema
+- **Converter Workflows**: Split hints and calibration artifacts enable model-agnostic conversion pipelines for quantization and target-specific compilation
 
 ### Supported Formats
 
@@ -272,6 +273,24 @@ export:  # See Quantization documentation for ModelPack and Ultralytics
 # Decoder Configuration (Ultralytics only)
 decoder_version: string    # YOLO architecture version: yolov5, yolov8, yolo11, yolo26
 nms: string                # NMS mode for HAL decoder: class_agnostic, class_aware
+
+# Calibration Artifact (see Calibration Artifact section)
+calibration: string          # Snapshot filename: calibration-{dataset_id}-{param_hash}.safetensors
+
+# Split Hints (see Split Hints section)
+split_hints:
+  - type: string             # Hint type (e.g., "quantization_split")
+    target: string           # Output tensor name this hint applies to
+    input_dtype: string      # Suggested input quantization dtype
+    output_dtype: string     # Suggested output quantization dtype
+    description: string      # Human-readable purpose
+    boundaries:              # Channel boundaries within the target tensor
+      - name: string         #   Boundary region name
+        channels: [int, int] #   Channel range [start, end) (exclusive end)
+
+# Converter Traceability (see Converter Traceability section)
+# Converter-specific sections are added at the top level by each converter
+# Examples: "neutron": {...}, "ara2": {...}, "tflite_quantizer": {...}
 
 # Output Specification (Critical for Inference)
 outputs:
@@ -1361,6 +1380,312 @@ outputs:
     anchors: null
     score_format: null             # Not applicable to protos output
 ```
+
+---
+
+## Split Hints
+
+Split hints encode model-specific knowledge about where natural quantization boundaries exist within output tensors. The training framework identifies these boundaries based on its knowledge of the model architecture; the converter decides whether to apply them.
+
+### Purpose
+
+When a single output tensor contains channels with different value distributions (e.g., [0,1]-bounded box coordinates alongside unbounded linear projections), a shared quantization scale degrades accuracy. Split hints tell converters where these natural boundaries exist so they can apply independent quantization scales to each region.
+
+### Schema Governance
+
+Hint types are defined in this schema documentation. The schema defines the vocabulary of hint types, their structure, and their semantics. Training frameworks populate hints according to this vocabulary. Converter UIs are built against the schema vocabulary, not against hints in any particular model.
+
+### `split_hints` Array
+
+The `split_hints` field is a top-level array in `edgefirst.json`. Each element describes one hint.
+
+```yaml
+split_hints:
+  - type: string             # Hint type identifier (see Hint Types below)
+    target: string           # Output tensor name this hint applies to (e.g., "output0")
+    input_dtype: string      # Suggested input quantization dtype (e.g., "uint8")
+    output_dtype: string     # Suggested output quantization dtype (e.g., "int8")
+    description: string      # Human-readable purpose of this split
+    boundaries:              # Channel boundary definitions
+      - name: string         #   Region name (e.g., "detection", "mask_coefs")
+        channels: [int, int] #   Channel range [start, end) — exclusive end index
+```
+
+#### Field Reference
+
+| Field | Type | Required | Description |
+|-------|------|----------|-------------|
+| `type` | string | Yes | Hint type identifier. Converters ignore types they do not understand |
+| `target` | string | Yes | Name of the output tensor this hint applies to (must match an entry in `outputs`) |
+| `input_dtype` | string | No | Suggested input quantization dtype (e.g., `uint8`, `float32`). Converter default, overridable by user |
+| `output_dtype` | string | No | Suggested output quantization dtype (e.g., `int8`, `float32`). Converter default, overridable by user |
+| `description` | string | No | Human-readable description of why this split boundary exists |
+| `boundaries` | array | Yes | Ordered list of channel regions within the target tensor |
+| `boundaries[].name` | string | Yes | Identifier for this region (used in split output naming) |
+| `boundaries[].channels` | [int, int] | Yes | Channel range as `[start, end)` with exclusive end index |
+
+### Behavior Rules
+
+- `split_hints` is an array — multiple hints can coexist (e.g., one per output tensor)
+- Each hint has a `type` field — converters **must ignore** types they do not understand (forward compatibility)
+- Converter UI presents all known split types from this schema as options
+- If the user enables a split type and matching hints exist in the model, the converter applies them
+- If the user enables a split type and no matching hints exist, the converter warns (not an error) and proceeds without splitting
+- Hints include suggested quantization defaults (`input_dtype`, `output_dtype`) that converters use as UI defaults; the user can override them
+- Boundary `channels` ranges must be non-overlapping and cover the full channel dimension of the target tensor when taken together
+
+### Hint Types
+
+#### `quantization_split`
+
+Channel boundaries within an output tensor that have different value distributions and benefit from independent quantization scales. The converter applies graph surgery to split the tensor at the specified boundaries, then quantizes each resulting tensor independently.
+
+**Example: Ultralytics segmentation model**
+
+The monolithic detection output `[1, 116, 8400]` contains 84 detection channels ([0,1]-bounded boxes + scores) and 32 mask coefficient channels (unbounded linear projection). Splitting at channel 84 allows independent quantization scales:
+
+```yaml
+split_hints:
+  - type: "quantization_split"
+    target: "output0"
+    input_dtype: "uint8"
+    output_dtype: "int8"
+    description: "Separate mask coefficients from detection channels for independent quantization"
+    boundaries:
+      - name: "detection"
+        channels: [0, 84]       # boxes (4) + class scores (80), [0,1] bounded
+      - name: "mask_coefs"
+        channels: [84, 116]     # mask coefficient linear projection, unbounded
+```
+
+#### `decoder_offload` (future)
+
+!!! note "Planned"
+    This hint type is reserved for future use. It is documented here to establish the schema vocabulary. Converters should ignore this type until a future schema revision provides the full specification.
+
+Boundary where decoder layers can be removed from the quantized graph and run externally in float32. This is relevant for models where the decoder (e.g., anchor decode, DFL softmax) suffers disproportionate quantization loss compared to the backbone and neck.
+
+#### `cpu_npu_boundary` (future)
+
+!!! note "Planned"
+    This hint type is reserved for future use. It is documented here to establish the schema vocabulary. Converters should ignore this type until a future schema revision provides the full specification.
+
+Suggested partition point for heterogeneous execution across CPU and NPU. The training framework identifies layers that are NPU-friendly (convolutions, dense) versus layers that benefit from CPU execution (complex activations, dynamic shapes).
+
+### Per-Task Split Recommendations
+
+Based on quantization experiments:
+
+| Task | Hints | Rationale |
+|------|-------|-----------|
+| **Detection** | No `split_hints` | Combined output `[1, nc+4, N]` quantizes effectively — boxes and scores are both in [0,1] range |
+| **Segmentation** | One `quantization_split` on output0 | Boxes+scores ([0,1] bounded) share a scale without penalty; mask coefficients (unbounded) need their own scale |
+| **Single-output (BEV)** | No `split_hints` | Single output with uniform value distribution |
+
+---
+
+## Calibration Artifact
+
+Training frameworks produce a calibration artifact containing preprocessed, ready-to-consume calibration data. This artifact enables model-agnostic converters to perform quantization without knowing the model's preprocessing pipeline, input normalization, or data augmentation.
+
+### Rationale
+
+The training stage always generates calibration data because:
+
+- The model knows its own preprocessing (normalization, resizing, color space, [CameraAdaptor](cameraadaptor.md))
+- Multi-input models (e.g., camera + radar fusion) require model-specific preprocessing per input
+- Smart sample selection (percentile bounds, coverage optimization) runs once at training time
+- Converters become truly model-agnostic — they receive ready-to-consume tensors
+
+### Format
+
+Calibration data is stored in [safetensors](https://huggingface.co/docs/safetensors/) format with named tensors corresponding to model input names.
+
+### Naming Convention
+
+Calibration filenames encode the dataset and generation parameters for deterministic caching:
+
+```
+calibration-{dataset_id}-{param_hash}.safetensors
+```
+
+**Example:** `calibration-ds-2bcc-a1b2c3d4.safetensors`
+
+- `{dataset_id}` — Studio dataset label (e.g., `ds-2bcc`)
+- `{param_hash}` — Deterministic hash of the calibration generation parameters
+
+### Parameter Hash
+
+The parameter hash is computed from the inputs that determine calibration content. The hash is over the **parameters**, not the **content** — two trainers using the same parameters will produce the same hash even if they select different samples.
+
+Parameters included in the hash:
+
+| Parameter | Example | Why |
+|-----------|---------|-----|
+| Dataset ID | `ds-2bcc` | Which dataset |
+| Annotation set ID | `as-1a3f` | Which annotation version |
+| Validation group | `val` | Which split |
+| Image size | `640x640` | Resize target |
+| Preprocessing | `normalize_uint8`, `letterbox` | How pixels are transformed |
+| CameraAdaptor | `rgb`, `yuyv`, `grey` | Color space / channel config |
+| Calibration coverage | `10` | Percentage of validation set |
+| Selection algorithm | `greedy_coverage_v1` | Algorithm version (invalidates cache on algorithm changes) |
+
+The hash function and parameter serialization order are defined by each training framework but must be deterministic and consistent across runs.
+
+### Storage: Studio Snapshots
+
+Calibration artifacts are stored as **Studio snapshots**, not session artifacts. The filename is the cache key.
+
+**Trainer workflow:**
+
+1. Compute the parameter hash from calibration generation parameters
+2. Build the filename: `calibration-{dataset_id}-{param_hash}.safetensors`
+3. Look up the snapshot by filename via Studio API
+4. If the snapshot exists → download and use it (skip generation)
+5. If not → generate the calibration set, publish it as a snapshot with this filename
+
+This means a calibration set is generated **once** for a given set of parameters. Subsequent training runs with the same dataset, preprocessing, and coverage reuse the cached snapshot automatically.
+
+### Tensor Naming
+
+Tensor names in the safetensors file **must match the model's input tensor names**. Converters load all tensors by name and feed them to the calibration generator.
+
+#### Single-Input Model
+
+For models with a single image input (e.g., Ultralytics detection or segmentation):
+
+```
+calibration-ds-2bcc-a1b2c3d4.safetensors:
+  images: float32 [500, 3, 640, 640]    # [num_samples, channels, height, width]
+```
+
+- Tensor name `images` matches the model's input tensor name
+- Samples are preprocessed identically to training/inference (normalized to [0.0, 1.0], resized, CameraAdaptor applied)
+- Typical sample count: ~500 images (10% of validation set or 500, whichever is smaller)
+
+#### Multi-Input Model
+
+For models with multiple inputs (e.g., camera + radar fusion):
+
+```
+calibration-ds-2bcc-a1b2c3d4.safetensors:
+  camera: float32 [500, 3, 360, 640]    # [num_samples, channels, height, width]
+  radar:  float32 [500, 200, 128, 8]    # [num_samples, range_bins, doppler_bins, features]
+```
+
+- Each tensor name (`camera`, `radar`) matches the corresponding model input name
+- Each input is preprocessed according to its own pipeline (image normalization for camera, range-doppler processing for radar)
+- All inputs have the same number of samples (first dimension)
+
+### Converter Usage
+
+Converters consume the calibration artifact as follows:
+
+1. Read `edgefirst.json` from the training session to get the calibration filename
+2. Download the calibration snapshot by filename via Studio API
+3. Load all tensors using any safetensors-compatible library
+4. Match tensor names to model input names
+5. Iterate over samples (first dimension) to feed the calibration generator
+
+```python
+from safetensors import safe_open
+
+with safe_open(calibration_path, framework="numpy") as f:
+    tensor_names = f.keys()
+    num_samples = f.get_tensor(next(iter(tensor_names))).shape[0]
+
+    for i in range(num_samples):
+        feed_dict = {name: f.get_tensor(name)[i:i+1] for name in tensor_names}
+        yield feed_dict  # Feed to TFLiteConverter representative_dataset or equivalent
+```
+
+---
+
+## Converter Traceability
+
+When a converter processes a model, it augments the existing `edgefirst.json` with a converter-specific section at the top level. This provides full traceability of all conversion steps applied to the model.
+
+### Rules
+
+- Converters **augment** — they never replace or remove existing fields in `edgefirst.json`
+- Each converter adds a top-level key named after itself (e.g., `"tflite_quantizer"`, `"neutron"`, `"ara2"`)
+- The converter section records conversion parameters, version, and any decisions made during conversion
+- Multiple converter sections can coexist when a model passes through a pipeline chain (e.g., TFLite Quantizer followed by Neutron Converter)
+
+### Converter Section Schema
+
+Each converter section is a free-form object, but should include at minimum:
+
+| Field | Type | Description |
+|-------|------|-------------|
+| `version` | string | Converter app version |
+| `timestamp` | string | ISO 8601 conversion timestamp |
+| `task` | string | Studio batch task ID for this conversion step (e.g., `bt-3a1f`) |
+
+Additional fields are converter-specific and documented by each converter app.
+
+### Example: Single Converter
+
+After TFLite quantization of an Ultralytics detection model:
+
+```json
+{
+  "host": { "studio_server": "test.edgefirst.studio", "..." : "..." },
+  "model": { "..." : "..." },
+  "outputs": [ "..." ],
+  "split_hints": [ "..." ],
+
+  "tflite_quantizer": {
+    "version": "1.0.0",
+    "timestamp": "2026-03-20T15:30:00Z",
+    "task": "bt-3a1f",
+    "input_dtype": "uint8",
+    "output_dtype": "int8",
+    "calibration": "calibration-ds-2bcc-a1b2c3d4.safetensors",
+    "calibration_samples": 500,
+    "splits_applied": ["quantization_split"],
+    "quantizer": "mlir"
+  }
+}
+```
+
+### Example: Pipeline Chain
+
+After TFLite quantization followed by Neutron conversion for i.MX95 deployment:
+
+```json
+{
+  "host": { "..." : "..." },
+  "model": { "..." : "..." },
+  "outputs": [ "..." ],
+
+  "tflite_quantizer": {
+    "version": "1.0.0",
+    "timestamp": "2026-03-20T15:30:00Z",
+    "task": "bt-3a1f",
+    "input_dtype": "uint8",
+    "output_dtype": "int8",
+    "calibration": "calibration-ds-2bcc-a1b2c3d4.safetensors",
+    "calibration_samples": 500,
+    "splits_applied": [],
+    "quantizer": "mlir"
+  },
+
+  "neutron": {
+    "version": "2.1.0",
+    "timestamp": "2026-03-20T15:45:00Z",
+    "task": "bt-3a20",
+    "target": "imx95",
+    "neutron_version": "1.2.0",
+    "delegate": "neutron"
+  }
+}
+```
+
+### Ordering
+
+When a model passes through multiple converters, the chronological order is determined by the `timestamp` field in each converter section. The `task` field links each conversion step back to its Studio batch task (e.g., `bt-3a1f`) for full audit trail.
 
 ---
 

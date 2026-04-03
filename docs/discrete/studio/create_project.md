@@ -1,4 +1,4 @@
-1. From the [User Home Page](../../studio/home.md) screen, click the "Go To Projects" button.
+1. From the [User Home Page](../../studio/home.md) screen, click the "Projects" button.
 
     {{ figure("/studio/assets/user/home-page-goto-projects.png", "Go To Projects") }}
 

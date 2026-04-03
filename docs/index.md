@@ -1,6 +1,6 @@
 # Getting Started
 
-Welcome to EdgeFirst Studio!  Follow this Quickstart for user onboarding from start to finish.  If you already have an account in EdgeFirst Studio, feel free to skip to the [login steps](getting_started/login.md).
+Welcome to EdgeFirst Studio!  Follow this Quick Start for user onboarding from start to finish.  If you already have an account in EdgeFirst Studio, feel free to skip to the [login steps](getting_started/login.md).
 
 ## Sign Up
 

@@ -8,7 +8,7 @@ First ensure that the dataset is ready to be used for training.  This means that
 
 ## Specify Project Experiments
 
-From the projects page, choose the project that contains the dataset you plan to use.  In this example, the project chosen is the "Object Detection" project which was created in the [Quickstart Guide](../../getting_started/create_project.md).  Next click the "Model Experiments" button as indicated in red.
+From the projects page, choose the project that contains the dataset you plan to use.  In this example, the project chosen is the "Object Detection" project which was created in the [Quick Start Guide](../../getting_started/create_project.md).  Next click the "Model Experiments" button as indicated in red.
 
 {{ figure("../assets/training/vision-model-experiments.jpg", "Model Experiments") }}
 

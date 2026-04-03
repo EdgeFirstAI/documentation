@@ -90,6 +90,6 @@ We can also confirm the snapshot on the EdgeFirst Studio Snapshot screen.
 
 ## Next Steps
 
-Once the MCAP is uploaded as a snapshot to EdgeFirst Studio, you can [restore the snapshot](../../studio/snapshots.md#restore-snapshot) into the initial project you created as part of the [Studio Quickstart](../../index.md).
+Once the MCAP is uploaded as a snapshot to EdgeFirst Studio, you can [restore the snapshot](../../studio/snapshots.md#restore-snapshot) into the initial project you created as part of the [EdgeFirst Studio Quick Start](../../index.md).
 !!! warning
     Restoring a snapshot into a dataset will accrue costs from your EdgeFirst Studio account.

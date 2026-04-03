@@ -10,7 +10,7 @@ A new annotation set was created called "new-annotations".
 
 {{ figure("/datasets/assets/annotations/new-annotation-set.jpg", "New Annotation Set") }}
 
-Next, open the dataset gallery, by clicking on the gallery button ![Gallery Button](../../assets/buttons/studio-gallery-button.jpg) on the top left of the dataset card.  The dataset will contain sequences (video) ![Sequences Icon](../../assets/buttons/studio-sequence-icon.jpg) and images.  Click on any sequence card to start [annotating sequences](../../datasets/tutorials/annotations/automatic.md#semi-automatic-ground-truth-generation).
+Next, open the dataset gallery, by clicking on the image preview.  The dataset will contain sequences (video) and images.  Click on any sequence card to start [annotating sequences](../../datasets/tutorials/annotations/automatic.md#semi-automatic-ground-truth-generation).
 
 {{ figure("/datasets/assets/annotations/coffee-cup-gallery.jpg", "Coffee Cup Gallery") }}
 

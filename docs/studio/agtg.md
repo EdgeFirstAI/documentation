@@ -19,9 +19,11 @@ This functionality is available at the time of restoring a snapshot.  To invoke 
 
 This functionality is available after importing the dataset into EdgeFirst Studio.  This type of AGTG requires user annotations in the starting frame to give SAM-2 context as to which objects to annotate throughout the rest of the frames.  This section will describe this type of AGTG.  However, the tutorial for this workflow is found under [Dataset Annotations](../datasets/tutorials/annotations/automatic.md#semi-automatic-ground-truth-generation).
 
-This AGTG feature can be found in the [dataset gallery](datasets/gallery.md).  The dataset gallery can contain sequences or images which are distinguished by the presence of the sequence icon ![Sequence Icon](../assets/buttons/studio-sequence-icon.jpg) on the image card as shown below.
+This AGTG feature can be found in the [dataset gallery](datasets/gallery.md).  The dataset gallery can contain sequences or images.
 
-{{ figure("../datasets/assets/management/sample-dataset-image.jpg", "Dataset Sequence") }}
+{{ figure("../datasets/assets/management/sample-dataset-sequences.jpg", "Dataset Sequences") }}
+
+{{ figure("../datasets/assets/management/sample-dataset-images.jpg", "Dataset Images") }}
 
 The SAM-2 propagation step is only available for sequences.  However, images can still be annotated using SAM-2, but through individual annotations which requires more effort over sequences as shown in the [Manual Annotations](../datasets/tutorials/annotations/manual.md#add-2d-annotations).
 

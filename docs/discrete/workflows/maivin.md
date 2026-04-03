@@ -17,7 +17,7 @@ You will be greeted with the Maivin [Web UI Main Page](../../platforms/quickstar
 
 {% include-markdown "discrete/datasets/restore_snapshot.md" heading-offset=0 %}
 
-Next [navigate to the gallery](../../datasets/tutorials/management.md#view-dataset) of the dataset by clicking on the gallery button ![Gallery Button](../../assets/buttons/studio-gallery-button.jpg).  To correct any mistakes from the auto-annotation process, follow the tutorials described under [manual annotations](../../datasets/tutorials/annotations/manual.md#manual-2d-annotations).
+Next [navigate to the gallery](../../datasets/tutorials/management.md#view-dataset) of the dataset by clicking on the image preview on the dataset card.  To correct any mistakes from the auto-annotation process, follow the tutorials described under [manual annotations](../../datasets/tutorials/annotations/manual.md#manual-2d-annotations).
 
 Finally, [split the dataset](../../datasets/tutorials/management.md#split-dataset) into training and validation groups.
 

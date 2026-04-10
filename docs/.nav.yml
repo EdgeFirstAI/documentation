@@ -76,6 +76,25 @@ nav:
       - datasets/tutorials/management.md
   - Models:
     - models/index.md
+    - Model Zoo:
+      - ModelPack:
+        - models/modelpack/index.md
+        - Quick Start Guide:
+          - models/modelpack/tutorials/index.md
+          - models/modelpack/tutorials/measurement_tape.md
+          - models/modelpack/tutorials/musicbox.md
+        - Benchmarks: models/modelpack/benchmarks.md
+        - models/modelpack/quantize.md
+        - models/modelpack/npu.md
+      - Ultralytics:
+          - models/ultralytics/index.md
+          - Benchmarks: models/ultralytics/benchmarks.md
+          - models/ultralytics/quantize.md
+          - models/ultralytics/neutron.md
+          - models/ultralytics/npu.md
+      - Fusion:
+        - models/fusion/index.md
+        - Benchmarks: models/fusion/benchmarks.md
     - Model Training:
       - models/training/vision.md
       - models/training/fusion.md
@@ -103,25 +122,6 @@ nav:
       - models/deployment/maivin.md
       - models/deployment/2d_raivin.md
       - models/deployment/3d_raivin.md
-    - Model Zoo:
-      - ModelPack:
-        - models/modelpack/index.md
-        - Quick Start Guide:
-          - models/modelpack/tutorials/index.md
-          - models/modelpack/tutorials/measurement_tape.md
-          - models/modelpack/tutorials/musicbox.md
-        - Benchmarks: models/modelpack/benchmarks.md
-        - models/modelpack/quantize.md
-        - models/modelpack/npu.md
-      - Ultralytics:
-          - models/ultralytics/index.md
-          - Benchmarks: models/ultralytics/benchmarks.md
-          - models/ultralytics/quantize.md
-          - models/ultralytics/neutron.md
-          - models/ultralytics/npu.md
-      - Fusion:
-        - models/fusion/index.md
-        - Benchmarks: models/fusion/benchmarks.md
     - models/metadata.md
     - models/augmentations.md
     - models/cameraadaptor.md

@@ -1,4 +1,4 @@
-# Deploying to the Raivin
+# Deploying to the Raivin (Fusion)
 
 Now that you have [validated your Fusion model](../validation/fusion/managed.md), this guide will walk you through deploying Fusion models in a [Raivin Platform](../../platforms/index.md) for spatial inference.  
 

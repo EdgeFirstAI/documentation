@@ -1,14 +1,20 @@
 # Training Vision Models
 
-This tutorial describes the steps to train **Vision** models in EdgeFirst Studio.  For a tutorial to train Fusion models, see [Training Fusion Models](fusion.md).
+This tutorial describes the steps to train **Vision** models in EdgeFirst Studio.  Recall that Vision models are models that perform object detection in camera frames or images.  EdgeFirst Studio is capable of training ModelPack and Ultralytics object detection models.  For a tutorial to train Fusion models, see [Training Fusion Models](fusion.md).
 
 ## View Dataset
 
-First ensure that the dataset is ready to be used for training.  This means that the dataset is properly annotated and the dataset is properly split into training and validation groups.  The section in [View Dataset](../../datasets/tutorials/management.md#view-dataset) will show what to look for in a dataset before deploying it for training.
+First ensure that the dataset is ready to be used for training.  This means that the dataset meets all of the criteria listed below. 
+
+- [x] Complete Annotations (bounding boxes and/or segmentation masks/polygons)
+- [x] Contains training and validation partitions
+- [x] Contains a dataset tag/version
+
+The section [View Dataset](../../datasets/tutorials/management.md#view-dataset) will show an example of a completed dataset.
 
 ## Specify Project Experiments
 
-From the projects page, choose the project that contains the dataset you plan to use.  In this example, the project chosen is the "Object Detection" project which was created in the [Quick Start Guide](../../getting_started/create_project.md).  Next click the "Model Experiments" button as indicated in red.
+From the [Projects page](../../studio/projects.md), choose the project that contains the dataset you plan to use.  In this example, the project chosen is called "My First Project".  Next click the "Model Experiments" button as indicated in red.
 
 {{ figure("../assets/training/vision-model-experiments.jpg", "Model Experiments") }}
 
@@ -18,13 +24,9 @@ You will be greeted with the "Model Experiments" page.  A new project will not h
 
 {{ figure("../assets/training/vision-model-experiments-page.jpg", "Model Experiments Page") }}
 
-Click on the "New Experiment" button as shown on the top right corner of the page.
+Click on the "New Experiment" button as shown on the top right corner of the page.  Enter the name and the description of the experiment marked by the fields shown below.  Click on the "Create New Experiment" button to create your experiment.
 
-{{ figure("../assets/training/new-experiment-button.jpg", "New Experiment Button") }}
-
-Enter the name and the description of the experiment marked by the fields shown below.  Click on the "Create New Experiment" button to create your experiment.
-
-{{ figure("../assets/training/vision-model-experiments-fields.jpg", "Experiment Fields") }}
+{{ figure("../assets/training/vision-create-experiment.jpg", "New Experiment Button") }}
 
 Your created experiment will appear like the following below.  At the start, this experiment will contain zero training and validation sessions.  The next step will show how to start your first training session on this experiment using the dataset in the project.
 
@@ -40,11 +42,11 @@ You will be greeted to the "Training Sessions" page as shown below.
 
 {{ figure("../assets/training/vision-training-sessions-page.jpg", "Training Sessions Page") }}
 
-Start a training session by clicking on the "New Session" button on the top right corner of the page.
+Start a training session by clicking on the "Actions" button on the top right corner of the page and then click "+ New" as indicated.
 
 {{ figure("../assets/training/new-session-button.jpg", "New Session Button") }}
 
-You will be greeted with a training session dialog.  In this dialog, specify the "Trainer Type" to either "ModelPack" or "Ultralytics" and provide a name and description of the training session as shown below.  Next specify the dataset to be used with training and validation partitions.  In this example, the dataset specified is the "Coffee Cup" dataset which was created in the [Getting Started](../../getting_started/capture_data.md).  Next specify the training parameters.  By default, an object detection (bounding boxes) model will be trained.  However, you can specify either "Segmentation" or both.  Additional information on these parameters are provided by hovering over the info button ![Info Button](../../assets/buttons/studio-info-button.jpg).
+You will be greeted with a training session dialog.  In this dialog, specify the "Trainer Type" to either "ModelPack" or "Ultralytics" and provide a name and description of the training session as shown below.  Next specify the dataset to be used with training and validation partitions.  In this example, the dataset specified is the "Coffee Cup" dataset which was used as an example under the [Getting Started](../../getting_started/capture_data.md).  Next specify the training parameters.  By default, object detection (bounding boxes) model will be trained.  However, you can specify either "Segmentation" or both.  Additional information on these parameters are provided by hovering over the info button ![Info Button](../../assets/buttons/studio-info-button.jpg).
 
 !!! tip "Input Resolution"
     We recommend changing the input resolution to 640x360 to maximize detection rates on small datasets.
@@ -56,23 +58,24 @@ For more information on available "Data Augmentations" please see [Vision Augmen
 
 {{ figure("../assets/training/vision-train-settings.jpg", "Training Session Fields") }}
 
- 1. **Model Name**: This field specifies the name of the training session and will be used to name the artifacts (e.g. `modelpack-coffecup-640x640-rgba-t-<session ID>.tflite` or `modelpack-coffecup-640x640-rgba-t-<session ID>.onnx`).
- 2. **Description**: This field is used to add some hints about the training session.  Commonly used to highlight some parameters.
- 3. **Training Data**: In this section the user must select the dataset as well as train/val groups.
- 4. **Input Resolution**: The user can pick predefined input resulutions.  Even when ModelPack accepts any resolution we keep this option as simple as possible.  In case you need a different resolution to be supported, please reach out and [email our support team](mailto:support@edgefirst.ai).
- 5. **Camera Adaptor**: Select the target camera format for your deployment platform. See [Camera Adaptor](../cameraadaptor.md) for details on available formats and platform guidance.
- 6. **Model Parameters**: This section configures the model architecture.
-    1. **Model Backbone**: Model backbone exposes a CSPDarknet19 optimized for boosting inference time and a CSPDarknet53 optimized for accuracy.
-    2. **Model Size**: Similar to modern architectures, ModelPack also accepts dynamic scaling factors (`width in [0.25, 0.5, 0.75, 1.0]`, `depth in [0.33, 0.33, 0.66, 1.0]`).
-    3. **Activation Function**: This parameter defines the main activation used in the model. Exposed values are ReLU, ReLU6 and SiLU.  The best tradeoff between speed and accuracy is produced by ReLU6 activation in most of the cases.
-    4. **Interpolation Method**: Model upsample layers are ruled by a resize operation.  This operation can run with two different algorithms: `Bilinear` or `Nearest`.
-    5. **Object Detection**: Enables object detection task (enabled by default).
-    6. **Segmentation**: Enables Semantic Segmentation.
-    7. **Space to Depth**: This feature enables the Space to Depth Transformation to the input in order to reduce model complexity on higher resolutions.
-    8. **Split Decoder**: Remove the decoder from the model and use a very optimized one from EdgeFirst.  This feature is very useful when the location of the boxes has to be precise (0-offset).
- 7. **Training Parameters**: In this section the user is able to specify the number of epochs to train the model as well as the batch size.  Remember the larger the input resolution the smaller the batch size.
- 8. **Data Augmentation**: This section controls the probablity of each augmentation technique.  This feature is crucial for training models and reduce overfitting, especially in small datasets.
- 9. **Start Session**: This button will start the training session.
+1. **Model Name**: This field specifies the name of the training session and will be used to name the artifacts (e.g. `modelpack-coffecup-640x640-rgba-t-<session ID>.tflite` or `modelpack-coffecup-640x640-rgba-t-<session ID>.onnx`)
+2. **Description**: This field is used to add some hints about the training session.  Commonly used to highlight some parameters
+3. **Training Data**: In this section the user must select the dataset as well as train/val groups
+4. **Input Resolution**: The user can pick predefined input resulutions.  Even when ModelPack accepts any resolution we keep this option as simple as possible.  In case you need a different resolution to be supported, please reach out and [email our support team](mailto:support@edgefirst.ai)
+5. **Camera Adaptor**: ModelPack accepts six different input optimizations.  It could be either of RGB, BGR, RGBA, BGRA, Greyscale, or YUYV
+6. **Model Parameters**: This section configures the model architecture
+    1. **Model Backbone**: Model backbone exposes a CSPDarknet19 optimized for boosting inference time and a CSPDarknet53 optimized for accuracy
+    2. **Model Size**: Similar to modern architectures, ModelPack also accepts dynamic scaling factors (`width in [0.25, 0.5, 0.75, 1.0]`, `depth in [0.33, 0.33, 0.66, 1.0]`)
+    3. **Activation Function**: This parameter defines the main activation used in the model. Exposed values are ReLU, ReLU6 and SiLU.  The best tradeoff between speed and accuracy is produced by ReLU6 activation in most of the cases
+    4. **Interpolation Method**: Model upsample layers are ruled by a resize operation.  This operation can run with two different algorithms: `Bilinear` or `Nearest`
+    5. **Object Detection**: Enables object detection task (enabled by default)
+    6. **Segmentation**: Enables Semantic Segmentation
+    7. **Space to Depth**: This feature enables the Space to Depth Transformation to the input in order to reduce model complexity on higher resolutions
+    8. **Split Decoder**: Remove the decoder from the model and use a very optimized one from EdgeFirst.  This feature is very useful when the location of the boxes has to be precise (0-offset)
+7. **Training Parameters**: In this section the user is able to specify the number of epochs to train the model as well as the batch size.  Remember the larger the input resolution the smaller the batch size
+8. **Data Augmentation**: This section controls the probablity of each augmentation technique.  This feature is crucial for training models and reduce overfitting, especially in small datasets
+9. **Export Parameters**: Allow the user to set a portion of data for calibration when exporting the model for INT8 quantization
+10. **Start Session**: This button will start the training session
 
 ## Session Progress
 
@@ -81,7 +84,7 @@ Once the training session has started, the progress with the stages will be show
 {{ figure("../assets/training/vision-session-progress.jpg", "Training Session") }}
 
 The training process begins with cloud instance initialization. Then the dataset is downloaded and cached.  Training starts afterwards.
-At the end of the training process, ModelPack quantizes the model and publishes the checkpoints.
+At the end of the training process, the model is quantized and the model artifacts will be published on the training session available for download.
 
 ## Completed Session
 
@@ -95,7 +98,7 @@ The attributes of the training sessions in EdgeFirst Studio are labeled below.
 
 ## Training Outcomes
 
-Once the training session completes, you can view the training charts by clicking the "View Training Charts" button on the top of the session card.
+Once the training session completes, you can view the training charts by clicking the "view training session charts" button on the top of the session card.
 
 {{ figure("../assets/training/vision-charts.jpg", "Training Charts") }}
 
@@ -103,11 +106,9 @@ You can go back to the training session card by pressing the "Back" button as in
 
 {{ figure("../assets/training/back-button.jpg", "Back to the Session Card") }}
 
-The trained model artifacts can be downloaded by clicking the "View Additional Details" button on the training session card in EdgeFirst Studio.  This will open the session details and the models are listed under the "Artifacts" tab as shown below.  Click on the downward arrows to download the models to your PC.
+The trained model artifacts can be downloaded by clicking the session card.  This will open the session details and the models are listed under the "Artifacts" tab as shown below.  Click on the downward arrows to download the models to your PC.
 
-| Session Details                                                | Artifacts                                                                     |
-|----------------------------------------------------------------|-------------------------------------------------------------------------------|
-| ![session](../assets/training/vision-session-details.jpg) | ![artifacts](../assets/training/vision-session-artifacts.jpg) |
+{{ figure("../assets/training/vision-session-artifacts.jpg", "Training Session Artifacts") }}
 
 It is also possible to compare the training metrics for multiple sessions.  See [Training Sessions](../../studio/models.md#training-sessions) in the Model Experiments Dashboard for further details.
 
@@ -116,4 +117,4 @@ It is also possible to compare the training metrics for multiple sessions.  See 
 
 ## Next Steps
 
-Now that you have generated your Vision model, follow along the next steps for validating your model either through [managed](../validation/vision/managed.md) or [user-managed](../validation/vision/user_managed.md) validation sessions.
+Now that you have trained your model, you can validate the performance of your model either [on target/device]((../validation/vision/user_managed.md)) or on the [cloud](../validation/vision/managed.md).

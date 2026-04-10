@@ -1698,7 +1698,7 @@ When a model passes through multiple converters, the chronological order is dete
 5. [On Cloud Validation](validation/vision/managed.md) - Managed validation sessions
 6. [On Target Validation](validation/vision/user_managed.md) - User-managed validation with `edgefirst-validator`
 7. [ModelPack Quantization](modelpack/quantize.md) - Converting ONNX to quantized TFLite
-8. [Deploying to Embedded Targets](deployment/evk.md) - Model deployment workflow
+8. [Deploying to Embedded Targets](deployment/launcher.md) - Model deployment workflow
 9. [EdgeFirst Perception Middleware](../perception/index.md) - Runtime inference stack
 10. [Dataset Zoo](../datasets/index.md) - Available datasets for training
 11. [Model Experiments Dashboard](../studio/models.md) - Managing training and validation sessions

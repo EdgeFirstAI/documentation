@@ -1,12 +1,14 @@
 # On Cloud Validation
 
-This tutorial will show the steps for running validation on the cloud. This type of validation is hosted as a managed validation session in EdgeFirst Studio.  A managed validation session is self hosted in an EC2 instance which is suited for users that do not have an embedded platform available to host the validation process.  In this tutorial, you will validate a **Vision** model that was trained through the [end-to-end workflows](../../../getting_started/workflows/index.md) or [Training Vision](../../training/vision.md).  For a tutorial to validate Fusion models, see [Validating Fusion Models](../fusion/managed.md).
+This tutorial walks through how to run validation in the cloud using EdgeFirst Studio. In this setup, validation is executed as a **managed validation session**, which runs on a self-hosted EC2 instance.  This option is ideal for users who do not have access to an embedded platform to host the validation process locally.
 
-Another type of validation is the [On Target Validation](user_managed.md) which is hosted as a user-managed validation session in EdgeFirst Studio.  A user-managed validation session deploys the model in an embedded platform.
+In this tutorial, you will validate a **Vision** model trained using either the [end-to-end workflows](../../../getting_started/workflows/index.md) or the [Training Vision](../../training/vision.md) guide.  Note that a Vision model detects objects in camera frames or images.  If you are working with Fusion models, refer to [Validating Fusion Models](../fusion/managed.md).
+
+Alternatively, EdgeFirst Studio also supports **On-Target Validation**, which runs as a user-managed validation session. In this mode, the model is deployed and validated directly on an embedded platform.  For more details, see [On Target Validation](user_managed.md).
 
 {% include-markdown "discrete/studio/create_mpk_validation_session.md" %}
 
-You will be greeted with a validation session dialog.  In this dialog, specify the name of the validation session, the model to validate, and the dataset to deploy.  In this example, the TFLite model will be validated and the "Coffee Cup" dataset with the validation partition will be used.  Additional parameters are available on the right for user override. Otherwise the same parameters set in the training session will be used. For more information on these parameters hover over the info button ![Info Button](../../../assets/buttons/studio-info-button.jpg).
+You will be greeted with a validation session dialog.  In this dialog, specify the name of the validation session, the model to validate, and the dataset to deploy.  In this example, the ONNX model will be validated and the "Coffee Cup" dataset with the validation partition will be used.  Additional parameters are available on the right for user override. Otherwise the same parameters set in the training session will be used. For more information on these parameters hover over the info button ![Info Button](../../../assets/buttons/studio-info-button.jpg).
 
 {{ figure("../../assets/validation/vision-validate-settings.jpg", "Validation Session Fields") }}
 
@@ -30,7 +32,7 @@ The attributes of the validation sessions in EdgeFirst Studio are labeled below.
 
 ## Validation Metrics
 
-Once the validation session completes, you can view the validation metrics by clicking the "View Validation Charts" button on the top of the session card.
+Once the validation session completes, you can view the validation metrics by clicking the "view validation charts" button on the top of the session card.
 
 {{ figure("../../assets/validation/vision-charts.jpg", "Validation Charts") }}
 
@@ -47,4 +49,4 @@ It is also possible to compare validation metrics for multiple sessions.  See [V
 
 ## Next Steps
 
-Now that you have validated your Vision model, you can find examples for deploying your model in the [EVK](../../deployment/evk.md) or the [Maivin Platform](../../deployment/maivin.md).  Furthermore, you can also find examples for running your [ModelPack model](../../deployment/pc/mpk.md) or [Ultralytics model](../../deployment/pc/ultralytics.md) in your PC.
+Now that you have validated your model, you can find examples for deploying your model in [EdgeFirst Studio](../../deployment/studio.md), [PC](../../deployment/pc/index.md), [Embedded Targets](../../deployment/launcher.md), the [Maivin](../../deployment/maivin.md), and the [Raivin](../../deployment/2d_raivin.md). 

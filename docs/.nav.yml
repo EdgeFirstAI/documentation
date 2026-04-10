@@ -42,15 +42,6 @@ nav:
       - 3D/deployment.md
   - Datasets:
     - datasets/index.md
-    - EdgeFirst Dataset Format:
-      - datasets/format/index.md
-      - datasets/format/structure.md
-      - datasets/format/box_format.md
-      - datasets/format/schema.md
-      - datasets/format/sensors.md
-      - datasets/format/formats.md
-      - datasets/format/conversion.md
-      - datasets/format/migration.md
     - Dataset Zoo:
       - Coffee Cup:
         - datasets/coffeecup/index.md
@@ -65,6 +56,15 @@ nav:
         - datasets/coco/import.md
       - Raivin Ultra Short:
         - datasets/raivin_ultra_short/index.md
+    - EdgeFirst Dataset Format:
+      - datasets/format/index.md
+      - datasets/format/structure.md
+      - datasets/format/box_format.md
+      - datasets/format/schema.md
+      - datasets/format/sensors.md
+      - datasets/format/formats.md
+      - datasets/format/conversion.md
+      - datasets/format/migration.md
     - Dataset Tutorials:
       - datasets/tutorials/index.md
       - datasets/tutorials/capture.md
@@ -118,13 +118,13 @@ nav:
       - Deploying to the PC:
         - models/deployment/pc/mpk.md
         - models/deployment/pc/ultralytics.md
-      - models/deployment/evk.md
+      - models/deployment/launcher.md
       - models/deployment/maivin.md
       - models/deployment/2d_raivin.md
       - models/deployment/3d_raivin.md
     - models/metadata.md
-    - models/augmentations.md
     - models/cameraadaptor.md
+    - models/augmentations.md
   - Perception:
     - perception/index.md
     - perception/studio.md

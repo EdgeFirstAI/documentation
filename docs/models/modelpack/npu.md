@@ -161,4 +161,4 @@ The `run-tflite.py` script executes the following steps to run the TFLite model 
 
 ## Next Steps
 
-In this section you have seen how you can utilize a simple python script to run model inference on a single input image.  For example on deploying the model on target on a live camera feed, proceed to Deploying Quantized Models in the [EVK](../deployment/evk.md) or [Maivin](../deployment/maivin.md).
+In this section you have seen how you can utilize a simple python script to run model inference on a single input image.  For example on deploying the model on target on a live camera feed, proceed to Deploying Quantized Models in [Embedded Targets](../deployment/launcher.md) or [Maivin](../deployment/maivin.md).

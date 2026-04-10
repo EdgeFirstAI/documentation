@@ -1,28 +1,12 @@
-# Validating Fusion Models
+# On Cloud Validation
 
-This tutorial will describe the steps to validate the performance of **Fusion** models in EdgeFirst Studio that have been trained through the [end-to-end workflows](../../../getting_started/workflows/index.md) or [Training Fusion](../../training/fusion.md).  For a tutorial to validate Vision models, see [Validating Vision](../vision/managed.md).
+This tutorial walks through how to run validation in the cloud using EdgeFirst Studio. In this setup, validation is executed as a **managed validation session**, which runs on a self-hosted EC2 instance.  This option is ideal for users who do not have access to an embedded platform to host the validation process locally.
 
-## Specify Project Experiments
+In this tutorial, you will validate a **Fusion** model trained using either the [end-to-end workflows](../../../getting_started/workflows/index.md) or the [Training Fusion](../../training/fusion.md) guide.  Note that a Fusion model performs spatial perception using Radar and Camera sensors.  If you are working with Vision models, refer to [Validating Vision Models](../vision/managed.md).
 
-From the projects page, choose the project that contains the training session with the models you want to validate.  In this example, the project chosen is the "Spatial Perception" project.  Next click the "Model Experiments" button as indicated in red.
+{% include-markdown "discrete/studio/create_mpk_validation_session.md" %}
 
-{{ figure("../../assets/training/fusion-model-experiments.jpg", "Model Experiments") }}
-
-## Create Validation Session
-
-In the experiment card, click the "Validate Sessions" button as indicated in red below.
-
-{{ figure("../../assets/validation/fusion-validation-sessions.jpg", "Validate Sessions") }}
-
-You will be greeted to the "Validate Sessions" page as shown below.
-
-{{ figure("../../assets/validation/fusion-validation-sessions-page.jpg", "Validate Sessions Page") }}
-
-Start a validation session by clicking on the "New Session" button on the top right corner of the page.
-
-{{ figure("../../assets/training/new-session-button.jpg", "New Session Button") }}
-
-You will be greeted with the validation session dialog.  In this dialog, specify the name of the validation session, the model to validate, and the dataset to deploy.  In this example, the TFLite model will be validated and the "Raivin Ultra Short 25.03 (Copy)" dataset with the validation partition will be used.  Next specify, the validation parameters such as the detection window size and the detection threshold.  Additional information on these parameters are provided by hovering over the info button ![Info Button](../../../assets/buttons/studio-info-button.jpg).
+You will be greeted with the validation session dialog.  In this dialog, specify the name of the validation session, the model to validate, and the dataset to deploy.  In this example, the ONNX model will be validated.  Next specify, the validation parameters such as the detection window size and the detection threshold.  Additional information on these parameters are provided by hovering over the info button ![Info Button](../../../assets/buttons/studio-info-button.jpg).
 
 The only augmentation available for this type of validation is `blur`.  See [Vision Augmentations](../../augmentations.md#blur) for further details.
 

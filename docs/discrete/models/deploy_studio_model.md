@@ -6,11 +6,11 @@ Navigate to the training session you wish to deploy by going back to the "Projec
 
 Click on the model experiments of your project.
 
-{{ figure("/models/assets/deployment/vision-model-experiments.jpg", "Model Experiments Page") }}
+{{ figure("/models/assets/deployment/model-experiments.jpg", "Model Experiments Page") }}
 
 Click on the training sessions of your experiment.
 
-{{ figure("/models/assets/deployment/vision-training-sessions.jpg", "Training Sessions") }}
+{{ figure("/models/assets/deployment/training-sessions.jpg", "Training Sessions") }}
 
 Click on the selected training session.
 

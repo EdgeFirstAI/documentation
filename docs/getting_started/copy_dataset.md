@@ -1,4 +1,4 @@
-# Copy Dataset
+# Copy Sample Dataset
 
 Now that you have created your own project, you will need a dataset inside your project which you will use to train your model.
 
@@ -10,7 +10,11 @@ Under "Sample Project", click the "Datasets" button.
 
 Inside "Sample Project", you will find a sample dataset called "Coffee Cup".  You will be copying this dataset to train a model that detects coffee cups on images.
 
+## Copy Dataset
+
 {% include-markdown "discrete/datasets/copy_dataset.md" heading-offset=0 %}
+
+## Tag Dataset
 
 {% include-markdown "discrete/datasets/tag_dataset.md" heading-offset=0%}
 

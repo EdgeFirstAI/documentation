@@ -8,7 +8,6 @@ The Main Page of the Raivin web interface should look as follows:
 
 {{ figure("../../assets/setup/quickStart-mainPage.png", "Raivin Main Page") }}
 
-
 There are five cards on the Main Page that link to the Visualization pages:
 
 - **GPS**: This page displays a map with the current location of the device, along with GPS coordinates.
@@ -48,5 +47,3 @@ This page shows the segmentation view, the occupancy grid, and the 3D LiDAR view
 ## Next Steps
 
 Now that you have setup your Raivin and are familiar with the Raivin's Web UI, you can proceed to [copying a public dataset](copy_dataset.md) in [EdgeFirst Studio](https://edgefirst.studio/) to train your own vision model that will be deployed in this device.
-
-Otherwise, you can skip the training steps and proceed to [deploy pre-trained models](deploy_pretrained.md) from EdgeFirst Studio.

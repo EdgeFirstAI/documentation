@@ -16,7 +16,7 @@ The section [View Fusion Dataset](../../datasets/tutorials/management.md#view-fu
 
 From the [Projects page](../../studio/projects.md), choose the project that contains the dataset you plan to use.  In this example, the project chosen is called "My First Project" project.  Next click the "Model Experiments" button as indicated in red.
 
-{{ figure("../assets/training/vision-model-experiments.jpg", "Model Experiments") }}
+{{ figure("../assets/training/model-experiments.jpg", "Model Experiments") }}
 
 {% include-markdown "discrete/models/create_model_experiments.md" %}
 
@@ -24,11 +24,11 @@ From the [Projects page](../../studio/projects.md), choose the project that cont
 
 In the experiment card, click the "Training Sessions" button as indicated in red below.
 
-{{ figure("../assets/training/vision-training-sessions.jpg", "Training Sessions") }}
+{{ figure("../assets/training/training-sessions.jpg", "Training Sessions") }}
 
 You will be greeted to the "Training Sessions" page as shown below.  
 
-{{ figure("../assets/training/vision-training-sessions-page.jpg", "Training Sessions Page") }}
+{{ figure("../assets/training/training-sessions-page.jpg", "Training Sessions Page") }}
 
 Start a training session by clicking on the "New Session" button on the top right corner of the page.
 

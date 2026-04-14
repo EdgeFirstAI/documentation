@@ -1,8 +1,8 @@
 # Validate Vision Model
 
-Now that you have trained a model, you can validate the model's performance on target by following the instructions of this page.
+Now that you have trained a model, you can validate the model's performance on target by following the instructions on this page.
 
-On the training session card, expand the session details.
+If you haven't already, click on the training session card for more information.
 
 {{ figure("/models/assets/training/vision-view-train-details.jpg", "Training Details") }}
 
@@ -14,7 +14,7 @@ Select the "User Managed" option. Specify the name of the validation session and
 
 {{ figure("/models/assets/validation/user-managed-vision-session-fields.jpg", "Start Validation Session") }}
 
-The validation session card will appear like the following below.  Each session has a session ID.  Make a note of the session ID circled in red below.  In this case it is `v-c1f`.
+The validation session card will appear like the following below.  Each session has a session ID.  Make a note of the session ID circled in red below.  In this case it is `v-1b51`.
 
 {{ figure("/models/assets/validation/user-managed-vision-session-id.jpg", "Validation Session ID") }}
 
@@ -24,7 +24,7 @@ Once the validation session has been created, [SSH](../../platforms/networking/s
     To avoid re-installation of existing system packages, we recommend setting up a [Python virtual environment](https://docs.python.org/3/library/venv.html#creating-virtual-environments)
     prior to running the pip installations below.  Append `--system-site-packages` when creating the environment to include existing packages in the system.  For example:
 
-    * Linux `python3 -m venv /path/to/myvenv --system-site-packages`
+    * Linux `python3 -m venv /path/to/myenv --system-site-packages`
     * Windows `python -m venv /path/to/myenv --system-site-packages`
 
     Activate the environment via:
@@ -45,13 +45,10 @@ edgefirst-client login
 Once the validator is installed and authenticated, run validation using the following command.  Replace the session ID specific to your session card.
 
 ```shell
-edgefirst-validator --session-id v-c1f
+edgefirst-validator --session-id v-1b51
 ```
 
-!!! note
-    Replace the session ID parameter specific to the validation session ID in your session.
-
-If the model already exists in your system, you can run this command `edgefirst-validator /path/to/mymodel.tflite --session-id v-c1f`.  Otherwise, the model will be downloaded as an artifact from the EdgeFirst Studio training session.
+If the model already exists in your system, you can run this command `edgefirst-validator /path/to/mymodel.tflite --session-id v-1b51`.  Otherwise, the model will be downloaded as an artifact from the EdgeFirst Studio training session.
 
 Once entered, the following validation progress should now be indicated in EdgeFirst Studio as shown below.
 
@@ -61,7 +58,7 @@ The completed session will look as follows with the status set to "Complete".
 
 {{ figure("/models/assets/validation/user-managed-vision-completed-session.jpg", "Completed Session") }}
 
-Once the validation session completes, you can view the validation metrics by clicking the "View Validation Charts" button at the top of the session card.
+Once the validation session completes, you can view the validation metrics by clicking the "view validation session charts" button at the top right of the session card.
 
 {{ figure("/models/assets/validation/vision-charts.jpg", "Validation Charts") }}
 

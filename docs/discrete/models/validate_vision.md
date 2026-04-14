@@ -6,9 +6,9 @@ If you haven't already, click on the training session card for more information.
 
 {{ figure("/models/assets/training/vision-view-train-details.jpg", "Training Details") }}
 
-Click the "Validate" button at the top right of the session as shown.
+On the top right corner of the page, click on the "validate" button as indicated.
 
-{{ figure("/models/assets/training/vision-validate-button.jpg", "Create Validation Session") }}
+{{ figure("/models/assets/validation/training_validate_button.jpg", "Validate Button") }}
 
 Specify the name of the validation session and the model and the dataset for validation.  The rest of the settings were kept as defaults.  Click "Start Session" at the bottom to start the validation session.
 
@@ -20,7 +20,7 @@ Go to the created validation session by first going back to the "Model Experimen
 
 Next, click the validation sessions of the model experiments.
 
-{{ figure("/models/assets/validation/vision-validation-sessions.jpg", "Validation Sessions") }}
+{{ figure("/models/assets/validation/validation-sessions.jpg", "Validation Sessions") }}
 
 The validation session progress will appear in the "Validation" page as shown below.
 

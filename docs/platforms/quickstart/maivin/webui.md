@@ -31,5 +31,3 @@ The Segmentation page shows camera overlain with the current visual model output
 ## Next Steps
 
 Now that you have setup your Maivin and are familiar with the Maivin's Web UI, you can proceed to [copying a public dataset](copy_dataset.md) in [EdgeFirst Studio](https://edgefirst.studio/) to train your own vision model that will be deployed in this device.
-
-Otherwise, you can skip the training steps and proceed to [deploy pre-trained models](deploy_pretrained.md) from EdgeFirst Studio.

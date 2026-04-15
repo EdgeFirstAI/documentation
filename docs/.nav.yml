@@ -120,6 +120,7 @@ nav:
       - models/deployment/3d_raivin.md
       - models/deployment/launcher.md
       - Deploying to the PC:
+        - models/deployment/pc/index.md
         - models/deployment/pc/mpk.md
         - models/deployment/pc/ultralytics.md
     - models/metadata.md

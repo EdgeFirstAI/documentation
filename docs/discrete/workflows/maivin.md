@@ -1,6 +1,6 @@
-# Capture with an EdgeFirst Platform
+# Capture with Maivin
 
-If you have an EdgeFirst Platform, follow this tutorial to see how to capture and upload datasets into EdgeFirst Studio.  Use your browser to connect to the Web UI of the remote device, enter the following URL `https://<hostname>/`.
+If you have a Maivin, follow this tutorial to see how to capture and upload datasets into EdgeFirst Studio.  Use your browser to connect to the Web UI of the remote device, enter the following URL `https://<hostname>/`.
 
 !!! note
     Replace `<hostname>` with the hostname of your device.
@@ -23,4 +23,6 @@ Finally, [split the dataset](../../datasets/tutorials/management.md#split-datase
 
 {% include-markdown "discrete/models/train_vision.md" heading-offset=0 %}
 {% include-markdown "discrete/models/validate_vision.md" heading-offset=0 %}
-{% include-markdown "discrete/models/deploy_model.md" heading-offset=0 %}
+
+# Deploy Vision Model
+{% include-markdown "discrete/models/deploy_on_maivin.md" heading-offset=0 %}

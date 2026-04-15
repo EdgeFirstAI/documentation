@@ -6,13 +6,19 @@ To annotate a dataset, first create an annotation set on the dataset card.
 
 {{ figure("/datasets/assets/annotations/add-annotation-set-button.jpg", "Annotation Set") }}
 
+Provide the name of the new annotation set and its description
+
+{{ figure("/datasets/assets/annotations/new-annotation-set-options.jpg", "Annotation Set Specifiers") }}
+
 A new annotation set was created called "new-annotations".
 
 {{ figure("/datasets/assets/annotations/new-annotation-set.jpg", "New Annotation Set") }}
 
-Next, open the dataset gallery, by clicking on the image preview.  The dataset will contain sequences (video) and images.  Click on any sequence card to start [annotating sequences](../../datasets/tutorials/annotations/automatic.md#semi-automatic-ground-truth-generation).
+Next, open the dataset gallery, by clicking on the image preview.
 
-{{ figure("/datasets/assets/annotations/coffee-cup-gallery.jpg", "Coffee Cup Gallery") }}
+{{ figure("/datasets/assets/management/sample-dataset-sequences.jpg", "Coffee Cup Gallery") }}
+
+The dataset will contain sequences (video) and images.  Click on any sequence card to start [annotating sequences](../../datasets/tutorials/annotations/automatic.md#semi-automatic-ground-truth-generation).
 
 On the top navbar, switch to the right annotation set.
 

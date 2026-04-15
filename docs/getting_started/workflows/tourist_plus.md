@@ -6,4 +6,4 @@ In this workflow, you will explore copying the Coffee Cup dataset from "Sample P
 
 ## Next Steps
 
-Explore more features by following the [Web Workflow](web.md).
+Explore dataset capture and annotation process by following the [Web Workflow](web.md).

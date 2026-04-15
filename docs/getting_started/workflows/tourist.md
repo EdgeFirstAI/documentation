@@ -6,4 +6,4 @@ In this workflow, you will explore copying the Coffee Cup dataset from "Sample P
 
 ## Next Steps
 
-Explore more features by following the [Tourist Plus Workflow](tourist_plus.md).
+Explore the dataset annotation process by following the [Tourist Plus Workflow](tourist_plus.md).

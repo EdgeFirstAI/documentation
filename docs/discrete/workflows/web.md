@@ -19,6 +19,7 @@ Now that you have imported captured images or videos into EdgeFirst Studio and h
 
 {% include-markdown "discrete/datasets/annotate_2d_dataset.md" heading-offset=0 %}
 {% include-markdown "discrete/datasets/audit_2d_dataset.md" heading-offset=0 %}
+{% include-markdown "discrete/datasets/split_dataset.md" heading-offset=0 %}
 {% include-markdown "discrete/models/train_vision.md" heading-offset=0 %}
 {% include-markdown "discrete/models/validate_vision.md" heading-offset=0 %}
 {% include-markdown "discrete/models/deploy_model.md" heading-offset=0 %}

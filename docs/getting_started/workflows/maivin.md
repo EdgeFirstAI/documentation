@@ -4,10 +4,6 @@ In this workflow, you will explore recording MCAPs from the Maivin which will be
 
 {% include-markdown "discrete/workflows/maivin.md" %}
 
-To deploy Vision models on a Maivin, please see the [ModelPack Deployment](../../models/deployment/maivin.md) instructions.
+To deploy Vision models on a Maivin, please see these [instructions](../../platforms/quickstart/maivin/deploy.md).
 
 {{ figure("../../models/assets/deployment/segmentation-sample-1.jpg", "Segmentation Sample") }}
-
-To deploy Fusion models on a Raivin, please see the [Fusion Deployment](../../models/deployment/3d_raivin.md) instructions.
-
-{{ figure("../../models/assets/deployment/occupancy-sample-2.jpg", "Segmentation Sample") }}

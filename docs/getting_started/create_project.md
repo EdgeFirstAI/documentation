@@ -4,7 +4,7 @@ The creation of [projects](../studio/projects.md) is the single most important s
 
 {% include-markdown "discrete/studio/create_project.md" heading-offset=0 %}
 
-The next sections will invite you to follow along the *Tourist Workflow* -- the end-to-end workflow that demonstrates:  
+The next sections will invite you to follow along the end-to-end workflow that demonstrates:  
 
 1. copying a public dataset,
 2. exploring the images and annotations of the copied dataset,

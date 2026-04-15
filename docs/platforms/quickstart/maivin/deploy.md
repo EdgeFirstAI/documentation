@@ -1,6 +1,6 @@
 # Deploy Vision Model
 
-Now that you have [validated your model](../../../models/validation/vision/user_managed.md), you can deploy your model in a [Maivin Platform](../../../platforms/index.md) by following this guide.  Otherwise, we provide other methods of deploying the model listed under the [Getting Started](../../../getting_started/deploy_model.md).
+Now that you have [validated your model](../../../models/validation/vision/user_managed.md), you can deploy your model in a [Maivin Platform](../../../platforms/quickstart/maivin/index.md) by following this guide.  Otherwise, we provide other methods of deploying the model listed under the [Getting Started](../../../getting_started/deploy_model.md).
 
 {% include-markdown "discrete/models/deploy_on_maivin.md" heading-offset=0 %}
 

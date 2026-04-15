@@ -29,6 +29,8 @@ From here, we recommend that you check out the Segmentation View page by clickin
 
 {{ figure("../../assets/setup/ui-maivinSegmentation.jpg", "Maivin Segmentation Page") }}
 
+{% include-markdown "discrete/platforms/edgefirst_performance_scaling.md" %}
+
 ## Next Steps
 
 Now that you have completed these initial steps, we recommend that you read the following walkthroughs:  

@@ -1,4 +1,4 @@
-After training the model in EdgeFirst Studio, you can deploy the model in any device connected to a browser with access to a camera.  This can be your phone or your PC as an example.  This guide will show you the steps for deploying the model using EdgeFirst Studio.
+After [training a **Vision** model](../../models/training/vision.md) in EdgeFirst Studio, you can deploy the model in any device connected to a browser with access to a camera.  This can be your phone or your PC as an example.  This guide will show you the steps for deploying the model using EdgeFirst Studio.
 
 Navigate to the training session you wish to deploy by going back to the "Projects" page by clicking the "Projects" button at the top left of the page.
 
@@ -6,11 +6,11 @@ Navigate to the training session you wish to deploy by going back to the "Projec
 
 Click on the model experiments of your project.
 
-{{ figure("/models/assets/deployment/model-experiments.jpg", "Model Experiments Page") }}
+{{ figure("/models/assets/validation/model-experiments.jpg", "Model Experiments Page") }}
 
 Click on the training sessions of your experiment.
 
-{{ figure("/models/assets/deployment/training-sessions.jpg", "Training Sessions") }}
+{{ figure("/models/assets/validation/training-sessions.jpg", "Training Sessions") }}
 
 Click on the selected training session.
 

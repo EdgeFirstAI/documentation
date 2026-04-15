@@ -6,7 +6,7 @@ In this tutorial, you will validate a **Vision** model trained using either the 
 
 Alternatively, EdgeFirst Studio also supports **On-Target Validation**, which runs as a user-managed validation session. In this mode, the model is deployed and validated directly on an embedded platform.  For more details, see [On Target Validation](user_managed.md).
 
-{% include-markdown "discrete/studio/create_mpk_validation_session.md" %}
+{% include-markdown "discrete/models/create_validation_session.md" %}
 
 You will be greeted with a validation session dialog.  In this dialog, specify the name of the validation session, the model to validate, and the dataset to deploy.  In this example, the ONNX model will be validated and the "Coffee Cup" dataset with the validation partition will be used.  Additional parameters are available on the right for user override. Otherwise the same parameters set in the training session will be used. For more information on these parameters hover over the info button ![Info Button](../../../assets/buttons/studio-info-button.jpg).
 

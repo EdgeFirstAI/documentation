@@ -115,13 +115,13 @@ nav:
         - models/validation/metrics/timing.md
     - Model Deployment:
       - models/deployment/studio.md
-      - Deploying to the PC:
-        - models/deployment/pc/mpk.md
-        - models/deployment/pc/ultralytics.md
-      - models/deployment/launcher.md
       - models/deployment/maivin.md
       - models/deployment/2d_raivin.md
       - models/deployment/3d_raivin.md
+      - models/deployment/launcher.md
+      - Deploying to the PC:
+        - models/deployment/pc/mpk.md
+        - models/deployment/pc/ultralytics.md
     - models/metadata.md
     - models/cameraadaptor.md
     - models/augmentations.md

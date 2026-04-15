@@ -1,6 +1,6 @@
 # Deploy Fusion Model
 
-Now that you have [validated your model](../../../models/validation/fusion/managed.md), you can deploy your model in a [Raivin Platform](../../../platforms/index.md) by following this guide.  Otherwise, we provide other methods of deploying the model listed under the [Getting Started](../../../getting_started/deploy_model.md).
+Now that you have [validated your model](../../../models/validation/fusion/managed.md), you can deploy your model in a [Raivin Platform](../../../platforms/quickstart/raivin/index.md) by following this guide.  Otherwise, we provide other methods of deploying the model listed under the [Getting Started](../../../getting_started/deploy_model.md).
 
 {% include-markdown "discrete/models/deploy_on_raivin_3d.md" heading-offset=0 %}
 

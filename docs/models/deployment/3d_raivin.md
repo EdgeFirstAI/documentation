@@ -1,6 +1,9 @@
 # Deploying to the Raivin (Fusion)
 
-Now that you have [validated your Fusion model](../validation/fusion/managed.md), this guide will walk you through deploying Fusion models in a [Raivin Platform](../../platforms/index.md) for spatial inference.  
+Now that you have [validated your Fusion model](../validation/fusion/managed.md), this guide will walk you through deploying Fusion models on a [Raivin Platform](../../platforms/quickstart/raivin/index.md) for spatial inference.  
+
+!!! note "Vision Applications"
+    The Raivin is also capable of deploying object detection models by following this [guide](2d_raivin.md).
 
 {{ figure("../../platforms/assets/raivin.png", "Raivin", "50%") }}
 

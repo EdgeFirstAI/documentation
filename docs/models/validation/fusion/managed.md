@@ -4,7 +4,7 @@ This tutorial walks through how to run validation in the cloud using EdgeFirst S
 
 In this tutorial, you will validate a **Fusion** model trained using either the [end-to-end workflows](../../../getting_started/workflows/index.md) or the [Training Fusion](../../training/fusion.md) guide.  Note that a Fusion model performs spatial perception using Radar and Camera sensors.  If you are working with Vision models, refer to [Validating Vision Models](../vision/managed.md).
 
-{% include-markdown "discrete/studio/create_mpk_validation_session.md" %}
+{% include-markdown "discrete/models/create_validation_session.md" %}
 
 You will be greeted with the validation session dialog.  In this dialog, specify the name of the validation session, the model to validate, and the dataset to deploy.  In this example, the ONNX model will be validated.  Next specify, the validation parameters such as the detection window size and the detection threshold.  Additional information on these parameters are provided by hovering over the info button ![Info Button](../../../assets/buttons/studio-info-button.jpg).
 
@@ -61,4 +61,4 @@ It is also possible to compare validation metrics for multiple sessions.  See [V
 ## Next Steps
 
 Now that you have validated your Fusion model, follow these next steps
-for [deploying your Fusion model](../../deployment/3d_raivin.md) in a Raivin Platform.
+for [deploying your Fusion model](../../deployment/3d_raivin.md) on a Raivin Platform.

@@ -1,6 +1,6 @@
 # Deploying to the Maivin
 
-Now that you have validated your Vision Model either [On Cloud](../validation/vision/managed.md) or [On Target](../validation/vision/user_managed.md), this guide will walk you through deploying Vision models on a [Maivin Platform](../../platforms/index.md).  
+Now that you have validated your Vision Model either [On Cloud](../validation/vision/managed.md) or [On Target](../validation/vision/user_managed.md), this guide will walk you through deploying Vision models on a [Maivin Platform](../../platforms/quickstart/maivin/index.md).  
 
 {{ figure("../../platforms/assets/maivin-2.png", "Maivin", "50%") }}
 

@@ -1,6 +1,9 @@
 # Deploying to the Raivin (Vision)
 
-Now that you have validated your Vision Model from either a [managed](../validation/vision/managed.md) or [user-managed](../validation/vision/user_managed.md) session, this guide will walk you through deploying Vision models in an [EdgeFirst Platform](../../platforms/index.md) such as a Maivin or a Raivin.
+Now that you have validated your Vision Model from either a [managed](../validation/vision/managed.md) or [user-managed](../validation/vision/user_managed.md) session, this guide will walk you through deploying Vision models on a [Raivin Platform](../../platforms/quickstart/raivin/index.md).
+
+!!! note "3D Applications"
+    The Raivin is also capable of deploying Fusion models for 3D perception by following this [guide](3d_raivin.md).
 
 {{ figure("../../platforms/assets/raivin.png", "Raivin", "50%") }}
 

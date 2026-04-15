@@ -2,7 +2,7 @@
 
 From the [Projects page](../../studio/projects.md), choose the project that contains the training session with the models you want to validate.  In this example, the project chosen is called "My First Project".  Next click the "Model Experiments" button as indicated in red.
 
-{{ figure("/models/assets/deployment/model-experiments.jpg", "Model Experiments") }}
+{{ figure("/models/assets/validation/model-experiments.jpg", "Model Experiments") }}
 
 # Create Validation Session
 

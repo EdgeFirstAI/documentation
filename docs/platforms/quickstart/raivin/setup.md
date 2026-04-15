@@ -36,6 +36,8 @@ From here, we recommend that you check out the Segmentation View page by clickin
 !!! note
     The ultra-short model included in this release was trained for fixed camera and mostly tested indoors.
 
+{% include-markdown "discrete/platforms/edgefirst_performance_scaling.md" %}
+
 ## Next Steps
 
 Now that you have completed these initial steps, we recommend that you read the following walkthroughs:  

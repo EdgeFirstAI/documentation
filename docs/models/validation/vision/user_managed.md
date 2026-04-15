@@ -9,7 +9,7 @@ Alternatively, EdgeFirst Studio also supports **On-Cloud Validation**, which run
 !!! info "i.MX 95 Validation"
     To deploy TFLite models in the i.MX 95, first [convert the models using eIQ's Neutron Converter](../../ultralytics/neutron.md) prior to deploying the model in the platform.  This modifies the model's architecture to allow deployment using the device's Neutron NPU delegate.
 
-{% include-markdown "discrete/studio/create_mpk_validation_session.md" %}
+{% include-markdown "discrete/models/create_validation_session.md" %}
 
 You will be greeted with a validation session dialog.  In this dialog, select the "User Managed" option.  Next specify the name of the validation session, the model to validate, and the dataset to deploy.  In this example, the ONNX model will be validated and the "Coffee Cup" dataset with the validation partition will be used. Additional parameters are available on the right for user override. Otherwise the same parameters set in the training session will be used. For more information on these parameters hover over the info button ![Info Button](../../../assets/buttons/studio-info-button.jpg).
 

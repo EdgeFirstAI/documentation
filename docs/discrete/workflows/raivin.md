@@ -5,9 +5,9 @@ If you have a Raivin, follow this tutorial to see how to capture and upload data
 !!! note
     Replace `<hostname>` with the hostname of your device.
 
-You will be greeted with the Maivin [Web UI Main Page](../../platforms/quickstart/maivin/webui.md) page.
+You will be greeted with the Raivin [Web UI Main Page](../../platforms/quickstart/raivin/webui.md) page.
 
-{{ figure("/platforms/assets/setup/ui-maivinMain.png", "Web UI Main Page") }}
+{{ figure("/platforms/assets/setup/quickStart-mainPage.png", "Raivin Main Page") }}
 
 {% include-markdown "discrete/datasets/recording_mcap_on_device.md" heading-offset=1 %}
 

@@ -18,7 +18,7 @@ In this tutorial you have seen how to capture videos and images from your mobile
 
 ## Capture with an EdgeFirst Platform
 
-If you have an EdgeFirst Platform, follow this tutorial to see how to capture and upload datasets into EdgeFirst Studio.  Use your browser to connect to the Web UI of the remote device, enter the following URL `https://<hostname>/`.
+If you have an [EdgeFirst Platform](../../platforms/index.md), follow this tutorial to see how to capture and upload datasets into EdgeFirst Studio.  Use your browser to connect to the Web UI of the remote device, enter the following URL `https://<hostname>/`.
 
 !!! note
     Replace `<hostname>` with the hostname of your device.

@@ -2,9 +2,9 @@
 
 {{ figure("assets/projects/studio-from-scratch.jpg", "Starting Page") }}
 
-The "Projects" page organizes data into logical project partitions.  When you first login, this page will already contain a sample project called "Sample Project".
+The "Projects" page organizes data into logical project partitions.  When you first login, this page will already contain a project called "Sample Project".
 
-To return to this page from any other page, you can click the Apps Menu ![Apps Button](../assets/buttons/studio_apps_button.png) waffle button and select the "Projects" menu item.
+To return to this page from any other page, you can click the Apps Menu ![Apps Button](../assets/buttons/studio_apps_button.png) waffle button and select the "Projects" menu item or click on the "Projects" button on the top navigation bar.
 
 The following figure describes the UI elements of the "Project" card.  Take special note of the project attributes (datasets, auditing tasks, etc.) as these are the buttons that lead into further parts of the project.  Furthermore, the figure below describes "Sample Project" which is a **Read-Only** public project and therefore, the project context menu is unavailable.  For your own created projects, this option will be available.
 

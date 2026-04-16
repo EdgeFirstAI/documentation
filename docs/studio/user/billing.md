@@ -8,7 +8,7 @@ You can find the details on the remaining funds and the cost breakdown in your o
 
 {{ figure("../assets/user/admin-button.jpg", "User Button") }}
 
-This will navigate you to the "Organization Information" page.  Click on the "Usage & Billing" button as indicated in red below.
+This will navigate you to the "Organization Information" page.  Click on the "Billing" button as indicated in red below.
 
 {{ figure("../assets/user/usage-billing-button.jpg", "The location of the 'Usage & Billing' button") }}
 

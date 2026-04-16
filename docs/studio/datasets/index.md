@@ -10,11 +10,11 @@ The dataset attributes are shown below.
 
 {{ figure("../assets/datasets/dataset-attributes.jpg", "Dataset Attributes") }}
 
-For the elements encircled in red, these features will not be available to public **READ-ONLY** datasets, but these were added as a reference to the features that are available to users that created their own dataset.  For datasets with **WRITE** access, the context menu will be shown like the following.
+For datasets with **WRITE** access, the context menu will be shown like the following.
 
 {{ figure("../assets/datasets/write-access-dataset-context-menu.jpg", "Dataset Write Access Context Menu") }}
 
-This gives the user the options for [editing the dataset info](../../datasets/tutorials/management.md#edit-dataset-information), [importing existing datasets](../../datasets/tutorials/import.md), [exporting datasets into your local machine](../../datasets/tutorials/management.md#export-dataset), [creating snapshots](../snapshots.md#create-snapshot), and [copying datasets](../../datasets/tutorials/management.md#copy-dataset).  The rest of the options are described in the sections below such as the [dataset analytics](#analytics), [view on map](#view-on-map), [park datasets](#park-dataset), and [removing datasets](#remove-dataset).
+This gives the user the options for [editing the dataset info](../../datasets/tutorials/management.md#edit-dataset-information), [importing existing datasets](../../datasets/tutorials/import.md), [exporting datasets into your local machine](../../datasets/tutorials/management.md#export-dataset), [creating snapshots](../snapshots.md#create-snapshot), and [copying datasets](../../datasets/tutorials/management.md#copy-dataset).  The rest of the options are described in the sections below such as the [dataset analytics](#analytics), [view on map](#view-on-map), [dataset history](#dataset-history), and [removing datasets](#remove-dataset).
 
 ## Labels
 
@@ -34,8 +34,8 @@ Tutorials for these operations can be found under the [Dataset Annotations](../.
 
 ## Groups
 
-- Groups allow images to be associated with a certain functionality such as training images, validation images, images with errors, etc.
-- One image can be associated with zero or only one group at a time.
+- Groups splits the images into training and validation images
+- One image can be associated with zero or only one group at a time
 - Use the slider to adjust percentages for each group.
 - If "Only non-grouped images" is unchecked, all images will be shuffled and assigned new groups.
 
@@ -54,25 +54,6 @@ Click on the three dots on dataset card to open the extended menu.
 ### Edit Info
 
 Change the name or description of the dataset as shown in [editing dataset information](../../datasets/tutorials/management.md#edit-dataset-information).
-
-### Manage Access
-
-The dataset access control allows dataset resources to be selectively available to different users.
-
-For more information please visit [Access Control](../user/organization.md#roles).
-
-### Copy Dataset
-
-{{ figure("../assets/datasets/copy-datasets.png", "Copying Datasets") }}
-
-To copy datasets proceed with the steps as follows or follow this in-depth tutorial for [copying datasets](../../datasets/tutorials/management.md#copy-dataset).
-
-1. Open the dataset extended menu.
-2. Select "Copy Dataset".
-3. Source project, dataset, and annotation set (if applicable) are auto-filled, but you can select a different source if required.
-4. Destination project is selected by default. If *New Dataset (Dataset name)* is selected, a new dataset along with any annotation set from source will be created in the destination project. Otherwise, you can choose a dataset and an annotation set as destination.
-5. Optionally select *Copy Selected Annotation Types Only* to only copy annotations and files that match the checked types.
-6. Select filters if required. Please refer to [Gallery Filters](gallery.md#filters) for more information.  
 
 ### Import Dataset
 
@@ -113,6 +94,19 @@ To export datasets proceed with the steps as follows or follow this in-depth tut
 !!! tip "Large Datasets"
     For datasets larger than 10000 images, export image URLS and annotations separately and then use a script to download images.
 
+### Copy Dataset
+
+{{ figure("../../datasets/assets/management/copy-dataset-options.jpg", "Copying Datasets") }}
+
+To copy datasets proceed with the steps as follows or follow this in-depth tutorial for [copying datasets](../../datasets/tutorials/management.md#copy-dataset).
+
+1. Open the dataset extended menu.
+2. Select "Copy Dataset".
+3. Source project, dataset, and annotation set (if applicable) are auto-filled, but you can select a different source if required.
+4. Destination project is selected by default. If *New Dataset (Dataset name)* is selected, a new dataset along with any annotation set from source will be created in the destination project. Otherwise, you can choose a dataset and an annotation set as destination.
+5. Optionally select *Copy Selected Annotation Types Only* to only copy annotations and files that match the checked types.
+6. Select filters if required. Please refer to [Gallery Filters](gallery.md#filters) for more information.  
+
 ### Analytics
 
 Click on Analytics to see more statistical information about the dataset.
@@ -130,18 +124,11 @@ If GPS location is present, then the annotation can be viewed on the map by usin
 
 {{ figure("../assets/datasets/dataset-maps.png", "Dataset Maps") }}
 
-### Park Dataset
+### Dataset History
 
-Datasets that are not used often can be parked. The advantages of parking a dataset are:
+The dataset history introduces versioning for the dataset.  This allows any changes made to the dataset to be tracked via the "Changelog" section and allows the user to restore the state of the dataset with a known version, delete a dataset version, or add a new dataset version for the current state of the dataset.
 
-1. Reduced storage cost.
-2. Dataset is frozen and can not be modified.
-
-Datasets can be un-parked at any time for normal usage.
-
-{{ figure("../assets/datasets/park-dataset.png", "Park Dataset") }}
-
-You can find more information regarding the [billing](../user/billing.md).
+{{ figure("../assets/datasets/dataset-history.jpg", "Dataset History") }}
 
 ### Remove Dataset
 

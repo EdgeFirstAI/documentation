@@ -6,10 +6,10 @@ This page will describe the context of the annotation sets.  For tutorials on an
 
 For these operations please refer to the following figure.
 
-{{ figure("../assets/datasets/annotationset-attributes.jpg", "Auditing Tasks") }}
+{{ figure("../assets/datasets/annotationset-attributes.jpg", "Annotation Set Attributes") }}
 
 - Click on the add annotation set button (+) to add an annotation set.
-- Each annotation set has an (x) button to delete the annotation set - all associated annotations will also be deleted.  Please note that deleted annotation sets goes the the Recycle Bin and can either be restored or permanently deleted.  The storage is only freed when the Recycling Bin is cleared.  
+- Each annotation set has an extended menu to edit the annotation set information or delete the annotation set - all associated annotations will also be deleted.  Please note that deleted annotation sets goes the the Recycle Bin and can either be restored or permanently deleted.  The storage is only freed when the Recycling Bin is cleared.  
 - Each annotation set has an (i) button to get/set the details of the annotation set.
 
 ## Editing 2D Annotations

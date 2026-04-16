@@ -1,12 +1,12 @@
 # Dataset Gallery
 
-To open a dataset gallery, click the gallery button on the dataset card.
+To open a dataset gallery, click on the image preview of the dataset card.
 
-{{ figure("../assets/datasets/gallery-button.png", "Gallery Button") }}
+{{ figure("../../datasets/assets/management/copied-dataset-result.jpg", "Dataset Card") }}
 
-The gallery is multi-page dashboard with a maximum of 40 images shown per page.
+The gallery is multi-page dashboard split into [sequences](../../datasets/format/structure.md#1-sequence-based-datasets) and [images](../../datasets/format/structure.md#2-image-based-datasets) with a maximum of 40 images shown per page.
 
-{{ figure("../assets/datasets/gallery.png", "Gallery") }}
+{{ figure("../../datasets/assets/management/sample-dataset-sequences.jpg", "Dataset Gallery") }}
 
 ## Filters
 
@@ -35,8 +35,6 @@ You can create tags for images.  These tags can be used to filter out images of 
 {{ figure("../assets/datasets/remove-tag.png", "Remove Tag") }}
 
 - Apply and revert tags: at least one image must be selected to apply or revert tags.  Click on any tag under the dropdown to select it.  Applied tags are denoted by a check icon.  To remove the applied tags, click on it again.
-
-{{ figure("../assets/datasets/apply-tags.png", "Apply Tag") }}
 
 ## Copy Selected Items
 

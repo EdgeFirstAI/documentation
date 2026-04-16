@@ -14,7 +14,7 @@ A new annotation set was created called "new-annotations".
 
 {{ figure("/datasets/assets/annotations/new-annotation-set.jpg", "New Annotation Set") }}
 
-Next, open the dataset gallery, by clicking on the image preview.
+Next, open the dataset gallery, by clicking on the image preview of the dataset card.
 
 {{ figure("/datasets/assets/management/sample-dataset-sequences.jpg", "Coffee Cup Gallery") }}
 

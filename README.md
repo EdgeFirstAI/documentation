@@ -19,7 +19,9 @@ You should now be able to see the documentation on your browser by visiting this
 
 `mike deploy -r <git branch> <version> <alias>` [Example: `mike deploy -r DE-1941-doc-fixes v1.0 testing-v1.0`]
 
-Once deployed, run `mike serve` to see the changes.
+`mike set-default <version>` [Example: `mike set-default v1.0`]
+
+Once deployed, run `mike serve` and access the documentation in this link `http://localhost:8000/v1.0/`.
 
 This will create a local branch for the documentation that will show like the following below.
 

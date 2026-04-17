@@ -57,8 +57,6 @@ exclude_docs: |
   /discrete
 
 plugins:
-  - macros:
-      module_name: macros
   - awesome-nav:
   - autorefs:
   - search:
@@ -69,6 +67,8 @@ plugins:
   - include-markdown:
       rewrite_relative_urls: true
       heading_offset: 1
+  - macros:
+      module_name: macros
   - mkdocstrings:
       default_handler: python
       handlers:
@@ -136,7 +136,7 @@ extra_css:
   - stylesheets/mermaid.css
 
 extra:
-  show_image_paths: true
+  show_image_paths: false
   version:
     default: latest
     provider: mike

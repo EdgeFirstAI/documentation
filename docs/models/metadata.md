@@ -322,16 +322,16 @@ outputs:
       - num_anchors_x_features: int
       - box_coords: int
       - padding: int
-    decoder: string            # 'modelpack' or 'ultralytics' — required for outputs needing decode
+    decoder: string            # 'modelpack' | 'ultralytics' — required for outputs needing decode
     encoding: string           # 'dfl' | 'direct' | 'anchor' — required on boxes
     score_format: string       # 'per_class' | 'obj_x_class' (scores only)
-    normalized: boolean        # Box coordinates in [0,1] (true) or pixels (false)
-    stride: int                # Spatial stride (non-split spatial outputs, e.g. protos at stride 4)
+    normalized: boolean        # Coordinates in [0,1] (true) or pixels (false); boxes and detections only
+    stride: int or [int, int]  # Spatial stride; 2-element form for non-square inputs
     anchors: [[float, float]]  # Normalized anchors (ModelPack anchor-based outputs)
 
     # When the converter did NOT further split this logical output,
     # it IS the physical tensor — the following fields are present directly:
-    dtype: string              # Quantized data type
+    dtype: string              # Tensor data type (e.g. int8, uint8, float32)
     quantization:              # Quantization parameters (null for float models)
       scale: float or [float]
       zero_point: int or [int]
@@ -340,18 +340,22 @@ outputs:
 
     # When the converter split this logical output, 'outputs' contains the
     # physical children. One level of nesting only.
+    # Physical children are a quantization concept — splitting minimizes
+    # quantization error by giving each sub-tensor its own scale/zero_point.
+    # Float models do not need physical children since there is no
+    # quantization error to manage.
     outputs:
       - name: string           # Physical tensor name (as produced by the converter)
         type: string           # Semantic type (matches parent, or more specific e.g. boxes_xy)
         shape: [int]           # Physical tensor shape
         dshape: [...]          # Named dimensions for the physical shape
-        dtype: string          # Quantized data type
-        quantization:          # Per-tensor {scale, zero_point}; always required on physical outputs
+        dtype: string          # Tensor data type (e.g. int8, uint8, float32)
+        quantization:          # Per-tensor {scale, zero_point}; always present (null for float models)
           scale: float or [float]
           zero_point: int or [int]
           axis: int
           dtype: string
-        stride: int            # FPN stride for this child (per-scale splits)
+        stride: int or [int, int]  # FPN stride for this child; 2-element form for non-square inputs
         scale_index: int       # 0-based index into strides array (per-scale splits)
         activation_applied: string   # Activation fused by NPU; HAL must NOT re-apply
         activation_required: string  # Activation NOT fused; HAL must apply
@@ -476,7 +480,7 @@ The `encoding` field on a `boxes` logical output tells the HAL how to interpret 
 | Value | Channels | Description | Decode Step |
 |---|---|---|---|
 | `dfl` | `reg_max × 4` (typically 64) | Distribution Focal Loss encoding. Each coordinate is a probability distribution over `reg_max` bins. | Softmax over each `reg_max` group, then weighted sum → 4 coordinates. Common in YOLOv8, YOLO11. |
-| `direct` | 4 | Direct coordinate values — already decoded. | Dequantize only. Common in YOLO26 (reg_max=1), ARA-2 post-split, DETR. |
+| `direct` | 4 | Direct coordinate values — already decoded. | Dequantize only. Common in YOLO26 (reg_max=1), ARA-2 post-split. |
 | `anchor` | `anchors_per_cell × 4` | Anchor-based grid offsets. Each group of 4 is (tx, ty, tw, th) requiring sigmoid + anchor-scale transform. | Sigmoid + anchor transform per grid cell. Common in YOLOv5, SSD MobileNet, ModelPack. |
 
 `encoding` is required on all `boxes` outputs in v2.
@@ -532,6 +536,7 @@ Per-type semantic fields are scoped to their output type:
 
 - `encoding` → `boxes` only
 - `score_format` → `scores` only
+- `normalized` → `boxes` and `detections` only
 - `anchors` → `boxes` with `encoding: anchor` only
 - `stride` on a non-split logical output → spatial stride hint (e.g. `protos` at stride 4)
 
@@ -565,7 +570,7 @@ For each logical output in outputs[]:
 The `type` and `stride` fields on children tell the HAL which merge to perform:
 
 - **Channel sub-splits** (e.g., `boxes_xy` + `boxes_wh`): Concat along the channel dimension. Children have no `stride` field. The concatenated result matches the logical output's `shape`.
-- **Per-scale splits** (e.g., `boxes_0` + `boxes_1` + `boxes_2`): Children carry `stride` fields. Reshape each `[H, W, C]` → `[H×W, C]`, then concat along the spatial dimension (axis 0). The result shape is `[N_total, C]` where `N_total = Σ(H_i × W_i)`.
+- **Per-scale splits** (e.g., `boxes_0` + `boxes_1` + `boxes_2`): Children carry `stride` fields. Flatten each child's spatial dimensions to a single axis (`H×W`), concat along that axis, then reshape and transpose so the merged result matches the logical output's `shape` and `dshape`. The `dshape` named dimensions on both the children and the logical parent disambiguate axis ordering (e.g., NCHW vs NHWC), so no layout assumptions are hard-coded.
 
 The HAL infers the merge strategy from child fields: presence of `stride` → spatial merge; absence → channel merge.
 
@@ -1170,13 +1175,11 @@ Coverage of the two-layer output model across the detection, segmentation, and e
 | ModelPack detection | 3 | 1 per-scale | No | 3 logical `type: detection` (one per scale), no children — `encoding: anchor` |
 | ModelPack semantic seg | — | 1 | No | 1 logical `type: segmentation`, no children |
 | SSD MobileNet | 6 | 2 (box, score) | No | 2 logical (`boxes`, `scores`), 6 per-scale children each — `encoding: anchor` |
-| DETR | — | 2 (box, score) | No | 2 logical, no children — `encoding: direct` |
 | FastSAM | 3 | 3 + protos | Yes | Same as YOLOv8 segmentation |
 
 **Key observations:**
 
 - Every FPN-based architecture maps to logical outputs with per-scale children (when the converter splits) or direct outputs (when it doesn't).
-- Non-FPN models (DETR) map to direct logical outputs with no children.
 - Models with non-spatial outputs (protos) use direct logical outputs for those.
 - The only variable is whether the converter produces channel sub-splits (ARA-2 xy/wh), per-scale splits (Hailo), or no split (TFLite).
 
@@ -1610,45 +1613,6 @@ YOLOv5 is anchor-based with 3 anchors per cell. Per-scale physical channel count
     }
   ]
 }
-```
-
-### Example 8: DETR (No Split, No Children)
-
-DETR uses learned queries and global attention — no FPN, no spatial scales, no split hints. Flat outputs, no children.
-
-```yaml
-schema_version: 2
-outputs:
-  - name: queries_logits
-    type: scores
-    shape: [1, 100, 92]
-    dshape:
-      - batch: 1
-      - num_boxes: 100
-      - num_classes: 92
-    dtype: int8
-    quantization:
-      scale: 0.0078
-      zero_point: 0
-      dtype: int8
-    decoder: detr
-    score_format: per_class
-
-  - name: queries_boxes
-    type: boxes
-    shape: [1, 100, 4]
-    dshape:
-      - batch: 1
-      - num_boxes: 100
-      - box_coords: 4
-    dtype: int8
-    quantization:
-      scale: 0.0039
-      zero_point: 0
-      dtype: int8
-    decoder: detr
-    encoding: direct
-    normalized: true
 ```
 
 ### Instance Segmentation Mask Computation

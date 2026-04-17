@@ -29,7 +29,7 @@ YOLOv8n on COCO val2017 (5000 images, 80 classes, 640x640 RGB input). Validated 
 |-------|-------------|-------------------|--------------|---------------------|
 | TFLite INT8 (EdgeFirst, 10% calibration) | 41.68% | 27.83% | 40.37% | 24.62% |
 
-EdgeFirst Studio INT8 models use split decoder outputs and [0,1] normalized box coordinates for both detection and segmentation. Detection models produce 2 outputs (boxes, scores); segmentation models produce 4 (boxes, scores, mask_coefficients, protos). See [Model Metadata](../metadata.md#post-processing-two-layer-outputs) for details.
+EdgeFirst Studio quantized models use split decoder outputs and [0,1] normalized box coordinates for both detection and segmentation. Detection models produce 2 outputs (boxes, scores); segmentation models produce 4 (boxes, scores, mask_coefs, protos). See [Model Metadata](../metadata.md#post-processing-two-layer-outputs) for details.
 
 ### Output Format
 

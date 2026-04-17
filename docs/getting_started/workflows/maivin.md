@@ -4,6 +4,6 @@ In this workflow, you will explore recording MCAPs from the Maivin which will be
 
 {% include-markdown "discrete/workflows/maivin.md" %}
 
-To deploy Vision models on a Maivin, please see these [instructions](../../platforms/quickstart/maivin/deploy.md).
+## Next Steps
 
-{{ figure("../../models/assets/deployment/segmentation-sample-1.jpg", "Segmentation Sample") }}
+Explore 3D MLOps by following the [Raivin Workflow](raivin.md).

@@ -19,7 +19,7 @@ source venv/bin/activate
 pip3 install edgefirst
 ```
 
-{% include-markdown "discrete/models/download_model.md" %}
+{% include-markdown "discrete/models/download_model.md" heading-offset=0 %}
 
 # Usage
 

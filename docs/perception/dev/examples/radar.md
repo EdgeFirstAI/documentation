@@ -183,7 +183,7 @@ After setting up the Zenoh session, we will create a subscriber to the `radar/cl
 
 ### Receive a message
 
-We can now receive a message on the subcriber. After receiving the message, we will need to deserialize it.
+We can now receive a message on the subscriber. After receiving the message, we will need to deserialize it.
 
 === "Python"
 
@@ -308,7 +308,7 @@ After setting up the Zenoh session, we will create a subscriber to the `radar/in
 
 ### Receive a message
 
-We can now recevie a message on the subcriber. After receiving the message, we will need to deserialize it.
+We can now receive a message on the subscriber. After receiving the message, we will need to deserialize it.
 
 === "Python"
 
@@ -408,7 +408,7 @@ After setting up the Zenoh session, we will create a subscriber to the `radar/cu
 
 ### Receive a message
 
-We can now receive a message on the subcriber. After receiving the message, we will need to deserialize it.
+We can now receive a message on the subscriber. After receiving the message, we will need to deserialize it.
 
 === "Python"
 

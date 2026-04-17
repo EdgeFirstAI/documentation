@@ -69,7 +69,7 @@ YOLOv5, YOLOv8, YOLO11, and YOLO26 can be trained in EdgeFirst Studio using a Gr
     1. **Model Name**: This field specifies the name of the training session and will be used to name the artifacts (e.g. `yolov8n-coffecup-640x640-rgb-t-<session ID>.tflite` or `yolov8n-coffecup-640x640-rgb-t-<session ID>.onnx`).
     2. **Description**: This field is used to add some hints about the training session.  Commonly used to highlight some parameters
     3. **Training Data**: In this section the user must select the dataset as well as train/val groups
-    4. **Input Resolution**: The user can pick predefined input resulutions.  In case you need a different resolution to be supported, please reach out and [email our support team](mailto:support@edgefirst.ai)
+    4. **Input Resolution**: The user can pick predefined input resolutions.  In case you need a different resolution to be supported, please reach out and [email our support team](mailto:support@edgefirst.ai)
     5. **Camera Adaptor**: Ultralytics accepts six different input optimizations.  It could be either of RGB, BGR, RGBA, BGRA, Greyscale, or YUYV
     6. **Model Parameters**: This section configures the model architecture
         1. **Model Task**: This can be either "Detection" or "Segmentation". Note for Ultralytics segmentation refers to instance segmentation

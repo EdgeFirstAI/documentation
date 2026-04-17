@@ -34,7 +34,7 @@ This hierarchy describes the span of deletion of the project attributes.  When a
 
 ## Delete Project
 
-1. Click on project contect menu (three vertically aligned dots) on the project card.
+1. Click on project context menu (three vertically aligned dots) on the project card.
 2. Click "Move to Recycle Bin".
 2. The project is moved to the recycle bin.  Remove the project from the recycle bin to actually free the storage space.
 

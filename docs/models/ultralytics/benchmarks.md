@@ -24,7 +24,7 @@ This page provides a summary of the benchmarks gathered for Ultralytics across v
 
 === "Coffee Cup"
 
-    ## Object Detection and Segmentation Metrcis
+    ## Object Detection and Segmentation Metrics
 
     **Table: Ultralytics on CoffeeCup - RGB - (640x640) | ONNX**
 
@@ -39,7 +39,7 @@ This page provides a summary of the benchmarks gathered for Ultralytics across v
     |---------------------------------|---------|---------------|---------------|-------------------|-----------|
     | ultralytics-yolov8n-640x640-rgb | 0.995   | 0.891         | 0.995         | 0.970             | 170.89    |  
 
-    ## Segmentation Metrcis
+    ## Segmentation Metrics
 
     Visit the full **Coffee Cup** dataset [Benchmark here](../../datasets/coffeecup/index.md).
 

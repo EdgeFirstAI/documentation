@@ -13,4 +13,4 @@ This dataset will contain [both sequences (videos) and images](../../datasets/fo
 This dataset has a complete set of 2D annotations (masks and bounding boxes) of coffee cups.  
 
 !!! tip "Fast Annotations"
-    This dataset was quickly annotated using the [Automatic Ground Truth Generatation (AGTG) feature of EdgeFirst Studio](../../studio/agtg.md).
+    This dataset was quickly annotated using the [Automatic Ground Truth Generation (AGTG) feature of EdgeFirst Studio](../../studio/agtg.md).

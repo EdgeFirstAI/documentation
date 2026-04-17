@@ -11,7 +11,7 @@ Navigation towards different functionalities in the EdgeFirst Studio portal is f
 The elements of the navbar are:  
 
 1. The EdgeFirst Studio Home Button. This button will return a user to the [Home Page](home.md)
-2. The "Back" buttton to return to the previous page
+2. The "Back" button to return to the previous page
 3. The "Projects"button to navigate towards the [Projects Page](projects.md)
 4. The Page Title.  On other pages, there will be a "Projects" drop-down to navigate to other projects
 5. The current amount of funds and "Add Funds" button
@@ -66,7 +66,7 @@ The Apps Menu provides selections towards the various tools provided in EdgeFirs
 
 ### Projects
 
-Clicking on "Projects" takes the user to the [Projects Dashboard](projects.md).  This operation is the same as clicking on the "Projects" button on the top navigation bar.  A project is a high-level collections of sensor datatasets, model experiments, and other automation and management tasks associated with the dataset inputs and model outputs.
+Clicking on "Projects" takes the user to the [Projects Dashboard](projects.md).  This operation is the same as clicking on the "Projects" button on the top navigation bar.  A project is a high-level collections of sensor datasets, model experiments, and other automation and management tasks associated with the dataset inputs and model outputs.
 
 ### Datasets
 

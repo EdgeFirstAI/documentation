@@ -79,7 +79,7 @@ Fusion models can be trained now in [EdgeFirst Studio](https://edgefirst.studio/
     12. **Model Parameters**: This section configures the model backbone filters which is the number of filters in the first layer of the backbone and the number of backbone blocks which controls the number of layers in the model
     13. **Training Parameters**: In this section the user is able to specify the number of epochs to train the model as well as the batch size.  Remember the larger the input resolution the smaller the batch size
     14. **Model Quantization Parameters**: Allow the user to set a portion of data for calibration when exporting the model for INT8 quantization
-    15. **Camera Augmentation Parameters**: This section controls the probablity of each augmentation technique.  This feature is crucial for training models and reduce overfitting, especially in small datasets
+    15. **Camera Augmentation Parameters**: This section controls the probability of each augmentation technique.  This feature is crucial for training models and reduce overfitting, especially in small datasets
     16. **Start Session**: This button will start the training session
 
 ## Low-Level Fusion

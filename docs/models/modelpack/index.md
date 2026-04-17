@@ -70,7 +70,7 @@ ModelPack can be trained now in EdgeFirst Studio using a Graphical User Interfac
     1. **Model Name**: This field specifies the name of the training session and will be used to name the artifacts (e.g. `modelpack-coffecup-640x640-rgba-t-<session ID>.tflite` or `modelpack-coffecup-640x640-rgba-t-<session ID>.onnx`)
     2. **Description**: This field is used to add some hints about the training session.  Commonly used to highlight some parameters
     3. **Training Data**: In this section the user must select the dataset as well as train/val groups
-    4. **Input Resolution**: The user can pick predefined input resulutions.  Even when ModelPack accepts any resolution we keep this option as simple as possible.  In case you need a different resolution to be supported, please reach out and [email our support team](mailto:support@edgefirst.ai)
+    4. **Input Resolution**: The user can pick predefined input resolutions.  Even when ModelPack accepts any resolution we keep this option as simple as possible.  In case you need a different resolution to be supported, please reach out and [email our support team](mailto:support@edgefirst.ai)
     5. **Camera Adaptor**: ModelPack accepts six different input optimizations.  It could be either of RGB, BGR, RGBA, BGRA, Greyscale, or YUYV
     6. **Model Parameters**: This section configures the model architecture
         1. **Model Backbone**: Model backbone exposes a CSPDarknet19 optimized for boosting inference time and a CSPDarknet53 optimized for accuracy
@@ -82,7 +82,7 @@ ModelPack can be trained now in EdgeFirst Studio using a Graphical User Interfac
         7. **Space to Depth**: This feature enables the Space to Depth Transformation to the input in order to reduce model complexity on higher resolutions
         8. **Split Decoder**: Remove the decoder from the model and use a very optimized one from EdgeFirst.  This feature is very useful when the location of the boxes has to be precise (0-offset)
     7. **Training Parameters**: In this section the user is able to specify the number of epochs to train the model as well as the batch size.  Remember the larger the input resolution the smaller the batch size
-    8. **Data Augmentation**: This section controls the probablity of each augmentation technique.  This feature is crucial for training models and reduce overfitting, especially in small datasets
+    8. **Data Augmentation**: This section controls the probability of each augmentation technique.  This feature is crucial for training models and reduce overfitting, especially in small datasets
     9. **Export Parameters**: Allow the user to set a portion of data for calibration when exporting the model for INT8 quantization
     10. **Start Session**: This button will start the training session
 

@@ -45,7 +45,7 @@ The following breakdown of the script describing the steps of the model inferenc
     ```
 
     !!! note "Execution Providers"
-        The device NPU can be specified with `['NnapiExecutionProvider', 'VsiNpuExecutionProvider']`.  The NPU exeution providers are not seen in later BSPs such as 6.12.  However, these providers can be seen in lower BSPs like 5.15.
+        The device NPU can be specified with `['NnapiExecutionProvider', 'VsiNpuExecutionProvider']`.  The NPU execution providers are not seen in later BSPs such as 6.12.  However, these providers can be seen in lower BSPs like 5.15.
 
         The device GPU can be specified with `['CUDAExecutionProvider']`.
 

@@ -12,7 +12,7 @@ Use your browser to connect to the Web UI of the remote device, enter the follow
 !!! note
     Replace `<hostname>` with the hostname of your device.
 
-You will be greeted with the Maivin [Web UI Main Page](../../platforms/quickstart/raivin/webui.md) page.
+You will be greeted with the Raivin [Web UI Main Page](../../platforms/quickstart/raivin/webui.md) page.
 
 {{ figure("/platforms/assets/setup/quickStart-mainPage.png", "Web UI Main Page") }}
 

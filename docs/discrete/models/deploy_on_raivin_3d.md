@@ -44,7 +44,7 @@ Next you will need to specify the path to the model in the device.  You can eith
 === "via Command Line"
 
     To update the model path using the command line in the device, edit the following file using `sudo vi /etc/default/fusion`.
-
+    
     Edit the following line `MODEL = "path/to/mymodel.tflite"` to point to the specific path to your model.  To edit, press `i` to enter into "Insert Mode".  You should now be able to edit the lines.  To exit "Insert Mode", press the ESC key on your keyboard.  Next save and exit the file by typing `:wq` on your keyboard.  More examples for using `vi` can be found [here](https://coderwall.com/p/adv71w/basic-vim-commands-for-getting-started).
 
     ```vi
@@ -52,7 +52,7 @@ Next you will need to specify the path to the model in the device.  You can eith
     MODEL = "path/to/mymodel.tflite"
     ```
 
-    Once the path to the model has been updated, restart the model service using `sudo systemctl restart model`.
+    Once the path to the model has been updated, restart the model service using `sudo systemctl restart fusion`.
 
 ## Enable and Start the Camera and Model Services
 

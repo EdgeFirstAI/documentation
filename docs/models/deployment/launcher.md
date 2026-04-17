@@ -2,7 +2,7 @@
 
 This guide will walk you through installing the EdgeFirst Middleware in "user-mode" on a target device.  If you're using a [Maivin](maivin.md) or [Raivin](3d_raivin.md) refer to their deployment guides instead.
 
-{{ figure("../../platforms/assets/imx8mpevk.png", "NXP i.MX 8M Plus EVK") }}
+{{ figure("../../platforms/assets/imx8mpevk-no-bg.png", "NXP i.MX 8M Plus EVK") }}
 
 {% include-markdown "discrete/models/deploy_on_target.md" %}
 

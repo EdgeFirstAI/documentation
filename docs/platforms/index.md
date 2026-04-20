@@ -13,17 +13,19 @@ This section covers Quick Start guides for deploying the EdgeFirst workflow in y
 
     **[i.MX 8M Plus](quickstart/imx8mplus/index.md)** | **[i.MX 95](quickstart/imx95/index.md)** 
     :-----------------------------:|:----------------------------: 
-    [![imx8mp](assets/imx8mpevk.png)](quickstart/imx8mplus/index.md) | [![imx95](assets/verdn-imx95-evk.png)](quickstart/imx95/index.md)
+    [![imx8mp](assets/imx8mpevk-no-bg.png)](quickstart/imx8mplus/index.md) | [![imx95](assets/verdn-imx95-evk.png)](quickstart/imx95/index.md)
 
 === "NVIDIA"
     
     **[NVIDIA Jetson Orin Nano](quickstart/jetson_orin/index.md)**
-    [![orin](assets/jetson-orin.jpg)](quickstart/jetson_orin/index.md)
+
+    [![orin](assets/jetsonorin.png)](quickstart/jetson_orin/index.md)
 
 === "Raspberry Pi"
 
     **[Raspberry Pi 5](quickstart/raspberrypi/index.md)**
-    [![pi5](assets/raspberrypi5.jpg)](quickstart/raspberrypi/index.md)
+    
+    [![pi5](assets/raspberrypi5.png)](quickstart/raspberrypi/index.md)
 
 The following diagram describes the workflow you will follow depending on the hardware available.
 

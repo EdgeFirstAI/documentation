@@ -1927,7 +1927,7 @@
 <p>This guide will showcase two methods of deploying the model.</p>
 <ol>
 <li><a href="#live-view-segmentation-app">Live View (Segmentation App)</a>: Displays the live camera feed using the default model provided.</li>
-<li><a href="../../../platforms/recording/#record-mcap"><abbr title="Binary container format for robotics log data">MCAP</abbr> Recording</a>: Allows control of the recording options and provides download file options to replay the recording.</li>
+<li><a href="../../../perception/data_collection/recording/#record-mcap"><abbr title="Binary container format for robotics log data">MCAP</abbr> Recording</a>: Allows control of the recording options and provides download file options to replay the recording.</li>
 </ol>
 <h2 id="download-the-model">Download the Model</h2>
 <p>Download the model from EdgeFirst Studio into the device.  There are two methods for downloading the model.  The first method is to download the model from EdgeFirst Studio and then SCP the model file to the device.  The second method is to use the EdgeFirst Client to download the model directly in the device.</p>
@@ -1958,7 +1958,7 @@
 <p class="admonition-title">Deployment Tab</p>
 <p>You may have noticed the "Deployment" tab to the right of the "Artifacts" tab. This is a placeholder for future functionality, so please don't worry about it.</p>
 </div>
-<p>Once the model is downloaded in your PC, you can <a href="../../../platforms/ssh/#secure-copy">SCP</a> the model to the device by using this command template.</p>
+<p>Once the model is downloaded in your PC, you can <a href="../../../platforms/networking/ssh/#secure-copy">SCP</a> the model to the device by using this command template.</p>
 <div class="highlight"><pre><span></span><code>scp<span class="w"> </span>&lt;path<span class="w"> </span>to<span class="w"> </span>the<span class="w"> </span>downloaded<span class="w"> </span>TFLite<span class="w"> </span>model&gt;<span class="w"> </span>&lt;destination<span class="w"> </span>path&gt;
 </code></pre></div>
 <p>An example command is shown below.</p>
@@ -1966,7 +1966,7 @@
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<p>This method expects you to have already connected to the device via <a href="../../../platforms/ssh/"><abbr title="Secure Shell">SSH</abbr></a>.  The <a href="../../../perception/studio/">EdgeFirst Client</a> can be installed via <code>pip3 install edgefirst-client</code>.  You can verify the installation with the client version command.</p>
+<p>This method expects you to have already connected to the device via <a href="../../../platforms/networking/ssh/"><abbr title="Secure Shell">SSH</abbr></a>.  The <a href="../../../perception/studio/">EdgeFirst Client</a> can be installed via <code>pip3 install edgefirst-client</code>.  You can verify the installation with the client version command.</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>edgefirst-client<span class="w"> </span>version
 EdgeFirst<span class="w"> </span>Studio<span class="w"> </span>Server:<span class="w"> </span><span class="m">3</span>.7.8-a50429e<span class="w"> </span>Client:<span class="w"> </span><span class="m">1</span>.3.3
 </code></pre></div>
@@ -1994,13 +1994,13 @@ Password:<span class="w"> </span>****
 <p class="admonition-title">Note</p>
 <p>Replace <code>&lt;hostname&gt;</code> with the hostname of your device.</p>
 </div>
-<p>You will be greeted with the Maivin <a href="../../../platforms/walkthrough/">Web UI Main Page</a> page.</p>
+<p>You will be greeted with the Maivin <a href="../../../platforms/quickstart/maivin/webui/">Web UI Main Page</a> page.</p>
 <figure>
-<img align="center" alt="Web UI Main Page" src="../../../platforms/assets/ui-maivinMain.png" />
+<img align="center" alt="Web UI Main Page" src="../../../platforms/assets/setup/ui-maivinMain.png" />
 
 <figcaption>Web UI Main Page</figcaption>
 </figure>
-<p>For more information, please see the <a href="../../../platforms/walkthrough/">Web UI Walkthrough</a>.</p>
+<p>For more information, please see the <a href="../../../platforms/quickstart/maivin/webui/">Web UI Walkthrough</a>.</p>
 <h2 id="update-the-model-path">Update the Model Path</h2>
 <p>Next you will need to specify the path to the model in the device.  You can either update the model path in the Web UI or via the command line.</p>
 <div class="admonition note">
@@ -2050,7 +2050,7 @@ MODEL = &quot;path/to/mymodel.tflite&quot;
 
 <figcaption>Service Status</figcaption>
 </figure>
-<p>You will be greeted with the "Service Overview" page.  Ensure that the "camera" and "model" services are enabled and running by toggling the "Enable" and "Start" buttons as shown.  Only "Enable" the "recorder" service as shown.  You will be using the recorder service in <a href="../../../platforms/recording/#record-mcap"><abbr title="Binary container format for robotics log data">MCAP</abbr> Recording</a>.</p>
+<p>You will be greeted with the "Service Overview" page.  Ensure that the "camera" and "model" services are enabled and running by toggling the "Enable" and "Start" buttons as shown.  Only "Enable" the "recorder" service as shown.  You will be using the recorder service in <a href="../../../perception/data_collection/recording/#record-mcap"><abbr title="Binary container format for robotics log data">MCAP</abbr> Recording</a>.</p>
 <figure>
 <img align="center" alt="Service Overview" src="../../assets/deployment/maivin-service-overview.jpg" />
 
@@ -2069,7 +2069,7 @@ MODEL = &quot;path/to/mymodel.tflite&quot;
 
 <figcaption>Sample 1</figcaption>
 </figure>
-<p>Now that the model has been updated, you can <a href="../../../platforms/recording/#record-mcap">make new recordings</a> using the model's inference and then <a href="../../../platforms/foxglove/">visualize the recording using Foxglove Studio</a>.</p>
+<p>Now that the model has been updated, you can <a href="../../../perception/data_collection/recording/#record-mcap">make new recordings</a> using the model's inference and then <a href="../../../perception/data_collection/foxglove/">visualize the recording using Foxglove Studio</a>.</p>
 <h2 id="inference-visualization-in-foxglove">Inference Visualization in Foxglove</h2>
 <p>Once the <abbr title="Binary container format for robotics log data">MCAP</abbr> recording has been downloaded, you can use Foxglove Studio to see the playback of <abbr title="Binary container format for robotics log data">MCAP</abbr> recordings and the model inference.  The following preview is a frame from the <abbr title="Binary container format for robotics log data">MCAP</abbr> with the model inference masks overlaid on top of the video.</p>
 <figure>
@@ -2077,7 +2077,7 @@ MODEL = &quot;path/to/mymodel.tflite&quot;
 
 <figcaption>Foxglove Sample 1</figcaption>
 </figure>
-<p>More information on the <abbr title="Binary container format for robotics log data">MCAP</abbr> playback is provided in <a href="../../../platforms/foxglove/">Foxglove Studio</a>.  Modifying panels and customizing various settings are also shown in <a href="../../../platforms/advanced_foxglove/">Advanced Foxglove</a>.</p>
+<p>More information on the <abbr title="Binary container format for robotics log data">MCAP</abbr> playback is provided in <a href="../../../perception/data_collection/foxglove/">Foxglove Studio</a>.  Modifying panels and customizing various settings are also shown in <a href="../../../perception/data_collection/advanced_foxglove/">Advanced Foxglove</a>.</p>
 <h2 id="next-steps">Next Steps</h2>
 <p>In this tutorial, you have fetched the trained and validated model from EdgeFirst Studio, copied the model in the Maivin, configured the Maivin model services, and ran inference on the model in the device.  You have seen the model running live using the Maivin's camera and ran a Maivin <abbr title="Binary container format for robotics log data">MCAP</abbr> recording to capture the model inference in the frames that can be visualized using Foxglove Studio.</p>
 <p>See our <a href="../../../perception/dev/examples/model/">developer guide</a> for examples to query the model outputs using Rust or Python.</p>

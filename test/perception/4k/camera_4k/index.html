@@ -893,70 +893,6 @@
   
   
   
-    
-    
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-    
-    
-    
-      
-      
-    
-    
-      
-        
-        
-      
-    
-    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
-      
-        
-  
-  
-  
-    <a href="../../../platforms/recording/" class="md-nav__link">
-      
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Dataset Collection Middleware
-  
-
-    
-  </span>
-  
-  
-
-      
-        <span class="md-nav__icon md-icon"></span>
-      
-    </a>
-  
-
-      
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
     <li class="md-nav__item">
       <a href="../../studio/" class="md-nav__link">
         
@@ -1002,6 +938,70 @@
   
 
       </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../data_collection/recording/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Dataset Collection Middleware
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
     </li>
   
 
@@ -1493,10 +1493,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#webui-configuration" class="md-nav__link">
+  <a href="#web-ui-configuration" class="md-nav__link">
     <span class="md-ellipsis">
       
-        WebUI Configuration
+        Web UI Configuration
       
     </span>
   </a>
@@ -1626,7 +1626,7 @@
   <span class="md-ellipsis">
     
   
-    WebUI with 4K
+    Web UI with 4K
   
 
     
@@ -1883,10 +1883,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#webui-configuration" class="md-nav__link">
+  <a href="#web-ui-configuration" class="md-nav__link">
     <span class="md-ellipsis">
       
-        WebUI Configuration
+        Web UI Configuration
       
     </span>
   </a>
@@ -2060,9 +2060,9 @@
 
 
 <h1 id="the-4k-camera-service">The 4K Camera Service</h1>
-<p>The Camera service on the Maivin/Raivin supports 4K video in multiple fashions, including command-line configuration, adding the parameters to the camera configuration file, as well as through the WebUI.</p>
+<p>The Camera service on the Maivin/Raivin supports 4K video in multiple fashions, including command-line configuration, adding the parameters to the camera configuration file, as well as through the Web UI.</p>
 <h2 id="command-line-configuration">Command Line Configuration</h2>
-<p>The camera service can be run at the platform's command-line interface. The first step would be to log on to the platform via <a href="../../../platforms/ssh/"><abbr title="Secure Shell">SSH</abbr></a>. Then stop the current camera service with the <code>sudo systemctl stop camera</code>. The following command-line options for the camera service are described below.</p>
+<p>The camera service can be run at the platform's command-line interface. The first step would be to log on to the platform via <a href="../../../platforms/networking/ssh/"><abbr title="Secure Shell">SSH</abbr></a>. Then stop the current camera service with the <code>sudo systemctl stop camera</code>. The following command-line options for the camera service are described below.</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># Enable 4K tile streaming</span>
 --h264-tiles
 
@@ -2118,8 +2118,8 @@ H264_TILES_FPS = &quot;15&quot;
 TRACY = &quot;true&quot;
 </code></pre></div>
 <p>The parameters for <code>CAMERA_SIZE</code> and <code>H264_BITRATE</code> already exist in <code>/etc/default/camera</code>. The H264 tile topics parameter is not available at this time.</p>
-<h2 id="webui-configuration">WebUI Configuration</h2>
-<p>There is no configuration item in the WebUI to specifically enable 4K tiling; however, you can set the <a href="../../../platforms/configuration/camera/#camera-size">Camera Size</a> to <code>3840 2160</code> to implicitly enter 4K tiling. As well, you can set the <a href="../../../platforms/configuration/camera/#h264-bitrate">H264 Bitrate</a> here as well. Lastly, it is recommended that you <a href="../../../platforms/configuration/camera/#h264-streaming">disable H264 streaming</a> to disable the 1K video stream <code>/camera/h264</code>.</p>
+<h2 id="web-ui-configuration">Web UI Configuration</h2>
+<p>There is no configuration item in the Web UI to specifically enable 4K tiling; however, you can set the <a href="../../../platforms/configuration/camera/#camera-size">Camera Size</a> to <code>3840 2160</code> to implicitly enter 4K tiling. As well, you can set the <a href="../../../platforms/configuration/camera/#h264-bitrate">H264 Bitrate</a> here as well. Lastly, it is recommended that you <a href="../../../platforms/configuration/camera/#h264-streaming">disable H264 streaming</a> to disable the 1K video stream <code>/camera/h264</code>.</p>
 <h2 id="troubleshooting">Troubleshooting</h2>
 <h3 id="low-fps-warnings">Low <abbr title="Frames Per Second">FPS</abbr> Warnings</h3>
 <ul>
@@ -2267,13 +2267,13 @@ TRACY = &quot;true&quot;
         
         
           
-          <a href="../webui_4k/" class="md-footer__link md-footer__link--next" aria-label="Next: WebUI with 4K">
+          <a href="../webui_4k/" class="md-footer__link md-footer__link--next" aria-label="Next: Web UI with 4K">
             <div class="md-footer__title">
               <span class="md-footer__direction">
                 Next
               </span>
               <div class="md-ellipsis">
-                WebUI with 4K
+                Web UI with 4K
               </div>
             </div>
             <div class="md-footer__button md-icon">

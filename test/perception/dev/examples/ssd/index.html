@@ -893,70 +893,6 @@
   
   
   
-    
-    
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-    
-    
-    
-      
-      
-    
-    
-      
-        
-        
-      
-    
-    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
-      
-        
-  
-  
-  
-    <a href="../../../../platforms/recording/" class="md-nav__link">
-      
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Dataset Collection Middleware
-  
-
-    
-  </span>
-  
-  
-
-      
-        <span class="md-nav__icon md-icon"></span>
-      
-    </a>
-  
-
-      
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
     <li class="md-nav__item">
       <a href="../../../studio/" class="md-nav__link">
         
@@ -1002,6 +938,70 @@
   
 
       </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../../data_collection/recording/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Dataset Collection Middleware
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
     </li>
   
 
@@ -1350,7 +1350,7 @@
   <span class="md-ellipsis">
     
   
-    LIDAR Schema Example
+    LiDAR Schema Example
   
 
     
@@ -1966,7 +1966,7 @@
 
 
 <h1 id="mobilenet-ssd-examples">MobileNet <abbr title="Solid State Drive">SSD</abbr> Examples</h1>
-<p>These examples demonstrate how to deploy a MobileNet <abbr title="Solid State Drive">SSD</abbr> V1 model using the <abbr title="Neural Processing Unit">NPU</abbr> of an embedded platform such as a <a href="../../../../platforms/quickstart/">Maivin</a>.  The examples below are split into two parts; model inference on a single image and a model inference publisher. These examples have been tested on the TFLite files found in <a href="https://github.com/apivovarov/ssd-tflite/tree/master">this <abbr title="Solid State Drive">SSD</abbr>-TFLite repository</a>, and in <a href="https://github.com/Arm-Examples/ML-zoo/tree/master/models/object_detection/ssd_mobilenet_v1">ML-Zoo</a>.  </p>
+<p>These examples demonstrate how to deploy a MobileNet <abbr title="Solid State Drive">SSD</abbr> V1 model using the <abbr title="Neural Processing Unit">NPU</abbr> of an embedded platform such as a <a href="../../../../platforms/">Maivin</a>.  The examples below are split into two parts; model inference on a single image and a model inference publisher. These examples have been tested on the TFLite files found in <a href="https://github.com/apivovarov/ssd-tflite/tree/master">this <abbr title="Solid State Drive">SSD</abbr>-TFLite repository</a>, and in <a href="https://github.com/Arm-Examples/ML-zoo/tree/master/models/object_detection/ssd_mobilenet_v1">ML-Zoo</a>.  </p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>In a future release of the EdgeFirst middleware, the Model Service will be able to run MobileNet <abbr title="Solid State Drive">SSD</abbr> V1 models natively, again, testing on the above examples.</p>
@@ -1979,7 +1979,7 @@
 <li><a href="https://github.com/apivovarov/ssd-tflite/blob/master/dog.jpg">Sample Image</a></li>
 </ol>
 <p>Download our <a download="run-tflite.py" href="../assets/run-tflite.py">Python Script</a> for running the example.</p>
-<p>Once the files have been downloaded, <a href="../../../../platforms/ssh/#secure-copy">SCP</a> the files into the embedded platform.</p>
+<p>Once the files have been downloaded, <a href="../../../../platforms/networking/ssh/#secure-copy">SCP</a> the files into the embedded platform.</p>
 <p>Run the script with the command <code>python3 run-tflite.py</code>.  The script should print the inference time in milliseconds and the model detections as follows.</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>python3<span class="w"> </span>run-tflite.py
 Vx<span class="w"> </span>delegate:<span class="w"> </span>allowed_cache_mode<span class="w"> </span><span class="nb">set</span><span class="w"> </span>to<span class="w"> </span><span class="m">0</span>.

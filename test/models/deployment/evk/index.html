@@ -1878,7 +1878,7 @@
 
 <h1 id="deploying-to-embedded-targets">Deploying to Embedded Targets</h1>
 <p>This guide will walk you through installing the EdgeFirst Middleware in "user-mode" on a target device.  If you're using a Maivin or Raivin refer to the <a href="../maivin/">Deploying to the Maivin</a> guide instead.</p>
-<p><img alt="NXP i.MX 8M Plus EVK" src="../../assets/deployment/imx8mpevk.png" /></p>
+<p><img alt="NXP i.MX 8M Plus EVK" src="../../../platforms/assets/imx8mpevk.png" /></p>
 <h2 id="installation">Installation</h2>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
@@ -1922,7 +1922,7 @@ pip3<span class="w"> </span>install<span class="w"> </span>edgefirst
 <p class="admonition-title">Deployment Tab</p>
 <p>You may have noticed the "Deployment" tab to the right of the "Artifacts" tab. This is a placeholder for future functionality, so please don't worry about it.</p>
 </div>
-<p>Once the model is downloaded in your PC, you can <a href="../../../platforms/ssh/#secure-copy">SCP</a> the model to the device by using this command template.</p>
+<p>Once the model is downloaded in your PC, you can <a href="../../../platforms/networking/ssh/#secure-copy">SCP</a> the model to the device by using this command template.</p>
 <div class="highlight"><pre><span></span><code>scp<span class="w"> </span>&lt;path<span class="w"> </span>to<span class="w"> </span>the<span class="w"> </span>downloaded<span class="w"> </span>TFLite<span class="w"> </span>model&gt;<span class="w"> </span>&lt;destination<span class="w"> </span>path&gt;
 </code></pre></div>
 <p>An example command is shown below.</p>
@@ -1930,7 +1930,7 @@ pip3<span class="w"> </span>install<span class="w"> </span>edgefirst
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<p>This method expects you to have already connected to the device via <a href="../../../platforms/ssh/"><abbr title="Secure Shell">SSH</abbr></a>.  The <a href="../../../perception/studio/">EdgeFirst Client</a> can be installed via <code>pip3 install edgefirst-client</code>.  You can verify the installation with the client version command.</p>
+<p>This method expects you to have already connected to the device via <a href="../../../platforms/networking/ssh/"><abbr title="Secure Shell">SSH</abbr></a>.  The <a href="../../../perception/studio/">EdgeFirst Client</a> can be installed via <code>pip3 install edgefirst-client</code>.  You can verify the installation with the client version command.</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>edgefirst-client<span class="w"> </span>version
 EdgeFirst<span class="w"> </span>Studio<span class="w"> </span>Server:<span class="w"> </span><span class="m">3</span>.7.8-a50429e<span class="w"> </span>Client:<span class="w"> </span><span class="m">1</span>.3.3
 </code></pre></div>

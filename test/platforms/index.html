@@ -18,7 +18,7 @@
         <link rel="prev" href="../perception/4k/foxglove_4k/">
       
       
-        <link rel="next" href="quickstart/">
+        <link rel="next" href="quickstart/maivin/">
       
       
         
@@ -29,7 +29,7 @@
     
     
       
-        <title>EdgeFirst Platforms User Manual - EdgeFirst Studio Documentation</title>
+        <title>Supported Platforms - EdgeFirst Studio Documentation</title>
       
     
     
@@ -79,7 +79,7 @@
     
   
 <meta property="og:type" content="website" />
-<meta property="og:title" content="EdgeFirst Platforms User Manual - EdgeFirst Studio Documentation" />
+<meta property="og:title" content="Supported Platforms - EdgeFirst Studio Documentation" />
 <meta property="og:description" content="EdgeFirst Studio Documentation" />
 <meta property="og:image" content="https://doc.edgefirst.ai/test/assets/images/social/platforms/index.png" />
 <meta property="og:image:type" content="image/png" />
@@ -87,7 +87,7 @@
 <meta property="og:image:height" content="630" />
 <meta property="og:url" content="https://doc.edgefirst.ai/test/platforms/" />
 <meta property="twitter:card" content="summary_large_image" />
-<meta property="twitter:title" content="EdgeFirst Platforms User Manual - EdgeFirst Studio Documentation" />
+<meta property="twitter:title" content="Supported Platforms - EdgeFirst Studio Documentation" />
 <meta property="twitter:description" content="EdgeFirst Studio Documentation" />
 <meta property="twitter:image" content="https://doc.edgefirst.ai/test/assets/images/social/platforms/index.png" />
 </head>
@@ -109,7 +109,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#edgefirst-platforms-user-manual" class="md-skip">
+        <a href="#supported-platforms" class="md-skip">
           Skip to content
         </a>
       
@@ -163,7 +163,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              EdgeFirst Platforms User Manual
+              Supported Platforms
             
           </span>
         </div>
@@ -969,6 +969,12 @@
       
         
       
+        
+      
+        
+      
+        
+      
     
     
     
@@ -987,7 +993,11 @@
   
   
   
-    <a href="quickstart/" class="md-nav__link">
+    
+  
+  
+  
+    <a href="quickstart/maivin/" class="md-nav__link">
       
   
   
@@ -1008,64 +1018,6 @@
     </a>
   
 
-      
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    
-    
-      
-        
-      
-        
-      
-        
-      
-    
-    
-    
-      
-      
-    
-    
-      
-        
-        
-      
-    
-    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
-      
-        
-  
-  
-  
-    <a href="hardware/" class="md-nav__link">
-      
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Hardware
-  
-
-    
-  </span>
-  
-  
-
-      
-        <span class="md-nav__icon md-icon"></span>
-      
-    </a>
   
 
       
@@ -1163,6 +1115,66 @@
       
         
       
+    
+    
+    
+      
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="hardware/hardware/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Hardware
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
         
       
     
@@ -1183,7 +1195,7 @@
   
   
   
-    <a href="model_uploads/" class="md-nav__link">
+    <a href="software/model_uploads/" class="md-nav__link">
       
   
   
@@ -1241,7 +1253,7 @@
   
   
   
-    <a href="networking/" class="md-nav__link">
+    <a href="networking/networking/" class="md-nav__link">
       
   
   
@@ -1295,25 +1307,6 @@
     
   
   
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#supported-devices" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Supported Devices
-      
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
 </nav>
                   </div>
                 </div>
@@ -1335,28 +1328,213 @@
 
 
 
-<h1 id="edgefirst-platforms-user-manual">EdgeFirst Platforms User Manual</h1>
-<p>This manual covers the EdgeFirst Perception Middleware for:</p>
-<ul>
-<li><strong>Maivin</strong>: Vision-only configuration</li>
-<li><strong>Raivin</strong>: Combined vision and radar configuration</li>
-</ul>
-<p>If you have a new Maivin or Raivin, start with the <a href="quickstart/">Quickstart Guide</a> to unbox and set up your device.</p>
-<h2 id="supported-devices">Supported Devices</h2>
+<h1 id="supported-platforms">Supported Platforms</h1>
+<p>This section covers Quick Start guides for deploying the EdgeFirst workflow in your platform. These guides will start from setting up your platform to running model inference in your platform.</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="1:4"><input checked="checked" id="edgefirst" name="__tabbed_1" type="radio" /><input id="nxp" name="__tabbed_1" type="radio" /><input id="nvidia" name="__tabbed_1" type="radio" /><input id="raspberry-pi" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="edgefirst">EdgeFirst</label><label for="nxp">NXP</label><label for="nvidia">NVIDIA</label><label for="raspberry-pi">Raspberry Pi</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
 <table>
 <thead>
 <tr>
-<th style="text-align: center;"><strong>Maivin</strong></th>
-<th style="text-align: center;"><strong>Raivin</strong></th>
+<th style="text-align: center;"><strong><a href="quickstart/maivin/">Maivin</a></strong></th>
+<th style="text-align: center;"><strong><a href="quickstart/raivin/">Raivin</a></strong></th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td style="text-align: center;"><img alt="Maivin" src="assets/maivin-2.png" /></td>
-<td style="text-align: center;"><img alt="Raivin" src="assets/raivin.png" /></td>
+<td style="text-align: center;"><a href="quickstart/maivin/"><img alt="Maivin" src="assets/maivin-2.png" /></a></td>
+<td style="text-align: center;"><a href="quickstart/raivin/"><img alt="Raivin" src="assets/raivin.png" /></a></td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>Vision-only configuration</strong></td>
+<td style="text-align: center;"><strong>Combined vision and radar/<abbr title="Light Detection and Ranging">LiDAR</abbr> configuration</strong></td>
 </tr>
 </tbody>
 </table>
+</div>
+<div class="tabbed-block">
+<table>
+<thead>
+<tr>
+<th style="text-align: center;"><strong><a href="quickstart/imx8mplus/">i.MX 8M Plus</a></strong></th>
+<th style="text-align: center;"><strong><a href="quickstart/imx95/">i.MX 95</a></strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;"><a href="quickstart/imx8mplus/"><img alt="imx8mp" src="assets/imx8mpevk.png" /></a></td>
+<td style="text-align: center;"><a href="quickstart/imx95/"><img alt="imx95" src="assets/verdn-imx95-evk.png" /></a></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="tabbed-block">
+<p><strong><a href="quickstart/jetson_orin/">NVIDIA Jetson Orin Nano</a></strong>
+<a href="quickstart/jetson_orin/"><img alt="orin" src="assets/jetson-orin.jpg" /></a></p>
+</div>
+<div class="tabbed-block">
+<p><strong><a href="quickstart/raspberrypi/">Raspberry Pi 5</a></strong>
+<a href="quickstart/raspberrypi/"><img alt="pi5" src="assets/raspberrypi5.jpg" /></a></p>
+</div>
+</div>
+</div>
+<p>The following diagram describes the workflow you will follow depending on the hardware available.</p>
+<pre class="mermaid"><code>%%{init: {"flowchart": {"defaultRenderer": "elk", "nodeSpacing": 60, "rankSpacing": 80}, "themeVariables": { "fontSize": "40px" }} }%%
+
+flowchart LR
+    classDef blue fill:#d0ecff,font-weight:bold; 
+    classDef teal fill:#a2e8ed,font-weight:bold; 
+    classDef orange fill:#ffd699,font-weight:bold; 
+    classDef green fill:#a9e5bb,font-weight:bold; 
+    classDef purple fill:#d6c1f5,font-weight:bold; 
+    classDef coral fill:#ffc2bb,font-weight:bold; 
+    classDef all fill:#f0e6f5,font-weight:bold;
+    classDef invisible fill:transparent,stroke:transparent;
+
+    %% ---------- USER GROUP ----------
+    subgraph Users
+    direction TB
+    users_pad[" "]:::invisible
+    maivin_user([Maivin]):::blue 
+    click maivin_user "quickstart/maivin/" "Open Maivin"
+
+    raivin_user([Raivin]):::orange 
+    click raivin_user "quickstart/raivin/" "Open Raivin"
+
+    imx8mp_user([i.MX 8M Plus]):::green 
+    click imx8mp_user "quickstart/imx8mplus/" "Open i.MX 8M Plus"
+
+    imx95_user([i.MX 95]):::teal 
+    click imx95_user "quickstart/imx95/" "Open i.MX 95"
+
+    orin_user([Jetson Orin]):::purple 
+    click orin_user "quickstart/jetson_orin/" "Open Jetson Orin"
+
+    pi_user([Raspberry Pi 5]):::coral 
+    click pi_user "quickstart/raspberrypi/" "Open Raspberry Pi 5"
+    end
+
+    %% ---------- SETUP ----------
+    subgraph Device_Setup
+    direction TB
+    setup_pad[" "]:::invisible
+    maivin_setup[Setup Maivin]:::blue 
+    click maivin_setup "quickstart/maivin/setup" "Open Maivin Setup"
+
+    raivin_setup[Setup Raivin]:::orange
+    click raivin_setup "quickstart/raivin/setup" "Open Raivin Setup"
+
+    imx8mp_setup[Setup i.MX 8M Plus]:::green
+    click imx8mp_setup "quickstart/imx8mplus/setup" "Open i.MX 8M Plus Setup"
+
+    imx95_setup[Setup i.MX 95]:::teal 
+    click imx95_setup "quickstart/imx95/setup" "Open i.MX 95 Setup"
+
+    orin_setup[Setup Jetson Orin]:::purple
+    click orin_setup "quickstart/jetson_orin/setup" "Open Jetson Orin Setup"
+
+    pi_setup[Setup Raspberry Pi 5]:::coral 
+    click pi_setup "quickstart/raspberrypi/setup" "Open Raspberry Pi Setup"
+
+    copy_dataset[[Copy Sample Dataset]]
+    click copy_dataset "../getting_started/copy_dataset" "Copy Public Dataset"
+    end
+
+    %% ---------- TRAINING ----------
+    subgraph Training
+    direction TB
+    training_pad[" "]:::invisible
+    train_2d[[Train Vision Model]]
+    click train_2d "../models/training/vision" "Open Training Vision"
+
+    ara2{Device has ARA2 processor?}
+    validate_2d[Validate Vision Model]
+    click validate_2d "../models/validation/vision/user_managed" "Open Validating Vision"
+
+    train_3d[[Train Fusion Model]]:::orange 
+    click train_3d "../models/training/fusion" "Open Training Fusion"
+
+    validate_3d[Validate Fusion Model]:::orange 
+    click validate_3d "../models/validation/fusion/managed" "Open Validating Fusion"
+    end
+
+    %% ---------- CONVERSION ----------
+    subgraph Model_Conversion
+    direction TB
+    conversion_pad[" "]:::invisible
+    neutron_converter[Neutron Converter]:::teal 
+    click neutron_converter "../models/ultralytics/neutron" "Open Neutron Converter"
+
+    kinara_converter[Kinara Converter]
+
+    validate_imx95[Validate Neutron Converted Model]:::teal 
+    click validate_imx95 "../models/validation/vision/user_managed" "Open Validating Vision"
+    end
+
+    %% ---------- DEPLOYMENT ----------
+    subgraph Deployment
+    direction TB
+    deploy_pad[" "]:::invisible
+    browser((Browser))
+
+    maivin((Maivin)):::blue 
+    click maivin "quickstart/maivin/deploy" "Open Maivin Deploy"
+
+    raivin((Raivin)):::orange 
+    click raivin "quickstart/raivin/deploy" "Open Raivin Deploy"
+
+    imx8mp((i.MX 8M Plus)):::green 
+    click imx8mp "quickstart/imx8mplus/deploy" "Open i.MX 8M Plus Deploy"
+
+    imx95((i.MX 95)):::teal 
+    click imx95 "quickstart/imx95/deploy" "Open i.MX 95 Deploy"
+
+    orin((Jetson Orin)):::purple 
+    click orin "quickstart/jetson_orin/deploy" "Open Jetson Orin Deploy"
+
+    pi((Raspberry Pi 5)):::coral 
+    click pi "quickstart/raspberrypi/deploy" "Open Raspberry Pi Deploy"
+    end
+
+    %% ---------- USER → SETUP ----------
+    maivin_user --&gt; maivin_setup
+    raivin_user --&gt; raivin_setup
+    imx8mp_user --&gt; imx8mp_setup
+    imx95_user --&gt; imx95_setup
+    orin_user --&gt; orin_setup
+    pi_user --&gt; pi_setup
+
+    %% ---------- SETUP → DATA ----------
+    maivin_setup --&gt; copy_dataset
+    raivin_setup --&gt; copy_dataset
+    imx8mp_setup --&gt; copy_dataset
+    imx95_setup --&gt; copy_dataset
+    orin_setup --&gt; copy_dataset
+    pi_setup --&gt; copy_dataset
+
+    %% ---------- CONVERSION ----------
+    train_2d --&gt; neutron_converter --&gt; validate_imx95
+    ara2 -- Yes --&gt; kinara_converter --&gt; validate_2d
+    ara2 -- No --&gt; validate_2d
+
+    %% ---------- CORE PIPELINE ----------
+    copy_dataset --&gt; train_2d
+    train_2d --&gt; ara2
+
+    %% ---------- 3D PIPELINE ----------
+    copy_dataset -- Raivin Only --&gt; train_3d
+    train_3d --&gt; validate_3d
+
+    %% ---------- DEPLOYMENT ----------
+    validate_2d --&gt; browser
+    validate_2d --&gt; maivin
+    validate_2d --&gt; imx8mp
+    validate_2d --&gt; orin
+    validate_2d --&gt; pi
+    validate_2d --&gt; raivin
+
+    validate_imx95 --&gt; imx95
+    validate_3d --&gt; raivin</code></pre>
 
 
 
@@ -1463,13 +1641,13 @@
         
         
           
-          <a href="quickstart/" class="md-footer__link md-footer__link--next" aria-label="Next: Quick Start">
+          <a href="quickstart/maivin/" class="md-footer__link md-footer__link--next" aria-label="Next: Maivin Quick Start">
             <div class="md-footer__title">
               <span class="md-footer__direction">
                 Next
               </span>
               <div class="md-ellipsis">
-                Quick Start
+                Maivin Quick Start
               </div>
             </div>
             <div class="md-footer__button md-icon">

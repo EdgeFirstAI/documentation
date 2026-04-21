@@ -614,7 +614,7 @@
   <span class="md-ellipsis">
     
   
-    Copy Dataset
+    Copy Sample Dataset
   
 
     
@@ -763,6 +763,8 @@
       
         
       
+        
+      
     
     
     
@@ -895,6 +897,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#tag-dataset" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Tag Dataset
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#train-vision-model" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -917,13 +930,41 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#deploy-the-model" class="md-nav__link">
+  <a href="#deploy-model-on-edgefirst-studio" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Deploy the Model
+        Deploy Model on EdgeFirst Studio
       
     </span>
   </a>
+  
+    <nav class="md-nav" aria-label="Deploy Model on EdgeFirst Studio">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#live-inference" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Live Inference
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#image-inference" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Image Inference
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -1018,6 +1059,34 @@
     
   
     Maivin Workflow
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../raivin/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Raivin Workflow
   
 
     
@@ -1494,6 +1563,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#tag-dataset" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Tag Dataset
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#train-vision-model" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -1516,13 +1596,41 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#deploy-the-model" class="md-nav__link">
+  <a href="#deploy-model-on-edgefirst-studio" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Deploy the Model
+        Deploy Model on EdgeFirst Studio
       
     </span>
   </a>
+  
+    <nav class="md-nav" aria-label="Deploy Model on EdgeFirst Studio">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#live-inference" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Live Inference
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#image-inference" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Image Inference
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -1604,27 +1712,30 @@
 
 
 <h1 id="tourist-workflow">Tourist Workflow</h1>
-<p>In this workflow, you will explore copying the Coffee Cup dataset from the Sample Project and using the dataset to train a vision model that detects coffee cups.  Once the model is trained, you will see how to validate the model and then finally deploy the model on your PC.</p>
+<p>In this workflow, you will explore copying the Coffee Cup dataset from "Sample Project" and using the dataset to train a vision model that detects coffee cups.  Once the model is trained, you will see how to validate the model and then finally deploy the model on your PC.</p>
 <h3 id="copy-dataset">Copy Dataset</h3>
-<p>To copy a dataset, navigate to the dataset you would like to copy.  On the dataset card, select the "Copy Dataset" from the dataset options as shown below.</p>
+<p>To copy a dataset, navigate to the dataset you would like to copy.  On the dataset card, select "Copy Dataset" from the dataset options as shown below.</p>
 <figure>
-<img align="center" alt="Copy Dataset" src="../../../datasets/assets/management/copy-dataset-option.jpg" />
-
-<figcaption>Copy Dataset</figcaption>
-</figure>
-<p>This will open a new dialog for the user to specify the "Destination".  The "Destination" will be the location of the copied dataset.  The "Source" will be set by default to the current dataset card you've selected.  However, you can also modify the location here.  In the example below, the original dataset is the "Source" which is the "Coffee Cup" dataset from the "Sample Project".  The copied dataset will be placed as specified in the "Destination" fields.  By default a new dataset container will be created in the specified project.  However, you can <a href="../../../datasets/tutorials/management/#create-dataset">create a dataset container</a> before copying and specify this dataset container in the "Destination" fields.</p>
+            <img align="center" alt="Copy Dataset" src="../../../datasets/assets/management/copy-dataset-option.jpg" />
+            <figcaption>Copy Dataset</figcaption>
+            </figure>
+<p>This will open a new dialog for the user to specify the dataset source and destination.  The destination will be the location of the copied dataset.  The source is the current location of the dataset.  The source is set by default to the current dataset card you've selected.  In the example below, the source is set to the "Coffee Cup" dataset from "Sample Project".  The copied dataset will be placed as specified in the destination fields.  By default a new dataset container will be created in the specified project.  However, you can also <a href="../../../datasets/tutorials/management/#create-dataset">create a dataset container</a> before copying and specify this dataset container in the destination fields.  </p>
+<p>Once you have made your selection, click "Apply" at the bottom right to start the copy process.</p>
 <figure>
-<img align="center" alt="Copy Dataset Options" src="../../../datasets/assets/management/copy-dataset-options.jpg" />
-
-<figcaption>Copy Dataset Options</figcaption>
-</figure>
-<p>Once the options are specified, go ahead and click "Apply" at the bottom right to start the copy process.  The progress for the dataset copy will be shown on the new dataset card that was created in the project destination that was specified.</p>
+            <img align="center" alt="Copy Dataset Options" src="../../../datasets/assets/management/copy-dataset-options.jpg" />
+            <figcaption>Copy Dataset Options</figcaption>
+            </figure>
+<p>You can navigate to the copied dataset by clicking the "Project" button and then clicking on the "Datasets" button on your project as shown below.</p>
 <figure>
-<img align="center" alt="Copy Dataset Progress" src="../../../datasets/assets/management/copy-dataset-progress.jpg" />
-
-<figcaption>Copy Dataset Progress</figcaption>
-</figure>
-<p>Once the copying process completes, the frames and the annotations have been copied.</p>
+            <img align="center" alt="Navigate to your Project" src="../../../datasets/assets/management/navigate-to-project.jpg" />
+            <figcaption>Navigate to your Project</figcaption>
+            </figure>
+<p>The progress for the dataset copy will be shown on the dataset card.</p>
+<figure>
+            <img align="center" alt="Copy Dataset Progress" src="../../../datasets/assets/management/copy-dataset-progress.jpg" />
+            <figcaption>Copy Dataset Progress</figcaption>
+            </figure>
+<p>Once the copying process completes, the frames and the annotations would have been copied.</p>
 <table>
 <thead>
 <tr>
@@ -1639,194 +1750,183 @@
 </tr>
 </tbody>
 </table>
+<h3 id="tag-dataset">Tag Dataset</h3>
+<p>To maintain the current state of the dataset, tag the dataset with a version.</p>
+<p>Click on the dataset options at the top right of the dataset card (three vertical dots). Then click the "History" button.</p>
+<figure>
+            <img align="center" alt="Tag Dataset Options" src="../../../datasets/assets/management/dataset-options-history.jpg" />
+            <figcaption>Tag Dataset Options</figcaption>
+            </figure>
+<p>Add a new tagged version of the dataset by clicking the + green button on the right of the page as shown.</p>
+<figure>
+            <img align="center" alt="Tag Dataset Button" src="../../../datasets/assets/management/dataset-history-add-new-tag.jpg" />
+            <figcaption>Tag Dataset Button</figcaption>
+            </figure>
+<p>Specify the tag version and tag description. Click "Create Tag" to tag the dataset.</p>
+<figure>
+            <img align="center" alt="Tag Dataset Options" src="../../../datasets/assets/management/dataset-tag-options.jpg" />
+            <figcaption>Tag Dataset Options</figcaption>
+            </figure>
+<p>The new dataset tag will appear under "Version History" of this page.  You can go back to the dataset card by clicking the "Back to Datasets" button.</p>
+<figure>
+            <img align="center" alt="Back to Datasets Button" src="../../../datasets/assets/management/back-to-datasets-button.jpg" />
+            <figcaption>Back to Datasets Button</figcaption>
+            </figure>
 <h3 id="train-vision-model">Train Vision Model</h3>
-<p>Now that you have a fully annotated dataset that is split into training and validation samples, you can start training a Vision model.  This will briefly show the steps for training a model, but for an in depth tutorial, please see <a href="../../../models/training/vision/">Training Vision Models</a>.</p>
+<p>Now that you have a fully annotated dataset with a training and validation partition, you can begin training your model.  This will briefly show the steps for training a model, but for an in depth tutorial, please see <a href="../../../models/training/vision/">Training Vision Models</a>.</p>
 <p>Navigate back to the "Projects" page.  You can go back to the "Projects" page by clicking the Apps Menu waffle button on the top right of the Navigation bar.  Click the first selection to take you to the "Projects page".</p>
 <figure>
-<img align="center" alt="Apps Menu" src="../../../studio/assets/navigation/apps-menu.png" />
-
-<figcaption>Apps Menu</figcaption>
-</figure>
+            <img align="center" alt="Go to Projects Page" src="../../../studio/assets/navigation/go-to-projects-page.jpg" />
+            <figcaption>Go to Projects Page</figcaption>
+            </figure>
 <p>From the "Projects" page, click on "Model Experiments" of your project.</p>
 <figure>
-<img align="center" alt="Model Experiments Page" src="../../../models/assets/training/vision-model-experiments.jpg" />
-
-<figcaption>Model Experiments Page</figcaption>
-</figure>
-<p>Create a new experiment by clicking "New Experiment" on the top right corner.  Enter the name the description of this experiment.  Click "Create New Experiment".</p>
+            <img align="center" alt="Model Experiments Page" src="../../../models/assets/training/model-experiments.jpg" />
+            <figcaption>Model Experiments Page</figcaption>
+            </figure>
+<p>Create a new experiment by clicking "New Experiment" on the top right corner.  Enter the name and the description of this experiment.  Click "Create New Experiment".</p>
 <figure>
-<img align="center" alt="Model Experiments Page" src="../../../models/assets/training/vision-create-experiment.jpg" />
-
-<figcaption>Model Experiments Page</figcaption>
-</figure>
+            <img align="center" alt="Model Experiments Page" src="../../../models/assets/training/create-experiment.jpg" />
+            <figcaption>Model Experiments Page</figcaption>
+            </figure>
 <p>Navigate to the "Training Sessions".</p>
 <figure>
-<img align="center" alt="Training Sessions" src="../../../models/assets/training/vision-training-sessions.jpg" />
-
-<figcaption>Training Sessions</figcaption>
-</figure>
-<p>Create a new training session by clicking on the "New Session" button on the top right corner.</p>
+            <img align="center" alt="Training Sessions" src="../../../models/assets/training/training-sessions.jpg" />
+            <figcaption>Training Sessions</figcaption>
+            </figure>
+<p>Create a new training session by clicking the "Actions" dropdown menu on the top right of the page and then click the "+ New" button.</p>
 <figure>
-<img align="center" alt="New Session Button" src="../../../models/assets/training/new-session-button.jpg" />
-
-<figcaption>New Session Button</figcaption>
-</figure>
-<p>Follow the settings indicated and keep the rest of the settings by their default.  Click "Start Session" to start the training session.</p>
-<div class="admonition warning">
-<p class="admonition-title">Session Name</p>
-<p>Do not include any forward slash "/" in the session names as this can result in missing model artifacts.</p>
-</div>
+            <img align="center" alt="New Session Button" src="../../../models/assets/training/new-session-button.jpg" />
+            <figcaption>New Session Button</figcaption>
+            </figure>
+<p>Follow the settings indicated and keep the rest of the settings default.  Click "Start Session" to start the training session.</p>
 <figure>
-<img align="center" alt="Start Training Session" src="../../../models/assets/training/vision-train-settings.jpg" />
-
-<figcaption>Start Training Session</figcaption>
-</figure>
-<div class="admonition warning">
-<p class="admonition-title">No Datasets Available</p>
-<p>In case there are no datasets visible on the dropdown (3).  Please refresh your browser.</p>
-</div>
+            <img align="center" alt="Start Training Session" src="../../../models/assets/training/vision-train-settings.jpg" />
+            <figcaption>Start Training Session</figcaption>
+            </figure>
 <p>The session progress will be shown like the following below.</p>
 <figure>
-<img align="center" alt="Training Session Progress" src="../../../models/assets/training/vision-session-progress.jpg" />
-
-<figcaption>Training Session Progress</figcaption>
-</figure>
+            <img align="center" alt="Training Session Progress" src="../../../models/assets/training/vision-session-progress.jpg" />
+            <figcaption>Training Session Progress</figcaption>
+            </figure>
 <p>Once completed the session card will appear like the following below.</p>
 <figure>
-<img align="center" alt="Completed Session" src="../../../models/assets/training/vision-completed-session.jpg" />
-
-<figcaption>Completed Session</figcaption>
-</figure>
-<p>On the train session card, expand the session details.</p>
+            <img align="center" alt="Completed Session" src="../../../models/assets/training/vision-completed-session.jpg" />
+            <figcaption>Completed Session</figcaption>
+            </figure>
+<p>Click the training session card for more information.</p>
 <figure>
-<img align="center" alt="Training Details" src="../../../models/assets/training/vision-view-train-details.jpg" />
-
-<figcaption>Training Details</figcaption>
-</figure>
-<p>The trained models will be listed under "Artifacts".  </p>
-<table>
-<thead>
-<tr>
-<th>Session Details</th>
-<th>Artifacts</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><img alt="session" src="../../../models/assets/training/vision-session-details.jpg" /></td>
-<td><img alt="artifacts" src="../../../models/assets/training/vision-session-artifacts.jpg" /></td>
-</tr>
-</tbody>
-</table>
+            <img align="center" alt="Training Details" src="../../../models/assets/training/vision-view-train-details.jpg" />
+            <figcaption>Training Details</figcaption>
+            </figure>
+<p>The trained models will be listed under the "Artifacts" tab.  The download button next to these artifacts will download the artifacts to your machine.</p>
+<figure>
+            <img align="center" alt="Model Artifacts" src="../../../models/assets/training/vision-session-artifacts.jpg" />
+            <figcaption>Model Artifacts</figcaption>
+            </figure>
 <h3 id="validate-vision-model">Validate Vision Model</h3>
-<p>Now that you have trained a Vision model, you can now start validating your Vision model.  This will briefly show the steps for validating a model, but for an in depth tutorial, please see <a href="../../../models/validation/vision/managed/">Validating Vision Models</a>.</p>
-<p>On the train session card, expand the session details.</p>
+<p>Now that you have trained a model, you can now validate the performance of your model.  This will briefly show the steps for validating a model, but for an in depth tutorial, please see <a href="../../../models/validation/vision/managed/">Validating Vision Models</a>.</p>
+<p>If you haven't already, click on the training session card for more information.</p>
 <figure>
-<img align="center" alt="Training Details" src="../../../models/assets/training/vision-view-train-details.jpg" />
-
-<figcaption>Training Details</figcaption>
-</figure>
-<p>Click the "Validate" button.</p>
+            <img align="center" alt="Training Details" src="../../../models/assets/training/vision-view-train-details.jpg" />
+            <figcaption>Training Details</figcaption>
+            </figure>
+<p>On the top right corner of the page, click on the "validate" button as indicated.</p>
 <figure>
-<img align="center" alt="Create Validation Session" src="../../../models/assets/training/vision-validate-button.jpg" />
-
-<figcaption>Create Validation Session</figcaption>
-</figure>
+            <img align="center" alt="Validate Button" src="../../../models/assets/validation/training_validate_button.jpg" />
+            <figcaption>Validate Button</figcaption>
+            </figure>
 <p>Specify the name of the validation session and the model and the dataset for validation.  The rest of the settings were kept as defaults.  Click "Start Session" at the bottom to start the validation session.</p>
 <figure>
-<img align="center" alt="Start Validation Session" src="../../../models/assets/validation/vision-validate-settings.jpg" />
-
-<figcaption>Start Validation Session</figcaption>
-</figure>
-<div class="admonition warning">
-<p class="admonition-title">No Datasets Available</p>
-<p>In case there are no datasets visible on the dropdown.  Please refresh your browser.</p>
-</div>
+            <img align="center" alt="Start Validation Session" src="../../../models/assets/validation/vision-validate-settings.jpg" />
+            <figcaption>Start Validation Session</figcaption>
+            </figure>
+<p>Go to the created validation session by first going back to the "Model Experiments" page.</p>
+<figure>
+            <img align="center" alt="Go to Model Experiments" src="../../../models/assets/training/go-back-to-model-experiments.jpg" />
+            <figcaption>Go to Model Experiments</figcaption>
+            </figure>
+<p>Next, click the validation sessions of the model experiments.</p>
+<figure>
+            <img align="center" alt="Validation Sessions" src="../../../models/assets/validation/validation-sessions.jpg" />
+            <figcaption>Validation Sessions</figcaption>
+            </figure>
 <p>The validation session progress will appear in the "Validation" page as shown below.</p>
 <figure>
-<img align="center" alt="Validation Progress" src="../../../models/assets/validation/vision-session-progress.jpg" />
-
-<figcaption>Validation Progress</figcaption>
-</figure>
-<p>Once completed the session card will appear like the following below.</p>
+            <img align="center" alt="Validation Progress" src="../../../models/assets/validation/vision-session-progress.jpg" />
+            <figcaption>Validation Progress</figcaption>
+            </figure>
+<p>Once completed the session card will appear like the following below.  To view the validation metrics, click on the validation charts button as indicated.</p>
 <figure>
-<img align="center" alt="Completed Session" src="../../../models/assets/validation/vision-completed-session.jpg" />
-
-<figcaption>Completed Session</figcaption>
-</figure>
-<p>The validation metrics are displayed as charts which can be found by clicking the validation charts.</p>
+            <img align="center" alt="Completed Session" src="../../../models/assets/validation/vision-completed-session.jpg" />
+            <figcaption>Completed Session</figcaption>
+            </figure>
+<p>The validation metrics should appear like the following.  For more information, please see the <a href="../../../models/validation/metrics/">Validation Metrics</a> section.</p>
 <figure>
-<img align="center" alt="Validation Charts Button" src="../../../models/assets/validation/vision-charts-button.jpg" />
-
-<figcaption>Validation Charts Button</figcaption>
-</figure>
+            <img align="center" alt="Validation Charts" src="../../../models/assets/validation/vision-charts.jpg" />
+            <figcaption>Validation Charts</figcaption>
+            </figure>
+<p>You can navigate back to the training session by clicking on the "Training Session" link under the "Session" tab.</p>
 <figure>
-<img align="center" alt="Validation Charts" src="../../../models/assets/validation/vision-charts.jpg" />
-
-<figcaption>Validation Charts</figcaption>
-</figure>
-<h3 id="deploy-the-model">Deploy the Model</h3>
-<p>Once you have validated your trained model, take a look at examples of deploying this model across different platforms.  You can find a checklist of supported devices.  We support <a href="../../../models/validation/vision/user_managed/">validation on specific targets</a> and applications for live video inference with links provided below.  </p>
-<table>
-<thead>
-<tr>
-<th>Platform</th>
-<th>On Target Validation</th>
-<th>Live Video</th>
-<th>In Development</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><a href="../../../models/deployment/pc/mpk/">PC / Linux</a></td>
-<td>✓</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>Mac/MacOS</td>
-<td></td>
-<td></td>
-<td>✓</td>
-</tr>
-<tr>
-<td><a href="../../../models/deployment/evk/">i.MX 8M Plus EVK</a></td>
-<td>✓</td>
-<td>✓</td>
-<td></td>
-</tr>
-<tr>
-<td>NVIDIA Orin</td>
-<td>✓</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>Kinara ARA-2</td>
-<td></td>
-<td></td>
-<td>✓</td>
-</tr>
-<tr>
-<td><a href="../../../models/deployment/3d_raivin/">Raivin Radar Fusion</a></td>
-<td>✓</td>
-<td>✓</td>
-<td>✓</td>
-</tr>
-<tr>
-<td><a href="../../../models/deployment/evk/">i.MX 95 EVK</a></td>
-<td>✓</td>
-<td>✓</td>
-<td></td>
-</tr>
-</tbody>
-</table>
-<div class="admonition note">
-<p class="admonition-title">Additional Platforms</p>
-<p>Certain platforms are still under development and support for platforms beyond these listed will be available soon.  <a href="mailto:support@edgefirst.ai">Let us know</a> which platform you'd like to see supported next!</p>
-</div>
+            <img align="center" alt="Go Back to the Training Session" src="../../../models/assets/validation/back-to-training-session.jpg" />
+            <figcaption>Go Back to the Training Session</figcaption>
+            </figure>
+<h3 id="deploy-model-on-edgefirst-studio">Deploy Model on EdgeFirst Studio</h3>
+<p>After <a href="../../../models/training/vision/">training a <strong>Vision</strong> model</a> in EdgeFirst Studio, you can deploy the model in any device connected to a browser with access to a camera.  This can be your phone or your PC as an example.  This guide will show you the steps for deploying the model using EdgeFirst Studio.</p>
+<p>Navigate to the training session you wish to deploy by going back to the "Projects" page by clicking the "Projects" button at the top left of the page.</p>
+<figure>
+            <img align="center" alt="Go to Projects Page" src="../../../studio/assets/navigation/projects-button.jpg" />
+            <figcaption>Go to Projects Page</figcaption>
+            </figure>
+<p>Click on the model experiments of your project.</p>
+<figure>
+            <img align="center" alt="Model Experiments Page" src="../../../models/assets/validation/model-experiments.jpg" />
+            <figcaption>Model Experiments Page</figcaption>
+            </figure>
+<p>Click on the training sessions of your experiment.</p>
+<figure>
+            <img align="center" alt="Training Sessions" src="../../../models/assets/validation/training-sessions.jpg" />
+            <figcaption>Training Sessions</figcaption>
+            </figure>
+<p>Click on the selected training session.</p>
+<figure>
+            <img align="center" alt="Training Session Details" src="../../../models/assets/training/vision-view-train-details.jpg" />
+            <figcaption>Training Session Details</figcaption>
+            </figure>
+<p>Click the "Run Model" button on the top right of the page.</p>
+<figure>
+            <img align="center" alt="Run Model Button" src="../../../models/assets/deployment/run-model-button.jpg" />
+            <figcaption>Run Model Button</figcaption>
+            </figure>
+<h4 id="live-inference">Live Inference</h4>
+<p>You will be given the option for either live inference or inference from a file upload.  Go ahead and demo the live inference feed by clicking the "Live" option.</p>
+<figure>
+            <img align="center" alt="Live Inference Option" src="../../../models/assets/deployment/live-inference-option.jpg" />
+            <figcaption>Live Inference Option</figcaption>
+            </figure>
+<p>You should now see the live inference feed on your browser running the trained model.</p>
+<figure>
+            <img align="center" alt="Live Inference" src="../../../models/assets/deployment/studio-runner-live-inference.jpg" />
+            <figcaption>Live Inference</figcaption>
+            </figure>
+<h4 id="image-inference">Image Inference</h4>
+<p>Alternatively, you can also select the "Upload" option where you can select any image in your filesystem to pass to the model for inference.</p>
+<figure>
+            <img align="center" alt="Image Inference Option" src="../../../models/assets/deployment/image-inference-option.jpg" />
+            <figcaption>Image Inference Option</figcaption>
+            </figure>
+<p>Select an image from the filesystem to run inference.</p>
+<figure>
+            <img align="center" alt="Select Image" src="../../../models/assets/deployment/select-image.jpg" />
+            <figcaption>Select Image</figcaption>
+            </figure>
+<p>You should now see the image with the model inference displayed in EdgeFirst Studio.</p>
+<figure>
+            <img align="center" alt="Image Inference" src="../../../models/assets/deployment/studio-runner-image-inference.jpg" />
+            <figcaption>Image Inference</figcaption>
+            </figure>
 <h2 id="next-steps">Next Steps</h2>
-<p>Explore more features by following the <a href="../tourist_plus/">Tourist Plus Workflow</a>.</p>
+<p>Explore the dataset annotation process by following the <a href="../tourist_plus/">Tourist Plus Workflow</a>.</p>
 
 
 

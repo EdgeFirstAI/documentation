@@ -1669,30 +1669,29 @@
 </div>
 <p>In a command prompt, ping the Maivin's hostname.  </p>
 <figure>
-<img align="center" alt="Ping Results" src="../../assets/networking/ssh-ping.png" /><br />
-<figcaption>Ping Results</figcaption>
-</figure>
+            <img align="center" alt="Ping Results" src="../../assets/networking/ssh-ping.png" />
+            <figcaption>Ping Results</figcaption>
+            </figure>
 <p>If the Maivin does not reply, please confirm the Maivin is powered on and connected to the network.</p>
 <p>Once the ping is successful, use your <abbr title="Secure Shell">SSH</abbr> client to connect to the 'torizon' account on the Maivin's hostname.  For a command-line <abbr title="Secure Shell">SSH</abbr> such as OpenSSH, this should look as:</p>
 <div class="highlight"><pre><span></span><code>ssh<span class="w"> </span>torizon@Maivin-hostname
 </code></pre></div>
 <p>For example:  </p>
 <figure>
-<img align="center" alt="Are you Sure?" src="../../assets/networking/ssh-areYouSure.png" />
-
-<figcaption>Are you Sure?</figcaption>
-</figure>
+            <img align="center" alt="Are you Sure?" src="../../assets/networking/ssh-areYouSure.png" />
+            <figcaption>Are you Sure?</figcaption>
+            </figure>
 <p>On the first log of a new or updated Maivin, you may get the "authenticity of host" error.  This is expected, and type "yes" to continue connecting.</p>
 <p>On a new Raivin, it will ask you to change the default password to a new password.  Re-enter the 'torizon' password, and then enter a new password twice.  After you change the default password, the <abbr title="Secure Shell">SSH</abbr> session will close so you can re-login with the new password.  </p>
 <figure>
-<img align="center" alt="New Password" src="../../assets/networking/ssh-changePassword.png" /><br />
-<figcaption>New Password</figcaption>
-</figure>
+            <img align="center" alt="New Password" src="../../assets/networking/ssh-changePassword.png" />
+            <figcaption>New Password</figcaption>
+            </figure>
 <p>Once you've finished those steps, the next and all future <abbr title="Secure Shell">SSH</abbr> sessions should look as follows:  </p>
 <figure>
-<img align="center" alt="SSH Session" src="../../assets/networking/ssh-login.png" /><br />
-<figcaption>SSH Session</figcaption>
-</figure>
+            <img align="center" alt="SSH Session" src="../../assets/networking/ssh-login.png" />
+            <figcaption><abbr title="Secure Shell">SSH</abbr> Session</figcaption>
+            </figure>
 <p>You are now at the Linux command-line prompt for the Raivin!</p>
 <h2 id="standard-debugging-commands">Standard Debugging Commands</h2>
 <p>The version of Raivin you are running can be found using <code>ostree admin status</code>.</p>

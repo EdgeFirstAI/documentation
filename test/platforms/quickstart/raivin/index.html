@@ -15,7 +15,7 @@
         <link rel="canonical" href="https://doc.edgefirst.ai/test/platforms/quickstart/raivin/">
       
       
-        <link rel="prev" href="../maivin/deploy_pretrained/">
+        <link rel="prev" href="../maivin/deploy/">
       
       
         <link rel="next" href="setup/">
@@ -1047,8 +1047,6 @@
       
         
       
-        
-      
     
     
     
@@ -1107,8 +1105,6 @@
       
         
           
-        
-      
         
       
         
@@ -1275,7 +1271,7 @@
   <span class="md-ellipsis">
     
   
-    Train Fusion Model
+    Train a Fusion Model
   
 
     
@@ -1345,34 +1341,6 @@
 
               
             
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="deploy_pretrained/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Deploy Pre-trained Fusion Models
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
           </ul>
         </nav>
       
@@ -1392,8 +1360,6 @@
       
         
           
-        
-      
         
       
         
@@ -1480,8 +1446,6 @@
       
         
       
-        
-      
     
     
     
@@ -1552,8 +1516,6 @@
       
         
       
-        
-      
     
     
     
@@ -1610,8 +1572,6 @@
       
         
           
-        
-      
         
       
         
@@ -2068,11 +2028,10 @@
 
 
 <h1 id="raivin-quick-start">Raivin Quick Start</h1>
-<figure style="text-align: center;">
-<img alt="Raivin" src="../../assets/raivin.png" width="50%" />
-
-<figcaption>Raivin</figcaption>
-</figure>
+<figure>
+            <img align="center" alt="Raivin" src="../../assets/raivin.png" width="50%" />
+            <figcaption>Raivin</figcaption>
+            </figure>
 <p>The Raivin configuration further extends the perception capabilities of the <a href="../maivin/">Maivin platform</a> through the addition of the <a href="../../hardware/radar/">integrated radar module</a> or <a href="../../hardware/lidar/"><abbr title="Light Detection and Ranging">LiDAR</abbr> module</a>.  The EdgeFirst Perception Middleware is augmented for Raivin configurations with the <a href="../../../models/fusion/">RadarExp Fusion Model</a> which provides low-level radar data fusion with the vision data.  The low-level radar data is represented as the range and doppler data cube, the RadarExp module fuses this data with the vision data to provide a more robust perception stack.  The traditional point-cloud data from the radar is also available for use by the Raivin perception stack, and is especially useful for augmenting the object detection and tracking capabilities through the additional parameters offered by the point cloud data.  </p>
 <h2 id="system-architecture">System Architecture</h2>
 <p>The Raivin runs a Linux operating system based on Toradex's Torizon, we refer to the operating system as Torizon for Maivin.  The operating system packages include common libraries and tools you would expect to find on a typical embedded Linux operating system focused on computer vision and AI (Python, OpenCV, etc...).  </p>
@@ -2175,7 +2134,7 @@
       <nav class="md-footer__inner md-grid" aria-label="Footer" >
         
           
-          <a href="../maivin/deploy_pretrained/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Deploy Pre-trained Vision Models">
+          <a href="../maivin/deploy/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Deploy Vision Model">
             <div class="md-footer__button md-icon">
               
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
@@ -2185,7 +2144,7 @@
                 Previous
               </span>
               <div class="md-ellipsis">
-                Deploy Pre-trained Vision Models
+                Deploy Vision Model
               </div>
             </div>
           </a>

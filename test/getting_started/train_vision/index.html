@@ -614,7 +614,7 @@
   <span class="md-ellipsis">
     
   
-    Copy Dataset
+    Copy Sample Dataset
   
 
     
@@ -761,6 +761,8 @@
       
         
           
+        
+      
         
       
         
@@ -1275,84 +1277,57 @@
 
 
 <h1 id="train-vision-model">Train Vision Model</h1>
-<p>Now that you have a fully annotated dataset that is split into training and validation samples, you can start training a Vision model.  This will briefly show the steps for training a model, but for an in depth tutorial, please see <a href="../../models/training/vision/">Training Vision Models</a>.</p>
+<p>Now that you have a fully annotated dataset with a training and validation partition, you can begin training your model.  This will briefly show the steps for training a model, but for an in depth tutorial, please see <a href="../../models/training/vision/">Training Vision Models</a>.</p>
 <p>Navigate back to the "Projects" page.  You can go back to the "Projects" page by clicking the Apps Menu waffle button on the top right of the Navigation bar.  Click the first selection to take you to the "Projects page".</p>
 <figure>
-<img align="center" alt="Apps Menu" src="../../studio/assets/navigation/apps-menu.png" />
-
-<figcaption>Apps Menu</figcaption>
-</figure>
+            <img align="center" alt="Go to Projects Page" src="../../studio/assets/navigation/go-to-projects-page.jpg" />
+            <figcaption>Go to Projects Page</figcaption>
+            </figure>
 <p>From the "Projects" page, click on "Model Experiments" of your project.</p>
 <figure>
-<img align="center" alt="Model Experiments Page" src="../../models/assets/training/vision-model-experiments.jpg" />
-
-<figcaption>Model Experiments Page</figcaption>
-</figure>
-<p>Create a new experiment by clicking "New Experiment" on the top right corner.  Enter the name the description of this experiment.  Click "Create New Experiment".</p>
+            <img align="center" alt="Model Experiments Page" src="../../models/assets/training/model-experiments.jpg" />
+            <figcaption>Model Experiments Page</figcaption>
+            </figure>
+<p>Create a new experiment by clicking "New Experiment" on the top right corner.  Enter the name and the description of this experiment.  Click "Create New Experiment".</p>
 <figure>
-<img align="center" alt="Model Experiments Page" src="../../models/assets/training/vision-create-experiment.jpg" />
-
-<figcaption>Model Experiments Page</figcaption>
-</figure>
+            <img align="center" alt="Model Experiments Page" src="../../models/assets/training/create-experiment.jpg" />
+            <figcaption>Model Experiments Page</figcaption>
+            </figure>
 <p>Navigate to the "Training Sessions".</p>
 <figure>
-<img align="center" alt="Training Sessions" src="../../models/assets/training/vision-training-sessions.jpg" />
-
-<figcaption>Training Sessions</figcaption>
-</figure>
-<p>Create a new training session by clicking on the "New Session" button on the top right corner.</p>
+            <img align="center" alt="Training Sessions" src="../../models/assets/training/training-sessions.jpg" />
+            <figcaption>Training Sessions</figcaption>
+            </figure>
+<p>Create a new training session by clicking the "Actions" dropdown menu on the top right of the page and then click the "+ New" button.</p>
 <figure>
-<img align="center" alt="New Session Button" src="../../models/assets/training/new-session-button.jpg" />
-
-<figcaption>New Session Button</figcaption>
-</figure>
-<p>Follow the settings indicated and keep the rest of the settings by their default.  Click "Start Session" to start the training session.</p>
-<div class="admonition warning">
-<p class="admonition-title">Session Name</p>
-<p>Do not include any forward slash "/" in the session names as this can result in missing model artifacts.</p>
-</div>
+            <img align="center" alt="New Session Button" src="../../models/assets/training/new-session-button.jpg" />
+            <figcaption>New Session Button</figcaption>
+            </figure>
+<p>Follow the settings indicated and keep the rest of the settings default.  Click "Start Session" to start the training session.</p>
 <figure>
-<img align="center" alt="Start Training Session" src="../../models/assets/training/vision-train-settings.jpg" />
-
-<figcaption>Start Training Session</figcaption>
-</figure>
-<div class="admonition warning">
-<p class="admonition-title">No Datasets Available</p>
-<p>In case there are no datasets visible on the dropdown (3).  Please refresh your browser.</p>
-</div>
+            <img align="center" alt="Start Training Session" src="../../models/assets/training/vision-train-settings.jpg" />
+            <figcaption>Start Training Session</figcaption>
+            </figure>
 <p>The session progress will be shown like the following below.</p>
 <figure>
-<img align="center" alt="Training Session Progress" src="../../models/assets/training/vision-session-progress.jpg" />
-
-<figcaption>Training Session Progress</figcaption>
-</figure>
+            <img align="center" alt="Training Session Progress" src="../../models/assets/training/vision-session-progress.jpg" />
+            <figcaption>Training Session Progress</figcaption>
+            </figure>
 <p>Once completed the session card will appear like the following below.</p>
 <figure>
-<img align="center" alt="Completed Session" src="../../models/assets/training/vision-completed-session.jpg" />
-
-<figcaption>Completed Session</figcaption>
-</figure>
-<p>On the train session card, expand the session details.</p>
+            <img align="center" alt="Completed Session" src="../../models/assets/training/vision-completed-session.jpg" />
+            <figcaption>Completed Session</figcaption>
+            </figure>
+<p>Click the training session card for more information.</p>
 <figure>
-<img align="center" alt="Training Details" src="../../models/assets/training/vision-view-train-details.jpg" />
-
-<figcaption>Training Details</figcaption>
-</figure>
-<p>The trained models will be listed under "Artifacts".  </p>
-<table>
-<thead>
-<tr>
-<th>Session Details</th>
-<th>Artifacts</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><img alt="session" src="../../models/assets/training/vision-session-details.jpg" /></td>
-<td><img alt="artifacts" src="../../models/assets/training/vision-session-artifacts.jpg" /></td>
-</tr>
-</tbody>
-</table>
+            <img align="center" alt="Training Details" src="../../models/assets/training/vision-view-train-details.jpg" />
+            <figcaption>Training Details</figcaption>
+            </figure>
+<p>The trained models will be listed under the "Artifacts" tab.  The download button next to these artifacts will download the artifacts to your machine.</p>
+<figure>
+            <img align="center" alt="Model Artifacts" src="../../models/assets/training/vision-session-artifacts.jpg" />
+            <figcaption>Model Artifacts</figcaption>
+            </figure>
 
 
 

@@ -1448,76 +1448,65 @@
 <h1 id="model-experiments-dashboard">Model Experiments Dashboard</h1>
 <p>A model experiment is a container of training and validation sessions in the experiment.  The following figure shown is the "Model Experiments" page.  This page will contain all the experiments that were started by the user.</p>
 <figure>
-<img align="center" alt="Project Experiments" src="../assets/models/experiments-page.jpg" />
-
-<figcaption>Project Experiments</figcaption>
-</figure>
+            <img align="center" alt="Project Experiments" src="../assets/models/experiments-page.jpg" />
+            <figcaption>Project Experiments</figcaption>
+            </figure>
 <p>The following figure breaks down the elements of an "Experiment" card.</p>
 <figure>
-<img align="center" alt="Experiment Attributes" src="../assets/models/model-experiment-attributes.jpg" />
-
-<figcaption>Experiment Card UI Breakdown</figcaption>
-</figure>
+            <img align="center" alt="Experiment Attributes" src="../assets/models/model-experiment-attributes.jpg" />
+            <figcaption>Experiment Attributes</figcaption>
+            </figure>
 <p>An experiment will contain child training and validation sessions.  The training sessions and validation sessions will be described in more detail in the sections below.</p>
 <h4 id="training-sessions">Training Sessions</h4>
 <p>Training sessions take in datasets and synthesize from them new AI models for object recognition (Vision) or object perception (Fusion).</p>
 <p>From the "Model Experiments" page, we can click on the "Training Sessions" button with the icon <img alt="Trainers Button" src="../../assets/buttons/studio-trainers-button.png" /> to see the training sessions in the experiment.  The figure below shows the layout of the training session cards under the "Training Sessions" page.</p>
 <figure>
-<img align="center" alt="Training Sessions" src="../assets/models/training-sessions.jpg" />
-
-<figcaption>Training Sessions</figcaption>
-</figure>
+            <img align="center" alt="Training Sessions" src="../assets/models/training-sessions.jpg" />
+            <figcaption>Training Sessions</figcaption>
+            </figure>
 <p>The following figure describes the attributes of any given training session.</p>
 <figure>
-<img align="center" alt="Training Session Attributes" src="../../models/assets/training/training-session-attributes.jpg" />
-
-<figcaption>Training Session Attributes</figcaption>
-</figure>
+            <img align="center" alt="Training Session Attributes" src="../../models/assets/training/training-session-attributes.jpg" />
+            <figcaption>Training Session Attributes</figcaption>
+            </figure>
 <p>To compare all the training charts of each session, click on "All Charts" at the top right corner of the "Training Sessions" page.  This will show the charts from each session overlaid on top of one another for a quick comparison.</p>
 <figure>
-<img align="center" alt="All Charts" src="../assets/models/all-charts.jpg" />
-
-<figcaption>All Charts</figcaption>
-</figure>
+            <img align="center" alt="All Charts" src="../assets/models/all-charts.jpg" />
+            <figcaption>All Charts</figcaption>
+            </figure>
 <p>All the training charts will be displayed with a legend that indicates the training session.</p>
 <figure>
-<img align="center" alt="All Charts" src="../assets/models/all-training-charts.jpg" />
-
-<figcaption>All Charts</figcaption>
-</figure>
+            <img align="center" alt="All Charts" src="../assets/models/all-training-charts.jpg" />
+            <figcaption>All Charts</figcaption>
+            </figure>
 <p>For more details regarding deploying training sessions, please see <a href="../../models/training/vision/">Training Vision Models</a> and <a href="../../models/training/fusion/">Training Fusion Models</a> for training Fusion models.</p>
 <h4 id="validation-sessions">Validation Sessions</h4>
 <p>The validation sessions will assess the performance of the models in the training sessions.  A training session can have any number of validation sessions.  From the "Model Experiments" page, we can click on the "Validation Sessions" button with the icon <img alt="Validation Button" src="../../assets/buttons/studio-validation-button.jpg" /> to see the validation sessions in the experiment.  The figure below shows the layout of the validation session cards under the "Validation Sessions" page.</p>
 <figure>
-<img align="center" alt="Validation Sessions" src="../assets/models/validation-sessions.jpg" />
-
-<figcaption>Validation Sessions</figcaption>
-</figure>
+            <img align="center" alt="Validation Sessions" src="../assets/models/validation-sessions.jpg" />
+            <figcaption>Validation Sessions</figcaption>
+            </figure>
 <p>The following figure describes the attributes of any given validation session.</p>
 <figure>
-<img align="center" alt="Validation Session Attributes" src="../../models/assets/validation/validation-session-attributes.jpg" />
-
-<figcaption>Validation Session Attributes</figcaption>
-</figure>
+            <img align="center" alt="Validation Session Attributes" src="../../models/assets/validation/validation-session-attributes.jpg" />
+            <figcaption>Validation Session Attributes</figcaption>
+            </figure>
 <p>To compare the validation charts of each session, click on "Compare" at the top right corner of the "Validate Sessions" page.  This will show the charts of each validation session side-by-side for a quick comparison.</p>
 <figure>
-<img align="center" alt="Compare Validation Sessions" src="../assets/models/compare-validation-sessions.jpg" />
-
-<figcaption>Compare Validation Sessions</figcaption>
-</figure>
+            <img align="center" alt="Compare Validation Sessions" src="../assets/models/compare-validation-sessions.jpg" />
+            <figcaption>Compare Validation Sessions</figcaption>
+            </figure>
 <p>Next select the validation session results you wish to compare.  Once selected, click "Compare" to show the validation charts side-by-side.</p>
 <figure>
-<img align="center" alt="Select Validation Sessions" src="../assets/models/validation-sessions-to-compare.jpg" />
-
-<figcaption>Select Validation Sessions</figcaption>
-</figure>
+            <img align="center" alt="Select Validation Sessions" src="../assets/models/validation-sessions-to-compare.jpg" />
+            <figcaption>Select Validation Sessions</figcaption>
+            </figure>
 <p>Now the charts for each session are displayed side-by-side.  All the charts for a single training session will be shown in one column.  A new column indicates another session.</p>
 <figure>
-<img align="center" alt="Comparing Validation Sessions" src="../assets/models/validation-charts-comparison.jpg" />
-
-<figcaption>Comparing Validation Sessions</figcaption>
-</figure>
-<p>There are two types of validation: <strong>managed</strong> and <strong>user-managed</strong>. Managed validations are set to default in EdgeFirst Studio which triggers an EC2 instance that downloads the dataset and the inference model for validation. This type of validation is best used if you do not have an embedded platform to deploy the model. User-managed validations are hosted in embedded platforms where the dataset and the inference model will be downloaded. This type of validation is best used if you have an embedded platform available to verify how the model would perform in the platform and determine the model's inference time when deployed.</p>
+            <img align="center" alt="Comparing Validation Sessions" src="../assets/models/validation-charts-comparison.jpg" />
+            <figcaption>Comparing Validation Sessions</figcaption>
+            </figure>
+<p>There are two types of validation: <strong>managed</strong> and <strong>user-managed</strong>. Managed validations are set by default in EdgeFirst Studio which triggers an EC2 instance that downloads the dataset and the inference model for validation. This type of validation is best used if you do not have an embedded platform to deploy the model. User-managed validations are hosted in embedded platforms where the dataset and the inference model will be downloaded. This type of validation is best used if you have an embedded platform available to verify how the model would perform in the platform and determine the model's inference time when deployed.</p>
 <p>For more details regarding deploying validation sessions, please see <a href="../../models/validation/vision/managed/">Validating Vision Models</a> and <a href="../../models/validation/fusion/managed/">Validating Fusion Models</a> for validating Fusion models.</p>
 <h2 id="next-steps">Next Steps</h2>
 <p>Now that you are familiar with the layout of the Model Experiments Dashboard, proceed to the next section for learning more about the context of the <a href="../instances/">Cloud Instances Dashboard</a>.</p>

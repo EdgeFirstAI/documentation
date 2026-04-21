@@ -1,0 +1,2510 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="EdgeFirst Studio Documentation">
+      
+      
+        <meta name="author" content="Au-Zone Technologies">
+      
+      
+        <link rel="canonical" href="https://doc.edgefirst.ai/test/getting_started/workflows/raivin/">
+      
+      
+        <link rel="prev" href="../maivin/">
+      
+      
+        <link rel="next" href="../../../studio/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../../assets/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+    
+    
+      
+        <title>Raivin Workflow - EdgeFirst Studio Documentation</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Barlow:300,300i,400,400i,700,700i%7CJetBrains+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Barlow";--md-code-font:"JetBrains Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/_mkdocstrings.css">
+    
+      <link rel="stylesheet" href="../../../stylesheets/extra.css">
+    
+      <link rel="stylesheet" href="../../../stylesheets/mermaid.css">
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+  
+
+
+  
+  
+
+<script id="__analytics">function __md_analytics(){function e(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],e("js",new Date),e("config","G-N2QMRM1BZK"),document.addEventListener("DOMContentLoaded",(function(){document.forms.search&&document.forms.search.query.addEventListener("blur",(function(){this.value&&e("event","search",{search_term:this.value})}));document$.subscribe((function(){var t=document.forms.feedback;if(void 0!==t)for(var a of t.querySelectorAll("[type=submit]"))a.addEventListener("click",(function(a){a.preventDefault();var n=document.location.pathname,d=this.getAttribute("data-md-value");e("event","feedback",{page:n,data:d}),t.firstElementChild.disabled=!0;var r=t.querySelector(".md-feedback__note [data-md-value='"+d+"']");r&&(r.hidden=!1)})),t.hidden=!1})),location$.subscribe((function(t){e("config","G-N2QMRM1BZK",{page_path:t.pathname})}))}));var t=document.createElement("script");t.async=!0,t.src="https://www.googletagmanager.com/gtag/js?id=G-N2QMRM1BZK",document.getElementById("__analytics").insertAdjacentElement("afterEnd",t)}</script>
+  
+    <script>if("undefined"!=typeof __md_analytics){var consent=__md_get("__consent");consent&&consent.analytics&&__md_analytics()}</script>
+  
+
+    
+    
+  
+<meta property="og:type" content="website" />
+<meta property="og:title" content="Raivin Workflow - EdgeFirst Studio Documentation" />
+<meta property="og:description" content="EdgeFirst Studio Documentation" />
+<meta property="og:image" content="https://doc.edgefirst.ai/test/assets/images/social/getting_started/workflows/raivin.png" />
+<meta property="og:image:type" content="image/png" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta property="og:url" content="https://doc.edgefirst.ai/test/getting_started/workflows/raivin/" />
+<meta property="twitter:card" content="summary_large_image" />
+<meta property="twitter:title" content="Raivin Workflow - EdgeFirst Studio Documentation" />
+<meta property="twitter:description" content="EdgeFirst Studio Documentation" />
+<meta property="twitter:image" content="https://doc.edgefirst.ai/test/assets/images/social/getting_started/workflows/raivin.png" />
+</head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#raivin-workflow" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+        <aside class="md-banner">
+          <div class="md-banner__inner md-grid md-typeset">
+            
+            
+<a href="https://test.edgefirst.studio" style="display: flex; align-items: center; gap: 0.5rem;">
+  <span class="twemoji">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+  </span>
+  <span>Back to EdgeFirst Studio</span>
+</a>
+
+          </div>
+          
+        </aside>
+      
+    </div>
+    
+      <div data-md-color-scheme="default" data-md-component="outdated" hidden>
+        
+      </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../.." title="EdgeFirst Studio Documentation" class="md-header__button md-logo" aria-label="EdgeFirst Studio Documentation" data-md-component="logo">
+      
+  <img src="../../../assets/logo.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            EdgeFirst Studio Documentation
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Raivin Workflow
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m14.3 16-.7-2h-3.2l-.7 2H7.8L11 7h2l3.2 9zM20 8.69V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12zm-9.15 3.96h2.3L12 9z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="amber"  aria-label="Light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Light mode" for="__palette_2" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5s-1.65.15-2.39.42zM3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29zm.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14zM20.65 7l-1.77 3.79a7.02 7.02 0 0 0-2.38-4.15zm-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29zM12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="amber"  aria-label="Dark mode"  type="radio" name="__palette" id="__palette_2">
+    
+      <label class="md-header__button md-icon" title="Dark mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3zm3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95zm-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../../.." class="md-tabs__link">
+          
+  
+  
+    
+  
+  Getting Started
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../studio/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Studio
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../3D/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  3D MLOps
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../datasets/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Datasets
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../models/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Models
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../perception/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Perception
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../platforms/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Platforms
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="EdgeFirst Studio Documentation" class="md-nav__button md-logo" aria-label="EdgeFirst Studio Documentation" data-md-component="logo">
+      
+  <img src="../../../assets/logo.png" alt="logo">
+
+    </a>
+    EdgeFirst Studio Documentation
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1" checked>
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../.." class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Getting Started
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_1" id="__nav_1_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_1_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_1">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Getting Started
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../login/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Login
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../create_project/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Create Project
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../copy_dataset/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Copy Sample Dataset
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../explore_dataset/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Explore dataset
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../train_vision/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Train Vision Model
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../validate_vision/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Validate Vision Model
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../deploy_model/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Deploy the Model
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1_9" checked>
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    User Workflows
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_1_9" id="__nav_1_9_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_1_9_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_1_9">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    User Workflows
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tourist/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Tourist Workflow
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tourist_plus/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Tourist Plus Workflow
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../web/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Web Workflow
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../maivin/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Maivin Workflow
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Raivin Workflow
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Raivin Workflow
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#capture-with-a-raivin" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Capture with a Raivin
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Capture with a Raivin">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#record-mcap" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Record MCAP
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Record MCAP">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#start-recording" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Start Recording
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#stop-recording" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Stop Recording
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#download-mcap" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Download MCAP
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#upload-mcap" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Upload MCAP
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#restore-snapshot" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Restore Snapshot
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#train-a-fusion-model" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Train a Fusion Model
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#validate-fusion-model" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Validate Fusion Model
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#deploy-fusion-model" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Deploy Fusion Model
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Deploy Fusion Model">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#download-the-model" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Download the Model
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#visit-the-web-ui-service" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Visit the Web UI Service
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#update-the-model-path" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Update the Model Path
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#enable-and-start-the-camera-and-model-services" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Enable and Start the Camera and Model Services
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#live-view-segmentation-app" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Live View (Segmentation App)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#inference-visualization-in-foxglove" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Inference Visualization in Foxglove
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../../studio/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Studio
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../../3D/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3D MLOps
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../../datasets/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Datasets
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../../models/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Models
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../../perception/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Perception
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../../platforms/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Platforms
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#capture-with-a-raivin" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Capture with a Raivin
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Capture with a Raivin">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#record-mcap" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Record MCAP
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Record MCAP">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#start-recording" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Start Recording
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#stop-recording" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Stop Recording
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#download-mcap" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Download MCAP
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#upload-mcap" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Upload MCAP
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#restore-snapshot" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Restore Snapshot
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#train-a-fusion-model" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Train a Fusion Model
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#validate-fusion-model" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Validate Fusion Model
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#deploy-fusion-model" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Deploy Fusion Model
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Deploy Fusion Model">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#download-the-model" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Download the Model
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#visit-the-web-ui-service" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Visit the Web UI Service
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#update-the-model-path" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Update the Model Path
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#enable-and-start-the-camera-and-model-services" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Enable and Start the Camera and Model Services
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#live-view-segmentation-app" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Live View (Segmentation App)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#inference-visualization-in-foxglove" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Inference Visualization in Foxglove
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+                
+
+
+
+
+  <nav class="md-path" aria-label="Navigation" >
+    <ol class="md-path__list">
+      
+      
+        
+  
+  
+    
+    
+      <li class="md-path__item">
+        <a href="../../.." class="md-path__link">
+          
+  <span class="md-ellipsis">
+    Getting Started
+  </span>
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+    
+    
+      <li class="md-path__item">
+        <a href="../" class="md-path__link">
+          
+  <span class="md-ellipsis">
+    User Workflows
+  </span>
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ol>
+  </nav>
+
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="raivin-workflow">Raivin Workflow</h1>
+<p>In this workflow, you will explore recording MCAPs from the Raivin which will be used to create and annotate datasets with 2D and 3D annotations.  Once the dataset has been annotated, you will start training and validating your Fusion model using the dataset captured.  Finally, you will deploy the model back to the Raivin for inference.</p>
+<h2 id="capture-with-a-raivin">Capture with a Raivin</h2>
+<p>If you have a Raivin, follow this tutorial to see how to capture and upload datasets into EdgeFirst Studio.  Use your browser to connect to the Web UI of the remote device, enter the following URL <code>https://&lt;hostname&gt;/</code>.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Replace <code>&lt;hostname&gt;</code> with the hostname of your device.</p>
+</div>
+<p>You will be greeted with the Raivin <a href="../../../platforms/quickstart/raivin/webui/">Web UI Main Page</a> page.</p>
+<figure>
+            <img align="center" alt="Raivin Main Page" src="../../../platforms/assets/setup/quickStart-mainPage.png" />
+            <figcaption>Raivin Main Page</figcaption>
+            </figure>
+<h3 id="record-mcap">Record <abbr title="Binary container format for robotics log data">MCAP</abbr></h3>
+<p><abbr title="Binary container format for robotics log data">MCAP</abbr> recordings can be started and stopped using the Recording Button at the device's <a href="../../../platforms/quickstart/maivin/webui/#the-top-ribbon">top navbar</a>.  It is to the left of the <abbr title="Binary container format for robotics log data">MCAP</abbr> Details hamburger button, which is used to open the <a href="../../../perception/data_collection/recording/#the-mcap-modal"><abbr title="Binary container format for robotics log data">MCAP</abbr> Details Modal</a>.</p>
+<figure>
+            <img align="center" alt="MCAP Recording and Details Buttons" src="../../../perception/assets/mcap-RecordingButton_McapDetailsButton.png" />
+            <figcaption><abbr title="Binary container format for robotics log data">MCAP</abbr> Recording and Details Buttons</figcaption>
+            </figure>
+<p>Both of these buttons are available on every page of the Maivin, Raivin, and other edge devices running the EdgeFirst middleware.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>You must close all modals to be able to click the "Recording" and "Details" Buttons.</p>
+</div>
+<p>For more information about recording MCAPs, please read the <a href="../../../perception/data_collection/recording/"><abbr title="Binary container format for robotics log data">MCAP</abbr> Recording section</a>.</p>
+<h4 id="start-recording">Start Recording</h4>
+<p>To start a recording, simply click the "Recording" button to begin capturing data.</p>
+<figure>
+            <img align="center" alt="MCAP Recording" src="../../../perception/assets/mcap_recording.png" />
+            <figcaption><abbr title="Binary container format for robotics log data">MCAP</abbr> Recording</figcaption>
+            </figure>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>It may take up to 30 seconds for a recording to start, depending on topic tracked.</p>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Low Disk Space</p>
+<p>If there is not enough room on the drive to record an <abbr title="Binary container format for robotics log data">MCAP</abbr>, recording will automatically stop and you will get a "Low Disk Space" error.
+ <figure markdown="span">
+        <img align="center" alt="MCAP Low Disk Space Warning" src="../../../platforms/assets/mcap_low-disk-space.png" />
+        <figcaption><abbr title="Binary container format for robotics log data">MCAP</abbr> Low Disk Space Warning</figcaption>
+        </figure></p>
+</div>
+<p>If you were to open the <abbr title="Binary container format for robotics log data">MCAP</abbr> Details Modal while recording, you would see a new <abbr title="Binary container format for robotics log data">MCAP</abbr> file in the <abbr title="Binary container format for robotics log data">MCAP</abbr> list.</p>
+<figure>
+            <img align="center" alt="MCAP Modal While Recording" src="../../../platforms/assets/mcap_modal_while_recording.png" />
+            <figcaption><abbr title="Binary container format for robotics log data">MCAP</abbr> Modal While Recording</figcaption>
+            </figure>
+<h4 id="stop-recording">Stop Recording</h4>
+<p>To stop recording, click the "Recording" button a second time.</p>
+<h3 id="download-mcap">Download <abbr title="Binary container format for robotics log data">MCAP</abbr></h3>
+<p>To download an <abbr title="Binary container format for robotics log data">MCAP</abbr> recording from the device, click the <abbr title="Binary container format for robotics log data">MCAP</abbr> Details hamburger button <img alt="&quot;MCAP Details Button&quot;" src="../../../assets/buttons/mcap_details_button.jpg" /> to open the <abbr title="Binary container format for robotics log data">MCAP</abbr> Details Modal.</p>
+<figure>
+            <img align="center" alt="MCAP Modal" src="../../../platforms/assets/setup/quickStart-mcap.png" />
+            <figcaption><abbr title="Binary container format for robotics log data">MCAP</abbr> Modal</figcaption>
+            </figure>
+<p>Use the "Download" button <img alt="&quot;Download Button&quot;" src="../../../assets/buttons/mcap_download_button.png" /> in the row containing the name of the <abbr title="Binary container format for robotics log data">MCAP</abbr> file you want to download, which will download the <abbr title="Binary container format for robotics log data">MCAP</abbr> file to your local machine.</p>
+<p>You can also use an <a href="../../../platforms/networking/ssh/#secure-copy"><abbr title="Secure Shell">SSH</abbr> client to copy files</a> off the Raivin.</p>
+<h3 id="upload-mcap">Upload <abbr title="Binary container format for robotics log data">MCAP</abbr></h3>
+<p>To upload an <abbr title="Binary container format for robotics log data">MCAP</abbr> Recording into EdgeFirst Studio, first <a href="https://test.edgefirst.studio/login">login</a> to EdgeFirst Studio.  Once logged in to EdgeFirst Studio, navigate to the "Data Snapshots" under the tool options.</p>
+<figure>
+            <img align="center" alt="Data Snapshots" src="../../../datasets/assets/annotations/automatic/data-snapshots.jpg" />
+            <figcaption>Data Snapshots</figcaption>
+            </figure>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>A project has already been created intended for object detection.  This step
+has been covered in <a href="../../create_project/">Getting Started</a>.</p>
+</div>
+<p>Once you are in the "Data Snapshots" page, upload the recorded <abbr title="Binary container format for robotics log data">MCAP</abbr> by clicking "From File" which opens a new window dialog for selecting the <abbr title="Binary container format for robotics log data">MCAP</abbr> downloaded in your PC.</p>
+<div class="admonition note">
+<p class="admonition-title">EdgeFirst Datasets</p>
+<p>You can also drag and drop <a href="../../../datasets/format/">EdgeFirst Datasets</a> Zip and Arrow files in the "Data Snapshots".</p>
+</div>
+<figure>
+            <img align="center" alt="Upload MCAP" src="../../../datasets/assets/capture/mcap-upload.jpg" />
+            <figcaption>Upload <abbr title="Binary container format for robotics log data">MCAP</abbr></figcaption>
+            </figure>
+<p>Once the <abbr title="Binary container format for robotics log data">MCAP</abbr> file is selected, this would start the upload progress in EdgeFirst Studio.  This upload progress may take several minutes depending on the size of the <abbr title="Binary container format for robotics log data">MCAP</abbr>. Once the upload is complete, the status will be shown like the figure on the right.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: center;"><strong>Upload Progress</strong></th>
+<th style="text-align: center;"><strong>Completed Upload</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;"><img alt="Progress" src="../../../datasets/assets/capture/upload-progress.jpg" /></td>
+<td style="text-align: center;"><img alt="Complete" src="../../../datasets/assets/capture/upload-completed.jpg" /></td>
+</tr>
+</tbody>
+</table>
+<h2 id="restore-snapshot">Restore Snapshot</h2>
+<p>The snapshot restoration process involves several dataset transformations such as the frame rate specification, depth map generation, and auto-annotations. More information can be found in <a href="../../../studio/snapshots/">Studio</a>.</p>
+<div class="admonition info">
+<p class="admonition-title">COCO Annotations</p>
+<p>The labels supported during the auto-annotation process for the <em>Fully Automatic Ground Truth Generation</em> are the <a href="../../../datasets/coco/#coco-labels">COCO labels</a> listed.</p>
+</div>
+<p>The created snapshots can be found under "Data Snapshots".</p>
+<figure>
+            <img align="center" alt="Data Snapshots" src="../../../datasets/assets/annotations/automatic/data-snapshots.jpg" />
+            <figcaption>Data Snapshots</figcaption>
+            </figure>
+<p>To restore the snapshot, click on the snapshot context menu and select "Restore".</p>
+<figure>
+            <img align="center" alt="Restore Snapshots" src="../../../datasets/assets/annotations/automatic/restore-snapshot.jpg" />
+            <figcaption>Restore Snapshots</figcaption>
+            </figure>
+<p>Restoring a snapshot will create a new dataset entirely with annotations.  Specify the project to contain this new dataset and specify the name and the description of the dataset.  Furthermore, toggle the "AI Ground Truth Generation" to auto annotate the dataset samples.  The rest of the settings can be kept in their defaults for this tutorial.  Click "Restore" to start the restoration process.</p>
+<figure>
+            <img align="center" alt="Restore Snapshots Fields" src="../../../datasets/assets/annotations/automatic/restore-snapshot-fields.jpg" />
+            <figcaption>Restore Snapshots Fields</figcaption>
+            </figure>
+<p>The snapshot restore process can be found under the project datasets.</p>
+<figure>
+            <img align="center" alt="Restore Snapshots Progress" src="../../../datasets/assets/annotations/automatic/snapshot-restore-process.jpg" />
+            <figcaption>Restore Snapshots Progress</figcaption>
+            </figure>
+<p>Once completed, the dataset will now contain annotations that resulted from the auto-annotation process.</p>
+<p>Next <a href="../../../datasets/tutorials/management/#view-dataset">navigate to the gallery</a> of the dataset by clicking on the image preview on the dataset card.  To correct any mistakes from the auto-annotation process, follow the tutorials described under <a href="../../../datasets/tutorials/annotations/manual/#manual-2d-annotations">manual annotations</a>.</p>
+<p>Finally, <a href="../../../datasets/tutorials/management/#split-dataset">split the dataset</a> into training and validation groups.</p>
+<h2 id="train-a-fusion-model">Train a Fusion Model</h2>
+<p>Now that you have a fully annotated dataset with a training and validation partition, you can begin training your model.  This will briefly show the steps for training a model, but for an in depth tutorial, please see <a href="../../../models/training/fusion/">Training Fusion Models</a>.</p>
+<p>Navigate back to the "Projects" page.  You can go back to the "Projects" page by clicking the Apps Menu waffle button on the top right of the Navigation bar.  Click the first selection to take you to the "Projects page".</p>
+<figure>
+            <img align="center" alt="Go to Projects Page" src="../../../studio/assets/navigation/go-to-projects-page.jpg" />
+            <figcaption>Go to Projects Page</figcaption>
+            </figure>
+<p>From the "Projects" page, click on "Model Experiments" of your project.</p>
+<figure>
+            <img align="center" alt="Model Experiments Page" src="../../../models/assets/training/model-experiments.jpg" />
+            <figcaption>Model Experiments Page</figcaption>
+            </figure>
+<p>Create a new experiment by clicking "New Experiment" on the top right corner.  Enter the name the description of this experiment.  Click "Create New Experiment".</p>
+<figure>
+            <img align="center" alt="Model Experiments Page" src="../../../models/assets/training/create-experiment.jpg" />
+            <figcaption>Model Experiments Page</figcaption>
+            </figure>
+<p>Navigate to the "Training Sessions".</p>
+<figure>
+            <img align="center" alt="Training Sessions" src="../../../models/assets/training/training-sessions.jpg" />
+            <figcaption>Training Sessions</figcaption>
+            </figure>
+<p>Create a new training session by clicking the "Actions" dropdown menu on the top right of the page and then click the "+ New" button.</p>
+<figure>
+            <img align="center" alt="New Session Button" src="../../../models/assets/training/new-session-button.jpg" />
+            <figcaption>New Session Button</figcaption>
+            </figure>
+<p>Follow the settings indicated and keep the rest of the settings by their default.  Click "Start Session" to start the training session.</p>
+<figure>
+            <img align="center" alt="Start Training Session" src="../../../models/assets/training/fusion-train-settings.jpg" />
+            <figcaption>Start Training Session</figcaption>
+            </figure>
+<p>The session progress will be shown like the following below.</p>
+<figure>
+            <img align="center" alt="Training Session Progress" src="../../../models/assets/training/fusion-session-progress.jpg" />
+            <figcaption>Training Session Progress</figcaption>
+            </figure>
+<p>Once completed the session card will appear like the following below.</p>
+<figure>
+            <img align="center" alt="Completed Session" src="../../../models/assets/training/fusion-completed-session.jpg" />
+            <figcaption>Completed Session</figcaption>
+            </figure>
+<p>Click the training session card for more information.</p>
+<figure>
+            <img align="center" alt="Training Details" src="../../../models/assets/training/fusion-view-train-details.jpg" />
+            <figcaption>Training Details</figcaption>
+            </figure>
+<p>The trained models will be listed under "Artifacts".  </p>
+<figure>
+            <img align="center" alt="Model Artifacts" src="../../../models/assets/training/fusion-session-artifacts.jpg" />
+            <figcaption>Model Artifacts</figcaption>
+            </figure>
+<h2 id="validate-fusion-model">Validate Fusion Model</h2>
+<p>Now that you have trained a Fusion model, you can now start validating your model.  This will briefly show the steps for validating a model, but for an in depth tutorial, please see <a href="../../../models/validation/fusion/managed/">Validating Fusion Models</a>.</p>
+<p>If you haven't already, click on the train session card for more information.</p>
+<figure>
+            <img align="center" alt="Training Details" src="../../../models/assets/training/fusion-view-train-details.jpg" />
+            <figcaption>Training Details</figcaption>
+            </figure>
+<p>On the top right corner of the page, click on the "validate" button as indicated.</p>
+<figure>
+            <img align="center" alt="Validate Button" src="../../../models/assets/validation/training_validate_button.jpg" />
+            <figcaption>Validate Button</figcaption>
+            </figure>
+<p>Specify the name of the validation session and the model and the dataset for validation.  The rest of the settings were kept as defaults.  Click "Start Session" at the bottom to start the validation session.</p>
+<figure>
+            <img align="center" alt="Start Validation Session" src="../../../models/assets/validation/fusion-session-fields.jpg" />
+            <figcaption>Start Validation Session</figcaption>
+            </figure>
+<p>The validation session progress will appear in the "Validation" page as shown below.</p>
+<figure>
+            <img align="center" alt="Validation Progress" src="../../../models/assets/validation/fusion-session-progress.jpg" />
+            <figcaption>Validation Progress</figcaption>
+            </figure>
+<p>Once completed the session card will appear like the following below.  The validation metrics are displayed as charts which can be found by clicking the view charts button as shown.</p>
+<figure>
+            <img align="center" alt="Completed Session" src="../../../models/assets/validation/fusion-completed-session.jpg" />
+            <figcaption>Completed Session</figcaption>
+            </figure>
+<figure>
+            <img align="center" alt="Validation Charts" src="../../../models/assets/validation/fusion-validation-metrics.jpg" />
+            <figcaption>Validation Charts</figcaption>
+            </figure>
+<h2 id="deploy-fusion-model">Deploy Fusion Model</h2>
+<p>This guide will showcase two methods of deploying the model.</p>
+<ol>
+<li><a href="#live-view-segmentation-app">Live View (Segmentation App)</a>: Displays the live camera feed using the default model provided.</li>
+<li><a href="../../../perception/data_collection/recording/#record-mcap"><abbr title="Binary container format for robotics log data">MCAP</abbr> Recording</a>: Allows control of the recording options and provides download file options to replay the recording.</li>
+</ol>
+<h3 id="download-the-model">Download the Model</h3>
+<p>Download the model from EdgeFirst Studio into the device.  There are two methods for downloading the model.  The first method is to download the model from EdgeFirst Studio and then SCP the model file to the device.  The second method is to use the EdgeFirst Client to download the model directly in the device.</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="download-using-scp" name="__tabbed_1" type="radio" /><input id="download-using-edgefirst-client" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="download-using-scp">Download using SCP</label><label for="download-using-edgefirst-client">Download using EdgeFirst Client</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<p>As mentioned under the <a href="../../../models/training/vision/#training-outcomes">Training Outcomes</a> section, the trained models can be downloaded by clicking the the training session card in EdgeFirst Studio. </p>
+<p><figure markdown="span">
+        <img align="center" alt="Training Details" src="../../../models/assets/training/fusion-view-train-details.jpg" />
+        <figcaption>Training Details</figcaption>
+        </figure></p>
+<p>This will open the session details and the models are listed under the "Artifacts" tab as shown below.  Click on the downward arrow indicated in red to download the models to your PC.  In this example, you will be deploying the TFLite model in the device.</p>
+<p><figure markdown="span">
+        <img align="center" alt="Model Artifacts" src="../../../models/assets/training/fusion-session-artifacts.jpg" />
+        <figcaption>Model Artifacts</figcaption>
+        </figure></p>
+<div class="admonition note">
+<p class="admonition-title">Deployment Tab</p>
+<p>You may have noticed the "Deployment" tab to the right of the "Artifacts" tab. This is a placeholder for future functionality, so please don't worry about it.</p>
+</div>
+<p>Once the model is downloaded in your PC, you can <a href="../../../platforms/networking/ssh/#secure-copy">SCP</a> the model to the device by using this command template.</p>
+<div class="highlight"><pre><span></span><code>scp<span class="w"> </span>&lt;path<span class="w"> </span>to<span class="w"> </span>the<span class="w"> </span>downloaded<span class="w"> </span>TFLite<span class="w"> </span>model&gt;<span class="w"> </span>&lt;destination<span class="w"> </span>path&gt;
+</code></pre></div>
+<p>An example command is shown below.</p>
+<div class="highlight"><pre><span></span><code>scp<span class="w"> </span>fusion.tflite<span class="w"> </span>torizon@verdin-imx8mp-15140753:~
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<p>This method expects you to have already connected to the device via <a href="../../../platforms/networking/ssh/"><abbr title="Secure Shell">SSH</abbr></a>.  The <a href="../../../perception/studio/">EdgeFirst Client</a> can be installed via <code>pip3 install edgefirst-client</code>.  You can verify the installation with the client version command.</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>edgefirst-client<span class="w"> </span>version
+EdgeFirst<span class="w"> </span>Studio<span class="w"> </span>Server:<span class="w"> </span><span class="m">3</span>.7.8-a50429e<span class="w"> </span>Client:<span class="w"> </span><span class="m">1</span>.3.3
+</code></pre></div>
+<p>Next login to EdgeFirst Studio with the command.</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>edgefirst-client<span class="w"> </span>login
+Username:<span class="w"> </span>user
+Password:<span class="w"> </span>****
+</code></pre></div>
+<p>You can download the model on the device using the <code>download-artifact</code> command as shown below.</p>
+<div class="highlight"><pre><span></span><code>edgefirst-client<span class="w"> </span>download-artifact<span class="w"> </span>&lt;session<span class="w"> </span>ID&gt;<span class="w"> </span>&lt;model<span class="w"> </span>name&gt;
+</code></pre></div>
+<p>For example <code>edgefirst-client download-artifact t-fbb fusion.tflite</code>. This command will download to the current working directory.</p>
+<p>The <code>download-artifact</code> expects three arguments.</p>
+<ul>
+<li>session ID: Pass the trainer or validation integer session ID associated with the models.</li>
+<li>model name: Pass the specific model that will be downloaded to the device.  Usually this is <code>mymodel.tflite</code>.</li>
+</ul>
+<p>You can find more information on using the <a href="../../../perception/studio/">EdgeFirst Client</a> in the command line.</p>
+</div>
+</div>
+</div>
+<h3 id="visit-the-web-ui-service">Visit the Web UI Service</h3>
+<p>Use your browser to connect to the Web UI of the remote device, enter the following URL <code>https://&lt;hostname&gt;/</code>.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Replace <code>&lt;hostname&gt;</code> with the hostname of your device.</p>
+</div>
+<p>You will be greeted with the Raivin <a href="../../../platforms/quickstart/raivin/webui/">Web UI Main Page</a> page.</p>
+<figure>
+            <img align="center" alt="Web UI Main Page" src="../../../platforms/assets/setup/quickStart-mainPage.png" />
+            <figcaption>Web UI Main Page</figcaption>
+            </figure>
+<p>For more information, please see the <a href="../../../platforms/quickstart/raivin/webui/">Web UI Walkthrough</a>.</p>
+<h3 id="update-the-model-path">Update the Model Path</h3>
+<p>Next you will need to specify the path to the model in the device.  You can either update the model path in the Web UI or via the command line.</p>
+<div class="admonition note">
+<p class="admonition-title">Configure Model Settings</p>
+<p>Whenever a new model has been updated, ensure that the <a href="../../../platforms/configuration/model/">model settings</a> such as the score and the <abbr title="Intersection over Union">IoU</abbr> thresholds are ideally set for this model.</p>
+</div>
+<div class="tabbed-set tabbed-alternate" data-tabs="2:2"><input checked="checked" id="via-web-ui" name="__tabbed_2" type="radio" /><input id="via-command-line" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="via-web-ui">via Web UI</label><label for="via-command-line">via Command Line</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<p>Once you are in the Web UI main page, you can specify the path to the model by following the steps below.</p>
+<p>Click the settings icon on the top right corner of the page.</p>
+<p><figure markdown="span">
+        <img align="center" alt="Settings" src="../../../models/assets/deployment/raivin-settings.png" />
+        <figcaption>Settings</figcaption>
+        </figure></p>
+<p>Select "Fusion Settings".</p>
+<p><figure markdown="span">
+        <img align="center" alt="Model Settings" src="../../../models/assets/deployment/raivin-fusion-settings.jpg" />
+        <figcaption>Model Settings</figcaption>
+        </figure></p>
+<p>Configure the path to the model in your device as specified under "The Radar model".  Once configured, click "Save Configuration" to save your changes.</p>
+<p><figure markdown="span">
+        <img align="center" alt="Model Path" src="../../../models/assets/deployment/configure-model-path-raivin.jpg" />
+        <figcaption>Model Path</figcaption>
+        </figure></p>
+</div>
+<div class="tabbed-block">
+<p>To update the model path using the command line in the device, edit the following file using <code>sudo vi /etc/default/fusion</code>.</p>
+<p>Edit the following line <code>MODEL = "path/to/mymodel.tflite"</code> to point to the specific path to your model.  To edit, press <code>i</code> to enter into "Insert Mode".  You should now be able to edit the lines.  To exit "Insert Mode", press the ESC key on your keyboard.  Next save and exit the file by typing <code>:wq</code> on your keyboard.  More examples for using <code>vi</code> can be found <a href="https://coderwall.com/p/adv71w/basic-vim-commands-for-getting-started">here</a>.</p>
+<div class="highlight"><pre><span></span><code># The radar fusion model
+MODEL = &quot;path/to/mymodel.tflite&quot;
+</code></pre></div>
+<p>Once the path to the model has been updated, restart the model service using <code>sudo systemctl restart fusion</code>.</p>
+</div>
+</div>
+</div>
+<h3 id="enable-and-start-the-camera-and-model-services">Enable and Start the Camera and Model Services</h3>
+<p>Once the model path in the device is specified, ensure that all services are enabled.  To verify, go back to the settings and click on the "Service Status" button.</p>
+<figure>
+            <img align="center" alt="Service Status" src="../../../models/assets/deployment/raivin-service-status.jpg" />
+            <figcaption>Service Status</figcaption>
+            </figure>
+<p>You will be greeted with the "Service Overview" page.  Ensure that all services are enabled and running by toggling the "Enable" and "Start" buttons as shown.  Only "Enable" the "recorder" service as shown.  You will be using the recorder service in <a href="../../../perception/data_collection/recording/"><abbr title="Binary container format for robotics log data">MCAP</abbr> Recording</a>.</p>
+<figure>
+            <img align="center" alt="Service Overview" src="../../../models/assets/deployment/raivin-service-overview.jpg" />
+            <figcaption>Service Overview</figcaption>
+            </figure>
+<h3 id="live-view-segmentation-app">Live View (Segmentation App)</h3>
+<p>Now you will see a live inference of the model in the device.  Once all services are enabled, go back to the main page and then select the "Segmentation View" application as shown.</p>
+<figure>
+            <img align="center" alt="Segmentation App" src="../../../models/assets/deployment/raivin-segmentation-app.png" />
+            <figcaption>Segmentation App</figcaption>
+            </figure>
+<p>This will run inference on the model specified to generate segmentation masks of identified objects on the camera feed and highlights the radar point clouds on the occupancy grid marking the positions of the objects in world coordinates.  Examples are shown below.</p>
+<figure>
+            <img align="center" alt="Sample 1" src="../../../models/assets/deployment/occupancy-sample-1.jpg" />
+            <figcaption>Sample 1</figcaption>
+            </figure>
+<figure>
+            <img align="center" alt="Sample 2" src="../../../models/assets/deployment/occupancy-sample-2.jpg" />
+            <figcaption>Sample 2</figcaption>
+            </figure>
+<p>Now that the model has been updated, you can <a href="../../../perception/data_collection/recording/#record-mcap">make new recordings</a> using the model's inference and then <a href="../../../perception/data_collection/foxglove/">visualize the recording using Foxglove Studio</a>.</p>
+<h3 id="inference-visualization-in-foxglove">Inference Visualization in Foxglove</h3>
+<p>Once the <abbr title="Binary container format for robotics log data">MCAP</abbr> recording has been downloaded, you can use Foxglove Studio to see the playback of <abbr title="Binary container format for robotics log data">MCAP</abbr> recordings and the model inference.  The following preview shows the segmentation mask from the model identifying the person in the frame (right) and the occupancy grid highlighting the radar clusters that correspond to the person's position in world coordinates.</p>
+<figure>
+            <img align="center" alt="Foxglove Sample 1" src="../../../perception/assets/adv_foxglove-finished_fusion.png" />
+            <figcaption>Foxglove Sample 1</figcaption>
+            </figure>
+<p>More information on the <abbr title="Binary container format for robotics log data">MCAP</abbr> playback is provided in <a href="../../../perception/data_collection/foxglove/">Foxglove Studio</a>.  Modifying panels and customizing various settings are also shown in <a href="../../../perception/data_collection/advanced_foxglove/">Advanced Foxglove</a>.</p>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  <form class="md-feedback" name="feedback" hidden>
+    <fieldset>
+      <legend class="md-feedback__title">
+        Was this page helpful?
+      </legend>
+      <div class="md-feedback__inner">
+        <div class="md-feedback__list">
+          
+            <button class="md-feedback__icon md-icon" type="submit" title="This page was helpful" data-md-value="1">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 12a8 8 0 0 0-8-8 8 8 0 0 0-8 8 8 8 0 0 0 8 8 8 8 0 0 0 8-8m2 0a10 10 0 0 1-10 10A10 10 0 0 1 2 12 10 10 0 0 1 12 2a10 10 0 0 1 10 10M10 9.5c0 .8-.7 1.5-1.5 1.5S7 10.3 7 9.5 7.7 8 8.5 8s1.5.7 1.5 1.5m7 0c0 .8-.7 1.5-1.5 1.5S14 10.3 14 9.5 14.7 8 15.5 8s1.5.7 1.5 1.5m-5 7.73c-1.75 0-3.29-.73-4.19-1.81L9.23 14c.45.72 1.52 1.23 2.77 1.23s2.32-.51 2.77-1.23l1.42 1.42c-.9 1.08-2.44 1.81-4.19 1.81"/></svg>
+            </button>
+          
+            <button class="md-feedback__icon md-icon" type="submit" title="This page could be improved" data-md-value="0">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 12a8 8 0 0 0-8-8 8 8 0 0 0-8 8 8 8 0 0 0 8 8 8 8 0 0 0 8-8m2 0a10 10 0 0 1-10 10A10 10 0 0 1 2 12 10 10 0 0 1 12 2a10 10 0 0 1 10 10m-6.5-4c.8 0 1.5.7 1.5 1.5s-.7 1.5-1.5 1.5-1.5-.7-1.5-1.5.7-1.5 1.5-1.5M10 9.5c0 .8-.7 1.5-1.5 1.5S7 10.3 7 9.5 7.7 8 8.5 8s1.5.7 1.5 1.5m2 4.5c1.75 0 3.29.72 4.19 1.81l-1.42 1.42C14.32 16.5 13.25 16 12 16s-2.32.5-2.77 1.23l-1.42-1.42C8.71 14.72 10.25 14 12 14"/></svg>
+            </button>
+          
+        </div>
+        <div class="md-feedback__note">
+          
+            <div data-md-value="1" hidden>
+              
+              
+                
+              
+              
+              
+                
+                
+              
+              Thanks for your feedback!
+            </div>
+          
+            <div data-md-value="0" hidden>
+              
+              
+                
+              
+              
+              
+                
+                
+              
+              Thanks for your feedback! Help us improve this page by using our <a href="..." target="_blank" rel="noopener">feedback form</a>.
+            </div>
+          
+        </div>
+      </div>
+    </fieldset>
+  </form>
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href="../maivin/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Maivin Workflow">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                Maivin Workflow
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../../../studio/" class="md-footer__link md-footer__link--next" aria-label="Next: EdgeFirst Studio">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                EdgeFirst Studio
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2025 Au-Zone Technologies &mdash; <a href="#__consent">Privacy Settings</a>
+
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        
+<div class="md-social">
+  
+    
+    
+    
+    
+    <a href="https://github.com/EdgeFirstAI" target="_blank" rel="noopener" title="EdgeFirst on GitHub" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+    </a>
+  
+    
+    
+    
+    
+    <a href="https://ca.linkedin.com/company/au-zone-technologies" target="_blank" rel="noopener" title="Au-Zone Technologies on LinkedIn" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3M135.4 416H69V202.2h66.5V416zM102.2 96a38.5 38.5 0 1 1 0 77 38.5 38.5 0 1 1 0-77m282.1 320h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9z"/></svg>
+    </a>
+  
+    
+    
+    
+    
+    <a href="https://x.com/au_zone" target="_blank" rel="noopener" title="Au-Zone on X" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M357.2 48h70.6L273.6 224.2 455 464H313L201.7 318.6 74.5 464H3.8l164.9-188.5L-5.2 48h145.6l100.5 132.9zm-24.8 373.8h39.1L119.1 88h-42z"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+      <div class="md-consent" data-md-component="consent" id="__consent" hidden>
+        <div class="md-consent__overlay"></div>
+        <aside class="md-consent__inner">
+          <form class="md-consent__form md-grid md-typeset" name="consent">
+            
+
+
+  
+
+
+<h4>Privacy Settings</h4>
+<p>We use cookies to recognize your repeated visits and preferences, as well as to measure the effectiveness of our documentation and whether users find what they're searching for. With your consent, you're helping us to make our documentation better.</p>
+<input class="md-toggle" type="checkbox" id="__settings" >
+<div class="md-consent__settings">
+  <ul class="task-list">
+    
+    
+    
+      
+    
+    
+      
+        
+  
+  
+    
+    
+      
+    
+  
+  <li class="task-list-item">
+    <label class="task-list-control">
+      <input type="checkbox" name="analytics" checked>
+      <span class="task-list-indicator"></span>
+      Google Analytics
+    </label>
+  </li>
+
+      
+    
+  </ul>
+</div>
+<div class="md-consent__controls">
+  
+    
+      <button class="md-button md-button--primary">Accept</button>
+    
+    
+    
+  
+    
+    
+    
+      <label class="md-button" for="__settings">Manage settings</label>
+    
+  
+</div>
+          </form>
+        </aside>
+      </div>
+      <script>var consent=__md_get("__consent");if(consent)for(var input of document.forms.consent.elements)input.name&&(input.checked=consent[input.name]||!1);else"file:"!==location.protocol&&setTimeout((function(){document.querySelector("[data-md-component=consent]").hidden=!1}),250);var form=document.forms.consent;for(var action of["submit","reset"])form.addEventListener(action,(function(e){if(e.preventDefault(),"reset"===e.type)for(var n of document.forms.consent.elements)n.name&&(n.checked=!1);__md_set("__consent",Object.fromEntries(Array.from(new FormData(form).keys()).map((function(e){return[e,!0]})))),location.hash="",location.reload()}))</script>
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["content.code.copy", "content.code.annotate", "content.tabs.link", "navigation.instant", "navigation.tracking", "navigation.tabs", "navigation.tabs.sticky", "navigation.path", "navigation.indexes", "navigation.top", "navigation.footer", "navigation.prune", "toc.follow", "search.suggest", "search.highlight"], "search": "../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"alias": true, "default": "latest", "provider": "mike"}}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>

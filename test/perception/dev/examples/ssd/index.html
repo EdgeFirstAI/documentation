@@ -1966,7 +1966,7 @@
 
 
 <h1 id="mobilenet-ssd-examples">MobileNet <abbr title="Solid State Drive">SSD</abbr> Examples</h1>
-<p>These examples demonstrate how to deploy a MobileNet <abbr title="Solid State Drive">SSD</abbr> V1 model using the <abbr title="Neural Processing Unit">NPU</abbr> of an embedded platform such as a <a href="../../../../platforms/">Maivin</a>.  The examples below are split into two parts; model inference on a single image and a model inference publisher. These examples have been tested on the TFLite files found in <a href="https://github.com/apivovarov/ssd-tflite/tree/master">this <abbr title="Solid State Drive">SSD</abbr>-TFLite repository</a>, and in <a href="https://github.com/Arm-Examples/ML-zoo/tree/master/models/object_detection/ssd_mobilenet_v1">ML-Zoo</a>.  </p>
+<p>These examples demonstrate how to deploy a MobileNet <abbr title="Solid State Drive">SSD</abbr> V1 model using the <abbr title="Neural Processing Unit">NPU</abbr> of an embedded platform such as a <a href="../../../../platforms/quickstart/maivin/">Maivin</a>.  The examples below are split into two parts; model inference on a single image and a model inference publisher. These examples have been tested on the TFLite files found in <a href="https://github.com/apivovarov/ssd-tflite/tree/master">this <abbr title="Solid State Drive">SSD</abbr>-TFLite repository</a>, and in <a href="https://github.com/Arm-Examples/ML-zoo/tree/master/models/object_detection/ssd_mobilenet_v1">ML-Zoo</a>.  </p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>In a future release of the EdgeFirst middleware, the Model Service will be able to run MobileNet <abbr title="Solid State Drive">SSD</abbr> V1 models natively, again, testing on the above examples.</p>
@@ -2033,10 +2033,9 @@ Found<span class="w"> </span>objects:
 </div>
 <p>Furthermore, a new image should be saved <code>img_vis.jpg</code> showing the model output visualizations.</p>
 <figure>
-<img align="center" alt="Model Inference" src="../assets/img_vis.jpg" />
-
-<figcaption>Model Inference</figcaption>
-</figure>
+            <img align="center" alt="Model Inference" src="../assets/img_vis.jpg" />
+            <figcaption>Model Inference</figcaption>
+            </figure>
 <p>The following breakdown of the script describing the steps of the model inference is provided below.</p>
 <ol>
 <li>

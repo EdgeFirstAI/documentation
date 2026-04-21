@@ -1459,34 +1459,30 @@
 <h1 id="3d-annotations">3D Annotations</h1>
 <p>The 3D annotations are a set of 3D bounding boxes in meters that represent the position of the object in the frame in world coordinates.  More information can be found regarding the <a href="../../datasets/format/box_format/#box3d">format of the 3D bounding boxes</a>.</p>
 <figure>
-<img alt="LiDAR" src="../assets/3d_bounding_box_plus_lidar.jpg" />
-
-<figcaption>LiDAR</figcaption>
-</figure>
+            <img align="center" alt="LiDAR" src="../assets/3d_bounding_box_plus_lidar.jpg" />
+            <figcaption><abbr title="Light Detection and Ranging">LiDAR</abbr></figcaption>
+            </figure>
 <h2 id="automatic-ground-truth-generation">Automatic Ground Truth Generation</h2>
-<p>The 3D annotations are formulated using Radar or <abbr title="Light Detection and Ranging">LiDAR</abbr> PCDs that's available in <a href="../../platforms/">Raivin Platforms</a> by Au-Zone Technologies. The <a href="../../studio/agtg/">Automatic Ground Truth Generation (AGTG)</a> automatically creates the 3D annotations for the dataset if the PCDs are available in the dataset.  For a tutorial to this process, refer to <a href="../../datasets/tutorials/annotations/automatic/">deploying the AGTG pipeline in EdgeFirst Studio</a>.</p>
+<p>The 3D annotations are formulated using Radar or <abbr title="Light Detection and Ranging">LiDAR</abbr> PCDs that's available in <a href="../../platforms/quickstart/raivin/">Raivin Platforms</a>. The <a href="../../studio/agtg/">Automatic Ground Truth Generation (AGTG)</a> automatically creates the 3D annotations for the dataset if the PCDs are available in the dataset.  For a tutorial to this process, refer to <a href="../../datasets/tutorials/annotations/automatic/">deploying the AGTG pipeline in EdgeFirst Studio</a>.</p>
 <p>For modifying 3D annotations in the dataset, follow the steps in the next section.</p>
 <h2 id="manual-3d-annotations">Manual 3D Annotations</h2>
 <p>This section describes the steps for adjusting 3D annotations in the dataset.</p>
 <p>First <a href="../../datasets/tutorials/management/#view-dataset">navigate to the dataset gallery</a>.  Ensure that the <abbr title="Light Detection and Ranging">LiDAR</abbr> and/or Radar point clouds, and the 3D bounding box annotations are toggled visible.</p>
 <figure>
-<img align="center" alt="Visible 3D Annotations" src="../../datasets/assets/annotations/manual/visible-3d-annotations.jpg" />
-
-<figcaption>Visible 3D Annotations</figcaption>
-</figure>
+            <img align="center" alt="Visible 3D Annotations" src="../../datasets/assets/annotations/manual/visible-3d-annotations.jpg" />
+            <figcaption>Visible 3D Annotations</figcaption>
+            </figure>
 <h3 id="scale-3d-annotation">Scale 3D Annotation</h3>
 <p>The error in the current annotation is that the bounding box is not scaled properly.  Click on the option on the left sidebar to enable 3D bounding box scaling as indicated in red.</p>
 <figure>
-<img align="center" alt="Scale 3D Annotations" src="../../datasets/assets/annotations/manual/scale-3d-box.jpg" />
-
-<figcaption>Scale 3D Annotations</figcaption>
-</figure>
+            <img align="center" alt="Scale 3D Annotations" src="../../datasets/assets/annotations/manual/scale-3d-box.jpg" />
+            <figcaption>Scale 3D Annotations</figcaption>
+            </figure>
 <p>Click on the current 3D bounding box to scale and this will provide anchor points to scale the 3D bounding box in the 3-axis.</p>
 <figure>
-<img align="center" alt="Scaling 3D Annotations" src="../../datasets/assets/annotations/manual/scale-3d-box-axis.jpg" />
-
-<figcaption>Scaling 3D Annotations</figcaption>
-</figure>
+            <img align="center" alt="Scaling 3D Annotations" src="../../datasets/assets/annotations/manual/scale-3d-box-axis.jpg" />
+            <figcaption>Scaling 3D Annotations</figcaption>
+            </figure>
 <p>Next adjust the scaling of the 3D bounding box in each axis by dragging the anchor points (red, green, blue).  The 3D bounding box shown below was adjusted with proper scaling to the <abbr title="Light Detection and Ranging">LiDAR</abbr> point clouds of the object.  </p>
 <table>
 <thead>
@@ -1508,10 +1504,9 @@
 <h3 id="translate-3d-annotation">Translate 3D Annotation</h3>
 <p>Next the adjusted 3D bounding box needs to be properly translated.  Click on the option on the left sidebar to enable 3D bounding box translation as indicated in red.</p>
 <figure>
-<img align="center" alt="Translate 3D Annotations" src="../../datasets/assets/annotations/manual/translate-3d-box.jpg" />
-
-<figcaption>Translate 3D Annotations</figcaption>
-</figure>
+            <img align="center" alt="Translate 3D Annotations" src="../../datasets/assets/annotations/manual/translate-3d-box.jpg" />
+            <figcaption>Translate 3D Annotations</figcaption>
+            </figure>
 <p>Similar to the workflow as scaling the 3D bounding boxes above, move the three anchor points for each axis to translate the bounding box for each axis.</p>
 <table>
 <thead>
@@ -1531,29 +1526,25 @@
 </table>
 <p>Once the 3D bounding box annotation is properly oriented, click "Save Annotations" to save the changes.</p>
 <figure>
-<img align="center" alt="Submit 3D Annotations" src="../../datasets/assets/annotations/manual/submit-audit-3d-boxes.jpg" />
-
-<figcaption>Submit 3D Annotations</figcaption>
-</figure>
+            <img align="center" alt="Submit 3D Annotations" src="../../datasets/assets/annotations/manual/submit-audit-3d-boxes.jpg" />
+            <figcaption>Submit 3D Annotations</figcaption>
+            </figure>
 <h3 id="add-3d-annotation">Add 3D Annotation</h3>
 <p>To add a missing 3D bounding box, click on the option on the left sidebar to add a new 3D bounding box annotation as indicated in red.</p>
 <figure>
-<img align="center" alt="Add 3D Annotations" src="../../datasets/assets/annotations/manual/add-3d-box.jpg" />
-
-<figcaption>Add 3D Annotations</figcaption>
-</figure>
+            <img align="center" alt="Add 3D Annotations" src="../../datasets/assets/annotations/manual/add-3d-box.jpg" />
+            <figcaption>Add 3D Annotations</figcaption>
+            </figure>
 <p>Now click on the grid to add a new 3D bounding box on the position of the click.</p>
 <figure>
-<img align="center" alt="Added 3D Annotations" src="../../datasets/assets/annotations/manual/added-3d-box.jpg" />
-
-<figcaption>Added 3D Annotations</figcaption>
-</figure>
+            <img align="center" alt="Added 3D Annotations" src="../../datasets/assets/annotations/manual/added-3d-box.jpg" />
+            <figcaption>Added 3D Annotations</figcaption>
+            </figure>
 <p>This newly added 3D bounding box may not be scaled or translated properly.  Follow instructions for <a href="#scale-3d-annotation">scaling</a> and <a href="#translate-3d-annotation">translating</a> a 3D bounding box to properly center the bounding box around the <abbr title="Light Detection and Ranging">LiDAR</abbr> point cloud as shown below.  Once the annotation is properly scaled and translated, click "Save Annotations" to save the annotation.</p>
 <figure>
-<img align="center" alt="Submit 3D Annotations" src="../../datasets/assets/annotations/manual/submit-added-3d-box.jpg" />
-
-<figcaption>Submit 3D Annotations</figcaption>
-</figure>
+            <img align="center" alt="Submit 3D Annotations" src="../../datasets/assets/annotations/manual/submit-added-3d-box.jpg" />
+            <figcaption>Submit 3D Annotations</figcaption>
+            </figure>
 <h3 id="delete-3d-annotation">Delete 3D Annotation</h3>
 <p>To delete an annotation, first click on the pointer tool <img alt="&quot;Pointer Tool&quot;" src="../../assets/buttons/studio-pointer-tool.jpg" />. Click on the annotation.  This will first highlight the 3D bounding box annotation.  To delete the annotation, press the "Delete" key on your keyboard.</p>
 

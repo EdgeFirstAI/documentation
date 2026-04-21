@@ -15,10 +15,10 @@
         <link rel="canonical" href="https://doc.edgefirst.ai/test/models/augmentations/">
       
       
-        <link rel="prev" href="../metadata/">
+        <link rel="prev" href="../cameraadaptor/">
       
       
-        <link rel="next" href="../cameraadaptor/">
+        <link rel="next" href="../../perception/">
       
       
         
@@ -827,6 +827,72 @@
       
         
       
+        
+      
+    
+    
+    
+      
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    
+  
+  
+  
+    <a href="../modelpack/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Model Zoo
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
     
     
     
@@ -951,6 +1017,14 @@
       
         
       
+        
+      
+        
+      
+        
+      
+        
+      
     
     
     
@@ -969,15 +1043,7 @@
   
   
   
-    
-  
-  
-  
-    
-  
-  
-  
-    <a href="../deployment/pc/mpk/" class="md-nav__link">
+    <a href="../deployment/studio/" class="md-nav__link">
       
   
   
@@ -996,76 +1062,6 @@
         <span class="md-nav__icon md-icon"></span>
       
     </a>
-  
-
-  
-
-  
-
-      
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    
-    
-      
-        
-      
-        
-      
-        
-      
-    
-    
-    
-      
-      
-    
-    
-      
-        
-        
-      
-    
-    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
-      
-        
-  
-  
-  
-    
-  
-  
-  
-    <a href="../modelpack/" class="md-nav__link">
-      
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Model Zoo
-  
-
-    
-  </span>
-  
-  
-
-      
-        <span class="md-nav__icon md-icon"></span>
-      
-    </a>
-  
-
   
 
       
@@ -1089,6 +1085,34 @@
     
   
     Model Metadata
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cameraadaptor/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Camera Adaptor
   
 
     
@@ -1338,34 +1362,6 @@
   
 </nav>
       
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../cameraadaptor/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Camera Adaptor
-  
-
-    
-  </span>
-  
-  
-
-      </a>
     </li>
   
 
@@ -1744,9 +1740,9 @@
 <p class="admonition-title">Info</p>
 <p>During training, ModelPack retrieves a random selection of augmentations listed below. The operation for augmenting samples starts with a 50% chance of whether or not the sample is to be augmented. If the sample is to be augmented, only one random augmentation from Geometric and Non-Geometric types are applied to the sample. Then, the magnitude of this augmentation is based on a random selection from the minimum to the maximum set by the user under the <a href="../training/vision/#create-training-session">training options</a> shown below.</p>
 <p><figure markdown="span">
-<img align="center" alt="Training Augmentations" src="../assets/augmentations/training-augmentations-options.jpg" />
-<figcaption>Training Augmentations</figcaption>
-</figure></p>
+        <img align="center" alt="Training Augmentations" src="../assets/augmentations/training-augmentations-options.jpg" />
+        <figcaption>Training Augmentations</figcaption>
+        </figure>     </p>
 </div>
 <h2 id="geometric">Geometric</h2>
 <p>These augmentations are based on transformations of the spatial orientation of the image.  For these type of augmentations, the ground truth annotations needs to adhere to the changes in the orientation of the objects in the image as well.  The augmentations below provide visualizations for demonstrating the image and ground truth transformation.</p>
@@ -2063,7 +2059,7 @@
       <nav class="md-footer__inner md-grid" aria-label="Footer" >
         
           
-          <a href="../metadata/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Model Metadata">
+          <a href="../cameraadaptor/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Camera Adaptor">
             <div class="md-footer__button md-icon">
               
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
@@ -2073,20 +2069,20 @@
                 Previous
               </span>
               <div class="md-ellipsis">
-                Model Metadata
+                Camera Adaptor
               </div>
             </div>
           </a>
         
         
           
-          <a href="../cameraadaptor/" class="md-footer__link md-footer__link--next" aria-label="Next: Camera Adaptor">
+          <a href="../../perception/" class="md-footer__link md-footer__link--next" aria-label="Next: The EdgeFirst Perception Middleware">
             <div class="md-footer__title">
               <span class="md-footer__direction">
                 Next
               </span>
               <div class="md-ellipsis">
-                Camera Adaptor
+                The EdgeFirst Perception Middleware
               </div>
             </div>
             <div class="md-footer__button md-icon">

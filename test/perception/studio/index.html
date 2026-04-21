@@ -1880,10 +1880,9 @@ eyJhbGciOiJIUzI1NiIsInR5cCI6IkpX...
 </code></pre></div>
 <p>The created snapshot will be listed under the "Data Snapshots" page in EdgeFirst Studio</p>
 <figure>
-<img align="center" alt="Created Snapshot" src="../assets/studio-created-snapshot.jpg" />
-
-<figcaption>Created Snapshot</figcaption>
-</figure>
+            <img align="center" alt="Created Snapshot" src="../assets/studio-created-snapshot.jpg" />
+            <figcaption>Created Snapshot</figcaption>
+            </figure>
 <p>Also, available snapshots can be listed by calling:</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>edgefirst-client<span class="w"> </span>snapshots
 <span class="o">[</span>&lt;SNAPSHOT_ID&gt;<span class="o">]</span><span class="w"> </span>available:<span class="w"> </span>&lt;Snapshot<span class="w"> </span>Name<span class="w"> </span><span class="o">(</span>folder<span class="w"> </span>name<span class="w"> </span>from<span class="w"> </span>above<span class="o">)</span>&gt;
@@ -1920,10 +1919,9 @@ eyJhbGciOiJIUzI1NiIsInR5cCI6IkpX...
 <p>The command above will spin up some cloud services to transform input data into datasets and output a task ID that is running on the services to restore the snapshot.</p>
 <p>The dataset upload process will be shown in EdgeFirst Studio.</p>
 <figure>
-<img align="center" alt="Restoring Snapshot" src="../assets/studio-restored-dataset.jpg" />
-
-<figcaption>Restoring Snapshot</figcaption>
-</figure>
+            <img align="center" alt="Restoring Snapshot" src="../assets/studio-restored-dataset.jpg" />
+            <figcaption>Restoring Snapshot</figcaption>
+            </figure>
 <p>We can use the <code>datasets</code> command to confirm that the dataset was uploaded to the project with ID <code>628</code>:</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>edgefirst-client<span class="w"> </span>datasets<span class="w"> </span><span class="m">628</span>
 <span class="o">[</span><span class="m">2080</span><span class="o">]</span><span class="w"> </span>Upload<span class="w"> </span>from<span class="w"> </span>verdin-imx8mp-15141091:<span class="w"> </span>This<span class="w"> </span>is<span class="w"> </span>a<span class="w"> </span>dataset<span class="w"> </span>generated<span class="w"> </span>from<span class="w"> </span>Raivin<span class="w"> </span>verdin-imx8mp-15141091<span class="w"> </span>on<span class="w"> </span>January<span class="w"> </span><span class="m">31</span>,<span class="w"> </span><span class="m">2025</span>
@@ -1948,10 +1946,9 @@ eyJhbGciOiJIUzI1NiIsInR5cCI6IkpX...
 </code></pre></div>
 <p>The <code>--autolabel</code> parameter currently supports <a href="../../datasets/coco/#coco-labels">COCO labels</a>. We can list any class found in the COCO labels list to auto annotate these classes. In EdgeFirst Studio, we can <a href="../../datasets/tutorials/management/#view-dataset">visualize</a> the results of the auto-annotations when restoring the snapshot. In this example, "person" and "car" are being shown as specified from the command above.</p>
 <figure>
-<img align="center" alt="Restore Snapshot Results" src="../assets/restore-snapshot-results.jpg" />
-
-<figcaption>Restore Snapshot Results</figcaption>
-</figure>
+            <img align="center" alt="Restore Snapshot Results" src="../assets/restore-snapshot-results.jpg" />
+            <figcaption>Restore Snapshot Results</figcaption>
+            </figure>
 <h2 id="command-reference">Command Reference</h2>
 <p>The EdgeFirst Studio Client provides a comprehensive set of commands for interacting with EdgeFirst Studio. Here's a detailed explanation of the available commands:</p>
 <h3 id="authentication-commands">Authentication Commands</h3>

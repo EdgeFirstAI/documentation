@@ -753,78 +753,6 @@
     
       
         
-          
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-    
-    
-    
-      
-      
-    
-    
-      
-        
-        
-      
-    
-    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
-      
-        
-  
-  
-  
-    <a href="../../format/" class="md-nav__link">
-      
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    EdgeFirst Dataset Format
-  
-
-    
-  </span>
-  
-  
-
-      
-        <span class="md-nav__icon md-icon"></span>
-      
-    </a>
-  
-
-      
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    
-    
-      
-        
       
         
       
@@ -879,6 +807,78 @@
     </a>
   
 
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../format/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    EdgeFirst Dataset Format
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
   
 
       
@@ -1646,201 +1646,169 @@
 </div>
 <p>Let's first import the training samples.  To import a dataset, first <a href="../management/#create-dataset">create a dataset</a> container in EdgeFirst Studio. The following dataset is created with the name set to "COCO128" and the description as "Demo import".  Furthermore, an annotation set has also been created called "annotations".</p>
 <figure>
-<img align="center" alt="COCO128 Dataset Container" src="../../assets/import/coco128-container.jpg" />
-
-<figcaption>COCO128 Dataset Container</figcaption>
-</figure>
+            <img align="center" alt="COCO128 Dataset Container" src="../../assets/import/coco128-container.jpg" />
+            <figcaption>COCO128 Dataset Container</figcaption>
+            </figure>
 <p>Once a container has been created, open the dataset context menu denoted by the three vertical dots on the top right corner of the dataset card.</p>
 <figure>
-<img align="center" alt="Dataset Options" src="../../assets/import/coco128-options.jpg" />
-
-<figcaption>Dataset Options</figcaption>
-</figure>
+            <img align="center" alt="Dataset Options" src="../../assets/import/coco128-options.jpg" />
+            <figcaption>Dataset Options</figcaption>
+            </figure>
 <p>Select "Import".</p>
 <figure>
-<img align="center" alt="Import Option" src="../../assets/import/coco128-import-option.jpg" />
-
-<figcaption>Import Option</figcaption>
-</figure>
+            <img align="center" alt="Import Option" src="../../assets/import/coco128-import-option.jpg" />
+            <figcaption>Import Option</figcaption>
+            </figure>
 <p>This will popup a new window for you to specify the dataset to be imported.  In these options, select the "Import Type" to be "Darknet Dataset".  Specify the dataset folder "coco128-train" to be imported.  Specify the annotation set to the "annotations" annotation set.  The following figure shows the specifications.</p>
 <figure>
-<img align="center" alt="Import Options" src="../../assets/import/coco128-train-import-options.jpg" />
-
-<figcaption>Import Options</figcaption>
-</figure>
+            <img align="center" alt="Import Options" src="../../assets/import/coco128-train-import-options.jpg" />
+            <figcaption>Import Options</figcaption>
+            </figure>
 <p>Select "Start Import" at the bottom right to start the import process. This will start the import process as shown.</p>
 <figure>
-<img align="center" alt="Import Process" src="../../assets/import/coco128-import-process.jpg" />
-
-<figcaption>Import Process</figcaption>
-</figure>
+            <img align="center" alt="Import Process" src="../../assets/import/coco128-import-process.jpg" />
+            <figcaption>Import Process</figcaption>
+            </figure>
 <p>Once completed, all the training samples have been imported to the dataset container.</p>
 <figure>
-<img align="center" alt="Imported COCO128 Training Samples" src="../../assets/import/coco128-train-imported.jpg" />
-
-<figcaption>Imported COCO128 Training Samples</figcaption>
-</figure>
+            <img align="center" alt="Imported COCO128 Training Samples" src="../../assets/import/coco128-train-imported.jpg" />
+            <figcaption>Imported COCO128 Training Samples</figcaption>
+            </figure>
 <p>Next specify all imported samples towards the training group.</p>
 <figure>
-<img align="center" alt="Add Training Group" src="../../assets/import/coco128-add-group.jpg" />
-
-<figcaption>Add Training Group</figcaption>
-</figure>
+            <img align="center" alt="Add Training Group" src="../../assets/import/coco128-add-group.jpg" />
+            <figcaption>Add Training Group</figcaption>
+            </figure>
 <p>Once the slider has been set to 100% training, click "Split" to group all samples into the training group.</p>
 <figure>
-<img align="center" alt="100% Training Samples" src="../../assets/import/coco128-split-all-training.jpg" />
-
-<figcaption>100% Training Samples</figcaption>
-</figure>
+            <img align="center" alt="100% Training Samples" src="../../assets/import/coco128-split-all-training.jpg" />
+            <figcaption>100% Training Samples</figcaption>
+            </figure>
 <p>All of the samples should now be set towards the training group.</p>
 <figure>
-<img align="center" alt="100% Training Samples" src="../../assets/import/coco128-all-training-samples.jpg" />
-
-<figcaption>100% Training Samples</figcaption>
-</figure>
+            <img align="center" alt="100% Training Samples" src="../../assets/import/coco128-all-training-samples.jpg" />
+            <figcaption>100% Training Samples</figcaption>
+            </figure>
 <p>Next, import the validation samples by going back to the "Import" feature.</p>
 <figure>
-<img align="center" alt="Import Option" src="../../assets/import/coco128-import-option.jpg" />
-
-<figcaption>Import Option</figcaption>
-</figure>
+            <img align="center" alt="Import Option" src="../../assets/import/coco128-import-option.jpg" />
+            <figcaption>Import Option</figcaption>
+            </figure>
 <p>Specify the "Import Type" to "Darknet Dataset" again, but specify the dataset folder "coco128-val" to be imported.  Specify the annotation set to the "annotations" annotation set.  The following figure shows the specifications.</p>
 <figure>
-<img align="center" alt="Import Options" src="../../assets/import/coco128-val-import-options.jpg" />
-
-<figcaption>Import Options</figcaption>
-</figure>
+            <img align="center" alt="Import Options" src="../../assets/import/coco128-val-import-options.jpg" />
+            <figcaption>Import Options</figcaption>
+            </figure>
 <p>Click "Start Import" and after it completed, the number of samples on the dataset should have increased.</p>
 <figure>
-<img align="center" alt="Imported COCO128 Training Samples" src="../../assets/import/coco128-val-imported.jpg" />
-
-<figcaption>Imported COCO128 Training Samples</figcaption>
-</figure>
+            <img align="center" alt="Imported COCO128 Training Samples" src="../../assets/import/coco128-val-imported.jpg" />
+            <figcaption>Imported COCO128 Training Samples</figcaption>
+            </figure>
 <p>These newly added samples for validation have not been grouped yet.  Next assign groups to these samples.  Click on the "+" button again to add a validation group.</p>
 <figure>
-<img align="center" alt="Add Training Group" src="../../assets/import/coco128-add-val-group.jpg" />
-
-<figcaption>Add Training Group</figcaption>
-</figure>
+            <img align="center" alt="Add Training Group" src="../../assets/import/coco128-add-val-group.jpg" />
+            <figcaption>Add Training Group</figcaption>
+            </figure>
 <p>Set the slider to 100% Validation and check "Only ungrouped images" as this will transfer all recently imported ungrouped validation samples towards the validation group.</p>
 <figure>
-<img align="center" alt="100% Validation Samples" src="../../assets/import/coco128-split-all-validation.jpg" />
-
-<figcaption>100% Validation Samples</figcaption>
-</figure>
+            <img align="center" alt="100% Validation Samples" src="../../assets/import/coco128-split-all-validation.jpg" />
+            <figcaption>100% Validation Samples</figcaption>
+            </figure>
 <p>Click the "Split" button to group the samples.  This dataset container should now retain the training and validation split as provided from the dataset.</p>
 <figure>
-<img align="center" alt="COCO128 with Groups" src="../../assets/import/coco128-split.jpg" />
-
-<figcaption>COCO128 with Groups</figcaption>
-</figure>
+            <img align="center" alt="COCO128 with Groups" src="../../assets/import/coco128-split.jpg" />
+            <figcaption>COCO128 with Groups</figcaption>
+            </figure>
 <p>Verify in the <a href="../management/#view-dataset">gallery</a> that the samples imported match the samples in the local machine.</p>
 <figure>
-<img align="center" alt="Validation Samples in Studio" src="../../assets/import/coco128-val-studio.jpg" />
-
-<figcaption>Validation Samples in Studio</figcaption>
-</figure>
+            <img align="center" alt="Validation Samples in Studio" src="../../assets/import/coco128-val-studio.jpg" />
+            <figcaption>Validation Samples in Studio</figcaption>
+            </figure>
 <figure>
-<img align="center" alt="Validation Samples in the PC" src="../../assets/import/coco128-val-pc.jpg" />
-
-<figcaption>Validation Samples in the PC</figcaption>
-</figure>
+            <img align="center" alt="Validation Samples in the PC" src="../../assets/import/coco128-val-pc.jpg" />
+            <figcaption>Validation Samples in the PC</figcaption>
+            </figure>
 <h3 id="no-split">No Split</h3>
 <p>This tutorial will show how to import a Darknet dataset such as <a href="https://www.kaggle.com/datasets/ultralytics/coco128">COCO128</a> into EdgeFirst Studio which has no training and validation split.  This dataset is only meant as a tutorial dataset for <a href="https://github.com/ultralytics/yolov5">YOLOv5</a>, but this tutorial is meant to show the functionality of importing existing public datasets into EdgeFirst Studio.</p>
 <p>To import a dataset, first <a href="../management/#create-dataset">create a dataset</a> container in EdgeFirst Studio. The following dataset is created with the name set to "COCO128" and the description as "Demo import".  Furthermore, an annotation set has also been created called "annotations".</p>
 <figure>
-<img align="center" alt="COCO128 Dataset Container" src="../../assets/import/coco128-container.jpg" />
-
-<figcaption>COCO128 Dataset Container</figcaption>
-</figure>
+            <img align="center" alt="COCO128 Dataset Container" src="../../assets/import/coco128-container.jpg" />
+            <figcaption>COCO128 Dataset Container</figcaption>
+            </figure>
 <p>For an example dataset, <a href="https://www.kaggle.com/datasets/ultralytics/coco128?resource=download">COCO128</a> was downloaded using the link provided.  This will download a ZIP archive which can then be extracted into a "coco128" directory which contains "images" and "labels" subdirectories.</p>
 <figure>
-<img align="center" alt="COCO128" src="../../assets/import/coco128-directories.jpg" />
-
-<figcaption>COCO128</figcaption>
-</figure>
+            <img align="center" alt="COCO128" src="../../assets/import/coco128-directories.jpg" />
+            <figcaption>COCO128</figcaption>
+            </figure>
 <p>Once a container has been created, open the dataset context menu denoted by the three vertical dots on the top right corner of the dataset card.</p>
 <figure>
-<img align="center" alt="Dataset Options" src="../../assets/import/coco128-options.jpg" />
-
-<figcaption>Dataset Options</figcaption>
-</figure>
+            <img align="center" alt="Dataset Options" src="../../assets/import/coco128-options.jpg" />
+            <figcaption>Dataset Options</figcaption>
+            </figure>
 <p>Select "Import".</p>
 <figure>
-<img align="center" alt="Import Option" src="../../assets/import/coco128-import-option.jpg" />
-
-<figcaption>Import Option</figcaption>
-</figure>
+            <img align="center" alt="Import Option" src="../../assets/import/coco128-import-option.jpg" />
+            <figcaption>Import Option</figcaption>
+            </figure>
 <p>This will popup a new window for you to specify the dataset to be imported.  In these options, select the "Import Type" to be "Darknet Dataset".  Specify the dataset folder "coco128" to be imported.  Specify the annotation set to the "annotations" annotation set.  The following figure shows the specifications.</p>
 <figure>
-<img align="center" alt="Import Options" src="../../assets/import/coco128-import-options.jpg" />
-
-<figcaption>Import Options</figcaption>
-</figure>
+            <img align="center" alt="Import Options" src="../../assets/import/coco128-import-options.jpg" />
+            <figcaption>Import Options</figcaption>
+            </figure>
 <p>Select "Start Import" at the bottom right to start the import process.</p>
 <figure>
-<img align="center" alt="Start Import" src="../../assets/import/coco128-start-import.jpg" />
-
-<figcaption>Start Import</figcaption>
-</figure>
+            <img align="center" alt="Start Import" src="../../assets/import/coco128-start-import.jpg" />
+            <figcaption>Start Import</figcaption>
+            </figure>
 <p>This will start the import process as shown.</p>
 <figure>
-<img align="center" alt="Import Process" src="../../assets/import/coco128-import-process.jpg" />
-
-<figcaption>Import Process</figcaption>
-</figure>
+            <img align="center" alt="Import Process" src="../../assets/import/coco128-import-process.jpg" />
+            <figcaption>Import Process</figcaption>
+            </figure>
 <p>Once completed, the dataset container will now contain 128 images from COCO and
 the annotations stored in the "annotations" container.</p>
 <figure>
-<img align="center" alt="Imported COCO128 Dataset" src="../../assets/import/coco128-imported.jpg" />
-
-<figcaption>Imported COCO128 Dataset</figcaption>
-</figure>
+            <img align="center" alt="Imported COCO128 Dataset" src="../../assets/import/coco128-imported.jpg" />
+            <figcaption>Imported COCO128 Dataset</figcaption>
+            </figure>
 <p>Next <a href="../management/#split-dataset">split the dataset</a> into training and validations samples.</p>
 <p>See the dataset and its annotations by following the tutorial for <a href="../management/#view-dataset">viewing the dataset gallery</a>.</p>
 <h2 id="import-edgefirst-datasets">Import EdgeFirst Datasets</h2>
 <p>This tutorial will show how to import an <a href="../../format/">EdgeFirst Dataset</a> into EdgeFirst Studio. This tutorial will show importing a dataset such as COCO2017 that is structured as an EdgeFirst Dataset as shown below.</p>
 <figure>
-<img align="center" alt="COCO2017 EdgeFirst Dataset" src="../../assets/import/edgefirst-dataset-coco.jpg" />
-
-<figcaption>COCO2017 EdgeFirst Dataset</figcaption>
-</figure>
+            <img align="center" alt="COCO2017 EdgeFirst Dataset" src="../../assets/import/edgefirst-dataset-coco.jpg" />
+            <figcaption>COCO2017 EdgeFirst Dataset</figcaption>
+            </figure>
 <p>To import a dataset, first <a href="../management/#create-dataset">create a dataset</a> container in EdgeFirst Studio. The following dataset is created with the name set to "COCO2017" and the description as "Demo Import".  Furthermore, an annotation set has also been created called "annotations".</p>
 <figure>
-<img align="center" alt="COCO2017 Dataset Container" src="../../assets/import/coco2017-container.jpg" />
-
-<figcaption>COCO2017 Dataset Container</figcaption>
-</figure>
+            <img align="center" alt="COCO2017 Dataset Container" src="../../assets/import/coco2017-container.jpg" />
+            <figcaption>COCO2017 Dataset Container</figcaption>
+            </figure>
 <p>Once a container has been created, open the dataset context menu denoted by the three vertical dots on the top right corner of the dataset card.</p>
 <figure>
-<img align="center" alt="Dataset Options" src="../../assets/import/coco2017-options.jpg" />
-
-<figcaption>Dataset Options</figcaption>
-</figure>
+            <img align="center" alt="Dataset Options" src="../../assets/import/coco2017-options.jpg" />
+            <figcaption>Dataset Options</figcaption>
+            </figure>
 <p>Select "Import".</p>
 <figure>
-<img align="center" alt="Import Option" src="../../assets/import/coco2017-import-option.jpg" />
-
-<figcaption>Import Option</figcaption>
-</figure>
+            <img align="center" alt="Import Option" src="../../assets/import/coco2017-import-option.jpg" />
+            <figcaption>Import Option</figcaption>
+            </figure>
 <p>This will popup a new window for you to specify the dataset to be imported.  In these options, select the "Import Type" to be "EdgeFirst Dataset".  Specify the Zip and Arrow file in your machine to be imported.  Specify the annotation set to the "annotations" annotation set to store the dataset annotations.  The following figure shows the specifications.</p>
 <figure>
-<img align="center" alt="Import Options" src="../../assets/import/coco2017-import-options.jpg" />
-
-<figcaption>Import Options</figcaption>
-</figure>
+            <img align="center" alt="Import Options" src="../../assets/import/coco2017-import-options.jpg" />
+            <figcaption>Import Options</figcaption>
+            </figure>
 <p>Select "Start Import" at the bottom right to start the import process.</p>
 <figure>
-<img align="center" alt="Start Import" src="../../assets/import/coco2017-start-import.jpg" />
-
-<figcaption>Start Import</figcaption>
-</figure>
+            <img align="center" alt="Start Import" src="../../assets/import/coco2017-start-import.jpg" />
+            <figcaption>Start Import</figcaption>
+            </figure>
 <p>This will start the import process as shown.</p>
 <figure>
-<img align="center" alt="Import Process" src="../../assets/import/coco2017-import-process.jpg" />
-
-<figcaption>Import Process</figcaption>
-</figure>
+            <img align="center" alt="Import Process" src="../../assets/import/coco2017-import-process.jpg" />
+            <figcaption>Import Process</figcaption>
+            </figure>
 <p>See the dataset and its annotations by following the tutorial for <a href="../management/#view-dataset">viewing the dataset gallery</a>.</p>
 <h2 id="next-steps">Next Steps</h2>
 <p>Now that you have seen how to import datasets in EdgeFirst Studio, see how the <a href="../annotations/">annotations</a> are being managed in EdgeFirst Studio.</p>

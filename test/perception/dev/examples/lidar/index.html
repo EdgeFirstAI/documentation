@@ -2774,8 +2774,11 @@ The PCD contains x, y, z, and reflect values. The x, y, z are float32 and repres
 Recieved 24448 lidar points.
 Recieved 24448 lidar points.
 </code></pre></div>
-<p>When displaying the results through Rerun you will see the pointcloud data gathered by the lidar.
-<img alt="alt text" src="../assets/lidar_points.png" /></p>
+<p>When displaying the results through Rerun you will see the pointcloud data gathered by the lidar.</p>
+<figure>
+            <img align="center" alt="LiDAR Pointcloud" src="../assets/lidar_points.png" />
+            <figcaption><abbr title="Light Detection and Ranging">LiDAR</abbr> Pointcloud</figcaption>
+            </figure>
 <h2 id="lidar-clusters"><abbr title="Light Detection and Ranging">LiDAR</abbr> Clusters</h2>
 <p>Topic: <a href="../../../topics/lidar/#lidarclusters">/lidar/clusters</a><br />
 Message: <a href="../../../api/sensor_msgs/#pointcloud2">PointCloud2</a>
@@ -2873,8 +2876,11 @@ Sample Code: <a href="https://github.com/EdgeFirstAI/samples/blob/main/python/li
 Recieved 24448 lidar points. 12219 are clustered
 Recieved 24448 lidar points. 12237 are clustered
 </code></pre></div>
-<p>When displaying the results through Rerun you will see the pointcloud cluster data provided by the <abbr title="Light Detection and Ranging">LiDAR</abbr>.
-<img alt="alt text" src="../assets/lidar_clusters.png" /></p>
+<p>When displaying the results through Rerun you will see the pointcloud cluster data provided by the <abbr title="Light Detection and Ranging">LiDAR</abbr>.</p>
+<figure>
+            <img align="center" alt="LiDAR Clusters" src="../assets/lidar_clusters.png" />
+            <figcaption><abbr title="Light Detection and Ranging">LiDAR</abbr> Clusters</figcaption>
+            </figure>
 <h2 id="lidar-depth"><abbr title="Light Detection and Ranging">LiDAR</abbr> Depth</h2>
 <p>Topic: <a href="../../../topics/lidar/#lidardepth">/lidar/depth</a><br />
 Message: <a href="../../../api/sensor_msgs/#image">Image</a>
@@ -2987,8 +2993,11 @@ to divide by 256.</p>
 Recieved 382x64 depth image.
 Recieved 382x64 depth image.
 </code></pre></div>
-<p>When displaying the results through Rerun you will see a depth map of what the lidar can see.
-<img alt="alt text" src="../assets/lidar_depth.png" /></p>
+<p>When displaying the results through Rerun you will see a depth map of what the lidar can see.</p>
+<figure>
+            <img align="center" alt="LiDAR Depth Map" src="../assets/lidar_depth.png" />
+            <figcaption><abbr title="Light Detection and Ranging">LiDAR</abbr> Depth Map</figcaption>
+            </figure>
 <h2 id="lidar-reflect"><abbr title="Light Detection and Ranging">LiDAR</abbr> Reflect</h2>
 <p>Topic: <a href="../../../topics/lidar/#lidarreflect">/lidar/reflect</a><br />
 Message: <a href="../../../api/sensor_msgs/#image">Image</a>
@@ -3087,8 +3096,11 @@ Sample Code: <a href="https://github.com/EdgeFirstAI/samples/blob/main/python/li
 Recieved 382x64 reflect image. reflect: [0, 166]
 Recieved 382x64 reflect image. reflect: [0, 181]
 </code></pre></div>
-<p>When displaying the results through Rerun you will see the reflection data gathered by the lidar.
-<img alt="alt text" src="../assets/lidar_reflect.png" /></p>
+<p>When displaying the results through Rerun you will see the reflection data gathered by the lidar.</p>
+<figure>
+            <img align="center" alt="LiDAR Reflection Data" src="../assets/lidar_reflect.png" />
+            <figcaption><abbr title="Light Detection and Ranging">LiDAR</abbr> Reflection Data</figcaption>
+            </figure>
 <h2 id="combined-example">Combined Example</h2>
 <p>This example will demonstrate how to combine the camera feed with the lidar messages to create a composite Rerun view. The main difference when using multiple messages in a script, is that we will change from waiting on the message to be received to having a callback function for when a message is received. Using the initial method, the script would hang while waiting for a message topic to be published, so if the messages are being published at different rates, the slowest message rate will limit the others.</p>
 <p>Sample Code: <a href="https://github.com/EdgeFirstAI/samples/blob/main/python/combined/camera_lidar.py">Python</a> / <a href="https://github.com/EdgeFirstAI/samples/blob/main/rust/combined/mega_sample.rs">Rust</a></p>
@@ -3230,8 +3242,11 @@ Recieved 382x64 reflect image. reflect: [0, 181]
 </div>
 </div>
 <h3 id="results_4">Results</h3>
-<p>When displaying the results through Rerun you will see the combined image of the camera feed with boxes and the lidar pointcloud.
-<img alt="alt text" src="../assets/camera_radar.png" /></p>
+<p>When displaying the results through Rerun you will see the combined image of the camera feed with boxes and the lidar pointcloud.</p>
+<figure>
+            <img align="center" alt="Camera + Radar" src="../assets/camera_radar.png" />
+            <figcaption>Camera + Radar</figcaption>
+            </figure>
 
 
 

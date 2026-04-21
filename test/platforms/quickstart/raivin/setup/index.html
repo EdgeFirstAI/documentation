@@ -1047,8 +1047,6 @@
       
         
       
-        
-      
     
     
     
@@ -1107,8 +1105,6 @@
       
         
           
-        
-      
         
       
         
@@ -1277,6 +1273,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#cpu-performance-scaling" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        CPU Performance Scaling
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#next-steps" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -1366,7 +1373,7 @@
   <span class="md-ellipsis">
     
   
-    Train Fusion Model
+    Train a Fusion Model
   
 
     
@@ -1436,34 +1443,6 @@
 
               
             
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../deploy_pretrained/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Deploy Pre-trained Fusion Models
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
           </ul>
         </nav>
       
@@ -1483,8 +1462,6 @@
       
         
           
-        
-      
         
       
         
@@ -1571,8 +1548,6 @@
       
         
       
-        
-      
     
     
     
@@ -1643,8 +1618,6 @@
       
         
       
-        
-      
     
     
     
@@ -1701,8 +1674,6 @@
       
         
           
-        
-      
         
       
         
@@ -2089,6 +2060,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#cpu-performance-scaling" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        CPU Performance Scaling
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#next-steps" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2219,16 +2201,14 @@
 <p>Optionally, you can connect an antenna to the <abbr title="SubMiniature version A (RF connector)">SMA</abbr> connector on the top-right corner of the back of the device to enhance <abbr title="Global Positioning System">GPS</abbr> reception.</p>
 <p>Chose the proper power adapter plug from your region and connect it to the power cable.  Then connect the <abbr title="Industrial circular connector standard">M12</abbr> connector of the power cable to the connection at the back of the module, making sure to align the tab at the top of the connector to its corresponding slot.  </p>
 <figure>
-<img align="center" alt="M12 Connector" src="../../../assets/setup/quickStart-m12.png" />
-
-<figcaption>M12 Connector</figcaption>
-</figure>
+            <img align="center" alt="M12 Connector" src="../../../assets/setup/quickStart-m12.png" />
+            <figcaption><abbr title="Industrial circular connector standard">M12</abbr> Connector</figcaption>
+            </figure>
 <p>The device should boot up as soon as it is connected.  A blue light above and to the right of the power connector should start blinking.  </p>
 <figure>
-<img align="center" alt="Back Picture" src="../../../assets/setup/quickStart-backPic.png" />
-
-<figcaption>Device showing network connection (left), eight-digit ID number (middle), tripod connected (bottom), and power connection with blue status light on (right)</figcaption>
-</figure>
+            <img align="center" alt="Back Picture" src="../../../assets/setup/quickStart-backPic.png" />
+            <figcaption>Back Picture</figcaption>
+            </figure>
 <div class="admonition danger">
 <p class="admonition-title">Danger</p>
 <p>The Raivin may get hot during operation.  Do not handle while operating.  Temperature can be measured with the <code>cat /dev/carrier_temp</code> command, which will output device temperature in millidegree Celsius.</p>
@@ -2241,30 +2221,91 @@
 </div>
 <p>The device has a web interface that can be connected to via both <abbr title="Hypertext Transfer Protocol">HTTP</abbr> and <abbr title="Hypertext Transfer Protocol Secure">HTTPS</abbr> by entering <code>http://verdin-imx8mp-&lt;id&gt;.local</code>.  On first connection to the web interface, you will get a "Your connection is not private" warning.</p>
 <figure>
-<img align="center" alt="Main Page Warning" src="../../../assets/setup/quickStart-sslCert.png" /><br />
-<figcaption>Main Page Warning</figcaption>
-</figure>
+            <img align="center" alt="Main Page Warning" src="../../../assets/setup/quickStart-sslCert.png" />
+            <figcaption>Main Page Warning</figcaption>
+            </figure>
 <p>This is expected and nothing to worry about -- the <abbr title="Hypertext Transfer Protocol Secure">HTTPS</abbr> connection needs a <abbr title="Secure Sockets Layer">SSL</abbr> certificate which the vision module does not have.  Click the "Advanced" button, and then "Proceed to" link.</p>
 <figure>
-<img align="center" alt="Advanced Information" src="../../../assets/setup/quickStart-sslAdvanced.png" />
-
-<figcaption>Advanced Information</figcaption>
-</figure>
+            <img align="center" alt="Advanced Information" src="../../../assets/setup/quickStart-sslAdvanced.png" />
+            <figcaption>Advanced Information</figcaption>
+            </figure>
 <p>After all that, you should see the <a href="../webui/">Raivin Main Page</a>.</p>
 <figure>
-<img align="center" alt="Raivin Main Page" src="../../../assets/setup/quickStart-mainPage.png" /> 
-
-<figcaption>Raivin Main Page</figcaption>
-</figure>
+            <img align="center" alt="Raivin Main Page" src="../../../assets/setup/quickStart-mainPage.png" />
+            <figcaption>Raivin Main Page</figcaption>
+            </figure>
 <p>From here, we recommend that you check out the Segmentation View page by clicking the "Segmentation View" card.</p>
 <figure>
-<img align="center" alt="Raivin Segmentation Page" src="../../../assets/setup/quickStart-segmentation.png" /><br />
-<figcaption>Raivin Segmentation Page</figcaption>
-</figure>
+            <img align="center" alt="Raivin Segmentation Page" src="../../../assets/setup/quickStart-segmentation.png" />
+            <figcaption>Raivin Segmentation Page</figcaption>
+            </figure>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>The ultra-short model included in this release was trained for fixed camera and mostly tested indoors.</p>
 </div>
+<h2 id="cpu-performance-scaling">CPU Performance Scaling</h2>
+<p>There are various CPU performance modes available on the platform which can be set by accessing the terminal on the device.</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>cat<span class="w"> </span>/sys/devices/system/cpu/cpufreq/policy0/scaling_available_governors
+conservative<span class="w"> </span>ondemand<span class="w"> </span>userspace<span class="w"> </span>powersave<span class="w"> </span>performance<span class="w"> </span>schedutil
+</code></pre></div>
+<table>
+<thead>
+<tr>
+<th>Mode</th>
+<th>Behavior</th>
+<th>Tradeoff</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>performance</td>
+<td>Locks CPU at maximum frequency</td>
+<td>🔥 highest power, lowest latency</td>
+</tr>
+<tr>
+<td>powersave</td>
+<td>Locks CPU at minimum frequency</td>
+<td>🐢 lowest power, slowest</td>
+</tr>
+<tr>
+<td>schedutil</td>
+<td>Scheduler-driven dynamic scaling (modern default)</td>
+<td>⚖️ balanced, efficient</td>
+</tr>
+<tr>
+<td>ondemand</td>
+<td>Quickly ramps up on load, drops when idle</td>
+<td>⚡ responsive but older approach</td>
+</tr>
+<tr>
+<td>conservative</td>
+<td>Slowly increases/decreases frequency</td>
+<td>🌿 smoother, but slower response</td>
+</tr>
+<tr>
+<td>userspace</td>
+<td>Manual control from user-space programs</td>
+<td>🛠️ full control, more work</td>
+</tr>
+</tbody>
+</table>
+<p>To see the current performance mode, run this command.</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>cat<span class="w"> </span>/sys/devices/system/cpu/cpufreq/policy0/scaling_governor
+performance
+</code></pre></div>
+<p>To see the clock frequency limits, run these commands.</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>cat<span class="w"> </span>/sys/devices/system/cpu/cpufreq/policy0/scaling_cur_freq<span class="w"> </span><span class="c1"># Current CPU frequency</span>
+<span class="m">1600000</span>
+$<span class="w"> </span>cat<span class="w"> </span>/sys/devices/system/cpu/cpufreq/policy0/scaling_max_freq<span class="w"> </span><span class="c1"># Max CPU frequency</span>
+<span class="m">1600000</span>
+$<span class="w"> </span>cat<span class="w"> </span>/sys/devices/system/cpu/cpufreq/policy0/scaling_min_freq<span class="w"> </span><span class="c1"># Min CPU frequency</span>
+<span class="m">1200000</span>
+</code></pre></div>
+<p>If you want maximum performance from the device, you can set the device to <code>performance</code> mode which runs the CPU cluster at the highest available frequency.</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span><span class="nb">echo</span><span class="w"> </span>performance<span class="w"> </span><span class="p">|</span><span class="w"> </span>sudo<span class="w"> </span>tee<span class="w"> </span>/sys/devices/system/cpu/cpufreq/policy0/scaling_governor
+performance
+</code></pre></div>
+<p>You can find more information on CPU Performance Scaling <a href="https://docs.kernel.org/admin-guide/pm/cpufreq.html">here</a>.</p>
 <h2 id="next-steps">Next Steps</h2>
 <p>Now that you have completed these initial steps, we recommend that you read the following walkthroughs:  </p>
 <ul>

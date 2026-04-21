@@ -614,7 +614,7 @@
   <span class="md-ellipsis">
     
   
-    Copy Dataset
+    Copy Sample Dataset
   
 
     
@@ -753,6 +753,8 @@
       
         
           
+        
+      
         
       
         
@@ -916,6 +918,34 @@
     
   
     Maivin Workflow
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="raivin/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Raivin Workflow
   
 
     
@@ -1533,7 +1563,7 @@ flowchart LR
 <p class="admonition-title">PC Requirement</p>
 <p>It is expected that for all personas identified above, the user has a PC with Wifi access.</p>
 </div>
-<p>We've identified six workflows: Tourist, Tourist+, Web, Maivin, Raivin, <abbr title="Light Detection and Ranging">LiDAR</abbr>.  The hardware requirements and the available features increases starting with the Tourist as the most basic.</p>
+<p>We've identified ten workflows: Tourist, Tourist+, Web, i.MX 8M Plus, i.MX 95, Jetson Orin, Raspberry Pi 5, Maivin, Raivin, <abbr title="Light Detection and Ranging">LiDAR</abbr>.  The hardware requirements and the available features increases starting with the Tourist as the most basic.</p>
 <table>
 <thead>
 <tr>
@@ -1593,7 +1623,7 @@ flowchart LR
 <td>TBA</td>
 </tr>
 <tr>
-<td>Raivin (<em>coming soon</em>)</td>
+<td><a href="raivin/">Raivin</a></td>
 <td>PC + Raivin w/ Radar</td>
 <td>Record, Annotate 2D + 3D, Train, Validate, Deploy on Raivin</td>
 <td>TBA</td>
@@ -1627,6 +1657,8 @@ flowchart LR
     click maivin_user "maivin" "Open Maivin Workflow"
 
     raivin_user([Raivin]):::orange
+    click raivin_user "raivin" "Open Raivin Workflow"
+
     raivin_lidar_user([Raivin + LiDAR]):::darker_orange
     imx8mp_user([i.MX 8M Plus]):::green
     imx95_user([i.MX 95]):::teal
@@ -1818,10 +1850,14 @@ flowchart LR
 <p><a href="maivin/">Maivin Workflow</a></p>
 <p>This workflow is intended for users with a personal computer with access to Wifi and a web browser and a Maivin platform.  To proceed to this workflow, click on the link above.</p>
 </li>
+<li>
+<p><a href="raivin/">Raivin Workflow</a></p>
+<p>This workflow is intended for users with a personal computer with access to Wifi and a web browser and a Raivin platform.  To proceed to this workflow, click on the link above.</p>
+</li>
 </ol>
 <div class="admonition note">
 <p class="admonition-title">Future Work</p>
-<p>The Raivin and <abbr title="Light Detection and Ranging">LiDAR</abbr> workflows are currently unavailable. </p>
+<p>The workflows with missing links are a work in progress and currently unavailable. </p>
 </div>
 
 

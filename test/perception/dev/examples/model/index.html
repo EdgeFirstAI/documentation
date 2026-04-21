@@ -2684,8 +2684,11 @@ Sample Code: <a href="https://github.com/EdgeFirstAI/samples/blob/main/python/mo
 </div>
 </div>
 <h3 id="results">Results</h3>
-<p>When displaying the results through Rerun you will see the model info.
-<img alt="alt text" src="../assets/model_info.png" /></p>
+<p>When displaying the results through Rerun you will see the model info.</p>
+<figure>
+            <img align="center" alt="Model Info" src="../assets/model_info.png" />
+            <figcaption>Model Info</figcaption>
+            </figure>
 <h2 id="boxes2d">Boxes2D</h2>
 <p>Topic: <a href="../../../topics/model/#modelboxes2d">/model/boxes2d</a><br />
 Message: <a href="../../../api/edgefirst_msgs/#detect">ModelInfo</a><br />
@@ -2774,8 +2777,11 @@ Sample Code: <a href="https://github.com/EdgeFirstAI/samples/blob/main/python/mo
 </div>
 </div>
 <h3 id="results_1">Results</h3>
-<p>When displaying the results through Rerun you will see the boxes without any camera, to see the combined example please see the<a href="#combined-example">Combined Example</a>.
-<img alt="alt text" src="../assets/model_boxes2d.png" /></p>
+<p>When displaying the results through Rerun you will see the boxes without any camera, to see the combined example please see the<a href="#combined-example">Combined Example</a>.</p>
+<figure>
+            <img align="center" alt="Model 2D Boxes" src="../assets/model_boxes2d.png" />
+            <figcaption>Model 2D Boxes</figcaption>
+            </figure>
 <h3 id="box-tracking">Box Tracking</h3>
 <p>On your EdgeFirst Platform you can also allow tracking of the boxes and this can then be logged during the publishing of the boxes. The documentation for the settings to turn on tracking can be found <a href="../../../../platforms/configuration/model/#track-settings">here</a>. You can update your code to match the <a href="https://github.com/EdgeFirstAI/samples/blob/main/python/model/boxes2d_tracked.py">Python example</a> or <a href="https://github.com/EdgeFirstAI/samples/blob/main/rust/model/boxes2d_tracked.rs">Rust example</a> from the regular boxes2d example by changing the boxes2d_worker to the following.</p>
 <div class="tabbed-set tabbed-alternate" data-tabs="7:2"><input checked="checked" id="python_6" name="__tabbed_7" type="radio" /><input id="rust_6" name="__tabbed_7" type="radio" /><div class="tabbed-labels"><label for="python_6">Python</label><label for="rust_6">Rust</label></div>
@@ -2944,8 +2950,11 @@ Sample Code: <a href="https://github.com/EdgeFirstAI/samples/blob/main/python/mo
 </div>
 </div>
 <h3 id="results_2">Results</h3>
-<p>When displaying the results through Rerun you will see the segmentation without any camera, to see the combined example please see the<a href="#combined-example">Combined Example</a>.
-<img alt="alt text" src="../assets/model_mask.png" /></p>
+<p>When displaying the results through Rerun you will see the segmentation without any camera, to see the combined example please see the<a href="#combined-example">Combined Example</a>.</p>
+<figure>
+            <img align="center" alt="Model Mask" src="../assets/model_mask.png" />
+            <figcaption>Model Mask</figcaption>
+            </figure>
 <h2 id="model-mask-compressed">Model Mask Compressed</h2>
 <p>Topic: <a href="../../../topics/model/#modelmask_compressed">/model/mask</a><br />
 Message: <a href="../../../api/edgefirst_msgs/#mask">Mask</a><br />
@@ -3048,8 +3057,11 @@ Sample Code: <a href="https://github.com/EdgeFirstAI/samples/blob/main/python/mo
 </div>
 </div>
 <h3 id="results_3">Results</h3>
-<p>When displaying the results through Rerun you will see the segmentation without any camera, to see the combined example please see the<a href="#combined-example">Combined Example</a>.
-<img alt="alt text" src="../assets/model_mask.png" /></p>
+<p>When displaying the results through Rerun you will see the segmentation without any camera, to see the combined example please see the<a href="#combined-example">Combined Example</a>.</p>
+<figure>
+            <img align="center" alt="Model Mask" src="../assets/model_mask.png" />
+            <figcaption>Model Mask</figcaption>
+            </figure>
 <h2 id="combined-example">Combined Example</h2>
 <p>This example will demonstrate how to combine the camera feed with the model messages to create a composite Rerun view. The main difference when using multiple messages in a script, is that we will change from waiting on the message to be received to having a callback function for when a message is received. Using the initial method, the script would hang while waiting for a message topic to be published, so if the messages are being published at different rates, the slowest message rate will limit the others.</p>
 <p>Sample Code: <a href="https://github.com/EdgeFirstAI/samples/blob/main/python/combined/camera_model.py">Python</a> / <a href="https://github.com/EdgeFirstAI/samples/blob/main/rust/combined/mega_sample.rs">Rust</a></p>
@@ -3195,8 +3207,11 @@ Sample Code: <a href="https://github.com/EdgeFirstAI/samples/blob/main/python/mo
 </div>
 </div>
 <h3 id="results_4">Results</h3>
-<p>When displaying the results through Rerun you will see the combined image of the camera feed, segmentation image and boxes.
-<img alt="alt text" src="../assets/camera_model_combined.png" /></p>
+<p>When displaying the results through Rerun you will see the combined image of the camera feed, segmentation image and boxes.</p>
+<figure>
+            <img align="center" alt="Camera + Segmentation + Boxes" src="../assets/camera_model_combined.png" />
+            <figcaption>Camera + Segmentation + Boxes</figcaption>
+            </figure>
 
 
 

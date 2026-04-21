@@ -1430,28 +1430,6 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#manage-access" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Manage Access
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#copy-dataset" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Copy Dataset
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
   <a href="#import-dataset" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -1467,6 +1445,17 @@
     <span class="md-ellipsis">
       
         Export Dataset
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#copy-dataset" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Copy Dataset
       
     </span>
   </a>
@@ -1496,10 +1485,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#park-dataset" class="md-nav__link">
+  <a href="#dataset-history" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Park Dataset
+        Dataset History
       
     </span>
   </a>
@@ -1600,33 +1589,29 @@
 
 
 <h1 id="dataset-dashboard">Dataset Dashboard</h1>
-<p>The Dataset Dashboard shows a list of datasets in a project with a dataset summary in each dataset card.  For an in depth tutorial for creating datasets from capture to annotation, see the <a href="../../datasets/tutorials/">Dataset Tutorials</a>. From the "Projects" page, we can click on the "Datasets" <img alt="Dataset Button" src="../../assets/buttons/studio-datasets-button.jpg" /> button on the project card to see the project's datasets.  The public sample project will contain the following dataset.</p>
+<p>The Dataset Dashboard shows a list of datasets in a project with a dataset summary in each dataset card.  For an in depth tutorial for creating datasets from capture to annotation, see the <a href="../../datasets/tutorials/">Dataset Tutorials</a>. From the "Projects" page, we can click on the "Datasets" <img alt="Dataset Button" src="../../assets/buttons/studio-datasets-button.jpg" /> button on the project card to see the project's datasets.  The public project "Sample Project" will contain the following datasets.</p>
 <figure>
-<img align="center" alt="Public Datasets" src="../assets/datasets/public-datasets.jpg" />
-
-<figcaption>Public Datasets</figcaption>
-</figure>
+            <img align="center" alt="Public Datasets" src="../assets/datasets/public-datasets.jpg" />
+            <figcaption>Public Datasets</figcaption>
+            </figure>
 <p>Public datasets are readily available for user onboarding and trials, but these datasets are <strong>READ-ONLY</strong> datasets.  By default, users can <a href="../../datasets/tutorials/management/#view-dataset">view the datasets</a>.  Otherwise, in order to have full access to the dataset, users <strong>MUST</strong> <a href="../../datasets/tutorials/management/#copy-dataset">copy the dataset</a> into the project they've created.</p>
 <p>The dataset attributes are shown below.</p>
 <figure>
-<img align="center" alt="Dataset Attributes" src="../assets/datasets/dataset-attributes.jpg" />
-
-<figcaption>Dataset Card UI Breakdown</figcaption>
-</figure>
-<p>For the elements encircled in red, these features will not be available to public <strong>READ-ONLY</strong> datasets, but these were added as a reference to the features that are available to users that created their own dataset.  For datasets with <strong>WRITE</strong> access, the context menu will be shown like the following.</p>
+            <img align="center" alt="Dataset Attributes" src="../assets/datasets/dataset-attributes.jpg" />
+            <figcaption>Dataset Attributes</figcaption>
+            </figure>
+<p>For datasets with <strong>WRITE</strong> access, the context menu will be shown like the following.</p>
 <figure>
-<img align="center" alt="Dataset Write Access Context Menu" src="../assets/datasets/write-access-dataset-context-menu.jpg" />
-
-<figcaption>Dataset Write Access Context Menu</figcaption>
-</figure>
-<p>This gives the user the options for <a href="../../datasets/tutorials/management/#edit-dataset-information">editing the dataset info</a>, <a href="../../datasets/tutorials/import/">importing existing datasets</a>, <a href="../../datasets/tutorials/management/#export-dataset">exporting datasets into your local machine</a>, <a href="../snapshots/#create-snapshot">creating snapshots</a>, and <a href="../../datasets/tutorials/management/#copy-dataset">copying datasets</a>.  The rest of the options are described in the sections below such as the <a href="#analytics">dataset analytics</a>, <a href="#view-on-map">view on map</a>, <a href="#park-dataset">park datasets</a>, and <a href="#remove-dataset">removing datasets</a>.</p>
+            <img align="center" alt="Dataset Write Access Context Menu" src="../assets/datasets/write-access-dataset-context-menu.jpg" />
+            <figcaption>Dataset Write Access Context Menu</figcaption>
+            </figure>
+<p>This gives the user the options for <a href="../../datasets/tutorials/management/#edit-dataset-information">editing the dataset info</a>, <a href="../../datasets/tutorials/import/">importing existing datasets</a>, <a href="../../datasets/tutorials/management/#export-dataset">exporting datasets into your local machine</a>, <a href="../snapshots/#create-snapshot">creating snapshots</a>, and <a href="../../datasets/tutorials/management/#copy-dataset">copying datasets</a>.  The rest of the options are described in the sections below such as the <a href="#analytics">dataset analytics</a>, <a href="#view-on-map">view on map</a>, <a href="#dataset-history">dataset history</a>, and <a href="#remove-dataset">removing datasets</a>.</p>
 <h2 id="labels">Labels</h2>
 <p>Click on labels (i) icon to open the dialog to edit labels.</p>
 <figure>
-<img align="center" alt="Editing Labels" src="../assets/datasets/edit-label.png" />
-
-<figcaption>Editing Labels</figcaption>
-</figure>
+            <img align="center" alt="Editing Labels" src="../assets/datasets/edit-label.png" />
+            <figcaption>Editing Labels</figcaption>
+            </figure>
 <p>The edit dialog allows to:</p>
 <ul>
 <li>Add Label (class).</li>
@@ -1638,52 +1623,31 @@
 <p>Tutorials for these operations can be found under the <a href="../../datasets/tutorials/annotations/#dataset-labels">Dataset Annotations</a> section.</p>
 <h2 id="groups">Groups</h2>
 <ul>
-<li>Groups allow images to be associated with a certain functionality such as training images, validation images, images with errors, etc.</li>
-<li>One image can be associated with zero or only one group at a time.</li>
+<li>Groups splits the images into training and validation images</li>
+<li>One image can be associated with zero or only one group at a time</li>
 <li>Use the slider to adjust percentages for each group.</li>
 <li>If "Only non-grouped images" is unchecked, all images will be shuffled and assigned new groups.</li>
 </ul>
 <p>The following image shows a dialog to split non-grouped images into 2 groups, <em>Training</em> and <em>Validation</em></p>
 <figure>
-<img align="center" alt="Assigning Groups" src="../assets/datasets/assign-groups.png" />
-
-<figcaption>Assigning Groups</figcaption>
-</figure>
+            <img align="center" alt="Assigning Groups" src="../assets/datasets/assign-groups.png" />
+            <figcaption>Assigning Groups</figcaption>
+            </figure>
 <p>The tutorial for splitting the images in the dataset into groups can be found under the <a href="../../datasets/tutorials/management/#split-dataset">Dataset Management</a> section.</p>
 <h2 id="dataset-extended-menu">Dataset Extended Menu</h2>
 <p>Click on the three dots on dataset card to open the extended menu.</p>
 <figure>
-<img align="center" alt="Extended Dataset Menu" src="../assets/datasets/dataset-menus.png" />
-
-<figcaption>Extended Dataset Menu</figcaption>
-</figure>
+            <img align="center" alt="Extended Dataset Menu" src="../assets/datasets/dataset-menus.png" />
+            <figcaption>Extended Dataset Menu</figcaption>
+            </figure>
 <h3 id="edit-info">Edit Info</h3>
 <p>Change the name or description of the dataset as shown in <a href="../../datasets/tutorials/management/#edit-dataset-information">editing dataset information</a>.</p>
-<h3 id="manage-access">Manage Access</h3>
-<p>The dataset access control allows dataset resources to be selectively available to different users.</p>
-<p>For more information please visit <a href="../user/organization/#roles">Access Control</a>.</p>
-<h3 id="copy-dataset">Copy Dataset</h3>
-<figure>
-<img align="center" alt="Copying Datasets" src="../assets/datasets/copy-datasets.png" />
-
-<figcaption>Copying Datasets</figcaption>
-</figure>
-<p>To copy datasets proceed with the steps as follows or follow this in-depth tutorial for <a href="../../datasets/tutorials/management/#copy-dataset">copying datasets</a>.</p>
-<ol>
-<li>Open the dataset extended menu.</li>
-<li>Select "Copy Dataset".</li>
-<li>Source project, dataset, and annotation set (if applicable) are auto-filled, but you can select a different source if required.</li>
-<li>Destination project is selected by default. If <em>New Dataset (Dataset name)</em> is selected, a new dataset along with any annotation set from source will be created in the destination project. Otherwise, you can choose a dataset and an annotation set as destination.</li>
-<li>Optionally select <em>Copy Selected Annotation Types Only</em> to only copy annotations and files that match the checked types.</li>
-<li>Select filters if required. Please refer to <a href="gallery/#filters">Gallery Filters</a> for more information.  </li>
-</ol>
 <h3 id="import-dataset">Import Dataset</h3>
 <p>There are several import types available.</p>
 <figure>
-<img align="center" alt="Importing Datasets" src="../assets/datasets/import-datasets.png" />
-
-<figcaption>Importing Datasets</figcaption>
-</figure>
+            <img align="center" alt="Importing Datasets" src="../assets/datasets/import-datasets.png" />
+            <figcaption>Importing Datasets</figcaption>
+            </figure>
 <p>To import datasets proceed with the steps as follows or follow this in-depth tutorial for <a href="../../datasets/tutorials/import/">importing datasets</a>.</p>
 <ol>
 <li>Select an import type.  The <a href="../../datasets/format/">EdgeFirst Dataset Format</a> is the proprietary format used by many operations in EdgeFirst Studio.</li>
@@ -1694,10 +1658,9 @@
 <li>Import will start in the background and the status is shown in the task progress popup.</li>
 </ol>
 <figure>
-<img align="center" alt="Taskbar" src="../assets/datasets/import-taskbar.png" />
-
-<figcaption>Task Dialog</figcaption>
-</figure>
+            <img align="center" alt="Taskbar" src="../assets/datasets/import-taskbar.png" />
+            <figcaption>Taskbar</figcaption>
+            </figure>
 <div class="admonition warning">
 <p class="admonition-title">Termination of Background Processes</p>
 <p>Although the import process is running in the background, closing the web browser or the tab will terminate all uploads in the <em>Local</em> tab of the task dialog. Moving to other pages in the studio is still fine.</p>
@@ -1705,10 +1668,9 @@
 <h3 id="export-dataset">Export Dataset</h3>
 <p>The "Export Dataset" downloads the data from EdgeFirst Studio to the local folder in your PC.</p>
 <figure>
-<img align="center" alt="Export Dataset" src="../assets/datasets/export-dataset.png" />
-
-<figcaption>Export Dataset</figcaption>
-</figure>
+            <img align="center" alt="Export Dataset" src="../assets/datasets/export-dataset.png" />
+            <figcaption>Export Dataset</figcaption>
+            </figure>
 <p>To export datasets proceed with the steps as follows or follow this in-depth tutorial for <a href="../../datasets/tutorials/management/#export-dataset">exporting datasets</a>.</p>
 <ol>
 <li>Select the dataset type: Detection (Bounding boxes) or Segmentation (Masks).</li>
@@ -1725,13 +1687,26 @@
 <p class="admonition-title">Large Datasets</p>
 <p>For datasets larger than 10000 images, export image URLS and annotations separately and then use a script to download images.</p>
 </div>
+<h3 id="copy-dataset">Copy Dataset</h3>
+<figure>
+            <img align="center" alt="Copying Datasets" src="../../datasets/assets/management/copy-dataset-options.jpg" />
+            <figcaption>Copying Datasets</figcaption>
+            </figure>
+<p>To copy datasets proceed with the steps as follows or follow this in-depth tutorial for <a href="../../datasets/tutorials/management/#copy-dataset">copying datasets</a>.</p>
+<ol>
+<li>Open the dataset extended menu.</li>
+<li>Select "Copy Dataset".</li>
+<li>Source project, dataset, and annotation set (if applicable) are auto-filled, but you can select a different source if required.</li>
+<li>Destination project is selected by default. If <em>New Dataset (Dataset name)</em> is selected, a new dataset along with any annotation set from source will be created in the destination project. Otherwise, you can choose a dataset and an annotation set as destination.</li>
+<li>Optionally select <em>Copy Selected Annotation Types Only</em> to only copy annotations and files that match the checked types.</li>
+<li>Select filters if required. Please refer to <a href="gallery/#filters">Gallery Filters</a> for more information.  </li>
+</ol>
 <h3 id="analytics">Analytics</h3>
 <p>Click on Analytics to see more statistical information about the dataset.</p>
 <figure>
-<img align="center" alt="Dataset Analytics" src="../assets/datasets/analytics.png" />
-
-<figcaption>Dataset Analytics</figcaption>
-</figure>
+            <img align="center" alt="Dataset Analytics" src="../assets/datasets/analytics.png" />
+            <figcaption>Dataset Analytics</figcaption>
+            </figure>
 <h3 id="view-on-map">View on Map</h3>
 <p>When importing a dataset, the <abbr title="Global Positioning System">GPS</abbr> location can be imported in the two following ways:</p>
 <ol>
@@ -1740,23 +1715,15 @@
 </ol>
 <p>If <abbr title="Global Positioning System">GPS</abbr> location is present, then the annotation can be viewed on the map by using the "View on Map" option.</p>
 <figure>
-<img align="center" alt="Dataset Maps" src="../assets/datasets/dataset-maps.png" />
-
-<figcaption>Dataset Maps</figcaption>
-</figure>
-<h3 id="park-dataset">Park Dataset</h3>
-<p>Datasets that are not used often can be parked. The advantages of parking a dataset are:</p>
-<ol>
-<li>Reduced storage cost.</li>
-<li>Dataset is frozen and can not be modified.</li>
-</ol>
-<p>Datasets can be un-parked at any time for normal usage.</p>
+            <img align="center" alt="Dataset Maps" src="../assets/datasets/dataset-maps.png" />
+            <figcaption>Dataset Maps</figcaption>
+            </figure>
+<h3 id="dataset-history">Dataset History</h3>
+<p>The dataset history introduces versioning for the dataset.  This allows any changes made to the dataset to be tracked via the "Changelog" section and allows the user to restore the state of the dataset with a known version, delete a dataset version, or add a new dataset version for the current state of the dataset.</p>
 <figure>
-<img align="center" alt="Park Dataset" src="../assets/datasets/park-dataset.png" />
-
-<figcaption>Park Dataset</figcaption>
-</figure>
-<p>You can find more information regarding the <a href="../user/billing/">billing</a>.</p>
+            <img align="center" alt="Dataset History" src="../assets/datasets/dataset-history.jpg" />
+            <figcaption>Dataset History</figcaption>
+            </figure>
 <h3 id="remove-dataset">Remove Dataset</h3>
 <p>To delete a dataset, click "Move to Recycle Bin".  This moves the dataset and all of its contents to the Recycle Bin.</p>
 <div class="admonition info">

@@ -753,78 +753,6 @@
     
       
         
-          
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-    
-    
-    
-      
-      
-    
-    
-      
-        
-        
-      
-    
-    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
-      
-        
-  
-  
-  
-    <a href="../../format/" class="md-nav__link">
-      
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    EdgeFirst Dataset Format
-  
-
-    
-  </span>
-  
-  
-
-      
-        <span class="md-nav__icon md-icon"></span>
-      
-    </a>
-  
-
-      
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    
-    
-      
-        
       
         
       
@@ -879,6 +807,78 @@
     </a>
   
 
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../format/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    EdgeFirst Dataset Format
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
   
 
       
@@ -1585,10 +1585,9 @@
 <h1 id="dataset-annotations">Dataset Annotations</h1>
 <p>This page will provide tutorials for annotating datasets in EdgeFirst Studio.  As described in the <a href="../../format/">EdgeFirst Dataset Format</a>, a dataset can have 2D and 3D annotations.  Shown below is an example of 2D annotations (left) and 3D annotations (right).  A 2D annotation is a combination of 2D bounding boxes and segmentation masks for any given object that are semantic pixel-based image coordinates.  A 3D annotation is a 3D bounding box surrounding the object in real world coordinates (meters).</p>
 <figure>
-<img align="center" alt="Sample Annotations" src="../../assets/annotations/sample-studio-annotations.jpg" />
-
-<figcaption>Sample Annotations</figcaption>
-</figure>
+            <img align="center" alt="Sample Annotations" src="../../assets/annotations/sample-studio-annotations.jpg" />
+            <figcaption>Sample Annotations</figcaption>
+            </figure>
 <p>To reduce the effort required during the annotation process, EdgeFirst Studio provides the tools to auto annotate either a single image or a sequential set of frames in a dataset by leveraging SAM-2 auto-segment and tracking capabilities.  Please note that it is not always guaranteed that the auto-annotations will yield 100% accuracy, so EdgeFirst Studio provides the tools for manual annotations to correct any errors or make adjustments to the existing annotations.</p>
 <ol>
 <li>Follow these <a href="automatic/">steps to auto-annotate</a> your dataset using the Automatic Ground Truth Generation (AGTG) pipeline.</li>
@@ -1597,29 +1596,25 @@
 <h2 id="dataset-labels">Dataset Labels</h2>
 <p>Each annotation has a label associated to it.  The label identifies the object that is being annotated.  For example, a dataset containing coffee cups contains multiple, but varying objects of coffee cups are tagged with a single label given as "Coffee Cup".</p>
 <figure>
-<img align="center" alt="Sample Coffee Cups" src="../../assets/annotations/coffee-cups-annotations.jpg" />
-
-<figcaption>Sample Coffee Cups</figcaption>
-</figure>
+            <img align="center" alt="Sample Coffee Cups" src="../../assets/annotations/coffee-cups-annotations.jpg" />
+            <figcaption>Sample Coffee Cups</figcaption>
+            </figure>
 <h3 id="edit-label">Edit Label</h3>
 <p>EdgeFirst Studio provides features for updating the labels in the dataset.  To update the label "Coffee Cup" to "coffeecup", click on the button with a pencil icon under "Labels" on the dataset card.</p>
 <figure>
-<img align="center" alt="Edit Labels" src="../../assets/annotations/edit-labels.jpg" />
-
-<figcaption>Edit Labels</figcaption>
-</figure>
+            <img align="center" alt="Edit Labels" src="../../assets/annotations/edit-labels.jpg" />
+            <figcaption>Edit Labels</figcaption>
+            </figure>
 <p>This will bring the option to edit the label, the color associated to the label, and the index.  The index controls the label order which is relevant in multi-class datasets (more than one label).  The first label is given the index 0.  Since this dataset only has one label, its index is 0.  Here the label color was modified to blue and the label was modified to "coffeecup".</p>
 <figure>
-<img align="center" alt="Edited Label" src="../../assets/annotations/edited-label.jpg" />
-
-<figcaption>Edited Label</figcaption>
-</figure>
+            <img align="center" alt="Edited Label" src="../../assets/annotations/edited-label.jpg" />
+            <figcaption>Edited Label</figcaption>
+            </figure>
 <p>The changes should now be reflected in the <a href="../management/#view-dataset">gallery</a> as shown below.</p>
 <figure>
-<img align="center" alt="Edited Sample Coffee Cups" src="../../assets/annotations/coffee-cups-annotations-edited.jpg" />
-
-<figcaption>Edited Sample Coffee Cups</figcaption>
-</figure>
+            <img align="center" alt="Edited Sample Coffee Cups" src="../../assets/annotations/coffee-cups-annotations-edited.jpg" />
+            <figcaption>Edited Sample Coffee Cups</figcaption>
+            </figure>
 <p>To change the label of a single annotation follow these steps inside the dataset gallery.</p>
 <ol>
 <li>Click on the label mode in the 2D editing panel (shown in a red box).</li>
@@ -1627,73 +1622,62 @@
 <li>Click on any annotation listed to change its label.</li>
 </ol>
 <figure>
-<img align="center" alt="Change Annotation Label" src="../../assets/annotations/change-annotation-label.jpg" />
-
-<figcaption>Change Annotation Label</figcaption>
-</figure>
+            <img align="center" alt="Change Annotation Label" src="../../assets/annotations/change-annotation-label.jpg" />
+            <figcaption>Change Annotation Label</figcaption>
+            </figure>
 <h3 id="add-label">Add Label</h3>
 <p>To add a new label, click on the button with a pencil icon under "Labels" on the dataset card.</p>
 <figure>
-<img align="center" alt="Edit Labels" src="../../assets/annotations/edit-labels.jpg" />
-
-<figcaption>Edit Labels</figcaption>
-</figure>
+            <img align="center" alt="Edit Labels" src="../../assets/annotations/edit-labels.jpg" />
+            <figcaption>Edit Labels</figcaption>
+            </figure>
 <p>This will bring the option to edit the labels.  Click on the "+" button on the top right and this will add a new label as shown below.  By default it will show as "NewLabel" with no color associated to it.  </p>
 <figure>
-<img align="center" alt="Add Label" src="../../assets/annotations/add-new-label-via-pencil.jpg" />
-
-<figcaption>Add Label</figcaption>
-</figure>
+            <img align="center" alt="Add Label" src="../../assets/annotations/add-new-label-via-pencil.jpg" />
+            <figcaption>Add Label</figcaption>
+            </figure>
 <p>You can follow the steps shown for <a href="#edit-label">editing the label</a> to modify the label from "NewLabel" to something else like "plate" with color green for example as shown below.</p>
 <figure>
-<img align="center" alt="Added Label" src="../../assets/annotations/new-plate-label.jpg" />
-
-<figcaption>Added Label</figcaption>
-</figure>
+            <img align="center" alt="Added Label" src="../../assets/annotations/new-plate-label.jpg" />
+            <figcaption>Added Label</figcaption>
+            </figure>
 <p><strong>Alternatively</strong>, you can also add multiple labels by clicking the button with the "+" icon next to the "Labels" on the dataset card.  This will bring the option for adding comma separated labels.</p>
 <figure>
-<img align="center" alt="Add Label Multiple" src="../../assets/annotations/add-multiple-labels.jpg" />
-
-<figcaption>Add Multiple Labels</figcaption>
-</figure>
+            <img align="center" alt="Add Label Multiple" src="../../assets/annotations/add-multiple-labels.jpg" />
+            <figcaption>Add Label Multiple</figcaption>
+            </figure>
 <p>When a new label is added, this allows you to create new annotations with this label as shown in the dropdown in the gallery.</p>
 <figure>
-<img align="center" alt="Added Plate Label in Gallery" src="../../assets/annotations/plate-label-added.jpg" />
-
-<figcaption>Added Plate Label in Gallery</figcaption>
-</figure>
+            <img align="center" alt="Added Plate Label in Gallery" src="../../assets/annotations/plate-label-added.jpg" />
+            <figcaption>Added Plate Label in Gallery</figcaption>
+            </figure>
 <h3 id="remove-label">Remove Label</h3>
 <p>To remove a label, click on the button with a pencil icon under "Labels" on the dataset card.</p>
 <figure>
-<img align="center" alt="Edit Labels" src="../../assets/annotations/edit-labels.jpg" />
-
-<figcaption>Edit Labels</figcaption>
-</figure>
+            <img align="center" alt="Edit Labels" src="../../assets/annotations/edit-labels.jpg" />
+            <figcaption>Edit Labels</figcaption>
+            </figure>
 <p>This will show the list of existing labels.  Click on the "x" button shown on the right of the label when hovering over it.  This will delete the label from the list along with the annotations with this label.</p>
 <figure>
-<img align="center" alt="Added Label" src="../../assets/annotations/delete-plate-label.jpg" />
-
-<figcaption>Added Label</figcaption>
-</figure>
+            <img align="center" alt="Added Label" src="../../assets/annotations/delete-plate-label.jpg" />
+            <figcaption>Added Label</figcaption>
+            </figure>
 <h2 id="terminate-agtg-server">Terminate AGTG Server</h2>
 <p>In order to avoid running out of credits, terminate an idle AGTG server.  As mentioned, 15 minutes of inactivity will auto-terminate AGTG servers.  However, you can terminate a server as shown below.  Navigate to the <em>Cloud Instances</em> under the tool options.</p>
 <figure>
-<img align="center" alt="Cloud Instances" src="../../assets/annotations/cloud-instances.jpg" />
-
-<figcaption>Cloud Instances</figcaption>
-</figure>
+            <img align="center" alt="Cloud Instances" src="../../assets/annotations/cloud-instances.jpg" />
+            <figcaption>Cloud Instances</figcaption>
+            </figure>
 <p>Select the AGTG server and click "Stop" to stop the server.</p>
 <figure>
-<img align="center" alt="Select AGTG Server" src="../../assets/annotations/select-ai-server.jpg" />
-
-<figcaption>Select AGTG Server</figcaption>
-</figure>
+            <img align="center" alt="Select AGTG Server" src="../../assets/annotations/select-ai-server.jpg" />
+            <figcaption>Select AGTG Server</figcaption>
+            </figure>
 <p>Confirm the AGTG server deletion.</p>
 <figure>
-<img align="center" alt="Delete AGTG Server" src="../../assets/annotations/delete-agtg-server.jpg" />
-
-<figcaption>Delete AGTG Server</figcaption>
-</figure>
+            <img align="center" alt="Delete AGTG Server" src="../../assets/annotations/delete-agtg-server.jpg" />
+            <figcaption>Delete AGTG Server</figcaption>
+            </figure>
 
 
 

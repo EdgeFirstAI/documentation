@@ -169,6 +169,10 @@
          <lastmod>2026-04-21</lastmod>
     </url>
     <url>
+         <loc>https://doc.edgefirst.ai/test/getting_started/workflows/raivin/</loc>
+         <lastmod>2026-04-21</lastmod>
+    </url>
+    <url>
          <loc>https://doc.edgefirst.ai/test/getting_started/workflows/tourist/</loc>
          <lastmod>2026-04-21</lastmod>
     </url>
@@ -209,11 +213,19 @@
          <lastmod>2026-04-21</lastmod>
     </url>
     <url>
-         <loc>https://doc.edgefirst.ai/test/models/deployment/evk/</loc>
+         <loc>https://doc.edgefirst.ai/test/models/deployment/launcher/</loc>
          <lastmod>2026-04-21</lastmod>
     </url>
     <url>
          <loc>https://doc.edgefirst.ai/test/models/deployment/maivin/</loc>
+         <lastmod>2026-04-21</lastmod>
+    </url>
+    <url>
+         <loc>https://doc.edgefirst.ai/test/models/deployment/studio/</loc>
+         <lastmod>2026-04-21</lastmod>
+    </url>
+    <url>
+         <loc>https://doc.edgefirst.ai/test/models/deployment/pc/</loc>
          <lastmod>2026-04-21</lastmod>
     </url>
     <url>
@@ -569,10 +581,6 @@
          <lastmod>2026-04-21</lastmod>
     </url>
     <url>
-         <loc>https://doc.edgefirst.ai/test/platforms/quickstart/imx8mplus/deploy_pretrained/</loc>
-         <lastmod>2026-04-21</lastmod>
-    </url>
-    <url>
          <loc>https://doc.edgefirst.ai/test/platforms/quickstart/imx8mplus/setup/</loc>
          <lastmod>2026-04-21</lastmod>
     </url>
@@ -598,10 +606,6 @@
     </url>
     <url>
          <loc>https://doc.edgefirst.ai/test/platforms/quickstart/imx95/deploy/</loc>
-         <lastmod>2026-04-21</lastmod>
-    </url>
-    <url>
-         <loc>https://doc.edgefirst.ai/test/platforms/quickstart/imx95/deploy_pretrained/</loc>
          <lastmod>2026-04-21</lastmod>
     </url>
     <url>
@@ -637,10 +641,6 @@
          <lastmod>2026-04-21</lastmod>
     </url>
     <url>
-         <loc>https://doc.edgefirst.ai/test/platforms/quickstart/jetson_orin/deploy_pretrained/</loc>
-         <lastmod>2026-04-21</lastmod>
-    </url>
-    <url>
          <loc>https://doc.edgefirst.ai/test/platforms/quickstart/jetson_orin/setup/</loc>
          <lastmod>2026-04-21</lastmod>
     </url>
@@ -662,10 +662,6 @@
     </url>
     <url>
          <loc>https://doc.edgefirst.ai/test/platforms/quickstart/maivin/deploy/</loc>
-         <lastmod>2026-04-21</lastmod>
-    </url>
-    <url>
-         <loc>https://doc.edgefirst.ai/test/platforms/quickstart/maivin/deploy_pretrained/</loc>
          <lastmod>2026-04-21</lastmod>
     </url>
     <url>
@@ -697,10 +693,6 @@
          <lastmod>2026-04-21</lastmod>
     </url>
     <url>
-         <loc>https://doc.edgefirst.ai/test/platforms/quickstart/raivin/deploy_pretrained/</loc>
-         <lastmod>2026-04-21</lastmod>
-    </url>
-    <url>
          <loc>https://doc.edgefirst.ai/test/platforms/quickstart/raivin/setup/</loc>
          <lastmod>2026-04-21</lastmod>
     </url>
@@ -726,10 +718,6 @@
     </url>
     <url>
          <loc>https://doc.edgefirst.ai/test/platforms/quickstart/raspberrypi/deploy/</loc>
-         <lastmod>2026-04-21</lastmod>
-    </url>
-    <url>
-         <loc>https://doc.edgefirst.ai/test/platforms/quickstart/raspberrypi/deploy_pretrained/</loc>
          <lastmod>2026-04-21</lastmod>
     </url>
     <url>

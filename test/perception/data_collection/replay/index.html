@@ -1948,16 +1948,14 @@
 <h2 id="using-the-replay-service">Using the Replay Service</h2>
 <p>The Replay Service is built into the <a href="../recording/"><abbr title="Binary container format for robotics log data">MCAP</abbr> Recorder Modal</a>.</p>
 <figure>
-<img align="center" alt="MCAP Recorder Interface" src="../../../platforms/assets/setup/quickStart-mcap.png" />
-
-<figcaption>MCAP Modal</figcaption>
-</figure>
+            <img align="center" alt="MCAP Recorder Interface" src="../../../platforms/assets/setup/quickStart-mcap.png" />
+            <figcaption><abbr title="Binary container format for robotics log data">MCAP</abbr> Recorder Interface</figcaption>
+            </figure>
 <p>You can visit the page by clicking the "<abbr title="Binary container format for robotics log data">MCAP</abbr> Details" Button on any Raivin Page.</p>
 <figure>
-<img align="center" alt="MCAP Recording and Details Buttons" src="../../assets/mcap-RecordingButton_McapDetailsButton.png" />
-
-<figcaption>MCAP Recording and Details Buttons</figcaption>
-</figure>
+            <img align="center" alt="MCAP Recording and Details Buttons" src="../../assets/mcap-RecordingButton_McapDetailsButton.png" />
+            <figcaption><abbr title="Binary container format for robotics log data">MCAP</abbr> Recording and Details Buttons</figcaption>
+            </figure>
 <h3 id="starting-playback">Starting Playback</h3>
 <ol>
 <li>Locate your desired <abbr title="Binary container format for robotics log data">MCAP</abbr> file in the file list</li>
@@ -1969,9 +1967,9 @@
 <li>
 <p>Model Source: Choose between Live or <abbr title="Binary container format for robotics log data">MCAP</abbr> data for the post-processed image topics  </p>
 <p><figure markdown="span">
- <img align="center" alt="MCAP Replay Options" src="../../assets/replay_options.png" />
- <figcaption><abbr title="Binary container format for robotics log data">MCAP</abbr> Replay Options</figcaption>
-       </figure></p>
+    <img align="center" alt="MCAP Replay Options" src="../../assets/replay_options.png" />
+    <figcaption><abbr title="Binary container format for robotics log data">MCAP</abbr> Replay Options</figcaption>
+    </figure></p>
 </li>
 </ul>
 </li>
@@ -1981,20 +1979,18 @@
 </ol>
 <p>During playback, the currently playing file will have its "Play" button become a "Stop" button.  The State Indicator top ribbon will also note the platform is in "Replay Mode".  </p>
 <figure>
-<img align="center" alt="MCAP Replay Options" src="../../assets/replay_mode.png" />
-
-<figcaption>MCAP Replay Mode</figcaption>
-</figure>
+            <img align="center" alt="MCAP Replay Options" src="../../assets/replay_mode.png" />
+            <figcaption><abbr title="Binary container format for robotics log data">MCAP</abbr> Replay Options</figcaption>
+            </figure>
 <p>Now that the device is in "Replay Mode", the inputs to the Segmentation, Occupancy, <abbr title="Global Positioning System">GPS</abbr>, and <abbr title="Inertial Measurement Unit">IMU</abbr> pages will come from the <abbr title="Binary container format for robotics log data">MCAP</abbr> file instead of from the live sensors.</p>
 <h3 id="playback-controls">Playback Controls</h3>
 <ul>
 <li>Click the "Live Mode" button to return to displaying live sensor data.  </li>
 </ul>
 <figure>
-<img align="center" alt="MCAP Replay Options" src="../../assets/replay_to_live_mode.png" />
-
-<figcaption>MCAP Replay Options</figcaption>
-</figure>
+            <img align="center" alt="MCAP Replay Options" src="../../assets/replay_to_live_mode.png" />
+            <figcaption><abbr title="Binary container format for robotics log data">MCAP</abbr> Replay Options</figcaption>
+            </figure>
 <ul>
 <li>Click the stop button <img alt="MCAP Replay Stop Button" src="../../assets/replay_stop.png" /> on the playing file to end playback</li>
 </ul>
@@ -2007,17 +2003,16 @@
 <h3 id="hybrid-mode">Hybrid Mode</h3>
 <p>The Replay Service supports a hybrid mode where you can:</p>
 <ul>
-<li>Play back recorded sensor data while using live fusion and/or model data  </li>
-</ul>
-<figure markdown="span">
- ![MCAP Replay Options](../assets/replay_options.png){align=center}
- 
-
-<figcaption>MCAP Replay Options</figcaption>
-
- </figure>
-<ul>
-<li>Use recorded data for some systems while maintaining live data for others</li>
+<li>
+<p>Play back recorded sensor data while using live fusion and/or model data  </p>
+<p><figure markdown="span">
+        <img align="center" alt="MCAP Replay Options" src="../../assets/replay_options.png" />
+        <figcaption><abbr title="Binary container format for robotics log data">MCAP</abbr> Replay Options</figcaption>
+        </figure></p>
+</li>
+<li>
+<p>Use recorded data for some systems while maintaining live data for others</p>
+</li>
 <li>Mix and match recorded and live data sources based on your testing needs</li>
 </ul>
 <h2 id="status-monitoring">Status Monitoring</h2>
@@ -2025,50 +2020,46 @@
 <h3 id="status-indicator-button-maivinraivin-only">Status Indicator Button (Maivin/Raivin only)</h3>
 <p>Located in the top-right corner, the status indicator button shows status and state:</p>
 <ul>
-<li><strong>Live Mode</strong> (Green): System mode is operating with live data and system status is working normally.</li>
+<li>
+<p><strong>Live Mode</strong> (Green): System mode is operating with live data and system status is working normally.</p>
+<p><figure markdown="span">
+        <img align="center" alt="Live Mode Status" src="../../assets/replay_livemode.png" />
+        <figcaption>Live Mode Status</figcaption>
+        </figure></p>
+</li>
+<li>
+<p><strong>Replay Mode</strong> (Blue): System is playing back an <abbr title="Binary container format for robotics log data">MCAP</abbr> file and system status is working normally.</p>
+<p><figure markdown="span">
+        <img align="center" alt="Replay Mode Status" src="../../assets/replay_replay_mode.png" />
+        <figcaption>Replay Mode Status</figcaption>
+        </figure></p>
+</li>
+<li>
+<p><strong>Stopped</strong> (Red):  System is not playing back an <abbr title="Binary container format for robotics log data">MCAP</abbr> nor operating with live data. </p>
+<p><figure markdown="span">
+        <img align="center" alt="Stopped Status" src="../../assets/replay_stopped.png" />
+        <figcaption>Stopped Status</figcaption>
+        </figure></p>
+</li>
+<li>
+<p><strong>Degraded Mode</strong> (Amber): The system status is some expected services are not enabled.</p>
+<p><figure markdown="span">
+        <img align="center" alt="Degraded Status" src="../../assets/replay_degraded_mode.png" />
+        <figcaption>Degraded Status</figcaption>
+        </figure></p>
+</li>
 </ul>
-<figure>
-<img alt="Live Mode Status" src="../../assets/replay_livemode.png" />
-
-<figcaption>Live Mode Status</figcaption>
-</figure>
-<ul>
-<li><strong>Replay Mode</strong> (Blue): System is playing back an <abbr title="Binary container format for robotics log data">MCAP</abbr> file and system status is working normally.</li>
-</ul>
-<figure>
-<img alt="Replay Mode Status" src="../../assets/replay_replay_mode.png" />
-
-<figcaption>Replay Mode Status</figcaption>
-</figure>
-<ul>
-<li><strong>Stopped</strong> (Red):  System is not playing back an <abbr title="Binary container format for robotics log data">MCAP</abbr> nor operating with live data.  </li>
-</ul>
-<figure>
-<img alt="Stopped Status" src="../../assets/replay_stopped.png" />
-
-<figcaption>Stopped Status</figcaption>
-</figure>
-<ul>
-<li><strong>Degraded Mode</strong> (Amber): The system status is some expected services are not enabled.</li>
-</ul>
-<figure>
-<img alt="Degraded Status" src="../../assets/replay_degraded_mode.png" />
-
-<figcaption>Degraded Status</figcaption>
-</figure>
 <p>Click this button to view detailed service status, which shows the individual service states (Running/Stopped).  </p>
 <figure>
-<img align="center" alt="Service Status Modal" src="../../../platforms/assets/setup/quickStart-serviceStatusModal.png" />
-
-<figcaption>Service Status Modal</figcaption>
-</figure>
+            <img align="center" alt="Service Status Modal" src="../../../platforms/assets/setup/quickStart-serviceStatusModal.png" />
+            <figcaption>Service Status Modal</figcaption>
+            </figure>
 <h3 id="recording-button">Recording Button</h3>
 <p>The button changes to contain a pulsing white circle and non-pulsing text on a red background when the system is actively recording.  </p>
 <figure>
-<img align="center" alt="MCAP Recording" src="../../assets/mcap_recording.png" />
-
-<figcaption>Recording</figcaption>
-</figure>
+            <img align="center" alt="MCAP Recording" src="../../assets/mcap_recording.png" />
+            <figcaption><abbr title="Binary container format for robotics log data">MCAP</abbr> Recording</figcaption>
+            </figure>
 
 
 

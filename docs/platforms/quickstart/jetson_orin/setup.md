@@ -30,13 +30,43 @@ It is recommended to use a microSD card that's 64GB and higher to flash Jetpack 
 
 2. Use [BalenaEtcher](https://etcher.balena.io/) to flash the SD card using an SD card reader connected to your PC.  Select the ZIP file that was downloaded and select the SD card for the storage.  Once selected, click "Flash!" to start.
 
-    {{ figure("../../assets/setup/balena_etcher_orin.png", "Balena Etcher") }}
+    {{ figure("../../assets/setup/orin-balena-etcher.png", "Balena Etcher") }}
 
 3. Wait for the application to complete flashing ~10 mins. depending on your machine.
 
-    {{ figure("../../assets/setup/orin_flashing.png", "Balena Etcher") }}
+    {{ figure("../../assets/setup/orin-flashing.png", "Balena Etcher") }}
 
 4. Once completed, a complete status should appear.  Proceed to the next steps to boot the board with the image flashed.
 
-    {{ figure("../../assets/setup/orin_completed_flash.png", "Completed Flashing") }}
+    {{ figure("../../assets/setup/orin-completed-flash.png", "Completed Flashing") }}
 
+## Step 2: Boot the Jetson Orin with Jetpack 6.x
+
+1. Insert the microSD card into the module.
+
+    {{ figure("../../assets/setup/orin-insert-sdcard.png", "Insert Micro SD Card") }}
+
+2. Power on the Jetson by inserting the 19V power supply to the DC Barrel jack (1).  Next connect the board to your network by attaching an ethernet cable to the Gigabit Ethernet port (4).  For the next steps a mouse and keyboard, and monitor will be needed to setup the system configuration which is connected to the USB3.1 Type A ports (3) and Display Port (2).
+
+    {{ figure("../../assets/setup/orin-connections.png", "Jetson Orin Physical Connections") }}
+
+3. Once powered on, the initial software setup (oem-config) will be initiated. 
+
+## Step 3: Setup System Configurations
+
+Proceed with the setup configuration displayed on the monitor connected to the board.  This setup should also allow you to setup your board's username, password, and hostname (“computer’s name”) as shown below.  Otherwise, the hostname can be set with the command `sudo hostnamectl set-hostname myhostname` on the Jetson's terminal.
+
+{{ figure("../../assets/setup/orin-system-configuration.png", "System Configuration") }}
+
+## Step 4: Set to Maximum Power
+
+Set the board to 25W and prevent any power savings which could affect pipeline performance by running the following commands. 
+
+```shell
+sudo nvpmodel -m 1
+sudo jetson_clocks
+```
+
+!!! info
+    These commands have to be set each time the board boots up as it defaults to run power savings.
+    You can find more information on the various power modes using `cat /etc/nvpmodel.conf`

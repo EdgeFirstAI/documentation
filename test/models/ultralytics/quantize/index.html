@@ -1983,7 +1983,7 @@
 </tr>
 </tbody>
 </table>
-<p>EdgeFirst Studio INT8 models use split decoder outputs and [0,1] normalized box coordinates for both detection and segmentation. Detection models produce 2 outputs (boxes, scores); segmentation models produce 4 (boxes, scores, mask_coefficients, protos). See <a href="../../metadata/#post-processing-split-decoder">Model Metadata</a> for details.</p>
+<p>EdgeFirst Studio quantized models use split decoder outputs and [0,1] normalized box coordinates for both detection and segmentation. Detection models produce 2 outputs (boxes, scores); segmentation models produce 4 (boxes, scores, mask_coefs, protos). See <a href="../../metadata/#post-processing-two-layer-outputs">Model Metadata</a> for details.</p>
 <h3 id="output-format">Output Format</h3>
 <p>All Studio-exported TFLite INT8 models use:</p>
 <ul>

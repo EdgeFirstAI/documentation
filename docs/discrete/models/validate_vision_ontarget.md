@@ -21,8 +21,9 @@ The validation session card will appear like the following below.  Each session 
 Once the validation session has been created, [SSH](../../platforms/networking/ssh.md) into the platform and install the following dependencies.
 
 !!! warning "Virtual Environment"
-    To avoid re-installation of existing system packages, we recommend setting up a [Python virtual environment](https://docs.python.org/3/library/venv.html#creating-virtual-environments)
-    prior to running the pip installations below.  Append `--system-site-packages` when creating the environment to include existing packages in the system.  For example:
+    If you don't have a virtual environment already setup, please follow these steps below.
+    
+    To avoid re-installation of existing system packages, we recommend setting up a [Python virtual environment](https://docs.python.org/3/library/venv.html#creating-virtual-environments) prior to running the pip installations below.  Append `--system-site-packages` when creating the environment to include existing packages in the system.  For example:
 
     * Linux `python3 -m venv /path/to/myenv --system-site-packages`
     * Windows `python -m venv /path/to/myenv --system-site-packages`

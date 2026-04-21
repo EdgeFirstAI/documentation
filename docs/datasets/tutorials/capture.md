@@ -23,10 +23,10 @@ If you have an EdgeFirst Platform, follow this tutorial to see how to capture an
 !!! note
     Replace `<hostname>` with the hostname of your device.
 
-You will be greeted with the Maivin [Web UI Main Page](../../platforms/walkthrough.md) page.
+You will be greeted with the Maivin [Web UI Main Page](../../platforms/quickstart/maivin/webui.md) page.
 
 <figure markdown="span">
-![Web UI Main Page](../../platforms/assets/ui-maivinMain.png){ align=center }
+![Web UI Main Page](../../platforms/assets/setup/ui-maivinMain.png){ align=center }
 <figcaption>Web UI Main Page</figcaption>
 </figure>
 
@@ -40,7 +40,7 @@ In this tutorial you have seen how to record MCAPs using an EdgeFirst Platform a
 
 ### Video Tutorials
 
-This video tutorial provides high-level instructions for recording MCAPs using an [EdgeFirst Platform](../../platforms/index.md).  For in-depth documentation, please refer to the [MCAP Recording Service](../../platforms/recording.md).
+This video tutorial provides high-level instructions for recording MCAPs using an [EdgeFirst Platform](../../platforms/index.md).  For in-depth documentation, please refer to the [MCAP Recording Service](../../perception/data_collection/recording.md).
 
 <div style="text-align: center;">
     <iframe width="560" height="315" src="https://www.youtube.com/embed/GVlkq9p0G5c" title="Dataset Recording" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
@@ -57,7 +57,7 @@ This video tutorial shows how to upload recorded MCAPs into EdgeFirst Studio.
     <iframe width="560" height="315" src="https://www.youtube.com/embed/j-75Q5-_dC0?start=558&end=720" title="Upload MCAP" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 </div>
 
-For more information on managing recordings, please see the [Managing Recordings Section](../../platforms/recording.md#managing-recordings).
+For more information on managing recordings, please see the [Managing Recordings Section](../../perception/data_collection/recording.md#managing-recordings).
 
 ## Next Steps
 

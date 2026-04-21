@@ -361,7 +361,7 @@ We can now receive a message on the subscriber. After receiving the message, we 
 
 ### Decode PCD Data
 
-The next step is to decode the PCD data. Please see [examples/pcd](./pcd.md) for a guide on how to decode the PointCloud2 data.
+The next step is to decode the PCD data. Please see [examples/pcd](pcd.md) for a guide on how to decode the PointCloud2 data.
 
 === "Python"
 
@@ -445,7 +445,7 @@ Recieved 10 radar points with non-background vision_class. Values: x: [1.15, 1.4
 When displaying the results through Rerun you will see the point cloud radar data.
 ![alt text](assets/fusion_radar.png)
 
-## Fusion Lidar
+## Fusion LiDAR
 
 Topic: [/fusion/lidar](../../topics/fusion.md#fusionlidar)  
 Message: [PointCloud2](../../api/sensor_msgs.md#pointcloud2)  
@@ -510,7 +510,7 @@ We can now receive a message on the subscriber. After receiving the message, we 
 
 ### Decode PCD Data
 
-The next step is to decode the PCD data. Please see [examples/pcd](./pcd.md) for a guide on how to decode the PointCloud2 data.
+The next step is to decode the PCD data. Please see [examples/pcd](pcd.md) for a guide on how to decode the PointCloud2 data.
 
 === "Python"
 

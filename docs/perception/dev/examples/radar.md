@@ -62,7 +62,7 @@ We can now receive a message on the subscriber. After receiving the message, we 
 
 ### Decode PCD Data
 
-The next step is to decode the PCD data. Please see [examples/pcd](./pcd.md) for a guide on how to decode the PointCloud2 data.
+The next step is to decode the PCD data. Please see [examples/pcd](pcd.md) for a guide on how to decode the PointCloud2 data.
 
 === "Python"
 
@@ -211,7 +211,7 @@ We can now receive a message on the subcriber. After receiving the message, we w
 
 ### Decode PCD Data
 
-The next step is to decode the PCD data. Please see [examples/pcd](./pcd.md) for a guide on how to decode the PointCloud2 data.
+The next step is to decode the PCD data. Please see [examples/pcd](pcd.md) for a guide on how to decode the PointCloud2 data.
 
 === "Python"
 
@@ -590,7 +590,7 @@ The Boxes2D callback will wait for a Detect message from the MessageDrain and wi
 
 #### Radar Handler
 
-The Lidar callback will receive the pointcloud message, perform post-processing on the resultant data and then be sent to Rerun.
+The radar callback will receive the pointcloud message, perform post-processing on the resultant data and then be sent to Rerun.
 
 === "Python"
 

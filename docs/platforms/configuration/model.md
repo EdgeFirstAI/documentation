@@ -3,7 +3,7 @@
 These settings configure the perception engine that is processing input from the video sensor and providing output on the model topics.
 
 <figure markdown="span">
-![Model Settings page](../assets/configuration-model.png){align=center}
+![Model Settings page](../assets/configuration/configuration-model.png){align=center}
 <figcaption>Model Settings page</figcaption>
 </figure>
 
@@ -30,7 +30,7 @@ The following settings will only impact detection-based output in the `/model/bo
 
 ### Visualization
 
-Enables publishing the legacy visualization message for detection models.  It is 'false' by default which means only the primary model box and mask topics will be available.  If using [Foxglove Studio](../foxglove.md) make sure you install the [EdgeFirst for Foxglove Plug-in](../foxglove.md#installing-edgefirst-plugin).  If set to 'true', the `/model/visualization` topic will be created which can be used by FoxGlove to draw the default detection boxes.
+Enables publishing the legacy visualization message for detection models.  It is 'false' by default which means only the primary model box and mask topics will be available.  If using [Foxglove Studio](../../perception/data_collection/foxglove.md) make sure you install the [EdgeFirst for Foxglove Plug-in](../../perception/data_collection/foxglove.md#installing-edgefirst-plugin).  If set to 'true', the `/model/visualization` topic will be created which can be used by FoxGlove to draw the default detection boxes.
 
 ### Threshold
 
@@ -81,7 +81,7 @@ The following setting will only impact segmentation-based output in the `/model/
 Enable compression for segmentation masks.  When enabled, both the `/model/mask` and `/model/mask_compressed` topics will be available.  The compressed mask should be used from remote connections while the uncompressed topic should be used from local connections to avoid redundant compress/decompress steps.
 
 !!! warning
-    Turning off mask compression will disable the `/model/mask_compressed` topic.  The WebUI will need to have its [Mask Topic](./webui.md#topics) changed to `/model/mask`.  The segmentation mask will also not be recorded.
+    Turning off mask compression will disable the `/model/mask_compressed` topic.  The Web UI will need to have its [Mask Topic](webui.md#topics) changed to `/model/mask`.  The segmentation mask will also not be recorded.
 
 ## OpenVX Graph Caching
 

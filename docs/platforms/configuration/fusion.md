@@ -3,7 +3,7 @@
 These settings configure the perception engine that is processing input from the radar sensor and providing output on the Fusion topics.
 
 <figure markdown="span">
-![Fusion Settings page](../assets/configuration-fusion.png){align=center}
+![Fusion Settings page](../assets/configuration/configuration-fusion.png){align=center}
 <figcaption>Fusion Settings page</figcaption>
 </figure>
 

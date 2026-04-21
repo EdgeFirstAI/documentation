@@ -9,7 +9,7 @@ Now that you have [validated your Fusion model](../validation/fusion/managed.md)
 This guide will showcase two methods of deploying the model.
 
 1. [Live View (Segmentation App)](#live-view-segmentation-app): Displays the live camera feed using the default model provided.
-2. [MCAP Recording](../../platforms/recording.md#record-mcap): Allows control of the recording options and provides download file options to replay the recording.
+2. [MCAP Recording](../../perception/data_collection/recording.md#record-mcap): Allows control of the recording options and provides download file options to replay the recording.
 
 {% include-markdown "discrete/models/download_fusion_model.md" %}
 
@@ -20,14 +20,14 @@ Use your browser to connect to the Web UI of the remote device, enter the follow
 !!! note
     Replace `<hostname>` with the hostname of your device.
 
-You will be greeted with the Raivin [WebUI Main Page](../../platforms/walkthrough.md) page.
+You will be greeted with the Raivin [Web UI Main Page](../../platforms/quickstart/raivin/webui.md) page.
 
 <figure markdown="span">
-![WebUI Main Page](../../platforms/assets/ui-raivinMain.png){ align=center }
-<figcaption>WebUI Main Page</figcaption>
+![Web UI Main Page](../../platforms/assets/ui-raivinMain.png){ align=center }
+<figcaption>Web UI Main Page</figcaption>
 </figure>
 
-For more information, please see the [Web UI Walkthrough](../../platforms/walkthrough.md).
+For more information, please see the [Web UI Walkthrough](../../platforms/quickstart/raivin/webui.md).
 
 ## Update the Model Path
 
@@ -83,7 +83,7 @@ Once the model path in the device is specified, ensure that all services are ena
 <figcaption>Service Status</figcaption>
 </figure>
 
-You will be greeted with the "Service Overview" page.  Ensure that all services are enabled and running by toggling the "Enable" and "Start" buttons as shown.  Only "Enable" the "recorder" service as shown.  You will be using the recorder service in [MCAP Recording](../../platforms/recording.md).
+You will be greeted with the "Service Overview" page.  Ensure that all services are enabled and running by toggling the "Enable" and "Start" buttons as shown.  Only "Enable" the "recorder" service as shown.  You will be using the recorder service in [MCAP Recording](../../perception/data_collection/recording.md).
 
 <figure markdown="span">
 ![Service Overview](../assets/deployment/raivin-service-overview.jpg){ align=center }
@@ -111,18 +111,18 @@ This will run inference on the model specified to generate segmentation masks of
 <figcaption>Sample 2</figcaption>
 </figure>
 
-Now that the model has been updated, you can [make new recordings](../../platforms/recording.md#record-mcap) using the model's inference and then [visualize the recording using Foxglove Studio](../../platforms/foxglove.md).
+Now that the model has been updated, you can [make new recordings](../../perception/data_collection/recording.md#record-mcap) using the model's inference and then [visualize the recording using Foxglove Studio](../../perception/data_collection/foxglove.md).
 
 ## Inference Visualization in Foxglove
 
 Once the MCAP recording has been downloaded, you can use Foxglove Studio to see the playback of MCAP recordings and the model inference.  The following preview shows the segmentation mask from the model identifying the person in the frame (right) and the occupancy grid highlighting the radar clusters that correspond to the person's position in world coordinates.
 
 <figure markdown="span">
-![Foxglove Sample 1](../../platforms/assets/adv_foxglove-finished_fusion.png){ align=center }
+![Foxglove Sample 1](../../perception/assets/adv_foxglove-finished_fusion.png){ align=center }
 <figcaption>Foxglove Sample 1</figcaption>
 </figure>
 
-More information on the MCAP playback is provided in [Foxglove Studio](../../platforms/foxglove.md).  Modifying panels and customizing various settings are also shown in [Advanced Foxglove](../../platforms/advanced_foxglove.md).
+More information on the MCAP playback is provided in [Foxglove Studio](../../perception/data_collection/foxglove.md).  Modifying panels and customizing various settings are also shown in [Advanced Foxglove](../../perception/data_collection/advanced_foxglove.md).
 
 ## Next Steps
 

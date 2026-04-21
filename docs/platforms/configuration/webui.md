@@ -1,10 +1,10 @@
-# WebUI Settings
+# Web UI Settings
 
-This page configures how information is displayed on the [Segmentation Page](../walkthrough.md#the-segmentation-page).
+This page configures how information is displayed on the [Segmentation Page](../quickstart/raivin/webui.md#the-segmentation-page).
 
 <figure markdown="span">
-![WebUI Settings page](../assets/configuration-webui.png){align=center}
-<figcaption>WebUI Settings page</figcaption>
+![Web UI Settings page](../assets/configuration/configuration-webui.png){align=center}
+<figcaption>Web UI Settings page</figcaption>
 </figure>
 
 !!! tip
@@ -19,7 +19,7 @@ This mirrors both the Segmentation View as well as the Occupancy Grid on the Seg
 These three settings set the left-side minimum, right-side maximum, and width size (in degrees) of the angular radar views on the Segmentation and Occupancy pages.  The image below shows a minimum of -70, maximum of 70, and a binwidth of 14.
 
 <figure markdown="span">
-![-70 by 70 at 14 steps](../assets/configuration-angleSettings.png){align=center}
+![-70 by 70 at 14 steps](../assets/configuration/configuration-angleSettings.png){align=center}
 <figcaption>Grid -70 by 70 at 14 steps</figcaption>
 </figure>
 
@@ -28,7 +28,7 @@ These three settings set the left-side minimum, right-side maximum, and width si
 These three settings set the near-side minimum, far-side maximum, and width size (in meters) of the radar views on the Segmentation and Occupancy pages.  The image below shows a minimum of 2, maximum of 9, and a binwidth of 1.
 
 <figure markdown="span">
-![2 to 9 by 1 range](../assets/configuration-rangeSettings.png){align=center}
+![2 to 9 by 1 range](../assets/configuration/configuration-rangeSettings.png){align=center}
 <figcaption>Grid 2 to 9 by 1 range</figcaption>
 </figure>
 
@@ -60,6 +60,6 @@ The settings turn on objection detection boxes and text from the Detect Topic to
 These settings enable statistics views and a people counter on the Segmentation and Occupancy Pages.  The statistics are near the top right of the screen while the people counter is at the bottom right.
 
 <figure markdown="span">
-![stats and peeps](../assets/configuration-showStatsPeopleCount.png){align=center}
+![stats and peeps](../assets/configuration/configuration-showStatsPeopleCount.png){align=center}
 <figcaption>Statistics</figcaption>
 </figure>

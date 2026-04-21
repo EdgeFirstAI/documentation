@@ -42,7 +42,7 @@ Recall that [snapshots](../../../studio/snapshots.md) are frozen and compact for
 
 2. Upload from MCAP File
 
-    An MCAP file is a [recording captured](../capture.md#capture-with-an-edgefirst-platform) by an [EdgeFirst Platform (Maivin or Raivin)](../../../platforms/quickstart.md).
+    An MCAP file is a [recording captured](../capture.md#capture-with-an-edgefirst-platform) by an [EdgeFirst Platform (Maivin or Raivin)](../../../platforms/index.md).
 
     To create a snapshot from an MCAP file, visit the "Data Snapshots" page.
 

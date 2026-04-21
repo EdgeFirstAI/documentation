@@ -44,7 +44,7 @@ User applications interface with the EdgeFirst Middleware by subscribing to the 
 an application to display the camera feed with bounding boxes drawn from the detection model we would write an application
 which subscribes to the camera and model topics.  This application would be responsible for drawing the camera pixels and
 then drawing the bounding box pixels over the camera and finally displaying the results for the user.  We provide a few
-examples of such applications, the first you're likely to see is the [Web User Interface](../../platforms/walkthrough.md).  Our sample
+examples of such applications, the first you're likely to see is the [Web User Interface](../../platforms/quickstart/maivin/webui.md).  Our sample
 code includes many examples which use the Rerun framework for drawing and demonstrate how to subscribe to topics and how
 to interpret the results, such as reading bounding boxes and drawing them over the camera feed.  You'll see these examples
 using Rerun for display throughout our examples, but there is no direct connection to Rerun and user applications could use

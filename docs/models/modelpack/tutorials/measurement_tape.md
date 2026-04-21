@@ -1,6 +1,6 @@
 # Tutorial 1: Measurement Tape Detector
 
-This tutorial shows the step by step Machine Learning process in Edgefirst Studio.
+This tutorial shows the step by step Machine Learning process in EdgeFirst Studio.
 
 * [Data Collection](#data-collection)
 * [Data Annotation](#data-annotation-using-agtg)

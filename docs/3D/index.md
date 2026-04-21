@@ -14,7 +14,7 @@ The following is a sample 3D annotation (right) in EdgeFirst Studio represented 
 <figcaption>EdgeFirst Studio Annotations</figcaption>
 </figure>
 
-The Raivin platform can visualize the model inference using the [Web UI](../platforms/walkthrough.md) service which provide the 2D inference (segmentation masks and bounding boxes) and the 3D inference which is shown using a polar grid highlighting the clusters of Radar points indicating the position of the objects in world coordinates.
+The Raivin platform can visualize the model inference using the [Web UI](../platforms/quickstart/raivin/webui.md) service which provide the 2D inference (segmentation masks and bounding boxes) and the 3D inference which is shown using a polar grid highlighting the clusters of Radar points indicating the position of the objects in world coordinates.
 
 <figure markdown="span">
 ![Model Inference on the Raivin](../models/assets/deployment/occupancy-sample-1.jpg){ align=center }

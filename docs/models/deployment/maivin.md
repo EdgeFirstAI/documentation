@@ -9,7 +9,7 @@ Now that you have validated your Vision Model from either a [managed](../validat
 This guide will showcase two methods of deploying the model.
 
 1. [Live View (Segmentation App)](#live-view-segmentation-app): Displays the live camera feed using the default model provided.
-2. [MCAP Recording](../../platforms/recording.md#record-mcap): Allows control of the recording options and provides download file options to replay the recording.
+2. [MCAP Recording](../../perception/data_collection/recording.md#record-mcap): Allows control of the recording options and provides download file options to replay the recording.
 
 {% include-markdown "discrete/models/download_model.md" %}
 
@@ -20,14 +20,14 @@ Use your browser to connect to the Web UI of the remote device, enter the follow
 !!! note
     Replace `<hostname>` with the hostname of your device.
 
-You will be greeted with the Maivin [Web UI Main Page](../../platforms/walkthrough.md) page.
+You will be greeted with the Maivin [Web UI Main Page](../../platforms/quickstart/maivin/webui.md) page.
 
 <figure markdown="span">
-![Web UI Main Page](../../platforms/assets/ui-maivinMain.png){ align=center }
+![Web UI Main Page](../../platforms/assets/setup/ui-maivinMain.png){ align=center }
 <figcaption>Web UI Main Page</figcaption>
 </figure>
 
-For more information, please see the [Web UI Walkthrough](../../platforms/walkthrough.md).
+For more information, please see the [Web UI Walkthrough](../../platforms/quickstart/maivin/webui.md).
 
 ## Update the Model Path
 
@@ -90,7 +90,7 @@ Once the model path in the device is specified, ensure that the Camera, Model, a
 <figcaption>Service Status</figcaption>
 </figure>
 
-You will be greeted with the "Service Overview" page.  Ensure that the "camera" and "model" services are enabled and running by toggling the "Enable" and "Start" buttons as shown.  Only "Enable" the "recorder" service as shown.  You will be using the recorder service in [MCAP Recording](../../platforms/recording.md#record-mcap).
+You will be greeted with the "Service Overview" page.  Ensure that the "camera" and "model" services are enabled and running by toggling the "Enable" and "Start" buttons as shown.  Only "Enable" the "recorder" service as shown.  You will be using the recorder service in [MCAP Recording](../../perception/data_collection/recording.md#record-mcap).
 
 <figure markdown="span">
 ![Service Overview](../assets/deployment/maivin-service-overview.jpg){ align=center }
@@ -113,7 +113,7 @@ This will run inference on the model specified to generate segmentation masks on
 <figcaption>Sample 1</figcaption>
 </figure>
 
-Now that the model has been updated, you can [make new recordings](../../platforms/recording.md#record-mcap) using the model's inference and then [visualize the recording using Foxglove Studio](../../platforms/foxglove.md).
+Now that the model has been updated, you can [make new recordings](../../perception/data_collection/recording.md#record-mcap) using the model's inference and then [visualize the recording using Foxglove Studio](../../perception/data_collection/foxglove.md).
 
 ## Inference Visualization in Foxglove
 
@@ -124,7 +124,7 @@ Once the MCAP recording has been downloaded, you can use Foxglove Studio to see 
 <figcaption>Foxglove Sample 1</figcaption>
 </figure>
 
-More information on the MCAP playback is provided in [Foxglove Studio](../../platforms/foxglove.md).  Modifying panels and customizing various settings are also shown in [Advanced Foxglove](../../platforms/advanced_foxglove.md).
+More information on the MCAP playback is provided in [Foxglove Studio](../../perception/data_collection/foxglove.md).  Modifying panels and customizing various settings are also shown in [Advanced Foxglove](../../perception/data_collection/advanced_foxglove.md).
 
 ## Next Steps
 

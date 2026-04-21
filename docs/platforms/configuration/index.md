@@ -1,16 +1,16 @@
 # Configuration
 
-This section describes the various settings pages and what they do. The root Settings Page can be reached by clicking the rightmost gear icon on the top ribbon of any page of the Raivin web-interface.
+This section describes the various settings pages and what they do. The root Settings Page can be reached by clicking the rightmost gear icon on the top ribbon of any page of the Maivin or Raivin web-interface.
 
 <figure markdown="span">
-![root Settings page](../assets/configuration-root.png){align=center}
+![root Settings page](../assets/configuration/configuration-root.png){align=center}
 <figcaption>root Settings page</figcaption>
 </figure>
 
 Every settings page has a "Save Configuration" button at the bottom of the page. If you make changes, click this button to save them.
 
 <figure markdown="span">
-![Save Configuration button](../assets/configuration-saveConfiguration.png){align=center}
+![Save Configuration button](../assets/configuration/configuration-saveConfiguration.png){align=center}
 <figcaption>Save Configuration button</figcaption>
 </figure>
 

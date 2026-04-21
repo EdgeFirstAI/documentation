@@ -56,7 +56,7 @@ coco.upload_dataset(
 )
 ```
 
-Note that this procedure skips the AGTG pipeline since the dataset already contains annotations. The import process will take few minutes depending on the bandwidth. Once the process finishes, you can login into Edgefirst Studio and check the dataset `COCO2017-Subset` is there.
+Note that this procedure skips the AGTG pipeline since the dataset already contains annotations. The import process will take few minutes depending on the bandwidth. Once the process finishes, you can login into EdgeFirst Studio and check the dataset `COCO2017-Subset` is there.
 
 <figure markdown="span">
 ![COCO2017 Subset](../assets/coco/coco-subset.png){ align=center }

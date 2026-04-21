@@ -13,7 +13,7 @@ Remember to save the configurations at the end of the process. The  Model Config
 
 ## Manual Model Deployment
 
-In case the manual deployment is needed, you need to connect to the device via [SSH](../../platforms/ssh.md):
+In case the manual deployment is needed, you need to connect to the device via [SSH](../../platforms/networking/ssh.md):
 
 ```shell
 ssh torizon@verdin-imx8mp-15141030
@@ -35,5 +35,5 @@ sudo systemctl start model
 !!! note
     Remember to use **sudo** to start and stop model services
 
-Now the model is running, open the Raivin's WebUI, go to the [Segmentation Page](../../platforms/walkthrough.md#the-segmentation-page), and check the camera to see the model detection the object.  
+Now that the model is running, open the Raivin's Web UI, go to the [Segmentation Page](../../platforms/quickstart/raivin/webui.md#the-segmentation-page), and check the camera to see the model's detections.  
 ![Deployment Results](../../models/assets/deployment/deployment-results.png)

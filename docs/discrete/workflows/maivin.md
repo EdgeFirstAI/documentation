@@ -5,10 +5,10 @@ If you have an EdgeFirst Platform, follow this tutorial to see how to capture an
 !!! note
     Replace `<hostname>` with the hostname of your device.
 
-You will be greeted with the Maivin [Web UI Main Page](../../platforms/walkthrough.md) page.
+You will be greeted with the Maivin [Web UI Main Page](../../platforms/quickstart/maivin/webui.md) page.
 
 <figure markdown="span">
-![Web UI Main Page](../../platforms/assets/ui-maivinMain.png){ align=center }
+![Web UI Main Page](../../platforms/assets/setup/ui-maivinMain.png){ align=center }
 <figcaption>Web UI Main Page</figcaption>
 </figure>
 

@@ -27,7 +27,7 @@ The validation session card will appear like the following below.  Each session 
 
 ## Session Progress
 
-Once the validation session has been created, [SSH](../../../platforms/ssh.md) into the platform and install the following dependencies.
+Once the validation session has been created, [SSH](../../../platforms/networking/ssh.md) into the platform and install the following dependencies.
 
 !!! warning "Virtual Environment"
     To avoid re-installation of existing system packages, we recommend setting up a [Python virtual environment](https://docs.python.org/3/library/venv.html#creating-virtual-environments)

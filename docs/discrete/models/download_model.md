@@ -20,7 +20,7 @@ Download the model from EdgeFirst Studio into the device.  There are two methods
     !!! note "Deployment Tab"
         You may have noticed the "Deployment" tab to the right of the "Artifacts" tab. This is a placeholder for future functionality, so please don't worry about it.
 
-    Once the model is downloaded in your PC, you can [SCP](../../platforms/ssh.md#secure-copy) the model to the device by using this command template.
+    Once the model is downloaded in your PC, you can [SCP](../../platforms/networking/ssh.md#secure-copy) the model to the device by using this command template.
 
     ```shell
     scp <path to the downloaded TFLite model> <destination path>
@@ -34,7 +34,7 @@ Download the model from EdgeFirst Studio into the device.  There are two methods
 
 === "Download using EdgeFirst Client"
 
-    This method expects you to have already connected to the device via [SSH](../../platforms/ssh.md).  The [EdgeFirst Client](../../perception/studio.md) can be installed via `pip3 install edgefirst-client`.  You can verify the installation with the client version command.
+    This method expects you to have already connected to the device via [SSH](../../platforms/networking/ssh.md).  The [EdgeFirst Client](../../perception/studio.md) can be installed via `pip3 install edgefirst-client`.  You can verify the installation with the client version command.
 
     ```shell
     $ edgefirst-client version

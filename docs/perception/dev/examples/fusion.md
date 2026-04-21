@@ -108,7 +108,8 @@ The Occupancy message contains occupancy grid data. You can log the data through
 ### Results
 
 When displaying the results through Rerun you will see the Occupancy Point Cloud.
-![alt text](assets/fusion_occupancy.png)
+
+{{ figure("assets/fusion_occupancy.png", "Fusion Occupancy Point Cloud") }}
 
 ## Fusion Output Grid
 
@@ -443,7 +444,8 @@ Recieved 10 radar points with non-background vision_class. Values: x: [1.15, 1.4
 ```
 
 When displaying the results through Rerun you will see the point cloud radar data.
-![alt text](assets/fusion_radar.png)
+
+{{ figure("assets/fusion_radar.png", "Fusion Radar") }}
 
 ## Fusion LiDAR
 
@@ -592,7 +594,8 @@ Recieved 523 lidar points with non-background vision_class. Values: x: [3.39, 3.
 ```
 
 When displaying the results through Rerun you will see the point cloud lidar data.
-![alt text](assets/fusion_lidar.png)
+
+{{ figure("assets/fusion_lidar.png", "Fusion LiDAR") }}
 
 ## Fusion Boxes3D
 

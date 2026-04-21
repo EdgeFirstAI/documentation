@@ -2,10 +2,7 @@
 
 This page configures how sensor and processed outputs are saved on the [MCAP Recording Page](../../perception/data_collection/recording.md).
 
-<figure markdown="span">
-![MCAP Settings page](../assets/configuration/configuration-mcap.png){align=center}
-<figcaption>MCAP Settings page</figcaption>
-</figure>
+{{ figure("../assets/configuration/configuration-mcap.png", "MCAP Settings page") }}
 
 !!! tip
     These values are stored in the `/etc/default/recorder` file on the device and can be hand-edited. This is not recommended.

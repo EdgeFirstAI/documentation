@@ -8,14 +8,8 @@ For each type of model validation (object detection, segmentation, fusion), the 
 
 The minimum, maximum, and average timings of each of these stages are represented as a bar chart as shown below.
 
-<figure markdown="span">
-  ![Model Timings](../../assets/metrics/model-timings.jpg){ align=center }
-  <figcaption>Model Timings</figcaption>
-</figure>
+{{ figure("../../assets/metrics/model-timings.jpg", "Model Timings") }}
 
 Furthermore, the distribution of the average timings are represented as a pie chart.  This chart gives an indication of which stage of the pipeline takes the most time.
 
-<figure markdown="span">
-  ![Average Timings](../../assets/metrics/timing-distribution.jpg){ align=center }
-  <figcaption>Average Timings</figcaption>
-</figure>
+{{ figure("../../assets/metrics/timing-distribution.jpg", "Average Timings") }}

@@ -23,9 +23,7 @@ Learn more about:
 
 ## Getting Started
 
-New users should start with the [User Home Page](home.md) and [Navigating EdgeFirst Studio](navigation.md). These guides explain the main features and dashboards.
-
-Then explore [Automatic Ground Truth Generation (AGTG)](agtg.md) to learn how EdgeFirst Studio automates the annotation process.
+New users should start with the [Home Page](home.md) and [Navigating EdgeFirst Studio](navigation.md). These guides explain the main features and dashboards.
 
 [pricing_tiers]: https://test.edgefirst.studio/#/
 [signup]: https://test.edgefirst.studio/#/signup

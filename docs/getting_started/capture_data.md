@@ -9,16 +9,10 @@ The examples below will show recording of a five second video and image captures
 
 Next [view the gallery of the dataset](../datasets/tutorials/management.md#view-dataset) to confirm all the captured data has been uploaded.  You should see the imported video file and images in the gallery.  Note that videos appear as sequences with a play button overlay on the preview thumbnail.
 
-<figure markdown="span">
-![Coffee Cup Gallery](../getting_started/assets/workflows/pc-dataset-gallery.jpg){ align=center }
-<figcaption>Coffee Cup Gallery</figcaption>
-</figure>
+{{ figure("../getting_started/assets/workflows/pc-dataset-gallery.jpg", "Coffee Cup Gallery") }}
 
 Once all the captured data has been uploaded to the dataset container, you will now assign groups to the data to split the data into training and validation sets.  Follow the [tutorial for creating groups](../datasets/tutorials/management.md#split-dataset) with an 80% partition to training and 20% partition to validation.  The final outcome for the groups should look as follows.
 
-<figure markdown="span">
-![Dataset Groups](../getting_started/assets/workflows/dataset-groups.jpg){ align=center }
-<figcaption>Dataset Groups</figcaption>
-</figure>
+{{ figure("../getting_started/assets/workflows/dataset-groups.jpg", "Dataset Groups") }}
 
 Now that you have imported captured images or videos into EdgeFirst Studio and have split the captured data into training and validation partitions, you can now start annotating your data as shown in the next section below.

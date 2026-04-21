@@ -1,6 +1,6 @@
 # EdgeFirst Studio Model Zoo
 
-The EdgeFirst Studio Model Zoo provides training support for multiple models, including [ModelPack](modelpack/index.md), [EdgeFirst Fusion](fusion/index.md), and [Ultralytics](ultralytics/index.md). These frameworks are fully integrated and can be configured directly through the user interface.
+The EdgeFirst Studio Model Zoo provides training support for multiple models, including [ModelPack](modelpack/index.md), [Ultralytics](ultralytics/index.md), and [EdgeFirst Fusion](fusion/index.md). These frameworks are fully integrated and can be configured directly through the user interface.
 
 === "ModelPack"
 
@@ -8,14 +8,6 @@ The EdgeFirst Studio Model Zoo provides training support for multiple models, in
 
     <div style="max-width: fit-content; margin-left: auto; margin-right: auto;" class="wizard-actions" markdown>
     [Read More](modelpack/index.md){ .md-button }
-    </div>
-
-=== "EdgeFirst Fusion"
-
-    A Sensor Fusion Model is a multi-sensor (multi-input) architecture that fuses Radar and Camera sensors designed for spatial perception tasks.  These models can make predictions of the object's position in world coordinates.  Fusion models takes the Radar cube and the Camera image as inputs to the model by default.  However, either the Camera or the Radar can be turned off to train specific camera-only and radar-only based Fusion models. 
-
-    <div style="max-width: fit-content; margin-left: auto; margin-right: auto;" class="wizard-actions" markdown>
-    [Read More](fusion/index.md){ .md-button }
     </div>
 
 === "Ultralytics"
@@ -27,15 +19,23 @@ The EdgeFirst Studio Model Zoo provides training support for multiple models, in
     [Read More](ultralytics/index.md){ .md-button }
     </div>
 
+=== "EdgeFirst Fusion"
+
+    A Sensor Fusion Model is a multi-sensor (multi-input) architecture that fuses Radar and Camera sensors designed for spatial perception tasks.  These models can make predictions of the object's position in world coordinates.  Fusion models takes the Radar cube and the Camera image as inputs to the model by default.  However, either the Camera or the Radar can be turned off to train specific camera-only and radar-only based Fusion models. 
+
+    <div style="max-width: fit-content; margin-left: auto; margin-right: auto;" class="wizard-actions" markdown>
+    [Read More](fusion/index.md){ .md-button }
+    </div>
+
 !!! tip "Build Your Own Model (BYOM)"
     📬 If you need support for additional models,
     please do not hesitate and [email our support team](mailto:support@edgefirst.ai) — we’re here to help!
 
 ## Related Articles
 
-1. [Vision Augmentations](augmentations.md) - Describes available vision augmentations for training and validation.
-2. [Model Metadata](metadata.md) - Documents the metadata schema embedded in EdgeFirst models for MLOps traceability.
-3. Validation Metrics - Describes the validation metrics for both architectures in detail.
+1. [Model Metadata](metadata.md) - Documents the metadata schema embedded in EdgeFirst models for MLOps traceability
+2. [Vision Augmentations](augmentations.md) - Describes available vision augmentations for training and validation
+3. Validation Metrics - Describes the validation metrics for both architectures in detail
     - [Detection](validation/metrics/detection/index.md)
     - [Segmentation](validation/metrics/segmentation.md)
     - [Fusion](validation/metrics/fusion.md)

@@ -1,6 +1,6 @@
 # MobileNet SSD Examples
 
-These examples demonstrate how to deploy a MobileNet SSD V1 model using the NPU of an embedded platform such as a [Maivin](../../../platforms/index.md).  The examples below are split into two parts; model inference on a single image and a model inference publisher. These examples have been tested on the TFLite files found in [this SSD-TFLite repository](https://github.com/apivovarov/ssd-tflite/tree/master), and in [ML-Zoo](https://github.com/Arm-Examples/ML-zoo/tree/master/models/object_detection/ssd_mobilenet_v1).  
+These examples demonstrate how to deploy a MobileNet SSD V1 model using the NPU of an embedded platform such as a [Maivin](../../../platforms/quickstart/maivin/index.md).  The examples below are split into two parts; model inference on a single image and a model inference publisher. These examples have been tested on the TFLite files found in [this SSD-TFLite repository](https://github.com/apivovarov/ssd-tflite/tree/master), and in [ML-Zoo](https://github.com/Arm-Examples/ML-zoo/tree/master/models/object_detection/ssd_mobilenet_v1).  
 
 !!! note
     In a future release of the EdgeFirst middleware, the Model Service will be able to run MobileNet SSD V1 models natively, again, testing on the above examples.
@@ -77,10 +77,7 @@ Found objects:
 
 Furthermore, a new image should be saved `img_vis.jpg` showing the model output visualizations.
 
-<figure markdown="span">
-![Model Inference](assets/img_vis.jpg){align=center}
-<figcaption>Model Inference</figcaption>
-</figure>
+{{ figure("assets/img_vis.jpg", "Model Inference") }}
 
 The following breakdown of the script describing the steps of the model inference is provided below.
 

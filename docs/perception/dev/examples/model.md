@@ -85,7 +85,8 @@ The ModelInfo message contains information about the model configuration. You ca
 ### Results
 
 When displaying the results through Rerun you will see the model info.
-![alt text](assets/model_info.png)
+
+{{ figure("assets/model_info.png", "Model Info") }}
 
 ## Boxes2D
 
@@ -185,7 +186,8 @@ The Boxes2D message contains 2D bounding box detections. The message will be sen
 ### Results
 
 When displaying the results through Rerun you will see the boxes without any camera, to see the combined example please see the[Combined Example](#combined-example).
-![alt text](assets/model_boxes2d.png)
+
+{{ figure("assets/model_boxes2d.png", "Model 2D Boxes") }}
 
 ### Box Tracking
 
@@ -369,7 +371,8 @@ The Mask message contains segmentation mask data. The worker will perform argmax
 ### Results
 
 When displaying the results through Rerun you will see the segmentation without any camera, to see the combined example please see the[Combined Example](#combined-example).
-![alt text](assets/model_mask.png)
+
+{{ figure("assets/model_mask.png", "Model Mask") }}
 
 ## Model Mask Compressed
 
@@ -483,7 +486,8 @@ The Mask message contains segmentation mask data. The worker will decompress the
 ### Results
 
 When displaying the results through Rerun you will see the segmentation without any camera, to see the combined example please see the[Combined Example](#combined-example).
-![alt text](assets/model_mask.png)
+
+{{ figure("assets/model_mask.png", "Model Mask") }}
 
 ## Combined Example
 
@@ -635,4 +639,5 @@ The Mask callback will wait for a Mask message from the MessageDrain and will pa
 ### Results
 
 When displaying the results through Rerun you will see the combined image of the camera feed, segmentation image and boxes.
-![alt text](assets/camera_model_combined.png)
+
+{{ figure("assets/camera_model_combined.png", "Camera + Segmentation + Boxes") }}

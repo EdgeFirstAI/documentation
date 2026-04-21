@@ -6,10 +6,7 @@ This article will walk you through the Maivin's Web User Interface (Web UI).
 
 The Main Page of the Maivin web interface should look as follows:
 
-<figure markdown="span">
-![Maivin Main Page](../../assets/setup/ui-maivinMain.png){align=center}
-<figcaption>Maivin Main Page</figcaption>
-</figure>
+{{ figure("../../assets/setup/ui-maivinMain.png", "Maivin Main Page") }}
 
 There are three cards on the Main Page that link to the Visualization pages:
 
@@ -27,15 +24,10 @@ These pages contain the user-facing functionality of the vision module.
 
 The Segmentation page shows camera overlain with the current visual model output. 
 
-<figure markdown="span">
-![Maivin Segmentation Page](../../assets/setup/ui-maivinSegmentation.jpg){align=center}
-<figcaption>Maivin Segmentation Page</figcaption>
-</figure>
+{{ figure("../../assets/setup/ui-maivinSegmentation.jpg", "Maivin Segmentation Page") }}
 
 {% include-markdown "discrete/platforms/edgefirst_common_services.md" heading-offset=2 %}
 
 ## Next Steps
 
 Now that you have setup your Maivin and are familiar with the Maivin's Web UI, you can proceed to [copying a public dataset](copy_dataset.md) in [EdgeFirst Studio](https://edgefirst.studio/) to train your own vision model that will be deployed in this device.
-
-Otherwise, you can skip the training steps and proceed to [deploy pre-trained models](deploy_pretrained.md) from EdgeFirst Studio.

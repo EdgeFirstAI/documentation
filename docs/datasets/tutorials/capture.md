@@ -18,17 +18,14 @@ In this tutorial you have seen how to capture videos and images from your mobile
 
 ## Capture with an EdgeFirst Platform
 
-If you have an EdgeFirst Platform, follow this tutorial to see how to capture and upload datasets into EdgeFirst Studio.  Use your browser to connect to the Web UI of the remote device, enter the following URL `https://<hostname>/`.
+If you have an [EdgeFirst Platform](../../platforms/index.md), follow this tutorial to see how to capture and upload datasets into EdgeFirst Studio.  Use your browser to connect to the Web UI of the remote device, enter the following URL `https://<hostname>/`.
 
 !!! note
     Replace `<hostname>` with the hostname of your device.
 
 You will be greeted with the Maivin [Web UI Main Page](../../platforms/quickstart/maivin/webui.md) page.
 
-<figure markdown="span">
-![Web UI Main Page](../../platforms/assets/setup/ui-maivinMain.png){ align=center }
-<figcaption>Web UI Main Page</figcaption>
-</figure>
+{{ figure("../../platforms/assets/setup/ui-maivinMain.png", "Web UI Main Page") }}
 
 {% include-markdown "discrete/datasets/recording_mcap_on_device.md" heading-offset=2 %}
 

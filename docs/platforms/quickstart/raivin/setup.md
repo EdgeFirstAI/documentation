@@ -27,20 +27,16 @@ The Raivin box contains the following items:
 
 After all that, you should see the [Raivin Main Page](webui.md).
 
-<figure markdown="span">
-![Raivin Main Page](../../assets/setup/quickStart-mainPage.png){align=center} 
-<figcaption>Raivin Main Page</figcaption>
-</figure>
+{{ figure("../../assets/setup/quickStart-mainPage.png", "Raivin Main Page") }}
 
 From here, we recommend that you check out the Segmentation View page by clicking the "Segmentation View" card.
 
-<figure markdown="span">
-![Raivin Segmentation Page](../../assets/setup/quickStart-segmentation.png){align=center}  
-<figcaption>Raivin Segmentation Page</figcaption>
-</figure>
+{{ figure("../../assets/setup/quickStart-segmentation.png", "Raivin Segmentation Page") }}
 
 !!! note
     The ultra-short model included in this release was trained for fixed camera and mostly tested indoors.
+
+{% include-markdown "discrete/platforms/edgefirst_performance_scaling.md" %}
 
 ## Next Steps
 

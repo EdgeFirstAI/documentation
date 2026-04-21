@@ -149,7 +149,8 @@ Recieved 23 radar points. Values: x: [2.04, 9.47]       y: [-2.97, 4.22]        
 ```
 
 When displaying the results through Rerun you will see the pointcloud radar data.
-![alt text](assets/radar_targets.png)
+
+{{ figure("assets/radar_targets.png", "Radar Pointcloud Data") }}
 
 ## Radar Clusters
 
@@ -182,7 +183,7 @@ After setting up the Zenoh session, we will create a subscriber to the `radar/cl
 
 ### Receive a message
 
-We can now receive a message on the subcriber. After receiving the message, we will need to deserialize it.
+We can now receive a message on the subscriber. After receiving the message, we will need to deserialize it.
 
 === "Python"
 
@@ -273,7 +274,8 @@ We will now collect all the clustered points, which are all the points with `clu
 ### Results
 
 When displaying the results through Rerun you will see the cluster data.
-![alt text](assets/radar_clusters.png)
+
+{{ figure("assets/radar_clusters.png", "Radar Cluster Data") }}
 
 ## Radar Info
 
@@ -306,7 +308,7 @@ After setting up the Zenoh session, we will create a subscriber to the `radar/in
 
 ### Receive a message
 
-We can now recevie a message on the subcriber. After receiving the message, we will need to deserialize it.
+We can now receive a message on the subscriber. After receiving the message, we will need to deserialize it.
 
 === "Python"
 
@@ -372,7 +374,8 @@ The radar configuration is: center frequency: low   frequency sweep: ultra-short
 ```
 
 When displaying the results through Rerun you will see a log of the radar configuration.
-![alt text](assets/radar_info.png)
+
+{{ figure("assets/radar_info.png", "Radar Configuration Log") }}
 
 ## Radar Cube
 
@@ -405,7 +408,7 @@ After setting up the Zenoh session, we will create a subscriber to the `radar/cu
 
 ### Receive a message
 
-We can now receive a message on the subcriber. After receiving the message, we will need to deserialize it.
+We can now receive a message on the subscriber. After receiving the message, we will need to deserialize it.
 
 === "Python"
 
@@ -475,7 +478,8 @@ The radar cube has shape: [2, 200, 4, 256]
 ```
 
 When displaying the results through Rerun you will see the radar cube displayed.
-![alt text](assets/radar_cube.png)
+
+{{ figure("assets/radar_cube.png", "Radar Cube Display") }}
 
 ## Combined Example
 
@@ -622,4 +626,5 @@ The radar callback will receive the pointcloud message, perform post-processing 
 ### Results
 
 When displaying the results through Rerun you will see the combined image of the camera feed with boxes and the radar pointcloud.
-![alt text](assets/camera_radar.png)
+
+{{ figure("assets/camera_radar.png", "Camera and Radar Overlay") }}

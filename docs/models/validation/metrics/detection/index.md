@@ -15,19 +15,13 @@ The Full-Curve Metrics include:
 * Mean Recall
 * Mean F1 Score
 
-<figure markdown="span">
-	![Detection Metrics](../../../assets/metrics/detection_metrics.png){ align=center }
-	<figcaption>Detection Metrics</figcaption>
-</figure>
+{{ figure("../../../assets/metrics/detection_metrics.png", "Detection Metrics") }}
 
 ### Mean Average Precision (mAP)
 
 Mean Average Precision (mAP) is one of the most important metrics for evaluating object detection models and is computed using the same methodology as [Ultralytics](https://docs.ultralytics.com/guides/yolo-performance-metrics/) (YOLO).
 
-<figure markdown="span">
-	![Mean Average Precision](../../../assets/metrics/mAP.png){ align=center }
-	<figcaption>Mean Average Precision</figcaption>
-</figure>
+{{ figure("../../../assets/metrics/mAP.png", "Mean Average Precision") }}
 
 The mAP measures how well the model balances precision and recall across confidence thresholds, while also evaluating detection quality at different IoU thresholds.
 
@@ -48,7 +42,7 @@ For a fixed IoU threshold, compute the AP (average precision):
 4. AP is computed as the area under this curve
 
 !!! note
-	IoU does not create the curve — it defines what counts as a true positive at each fixed threshold. For mAP@0.50:0.95, this AP computation is repeated over IoU thresholds from 0.50 to 0.95 and then averaged
+	IoU does not create the curve — it defines what counts as a true positive at each fixed threshold. For mAP@0.50:0.95, this AP computation is repeated over IoU thresholds from 0.50 to 0.95 and then averaged.
 
 For each class:
 
@@ -72,10 +66,7 @@ For each class:
 
 The Mean F1 Score is the harmonic mean between precision and recall used to determine the model’s optimal score threshold. It is derived from the F1 vs Confidence curve, which shows how the F1 score changes as the score threshold varies.  The model's optimal score threshold is at the max F1 score of this curve. 
 
-<figure markdown="span">
-	![F1 versus Confidence](../../../assets/metrics/f1_vs_confidence.png){ align=center }
-	<figcaption>F1 versus Confidence</figcaption>
-</figure>
+{{ figure("../../../assets/metrics/f1_vs_confidence.png", "F1 versus Confidence") }}
 
 For each confidence threshold:
 
@@ -107,10 +98,7 @@ The Mean F1 score represents the best balance between precision and recall and d
 
 This metric is defined as the **average of the per-class precision values at the optimal threshold where the mean F1 score is highest**.  This score reflects the overall ability of the model to avoid false positives across all classes.
 
-<figure markdown="span">
-	![Precision versus Confidence](../../../assets/metrics/precision_vs_confidence.png){ align=center }
-	<figcaption>Precision versus Confidence</figcaption>
-</figure>
+{{ figure("../../../assets/metrics/precision_vs_confidence.png", "Precision versus Confidence") }}
 
 At the selected threshold:
 
@@ -130,10 +118,7 @@ The Mean Precision metric measures how accurate the model’s predictions are at
 
 This metric is defined as the **average of the per-class recall values at the threshold where the mean F1 score is highest**.  This score reflects the model’s ability to find all relevant objects (true positives) across all classes.
 
-<figure markdown="span">
-	![Recall versus Confidence](../../../assets/metrics/recall_vs_confidence.png){ align=center }
-	<figcaption>Recall versus Confidence</figcaption>
-</figure>
+{{ figure("../../../assets/metrics/recall_vs_confidence.png", "Recall versus Confidence") }}
 
 At this threshold:
 
@@ -200,10 +185,7 @@ As mentioned, the Full-Curve Metrics assess the model performance at varying NMS
 !!! note "Classifications"
 	For more information on how these predictions are matched and classified into true positives, false positives, and false negatives, please see the [Matching and Classification Rules](matching.md).
 
-<figure markdown="span">
-	![Deployment Classifications](../../../assets/metrics/deployment_classifications.png){ align=center }
-	<figcaption>Deployment Classifications</figcaption>
-</figure>
+{{ figure("../../../assets/metrics/deployment_classifications.png", "Deployment Classifications") }}
 
 Additional insight into these classifications can be gained by examining the distributions of prediction scores and IoUs, shown in the histograms below.  In both plots, green represents true positives, yellow represents classification false positives, and red represents localization false positives.
 
@@ -219,17 +201,11 @@ From these plots, **the sum of true positives, false positives, and false negati
 
 Lastly, the precision, recall, and accuracy scores of each class are provided in the Class Metrics bar chart.  You can find the equations for precision, recall, and accuracy in the [Glossary](../index.md#glossary). 
 
-<figure markdown="span">
-	![Class Metrics](../../../assets/metrics/class_metrics.png){ align=center }
-	<figcaption>Class Metrics</figcaption>
-</figure>
+{{ figure("../../../assets/metrics/class_metrics.png", "Class Metrics") }}
 
 The deployment precision, recall, and accuracy are calculated based on the mean value of the precision, recall, and accuracy of each class as shown in the next sections.
 
-<figure markdown="span">
-	![Detection Metrics](../../../assets/metrics/detection_metrics.png){ align=center }
-	<figcaption>Detection Metrics</figcaption>
-</figure>
+{{ figure("../../../assets/metrics/detection_metrics.png", "Detection Metrics") }}
 
 ### Deployment Class Precision
 
@@ -278,10 +254,7 @@ Lowering the score threshold allows more detections to pass through, increasing 
 
 The Precision–Recall curve illustrates this trade-off across different threshold values. At lower thresholds, the model produces more detections, resulting in higher recall but lower precision. As the threshold increases, precision improves due to stricter filtering, while recall decreases as fewer detections are retained. The curve below shows this relationship for each class in the dataset, along with the average across all classes. A larger area under the curve indicates better overall performance, reflecting a stronger balance between precision and recall across thresholds.
 
-<figure markdown="span">
-  ![Precision versus Recall](../../../assets/metrics/precision_vs_recall.png){ align=center }
-  <figcaption>Precision versus Recall</figcaption>
-</figure>
+{{ figure("../../../assets/metrics/precision_vs_recall.png", "Precision versus Recall") }}
 
 Precision and recall are common metrics used for evaluating object detectors in machine learning.  According to Mariescu-Istodor and Fränti (2023), "Precision is the number of correct results (true positives) relative to the number of all results.  Recall is the number of correct results relative to the number of expected results" (p.1).  In this case interpreting "all results" as the model's detection results and "expected results" as the ground truth in the dataset - precision is defined as the fraction of correct detections out of the total detections, and recall is defined as the fraction of correct detections out of the total ground truth.  
 
@@ -297,10 +270,7 @@ $$
 
 However, on the account of the [EdgeFirst Validator's method of classifying detections](matching.md) where false positives are further categorized into localization and classification false positives, then **the total number of detections is really the sum of true positives, classification false positives, and localization false positives**.  **The total number of ground truths is the sum of true positives, false negatives, and classification false positives** as shown in the resulting image below.
 
-<figure markdown="span">
-  ![playing_cards_v7; 000000000027.png](../../../assets/metrics/tp_fp_fn_claim.png){ align=center }
-  <figcaption>playing_cards_v7; 000000000027.png </figcaption>
-</figure>
+{{ figure("../../../assets/metrics/tp_fp_fn_claim.png", "playing_cards_v7; 000000000027.png") }}
 
 In this image there are two true positives (green), one false negative (blue), one classification false positive (red), and four ground truth objects (blue).  To agree with the definition of recall being the fraction of all correct detections over all ground truths, the number ground truth becomes the sum of true positives, false negatives, and classification false positives.  The formulas are thus adjusted in the following way which is implemented in EdgeFirst Validator.  
 
@@ -318,10 +288,7 @@ $$\text{FP}_{\text{c}} = \text{classification FP}$$
 
 ## Confusion Matrix
 
-<figure markdown="span">
-  ![Confusion Matrix](../../../assets/metrics/confusion_matrix.png){ align=center }
-  <figcaption>Confusion Matrix</figcaption>
-</figure>
+{{ figure("../../../assets/metrics/confusion_matrix.png", "Confusion Matrix") }}
 
 The Confusion Matrix provides a comparison between the ground truth and the prediction labels which gives an indication of how closely the model predictions matches the ground truth and the areas where it diverges.  The Confusion Matrix tracks the counts of each ground truth and prediction label.  These counts are based on the [deployment metrics](#deployment-metrics) counts of true positives, false positives, and false negatives.  In this representation of the matrix, the ground truth labels are placed along the x-axis and the prediction labels along the y-axis.  Along the diagonal where both prediction and ground truth label matches, you can find the number of true positives of the specific label.  **The sum of the values along the diagonal equals the number of true positives presented in the deployment metrics**. The first column where the ground truth label is "background" is the number of localization false positives where a model makes a false prediction of objects that are not present in the image.  **The sum of the first column equals the number of localization false positives in the deployment metrics**.  The last row where the prediction label is "background" is the number of false negatives where the model missed to detect these labels in the image.  **The sum of the last row equals the number of false negatives in the deployment metrics**.  Throughout the matrix, you may see counts for mismatching labels.  **The label mismatches represents the classification false positives and its sum equals the number of classification false positives in the deployment metrics**.
 
@@ -329,10 +296,7 @@ The Confusion Matrix provides a comparison between the ground truth and the pred
 
 Let's take a closer look at how metrics are computed based on the following example.  In this example, there are three ground truth boxes, three true positives (green) and two localization false positives (red).  There are five predictions in total.
 
-<figure markdown="span">
-  ![Playing Cards v7; val_000143.jpg](../../../assets/metrics/val_000143.jpg){ align=center }
-  <figcaption>Playing Cards v7; val_000143.jpg</figcaption>
-</figure>
+{{ figure("../../../assets/metrics/val_000143.jpg", "Playing Cards v7; val_000143.jpg") }}
 
 <div style="display: flex; justify-content: center; gap: 40px;">
   <!-- Predictions Table -->
@@ -717,10 +681,7 @@ The final calculated Deployment Metrics for this sample are as follows:
 
 		In this sample, all predictions are regarded as a true positive since the labels matches the ground truth and the IoU >= 0.50 to be regarded as a true positive.  Please see [Object Detection Classifications](classifications.md) for more information.
 
-		<figure markdown="span">
-			![Playing Cards v7; val_000143.jpg](../../../assets/metrics/deployment_val_000143.jpg){ align=center }
-			<figcaption>Playing Cards v7; val_000143.jpg</figcaption>
-		</figure>
+		{{ img("../../../assets/metrics/deployment_val_000143.jpg", "Playing Cards v7; val_000143.jpg") }}
 
 	3. Calculate precision, recall, and accuracy per class
 

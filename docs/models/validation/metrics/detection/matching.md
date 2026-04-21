@@ -66,27 +66,15 @@ Considering two detections and one ground truth, the detection with a lower IoU,
 
 The following images provides visualization to this rule.  The IoU threshold is set to 0.10 and the score threshold is set to 0.50 in these cases.  Here the green bounding box prediction is the true positive, the red bounding box is the localization false positive (LOC).
 
-<figure markdown="span">
-  ![Playing Cards v7; 000000000127.png](../../../assets/metrics/rule_5.1_000000000127.png){ align=center }
-  <figcaption>Playing Cards v7; 000000000127.png</figcaption>
-</figure>
+{{ figure("../../../assets/metrics/rule_5.1_000000000127.png", "Playing Cards v7; 000000000127.png") }}
 
-<figure markdown="span">
-  ![Playing Cards; 000020.png](../../../assets/metrics/rule_5.1_000020.png){ align=center }
-  <figcaption>Playing Cards; 000020.png</figcaption>
-</figure>
+{{ figure("../../../assets/metrics/rule_5.1_000020.png", "Playing Cards; 000020.png") }}
 
 Otherwise, if these detections, are lower than the IoU threshold, they will be regarded as localization false positives (LOC) and one false negative from the ground truth as shown below.  Here both predictions have IoUs lower than the IoU threshold which is set to 0.90. 
 
-<figure markdown="span">
-  ![000000000127.png; IoU threshold = 0.90](../../../assets/metrics/rule_5.1_000000000127_fp.png){ align=center }
-  <figcaption>000000000127.png; IoU threshold = 0.90</figcaption>
-</figure>
+{{ figure("../../../assets/metrics/rule_5.1_000000000127_fp.png", "000000000127.png; IoU threshold = 0.90") }}
 
-<figure markdown="span">
-  ![000020.png; IoU threshold = 0.90](../../../assets/metrics/rule_5.1_000020_fp.png){ align=center }
-  <figcaption>000020.png; IoU threshold = 0.90</figcaption>
-</figure>
+{{ figure("../../../assets/metrics/rule_5.1_000020_fp.png", "000020.png; IoU threshold = 0.90") }}
 
 ### Rule 5.2: Prioritization of Highest IoU Matches
 
@@ -94,10 +82,7 @@ For cases where multiple detections have labels that matches the ground truth, t
 
 The following image shows visualization of this rule where the IoU threshold is set to 0.10 and the score threshold is set to 0.50.  Here the green bounding box prediction is the true positive since it has the highest IoU and its label matches the ground truth.  The rest of the predictions are then treated as localization false positives (LOC).
 
-<figure markdown="span">
-  ![Playing Cards V7; 000000000145.png](../../../assets/metrics/rule_5.2_000000000145.png){ align=center }
-  <figcaption>Playing Cards V7; 000000000145.png</figcaption>
-</figure>
+{{ figure("../../../assets/metrics/rule_5.2_000000000145.png", "Playing Cards V7; 000000000145.png") }}
 
 These detections have the same label as the ground truth, but the IoU varies, each detection overlaps the ground truth.  The greatest overlap is taken as the match.  Since this match meets the criteria of a true positive, it is classified as such.
 
@@ -107,10 +92,7 @@ For cases that concerns both scenarios as the rules described above.  A match is
 
 The following image shows a visualization of this rule following the same IoU threshold set to 0.10 and the score threshold set to 0.50.  Here the green bounding box prediction is the true positive as it has the highest IoU of all the matching labels.  The rest of the bounding boxes are then treated as localization false positives (LOC).
 
-<figure markdown="span">
-  ![Playing Cards v7; 000000000134.png](../../../assets/metrics/rule_5.3_000000000134.png){ align=center }
-  <figcaption>Playing Cards v7; 000000000134.png</figcaption>
-</figure>
+{{ figure("../../../assets/metrics/rule_5.3_000000000134.png", "Playing Cards v7; 000000000134.png") }}
 
 In this case, matching labels are prioritized and the highest IoU is taken as the match.
 
@@ -120,28 +102,19 @@ For cases of having detections with matching labels as the ground truth, but do 
 
 The following image with visualization shows an IoU threshold set to 0.50.  In this case, there is a prediction with a matching label as the ground truth, but it does not meet the IoU requirement, so it is treated as a localization false positive (LOC).  The one mismatching label with the highest IoU with the ground truth would then be matched since it meets the IoU requirement, but it will be treated as a classification false positive (CLF).
 
-<figure markdown="span">
-  ![Playing Cards v7; 000000000134.png](../../../assets/metrics/rule_5.4_000000000134.png){ align=center }
-  <figcaption>Playing Cards v7; 000000000134.png</figcaption>
-</figure>
+{{ figure("../../../assets/metrics/rule_5.4_000000000134.png", "Playing Cards v7; 000000000134.png") }}
 
 Despite a detection with a matching label of "ace" as the ground truth being present, it is still regarded as a localization false positive (LOC) since it does not meet the IoU requirement.  The detection with the highest IoU is matched instead which is with the label "king".
 
 Otherwise, if all detections do not meet the IoU threshold requirement, they will be treated as localization false positives (LOC) and one false negative for the ground truth as shown in the image results below where the IoU threshold was to 1.
 
-<figure markdown="span">
-  ![Playing Cards v7; 000000000134.png](../../../assets/metrics/rule_5.4_000000000134_locfp.png){ align=center }
-  <figcaption>Playing Cards v7; 000000000134.png</figcaption>
-</figure>
+{{ figure("../../../assets/metrics/rule_5.4_000000000134_locfp.png", "Playing Cards v7; 000000000134.png") }}
 
 ### Rule 5.5: Matches Meets IoU Threshold Requirement
 
 Any detections that do not overlap any ground truth or any detections with IoU < IoU threshold will be regarded as localization false positives (LOC).
 
-<figure markdown="span">
-  ![Playing Cards v7; 000000000148.png](../../../assets/metrics/rule_5.5_000000000148.png){ align=center }
-  <figcaption>Playing Cards v7; 000000000148.png</figcaption>
-</figure>
+{{ figure("../../../assets/metrics/rule_5.5_000000000148.png", "Playing Cards v7; 000000000148.png") }}
 
 ## Conclusion
 

@@ -1,54 +1,39 @@
 # Validate Vision Model
 
-Now that you have trained a Vision model, you can now start validating your Vision model.  This will briefly show the steps for validating a model, but for an in depth tutorial, please see [Validating Vision Models](../../models/validation/vision/managed.md).
+Now that you have trained a model, you can now validate the performance of your model.  This will briefly show the steps for validating a model, but for an in depth tutorial, please see [Validating Vision Models](../../models/validation/vision/managed.md).
 
-On the train session card, expand the session details.
+If you haven't already, click on the training session card for more information.
 
-<figure markdown="span">
-![Training Details](../../models/assets/training/vision-view-train-details.jpg){ align=center }
-<figcaption>Training Details</figcaption>
-</figure>
+{{ figure("/models/assets/training/vision-view-train-details.jpg", "Training Details") }}
 
-Click the "Validate" button.
+On the top right corner of the page, click on the "validate" button as indicated.
 
-<figure markdown="span">
-![Create Validation Session](../../models/assets/training/vision-validate-button.jpg){ align=center }
-<figcaption>Create Validation Session</figcaption>
-</figure>
+{{ figure("/models/assets/validation/training_validate_button.jpg", "Validate Button") }}
 
 Specify the name of the validation session and the model and the dataset for validation.  The rest of the settings were kept as defaults.  Click "Start Session" at the bottom to start the validation session.
 
-<figure markdown="span">
-![Start Validation Session](../../models/assets/validation/vision-validate-settings.jpg){ align=center }
-<figcaption>Start Validation Session</figcaption>
-</figure>
+{{ figure("/models/assets/validation/vision-validate-settings.jpg", "Start Validation Session") }}
 
-!!! warning "No Datasets Available"
+Go to the created validation session by first going back to the "Model Experiments" page.
 
-    In case there are no datasets visible on the dropdown.  Please refresh your browser.
+{{ figure("/models/assets/training/go-back-to-model-experiments.jpg", "Go to Model Experiments") }}
+
+Next, click the validation sessions of the model experiments.
+
+{{ figure("/models/assets/validation/validation-sessions.jpg", "Validation Sessions") }}
 
 The validation session progress will appear in the "Validation" page as shown below.
 
-<figure markdown="span">
-![Validation Progress](../../models/assets/validation/vision-session-progress.jpg){ align=center }
-<figcaption>Validation Progress</figcaption>
-</figure>
+{{ figure("/models/assets/validation/vision-session-progress.jpg", "Validation Progress") }}
 
-Once completed the session card will appear like the following below.
+Once completed the session card will appear like the following below.  To view the validation metrics, click on the validation charts button as indicated.
 
-<figure markdown="span">
-![Completed Session](../../models/assets/validation/vision-completed-session.jpg){ align=center }
-<figcaption>Completed Session</figcaption>
-</figure>
+{{ figure("/models/assets/validation/vision-completed-session.jpg", "Completed Session") }}
 
-The validation metrics are displayed as charts which can be found by clicking the validation charts.
+The validation metrics should appear like the following.  For more information, please see the [Validation Metrics](../../models/validation/metrics/index.md) section.
 
-<figure markdown="span">
-![Validation Charts Button](../../models/assets/validation/vision-charts-button.jpg){ align=center }
-<figcaption>Validation Charts Button</figcaption>
-</figure>
+{{ figure("/models/assets/validation/vision-charts.jpg", "Validation Charts") }}
 
-<figure markdown="span">
-![Validation Charts](../../models/assets/validation/vision-charts.jpg){ align=center }
-<figcaption>Validation Charts</figcaption>
-</figure>
+You can navigate back to the training session by clicking on the "Training Session" link under the "Session" tab.
+
+{{ figure("/models/assets/validation/back-to-training-session.jpg", "Go Back to the Training Session") }}

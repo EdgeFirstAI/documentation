@@ -69,19 +69,19 @@ flowchart LR
 !!! warning "PC Requirement"
     It is expected that for all personas identified above, the user has a PC with Wifi access.
 
-We've identified six workflows: Tourist, Tourist+, Web, Maivin, Raivin, LiDAR.  The hardware requirements and the available features increases starting with the Tourist as the most basic.
+We've identified ten workflows: Tourist, Tourist+, Web, i.MX 8M Plus, i.MX 95, Jetson Orin, Raspberry Pi 5, Maivin, Raivin, LiDAR.  The hardware requirements and the available features increases starting with the Tourist as the most basic.
 
 | Persona                        | Hardware             | Features                                                               | Cost |
 |--------------------------------|----------------------|------------------------------------------------------------------------|------|
 | [Tourist](tourist.md)          | PC                   | Copy Dataset, Train, Validate, Deploy Offline or Browser               | TBA  |
 | [Tourist+](tourist_plus.md)    | PC                   | Annotate 2D, Train, Validate, Deploy Offline or Browser                | TBA  |
 | [Web](web.md)                  | PC + Smartphone      | Record, Annotate 2D, Train, Validate, Deploy Offline or Browser        | TBA  |
-| i.MX 8M Plus (*coming soon*)   | PC + i.MX 8M Plus    | Copy Dataset, Train, Validate, Deploy on i.MX 8M Plus                                | TBA  |
-| i.MX 95 (*coming soon*)        | PC + i.MX 95         | Copy Dataset, Train, Validate, Deploy on i.MX 95                                     | TBA  |
-| Jetson Orin (*coming soon*)    | PC + Jetson Orin     | Copy Dataset, Train, Validate, Deploy on Jetson Orin                                 | TBA  |
-| Raspberry Pi 5 (*coming soon*) | PC + Raspberry Pi 5  | Copy Dataset, Train, Validate, Deploy on Raspberry Pi 5                              | TBA  |
+| i.MX 8M Plus (*coming soon*)   | PC + i.MX 8M Plus    | Copy Dataset, Train, Validate, Deploy on i.MX 8M Plus                  | TBA  |
+| i.MX 95 (*coming soon*)        | PC + i.MX 95         | Copy Dataset, Train, Validate, Deploy on i.MX 95                       | TBA  |
+| Jetson Orin (*coming soon*)    | PC + Jetson Orin     | Copy Dataset, Train, Validate, Deploy on Jetson Orin                   | TBA  |
+| Raspberry Pi 5 (*coming soon*) | PC + Raspberry Pi 5  | Copy Dataset, Train, Validate, Deploy on Raspberry Pi 5                | TBA  |
 | [Maivin](maivin.md)            | PC + Maivin          | Record, Annotate 2D, Train, Validate, Deploy on Maivin                 | TBA  |
-| Raivin (*coming soon*)         | PC + Raivin w/ Radar | Record, Annotate 2D + 3D, Train, Validate, Deploy on Raivin            | TBA  |
+| [Raivin](raivin.md)            | PC + Raivin w/ Radar | Record, Annotate 2D + 3D, Train, Validate, Deploy on Raivin            | TBA  |
 | LiDAR (*coming soon*)          | PC + Raivin w/ LiDAR | Record, Annotate 2D + 3D (enhanced), Train, Validate, Deploy on Raivin | TBA  |
 
 ## User Journey
@@ -108,6 +108,8 @@ flowchart LR
     click maivin_user "maivin" "Open Maivin Workflow"
 
     raivin_user([Raivin]):::orange
+    click raivin_user "raivin" "Open Raivin Workflow"
+
     raivin_lidar_user([Raivin + LiDAR]):::darker_orange
     imx8mp_user([i.MX 8M Plus]):::green
     imx95_user([i.MX 95]):::teal
@@ -299,7 +301,11 @@ flowchart LR
 
     This workflow is intended for users with a personal computer with access to Wifi and a web browser and a Maivin platform.  To proceed to this workflow, click on the link above.
 
+5. [Raivin Workflow](raivin.md)
+
+    This workflow is intended for users with a personal computer with access to Wifi and a web browser and a Raivin platform.  To proceed to this workflow, click on the link above.
+
 !!! note "Future Work"
 
-    The Raivin and LiDAR workflows are currently unavailable. 
+    The workflows with missing links are a work in progress and currently unavailable. 
     

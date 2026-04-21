@@ -7,14 +7,8 @@ On the back of the device, you will find an eight-digit number.  This is the ID 
 
 The device has a web interface that can be connected to via both HTTP and HTTPS by entering `http://verdin-imx8mp-<id>.local`.  On first connection to the web interface, you will get a "Your connection is not private" warning.
 
-<figure markdown="span">
-![Main Page Warning](../../platforms/assets/setup/quickStart-sslCert.png){align=center}  
-<figcaption>Main Page Warning</figcaption>
-</figure>
+{{ figure("/platforms/assets/setup/quickStart-sslCert.png", "Main Page Warning") }}
 
 This is expected and nothing to worry about -- the HTTPS connection needs a SSL certificate which the vision module does not have.  Click the "Advanced" button, and then "Proceed to" link.
 
-<figure markdown="span">
-![Advanced Information](../../platforms/assets/setup/quickStart-sslAdvanced.png){align=center}
-<figcaption>Advanced Information</figcaption>
-</figure>
+{{ figure("/platforms/assets/setup/quickStart-sslAdvanced.png", "Advanced Information") }}

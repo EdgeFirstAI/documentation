@@ -1,1 +1,1 @@
-# Train Fusion Model
+{% include-markdown "discrete/models/train_fusion.md" heading-offset=0 %}

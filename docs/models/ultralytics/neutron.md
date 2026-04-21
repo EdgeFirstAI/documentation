@@ -6,10 +6,7 @@ In this section, you will find instructions for converting a quantized TFLite mo
 
 Visit the eIQ Toolkit [Downloads page](https://www.nxp.com/design/design-center/software/eiq-ai-development-environment/eiq-toolkit-for-end-to-end-model-development-and-deployment:EIQ-TOOLKIT).  In this example, the Windows installer is selected.  Click "Download" to download the installer in your system.
 
-<figure markdown="span">
-![eIQ Toolkit Installer](assets/eIQ-toolkit-installer.jpg){ align=center }
-<figcaption>eIQ Toolkit Installer</figcaption>
-</figure>
+{{ figure("assets/eIQ-toolkit-installer.jpg", "eIQ Toolkit Installer") }}
 
 !!! info "NXP Account"
 
@@ -17,10 +14,7 @@ Visit the eIQ Toolkit [Downloads page](https://www.nxp.com/design/design-center/
 
 Once downloaded, click on the executable to start the installation process.
 
-<figure markdown="span">
-![eIQ Toolkit Installer](assets/eIQ-toolkit-installer-executable.jpg){ align=center }
-<figcaption>eIQ Toolkit Installer</figcaption>
-</figure>
+{{ figure("assets/eIQ-toolkit-installer-executable.jpg", "eIQ Toolkit Installer") }}
 
 Follow the Setup Wizard that pops up and accepts the terms and agreement.  
 
@@ -48,10 +42,7 @@ Once NXP eIQ Toolkit is installed, open a command prompt in your system and veri
 
 This should start the eIQ portal.  To exit the application, CTRL-C on the command prompt.
 
-<figure markdown="span">
-![eIQ Portal](assets/eIQ-portal.jpg){ align=center }
-<figcaption>eIQ Portal</figcaption>
-</figure>
+{{ figure("assets/eIQ-portal.jpg", "eIQ Portal") }}
 
 ## Run Neutron Converter
 

@@ -46,15 +46,11 @@ The dataset contains a total of 1399 images and one class.
     There are 255 images in this dataset that are not associated to
     the train or val groups.
 
-<figure markdown="span">
-![Class Distribution](../assets/coffeecup/label_count.png){ align=center }
-</figure>
+{{ figure("../assets/coffeecup/label_count.png", "Class Distribution") }}
 
 ## Dataset Gallery
 
-<figure markdown="span">
-![Coffee Cup Dataset Gallery](../assets/coffeecup/gallery.png){ align=center }
-</figure>
+{{ figure("../assets/coffeecup/gallery.png", "Coffee Cup Dataset Gallery") }}
 
 ## License
 

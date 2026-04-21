@@ -32,7 +32,7 @@ This page presents comprehensive benchmark results for ModelPack, a versatile mo
 
 === "Coffee Cup"
 
-    ## Object Detection and Segmentation Metrcis
+    ## Object Detection and Segmentation Metrics
     
     **Table: ModelPack on CoffeeCup - RGB - (640x640) | ONNX**
 

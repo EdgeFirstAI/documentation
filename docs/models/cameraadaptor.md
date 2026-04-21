@@ -46,7 +46,7 @@ At inference time, the camera provides data directly in its native format. Since
 
 Both [ModelPack](modelpack/index.md) and [Ultralytics](ultralytics/index.md) training frameworks in EdgeFirst Studio provide a **Camera Adaptor** dropdown when configuring a training session. Select the target camera format to match your deployment platform.
 
-![Camera Adaptor Dropdown](assets/cameraadaptor/studio-cameraadaptor-dropdown.png){ align=center }
+{{ figure("assets/cameraadaptor/studio-cameraadaptor-dropdown.png", "Camera Adaptor Dropdown") }}
 
 The dropdown offers the same set of supported formats for both training frameworks.
 

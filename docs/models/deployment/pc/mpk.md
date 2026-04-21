@@ -4,11 +4,9 @@ If you have an ONNX or a TFLite ModelPack model file, you can follow these instr
 
 If you have an ONNX model, download the [run-onnx.py Python script](../assets/run-onnx.py){: download="run-onnx.py"}.  Otherwise, if you have a TFLite model, download the [run-tflite.py Python script](../assets/run-tflite.py){: download="run-tflite.py"}.  These scripts will load the model for inference across multiple images and saves the images with visualizations in your PC.  Run the scripts with the steps shown below.
 
-As mentioned under [Quickstart -> Train a Vision Model](../../../getting_started/train_vision.md), you can find the trained model artifacts (.onnx or .tflite) in the training session details which you can then download into your PC.
+As mentioned under [Quick Start -> Train a Vision Model](../../../getting_started/train_vision.md), you can find the trained model artifacts (.onnx or .tflite) in the training session which you can then download into your PC.
 
-| Session Details                                                        | Artifacts                                                                  |
-|------------------------------------------------------------------------|----------------------------------------------------------------------------|
-| ![session](../../../models/assets/training/vision-session-details.jpg) | ![artifacts](../../../models/assets/training/vision-session-artifacts.jpg) |
+{{ figure("/models/assets/training/vision-session-artifacts.jpg", "Training Session Artifacts") }}
 
 For this Python script you will need a set of images and a model file.  You can click on the following link and download these [set of images with coffee cup samples](../assets/coffeecup.zip){: download="coffeecup.zip"}.  Once downloaded, unzip the file into a directory.  Next download a sample [ONNX](../assets/coffeecup-modelpack-multitask-t-1f54.onnx){: download="coffeecup-modelpack-multitask-t-1f54.onnx"} or [TFLite](../assets/coffeecup-modelpack-multitask-t-1f54.tflite){: download="coffeecup-modelpack-multitask-t-1f54.tflite"} model to run the following examples.
 

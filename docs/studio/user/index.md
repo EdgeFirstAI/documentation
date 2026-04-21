@@ -16,17 +16,11 @@ This guide will walk you through inviting new users to your organization once yo
 
 When you log in, you will be first directed to the "Projects Page". Click on the "User" button that is found on the top right of the navigation bar as shown below. You will see three different options, click on the "Admin Console" button.
 
-<figure markdown="span">
-![User Button](../assets/user/admin-button.jpg){ align=center }
-<figcaption>The location of the "User" button</figcaption>
-</figure>
+{{ figure("../assets/user/admin-button.jpg", "User Button") }}
 
 This will navigate you to the "Organization Information" page.  Shown below is an example.
 
-<figure markdown="span">
-![Organization Information](../assets/user/organization-information.jpg){ align=center }
-<figcaption>Your Organization Information</figcaption>
-</figure>
+{{ figure("../assets/user/organization-information.jpg", "Organization Information") }}
 
 Proceed to the next section below for creating the accounts for the new users in your organization
 

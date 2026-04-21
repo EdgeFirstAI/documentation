@@ -1,17 +1,16 @@
-<figure markdown="span">
-![Dataset Attributes](../../studio/assets/datasets/dataset-attributes.jpg){ align=center }
-<figcaption>Dataset Card UI Breakdown</figcaption>
-</figure>
+{{ figure("/studio/assets/datasets/dataset-attributes.jpg", "Dataset Card UI Breakdown") }}
 
-In this dataset, you can see that it has a total of 1399 images and single label "coffeecup".  This dataset also has two partitions; one for training and another for validation.  There is a total of 915 images for the training group and 229 images for the validation group.  Finally, the dataset has a single annotation set which shows that 1385 images have annotations and there is a total of 3020 annotations (3020 distinct objects in the dataset).
+This dataset has a total of 1399 images and single label "coffeecup".  It has two partitions; "train" and "val".  There is a total of 1119 images for the training group ("train") and 280 images for the validation group ("val").
 
-Click on the ![Dataset Gallery button](../../assets/buttons/studio-gallery-button.jpg) button on top of the dataset card to navigate to the dataset gallery.  The dataset gallery will look like the following below.
+Click the image preview to view the dataset gallery.  The dataset gallery will look like the following below. 
 
-<figure markdown="span">
-![Sequences and Images](../../datasets/assets/management/sample-dataset-image.jpg){ align=center }
-<figcaption>Sequences and Images</figcaption>
-</figure>
+{{ figure("/datasets/assets/management/sample-dataset-sequences.jpg", "Dataset Sequences") }}
 
-This dataset will contain both [sequences](../../datasets/format/structure.md#1-sequence-based-datasets) (videos) ![Sequences](../../assets/buttons/studio-sequence-icon.jpg) and images.  Clicking on the sequences will provide video playback.  Otherwise, clicking on images will expand the image view.
+{{ figure("/datasets/assets/management/sample-dataset-images.jpg", "Dataset Images") }}
 
-This dataset will have a complete set of 2D annotations (masks and bounding boxes) of coffee cups.  This dataset was quickly annotated using the [Automatic Ground Truth Generatation (AGTG) feature in EdgeFirst Studio](../../studio/agtg.md).
+This dataset will contain [both sequences (videos) and images](../../datasets/format/structure.md#3-mixed-datasets).  Clicking on the sequences will provide video playback.  Otherwise, clicking on images will expand the image view.
+
+This dataset has a complete set of 2D annotations (masks and bounding boxes) of coffee cups.  
+
+!!! tip "Fast Annotations"
+    This dataset was quickly annotated using the [Automatic Ground Truth Generation (AGTG) feature of EdgeFirst Studio](../../studio/agtg.md).

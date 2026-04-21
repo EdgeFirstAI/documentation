@@ -1,9 +1,6 @@
 # Maivin Quick Start
 
-<figure markdown="span" style="text-align: center;">
-![Maivin](../../assets/maivin-2.png){ width="50%" }
-<figcaption>Maivin</figcaption>
-</figure>
+{{ figure("../../assets/maivin-2.png", "Maivin", "50%") }}
 
 The Maivin configuration is a vision-only platform that provides a vision-based perception stack for use in harsh environments, providing an IP66/67 waterproof enclosure and connectors.  The Maivin platform is built on the [NXP i.MX 8M Plus](https://www.nxp.com/products/i.MX8MPLUS) processor which includes a 2 TOPS AI accelerator.  The [EdgeFirst Perception Middleware](../../../perception/index.md) leverages the AI-accelerator enabling this vision sensor to be deployed in the field to deliver real-time edge perception applications.
 

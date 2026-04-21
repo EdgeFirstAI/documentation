@@ -9,16 +9,10 @@ The [Recording Service](../data_collection/recording.md), by default, [cannot be
 ## Foxglove Studios
 
 Once the 4K topics are recorded and the MCAP file downloaded, once the MCAP file is loaded into Foxglove Studio, the four topics appear as standard video topics.
-<figure markdown="span">
-![Foxglove Studios topics](../assets/foxglove_4k_topics.jpg){ align=center }
-<figcaption>4K Topics in Foxglove</figcaption>
-</figure>
+{{ figure("../assets/foxglove_4k_topics.jpg", "Foxglove Studios topics") }}
 
 Manually creating a layout to reproduce the tiling format is straight-forward and should look as follows:  
-<figure markdown="span">
-![Foxglove Studios with 4K tiles](../assets/foxglove_4k.jpg){ align=center }
-<figcaption>4K Topics tiled in Foxglove</figcaption>
-</figure>
+{{ figure("../assets/foxglove_4k.jpg", "Foxglove Studios with 4K tiles") }}
 
 A sample layout is available [here](layout_for_4k_tiles.json){: download="layout_for_4k_tiles.json"}.
 

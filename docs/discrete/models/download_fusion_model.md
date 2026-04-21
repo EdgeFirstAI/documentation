@@ -4,18 +4,13 @@ Download the model from EdgeFirst Studio into the device.  There are two methods
 
 === "Download using SCP"
 
-    As mentioned under the [Training Outcomes](../../models/training/vision.md#training-outcomes) section, the trained models can be downloaded by clicking the "View Additional Details" button on the training session card in EdgeFirst Studio. 
+    As mentioned under the [Training Outcomes](../../models/training/vision.md#training-outcomes) section, the trained models can be downloaded by clicking the the training session card in EdgeFirst Studio. 
 
-    <figure markdown="span">
-    ![Training Session Attributes](../../models/assets/training/fusion-training-session-attributes.jpg){ align=center }
-    <figcaption>Training Session Attributes</figcaption>
-    </figure>
+    {{ figure("/models/assets/training/fusion-view-train-details.jpg", "Training Details") }}
 
     This will open the session details and the models are listed under the "Artifacts" tab as shown below.  Click on the downward arrow indicated in red to download the models to your PC.  In this example, you will be deploying the TFLite model in the device.
 
-    | Session Details                                                | Artifacts                                                                     |
-    |----------------------------------------------------------------|-------------------------------------------------------------------------------|
-    | ![session](../../models/assets/training/fusion-session-details.jpg) | ![artifacts](../../models/assets/training/fusion-session-artifacts.jpg) | 
+    {{ figure("/models/assets/training/fusion-session-artifacts.jpg", "Model Artifacts") }}
 
     !!! note "Deployment Tab"
         You may have noticed the "Deployment" tab to the right of the "Artifacts" tab. This is a placeholder for future functionality, so please don't worry about it.
@@ -29,7 +24,7 @@ Download the model from EdgeFirst Studio into the device.  There are two methods
     An example command is shown below.
 
     ```shell
-    scp modelpack.tflite torizon@verdin-imx8mp-15140753:~
+    scp fusion.tflite torizon@verdin-imx8mp-15140753:~
     ```
 
 === "Download using EdgeFirst Client"
@@ -55,7 +50,7 @@ Download the model from EdgeFirst Studio into the device.  There are two methods
     edgefirst-client download-artifact <session ID> <model name>
     ```
 
-    For example `edgefirst-client download-artifact 3928 fusion.tflite`. This command will download to the current working directory.
+    For example `edgefirst-client download-artifact t-fbb fusion.tflite`. This command will download to the current working directory.
 
     The `download-artifact` expects three arguments.
 

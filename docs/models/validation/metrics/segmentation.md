@@ -10,10 +10,7 @@ We define the same metrics for instance segmentation as object detection by prov
 
 The semantic segmentation metrics is comprised of the computation of the Overall Accuracy, Mean Recall, Mean Precision, Mean IoU, and F1.  These metrics are represented as a radar plot to see correlations between these metrics.
 
-<figure markdown="span">
-![Segmentation Metrics](../../assets/metrics/semantic-segmentation-metrics.png){ align=center }
-<figcaption>Semantic Segmentation Metrics</figcaption>
-</figure>
+{{ figure("../../assets/metrics/semantic-segmentation-metrics.png", "Semantic Segmentation Metrics") }}
 
 The equations for precision, recall, and accuracy are similar to object detection, except that in semantic segmentation we are classifying predictions as either true or false on a pixel-by-pixel basis.  A prediction pixel is true if its class matches the ground truth.  Otherwise, it is a false prediction.  Shown below are the equations for precision, recall, accuracy, and F1.
 

@@ -2,17 +2,11 @@
 
 2. When creating your account, enter the required fields denoted by the asterisk (*) and then create your account once completed.
 
-    <figure markdown="span">
-    ![Create a New Account](../../studio/assets/user/signup-page.jpg){ align=center }
-    <figcaption>Create a New Account</figcaption>
-    </figure>
+    {{ figure("/studio/assets/user/signup-page.jpg", "Create a New Account") }}
+    
+3. An email will be sent to verify the email you provided.  Go ahead and click on "Verify Email" to verify your email.
 
-3. An email will be sent to verify the email you provided.  Go ahead and click on "Verify Email" provided to verify your email.
-
-    <figure markdown="span">
-    ![Email Verification](../../studio/assets/user/email-verification.jpg){ align=center }
-    <figcaption>Email Verification</figcaption>
-    </figure>
+    {{ figure("/studio/assets/user/email-verification.jpg", "Email Verification") }}
 
 4. Once the email is verified, you can now [login][login] to EdgeFirst Studio.
 

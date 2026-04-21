@@ -1,6 +1,6 @@
 # BDD100K: A Large-scale Diverse Driving Video Database
 
-The BDD100K dataset is a large-scale driving video dataset containing 100,000 video clips with annotations for various computer vision tasks.  It includes labels for object detection, lane marking, driveable areas, semantic segmentation, instance segmentation, tracking, and more.  BDD100K supports research in autonomous driving and real-world scene understanding.
+The BDD100K dataset is a large-scale driving video dataset containing 100,000 video clips with annotations for various computer vision tasks.  It includes labels for object detection, lane marking, drivable areas, semantic segmentation, instance segmentation, tracking, and more.  BDD100K supports research in autonomous driving and real-world scene understanding.
 
 ## Object Detection Benchmark (100 epochs)
 
@@ -41,15 +41,11 @@ The BDD100K dataset is a large-scale driving video dataset containing 100,000 vi
 
 The dataset contains a total of 100,000 images and 10 different classes.
 
-<figure markdown="span">
-![Class Distribution](../assets/bdd100k/label_count.png){ align=center }
-</figure>
+{{ figure("../assets/bdd100k/label_count.png", "Class Distribution") }}
 
 ## Dataset Gallery
 
-<figure markdown="span">
-![BDD100K Dataset Gallery](../assets/bdd100k/gallery.png){ align=center }
-</figure>
+{{ figure("../assets/bdd100k/gallery.png", "BDD100K Dataset Gallery") }}
 
 ## License
 

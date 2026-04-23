@@ -113,7 +113,10 @@ flowchart LR
     raivin_lidar_user([Raivin + LiDAR]):::darker_orange
     imx8mp_user([i.MX 8M Plus]):::green
     imx95_user([i.MX 95]):::teal
+
     orin_user([Jetson Orin]):::purple
+    click orin_user "jetson" "Open Jetson Orin Workflow"
+
     pi_user([Raspberry Pi 5]):::coral
     end
 

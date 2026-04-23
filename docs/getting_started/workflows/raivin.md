@@ -6,4 +6,4 @@ In this workflow, you will explore recording MCAPs from the Raivin which will be
 
 ## Next Steps
 
-Explore other platforms by following the [Jetson Orin Workflow](jetson_orin.md) next.
+Explore other platforms by following the [Jetson Orin Workflow](jetson.md) next.

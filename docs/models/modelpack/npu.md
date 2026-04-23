@@ -1,4 +1,4 @@
-# Running Quantized ModelPack on Target
+# Deploy on Target
 
 If you have a quantized ModelPack in TFLite format, you can follow the instructions below for running the model on target such as an i.MX 8M Plus EVK using a simple python script.
 

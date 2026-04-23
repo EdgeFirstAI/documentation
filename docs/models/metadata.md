@@ -2432,7 +2432,7 @@ All models: 3 scales, strides [8, 16, 32], 8400 spatial positions at 640px input
 4. [Training Vision Models](training/vision.md) - Step-by-step training workflow
 5. [On Cloud Validation](validation/vision/managed.md) - Managed validation sessions
 6. [On Target Validation](validation/vision/user_managed.md) - User-managed validation with `edgefirst-validator`
-7. [ModelPack Quantization](modelpack/quantize.md) - Converting ONNX to quantized TFLite
+7. [Model Quantization](conversion/tflite.md) - Converting ONNX to quantized TFLite
 8. [Deploying to Embedded Targets](deployment/launcher.md) - Model deployment workflow
 9. [EdgeFirst Perception Middleware](../perception/index.md) - Runtime inference stack
 10. [Dataset Zoo](../datasets/index.md) - Available datasets for training

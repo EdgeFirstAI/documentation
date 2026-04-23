@@ -7,7 +7,7 @@ In this tutorial, you will validate a **Vision** model trained using either the 
 Alternatively, EdgeFirst Studio also supports **On-Cloud Validation**, which runs as a managed validation session.  In this mode, an EC2 instance is provisioned to host and validate the model remotely. For more details, see [On Cloud Validation](managed.md).
 
 !!! info "i.MX 95 Validation"
-    To deploy TFLite models in the i.MX 95, first [convert the models using eIQ's Neutron Converter](../../ultralytics/neutron.md) prior to deploying the model in the platform.  This modifies the model's architecture to allow deployment using the device's Neutron NPU delegate.
+    To deploy TFLite models in the i.MX 95, first [convert the models using eIQ's Neutron Converter](../../conversion/neutron.md) prior to deploying the model in the platform.  This modifies the model's architecture to allow deployment using the device's Neutron NPU delegate.
 
 {% include-markdown "discrete/models/create_validation_session.md" %}
 

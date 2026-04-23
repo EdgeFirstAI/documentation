@@ -1,4 +1,4 @@
-# Deploying Models on the Target
+# Deploy on Target
 
 This section will provide a demo for deploying a quantized ONNX and TFLite model from Ultralytics using the NPU in the i.MX 8M Plus EVK.
 
@@ -88,7 +88,7 @@ These outputs can then be taken and visualized as shown in the Python script.
 
 ## Deploying Quantized TFLite
 
-In this example, we have taken the [small PyTorch segmentation model](https://github.com/ultralytics/assets/releases/download/v8.3.0/yolov8s-seg.pt) from Ultralytics and [exported the model to a quantized TFLite](quantize.md).  Once the TFLite is exported, you can deploy it on target as shown below.
+In this example, we have taken the [small PyTorch segmentation model](https://github.com/ultralytics/assets/releases/download/v8.3.0/yolov8s-seg.pt) from Ultralytics and [exported the model to a quantized TFLite](../conversion/tflite.md#manual-ultralytics-quantization-upstream).  Once the TFLite is exported, you can deploy it on target as shown below.
 
 === "i.MX 8M Plus"
 

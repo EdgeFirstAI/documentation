@@ -88,7 +88,10 @@ These instructions installs Python's `pip` and `venv` which does not come pre-in
 
 These instructions installs PyCuda and ONNXRuntime which does not come pre-installed in the BSP.  The following steps were taken from this [Setup Guide](https://docs.donkeycar.com/guide/robot_sbc/tensorrt_jetson_nano/).
 
-1. Verify that the CUDA compiler driver is installed in the device.
+1. Set `CUDA_HOME` environment variable `export CUDA_HOME=/usr/local/cuda`
+2. Add the CUDA compiler to the PATH `export PATH=$CUDA_HOME/bin:$PATH`
+3. Add the CUDA libraries `export LD_LIBRARY_PATH=$CUDA_HOME/lib64:$LD_LIBRARY_PATH`
+4. Verify that the CUDA compiler driver is installed in the device.
 
     ```shell
     $ nvcc --version
@@ -98,10 +101,6 @@ These instructions installs PyCuda and ONNXRuntime which does not come pre-insta
     Cuda compilation tools, release 12.6, V12.6.68
     Build cuda_12.6.r12.6/compiler.34714021_0
     ```
-
-2. Set `CUDA_HOME` environment variable `export CUDA_HOME=/usr/local/cuda`
-3. Add the CUDA compiler to the PATH `export PATH=$CUDA_HOME/bin:$PATH`
-4. Add the CUDA libraries `export LD_LIBRARY_PATH=$CUDA_HOME/lib64:$LD_LIBRARY_PATH`
 5. Install PyCUDA which is needed to run TensorRT models `pip install pycuda`
 6. Install ONNXRuntime depending on your CUDA version which is needed to run ONNX models.
 
@@ -109,5 +108,5 @@ These instructions installs PyCuda and ONNXRuntime which does not come pre-insta
     * CUDA 12.6 `pip3 install onnxruntime-gpu --index-url https://pypi.jetson-ai-lab.io/jp6/cu126 'numpy>1.24,<2'`
 
 !!! warning "Specific NumPy Version"
-    * NumPy ≥ 1.24 is required since earlier versions causes `TypeError: 'numpy._DTypeMeta' object is not subscriptable` upon `import pycuda`.
-    * NumPy < 2 is also required since certain modules in the Jetson packages is compiled with NumPy < 2.
+    * NumPy ≥ 1.24 is required since earlier versions causes `TypeError: 'numpy._DTypeMeta' object is not subscriptable` upon `import pycuda`
+    * NumPy < 2 is also required since certain modules in the Jetson packages is compiled with NumPy < 2

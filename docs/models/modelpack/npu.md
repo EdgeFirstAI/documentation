@@ -1,6 +1,6 @@
 # Deploy on Target
 
-If you have a quantized ModelPack in TFLite format, you can follow the instructions below for running the model on target such as an i.MX 8M Plus EVK using a simple python script.
+If you have a quantized ModelPack in TFLite format, you can follow the instructions below for running the model on target such as an [i.MX 8M Plus EVK](../../platforms/quickstart/imx8mplus/index.md) using a simple python script.
 
 You can download this [Python script](assets/run-tflite.py){: download="run-tflite.py"} script, this sample image [IMG_9004.png](assets/IMG_9004.png){: download="IMG_9004.png" }, and this [sample TFLite model](assets/coffeecup-modelpack-multitask-t-1f54.tflite){: download="coffeecup-modelpack-multitask-t-1f54.tflite"} for running the example on the target using the command below.
 
@@ -161,4 +161,4 @@ The `run-tflite.py` script executes the following steps to run the TFLite model 
 
 ## Next Steps
 
-In this section you have seen how you can utilize a simple python script to run model inference on a single input image.  For example on deploying the model on target on a live camera feed, proceed to Deploying Quantized Models in [Embedded Targets](../deployment/launcher.md) or [Maivin](../deployment/maivin.md).
+In this section you have seen how you can utilize a simple python script to run model inference on a single input image.  For an example on deploying the model on target on a live camera feed, proceed to [Deploying to Embedded Targets](../deployment/launcher.md).

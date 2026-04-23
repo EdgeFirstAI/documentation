@@ -1,6 +1,6 @@
 # Deploy on Target
 
-This section will provide a demo for deploying a quantized ONNX and TFLite model from Ultralytics using the NPU in the i.MX 8M Plus EVK.
+This section will provide a demo for deploying a quantized ONNX and TFLite models from Ultralytics using the NPU in the [i.MX 8M Plus EVK](../../platforms/quickstart/imx8mplus/index.md).
 
 ## Deploying Quantized ONNX
 
@@ -294,4 +294,4 @@ The decoded outputs can then be taken and visualized as shown above.
 
 ## Next Steps
 
-You can find more examples for deploying models in various platforms by following the [User Workflows](../../getting_started/workflows/index.md).
+For an example on deploying the model on target on a live camera feed, proceed to [Deploying to Embedded Targets](../deployment/launcher.md).

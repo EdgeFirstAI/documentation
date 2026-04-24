@@ -222,7 +222,10 @@ nav:
         - platforms/quickstart/jetson_orin/copy_dataset.md
         - platforms/quickstart/jetson_orin/train.md
         - platforms/quickstart/jetson_orin/convert_tensorrt.md
-        - platforms/quickstart/jetson_orin/validate.md
+        - Validate Vision Model:
+          - platforms/quickstart/jetson_orin/validate/index.md
+          - platforms/quickstart/jetson_orin/validate/validate_studio.md
+          - platforms/quickstart/jetson_orin/validate/validate_frameworks.md
         - platforms/quickstart/jetson_orin/deploy.md
       - Raspberry Pi Quick Start:
         - platforms/quickstart/raspberrypi/index.md

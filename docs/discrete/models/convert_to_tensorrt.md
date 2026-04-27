@@ -78,16 +78,56 @@ This section converts a PyTorch model to TensorRT using the [Ultralytics Framewo
 
 Once the conversion completes, you can inspect the I/O shapes and datatypes to verify that the resulting conversion is expected.
 
-1. Create a python script named "inspect_engine.py" and modify the path to the model in the script `/path/to/model.engine`
+1. Create a python script named [inspect_engine.py](../../platforms/quickstart/jetson_orin/assets/inspect_engine.py){: download="inspect_engine.py"} and modify the path to the model in the script `/path/to/model.engine`
 
     ```shell
     import tensorrt as trt
+    import io
+    import zipfile
 
     logger = trt.Logger(trt.Logger.WARNING)
 
+    def find_zip_start(data: bytes):
+        """Return the first local ZIP header offset if a ZIP is embedded."""
+        if len(data) < 22:
+            return None
+        try:
+            with zipfile.ZipFile(io.BytesIO(data)) as zf:
+                infos = zf.infolist()
+                if not infos:
+                    return None
+                return min(info.header_offset for info in infos)
+        except zipfile.BadZipFile:
+            return None
+
+    def extract_engine_bytes(data: bytes) -> bytes:
+        """Strip ZIP trailer or extract engine payload when input is a ZIP."""
+        zip_start = find_zip_start(data)
+        if zip_start is None:
+            return data
+        if zip_start > 0:
+            return data[:zip_start]
+
+        with zipfile.ZipFile(io.BytesIO(data)) as zf:
+            names = [
+                info.filename for info in zf.infolist()
+                if not info.is_dir()
+            ]
+            engine_names = [
+                name for name in names
+                if name.lower().endswith((".engine", ".trt", ".plan"))
+            ]
+            candidate = engine_names[0] if engine_names else max(
+                names,
+                key=lambda name: zf.getinfo(name).file_size,
+            )
+            return zf.read(candidate)
+
     with open("/path/to/model.engine", "rb") as f:
         runtime = trt.Runtime(logger)
-        engine = runtime.deserialize_cuda_engine(f.read())
+        file = f.read()
+        engine_blob = extract_engine_bytes(file)
+        engine = runtime.deserialize_cuda_engine(engine_blob)
 
     num_tensors = engine.num_io_tensors
 

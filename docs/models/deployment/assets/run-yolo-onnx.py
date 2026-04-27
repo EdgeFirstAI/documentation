@@ -212,7 +212,8 @@ def draw_output(res: list, labels: list, image_path: str, save_path: str):
     font = ImageFont.load_default()
 
     boxes, classes, scores, masks = res
-    image = mask_image(image, masks, classes)
+    if masks is not None:
+        image = mask_image(image, masks, classes)
     draw = ImageDraw.Draw(image)
 
     for j in range(len(boxes)):

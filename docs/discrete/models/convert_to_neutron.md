@@ -49,7 +49,7 @@ Next, specify the folder to store the toolkit.  It's recommended to keep the sug
 
 Wait for the installation to finish and once it's done, click "Finish".
 
-| Installation Path                                                  | Complete                                                             |
+| Installation Progress                                              | Complete                                                             |
 |--------------------------------------------------------------------|----------------------------------------------------------------------|
 | ![process](/models/assets/conversion/eIQ-installation-process.jpg) | ![complete](/models/assets/conversion/eIQ-installation-complete.jpg) |
 

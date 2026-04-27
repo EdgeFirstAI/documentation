@@ -52,7 +52,11 @@ This section converts a PyTorch model to TensorRT using the [Ultralytics Framewo
 
     === "To TensorRT"
 
-        Run this command to convert the model to TensorRT `yolo export model=yolov8s-seg.pt format=engine device=dla:1 half=True`
+        Run this command to convert the PyTorch model to TensorRT with half precision 
+
+        ```shell
+        yolo export model=yolov8s-seg.pt format=engine device=dla:1 half=True
+        ```
 
         !!! note "Device Specification"
             Depending on your hardware, specify the device to either of the following or none at all.
@@ -62,7 +66,11 @@ This section converts a PyTorch model to TensorRT using the [Ultralytics Framewo
 
     === "To ONNX"
 
-        Run this command to convert the model to ONNX `yolo export model=yolov8s-seg.pt format=onnx batch=1 half=True`
+        Run this command to convert the model to ONNX with half precision.
+        
+        ```shell
+        yolo export model=yolov8s-seg.pt format=onnx half=True
+        ```
 
         Next take the converted ONNX model and follow the steps for [ONNX to TensorRT using the Jetson Orin](#jetson-orin).
 

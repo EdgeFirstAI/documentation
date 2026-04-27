@@ -13,7 +13,7 @@
 
         {{ figure("/models/assets/conversion/tensorrt-converter-button.jpg", "TensorRT Converter") }}
 
-    3. Select the target device for deploying the model.  Then click on "Start App" to start the conversion process
+    3. Select the target model precision.  Then click on "Start App" to start the conversion process
 
         {{ figure("/models/assets/conversion/tensorrt-converter-options.jpg", "TensorRT Converter Options") }}
 

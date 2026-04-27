@@ -14,7 +14,7 @@ As well, each settings page will have a corresponding configuration file located
     It is not recommended for users to manually edit the configuration files in `/etc/default`.
 
 !!! tip "Restore Default Settings"
-    You can restore default factory settings of the Maivin/Raivin with this command `sudo cp -r /usr/etc/default/ /etc/default/`
+    You can restore default factory settings of the Maivin/Raivin with this command `sudo cp -a /usr/etc/default/. /etc/default/`
 
 ## Services
 

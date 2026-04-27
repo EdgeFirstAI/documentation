@@ -19,4 +19,4 @@ This tutorial will provide the steps for converting the ONNX model to TensorRT. 
 
 ## Deploy Model on Jetson Orin
 
-You can find examples for deploying [Ultralytics](../../models/ultralytics/npu.md) and [ModelPack](../../models/modelpack/npu.md) on target provided in these links.
+You can find examples for deploying your model in [EdgeFirst Studio](../../models/deployment/studio.md).  Otherwise, instructions for deploying in the Jetson Orin will be coming soon.

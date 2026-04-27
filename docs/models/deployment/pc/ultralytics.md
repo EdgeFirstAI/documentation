@@ -8,7 +8,7 @@ As mentioned under [Quick Start -> Train a Vision Model](../../../getting_starte
 
 {{ figure("/models/assets/training/vision-session-artifacts-ultralytics.jpg", "Training Session Artifacts") }}
 
-For this Python script you will need a set of images and a model file.  You can click on the following link and download these [set of images with coffee cup samples](../assets/coffeecup.zip){: download="coffeecup.zip"}.  Once downloaded, unzip the file into a directory.  Next download a sample [ONNX](../assets/coffeecup-yolov8n-segmentation-rgb-640x640-t-266e.onnx){: download="coffeecup-yolov8n-segmentation-rgb-640x640-t-266eonnx"} or [TFLite](../assets/coffeecup-yolov8n-segmentation-rgb-640x640-t-266e_quant-u8-i8.tflite){: download="coffeecup-yolov8n-segmentation-rgb-640x640-t-266e_quant-u8-i8.tflite"} model to run the following examples.
+For this Python script you will need a set of images and a model file.  You can click on the following link and download these [set of images with coffee cup samples](../assets/coffeecup.zip){: download="coffeecup.zip"}.  Once downloaded, unzip the file into a directory.  Next download a sample [ONNX](../assets/coffeecup-yolov8n-segmentation-rgb-640x640-t-266e.onnx){: download="coffeecup-yolov8n-segmentation-rgb-640x640-t-266e.onnx"} or [TFLite](../assets/coffeecup-yolov8n-segmentation-rgb-640x640-t-266e_quant-u8-i8.tflite){: download="coffeecup-yolov8n-segmentation-rgb-640x640-t-266e_quant-u8-i8.tflite"} model to run the following examples.
 
 1. Install required dependencies.
 
@@ -77,7 +77,7 @@ For this Python script you will need a set of images and a model file.  You can 
         If you have downloaded the sample images and the TFLite model above, run this command to use the script.  Otherwise modify the path to the model and the images specific to your system.  If you have multiple labels in your dataset specify them as `--labels bench coco` for example.
 
         ```shell
-        $ python run-yolo-tflite.py coffeecup-yolov8n-segmentation-rgb-640x640-t-266e_quant-u8-i8.tflite coffeecup/*.jpg --labels coffeecup --save results
+        $ python run-tflite.py coffeecup-yolov8n-segmentation-rgb-640x640-t-266e_quant-u8-i8.tflite coffeecup/*.jpg --labels coffeecup --save results
         2026-04-24 16:16:26.304031: I external/local_xla/xla/tsl/cuda/cudart_stub.cc:31] Could not find cuda drivers on your machine, GPU will not be used.
         2026-04-24 16:16:26.352894: I tensorflow/core/platform/cpu_feature_guard.cc:210] This TensorFlow binary is optimized to use available CPU instructions in performance-critical operations.
         To enable the following instructions: AVX2 FMA, in other operations, rebuild TensorFlow with the appropriate compiler flags.

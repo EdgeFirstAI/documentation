@@ -87,8 +87,8 @@ To export datasets proceed with the steps as follows or follow this in-depth tut
 2. Select the export format.
 3. Select the annotation set to be exported if required.
 4. Select Mode:
-    - Dataset - Exports images and annotations. Exports a zip file in the downloads folder.
-    - Annotations Only - Exports only the annotations. Exports a zip file in the downloads folder.
+    - Dataset - Exports images and annotations. Exports a ZIP file in the downloads folder.
+    - Annotations Only - Exports only the annotations. Exports a ZIP file in the downloads folder.
     - Image URLS only - Useful for larger datasets. Exports a file with image urls in the downloads folder.
 
 !!! tip "Large Datasets"

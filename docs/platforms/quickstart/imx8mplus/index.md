@@ -6,7 +6,7 @@ The i.MX 8M Plus configuration is a development-focused platform for building an
 
 ## System Architecture
 
-The i.MX 8M Plus runs a Linux operating system based on NXP's BSP and includes the common packages needed for embedded vision and AI development (Python, OpenCV, and related tooling).
+The i.MX 8M Plus runs a Linux operating system based on [NXP's BSP](https://www.nxp.com/design/design-center/software/embedded-software/i-mx-software/embedded-linux-for-i-mx-applications-processors:IMXLINUX) and includes the common packages needed for embedded vision and AI development (Python, OpenCV, and related tooling).
 
 Central to the EdgeFirst Platforms is the EdgeFirst Perception Middleware, our collection of applications and libraries used to implement the perception stack.  The details of the low-level libraries are covered in the [EdgeFirst Perception Developer Guide](../../../perception/index.md); in this Quick Start we focus on the application services and workflow used to build and deploy models on the i.MX 8M Plus.
 

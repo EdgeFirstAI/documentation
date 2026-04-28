@@ -15,7 +15,7 @@ The snapshots menu shows the list of snapshots with its name and status.
 
 ## Create Snapshot
 
-The tutorial for creating snapshots can be found under the [Dataset Annotations](../datasets/tutorials/annotations/automatic.md#create-snapshot) section.  This will create a Zip/Arrow file pair also known as an [EdgeFirst Dataset](../datasets/format/index.md) for each sequence in a dataset and stored in the cloud storage.  This snapshot can be later restored (into another dataset) or can be downloaded to a local folder on a PC.
+The tutorial for creating snapshots can be found under the [Dataset Annotations](../datasets/tutorials/annotations/automatic.md#create-snapshot) section.  This will create a ZIP/Arrow file pair also known as an [EdgeFirst Dataset](../datasets/format/index.md) for each sequence in a dataset and stored in the cloud storage.  This snapshot can be later restored (into another dataset) or can be downloaded to a local folder on a PC.
 
 The stages for creating a snapshot are shown below.
 
@@ -25,7 +25,7 @@ A snapshot can be created by the following ways:
 
 1. Create from Existing Dataset.
 2. Upload from MCAP File.
-3. Upload from Zip/Arrow File
+3. Upload from ZIP/Arrow File
 
 ### Create from Existing Dataset
 
@@ -40,12 +40,12 @@ A snapshot can be created by the following ways:
 1. Go to the snapshots dashboard.
 2. Click on the "FROM FILE" button or drag and drop an MCAP file on the dashboard.
 
-### Upload from Zip/Arrow File
+### Upload from ZIP/Arrow File
 
-This format is the [EdgeFirst Dataset Format](../datasets/format/index.md) where the [Zip file](../datasets/format/sensors.md) contains sensor readings and measurements and the [Arrow file](../datasets/format/schema.md) contains dataset annotations.
+This format is the [EdgeFirst Dataset Format](../datasets/format/index.md) where the [ZIP file](../datasets/format/sensors.md) contains sensor readings and measurements and the [Arrow file](../datasets/format/schema.md) contains dataset annotations.
 
 1. Go to the snapshots dashboard.
-2. Click on the "FROM FILE" button and then select the Zip and Arrow file pairs to import or drag and drop as a folder containing Zip and Arrow file pairs onto the dashboard.
+2. Click on the "FROM FILE" button and then select the ZIP and Arrow file pairs to import or drag and drop as a folder containing ZIP and Arrow file pairs onto the dashboard.
 3. Once the files are selected, this will start the import sequence progress shown below.
 
 ### Pipeline
@@ -55,12 +55,12 @@ When creating a snapshot a pipeline with the following stages are deployed.
 1. Server Initialization: Initialize the backend server for handling the processes.
 2. Downloading Files from Cloud Storage: Fetches the dataset images from the S3 bucket.
 3. Exporting Files from Database: Fetches the dataset annotations from the Studio database.
-4. Zipping Files for Upload: Formulation of the [EdgeFirst Dataset Format](../datasets/format/index.md) and placing the fetched dataset files as a single Zip file.
+4. Zipping Files for Upload: Formulation of the [EdgeFirst Dataset Format](../datasets/format/index.md) and placing the fetched dataset files as a single ZIP file.
 5. Uploading Snapshot to Cloud Storage: Uploading the dataset into S3 bucket.
 
 ## Restore Snapshot
 
-This action will take an MCAP or Zip/Arrow files and create a dataset in EdgeFirst Studio.  The backend pipelines for auto depth map generation, object detection, and Automated Ground Truth Generation can also be selected at this time while restoring.
+This action will take an MCAP or ZIP/Arrow files and create a dataset in EdgeFirst Studio.  The backend pipelines for auto depth map generation, object detection, and Automated Ground Truth Generation can also be selected at this time while restoring.
 
 The tutorial for restoring snapshots can be found under the [Dataset Annotations](../datasets/tutorials/annotations/automatic.md#restore-snapshot) section.
 

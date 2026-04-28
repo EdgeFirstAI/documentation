@@ -177,7 +177,7 @@ Select "Import".
 
 {{ figure("../assets/import/coco2017-import-option.jpg", "Import Option") }}
 
-This will popup a new window for you to specify the dataset to be imported.  In these options, select the "Import Type" to be "EdgeFirst Dataset".  Specify the Zip and Arrow file in your machine to be imported.  Specify the annotation set to the "annotations" annotation set to store the dataset annotations.  The following figure shows the specifications.
+This will popup a new window for you to specify the dataset to be imported.  In these options, select the "Import Type" to be "EdgeFirst Dataset".  Specify the ZIP and Arrow file in your machine to be imported.  Specify the annotation set to the "annotations" annotation set to store the dataset annotations.  The following figure shows the specifications.
 
 {{ figure("../assets/import/coco2017-import-options.jpg", "Import Options") }}
 

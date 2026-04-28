@@ -18,13 +18,13 @@ Download the model from EdgeFirst Studio into the device.  There are two methods
     Once the model is downloaded in your PC, you can [SCP](../../platforms/networking/ssh.md#secure-copy) the model to the device by using this command template.
 
     ```shell
-    scp <path to the downloaded TFLite model> <destination path>
+    $ scp <path to the downloaded TFLite model> <destination path>
     ```
 
     An example command is shown below.
 
     ```shell
-    scp modelpack-coffeecup-480x270-rgb-t-25e7.tflite torizon@verdin-imx8mp-15140753:~
+    $ scp modelpack-coffeecup-480x270-rgb-t-25e7.tflite torizon@verdin-imx8mp-15140753:~
     ```
 
 === "Download using EdgeFirst Client"
@@ -47,7 +47,7 @@ Download the model from EdgeFirst Studio into the device.  There are two methods
     You can download the model on the device using the `download-artifact` command as shown below.
 
     ```shell
-    edgefirst-client download-artifact <session ID> <model name>
+    $ edgefirst-client download-artifact <session ID> <model name>
     ```
 
     For example `edgefirst-client download-artifact t-25e7 'modelpack-coffeecup-480x270-rgb-t-25e7.tflite'`. This command will download to the current working directory.

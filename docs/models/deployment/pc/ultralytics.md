@@ -15,7 +15,7 @@ For this Python script you will need a set of images and a model file.  You can 
     === "ONNX"
 
         ```shell
-        pip install onnxruntime-gpu pillow numpy
+        $ pip install onnxruntime-gpu pillow numpy
         ```
 
         !!! note "Tested Versions"
@@ -34,7 +34,7 @@ For this Python script you will need a set of images and a model file.  You can 
     === "TFLite"
 
         ```shell
-        pip install tensorflow pillow numpy
+        $ pip install tensorflow pillow numpy
         ```
 
         !!! note "Tested Versions"

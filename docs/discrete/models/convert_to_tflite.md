@@ -61,13 +61,13 @@ If you are not using EdgeFirst Studio, you can export a quantized TFLite using t
 1. Using a command prompt, install the [Ultralytics Framework](https://docs.ultralytics.com/modes/export/)
 
     ```shell
-    pip install ultralytics
+    $ pip install ultralytics
     ```
 
 2. Download the PyTorch model from Ultralytics
 
     ```shell
-    wget https://github.com/ultralytics/assets/releases/download/v8.3.0/yolov8s-seg.pt
+    $ wget https://github.com/ultralytics/assets/releases/download/v8.3.0/yolov8s-seg.pt
     ```
 
     !!! note "List of Models"
@@ -92,7 +92,7 @@ If you are not using EdgeFirst Studio, you can export a quantized TFLite using t
 3. Convert the PyTorch models to TFLite with the following command
 
     ```shell
-    yolo export model=path/to/model.pt format=tflite int8=True
+    $ yolo export model=path/to/model.pt format=tflite int8=True
     ```
 
 4. This conversion will generate a SavedModel `yolov8s_saved_model` which contains the quantized TFLite file `yolov8s_full_integer_quant.tflite`.

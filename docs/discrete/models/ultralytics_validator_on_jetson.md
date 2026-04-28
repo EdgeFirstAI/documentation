@@ -121,7 +121,7 @@ Start by installing the Ultralytics framework and the required dependencies.  Th
 1. To run Ultralytics validation, download and SCP into your device the [TensorRT YOLOv8s Model](../../platforms/quickstart/jetson_orin/assets/yolov8s-seg-fp16.engine){: download="yolov8s-seg-fp16.engine"} and the coco128-seg.yaml
 
     ```shell
-    wget https://raw.githubusercontent.com/ultralytics/ultralytics/refs/heads/main/ultralytics/cfg/datasets/coco128-seg.yaml
+    $ wget https://raw.githubusercontent.com/ultralytics/ultralytics/refs/heads/main/ultralytics/cfg/datasets/coco128-seg.yaml
     ```
 
 2. Next download and SCP the [val.py](../../platforms/quickstart/jetson_orin/assets/val.py){: download="val.py"} script which utilizes the Ultralytics framework.  
@@ -194,7 +194,7 @@ Start by installing the Ultralytics framework and the required dependencies.  Th
 2. Download and SCP into your device the [TensorRT YOLOv8s Model](../../platforms/quickstart/jetson_orin/assets/yolov8s-seg-fp16.engine){: download="yolov8s-seg-fp16.engine"} and the coco128-seg.yaml
 
     ```shell
-    wget https://raw.githubusercontent.com/ultralytics/ultralytics/refs/heads/main/ultralytics/cfg/datasets/coco128-seg.yaml
+    $ wget https://raw.githubusercontent.com/ultralytics/ultralytics/refs/heads/main/ultralytics/cfg/datasets/coco128-seg.yaml
     ```
 
 3. Run validation `edgefirst-validator yolov8s-seg-fp16.engine coco128-seg.yaml`

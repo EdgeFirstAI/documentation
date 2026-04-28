@@ -281,7 +281,7 @@ The `run-tflite.py` script executes the following steps to run the TFLite model 
 
 9. Decode mask outputs.
 
-    ```shell
+    ```python
     masks = decode_masks(masks, np.array(outputs[mask_id], dtype=np.float32))
     masks = resize_mask(masks, size)
     masks = crop_mask(masks, boxes)

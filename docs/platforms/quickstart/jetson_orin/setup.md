@@ -63,8 +63,8 @@ Proceed with the setup configuration displayed on the monitor connected to the b
 Set the board to 25W and prevent any power savings which could affect pipeline performance by running the following commands. 
 
 ```shell
-sudo nvpmodel -m 1
-sudo jetson_clocks
+$ sudo nvpmodel -m 1
+$ sudo jetson_clocks
 ```
 
 !!! info

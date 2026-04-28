@@ -38,13 +38,13 @@ Once the validation session has been created, [SSH](../../../platforms/networkin
     * Windows: `/path/to/myenv/Scripts/activate`
 
 ```shell
-pip install edgefirst-validator
+$ pip install edgefirst-validator
 ```
 
 Next login to your account in EdgeFirst Studio by using [EdgeFirst Client](../../../perception/studio.md) which comes installed with the validator package. The command below will prompt you to enter your EdgeFirst Studio credentials.
 
 ```shell
-edgefirst-client login
+$ edgefirst-client login
 ```
 
 !!! note "Server Specification"
@@ -56,7 +56,7 @@ edgefirst-client login
 Once the validator is installed and authenticated, run validation using the following command.  Replace the session ID specific to your session card.
 
 ```shell
-edgefirst-validator --session-id v-1b51
+$ edgefirst-validator --session-id v-1b51
 ```
 
 !!! note

@@ -21,7 +21,7 @@ This section converts a PyTorch model to TensorRT using the [Ultralytics Framewo
 2. Download a sample PyTorch model from Ultralytics 
 
     ```shell
-    wget https://github.com/ultralytics/assets/releases/download/v8.3.0/yolov8s-seg.pt
+    $ wget https://github.com/ultralytics/assets/releases/download/v8.3.0/yolov8s-seg.pt
     ```
 
     !!! note "List of Models"
@@ -55,7 +55,7 @@ This section converts a PyTorch model to TensorRT using the [Ultralytics Framewo
         Run this command to convert the PyTorch model to TensorRT with half precision 
 
         ```shell
-        yolo export model=yolov8s-seg.pt format=engine device=dla:1 half=True
+        $ yolo export model=yolov8s-seg.pt format=engine device=dla:1 half=True
         ```
 
         !!! note "Device Specification"
@@ -69,7 +69,7 @@ This section converts a PyTorch model to TensorRT using the [Ultralytics Framewo
         Run this command to convert the model to ONNX with half precision.
         
         ```shell
-        yolo export model=yolov8s-seg.pt format=onnx half=True
+        $ yolo export model=yolov8s-seg.pt format=onnx half=True
         ```
 
         Next take the converted ONNX model and follow the steps for [ONNX to TensorRT using the Jetson Orin](#jetson-orin).
@@ -80,7 +80,7 @@ Once the conversion completes, you can inspect the I/O shapes and datatypes to v
 
 1. Create a python script named [inspect_engine.py](../../platforms/quickstart/jetson_orin/assets/inspect_engine.py){: download="inspect_engine.py"} and modify the path to the model in the script `/path/to/model.engine`
 
-    ```shell
+    ```python
     import tensorrt as trt
     import io
     import zipfile

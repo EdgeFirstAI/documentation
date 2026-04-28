@@ -29,7 +29,7 @@ If the Maivin does not reply, please confirm the Maivin is powered on and connec
 Once the ping is successful, use your SSH client to connect to the 'torizon' account on the Maivin's hostname.  For a command-line SSH such as OpenSSH, this should look as:
 
 ```shell
-ssh torizon@Maivin-hostname
+$ ssh torizon@Maivin-hostname
 ```
 
 For example:  
@@ -99,7 +99,7 @@ Jan 29 10:31:34 verdin-imx8mp-15141029 systemd[1]: Started Maivin Camera Service
 The logs can be viewed using the `journalctl` command, though this will print all of the logs.  Specific services can be viewed with the `-u` option.
 
 ```shell
-journalctl -u camera | more
+$ journalctl -u camera | more
 Jan 29 10:28:58 verdin-imx8mp-15141029 systemd[1]: Stopping Maivin Camera Service...
 Jan 29 10:28:59 verdin-imx8mp-15141029 systemd[1]: camera.service: Deactivated successfully.
 Jan 29 10:28:59 verdin-imx8mp-15141029 systemd[1]: Stopped Maivin Camera Service.
@@ -116,7 +116,7 @@ To exit the SSH session, type `exit`.
 Check the status of the MCAP Recorder Service.
 
 ```shell
-systemctl status recorder.service
+$ systemctl status recorder.service
 ```
 
 If the Recorder Service is inactive, the following status will be displayed on the terminal.
@@ -132,7 +132,7 @@ If the Recorder Service is inactive, the following status will be displayed on t
 To start the Recorder Service, run the following command.
 
 ```shell
-sudo systemctl start recorder.service
+$ sudo systemctl start recorder.service
 ```
 
 An active Recorder Service will display the following status on the terminal.
@@ -155,7 +155,7 @@ An active Recorder Service will display the following status on the terminal.
 Check the status of the Web UI
 
 ```shell
-systemctl status webui
+$ systemctl status webui
 ```
 
 If the Web UI is inactive, the following status will be displayed on the terminal.
@@ -169,7 +169,7 @@ If the Web UI is inactive, the following status will be displayed on the termina
 To start the Web UI, run the following command.
 
 ```shell
-sudo systemctl start webui
+$ sudo systemctl start webui
 ```
 
 An active Web UI service will display the following status on the terminal.
@@ -190,7 +190,7 @@ An active Web UI service will display the following status on the terminal.
 We can use secure copy (SCP) to move files to and from the device.  Basic command usage is:
 
 ```shell
-scp <source file> <destination file>.
+$ scp <source file> <destination file>.
 ```
 
 To describe files on the Raivin, both source and destination, they are formatted as:

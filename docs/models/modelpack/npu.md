@@ -8,7 +8,7 @@ You can download this [Python script](assets/run-tflite.py){: download="run-tfli
 
     If you have a specific model and a specific image, modify the paths to these files in the script.
 
-    ```shell
+    ```python
     model_path = "coffeecup-modelpack-multitask-t-1f54.tflite"
     image_path = "IMG_9004.png"
     ```

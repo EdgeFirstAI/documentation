@@ -1,6 +1,6 @@
 # Hailo Conversion
 
-In this section, you will find instructions for converting ONNX models to Hailo HEF format for NPU-accelerated inference on Hailo-8 (26 TOPS) and Hailo-8L (13 TOPS) with automatic quantization, calibration, and per-scale output decomposition.
+Once training completes in EdgeFirst Studio, here are instructions for converting ONNX models to Hailo HEF format for NPU-accelerated inference on Hailo-8 (26 TOPS) and Hailo-8L (13 TOPS) with automatic quantization, calibration, and per-scale output decomposition.
 
 1. Click on the completed training session
 

@@ -283,3 +283,5 @@ Start by installing the Ultralytics framework and the required dependencies.  Th
     ```
 
 For an in-depth tutorial on running `edgefirst-validator` on target see [On Target Validation](../../models/validation/vision/user_managed.md).
+
+Once you have validated your model and found that the performance is ready for deployment, you can proceed towards deploying your model on target.

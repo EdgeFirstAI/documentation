@@ -103,3 +103,11 @@
         -rw-rw-r-- 1 jetson jetson  15M Mar 20 15:29 yolov8n-seg-t-2584_fp32.engine
         -rw-rw-r-- 1 jetson jetson 9.3M Mar 20 15:43 yolov8n-seg-t-2584_full_fp16.engine
         ```
+    4. If you are using [EdgeFirst Studio](https://edgefirst.studio/) to train the model, you can deploy the converted TensorRT model back to the training session by following these steps on the terminal
+    
+        ```shell
+        $ pip install edgefirst-client
+        $ edgefirst-client login
+        $ edgefirst-client upload-artifact <studio train session ID> </path/model.engine>
+        ```
+        

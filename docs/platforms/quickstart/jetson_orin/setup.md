@@ -19,7 +19,7 @@ In this page, you will find the instructions to setup the Jetson Orin Super Nano
     * M.2 Key M 2230
     * M.2 Key E (populated)
 
-## Step 1: Flash a microSD card with Jetpack 6.x
+## Flash a microSD card with Jetpack 6.x
 
 It is recommended to use a microSD card that's 64GB and higher to flash Jetpack 6.2.1 which is ~24.1GB.
 
@@ -40,7 +40,7 @@ It is recommended to use a microSD card that's 64GB and higher to flash Jetpack 
 
     {{ figure("../../assets/setup/orin-completed-flash.png", "Completed Flashing") }}
 
-## Step 2: Boot the Jetson Orin with Jetpack 6.x
+## Boot the Jetson Orin with Jetpack 6.x
 
 1. Insert the microSD card into the module
 
@@ -52,13 +52,13 @@ It is recommended to use a microSD card that's 64GB and higher to flash Jetpack 
 
 3. Once powered on, the initial software setup (oem-config) will be initiated
 
-## Step 3: Setup System Configurations
+## Setup System Configurations
 
 Proceed with the setup configuration displayed on the monitor connected to the board.  This setup should also allow you to setup your board's username, password, and hostname (“computer’s name”) as shown below.  Otherwise, the hostname can be set with the command `sudo hostnamectl set-hostname myhostname` on the Jetson's terminal.
 
 {{ figure("../../assets/setup/orin-system-configuration.png", "System Configuration") }}
 
-## Step 4: Set to Maximum Power
+## Set to Maximum Power
 
 Set the board to 25W and prevent any power savings which could affect pipeline performance by running the following commands. 
 
@@ -103,7 +103,7 @@ $ tegrastats
 | SOC Rail             | ~1428 mW                         | ~2380 mW                           |
 | Temperature          | ~48–49 °C                        | ~50–51 °C                          |
 
-## Step 5: Setup Python
+## Setup Python
 
 To run the examples for the [model validation](validate/index.md) and [model deployments](deploy.md) in this Quick Start, certain python dependencies are required.
 
@@ -142,3 +142,7 @@ These instructions installs PyCuda and ONNXRuntime which does not come pre-insta
 !!! warning "Specific NumPy Version"
     * NumPy ≥ 1.24 is required since earlier versions causes `TypeError: 'numpy._DTypeMeta' object is not subscriptable` upon `import pycuda`
     * NumPy < 2 is also required since certain modules in the Jetson packages is compiled with NumPy < 2
+
+## Next Steps
+
+Now that you have setup your Jetson Orin, you can begin training your Vision Model that will be deployed in this platform, but first, [copy one of our ready-to-use dataset](copy_dataset.md) that will be used to train the model.

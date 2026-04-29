@@ -1,6 +1,6 @@
 # Kinara Conversion
 
-In this section, you will find instructions for converting ONNX models to Kinara ARA-2 DVM format with quantization calibration and INT16 precision promotion for NPU-accelerated inference.
+Once training completes in EdgeFirst Studio, here are instructions for converting ONNX models to Kinara ARA-2 DVM format with quantization calibration and INT16 precision promotion for NPU-accelerated inference, leveraging the [Ara240 DNPU](https://www.nxp.com/products/ARA240) chip.
 
 1. Click on the completed training session
 

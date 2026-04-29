@@ -4,7 +4,7 @@ In this section, you will find instructions for converting quantized TFLite mode
 
 ## EdgeFirst Studio Conversion
 
-This section shows how to convert quantized TFLite models to NXP eIQ Neutron format using EdgeFirst Studio.  If you are not using EdgeFirst Studio, you can follow along the [Manual Conversion](#manual-conversion) process.
+Once training completes in EdgeFirst Studio, here are instructions for converting quantized TFLite models to NXP eIQ Neutron format to leverage the i.MX 95's NPU.  If you are not using EdgeFirst Studio, you can follow along the [Manual Conversion](#manual-conversion) process.
 
 1. Click on the completed training session
 

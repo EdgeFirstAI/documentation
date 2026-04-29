@@ -204,7 +204,10 @@ nav:
         - platforms/quickstart/imx8mplus/setup.md
         - platforms/quickstart/imx8mplus/copy_dataset.md
         - platforms/quickstart/imx8mplus/train.md
-        - platforms/quickstart/imx8mplus/convert_kinara.md
+        - Model Conversions:
+          - platforms/quickstart/imx8mplus/conversion/index.md
+          - platforms/quickstart/imx8mplus/conversion/convert_kinara.md
+          - platforms/quickstart/imx8mplus/conversion/convert_tflite.md
         - platforms/quickstart/imx8mplus/validate.md
         - platforms/quickstart/imx8mplus/deploy.md
       - i.MX 95 Quick Start:

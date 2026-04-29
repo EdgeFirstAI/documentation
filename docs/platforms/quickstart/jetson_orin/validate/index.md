@@ -1,4 +1,4 @@
-# Validation Vision Model
+# Validate Vision Model
 
 Now that you have trained your model you can now start validating your model.  There are a couple of ways to run model validation.
 

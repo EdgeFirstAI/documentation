@@ -3,11 +3,11 @@
 In this page you will find instructions to setup the i.MX 8M Plus from start to finish.  For the official instructions to setup the i.MX 8M Plus, refer to the [Getting Started Guide from NXP](https://www.nxp.com/document/guide/getting-started-with-the-i-mx-8m-plus-evk:GS-iMX-8M-Plus-EVK).
 
 ## Requirements
-1. iMX 8M Plus EVK running [NXP Yocto BSP](https://www.nxp.com/design/design-center/software/embedded-software/i-mx-software/embedded-linux-for-i-mx-applications-processors:IMXLINUX)
+1. i.MX 8M Plus EVK running [NXP Yocto BSP](https://www.nxp.com/design/design-center/software/embedded-software/i-mx-software/embedded-linux-for-i-mx-applications-processors:IMXLINUX)
 2. USB-C power cable
 3. Ethernet cable connected to live network connection
 4. [MIPI CSI-2 Camera](https://community.nxp.com/t5/i-MX-Solutions-Knowledge-Base/MIPI-CSI-2-cameras-for-NXP-i-MX-8M-series-Application-Processors/ta-p/1129962)
-5. SSH and SCP clients ([OpenSSH](https://www.openssh.com/), [PuTTY](https://www.chiark.greenend.org.uk/~sgtatham/putty/latest.html), etc.) to SSH into the EVK.
+5. SSH and SCP clients ([OpenSSH](https://www.openssh.com/), [PuTTY](https://www.chiark.greenend.org.uk/~sgtatham/putty/latest.html), etc.) to SSH into the EVK
 6. If connecting to EVK via USB serial
 
     * USB Micro B Cable
@@ -16,7 +16,7 @@ In this page you will find instructions to setup the i.MX 8M Plus from start to 
     * Mouse and Keyboard
     * Recommendation: USB Port Hub
 
-## Step 1: Flash a microSD card with NXP Yocto BSP
+## Flash a microSD card with NXP Yocto BSP
 
 !!! note "BSP Size"
     The size of the BSP installed ~12GB.
@@ -33,7 +33,7 @@ In this page you will find instructions to setup the i.MX 8M Plus from start to 
 
     {{ figure("../../assets/setup/nxp_bsp_license_agreement.jpg", "NXP License Agreement") }}    
 
-4. The BSP should start downloading to your machine as a ZIP file named "LF_v6.18.2-1.0.0_images_IMX8MPEVK.zip" or similar
+4. The BSP should start downloading to your PC as a ZIP file named "LF_v6.18.2-1.0.0_images_IMX8MPEVK.zip" or similar
 
     {{ figure("../../assets/setup/imx8mplus_bsp_download_progress.jpg", "BSP Download Progress") }}   
 
@@ -49,7 +49,7 @@ In this page you will find instructions to setup the i.MX 8M Plus from start to 
 
     {{ figure("../../assets/setup/imx8mplus-completed-flash.jpg", "Completed Flashing") }}
 
-## Step 2: Boot the i.MX 8M Plus with the NXP BSP
+## Boot the i.MX 8M Plus with the NXP BSP
 
 !!! note "Safety Precautions"
     As a safety precaution, ensure the Power Switch is turned OFF when connecting and disconnecting wires from the EVK.
@@ -62,7 +62,7 @@ In this page you will find instructions to setup the i.MX 8M Plus from start to 
 
     {{ figure("../../assets/setup/imx8mplus-insert-sdcard.jpg", "Insert Micro SD Card") }}
 
-3. Power on the i.MX 8M Plus by inserting the 5V power supply to the Type C port 0 (2).  Next connect the board to your network by attaching an ethernet cable to the Gigabit Ethernet port (4).  Attach the MPI CSI-2 Camera to the MIPI CSI Camera port (6)
+3. Insert the 5V power supply to the Type C port 0 (2).  Next connect the board to your network by attaching an ethernet cable to the Gigabit Ethernet port (4).  Attach the MIPI CSI-2 Camera to the MIPI CSI Camera port (6)
 
     {{ figure("../../assets/setup/imx8mplus-connections.png", "i.MX 8M Plus Physical Connections") }}
 
@@ -122,13 +122,13 @@ In this page you will find instructions to setup the i.MX 8M Plus from start to 
 
         The serial ports on this setup are (COM6, COM7, COM8, COM9).
 
-        Open PuTTY on your PC and under "Session", select the connection type to "Serial", specify the serial line to one of the COM ports listed, and change the BAUD rate "Speed" to 115200.  Once the seetings are set, click "Open" on the bottom right to open the connection.
+        Open PuTTY on your PC and under "Session", select the connection type to "Serial", specify the serial line to one of the COM ports listed, and change the BAUD rate "Speed" to 115200.  Once the settings are set, click "Open" on the bottom right to open the connection.
 
         {{ figure("../../assets/setup/imx8mplus-PuTTY-Configuration.jpg", "PuTTY Configuration") }}
 
-        This should open a terminal window.  If the connection is successful, output will appear in the terminal.  If nothing is displayed, try the other listed COM ports until the connection works.  In some cases, you may need to press **Enter** to initiate the display.
+        This should open a terminal window.  If the connection is successful, output will appear in the terminal.  If nothing is displayed, try the other listed COM ports until the connection works.  In some cases, you may need to press **Enter** on your keyboard to initiate the display.
 
-        A successful connection will show "imx8mpevk login: " on the terminal.  Enter root to login to the device.
+        A successful connection will show "imx8mpevk login: " on the terminal.  Enter "root" to login to the device.
 
         {{ figure("../../assets/setup/imx8mplus-COM8-PuTTY-terminal.jpg", "PuTTY Terminal") }}
 
@@ -164,3 +164,10 @@ In this page you will find instructions to setup the i.MX 8M Plus from start to 
         $ ssh root@10.10.40.210
         ```
 
+{% include-markdown "discrete/platforms/resize_sdcard_partition.md" %}
+
+{% include-markdown "discrete/platforms/edgefirst_performance_scaling.md" %}
+
+## Next Steps
+
+Now that you have setup your i.MX 8M Plus, you can begin training your Vision Model that will be deployed in this platform, but first, [copy one of our ready-to-use dataset](copy_dataset.md) that will be used to train the model.

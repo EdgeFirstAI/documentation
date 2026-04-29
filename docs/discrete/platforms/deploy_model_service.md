@@ -29,7 +29,7 @@ then restart the model service using the `systemctl` command
 
 ```shell
 $ sudo systemctl stop model
-$ sudo systemctl start model 
+$ sudo systemctl start model
 ```
 
 !!! note

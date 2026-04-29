@@ -41,7 +41,7 @@ $ edgefirst-model --model mymodel.tflite &
 The command below lists all available parameters from this service.
 
 ```shell
-$ edgefirst-camera -h
+$ edgefirst-model -h
 ```
 
 !!! warning

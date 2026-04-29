@@ -28,13 +28,13 @@ It is recommended to use a microSD card that's 64GB and higher to flash Jetpack 
 
 1. Download [Jetpack v6.2.1](https://developer.nvidia.com/downloads/embedded/L4T/r36_Release_v4.4/jp62-r1-orin-nano-sd-card-image.zip) by clicking the link provided.  This should download a ZIP file named "jetson-orin-nano-devkit-super-SD-image_JP6.2.1.zip"
 
-2. Use [BalenaEtcher](https://etcher.balena.io/) to flash the SD card using an SD card reader connected to your PC.  Select the ZIP file that was downloaded and select the SD card for the storage.  Once selected, click "Flash!" to start
+2. Use [balenaEtcher](https://etcher.balena.io/) to flash the SD card using an SD card reader connected to your PC.  Select the ZIP file that was downloaded and select the SD card for the storage.  Once selected, click "Flash!" to start
 
-    {{ figure("../../assets/setup/orin-balena-etcher.png", "Balena Etcher") }}
+    {{ figure("../../assets/setup/orin-balena-etcher.png", "balenaEtcher") }}
 
 3. Wait for the application to complete flashing ~10 mins. depending on your machine
 
-    {{ figure("../../assets/setup/orin-flashing.png", "Balena Etcher") }}
+    {{ figure("../../assets/setup/orin-flashing.png", "balenaEtcher") }}
 
 4. Once completed, a complete status should appear.  Proceed to the next steps to boot the board with the image flashed
 

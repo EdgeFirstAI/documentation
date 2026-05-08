@@ -4,7 +4,7 @@ This file provides guidance to GitHub Copilot and Claude Code (claude.ai/code) w
 
 ## Project Overview
 
-This is the **official unified documentation** for the EdgeFirst suite, published as an MkDocs Material site at https://doc.edgefirst.ai/test/. It is maintained by Au-Zone Technologies (https://www.edgefirst.ai, also https://www.au-zone.com).
+This is the **official unified documentation** for the EdgeFirst suite, published as an MkDocs Material site at https://doc.edgefirst.ai. It is maintained by Au-Zone Technologies (https://www.edgefirst.ai, also https://www.au-zone.com).
 
 The EdgeFirst suite consists of two major products:
 

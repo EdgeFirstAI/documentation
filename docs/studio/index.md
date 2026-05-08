@@ -25,5 +25,5 @@ Learn more about:
 
 New users should start with the [Home Page](home.md) and [Navigating EdgeFirst Studio](navigation.md). These guides explain the main features and dashboards.
 
-[pricing_tiers]: https://stage.edgefirst.studio/#/
-[signup]: https://stage.edgefirst.studio/#/signup
+[pricing_tiers]: https://test.edgefirst.studio/#/
+[signup]: https://test.edgefirst.studio/#/signup

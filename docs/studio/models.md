@@ -73,7 +73,7 @@ Once the model is loaded, select a mode: Live to run the model on images from a 
 
 The model will run automatically, and the results will be displayed on the screen. The output (segmentation or detection) depends on the type of model being used.
 
-The count shows the number of interations of model runner.
+The count shows the number of iterations of model runner.
 
 {{ figure("assets/model_runner_results.png", "Model Runner Results") }}
 

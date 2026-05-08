@@ -18,4 +18,4 @@ Your created dataset will look as follows.
 
 {{ figure("/datasets/assets/capture/mobile-created-dataset.jpg", "Created Dataset") }}
 
-[login]: https://test.edgefirst.studio/login
+[login]: https://edgefirst.studio/login

@@ -54,7 +54,7 @@ EdgeFirst metadata provides complete traceability through these key fields:
 
 | Field | Location | Purpose |
 |-------|----------|---------|
-| `studio_server` | `host.studio_server` | Full hostname of [EdgeFirst Studio](../studio/index.md) instance (e.g., test.edgefirst.studio) |
+| `studio_server` | `host.studio_server` | Full hostname of [EdgeFirst Studio](../studio/index.md) instance (e.g., edgefirst.studio) |
 | `project_id` | `host.project_id` | Project ID for constructing Studio URLs |
 | `session_id` | `host.session` | [Training session](../studio/models.md#training-sessions) ID for accessing logs, metrics, artifacts |
 | `dataset_id` | `dataset.id` | [Dataset](../datasets/index.md) identifier for reproducing training data |
@@ -69,7 +69,7 @@ Given a deployed model, you can trace back to its origins:
 metadata = get_edgefirst_metadata(model_path)
 
 # Construct EdgeFirst Studio URLs
-studio_server = metadata['host']['studio_server']  # e.g., 'test.edgefirst.studio'
+studio_server = metadata['host']['studio_server']  # e.g., 'edgefirst.studio'
 project_id = metadata['host']['project_id']        # e.g., '1123'
 session = metadata['host']['session']              # e.g., 't-2110'
 dataset_id = metadata['dataset']['id']             # e.g., 'ds-1c8'
@@ -80,10 +80,10 @@ dataset_id = metadata['dataset']['id']             # e.g., 'ds-1c8'
 #   'ds-1c8' -> int('1c8', 16)  -> 456
 
 # Access training session: https://{studio_server}/{project_id}/experiment/training/details?train_session_id={session_int}
-# Example: https://test.edgefirst.studio/1123/experiment/training/details?train_session_id=8464
+# Example: https://edgefirst.studio/1123/experiment/training/details?train_session_id=8464
 
 # Access dataset: https://{studio_server}/{project_id}/datasets/gallery/main?dataset={dataset_int}
-# Example: https://test.edgefirst.studio/1123/datasets/gallery/main?dataset=456
+# Example: https://edgefirst.studio/1123/datasets/gallery/main?dataset=456
 
 # View training logs, metrics, and original configuration
 ```
@@ -213,7 +213,7 @@ schema_version: 2
 
 # Traceability & Identification
 host:
-  studio_server: string    # Full EdgeFirst Studio hostname (e.g., test.edgefirst.studio)
+  studio_server: string    # Full EdgeFirst Studio hostname (e.g., edgefirst.studio)
   project_id: string       # Project ID for Studio URLs
   session: string          # Training session ID
   username: string         # User who initiated training
@@ -1921,7 +1921,7 @@ For production MLOps integration with [EdgeFirst Studio](../studio/index.md):
 schema_version: 2
 
 host:
-  studio_server: test.edgefirst.studio
+  studio_server: edgefirst.studio
   project_id: "1123"
   session: t-2110              # Hex value, convert to int for URLs
 
@@ -2089,7 +2089,7 @@ The host section identifies the [EdgeFirst Studio](../studio/index.md) instance 
 
 ```yaml
 host:
-  studio_server: test.edgefirst.studio  # Full EdgeFirst Studio hostname
+  studio_server: edgefirst.studio  # Full EdgeFirst Studio hostname
   project_id: "1123"                    # Project ID for Studio URLs
   session: t-2110                       # Training session ID (hex, prefix t-)
   username: john.doe                    # User who initiated training

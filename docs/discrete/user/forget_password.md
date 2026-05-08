@@ -20,4 +20,4 @@ You will then be prompted to enter a new password. Once entered, click "RESET PA
 
 Done! You will then be prompted back to the [login page][login] for you to enter your new credentials.
 
-[login]: https://test.edgefirst.studio/login
+[login]: https://edgefirst.studio/login

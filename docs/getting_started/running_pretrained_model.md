@@ -7,7 +7,7 @@ EdgeFirst Studio includes a built-in model runner that allows you to quickly run
 
 | Platforms & Model Support | Preview |
 |:--------------------------|:-------:|
-| - **PC:** Windows, Linux, MacOS<br>- **Mobile:** iOS, Android<br>- **Web:** Chrome browser<br>- **Models:** Modelpack (.onnx format) | ![Studio Cell](./assets/run_model/studio_cell.png){ width=400px } |
+| - **PC:** Windows, Linux, MacOS<br>- **Mobile:** iOS, Android<br>- **Web:** Chrome browser<br>- **Models:** ModelPack (.onnx format) | ![Studio Cell](./assets/run_model/studio_cell.png){ width=400px } |
 
 ---
 

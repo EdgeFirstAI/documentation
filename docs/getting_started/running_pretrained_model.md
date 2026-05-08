@@ -55,3 +55,5 @@ In the Model Runner Dashboard, upload any of these images to see the model resul
 1. In the Model Runner dashboard, select **Live**.
 2. Choose your camera and allow access when prompted.
 3. The model will start running on the live stream. Point the camera at coffee cups to see results in real time.
+
+The next step is to dive into the full MLOps workflow in EdgeFirst Studio! Every workflow begins with creating your own project, which serves as the foundation for everything that follows.

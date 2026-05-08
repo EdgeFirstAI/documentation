@@ -24,7 +24,7 @@ EdgeFirst Studio provides several pre-trained models in the **Sample Projects** 
 1. On the landing page after login, click **GO TO PROJECTS**.  This opens the Projects Dashboard
 2. Find the **Sample Projects** card and click **Model Experiments**
 
-	{{ figure("assets/run_model/image.png", "Sample Projects", "400") }}
+	{{ figure("assets/run_model/sample-projects.png", "Sample Projects", "400") }}
 
 3. On the Experiments page, each card represents an experiment with multiple training and validation sessions
 4. Click on the **Training Sessions** for the Coffee Cup Experiment to view available sessions.  Each session will have a model in different formats if training completed successfully

@@ -1,7 +1,7 @@
 
-# Running Pre-trained Models in Edgefirst Studio
+# Running Pre-trained Models in EdgeFirst Studio
 
-Edgefirst Studio includes a built-in model runner that allows you to quickly run models on a live camera feed or on stored images, providing an instant live preview of model results. This guide walks you through running pre-trained models in Edgefirst Studio.
+EdgeFirst Studio includes a built-in model runner that allows you to quickly run models on a live camera feed or on stored images, providing an instant live preview of model results. This guide walks you through running pre-trained models in EdgeFirst Studio.
 
 ## Supported Platforms
 
@@ -11,7 +11,7 @@ Edgefirst Studio includes a built-in model runner that allows you to quickly run
 
 ---
 
-## 1. Log in to Edgefirst Studio
+## 1. Log in to EdgeFirst Studio
 
 1. Go to [https://edgefirst.studio](https://edgefirst.studio)
 2. If you do not have an account, create a free account on the landing page.
@@ -19,7 +19,7 @@ Edgefirst Studio includes a built-in model runner that allows you to quickly run
 
 ## 2. Locate a Model to Run
 
-Edgefirst Studio provides several pre-trained models in the **Sample Projects** section.
+EdgeFirst Studio provides several pre-trained models in the **Sample Projects** section.
 
 1. On the landing page after login, click **GO TO PROJECTS**. This opens the Projects Dashboard.
 2. Find the **Sample Projects** card and click **Model Experiments**.

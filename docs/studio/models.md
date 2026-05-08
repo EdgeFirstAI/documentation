@@ -62,17 +62,11 @@ For more details regarding deploying validation sessions, please see [Validating
 
 EdgeFirst Studio allows you to run trained models directly in the web browser. After a model has been trained, open the model details page by clicking on the trainer card. Only models trained on Modelpack are supported for live running. From there, click the Run Model button to start running the model.
 
-<figure markdown="span">
-![Model Runner Button](assets/run_model_button.png)
-<figcaption>Model Runner Button</figcaption>
-</figure>
+{{ figure("assets/run_model_button.png", "Model Runner Button") }}
 
 This will open the model runner dashboard.
 
-<figure markdown="span">
-![Model Runner Dashboard](assets/model_runner_dash.png)
-<figcaption>Model Runner Dashboard</figcaption>
-</figure>
+{{ figure("assets/model_runner_dash.png", "Model Runner Dashboard") }}
 
 Please wait while the model loads. This may take up to 60 seconds, depending on the model size.
 Once the model is loaded, select a mode: Live to run the model on images from a camera stream, or Upload to choose a file from local storage.
@@ -81,10 +75,7 @@ The model will run automatically, and the results will be displayed on the scree
 
 The count shows the number of interations of model runner.
 
-<figure markdown="span">
-![Model Runner Results](assets/model_runner_results.png)
-<figcaption>Model Runner Results</figcaption>
-</figure>
+{{ figure("assets/model_runner_results.png", "Model Runner Results") }}
 
 ## Next Steps
 

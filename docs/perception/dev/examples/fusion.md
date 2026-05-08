@@ -3,6 +3,7 @@
 These examples demonstrate how to connect to various fusion topics published on your EdgeFirst Platform and how to display the information through the command line.
 
 ## Fusion Occupancy
+
 Topic: [/fusion/occupancy](../../topics/fusion.md#fusionoccupancy)  
 Message: [PointCloud2](../../api/sensor_msgs.md#pointcloud2)  
 Sample Code: [Python](https://github.com/EdgeFirstAI/samples/blob/main/python/fusion/occupancy.py) / [Rust](https://github.com/EdgeFirstAI/samples/blob/main/rust/fusion/occupancy.rs)
@@ -105,10 +106,13 @@ The Occupancy message contains occupancy grid data. You can log the data through
     ```
 
 ### Results
+
 When displaying the results through Rerun you will see the Occupancy Point Cloud.
-![alt text](assets/fusion_occupancy.png)
+
+{{ figure("assets/fusion_occupancy.png", "Fusion Occupancy Point Cloud") }}
 
 ## Fusion Output Grid
+
 Topic: [/fusion/model_output](../../topics/fusion.md#fusionmodel_output)  
 Message: [Mask](../../api/edgefirst_msgs.md#mask)  
 Sample Code: [Python](https://github.com/EdgeFirstAI/samples/blob/main/python/fusion/model_output.py) / [Rust](https://github.com/EdgeFirstAI/samples/blob/main/rust/fusion/model_output.rs)
@@ -204,6 +208,7 @@ The ModelOutput message contains fused model output data. You can log the data t
     ```
 
 ## Tracked Fusion Output Grid
+
 Topic: [/fusion/model_output/tracked](../../topics/fusion.md#fusionmodel_outputtracked)  
 Message: [Mask](../../api/edgefirst_msgs.md#mask)  
 Sample Code: [Python](https://github.com/EdgeFirstAI/samples/blob/main/python/fusion/model_output_tracked.py) / [Rust](https://github.com/EdgeFirstAI/samples/blob/main/rust/fusion/model_output_tracked.rs)
@@ -298,6 +303,7 @@ The MaskOutputTracked message contains fused model output data. You can log the 
     ```
 
 ## Fusion Radar
+
 Topic: [/fusion/radar](../../topics/fusion.md#fusionradar)  
 Message: [PointCloud2](../../api/sensor_msgs.md#pointcloud2)  
 Sample Code: [Python](https://github.com/EdgeFirstAI/samples/blob/main/python/fusion/radar.py) / [Rust](https://github.com/EdgeFirstAI/samples/blob/main/rust/fusion/radar.rs)
@@ -356,8 +362,7 @@ We can now receive a message on the subscriber. After receiving the message, we 
 
 ### Decode PCD Data
 
-The next step is to decode the PCD data. Please see [examples/pcd](./pcd.md) for a guide on how to decode the PointCloud2 data.
-
+The next step is to decode the PCD data. Please see [examples/pcd](pcd.md) for a guide on how to decode the PointCloud2 data.
 
 === "Python"
 
@@ -376,7 +381,7 @@ The next step is to decode the PCD data. Please see [examples/pcd](./pcd.md) for
 
 ### Process the Data
 
-We can now process the data. In this example we will find the maximum and minimum values for x, y, z, of points with non-zero vision_class 
+We can now process the data. In this example we will find the maximum and minimum values for x, y, z, of points with non-zero vision_class
 
 === "Python"
 
@@ -408,6 +413,7 @@ We can now process the data. In this example we will find the maximum and minimu
     ```
 
 ### Results
+
 === "Python"
 
     ``` python
@@ -430,6 +436,7 @@ We can now process the data. In this example we will find the maximum and minimu
     ```
 
 The command line output will appear as the following
+
 ```
 Recieved 12 radar points with non-background vision_class. Values: x: [1.15, 1.53]      y: [0.24, 0.75] z: [-0.31, 0.26]
 Recieved 11 radar points with non-background vision_class. Values: x: [1.15, 1.49]      y: [0.29, 0.75] z: [-0.31, 0.19]
@@ -437,9 +444,11 @@ Recieved 10 radar points with non-background vision_class. Values: x: [1.15, 1.4
 ```
 
 When displaying the results through Rerun you will see the point cloud radar data.
-![alt text](assets/fusion_radar.png)
 
-## Fusion Lidar
+{{ figure("assets/fusion_radar.png", "Fusion Radar") }}
+
+## Fusion LiDAR
+
 Topic: [/fusion/lidar](../../topics/fusion.md#fusionlidar)  
 Message: [PointCloud2](../../api/sensor_msgs.md#pointcloud2)  
 Sample Code: [Python](https://github.com/EdgeFirstAI/samples/blob/main/python/fusion/lidar.py) / [Rust](https://github.com/EdgeFirstAI/samples/blob/main/rust/fusion/lidar.rs)
@@ -503,8 +512,7 @@ We can now receive a message on the subscriber. After receiving the message, we 
 
 ### Decode PCD Data
 
-The next step is to decode the PCD data. Please see [examples/pcd](./pcd.md) for a guide on how to decode the PointCloud2 data.
-
+The next step is to decode the PCD data. Please see [examples/pcd](pcd.md) for a guide on how to decode the PointCloud2 data.
 
 === "Python"
 
@@ -523,7 +531,7 @@ The next step is to decode the PCD data. Please see [examples/pcd](./pcd.md) for
 
 ### Process the Data
 
-We can now process the data. In this example we will find the maximum and minimum values for x, y, z, of points with non-zero vision_class 
+We can now process the data. In this example we will find the maximum and minimum values for x, y, z, of points with non-zero vision_class
 
 === "Python"
 
@@ -555,6 +563,7 @@ We can now process the data. In this example we will find the maximum and minimu
     ```
 
 ### Results
+
 === "Python"
 
     ``` python
@@ -577,6 +586,7 @@ We can now process the data. In this example we will find the maximum and minimu
     ```
 
 The command line output will appear as the following
+
 ```
 Recieved 503 lidar points with non-background vision_class. Values: x: [3.40, 3.81]     y: [0.48, 1.06] z: [-0.93, 0.65]
 Recieved 507 lidar points with non-background vision_class. Values: x: [3.41, 3.81]     y: [0.49, 1.07] z: [-0.93, 0.64]
@@ -584,9 +594,11 @@ Recieved 523 lidar points with non-background vision_class. Values: x: [3.39, 3.
 ```
 
 When displaying the results through Rerun you will see the point cloud lidar data.
-![alt text](assets/fusion_lidar.png)
+
+{{ figure("assets/fusion_lidar.png", "Fusion LiDAR") }}
 
 ## Fusion Boxes3D
+
 Topic: [/fusion/boxes3d](../../topics/fusion.md#fusionboxes3d)  
 Message: [Detect](../../api/edgefirst_msgs.md#detect)  
 Sample Code: [Python](https://github.com/EdgeFirstAI/samples/blob/main/python/fusion/boxes3d.py) / [Rust](https://github.com/EdgeFirstAI/samples/blob/main/rust/fusion/boxes3d.rs)

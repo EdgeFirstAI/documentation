@@ -1,33 +1,21 @@
 # Create Dataset
 
-If you have a video recording or sample images for your dataset, you can create a dataset container in EdgeFirst Studio to contain your video frames or images and annotations. 
+If you have a video recording or sample images for your dataset, you can create a dataset container in EdgeFirst Studio to contain your video frames or images and annotations.
 
 Navigate to a web browser and [login][login] to EdgeFirst Studio.  Once logged in to EdgeFirst Studio, navigate to your project.  In this case the project name is "Object Detection".  Click on the "Datasets" button that is indicated in red below.
 
-<figure markdown="span">
-![Object Detection Project](../../datasets/assets/capture/mobile-projects.jpg){ align=center }
-<figcaption>Object Detection Project</figcaption>
-</figure>
+{{ figure("/datasets/assets/capture/mobile-projects.jpg", "Object Detection Project") }}
 
 This will bring you to the "Datasets" page of the selected project.  Create a new dataset container by clicking the "New Dataset" button that is indicated in red.
 
-<figure markdown="span">
-![New Dataset](../../datasets/assets/capture/mobile-new-dataset.jpg){ align=center }
-<figcaption>New Dataset</figcaption>
-</figure>
+{{ figure("/datasets/assets/capture/mobile-new-dataset.jpg", "New Dataset") }}
 
 Add the dataset and annotation container name, labels, and dataset description as indicated by the fields below.  It is up to you to specify the information in the fields and you do not have to strictly follow the example shown below.  Click the "Create" button once the fields have been filled.
 
-<figure markdown="span">
-![Dataset Fields](../../datasets/assets/capture/mobile-dataset-details.jpg){ align=center }
-<figcaption>Dataset Fields</figcaption>
-</figure>
+{{ figure("/datasets/assets/capture/mobile-dataset-details.jpg", "Dataset Fields") }}
 
 Your created dataset will look as follows.
 
-<figure markdown="span">
-![Created Dataset](../../datasets/assets/capture/mobile-created-dataset.jpg){ align=center }
-<figcaption>Created Dataset</figcaption>
-</figure>
+{{ figure("/datasets/assets/capture/mobile-created-dataset.jpg", "Created Dataset") }}
 
-[login]: https://stage.edgefirst.studio/login
+[login]: https://test.edgefirst.studio/login

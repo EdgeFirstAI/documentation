@@ -2,8 +2,8 @@
 
 This example will go through how to connect to the radar topic published on your EdgeFirst Platform and how to display the information on the command line as well as through the Rerun visualizer.
 
-
 ## Radar Targets
+
 Topic: [/radar/targets](../../topics/radar.md#radartargets)  
 Message: [PointCloud2](../../api/sensor_msgs.md#pointcloud2)
 Sample Code: [Python](https://github.com/EdgeFirstAI/samples/blob/main/python/radar/targets.py) / [Rust](https://github.com/EdgeFirstAI/samples/blob/main/rust/radar/targets.rs)
@@ -62,8 +62,7 @@ We can now receive a message on the subscriber. After receiving the message, we 
 
 ### Decode PCD Data
 
-The next step is to decode the PCD data. Please see [examples/pcd](./pcd.md) for a guide on how to decode the PointCloud2 data.
-
+The next step is to decode the PCD data. Please see [examples/pcd](pcd.md) for a guide on how to decode the PointCloud2 data.
 
 === "Python"
 
@@ -87,7 +86,6 @@ The next step is to decode the PCD data. Please see [examples/pcd](./pcd.md) for
 
     rr.log("radar/targets", &points)?;
     ```
-
 
 ### Process the Data
 
@@ -141,7 +139,9 @@ We can now process the data. In this example we will find the maximum and minimu
     ```
 
 ### Results
+
 The command line output will appear as the following
+
 ```
 Recieved 23 radar points. Values: x: [2.04, 9.48]       y: [-2.99, 4.74]        z: [-2.07, 2.09]        rcs: [-13.80, 17.60]
 Recieved 23 radar points. Values: x: [2.04, 9.47]       y: [-2.99, 4.21]        z: [-2.11, 2.09]        rcs: [-13.80, 17.60]
@@ -149,10 +149,11 @@ Recieved 23 radar points. Values: x: [2.04, 9.47]       y: [-2.97, 4.22]        
 ```
 
 When displaying the results through Rerun you will see the pointcloud radar data.
-![alt text](assets/radar_targets.png)
 
+{{ figure("assets/radar_targets.png", "Radar Pointcloud Data") }}
 
 ## Radar Clusters
+
 Topic: [/radar/clusters](../../topics/radar.md#radarclusters)  
 Message: [PointCloud2](../../api/sensor_msgs.md#pointcloud2)
 Sample Code: [Python](https://github.com/EdgeFirstAI/samples/blob/main/python/radar/clusters.py) / [Rust](https://github.com/EdgeFirstAI/samples/blob/main/rust/radar/clusters.rs)
@@ -182,7 +183,7 @@ After setting up the Zenoh session, we will create a subscriber to the `radar/cl
 
 ### Receive a message
 
-We can now receive a message on the subcriber. After receiving the message, we will need to deserialize it.
+We can now receive a message on the subscriber. After receiving the message, we will need to deserialize it.
 
 === "Python"
 
@@ -211,8 +212,7 @@ We can now receive a message on the subcriber. After receiving the message, we w
 
 ### Decode PCD Data
 
-The next step is to decode the PCD data. Please see [examples/pcd](./pcd.md) for a guide on how to decode the PointCloud2 data.
-
+The next step is to decode the PCD data. Please see [examples/pcd](pcd.md) for a guide on how to decode the PointCloud2 data.
 
 === "Python"
 
@@ -227,7 +227,6 @@ The next step is to decode the PCD data. Please see [examples/pcd](./pcd.md) for
     ``` rust
     let points = decode_pcd(pcd);
     ```
-
 
 ### Collect the Clustered Points
 
@@ -273,10 +272,13 @@ We will now collect all the clustered points, which are all the points with `clu
     ```
 
 ### Results
+
 When displaying the results through Rerun you will see the cluster data.
-![alt text](assets/radar_clusters.png)
+
+{{ figure("assets/radar_clusters.png", "Radar Cluster Data") }}
 
 ## Radar Info
+
 Topic: [/radar/info](../../topics/radar.md#radarinfo)  
 Message: [RadarInfo](../../api/edgefirst_msgs.md#radarinfo)
 Sample Code: [Python](https://github.com/EdgeFirstAI/samples/blob/main/python/radar/info.py) / [Rust](https://github.com/EdgeFirstAI/samples/blob/main/rust/radar/info.rs)
@@ -306,7 +308,7 @@ After setting up the Zenoh session, we will create a subscriber to the `radar/in
 
 ### Receive a message
 
-We can now recevie a message on the subcriber. After receiving the message, we will need to deserialize it.
+We can now receive a message on the subscriber. After receiving the message, we will need to deserialize it.
 
 === "Python"
 
@@ -338,7 +340,6 @@ We can now recevie a message on the subcriber. After receiving the message, we w
 
 The RadarInfo message contains information about the radar configuration. Various fields can be accessed to view the radar's configuration.
 
-
 === "Python"
 
     ``` python
@@ -363,7 +364,9 @@ The RadarInfo message contains information about the radar configuration. Variou
     ```
 
 ### Results
+
 The command line output will appear as the following
+
 ```
 The radar configuration is: center frequency: low   frequency sweep: ultra-short   range toggle: off   detection sensitivity: high   sending cube: true
 The radar configuration is: center frequency: low   frequency sweep: ultra-short   range toggle: off   detection sensitivity: high   sending cube: true
@@ -371,9 +374,11 @@ The radar configuration is: center frequency: low   frequency sweep: ultra-short
 ```
 
 When displaying the results through Rerun you will see a log of the radar configuration.
-![alt text](assets/radar_info.png)
+
+{{ figure("assets/radar_info.png", "Radar Configuration Log") }}
 
 ## Radar Cube
+
 Topic: [/radar/cube](../../topics/radar.md#radarcube)  
 Message: [RadarCube](../../api/edgefirst_msgs.md#radarcube)
 Sample Code: [Python](https://github.com/EdgeFirstAI/samples/blob/main/python/radar/cube.py) / [Rust](https://github.com/EdgeFirstAI/samples/blob/main/rust/radar/cube.rs)
@@ -403,7 +408,7 @@ After setting up the Zenoh session, we will create a subscriber to the `radar/cu
 
 ### Receive a message
 
-We can now receive a message on the subcriber. After receiving the message, we will need to deserialize it.
+We can now receive a message on the subscriber. After receiving the message, we will need to deserialize it.
 
 === "Python"
 
@@ -430,6 +435,7 @@ We can now receive a message on the subcriber. After receiving the message, we w
     // Deserialize message
     let radar_cube: RadarCube = cdr::deserialize(&msg.payload().to_bytes())?;
     ```
+
 ### Process the Data
 
 The RadarCube message contains data from the RadarCube.
@@ -462,7 +468,9 @@ The RadarCube message contains data from the RadarCube.
     ```
 
 ### Results
+
 The command line output will appear as the following
+
 ```
 The radar cube has shape: [2, 200, 4, 256]
 The radar cube has shape: [2, 200, 4, 256]
@@ -470,7 +478,8 @@ The radar cube has shape: [2, 200, 4, 256]
 ```
 
 When displaying the results through Rerun you will see the radar cube displayed.
-![alt text](assets/radar_cube.png)
+
+{{ figure("assets/radar_cube.png", "Radar Cube Display") }}
 
 ## Combined Example
 
@@ -498,6 +507,7 @@ After setting up the Zenoh session, we will create a subscriber to the three top
     ```
 
 ### Subscriber Callbacks
+
 We will now go through the handler functions that are in use for this example. These handler functions will independently handle each of the messages received through the MessageDrain. Additionally, we will make use of a FrameSize object to communicate the frame size of the camera to the boxes and segmentation mask so they can be resized appropriately.
 
 === "Python"
@@ -509,6 +519,7 @@ We will now go through the handler functions that are in use for this example. T
     ```
 
 #### H264 Handler
+
 The H264 handler will receive the CompressedVideo message from the MessageDrain and after initializing the required containers will pass that message to the worker, where the message will be processed and logged to Rerun.
 
 === "Python"
@@ -545,6 +556,7 @@ The H264 handler will receive the CompressedVideo message from the MessageDrain 
     ```
 
 #### Boxes2D Handler
+
 The Boxes2D callback will wait for a Detect message from the MessageDrain and will pass that message to the worker, where the message will be processed and logged to Rerun. The boxes logged will use tracking when available. Additionally, this handler will wait until the camera has started and logged a frame size so it knows what the height and width will be to resize the boxes.
 
 === "Python"
@@ -579,8 +591,10 @@ The Boxes2D callback will wait for a Detect message from the MessageDrain and wi
             sizes.append((int(box.width * frame_size[0]), int(box.height * frame_size[1])))
         rr.log("/camera/boxes", rr.Boxes2D(centers=centers, sizes=sizes, labels=labels, colors=colors))
     ```
+
 #### Radar Handler
-The Lidar callback will receive the pointcloud message, perform post-processing on the resultant data and then be sent to Rerun.
+
+The radar callback will receive the pointcloud message, perform post-processing on the resultant data and then be sent to Rerun.
 
 === "Python"
 
@@ -610,5 +624,7 @@ The Lidar callback will receive the pointcloud message, perform post-processing 
     ```
 
 ### Results
+
 When displaying the results through Rerun you will see the combined image of the camera feed with boxes and the radar pointcloud.
-![alt text](assets/camera_radar.png)
+
+{{ figure("assets/camera_radar.png", "Camera and Radar Overlay") }}

@@ -1,12 +1,10 @@
 nav:
-  - Home: https://stage.edgefirst.studio
   - Getting Started:
     - index.md
     - getting_started/login.md
     - getting_started/create_project.md
-    - getting_started/capture_data.md
-    - getting_started/annotate_dataset.md
-    - getting_started/audit_dataset.md
+    - getting_started/copy_dataset.md
+    - getting_started/explore_dataset.md
     - getting_started/train_vision.md
     - getting_started/validate_vision.md
     - getting_started/deploy_model.md
@@ -16,6 +14,7 @@ nav:
       - getting_started/workflows/tourist_plus.md
       - getting_started/workflows/web.md
       - getting_started/workflows/maivin.md
+      - getting_started/workflows/raivin.md
   - Studio:
     - studio/index.md
     - studio/home.md
@@ -44,10 +43,6 @@ nav:
       - 3D/deployment.md
   - Datasets:
     - datasets/index.md
-    - EdgeFirst Dataset Format:
-      - datasets/format/index.md
-      - datasets/format/box_format.md
-    - datasets/structure.md
     - Dataset Zoo:
       - Coffee Cup:
         - datasets/coffeecup/index.md
@@ -62,6 +57,15 @@ nav:
         - datasets/coco/import.md
       - Raivin Ultra Short:
         - datasets/raivin_ultra_short/index.md
+    - EdgeFirst Dataset Format:
+      - datasets/format/index.md
+      - datasets/format/structure.md
+      - datasets/format/box_format.md
+      - datasets/format/schema.md
+      - datasets/format/sensors.md
+      - datasets/format/formats.md
+      - datasets/format/conversion.md
+      - datasets/format/migration.md
     - Dataset Tutorials:
       - datasets/tutorials/index.md
       - datasets/tutorials/capture.md
@@ -73,31 +77,6 @@ nav:
       - datasets/tutorials/management.md
   - Models:
     - models/index.md
-    - Model Training:
-      - models/training/vision.md
-      - models/training/fusion.md
-    - Model Validation:
-      - Validating Vision Models:
-        - models/validation/vision/managed.md
-        - models/validation/vision/user_managed.md
-      - Validating Fusion Models:
-        - models/validation/fusion/managed.md
-      - Model Metrics:
-        - models/validation/metrics/detection.md
-        - models/validation/metrics/segmentation.md
-        - models/validation/metrics/fusion.md
-        - models/validation/metrics/matching.md
-        - models/validation/metrics/classifications.md
-    - Model Deployment:
-      - 2D Model Deployment:
-        - Deploying to the PC:
-          - models/deployment/pc/mpk.md
-          - models/deployment/pc/ultralytics.md
-        - models/deployment/evk.md
-        - models/deployment/maivin.md
-        - models/deployment/2d_raivin.md
-      - 3D Model Deployment:
-        - models/deployment/3d_raivin.md
     - Model Zoo:
       - ModelPack:
         - models/modelpack/index.md
@@ -117,20 +96,49 @@ nav:
       - Fusion:
         - models/fusion/index.md
         - Benchmarks: models/fusion/benchmarks.md
+    - Model Training:
+      - models/training/vision.md
+      - models/training/fusion.md
+    - Model Validation:
+      - Validating Vision Models:
+        - models/validation/vision/managed.md
+        - models/validation/vision/user_managed.md
+      - Validating Fusion Models:
+        - models/validation/fusion/managed.md
+      - Model Metrics:
+        - models/validation/metrics/index.md
+        - Object Detection Metrics:
+          - models/validation/metrics/detection/index.md
+          - models/validation/metrics/detection/matching.md
+          - models/validation/metrics/detection/classifications.md
+        - models/validation/metrics/segmentation.md
+        - models/validation/metrics/fusion.md
+        - models/validation/metrics/timing.md
+    - Model Deployment:
+      - models/deployment/studio.md
+      - models/deployment/maivin.md
+      - models/deployment/2d_raivin.md
+      - models/deployment/3d_raivin.md
+      - models/deployment/launcher.md
+      - Deploying to the PC:
+        - models/deployment/pc/index.md
+        - models/deployment/pc/mpk.md
+        - models/deployment/pc/ultralytics.md
     - models/metadata.md
+    - models/cameraadaptor.md
     - models/augmentations.md
   - Perception:
     - perception/index.md
-    - Dataset Collection Middleware:
-      - platforms/recording.md
-      - platforms/replay.md
-      - platforms/publishing.md
-      - platforms/foxglove.md
-      - platforms/advanced_foxglove.md
     - perception/studio.md
     - perception/launcher.md
+    - Dataset Collection Middleware:
+      - perception/data_collection/recording.md
+      - perception/data_collection/replay.md
+      - perception/data_collection/publishing.md
+      - perception/data_collection/foxglove.md
+      - perception/data_collection/advanced_foxglove.md
     - Topics:
-      - perception/topics.md
+      - perception/topics/index.md
       - perception/topics/camera.md
       - perception/topics/fusion.md
       - perception/topics/imu.md
@@ -139,7 +147,7 @@ nav:
       - perception/topics/navsat.md
       - perception/topics/radar.md
     - Developer Guide:
-      - perception/dev.md
+      - perception/dev/index.md
       - Examples:
         - perception/dev/examples/camera.md
         - perception/dev/examples/fusion.md
@@ -151,7 +159,7 @@ nav:
         - perception/dev/examples/radar.md
         - perception/dev/examples/ssd.md
     - API Reference:
-      - perception/api.md
+      - perception/api/index.md
       - perception/api/edgefirst_msgs.md
       - perception/api/foxglove_msgs.md
       - perception/api/geometry_msgs.md
@@ -162,22 +170,82 @@ nav:
       - perception/api/studio.md
     - Deep View RT:
       - perception/deepviewrt/index.md
+    - 4K Video:
+      - perception/4k/index.md
+      - perception/4k/camera_4k.md
+      - perception/4k/webui_4k.md
+      - perception/4k/publisher_4k.md
+      - perception/4k/foxglove_4k.md
   - Platforms:
     - platforms/index.md
     - Getting Started:
-      - platforms/quickstart.md
-      - platforms/walkthrough.md
-      - platforms/architecture.md
+      - Maivin Quick Start:
+        - platforms/quickstart/maivin/index.md
+        - platforms/quickstart/maivin/setup.md
+        - platforms/quickstart/maivin/webui.md
+        - platforms/quickstart/maivin/copy_dataset.md
+        - platforms/quickstart/maivin/train.md
+        - platforms/quickstart/maivin/validate.md
+        - platforms/quickstart/maivin/deploy.md
+      - Raivin Quick Start:
+        - platforms/quickstart/raivin/index.md
+        - platforms/quickstart/raivin/setup.md
+        - platforms/quickstart/raivin/webui.md
+        - platforms/quickstart/raivin/copy_dataset.md
+        - platforms/quickstart/raivin/train.md
+        - platforms/quickstart/raivin/validate.md
+        - platforms/quickstart/raivin/deploy.md
+      - i.MX 8M Plus Quick Start:
+        - platforms/quickstart/imx8mplus/index.md
+        - platforms/quickstart/imx8mplus/setup.md
+        - platforms/quickstart/imx8mplus/copy_dataset.md
+        - platforms/quickstart/imx8mplus/train.md
+        - platforms/quickstart/imx8mplus/convert_kinara.md
+        - platforms/quickstart/imx8mplus/validate.md
+        - platforms/quickstart/imx8mplus/deploy.md
+      - i.MX 95 Quick Start:
+        - platforms/quickstart/imx95/index.md
+        - platforms/quickstart/imx95/setup.md
+        - platforms/quickstart/imx95/copy_dataset.md
+        - platforms/quickstart/imx95/train.md
+        - platforms/quickstart/imx95/neutron_converter.md
+        - platforms/quickstart/imx95/convert_kinara.md
+        - platforms/quickstart/imx95/validate.md
+        - platforms/quickstart/imx95/deploy.md
+      - NVIDIA Jetson Quick Start:
+        - platforms/quickstart/jetson_orin/index.md
+        - platforms/quickstart/jetson_orin/setup.md
+        - platforms/quickstart/jetson_orin/copy_dataset.md
+        - platforms/quickstart/jetson_orin/train.md
+        - platforms/quickstart/jetson_orin/convert_tensorrt.md
+        - platforms/quickstart/jetson_orin/validate.md
+        - platforms/quickstart/jetson_orin/deploy.md
+      - Raspberry Pi Quick Start:
+        - platforms/quickstart/raspberrypi/index.md
+        - platforms/quickstart/raspberrypi/setup.md
+        - platforms/quickstart/raspberrypi/copy_dataset.md
+        - platforms/quickstart/raspberrypi/train.md
+        - platforms/quickstart/raspberrypi/validate.md
+        - platforms/quickstart/raspberrypi/deploy.md
+    - Configuration:
+      - platforms/configuration/index.md
+      - platforms/configuration/mcap_recording.md
+      - platforms/configuration/camera.md
+      - platforms/configuration/webui.md
+      - platforms/configuration/model.md
+      - platforms/configuration/service_status.md
+      - platforms/configuration/radar.md
+      - platforms/configuration/fusion.md
+      - platforms/configuration/lidar.md
     - Hardware:
-      - platforms/hardware.md
-      - platforms/radar.md
-      - platforms/lidar.md
+      - platforms/hardware/hardware.md
+      - platforms/hardware/radar.md
+      - platforms/hardware/lidar.md
     - Software:
-      - platforms/configuration.md
-      - platforms/model_uploads.md
-      - platforms/updates.md
-      - platforms/release_notes.md
-      - platforms/issues.md
+      - platforms/software/model_uploads.md
+      - platforms/software/updates.md
+      - platforms/software/release_notes.md
+      - platforms/software/issues.md
     - Networking:
-      - platforms/networking.md
-      - platforms/ssh.md
+      - platforms/networking/networking.md
+      - platforms/networking/ssh.md

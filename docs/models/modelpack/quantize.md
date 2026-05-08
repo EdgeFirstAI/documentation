@@ -4,7 +4,7 @@ To run a ModelPack Float32 ONNX model [trained in EdgeFirst Studio](../training/
 
 ## ONNX to TFLite
 
-Follow along this tutorial to convert your ModelPack Float32 ONNX model into a quantized TFLite.  If you do not have a model available, you can click and download this sample model [coffeecup-modelpack-multitask-t-1f54.onnx](assets/coffeecup-modelpack-multitask-t-1f54.onnx){: download="coffeecup-modelpack-multitask-t-1f54.onnx"} which is needed for this tutorial. 
+Follow along this tutorial to convert your ModelPack Float32 ONNX model into a quantized TFLite.  If you do not have a model available, you can click and download this sample model [coffeecup-modelpack-multitask-t-1f54.onnx](assets/coffeecup-modelpack-multitask-t-1f54.onnx){: download="coffeecup-modelpack-multitask-t-1f54.onnx"} which is needed for this tutorial.
 
 The steps for this conversion process are shown below.
 
@@ -30,16 +30,16 @@ flowchart LR
         You can download the file "requirements.txt" that lists the required dependencies and run `pip install -r requirements.txt` to install these packages.  Otherwise, run each package installation line by line as shown below.
 
     ```shell
-    $ pip install onnx2tf==1.28.2
-    $ pip install tf_keras==2.19.0
-    $ pip install onnx==1.18.0 
-    $ pip install onnx_graphsurgeon==0.5.8
-    $ pip install psutil==7.0.0
-    $ pip install ai-edge-litert==1.4.0 
-    $ pip install sng4onnx==1.0.4
-    $ pip install tensorflow==2.19.1
-    $ pip install opencv-python==4.12.0.88
-    $ pip install numpy==2.1.3
+    pip install onnx2tf==1.28.2
+    pip install tf_keras==2.19.0
+    pip install onnx==1.18.0 
+    pip install onnx_graphsurgeon==0.5.8
+    pip install psutil==7.0.0
+    pip install ai-edge-litert==1.4.0 
+    pip install sng4onnx==1.0.4
+    pip install tensorflow==2.19.1
+    pip install opencv-python==4.12.0.88
+    pip install numpy==2.1.3
     ```
 
     These versions of the libraries were tested.
@@ -64,11 +64,11 @@ flowchart LR
 4. Run the TFLite [converter script](assets/converter.py){: download="converter.py"} below using TensorFlow with this command `python3 converter.py`.
 
     !!! tip "Download the Python script"
-        
+
         Download the python script by clicking on the link above. 
 
     !!! note "Prepare a set of images"
-        This process also requires sample images needed during quantization. 
+        This process also requires sample images needed during quantization.
         You can click on the link and download these [set of images with coffee cup samples](assets/coffeecup.zip){: download="coffeecup.zip"} for quantizing a
         coffee cup model as shown in this tutorial.  Unzip this file into a directory.
 
@@ -124,4 +124,4 @@ flowchart LR
 
 ## Next Steps
 
-Once you have converted your model to a quantized TFLite, you can verify the performance of the model by [Running the Quantized ModelPack](npu.md) in the i.MX 8M Plus EVK's NPU. 
+Once you have converted your model to a quantized TFLite, you can verify the performance of the model by [Running the Quantized ModelPack](npu.md) in the i.MX 8M Plus EVK's NPU.

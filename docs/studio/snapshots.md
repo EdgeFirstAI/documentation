@@ -1,18 +1,17 @@
 # Snapshots Dashboard
 
-Snapshots are frozen and compact form of datasets. The snapshot can be opened from the Apps Menu.
+Snapshots are portable, frozen copies of datasets in the [EdgeFirst Dataset Format](../datasets/format/index.md). Each snapshot consists of a **ZIP + Arrow file pair**:
 
-<figure markdown="span">
-![Data Snapshots](assets/snapshots/data-snapshots.png){ align=center }
-<figcaption>Data Snapshots</figcaption>
-</figure>
+- **ZIP file**: Contains sensor data (images, point clouds, etc.)
+- **Arrow file**: Contains annotations (labels, bounding boxes, masks, metadata)
+
+This format makes snapshots easy to download, share, archive, and re-import into any EdgeFirst Studio project.
+
+{{ figure("assets/snapshots/data-snapshots.png", "Data Snapshots") }}
 
 The snapshots menu shows the list of snapshots with its name and status.
 
-<figure markdown="span">
-![Snapshot List](assets/snapshots/snapshot-list.png){ align=center }
-<figcaption>Snapshot List</figcaption>
-</figure>
+{{ figure("assets/snapshots/snapshot-list.png", "Snapshot List") }}
 
 ## Create Snapshot
 
@@ -20,10 +19,7 @@ The tutorial for creating snapshots can be found under the [Dataset Annotations]
 
 The stages for creating a snapshot are shown below.
 
-<figure markdown="span">
-![Create Snapshot Stages](../datasets/assets/annotations/automatic/snapshot-creation-process.png){ align=center }
-<figcaption>Create Snapshot Stages</figcaption>
-</figure>
+{{ figure("../datasets/assets/annotations/automatic/snapshot-creation-process.png", "Create Snapshot Stages") }}
 
 A snapshot can be created by the following ways:
 
@@ -46,13 +42,14 @@ A snapshot can be created by the following ways:
 
 ### Upload from Zip/Arrow File
 
-This format is the [EdgeFirst Dataset Format](../datasets/format/index.md) where the [Zip file](../datasets/format/index.md#dataset-storage-format) contains sensor reading and measurements and the [Arrow file](../datasets/format/index.md#dataset-annotation-format) contains dataset annotations. 
+This format is the [EdgeFirst Dataset Format](../datasets/format/index.md) where the [Zip file](../datasets/format/sensors.md) contains sensor readings and measurements and the [Arrow file](../datasets/format/schema.md) contains dataset annotations.
 
 1. Go to the snapshots dashboard.
-2. Click on the "FROM FILE" button and then select the Zip and Arrow file pairs to import or drag and drop as a folder containing Zip and Arrow file pairs onto the dashboard. 
+2. Click on the "FROM FILE" button and then select the Zip and Arrow file pairs to import or drag and drop as a folder containing Zip and Arrow file pairs onto the dashboard.
 3. Once the files are selected, this will start the import sequence progress shown below.
 
 ### Pipeline
+
 When creating a snapshot a pipeline with the following stages are deployed.
 
 1. Server Initialization: Initialize the backend server for handling the processes.
@@ -69,25 +66,16 @@ The tutorial for restoring snapshots can be found under the [Dataset Annotations
 
 The stages for restoring a snapshot are shown below.
 
-<figure markdown="span">
-![Restore Snapshot Stages](../datasets/assets/annotations/automatic/snapshot-restore-process.jpg){ align=center }
-<figcaption>Restore Snapshot Stages</figcaption>
-</figure>
+{{ figure("../datasets/assets/annotations/automatic/snapshot-restore-process.jpg", "Restore Snapshot Stages") }}
 
 1. Click on the snapshot context menu (three dots).
 2. Select "Restore".
 
-<figure markdown="span">
-![Snapshot Options](assets/snapshots/options.png){ align=center }
-<figcaption>Snapshot Options</figcaption>
-</figure>
+{{ figure("assets/snapshots/options.png", "Snapshot Options") }}
 
 3. This will open the restore dialog for specifying the options.
 
-<figure markdown="span">
-![Restore Options](assets/snapshots/restore-dialog.png){ align=center }
-<figcaption>Restore Options</figcaption>
-</figure>
+{{ figure("assets/snapshots/restore-dialog.png", "Restore Options") }}
 
 4. Select "Project" where the dataset will be created.
 5. Enter the dataset name and description. If the dataset name is not provided a dataset, a dataset with the snapshot name will be created.
@@ -100,6 +88,7 @@ The stages for restoring a snapshot are shown below.
 12. The progress for different stages will be at different rates.
 
 ### Pipeline
+
 When restoring a snapshot a pipeline with the following stages are deployed.
 
 1. Download Snapshot from Cloud Storage: Fetches the dataset from the S3 server.
@@ -114,17 +103,28 @@ When restoring a snapshot a pipeline with the following stages are deployed.
 1. Click on the snapshot context menu (three dots).
 2. Select "Download".
 
-This will download the snapshot as Zip/Arrow to your local machine.
+This downloads the snapshot as a **ZIP + Arrow file pair** to your local machine:
+
+```
+my_snapshot.zip       # Sensor data (images, point clouds)
+my_snapshot.arrow     # Annotations (labels, boxes, masks)
+```
+
+These files follow the [EdgeFirst Dataset Format](../datasets/format/index.md) and can be:
+
+- Re-imported into any EdgeFirst Studio project as a new snapshot
+- Used for offline analysis with Python/Polars
+- Shared with collaborators or archived for backup
+- Processed by custom ML pipelines outside of Studio
+
+See [Dataset Organization](../datasets/format/structure.md) for details on the internal structure of these files.
 
 ## Delete Snapshot
 
 1. Click on the snapshot context menu (three dots).
 2. Select "Remove".
 
-<figure markdown="span">
-![Snapshot Options](assets/snapshots/options.png){ align=center }
-<figcaption>Snapshot Options</figcaption>
-</figure>
+{{ figure("assets/snapshots/options.png", "Snapshot Options") }}
 
 ## Next Steps
 

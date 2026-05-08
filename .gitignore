@@ -3,4 +3,9 @@
 .venv/
 .vscode/
 .idea/
+.cache/
 .DS_Store
+.cache/
+*.log
+TODO.md
+__pycache__/

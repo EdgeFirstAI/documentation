@@ -31,8 +31,8 @@ This page presents comprehensive benchmark results for ModelPack, a versatile mo
     Visit the full **Playingcards** dataset [Benchmark here](../../datasets/playingcards/index.md).
 
 === "Coffee Cup"
-    
-    ## Object Detection and Segmentation Metrcis
+
+    ## Object Detection and Segmentation Metrics
     
     **Table: ModelPack on CoffeeCup - RGB - (640x640) | ONNX**
 
@@ -72,7 +72,7 @@ This page presents comprehensive benchmark results for ModelPack, a versatile mo
     Visit the full **BDD100K** dataset [Benchmark here](../../datasets/bdd100k/index.md).
 
 === "COCO People"
-    
+
     This dataset contains only annotations for person class from original dataset. However, all the images are included during training as negative samples
 
     **Table: ModelPack on COCO People - RGB - (640x640) - ONNX - (100 epochs)**

@@ -1,6 +1,6 @@
 # MobileNet SSD Examples
 
-These examples demonstrate how to deploy a MobileNet SSD V1 model using the NPU of an embedded platform such as a [Maivin](../../../platforms/quickstart.md).  The examples below are split into two parts; model inference on a single image and a model inference publisher. These examples have been tested on the TFLite files found in [this SSD-TFLite repository](https://github.com/apivovarov/ssd-tflite/tree/master), and in [ML-Zoo](https://github.com/Arm-Examples/ML-zoo/tree/master/models/object_detection/ssd_mobilenet_v1).  
+These examples demonstrate how to deploy a MobileNet SSD V1 model using the NPU of an embedded platform such as a [Maivin](../../../platforms/quickstart/maivin/index.md).  The examples below are split into two parts; model inference on a single image and a model inference publisher. These examples have been tested on the TFLite files found in [this SSD-TFLite repository](https://github.com/apivovarov/ssd-tflite/tree/master), and in [ML-Zoo](https://github.com/Arm-Examples/ML-zoo/tree/master/models/object_detection/ssd_mobilenet_v1).  
 
 !!! note
     In a future release of the EdgeFirst middleware, the Model Service will be able to run MobileNet SSD V1 models natively, again, testing on the above examples.
@@ -11,12 +11,12 @@ This example will run inference from a MobileNet SSD V1 model on a sample pictur
 
 For a quick demonstration, go to the "ssd-tflite" repository and download the following files.
 
-1. [MobileNet SSD Model `ssd_mobilenet_v1_0.75_depth_quantized_300x300_coco14_sync_2018_07_18.tflite`](https://github.com/apivovarov/ssd-tflite/blob/master/ssd_mobilenet_v1_0.75_depth_quantized_300x300_coco14_sync_2018_07_18.tflite) 
+1. [MobileNet SSD Model `ssd_mobilenet_v1_0.75_depth_quantized_300x300_coco14_sync_2018_07_18.tflite`](https://github.com/apivovarov/ssd-tflite/blob/master/ssd_mobilenet_v1_0.75_depth_quantized_300x300_coco14_sync_2018_07_18.tflite)
 2. [Sample Image](https://github.com/apivovarov/ssd-tflite/blob/master/dog.jpg)
 
 Download our [Python Script](assets/run-tflite.py){: download="run-tflite.py"} for running the example.
 
-Once the files have been downloaded, [SCP](../../../platforms/ssh.md#secure-copy) the files into the embedded platform.
+Once the files have been downloaded, [SCP](../../../platforms/networking/ssh.md#secure-copy) the files into the embedded platform.
 
 Run the script with the command `python3 run-tflite.py`.  The script should print the inference time in milliseconds and the model detections as follows.
 
@@ -77,10 +77,7 @@ Found objects:
 
 Furthermore, a new image should be saved `img_vis.jpg` showing the model output visualizations.
 
-<figure markdown="span">
-![Model Inference](assets/img_vis.jpg){align=center}
-<figcaption>Model Inference</figcaption>
-</figure>
+{{ figure("assets/img_vis.jpg", "Model Inference") }}
 
 The following breakdown of the script describing the steps of the model inference is provided below.
 
@@ -95,9 +92,8 @@ The following breakdown of the script describing the steps of the model inferenc
     ```
 
     !!! note "OpenVX Delegate"
-        The OpenVX delegate is specified with `experimental_delegates=[ext_delegate]`. 
+        The OpenVX delegate is specified with `experimental_delegates=[ext_delegate]`.
         To use the CPU, remove this specification.
-
 
 2. Allocate tensors to allocate memory and sets up input/output tensor bindings.
 
@@ -105,7 +101,7 @@ The following breakdown of the script describing the steps of the model inferenc
     ip.allocate_tensors()
     ```
 
-3. Call invoke() once at the start as a model warmup since the first call may take up to 9 seconds to run. 
+3. Call invoke() once at the start as a model warmup since the first call may take up to 9 seconds to run.
 
     ```python
     ip.invoke()
@@ -167,9 +163,10 @@ These are the postprocessed model outputs which can then be visualized.
     The model outputs a maximum of 10 detections.  Currently there is no option to set the NMS parameters such as IoU and score thresholds using this model. 
 
 ## Publisher Server
+
 Additionally, this can be all integrated to simulate the model service using any pre-defined SSD model, for this example we will use the pretrained TFLite SSD model. This can be done with the provided [Publisher Script](assets/boxes2d_publisher.py){: download="boxes2d_publisher.py"}
 
-This script is required to run on the target as it will use the DMA Buffer topic to provide the images for the model. Additionally, the script will need to be run using sudo as it needs to access the file descriptor to get the DMA buffer and cannot without sudo. 
+This script is required to run on the target as it will use the DMA Buffer topic to provide the images for the model. Additionally, the script will need to be run using sudo as it needs to access the file descriptor to get the DMA buffer and cannot without sudo.
 
 1. Disable the current model service with the following command:
 
@@ -190,6 +187,7 @@ This script is required to run on the target as it will use the DMA Buffer topic
 3. The `/rt/model/boxes2d` topic will now be published once again and can be subscribed to by any other example.
 
 Once you disable the server, you should restart the model service with the following command.
+
 ```
 sudo systemctl restart model
 ```

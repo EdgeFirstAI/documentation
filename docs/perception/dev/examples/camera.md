@@ -4,10 +4,10 @@ These examples demonstrate how to connect to various camera topics published on 
 
 !!! warning
 
-    If the Rerun live feed appears to lag, your computer may lack the processing necessary for that stream size, either reduce the [stream size](../../../platforms/configuration.md#stream-size) or use the --save argument to save it as a .rrd file which you can replay afterwards
+    If the Rerun live feed appears to lag, your computer may lack the processing necessary for that stream size, either reduce the [stream size](../../../platforms/configuration/camera.md#stream-size) or use the --save argument to save it as a .rrd file which you can replay afterwards
 
+## Camera Info
 
-## Camera Info 
 Topic: [/camera/info](../../topics/camera.md#camerainfo)  
 Message: [Image](../../api/sensor_msgs.md#camerainfo)  
 Sample Code: [Python](https://github.com/EdgeFirstAI/samples/blob/main/python/camera/camera_info.py) / [Rust](https://github.com/EdgeFirstAI/samples/blob/main/rust/camera/camera_info.rs)
@@ -78,8 +78,10 @@ The CameraInfo message contains camera calibration and configuration information
     ```
 
 ### Results
+
 When displaying the results through Rerun you will see a log of the camera width and height.
-![alt text](assets/camera_info.png)
+
+{{ figure("assets/camera_info.png", "Camera Information") }}
 
 === "Rust"
 
@@ -92,6 +94,7 @@ When displaying the results through Rerun you will see a log of the camera width
     ```
 
 ## DMA Buffer
+
 Topic: [/camera/dma](../../topics/camera.md#cameradma)  
 Message: [DmaBuffer](../../api/edgefirst_msgs.md#dmabuffer)  
 Sample Code: [Python](https://github.com/EdgeFirstAI/samples/blob/main/python/camera/dma.py) / [Rust](https://github.com/EdgeFirstAI/samples/blob/main/rust/camera/dma.rs)  
@@ -210,10 +213,13 @@ The DmaBuffer message contains the process ID of the service that created the DM
     ```
 
 ### Results
+
 When displaying the results through Rerun you will see the live camera feed from your EdgeFirst Platform.
-![alt text](assets/dma.png)
+
+{{ figure("assets/dma.png", "Live Camera Feed DMA") }}
 
 ## H264 Camera Feed
+
 Topic: [/camera/h264](../../topics/camera.md#camerah264)  
 Message: [CompressedVideo](../../api/foxglove_msgs.md#compressedvideo)  
 Sample Code: [Python](https://github.com/EdgeFirstAI/samples/blob/main/python/camera/h264.py) / [Rust](https://github.com/EdgeFirstAI/samples/blob/main/rust/camera/h264.rs)
@@ -315,10 +321,13 @@ The CompressedVideo message contains H.264 encoded video data. This data can be 
     ```
 
 ### Results
+
 When displaying the results through Rerun you will see the live camera feed from your EdgeFirst Platform.
-![alt text](assets/h264.png)
+
+{{ figure("assets/h264.png", "Live Camera Feed") }}
 
 ## JPEG Camera Feed
+
 Topic: [/camera/jpeg](../../topics/camera.md#camerajpeg)  
 Message: [CompressedImage](../../api/sensor_msgs.md#compressedimage)  
 Sample Code: [Python](https://github.com/EdgeFirstAI/samples/blob/main/python/camera/jpeg.py) / [Rust](https://github.com/EdgeFirstAI/samples/blob/main/rust/camera/)
@@ -397,5 +406,7 @@ The CompressedImage message contains JPEG encoded image data. You can process th
     ``` 
 
 ### Results
+
 When displaying the results through Rerun you will see the JPEG image feed.
-![alt text](assets/jpeg.png)
+
+{{ figure("assets/jpeg.png", "JPEG Image Feed") }}

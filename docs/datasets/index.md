@@ -1,7 +1,9 @@
 # EdgeFirst Studio Dataset Zoo
 
+The EdgeFirst Studio Dataset Zoo offers two types of datasets:
 
-The EdgeFirst Studio Dataset Zoo provides commercially clean public EdgeFirst Datasets which can be licensed from Au-Zone Technologies and aswell as third-party datasets that's provided for evaluation and research purposes only.  Please refer to their respective licensing restrictions.
+- **EdgeFirst Datasets**: Commercially clean datasets you can license from Au-Zone Technologies
+- **Third-party Datasets**: Datasets for evaluation and research only (see their licensing restrictions)
 
 === "Coffee Cup"
 
@@ -21,7 +23,7 @@ The EdgeFirst Studio Dataset Zoo provides commercially clean public EdgeFirst Da
 
 === "BDD100K"
 
-    The BDD100K dataset was created by [UC Berkeley](https://bair.berkeley.edu/blog/2018/05/30/bdd/) which is a large-scale driving video dataset seeking to improve autonomous driving and real-world scene understanding solutions.  The dataset consists of 100,000 videos; each video about 40 seconds long at 720p and 30 FPS recorded by cell-phones.  The dataset contains 10 labels focusing on traffic entities and includes labels for object detection, lane marking, driveable areas, semantic and instance segmentation, tracking, and more.  This is a large dataset and training Object Detection models in EdgeFirst Studio using this dataset is a costly operation which can take up to 3 days.  Once trained, the models can also be deployed in the PC, NXP's i.MX 8M Plus EVK, or a field-ready [EdgeFirst Platform](../platforms/index.md) such as a Maivin or a Raivin.
+    The BDD100K dataset was created by [UC Berkeley](https://bair.berkeley.edu/blog/2018/05/30/bdd/) which is a large-scale driving video dataset seeking to improve autonomous driving and real-world scene understanding solutions.  The dataset consists of 100,000 videos; each video about 40 seconds long at 720p and 30 FPS recorded by cell-phones.  The dataset contains 10 labels focusing on traffic entities and includes labels for object detection, lane marking, drivable areas, semantic and instance segmentation, tracking, and more.  This is a large dataset and training Object Detection models in EdgeFirst Studio using this dataset is a costly operation which can take up to 3 days.  Once trained, the models can also be deployed in the PC, NXP's i.MX 8M Plus EVK, or a field-ready [EdgeFirst Platform](../platforms/index.md) such as a Maivin or a Raivin.
 
     !!! note "Third Party Dataset"
         BDD100K is a third-party dataset that's provided for evaluation and research purposes only.  Please refer to their respective licensing restrictions.
@@ -54,7 +56,7 @@ The EdgeFirst Studio Dataset Zoo provides commercially clean public EdgeFirst Da
 
 === "Raivin Ultra Short"
 
-    The Raivin Ultra Short dataset was created by Au-Zone Technologies using a [Raivin platform](../platforms/index.md) with either the base Radar module or a LiDAR module attached to the device to aid in the 3D annotation process.  The dataset contains a single label "person" with 2D (image-based bounding box and instance segmentation) and 3D (real-world bounding boxes) annotations useful for training Object Detection or Fusion models for scene-understanding and spatial-perception tasks.  The dataset samples contains both indoor and rigourous outdoor environments such as construction sites.  The dataset is set to an ultra short range where the field of the objects spans no more than 10 meters away from the Raivin sensor. A Fusion model can be trained in EdgeFirst Studio using this dataset in under 1 hour.  The trained models can be deployed in a field-ready [Raivin Platform](../platforms/index.md) for people awareness tasks.
+    The Raivin Ultra Short dataset was created by Au-Zone Technologies using a [Raivin platform](../platforms/quickstart/raivin/index.md) with either the base Radar module or a LiDAR module attached to the device to aid in the 3D annotation process.  The dataset contains a single label "person" with 2D (image-based bounding box and instance segmentation) and 3D (real-world bounding boxes) annotations useful for training Object Detection or Fusion models for scene-understanding and spatial-perception tasks.  The dataset samples contains both indoor and rigorous outdoor environments such as construction sites.  The dataset is set to an ultra short range where the field of the objects spans no more than 10 meters away from the Raivin sensor. A Fusion model can be trained in EdgeFirst Studio using this dataset in under 1 hour.  The trained models can be deployed in a field-ready [Raivin Platform](../platforms/quickstart/raivin/index.md) for people awareness tasks.
 
     <div style="max-width: fit-content; margin-left: auto; margin-right: auto;" class="wizard-actions" markdown>
     [Read More](raivin_ultra_short/index.md){ .md-button }
@@ -64,7 +66,26 @@ The EdgeFirst Studio Dataset Zoo provides commercially clean public EdgeFirst Da
     📬 If you need support for additional datasets,
     please do not hesitate and [email our support team](mailto:support@edgefirst.ai) — we’re here to help!
 
-The [EdgeFirst Dataset Format](format/index.md) is purposely designed to efficiently store multiple annotation types and sensor types.  There are 2D and 3D types of annotations that correlate with each other. For example, a 2D annotation is a set of pixel-based bounding boxes and segmentation masks whereas a 3D annotation is a set of 3D bounding boxes in meters.  However, a single object can be described by all three linked annotation types: a 2D bounding box, a 2D mask, and a 3D bounding box.  There could be multiple sensors involved in creating the dataset such as the camera, Radar and/or LiDAR, etc.  The readings from these sensors is rarely modified and needs to be disinguished in the dataset.  Thus, the EdgeFirst Dataset is known for its file pairs (typically Zip and Arrow) for storing the sensor data and annotations separately.  The [EdgeFirst Dataset File Structure](structure.md) comes in various forms depending if the data is a sequence or not. 
+The [EdgeFirst Dataset Format](format/index.md) is purposely designed to efficiently store multiple annotation types and sensor types.
+
+## Format Quick Reference
+
+| Component | Contents | Purpose |
+|-----------|----------|---------|
+| **ZIP file** | Images, point clouds, sensor data | Raw captured data organized by sequence/frame |
+| **Arrow file** | Annotations, labels, metadata | Efficient columnar storage for ML training |
+
+This format is used throughout EdgeFirst Studio:
+
+- **[Snapshots](../studio/snapshots.md)**: Portable ZIP+Arrow pairs for download and sharing
+- **[MCAP uploads](../perception/data_collection/publishing.md)**: Converted to this format when restored as datasets
+- **[Training](../models/training/vision.md)**: Arrow annotations feed directly into model training
+
+Learn more in the [Format Documentation](format/index.md).
+
+---
+
+There are 2D and 3D types of annotations that correlate with each other. For example, a 2D annotation is a set of pixel-based bounding boxes and segmentation masks whereas a 3D annotation is a set of 3D bounding boxes in meters.  However, a single object can be described by all three linked annotation types: a 2D bounding box, a 2D mask, and a 3D bounding box.  There could be multiple sensors involved in creating the dataset such as the camera, Radar and/or LiDAR, etc.  The readings from these sensors is rarely modified and needs to be distinguished in the dataset.  Thus, the EdgeFirst Dataset is known for its file pairs (typically Zip and Arrow) for storing the sensor data and annotations separately.  The [EdgeFirst Dataset File Structure](format/structure.md) comes in various forms depending if the data is a sequence or not.
 
 ## Related Articles
 

@@ -2,23 +2,20 @@
 
 This section will provide a demo for deploying a quantized ONNX and TFLite model from Ultralytics using the NPU in the i.MX 8M Plus EVK.
 
-## Deploying Quantized ONNX 
+## Deploying Quantized ONNX
 
-In this example, we have taken the pretrained quantized ONNX model from the [ONNX model zoo](https://github.com/onnx/models/tree/main/validated/vision/object_detection_segmentation/ssd-mobilenetv1).   In particular the SSD-MobilenetV1-12-int8 was downloaded. 
+In this example, we have taken the pretrained quantized ONNX model from the [ONNX model zoo](https://github.com/onnx/models/tree/main/validated/vision/object_detection_segmentation/ssd-mobilenetv1).   In particular the SSD-MobilenetV1-12-int8 was downloaded.
 
 !!! tip "ONNX Deployment"
     When deploying ONNX models on target, it is recommended to quantize the ONNX to deploy on the NPU using these providers `['NnapiExecutionProvider', 'VsiNpuExecutionProvider']` or convert it to FP16 to deploy on the GPU using this provider `["CUDAExecutionProvider"]`.
 
-Download our [Python Script](assets/run-onnx.py){: download="run-onnx.py"} for running the example. 
+Download our [Python Script](assets/run-onnx.py){: download="run-onnx.py"} for running the example.
 
-Lastly, you can try this sample image [000000000064.jpg](assets/000000000064.jpg){: download="000000000064.jpg" } taken from [COCO128](https://www.kaggle.com/datasets/ultralytics/coco128). 
+Lastly, you can try this sample image [000000000064.jpg](assets/000000000064.jpg){: download="000000000064.jpg" } taken from [COCO128](https://www.kaggle.com/datasets/ultralytics/coco128).
 
-<figure markdown="span">
-![Sample COCO Image](assets/000000000064.jpg){ align=center }
-<figcaption>Sample COCO Image</figcaption>
-</figure>
+{{ figure("assets/000000000064.jpg", "Sample COCO Image") }}
 
-Once the files have been downloaded, [SCP](../../platforms/ssh.md#secure-copy) the files into the embedded platform.
+Once the files have been downloaded, [SCP](../../platforms/networking/ssh.md#secure-copy) the files into the embedded platform.
 
 Run the script with the command `python3 run-onnx.py`.  The script should print the inference time in milliseconds and the model detections as follows.
 
@@ -35,10 +32,7 @@ Found objects:
 
 A new image should be saved `img_vis.jpg` showing the model output visualizations.
 
-<figure markdown="span">
-![Model Inference](assets/img_vis-onnx.jpg){align=center}
-<figcaption>Model Inference</figcaption>
-</figure>
+{{ figure("assets/img_vis-onnx.jpg", "Model Inference") }}
 
 The following breakdown of the script describing the steps of the model inference is provided below.
 
@@ -51,8 +45,8 @@ The following breakdown of the script describing the steps of the model inferenc
     ```
 
     !!! note "Execution Providers"
-        The device NPU can be specified with `['NnapiExecutionProvider', 'VsiNpuExecutionProvider']`.  The NPU exeution providers are not seen in later BSPs such as 6.12.  However, these providers can be seen in lower BSPs like 5.15.
-        
+        The device NPU can be specified with `['NnapiExecutionProvider', 'VsiNpuExecutionProvider']`.  The NPU execution providers are not seen in later BSPs such as 6.12.  However, these providers can be seen in lower BSPs like 5.15.
+
         The device GPU can be specified with `['CUDAExecutionProvider']`.
 
 2. Preprocess input image by resizing to the input shape of the model and type-casting the values to the input data type requirements of the model.
@@ -90,11 +84,11 @@ The following breakdown of the script describing the steps of the model inferenc
     scores = scores[mask]
     ```
 
-These outputs can then be taken and visualized as shown in the Python script. 
+These outputs can then be taken and visualized as shown in the Python script.
 
 ## Deploying Quantized TFLite
 
-In this example, we have taken the [small PyTorch segmentation model](https://github.com/ultralytics/assets/releases/download/v8.3.0/yolov8s-seg.pt) from Ultralytics and [exported the model to a quantized TFLite](quantize.md).  Once the TFLite is exported, you can deploy it on target as shown below. 
+In this example, we have taken the [small PyTorch segmentation model](https://github.com/ultralytics/assets/releases/download/v8.3.0/yolov8s-seg.pt) from Ultralytics and [exported the model to a quantized TFLite](quantize.md).  Once the TFLite is exported, you can deploy it on target as shown below.
 
 === "i.MX 8M Plus"
 
@@ -104,12 +98,9 @@ In this example, we have taken the [small PyTorch segmentation model](https://gi
 
     Lastly, you can try this sample image [000000000064.jpg](assets/000000000064.jpg){: download="000000000064.jpg" } taken from [COCO128](https://www.kaggle.com/datasets/ultralytics/coco128). 
 
-    <figure markdown="span">
-    ![Sample COCO Image](assets/000000000064.jpg){ align=center }
-    <figcaption>Sample COCO Image</figcaption>
-    </figure>
+    {{ figure("assets/000000000064.jpg", "Sample COCO Image") }}
 
-    Once the files have been downloaded, [SCP](../../platforms/ssh.md#secure-copy) the files into the embedded platform.
+    Once the files have been downloaded, [SCP](../../platforms/networking/ssh.md#secure-copy) the files into the embedded platform.
 
     Run the script with the command `python3 run-tflite.py`.  The script should print the inference time in milliseconds and the model detections as follows.
 
@@ -148,10 +139,7 @@ In this example, we have taken the [small PyTorch segmentation model](https://gi
 
     A new image should be saved `img_vis.jpg` showing the model output visualizations.
 
-    <figure markdown="span">
-    ![Model Inference](assets/img_vis.jpg){align=center}
-    <figcaption>Model Inference</figcaption>
-    </figure>
+    {{ figure("assets/img_vis.jpg", "Model Inference") }}
 
 === "i.MX 95"
 
@@ -161,12 +149,9 @@ In this example, we have taken the [small PyTorch segmentation model](https://gi
 
     Lastly, you can try this sample image [000000000064.jpg](assets/000000000064.jpg){: download="000000000064.jpg" } taken from [COCO128](https://www.kaggle.com/datasets/ultralytics/coco128). 
 
-    <figure markdown="span">
-    ![Sample COCO Image](assets/000000000064.jpg){ align=center }
-    <figcaption>Sample COCO Image</figcaption>
-    </figure>
+    {{ figure("assets/000000000064.jpg", "Sample COCO Image") }}
 
-    Once the files have been downloaded, [SCP](../../platforms/ssh.md#secure-copy) the files into the embedded platform.
+    Once the files have been downloaded, [SCP](../../platforms/networking/ssh.md#secure-copy) the files into the embedded platform.
 
     Run the script with the command `python3 run-tflite.py`.  The script should print the inference time in milliseconds and the model detections as follows.
 
@@ -186,10 +171,7 @@ In this example, we have taken the [small PyTorch segmentation model](https://gi
 
     A new image should be saved `img_vis.jpg` showing the model output visualizations.
 
-    <figure markdown="span">
-    ![Model Inference](assets/img_vis.jpg){align=center}
-    <figcaption>Model Inference</figcaption>
-    </figure>
+    {{ figure("assets/img_vis.jpg", "Model Inference") }}
 
 ## Walkthrough of the Run Model script
 
@@ -207,7 +189,7 @@ The `run-tflite.py` script executes the following steps to run the TFLite model 
     ```
 
     !!! note "OpenVX Delegate"
-        The OpenVX delegate is specified with `experimental_delegates=[ext_delegate]`. 
+        The OpenVX delegate is specified with `experimental_delegates=[ext_delegate]`.
         To use the CPU, remove this specification.
 
 2. Allocate tensors to allocate memory and sets up input/output tensor bindings.
@@ -216,7 +198,7 @@ The `run-tflite.py` script executes the following steps to run the TFLite model 
     ip.allocate_tensors()
     ```
 
-3. Call invoke() once at the start as a model warmup since the first call may take up to 9 seconds to run. 
+3. Call invoke() once at the start as a model warmup since the first call may take up to 9 seconds to run.
 
     ```python
     ip.invoke()
@@ -305,10 +287,10 @@ The `run-tflite.py` script executes the following steps to run the TFLite model 
     masks = crop_mask(masks, boxes)
     ```
 
-The decoded outputs can then be taken and visualized as shown above. 
+The decoded outputs can then be taken and visualized as shown above.
 
 !!! note "Output Decoding"
-    For the decoding steps 8-9, see the python script provided above to see the functions `decode_boxes` and `decode_masks`. 
+    For the decoding steps 8-9, see the python script provided above to see the functions `decode_boxes` and `decode_masks`.
 
 ## Next Steps
 

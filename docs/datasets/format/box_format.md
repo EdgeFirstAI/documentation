@@ -1,132 +1,167 @@
-# 2D Bounding Box Formats
+# Box Formats
 
-This section describes the different formats of 2D bounding box annotations.  These annotation formats are different ways of representing the same annotation and position of the bounding boxes surrounding the objects in an image.
+EdgeFirst 2026.04 introduces **metadata-based format selection** for bounding boxes.
+The `box2d_format` and `box3d_format` file-level metadata keys describe the array
+layout so that readers can interpret box data without assumptions.
 
-## Annotation Formats
+## Box2D
 
-Currently, there are three recognized formats:
+### Format Descriptors
 
-1. [YOLO](https://docs.ultralytics.com/datasets/detect/)
-2. [PASCAL VOC](https://labelformat.com/formats/object-detection/pascalvoc/)
-3. [COCO](https://cocodataset.org/#format-data)
+The `box2d_format` metadata key selects the array element order:
 
-### YOLO Format
+| Value | Array Layout | JSON Fields | Description |
+|-------|-------------|-------------|-------------|
+| `cxcywh` | `[center_x, center_y, width, height]` | `{cx, cy, w, h}` | ML standard (YOLO, etc.) |
+| `xyxy` | `[x_min, y_min, x_max, y_max]` | `{x1, y1, x2, y2}` | Corner-pair format |
+| `ltwh` | `[left, top, width, height]` | `{x, y, w, h}` | COCO / Studio legacy format |
 
-The YOLO format describes the bounding boxes in the following way: `class xc yc width height`.
+### Coordinate System
 
-The class is an integer which represents the object class ID.  The object class ID represents the index of the object in a unique set of labels.
+The `box2d_normalized` metadata key indicates whether coordinates are normalized:
 
-For example, if the unique set of labels is the following below.
+| Value | Description |
+|-------|-------------|
+| `"true"` (default) | Coordinates in 0..1 range, resolution-independent |
+| `"false"` | Pixel coordinates |
 
-```
-background
-person
-car
-```
+!!! note "Value representation differs by format"
+    In Arrow/Parquet file metadata, all values are strings (`"true"`, `"false"`).
+    In JSON files, use native boolean values (`true`, `false`).
 
-If the object class ID is 1, then the object label would be "person". Similarly, 2 would point to "car" and 0 is "background".
+### Default Behavior (Metadata Absent)
 
-Consider the following image below as a reference with a bounding box around the person in the center of the image.
+When `box2d_format` metadata is **absent**, the default depends on the storage format.
+This preserves backward compatibility with files written before metadata was introduced.
 
-<figure markdown="span">
-![YOLO Format](../assets/format/yolo_format.png){ align=center }
-<figcaption>YOLO Format</figcaption>
-</figure>
+| Storage Format | Default `box2d_format` | Reason |
+|---------------|------------------------|--------|
+| Arrow IPC | `cxcywh` | Backward compatibility with 2025.10 Arrow files |
+| Parquet | `cxcywh` | New format, follows Arrow convention |
+| JSON (file) | `ltwh` | Backward compatibility with Studio JSON-RPC API |
+| JSON-RPC API | Always `ltwh` | Fixed protocol, cannot be changed |
 
-The coordinate *xc* represents the center of the bounding box normalized to the image width, *W*.  This means that if *x_center* is the x-coordinate of the center of the bounding box in pixels, then 
+!!! tip "When metadata IS present, it is authoritative"
+    Regardless of storage format, the `box2d_format` metadata value overrides the
+    default. A JSON file with `"box2d_format": "cxcywh"` uses center coordinates.
 
-```
-xc = x_center/W
-xc = 646/1280 = 0.5046875
-```
-
-The coordinate *yc* has the same idea, except that this coordinate is normalized to the image height, *H*.  This means that if *y_center* is the y-coordinate of the center of the bounding box in pixels, then
-
-```
-yc = y_center/H
-yc = 403/720 = 0.5597222
-```
-
-The *width* is not the width of the image.  The *width* is the normalized width of the bounding box.  This means that if *bbx_width* represents the width of the bounding box in pixels, then
+### Conversion Between Formats
 
 ```
-width = bbx_width/W
-width = 188/1280 = 0.146875
+cxcywh → ltwh:  left = cx - w/2,  top = cy - h/2
+ltwh → cxcywh:  cx = left + w/2,  cy = top + h/2
+
+cxcywh → xyxy:  x_min = cx - w/2, y_min = cy - h/2, x_max = cx + w/2, y_max = cy + h/2
+xyxy → cxcywh:  cx = (x_min + x_max) / 2, cy = (y_min + y_max) / 2,
+                w = x_max - x_min, h = y_max - y_min
 ```
 
-The *height* has the same idea, except that this dimension is normalized to the height of the image.  This means that if *bbx_height* represents the height of the bounding box in pixels, then
+### Coordinate Diagram
 
-```
-height = bbx_height/H
-height = 460/720 = 0.6388889
-```
+```mermaid
+graph TB
+    subgraph Image["Image Coordinate System (0,0) = Top-Left"]
+        direction LR
+        Origin["(0,0)"]
+        Box["Box"]
 
-!!! note
-    The values for *xc, yc, width, and height* are floating-point values. 
+        subgraph JSON_Box["ltwh: Left/Top"]
+            JPoint["(x, y) = Top-Left Corner"]
+            JDim["w, h"]
+        end
 
-Finally, a text file annotation in a Darknet dataset would contain the line `1 0.5046875 0.5597222 0.146875 0.6388889`.
+        subgraph DF_Box["cxcywh: Center"]
+            DPoint["(cx, cy) = Center"]
+            DDim["w, h"]
+        end
+    end
 
-### PascalVOC Format
+    Origin -.->|"x direction"| Box
+    Origin -.->|"y direction"| Box
 
-The PASCAL VOC format describes the bounding boxes in the following way: `class x1 y1 x2 y2`.
-
-The class follows the same idea as the YOLO format above.  However, the coordinates are represented differently.
-
-Consider the following image below as a reference with a bounding box around the person in the center of the image.
-
-<figure markdown="span">
-![PascalVOC Format](../assets/format/pascalvoc_format.png){ align=center }
-<figcaption>PascalVOC Format</figcaption>
-</figure>
-
-The coordinates point to the corners of the bounding box in pixels as shown below.
-
-<figure markdown="span">
-![Box Corners](../assets/format/pascalvoc_format_2.png){ align=center }
-<figcaption>Box Corners</figcaption>
-</figure>
-
-If the width of the image is *W*, and the height of the image is *H*, then the coordinates in PascalVOC format are described below.
-
-```
-x1 = Xmin/W = 552/1280 = 0.43125
-y1 = Ymin/H = 174/720 = 0.241667
-x2 = Xmax/W = 740/1280 = 0.578125
-y2 = Ymax/H = 634/720 = 0.880556
+    style JSON_Box fill:#fff9c4,stroke:#f57f17,stroke-width:2px
+    style DF_Box fill:#c8e6c9,stroke:#388e3c,stroke-width:2px
+    style Image fill:#e3f2fd,stroke:#1565c0,stroke-width:3px
 ```
 
-!!! note
-    The coordinates x1, y1, x2, and y2 are all floating-point values.
-
-Finally, a text file annotation in a Darknet dataset would contain the line `1 0.43125 0.241667 0.578125 0.880556`.
-
-### COCO Format
-
-The COCO format is a combination of both YOLO and PascalVOC format and describes the bounding boxes in the following way: `class x1 y1 width height`.
-
-The class follows the same idea as the YOLO format.  In addition, *x1* and *y1* follow the same calculations as the *x1* and *y1* in PascalVOC format.  Finally, the *width* and the *height* follow the same calculations as the YOLO format as these represent the normalized width and the height of the bounding box respectively. 
-
-Consider the following image below as a reference with a bounding box around the person in the center of the image.
-
-<figure markdown="span">
-![COCO Format](../assets/format/coco_format.png){ align=center }
-<figcaption>COCO Format</figcaption>
-</figure>
+### Example (1920 x 1080 image)
 
 ```
-x1 = Xmin/W = 552/1280 = 0.43125
-y1 = Ymin/H = 174/720 = 0.241667
-width = bbx_width/W = 188/1280 = 0.146875
-height = bbx_height/H = 460/720 = 0.638889
+JSON (ltwh):      {x: 0.683854, y: 0.342593, w: 0.015104, h: 0.050926}
+Arrow (cxcywh):   [0.691406, 0.368056, 0.015104, 0.050926]
+
+Pixel coordinates:
+  Left:   0.683854 x 1920 = 1313 px
+  Top:    0.342593 x 1080 = 370 px
+  Width:  0.015104 x 1920 = 29 px
+  Height: 0.050926 x 1080 = 55 px
+
+  Center: (1313 + 29/2, 370 + 55/2) = (1327.5 px, 397.5 px)
+  cx:     1327.5 / 1920 = 0.691406
+  cy:     397.5  / 1080 = 0.368056
 ```
 
-!!! note
-    The coordinates x1, y1, x2, and y2 are all floating-point values.
+## Box3D
 
-Finally, a text file annotation in a Darknet dataset would contain the line `1 0.43125 0.241667 0.146875 0.638889`
+### Format Descriptor
 
-## Further Reading
+The `box3d_format` metadata key describes the 3D box array layout:
 
-This section has described three different annotation formats for describing 2D bounding box annotations: YOLO, PascalVOC, and COCO. 
+| Value | Array Layout | Description |
+|-------|-------------|-------------|
+| `cxcyczwhl` | `[center_x, center_y, center_z, width, height, length]` | Center of bounding box |
 
-Next, take a look at the conventions followed for the [EdgeFirst Dataset Structure](../structure.md) which describes how the file structure is organized depending if the dataset is sequence-based or not.
+### Dimension Axes
+
+| Dimension | Axis | Description |
+|-----------|------|-------------|
+| Width (w) | X | X-axis extent |
+| Height (h) | Y | Y-axis extent |
+| Length (l) | Z | Z-axis extent |
+
+All coordinates represent the **geometric center** of the 3D bounding box (not surface
+or object centroid).
+
+!!! warning "Corrected dimension order"
+    The authoritative array order is `[cx, cy, cz, w, h, l]`. Earlier documentation
+    may have listed `[x, y, z, l, w, h]` — that was a documentation error. The Rust
+    `Box3d` struct field order `{x, y, z, w, h, l}` matches this array layout exactly.
+
+### Coordinate System
+
+The `box3d_normalized` metadata key indicates whether coordinates are normalized:
+
+| Value | Description |
+|-------|-------------|
+| `"true"` (default) | Normalized 0..1 (e.g., camera-projected 3D boxes) |
+| `"false"` | Absolute units, typically meters (LiDAR / ROS convention) |
+
+### JSON Representation
+
+Both JSON and DataFrame use the same field semantics:
+
+```json
+{
+  "box3d": {
+    "x": 0.45,
+    "y": 0.12,
+    "z": 0.03,
+    "w": 0.08,
+    "h": 0.06,
+    "l": 0.15
+  },
+  "box3d_score": 0.94
+}
+```
+
+**DataFrame equivalent**:
+
+```python
+box3d: [0.45, 0.12, 0.03, 0.08, 0.06, 0.15]
+#       cx    cy    cz    w     h     l
+```
+
+### References
+
+- [ROS Coordinate Conventions](https://www.ros.org/reps/rep-0103.html#coordinate-frame-conventions) (X=forward, Y=left, Z=up)
+- [Ouster Sensor Frame](https://static.ouster.dev/sensor-docs/image_route1/image_route2/sensor_data/sensor-data.html#sensor-coordinate-frame)

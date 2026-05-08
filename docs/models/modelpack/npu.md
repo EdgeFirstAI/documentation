@@ -1,5 +1,5 @@
 # Running Quantized ModelPack on Target
- 
+
 If you have a quantized ModelPack in TFLite format, you can follow the instructions below for running the model on target such as an i.MX 8M Plus EVK using a simple python script.
 
 You can download this [Python script](assets/run-tflite.py){: download="run-tflite.py"} script, this sample image [IMG_9004.png](assets/IMG_9004.png){: download="IMG_9004.png" }, and this [sample TFLite model](assets/coffeecup-modelpack-multitask-t-1f54.tflite){: download="coffeecup-modelpack-multitask-t-1f54.tflite"} for running the example on the target using the command below.
@@ -43,10 +43,7 @@ Found objects:
 
 A new image should be saved `img_vis.jpg` showing the model output visualizations.
 
-<figure markdown="span">
-![Model Inference](assets/img_vis.jpg){align=center}
-<figcaption>Model Inference</figcaption>
-</figure>
+{{ figure("assets/img_vis.jpg", "Model Inference") }}
 
 ## Walkthrough of the Run Model script
 
@@ -63,7 +60,7 @@ The `run-tflite.py` script executes the following steps to run the TFLite model 
     ```
 
     !!! note "OpenVX delegate"
-        The OpenVX delegate is specified with `experimental_delegates=[ext_delegate]`. 
+        The OpenVX delegate is specified with `experimental_delegates=[ext_delegate]`.
         To use the CPU, remove this specification.
 
 2. Allocate tensors to allocate memory and sets up input/output tensor bindings.
@@ -72,7 +69,7 @@ The `run-tflite.py` script executes the following steps to run the TFLite model 
     ip.allocate_tensors()
     ```
 
-3. Call invoke() once at the start as a model warmup since the first call may take up to 9 seconds to run. 
+3. Call invoke() once at the start as a model warmup since the first call may take up to 9 seconds to run.
 
     ```python
     ip.invoke()
@@ -164,4 +161,4 @@ The `run-tflite.py` script executes the following steps to run the TFLite model 
 
 ## Next Steps
 
-In this section you have seen how you can utilize a simple python script to run model inference on a single input image.  For example on deploying the model on target on a live camera feed, proceed to Deploying Quantized Models in the [EVK](../deployment/evk.md) or [Maivin](../deployment/maivin.md).
+In this section you have seen how you can utilize a simple python script to run model inference on a single input image.  For example on deploying the model on target on a live camera feed, proceed to Deploying Quantized Models in [Embedded Targets](../deployment/launcher.md) or [Maivin](../deployment/maivin.md).

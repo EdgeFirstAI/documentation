@@ -4,11 +4,11 @@ The EdgeFirst Fusion provides a framework for training and deploying camera+rada
 
 The EdgeFirst Fusion model performs early fusion using the low-level raw radar range-doppler data cube along with the camera input.  The middleware stack also allows for mid-level fusion using radar PCD.  Which is best suited depends on the target application, generally speaking the low-level fusion model provides the most robust performance in scenarios where camera degradation is expected.  By contrast the mid-level fusion requires the camera to be operating, but does not require specialized training as the model is trained only on camera data with the radar data fused later in the pipeline.
 
-![EdgeFirst Fusion Overview](../assets/fusion-overview.png)
+{{ figure("../assets/fusion-overview.png", "EdgeFirst Fusion Overview") }}
 
 ## Getting Started
 
-ModelPack can be trained now in Edgefirst Studio using a Graphical User Interface by following four simple steps:
+Fusion models can be trained now in [EdgeFirst Studio](https://edgefirst.studio/) using a Graphical User Interface by following four simple steps:
 
 === "Select Framework"
 
@@ -16,7 +16,7 @@ ModelPack can be trained now in Edgefirst Studio using a Graphical User Interfac
 
     1. Select **EdgeFirst Fusion** within the available training frameworks.
 
-    ![Select Fusion Training Framework](../assets/fusion/fusion-train-01.jpg){ align=center }
+    {{ img("../assets/fusion/fusion-train-01.jpg", "Select Fusion Training Framework") }}{ align=center }
 
     <div class="wizard-actions" style="max-width: fit-content; margin-left: auto; margin-right: auto;" markdown>
     [Next → 2. Name Session](#name-session){ .md-button .md-button--primary }
@@ -28,7 +28,7 @@ ModelPack can be trained now in Edgefirst Studio using a Graphical User Interfac
 
     2. Set a **name** and **description** *(optional)* for the training session.
 
-    ![Set Name and Description](../assets/fusion/fusion-train-02.jpg){ align=center }
+    {{ img("../assets/fusion/fusion-train-02.jpg", "Set Name and Description") }}{ align=center }
 
     <div class="wizard-actions" style="max-width: fit-content; margin-left: auto; margin-right: auto;" markdown>
     [1. Select Framework ← Back](#select-framework){ .md-button }
@@ -41,7 +41,7 @@ ModelPack can be trained now in Edgefirst Studio using a Graphical User Interfac
 
     3. Choose your **dataset**.
 
-    ![Select a Dataset](../assets/fusion/fusion-train-03.jpg){ align=center }
+    {{ img("../assets/fusion/fusion-train-03.jpg", "Select a Dataset") }}{ align=center }
 
     <div class="wizard-actions" style="max-width: fit-content; margin-left: auto; margin-right: auto;" markdown>
     [2. Name Session ← Back](#name-session){ .md-button }
@@ -54,12 +54,33 @@ ModelPack can be trained now in Edgefirst Studio using a Graphical User Interfac
 
     4. **Configure model parameters** (architecture, input size, epochs, etc.) and start **Training**.
 
-    ![Configure and Train](../assets/fusion/fusion-train-04.jpg){ align=center }
+    {{ img("../assets/fusion/fusion-train-04.jpg", "Configure and Train") }}{ align=center }
 
     <div class="wizard-actions" style="max-width: fit-content; margin-left: auto; margin-right: auto;" markdown>
     [3. Select Dataset ← Back](#select-dataset){ .md-button }
     [Next → 5. Validate](../validation/fusion/managed.md){ .md-button  .md-button--primary }
     </div>
+
+=== "Training Parameters"
+
+    <h2 id="training-parameters" style="display: none;"></h2>
+
+    1. **Model Name**: This field specifies the name of the training session and will be used to name the artifacts (e.g. `fusion-ultra-short-320x180-t-<session ID>.tflite` or `fusion-ultra-short-320x180-t-<session ID>.onnx`)
+    2. **Description**: This field is used to add some hints about the training session.  Commonly used to highlight some parameters
+    3. **Training Data**: In this section the user must select the dataset as well as train/val groups
+    4. **Model Input Parameters**: By default both the camera and Radar inputs are enabled - the model will be trained using both sensors. Otherwise, these inputs can be toggled on/off
+    5. **Input Size**: The user can pick predefined input resolutions of the camera.  In case you need a different resolution to be supported, please reach out and [email our support team](mailto:support@edgefirst.ai)
+    6. **Camera Filters**: The number of filters in the first layer of the camera input. This controls the number of features the model can learn from the camera input 
+    7. **Radar Module**: Specific Radar module used in the sensor from the choices (DRVEGRD-169 and DRVEGRD-171)
+    8. **Radar Range Mode**: The range of the Radar from the choices (Ultrashort - 9m, Short - 19m, Medium - 56m, Long - 130m)
+    9. **Radar Sequence**: Radar sequence A activates only a single TX antennas, whereas B activates all TX antennas
+    10. **Radar Filters**: The number of filters in the first layer of the radar input. This controls the number of features the model can learn from the radar input
+    11. **Model Output Parameters**: This section configures the maximum range of detection and the number of output filters in the final block of the model
+    12. **Model Parameters**: This section configures the model backbone filters which is the number of filters in the first layer of the backbone and the number of backbone blocks which controls the number of layers in the model
+    13. **Training Parameters**: In this section the user is able to specify the number of epochs to train the model as well as the batch size.  Remember the larger the input resolution the smaller the batch size
+    14. **Model Quantization Parameters**: Allow the user to set a portion of data for calibration when exporting the model for INT8 quantization
+    15. **Camera Augmentation Parameters**: This section controls the probability of each augmentation technique.  This feature is crucial for training models and reduce overfitting, especially in small datasets
+    16. **Start Session**: This button will start the training session
 
 ## Low-Level Fusion
 

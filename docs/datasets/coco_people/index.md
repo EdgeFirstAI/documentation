@@ -41,17 +41,13 @@ It contains 123,287 images in total and one class.
 
 !!! info "Ungrouped Images"
     There are 56,479 images in this dataset that are not associated to
-    the train or val groups. 
+    the train or val groups.
 
-<figure markdown="span">
-![Class Distribution](../assets/coco-people/label_count.png){ align=center }
-</figure>
+{{ figure("../assets/coco-people/label_count.png", "Class Distribution") }}
 
 ## Image Gallery
 
-<figure markdown="span">
-![Playing Cards Dataset Gallery](../assets/coco-people/gallery.png){ align=center }
-</figure>
+{{ figure("../assets/coco-people/gallery.png", "COCO People Dataset Gallery") }}
 
 ## License
 

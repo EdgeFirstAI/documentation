@@ -1,4 +1,5 @@
 # GPS Schema Example
+
 Topic: [/gps](../../topics/navsat.md#gps)  
 Message: [NavSatFix](../../api/sensor_msgs.md#navsatfix)
 Sample Code: [Python](https://github.com/EdgeFirstAI/samples/blob/main/python/gps.py) / [Rust](https://github.com/EdgeFirstAI/samples/blob/main/rust/gps.rs)
@@ -73,7 +74,9 @@ We will now pull out the latitude/longitude data from the decoded NavSatFix mess
     ```
 
 ### Results
+
 The command line output will appear as the following
+
 ```
 Latitude: 51.036506 Longitude: -114.034886
 Latitude: 51.036506 Longitude: -114.034886
@@ -81,4 +84,5 @@ Latitude: 51.036506 Longitude: -114.034886
 ```
 
 When displaying the results through Rerun you will see a map with the location of your EdgeFirst Platform marked.
-![alt text](assets/gps.png)
+
+{{ figure("assets/gps.png", "GPS") }}

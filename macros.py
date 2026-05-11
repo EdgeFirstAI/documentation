@@ -3,6 +3,12 @@ import os
 
 def define_env(env):
     show_paths = env.variables.get("show_image_paths", False)
+    studio_urls = {
+        "studio": "https://test.edgefirst.studio/",
+        "signup": "https://test.edgefirst.studio/signup",
+        "login": "https://test.edgefirst.studio/login",
+        "price": "https://test.edgefirst.studio/price",
+    }
 
     def resolve_path(path, page):        
         full_path = path
@@ -17,6 +23,14 @@ def define_env(env):
         if show_paths:
             return f'![{alt}]({path} "{path}")'
         return f'![{alt}]({path})'
+
+    def studio_url(name="studio"):
+        """Return a shared EdgeFirst Studio URL by key."""
+        return studio_urls[name]
+
+    def studio_link(text, name="studio"):
+        """Return an HTML anchor for a shared EdgeFirst Studio URL."""
+        return f'<a href="{studio_url(name)}">{text}</a>'
     
     def figure(path, alt, width=None):
         """Return a figure HTML block with image and caption."""
@@ -39,3 +53,5 @@ def define_env(env):
 
     env.macros.figure = figure
     env.macros.img = img
+    env.macros.studio_url = studio_url
+    env.macros.studio_link = studio_link

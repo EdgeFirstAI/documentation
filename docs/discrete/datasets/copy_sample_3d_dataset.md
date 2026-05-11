@@ -1,9 +1,9 @@
 # Copy Sample Dataset
 
-This page will show you how to copy a dataset from "Sample Project" in [EdgeFirst Studio][studio].  You will be using this dataset to train your model.  In the following examples, you will be copying the "Raivin Ultra-Short 2025.03" dataset.
+This page will show you how to copy a dataset from "Sample Project" in {{ studio_link("EdgeFirst Studio") }}.  You will be using this dataset to train your model.  In the following examples, you will be copying the "Raivin Ultra-Short 2025.03" dataset.
 
 !!! note "Have you created a project?"
-    It is important that you have followed through the [Getting Started](../../index.md) which shows you how to [sign up][signup], [login][login], and [create a project](../../getting_started/create_project.md) in EdgeFirst Studio which is crucial before starting any experiments.
+    It is important that you have followed through the [Getting Started](../../index.md) which shows you how to {{ studio_link("sign up", "signup") }}, {{ studio_link("login", "login") }}, and [create a project](../../getting_started/create_project.md) in EdgeFirst Studio which is crucial before starting any experiments.
 
 Once you have your own project created, you can finally copy a dataset inside your project.  In this example, the project that was created is called "My First Project".
 
@@ -24,7 +24,3 @@ Inside "Sample Project", you will find a sample dataset called "Raivin Ultra-Sho
 {% include-markdown "discrete/datasets/tag_3d_dataset.md" heading-offset=0 %}
 
 Once you have copied and tagged the dataset, you can now begin training your model.
-
-[studio]: https://test.edgefirst.studio/
-[signup]: https://test.edgefirst.studio/signup
-[login]: https://test.edgefirst.studio/login

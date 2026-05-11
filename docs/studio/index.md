@@ -7,9 +7,9 @@ EdgeFirst Studio (formerly Deep View Enterprise) provides a complete platform fo
 
 ## Pricing Tiers
 
-EdgeFirst Studio offers four [pricing tiers][pricing_tiers]: Individual, Team, Business, and Enterprise. Each tier includes different features and pricing. When you [sign up][signup], you start on the Individual tier with 20.00 USD in credits to explore EdgeFirst Studio's features.
+EdgeFirst Studio offers three {{ studio_link("pricing tiers", "price") }}: Public, Professional, and Teams. Each tier includes different features and pricing. When you {{ studio_link("sign up", "signup") }}, you start on the Public tier with 50.00 USD in credits to explore EdgeFirst Studio's features.
 
-**Individual** accounts cannot add team members. **Multi-user tiers** (Team, Business, Enterprise) allow you to invite collaborators to your organization. All members share the organization's credits.
+**Public** and **Professional** tiers cannot add team members. **Teams** allow you to invite collaborators to your organization. All members share the organization's credits.
 
 Learn more about:
 
@@ -24,6 +24,3 @@ Learn more about:
 ## Getting Started
 
 New users should start with the [Home Page](home.md) and [Navigating EdgeFirst Studio](navigation.md). These guides explain the main features and dashboards.
-
-[pricing_tiers]: https://test.edgefirst.studio/#/
-[signup]: https://test.edgefirst.studio/#/signup

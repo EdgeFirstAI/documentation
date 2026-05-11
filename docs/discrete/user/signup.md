@@ -1,4 +1,4 @@
-1. If you haven't already created an EdgeFirst Studio Account, start by [creating an account][signup].  If you've already created an account, but you [forget your password](../../studio/user/profile.md#forgot-password), click on the link for instructions to reset your password.
+1. If you haven't already created an EdgeFirst Studio Account, start by {{ studio_link("creating an account", "signup") }}.  If you've already created an account, but you [forget your password](../../studio/user/profile.md#forgot-password), click on the link for instructions to reset your password.
 
 2. When creating your account, enter the required fields denoted by the asterisk (*) and then create your account once completed.
 
@@ -8,7 +8,4 @@
 
     {{ figure("/studio/assets/user/email-verification.jpg", "Email Verification") }}
 
-4. Once the email is verified, you can now [login][login] to EdgeFirst Studio.
-
-[signup]: https://test.edgefirst.studio/signup
-[login]: https://test.edgefirst.studio/login
+4. Once the email is verified, you can now {{ studio_link("login", "login") }} to EdgeFirst Studio.

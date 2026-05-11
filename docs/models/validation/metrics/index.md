@@ -1,6 +1,6 @@
 # EdgeFirst Validation Metrics
 
-The EdgeFirst Validation metrics report the accuracy and timing performance of object detection, segmentation, and fusion models.  The [EdgeFirst Validator](https://pypi.org/project/edgefirst-validator/) performs the model validation hosted in [EdgeFirst Studio][studio] to compute the metrics described in this section.
+The EdgeFirst Validation metrics report the accuracy and timing performance of object detection, segmentation, and fusion models.  The [EdgeFirst Validator](https://pypi.org/project/edgefirst-validator/) performs the model validation hosted in {{ studio_link("EdgeFirst Studio") }} to compute the metrics described in this section.
 
 Validation evaluates a model’s performance before deployment to determine whether it is ready for real-world application.  It measures how the model performs across a range of settings (such as NMS score thresholds and IoU thresholds) and identifies the optimal configuration that yields the best overall performance.
 
@@ -53,5 +53,3 @@ Common terms and definitions frequently used throughout this section.
 | **Recall** | Proportion of correct predictions over total ground truth.  $\text{recall} = \frac{\text{true positives}}{\text{true positives} + \text{false negatives}}$ |
 | **Accuracy** | Proportion of correct predictions over the union of total predictions and ground truth.  $\text{accuracy} = \frac{\text{true positives}}{\text{true positives} + \text{false negatives} + \text{false positives}}$ |
 | **IoU** | The intersection over union.  $\text{IoU} = \frac{\text{intersection}}{\text{union}} = \frac{\text{true positives}}{\text{true positives} + \text{false positives} + \text{false negatives}}$ |
-
-[studio]: https://edgefirst.studio/

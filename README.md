@@ -53,16 +53,35 @@ Follow these conventions when working on the documentation.
 6. Avoid any unused images in the assets folder. Any unused images should be removed. 
 7. Typically images are rendered by using the macro `figure()` with a caption and center alignment as shown. This will also expose the image path to show via mouse hover as explained in point 8.
 
-```
-{{ figure("/studio/assets/user/signup-page.jpg", "Create a New Account") }}
-```
+    ```
+    {{ figure("/studio/assets/user/signup-page.jpg", "Create a New Account") }}
+    ```
 
-Otherwise, standalone images with no captions or center alignment can either use the `img()` macro or the `![Alt Text](/path/to/image.jpg)` syntax.
+    Otherwise, standalone images with no captions or center alignment can either use the `img()` macro or the `![Alt Text](/path/to/image.jpg)` syntax.
 
-```
-{{ img("/studio/assets/user/signup-page.jpg", "Create a New Account") }}
-```
+    ```
+    {{ img("/studio/assets/user/signup-page.jpg", "Create a New Account") }}
+    ```
 
 8. For production set `show_image_paths: false` under mkdocs.yml `extra: `. This will prevent the image path from being shown upon mouse hover in the docs which is used mostly for development process to ease the replacement of images. 
 9. The site [remove.bg](https://www.remove.bg/) was used to remove the background from the platform screenshots.
 10. [Greenshot software](https://getgreenshot.org/) was used to take screenshots and image annotations in this documentation.
+11. For deployment across different stages (test/stage/saas) ensure the following links are updated under [macros.py](macros.py).
+
+    ```python
+    studio_urls = {
+        "studio": "https://test.edgefirst.studio/",
+        "signup": "https://test.edgefirst.studio/signup",
+        "login": "https://test.edgefirst.studio/login",
+        "price": "https://test.edgefirst.studio/price",
+    }
+    ```
+
+    The syntax for using these links in the documentation is as follows `{{ studio_link("text", "key") }}`
+
+    ```
+    {{ studio_link("EdgeFirst Studio") }}
+    {{ studio_link("login", "login") }}
+    {{ studio_link("sign up", "signup") }}
+    {{ studio_link("price", "price") }}
+    ```

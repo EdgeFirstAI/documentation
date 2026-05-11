@@ -1,0 +1,1 @@
+{% include-markdown "discrete/platforms/edgefirst_performance_scaling.md" heading-offset=0 %}

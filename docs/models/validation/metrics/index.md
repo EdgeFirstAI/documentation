@@ -1,6 +1,6 @@
 # EdgeFirst Validation Metrics
 
-The EdgeFirst Validation metrics report the accuracy and timing performance of object detection, segmentation, and fusion models.  The [EdgeFirst Validator](https://pypi.org/project/edgefirst-validator/) performs the model validation hosted in [EdgeFirst Studio](https://edgefirst.studio/) to compute the metrics described in this section.
+The EdgeFirst Validation metrics report the accuracy and timing performance of object detection, segmentation, and fusion models.  The [EdgeFirst Validator](https://pypi.org/project/edgefirst-validator/) performs the model validation hosted in [EdgeFirst Studio][studio] to compute the metrics described in this section.
 
 Validation evaluates a model’s performance before deployment to determine whether it is ready for real-world application.  It measures how the model performs across a range of settings (such as NMS score thresholds and IoU thresholds) and identifies the optimal configuration that yields the best overall performance.
 
@@ -48,7 +48,10 @@ Common terms and definitions frequently used throughout this section.
 | **True Positive** | Correct model predictions.  The model prediction label matches the ground truth label.  For object detection, the IoU and confidence scores must meet the threshold requirements.  |
 | **False Positive** | Incorrect model predictions.  The model prediction label does not match the ground truth label.  |
 | **False Negative** | The absence of model predictions.  For cases where the ground truth is a positive class, but the model prediction is a negative class (background).  |
+| **True Negative** | Generally not used in object detection metrics because background regions are not explicitly enumerated.  Conceptually, a true negative corresponds to a background region correctly not detected as an object.  |
 | **Precision** | Proportion of correct predictions over total predictions.  $\text{precision} = \frac{\text{true positives}}{\text{true positives} + \text{false positives}}$ |
 | **Recall** | Proportion of correct predictions over total ground truth.  $\text{recall} = \frac{\text{true positives}}{\text{true positives} + \text{false negatives}}$ |
 | **Accuracy** | Proportion of correct predictions over the union of total predictions and ground truth.  $\text{accuracy} = \frac{\text{true positives}}{\text{true positives} + \text{false negatives} + \text{false positives}}$ |
 | **IoU** | The intersection over union.  $\text{IoU} = \frac{\text{intersection}}{\text{union}} = \frac{\text{true positives}}{\text{true positives} + \text{false positives} + \text{false negatives}}$ |
+
+[studio]: https://edgefirst.studio/

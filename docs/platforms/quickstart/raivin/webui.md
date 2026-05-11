@@ -46,4 +46,7 @@ This page shows the segmentation view, the occupancy grid, and the 3D LiDAR view
 
 ## Next Steps
 
-Now that you have setup your Raivin and are familiar with the Raivin's Web UI, you can proceed to [copying a public dataset](copy_dataset.md) in [EdgeFirst Studio](https://edgefirst.studio/) to train your own vision model that will be deployed in this device.
+Now that you have setup your Raivin and are familiar with the Raivin's Web UI, you can proceed to [copying a public dataset](copy_dataset.md) in [EdgeFirst Studio][studio] to train your own vision model that will be deployed in this device.
+
+
+[studio]: https://test.edgefirst.studio/

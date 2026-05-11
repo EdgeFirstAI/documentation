@@ -8,7 +8,7 @@ The EdgeFirst Fusion model performs early fusion using the low-level raw radar r
 
 ## Getting Started
 
-Fusion models can be trained now in [EdgeFirst Studio](https://edgefirst.studio/) using a Graphical User Interface by following four simple steps:
+Fusion models can be trained now in [EdgeFirst Studio][studio] using a Graphical User Interface by following four simple steps:
 
 === "Select Framework"
 
@@ -117,3 +117,5 @@ The EdgeFirst Fusion model is trained to produce an occupancy grid.  The occupan
 Using the occupancy grid a user application can determine the location, including the range, of detected objects.  The occupancy grid only provides location and label, but we can use the occupancy grid along with the radar targets, or clusters, to match targets within the occupancy cell and determine some additional parameters such as speed, power, and RCS.
 
 <div align="center"><iframe width="560" height="315" src="https://www.youtube.com/embed/rhGED20Ewww?si=fFFYC3IFwQqX6r9M" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></div>
+
+[studio]: https://edgefirst.studio/

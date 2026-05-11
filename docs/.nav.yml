@@ -210,6 +210,9 @@ nav:
           - platforms/quickstart/imx8mplus/conversion/convert_tflite.md
         - platforms/quickstart/imx8mplus/validate.md
         - platforms/quickstart/imx8mplus/deploy.md
+        - Configuration:
+          - platforms/quickstart/imx8mplus/configuration/performance_scaling.md
+          - platforms/quickstart/imx8mplus/configuration/resize_sdcard_partition.md
       - i.MX 95 Quick Start:
         - platforms/quickstart/imx95/index.md
         - platforms/quickstart/imx95/setup.md

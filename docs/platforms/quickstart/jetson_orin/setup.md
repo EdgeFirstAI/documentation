@@ -70,10 +70,8 @@ $ sudo jetson_clocks
 !!! info
     These commands have to be set each time the board boots up as it defaults to run power savings.
     
-    * You can find more information on the various power modes using `cat /etc/nvpmodel.conf`
+    * You can find more information on the various power modes by entering `cat /etc/nvpmodel.conf` or visiting the page [Set the Power Mode](configuration/power_modes.md)
     * You can see the current power mode set with `sudo nvpmodel -q`
-
-{% include-markdown "discrete/platforms/orin_powermodes.md" heading-offset=1 %}
 
 ## Setup Python
 

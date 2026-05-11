@@ -1,6 +1,6 @@
 # Set the Power Mode
 
-Set the board to 25W and disable any power savings by running the following commands. 
+You can set the board to 25W and disable any power savings by running the following commands. 
 
 ```shell
 $ sudo nvpmodel -m 1
@@ -17,7 +17,7 @@ $ sudo jetson_clocks
 !!! info
     These commands have to be set each time the board boots up as it defaults to run power savings.
     
-    * You can find more information on the various power modes using `cat /etc/nvpmodel.conf`
+    * You can find more information on the various power modes by entering `cat /etc/nvpmodel.conf`
     * You can see the current power mode set with `sudo nvpmodel -q`
 
 ## Power Savings

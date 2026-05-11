@@ -164,9 +164,11 @@ In this page you will find instructions to setup the i.MX 8M Plus from start to 
         $ ssh root@10.10.40.210
         ```
 
-{% include-markdown "discrete/platforms/resize_sdcard_partition.md" %}
+!!! note "SD Card Partition"
+    If you notice that in `df -h` the memory partition is not using the full capacity of the SD card used, you can [resize this partition](configuration/resize_sdcard_partition.md) to the maximum capacity.
 
-{% include-markdown "discrete/platforms/edgefirst_performance_scaling.md" %}
+!!! note "CPU Performance"
+    You can set the CPU performance by visiting the page [CPU Performance Scaling](configuration/performance_scaling.md).
 
 ## Next Steps
 

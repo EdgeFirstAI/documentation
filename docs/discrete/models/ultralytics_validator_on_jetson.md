@@ -4,7 +4,7 @@ This guide will show you how to setup and run validation in the Jetson Orin.  Yo
 
 ## Ultralytics Validation
 
-This guide will show how to use the [Ultralytics Validator](https://docs.ultralytics.com/modes/val/) in the Jetson Orin.  This guide expects you to have a [Jetson Orin setup](../../platforms/quickstart/jetson_orin/setup.md) already.  Please follow the setup guide to setup your Jetson Orin with a python environment activated that will be used in this instruction.
+This guide will show how to use the [Ultralytics Validator](https://docs.ultralytics.com/modes/val/) in the Jetson Orin.  This guide expects you to have a [Jetson Orin setup](../../platforms/quickstart/jetson_orin/setup.md) already.  Please follow the setup guide to setup your Jetson Orin with a Python environment activated that will be used in this instruction.
 
 ### Install Ultralytics and Dependencies
 

@@ -75,7 +75,7 @@ $ sudo jetson_clocks
 
 ## Setup Python
 
-To run the examples for the [model validation](validate/index.md) and [model deployments](deploy.md) in this Quick Start, certain python dependencies are required.
+To run the examples for the [model validation](validate/index.md) and [model deployments](deploy.md) in this Quick Start, certain Python dependencies are required.
 
 ### Install Python's pip and Virtual Environment
 
@@ -83,7 +83,7 @@ These instructions installs Python's `pip` and `venv` which does not come pre-in
 
 1. Install Python pip `sudo apt install python3-pip -y` 
 2. Install Python virtual environment `sudo apt install python3.10-venv`
-3. Create a python virtual environment `python3 -m venv path/to/myenv --system-site-packages`
+3. Create a Python virtual environment `python3 -m venv path/to/myenv --system-site-packages`
 4. Activate the virtual environment `source myenv/bin/activate`
 
 ### Install PyCuda and ONNXRuntime

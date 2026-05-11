@@ -78,7 +78,7 @@ This section converts a PyTorch model to TensorRT using the [Ultralytics Framewo
 
 Once the conversion completes, you can inspect the I/O shapes and datatypes to verify that the resulting conversion is expected.
 
-1. Create a python script named [inspect_engine.py](../../platforms/quickstart/jetson_orin/assets/inspect_engine.py){: download="inspect_engine.py"} and modify the path to the model in the script `/path/to/model.engine`
+1. Create a Python script named [inspect_engine.py](../../platforms/quickstart/jetson_orin/assets/inspect_engine.py){: download="inspect_engine.py"} and modify the path to the model in the script `/path/to/model.engine`
 
     ```python
     import tensorrt as trt

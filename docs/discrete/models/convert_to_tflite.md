@@ -168,7 +168,7 @@ flowchart LR
 4. Run the TFLite [converter script](../../models/modelpack/assets/converter.py){: download="converter.py"} below using TensorFlow with this command `python3 converter.py`.
 
     !!! tip "Download the Python script"
-        Download the python script by clicking on the link above. 
+        Download the Python script by clicking on the link above. 
 
     !!! note "Prepare a set of images"
         This process also requires sample images needed during quantization.

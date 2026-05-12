@@ -3,7 +3,7 @@ import numpy as np
 import glob
 import cv2
 
-model_path = "model_tf" # Path to the TensorFlow saved mdoel
+model_path = "model_tf" # Path to the TensorFlow saved model.
 images_path = "coffeecup/*.jpg" # Conversion requires image samples for quantization.
 input_shape = (480, 270) # Model (width, height) input shape.
 output_path = "coffeecup-modelpack-multitask-t-1f54.tflite" # Path to save the TFLite model. 

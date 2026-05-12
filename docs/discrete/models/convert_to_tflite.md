@@ -179,7 +179,7 @@ flowchart LR
 		In this script, the path to the images and the model are set to the following.  Also ensure that the model input shape is set to the correct dimensions.
 
 		```python
-		model_path = "model_tf" # Path to the TensorFlow saved mdoel
+		model_path = "model_tf" # Path to the TensorFlow saved model.
 		images_path = "coffeecup/*.jpg" # Conversion requires image samples for quantization.
 		input_shape = (480, 270) # Model (width, height) input shape.
 		output_path = "coffeecup-modelpack-multitask-t-1f54.tflite" # Path to save the TFLite model. 
@@ -195,7 +195,7 @@ flowchart LR
 		import glob
 		import cv2
 
-		model_path = "model_tf" # Path to the TensorFlow saved mdoel
+		model_path = "model_tf" # Path to the TensorFlow saved model.
 		images_path = "coffeecup/*.jpg" # Conversion requires image samples for quantization.
 		input_shape = (480, 270) # Model (width, height) input shape.
 		output_path = "coffeecup-modelpack-multitask-t-1f54.tflite" # Path to save the TFLite model. 

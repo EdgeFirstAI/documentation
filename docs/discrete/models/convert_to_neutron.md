@@ -16,7 +16,7 @@ Once training completes in EdgeFirst Studio, here are instructions for convertin
 
 3. Select the target device for deploying the model.  Then click on "Start App" to start the conversion process
 
-    {{ figure("/models/assets/conversion/neutron-converter-options.jpg", "Neutron Converter Options") }}
+	{{ figure("/models/assets/conversion/neutron-converter-options.jpg", "Neutron Converter Options") }}
 
 ## Manual Conversion 
 

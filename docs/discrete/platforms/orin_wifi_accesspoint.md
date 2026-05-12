@@ -42,7 +42,7 @@ This article will show how to setup the Jetson Orin Nano with a Wi-Fi Access Poi
     $ sudo apt install -y hostapd dnsmasq iptables-persistent
     ```
 
-5. Prevent NetworkManager from controlling Wi-Fi AP interface.  Create a NetworkManager override so wlP1p1s0 (specific to your system) is unmanaged
+4. Prevent NetworkManager from controlling Wi-Fi AP interface.  Create a NetworkManager override so wlP1p1s0 (specific to your system) is unmanaged
 
     ```shell
     sudo tee /etc/NetworkManager/conf.d/99-unmanaged-wifi.conf >/dev/null <<'EOF'
@@ -51,13 +51,13 @@ This article will show how to setup the Jetson Orin Nano with a Wi-Fi Access Poi
     EOF
     ```
 
-6. Restart NetworkManager
+5. Restart NetworkManager
 
     ```shell
     $ sudo systemctl restart NetworkManager
     ```
 
-7. Assign static IP to Wi-Fi interface at boot.  Create a small systemd unit
+6. Assign static IP to Wi-Fi interface at boot.  Create a small systemd unit
 
     ```shell
     sudo tee /etc/systemd/system/ap-interface.service >/dev/null <<'EOF'
@@ -76,7 +76,7 @@ This article will show how to setup the Jetson Orin Nano with a Wi-Fi Access Poi
     EOF
     ```
 
-8. Configure hostapd by creating hostapd config.  Note you can set the access point ssid and wpa_passphrase. The wpa_passphrase must be greater than 8 characters
+7. Configure hostapd by creating hostapd config.  Note you can set the access point ssid and wpa_passphrase. The wpa_passphrase must be greater than 8 characters
 
     ```shell
     sudo tee /etc/hostapd/hostapd.conf >/dev/null <<'EOF'
@@ -97,13 +97,13 @@ This article will show how to setup the Jetson Orin Nano with a Wi-Fi Access Poi
     EOF
     ```
 
-9. Point hostapd service to this config
+8. Point hostapd service to this config
 
     ```shell
     sudo sed -i 's|^#\?DAEMON_CONF=.*|DAEMON_CONF="/etc/hostapd/hostapd.conf"|' /etc/default/hostapd
     ```
 
-10. Configure dnsmasq for DHCP by creating AP DHCP config
+9. Configure dnsmasq for DHCP by creating AP DHCP config
 
     ```shell
     sudo tee /etc/dnsmasq.d/jetson-ap.conf >/dev/null <<'EOF'
@@ -115,7 +115,7 @@ This article will show how to setup the Jetson Orin Nano with a Wi-Fi Access Poi
     EOF
     ```
 
-11. Enable IPv4 forwarding
+10. Enable IPv4 forwarding
 
     ```shell
     sudo tee /etc/sysctl.d/99-jetson-ap.conf >/dev/null <<'EOF'
@@ -124,7 +124,7 @@ This article will show how to setup the Jetson Orin Nano with a Wi-Fi Access Poi
     sudo sysctl --system
     ```
 
-12. Add NAT and forwarding rules (Wi-Fi → Ethernet); your ethernet can be found via ip addr → enP8p1s0 in this case
+11. Add NAT and forwarding rules (Wi-Fi → Ethernet); your ethernet can be found via ip addr → enP8p1s0 in this case
 
     ```shell
     sudo iptables -t nat -A POSTROUTING -o enP8p1s0 -j MASQUERADE
@@ -133,14 +133,14 @@ This article will show how to setup the Jetson Orin Nano with a Wi-Fi Access Poi
     sudo netfilter-persistent save
     ```
 
-13. Unmask `hostapd`
+12. Unmask `hostapd`
 
     ```shell
     sudo systemctl unmask hostapd
     sudo systemctl enable hostapd
     ```
 
-14. Enable and start services
+13. Enable and start services
 
     ```shell
     sudo systemctl daemon-reload
@@ -150,7 +150,7 @@ This article will show how to setup the Jetson Orin Nano with a Wi-Fi Access Poi
     sudo systemctl restart dnsmasq
     ```
 
-15. Verify the static IP address 
+14. Verify the static IP address 
 
     ```shell
     $ ip addr show wlP1p1s0
@@ -160,12 +160,12 @@ This article will show how to setup the Jetson Orin Nano with a Wi-Fi Access Poi
         valid_lft forever preferred_lft forever
     ```
 
-16. Test on your mobile
+15. Test on your mobile
 
     * Connect to SSID `my_ssid`
     * Enter WPA password `mypassphrase`
 
-17. Check System Status
+16. Check System Status
 
     ```shell
     systemctl status hostapd --no-pager

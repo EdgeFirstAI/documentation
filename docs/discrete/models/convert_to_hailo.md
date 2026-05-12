@@ -12,5 +12,5 @@ Once training completes in EdgeFirst Studio, here are instructions for convertin
 
 3. Specify the conversion settings.  Then click on "Start App" to start the conversion process
 
-    {{ figure("/models/assets/conversion/hailo-converter-options.jpg", "Hailo Converter Options") }}
-    
+	{{ figure("/models/assets/conversion/hailo-converter-options.jpg", "Hailo Converter Options") }}
+	

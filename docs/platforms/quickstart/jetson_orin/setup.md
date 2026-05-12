@@ -84,7 +84,7 @@ These instructions installs Python's `pip` and `venv` which does not come pre-in
 1. Install Python pip `sudo apt install python3-pip -y` 
 2. Install Python virtual environment `sudo apt install python3.10-venv`
 3. Create a Python virtual environment `python3 -m venv path/to/myenv --system-site-packages`
-4. Activate the virtual environment `source myenv/bin/activate`
+4. Activate the virtual environment `source path/to/myenv/bin/activate`
 
 ### Install PyCuda and ONNXRuntime
 

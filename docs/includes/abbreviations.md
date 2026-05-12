@@ -2,6 +2,7 @@
 *[SSH]: Secure Shell
 *[M12]: Industrial circular connector standard
 *[SMA]: SubMiniature version A (RF connector)
+*[DMA]: Direct Memory Accesss
 *[NPU]: Neural Processing Unit
 *[MLOps]: Machine Learning Operations
 *[ROS2]: Robot Operating System 2
@@ -11,6 +12,7 @@
 *[IMU]: Inertial Measurement Unit
 *[LiDAR]: Light Detection and Ranging
 *[MCAP]: Binary container format for robotics log data
+*[PCD]: Point Cloud
 *[SSD]: Solid State Drive
 *[SSL]: Secure Sockets Layer
 *[HTTPS]: Hypertext Transfer Protocol Secure
@@ -20,6 +22,7 @@
 *[CNN]: Convolutional Neural Network
 *[FPS]: Frames Per Second
 *[RGB]: Red Green Blue
+*[RGBA]: Red Green Blue Alpha
 *[YOLO]: You Only Look Once
 *[mAP]: mean Average Precision
 *[IoU]: Intersection over Union

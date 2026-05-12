@@ -190,7 +190,7 @@ An active Web UI service will display the following status on the terminal.
 We can use secure copy (SCP) to move files to and from the device.  Basic command usage is:
 
 ```shell
-$ scp <source file> <destination file>.
+$ scp <source file> <destination file>
 ```
 
 To describe files on the Raivin, both source and destination, they are formatted as:

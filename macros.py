@@ -23,14 +23,6 @@ def define_env(env):
         if show_paths:
             return f'![{alt}]({path} "{path}")'
         return f'![{alt}]({path})'
-
-    def studio_url(name="studio"):
-        """Return a shared EdgeFirst Studio URL by key."""
-        return studio_urls[name]
-
-    def studio_link(text, name="studio"):
-        """Return an HTML anchor for a shared EdgeFirst Studio URL."""
-        return f'<a href="{studio_url(name)}">{text}</a>'
     
     def figure(path, alt, width=None):
         """Return a figure HTML block with image and caption."""
@@ -50,6 +42,16 @@ def define_env(env):
             ![{alt}]({path}{tooltip}){{ align=center width={width} }}
             <figcaption>{alt}</figcaption>
             </figure>'''
+        
+    def studio_url(name="studio"):
+        """Return a shared EdgeFirst Studio URL by key."""
+        if name not in studio_urls.keys():
+            raise ValueError(f"Unknown studio URL key: {name}")
+        return studio_urls[name]
+
+    def studio_link(text, name="studio"):
+        """Return an HTML anchor for a shared EdgeFirst Studio URL."""
+        return f'<a href="{studio_url(name)}">{text}</a>'
 
     env.macros.figure = figure
     env.macros.img = img

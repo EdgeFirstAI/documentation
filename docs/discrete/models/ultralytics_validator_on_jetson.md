@@ -128,28 +128,29 @@ Start by installing the Ultralytics framework and the required dependencies.  Th
 
     The contents of the file is shown below.  You can also copy and paste the contents and create this file in your Jetson Orin.
 
-    ```sh
-    from ultralytics import YOLO
-    import numpy as np
+    === "val.py"
+        ```python
+        from ultralytics import YOLO
+        import numpy as np
 
-    # Load a model
-    model = YOLO("yolov8s-seg-fp16.engine")
+        # Load a model
+        model = YOLO("yolov8s-seg-fp16.engine")
 
-    # Validate the model
-    metrics = model.val(data="coco128-seg.yaml")
+        # Validate the model
+        metrics = model.val(data="coco128-seg.yaml")
 
-    print(f"{metrics.box.map50=}")
-    print(f"{metrics.box.map=}")
-    print(f"{metrics.box.mp=}")
-    print(f"{metrics.box.mr=}")
-    print(f"{np.mean(metrics.box.f1)=}")
-    print("=============================")
-    print(f"{metrics.seg.map50=}")
-    print(f"{metrics.seg.map=}")
-    print(f"{metrics.seg.mp=}")
-    print(f"{metrics.seg.mr=}")
-    print(f"{np.mean(metrics.seg.f1)=}")
-    ```
+        print(f"{metrics.box.map50=}")
+        print(f"{metrics.box.map=}")
+        print(f"{metrics.box.mp=}")
+        print(f"{metrics.box.mr=}")
+        print(f"{np.mean(metrics.box.f1)=}")
+        print("=============================")
+        print(f"{metrics.seg.map50=}")
+        print(f"{metrics.seg.map=}")
+        print(f"{metrics.seg.mp=}")
+        print(f"{metrics.seg.mr=}")
+        print(f"{np.mean(metrics.seg.f1)=}")
+        ```
 
     Ensure that you change the path to the model `YOLO("/path/to/mymodel")` and the path to `data="/path/to/mydataset"` specific in your system.
 

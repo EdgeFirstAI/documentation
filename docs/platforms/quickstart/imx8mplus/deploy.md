@@ -8,7 +8,7 @@ You can deploy your model using Studio Runner - a Python implementation that dem
 
     ```shell
     scp studio_runner_py-0.0.0-py3-none-any.whl root@<ip address>:~/
-    scp coffeecup-yolov8n-segmentation-rgb-640x640-t-266e_quant-u8-i8 root@<ip address>:~/
+    scp coffeecup-yolov8n-segmentation-rgb-640x640-t-266e_quant-u8-i8.tflite root@<ip address>:~/
     ```
 
 4. On device, create and activate a Python Virtual Environment

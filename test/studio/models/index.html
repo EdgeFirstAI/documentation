@@ -485,6 +485,8 @@
       
         
       
+        
+      
     
     
     
@@ -911,6 +913,17 @@
     <span class="md-ellipsis">
       
         Validation Sessions
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#running-a-model" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Running a model
       
     </span>
   </a>
@@ -1412,6 +1425,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#running-a-model" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Running a model
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#next-steps" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -1508,6 +1532,25 @@
             </figure>
 <p>There are two types of validation: <strong>managed</strong> and <strong>user-managed</strong>. Managed validations are set by default in EdgeFirst Studio which triggers an EC2 instance that downloads the dataset and the inference model for validation. This type of validation is best used if you do not have an embedded platform to deploy the model. User-managed validations are hosted in embedded platforms where the dataset and the inference model will be downloaded. This type of validation is best used if you have an embedded platform available to verify how the model would perform in the platform and determine the model's inference time when deployed.</p>
 <p>For more details regarding deploying validation sessions, please see <a href="../../models/validation/vision/managed/">Validating Vision Models</a> and <a href="../../models/validation/fusion/managed/">Validating Fusion Models</a> for validating Fusion models.</p>
+<h2 id="running-a-model">Running a model</h2>
+<p>EdgeFirst Studio allows you to run trained models directly in the web browser. After a model has been trained, open the model details page by clicking on the trainer card. Only models trained on ModelPack are supported for live running. From there, click the Run Model button to start running the model.</p>
+<figure>
+            <img align="center" alt="Model Runner Button" src="../assets/run_model_button.png" />
+            <figcaption>Model Runner Button</figcaption>
+            </figure>
+<p>This will open the model runner dashboard.</p>
+<figure>
+            <img align="center" alt="Model Runner Dashboard" src="../assets/model_runner_dash.png" />
+            <figcaption>Model Runner Dashboard</figcaption>
+            </figure>
+<p>Please wait while the model loads. This may take up to 60 seconds, depending on the model size.
+Once the model is loaded, select a mode: Live to run the model on images from a camera stream, or Upload to choose a file from local storage.</p>
+<p>The model will run automatically, and the results will be displayed on the screen. The output (segmentation or detection) depends on the type of model being used.</p>
+<p>The count shows the number of iterations of model runner.</p>
+<figure>
+            <img align="center" alt="Model Runner Results" src="../assets/model_runner_results.png" />
+            <figcaption>Model Runner Results</figcaption>
+            </figure>
 <h2 id="next-steps">Next Steps</h2>
 <p>Now that you are familiar with the layout of the Model Experiments Dashboard, proceed to the next section for learning more about the context of the <a href="../instances/">Cloud Instances Dashboard</a>.</p>
 

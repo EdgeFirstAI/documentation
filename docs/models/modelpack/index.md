@@ -90,7 +90,7 @@ ModelPack can be trained now in EdgeFirst Studio using a Graphical User Interfac
 
 ModelPack is a modern object detector and it adopts similar scaling strategies seen in the YOLO family models.
 The model expands and contracts based on the width and height parameters.
-Modelpack shares two main backbones: a Darknet53 backbone similar to [YOLOx](https://arxiv.org/pdf/2107.08430v2) which maximizes accuracy and a Darknet19 backbone for boosting inference time.
+ModelPack shares two main backbones: a Darknet53 backbone similar to [YOLOx](https://arxiv.org/pdf/2107.08430v2) which maximizes accuracy and a Darknet19 backbone for boosting inference time.
 Different than YOLOx, ModelPack is NOT anchor free, which makes the model more accurate and stable after quantization.
 
 {{ figure("../assets/darknet-53-backbone.png", "Darknet-53 Backbone") }}

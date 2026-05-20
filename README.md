@@ -66,3 +66,4 @@ Otherwise, standalone images with no captions or center alignment can either use
 8. For production set `show_image_paths: false` under mkdocs.yml `extra: `. This will prevent the image path from being shown upon mouse hover in the docs which is used mostly for development process to ease the replacement of images. 
 9. The site [remove.bg](https://www.remove.bg/) was used to remove the background from the platform screenshots.
 10. [Greenshot software](https://getgreenshot.org/) was used to take screenshots and image annotations in this documentation.
+11. For deployment across different stages (test/stage/saas) ensure the following links are updated across the documentation `https://test.edgefirst.studio`

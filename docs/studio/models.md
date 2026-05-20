@@ -58,6 +58,25 @@ There are two types of validation: **managed** and **user-managed**. Managed val
 
 For more details regarding deploying validation sessions, please see [Validating Vision Models](../models/validation/vision/managed.md) and [Validating Fusion Models](../models/validation/fusion/managed.md) for validating Fusion models.
 
+## Running a model
+
+EdgeFirst Studio allows you to run trained models directly in the web browser. After a model has been trained, open the model details page by clicking on the trainer card. Only models trained on ModelPack are supported for live running. From there, click the Run Model button to start running the model.
+
+{{ figure("assets/run_model_button.png", "Model Runner Button") }}
+
+This will open the model runner dashboard.
+
+{{ figure("assets/model_runner_dash.png", "Model Runner Dashboard") }}
+
+Please wait while the model loads. This may take up to 60 seconds, depending on the model size.
+Once the model is loaded, select a mode: Live to run the model on images from a camera stream, or Upload to choose a file from local storage.
+
+The model will run automatically, and the results will be displayed on the screen. The output (segmentation or detection) depends on the type of model being used.
+
+The count shows the number of iterations of model runner.
+
+{{ figure("assets/model_runner_results.png", "Model Runner Results") }}
+
 ## Next Steps
 
 Now that you are familiar with the layout of the Model Experiments Dashboard, proceed to the next section for learning more about the context of the [Cloud Instances Dashboard](instances.md).

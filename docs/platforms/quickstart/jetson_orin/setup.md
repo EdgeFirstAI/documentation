@@ -73,7 +73,7 @@ $ sudo jetson_clocks
     * You can find more information on the various power modes by entering `cat /etc/nvpmodel.conf` or visiting the page [Set the Power Mode](configuration/power_modes.md)
     * You can see the current power mode set with `sudo nvpmodel -q`
 
-## Step 5: Setup Python
+## Setup Python
 
 To run the examples for the [model validation](validate.md) and [model deployments](deploy.md) in this Quick Start, certain python dependencies are required.
 

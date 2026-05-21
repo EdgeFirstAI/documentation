@@ -1,6 +1,6 @@
 # Setup Static IP Address
 
-This article will show how to setup a static IP address for the Jetson Orin. By default, the Jetson Orin uses DHCP for Ethernet connections, and a hostname to find the unit on the network.  This setup will use [NetworkManager](https://networkmanager.dev/) already installed as part of the Jetpack v6.2.1 BSP.
+This article will show how to set up a static IP address for the Jetson Orin. By default, the Jetson Orin uses DHCP for Ethernet connections, and a hostname to find the unit on the network.  This setup will use [NetworkManager](https://networkmanager.dev/) already installed as part of the Jetpack v6.2.1 BSP.
 
 !!! warning
     If the static IP address is set to something that is not accessible on the network, then the unit will no longer be accessible using the hostname, or IP address.  This will require the unit to be opened to access the internal serial port to reconfigure the network or connected to a network that can be accessed.
@@ -89,7 +89,7 @@ To set a static IP address:
     timestamp=1777917663
     [ethernet]
     [ipv4]
-    address1=10.10.41.108/32,10.10.40.1
+    address1=10.10.41.108/21,10.10.40.1
     dns=10.10.40.3;
     method=manual
     [ipv6]
@@ -132,7 +132,7 @@ To set a static IP address:
     $ ip address show
     4: enP8p1s0: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc mq state UP group default qlen 1000
         link/ether 3c:6d:66:b4:83:7b brd ff:ff:ff:ff:ff:ff
-        inet 10.10.41.108/32 scope global noprefixroute enP8p1s0
+        inet 10.10.41.108/21 scope global noprefixroute enP8p1s0
         valid_lft forever preferred_lft forever
         inet6 fe80::3e6d:66ff:feb4:837b/64 scope link noprefixroute
         valid_lft forever preferred_lft forever

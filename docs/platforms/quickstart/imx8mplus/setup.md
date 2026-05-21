@@ -172,4 +172,4 @@ In this page you will find instructions to setup the i.MX 8M Plus from start to 
 
 ## Next Steps
 
-Now that you have setup your i.MX 8M Plus, you can begin training your Vision Model that will be deployed in this platform, but first, [copy one of our ready-to-use dataset](copy_dataset.md) that will be used to train the model.
+Now that you have set up your i.MX 8M Plus, you can begin training your Vision model for deployment on this platform. First, [copy one of our ready-to-use datasets](copy_dataset.md) to use for training.

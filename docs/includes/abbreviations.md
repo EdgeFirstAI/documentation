@@ -2,7 +2,7 @@
 *[SSH]: Secure Shell
 *[M12]: Industrial circular connector standard
 *[SMA]: SubMiniature version A (RF connector)
-*[DMA]: Direct Memory Accesss
+*[DMA]: Direct Memory Access
 *[NPU]: Neural Processing Unit
 *[MLOps]: Machine Learning Operations
 *[ROS2]: Robot Operating System 2

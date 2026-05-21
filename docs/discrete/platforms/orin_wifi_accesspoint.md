@@ -76,7 +76,7 @@ This article will show how to setup the Jetson Orin Nano with a Wi-Fi Access Poi
     EOF
     ```
 
-7. Configure hostapd by creating hostapd config.  Note you can set the access point ssid and wpa_passphrase. The wpa_passphrase must be greater than 8 characters
+7. Configure hostapd by creating hostapd config.  Note you can set the access point ssid and wpa_passphrase. The wpa_passphrase must be at least 8 characters
 
     ```shell
     sudo tee /etc/hostapd/hostapd.conf >/dev/null <<'EOF'

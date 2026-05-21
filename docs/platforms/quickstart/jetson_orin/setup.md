@@ -105,7 +105,7 @@ $ tegrastats
 
 ## Step 5: Setup Python
 
-To run the examples for the [model validation](validate/index.md) and [model deployments](deploy.md) in this Quick Start, certain python dependencies are required.
+To run the examples for the [model validation](validate.md) and [model deployments](deploy.md) in this Quick Start, certain python dependencies are required.
 
 ### Install Python's pip and Virtual Environment
 

@@ -4,6 +4,10 @@ In the first stage, EdgeFirst Studio packages the ONNX model into a ".tensorrt.z
 
 In the second stage, you run the build.sh script on the target device (for example, a Jetson Orin).  This step compiles the model into a .engine file optimized specifically for that hardware.
 
+!!! info "Native Cross Compilation Support"
+
+    Support for native cross-compilation of TensorRT will be coming soon, thus eliminating the second stage.
+
 The .tensorrt.zip bundle is portable and can be moved between systems.  However, the generated TensorRT engine is hardware-specific and must be built on (or for) the platform where it will be used for inference.  Once compiled, the optimized model can be deployed on the device or uploaded back to EdgeFirst Studio.
 
 1. Click on the completed training session
@@ -80,4 +84,5 @@ The .tensorrt.zip bundle is portable and can be moved between systems.  However,
 
 9. Once converted, a model file "<model>.fp16.engine" should have been generated and published to EdgeFirst Studio as an artifact
 
-    You can verify the model loaded succesfully with the command `trtexec --loadEngine=<model>.fp16.engine --iterations=100`
+    You can redownload the TensorRT model from other compatible devices. 
+    You can also verify the model loaded succesfully by running the command `trtexec --loadEngine=<model>.fp16.engine --iterations=100`

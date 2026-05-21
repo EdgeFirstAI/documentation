@@ -757,6 +757,8 @@
       
         
       
+        
+      
     
     
     
@@ -1485,7 +1487,7 @@
   <span class="md-ellipsis">
     
   
-    Convert ONNX to TensorRT
+    Convert to TensorRT
   
 
     
@@ -2021,6 +2023,67 @@
 
 
 <h1 id="validate-vision-model">Validate Vision Model</h1>
+<p>Now that you have trained a model, you can validate the model's performance on target by following the instructions on this page.</p>
+<p>If you haven't already, click on the training session card for more information.</p>
+<figure>
+            <img align="center" alt="Training Details" src="../../../../models/assets/training/vision-view-train-details.jpg" />
+            <figcaption>Training Details</figcaption>
+            </figure>
+<p>On the top right corner of the page, click on the "validate" button as indicated.</p>
+<figure>
+            <img align="center" alt="Validate Button" src="../../../../models/assets/validation/training_validate_button.jpg" />
+            <figcaption>Validate Button</figcaption>
+            </figure>
+<p>Select the "User Managed" option. Specify the name of the validation session and the model and the dataset for validation.  The rest of the settings were kept as defaults.  Click "Start Session" at the bottom to start the validation session.</p>
+<figure>
+            <img align="center" alt="Start Validation Session" src="../../../../models/assets/validation/user-managed-vision-session-fields.jpg" />
+            <figcaption>Start Validation Session</figcaption>
+            </figure>
+<p>The validation session card will appear like the following below.  Each session has a session ID.  Make a note of the session ID circled in red below.  In this case it is <code>v-1b51</code>.</p>
+<figure>
+            <img align="center" alt="Validation Session ID" src="../../../../models/assets/validation/user-managed-vision-session-id.jpg" />
+            <figcaption>Validation Session ID</figcaption>
+            </figure>
+<p>Once the validation session has been created, <a href="../../../networking/ssh/"><abbr title="Secure Shell">SSH</abbr></a> into the platform and install the following dependencies.</p>
+<div class="admonition warning">
+<p class="admonition-title">Virtual Environment</p>
+<p>If you don't have a virtual environment already setup, please follow these steps below.</p>
+<p>To avoid re-installation of existing system packages, we recommend setting up a <a href="https://docs.python.org/3/library/venv.html#creating-virtual-environments">Python virtual environment</a> prior to running the pip installations below.  Append <code>--system-site-packages</code> when creating the environment to include existing packages in the system.  For example:</p>
+<ul>
+<li>Linux <code>python3 -m venv /path/to/myenv --system-site-packages</code></li>
+<li>Windows <code>python -m venv /path/to/myenv --system-site-packages</code></li>
+</ul>
+<p>Activate the environment via:</p>
+<ul>
+<li>Linux: <code>source /path/to/myenv/bin/activate</code></li>
+<li>Windows: <code>/path/to/myenv/Scripts/activate</code></li>
+</ul>
+</div>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>edgefirst-validator
+</code></pre></div>
+<p>Next login to your account in EdgeFirst Studio by using the <a href="../../../../perception/studio/">EdgeFirst Client</a> which comes installed with the validator package. The command below will prompt you to enter your EdgeFirst Studio credentials.</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>edgefirst-client<span class="w"> </span>login
+</code></pre></div>
+<p>Once the validator is installed and authenticated, run validation using the following command.  Replace the session ID specific to your session card.</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>edgefirst-validator<span class="w"> </span>--session-id<span class="w"> </span>v-1b51
+</code></pre></div>
+<p>If the model already exists in your system, you can run this command <code>edgefirst-validator /path/to/mymodel.tflite --session-id v-1b51</code>.  Otherwise, the model will be downloaded as an artifact from the EdgeFirst Studio training session.</p>
+<p>Once entered, the following validation progress should now be indicated in EdgeFirst Studio as shown below.</p>
+<figure>
+            <img align="center" alt="Validation Session" src="../../../../models/assets/validation/user-managed-vision-session-progress.jpg" />
+            <figcaption>Validation Session</figcaption>
+            </figure>
+<p>The completed session will look as follows with the status set to "Complete".</p>
+<figure>
+            <img align="center" alt="Completed Session" src="../../../../models/assets/validation/user-managed-vision-completed-session.jpg" />
+            <figcaption>Completed Session</figcaption>
+            </figure>
+<p>Once the validation session completes, you can view the validation metrics by clicking the "view validation session charts" button at the top right of the session card.</p>
+<figure>
+            <img align="center" alt="Validation Charts" src="../../../../models/assets/validation/vision-charts.jpg" />
+            <figcaption>Validation Charts</figcaption>
+            </figure>
+<p>Now that you have validated the performance of the model, you can move forward to deploying the model on target.</p>
 
 
 
@@ -2110,7 +2173,7 @@
       <nav class="md-footer__inner md-grid" aria-label="Footer" >
         
           
-          <a href="../convert_tensorrt/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Convert ONNX to TensorRT">
+          <a href="../convert_tensorrt/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Convert to TensorRT">
             <div class="md-footer__button md-icon">
               
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
@@ -2120,7 +2183,7 @@
                 Previous
               </span>
               <div class="md-ellipsis">
-                Convert ONNX to TensorRT
+                Convert to TensorRT
               </div>
             </div>
           </a>

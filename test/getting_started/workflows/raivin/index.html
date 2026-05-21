@@ -18,7 +18,7 @@
         <link rel="prev" href="../maivin/">
       
       
-        <link rel="next" href="../../../studio/">
+        <link rel="next" href="../jetson/">
       
       
         
@@ -795,6 +795,8 @@
       
         
       
+        
+      
     
     
     
@@ -1221,10 +1223,49 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#next-steps" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Next Steps
+      
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
       
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../jetson/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Jetson Orin Workflow
+  
+
+    
+  </span>
+  
+  
+
+      </a>
     </li>
   
 
@@ -1455,6 +1496,8 @@
       
         
           
+        
+      
         
       
         
@@ -1875,6 +1918,17 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#next-steps" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Next Steps
+      
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -2172,10 +2226,10 @@ has been covered in <a href="../../create_project/">Getting Started</a>.</p>
 <p>You may have noticed the "Deployment" tab to the right of the "Artifacts" tab. This is a placeholder for future functionality, so please don't worry about it.</p>
 </div>
 <p>Once the model is downloaded in your PC, you can <a href="../../../platforms/networking/ssh/#secure-copy">SCP</a> the model to the device by using this command template.</p>
-<div class="highlight"><pre><span></span><code>scp<span class="w"> </span>&lt;path<span class="w"> </span>to<span class="w"> </span>the<span class="w"> </span>downloaded<span class="w"> </span>TFLite<span class="w"> </span>model&gt;<span class="w"> </span>&lt;destination<span class="w"> </span>path&gt;
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>scp<span class="w"> </span>&lt;path<span class="w"> </span>to<span class="w"> </span>the<span class="w"> </span>downloaded<span class="w"> </span>TFLite<span class="w"> </span>model&gt;<span class="w"> </span>&lt;destination<span class="w"> </span>path&gt;
 </code></pre></div>
 <p>An example command is shown below.</p>
-<div class="highlight"><pre><span></span><code>scp<span class="w"> </span>fusion.tflite<span class="w"> </span>torizon@verdin-imx8mp-15140753:~
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>scp<span class="w"> </span>fusion.tflite<span class="w"> </span>torizon@verdin-imx8mp-15140753:~
 </code></pre></div>
 </div>
 <div class="tabbed-block">
@@ -2189,7 +2243,7 @@ Username:<span class="w"> </span>user
 Password:<span class="w"> </span>****
 </code></pre></div>
 <p>You can download the model on the device using the <code>download-artifact</code> command as shown below.</p>
-<div class="highlight"><pre><span></span><code>edgefirst-client<span class="w"> </span>download-artifact<span class="w"> </span>&lt;session<span class="w"> </span>ID&gt;<span class="w"> </span>&lt;model<span class="w"> </span>name&gt;
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>edgefirst-client<span class="w"> </span>download-artifact<span class="w"> </span>&lt;session<span class="w"> </span>ID&gt;<span class="w"> </span>&lt;model<span class="w"> </span>name&gt;
 </code></pre></div>
 <p>For example <code>edgefirst-client download-artifact t-fbb fusion.tflite</code>. This command will download to the current working directory.</p>
 <p>The <code>download-artifact</code> expects three arguments.</p>
@@ -2283,6 +2337,8 @@ MODEL = &quot;path/to/mymodel.tflite&quot;
             <figcaption>Foxglove Sample 1</figcaption>
             </figure>
 <p>More information on the <abbr title="Binary container format for robotics log data">MCAP</abbr> playback is provided in <a href="../../../perception/data_collection/foxglove/">Foxglove Studio</a>.  Modifying panels and customizing various settings are also shown in <a href="../../../perception/data_collection/advanced_foxglove/">Advanced Foxglove</a>.</p>
+<h2 id="next-steps">Next Steps</h2>
+<p>Explore other platforms by following the <a href="../jetson/">Jetson Orin Workflow</a> next.</p>
 
 
 
@@ -2389,13 +2445,13 @@ MODEL = &quot;path/to/mymodel.tflite&quot;
         
         
           
-          <a href="../../../studio/" class="md-footer__link md-footer__link--next" aria-label="Next: EdgeFirst Studio">
+          <a href="../jetson/" class="md-footer__link md-footer__link--next" aria-label="Next: Jetson Orin Workflow">
             <div class="md-footer__title">
               <span class="md-footer__direction">
                 Next
               </span>
               <div class="md-ellipsis">
-                EdgeFirst Studio
+                Jetson Orin Workflow
               </div>
             </div>
             <div class="md-footer__button md-icon">

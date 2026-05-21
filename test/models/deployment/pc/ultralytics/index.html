@@ -759,6 +759,8 @@
       
         
       
+        
+      
     
     
     
@@ -955,6 +957,70 @@
       
         
       
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../../conversion/tflite/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Model Conversion
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
     
     
     
@@ -1042,10 +1108,10 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_5" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_6" checked>
         
           
-          <label class="md-nav__link" for="__nav_5_5" id="__nav_5_5_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_5_6" id="__nav_5_6_label" tabindex="0">
             
   
   
@@ -1063,8 +1129,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_5_label" aria-expanded="true">
-          <label class="md-nav__title" for="__nav_5_5">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_6_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_5_6">
             <span class="md-nav__icon md-icon"></span>
             
   
@@ -1246,7 +1312,7 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_5_6" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_6_6" checked>
         
           
           <div class="md-nav__link md-nav__container">
@@ -1268,14 +1334,14 @@
             </a>
             
               
-              <label class="md-nav__link " for="__nav_5_5_6" id="__nav_5_5_6_label" tabindex="0">
+              <label class="md-nav__link " for="__nav_5_6_6" id="__nav_5_6_6_label" tabindex="0">
                 <span class="md-nav__icon md-icon"></span>
               </label>
             
           </div>
         
-        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_5_5_6_label" aria-expanded="true">
-          <label class="md-nav__title" for="__nav_5_5_6">
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_5_6_6_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_5_6_6">
             <span class="md-nav__icon md-icon"></span>
             
   
@@ -1703,7 +1769,172 @@
 
 
 <h1 id="deploying-ultralytics-in-the-pc">Deploying Ultralytics in the PC</h1>
-<p><em>Coming Soon</em></p>
+<p>If you have an <abbr title="Open Neural Network Exchange">ONNX</abbr> or a TFLite Ultralytics model, you can follow these instructions for running the model on your PC.  You will need <a href="https://www.python.org/downloads/">Python 3.10</a> to run this example.</p>
+<p>If you have an <abbr title="Open Neural Network Exchange">ONNX</abbr> model, download the <a download="run-onnx.py" href="../../assets/run-yolo-onnx.py">run-onnx.py Python script</a>.  Otherwise, if you have a TFLite model, download the <a download="run-tflite.py" href="../../assets/run-yolo-tflite.py">run-tflite.py Python script</a>.  These scripts will load the model for inference across multiple images and saves the images with visualizations in your PC.  Run the scripts with the steps shown below.</p>
+<p>As mentioned under <a href="../../../../getting_started/train_vision/">Quick Start -&gt; Train a Vision Model</a>, you can find the trained model artifacts (.onnx or .tflite) in the training session which you can then download into your PC.</p>
+<figure>
+            <img align="center" alt="Training Session Artifacts" src="../../../assets/training/vision-session-artifacts-ultralytics.jpg" />
+            <figcaption>Training Session Artifacts</figcaption>
+            </figure>
+<p>For this Python script you will need a set of images and a model file.  You can click on the following link and download these <a download="coffeecup.zip" href="../../assets/coffeecup.zip">set of images with coffee cup samples</a>.  Once downloaded, unzip the file into a directory.  Next download a sample <a download="coffeecup-yolov8n-segmentation-rgb-640x640-t-266e.onnx" href="../../assets/coffeecup-yolov8n-segmentation-rgb-640x640-t-266e.onnx"><abbr title="Open Neural Network Exchange">ONNX</abbr></a> or <a download="coffeecup-yolov8n-segmentation-rgb-640x640-t-266e_quant-u8-i8.tflite" href="../../assets/coffeecup-yolov8n-segmentation-rgb-640x640-t-266e_quant-u8-i8.tflite">TFLite</a> model to run the following examples.</p>
+<ol>
+<li>
+<p>Install required dependencies.</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="onnx" name="__tabbed_1" type="radio" /><input id="tflite" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="onnx"><abbr title="Open Neural Network Exchange">ONNX</abbr></label><label for="tflite">TFLite</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>onnxruntime-gpu<span class="w"> </span>pillow<span class="w"> </span>numpy
+</code></pre></div>
+<div class="admonition note">
+<p class="admonition-title">Tested Versions</p>
+<p>The following versions of these dependencies were tested.</p>
+<div class="highlight"><pre><span></span><code>$ pip list
+Package         Version
+--------------- -------
+numpy           2.2.6
+onnxruntime-gpu 1.23.2
+pillow          12.0.0
+</code></pre></div>
+</div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>tensorflow<span class="w"> </span>pillow<span class="w"> </span>numpy
+</code></pre></div>
+<div class="admonition note">
+<p class="admonition-title">Tested Versions</p>
+<p>The following versions of these dependencies were tested.</p>
+<div class="highlight"><pre><span></span><code>$ pip list
+Package         Version
+--------------- -------
+numpy           2.2.6
+tensorflow      2.20.0
+pillow          12.0.0
+</code></pre></div>
+</div>
+</div>
+</div>
+</div>
+</li>
+<li>
+<p>Run the script</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="2:2"><input checked="checked" id="onnx_1" name="__tabbed_2" type="radio" /><input id="tflite_1" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="onnx_1"><abbr title="Open Neural Network Exchange">ONNX</abbr></label><label for="tflite_1">TFLite</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<p>If you have downloaded the sample images and the <abbr title="Open Neural Network Exchange">ONNX</abbr> model above, run this command to use the script.  Otherwise modify the path to the model and the images specific to your system.  If you have multiple labels in your dataset specify them as <code>--labels bench coco</code> for example.</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>python<span class="w"> </span>run-onnx.py<span class="w"> </span>coffeecup-yolov8n-segmentation-rgb-640x640-t-266e.onnx<span class="w"> </span>coffeecup/*.jpg<span class="w"> </span>--labels<span class="w"> </span>coffeecup<span class="w"> </span>--save<span class="w"> </span>results
+Using<span class="w"> </span>Execution<span class="w"> </span>Providers:<span class="w"> </span><span class="o">[</span><span class="s1">&#39;CUDAExecutionProvider&#39;</span>,<span class="w"> </span><span class="s1">&#39;CPUExecutionProvider&#39;</span><span class="o">]</span>
+Objects<span class="w"> </span>found<span class="w"> </span><span class="k">in</span><span class="w"> </span>image:<span class="w">  </span>20250430_172430_17.jpg
+<span class="m">0</span><span class="w"> </span>coffeecup<span class="w"> </span><span class="m">0</span>.9715922<span class="w"> </span><span class="o">[</span><span class="m">0</span>.10267723<span class="w"> </span><span class="m">0</span>.05801326<span class="w"> </span><span class="m">0</span>.3234266<span class="w">  </span><span class="m">0</span>.4559123<span class="w"> </span><span class="o">]</span>
+<span class="m">0</span><span class="w"> </span>coffeecup<span class="w"> </span><span class="m">0</span>.9628352<span class="w"> </span><span class="o">[</span><span class="m">0</span>.4175132<span class="w">  </span><span class="m">0</span>.13497958<span class="w"> </span><span class="m">0</span>.5866379<span class="w">  </span><span class="m">0</span>.48802176<span class="o">]</span>
+<span class="m">0</span><span class="w"> </span>coffeecup<span class="w"> </span><span class="m">0</span>.9602233<span class="w"> </span><span class="o">[</span><span class="m">0</span>.27721608<span class="w"> </span><span class="m">0</span>.3844774<span class="w">  </span><span class="m">0</span>.5638<span class="w">     </span><span class="m">0</span>.83782506<span class="o">]</span>
+Objects<span class="w"> </span>found<span class="w"> </span><span class="k">in</span><span class="w"> </span>image:<span class="w">  </span>IMG_9007_13.jpg
+<span class="m">0</span><span class="w"> </span>coffeecup<span class="w"> </span><span class="m">0</span>.970845<span class="w"> </span><span class="o">[</span><span class="m">0</span>.09871185<span class="w"> </span><span class="m">0</span>.2060864<span class="w">  </span><span class="m">0</span>.33400756<span class="w"> </span><span class="m">0</span>.5183377<span class="w"> </span><span class="o">]</span>
+Objects<span class="w"> </span>found<span class="w"> </span><span class="k">in</span><span class="w"> </span>image:<span class="w">  </span>IMG_9015_35.jpg
+<span class="m">0</span><span class="w"> </span>coffeecup<span class="w"> </span><span class="m">0</span>.9790739<span class="w"> </span><span class="o">[</span><span class="m">0</span>.1998756<span class="w">  </span><span class="m">0</span>.30725<span class="w">    </span><span class="m">0</span>.61030895<span class="w"> </span><span class="m">0</span>.7444632<span class="w"> </span><span class="o">]</span>
+Objects<span class="w"> </span>found<span class="w"> </span><span class="k">in</span><span class="w"> </span>image:<span class="w">  </span>IMG_9028_86.jpg
+<span class="m">0</span><span class="w"> </span>coffeecup<span class="w"> </span><span class="m">0</span>.9756339<span class="w"> </span><span class="o">[</span><span class="m">0</span>.26327372<span class="w"> </span><span class="m">0</span>.368227<span class="w">   </span><span class="m">0</span>.68208754<span class="w"> </span><span class="m">0</span>.76707125<span class="o">]</span>
+Average<span class="w"> </span>Inference<span class="w"> </span>Time:<span class="w"> </span><span class="m">51</span>.75<span class="w"> </span>ms
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<p>If you have downloaded the sample images and the TFLite model above, run this command to use the script.  Otherwise modify the path to the model and the images specific to your system.  If you have multiple labels in your dataset specify them as <code>--labels bench coco</code> for example.</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>python<span class="w"> </span>run-tflite.py<span class="w"> </span>coffeecup-yolov8n-segmentation-rgb-640x640-t-266e_quant-u8-i8.tflite<span class="w"> </span>coffeecup/*.jpg<span class="w"> </span>--labels<span class="w"> </span>coffeecup<span class="w"> </span>--save<span class="w"> </span>results
+<span class="m">2026</span>-04-24<span class="w"> </span><span class="m">16</span>:16:26.304031:<span class="w"> </span>I<span class="w"> </span>external/local_xla/xla/tsl/cuda/cudart_stub.cc:31<span class="o">]</span><span class="w"> </span>Could<span class="w"> </span>not<span class="w"> </span>find<span class="w"> </span>cuda<span class="w"> </span>drivers<span class="w"> </span>on<span class="w"> </span>your<span class="w"> </span>machine,<span class="w"> </span>GPU<span class="w"> </span>will<span class="w"> </span>not<span class="w"> </span>be<span class="w"> </span>used.
+<span class="m">2026</span>-04-24<span class="w"> </span><span class="m">16</span>:16:26.352894:<span class="w"> </span>I<span class="w"> </span>tensorflow/core/platform/cpu_feature_guard.cc:210<span class="o">]</span><span class="w"> </span>This<span class="w"> </span>TensorFlow<span class="w"> </span>binary<span class="w"> </span>is<span class="w"> </span>optimized<span class="w"> </span>to<span class="w"> </span>use<span class="w"> </span>available<span class="w"> </span>CPU<span class="w"> </span>instructions<span class="w"> </span><span class="k">in</span><span class="w"> </span>performance-critical<span class="w"> </span>operations.
+To<span class="w"> </span><span class="nb">enable</span><span class="w"> </span>the<span class="w"> </span>following<span class="w"> </span>instructions:<span class="w"> </span>AVX2<span class="w"> </span>FMA,<span class="w"> </span><span class="k">in</span><span class="w"> </span>other<span class="w"> </span>operations,<span class="w"> </span>rebuild<span class="w"> </span>TensorFlow<span class="w"> </span>with<span class="w"> </span>the<span class="w"> </span>appropriate<span class="w"> </span>compiler<span class="w"> </span>flags.
+<span class="m">2026</span>-04-24<span class="w"> </span><span class="m">16</span>:16:27.474238:<span class="w"> </span>I<span class="w"> </span>external/local_xla/xla/tsl/cuda/cudart_stub.cc:31<span class="o">]</span><span class="w"> </span>Could<span class="w"> </span>not<span class="w"> </span>find<span class="w"> </span>cuda<span class="w"> </span>drivers<span class="w"> </span>on<span class="w"> </span>your<span class="w"> </span>machine,<span class="w"> </span>GPU<span class="w"> </span>will<span class="w"> </span>not<span class="w"> </span>be<span class="w"> </span>used.
+/home/john/Repositories/Benchmarks/venv/lib/python3.10/site-packages/tensorflow/lite/python/interpreter.py:457:<span class="w"> </span>UserWarning:<span class="w">     </span>Warning:<span class="w"> </span>tf.lite.Interpreter<span class="w"> </span>is<span class="w"> </span>deprecated<span class="w"> </span>and<span class="w"> </span>is<span class="w"> </span>scheduled<span class="w"> </span><span class="k">for</span><span class="w"> </span>deletion<span class="w"> </span><span class="k">in</span>
+<span class="w">    </span>TF<span class="w"> </span><span class="m">2</span>.20.<span class="w"> </span>Please<span class="w"> </span>use<span class="w"> </span>the<span class="w"> </span>LiteRT<span class="w"> </span>interpreter<span class="w"> </span>from<span class="w"> </span>the<span class="w"> </span>ai_edge_litert<span class="w"> </span>package.
+<span class="w">    </span>See<span class="w"> </span>the<span class="w"> </span><span class="o">[</span>migration<span class="w"> </span>guide<span class="o">](</span>https://ai.google.dev/edge/litert/migration<span class="o">)</span>
+<span class="w">    </span><span class="k">for</span><span class="w"> </span>details.
+<span class="w">    </span>
+warnings.warn<span class="o">(</span>_INTERPRETER_DELETION_WARNING<span class="o">)</span>
+INFO:<span class="w"> </span>Created<span class="w"> </span>TensorFlow<span class="w"> </span>Lite<span class="w"> </span>XNNPACK<span class="w"> </span>delegate<span class="w"> </span><span class="k">for</span><span class="w"> </span>CPU.
+Objects<span class="w"> </span>found<span class="w"> </span><span class="k">in</span><span class="w"> </span>image:<span class="w">  </span>20250430_172430_17.jpg
+<span class="m">0</span><span class="w"> </span>coffeecup<span class="w"> </span><span class="m">0</span>.97604585<span class="w"> </span><span class="o">[</span><span class="m">0</span>.10980516<span class="w"> </span><span class="m">0</span>.07320344<span class="w"> </span><span class="m">0</span>.32941547<span class="w"> </span><span class="m">0</span>.4636218<span class="w"> </span><span class="o">]</span>
+<span class="m">0</span><span class="w"> </span>coffeecup<span class="w"> </span><span class="m">0</span>.97604585<span class="w"> </span><span class="o">[</span><span class="m">0</span>.4270201<span class="w">  </span><span class="m">0</span>.14640687<span class="w"> </span><span class="m">0</span>.59782815<span class="w"> </span><span class="m">0</span>.48802292<span class="o">]</span>
+<span class="m">0</span><span class="w"> </span>coffeecup<span class="w"> </span><span class="m">0</span>.9516447<span class="w"> </span><span class="o">[</span><span class="m">0</span>.26841262<span class="w"> </span><span class="m">0</span>.3782178<span class="w">  </span><span class="m">0</span>.56122637<span class="w"> </span><span class="m">0</span>.84183955<span class="o">]</span>
+Objects<span class="w"> </span>found<span class="w"> </span><span class="k">in</span><span class="w"> </span>image:<span class="w">  </span>IMG_9007_13.jpg
+<span class="m">0</span><span class="w"> </span>coffeecup<span class="w"> </span><span class="m">0</span>.97604585<span class="w"> </span><span class="o">[</span><span class="m">0</span>.10980516<span class="w"> </span><span class="m">0</span>.20740974<span class="w"> </span><span class="m">0</span>.32941547<span class="w"> </span><span class="m">0</span>.52462465<span class="o">]</span>
+Objects<span class="w"> </span>found<span class="w"> </span><span class="k">in</span><span class="w"> </span>image:<span class="w">  </span>IMG_9015_35.jpg
+<span class="m">0</span><span class="w"> </span>coffeecup<span class="w"> </span><span class="m">0</span>.97604585<span class="w"> </span><span class="o">[</span><span class="m">0</span>.20740975<span class="w"> </span><span class="m">0</span>.3172149<span class="w">  </span><span class="m">0</span>.6222293<span class="w">  </span><span class="m">0</span>.7564356<span class="w"> </span><span class="o">]</span>
+Objects<span class="w"> </span>found<span class="w"> </span><span class="k">in</span><span class="w"> </span>image:<span class="w">  </span>IMG_9028_86.jpg
+<span class="m">0</span><span class="w"> </span>coffeecup<span class="w"> </span><span class="m">0</span>.97604585<span class="w"> </span><span class="o">[</span><span class="m">0</span>.25621206<span class="w"> </span><span class="m">0</span>.3660172<span class="w">  </span><span class="m">0</span>.67103153<span class="w"> </span><span class="m">0</span>.7564355<span class="w"> </span><span class="o">]</span>
+Average<span class="w"> </span>Inference<span class="w"> </span>Time:<span class="w"> </span><span class="m">122</span>.50<span class="w"> </span>ms
+</code></pre></div>
+</div>
+</div>
+</div>
+</li>
+<li>
+<p>See the model output visualizations.</p>
+<p>A directory called "results" should be created which contains the same input images with annotations to visualize the output of the trained model.</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="3:2"><input checked="checked" id="onnx_2" name="__tabbed_3" type="radio" /><input id="tflite_2" name="__tabbed_3" type="radio" /><div class="tabbed-labels"><label for="onnx_2"><abbr title="Open Neural Network Exchange">ONNX</abbr></label><label for="tflite_2">TFLite</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<table>
+<thead>
+<tr>
+<th>20250430_172430_17.jpg</th>
+<th>IMG_9007_13.jpg</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><img alt="1" src="../../assets/results-onnx/20250430_172430_17-yolo.jpg" /></td>
+<td><img alt="2" src="../../assets/results-onnx/IMG_9007_13-yolo.jpg" /></td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>IMG_9015_35.jpg</th>
+<th>IMG_9028_86</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><img alt="3" src="../../assets/results-onnx/IMG_9015_35-yolo.jpg" /></td>
+<td><img alt="4" src="../../assets/results-onnx/IMG_9028_86-yolo.jpg" /></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="tabbed-block">
+<table>
+<thead>
+<tr>
+<th>20250430_172430_17.jpg</th>
+<th>IMG_9007_13.jpg</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><img alt="1" src="../../assets/results-tflite/20250430_172430_17-yolo.jpg" /></td>
+<td><img alt="2" src="../../assets/results-tflite/IMG_9007_13-yolo.jpg" /></td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>IMG_9015_35.jpg</th>
+<th>IMG_9028_86</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><img alt="3" src="../../assets/results-tflite/IMG_9015_35-yolo.jpg" /></td>
+<td><img alt="4" src="../../assets/results-tflite/IMG_9028_86-yolo.jpg" /></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</li>
+</ol>
 
 
 

@@ -759,6 +759,8 @@
       
         
       
+        
+      
     
     
     
@@ -955,6 +957,70 @@
       
         
       
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../conversion/tflite/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Model Conversion
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
     
     
     
@@ -1042,10 +1108,10 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_5" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_6" checked>
         
           
-          <label class="md-nav__link" for="__nav_5_5" id="__nav_5_5_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_5_6" id="__nav_5_6_label" tabindex="0">
             
   
   
@@ -1063,8 +1129,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_5_label" aria-expanded="true">
-          <label class="md-nav__title" for="__nav_5_5">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_6_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_5_6">
             <span class="md-nav__icon md-icon"></span>
             
   
@@ -1839,10 +1905,10 @@
 <p>You may have noticed the "Run Model" button to the right of the "Artifacts" tab.  This functionality is for <a href="../studio/">cloud-based deployments in EdgeFirst Studio</a>.</p>
 </div>
 <p>Once the model is downloaded in your PC, you can <a href="../../../platforms/networking/ssh/#secure-copy">SCP</a> the model to the device by using this command template.</p>
-<div class="highlight"><pre><span></span><code>scp<span class="w"> </span>&lt;path<span class="w"> </span>to<span class="w"> </span>the<span class="w"> </span>downloaded<span class="w"> </span>TFLite<span class="w"> </span>model&gt;<span class="w"> </span>&lt;destination<span class="w"> </span>path&gt;
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>scp<span class="w"> </span>&lt;path<span class="w"> </span>to<span class="w"> </span>the<span class="w"> </span>downloaded<span class="w"> </span>TFLite<span class="w"> </span>model&gt;<span class="w"> </span>&lt;destination<span class="w"> </span>path&gt;
 </code></pre></div>
 <p>An example command is shown below.</p>
-<div class="highlight"><pre><span></span><code>scp<span class="w"> </span>modelpack-coffeecup-480x270-rgb-t-25e7.tflite<span class="w"> </span>torizon@verdin-imx8mp-15140753:~
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>scp<span class="w"> </span>modelpack-coffeecup-480x270-rgb-t-25e7.tflite<span class="w"> </span>torizon@verdin-imx8mp-15140753:~
 </code></pre></div>
 </div>
 <div class="tabbed-block">
@@ -1856,7 +1922,7 @@ Username:<span class="w"> </span>user
 Password:<span class="w"> </span>****
 </code></pre></div>
 <p>You can download the model on the device using the <code>download-artifact</code> command as shown below.</p>
-<div class="highlight"><pre><span></span><code>edgefirst-client<span class="w"> </span>download-artifact<span class="w"> </span>&lt;session<span class="w"> </span>ID&gt;<span class="w"> </span>&lt;model<span class="w"> </span>name&gt;
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>edgefirst-client<span class="w"> </span>download-artifact<span class="w"> </span>&lt;session<span class="w"> </span>ID&gt;<span class="w"> </span>&lt;model<span class="w"> </span>name&gt;
 </code></pre></div>
 <p>For example <code>edgefirst-client download-artifact t-25e7 'modelpack-coffeecup-480x270-rgb-t-25e7.tflite'</code>. This command will download to the current working directory.</p>
 <p>The <code>download-artifact</code> expects three arguments.</p>

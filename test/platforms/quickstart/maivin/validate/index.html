@@ -757,6 +757,8 @@
       
         
       
+        
+      
     
     
     
@@ -2045,8 +2047,8 @@
 <p>Once the validation session has been created, <a href="../../../networking/ssh/"><abbr title="Secure Shell">SSH</abbr></a> into the platform and install the following dependencies.</p>
 <div class="admonition warning">
 <p class="admonition-title">Virtual Environment</p>
-<p>To avoid re-installation of existing system packages, we recommend setting up a <a href="https://docs.python.org/3/library/venv.html#creating-virtual-environments">Python virtual environment</a>
-prior to running the pip installations below.  Append <code>--system-site-packages</code> when creating the environment to include existing packages in the system.  For example:</p>
+<p>If you don't have a virtual environment already setup, please follow these steps below.</p>
+<p>To avoid re-installation of existing system packages, we recommend setting up a <a href="https://docs.python.org/3/library/venv.html#creating-virtual-environments">Python virtual environment</a> prior to running the pip installations below.  Append <code>--system-site-packages</code> when creating the environment to include existing packages in the system.  For example:</p>
 <ul>
 <li>Linux <code>python3 -m venv /path/to/myenv --system-site-packages</code></li>
 <li>Windows <code>python -m venv /path/to/myenv --system-site-packages</code></li>
@@ -2057,13 +2059,13 @@ prior to running the pip installations below.  Append <code>--system-site-packag
 <li>Windows: <code>/path/to/myenv/Scripts/activate</code></li>
 </ul>
 </div>
-<div class="highlight"><pre><span></span><code>pip<span class="w"> </span>install<span class="w"> </span>edgefirst-validator
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>edgefirst-validator
 </code></pre></div>
 <p>Next login to your account in EdgeFirst Studio by using the <a href="../../../../perception/studio/">EdgeFirst Client</a> which comes installed with the validator package. The command below will prompt you to enter your EdgeFirst Studio credentials.</p>
-<div class="highlight"><pre><span></span><code>edgefirst-client<span class="w"> </span>login
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>edgefirst-client<span class="w"> </span>login
 </code></pre></div>
 <p>Once the validator is installed and authenticated, run validation using the following command.  Replace the session ID specific to your session card.</p>
-<div class="highlight"><pre><span></span><code>edgefirst-validator<span class="w"> </span>--session-id<span class="w"> </span>v-1b51
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>edgefirst-validator<span class="w"> </span>--session-id<span class="w"> </span>v-1b51
 </code></pre></div>
 <p>If the model already exists in your system, you can run this command <code>edgefirst-validator /path/to/mymodel.tflite --session-id v-1b51</code>.  Otherwise, the model will be downloaded as an artifact from the EdgeFirst Studio training session.</p>
 <p>Once entered, the following validation progress should now be indicated in EdgeFirst Studio as shown below.</p>

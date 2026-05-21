@@ -757,6 +757,8 @@
       
         
       
+        
+      
     
     
     
@@ -1843,7 +1845,7 @@
 </ul>
 <h2 id="installation">Installation</h2>
 <p>The Python package includes the command-line application and is an easy way to install the binary.</p>
-<div class="highlight"><pre><span></span><code>pip<span class="w"> </span>install<span class="w"> </span>edgefirst-client
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>edgefirst-client
 </code></pre></div>
 <div class="admonition tip">
 <p class="admonition-title">Included with EdgeFirst Middleware</p>
@@ -1862,7 +1864,7 @@ EdgeFirst Studio Server: 3.7.3-f0b4eee Client: 1.3.3
 </code></pre></div>
 <p>This will generate an authentication token in <code>/home/torizon/.config/edgefirststudio/config.toml</code> which remains valid for 7 days.  At any time you can use the <code>logout</code> command to forget the token and remove it from the configuration file, or re-run the <code>login</code> command to regenerate it.</p>
 <p>To query the token, use the following command:</p>
-<div class="highlight"><pre><span></span><code>edgefirst-client<span class="w"> </span>token
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>edgefirst-client<span class="w"> </span>token
 </code></pre></div>
 <p>This should produce an output similar to:</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>edgefirst-client<span class="w"> </span>token
@@ -1912,10 +1914,10 @@ eyJhbGciOiJIUzI1NiIsInR5cCI6IkpX...
 </code></pre></div>
 <p>Make a note of the project ID where the dataset will be stored. In this case the project ID is <code>628</code>.</p>
 <p>Now that we have the project ID <code>628</code> and the snapshot ID <code>1816</code>, we can restore the snapshot using the <code>restore-snapshot</code> command.</p>
-<div class="highlight"><pre><span></span><code>edgefirst-client<span class="w"> </span>restore-snapshot<span class="w"> </span>&lt;PROJECT_ID&gt;<span class="w"> </span>&lt;SNAPSHOT_ID&gt;<span class="w"> </span>--dataset-name<span class="w"> </span><span class="s2">&quot;Dataset Name&quot;</span><span class="w"> </span>--dataset-description<span class="w"> </span><span class="s2">&quot;Dataset Description&quot;</span>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>edgefirst-client<span class="w"> </span>restore-snapshot<span class="w"> </span>&lt;PROJECT_ID&gt;<span class="w"> </span>&lt;SNAPSHOT_ID&gt;<span class="w"> </span>--dataset-name<span class="w"> </span><span class="s2">&quot;Dataset Name&quot;</span><span class="w"> </span>--dataset-description<span class="w"> </span><span class="s2">&quot;Dataset Description&quot;</span>
 </code></pre></div>
 <p>For example:</p>
-<div class="highlight"><pre><span></span><code>edgefirst-client<span class="w"> </span>restore-snapshot<span class="w"> </span><span class="m">628</span><span class="w"> </span><span class="m">1816</span><span class="w"> </span>--dataset-name<span class="w"> </span><span class="s2">&quot;Upload from verdin-imx8mp-15141091&quot;</span><span class="w"> </span>--dataset-description<span class="w"> </span><span class="s2">&quot;This is a dataset generated from Raivin verdin-imx8mp-15141091 on January 31, 2025&quot;</span>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>edgefirst-client<span class="w"> </span>restore-snapshot<span class="w"> </span><span class="m">628</span><span class="w"> </span><span class="m">1816</span><span class="w"> </span>--dataset-name<span class="w"> </span><span class="s2">&quot;Upload from verdin-imx8mp-15141091&quot;</span><span class="w"> </span>--dataset-description<span class="w"> </span><span class="s2">&quot;This is a dataset generated from Raivin verdin-imx8mp-15141091 on January 31, 2025&quot;</span>
 <span class="o">[</span>task:<span class="w"> </span><span class="m">3499</span><span class="o">]</span><span class="w"> </span>Upload<span class="w"> </span>from<span class="w"> </span>verdin-imx8mp-15141091:<span class="w"> </span>verdin-imx8mp-15141091_2025_01_31_14_21_58.mcap
 </code></pre></div>
 <p>The command above will spin up some cloud services to transform input data into datasets and output a task ID that is running on the services to restore the snapshot.</p>
@@ -1941,10 +1943,10 @@ eyJhbGciOiJIUzI1NiIsInR5cCI6IkpX...
 <p>Automated depth generation and labeling services will incur additional costs on top of the snapshot restoration.</p>
 </div>
 <p>For example, to create a dataset with automatic depth maps and annotations for <code>person</code> and <code>car</code> objects, run the following command:</p>
-<div class="highlight"><pre><span></span><code>edgefirst-client<span class="w"> </span>restore-snapshot<span class="w"> </span>&lt;PROJECT_ID&gt;<span class="w"> </span>&lt;SNAPSHOT_ID&gt;<span class="w"> </span>--dataset-name<span class="w"> </span><span class="s2">&quot;Dataset Name&quot;</span><span class="w"> </span>--dataset-description<span class="w"> </span><span class="s2">&quot;Dataset Description&quot;</span><span class="w"> </span>--autodepth<span class="w"> </span>--autolabel<span class="w"> </span><span class="s2">&quot;person car&quot;</span>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>edgefirst-client<span class="w"> </span>restore-snapshot<span class="w"> </span>&lt;PROJECT_ID&gt;<span class="w"> </span>&lt;SNAPSHOT_ID&gt;<span class="w"> </span>--dataset-name<span class="w"> </span><span class="s2">&quot;Dataset Name&quot;</span><span class="w"> </span>--dataset-description<span class="w"> </span><span class="s2">&quot;Dataset Description&quot;</span><span class="w"> </span>--autodepth<span class="w"> </span>--autolabel<span class="w"> </span><span class="s2">&quot;person car&quot;</span>
 </code></pre></div>
 <p>For example:</p>
-<div class="highlight"><pre><span></span><code>edgefirst-client<span class="w"> </span>restore-snapshot<span class="w"> </span><span class="m">628</span><span class="w"> </span><span class="m">1816</span><span class="w"> </span>--dataset-name<span class="w"> </span><span class="s2">&quot;Upload from verdin-imx8mp-15141091 with AGTG&quot;</span><span class="w"> </span>--dataset-description<span class="w"> </span><span class="s2">&quot;This is a dataset generated from Raivin verdin-imx8mp-15141091 on January 31, 2025 with depth map generation and automated labelling for the class person and car.&quot;</span><span class="w"> </span>--autolabel<span class="w"> </span><span class="s2">&quot;person car&quot;</span><span class="w"> </span>--autodepth
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>edgefirst-client<span class="w"> </span>restore-snapshot<span class="w"> </span><span class="m">628</span><span class="w"> </span><span class="m">1816</span><span class="w"> </span>--dataset-name<span class="w"> </span><span class="s2">&quot;Upload from verdin-imx8mp-15141091 with AGTG&quot;</span><span class="w"> </span>--dataset-description<span class="w"> </span><span class="s2">&quot;This is a dataset generated from Raivin verdin-imx8mp-15141091 on January 31, 2025 with depth map generation and automated labelling for the class person and car.&quot;</span><span class="w"> </span>--autolabel<span class="w"> </span><span class="s2">&quot;person car&quot;</span><span class="w"> </span>--autodepth
 </code></pre></div>
 <p>The <code>--autolabel</code> parameter currently supports <a href="../../datasets/coco/#coco-labels">COCO labels</a>. We can list any class found in the COCO labels list to auto annotate these classes. In EdgeFirst Studio, we can <a href="../../datasets/tutorials/management/#view-dataset">visualize</a> the results of the auto-annotations when restoring the snapshot. In this example, "person" and "car" are being shown as specified from the command above.</p>
 <figure>
@@ -1970,7 +1972,7 @@ Password:<span class="w"> </span>****
 <ul>
 <li><code>logout</code>: Removes the stored authentication token</li>
 </ul>
-<div class="highlight"><pre><span></span><code>edgefirst-client<span class="w"> </span><span class="nb">logout</span>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>edgefirst-client<span class="w"> </span><span class="nb">logout</span>
 </code></pre></div>
 <ul>
 <li><code>token</code>: Displays the current authentication token</li>
@@ -1989,7 +1991,7 @@ eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...
 <ul>
 <li><code>project</code>: Retrieves detailed information for a specific project using its ID</li>
 </ul>
-<div class="highlight"><pre><span></span><code>edgefirst-client<span class="w"> </span>project<span class="w"> </span><span class="m">54</span>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>edgefirst-client<span class="w"> </span>project<span class="w"> </span><span class="m">54</span>
 </code></pre></div>
 <ul>
 <li><code>find-projects</code>: Searches for projects by name</li>
@@ -2007,12 +2009,12 @@ eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...
 <ul>
 <li><code>dataset</code>: Retrieves detailed information for a specific dataset using its ID</li>
 </ul>
-<div class="highlight"><pre><span></span><code>edgefirst-client<span class="w"> </span>dataset<span class="w"> </span><span class="m">32</span>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>edgefirst-client<span class="w"> </span>dataset<span class="w"> </span><span class="m">32</span>
 </code></pre></div>
 <ul>
 <li><code>find-datasets</code>: Searches for datasets by name (optionally filtered by project)</li>
 </ul>
-<div class="highlight"><pre><span></span><code>edgefirst-client<span class="w"> </span>find-datasets<span class="w"> </span>Playingcards<span class="w"> </span>--project-id<span class="w"> </span><span class="m">54</span>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>edgefirst-client<span class="w"> </span>find-datasets<span class="w"> </span>Playingcards<span class="w"> </span>--project-id<span class="w"> </span><span class="m">54</span>
 </code></pre></div>
 <h3 id="annotation-management">Annotation Management</h3>
 <p>A single dataset is allowed to have multiple annotations sets. That is the reason why annotations are separated from <code>dataset-download</code> commands.</p>
@@ -2044,7 +2046,7 @@ eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code>edgefirst-client<span class="w"> </span>annotations<span class="w"> </span><span class="m">32</span><span class="w"> </span>--arrow<span class="w"> </span>dataset.arrow<span class="w"> </span>--types<span class="w"> </span>box2d,segmentation
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>edgefirst-client<span class="w"> </span>annotations<span class="w"> </span><span class="m">32</span><span class="w"> </span>--arrow<span class="w"> </span>dataset.arrow<span class="w"> </span>--types<span class="w"> </span>box2d,segmentation
 </code></pre></div>
 </div>
 </div>
@@ -2060,27 +2062,27 @@ eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...
 <ul>
 <li><code>snapshot</code>: Retrieves detailed information for a specific snapshot</li>
 </ul>
-<div class="highlight"><pre><span></span><code>edgefirst-client<span class="w"> </span>snapshot<span class="w"> </span><span class="m">101</span>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>edgefirst-client<span class="w"> </span>snapshot<span class="w"> </span><span class="m">101</span>
 </code></pre></div>
 <ul>
 <li><code>find-snapshots</code>: Searches for snapshots by description</li>
 </ul>
-<div class="highlight"><pre><span></span><code>edgefirst-client<span class="w"> </span>find-snapshots<span class="w"> </span><span class="s2">&quot;January 2023&quot;</span>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>edgefirst-client<span class="w"> </span>find-snapshots<span class="w"> </span><span class="s2">&quot;January 2023&quot;</span>
 </code></pre></div>
 <ul>
 <li><code>create-snapshot</code>: Creates a new snapshot from a local file or directory</li>
 </ul>
-<div class="highlight"><pre><span></span><code>edgefirst-client<span class="w"> </span>create-snapshot<span class="w"> </span>./my_dataset
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>edgefirst-client<span class="w"> </span>create-snapshot<span class="w"> </span>./my_dataset
 </code></pre></div>
 <ul>
 <li><code>download-snapshot</code>: Downloads a snapshot to the local filesystem as a ZIP + Arrow file pair (see <a href="../../datasets/format/">EdgeFirst Dataset Format</a>)</li>
 </ul>
-<div class="highlight"><pre><span></span><code>edgefirst-client<span class="w"> </span>download-snapshot<span class="w"> </span><span class="m">101</span><span class="w"> </span>--output<span class="w"> </span>./snapshot_2023_01
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>edgefirst-client<span class="w"> </span>download-snapshot<span class="w"> </span><span class="m">101</span><span class="w"> </span>--output<span class="w"> </span>./snapshot_2023_01
 </code></pre></div>
 <ul>
 <li><code>restore-snapshot</code>: Restores a snapshot to a project</li>
 </ul>
-<div class="highlight"><pre><span></span><code>edgefirst-client<span class="w"> </span>restore-snapshot<span class="w"> </span><span class="m">101</span><span class="w"> </span><span class="m">54</span><span class="w"> </span>--name<span class="w"> </span><span class="s2">&quot;Restored Dataset&quot;</span><span class="w"> </span>--topics<span class="w"> </span><span class="s2">&quot;list of topics&quot;</span><span class="w"> </span>--autolabel<span class="w"> </span><span class="s2">&quot;list of labels&quot;</span>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>edgefirst-client<span class="w"> </span>restore-snapshot<span class="w"> </span><span class="m">101</span><span class="w"> </span><span class="m">54</span><span class="w"> </span>--name<span class="w"> </span><span class="s2">&quot;Restored Dataset&quot;</span><span class="w"> </span>--topics<span class="w"> </span><span class="s2">&quot;list of topics&quot;</span><span class="w"> </span>--autolabel<span class="w"> </span><span class="s2">&quot;list of labels&quot;</span>
 </code></pre></div>
 <h3 id="training-management">Training Management</h3>
 <ul>
@@ -2093,13 +2095,13 @@ eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...
 <ul>
 <li><code>trainer-session</code>: Retrieves detailed information for a specific training session</li>
 </ul>
-<div class="highlight"><pre><span></span><code>edgefirst-client<span class="w"> </span>trainer-session<span class="w"> </span><span class="m">324</span>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>edgefirst-client<span class="w"> </span>trainer-session<span class="w"> </span><span class="m">324</span>
 <span class="o">[</span><span class="m">324</span><span class="o">]</span><span class="w"> </span>...<span class="w"> </span>Artifact<span class="w"> </span><span class="o">{</span><span class="w"> </span>name:<span class="w"> </span><span class="s2">&quot;modelpack.h5&quot;</span>,<span class="w"> </span>model_type:<span class="w"> </span><span class="s2">&quot;modelpack&quot;</span><span class="w"> </span><span class="o">}</span>,...<span class="o">]</span>
 </code></pre></div>
 <ul>
 <li><code>download-artifact</code>: Downloads artifacts from a training session. Notice this command requires the <code>output</code> parameter is pointing to a file and not to a folder</li>
 </ul>
-<div class="highlight"><pre><span></span><code>edgefirst-client<span class="w"> </span>download-artifact<span class="w"> </span><span class="m">324</span><span class="w"> </span>labels.txt<span class="w"> </span>--output<span class="w"> </span>/home/reinier/labels.txt
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>edgefirst-client<span class="w"> </span>download-artifact<span class="w"> </span><span class="m">324</span><span class="w"> </span>labels.txt<span class="w"> </span>--output<span class="w"> </span>/home/reinier/labels.txt
 </code></pre></div>
 <p>Each command supports various options and flags that can be viewed using the <code>--help</code> flag with any command. For example:</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>edgefirst-client<span class="w"> </span>projects<span class="w"> </span>--help

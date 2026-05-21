@@ -757,6 +757,8 @@
       
         
       
+        
+      
     
     
     
@@ -1552,6 +1554,25 @@
     
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#services" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Services
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -1617,7 +1638,7 @@
 
 
 <h1 id="configuration">Configuration</h1>
-<p>This section describes the various settings pages and what they do. The root Settings Page can be reached by clicking the rightmost gear icon on the top ribbon of any page of the Maivin or Raivin web-interface.</p>
+<p>Each service in the Maivin and Raivin platforms has its own configuration.  This section describes the various settings pages and what they do. The root Settings Page can be reached by clicking the rightmost gear icon on the top ribbon of any page of the Maivin or Raivin web-interface.</p>
 <figure>
             <img align="center" alt="root Settings page" src="../assets/configuration/configuration-root.png" />
             <figcaption>root Settings page</figcaption>
@@ -1632,6 +1653,87 @@
 <p class="admonition-title">Warning</p>
 <p>It is not recommended for users to manually edit the configuration files in <code>/etc/default</code>.</p>
 </div>
+<div class="admonition tip">
+<p class="admonition-title">Restore Default Settings</p>
+<p>You can restore default factory settings of the Maivin/Raivin with this command <code>sudo cp -a /usr/etc/default/. /etc/default/</code></p>
+</div>
+<h2 id="services">Services</h2>
+<p>On Maivin and Raivin devices, system services are managed by systemd.
+This means all core components—such as model execution, data pipelines, and supporting processes—run as systemd services in the background.</p>
+<table>
+<thead>
+<tr>
+<th>Service</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>camera.service</td>
+<td>Maivin/Raivin Camera Service</td>
+</tr>
+<tr>
+<td>imu.service</td>
+<td>Maivin/Raivin <abbr title="Inertial Measurement Unit">IMU</abbr> Service</td>
+</tr>
+<tr>
+<td>model.service</td>
+<td>Maivin/Raivin Model Service</td>
+</tr>
+<tr>
+<td>navsat.service</td>
+<td>Maivin/Raivin NavSat Service</td>
+</tr>
+<tr>
+<td>recorder.service</td>
+<td>Maivin/Raivin <abbr title="Binary container format for robotics log data">MCAP</abbr> Recorder Service</td>
+</tr>
+<tr>
+<td>webui.service</td>
+<td>Maivin/Raivin Web UI Server</td>
+</tr>
+<tr>
+<td>zenohd.service</td>
+<td>running Zenoh Message Router</td>
+</tr>
+</tbody>
+</table>
+<p>Using systemctl, you can control how these services run, whether they start automatically on boot, and inspect their current state.</p>
+<div class="admonition note">
+<p class="admonition-title">Controllable in the Web UI</p>
+<p>These commands can be controlled through the Maivin's <a href="../quickstart/maivin/webui/">Web UI</a>.</p>
+</div>
+<ul>
+<li>
+<p>Stop a service:
+    <code>sudo systemctl stop &lt;service&gt;</code></p>
+</li>
+<li>
+<p>Start a service:
+    <code>sudo systemctl start &lt;service&gt;</code></p>
+</li>
+<li>
+<p>Enable a service at boot:
+    <code>sudo systemctl enable &lt;service&gt;</code></p>
+</li>
+<li>
+<p>Disable a service at boot:
+    <code>sudo systemctl disable &lt;service&gt;</code></p>
+</li>
+<li>
+<p>Restart a service:
+    <code>sudo systemctl restart &lt;service&gt;</code></p>
+</li>
+<li>
+<p>See list of available services on device:
+    <code>systemctl list-unit-files --type=service</code></p>
+</li>
+<li>
+<p>Disable Maivin-specific services (unloaded system):
+    <code>sudo systemctl set-default multi-user.target</code></p>
+</li>
+</ul>
+<p>To view logs and timing information for a service <code>journalctl -u &lt;service&gt;</code>.</p>
 
 
 

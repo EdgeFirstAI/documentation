@@ -29,7 +29,7 @@
     
     
       
-        <title>Index - EdgeFirst Studio Documentation</title>
+        <title>NVIDIA Jetson Orin Nano Quick Start - EdgeFirst Studio Documentation</title>
       
     
     
@@ -79,7 +79,7 @@
     
   
 <meta property="og:type" content="website" />
-<meta property="og:title" content="Index - EdgeFirst Studio Documentation" />
+<meta property="og:title" content="NVIDIA Jetson Orin Nano Quick Start - EdgeFirst Studio Documentation" />
 <meta property="og:description" content="EdgeFirst Studio Documentation" />
 <meta property="og:image" content="https://doc.edgefirst.ai/test/assets/images/social/platforms/quickstart/jetson_orin/index.png" />
 <meta property="og:image:type" content="image/png" />
@@ -87,7 +87,7 @@
 <meta property="og:image:height" content="630" />
 <meta property="og:url" content="https://doc.edgefirst.ai/test/platforms/quickstart/jetson_orin/" />
 <meta property="twitter:card" content="summary_large_image" />
-<meta property="twitter:title" content="Index - EdgeFirst Studio Documentation" />
+<meta property="twitter:title" content="NVIDIA Jetson Orin Nano Quick Start - EdgeFirst Studio Documentation" />
 <meta property="twitter:description" content="EdgeFirst Studio Documentation" />
 <meta property="twitter:image" content="https://doc.edgefirst.ai/test/assets/images/social/platforms/quickstart/jetson_orin/index.png" />
 </head>
@@ -107,6 +107,11 @@
     <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
+      
+        
+        <a href="#nvidia-jetson-orin-nano-quick-start" class="md-skip">
+          Skip to content
+        </a>
       
     </div>
     <div data-md-component="announce">
@@ -158,7 +163,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Index
+              NVIDIA Jetson Orin Nano Quick Start
             
           </span>
         </div>
@@ -736,6 +741,8 @@
       
         
           
+        
+      
         
       
         
@@ -1480,7 +1487,7 @@
   <span class="md-ellipsis">
     
   
-    Convert ONNX to TensorRT
+    Convert to TensorRT
   
 
     
@@ -1912,6 +1919,27 @@
   
   
   
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#system-architecture" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        System Architecture
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
   
 </nav>
                   </div>
@@ -2003,9 +2031,23 @@
 
 
 
-  <h1>Index</h1>
-
-
+<h1 id="nvidia-jetson-orin-nano-quick-start">NVIDIA Jetson Orin Nano Quick Start</h1>
+<figure>
+            <img align="center" alt="Jetson Orin" src="../../assets/jetsonorin.png" width="50%" />
+            <figcaption>Jetson Orin</figcaption>
+            </figure>
+<p>The NVIDIA Jetson Orin Nano is a compact, low-power computing module designed for running AI workloads directly on embedded devices.  Built on NVIDIA’s Ampere GPU architecture, it delivers significantly higher performance than earlier Jetson Nano platforms while maintaining efficiency suitable for edge deployments.  The Jetson Orin Nano supports the EdgeFirst pipeline from model training to running real-time vision inference at the edge.</p>
+<h2 id="system-architecture">System Architecture</h2>
+<p>The Jetson Orin Nano runs a Linux-based environment built around NVIDIA JetPack, which packages the core Jetson software stack for development and deployment.  JetPack provides CUDA, cuDNN, TensorRT, multimedia APIs, and platform libraries used to accelerate AI inference and vision pipelines on-device.  Alongside common tooling such as Python and OpenCV, this ecosystem enables streamlined model optimization, hardware-accelerated runtime execution, and reproducible edge AI deployment workflows on Jetson hardware.</p>
+<p>In this Quick Start, you will find instructions for:</p>
+<ol>
+<li><a href="setup/">Setting up your Jetson Orin</a></li>
+<li><a href="copy_dataset/">Copying a Sample Dataset in EdgeFirst Studio for Training</a></li>
+<li><a href="train/">Training a Vision Model</a></li>
+<li><a href="convert_tensorrt/">Converting <abbr title="Open Neural Network Exchange">ONNX</abbr> to TensorRT</a></li>
+<li><a href="validate/">Validating the Vision Model</a></li>
+<li><a href="deploy/">Deploying the Vision Model</a></li>
+</ol>
 
 
 

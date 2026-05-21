@@ -12,4 +12,4 @@ In this section, you will find instructions for converting ONNX models to Kinara
 
 3. Select the output precision.  Then click on "Start App" to start the conversion process
 
-    {{ figure("/models/assets/conversion/kinara-converter-options.jpg", "Kinara Converter Options") }}
+	{{ figure("/models/assets/conversion/kinara-converter-options.jpg", "Kinara Converter Options") }}

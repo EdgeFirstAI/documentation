@@ -12,5 +12,5 @@ In this section, you will find instructions for converting ONNX models to Hailo 
 
 3. Specify the conversion settings.  Then click on "Start App" to start the conversion process
 
-    {{ figure("/models/assets/conversion/hailo-converter-options.jpg", "Hailo Converter Options") }}
-    
+	{{ figure("/models/assets/conversion/hailo-converter-options.jpg", "Hailo Converter Options") }}
+	

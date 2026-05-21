@@ -12,4 +12,4 @@ In this section, you will find instructions for converting quantized TFLite mode
 
 3. Select the target device for deploying the model.  Then click on "Start App" to start the conversion process
 
-    {{ figure("/models/assets/conversion/neutron-converter-options.jpg", "Neutron Converter Options") }}
+	{{ figure("/models/assets/conversion/neutron-converter-options.jpg", "Neutron Converter Options") }}

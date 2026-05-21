@@ -1,6 +1,6 @@
 # NVIDIA Jetson Orin Nano Setup Guide
 
-In this page, you will find the instructions to setup the Jetson Orin Super Nano from start to finish.  You can also find the official [Getting Started Guide](https://developer.nvidia.com/embedded/learn/get-started-jetson-orin-nano-devkit#intro) provided by NVIDIA for setting up the Jetson Orin.  This page will build on top of the official documentation and written to be focused more towards adding support for deploying the EdgeFirst pipeline.
+This guide walks you through how to set up the NVIDIA Jetson Orin Nano from start to finish.  You can also find the official [Getting Started Guide](https://developer.nvidia.com/embedded/learn/get-started-jetson-orin-nano-devkit#intro) provided by NVIDIA for setting up the Jetson Orin.  This guide builds on top of the official documentation with a focus on adding support for deploying the EdgeFirst pipeline.
 
 !!! info "Device Specification"
     The device used in these examples has these specs.
@@ -114,7 +114,7 @@ These instructions installs Python's `pip` and `venv` which does not come pre-in
 1. Install Python pip `sudo apt install python3-pip -y` 
 2. Install Python virtual environment `sudo apt install python3.10-venv`
 3. Create a python virtual environment `python3 -m venv path/to/myenv --system-site-packages`
-4. Activate the virtual environment `source myenv/bin/activate`
+4. Activate the virtual environment `source path/to/myenv/bin/activate`
 
 ### Install PyCuda and ONNXRuntime
 

@@ -14,14 +14,14 @@ Once training completes in EdgeFirst Studio, you can convert the SavedModel to T
 
 3. Specify the conversion settings.  The Studio converter uses a custom quantization pipeline optimized for edge deployment:
 
-    - **TF-wrapped box normalization**: Box coordinates are normalized to [0,1] inside the DFL decode computation, producing better INT8 accuracy than post-hoc normalization
-    - **Split decoder**: Detection outputs are split into separate tensors (boxes, scores, and optionally mask coefficients and protos) so each gets independent per-tensor quantization scales
-    - **Generator-based calibration**: Validation images are streamed one at a time for memory-efficient INT8 calibration (~1.3 GB peak RAM vs ~43 GB for upstream)
-    - **Per-channel quantization**: Uses TensorFlow's MLIR quantizer for per-channel weight quantization
+	- **TF-wrapped box normalization**: Box coordinates are normalized to [0,1] inside the DFL decode computation, producing better INT8 accuracy than post-hoc normalization
+	- **Split decoder**: Detection outputs are split into separate tensors (boxes, scores, and optionally mask coefficients and protos) so each gets independent per-tensor quantization scales
+	- **Generator-based calibration**: Validation images are streamed one at a time for memory-efficient INT8 calibration (~1.3 GB peak RAM vs ~43 GB for upstream)
+	- **Per-channel quantization**: Uses TensorFlow's MLIR quantizer for per-channel weight quantization
 
-    Click on "Start App" to start the conversion process
+	Click on "Start App" to start the conversion process
 
-    {{ figure("/models/assets/conversion/tflite-converter-options.jpg", "TFLite Converter Options") }}
+	{{ figure("/models/assets/conversion/tflite-converter-options.jpg", "TFLite Converter Options") }}
 
 ### Reference Accuracy
 

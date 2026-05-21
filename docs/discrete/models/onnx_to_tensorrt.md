@@ -45,7 +45,7 @@ The .tensorrt.zip bundle is portable and can be moved between systems.  However,
     !!! note "Required Actions"
         Prior to running the script below, these initialization steps are needed.
 
-        1. The script requires the tensorrt executable to be available in your `PATH`
+        1. The script requires the `trtexec` binary to be available in your `PATH`
 
             ```shell
             $ export PATH=$PATH:/usr/src/tensorrt/bin
@@ -85,4 +85,4 @@ The .tensorrt.zip bundle is portable and can be moved between systems.  However,
 9. Once converted, a model file "<model>.fp16.engine" should have been generated and published to EdgeFirst Studio as an artifact
 
     You can redownload the TensorRT model from other compatible devices. 
-    You can also verify the model loaded succesfully by running the command `trtexec --loadEngine=<model>.fp16.engine --iterations=100`
+    You can also verify the model loaded successfully by running the command `trtexec --loadEngine=<model>.fp16.engine --iterations=100`

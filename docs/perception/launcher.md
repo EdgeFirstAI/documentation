@@ -15,13 +15,13 @@ The Camera Service or EdgeFirst Camera Publisher implements the standard ROS2 ca
 Deploy this service in your target with the following command.  The `&` parameter will run the service in the background allowing you to continue using the terminal.  We also specify `--mirror none` to avoid any horizontal or vertical flip to the camera feed.  By default, the camera is flipped both horizontally and vertically to compensate for the orientation of the Maivin camera which is installed upside-down.
 
 ```shell
-edgefirst-camera --h264 --mirror none &
+$ edgefirst-camera --h264 --mirror none &
 ```
 
 The command below lists all available parameters from this service.
 
 ```shell
-edgefirst-camera -h
+$ edgefirst-camera -h
 ```
 
 !!! info
@@ -35,13 +35,13 @@ The Model Service or Maivin Detection Service deploys a ModelPack Detection and 
 Deploy this service in your target with the following command.  In this command specify the path to the model denoted by `--model`.  We recommend using a quantized TFLite model in embedded targets.
 
 ```shell
-edgefirst-model --model mymodel.tflite &
+$ edgefirst-model --model mymodel.tflite &
 ```
 
 The command below lists all available parameters from this service.
 
 ```shell
-edgefirst-camera -h
+$ edgefirst-model -h
 ```
 
 !!! warning
@@ -55,11 +55,11 @@ The Webserver Service or the EdgeFirst Web UI Server deploys a webserver on targ
 If a virtual environment was created, deploy this service using the command below.  The `--docroot` directory needs to be specified.
 
 ```shell
-edgefirst-websrv --docroot venv/share/edgefirst/webui
+$ edgefirst-websrv --docroot venv/share/edgefirst/webui
 ```
 
 If a virtual environment was not created, deploy this service using the command below.
 
 ```shell
-edgefirst-websrv --docroot /usr/share/edgefirst/webui/
+$ edgefirst-websrv --docroot /usr/share/edgefirst/webui/
 ```

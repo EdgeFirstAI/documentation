@@ -78,7 +78,7 @@ We've identified ten workflows: Tourist, Tourist+, Web, i.MX 8M Plus, i.MX 95, J
 | [Web](web.md)                  | PC + Smartphone      | Record, Annotate 2D, Train, Validate, Deploy Offline or Browser        | TBA  |
 | i.MX 8M Plus (*coming soon*)   | PC + i.MX 8M Plus    | Copy Dataset, Train, Validate, Deploy on i.MX 8M Plus                  | TBA  |
 | i.MX 95 (*coming soon*)        | PC + i.MX 95         | Copy Dataset, Train, Validate, Deploy on i.MX 95                       | TBA  |
-| Jetson Orin (*coming soon*)    | PC + Jetson Orin     | Copy Dataset, Train, Validate, Deploy on Jetson Orin                   | TBA  |
+| [Jetson Orin](jetson.md)       | PC + Jetson Orin     | Copy Dataset, Train, Validate, Deploy on Jetson Orin                   | TBA  |
 | Raspberry Pi 5 (*coming soon*) | PC + Raspberry Pi 5  | Copy Dataset, Train, Validate, Deploy on Raspberry Pi 5                | TBA  |
 | [Maivin](maivin.md)            | PC + Maivin          | Record, Annotate 2D, Train, Validate, Deploy on Maivin                 | TBA  |
 | [Raivin](raivin.md)            | PC + Raivin w/ Radar | Record, Annotate 2D + 3D, Train, Validate, Deploy on Raivin            | TBA  |
@@ -113,7 +113,10 @@ flowchart LR
     raivin_lidar_user([Raivin + LiDAR]):::darker_orange
     imx8mp_user([i.MX 8M Plus]):::green
     imx95_user([i.MX 95]):::teal
+
     orin_user([Jetson Orin]):::purple
+    click orin_user "jetson" "Open Jetson Orin Workflow"
+
     pi_user([Raspberry Pi 5]):::coral
     end
 
@@ -295,13 +298,17 @@ flowchart LR
 
 3. [Web Workflow](web.md)
 
-    This workflow is intended for users with a personal computer and a device with a camera with access to Wifi and a web browser.  The examples shown in this workflow will be from a Windows computer and an Android phone for recording images.  Proceed to this workflow to see capturing and annotating datasets that will be used to train, validate, and deploy Vision models.
+    This workflow is intended for users with a personal computer and a mobile device with a camera with access to Wifi and a web browser.  The examples shown in this workflow will be from a Windows computer and an Android phone for recording images.  Proceed to this workflow to see capturing and annotating datasets that will be used to train, validate, and deploy Vision models.
 
-4. [Maivin Workflow](maivin.md)
+4. [Jetson Orin Workflow](jetson.md)
+
+    This workflow is intended for users with a personal computer with access to Wifi and a web browser and a [Jetson Orin Super Nano](https://www.nvidia.com/en-us/autonomous-machines/embedded-systems/jetson-orin/nano-super-developer-kit/) platform. To proceed to this workflow, click on the link above.
+
+5. [Maivin Workflow](maivin.md)
 
     This workflow is intended for users with a personal computer with access to Wifi and a web browser and a Maivin platform.  To proceed to this workflow, click on the link above.
 
-5. [Raivin Workflow](raivin.md)
+6. [Raivin Workflow](raivin.md)
 
     This workflow is intended for users with a personal computer with access to Wifi and a web browser and a Raivin platform.  To proceed to this workflow, click on the link above.
 

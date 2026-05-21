@@ -16,6 +16,7 @@ nav:
       - getting_started/workflows/web.md
       - getting_started/workflows/maivin.md
       - getting_started/workflows/raivin.md
+      - getting_started/workflows/jetson.md
   - Studio:
     - studio/index.md
     - studio/home.md
@@ -85,21 +86,22 @@ nav:
           - models/modelpack/tutorials/index.md
           - models/modelpack/tutorials/measurement_tape.md
           - models/modelpack/tutorials/musicbox.md
-        - Benchmarks: models/modelpack/benchmarks.md
-        - models/modelpack/quantize.md
-        - models/modelpack/npu.md
+        - models/modelpack/benchmarks.md
       - Ultralytics:
           - models/ultralytics/index.md
-          - Benchmarks: models/ultralytics/benchmarks.md
-          - models/ultralytics/quantize.md
-          - models/ultralytics/neutron.md
-          - models/ultralytics/npu.md
+          - models/ultralytics/benchmarks.md
       - Fusion:
         - models/fusion/index.md
-        - Benchmarks: models/fusion/benchmarks.md
+        - models/fusion/benchmarks.md
     - Model Training:
       - models/training/vision.md
       - models/training/fusion.md
+    - Model Conversion:
+      - models/conversion/tflite.md
+      - models/conversion/neutron.md
+      - models/conversion/tensorrt.md
+      - models/conversion/kinara.md
+      - models/conversion/hailo.md
     - Model Validation:
       - Validating Vision Models:
         - models/validation/vision/managed.md

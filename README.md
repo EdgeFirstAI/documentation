@@ -48,11 +48,10 @@ Follow these conventions when working on the documentation.
 1. Filenames should be lower case. Avoid a name like "Projects" for files and directories for example. 
 2. Keep images in an `assets` folder for better organization. 
 3. Use well descriptive names for the images. Avoid a name like "image-1" for example. 
-4. Either keep assets as a sub-folder to where the documentation using these assets lives, or a sub-folder of the root assets with the same hierarchy. (Former is currently being followed).
+4. Either keep assets as a sub-folder to where the documentation using these assets lives, or a sub-folder of the root assets with the same hierarchy (former is currently being followed).
 5. Do NOT use screenshots from private customer data in the documentation. We should be using our own custom datasets. Exception would be documentation for a specific dataset such as COCO.
-6. Use powerpoint slidedeck `images_with_layers.pptx` to add images with drawing. Adopt a size of 1005x660 for home screen images of EdgeFirst Studio. 
-7. Avoid any unused images in the assets folder. Any unused images should be removed. 
-8. Typically images are rendered by using the macro `figure()` with a caption and center alignment as shown. This will also expose the image path to show via mouse hover as explained in point 9.
+6. Avoid any unused images in the assets folder. Any unused images should be removed. 
+7. Typically images are rendered by using the macro `figure()` with a caption and center alignment as shown. This will also expose the image path to show via mouse hover as explained in point 8.
 
 ```
 {{ figure("/studio/assets/user/signup-page.jpg", "Create a New Account") }}
@@ -64,6 +63,7 @@ Otherwise, standalone images with no captions or center alignment can either use
 {{ img("/studio/assets/user/signup-page.jpg", "Create a New Account") }}
 ```
 
-9. For production set `show_image_paths: false` under mkdocs.yml `extra: `. This will prevent the image path from being shown upon mouse hover in the docs which is used mostly for development process to ease the replacement of images. 
+8. For production set `show_image_paths: false` under mkdocs.yml `extra: `. This will prevent the image path from being shown upon mouse hover in the docs which is used mostly for development process to ease the replacement of images. 
+9. The site [remove.bg](https://www.remove.bg/) was used to remove the background from the platform screenshots.
 10. [Greenshot software](https://getgreenshot.org/) was used to take screenshots and image annotations in this documentation.
 11. For deployment across different stages (test/stage/saas) ensure the following links are updated across the documentation `https://test.edgefirst.studio`

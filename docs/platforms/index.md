@@ -13,7 +13,7 @@ This section covers Quick Start guides for deploying the EdgeFirst workflow in y
 
     **[i.MX 8M Plus](quickstart/imx8mplus/index.md)** | **[i.MX 95](quickstart/imx95/index.md)** 
     :-----------------------------:|:----------------------------: 
-    [![imx8mp](assets/imx8mpevk-no-bg.png)](quickstart/imx8mplus/index.md) | [![imx95](assets/verdn-imx95-evk.png)](quickstart/imx95/index.md)
+    [![imx8mp](assets/imx8mpevk-no-bg.png)](quickstart/imx8mplus/index.md) | [![imx95](assets/imx95.png)](quickstart/imx95/index.md)
 
 === "NVIDIA"
     

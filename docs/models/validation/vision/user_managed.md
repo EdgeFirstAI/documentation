@@ -7,7 +7,7 @@ In this tutorial, you will validate a **Vision** model trained using either the 
 Alternatively, EdgeFirst Studio also supports **On-Cloud Validation**, which runs as a managed validation session.  In this mode, an EC2 instance is provisioned to host and validate the model remotely. For more details, see [On Cloud Validation](managed.md).
 
 !!! info "i.MX 95 Validation"
-    To deploy TFLite models in the i.MX 95, first [convert the models using eIQ's Neutron Converter](../../ultralytics/neutron.md) prior to deploying the model in the platform.  This modifies the model's architecture to allow deployment using the device's Neutron NPU delegate.
+    To deploy TFLite models in the i.MX 95, first [convert the models using eIQ's Neutron Converter](../../conversion/neutron.md) prior to deploying the model in the platform.  This modifies the model's architecture to allow deployment using the device's Neutron NPU delegate.
 
 {% include-markdown "discrete/models/create_validation_session.md" %}
 
@@ -38,13 +38,13 @@ Once the validation session has been created, [SSH](../../../platforms/networkin
     * Windows: `/path/to/myenv/Scripts/activate`
 
 ```shell
-pip install edgefirst-validator
+$ pip install edgefirst-validator
 ```
 
 Next login to your account in EdgeFirst Studio by using [EdgeFirst Client](../../../perception/studio.md) which comes installed with the validator package. The command below will prompt you to enter your EdgeFirst Studio credentials.
 
 ```shell
-edgefirst-client login
+$ edgefirst-client login
 ```
 
 !!! note "Server Specification"
@@ -56,7 +56,7 @@ edgefirst-client login
 Once the validator is installed and authenticated, run validation using the following command.  Replace the session ID specific to your session card.
 
 ```shell
-edgefirst-validator --session-id v-1b51
+$ edgefirst-validator --session-id v-1b51
 ```
 
 !!! note

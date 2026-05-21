@@ -7,7 +7,7 @@
 
 ## Convert to TensorRT
 
-Once the model is trained in EdgeFirst Studio.  A Keras, ONNX, and TFLite model will be available for users to download.  
+Once the model is trained in EdgeFirst Studio, you will find "<model_name>_saved_model.zip" and "<model_name>.onnx" artifacts.
 
 {{ figure("/models/assets/training/vision-session-artifacts.jpg", "Model Artifacts") }}
 

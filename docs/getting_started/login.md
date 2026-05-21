@@ -2,4 +2,4 @@
 
 {% include-markdown "discrete/user/login.md" heading-offset=0 %}
 
-The next step is to create a project.  Every workflow requires the user to have already created their own project.
+Next, let’s explore how to run our pre-trained models from EdgeFirst Studio directly on your device using a mobile browser — including your phone!

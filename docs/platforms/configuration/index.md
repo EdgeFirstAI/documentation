@@ -55,6 +55,6 @@ Using systemctl, you can control how these services run, whether they start auto
     `systemctl list-unit-files --type=service`
 
 - Disable Maivin-specific services (unloaded system):
-    `sudo systemctl set-default multi-user`
+    `sudo systemctl set-default multi-user.target`
 
 To view logs and timing information for a service `journalctl -u <service>`.

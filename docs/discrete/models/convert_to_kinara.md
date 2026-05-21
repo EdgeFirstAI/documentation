@@ -12,4 +12,4 @@ Once training completes in EdgeFirst Studio, here are instructions for convertin
 
 3. Select the output precision.  Then click on "Start App" to start the conversion process
 
-    {{ figure("/models/assets/conversion/kinara-converter-options.jpg", "Kinara Converter Options") }}
+	{{ figure("/models/assets/conversion/kinara-converter-options.jpg", "Kinara Converter Options") }}

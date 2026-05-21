@@ -195,7 +195,7 @@ $ scp <source file> <destination file>
 
 To describe files on the Raivin, both source and destination, they are formatted as:
 
-```
+```shell
 torizon@verdin-imx8mp-<id>:/absolute/path/filename
 ```
 
@@ -205,16 +205,16 @@ If the destination file will be named the same as the source file, a period `.` 
 
 For example, if we want to upload the "test.mcap" file to the device from the current working directory on our local machine to remote device `verdin-imx8mp-15141029`, we can run the command:
 
-```
-scp test.mcap torizon@verdin-imx8mp-15141029:.
+```shell
+$ scp test.mcap torizon@verdin-imx8mp-15141029:.
 ```
 
 This would copy the file to `/home/torizon/test.mcap`.
 
 To copy an MCAP recording from the `/media/DATA/` directory on our device, we could use the following command:
 
-```
-scp torizon@verdin-imx8mp-15141029:/media/DATA/verdin-imx8mp-15141029_2025_01_29_14_35_23.mcap .
+```shell
+$ scp torizon@verdin-imx8mp-15141029:/media/DATA/verdin-imx8mp-15141029_2025_01_29_14_35_23.mcap .
 ```
 
 [openssh]: https://www.openssh.com/

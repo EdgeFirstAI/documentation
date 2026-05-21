@@ -2,6 +2,7 @@ nav:
   - Getting Started:
     - index.md
     - getting_started/login.md
+    - getting_started/running_pretrained_model.md
     - getting_started/create_project.md
     - getting_started/copy_dataset.md
     - getting_started/explore_dataset.md
@@ -86,11 +87,9 @@ nav:
           - models/modelpack/tutorials/measurement_tape.md
           - models/modelpack/tutorials/musicbox.md
         - models/modelpack/benchmarks.md
-        - models/modelpack/npu.md
       - Ultralytics:
           - models/ultralytics/index.md
           - models/ultralytics/benchmarks.md
-          - models/ultralytics/npu.md
       - Fusion:
         - models/fusion/index.md
         - models/fusion/benchmarks.md
@@ -228,10 +227,7 @@ nav:
         - platforms/quickstart/jetson_orin/copy_dataset.md
         - platforms/quickstart/jetson_orin/train.md
         - platforms/quickstart/jetson_orin/convert_tensorrt.md
-        - Validate Vision Model:
-          - platforms/quickstart/jetson_orin/validate/index.md
-          - platforms/quickstart/jetson_orin/validate/validate_studio.md
-          - platforms/quickstart/jetson_orin/validate/validate_frameworks.md
+        - platforms/quickstart/jetson_orin/validate.md
         - platforms/quickstart/jetson_orin/deploy.md
         - Configuration:
           - platforms/quickstart/jetson_orin/configuration/power_modes.md

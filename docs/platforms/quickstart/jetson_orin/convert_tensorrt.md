@@ -1,6 +1,6 @@
 # Convert to TensorRT
 
-Once the model is trained in EdgeFirst Studio.  A Keras, ONNX, and TFLite model will be available for users to download.  
+Once the model is trained in EdgeFirst Studio, you will find "<model_name>_saved_model.zip" and "<model_name>.onnx" artifacts.
 
 {{ figure("../../../models/assets/training/vision-session-artifacts.jpg", "Model Artifacts") }}
 
@@ -8,4 +8,4 @@ This tutorial will provide the steps for converting the ONNX model to TensorRT. 
 
 {% include-markdown "discrete/models/onnx_to_tensorrt.md" heading-offset=0 %}
 
-Now that you have converted the ONNX model to TensorRT, you can [validate the performance of this model](validate/index.md) on the Jetson Orin.
+Now that you have converted the ONNX model to TensorRT, you can [validate the performance of this model](validate.md) on the Jetson Orin.

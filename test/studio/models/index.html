@@ -15,7 +15,7 @@
         <link rel="canonical" href="https://doc.edgefirst.ai/test/studio/models/">
       
       
-        <link rel="prev" href="../datasets/annotations/">
+        <link rel="prev" href="../agtg/">
       
       
         <link rel="next" href="../instances/">
@@ -564,6 +564,12 @@
       
         
       
+        
+      
+        
+      
+        
+      
     
     
     
@@ -696,6 +702,10 @@
       
         
       
+        
+      
+        
+      
     
     
     
@@ -786,6 +796,10 @@
       
         
       
+        
+      
+        
+      
     
     
     
@@ -826,6 +840,34 @@
   
 
       
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../agtg/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Automatic Ground Truth Generation (AGTG)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
     </li>
   
 
@@ -906,6 +948,23 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="Training Sessions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#training-session-details" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Training Session Details
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
@@ -916,6 +975,23 @@
       
     </span>
   </a>
+  
+    <nav class="md-nav" aria-label="Validation Sessions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#validation-session-details" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Validation Session Details
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -1013,14 +1089,70 @@
   
   
     <li class="md-nav__item">
-      <a href="../agtg/" class="md-nav__link">
+      <a href="../apps/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    Automatic Ground Truth Generation (AGTG)
+    Studio Apps Dashboard
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tasks/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Tasks Dashboard
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../recycle/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Recycle Bin
   
 
     
@@ -1413,6 +1545,23 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="Training Sessions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#training-session-details" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Training Session Details
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
@@ -1423,6 +1572,23 @@
       
     </span>
   </a>
+  
+    <nav class="md-nav" aria-label="Validation Sessions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#validation-session-details" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Validation Session Details
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -1483,7 +1649,7 @@
             <figcaption>Experiment Attributes</figcaption>
             </figure>
 <p>An experiment will contain child training and validation sessions.  The training sessions and validation sessions will be described in more detail in the sections below.</p>
-<h4 id="training-sessions">Training Sessions</h4>
+<h2 id="training-sessions">Training Sessions</h2>
 <p>Training sessions take in datasets and synthesize from them new AI models for object recognition (Vision) or object perception (Fusion).</p>
 <p>From the "Model Experiments" page, we can click on the "Training Sessions" button with the icon <img alt="Trainers Button" src="../../assets/buttons/studio-trainers-button.png" /> to see the training sessions in the experiment.  The figure below shows the layout of the training session cards under the "Training Sessions" page.</p>
 <figure>
@@ -1506,7 +1672,52 @@
             <figcaption>All Charts</figcaption>
             </figure>
 <p>For more details regarding deploying training sessions, please see <a href="../../models/training/vision/">Training Vision Models</a> and <a href="../../models/training/fusion/">Training Fusion Models</a> for training Fusion models.</p>
-<h4 id="validation-sessions">Validation Sessions</h4>
+<h3 id="training-session-details">Training Session Details</h3>
+<p>Click on any training session card to open its details page.  The details page provides
+a deep view into the session through the following tabs:</p>
+<figure>
+            <img align="center" alt="Training Session Details" src="../assets/models/training-session-details.png" />
+            <figcaption>Training Session Details</figcaption>
+            </figure>
+<table>
+<thead>
+<tr>
+<th>Tab</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Session</strong></td>
+<td>Summary of the session configuration: session ID, name, description, created by, status, dataset, annotation set, train/val groups, start date, and duration.  Also shows the training parameters in YAML format and the status of each trainer process stage.</td>
+</tr>
+<tr>
+<td><strong>Logs</strong></td>
+<td>Live and historical console output from the training process.</td>
+</tr>
+<tr>
+<td><strong>Charts</strong></td>
+<td>Training metrics plotted over epochs, such as loss curves and <abbr title="mean Average Precision">mAP</abbr>.</td>
+</tr>
+<tr>
+<td><strong>Artifacts</strong></td>
+<td>Downloadable model artifacts produced by the session (<abbr title="Open Neural Network Exchange">ONNX</abbr>, TFLite, etc.). Click the download arrow next to any artifact to save it locally.</td>
+</tr>
+<tr>
+<td><strong>Runs</strong></td>
+<td>Individual run attempts within the session, useful when a session was restarted.</td>
+</tr>
+</tbody>
+</table>
+<p>The action bar at the top of the details page provides the following operations:</p>
+<ul>
+<li><strong>Refresh</strong> — Reload the session state and latest log output.</li>
+<li><strong>Validate</strong> — Create a new validation session for this training session.</li>
+<li><strong>Compare</strong> — Compare the training charts of this session against others.</li>
+<li><strong>Stop</strong> — Terminate a running training session.</li>
+<li><strong>Recycle Bin</strong> — Move the session to the recycle bin.</li>
+</ul>
+<h2 id="validation-sessions">Validation Sessions</h2>
 <p>The validation sessions will assess the performance of the models in the training sessions.  A training session can have any number of validation sessions.  From the "Model Experiments" page, we can click on the "Validation Sessions" button with the icon <img alt="Validation Button" src="../../assets/buttons/studio-validation-button.jpg" /> to see the validation sessions in the experiment.  The figure below shows the layout of the validation session cards under the "Validation Sessions" page.</p>
 <figure>
             <img align="center" alt="Validation Sessions" src="../assets/models/validation-sessions.jpg" />
@@ -1534,6 +1745,49 @@
             </figure>
 <p>There are two types of validation: <strong>managed</strong> and <strong>user-managed</strong>. Managed validations are set by default in EdgeFirst Studio which triggers an EC2 instance that downloads the dataset and the inference model for validation. This type of validation is best used if you do not have an embedded platform to deploy the model. User-managed validations are hosted in embedded platforms where the dataset and the inference model will be downloaded. This type of validation is best used if you have an embedded platform available to verify how the model would perform in the platform and determine the model's inference time when deployed.</p>
 <p>For more details regarding deploying validation sessions, please see <a href="../../models/validation/vision/managed/">Validating Vision Models</a> and <a href="../../models/validation/fusion/managed/">Validating Fusion Models</a> for validating Fusion models.</p>
+<h3 id="validation-session-details">Validation Session Details</h3>
+<p>Click on any validation session card to open its details page.  The details page
+provides the following tabs:</p>
+<figure>
+            <img align="center" alt="Validation Session Details" src="../assets/models/validation-session-details.png" />
+            <figcaption>Validation Session Details</figcaption>
+            </figure>
+<table>
+<thead>
+<tr>
+<th>Tab</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Session</strong></td>
+<td>Summary of the session: session ID, status, name, model used, linked training session, dataset, start date, and duration.  Also shows the validation parameters in YAML format.</td>
+</tr>
+<tr>
+<td><strong>Logs</strong></td>
+<td>Console output from the validation run.</td>
+</tr>
+<tr>
+<td><strong>Charts</strong></td>
+<td>Validation metric charts such as precision-recall curves.</td>
+</tr>
+<tr>
+<td><strong>Metrics</strong></td>
+<td>Tabular accuracy metrics (<abbr title="mean Average Precision">mAP</abbr>, AP per class, etc.) from the completed validation run.</td>
+</tr>
+<tr>
+<td><strong>Runs</strong></td>
+<td>Individual run attempts for this session.</td>
+</tr>
+</tbody>
+</table>
+<p>The action bar at the top of the details page provides the following operations:</p>
+<ul>
+<li><strong>Refresh</strong> — Reload the session state and latest output.</li>
+<li><strong>Stop</strong> — Terminate a running validation session.</li>
+<li><strong>Recycle Bin</strong> — Move the session to the recycle bin.</li>
+</ul>
 <h2 id="running-a-model">Running a model</h2>
 <p>EdgeFirst Studio allows you to run trained models directly in the web browser. After a model has been trained, open the model details page by clicking on the trainer card. Only models trained on ModelPack are supported for live running. From there, click the Run Model button to start running the model.</p>
 <figure>
@@ -1644,7 +1898,7 @@ Once the model is loaded, select a mode: Live to run the model on images from a 
       <nav class="md-footer__inner md-grid" aria-label="Footer" >
         
           
-          <a href="../datasets/annotations/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Annotation Sets">
+          <a href="../agtg/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Automatic Ground Truth Generation (AGTG)">
             <div class="md-footer__button md-icon">
               
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
@@ -1654,7 +1908,7 @@ Once the model is loaded, select a mode: Live to run the model on images from a 
                 Previous
               </span>
               <div class="md-ellipsis">
-                Annotation Sets
+                Automatic Ground Truth Generation (AGTG)
               </div>
             </div>
           </a>

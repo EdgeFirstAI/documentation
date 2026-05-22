@@ -26,15 +26,22 @@ nav:
       - studio/user/profile.md
       - studio/user/organization.md
       - studio/user/billing.md
+      - studio/user/subscription.md
+      - studio/user/topup.md
     - studio/projects.md
     - Datasets Dashboard:
       - studio/datasets/index.md
       - studio/datasets/gallery.md
       - studio/datasets/annotations.md
+      - studio/datasets/map.md
+      - studio/datasets/history.md
+    - studio/agtg.md
     - studio/models.md
     - studio/instances.md
     - studio/snapshots.md
-    - studio/agtg.md
+    - studio/apps.md
+    - studio/tasks.md
+    - studio/recycle.md
   - 3D MLOps:
     - 3D/index.md
     - 3D/viewers.md

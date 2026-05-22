@@ -14,7 +14,7 @@ Each app is displayed as a card with the following information:
 
 - **Name** — The display name of the app.
 - **Description** — A brief summary of what the app does.
-- **Name** (package field) — The internal package identifier used by the platform.
+- **Package ID** (package field) — The internal package identifier used by the platform.
 - **Version** — The currently published version of the app.
 - **Author** — The organization or individual that published the app.
 - **Help** — A link to the app's full documentation page.

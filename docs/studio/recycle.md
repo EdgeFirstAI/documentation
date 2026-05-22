@@ -71,8 +71,8 @@ Each row has two quick-action buttons on the right:
 
 !!! warning "Permanent Deletion"
     Permanently deleted items **cannot be recovered**.  Ensure you no longer need an
-    item before purging it.  Once purged, any storage it occupied is released and
-    counted against your billing.
+    item before purging it.  Once purged, the storage it occupied is released and
+    no longer counted against your usage limits or billing.
 
 ## Next Steps
 

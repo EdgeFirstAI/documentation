@@ -203,9 +203,15 @@ nav:
         - platforms/quickstart/imx8mplus/setup.md
         - platforms/quickstart/imx8mplus/copy_dataset.md
         - platforms/quickstart/imx8mplus/train.md
-        - platforms/quickstart/imx8mplus/convert_kinara.md
+        - Model Conversions:
+          - platforms/quickstart/imx8mplus/conversion/index.md
+          - platforms/quickstart/imx8mplus/conversion/convert_kinara.md
+          - platforms/quickstart/imx8mplus/conversion/convert_tflite.md
         - platforms/quickstart/imx8mplus/validate.md
         - platforms/quickstart/imx8mplus/deploy.md
+        - Configuration:
+          - platforms/quickstart/imx8mplus/configuration/performance_scaling.md
+          - platforms/quickstart/imx8mplus/configuration/resize_sdcard_partition.md
       - i.MX 95 Quick Start:
         - platforms/quickstart/imx95/index.md
         - platforms/quickstart/imx95/setup.md
@@ -223,6 +229,8 @@ nav:
         - platforms/quickstart/jetson_orin/convert_tensorrt.md
         - platforms/quickstart/jetson_orin/validate.md
         - platforms/quickstart/jetson_orin/deploy.md
+        - Configuration:
+          - platforms/quickstart/jetson_orin/configuration/power_modes.md
       - Raspberry Pi Quick Start:
         - platforms/quickstart/raspberrypi/index.md
         - platforms/quickstart/raspberrypi/setup.md

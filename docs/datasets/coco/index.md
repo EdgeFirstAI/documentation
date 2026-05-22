@@ -26,7 +26,7 @@ The license for specific images can be found by:
 1. In the COCO 2017 Public dataset in EdgeFirst Studio, get the file name of the image.  Partial file names work as well.
     {{ figure("../assets/coco/coco_get_file_name.png", "File name of the motorcycle image is 000000147328.jpg") }}
 
-2. Go to the [download][download] page and download the "2017 Train/Val annotations \[241MB\]" Zip file.
+2. Go to the [download][download] page and download the "2017 Train/Val annotations \[241MB\]" ZIP file.
     {{ figure("../assets/coco/coco_download_annos.png", "COCO 2017 annotations download") }}
     
 3. Unzip the "instances_train2017.json" and "instances_val2017.json" into a directory.

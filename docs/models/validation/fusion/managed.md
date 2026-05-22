@@ -6,7 +6,7 @@ In this tutorial, you will validate a **Fusion** model trained using either the 
 
 {% include-markdown "discrete/models/create_validation_session.md" %}
 
-You will be greeted with the validation session dialog.  In this dialog, specify the name of the validation session, the model to validate, and the dataset to deploy.  In this example, the ONNX model will be validated.  Next specify, the validation parameters such as the detection window size and the detection threshold.  Additional information on these parameters are provided by hovering over the info button ![Info Button](../../../assets/buttons/studio-info-button.jpg).
+You will be greeted with the validation session dialog.  In this dialog, specify the name of the validation session, the model to validate, and the dataset to deploy.  *Under the model selection, you can select various trained model artifacts from the choices of ONNX, TFLite, etc.  Choose the model you plan to deploy on target.  The purpose of validation is to assess the model of whether or not it meets the performance requirements needed to be deployed on target.*  Next specify, the validation parameters such as the detection window size and the detection threshold.  Additional information on these parameters are provided by hovering over the info button ![Info Button](../../../assets/buttons/studio-info-button.jpg).
 
 The only augmentation available for this type of validation is `blur`.  See [Vision Augmentations](../../augmentations.md#blur) for further details.
 

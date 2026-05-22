@@ -10,7 +10,7 @@ On the top right corner of the page, click on the "validate" button as indicated
 
 {{ figure("/models/assets/validation/training_validate_button.jpg", "Validate Button") }}
 
-Specify the name of the validation session and the model and the dataset for validation.  The rest of the settings were kept as defaults.  Click "Start Session" at the bottom to start the validation session.
+Specify the name of the validation session and the model and the dataset for validation.  *Under the model selection, you can select various trained model artifacts from the choices of ONNX, TFLite, TensorRT, Kinara, Hailo, etc.  Choose the model you plan to deploy on target.  The purpose of validation is to assess the model of whether or not it meets the performance requirements needed to be deployed on target.*  The rest of the settings were kept as defaults.  Click "Start Session" at the bottom to start the validation session.
 
 {{ figure("/models/assets/validation/vision-validate-settings.jpg", "Start Validation Session") }}
 

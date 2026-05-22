@@ -12,7 +12,7 @@ In this Quick Start, you will find instructions for:
 
 1. [Setting up your Jetson Orin](setup.md)
 2. [Copying a Sample Dataset in EdgeFirst Studio for Training](copy_dataset.md)
-3. [Training a Vision Model](train.md)
+3. [Training Vision Model](train.md)
 4. [Converting ONNX to TensorRT](convert_tensorrt.md)
 5. [Validating the Vision Model](validate.md)
 6. [Deploying the Vision Model](deploy.md)

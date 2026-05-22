@@ -86,7 +86,7 @@ In the example above, we see both detection boxes and segmentation masks in the 
 The detection boxes are contained in the `/model/boxes2d` topic.  By default, this topic is not enabled.  See the Maivin Dataset Recording section for details on how to enable this topic and record an MCAP with the Raivin.
 
 !!! note
- Not all vision models are able produce detection results.  The default model on the Raivin can produce both detection and segmentation results.
+      Not all vision models are able to produce detection results.  The default model on the Raivin can produce both detection and segmentation results.
 
 1. Record a MCAP file that captures the `/model/boxes2d` topic.
 2. Confirm with the "Details" button that the newly recorded MCAP has a `/model/boxes2d` topic.  

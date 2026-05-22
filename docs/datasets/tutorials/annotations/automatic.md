@@ -43,26 +43,26 @@ Recall that [snapshots](../../../studio/snapshots.md) are frozen and compact for
 
     {{ figure("../../assets/annotations/automatic/mcap-file-import.jpg", "MCAP Import Snapshot") }}
 
-3. Upload from Zip/Arrow (EdgeFirst Dataset) Files
+3. Upload from ZIP/Arrow (EdgeFirst Dataset) Files
 
-    The Zip/Arrow files together creates the [EdgeFirst Dataset Format](../../format/index.md).
+    The ZIP/Arrow files together creates the [EdgeFirst Dataset Format](../../format/index.md).
 
-    To create a snapshot from a Zip/Arrow files, visit the "Data Snapshots" page.
+    To create a snapshot from a ZIP/Arrow files, visit the "Data Snapshots" page.
 
     {{ figure("../../assets/annotations/automatic/data-snapshots.jpg", "Data Snapshots") }}
 
-    Either drag and drop the Zip/Arrow files into the page OR click on the "From File" button to allow selection of the Zip/Arrow files from your directories.
+    Either drag and drop the ZIP/Arrow files into the page OR click on the "From File" button to allow selection of the ZIP/Arrow files from your directories.
 
-    {{ figure("../../assets/annotations/automatic/zip-arrow-files-import.jpg", "Zip/Arrow Import Snapshot") }}
+    {{ figure("../../assets/annotations/automatic/zip-arrow-files-import.jpg", "ZIP/Arrow Import Snapshot") }}
 
     !!! warning "Uniform Names"
-        The name of corresponding Zip and Arrow files must be same.
+        The name of corresponding ZIP and Arrow files must be same.
 
-    !!! info "Zip/Arrow File pairs"
-        The upload must come into Zip and Arrow file pairs.
-        If there are multiple Zip and Arrow pairs, then each pair will become a sequence.
+    !!! info "ZIP/Arrow File pairs"
+        The upload must come into ZIP and Arrow file pairs.
+        If there are multiple ZIP and Arrow pairs, then each pair will become a sequence.
 
-A snapshot can be created from one of the three ways as described above: *Create from Existing Dataset*, *Upload from MCAP File*, *Upload from Zip/Arrow File*.  The next section will show how to restore these created snapshots for auto-annotations.
+A snapshot can be created from one of the three ways as described above: *Create from Existing Dataset*, *Upload from MCAP File*, *Upload from ZIP/Arrow File*.  The next section will show how to restore these created snapshots for auto-annotations.
 
 {% include-markdown "discrete/datasets/restore_snapshot.md" heading-offset=2 %}
 

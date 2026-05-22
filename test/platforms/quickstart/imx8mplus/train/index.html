@@ -18,7 +18,7 @@
         <link rel="prev" href="../copy_dataset/">
       
       
-        <link rel="next" href="../convert_kinara/">
+        <link rel="next" href="../conversion/">
       
       
         
@@ -1193,6 +1193,8 @@
       
         
       
+        
+      
     
     
     
@@ -1347,15 +1349,43 @@
   
   
   
-    <li class="md-nav__item">
-      <a href="../convert_kinara/" class="md-nav__link">
+    
+    
+      
         
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../conversion/" class="md-nav__link">
+      
   
   
   <span class="md-ellipsis">
     
   
-    Convert TFLite to Kinara
+    Model Conversions
   
 
     
@@ -1363,7 +1393,13 @@
   
   
 
-      </a>
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
     </li>
   
 
@@ -1420,6 +1456,64 @@
   
 
       </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../configuration/performance_scaling/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Configuration
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
     </li>
   
 
@@ -1516,6 +1610,8 @@
       
         
           
+        
+      
         
       
         
@@ -2023,6 +2119,58 @@
 
 
 <h1 id="train-vision-model">Train Vision Model</h1>
+<p>Now that you have a fully annotated dataset with a training and validation partition, you can begin training your model.  This will briefly show the steps for training a model, but for an in depth tutorial, please see <a href="../../../../models/training/vision/">Training Vision Models</a>.</p>
+<p>Navigate back to the "Projects" page.  You can go back to the "Projects" page by clicking the Apps Menu waffle button on the top right of the Navigation bar.  Click the first selection to take you to the "Projects page".</p>
+<figure>
+            <img align="center" alt="Go to Projects Page" src="../../../../studio/assets/navigation/go-to-projects-page.jpg" />
+            <figcaption>Go to Projects Page</figcaption>
+            </figure>
+<p>From the "Projects" page, click on "Model Experiments" of your project.</p>
+<figure>
+            <img align="center" alt="Model Experiments Page" src="../../../../models/assets/training/model-experiments.jpg" />
+            <figcaption>Model Experiments Page</figcaption>
+            </figure>
+<p>Create a new experiment by clicking "New Experiment" on the top right corner.  Enter the name and the description of this experiment.  Click "Create New Experiment".</p>
+<figure>
+            <img align="center" alt="Model Experiments Page" src="../../../../models/assets/training/create-experiment.jpg" />
+            <figcaption>Model Experiments Page</figcaption>
+            </figure>
+<p>Navigate to the "Training Sessions".</p>
+<figure>
+            <img align="center" alt="Training Sessions" src="../../../../models/assets/training/training-sessions.jpg" />
+            <figcaption>Training Sessions</figcaption>
+            </figure>
+<p>Create a new training session by clicking the "Actions" dropdown menu on the top right of the page and then click the "+ New" button.</p>
+<figure>
+            <img align="center" alt="New Session Button" src="../../../../models/assets/training/new-session-button.jpg" />
+            <figcaption>New Session Button</figcaption>
+            </figure>
+<p>Follow the settings indicated and keep the rest of the settings default.  Click "Start Session" to start the training session.</p>
+<figure>
+            <img align="center" alt="Start Training Session" src="../../../../models/assets/training/vision-train-settings.jpg" />
+            <figcaption>Start Training Session</figcaption>
+            </figure>
+<p>The session progress will be shown like the following below.</p>
+<figure>
+            <img align="center" alt="Training Session Progress" src="../../../../models/assets/training/vision-session-progress.jpg" />
+            <figcaption>Training Session Progress</figcaption>
+            </figure>
+<p>Once completed the session card will appear like the following below.</p>
+<figure>
+            <img align="center" alt="Completed Session" src="../../../../models/assets/training/vision-completed-session.jpg" />
+            <figcaption>Completed Session</figcaption>
+            </figure>
+<p>Click the training session card for more information.</p>
+<figure>
+            <img align="center" alt="Training Details" src="../../../../models/assets/training/vision-view-train-details.jpg" />
+            <figcaption>Training Details</figcaption>
+            </figure>
+<p>The trained models will be listed under the "Artifacts" tab.  The download button next to these artifacts will download the artifacts to your machine.</p>
+<figure>
+            <img align="center" alt="Model Artifacts" src="../../../../models/assets/training/vision-session-artifacts.jpg" />
+            <figcaption>Model Artifacts</figcaption>
+            </figure>
+<p>To optimize the performance of the model on target, follow the guide for <a href="../conversion/">model conversions</a> next.</p>
 
 
 
@@ -2129,13 +2277,13 @@
         
         
           
-          <a href="../convert_kinara/" class="md-footer__link md-footer__link--next" aria-label="Next: Convert TFLite to Kinara">
+          <a href="../conversion/" class="md-footer__link md-footer__link--next" aria-label="Next: Model Conversions">
             <div class="md-footer__title">
               <span class="md-footer__direction">
                 Next
               </span>
               <div class="md-ellipsis">
-                Convert TFLite to Kinara
+                Model Conversions
               </div>
             </div>
             <div class="md-footer__button md-icon">

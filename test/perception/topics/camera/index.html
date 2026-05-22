@@ -1858,7 +1858,7 @@
 
 
 <h1 id="camera-topics">Camera Topics</h1>
-<p>The camera topics are managed by the <code>maivin-camera</code> service and handles interfacing with a local camera to produce camera frames which can be shared to multiple consumers with low overhead by leveraging zero-copy through DMA buffers.  The service can also produce encoded frames in H.264 or JPEG suitable for recording or streaming to a remote device.  The following is a list of key features provided by the camera service.</p>
+<p>The camera topics are managed by the <code>maivin-camera</code> service and handles interfacing with a local camera to produce camera frames which can be shared to multiple consumers with low overhead by leveraging zero-copy through <abbr title="Direct Memory Access">DMA</abbr> buffers.  The service can also produce encoded frames in H.264 or JPEG suitable for recording or streaming to a remote device.  The following is a list of key features provided by the camera service.</p>
 <ul>
 <li>Video4Linux2 Cameras</li>
 <li>i.MX 8M Plus ISP</li>
@@ -1908,8 +1908,8 @@
 <p>The client application will not be able to call pidfd_getfd if the client application runs at a lower permission level than the camera service. If this error occurs, try running the client application as <code>sudo</code> or as a service.</p>
 </div>
 <div class="admonition tip">
-<p class="admonition-title">Mapping DMA Buffers</p>
-<p>Mapping DMA buffers into user-space requires additional synchronization primitives around accesses.  We cover these details in our camera sample application.  Further details are documented in the Linux Kernel Manual under <a href="https://docs.kernel.org/driver-api/dma-buf.html#cpu-access-to-dma-buffer-objects">CPU Access to DMA Buffer Objects</a>.</p>
+<p class="admonition-title">Mapping <abbr title="Direct Memory Access">DMA</abbr> Buffers</p>
+<p>Mapping <abbr title="Direct Memory Access">DMA</abbr> buffers into user-space requires additional synchronization primitives around accesses.  We cover these details in our camera sample application.  Further details are documented in the Linux Kernel Manual under <a href="https://docs.kernel.org/driver-api/dma-buf.html#cpu-access-to-dma-buffer-objects">CPU Access to <abbr title="Direct Memory Access">DMA</abbr> Buffer Objects</a>.</p>
 </div>
 <h2 id="camerah264">/camera/h264</h2>
 <p>The <code>/camera/h264</code> topic uses Foxglove's <a href="../../api/foxglove_msgs/#compressedvideo">CompressedVideo</a> schema to publish h.264 encoded video frames.  The h.264 encoder uses key-frames, I-Frames, at a typical rate of 1Hz with the frames in-between encoded as P/B-Frames.  The decoder requires an initial I-Frame before it can decode additional frames.  This is typically handled transparently but means when sending <code>CompressedVideo</code> data to the h.264 decoder it could take up to a second until valid output is produced.</p>

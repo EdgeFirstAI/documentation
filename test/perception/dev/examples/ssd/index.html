@@ -2119,7 +2119,7 @@ The model outputs a maximum of 10 detections.  Currently there is no option to s
 </div>
 <h2 id="publisher-server">Publisher Server</h2>
 <p>Additionally, this can be all integrated to simulate the model service using any pre-defined <abbr title="Solid State Drive">SSD</abbr> model, for this example we will use the pretrained TFLite <abbr title="Solid State Drive">SSD</abbr> model. This can be done with the provided <a download="boxes2d_publisher.py" href="../assets/boxes2d_publisher.py">Publisher Script</a></p>
-<p>This script is required to run on the target as it will use the DMA Buffer topic to provide the images for the model. Additionally, the script will need to be run using sudo as it needs to access the file descriptor to get the DMA buffer and cannot without sudo.</p>
+<p>This script is required to run on the target as it will use the <abbr title="Direct Memory Access">DMA</abbr> Buffer topic to provide the images for the model. Additionally, the script will need to be run using sudo as it needs to access the file descriptor to get the <abbr title="Direct Memory Access">DMA</abbr> buffer and cannot without sudo.</p>
 <ol>
 <li>
 <p>Disable the current model service with the following command:</p>

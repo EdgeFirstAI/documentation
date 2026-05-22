@@ -1848,7 +1848,7 @@
 
 
 <h1 id="edgefirst-validation-metrics">EdgeFirst Validation Metrics</h1>
-<p>The EdgeFirst Validation metrics report the accuracy and timing performance of object detection, segmentation, and fusion models.  The <a href="https://pypi.org/project/edgefirst-validator/">EdgeFirst Validator</a> performs the model validation hosted in <a href="https://edgefirst.studio/">EdgeFirst Studio</a> to compute the metrics described in this section.</p>
+<p>The EdgeFirst Validation metrics report the accuracy and timing performance of object detection, segmentation, and fusion models.  The <a href="https://pypi.org/project/edgefirst-validator/">EdgeFirst Validator</a> performs the model validation hosted in <a href="https://test.edgefirst.studio/">EdgeFirst Studio</a> to compute the metrics described in this section.</p>
 <p>Validation evaluates a model’s performance before deployment to determine whether it is ready for real-world application.  It measures how the model performs across a range of settings (such as <abbr title="Non-Maximum Suppression">NMS</abbr> score thresholds and <abbr title="Intersection over Union">IoU</abbr> thresholds) and identifies the optimal configuration that yields the best overall performance.</p>
 <p>At this optimal setting, validation summarizes model accuracy by reporting how many predictions are correct, incorrect, or missed.  In addition to accuracy, it also measures performance characteristics such as inference time, as well as preprocessing and postprocessing latency, to estimate the total runtime of the deployment pipeline.</p>
 <p>In short, validation determines both the <strong>best operating configuration</strong> and whether the model meets the accuracy and performance requirements for deployment.</p>
@@ -1898,6 +1898,10 @@
 <tr>
 <td><strong>False Negative</strong></td>
 <td>The absence of model predictions.  For cases where the ground truth is a positive class, but the model prediction is a negative class (background).</td>
+</tr>
+<tr>
+<td><strong>True Negative</strong></td>
+<td>Generally not used in object detection metrics because background regions are not explicitly enumerated.  Conceptually, a true negative corresponds to a background region correctly not detected as an object.</td>
 </tr>
 <tr>
 <td><strong>Precision</strong></td>

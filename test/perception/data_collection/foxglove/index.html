@@ -2071,8 +2071,8 @@
 <p>The detection boxes are contained in the <code>/model/boxes2d</code> topic.  By default, this topic is not enabled.  See the Maivin Dataset Recording section for details on how to enable this topic and record an <abbr title="Binary container format for robotics log data">MCAP</abbr> with the Raivin.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
+<p>Not all vision models are able to produce detection results.  The default model on the Raivin can produce both detection and segmentation results.</p>
 </div>
-<p>Not all vision models are able produce detection results.  The default model on the Raivin can produce both detection and segmentation results.</p>
 <ol>
 <li>Record a <abbr title="Binary container format for robotics log data">MCAP</abbr> file that captures the <code>/model/boxes2d</code> topic.</li>
 <li>

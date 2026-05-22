@@ -12,31 +12,31 @@
         <meta name="author" content="Au-Zone Technologies">
       
       
-        <link rel="canonical" href="https://doc.edgefirst.ai/test/platforms/quickstart/imx8mplus/convert_kinara/">
+        <link rel="canonical" href="https://doc.edgefirst.ai/test/platforms/quickstart/jetson_orin/configuration/power_modes/">
       
       
-        <link rel="prev" href="../train/">
+        <link rel="prev" href="../../deploy/">
       
       
-        <link rel="next" href="../validate/">
+        <link rel="next" href="../../../raspberrypi/">
       
       
         
       
       
-      <link rel="icon" href="../../../../assets/favicon.png">
+      <link rel="icon" href="../../../../../assets/favicon.png">
       <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
     
     
       
-        <title>Convert TFLite to Kinara - EdgeFirst Studio Documentation</title>
+        <title>Set the Power Mode - EdgeFirst Studio Documentation</title>
       
     
     
-      <link rel="stylesheet" href="../../../../assets/stylesheets/main.484c7ddc.min.css">
+      <link rel="stylesheet" href="../../../../../assets/stylesheets/main.484c7ddc.min.css">
       
         
-        <link rel="stylesheet" href="../../../../assets/stylesheets/palette.ab4e12ef.min.css">
+        <link rel="stylesheet" href="../../../../../assets/stylesheets/palette.ab4e12ef.min.css">
       
       
 
@@ -55,13 +55,13 @@
       
     
     
-      <link rel="stylesheet" href="../../../../assets/_mkdocstrings.css">
+      <link rel="stylesheet" href="../../../../../assets/_mkdocstrings.css">
     
-      <link rel="stylesheet" href="../../../../stylesheets/extra.css">
+      <link rel="stylesheet" href="../../../../../stylesheets/extra.css">
     
-      <link rel="stylesheet" href="../../../../stylesheets/mermaid.css">
+      <link rel="stylesheet" href="../../../../../stylesheets/mermaid.css">
     
-    <script>__md_scope=new URL("../../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("../../../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
   
@@ -79,17 +79,17 @@
     
   
 <meta property="og:type" content="website" />
-<meta property="og:title" content="Convert TFLite to Kinara - EdgeFirst Studio Documentation" />
+<meta property="og:title" content="Set the Power Mode - EdgeFirst Studio Documentation" />
 <meta property="og:description" content="EdgeFirst Studio Documentation" />
-<meta property="og:image" content="https://doc.edgefirst.ai/test/assets/images/social/platforms/quickstart/imx8mplus/convert_kinara.png" />
+<meta property="og:image" content="https://doc.edgefirst.ai/test/assets/images/social/platforms/quickstart/jetson_orin/configuration/power_modes.png" />
 <meta property="og:image:type" content="image/png" />
 <meta property="og:image:width" content="1200" />
 <meta property="og:image:height" content="630" />
-<meta property="og:url" content="https://doc.edgefirst.ai/test/platforms/quickstart/imx8mplus/convert_kinara/" />
+<meta property="og:url" content="https://doc.edgefirst.ai/test/platforms/quickstart/jetson_orin/configuration/power_modes/" />
 <meta property="twitter:card" content="summary_large_image" />
-<meta property="twitter:title" content="Convert TFLite to Kinara - EdgeFirst Studio Documentation" />
+<meta property="twitter:title" content="Set the Power Mode - EdgeFirst Studio Documentation" />
 <meta property="twitter:description" content="EdgeFirst Studio Documentation" />
-<meta property="twitter:image" content="https://doc.edgefirst.ai/test/assets/images/social/platforms/quickstart/imx8mplus/convert_kinara.png" />
+<meta property="twitter:image" content="https://doc.edgefirst.ai/test/assets/images/social/platforms/quickstart/jetson_orin/configuration/power_modes.png" />
 </head>
   
   
@@ -109,7 +109,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#convert-tflite-to-kinara" class="md-skip">
+        <a href="#set-the-power-mode" class="md-skip">
           Skip to content
         </a>
       
@@ -144,9 +144,9 @@
 
 <header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href="../../../.." title="EdgeFirst Studio Documentation" class="md-header__button md-logo" aria-label="EdgeFirst Studio Documentation" data-md-component="logo">
+    <a href="../../../../.." title="EdgeFirst Studio Documentation" class="md-header__button md-logo" aria-label="EdgeFirst Studio Documentation" data-md-component="logo">
       
-  <img src="../../../../assets/logo.png" alt="logo">
+  <img src="../../../../../assets/logo.png" alt="logo">
 
     </a>
     <label class="md-header__button md-icon" for="__drawer">
@@ -163,7 +163,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Convert TFLite to Kinara
+              Set the Power Mode
             
           </span>
         </div>
@@ -270,7 +270,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../../.." class="md-tabs__link">
+        <a href="../../../../.." class="md-tabs__link">
           
   
   
@@ -292,7 +292,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../../../studio/" class="md-tabs__link">
+        <a href="../../../../../studio/" class="md-tabs__link">
           
   
   
@@ -314,7 +314,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../../../3D/" class="md-tabs__link">
+        <a href="../../../../../3D/" class="md-tabs__link">
           
   
   
@@ -336,7 +336,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../../../datasets/" class="md-tabs__link">
+        <a href="../../../../../datasets/" class="md-tabs__link">
           
   
   
@@ -358,7 +358,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../../../models/" class="md-tabs__link">
+        <a href="../../../../../models/" class="md-tabs__link">
           
   
   
@@ -380,7 +380,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../../../perception/" class="md-tabs__link">
+        <a href="../../../../../perception/" class="md-tabs__link">
           
   
   
@@ -404,7 +404,7 @@
     
     
       <li class="md-tabs__item md-tabs__item--active">
-        <a href="../../../" class="md-tabs__link">
+        <a href="../../../../" class="md-tabs__link">
           
   
   
@@ -446,9 +446,9 @@
 
 <nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="../../../.." title="EdgeFirst Studio Documentation" class="md-nav__button md-logo" aria-label="EdgeFirst Studio Documentation" data-md-component="logo">
+    <a href="../../../../.." title="EdgeFirst Studio Documentation" class="md-nav__button md-logo" aria-label="EdgeFirst Studio Documentation" data-md-component="logo">
       
-  <img src="../../../../assets/logo.png" alt="logo">
+  <img src="../../../../../assets/logo.png" alt="logo">
 
     </a>
     EdgeFirst Studio Documentation
@@ -505,7 +505,7 @@
   
   
   
-    <a href="../../../.." class="md-nav__link">
+    <a href="../../../../.." class="md-nav__link">
       
   
   
@@ -580,7 +580,7 @@
   
   
   
-    <a href="../../../../studio/" class="md-nav__link">
+    <a href="../../../../../studio/" class="md-nav__link">
       
   
   
@@ -641,7 +641,7 @@
   
   
   
-    <a href="../../../../3D/" class="md-nav__link">
+    <a href="../../../../../3D/" class="md-nav__link">
       
   
   
@@ -704,7 +704,7 @@
   
   
   
-    <a href="../../../../datasets/" class="md-nav__link">
+    <a href="../../../../../datasets/" class="md-nav__link">
       
   
   
@@ -777,7 +777,7 @@
   
   
   
-    <a href="../../../../models/" class="md-nav__link">
+    <a href="../../../../../models/" class="md-nav__link">
       
   
   
@@ -850,7 +850,7 @@
   
   
   
-    <a href="../../../../perception/" class="md-nav__link">
+    <a href="../../../../../perception/" class="md-nav__link">
       
   
   
@@ -921,7 +921,7 @@
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../../" class="md-nav__link ">
+            <a href="../../../../" class="md-nav__link ">
               
   
   
@@ -1069,7 +1069,7 @@
   
   
   
-    <a href="../../maivin/" class="md-nav__link">
+    <a href="../../../maivin/" class="md-nav__link">
       
   
   
@@ -1139,7 +1139,7 @@
   
   
   
-    <a href="../../raivin/" class="md-nav__link">
+    <a href="../../../raivin/" class="md-nav__link">
       
   
   
@@ -1147,6 +1147,150 @@
     
   
     Raivin Quick Start
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../../imx8mplus/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    i.MX 8M Plus Quick Start
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../../imx95/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    i.MX 95 Quick Start
   
 
     
@@ -1193,6 +1337,8 @@
       
         
       
+        
+      
     
     
     
@@ -1206,18 +1352,18 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7_2_3" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7_2_5" checked>
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="../" class="md-nav__link ">
+            <a href="../../" class="md-nav__link ">
               
   
   
   <span class="md-ellipsis">
     
   
-    i.MX 8M Plus Quick Start
+    NVIDIA Jetson Quick Start
   
 
     
@@ -1228,18 +1374,18 @@
             </a>
             
               
-              <label class="md-nav__link " for="__nav_7_2_3" id="__nav_7_2_3_label" tabindex="0">
+              <label class="md-nav__link " for="__nav_7_2_5" id="__nav_7_2_5_label" tabindex="0">
                 <span class="md-nav__icon md-icon"></span>
               </label>
             
           </div>
         
-        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_7_2_3_label" aria-expanded="true">
-          <label class="md-nav__title" for="__nav_7_2_3">
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_7_2_5_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_7_2_5">
             <span class="md-nav__icon md-icon"></span>
             
   
-    i.MX 8M Plus Quick Start
+    NVIDIA Jetson Quick Start
   
 
           </label>
@@ -1254,14 +1400,14 @@
   
   
     <li class="md-nav__item">
-      <a href="../setup/" class="md-nav__link">
+      <a href="../../setup/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    NXP i.MX 8M Plus Setup Guide
+    NVIDIA Jetson Orin Nano Setup Guide
   
 
     
@@ -1282,7 +1428,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../copy_dataset/" class="md-nav__link">
+      <a href="../../copy_dataset/" class="md-nav__link">
         
   
   
@@ -1310,7 +1456,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../train/" class="md-nav__link">
+      <a href="../../train/" class="md-nav__link">
         
   
   
@@ -1335,26 +1481,17 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../../convert_tensorrt/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    Convert TFLite to Kinara
+    Convert to TensorRT
   
 
     
@@ -1363,7 +1500,6 @@
   
 
       </a>
-      
     </li>
   
 
@@ -1376,7 +1512,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../validate/" class="md-nav__link">
+      <a href="../../validate/" class="md-nav__link">
         
   
   
@@ -1404,7 +1540,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../deploy/" class="md-nav__link">
+      <a href="../../deploy/" class="md-nav__link">
         
   
   
@@ -1420,6 +1556,158 @@
   
 
       </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7_2_5_8" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_7_2_5_8" id="__nav_7_2_5_8_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Configuration
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_7_2_5_8_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_7_2_5_8">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Configuration
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Set the Power Mode
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Set the Power Mode
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#power-savings" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Power Savings
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
     </li>
   
 
@@ -1456,10 +1744,6 @@
       
         
       
-        
-      
-        
-      
     
     
     
@@ -1478,145 +1762,7 @@
   
   
   
-    <a href="../../imx95/" class="md-nav__link">
-      
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    i.MX 95 Quick Start
-  
-
-    
-  </span>
-  
-  
-
-      
-        <span class="md-nav__icon md-icon"></span>
-      
-    </a>
-  
-
-      
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    
-    
-      
-        
-          
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-    
-    
-    
-      
-      
-    
-    
-      
-        
-        
-      
-    
-    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
-      
-        
-  
-  
-  
-    <a href="../../jetson_orin/" class="md-nav__link">
-      
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    NVIDIA Jetson Quick Start
-  
-
-    
-  </span>
-  
-  
-
-      
-        <span class="md-nav__icon md-icon"></span>
-      
-    </a>
-  
-
-      
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    
-    
-      
-        
-          
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-    
-    
-    
-      
-      
-    
-    
-      
-        
-        
-      
-    
-    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
-      
-        
-  
-  
-  
-    <a href="../../raspberrypi/" class="md-nav__link">
+    <a href="../../../raspberrypi/" class="md-nav__link">
       
   
   
@@ -1698,7 +1844,7 @@
   
   
   
-    <a href="../../../configuration/" class="md-nav__link">
+    <a href="../../../../configuration/" class="md-nav__link">
       
   
   
@@ -1758,7 +1904,7 @@
   
   
   
-    <a href="../../../hardware/hardware/" class="md-nav__link">
+    <a href="../../../../hardware/hardware/" class="md-nav__link">
       
   
   
@@ -1820,7 +1966,7 @@
   
   
   
-    <a href="../../../software/model_uploads/" class="md-nav__link">
+    <a href="../../../../software/model_uploads/" class="md-nav__link">
       
   
   
@@ -1878,7 +2024,7 @@
   
   
   
-    <a href="../../../networking/networking/" class="md-nav__link">
+    <a href="../../../../networking/networking/" class="md-nav__link">
       
   
   
@@ -1932,6 +2078,25 @@
     
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#power-savings" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Power Savings
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -1956,7 +2121,7 @@
     
     
       <li class="md-path__item">
-        <a href="../../../" class="md-path__link">
+        <a href="../../../../" class="md-path__link">
           
   <span class="md-ellipsis">
     Platforms
@@ -1979,7 +2144,7 @@
     
     
       <li class="md-path__item">
-        <a href="../../maivin/" class="md-path__link">
+        <a href="../../../maivin/" class="md-path__link">
           
   <span class="md-ellipsis">
     Getting Started
@@ -2000,10 +2165,28 @@
     
     
       <li class="md-path__item">
-        <a href="../" class="md-path__link">
+        <a href="../../" class="md-path__link">
           
   <span class="md-ellipsis">
-    i.MX 8M Plus Quick Start
+    NVIDIA Jetson Quick Start
+  </span>
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+    
+    
+      <li class="md-path__item">
+        <a href="./" class="md-path__link">
+          
+  <span class="md-ellipsis">
+    Configuration
   </span>
 
         </a>
@@ -2022,7 +2205,95 @@
 
 
 
-<h1 id="convert-tflite-to-kinara">Convert TFLite to Kinara</h1>
+<h1 id="set-the-power-mode">Set the Power Mode</h1>
+<p>You can set the board to 25W and disable any power savings by running the following commands. </p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>sudo<span class="w"> </span>nvpmodel<span class="w"> </span>-m<span class="w"> </span><span class="m">1</span>
+$<span class="w"> </span>sudo<span class="w"> </span>jetson_clocks
+</code></pre></div>
+<table>
+<thead>
+<tr>
+<th>Power Mode</th>
+<th>Code</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>7W</td>
+<td>3</td>
+</tr>
+<tr>
+<td>15W</td>
+<td>0</td>
+</tr>
+<tr>
+<td>25W</td>
+<td>1</td>
+</tr>
+<tr>
+<td>MAXN</td>
+<td>2</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition info">
+<p class="admonition-title">Info</p>
+<p>These commands have to be set each time the board boots up as it defaults to run power savings.</p>
+<ul>
+<li>You can find more information on the various power modes by entering <code>cat /etc/nvpmodel.conf</code></li>
+<li>You can see the current power mode set with <code>sudo nvpmodel -q</code></li>
+</ul>
+</div>
+<h2 id="power-savings">Power Savings</h2>
+<p>The command <code>sudo jetson_clocks</code> disables any power savings. You can find the differences in the device performance using <code>tegrastats</code>.</p>
+<p><strong>Without</strong> <code>sudo jetson_clocks</code></p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>tegrastats
+<span class="m">04</span>-27-2026<span class="w"> </span><span class="m">14</span>:59:41<span class="w"> </span>RAM<span class="w"> </span><span class="m">775</span>/7620MB<span class="w"> </span><span class="o">(</span>lfb<span class="w"> </span>3x4MB<span class="o">)</span><span class="w"> </span>SWAP<span class="w"> </span><span class="m">0</span>/3810MB<span class="w"> </span><span class="o">(</span>cached<span class="w"> </span>0MB<span class="o">)</span><span class="w"> </span>CPU<span class="w"> </span><span class="o">[</span><span class="m">1</span>%@729,0%@729,0%@729,0%@729,0%@729,0%@729<span class="o">]</span><span class="w"> </span>GR3D_FREQ<span class="w"> </span><span class="m">0</span>%<span class="w"> </span>cpu@48.468C<span class="w"> </span>soc2@47.531C<span class="w"> </span>soc0@48.062C<span class="w"> </span>gpu@48.562C<span class="w"> </span>tj@49.156C<span class="w"> </span>soc1@49.156C<span class="w"> </span>VDD_IN<span class="w"> </span>4761mW/4778mW<span class="w"> </span>VDD_CPU_GPU_CV<span class="w"> </span>515mW/501mW<span class="w"> </span>VDD_SOC<span class="w"> </span>1428mW/1428mW<span class="w"> </span>
+<span class="m">04</span>-27-2026<span class="w"> </span><span class="m">14</span>:59:42<span class="w"> </span>RAM<span class="w"> </span><span class="m">775</span>/7620MB<span class="w"> </span><span class="o">(</span>lfb<span class="w"> </span>3x4MB<span class="o">)</span><span class="w"> </span>SWAP<span class="w"> </span><span class="m">0</span>/3810MB<span class="w"> </span><span class="o">(</span>cached<span class="w"> </span>0MB<span class="o">)</span><span class="w"> </span>CPU<span class="w"> </span><span class="o">[</span><span class="m">0</span>%@729,0%@729,0%@729,0%@729,0%@729,0%@729<span class="o">]</span><span class="w"> </span>GR3D_FREQ<span class="w"> </span><span class="m">0</span>%<span class="w"> </span>cpu@48.625C<span class="w"> </span>soc2@47.468C<span class="w"> </span>soc0@48C<span class="w"> </span>gpu@48.593C<span class="w"> </span>tj@49.218C<span class="w"> </span>soc1@49.218C<span class="w"> </span>VDD_IN<span class="w"> </span>4761mW/4777mW<span class="w"> </span>VDD_CPU_GPU_CV<span class="w"> </span>515mW/502mW<span class="w"> </span>VDD_SOC<span class="w"> </span>1428mW/1428mW<span class="w"> </span>
+<span class="m">04</span>-27-2026<span class="w"> </span><span class="m">14</span>:59:43<span class="w"> </span>RAM<span class="w"> </span><span class="m">775</span>/7620MB<span class="w"> </span><span class="o">(</span>lfb<span class="w"> </span>3x4MB<span class="o">)</span><span class="w"> </span>SWAP<span class="w"> </span><span class="m">0</span>/3810MB<span class="w"> </span><span class="o">(</span>cached<span class="w"> </span>0MB<span class="o">)</span><span class="w"> </span>CPU<span class="w"> </span><span class="o">[</span><span class="m">0</span>%@729,0%@729,0%@729,0%@729,0%@729,0%@729<span class="o">]</span><span class="w"> </span>GR3D_FREQ<span class="w"> </span><span class="m">0</span>%<span class="w"> </span>cpu@48.562C<span class="w"> </span>soc2@47.531C<span class="w"> </span>soc0@47.968C<span class="w"> </span>gpu@48.5C<span class="w"> </span>tj@49.062C<span class="w"> </span>soc1@49.062C<span class="w"> </span>VDD_IN<span class="w"> </span>4761mW/4777mW<span class="w"> </span>VDD_CPU_GPU_CV<span class="w"> </span>515mW/502mW<span class="w"> </span>VDD_SOC<span class="w"> </span>1428mW/1428mW
+</code></pre></div>
+<p><strong>With</strong> <code>sudo jetson_clocks</code></p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>tegrastats
+<span class="m">04</span>-27-2026<span class="w"> </span><span class="m">15</span>:00:54<span class="w"> </span>RAM<span class="w"> </span><span class="m">779</span>/7620MB<span class="w"> </span><span class="o">(</span>lfb<span class="w"> </span>2x4MB<span class="o">)</span><span class="w"> </span>SWAP<span class="w"> </span><span class="m">0</span>/3810MB<span class="w"> </span><span class="o">(</span>cached<span class="w"> </span>0MB<span class="o">)</span><span class="w"> </span>CPU<span class="w"> </span><span class="o">[</span><span class="m">0</span>%@1344,0%@1344,0%@1344,0%@1344,0%@1344,0%@1344<span class="o">]</span><span class="w"> </span>GR3D_FREQ<span class="w"> </span><span class="m">0</span>%<span class="w"> </span>cpu@50.125C<span class="w"> </span>soc2@49.125C<span class="w"> </span>soc0@49.25C<span class="w"> </span>gpu@50.562C<span class="w"> </span>tj@50.562C<span class="w"> </span>soc1@50.437C<span class="w"> </span>VDD_IN<span class="w"> </span>6626mW/6625mW<span class="w"> </span>VDD_CPU_GPU_CV<span class="w"> </span>1228mW/1230mW<span class="w"> </span>VDD_SOC<span class="w"> </span>2380mW/2380mW<span class="w"> </span>
+<span class="m">04</span>-27-2026<span class="w"> </span><span class="m">15</span>:00:55<span class="w"> </span>RAM<span class="w"> </span><span class="m">779</span>/7620MB<span class="w"> </span><span class="o">(</span>lfb<span class="w"> </span>2x4MB<span class="o">)</span><span class="w"> </span>SWAP<span class="w"> </span><span class="m">0</span>/3810MB<span class="w"> </span><span class="o">(</span>cached<span class="w"> </span>0MB<span class="o">)</span><span class="w"> </span>CPU<span class="w"> </span><span class="o">[</span><span class="m">0</span>%@1344,0%@1344,0%@1344,0%@1344,0%@1344,0%@1344<span class="o">]</span><span class="w"> </span>GR3D_FREQ<span class="w"> </span><span class="m">0</span>%<span class="w"> </span>cpu@50.093C<span class="w"> </span>soc2@49.312C<span class="w"> </span>soc0@49.343C<span class="w"> </span>gpu@50.593C<span class="w"> </span>tj@50.593C<span class="w"> </span>soc1@50.406C<span class="w"> </span>VDD_IN<span class="w"> </span>6626mW/6625mW<span class="w"> </span>VDD_CPU_GPU_CV<span class="w"> </span>1228mW/1230mW<span class="w"> </span>VDD_SOC<span class="w"> </span>2380mW/2380mW<span class="w"> </span>
+<span class="m">04</span>-27-2026<span class="w"> </span><span class="m">15</span>:00:56<span class="w"> </span>RAM<span class="w"> </span><span class="m">779</span>/7620MB<span class="w"> </span><span class="o">(</span>lfb<span class="w"> </span>2x4MB<span class="o">)</span><span class="w"> </span>SWAP<span class="w"> </span><span class="m">0</span>/3810MB<span class="w"> </span><span class="o">(</span>cached<span class="w"> </span>0MB<span class="o">)</span><span class="w"> </span>CPU<span class="w"> </span><span class="o">[</span><span class="m">0</span>%@1344,0%@1344,0%@1344,0%@1344,0%@1344,0%@1344<span class="o">]</span><span class="w"> </span>GR3D_FREQ<span class="w"> </span><span class="m">0</span>%<span class="w"> </span>cpu@49.812C<span class="w"> </span>soc2@49.187C<span class="w"> </span>soc0@49.437C<span class="w"> </span>gpu@50.562C<span class="w"> </span>tj@50.562C<span class="w"> </span>soc1@50.468C<span class="w"> </span>VDD_IN<span class="w"> </span>6626mW/6625mW<span class="w"> </span>VDD_CPU_GPU_CV<span class="w"> </span>1228mW/1230mW<span class="w"> </span>VDD_SOC<span class="w"> </span>2380mW/2380mW
+</code></pre></div>
+<table>
+<thead>
+<tr>
+<th>Metric</th>
+<th>Without <code>sudo jetson_clocks</code></th>
+<th>With <code>sudo jetson_clocks</code></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>CPU Frequency</td>
+<td>~729 MHz (idle scaling)</td>
+<td>~1.34 GHz (locked)</td>
+</tr>
+<tr>
+<td>Total Power (VDD_IN)</td>
+<td>~4760 mW (~4.7 W)</td>
+<td>~6626 mW (~6.6 W)</td>
+</tr>
+<tr>
+<td>CPU/GPU/CV Rail</td>
+<td>~515 mW</td>
+<td>~1228 mW (&gt;2× increase)</td>
+</tr>
+<tr>
+<td>SOC Rail</td>
+<td>~1428 mW</td>
+<td>~2380 mW</td>
+</tr>
+<tr>
+<td>Temperature</td>
+<td>~48–49 °C</td>
+<td>~50–51 °C</td>
+</tr>
+</tbody>
+</table>
 
 
 
@@ -2112,7 +2383,7 @@
       <nav class="md-footer__inner md-grid" aria-label="Footer" >
         
           
-          <a href="../train/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Train Vision Model">
+          <a href="../../deploy/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Deploy Vision Model">
             <div class="md-footer__button md-icon">
               
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
@@ -2122,20 +2393,20 @@
                 Previous
               </span>
               <div class="md-ellipsis">
-                Train Vision Model
+                Deploy Vision Model
               </div>
             </div>
           </a>
         
         
           
-          <a href="../validate/" class="md-footer__link md-footer__link--next" aria-label="Next: Validate Vision Model">
+          <a href="../../../raspberrypi/" class="md-footer__link md-footer__link--next" aria-label="Next: Index">
             <div class="md-footer__title">
               <span class="md-footer__direction">
                 Next
               </span>
               <div class="md-ellipsis">
-                Validate Vision Model
+                Index
               </div>
             </div>
             <div class="md-footer__button md-icon">
@@ -2268,10 +2539,10 @@
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": "../../../..", "features": ["content.code.copy", "content.code.annotate", "content.tabs.link", "navigation.instant", "navigation.tracking", "navigation.tabs", "navigation.tabs.sticky", "navigation.path", "navigation.indexes", "navigation.top", "navigation.footer", "navigation.prune", "toc.follow", "search.suggest", "search.highlight"], "search": "../../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"alias": true, "default": "latest", "provider": "mike"}}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../../../..", "features": ["content.code.copy", "content.code.annotate", "content.tabs.link", "navigation.instant", "navigation.tracking", "navigation.tabs", "navigation.tabs.sticky", "navigation.path", "navigation.indexes", "navigation.top", "navigation.footer", "navigation.prune", "toc.follow", "search.suggest", "search.highlight"], "search": "../../../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"alias": true, "default": "latest", "provider": "mike"}}</script>
     
     
-      <script src="../../../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      <script src="../../../../../assets/javascripts/bundle.79ae519e.min.js"></script>
       
         <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
       

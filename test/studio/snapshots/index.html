@@ -991,7 +991,7 @@
   <a href="#upload-from-ziparrow-file" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Upload from Zip/Arrow File
+        Upload from ZIP/Arrow File
       
     </span>
   </a>
@@ -1520,7 +1520,7 @@
   <a href="#upload-from-ziparrow-file" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Upload from Zip/Arrow File
+        Upload from ZIP/Arrow File
       
     </span>
   </a>
@@ -1644,7 +1644,7 @@
             <figcaption>Snapshot List</figcaption>
             </figure>
 <h2 id="create-snapshot">Create Snapshot</h2>
-<p>The tutorial for creating snapshots can be found under the <a href="../../datasets/tutorials/annotations/automatic/#create-snapshot">Dataset Annotations</a> section.  This will create a Zip/Arrow file pair also known as an <a href="../../datasets/format/">EdgeFirst Dataset</a> for each sequence in a dataset and stored in the cloud storage.  This snapshot can be later restored (into another dataset) or can be downloaded to a local folder on a PC.</p>
+<p>The tutorial for creating snapshots can be found under the <a href="../../datasets/tutorials/annotations/automatic/#create-snapshot">Dataset Annotations</a> section.  This will create a ZIP/Arrow file pair also known as an <a href="../../datasets/format/">EdgeFirst Dataset</a> for each sequence in a dataset and stored in the cloud storage.  This snapshot can be later restored (into another dataset) or can be downloaded to a local folder on a PC.</p>
 <p>The stages for creating a snapshot are shown below.</p>
 <figure>
             <img align="center" alt="Create Snapshot Stages" src="../../datasets/assets/annotations/automatic/snapshot-creation-process.png" />
@@ -1654,7 +1654,7 @@
 <ol>
 <li>Create from Existing Dataset.</li>
 <li>Upload from <abbr title="Binary container format for robotics log data">MCAP</abbr> File.</li>
-<li>Upload from Zip/Arrow File</li>
+<li>Upload from ZIP/Arrow File</li>
 </ol>
 <h3 id="create-from-existing-dataset">Create from Existing Dataset</h3>
 <ol>
@@ -1669,11 +1669,11 @@
 <li>Go to the snapshots dashboard.</li>
 <li>Click on the "FROM FILE" button or drag and drop an <abbr title="Binary container format for robotics log data">MCAP</abbr> file on the dashboard.</li>
 </ol>
-<h3 id="upload-from-ziparrow-file">Upload from Zip/Arrow File</h3>
-<p>This format is the <a href="../../datasets/format/">EdgeFirst Dataset Format</a> where the <a href="../../datasets/format/sensors/">Zip file</a> contains sensor readings and measurements and the <a href="../../datasets/format/schema/">Arrow file</a> contains dataset annotations.</p>
+<h3 id="upload-from-ziparrow-file">Upload from ZIP/Arrow File</h3>
+<p>This format is the <a href="../../datasets/format/">EdgeFirst Dataset Format</a> where the <a href="../../datasets/format/sensors/">ZIP file</a> contains sensor readings and measurements and the <a href="../../datasets/format/schema/">Arrow file</a> contains dataset annotations.</p>
 <ol>
 <li>Go to the snapshots dashboard.</li>
-<li>Click on the "FROM FILE" button and then select the Zip and Arrow file pairs to import or drag and drop as a folder containing Zip and Arrow file pairs onto the dashboard.</li>
+<li>Click on the "FROM FILE" button and then select the ZIP and Arrow file pairs to import or drag and drop as a folder containing ZIP and Arrow file pairs onto the dashboard.</li>
 <li>Once the files are selected, this will start the import sequence progress shown below.</li>
 </ol>
 <h3 id="pipeline">Pipeline</h3>
@@ -1682,11 +1682,11 @@
 <li>Server Initialization: Initialize the backend server for handling the processes.</li>
 <li>Downloading Files from Cloud Storage: Fetches the dataset images from the S3 bucket.</li>
 <li>Exporting Files from Database: Fetches the dataset annotations from the Studio database.</li>
-<li>Zipping Files for Upload: Formulation of the <a href="../../datasets/format/">EdgeFirst Dataset Format</a> and placing the fetched dataset files as a single Zip file.</li>
+<li>Zipping Files for Upload: Formulation of the <a href="../../datasets/format/">EdgeFirst Dataset Format</a> and placing the fetched dataset files as a single ZIP file.</li>
 <li>Uploading Snapshot to Cloud Storage: Uploading the dataset into S3 bucket.</li>
 </ol>
 <h2 id="restore-snapshot">Restore Snapshot</h2>
-<p>This action will take an <abbr title="Binary container format for robotics log data">MCAP</abbr> or Zip/Arrow files and create a dataset in EdgeFirst Studio.  The backend pipelines for auto depth map generation, object detection, and Automated Ground Truth Generation can also be selected at this time while restoring.</p>
+<p>This action will take an <abbr title="Binary container format for robotics log data">MCAP</abbr> or ZIP/Arrow files and create a dataset in EdgeFirst Studio.  The backend pipelines for auto depth map generation, object detection, and Automated Ground Truth Generation can also be selected at this time while restoring.</p>
 <p>The tutorial for restoring snapshots can be found under the <a href="../../datasets/tutorials/annotations/automatic/#restore-snapshot">Dataset Annotations</a> section.</p>
 <p>The stages for restoring a snapshot are shown below.</p>
 <figure>

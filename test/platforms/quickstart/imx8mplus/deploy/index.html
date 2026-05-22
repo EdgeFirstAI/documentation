@@ -18,7 +18,7 @@
         <link rel="prev" href="../validate/">
       
       
-        <link rel="next" href="../../imx95/">
+        <link rel="next" href="../configuration/performance_scaling/">
       
       
         
@@ -1193,6 +1193,8 @@
       
         
       
+        
+      
     
     
     
@@ -1337,15 +1339,43 @@
   
   
   
-    <li class="md-nav__item">
-      <a href="../convert_kinara/" class="md-nav__link">
+    
+    
+      
         
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../conversion/" class="md-nav__link">
+      
   
   
   <span class="md-ellipsis">
     
   
-    Convert TFLite to Kinara
+    Model Conversions
   
 
     
@@ -1353,7 +1383,13 @@
   
   
 
-      </a>
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
     </li>
   
 
@@ -1419,6 +1455,64 @@
   
 
       </a>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../configuration/performance_scaling/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Configuration
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
       
     </li>
   
@@ -1516,6 +1610,8 @@
       
         
           
+        
+      
         
       
         
@@ -2023,6 +2119,45 @@
 
 
 <h1 id="deploy-vision-model">Deploy Vision Model</h1>
+<p>You can deploy your model using Studio Runner - a Python implementation that demonstrates reading from the camera, run model inference, and displays the model outputs in the monitor. </p>
+<ol>
+<li>Download the <a download="studio_runner_py-0.0.0-py3-none-any.whl" href="../../../../models/deployment/assets/studio_runner_py-0.0.0-py3-none-any.whl">Studio Runner Python Wheel</a> </li>
+<li>If you don't already have a model, you can download this <a download="coffeecup-yolov8n-segmentation-rgb-640x640-t-266e_quant-u8-i8.tflite" href="../../../../models/deployment/assets/coffeecup-yolov8n-segmentation-rgb-640x640-t-266e_quant-u8-i8.tflite">sample model</a> to run this example</li>
+<li>
+<p>SCP both the wheel and the model to the i.MX 8M Plus</p>
+<div class="highlight"><pre><span></span><code>scp<span class="w"> </span>studio_runner_py-0.0.0-py3-none-any.whl<span class="w"> </span>root@&lt;ip<span class="w"> </span>address&gt;:~/
+scp<span class="w"> </span>coffeecup-yolov8n-segmentation-rgb-640x640-t-266e_quant-u8-i8.tflite<span class="w"> </span>root@&lt;ip<span class="w"> </span>address&gt;:~/
+</code></pre></div>
+</li>
+<li>
+<p>On device, create and activate a Python Virtual Environment</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># python3 -m venv venv --system-site-packages</span>
+<span class="c1"># source venv/bin/activate</span>
+<span class="c1"># pip install --upgrade pip</span>
+</code></pre></div>
+</li>
+<li>
+<p>Install the Studio Runner wheel and the <a href="https://pypi.org/project/edgefirst-validator/">EdgeFirst-Validator</a> dependency</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># pip install studio_runner_py-0.0.0-py3-none-any.whl</span>
+<span class="c1"># pip install edgefirst-validator --no-deps</span>
+</code></pre></div>
+</li>
+<li>
+<p>Run the program on target</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># studio-runner-py coffeecup-yolov8n-segmentation-rgb-640x640-t-266e_quant-u8-i8.tflite</span>
+</code></pre></div>
+<p>You should see the following display appear on your monitor.  This model should be able to segment coffeecups in the frame.</p>
+<p><figure markdown="span">
+        <img align="center" alt="Sample Coffee Cup Detection" src="../../../../models/assets/deployment/coffeecup-detection-sample.jpg" />
+        <figcaption>Sample Coffee Cup Detection</figcaption>
+        </figure></p>
+</li>
+</ol>
+<div class="admonition note">
+<p class="admonition-title">Official Deployment Applications</p>
+<p>Official native deployment applications are still under development.  These instructions are provided to give users starting examples for running the model using Python. </p>
+</div>
+<p>For more deployment examples, you can deploy your model directly from your phone’s browser using <a href="../../../../models/deployment/studio/">EdgeFirst Studio</a>. </p>
 
 
 
@@ -2129,13 +2264,13 @@
         
         
           
-          <a href="../../imx95/" class="md-footer__link md-footer__link--next" aria-label="Next: Index">
+          <a href="../configuration/performance_scaling/" class="md-footer__link md-footer__link--next" aria-label="Next: CPU Performance Scaling">
             <div class="md-footer__title">
               <span class="md-footer__direction">
                 Next
               </span>
               <div class="md-ellipsis">
-                Index
+                CPU Performance Scaling
               </div>
             </div>
             <div class="md-footer__button md-icon">

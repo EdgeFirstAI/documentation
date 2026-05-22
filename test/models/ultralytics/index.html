@@ -1836,7 +1836,7 @@
 <li><strong>Description</strong>: This field is used to add some hints about the training session.  Commonly used to highlight some parameters</li>
 <li><strong>Training Data</strong>: In this section the user must select the dataset as well as train/val groups</li>
 <li><strong>Input Resolution</strong>: The user can pick predefined input resolutions.  In case you need a different resolution to be supported, please reach out and <a href="mailto:support@edgefirst.ai">email our support team</a></li>
-<li><strong>Camera Adaptor</strong>: Ultralytics accepts six different input optimizations.  It could be either of <abbr title="Red Green Blue">RGB</abbr>, BGR, RGBA, BGRA, Greyscale, or YUYV</li>
+<li><strong>Camera Adaptor</strong>: Ultralytics accepts six different input optimizations.  It could be either of <abbr title="Red Green Blue">RGB</abbr>, BGR, <abbr title="Red Green Blue Alpha">RGBA</abbr>, BGRA, Greyscale, or YUYV</li>
 <li><strong>Model Parameters</strong>: This section configures the model architecture<ol>
 <li><strong>Model Task</strong>: This can be either "Detection" or "Segmentation". Note for Ultralytics segmentation refers to instance segmentation</li>
 <li><strong>Model Version</strong>: The Ultralytics version to train from the choices (v5, v8, v11, v26)</li>
@@ -1890,7 +1890,7 @@
 </table>
 <p>All versions share the same anchor-free <code>Detect</code> head and use the same decoder at inference time. See <a href="../metadata/">Model Metadata</a> for details on how the decoder works across versions.</p>
 <h2 id="camera-adaptor">Camera Adaptor</h2>
-<p>The <strong>Camera Adaptor</strong> dropdown is available when configuring a training session, allowing you to select the target camera format for your deployment platform. This trains the model to accept native camera output (BGR, RGBA, YUYV, etc.) without runtime conversion.</p>
+<p>The <strong>Camera Adaptor</strong> dropdown is available when configuring a training session, allowing you to select the target camera format for your deployment platform. This trains the model to accept native camera output (BGR, <abbr title="Red Green Blue Alpha">RGBA</abbr>, YUYV, etc.) without runtime conversion.</p>
 <p>See <a href="../cameraadaptor/">Camera Adaptor</a> for details on supported formats and platform guidance.</p>
 <h2 id="custom-models">Custom Models</h2>
 <p>If you have a custom float model, it is highly recommended to <a href="../conversion/tflite/">export to a quantized model</a> to deploy and maximize the model's performance using the target's <abbr title="Neural Processing Unit">NPU</abbr>.</p>

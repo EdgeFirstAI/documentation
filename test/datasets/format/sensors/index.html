@@ -1698,12 +1698,12 @@ ZIP files.</p>
 <td>16-bit PNG encoding of complex int16 data</td>
 </tr>
 <tr>
-<td>Radar PCD</td>
+<td>Radar <abbr title="Point Cloud">PCD</abbr></td>
 <td><code>.radar.pcd</code></td>
 <td>Point cloud data</td>
 </tr>
 <tr>
-<td><abbr title="Light Detection and Ranging">LiDAR</abbr> PCD</td>
+<td><abbr title="Light Detection and Ranging">LiDAR</abbr> <abbr title="Point Cloud">PCD</abbr></td>
 <td><code>.lidar.pcd</code></td>
 <td>Point cloud data</td>
 </tr>
@@ -1714,7 +1714,7 @@ ZIP files.</p>
 <p>The <code>.lidar.png</code> (depth map) and <code>.lidar.jpeg</code> (reflectivity) projected visualization
 formats have been <strong>removed</strong> from the format specification in 2026.04.
 The <abbr title="Software Development Kit">SDK</abbr> retains read support for backward compatibility but will not write these types.
-Consumers that need depth or reflectivity images should project <abbr title="Light Detection and Ranging">LiDAR</abbr> PCD data directly.</p>
+Consumers that need depth or reflectivity images should project <abbr title="Light Detection and Ranging">LiDAR</abbr> <abbr title="Point Cloud">PCD</abbr> data directly.</p>
 </div>
 <h2 id="camera">Camera</h2>
 <p><strong>Format</strong>: JPEG (default) or PNG (lossless)</p>
@@ -1734,7 +1734,7 @@ Consumers that need depth or reflectivity images should project <abbr title="Lig
 </ul>
 <h2 id="radar">Radar</h2>
 <h3 id="point-cloud-data">Point Cloud Data</h3>
-<p><strong>Format</strong>: PCD (Point Cloud Data)</p>
+<p><strong>Format</strong>: <abbr title="Point Cloud">PCD</abbr> (Point Cloud Data)</p>
 <p><strong>Extension</strong>: <code>.radar.pcd</code></p>
 <p><strong>Fields</strong>:</p>
 <div class="highlight"><pre><span></span><code>x, y, z          # Cartesian position (meters)
@@ -1757,7 +1757,7 @@ rcs              # Radar cross-section
 <li><strong>Output size</strong>: 2048 x 400 pixels for standard cube</li>
 </ul>
 <h2 id="lidar"><abbr title="Light Detection and Ranging">LiDAR</abbr></h2>
-<p><strong>Format</strong>: PCD (Point Cloud Data)</p>
+<p><strong>Format</strong>: <abbr title="Point Cloud">PCD</abbr> (Point Cloud Data)</p>
 <p><strong>Extension</strong>: <code>.lidar.pcd</code></p>
 <p><strong>Configuration</strong>: Based on Maivin <abbr title="Binary container format for robotics log data">MCAP</abbr> Recorder settings.</p>
 <div class="admonition note">
@@ -1765,7 +1765,7 @@ rcs              # Radar cross-section
 <p>Prior versions of EdgeFirst supported <code>.lidar.png</code> (depth map) and <code>.lidar.jpeg</code>
 (reflectivity) files that contained 2D projections of <abbr title="Light Detection and Ranging">LiDAR</abbr> point cloud data.
 These have been removed in 2026.04. If your pipeline requires depth or reflectivity
-images, project the PCD data using the <abbr title="Light Detection and Ranging">LiDAR</abbr> sensor calibration parameters.</p>
+images, project the <abbr title="Point Cloud">PCD</abbr> data using the <abbr title="Light Detection and Ranging">LiDAR</abbr> sensor calibration parameters.</p>
 </div>
 
 

@@ -1698,10 +1698,10 @@
 
 
 <h1 id="camera-adaptor">Camera Adaptor</h1>
-<p>Camera Adaptor enables deep learning models to consume camera formats natively supported by edge platforms, eliminating costly runtime color space conversions. Instead of converting camera output (e.g., YUV, BGR, RGBA) to <abbr title="Red Green Blue">RGB</abbr> before inference, Camera Adaptor teaches the model to accept the native camera format directly.</p>
+<p>Camera Adaptor enables deep learning models to consume camera formats natively supported by edge platforms, eliminating costly runtime color space conversions. Instead of converting camera output (e.g., YUV, BGR, <abbr title="Red Green Blue Alpha">RGBA</abbr>) to <abbr title="Red Green Blue">RGB</abbr> before inference, Camera Adaptor teaches the model to accept the native camera format directly.</p>
 <p>The open source library is available at <a href="https://github.com/EdgeFirstAI/cameraadaptor">github.com/EdgeFirstAI/cameraadaptor</a>.</p>
 <h2 id="why-camera-adaptor">Why Camera Adaptor?</h2>
-<p>Most deep learning models are trained on <abbr title="Red Green Blue">RGB</abbr> images, but edge cameras rarely output <abbr title="Red Green Blue">RGB</abbr> natively. Common camera output formats include BGR, RGBA, YUYV, and Bayer patterns. Without Camera Adaptor, the inference pipeline must convert every frame from the camera's native format to <abbr title="Red Green Blue">RGB</abbr> before feeding it to the model --- a conversion that adds latency and consumes system resources.</p>
+<p>Most deep learning models are trained on <abbr title="Red Green Blue">RGB</abbr> images, but edge cameras rarely output <abbr title="Red Green Blue">RGB</abbr> natively. Common camera output formats include BGR, <abbr title="Red Green Blue Alpha">RGBA</abbr>, YUYV, and Bayer patterns. Without Camera Adaptor, the inference pipeline must convert every frame from the camera's native format to <abbr title="Red Green Blue">RGB</abbr> before feeding it to the model --- a conversion that adds latency and consumes system resources.</p>
 <pre class="mermaid"><code>graph LR
   subgraph without ["Without Camera Adaptor"]
     direction LR
@@ -1795,7 +1795,7 @@
 <tr>
 <td>i.MX 8M Plus</td>
 <td><code>rgba</code></td>
-<td>G2D hardware outputs RGBA; adaptor auto-strips alpha</td>
+<td>G2D hardware outputs <abbr title="Red Green Blue Alpha">RGBA</abbr>; adaptor auto-strips alpha</td>
 </tr>
 <tr>
 <td>i.MX 95</td>

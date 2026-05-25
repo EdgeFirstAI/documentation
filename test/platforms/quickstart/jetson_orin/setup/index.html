@@ -2427,10 +2427,10 @@ $<span class="w"> </span>sudo<span class="w"> </span>jetson_clocks
 <p>These instructions installs PyCuda and ONNXRuntime which does not come pre-installed in the BSP.  The following steps were taken from this <a href="https://docs.donkeycar.com/guide/robot_sbc/tensorrt_jetson_nano/">Setup Guide</a>.</p>
 <ol>
 <li>Set <code>CUDA_HOME</code> environment variable <code>export CUDA_HOME=/usr/local/cuda</code></li>
-<li>Add the CUDA compiler to the PATH <code>export PATH=$CUDA_HOME/bin:$PATH</code></li>
-<li>Add the CUDA libraries <code>export LD_LIBRARY_PATH=$CUDA_HOME/lib64:$LD_LIBRARY_PATH</code></li>
+<li>Add the <abbr title="NVIDIA Compute Unified Device Architecture">CUDA</abbr> compiler to the PATH <code>export PATH=$CUDA_HOME/bin:$PATH</code></li>
+<li>Add the <abbr title="NVIDIA Compute Unified Device Architecture">CUDA</abbr> libraries <code>export LD_LIBRARY_PATH=$CUDA_HOME/lib64:$LD_LIBRARY_PATH</code></li>
 <li>
-<p>Verify that the CUDA compiler driver is installed in the device.</p>
+<p>Verify that the <abbr title="NVIDIA Compute Unified Device Architecture">CUDA</abbr> compiler driver is installed in the device.</p>
 <p><div class="highlight"><pre><span></span><code>$<span class="w"> </span>nvcc<span class="w"> </span>--version
 nvcc:<span class="w"> </span>NVIDIA<span class="w"> </span><span class="o">(</span>R<span class="o">)</span><span class="w"> </span>Cuda<span class="w"> </span>compiler<span class="w"> </span>driver
 Copyright<span class="w"> </span><span class="o">(</span>c<span class="o">)</span><span class="w"> </span><span class="m">2005</span>-2024<span class="w"> </span>NVIDIA<span class="w"> </span>Corporation
@@ -2439,10 +2439,10 @@ Cuda<span class="w"> </span>compilation<span class="w"> </span>tools,<span class
 Build<span class="w"> </span>cuda_12.6.r12.6/compiler.34714021_0
 </code></pre></div>
 5. Install PyCUDA which is needed to run TensorRT models <code>pip install pycuda</code>
-6. Install ONNXRuntime depending on your CUDA version which is needed to run <abbr title="Open Neural Network Exchange">ONNX</abbr> models.</p>
+6. Install ONNXRuntime depending on your <abbr title="NVIDIA Compute Unified Device Architecture">CUDA</abbr> version which is needed to run <abbr title="Open Neural Network Exchange">ONNX</abbr> models.</p>
 <ul>
-<li>CUDA 12.9 <code>pip3 install onnxruntime-gpu --index-url https://pypi.jetson-ai-lab.io/jp6/cu129 'numpy&gt;1.24,&lt;2'</code></li>
-<li>CUDA 12.6 <code>pip3 install onnxruntime-gpu --index-url https://pypi.jetson-ai-lab.io/jp6/cu126 'numpy&gt;1.24,&lt;2'</code></li>
+<li><abbr title="NVIDIA Compute Unified Device Architecture">CUDA</abbr> 12.9 <code>pip3 install onnxruntime-gpu --index-url https://pypi.jetson-ai-lab.io/jp6/cu129 'numpy&gt;1.24,&lt;2'</code></li>
+<li><abbr title="NVIDIA Compute Unified Device Architecture">CUDA</abbr> 12.6 <code>pip3 install onnxruntime-gpu --index-url https://pypi.jetson-ai-lab.io/jp6/cu126 'numpy&gt;1.24,&lt;2'</code></li>
 </ul>
 </li>
 </ol>

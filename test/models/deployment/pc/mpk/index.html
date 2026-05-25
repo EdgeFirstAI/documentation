@@ -958,6 +958,10 @@
     
       
         
+          
+        
+      
+        
       
         
       
@@ -985,7 +989,7 @@
   
   
   
-    <a href="../../../conversion/tflite/" class="md-nav__link">
+    <a href="../../../conversion/" class="md-nav__link">
       
   
   
@@ -1775,18 +1779,18 @@
 
 
 <h1 id="deploying-modelpack-in-the-pc">Deploying ModelPack in the PC</h1>
-<p>If you have an <abbr title="Open Neural Network Exchange">ONNX</abbr> or a TFLite ModelPack model, you can follow these instructions for running the model on your PC.  You will need <a href="https://www.python.org/downloads/">Python 3.10</a> to run this example.</p>
-<p>If you have an <abbr title="Open Neural Network Exchange">ONNX</abbr> model, download the <a download="run-onnx.py" href="../../assets/run-onnx.py">run-onnx.py Python script</a>.  Otherwise, if you have a TFLite model, download the <a download="run-tflite.py" href="../../assets/run-tflite.py">run-tflite.py Python script</a>.  These scripts will load the model for inference across multiple images and saves the images with visualizations in your PC.  Run the scripts with the steps shown below.</p>
+<p>If you have an <abbr title="Open Neural Network Exchange">ONNX</abbr> or a <abbr title="TensorFlow Lite">TFLite</abbr> ModelPack model, you can follow these instructions for running the model on your PC.  You will need <a href="https://www.python.org/downloads/">Python 3.10</a> to run this example.</p>
+<p>If you have an <abbr title="Open Neural Network Exchange">ONNX</abbr> model, download the <a download="run-onnx.py" href="../../assets/run-onnx.py">run-onnx.py Python script</a>.  Otherwise, if you have a <abbr title="TensorFlow Lite">TFLite</abbr> model, download the <a download="run-tflite.py" href="../../assets/run-tflite.py">run-tflite.py Python script</a>.  These scripts will load the model for inference across multiple images and saves the images with visualizations in your PC.  Run the scripts with the steps shown below.</p>
 <p>As mentioned under <a href="../../../../getting_started/train_vision/">Quick Start -&gt; Train a Vision Model</a>, you can find the trained model artifacts (.onnx or .tflite) in the training session which you can then download into your PC.</p>
 <figure>
             <img align="center" alt="Training Session Artifacts" src="../../../assets/training/vision-session-artifacts.jpg" />
             <figcaption>Training Session Artifacts</figcaption>
             </figure>
-<p>For this Python script you will need a set of images and a model file.  You can click on the following link and download these <a download="coffeecup.zip" href="../../assets/coffeecup.zip">set of images with coffee cup samples</a>.  Once downloaded, unzip the file into a directory.  Next download a sample <a download="coffeecup-modelpack-multitask-t-1f54.onnx" href="../../assets/coffeecup-modelpack-multitask-t-1f54.onnx"><abbr title="Open Neural Network Exchange">ONNX</abbr></a> or <a download="coffeecup-modelpack-multitask-t-1f54.tflite" href="../../assets/coffeecup-modelpack-multitask-t-1f54.tflite">TFLite</a> model to run the following examples.</p>
+<p>For this Python script you will need a set of images and a model file.  You can click on the following link and download these <a download="coffeecup.zip" href="../../assets/coffeecup.zip">set of images with coffee cup samples</a>.  Once downloaded, unzip the file into a directory.  Next download a sample <a download="coffeecup-modelpack-multitask-t-1f54.onnx" href="../../assets/coffeecup-modelpack-multitask-t-1f54.onnx"><abbr title="Open Neural Network Exchange">ONNX</abbr></a> or <a download="coffeecup-modelpack-multitask-t-1f54.tflite" href="../../assets/coffeecup-modelpack-multitask-t-1f54.tflite"><abbr title="TensorFlow Lite">TFLite</abbr></a> model to run the following examples.</p>
 <ol>
 <li>
 <p>Install required dependencies.</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="onnx" name="__tabbed_1" type="radio" /><input id="tflite" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="onnx"><abbr title="Open Neural Network Exchange">ONNX</abbr></label><label for="tflite">TFLite</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="onnx" name="__tabbed_1" type="radio" /><input id="tflite" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="onnx"><abbr title="Open Neural Network Exchange">ONNX</abbr></label><label for="tflite"><abbr title="TensorFlow Lite">TFLite</abbr></label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>onnxruntime-gpu<span class="w"> </span>pillow<span class="w"> </span>numpy
@@ -1823,7 +1827,7 @@ pillow          12.0.0
 </li>
 <li>
 <p>Run the script</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="2:2"><input checked="checked" id="onnx_1" name="__tabbed_2" type="radio" /><input id="tflite_1" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="onnx_1"><abbr title="Open Neural Network Exchange">ONNX</abbr></label><label for="tflite_1">TFLite</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="2:2"><input checked="checked" id="onnx_1" name="__tabbed_2" type="radio" /><input id="tflite_1" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="onnx_1"><abbr title="Open Neural Network Exchange">ONNX</abbr></label><label for="tflite_1"><abbr title="TensorFlow Lite">TFLite</abbr></label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <p>If you have downloaded the sample images and the <abbr title="Open Neural Network Exchange">ONNX</abbr> model above, run this command to use the script.  Otherwise modify the path to the model and the images specific to your system.  If you have multiple labels in your dataset specify them as <code>--labels bench coco</code> for example.</p>
@@ -1844,7 +1848,7 @@ Average<span class="w"> </span>Inference<span class="w"> </span>Time:<span class
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<p>If you have downloaded the sample images and the TFLite model above, run this command to use the script.  Otherwise modify the path to the model and the images specific to your system.  If you have multiple labels in your dataset specify them as <code>--labels bench coco</code> for example.</p>
+<p>If you have downloaded the sample images and the <abbr title="TensorFlow Lite">TFLite</abbr> model above, run this command to use the script.  Otherwise modify the path to the model and the images specific to your system.  If you have multiple labels in your dataset specify them as <code>--labels bench coco</code> for example.</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>python<span class="w"> </span>run-tflite.py<span class="w"> </span>coffeecup-modelpack-multitask-t-1f54.tflite<span class="w"> </span>coffeecup/*.jpg<span class="w"> </span>--labels<span class="w"> </span>coffeecup<span class="w"> </span>--save<span class="w"> </span>results
 <span class="m">2025</span>-11-18<span class="w"> </span><span class="m">14</span>:01:30.182493:<span class="w"> </span>I<span class="w"> </span>tensorflow/core/platform/cpu_feature_guard.cc:210<span class="o">]</span><span class="w"> </span>This<span class="w"> </span>TensorFlow<span class="w"> </span>binary<span class="w"> </span>is<span class="w"> </span>optimized<span class="w"> </span>to<span class="w"> </span>use<span class="w"> </span>available<span class="w"> </span>CPU<span class="w"> </span>instructions<span class="w"> </span><span class="k">in</span><span class="w"> </span>performance-critical<span class="w"> </span>operations.
 To<span class="w"> </span><span class="nb">enable</span><span class="w"> </span>the<span class="w"> </span>following<span class="w"> </span>instructions:<span class="w"> </span>AVX2<span class="w"> </span>FMA,<span class="w"> </span><span class="k">in</span><span class="w"> </span>other<span class="w"> </span>operations,<span class="w"> </span>rebuild<span class="w"> </span>TensorFlow<span class="w"> </span>with<span class="w"> </span>the<span class="w"> </span>appropriate<span class="w"> </span>compiler<span class="w"> </span>flags.
@@ -1874,7 +1878,7 @@ Average<span class="w"> </span>Inference<span class="w"> </span>Time:<span class
 <li>
 <p>See the model output visualizations.</p>
 <p>A directory called "results" should be created which contains the same input images with annotations to visualize the output of the trained model.</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="3:2"><input checked="checked" id="onnx_2" name="__tabbed_3" type="radio" /><input id="tflite_2" name="__tabbed_3" type="radio" /><div class="tabbed-labels"><label for="onnx_2"><abbr title="Open Neural Network Exchange">ONNX</abbr></label><label for="tflite_2">TFLite</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="3:2"><input checked="checked" id="onnx_2" name="__tabbed_3" type="radio" /><input id="tflite_2" name="__tabbed_3" type="radio" /><div class="tabbed-labels"><label for="onnx_2"><abbr title="Open Neural Network Exchange">ONNX</abbr></label><label for="tflite_2"><abbr title="TensorFlow Lite">TFLite</abbr></label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <table>

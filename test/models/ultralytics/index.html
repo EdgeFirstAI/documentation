@@ -1191,6 +1191,10 @@
     
       
         
+          
+        
+      
+        
       
         
       
@@ -1218,7 +1222,7 @@
   
   
   
-    <a href="../conversion/tflite/" class="md-nav__link">
+    <a href="../conversion/" class="md-nav__link">
       
   
   
@@ -1850,7 +1854,7 @@
 </ol>
 </li>
 <li><strong>Training Parameters</strong>: In this section the user is able to specify the number of epochs to train the model as well as the batch size.  Remember the larger the input resolution the smaller the batch size </li>
-<li><strong>Export Parameters</strong>: Allow the user to set a portion of data for calibration when exporting the model for INT8 quantization. This section also allow the user to set the <abbr title="Open Neural Network Exchange">ONNX</abbr> opset version</li>
+<li><strong>Export Parameters</strong>: Allow the user to set a portion of data for calibration when exporting the model for <abbr title="Signed 8-bit integer">INT8</abbr> quantization. This section also allow the user to set the <abbr title="Open Neural Network Exchange">ONNX</abbr> opset version</li>
 <li><strong>Export Pretrained Weights</strong>: A checkbox to export the default pretrained weights from Ultralytics</li>
 <li><strong>Start Session</strong>: This button will start the training session</li>
 </ol>
@@ -1880,7 +1884,7 @@
 <tr>
 <td>YOLOv8</td>
 <td>C2f backbone</td>
-<td>Anchor-free detection with DFL</td>
+<td>Anchor-free detection with <abbr title="Distribution Focal Loss">DFL</abbr></td>
 </tr>
 <tr>
 <td>YOLO11</td>
@@ -1900,7 +1904,7 @@
 <p>See <a href="../cameraadaptor/">Camera Adaptor</a> for details on supported formats and platform guidance.</p>
 <h2 id="custom-models">Custom Models</h2>
 <p>If you have a custom float model, it is highly recommended to <a href="../conversion/tflite/">export to a quantized model</a> to deploy and maximize the model's performance using the target's <abbr title="Neural Processing Unit">NPU</abbr>.</p>
-<p>Deploying a quantized TFLite on the <strong>i.MX 95 EVK</strong> requires an extra step of <a href="../conversion/neutron/">converting the model using NXP's eIQ neutron converter</a>.  This will allow the model to be deployed on the i.MX 95 using the Neutron delegate in the platform.</p>
+<p>Deploying a quantized <abbr title="TensorFlow Lite">TFLite</abbr> on the <strong>i.MX 95 EVK</strong> requires an extra step of <a href="../conversion/neutron/">converting the model using NXP's eIQ neutron converter</a>.  This will allow the model to be deployed on the i.MX 95 using the Neutron delegate in the platform.</p>
 <div class="admonition warning">
 <p class="admonition-title">Specific BSP versions required</p>
 <p>The latest BSP available for the Maivin lacks the <code>onnxruntime</code> library needed to run <abbr title="Open Neural Network Exchange">ONNX</abbr> on the <abbr title="Neural Processing Unit">NPU</abbr>.</p>

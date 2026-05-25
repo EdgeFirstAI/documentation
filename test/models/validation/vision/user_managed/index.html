@@ -958,6 +958,10 @@
     
       
         
+          
+        
+      
+        
       
         
       
@@ -985,7 +989,7 @@
   
   
   
-    <a href="../../../conversion/tflite/" class="md-nav__link">
+    <a href="../../../conversion/" class="md-nav__link">
       
   
   
@@ -1950,7 +1954,7 @@
 <p>Alternatively, EdgeFirst Studio also supports <strong>On-Cloud Validation</strong>, which runs as a managed validation session.  In this mode, an EC2 instance is provisioned to host and validate the model remotely. For more details, see <a href="../managed/">On Cloud Validation</a>.</p>
 <div class="admonition info">
 <p class="admonition-title">i.MX 95 Validation</p>
-<p>To deploy TFLite models in the i.MX 95, first <a href="../../../conversion/neutron/">convert the models using eIQ's Neutron Converter</a> prior to deploying the model in the platform.  This modifies the model's architecture to allow deployment using the device's Neutron <abbr title="Neural Processing Unit">NPU</abbr> delegate.</p>
+<p>To deploy <abbr title="TensorFlow Lite">TFLite</abbr> models in the i.MX 95, first <a href="../../../conversion/neutron/">convert the models using eIQ's Neutron Converter</a> prior to deploying the model in the platform.  This modifies the model's architecture to allow deployment using the device's Neutron <abbr title="Neural Processing Unit">NPU</abbr> delegate.</p>
 </div>
 <h2 id="specify-project-experiments">Specify Project Experiments</h2>
 <p>From the <a href="../../../../studio/projects/">Projects page</a>, choose the project that contains the training session with the models you want to validate.  In this example, the project chosen is called "My First Project".  Next click the "Model Experiments" button as indicated in red.</p>
@@ -1974,7 +1978,7 @@
             <img align="center" alt="New Session Button" src="../../../assets/validation/new-session-button.jpg" />
             <figcaption>New Session Button</figcaption>
             </figure>
-<p>You will be greeted with a validation session dialog.  In this dialog, select the "User Managed" option.  Next specify the name of the validation session, the model to validate, and the dataset to deploy.  In this example, the "Coffee Cup" dataset with the validation partition will be used. <em>Under the model selection, you can select various trained model artifacts from the choices of <abbr title="Open Neural Network Exchange">ONNX</abbr>, TFLite, TensorRT, Kinara, Hailo, etc.  Choose the model you plan to deploy on target.  The purpose of validation is to assess the model of whether or not it meets the performance requirements needed to be deployed on target.</em>  Additional parameters are available on the right for user override. Otherwise the same parameters set in the training session will be used. For more information on these parameters hover over the info button <img alt="Info Button" src="../../../../assets/buttons/studio-info-button.jpg" />.</p>
+<p>You will be greeted with a validation session dialog.  In this dialog, select the "User Managed" option.  Next specify the name of the validation session, the model to validate, and the dataset to deploy.  In this example, the "Coffee Cup" dataset with the validation partition will be used. <em>Under the model selection, you can select various trained model artifacts from the choices of <abbr title="Open Neural Network Exchange">ONNX</abbr>, <abbr title="TensorFlow Lite">TFLite</abbr>, TensorRT, Kinara, Hailo, etc.  Choose the model you plan to deploy on target.  The purpose of validation is to assess the model of whether or not it meets the performance requirements needed to be deployed on target.</em>  Additional parameters are available on the right for user override. Otherwise the same parameters set in the training session will be used. For more information on these parameters hover over the info button <img alt="Info Button" src="../../../../assets/buttons/studio-info-button.jpg" />.</p>
 <figure>
             <img align="center" alt="Validation Session Fields" src="../../../assets/validation/user-managed-vision-session-fields.jpg" />
             <figcaption>Validation Session Fields</figcaption>

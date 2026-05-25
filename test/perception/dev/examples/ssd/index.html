@@ -1976,7 +1976,7 @@
 
 
 <h1 id="mobilenet-ssd-examples">MobileNet <abbr title="Solid State Drive">SSD</abbr> Examples</h1>
-<p>These examples demonstrate how to deploy a MobileNet <abbr title="Solid State Drive">SSD</abbr> V1 model using the <abbr title="Neural Processing Unit">NPU</abbr> of an embedded platform such as a <a href="../../../../platforms/quickstart/maivin/">Maivin</a>.  The examples below are split into two parts; model inference on a single image and a model inference publisher. These examples have been tested on the TFLite files found in <a href="https://github.com/apivovarov/ssd-tflite/tree/master">this <abbr title="Solid State Drive">SSD</abbr>-TFLite repository</a>, and in <a href="https://github.com/Arm-Examples/ML-zoo/tree/master/models/object_detection/ssd_mobilenet_v1">ML-Zoo</a>.  </p>
+<p>These examples demonstrate how to deploy a MobileNet <abbr title="Solid State Drive">SSD</abbr> V1 model using the <abbr title="Neural Processing Unit">NPU</abbr> of an embedded platform such as a <a href="../../../../platforms/quickstart/maivin/">Maivin</a>.  The examples below are split into two parts; model inference on a single image and a model inference publisher. These examples have been tested on the <abbr title="TensorFlow Lite">TFLite</abbr> files found in <a href="https://github.com/apivovarov/ssd-tflite/tree/master">this <abbr title="Solid State Drive">SSD</abbr>-<abbr title="TensorFlow Lite">TFLite</abbr> repository</a>, and in <a href="https://github.com/Arm-Examples/ML-zoo/tree/master/models/object_detection/ssd_mobilenet_v1">ML-Zoo</a>.  </p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>In a future release of the EdgeFirst middleware, the Model Service will be able to run MobileNet <abbr title="Solid State Drive">SSD</abbr> V1 models natively, again, testing on the above examples.</p>
@@ -2124,7 +2124,7 @@ To use the CPU, remove this specification.</p>
 The model outputs a maximum of 10 detections.  Currently there is no option to set the <abbr title="Non-Maximum Suppression">NMS</abbr> parameters such as <abbr title="Intersection over Union">IoU</abbr> and score thresholds using this model. </p>
 </div>
 <h2 id="publisher-server">Publisher Server</h2>
-<p>Additionally, this can be all integrated to simulate the model service using any pre-defined <abbr title="Solid State Drive">SSD</abbr> model, for this example we will use the pretrained TFLite <abbr title="Solid State Drive">SSD</abbr> model. This can be done with the provided <a download="boxes2d_publisher.py" href="../assets/boxes2d_publisher.py">Publisher Script</a></p>
+<p>Additionally, this can be all integrated to simulate the model service using any pre-defined <abbr title="Solid State Drive">SSD</abbr> model, for this example we will use the pretrained <abbr title="TensorFlow Lite">TFLite</abbr> <abbr title="Solid State Drive">SSD</abbr> model. This can be done with the provided <a download="boxes2d_publisher.py" href="../assets/boxes2d_publisher.py">Publisher Script</a></p>
 <p>This script is required to run on the target as it will use the <abbr title="Direct Memory Access">DMA</abbr> Buffer topic to provide the images for the model. Additionally, the script will need to be run using sudo as it needs to access the file descriptor to get the <abbr title="Direct Memory Access">DMA</abbr> buffer and cannot without sudo.</p>
 <ol>
 <li>

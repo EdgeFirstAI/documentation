@@ -4070,7 +4070,7 @@
 
         <p>DEPRECATED since 3.1.0; use :class:<code>CameraFrame</code> instead.</p>
 <p>Removed in 4.0.0. CameraFrame adds multi-plane support (NV12, I420, planar
-<abbr title="Red Green Blue">RGB</abbr> NCHW), compressed bitstream handling (used &lt; size), GPU fence
+<abbr title="Red Green Blue">RGB</abbr> <abbr title="Tensor layout — Batch, Channels, Height, Width">NCHW</abbr>), compressed bitstream handling (used &lt; size), GPU fence
 synchronization, frame sequence counter, colorimetry metadata, and an
 off-device bridge path via inlined per-plane bytes.</p>
 <p>Instantiation and decoding via :meth:<code>deserialize</code> emit a
@@ -4859,7 +4859,7 @@ masks.  Generally models will only generate a single mask if they do.</p>
 
     <div class="doc doc-contents ">
 
-        <p>Format of the model (e.g., "DeepViewRT", "HailoRT", "RKNN", "TensorRT", "TFLite")</p>
+        <p>Format of the model (e.g., "DeepViewRT", "HailoRT", "RKNN", "TensorRT", "<abbr title="TensorFlow Lite">TFLite</abbr>")</p>
 
     </div>
 

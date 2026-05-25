@@ -18,7 +18,7 @@
         <link rel="prev" href="../neutron/">
       
       
-        <link rel="next" href="../kinara/">
+        <link rel="next" href="../ara2/">
       
       
         
@@ -29,7 +29,7 @@
     
     
       
-        <title>TensorRT Conversion - EdgeFirst Studio Documentation</title>
+        <title>TensorRT Converter - EdgeFirst Studio Documentation</title>
       
     
     
@@ -79,7 +79,7 @@
     
   
 <meta property="og:type" content="website" />
-<meta property="og:title" content="TensorRT Conversion - EdgeFirst Studio Documentation" />
+<meta property="og:title" content="TensorRT Converter - EdgeFirst Studio Documentation" />
 <meta property="og:description" content="EdgeFirst Studio Documentation" />
 <meta property="og:image" content="https://doc.edgefirst.ai/test/assets/images/social/models/conversion/tensorrt.png" />
 <meta property="og:image:type" content="image/png" />
@@ -87,7 +87,7 @@
 <meta property="og:image:height" content="630" />
 <meta property="og:url" content="https://doc.edgefirst.ai/test/models/conversion/tensorrt/" />
 <meta property="twitter:card" content="summary_large_image" />
-<meta property="twitter:title" content="TensorRT Conversion - EdgeFirst Studio Documentation" />
+<meta property="twitter:title" content="TensorRT Converter - EdgeFirst Studio Documentation" />
 <meta property="twitter:description" content="EdgeFirst Studio Documentation" />
 <meta property="twitter:image" content="https://doc.edgefirst.ai/test/assets/images/social/models/conversion/tensorrt.png" />
 </head>
@@ -109,7 +109,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#tensorrt-conversion" class="md-skip">
+        <a href="#tensorrt-converter" class="md-skip">
           Skip to content
         </a>
       
@@ -163,7 +163,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              TensorRT Conversion
+              TensorRT Converter
             
           </span>
         </div>
@@ -960,6 +960,10 @@
     
       
         
+          
+        
+      
+        
       
         
       
@@ -985,8 +989,9 @@
         <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_4" checked>
         
           
-          <label class="md-nav__link" for="__nav_5_4" id="__nav_5_4_label" tabindex="0">
-            
+          <div class="md-nav__link md-nav__container">
+            <a href="../" class="md-nav__link ">
+              
   
   
   <span class="md-ellipsis">
@@ -1000,8 +1005,14 @@
   
   
 
-            <span class="md-nav__icon md-icon"></span>
-          </label>
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_5_4" id="__nav_5_4_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
         
         <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_4_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_5_4">
@@ -1013,6 +1024,8 @@
 
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
+            
+              
             
               
                 
@@ -1028,7 +1041,7 @@
   <span class="md-ellipsis">
     
   
-    TFLite Quantization
+    TFLite Converter
   
 
     
@@ -1056,7 +1069,7 @@
   <span class="md-ellipsis">
     
   
-    Neutron Conversion
+    Neutron Converter
   
 
     
@@ -1086,6 +1099,24 @@
         
       
       
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    TensorRT Converter
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <a href="./" class="md-nav__link md-nav__link--active">
         
   
@@ -1093,7 +1124,7 @@
   <span class="md-ellipsis">
     
   
-    TensorRT Conversion
+    TensorRT Converter
   
 
     
@@ -1102,6 +1133,91 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#studio-launch-form" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Studio Launch Form
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#what-you-get" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What You Get
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#smart-quantization-on-jetson" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Smart Quantization on Jetson
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#converting-your-model" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Converting Your Model
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#supported-targets" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Supported Targets
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#known-limitations" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Known Limitations
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
       
     </li>
   
@@ -1115,14 +1231,14 @@
   
   
     <li class="md-nav__item">
-      <a href="../kinara/" class="md-nav__link">
+      <a href="../ara2/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    Kinara Conversion
+    Ara2 Converter
   
 
     
@@ -1150,7 +1266,7 @@
   <span class="md-ellipsis">
     
   
-    Hailo Conversion
+    Hailo Converter
   
 
     
@@ -1555,6 +1671,80 @@
     
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#studio-launch-form" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Studio Launch Form
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#what-you-get" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What You Get
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#smart-quantization-on-jetson" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Smart Quantization on Jetson
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#converting-your-model" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Converting Your Model
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#supported-targets" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Supported Targets
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#known-limitations" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Known Limitations
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -1597,7 +1787,7 @@
     
     
       <li class="md-path__item">
-        <a href="../tflite/" class="md-path__link">
+        <a href="../" class="md-path__link">
           
   <span class="md-ellipsis">
     Model Conversion
@@ -1619,108 +1809,128 @@
 
 
 
-<h1 id="tensorrt-conversion">TensorRT Conversion</h1>
-<p>Once the model is trained in EdgeFirst Studio, you will find "<model_name>_saved_model.zip" and "<model_name>.onnx" artifacts.</p>
-<figure>
-            <img align="center" alt="Model Artifacts" src="../../assets/training/vision-session-artifacts-ultralytics.jpg" />
-            <figcaption>Model Artifacts</figcaption>
-            </figure>
-<p>This tutorial will provide the steps for converting the <abbr title="Open Neural Network Exchange">ONNX</abbr> model to TensorRT.  Although it is possible to deploy the <abbr title="Open Neural Network Exchange">ONNX</abbr> model, we recommend converting this model to TensorRT when deploying in the Jetson to maximize the performance of the model.  We find that the converted TensorRT model is <strong>~1.3x faster</strong> than <abbr title="Open Neural Network Exchange">ONNX</abbr> with the TensorRT execution provider.</p>
-<p>This section describes how to convert an <abbr title="Open Neural Network Exchange">ONNX</abbr> model into a TensorRT model using EdgeFirst Studio. The process has two stages.</p>
-<p>In the first stage, EdgeFirst Studio packages the <abbr title="Open Neural Network Exchange">ONNX</abbr> model into a ".tensorrt.zip" bundle.  This bundle includes the original <abbr title="Open Neural Network Exchange">ONNX</abbr> file, a "build.sh" script, and supporting files such as "edgefirst.json" and "labels.txt".  The script is used later to compile the model into a TensorRT engine.  The conversion process is handled by the <a href="https://github.com/EdgeFirstAI/tensorrt-converter">tensorrt-converter</a> package.</p>
-<p>In the second stage, you run the build.sh script on the target device (for example, a Jetson Orin).  This step compiles the model into a .engine file optimized specifically for that hardware.</p>
+<h1 id="tensorrt-converter">TensorRT Converter</h1>
+<p>The <strong>TensorRT Converter</strong> prepares an <abbr title="Open Neural Network Exchange">ONNX</abbr> model exported from an EdgeFirst Studio training session for deployment on <strong>NVIDIA Jetson</strong> devices. It is the only EdgeFirst Converter App that produces a portable bundle rather than a deployment-ready binary: the cloud-side job packages the <abbr title="Open Neural Network Exchange">ONNX</abbr> model with a <code>build.sh</code> script, and the user runs that script on the target Jetson, where <code>trtexec</code> compiles the final <code>.engine</code> against the exact OS, JetPack, <abbr title="NVIDIA Compute Unified Device Architecture">CUDA</abbr>, and TensorRT versions present on the device.</p>
+<p>This design is forced by TensorRT's binary contract: TensorRT 10.3 engine binaries are platform-locked at the OS and <abbr title="Application Binary Interface">ABI</abbr> level. An engine built on AWS Batch (x86-64) is rejected by the Jetson aarch64 TRT runtime with a "platform tag mismatch" error, even when the GPU compute capabilities match. NVIDIA's own DeepStream / TAO workflow defers the engine build to the target device for the same reason; the TensorRT Converter follows that pattern.</p>
+<h2 id="studio-launch-form">Studio Launch Form</h2>
+<p>The TensorRT Converter exposes <strong>no conversion knobs</strong> in EdgeFirst Studio — there is no <code>conversion</code> group on the launch form. You pick the training session and click <strong>Start App</strong>; the form includes an informational note explaining that the output is a portable bundle requiring an on-device build step.</p>
+<p>The only effective user choice happens later on the Jetson itself: <code>./build.sh fp16</code> (the default and recommended setting) or <code>./build.sh fp32</code> (for debugging — larger and slower). That choice is made when running the bundle's build script on the target device.</p>
+<h2 id="what-you-get">What You Get</h2>
+<p>A <code>.tensorrt.zip</code> archive containing:</p>
+<ul>
+<li><code>model.onnx</code> — the optimized <abbr title="Open Neural Network Exchange">ONNX</abbr> graph (<code>onnxsim</code> + <code>onnx-graphsurgeon</code> constant-fold pass applied).</li>
+<li><code>edgefirst.json</code> — the <a href="/models/metadata/">EdgeFirst metadata</a>, in schema v2 form.</li>
+<li><code>labels.txt</code> — class labels.</li>
+<li><code>build.sh</code> — the on-target compilation script.</li>
+<li><code>README.md</code> — per-bundle deployment instructions.</li>
+</ul>
+<p>After running the on-device build, the final artifact is a sealed <code>.fp16.engine</code> (or <code>.fp32.engine</code>) with <code>edgefirst.json</code> and <code>labels.txt</code> ZIP-appended. The on-device build also injects per-build values into <code>edgefirst.json</code> — engine SHA-256, build timestamp, on-device TensorRT version, builder flags — so deployed engines remain fully traceable back to their Studio training session.</p>
+<h2 id="smart-quantization-on-jetson">Smart Quantization on Jetson</h2>
+<p><a href="/models/conversion/#smart-quantization">Smart Quantization</a> does not apply here. Jetson is an <strong><abbr title="Half-precision 16-bit floating-point">FP16</abbr></strong> target — NVIDIA Jetson Orin GPUs have native <abbr title="Half-precision 16-bit floating-point">FP16</abbr> <abbr title="NVIDIA Compute Unified Device Architecture">CUDA</abbr> cores that deliver near-<abbr title="Signed 8-bit integer">INT8</abbr> throughput at near-<abbr title="Single-precision 32-bit floating-point">FP32</abbr> accuracy. There is no <abbr title="Signed 8-bit integer">INT8</abbr> quantization step to defeat, and therefore no shared-<abbr title="Signed 8-bit integer">INT8</abbr>-scale problem to solve. The compiled <a href="/models/metadata/#output-specification"><code>outputs[]</code></a> faithfully reflects whatever the trainer's <abbr title="Open Neural Network Exchange">ONNX</abbr> produced; the runtime decoder takes the <abbr title="Half-precision 16-bit floating-point">FP16</abbr> outputs straight to <abbr title="Non-Maximum Suppression">NMS</abbr>.</p>
+<p><abbr title="Signed 8-bit integer">INT8</abbr> on Jetson via the TRT <abbr title="Signed 8-bit integer">INT8</abbr> calibration path is a future direction. It is not implemented today; the converter does not consume calibration data and the bundle does not include calibration support.</p>
+<h2 id="converting-your-model">Converting Your Model</h2>
+<p>Conversion has two stages: EdgeFirst Studio packages the <abbr title="Open Neural Network Exchange">ONNX</abbr> model and supporting files into a portable <code>.tensorrt.zip</code> bundle, and then <code>build.sh</code> runs on the target Jetson to compile the engine. The bundle itself is portable across machines; the resulting <code>.engine</code> is hardware-specific and must be built on (or for) the device that will run it.</p>
 <div class="admonition info">
-<p class="admonition-title">Native Cross Compilation Support</p>
-<p>Support for native cross-compilation of TensorRT will be coming soon, thus eliminating the second stage.</p>
+<p class="admonition-title">Native cross-compilation support</p>
+<p>Native cross-compilation of TensorRT engines is in progress and will eliminate the second on-device build stage when available.</p>
 </div>
-<p>The .tensorrt.zip bundle is portable and can be moved between systems.  However, the generated TensorRT engine is hardware-specific and must be built on (or for) the platform where it will be used for inference.  Once compiled, the optimized model can be deployed on the device or uploaded back to EdgeFirst Studio.</p>
 <ol>
 <li>
-<p>Click on the completed training session</p>
+<p>Click on the completed training session.</p>
 <p><figure markdown="span">
         <img align="center" alt="Completed Training Session" src="../../assets/training/vision-view-train-details.jpg" />
         <figcaption>Completed Training Session</figcaption>
         </figure></p>
 </li>
 <li>
-<p>Navigate to the "Artifacts" tab and click on the "TensorRT Converter" button under "Converters" on the right</p>
+<p>Navigate to the <strong>Artifacts</strong> tab and click the <strong>TensorRT Converter</strong> button under <strong>Converters</strong> on the right.</p>
 <p><figure markdown="span">
         <img align="center" alt="TensorRT Converter" src="../../assets/conversion/tensorrt-converter-button.jpg" />
         <figcaption>TensorRT Converter</figcaption>
         </figure></p>
 </li>
 <li>
-<p>Click on "Start App" to start the conversion process</p>
+<p>Click <strong>Start App</strong> to begin the conversion. The launch form has no settings — the output is a portable bundle, not a final engine.</p>
 <p><figure markdown="span">
         <img align="center" alt="TensorRT Converter Options" src="../../assets/conversion/tensorrt-converter-options.jpg" />
         <figcaption>TensorRT Converter Options</figcaption>
         </figure></p>
 </li>
 <li>
-<p>This will publish an artifact to the session with the extension "<model>.tensorrt.zip" bundle.  Go ahead and download this artifact to your PC</p>
+<p>Download the resulting <code>&lt;model&gt;.tensorrt.zip</code> bundle from the session's <strong>Artifacts</strong> tab.</p>
 <p><figure markdown="span">
         <img align="center" alt="TensorRT Converter Bundle" src="../../assets/conversion/tensorrt-converter-bundle.jpg" />
         <figcaption>TensorRT Converter Bundle</figcaption>
         </figure></p>
 </li>
 <li>
-<p><a href="https://en.wikipedia.org/wiki/Secure_copy_protocol">SCP</a> the downloaded .tensorrt.zip file into the Jetson Orin to execute the second stage of the conversion process</p>
+<p>Copy the bundle to the Jetson via <a href="https://en.wikipedia.org/wiki/Secure_copy_protocol">SCP</a>:</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>scp<span class="w"> </span>&lt;model&gt;.tensorrt.zip<span class="w"> </span>username@hostname:~/
 </code></pre></div>
 </li>
 <li>
-<p>Unzip the model into a folder</p>
+<p>On the Jetson, unzip the bundle into a folder:</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>unzip<span class="w"> </span>-d<span class="w"> </span>&lt;model&gt;/<span class="w"> </span>&lt;model&gt;.tensorrt.zip
 </code></pre></div>
 </li>
 <li>
-<p>Navigate to the extracted folder <code>cd &lt;model&gt;/</code></p>
-</li>
-<li>
-<p>Compile the model bundle into TensorRT</p>
+<p>Enter the extracted folder:</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span><span class="nb">cd</span><span class="w"> </span>&lt;model&gt;/
+</code></pre></div>
 <div class="admonition note">
-<p class="admonition-title">Required Actions</p>
-<p>Prior to running the script below, these initialization steps are needed.</p>
+<p class="admonition-title">Prerequisites</p>
+<p>Steps a and b ensure the required binaries are on <code>PATH</code>. Steps c and d authenticate the <code>--publish</code> upload to EdgeFirst Studio.</p>
 <ol>
 <li>
-<p>The script requires the <code>trtexec</code> binary to be available in your <code>PATH</code></p>
+<p>Ensure the <code>trtexec</code> binary is on <code>PATH</code>:</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span><span class="nb">export</span><span class="w"> </span><span class="nv">PATH</span><span class="o">=</span><span class="nv">$PATH</span>:/usr/src/tensorrt/bin
 </code></pre></div>
 </li>
 <li>
-<p>The script requires the <code>jq</code> library which is installed </p>
+<p>Ensure <code>jq</code> is installed:</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>-y<span class="w"> </span>jq
 </code></pre></div>
 </li>
 <li>
-<p>The <code>--publish</code> flag requires the <a href="../../../perception/studio/">edgefirst-client</a> package which is installed </p>
+<p>Install the <a href="../../../perception/studio/">edgefirst-client</a> package:</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>pip3<span class="w"> </span>install<span class="w"> </span>edgefirst-client
 </code></pre></div>
 </li>
 <li>
-<p>If using the <code>--publish</code> flag, ensure you are logged in to EdgeFirst Studio</p>
+<p>Log in to EdgeFirst Studio:</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>edgefirst-client<span class="w"> </span>login
 </code></pre></div>
 </li>
 </ol>
 </div>
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span>./build.sh<span class="w"> </span>fp16<span class="w"> </span>--publish
-</code></pre></div>
-<p>The script verifies trtexec, jq, and python3 are in PATH (all default on JetPack 6.2), then:</p>
-<ol>
-<li>Calls <code>trtexec --onnx=model.onnx --fp16 --saveEngine=&lt;name&gt;.fp16.engine</code></li>
-<li>Updates "edgefirst.json" with on-target build values via <code>jq</code> (precision, engine sha256, build timestamp, on-device TRT version, builder flags)</li>
-<li>ZIP-appends "edgefirst.json" + "labels.txt" to the engine using Python's zipfile</li>
-<li>(If <code>--publish</code>) Uploads the sealed engine to Studio via <code>edgefirst-client upload-artifact</code>.  More information on <a href="../../../perception/studio/">edgefirst-client</a> can be found on the link provided</li>
-</ol>
-<p>The output is a sealed <code>.fp16.engine</code> with metadata readable by any ZIP reader; the TRT deserializer ignores trailing bytes.</p>
 </li>
 <li>
-<p>Once converted, a model file "<model>.fp16.engine" should have been generated and published to EdgeFirst Studio as an artifact</p>
-<p>You can redownload the TensorRT model from other compatible devices. 
-You can also verify the model loaded successfully by running the command <code>trtexec --loadEngine=&lt;model&gt;.fp16.engine --iterations=100</code></p>
+<p>Compile the bundle into a TensorRT engine with <code>--publish</code> to push the sealed artifact back to EdgeFirst Studio.</p>
+<p>Run the build:</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>./build.sh<span class="w"> </span>fp16<span class="w"> </span>--publish
+</code></pre></div>
+<p>The script verifies <code>trtexec</code>, <code>jq</code>, and <code>python3</code> are on <code>PATH</code> (all default on JetPack 6.2), then:</p>
+<ol>
+<li>Calls <code>trtexec --onnx=model.onnx --fp16 --saveEngine=&lt;name&gt;.fp16.engine</code>.</li>
+<li>Updates <code>edgefirst.json</code> with on-target build values via <code>jq</code> (precision, engine <code>sha256</code>, build timestamp, on-device TRT version, builder flags).</li>
+<li>ZIP-appends <code>edgefirst.json</code> and <code>labels.txt</code> to the engine using Python's <code>zipfile</code> module.</li>
+<li>If <code>--publish</code> is set, uploads the sealed engine to Studio via <code>edgefirst-client upload-artifact</code>. See the <a href="../../../perception/studio/">edgefirst-client</a> page for more.</li>
+</ol>
+<p>The output is a sealed <code>.fp16.engine</code> with metadata readable by any ZIP reader; the TensorRT deserializer ignores trailing bytes.</p>
+</li>
+<li>
+<p>The compiled <code>&lt;model&gt;.fp16.engine</code> is now ready to deploy. The artifact is also available in the Studio session for re-download to other compatible devices. Verify the engine loads successfully with:</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>trtexec<span class="w"> </span>--loadEngine<span class="o">=</span>&lt;model&gt;.fp16.engine<span class="w"> </span>--iterations<span class="o">=</span><span class="m">100</span>
+</code></pre></div>
 </li>
 </ol>
+<h2 id="supported-targets">Supported Targets</h2>
+<p>The TensorRT Converter is currently validated on the <strong>Jetson Orin Nano Super 8GB</strong> with <strong>JetPack 6.2</strong> (TensorRT 10.3.0.30, <abbr title="NVIDIA Compute Unified Device Architecture">CUDA</abbr> 12.6.68, compute capability SM 8.7). Other Jetson variants (Orin Nano 4GB, Orin NX, AGX Orin) are in progress pending hardware validation.</p>
+<h2 id="known-limitations">Known Limitations</h2>
+<ul>
+<li><strong><abbr title="Signed 8-bit integer">INT8</abbr> is not currently supported.</strong> TensorRT 10.3's fused Conv+SiLU operator used in <abbr title="You Only Look Once">YOLO</abbr> heads has no <abbr title="Signed 8-bit integer">INT8</abbr> implementation in this release, even with <abbr title="Half-precision 16-bit floating-point">FP16</abbr> fallback. <abbr title="Signed 8-bit integer">INT8</abbr> on Jetson is tracked as future work.</li>
+<li><strong>Engines are device-specific.</strong> A <code>.fp16.engine</code> built on one Jetson cannot be moved to a different Jetson variant or a different JetPack release; the engine must be rebuilt from the bundle on each target.</li>
+</ul>
 
 
 
@@ -1810,7 +2020,7 @@ You can also verify the model loaded successfully by running the command <code>t
       <nav class="md-footer__inner md-grid" aria-label="Footer" >
         
           
-          <a href="../neutron/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Neutron Conversion">
+          <a href="../neutron/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Neutron Converter">
             <div class="md-footer__button md-icon">
               
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
@@ -1820,20 +2030,20 @@ You can also verify the model loaded successfully by running the command <code>t
                 Previous
               </span>
               <div class="md-ellipsis">
-                Neutron Conversion
+                Neutron Converter
               </div>
             </div>
           </a>
         
         
           
-          <a href="../kinara/" class="md-footer__link md-footer__link--next" aria-label="Next: Kinara Conversion">
+          <a href="../ara2/" class="md-footer__link md-footer__link--next" aria-label="Next: Ara2 Converter">
             <div class="md-footer__title">
               <span class="md-footer__direction">
                 Next
               </span>
               <div class="md-ellipsis">
-                Kinara Conversion
+                Ara2 Converter
               </div>
             </div>
             <div class="md-footer__button md-icon">

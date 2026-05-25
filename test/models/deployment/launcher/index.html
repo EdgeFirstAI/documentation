@@ -958,6 +958,10 @@
     
       
         
+          
+        
+      
+        
       
         
       
@@ -985,7 +989,7 @@
   
   
   
-    <a href="../../conversion/tflite/" class="md-nav__link">
+    <a href="../../conversion/" class="md-nav__link">
       
   
   
@@ -1878,7 +1882,7 @@ pip3<span class="w"> </span>install<span class="w"> </span>edgefirst
         <img align="center" alt="Training Session Attributes" src="../../assets/training/training-session-attributes.jpg" />
         <figcaption>Training Session Attributes</figcaption>
         </figure></p>
-<p>This will open the session details and the models are listed under the "Artifacts" tab as shown below.  Click on the downward arrow indicated in red to download the models to your PC.  In this example, you will be deploying the TFLite model in the device.</p>
+<p>This will open the session details and the models are listed under the "Artifacts" tab as shown below.  Click on the downward arrow indicated in red to download the models to your PC.  In this example, you will be deploying the <abbr title="TensorFlow Lite">TFLite</abbr> model in the device.</p>
 <p><figure markdown="span">
         <img align="center" alt="Training Session Artifacts" src="../../assets/training/vision-session-artifacts.jpg" />
         <figcaption>Training Session Artifacts</figcaption>
@@ -1920,7 +1924,7 @@ Password:<span class="w"> </span>****
 <h2 id="usage">Usage</h2>
 <p>Once installed, the applications can be launched using the <code>edgefirst</code> launcher which handles running the various <a href="../../../perception/launcher/#services">services</a>.  The applications can also be run directly, for example <code>edgefirst-camera</code> to run the camera service.  The launcher is an optional but convenient way to run all the applications in "user-mode" in contrast to having the middleware integrated into the system as "system-mode" where the applications will be managed by systemd.</p>
 <h3 id="live-camera-mode">Live Camera Mode</h3>
-<p>The live camera mode is launched using the following command.  By default it will run a person detection and segmentation model, if you wish to run your own model simply use the <code>--model mymodel.tflite</code> parameter and provide the path to your TFLite model.  Currently only ModelPack for Detection &amp; Segmentation is supported by the launcher.</p>
+<p>The live camera mode is launched using the following command.  By default it will run a person detection and segmentation model, if you wish to run your own model simply use the <code>--model mymodel.tflite</code> parameter and provide the path to your <abbr title="TensorFlow Lite">TFLite</abbr> model.  Currently only ModelPack for Detection &amp; Segmentation is supported by the launcher.</p>
 <div class="highlight"><pre><span></span><code>edgefirst<span class="w"> </span>live
 </code></pre></div>
 <div class="admonition note">

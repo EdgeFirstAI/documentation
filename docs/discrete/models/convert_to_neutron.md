@@ -74,15 +74,15 @@ Once training completes in EdgeFirst Studio:
 
 1. Click on the completed training session.
 
-	{{ figure("/models/assets/training/vision-view-train-details.jpg", "Completed Training Session") }}
+    {{ figure("/models/assets/training/vision-view-train-details.jpg", "Completed Training Session") }}
 
 2. Navigate to the **Artifacts** tab and click the **NXP eIQ Neutron Converter** button under **Converters** on the right.
 
-	{{ figure("/models/assets/conversion/neutron-converter-button.jpg", "Neutron Converter") }}
+    {{ figure("/models/assets/conversion/neutron-converter-button.jpg", "Neutron Converter") }}
 
 3. Pick the target device and any conversion settings, then click **Start App** to begin the conversion.
 
-	{{ figure("/models/assets/conversion/neutron-converter-options.jpg", "Neutron Converter Options") }}
+    {{ figure("/models/assets/conversion/neutron-converter-options.jpg", "Neutron Converter Options") }}
 
 If the matching upstream TFLite artifact has not been built yet, the Neutron job will trigger the TFLite Converter for you and wait for it to complete before running the Neutron stage — expect the conversion to take noticeably longer in that case.
 

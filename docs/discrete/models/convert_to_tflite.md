@@ -42,15 +42,15 @@ Once training completes in EdgeFirst Studio:
 
 1. Click on the completed training session.
 
-	{{ figure("/models/assets/training/vision-view-train-details.jpg", "Completed Training Session") }}
+    {{ figure("/models/assets/training/vision-view-train-details.jpg", "Completed Training Session") }}
 
 2. Navigate to the **Artifacts** tab and click the **TFLite Converter** button under **Converters** on the right.
 
-	{{ figure("/models/assets/conversion/tflite-converter-button.jpg", "TFLite Converter") }}
+    {{ figure("/models/assets/conversion/tflite-converter-button.jpg", "TFLite Converter") }}
 
 3. Pick the quantization mode and split mode, then click **Start App** to begin the conversion.
 
-	{{ figure("/models/assets/conversion/tflite-converter-options.jpg", "TFLite Converter Options") }}
+    {{ figure("/models/assets/conversion/tflite-converter-options.jpg", "TFLite Converter Options") }}
 
 Reference accuracy numbers for the EdgeFirst-quantized Ultralytics family (YOLOv8n, YOLOv8n-seg, others) are published on the [Ultralytics Benchmarks](/models/ultralytics/benchmarks/) page alongside the float32 baseline they recover from.
 

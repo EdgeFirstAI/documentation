@@ -48,7 +48,7 @@ Once training completes in EdgeFirst Studio:
 
     {{ figure("/models/assets/conversion/tflite-converter-button.jpg", "TFLite Converter") }}
 
-3. Pick the quantization mode and split mode, then click **Start App** to begin the conversion.
+3. Adjust the quantization mode, I/O precision, and split mode if needed, or leave the defaults for best out-of-the-box performance. Click **Start App** to begin the conversion.
 
     {{ figure("/models/assets/conversion/tflite-converter-options.jpg", "TFLite Converter Options") }}
 

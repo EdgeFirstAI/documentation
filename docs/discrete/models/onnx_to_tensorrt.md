@@ -38,11 +38,9 @@ Conversion has two stages: EdgeFirst Studio packages the ONNX model and supporti
     $ cd <model>/
     ```
 
-8. Compile the bundle into a TensorRT engine. On a stock JetPack 6.2 install, `trtexec`, `jq`, and `python3` are already on `PATH`; you only need extra setup if you intend to use the `--publish` flag.
+    !!! note "Prerequisites"
 
-    !!! note "Required setup for `--publish` (optional)"
-
-        Steps 1 and 2 are only needed if `trtexec` or `jq` are missing from `PATH`. Steps 3 and 4 are only needed if you pass `--publish` to push the compiled engine back to EdgeFirst Studio.
+        Steps a and b ensure the required binaries are on `PATH`. Steps c and d authenticate the `--publish` upload to EdgeFirst Studio.
 
         1. Ensure the `trtexec` binary is on `PATH`:
 
@@ -68,6 +66,8 @@ Conversion has two stages: EdgeFirst Studio packages the ONNX model and supporti
             $ edgefirst-client login
             ```
 
+8. Compile the bundle into a TensorRT engine with `--publish` to push the sealed artifact back to EdgeFirst Studio.
+
     Run the build:
 
     ```shell
@@ -83,7 +83,7 @@ Conversion has two stages: EdgeFirst Studio packages the ONNX model and supporti
 
     The output is a sealed `.fp16.engine` with metadata readable by any ZIP reader; the TensorRT deserializer ignores trailing bytes.
 
-9. The compiled `<model>.fp16.engine` is now ready to deploy. If you used `--publish`, the artifact is also available in the Studio session for re-download to other compatible devices. Verify the engine loads successfully with:
+9. The compiled `<model>.fp16.engine` is now ready to deploy. The artifact is also available in the Studio session for re-download to other compatible devices. Verify the engine loads successfully with:
 
     ```shell
     $ trtexec --loadEngine=<model>.fp16.engine --iterations=100

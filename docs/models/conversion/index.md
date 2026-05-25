@@ -42,7 +42,7 @@ For a typical YOLO-family segmentation head with three FPN scales, the split pro
 
 ### The trade-off framing
 
-Smart quantization is not free runtime — physical splits move per-anchor decode arithmetic onto the CPU, where it shows up as a real (but bounded) cost in the frame budget. Au-Zone's published runtime benchmarks place the optimized decoder in the **sub-20 ms** range across our supported targets for typical YOLO-family heads, which leaves comfortable headroom for ≥30 FPS end-to-end. The production trade-off:
+Smart quantization is not free at runtime — physical splits move per-anchor decode arithmetic onto the CPU, where it shows up as a real (but bounded) cost in the frame budget. Au-Zone's published runtime benchmarks place the optimized decoder in the **sub-20 ms** range across our supported targets for typical YOLO-family heads, which leaves comfortable headroom for ≥30 FPS end-to-end. The production trade-off:
 
 > Smart quantization trades a small, bounded amount of runtime decode work for a large recovery in INT8 accuracy. On every target EdgeFirst ships, the trade is worth taking; on every target EdgeFirst ships, the cost is non-zero.
 

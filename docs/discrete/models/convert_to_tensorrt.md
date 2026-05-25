@@ -24,7 +24,7 @@ After running the on-device build, the final artifact is a sealed `.fp16.engine`
 
 ## Smart Quantization on Jetson
 
-[Smart Quantization](/models/conversion/#smart-quantization) does not apply here. Jetson is an **FP16** target — NVIDIA Jetson Orin GPUs have native FP16 CUDA cores that deliver near-INT8 throughput at near-FP32 accuracy. There is no INT8 quantization step to defeat, and therefore no shared-INT8-scale problem to solve. The compiled `outputs[]` faithfully reflects whatever the trainer's ONNX produced; the runtime decoder takes the FP16 outputs straight to NMS.
+[Smart Quantization](/models/conversion/#smart-quantization) does not apply here. Jetson is an **FP16** target — NVIDIA Jetson Orin GPUs have native FP16 CUDA cores that deliver near-INT8 throughput at near-FP32 accuracy. There is no INT8 quantization step to defeat, and therefore no shared-INT8-scale problem to solve. The compiled [`outputs[]`](/models/metadata/#output-specification) faithfully reflects whatever the trainer's ONNX produced; the runtime decoder takes the FP16 outputs straight to NMS.
 
 INT8 on Jetson via the TRT INT8 calibration path is a future direction. It is not implemented today; the converter does not consume calibration data and the bundle does not include calibration support.
 

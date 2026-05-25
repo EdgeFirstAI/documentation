@@ -104,10 +104,11 @@ nav:
       - models/training/vision.md
       - models/training/fusion.md
     - Model Conversion:
+      - models/conversion/index.md
       - models/conversion/tflite.md
       - models/conversion/neutron.md
       - models/conversion/tensorrt.md
-      - models/conversion/kinara.md
+      - models/conversion/ara2.md
       - models/conversion/hailo.md
     - Model Validation:
       - Validating Vision Models:

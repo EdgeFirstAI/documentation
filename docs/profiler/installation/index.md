@@ -1,6 +1,6 @@
 # Installation
 
-The EdgeFirst Profiler is distributed three ways, with the same native binary in every case:
+The EdgeFirst Profiler is distributed three ways. Each ships the matching native binary for your host's OS and architecture (`x86_64` / `aarch64`, Linux / macOS / Windows) — the source and the CLI are identical, only the compiled artifact differs.
 
 - **`pip install edgefirst-profiler`** — the convenience path. Pulls the binary plus the few Python-side helpers needed for end-to-end workflows. This is the recommended default.
 - **Platform installer scripts** (`install.sh` / `install.ps1`) — the right choice for environments where Python is not available, or where the binary needs to land in a system-wide path like `/usr/local/bin`.
@@ -22,7 +22,7 @@ Per-target pages below cover the runtime libraries, NPU delegates, daemons, and 
 | [Kinara Ara-2](kinara.md) | x86_64 / aarch64 host | DVM via `ara2-proxy` | — |
 | [Hailo-8 / 8L](hailo.md) | any host with HailoRT | HailoRT | — |
 
-The profiler binary is the same on every target — what varies is which **runtime libraries** must be present on the system so the matching backend can `dlopen` them. Every backend loads its vendor library dynamically; nothing is statically linked, so a missing library on one target never breaks the profiler on another.
+The profiler CLI and the workflow it drives are the same on every target — what varies (besides the OS/arch-matched binary) is which **runtime libraries** must be present on the system so the matching backend can `dlopen` them. Every backend loads its vendor library dynamically; nothing is statically linked, so a missing library on one target never breaks the profiler on another.
 
 ## Backends and how they are selected
 
@@ -30,7 +30,7 @@ The inference backend is chosen automatically from the model file extension:
 
 | Extension | Backend | Runtime dependency |
 |---|---|---|
-| `.onnx` | ONNX Runtime | `libonnxruntime.so` / `.dylib` |
+| `.onnx` | ONNX Runtime | `libonnxruntime.so` (Linux) / `libonnxruntime.dylib` (macOS) / `onnxruntime.dll` (Windows) |
 | `.tflite` | TensorFlow Lite | `libtensorflowlite_c.so` (Linux only) |
 | `.dvm` | Kinara Ara-2 | `ara2-proxy` daemon (Linux only) |
 | `.hef` | Hailo | `libhailort.so` (Linux only) |

@@ -192,15 +192,12 @@ cli
 venv
 backends
 artifact
-artifacts
 postprocess
-preprocess
 pftrace
 parquet
 manylinux
 dlls
 xnnpack
-nms
 mlops
 iou
 roundtrip
@@ -219,7 +216,6 @@ pre
 esc
 glibc
 keybindings
-url
 ui
 api
 aarch64

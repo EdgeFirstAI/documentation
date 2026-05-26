@@ -1,88 +1,90 @@
-This section describes how to convert an ONNX model into a TensorRT model using EdgeFirst Studio. The process has two stages.
+Conversion has two stages: EdgeFirst Studio packages the ONNX model and supporting files into a portable `.tensorrt.zip` bundle, and then `build.sh` runs on the target Jetson to compile the engine. The bundle itself is portable across machines; the resulting `.engine` is hardware-specific and must be built on (or for) the device that will run it.
 
-In the first stage, EdgeFirst Studio packages the ONNX model into a ".tensorrt.zip" bundle.  This bundle includes the original ONNX file, a "build.sh" script, and supporting files such as "edgefirst.json" and "labels.txt".  The script is used later to compile the model into a TensorRT engine.  The conversion process is handled by the [tensorrt-converter](https://github.com/EdgeFirstAI/tensorrt-converter) package.
+!!! info "Native cross-compilation support"
 
-In the second stage, you run the build.sh script on the target device (for example, a Jetson Orin).  This step compiles the model into a .engine file optimized specifically for that hardware.
+    Native cross-compilation of TensorRT engines is in progress and will eliminate the second on-device build stage when available.
 
-!!! info "Native Cross Compilation Support"
-
-    Support for native cross-compilation of TensorRT will be coming soon, thus eliminating the second stage.
-
-The .tensorrt.zip bundle is portable and can be moved between systems.  However, the generated TensorRT engine is hardware-specific and must be built on (or for) the platform where it will be used for inference.  Once compiled, the optimized model can be deployed on the device or uploaded back to EdgeFirst Studio.
-
-1. Click on the completed training session
+1. Click on the completed training session.
 
     {{ figure("/models/assets/training/vision-view-train-details.jpg", "Completed Training Session") }}
 
-2. Navigate to the "Artifacts" tab and click on the "TensorRT Converter" button under "Converters" on the right
+2. Navigate to the **Artifacts** tab and click the **TensorRT Converter** button under **Converters** on the right.
 
     {{ figure("/models/assets/conversion/tensorrt-converter-button.jpg", "TensorRT Converter") }}
 
-3. Click on "Start App" to start the conversion process
+3. Click **Start App** to begin the conversion. The launch form has no settings — the output is a portable bundle, not a final engine.
 
     {{ figure("/models/assets/conversion/tensorrt-converter-options.jpg", "TensorRT Converter Options") }}
 
-4. This will publish an artifact to the session with the extension "<model>.tensorrt.zip" bundle.  Go ahead and download this artifact to your PC
+4. Download the resulting `<model>.tensorrt.zip` bundle from the session's **Artifacts** tab.
 
     {{ figure("/models/assets/conversion/tensorrt-converter-bundle.jpg", "TensorRT Converter Bundle") }}
 
-5. [SCP](https://en.wikipedia.org/wiki/Secure_copy_protocol) the downloaded .tensorrt.zip file into the Jetson Orin to execute the second stage of the conversion process
+5. Copy the bundle to the Jetson via [SCP](https://en.wikipedia.org/wiki/Secure_copy_protocol):
 
     ```shell
     $ scp <model>.tensorrt.zip username@hostname:~/
     ```
 
-6. Unzip the model into a folder
+6. On the Jetson, unzip the bundle into a folder:
 
     ```shell
     $ unzip -d <model>/ <model>.tensorrt.zip
     ```
 
-7. Navigate to the extracted folder `cd <model>/`
+7. Enter the extracted folder:
 
-8. Compile the model bundle into TensorRT
+    ```shell
+    $ cd <model>/
+    ```
 
-    !!! note "Required Actions"
-        Prior to running the script below, these initialization steps are needed.
+    !!! note "Prerequisites"
 
-        1. The script requires the `trtexec` binary to be available in your `PATH`
+        Steps a and b ensure the required binaries are on `PATH`. Steps c and d authenticate the `--publish` upload to EdgeFirst Studio.
+
+        1. Ensure the `trtexec` binary is on `PATH`:
 
             ```shell
             $ export PATH=$PATH:/usr/src/tensorrt/bin
             ```
 
-        2. The script requires the `jq` library which is installed 
+        2. Ensure `jq` is installed:
 
             ```shell
             $ sudo apt install -y jq
             ```
 
-        3. The `--publish` flag requires the [edgefirst-client](../../perception/studio.md) package which is installed 
+        3. Install the [edgefirst-client](../../perception/studio.md) package:
 
-            ```shell            
+            ```shell
             $ pip3 install edgefirst-client
             ```
 
-        4. If using the `--publish` flag, ensure you are logged in to EdgeFirst Studio
+        4. Log in to EdgeFirst Studio:
 
             ```shell
             $ edgefirst-client login
             ```
 
+8. Compile the bundle into a TensorRT engine with `--publish` to push the sealed artifact back to EdgeFirst Studio.
+
+    Run the build:
+
     ```shell
     $ ./build.sh fp16 --publish
     ```
 
-    The script verifies trtexec, jq, and python3 are in PATH (all default on JetPack 6.2), then:
+    The script verifies `trtexec`, `jq`, and `python3` are on `PATH` (all default on JetPack 6.2), then:
 
-    1. Calls `trtexec --onnx=model.onnx --fp16 --saveEngine=<name>.fp16.engine`
-    2. Updates "edgefirst.json" with on-target build values via `jq` (precision, engine sha256, build timestamp, on-device TRT version, builder flags)
-    3. ZIP-appends "edgefirst.json" + "labels.txt" to the engine using Python's zipfile
-    4. (If `--publish`) Uploads the sealed engine to Studio via `edgefirst-client upload-artifact`.  More information on [edgefirst-client](../../perception/studio.md) can be found on the link provided
+    1. Calls `trtexec --onnx=model.onnx --fp16 --saveEngine=<name>.fp16.engine`.
+    2. Updates `edgefirst.json` with on-target build values via `jq` (precision, engine `sha256`, build timestamp, on-device TRT version, builder flags).
+    3. ZIP-appends `edgefirst.json` and `labels.txt` to the engine using Python's `zipfile` module.
+    4. If `--publish` is set, uploads the sealed engine to Studio via `edgefirst-client upload-artifact`. See the [edgefirst-client](../../perception/studio.md) page for more.
 
-    The output is a sealed `.fp16.engine` with metadata readable by any ZIP reader; the TRT deserializer ignores trailing bytes.
+    The output is a sealed `.fp16.engine` with metadata readable by any ZIP reader; the TensorRT deserializer ignores trailing bytes.
 
-9. Once converted, a model file "<model>.fp16.engine" should have been generated and published to EdgeFirst Studio as an artifact
+9. The compiled `<model>.fp16.engine` is now ready to deploy. The artifact is also available in the Studio session for re-download to other compatible devices. Verify the engine loads successfully with:
 
-    You can redownload the TensorRT model from other compatible devices. 
-    You can also verify the model loaded successfully by running the command `trtexec --loadEngine=<model>.fp16.engine --iterations=100`
+    ```shell
+    $ trtexec --loadEngine=<model>.fp16.engine --iterations=100
+    ```

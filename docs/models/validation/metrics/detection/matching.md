@@ -1,6 +1,6 @@
 # Matching and Classification Rules
 
-This section describes the rules behind EdgeFirst Validator's matching algorithm which is used to compute the deployment metrics for object detection.  The matching algorithm is responsible for matching the prediction bounding boxes to the ground truth based on the best overlap (IoU + label).  The prediction matches are then classified into true positives, false positives, and false negatives.
+This section describes the rules behind EdgeFirst Studio's matching algorithm which is used to compute the deployment metrics for object detection.  The matching algorithm is responsible for matching the prediction bounding boxes to the ground truth based on the best overlap (IoU + label).  The prediction matches are then classified into true positives, false positives, and false negatives.
 
 ## Rule 1: Requirements of True Positives
 
@@ -118,4 +118,4 @@ Any detections that do not overlap any ground truth or any detections with IoU <
 
 ## Conclusion
 
-This article has shown the rules established in EdgeFirst Validator that governs the behaviour of the matching and classification algorithms to process the raw detections into their classifications of true positives, false positives, and false negatives.  Rules 1-3 shows the requirements of these classifications.  Rule 4 describes the limits to the count of these classifications.  Rule 5 shows the prioritization of matches to ensure classification requirements are met by prioritizing finding of true positives first, then classification false positives, and then localization false positives.  For a closer look into how predictions are classified please see [Object Detection Classifications](classifications.md).
+This article has shown the rules established in EdgeFirst Studio that governs the behaviour of the matching and classification algorithms to process the raw detections into their classifications of true positives, false positives, and false negatives.  Rules 1-3 shows the requirements of these classifications.  Rule 4 describes the limits to the count of these classifications.  Rule 5 shows the prioritization of matches to ensure classification requirements are met by prioritizing finding of true positives first, then classification false positives, and then localization false positives.  For a closer look into how predictions are classified please see [Object Detection Classifications](classifications.md).

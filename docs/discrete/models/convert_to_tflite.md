@@ -25,7 +25,7 @@ Once training completes in EdgeFirst Studio, you can convert the SavedModel to T
 
 ### Reference Accuracy
 
-YOLOv8n on COCO val2017 (5000 images, 80 classes, 640x640 RGB input).  Validated with [edgefirst-validator](../../models/validation/vision/user_managed.md):
+YOLOv8n on COCO val2017 (5000 images, 80 classes, 640x640 RGB input).  Validated with the [EdgeFirst Profiler](../../profiler/index.md):
 
 **Detection (YOLOv8n)**
 

@@ -32,8 +32,8 @@ The following apps are available by default in EdgeFirst Studio:
 | App | Description | Pricing |
 |---|---|---|
 | **Roboflow Importer** | Import datasets from Roboflow into EdgeFirst Studio. | Free |
-| **EdgeFirst Profiler** | Profile model inference pipelines and produce Perfetto traces. | Free |
-| **EdgeFirst Validator** | Post-process predictions and Perfetto traces to compute COCO/LVIS accuracy metrics and timing charts, then publish results to the validation session. | Free |
+| **EdgeFirst Profiler** | Profile model inference pipelines and produce timing traces. | Free |
+| **EdgeFirst Validator** | Post-process predictions and timing traces to compute COCO/LVIS accuracy metrics and timing charts, then publish results to the validation session. | Free |
 | **TensorRT Converter** | Convert ONNX models to TensorRT `.engine` plans cross-compiled for NVIDIA Jetson. | $1/hour |
 | **TFLite Converter** | Convert a SavedModel to TFLite with optional INT8 quantization, per-channel calibration, and configurable split support. | $1/hour |
 

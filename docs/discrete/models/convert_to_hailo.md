@@ -27,7 +27,7 @@ HEF binaries compiled for one Hailo silicon will not run on the other. If you ar
 
 | Preset | Precision policy | Typical compile time | When to use |
 |--------|------------------|----------------------|-------------|
-| `fast` (default) | INT8 everywhere | Minutes | Initial bring-up, rapid iteration, INT8-friendly models |
+| `fast` (default) | INT8 everywhere | ~1 hour | Initial bring-up, rapid iteration, INT8-friendly models |
 | `balanced` | INT16 for boxes (regression outputs); INT8 elsewhere | Hours | Production detection models — the best accuracy/compile-time ratio |
 | `accurate` | INT16 for boxes and scores; INT8 elsewhere; plus the Dataflow Compiler's iterative calibration fine-tune pass | Hours (typically 2–6 for YOLO-family heads, longer for attention-heavy models) | Accuracy-critical deployments (instance segmentation, tight mAP targets) |
 

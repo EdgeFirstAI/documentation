@@ -38,7 +38,7 @@ Each level renders the same metadata you see in the Studio web UI: project owner
 
 When you select an artifact (e.g., `best.onnx`, `best.tflite`, `best.engine`), an action menu pops up:
 
-| Action | Behaviour |
+| Action | Behavior |
 |---|---|
 | **Validate** | Create a new validation session bound to this artifact and the training session's dataset, then jump to the F4 Profiler screen to run it. |
 | **Live** | _(reserved)_ Stream live inference back to Studio rather than producing a validation session — covered in a future release. |
@@ -63,7 +63,7 @@ Once the dataset is local, the status bar shows the new session ID and the F4 da
 
 ### 5. Publishing and the cloud validator
 
-Publish is automatic for sessions created from the F2 flow — the run uploads `predictions.parquet` and `trace.pftrace` to Studio and launches the validator app on completion. The session ID is preserved in the run output directory (`./results/<v-XXXX>/`) so you can re-publish or re-run from the CLI later if you need to.
+Publish is automatic for sessions created from the F2 flow — the run uploads `predictions.parquet` and `trace.pftrace` to Studio and triggers the cloud validator on completion. The session ID is preserved in the run output directory (`./results/<v-XXXX>/`) so you can re-publish or re-run from the CLI later if you need to.
 
 To skip the upload (e.g., when investigating a one-off timing question and the accuracy numbers are not interesting), use the configuration panel's **Publish: off** toggle before starting the run.
 

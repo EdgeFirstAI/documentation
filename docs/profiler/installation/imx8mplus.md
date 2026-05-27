@@ -34,7 +34,7 @@ edgefirst-profiler --version
 
 ## Delegate selection
 
-| Value | Behaviour on i.MX 8M Plus |
+| Value | Behavior on i.MX 8M Plus |
 |---|---|
 | _(omitted)_ / `auto` | Auto-detects i.MX 8M Plus from device-tree compatible string and loads `libvx_delegate.so`. |
 | `xnnpack` | CPU baseline. |
@@ -43,9 +43,11 @@ edgefirst-profiler --version
 
 ## Pipeline depth
 
-The VSI delegate supports **only one** in-flight inference at a time. The profiler's pipelined validator detects this and clamps `--pipeline-depth` down to a single inference slot — CPU stages (decode, postprocess, encode) still overlap, but two inferences cannot run concurrently on the NPU.
+The VSI delegate supports **only one** in-flight inference at a time. The profiler detects this and clamps `--pipeline-depth` down to a single inference slot — CPU stages (decode, postprocess, encode) still overlap with the single inference, but two inferences cannot run concurrently on the NPU.
 
-The Studio trace view makes this serialisation visible — back-to-back invoke slices touch but never overlap.
+The Studio trace view makes this serialization visible — back-to-back invoke slices touch but never overlap.
+
+See the [Pipelining](../concepts/pipelining.md) concept page for the full backend table, the sequential vs. pipelined mental model, and how each mode appears in the trace viewer.
 
 ## Verifying the install
 

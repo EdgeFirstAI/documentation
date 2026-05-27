@@ -26,14 +26,14 @@ sequenceDiagram
     Dev->>St: view charts, compare runs,<br/>open trace
 ```
 
-The on-target side is the profiler. Studio receives the published artifacts and produces the accuracy charts, the per-operator timing visualisations, and the comparison views. The on-device dependency footprint is small — no Python, no `pycocotools` — and the binary uses `edgefirst-hal`, multiple inference engines, and the EdgeFirst DMA optimisations for high on-target performance.
+The on-target side is the profiler. Studio receives the published artifacts and produces the accuracy charts, the per-operator timing visualizations, and the comparison views. The on-device dependency footprint is small — no Python, no `pycocotools` — and the binary uses `edgefirst-hal`, multiple inference engines, and the EdgeFirst DMA optimizations for high on-target performance.
 
 ## What you see in Studio
 
 When the validation session finishes, the session card surfaces accuracy charts, a per-frame timing summary, and the trace viewer.
 
-*(Studio screenshot — validation metrics in the session card — placeholder; will be added once available.)*
+{{ figure("../assets/studio-validation-metrics.png", "EdgeFirst Studio — validation metrics surfaced on the session card") }}
 
-*(Studio screenshot — trace viewer with pipeline stages, per-operator timing, and system metrics — placeholder; will be added once available.)*
+{{ figure("../assets/studio-trace-viewer.png", "EdgeFirst Studio — trace viewer with pipeline stages, per-operator timing, and system metrics") }}
 
 See [Object Detection Metrics](../../models/validation/metrics/detection/index.md) and [Segmentation Metrics](../../models/validation/metrics/segmentation.md) for the metrics reference.

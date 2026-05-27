@@ -1,6 +1,8 @@
 nav:
   - index.md
   - Quick Start: quickstart.md
+  - Concepts:
+    - Pipelining: concepts/pipelining.md
   - Installation:
     - installation/index.md
     - Linux: installation/linux.md

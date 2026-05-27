@@ -37,7 +37,7 @@ The profiler:
 2. Downloads the model artifact and dataset partition into the cache (`~/.cache/edgefirst-profiler/` on Linux, `~/Library/Caches/edgefirst-profiler/` on macOS).
 3. Runs the full pipeline (decode → preprocess → inference → postprocess → NMS) over every image in the dataset.
 4. Writes `predictions.parquet` and `trace.pftrace` into the cached session directory.
-5. Uploads both artifacts to Studio and launches the cloud validator app.
+5. Uploads both artifacts to Studio and triggers the cloud validator.
 
 Pass `--no-publish` to keep the run local, or `--no-validate` to publish artifacts without triggering the cloud validator (useful when you just want the trace).
 
@@ -89,7 +89,7 @@ While the profiler runs, the session card in Studio updates with status and prog
 
 The metrics dashboard contains the standard `pycocotools` outputs (box mAP@0.5:0.95, AP/AR breakdowns, AP per class) plus instance-segmentation mask metrics when applicable. See [Object Detection Metrics](../../models/validation/metrics/detection/index.md) and [Segmentation Metrics](../../models/validation/metrics/segmentation.md) for the full reference.
 
-*(Studio screenshot — validation metrics charts on a completed session — placeholder; will be added once available.)*
+{{ figure("../assets/studio-validation-metrics.png", "EdgeFirst Studio — validation metrics dashboard on a completed session: mAP, AP/AR breakdowns, confusion matrices, PR curves") }}
 
 ## 4. Open the trace in Studio
 
@@ -99,7 +99,7 @@ Click **Open Trace** on the session card to load the published `trace.pftrace` i
 - Per-operator timing for the backend used (ORT nodes, TFLite ops, Neutron ticks, TensorRT layers, Hailo contexts).
 - System-metric counters (CPU%, RSS, temperature).
 
-*(Studio screenshot — trace viewer — placeholder; will be added once available.)*
+{{ figure("../assets/studio-trace-viewer.png", "EdgeFirst Studio — trace viewer: pipeline-stage spans, per-operator timing, and system-metric counters") }}
 
 ## Tips
 

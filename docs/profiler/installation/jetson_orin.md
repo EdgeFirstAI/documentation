@@ -16,9 +16,11 @@ A working JetPack install with:
 - TensorRT 10.x (for the TensorRT backend)
 
 ```sh
-nvidia-smi              # CUDA driver visible
+nvcc --version          # CUDA toolkit visible (Jetson devices do not ship nvidia-smi)
 ls /usr/lib/aarch64-linux-gnu/libnvinfer.so*   # TensorRT installed
 ```
+
+If `nvcc` is missing, install the CUDA toolkit packages from JetPack, or check the JetPack/L4T version file at `/etc/nv_tegra_release`.
 
 ## Install the profiler
 
@@ -42,15 +44,15 @@ Confirm:
 edgefirst-profiler --version
 ```
 
-## ONNX Runtime with CUDA
+## ONNX Runtime on Jetson
 
-Install the CUDA-enabled ONNX Runtime build for aarch64. ORT 1.18+ ships JetPack-compatible aarch64 wheels:
+A stable, JetPack-compatible `onnxruntime-gpu` aarch64 wheel channel is not currently available — the Jetson AI Lab index is intermittent and the EdgeFirst-maintained channel is not yet published. Until that lands, **ONNX Runtime on Jetson is CPU-only** through the standard PyPI wheel:
 
 ```sh
-pip install onnxruntime-gpu
+pip install onnxruntime
 ```
 
-When a validation session runs an `.onnx` model on Jetson, the profiler routes through the CUDA execution provider by default. For TensorRT (the production deployment path on Jetson) see below.
+For GPU inference on Jetson, convert the model to a TensorRT engine first and let the profiler load it through the TensorRT backend described below. See the [TensorRT Converter](https://doc.edgefirst.ai/test/models/conversion/tensorrt/) for the conversion workflow.
 
 ## TensorRT (recommended for Jetson)
 

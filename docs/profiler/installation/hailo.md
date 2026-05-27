@@ -5,7 +5,7 @@ The EdgeFirst Profiler runs compiled **Hailo Executable Format** (`.hef`) models
 ## Prerequisites
 
 - HailoRT 4.x runtime installed (`libhailort.so` on the loader path)
-- Hailo PCIe driver (`hailo_pci`) and udev rules — installed by the HailoRT debian packages
+- Hailo PCIe driver (`hailo_pci`) and udev rules — installed by the HailoRT Debian packages
 
 ```sh
 hailortcli scan   # should print the device, e.g. "Hailo-8L on PCIe slot ..."

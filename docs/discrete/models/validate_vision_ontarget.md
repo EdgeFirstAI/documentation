@@ -21,7 +21,7 @@ The validation session card will appear like the following below.  Each session 
 Once the validation session has been created, [SSH](../../platforms/networking/ssh.md) into the platform and install the [EdgeFirst Profiler](../../profiler/index.md).
 
 !!! warning "Virtual Environment"
-    If you don't have a virtual environment already setup, please follow these steps below.
+    If you do not have a virtual environment already set up, please follow these steps below.
 
     To avoid re-installation of existing system packages, we recommend setting up a [Python virtual environment](https://docs.python.org/3/library/venv.html#creating-virtual-environments) prior to running the pip installations below.  Append `--system-site-packages` when creating the environment to include existing packages in the system.  For example:
 
@@ -61,7 +61,7 @@ $ edgefirst-profiler validate --session-id v-1b51 --model /path/to/mymodel.tflit
 
 Once the run is underway, the session card in Studio updates with progress.
 
-{{ figure("/models/assets/validation/user-managed-vision-session-progress.jpg", "Validation Session") }}
+{{ figure("/models/assets/validation/user-managed-vision-session-progress.jpg", "EdgeFirst Studio — session card showing progress during a running validation") }}
 
 The completed session will look as follows with the status set to "Complete".
 

@@ -1,6 +1,6 @@
 # Quick Start
 
-This guide walks you from "nothing installed" to a published validation session in roughly five minutes. The profiler is always operated against an EdgeFirst Studio session — there are two equivalent entry points covered below.
+This guide walks you from "nothing installed" to a published validation session in roughly five minutes. The profiler is always operated against an EdgeFirst Studio session.
 
 ## 1. Install the profiler
 
@@ -89,7 +89,7 @@ The F4 dashboard streams iteration-level latency, system metrics, and per-stage 
 
 {{ figure("assets/tui-profiler.png", "EdgeFirst Profiler — F4 dashboard during a run") }}
 
-When the run finishes, a completion summary shows the headline numbers and the path to the trace file. The artifacts upload to Studio automatically and the validator app is launched on the Studio side.
+When the run finishes, a completion summary shows the headline numbers and the path to the trace file. The artifacts upload to Studio automatically and the cloud validator is triggered.
 
 ```
 ╔═ Profiling Complete ═════════════════════════════╗
@@ -123,7 +123,7 @@ The profiler runs headlessly, prints progress bars for download/inference/upload
 
 Both paths land you at the same place: the validation session card in EdgeFirst Studio. The card shows progress while the cloud validator runs, then surfaces the accuracy charts and trace viewer when it completes.
 
-*(Studio screenshot — validation metrics and trace output — placeholder; will be added once available.)*
+{{ figure("assets/studio-trace-viewer.png", "EdgeFirst Studio — trace viewer on a completed validation session, showing pipeline stages and per-operator timing") }}
 
 See [Object Detection Metrics](../models/validation/metrics/detection/index.md) and [Segmentation Metrics](../models/validation/metrics/segmentation.md) for the metrics reference.
 

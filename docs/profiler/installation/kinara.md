@@ -38,7 +38,7 @@ edgefirst-profiler --version
 
 ## Model metadata
 
-DVM files use a **zip trailer** to embed decoder configuration and class labels. When the trailer is missing or the model was produced by a toolchain that doesn't write it, the profiler runs in timing-only mode and prints a note on stderr.
+DVM files use a **zip trailer** to embed decoder configuration and class labels. When the trailer is missing or the model was produced by a toolchain that does not write it, the profiler runs in timing-only mode and prints a note on stderr.
 
 ## Verifying the install
 

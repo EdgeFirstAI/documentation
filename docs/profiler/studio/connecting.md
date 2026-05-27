@@ -67,9 +67,22 @@ The profiler does not currently expose a standalone `whoami` subcommand. Re-runn
 
 Remove the token file:
 
-```sh
-rm ~/.config/edgefirststudio/token            # Linux / macOS
-del %APPDATA%\edgefirststudio\token           # Windows
-```
+=== "Linux / macOS"
+
+    ```sh
+    rm ~/.config/edgefirststudio/token
+    ```
+
+=== "Windows (PowerShell)"
+
+    ```powershell
+    Remove-Item "$env:APPDATA\edgefirststudio\token"
+    ```
+
+=== "Windows (CMD)"
+
+    ```bat
+    del %APPDATA%\edgefirststudio\token
+    ```
 
 The next Studio operation will prompt for login.

@@ -81,6 +81,14 @@ Projects  →  Experiments  →  Training Sessions  →  Artifacts
 
 {{ figure("assets/tui-studio-explorer.png", "F2 Studio — explorer drilling into a training session") }}
 
+Each artifact is prefixed with a coloured dot indicating whether it can be deployed on the current host:
+
+| Indicator | Status | Meaning | Example artifacts |
+|-----------|--------|---------|-------------------|
+| <span style="color: #4caf50">●</span> Green | Deployable | Format recognized and all runtime requirements met on this host. | `.onnx` (Generic ONNX), `.tflite` (Generic TFLite) |
+| <span style="color: #ff9800">●</span> Orange | Conditions not confirmed | Known deployable format for a specific target, but the required hardware, runtime, or accelerator was not detected. | `.hef` (Hailo-8L runtime absent), `.dvm` (NXP Ara240 not present), `.engine` (no CUDA host), `.imx95.tflite` (different SoC) |
+| <span style="color: #f44336">●</span> Red | Not deployable | Supporting file, archive, or unrecognized format — not a model the profiler can run directly. | `labels.txt`, `_saved_model.zip`, `.tensorrt.zip` |
+
 Select an artifact and choose **Validate**. The profiler creates a new validation session in Studio, downloads anything missing, jumps to **F4 Profiler**, and starts the run.
 
 {{ figure("assets/tui-launch-validate.png", "F2 Studio — confirming Validate against a model artifact") }}

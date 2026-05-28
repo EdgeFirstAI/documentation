@@ -522,7 +522,7 @@ The presence of a `decoder` field on a logical output signals that post-processi
 
 Semantic and decode fields live on the **logical output** and apply to all children. Physical children carry only tensor-level fields.
 
-**Root-level only:** `decoder_version`, `nms` (HAL NMS mode). These describe model-wide behaviour and never appear inside an `outputs[]` entry.
+**Root-level only:** `decoder_version`, `nms` (HAL NMS mode). These describe model-wide behavior and never appear inside an `outputs[]` entry.
 
 **Logical output only:** `decoder`, `encoding`, `score_format`, `normalized`, `anchors`
 
@@ -809,7 +809,7 @@ The `validation` section records the recommended settings based on how the model
     This document uses `nms` at two levels with different semantics:
 
     - **`validation.nms`** (this section) — selects the NMS *implementation* (`hal`, `numpy`, `tensorflow`, `torch`) or `none` for models with embedded NMS.
-    - **root-level `nms`** (see [HAL NMS Field](#hal-nms-field)) — selects HAL decoder *behaviour* (`class_agnostic` vs `class_aware`).
+    - **root-level `nms`** (see [HAL NMS Field](#hal-nms-field)) — selects HAL decoder *behavior* (`class_agnostic` vs `class_aware`).
 
     The two fields are independent and can coexist. Keep the distinction in mind when reading the rest of this section.
 
@@ -1025,7 +1025,7 @@ nms: class_aware       # Only suppress boxes with the same class label
 !!! warning "Two distinct `nms` fields"
     This document uses `nms` at two levels with different semantics:
 
-    - **Root-level `nms`** (this field) — HAL decoder *behaviour*: `class_agnostic` vs `class_aware`.
+    - **Root-level `nms`** (this field) — HAL decoder *behavior*: `class_agnostic` vs `class_aware`.
     - **`validation.nms`** (see [Validation Parameters](#validation-parameters)) — NMS *implementation*: `hal`, `numpy`, `tensorflow`, `torch`, or `none`.
 
     The two fields are independent and can coexist.

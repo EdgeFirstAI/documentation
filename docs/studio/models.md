@@ -52,13 +52,12 @@ The action bar at the top of the details page provides the following operations:
 - **Refresh** — Reload the session state and latest log output.
 - **Validate** — Create a new validation session for this training session.
 - **Compare** — Compare the training charts of this session against others.
-- **Clone** — Copy this session's settings and weights into a new training session without running training. See [Cloning a Training Session](#cloning-a-training-session).
 - **Stop** — Terminate a running training session.
 - **Recycle Bin** — Move the session to the recycle bin.
 
 ### Cloning a Training Session
 
-Cloning creates a new training session that is an exact copy of an existing one — same trainer type, same model and training parameters — but **no training is performed**. The completed weights from the source session are copied directly to the new session's artifacts.
+Cloning creates a new training session from an existing one. The clone preserves the source session's trainer type, model, dataset selection, and other session configuration, but it overrides two training controls: **Use Default Weights** is disabled and **Enable Training** is disabled. Because training is not run, the completed weights from the source session are copied directly into the new session's artifacts.
 
 This is useful when you want to:
 

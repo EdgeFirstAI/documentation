@@ -82,7 +82,10 @@ ModelPack can be trained now in EdgeFirst Studio using a Graphical User Interfac
         7. **Space to Depth**: This feature enables the Space to Depth Transformation to the input in order to reduce model complexity on higher resolutions
         8. **Split Decoder**: Remove the decoder from the model and use a very optimized one from EdgeFirst.  This feature is very useful when the location of the boxes has to be precise (0-offset)
     7. **Training Parameters**: In this section the user is able to specify the number of epochs to train the model as well as the batch size.  Remember the larger the input resolution the smaller the batch size
-        1. **Use Default Weights**: When enabled (default), training starts from pre-trained COCO weights. When disabled, starting weights are sourced from a prior training session you specify. See [Enable Training and Use Default Weights](../training/vision.md#enable-training-and-use-default-weights) for the full behaviour matrix.
+        1. **Use Default Weights**: When enabled (default), training starts from pre-trained COCO weights. When disabled, starting weights are sourced from a prior training session you specify.
+
+            !!! note "ModelPack does not have an Enable Training checkbox"
+                For ModelPack training always runs. Disabling **Use Default Weights** lets you supply a prior session's weights as the starting point; leaving it enabled trains from COCO pre-trained weights. **Enable Training** are [Ultralytics-only](../ultralytics/index.md#training-parameters) and do not apply here
     8. **Data Augmentation**: This section controls the probability of each augmentation technique.  This feature is crucial for training models and reduce overfitting, especially in small datasets
     9. **Export Parameters**: Allow the user to set a portion of data for calibration when exporting the model for INT8 quantization
     10. **Start Session**: This button will start the training session

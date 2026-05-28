@@ -336,6 +336,28 @@
     
     
       <li class="md-tabs__item">
+        <a href="../../../../profiler/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Profiler
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
         <a href="../../../../datasets/" class="md-tabs__link">
           
   
@@ -692,6 +714,71 @@
       
         
       
+        
+      
+    
+    
+    
+      
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../../../profiler/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Profiler
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
     
     
     
@@ -923,7 +1010,7 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" checked>
         
           
           <div class="md-nav__link md-nav__container">
@@ -945,14 +1032,14 @@
             </a>
             
               
-              <label class="md-nav__link " for="__nav_7" id="__nav_7_label" tabindex="">
+              <label class="md-nav__link " for="__nav_8" id="__nav_8_label" tabindex="">
                 <span class="md-nav__icon md-icon"></span>
               </label>
             
           </div>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="true">
-          <label class="md-nav__title" for="__nav_7">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_8">
             <span class="md-nav__icon md-icon"></span>
             
   
@@ -1000,10 +1087,10 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7_2" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8_2" checked>
         
           
-          <label class="md-nav__link" for="__nav_7_2" id="__nav_7_2_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_8_2" id="__nav_8_2_label" tabindex="0">
             
   
   
@@ -1021,8 +1108,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_7_2_label" aria-expanded="true">
-          <label class="md-nav__title" for="__nav_7_2">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_8_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_8_2">
             <span class="md-nav__icon md-icon"></span>
             
   
@@ -1214,7 +1301,7 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7_2_3" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8_2_3" checked>
         
           
           <div class="md-nav__link md-nav__container">
@@ -1236,14 +1323,14 @@
             </a>
             
               
-              <label class="md-nav__link " for="__nav_7_2_3" id="__nav_7_2_3_label" tabindex="0">
+              <label class="md-nav__link " for="__nav_8_2_3" id="__nav_8_2_3_label" tabindex="0">
                 <span class="md-nav__icon md-icon"></span>
               </label>
             
           </div>
         
-        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_7_2_3_label" aria-expanded="true">
-          <label class="md-nav__title" for="__nav_7_2_3">
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_8_2_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_8_2_3">
             <span class="md-nav__icon md-icon"></span>
             
   
@@ -2146,10 +2233,10 @@
             <img align="center" alt="Validation Session ID" src="../../../../models/assets/validation/user-managed-vision-session-id.jpg" />
             <figcaption>Validation Session ID</figcaption>
             </figure>
-<p>Once the validation session has been created, <a href="../../../networking/ssh/"><abbr title="Secure Shell">SSH</abbr></a> into the platform and install the following dependencies.</p>
+<p>Once the validation session has been created, <a href="../../../networking/ssh/"><abbr title="Secure Shell">SSH</abbr></a> into the platform and install the <a href="../../../../profiler/">EdgeFirst Profiler</a>.</p>
 <div class="admonition warning">
 <p class="admonition-title">Virtual Environment</p>
-<p>If you don't have a virtual environment already setup, please follow these steps below.</p>
+<p>If you do not have a virtual environment already set up, please follow these steps below.</p>
 <p>To avoid re-installation of existing system packages, we recommend setting up a <a href="https://docs.python.org/3/library/venv.html#creating-virtual-environments">Python virtual environment</a> prior to running the pip installations below.  Append <code>--system-site-packages</code> when creating the environment to include existing packages in the system.  For example:</p>
 <ul>
 <li>Linux <code>python3 -m venv /path/to/myenv --system-site-packages</code></li>
@@ -2161,19 +2248,23 @@
 <li>Windows: <code>/path/to/myenv/Scripts/activate</code></li>
 </ul>
 </div>
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>edgefirst-validator
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>edgefirst-profiler
 </code></pre></div>
-<p>Next login to your account in EdgeFirst Studio by using the <a href="../../../../perception/studio/">EdgeFirst Client</a> which comes installed with the validator package. The command below will prompt you to enter your EdgeFirst Studio credentials.</p>
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span>edgefirst-client<span class="w"> </span>login
+<p>See <a href="../../../../profiler/installation/">Installation</a> for platform installer alternatives and per-target dependencies.</p>
+<p>Next sign in to EdgeFirst Studio. The profiler stores the credentials and refreshes them automatically while you are using it.</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>edgefirst-profiler<span class="w"> </span>login
 </code></pre></div>
-<p>Once the validator is installed and authenticated, run validation using the following command.  Replace the session ID specific to your session card.</p>
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span>edgefirst-validator<span class="w"> </span>--session-id<span class="w"> </span>v-1b51
+<p>Run validation against the session ID from the session card:</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>edgefirst-profiler<span class="w"> </span>validate<span class="w"> </span>--session-id<span class="w"> </span>v-1b51
 </code></pre></div>
-<p>If the model already exists in your system, you can run this command <code>edgefirst-validator /path/to/mymodel.tflite --session-id v-1b51</code>.  Otherwise, the model will be downloaded as an artifact from the EdgeFirst Studio training session.</p>
-<p>Once entered, the following validation progress should now be indicated in EdgeFirst Studio as shown below.</p>
+<p>The profiler downloads the model artifact and dataset partition, runs the pipeline on the target, and uploads the predictions and trace back to Studio when the run completes.</p>
+<p>If the model already lives on disk and you want to skip the download, pass <code>--model</code> alongside the session ID:</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>edgefirst-profiler<span class="w"> </span>validate<span class="w"> </span>--session-id<span class="w"> </span>v-1b51<span class="w"> </span>--model<span class="w"> </span>/path/to/mymodel.tflite
+</code></pre></div>
+<p>Once the run is underway, the session card in Studio updates with progress.</p>
 <figure>
-            <img align="center" alt="Validation Session" src="../../../../models/assets/validation/user-managed-vision-session-progress.jpg" />
-            <figcaption>Validation Session</figcaption>
+            <img align="center" alt="EdgeFirst Studio — session card showing progress during a running validation" src="../../../../models/assets/validation/user-managed-vision-session-progress.jpg" />
+            <figcaption>EdgeFirst Studio — session card showing progress during a running validation</figcaption>
             </figure>
 <p>The completed session will look as follows with the status set to "Complete".</p>
 <figure>

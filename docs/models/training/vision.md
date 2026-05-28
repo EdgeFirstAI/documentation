@@ -61,9 +61,27 @@ For more information on available "Data Augmentations" please see [Vision Augmen
     7. **Space to Depth**: This feature enables the Space to Depth Transformation to the input in order to reduce model complexity on higher resolutions
     8. **Split Decoder**: Remove the decoder from the model and use a very optimized one from EdgeFirst.  This feature is very useful when the location of the boxes has to be precise (0-offset)
 7. **Training Parameters**: In this section the user is able to specify the number of epochs to train the model as well as the batch size.  Remember the larger the input resolution the smaller the batch size
+    1. **Enable Training** *(Ultralytics only)*: When enabled (default), the model is trained using the selected weights. When disabled, no training is performed — weights are pushed directly to the session artifacts. See [Enable Training and Use Default Weights](#enable-training-and-use-default-weights) below.
+    2. **Use Default Weights**: When enabled (default), training starts from pre-trained COCO weights. When disabled, starting weights are sourced from a prior training session you specify.
 8. **Data Augmentation**: This section controls the probability of each augmentation technique.  This feature is crucial for training models and reduce overfitting, especially in small datasets
 9. **Export Parameters**: Allow the user to set a portion of data for calibration when exporting the model for INT8 quantization
 10. **Start Session**: This button will start the training session
+
+### Enable Training and Use Default Weights
+
+The **Enable Training** checkbox (Ultralytics only) and **Use Default Weights** checkbox combine to control how the session is initialized and whether active training is performed:
+
+| Use Default Weights | Enable Training | Behaviour |
+|---------------------|-----------------|----------|
+| ✓ Enabled | ✓ Enabled | **Default.** Train from pre-trained COCO weights. |
+| ✗ Disabled | ✓ Enabled | Train starting from weights of a prior training session you specify. |
+| ✓ Enabled | ✗ Disabled | No training. Pre-trained COCO weights are copied directly to the session artifacts. Results will be poor on non-COCO datasets — Studio displays a warning. |
+| ✗ Disabled | ✗ Disabled | No training. Weights are copied from a specified prior training session — equivalent to cloning that session's artifacts. |
+
+!!! warning "COCO pre-trained weights and dataset compatibility"
+    The **Use Default Weights** option initializes from pre-trained COCO weights. These weights can technically be used as a starting point for any dataset, but **if your dataset labels have no overlap with COCO category names, validation accuracy will be very poor** — the model's class outputs will not correspond to your labels.
+
+    For best transfer-learning results, ensure your label names match the relevant COCO categories, or supply a prior EdgeFirst training session as the starting weights.
 
 ## Session Progress
 

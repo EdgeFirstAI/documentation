@@ -43,7 +43,7 @@ heading reflects the total number of historical tasks matching the current filte
 Each task card shows the following information:
 
 | Field | Description |
-|---|---|
+| ----- | ----------- |
 | **Task ID** | A unique identifier for the task (e.g. `bt-445d`). Click the copy icon to copy it to the clipboard. |
 | **Status** | The current state of the task: **Completed**, **Running**, **Failed**, or **Stopped**. |
 | **Name** | The display name assigned to the task at creation time. |

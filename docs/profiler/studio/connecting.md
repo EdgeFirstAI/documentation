@@ -11,7 +11,7 @@ edgefirst-profiler login
 The login command prompts for **server**, **username**, and **password** in turn. Server values:
 
 | Value | URL |
-|---|---|
+| ----- | --- |
 | `saas` _(default)_ | `https://edgefirst.studio` |
 | `stage` | `https://stage.edgefirst.studio` |
 | `test` | `https://test.edgefirst.studio` |

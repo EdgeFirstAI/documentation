@@ -13,7 +13,7 @@ navigation after opening the datasets list.
 ## Map Controls
 
 | Control | Description |
-|---|---|
+| ------- | ----------- |
 | **+** / **–** buttons | Zoom in and out on the map. |
 | **Filter** | Open the filter panel to narrow which datasets are shown on the map. |
 | **Source Dataset** selector | Choose which specific dataset's GPS points are displayed on the map. |

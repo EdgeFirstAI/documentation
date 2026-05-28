@@ -9,7 +9,7 @@ This page explains the conceptual model, the `--pipeline-depth` flag that contro
 Every frame travels through the same sequence of stages, in order:
 
 | Stage | Hardware | What it does |
-|---|---|---|
+| ----- | -------- | ------------ |
 | **decode** | CPU (libjpeg / hardware codec) | Read the encoded image file, decode to pixels |
 | **preprocess** | CPU + DMA | Resize, color-convert, quantize into the input tensor |
 | **inference** | NPU / GPU / CPU | Run the model |
@@ -47,7 +47,7 @@ Default depth is 2. Higher depths give more overlap headroom (useful when stage 
 Each inference backend has a maximum pipeline depth determined by how many concurrent inference clients the hardware can serve. The profiler clamps `--pipeline-depth` to that maximum at startup:
 
 | Backend | Default max depth |
-|---|---:|
+| ------- | ----------------: |
 | ONNX Runtime (CPU / CUDA / CoreML) | 2 |
 | TFLite XNNPACK | 2 |
 | TFLite Neutron (i.MX 95) | 2 |

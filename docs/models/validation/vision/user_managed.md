@@ -11,14 +11,14 @@ For an alternative cloud-only flow, see [On Cloud Validation](managed.md). The m
 Both paths produce the same Studio validation session and the same set of accuracy charts. The difference is **where the validation session is created**:
 
 | If you... | Read |
-|---|---|
+| --------- | ---- |
 | Want to create the session in the Studio web UI, then run the profiler on the device | [Validation from Studio](../../../profiler/studio/from_studio.md) |
 | Want to browse training sessions inside the profiler TUI and create the session in place | [Validation from the Profiler](../../../profiler/studio/from_profiler.md) |
 
 ## Installation and connection
 
 | Topic | Read |
-|---|---|
+| ----- | ---- |
 | Install the profiler on the target board | [Installation guides](../../../profiler/installation/index.md) (per target) |
 | Sign in to EdgeFirst Studio | [Connecting to EdgeFirst Studio](../../../profiler/studio/connecting.md) |
 | Five-minute first profiling run | [Quick Start](../../../profiler/quickstart.md) |

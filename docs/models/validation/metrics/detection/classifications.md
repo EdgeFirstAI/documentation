@@ -1,6 +1,6 @@
 # Object Detection Classifications
 
-This section provides a closer look into how EdgeFirst Validator classifies the detections into true positives, false positives, and false negatives that allow computation of the deployment metrics for object detection.  For a complete set of rules being followed to classify detections please see [Matching and Classification Rules](matching.md).
+This section provides a closer look into how EdgeFirst Studio classifies the detections into true positives, false positives, and false negatives that allow computation of the deployment metrics for object detection.  For a complete set of rules being followed to classify detections please see [Matching and Classification Rules](matching.md).
 
 ## Definitions
 
@@ -45,7 +45,7 @@ Model detections will be classified using the confusion matrix.
 This section will show examples of each of the classifications described above.  For the cases below, the blue bounding box represents the ground truth and the red or the green bounding boxes represents the model detections.  Green represents a true positive detection whereas red represents a false positive detection.  The detection labels include the label, the confidence score denoted as a percentage, and the IoU score normalized between 0 and 1.  Localization false positive detections will be denoted with the label 'LOC' and then the detection label and the confidence score.  Classification false positive detections will be denoted with the label 'CLF' and then the detection label, confidence score, and IoU.
 
 !!! note
-    The image samples below are now deprecated in terms of the labeling format: "Extra" is now denoted as "LOC" and a misclassification includes a "CLF" (seen in EdgeFirst Validator 3.0.9 and higher).
+    The image samples below are now deprecated in terms of the labeling format: "Extra" is now denoted as "LOC" and a misclassification includes a "CLF".
 
 {{ figure("../../../assets/metrics/classification_1.png", "Example 1") }}
 
@@ -63,4 +63,4 @@ This section will show examples of each of the classifications described above. 
 
 ## Conclusion
 
-This page has described how EdgeFirst Validator classifies predictions into true positives, false positives (classification and localization), and false negatives. 
+This page has described how EdgeFirst Studio classifies predictions into true positives, false positives (classification and localization), and false negatives. 

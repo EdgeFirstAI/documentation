@@ -1,0 +1,21 @@
+nav:
+  - index.md
+  - Quick Start: quickstart.md
+  - Concepts:
+    - Pipelining: concepts/pipelining.md
+  - Installation:
+    - installation/index.md
+    - Linux: installation/linux.md
+    - macOS: installation/macos.md
+    - Windows: installation/windows.md
+    - NVIDIA Jetson Orin: installation/jetson_orin.md
+    - NXP i.MX 95: installation/imx95.md
+    - NXP i.MX 8M Plus: installation/imx8mplus.md
+    - Raspberry Pi 5: installation/raspberrypi.md
+    - Kinara Ara-2: installation/kinara.md
+    - Hailo-8 / 8L: installation/hailo.md
+  - EdgeFirst Studio Integration:
+    - studio/index.md
+    - Connecting to Studio: studio/connecting.md
+    - Validation from Studio: studio/from_studio.md
+    - Validation from the Profiler: studio/from_profiler.md

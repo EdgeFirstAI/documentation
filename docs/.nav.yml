@@ -50,6 +50,7 @@ nav:
       - 3D/training.md
       - 3D/validation.md
       - 3D/deployment.md
+  - Profiler: profiler
   - Datasets:
     - datasets/index.md
     - Dataset Zoo:

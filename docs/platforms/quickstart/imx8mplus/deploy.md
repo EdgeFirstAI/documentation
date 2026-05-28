@@ -19,11 +19,11 @@ You can deploy your model using Studio Runner - a Python implementation that dem
     # pip install --upgrade pip
     ```
 
-5. Install the Studio Runner wheel and the [EdgeFirst-Validator](https://pypi.org/project/edgefirst-validator/) dependency
+5. Install the Studio Runner wheel; also install the [EdgeFirst Profiler](../../../profiler/index.md) for on-target validation alongside it
 
     ```shell
     # pip install studio_runner_py-0.0.0-py3-none-any.whl
-    # pip install edgefirst-validator --no-deps
+    # pip install edgefirst-profiler
     ```
 
 6. Run the program on target

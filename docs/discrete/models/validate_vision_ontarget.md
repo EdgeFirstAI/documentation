@@ -18,11 +18,11 @@ The validation session card will appear like the following below.  Each session 
 
 {{ figure("/models/assets/validation/user-managed-vision-session-id.jpg", "Validation Session ID") }}
 
-Once the validation session has been created, [SSH](../../platforms/networking/ssh.md) into the platform and install the following dependencies.
+Once the validation session has been created, [SSH](../../platforms/networking/ssh.md) into the platform and install the [EdgeFirst Profiler](../../profiler/index.md).
 
 !!! warning "Virtual Environment"
-    If you don't have a virtual environment already setup, please follow these steps below.
-    
+    If you do not have a virtual environment already set up, please follow these steps below.
+
     To avoid re-installation of existing system packages, we recommend setting up a [Python virtual environment](https://docs.python.org/3/library/venv.html#creating-virtual-environments) prior to running the pip installations below.  Append `--system-site-packages` when creating the environment to include existing packages in the system.  For example:
 
     * Linux `python3 -m venv /path/to/myenv --system-site-packages`
@@ -34,26 +34,34 @@ Once the validation session has been created, [SSH](../../platforms/networking/s
     * Windows: `/path/to/myenv/Scripts/activate`
 
 ```shell
-$ pip install edgefirst-validator
+$ pip install edgefirst-profiler
 ```
 
-Next login to your account in EdgeFirst Studio by using the [EdgeFirst Client](../../perception/studio.md) which comes installed with the validator package. The command below will prompt you to enter your EdgeFirst Studio credentials.
+See [Installation](../../profiler/installation/index.md) for platform installer alternatives and per-target dependencies.
+
+Next sign in to EdgeFirst Studio. The profiler stores the credentials and refreshes them automatically while you are using it.
 
 ```shell
-$ edgefirst-client login
+$ edgefirst-profiler login
 ```
 
-Once the validator is installed and authenticated, run validation using the following command.  Replace the session ID specific to your session card.
+Run validation against the session ID from the session card:
 
 ```shell
-$ edgefirst-validator --session-id v-1b51
+$ edgefirst-profiler validate --session-id v-1b51
 ```
 
-If the model already exists in your system, you can run this command `edgefirst-validator /path/to/mymodel.tflite --session-id v-1b51`.  Otherwise, the model will be downloaded as an artifact from the EdgeFirst Studio training session.
+The profiler downloads the model artifact and dataset partition, runs the pipeline on the target, and uploads the predictions and trace back to Studio when the run completes.
 
-Once entered, the following validation progress should now be indicated in EdgeFirst Studio as shown below.
+If the model already lives on disk and you want to skip the download, pass `--model` alongside the session ID:
 
-{{ figure("/models/assets/validation/user-managed-vision-session-progress.jpg", "Validation Session") }}
+```shell
+$ edgefirst-profiler validate --session-id v-1b51 --model /path/to/mymodel.tflite
+```
+
+Once the run is underway, the session card in Studio updates with progress.
+
+{{ figure("/models/assets/validation/user-managed-vision-session-progress.jpg", "EdgeFirst Studio — session card showing progress during a running validation") }}
 
 The completed session will look as follows with the status set to "Complete".
 

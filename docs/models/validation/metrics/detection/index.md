@@ -248,7 +248,7 @@ This accuracy metric provides a better representation of the overall model perfo
 
 ## Precision versus Recall
 
-According to Mariescu-Istodor and Fränti (2023), “The performance is a trade-off between precision and recall. Recall can be increased by lowering the selection threshold to provide more predictions at the cost of decreased precision.”  In EdgeFirst Validator, this selection threshold corresponds to the score threshold used in Non-Maximum Suppression (NMS), which filters detections based on their confidence scores.
+According to Mariescu-Istodor and Fränti (2023), “The performance is a trade-off between precision and recall. Recall can be increased by lowering the selection threshold to provide more predictions at the cost of decreased precision.”  In EdgeFirst Studio, this selection threshold corresponds to the score threshold used in Non-Maximum Suppression (NMS), which filters detections based on their confidence scores.
 
 Lowering the score threshold allows more detections to pass through, increasing the likelihood of identifying ground truth objects (higher recall), but also introducing more incorrect predictions (lower precision). Increasing the threshold has the opposite effect: it filters out more detections, improving precision while potentially missing true objects and reducing recall.
 
@@ -268,11 +268,11 @@ $$
 \text{recall} = \frac{\text{TP}}{\text{TP} + \text{FN}} = \frac{\text{TP}}{\text{all ground truths}}
 $$
 
-However, on the account of the [EdgeFirst Validator's method of classifying detections](matching.md) where false positives are further categorized into localization and classification false positives, then **the total number of detections is really the sum of true positives, classification false positives, and localization false positives**.  **The total number of ground truths is the sum of true positives, false negatives, and classification false positives** as shown in the resulting image below.
+However, on the account of the [EdgeFirst Studio's method of classifying detections](matching.md) where false positives are further categorized into localization and classification false positives, then **the total number of detections is really the sum of true positives, classification false positives, and localization false positives**.  **The total number of ground truths is the sum of true positives, false negatives, and classification false positives** as shown in the resulting image below.
 
 {{ figure("../../../assets/metrics/tp_fp_fn_claim.png", "playing_cards_v7; 000000000027.png") }}
 
-In this image there are two true positives (green), one false negative (blue), one classification false positive (red), and four ground truth objects (blue).  To agree with the definition of recall being the fraction of all correct detections over all ground truths, the number ground truth becomes the sum of true positives, false negatives, and classification false positives.  The formulas are thus adjusted in the following way which is implemented in EdgeFirst Validator.  
+In this image there are two true positives (green), one false negative (blue), one classification false positive (red), and four ground truth objects (blue).  To agree with the definition of recall being the fraction of all correct detections over all ground truths, the number ground truth becomes the sum of true positives, false negatives, and classification false positives.  The formulas are thus adjusted in the following way which is implemented in EdgeFirst Studio.  
 
 $$
 \text{precision} = \frac{\text{TP}}{\text{TP} + \text{FP}_{\text{all}}} = \frac{\text{TP}}{\text{all predictions}}
@@ -706,7 +706,7 @@ The final calculated Deployment Metrics for this sample are as follows:
 
 ## Further Reading
 
-This page has described the object detection metrics reported by EdgeFirst Validator.  To better understand the rules set for matching model predictions to ground truth and classifying predictions into true positives, false positives, and false negatives see [Matching and Classification Rules](matching.md).
+This page has described the object detection metrics reported by EdgeFirst Studio.  To better understand the rules set for matching model predictions to ground truth and classifying predictions into true positives, false positives, and false negatives see [Matching and Classification Rules](matching.md).
 
 ## References
 

@@ -37,7 +37,7 @@ EdgeFirst models from the [Model Zoo](index.md) (including [ModelPack](modelpack
 | [Ultralytics](ultralytics/index.md) | `ultralytics` | Anchor-free DFL (YOLOv5/v8/v11/v26) | Instance segmentation, detection |
 
 !!! note
-    These metadata fields are automatically read and handled by [`edgefirst-validator`](validation/vision/user_managed.md) and the [EdgeFirst Perception Middleware](../perception/index.md). In most cases, developers don't need to worry about these details — the EdgeFirst ecosystem "Just Works." This documentation exists so developers understand what's happening under the hood when needed.
+    These metadata fields are automatically read and handled by the [EdgeFirst Profiler](../profiler/index.md) and the [EdgeFirst Perception Middleware](../perception/index.md). In most cases, developers don't need to worry about these details — the EdgeFirst ecosystem "Just Works." This documentation exists so developers understand what's happening under the hood when needed.
 
 ---
 
@@ -522,7 +522,7 @@ The presence of a `decoder` field on a logical output signals that post-processi
 
 Semantic and decode fields live on the **logical output** and apply to all children. Physical children carry only tensor-level fields.
 
-**Root-level only:** `decoder_version`, `nms` (HAL NMS mode). These describe model-wide behaviour and never appear inside an `outputs[]` entry.
+**Root-level only:** `decoder_version`, `nms` (HAL NMS mode). These describe model-wide behavior and never appear inside an `outputs[]` entry.
 
 **Logical output only:** `decoder`, `encoding`, `score_format`, `normalized`, `anchors`
 
@@ -809,7 +809,7 @@ The `validation` section records the recommended settings based on how the model
     This document uses `nms` at two levels with different semantics:
 
     - **`validation.nms`** (this section) — selects the NMS *implementation* (`hal`, `numpy`, `tensorflow`, `torch`) or `none` for models with embedded NMS.
-    - **root-level `nms`** (see [HAL NMS Field](#hal-nms-field)) — selects HAL decoder *behaviour* (`class_agnostic` vs `class_aware`).
+    - **root-level `nms`** (see [HAL NMS Field](#hal-nms-field)) — selects HAL decoder *behavior* (`class_agnostic` vs `class_aware`).
 
     The two fields are independent and can coexist. Keep the distinction in mind when reading the rest of this section.
 
@@ -1025,7 +1025,7 @@ nms: class_aware       # Only suppress boxes with the same class label
 !!! warning "Two distinct `nms` fields"
     This document uses `nms` at two levels with different semantics:
 
-    - **Root-level `nms`** (this field) — HAL decoder *behaviour*: `class_agnostic` vs `class_aware`.
+    - **Root-level `nms`** (this field) — HAL decoder *behavior*: `class_agnostic` vs `class_aware`.
     - **`validation.nms`** (see [Validation Parameters](#validation-parameters)) — NMS *implementation*: `hal`, `numpy`, `tensorflow`, `torch`, or `none`.
 
     The two fields are independent and can coexist.
@@ -2431,7 +2431,7 @@ All models: 3 scales, strides [8, 16, 32], 8400 spatial positions at 640px input
 3. [Ultralytics Integration](ultralytics/index.md) - YOLOv8/v11/v26 training and deployment
 4. [Training Vision Models](training/vision.md) - Step-by-step training workflow
 5. [On Cloud Validation](validation/vision/managed.md) - Managed validation sessions
-6. [On Target Validation](validation/vision/user_managed.md) - User-managed validation with `edgefirst-validator`
+6. [On Target Validation](validation/vision/user_managed.md) - User-managed validation with the EdgeFirst Profiler
 7. [Model Quantization](conversion/tflite.md) - Converting ONNX to quantized TFLite
 8. [Deploying to Embedded Targets](deployment/launcher.md) - Model deployment workflow
 9. [EdgeFirst Perception Middleware](../perception/index.md) - Runtime inference stack

@@ -32,6 +32,7 @@ flowchart LR
     imx95_user([i.MX 95]):::teal 
     orin_user([Jetson Orin]):::purple 
     pi_user([Raspberry Pi 5]):::coral
+    profiler_user([Profiler]):::gold
     other_platforms[Other Platforms]
 
     classDef yellow fill:#fff2a8,font-weight:bold;
@@ -44,6 +45,7 @@ flowchart LR
     classDef green fill:#a9e5bb,font-weight:bold;
     classDef purple fill:#d6c1f5,font-weight:bold;
     classDef coral fill:#ffc2bb,font-weight:bold;
+    classDef gold fill:#ffe066,font-weight:bold;
     classDef all fill:#f0e6f5,font-weight:bold;
 
     %% Flowchart
@@ -54,7 +56,9 @@ flowchart LR
     record -- No --> annotate_pd
     annotate_pd -- Yes --> tourist_plus
     annotate_pd -- No --> tourist
-    edgefirst_platform -- Yes --> raivin_platform 
+    edgefirst_platform -- Yes --> uses_profiler{Uses EdgeFirst Profiler?}
+    uses_profiler -- Yes --> profiler_user
+    uses_profiler -- No --> raivin_platform
     edgefirst_platform -- No --> other_platforms
     other_platforms --> imx8mp_user
     other_platforms --> imx95_user
@@ -67,22 +71,23 @@ flowchart LR
 ```
 
 !!! warning "PC Requirement"
-    It is expected that for all personas identified above, the user has a PC with Wifi access.
+    It is expected that for all personas identified above, the user has a PC with Wi-Fi access.
 
-We've identified ten workflows: Tourist, Tourist+, Web, i.MX 8M Plus, i.MX 95, Jetson Orin, Raspberry Pi 5, Maivin, Raivin, LiDAR.  The hardware requirements and the available features increases starting with the Tourist as the most basic.
+We've identified eleven workflows: Tourist, Tourist+, Web, Profiler, i.MX 8M Plus, i.MX 95, Jetson Orin, Raspberry Pi 5, Maivin, Raivin, LiDAR.  The hardware requirements and the available features increases starting with the Tourist as the most basic.
 
-| Persona                        | Hardware             | Features                                                               | Cost |
-|--------------------------------|----------------------|------------------------------------------------------------------------|------|
-| [Tourist](tourist.md)          | PC                   | Copy Dataset, Train, Validate, Deploy Offline or Browser               | TBA  |
-| [Tourist+](tourist_plus.md)    | PC                   | Annotate 2D, Train, Validate, Deploy Offline or Browser                | TBA  |
-| [Web](web.md)                  | PC + Smartphone      | Record, Annotate 2D, Train, Validate, Deploy Offline or Browser        | TBA  |
-| i.MX 8M Plus (*coming soon*)   | PC + i.MX 8M Plus    | Copy Dataset, Train, Validate, Deploy on i.MX 8M Plus                  | TBA  |
-| i.MX 95 (*coming soon*)        | PC + i.MX 95         | Copy Dataset, Train, Validate, Deploy on i.MX 95                       | TBA  |
-| [Jetson Orin](jetson.md)       | PC + Jetson Orin     | Copy Dataset, Train, Validate, Deploy on Jetson Orin                   | TBA  |
-| Raspberry Pi 5 (*coming soon*) | PC + Raspberry Pi 5  | Copy Dataset, Train, Validate, Deploy on Raspberry Pi 5                | TBA  |
-| [Maivin](maivin.md)            | PC + Maivin          | Record, Annotate 2D, Train, Validate, Deploy on Maivin                 | TBA  |
-| [Raivin](raivin.md)            | PC + Raivin w/ Radar | Record, Annotate 2D + 3D, Train, Validate, Deploy on Raivin            | TBA  |
-| LiDAR (*coming soon*)          | PC + Raivin w/ LiDAR | Record, Annotate 2D + 3D (enhanced), Train, Validate, Deploy on Raivin | TBA  |
+| Persona | Hardware | Features | Cost |
+|---------|----------|----------|------|
+| [Tourist](tourist.md) | PC | Copy Dataset, Train, Validate, Deploy Offline or Browser | TBA |
+| [Tourist+](tourist_plus.md) | PC | Annotate 2D, Train, Validate, Deploy Offline or Browser | TBA |
+| [Web](web.md) | PC + Smartphone | Record, Annotate 2D, Train, Validate, Deploy Offline or Browser | TBA |
+| [i.MX 8M Plus](imx8mp.md) | PC + i.MX 8M Plus | Copy Dataset, Train, Validate, Deploy on i.MX 8M Plus | TBA |
+| i.MX 95 (*coming soon*) | PC + i.MX 95 | Copy Dataset, Train, Validate, Deploy on i.MX 95 | TBA |
+| [Jetson Orin](jetson.md) | PC + Jetson Orin | Copy Dataset, Train, Validate, Deploy on Jetson Orin | TBA |
+| Raspberry Pi 5 (*coming soon*) | PC + Raspberry Pi 5 | Copy Dataset, Train, Validate, Deploy on Raspberry Pi 5 | TBA |
+| [Maivin](maivin.md) | PC + Maivin | Record, Annotate 2D, Train, Validate, Deploy on Maivin | TBA |
+| [Raivin](raivin.md) | PC + Raivin w/ Radar | Record, Annotate 2D + 3D, Train, Validate, Deploy on Raivin | TBA |
+| LiDAR (*coming soon*) | PC + Raivin w/ LiDAR | Record, Annotate 2D + 3D (enhanced), Train, Validate, Deploy on Raivin | TBA |
+| Profiler (*coming soon*) | PC + EdgeFirst Target Device | Train (all architectures & sizes), Configure all training parameters, On-Cloud & On-Target Validate, Profile Inference, Benchmark | TBA |
 
 ## User Journey
 
@@ -112,6 +117,8 @@ flowchart LR
 
     raivin_lidar_user([Raivin + LiDAR]):::darker_orange
     imx8mp_user([i.MX 8M Plus]):::green
+    click imx8mp_user "imx8mp" "Open i.MX 8M Plus Workflow"
+
     imx95_user([i.MX 95]):::teal
 
     orin_user([Jetson Orin]):::purple
@@ -290,27 +297,41 @@ flowchart LR
 
 1. [Tourist Workflow](tourist.md)
 
-    This workflow is intended for users with a personal computer with access to Wifi that want to use the sample datasets available for training, validating, and deploying Vision models.
+    This workflow is intended for users with a personal computer with access to Wi-Fi that want to use the sample datasets available for training, validating, and deploying Vision models.
 
 2. [Tourist Plus Workflow](tourist_plus.md)
 
-    This workflow is intended for users with a personal computer with access to Wifi that want to use the same datasets available for annotating, training, validating, and deploying Vision models.
+    This workflow is intended for users with a personal computer with access to Wi-Fi that want to use the same datasets available for annotating, training, validating, and deploying Vision models.
 
 3. [Web Workflow](web.md)
 
-    This workflow is intended for users with a personal computer and a mobile device with a camera with access to Wifi and a web browser.  The examples shown in this workflow will be from a Windows computer and an Android phone for recording images.  Proceed to this workflow to see capturing and annotating datasets that will be used to train, validate, and deploy Vision models.
+    This workflow is intended for users with a personal computer and a mobile device with a camera with access to Wi-Fi and a web browser.  The examples shown in this workflow will be from a Windows computer and an Android phone for recording images.  Proceed to this workflow to see capturing and annotating datasets that will be used to train, validate, and deploy Vision models.
 
-4. [Jetson Orin Workflow](jetson.md)
+4. [Maivin Workflow](maivin.md)
 
-    This workflow is intended for users with a personal computer with access to Wifi and a web browser and a [Jetson Orin Super Nano](https://www.nvidia.com/en-us/autonomous-machines/embedded-systems/jetson-orin/nano-super-developer-kit/) platform. To proceed to this workflow, click on the link above.
+    This workflow is intended for users with a personal computer with access to Wi-Fi and a web browser and a Maivin platform.  To proceed to this workflow, click on the link above.
 
-5. [Maivin Workflow](maivin.md)
+5. [Raivin Workflow](raivin.md)
 
-    This workflow is intended for users with a personal computer with access to Wifi and a web browser and a Maivin platform.  To proceed to this workflow, click on the link above.
+    This workflow is intended for users with a personal computer with access to Wi-Fi and a web browser and a Raivin platform.  To proceed to this workflow, click on the link above.
 
-6. [Raivin Workflow](raivin.md)
+6. [Jetson Orin Workflow](jetson.md)
 
-    This workflow is intended for users with a personal computer with access to Wifi and a web browser and a Raivin platform.  To proceed to this workflow, click on the link above.
+    This workflow is intended for users with a personal computer with access to Wi-Fi and a web browser and a [Jetson Orin Super Nano](https://www.nvidia.com/en-us/autonomous-machines/embedded-systems/jetson-orin/nano-super-developer-kit/) platform.  To proceed to this workflow, click on the link above.
+
+7. [i.MX 8M Plus Workflow](imx8mp.md)
+
+    This workflow is intended for users with a personal computer with access to Wi-Fi and a web browser and a [i.MX 8M Plus EVK](https://www.nxp.com/products/i.MX8MPLUS).  To proceed to this workflow, click on the link above.
+
+7. Profiler Workflow *(coming soon)*
+
+    This workflow is intended for users with a personal computer and any EdgeFirst-supported target device who want to go beyond basic training and validation. The Profiler persona covers:
+
+    - Training all supported architectures and sizes: ModelPack (Nano, Small, Medium, Large), and Ultralytics YOLOv5 / YOLOv8 / YOLO11 / YOLO26 (Nano through Medium), both Detection and Segmentation tasks.
+    - Configuring all available training parameters: trainer type, input resolution, camera adaptor, model backbone, activation function, interpolation, object detection / segmentation tasks, Space-to-Depth, Split Decoder, epochs, batch size, data augmentation, and INT8 calibration.
+    - Running on-cloud managed validation for all trained architectures.
+    - Installing and using the [EdgeFirst Profiler](../../profiler/quickstart.md) CLI tool to validate and profile models on-target.
+    - Publishing profiling results to EdgeFirst Studio and comparing accuracy and latency benchmarks against the [EdgeFirst Model Zoo on Hugging Face](https://huggingface.co/EdgeFirstAI).
 
 !!! note "Future Work"
 

@@ -1,5 +1,5 @@
 !!! warning "Data Usage"
-    It is recommended to use a phone connected to a Wifi network. A device connected to mobile data might be subject to intense usage when uploading files; video files or image files can be large in size. In the examples below, the video file used was ~15MB and the image files were ~2MB each.
+    It is recommended to use a phone connected to a Wi-Fi network. A device connected to mobile data might be subject to intense usage when uploading files; video files or image files can be large in size. In the examples below, the video file used was ~15MB and the image files were ~2MB each.
 
 # Record Video
 

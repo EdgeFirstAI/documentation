@@ -1,42 +1,90 @@
-# TensorRT Converter
+Conversion has two stages: EdgeFirst Studio packages the ONNX model and supporting files into a portable `.tensorrt.zip` bundle, and then `build.sh` runs on the target Jetson to compile the engine. The bundle itself is portable across machines; the resulting `.engine` is hardware-specific and must be built on (or for) the device that will run it.
 
-The **TensorRT Converter** prepares an ONNX model exported from an EdgeFirst Studio training session for deployment on **NVIDIA Jetson** devices. It is the only EdgeFirst Converter App that produces a portable bundle rather than a deployment-ready binary: the cloud-side job packages the ONNX model with a `build.sh` script, and the user runs that script on the target Jetson, where `trtexec` compiles the final `.engine` against the exact OS, JetPack, CUDA, and TensorRT versions present on the device.
+!!! info "Native cross-compilation support"
 
-This design is forced by TensorRT's binary contract: TensorRT 10.3 engine binaries are platform-locked at the OS and ABI level. An engine built on AWS Batch (x86-64) is rejected by the Jetson aarch64 TRT runtime with a "platform tag mismatch" error, even when the GPU compute capabilities match. NVIDIA's own DeepStream / TAO workflow defers the engine build to the target device for the same reason; the TensorRT Converter follows that pattern.
+    Native cross-compilation of TensorRT engines is in progress and will eliminate the second on-device build stage when available.
 
-## Studio Launch Form
+1. Click on the completed training session.
 
-The TensorRT Converter exposes **no conversion knobs** in EdgeFirst Studio — there is no `conversion` group on the launch form. You pick the training session and click **Start App**; the form includes an informational note explaining that the output is a portable bundle requiring an on-device build step.
+    {{ figure("/models/assets/training/vision-view-train-details.jpg", "Completed Training Session") }}
 
-The only effective user choice happens later on the Jetson itself: `./build.sh fp16` (the default and recommended setting) or `./build.sh fp32` (for debugging — larger and slower). That choice is made when running the bundle's build script on the target device.
+2. Navigate to the **Artifacts** tab and click the **TensorRT Converter** button under **Converters** on the right.
 
-## What You Get
+    {{ figure("/models/assets/conversion/tensorrt-converter-button.jpg", "TensorRT Converter") }}
 
-A `.tensorrt.zip` archive containing:
+3. Click **Start App** to begin the conversion. The launch form has no settings — the output is a portable bundle, not a final engine.
 
-- `model.onnx` — the optimized ONNX graph (`onnxsim` + `onnx-graphsurgeon` constant-fold pass applied).
-- `edgefirst.json` — the [EdgeFirst metadata](/models/metadata/), in schema v2 form.
-- `labels.txt` — class labels.
-- `build.sh` — the on-target compilation script.
-- `README.md` — per-bundle deployment instructions.
+    {{ figure("/models/assets/conversion/tensorrt-converter-options.jpg", "TensorRT Converter Options") }}
 
-After running the on-device build, the final artifact is a sealed `.fp16.engine` (or `.fp32.engine`) with `edgefirst.json` and `labels.txt` ZIP-appended. The on-device build also injects per-build values into `edgefirst.json` — engine SHA-256, build timestamp, on-device TensorRT version, builder flags — so deployed engines remain fully traceable back to their Studio training session.
+4. Download the resulting `<model>.tensorrt.zip` bundle from the session's **Artifacts** tab.
 
-## Smart Quantization on Jetson
+    {{ figure("/models/assets/conversion/tensorrt-converter-bundle.jpg", "TensorRT Converter Bundle") }}
 
-[Smart Quantization](/models/conversion/#smart-quantization) does not apply here. Jetson is an **FP16** target — NVIDIA Jetson Orin GPUs have native FP16 CUDA cores that deliver near-INT8 throughput at near-FP32 accuracy. There is no INT8 quantization step to defeat, and therefore no shared-INT8-scale problem to solve. The compiled [`outputs[]`](/models/metadata/#output-specification) faithfully reflects whatever the trainer's ONNX produced; the runtime decoder takes the FP16 outputs straight to NMS.
+5. Copy the bundle to the Jetson via [SCP](https://en.wikipedia.org/wiki/Secure_copy_protocol):
 
-INT8 on Jetson via the TRT INT8 calibration path is a future direction. It is not implemented today; the converter does not consume calibration data and the bundle does not include calibration support.
+    ```shell
+    $ scp <model>.tensorrt.zip username@hostname:~/
+    ```
 
-## Converting Your Model
+6. On the Jetson, unzip the bundle into a folder:
 
-{% include-markdown "discrete/models/onnx_to_tensorrt.md" heading-offset=0 %}
+    ```shell
+    $ unzip -d <model>/ <model>.tensorrt.zip
+    ```
 
-## Supported Targets
+7. Enter the extracted folder:
 
-The TensorRT Converter is currently validated on the **Jetson Orin Nano Super 8GB** with **JetPack 6.2** (TensorRT 10.3.0.30, CUDA 12.6.68, compute capability SM 8.7). Other Jetson variants (Orin Nano 4GB, Orin NX, AGX Orin) are in progress pending hardware validation.
+    ```shell
+    $ cd <model>/
+    ```
 
-## Known Limitations
+    !!! note "Prerequisites"
 
-- **INT8 is not currently supported.** TensorRT 10.3's fused Conv+SiLU operator used in YOLO heads has no INT8 implementation in this release, even with FP16 fallback. INT8 on Jetson is tracked as future work.
-- **Engines are device-specific.** A `.fp16.engine` built on one Jetson cannot be moved to a different Jetson variant or a different JetPack release; the engine must be rebuilt from the bundle on each target.
+        Steps a and b ensure the required binaries are on `PATH`. Steps c and d authenticate the `--publish` upload to EdgeFirst Studio.
+
+        1. Ensure the `trtexec` binary is on `PATH`:
+
+            ```shell
+            $ export PATH=$PATH:/usr/src/tensorrt/bin
+            ```
+
+        2. Ensure `jq` is installed:
+
+            ```shell
+            $ sudo apt install -y jq
+            ```
+
+        3. Install the [edgefirst-client](../../perception/studio.md) package:
+
+            ```shell
+            $ pip3 install edgefirst-client
+            ```
+
+        4. Log in to EdgeFirst Studio:
+
+            ```shell
+            $ edgefirst-client login
+            ```
+
+8. Compile the bundle into a TensorRT engine with `--publish` to push the sealed artifact back to EdgeFirst Studio.
+
+    Run the build:
+
+    ```shell
+    $ ./build.sh fp16 --publish
+    ```
+
+    The script verifies `trtexec`, `jq`, and `python3` are on `PATH` (all default on JetPack 6.2), then:
+
+    1. Calls `trtexec --onnx=model.onnx --fp16 --saveEngine=<name>.fp16.engine`.
+    2. Updates `edgefirst.json` with on-target build values via `jq` (precision, engine `sha256`, build timestamp, on-device TRT version, builder flags).
+    3. ZIP-appends `edgefirst.json` and `labels.txt` to the engine using Python's `zipfile` module.
+    4. If `--publish` is set, uploads the sealed engine to Studio via `edgefirst-client upload-artifact`. See the [edgefirst-client](../../perception/studio.md) page for more.
+
+    The output is a sealed `.fp16.engine` with metadata readable by any ZIP reader; the TensorRT deserializer ignores trailing bytes.
+
+9. The compiled `<model>.fp16.engine` is now ready to deploy. The artifact is also available in the Studio session for re-download to other compatible devices. Verify the engine loads successfully with:
+
+    ```shell
+    $ trtexec --loadEngine=<model>.fp16.engine --iterations=100
+    ```

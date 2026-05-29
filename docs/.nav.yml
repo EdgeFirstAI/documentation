@@ -16,6 +16,7 @@ nav:
       - getting_started/workflows/web.md
       - getting_started/workflows/maivin.md
       - getting_started/workflows/raivin.md
+      - getting_started/workflows/imx8mp.md
       - getting_started/workflows/jetson.md
   - Studio:
     - studio/index.md

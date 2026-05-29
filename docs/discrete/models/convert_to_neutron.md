@@ -23,7 +23,16 @@ The launch form has two field groups: an **upstream** group plumbed through to t
 | `target` | `imx95` / `imx943` / `imx952` / `s32n79` / `mcxn54x` / `mcxn94x` / `imxrt700` / `s32k5` | `imx95` | Target Neutron silicon. |
 | `optimization_level` | `OFast` / `OOpt` | `OFast` | `OFast` uses a heuristic scheduler (fast). `OOpt` uses an exact constraint solver (slower, marginally better schedule; on very large models the solver may time out and the conversion fails — re-run with `OFast` if that happens). |
 | `force_determinism` | `false` / `true` | `false` | Disables multi-threading inside the NXP binary so the compiled output is byte-identical across runs. Useful for CI reproducibility; significantly slower compile time. |
-| `enable_profiling` | `false` / `true` | `false` | Emits a per-operation NPU timing table alongside the compiled model. Adds ~5% inference overhead at runtime. |
+| `enable_profiling` | `false` / `true` | `false` | Emits per-operation NPU timing instrumentation alongside the compiled model. Requires Neutron drivers **≥ 3.0.1** on the target to produce op-level profiling data. Adds ~5% inference overhead at runtime. |
+
+!!! info "Op-level Neutron profiling requirements"
+
+    Per-operation NPU timing (each kernel appears as its own slice in the Studio trace viewer) requires **both**:
+
+    1. The model compiled with `enable_profiling: true` in the Neutron Converter.
+    2. **Neutron drivers ≥ 3.0.1** installed on the target — shipped as part of the [eIQ Neutron SDK](https://www.nxp.com/design/design-center/software/eiq-ai-development-environment/eiq-toolkit-for-end-to-end-model-development-and-deployment:EIQ-TOOLKIT).
+
+    The profiler still functions with older 2.x Neutron drivers, but will not report per-operation NPU timing — only aggregate inference time is available in that configuration.
 
 ## Target Silicon
 

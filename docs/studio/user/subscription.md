@@ -30,7 +30,7 @@ and annual billing.  Annual billing reduces the effective monthly cost.
 EdgeFirst Studio offers the following subscription tiers:
 
 | Feature | Free (Public) | Professional ($179/month) | Teams ($359/month) |
-|---|---|---|---|
+| ------- | ------------- | ------------------------- | ------------------ |
 | Active Users | 1 | 1 | 20 |
 | Image Storage | 100K | 500K | 4M |
 | Projects | 3 | 10 | 30 |

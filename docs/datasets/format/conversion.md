@@ -139,7 +139,7 @@ result = duckdb.sql("""
 ### Column Name Mapping
 
 | Arrow / Parquet column | JSON field | Notes |
-|------------------------|------------|-------|
+| ---------------------- | ---------- | ----- |
 | `label` | `label_name` | Historical naming difference |
 | `group` | `group_name` | Historical naming difference |
 | `object_id` | `object_id` | 2026.04 uses `object_id` (not legacy `object_reference`) |
@@ -237,7 +237,7 @@ df.write_ipc("annotations.arrow")       # Arrow IPC
 ### Key Conversions Summary
 
 | # | Conversion | Direction |
-|---|------------|-----------|
+| --- | ---------- | --------- |
 | 1 | **Unnest**: one row per annotation | JSON to DataFrame |
 | 2 | **Column names**: `label_name` to `label`, `group_name` to `group` | JSON to DataFrame |
 | 3 | **Polygon**: `[[x,y],...]` point pairs to `[x,y,x,y,...]` interleaved | JSON to DataFrame |

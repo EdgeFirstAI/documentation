@@ -38,7 +38,7 @@ edgefirst-profiler --version
 The profiler picks a TFLite delegate automatically — and you can override it on the validation session if needed. Delegate values:
 
 | Value | Behavior |
-|---|---|
+| ----- | -------- |
 | _(omitted)_ / `auto` | Probe well-known NPU paths (`/usr/lib/libneutron_delegate.so`, `/usr/lib/libvx_delegate.so`); fall back to XNNPACK. |
 | `xnnpack` | Explicit XNNPACK CPU delegate. |
 | `none` / `cpu` | No delegate — reference kernels. |

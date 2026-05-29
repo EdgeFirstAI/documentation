@@ -16,7 +16,7 @@ for the dataset.  Versions allow you to pin a known-good state of a dataset so i
 can be referenced by training or validation sessions and restored at any time.
 
 | Column | Description |
-|---|---|
+| ------ | ----------- |
 | **Serial** | Sequential version index starting at 0. |
 | **Date** | When the version was tagged. |
 | **User** | The user who created the tag. |
@@ -45,7 +45,7 @@ regardless of whether it was tagged as a version.  This provides a fine-grained 
 trail of who changed what and when.
 
 | Column | Description |
-|---|---|
+| ------ | ----------- |
 | **Serial** | Sequential event index. |
 | **Date** | When the change occurred. |
 | **User** | The user who made the change. |

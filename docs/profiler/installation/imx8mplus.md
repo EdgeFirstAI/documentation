@@ -35,7 +35,7 @@ edgefirst-profiler --version
 ## Delegate selection
 
 | Value | Behavior on i.MX 8M Plus |
-|---|---|
+| ----- | ------------------------ |
 | _(omitted)_ / `auto` | Auto-detects i.MX 8M Plus from device-tree compatible string and loads `libvx_delegate.so`. |
 | `xnnpack` | CPU baseline. |
 | `none` / `cpu` | Reference kernels only. |

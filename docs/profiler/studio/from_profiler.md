@@ -39,7 +39,7 @@ Each level renders the same metadata you see in the Studio web UI: project owner
 When you select an artifact (e.g., `best.onnx`, `best.tflite`, `best.engine`), an action menu pops up:
 
 | Action | Behavior |
-|---|---|
+| ------ | -------- |
 | **Validate** | Create a new validation session bound to this artifact and the training session's dataset, then jump to the F4 Profiler screen to run it. |
 | **Live** | _(reserved)_ Stream live inference back to Studio rather than producing a validation session — covered in a future release. |
 

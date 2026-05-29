@@ -1859,7 +1859,15 @@
 </table>
 <p>Auto-detection reads <code>/sys/firmware/devicetree/base/compatible</code> to identify i.MX 95 and pre-populate the delegate path in the TUI's profile configuration screen.</p>
 <h2 id="per-tick-neutron-profiling">Per-tick Neutron profiling</h2>
-<p>When the Neutron delegate is loaded with profiling support, the profiler reports <strong>per-tick</strong> timing — every <abbr title="Neural Processing Unit">NPU</abbr> kernel (<code>Conv2DDenseTT</code>, <code>AddTT</code>, …) appears as its own slice in the Studio trace view.</p>
+<p>When both conditions below are met, the profiler reports <strong>per-tick</strong> timing — every <abbr title="Neural Processing Unit">NPU</abbr> kernel (<code>Conv2DDenseTT</code>, <code>AddTT</code>, …) appears as its own slice in the Studio trace view:</p>
+<ol>
+<li>The model was compiled with <strong><code>enable_profiling: true</code></strong> in the <a href="../../../models/conversion/neutron/">Neutron Converter</a>.</li>
+<li>The target runs <strong>Neutron drivers ≥ 3.0.1</strong> (tested on 3.0.1), shipped as part of the <a href="https://www.nxp.com/design/design-center/software/eiq-ai-development-environment/eiq-toolkit-for-end-to-end-model-development-and-deployment:EIQ-TOOLKIT">eIQ Neutron <abbr title="Software Development Kit">SDK</abbr></a>.</li>
+</ol>
+<div class="admonition note">
+<p class="admonition-title">Older 2.x drivers</p>
+<p>The profiler remains fully functional with Neutron drivers 2.x — inference timing, pipeline-stage breakdown, and accuracy metrics all work normally. Only the <strong>per-operation <abbr title="Neural Processing Unit">NPU</abbr> timing</strong> (op-level profiling of the Neutron graph) is unavailable without 3.0.1+ drivers.</p>
+</div>
 <p>To get human-readable kernel names rather than opaque IDs, pass the Neutron converter statistics file produced when the model was compiled:</p>
 <div class="highlight"><pre><span></span><code>neutron-converter<span class="w"> </span>--dump-statistics-file<span class="w"> </span>yolov8n_neutron.statistics<span class="w"> </span>...
 </code></pre></div>

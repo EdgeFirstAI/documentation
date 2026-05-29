@@ -984,6 +984,17 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#cloning-a-training-session" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Cloning a Training Session
+      
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -1646,6 +1657,17 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#cloning-a-training-session" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Cloning a Training Session
+      
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -1804,6 +1826,19 @@ a deep view into the session through the following tabs:</p>
 <li><strong>Stop</strong> — Terminate a running training session.</li>
 <li><strong>Recycle Bin</strong> — Move the session to the recycle bin.</li>
 </ul>
+<h3 id="cloning-a-training-session">Cloning a Training Session</h3>
+<p>Cloning creates a new training session from an existing one. The clone preserves the source session's trainer type, model, dataset selection, and other session configuration, but it overrides two training controls: <strong>Use Default Weights</strong> is disabled and <strong>Enable Training</strong> is disabled. Because training is not run, the completed weights from the source session are copied directly into the new session's artifacts.</p>
+<p>This is useful when you want to:</p>
+<ul>
+<li>Reuse a trained model as a starting point for fine-tuning with a different dataset.</li>
+<li>Preserve a snapshot of a model at a specific training state before further experimentation.</li>
+<li>Share a model artifact under a new session name without re-running training.</li>
+</ul>
+<p>To clone a session, click "clone training session" button on the training card.  A dialog will appear pre-filled with the source session's configuration.  Adjust the name and description as needed, then confirm.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Cloning is equivalent to creating a new session with <strong>Use Default Weights</strong> disabled and <strong>Enable Training</strong> disabled.  See <a href="../../models/training/vision/#enable-training-and-use-default-weights">Enable Training and Use Default Weights</a> for the full behaviour matrix.</p>
+</div>
 <h2 id="validation-sessions">Validation Sessions</h2>
 <p>The validation sessions will assess the performance of the models in the training sessions.  A training session can have any number of validation sessions.  From the "Model Experiments" page, we can click on the "Validation Sessions" button with the icon <img alt="Validation Button" src="../../assets/buttons/studio-validation-button.jpg" /> to see the validation sessions in the experiment.  The figure below shows the layout of the validation session cards under the "Validation Sessions" page.</p>
 <figure>

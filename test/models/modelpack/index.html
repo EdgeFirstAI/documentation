@@ -1986,8 +1986,21 @@
 <li><strong>Split Decoder</strong>: Remove the decoder from the model and use a very optimized one from EdgeFirst.  This feature is very useful when the location of the boxes has to be precise (0-offset)</li>
 </ol>
 </li>
-<li><strong>Training Parameters</strong>: In this section the user is able to specify the number of epochs to train the model as well as the batch size.  Remember the larger the input resolution the smaller the batch size</li>
-<li><strong>Data Augmentation</strong>: This section controls the probability of each augmentation technique.  This feature is crucial for training models and reduce overfitting, especially in small datasets</li>
+<li>
+<p><strong>Training Parameters</strong>: In this section the user is able to specify the number of epochs to train the model as well as the batch size.  Remember the larger the input resolution the smaller the batch size</p>
+<ol>
+<li>
+<p><strong>Use Default Weights</strong>: When enabled (default), training starts from pre-trained COCO weights. When disabled, starting weights are sourced from a prior training session you specify.</p>
+<div class="admonition note">
+<p class="admonition-title">ModelPack does not have an Enable Training checkbox</p>
+<p>For ModelPack training always runs. Disabling <strong>Use Default Weights</strong> lets you supply a prior session's weights as the starting point; leaving it enabled trains from COCO pre-trained weights. <strong>Enable Training</strong> are <a href="../ultralytics/#training-parameters">Ultralytics-only</a> and do not apply here</p>
+</div>
+</li>
+</ol>
+</li>
+<li>
+<p><strong>Data Augmentation</strong>: This section controls the probability of each augmentation technique.  This feature is crucial for training models and reduce overfitting, especially in small datasets</p>
+</li>
 <li><strong>Export Parameters</strong>: Allow the user to set a portion of data for calibration when exporting the model for <abbr title="Signed 8-bit integer">INT8</abbr> quantization</li>
 <li><strong>Start Session</strong>: This button will start the training session</li>
 </ol>

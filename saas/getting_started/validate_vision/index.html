@@ -25,7 +25,7 @@
       
       
       <link rel="icon" href="../../assets/favicon.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.1">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
     
     
       
@@ -58,6 +58,8 @@
       <link rel="stylesheet" href="../../assets/_mkdocstrings.css">
     
       <link rel="stylesheet" href="../../stylesheets/extra.css">
+    
+      <link rel="stylesheet" href="../../stylesheets/components.css">
     
       <link rel="stylesheet" href="../../stylesheets/mermaid.css">
     
@@ -338,6 +340,28 @@
     
     
       <li class="md-tabs__item">
+        <a href="../../profiler/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Profiler <span class="ef-badge">New</span>
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
         <a href="../../datasets/" class="md-tabs__link">
           
   
@@ -588,7 +612,7 @@
   <span class="md-ellipsis">
     
   
-    Running Pre-trained Models in Edgefirst Studio
+    Running Pre-trained Models in EdgeFirst Studio
   
 
     
@@ -644,7 +668,7 @@
   <span class="md-ellipsis">
     
   
-    Copy Dataset
+    Copy Sample Dataset
   
 
     
@@ -801,6 +825,12 @@
       
         
       
+        
+      
+        
+      
+        
+      
     
     
     
@@ -864,6 +894,12 @@
       
         
           
+        
+      
+        
+      
+        
+      
         
       
         
@@ -1008,6 +1044,71 @@
       
         
       
+        
+      
+    
+    
+    
+      
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../profiler/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Profiler <span class="ef-badge">New</span>
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
     
     
     
@@ -1063,6 +1164,10 @@
       
         
           
+        
+      
+        
+      
         
       
         
@@ -1303,56 +1408,52 @@
 
 
 <h1 id="validate-vision-model">Validate Vision Model</h1>
-<p>Now that you have trained a Vision model, you can now start validating your Vision model.  This will briefly show the steps for validating a model, but for an in depth tutorial, please see <a href="../../models/validation/vision/managed/">Validating Vision Models</a>.</p>
-<p>On the train session card, expand the session details.</p>
+<p>Now that you have trained a model, you can now validate the performance of your model.  This will briefly show the steps for validating a model, but for an in depth tutorial, please see <a href="../../models/validation/vision/managed/">Validating Vision Models</a>.</p>
+<p>If you haven't already, click on the training session card for more information.</p>
 <figure>
-<img align="center" alt="Training Details" src="../../models/assets/training/vision-view-train-details.jpg" />
-
-<figcaption>Training Details</figcaption>
-</figure>
-<p>Click the "Validate" button.</p>
+            <img align="center" alt="Training Details" src="../../models/assets/training/vision-view-train-details.jpg" />
+            <figcaption>Training Details</figcaption>
+            </figure>
+<p>On the top right corner of the page, click on the "validate" button as indicated.</p>
 <figure>
-<img align="center" alt="Create Validation Session" src="../../models/assets/training/vision-validate-button.jpg" />
-
-<figcaption>Create Validation Session</figcaption>
-</figure>
-<p>Specify the name of the validation session and the model and the dataset for validation.  The rest of the settings were kept as defaults.  Click "Start Session" at the bottom to start the validation session.</p>
+            <img align="center" alt="Validate Button" src="../../models/assets/validation/training_validate_button.jpg" />
+            <figcaption>Validate Button</figcaption>
+            </figure>
+<p>Specify the name of the validation session and the model and the dataset for validation.  <em>Under the model selection, you can select various trained model artifacts from the choices of <abbr title="Open Neural Network Exchange">ONNX</abbr>, <abbr title="TensorFlow Lite">TFLite</abbr>, TensorRT, Kinara, Hailo, etc.  Choose the model you plan to deploy on target.  The purpose of validation is to assess the model of whether or not it meets the performance requirements needed to be deployed on target.</em>  The rest of the settings were kept as defaults.  Click "Start Session" at the bottom to start the validation session.</p>
 <figure>
-<img align="center" alt="Start Validation Session" src="../../models/assets/validation/vision-validate-settings.jpg" />
-
-<figcaption>Start Validation Session</figcaption>
-</figure>
-<div class="admonition warning">
-<p class="admonition-title">No Datasets Available</p>
-<p>In case there are no datasets visible on the dropdown.  Please refresh your browser.</p>
-</div>
+            <img align="center" alt="Start Validation Session" src="../../models/assets/validation/vision-validate-settings.jpg" />
+            <figcaption>Start Validation Session</figcaption>
+            </figure>
+<p>Go to the created validation session by first going back to the "Model Experiments" page.</p>
+<figure>
+            <img align="center" alt="Go to Model Experiments" src="../../models/assets/training/go-back-to-model-experiments.jpg" />
+            <figcaption>Go to Model Experiments</figcaption>
+            </figure>
+<p>Next, click the validation sessions of the model experiments.</p>
+<figure>
+            <img align="center" alt="Validation Sessions" src="../../models/assets/validation/validation-sessions.jpg" />
+            <figcaption>Validation Sessions</figcaption>
+            </figure>
 <p>The validation session progress will appear in the "Validation" page as shown below.</p>
 <figure>
-<img align="center" alt="Validation Progress" src="../../models/assets/validation/vision-session-progress.jpg" />
-
-<figcaption>Validation Progress</figcaption>
-</figure>
-<p>Once completed the session card will appear like the following below.</p>
+            <img align="center" alt="Validation Progress" src="../../models/assets/validation/vision-session-progress.jpg" />
+            <figcaption>Validation Progress</figcaption>
+            </figure>
+<p>Once completed the session card will appear like the following below.  To view the validation metrics, click on the validation charts button as indicated.</p>
 <figure>
-<img align="center" alt="Completed Session" src="../../models/assets/validation/vision-completed-session.jpg" />
-
-<figcaption>Completed Session</figcaption>
-</figure>
-<p>The validation metrics are displayed as charts which can be found by clicking the validation charts.</p>
+            <img align="center" alt="Completed Session" src="../../models/assets/validation/vision-completed-session.jpg" />
+            <figcaption>Completed Session</figcaption>
+            </figure>
+<p>The validation metrics should appear like the following.  For more information, please see the <a href="../../models/validation/metrics/">Validation Metrics</a> section.</p>
 <figure>
-<img align="center" alt="Validation Charts Button" src="../../models/assets/validation/vision-charts-button.jpg" />
-
-<figcaption>Validation Charts Button</figcaption>
-</figure>
+            <img align="center" alt="Validation Charts" src="../../models/assets/validation/vision-charts.jpg" />
+            <figcaption>Validation Charts</figcaption>
+            </figure>
+<p>You can navigate back to the training session by clicking on the "Training Session" link under the "Session" tab.</p>
 <figure>
-<img align="center" alt="Validation Charts" src="../../models/assets/validation/vision-charts.jpg" />
-
-<figcaption>Validation Charts</figcaption>
-</figure>
-<div style="max-width: fit-content; margin-left: auto; margin-right: auto;">
-<p><a class="md-button" href="../train_vision/">Train Vision Model ← Back</a>
-<a class="md-button md-button--primary align-right" href="../deploy_model/">Next → Deploy Model</a></p>
-</div>
+            <img align="center" alt="Go Back to the Training Session" src="../../models/assets/validation/back-to-training-session.jpg" />
+            <figcaption>Go Back to the Training Session</figcaption>
+            </figure>
 
 
 

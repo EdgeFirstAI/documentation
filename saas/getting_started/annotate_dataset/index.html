@@ -21,7 +21,7 @@
       
       
       <link rel="icon" href="../../assets/favicon.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.1">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
     
     
       
@@ -54,6 +54,8 @@
       <link rel="stylesheet" href="../../assets/_mkdocstrings.css">
     
       <link rel="stylesheet" href="../../stylesheets/extra.css">
+    
+      <link rel="stylesheet" href="../../stylesheets/components.css">
     
       <link rel="stylesheet" href="../../stylesheets/mermaid.css">
     
@@ -332,6 +334,28 @@
     
     
       <li class="md-tabs__item">
+        <a href="../../profiler/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Profiler <span class="ef-badge">New</span>
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
         <a href="../../datasets/" class="md-tabs__link">
           
   
@@ -556,6 +580,12 @@
       
         
       
+        
+      
+        
+      
+        
+      
     
     
     
@@ -680,6 +710,71 @@
       
         
       
+        
+      
+    
+    
+    
+      
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../profiler/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Profiler <span class="ef-badge">New</span>
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
     
     
     
@@ -735,6 +830,10 @@
       
         
           
+        
+      
+        
+      
         
       
         
@@ -978,58 +1077,52 @@
 <p>Now that you have a dataset in your project, you can start annotating the dataset.  This will briefly show the steps for annotating the dataset, but for an in depth tutorial on the annotation process, please see <a href="../../datasets/tutorials/annotations/">Dataset Annotations</a>.  </p>
 <p>To annotate a dataset, first create an annotation set on the dataset card.</p>
 <figure>
-<img align="center" alt="Annotation Set" src="../../datasets/assets/annotations/add-annotation-set-button.jpg" />
-
-<figcaption>Annotation Set</figcaption>
-</figure>
+            <img align="center" alt="Annotation Set" src="../../datasets/assets/annotations/add-annotation-set-button.jpg" />
+            <figcaption>Annotation Set</figcaption>
+            </figure>
+<p>Provide the name of the new annotation set and its description</p>
+<figure>
+            <img align="center" alt="Annotation Set Specifiers" src="../../datasets/assets/annotations/new-annotation-set-options.jpg" />
+            <figcaption>Annotation Set Specifiers</figcaption>
+            </figure>
 <p>A new annotation set was created called "new-annotations".</p>
 <figure>
-<img align="center" alt="New Annotation Set" src="../../datasets/assets/annotations/new-annotation-set.jpg" />
-
-<figcaption>New Annotation Set</figcaption>
-</figure>
-<p>Next, open the dataset gallery, by clicking on the gallery button <img alt="Gallery Button" src="../../assets/buttons/studio-gallery-button.jpg" /> on the top left of the dataset card.  The dataset will contain sequences (video) <img alt="Sequences Icon" src="../../assets/buttons/studio-sequence-icon.jpg" /> and images.  Click on any sequence card to start <a href="../../datasets/tutorials/annotations/automatic/#semi-automatic-ground-truth-generation">annotating sequences</a>.</p>
+            <img align="center" alt="New Annotation Set" src="../../datasets/assets/annotations/new-annotation-set.jpg" />
+            <figcaption>New Annotation Set</figcaption>
+            </figure>
+<p>Next, open the dataset gallery, by clicking on the image preview of the dataset card.</p>
 <figure>
-<img align="center" alt="Coffee Cup Gallery" src="../../datasets/assets/annotations/coffee-cup-gallery.jpg" />
-
-<figcaption>Coffee Cup Gallery</figcaption>
-</figure>
+            <img align="center" alt="Coffee Cup Gallery" src="../../datasets/assets/management/sample-dataset-sequences.jpg" />
+            <figcaption>Coffee Cup Gallery</figcaption>
+            </figure>
+<p>The dataset will contain sequences (video) and images.  Click on any sequence card to start <a href="../../datasets/tutorials/annotations/automatic/#semi-automatic-ground-truth-generation">annotating sequences</a>.</p>
 <p>On the top navbar, switch to the right annotation set.</p>
 <figure>
-<img align="center" alt="Switch Annotation Set" src="../../datasets/assets/annotations/switch-annotation-sets.jpg" />
-
-<figcaption>Switch Annotation Set</figcaption>
-</figure>
+            <img align="center" alt="Switch Annotation Set" src="../../datasets/assets/annotations/switch-annotation-sets.jpg" />
+            <figcaption>Switch Annotation Set</figcaption>
+            </figure>
 <p><a href="../../datasets/tutorials/annotations/automatic/#initialize-agtg-server">Start the AGTG server</a> by clicking on the "AI Segment Tool" and follow the prompts as indicated.</p>
 <figure>
-<img align="center" alt="Auto Segment Mode" src="../../datasets/assets/annotations/automatic/agtg-segment-tool.jpg" />
-
-<figcaption>Auto Segment Mode</figcaption>
-</figure>
+            <img align="center" alt="Auto Segment Mode" src="../../datasets/assets/annotations/automatic/agtg-segment-tool.jpg" />
+            <figcaption>Auto Segment Mode</figcaption>
+            </figure>
 <p>Once the AGTG server has started, go ahead and <a href="../../datasets/tutorials/annotations/automatic/#annotate-starting-frame">annotate the starting frame</a>.</p>
 <figure>
-<img align="center" alt="AGTG Initial Prompts" src="../../datasets/assets/annotations/automatic/agtg-prompts.jpg" />
-
-<figcaption>AGTG Initial Prompts</figcaption>
-</figure>
+            <img align="center" alt="AGTG Initial Prompts" src="../../datasets/assets/annotations/automatic/agtg-prompts.jpg" />
+            <figcaption>AGTG Initial Prompts</figcaption>
+            </figure>
 <p>Once the starting frame has been annotate, go ahead and <a href="../../datasets/tutorials/annotations/automatic/#propagate">propagate the annotations</a> throughout the rest of the frames.</p>
 <figure>
-<img align="center" alt="Propagation Process" src="../../datasets/assets/annotations/automatic/propagation-process.jpg" />
-
-<figcaption>Propagation Process</figcaption>
-</figure>
+            <img align="center" alt="Propagation Process" src="../../datasets/assets/annotations/automatic/propagation-process.jpg" />
+            <figcaption>Propagation Process</figcaption>
+            </figure>
 <p>Once the propagation completes, click "Save Annotations" to save the propagated annotations.</p>
 <figure>
-<img align="center" alt="Propagation Completed" src="../../datasets/assets/annotations/automatic/propagation-completed.jpg" />
-
-<figcaption>Propagation Completed</figcaption>
-</figure>
+            <img align="center" alt="Propagation Completed" src="../../datasets/assets/annotations/automatic/propagation-completed.jpg" />
+            <figcaption>Propagation Completed</figcaption>
+            </figure>
 <p>Repeat the steps for all the sequences in the dataset.  For the case of individual images, the same steps apply except there is no propagation step.  You can still use the AGTG feature to quickly annotate images as shown in <a href="../../datasets/tutorials/annotations/manual/#add-2d-annotations">Add 2D annotations</a>.</p>
 <p>Now that you have annotated your dataset using the AGTG features in EdgeFirst Studio, audit your dataset to review the annotations and make any changes or corrections if necessary to the current annotations.</p>
-<div style="max-width: fit-content; margin-left: auto; margin-right: auto;">
-<p><a class="md-button" href="../capture_data/">Capture Data ← Back</a>
-<a class="md-button md-button--primary align-right" href="../audit_dataset/">Next → Audit Dataset</a></p>
-</div>
 
 
 

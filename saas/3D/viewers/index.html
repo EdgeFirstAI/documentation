@@ -25,7 +25,7 @@
       
       
       <link rel="icon" href="../../assets/favicon.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.1">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
     
     
       
@@ -58,6 +58,8 @@
       <link rel="stylesheet" href="../../assets/_mkdocstrings.css">
     
       <link rel="stylesheet" href="../../stylesheets/extra.css">
+    
+      <link rel="stylesheet" href="../../stylesheets/components.css">
     
       <link rel="stylesheet" href="../../stylesheets/mermaid.css">
     
@@ -338,6 +340,28 @@
     
     
       <li class="md-tabs__item">
+        <a href="../../profiler/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Profiler <span class="ef-badge">New</span>
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
         <a href="../../datasets/" class="md-tabs__link">
           
   
@@ -542,6 +566,12 @@
       
         
           
+        
+      
+        
+      
+        
+      
         
       
         
@@ -808,6 +838,71 @@
       
         
       
+        
+      
+    
+    
+    
+      
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../profiler/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Profiler <span class="ef-badge">New</span>
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
     
     
     
@@ -863,6 +958,10 @@
       
         
           
+        
+      
+        
+      
         
       
         
@@ -1106,10 +1205,9 @@
 <p>The 3D Data Viewers in EdgeFirst Studio provide visualizations of 3D data such as 3D annotations, <abbr title="Light Detection and Ranging">LiDAR</abbr> or Radar point clouds, and depth maps.  The visualization features are found in the <a href="../../studio/datasets/gallery/">dataset gallery</a>.</p>
 <p>In the gallery, the left side panel provides options to toggle the visualization of the canvas On <img alt="Toggle On" src="../../assets/buttons/studio_eye_enable_button.jpg" />/Off <img alt="Toggle Off" src="../../assets/buttons/studio_eye_disable_button.jpg" />.</p>
 <figure>
-<img align="center" alt="3D Data Viewers" src="../assets/3d_viewers.jpg" />
-
-<figcaption>3D Data Viewers</figcaption>
-</figure>
+            <img align="center" alt="3D Data Viewers" src="../assets/3d_viewers.jpg" />
+            <figcaption>3D Data Viewers</figcaption>
+            </figure>
 <p>The point clouds for the Radar (1) or <abbr title="Light Detection and Ranging">LiDAR</abbr> (2) can be visualized on the 3D canvas.  Radar points clouds can be sparse whereas <abbr title="Light Detection and Ranging">LiDAR</abbr> point clouds can form the general shape of the object.  </p>
 <table>
 <thead>
@@ -1125,7 +1223,7 @@
 </tr>
 </tbody>
 </table>
-<p>The 3D bounding boxes (3) can also be displayed on the 3D canvas.  The 3D bounding box is the annotation used for <a href="../training/">training 3D perception (Fusion) models</a>.  More information towards the format used for the 3D bounding box is provided <a href="../../datasets/format/schema/#box3d">here</a>.</p>
+<p>The 3D bounding boxes (3) can also be displayed on the 3D canvas.  The 3D bounding box is the annotation used for <a href="../training/">training 3D perception (Fusion) models</a>.  More information towards the format used for the 3D bounding box is provided <a href="../../datasets/format/box_format/#box3d">here</a>.</p>
 <table>
 <thead>
 <tr>
@@ -1143,10 +1241,9 @@
 <p>The 3D bounding boxes are generated through the utilization of both 2D box projections and the point clouds.  The <a href="../../studio/agtg/#the-agtg-algorithm">AGTG algorithm</a> describes the process of generating 3D bounding box annotations from 2D annotations and PCDs.  </p>
 <p>Since the Radar PCDs are too sparse, it requires additional information for formulating the 3D bounding box.  The depth map  (4) is used which provides distance estimations of each pixel in the image in meters.  The depth map is a separate canvas that can be visualized separately from the 3D annotations.  When hovering over the depth map, the values for pixel values (x, y) corresponding the image position and the estimated depth value in meters are provided.</p>
 <figure>
-<img align="center" alt="Depth Map" src="../assets/depth_map.jpg" />
-
-<figcaption>Depth Map</figcaption>
-</figure>
+            <img align="center" alt="Depth Map" src="../assets/depth_map.jpg" />
+            <figcaption>Depth Map</figcaption>
+            </figure>
 
 
 

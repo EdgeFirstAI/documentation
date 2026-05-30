@@ -25,7 +25,7 @@
       
       
       <link rel="icon" href="../../assets/favicon.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.1">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
     
     
       
@@ -58,6 +58,8 @@
       <link rel="stylesheet" href="../../assets/_mkdocstrings.css">
     
       <link rel="stylesheet" href="../../stylesheets/extra.css">
+    
+      <link rel="stylesheet" href="../../stylesheets/components.css">
     
       <link rel="stylesheet" href="../../stylesheets/mermaid.css">
     
@@ -333,6 +335,28 @@
     
     
       <li class="md-tabs__item">
+        <a href="../../profiler/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Profiler <span class="ef-badge">New</span>
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
         <a href="../../datasets/" class="md-tabs__link">
           
   
@@ -583,7 +607,7 @@
   <span class="md-ellipsis">
     
   
-    Running Pre-trained Models in Edgefirst Studio
+    Running Pre-trained Models in EdgeFirst Studio
   
 
     
@@ -639,7 +663,7 @@
   <span class="md-ellipsis">
     
   
-    Copy Dataset
+    Copy Sample Dataset
   
 
     
@@ -794,6 +818,12 @@
       
         
       
+        
+      
+        
+      
+        
+      
     
     
     
@@ -857,6 +887,12 @@
       
         
           
+        
+      
+        
+      
+        
+      
         
       
         
@@ -1001,6 +1037,71 @@
       
         
       
+        
+      
+    
+    
+    
+      
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../profiler/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Profiler <span class="ef-badge">New</span>
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
     
     
     
@@ -1056,6 +1157,10 @@
       
         
           
+        
+      
+        
+      
         
       
         
@@ -1295,26 +1400,28 @@
 
   <h1>Explore dataset</h1>
 
-<p>Now that you have copied the Coffee Cup dataset into your own created project, you can start exploring the images and annotations inside this dataset.</p>
+<p>Now that you have copied and tagged the Coffee Cup dataset into your own created project, you can start exploring the images and annotations inside this dataset.</p>
 <figure>
-<img align="center" alt="Dataset Attributes" src="../../studio/assets/datasets/dataset-attributes.jpg" />
-
-<figcaption>Dataset Card UI Breakdown</figcaption>
-</figure>
-<p>In this dataset, you can see that it has a total of 1399 images and single label "coffeecup".  This dataset also has two partitions; one for training and another for validation.  There is a total of 915 images for the training group and 229 images for the validation group.  Finally, the dataset has a single annotation set which shows that 1385 images have annotations and there is a total of 3020 annotations (3020 distinct objects in the dataset).</p>
-<p>Click on the <img alt="Dataset Gallery button" src="../../assets/buttons/studio-gallery-button.jpg" /> button on top of the dataset card to navigate to the dataset gallery.  The dataset gallery will look like the following below.</p>
+            <img align="center" alt="Dataset Card UI Breakdown" src="../../studio/assets/datasets/dataset-attributes.jpg" />
+            <figcaption>Dataset Card UI Breakdown</figcaption>
+            </figure>
+<p>This dataset has a total of 1399 images and single label "coffeecup".  It has two partitions; "train" and "val".  There is a total of 1119 images for the training group ("train") and 280 images for the validation group ("val").</p>
+<p>Click the image preview to view the dataset gallery.  The dataset gallery will look like the following below. </p>
 <figure>
-<img align="center" alt="Sequences and Images" src="../../datasets/assets/management/sample-dataset-image.jpg" />
-
-<figcaption>Sequences and Images</figcaption>
-</figure>
-<p>This dataset will contain both <a href="../../datasets/format/structure/#sequence-based">sequences</a> (videos) <img alt="Sequences" src="../../assets/buttons/studio-sequence-icon.jpg" /> and images.  Clicking on the sequences will provide video playback.  Otherwise, clicking on images will expand the image view.</p>
-<p>This dataset will have a complete set of 2D annotations (masks and bounding boxes) of coffee cups.  This dataset was quickly annotated using the <a href="../../studio/agtg/">Automatic Ground Truth Generatation (AGTG) feature in EdgeFirst Studio</a>.</p>
-<p>Now that you have seen what the dataset looks like, you can move forward to training a Vision model using this dataset.</p>
-<div style="max-width: fit-content; margin-left: auto; margin-right: auto;">
-<p><a class="md-button" href="../copy_dataset/">Copy Dataset ← Back</a>
-<a class="md-button md-button--primary align-right" href="../train_vision/">Next → Train Vision Model</a></p>
+            <img align="center" alt="Dataset Sequences" src="../../datasets/assets/management/sample-dataset-sequences.jpg" />
+            <figcaption>Dataset Sequences</figcaption>
+            </figure>
+<figure>
+            <img align="center" alt="Dataset Images" src="../../datasets/assets/management/sample-dataset-images.jpg" />
+            <figcaption>Dataset Images</figcaption>
+            </figure>
+<p>This dataset will contain <a href="../../datasets/format/structure/#3-mixed-datasets">both sequences (videos) and images</a>.  Clicking on the sequences will provide video playback.  Otherwise, clicking on images will expand the image view.</p>
+<p>This dataset has a complete set of 2D annotations (masks and bounding boxes) of coffee cups.  </p>
+<div class="admonition tip">
+<p class="admonition-title">Fast Annotations</p>
+<p>This dataset was quickly annotated using the <a href="../../studio/agtg/">Automatic Ground Truth Generation (AGTG) feature of EdgeFirst Studio</a>.</p>
 </div>
+<p>Now that you have seen what the dataset looks like, you can move forward to training a Vision model using this dataset.</p>
 
 
 
@@ -1404,7 +1511,7 @@
       <nav class="md-footer__inner md-grid" aria-label="Footer" >
         
           
-          <a href="../copy_dataset/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Copy Dataset">
+          <a href="../copy_dataset/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Copy Sample Dataset">
             <div class="md-footer__button md-icon">
               
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
@@ -1414,7 +1521,7 @@
                 Previous
               </span>
               <div class="md-ellipsis">
-                Copy Dataset
+                Copy Sample Dataset
               </div>
             </div>
           </a>

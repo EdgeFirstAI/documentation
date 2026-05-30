@@ -25,7 +25,7 @@
       
       
       <link rel="icon" href="../../assets/favicon.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.1">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
     
     
       
@@ -58,6 +58,8 @@
       <link rel="stylesheet" href="../../assets/_mkdocstrings.css">
     
       <link rel="stylesheet" href="../../stylesheets/extra.css">
+    
+      <link rel="stylesheet" href="../../stylesheets/components.css">
     
       <link rel="stylesheet" href="../../stylesheets/mermaid.css">
     
@@ -338,6 +340,28 @@
     
     
       <li class="md-tabs__item">
+        <a href="../../profiler/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Profiler <span class="ef-badge">New</span>
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
         <a href="../../datasets/" class="md-tabs__link">
           
   
@@ -564,6 +588,12 @@
       
         
       
+        
+      
+        
+      
+        
+      
     
     
     
@@ -696,6 +726,10 @@
       
         
       
+        
+      
+        
+      
     
     
     
@@ -786,6 +820,10 @@
       
         
       
+        
+      
+        
+      
     
     
     
@@ -826,6 +864,34 @@
   
 
       
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../agtg/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Automatic Ground Truth Generation (AGTG)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
     </li>
   
 
@@ -980,14 +1046,70 @@
   
   
     <li class="md-nav__item">
-      <a href="../agtg/" class="md-nav__link">
+      <a href="../apps/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    Automatic Ground Truth Generation (AGTG)
+    Studio Apps Dashboard
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tasks/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Tasks Dashboard
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../recycle/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Recycle Bin
   
 
     
@@ -1088,6 +1210,71 @@
       
         
       
+        
+      
+    
+    
+    
+      
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../profiler/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Profiler <span class="ef-badge">New</span>
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
     
     
     
@@ -1143,6 +1330,10 @@
       
         
           
+        
+      
+        
+      
         
       
         
@@ -1404,16 +1595,14 @@
 <h1 id="cloud-instances-dashboard">Cloud Instances Dashboard</h1>
 <p>The Cloud Instances Dashboard can be accessed by clicking on the "Cloud Instances" from the Apps Menu.</p>
 <figure>
-<img align="center" alt="Cloud Instances Button" src="../assets/instances/cloud-instances-button.jpg" />
-
-<figcaption>Cloud Instances Button</figcaption>
-</figure>
+            <img align="center" alt="Cloud Instances Button" src="../assets/instances/cloud-instances-button.jpg" />
+            <figcaption>Cloud Instances Button</figcaption>
+            </figure>
 <p>The Cloud Instances Dashboard lists all the active cloud servers that are running in the background.  These server hosts any operations running in Studio such as a dedicated AGTG server for SAM-2 during the annotation process, or servers for running training and validation sessions.  The figure below points to the various elements of the Cloud Instances Dashboard page.</p>
 <figure>
-<img align="center" alt="Cloud Instances Page" src="../assets/instances/cloud-instances-page.jpg" />
-
-<figcaption>Cloud Instances Page</figcaption>
-</figure>
+            <img align="center" alt="Cloud Instances Page" src="../assets/instances/cloud-instances-page.jpg" />
+            <figcaption>Cloud Instances Page</figcaption>
+            </figure>
 <p>From this page you can click "Refresh" to refresh the page to see the latest active servers.  You can also select an active server and click "Stop" to terminate this server.</p>
 <p>It is important to stop any running servers that are idle to prevent any unnecessary deductions from your credits.  For example, the AGTG server has an auto-termination mechanism after 15 minutes of inactivity.  However, it is recommended to <a href="../../datasets/tutorials/annotations/#terminate-agtg-server">stop this server</a> if it is no longer being used.</p>
 <h2 id="next-steps">Next Steps</h2>

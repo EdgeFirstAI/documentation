@@ -15,21 +15,21 @@
         <link rel="canonical" href="https://doc.edgefirst.ai/saas/models/validation/metrics/detection/">
       
       
-        <link rel="prev" href="../../fusion/managed/">
+        <link rel="prev" href="../">
       
       
-        <link rel="next" href="../segmentation/">
+        <link rel="next" href="matching/">
       
       
         
       
       
       <link rel="icon" href="../../../../assets/favicon.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.1">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
     
     
       
-        <title>Detection Metrics - EdgeFirst Studio Documentation</title>
+        <title>Object Detection Metrics - EdgeFirst Studio Documentation</title>
       
     
     
@@ -59,6 +59,8 @@
     
       <link rel="stylesheet" href="../../../../stylesheets/extra.css">
     
+      <link rel="stylesheet" href="../../../../stylesheets/components.css">
+    
       <link rel="stylesheet" href="../../../../stylesheets/mermaid.css">
     
     <script>__md_scope=new URL("../../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
@@ -79,17 +81,17 @@
     
   
 <meta property="og:type" content="website" />
-<meta property="og:title" content="Detection Metrics - EdgeFirst Studio Documentation" />
+<meta property="og:title" content="Object Detection Metrics - EdgeFirst Studio Documentation" />
 <meta property="og:description" content="EdgeFirst Studio Documentation" />
-<meta property="og:image" content="https://doc.edgefirst.ai/saas/assets/images/social/models/validation/metrics/detection.png" />
+<meta property="og:image" content="https://doc.edgefirst.ai/saas/assets/images/social/models/validation/metrics/detection/index.png" />
 <meta property="og:image:type" content="image/png" />
 <meta property="og:image:width" content="1200" />
 <meta property="og:image:height" content="630" />
 <meta property="og:url" content="https://doc.edgefirst.ai/saas/models/validation/metrics/detection/" />
 <meta property="twitter:card" content="summary_large_image" />
-<meta property="twitter:title" content="Detection Metrics - EdgeFirst Studio Documentation" />
+<meta property="twitter:title" content="Object Detection Metrics - EdgeFirst Studio Documentation" />
 <meta property="twitter:description" content="EdgeFirst Studio Documentation" />
-<meta property="twitter:image" content="https://doc.edgefirst.ai/saas/assets/images/social/models/validation/metrics/detection.png" />
+<meta property="twitter:image" content="https://doc.edgefirst.ai/saas/assets/images/social/models/validation/metrics/detection/index.png" />
 </head>
   
   
@@ -109,7 +111,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#detection-metrics" class="md-skip">
+        <a href="#object-detection-metrics" class="md-skip">
           Skip to content
         </a>
       
@@ -163,7 +165,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Detection Metrics
+              Object Detection Metrics
             
           </span>
         </div>
@@ -321,6 +323,28 @@
     
   
   3D MLOps
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../../profiler/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Profiler <span class="ef-badge">New</span>
 
         </a>
       </li>
@@ -562,6 +586,12 @@
       
         
       
+        
+      
+        
+      
+        
+      
     
     
     
@@ -686,6 +716,71 @@
       
         
       
+        
+      
+    
+    
+    
+      
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../../../profiler/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Profiler <span class="ef-badge">New</span>
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
     
     
     
@@ -757,6 +852,10 @@
       
         
       
+        
+      
+        
+      
     
     
     
@@ -773,7 +872,7 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" checked>
         
           
           <div class="md-nav__link md-nav__container">
@@ -795,14 +894,14 @@
             </a>
             
               
-              <label class="md-nav__link " for="__nav_5" id="__nav_5_label" tabindex="">
+              <label class="md-nav__link " for="__nav_6" id="__nav_6_label" tabindex="">
                 <span class="md-nav__icon md-icon"></span>
               </label>
             
           </div>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="true">
-          <label class="md-nav__title" for="__nav_5">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_6">
             <span class="md-nav__icon md-icon"></span>
             
   
@@ -812,6 +911,72 @@
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
             
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    
+  
+  
+  
+    <a href="../../../modelpack/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Model Zoo
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+  
+
+      
+    </li>
+  
+
               
             
               
@@ -876,6 +1041,74 @@
                 
   
   
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../../conversion/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Model Conversion
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
     
   
   
@@ -902,10 +1135,10 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_3" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_5" checked>
         
           
-          <label class="md-nav__link" for="__nav_5_3" id="__nav_5_3_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_6_5" id="__nav_6_5_label" tabindex="0">
             
   
   
@@ -923,8 +1156,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_3_label" aria-expanded="true">
-          <label class="md-nav__title" for="__nav_5_3">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_5_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_6_5">
             <span class="md-nav__icon md-icon"></span>
             
   
@@ -1060,6 +1293,8 @@
     
       
         
+          
+        
       
         
       
@@ -1082,11 +1317,12 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_3_3" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_5_3" checked>
         
           
-          <label class="md-nav__link" for="__nav_5_3_3" id="__nav_5_3_3_label" tabindex="0">
-            
+          <div class="md-nav__link md-nav__container">
+            <a href="../" class="md-nav__link ">
+              
   
   
   <span class="md-ellipsis">
@@ -1100,11 +1336,17 @@
   
   
 
-            <span class="md-nav__icon md-icon"></span>
-          </label>
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_6_5_3" id="__nav_6_5_3_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
         
-        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_5_3_3_label" aria-expanded="true">
-          <label class="md-nav__title" for="__nav_5_3_3">
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_6_5_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_6_5_3">
             <span class="md-nav__icon md-icon"></span>
             
   
@@ -1115,6 +1357,8 @@
           <ul class="md-nav__list" data-md-scrollfix>
             
               
+            
+              
                 
   
   
@@ -1122,22 +1366,42 @@
   
   
   
-    <li class="md-nav__item md-nav__item--active">
+    
+    
       
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
+        
+          
+        
       
         
       
+        
       
-        <label class="md-nav__link md-nav__link--active" for="__toc">
+    
+    
+    
+      
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_5_3_2" checked>
+        
           
+          <div class="md-nav__link md-nav__container">
+            <a href="./" class="md-nav__link md-nav__link--active">
+              
   
   
   <span class="md-ellipsis">
     
   
-    Detection Metrics
+    Object Detection Metrics
   
 
     
@@ -1145,17 +1409,43 @@
   
   
 
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+            </a>
+            
+              
+              <label class="md-nav__link md-nav__link--active" for="__nav_6_5_3_2" id="__nav_6_5_3_2_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_6_5_3_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_6_5_3_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Object Detection Metrics
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="matching/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    Detection Metrics
+    Matching and Classification Rules
   
 
     
@@ -1164,235 +1454,41 @@
   
 
       </a>
-      
-        
+    </li>
+  
 
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+              
+            
+              
+                
   
   
   
+  
+    <li class="md-nav__item">
+      <a href="classifications/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
     
   
+    Object Detection Classifications
   
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#ultralytics-detection-metrics" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Ultralytics Detection Metrics
-      
-    </span>
-  </a>
+
+    
+  </span>
   
-    <nav class="md-nav" aria-label="Ultralytics Detection Metrics">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#mean-precision" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Mean Precision
-      
-    </span>
-  </a>
   
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#mean-recall" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Mean Recall
-      
-    </span>
-  </a>
+
+      </a>
+    </li>
   
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#f1-score" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        F1 Score
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#mean-average-precision-map" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Mean Average Precision (mAP)
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#edgefirst-detection-metrics" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        EdgeFirst Detection Metrics
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="EdgeFirst Detection Metrics">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#overall-precision" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Overall Precision
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#overall-recall" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Overall Recall
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#overall-accuracy" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Overall Accuracy
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#mean-average-precision" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Mean Average Precision
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#mean-average-recall" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Mean Average Recall
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#mean-average-accuracy" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Mean Average Accuracy
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#precision-versus-recall" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Precision versus Recall
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#confusion-matrix" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Confusion Matrix
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#model-timings" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Model Timings
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#further-reading" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Further Reading
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#glossary" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Glossary
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#references" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        References
-      
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
+
+              
+            
+          </ul>
+        </nav>
       
     </li>
   
@@ -1462,42 +1558,14 @@
   
   
     <li class="md-nav__item">
-      <a href="../matching/" class="md-nav__link">
+      <a href="../timing/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    Matching and Classification Rules
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../classifications/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Object Detection Classifications
+    Timing Metrics
   
 
     
@@ -1535,6 +1603,14 @@
   
     
     
+      
+        
+      
+        
+      
+        
+      
+        
       
         
       
@@ -1558,15 +1634,7 @@
   
   
   
-    
-  
-  
-  
-    
-  
-  
-  
-    <a href="../../../deployment/pc/mpk/" class="md-nav__link">
+    <a href="../../../deployment/studio/" class="md-nav__link">
       
   
   
@@ -1585,76 +1653,6 @@
         <span class="md-nav__icon md-icon"></span>
       
     </a>
-  
-
-  
-
-  
-
-      
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    
-    
-      
-        
-      
-        
-      
-        
-      
-    
-    
-    
-      
-      
-    
-    
-      
-        
-        
-      
-    
-    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
-      
-        
-  
-  
-  
-    
-  
-  
-  
-    <a href="../../../modelpack/" class="md-nav__link">
-      
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Model Zoo
-  
-
-    
-  </span>
-  
-  
-
-      
-        <span class="md-nav__icon md-icon"></span>
-      
-    </a>
-  
-
   
 
       
@@ -1678,6 +1676,34 @@
     
   
     Model Metadata
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../cameraadaptor/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Camera Adaptor
   
 
     
@@ -1893,16 +1919,38 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#ultralytics-detection-metrics" class="md-nav__link">
+  <a href="#full-curve-metrics" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Ultralytics Detection Metrics
+        Full-Curve Metrics
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Ultralytics Detection Metrics">
+    <nav class="md-nav" aria-label="Full-Curve Metrics">
       <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#mean-average-precision-map" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Mean Average Precision (mAP)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#f1-score" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        F1 Score
+      
+    </span>
+  </a>
+  
+</li>
         
           <li class="md-nav__item">
   <a href="#mean-precision" class="md-nav__link">
@@ -1927,21 +1975,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#f1-score" class="md-nav__link">
+  <a href="#optimal-thresholds" class="md-nav__link">
     <span class="md-ellipsis">
       
-        F1 Score
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#mean-average-precision-map" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Mean Average Precision (mAP)
+        Optimal Thresholds
       
     </span>
   </a>
@@ -1954,22 +1991,22 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#edgefirst-detection-metrics" class="md-nav__link">
+  <a href="#deployment-metrics" class="md-nav__link">
     <span class="md-ellipsis">
       
-        EdgeFirst Detection Metrics
+        Deployment Metrics
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="EdgeFirst Detection Metrics">
+    <nav class="md-nav" aria-label="Deployment Metrics">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#overall-precision" class="md-nav__link">
+  <a href="#deployment-class-precision" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Overall Precision
+        Deployment Class Precision
       
     </span>
   </a>
@@ -1977,10 +2014,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#overall-recall" class="md-nav__link">
+  <a href="#deployment-class-recall" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Overall Recall
+        Deployment Class Recall
       
     </span>
   </a>
@@ -1988,43 +2025,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#overall-accuracy" class="md-nav__link">
+  <a href="#deployment-class-accuracy" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Overall Accuracy
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#mean-average-precision" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Mean Average Precision
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#mean-average-recall" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Mean Average Recall
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#mean-average-accuracy" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Mean Average Accuracy
+        Deployment Class Accuracy
       
     </span>
   </a>
@@ -2059,10 +2063,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#model-timings" class="md-nav__link">
+  <a href="#sample-computation" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Model Timings
+        Sample Computation
       
     </span>
   </a>
@@ -2074,17 +2078,6 @@
     <span class="md-ellipsis">
       
         Further Reading
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#glossary" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Glossary
       
     </span>
   </a>
@@ -2172,10 +2165,28 @@
     
     
       <li class="md-path__item">
-        <a href="./" class="md-path__link">
+        <a href="../" class="md-path__link">
           
   <span class="md-ellipsis">
     Model Metrics
+  </span>
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+    
+    
+      <li class="md-path__item">
+        <a href="./" class="md-path__link">
+          
+  <span class="md-ellipsis">
+    Object Detection Metrics
   </span>
 
         </a>
@@ -2194,101 +2205,257 @@
 
 
 
-<h1 id="detection-metrics">Detection Metrics</h1>
-<p>This section will describe the validation metrics reported in <a href="../../vision/managed/">Validating Vision Models</a> for object detection.  The different types of validation methods available are Ultralytics, EdgeFirst, and YOLOv7.  These validation methods have been implemented in EdgeFirst Validator to reproduce specific metrics seen in other applications.  These metrics and their differences will be described in more detail below.</p>
-<h2 id="ultralytics-detection-metrics">Ultralytics Detection Metrics</h2>
-<h3 id="mean-precision">Mean Precision</h3>
-<p>This metric is defined as the average of the per-class precision values at the threshold where the mean F1 score is highest.  This score reflects the overall ability of the model to avoid false positives across all classes.</p>
-<h3 id="mean-recall">Mean Recall</h3>
-<p>This metric is defined as the average of the per-class recall values at the where the mean F1 score is highest.  This score reflects the model’s ability to find all relevant objects (true positives) across all classes.</p>
+<h1 id="object-detection-metrics">Object Detection Metrics</h1>
+<p>This section describes the validation metrics reported for <a href="../../vision/managed/">Object Detection Validation</a>.  The object detection metrics are based on <abbr title="Intersection over Union">IoU</abbr> which measures how closely the predictions aligns with the ground truth annotations.  For object detection, the <abbr title="Intersection over Union">IoU</abbr> is calculated from bounding boxes.  However, for <a href="../segmentation/#instance-segmentation-metrics">instance segmentation</a>, the <abbr title="Intersection over Union">IoU</abbr> is calculated from instance masks.  The methods for computing object detection and instance segmentation metrics are the same.  The object detection metrics are categorized into <strong>Full-Curve Metrics</strong> and <strong>Deployment Metrics</strong>. </p>
+<p>The Full-Curve Metrics assess the model performance across varying score and <abbr title="Intersection over Union">IoU</abbr> thresholds for all classes.  The Deployment Metrics are based on the best model performance at the optimal score threshold.</p>
+<h2 id="full-curve-metrics">Full-Curve Metrics</h2>
+<p>Full-Curve Metrics evaluate model performance across a wide range of confidence (score) and <abbr title="Intersection over Union">IoU</abbr> (0.50-0.95) thresholds.  To enable this, the <abbr title="Non-Maximum Suppression">NMS</abbr> score threshold is set very low (e.g., 0.001), allowing nearly all predictions to be considered.  The model is then evaluated over score thresholds from 0 to 1 and <abbr title="Intersection over Union">IoU</abbr> thresholds from 0.50 to 0.95 to understand how performance changes as filtering becomes more or less strict.</p>
+<p>The Full-Curve Metrics include:</p>
+<ul>
+<li>mean Average Precision (<abbr title="mean Average Precision">mAP</abbr>)</li>
+<li>Mean Precision</li>
+<li>Mean Recall</li>
+<li>Mean F1 Score</li>
+</ul>
+<figure>
+            <img align="center" alt="Detection Metrics" src="../../../assets/metrics/detection_metrics.png" />
+            <figcaption>Detection Metrics</figcaption>
+            </figure>
+<h3 id="mean-average-precision-map">Mean Average Precision (<abbr title="mean Average Precision">mAP</abbr>)</h3>
+<p>Mean Average Precision (<abbr title="mean Average Precision">mAP</abbr>) is one of the most important metrics for evaluating object detection models and is computed using the same methodology as <a href="https://docs.ultralytics.com/guides/yolo-performance-metrics/">Ultralytics</a> (<abbr title="You Only Look Once">YOLO</abbr>).</p>
+<figure>
+            <img align="center" alt="Mean Average Precision" src="../../../assets/metrics/mAP.png" />
+            <figcaption>Mean Average Precision</figcaption>
+            </figure>
+<p>The <abbr title="mean Average Precision">mAP</abbr> measures how well the model balances precision and recall across confidence thresholds, while also evaluating detection quality at different <abbr title="Intersection over Union">IoU</abbr> thresholds.</p>
+<p><strong>Definitions</strong></p>
+<ul>
+<li>Precision: Fraction of predicted objects that are correct</li>
+<li>Recall: Fraction of ground truth objects that are detected</li>
+<li>AP (Average Precision): Area under the Precision–Recall curve for a given class and <abbr title="Intersection over Union">IoU</abbr> threshold</li>
+<li><abbr title="mean Average Precision">mAP</abbr> (mean AP): Mean of AP values across all classes</li>
+</ul>
+<p><strong>How <abbr title="mean Average Precision">mAP</abbr> is computed</strong></p>
+<p>For a fixed <abbr title="Intersection over Union">IoU</abbr> threshold, compute the AP (average precision):</p>
+<ol>
+<li>Predictions are sorted by confidence score</li>
+<li>Precision and recall are computed cumulatively</li>
+<li>A Precision–Recall curve is generated by sweeping the confidence (score) threshold from 0 to 1 at this <abbr title="Intersection over Union">IoU</abbr> threshold</li>
+<li>AP is computed as the area under this curve</li>
+</ol>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><abbr title="Intersection over Union">IoU</abbr> does not create the curve — it defines what counts as a true positive at each fixed threshold. For <abbr title="mean Average Precision">mAP</abbr>@0.50:0.95, this AP computation is repeated over <abbr title="Intersection over Union">IoU</abbr> thresholds from 0.50 to 0.95 and then averaged.</p>
+</div>
+<p>For each class:</p>
+<ol>
+<li>Compute AP at each <abbr title="Intersection over Union">IoU</abbr> threshold</li>
+<li>For <abbr title="mean Average Precision">mAP</abbr>@0.50:0.95, average AP across all <abbr title="Intersection over Union">IoU</abbr> thresholds</li>
+<li>Then average across all classes</li>
+</ol>
+<p><strong>We report <abbr title="mean Average Precision">mAP</abbr> at <abbr title="Intersection over Union">IoU</abbr> thresholds (0.50, 0.75, 0.50-0.95):</strong></p>
+<ul>
+<li><strong><abbr title="mean Average Precision">mAP</abbr>@0.50</strong><ul>
+<li>Lenient matching (<abbr title="Intersection over Union">IoU</abbr> ≥ 0.50)</li>
+<li>Focuses on detection correctness</li>
+</ul>
+</li>
+<li><strong><abbr title="mean Average Precision">mAP</abbr>@0.75</strong><ul>
+<li>Stricter matching</li>
+<li>Requires better localization</li>
+</ul>
+</li>
+<li><strong><abbr title="mean Average Precision">mAP</abbr>@0.50:0.95 (COCO metric)</strong><ul>
+<li>Average AP across <abbr title="Intersection over Union">IoU</abbr> thresholds from 0.50 to 0.95 (step 0.05)</li>
+<li>Evaluates both detection and localization quality</li>
+</ul>
+</li>
+</ul>
 <h3 id="f1-score">F1 Score</h3>
-<p>The F1 score is the harmonic mean between precision and recall giving a single metric that balances both values — especially useful in object detection when you want to evaluate the trade-off between detecting objects correctly (recall) and avoiding false positives (precision).</p>
-<p>The F1 equation is given as:</p>
+<p>The Mean F1 Score is the harmonic mean between precision and recall used to determine the model’s optimal score threshold. It is derived from the F1 vs Confidence curve, which shows how the F1 score changes as the score threshold varies.  The model's optimal score threshold is at the max F1 score of this curve. </p>
+<figure>
+            <img align="center" alt="F1 versus Confidence" src="../../../assets/metrics/f1_vs_confidence.png" />
+            <figcaption>F1 versus Confidence</figcaption>
+            </figure>
+<p>For each confidence threshold:</p>
+<ul>
+<li>Precision and recall are computed per class</li>
+<li>The F1 score is calculated as the harmonic mean:</li>
+</ul>
 <div class="arithmatex">\[
 \text{F1} = \frac{2 * precision * recall}{precision + recall}
 \]</div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
+<p>The equations for precision and recall are provided in the <a href="../#glossary">glossary</a>.</p>
 </div>
-<p>The equations for precision and recall are provided in the <a href="#glossary">glossary</a>.</p>
-<h3 id="mean-average-precision-map">Mean Average Precision (<abbr title="mean Average Precision">mAP</abbr>)</h3>
-<p>The <abbr title="mean Average Precision">mAP</abbr> (mean Average Precision) is one of the most important metrics for evaluating object detection models.  It measures how well your model balances precision and recall across different confidence thresholds and <abbr title="Intersection over Union">IoU</abbr> thresholds.</p>
-<ul>
-<li>Precision: How many predicted positives are correct.</li>
-<li>Recall: How many actual positives were found.</li>
-<li>AP (Average Precision): The area under the precision–recall curve for a given class and <abbr title="Intersection over Union">IoU</abbr> threshold.</li>
-<li><abbr title="mean Average Precision">mAP</abbr> (mean AP): The mean of all class-wise AP values, giving a single number for the model performance.</li>
-</ul>
-<p>We provide the <abbr title="mean Average Precision">mAP</abbr> score at the <abbr title="Intersection over Union">IoU</abbr> thresholds (0.50, 0.75, and 0.50-0.95).</p>
-<ul>
-<li><abbr title="mean Average Precision">mAP</abbr>@0.50: Measures detection quality with lenient <abbr title="Intersection over Union">IoU</abbr> threshold (0.50). This measures how many detections are correct (<abbr title="Intersection over Union">IoU</abbr> ≥ 0.50).</li>
-<li><abbr title="mean Average Precision">mAP</abbr>@0.75: Stricter <abbr title="Intersection over Union">IoU</abbr> requirement — better localization is required. This measures how many detections are correct (<abbr title="Intersection over Union">IoU</abbr> ≥ 0.75).</li>
-<li><abbr title="mean Average Precision">mAP</abbr>@0.50-0.95: Average of APs from <abbr title="Intersection over Union">IoU</abbr> 0.50 to 0.95 (step 0.05) — COCO metric. This is the standard COCO metric, averaged over 10 <abbr title="Intersection over Union">IoU</abbr> thresholds.</li>
-</ul>
-<h2 id="edgefirst-detection-metrics">EdgeFirst Detection Metrics</h2>
-<p>The EdgeFirst detection metrics describe the mean average precision (<abbr title="mean Average Precision">mAP</abbr>), recall (mAR), and accuracy (mACC) at <abbr title="Intersection over Union">IoU</abbr> thresholds 0.50, 0.75, and 0.50:0.95.  These metrics are represented as a bar chart.  Shown below is an example.</p>
+<p>The optimal score threshold is selected as the point where the mean F1 score across all classes is maximized:</p>
+<div class="arithmatex">\[
+t^* = \arg\max_t \ \frac{1}{C} \sum_{c=1}^{C} \text{F1}_c(t)
+\]</div>
+<p>The <strong>reported Mean F1 score is the average of per-class F1 values at this optimal threshold</strong>:</p>
+<div class="arithmatex">\[
+\text{Mean F1} = \frac{1}{C} \sum_{c=1}^{C} \text{F1}_c(t^*)
+\]</div>
+<p>The Mean F1 score represents the best balance between precision and recall and defines the recommended operating score threshold for deploying the model.</p>
+<h3 id="mean-precision">Mean Precision</h3>
+<p>This metric is defined as the <strong>average of the per-class precision values at the optimal threshold where the mean F1 score is highest</strong>.  This score reflects the overall ability of the model to avoid false positives across all classes.</p>
 <figure>
-  <img align="center" alt="Detection Metrics" src="../../../assets/metrics/modelpack-detection-metrics.jpg" />
-<br />
-<figcaption>Detection Metrics</figcaption>
-</figure>
-<h3 id="overall-precision">Overall Precision</h3>
+            <img align="center" alt="Precision versus Confidence" src="../../../assets/metrics/precision_vs_confidence.png" />
+            <figcaption>Precision versus Confidence</figcaption>
+            </figure>
+<p>At the selected threshold:</p>
+<ol>
+<li>Precision is obtained for each class</li>
+<li>The values are averaged:</li>
+</ol>
+<div class="arithmatex">\[
+\text{Mean Precision} = \frac{1}{C} \sum_{c=1}^{C} \text{Precision}_c(t^*)
+\]</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The equation for precision is provided in the <a href="../#glossary">glossary</a>.</p>
+</div>
+<p>The Mean Precision metric measures how accurate the model’s predictions are at the optimal threshold.  A high precision score indicates fewer false positives.</p>
+<h3 id="mean-recall">Mean Recall</h3>
+<p>This metric is defined as the <strong>average of the per-class recall values at the threshold where the mean F1 score is highest</strong>.  This score reflects the model’s ability to find all relevant objects (true positives) across all classes.</p>
+<figure>
+            <img align="center" alt="Recall versus Confidence" src="../../../assets/metrics/recall_vs_confidence.png" />
+            <figcaption>Recall versus Confidence</figcaption>
+            </figure>
+<p>At this threshold:</p>
+<ol>
+<li>Recall is obtained for each class</li>
+<li>The values are averaged:</li>
+</ol>
+<div class="arithmatex">\[
+\text{Mean Recall} = \frac{1}{C} \sum_{c=1}^{C} \text{Recall}_c(t^*)
+\]</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The equation for recall is provided in the <a href="../#glossary">glossary</a>.</p>
+</div>
+<p>The Mean Recall metrics measures how well the model detects ground truth objects.  A high recall score indicates fewer missed detections.</p>
+<h3 id="optimal-thresholds">Optimal Thresholds</h3>
+<table>
+<thead>
+<tr>
+<th>Optimal Score Threshold</th>
+<th>Optimal <abbr title="Intersection over Union">IoU</abbr> Threshold</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><img alt="score" src="../../../assets/metrics/optimal_score_threshold.jpg" /></td>
+<td><img alt="iou" src="../../../assets/metrics/optimal_iou_threshold.jpg" /></td>
+</tr>
+</tbody>
+</table>
+<p>The optimal thresholds are the estimated values to use for deploying the model to achieve the highest performance accuracy based on the validation dataset.  As mentioned, the score threshold is calculated based on the highest F1 score across all classes under the <em>F1 versus Confidence</em> curve.  For more information, refer to the <a href="#f1-score">F1 Score</a> section.  </p>
+<p>The optimal <abbr title="Intersection over Union">IoU</abbr> threshold is determined directly from the validation dataset using a data-driven approach.  Note that the <abbr title="Intersection over Union">IoU</abbr> threshold is an <abbr title="Non-Maximum Suppression">NMS</abbr> parameter that defines when two prediction boxes are considered duplicates based on their overlap.  Lower <abbr title="Intersection over Union">IoU</abbr> thresholds make suppression more aggressive (even small overlaps are removed), while higher thresholds allow more overlapping predictions to remain.</p>
+<p>To estimate a suitable <abbr title="Intersection over Union">IoU</abbr> threshold, <abbr title="Intersection over Union">IoU</abbr> values are computed between bounding boxes in the ground truth dataset.  These values represent the natural overlap that occurs in the data.  The highest overlaps in the ground truth dataset are also expected to exist in the model predictions, so <strong>we frame the optimal <abbr title="Intersection over Union">IoU</abbr> threshold to also allow the higher overlaps as seen in the dataset</strong>.  Instead of simply taking the maximum overlap (which may be an outlier), the method applies <a href="https://en.wikipedia.org/wiki/Box_plot">Tukey’s boxplot rule</a> to derive a robust upper bound.</p>
+<p>Specifically:</p>
+<ul>
+<li>The first (25th percentile) quartile (Q1), median, and third (75th percentile) quartile (Q3) of the <abbr title="Intersection over Union">IoU</abbr> distribution are computed</li>
+</ul>
+<div class="arithmatex">\[
+p_{25} = Q_1,\quad p_{75} = Q_3,\quad p_{100} = \max(\text{IoU})
+\]</div>
+<ul>
+<li>The interquartile range (IQR) is defined as 
+$$
+\text{IQR} = Q_3 - Q_1
+$$</li>
+<li>The upper whisker (optimal <abbr title="Intersection over Union">IoU</abbr>) is calculated as:</li>
+</ul>
+<div class="arithmatex">\[
+\text{IoU}_{\text{optimal}} = \min\left(\max(\text{IoU}),\ Q_3 + 1.5 \cdot \text{IQR}\right)
+\]</div>
+<p><strong>What if the dataset does not have any ground truth intersections?</strong></p>
+<p>In some datasets, there may be no overlapping ground truth bounding boxes, meaning it is not possible to estimate an optimal <abbr title="Intersection over Union">IoU</abbr> threshold using the <abbr title="Intersection over Union">IoU</abbr> distribution of ground truth intersections.  In this case, a fallback strategy is used to choose the <abbr title="Intersection over Union">IoU</abbr> threshold that eliminates the highest number of localization false positives (duplicate predictions).  Note that the localization false positives are any predictions not matched to any ground truth primarily due to prediction duplications (not filtered by <abbr title="Non-Maximum Suppression">NMS</abbr>) or it does not intersect any ground truth bounding box. </p>
+<p>The <abbr title="Intersection over Union">IoU</abbr> values for these localization false positives are then collected.  These <abbr title="Intersection over Union">IoU</abbr> values represent the duplicated boxes that should have been filtered by <abbr title="Non-Maximum Suppression">NMS</abbr>.  The <abbr title="Intersection over Union">IoU</abbr> values of these false positives are then grouped into a histogram.  The optimal <abbr title="Intersection over Union">IoU</abbr> threshold is then selected as the lower edge of the bin with the highest frequency.  In other words, <strong>if there are no ground truth intersections, the bin with the most number of localization false positive is taken as the optimal <abbr title="Intersection over Union">IoU</abbr> threshold</strong>.</p>
+<div class="arithmatex">\[
+\text{IoU}_{\text{optimal}} = b_k \quad \text{where} \quad k = \arg\max_i \ \text{count}(b_i)
+\]</div>
+<p><strong>What if there are no false positives?</strong></p>
+<p>If no false positives are present, or if the computed optimal <abbr title="Intersection over Union">IoU</abbr> threshold is 0, the system falls back to report the default <abbr title="Non-Maximum Suppression">NMS</abbr> <abbr title="Intersection over Union">IoU</abbr> threshold of 0.70, which is consistent with the Ultralytics default.</p>
+<h2 id="deployment-metrics">Deployment Metrics</h2>
+<p>As mentioned, the Full-Curve Metrics assess the model performance at varying <abbr title="Non-Maximum Suppression">NMS</abbr> score thresholds to find the <a href="#f1-score">optimal score threshold that yields the max F1-score</a>.  This score threshold is then used to filter the predictions.  These filtered predictions are then classified into true positives, false positives (classification, localization), and false negatives. </p>
+<div class="admonition note">
+<p class="admonition-title">Classifications</p>
+<p>For more information on how these predictions are matched and classified into true positives, false positives, and false negatives, please see the <a href="matching/">Matching and Classification Rules</a>.</p>
+</div>
+<figure>
+            <img align="center" alt="Deployment Classifications" src="../../../assets/metrics/deployment_classifications.png" />
+            <figcaption>Deployment Classifications</figcaption>
+            </figure>
+<p>Additional insight into these classifications can be gained by examining the distributions of prediction scores and IoUs, shown in the histograms below.  In both plots, green represents true positives, yellow represents classification false positives, and red represents localization false positives.</p>
+<table>
+<thead>
+<tr>
+<th>Histogram of Scores</th>
+<th>Histogram of IoUs</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><img alt="scores" src="../../../assets/metrics/histogram_scores.png" /></td>
+<td><img alt="IoUs" src="../../../assets/metrics/histogram_ious.png" /></td>
+</tr>
+</tbody>
+</table>
+<p>These histograms help reveal how different types of predictions are distributed.  For example, a high number of false positives with high confidence scores may indicate issues with the model’s classification behavior or training data. Similarly, a concentration of predictions with low <abbr title="Intersection over Union">IoU</abbr> values suggests poor localization, meaning predicted objects are not well aligned with the ground truth.</p>
+<p>Further analysis can be performed using the <a href="#confusion-matrix">Confusion Matrix</a>, which breaks down prediction outcomes by class.  This visualization highlights which classes the model detects well and which it frequently misses, potentially indicating a need for more training data for those classes.  It also reveals common misclassifications between classes, helping identify areas that may require further investigation or improvements in the training dataset.</p>
+<p>From these plots, <strong>the sum of true positives, false positives, and false negatives equals the totals reported in the deployment classifications</strong>. Every prediction is accounted for in this breakdown.</p>
+<p>Lastly, the precision, recall, and accuracy scores of each class are provided in the Class Metrics bar chart.  You can find the equations for precision, recall, and accuracy in the <a href="../#glossary">Glossary</a>. </p>
+<figure>
+            <img align="center" alt="Class Metrics" src="../../../assets/metrics/class_metrics.png" />
+            <figcaption>Class Metrics</figcaption>
+            </figure>
+<p>The deployment precision, recall, and accuracy are calculated based on the mean value of the precision, recall, and accuracy of each class as shown in the next sections.</p>
+<figure>
+            <img align="center" alt="Detection Metrics" src="../../../assets/metrics/detection_metrics.png" />
+            <figcaption>Detection Metrics</figcaption>
+            </figure>
+<h3 id="deployment-class-precision">Deployment Class Precision</h3>
+<p>The deployment class precision is the average of the precision values of each class.</p>
+<div class="arithmatex">\[
+\text{deployment class precision} = \frac{1}{C}\sum_{i=1}^{C}\text{precision}_{i}, C = \text{number of classes}
+\]</div>
+<div class="admonition note">
+<p class="admonition-title">Precision Equation</p>
+<p>The equation for precision is shown in the <a href="../#glossary">Glossary</a>.</p>
+</div>
 <p>Precision measures how well the model outputs correct predictions.  Precision alone does not provide a final summary of the model performance because it only considers the ratio of the number of correct detections to the total number of detections.  Consider a case where the model might have made 9 detections which are all correct and yields a precision of 100%, but there are 200 ground truth annotations, the model missed the rest of the 191 annotations which yields a recall of 4.5%.</p>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>The equation for precision is shown in the <a href="#glossary">Glossary</a>.</p>
-</div>
-<h3 id="overall-recall">Overall Recall</h3>
-<p>Recall measures how well the model finds the ground truth annotations.  A similar idea is presented for recall, this metric only considers the ratio of correct detections against the total number of ground truths.  However, it is possible that the model will correctly find all ground truth annotations, but it might have generated large amounts of localization false positives.</p>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>The equation for recall is shown in the <a href="#glossary">Glossary</a>.</p>
-</div>
-<h3 id="overall-accuracy">Overall Accuracy</h3>
-<p>This accuracy metric provides a better representation of the overall model performance over precision and recall.  The accuracy metric aims to combine both precision and recall by considering correct detections (TP), false detections (localization FP and classification FP), and missed detections (FN).  The accuracy is the ratio of the correct detections against all model detections and all ground truth objects. This metric aims to measure how well the model aligns its detections to the ground truth and a perfect alignment suggests zero missed annotations and zero false detections.</p>
+<h3 id="deployment-class-recall">Deployment Class Recall</h3>
+<p>The deployment class recall is the average of the recall values of each class.</p>
 <div class="arithmatex">\[
-\text{accuracy} = \frac{\text{TP}}{\text{TP} + \text{FN} + \text{FP}_\text{all}}
-\]</div>
-<h3 id="mean-average-precision">Mean Average Precision</h3>
-<p>This <a href="#mean-average-precision-map"><abbr title="mean Average Precision">mAP</abbr> metric</a> is calculated using the same strategy as Ultralytics.  The <abbr title="mean Average Precision">mAP</abbr> is based on the area under the Precision versus Recall curve which plots the trade-off between precision and recall by adjusting the <abbr title="Intersection over Union">IoU</abbr> thresholds.  The average precision is first calculated by finding the area under the Precision versus Recall curve for each class at varying <abbr title="Intersection over Union">IoU</abbr> thresholds.  The <abbr title="mean Average Precision">mAP</abbr> at 0.50 and 0.75 is the mean of the average precision across all classes, but only at the <abbr title="Intersection over Union">IoU</abbr> threshold values of 0.50 and 0.75.  For the case of <abbr title="mean Average Precision">mAP</abbr> at 0.50:0.95, the average precision at 0.50:0.95 is first calculated by taking the mean of the average precision (area under the curve) across <abbr title="Intersection over Union">IoU</abbr> thresholds 0.50 to 0.95 in 0.05 steps.  This process is done per class and the final <abbr title="mean Average Precision">mAP</abbr> at 0.50:0.95 is the mean of the average precision at 0.50:0.95 values across all classes.</p>
-<h3 id="mean-average-recall">Mean Average Recall</h3>
-<p>This metric is calculated as the sum of the recall values of each class over the number of classes at specified <abbr title="Intersection over Union">IoU</abbr> thresholds.<br />
-The mean average recall at <abbr title="Intersection over Union">IoU</abbr> thresholds 0.50 and 0.75 are calculated based on the equations below.  </p>
-<div class="arithmatex">\[
-\text{mAR} = \frac{1}{n}\sum_{i=1}^{n}\text{recall}_{i}, n = \text{number of classes}
-\]</div>
-<p>This metric is calculated as the sum of the recall values of each class over the number of classes.  Specifying the <abbr title="Intersection over Union">IoU</abbr> thresholds determines the strictness of true positive definitions.  A detection is a true positive if it correctly identifies the ground truth, if it has a score greater than the score threshold, and if it has an <abbr title="Intersection over Union">IoU</abbr> greater than the <abbr title="Intersection over Union">IoU</abbr> threshold.</p>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>The equation for recall is shown in the <a href="#glossary">Glossary</a>.</p>
-</div>
-<p>According to Tenyks Blogger (2023), "AR is defined as the recall averaged over a range of <abbr title="Intersection over Union">IoU</abbr> thresholds (from 0.50 to 1.0). We can compute mean average recall (mAR) as the mean of AR across all classes".  The metric for <code>mAR[0.50:0.95]</code> is calculated by taking the sum of mAR values at <abbr title="Intersection over Union">IoU</abbr> thresholds 0.50, 0.55, ..., 0.95 and then dividing by the number of validation <abbr title="Intersection over Union">IoU</abbr> thresholds (in this case 10).</p>
-<div class="arithmatex">\[
-\text{mAR}_{0.50-0.95} = \frac{1}{10}\sum_{i=0.50}^{n}\text{mAR}_{i}, i = \text{0.50, 0.55, 0.60, ..., 0.95}
-\]</div>
-<h3 id="mean-average-accuracy">Mean Average Accuracy</h3>
-<p>This metric is calculated as the sum of accuracy values of each class over the number of classes at specified <abbr title="Intersection over Union">IoU</abbr> thresholds.
-The mean average accuracy at <abbr title="Intersection over Union">IoU</abbr> thresholds 0.50 and 0.75 are calculated based on the equations below.  </p>
-<div class="arithmatex">\[
-\text{mACC} = \frac{1}{n}\sum_{i=1}^{n}\text{accuracy}_{i}, n = \text{number of classes}
+\text{deployment class recall} = \frac{1}{C}\sum_{i=1}^{C}\text{recall}_{i}, C = \text{number of classes}
 \]</div>
 <div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>The equation for accuracy is shown in the <a href="#glossary">Glossary</a>.</p>
+<p class="admonition-title">Recall Equation</p>
+<p>The equation for recall is shown in the <a href="../#glossary">Glossary</a>.</p>
 </div>
-<p>The following equation below calculates the mean average accuracy for a range of <abbr title="Intersection over Union">IoU</abbr> thresholds from 0.50:0.95 which is calculated similarly to mean average recall.  </p>
+<p>Recall measures how well the model finds the ground truth annotations.  This metric only considers the ratio of correct detections against the total number of ground truths.  However, it is possible that the model will correctly find all ground truth annotations, but it might have generated large amounts of localization false positives.</p>
+<h3 id="deployment-class-accuracy">Deployment Class Accuracy</h3>
+<p>The deployment class accuracy is the average of the accuracy values of each class.</p>
 <div class="arithmatex">\[
-\text{mACC}_{0.50-0.95} = \frac{1}{10}\sum_{i=0.50}^{n}\text{mACC}_{i}, i = \text{0.50, 0.55, 0.60, ..., 0.95}
+\text{deployment class accuracy} = \frac{1}{C}\sum_{i=1}^{C}\text{accuracy}_{i}, C = \text{number of classes}
 \]</div>
+<div class="admonition note">
+<p class="admonition-title">Accuracy Equation</p>
+<p>The equation for accuracy is shown in the <a href="../#glossary">Glossary</a>.</p>
+</div>
+<p>This accuracy metric provides a better representation of the overall model performance over precision and recall.  The accuracy metric aims to combine both precision and recall by considering correct detections (TP), false detections (localization FP and classification FP), and missed detections (FN).  The accuracy is the ratio of the correct detections against all model detections and all ground truth objects.  This metric aims to measure how well the model aligns its detections to the ground truth and a perfect alignment suggests zero missed annotations and zero false detections.</p>
 <h2 id="precision-versus-recall">Precision versus Recall</h2>
-<p>According to Mariescu-Istodor and Fränti (2023), "The performance is a trade-off between precision and recall.  Recall can be increased by lowering the selection threshold to provide more predictions at the cost of decreased precision."  The selection threshold is defined as the "score threshold" in EdgeFirst Validator to provide to the <abbr title="Non-Maximum Suppression">NMS</abbr> to determine which detections are filtered based on the confidence scores meeting the criteria of this threshold.  Lowering the threshold means less detections are filtered which can help in finding more ground truth objects (higher recall), but at the expense of possible incorrect detections (low precision).</p>
-<p>The Precision versus Recall curve shows the trade-off between precision and recall.  At lower thresholds, precision will tend to be lower due to increased leniency for valid detections.  However, more detections will tend to result in higher recall as the model finds more ground truth labels.  Increasing the threshold will start to increase precision for more precise detections, but will start to reduce recall due to the reduction of model detections.  The following curve shows the Precision versus Recall trend for each of the classes in the dataset, along with the average curve for all the classes.  A higher area under the curve, the better the model performance as this indicates maximized values for precision and recall throughout the varying thresholds.  </p>
+<p>According to Mariescu-Istodor and Fränti (2023), “The performance is a trade-off between precision and recall. Recall can be increased by lowering the selection threshold to provide more predictions at the cost of decreased precision.”  In EdgeFirst Studio, this selection threshold corresponds to the score threshold used in Non-Maximum Suppression (<abbr title="Non-Maximum Suppression">NMS</abbr>), which filters detections based on their confidence scores.</p>
+<p>Lowering the score threshold allows more detections to pass through, increasing the likelihood of identifying ground truth objects (higher recall), but also introducing more incorrect predictions (lower precision). Increasing the threshold has the opposite effect: it filters out more detections, improving precision while potentially missing true objects and reducing recall.</p>
+<p>The Precision–Recall curve illustrates this trade-off across different threshold values. At lower thresholds, the model produces more detections, resulting in higher recall but lower precision. As the threshold increases, precision improves due to stricter filtering, while recall decreases as fewer detections are retained. The curve below shows this relationship for each class in the dataset, along with the average across all classes. A larger area under the curve indicates better overall performance, reflecting a stronger balance between precision and recall across thresholds.</p>
 <figure>
-  <img align="center" alt="Precision versus Recall" src="../../../assets/metrics/modelpack-precision-vs-recall.jpg" />
-<br />
-<figcaption>Precision versus Recall</figcaption>
-</figure>
-<p>Precision and recall are common metrics used for evaluating object detectors in machine learning.  According to Mariescu-Istodor and Fränti (2023), "Precision is the number of correct results (true positives) relative to the number of all results.  Recall is the number of correct results relative to the number of expected results" (p.1).  In this case interpreting "all results" as the model's detection results and "expected results" as the ground truth in the dataset, precision is defined as the fraction of correct detections out of the total detections, and recall is defined as the fraction of correct detections out of the total ground truth.  </p>
+            <img align="center" alt="Precision versus Recall" src="../../../assets/metrics/precision_vs_recall.png" />
+            <figcaption>Precision versus Recall</figcaption>
+            </figure>
+<p>Precision and recall are common metrics used for evaluating object detectors in machine learning.  According to Mariescu-Istodor and Fränti (2023), "Precision is the number of correct results (true positives) relative to the number of all results.  Recall is the number of correct results relative to the number of expected results" (p.1).  In this case interpreting "all results" as the model's detection results and "expected results" as the ground truth in the dataset - precision is defined as the fraction of correct detections out of the total detections, and recall is defined as the fraction of correct detections out of the total ground truth.  </p>
 <p>Taking from Vignesh-Babu (2020) and Padilla, Passos, Dias, Netto, &amp; Da Silva (2021), the equation for precision and recall is defined as the following.</p>
 <div class="arithmatex">\[
 \text{precision} = \frac{\text{TP}}{\text{TP} + \text{FP}} = \frac{\text{TP}}{\text{all predictions}}
@@ -2296,13 +2463,12 @@ The mean average accuracy at <abbr title="Intersection over Union">IoU</abbr> th
 <div class="arithmatex">\[
 \text{recall} = \frac{\text{TP}}{\text{TP} + \text{FN}} = \frac{\text{TP}}{\text{all ground truths}}
 \]</div>
-<p>However, on the account of the EdgeFirst Validator's method of classifying detections where false positives are further categorized as localization and classification false positives, then the total number of detections is really the sum of true positives, classification false positives, and localization false positives.  The total number of ground truths is the sum of true positives, false negatives, and classification false positives as shown in the resulting image below.</p>
+<p>However, on the account of the <a href="matching/">EdgeFirst Studio's method of classifying detections</a> where false positives are further categorized into localization and classification false positives, then <strong>the total number of detections is really the sum of true positives, classification false positives, and localization false positives</strong>.  <strong>The total number of ground truths is the sum of true positives, false negatives, and classification false positives</strong> as shown in the resulting image below.</p>
 <figure>
-  <img align="center" alt="playing_cards_v7; 000000000027.png" src="../../../assets/metrics/tp_fp_fn_claim.png" />
-<br />
-<figcaption>playing_cards_v7; 000000000027.png </figcaption>
-</figure>
-<p>In this image there are two true positives, one false negative, one classification false positive, and four ground truth objects.  To agree with the definition of recall being the fraction of all correct detections over all ground truths, the number ground truth becomes the sum of true positives, false negatives, and classification false positives.  The formulas are thus adjusted in the following way which is implemented in EdgeFirst Validator.  </p>
+            <img align="center" alt="playing_cards_v7; 000000000027.png" src="../../../assets/metrics/tp_fp_fn_claim.png" />
+            <figcaption>playing_cards_v7; 000000000027.png</figcaption>
+            </figure>
+<p>In this image there are two true positives (green), one false negative (blue), one classification false positive (red), and four ground truth objects (blue).  To agree with the definition of recall being the fraction of all correct detections over all ground truths, the number ground truth becomes the sum of true positives, false negatives, and classification false positives.  The formulas are thus adjusted in the following way which is implemented in EdgeFirst Studio.  </p>
 <div class="arithmatex">\[
 \text{precision} = \frac{\text{TP}}{\text{TP} + \text{FP}_{\text{all}}} = \frac{\text{TP}}{\text{all predictions}}
 \]</div>
@@ -2312,67 +2478,1131 @@ The mean average accuracy at <abbr title="Intersection over Union">IoU</abbr> th
 \]</div>
 <div class="arithmatex">\[\text{FP}_{\text{c}} = \text{classification FP}\]</div>
 <h2 id="confusion-matrix">Confusion Matrix</h2>
-<p>The Confusion Matrix provides a summary of the prediction results by comparing the predicted labels with the ground truth (actual) labels.  This matrix will show the ground truth labels along the x-axis and the predicted labels along the y-axis.  Along the diagonal where both ground truth labels and prediction labels match shows the true positive (correct predictions) counts of that class.  However, throughout validation, the matrix shows the cases where the model can misidentify labels (false positives) or fail to find the labels (false negatives).  The first column where the ground truth label is "background" indicates the number of false positives are based on the model blindly detecting objects that are not in the image.  The last row where the prediction label is "background" indicates the number of false negatives where the model did not detect any objects that are in the image.</p>
 <figure>
-  <img align="center" alt="Confusion Matrix" src="../../../assets/metrics/modelpack-confusion-matrix.jpg" />
-<br />
-<figcaption>Confusion Matrix</figcaption>
-</figure>
-<h2 id="model-timings">Model Timings</h2>
-<p>The model timings measures the input time, inference time, and the output time.  The input time is the time that it takes to preprocess the images which includes image normalization and image transformations such as resizing, letterbox, or padding.  The inference time is the time that it takes to run model inference on a single image.  The output time is the time that it takes to decode the model outputs into bounding boxes, masks, and scores.  These timings are represented as a bar chart showing their minimum, maximum, and average.</p>
+            <img align="center" alt="Confusion Matrix" src="../../../assets/metrics/confusion_matrix.png" />
+            <figcaption>Confusion Matrix</figcaption>
+            </figure>
+<p>The Confusion Matrix provides a comparison between the ground truth and the prediction labels which gives an indication of how closely the model predictions matches the ground truth and the areas where it diverges.  The Confusion Matrix tracks the counts of each ground truth and prediction label.  These counts are based on the <a href="#deployment-metrics">deployment metrics</a> counts of true positives, false positives, and false negatives.  In this representation of the matrix, the ground truth labels are placed along the x-axis and the prediction labels along the y-axis.  Along the diagonal where both prediction and ground truth label matches, you can find the number of true positives of the specific label.  <strong>The sum of the values along the diagonal equals the number of true positives presented in the deployment metrics</strong>. The first column where the ground truth label is "background" is the number of localization false positives where a model makes a false prediction of objects that are not present in the image.  <strong>The sum of the first column equals the number of localization false positives in the deployment metrics</strong>.  The last row where the prediction label is "background" is the number of false negatives where the model missed to detect these labels in the image.  <strong>The sum of the last row equals the number of false negatives in the deployment metrics</strong>.  Throughout the matrix, you may see counts for mismatching labels.  <strong>The label mismatches represents the classification false positives and its sum equals the number of classification false positives in the deployment metrics</strong>.</p>
+<h2 id="sample-computation">Sample Computation</h2>
+<p>Let's take a closer look at how metrics are computed based on the following example.  In this example, there are three ground truth boxes, three true positives (green) and two localization false positives (red).  There are five predictions in total.</p>
 <figure>
-  <img align="center" alt="Model Timings" src="../../../assets/metrics/model-timings.jpg" />
-<br />
-<figcaption>Model Timings</figcaption>
-</figure>
-<p>Furthermore, the distribution of the average timings are also shown below as a pie chart.</p>
-<figure>
-  <img align="center" alt="Average Timings" src="../../../assets/metrics/timing-distribution.jpg" />
-<br />
-<figcaption>Average Timings</figcaption>
-</figure>
-<h2 id="further-reading">Further Reading</h2>
-<p>This page has described the validation metrics and the formulas behind these computations.  To better understand how detections are classified into true positives, false positives, and false negatives, see <a href="../classifications/">Object Detection Classifications</a>.</p>
-<h2 id="glossary">Glossary</h2>
-<p>This section will explain the definitions of key terms frequently mentioned throughout this page.</p>
+            <img align="center" alt="Playing Cards v7; val_000143.jpg" src="../../../assets/metrics/val_000143.jpg" />
+            <figcaption>Playing Cards v7; val_000143.jpg</figcaption>
+            </figure>
+<div style="display: flex; justify-content: center; gap: 40px;">
+  <!-- Predictions Table -->
+  <div style="text-align: center;">
+    <p><strong>Predictions</strong></p>
+    <table>
+      <tr>
+        <th>Pred</th><th>Index</th><th>Labels</th><th>Scores</th>
+      </tr>
+      <tr>
+        <td>0</td><td>5</td><td>"two"</td><td>0.9549317</td>
+      </tr>
+      <tr>
+        <td>1</td><td>10</td><td>"eight"</td><td>0.95256793</td>
+      </tr>
+      <tr>
+        <td>2</td><td>10</td><td>"eight"</td><td>0.92612094</td>
+      </tr>
+      <tr>
+        <td>3</td><td>10</td><td>"eight"</td><td>0.00142229</td>
+      </tr>
+      <tr>
+        <td>4</td><td>10</td><td>"eight"</td><td>0.00137654</td>
+      </tr>
+    </table>
+  </div>
+
+  <!-- Ground Truth Table -->
+  <div style="text-align: center;">
+    <p><strong>Ground Truth</strong></p>
+    <table>
+      <tr>
+        <th>GT</th><th>Index</th><th>Labels</th>
+      </tr>
+      <tr>
+        <td>0</td><td>10</td><td>"eight"</td>
+      </tr>
+      <tr>
+        <td>1</td><td>10</td><td>"eight"</td>
+      </tr>
+      <tr>
+        <td>2</td><td>5</td><td>"two"</td>
+      </tr>
+    </table>
+  </div>
+</div>
+
+<p>The final calculated Full-Curve Metrics for this sample are as follows:</p>
+<div class="highlight"><pre><span></span><code><span class="w">	</span>+--------------------------------------------------+
+<span class="w">	</span><span class="p">|</span><span class="w">                </span>DETECTION<span class="w"> </span>METRICS<span class="w">                 </span><span class="p">|</span>
+<span class="w">	</span>+--------------------------------------------------+
+<span class="w">	</span><span class="p">|</span><span class="w"> </span>Ground<span class="w"> </span>Truths:<span class="w"> </span><span class="m">3</span><span class="w">                                 </span><span class="p">|</span>
+<span class="w">	</span><span class="p">|</span><span class="w"> </span>Predictions:<span class="w"> </span><span class="m">5</span><span class="w">                                   </span><span class="p">|</span>
+<span class="w">	</span>+---------------+-------------------+--------------+
+<span class="w">	</span><span class="p">|</span><span class="w">               </span><span class="p">|</span><span class="w"> </span>Mean<span class="w"> </span>Precision<span class="w">    </span><span class="p">|</span><span class="w">    </span><span class="m">99</span>.13<span class="w">     </span><span class="p">|</span>
+<span class="w">	</span><span class="p">|</span><span class="w">               </span><span class="p">|</span><span class="w"> </span>mAP@0.5<span class="w">           </span><span class="p">|</span><span class="w">     </span><span class="m">99</span>.5<span class="w">     </span><span class="p">|</span>
+<span class="w">	</span><span class="p">|</span><span class="w"> </span>Precision<span class="w"> </span><span class="o">(</span>%<span class="o">)</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>mAP@0.75<span class="w">          </span><span class="p">|</span><span class="w">     </span><span class="m">99</span>.5<span class="w">     </span><span class="p">|</span>
+<span class="w">	</span><span class="p">|</span><span class="w">               </span><span class="p">|</span><span class="w"> </span>mAP@0.5-0.95<span class="w">      </span><span class="p">|</span><span class="w">    </span><span class="m">67</span>.79<span class="w">     </span><span class="p">|</span>
+<span class="w">	</span>+---------------+-------------------+--------------+
+<span class="w">	</span><span class="p">|</span><span class="w"> </span>Recall<span class="w"> </span><span class="o">(</span>%<span class="o">)</span><span class="w">    </span><span class="p">|</span><span class="w"> </span>Mean<span class="w"> </span>Recall<span class="w">       </span><span class="p">|</span><span class="w">    </span><span class="m">100</span>.0<span class="w">     </span><span class="p">|</span>
+<span class="w">	</span>+---------------+-------------------+--------------+
+<span class="w">	</span><span class="p">|</span><span class="w"> </span>F1<span class="w"> </span>Score<span class="w"> </span><span class="o">(</span>%<span class="o">)</span><span class="w">  </span><span class="p">|</span><span class="w"> </span>Mean<span class="w"> </span>F1<span class="w">           </span><span class="p">|</span><span class="w">    </span><span class="m">99</span>.56<span class="w">     </span><span class="p">|</span>
+<span class="w">	</span>+---------------+-------------------+--------------+
+</code></pre></div>
+<p>The final calculated Deployment Metrics for this sample are as follows:</p>
+<div class="highlight"><pre><span></span><code><span class="w">	</span>+--------------------------------------------------+
+<span class="w">	</span><span class="p">|</span><span class="w">     </span>DEPLOYMENT<span class="w"> </span>METRICS<span class="w"> </span>@<span class="w"> </span>OPTIMAL<span class="w"> </span>THRESHOLDS<span class="w">      </span><span class="p">|</span>
+<span class="w">	</span>+---------------+----------------+-----------------+
+<span class="w">	</span><span class="p">|</span><span class="w"> </span>Ground<span class="w"> </span>Truths<span class="w"> </span><span class="p">|</span><span class="w"> </span>True<span class="w"> </span>Positives<span class="w"> </span><span class="p">|</span><span class="w"> </span>False<span class="w"> </span>Negatives<span class="w"> </span><span class="p">|</span>
+<span class="w">	</span>+---------------+----------------+-----------------+
+<span class="w">	</span><span class="p">|</span><span class="w">       </span><span class="m">3</span><span class="w">       </span><span class="p">|</span><span class="w">       </span><span class="m">3</span><span class="w">        </span><span class="p">|</span><span class="w">        </span><span class="m">0</span><span class="w">        </span><span class="p">|</span>
+<span class="w">	</span>+-------------------------+------------------------+
+<span class="w">	</span><span class="p">|</span><span class="w">    </span>Classification<span class="w"> </span>FP<span class="w">    </span><span class="p">|</span><span class="w">    </span>Localization<span class="w"> </span>FP<span class="w">     </span><span class="p">|</span>
+<span class="w">	</span>+-------------------------+------------------------+
+<span class="w">	</span><span class="p">|</span><span class="w">            </span><span class="m">0</span><span class="w">            </span><span class="p">|</span><span class="w">           </span><span class="m">0</span><span class="w">            </span><span class="p">|</span>
+<span class="w">	</span>+-------------------------+------------------------+
+<span class="w">	</span><span class="p">|</span><span class="w">    </span>Overall<span class="w"> </span>Accuracy<span class="w">     </span><span class="p">|</span><span class="w">         </span><span class="m">100</span>.0<span class="w">          </span><span class="p">|</span>
+<span class="w">	</span><span class="p">|</span><span class="w">    </span>Mean<span class="w"> </span>Class<span class="w"> </span>Accuracy<span class="w">  </span><span class="p">|</span><span class="w">         </span><span class="m">100</span>.0<span class="w">          </span><span class="p">|</span>
+<span class="w">	</span>+-------------------------+------------------------+
+<span class="w">	</span><span class="p">|</span><span class="w">    </span>Overall<span class="w"> </span>Precision<span class="w">    </span><span class="p">|</span><span class="w">         </span><span class="m">100</span>.0<span class="w">          </span><span class="p">|</span>
+<span class="w">	</span><span class="p">|</span><span class="w">    </span>Mean<span class="w"> </span>Class<span class="w"> </span>Precision<span class="w"> </span><span class="p">|</span><span class="w">         </span><span class="m">100</span>.0<span class="w">          </span><span class="p">|</span>
+<span class="w">	</span>+-------------------------+------------------------+
+<span class="w">	</span><span class="p">|</span><span class="w">    </span>Overall<span class="w"> </span>Recall<span class="w">       </span><span class="p">|</span><span class="w">         </span><span class="m">100</span>.0<span class="w">          </span><span class="p">|</span>
+<span class="w">	</span><span class="p">|</span><span class="w">    </span>Mean<span class="w"> </span>Class<span class="w"> </span>Recall<span class="w">    </span><span class="p">|</span><span class="w">         </span><span class="m">100</span>.0<span class="w">          </span><span class="p">|</span>
+<span class="w">	</span>+-------------------------+------------------------+
+</code></pre></div>
+<div class="admonition note">
+<p class="admonition-title">Sorted Predictions</p>
+<p>The predictions are always sorted based on highest confidence first to lowest.</p>
+</div>
+<ol>
+<li>
+<p>The batch <abbr title="Intersection over Union">IoU</abbr> is calculated between the ground truth and the predictions</p>
 <table>
 <thead>
 <tr>
-<th><strong>Term</strong></th>
-<th><strong>Definition</strong></th>
+<th>GT \ Pred</th>
+<th>Pred 0</th>
+<th>Pred 1</th>
+<th>Pred 2</th>
+<th>Pred 3</th>
+<th>Pred 4</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td><strong>True Positive</strong></td>
-<td>Correct model predictions.  The model prediction label matches the ground truth label.  For object detection, the <abbr title="Intersection over Union">IoU</abbr> and confidence scores must meet the threshold requirements.</td>
+<td>GT 0</td>
+<td>0.0044969902</td>
+<td>0.82639343</td>
+<td>0.02061883</td>
+<td>0.0000000</td>
+<td>0.013678555</td>
 </tr>
 <tr>
-<td><strong>False Positive</strong></td>
-<td>Incorrect model predictions.  The model prediction label does not match the ground truth label.</td>
+<td>GT 1</td>
+<td>0.017273406</td>
+<td>0.05893239</td>
+<td>0.91331422</td>
+<td>0.0000000</td>
+<td>0.0000000</td>
 </tr>
 <tr>
-<td><strong>False Negative</strong></td>
-<td>The absence of model predictions.  For cases where the ground truth is a positive class, but the model prediction is a negative class (background).</td>
-</tr>
-<tr>
-<td><strong>Precision</strong></td>
-<td>Proportion of correct predictions over total predictions.  <span class="arithmatex">\(\text{precision} = \frac{\text{true positives}}{\text{true positives} + \text{false positives}}\)</span></td>
-</tr>
-<tr>
-<td><strong>Recall</strong></td>
-<td>Proportion of correct predictions over total ground truth.  <span class="arithmatex">\(\text{recall} = \frac{\text{true positives}}{\text{true positives} + \text{false negatives}}\)</span></td>
-</tr>
-<tr>
-<td><strong>Accuracy</strong></td>
-<td>Proportion of correct predictions over the union of total predictions and ground truth.  <span class="arithmatex">\(\text{accuracy} = \frac{\text{true positives}}{\text{true positives} + \text{false negatives} + \text{false positives}}\)</span></td>
-</tr>
-<tr>
-<td><strong><abbr title="Intersection over Union">IoU</abbr></strong></td>
-<td>The intersection over union.  <span class="arithmatex">\(\text{IoU} = \frac{\text{intersection}}{\text{union}} = \frac{\text{true positives}}{\text{true positives} + \text{false positives} + \text{false negatives}}\)</span></td>
+<td>GT 2</td>
+<td>0.77907538</td>
+<td>0.017573632</td>
+<td>0.00063108001</td>
+<td>0.0000000</td>
+<td>0.0000000</td>
 </tr>
 </tbody>
 </table>
+</li>
+<li>
+<p>Only the prediction labels that matches the ground truth labels are considered</p>
+<ul>
+<li>Correct Classes</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>GT \ Pred</th>
+<th>Pred 0 "two"</th>
+<th>Pred 1 "eight"</th>
+<th>Pred 2 "eight"</th>
+<th>Pred 3 "eight"</th>
+<th>Pred 4 "eight"</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>GT 0 "eight"</td>
+<td>False</td>
+<td>True</td>
+<td>True</td>
+<td>True</td>
+<td>True</td>
+</tr>
+<tr>
+<td>GT 1 "eight"</td>
+<td>False</td>
+<td>True</td>
+<td>True</td>
+<td>True</td>
+<td>True</td>
+</tr>
+<tr>
+<td>GT 2 "two"</td>
+<td>True</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><abbr title="Intersection over Union">IoU</abbr> Matrix</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>GT \ Pred</th>
+<th>Pred 0</th>
+<th>Pred 1</th>
+<th>Pred 2</th>
+<th>Pred 3</th>
+<th>Pred 4</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>GT 0</td>
+<td>0.0</td>
+<td>0.8263934</td>
+<td>0.02061883</td>
+<td>0.0</td>
+<td>0.01367856</td>
+</tr>
+<tr>
+<td>GT 1</td>
+<td>0.0</td>
+<td>0.05893239</td>
+<td>0.9133142</td>
+<td>0.0</td>
+<td>0.0</td>
+</tr>
+<tr>
+<td>GT 2</td>
+<td>0.7790754</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+</tr>
+</tbody>
+</table>
+</li>
+<li>
+<p>Build the correct matrix</p>
+<p>The correct matrix is a n x 10 matrix where n represents the number of predictions and 10 represents the <abbr title="Intersection over Union">IoU</abbr> thresholds from 0.50 to 0.95 in 0.05 intervals.  The correct matrix tracks whether each prediction remains as a true positive as the threshold increases.</p>
+<table>
+<thead>
+<tr>
+<th>Pred \ <abbr title="Intersection over Union">IoU</abbr></th>
+<th>0.50</th>
+<th>0.55</th>
+<th>0.60</th>
+<th>0.65</th>
+<th>0.70</th>
+<th>0.75</th>
+<th>0.80</th>
+<th>0.85</th>
+<th>0.90</th>
+<th>0.95</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Pred 0 (0.7790754 <abbr title="Intersection over Union">IoU</abbr>)</td>
+<td>True</td>
+<td>True</td>
+<td>True</td>
+<td>True</td>
+<td>True</td>
+<td>True</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+</tr>
+<tr>
+<td>Pred 1 (0.8263934 <abbr title="Intersection over Union">IoU</abbr>)</td>
+<td>True</td>
+<td>True</td>
+<td>True</td>
+<td>True</td>
+<td>True</td>
+<td>True</td>
+<td>True</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+</tr>
+<tr>
+<td>Pred 2 (0.9133142 <abbr title="Intersection over Union">IoU</abbr>)</td>
+<td>True</td>
+<td>True</td>
+<td>True</td>
+<td>True</td>
+<td>True</td>
+<td>True</td>
+<td>True</td>
+<td>True</td>
+<td>True</td>
+<td>False</td>
+</tr>
+<tr>
+<td>Pred 3 (0.0 <abbr title="Intersection over Union">IoU</abbr>)</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+</tr>
+<tr>
+<td>Pred 4 (0.01367856 <abbr title="Intersection over Union">IoU</abbr>)</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+</tr>
+</tbody>
+</table>
+</li>
+<li>
+<p>Gather the true positives and false positives for each class</p>
+<p>Here we iterate through each unique ground truth class [5, 10].</p>
+<div class="admonition note">
+<p class="admonition-title">Accumulative Matrix</p>
+<p>The following matrices accumulates after each row (each prediction).</p>
+<ul>
+<li>If the correct matrix is True, we add +1 to the current number of true positives in the subsequent row, but the number of false positives remains unchanged.</li>
+<li>Otherwise if the correct matrix is False, we add +1 to the current number of false positives in the subsequent row, but the number of true positives remains unchanged.</li>
+</ul>
+</div>
+<ul>
+<li>
+<p>Class 5</p>
+<p>There's only one prediction with the class 5, this is the first prediction <code>i = [ True, False, False, False, False]</code>.
+There's one prediction with this class <code>n_p = 1</code> and one ground truth with this class <code>n_l = 1</code>.</p>
+<p><strong>True Positive Counts (TPC)</strong></p>
+<table>
+<thead>
+<tr>
+<th>Pred \ <abbr title="Intersection over Union">IoU</abbr></th>
+<th>0.50</th>
+<th>0.55</th>
+<th>0.60</th>
+<th>0.65</th>
+<th>0.70</th>
+<th>0.75</th>
+<th>0.80</th>
+<th>0.85</th>
+<th>0.90</th>
+<th>0.95</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Pred 0</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+</tbody>
+</table>
+<p><strong>False Positive Counts (FPC)</strong></p>
+<table>
+<thead>
+<tr>
+<th>Pred \ <abbr title="Intersection over Union">IoU</abbr></th>
+<th>0.50</th>
+<th>0.55</th>
+<th>0.60</th>
+<th>0.65</th>
+<th>0.70</th>
+<th>0.75</th>
+<th>0.80</th>
+<th>0.85</th>
+<th>0.90</th>
+<th>0.95</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Pred 0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+</tr>
+</tbody>
+</table>
+</li>
+<li>
+<p>Class 10</p>
+<p>There are four predictions with the class 10, <code>i = [ False, True, True, True, True]</code>.
+There's four prediction with this class <code>n_p = 4</code> and two ground truth with this class <code>n_l = 2</code>.</p>
+<p><strong>True Positive Counts (TPC)</strong></p>
+<table>
+<thead>
+<tr>
+<th>Pred \ <abbr title="Intersection over Union">IoU</abbr></th>
+<th>0.50</th>
+<th>0.55</th>
+<th>0.60</th>
+<th>0.65</th>
+<th>0.70</th>
+<th>0.75</th>
+<th>0.80</th>
+<th>0.85</th>
+<th>0.90</th>
+<th>0.95</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Pred 1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>Pred 2</td>
+<td>2</td>
+<td>2</td>
+<td>2</td>
+<td>2</td>
+<td>2</td>
+<td>2</td>
+<td>2</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+</tr>
+<tr>
+<td>Pred 3</td>
+<td>2</td>
+<td>2</td>
+<td>2</td>
+<td>2</td>
+<td>2</td>
+<td>2</td>
+<td>2</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+</tr>
+<tr>
+<td>Pred 4</td>
+<td>2</td>
+<td>2</td>
+<td>2</td>
+<td>2</td>
+<td>2</td>
+<td>2</td>
+<td>2</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+</tr>
+</tbody>
+</table>
+<p><strong>False Positive Counts (FPC)</strong></p>
+<table>
+<thead>
+<tr>
+<th>Pred \ <abbr title="Intersection over Union">IoU</abbr></th>
+<th>0.50</th>
+<th>0.55</th>
+<th>0.60</th>
+<th>0.65</th>
+<th>0.70</th>
+<th>0.75</th>
+<th>0.80</th>
+<th>0.85</th>
+<th>0.90</th>
+<th>0.95</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Pred 1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+</tr>
+<tr>
+<td>Pred 2</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>1</td>
+<td>2</td>
+</tr>
+<tr>
+<td>Pred 3</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>2</td>
+<td>2</td>
+<td>3</td>
+</tr>
+<tr>
+<td>Pred 4</td>
+<td>2</td>
+<td>2</td>
+<td>2</td>
+<td>2</td>
+<td>2</td>
+<td>2</td>
+<td>2</td>
+<td>3</td>
+<td>3</td>
+<td>4</td>
+</tr>
+</tbody>
+</table>
+</li>
+</ul>
+</li>
+<li>
+<p>Compute the precision and recall for each class</p>
+<p>The formulas for precision and recall are as follows.</p>
+<div class="arithmatex">\[
+\text{precision} = \frac{\text{TP}}{\text{TP} + \text{FP}} 
+\]</div>
+<div class="arithmatex">\[
+\text{recall} = \frac{\text{TP}}{\text{GT}_{\text{c}}}
+\]</div>
+<p>where <span class="arithmatex">\( \text{GT}_c \)</span> is the number of ground truth instances for class <span class="arithmatex">\( c \)</span>.</p>
+<div class="admonition note">
+<p class="admonition-title">Confidence Curves</p>
+<ul>
+<li>The <a href="#mean-precision">precision vs confidence curve</a> is based on the <abbr title="Intersection over Union">IoU</abbr> threshold 0.50 then interpolated across 1000 data points </li>
+<li>The <a href="#mean-recall">recall vs confidence curve</a> is based on the <abbr title="Intersection over Union">IoU</abbr> threshold 0.50 then interpolated across 1000 data points </li>
+<li>The <a href="#f1-score">F1 vs confidence curve</a> is based on the <abbr title="Intersection over Union">IoU</abbr> threshold 0.50 then interpolated across 1000 data points </li>
+</ul>
+</div>
+<ul>
+<li>
+<p>Class 5</p>
+<p><strong>Precision per Prediction and <abbr title="Intersection over Union">IoU</abbr> Threshold</strong></p>
+<table>
+<thead>
+<tr>
+<th>Pred \ <abbr title="Intersection over Union">IoU</abbr></th>
+<th>0.50</th>
+<th>0.55</th>
+<th>0.60</th>
+<th>0.65</th>
+<th>0.70</th>
+<th>0.75</th>
+<th>0.80</th>
+<th>0.85</th>
+<th>0.90</th>
+<th>0.95</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Pred 0</td>
+<td>1.0</td>
+<td>1.0</td>
+<td>1.0</td>
+<td>1.0</td>
+<td>1.0</td>
+<td>1.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Recall per Prediction and <abbr title="Intersection over Union">IoU</abbr> Threshold</strong></p>
+<table>
+<thead>
+<tr>
+<th>Pred \ <abbr title="Intersection over Union">IoU</abbr></th>
+<th>0.50</th>
+<th>0.55</th>
+<th>0.60</th>
+<th>0.65</th>
+<th>0.70</th>
+<th>0.75</th>
+<th>0.80</th>
+<th>0.85</th>
+<th>0.90</th>
+<th>0.95</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Pred 0</td>
+<td>1.0</td>
+<td>1.0</td>
+<td>1.0</td>
+<td>1.0</td>
+<td>1.0</td>
+<td>1.0</td>
+<td>1.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+</tr>
+</tbody>
+</table>
+</li>
+<li>
+<p>Class 10</p>
+<p><strong>Precision per Prediction and <abbr title="Intersection over Union">IoU</abbr> Threshold</strong></p>
+<table>
+<thead>
+<tr>
+<th>Pred \ <abbr title="Intersection over Union">IoU</abbr></th>
+<th>0.50</th>
+<th>0.55</th>
+<th>0.60</th>
+<th>0.65</th>
+<th>0.70</th>
+<th>0.75</th>
+<th>0.80</th>
+<th>0.85</th>
+<th>0.90</th>
+<th>0.95</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Pred 0</td>
+<td>1.0</td>
+<td>1.0</td>
+<td>1.0</td>
+<td>1.0</td>
+<td>1.0</td>
+<td>1.0</td>
+<td>1.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+</tr>
+<tr>
+<td>Pred 1</td>
+<td>1.0</td>
+<td>1.0</td>
+<td>1.0</td>
+<td>1.0</td>
+<td>1.0</td>
+<td>1.0</td>
+<td>1.0</td>
+<td>0.5</td>
+<td>0.5</td>
+<td>0.0</td>
+</tr>
+<tr>
+<td>Pred 2</td>
+<td>0.667</td>
+<td>0.667</td>
+<td>0.667</td>
+<td>0.667</td>
+<td>0.667</td>
+<td>0.667</td>
+<td>0.667</td>
+<td>0.333</td>
+<td>0.333</td>
+<td>0.0</td>
+</tr>
+<tr>
+<td>Pred 3</td>
+<td>0.5</td>
+<td>0.5</td>
+<td>0.5</td>
+<td>0.5</td>
+<td>0.5</td>
+<td>0.5</td>
+<td>0.5</td>
+<td>0.25</td>
+<td>0.25</td>
+<td>0.0</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Recall per Prediction and <abbr title="Intersection over Union">IoU</abbr> Threshold</strong></p>
+<table>
+<thead>
+<tr>
+<th>Pred \ <abbr title="Intersection over Union">IoU</abbr></th>
+<th>0.50</th>
+<th>0.55</th>
+<th>0.60</th>
+<th>0.65</th>
+<th>0.70</th>
+<th>0.75</th>
+<th>0.80</th>
+<th>0.85</th>
+<th>0.90</th>
+<th>0.95</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Pred 0</td>
+<td>0.5</td>
+<td>0.5</td>
+<td>0.5</td>
+<td>0.5</td>
+<td>0.5</td>
+<td>0.5</td>
+<td>0.5</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+</tr>
+<tr>
+<td>Pred 1</td>
+<td>1.0</td>
+<td>1.0</td>
+<td>1.0</td>
+<td>1.0</td>
+<td>1.0</td>
+<td>1.0</td>
+<td>1.0</td>
+<td>0.5</td>
+<td>0.5</td>
+<td>0.0</td>
+</tr>
+<tr>
+<td>Pred 2</td>
+<td>1.0</td>
+<td>1.0</td>
+<td>1.0</td>
+<td>1.0</td>
+<td>1.0</td>
+<td>1.0</td>
+<td>1.0</td>
+<td>0.5</td>
+<td>0.5</td>
+<td>0.0</td>
+</tr>
+<tr>
+<td>Pred 3</td>
+<td>1.0</td>
+<td>1.0</td>
+<td>1.0</td>
+<td>1.0</td>
+<td>1.0</td>
+<td>1.0</td>
+<td>1.0</td>
+<td>0.5</td>
+<td>0.5</td>
+<td>0.0</td>
+</tr>
+</tbody>
+</table>
+</li>
+</ul>
+</li>
+<li>
+<p>Compute the average precision (AP)</p>
+<p>The average precision is computed across <abbr title="Intersection over Union">IoU</abbr> thresholds 0.50 to 0.95 in 0.05 intervals. The average precision is calculated based on the area under the precision versus recall curve.  This is an integration using the composite trapezoidal rule. </p>
+<p><strong>Average Precision (Discrete COCO / 101-point Interpolation)</strong></p>
+<div class="arithmatex">\[ \text{AP} = \sum_{k=1}^{101} \text{precision}(r_k) \cdot \Delta r \]</div>
+<p><strong>Average Precision (AP) per Class and <abbr title="Intersection over Union">IoU</abbr> Threshold</strong></p>
+<table>
+<thead>
+<tr>
+<th>Class \ <abbr title="Intersection over Union">IoU</abbr></th>
+<th>0.50</th>
+<th>0.55</th>
+<th>0.60</th>
+<th>0.65</th>
+<th>0.70</th>
+<th>0.75</th>
+<th>0.80</th>
+<th>0.85</th>
+<th>0.90</th>
+<th>0.95</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Class 5</td>
+<td>0.995</td>
+<td>0.995</td>
+<td>0.995</td>
+<td>0.995</td>
+<td>0.995</td>
+<td>0.995</td>
+<td>0.000</td>
+<td>0.000</td>
+<td>0.000</td>
+<td>0.000</td>
+</tr>
+<tr>
+<td>Class 10</td>
+<td>0.995</td>
+<td>0.995</td>
+<td>0.995</td>
+<td>0.995</td>
+<td>0.995</td>
+<td>0.995</td>
+<td>0.995</td>
+<td>0.31125</td>
+<td>0.31125</td>
+<td>0.000</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Class 5</strong></p>
+<ul>
+<li>Precision = 1.0 until <abbr title="Intersection over Union">IoU</abbr> 0.75, then drops to 0</li>
+<li>Recall = 1.0 until <abbr title="Intersection over Union">IoU</abbr> 0.80, then drops to 0</li>
+<li>AP ≈ 0.995 (slightly &lt; 1 due to interpolation and discretization)</li>
+</ul>
+<p><strong>Class 10</strong></p>
+<ul>
+<li>Multiple predictions → gradual precision decay</li>
+<li>Recall increases stepwise (0.5 → 1.0)</li>
+</ul>
+</li>
+<li>
+<p>Compute final metrics</p>
+</li>
+</ol>
+<div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="full-curve-metrics_1" name="__tabbed_1" type="radio" /><input id="deployment-metrics_1" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="full-curve-metrics_1">Full-Curve Metrics</label><label for="deployment-metrics_1">Deployment Metrics</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<ul>
+<li>
+<p><abbr title="mean Average Precision">mAP</abbr>@0.50</p>
+<div class="arithmatex">\[ mAP@0.50 = \frac{1}{C}\sum_{i=1}^{C}\text{AP@0.50}_{i}, \quad C = \text{number of classes} \]</div>
+<p>Substituting values:</p>
+<div class="arithmatex">\[
+mAP@0.50 = \frac{0.995 + 0.995}{2} = 0.995
+\]</div>
+<hr />
+</li>
+<li>
+<p><abbr title="mean Average Precision">mAP</abbr>@0.75</p>
+<div class="arithmatex">\[ mAP@0.75 = \frac{1}{C}\sum_{i=1}^{C}\text{AP@0.75}_{i}, \quad C = \text{number of classes} \]</div>
+<p>Substituting values:</p>
+<div class="arithmatex">\[
+mAP@0.75 = \frac{0.995 + 0.995}{2} = 0.995
+\]</div>
+<hr />
+</li>
+<li>
+<p><abbr title="mean Average Precision">mAP</abbr>@0.50–0.95</p>
+<p>First compute the average AP across <abbr title="Intersection over Union">IoU</abbr> thresholds for each class:</p>
+<div class="arithmatex">\[ \text{AP}_{0.50:0.95} = \frac{1}{10} \sum_{t=1}^{10} \text{AP}_{\text{IoU}_t}, \quad \text{where } \text{IoU}_t \in \{0.50, 0.55, \dots, 0.95\} \]</div>
+<p>Class-wise results:</p>
+<div class="arithmatex">\[
+\text{AP}_{0.50:0.95}^{(5)} =
+\frac{6 * 0.995}{10}
+\]</div>
+<div class="arithmatex">\[
+\text{AP}_{0.50:0.95}^{(10)} =
+\frac{7 * 0.995 + 2 * 0.31125}{10}
+\]</div>
+<p>Then compute the final mean across classes:</p>
+<div class="arithmatex">\[ mAP@0.50-0.95 = \frac{1}{C}\sum_{i=1}^{C}\text{AP@0.50-0.95}_{i}, \quad C = \text{number of classes} \]</div>
+<div class="arithmatex">\[
+mAP@0.50-0.95 =
+\frac{\text{AP}_{0.50:0.95}^{(5)} + \text{AP}_{0.50:0.95}^{(10)}}{2}
+= 0.678
+\]</div>
+</li>
+<li>
+<p>Mean Precision, Recall, F1</p>
+<p>The precision and recall values from step 5 where interpolated across 1000 data points where the x-axis represents the prediction confidence scores and the y-axis is either precision or recall.  The F1-score is then calculated using $$ \text{f1} = \frac{2 * precision * recall}{precision + recall} $$</p>
+<p>The highest F1 score is at the score threshold <code>0.926</code>.  The precision, recall, and F1 score of each class at this threshold is as follows.</p>
+<table>
+<thead>
+<tr>
+<th>Class \ Metric</th>
+<th>Precision</th>
+<th>Recall</th>
+<th>F1-Score</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Class 5</td>
+<td>1.0</td>
+<td>1.0</td>
+<td>1.0</td>
+</tr>
+<tr>
+<td>Class 10</td>
+<td>0.98260945</td>
+<td>1.0</td>
+<td>0.99122845</td>
+</tr>
+</tbody>
+</table>
+<p>The reported metrics for the Mean Precision, Recall, and F1 is the average across each class.</p>
+<div class="arithmatex">\[
+\text{Mean Precision} = \frac{1.0 + 0.98260945}{2} = 0.9913
+\]</div>
+<div class="arithmatex">\[
+\text{Mean Recall} = \frac{1.0 + 1.0}{2} = 1.0
+\]</div>
+<div class="arithmatex">\[
+\text{Mean F1} = \frac{1.0 + 0.99122845}{2} = 0.9956
+\]</div>
+</li>
+</ul>
+</div>
+<div class="tabbed-block">
+<p>The optimal score threshold found based on the highest F1 score is <code>0.926</code>.  To calculate the deployment metrics, we filter predictions based on scores greater than or equal to this threshold.</p>
+<p><strong>Filtered Predictions</strong></p>
+<table>
+<thead>
+<tr>
+<th>Pred</th>
+<th>Index</th>
+<th>Labels</th>
+<th>Scores</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>5</td>
+<td>"two"</td>
+<td>0.9549317</td>
+</tr>
+<tr>
+<td>1</td>
+<td>10</td>
+<td>"eight"</td>
+<td>0.95256793</td>
+</tr>
+<tr>
+<td>2</td>
+<td>10</td>
+<td>"eight"</td>
+<td>0.92612094</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Ground Truth</strong></p>
+<table>
+<thead>
+<tr>
+<th>GT</th>
+<th>Index</th>
+<th>Labels</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>10</td>
+<td>"eight"</td>
+</tr>
+<tr>
+<td>1</td>
+<td>10</td>
+<td>"eight"</td>
+</tr>
+<tr>
+<td>2</td>
+<td>5</td>
+<td>"two"</td>
+</tr>
+</tbody>
+</table>
+<ol>
+<li>
+<p>Match predictions to ground truths by following the <a href="matching/">Matching and Classifications Rules</a></p>
+<p>Based on the batch <abbr title="Intersection over Union">IoU</abbr>, the following matches are made.</p>
+<p><strong><abbr title="Intersection over Union">IoU</abbr> Grid (GT vs Predictions)</strong></p>
+<table>
+<thead>
+<tr>
+<th>GT \ Pred</th>
+<th>Pred 0</th>
+<th>Pred 1</th>
+<th>Pred 2</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>GT 0</td>
+<td>0.0044969902</td>
+<td>0.82639343</td>
+<td>0.02061883</td>
+</tr>
+<tr>
+<td>GT 1</td>
+<td>0.017273406</td>
+<td>0.05893239</td>
+<td>0.91331422</td>
+</tr>
+<tr>
+<td>GT 2</td>
+<td>0.77907538</td>
+<td>0.017573632</td>
+<td>0.00063108001</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>GT 0 =&gt; Pred 1</li>
+<li>GT 1 =&gt; Pred 2</li>
+<li>GT 2 =&gt; Pred 0</li>
+</ul>
+</li>
+<li>
+<p>Gather classifications of true positives, false positives, and false negatives per class</p>
+<p>In this sample, all predictions are regarded as a true positive since the labels matches the ground truth and the <abbr title="Intersection over Union">IoU</abbr> &gt;= 0.50 to be regarded as a true positive.  Please see <a href="classifications/">Object Detection Classifications</a> for more information.</p>
+<p><img alt="Playing Cards v7; val_000143.jpg" src="../../../assets/metrics/deployment_val_000143.jpg" /></p>
+</li>
+<li>
+<p>Calculate precision, recall, and accuracy per class</p>
+<table>
+<thead>
+<tr>
+<th>Class \ Classifications</th>
+<th>TP</th>
+<th>FN</th>
+<th>FP</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Class 5</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>Class 10</td>
+<td>2</td>
+<td>0</td>
+<td>0</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Class \ Metric</th>
+<th>Precision</th>
+<th>Recall</th>
+<th>Accuracy</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Class 5</td>
+<td>1.0</td>
+<td>1.0</td>
+<td>1.0</td>
+</tr>
+<tr>
+<td>Class 10</td>
+<td>1.0</td>
+<td>1.0</td>
+<td>1.0</td>
+</tr>
+</tbody>
+</table>
+</li>
+<li>
+<p>Calculate the deployment precision, recall, and accuracy</p>
+<p>The deployment metrics are calculated as the average across all classes</p>
+<table>
+<thead>
+<tr>
+<th>Precision</th>
+<th>Recall</th>
+<th>Accuracy</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1.0</td>
+<td>1.0</td>
+<td>1.0</td>
+</tr>
+<tr>
+<td>1.0</td>
+<td>1.0</td>
+<td>1.0</td>
+</tr>
+</tbody>
+</table>
+</li>
+</ol>
+</div>
+</div>
+</div>
+<h2 id="further-reading">Further Reading</h2>
+<p>This page has described the object detection metrics reported by EdgeFirst Studio.  To better understand the rules set for matching model predictions to ground truth and classifying predictions into true positives, false positives, and false negatives see <a href="matching/">Matching and Classification Rules</a>.</p>
 <h2 id="references">References</h2>
 <p>Fränti, P., &amp; Mariescu-Istodor, R. (2023, March 1). Soft precision and recall. https://doi.org/10.1016/j.patrec.2023.02.005</p>
 <p>Babu, G. V. (2021, December 13). Metrics on Object Detection - gandham vignesh babu - Medium. Retrieved from <a href="https://vignesh943628.medium.com/metrics-on-object-detection-b9fe3f1bac59">Metrics on Object Detection</a></p>
@@ -2468,7 +3698,7 @@ The mean average accuracy at <abbr title="Intersection over Union">IoU</abbr> th
       <nav class="md-footer__inner md-grid" aria-label="Footer" >
         
           
-          <a href="../../fusion/managed/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Validating Fusion Models">
+          <a href="../" class="md-footer__link md-footer__link--prev" aria-label="Previous: EdgeFirst Validation Metrics">
             <div class="md-footer__button md-icon">
               
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
@@ -2478,20 +3708,20 @@ The mean average accuracy at <abbr title="Intersection over Union">IoU</abbr> th
                 Previous
               </span>
               <div class="md-ellipsis">
-                Validating Fusion Models
+                EdgeFirst Validation Metrics
               </div>
             </div>
           </a>
         
         
           
-          <a href="../segmentation/" class="md-footer__link md-footer__link--next" aria-label="Next: Segmentation Metrics">
+          <a href="matching/" class="md-footer__link md-footer__link--next" aria-label="Next: Matching and Classification Rules">
             <div class="md-footer__title">
               <span class="md-footer__direction">
                 Next
               </span>
               <div class="md-ellipsis">
-                Segmentation Metrics
+                Matching and Classification Rules
               </div>
             </div>
             <div class="md-footer__button md-icon">

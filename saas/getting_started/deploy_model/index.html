@@ -25,7 +25,7 @@
       
       
       <link rel="icon" href="../../assets/favicon.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.1">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
     
     
       
@@ -58,6 +58,8 @@
       <link rel="stylesheet" href="../../assets/_mkdocstrings.css">
     
       <link rel="stylesheet" href="../../stylesheets/extra.css">
+    
+      <link rel="stylesheet" href="../../stylesheets/components.css">
     
       <link rel="stylesheet" href="../../stylesheets/mermaid.css">
     
@@ -338,6 +340,28 @@
     
     
       <li class="md-tabs__item">
+        <a href="../../profiler/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Profiler <span class="ef-badge">New</span>
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
         <a href="../../datasets/" class="md-tabs__link">
           
   
@@ -588,7 +612,7 @@
   <span class="md-ellipsis">
     
   
-    Running Pre-trained Models in Edgefirst Studio
+    Running Pre-trained Models in EdgeFirst Studio
   
 
     
@@ -644,7 +668,7 @@
   <span class="md-ellipsis">
     
   
-    Copy Dataset
+    Copy Sample Dataset
   
 
     
@@ -849,6 +873,12 @@
       
         
       
+        
+      
+        
+      
+        
+      
     
     
     
@@ -912,6 +942,12 @@
       
         
           
+        
+      
+        
+      
+        
+      
         
       
         
@@ -1056,6 +1092,71 @@
       
         
       
+        
+      
+    
+    
+    
+      
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../profiler/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Profiler <span class="ef-badge">New</span>
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
     
     
     
@@ -1111,6 +1212,10 @@
       
         
           
+        
+      
+        
+      
         
       
         
@@ -1370,7 +1475,23 @@
 
 
 <h1 id="deploy-the-model">Deploy the Model</h1>
-<p>Once you have validated your trained model, take a look at examples of deploying this model across different platforms.  You can find a checklist of supported devices.  We support <a href="../../models/validation/vision/user_managed/">validation on specific targets</a> and applications for live video inference with links provided below.  </p>
+<p>Once you have validated your trained model, you can deploy the model in the browser using EdgeFirst Studio.  You can follow these steps either on a PC or a mobile device connected to EdgeFirst Studio in a browser.  Please note that the browser will use the camera on your device to run model inference.</p>
+<p>From the training session card, you can run the model for inference by clicking the "Run Model" button on the top right of the page.</p>
+<figure>
+            <img align="center" alt="Run Model Button" src="../../models/assets/deployment/run-model-button.jpg" />
+            <figcaption>Run Model Button</figcaption>
+            </figure>
+<p>You will be given the option for either live inference or inference from a file upload.  Go ahead and demo the live inference feed by clicking the "Live" option.</p>
+<figure>
+            <img align="center" alt="Live Inference Option" src="../../models/assets/deployment/live-inference-option.jpg" />
+            <figcaption>Live Inference Option</figcaption>
+            </figure>
+<p>You should now see the live inference feed on your browser running the trained model.</p>
+<figure>
+            <img align="center" alt="Live Inference" src="../../models/assets/deployment/studio-runner-live-inference.jpg" />
+            <figcaption>Live Inference</figcaption>
+            </figure>
+<p>You can also find more examples of deploying the model across different platforms.  Here is a checklist of supported devices.  We support <a href="../../models/validation/vision/user_managed/">validation on specific targets</a> and live video inference with links provided below.  </p>
 <table>
 <thead>
 <tr>
@@ -1382,46 +1503,58 @@
 </thead>
 <tbody>
 <tr>
-<td><a href="../../models/deployment/pc/mpk/">PC / Linux</a></td>
-<td>✓</td>
+<td><a href="../../models/deployment/studio/">EdgeFirst Studio</a></td>
+<td>✅</td>
+<td>✅</td>
 <td></td>
+</tr>
+<tr>
+<td><a href="../../models/deployment/pc/">PC / Linux</a></td>
+<td>✅</td>
+<td>✅</td>
 <td></td>
 </tr>
 <tr>
 <td>Mac/MacOS</td>
 <td></td>
 <td></td>
-<td>✓</td>
+<td>✅ (untested)</td>
 </tr>
 <tr>
-<td><a href="../../models/deployment/evk/">i.MX 8M Plus EVK</a></td>
-<td>✓</td>
-<td>✓</td>
-<td></td>
+<td><a href="../../platforms/quickstart/maivin/deploy/">Maivin</a></td>
+<td>✅</td>
+<td>✅</td>
+<td>✅</td>
 </tr>
 <tr>
-<td>NVIDIA Orin</td>
-<td>✓</td>
+<td><a href="../../platforms/quickstart/raivin/deploy/">Raivin Fusion</a></td>
 <td></td>
-<td></td>
+<td>✅</td>
+<td>✅</td>
 </tr>
 <tr>
-<td>Kinara ARA-2</td>
+<td><a href="../../platforms/quickstart/imx8mplus/deploy/">i.MX 8M Plus EVK</a></td>
+<td>✅</td>
 <td></td>
-<td></td>
-<td>✓</td>
+<td>✅ (native runner)</td>
 </tr>
 <tr>
-<td><a href="../../models/deployment/3d_raivin/">Raivin Radar Fusion</a></td>
-<td>✓</td>
-<td>✓</td>
-<td>✓</td>
+<td><a href="../../platforms/quickstart/imx95/deploy/">i.MX 95 EVK</a></td>
+<td>✅</td>
+<td></td>
+<td>✅ (native runner)</td>
 </tr>
 <tr>
-<td><a href="../../models/deployment/evk/">i.MX 95 EVK</a></td>
-<td>✓</td>
-<td>✓</td>
+<td><a href="../../platforms/quickstart/jetson_orin/deploy/">NVIDIA Jetson Orin</a></td>
+<td>✅</td>
 <td></td>
+<td>✅ (native runner)</td>
+</tr>
+<tr>
+<td><a href="../../platforms/quickstart/raspberrypi/deploy/">Raspberry Pi</a></td>
+<td></td>
+<td></td>
+<td>✅ (untested)</td>
 </tr>
 </tbody>
 </table>
@@ -1429,12 +1562,9 @@
 <p class="admonition-title">Additional Platforms</p>
 <p>Certain platforms are still under development and support for platforms beyond these listed will be available soon.  <a href="mailto:support@edgefirst.ai">Let us know</a> which platform you'd like to see supported next!</p>
 </div>
-<p>In this Quickstart guide, you have created your EdgeFirst Studio account, logged in to EdgeFirst Studio, and created your very first project and ran your first experiment by copying a sample dataset and trained and validated a Vision model using the copied dataset.  Finally you explored several options for deploying your trained model in different hardware platforms.</p>
-<div style="max-width: fit-content; margin-left: auto; margin-right: auto;">
-<p><a class="md-button" href="../validate_vision/">Validate Vision Model ← Back</a></p>
-</div>
+<p>In this Quick Start guide, you have created your EdgeFirst Studio account, logged in to EdgeFirst Studio, and created your very first project and ran your first experiment by copying a sample dataset and trained and validated a Vision model using the copied dataset.  Finally you explored several options for deploying your trained model in different hardware platforms.</p>
 <h2 id="next-steps">Next Steps</h2>
-<p>Now that you have reached the end of the Quickstart guide, learn more about <a href="../../studio/">EdgeFirst Studio</a>.  Ready for more advanced end-to-end workflows? Follow along the <a href="../workflows/">User Workflows</a> that are tailored towards various hardware requirements and resources available to the user.</p>
+<p>Now that you have reached the end of the Quick Start guide, learn more about <a href="../../studio/">EdgeFirst Studio</a>.  Ready for more advanced end-to-end workflows? Follow along the <a href="../workflows/">User Workflows</a> that are tailored towards various hardware requirements and resources available to the user.</p>
 
 
 

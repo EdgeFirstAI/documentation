@@ -15,17 +15,17 @@
         <link rel="canonical" href="https://doc.edgefirst.ai/saas/datasets/">
       
       
-        <link rel="prev" href="../3D/deployment/">
+        <link rel="prev" href="../profiler/studio/from_profiler/">
       
       
-        <link rel="next" href="format/">
+        <link rel="next" href="coffeecup/">
       
       
         
       
       
       <link rel="icon" href="../assets/favicon.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.1">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
     
     
       
@@ -58,6 +58,8 @@
       <link rel="stylesheet" href="../assets/_mkdocstrings.css">
     
       <link rel="stylesheet" href="../stylesheets/extra.css">
+    
+      <link rel="stylesheet" href="../stylesheets/components.css">
     
       <link rel="stylesheet" href="../stylesheets/mermaid.css">
     
@@ -332,6 +334,28 @@
   
   
   
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../profiler/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Profiler <span class="ef-badge">New</span>
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
     
   
   
@@ -562,6 +586,12 @@
       
         
       
+        
+      
+        
+      
+        
+      
     
     
     
@@ -671,6 +701,71 @@
       
   
   
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../profiler/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Profiler <span class="ef-badge">New</span>
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
     
   
   
@@ -704,7 +799,7 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" checked>
         
           
           <div class="md-nav__link md-nav__container">
@@ -726,14 +821,14 @@
             </a>
             
               
-              <label class="md-nav__link md-nav__link--active" for="__nav_4" id="__nav_4_label" tabindex="">
+              <label class="md-nav__link md-nav__link--active" for="__nav_5" id="__nav_5_label" tabindex="">
                 <span class="md-nav__icon md-icon"></span>
               </label>
             
           </div>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
-          <label class="md-nav__title" for="__nav_4">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_5">
             <span class="md-nav__icon md-icon"></span>
             
   
@@ -743,76 +838,6 @@
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
             
-              
-            
-              
-                
-  
-  
-  
-  
-    
-    
-      
-        
-          
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-    
-    
-    
-      
-      
-    
-    
-      
-        
-        
-      
-    
-    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
-      
-        
-  
-  
-  
-    <a href="format/" class="md-nav__link">
-      
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    EdgeFirst Dataset Format
-  
-
-    
-  </span>
-  
-  
-
-      
-        <span class="md-nav__icon md-icon"></span>
-      
-    </a>
-  
-
-      
-    </li>
-  
-
               
             
               
@@ -908,6 +933,78 @@
       
         
       
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="format/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    EdgeFirst Dataset Format
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
     
     
     
@@ -971,6 +1068,10 @@
       
         
           
+        
+      
+        
+      
         
       
         
@@ -1261,7 +1362,7 @@
 </div></p>
 </div>
 <div class="tabbed-block">
-<p>The BDD100K dataset was created by <a href="https://bair.berkeley.edu/blog/2018/05/30/bdd/">UC Berkeley</a> which is a large-scale driving video dataset seeking to improve autonomous driving and real-world scene understanding solutions.  The dataset consists of 100,000 videos; each video about 40 seconds long at 720p and 30 <abbr title="Frames Per Second">FPS</abbr> recorded by cell-phones.  The dataset contains 10 labels focusing on traffic entities and includes labels for object detection, lane marking, driveable areas, semantic and instance segmentation, tracking, and more.  This is a large dataset and training Object Detection models in EdgeFirst Studio using this dataset is a costly operation which can take up to 3 days.  Once trained, the models can also be deployed in the PC, NXP's i.MX 8M Plus EVK, or a field-ready <a href="../platforms/">EdgeFirst Platform</a> such as a Maivin or a Raivin.</p>
+<p>The BDD100K dataset was created by <a href="https://bair.berkeley.edu/blog/2018/05/30/bdd/">UC Berkeley</a> which is a large-scale driving video dataset seeking to improve autonomous driving and real-world scene understanding solutions.  The dataset consists of 100,000 videos; each video about 40 seconds long at 720p and 30 <abbr title="Frames Per Second">FPS</abbr> recorded by cell-phones.  The dataset contains 10 labels focusing on traffic entities and includes labels for object detection, lane marking, drivable areas, semantic and instance segmentation, tracking, and more.  This is a large dataset and training Object Detection models in EdgeFirst Studio using this dataset is a costly operation which can take up to 3 days.  Once trained, the models can also be deployed in the PC, NXP's i.MX 8M Plus EVK, or a field-ready <a href="../platforms/">EdgeFirst Platform</a> such as a Maivin or a Raivin.</p>
 <div class="admonition note">
 <p class="admonition-title">Third Party Dataset</p>
 <p>BDD100K is a third-party dataset that's provided for evaluation and research purposes only.  Please refer to their respective licensing restrictions.</p>
@@ -1291,7 +1392,7 @@
 </div></p>
 </div>
 <div class="tabbed-block">
-<p>The Raivin Ultra Short dataset was created by Au-Zone Technologies using a <a href="../platforms/">Raivin platform</a> with either the base Radar module or a <abbr title="Light Detection and Ranging">LiDAR</abbr> module attached to the device to aid in the 3D annotation process.  The dataset contains a single label "person" with 2D (image-based bounding box and instance segmentation) and 3D (real-world bounding boxes) annotations useful for training Object Detection or Fusion models for scene-understanding and spatial-perception tasks.  The dataset samples contains both indoor and rigourous outdoor environments such as construction sites.  The dataset is set to an ultra short range where the field of the objects spans no more than 10 meters away from the Raivin sensor. A Fusion model can be trained in EdgeFirst Studio using this dataset in under 1 hour.  The trained models can be deployed in a field-ready <a href="../platforms/">Raivin Platform</a> for people awareness tasks.</p>
+<p>The Raivin Ultra Short dataset was created by Au-Zone Technologies using a <a href="../platforms/quickstart/raivin/">Raivin platform</a> with either the base Radar module or a <abbr title="Light Detection and Ranging">LiDAR</abbr> module attached to the device to aid in the 3D annotation process.  The dataset contains a single label "person" with 2D (image-based bounding box and instance segmentation) and 3D (real-world bounding boxes) annotations useful for training Object Detection or Fusion models for scene-understanding and spatial-perception tasks.  The dataset samples contains both indoor and rigorous outdoor environments such as construction sites.  The dataset is set to an ultra short range where the field of the objects spans no more than 10 meters away from the Raivin sensor. A Fusion model can be trained in EdgeFirst Studio using this dataset in under 1 hour.  The trained models can be deployed in a field-ready <a href="../platforms/quickstart/raivin/">Raivin Platform</a> for people awareness tasks.</p>
 <p><div style="max-width: fit-content; margin-left: auto; margin-right: auto;" class="wizard-actions" markdown>
 <a class="md-button" href="raivin_ultra_short/">Read More</a>
 </div></p>
@@ -1329,12 +1430,12 @@ please do not hesitate and <a href="mailto:support@edgefirst.ai">email our suppo
 <p>This format is used throughout EdgeFirst Studio:</p>
 <ul>
 <li><strong><a href="../studio/snapshots/">Snapshots</a></strong>: Portable ZIP+Arrow pairs for download and sharing</li>
-<li><strong><a href="../platforms/publishing/"><abbr title="Binary container format for robotics log data">MCAP</abbr> uploads</a></strong>: Converted to this format when restored as datasets</li>
+<li><strong><a href="../perception/data_collection/publishing/"><abbr title="Binary container format for robotics log data">MCAP</abbr> uploads</a></strong>: Converted to this format when restored as datasets</li>
 <li><strong><a href="../models/training/vision/">Training</a></strong>: Arrow annotations feed directly into model training</li>
 </ul>
 <p>Learn more in the <a href="format/">Format Documentation</a>.</p>
 <hr />
-<p>There are 2D and 3D types of annotations that correlate with each other. For example, a 2D annotation is a set of pixel-based bounding boxes and segmentation masks whereas a 3D annotation is a set of 3D bounding boxes in meters.  However, a single object can be described by all three linked annotation types: a 2D bounding box, a 2D mask, and a 3D bounding box.  There could be multiple sensors involved in creating the dataset such as the camera, Radar and/or <abbr title="Light Detection and Ranging">LiDAR</abbr>, etc.  The readings from these sensors is rarely modified and needs to be distinguished in the dataset.  Thus, the EdgeFirst Dataset is known for its file pairs (typically Zip and Arrow) for storing the sensor data and annotations separately.  The <a href="format/structure/">EdgeFirst Dataset File Structure</a> comes in various forms depending if the data is a sequence or not.</p>
+<p>There are 2D and 3D types of annotations that correlate with each other. For example, a 2D annotation is a set of pixel-based bounding boxes and segmentation masks whereas a 3D annotation is a set of 3D bounding boxes in meters.  However, a single object can be described by all three linked annotation types: a 2D bounding box, a 2D mask, and a 3D bounding box.  There could be multiple sensors involved in creating the dataset such as the camera, Radar and/or <abbr title="Light Detection and Ranging">LiDAR</abbr>, etc.  The readings from these sensors is rarely modified and needs to be distinguished in the dataset.  Thus, the EdgeFirst Dataset is known for its file pairs (typically ZIP and Arrow) for storing the sensor data and annotations separately.  The <a href="format/structure/">EdgeFirst Dataset File Structure</a> comes in various forms depending if the data is a sequence or not.</p>
 <h2 id="related-articles">Related Articles</h2>
 <ol>
 <li><a href="tutorials/capture/">Capturing Data</a></li>
@@ -1435,7 +1536,7 @@ please do not hesitate and <a href="mailto:support@edgefirst.ai">email our suppo
       <nav class="md-footer__inner md-grid" aria-label="Footer" >
         
           
-          <a href="../3D/deployment/" class="md-footer__link md-footer__link--prev" aria-label="Previous: 3D Fusion Model Deployment">
+          <a href="../profiler/studio/from_profiler/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Validation from the Profiler">
             <div class="md-footer__button md-icon">
               
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
@@ -1445,20 +1546,20 @@ please do not hesitate and <a href="mailto:support@edgefirst.ai">email our suppo
                 Previous
               </span>
               <div class="md-ellipsis">
-                3D Fusion Model Deployment
+                Validation from the Profiler
               </div>
             </div>
           </a>
         
         
           
-          <a href="format/" class="md-footer__link md-footer__link--next" aria-label="Next: EdgeFirst Dataset Format">
+          <a href="coffeecup/" class="md-footer__link md-footer__link--next" aria-label="Next: Coffee Cup Dataset">
             <div class="md-footer__title">
               <span class="md-footer__direction">
                 Next
               </span>
               <div class="md-ellipsis">
-                EdgeFirst Dataset Format
+                Coffee Cup Dataset
               </div>
             </div>
             <div class="md-footer__button md-icon">

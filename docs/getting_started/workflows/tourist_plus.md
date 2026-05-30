@@ -5,4 +5,4 @@ In this workflow, you will {{ studio_link("sign up", "signup") }} for EdgeFirst 
 {% include-markdown "discrete/workflows/tourist_plus.md" %}
 
 !!! tip "Ready to go further?"
-    To copy a sample dataset and train your own model, follow the [Profiler+ Workflow](index.md) or the [Web Workflow](web.md).
+    To copy a sample dataset and train your own model, follow the [Profiler+ Workflow](profiler_plus.md) or the [Web Workflow](web.md).

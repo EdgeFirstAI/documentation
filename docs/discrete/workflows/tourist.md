@@ -8,7 +8,7 @@ On the landing page you can:
 - Browse publicly available sample models in the [EdgeFirst Model Zoo on Hugging Face](https://huggingface.co/spaces/EdgeFirst/Models)
 - Learn about the EdgeFirst Perception ecosystem and supported target hardware
 
-{{ figure("/getting_started/assets/studio_landing_page.jpg", "Sample Project Datasets") }}
+{{ figure("/getting_started/assets/studio_landing_page.jpg", "EdgeFirst Studio Landing Page") }}
 
 ## Platform Features
 

@@ -379,8 +379,8 @@ flowchart LR
 ```
 
 !!! note
-    Labeled arrows suggests that only certain type of users can enter the stages pointed by the arrow.  For example, only Raivin and LiDAR users can "Auto Annotate 3D".
-
+    Labeled arrows suggest that only certain types of users can enter the stages pointed to by the arrow. For example, only Raivin and LiDAR users can "Auto Annotate 3D".
+    
 ### Cloud Workflows
 
 1. [Tourist Workflow](tourist.md)

@@ -15,7 +15,7 @@ Open the EdgeFirst Model Zoo and look for the capabilities that matter most to y
 - **Performance metrics**: Accuracy and throughput summaries are eye-catching because they surface the real tradeoff: speed on-device versus quality.
 - **Export readiness**: ONNX and other portable artifacts signal how quickly a model can move from demo to deployment.
 
-{{ figure("../assets/HF_modelzoo_landing_page.jpg", "Model Zoo Landing Page") }}
+{{ figure("../assets/hf_modelzoo_landing_page.jpg", "Model Zoo Landing Page") }}
 
 ## Review Studio Sessions
 

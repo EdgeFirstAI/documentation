@@ -6,4 +6,4 @@ In this workflow, you will explore recording a video or capturing images using a
 
 ## Next Steps
 
-If you have hardward, explore [hardware related workflows](hardware.md) running through the MLOps with your hardware.
+If you have hardware, explore [hardware related workflows](hardware.md) running through the MLOps with your hardware.

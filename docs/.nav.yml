@@ -51,7 +51,7 @@ nav:
       - 3D/training.md
       - 3D/validation.md
       - 3D/deployment.md
-  - Profiler <sup><em>New</em></sup>: profiler
+  - 'Profiler <span class="ef-badge">New</span>': profiler
   - Datasets:
     - datasets/index.md
     - Dataset Zoo:

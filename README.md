@@ -86,3 +86,28 @@ Follow these conventions when working on the documentation.
     {{ studio_link("price", "price") }}
     {{ studio_link("Public Project", "project") }}
     ```
+
+# Reusable Components
+
+Reusable UI components are defined in [docs/stylesheets/components.css](docs/stylesheets/components.css) and registered under `extra_css` in [mkdocs.yml](mkdocs.yml). They can be used anywhere in the documentation, including page content, headings, and navigation titles in `.nav.yml`.
+
+## Badge
+
+The `ef-badge` is a small pill label with a periodic shine sweep, useful for flagging new, beta, or preview features. Drop a `<span>` with the `ef-badge` class anywhere inline:
+
+```html
+<span class="ef-badge">New</span>
+```
+
+Color variants are available by adding a modifier class (the default is gold):
+
+```html
+<span class="ef-badge ef-badge--teal">Beta</span>
+<span class="ef-badge ef-badge--navy">Preview</span>
+```
+
+Notes:
+
+- The badge is sized in `em`, so it scales with the surrounding text and can follow a word or heading.
+- For navigation titles in `.nav.yml`, wrap the entry in single quotes so the embedded HTML parses correctly, for example `'Profiler <span class="ef-badge">New</span>': profiler`.
+- The shine animation is automatically disabled for users who have enabled the `prefers-reduced-motion` accessibility setting.

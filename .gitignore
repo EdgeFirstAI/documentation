@@ -9,3 +9,4 @@
 *.log
 TODO.md
 __pycache__/
+.playwright-mcp/

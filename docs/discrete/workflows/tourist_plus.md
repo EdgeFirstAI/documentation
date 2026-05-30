@@ -1,9 +1,16 @@
-## Copy Dataset
+{% include-markdown "discrete/user/login.md" heading-offset=0 %}
 
-{% include-markdown "discrete/datasets/copy_dataset.md" %}
+## Browse Public Datasets
 
-{% include-markdown "discrete/datasets/annotate_2d_dataset.md" %}
-{% include-markdown "discrete/datasets/audit_2d_dataset.md" %}
-{% include-markdown "discrete/models/train_vision.md" %}
-{% include-markdown "discrete/models/validate_vision.md" %}
-{% include-markdown "discrete/models/deploy_model.md" %}
+Once logged in, navigate to the **Sample Project** from the Home Page.
+
+{{ figure("/studio/assets/projects/sample-datasets-button.jpg", "Sample Project Datasets") }}
+
+Click on any dataset card to view the dataset details, browse frames, and inspect annotations.  No copying is required to explore a public dataset.
+
+## Browse Public Models
+
+Navigate to the **Models** section from any project to browse available models and their associated training and validation sessions.
+
+Next deploy any model in EdgeFirst Studio by following this [guide](../../getting_started/running_pretrained_model.md).
+

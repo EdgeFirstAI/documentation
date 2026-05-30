@@ -1,0 +1,10 @@
+docs/platforms/quickstart/jetson_orin/assets/torchvision-0.18.0a0+6043bc2-cp310-cp310-linux_aarch64.whl filter=lfs diff=lfs merge=lfs -text
+docs/platforms/quickstart/jetson_orin/assets/yolov8s-seg-fp16.engine filter=lfs diff=lfs merge=lfs -text
+docs/models/deployment/assets/coffeecup-modelpack-multitask-t-1f54.onnx filter=lfs diff=lfs merge=lfs -text
+docs/models/deployment/assets/coffeecup-modelpack-multitask-t-1f54.tflite filter=lfs diff=lfs merge=lfs -text
+docs/models/deployment/assets/coffeecup-yolov8n-segmentation-rgb-640x640-t-266e.onnx filter=lfs diff=lfs merge=lfs -text
+docs/models/deployment/assets/coffeecup-yolov8n-segmentation-rgb-640x640-t-266e_quant-u8-i8.tflite filter=lfs diff=lfs merge=lfs -text
+docs/models/ultralytics/assets/yolov8s-seg_full_integer_quant.tflite filter=lfs diff=lfs merge=lfs -text
+docs/models/ultralytics/assets/yolov8s-seg_full_integer_quant_converted.tflite filter=lfs diff=lfs merge=lfs -text
+docs/models/modelpack/assets/coffeecup-modelpack-multitask-t-1f54.onnx filter=lfs diff=lfs merge=lfs -text
+docs/models/modelpack/assets/coffeecup-modelpack-multitask-t-1f54.tflite filter=lfs diff=lfs merge=lfs -text

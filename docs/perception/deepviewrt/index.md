@@ -1,6 +1,6 @@
 # Deep View RT
 
-Deep View RT has two components currently and is being expanded further for each step of the deployment pipeline. We have the Deep View RT Edge-Optimized Inference Engine that is capable of inference and can be built into applications or workflows using converted models. The Deep View RT Edge-Optimized Inference Engine is capable of running inference on many different devices and EdgeFirst Platforms in addition to running inference on the CPU, GPU, and NPU. We then have the Deep View Converter to handle conversion and optimization of models to our propietary model format. These models have been optimized for our EdgeFirst Platforms and in a wide range of scenarios will provide an increase in inference.
+Deep View RT has two components currently and is being expanded further for each step of the deployment pipeline. We have the Deep View RT Edge-Optimized Inference Engine that is capable of inference and can be built into applications or workflows using converted models. The Deep View RT Edge-Optimized Inference Engine is capable of running inference on many different devices and EdgeFirst Platforms in addition to running inference on the CPU, GPU, and NPU. We then have the Deep View Converter to handle conversion and optimization of models to our proprietary model format. These models have been optimized for our EdgeFirst Platforms and in a wide range of scenarios will provide an increase in inference.
 
 Finally, in development is our HAL (Hardware Abstraction Library), which will simplify the deployment pipeline and allow for minimally coded application pipelines to be highly optimized on whichever EdgeFirst Platform you are using for inference.
 
@@ -17,13 +17,13 @@ Additionally, due to the the improvements in quantization capabilities of each f
 If you have previously had the Deep View Converter installed, it is highly recommended to run the following to remove the plugin system as you update to this self-contained conversion process.
 
 ``` shell
-pip uninstall deepview-converter deepview-converter-rtm deepview-converter-tflite deepview-converter-onnx
+$ pip uninstall deepview-converter deepview-converter-rtm deepview-converter-tflite deepview-converter-onnx
 ```
 
 The converter is a Python-based tool and as such can be installed directly through pip using the following
 
 ``` shell
-pip install deepview-converter
+$ pip install deepview-converter
 ```
 
 Now you are all set up to use the Deep View Converter with any model you are looking to run on your EdgeFirst Platform.
@@ -33,7 +33,7 @@ Now you are all set up to use the Deep View Converter with any model you are loo
 The Deep View Converter has a lot of customizations that will be described in the later section, but for basic conversion the command is as simple as the following where you provide the filename of the model to be converted and the filename of where you want the RTM to be saved.
 
 ``` shell
-rtm-converter input_model.tflite output_model.rtm
+$ rtm-converter input_model.tflite output_model.rtm
 ```
 
 ### Detailed Usage
@@ -41,25 +41,25 @@ rtm-converter input_model.tflite output_model.rtm
 There are a handful of arguments that you may see in common use and I will describe those ones first, before continuing with the more obscure arguments that have niche usage.
 
 ``` shell
-rtm-converter --input_names node1,node2,... --output_names outnode1,outnode2,... model_in.tflite model_out.rtm
+$ rtm-converter --input_names node1,node2,... --output_names outnode1,outnode2,... model_in.tflite model_out.rtm
 ```
 
 The input and output name arguments allow you to trim the model during conversion if there are sections that are unneeded. A common use is to trim the model before a decoder used for detection, so then those outputs can be taken and sent through our optimized decoders.
 
 ``` shell
-rtm-converter --input_type int8 --output_type float32 model_in.tflite model_out.rtm
+$ rtm-converter --input_type int8 --output_type float32 model_in.tflite model_out.rtm
 ```
 
 The input and output type arguments can be used in a quantized model to modify the datatypes of the inputs and outputs of the model, to remove a potential additional step of quantizing/dequantizing inputs or outputs.
 
 ``` shell
-rtm-converter --labels labels.txt model_in.onnx model_out.rtm
+$ rtm-converter --labels labels.txt model_in.onnx model_out.rtm
 ```
 
 The labels argument can be used to tell the RTM to store the list of labels directly into the file. This can then be accessed through the API to retrieve the labels for use in the pipeline.
 
 ``` shell
-rtm-converter --metadata file1.bin --metadata file2.bin,entry_name1 --metadata file3.bin,entry_name2,application/octet-stream \
+$ rtm-converter --metadata file1.bin --metadata file2.bin,entry_name1 --metadata file3.bin,entry_name2,application/octet-stream \
     model_in.onnx model_out.rtm
 ```
 
@@ -82,8 +82,8 @@ The first step will be to quantize the model following whichever documentation i
 You can additionally quantize the model through the Deep View Converter using the following CLI commands
 
 ``` shell
-rtm-converter --quantize --quant_normalization signed --samples samples_folder --num_samples 30 model.h5 model_quant.rtm
-rtm-converter --quantize --quant_normalization signed --samples samples_folder --num_samples 30 model.onnx model_quant.rtm
+$ rtm-converter --quantize --quant_normalization signed --samples samples_folder --num_samples 30 model.h5 model_quant.rtm
+$ rtm-converter --quantize --quant_normalization signed --samples samples_folder --num_samples 30 model.onnx model_quant.rtm
 ```
 
 !!! warning "ONNX Quantization"
@@ -131,7 +131,7 @@ The Deep View RT Edge-Optimized Inference Engine is a C based library that provi
 With the API provided you can build native C applications that take advantage of the Deep View RT Inference Engine, and additionally we provide Python bindings for the engine that can installed through pip with the following
 
 ``` shell
-pip install deepview-rt
+$ pip install deepview-rt
 ```
 
 Documentation for using the APIs for both C and Python are currently being updated and will be provided alongside a new update that will look to simplify the application building process.

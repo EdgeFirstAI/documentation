@@ -35,15 +35,11 @@ It contains 24,746 images in total and a single class "person".
     There are 5759 images in this dataset that are not associated to
     the train or val groups.
 
-<figure markdown="span">
-![Class Distribution](../assets/raivin_ultra_short/label_count.jpg){ align=center }
-</figure>
+{{ figure("../assets/raivin_ultra_short/label_count.jpg", "Class Distribution") }}
 
 ## Image Gallery
 
-<figure markdown="span">
-![Playing Cards Dataset Gallery](../assets/raivin_ultra_short/gallery.jpg){ align=center }
-</figure>
+{{ figure("../assets/raivin_ultra_short/gallery.jpg", "Raivin Ultra Short Dataset Gallery") }}
 
 ## License
 

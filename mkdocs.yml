@@ -1,5 +1,5 @@
 site_name: EdgeFirst Studio Documentation
-site_url: https://doc.edgefirst.ai/
+site_url: https://doc.edgefirst.ai
 site_description: EdgeFirst Studio Documentation
 site_author: Au-Zone Technologies
 theme:
@@ -67,6 +67,8 @@ plugins:
   - include-markdown:
       rewrite_relative_urls: true
       heading_offset: 1
+  - macros:
+      module_name: macros
   - mkdocstrings:
       default_handler: python
       handlers:
@@ -123,15 +125,19 @@ markdown_extensions:
   - pymdownx.emoji:
       emoji_index: !!python/name:material.extensions.emoji.twemoji
       emoji_generator: !!python/name:material.extensions.emoji.to_svg
+  - pymdownx.tasklist:
+      custom_checkbox: true
       
 extra_javascript:
   - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
 
 extra_css:
   - stylesheets/extra.css
+  - stylesheets/components.css
   - stylesheets/mermaid.css
 
 extra:
+  show_image_paths: false
   version:
     default: latest
     provider: mike

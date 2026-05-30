@@ -1,6 +1,6 @@
 # MobileNet SSD Examples
 
-These examples demonstrate how to deploy a MobileNet SSD V1 model using the NPU of an embedded platform such as a [Maivin](../../../platforms/quickstart.md).  The examples below are split into two parts; model inference on a single image and a model inference publisher. These examples have been tested on the TFLite files found in [this SSD-TFLite repository](https://github.com/apivovarov/ssd-tflite/tree/master), and in [ML-Zoo](https://github.com/Arm-Examples/ML-zoo/tree/master/models/object_detection/ssd_mobilenet_v1).  
+These examples demonstrate how to deploy a MobileNet SSD V1 model using the NPU of an embedded platform such as a [Maivin](../../../platforms/quickstart/maivin/index.md).  The examples below are split into two parts; model inference on a single image and a model inference publisher. These examples have been tested on the TFLite files found in [this SSD-TFLite repository](https://github.com/apivovarov/ssd-tflite/tree/master), and in [ML-Zoo](https://github.com/Arm-Examples/ML-zoo/tree/master/models/object_detection/ssd_mobilenet_v1).  
 
 !!! note
     In a future release of the EdgeFirst middleware, the Model Service will be able to run MobileNet SSD V1 models natively, again, testing on the above examples.
@@ -16,7 +16,7 @@ For a quick demonstration, go to the "ssd-tflite" repository and download the fo
 
 Download our [Python Script](assets/run-tflite.py){: download="run-tflite.py"} for running the example.
 
-Once the files have been downloaded, [SCP](../../../platforms/ssh.md#secure-copy) the files into the embedded platform.
+Once the files have been downloaded, [SCP](../../../platforms/networking/ssh.md#secure-copy) the files into the embedded platform.
 
 Run the script with the command `python3 run-tflite.py`.  The script should print the inference time in milliseconds and the model detections as follows.
 
@@ -77,10 +77,7 @@ Found objects:
 
 Furthermore, a new image should be saved `img_vis.jpg` showing the model output visualizations.
 
-<figure markdown="span">
-![Model Inference](assets/img_vis.jpg){align=center}
-<figcaption>Model Inference</figcaption>
-</figure>
+{{ figure("assets/img_vis.jpg", "Model Inference") }}
 
 The following breakdown of the script describing the steps of the model inference is provided below.
 
@@ -174,13 +171,13 @@ This script is required to run on the target as it will use the DMA Buffer topic
 1. Disable the current model service with the following command:
 
     ```shell
-    sudo systemctl stop model
+    $ sudo systemctl stop model
     ```
 
 2. You can then run the script using the following invocation:
 
     ```shell
-    sudo -E python3 boxes2d_publisher.py --model model.tflite --threshold 0.5 --shape 300,300
+    $ sudo -E python3 boxes2d_publisher.py --model model.tflite --threshold 0.5 --shape 300,300
     ```
 
     * the `--model` argument will be the path to the SSD model to be used to perform inference on the model and return boxes.  
@@ -191,6 +188,6 @@ This script is required to run on the target as it will use the DMA Buffer topic
 
 Once you disable the server, you should restart the model service with the following command.
 
-```
-sudo systemctl restart model
+```shell
+$ sudo systemctl restart model
 ```

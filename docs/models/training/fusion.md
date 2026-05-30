@@ -1,84 +1,47 @@
 # Training Fusion Models
 
-This tutorial describes the steps to train **Fusion** models in EdgeFirst Studio.  For a tutorial to train Vision models, see [Training Vision Models](vision.md).
+This tutorial describes the steps to train **Fusion** models in EdgeFirst Studio.  Recall that Fusion models are used for spatial perception using Radar data and camera frames as inputs to the model.  If you are working towards object detection, see [Training Vision Models](vision.md).
 
 ## View Dataset
 
-First ensure the dataset is ready to be used for training.  This means that the dataset is properly annotated and the dataset is properly split with training and validation samples.  The tutorial [View Fusion Dataset](../../datasets/tutorials/management.md#view-fusion-dataset) will show what to look for in a dataset before deploying it for training.
+First ensure that the dataset is ready to be used for training.  This means that the dataset meets all of the criteria listed below.
+
+- [x] Complete Annotations (bounding boxes and/or segmentation masks/polygons)
+- [x] Contains training and validation partitions
+- [x] Contains a dataset tag/version
+
+The section [View Fusion Dataset](../../datasets/tutorials/management.md#view-fusion-dataset) will show an example of a completed dataset.
 
 ## Specify Project Experiments
 
-From the projects page, choose the project that contains the dataset you plan to use.  In this example, the project chosen is called "Spatial Perception" project.  Next click the "Model Experiments" button as indicated in red.
+From the [Projects page](../../studio/projects.md), choose the project that contains the dataset you plan to use.  In this example, the project chosen is called "My First Project" project.  Next click the "Model Experiments" button as indicated in red.
 
-<figure markdown="span">
-![Model Experiments](../assets/training/fusion-model-experiments.jpg){ align=center }
-<figcaption>Model Experiments</figcaption>
-</figure>
+{{ figure("../assets/training/model-experiments.jpg", "Model Experiments") }}
 
-## Create Model Experiment
-
-You will be greeted with the "Model Experiments" page.  A new project will not have any experiments as shown below.  You will need to first create a model experiment.  As mentioned in the [Model Experiments Dashboard](../../studio/models.md), model experiments will contain both training and validation sessions.
-
-<figure markdown="span">
-![Model Experiments Page](../assets/training/fusion-model-experiments-page.jpg){ align=center }
-<figcaption>Model Experiments Page</figcaption>
-</figure>
-
-Click on the "New Experiment" button as shown on the top right corner of the page.
-
-<figure markdown="span">
-![New Experiment Button](../assets/training/new-experiment-button.jpg){ align=center }
-<figcaption>New Experiment Button</figcaption>
-</figure>
-
-Enter the name and the description of the experiment marked by the fields shown below.  Click on the "Create New Experiment" button to create your experiment.
-
-<figure markdown="span">
-![Experiment Fields](../assets/training/fusion-model-experiments-fields.jpg){ align=center }
-<figcaption>Experiment Fields</figcaption>
-</figure>
-
-Your created experiment will appear like the following below.  At the start, this experiment will contain zero training and validation sessions.  The next step will show how to start your first training session on this experiment using the dataset in the project.
-
-<figure markdown="span">
-![Created Experiment](../assets/training/fusion-created-experiment.jpg){ align=center }
-<figcaption>Created Experiment</figcaption>
-</figure>
+{% include-markdown "discrete/models/create_model_experiments.md" %}
 
 ## Create Training Session
 
 In the experiment card, click the "Training Sessions" button as indicated in red below.
 
-<figure markdown="span">
-![Training Sessions](../assets/training/fusion-training-sessions.jpg){ align=center }
-<figcaption>Training Sessions</figcaption>
-</figure>
+{{ figure("../assets/training/training-sessions.jpg", "Training Sessions") }}
 
 You will be greeted to the "Training Sessions" page as shown below.  
 
-<figure markdown="span">
-![Training Sessions Page](../assets/training/fusion-training-sessions-page.jpg){ align=center }
-<figcaption>Training Sessions Page</figcaption>
-</figure>
+{{ figure("../assets/training/training-sessions-page.jpg", "Training Sessions Page") }}
 
 Start a training session by clicking on the "New Session" button on the top right corner of the page.
 
-<figure markdown="span">
-![New Session Button](../assets/training/new-session-button.jpg){ align=center }
-<figcaption>New Session Button</figcaption>
-</figure>
+{{ figure("../assets/training/new-session-button.jpg", "New Session Button") }}
 
-You will be greeted with the training session dialog.  In this dialog, specify the "Trainer Type" to "EdgeFirst Fusion" and provide a name and description of the training session as shown below.  Next specify the dataset to be used with training and validation partitions.  In this example, the dataset specified is the "Raivin Ultra Short" dataset.  Next specify the training parameters.  By default, the model will be trained using both the Camera and the Radar sensors.  However, you can specify one of the sensors turned off.  This model will output an occupancy grid highlighting the positions of people in world coordinates.  Additional information on these parameters are provided by hovering over the info button ![Info Button](../../assets/buttons/studio-info-button.jpg).
+You will be greeted with the training session dialog.  In this dialog, specify the "Trainer Type" to "EdgeFirst Fusion" and provide a name and description of the training session as shown below.  Next specify the dataset to be used with training and validation partitions.  Next specify the Model Settings.  By default, the model will be trained using both the Camera and the Radar sensors.  However, you can specify one of the sensors turned off.  This model will output an occupancy grid highlighting the positions of the detections in world coordinates.  Additional information on these parameters are provided by hovering over the info button ![Info Button](../../assets/buttons/studio-info-button.jpg).
 
 !!! note
     For an indoor setting, the "Radar Range Mode" is typically set to "Ultra Short (9m)" and the "Object Detection Range" is set to 9 meters.  This is the maximum range of detection, further distances are ignored.
 
 For more information on available "Data Augmentations" please see [Vision Augmentations](../augmentations.md).
 
-<figure markdown="span">
-![Training Session Fields](../assets/training/fusion-train-settings.jpg){ align=center }
-<figcaption>Training Session Fields</figcaption>
-</figure>
+{{ figure("../assets/training/fusion-train-settings.jpg", "Training Session Fields") }}
 
 Once the configurations have been made, go ahead and click on the "Start Session" button on the bottom right of the window.  This will start the training session which will train the model for the number of epochs specified.
 
@@ -86,10 +49,7 @@ Once the configurations have been made, go ahead and click on the "Start Session
 
 Once the training session has started, the progress with the stages will be shown on the left and additional information and status is shown on the right.
 
-<figure markdown="span">
-![Training Session](../assets/training/fusion-session-progress.jpg){ align=center }
-<figcaption>Training Session</figcaption>
-</figure>
+{{ figure("../assets/training/fusion-session-progress.jpg", "Training Session") }}
 
 The training process begins with cloud instance initialization. Then the dataset is downloaded and cached.  Training starts afterwards.
 At the end of the training process, the model is quantized and the checkpoints are published.
@@ -98,17 +58,11 @@ At the end of the training process, the model is quantized and the checkpoints a
 
 The completed session will look as follows with the status set to "Complete".
 
-<figure markdown="span">
-![Completed Session](../assets/training/fusion-completed-session.jpg){ align=center }
-<figcaption>Completed Session</figcaption>
-</figure>
+{{ figure("../assets/training/fusion-completed-session.jpg", "Completed Session") }}
 
 The attributes of the training session are labeled below.
 
-<figure markdown="span">
-![Training Session Attributes](../assets/training/training-session-attributes.jpg){ align=center }
-<figcaption>Training Session Attributes</figcaption>
-</figure>
+{{ figure("../assets/training/training-session-attributes.jpg", "Training Session Attributes") }}
 
 ## Training Outcomes
 
@@ -120,17 +74,11 @@ The attributes of the training session are labeled below.
 
 You can view the training charts by clicking the "View Training Charts" button on the top of the session card.
 
-<figure markdown="span">
-![Training Charts](../assets/training/fusion-charts.jpg){ align=center }
-<figcaption>Training Charts</figcaption>
-</figure>
+{{ figure("../assets/training/fusion-charts.jpg", "Training Charts") }}
 
 You can go back to the training session card by pressing the "Back" button as indicated in red below on the top left corner of the page.
 
-<figure markdown="span">
-![Back to the Session Card](../assets/training/back-button.jpg){ align=center }
-<figcaption>Back to the Session Card</figcaption>
-</figure>
+{{ figure("../assets/training/back-button.jpg", "Back to the Session Card") }}
 
 ### Trained Models
 
@@ -138,11 +86,9 @@ You can go back to the training session card by pressing the "Back" button as in
     <iframe width="560" height="315" src="https://www.youtube.com/embed/Q8uiYJb1HJ4?start=1530&end=1830" title="Downloading Model" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 </div>
 
-The trained model artifacts can be downloaded by clicking the "View Additional Details" button on the training session card in EdgeFirst Studio.  This will open the session details and the models are listed under the "Artifacts" tab as shown below.  Click on the downward arrow indicated in red to download the models to your PC.
+The trained model artifacts can be downloaded by clicking the session card.  This will open the session details and the models are listed under the "Artifacts" tab as shown below.  Click on the downward arrow indicated in red to download the models to your PC.
 
-| Session Details                                                | Artifacts                                                                     |
-|----------------------------------------------------------------|-------------------------------------------------------------------------------|
-| ![session](../assets/training/fusion-session-details.jpg) | ![artifacts](../assets/training/fusion-session-artifacts.jpg) |
+{{ figure("../assets/training/fusion-session-artifacts.jpg", "Training Session Artifacts") }}
 
 It is also possible to compare the training metrics for multiple sessions.  See [Training Sessions](../../studio/models.md#training-sessions) in the EdgeFirst Studio Overview for further details.
 

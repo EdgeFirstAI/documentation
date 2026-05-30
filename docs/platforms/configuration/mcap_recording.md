@@ -1,11 +1,8 @@
 # Recorder Settings
 
-This page configures how sensor and processed outputs are saved on the [MCAP Recording Page](../recording.md).
+This page configures how sensor and processed outputs are saved on the [MCAP Recording Page](../../perception/data_collection/recording.md).
 
-<figure markdown="span">
-![MCAP Settings page](../assets/configuration-mcap.png){align=center}
-<figcaption>MCAP Settings page</figcaption>
-</figure>
+{{ figure("../assets/configuration/configuration-mcap.png", "MCAP Settings page") }}
 
 !!! tip
     These values are stored in the `/etc/default/recorder` file on the device and can be hand-edited. This is not recommended.
@@ -66,20 +63,20 @@ Checking the "/fusion" topic box enables recording of the following topics:
 
 There are several settings that will stop or change specific topics, which may result in the topic not being recorded.
 
-- On the [Model Settings](./model.md) page:  
-  - [Enabling Visualization](./model.md#visualization) will create the `/model/visualization` topic  
-  - [Disabling Mask Compression](./model.md#mask_compression) will stop the `/model/mask_compressed` topic and start the `/model/mask` topic  
-  - [Loading a Model without detection or segmentation outputs](./model.md#model) will stop the corresponding `/model/boxes2d` or `/model/mask_compressed` topics  
-- On the [Camera Settings](./camera.md) page:  
-  - [Setting the Camera Size to 4k](./camera.md#camera-size) will put the Camera service into [4K Mode](../../perception/4k/index.md) and create the `/camera/h264/tl`, `/camera/h264/tr`, `/camera/h264/bl`, and  `/camera/h264/br` topics while stopping the default `/camera/h264` topic.
-  - [Disabling H264 streaming](./camera.md#h264-streaming) will stop the `/camera/h264` topic
-  - [Enabling JPEG streaming](./camera.md#jpeg-streaming) will create the `/camera/jpeg` topic
+- On the [Model Settings](model.md) page:  
+  - [Enabling Visualization](model.md#visualization) will create the `/model/visualization` topic  
+  - [Disabling Mask Compression](model.md#mask_compression) will stop the `/model/mask_compressed` topic and start the `/model/mask` topic  
+  - [Loading a Model without detection or segmentation outputs](model.md#model) will stop the corresponding `/model/boxes2d` or `/model/mask_compressed` topics  
+- On the [Camera Settings](camera.md) page:  
+  - [Setting the Camera Size to 4k](camera.md#camera-size) will put the Camera service into [4K Mode](../../perception/4k/index.md) and create the `/camera/h264/tl`, `/camera/h264/tr`, `/camera/h264/bl`, and  `/camera/h264/br` topics while stopping the default `/camera/h264` topic.
+  - [Disabling H264 streaming](camera.md#h264-streaming) will stop the `/camera/h264` topic
+  - [Enabling JPEG streaming](camera.md#jpeg-streaming) will create the `/camera/jpeg` topic
 
 Topics that have been stopped by a configuration change cannot be recorded into an MCAP file. However, the new topics created by the above changes are not automatically added to the MCAP recorder and will need to be added manually.
 
 ### Adding Topics Manually to the Recording Service
 
-Topics that are not included by the WebUI front-end to be recorded must be added manually at the platform command-line interface. You will need to [SSH into the platform](../../platforms/ssh.md). Then, the topics will need to be added manually to the `TOPICS` line in the `/etc/default/recorder` configuration file. To edit this file, you need to run the `sudo vi /etc/default/recorder` command.
+Topics that are not included by the Web UI front-end to be recorded must be added manually at the platform command-line interface. You will need to [SSH into the platform](../../platforms/networking/ssh.md). Then, the topics will need to be added manually to the `TOPICS` line in the `/etc/default/recorder` configuration file. To edit this file, you need to run the `sudo vi /etc/default/recorder` command.
 
 !!! Tip
     If you are unfamiliar with `vi`, please read a [quick tutorial][vi].

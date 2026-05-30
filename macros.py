@@ -8,6 +8,7 @@ def define_env(env):
         "signup": "https://test.edgefirst.studio/signup",
         "login": "https://test.edgefirst.studio/login",
         "price": "https://test.edgefirst.studio/price",
+        "project": "https://test.edgefirst.studio/public/projects",
     }
 
     def resolve_path(path, page):        

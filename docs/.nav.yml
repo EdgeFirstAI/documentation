@@ -13,11 +13,11 @@ nav:
       - getting_started/workflows/index.md
       - getting_started/workflows/tourist.md
       - getting_started/workflows/tourist_plus.md
+      - getting_started/workflows/profiler.md
+      - getting_started/workflows/profiler_plus.md
+      - getting_started/workflows/auditor.md
       - getting_started/workflows/web.md
-      - getting_started/workflows/maivin.md
-      - getting_started/workflows/raivin.md
-      - getting_started/workflows/imx8mp.md
-      - getting_started/workflows/jetson.md
+      - getting_started/workflows/hardware.md
   - Studio:
     - studio/index.md
     - studio/home.md
@@ -51,7 +51,7 @@ nav:
       - 3D/training.md
       - 3D/validation.md
       - 3D/deployment.md
-  - Profiler: profiler
+  - Profiler <sup><em>New</em></sup>: profiler
   - Datasets:
     - datasets/index.md
     - Dataset Zoo:
@@ -227,8 +227,10 @@ nav:
         - platforms/quickstart/imx95/setup.md
         - platforms/quickstart/imx95/copy_dataset.md
         - platforms/quickstart/imx95/train.md
-        - platforms/quickstart/imx95/neutron_converter.md
-        - platforms/quickstart/imx95/convert_kinara.md
+        - Model Conversions:
+          - platforms/quickstart/imx95/conversion/index.md
+          - platforms/quickstart/imx95/conversion/convert_kinara.md
+          - platforms/quickstart/imx95/conversion/convert_neutron.md
         - platforms/quickstart/imx95/validate.md
         - platforms/quickstart/imx95/deploy.md
       - NVIDIA Jetson Quick Start:
@@ -246,6 +248,10 @@ nav:
         - platforms/quickstart/raspberrypi/setup.md
         - platforms/quickstart/raspberrypi/copy_dataset.md
         - platforms/quickstart/raspberrypi/train.md
+        - Model Conversions:
+          - platforms/quickstart/raspberrypi/conversion/index.md
+          - platforms/quickstart/raspberrypi/conversion/convert_hailo.md
+          - platforms/quickstart/raspberrypi/conversion/convert_tflite.md
         - platforms/quickstart/raspberrypi/validate.md
         - platforms/quickstart/raspberrypi/deploy.md
     - Configuration:

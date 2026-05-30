@@ -1,9 +1,8 @@
 # Tourist Workflow
 
-In this workflow, you will explore copying the Coffee Cup dataset from "Sample Project" and using the dataset to train a vision model that detects coffee cups.  Once the model is trained, you will see how to validate the model and then finally deploy the model on your PC.
+In this workflow, you will explore the EdgeFirst Studio landing page and get an overview of the platform's features — no account required.
 
 {% include-markdown "discrete/workflows/tourist.md" %}
 
-## Next Steps
-
-Explore the dataset annotation process by following the [Tourist Plus Workflow](tourist_plus.md).
+!!! tip "Ready to go further?"
+    Sign up for a free account and browse public datasets and models by following the [Tourist+ Workflow](tourist_plus.md).

@@ -81,7 +81,8 @@ Follow these conventions when working on the documentation.
 
     ```
     {{ studio_link("EdgeFirst Studio") }}
-    {{ studio_link("login", "login") }}
     {{ studio_link("sign up", "signup") }}
+    {{ studio_link("login", "login") }}
     {{ studio_link("price", "price") }}
+    {{ studio_link("Public Project", "project") }}
     ```

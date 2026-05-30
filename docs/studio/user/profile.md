@@ -22,33 +22,21 @@ This page provides details on your profile information.  To get started, you can
 
 You can find your profile information by clicking on the "User" button that is found on the top right of the navigation bar shown below.  You will see three different options, click on the "Profile" button as shown below.
 
-<figure markdown="span">
-![The location of the "Profile" button](../assets/user/profile-button.jpg){ align=center }
-<figcaption>The location of the "Profile" button</figcaption>
-</figure>
+{{ figure("../assets/user/profile-button.jpg", "The location of the 'Profile' button") }}
 
 This will navigate you to your profile information you've set when you first sign up.
 
-<figure markdown="span">
-![Your Profile Information](../assets/user/profile-information-page.jpg){ align=center }
-<figcaption>Your Profile Information</figcaption>
-</figure>
+{{ figure("../assets/user/profile-information-page.jpg", "Your Profile Information") }}
 
 ## Edit Information
 
 Now that you can [see your profile information](#profile-information).  You can edit your information by clicking on the "Edit Info" button on the left.
 
-<figure markdown="span">
-![Edit Profile Button](../assets/user/edit-profile-button.jpg){ align=center }
-<figcaption>Edit Profile Button</figcaption>
-</figure>
+{{ figure("../assets/user/edit-profile-button.jpg", "Edit Profile Button") }}
 
 This will bring you to the page to edit your profile information such as your username, first and last name, your email, and the [role](organization.md#roles) associated to your account.
 
-<figure markdown="span">
-![Edit Profile Information](../assets/user/edit-profile-information.jpg){ align=center }
-<figcaption>Edit Profile Information</figcaption>
-</figure>
+{{ figure("../assets/user/edit-profile-information.jpg", "Edit Profile Information") }}
 
 After making the changes, click "Apply" to save your changes. Otherwise, click "Cancel" to abort your changes.  
 

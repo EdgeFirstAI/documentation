@@ -1,0 +1,84 @@
+# Linux
+
+The EdgeFirst Profiler ships prebuilt binaries for **x86_64** and **aarch64** Linux against the manylinux2014 baseline (glibc 2.17+). Both architectures get the same default backend, ONNX Runtime, plus optional accelerator backends that load at runtime from their vendor libraries.
+
+## Install
+
+=== "Python (pip)"
+
+    ```sh
+    pip install edgefirst-profiler
+    ```
+
+=== "Platform installer"
+
+    ```sh
+    curl -fsSL https://raw.githubusercontent.com/EdgeFirstAI/profiler-cli/main/install.sh | bash
+    ```
+
+    The installer drops the binary into `/usr/local/bin` (run as root) or `~/.local/bin` (otherwise). Pin a specific release with `--version`:
+
+    ```sh
+    curl -fsSL https://raw.githubusercontent.com/EdgeFirstAI/profiler-cli/main/install.sh | bash -s -- --version 1.0.1
+    ```
+
+Confirm:
+
+```sh
+edgefirst-profiler --version
+```
+
+## Default backend: ONNX Runtime
+
+The default build profiles `.onnx` models on CPU. The profiler dlopens `libonnxruntime.so` at startup; install it once per system:
+
+=== "Debian / Ubuntu"
+
+    ```sh
+    sudo apt install libonnxruntime  # or pip install onnxruntime to grab the bundled .so
+    ```
+
+=== "Fedora / RHEL"
+
+    ```sh
+    sudo dnf install onnxruntime
+    ```
+
+=== "From the ORT release tarball"
+
+    Download a matching release from [microsoft/onnxruntime](https://github.com/microsoft/onnxruntime/releases) and place `libonnxruntime.so.<version>` somewhere on the loader path (e.g. `/usr/local/lib`) or set `ORT_DYLIB_PATH`.
+
+## Optional: TensorFlow Lite
+
+The TFLite backend handles `.tflite` models and the XNNPACK delegate for accelerated CPU inference. The TFLite C library is also the gateway to the **NXP Neutron** and **VSI** NPU delegates on i.MX targets — those delegates are `.so` files passed to the profiler via `--delegate`. See the [NXP i.MX 95](imx95.md) and [NXP i.MX 8M Plus](imx8mplus.md) guides.
+
+## Verifying the install
+
+After install, sign in to Studio and confirm the credentials are saved:
+
+```sh
+edgefirst-profiler login
+edgefirst-profiler              # opens TUI on F1 Help
+```
+
+Then run a validation session — see [Validation from Studio](../studio/from_studio.md) or [Validation from the Profiler](../studio/from_profiler.md).
+
+If `libonnxruntime` is not found when a session starts, the error message tells you exactly which library is missing and where it was looked for.
+
+## Uninstall
+
+=== "Python (pip)"
+
+    ```sh
+    pip uninstall edgefirst-profiler
+    ```
+
+=== "Platform installer"
+
+    Delete the binary from wherever the installer placed it:
+
+    ```sh
+    rm /usr/local/bin/edgefirst-profiler        # or ~/.local/bin/edgefirst-profiler
+    ```
+
+The profiler stores cached downloads in `~/.cache/edgefirst-profiler/` (or `$EDGEFIRST_CACHE`). Remove the cache directory if you want a clean slate.

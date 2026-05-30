@@ -2,10 +2,7 @@
 
 This page configures the LiDAR publishing service that interacts with the Raivin's integrated [Ouster OS1-64 LiDAR sensor][ouster]. The configuration allows for fine-tuning of the LiDAR sensor's operation and data processing.
 
-<figure markdown="span">
-![LiDAR Settings page](../assets/configuration-lidar.png){align=center}
-<figcaption>LiDAR Settings page</figcaption>
-</figure>
+{{ figure("../assets/configuration/configuration-lidar.png", "LiDAR Settings page") }}
 
 !!! tip
     These values are stored in the `/etc/default/lidarpub` file on the device and can be hand-edited.  This is not recommended.

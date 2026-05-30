@@ -1,0 +1,1 @@
+{% include-markdown "discrete/platforms/orin_powermodes.md" heading-offset=0 %}

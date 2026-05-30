@@ -1,4 +1,4 @@
-# ModelPack Benchmark Suite
+# ModelPack Benchmarks
 
 This page presents comprehensive benchmark results for ModelPack, a versatile model collection featuring multiple backbone architectures and size variants (nano, small, medium, large). ModelPack is designed for flexibility and performance across a wide range of computer vision tasks. Here, we evaluate its performance on several key datasets, including ImageNet for classification, PlayingCards for object detection, and COCO for detection and segmentation . Each benchmark includes metrics such as accuracy, model size, and inference efficiency, helping developers and researchers choose the right configuration for their specific use case. Explore the tables below to compare performance across backbones and deployment scenarios.
 
@@ -32,7 +32,7 @@ This page presents comprehensive benchmark results for ModelPack, a versatile mo
 
 === "Coffee Cup"
 
-    ## Object Detection and Segmentation Metrcis
+    ## Object Detection and Segmentation Metrics
     
     **Table: ModelPack on CoffeeCup - RGB - (640x640) | ONNX**
 

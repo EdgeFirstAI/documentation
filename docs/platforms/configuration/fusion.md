@@ -2,10 +2,7 @@
 
 These settings configure the perception engine that is processing input from the radar sensor and providing output on the Fusion topics.
 
-<figure markdown="span">
-![Fusion Settings page](../assets/configuration-fusion.png){align=center}
-<figcaption>Fusion Settings page</figcaption>
-</figure>
+{{ figure("../assets/configuration/configuration-fusion.png", "Fusion Settings page") }}
 
 !!! tip
     These values are stored in the `/etc/default/fusion` file on the device and can be hand-edited.  This is not recommended.

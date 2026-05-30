@@ -18,14 +18,14 @@
         <link rel="prev" href="../gallery/">
       
       
-        <link rel="next" href="../../models/">
+        <link rel="next" href="../map/">
       
       
         
       
       
       <link rel="icon" href="../../../assets/favicon.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.1">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
     
     
       
@@ -58,6 +58,8 @@
       <link rel="stylesheet" href="../../../assets/_mkdocstrings.css">
     
       <link rel="stylesheet" href="../../../stylesheets/extra.css">
+    
+      <link rel="stylesheet" href="../../../stylesheets/components.css">
     
       <link rel="stylesheet" href="../../../stylesheets/mermaid.css">
     
@@ -338,6 +340,28 @@
     
     
       <li class="md-tabs__item">
+        <a href="../../../profiler/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Profiler <span class="ef-badge">New</span>
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
         <a href="../../../datasets/" class="md-tabs__link">
           
   
@@ -485,6 +509,8 @@
       
         
       
+        
+      
     
     
     
@@ -542,6 +568,12 @@
       
         
           
+        
+      
+        
+      
+        
+      
         
       
         
@@ -694,6 +726,10 @@
       
         
       
+        
+      
+        
+      
     
     
     
@@ -780,6 +816,10 @@
       
         
           
+        
+      
+        
+      
         
       
         
@@ -1109,9 +1149,93 @@
 
               
             
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../map/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Dataset Map
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../history/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Dataset History
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
           </ul>
         </nav>
       
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../agtg/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Automatic Ground Truth Generation (AGTG)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
     </li>
   
 
@@ -1208,14 +1332,70 @@
   
   
     <li class="md-nav__item">
-      <a href="../../agtg/" class="md-nav__link">
+      <a href="../../apps/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    Automatic Ground Truth Generation (AGTG)
+    Studio Apps Dashboard
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tasks/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Tasks Dashboard
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../recycle/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Recycle Bin
   
 
     
@@ -1316,6 +1496,71 @@
       
         
       
+        
+      
+    
+    
+    
+      
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../../profiler/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Profiler <span class="ef-badge">New</span>
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
     
     
     
@@ -1371,6 +1616,10 @@
       
         
           
+        
+      
+        
+      
         
       
         
@@ -1832,13 +2081,12 @@
 <h2 id="annotation-set-operation">Annotation Set Operation</h2>
 <p>For these operations please refer to the following figure.</p>
 <figure>
-<img align="center" alt="Auditing Tasks" src="../../assets/datasets/annotationset-attributes.jpg" />
-
-<figcaption>Auditing Tasks</figcaption>
-</figure>
+            <img align="center" alt="Annotation Set Attributes" src="../../assets/datasets/annotationset-attributes.jpg" />
+            <figcaption>Annotation Set Attributes</figcaption>
+            </figure>
 <ul>
 <li>Click on the add annotation set button (+) to add an annotation set.</li>
-<li>Each annotation set has an (x) button to delete the annotation set - all associated annotations will also be deleted.  Please note that deleted annotation sets goes the the Recycle Bin and can either be restored or permanently deleted.  The storage is only freed when the Recycling Bin is cleared.  </li>
+<li>Each annotation set has an extended menu to edit the annotation set information or delete the annotation set - all associated annotations will also be deleted.  Please note that deleted annotation sets goes the the Recycle Bin and can either be restored or permanently deleted.  The storage is only freed when the Recycling Bin is cleared.  </li>
 <li>Each annotation set has an (i) button to get/set the details of the annotation set.</li>
 </ul>
 <h2 id="editing-2d-annotations">Editing 2D Annotations</h2>
@@ -1850,10 +2098,9 @@
 <h2 id="auditing-tasks-board">Auditing Tasks Board</h2>
 <p>EdgeFirst Studio allows multiple users to remotely access a single dataset and annotation set and make changes without interfering with each other. Users can navigate to this page using the Apps Menu.</p>
 <figure>
-<img align="center" alt="Auditing Tasks" src="../../assets/datasets/auditing-tasks.png" />
-
-<figcaption>Auditing Tasks</figcaption>
-</figure>
+            <img align="center" alt="Auditing Tasks" src="../../assets/datasets/auditing-tasks.png" />
+            <figcaption>Auditing Tasks</figcaption>
+            </figure>
 <p>Labelling is the process of creating new annotations whereas auditing is the process of reviewing annotations to potentially make any changes to correct any errors in the annotations.</p>
 <p>User reviews annotations in the reference annotation set:</p>
 <ul>
@@ -1863,10 +2110,9 @@
 </ul>
 <p>Create a new task in the Auditing Task Board.</p>
 <figure>
-<img align="center" alt="The Task" src="../../assets/datasets/create-task.png" />
-
-<figcaption>New Task</figcaption>
-</figure>
+            <img align="center" alt="The Task" src="../../assets/datasets/create-task.png" />
+            <figcaption>The Task</figcaption>
+            </figure>
 <ul>
 <li>Enter the task name and description.</li>
 <li>Select a dataset from the current project you want to work on.</li>
@@ -1880,10 +2126,9 @@
 <li>Completed - All images have been worked on.</li>
 </ol>
 <figure>
-<img align="center" alt="Task Board" src="../../assets/datasets/task-board.png" />
-
-<figcaption>Task Board</figcaption>
-</figure>
+            <img align="center" alt="Task Board" src="../../assets/datasets/task-board.png" />
+            <figcaption>Task Board</figcaption>
+            </figure>
 <p>Click on any task entry and start editing. The editing process is described below.</p>
 <h2 id="edit-images-from-gallery">Edit images from gallery</h2>
 <p>The tutorials for annotating images from the gallery is provided in the <a href="../../../datasets/tutorials/annotations/">Dataset Annotations</a> sections.</p>
@@ -1892,10 +2137,9 @@
 <li>Click on an image.</li>
 </ol>
 <figure>
-<img align="center" alt="Edit Options" src="../../assets/datasets/edit-options.png" />
-
-<figcaption>Annotation Editing Options</figcaption>
-</figure>
+            <img align="center" alt="Edit Options" src="../../assets/datasets/edit-options.png" />
+            <figcaption>Edit Options</figcaption>
+            </figure>
 <h3 id="add-a-bounding-box">Add a Bounding Box</h3>
 <ol>
 <li>Click on a label from Labels section – all boxes drawn will be of this class.</li>
@@ -1934,10 +2178,9 @@
 <h3 id="edit-images-from-the-auditing-task-board">Edit Images from the Auditing Task Board</h3>
 <p>Go to the Auditing Tasks board.</p>
 <figure>
-<img align="center" alt="Audit Annotations" src="../../assets/datasets/auditing-tasks.png" />
-
-<figcaption>Audit Annotations</figcaption>
-</figure>
+            <img align="center" alt="Audit Annotations" src="../../assets/datasets/auditing-tasks.png" />
+            <figcaption>Audit Annotations</figcaption>
+            </figure>
 <p>Create a new task or continue an existing task.</p>
 <h4 id="label">Label</h4>
 <p>Add, delete, or edit annotations in one annotation set in the target annotation set and save changes in the same annotation set.</p>
@@ -1949,18 +2192,16 @@
 <li>Annotation-Based Audit</li>
 </ol>
 <figure>
-<img align="center" alt="Start Auditing" src="../../assets/datasets/task.png" />
-
-<figcaption>Start Auditing</figcaption>
-</figure>
+            <img align="center" alt="Start Auditing" src="../../assets/datasets/task.png" />
+            <figcaption>Start Auditing</figcaption>
+            </figure>
 <h3 id="image-based-audit">Image-Based Audit</h3>
 <p>Clicking on the task takes you directly to the image mode auditing.  All the editing is the same as described in the <a href="#edit-images-from-gallery">Gallery-Based Editing</a> above.</p>
 <p>Users can switch between Image-based and Annotation-Based Audit from the top header.</p>
 <figure>
-<img align="center" alt="Audit Tool Type" src="../../assets/datasets/audit-tool-type.png" />
-
-<figcaption>Audit Tool Type</figcaption>
-</figure>
+            <img align="center" alt="Audit Tool Type" src="../../assets/datasets/audit-tool-type.png" />
+            <figcaption>Audit Tool Type</figcaption>
+            </figure>
 <h3 id="annotation-based-audit">Annotation-Based Audit</h3>
 <p>In this mode only one annotation is shown at a time.  The user can edit with single click and the next annotation is automatically presented.  Hot keys are provided to speed up the process:</p>
 <ol>
@@ -2081,13 +2322,13 @@
         
         
           
-          <a href="../../models/" class="md-footer__link md-footer__link--next" aria-label="Next: Model Experiments Dashboard">
+          <a href="../map/" class="md-footer__link md-footer__link--next" aria-label="Next: Dataset Map">
             <div class="md-footer__title">
               <span class="md-footer__direction">
                 Next
               </span>
               <div class="md-ellipsis">
-                Model Experiments Dashboard
+                Dataset Map
               </div>
             </div>
             <div class="md-footer__button md-icon">

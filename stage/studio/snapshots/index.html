@@ -18,14 +18,14 @@
         <link rel="prev" href="../instances/">
       
       
-        <link rel="next" href="../agtg/">
+        <link rel="next" href="../apps/">
       
       
         
       
       
       <link rel="icon" href="../../assets/favicon.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.1">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
     
     
       
@@ -58,6 +58,8 @@
       <link rel="stylesheet" href="../../assets/_mkdocstrings.css">
     
       <link rel="stylesheet" href="../../stylesheets/extra.css">
+    
+      <link rel="stylesheet" href="../../stylesheets/components.css">
     
       <link rel="stylesheet" href="../../stylesheets/mermaid.css">
     
@@ -338,6 +340,28 @@
     
     
       <li class="md-tabs__item">
+        <a href="../../profiler/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Profiler <span class="ef-badge">New</span>
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
         <a href="../../datasets/" class="md-tabs__link">
           
   
@@ -485,6 +509,8 @@
       
         
       
+        
+      
     
     
     
@@ -542,6 +568,12 @@
       
         
           
+        
+      
+        
+      
+        
+      
         
       
         
@@ -694,6 +726,10 @@
       
         
       
+        
+      
+        
+      
     
     
     
@@ -784,6 +820,10 @@
       
         
       
+        
+      
+        
+      
     
     
     
@@ -824,6 +864,34 @@
   
 
       
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../agtg/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Automatic Ground Truth Generation (AGTG)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
     </li>
   
 
@@ -989,7 +1057,7 @@
   <a href="#upload-from-ziparrow-file" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Upload from Zip/Arrow File
+        Upload from ZIP/Arrow File
       
     </span>
   </a>
@@ -1089,14 +1157,70 @@
   
   
     <li class="md-nav__item">
-      <a href="../agtg/" class="md-nav__link">
+      <a href="../apps/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    Automatic Ground Truth Generation (AGTG)
+    Studio Apps Dashboard
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tasks/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Tasks Dashboard
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../recycle/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Recycle Bin
   
 
     
@@ -1197,6 +1321,71 @@
       
         
       
+        
+      
+    
+    
+    
+      
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../profiler/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Profiler <span class="ef-badge">New</span>
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
     
     
     
@@ -1252,6 +1441,10 @@
       
         
           
+        
+      
+        
+      
         
       
         
@@ -1514,7 +1707,7 @@
   <a href="#upload-from-ziparrow-file" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Upload from Zip/Arrow File
+        Upload from ZIP/Arrow File
       
     </span>
   </a>
@@ -1629,29 +1822,26 @@
 </ul>
 <p>This format makes snapshots easy to download, share, archive, and re-import into any EdgeFirst Studio project.</p>
 <figure>
-<img align="center" alt="Data Snapshots" src="../assets/snapshots/data-snapshots.png" />
-
-<figcaption>Data Snapshots</figcaption>
-</figure>
+            <img align="center" alt="Data Snapshots" src="../assets/snapshots/data-snapshots.png" />
+            <figcaption>Data Snapshots</figcaption>
+            </figure>
 <p>The snapshots menu shows the list of snapshots with its name and status.</p>
 <figure>
-<img align="center" alt="Snapshot List" src="../assets/snapshots/snapshot-list.png" />
-
-<figcaption>Snapshot List</figcaption>
-</figure>
+            <img align="center" alt="Snapshot List" src="../assets/snapshots/snapshot-list.png" />
+            <figcaption>Snapshot List</figcaption>
+            </figure>
 <h2 id="create-snapshot">Create Snapshot</h2>
-<p>The tutorial for creating snapshots can be found under the <a href="../../datasets/tutorials/annotations/automatic/#create-snapshot">Dataset Annotations</a> section.  This will create a Zip/Arrow file pair also known as an <a href="../../datasets/format/">EdgeFirst Dataset</a> for each sequence in a dataset and stored in the cloud storage.  This snapshot can be later restored (into another dataset) or can be downloaded to a local folder on a PC.</p>
+<p>The tutorial for creating snapshots can be found under the <a href="../../datasets/tutorials/annotations/automatic/#create-snapshot">Dataset Annotations</a> section.  This will create a ZIP/Arrow file pair also known as an <a href="../../datasets/format/">EdgeFirst Dataset</a> for each sequence in a dataset and stored in the cloud storage.  This snapshot can be later restored (into another dataset) or can be downloaded to a local folder on a PC.</p>
 <p>The stages for creating a snapshot are shown below.</p>
 <figure>
-<img align="center" alt="Create Snapshot Stages" src="../../datasets/assets/annotations/automatic/snapshot-creation-process.png" />
-
-<figcaption>Create Snapshot Stages</figcaption>
-</figure>
+            <img align="center" alt="Create Snapshot Stages" src="../../datasets/assets/annotations/automatic/snapshot-creation-process.png" />
+            <figcaption>Create Snapshot Stages</figcaption>
+            </figure>
 <p>A snapshot can be created by the following ways:</p>
 <ol>
 <li>Create from Existing Dataset.</li>
 <li>Upload from <abbr title="Binary container format for robotics log data">MCAP</abbr> File.</li>
-<li>Upload from Zip/Arrow File</li>
+<li>Upload from ZIP/Arrow File</li>
 </ol>
 <h3 id="create-from-existing-dataset">Create from Existing Dataset</h3>
 <ol>
@@ -1666,11 +1856,11 @@
 <li>Go to the snapshots dashboard.</li>
 <li>Click on the "FROM FILE" button or drag and drop an <abbr title="Binary container format for robotics log data">MCAP</abbr> file on the dashboard.</li>
 </ol>
-<h3 id="upload-from-ziparrow-file">Upload from Zip/Arrow File</h3>
-<p>This format is the <a href="../../datasets/format/">EdgeFirst Dataset Format</a> where the <a href="../../datasets/format/#overview">Zip file</a> contains sensor reading and measurements and the <a href="../../datasets/format/#annotation-data">Arrow file</a> contains dataset annotations.</p>
+<h3 id="upload-from-ziparrow-file">Upload from ZIP/Arrow File</h3>
+<p>This format is the <a href="../../datasets/format/">EdgeFirst Dataset Format</a> where the <a href="../../datasets/format/sensors/">ZIP file</a> contains sensor readings and measurements and the <a href="../../datasets/format/schema/">Arrow file</a> contains dataset annotations.</p>
 <ol>
 <li>Go to the snapshots dashboard.</li>
-<li>Click on the "FROM FILE" button and then select the Zip and Arrow file pairs to import or drag and drop as a folder containing Zip and Arrow file pairs onto the dashboard.</li>
+<li>Click on the "FROM FILE" button and then select the ZIP and Arrow file pairs to import or drag and drop as a folder containing ZIP and Arrow file pairs onto the dashboard.</li>
 <li>Once the files are selected, this will start the import sequence progress shown below.</li>
 </ol>
 <h3 id="pipeline">Pipeline</h3>
@@ -1679,35 +1869,32 @@
 <li>Server Initialization: Initialize the backend server for handling the processes.</li>
 <li>Downloading Files from Cloud Storage: Fetches the dataset images from the S3 bucket.</li>
 <li>Exporting Files from Database: Fetches the dataset annotations from the Studio database.</li>
-<li>Zipping Files for Upload: Formulation of the <a href="../../datasets/format/">EdgeFirst Dataset Format</a> and placing the fetched dataset files as a single Zip file.</li>
+<li>Zipping Files for Upload: Formulation of the <a href="../../datasets/format/">EdgeFirst Dataset Format</a> and placing the fetched dataset files as a single ZIP file.</li>
 <li>Uploading Snapshot to Cloud Storage: Uploading the dataset into S3 bucket.</li>
 </ol>
 <h2 id="restore-snapshot">Restore Snapshot</h2>
-<p>This action will take an <abbr title="Binary container format for robotics log data">MCAP</abbr> or Zip/Arrow files and create a dataset in EdgeFirst Studio.  The backend pipelines for auto depth map generation, object detection, and Automated Ground Truth Generation can also be selected at this time while restoring.</p>
+<p>This action will take an <abbr title="Binary container format for robotics log data">MCAP</abbr> or ZIP/Arrow files and create a dataset in EdgeFirst Studio.  The backend pipelines for auto depth map generation, object detection, and Automated Ground Truth Generation can also be selected at this time while restoring.</p>
 <p>The tutorial for restoring snapshots can be found under the <a href="../../datasets/tutorials/annotations/automatic/#restore-snapshot">Dataset Annotations</a> section.</p>
 <p>The stages for restoring a snapshot are shown below.</p>
 <figure>
-<img align="center" alt="Restore Snapshot Stages" src="../../datasets/assets/annotations/automatic/snapshot-restore-process.jpg" />
-
-<figcaption>Restore Snapshot Stages</figcaption>
-</figure>
+            <img align="center" alt="Restore Snapshot Stages" src="../../datasets/assets/annotations/automatic/snapshot-restore-process.jpg" />
+            <figcaption>Restore Snapshot Stages</figcaption>
+            </figure>
 <ol>
 <li>Click on the snapshot context menu (three dots).</li>
 <li>Select "Restore".</li>
 </ol>
 <figure>
-<img align="center" alt="Snapshot Options" src="../assets/snapshots/options.png" />
-
-<figcaption>Snapshot Options</figcaption>
-</figure>
+            <img align="center" alt="Snapshot Options" src="../assets/snapshots/options.png" />
+            <figcaption>Snapshot Options</figcaption>
+            </figure>
 <ol>
 <li>This will open the restore dialog for specifying the options.</li>
 </ol>
 <figure>
-<img align="center" alt="Restore Options" src="../assets/snapshots/restore-dialog.png" />
-
-<figcaption>Restore Options</figcaption>
-</figure>
+            <img align="center" alt="Restore Options" src="../assets/snapshots/restore-dialog.png" />
+            <figcaption>Restore Options</figcaption>
+            </figure>
 <ol>
 <li>Select "Project" where the dataset will be created.</li>
 <li>Enter the dataset name and description. If the dataset name is not provided a dataset, a dataset with the snapshot name will be created.</li>
@@ -1752,10 +1939,9 @@ my_snapshot.arrow     # Annotations (labels, boxes, masks)
 <li>Select "Remove".</li>
 </ol>
 <figure>
-<img align="center" alt="Snapshot Options" src="../assets/snapshots/options.png" />
-
-<figcaption>Snapshot Options</figcaption>
-</figure>
+            <img align="center" alt="Snapshot Options" src="../assets/snapshots/options.png" />
+            <figcaption>Snapshot Options</figcaption>
+            </figure>
 <h2 id="next-steps">Next Steps</h2>
 <p>Now that you are familiar with the Snapshots Dashboard, proceed to the next section for a proper introduction to the auto-annotation process in EdgeFirst Studio known as <a href="../agtg/">Automatic Ground Truth Generation (AGTG)</a>.</p>
 
@@ -1864,13 +2050,13 @@ my_snapshot.arrow     # Annotations (labels, boxes, masks)
         
         
           
-          <a href="../agtg/" class="md-footer__link md-footer__link--next" aria-label="Next: Automatic Ground Truth Generation (AGTG)">
+          <a href="../apps/" class="md-footer__link md-footer__link--next" aria-label="Next: Studio Apps Dashboard">
             <div class="md-footer__title">
               <span class="md-footer__direction">
                 Next
               </span>
               <div class="md-ellipsis">
-                Automatic Ground Truth Generation (AGTG)
+                Studio Apps Dashboard
               </div>
             </div>
             <div class="md-footer__button md-icon">

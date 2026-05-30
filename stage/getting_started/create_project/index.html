@@ -15,7 +15,7 @@
         <link rel="canonical" href="https://doc.edgefirst.ai/stage/getting_started/create_project/">
       
       
-        <link rel="prev" href="../login/">
+        <link rel="prev" href="../running_pretrained_model/">
       
       
         <link rel="next" href="../copy_dataset/">
@@ -25,7 +25,7 @@
       
       
       <link rel="icon" href="../../assets/favicon.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.1">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
     
     
       
@@ -58,6 +58,8 @@
       <link rel="stylesheet" href="../../assets/_mkdocstrings.css">
     
       <link rel="stylesheet" href="../../stylesheets/extra.css">
+    
+      <link rel="stylesheet" href="../../stylesheets/components.css">
     
       <link rel="stylesheet" href="../../stylesheets/mermaid.css">
     
@@ -338,6 +340,28 @@
     
     
       <li class="md-tabs__item">
+        <a href="../../profiler/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Profiler <span class="ef-badge">New</span>
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
         <a href="../../datasets/" class="md-tabs__link">
           
   
@@ -487,6 +511,8 @@
       
         
       
+        
+      
     
     
     
@@ -576,6 +602,34 @@
                 
   
   
+  
+  
+    <li class="md-nav__item">
+      <a href="../running_pretrained_model/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Running Pre-trained Models in EdgeFirst Studio
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
     
   
   
@@ -624,7 +678,7 @@
   <span class="md-ellipsis">
     
   
-    Copy Dataset
+    Copy Sample Dataset
   
 
     
@@ -771,6 +825,12 @@
       
         
       
+        
+      
+        
+      
+        
+      
     
     
     
@@ -834,6 +894,12 @@
       
         
           
+        
+      
+        
+      
+        
+      
         
       
         
@@ -978,6 +1044,71 @@
       
         
       
+        
+      
+    
+    
+    
+      
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../profiler/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Profiler <span class="ef-badge">New</span>
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
     
     
     
@@ -1033,6 +1164,10 @@
       
         
           
+        
+      
+        
+      
         
       
         
@@ -1276,35 +1411,35 @@
 <p>The creation of <a href="../../studio/projects/">projects</a> is the single most important step a user needs to do before using the functionality provided by EdgeFirst Studio.  Projects are workspaces that users can use to separate their datasets and keep the various model experiments -- training and validation sessions -- separate and linked to their respective datasets.</p>
 <ol>
 <li>
-<p>From the <a href="../../studio/home/">User Home Page</a> screen, click the "Go To Projects" button.</p>
+<p>From the <a href="../../studio/home/">User Home Page</a> screen, click the "Projects" button.</p>
 <p><figure markdown="span">
-<img align="center" alt="Go To Projects" src="../../studio/assets/user/home-page-goto-projects.png" />
-<figcaption>The location of the "Projects" button</figcaption>
-</figure></p>
+        <img align="center" alt="Go To Projects" src="../../studio/assets/user/home-page-goto-projects.png" />
+        <figcaption>Go To Projects</figcaption>
+        </figure></p>
 </li>
 <li>
 <p>Now that you are in the "Projects" page, create your first project by clicking on the "New Project" button on the top-right corner of the page.</p>
 <p><figure markdown="span">
-<img align="center" alt="Create Project" src="../../studio/assets/projects/create-project.jpg" />
-<figcaption>The location of the "New Project" button</figcaption>
-</figure></p>
+        <img align="center" alt="Create Project" src="../../studio/assets/projects/create-project.jpg" />
+        <figcaption>Create Project</figcaption>
+        </figure></p>
 </li>
 <li>
 <p>Provide a name and a description of the project as shown in the example below.  Click the "Create" button to create your new project.</p>
 <p><figure markdown="span">
-<img align="center" alt="Project Details" src="../../studio/assets/projects/create-project-fields.jpg" />
-<figcaption>Project Details</figcaption>
-</figure></p>
+        <img align="center" alt="Project Details" src="../../studio/assets/projects/create-project-fields.jpg" />
+        <figcaption>Project Details</figcaption>
+        </figure></p>
 </li>
 <li>
 <p>Your created project will be shown like the example below.  </p>
 <p><figure markdown="span">
-<img align="center" alt="New Project" src="../../studio/assets/projects/new-project.jpg" />
-<figcaption>Both Projects</figcaption>
-</figure></p>
+        <img align="center" alt="New Project" src="../../studio/assets/projects/new-project.jpg" />
+        <figcaption>New Project</figcaption>
+        </figure></p>
 </li>
 </ol>
-<p>The next sections will invite you to follow along the <em>Tourist Workflow</em> -- the end-to-end workflow that demonstrates:  </p>
+<p>The next sections will invite you to follow along the end-to-end workflow that demonstrates:  </p>
 <ol>
 <li>copying a public dataset,</li>
 <li>exploring the images and annotations of the copied dataset,</li>
@@ -1313,10 +1448,6 @@
 <li>deploying the model on the PC.</li>
 </ol>
 <p>This workflow requires only a PC.  There are other <a href="../workflows/">workflows</a> that support different hardware requirements.  If you would like to bring in your own dataset with images captured from your phone, follow the <a href="../workflows/web/">Web Workflow</a>.</p>
-<div style="max-width: fit-content; margin-left: auto; margin-right: auto;">
-<p><a class="md-button" href="../login/">Login ← Back</a>
-<a class="md-button md-button--primary align-right" href="../copy_dataset/">Next → Copy Dataset</a></p>
-</div>
 
 
 
@@ -1406,7 +1537,7 @@
       <nav class="md-footer__inner md-grid" aria-label="Footer" >
         
           
-          <a href="../login/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Login">
+          <a href="../running_pretrained_model/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Running Pre-trained Models in EdgeFirst Studio">
             <div class="md-footer__button md-icon">
               
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
@@ -1416,20 +1547,20 @@
                 Previous
               </span>
               <div class="md-ellipsis">
-                Login
+                Running Pre-trained Models in EdgeFirst Studio
               </div>
             </div>
           </a>
         
         
           
-          <a href="../copy_dataset/" class="md-footer__link md-footer__link--next" aria-label="Next: Copy Dataset">
+          <a href="../copy_dataset/" class="md-footer__link md-footer__link--next" aria-label="Next: Copy Sample Dataset">
             <div class="md-footer__title">
               <span class="md-footer__direction">
                 Next
               </span>
               <div class="md-ellipsis">
-                Copy Dataset
+                Copy Sample Dataset
               </div>
             </div>
             <div class="md-footer__button md-icon">

@@ -15,7 +15,7 @@
         <link rel="canonical" href="https://doc.edgefirst.ai/stage/3D/">
       
       
-        <link rel="prev" href="../studio/agtg/">
+        <link rel="prev" href="../studio/recycle/">
       
       
         <link rel="next" href="viewers/">
@@ -25,7 +25,7 @@
       
       
       <link rel="icon" href="../assets/favicon.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.1">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
     
     
       
@@ -58,6 +58,8 @@
       <link rel="stylesheet" href="../assets/_mkdocstrings.css">
     
       <link rel="stylesheet" href="../stylesheets/extra.css">
+    
+      <link rel="stylesheet" href="../stylesheets/components.css">
     
       <link rel="stylesheet" href="../stylesheets/mermaid.css">
     
@@ -338,6 +340,28 @@
     
     
       <li class="md-tabs__item">
+        <a href="../profiler/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Profiler <span class="ef-badge">New</span>
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
         <a href="../datasets/" class="md-tabs__link">
           
   
@@ -485,6 +509,8 @@
       
         
       
+        
+      
     
     
     
@@ -540,6 +566,12 @@
       
         
           
+        
+      
+        
+      
+        
+      
         
       
         
@@ -796,6 +828,71 @@
       
         
       
+        
+      
+    
+    
+    
+      
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../profiler/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Profiler <span class="ef-badge">New</span>
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
     
     
     
@@ -851,6 +948,10 @@
       
         
           
+        
+      
+        
+      
         
       
         
@@ -1091,24 +1192,22 @@
 
 
 <h1 id="3d-mlops">3D <abbr title="Machine Learning Operations">MLOps</abbr></h1>
-<p>EdgeFirst Studio offers 3D Machine Learning Operations using a <a href="../platforms/">Raivin platform</a> that support dataset annotations using world coordinates and model training to detect the position of objects for practical applications such as object awareness or perception.</p>
+<p>EdgeFirst Studio offers 3D Machine Learning Operations using a <a href="../platforms/quickstart/raivin/">Raivin platform</a> that support dataset annotations using world coordinates and model training to detect the position of objects for practical applications such as object awareness or perception.</p>
 <p>The following is a sample 3D annotation (right) in EdgeFirst Studio represented as 3D bounding boxes around the objects of interest.  The 2D image (left) are shown beside with the 2D annotations represented as segmentation masks and 2D bounding boxes covering the objects of interest in the image.</p>
 <div class="admonition infor">
 <p class="admonition-title">3D Point Clouds</p>
 <p>3D bounding boxes are created from <abbr title="Light Detection and Ranging">LiDAR</abbr> or Radar point clouds.  <abbr title="Light Detection and Ranging">LiDAR</abbr> points clouds are more dense allowing more accurate 3D bounding boxes.  Radar point clouds are more sparse providing only general clusters of the object, unlike <abbr title="Light Detection and Ranging">LiDAR</abbr> which forms the overall shape of the object.</p>
-<p>Au-Zone provides Raivin platforms with just the base Radar module or an added <abbr title="Light Detection and Ranging">LiDAR</abbr> module for enhanced 3D perception. </p>
+<p>Au-Zone Technologies provides Raivin platforms with either the Radar or <abbr title="Light Detection and Ranging">LiDAR</abbr> module for enhanced 3D perception. </p>
 </div>
 <figure>
-<img align="center" alt="EdgeFirst Studio Annotations" src="../datasets/assets/annotations/sample-studio-annotations.jpg" />
-
-<figcaption>EdgeFirst Studio Annotations</figcaption>
-</figure>
-<p>The Raivin platform can visualize the model inference using the <a href="../platforms/walkthrough/">Web UI</a> service which provide the 2D inference (segmentation masks and bounding boxes) and the 3D inference which is shown using a polar grid highlighting the clusters of Radar points indicating the position of the objects in world coordinates.</p>
+            <img align="center" alt="EdgeFirst Studio Annotations" src="../datasets/assets/annotations/sample-studio-annotations.jpg" />
+            <figcaption>EdgeFirst Studio Annotations</figcaption>
+            </figure>
+<p>The Raivin platform can visualize the model inference using the <a href="../platforms/quickstart/raivin/webui/">Web UI</a> service which provide the 2D inference (segmentation masks and bounding boxes) and the 3D inference using a polar grid highlighting the clusters of Radar points indicating the position of the objects in world coordinates.</p>
 <figure>
-<img align="center" alt="Model Inference on the Raivin" src="../models/assets/deployment/occupancy-sample-1.jpg" />
-
-<figcaption>Model Inference on the Raivin</figcaption>
-</figure>
+            <img align="center" alt="Model Inference on the Raivin" src="../models/assets/deployment/occupancy-sample-1.jpg" />
+            <figcaption>Model Inference on the Raivin</figcaption>
+            </figure>
 <p>In this section, you will explore the 3D <abbr title="Machine Learning Operations">MLOps</abbr> in EdgeFirst Studio.  Start by learning more about the <a href="viewers/">3D viewers</a> in EdgeFirst Studio.</p>
 <p>Next explore the 3D workflows from <a href="annotation/">3D annotations</a> to <a href="training/">training 3D perception (Fusion) models</a>, <a href="validation/">validation of Fusion models</a>, and <a href="deployment/">model deployment in the Raivin</a>.</p>
 
@@ -1200,7 +1299,7 @@
       <nav class="md-footer__inner md-grid" aria-label="Footer" >
         
           
-          <a href="../studio/agtg/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Automatic Ground Truth Generation (AGTG)">
+          <a href="../studio/recycle/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Recycle Bin">
             <div class="md-footer__button md-icon">
               
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
@@ -1210,7 +1309,7 @@
                 Previous
               </span>
               <div class="md-ellipsis">
-                Automatic Ground Truth Generation (AGTG)
+                Recycle Bin
               </div>
             </div>
           </a>

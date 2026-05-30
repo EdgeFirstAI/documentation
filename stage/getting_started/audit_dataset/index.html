@@ -21,7 +21,7 @@
       
       
       <link rel="icon" href="../../assets/favicon.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.1">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
     
     
       
@@ -54,6 +54,8 @@
       <link rel="stylesheet" href="../../assets/_mkdocstrings.css">
     
       <link rel="stylesheet" href="../../stylesheets/extra.css">
+    
+      <link rel="stylesheet" href="../../stylesheets/components.css">
     
       <link rel="stylesheet" href="../../stylesheets/mermaid.css">
     
@@ -332,6 +334,28 @@
     
     
       <li class="md-tabs__item">
+        <a href="../../profiler/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Profiler <span class="ef-badge">New</span>
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
         <a href="../../datasets/" class="md-tabs__link">
           
   
@@ -479,6 +503,8 @@
       
         
       
+        
+      
     
     
     
@@ -534,6 +560,12 @@
       
         
           
+        
+      
+        
+      
+        
+      
         
       
         
@@ -678,6 +710,71 @@
       
         
       
+        
+      
+    
+    
+    
+      
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../profiler/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Profiler <span class="ef-badge">New</span>
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
     
     
     
@@ -733,6 +830,10 @@
       
         
           
+        
+      
+        
+      
         
       
         
@@ -974,48 +1075,13 @@
 
 <h1 id="audit-dataset">Audit Dataset</h1>
 <p>After the annotation process, review each individual frame or image in the dataset that was auto-annotated.  This step is also known as the audit process which is crucial in verifying that the dataset has been properly annotated and ready for training.</p>
-<p>To <a href="../../datasets/tutorials/management/#view-dataset">view the dataset and the annotations</a>, click on the dataset gallery.</p>
+<p>To <a href="../../datasets/tutorials/management/#view-dataset">view the dataset and the annotations</a>, click on the image preview of the gallery.</p>
 <figure>
-<img align="center" alt="Dataset Gallery" src="../../datasets/assets/management/project-datasets.jpg" />
-
-<figcaption>Dataset Gallery</figcaption>
-</figure>
+            <img align="center" alt="Dataset Gallery" src="../../datasets/assets/management/copied-dataset-result.jpg" />
+            <figcaption>Dataset Gallery</figcaption>
+            </figure>
 <p>The auditing step may require <a href="../../datasets/tutorials/annotations/manual/#add-2d-annotations">adding new annotations</a> for objects that were missed during the AGTG process.  Or it may require <a href="../../datasets/tutorials/annotations/manual/#delete-2d-annotations">removing annotations</a> for objects that were improperly annotated.  Lastly, for annotations that require minor adjustments, EdgeFirst Studio has the features for <a href="../../datasets/tutorials/annotations/manual/#adjust-2d-annotations">adjusting annotations</a>.  Please click on the links as provided for further instructions on each of these features.</p>
 <p>Once you have audited the dataset and verified that it's properly annotated, split the dataset into training and validation groups.  </p>
-<h1 id="split-dataset">Split Dataset</h1>
-<p>Partitioning the dataset is crucial in reserving dataset portions used for training and portions used for validation to assess the performance of the model.  In EdgeFirst Studio, the partitions are 80% towards training and 20% towards validation.  This operation randomly shuffles the data prior to assigning them to the specified groups.</p>
-<div class="admonition warning">
-<p class="admonition-title">Warning</p>
-<p>The dataset needs to be re-split whenever new sample images or frames are added to the dataset.  Newly added samples are not automatically added to any group that already exists.</p>
-</div>
-<p>Consider the following dataset without any groups reserved.</p>
-<figure>
-<img align="center" alt="No Groups" src="../../datasets/assets/management/dataset-no-groups.jpg" />
-
-<figcaption>No Groups</figcaption>
-</figure>
-<p>To create the dataset groups, click on the "+" button in the "Groups" field.</p>
-<figure>
-<img align="center" alt="Add Groups" src="../../datasets/assets/management/add-groups-button.jpg" />
-
-<figcaption>Add Groups</figcaption>
-</figure>
-<p>This will open a new dialog to specify the percentages of the partition belonging to the "Training" group or "Validation" group. By default 80% of the samples will be dedicated to training and 20% remaining will be dedicated towards the validation samples.</p>
-<figure>
-<img align="center" alt="Groups Field" src="../../datasets/assets/management/groups-field.jpg" />
-
-<figcaption>Groups Field</figcaption>
-</figure>
-<p>Once the groups are specified, click "Split" to create the groups.  This will automatically divide the samples in the dataset based on the percentages of each group specified.</p>
-<figure>
-<img align="center" alt="Dataset Groups" src="../../datasets/assets/management/dataset-with-groups.jpg" />
-
-<figcaption>Dataset Groups</figcaption>
-</figure>
-<div style="max-width: fit-content; margin-left: auto; margin-right: auto;">
-<p><a class="md-button" href="../annotate_dataset/">Annotate Dataset ← Back</a>
-<a class="md-button md-button--primary align-right" href="../train_vision/">Next → Train Vision Model</a></p>
-</div>
 
 
 

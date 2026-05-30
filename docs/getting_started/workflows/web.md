@@ -6,4 +6,4 @@ In this workflow, you will explore recording a video or capturing images using a
 
 ## Next Steps
 
-Explore taking MCAP recordings using a Maivin and running through the MLOps with these recordings by following the [Maivin Workflow](maivin.md).
+If you have hardware, explore the [hardware-related workflows](hardware.md) to run through the MLOps process on your device.

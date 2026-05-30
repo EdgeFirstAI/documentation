@@ -8,13 +8,13 @@ This chapter documents the most common networking configurations for the Maivin.
 
 ## Network Interfaces
 
-The Maivin includes a number of networking interfaces: Ethernet, WiFi, and an optional LTE modem.  The interface names and ports are described in the table below.  The `ethernet1` and `can0` interfaces are internal-only interfaces used by the Raivin to communicate with the internal radar module.  The remaining interfaces are user configurable.
+The Maivin includes a number of networking interfaces: Ethernet, Wi-Fi, and an optional LTE modem.  The interface names and ports are described in the table below.  The `ethernet1` and `can0` interfaces are internal-only interfaces used by the Raivin to communicate with the internal radar module.  The remaining interfaces are user configurable.
 
 | Name             | ID        | Details                                         |
 | ---------------- | --------- | ----------------------------------------------- |
 | Gigabit Ethernet | ethernet0 | RJ-45 port on the rear of the Maivin            |
-| WiFi Client      | mlan0     | WiFi client interface                           |
-| WiFi AP          | uap0      | WiFi Access Point interface                     |
+| Wi-Fi Client      | mlan0     | Wi-Fi client interface                           |
+| Wi-Fi AP          | uap0      | Wi-Fi Access Point interface                     |
 | LTE Modem        | wwan0     | Optional LTE Modem using internal m.2 expansion |
 | Radar Ethernet   | ethernet1 | Internal 1000BaseT1 interface to the Radar      |
 | CAN Bus          | can0      | Internal CAN interface to the Radar             |
@@ -112,31 +112,31 @@ To revert the connection to using DHCP you must follow these steps.
 
 NetworkManager allows mixed static and DHCP configurations.   If you configure `ipv4.method auto` you can still configure some of the other IPv4 parameters statically.
 
-## WiFi Client Setup
+## Wi-Fi Client Setup
 
-Maivin units with WiFi can be configured to connect to a WiFi Access Point (AP).  Refer to the next section if you instead want to use your Maivin as a WiFi AP.
+Maivin units with Wi-Fi can be configured to connect to a Wi-Fi Access Point (AP).  Refer to the next section if you instead want to use your Maivin as a Wi-Fi AP.
 
 !!! warning
-    FCC regulations require special certifications for collocated transmitters (a device with multiple RF transmitters).  Maivin and Raivin are not currently certified for collocated transmitters so users must not enable more than one of the WiFi, Modem, or Radar without first receiving FCC certification.  Refer to regulatory boards in your jurisdiction for your relevant regulations.
+    FCC regulations require special certifications for collocated transmitters (a device with multiple RF transmitters).  Maivin and Raivin are not currently certified for collocated transmitters so users must not enable more than one of the Wi-Fi, Modem, or Radar without first receiving FCC certification.  Refer to regulatory boards in your jurisdiction for your relevant regulations.
 
-NetworkManager handles the WiFi client configuration.  Follow these steps to connect to an AP, you will need to know the AP Service Set Identifier (SSID, usually the network name) and the password, if required.
+NetworkManager handles the Wi-Fi client configuration.  Follow these steps to connect to an AP, you will need to know the AP Service Set Identifier (SSID, usually the network name) and the password, if required.
 
-1. First scan for available WiFi networks to join:  
+1. First scan for available Wi-Fi networks to join:  
    `nmcli device wifi list`
-2. Connect to the desired WiFi network using the SSID:  
+2. Connect to the desired Wi-Fi network using the SSID:  
    `nmcli -a device wifi connect <SSID>`
 3. Enter the password, if needed, when prompted.
 4. Confirm the `mlan0` interface is up and has received an IP address:  
    `ifconfig mlan0`
 
-## WiFi AP Setup
+## Wi-Fi AP Setup
 
-Maivin units with WiFi can be configured as an AP allowing client devices to connect to the Maivin.  Instead of using NetworkManager, we use the [Host AP daemon (hostapd)][hostapd].
+Maivin units with Wi-Fi can be configured as an AP allowing client devices to connect to the Maivin.  Instead of using NetworkManager, we use the [Host AP daemon (hostapd)][hostapd].
 
 !!! warning
-    FCC regulations require special certifications for collocated transmitters (a device with multiple RF transmitters).  Maivin and Raivin are not currently certified for collocated transmitters so users must not enable more than one of the WiFi, Modem, or Radar without first receiving FCC certification.  Refer to regulatory boards in your jurisdiction for your relevant regulations.
+    FCC regulations require special certifications for collocated transmitters (a device with multiple RF transmitters).  Maivin and Raivin are not currently certified for collocated transmitters so users must not enable more than one of the Wi-Fi, Modem, or Radar without first receiving FCC certification.  Refer to regulatory boards in your jurisdiction for your relevant regulations.
 
-WiFi AP mode is configured using the `hostapd` service in Linux.  We describe a common WiFi AP configuration; for more advanced setup, please refer to the [hostapd documentation][hostapd].
+Wi-Fi AP mode is configured using the `hostapd` service in Linux.  We describe a common Wi-Fi AP configuration; for more advanced setup, please refer to the [hostapd documentation][hostapd].
 
 To enable the Maivin Access Point with default configurations simply enable the `hostapd` service.
 
@@ -173,9 +173,9 @@ ht_capab=[LDPC][HT40+][GF][SHORT-GI-20][SHORT-GI-40][TX-STBC][DSSS_CCK-40]
 ```
 
 !!! warning
-    Please make sure to change the default password before enabling WiFi AP mode!
+    Please make sure to change the default password before enabling Wi-Fi AP mode!
 
-The WiFi AP network configuration file is found under `/etc/systemd/network/hostapd.network` and is managed by [systemd][sysd].  The following is the default configuration.  The full list of configuration options is documented in the [systemd network manual][networkd].
+The Wi-Fi AP network configuration file is found under `/etc/systemd/network/hostapd.network` and is managed by [systemd][sysd].  The following is the default configuration.  The full list of configuration options is documented in the [systemd network manual][networkd].
 
 ```
 [Match]
@@ -201,7 +201,7 @@ PoolSize=100
 Maivin provides an m.2 expansion port which can be used to add an LTE modem to the device.  We offer Maivin and Raivin units preconfigured with an LTE modem and SIM card or a modem can be added by customers themselves following the instructions at the end of this section.
 
 !!! warning
-    FCC regulations require special certifications for collocated transmitters (a device with multiple RF transmitters).  Maivin and Raivin are not currently certified for collocated transmitters so users must not enable more than one of the WiFi, Modem, or Radar without first receiving FCC certification.  Refer to regulatory boards in your jurisdiction for your relevant regulations.
+    FCC regulations require special certifications for collocated transmitters (a device with multiple RF transmitters).  Maivin and Raivin are not currently certified for collocated transmitters so users must not enable more than one of the Wi-Fi, Modem, or Radar without first receiving FCC certification.  Refer to regulatory boards in your jurisdiction for your relevant regulations.
 
 ### Modem Configuration
 

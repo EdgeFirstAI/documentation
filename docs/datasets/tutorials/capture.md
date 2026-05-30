@@ -4,7 +4,7 @@ This page has tutorials for capturing or collecting samples for datasets and the
 
 ## Capture with a Phone
 
-If you have a phone or any device with a camera with Wifi access, follow this tutorial to see how to capture and upload datasets into EdgeFirst Studio.
+If you have a phone or any device with a camera with Wi-Fi access, follow this tutorial to see how to capture and upload datasets into EdgeFirst Studio.
 
 {% include-markdown "discrete/datasets/recording_on_phone.md" heading-offset=2 %}
 

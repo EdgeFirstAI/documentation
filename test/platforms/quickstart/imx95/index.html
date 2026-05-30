@@ -29,7 +29,7 @@
     
     
       
-        <title>Index - EdgeFirst Studio Documentation</title>
+        <title>i.MX 95 Quick Start - EdgeFirst Studio Documentation</title>
       
     
     
@@ -59,6 +59,8 @@
     
       <link rel="stylesheet" href="../../../stylesheets/extra.css">
     
+      <link rel="stylesheet" href="../../../stylesheets/components.css">
+    
       <link rel="stylesheet" href="../../../stylesheets/mermaid.css">
     
     <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
@@ -79,7 +81,7 @@
     
   
 <meta property="og:type" content="website" />
-<meta property="og:title" content="Index - EdgeFirst Studio Documentation" />
+<meta property="og:title" content="i.MX 95 Quick Start - EdgeFirst Studio Documentation" />
 <meta property="og:description" content="EdgeFirst Studio Documentation" />
 <meta property="og:image" content="https://doc.edgefirst.ai/test/assets/images/social/platforms/quickstart/imx95/index.png" />
 <meta property="og:image:type" content="image/png" />
@@ -87,7 +89,7 @@
 <meta property="og:image:height" content="630" />
 <meta property="og:url" content="https://doc.edgefirst.ai/test/platforms/quickstart/imx95/" />
 <meta property="twitter:card" content="summary_large_image" />
-<meta property="twitter:title" content="Index - EdgeFirst Studio Documentation" />
+<meta property="twitter:title" content="i.MX 95 Quick Start - EdgeFirst Studio Documentation" />
 <meta property="twitter:description" content="EdgeFirst Studio Documentation" />
 <meta property="twitter:image" content="https://doc.edgefirst.ai/test/assets/images/social/platforms/quickstart/imx95/index.png" />
 </head>
@@ -107,6 +109,11 @@
     <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
+      
+        
+        <a href="#imx-95-quick-start" class="md-skip">
+          Skip to content
+        </a>
       
     </div>
     <div data-md-component="announce">
@@ -158,7 +165,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Index
+              i.MX 95 Quick Start
             
           </span>
         </div>
@@ -337,7 +344,7 @@
   
     
   
-  Profiler
+  Profiler <span class="ef-badge">New</span>
 
         </a>
       </li>
@@ -736,7 +743,7 @@
   <span class="md-ellipsis">
     
   
-    Profiler
+    Profiler <span class="ef-badge">New</span>
   
 
     
@@ -1353,8 +1360,6 @@
       
         
       
-        
-      
     
     
     
@@ -1499,15 +1504,43 @@
   
   
   
-    <li class="md-nav__item">
-      <a href="neutron_converter/" class="md-nav__link">
+    
+    
+      
         
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="conversion/" class="md-nav__link">
+      
   
   
   <span class="md-ellipsis">
     
   
-    iMX.95 Neutron Model Conversion
+    Model Conversions
   
 
     
@@ -1515,35 +1548,13 @@
   
   
 
-      </a>
-    </li>
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
   
 
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="convert_kinara/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Convert kinara
-  
-
-    
-  </span>
-  
-  
-
-      </a>
+      
     </li>
   
 
@@ -1696,6 +1707,8 @@
       
         
           
+        
+      
         
       
         
@@ -2039,6 +2052,27 @@
   
   
   
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#system-architecture" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        System Architecture
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
   
 </nav>
                   </div>
@@ -2130,9 +2164,24 @@
 
 
 
-  <h1>Index</h1>
-
-
+<h1 id="imx-95-quick-start">i.MX 95 Quick Start</h1>
+<figure>
+            <img align="center" alt="i.MX 95" src="../../assets/imx95.png" width="50%" />
+            <figcaption>i.MX 95</figcaption>
+            </figure>
+<p>The i.MX 95 configuration is a development-focused platform for building and evaluating vision-based edge AI applications on NXP hardware. This platform is built on the <a href="https://www.nxp.com/products/processors-and-microcontrollers/arm-processors/i-mx-applications-processors/i-mx-9-applications-processors/i-mx-95-applications-processors:IMX95">NXP i.MX 95</a> application processor, which includes the Neutron <abbr title="Neural Processing Unit">NPU</abbr> for accelerated inference. The <a href="../../../perception/">EdgeFirst Perception Middleware</a> leverages the Neutron delegate to enable real-time edge perception workflows from data capture through deployment.</p>
+<h2 id="system-architecture">System Architecture</h2>
+<p>The i.MX 95 runs a Linux operating system based on <a href="https://www.nxp.com/design/design-center/software/embedded-software/i-mx-software/embedded-linux-for-i-mx-applications-processors:IMXLINUX">NXP's BSP</a> and includes the common packages needed for embedded vision and AI development (Python, OpenCV, and related tooling).</p>
+<p>Central to the EdgeFirst Platforms is the EdgeFirst Perception Middleware, our collection of applications and libraries used to implement the perception stack. The details of the low-level libraries are covered in the <a href="../../../perception/">EdgeFirst Perception Developer Guide</a>; in this Quick Start we focus on the application services and workflow used to build and deploy models on the i.MX 95.</p>
+<p>In this Quick Start, you will find instructions for:</p>
+<ol>
+<li>Setting up your i.MX 95 (<em>coming soon</em>)</li>
+<li><a href="copy_dataset/">Copying a Sample Dataset in EdgeFirst Studio for Training</a></li>
+<li><a href="train/">Training a Vision Model</a></li>
+<li><a href="conversion/">Converting a Vision Model for the Neutron <abbr title="Neural Processing Unit">NPU</abbr></a></li>
+<li><a href="validate/">Validating a Vision Model</a></li>
+<li><a href="deploy/">Deploying a Vision Model</a></li>
+</ol>
 
 
 

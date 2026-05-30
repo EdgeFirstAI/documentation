@@ -59,6 +59,8 @@
     
       <link rel="stylesheet" href="../../../../stylesheets/extra.css">
     
+      <link rel="stylesheet" href="../../../../stylesheets/components.css">
+    
       <link rel="stylesheet" href="../../../../stylesheets/mermaid.css">
     
     <script>__md_scope=new URL("../../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
@@ -342,7 +344,7 @@
   
     
   
-  Profiler
+  Profiler <span class="ef-badge">New</span>
 
         </a>
       </li>
@@ -741,7 +743,7 @@
   <span class="md-ellipsis">
     
   
-    Profiler
+    Profiler <span class="ef-badge">New</span>
   
 
     
@@ -1356,8 +1358,6 @@
       
         
       
-        
-      
     
     
     
@@ -1500,6 +1500,8 @@
       
         
       
+        
+      
     
     
     
@@ -1598,6 +1600,24 @@
         
       
       
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Copy Sample Dataset
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <a href="./" class="md-nav__link md-nav__link--active">
         
   
@@ -1614,6 +1634,47 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#copy-dataset" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Copy Dataset
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tag-dataset" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Tag Dataset
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
       
     </li>
   
@@ -1643,6 +1704,68 @@
   
 
       </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../conversion/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Model Conversions
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
     </li>
   
 
@@ -2001,6 +2124,36 @@
     
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#copy-dataset" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Copy Dataset
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tag-dataset" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Tag Dataset
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -2092,6 +2245,82 @@
 
 
 <h1 id="copy-sample-dataset">Copy Sample Dataset</h1>
+<p>This page will show you how to copy a dataset from "Sample Project" in <a href="https://test.edgefirst.studio/">EdgeFirst Studio</a>.  You will be using this dataset to train your model.  In the following examples, you will be copying the "Coffee Cup" dataset for faster training ~15 minutes.</p>
+<div class="admonition note">
+<p class="admonition-title">Have you created a project?</p>
+<p>It is important that you have followed through the <a href="../../../../">Getting Started</a> which shows you how to <a href="https://test.edgefirst.studio/signup">sign up</a>, <a href="https://test.edgefirst.studio/login">login</a>, and <a href="../../../../getting_started/create_project/">create a project</a> in EdgeFirst Studio which is crucial before starting any experiments.</p>
+</div>
+<p>Once you have your own project created, you can finally copy a dataset inside your project.  In this example, the project that was created is called "My First Project".</p>
+<figure>
+            <img align="center" alt="New Project" src="../../../../studio/assets/projects/new-project.jpg" />
+            <figcaption>New Project</figcaption>
+            </figure>
+<p>Under "Sample Project", click on the "Datasets" button.</p>
+<figure>
+            <img align="center" alt="Sample Datasets Button" src="../../../../studio/assets/projects/sample-datasets-button.jpg" />
+            <figcaption>Sample Datasets Button</figcaption>
+            </figure>
+<p>Inside "Sample Project", you will find a sample dataset called "Coffee Cup".  You will be copying this dataset to train a Vision model for detecting coffee cups on images.</p>
+<h2 id="copy-dataset">Copy Dataset</h2>
+<p>To copy a dataset, navigate to the dataset you would like to copy.  On the dataset card, select "Copy Dataset" from the dataset options as shown below.</p>
+<figure>
+            <img align="center" alt="Copy Dataset" src="../../../../datasets/assets/management/copy-dataset-option.jpg" />
+            <figcaption>Copy Dataset</figcaption>
+            </figure>
+<p>This will open a new dialog for the user to specify the dataset source and destination.  The destination will be the location of the copied dataset.  The source is the current location of the dataset.  The source is set by default to the current dataset card you've selected.  In the example below, the source is set to the "Coffee Cup" dataset from "Sample Project".  The copied dataset will be placed as specified in the destination fields.  By default a new dataset container will be created in the specified project.  However, you can also <a href="../../../../datasets/tutorials/management/#create-dataset">create a dataset container</a> before copying and specify this dataset container in the destination fields.  </p>
+<p>Once you have made your selection, click "Apply" at the bottom right to start the copy process.</p>
+<figure>
+            <img align="center" alt="Copy Dataset Options" src="../../../../datasets/assets/management/copy-dataset-options.jpg" />
+            <figcaption>Copy Dataset Options</figcaption>
+            </figure>
+<p>You can navigate to the copied dataset by clicking the "Project" button and then clicking on the "Datasets" button on your project as shown below.</p>
+<figure>
+            <img align="center" alt="Navigate to your Project" src="../../../../datasets/assets/management/navigate-to-project.jpg" />
+            <figcaption>Navigate to your Project</figcaption>
+            </figure>
+<p>The progress for the dataset copy will be shown on the dataset card.</p>
+<figure>
+            <img align="center" alt="Copy Dataset Progress" src="../../../../datasets/assets/management/copy-dataset-progress.jpg" />
+            <figcaption>Copy Dataset Progress</figcaption>
+            </figure>
+<p>Once the copying process completes, the frames and the annotations would have been copied.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: center;"><strong>Original Dataset</strong></th>
+<th style="text-align: center;"><strong>Copied Dataset</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;"><img alt="Original" src="../../../../datasets/assets/management/original-public-dataset.jpg" /></td>
+<td style="text-align: center;"><img alt="Copied" src="../../../../datasets/assets/management/copied-dataset-result.jpg" /></td>
+</tr>
+</tbody>
+</table>
+<h2 id="tag-dataset">Tag Dataset</h2>
+<p>To maintain the current state of the dataset, tag the dataset with a version.</p>
+<p>Click on the dataset options at the top right of the dataset card (three vertical dots). Then click the "History" button.</p>
+<figure>
+            <img align="center" alt="Tag Dataset Options" src="../../../../datasets/assets/management/dataset-options-history.jpg" />
+            <figcaption>Tag Dataset Options</figcaption>
+            </figure>
+<p>Add a new tagged version of the dataset by clicking the + green button on the right of the page as shown.</p>
+<figure>
+            <img align="center" alt="Tag Dataset Button" src="../../../../datasets/assets/management/dataset-history-add-new-tag.jpg" />
+            <figcaption>Tag Dataset Button</figcaption>
+            </figure>
+<p>Specify the tag version and tag description. Click "Create Tag" to tag the dataset.</p>
+<figure>
+            <img align="center" alt="Tag Dataset Options" src="../../../../datasets/assets/management/dataset-tag-options.jpg" />
+            <figcaption>Tag Dataset Options</figcaption>
+            </figure>
+<p>The new dataset tag will appear under "Version History" of this page.  You can go back to the dataset card by clicking the "Back to Datasets" button.</p>
+<figure>
+            <img align="center" alt="Back to Datasets Button" src="../../../../datasets/assets/management/back-to-datasets-button.jpg" />
+            <figcaption>Back to Datasets Button</figcaption>
+            </figure>
+<p>Once you have copied and tagged the dataset, you can now begin training your model.</p>
 
 
 

@@ -29,7 +29,7 @@
     
     
       
-        <title>TFLite Converter - EdgeFirst Studio Documentation</title>
+        <title>Convert tflite - EdgeFirst Studio Documentation</title>
       
     
     
@@ -59,6 +59,8 @@
     
       <link rel="stylesheet" href="../../../../../stylesheets/extra.css">
     
+      <link rel="stylesheet" href="../../../../../stylesheets/components.css">
+    
       <link rel="stylesheet" href="../../../../../stylesheets/mermaid.css">
     
     <script>__md_scope=new URL("../../../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
@@ -79,7 +81,7 @@
     
   
 <meta property="og:type" content="website" />
-<meta property="og:title" content="TFLite Converter - EdgeFirst Studio Documentation" />
+<meta property="og:title" content="Convert tflite - EdgeFirst Studio Documentation" />
 <meta property="og:description" content="EdgeFirst Studio Documentation" />
 <meta property="og:image" content="https://doc.edgefirst.ai/test/assets/images/social/platforms/quickstart/imx8mplus/conversion/convert_tflite.png" />
 <meta property="og:image:type" content="image/png" />
@@ -87,7 +89,7 @@
 <meta property="og:image:height" content="630" />
 <meta property="og:url" content="https://doc.edgefirst.ai/test/platforms/quickstart/imx8mplus/conversion/convert_tflite/" />
 <meta property="twitter:card" content="summary_large_image" />
-<meta property="twitter:title" content="TFLite Converter - EdgeFirst Studio Documentation" />
+<meta property="twitter:title" content="Convert tflite - EdgeFirst Studio Documentation" />
 <meta property="twitter:description" content="EdgeFirst Studio Documentation" />
 <meta property="twitter:image" content="https://doc.edgefirst.ai/test/assets/images/social/platforms/quickstart/imx8mplus/conversion/convert_tflite.png" />
 </head>
@@ -107,11 +109,6 @@
     <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
-      
-        
-        <a href="#tflite-converter" class="md-skip">
-          Skip to content
-        </a>
       
     </div>
     <div data-md-component="announce">
@@ -163,7 +160,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              TFLite Converter
+              Convert tflite
             
           </span>
         </div>
@@ -342,7 +339,7 @@
   
     
   
-  Profiler
+  Profiler <span class="ef-badge">New</span>
 
         </a>
       </li>
@@ -741,7 +738,7 @@
   <span class="md-ellipsis">
     
   
-    Profiler
+    Profiler <span class="ef-badge">New</span>
   
 
     
@@ -1513,7 +1510,7 @@
   <span class="md-ellipsis">
     
   
-    Ara2 Converter
+    Convert kinara
   
 
     
@@ -1540,26 +1537,6 @@
       <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
       
       
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    TFLite Converter
-  
-
-    
-  </span>
-  
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
       
       <a href="./" class="md-nav__link md-nav__link--active">
         
@@ -1568,7 +1545,7 @@
   <span class="md-ellipsis">
     
   
-    TFLite Converter
+    Convert tflite
   
 
     
@@ -1577,97 +1554,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#studio-launch-form" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Studio Launch Form
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Studio Launch Form">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#split_mode-explained" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        split_mode explained
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#what-you-get" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        What You Get
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#calibration" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Calibration
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#converting-your-model" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Converting Your Model
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#known-limitations" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Known Limitations
-      
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
       
     </li>
   
@@ -1829,8 +1715,6 @@
       
         
       
-        
-      
     
     
     
@@ -1959,6 +1843,8 @@
       
         
           
+        
+      
         
       
         
@@ -2302,88 +2188,6 @@
   
   
   
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#studio-launch-form" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Studio Launch Form
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Studio Launch Form">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#split_mode-explained" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        split_mode explained
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#what-you-get" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        What You Get
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#calibration" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Calibration
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#converting-your-model" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Converting Your Model
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#known-limitations" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Known Limitations
-      
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
   
 </nav>
                   </div>
@@ -2493,66 +2297,9 @@
 
 
 
-<h1 id="tflite-converter"><abbr title="TensorFlow Lite">TFLite</abbr> Converter</h1>
-<p>The <strong><abbr title="TensorFlow Lite">TFLite</abbr> Converter</strong> is the EdgeFirst reference quantizer. It takes a TensorFlow <code>SavedModel</code> exported from an EdgeFirst Studio training session and produces a TensorFlow Lite flatbuffer that can be deployed on any <abbr title="TensorFlow Lite">TFLite</abbr>-compatible runtime — including the NXP i.MX 8M Plus (via the OpenVX/VIP8000 delegate), the NXP eIQ Neutron NPUs (via the <a href="/models/conversion/neutron/">Neutron Converter</a> downstream stage), Arm CPUs (<abbr title="Arm SIMD instruction set">NEON</abbr>-accelerated), and the standard TensorFlow Lite delegate set.</p>
-<p><abbr title="Signed 8-bit integer">INT8</abbr> is the recommended deployment precision; float16 and float32 paths exist for cases where <abbr title="Signed 8-bit integer">INT8</abbr> accuracy is not yet acceptable. <abbr title="Signed 8-bit integer">INT8</abbr> conversion applies the <a href="/models/conversion/#smart-quantization">EdgeFirst Smart Quantizer</a> — per-scale graph surgery that gives each feature-pyramid endpoint its own independent quantization parameters and lifts the decode operations out of the <abbr title="Signed 8-bit integer">INT8</abbr> datapath onto the runtime side. Calibration is fully automatic from the training session.</p>
-<h2 id="studio-launch-form">Studio Launch Form</h2>
-<table>
-<thead>
-<tr>
-<th>Field</th>
-<th>Values</th>
-<th>Default</th>
-<th>Meaning</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>quantization_mode</code></td>
-<td><code>int8</code> / <code>float16</code> / <code>float32</code></td>
-<td><code>int8</code></td>
-<td><abbr title="Signed 8-bit integer">INT8</abbr> = full integer post-training quantization with calibration. <abbr title="Half-precision 16-bit floating-point">FP16</abbr> = half-precision weights with no calibration. <abbr title="Single-precision 32-bit floating-point">FP32</abbr> = direct pass-through.</td>
-</tr>
-<tr>
-<td><code>input_dtype</code></td>
-<td><code>uint8</code> / <code>int8</code></td>
-<td><code>uint8</code></td>
-<td><abbr title="Signed 8-bit integer">INT8</abbr>-mode only. <code>uint8</code> matches the zero-copy input path used by most camera pipelines on EdgeFirst targets.</td>
-</tr>
-<tr>
-<td><code>output_dtype</code></td>
-<td><code>int8</code> / <code>uint8</code></td>
-<td><code>int8</code></td>
-<td><abbr title="Signed 8-bit integer">INT8</abbr>-mode only. <code>int8</code> is the EdgeFirst <abbr title="Hardware Abstraction Layer">HAL</abbr> default.</td>
-</tr>
-<tr>
-<td><code>split_mode</code></td>
-<td><code>smart</code> / <code>logical</code> / <code>combined</code></td>
-<td><code>smart</code></td>
-<td>Controls how detection-head outputs are decomposed for quantization. <code>smart</code> is the production setting; <code>logical</code> and <code>combined</code> are diagnostic.</td>
-</tr>
-</tbody>
-</table>
-<h3 id="split_mode-explained"><code>split_mode</code> explained</h3>
-<p>The <code>split_mode</code> field is the most important accuracy lever in this converter — see <a href="/models/conversion/#smart-quantization">Smart Quantization</a> for the underlying problem it solves.</p>
-<ul>
-<li><strong><code>smart</code></strong> (default) — Per-scale graph surgery. The converter rebuilds the SavedModel so each <abbr title="Feature Pyramid Network">FPN</abbr>-scale endpoint becomes an independent output with its own <abbr title="Signed 8-bit integer">INT8</abbr> scale. The decode operations (distance-to-box arithmetic, per-class activation) run in float on the runtime side after dequantization, and the runtime decoder reassembles the boxes back into the logical <code>[0, 1]</code>-normalized form before handing them to application code. This is the only mode that delivers the Smart Quantizer's accuracy benefit and the only mode users should pick for accuracy-sensitive deployments.</li>
-<li><strong><code>logical</code></strong> — Slice-based routing only. The converter splits the concatenated output into named tensors (boxes, scores, mask coefficients), but <abbr title="TensorFlow Lite">TFLite</abbr> propagates the parent concatenation's quantization parameters through the slice — all three children share the same scale and zero-point. This mode provides structural routing convenience but <strong>no accuracy improvement</strong> over <code>combined</code>. It exists for integration testing and as a structural fallback.</li>
-<li><strong><code>combined</code></strong> — No decomposition. The original concatenated output is quantized as-is with a single shared scale. Use only for debugging or for a baseline comparison.</li>
-</ul>
-<h2 id="what-you-get">What You Get</h2>
-<p>A self-contained <code>.tflite</code> flatbuffer with:</p>
-<ul>
-<li>The compiled <abbr title="TensorFlow Lite">TFLite</abbr> graph (quantized weights, fused operations).</li>
-<li>Embedded <a href="/models/metadata/">EdgeFirst metadata</a> (<code>edgefirst.json</code> + <code>labels.txt</code>) ZIP-appended to the file.</li>
-<li>A <code>tflite_quantizer</code> traceability block recording the calibration source, sample count, quantizer version, and applied splits.</li>
-<li>A compiled <a href="/models/metadata/#output-specification"><code>outputs[]</code></a> array that describes the physical tensor layout and per-tensor quantization parameters for the runtime decoder. Under <code>smart</code> split this describes the per-<abbr title="Feature Pyramid Network">FPN</abbr>-stride physical children; the logical view that application code sees (<code>[0, 1]</code>-normalized boxes, per-class scores, mask coefficients) is reassembled at runtime by the <abbr title="Hardware Abstraction Layer">HAL</abbr>.</li>
-</ul>
-<p>The artifact can be deployed directly to any platform with a <abbr title="TensorFlow Lite">TFLite</abbr> runtime, or used as the <strong>upstream input</strong> to the <a href="/models/conversion/neutron/">Neutron Converter</a> when targeting NXP i.MX 95 and the wider eIQ Neutron silicon lineup.</p>
-<h2 id="calibration">Calibration</h2>
-<p>Calibration is fully automatic. EdgeFirst Studio captures a calibration snapshot from the training dataset and passes it to the converter. There is no calibration step a Studio user needs to perform manually. See <a href="/models/conversion/#calibration">Calibration</a> on the conversion landing page for the broader contract.</p>
-<h2 id="converting-your-model">Converting Your Model</h2>
-<p>Once training completes in EdgeFirst Studio:</p>
+  <h1>Convert tflite</h1>
+
+<p>The following outlines the basic steps required to convert a model to quantized <abbr title="TensorFlow Lite">TFLite</abbr> format.  For detailed information about the conversion process and available configuration options, refer to the <a href="../../../../../models/conversion/tflite/"><abbr title="TensorFlow Lite">TFLite</abbr> Converter</a>.</p>
 <ol>
 <li>
 <p>Click on the completed training session.</p>
@@ -2576,13 +2323,6 @@
         </figure></p>
 </li>
 </ol>
-<p>Reference accuracy numbers for the EdgeFirst-quantized Ultralytics family (YOLOv8n, YOLOv8n-seg, others) are published on the <a href="/models/ultralytics/benchmarks/">Ultralytics Benchmarks</a> page alongside the float32 baseline they recover from.</p>
-<h2 id="known-limitations">Known Limitations</h2>
-<ul>
-<li><code>split_mode: logical</code> does <strong>not</strong> improve <abbr title="Signed 8-bit integer">INT8</abbr> accuracy on <abbr title="TensorFlow Lite">TFLite</abbr> — it is structural routing only. Choose <code>smart</code> for accuracy-sensitive <abbr title="Signed 8-bit integer">INT8</abbr> work, or <code>combined</code> only as a debugging baseline.</li>
-<li><code>split_mode: smart</code> requires the training session to record per-scale stride information in <a href="/models/metadata/#split-hints"><code>split_hints</code></a>. EdgeFirst Studio trainers always do this; third-party training pipelines that produce SavedModels without <code>split_hints</code> will fall back to <code>logical</code> or <code>combined</code>.</li>
-<li>Float16 and float32 modes do not apply any decomposition; <code>split_mode</code> is ignored.</li>
-</ul>
 <p>Now that you have quantized your model, you can now proceed to <a href="../../validate/">validating the performance of your model</a> on target.</p>
 
 
@@ -2673,7 +2413,7 @@
       <nav class="md-footer__inner md-grid" aria-label="Footer" >
         
           
-          <a href="../convert_kinara/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Ara2 Converter">
+          <a href="../convert_kinara/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Convert kinara">
             <div class="md-footer__button md-icon">
               
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
@@ -2683,7 +2423,7 @@
                 Previous
               </span>
               <div class="md-ellipsis">
-                Ara2 Converter
+                Convert kinara
               </div>
             </div>
           </a>

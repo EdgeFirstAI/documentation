@@ -12,31 +12,31 @@
         <meta name="author" content="Au-Zone Technologies">
       
       
-        <link rel="canonical" href="https://doc.edgefirst.ai/test/platforms/quickstart/imx95/convert_kinara/">
+        <link rel="canonical" href="https://doc.edgefirst.ai/test/platforms/quickstart/raspberrypi/conversion/convert_hailo/">
       
       
-        <link rel="prev" href="../neutron_converter/">
+        <link rel="prev" href="../">
       
       
-        <link rel="next" href="../validate/">
+        <link rel="next" href="../convert_tflite/">
       
       
         
       
       
-      <link rel="icon" href="../../../../assets/favicon.png">
+      <link rel="icon" href="../../../../../assets/favicon.png">
       <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
     
     
       
-        <title>Convert kinara - EdgeFirst Studio Documentation</title>
+        <title>Convert hailo - EdgeFirst Studio Documentation</title>
       
     
     
-      <link rel="stylesheet" href="../../../../assets/stylesheets/main.484c7ddc.min.css">
+      <link rel="stylesheet" href="../../../../../assets/stylesheets/main.484c7ddc.min.css">
       
         
-        <link rel="stylesheet" href="../../../../assets/stylesheets/palette.ab4e12ef.min.css">
+        <link rel="stylesheet" href="../../../../../assets/stylesheets/palette.ab4e12ef.min.css">
       
       
 
@@ -55,13 +55,15 @@
       
     
     
-      <link rel="stylesheet" href="../../../../assets/_mkdocstrings.css">
+      <link rel="stylesheet" href="../../../../../assets/_mkdocstrings.css">
     
-      <link rel="stylesheet" href="../../../../stylesheets/extra.css">
+      <link rel="stylesheet" href="../../../../../stylesheets/extra.css">
     
-      <link rel="stylesheet" href="../../../../stylesheets/mermaid.css">
+      <link rel="stylesheet" href="../../../../../stylesheets/components.css">
     
-    <script>__md_scope=new URL("../../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+      <link rel="stylesheet" href="../../../../../stylesheets/mermaid.css">
+    
+    <script>__md_scope=new URL("../../../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
   
@@ -79,17 +81,17 @@
     
   
 <meta property="og:type" content="website" />
-<meta property="og:title" content="Convert kinara - EdgeFirst Studio Documentation" />
+<meta property="og:title" content="Convert hailo - EdgeFirst Studio Documentation" />
 <meta property="og:description" content="EdgeFirst Studio Documentation" />
-<meta property="og:image" content="https://doc.edgefirst.ai/test/assets/images/social/platforms/quickstart/imx95/convert_kinara.png" />
+<meta property="og:image" content="https://doc.edgefirst.ai/test/assets/images/social/platforms/quickstart/raspberrypi/conversion/convert_hailo.png" />
 <meta property="og:image:type" content="image/png" />
 <meta property="og:image:width" content="1200" />
 <meta property="og:image:height" content="630" />
-<meta property="og:url" content="https://doc.edgefirst.ai/test/platforms/quickstart/imx95/convert_kinara/" />
+<meta property="og:url" content="https://doc.edgefirst.ai/test/platforms/quickstart/raspberrypi/conversion/convert_hailo/" />
 <meta property="twitter:card" content="summary_large_image" />
-<meta property="twitter:title" content="Convert kinara - EdgeFirst Studio Documentation" />
+<meta property="twitter:title" content="Convert hailo - EdgeFirst Studio Documentation" />
 <meta property="twitter:description" content="EdgeFirst Studio Documentation" />
-<meta property="twitter:image" content="https://doc.edgefirst.ai/test/assets/images/social/platforms/quickstart/imx95/convert_kinara.png" />
+<meta property="twitter:image" content="https://doc.edgefirst.ai/test/assets/images/social/platforms/quickstart/raspberrypi/conversion/convert_hailo.png" />
 </head>
   
   
@@ -139,9 +141,9 @@
 
 <header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href="../../../.." title="EdgeFirst Studio Documentation" class="md-header__button md-logo" aria-label="EdgeFirst Studio Documentation" data-md-component="logo">
+    <a href="../../../../.." title="EdgeFirst Studio Documentation" class="md-header__button md-logo" aria-label="EdgeFirst Studio Documentation" data-md-component="logo">
       
-  <img src="../../../../assets/logo.png" alt="logo">
+  <img src="../../../../../assets/logo.png" alt="logo">
 
     </a>
     <label class="md-header__button md-icon" for="__drawer">
@@ -158,7 +160,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Convert kinara
+              Convert hailo
             
           </span>
         </div>
@@ -265,7 +267,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../../.." class="md-tabs__link">
+        <a href="../../../../.." class="md-tabs__link">
           
   
   
@@ -287,7 +289,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../../../studio/" class="md-tabs__link">
+        <a href="../../../../../studio/" class="md-tabs__link">
           
   
   
@@ -309,7 +311,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../../../3D/" class="md-tabs__link">
+        <a href="../../../../../3D/" class="md-tabs__link">
           
   
   
@@ -331,13 +333,13 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../../../profiler/" class="md-tabs__link">
+        <a href="../../../../../profiler/" class="md-tabs__link">
           
   
   
     
   
-  Profiler
+  Profiler <span class="ef-badge">New</span>
 
         </a>
       </li>
@@ -353,7 +355,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../../../datasets/" class="md-tabs__link">
+        <a href="../../../../../datasets/" class="md-tabs__link">
           
   
   
@@ -375,7 +377,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../../../models/" class="md-tabs__link">
+        <a href="../../../../../models/" class="md-tabs__link">
           
   
   
@@ -397,7 +399,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../../../perception/" class="md-tabs__link">
+        <a href="../../../../../perception/" class="md-tabs__link">
           
   
   
@@ -421,7 +423,7 @@
     
     
       <li class="md-tabs__item md-tabs__item--active">
-        <a href="../../../" class="md-tabs__link">
+        <a href="../../../../" class="md-tabs__link">
           
   
   
@@ -463,9 +465,9 @@
 
 <nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="../../../.." title="EdgeFirst Studio Documentation" class="md-nav__button md-logo" aria-label="EdgeFirst Studio Documentation" data-md-component="logo">
+    <a href="../../../../.." title="EdgeFirst Studio Documentation" class="md-nav__button md-logo" aria-label="EdgeFirst Studio Documentation" data-md-component="logo">
       
-  <img src="../../../../assets/logo.png" alt="logo">
+  <img src="../../../../../assets/logo.png" alt="logo">
 
     </a>
     EdgeFirst Studio Documentation
@@ -522,7 +524,7 @@
   
   
   
-    <a href="../../../.." class="md-nav__link">
+    <a href="../../../../.." class="md-nav__link">
       
   
   
@@ -603,7 +605,7 @@
   
   
   
-    <a href="../../../../studio/" class="md-nav__link">
+    <a href="../../../../../studio/" class="md-nav__link">
       
   
   
@@ -664,7 +666,7 @@
   
   
   
-    <a href="../../../../3D/" class="md-nav__link">
+    <a href="../../../../../3D/" class="md-nav__link">
       
   
   
@@ -729,14 +731,14 @@
   
   
   
-    <a href="../../../../profiler/" class="md-nav__link">
+    <a href="../../../../../profiler/" class="md-nav__link">
       
   
   
   <span class="md-ellipsis">
     
   
-    Profiler
+    Profiler <span class="ef-badge">New</span>
   
 
     
@@ -792,7 +794,7 @@
   
   
   
-    <a href="../../../../datasets/" class="md-nav__link">
+    <a href="../../../../../datasets/" class="md-nav__link">
       
   
   
@@ -865,7 +867,7 @@
   
   
   
-    <a href="../../../../models/" class="md-nav__link">
+    <a href="../../../../../models/" class="md-nav__link">
       
   
   
@@ -938,7 +940,7 @@
   
   
   
-    <a href="../../../../perception/" class="md-nav__link">
+    <a href="../../../../../perception/" class="md-nav__link">
       
   
   
@@ -1009,7 +1011,7 @@
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../../" class="md-nav__link ">
+            <a href="../../../../" class="md-nav__link ">
               
   
   
@@ -1157,7 +1159,7 @@
   
   
   
-    <a href="../../maivin/" class="md-nav__link">
+    <a href="../../../maivin/" class="md-nav__link">
       
   
   
@@ -1227,7 +1229,7 @@
   
   
   
-    <a href="../../raivin/" class="md-nav__link">
+    <a href="../../../raivin/" class="md-nav__link">
       
   
   
@@ -1299,7 +1301,7 @@
   
   
   
-    <a href="../../imx8mplus/" class="md-nav__link">
+    <a href="../../../imx8mplus/" class="md-nav__link">
       
   
   
@@ -1330,8 +1332,6 @@
                 
   
   
-    
-  
   
   
     
@@ -1353,8 +1353,6 @@
       
         
       
-        
-      
     
     
     
@@ -1362,18 +1360,19 @@
       
     
     
-      
-    
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8_2_4" checked>
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
         
-          
-          <div class="md-nav__link md-nav__container">
-            <a href="../" class="md-nav__link ">
-              
+  
+  
+  
+    <a href="../../../imx95/" class="md-nav__link">
+      
   
   
   <span class="md-ellipsis">
@@ -1387,234 +1386,12 @@
   
   
 
-            </a>
-            
-              
-              <label class="md-nav__link " for="__nav_8_2_4" id="__nav_8_2_4_label" tabindex="0">
-                <span class="md-nav__icon md-icon"></span>
-              </label>
-            
-          </div>
-        
-        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_8_2_4_label" aria-expanded="true">
-          <label class="md-nav__title" for="__nav_8_2_4">
-            <span class="md-nav__icon md-icon"></span>
-            
-  
-    i.MX 95 Quick Start
-  
-
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../setup/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    NXP i.MX 95 Setup Guide
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../copy_dataset/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Copy Sample Dataset
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../train/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Train Vision Model
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../neutron_converter/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    iMX.95 Neutron Model Conversion
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-    
-  
-  
-  
-    <li class="md-nav__item md-nav__item--active">
       
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+        <span class="md-nav__icon md-icon"></span>
       
-      
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Convert kinara
+    </a>
   
 
-    
-  </span>
-  
-  
-
-      </a>
-      
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../validate/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Validate Vision Model
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../deploy/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Deploy Vision Model
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-          </ul>
-        </nav>
       
     </li>
   
@@ -1666,7 +1443,7 @@
   
   
   
-    <a href="../../jetson_orin/" class="md-nav__link">
+    <a href="../../../jetson_orin/" class="md-nav__link">
       
   
   
@@ -1697,6 +1474,8 @@
                 
   
   
+    
+  
   
   
     
@@ -1716,26 +1495,27 @@
       
         
       
-    
-    
-    
-      
-      
-    
-    
-      
-        
         
       
     
-    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+    
+    
+      
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
         
-  
-  
-  
-    <a href="../../raspberrypi/" class="md-nav__link">
-      
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8_2_6" checked>
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../" class="md-nav__link ">
+              
   
   
   <span class="md-ellipsis">
@@ -1749,12 +1529,315 @@
   
   
 
-      
-        <span class="md-nav__icon md-icon"></span>
-      
-    </a>
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_8_2_6" id="__nav_8_2_6_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_8_2_6_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_8_2_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Raspberry Pi Quick Start
   
 
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../setup/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Raspberry Pi Setup Guide
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../copy_dataset/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Copy Sample Dataset
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../train/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Train Vision Model
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8_2_6_5" checked>
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Model Conversions
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_8_2_6_5" id="__nav_8_2_6_5_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_8_2_6_5_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_8_2_6_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Model Conversions
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Convert hailo
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../convert_tflite/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Convert tflite
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../validate/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Validate Vision Model
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../deploy/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Deploy Vision Model
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
       
     </li>
   
@@ -1816,7 +1899,7 @@
   
   
   
-    <a href="../../../configuration/" class="md-nav__link">
+    <a href="../../../../configuration/" class="md-nav__link">
       
   
   
@@ -1876,7 +1959,7 @@
   
   
   
-    <a href="../../../hardware/hardware/" class="md-nav__link">
+    <a href="../../../../hardware/hardware/" class="md-nav__link">
       
   
   
@@ -1938,7 +2021,7 @@
   
   
   
-    <a href="../../../software/model_uploads/" class="md-nav__link">
+    <a href="../../../../software/model_uploads/" class="md-nav__link">
       
   
   
@@ -1996,7 +2079,7 @@
   
   
   
-    <a href="../../../networking/networking/" class="md-nav__link">
+    <a href="../../../../networking/networking/" class="md-nav__link">
       
   
   
@@ -2072,7 +2155,7 @@
     
     
       <li class="md-path__item">
-        <a href="../../../" class="md-path__link">
+        <a href="../../../../" class="md-path__link">
           
   <span class="md-ellipsis">
     Platforms
@@ -2095,7 +2178,7 @@
     
     
       <li class="md-path__item">
-        <a href="../../maivin/" class="md-path__link">
+        <a href="../../../maivin/" class="md-path__link">
           
   <span class="md-ellipsis">
     Getting Started
@@ -2116,10 +2199,28 @@
     
     
       <li class="md-path__item">
+        <a href="../../" class="md-path__link">
+          
+  <span class="md-ellipsis">
+    Raspberry Pi Quick Start
+  </span>
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+    
+    
+      <li class="md-path__item">
         <a href="../" class="md-path__link">
           
   <span class="md-ellipsis">
-    i.MX 95 Quick Start
+    Model Conversions
   </span>
 
         </a>
@@ -2138,9 +2239,33 @@
 
 
 
-  <h1>Convert kinara</h1>
+  <h1>Convert hailo</h1>
 
-
+<p>The following outlines the basic steps required to convert a model to Hailo <abbr title="Hailo Executable Format">HEF</abbr> format.  For detailed information about the conversion process and available configuration options, refer to the <a href="../../../../../models/conversion/hailo/">Hailo Converter</a>.</p>
+<ol>
+<li>
+<p>Click on the completed training session.</p>
+<p><figure markdown="span">
+        <img align="center" alt="Completed Training Session" src="../../../../../models/assets/training/vision-view-train-details.jpg" />
+        <figcaption>Completed Training Session</figcaption>
+        </figure></p>
+</li>
+<li>
+<p>Navigate to the <strong>Artifacts</strong> tab and click the <strong>Hailo Converter</strong> button under <strong>Converters</strong> on the right.</p>
+<p><figure markdown="span">
+        <img align="center" alt="Hailo Converter" src="../../../../../models/assets/conversion/hailo-converter-button.jpg" />
+        <figcaption>Hailo Converter</figcaption>
+        </figure></p>
+</li>
+<li>
+<p>Pick the target hardware and quantization preset, then click <strong>Start App</strong> to begin the conversion.</p>
+<p><figure markdown="span">
+        <img align="center" alt="Hailo Converter Options" src="../../../../../models/assets/conversion/hailo-converter-options.jpg" />
+        <figcaption>Hailo Converter Options</figcaption>
+        </figure></p>
+</li>
+</ol>
+<p>Now that you have quantized your model, you can now proceed to <a href="../../validate/">validating the performance of your model</a> on target.</p>
 
 
 
@@ -2230,7 +2355,7 @@
       <nav class="md-footer__inner md-grid" aria-label="Footer" >
         
           
-          <a href="../neutron_converter/" class="md-footer__link md-footer__link--prev" aria-label="Previous: iMX.95 Neutron Model Conversion">
+          <a href="../" class="md-footer__link md-footer__link--prev" aria-label="Previous: Model Conversions">
             <div class="md-footer__button md-icon">
               
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
@@ -2240,20 +2365,20 @@
                 Previous
               </span>
               <div class="md-ellipsis">
-                iMX.95 Neutron Model Conversion
+                Model Conversions
               </div>
             </div>
           </a>
         
         
           
-          <a href="../validate/" class="md-footer__link md-footer__link--next" aria-label="Next: Validate Vision Model">
+          <a href="../convert_tflite/" class="md-footer__link md-footer__link--next" aria-label="Next: Convert tflite">
             <div class="md-footer__title">
               <span class="md-footer__direction">
                 Next
               </span>
               <div class="md-ellipsis">
-                Validate Vision Model
+                Convert tflite
               </div>
             </div>
             <div class="md-footer__button md-icon">
@@ -2386,10 +2511,10 @@
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": "../../../..", "features": ["content.code.copy", "content.code.annotate", "content.tabs.link", "navigation.instant", "navigation.tracking", "navigation.tabs", "navigation.tabs.sticky", "navigation.path", "navigation.indexes", "navigation.top", "navigation.footer", "navigation.prune", "toc.follow", "search.suggest", "search.highlight"], "search": "../../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"alias": true, "default": "latest", "provider": "mike"}}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../../../..", "features": ["content.code.copy", "content.code.annotate", "content.tabs.link", "navigation.instant", "navigation.tracking", "navigation.tabs", "navigation.tabs.sticky", "navigation.path", "navigation.indexes", "navigation.top", "navigation.footer", "navigation.prune", "toc.follow", "search.suggest", "search.highlight"], "search": "../../../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"alias": true, "default": "latest", "provider": "mike"}}</script>
     
     
-      <script src="../../../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      <script src="../../../../../assets/javascripts/bundle.79ae519e.min.js"></script>
       
         <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
       

@@ -59,6 +59,8 @@
     
       <link rel="stylesheet" href="../stylesheets/extra.css">
     
+      <link rel="stylesheet" href="../stylesheets/components.css">
+    
       <link rel="stylesheet" href="../stylesheets/mermaid.css">
     
     <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
@@ -344,7 +346,7 @@
   
     
   
-  Profiler
+  Profiler <span class="ef-badge">New</span>
 
         </a>
       </li>
@@ -745,7 +747,7 @@
   <span class="md-ellipsis">
     
   
-    Profiler
+    Profiler <span class="ef-badge">New</span>
   
 
     
@@ -767,7 +769,7 @@
             <span class="md-nav__icon md-icon"></span>
             
   
-    Profiler
+    Profiler <span class="ef-badge">New</span>
   
 
           </label>
@@ -1377,6 +1379,7 @@
 
 <h1 id="profiler">Profiler</h1>
 <p>The <strong>EdgeFirst Profiler</strong> is the on-target measurement engine for the EdgeFirst Studio platform. It runs the complete vision pipeline — decode, preprocess, inference, postprocess, <abbr title="Non-Maximum Suppression">NMS</abbr> — on the hardware your model will deploy to, then publishes per-image predictions and a detailed timing trace to EdgeFirst Studio where accuracy metrics, charts, and trace visualizations are produced.</p>
+<p>For public benchmarks, explore the <strong>EdgeFirst Model Zoo on Hugging Face</strong> at <a href="https://huggingface.co/spaces/EdgeFirst/Models">https://huggingface.co/spaces/EdgeFirst/Models</a>. We publish public benchmarks and metrics there across Ultralytics and other community models so you can compare your validation results against known baselines.</p>
 <figure>
             <img align="center" alt="EdgeFirst Profiler — F4 dashboard during a validation run" src="assets/tui-profiler.png" />
             <figcaption>EdgeFirst Profiler — F4 dashboard during a validation run</figcaption>

@@ -59,6 +59,8 @@
     
       <link rel="stylesheet" href="../../stylesheets/extra.css">
     
+      <link rel="stylesheet" href="../../stylesheets/components.css">
+    
       <link rel="stylesheet" href="../../stylesheets/mermaid.css">
     
     <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
@@ -344,7 +346,7 @@
   
     
   
-  Profiler
+  Profiler <span class="ef-badge">New</span>
 
         </a>
       </li>
@@ -819,6 +821,8 @@
       
         
       
+        
+      
     
     
     
@@ -915,7 +919,91 @@
   <span class="md-ellipsis">
     
   
-    Tourist Plus Workflow
+    Tourist+ Workflow
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="profiler/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Profiler Workflow
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="profiler_plus/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Profiler+ Workflow
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="auditor/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Auditor Workflow
   
 
     
@@ -964,70 +1052,14 @@
   
   
     <li class="md-nav__item">
-      <a href="maivin/" class="md-nav__link">
+      <a href="hardware/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    Maivin Workflow
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="raivin/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Raivin Workflow
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="jetson/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Jetson Orin Workflow
+    Hardware Workflows
   
 
     
@@ -1244,7 +1276,7 @@
   <span class="md-ellipsis">
     
   
-    Profiler
+    Profiler <span class="ef-badge">New</span>
   
 
     
@@ -1574,6 +1606,34 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="User Personas">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#cloud-personas" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Cloud Personas
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#hardware-personas" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Hardware Personas
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
@@ -1584,6 +1644,34 @@
       
     </span>
   </a>
+  
+    <nav class="md-nav" aria-label="User Journey">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#cloud-workflows" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Cloud Workflows
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#hardware-workflows" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Hardware Workflows
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -1662,30 +1750,39 @@
 <h2 id="user-personas">User Personas</h2>
 <p>The following diagram describes the workflow for identifying the user personas depending on the hardware requirements.</p>
 <pre class="mermaid"><code>%%{init: {"flowchart": {"defaultRenderer": "elk"}} }%%
-flowchart LR
-    %% User Definitions
+flowchart TD
+    %% Node definitions
     user([User])
-    platform{Has a platform?}
-    edgefirst_platform{Has an EdgeFirst Platform?}
+    has_platform{Has a target\nplatform?}
+    has_edgefirst{Has an EdgeFirst\nPlatform?}
     raivin_platform{Has a Raivin?}
-    record{Will use a smartphone to create a dataset?}
-    annotate_pd{Will explore annotating datasets?}
-    with_lidar{Has LiDAR integrated?}
+    with_lidar{Has LiDAR\nintegrated?}
+    has_smartphone{Has a\nsmartphone?}
+    wants_to_train{Will train and\ndeploy a model?}
+    wants_to_annotate{Has own data\nto annotate?}
+    wants_to_benchmark{Will review or\nbenchmark models?}
+    has_account{Has an\nEdgeFirst account?}
+    other_platforms[Other Platforms]
 
     tourist([Tourist]):::yellow
     tourist_plus([Tourist+]):::pink
+    profiler_user([Profiler]):::gold
+    profiler_plus_user([Profiler+]):::amber
+    auditor_user([Auditor]):::sage
     web_user([Web]):::indigo
     maivin_user([Maivin]):::blue
     raivin_user([Raivin]):::orange
     raivin_lidar_user([LiDAR]):::darker_orange
     imx8mp_user([i.MX 8M Plus]):::green
-    imx95_user([i.MX 95]):::teal 
-    orin_user([Jetson Orin]):::purple 
+    imx95_user([i.MX 95]):::teal
+    orin_user([Jetson Orin]):::purple
     pi_user([Raspberry Pi 5]):::coral
-    other_platforms[Other Platforms]
 
     classDef yellow fill:#fff2a8,font-weight:bold;
     classDef pink fill:#f7b6d9,font-weight:bold;
+    classDef gold fill:#ffe066,font-weight:bold;
+    classDef amber fill:#ffd54f,font-weight:bold;
+    classDef sage fill:#c8e6c9,font-weight:bold;
     classDef indigo fill:#c8d3ff,font-weight:bold;
     classDef blue fill:#d0ecff,font-weight:bold;
     classDef teal fill:#a2e8ed,font-weight:bold;
@@ -1694,18 +1791,25 @@ flowchart LR
     classDef green fill:#a9e5bb,font-weight:bold;
     classDef purple fill:#d6c1f5,font-weight:bold;
     classDef coral fill:#ffc2bb,font-weight:bold;
-    classDef all fill:#f0e6f5,font-weight:bold;
 
-    %% Flowchart
-    user --&gt; platform
-    platform -- Yes --&gt; edgefirst_platform
-    platform -- No --&gt; record
-    record -- Yes --&gt; web_user
-    record -- No --&gt; annotate_pd
-    annotate_pd -- Yes --&gt; tourist_plus
-    annotate_pd -- No --&gt; tourist
-    edgefirst_platform -- Yes --&gt; raivin_platform 
-    edgefirst_platform -- No --&gt; other_platforms
+    %% Cloud branch
+    user --&gt; has_platform
+    has_platform -- No --&gt; has_smartphone
+    has_smartphone -- Yes --&gt; web_user
+    has_smartphone -- No --&gt; wants_to_train
+    wants_to_train -- Yes --&gt; wants_to_annotate
+    wants_to_annotate -- Yes --&gt; auditor_user
+    wants_to_annotate -- No --&gt; profiler_plus_user
+    wants_to_train -- No --&gt; wants_to_benchmark
+    wants_to_benchmark -- Yes --&gt; profiler_user
+    wants_to_benchmark -- No --&gt; has_account
+    has_account -- Yes --&gt; tourist_plus
+    has_account -- No --&gt; tourist
+
+    %% Hardware branch
+    has_platform -- Yes --&gt; has_edgefirst
+    has_edgefirst -- Yes --&gt; raivin_platform
+    has_edgefirst -- No --&gt; other_platforms
     other_platforms --&gt; imx8mp_user
     other_platforms --&gt; imx95_user
     other_platforms --&gt; orin_user
@@ -1716,9 +1820,14 @@ flowchart LR
     raivin_platform -- No --&gt; maivin_user</code></pre>
 <div class="admonition warning">
 <p class="admonition-title">PC Requirement</p>
-<p>It is expected that for all personas identified above, the user has a PC with Wifi access.</p>
+<p>It is expected that for all personas identified above, the user has a PC with Wi-Fi access.</p>
 </div>
-<p>We've identified ten workflows: Tourist, Tourist+, Web, i.MX 8M Plus, i.MX 95, Jetson Orin, Raspberry Pi 5, Maivin, Raivin, <abbr title="Light Detection and Ranging">LiDAR</abbr>.  The hardware requirements and the available features increases starting with the Tourist as the most basic.</p>
+<p>We've identified the following workflows that any user can follow starting from the most basic to the most features.  The hardware requirements and the available features increases starting with the Tourist as the most basic.</p>
+<ul>
+<li><strong>Cloud Personas</strong>: General-purpose cloud-based <abbr title="Machine Learning Operations">MLOps</abbr> workflows designed for PC users.</li>
+<li><strong>Hardware Personas</strong>: Hardware-specific (specialized) <abbr title="Machine Learning Operations">MLOps</abbr> workflows tailored for deployment, validation, and optimization on supported target devices.</li>
+</ul>
+<h3 id="cloud-personas">Cloud Personas</h3>
 <table>
 <thead>
 <tr>
@@ -1732,68 +1841,99 @@ flowchart LR
 <tr>
 <td><a href="tourist/">Tourist</a></td>
 <td>PC</td>
-<td>Copy Dataset, Train, Validate, Deploy Offline or Browser</td>
-<td>TBA</td>
+<td>Explore <a href="https://test.edgefirst.studio/">EdgeFirst Studio</a> Landing Page and Feature Overview</td>
+<td>Free</td>
 </tr>
 <tr>
 <td><a href="tourist_plus/">Tourist+</a></td>
 <td>PC</td>
-<td>Annotate 2D, Train, Validate, Deploy Offline or Browser</td>
+<td><a href="https://test.edgefirst.studio/signup">Sign Up</a>, <a href="https://test.edgefirst.studio/login">Login</a>, Browse <a href="https://test.edgefirst.studio/public/projects">Public Datasets and Models</a></td>
+<td>Free</td>
+</tr>
+<tr>
+<td><a href="profiler/">Profiler</a></td>
+<td>PC</td>
+<td>Browse <a href="https://huggingface.co/spaces/EdgeFirst/Models">Hugging Face Model Zoo</a>, Review Training and Validation Sessions</td>
+<td>Free</td>
+</tr>
+<tr>
+<td><a href="profiler_plus/">Profiler+</a></td>
+<td>PC</td>
+<td>Copy Sample Dataset, Retrain, Revalidate, Compare Against Hugging Face Model Zoo, Deploy on Browser or on Target (if available)</td>
+<td>TBA</td>
+</tr>
+<tr>
+<td><a href="auditor/">Auditor</a></td>
+<td>PC</td>
+<td>Copy Dataset, Annotate 2D, Train, Validate, Deploy on Browser</td>
 <td>TBA</td>
 </tr>
 <tr>
 <td><a href="web/">Web</a></td>
 <td>PC + Smartphone</td>
-<td>Record, Annotate 2D, Train, Validate, Deploy Offline or Browser</td>
+<td>Record, Annotate 2D, Train, Validate, Deploy on Browser</td>
+<td>TBA</td>
+</tr>
+</tbody>
+</table>
+<h3 id="hardware-personas">Hardware Personas</h3>
+<table>
+<thead>
+<tr>
+<th>Persona</th>
+<th>Hardware</th>
+<th>Features</th>
+<th>Cost</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="hardware/">Maivin</a></td>
+<td>PC + Maivin</td>
+<td>Record <abbr title="Binary container format for robotics log data">MCAP</abbr>, Annotate 2D, Train, Validate, Deploy on Maivin</td>
 <td>TBA</td>
 </tr>
 <tr>
-<td>i.MX 8M Plus (<em>coming soon</em>)</td>
+<td><a href="hardware/">Raivin</a></td>
+<td>PC + Raivin w/ Radar</td>
+<td>Record <abbr title="Binary container format for robotics log data">MCAP</abbr>, Annotate 2D + 3D, Train, Validate, Deploy on Raivin</td>
+<td>TBA</td>
+</tr>
+<tr>
+<td><a href="hardware/"><abbr title="Light Detection and Ranging">LiDAR</abbr></a></td>
+<td>PC + Raivin w/ <abbr title="Light Detection and Ranging">LiDAR</abbr></td>
+<td>Record <abbr title="Binary container format for robotics log data">MCAP</abbr>, Annotate 2D + 3D (enhanced), Train, Validate, Deploy on Raivin</td>
+<td>TBA</td>
+</tr>
+<tr>
+<td><a href="hardware/">i.MX 8M Plus</a></td>
 <td>PC + i.MX 8M Plus</td>
 <td>Copy Dataset, Train, Validate, Deploy on i.MX 8M Plus</td>
 <td>TBA</td>
 </tr>
 <tr>
-<td>i.MX 95 (<em>coming soon</em>)</td>
+<td><a href="hardware/">i.MX 95</a></td>
 <td>PC + i.MX 95</td>
 <td>Copy Dataset, Train, Validate, Deploy on i.MX 95</td>
 <td>TBA</td>
 </tr>
 <tr>
-<td><a href="jetson/">Jetson Orin</a></td>
+<td><a href="hardware/">Jetson Orin</a></td>
 <td>PC + Jetson Orin</td>
 <td>Copy Dataset, Train, Validate, Deploy on Jetson Orin</td>
 <td>TBA</td>
 </tr>
 <tr>
-<td>Raspberry Pi 5 (<em>coming soon</em>)</td>
+<td><a href="hardware/">Raspberry Pi 5</a></td>
 <td>PC + Raspberry Pi 5</td>
 <td>Copy Dataset, Train, Validate, Deploy on Raspberry Pi 5</td>
-<td>TBA</td>
-</tr>
-<tr>
-<td><a href="maivin/">Maivin</a></td>
-<td>PC + Maivin</td>
-<td>Record, Annotate 2D, Train, Validate, Deploy on Maivin</td>
-<td>TBA</td>
-</tr>
-<tr>
-<td><a href="raivin/">Raivin</a></td>
-<td>PC + Raivin w/ Radar</td>
-<td>Record, Annotate 2D + 3D, Train, Validate, Deploy on Raivin</td>
-<td>TBA</td>
-</tr>
-<tr>
-<td><abbr title="Light Detection and Ranging">LiDAR</abbr> (<em>coming soon</em>)</td>
-<td>PC + Raivin w/ <abbr title="Light Detection and Ranging">LiDAR</abbr></td>
-<td>Record, Annotate 2D + 3D (enhanced), Train, Validate, Deploy on Raivin</td>
 <td>TBA</td>
 </tr>
 </tbody>
 </table>
 <h2 id="user-journey">User Journey</h2>
 <p>The following diagram describes the workflows for each user persona identified above.</p>
-<pre class="mermaid"><code>%%{init: {"flowchart": {"defaultRenderer": "elk", "nodeSpacing": 60}, "themeVariables": { "fontSize": "60px" }} }%%
+<pre class="mermaid"><code>%%{init: {"flowchart": {"defaultRenderer": "elk", "nodeSpacing": 60, "rankSpacing": 80}, "elk": {"algorithm": "layered", "elk.spacing.nodeNode": 40, "elk.layered.spacing.nodeNodeBetweenLayers": 80}, "themeVariables": { "fontSize": "60px" }} }%%
 flowchart LR
     %% ---------------- USERS ----------------
     subgraph Users
@@ -1805,23 +1945,37 @@ flowchart LR
     tourist_plus([Tourist+]):::pink
     click tourist_plus "tourist_plus" "Open Tourist Plus Workflow"
 
+    profiler_user([Profiler]):::gold
+    click profiler_user "profiler" "Open Profiler Workflow"
+
+    profiler_plus_user([Profiler+]):::amber
+    click profiler_plus_user "profiler_plus" "Open Profiler Plus Workflow"
+
+    auditor_user([Auditor]):::sage
+    click auditor_user "auditor" "Open Auditor Workflow"
+
     web_user([Web]):::indigo
     click web_user "web" "Open Web Workflow"
 
     maivin_user([Maivin]):::blue
-    click maivin_user "maivin" "Open Maivin Workflow"
+    click maivin_user "/platforms/quickstart/maivin/" "Open Maivin Workflow"
 
     raivin_user([Raivin]):::orange
-    click raivin_user "raivin" "Open Raivin Workflow"
+    click raivin_user "/platforms/quickstart/raivin/" "Open Raivin Workflow"
 
     raivin_lidar_user([Raivin + LiDAR]):::darker_orange
+
     imx8mp_user([i.MX 8M Plus]):::green
+    click imx8mp_user "/platforms/quickstart/imx8mplus/" "Open i.MX 8M Plus Workflow"
+
     imx95_user([i.MX 95]):::teal
+    click imx95_user "/platforms/quickstart/imx95/" "Open i.MX 95 Workflow"
 
     orin_user([Jetson Orin]):::purple
-    click orin_user "jetson" "Open Jetson Orin Workflow"
+    click orin_user "/platforms/quickstart/jetson_orin/" "Open Jetson Orin Workflow"
 
     pi_user([Raspberry Pi 5]):::coral
+    click pi_user "/platforms/quickstart/raspberrypi/" "Open Raspberry Pi Workflow"
     end
 
     %% ---------------- HARDWARE ----------------
@@ -1870,34 +2024,67 @@ flowchart LR
 
     audit_3d[Auto Annotate 3D]
     click audit_3d "../../datasets/tutorials/annotations/automatic/" "Auto Annotate 3D"
+
+    browse_studio[Browse Studio]
     end
 
-    %% ---------------- TRAINING ----------------
-    subgraph Training
+    %% ---------------- TRAINING + CONVERSION ----------------
+    subgraph TrainConvert[" "]
     direction TB
-    train_2d[Train Vision Model]
-    click train_2d "../../models/training/vision" "Open Training Vision"
+        %% ---------------- TRAINING ----------------
+        subgraph Training
+        direction TB
+        training_pad[" "]:::invisible
+        train_2d[Train Vision Model]
+        click train_2d "../../models/training/vision" "Open Training Vision"
 
-    ara2{Device has ARA2 processor?}
-    validate_2d[Validate Vision Model]
-    click validate_2d "../../models/validation/vision/user_managed" "Open Validating Vision"
+        ara2{Device has ARA2 processor?}
+        validate_2d[Validate Vision Model]
+        click validate_2d "../../models/validation/vision/user_managed" "Open Validating Vision"
 
-    train_3d[Train Fusion Model]
-    click train_3d "../../models/training/fusion" "Open Training Fusion"
+        train_3d[Train Fusion Model]
+        click train_3d "../../models/training/fusion" "Open Training Fusion"
 
-    validate_3d[Validate Fusion Model]
-    click validate_3d "../../models/validation/fusion/managed" "Open Validating Fusion"
-    end
+        validate_3d[Validate Fusion Model]
+        click validate_3d "../../models/validation/fusion/managed" "Open Validating Fusion"
+        training_pad_bottom[" "]:::invisible
+        end
 
-    %% ---------------- CONVERSION ----------------
-    subgraph Conversion
-    direction TB
-    neutron_converter[Neutron Converter]:::teal
-    click neutron_converter "../../models/ultralytics/neutron" "Open Neutron Converter"
+        %% ---------------- CONVERSION ----------------
+        subgraph Conversion
+        direction TB
+        conversion_pad[" "]:::invisible
+        tflite_converter[TFLite Converter]
+        click tflite_converter "../../models/conversion/tflite/" "Open TFLite Converter"
 
-    kinara_converter[Kinara Converter]
-    validate_imx95[Validate Converted Model]:::teal
-    click validate_imx95 "../../models/validation/vision/user_managed" "Open Validating Vision"
+        hailo_converter[Hailo Converter]
+        click hailo_converter "../../models/conversion/hailo/" "Open Hailo Converter"
+
+        tensorrt_converter[TensorRT Converter]
+        click tensorrt_converter "../../models/conversion/tensorrt/" "Open TensorRT Converter"
+
+        neutron_converter[Neutron Converter]:::teal
+        click neutron_converter "../../models/conversion/neutron/" "Open Neutron Converter"
+
+        kinara_converter[Kinara Converter]
+        click kinara_converter "../../models/conversion/ara2/" "Open Kinara Converter"
+
+        validate_tflite[Validate TFLite Model]
+        click validate_tflite "../../models/validation/vision/user_managed" "Open Validating Vision"
+
+        validate_hailo[Validate Hailo Model]
+        click validate_hailo "../../models/validation/vision/user_managed" "Open Validating Vision"
+
+        validate_tensorrt[Validate TensorRT Model]
+        click validate_tensorrt "../../models/validation/vision/user_managed" "Open Validating Vision"
+
+        validate_ara2[Validate ARA-2 Model]
+        click validate_ara2 "../../models/validation/vision/user_managed" "Open Validating Vision"
+
+        validate_imx95[Validate Converted Model]:::teal
+        click validate_imx95 "../../models/validation/vision/user_managed" "Open Validating Vision"
+        conversion_pad_bottom[" "]:::invisible
+        end
     end
 
     %% ---------------- DEPLOYMENT ----------------
@@ -1920,9 +2107,11 @@ flowchart LR
     click pi "../../platforms/quickstart/raspberrypi/deploy" "Open Raspberry Pi Deploy"
 
     browser((Browser))
+    click browser "../../models/deployment/studio/" "Open Browser Deploy"
 
     imx95((i.MX 95)):::teal
     click imx95 "../../platforms/quickstart/imx95/deploy" "Open i.MX 95 Deploy"
+    deployment_pad_bottom[" "]:::invisible
     end
 
     %% ---------------- USER → SETUP ----------------
@@ -1944,8 +2133,10 @@ flowchart LR
     imx95_setup --&gt; copy_dataset
     orin_setup --&gt; copy_dataset
     pi_setup --&gt; copy_dataset
-    tourist --&gt; copy_dataset
-    tourist_plus --&gt; copy_dataset
+    tourist --&gt; browse_studio
+    tourist_plus --&gt; browse_studio
+    auditor_user --&gt; copy_dataset
+    profiler_plus_user --&gt; copy_dataset
 
     %% ---------------- DATA FLOW ----------------
     record_mcap --&gt; snapshot
@@ -1954,23 +2145,32 @@ flowchart LR
 
     capture --&gt; audit_2d
     copy_dataset --&gt; train_2d
-    copy_dataset -- Tourist+ --&gt; audit_2d
+    copy_dataset -- Auditor --&gt; audit_2d
 
     %% ---------------- TRAINING PIPELINE ----------------
     train_2d --&gt; ara2
-    ara2 -- Yes --&gt; kinara_converter --&gt; validate_2d
+    ara2 -- Yes --&gt; kinara_converter --&gt; validate_ara2
     ara2 -- No --&gt; validate_2d
 
     train_2d --&gt; neutron_converter --&gt; validate_imx95
+    train_2d --&gt; tflite_converter --&gt; validate_tflite
+    train_2d --&gt; hailo_converter --&gt; validate_hailo
+    train_2d --&gt; tensorrt_converter --&gt; validate_tensorrt
     train_3d --&gt; validate_3d
 
     %% ---------------- DEPLOYMENT ----------------
     validate_2d --&gt; browser
-    validate_2d --&gt; maivin
-    validate_2d --&gt; imx8mp
-    validate_2d --&gt; orin
-    validate_2d --&gt; pi
-    validate_2d --&gt; raivin
+    validate_tflite --&gt; maivin
+    validate_tflite --&gt; imx8mp
+    validate_tflite --&gt; pi
+    validate_tflite --&gt; raivin
+
+    validate_hailo --&gt; pi
+
+    validate_tensorrt --&gt; orin
+
+    validate_ara2 --&gt; imx8mp
+    validate_ara2 --&gt; imx95
 
     validate_3d --&gt; raivin
     validate_imx95 --&gt; imx95
@@ -1986,40 +2186,52 @@ flowchart LR
     classDef green fill:#a9e5bb,font-weight:bold;
     classDef purple fill:#d6c1f5,font-weight:bold;
     classDef coral fill:#ffc2bb,font-weight:bold;
-    classDef invisible fill:transparent,stroke:transparent;</code></pre>
+    classDef gold fill:#ffe066,font-weight:bold;
+    classDef amber fill:#ffd54f,font-weight:bold;
+    classDef sage fill:#c8e6c9,font-weight:bold;
+    classDef invisible fill:transparent,stroke:transparent;
+    style TrainConvert fill:transparent,stroke:transparent;</code></pre>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>Labeled arrows suggests that only certain type of users can enter the stages pointed by the arrow.  For example, only Raivin and <abbr title="Light Detection and Ranging">LiDAR</abbr> users can "Auto Annotate 3D".</p>
+<p>Labeled arrows indicate that only certain types of users can enter the stages they point to. For example, only Raivin and <abbr title="Light Detection and Ranging">LiDAR</abbr> users can "Auto Annotate 3D".</p>
 </div>
+<h3 id="cloud-workflows">Cloud Workflows</h3>
 <ol>
 <li>
 <p><a href="tourist/">Tourist Workflow</a></p>
-<p>This workflow is intended for users with a personal computer with access to Wifi that want to use the sample datasets available for training, validating, and deploying Vision models.</p>
+<p>This workflow is intended for users who want to explore EdgeFirst Studio and get an overview of the platform's features — no account required.</p>
 </li>
 <li>
-<p><a href="tourist_plus/">Tourist Plus Workflow</a></p>
-<p>This workflow is intended for users with a personal computer with access to Wifi that want to use the same datasets available for annotating, training, validating, and deploying Vision models.</p>
+<p><a href="tourist_plus/">Tourist+ Workflow</a></p>
+<p>This workflow is intended for users who are ready to sign up, log in, and browse the public datasets and models available in EdgeFirst Studio.</p>
+</li>
+<li>
+<p><a href="profiler/">Profiler Workflow</a></p>
+<p>This workflow is intended for users who want to browse and review model benchmarks in the <a href="https://huggingface.co/spaces/EdgeFirst/Models">EdgeFirst Model Zoo on Hugging Face</a> and review training and validation sessions in EdgeFirst Studio — no training required.</p>
+</li>
+<li>
+<p><a href="profiler_plus/">Profiler+ Workflow</a></p>
+<p>This workflow extends the Profiler workflow with hands-on experimentation: copy a sample dataset, retrain a model, revalidate, and compare results against the Hugging Face Model Zoo baselines.  Models can be deployed on a browser or on a compatible target device.</p>
+</li>
+<li>
+<p><a href="auditor/">Auditor Workflow</a></p>
+<p>This workflow is intended for users who want to annotate their own datasets, train a custom model, validate it, and deploy on the browser — all in the cloud without requiring target hardware.</p>
 </li>
 <li>
 <p><a href="web/">Web Workflow</a></p>
-<p>This workflow is intended for users with a personal computer and a mobile device with a camera with access to Wifi and a web browser.  The examples shown in this workflow will be from a Windows computer and an Android phone for recording images.  Proceed to this workflow to see capturing and annotating datasets that will be used to train, validate, and deploy Vision models.</p>
+<p>This workflow is intended for users with a personal computer and a mobile device with a camera with access to Wi-Fi and a web browser.  The examples shown in this workflow will be from a Windows computer and an Android phone for recording images.  Proceed to this workflow to see capturing and annotating datasets that will be used to train, validate, and deploy Vision models.</p>
 </li>
+</ol>
+<h3 id="hardware-workflows">Hardware Workflows</h3>
+<ol>
 <li>
-<p><a href="jetson/">Jetson Orin Workflow</a></p>
-<p>This workflow is intended for users with a personal computer with access to Wifi and a web browser and a <a href="https://www.nvidia.com/en-us/autonomous-machines/embedded-systems/jetson-orin/nano-super-developer-kit/">Jetson Orin Super Nano</a> platform. To proceed to this workflow, click on the link above.</p>
-</li>
-<li>
-<p><a href="maivin/">Maivin Workflow</a></p>
-<p>This workflow is intended for users with a personal computer with access to Wifi and a web browser and a Maivin platform.  To proceed to this workflow, click on the link above.</p>
-</li>
-<li>
-<p><a href="raivin/">Raivin Workflow</a></p>
-<p>This workflow is intended for users with a personal computer with access to Wifi and a web browser and a Raivin platform.  To proceed to this workflow, click on the link above.</p>
+<p><a href="hardware/">Hardware Persona Workflows</a></p>
+<p>Hardware-specific workflows for users with an EdgeFirst target device.  Each platform has its own step-by-step workflow covering device setup, dataset acquisition, model training, conversion, on-target validation, and deployment.</p>
 </li>
 </ol>
 <div class="admonition note">
 <p class="admonition-title">Future Work</p>
-<p>The workflows with missing links are a work in progress and currently unavailable. </p>
+<p>The workflows with missing links are a work in progress and currently unavailable.</p>
 </div>
 
 

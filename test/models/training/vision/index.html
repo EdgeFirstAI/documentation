@@ -59,6 +59,8 @@
     
       <link rel="stylesheet" href="../../../stylesheets/extra.css">
     
+      <link rel="stylesheet" href="../../../stylesheets/components.css">
+    
       <link rel="stylesheet" href="../../../stylesheets/mermaid.css">
     
     <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
@@ -342,7 +344,7 @@
   
     
   
-  Profiler
+  Profiler <span class="ef-badge">New</span>
 
         </a>
       </li>
@@ -741,7 +743,7 @@
   <span class="md-ellipsis">
     
   
-    Profiler
+    Profiler <span class="ef-badge">New</span>
   
 
     
@@ -1884,7 +1886,7 @@
 <h1 id="training-vision-models">Training Vision Models</h1>
 <p>This tutorial describes the steps to train <strong>Vision</strong> models in EdgeFirst Studio.  Recall that Vision models are models that perform object detection in camera frames or images.  EdgeFirst Studio is capable of training ModelPack and Ultralytics object detection models.  For a tutorial to train Fusion models, see <a href="../fusion/">Training Fusion Models</a>.</p>
 <h2 id="view-dataset">View Dataset</h2>
-<p>First ensure that the dataset is ready to be used for training.  This means that the dataset meets all of the criteria listed below. </p>
+<p>First ensure that the dataset is ready to be used for training.  This means that the dataset meets all of the criteria listed below.</p>
 <ul class="task-list">
 <li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> Complete Annotations (bounding boxes and/or segmentation masks/polygons)</li>
 <li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> Contains training and validation partitions</li>
@@ -1961,7 +1963,7 @@
 </ol>
 </li>
 <li><strong>Training Parameters</strong>: In this section the user is able to specify the number of epochs to train the model as well as the batch size.  Remember the larger the input resolution the smaller the batch size<ol>
-<li><strong>Enable Training</strong> <em>(Ultralytics only)</em>: When enabled (default), the model is trained using the selected weights. When disabled, no training is performed — weights are pushed directly to the session artifacts. See <a href="#enable-training-and-use-default-weights">Enable Training and Use Default Weights</a> below.</li>
+<li><strong>Enable Training</strong> <em>(Ultralytics only)</em>: When enabled, the model is trained using the selected weights. When disabled (default), no training is performed — weights are pushed directly to the session artifacts. See <a href="#enable-training-and-use-default-weights">Enable Training and Use Default Weights</a> below.</li>
 <li><strong>Use Default Weights</strong>: When enabled (default), training starts from pre-trained COCO weights. When disabled, starting weights are sourced from a prior training session you specify.</li>
 </ol>
 </li>
@@ -1983,7 +1985,7 @@
 <tr>
 <td>✓ Enabled</td>
 <td>✓ Enabled</td>
-<td><strong>Default.</strong> Train from pre-trained COCO weights.</td>
+<td>Train from pre-trained COCO weights.</td>
 </tr>
 <tr>
 <td>✗ Disabled</td>
@@ -1993,7 +1995,7 @@
 <tr>
 <td>✓ Enabled</td>
 <td>✗ Disabled</td>
-<td>No training. Pre-trained COCO weights are copied directly to the session artifacts. Results will be poor on non-COCO datasets — Studio displays a warning.</td>
+<td><strong>Default.</strong> No training. Pre-trained COCO weights are copied directly to the session artifacts. Results will be poor on non-COCO datasets — Studio displays a warning.</td>
 </tr>
 <tr>
 <td>✗ Disabled</td>

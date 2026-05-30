@@ -59,6 +59,8 @@
     
       <link rel="stylesheet" href="../../../stylesheets/extra.css">
     
+      <link rel="stylesheet" href="../../../stylesheets/components.css">
+    
       <link rel="stylesheet" href="../../../stylesheets/mermaid.css">
     
     <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
@@ -342,7 +344,7 @@
   
     
   
-  Profiler
+  Profiler <span class="ef-badge">New</span>
 
         </a>
       </li>
@@ -741,7 +743,7 @@
   <span class="md-ellipsis">
     
   
-    Profiler
+    Profiler <span class="ef-badge">New</span>
   
 
     
@@ -1507,10 +1509,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#wifi-client-setup" class="md-nav__link">
+  <a href="#wi-fi-client-setup" class="md-nav__link">
     <span class="md-ellipsis">
       
-        WiFi Client Setup
+        Wi-Fi Client Setup
       
     </span>
   </a>
@@ -1518,10 +1520,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#wifi-ap-setup" class="md-nav__link">
+  <a href="#wi-fi-ap-setup" class="md-nav__link">
     <span class="md-ellipsis">
       
-        WiFi AP Setup
+        Wi-Fi AP Setup
       
     </span>
   </a>
@@ -1757,10 +1759,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#wifi-client-setup" class="md-nav__link">
+  <a href="#wi-fi-client-setup" class="md-nav__link">
     <span class="md-ellipsis">
       
-        WiFi Client Setup
+        Wi-Fi Client Setup
       
     </span>
   </a>
@@ -1768,10 +1770,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#wifi-ap-setup" class="md-nav__link">
+  <a href="#wi-fi-ap-setup" class="md-nav__link">
     <span class="md-ellipsis">
       
-        WiFi AP Setup
+        Wi-Fi AP Setup
       
     </span>
   </a>
@@ -1938,7 +1940,7 @@
 <p>As noted in the Quick Start, the Maivin can be discovered on a network using the <code>verdin-imx8mp-XXXXXXXX.local</code> hostname where the 'XXXXXXXX' is the eight-digit serial number of the unit.  The serial number can be found on the rear sticker near the connection ports.</p>
 <p>This chapter documents the most common networking configurations for the Maivin.  For further detailed documentation, please refer to the <a href="https://networkmanager.dev">NetworkManager Documentation</a>.</p>
 <h2 id="network-interfaces">Network Interfaces</h2>
-<p>The Maivin includes a number of networking interfaces: Ethernet, WiFi, and an optional LTE modem.  The interface names and ports are described in the table below.  The <code>ethernet1</code> and <code>can0</code> interfaces are internal-only interfaces used by the Raivin to communicate with the internal radar module.  The remaining interfaces are user configurable.</p>
+<p>The Maivin includes a number of networking interfaces: Ethernet, Wi-Fi, and an optional LTE modem.  The interface names and ports are described in the table below.  The <code>ethernet1</code> and <code>can0</code> interfaces are internal-only interfaces used by the Raivin to communicate with the internal radar module.  The remaining interfaces are user configurable.</p>
 <table>
 <thead>
 <tr>
@@ -1954,14 +1956,14 @@
 <td>RJ-45 port on the rear of the Maivin</td>
 </tr>
 <tr>
-<td>WiFi Client</td>
+<td>Wi-Fi Client</td>
 <td>mlan0</td>
-<td>WiFi client interface</td>
+<td>Wi-Fi client interface</td>
 </tr>
 <tr>
-<td>WiFi AP</td>
+<td>Wi-Fi AP</td>
 <td>uap0</td>
-<td>WiFi Access Point interface</td>
+<td>Wi-Fi Access Point interface</td>
 </tr>
 <tr>
 <td>LTE Modem</td>
@@ -2063,29 +2065,29 @@ network0:958cc5e3-1bbf-3d64-beeb-020d4414e254:802-3-ethernet:ethernet0
 </ol>
 <h3 id="mixed-static-and-dhcp">Mixed Static and DHCP</h3>
 <p>NetworkManager allows mixed static and DHCP configurations.   If you configure <code>ipv4.method auto</code> you can still configure some of the other IPv4 parameters statically.</p>
-<h2 id="wifi-client-setup">WiFi Client Setup</h2>
-<p>Maivin units with WiFi can be configured to connect to a WiFi Access Point (AP).  Refer to the next section if you instead want to use your Maivin as a WiFi AP.</p>
+<h2 id="wi-fi-client-setup">Wi-Fi Client Setup</h2>
+<p>Maivin units with Wi-Fi can be configured to connect to a Wi-Fi Access Point (AP).  Refer to the next section if you instead want to use your Maivin as a Wi-Fi AP.</p>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
-<p>FCC regulations require special certifications for collocated transmitters (a device with multiple RF transmitters).  Maivin and Raivin are not currently certified for collocated transmitters so users must not enable more than one of the WiFi, Modem, or Radar without first receiving FCC certification.  Refer to regulatory boards in your jurisdiction for your relevant regulations.</p>
+<p>FCC regulations require special certifications for collocated transmitters (a device with multiple RF transmitters).  Maivin and Raivin are not currently certified for collocated transmitters so users must not enable more than one of the Wi-Fi, Modem, or Radar without first receiving FCC certification.  Refer to regulatory boards in your jurisdiction for your relevant regulations.</p>
 </div>
-<p>NetworkManager handles the WiFi client configuration.  Follow these steps to connect to an AP, you will need to know the AP Service Set Identifier (SSID, usually the network name) and the password, if required.</p>
+<p>NetworkManager handles the Wi-Fi client configuration.  Follow these steps to connect to an AP, you will need to know the AP Service Set Identifier (SSID, usually the network name) and the password, if required.</p>
 <ol>
-<li>First scan for available WiFi networks to join:<br />
+<li>First scan for available Wi-Fi networks to join:<br />
 <code>nmcli device wifi list</code></li>
-<li>Connect to the desired WiFi network using the SSID:<br />
+<li>Connect to the desired Wi-Fi network using the SSID:<br />
 <code>nmcli -a device wifi connect &lt;SSID&gt;</code></li>
 <li>Enter the password, if needed, when prompted.</li>
 <li>Confirm the <code>mlan0</code> interface is up and has received an IP address:<br />
 <code>ifconfig mlan0</code></li>
 </ol>
-<h2 id="wifi-ap-setup">WiFi AP Setup</h2>
-<p>Maivin units with WiFi can be configured as an AP allowing client devices to connect to the Maivin.  Instead of using NetworkManager, we use the <a href="https://wireless.docs.kernel.org/en/latest/en/users/documentation/hostapd.html">Host AP daemon (hostapd)</a>.</p>
+<h2 id="wi-fi-ap-setup">Wi-Fi AP Setup</h2>
+<p>Maivin units with Wi-Fi can be configured as an AP allowing client devices to connect to the Maivin.  Instead of using NetworkManager, we use the <a href="https://wireless.docs.kernel.org/en/latest/en/users/documentation/hostapd.html">Host AP daemon (hostapd)</a>.</p>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
-<p>FCC regulations require special certifications for collocated transmitters (a device with multiple RF transmitters).  Maivin and Raivin are not currently certified for collocated transmitters so users must not enable more than one of the WiFi, Modem, or Radar without first receiving FCC certification.  Refer to regulatory boards in your jurisdiction for your relevant regulations.</p>
+<p>FCC regulations require special certifications for collocated transmitters (a device with multiple RF transmitters).  Maivin and Raivin are not currently certified for collocated transmitters so users must not enable more than one of the Wi-Fi, Modem, or Radar without first receiving FCC certification.  Refer to regulatory boards in your jurisdiction for your relevant regulations.</p>
 </div>
-<p>WiFi AP mode is configured using the <code>hostapd</code> service in Linux.  We describe a common WiFi AP configuration; for more advanced setup, please refer to the <a href="https://wireless.docs.kernel.org/en/latest/en/users/documentation/hostapd.html">hostapd documentation</a>.</p>
+<p>Wi-Fi AP mode is configured using the <code>hostapd</code> service in Linux.  We describe a common Wi-Fi AP configuration; for more advanced setup, please refer to the <a href="https://wireless.docs.kernel.org/en/latest/en/users/documentation/hostapd.html">hostapd documentation</a>.</p>
 <p>To enable the Maivin Access Point with default configurations simply enable the <code>hostapd</code> service.</p>
 <div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>systemctl<span class="w"> </span><span class="nb">enable</span><span class="w"> </span>hostapd
 sudo<span class="w"> </span>systemctl<span class="w"> </span>start<span class="w"> </span>hostapd
@@ -2116,9 +2118,9 @@ ht_capab=[LDPC][HT40+][GF][SHORT-GI-20][SHORT-GI-40][TX-STBC][DSSS_CCK-40]
 </code></pre></div>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
-<p>Please make sure to change the default password before enabling WiFi AP mode!</p>
+<p>Please make sure to change the default password before enabling Wi-Fi AP mode!</p>
 </div>
-<p>The WiFi AP network configuration file is found under <code>/etc/systemd/network/hostapd.network</code> and is managed by <a href="https://systemd.io/">systemd</a>.  The following is the default configuration.  The full list of configuration options is documented in the <a href="https://www.freedesktop.org/software/systemd/man/latest/systemd.network.html">systemd network manual</a>.</p>
+<p>The Wi-Fi AP network configuration file is found under <code>/etc/systemd/network/hostapd.network</code> and is managed by <a href="https://systemd.io/">systemd</a>.  The following is the default configuration.  The full list of configuration options is documented in the <a href="https://www.freedesktop.org/software/systemd/man/latest/systemd.network.html">systemd network manual</a>.</p>
 <div class="highlight"><pre><span></span><code>[Match]
 Name=wlan0 uap0
 WLANInterfaceType=ap
@@ -2141,7 +2143,7 @@ PoolSize=100
 <p>Maivin provides an m.2 expansion port which can be used to add an LTE modem to the device.  We offer Maivin and Raivin units preconfigured with an LTE modem and SIM card or a modem can be added by customers themselves following the instructions at the end of this section.</p>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
-<p>FCC regulations require special certifications for collocated transmitters (a device with multiple RF transmitters).  Maivin and Raivin are not currently certified for collocated transmitters so users must not enable more than one of the WiFi, Modem, or Radar without first receiving FCC certification.  Refer to regulatory boards in your jurisdiction for your relevant regulations.</p>
+<p>FCC regulations require special certifications for collocated transmitters (a device with multiple RF transmitters).  Maivin and Raivin are not currently certified for collocated transmitters so users must not enable more than one of the Wi-Fi, Modem, or Radar without first receiving FCC certification.  Refer to regulatory boards in your jurisdiction for your relevant regulations.</p>
 </div>
 <h3 id="modem-configuration">Modem Configuration</h3>
 <p>The modem in the Maivin is configured through <a href="https://modemmanager.org">ModemManager</a>, which is a companion framework to NetworkManager but specializing in modem configuration.  Before you start, you need to ensure the modem is installed into the Maivin along with the SIM card and that you have the correct Access Point Name (APN) configuration string from your LTE carrier.</p>

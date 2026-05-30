@@ -1,0 +1,82 @@
+/* EdgeFirst Reusable Documentation Components
+ * Self-contained UI building blocks for use anywhere in the docs.
+ * Relies on the brand color tokens defined in extra.css (:root).
+ */
+
+/* ─────────────────────────────────────────────────────────────
+ * Badge — a small pill label with a periodic shine sweep.
+ *
+ * Usage (Markdown content, headings, or .nav.yml titles):
+ *     <span class="ef-badge">New</span>
+ *
+ * Color variants (default is gold):
+ *     <span class="ef-badge ef-badge--teal">Beta</span>
+ *     <span class="ef-badge ef-badge--navy">Preview</span>
+ *
+ * The badge scales with the surrounding text (sized in `em`) and
+ * sits on the text baseline, so it can follow a word or heading.
+ * Motion is automatically disabled under prefers-reduced-motion.
+ * ───────────────────────────────────────────────────────────── */
+.ef-badge {
+  position: relative;
+  isolation: isolate; /* contain the flare's stacking context */
+  display: inline-block;
+  overflow: hidden;
+  margin-left: 0.4em;
+  padding: 0.2em 0.55em;
+  border-radius: 0.8em;
+  background-color: var(--color-gold-primary);
+  color: var(--color-navy);
+  vertical-align: middle;
+  font-size: 0.7em;
+  font-weight: 700;
+  line-height: 1;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  white-space: nowrap;
+}
+
+/* Periodic shine sweep, painted behind the label text */
+.ef-badge::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -150%;
+  z-index: -1;
+  width: 60%;
+  height: 100%;
+  background: linear-gradient(
+    120deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.65) 50%,
+    transparent 100%
+  );
+  transform: skewX(-20deg);
+  animation: ef-badge-flare 4s ease-in-out infinite;
+}
+
+@keyframes ef-badge-flare {
+  0% {
+    left: -150%;
+  }
+  55%,
+  100% {
+    left: 150%;
+  }
+}
+
+/* Color variants */
+.ef-badge--teal {
+  background-color: var(--color-teal);
+  color: #ffffff;
+}
+.ef-badge--navy {
+  background-color: var(--color-navy);
+  color: #ffffff;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ef-badge::before {
+    animation: none;
+  }
+}

@@ -29,7 +29,7 @@
     
     
       
-        <title>Index - EdgeFirst Studio Documentation</title>
+        <title>Raspberry Pi 5 Quick Start - EdgeFirst Studio Documentation</title>
       
     
     
@@ -59,6 +59,8 @@
     
       <link rel="stylesheet" href="../../../stylesheets/extra.css">
     
+      <link rel="stylesheet" href="../../../stylesheets/components.css">
+    
       <link rel="stylesheet" href="../../../stylesheets/mermaid.css">
     
     <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
@@ -79,7 +81,7 @@
     
   
 <meta property="og:type" content="website" />
-<meta property="og:title" content="Index - EdgeFirst Studio Documentation" />
+<meta property="og:title" content="Raspberry Pi 5 Quick Start - EdgeFirst Studio Documentation" />
 <meta property="og:description" content="EdgeFirst Studio Documentation" />
 <meta property="og:image" content="https://doc.edgefirst.ai/test/assets/images/social/platforms/quickstart/raspberrypi/index.png" />
 <meta property="og:image:type" content="image/png" />
@@ -87,7 +89,7 @@
 <meta property="og:image:height" content="630" />
 <meta property="og:url" content="https://doc.edgefirst.ai/test/platforms/quickstart/raspberrypi/" />
 <meta property="twitter:card" content="summary_large_image" />
-<meta property="twitter:title" content="Index - EdgeFirst Studio Documentation" />
+<meta property="twitter:title" content="Raspberry Pi 5 Quick Start - EdgeFirst Studio Documentation" />
 <meta property="twitter:description" content="EdgeFirst Studio Documentation" />
 <meta property="twitter:image" content="https://doc.edgefirst.ai/test/assets/images/social/platforms/quickstart/raspberrypi/index.png" />
 </head>
@@ -107,6 +109,11 @@
     <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
+      
+        
+        <a href="#raspberry-pi-5-quick-start" class="md-skip">
+          Skip to content
+        </a>
       
     </div>
     <div data-md-component="announce">
@@ -158,7 +165,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Index
+              Raspberry Pi 5 Quick Start
             
           </span>
         </div>
@@ -337,7 +344,7 @@
   
     
   
-  Profiler
+  Profiler <span class="ef-badge">New</span>
 
         </a>
       </li>
@@ -736,7 +743,7 @@
   <span class="md-ellipsis">
     
   
-    Profiler
+    Profiler <span class="ef-badge">New</span>
   
 
     
@@ -1351,8 +1358,6 @@
       
         
       
-        
-      
     
     
     
@@ -1483,6 +1488,8 @@
       
         
           
+        
+      
         
       
         
@@ -1628,6 +1635,68 @@
   
 
       </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="conversion/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Model Conversions
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
     </li>
   
 
@@ -1983,6 +2052,27 @@
   
   
   
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#system-architecture" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        System Architecture
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
   
 </nav>
                   </div>
@@ -2074,9 +2164,24 @@
 
 
 
-  <h1>Index</h1>
-
-
+<h1 id="raspberry-pi-5-quick-start">Raspberry Pi 5 Quick Start</h1>
+<figure>
+            <img align="center" alt="Raspberry Pi 5" src="../../assets/raspberrypi5.png" width="50%" />
+            <figcaption>Raspberry Pi 5</figcaption>
+            </figure>
+<p>The Raspberry Pi 5 configuration is a development-focused platform for building and evaluating vision-based edge AI applications on Raspberry Pi hardware. This platform is based on the Raspberry Pi 5 and can optionally pair with a <a href="https://hailo.ai/">Hailo accelerator</a> for <abbr title="Neural Processing Unit">NPU</abbr>-accelerated inference. The <a href="../../../perception/">EdgeFirst Perception Middleware</a> enables end-to-end edge perception workflows from data capture through deployment.</p>
+<h2 id="system-architecture">System Architecture</h2>
+<p>The Raspberry Pi 5 runs a Linux operating system and includes the common packages needed for embedded vision and AI development (Python, OpenCV, and related tooling).</p>
+<p>Central to the EdgeFirst Platforms is the EdgeFirst Perception Middleware, our collection of applications and libraries used to implement the perception stack. The details of the low-level libraries are covered in the <a href="../../../perception/">EdgeFirst Perception Developer Guide</a>; in this Quick Start we focus on the application services and workflow used to build and deploy models on the Raspberry Pi 5.</p>
+<p>In this Quick Start, you will find instructions for:</p>
+<ol>
+<li>Setting up your Raspberry Pi 5 (<em>coming soon</em>)</li>
+<li><a href="copy_dataset/">Copying a Sample Dataset in EdgeFirst Studio for Training</a></li>
+<li><a href="train/">Training a Vision Model</a></li>
+<li><a href="conversion/">Converting a Vision Model for Raspberry Pi</a></li>
+<li><a href="validate/">Validating a Vision Model</a></li>
+<li><a href="deploy/">Deploying a Vision Model</a></li>
+</ol>
 
 
 

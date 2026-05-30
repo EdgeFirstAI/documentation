@@ -59,6 +59,8 @@
     
       <link rel="stylesheet" href="../../../stylesheets/extra.css">
     
+      <link rel="stylesheet" href="../../../stylesheets/components.css">
+    
       <link rel="stylesheet" href="../../../stylesheets/mermaid.css">
     
     <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
@@ -342,7 +344,7 @@
   
     
   
-  Profiler
+  Profiler <span class="ef-badge">New</span>
 
         </a>
       </li>
@@ -741,7 +743,7 @@
   <span class="md-ellipsis">
     
   
-    Profiler
+    Profiler <span class="ef-badge">New</span>
   
 
     
@@ -2021,19 +2023,10 @@
 <td><code>enable_profiling</code></td>
 <td><code>false</code> / <code>true</code></td>
 <td><code>false</code></td>
-<td>Emits per-operation <abbr title="Neural Processing Unit">NPU</abbr> timing instrumentation alongside the compiled model. Requires Neutron drivers <strong>≥ 3.0.1</strong> on the target to produce op-level profiling data. Adds ~5% inference overhead at runtime.</td>
+<td>Emits a per-operation <abbr title="Neural Processing Unit">NPU</abbr> timing table alongside the compiled model. Adds ~5% inference overhead at runtime.</td>
 </tr>
 </tbody>
 </table>
-<div class="admonition info">
-<p class="admonition-title">Op-level Neutron profiling requirements</p>
-<p>Per-operation <abbr title="Neural Processing Unit">NPU</abbr> timing (each kernel appears as its own slice in the Studio trace viewer) requires <strong>both</strong>:</p>
-<ol>
-<li>The model compiled with <code>enable_profiling: true</code> in the Neutron Converter.</li>
-<li><strong>Neutron drivers ≥ 3.0.1</strong> installed on the target — shipped as part of the <a href="https://www.nxp.com/design/design-center/software/eiq-ai-development-environment/eiq-toolkit-for-end-to-end-model-development-and-deployment:EIQ-TOOLKIT">eIQ Neutron <abbr title="Software Development Kit">SDK</abbr></a>.</li>
-</ol>
-<p>The profiler still functions with older 2.x Neutron drivers, but will not report per-operation <abbr title="Neural Processing Unit">NPU</abbr> timing — only aggregate inference time is available in that configuration.</p>
-</div>
 <h2 id="target-silicon">Target Silicon</h2>
 <p>The <code>target</code> field selects from two <abbr title="Neural Processing Unit">NPU</abbr> families packaged inside the same product line:</p>
 <p><strong>Neutron-S</strong> — application-processor class. Larger models, tunneling for layer fusion, support for the full Neutron IR.</p>

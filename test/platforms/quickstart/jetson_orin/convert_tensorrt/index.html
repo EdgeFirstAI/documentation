@@ -59,6 +59,8 @@
     
       <link rel="stylesheet" href="../../../../stylesheets/extra.css">
     
+      <link rel="stylesheet" href="../../../../stylesheets/components.css">
+    
       <link rel="stylesheet" href="../../../../stylesheets/mermaid.css">
     
     <script>__md_scope=new URL("../../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
@@ -342,7 +344,7 @@
   
     
   
-  Profiler
+  Profiler <span class="ef-badge">New</span>
 
         </a>
       </li>
@@ -741,7 +743,7 @@
   <span class="md-ellipsis">
     
   
-    Profiler
+    Profiler <span class="ef-badge">New</span>
   
 
     
@@ -1356,8 +1358,6 @@
       
         
       
-        
-      
     
     
     
@@ -1739,6 +1739,8 @@
       
         
           
+        
+      
         
       
         
@@ -2176,12 +2178,13 @@
 
 
 <h1 id="convert-to-tensorrt">Convert to TensorRT</h1>
+<p>The following outlines the basic steps required to convert a model to TensorRT format.  For detailed information about the conversion process and available configuration options, refer to the <a href="../../../../models/conversion/tensorrt/">TensorRT Converter</a>.</p>
 <p>Once the model is trained in EdgeFirst Studio, you will find "<model_name>_saved_model.zip" and "<model_name>.onnx" artifacts.</p>
 <figure>
             <img align="center" alt="Model Artifacts" src="../../../../models/assets/training/vision-session-artifacts.jpg" />
             <figcaption>Model Artifacts</figcaption>
             </figure>
-<p>This tutorial will provide the steps for converting the <abbr title="Open Neural Network Exchange">ONNX</abbr> model to TensorRT.  Although it is possible to deploy the <abbr title="Open Neural Network Exchange">ONNX</abbr> model, we recommend converting this model to TensorRT when deploying in the Jetson to maximize the performance of the model.  We find that the converted TensorRT model is <strong>~1.3x faster</strong> than <abbr title="Open Neural Network Exchange">ONNX</abbr> with the TensorRT execution provider. </p>
+<p>This tutorial will provide the steps for converting the <abbr title="Open Neural Network Exchange">ONNX</abbr> model to TensorRT.  Although it is possible to deploy the <abbr title="Open Neural Network Exchange">ONNX</abbr> model, we recommend converting this model to TensorRT when deploying in the Jetson to maximize the performance of the model.  We find that the converted TensorRT model is <strong>~1.3x faster</strong> than <abbr title="Open Neural Network Exchange">ONNX</abbr> with the TensorRT execution provider.</p>
 <p>Conversion has two stages: EdgeFirst Studio packages the <abbr title="Open Neural Network Exchange">ONNX</abbr> model and supporting files into a portable <code>.tensorrt.zip</code> bundle, and then <code>build.sh</code> runs on the target Jetson to compile the engine. The bundle itself is portable across machines; the resulting <code>.engine</code> is hardware-specific and must be built on (or for) the device that will run it.</p>
 <div class="admonition info">
 <p class="admonition-title">Native cross-compilation support</p>

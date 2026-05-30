@@ -9,4 +9,3 @@
 3. Adjust the quantization mode, I/O precision, and split mode if needed, or leave the defaults for best out-of-the-box performance. Click **Start App** to begin the conversion.
 
     {{ figure("/models/assets/conversion/tflite-converter-options.jpg", "TFLite Converter Options") }}
-    

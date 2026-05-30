@@ -4,7 +4,7 @@ This tutorial describes the steps to train **Vision** models in EdgeFirst Studio
 
 ## View Dataset
 
-First ensure that the dataset is ready to be used for training.  This means that the dataset meets all of the criteria listed below. 
+First ensure that the dataset is ready to be used for training.  This means that the dataset meets all of the criteria listed below.
 
 - [x] Complete Annotations (bounding boxes and/or segmentation masks/polygons)
 - [x] Contains training and validation partitions

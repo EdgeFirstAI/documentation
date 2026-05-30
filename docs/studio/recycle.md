@@ -32,7 +32,7 @@ Click **Clear All** to deselect all types, then check only the types you want to
 Filter by when the item was deleted:
 
 | Option | Description |
-|---|---|
+| ------ | ----------- |
 | Today | Items deleted today. |
 | 7 Days | Items deleted in the last 7 days. |
 | 30 Days | Items deleted in the last 30 days. |
@@ -45,7 +45,7 @@ Filter by when the item was deleted:
 The main table lists all items matching the active filters.  The table shows:
 
 | Column | Description |
-|---|---|
+| ------ | ----------- |
 | **Description** | The name of the deleted item.  Click the name to view its details. |
 | **Project** | The project the item belonged to, if applicable. |
 | **Date Removed** | When the item was moved to the recycle bin. |

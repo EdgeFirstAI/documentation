@@ -58,7 +58,7 @@ Then run a validation session — see [Validation from Studio](../studio/from_st
 ## What is not supported on macOS
 
 | Backend | Why not |
-|---|---|
+| ------- | ------- |
 | TensorFlow Lite | `libtensorflowlite_c.so` is Linux-only in the EdgeFirst distribution |
 | NXP Neutron / VSI delegates | Delegates ship with NXP Linux BSPs only |
 | Kinara Ara-2 | `ara2-proxy` daemon is Linux-only |

@@ -6,8 +6,8 @@ model concern.
 
 ## Format Tiers
 
-| | Arrow IPC | Parquet | JSON |
-|---|-----------|---------|------|
+|  | Arrow IPC | Parquet | JSON |
+| --- | --------- | ------- | ---- |
 | **Extension** | `.arrow` | `.parquet` | `.json` |
 | **Use Case** | Local ML training, fast random access | Transfer, cloud storage, interop | Human-readable, API exchange |
 | **Structure** | Flat columnar (one row per annotation) | Flat columnar (one row per annotation) | Nested (sample with annotations array) |
@@ -108,7 +108,7 @@ archival, bandwidth-constrained transfers.
 EdgeFirst uses the following Parquet defaults:
 
 | Setting | Value | Rationale |
-|---------|-------|-----------|
+| ------- | ----- | --------- |
 | Compression | ZSTD (level 3) | Best compression/speed trade-off for transfer |
 | Row group size | 64K rows or 256 MB | Balance between random access and compression |
 | Page encoding | Parquet v2 (data page v2) | Better compression, widely supported |

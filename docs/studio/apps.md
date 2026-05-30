@@ -30,7 +30,7 @@ app run is tracked in the [Tasks panel](navigation.md#tasks).
 The following apps are available by default in EdgeFirst Studio:
 
 | App | Description | Pricing |
-|---|---|---|
+| --- | ----------- | ------- |
 | **Roboflow Importer** | Import datasets from Roboflow into EdgeFirst Studio. | Free |
 | **EdgeFirst Profiler** | Profile model inference pipelines and produce timing traces. | Free |
 | **EdgeFirst Validator** | Post-process predictions and timing traces to compute COCO/LVIS accuracy metrics and timing charts, then publish results to the validation session. | Free |

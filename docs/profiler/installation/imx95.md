@@ -38,7 +38,7 @@ edgefirst-profiler --version
 The profiler picks a TFLite delegate automatically — and you can override it on the validation session if needed. Delegate values:
 
 | Value | Behavior |
-|---|---|
+| ----- | -------- |
 | _(omitted)_ / `auto` | Probe well-known NPU paths (`/usr/lib/libneutron_delegate.so`, `/usr/lib/libvx_delegate.so`); fall back to XNNPACK. |
 | `xnnpack` | Explicit XNNPACK CPU delegate. |
 | `none` / `cpu` | No delegate — reference kernels. |
@@ -48,7 +48,14 @@ Auto-detection reads `/sys/firmware/devicetree/base/compatible` to identify i.MX
 
 ## Per-tick Neutron profiling
 
-When the Neutron delegate is loaded with profiling support, the profiler reports **per-tick** timing — every NPU kernel (`Conv2DDenseTT`, `AddTT`, …) appears as its own slice in the Studio trace view.
+When both conditions below are met, the profiler reports **per-tick** timing — every NPU kernel (`Conv2DDenseTT`, `AddTT`, …) appears as its own slice in the Studio trace view:
+
+1. The model was compiled with **`enable_profiling: true`** in the [Neutron Converter](../../models/conversion/neutron.md).
+2. The target runs **Neutron drivers ≥ 3.0.1** (tested on 3.0.1), shipped as part of the [eIQ Neutron SDK](https://www.nxp.com/design/design-center/software/eiq-ai-development-environment/eiq-toolkit-for-end-to-end-model-development-and-deployment:EIQ-TOOLKIT).
+
+!!! note "Older 2.x drivers"
+
+    The profiler remains fully functional with Neutron drivers 2.x — inference timing, pipeline-stage breakdown, and accuracy metrics all work normally. Only the **per-operation NPU timing** (op-level profiling of the Neutron graph) is unavailable without 3.0.1+ drivers.
 
 To get human-readable kernel names rather than opaque IDs, pass the Neutron converter statistics file produced when the model was compiled:
 

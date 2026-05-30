@@ -25,14 +25,14 @@ schema_version: 2
 EdgeFirst models from the [Model Zoo](index.md) (including [ModelPack](modelpack/index.md) and [Ultralytics](ultralytics/index.md)) embed metadata in format-specific locations:
 
 | Format | Metadata Location | Config Format | Labels |
-|--------|-------------------|---------------|--------|
+| ------ | ----------------- | ------------- | ------ |
 | TFLite | ZIP archive (associated files) | `edgefirst.json` | `labels.txt` |
 | ONNX | Custom metadata properties | `edgefirst` (JSON) | `labels` (JSON array) |
 
 ### Supported Training Frameworks
 
 | Framework | Decoder | Architecture | Use Case |
-|-----------|---------|--------------|----------|
+| --------- | ------- | ------------ | -------- |
 | [ModelPack](modelpack/index.md) | `modelpack` | Anchor-based YOLO | Semantic segmentation, detection |
 | [Ultralytics](ultralytics/index.md) | `ultralytics` | Anchor-free DFL (YOLOv5/v8/v11/v26) | Instance segmentation, detection |
 
@@ -53,7 +53,7 @@ One of the most critical aspects of production ML systems is **traceability** �
 EdgeFirst metadata provides complete traceability through these key fields:
 
 | Field | Location | Purpose |
-|-------|----------|---------|
+| ----- | -------- | ------- |
 | `studio_server` | `host.studio_server` | Full hostname of [EdgeFirst Studio](../studio/index.md) instance (e.g., test.edgefirst.studio) |
 | `project_id` | `host.project_id` | Project ID for constructing Studio URLs |
 | `session_id` | `host.session` | [Training session](../studio/models.md#training-sessions) ID for accessing logs, metrics, artifacts |
@@ -420,7 +420,7 @@ Each entry in the top-level `outputs[]` array is a **logical output**. A logical
 Logical output types used across frameworks:
 
 | Type | Description | Typical Shape (logical) |
-|---|---|---|
+| ---- | ----------- | ----------------------- |
 | `boxes` | Bounding box coordinates | `[1, 4, num_boxes]` or `[1, reg_max×4, num_boxes]` for DFL |
 | `scores` | Per-class or class-aggregate scores | `[1, num_classes, num_boxes]` |
 | `objectness` | Objectness scores (YOLOv5-style `obj_x_class`) | `[1, anchors_per_cell, num_boxes]` |
@@ -436,7 +436,7 @@ Logical output types used across frameworks:
 Physical-child subtypes (appear only inside `outputs[]` children):
 
 | Subtype | When Used | Description |
-|---|---|---|
+| ------- | --------- | ----------- |
 | `boxes_xy` | ARA-2 channel sub-split | xy coordinates split for independent INT16 quantization |
 | `boxes_wh` | ARA-2 channel sub-split | wh coordinates split for independent INT16 quantization |
 | *(same as parent)* | Per-scale split | Each FPN scale produces one child with the parent's type |
@@ -459,7 +459,7 @@ outputs:
 **Standard dimension names:**
 
 | Name | Description |
-|---|---|
+| ---- | ----------- |
 | `batch` | Batch size (typically 1 for inference) |
 | `height` | Spatial height |
 | `width` | Spatial width |
@@ -478,7 +478,7 @@ outputs:
 The `encoding` field on a `boxes` logical output tells the HAL how to interpret the raw channel data after dequantization.
 
 | Value | Channels | Description | Decode Step |
-|---|---|---|---|
+| ----- | -------- | ----------- | ----------- |
 | `dfl` | `reg_max × 4` (typically 64) | Distribution Focal Loss encoding. Each coordinate is a probability distribution over `reg_max` bins. | Softmax over each `reg_max` group, then weighted sum → 4 coordinates. Common in YOLOv8, YOLO11. |
 | `direct` | 4 | Direct coordinate values — already decoded. | Dequantize only. Common in YOLO26 (reg_max=1), ARA-2 post-split. |
 | `anchor` | `anchors_per_cell × 4` | Anchor-based grid offsets. Each group of 4 is (tx, ty, tw, th) requiring sigmoid + anchor-scale transform. | Sigmoid + anchor transform per grid cell. Common in YOLOv5, SSD MobileNet, ModelPack. |
@@ -490,7 +490,7 @@ The `encoding` field on a `boxes` logical output tells the HAL how to interpret 
 The `score_format` field on a `scores` logical output disambiguates YOLOv5's `obj_x_class` encoding from the default per-class encoding used by YOLOv8/v11/v26:
 
 | Value | Description | Architecture |
-|---|---|---|
+| ----- | ----------- | ------------ |
 | `per_class` | Each anchor outputs `[nc]` class probabilities directly | YOLOv8, YOLO11, YOLO26, default |
 | `obj_x_class` | Each anchor outputs `[nc]` class probabilities; a separate `objectness` logical output provides `[1]` per anchor. Final detection confidence = `objectness × class_score` per anchor | YOLOv5 |
 
@@ -577,7 +577,7 @@ The HAL infers the merge strategy from child fields: presence of `stride` → sp
 ### Direct Path Examples
 
 | Target | Logical Type | Children Types | Direct Decoder |
-|---|---|---|---|
+| ------ | ------------ | -------------- | -------------- |
 | ARA-2 | `boxes` | `boxes_xy`, `boxes_wh` | `box_assembly` — INT16 dequant + dist2bbox in one pass |
 | Hailo | `scores` | `scores` ×3 (per-scale) | Per-scale sigmoid already applied, just spatial concat |
 
@@ -612,7 +612,7 @@ For detailed specifications, see the [ONNX QuantizeLinear operator](https://onnx
 ### Quantization Object Schema
 
 | Field | Type | Required | Description |
-|---|---|---|---|
+| ----- | ---- | -------- | ----------- |
 | `scale` | float or \[float\] | Yes | Scale factor(s). Scalar = per-tensor, array = per-channel |
 | `zero_point` | int or \[int\] | No | Zero point offset(s). Omit for symmetric quantization (implies 0) |
 | `axis` | int | When per-channel | Tensor dimension index that the scale/zero_point arrays correspond to |
@@ -680,7 +680,7 @@ def dequantize(raw_output: np.ndarray, quantization: dict) -> np.ndarray:
 ### Framework Conventions
 
 | Framework | Per-Tensor | Per-Channel | Symmetric | Axis Field |
-|---|---|---|---|---|
+| --------- | ---------- | ----------- | --------- | ---------- |
 | ONNX | Scalar scale | 1-D scale + `axis` | Implicit (zero_point=0) | `axis` (default 1) |
 | TFLite/LiteRT | Scalar (1-element array) | 1-D scale + `quantized_dimension` | Implicit (zero_point=0 for weights) | `quantized_dimension` |
 | TensorRT | Scalar scale | Per-channel scale | Always symmetric | Output channel axis |
@@ -693,7 +693,7 @@ Some NPU toolchains use different terminology internally. Converters translate a
 **Kinara ARA-2** (ioparams.json, qmode 9 — asymmetric):
 
 | Kinara term | edgefirst.json term | Notes |
-|---|---|---|
+| ----------- | ------------------- | ----- |
 | `outputScale` / `outputQn` | `scale` | Identical value for qmode 9. For symmetric qmodes (0–3), Kinara's `qn` is 1/scale — but the ARA-2 converter always uses qmode 9 |
 | `offset` | `zero_point` | Identical value |
 | `bpp` + `isSigned` | `dtype` | `bpp=1, signed` → `int8`, `bpp=2, unsigned` → `uint16`, etc. |
@@ -701,7 +701,7 @@ Some NPU toolchains use different terminology internally. Converters translate a
 **Hailo** (HEF quantization info):
 
 | Hailo term | edgefirst.json term |
-|---|---|
+| ---------- | ------------------- |
 | `qp_scale` | `scale` |
 | `qp_zp` | `zero_point` |
 
@@ -712,7 +712,7 @@ Some NPU toolchains use different terminology internally. Converters translate a
 Deep learning frameworks use different memory layouts for tensor data. The metadata accurately reflects each format's native layout:
 
 | Format | Data Layout | Shape Convention | Example (batch=1, 640x640, RGB) |
-|--------|-------------|------------------|----------------------------------|
+| ------ | ----------- | ---------------- | ------------------------------- |
 | TFLite | **NHWC** | `[batch, height, width, channels]` | `[1, 640, 640, 3]` |
 | ONNX | **NCHW** | `[batch, channels, height, width]` | `[1, 3, 640, 640]` |
 
@@ -791,7 +791,7 @@ For quantized models (INT8), the quantization parameters handle the scaling inte
 The `cameraadaptor` field specifies the expected input format for the model. See [Camera Adaptor](cameraadaptor.md) for details on how this enables models to consume native camera formats without runtime conversion.
 
 | Value | Description | Channel Order |
-|---|---|---|
+| ----- | ----------- | ------------- |
 | `rgb` | Standard RGB | Red, Green, Blue |
 | `bgr` | OpenCV default | Blue, Green, Red |
 | `rgba` | RGB with alpha | Red, Green, Blue, Alpha |
@@ -816,7 +816,7 @@ The `validation` section records the recommended settings based on how the model
 ### Parameter Semantics
 
 | Parameter | Description | Default | Override at Runtime? |
-|---|---|---|---|
+| --------- | ----------- | ------- | -------------------- |
 | `iou` | NMS IoU threshold | `0.7` | Yes |
 | `score` | NMS confidence score threshold | `0.001` | Yes |
 | `nms` | NMS algorithm | *(not set)* | See below |
@@ -835,7 +835,7 @@ Both produce post-NMS output in `[x1, y1, x2, y2, conf, class, ...]` format. Det
 ### Allowed `nms` Values
 
 | Value | Description |
-|---|---|
+| ----- | ----------- |
 | `none` | No external NMS. For models with embedded NMS — either architectural end-to-end (YOLO26) or engine-embedded (ONNX/TRT/TFLite with NMS ops appended). Supports both detection and segmentation |
 | `numpy` | NumPy-based NMS implementation (default fallback) |
 | `hal` | EdgeFirst HAL decoder NMS |
@@ -849,7 +849,7 @@ When `--override` is set, the validator reads `validation.nms` from the model me
 The `normalized` field on `boxes` and `detections` outputs specifies the coordinate format:
 
 | Value | Description | Coordinate Range |
-|---|---|---|
+| ----- | ----------- | ---------------- |
 | `true` | Normalized coordinates relative to model input dimensions | `[0.0, 1.0]` |
 | `false` | Pixel coordinates relative to model input (letterboxed frame) | `[0, width]` / `[0, height]` |
 
@@ -967,11 +967,11 @@ x2y2 = anchor_points + rb
 **Version differences** — all Ultralytics versions use the same anchor-free `Detect` class. Differences are in backbone architecture:
 
 | Version | Backbone Blocks | Classification Head |
-|---|---|---|
-| YOLOv5  | C3              | Conv→Conv→Conv2d        |
-| YOLOv8  | C2f             | Conv→Conv→Conv2d        |
-| YOLO11  | C3k2, C2PSA     | DWConv→Conv (efficient) |
-| YOLO26  | C3k2, A2C2f     | DWConv→Conv (efficient) |
+| ------- | --------------- | ------------------- |
+| YOLOv5 | C3 | Conv→Conv→Conv2d |
+| YOLOv8 | C2f | Conv→Conv→Conv2d |
+| YOLO11 | C3k2, C2PSA | DWConv→Conv (efficient) |
+| YOLO26 | C3k2, A2C2f | DWConv→Conv (efficient) |
 
 ### Decoder Version Field
 
@@ -986,7 +986,7 @@ decoder_version: yolov8    # Traditional model requiring external NMS
 **Supported values:**
 
 | Value | Architecture | NMS Handling |
-|---|---|---|
+| ----- | ------------ | ------------ |
 | `yolov5` | YOLOv5 | External NMS required |
 | `yolov8` | YOLOv8 | External NMS required |
 | `yolo11` | YOLO11 | External NMS required |
@@ -1018,7 +1018,7 @@ nms: class_aware       # Only suppress boxes with the same class label
 ```
 
 | Value | Behavior |
-|---|---|
+| ----- | -------- |
 | `class_agnostic` | Suppress overlapping boxes regardless of class label (default) |
 | `class_aware` | Only suppress boxes that share the same class AND overlap |
 
@@ -1087,7 +1087,7 @@ split_hints:
 ### Fields
 
 | Field | Type | Required | Description |
-|---|---|---|---|
+| ----- | ---- | -------- | ----------- |
 | `type` | string | Yes | Hint type identifier. Converters ignore types they do not understand |
 | `target` | string | Yes | Name of the output tensor this hint applies to |
 | `input_dtype` | string | No | Suggested input quantization dtype (e.g., `uint8`) |
@@ -1100,7 +1100,7 @@ split_hints:
 ### Boundary Fields
 
 | Field | Type | Required | Description |
-|---|---|---|---|
+| ----- | ---- | -------- | ----------- |
 | `name` | string | Yes | Free-form semantic label (e.g., `boxes`, `scores`, `mask_coefs`, `landmarks`, `objectness`, `confidence`) |
 | `channels` | [int, int] | Yes | Channel range `[start, end)` in the logical output. Always post-decode, post-DFL logical channels (e.g., 4 for decoded box coords, not 64 for DFL-encoded) |
 | `activation` | string | No | Post-activation to apply (`sigmoid`, `softmax`, `tanh`). Converters that can fuse it into the NPU do so; others note it for the HAL |
@@ -1151,7 +1151,7 @@ split_hints:
 Based on quantization experiments:
 
 | Task | Hints | Rationale |
-|---|---|---|
+| ---- | ----- | --------- |
 | **Detection** | One `quantization_split` on output0 with `boxes` + `scores` boundaries | Per-component scales improve INT8 precision; boxes and scores have different distributions |
 | **Segmentation** | One `quantization_split` on output0 with `boxes` + `scores` + `mask_coefs` boundaries | Mask coefficients (unbounded) especially benefit from their own scale |
 | **End-to-end (YOLO26 `end2end: true`)** | None | Output is already post-NMS; nothing to split |
@@ -1164,7 +1164,7 @@ Based on quantization experiments:
 Coverage of the two-layer output model across the detection, segmentation, and end-to-end architectures currently supported by the EdgeFirst ecosystem. The list grows as new architectures are onboarded — the two-layer model is general and accommodates additional families (SCRFD, EfficientDet, YOLACT, DETR variants, etc.) without schema changes.
 
 | Architecture | Scales | Heads | Monolithic in ONNX? | Two-Layer Mapping |
-|---|---|---|---|---|
+| ------------ | ------ | ----- | ------------------- | ----------------- |
 | YOLOv8 / YOLO11 detection | 3 | 2 (box, score) | Yes | 2 logical (`boxes`, `scores`), optional per-scale or xy/wh children |
 | YOLOv8 / YOLO11 segmentation | 3 | 3 + protos | Yes | 3 logical w/ children + 1 direct (`protos`) |
 | YOLO26 detection | 3 | 2 (box, score) | Yes | 2 logical, optional children — `encoding: direct` |
@@ -1664,7 +1664,7 @@ The parameter hash is computed from the inputs that determine calibration conten
 Parameters included in the hash:
 
 | Parameter | Example | Why |
-|---|---|---|
+| --------- | ------- | --- |
 | Dataset ID | `ds-2bcc` | Which dataset |
 | Annotation set ID | `as-1a3f` | Which annotation version |
 | Validation group | `val` | Which split |
@@ -1761,7 +1761,7 @@ When a converter processes a model, it augments the existing `edgefirst.json` wi
 Each converter section is a free-form object, but should include at minimum:
 
 | Field | Type | Description |
-|---|---|---|
+| ----- | ---- | ----------- |
 | `version` | string | Converter app version |
 | `timestamp` | string | ISO 8601 conversion timestamp |
 | `task` | string | Studio batch task ID for this conversion step (e.g., `bt-3a1f`) |
@@ -1839,7 +1839,7 @@ When a model passes through multiple converters, the chronological order is dete
 ONNX models exported from [ModelPack](modelpack/index.md) or [Ultralytics](ultralytics/index.md) include additional official metadata fields:
 
 | Field | ModelPack Value | Ultralytics Value | Purpose |
-|---|---|---|---|
+| ----- | --------------- | ----------------- | ------- |
 | `producer_name` | "EdgeFirst ModelPack" | "EdgeFirst Ultralytics" | Identifies producing framework |
 | `producer_version` | Package version | Package version | Version tracking |
 | `graph.name` | Model name | Model name | Graph identification |
@@ -1848,7 +1848,7 @@ ONNX models exported from [ModelPack](modelpack/index.md) or [Ultralytics](ultra
 Custom metadata properties (all string values):
 
 | Key | Content | Purpose |
-|---|---|---|
+| --- | ------- | ------- |
 | `edgefirst` | Full config as JSON | Complete configuration |
 | `name` | Model name | Quick access (no JSON parsing) |
 | `description` | Model description | Quick access |
@@ -2243,7 +2243,7 @@ Key differences:
 YOLO11 uses the same `Detect` head architecture as YOLOv8 (anchor-free, DFL with reg_max=16). Split hints are identical.
 
 | Boundary | Channels | Logical | Encoding | Activation | score_format |
-|---|---|---|---|---|---|
+| -------- | -------- | ------- | -------- | ---------- | ------------ |
 | boxes | [0, 4) | 4 | dfl | — | — |
 | scores | [4, 84) | 80 | — | sigmoid | per_class |
 
@@ -2274,7 +2274,7 @@ Monolithic output0 shape: `[1, 84, 8400]`
 `output1` (protos `[1, 32, 160, 160]`) is not included in split_hints — it's a separate ONNX output that does not need splitting.
 
 | Boundary | Channels | Logical | Encoding | Activation | score_format |
-|---|---|---|---|---|---|
+| -------- | -------- | ------- | -------- | ---------- | ------------ |
 | boxes | [0, 4) | 4 | dfl | — | — |
 | scores | [4, 84) | 80 | — | sigmoid | per_class |
 | mask_coefs | [84, 116) | 32 | — | — | — |
@@ -2305,7 +2305,7 @@ Monolithic output0 shape: `[1, 116, 8400]`
 YOLO26 uses `reg_max=1`, producing 4-channel boxes directly (no DFL distribution). The logical split_hints are identical to YOLOv8/v11 — the `encoding` difference (`direct` vs `dfl`) is captured in the compiled `outputs[]`, not in `split_hints`. End-to-end mode (`model.end2end: true`) is incompatible with `split_hints`.
 
 | Boundary | Channels | Logical | Encoding | Activation | score_format |
-|---|---|---|---|---|---|
+| -------- | -------- | ------- | -------- | ---------- | ------------ |
 | boxes | [0, 4) | 4 | direct | — | — |
 | scores | [4, 84) | 80 | — | sigmoid | per_class |
 
@@ -2334,7 +2334,7 @@ Monolithic output0 shape: `[1, 84, 8400]`
 ```
 
 | Boundary | Channels | Logical | Encoding | Activation | score_format |
-|---|---|---|---|---|---|
+| -------- | -------- | ------- | -------- | ---------- | ------------ |
 | boxes | [0, 4) | 4 | direct | — | — |
 | scores | [4, 84) | 80 | — | sigmoid | per_class |
 | mask_coefs | [84, 116) | 32 | — | — | — |
@@ -2367,7 +2367,7 @@ Monolithic output0 shape: `[1, 116, 8400]`
 YOLOv5 is anchor-based with 3 anchors per cell. Per-scale physical channel counts are multiplied by `anchors_per_cell`: boxes=3×4=12, objectness=3×1=3, scores=3×80=240. Total per anchor: 4+1+80=85, total per cell: 85×3=255. Concrete anchor dimensions are in `model.anchors`.
 
 | Boundary | Channels | Logical | ×anchors | Encoding | Activation | score_format |
-|---|---|---|---|---|---|---|
+| -------- | -------- | ------- | -------- | -------- | ---------- | ------------ |
 | boxes | [0, 4) | 4 | 12 | anchor | — | — |
 | objectness | [4, 5) | 1 | 3 | — | sigmoid | — |
 | scores | [5, 85) | 80 | 240 | — | sigmoid | obj_x_class |
@@ -2399,7 +2399,7 @@ Monolithic output0 shape: `[1, 255, 8400]`
 ```
 
 | Boundary | Channels | Logical | ×anchors | Encoding | Activation | score_format |
-|---|---|---|---|---|---|---|
+| -------- | -------- | ------- | -------- | -------- | ---------- | ------------ |
 | boxes | [0, 4) | 4 | 12 | anchor | — | — |
 | objectness | [4, 5) | 1 | 3 | — | sigmoid | — |
 | scores | [5, 85) | 80 | 240 | — | sigmoid | obj_x_class |
@@ -2410,7 +2410,7 @@ Monolithic output0 shape: `[1, 351, 8400]`
 ### A.7 Summary Table
 
 | Model | Task | Boundaries | output0 channels | anchors_per_cell | encoding | score_format |
-|---|---|---|---|---|---|---|
+| ----- | ---- | ---------- | ---------------- | ---------------- | -------- | ------------ |
 | YOLOv5 | detect | boxes, objectness, scores | 255 (85×3) | 3 | anchor | obj_x_class |
 | YOLOv5 | segment | boxes, objectness, scores, mask_coefs | 351 (117×3) | 3 | anchor | obj_x_class |
 | YOLOv8 | detect | boxes, scores | 84 | 1 | dfl | per_class |

@@ -11,7 +11,7 @@ Per-target pages below cover the runtime libraries, NPU delegates, daemons, and 
 ## Supported targets
 
 | Target | Architecture | Default backend | Optional accelerator |
-|---|---|---|---|
+| ------ | ------------ | --------------- | -------------------- |
 | [Linux](linux.md) | x86_64, aarch64 | ONNX Runtime (CPU) | TFLite XNNPACK |
 | [macOS](macos.md) | Apple Silicon | ONNX Runtime (CPU) | CoreML execution provider |
 | [Windows](windows.md) | x86_64 | ONNX Runtime (CPU) | — |
@@ -29,7 +29,7 @@ The profiler CLI and the workflow it drives are the same on every target — wha
 The inference backend is chosen automatically from the model file extension:
 
 | Extension | Backend | Runtime dependency |
-|---|---|---|
+| --------- | ------- | ------------------ |
 | `.onnx` | ONNX Runtime | `libonnxruntime.so` (Linux) / `libonnxruntime.dylib` (macOS) / `onnxruntime.dll` (Windows) |
 | `.tflite` | TensorFlow Lite | `libtensorflowlite_c.so` (Linux only) |
 | `.dvm` | Kinara Ara-2 | `ara2-proxy` daemon (Linux only) |

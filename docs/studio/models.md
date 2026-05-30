@@ -40,7 +40,7 @@ a deep view into the session through the following tabs:
 {{ figure("assets/models/training-session-details.png", "Training Session Details") }}
 
 | Tab | Description |
-|---|---|
+| --- | ----------- |
 | **Session** | Summary of the session configuration: session ID, name, description, created by, status, dataset, annotation set, train/val groups, start date, and duration.  Also shows the training parameters in YAML format and the status of each trainer process stage. |
 | **Logs** | Live and historical console output from the training process. |
 | **Charts** | Training metrics plotted over epochs, such as loss curves and mAP. |
@@ -54,6 +54,21 @@ The action bar at the top of the details page provides the following operations:
 - **Compare** — Compare the training charts of this session against others.
 - **Stop** — Terminate a running training session.
 - **Recycle Bin** — Move the session to the recycle bin.
+
+### Cloning a Training Session
+
+Cloning creates a new training session from an existing one. The clone preserves the source session's trainer type, model, dataset selection, and other session configuration, but it overrides two training controls: **Use Default Weights** is disabled and **Enable Training** is disabled. Because training is not run, the completed weights from the source session are copied directly into the new session's artifacts.
+
+This is useful when you want to:
+
+- Reuse a trained model as a starting point for fine-tuning with a different dataset.
+- Preserve a snapshot of a model at a specific training state before further experimentation.
+- Share a model artifact under a new session name without re-running training.
+
+To clone a session, click "clone training session" button on the training card.  A dialog will appear pre-filled with the source session's configuration.  Adjust the name and description as needed, then confirm.
+
+!!! note
+    Cloning is equivalent to creating a new session with **Use Default Weights** disabled and **Enable Training** disabled.  See [Enable Training and Use Default Weights](../models/training/vision.md#enable-training-and-use-default-weights) for the full behaviour matrix.
 
 ## Validation Sessions
 
@@ -89,7 +104,7 @@ provides the following tabs:
 {{ figure("assets/models/validation-session-details.png", "Validation Session Details") }}
 
 | Tab | Description |
-|---|---|
+| --- | ----------- |
 | **Session** | Summary of the session: session ID, status, name, model used, linked training session, dataset, start date, and duration.  Also shows the validation parameters in YAML format. |
 | **Logs** | Console output from the validation run. |
 | **Charts** | Validation metric charts such as precision-recall curves. |

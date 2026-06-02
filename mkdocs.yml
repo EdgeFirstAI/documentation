@@ -60,6 +60,28 @@ plugins:
   - awesome-nav:
   - autorefs:
   - search:
+  - redirects:
+      # Redirect map for documentation that has moved, keyed by the OLD page's
+      # source path -> the CURRENT page's source path. Paths are doc-relative,
+      # so a single map covers every mike version prefix (/latest/, /test/, ...).
+      # Keep these entries even after the old files are long gone — they are the
+      # only thing preventing previously-published URLs from 404ing.
+      redirect_maps:
+        # --- Model conversion docs consolidated under models/conversion/ ---
+        # neutron lived at custom/ (DE-2259, 2025-11) then ultralytics/ before
+        # the conversion section was created (EDGEAI-1113, 2026-04-23).
+        'models/custom/neutron.md': 'models/conversion/neutron.md'
+        'models/ultralytics/neutron.md': 'models/conversion/neutron.md'
+        # Per-model quantization pages folded into the conversion section; the
+        # Smart Quantization content now lives on the conversion index.
+        'models/ultralytics/quantize.md': 'models/conversion/index.md'
+        'models/modelpack/quantize.md': 'models/conversion/index.md'
+        # Kinara converter renamed to ARA-2 (DE-2497, 2026-05-24).
+        'models/conversion/kinara.md': 'models/conversion/ara2.md'
+        # --- NPU on-target deployment demos removed (EDGEAI-547, 2026-05-21) ---
+        # Embedded-target deployment is now covered by the deployment section.
+        'models/ultralytics/npu.md': 'models/deployment/launcher.md'
+        'models/modelpack/npu.md': 'models/deployment/launcher.md'
   - social:
       cards_layout: default
       cards_layout_options:

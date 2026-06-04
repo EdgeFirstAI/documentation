@@ -26,6 +26,12 @@ Follow the settings indicated and keep the rest of the settings default.  Click 
 
 {{ figure("/models/assets/training/vision-train-settings.jpg", "Start Training Session") }}
 
+!!! failure "InsufficientInstanceCapacity"
+
+    {{ img("/studio/assets/models/insufficient-capacity-error.jpg", "InsufficientInstanceCapacity Error") }}
+
+    If you find the following error appear once you start your training session - please try to recreate your training session again. This error happens because AWS reports no EC2 instances are currently available to launch. This issue is under development and the only workaround is to retry launching sessions.
+
 The session progress will be shown like the following below.
 
 {{ figure("/models/assets/training/vision-session-progress.jpg", "Training Session Progress") }}

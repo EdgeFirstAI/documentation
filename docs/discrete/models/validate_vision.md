@@ -12,6 +12,12 @@ On the top right corner of the page, click on the "validate" button as indicated
 
 Specify the name of the validation session and the model and the dataset for validation.  *Under the model selection, you can select various trained model artifacts from the choices of ONNX, TFLite, TensorRT, Kinara, Hailo, etc.  Choose the model you plan to deploy on target.  The purpose of validation is to assess the model of whether or not it meets the performance requirements needed to be deployed on target.*  The rest of the settings were kept as defaults.  Click "Start Session" at the bottom to start the validation session.
 
+!!! failure "InsufficientInstanceCapacity"
+
+    {{ img("/studio/assets/models/insufficient-capacity-error.jpg", "InsufficientInstanceCapacity Error") }}
+
+    If you find the following error appear once you start your validation session - please try to recreate your validation session again. This error happens because AWS reports no EC2 instances are currently available to launch. This issue is under development and the only workaround is to retry launching sessions.
+
 {{ figure("/models/assets/validation/vision-validate-settings.jpg", "Start Validation Session") }}
 
 Go to the created validation session by first going back to the "Model Experiments" page.

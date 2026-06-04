@@ -3,6 +3,7 @@ nav:
   - Quick Start: quickstart.md
   - Concepts:
     - Pipelining: concepts/pipelining.md
+    - Training Configurations: concepts/configuration.md
   - Installation:
     - installation/index.md
     - Linux: installation/linux.md

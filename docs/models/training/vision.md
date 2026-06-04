@@ -83,6 +83,12 @@ The **Enable Training** checkbox (Ultralytics only) and **Use Default Weights** 
 
     For best transfer-learning results, ensure your label names match the relevant COCO categories, or supply a prior EdgeFirst training session as the starting weights.
 
+!!! failure "InsufficientInstanceCapacity"
+
+    {{ img("/studio/assets/models/insufficient-capacity-error.jpg", "InsufficientInstanceCapacity Error") }}
+
+    If you find the following error appear once you start your training session - please try to recreate your training session again. This error happens because AWS reports no EC2 instances are currently available to launch. This issue is under development and the only workaround is to retry launching sessions.
+
 ## Session Progress
 
 Once the training session has started, the progress with the stages will be shown on the left and additional information and status is shown on the right.

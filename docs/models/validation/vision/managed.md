@@ -14,6 +14,12 @@ You will be greeted with a validation session dialog.  In this dialog, specify t
 
 Once the settings have been specified, go ahead and click on the "Start Session" button on the bottom right of the dialog.  This will start the validation session which will validate the model using the validation partition of the dataset.
 
+!!! failure "InsufficientInstanceCapacity"
+
+    {{ img("/studio/assets/models/insufficient-capacity-error.jpg", "InsufficientInstanceCapacity Error") }}
+
+    If you find the following error appear once you start your validation session - please try to recreate your validation session again. This error happens because AWS reports no EC2 instances are currently available to launch. This issue is under development and the only workaround is to retry launching sessions.
+
 ## Session Progress
 
 Once the validation session has started, the progress with the stages will be shown on the left and additional information and status is shown on the right.
@@ -49,4 +55,4 @@ It is also possible to compare validation metrics for multiple sessions.  See [V
 
 ## Next Steps
 
-Now that you have validated your model, you can find examples for deploying your model in [EdgeFirst Studio](../../deployment/studio.md), [PC](../../deployment/pc/index.md), [Embedded Targets](../../deployment/evk.md), the [Maivin](../../deployment/maivin.md), and the [Raivin](../../deployment/2d_raivin.md). 
+Now that you have validated your model, you can find examples for deploying your model in [EdgeFirst Studio](../../deployment/studio.md), [PC](../../deployment/pc/index.md), [Embedded Targets](../../deployment/launcher.md), the [Maivin](../../deployment/maivin.md), and the [Raivin](../../deployment/2d_raivin.md). 

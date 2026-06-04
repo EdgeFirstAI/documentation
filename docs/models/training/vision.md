@@ -75,7 +75,7 @@ The **Enable Training** checkbox (Ultralytics only) and **Use Default Weights** 
 |---------------------|-----------------|----------|
 | ✓ Enabled | ✓ Enabled | Train from pre-trained COCO weights. |
 | ✗ Disabled | ✓ Enabled | Train starting from weights of a prior training session you specify. |
-| ✓ Enabled | ✗ Disabled | **Default.** No training. Pre-trained COCO weights are copied directly to the session artifacts. Results will be poor on non-COCO datasets — Studio displays a warning. |
+| ✓ Enabled | ✗ Disabled | **Default.** No training. Pre-trained COCO weights are copied directly to the session artifacts. Results will be poor on non-COCO datasets — Studio displays a warning. This default exists because full COCO training for Ultralytics is compute-intensive, and it lets you reproduce validation and profiling results from the [EdgeFirst Model Zoo on Hugging Face](https://huggingface.co/spaces/EdgeFirst/Models) using the published COCO checkpoints. |
 | ✗ Disabled | ✗ Disabled | No training. Weights are copied from a specified prior training session — equivalent to cloning that session's artifacts. |
 
 !!! warning "COCO pre-trained weights and dataset compatibility"

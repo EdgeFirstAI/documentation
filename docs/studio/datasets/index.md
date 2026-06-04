@@ -1,5 +1,8 @@
 # Dataset Dashboard
 
+!!! warning "Tag datasets before training"
+    Datasets must be tagged before they can be used for training. For guidance, see [Tagging Datasets](tag.md).
+
 The Dataset Dashboard shows a list of datasets in a project with a dataset summary in each dataset card.  For an in depth tutorial for creating datasets from capture to annotation, see the [Dataset Tutorials](../../datasets/tutorials/index.md). From the "Projects" page, we can click on the "Datasets" ![Dataset Button](../../assets/buttons/studio-datasets-button.jpg) button on the project card to see the project's datasets.  The public project "Sample Project" will contain the following datasets.
 
 {{ figure("../assets/datasets/public-datasets.jpg", "Public Datasets") }}

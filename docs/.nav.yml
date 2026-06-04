@@ -32,6 +32,7 @@ nav:
     - studio/projects.md
     - Datasets Dashboard:
       - studio/datasets/index.md
+      - studio/datasets/tag.md
       - studio/datasets/gallery.md
       - studio/datasets/annotations.md
       - studio/datasets/map.md
@@ -132,7 +133,7 @@ nav:
       - models/deployment/maivin.md
       - models/deployment/2d_raivin.md
       - models/deployment/3d_raivin.md
-      - models/deployment/launcher.md
+      - models/deployment/evk.md
       - Deploying to the PC:
         - models/deployment/pc/index.md
         - models/deployment/pc/mpk.md

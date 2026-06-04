@@ -1,4 +1,4 @@
-To maintain the current state of the dataset, tag the dataset with a version.
+Before a dataset can be used for training, it must be tagged.  To preserve its current state, assign a version tag to the dataset.
 
 Click on the dataset options at the top right of the dataset card (three vertical dots). Then click the "History" button.
 

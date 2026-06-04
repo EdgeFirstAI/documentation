@@ -8,7 +8,7 @@ Click the image preview to view the dataset gallery.  The dataset gallery will l
 
 {{ figure("/datasets/assets/management/sample-dataset-images.jpg", "Dataset Images") }}
 
-This dataset will contain [both sequences (videos) and images](../../datasets/format/structure.md#3-mixed-datasets).  Clicking on the sequences will provide video playback.  Otherwise, clicking on images will expand the image view.
+This dataset will contain [both sequences (videos) and images](../../datasets/format/structure.md#3-mixed-datasets).  Clicking on the sequences will provide video playback of the sequence.  Otherwise, clicking on images will expand the image view and allow playback of all images in the dataset.
 
 This dataset has a complete set of 2D annotations (masks and bounding boxes) of coffee cups.  
 

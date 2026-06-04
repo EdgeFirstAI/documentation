@@ -21,7 +21,7 @@ EdgeFirst Studio includes a built-in model runner that allows you to quickly run
 
 EdgeFirst Studio provides several pre-trained models in the **Sample Projects** section.
 
-1. On the landing page after login, click **GO TO PROJECTS**.  This opens the Projects Dashboard
+1. On the landing page after login, click **PROJECTS** at the top next to "Home".  This opens the Projects Dashboard
 2. Find the **Sample Projects** card and click **Model Experiments**
 
 	{{ figure("assets/run_model/sample-projects.png", "Sample Projects", "400") }}

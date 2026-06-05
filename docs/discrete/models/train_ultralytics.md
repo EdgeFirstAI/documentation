@@ -1,4 +1,3 @@
-
 1. Click on "Model Experiments" of your created project
 
     {{ figure("/models/assets/training/model-experiments.jpg", "Model Experiments Page") }}

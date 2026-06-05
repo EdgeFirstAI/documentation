@@ -46,7 +46,7 @@ edgefirst-profiler --version
 
 For per-target details (NPU delegates, runtime libraries, hardware-specific quirks) see the [installation guides](installation/index.md).
 
-## 5. Sign in to EdgeFirst Studio
+## 5. Sign in to EdgeFirst Studio (profiler CLI)
 
 ```sh
 edgefirst-profiler login
@@ -141,7 +141,7 @@ edgefirst-profiler validate --session-id v-1ce9
 
 The profiler runs headlessly, prints progress bars for download/inference/upload, emits a formatted **Session Report** to stdout, and publishes results to Studio when the run completes.
 
-## 5. View the results in Studio
+## 8. View the results in Studio
 
 Both paths land you at the same place: the validation session card in EdgeFirst Studio. The card shows progress while the cloud validator runs, then surfaces the accuracy charts and trace viewer when it completes.
 

@@ -1,6 +1,6 @@
 # Train Vision Model
 
-Now that you have a fully annotated dataset with a training and validation partition, you can begin training your model.  This will briefly show the steps for training a model, but for an in depth tutorial, please see [Training Vision Models](../../models/training/vision.md).
+Now that you have a fully annotated dataset with a version tag and a training and validation partition, you can begin training your model.  This will briefly show the steps for training a model, but for an in depth tutorial, please see [Training Vision Models](../../models/training/vision.md).
 
 Navigate back to the "Projects" page.  You can go back to the "Projects" page by clicking the Apps Menu waffle button on the top right of the Navigation bar.  Click the first selection to take you to the "Projects page".
 
@@ -25,6 +25,12 @@ Create a new training session by clicking the "Actions" dropdown menu on the top
 Follow the settings indicated and keep the rest of the settings default.  Click "Start Session" to start the training session.
 
 {{ figure("/models/assets/training/vision-train-settings.jpg", "Start Training Session") }}
+
+!!! failure "InsufficientInstanceCapacity"
+
+    {{ img("/studio/assets/models/insufficient-capacity-error.jpg", "InsufficientInstanceCapacity Error") }}
+
+    If you see this error after starting your training session, retry creating the session. This can happen when AWS reports that no EC2 instances are currently available to launch; the current workaround is to retry.
 
 The session progress will be shown like the following below.
 

@@ -83,6 +83,7 @@ plugins:
         'models/ultralytics/npu.md': 'models/deployment/launcher.md'
         'models/modelpack/npu.md': 'models/deployment/launcher.md'
   - social:
+      enabled: !ENV [CI, false]
       cards_layout: default
       cards_layout_options:
         background_color: "#3E3371"

@@ -7,6 +7,7 @@ nav:
     - getting_started/copy_dataset.md
     - getting_started/explore_dataset.md
     - getting_started/train_vision.md
+    - getting_started/convert_vision.md
     - getting_started/validate_vision.md
     - getting_started/deploy_model.md
     - User Workflows:
@@ -133,7 +134,7 @@ nav:
       - models/deployment/maivin.md
       - models/deployment/2d_raivin.md
       - models/deployment/3d_raivin.md
-      - models/deployment/evk.md
+      - models/deployment/launcher.md
       - Deploying to the PC:
         - models/deployment/pc/index.md
         - models/deployment/pc/mpk.md

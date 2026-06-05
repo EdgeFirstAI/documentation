@@ -33,7 +33,7 @@ Both paths produce the same artifacts and the same Studio session card.
 
 ## Read next
 
-- **[Quick Start](quickstart.md)** — install the profiler, sign in to Studio, run your first validation session in under five minutes.
+- **[Quick Start](quickstart.md)** — install the profiler, sign in to Studio, run your first validation session in under fifteen minutes.
 - **[Installation](installation/index.md)** — supported targets, per-target dependencies, and target-specific quirks.
 - **[EdgeFirst Studio Integration](studio/index.md)** — connecting to Studio, validation from Studio, and validation from the profiler.
 - **[Pipelining](concepts/pipelining.md)** — the multi-stage measurement pipeline, the `--pipeline-depth` flag, and how each backend constrains it. (Concepts deep-dive.)

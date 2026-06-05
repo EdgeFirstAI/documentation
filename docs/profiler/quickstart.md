@@ -1,8 +1,22 @@
 # Quick Start
 
-This guide walks you from "nothing installed" to a published validation session in roughly five minutes. The profiler is always operated against an EdgeFirst Studio session.
+This guide walks you from "nothing installed" to a published validation session in roughly fifteen minutes. The profiler is always operated against an EdgeFirst Studio session.
 
-## 1. Install the profiler
+## 1. If you haven't already, log in to EdgeFirst Studio
+
+1. Go to {{ studio_link("EdgeFirst Studio") }}
+2. If you do not have an account, {{ studio_link("create a free account", "signup") }} on the landing page
+3. Log in with your username and password
+
+## 2. Create your project in EdgeFirst Studio
+
+{% include-markdown "discrete/studio/create_project.md" heading-offset=0 %}
+
+## 3. Create an Ultralytics training session
+
+{% include-markdown "discrete/models/train_ultralytics.md" heading-offset=0 %}
+
+## 4. Install the profiler
 
 The recommended convenience path is `pip`. The wheel ships the same native binary the platform installers deliver, and pulls in the few Python-side helpers needed for end-to-end workflows. Platform installers are provided for environments where Python is not available.
 
@@ -32,7 +46,7 @@ edgefirst-profiler --version
 
 For per-target details (NPU delegates, runtime libraries, hardware-specific quirks) see the [installation guides](installation/index.md).
 
-## 2. Sign in to EdgeFirst Studio
+## 5. Sign in to EdgeFirst Studio (profiler CLI)
 
 ```sh
 edgefirst-profiler login
@@ -40,7 +54,7 @@ edgefirst-profiler login
 
 The interactive prompt asks for **server**, **username**, and **password**. The credentials are saved to `~/.config/edgefirststudio/token` and refresh automatically while you are using the profiler. For headless / CI flows, see [Connecting to EdgeFirst Studio](studio/connecting.md).
 
-## 3. Launch the TUI
+## 6. Launch the TUI
 
 Running `edgefirst-profiler` with no subcommand launches the interactive terminal UI. Any explicit subcommand — `validate`, `login`, `publish`, `report` — bypasses the TUI and runs headlessly.
 
@@ -63,7 +77,7 @@ Four function keys switch between screens:
 
 Press `q` to quit (disabled while typing into form fields). `Ctrl-C` always quits.
 
-## 4. Run a validation session
+## 7. Run a validation session
 
 The profiler is operated against a Studio validation session. Both paths produce the same Studio session card and the same set of accuracy charts.
 
@@ -127,7 +141,7 @@ edgefirst-profiler validate --session-id v-1ce9
 
 The profiler runs headlessly, prints progress bars for download/inference/upload, emits a formatted **Session Report** to stdout, and publishes results to Studio when the run completes.
 
-## 5. View the results in Studio
+## 8. View the results in Studio
 
 Both paths land you at the same place: the validation session card in EdgeFirst Studio. The card shows progress while the cloud validator runs, then surfaces the accuracy charts and trace viewer when it completes.
 

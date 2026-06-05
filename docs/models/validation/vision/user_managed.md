@@ -38,4 +38,4 @@ Two completed sessions can be opened side-by-side from the Model Experiments das
 
 ## Next steps
 
-Once you have validated your model, see [model deployment](../../deployment/studio.md) for the deployment paths to EdgeFirst Studio, the [PC](../../deployment/pc/index.md), [embedded targets](../../deployment/launcher.md), the [Maivin](../../deployment/maivin.md), and the [Raivin](../../deployment/2d_raivin.md).
+Once you have validated your model, see [model deployment](../../deployment/studio.md) for the deployment paths to EdgeFirst Studio, the [PC](../../deployment/pc/index.md), [embedded targets](../../deployment/evk.md), the [Maivin](../../deployment/maivin.md), and the [Raivin](../../deployment/2d_raivin.md).

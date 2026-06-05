@@ -2,7 +2,7 @@
 
 The EdgeFirst Launcher is responsible for managing the EdgeFirst Middleware in user-mode, which means a user launches the services manually from the command-line rather than system-managed where the services are under the control of systemd and installed into the system.
 
-The user-mode Middleware is meant to be installed using `pip install edgefirst` which will install the service binaries, webui, and supporting assets such as the default people detection model.  Deploying the launcher can be as simple as `edgefirst live` like the example shown in [Deploying to Embedded Targets](../models/deployment/launcher.md).  However, the description of each service are provided in the sections below and such as the commands used to deploy these services individually.
+The user-mode Middleware is meant to be installed using `pip install edgefirst` which will install the service binaries, webui, and supporting assets such as the default people detection model.  Deploying the launcher can be as simple as `edgefirst live` like the example shown in [Deploying to Embedded Targets](../models/deployment/evk.md).  However, descriptions of each service are provided in the sections below and such as the commands used to deploy these services individually.
 
 ### Services
 
@@ -50,7 +50,7 @@ $ edgefirst-model -h
 
 #### Webserver Service
 
-The Webserver Service or the EdgeFirst Web UI Server deploys a webserver on target to provide a GUI that's accessible using the target's IP address as the endpoint on a browser `https://MY_DEVICE_IP`.  The GUI would provide visualizations from the camera feed and model inferences and exposed the features for recording an MCAP, downloading an MCAP locally, deleting an MCAP, or listing the recorded MCAPs as shown in the [Live Camera Mode](../models/deployment/launcher.md#live-camera-mode) section.
+The Webserver Service or the EdgeFirst Web UI Server deploys a webserver on target to provide a GUI that's accessible using the target's IP address as the endpoint on a browser `https://MY_DEVICE_IP`.  The GUI provides visualizations from the camera feed and model inferences and exposes the features for recording an MCAP, downloading an MCAP locally, deleting an MCAP, or listing the recorded MCAPs as shown in the [Live Camera Mode](../models/deployment/evk.md#live-camera-mode) section.
 
 If a virtual environment was created, deploy this service using the command below.  The `--docroot` directory needs to be specified.
 

@@ -16,7 +16,7 @@ Specify the name of the validation session and the model and the dataset for val
 
     {{ img("/studio/assets/models/insufficient-capacity-error.jpg", "InsufficientInstanceCapacity Error") }}
 
-    If you find the following error appear once you start your validation session - please try to recreate your validation session again. This error happens because AWS reports no EC2 instances are currently available to launch. This issue is under development and the only workaround is to retry launching sessions.
+    If you see this error after starting your validation session, retry creating the session. This can happen when AWS reports that no EC2 instances are currently available to launch; the current workaround is to retry.
 
 {{ figure("/models/assets/validation/vision-validate-settings.jpg", "Start Validation Session") }}
 

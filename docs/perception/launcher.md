@@ -2,7 +2,7 @@
 
 The EdgeFirst Launcher is responsible for managing the EdgeFirst Middleware in user-mode, which means a user launches the services manually from the command-line rather than system-managed where the services are under the control of systemd and installed into the system.
 
-The user-mode Middleware is meant to be installed using `pip install edgefirst` which will install the service binaries, webui, and supporting assets such as the default people detection model.  Deploying the launcher can be as simple as `edgefirst live` like the example shown in [Deploying to Embedded Targets](../models/deployment/launcher.md).  However, descriptions of each service are provided in the sections below and such as the commands used to deploy these services individually.
+The user-mode Middleware is meant to be installed using `pip install edgefirst` which will install the service binaries, webui, and supporting assets such as the default people detection model.  Deploying the launcher can be as simple as `edgefirst live` like the example shown in [Deploying to Embedded Targets](../models/deployment/launcher.md).  However, descriptions of each service are provided in the sections below such as the commands used to deploy these services individually.
 
 ### Services
 

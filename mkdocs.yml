@@ -159,7 +159,7 @@ extra_css:
   - stylesheets/mermaid.css
 
 extra:
-  show_image_paths: true
+  show_image_paths: false
   version:
     default: latest
     provider: mike

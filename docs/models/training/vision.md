@@ -87,7 +87,7 @@ The **Enable Training** checkbox (Ultralytics only) and **Use Default Weights** 
 
     {{ img("/studio/assets/models/insufficient-capacity-error.jpg", "InsufficientInstanceCapacity Error") }}
 
-    If you find the following error appear once you start your training session - please try to recreate your training session again. This error happens because AWS reports no EC2 instances are currently available to launch. This issue is under development and the only workaround is to retry launching sessions.
+    If you see this error after starting your training session, retry creating the session. This can happen when AWS reports that no EC2 instances are currently available to launch; the current workaround is to retry.
 
 ## Session Progress
 

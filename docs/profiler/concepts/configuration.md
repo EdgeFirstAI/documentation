@@ -1,6 +1,6 @@
 # Training Configurations
 
-The [EdgeFirst Model Zoo](https://huggingface.co/spaces/EdgeFirst/Models) includes profiling results for Ultralytics YOLO models across multiple versions, architectures, and model sizes. T his page provides instructions for configuring EdgeFirst Studio to reproduce and train YOLO models in various formats.
+The [EdgeFirst Model Zoo](https://huggingface.co/spaces/EdgeFirst/Models) includes profiling results for Ultralytics YOLO models across multiple versions, architectures, and model sizes. This page provides instructions for configuring EdgeFirst Studio to reproduce and train YOLO models in various formats.
 
 EdgeFirst Studio training sessions allow you to configure the model version, size, and type. Use the table below as a reference when configuring a training session to reproduce a specific model format.
 

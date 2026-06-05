@@ -27,7 +27,7 @@
 
         {{ img("/studio/assets/models/insufficient-capacity-error.jpg", "InsufficientInstanceCapacity Error") }}
 
-        If you find the following error appear once you start your training session - please try to recreate your training session again. This error happens because AWS reports no EC2 instances are currently available to launch. This issue is under development and the only workaround is to retry launching sessions.
+        If you see this error after starting your training session, retry creating the session. This can happen when AWS reports that no EC2 instances are currently available to launch; the current workaround is to retry.
 
     If you would like to know more about how to reproduce the benchmarks gathered in the [EdgeFirst Model Zoo on Hugging Face](https://huggingface.co/spaces/EdgeFirst/Models), please see [Training Configurations](../../profiler/concepts/configuration.md).
 
@@ -43,11 +43,10 @@
     | **Neutron Converter** | NXP i.MX 95, i.MX 943/952, S32N79, MCX N54x/N94x, i.MX RT700, S32K5 | `.tflite` flatbuffer with Neutron microcode | [Neutron Converter](../../models/conversion/neutron.md) |
     | **TensorRT Converter** | NVIDIA Jetson (Orin Nano Super validated; broader lineup in progress) | `.tensorrt.zip` bundle (engine built on-device) | [TensorRT Converter](../../models/conversion/tensorrt.md) |
     | **Ara2 Converter** | NXP Ara240 DNPU | `.dvm` Dataflow Virtual Machine binary | [Ara2 Converter](../../models/conversion/ara2.md) |
-    | **Hailo Converter** | Hailo-8 (26 TOPS), Hailo-8L (13 TOPS) | `.hef` Hailo Executable Format | [Hailo Converter](../../models/conversion/hailo.md) | 
+    | **Hailo Converter** | Hailo-8 (26 TOPS), Hailo-8L (13 TOPS) | `.hef` Hailo Executable Format | [Hailo Converter](../../models/conversion/hailo.md) |
 
-8. All converted models should appear under the model artifacts of the training session card.  Click on the training session card to expand for more details. 
+8. All converted models should appear under the model artifacts of the training session card.  Click on the training session card to expand for more details.
 
     {{ figure("/models/assets/conversion/yolov8n-det-model-artifacts.jpg", "YOLOv8n Detection Model Artifacts") }}
 
-    Once you have converted your model, you can proceed towards profiling and validating the performance of your model next. 
-    
+    Once you have converted your model, you can proceed towards profiling and validating the performance of your model next.

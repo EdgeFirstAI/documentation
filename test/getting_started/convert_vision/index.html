@@ -12,31 +12,31 @@
         <meta name="author" content="Au-Zone Technologies">
       
       
-        <link rel="canonical" href="https://doc.edgefirst.ai/test/models/deployment/evk/">
+        <link rel="canonical" href="https://doc.edgefirst.ai/test/getting_started/convert_vision/">
       
       
-        <link rel="prev" href="../3d_raivin/">
+        <link rel="prev" href="../train_vision/">
       
       
-        <link rel="next" href="../pc/">
+        <link rel="next" href="../validate_vision/">
       
       
         
       
       
-      <link rel="icon" href="../../../assets/favicon.png">
+      <link rel="icon" href="../../assets/favicon.png">
       <meta name="generator" content="mkdocs-ProperDocs 1.6.7, mkdocs-material-9.7.6">
     
     
       
-        <title>Deploying to Embedded Targets - EdgeFirst Studio Documentation</title>
+        <title>Convert Vision Model - EdgeFirst Studio Documentation</title>
       
     
     
-      <link rel="stylesheet" href="../../../assets/stylesheets/main.484c7ddc.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
       
         
-        <link rel="stylesheet" href="../../../assets/stylesheets/palette.ab4e12ef.min.css">
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
       
       
 
@@ -55,15 +55,15 @@
       
     
     
-      <link rel="stylesheet" href="../../../assets/_mkdocstrings.css">
+      <link rel="stylesheet" href="../../assets/_mkdocstrings.css">
     
-      <link rel="stylesheet" href="../../../stylesheets/extra.css">
+      <link rel="stylesheet" href="../../stylesheets/extra.css">
     
-      <link rel="stylesheet" href="../../../stylesheets/components.css">
+      <link rel="stylesheet" href="../../stylesheets/components.css">
     
-      <link rel="stylesheet" href="../../../stylesheets/mermaid.css">
+      <link rel="stylesheet" href="../../stylesheets/mermaid.css">
     
-    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
   
@@ -81,17 +81,17 @@
     
   
 <meta property="og:type" content="website" />
-<meta property="og:title" content="Deploying to Embedded Targets - EdgeFirst Studio Documentation" />
+<meta property="og:title" content="Convert Vision Model - EdgeFirst Studio Documentation" />
 <meta property="og:description" content="EdgeFirst Studio Documentation" />
-<meta property="og:image" content="https://doc.edgefirst.ai/test/assets/images/social/models/deployment/evk.png" />
+<meta property="og:image" content="https://doc.edgefirst.ai/test/assets/images/social/getting_started/convert_vision.png" />
 <meta property="og:image:type" content="image/png" />
 <meta property="og:image:width" content="1200" />
 <meta property="og:image:height" content="630" />
-<meta property="og:url" content="https://doc.edgefirst.ai/test/models/deployment/evk/" />
+<meta property="og:url" content="https://doc.edgefirst.ai/test/getting_started/convert_vision/" />
 <meta property="twitter:card" content="summary_large_image" />
-<meta property="twitter:title" content="Deploying to Embedded Targets - EdgeFirst Studio Documentation" />
+<meta property="twitter:title" content="Convert Vision Model - EdgeFirst Studio Documentation" />
 <meta property="twitter:description" content="EdgeFirst Studio Documentation" />
-<meta property="twitter:image" content="https://doc.edgefirst.ai/test/assets/images/social/models/deployment/evk.png" />
+<meta property="twitter:image" content="https://doc.edgefirst.ai/test/assets/images/social/getting_started/convert_vision.png" />
 </head>
   
   
@@ -111,7 +111,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#deploying-to-embedded-targets" class="md-skip">
+        <a href="#convert-vision-model" class="md-skip">
           Skip to content
         </a>
       
@@ -146,9 +146,9 @@
 
 <header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href="../../.." title="EdgeFirst Studio Documentation" class="md-header__button md-logo" aria-label="EdgeFirst Studio Documentation" data-md-component="logo">
+    <a href="../.." title="EdgeFirst Studio Documentation" class="md-header__button md-logo" aria-label="EdgeFirst Studio Documentation" data-md-component="logo">
       
-  <img src="../../../assets/logo.png" alt="logo">
+  <img src="../../assets/logo.png" alt="logo">
 
     </a>
     <label class="md-header__button md-icon" for="__drawer">
@@ -165,7 +165,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Deploying to Embedded Targets
+              Convert Vision Model
             
           </span>
         </div>
@@ -268,11 +268,13 @@
   
   
   
+    
+  
   
     
     
-      <li class="md-tabs__item">
-        <a href="../../.." class="md-tabs__link">
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../.." class="md-tabs__link">
           
   
   
@@ -294,7 +296,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../../studio/" class="md-tabs__link">
+        <a href="../../studio/" class="md-tabs__link">
           
   
   
@@ -316,7 +318,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../../3D/" class="md-tabs__link">
+        <a href="../../3D/" class="md-tabs__link">
           
   
   
@@ -338,7 +340,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../../profiler/" class="md-tabs__link">
+        <a href="../../profiler/" class="md-tabs__link">
           
   
   
@@ -360,7 +362,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../../datasets/" class="md-tabs__link">
+        <a href="../../datasets/" class="md-tabs__link">
           
   
   
@@ -378,13 +380,11 @@
   
   
   
-    
-  
   
     
     
-      <li class="md-tabs__item md-tabs__item--active">
-        <a href="../../" class="md-tabs__link">
+      <li class="md-tabs__item">
+        <a href="../../models/" class="md-tabs__link">
           
   
   
@@ -406,7 +406,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../../perception/" class="md-tabs__link">
+        <a href="../../perception/" class="md-tabs__link">
           
   
   
@@ -428,7 +428,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../../platforms/" class="md-tabs__link">
+        <a href="../../platforms/" class="md-tabs__link">
           
   
   
@@ -470,9 +470,9 @@
 
 <nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="../../.." title="EdgeFirst Studio Documentation" class="md-nav__button md-logo" aria-label="EdgeFirst Studio Documentation" data-md-component="logo">
+    <a href="../.." title="EdgeFirst Studio Documentation" class="md-nav__button md-logo" aria-label="EdgeFirst Studio Documentation" data-md-component="logo">
       
-  <img src="../../../assets/logo.png" alt="logo">
+  <img src="../../assets/logo.png" alt="logo">
 
     </a>
     EdgeFirst Studio Documentation
@@ -483,6 +483,8 @@
       
       
   
+  
+    
   
   
   
@@ -495,6 +497,354 @@
       
         
       
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1" checked>
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../.." class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Getting Started
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_1" id="__nav_1_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_1_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_1">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Getting Started
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../login/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Login
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../running_pretrained_model/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Running Pre-trained Models in EdgeFirst Studio
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../create_project/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Create Project
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../copy_dataset/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Copy Sample Dataset
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../explore_dataset/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Explore dataset
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../train_vision/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Train Vision Model
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Convert Vision Model
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../validate_vision/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Validate Vision Model
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../deploy_model/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Deploy the Model
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
         
       
         
@@ -529,14 +879,14 @@
   
   
   
-    <a href="../../.." class="md-nav__link">
+    <a href="../workflows/" class="md-nav__link">
       
   
   
   <span class="md-ellipsis">
     
   
-    Getting Started
+    User Workflows
   
 
     
@@ -550,6 +900,14 @@
     </a>
   
 
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
       
     </li>
   
@@ -610,7 +968,7 @@
   
   
   
-    <a href="../../../studio/" class="md-nav__link">
+    <a href="../../studio/" class="md-nav__link">
       
   
   
@@ -671,7 +1029,7 @@
   
   
   
-    <a href="../../../3D/" class="md-nav__link">
+    <a href="../../3D/" class="md-nav__link">
       
   
   
@@ -736,7 +1094,7 @@
   
   
   
-    <a href="../../../profiler/" class="md-nav__link">
+    <a href="../../profiler/" class="md-nav__link">
       
   
   
@@ -799,7 +1157,7 @@
   
   
   
-    <a href="../../../datasets/" class="md-nav__link">
+    <a href="../../datasets/" class="md-nav__link">
       
   
   
@@ -829,8 +1187,6 @@
       
   
   
-    
-  
   
   
     
@@ -860,24 +1216,22 @@
     
     
       
-        
-        
-      
       
     
     
       
+        
+        
+      
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
       
         
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" checked>
-        
-          
-          <div class="md-nav__link md-nav__container">
-            <a href="../../" class="md-nav__link ">
-              
+  
+  
+  
+    <a href="../../models/" class="md-nav__link">
+      
   
   
   <span class="md-ellipsis">
@@ -891,758 +1245,12 @@
   
   
 
-            </a>
-            
-              
-              <label class="md-nav__link " for="__nav_6" id="__nav_6_label" tabindex="">
-                <span class="md-nav__icon md-icon"></span>
-              </label>
-            
-          </div>
-        
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="true">
-          <label class="md-nav__title" for="__nav_6">
-            <span class="md-nav__icon md-icon"></span>
-            
-  
-    Models
-  
-
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
-              
-            
-              
-                
-  
-  
-  
-  
-    
-    
-      
-        
-      
-        
-      
-        
-      
-    
-    
-    
-      
-      
-    
-    
-      
-        
-        
-      
-    
-    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
-      
-        
-  
-  
-  
-    
-  
-  
-  
-    <a href="../../modelpack/" class="md-nav__link">
-      
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Model Zoo
-  
-
-    
-  </span>
-  
-  
-
       
         <span class="md-nav__icon md-icon"></span>
       
     </a>
   
 
-  
-
-      
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    
-    
-      
-        
-      
-        
-      
-    
-    
-    
-      
-      
-    
-    
-      
-        
-        
-      
-    
-    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
-      
-        
-  
-  
-  
-    <a href="../../training/vision/" class="md-nav__link">
-      
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Model Training
-  
-
-    
-  </span>
-  
-  
-
-      
-        <span class="md-nav__icon md-icon"></span>
-      
-    </a>
-  
-
-      
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    
-    
-      
-        
-          
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-    
-    
-    
-      
-      
-    
-    
-      
-        
-        
-      
-    
-    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
-      
-        
-  
-  
-  
-    <a href="../../conversion/" class="md-nav__link">
-      
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Model Conversion
-  
-
-    
-  </span>
-  
-  
-
-      
-        <span class="md-nav__icon md-icon"></span>
-      
-    </a>
-  
-
-      
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    
-    
-      
-        
-      
-        
-      
-        
-      
-    
-    
-    
-      
-      
-    
-    
-      
-        
-        
-      
-    
-    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
-      
-        
-  
-  
-  
-    
-  
-  
-  
-    <a href="../../validation/vision/managed/" class="md-nav__link">
-      
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Model Validation
-  
-
-    
-  </span>
-  
-  
-
-      
-        <span class="md-nav__icon md-icon"></span>
-      
-    </a>
-  
-
-  
-
-      
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-    
-  
-  
-  
-    
-    
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-    
-    
-    
-      
-      
-    
-    
-      
-    
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
-      
-        
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_6" checked>
-        
-          
-          <label class="md-nav__link" for="__nav_6_6" id="__nav_6_6_label" tabindex="0">
-            
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Model Deployment
-  
-
-    
-  </span>
-  
-  
-
-            <span class="md-nav__icon md-icon"></span>
-          </label>
-        
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_6_label" aria-expanded="true">
-          <label class="md-nav__title" for="__nav_6_6">
-            <span class="md-nav__icon md-icon"></span>
-            
-  
-    Model Deployment
-  
-
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../studio/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Deploying in EdgeFirst Studio
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../maivin/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Deploying to the Maivin
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../2d_raivin/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Deploying to the Raivin (Vision)
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../3d_raivin/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Deploying to the Raivin (Fusion)
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-    
-  
-  
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Deploying to Embedded Targets
-  
-
-    
-  </span>
-  
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Deploying to Embedded Targets
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#installation" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Installation
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#download-the-model" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Download the Model
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#usage" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Usage
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Usage">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#live-camera-mode" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Live Camera Mode
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#next-steps" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Next Steps
-      
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    
-    
-      
-        
-          
-        
-      
-        
-      
-        
-      
-    
-    
-    
-      
-      
-    
-    
-      
-        
-        
-      
-    
-    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
-      
-        
-  
-  
-  
-    <a href="../pc/" class="md-nav__link">
-      
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Deploying to the PC
-  
-
-    
-  </span>
-  
-  
-
-      
-        <span class="md-nav__icon md-icon"></span>
-      
-    </a>
-  
-
-      
-    </li>
-  
-
-              
-            
-          </ul>
-        </nav>
-      
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../metadata/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Model Metadata
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../cameraadaptor/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Camera Adaptor
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../augmentations/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Vision Augmentations
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-          </ul>
-        </nav>
       
     </li>
   
@@ -1695,7 +1303,7 @@
   
   
   
-    <a href="../../../perception/" class="md-nav__link">
+    <a href="../../perception/" class="md-nav__link">
       
   
   
@@ -1762,7 +1370,7 @@
   
   
   
-    <a href="../../../platforms/" class="md-nav__link">
+    <a href="../../platforms/" class="md-nav__link">
       
   
   
@@ -1808,75 +1416,6 @@
     
   
   
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#installation" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Installation
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#download-the-model" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Download the Model
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#usage" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Usage
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Usage">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#live-camera-mode" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Live Camera Mode
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#next-steps" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Next Steps
-      
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
 </nav>
                   </div>
                 </div>
@@ -1891,49 +1430,6 @@
 
 
 
-  <nav class="md-path" aria-label="Navigation" >
-    <ol class="md-path__list">
-      
-      
-        
-  
-  
-    
-    
-      <li class="md-path__item">
-        <a href="../../" class="md-path__link">
-          
-  <span class="md-ellipsis">
-    Models
-  </span>
-
-        </a>
-      </li>
-    
-  
-
-      
-        
-  
-  
-    
-    
-      <li class="md-path__item">
-        <a href="../studio/" class="md-path__link">
-          
-  <span class="md-ellipsis">
-    Model Deployment
-  </span>
-
-        </a>
-      </li>
-    
-  
-
-      
-    </ol>
-  </nav>
-
               
               <article class="md-content__inner md-typeset">
                 
@@ -1941,101 +1437,50 @@
 
 
 
-<h1 id="deploying-to-embedded-targets">Deploying to Embedded Targets</h1>
-<p>This guide will walk you through installing the EdgeFirst Middleware in "user-mode" on a target device.  If you're using a <a href="../maivin/">Maivin</a> or <a href="../3d_raivin/">Raivin</a> refer to their deployment guides instead.</p>
-<figure>
-            <img align="center" alt="NXP i.MX 8M Plus EVK" src="../../../platforms/assets/imx8mpevk-no-bg.png" />
-            <figcaption>NXP i.MX 8M Plus EVK</figcaption>
-            </figure>
-<h2 id="installation">Installation</h2>
-<div class="admonition warning">
-<p class="admonition-title">Warning</p>
-<p>This workflow is currently only supported on NXP i.MX 8M Plus EVK platforms running the <a href="https://www.nxp.com/design/design-center/software/embedded-software/i-mx-software/embedded-linux-for-i-mx-applications-processors:IMXLINUX">NXP Yocto BSP</a>.</p>
-</div>
-<p>The EdgeFirst Middleware can be easily installed on embedded targets using the Python package manager to install the middleware binaries and sample models.  Simply run the following command to install the middleware.</p>
-<div class="highlight"><pre><span></span><code>pip3<span class="w"> </span>install<span class="w"> </span>edgefirst
-</code></pre></div>
-<p>This can also be done through a Python virtual environment to keep all the packages in a user-defined location.</p>
-<div class="highlight"><pre><span></span><code>pip3<span class="w"> </span>install<span class="w"> </span>virtualenv
-python3<span class="w"> </span>-m<span class="w"> </span>virtualenv<span class="w"> </span>venv
-<span class="nb">source</span><span class="w"> </span>venv/bin/activate
-pip3<span class="w"> </span>install<span class="w"> </span>edgefirst
-</code></pre></div>
-<h2 id="download-the-model">Download the Model</h2>
-<p>Download the model from EdgeFirst Studio into the device.  There are two methods for downloading the model.  The first method is to download the model from EdgeFirst Studio and then SCP the model file to the device.  The second method is to use the EdgeFirst Client to download the model directly in the device.</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="download-using-scp" name="__tabbed_1" type="radio" /><input id="download-using-edgefirst-client" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="download-using-scp">Download using SCP</label><label for="download-using-edgefirst-client">Download using EdgeFirst Client</label></div>
-<div class="tabbed-content">
-<div class="tabbed-block">
-<p>As mentioned under the <a href="../../training/vision/#training-outcomes">Training Outcomes</a> section, the trained models can be downloaded by clicking the training session in EdgeFirst Studio.</p>
-<p><figure markdown="span">
-        <img align="center" alt="Training Session Attributes" src="../../assets/training/training-session-attributes.jpg" />
-        <figcaption>Training Session Attributes</figcaption>
-        </figure></p>
-<p>This will open the session details and the models are listed under the "Artifacts" tab as shown below.  Click on the downward arrow indicated in red to download the models to your PC.  In this example, you will be deploying the <abbr title="TensorFlow Lite">TFLite</abbr> model in the device.</p>
-<p><figure markdown="span">
-        <img align="center" alt="Training Session Artifacts" src="../../assets/training/vision-session-artifacts.jpg" />
-        <figcaption>Training Session Artifacts</figcaption>
-        </figure></p>
-<div class="admonition note">
-<p class="admonition-title">Run Model Button</p>
-<p>You may have noticed the "Run Model" button to the right of the "Artifacts" tab.  This functionality is for <a href="../studio/">cloud-based deployments in EdgeFirst Studio</a>.</p>
-</div>
-<p>Once the model is downloaded in your PC, you can <a href="../../../platforms/networking/ssh/#secure-copy">SCP</a> the model to the device by using this command template.</p>
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span>scp<span class="w"> </span>&lt;path<span class="w"> </span>to<span class="w"> </span>the<span class="w"> </span>downloaded<span class="w"> </span>TFLite<span class="w"> </span>model&gt;<span class="w"> </span>&lt;destination<span class="w"> </span>path&gt;
-</code></pre></div>
-<p>An example command is shown below.</p>
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span>scp<span class="w"> </span>modelpack-coffeecup-480x270-rgb-t-25e7.tflite<span class="w"> </span>torizon@verdin-imx8mp-15140753:~
-</code></pre></div>
-</div>
-<div class="tabbed-block">
-<p>This method expects you to have already connected to the device via <a href="../../../platforms/networking/ssh/"><abbr title="Secure Shell">SSH</abbr></a>.  The <a href="../../../perception/studio/">EdgeFirst Client</a> can be installed via <code>pip3 install edgefirst-client</code>.  You can verify the installation with the client version command.</p>
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span>edgefirst-client<span class="w"> </span>version
-EdgeFirst<span class="w"> </span>Studio<span class="w"> </span>Server:<span class="w"> </span><span class="m">3</span>.7.8-a50429e<span class="w"> </span>Client:<span class="w"> </span><span class="m">1</span>.3.3
-</code></pre></div>
-<p>Next login to EdgeFirst Studio with the command.</p>
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span>edgefirst-client<span class="w"> </span>login
-Username:<span class="w"> </span>user
-Password:<span class="w"> </span>****
-</code></pre></div>
-<p>You can download the model on the device using the <code>download-artifact</code> command as shown below.</p>
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span>edgefirst-client<span class="w"> </span>download-artifact<span class="w"> </span>&lt;session<span class="w"> </span>ID&gt;<span class="w"> </span>&lt;model<span class="w"> </span>name&gt;
-</code></pre></div>
-<p>For example <code>edgefirst-client download-artifact t-25e7 'modelpack-coffeecup-480x270-rgb-t-25e7.tflite'</code>. This command will download to the current working directory.</p>
-<p>The <code>download-artifact</code> expects three arguments.</p>
-<ul>
-<li>session ID: Pass the trainer or validation session ID associated with the models.</li>
-<li>model name: Pass the specific model that will be downloaded to the device.  Usually this is <code>mymodel.tflite</code>.</li>
-</ul>
-<p>You can find more information on using the <a href="../../../perception/studio/">EdgeFirst Client</a> in the command line.</p>
-</div>
-</div>
-</div>
-<h2 id="usage">Usage</h2>
-<p>Once installed, the applications can be launched using the <code>edgefirst</code> launcher which handles running the various <a href="../../../perception/launcher/#services">services</a>.  The applications can also be run directly, for example <code>edgefirst-camera</code> to run the camera service.  The launcher is an optional but convenient way to run all the applications in "user-mode" in contrast to having the middleware integrated into the system as "system-mode" where the applications will be managed by systemd.</p>
-<h3 id="live-camera-mode">Live Camera Mode</h3>
-<p>The live camera mode is launched using the following command.  By default it will run a person detection and segmentation model, if you wish to run your own model simply use the <code>--model mymodel.tflite</code> parameter and provide the path to your <abbr title="TensorFlow Lite">TFLite</abbr> model.  Currently only ModelPack for Detection &amp; Segmentation is supported by the launcher.</p>
-<div class="highlight"><pre><span></span><code>edgefirst<span class="w"> </span>live
-</code></pre></div>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>The live camera mode uses the camera found at <code>/dev/video3</code> by default.  If your camera is on another device entry you can use the <code>--camera /dev/videoX</code> parameter to select the correct camera, replace <code>X</code> with the correct camera index.</p>
-</div>
-<p>Once launched, you can access the live camera view and model overlays by pointing your browser to your device's IP address using <code>https://MY_DEVICE_IP</code>.  You'll see something like the following.</p>
-<figure>
-            <img align="center" alt="EdgeFirst Live Mode on EVK" src="../../assets/deployment/evk-live.png" />
-            <figcaption>EdgeFirst Live Mode on EVK</figcaption>
-            </figure>
-<p>If testing a model trained using a few images collected on a phone you'll notice the performance is probably poor.  With small datasets it is especially important to include samples captured with the target device's camera which is luckily easy to do from the web interface.  There is a toggle button in the top-right of the screen which will start an <abbr title="Binary container format for robotics log data">MCAP</abbr> recording.</p>
-<figure>
-            <img align="center" alt="MCAP Recorder Controls" src="../../assets/deployment/evk-recorder-controls.png" />
-            <figcaption><abbr title="Binary container format for robotics log data">MCAP</abbr> Recorder Controls</figcaption>
-            </figure>
-<p>You can also access the <abbr title="Binary container format for robotics log data">MCAP</abbr> recordings from the working directory where the <code>edgefirst live</code> command was run.</p>
-<p>Once you have your <abbr title="Binary container format for robotics log data">MCAP</abbr> download to your PC you may upload it to EdgeFirst Studio to annotate and further train your model.  Uploading <abbr title="Binary container format for robotics log data">MCAP</abbr> recordings is done through the <a href="../../../studio/snapshots/#upload-from-mcap-file">Snapshot Dashboard</a>.</p>
-<h2 id="next-steps">Next Steps</h2>
-<p>In this tutorial, you have fetched the trained and validated model from EdgeFirst Studio, copied the model to the EVK and ran the model live using the EdgeFirst Live application and the EVK's camera.</p>
-<p>See our <a href="../../../perception/dev/examples/model/">developer guide</a> for examples to query the model outputs using Rust or Python.</p>
-<p>For more examples on deploying ModelPack in other platforms, see the <a href="../../../getting_started/workflows/">User Workflows</a>.</p>
+<h1 id="convert-vision-model">Convert Vision Model</h1>
+<p>We support model conversion and optimization workflows, enabling trained models to be deployed across a wide range of target platforms and hardware architectures.  Please follow the specific model conversion that matches your platform.  If you are using a Windows or macOS system, you can either follow the <abbr title="TensorFlow Lite">TFLite</abbr> Converter workflow or proceed directly to the next section to validate the <abbr title="Open Neural Network Exchange">ONNX</abbr> model, which is already provided as part of the training session outputs.</p>
+<table>
+<thead>
+<tr>
+<th>Converter</th>
+<th>Supported Targets</th>
+<th>Output Format</th>
+<th>Docs</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong><abbr title="TensorFlow Lite">TFLite</abbr> Converter</strong></td>
+<td>NXP i.MX 8M Plus (VIP8000), generic CPU/<abbr title="Neural Processing Unit">NPU</abbr> <abbr title="TensorFlow Lite">TFLite</abbr> delegates</td>
+<td><code>.tflite</code> flatbuffer</td>
+<td><a href="../../models/conversion/tflite/"><abbr title="TensorFlow Lite">TFLite</abbr> Converter</a></td>
+</tr>
+<tr>
+<td><strong>Neutron Converter</strong></td>
+<td>NXP i.MX 95, i.MX 943/952, S32N79, MCX N54x/N94x, i.MX RT700, S32K5</td>
+<td><code>.tflite</code> flatbuffer with Neutron microcode</td>
+<td><a href="../../models/conversion/neutron/">Neutron Converter</a></td>
+</tr>
+<tr>
+<td><strong>TensorRT Converter</strong></td>
+<td>NVIDIA Jetson (Orin Nano Super validated; broader lineup in progress)</td>
+<td><code>.tensorrt.zip</code> bundle (engine built on-device)</td>
+<td><a href="../../models/conversion/tensorrt/">TensorRT Converter</a></td>
+</tr>
+<tr>
+<td><strong>Ara2 Converter</strong></td>
+<td>NXP Ara240 <abbr title="Discrete Neural Processing Unit">DNPU</abbr></td>
+<td><code>.dvm</code> Dataflow Virtual Machine binary</td>
+<td><a href="../../models/conversion/ara2/">Ara2 Converter</a></td>
+</tr>
+<tr>
+<td><strong>Hailo Converter</strong></td>
+<td>Hailo-8 (26 <abbr title="Trillion Operations Per Second">TOPS</abbr>), Hailo-8L (13 <abbr title="Trillion Operations Per Second">TOPS</abbr>)</td>
+<td><code>.hef</code> Hailo Executable Format</td>
+<td><a href="../../models/conversion/hailo/">Hailo Converter</a></td>
+</tr>
+</tbody>
+</table>
 
 
 
@@ -2125,7 +1570,7 @@ Password:<span class="w"> </span>****
       <nav class="md-footer__inner md-grid" aria-label="Footer" >
         
           
-          <a href="../3d_raivin/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Deploying to the Raivin (Fusion)">
+          <a href="../train_vision/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Train Vision Model">
             <div class="md-footer__button md-icon">
               
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
@@ -2135,20 +1580,20 @@ Password:<span class="w"> </span>****
                 Previous
               </span>
               <div class="md-ellipsis">
-                Deploying to the Raivin (Fusion)
+                Train Vision Model
               </div>
             </div>
           </a>
         
         
           
-          <a href="../pc/" class="md-footer__link md-footer__link--next" aria-label="Next: Deploying in the PC">
+          <a href="../validate_vision/" class="md-footer__link md-footer__link--next" aria-label="Next: Validate Vision Model">
             <div class="md-footer__title">
               <span class="md-footer__direction">
                 Next
               </span>
               <div class="md-ellipsis">
-                Deploying in the PC
+                Validate Vision Model
               </div>
             </div>
             <div class="md-footer__button md-icon">
@@ -2281,10 +1726,10 @@ Password:<span class="w"> </span>****
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["content.code.copy", "content.code.annotate", "content.tabs.link", "navigation.instant", "navigation.tracking", "navigation.tabs", "navigation.tabs.sticky", "navigation.path", "navigation.indexes", "navigation.top", "navigation.footer", "navigation.prune", "toc.follow", "search.suggest", "search.highlight"], "search": "../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"alias": true, "default": "latest", "provider": "mike"}}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["content.code.copy", "content.code.annotate", "content.tabs.link", "navigation.instant", "navigation.tracking", "navigation.tabs", "navigation.tabs.sticky", "navigation.path", "navigation.indexes", "navigation.top", "navigation.footer", "navigation.prune", "toc.follow", "search.suggest", "search.highlight"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"alias": true, "default": "latest", "provider": "mike"}}</script>
     
     
-      <script src="../../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
       
         <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
       

@@ -133,6 +133,10 @@
          <lastmod>2026-06-05</lastmod>
     </url>
     <url>
+         <loc>https://doc.edgefirst.ai/test/getting_started/convert_vision/</loc>
+         <lastmod>2026-06-05</lastmod>
+    </url>
+    <url>
          <loc>https://doc.edgefirst.ai/test/getting_started/copy_dataset/</loc>
          <lastmod>2026-06-05</lastmod>
     </url>
@@ -249,7 +253,7 @@
          <lastmod>2026-06-05</lastmod>
     </url>
     <url>
-         <loc>https://doc.edgefirst.ai/test/models/deployment/evk/</loc>
+         <loc>https://doc.edgefirst.ai/test/models/deployment/launcher/</loc>
          <lastmod>2026-06-05</lastmod>
     </url>
     <url>
@@ -814,6 +818,10 @@
     </url>
     <url>
          <loc>https://doc.edgefirst.ai/test/profiler/quickstart/</loc>
+         <lastmod>2026-06-05</lastmod>
+    </url>
+    <url>
+         <loc>https://doc.edgefirst.ai/test/profiler/concepts/configuration/</loc>
          <lastmod>2026-06-05</lastmod>
     </url>
     <url>

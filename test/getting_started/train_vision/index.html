@@ -18,7 +18,7 @@
         <link rel="prev" href="../explore_dataset/">
       
       
-        <link rel="next" href="../validate_vision/">
+        <link rel="next" href="../convert_vision/">
       
       
         
@@ -513,6 +513,8 @@
       
         
       
+        
+      
     
     
     
@@ -743,6 +745,34 @@
 
       </a>
       
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../convert_vision/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Convert Vision Model
+  
+
+    
+  </span>
+  
+  
+
+      </a>
     </li>
   
 
@@ -1408,7 +1438,7 @@
 
 
 <h1 id="train-vision-model">Train Vision Model</h1>
-<p>Now that you have a fully annotated dataset with a training and validation partition, you can begin training your model.  This will briefly show the steps for training a model, but for an in depth tutorial, please see <a href="../../models/training/vision/">Training Vision Models</a>.</p>
+<p>Now that you have a fully annotated dataset with a version tag and a training and validation partition, you can begin training your model.  This will briefly show the steps for training a model, but for an in depth tutorial, please see <a href="../../models/training/vision/">Training Vision Models</a>.</p>
 <p>Navigate back to the "Projects" page.  You can go back to the "Projects" page by clicking the Apps Menu waffle button on the top right of the Navigation bar.  Click the first selection to take you to the "Projects page".</p>
 <figure>
             <img align="center" alt="Go to Projects Page" src="../../studio/assets/navigation/go-to-projects-page.jpg" />
@@ -1439,6 +1469,11 @@
             <img align="center" alt="Start Training Session" src="../../models/assets/training/vision-train-settings.jpg" />
             <figcaption>Start Training Session</figcaption>
             </figure>
+<div class="admonition failure">
+<p class="admonition-title">InsufficientInstanceCapacity</p>
+<p><img alt="InsufficientInstanceCapacity Error" src="/studio/assets/models/insufficient-capacity-error.jpg" /></p>
+<p>If you see this error after starting your training session, retry creating the session. This can happen when AWS reports that no EC2 instances are currently available to launch; the current workaround is to retry.</p>
+</div>
 <p>The session progress will be shown like the following below.</p>
 <figure>
             <img align="center" alt="Training Session Progress" src="../../models/assets/training/vision-session-progress.jpg" />
@@ -1565,13 +1600,13 @@
         
         
           
-          <a href="../validate_vision/" class="md-footer__link md-footer__link--next" aria-label="Next: Validate Vision Model">
+          <a href="../convert_vision/" class="md-footer__link md-footer__link--next" aria-label="Next: Convert Vision Model">
             <div class="md-footer__title">
               <span class="md-footer__direction">
                 Next
               </span>
               <div class="md-ellipsis">
-                Validate Vision Model
+                Convert Vision Model
               </div>
             </div>
             <div class="md-footer__button md-icon">

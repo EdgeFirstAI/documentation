@@ -513,6 +513,8 @@
       
         
       
+        
+      
     
     
     
@@ -745,6 +747,34 @@
   
   
     <li class="md-nav__item">
+      <a href="../../convert_vision/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Convert Vision Model
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../validate_vision/" class="md-nav__link">
         
   
@@ -836,7 +866,7 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1_10" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1_11" checked>
         
           
           <div class="md-nav__link md-nav__container">
@@ -858,14 +888,14 @@
             </a>
             
               
-              <label class="md-nav__link " for="__nav_1_10" id="__nav_1_10_label" tabindex="0">
+              <label class="md-nav__link " for="__nav_1_11" id="__nav_1_11_label" tabindex="0">
                 <span class="md-nav__icon md-icon"></span>
               </label>
             
           </div>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_1_10_label" aria-expanded="true">
-          <label class="md-nav__title" for="__nav_1_10">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_1_11_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_1_11">
             <span class="md-nav__icon md-icon"></span>
             
   
@@ -2044,7 +2074,7 @@
 <p>The auditing step may require <a href="../../../datasets/tutorials/annotations/manual/#add-2d-annotations">adding new annotations</a> for objects that were missed during the AGTG process.  Or it may require <a href="../../../datasets/tutorials/annotations/manual/#delete-2d-annotations">removing annotations</a> for objects that were improperly annotated.  Lastly, for annotations that require minor adjustments, EdgeFirst Studio has the features for <a href="../../../datasets/tutorials/annotations/manual/#adjust-2d-annotations">adjusting annotations</a>.  Please click on the links as provided for further instructions on each of these features.</p>
 <p>Once you have audited the dataset and verified that it's properly annotated, split the dataset into training and validation groups.  </p>
 <h3 id="train-vision-model">Train Vision Model</h3>
-<p>Now that you have a fully annotated dataset with a training and validation partition, you can begin training your model.  This will briefly show the steps for training a model, but for an in depth tutorial, please see <a href="../../../models/training/vision/">Training Vision Models</a>.</p>
+<p>Now that you have a fully annotated dataset with a version tag and a training and validation partition, you can begin training your model.  This will briefly show the steps for training a model, but for an in depth tutorial, please see <a href="../../../models/training/vision/">Training Vision Models</a>.</p>
 <p>Navigate back to the "Projects" page.  You can go back to the "Projects" page by clicking the Apps Menu waffle button on the top right of the Navigation bar.  Click the first selection to take you to the "Projects page".</p>
 <figure>
             <img align="center" alt="Go to Projects Page" src="../../../studio/assets/navigation/go-to-projects-page.jpg" />
@@ -2075,6 +2105,11 @@
             <img align="center" alt="Start Training Session" src="../../../models/assets/training/vision-train-settings.jpg" />
             <figcaption>Start Training Session</figcaption>
             </figure>
+<div class="admonition failure">
+<p class="admonition-title">InsufficientInstanceCapacity</p>
+<p><img alt="InsufficientInstanceCapacity Error" src="/studio/assets/models/insufficient-capacity-error.jpg" /></p>
+<p>If you see this error after starting your training session, retry creating the session. This can happen when AWS reports that no EC2 instances are currently available to launch; the current workaround is to retry.</p>
+</div>
 <p>The session progress will be shown like the following below.</p>
 <figure>
             <img align="center" alt="Training Session Progress" src="../../../models/assets/training/vision-session-progress.jpg" />
@@ -2108,6 +2143,11 @@
             <figcaption>Validate Button</figcaption>
             </figure>
 <p>Specify the name of the validation session and the model and the dataset for validation.  <em>Under the model selection, you can select various trained model artifacts from the choices of <abbr title="Open Neural Network Exchange">ONNX</abbr>, <abbr title="TensorFlow Lite">TFLite</abbr>, TensorRT, Kinara, Hailo, etc.  Choose the model you plan to deploy on target.  The purpose of validation is to assess the model of whether or not it meets the performance requirements needed to be deployed on target.</em>  The rest of the settings were kept as defaults.  Click "Start Session" at the bottom to start the validation session.</p>
+<div class="admonition failure">
+<p class="admonition-title">InsufficientInstanceCapacity</p>
+<p><img alt="InsufficientInstanceCapacity Error" src="/studio/assets/models/insufficient-capacity-error.jpg" /></p>
+<p>If you see this error after starting your validation session, retry creating the session. This can happen when AWS reports that no EC2 instances are currently available to launch; the current workaround is to retry.</p>
+</div>
 <figure>
             <img align="center" alt="Start Validation Session" src="../../../models/assets/validation/vision-validate-settings.jpg" />
             <figcaption>Start Validation Session</figcaption>

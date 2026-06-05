@@ -511,6 +511,8 @@
       
         
       
+        
+      
     
     
     
@@ -2069,6 +2071,11 @@
             <figcaption>Validation Session Fields</figcaption>
             </figure>
 <p>Once the settings have been specified, go ahead and click on the "Start Session" button on the bottom right of the dialog.  This will start the validation session which will validate the model using the validation partition of the dataset.</p>
+<div class="admonition failure">
+<p class="admonition-title">InsufficientInstanceCapacity</p>
+<p><img alt="InsufficientInstanceCapacity Error" src="/studio/assets/models/insufficient-capacity-error.jpg" /></p>
+<p>If you see this error after starting your validation session, retry creating the session. This can happen when AWS reports that no EC2 instances are currently available to launch; the current workaround is to retry.</p>
+</div>
 <h2 id="session-progress">Session Progress</h2>
 <p>Once the validation session has started, the progress with the stages will be shown on the left and additional information and status is shown on the right.</p>
 <figure>
@@ -2104,7 +2111,7 @@
 <h2 id="comparing-metrics">Comparing Metrics</h2>
 <p>It is also possible to compare validation metrics for multiple sessions.  See <a href="../../../../studio/models/#validation-sessions">Validation Sessions</a> in the Model Experiments Dashboard.</p>
 <h2 id="next-steps">Next Steps</h2>
-<p>Now that you have validated your model, you can find examples for deploying your model in <a href="../../../deployment/studio/">EdgeFirst Studio</a>, <a href="../../../deployment/pc/">PC</a>, <a href="../../../deployment/evk/">Embedded Targets</a>, the <a href="../../../deployment/maivin/">Maivin</a>, and the <a href="../../../deployment/2d_raivin/">Raivin</a>. </p>
+<p>Now that you have validated your model, you can find examples for deploying your model in <a href="../../../deployment/studio/">EdgeFirst Studio</a>, <a href="../../../deployment/pc/">PC</a>, <a href="../../../deployment/launcher/">Embedded Targets</a>, the <a href="../../../deployment/maivin/">Maivin</a>, and the <a href="../../../deployment/2d_raivin/">Raivin</a>. </p>
 
 
 

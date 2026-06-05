@@ -511,6 +511,8 @@
       
         
       
+        
+      
     
     
     
@@ -2008,6 +2010,11 @@
 <p class="admonition-title">COCO pre-trained weights and dataset compatibility</p>
 <p>The <strong>Use Default Weights</strong> option initializes from pre-trained COCO weights. These weights can technically be used as a starting point for any dataset, but <strong>if your dataset labels have no overlap with COCO category names, validation accuracy will be very poor</strong> — the model's class outputs will not correspond to your labels.</p>
 <p>For best transfer-learning results, ensure your label names match the relevant COCO categories, or supply a prior EdgeFirst training session as the starting weights.</p>
+</div>
+<div class="admonition failure">
+<p class="admonition-title">InsufficientInstanceCapacity</p>
+<p><img alt="InsufficientInstanceCapacity Error" src="/studio/assets/models/insufficient-capacity-error.jpg" /></p>
+<p>If you see this error after starting your training session, retry creating the session. This can happen when AWS reports that no EC2 instances are currently available to launch; the current workaround is to retry.</p>
 </div>
 <h2 id="session-progress">Session Progress</h2>
 <p>Once the training session has started, the progress with the stages will be shown on the left and additional information and status is shown on the right.</p>

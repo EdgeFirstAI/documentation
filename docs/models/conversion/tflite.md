@@ -34,7 +34,7 @@ The artifact can be deployed directly to any platform with a TFLite runtime, or 
 
 ## Calibration
 
-Calibration is fully automatic. EdgeFirst Studio captures a calibration snapshot from the training dataset and passes it to the converter. There is no calibration step a Studio user needs to perform manually. See [Calibration](/models/conversion/#calibration) on the conversion landing page for the broader contract.
+Calibration is fully automatic. EdgeFirst Studio captures a calibration snapshot from the training dataset and passes it to the converter. There is no calibration step a Studio user needs to perform manually. See [Calibration Snapshot](calibration.md) for the format, selection algorithm, and converter contract.
 
 ## Converting Your Model
 

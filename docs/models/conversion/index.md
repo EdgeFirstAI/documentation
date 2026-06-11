@@ -74,9 +74,9 @@ Every output artifact has its `edgefirst.json` and `labels.txt` appended to it, 
 
 ## Calibration
 
-INT8 quantization requires a representative sample of the input distribution so the converter can measure the activation ranges that determine each tensor's scale. EdgeFirst Studio captures this sample automatically during training as a `.safetensors` snapshot keyed by dataset ID and parameter hash, and the Converter App downloads it as part of the conversion job. **There is no calibration step a Studio user needs to perform manually** — the snapshot is regenerated whenever the architecture or dataset changes.
+INT8 quantization requires a representative sample of the input distribution so the converter can measure the activation ranges that determine each tensor's scale. EdgeFirst Studio captures this sample automatically during training as a `.safetensors` snapshot keyed by dataset ID and parameter hash, and the Converter App downloads it as part of the conversion job. **There is no calibration step a Studio user needs to perform manually** — the snapshot is reused across models and targets that share a data-preparation pattern, and regenerated only when the dataset or input geometry changes.
 
-The full calibration artifact format and the converter contract are documented in [Model Metadata — Calibration Artifact](../metadata.md#calibration-artifact).
+The snapshot format, the model-free selection algorithm, the parameter hash, and the producer/consumer contract are documented in [Calibration Snapshot](calibration.md).
 
 ## What's Next
 

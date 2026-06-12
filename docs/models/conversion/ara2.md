@@ -4,6 +4,9 @@ The **Ara2 Converter** compiles an ONNX model exported from an EdgeFirst Studio 
 
 The Ara2 Converter applies [Smart Quantization](/models/conversion/#smart-quantization) the same way the other INT8 converters do — by cutting the graph upstream of the decode where the trainer's `split_hints` allow it. What is unique to Ara2 is an additional accuracy lever: the Ara240 DNPU has DRAM and tolerates large output tensors, so the converter can also **promote the most quantization-hostile arithmetic inside the detect head from INT8 to INT16** while leaving it inside the quantized graph. INT16 has roughly 256× the headroom of INT8 and is enough to make the distance-to-box decoding stable without lifting it onto the CPU.
 
+!!! tip "Model Zoo — Supported Models & Benchmarks"
+    For the latest supported model list, INT8/INT16 accuracy comparisons, and validation results on the NXP Ara240 DNPU, see the [EdgeFirst Model Zoo](https://huggingface.co/spaces/EdgeFirst/Models) on Hugging Face.
+
 ## Studio Launch Form
 
 | Field | Values | Default | Meaning |

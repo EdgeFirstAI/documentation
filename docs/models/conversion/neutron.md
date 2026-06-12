@@ -4,6 +4,9 @@ The **Neutron Converter** re-encodes a quantized TFLite model for execution on *
 
 Neutron Converter is a **re-encoder, not a quantizer** — all quantization decisions are made upstream by the [TFLite Converter](/models/conversion/tflite/). If the matching quantized TFLite artifact does not already exist when the Neutron Converter launches, Studio triggers the TFLite Converter automatically and waits for it to complete. From the user's perspective the conversion is a single click; behind the scenes it is a two-stage pipeline that produces both a deployable TFLite artifact and a Neutron-compiled artifact for the chosen target.
 
+!!! tip "Model Zoo — Supported Models & Benchmarks"
+    For the latest supported model list, per-model validation results, and benchmark numbers across the eIQ Neutron silicon family (i.MX 95, i.MX 94x, and more), see the [EdgeFirst Model Zoo](https://huggingface.co/spaces/EdgeFirst/Models) on Hugging Face.
+
 ## Studio Launch Form
 
 The launch form has two field groups: an **upstream** group plumbed through to the TFLite Converter, and a **conversion** group that controls the Neutron stage itself.

@@ -7,6 +7,12 @@ file. The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.
 
 ### Added
 
+- Model Zoo callout admonition added to all five converter pages
+  (`tflite`, `neutron`, `tensorrt`, `ara2`, `hailo`) directing users to the
+  [EdgeFirst Model Zoo on Hugging Face](https://huggingface.co/spaces/EdgeFirst/Models)
+  for the latest supported model list, platform-specific validation results, and
+  benchmark numbers.
+
 - `mkdocs-redirects` plugin with a `redirect_maps` configuration so previously
   published documentation URLs no longer return 404 after pages were moved or
   renamed. The redirect map covers the model conversion documentation that was

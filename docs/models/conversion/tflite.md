@@ -4,6 +4,9 @@ The **TFLite Converter** is the EdgeFirst reference quantizer. It takes a Tensor
 
 INT8 is the recommended deployment precision; float16 and float32 paths exist for cases where INT8 accuracy is not yet acceptable. INT8 conversion applies the [EdgeFirst Smart Quantizer](/models/conversion/#smart-quantization) — per-scale graph surgery that gives each feature-pyramid endpoint its own independent quantization parameters and lifts the decode operations out of the INT8 datapath onto the runtime side. Calibration is fully automatic from the training session.
 
+!!! tip "Model Zoo — Supported Models & Benchmarks"
+    For the latest supported model list, per-model validation results, and INT8 accuracy benchmarks on i.MX 8M Plus and other TFLite targets, see the [EdgeFirst Model Zoo](https://huggingface.co/spaces/EdgeFirst/Models) on Hugging Face.
+
 ## Studio Launch Form
 
 | Field | Values | Default | Meaning |

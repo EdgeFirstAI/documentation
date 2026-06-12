@@ -4,6 +4,9 @@ The **TensorRT Converter** prepares an ONNX model exported from an EdgeFirst Stu
 
 This design is forced by TensorRT's binary contract: TensorRT 10.3 engine binaries are platform-locked at the OS and ABI level. An engine built on AWS Batch (x86-64) is rejected by the Jetson aarch64 TRT runtime with a "platform tag mismatch" error, even when the GPU compute capabilities match. NVIDIA's own DeepStream / TAO workflow defers the engine build to the target device for the same reason; the TensorRT Converter follows that pattern.
 
+!!! tip "Model Zoo — Supported Models & Benchmarks"
+    For the latest supported model list, FP16 accuracy benchmarks, and validation results on NVIDIA Jetson, see the [EdgeFirst Model Zoo](https://huggingface.co/spaces/EdgeFirst/Models) on Hugging Face.
+
 ## Studio Launch Form
 
 The TensorRT Converter exposes **no conversion knobs** in EdgeFirst Studio — there is no `conversion` group on the launch form. You pick the training session and click **Start App**; the form includes an informational note explaining that the output is a portable bundle requiring an on-device build step.

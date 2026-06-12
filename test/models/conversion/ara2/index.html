@@ -1937,6 +1937,10 @@
 <h1 id="ara2-converter">Ara2 Converter</h1>
 <p>The <strong>Ara2 Converter</strong> compiles an <abbr title="Open Neural Network Exchange">ONNX</abbr> model exported from an EdgeFirst Studio training session into a Kinara Dataflow Virtual Machine (<code>.dvm</code>) binary that runs on the <a href="https://www.nxp.com/products/ARA240">NXP Ara240 Discrete <abbr title="Neural Processing Unit">NPU</abbr></a> — formerly the Kinara Ara-2 — found on the EdgeFirst i.MX 8M Plus freedom board and other Ara240-equipped EdgeFirst platforms.</p>
 <p>The Ara2 Converter applies <a href="/models/conversion/#smart-quantization">Smart Quantization</a> the same way the other <abbr title="Signed 8-bit integer">INT8</abbr> converters do — by cutting the graph upstream of the decode where the trainer's <code>split_hints</code> allow it. What is unique to Ara2 is an additional accuracy lever: the Ara240 <abbr title="Discrete Neural Processing Unit">DNPU</abbr> has <abbr title="Dynamic Random-Access Memory">DRAM</abbr> and tolerates large output tensors, so the converter can also <strong>promote the most quantization-hostile arithmetic inside the detect head from <abbr title="Signed 8-bit integer">INT8</abbr> to <abbr title="Signed 16-bit integer">INT16</abbr></strong> while leaving it inside the quantized graph. <abbr title="Signed 16-bit integer">INT16</abbr> has roughly 256× the headroom of <abbr title="Signed 8-bit integer">INT8</abbr> and is enough to make the distance-to-box decoding stable without lifting it onto the CPU.</p>
+<div class="admonition tip">
+<p class="admonition-title">Model Zoo — Supported Models &amp; Benchmarks</p>
+<p>For the latest supported model list, <abbr title="Signed 8-bit integer">INT8</abbr>/<abbr title="Signed 16-bit integer">INT16</abbr> accuracy comparisons, and validation results on the NXP Ara240 <abbr title="Discrete Neural Processing Unit">DNPU</abbr>, see the <a href="https://huggingface.co/spaces/EdgeFirst/Models">EdgeFirst Model Zoo</a> on Hugging Face.</p>
+</div>
 <h2 id="studio-launch-form">Studio Launch Form</h2>
 <table>
 <thead>

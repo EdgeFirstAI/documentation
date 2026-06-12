@@ -1915,6 +1915,10 @@
 <h1 id="tflite-converter"><abbr title="TensorFlow Lite">TFLite</abbr> Converter</h1>
 <p>The <strong><abbr title="TensorFlow Lite">TFLite</abbr> Converter</strong> is the EdgeFirst reference quantizer. It takes a TensorFlow <code>SavedModel</code> exported from an EdgeFirst Studio training session and produces a TensorFlow Lite flatbuffer that can be deployed on any <abbr title="TensorFlow Lite">TFLite</abbr>-compatible runtime — including the NXP i.MX 8M Plus (via the OpenVX/VIP8000 delegate), the NXP eIQ Neutron NPUs (via the <a href="/models/conversion/neutron/">Neutron Converter</a> downstream stage), Arm CPUs (<abbr title="Arm SIMD instruction set">NEON</abbr>-accelerated), and the standard TensorFlow Lite delegate set.</p>
 <p><abbr title="Signed 8-bit integer">INT8</abbr> is the recommended deployment precision; float16 and float32 paths exist for cases where <abbr title="Signed 8-bit integer">INT8</abbr> accuracy is not yet acceptable. <abbr title="Signed 8-bit integer">INT8</abbr> conversion applies the <a href="/models/conversion/#smart-quantization">EdgeFirst Smart Quantizer</a> — per-scale graph surgery that gives each feature-pyramid endpoint its own independent quantization parameters and lifts the decode operations out of the <abbr title="Signed 8-bit integer">INT8</abbr> datapath onto the runtime side. Calibration is fully automatic from the training session.</p>
+<div class="admonition tip">
+<p class="admonition-title">Model Zoo — Supported Models &amp; Benchmarks</p>
+<p>For the latest supported model list, per-model validation results, and <abbr title="Signed 8-bit integer">INT8</abbr> accuracy benchmarks on i.MX 8M Plus and other <abbr title="TensorFlow Lite">TFLite</abbr> targets, see the <a href="https://huggingface.co/spaces/EdgeFirst/Models">EdgeFirst Model Zoo</a> on Hugging Face.</p>
+</div>
 <h2 id="studio-launch-form">Studio Launch Form</h2>
 <table>
 <thead>

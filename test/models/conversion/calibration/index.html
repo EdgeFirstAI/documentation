@@ -12,13 +12,13 @@
         <meta name="author" content="Au-Zone Technologies">
       
       
-        <link rel="canonical" href="https://doc.edgefirst.ai/test/models/training/vision/">
+        <link rel="canonical" href="https://doc.edgefirst.ai/test/models/conversion/calibration/">
       
       
-        <link rel="prev" href="../../fusion/benchmarks/">
+        <link rel="prev" href="../">
       
       
-        <link rel="next" href="../fusion/">
+        <link rel="next" href="../tflite/">
       
       
         
@@ -29,7 +29,7 @@
     
     
       
-        <title>Training Vision Models - EdgeFirst Studio Documentation</title>
+        <title>Calibration Snapshot - EdgeFirst Studio Documentation</title>
       
     
     
@@ -81,17 +81,17 @@
     
   
 <meta property="og:type" content="website" />
-<meta property="og:title" content="Training Vision Models - EdgeFirst Studio Documentation" />
+<meta property="og:title" content="Calibration Snapshot - EdgeFirst Studio Documentation" />
 <meta property="og:description" content="EdgeFirst Studio Documentation" />
-<meta property="og:image" content="https://doc.edgefirst.ai/test/assets/images/social/models/training/vision.png" />
+<meta property="og:image" content="https://doc.edgefirst.ai/test/assets/images/social/models/conversion/calibration.png" />
 <meta property="og:image:type" content="image/png" />
 <meta property="og:image:width" content="1200" />
 <meta property="og:image:height" content="630" />
-<meta property="og:url" content="https://doc.edgefirst.ai/test/models/training/vision/" />
+<meta property="og:url" content="https://doc.edgefirst.ai/test/models/conversion/calibration/" />
 <meta property="twitter:card" content="summary_large_image" />
-<meta property="twitter:title" content="Training Vision Models - EdgeFirst Studio Documentation" />
+<meta property="twitter:title" content="Calibration Snapshot - EdgeFirst Studio Documentation" />
 <meta property="twitter:description" content="EdgeFirst Studio Documentation" />
-<meta property="twitter:image" content="https://doc.edgefirst.ai/test/assets/images/social/models/training/vision.png" />
+<meta property="twitter:image" content="https://doc.edgefirst.ai/test/assets/images/social/models/conversion/calibration.png" />
 </head>
   
   
@@ -111,7 +111,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#training-vision-models" class="md-skip">
+        <a href="#calibration-snapshot" class="md-skip">
           Skip to content
         </a>
       
@@ -165,7 +165,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Training Vision Models
+              Calibration Snapshot
             
           </span>
         </div>
@@ -985,12 +985,82 @@
                 
   
   
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../training/vision/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Model Training
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
     
   
   
   
     
     
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
       
         
       
@@ -1009,17 +1079,18 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_3" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_4" checked>
         
           
-          <label class="md-nav__link" for="__nav_6_3" id="__nav_6_3_label" tabindex="0">
-            
+          <div class="md-nav__link md-nav__container">
+            <a href="../" class="md-nav__link ">
+              
   
   
   <span class="md-ellipsis">
     
   
-    Model Training
+    Model Conversion
   
 
     
@@ -1027,19 +1098,27 @@
   
   
 
-            <span class="md-nav__icon md-icon"></span>
-          </label>
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_6_4" id="__nav_6_4_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_3_label" aria-expanded="true">
-          <label class="md-nav__title" for="__nav_6_3">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_4_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_6_4">
             <span class="md-nav__icon md-icon"></span>
             
   
-    Model Training
+    Model Conversion
   
 
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
+            
+              
             
               
                 
@@ -1064,7 +1143,7 @@
   <span class="md-ellipsis">
     
   
-    Training Vision Models
+    Calibration Snapshot
   
 
     
@@ -1082,7 +1161,7 @@
   <span class="md-ellipsis">
     
   
-    Training Vision Models
+    Calibration Snapshot
   
 
     
@@ -1108,10 +1187,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#view-dataset" class="md-nav__link">
+  <a href="#the-problem" class="md-nav__link">
     <span class="md-ellipsis">
       
-        View Dataset
+        The Problem
       
     </span>
   </a>
@@ -1119,10 +1198,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#specify-project-experiments" class="md-nav__link">
+  <a href="#the-solution" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Specify Project Experiments
+        The Solution
       
     </span>
   </a>
@@ -1130,10 +1209,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#create-model-experiment" class="md-nav__link">
+  <a href="#anatomy-of-a-snapshot" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Create Model Experiment
+        Anatomy of a Snapshot
       
     </span>
   </a>
@@ -1141,22 +1220,44 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#create-training-session" class="md-nav__link">
+  <a href="#selection-maximizing-dynamic-range" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Create Training Session
+        Selection: Maximizing Dynamic Range
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Create Training Session">
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#letterbox-not-normalization" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Letterbox, Not Normalization
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#parameter-hash-and-caching" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Parameter Hash and Caching
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Parameter Hash and Caching">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#enable-training-and-use-default-weights" class="md-nav__link">
+  <a href="#caching-against-the-studio-snapshot-store" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Enable Training and Use Default Weights
+        Caching against the Studio snapshot store
       
     </span>
   </a>
@@ -1169,10 +1270,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#session-progress" class="md-nav__link">
+  <a href="#embedded-metadata-schema" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Session Progress
+        Embedded Metadata Schema
       
     </span>
   </a>
@@ -1180,10 +1281,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#completed-session" class="md-nav__link">
+  <a href="#provenance-and-traceability" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Completed Session
+        Provenance and Traceability
       
     </span>
   </a>
@@ -1191,10 +1292,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#training-outcomes" class="md-nav__link">
+  <a href="#implementing-a-producer" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Training Outcomes
+        Implementing a Producer
       
     </span>
   </a>
@@ -1202,10 +1303,21 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#next-steps" class="md-nav__link">
+  <a href="#implementing-a-consumer" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Next Steps
+        Implementing a Consumer
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#whats-next" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What's Next
       
     </span>
   </a>
@@ -1228,14 +1340,126 @@
   
   
     <li class="md-nav__item">
-      <a href="../fusion/" class="md-nav__link">
+      <a href="../tflite/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    Training Fusion Models
+    TFLite Converter
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../neutron/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Neutron Converter
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tensorrt/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    TensorRT Converter
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ara2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Ara2 Converter
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../hailo/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Hailo Converter
   
 
     
@@ -1251,76 +1475,6 @@
             
           </ul>
         </nav>
-      
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    
-    
-      
-        
-          
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-    
-    
-    
-      
-      
-    
-    
-      
-        
-        
-      
-    
-    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
-      
-        
-  
-  
-  
-    <a href="../../conversion/" class="md-nav__link">
-      
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Model Conversion
-  
-
-    
-  </span>
-  
-  
-
-      
-        <span class="md-nav__icon md-icon"></span>
-      
-    </a>
-  
-
       
     </li>
   
@@ -1717,10 +1871,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#view-dataset" class="md-nav__link">
+  <a href="#the-problem" class="md-nav__link">
     <span class="md-ellipsis">
       
-        View Dataset
+        The Problem
       
     </span>
   </a>
@@ -1728,10 +1882,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#specify-project-experiments" class="md-nav__link">
+  <a href="#the-solution" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Specify Project Experiments
+        The Solution
       
     </span>
   </a>
@@ -1739,10 +1893,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#create-model-experiment" class="md-nav__link">
+  <a href="#anatomy-of-a-snapshot" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Create Model Experiment
+        Anatomy of a Snapshot
       
     </span>
   </a>
@@ -1750,22 +1904,44 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#create-training-session" class="md-nav__link">
+  <a href="#selection-maximizing-dynamic-range" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Create Training Session
+        Selection: Maximizing Dynamic Range
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Create Training Session">
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#letterbox-not-normalization" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Letterbox, Not Normalization
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#parameter-hash-and-caching" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Parameter Hash and Caching
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Parameter Hash and Caching">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#enable-training-and-use-default-weights" class="md-nav__link">
+  <a href="#caching-against-the-studio-snapshot-store" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Enable Training and Use Default Weights
+        Caching against the Studio snapshot store
       
     </span>
   </a>
@@ -1778,10 +1954,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#session-progress" class="md-nav__link">
+  <a href="#embedded-metadata-schema" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Session Progress
+        Embedded Metadata Schema
       
     </span>
   </a>
@@ -1789,10 +1965,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#completed-session" class="md-nav__link">
+  <a href="#provenance-and-traceability" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Completed Session
+        Provenance and Traceability
       
     </span>
   </a>
@@ -1800,10 +1976,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#training-outcomes" class="md-nav__link">
+  <a href="#implementing-a-producer" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Training Outcomes
+        Implementing a Producer
       
     </span>
   </a>
@@ -1811,10 +1987,21 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#next-steps" class="md-nav__link">
+  <a href="#implementing-a-consumer" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Next Steps
+        Implementing a Consumer
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#whats-next" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What's Next
       
     </span>
   </a>
@@ -1865,10 +2052,10 @@
     
     
       <li class="md-path__item">
-        <a href="./" class="md-path__link">
+        <a href="../" class="md-path__link">
           
   <span class="md-ellipsis">
-    Model Training
+    Model Conversion
   </span>
 
         </a>
@@ -1887,179 +2074,442 @@
 
 
 
-<h1 id="training-vision-models">Training Vision Models</h1>
-<p>This tutorial describes the steps to train <strong>Vision</strong> models in EdgeFirst Studio.  Recall that Vision models are models that perform object detection in camera frames or images.  EdgeFirst Studio is capable of training ModelPack and Ultralytics object detection models.  For a tutorial to train Fusion models, see <a href="../fusion/">Training Fusion Models</a>.</p>
-<h2 id="view-dataset">View Dataset</h2>
-<p>First ensure that the dataset is ready to be used for training.  This means that the dataset meets all of the criteria listed below.</p>
-<ul class="task-list">
-<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> Complete Annotations (bounding boxes and/or segmentation masks/polygons)</li>
-<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> Contains training and validation partitions</li>
-<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> Contains a dataset tag/version</li>
+<h1 id="calibration-snapshot">Calibration Snapshot</h1>
+<p>Every quantizing Converter App needs the same thing before it can turn a
+float32 graph into an <abbr title="Signed 8-bit integer">INT8</abbr> binary: a small, representative batch of model
+inputs to measure activation ranges against. EdgeFirst Studio produces that
+batch <strong>once, at training time</strong>, as a portable <code>.safetensors</code> <strong>calibration
+snapshot</strong> — a pre-filtered, pre-processed subset of the training data with
+full provenance back to the source samples. Every converter downloads the same
+snapshot, so calibration is consistent across targets and never has to be
+regenerated per conversion.</p>
+<h2 id="the-problem">The Problem</h2>
+<p><abbr title="Signed 8-bit integer">INT8</abbr> quantization needs a representative sample of the input distribution to
+measure the per-tensor activation ranges that set each quantization scale (see
+<a href="../#smart-quantization">Smart Quantization</a> for why those ranges matter
+so much). Producing that sample naively is wasteful and fragile:</p>
+<ul>
+<li><strong>The pool is enormous.</strong> A calibration set is typically ~500 samples, but
+  the training dataset it is drawn from can be tens of thousands, hundreds of
+  thousands, or millions of samples. Re-selecting 500 from that pool inside
+  every converter, for every target, on every conversion, repeats expensive
+  work that only depends on the <em>dataset</em>, not the model or the target.</li>
+<li><strong>Preprocessing is the model's secret.</strong> Calibration inputs must be
+  preprocessed exactly as the model expects — the same letterbox geometry, the
+  same channel layout, the same <a href="../../cameraadaptor/">CameraAdaptor</a> colour
+  conversion used in training. A model-agnostic converter does not — and should
+  not — know those details.</li>
+<li><strong>Divergent assumptions drift.</strong> When each producer and consumer bakes its
+  own conventions (tensor names, value ranges, resize policy) into an
+  undocumented file, they quietly disagree, and the failure shows up as lost
+  accuracy on hardware rather than a clear error.</li>
 </ul>
-<p>The section <a href="../../../datasets/tutorials/management/#view-dataset">View Dataset</a> will show an example of a completed dataset.</p>
-<h2 id="specify-project-experiments">Specify Project Experiments</h2>
-<p>From the <a href="../../../studio/projects/">Projects page</a>, choose the project that contains the dataset you plan to use.  In this example, the project chosen is called "My First Project".  Next click the "Model Experiments" button as indicated in red.</p>
-<figure>
-            <img align="center" alt="Model Experiments" src="../../assets/training/model-experiments.jpg" />
-            <figcaption>Model Experiments</figcaption>
-            </figure>
-<h2 id="create-model-experiment">Create Model Experiment</h2>
-<p>You will be greeted with the "Model Experiments" page.  A new project will not have any experiments as shown below.  You will need to first create a model experiment.  As mentioned in the <a href="../../../studio/models/">Model Experiments Dashboard</a>, model experiments will contain both training and validation sessions.</p>
-<figure>
-            <img align="center" alt="Model Experiments Page" src="../../assets/training/model-experiments-page.jpg" />
-            <figcaption>Model Experiments Page</figcaption>
-            </figure>
-<p>Click on the "New Experiment" button as shown on the top right corner of the page.  Enter the name and the description of the experiment marked by the fields shown below.  Click on the "Create New Experiment" button to create your experiment.</p>
-<figure>
-            <img align="center" alt="New Experiment Button" src="../../assets/training/create-experiment.jpg" />
-            <figcaption>New Experiment Button</figcaption>
-            </figure>
-<p>Your created experiment will appear like the following below.  At the start, this experiment will contain zero training and validation sessions.  The next step will show how to start your first training session on this experiment using the dataset in the project.</p>
-<figure>
-            <img align="center" alt="Created Experiment" src="../../assets/training/created-experiment.jpg" />
-            <figcaption>Created Experiment</figcaption>
-            </figure>
-<h2 id="create-training-session">Create Training Session</h2>
-<p>In the experiment card, click the "Training Sessions" button as indicated in red below.</p>
-<figure>
-            <img align="center" alt="Training Sessions" src="../../assets/training/training-sessions.jpg" />
-            <figcaption>Training Sessions</figcaption>
-            </figure>
-<p>You will be greeted to the "Training Sessions" page as shown below.  </p>
-<figure>
-            <img align="center" alt="Training Sessions Page" src="../../assets/training/training-sessions-page.jpg" />
-            <figcaption>Training Sessions Page</figcaption>
-            </figure>
-<p>Start a training session by clicking on the "Actions" button on the top right corner of the page and then click "+ New" as indicated.</p>
-<figure>
-            <img align="center" alt="New Session Button" src="../../assets/training/new-session-button.jpg" />
-            <figcaption>New Session Button</figcaption>
-            </figure>
-<p>You will be greeted with a training session dialog.  In this dialog, specify the "Trainer Type" to either "ModelPack" or "Ultralytics" and provide a name and description of the training session as shown below.  Next specify the dataset to be used with training and validation partitions.  In this example, the dataset specified is the "Coffee Cup" dataset which was used as an example under the <a href="../../../getting_started/capture_data/">Getting Started</a>.  Next specify the training parameters.  By default, object detection (bounding boxes) model will be trained.  However, you can specify either "Segmentation" or both.  Additional information on these parameters are provided by hovering over the info button <img alt="Info Button" src="../../../assets/buttons/studio-info-button.jpg" />.</p>
-<div class="admonition tip">
-<p class="admonition-title">Input Resolution</p>
-<p>We recommend changing the input resolution to 640x360 to maximize detection rates on small datasets.</p>
+<h2 id="the-solution">The Solution</h2>
+<p>The calibration snapshot moves all of that work to the one place that already
+has the answers — the trainer — and captures the result in a self-describing,
+content-addressed file:</p>
+<ul>
+<li><strong>Generated once at training time.</strong> The trainer already decodes and
+  letterboxes the dataset; it selects the calibration subset and writes the
+  snapshot as a by-product of export. No separate calibration job exists.</li>
+<li><strong>Pre-filtered.</strong> A model-free selection picks the ~500 samples that best
+  span the dataset's pixel dynamic range, so a small set calibrates as well as
+  — or better than — the full pool.</li>
+<li><strong>Pre-processed through letterbox, but not normalization.</strong> The geometric
+  preprocessing that <em>is</em> the model's secret (letterbox resize, channel layout,
+  CameraAdaptor) is baked into the stored pixels. The numeric normalization
+  that converters legitimately differ on is <strong>recorded as metadata, not
+  applied</strong> (see <a href="#letterbox-not-normalization">Letterbox, Not Normalization</a>).</li>
+<li><strong>Reusable across models by hash.</strong> The filename encodes a hash of the
+  generation parameters. Two models trained on the same dataset with the same
+  input geometry and data-preparation pattern resolve to the <strong>same snapshot</strong>
+  — it is generated once and reused, across model architectures and across
+  every converter, automatically.</li>
+<li><strong>Traceable.</strong> The snapshot records which EdgeFirst Studio instance, dataset,
+  and individual samples it was built from, so any calibration set — and any
+  model calibrated from it — can be traced back to its exact source data (see
+  <a href="#provenance-and-traceability">Provenance and Traceability</a>).</li>
+</ul>
+<pre class="mermaid"><code>flowchart LR
+    subgraph Train["Training (once per dataset + geometry)"]
+        Pool["Training split&lt;br/&gt;10³–10⁶ samples"] --&gt; Select["Model-free&lt;br/&gt;dynamic-range selection"]
+        Select --&gt; Pre["Letterbox +&lt;br/&gt;CameraAdaptor"]
+        Pre --&gt; Snap["calibration-{dataset}-{hash}&lt;br/&gt;.safetensors"]
+    end
+    Snap --&gt; Store["EdgeFirst Studio&lt;br/&gt;Snapshot store"]
+    Store --&gt;|"download by filename"| C1["TFLite Converter"]
+    Store --&gt;|"download by filename"| C2["Ara2 Converter"]
+    Store --&gt;|"download by filename"| C3["Hailo Converter"]
+    C1 &amp; C2 &amp; C3 --&gt; Q["INT8 quantization"]</code></pre>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>A calibration snapshot is fully determined by <strong>dataset-source
+parameters</strong> — the dataset, split, input geometry, colour convention, and
+selection policy. <strong>No model and no model inference is involved in
+producing it.</strong> This is what lets one snapshot serve every model and every
+target that share a data-preparation pattern.</p>
 </div>
-<div class="admonition warning">
-<p class="admonition-title">Large Batch Size</p>
-<p>For small datasets, a large batch size may produce poor results. Use a batch size of 4 or 8.</p>
-</div>
-<p>For more information on available "Data Augmentations" please see <a href="../../augmentations/">Vision Augmentations</a>.</p>
-<figure>
-            <img align="center" alt="Training Session Fields" src="../../assets/training/vision-train-settings.jpg" />
-            <figcaption>Training Session Fields</figcaption>
-            </figure>
-<ol>
-<li><strong>Model Name</strong>: This field specifies the name of the training session and will be used to name the artifacts (e.g. <code>modelpack-coffecup-640x640-rgba-t-&lt;session ID&gt;.tflite</code> or <code>modelpack-coffecup-640x640-rgba-t-&lt;session ID&gt;.onnx</code>)</li>
-<li><strong>Description</strong>: This field is used to add some hints about the training session.  Commonly used to highlight some parameters</li>
-<li><strong>Training Data</strong>: In this section the user must select the dataset as well as train/val groups</li>
-<li><strong>Input Resolution</strong>: The user can pick predefined input resolutions.  Even when ModelPack accepts any resolution we keep this option as simple as possible.  In case you need a different resolution to be supported, please reach out and <a href="mailto:support@edgefirst.ai">email our support team</a></li>
-<li><strong>Camera Adaptor</strong>: ModelPack accepts six different input optimizations.  It could be either of <abbr title="Red Green Blue">RGB</abbr>, BGR, <abbr title="Red Green Blue Alpha">RGBA</abbr>, BGRA, Greyscale, or YUYV</li>
-<li><strong>Model Parameters</strong>: This section configures the model architecture<ol>
-<li><strong>Model Backbone</strong>: Model backbone exposes a CSPDarknet19 optimized for boosting inference time and a CSPDarknet53 optimized for accuracy</li>
-<li><strong>Model Size</strong>: Similar to modern architectures, ModelPack also accepts dynamic scaling factors (<code>width in [0.25, 0.5, 0.75, 1.0]</code>, <code>depth in [0.33, 0.33, 0.66, 1.0]</code>)</li>
-<li><strong>Activation Function</strong>: This parameter defines the main activation used in the model. Exposed values are ReLU, ReLU6 and SiLU.  The best tradeoff between speed and accuracy is produced by ReLU6 activation in most of the cases</li>
-<li><strong>Interpolation Method</strong>: Model upsample layers are ruled by a resize operation.  This operation can run with two different algorithms: <code>Bilinear</code> or <code>Nearest</code></li>
-<li><strong>Object Detection</strong>: Enables object detection task (enabled by default)</li>
-<li><strong>Segmentation</strong>: Enables Semantic Segmentation</li>
-<li><strong>Space to Depth</strong>: This feature enables the Space to Depth Transformation to the input in order to reduce model complexity on higher resolutions</li>
-<li><strong>Split Decoder</strong>: Remove the decoder from the model and use a very optimized one from EdgeFirst.  This feature is very useful when the location of the boxes has to be precise (0-offset)</li>
-</ol>
-</li>
-<li><strong>Training Parameters</strong>: In this section the user is able to specify the number of epochs to train the model as well as the batch size.  Remember the larger the input resolution the smaller the batch size<ol>
-<li><strong>Enable Training</strong> <em>(Ultralytics only)</em>: When enabled, the model is trained using the selected weights. When disabled (default), no training is performed — weights are pushed directly to the session artifacts. See <a href="#enable-training-and-use-default-weights">Enable Training and Use Default Weights</a> below.</li>
-<li><strong>Use Default Weights</strong>: When enabled (default), training starts from pre-trained COCO weights. When disabled, starting weights are sourced from a prior training session you specify.</li>
-</ol>
-</li>
-<li><strong>Data Augmentation</strong>: This section controls the probability of each augmentation technique.  This feature is crucial for training models and reduce overfitting, especially in small datasets</li>
-<li><strong>Export Parameters</strong>: Allow the user to set a portion of data for calibration when exporting the model for <abbr title="Signed 8-bit integer">INT8</abbr> quantization</li>
-<li><strong>Start Session</strong>: This button will start the training session</li>
-</ol>
-<h3 id="enable-training-and-use-default-weights">Enable Training and Use Default Weights</h3>
-<p>The <strong>Enable Training</strong> checkbox (Ultralytics only) and <strong>Use Default Weights</strong> checkbox combine to control how the session is initialized and whether active training is performed:</p>
+<h2 id="anatomy-of-a-snapshot">Anatomy of a Snapshot</h2>
+<p>A snapshot is a standard <a href="https://huggingface.co/docs/safetensors/">safetensors</a>
+file containing one named tensor per model input plus a populated
+<code>__metadata__</code> map:</p>
 <table>
 <thead>
 <tr>
-<th>Use Default Weights</th>
-<th>Enable Training</th>
-<th>Behaviour</th>
+<th>Property</th>
+<th>Value</th>
+<th>Notes</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>✓ Enabled</td>
-<td>✓ Enabled</td>
-<td>Train from pre-trained COCO weights.</td>
+<td>Tensor dtype</td>
+<td><code>uint8</code></td>
+<td>Raw <code>[0, 255]</code> pixels — <strong>not</strong> pre-normalized float.</td>
 </tr>
 <tr>
-<td>✗ Disabled</td>
-<td>✓ Enabled</td>
-<td>Train starting from weights of a prior training session you specify.</td>
+<td>Layout</td>
+<td><code>NCHW</code></td>
+<td><code>[num_samples, channels, height, width]</code>. Consumers needing <abbr title="Tensor layout — Batch, Height, Width, Channels">NHWC</abbr> transpose on load.</td>
 </tr>
 <tr>
-<td>✓ Enabled</td>
-<td>✗ Disabled</td>
-<td><strong>Default.</strong> No training. Pre-trained COCO weights are copied directly to the session artifacts. Results will be poor on non-COCO datasets — Studio displays a warning. This default exists because full COCO training for Ultralytics is compute-intensive, and it lets you reproduce validation and profiling results from the <a href="https://huggingface.co/spaces/EdgeFirst/Models">EdgeFirst Model Zoo on Hugging Face</a> using the published COCO checkpoints.</td>
+<td>Tensor name</td>
+<td>model input name (e.g. <code>images</code>)</td>
+<td>Recorded in metadata; multi-input models carry one tensor per input.</td>
 </tr>
 <tr>
-<td>✗ Disabled</td>
-<td>✗ Disabled</td>
-<td>No training. Weights are copied from a specified prior training session — equivalent to cloning that session's artifacts.</td>
+<td>Value range</td>
+<td><code>[0, 255]</code></td>
+<td>Recorded in metadata.</td>
+</tr>
+<tr>
+<td><code>__metadata__</code></td>
+<td>string → string map</td>
+<td>Parameter set, normalization recipe, provenance, integrity digest (see <a href="#embedded-metadata-schema">Embedded Metadata Schema</a>).</td>
 </tr>
 </tbody>
 </table>
-<div class="admonition warning">
-<p class="admonition-title">COCO pre-trained weights and dataset compatibility</p>
-<p>The <strong>Use Default Weights</strong> option initializes from pre-trained COCO weights. These weights can technically be used as a starting point for any dataset, but <strong>if your dataset labels have no overlap with COCO category names, validation accuracy will be very poor</strong> — the model's class outputs will not correspond to your labels.</p>
-<p>For best transfer-learning results, ensure your label names match the relevant COCO categories, or supply a prior EdgeFirst training session as the starting weights.</p>
+<p>Storing <strong>uint8</strong> rather than normalized float32 makes the file ~4× smaller
+(~150 MB vs ~600 MB for 500×3×640×640), preserves the exact source pixels for
+audit, and lets each converter apply its own normalization without lossy
+round-trips.</p>
+<h2 id="selection-maximizing-dynamic-range">Selection: Maximizing Dynamic Range</h2>
+<p>Selection is <strong>model-free</strong> and operates on <strong>source pixel statistics only</strong> —
+the decoded source images at native resolution, before any resize. For each
+candidate image the producer computes a per-channel minimum, maximum, and a
+64-bin intensity histogram; the selector then chooses the subset that best
+covers the pool's per-channel intensity distribution and reaches its true
+extremes.</p>
+<p>The reference algorithm, tagged <code>max_dynamic_range_v1</code>:</p>
+<ol>
+<li>Decode every pool image at native resolution; compute its per-channel
+   min/max and a normalized 64-bin histogram.</li>
+<li><strong>Seed</strong> the set with the images holding the global per-channel extrema —
+   these define the achievable range and are mandatory members.</li>
+<li><strong>Greedily</strong> add the image whose inclusion most reduces the L1 distance
+   between the selected-set mean histogram and the pool mean histogram, until
+   the requested count is reached. Ties resolve to the lowest pool index.</li>
+<li>If coverage saturates before the count is met, fill the remainder by
+   seeded-random sampling for diversity.</li>
+<li>Emit the selected indices in ascending pool order — this fixes the sample
+   order in the file and in the provenance record.</li>
+</ol>
+<p>Because the statistics come from source pixels, selection is <strong>independent of
+input geometry and CameraAdaptor</strong>: the same dataset selects the same images
+for every model, and only the preprocessing of those images varies per target.
+The selection is deterministic — identical parameters over an identical pool
+produce the identical sample set.</p>
+<div class="admonition note">
+<p class="admonition-title">Why model-free selection matters</p>
+<p>An earlier design selected calibration samples by pre-scanning model
+<em>output</em> activations. Measured on Ara240 hardware (yolov8n-seg, COCO
+val5k), that approach excluded the range-defining samples a MinMax-
+calibrated integer pipeline most needs; replacing it with the
+dynamic-range-maximizing selection above moved box <abbr title="mean Average Precision">mAP</abbr> <strong>0.2731 → 0.3220</strong>
+with no model change. Snapshots always include the genuine distribution
+extremes; a converter that needs a tighter range for <abbr title="Signed 8-bit integer">INT8</abbr> applies its own
+percentile or KL clipping internally.</p>
 </div>
-<div class="admonition failure">
-<p class="admonition-title">InsufficientInstanceCapacity</p>
-<p><img alt="InsufficientInstanceCapacity Error" src="/studio/assets/models/insufficient-capacity-error.jpg" /></p>
-<p>If you see this error after starting your training session, retry creating the session. This can happen when AWS reports that no EC2 instances are currently available to launch; the current workaround is to retry.</p>
-</div>
-<h2 id="session-progress">Session Progress</h2>
-<p>Once the training session has started, the progress with the stages will be shown on the left and additional information and status is shown on the right.</p>
-<figure>
-            <img align="center" alt="Training Session" src="../../assets/training/vision-session-progress.jpg" />
-            <figcaption>Training Session</figcaption>
-            </figure>
-<p>The training process begins with cloud instance initialization. Then the dataset is downloaded and cached.  Training starts afterwards.
-At the end of the training process, the model is quantized and the model artifacts will be published on the training session available for download.</p>
-<h2 id="completed-session">Completed Session</h2>
-<p>The completed session will look as follows with the status set to "Complete".</p>
-<figure>
-            <img align="center" alt="Completed Session" src="../../assets/training/vision-completed-session.jpg" />
-            <figcaption>Completed Session</figcaption>
-            </figure>
-<p>The attributes of the training sessions in EdgeFirst Studio are labeled below.</p>
-<figure>
-            <img align="center" alt="Training Session Attributes" src="../../assets/training/training-session-attributes.jpg" />
-            <figcaption>Training Session Attributes</figcaption>
-            </figure>
-<h2 id="training-outcomes">Training Outcomes</h2>
-<p>Once the training session completes, you can view the training charts by clicking the "view training session charts" button on the top of the session card.</p>
-<figure>
-            <img align="center" alt="Training Charts" src="../../assets/training/vision-charts.jpg" />
-            <figcaption>Training Charts</figcaption>
-            </figure>
-<p>You can go back to the training session card by pressing the "Back" button as indicated in red below on the top left corner of the page.</p>
-<figure>
-            <img align="center" alt="Back to the Session Card" src="../../assets/training/back-button.jpg" />
-            <figcaption>Back to the Session Card</figcaption>
-            </figure>
-<p>The trained model artifacts can be downloaded by clicking the session card.  This will open the session details and the models are listed under the "Artifacts" tab as shown below.  Click on the downward arrows to download the models to your PC.</p>
-<figure>
-            <img align="center" alt="Training Session Artifacts" src="../../assets/training/vision-session-artifacts.jpg" />
-            <figcaption>Training Session Artifacts</figcaption>
-            </figure>
-<p>It is also possible to compare the training metrics for multiple sessions.  See <a href="../../../studio/models/#training-sessions">Training Sessions</a> in the Model Experiments Dashboard for further details.</p>
-<div class="admonition info">
-<p class="admonition-title">Netron</p>
-<p>You can visualize the architecture of these models using <a href="https://netron.app/">https://netron.app/</a>.</p>
-</div>
-<h2 id="next-steps">Next Steps</h2>
-<p>Now that you have trained your model, you can validate the performance of your model either <a href="../../validation/vision/user_managed/">on target/device</a> or on the <a href="../../validation/vision/managed/">cloud</a>.</p>
+<h2 id="letterbox-not-normalization">Letterbox, Not Normalization</h2>
+<p>The distinction between what is <em>baked into the pixels</em> and what is <em>recorded
+as metadata</em> is deliberate, and it is the crux of why one snapshot can serve
+many converters.</p>
+<p><strong>Baked in — the geometric preprocessing that is the model's secret:</strong></p>
+<ul>
+<li><strong>Letterbox resize.</strong> The source image is scaled so its long side matches the
+  model input (preserving aspect ratio, upscaling small images), then
+  centre-padded to the square input with a constant grey value (114). This is a
+  required, model-defining step that is already performed identically during
+  training, so the snapshot captures its exact result.</li>
+<li><strong>Channel layout and CameraAdaptor.</strong> The colour conversion (<abbr title="Red Green Blue">RGB</abbr>, BGR, YUYV,
+  grey, …) and channel layout the model was trained with are applied, so the
+  stored tensor is byte-identical to what the model sees at inference.</li>
+</ul>
+<p><strong>Recorded, not applied — the numeric normalization converters differ on:</strong></p>
+<ul>
+<li>The scale, mean, and standard deviation the model expects (e.g. scale
+  <code>1/255</code> to map <code>[0, 255] → [0, 1]</code>) are stored in metadata. Each converter
+  applies them on load in the form its quantizer expects — a signed-<abbr title="Signed 8-bit integer">INT8</abbr> target
+  centres the range, a DFC-based target keeps <code>[0, 255]</code>, a <abbr title="TensorFlow Lite">TFLite</abbr> per-input
+  pipeline applies its own — without the lossy <code>[0,1] → [0,255]</code> round-trips
+  that plagued ad-hoc snapshots.</li>
+</ul>
+<p>Generating the snapshot at training time is what makes this clean: the
+letterbox recipe is reused verbatim from the training data pipeline, and the
+parameter hash makes the resulting file reusable across every model that shares
+the same recipe.</p>
+<h2 id="parameter-hash-and-caching">Parameter Hash and Caching</h2>
+<p>The snapshot is a pure function of a canonical parameter set. The filename
+encodes a hash of that set so the snapshot is <strong>content-addressed</strong>:</p>
+<div class="highlight"><pre><span></span><code>calibration-{dataset_id}-{param_hash}.safetensors
+</code></pre></div>
+<ul>
+<li><code>{dataset_id}</code> — Studio dataset label (e.g. <code>ds-2bcc</code>); the literal <code>local</code>
+  for non-Studio (offline) generation.</li>
+<li><code>{param_hash}</code> — first 16 hex characters of the SHA-256 of the canonical JSON
+  serialization (sorted keys) of the parameter set below.</li>
+</ul>
+<p>The parameter set covers every input that affects the produced bytes:</p>
+<div class="highlight"><pre><span></span><code>{
+  &quot;dataset_id&quot;: &quot;ds-2bcc&quot;,            // null offline
+  &quot;annotation_set_id&quot;: &quot;as-1a3f&quot;,     // or null
+  &quot;split&quot;: &quot;train&quot;,                   // calibration pools from the TRAINING split
+  &quot;input_shape&quot;: [640, 640],          // [H, W]
+  &quot;channels&quot;: 3,                      // post colour-conversion channel count
+  &quot;layout&quot;: &quot;NCHW&quot;,
+  &quot;dtype&quot;: &quot;uint8&quot;,
+  &quot;resize&quot;: &quot;letterbox&quot;,
+  &quot;letterbox&quot;: {                      // the exact recipe: long-side resize
+    &quot;pad_color&quot;: [114, 114, 114],     // (ceil rounding, linear interp),
+    &quot;scale&quot;: &quot;long_side&quot;,             // then centre-pad the short side
+    &quot;round&quot;: &quot;ceil&quot;,
+    &quot;center&quot;: true,
+    &quot;interpolation&quot;: &quot;linear&quot;
+  },
+  &quot;color&quot;: &quot;rgb&quot;,                     // CameraAdaptor name
+  &quot;normalization&quot;: {                  // recorded, NOT applied to stored bytes
+    &quot;scale&quot;: 0.00392156863,           // 1/255
+    &quot;mean&quot;: [0.0, 0.0, 0.0],
+    &quot;std&quot;:  [1.0, 1.0, 1.0]
+  },
+  &quot;count&quot;: 500,                       // requested sample count
+  &quot;selection&quot;: &quot;max_dynamic_range_v1&quot;,// versioned selection algorithm
+  &quot;seed&quot;: 42                          // selection seed
+}
+</code></pre></div>
+<p>Two properties follow from hashing the parameters rather than the content:</p>
+<ul>
+<li><strong>Versioned selection.</strong> The <code>selection</code> tag names the algorithm. Changing
+  the algorithm bumps the tag, which changes the hash and the filename — the
+  only safe way to roll out an improved selector, since it cannot silently
+  shadow snapshots produced by the old one.</li>
+<li><strong>Cross-model reuse.</strong> Two models with the same dataset, geometry, colour
+  convention, count, and seed resolve to the same filename, so the snapshot is
+  generated once and reused.</li>
+</ul>
+<p>The pool is drawn from the <strong>training split</strong>, never the validation split:
+calibrating on validation data leaks the evaluation distribution, and
+calibration needs input coverage, not labels. When the pool is smaller than the
+requested count, the whole pool is used and both the requested and actual
+counts are recorded.</p>
+<h3 id="caching-against-the-studio-snapshot-store">Caching against the Studio snapshot store</h3>
+<p>Calibration snapshots are stored as <a href="../../../studio/snapshots/">EdgeFirst Studio
+snapshots</a>, keyed by filename. The trainer's
+workflow is:</p>
+<ol>
+<li>Compute the parameter hash and build the filename.</li>
+<li>Look the filename up in the snapshot store.</li>
+<li>If it exists → reuse it (skip selection and generation entirely; an
+   export-only run can skip downloading the training images altogether).</li>
+<li>If not → select, generate, and publish it under that filename.</li>
+</ol>
+<h2 id="embedded-metadata-schema">Embedded Metadata Schema</h2>
+<p>The <code>__metadata__</code> map is a string → string map (nested values are JSON-encoded
+strings). Consumers <strong>must</strong> resolve these keys rather than assuming defaults,
+and <strong>must</strong> fail loudly when a required key is absent rather than guessing.</p>
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>Example</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>params</code></td>
+<td><code>{…}</code></td>
+<td>The exact parameter set above (the hash preimage).</td>
+</tr>
+<tr>
+<td><code>param_hash</code></td>
+<td><code>"a1b2c3d4e5f60718"</code></td>
+<td>Matches the filename; self-describing.</td>
+</tr>
+<tr>
+<td><code>tensor_names</code></td>
+<td><code>["images"]</code></td>
+<td>Ordered input tensor names.</td>
+</tr>
+<tr>
+<td><code>dtype</code></td>
+<td><code>"uint8"</code></td>
+<td>Stored sample dtype.</td>
+</tr>
+<tr>
+<td><code>value_range</code></td>
+<td><code>[0, 255]</code></td>
+<td>Stored sample range (not normalized).</td>
+</tr>
+<tr>
+<td><code>layout</code></td>
+<td><code>"NCHW"</code></td>
+<td>Stored layout.</td>
+</tr>
+<tr>
+<td><code>normalization</code></td>
+<td><code>{"scale":…,"mean":…,"std":…}</code></td>
+<td>What the model expects; the consumer applies it.</td>
+</tr>
+<tr>
+<td><code>count_requested</code></td>
+<td><code>500</code></td>
+<td>Requested sample count.</td>
+</tr>
+<tr>
+<td><code>count_actual</code></td>
+<td><code>500</code></td>
+<td>Samples actually written (may be smaller than requested for small pools).</td>
+</tr>
+<tr>
+<td><code>selection</code></td>
+<td><code>"max_dynamic_range_v1"</code></td>
+<td>Selection algorithm tag.</td>
+</tr>
+<tr>
+<td><code>seed</code></td>
+<td><code>42</code></td>
+<td>Selection seed.</td>
+</tr>
+<tr>
+<td><code>content_sha256</code></td>
+<td><code>"…"</code></td>
+<td>Digest over the concatenated sample bytes (integrity + cache validation).</td>
+</tr>
+<tr>
+<td><code>producer</code></td>
+<td><code>"edgefirst-studio-ultralytics/1.13.0"</code></td>
+<td>Generating component and version.</td>
+</tr>
+<tr>
+<td><code>studio_instance</code></td>
+<td><code>"saas"</code></td>
+<td><strong>Provenance</strong> — Studio instance (<code>test</code>, <code>stage</code>, <code>saas</code>, or custom hostname).</td>
+</tr>
+<tr>
+<td><code>pool</code></td>
+<td><code>{"dataset_id":…,"annotation_set_id":…,"split":"train","size":118287}</code></td>
+<td><strong>Provenance</strong> — resolved pool identity.</td>
+</tr>
+<tr>
+<td><code>image_ids</code></td>
+<td><code>["…","…"]</code></td>
+<td><strong>Provenance</strong> — the selected Studio sample IDs, in file order.</td>
+</tr>
+</tbody>
+</table>
+<p>The provenance keys (<code>studio_instance</code>, <code>pool</code>, <code>image_ids</code>) are present only
+when the pool was drawn from an EdgeFirst Studio dataset; offline/local
+snapshots omit them entirely. Metadata carries <strong>no creation timestamp</strong> — so
+that identical parameters over an identical pool produce a byte-identical file,
+verifiable by comparing <code>content_sha256</code> or the whole file.</p>
+<h2 id="provenance-and-traceability">Provenance and Traceability</h2>
+<p>The calibration snapshot is a first-class participant in EdgeFirst Studio's
+<a href="../../metadata/#overview">end-to-end traceability</a>. Just as a compiled model
+links back to its training session and dataset, a snapshot links back to the
+exact samples it was built from:</p>
+<ul>
+<li><strong><code>studio_instance</code> + <code>pool.dataset_id</code> + <code>image_ids</code></strong> form a complete trail
+  from any calibration sample to its source sample in Studio. Given a snapshot,
+  an engineer can re-open the precise images that defined a model's
+  quantization ranges — for review, for debugging an accuracy regression, or
+  for reproducing the calibration set exactly.</li>
+<li><strong>The converter records the snapshot filename</strong> in its
+  <a href="../../metadata/#converter-traceability">converter-traceability section</a> of
+  <code>edgefirst.json</code> (e.g. <code>tflite_quantizer.calibration</code>). The compiled model
+  therefore names the snapshot, the snapshot names its parameter hash and
+  sample IDs, and the sample IDs name the dataset — an unbroken audit chain from
+  a deployed binary back to individual training images.</li>
+<li><strong><code>content_sha256</code></strong> lets any consumer verify it calibrated against the exact
+  bytes it expected, independent of the filename.</li>
+</ul>
+<h2 id="implementing-a-producer">Implementing a Producer</h2>
+<p>A training framework that emits EdgeFirst calibration snapshots must:</p>
+<ol>
+<li><strong>Pool from the training split.</strong> Draw candidates from the training split by
+   default; record the resolved pool identity (dataset, annotation set, split,
+   size) in metadata.</li>
+<li><strong>Select model-free.</strong> Compute source-pixel descriptors and select with a
+   versioned, deterministic algorithm. Under <code>max_dynamic_range_v1</code> the selected
+   set's per-channel min/max must equal the pool's — the extrema-bearing images
+   are mandatory.</li>
+<li><strong>Preprocess through letterbox only.</strong> Apply the model's exact letterbox and
+   CameraAdaptor recipe; store <strong>uint8 [0, 255] <abbr title="Tensor layout — Batch, Channels, Height, Width">NCHW</abbr></strong>. Record the normalization
+   the model expects in metadata — do <strong>not</strong> apply it to the stored bytes.</li>
+<li><strong>Name and hash deterministically.</strong> Serialize the canonical parameter set
+   with sorted keys and a fixed float representation; hash to 16 hex characters;
+   build the filename. Identical parameters over an identical pool must produce
+   byte-identical files.</li>
+<li><strong>Populate <code>__metadata__</code>.</strong> Write every required key, the <code>content_sha256</code>
+   digest, and — for Studio pools — the provenance keys.</li>
+<li><strong>Cache against the snapshot store.</strong> Look up by filename before generating;
+   publish under that filename after generating.</li>
+</ol>
+<h2 id="implementing-a-consumer">Implementing a Consumer</h2>
+<p>A Converter App that calibrates from a snapshot must:</p>
+<ol>
+<li><strong>Resolve from metadata, never assume.</strong> Read <code>tensor_names</code>, <code>dtype</code>,
+   <code>value_range</code>, <code>layout</code>, and <code>normalization</code> from <code>__metadata__</code>. Fail loudly
+   if a required key is missing.</li>
+<li><strong>Apply the recorded normalization</strong> to the uint8 samples in the form your
+   quantizer expects (signed/centred, <code>[0, 255]</code>, or per-input float), and
+   transpose <code>NCHW → NHWC</code> if your runtime needs it.</li>
+<li><strong>Verify integrity.</strong> Check <code>content_sha256</code> over the sample bytes on load.</li>
+<li><strong>Record traceability.</strong> Write the snapshot filename into your converter
+   section of <code>edgefirst.json</code>.</li>
+</ol>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">safetensors</span><span class="w"> </span><span class="kn">import</span> <span class="n">safe_open</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">json</span><span class="o">,</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+
+<span class="k">with</span> <span class="n">safe_open</span><span class="p">(</span><span class="n">calibration_path</span><span class="p">,</span> <span class="n">framework</span><span class="o">=</span><span class="s2">&quot;numpy&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+    <span class="n">meta</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">metadata</span><span class="p">()</span>                       <span class="c1"># __metadata__ map</span>
+    <span class="n">names</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">meta</span><span class="p">[</span><span class="s2">&quot;tensor_names&quot;</span><span class="p">])</span>
+    <span class="n">norm</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">meta</span><span class="p">[</span><span class="s2">&quot;normalization&quot;</span><span class="p">])</span>  <span class="c1"># {scale, mean, std}</span>
+    <span class="n">scale</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">(</span><span class="n">norm</span><span class="p">[</span><span class="s2">&quot;scale&quot;</span><span class="p">])</span>
+    <span class="n">mean</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">norm</span><span class="p">[</span><span class="s2">&quot;mean&quot;</span><span class="p">],</span> <span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
+    <span class="n">std</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">norm</span><span class="p">[</span><span class="s2">&quot;std&quot;</span><span class="p">],</span> <span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
+
+    <span class="n">num_samples</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">get_slice</span><span class="p">(</span><span class="n">names</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span><span class="o">.</span><span class="n">get_shape</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">num_samples</span><span class="p">):</span>
+        <span class="n">feed</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="k">for</span> <span class="n">name</span> <span class="ow">in</span> <span class="n">names</span><span class="p">:</span>
+            <span class="n">sample</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">get_slice</span><span class="p">(</span><span class="n">name</span><span class="p">)[</span><span class="n">i</span><span class="p">]</span>                 <span class="c1"># CHW uint8</span>
+            <span class="n">sample</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">transpose</span><span class="p">(</span><span class="n">sample</span><span class="p">,</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>      <span class="c1"># -&gt; HWC</span>
+            <span class="n">sample</span> <span class="o">=</span> <span class="p">(</span><span class="n">sample</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span> <span class="o">*</span> <span class="n">scale</span> <span class="o">-</span> <span class="n">mean</span><span class="p">)</span> <span class="o">/</span> <span class="n">std</span>
+            <span class="n">feed</span><span class="p">[</span><span class="n">name</span><span class="p">]</span> <span class="o">=</span> <span class="n">sample</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">newaxis</span><span class="p">]</span>               <span class="c1"># NHWC, batch 1</span>
+        <span class="k">yield</span> <span class="n">feed</span>                                        <span class="c1"># representative_dataset</span>
+</code></pre></div>
+<h2 id="whats-next">What's Next</h2>
+<ul>
+<li><a href="../#smart-quantization">Smart Quantization</a> — why activation ranges
+  dominate <abbr title="Signed 8-bit integer">INT8</abbr> accuracy and what the converters do about it.</li>
+<li><a href="../../metadata/">Model Metadata</a> — the <code>edgefirst.json</code> schema, the
+  <code>calibration</code> field, and the converter-traceability sections that reference
+  the snapshot.</li>
+<li>The per-converter pages (<a href="../tflite/"><abbr title="TensorFlow Lite">TFLite</abbr></a>, <a href="../ara2/">Ara2</a>,
+  <a href="../hailo/">Hailo</a>, <a href="../neutron/">Neutron</a>) for how each target consumes the
+  snapshot and derives its quantization ranges.</li>
+</ul>
 
 
 
@@ -2149,7 +2599,7 @@ At the end of the training process, the model is quantized and the model artifac
       <nav class="md-footer__inner md-grid" aria-label="Footer" >
         
           
-          <a href="../../fusion/benchmarks/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Fusion Benchmarks">
+          <a href="../" class="md-footer__link md-footer__link--prev" aria-label="Previous: Model Conversion">
             <div class="md-footer__button md-icon">
               
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
@@ -2159,20 +2609,20 @@ At the end of the training process, the model is quantized and the model artifac
                 Previous
               </span>
               <div class="md-ellipsis">
-                Fusion Benchmarks
+                Model Conversion
               </div>
             </div>
           </a>
         
         
           
-          <a href="../fusion/" class="md-footer__link md-footer__link--next" aria-label="Next: Training Fusion Models">
+          <a href="../tflite/" class="md-footer__link md-footer__link--next" aria-label="Next: TFLite Converter">
             <div class="md-footer__title">
               <span class="md-footer__direction">
                 Next
               </span>
               <div class="md-ellipsis">
-                Training Fusion Models
+                TFLite Converter
               </div>
             </div>
             <div class="md-footer__button md-icon">

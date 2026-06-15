@@ -18,7 +18,7 @@
         <link rel="prev" href="../training/fusion/">
       
       
-        <link rel="next" href="tflite/">
+        <link rel="next" href="calibration/">
       
       
         
@@ -1064,6 +1064,8 @@
       
         
       
+        
+      
     
     
     
@@ -1116,6 +1118,34 @@
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
             
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="calibration/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Calibration Snapshot
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
               
             
               
@@ -1937,8 +1967,8 @@
 </table>
 <p>Every output artifact has its <code>edgefirst.json</code> and <code>labels.txt</code> appended to it, so the runtime decoder needs nothing beyond the file itself. Picking the right Converter App is mostly a question of which target hardware you intend to deploy on; see the per-converter pages for Studio launch-form specifics, supported model architectures, and known limitations.</p>
 <h2 id="calibration">Calibration</h2>
-<p><abbr title="Signed 8-bit integer">INT8</abbr> quantization requires a representative sample of the input distribution so the converter can measure the activation ranges that determine each tensor's scale. EdgeFirst Studio captures this sample automatically during training as a <code>.safetensors</code> snapshot keyed by dataset ID and parameter hash, and the Converter App downloads it as part of the conversion job. <strong>There is no calibration step a Studio user needs to perform manually</strong> — the snapshot is regenerated whenever the architecture or dataset changes.</p>
-<p>The full calibration artifact format and the converter contract are documented in <a href="../metadata/#calibration-artifact">Model Metadata — Calibration Artifact</a>.</p>
+<p><abbr title="Signed 8-bit integer">INT8</abbr> quantization requires a representative sample of the input distribution so the converter can measure the activation ranges that determine each tensor's scale. EdgeFirst Studio captures this sample automatically during training as a <code>.safetensors</code> snapshot keyed by dataset ID and parameter hash, and the Converter App downloads it as part of the conversion job. <strong>There is no calibration step a Studio user needs to perform manually</strong> — the snapshot is reused across models and targets that share a data-preparation pattern, and regenerated only when the dataset or input geometry changes.</p>
+<p>The snapshot format, the model-free selection algorithm, the parameter hash, and the producer/consumer contract are documented in <a href="calibration/">Calibration Snapshot</a>.</p>
 <h2 id="whats-next">What's Next</h2>
 <ul>
 <li>Read the per-converter pages above for Studio launch-form options, the precise model architectures each converter supports, and any target-specific gotchas.</li>
@@ -2051,13 +2081,13 @@
         
         
           
-          <a href="tflite/" class="md-footer__link md-footer__link--next" aria-label="Next: TFLite Converter">
+          <a href="calibration/" class="md-footer__link md-footer__link--next" aria-label="Next: Calibration Snapshot">
             <div class="md-footer__title">
               <span class="md-footer__direction">
                 Next
               </span>
               <div class="md-ellipsis">
-                TFLite Converter
+                Calibration Snapshot
               </div>
             </div>
             <div class="md-footer__button md-icon">

@@ -15,7 +15,7 @@
         <link rel="canonical" href="https://doc.edgefirst.ai/test/models/conversion/tflite/">
       
       
-        <link rel="prev" href="../">
+        <link rel="prev" href="../calibration/">
       
       
         <link rel="next" href="../neutron/">
@@ -1064,6 +1064,8 @@
       
         
       
+        
+      
     
     
     
@@ -1116,6 +1118,34 @@
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
             
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../calibration/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Calibration Snapshot
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
               
             
               
@@ -1973,7 +2003,7 @@
 </ul>
 <p>The artifact can be deployed directly to any platform with a <abbr title="TensorFlow Lite">TFLite</abbr> runtime, or used as the <strong>upstream input</strong> to the <a href="/models/conversion/neutron/">Neutron Converter</a> when targeting NXP i.MX 95 and the wider eIQ Neutron silicon lineup.</p>
 <h2 id="calibration">Calibration</h2>
-<p>Calibration is fully automatic. EdgeFirst Studio captures a calibration snapshot from the training dataset and passes it to the converter. There is no calibration step a Studio user needs to perform manually. See <a href="/models/conversion/#calibration">Calibration</a> on the conversion landing page for the broader contract.</p>
+<p>Calibration is fully automatic. EdgeFirst Studio captures a calibration snapshot from the training dataset and passes it to the converter. There is no calibration step a Studio user needs to perform manually. See <a href="../calibration/">Calibration Snapshot</a> for the format, selection algorithm, and converter contract.</p>
 <h2 id="converting-your-model">Converting Your Model</h2>
 <p>Once training completes in EdgeFirst Studio:</p>
 <ol>
@@ -2095,7 +2125,7 @@
       <nav class="md-footer__inner md-grid" aria-label="Footer" >
         
           
-          <a href="../" class="md-footer__link md-footer__link--prev" aria-label="Previous: Model Conversion">
+          <a href="../calibration/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Calibration Snapshot">
             <div class="md-footer__button md-icon">
               
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
@@ -2105,7 +2135,7 @@
                 Previous
               </span>
               <div class="md-ellipsis">
-                Model Conversion
+                Calibration Snapshot
               </div>
             </div>
           </a>

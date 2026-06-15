@@ -22,16 +22,24 @@ EdgeFirst Studio includes a built-in model runner that allows you to quickly run
 EdgeFirst Studio provides several pre-trained models in the **Sample Projects** section.
 
 1. On the landing page after login, click **PROJECTS** at the top next to "Home".  This opens the Projects Dashboard
+
+    {{ figure("../studio/assets/user/home-page-goto-projects.png", "Go To Projects") }}
+
 2. Find the **Sample Projects** card and click **Model Experiments**
 
     {{ figure("assets/run_model/sample-projects.png", "Sample Projects", "400") }}
 
-3. On the Experiments page, each card represents an experiment with multiple training and validation sessions
-4. Click on the **Training Sessions** for the Coffee Cup Experiment to view available sessions.  Each session will have a model in different formats if training completed successfully
+    On the [Experiments page](../studio/models.md), each card represents an experiment with multiple training and validation sessions
+
+3. Click on the **Training Sessions** for the "Coffee Cup Segmentation" Experiment to view available sessions.  Each session will have a model in different formats if training completed successfully
 
     {{ figure("assets/run_model/coffeecup-experiment-sample-project.png", "Coffee Cup Experiment") }}
 
-5. Click the training session **CoffeCup-mpk3.1.0** to open its details page
+4. Click the training session **CoffeCup-mpk3.1.0** to open its details page
+
+    {{ figure("assets/run_model/coffeecup-training-session.png", "Coffee Cup Training Card") }}
+
+5. Click on the Artifacts tab and click "Run Model" to run the ONNX model in this training session
 
     {{ figure("assets/run_model/trainer_details_page.png", "Training Session Details") }}
 

@@ -7,6 +7,9 @@ The **Hailo Converter** compiles an ONNX model exported from an EdgeFirst Studio
 
 The Hailo Converter applies [Smart Quantization](/models/conversion/#smart-quantization) by automatic per-scale graph surgery. On Hailo this is **not optional** — the per-context SRAM budget on Hailo silicon cannot hold a typical detection head's full concatenated output tensor in a single pass, and the Hailo Dataflow Compiler will reject the model outright. Cutting the graph at per-scale endpoints makes each tensor small enough to fit, *and* gives each one its own independently calibrated INT8 (or INT16) scale as a structural by-product.
 
+!!! tip "Model Zoo — Supported Models & Benchmarks"
+    For the latest supported model list, per-preset accuracy benchmarks, and validation results on Hailo-8 and Hailo-8L, see the [EdgeFirst Model Zoo](https://huggingface.co/spaces/EdgeFirst/Models) on Hugging Face.
+
 ## Studio Launch Form
 
 | Field | Values | Default | Meaning |

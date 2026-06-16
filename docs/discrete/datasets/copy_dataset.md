@@ -2,7 +2,14 @@ To copy a dataset, navigate to the dataset you would like to copy.  On the datas
 
 {{ figure("/datasets/assets/management/copy-dataset-option.jpg", "Copy Dataset") }}
 
-This will open a new dialog for the user to specify the dataset source and destination.  The destination will be the location of the copied dataset.  The source is the current location of the dataset.  The source is set by default to the current dataset card you've selected.  In the example below, the source is set to the "Coffee Cup" dataset from "Sample Project".  The copied dataset will be placed as specified in the destination fields.  By default a new dataset container will be created in the specified project.  However, you can also [create a dataset container](../../datasets/tutorials/management.md#create-dataset) before copying and specify this dataset container in the destination fields.  
+This action opens a dialog where you can specify the source and destination for the dataset copy operation.
+
+* Source: The current location of the dataset being copied. This field is automatically populated with the dataset card you selected before opening the dialog.
+* Destination: The location where the copied dataset will be created.
+
+In the example below, the source is the "Coffee Cup" dataset in "Sample Project". The copied dataset will be created in the location specified by the destination fields.
+
+By default, the copy operation creates a new dataset container in the selected destination project. Alternatively, you can [create a dataset container](../../datasets/tutorials/management.md#create-dataset) before starting the copy operation and then select that existing container as the destination.
 
 Once you have made your selection, click "Apply" at the bottom right to start the copy process.
 

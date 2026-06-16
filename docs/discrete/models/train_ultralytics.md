@@ -28,6 +28,12 @@
 
         If you see this error after starting your training session, retry creating the session. This can happen when AWS reports that no EC2 instances are currently available to launch; the current workaround is to retry.
 
+    !!! note "No Training Charts"
+
+        {{ img("/models/assets/training/no-training-charts.jpg", "No Training Charts") }}
+
+        Training sessions configured without epochs will not generate loss or metric charts, since the chart x-axis is epoch-based. This is expected behaviour.
+
     If you would like to know more about how to reproduce the benchmarks gathered in the [EdgeFirst Model Zoo on Hugging Face](https://huggingface.co/spaces/EdgeFirst/Models), please see [Training Configurations](../../profiler/concepts/configuration.md).
 
 6. The completed training session should look like the following

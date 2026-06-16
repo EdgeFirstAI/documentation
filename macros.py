@@ -21,6 +21,9 @@ def define_env(env):
         return full_path
 
     def img(path, alt):
+        page = env.page
+        path = resolve_path(path, page)
+        
         if show_paths:
             return f'![{alt}]({path} "{path}")'
         return f'![{alt}]({path})'

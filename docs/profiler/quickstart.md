@@ -107,6 +107,8 @@ Select an artifact and choose **Validate**. The profiler creates a new validatio
 
 {{ figure("assets/tui-launch-validate.png", "F2 Studio — confirming Validate against a model artifact") }}
 
+Before the run starts, a **launch dialog** appears. For ONNX models it first asks which execution provider to use (CPU, CUDA if available, or CoreML on macOS). Then it shows four per-stage depth sliders — Capture, Preprocess, Inference, and Postprocess — each defaulting to **Auto**, which resolves to the value measured fastest for your model, runtime, and host. Press `Enter` to accept the Auto defaults and start immediately, or `c` to customize the depths. The dialog warns if a platform constraint (such as the i.MX 95 Neutron single-bind delegate) holds a stage to a single thread.
+
 The F4 dashboard streams iteration-level latency, system metrics, and per-stage timings while the run executes:
 
 {{ figure("assets/tui-profiler.png", "EdgeFirst Profiler — F4 dashboard during a run") }}

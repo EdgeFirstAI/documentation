@@ -35,7 +35,7 @@ edgefirst-profiler --version
 
 ## Delegate selection
 
-The profiler picks a TFLite delegate automatically — and you can override it on the validation session if needed. Delegate values:
+When launching the profiler with a TFLite model on i.MX 95, a **delegate selection dialog** appears in the TUI. The dialog works like the ONNX execution-provider modal — the user picks Neutron, VX, or CPU/XNNPACK explicitly rather than relying on auto-detection. Models that require the Neutron delegate (detected from the model file) skip the general dialog and go straight to a Neutron-specific picker. For headless use, the `--delegate` CLI flag bypasses the dialog entirely.
 
 | Value | Behavior |
 | ----- | -------- |
@@ -45,6 +45,22 @@ The profiler picks a TFLite delegate automatically — and you can override it o
 | path to `.so` | Load a custom delegate from disk. |
 
 Auto-detection reads `/sys/firmware/devicetree/base/compatible` to identify i.MX 95 and pre-populate the delegate path in the TUI's profile configuration screen.
+
+## Neutron inference modes
+
+The Neutron delegate supports two inference modes. The profiler detects which mode is available automatically — profiling works correctly in both.
+
+**DMA-BUF zero-copy mode** (default when the kernel zero-copy patch is present, or `NEUTRON_ENABLE_ZERO_COPY=1`)
+
+The delegate binds a single DMA-BUF tensor shared between the CPU and the NPU. One inference slot runs at a time; preprocessing serializes with inference. This is the original Neutron inference mode.
+
+**CPU-staging mode** (activated automatically when the kernel zero-copy patch is absent, or `NEUTRON_ENABLE_ZERO_COPY=0`)
+
+No DMA-BUF binding is used. Up to 4 independent inference slots run in parallel, giving significantly higher throughput. The profiler sets the inference depth to 4 automatically in this mode. Measured throughput on i.MX 95 Pro running YOLOv5n at 640×640: ~73 FPS at depth 1, ~97 FPS at depth 4.
+
+!!! note "Fallback from zero-copy"
+
+    Previously, running a Neutron model on a board without the kernel zero-copy patch caused a crash on the first frame. The profiler now detects the missing patch and falls back to CPU-staging automatically.
 
 ## Per-tick Neutron profiling
 

@@ -1720,8 +1720,13 @@
         </figure></p>
 <div class="admonition failure">
 <p class="admonition-title">InsufficientInstanceCapacity</p>
-<p><img alt="InsufficientInstanceCapacity Error" src="/studio/assets/models/insufficient-capacity-error.jpg" /></p>
+<p><img alt="InsufficientInstanceCapacity Error" src="../../studio/assets/models/insufficient-capacity-error.jpg" /></p>
 <p>If you see this error after starting your training session, retry creating the session. This can happen when AWS reports that no EC2 instances are currently available to launch; the current workaround is to retry.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">No Training Charts</p>
+<p><img alt="No Training Charts" src="../../models/assets/training/no-training-charts.jpg" /></p>
+<p>Training sessions configured without epochs will not generate loss or metric charts, since the chart x-axis is epoch-based. This is expected behaviour.</p>
 </div>
 <p>If you would like to know more about how to reproduce the benchmarks gathered in the <a href="https://huggingface.co/spaces/EdgeFirst/Models">EdgeFirst Model Zoo on Hugging Face</a>, please see <a href="../concepts/configuration/">Training Configurations</a>.</p>
 </li>

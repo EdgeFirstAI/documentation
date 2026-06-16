@@ -1966,12 +1966,24 @@
 <li><strong>Split Decoder</strong>: Remove the decoder from the model and use a very optimized one from EdgeFirst.  This feature is very useful when the location of the boxes has to be precise (0-offset)</li>
 </ol>
 </li>
-<li><strong>Training Parameters</strong>: In this section the user is able to specify the number of epochs to train the model as well as the batch size.  Remember the larger the input resolution the smaller the batch size<ol>
-<li><strong>Enable Training</strong> <em>(Ultralytics only)</em>: When enabled, the model is trained using the selected weights. When disabled (default), no training is performed — weights are pushed directly to the session artifacts. See <a href="#enable-training-and-use-default-weights">Enable Training and Use Default Weights</a> below.</li>
-<li><strong>Use Default Weights</strong>: When enabled (default), training starts from pre-trained COCO weights. When disabled, starting weights are sourced from a prior training session you specify.</li>
+<li>
+<p><strong>Training Parameters</strong>: In this section the user is able to specify the number of epochs to train the model as well as the batch size.  Remember the larger the input resolution the smaller the batch size</p>
+<ol>
+<li>
+<p><strong>Enable Training</strong> <em>(Ultralytics only)</em>: When enabled, the model is trained using the selected weights. When disabled (default), no training is performed — weights are pushed directly to the session artifacts. See <a href="#enable-training-and-use-default-weights">Enable Training and Use Default Weights</a> below.</p>
+<div class="admonition note">
+<p class="admonition-title">No Training Charts</p>
+<p>Training sessions with <strong>Enable Training</strong> disabled will not generate loss or metric charts, since the chart x-axis is epoch-based. This is expected behaviour.</p>
+</div>
+</li>
+<li>
+<p><strong>Use Default Weights</strong>: When enabled (default), training starts from pre-trained COCO weights. When disabled, starting weights are sourced from a prior training session you specify.</p>
+</li>
 </ol>
 </li>
-<li><strong>Data Augmentation</strong>: This section controls the probability of each augmentation technique.  This feature is crucial for training models and reduce overfitting, especially in small datasets</li>
+<li>
+<p><strong>Data Augmentation</strong>: This section controls the probability of each augmentation technique.  This feature is crucial for training models and reduce overfitting, especially in small datasets</p>
+</li>
 <li><strong>Export Parameters</strong>: Allow the user to set a portion of data for calibration when exporting the model for <abbr title="Signed 8-bit integer">INT8</abbr> quantization</li>
 <li><strong>Start Session</strong>: This button will start the training session</li>
 </ol>
@@ -2015,7 +2027,7 @@
 </div>
 <div class="admonition failure">
 <p class="admonition-title">InsufficientInstanceCapacity</p>
-<p><img alt="InsufficientInstanceCapacity Error" src="/studio/assets/models/insufficient-capacity-error.jpg" /></p>
+<p><img alt="InsufficientInstanceCapacity Error" src="../../../studio/assets/models/insufficient-capacity-error.jpg" /></p>
 <p>If you see this error after starting your training session, retry creating the session. This can happen when AWS reports that no EC2 instances are currently available to launch; the current workaround is to retry.</p>
 </div>
 <h2 id="session-progress">Session Progress</h2>

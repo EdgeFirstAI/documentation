@@ -2,9 +2,12 @@
 
 Once you have validated your trained model, you can deploy the model in the browser using EdgeFirst Studio.  You can follow these steps either on a PC or a mobile device connected to EdgeFirst Studio in a browser.  Please note that the browser will use the camera on your device to run model inference.
 
+!!! note "ONNX models only"
+    Live browser-based model running only supports **ONNX** format. To validate or profile models in other formats (TFLite, Neutron, Hailo, TensorRT, etc.) on real hardware, use the [EdgeFirst Profiler](../../profiler/index.md).
+
 From the training session card, you can run the model for inference by clicking the "Run Model" button on the top right of the page.
 
-{{ figure("/models/assets/deployment/run-model-button.jpg", "Run Model Button") }}
+{{ figure("/getting_started/assets/run_model/trainer_details_page.png", "Run Model Button") }}
 
 You will be given the option for either live inference or inference from a file upload.  Go ahead and demo the live inference feed by clicking the "Live" option.
 
@@ -20,13 +23,13 @@ You can also find more examples of deploying the model across different platform
 |------------------------------------------------------------------------|----------------------|------------|----------------|
 | [EdgeFirst Studio](../../models/deployment/studio.md)                  | ✅                  | ✅         |                |
 | [PC / Linux](../../models/deployment/pc/index.md)                      | ✅                  | ✅         |                |
-| Mac/MacOS                                                              |                      |            | ✅ (untested)  |
+| Mac/MacOS                                                              | ✅                  | ✅         |                |
 | [Maivin](../../platforms/quickstart/maivin/deploy.md)                  | ✅                  | ✅         | ✅             |
-| [Raivin Fusion](../../platforms/quickstart/raivin/deploy.md)           |                      | ✅         | ✅             |
+| [Raivin Fusion](../../platforms/quickstart/raivin/deploy.md)           |                      | ✅         | ✅ (on target validation) |
 | [i.MX 8M Plus EVK](../../platforms/quickstart/imx8mplus/deploy.md)     | ✅                  |             | ✅ (native runner) |
 | [i.MX 95 EVK](../../platforms/quickstart/imx95/deploy.md)              | ✅                  |             | ✅ (native runner) |
 | [NVIDIA Jetson Orin](../../platforms/quickstart/jetson_orin/deploy.md) | ✅                  |             | ✅ (native runner) |
-| [Raspberry Pi](../../platforms/quickstart/raspberrypi/deploy.md)       |                      |            | ✅ (untested)   |
+| [Raspberry Pi](../../platforms/quickstart/raspberrypi/deploy.md)       | ✅                  |             | ✅ (native runner) |
 
 !!! note "Additional Platforms"
 

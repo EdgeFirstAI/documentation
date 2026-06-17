@@ -39,7 +39,7 @@ EdgeFirst Studio provides several pre-trained models in the **Sample Projects** 
 
     {{ figure("assets/run_model/coffeecup-training-session.png", "Coffee Cup Training Card") }}
 
-5. Click on the Artifacts tab and click "Run Model" to run the ONNX model in this training session
+5. Open the **Artifacts** tab and click the **Play** button next to the artifact you want to deploy. For cloud inference, only ONNX model artifacts are supported.
 
     {{ figure("assets/run_model/trainer_details_page.png", "Training Session Details") }}
 
@@ -67,4 +67,6 @@ In the Model Runner Dashboard, upload any of these images to see the model resul
 2. Choose your camera and allow access when prompted
 3. The model will start running on the live stream.  Point the camera at coffee cups to see results in real time
 
-The next step is to dive into the full MLOps workflow in EdgeFirst Studio!  Every workflow begins with creating your own project, which serves as the foundation for everything that follows.
+You're now ready to experience the full MLOps workflow in EdgeFirst Studio. In under an hour—and for approximately $8 USD—you can copy a dataset, train a model, validate its performance, and deploy it on browser.
+
+The journey begins by creating a project, which acts as the central workspace for all your datasets, models, validation sessions, and deployments.

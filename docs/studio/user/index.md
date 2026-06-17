@@ -6,7 +6,7 @@ You can see your [profile information](profile.md#profile-information) and [make
 
 When you first sign up to EdgeFirst Studio, you will also automatically create your own organization.  You can find more information for [managing your organization](organization.md).  For multi-tier users, follow the [workflow below](#inviting-new-users) for inviting new users to your organization.
 
-A trial user (Public Tier) is given 50.00 USD worth of credits to experience the features in EdgeFirst Studio.  Note that for multi-user tiers, the credits in the organization will be shared amongst the members.  You can find more information on the [billing details](billing.md).
+A new account receives **\$50.00 USD in free credits** upon sign-up to experience the features in EdgeFirst Studio, plus **\$15.00 USD in free credits every month** thereafter. Note that for multi-user tiers, the credits in the organization will be shared amongst the members. You can find more information on the [billing details](billing.md).
 
 ## Inviting New Users
 

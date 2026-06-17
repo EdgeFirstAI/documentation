@@ -1,4 +1,7 @@
-After [training a **Vision** model](../../models/training/vision.md) in EdgeFirst Studio, you can deploy the model in any device connected to a browser with access to a camera.  This can be your phone or your PC as an example.  This guide will show you the steps for deploying the model using EdgeFirst Studio.
+After [training a **Vision** model](../../models/training/vision.md) in EdgeFirst Studio, you can deploy the ONNX model in any device connected to a browser with access to a camera.  This can be your phone or your PC as an example.  This guide will show you the steps for deploying the model using EdgeFirst Studio.
+
+!!! note "ONNX models only"
+    Live browser-based model running only supports **ONNX** format. To validate or profile models in other formats (TFLite, Neutron, Hailo, TensorRT, etc.) on real hardware, use the [EdgeFirst Profiler](../../profiler/index.md).
 
 Navigate to the training session you wish to deploy by going back to the "Projects" page by clicking the "Projects" button at the top left of the page.
 
@@ -18,7 +21,7 @@ Click on the selected training session.
 
 Click the "Run Model" button on the top right of the page.
 
-{{ figure("/models/assets/deployment/run-model-button.jpg", "Run Model Button") }}
+{{ figure("/getting_started/assets/run_model/trainer_details_page.png", "Run Model Button") }}
 
 ## Live Inference
 

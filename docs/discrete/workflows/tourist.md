@@ -1,3 +1,28 @@
+## Is EdgeFirst Studio for you?
+
+<div class="grid" markdown>
+
+{{ figure("/getting_started/assets/workflows/auto-labelling.gif", "Auto-Labelling — AI-generated bounding boxes and segmentation masks") }}
+{{ figure("/getting_started/assets/workflows/model-optimization.gif", "Model Optimization — train, compare, and benchmark vision models") }}
+{{ figure("/getting_started/assets/workflows/3d_perception.gif", "3D Perception — LiDAR, RADAR, and depth sensor workflows") }}
+{{ figure("/getting_started/assets/workflows/profiler.gif", "EdgeFirst Profiler — on-target benchmarking with latency and accuracy metrics") }}
+
+</div>
+
+EdgeFirst Studio is designed for teams and individuals building AI-powered products for the edge. If any of the following sounds familiar, you're in the right place:
+
+- **You want to train and deploy vision models** without managing your own training infrastructure
+- **You work with edge hardware** — cameras, NPUs, embedded systems — and need models that actually run fast on device
+- **You need to manage datasets** — annotate, version, audit, and share image or sensor data across a team
+- **You want to benchmark models on real hardware** and see accuracy alongside latency, not just one or the other
+- **You're evaluating pre-trained models** and want to compare them against your own fine-tuned results
+- **You're building a Physical AI system** with 3D sensors (LiDAR, RADAR, depth) alongside cameras
+
+EdgeFirst Studio is a fully managed cloud platform — no servers to provision, no training clusters to maintain. You bring your data and your target hardware; Studio handles the rest.
+
+!!! tip "Not sure yet?"
+    No account needed to start exploring. Visit the [EdgeFirst Studio landing page](https://edgefirst.studio) to browse features and the public Model Zoo — then sign up when you're ready. New accounts start with **\$50 USD in free credits**.
+
 ## Explore EdgeFirst Studio
 
 EdgeFirst Studio is accessible at {{ studio_link("edgefirst.studio") }}.  Upon visiting, you will see the EdgeFirst Studio landing page with an overview of the platform's features and capabilities — no account or sign-up is required to explore this page.

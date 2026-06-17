@@ -46,7 +46,7 @@ The validation session progress will appear in the "Validation" page as shown be
 
 {{ figure("/models/assets/validation/vision-session-progress.jpg", "Validation Progress") }}
 
-Once completed the session card will appear like the following below. To view the validation metrics, click on the validation charts button as indicated.
+Once the session is complete, the session card will appear like the following. To view the validation metrics, click the validation charts button as indicated.
 
 {{ figure("/models/assets/validation/vision-completed-session.jpg", "Completed Session") }}
 

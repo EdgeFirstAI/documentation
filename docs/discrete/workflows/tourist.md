@@ -21,7 +21,7 @@ EdgeFirst Studio is designed for teams and individuals building AI-powered produ
 EdgeFirst Studio is a fully managed cloud platform — no servers to provision, no training clusters to maintain. You bring your data and your target hardware; Studio handles the rest.
 
 !!! tip "Not sure yet?"
-    No account needed to start exploring. Visit the [EdgeFirst Studio landing page](https://edgefirst.studio) to browse features and the public Model Zoo — then sign up when you're ready. New accounts start with **\$50 USD in free credits**.
+    No account needed to start exploring. Visit the {{ studio_link("EdgeFirst Studio landing page") }} to browse features and the public Model Zoo — then sign up when you're ready. New accounts start with **\$50 USD in free credits**.
 
 ## Explore EdgeFirst Studio
 
@@ -31,6 +31,7 @@ On the landing page you can:
 
 - View the EdgeFirst Studio feature overview and product highlights
 - Browse publicly available sample models in the [EdgeFirst Model Zoo on Hugging Face](https://huggingface.co/spaces/EdgeFirst/Models)
+- Browse publicly available {{ studio_link("projects and datasets", "project") }}
 - Learn about the EdgeFirst Perception ecosystem and supported target hardware
 
 {{ figure("/getting_started/assets/studio_landing_page.jpg", "EdgeFirst Studio Landing Page") }}

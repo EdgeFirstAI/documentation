@@ -7,15 +7,15 @@ Select your platform from the table below to get started.
 !!! note "About these workflows"
     The hardware workflows use the **Coffee Cup** sample dataset and train a **ModelPack** vision model. Cost estimations shown in the table reflect this specific configuration — actual costs will vary depending on your dataset size, the model type, and training configurations.
 
-| Persona | Hardware | Features | Cost |
-|---------|----------|----------|------|
-| [Maivin](../../platforms/quickstart/maivin/index.md) | PC + Maivin | Record MCAP, Annotate 2D, Train, Validate, Deploy on Maivin | TBA |
-| [Raivin](../../platforms/quickstart/raivin/index.md) | PC + Raivin w/ Radar | Record MCAP, Annotate 2D + 3D, Train, Validate, Deploy on Raivin | TBA |
+| Persona | Hardware | Features | Cost | Time |
+|---------|----------|----------|------|------|
+| [Maivin](../../platforms/quickstart/maivin/index.md) | PC + Maivin | Record MCAP, Annotate 2D, Train, Validate, Deploy on Maivin | TBA | TBA |
+| [Raivin](../../platforms/quickstart/raivin/index.md) | PC + Raivin w/ Radar | Record MCAP, Annotate 2D + 3D, Train, Validate, Deploy on Raivin | TBA | TBA |
 | LiDAR (*coming soon*) | PC + Raivin w/ LiDAR | Record MCAP, Annotate 2D + 3D (enhanced), Train, Validate, Deploy on Raivin | TBA |
-| [i.MX 8M Plus](../../platforms/quickstart/imx8mplus/index.md) | PC + i.MX 8M Plus | Copy Dataset, Train, Validate, Deploy on i.MX 8M Plus | ~\$8 USD |
-| [i.MX 95](../../platforms/quickstart/imx95/index.md) | PC + i.MX 95 | Copy Dataset, Train, Validate, Deploy on i.MX 95 | ~\$8 USD |
-| [Jetson Orin](../../platforms/quickstart/jetson_orin/index.md) | PC + Jetson Orin | Copy Dataset, Train, Validate, Deploy on Jetson Orin | ~\$8 USD |
-| [Raspberry Pi 5](../../platforms/quickstart/raspberrypi/index.md) | PC + Raspberry Pi 5 | Copy Dataset, Train, Validate, Deploy on Raspberry Pi 5 | ~\$8 USD |
+| [i.MX 8M Plus](../../platforms/quickstart/imx8mplus/index.md) | PC + i.MX 8M Plus | Copy Dataset, Train, Validate, Deploy on i.MX 8M Plus | ~\$8 USD | ~1 hour |
+| [i.MX 95](../../platforms/quickstart/imx95/index.md) | PC + i.MX 95 | Copy Dataset, Train, Validate, Deploy on i.MX 95 | ~\$8 USD | ~1 hour |
+| [Jetson Orin](../../platforms/quickstart/jetson_orin/index.md) | PC + Jetson Orin | Copy Dataset, Train, Validate, Deploy on Jetson Orin | ~\$8 USD | ~1 hour |
+| [Raspberry Pi 5](../../platforms/quickstart/raspberrypi/index.md) | PC + Raspberry Pi 5 | Copy Dataset, Train, Validate, Deploy on Raspberry Pi 5 | ~\$8 USD | ~1 hour |
 
 1. [Maivin Workflow](../../platforms/quickstart/maivin/index.md)
 

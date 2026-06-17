@@ -16,7 +16,7 @@
 
 5. Start a YOLOv8n detection model by following these settings. Once the settings are set, click on "Start Session" at the bottom of the window
 
-    {{ figure("/models/assets/training/training-session-attributes-ultralytics.jpg", "Ultralytics Training Settings") }}
+    {{ figure("/profiler/assets/studio-yolo-model-configurations.jpg", "Ultralytics Training Settings") }}
 
     This will start a training session in progress.
 
@@ -33,8 +33,6 @@
         {{ img("/models/assets/training/no-training-charts.jpg", "No Training Charts") }}
 
         Training sessions configured without epochs will not generate loss or metric charts, since the chart x-axis is epoch-based. This is expected behaviour.
-
-    If you would like to know more about how to reproduce the benchmarks gathered in the [EdgeFirst Model Zoo on Hugging Face](https://huggingface.co/spaces/EdgeFirst/Models), please see [Training Configurations](../../profiler/concepts/configuration.md).
 
 6. The completed training session should look like the following
 

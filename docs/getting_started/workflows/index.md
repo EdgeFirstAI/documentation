@@ -98,26 +98,26 @@ We've identified the following workflows that any user can follow starting from 
 
 ### Cloud Personas
 
-| Persona | Hardware | Features | Cost |
-|---------|----------|----------|------|
-| [Tourist](tourist.md) | PC | Explore {{ studio_link("EdgeFirst Studio") }} Landing Page and Feature Overview | Free |
-| [Tourist+](tourist_plus.md) | PC | {{ studio_link("Sign Up", "signup") }}, {{ studio_link("Login", "login") }}, Browse {{ studio_link("Public Datasets and Models", "project") }} | Free |
-| [Profiler](profiler.md) | PC | Browse [Hugging Face Model Zoo](https://huggingface.co/spaces/EdgeFirst/Models), Review Training and Validation Sessions | Free |
-| [Profiler+](profiler_plus.md) | PC | Copy Sample Dataset, Retrain, Revalidate, Compare Against Hugging Face Model Zoo, Deploy on Browser or on Target (if available) | TBA |
-| [Auditor](auditor.md) | PC | Copy Dataset, Annotate 2D, Train, Validate, Deploy on Browser | TBA |
-| [Web](web.md) | PC + Smartphone | Record, Annotate 2D, Train, Validate, Deploy on Browser | TBA |
+| Persona | Hardware | Features | Cost | Time |
+|---------|----------|----------|------|------|
+| [Tourist](tourist.md) | PC | Explore {{ studio_link("EdgeFirst Studio") }} Landing Page and Feature Overview | Free | N/A |
+| [Tourist+](tourist_plus.md) | PC | {{ studio_link("Sign Up", "signup") }}, {{ studio_link("Login", "login") }}, Browse {{ studio_link("Public Datasets and Models", "project") }} | Free | N/A |
+| [Profiler](profiler.md) | PC | Browse [Hugging Face Model Zoo](https://huggingface.co/spaces/EdgeFirst/Models), Review Training and Validation Sessions | Free | N/A |
+| [Profiler+](profiler_plus.md) | PC | Retrain, Revalidate, Compare Against [Hugging Face Model Zoo](https://huggingface.co/spaces/EdgeFirst/Models), Deploy on Browser or on Target (if available) | TBA | TBA |
+| [Auditor](auditor.md) | PC | Copy Sample Dataset, Annotate 2D, Train, Validate, Deploy on Browser | ~\$22 USD | ~2.5 hours |
+| [Web](web.md) | PC + Smartphone | Record, Annotate 2D, Train, Validate, Deploy on Browser | TBA | TBA |
 
 ### Hardware Personas
 
-| Persona | Hardware | Features | Cost |
-|---------|----------|----------|------|
-| [Maivin](hardware.md) | PC + Maivin | Record MCAP, Annotate 2D, Train, Validate, Deploy on Maivin | TBA |
-| [Raivin](hardware.md) | PC + Raivin w/ Radar | Record MCAP, Annotate 2D + 3D, Train, Validate, Deploy on Raivin | TBA |
-| [LiDAR](hardware.md) | PC + Raivin w/ LiDAR | Record MCAP, Annotate 2D + 3D (enhanced), Train, Validate, Deploy on Raivin | TBA |
-| [i.MX 8M Plus](hardware.md) | PC + i.MX 8M Plus | Copy Dataset, Train, Validate, Deploy on i.MX 8M Plus | ~\$8 USD |
-| [i.MX 95](hardware.md) | PC + i.MX 95 | Copy Dataset, Train, Validate, Deploy on i.MX 95 | ~\$8 USD |
-| [Jetson Orin](hardware.md) | PC + Jetson Orin | Copy Dataset, Train, Validate, Deploy on Jetson Orin | ~\$8 USD |
-| [Raspberry Pi 5](hardware.md) | PC + Raspberry Pi 5 | Copy Dataset, Train, Validate, Deploy on Raspberry Pi 5 | ~\$8 USD |
+| Persona | Hardware | Features | Cost | Time |
+|---------|----------|----------|------|------|
+| [Maivin](hardware.md) | PC + Maivin | Record MCAP, Annotate 2D, Train, Validate, Deploy on Maivin | TBA | TBA |
+| [Raivin](hardware.md) | PC + Raivin w/ Radar | Record MCAP, Annotate 2D + 3D, Train, Validate, Deploy on Raivin | TBA | TBA |
+| [LiDAR](hardware.md) | PC + Raivin w/ LiDAR | Record MCAP, Annotate 2D + 3D (enhanced), Train, Validate, Deploy on Raivin | TBA | TBA |
+| [i.MX 8M Plus](hardware.md) | PC + i.MX 8M Plus | Copy Dataset, Train, Validate, Deploy on i.MX 8M Plus | ~\$8 USD | ~1 hour |
+| [i.MX 95](hardware.md) | PC + i.MX 95 | Copy Dataset, Train, Validate, Deploy on i.MX 95 | ~\$8 USD | ~1 hour |
+| [Jetson Orin](hardware.md) | PC + Jetson Orin | Copy Dataset, Train, Validate, Deploy on Jetson Orin | ~\$8 USD | ~1 hour |
+| [Raspberry Pi 5](hardware.md) | PC + Raspberry Pi 5 | Copy Dataset, Train, Validate, Deploy on Raspberry Pi 5 | ~\$8 USD | ~1 hour |
 
 ## User Journey
 
@@ -403,7 +403,7 @@ flowchart LR
 
 4. [Profiler+ Workflow](profiler_plus.md)
 
-    This workflow extends the Profiler workflow with hands-on experimentation: copy a sample dataset, retrain a model, revalidate, and compare results against the Hugging Face Model Zoo baselines.  Models can be deployed on a browser or on a compatible target device.
+    This workflow extends the Profiler workflow with hands-on experimentation: copy a sample dataset, retrain a model, revalidate, and compare results against the [Hugging Face Model Zoo](https://huggingface.co/spaces/EdgeFirst/Models) baselines.  Models can be deployed on a browser or on a compatible target device.
 
 5. [Auditor Workflow](auditor.md)
 
@@ -418,8 +418,4 @@ flowchart LR
 7. [Hardware Persona Workflows](hardware.md)
 
     Hardware-specific workflows for users with an EdgeFirst target device.  Each platform has its own step-by-step workflow covering device setup, dataset acquisition, model training, conversion, on-target validation, and deployment.
-
-!!! note "Future Work"
-
-    The workflows with missing links are a work in progress and currently unavailable.
     

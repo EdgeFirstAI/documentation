@@ -1,6 +1,6 @@
 ## Is EdgeFirst Studio for you?
 
-<div class="grid" markdown>
+<div class="grid" markdown="1">
 
 {{ figure("/getting_started/assets/workflows/auto-labelling.gif", "Auto-Labelling — AI-generated bounding boxes and segmentation masks") }}
 {{ figure("/getting_started/assets/workflows/model-optimization.gif", "Model Optimization — train, compare, and benchmark vision models") }}

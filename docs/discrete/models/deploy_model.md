@@ -7,7 +7,7 @@ Once you have validated your trained model, you can deploy the model in the brow
 
 From the training session card, you can run the model for inference by clicking the "Run Model" button on the top right of the page.
 
-{{ figure("/getting_started/assets/run_model/trainer_details_page.png", "Run Model Button") }}
+{{ figure("/getting_started/assets/run_model/trainer_details_page.png", "Training Session Details (Run Model button)") }}
 
 You will be given the option for either live inference or inference from a file upload.  Go ahead and demo the live inference feed by clicking the "Live" option.
 

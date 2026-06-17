@@ -67,6 +67,6 @@ In the Model Runner Dashboard, upload any of these images to see the model resul
 2. Choose your camera and allow access when prompted
 3. The model will start running on the live stream.  Point the camera at coffee cups to see results in real time
 
-You're now ready to experience the full MLOps workflow in EdgeFirst Studio. In under an hour—and for approximately $8 USD—you can copy a dataset, train a model, validate its performance, and deploy it on browser.
+You're now ready to experience the full MLOps workflow in EdgeFirst Studio. In under an hour—and for approximately \$8 USD—you can copy a dataset, train a model, validate its performance, and deploy it in the browser.
 
 The journey begins by creating a project, which acts as the central workspace for all your datasets, models, validation sessions, and deployments.

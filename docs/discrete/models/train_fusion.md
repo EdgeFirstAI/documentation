@@ -36,7 +36,7 @@ The session progress will be shown like the following below.
 
 {{ figure("/models/assets/training/fusion-session-progress.jpg", "Training Session Progress") }}
 
-Once completed the session card will appear like the following below.
+Once the session is complete, the session card will appear like the following.
 
 {{ figure("/models/assets/training/fusion-completed-session.jpg", "Completed Session") }}
 

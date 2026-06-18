@@ -1,12 +1,8 @@
 # Upload MCAP
 
-To upload an MCAP Recording into EdgeFirst Studio, first {{ studio_link("login", "login") }} to EdgeFirst Studio.  Once logged in to EdgeFirst Studio, navigate to the "Data Snapshots" under the tool options.
+To upload an MCAP Recording into EdgeFirst Studio, first {{ studio_link("login", "login") }} to EdgeFirst Studio.  Once logged in to EdgeFirst Studio, navigate to the "Data Snapshots" under the apps menu.
 
 {{ figure("/datasets/assets/annotations/automatic/data-snapshots.jpg", "Data Snapshots") }}
-
-!!! note
-    A project has already been created intended for object detection.  This step
-    has been covered in [Getting Started](../../getting_started/create_project.md).
 
 Once you are in the "Data Snapshots" page, upload the recorded MCAP by clicking "From File" which opens a new window dialog for selecting the MCAP downloaded in your PC.
 

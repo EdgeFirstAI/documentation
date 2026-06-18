@@ -71,7 +71,7 @@ This will show the list of existing labels.  Click on the "x" button shown on th
 
 ## Terminate AGTG Server
 
-In order to avoid running out of credits, terminate an idle AGTG server.  As mentioned, 15 minutes of inactivity will auto-terminate AGTG servers.  However, you can terminate a server as shown below.  Navigate to the *Cloud Instances* under the tool options.
+In order to avoid running out of credits, terminate an idle AGTG server.  As mentioned, 15 minutes of inactivity will auto-terminate AGTG servers.  However, you can terminate a server as shown below.  Navigate to the *Cloud Instances* under the apps menu.
 
 {{ figure("../../assets/annotations/cloud-instances.jpg", "Cloud Instances") }}
 

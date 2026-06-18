@@ -30,13 +30,37 @@ file. The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.
 - **Login page** (`getting_started/login.md`): rewrote the transition sentence to
   be more inviting; added PC/phone/camera context and a "Next →" footer link.
 - Four workflow GIF assets added under `getting_started/assets/workflows/`.
+- **2D annotation guide** (`discrete/datasets/annotate_2d_dataset.md`): enhanced
+  with AGTG server launch steps, timeout warning, video playback verification tip,
+  and back-to-gallery navigation. New screenshot assets added.
+- **Tourist Plus workflow** (`discrete/workflows/tourist_plus.md`): expanded with
+  public datasets description and new "Browse Public Experiments" section.
+- **Mobile image import screenshot** (`docs/datasets/assets/capture/mobile-image-import-fields.jpg`):
+  new asset for uploading images workflow documentation.
+- **AGTG tutorial GIF** (`getting_started/assets/workflows/AGTG-tutorial.gif`):
+  new animated asset demonstrating annotation workflow.
+- **Device compatibility note** added to `recording_on_phone.md` explaining that
+  screenshots are Samsung-based and device UIs may vary across manufacturers.
 
 ### Changed
 
 - **Screenshot updates**: training, validation, and deployment screenshots
   refreshed across `models/assets/training/`, `models/assets/validation/`,
   `getting_started/assets/run_model/`, and `profiler/assets/`.
+- **Capture and management screenshots optimized** for web performance across
+  `datasets/assets/capture/` and `datasets/assets/management/` directories.
+- **Annotation screenshots compressed**: AGTG prompts, segment tool, propagation,
+  and annotation set UI screenshots optimized for faster loading.
+- **Profiler instructions** (`profiler/studio.md`): updated to use COCO dataset
+  from the public COCO sample projects for more realistic profiling examples.
+- **Studio "Run Pretrained Models"** (`studio/models.md`): added missing
+  screenshots for improved user clarity and step-by-step guidance.
+- **Workflow documentation clarified** in `discrete/datasets/uploading_*.md` and
+  workflow files for improved user guidance.
+- **GIF files tracked with Git LFS** (`.gitattributes` updated) to manage large
+  animated assets efficiently and avoid GitHub file size warnings.
 - `models/assets/deployment/run-model-button.jpg` removed (unused asset).
+- `getting_started/assets/workflows/dataset-groups.jpg` removed (outdated asset).
 - `getting_started/workflows/index.md` free credits note dollar signs escaped to
   prevent arithmatex from rendering them as math delimiters.
 

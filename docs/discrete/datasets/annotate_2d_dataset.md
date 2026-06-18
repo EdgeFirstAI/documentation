@@ -10,7 +10,7 @@ Provide the name of the new annotation set and its description
 
 {{ figure("/datasets/assets/annotations/new-annotation-set-options.jpg", "Annotation Set Specifiers") }}
 
-A new annotation set was created called "new-annotations".
+A new annotation set is now created called "new-annotations".
 
 {{ figure("/datasets/assets/annotations/new-annotation-set.jpg", "New Annotation Set") }}
 
@@ -38,23 +38,23 @@ Go ahead and launch the AGTG server.  Please allow ~5mins for the server to init
 
 Once the AGTG server has started, go ahead and [annotate the starting frame](../../datasets/tutorials/annotations/automatic.md#annotate-starting-frame).  Once the starting frame has been annotated, go ahead and [propagate the annotations](../../datasets/tutorials/annotations/automatic.md#propagate) throughout the rest of the frames.
 
+{{ figure("/getting_started/assets/workflows/AGTG-tutorial.gif", "AGTG Preview") }}
+
 {{ figure("/datasets/assets/annotations/automatic/agtg-prompts.jpg", "AGTG Initial Prompts") }}
 
 Once the propagation completes, click "Save Annotations" to save the propagated annotations.
 
 {{ figure("/datasets/assets/annotations/automatic/propagation-completed.jpg", "Propagation Completed") }}
 
-!!! tip "Video Playback"
+!!! note "Audit Annotations"
 
     Run the video playback to browse through the generated annotations and verify that the generated annotations are correct.
 
-    [Insert video playback]
-
-    If an annotation was missed, you can quickly add the annotation using the same process and click "Save AIGT Annotations" as shown.
+    If an annotation was missed, you can quickly [add the annotation](../../datasets/tutorials/annotations/manual.md#add-2d-annotations) using the same process and click "Save AIGT Annotations" as shown.
 
     {{ img("/datasets/assets/annotations/automatic/add-missed-annotation.jpg", "Add Missed Annotations") }}
 
-    More information can be found under [Dataset Tutorials](../../datasets/tutorials/annotations/manual.md) to make corrections to the annotations.
+    For objects that were improperly annotated, you can [remove annotations](../../datasets/tutorials/annotations/manual.md#delete-2d-annotations).  For annotations that require minor adjustments, EdgeFirst Studio has the features for [adjusting annotations](../../datasets/tutorials/annotations/manual.md#adjust-2d-annotations).  Please click on the links as provided for further instructions on each of these features.
 
 Repeat the steps for all the sequences in the dataset.  You can go back to the dataset sequences by pressing the back button on the top left corner.
 

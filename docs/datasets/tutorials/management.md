@@ -8,7 +8,7 @@ This tutorial will show how to open the [gallery](../../studio/datasets/gallery.
 
 From the "Projects" page, you can click on the dataset button indicated in red to view the datasets contained in the project.
 
-{{ figure("../assets/management/datasets-button.jpg", "View Datasets") }}
+{{ figure("../../studio/assets/projects/sample-datasets-button.jpg", "View Datasets") }}
 
 You will now see the datasets contained in the project.  Each dataset has a gallery.  
 
@@ -77,7 +77,3 @@ For cases where the annotations need corrections, please see [Manual 2D Annotati
 The process of combining datasets consists of multiple copy processes on a given dataset container.  To combine datasets, first [create a dataset](#create-dataset) container.  Follow the process for [copying a dataset](#copy-dataset) onto the destination dataset container that was created.  The copy process will copy the selected dataset onto the same dataset container and thus combining multiple datasets.
 
 {% include-markdown "discrete/datasets/split_dataset.md" %}
-
-## Export Dataset
-
-*Coming Soon*

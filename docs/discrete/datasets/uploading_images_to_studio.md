@@ -19,7 +19,11 @@ In my current setup, I have selected "Photos & Videos" from the options above an
 
 {{ figure("/datasets/assets/capture/mobile-multi-select-images.jpg", "Android Multi-select Images") }}
 
-Once the image files have been selected, the progress for the image import will be shown.
+Once the image files have been selected, click on "Start Import" to start the import process.
+
+{{ figure("/datasets/assets/capture/mobile-image-import-fields.jpg", "Android Start Import Images") }}
+
+The progress for the image import will be shown.
 
 {{ figure("/datasets/assets/capture/image-import-progress.jpg", "Image Import Progress") }}
 

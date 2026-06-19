@@ -41,6 +41,18 @@ file. The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.
   new animated asset demonstrating annotation workflow.
 - **Device compatibility note** added to `recording_on_phone.md` explaining that
   screenshots are Samsung-based and device UIs may vary across manufacturers.
+- **Tutorials & Guides hub** (`docs/index.md`): Material grid-cards section linking
+  to Dataset Tutorials, Annotations, Model Training, Profiler, User Workflows, and
+  Platform Quick Starts to make instructional pages easier to discover.
+- **Profiler Quick Start warning** (`profiler/quickstart.md`): note that profiling
+  must run against a user-owned project — the Sample Project and any public,
+  read-only project will fail with an error.
+- **Profiler platform video demos** (`profiler/index.md`): embedded demo videos
+  for MacBook, NXP i.MX 95, and NXP Ara240 targets.
+- **Fully Automatic AGTG work-in-progress notice**
+  (`datasets/tutorials/annotations/automatic.md`): bug admonition flagging fully
+  automatic ground truth generation as non-operational and directing users to the
+  semi-automatic workflow; expanded the related note in `annotations/index.md`.
 
 ### Changed
 
@@ -51,6 +63,18 @@ file. The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.
   `datasets/assets/capture/` and `datasets/assets/management/` directories.
 - **Annotation screenshots compressed**: AGTG prompts, segment tool, propagation,
   and annotation set UI screenshots optimized for faster loading.
+- **Billing documentation updated** (`studio/user/billing.md`): rewritten for the
+  redesigned Monthly Bill view (month/year selector, feature categories, Cost vs
+  Charge columns, Net Usage and Grand Total); refreshed `usage-billing-page.jpg`
+  and removed the unused `current-usage-section.jpg`.
+- **Dataset import tutorial** (`datasets/tutorials/import.md`): converted image
+  pairs to side-by-side tables and aligned the steps with the consolidated COCO
+  upload flow; added and replaced import screenshots, removing superseded ones.
+- **Unused assets removed**: `studio/assets/models/experiments-page.jpg`,
+  `datasets/assets/annotations/automatic/agtg-propagation-completed.jpg`, and
+  several superseded coco128/coco2017 import screenshots.
+- **Screenshots recompressed**: login, forgot-password, navigation help-options,
+  and projects screenshots optimized for web performance.
 - **Profiler instructions** (`profiler/studio.md`): updated to use COCO dataset
   from the public COCO sample projects for more realistic profiling examples.
 - **Studio "Run Pretrained Models"** (`studio/models.md`): added missing

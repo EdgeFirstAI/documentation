@@ -22,10 +22,10 @@ Initially, for free trial users the remaining funds will show as "USD 50.00".  A
 
 ### Features and Associated Costs
 
-Each feature category in the Monthly Bill can be expanded to reveal the individual line items that make up its total.  Every line item lists its **Description**, the **Date** it was incurred, the **Rate** applied (for example, $12/hour for Training and Validation), the **Duration** in hours, and two cost columns:
+Each feature category in the Monthly Bill can be expanded to reveal the individual line items that make up its total.  Every line item lists its **Description**, the **Date** it was incurred, the **Rate** applied (for example, \$12/hour for Training and Validation), the **Duration** in hours, and two cost columns:
 
 - **Cost** — the gross cost of the usage, calculated from its rate and duration.
-- **Charge** — the net amount actually billed to your organization after any free credits or promotions are applied.  A line item may show a non-zero **Cost** but a **Charge** of $0.00 when it is fully covered by credits.
+- **Charge** — the net amount actually billed to your organization after any free credits or promotions are applied.  A line item may show a non-zero **Cost** but a **Charge** of \$0.00 when it is fully covered by credits.
 
 The **Grand Total** row at the bottom of the bill sums the total billed duration together with the overall **Cost** and **Charge** for the selected period.
 

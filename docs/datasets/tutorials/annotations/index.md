@@ -50,7 +50,7 @@ To change the label of a single annotation follow these steps inside the dataset
 #### Edit Segmentation Mask Label
 
 1. Hide the bounding boxes
-2. Switch to label model 2D editing panel
+2. Switch to label mode 2D editing panel
 3. Select the desired label in the left panel
 4. Click on the object to change its label
 

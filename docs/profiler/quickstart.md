@@ -14,6 +14,9 @@ This guide walks you from "nothing installed" to a published validation session 
 
 ## 3. Create an Ultralytics training session
 
+!!! warning "Use your own project"
+    Profiling must be run against a project you own. Running a profiling or validation session on the **Sample Project** — or any public, read-only project — will fail with an error. Make sure you created your own project in [Step 2](#2-create-your-project-in-edgefirst-studio) before continuing.
+
 {% include-markdown "discrete/models/train_ultralytics.md" heading-offset=0 %}
 
 ## 4. Install the profiler

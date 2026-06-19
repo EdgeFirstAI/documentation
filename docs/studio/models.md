@@ -2,7 +2,7 @@
 
 A model experiment is a container of training and validation sessions in the experiment.  The following figure shown is the "Model Experiments" page.  This page will contain all the experiments that were started by the user.
 
-{{ figure("assets/models/experiments-page.jpg", "Project Experiments") }}
+{{ figure("../models/assets/training/created-experiment.jpg", "Project Experiments") }}
 
 The following figure breaks down the elements of an "Experiment" card.
 

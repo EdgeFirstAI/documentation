@@ -10,7 +10,9 @@ Click the image preview to view the dataset gallery.  The dataset gallery will l
 
 This dataset will contain [both sequences (videos) and images](../../datasets/format/structure.md#3-mixed-datasets).  Clicking on the sequences will provide video playback of the sequence.  Otherwise, clicking on images will expand the image view and allow playback of all images in the dataset.
 
-This dataset has a complete set of 2D annotations (masks and bounding boxes) of coffee cups.  
+This dataset has a complete set of 2D annotations (masks and bounding boxes) of coffee cups.  Additional features are also available to the user by expanding the image previews of the dataset such as [annotation features and visualization](../../datasets/tutorials/annotations/index.md), and image information.
+
+{{ figure("/datasets/assets/management/sample-dataset-image-preview.jpg", "Dataset Image Preview") }}
 
 !!! tip "Fast Annotations"
     This dataset was quickly annotated using the [Automatic Ground Truth Generation (AGTG) feature of EdgeFirst Studio](../../studio/agtg.md).

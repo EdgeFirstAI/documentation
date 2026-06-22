@@ -1144,6 +1144,17 @@
 <p class="admonition-title">Data Usage</p>
 <p>It is recommended to use a phone connected to a Wi-Fi network. A device connected to mobile data might be subject to intense usage when uploading files; video files or image files can be large in size. In the examples below, the video file used was ~15MB and the image files were ~2MB each.</p>
 </div>
+<div class="admonition warning">
+<p class="admonition-title">Limited Datasets</p>
+<p>The example below uses a small video recording and only a handful of images. While this is sufficient for demonstrating the workflow, training a model on a limited dataset will typically result in poor performance when deployed in real-world conditions that differ from the training samples.</p>
+<p>To improve model robustness and generalization, it is recommended to collect training data across a variety of conditions, backgrounds, lighting environments, and object variations. As a general guideline, a minimum dataset size of approximately 1,000 images or video frames is recommended, although the optimal size depends on the complexity of the task.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Device UI May Vary</p>
+<p>The video and image capture screenshots shown in this guide were taken on a Samsung smartphone.
+Camera app layouts, button locations, labels, and available options may differ on other devices and operating system versions.
+For device-specific steps, refer to your phone manufacturer documentation or device manual.</p>
+</div>
 <h2 id="record-video">Record Video</h2>
 <p>Using a smartphone, try to record a 30 second or more video with the camera application showing various orientations of coffee cups.  Typically, the video recording can be started by pressing the red circular button. The video can be stopped by pressing the same button again.</p>
 <figure>
@@ -1160,23 +1171,19 @@
 <p class="admonition-title">Leveraging Videos</p>
 <p>It is recommended to use videos rather than individual images.  This is because the <a href="../../datasets/tutorials/annotations/automatic/">Automatic Ground Truth Generation (AGTG)</a> feature leverages SAM-2 with tracking information which only needs a single annotation to annotate all frames.  However, individual images requires more effort by annotating each image separately.</p>
 </div>
-<div class="admonition warning">
-<p class="admonition-title">Limited Datasets</p>
-<p>Throughout the demos, the dataset is kept small.  However, training on limited datasets will result in poor model performances when the model is deployed under conditions that differs from the dataset samples.  It is suggested to increase the amount of training data under various conditions and backgrounds to train a more robust model.</p>
-</div>
 <h2 id="create-dataset">Create Dataset</h2>
-<p>If you have a video recording or sample images for your dataset, you can create a dataset container in EdgeFirst Studio to contain your video frames or images and annotations.</p>
-<p>Navigate to a web browser and <a href="https://test.edgefirst.studio/login">login</a> to EdgeFirst Studio.  Once logged in to EdgeFirst Studio, navigate to your project.  In this case the project name is "Object Detection".  Click on the "Datasets" button that is indicated in red below.</p>
+<p>If you have a video recording or sample images for your dataset, you can <a href="../../datasets/tutorials/management/#create-dataset">create a dataset container</a> in EdgeFirst Studio to contain your video frames or images and annotations.</p>
+<p>Navigate to a web browser and <a href="https://test.edgefirst.studio/login">login</a> to EdgeFirst Studio.  Once logged in to EdgeFirst Studio, navigate to your project.  In this case the project name is "My First Project".  Click on the "Datasets" button that is indicated in red below.</p>
 <figure>
             <img align="center" alt="Object Detection Project" src="../../datasets/assets/capture/mobile-projects.jpg" />
             <figcaption>Object Detection Project</figcaption>
             </figure>
-<p>This will bring you to the "Datasets" page of the selected project.  Create a new dataset container by clicking the "New Dataset" button that is indicated in red.</p>
+<p>This will bring you to the <a href="../../studio/datasets/">Datasets Dashboard</a> of the selected project.  Create a new dataset container by clicking the "Actions" dropdown on the top right and then click the "New" button that is indicated in red.</p>
 <figure>
             <img align="center" alt="New Dataset" src="../../datasets/assets/capture/mobile-new-dataset.jpg" />
             <figcaption>New Dataset</figcaption>
             </figure>
-<p>Add the dataset and annotation container name, labels, and dataset description as indicated by the fields below.  It is up to you to specify the information in the fields and you do not have to strictly follow the example shown below.  Click the "Create" button once the fields have been filled.</p>
+<p>Enter a name for the dataset and annotation container, specify the labels, and provide a dataset description in the fields shown below. The values are entirely up to you and do not need to match the example. Once all required fields have been completed, click "Create" to create the dataset.</p>
 <figure>
             <img align="center" alt="Dataset Fields" src="../../datasets/assets/capture/mobile-dataset-details.jpg" />
             <figcaption>Dataset Fields</figcaption>
@@ -1187,7 +1194,7 @@
             <figcaption>Created Dataset</figcaption>
             </figure>
 <h2 id="upload-video">Upload Video</h2>
-<p>Video files can be uploaded into any dataset container in EdgeFirst Studio.  Choose the dataset container to upload the video file.  In this case, the dataset is called "Coffee Cup".  Click on the dataset context menu (three dots) and select import.</p>
+<p>Video files can be uploaded into any dataset container in EdgeFirst Studio.  Choose the dataset container to upload the video file.  In this case, the dataset is called "Coffee Cup".  Click on the dataset context menu (three dots) and click "Import".</p>
 <figure>
             <img align="center" alt="Dataset Import Option" src="../../datasets/assets/capture/mobile-dataset-import-option.jpg" />
             <figcaption>Dataset Import Option</figcaption>
@@ -1217,16 +1224,13 @@
             <img align="center" alt="Android File Manager" src="../../datasets/assets/capture/mobile-video-location.jpg" />
             <figcaption>Android File Manager</figcaption>
             </figure>
-<p>Once the video file has been selected, the <abbr title="Frames Per Second">FPS</abbr> (frames per second) is then set to 1 by default, however you can specify this to your desired <abbr title="Frames Per Second">FPS</abbr>.  Finally, go ahead and click the "Start Import" button to start importing the video file.</p>
+<p>After selecting the video file, the <abbr title="Frames Per Second">FPS</abbr> (frames per second) value is automatically set to 1 by default. You may adjust this value to match your desired frame extraction rate. When ready, click Start Import to begin importing the video.</p>
 <figure>
             <img align="center" alt="Import Fields" src="../../datasets/assets/capture/mobile-video-import-fields.jpg" />
             <figcaption>Import Fields</figcaption>
             </figure>
-<div class="admonition warning">
-<p class="admonition-title">Import Duration</p>
-<p>Importing a 30 second video could take up to 6 minutes.</p>
-</div>
-<p>This will start the import process and once it is completed, you should see the number of images in the dataset increased.  If you do not see any changes, refresh the browser.</p>
+<p>This will start the import process. For a 30-second video, the import typically takes about 2 minutes to complete.</p>
+<p>Once the import finishes, the number of images in the dataset should increase to reflect the newly imported frames. If the dataset does not appear to update, refresh the browser to view the latest changes.</p>
 <figure>
             <img align="center" alt="Imported Video" src="../../datasets/assets/capture/imported-video-outcome.jpg" />
             <figcaption>Imported Video</figcaption>
@@ -1256,7 +1260,12 @@
             <img align="center" alt="Android Multi-select Images" src="../../datasets/assets/capture/mobile-multi-select-images.jpg" />
             <figcaption>Android Multi-select Images</figcaption>
             </figure>
-<p>Once the image files have been selected, the progress for the image import will be shown.</p>
+<p>Once the image files have been selected, click on "Start Import" to start the import process.</p>
+<figure>
+            <img align="center" alt="Android Start Import Images" src="../../datasets/assets/capture/mobile-image-import-fields.jpg" />
+            <figcaption>Android Start Import Images</figcaption>
+            </figure>
+<p>The progress for the image import will be shown.</p>
 <figure>
             <img align="center" alt="Image Import Progress" src="../../datasets/assets/capture/image-import-progress.jpg" />
             <figcaption>Image Import Progress</figcaption>
@@ -1271,12 +1280,7 @@
             <img align="center" alt="Coffee Cup Gallery" src="../assets/workflows/pc-dataset-gallery.jpg" />
             <figcaption>Coffee Cup Gallery</figcaption>
             </figure>
-<p>Once all the captured data has been uploaded to the dataset container, you will now assign groups to the data to split the data into training and validation sets.  Follow the <a href="../../datasets/tutorials/management/#split-dataset">tutorial for creating groups</a> with an 80% partition to training and 20% partition to validation.  The final outcome for the groups should look as follows.</p>
-<figure>
-            <img align="center" alt="Dataset Groups" src="../assets/workflows/dataset-groups.jpg" />
-            <figcaption>Dataset Groups</figcaption>
-            </figure>
-<p>Now that you have imported captured images or videos into EdgeFirst Studio and have split the captured data into training and validation partitions, you can now start annotating your data as shown in the next section below.</p>
+<p>Now that you have imported captured images or videos into EdgeFirst Studio you can now start annotating your data as shown in the next section below.</p>
 
 
 

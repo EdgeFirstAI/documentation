@@ -1314,17 +1314,6 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#combine-datasets" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Combine Datasets
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#split-dataset" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -1336,13 +1325,52 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#export-dataset" class="md-nav__link">
+  <a href="#combine-datasets" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Export Dataset
+        Combine Datasets
       
     </span>
   </a>
+  
+    <nav class="md-nav" aria-label="Combine Datasets">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#prerequisite" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Prerequisite
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#steps" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Steps
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#next" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Next
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -1676,17 +1704,6 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#combine-datasets" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Combine Datasets
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#split-dataset" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -1698,13 +1715,52 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#export-dataset" class="md-nav__link">
+  <a href="#combine-datasets" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Export Dataset
+        Combine Datasets
       
     </span>
   </a>
+  
+    <nav class="md-nav" aria-label="Combine Datasets">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#prerequisite" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Prerequisite
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#steps" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Steps
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#next" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Next
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -1780,7 +1836,7 @@
 <p>This tutorial will show how to open the <a href="../../../studio/datasets/gallery/">gallery</a> of the dataset to see the individual samples in the dataset.</p>
 <p>From the "Projects" page, you can click on the dataset button indicated in red to view the datasets contained in the project.</p>
 <figure>
-            <img align="center" alt="View Datasets" src="../../assets/management/datasets-button.jpg" />
+            <img align="center" alt="View Datasets" src="../../../studio/assets/projects/sample-datasets-button.jpg" />
             <figcaption>View Datasets</figcaption>
             </figure>
 <p>You will now see the datasets contained in the project.  Each dataset has a gallery.  </p>
@@ -1799,7 +1855,11 @@
             <figcaption>Dataset Images</figcaption>
             </figure>
 <p>This dataset will contain <a href="../../format/structure/#3-mixed-datasets">both sequences (videos) and images</a>.  Clicking on the sequences will provide video playback of the sequence.  Otherwise, clicking on images will expand the image view and allow playback of all images in the dataset.</p>
-<p>This dataset has a complete set of 2D annotations (masks and bounding boxes) of coffee cups.  </p>
+<p>This dataset has a complete set of 2D annotations (masks and bounding boxes) of coffee cups.  Additional features are also available to the user by expanding the image previews of the dataset such as <a href="../annotations/">annotation features and visualization</a>, and image information.</p>
+<figure>
+            <img align="center" alt="Dataset Image Preview" src="../../assets/management/sample-dataset-image-preview.jpg" />
+            <figcaption>Dataset Image Preview</figcaption>
+            </figure>
 <div class="admonition tip">
 <p class="admonition-title">Fast Annotations</p>
 <p>This dataset was quickly annotated using the <a href="../../../studio/agtg/">Automatic Ground Truth Generation (AGTG) feature of EdgeFirst Studio</a>.</p>
@@ -1826,26 +1886,17 @@
     <iframe width="560" height="315" src="https://www.youtube.com/embed/Q8uiYJb1HJ4?start=81&end=118" title="Indoor Dataset Overview" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 </div>
 
-<p>Verify that the dataset has a training and validation split.  The sample dataset shown below has a dedicated split for training (20066 samples) and validation (2229 samples).</p>
+<p>Verify that the dataset has a training and validation split.  The sample dataset shown below has a dedicated split for training (16854 samples) and validation (2133 samples).</p>
 <figure>
             <img align="center" alt="Dataset Groups" src="../../assets/management/fusion-dataset-groups.jpg" />
             <figcaption>Dataset Groups</figcaption>
             </figure>
-<p>Another sample dataset shown below is for training Vision models which has a dedicated split for training (1656 samples) and validation (184 samples).</p>
-<figure>
-            <img align="center" alt="Dataset Groups" src="../../assets/management/vision-dataset-groups.jpg" />
-            <figcaption>Dataset Groups</figcaption>
-            </figure>
-<p>Verify the contents of the dataset and the annotations.  Click the button that navigates to the gallery.  This will show the contents of the dataset.  The dataset may be comprised of multiple sequences as shown below.  </p>
+<p>Verify the contents of the dataset and the annotations.  Click on the image preview of the dataset to navigate to the gallery.  This will show the contents of the dataset.  The dataset may be comprised of multiple sequences as shown below.  </p>
 <figure>
             <img align="center" alt="Dataset Sequences" src="../../assets/management/fusion-dataset-sequences.jpg" />
             <figcaption>Dataset Sequences</figcaption>
             </figure>
-<figure>
-            <img align="center" alt="Dataset Sequences" src="../../assets/management/vision-dataset-sequences.jpg" />
-            <figcaption>Dataset Sequences</figcaption>
-            </figure>
-<p>Clicking on any of these sequences will open individual images in the sequence with the visualizations of the annotations.  For more information please see <a href="#view-dataset">viewing datasets</a>.</p>
+<p>Clicking on any of these sequences will open individual frames in the sequence with the visualizations of the annotations.  For more information please see <a href="#view-dataset">viewing datasets</a>.</p>
 <p>Datasets that train Fusion models provide annotations of the object's 3D bounding box.  For more information on the dataset annotations, please see the <a href="../../format/schema/">EdgeFirst Dataset Format</a>.</p>
 <figure>
             <img align="center" alt="Fusion Annotations" src="../../assets/management/fusion-annotations.jpg" />
@@ -1858,18 +1909,18 @@
             </figure>
 <p>For cases where the annotations need corrections, please see <a href="../annotations/manual/#manual-2d-annotations">Manual 2D Annotations</a> or <a href="../annotations/manual/#manual-3d-annotations">Manual 3D Annotations</a> for more details.</p>
 <h2 id="create-dataset">Create Dataset</h2>
-<p>If you have a video recording or sample images for your dataset, you can create a dataset container in EdgeFirst Studio to contain your video frames or images and annotations.</p>
-<p>Navigate to a web browser and <a href="https://test.edgefirst.studio/login">login</a> to EdgeFirst Studio.  Once logged in to EdgeFirst Studio, navigate to your project.  In this case the project name is "Object Detection".  Click on the "Datasets" button that is indicated in red below.</p>
+<p>If you have a video recording or sample images for your dataset, you can <a href="./#create-dataset">create a dataset container</a> in EdgeFirst Studio to contain your video frames or images and annotations.</p>
+<p>Navigate to a web browser and <a href="https://test.edgefirst.studio/login">login</a> to EdgeFirst Studio.  Once logged in to EdgeFirst Studio, navigate to your project.  In this case the project name is "My First Project".  Click on the "Datasets" button that is indicated in red below.</p>
 <figure>
             <img align="center" alt="Object Detection Project" src="../../assets/capture/mobile-projects.jpg" />
             <figcaption>Object Detection Project</figcaption>
             </figure>
-<p>This will bring you to the "Datasets" page of the selected project.  Create a new dataset container by clicking the "New Dataset" button that is indicated in red.</p>
+<p>This will bring you to the <a href="../../../studio/datasets/">Datasets Dashboard</a> of the selected project.  Create a new dataset container by clicking the "Actions" dropdown on the top right and then click the "New" button that is indicated in red.</p>
 <figure>
             <img align="center" alt="New Dataset" src="../../assets/capture/mobile-new-dataset.jpg" />
             <figcaption>New Dataset</figcaption>
             </figure>
-<p>Add the dataset and annotation container name, labels, and dataset description as indicated by the fields below.  It is up to you to specify the information in the fields and you do not have to strictly follow the example shown below.  Click the "Create" button once the fields have been filled.</p>
+<p>Enter a name for the dataset and annotation container, specify the labels, and provide a dataset description in the fields shown below. The values are entirely up to you and do not need to match the example. Once all required fields have been completed, click "Create" to create the dataset.</p>
 <figure>
             <img align="center" alt="Dataset Fields" src="../../assets/capture/mobile-dataset-details.jpg" />
             <figcaption>Dataset Fields</figcaption>
@@ -1944,8 +1995,6 @@
             <img align="center" alt="Back to Datasets Button" src="../../assets/management/back-to-datasets-button.jpg" />
             <figcaption>Back to Datasets Button</figcaption>
             </figure>
-<h2 id="combine-datasets">Combine Datasets</h2>
-<p>The process of combining datasets consists of multiple copy processes on a given dataset container.  To combine datasets, first <a href="#create-dataset">create a dataset</a> container.  Follow the process for <a href="#copy-dataset">copying a dataset</a> onto the destination dataset container that was created.  The copy process will copy the selected dataset onto the same dataset container and thus combining multiple datasets.</p>
 <h2 id="split-dataset">Split Dataset</h2>
 <p>Partitioning the dataset is crucial in reserving dataset portions used for training and portions used for validation to assess the performance of the model.  In EdgeFirst Studio, the partitions are 80% towards training and 20% towards validation.  This operation randomly shuffles the data prior to assigning them to the specified groups.</p>
 <div class="admonition warning">
@@ -1972,8 +2021,22 @@
             <img align="center" alt="Dataset Groups" src="../../assets/management/dataset-with-groups.jpg" />
             <figcaption>Dataset Groups</figcaption>
             </figure>
-<h2 id="export-dataset">Export Dataset</h2>
-<p><em>Coming Soon</em></p>
+<h2 id="combine-datasets">Combine Datasets</h2>
+<p>Combining datasets in EdgeFirst Studio is done by copying multiple source datasets into a single destination dataset container.</p>
+<h3 id="prerequisite">Prerequisite</h3>
+<ul>
+<li>Create the destination dataset container first: <a href="#create-dataset">Create Dataset Container</a>.</li>
+</ul>
+<h3 id="steps">Steps</h3>
+<ol>
+<li>Open the first source dataset and run the <a href="#copy-dataset">Copy Dataset</a> workflow.</li>
+<li>Select the destination dataset container created earlier.</li>
+<li>Repeat the same copy process for each additional source dataset.</li>
+</ol>
+<p>Each copy operation appends samples to the same destination container, resulting in one combined dataset.</p>
+<h3 id="next">Next</h3>
+<p>After combining datasets, split the merged dataset for training and validation:
+<a href="#split-dataset">Split Dataset</a>.</p>
 
 
 

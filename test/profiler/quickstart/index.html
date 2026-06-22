@@ -1678,6 +1678,10 @@
 </li>
 </ol>
 <h2 id="3-create-an-ultralytics-training-session">3. Create an Ultralytics training session</h2>
+<div class="admonition warning">
+<p class="admonition-title">Use your own project</p>
+<p>Profiling must be run against a project you own. Running a profiling or validation session on the <strong>Sample Project</strong> — or any public, read-only project — will fail with an error. Make sure you created your own project in <a href="#2-create-your-project-in-edgefirst-studio">Step 2</a> before continuing.</p>
+</div>
 <ol>
 <li>
 <p>Click on "Model Experiments" of your created project</p>
@@ -1710,7 +1714,7 @@
 <li>
 <p>Start a YOLOv8n detection model by following these settings. Once the settings are set, click on "Start Session" at the bottom of the window</p>
 <p><figure markdown="span">
-        <img align="center" alt="Ultralytics Training Settings" src="../../models/assets/training/training-session-attributes-ultralytics.jpg" />
+        <img align="center" alt="Ultralytics Training Settings" src="../assets/studio-yolo-model-configurations.jpg" />
         <figcaption>Ultralytics Training Settings</figcaption>
         </figure></p>
 <p>This will start a training session in progress.</p>
@@ -1728,7 +1732,6 @@
 <p><img alt="No Training Charts" src="../../models/assets/training/no-training-charts.jpg" /></p>
 <p>Training sessions configured without epochs will not generate loss or metric charts, since the chart x-axis is epoch-based. This is expected behaviour.</p>
 </div>
-<p>If you would like to know more about how to reproduce the benchmarks gathered in the <a href="https://huggingface.co/spaces/EdgeFirst/Models">EdgeFirst Model Zoo on Hugging Face</a>, please see <a href="../concepts/configuration/">Training Configurations</a>.</p>
 </li>
 <li>
 <p>The completed training session should look like the following</p>

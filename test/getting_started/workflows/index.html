@@ -1863,7 +1863,7 @@ flowchart TD
 </ul>
 <div class="admonition note">
 <p class="admonition-title">About these workflows</p>
-<p>The hardware workflows use the <strong>Coffee Cup</strong> sample dataset and train a <strong>ModelPack</strong> vision model. Cost estimations shown in the table reflect this specific configuration — actual costs will vary depending on your dataset size, the model type and training configurations.</p>
+<p>The following workflows use a specific configuration and most are based on using the <strong>Coffee Cup</strong> sample dataset to train a <strong>ModelPack</strong> vision model. Cost estimations shown in the table reflect this specific configuration — actual costs will vary depending on your dataset size, the model type and training configurations.</p>
 </div>
 <h3 id="cloud-personas">Cloud Personas</h3>
 <table>
@@ -1873,6 +1873,7 @@ flowchart TD
 <th>Hardware</th>
 <th>Features</th>
 <th>Cost</th>
+<th>Time</th>
 </tr>
 </thead>
 <tbody>
@@ -1881,36 +1882,42 @@ flowchart TD
 <td>PC</td>
 <td>Explore <a href="https://test.edgefirst.studio/">EdgeFirst Studio</a> Landing Page and Feature Overview</td>
 <td>Free</td>
+<td>N/A</td>
 </tr>
 <tr>
 <td><a href="tourist_plus/">Tourist+</a></td>
 <td>PC</td>
 <td><a href="https://test.edgefirst.studio/signup">Sign Up</a>, <a href="https://test.edgefirst.studio/login">Login</a>, Browse <a href="https://test.edgefirst.studio/public/projects">Public Datasets and Models</a></td>
 <td>Free</td>
+<td>N/A</td>
 </tr>
 <tr>
 <td><a href="profiler/">Profiler</a></td>
 <td>PC</td>
 <td>Browse <a href="https://huggingface.co/spaces/EdgeFirst/Models">Hugging Face Model Zoo</a>, Review Training and Validation Sessions</td>
 <td>Free</td>
+<td>N/A</td>
 </tr>
 <tr>
 <td><a href="profiler_plus/">Profiler+</a></td>
 <td>PC</td>
-<td>Copy Sample Dataset, Retrain, Revalidate, Compare Against Hugging Face Model Zoo, Deploy on Browser or on Target (if available)</td>
-<td>TBA</td>
+<td>Retrain, Revalidate, Reconvert Model, Compare Against <a href="https://huggingface.co/spaces/EdgeFirst/Models">Hugging Face Model Zoo</a>, Deploy on Browser or on Target (if available)</td>
+<td>~$10-16 USD</td>
+<td>~1.75-4.5 hours</td>
 </tr>
 <tr>
 <td><a href="auditor/">Auditor</a></td>
 <td>PC</td>
-<td>Copy Dataset, Annotate 2D, Train, Validate, Deploy on Browser</td>
-<td>TBA</td>
+<td>Copy Sample Dataset, Annotate 2D, Train, Validate, Deploy on Browser</td>
+<td>~$22 USD</td>
+<td>~2.5 hours</td>
 </tr>
 <tr>
 <td><a href="web/">Web</a></td>
 <td>PC + Smartphone</td>
 <td>Record, Annotate 2D, Train, Validate, Deploy on Browser</td>
-<td>TBA</td>
+<td>~$5 USD</td>
+<td>~45 minutes</td>
 </tr>
 </tbody>
 </table>
@@ -1922,50 +1929,58 @@ flowchart TD
 <th>Hardware</th>
 <th>Features</th>
 <th>Cost</th>
+<th>Time</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td><a href="hardware/">Maivin</a></td>
 <td>PC + Maivin</td>
-<td>Record <abbr title="Binary container format for robotics log data">MCAP</abbr>, Annotate 2D, Train, Validate, Deploy on Maivin</td>
+<td>Record <abbr title="Binary container format for robotics log data">MCAP</abbr>, Annotate 2D, Train, Convert to <abbr title="TensorFlow Lite">TFLite</abbr>, Validate on Target, Deploy on Maivin</td>
+<td>TBA</td>
 <td>TBA</td>
 </tr>
 <tr>
 <td><a href="hardware/">Raivin</a></td>
 <td>PC + Raivin w/ Radar</td>
-<td>Record <abbr title="Binary container format for robotics log data">MCAP</abbr>, Annotate 2D + 3D, Train, Validate, Deploy on Raivin</td>
+<td>Record <abbr title="Binary container format for robotics log data">MCAP</abbr>, Annotate 2D + 3D, Train, Convert to <abbr title="TensorFlow Lite">TFLite</abbr>, Validate on Target, Deploy on Raivin</td>
+<td>TBA</td>
 <td>TBA</td>
 </tr>
 <tr>
 <td><a href="hardware/"><abbr title="Light Detection and Ranging">LiDAR</abbr></a></td>
 <td>PC + Raivin w/ <abbr title="Light Detection and Ranging">LiDAR</abbr></td>
-<td>Record <abbr title="Binary container format for robotics log data">MCAP</abbr>, Annotate 2D + 3D (enhanced), Train, Validate, Deploy on Raivin</td>
+<td>Record <abbr title="Binary container format for robotics log data">MCAP</abbr>, Annotate 2D + 3D (enhanced), Train, Convert to <abbr title="TensorFlow Lite">TFLite</abbr>, Validate on Target, Deploy on Raivin</td>
+<td>TBA</td>
 <td>TBA</td>
 </tr>
 <tr>
 <td><a href="hardware/">i.MX 8M Plus</a></td>
 <td>PC + i.MX 8M Plus</td>
-<td>Copy Dataset, Train, Validate, Deploy on i.MX 8M Plus</td>
-<td>~$8 USD</td>
+<td>Copy Dataset, Train, Convert to <abbr title="TensorFlow Lite">TFLite</abbr> or Kinara (FRDM), Validate on Target, Deploy on i.MX 8M Plus</td>
+<td>~$9-11 USD</td>
+<td>~1.5-3.2 hours</td>
 </tr>
 <tr>
 <td><a href="hardware/">i.MX 95</a></td>
 <td>PC + i.MX 95</td>
-<td>Copy Dataset, Train, Validate, Deploy on i.MX 95</td>
-<td>~$8 USD</td>
+<td>Copy Dataset, Train, Convert to Neutron or Kinara (FRDM), Validate on Target, Deploy on i.MX 95</td>
+<td>~$8-9 USD</td>
+<td>~1-1.2 hours</td>
 </tr>
 <tr>
 <td><a href="hardware/">Jetson Orin</a></td>
 <td>PC + Jetson Orin</td>
-<td>Copy Dataset, Train, Validate, Deploy on Jetson Orin</td>
+<td>Copy Dataset, Train, Convert to TensorRT, Validate on Target, Deploy on Jetson Orin</td>
 <td>~$8 USD</td>
+<td>~1 hour</td>
 </tr>
 <tr>
 <td><a href="hardware/">Raspberry Pi 5</a></td>
 <td>PC + Raspberry Pi 5</td>
-<td>Copy Dataset, Train, Validate, Deploy on Raspberry Pi 5</td>
-<td>~$8 USD</td>
+<td>Copy Dataset, Train, Convert to Hailo, Validate on Target, Deploy on Raspberry Pi 5</td>
+<td>~$9-12 USD</td>
+<td>~1.8-4.3 hours</td>
 </tr>
 </tbody>
 </table>
@@ -2249,7 +2264,7 @@ flowchart LR
 </li>
 <li>
 <p><a href="profiler_plus/">Profiler+ Workflow</a></p>
-<p>This workflow extends the Profiler workflow with hands-on experimentation: copy a sample dataset, retrain a model, revalidate, and compare results against the Hugging Face Model Zoo baselines.  Models can be deployed on a browser or on a compatible target device.</p>
+<p>This workflow extends the Profiler workflow with hands-on experimentation: copy a sample dataset, retrain a model, revalidate, and compare results against the <a href="https://huggingface.co/spaces/EdgeFirst/Models">Hugging Face Model Zoo</a> baselines.  Models can be deployed on a browser or on a compatible target device.</p>
 </li>
 <li>
 <p><a href="auditor/">Auditor Workflow</a></p>
@@ -2267,10 +2282,6 @@ flowchart LR
 <p>Hardware-specific workflows for users with an EdgeFirst target device.  Each platform has its own step-by-step workflow covering device setup, dataset acquisition, model training, conversion, on-target validation, and deployment.</p>
 </li>
 </ol>
-<div class="admonition note">
-<p class="admonition-title">Future Work</p>
-<p>The workflows with missing links are a work in progress and currently unavailable.</p>
-</div>
 
 
 

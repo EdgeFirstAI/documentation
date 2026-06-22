@@ -29,13 +29,32 @@ The changes should now be reflected in the [gallery](../management.md#view-datas
 
 {{ figure("../../assets/annotations/coffee-cups-annotations-edited.jpg", "Edited Sample Coffee Cups") }}
 
-To change the label of a single annotation follow these steps inside the dataset gallery.
+To change the label of a single annotation follow these steps inside the dataset [gallery](../management.md#view-dataset).
 
-1. Click on the label mode in the 2D editing panel (shown in a red box).
-2. Select the label in the left panel (shown in a red box).
-3. Click on any annotation listed to change its label.
+!!! bug "Annotation Types Are Not Linked (Work in Progress)"
 
-{{ figure("../../assets/annotations/change-annotation-label.jpg", "Change Annotation Label") }}
+    Bounding box and mask annotations are currently managed independently and are not linked to a single object.  As a result, changing the label of a bounding box does not automatically update the label of its corresponding mask annotation.
+
+    To keep annotations consistent, you must update the label for each annotation type separately.
+
+    **This is a known limitation that is being addressed in an upcoming release.**
+
+#### Edit Bounding Box Label
+
+1. Switch to label mode in the 2D editing panel 
+2. Select the desired label in the left panel 
+3. Click on the object to change its label
+
+{{ figure("../../assets/annotations/change-annotation-label.jpg", "Change Box Annotation Label") }}
+
+#### Edit Segmentation Mask Label
+
+1. Hide the bounding boxes
+2. Switch to label mode 2D editing panel
+3. Select the desired label in the left panel
+4. Click on the object to change its label
+
+{{ figure("../../assets/annotations/change-mask-annotation-label.jpg", "Change Mask Annotation Label") }}
 
 ### Add Label
 
@@ -55,7 +74,7 @@ You can follow the steps shown for [editing the label](#edit-label) to modify th
 
 {{ figure("../../assets/annotations/add-multiple-labels.jpg", "Add Label Multiple") }}
 
-When a new label is added, this allows you to create new annotations with this label as shown in the dropdown in the gallery.
+When a new label is added, this allows you to create new annotations with this label as shown in the dropdown in the [gallery](../management.md#view-dataset).
 
 {{ figure("../../assets/annotations/plate-label-added.jpg", "Added Plate Label in Gallery") }}
 
@@ -71,7 +90,7 @@ This will show the list of existing labels.  Click on the "x" button shown on th
 
 ## Terminate AGTG Server
 
-In order to avoid running out of credits, terminate an idle AGTG server.  As mentioned, 15 minutes of inactivity will auto-terminate AGTG servers.  However, you can terminate a server as shown below.  Navigate to the *Cloud Instances* under the tool options.
+In order to avoid running out of credits, terminate an idle AGTG server.  As mentioned, 15 minutes of inactivity will auto-terminate AGTG servers.  However, you can terminate a server as shown below.  Navigate to the *Cloud Instances* under the apps menu.
 
 {{ figure("../../assets/annotations/cloud-instances.jpg", "Cloud Instances") }}
 

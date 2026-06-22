@@ -8,3 +8,4 @@ docs/models/ultralytics/assets/yolov8s-seg_full_integer_quant.tflite filter=lfs 
 docs/models/ultralytics/assets/yolov8s-seg_full_integer_quant_converted.tflite filter=lfs diff=lfs merge=lfs -text
 docs/models/modelpack/assets/coffeecup-modelpack-multitask-t-1f54.onnx filter=lfs diff=lfs merge=lfs -text
 docs/models/modelpack/assets/coffeecup-modelpack-multitask-t-1f54.tflite filter=lfs diff=lfs merge=lfs -text
+*.gif filter=lfs diff=lfs merge=lfs -text

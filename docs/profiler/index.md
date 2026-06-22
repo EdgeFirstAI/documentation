@@ -31,6 +31,28 @@ The profiler is always operated against an EdgeFirst Studio session. There are t
 
 Both paths produce the same artifacts and the same Studio session card.
 
+## Platform Video Demos
+
+These demos show EdgeFirst Profiler runs on common deployment and development targets.
+
+### MacBook
+
+<div style="text-align: center;">
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/M2j6ryFsbew?si=LN6zAJKAv83SgSVz" title="EdgeFirst Profiler on MacBook" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+</div>
+
+### NXP i.MX 95
+
+<div style="text-align: center;">
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/ajZR9XHaEVQ?si=9Jztb9hxUGhXp0qA" title="EdgeFirst Profiler on NXP i.MX 95" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+</div>
+
+### NXP Ara240
+
+<div style="text-align: center;">
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/kN44eJ7BtZk?si=nPYj62d4XA1KxYeM" title="EdgeFirst Profiler on NXP Ara240" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+</div>
+
 ## Read next
 
 - **[Quick Start](quickstart.md)** — install the profiler, sign in to Studio, run your first validation session in under fifteen minutes.

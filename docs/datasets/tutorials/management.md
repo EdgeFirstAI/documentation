@@ -8,7 +8,7 @@ This tutorial will show how to open the [gallery](../../studio/datasets/gallery.
 
 From the "Projects" page, you can click on the dataset button indicated in red to view the datasets contained in the project.
 
-{{ figure("../assets/management/datasets-button.jpg", "View Datasets") }}
+{{ figure("../../studio/assets/projects/sample-datasets-button.jpg", "View Datasets") }}
 
 You will now see the datasets contained in the project.  Each dataset has a gallery.  
 
@@ -36,21 +36,15 @@ This tutorial will show an example of a dataset that is ready for training.
     <iframe width="560" height="315" src="https://www.youtube.com/embed/Q8uiYJb1HJ4?start=81&end=118" title="Indoor Dataset Overview" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 </div>
 
-Verify that the dataset has a training and validation split.  The sample dataset shown below has a dedicated split for training (20066 samples) and validation (2229 samples).
+Verify that the dataset has a training and validation split.  The sample dataset shown below has a dedicated split for training (16854 samples) and validation (2133 samples).
 
 {{ figure("../assets/management/fusion-dataset-groups.jpg", "Dataset Groups") }}
 
-Another sample dataset shown below is for training Vision models which has a dedicated split for training (1656 samples) and validation (184 samples).
-
-{{ figure("../assets/management/vision-dataset-groups.jpg", "Dataset Groups") }}
-
-Verify the contents of the dataset and the annotations.  Click the button that navigates to the gallery.  This will show the contents of the dataset.  The dataset may be comprised of multiple sequences as shown below.  
+Verify the contents of the dataset and the annotations.  Click on the image preview of the dataset to navigate to the gallery.  This will show the contents of the dataset.  The dataset may be comprised of multiple sequences as shown below.  
 
 {{ figure("../assets/management/fusion-dataset-sequences.jpg", "Dataset Sequences") }}
 
-{{ figure("../assets/management/vision-dataset-sequences.jpg", "Dataset Sequences") }}
-
-Clicking on any of these sequences will open individual images in the sequence with the visualizations of the annotations.  For more information please see [viewing datasets](#view-dataset).
+Clicking on any of these sequences will open individual frames in the sequence with the visualizations of the annotations.  For more information please see [viewing datasets](#view-dataset).
 
 Datasets that train Fusion models provide annotations of the object's 3D bounding box.  For more information on the dataset annotations, please see the [EdgeFirst Dataset Format](../format/schema.md).
 
@@ -72,12 +66,25 @@ For cases where the annotations need corrections, please see [Manual 2D Annotati
 
 {% include-markdown "discrete/datasets/tag_dataset.md" %}
 
-## Combine Datasets
-
-The process of combining datasets consists of multiple copy processes on a given dataset container.  To combine datasets, first [create a dataset](#create-dataset) container.  Follow the process for [copying a dataset](#copy-dataset) onto the destination dataset container that was created.  The copy process will copy the selected dataset onto the same dataset container and thus combining multiple datasets.
-
 {% include-markdown "discrete/datasets/split_dataset.md" %}
 
-## Export Dataset
+## Combine Datasets
 
-*Coming Soon*
+Combining datasets in EdgeFirst Studio is done by copying multiple source datasets into a single destination dataset container.
+
+### Prerequisite
+
+- Create the destination dataset container first: [Create Dataset Container](#create-dataset).
+
+### Steps
+
+1. Open the first source dataset and run the [Copy Dataset](#copy-dataset) workflow.
+2. Select the destination dataset container created earlier.
+3. Repeat the same copy process for each additional source dataset.
+
+Each copy operation appends samples to the same destination container, resulting in one combined dataset.
+
+### Next
+
+After combining datasets, split the merged dataset for training and validation:
+[Split Dataset](#split-dataset).

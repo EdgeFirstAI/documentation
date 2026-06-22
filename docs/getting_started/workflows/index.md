@@ -2,6 +2,9 @@
 
 EdgeFirst Studio offers workflows tailored to your hardware and resources.
 
+!!! tip "Free Credits"
+    New accounts receive **\$50 USD in free credits** upon sign-up, plus **\$15 USD in free credits every month**. No credit card required to get started.
+
 <div style="text-align: center;">
     <iframe width="560" height="315" src="https://www.youtube.com/embed/MmoDCXj72jk?si=I8gTw2VCtcts69ks" title="EdgeFirst Studio Overview" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 </div>
@@ -90,6 +93,9 @@ We've identified the following workflows that any user can follow starting from 
 * **Cloud Personas**: General-purpose cloud-based MLOps workflows designed for PC users.
 * **Hardware Personas**: Hardware-specific (specialized) MLOps workflows tailored for deployment, validation, and optimization on supported target devices.
 
+!!! note "About these workflows"
+    The hardware workflows use the **Coffee Cup** sample dataset and train a **ModelPack** vision model. Cost estimations shown in the table reflect this specific configuration — actual costs will vary depending on your dataset size, the model type and training configurations.
+
 ### Cloud Personas
 
 | Persona | Hardware | Features | Cost |
@@ -108,10 +114,10 @@ We've identified the following workflows that any user can follow starting from 
 | [Maivin](hardware.md) | PC + Maivin | Record MCAP, Annotate 2D, Train, Validate, Deploy on Maivin | TBA |
 | [Raivin](hardware.md) | PC + Raivin w/ Radar | Record MCAP, Annotate 2D + 3D, Train, Validate, Deploy on Raivin | TBA |
 | [LiDAR](hardware.md) | PC + Raivin w/ LiDAR | Record MCAP, Annotate 2D + 3D (enhanced), Train, Validate, Deploy on Raivin | TBA |
-| [i.MX 8M Plus](hardware.md) | PC + i.MX 8M Plus | Copy Dataset, Train, Validate, Deploy on i.MX 8M Plus | TBA |
-| [i.MX 95](hardware.md) | PC + i.MX 95 | Copy Dataset, Train, Validate, Deploy on i.MX 95 | TBA |
-| [Jetson Orin](hardware.md) | PC + Jetson Orin | Copy Dataset, Train, Validate, Deploy on Jetson Orin | TBA |
-| [Raspberry Pi 5](hardware.md) | PC + Raspberry Pi 5 | Copy Dataset, Train, Validate, Deploy on Raspberry Pi 5 | TBA |
+| [i.MX 8M Plus](hardware.md) | PC + i.MX 8M Plus | Copy Dataset, Train, Validate, Deploy on i.MX 8M Plus | ~\$8 USD |
+| [i.MX 95](hardware.md) | PC + i.MX 95 | Copy Dataset, Train, Validate, Deploy on i.MX 95 | ~\$8 USD |
+| [Jetson Orin](hardware.md) | PC + Jetson Orin | Copy Dataset, Train, Validate, Deploy on Jetson Orin | ~\$8 USD |
+| [Raspberry Pi 5](hardware.md) | PC + Raspberry Pi 5 | Copy Dataset, Train, Validate, Deploy on Raspberry Pi 5 | ~\$8 USD |
 
 ## User Journey
 

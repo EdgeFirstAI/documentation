@@ -40,7 +40,11 @@
 
     {{ figure("/models/assets/training/training-session-ultralytics-completed.jpg", "Ultralytics Training Completed") }}
 
-7. We support model conversion and optimization workflows, enabling trained models to be deployed across a wide range of target platforms and hardware architectures.  Please follow the specific model conversion that matches your platform.  If you are using a Windows or macOS system, you can either follow the TFLite Converter workflow or proceed directly to the next section to validate the ONNX model, which is already provided as part of the training session outputs.
+7. We support model conversion and optimization workflows that enable trained models to be deployed on a wide range of target platforms and hardware architectures.
+
+    Follow the model conversion workflow that corresponds to your target platform. If you are deploying to a Windows/Linux PC or macOS system, you can skip this section and proceed directly to the next step to validate the ONNX model, which is automatically generated as part of the training session outputs.
+
+    If you are deploying to one of the supported hardware platforms listed below, follow the platform-specific conversion instructions for your target device.
 
     | Converter | Supported Targets | Output Format | Docs |
     |-----------|------------------|---------------|------|

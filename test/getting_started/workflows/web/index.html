@@ -1238,6 +1238,23 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="Validate Vision Model">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#cloud-validation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Cloud Validation
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
@@ -1948,6 +1965,23 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="Validate Vision Model">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#cloud-validation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Cloud Validation
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
@@ -2305,7 +2339,7 @@
             <img align="center" alt="Training Session Progress" src="../../../models/assets/training/vision-session-progress.jpg" />
             <figcaption>Training Session Progress</figcaption>
             </figure>
-<p>Once completed the session card will appear like the following below.</p>
+<p>Once the session is complete, the session card will appear like the following.</p>
 <figure>
             <img align="center" alt="Completed Session" src="../../../models/assets/training/vision-completed-session.jpg" />
             <figcaption>Completed Session</figcaption>
@@ -2321,7 +2355,33 @@
             <figcaption>Model Artifacts</figcaption>
             </figure>
 <h2 id="validate-vision-model">Validate Vision Model</h2>
-<p>Now that you have trained a model, you can now validate the performance of your model.  This will briefly show the steps for validating a model, but for an in depth tutorial, please see <a href="../../../models/validation/vision/managed/">Validating Vision Models</a>.</p>
+<p>Now that you have trained a model, you can validate its performance. The purpose of validation is to determine whether the selected model meets the performance requirements before deployment. EdgeFirst Studio offers two validation paths depending on your goal:</p>
+<table>
+<thead>
+<tr>
+<th>Path</th>
+<th>Where it runs</th>
+<th>Supported formats</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="../../../models/validation/vision/managed/"><strong>Cloud Validation</strong></a> (this guide)</td>
+<td>EdgeFirst Studio EC2</td>
+<td><abbr title="Open Neural Network Exchange">ONNX</abbr>, Keras, <abbr title="TensorFlow Lite">TFLite</abbr></td>
+</tr>
+<tr>
+<td><a href="../../../profiler/"><strong>On-Target Profiling</strong></a></td>
+<td>Your edge platform</td>
+<td>All converted formats (.tflite, .hef, .dvm, .engine)</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition info">
+<p class="admonition-title">Validating on target hardware?</p>
+<p>Cloud validation only supports <strong><abbr title="Open Neural Network Exchange">ONNX</abbr>, Keras, and <abbr title="TensorFlow Lite">TFLite</abbr></strong> artifacts. If you want to measure real inference latency and accuracy on your target device — including <abbr title="Neural Processing Unit">NPU</abbr>-compiled formats like Neutron, Hailo, Ara2, or TensorRT — use the <a href="../../../profiler/">EdgeFirst Profiler</a>.</p>
+</div>
+<h3 id="cloud-validation">Cloud Validation</h3>
 <p>If you haven't already, click on the training session card for more information.</p>
 <figure>
             <img align="center" alt="Training Details" src="../../../models/assets/training/vision-view-train-details.jpg" />
@@ -2332,16 +2392,18 @@
             <img align="center" alt="Validate Button" src="../../../models/assets/validation/training_validate_button.jpg" />
             <figcaption>Validate Button</figcaption>
             </figure>
-<p>Specify the name of the validation session and the model and the dataset for validation.  <em>Under the model selection, you can select various trained model artifacts from the choices of <abbr title="Open Neural Network Exchange">ONNX</abbr>, <abbr title="TensorFlow Lite">TFLite</abbr>, TensorRT, Kinara, Hailo, etc.  Choose the model you plan to deploy on target.  The purpose of validation is to assess the model of whether or not it meets the performance requirements needed to be deployed on target.</em>  The rest of the settings were kept as defaults.  Click "Start Session" at the bottom to start the validation session.</p>
+<p>Enter a name for the validation session, then select the model and dataset to use for validation.</p>
+<p>Under <strong>Model Selection</strong>, choose an <strong><abbr title="Open Neural Network Exchange">ONNX</abbr>, Keras, or <abbr title="TensorFlow Lite">TFLite</abbr></strong> artifact — these are the formats supported by cloud validation.</p>
+<p>For this example, all remaining settings were left at their default values. When you are ready, click <strong>Start Session</strong> at the bottom of the page to begin the validation process.</p>
+<figure>
+            <img align="center" alt="Start Validation Session" src="../../../models/assets/validation/vision-validate-settings.jpg" />
+            <figcaption>Start Validation Session</figcaption>
+            </figure>
 <div class="admonition failure">
 <p class="admonition-title">InsufficientInstanceCapacity</p>
 <p><img alt="InsufficientInstanceCapacity Error" src="../../../studio/assets/models/insufficient-capacity-error.jpg" /></p>
 <p>If you see this error after starting your validation session, retry creating the session. This can happen when AWS reports that no EC2 instances are currently available to launch; the current workaround is to retry.</p>
 </div>
-<figure>
-            <img align="center" alt="Start Validation Session" src="../../../models/assets/validation/vision-validate-settings.jpg" />
-            <figcaption>Start Validation Session</figcaption>
-            </figure>
 <p>Go to the created validation session by first going back to the "Model Experiments" page.</p>
 <figure>
             <img align="center" alt="Go to Model Experiments" src="../../../models/assets/training/go-back-to-model-experiments.jpg" />
@@ -2357,15 +2419,15 @@
             <img align="center" alt="Validation Progress" src="../../../models/assets/validation/vision-session-progress.jpg" />
             <figcaption>Validation Progress</figcaption>
             </figure>
-<p>Once completed the session card will appear like the following below.  To view the validation metrics, click on the validation charts button as indicated.</p>
+<p>Once the session is complete, the session card will appear like the following. To view the validation metrics, click the validation charts button as indicated.</p>
 <figure>
             <img align="center" alt="Completed Session" src="../../../models/assets/validation/vision-completed-session.jpg" />
             <figcaption>Completed Session</figcaption>
             </figure>
-<p>The validation metrics should appear like the following.  For more information, please see the <a href="../../../models/validation/metrics/">Validation Metrics</a> section.</p>
+<p>The validation metrics should appear like the following. For more information, please see the <a href="../../../models/validation/metrics/">Validation Metrics</a> section.</p>
 <figure>
-            <img align="center" alt="Validation Charts" src="../../../models/assets/validation/vision-charts.jpg" />
-            <figcaption>Validation Charts</figcaption>
+            <img align="center" alt="EdgeFirst Studio — validation metrics dashboard on a completed session: mAP, AP/AR breakdowns, confusion matrices, PR curves" src="../../../models/assets/validation/vision-charts.jpg" />
+            <figcaption>EdgeFirst Studio — validation metrics dashboard on a completed session: <abbr title="mean Average Precision">mAP</abbr>, AP/AR breakdowns, confusion matrices, PR curves</figcaption>
             </figure>
 <p>You can navigate back to the training session by clicking on the "Training Session" link under the "Session" tab.</p>
 <figure>
@@ -2374,10 +2436,14 @@
             </figure>
 <h2 id="deploy-the-model">Deploy the Model</h2>
 <p>Once you have validated your trained model, you can deploy the model in the browser using EdgeFirst Studio.  You can follow these steps either on a PC or a mobile device connected to EdgeFirst Studio in a browser.  Please note that the browser will use the camera on your device to run model inference.</p>
+<div class="admonition note">
+<p class="admonition-title"><abbr title="Open Neural Network Exchange">ONNX</abbr> models only</p>
+<p>Live browser-based model running only supports <strong><abbr title="Open Neural Network Exchange">ONNX</abbr></strong> format. To validate or profile models in other formats (<abbr title="TensorFlow Lite">TFLite</abbr>, Neutron, Hailo, TensorRT, etc.) on real hardware, use the <a href="../../../profiler/">EdgeFirst Profiler</a>.</p>
+</div>
 <p>From the training session card, you can run the model for inference by clicking the "Run Model" button on the top right of the page.</p>
 <figure>
-            <img align="center" alt="Run Model Button" src="../../../models/assets/deployment/run-model-button.jpg" />
-            <figcaption>Run Model Button</figcaption>
+            <img align="center" alt="Training Session Details (Run Model button)" src="../../assets/run_model/trainer_details_page.png" />
+            <figcaption>Training Session Details (Run Model button)</figcaption>
             </figure>
 <p>You will be given the option for either live inference or inference from a file upload.  Go ahead and demo the live inference feed by clicking the "Live" option.</p>
 <figure>
@@ -2414,9 +2480,9 @@
 </tr>
 <tr>
 <td>Mac/MacOS</td>
+<td>✅</td>
+<td>✅</td>
 <td></td>
-<td></td>
-<td>✅ (untested)</td>
 </tr>
 <tr>
 <td><a href="../../../platforms/quickstart/maivin/deploy/">Maivin</a></td>
@@ -2428,7 +2494,7 @@
 <td><a href="../../../platforms/quickstart/raivin/deploy/">Raivin Fusion</a></td>
 <td></td>
 <td>✅</td>
-<td>✅</td>
+<td>✅ (on target validation)</td>
 </tr>
 <tr>
 <td><a href="../../../platforms/quickstart/imx8mplus/deploy/">i.MX 8M Plus EVK</a></td>
@@ -2450,9 +2516,9 @@
 </tr>
 <tr>
 <td><a href="../../../platforms/quickstart/raspberrypi/deploy/">Raspberry Pi</a></td>
+<td>✅</td>
 <td></td>
-<td></td>
-<td>✅ (untested)</td>
+<td>✅ (native runner)</td>
 </tr>
 </tbody>
 </table>

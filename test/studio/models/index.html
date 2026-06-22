@@ -1918,6 +1918,10 @@ provides the following tabs:</p>
 </ul>
 <h2 id="running-a-model">Running a model</h2>
 <p>EdgeFirst Studio allows you to run trained models directly in the web browser. After a model has been trained, open the model details page by clicking on the trainer card. Only models trained on ModelPack are supported for live running. From there, click the Run Model button to start running the model.</p>
+<div class="admonition note">
+<p class="admonition-title"><abbr title="Open Neural Network Exchange">ONNX</abbr> models only</p>
+<p>Live browser-based model running only supports <strong><abbr title="Open Neural Network Exchange">ONNX</abbr></strong> format. To validate or profile models in other formats (<abbr title="TensorFlow Lite">TFLite</abbr>, Neutron, Hailo, TensorRT, etc.) on real hardware, use the <a href="../../profiler/">EdgeFirst Profiler</a>.</p>
+</div>
 <figure>
             <img align="center" alt="Model Runner Button" src="../assets/run_model_button.png" />
             <figcaption>Model Runner Button</figcaption>

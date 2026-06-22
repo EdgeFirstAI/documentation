@@ -1868,7 +1868,11 @@
 
 
 <h1 id="deploying-in-edgefirst-studio">Deploying in EdgeFirst Studio</h1>
-<p>After <a href="../../training/vision/">training a <strong>Vision</strong> model</a> in EdgeFirst Studio, you can deploy the model in any device connected to a browser with access to a camera.  This can be your phone or your PC as an example.  This guide will show you the steps for deploying the model using EdgeFirst Studio.</p>
+<p>After <a href="../../training/vision/">training a <strong>Vision</strong> model</a> in EdgeFirst Studio, you can deploy the <abbr title="Open Neural Network Exchange">ONNX</abbr> model on any device connected to a browser with access to a camera (for example, your phone or your PC). This guide will show you the steps for deploying the model using EdgeFirst Studio.</p>
+<div class="admonition note">
+<p class="admonition-title"><abbr title="Open Neural Network Exchange">ONNX</abbr> models only</p>
+<p>Live browser-based model running only supports <strong><abbr title="Open Neural Network Exchange">ONNX</abbr></strong> format. To validate or profile models in other formats (<abbr title="TensorFlow Lite">TFLite</abbr>, Neutron, Hailo, TensorRT, etc.) on real hardware, use the <a href="../../../profiler/">EdgeFirst Profiler</a>.</p>
+</div>
 <p>Navigate to the training session you wish to deploy by going back to the "Projects" page by clicking the "Projects" button at the top left of the page.</p>
 <figure>
             <img align="center" alt="Go to Projects Page" src="../../../studio/assets/navigation/projects-button.jpg" />
@@ -1891,8 +1895,8 @@
             </figure>
 <p>Click the "Run Model" button on the top right of the page.</p>
 <figure>
-            <img align="center" alt="Run Model Button" src="../../assets/deployment/run-model-button.jpg" />
-            <figcaption>Run Model Button</figcaption>
+            <img align="center" alt="Training Session Details (Run Model button)" src="../../../getting_started/assets/run_model/trainer_details_page.png" />
+            <figcaption>Training Session Details (Run Model button)</figcaption>
             </figure>
 <h2 id="live-inference">Live Inference</h2>
 <p>You will be given the option for either live inference or inference from a file upload.  Go ahead and demo the live inference feed by clicking the "Live" option.</p>

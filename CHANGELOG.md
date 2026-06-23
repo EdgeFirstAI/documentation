@@ -53,6 +53,13 @@ file. The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.
   (`datasets/tutorials/annotations/automatic.md`): bug admonition flagging fully
   automatic ground truth generation as non-operational and directing users to the
   semi-automatic workflow; expanded the related note in `annotations/index.md`.
+- **Studio Apps dashboard expanded** (`studio/apps.md`): reframed the page as a
+  catalog, clarified that apps are launched from their workflow (not the Apps
+  page), and added per-app sections for the EdgeFirst Profiler, Validator, and the
+  TFLite, Neutron, TensorRT, Ara2, and Hailo Converter Apps with links to their
+  conversion pages; refreshed `apps-page.png`.
+- **Browser Support section** (`studio/index.md`): recommends Chromium-based
+  browsers and adds a bug admonition noting Firefox sliders are not yet operational.
 
 ### Changed
 
@@ -106,3 +113,16 @@ file. The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.
     renamed to ARA-2)
   - `models/ultralytics/npu/` and `models/modelpack/npu/` →
     `models/deployment/launcher/` (deprecated NPU on-target demos removed)
+- **Mermaid diagram node colors** (`getting_started/workflows/index.md`,
+  `platforms/index.md`): inline `classDef` fills now use a 50% alpha (8-digit hex)
+  so persona, journey, and platform diagrams stay legible in both the light and
+  slate (dark) schemes.
+
+### Fixed
+
+- **Dark-mode admonition titles** (`stylesheets/extra.css`): note, tip, info, and
+  warning title bars now use translucent brand-hued tints under the slate scheme
+  so the near-white title text no longer washes out on the light pastel backgrounds.
+- **Git LFS assets in published docs** (`.github/workflows/publish.yml`): the
+  deploy workflow now checks out with `lfs: true`, so LFS-tracked images and GIFs
+  resolve correctly on the published site instead of rendering as pointer files.

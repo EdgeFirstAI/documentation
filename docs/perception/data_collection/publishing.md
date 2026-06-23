@@ -37,7 +37,7 @@ Once the MCAP file is downloaded to your PC, you can login to EdgeFirst Studio a
 
 ## Method 2: Publish the MCAP directly using the EdgeFirst Client
 
-The second method is use the [EdgeFirst Client](../../client/cli/index.md) on the device to directly upload the MCAP to EdgeFirst Studio as a snapshot. This requires that you SSH into the device and run commands on the Linux shell of the Raivin.
+The second method is to use the [EdgeFirst Client](../../client/cli/index.md) on the device to directly upload the MCAP to EdgeFirst Studio as a snapshot. This requires that you SSH into the device and run commands on the Linux shell of the Raivin.
 
 First, you would need to use the SSH client to log into the device:
 

@@ -106,8 +106,13 @@ Preparation utilities:
 
 ```bash
 edgefirst-client generate-arrow ./images --output dataset.arrow
+edgefirst-client migrate dataset.arrow --output dataset-2026.arrow
 edgefirst-client validate-snapshot ./my_dataset
 ```
+
+!!! note "Arrow schema version"
+    `generate-arrow` produces a 2025.10 Arrow file. Before `upload-dataset`, migrate to
+    2026.04 with `edgefirst-client migrate` (see the [migration guide](../datasets/format/migration.md)).
 
 See [CLI: MCAP snapshot workflow](cli/index.md#mcap-snapshot-workflow) and [Studio Snapshots](../studio/snapshots.md).
 

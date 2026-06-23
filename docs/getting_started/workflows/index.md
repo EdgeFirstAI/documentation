@@ -43,19 +43,19 @@ flowchart TD
     orin_user([Jetson Orin]):::purple
     pi_user([Raspberry Pi 5]):::coral
 
-    classDef yellow fill:#fff2a8,font-weight:bold;
-    classDef pink fill:#f7b6d9,font-weight:bold;
-    classDef gold fill:#ffe066,font-weight:bold;
-    classDef amber fill:#ffd54f,font-weight:bold;
-    classDef sage fill:#c8e6c9,font-weight:bold;
-    classDef indigo fill:#c8d3ff,font-weight:bold;
-    classDef blue fill:#d0ecff,font-weight:bold;
-    classDef teal fill:#a2e8ed,font-weight:bold;
-    classDef orange fill:#ffd699,font-weight:bold;
-    classDef darker_orange fill:#ffbb66,font-weight:bold;
-    classDef green fill:#a9e5bb,font-weight:bold;
-    classDef purple fill:#d6c1f5,font-weight:bold;
-    classDef coral fill:#ffc2bb,font-weight:bold;
+    classDef yellow fill:#fff2a880,font-weight:bold;
+    classDef pink fill:#f7b6d980,font-weight:bold;
+    classDef gold fill:#ffe06680,font-weight:bold;
+    classDef amber fill:#ffd54f80,font-weight:bold;
+    classDef sage fill:#c8e6c980,font-weight:bold;
+    classDef indigo fill:#c8d3ff80,font-weight:bold;
+    classDef blue fill:#d0ecff80,font-weight:bold;
+    classDef teal fill:#a2e8ed80,font-weight:bold;
+    classDef orange fill:#ffd69980,font-weight:bold;
+    classDef darker_orange fill:#ffbb6680,font-weight:bold;
+    classDef green fill:#a9e5bb80,font-weight:bold;
+    classDef purple fill:#d6c1f580,font-weight:bold;
+    classDef coral fill:#ffc2bb80,font-weight:bold;
 
     %% Cloud branch
     user --> has_platform
@@ -367,19 +367,19 @@ flowchart LR
     validate_imx95 --> imx95
 
     %% ---------------- STYLES ----------------
-    classDef yellow fill:#fff2a8,font-weight:bold;
-    classDef pink fill:#f7b6d9,font-weight:bold;
-    classDef indigo fill:#c8d3ff,font-weight:bold;
-    classDef blue fill:#d0ecff,font-weight:bold;
-    classDef teal fill:#a2e8ed,font-weight:bold;
-    classDef orange fill:#ffd699,font-weight:bold;
-    classDef darker_orange fill:#ffbb66,font-weight:bold;
-    classDef green fill:#a9e5bb,font-weight:bold;
-    classDef purple fill:#d6c1f5,font-weight:bold;
-    classDef coral fill:#ffc2bb,font-weight:bold;
-    classDef gold fill:#ffe066,font-weight:bold;
-    classDef amber fill:#ffd54f,font-weight:bold;
-    classDef sage fill:#c8e6c9,font-weight:bold;
+    classDef yellow fill:#fff2a880,font-weight:bold;
+    classDef pink fill:#f7b6d980,font-weight:bold;
+    classDef indigo fill:#c8d3ff80,font-weight:bold;
+    classDef blue fill:#d0ecff80,font-weight:bold;
+    classDef teal fill:#a2e8ed80,font-weight:bold;
+    classDef orange fill:#ffd69980,font-weight:bold;
+    classDef darker_orange fill:#ffbb6680,font-weight:bold;
+    classDef green fill:#a9e5bb80,font-weight:bold;
+    classDef purple fill:#d6c1f580,font-weight:bold;
+    classDef coral fill:#ffc2bb80,font-weight:bold;
+    classDef gold fill:#ffe06680,font-weight:bold;
+    classDef amber fill:#ffd54f80,font-weight:bold;
+    classDef sage fill:#c8e6c980,font-weight:bold;
     classDef invisible fill:transparent,stroke:transparent;
     style TrainConvert fill:transparent,stroke:transparent;
 ```

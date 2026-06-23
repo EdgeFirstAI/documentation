@@ -54,7 +54,7 @@ Conversion has two stages: EdgeFirst Studio packages the ONNX model and supporti
             $ sudo apt install -y jq
             ```
 
-        3. Install the [edgefirst-client](../../perception/studio.md) package:
+        3. Install the [edgefirst-client](../../client/cli/index.md) package:
 
             ```shell
             $ pip3 install edgefirst-client
@@ -79,7 +79,7 @@ Conversion has two stages: EdgeFirst Studio packages the ONNX model and supporti
     1. Calls `trtexec --onnx=model.onnx --fp16 --saveEngine=<name>.fp16.engine`.
     2. Updates `edgefirst.json` with on-target build values via `jq` (precision, engine `sha256`, build timestamp, on-device TRT version, builder flags).
     3. ZIP-appends `edgefirst.json` and `labels.txt` to the engine using Python's `zipfile` module.
-    4. If `--publish` is set, uploads the sealed engine to Studio via `edgefirst-client upload-artifact`. See the [edgefirst-client](../../perception/studio.md) page for more.
+    4. If `--publish` is set, uploads the sealed engine to Studio via `edgefirst-client upload-artifact`. See the [edgefirst-client](../../client/cli/index.md) page for more.
 
     The output is a sealed `.fp16.engine` with metadata readable by any ZIP reader; the TensorRT deserializer ignores trailing bytes.
 

@@ -10,6 +10,8 @@ We maintain a copy of the latest version of the COCO dataset (the 2017 version) 
 
 While individual images may be available for commercial use, the dataset as a whole should not be considered available for commercial use.
 
+To import your own COCO subset into EdgeFirst Studio, see [Dataset import with edgefirst-client](../../client/import.md#native-coco-and-lvis-support).
+
 ## Terms of Use
 
 The COCO dataset has two, separate [terms of use][terms]:

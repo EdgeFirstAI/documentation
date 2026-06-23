@@ -29,7 +29,7 @@ Download the model from EdgeFirst Studio into the device.  There are two methods
 
 === "Download using EdgeFirst Client"
 
-    This method expects you to have already connected to the device via [SSH](../../platforms/networking/ssh.md).  The [EdgeFirst Client](../../perception/studio.md) can be installed via `pip3 install edgefirst-client`.  You can verify the installation with the client version command.
+    This method expects you to have already connected to the device via [SSH](../../platforms/networking/ssh.md).  The [EdgeFirst Client](../../client/cli/index.md) can be installed via `pip3 install edgefirst-client`.  You can verify the installation with the client version command.
 
     ```shell
     $ edgefirst-client version
@@ -57,4 +57,4 @@ Download the model from EdgeFirst Studio into the device.  There are two methods
     * session ID: Pass the trainer or validation session ID associated with the models.
     * model name: Pass the specific model that will be downloaded to the device.  Usually this is `mymodel.tflite`.
 
-    You can find more information on using the [EdgeFirst Client](../../perception/studio.md) in the command line.
+    You can find more information on using the [EdgeFirst Client](../../client/cli/index.md) in the command line.

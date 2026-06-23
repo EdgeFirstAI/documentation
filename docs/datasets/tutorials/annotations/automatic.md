@@ -10,7 +10,7 @@ The [AGTG pipeline](../../../studio/agtg.md) describes the stages for automating
 !!! bug "Work in Progress"
     The Fully Automatic Ground Truth Generation feature is currently **not operational** and is a work in progress — it fails to auto-annotate during snapshot restoration. In the meantime, please use the [Semi-Automatic Ground Truth Generation](#semi-automatic-ground-truth-generation) workflow instead.
 
-This annotation feature is available at the time of importing the dataset via [snapshot restoration](../../../studio/snapshots.md#restore-snapshot).  The auto-annotation process is done in the background allowing the user to focus on separate tasks.  This section will show the steps for performing this type of auto-annotation in EdgeFirst Studio.  However, this feature can also be deployed using the [EdgeFirst Client](../../../perception/studio.md#restore-snapshots) in the command line.
+This annotation feature is available at the time of importing the dataset via [snapshot restoration](../../../studio/snapshots.md#restore-snapshot).  The auto-annotation process is done in the background allowing the user to focus on separate tasks.  This section will show the steps for performing this type of auto-annotation in EdgeFirst Studio.  This feature can also be deployed using the [EdgeFirst Client](../../../client/cli/index.md#restore-a-snapshot) from the command line.
 
 A complete description of this feature along with the buttons associated in this tutorial can be found under [Studio](../../../studio/snapshots.md).
 

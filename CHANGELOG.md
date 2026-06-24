@@ -40,6 +40,11 @@ release yet; they are listed newest first.
   (mike) deployment, where MkDocs does not rewrite raw `<source>` URLs.
 - **AGTG tutorial video** (`getting_started/assets/workflows/AGTG-tutorial.mp4`):
   new asset demonstrating the annotation workflow.
+- **Jetson Orin Static IP and Wi-Fi Access Point guides**
+  (`platforms/quickstart/jetson_orin/configuration/static_ip.md`,
+  `wifi_ap.md`): new Configuration pages (wrapping the
+  `discrete/platforms/orin_static_ip.md` and `orin_wifi_accesspoint.md`
+  fragments) with matching `.nav.yml` entries.
 
 #### Changed
 
@@ -55,6 +60,12 @@ release yet; they are listed newest first.
 - **`*.mp4` and `*.gif` tracked with Git LFS** (`.gitattributes`) to manage large
   media assets efficiently and avoid GitHub file size warnings; stale
   individual model-file LFS rules removed.
+- **Spelling standardized to American English** across the docs tree
+  (`colour`/`grey`/`centre`/`honour` -> `color`/`gray`/`center`/`honor` in
+  the calibration, metadata, profiler, and Foxglove pages) to match the
+  spellcheck `en-GB_to_en-US` dictionary.
+- **`assets/known_words.txt` reorganized**: sorted case-insensitively and
+  de-duplicated for predictable diffs and easier maintenance.
 
 #### Fixed
 
@@ -72,12 +83,25 @@ release yet; they are listed newest first.
 - **Git LFS assets in published docs** (`.github/workflows/publish.yml`): the
   deploy workflow now checks out with `lfs: true`, so LFS-tracked images and GIFs
   resolve correctly on the published site instead of rendering as pointer files.
+- **Authored typos**: `AGTG Sibebar` -> `AGTG Sidebar` (`studio/agtg.md`),
+  `coffeecups` -> `coffee cups` (`platforms/quickstart/imx8mplus/deploy.md`),
+  and a curly-apostrophe `you’ve` normalized to `you've` in the Orin
+  static-IP guide (it was being miscounted as the misspelling `youve`).
+- **Broken `export-dataset` anchor** (`studio/datasets/index.md`): repointed
+  to the local heading and removed a dangling cross-tutorial link.
+- **Em-dash false positives** (`platforms/configuration/index.md`): spaced the
+  em-dashes so adjacent words are no longer merged into unknown tokens.
 
 #### Removed
 
 - **Unused model assets removed**: duplicate
   `models/modelpack/assets/coffeecup-modelpack-multitask-t-1f54.{onnx,tflite}` and
   unreferenced `models/ultralytics/assets/yolov8s-seg_full_integer_quant*.tflite`.
+- **Genuine misspellings removed from `assets/known_words.txt`** (`cameara`,
+  `coud`, `dopper`, `reprensentations`, `sufficent`) so the spellchecker keeps
+  flagging them. These originate in the mkdocstrings-generated
+  `perception/api/*.md` pages and still require a fix upstream in the
+  `edgefirst.schemas` package.
 
 ### [2026-06-19-rc]
 

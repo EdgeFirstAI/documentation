@@ -111,7 +111,7 @@ To set a static IP address:
     sudo reboot
     ```
 
-10. You should now be able to ping the IP address you’ve set
+10. You should now be able to ping the IP address you've set
 
     ```shell
     > ping 10.10.41.108

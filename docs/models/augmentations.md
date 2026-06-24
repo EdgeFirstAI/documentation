@@ -104,7 +104,7 @@ This augmentation shifts the color of the image along the HSV color space.  A pa
 
 ### Saturation
 
-This augmentation applies saturation in the HSV (Hue, Saturation, Value) color space.  This augmentation either increases the intensity of the colours in the image for increased vibrancy or a decrease in intensity to become much more grayscale or monotone.  The following side-by-side figures shows the original image on the left and the transformed image on the right with saturation set to 150 for maximum effect.
+This augmentation applies saturation in the HSV (Hue, Saturation, Value) color space.  This augmentation either increases the intensity of the colors in the image for increased vibrancy or a decrease in intensity to become much more grayscale or monotone.  The following side-by-side figures shows the original image on the left and the transformed image on the right with saturation set to 150 for maximum effect.
 
 | Original                       | With Saturation Adjustments              |
 |--------------------------------|------------------------------------------|

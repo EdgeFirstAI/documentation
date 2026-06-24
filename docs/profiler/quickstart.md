@@ -98,7 +98,7 @@ Projects  →  Experiments  →  Training Sessions  →  Artifacts
 
 {{ figure("assets/tui-studio-explorer.png", "F2 Studio — explorer drilling into a training session") }}
 
-Each artifact is prefixed with a coloured dot indicating whether it can be deployed on the current host:
+Each artifact is prefixed with a colored dot indicating whether it can be deployed on the current host:
 
 | Indicator | Status | Meaning | Example artifacts |
 |-----------|--------|---------|-------------------|

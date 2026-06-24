@@ -885,7 +885,7 @@ outputs:
 
 ## Post-Processing & Two-Layer Outputs
 
-The two-layer `outputs[]` structure (introduced in [Output Specification](#output-specification)) is descriptive: converters declare the logical contract and — when they split the tensor further — describe the physical decomposition they produced. This section covers the post-processing decoder contract that consumers honour at inference time. For the layout of logical outputs per architecture, see [Architecture Survey](#architecture-survey).
+The two-layer `outputs[]` structure (introduced in [Output Specification](#output-specification)) is descriptive: converters declare the logical contract and — when they split the tensor further — describe the physical decomposition they produced. This section covers the post-processing decoder contract that consumers honor at inference time. For the layout of logical outputs per architecture, see [Architecture Survey](#architecture-survey).
 
 ### Decoding Flow
 

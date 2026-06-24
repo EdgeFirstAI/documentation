@@ -61,7 +61,7 @@ The roles available that can be designated to each user in the organization woul
 
 The "Admin" user has read and write access to all projects, datasets, and model experiments in the organization.  The admin can also add new users, remove existing users, or edit user information in the organization.  This user has full access to the organization.
 
-The "Audit & Label" user has limited access to EdgeFirst Studio.  The only features available to this type of user are auditing and labeling datasets using the task board.
+The "Audit & Label" user has limited access to EdgeFirst Studio.  The only features available to this type of user are auditing and labelling datasets using the task board.
 
 The user with "Custom Permissions" has specific permissions on different elements of EdgeFirst Studio.  These elements are "Projects", "Datasets", "Trainer", and "Task Board".  You can set "Read-Only" permissions to allow users for view-only.  The permission for "Write" allows the users to make changes to the elements such as creating their own datasets or modifying current datasets.
 

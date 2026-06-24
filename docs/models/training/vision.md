@@ -64,7 +64,7 @@ For more information on available "Data Augmentations" please see [Vision Augmen
     1. **Enable Training** *(Ultralytics only)*: When enabled, the model is trained using the selected weights. When disabled (default), no training is performed — weights are pushed directly to the session artifacts. See [Enable Training and Use Default Weights](#enable-training-and-use-default-weights) below.
 
         !!! note "No Training Charts"
-            Training sessions with **Enable Training** disabled will not generate loss or metric charts, since the chart x-axis is epoch-based. This is expected behaviour.
+            Training sessions with **Enable Training** disabled will not generate loss or metric charts, since the chart x-axis is epoch-based. This is expected behavior.
 
     2. **Use Default Weights**: When enabled (default), training starts from pre-trained COCO weights. When disabled, starting weights are sourced from a prior training session you specify.
 
@@ -76,7 +76,7 @@ For more information on available "Data Augmentations" please see [Vision Augmen
 
 The **Enable Training** checkbox (Ultralytics only) and **Use Default Weights** checkbox combine to control how the session is initialized and whether active training is performed:
 
-| Use Default Weights | Enable Training | Behaviour |
+| Use Default Weights | Enable Training | Behavior |
 |---------------------|-----------------|----------|
 | ✓ Enabled | ✓ Enabled | Train from pre-trained COCO weights. |
 | ✗ Disabled | ✓ Enabled | Train starting from weights of a prior training session you specify. |

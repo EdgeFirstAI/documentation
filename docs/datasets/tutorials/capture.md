@@ -70,4 +70,4 @@ Now that your samples are uploaded, use the following path depending on your goa
 
 3. Start annotation
 
-    Use [Automatic Ground Truth Generation (AGTG)](annotations/automatic.md) for faster labeling, then use [Manual Annotations](annotations/manual.md) to fix missed labels or refine results.
+    Use [Automatic Ground Truth Generation (AGTG)](annotations/automatic.md) for faster labelling, then use [Manual Annotations](annotations/manual.md) to fix missed labels or refine results.

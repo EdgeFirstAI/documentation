@@ -47,11 +47,11 @@ This is the
 quickest way to see how a complete EdgeFirst Studio project is put together — still with
 no account or sign-up required.
 
-Public projects are organised into **Trending Projects** and **Most Recent Projects** so
+Public projects are organized into **Trending Projects** and **Most Recent Projects** so
 you can quickly find popular and newly published examples. Each project is a fully
 worked example that bundles everything together in one place:
 
-- **Datasets** — annotated images organised into annotation sets, ready to explore in the
+- **Datasets** — annotated images organized into annotation sets, ready to explore in the
   dataset viewer.
 - **Trained models** — experiments with deployment-ready artifacts.
 - **Validation results** — accuracy and timing metrics so you can see how each model

@@ -168,7 +168,7 @@ The `restore-snapshot` command provides several options to customize the dataset
 - `--dataset-description`: Provides a description for the dataset
 
 !!! warning
-    Automated depth generation and labeling services will incur additional costs on top of the snapshot restoration.
+    Automated depth generation and labelling services will incur additional costs on top of the snapshot restoration.
 
 For example, to create a dataset with automatic depth maps and annotations for `person` and `car` objects, run the following command:
 

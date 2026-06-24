@@ -32,7 +32,7 @@
 
         {{ img("/models/assets/training/no-training-charts.jpg", "No Training Charts") }}
 
-        Training sessions configured without epochs will not generate loss or metric charts, since the chart x-axis is epoch-based. This is expected behaviour.
+        Training sessions configured without epochs will not generate loss or metric charts, since the chart x-axis is epoch-based. This is expected behavior.
 
 6. The completed training session should look like the following
 

@@ -32,7 +32,7 @@ You can deploy your model using Studio Runner - a Python implementation that dem
     # studio-runner-py coffeecup-yolov8n-segmentation-rgb-640x640-t-266e_quant-u8-i8.tflite
     ```
 
-    You should see the following display appear on your monitor.  This model should be able to segment coffeecups in the frame.
+    You should see the following display appear on your monitor.  This model should be able to segment coffee cups in the frame.
 
     {{ figure("../../../models/assets/deployment/coffeecup-detection-sample.jpg", "Sample Coffee Cup Detection") }}
 

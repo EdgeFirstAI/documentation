@@ -19,7 +19,7 @@ As well, each settings page will have a corresponding configuration file located
 ## Services
 
 On Maivin and Raivin devices, system services are managed by systemd.
-This means all core components—such as model execution, data pipelines, and supporting processes—run as systemd services in the background.
+This means all core components — such as model execution, data pipelines, and supporting processes — run as systemd services in the background.
 
 | Service          | Description                         |
 |------------------|-------------------------------------|

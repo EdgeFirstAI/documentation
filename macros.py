@@ -1,5 +1,6 @@
 # macros.py
 import os
+from html import escape
 
 from mkdocs.utils import get_relative_url
 
@@ -75,14 +76,20 @@ def define_env(env):
         page = env.page
         src = get_relative_url(doc_path_of(path, page), page.url)
 
-        style = f' style="width:{width}"' if width is not None else ""
+        style = ""
+        if width is not None:
+            css_width = str(width).strip()
+            if css_width and css_width.isdigit():
+                css_width = f"{css_width}px"
+            style = f' style="width:{escape(css_width, quote=True)}"'
+        alt_text = escape(alt)
         return (
             f'<figure markdown="span">\n'
             f'<video autoplay loop muted playsinline{style}>\n'
-            f'<source src="{src}" type="video/mp4">\n'
-            f'{alt}\n'
+            f'<source src="{escape(src, quote=True)}" type="video/mp4">\n'
+            f'{alt_text}\n'
             f'</video>\n'
-            f'<figcaption>{alt}</figcaption>\n'
+            f'<figcaption>{alt_text}</figcaption>\n'
             f'</figure>'
         )
 

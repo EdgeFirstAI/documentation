@@ -2,10 +2,10 @@
 
 <div class="grid" markdown="1">
 
-{{ figure("/getting_started/assets/workflows/auto-labelling.gif", "Auto-Labelling — AI-generated bounding boxes and segmentation masks") }}
-{{ figure("/getting_started/assets/workflows/model-optimization.gif", "Model Optimization — train, compare, and benchmark vision models") }}
-{{ figure("/getting_started/assets/workflows/3d_perception.gif", "3D Perception — LiDAR, RADAR, and depth sensor workflows") }}
-{{ figure("/getting_started/assets/workflows/profiler.gif", "EdgeFirst Profiler — on-target benchmarking with latency and accuracy metrics") }}
+{{ video("/getting_started/assets/workflows/auto-labelling.mp4", "Auto-Labelling — AI-generated bounding boxes and segmentation masks") }}
+{{ video("/getting_started/assets/workflows/model-optimization.mp4", "Model Optimization — train, compare, and benchmark vision models") }}
+{{ video("/getting_started/assets/workflows/3d_perception.mp4", "3D Perception — LiDAR, RADAR, and depth sensor workflows") }}
+{{ video("/getting_started/assets/workflows/profiler.mp4", "EdgeFirst Profiler — on-target benchmarking with latency and accuracy metrics") }}
 
 </div>
 

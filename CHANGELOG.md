@@ -9,7 +9,7 @@ Changes are grouped into dated release-candidate (`-rc`) snapshots by the date t
 corresponding pull request was opened. None of these snapshots are part of a tagged
 release yet; they are listed newest first.
 
-### [2026-06-23-rc]
+### [2026-06-24-rc]
 
 #### Added
 
@@ -33,6 +33,13 @@ release yet; they are listed newest first.
   an `allowed_elements` list for the inline HTML the docs rely on (`MD033`), and
   disabling rules that conflict by design (e.g. `MD013`, `MD025`, `MD029`,
   `MD034`, `MD036`, `MD041`, `MD046`, `MD051`, `MD060`).
+  - Four workflow video assets (MP4) added under `getting_started/assets/workflows/`.
+- **`video()` mkdocs-macro** (`macros.py`): renders an autoplaying, looping, muted
+  inline `<video>` that behaves like a GIF; resolves the `<source>` URL via
+  `get_relative_url` so it works under `use_directory_urls` and the versioned
+  (mike) deployment, where MkDocs does not rewrite raw `<source>` URLs.
+- **AGTG tutorial video** (`getting_started/assets/workflows/AGTG-tutorial.mp4`):
+  new asset demonstrating the annotation workflow.
 
 #### Changed
 
@@ -40,6 +47,14 @@ release yet; they are listed newest first.
   `platforms/index.md`): inline `classDef` fills now use a 50% alpha (8-digit hex)
   so persona, journey, and platform diagrams stay legible in both the light and
   slate (dark) schemes.
+- **Workflow GIFs converted to MP4**: six animated GIFs (auto-labelling,
+  model-optimization, 3D perception, profiler, AGTG-tutorial, and
+  `perception/dev/examples` boxes2d tracking) re-encoded as H.264 MP4 via the new
+  `video()` macro, shrinking the documentation media payload from ~156 MB to
+  ~8.8 MB to keep the GitHub Pages deploy within its size/time limits.
+- **`*.mp4` and `*.gif` tracked with Git LFS** (`.gitattributes`) to manage large
+  media assets efficiently and avoid GitHub file size warnings; stale
+  individual model-file LFS rules removed.
 
 #### Fixed
 
@@ -57,6 +72,12 @@ release yet; they are listed newest first.
 - **Git LFS assets in published docs** (`.github/workflows/publish.yml`): the
   deploy workflow now checks out with `lfs: true`, so LFS-tracked images and GIFs
   resolve correctly on the published site instead of rendering as pointer files.
+
+#### Removed
+
+- **Unused model assets removed**: duplicate
+  `models/modelpack/assets/coffeecup-modelpack-multitask-t-1f54.{onnx,tflite}` and
+  unreferenced `models/ultralytics/assets/yolov8s-seg_full_integer_quant*.tflite`.
 
 ### [2026-06-19-rc]
 
@@ -130,8 +151,8 @@ release yet; they are listed newest first.
   table, Profiler feature ribbon, free credits tip, and "Is EdgeFirst Studio right
   for you?" section linking to the Tourist workflow.
 - **Tourist workflow** (`discrete/workflows/tourist.md`): new "Is EdgeFirst Studio
-  for you?" section with four clickable GIFs (auto-labelling, model-optimization,
-  3D perception, profiler) linking to their respective documentation sections.
+  for you?" section with four autoplaying looping videos (auto-labelling,
+  model-optimization, 3D perception, profiler).
 - **Free credits note** added to `index.md`, `getting_started/workflows/index.md`,
   and `studio/user/index.md` (\$50 sign-up credit + \$15/month recurring).
 - **Profiler feature ribbon** (`ef-feature-ribbon` CSS component) added to

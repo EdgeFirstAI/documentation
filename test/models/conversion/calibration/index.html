@@ -2096,7 +2096,7 @@ so much). Producing that sample naively is wasteful and fragile:</p>
   work that only depends on the <em>dataset</em>, not the model or the target.</li>
 <li><strong>Preprocessing is the model's secret.</strong> Calibration inputs must be
   preprocessed exactly as the model expects — the same letterbox geometry, the
-  same channel layout, the same <a href="../../cameraadaptor/">CameraAdaptor</a> colour
+  same channel layout, the same <a href="../../cameraadaptor/">CameraAdaptor</a> color
   conversion used in training. A model-agnostic converter does not — and should
   not — know those details.</li>
 <li><strong>Divergent assumptions drift.</strong> When each producer and consumer bakes its
@@ -2144,7 +2144,7 @@ content-addressed file:</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>A calibration snapshot is fully determined by <strong>dataset-source
-parameters</strong> — the dataset, split, input geometry, colour convention, and
+parameters</strong> — the dataset, split, input geometry, color convention, and
 selection policy. <strong>No model and no model inference is involved in
 producing it.</strong> This is what lets one snapshot serve every model and every
 target that share a data-preparation pattern.</p>
@@ -2238,11 +2238,11 @@ many converters.</p>
 <ul>
 <li><strong>Letterbox resize.</strong> The source image is scaled so its long side matches the
   model input (preserving aspect ratio, upscaling small images), then
-  centre-padded to the square input with a constant grey value (114). This is a
+  center-padded to the square input with a constant gray value (114). This is a
   required, model-defining step that is already performed identically during
   training, so the snapshot captures its exact result.</li>
-<li><strong>Channel layout and CameraAdaptor.</strong> The colour conversion (<abbr title="Red Green Blue">RGB</abbr>, BGR, YUYV,
-  grey, …) and channel layout the model was trained with are applied, so the
+<li><strong>Channel layout and CameraAdaptor.</strong> The color conversion (<abbr title="Red Green Blue">RGB</abbr>, BGR, YUYV,
+  gray, …) and channel layout the model was trained with are applied, so the
   stored tensor is byte-identical to what the model sees at inference.</li>
 </ul>
 <p><strong>Recorded, not applied — the numeric normalization converters differ on:</strong></p>
@@ -2250,7 +2250,7 @@ many converters.</p>
 <li>The scale, mean, and standard deviation the model expects (e.g. scale
   <code>1/255</code> to map <code>[0, 255] → [0, 1]</code>) are stored in metadata. Each converter
   applies them on load in the form its quantizer expects — a signed-<abbr title="Signed 8-bit integer">INT8</abbr> target
-  centres the range, a DFC-based target keeps <code>[0, 255]</code>, a <abbr title="TensorFlow Lite">TFLite</abbr> per-input
+  centers the range, a DFC-based target keeps <code>[0, 255]</code>, a <abbr title="TensorFlow Lite">TFLite</abbr> per-input
   pipeline applies its own — without the lossy <code>[0,1] → [0,255]</code> round-trips
   that plagued ad-hoc snapshots.</li>
 </ul>
@@ -2275,13 +2275,13 @@ encodes a hash of that set so the snapshot is <strong>content-addressed</strong>
   &quot;annotation_set_id&quot;: &quot;as-1a3f&quot;,     // or null
   &quot;split&quot;: &quot;train&quot;,                   // calibration pools from the TRAINING split
   &quot;input_shape&quot;: [640, 640],          // [H, W]
-  &quot;channels&quot;: 3,                      // post colour-conversion channel count
+  &quot;channels&quot;: 3,                      // post color-conversion channel count
   &quot;layout&quot;: &quot;NCHW&quot;,
   &quot;dtype&quot;: &quot;uint8&quot;,
   &quot;resize&quot;: &quot;letterbox&quot;,
   &quot;letterbox&quot;: {                      // the exact recipe: long-side resize
     &quot;pad_color&quot;: [114, 114, 114],     // (ceil rounding, linear interp),
-    &quot;scale&quot;: &quot;long_side&quot;,             // then centre-pad the short side
+    &quot;scale&quot;: &quot;long_side&quot;,             // then center-pad the short side
     &quot;round&quot;: &quot;ceil&quot;,
     &quot;center&quot;: true,
     &quot;interpolation&quot;: &quot;linear&quot;
@@ -2303,7 +2303,7 @@ encodes a hash of that set so the snapshot is <strong>content-addressed</strong>
   the algorithm bumps the tag, which changes the hash and the filename — the
   only safe way to roll out an improved selector, since it cannot silently
   shadow snapshots produced by the old one.</li>
-<li><strong>Cross-model reuse.</strong> Two models with the same dataset, geometry, colour
+<li><strong>Cross-model reuse.</strong> Two models with the same dataset, geometry, color
   convention, count, and seed resolve to the same filename, so the snapshot is
   generated once and reused.</li>
 </ul>
@@ -2472,7 +2472,7 @@ exact samples it was built from:</p>
    <code>value_range</code>, <code>layout</code>, and <code>normalization</code> from <code>__metadata__</code>. Fail loudly
    if a required key is missing.</li>
 <li><strong>Apply the recorded normalization</strong> to the uint8 samples in the form your
-   quantizer expects (signed/centred, <code>[0, 255]</code>, or per-input float), and
+   quantizer expects (signed/centered, <code>[0, 255]</code>, or per-input float), and
    transpose <code>NCHW → NHWC</code> if your runtime needs it.</li>
 <li><strong>Verify integrity.</strong> Check <code>content_sha256</code> over the sample bytes on load.</li>
 <li><strong>Record traceability.</strong> Write the snapshot filename into your converter

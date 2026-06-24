@@ -1775,7 +1775,7 @@
             </figure>
 <p>If the Maivin does not reply, please confirm the Maivin is powered on and connected to the network.</p>
 <p>Once the ping is successful, use your <abbr title="Secure Shell">SSH</abbr> client to connect to the 'torizon' account on the Maivin's hostname.  For a command-line <abbr title="Secure Shell">SSH</abbr> such as OpenSSH, this should look as:</p>
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span>ssh<span class="w"> </span>torizon@Maivin-hostname
+<div class="highlight"><pre><span></span><code>ssh<span class="w"> </span>torizon@Maivin-hostname
 </code></pre></div>
 <p>For example:  </p>
 <figure>
@@ -1844,7 +1844,7 @@ Jan<span class="w"> </span><span class="m">29</span><span class="w"> </span><spa
 <h3 id="additional-examples">Additional Examples</h3>
 <h4 id="mcap-recorder-service"><abbr title="Binary container format for robotics log data">MCAP</abbr> Recorder Service</h4>
 <p>Check the status of the <abbr title="Binary container format for robotics log data">MCAP</abbr> Recorder Service.</p>
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span>systemctl<span class="w"> </span>status<span class="w"> </span>recorder.service
+<div class="highlight"><pre><span></span><code>systemctl<span class="w"> </span>status<span class="w"> </span>recorder.service
 </code></pre></div>
 <p>If the Recorder Service is inactive, the following status will be displayed on the terminal.</p>
 <div class="highlight"><pre><span></span><code>○<span class="w"> </span>recorder.service<span class="w"> </span>-<span class="w"> </span>Maivin<span class="w"> </span>MCAP<span class="w"> </span>Recorder<span class="w"> </span>Service
@@ -1854,7 +1854,7 @@ Jan<span class="w"> </span><span class="m">29</span><span class="w"> </span><spa
 <span class="w">     </span>Active:<span class="w"> </span>inactive<span class="w"> </span><span class="o">(</span>dead<span class="o">)</span>
 </code></pre></div>
 <p>To start the Recorder Service, run the following command.</p>
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span>sudo<span class="w"> </span>systemctl<span class="w"> </span>start<span class="w"> </span>recorder.service
+<div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>systemctl<span class="w"> </span>start<span class="w"> </span>recorder.service
 </code></pre></div>
 <p>An active Recorder Service will display the following status on the terminal.</p>
 <div class="highlight"><pre><span></span><code>●<span class="w"> </span>recorder.service<span class="w"> </span>-<span class="w"> </span>Maivin<span class="w"> </span>MCAP<span class="w"> </span>Recorder<span class="w"> </span>Service
@@ -1870,7 +1870,7 @@ Jan<span class="w"> </span><span class="m">29</span><span class="w"> </span><spa
 </code></pre></div>
 <h4 id="web-ui">Web UI</h4>
 <p>Check the status of the Web UI</p>
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span>systemctl<span class="w"> </span>status<span class="w"> </span>webui
+<div class="highlight"><pre><span></span><code>systemctl<span class="w"> </span>status<span class="w"> </span>webui
 </code></pre></div>
 <p>If the Web UI is inactive, the following status will be displayed on the terminal.</p>
 <div class="highlight"><pre><span></span><code>○<span class="w"> </span>webui.service<span class="w"> </span>-<span class="w"> </span>Maivin<span class="w"> </span>Web<span class="w"> </span>UI<span class="w"> </span>Server
@@ -1878,7 +1878,7 @@ Jan<span class="w"> </span><span class="m">29</span><span class="w"> </span><spa
 <span class="w">     </span>Active:<span class="w"> </span>inactive<span class="w"> </span><span class="o">(</span>dead<span class="o">)</span>
 </code></pre></div>
 <p>To start the Web UI, run the following command.</p>
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span>sudo<span class="w"> </span>systemctl<span class="w"> </span>start<span class="w"> </span>webui
+<div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>systemctl<span class="w"> </span>start<span class="w"> </span>webui
 </code></pre></div>
 <p>An active Web UI service will display the following status on the terminal.</p>
 <div class="highlight"><pre><span></span><code>●<span class="w"> </span>webui.service<span class="w"> </span>-<span class="w"> </span>Maivin<span class="w"> </span>Web<span class="w"> </span>UI<span class="w"> </span>Server
@@ -1892,7 +1892,7 @@ Jan<span class="w"> </span><span class="m">29</span><span class="w"> </span><spa
 </code></pre></div>
 <h2 id="secure-copy">Secure Copy</h2>
 <p>We can use secure copy (SCP) to move files to and from the device.  Basic command usage is:</p>
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span>scp<span class="w"> </span>&lt;<span class="nb">source</span><span class="w"> </span>file&gt;<span class="w"> </span>&lt;destination<span class="w"> </span>file&gt;
+<div class="highlight"><pre><span></span><code>scp<span class="w"> </span>&lt;<span class="nb">source</span><span class="w"> </span>file&gt;<span class="w"> </span>&lt;destination<span class="w"> </span>file&gt;
 </code></pre></div>
 <p>To describe files on the Raivin, both source and destination, they are formatted as:</p>
 <div class="highlight"><pre><span></span><code>torizon@verdin-imx8mp-&lt;id&gt;:/absolute/path/filename
@@ -1900,11 +1900,11 @@ Jan<span class="w"> </span><span class="m">29</span><span class="w"> </span><spa
 <p>The path is not needed for files in the <code>torizon</code> home directory <code>/home/torizon</code>, and relative paths from <code>/home/torizon</code> can be used.</p>
 <p>If the destination file will be named the same as the source file, a period <code>.</code> can be used instead.</p>
 <p>For example, if we want to upload the "test.mcap" file to the device from the current working directory on our local machine to remote device <code>verdin-imx8mp-15141029</code>, we can run the command:</p>
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span>scp<span class="w"> </span>test.mcap<span class="w"> </span>torizon@verdin-imx8mp-15141029:.
+<div class="highlight"><pre><span></span><code>scp<span class="w"> </span>test.mcap<span class="w"> </span>torizon@verdin-imx8mp-15141029:.
 </code></pre></div>
 <p>This would copy the file to <code>/home/torizon/test.mcap</code>.</p>
 <p>To copy an <abbr title="Binary container format for robotics log data">MCAP</abbr> recording from the <code>/media/DATA/</code> directory on our device, we could use the following command:</p>
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span>scp<span class="w"> </span>torizon@verdin-imx8mp-15141029:/media/DATA/verdin-imx8mp-15141029_2025_01_29_14_35_23.mcap<span class="w"> </span>.
+<div class="highlight"><pre><span></span><code>scp<span class="w"> </span>torizon@verdin-imx8mp-15141029:/media/DATA/verdin-imx8mp-15141029_2025_01_29_14_35_23.mcap<span class="w"> </span>.
 </code></pre></div>
 
 

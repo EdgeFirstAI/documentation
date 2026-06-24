@@ -2252,18 +2252,18 @@
 <li>Windows: <code>/path/to/myenv/Scripts/activate</code></li>
 </ul>
 </div>
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>edgefirst-profiler
+<div class="highlight"><pre><span></span><code>pip<span class="w"> </span>install<span class="w"> </span>edgefirst-profiler
 </code></pre></div>
 <p>See <a href="../../../../profiler/installation/">Installation</a> for platform installer alternatives and per-target dependencies.</p>
 <p>Next sign in to EdgeFirst Studio. The profiler stores the credentials and refreshes them automatically while you are using it.</p>
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span>edgefirst-profiler<span class="w"> </span>login
+<div class="highlight"><pre><span></span><code>edgefirst-profiler<span class="w"> </span>login
 </code></pre></div>
 <p>Run validation against the session ID from the session card:</p>
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span>edgefirst-profiler<span class="w"> </span>validate<span class="w"> </span>--session-id<span class="w"> </span>v-1b51
+<div class="highlight"><pre><span></span><code>edgefirst-profiler<span class="w"> </span>validate<span class="w"> </span>--session-id<span class="w"> </span>v-1b51
 </code></pre></div>
 <p>The profiler downloads the model artifact and dataset partition, runs the pipeline on the target, and uploads the predictions and trace back to Studio when the run completes.</p>
 <p>If the model already lives on disk and you want to skip the download, pass <code>--model</code> alongside the session ID:</p>
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span>edgefirst-profiler<span class="w"> </span>validate<span class="w"> </span>--session-id<span class="w"> </span>v-1b51<span class="w"> </span>--model<span class="w"> </span>/path/to/mymodel.tflite
+<div class="highlight"><pre><span></span><code>edgefirst-profiler<span class="w"> </span>validate<span class="w"> </span>--session-id<span class="w"> </span>v-1b51<span class="w"> </span>--model<span class="w"> </span>/path/to/mymodel.tflite
 </code></pre></div>
 <p>Once the run is underway, the session card in Studio updates with progress.</p>
 <figure>

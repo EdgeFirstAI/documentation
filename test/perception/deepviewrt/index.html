@@ -1727,25 +1727,25 @@
 <p>Additionally, due to the the improvements in quantization capabilities of each framework, we do recommend using their tools for quantization. Support does exist within the converter for quantization currently, but as the tools change and improve at a steady rate, we recommend using the tools listed for quantization for <a href="https://www.tensorflow.org/model_optimization/guide/quantization/post_training">TensorFlow</a> and <a href="https://onnxruntime.ai/docs/performance/model-optimizations/quantization.html"><abbr title="Open Neural Network Exchange">ONNX</abbr></a></p>
 <h3 id="setup">Setup</h3>
 <p>If you have previously had the Deep View Converter installed, it is highly recommended to run the following to remove the plugin system as you update to this self-contained conversion process.</p>
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span>pip<span class="w"> </span>uninstall<span class="w"> </span>deepview-converter<span class="w"> </span>deepview-converter-rtm<span class="w"> </span>deepview-converter-tflite<span class="w"> </span>deepview-converter-onnx
+<div class="highlight"><pre><span></span><code>pip<span class="w"> </span>uninstall<span class="w"> </span>deepview-converter<span class="w"> </span>deepview-converter-rtm<span class="w"> </span>deepview-converter-tflite<span class="w"> </span>deepview-converter-onnx
 </code></pre></div>
 <p>The converter is a Python-based tool and as such can be installed directly through pip using the following</p>
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>deepview-converter
+<div class="highlight"><pre><span></span><code>pip<span class="w"> </span>install<span class="w"> </span>deepview-converter
 </code></pre></div>
 <p>Now you are all set up to use the Deep View Converter with any model you are looking to run on your EdgeFirst Platform.</p>
 <h3 id="usage">Usage</h3>
 <p>The Deep View Converter has a lot of customizations that will be described in the later section, but for basic conversion the command is as simple as the following where you provide the filename of the model to be converted and the filename of where you want the RTM to be saved.</p>
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span>rtm-converter<span class="w"> </span>input_model.tflite<span class="w"> </span>output_model.rtm
+<div class="highlight"><pre><span></span><code>rtm-converter<span class="w"> </span>input_model.tflite<span class="w"> </span>output_model.rtm
 </code></pre></div>
 <h3 id="detailed-usage">Detailed Usage</h3>
 <p>There are a handful of arguments that you may see in common use and I will describe those ones first, before continuing with the more obscure arguments that have niche usage.</p>
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span>rtm-converter<span class="w"> </span>--input_names<span class="w"> </span>node1,node2,...<span class="w"> </span>--output_names<span class="w"> </span>outnode1,outnode2,...<span class="w"> </span>model_in.tflite<span class="w"> </span>model_out.rtm
+<div class="highlight"><pre><span></span><code>rtm-converter<span class="w"> </span>--input_names<span class="w"> </span>node1,node2,...<span class="w"> </span>--output_names<span class="w"> </span>outnode1,outnode2,...<span class="w"> </span>model_in.tflite<span class="w"> </span>model_out.rtm
 </code></pre></div>
 <p>The input and output name arguments allow you to trim the model during conversion if there are sections that are unneeded. A common use is to trim the model before a decoder used for detection, so then those outputs can be taken and sent through our optimized decoders.</p>
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span>rtm-converter<span class="w"> </span>--input_type<span class="w"> </span>int8<span class="w"> </span>--output_type<span class="w"> </span>float32<span class="w"> </span>model_in.tflite<span class="w"> </span>model_out.rtm
+<div class="highlight"><pre><span></span><code>rtm-converter<span class="w"> </span>--input_type<span class="w"> </span>int8<span class="w"> </span>--output_type<span class="w"> </span>float32<span class="w"> </span>model_in.tflite<span class="w"> </span>model_out.rtm
 </code></pre></div>
 <p>The input and output type arguments can be used in a quantized model to modify the datatypes of the inputs and outputs of the model, to remove a potential additional step of quantizing/dequantizing inputs or outputs.</p>
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span>rtm-converter<span class="w"> </span>--labels<span class="w"> </span>labels.txt<span class="w"> </span>model_in.onnx<span class="w"> </span>model_out.rtm
+<div class="highlight"><pre><span></span><code>rtm-converter<span class="w"> </span>--labels<span class="w"> </span>labels.txt<span class="w"> </span>model_in.onnx<span class="w"> </span>model_out.rtm
 </code></pre></div>
 <p>The labels argument can be used to tell the RTM to store the list of labels directly into the file. This can then be accessed through the <abbr title="Application Programming Interface">API</abbr> to retrieve the labels for use in the pipeline.</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>rtm-converter<span class="w"> </span>--metadata<span class="w"> </span>file1.bin<span class="w"> </span>--metadata<span class="w"> </span>file2.bin,entry_name1<span class="w"> </span>--metadata<span class="w"> </span>file3.bin,entry_name2,application/octet-stream<span class="w"> </span><span class="se">\</span>
@@ -1760,8 +1760,8 @@
 <p>When looking to quantize a TensorFlow model, please refer to this <a href="https://www.tensorflow.org/model_optimization/guide/quantization/post_training">documentation</a>.</p>
 <p>The first step will be to quantize the model following whichever documentation is appropriate to an 8-bit representation. Currently, the Deep View Converter has support for float32, int8, and uint8 models. If you are looking to use a different format, please contact us.</p>
 <p>You can additionally quantize the model through the Deep View Converter using the following CLI commands</p>
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span>rtm-converter<span class="w"> </span>--quantize<span class="w"> </span>--quant_normalization<span class="w"> </span>signed<span class="w"> </span>--samples<span class="w"> </span>samples_folder<span class="w"> </span>--num_samples<span class="w"> </span><span class="m">30</span><span class="w"> </span>model.h5<span class="w"> </span>model_quant.rtm
-$<span class="w"> </span>rtm-converter<span class="w"> </span>--quantize<span class="w"> </span>--quant_normalization<span class="w"> </span>signed<span class="w"> </span>--samples<span class="w"> </span>samples_folder<span class="w"> </span>--num_samples<span class="w"> </span><span class="m">30</span><span class="w"> </span>model.onnx<span class="w"> </span>model_quant.rtm
+<div class="highlight"><pre><span></span><code>rtm-converter<span class="w"> </span>--quantize<span class="w"> </span>--quant_normalization<span class="w"> </span>signed<span class="w"> </span>--samples<span class="w"> </span>samples_folder<span class="w"> </span>--num_samples<span class="w"> </span><span class="m">30</span><span class="w"> </span>model.h5<span class="w"> </span>model_quant.rtm
+rtm-converter<span class="w"> </span>--quantize<span class="w"> </span>--quant_normalization<span class="w"> </span>signed<span class="w"> </span>--samples<span class="w"> </span>samples_folder<span class="w"> </span>--num_samples<span class="w"> </span><span class="m">30</span><span class="w"> </span>model.onnx<span class="w"> </span>model_quant.rtm
 </code></pre></div>
 <div class="admonition warning">
 <p class="admonition-title"><abbr title="Open Neural Network Exchange">ONNX</abbr> Quantization</p>
@@ -1793,7 +1793,7 @@ The --num_samples argument is as expected and lets you specify how many samples 
 <h2 id="deep-view-rt-edge-optimized-inference-engine">Deep View RT Edge-Optimized Inference Engine</h2>
 <p>The Deep View RT Edge-Optimized Inference Engine is a C based library that provides easy to use tools for developing applications with your model that are optimized for the EdgeFirst Platforms. The main component of the Deep View RT Inference Engine is the engine itself and there are many optimizations that are performed to benefit the inference and overall pipeline time. The Deep View RT Inference Engine makes use of various plugins that allow for accelerated inference on whichever processor is specified, whether it is using OpenCL for float models on the GPU or OpenVX for quantized models on the GPU or <abbr title="Neural Processing Unit">NPU</abbr>.</p>
 <p>With the <abbr title="Application Programming Interface">API</abbr> provided you can build native C applications that take advantage of the Deep View RT Inference Engine, and additionally we provide Python bindings for the engine that can installed through pip with the following</p>
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>deepview-rt
+<div class="highlight"><pre><span></span><code>pip<span class="w"> </span>install<span class="w"> </span>deepview-rt
 </code></pre></div>
 <p>Documentation for using the APIs for both C and Python are currently being updated and will be provided alongside a new update that will look to simplify the application building process.</p>
 

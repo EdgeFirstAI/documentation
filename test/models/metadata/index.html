@@ -5219,7 +5219,7 @@
 </code></pre></div>
 <hr />
 <h2 id="post-processing-two-layer-outputs">Post-Processing &amp; Two-Layer Outputs</h2>
-<p>The two-layer <code>outputs[]</code> structure (introduced in <a href="#output-specification">Output Specification</a>) is descriptive: converters declare the logical contract and — when they split the tensor further — describe the physical decomposition they produced. This section covers the post-processing decoder contract that consumers honour at inference time. For the layout of logical outputs per architecture, see <a href="#architecture-survey">Architecture Survey</a>.</p>
+<p>The two-layer <code>outputs[]</code> structure (introduced in <a href="#output-specification">Output Specification</a>) is descriptive: converters declare the logical contract and — when they split the tensor further — describe the physical decomposition they produced. This section covers the post-processing decoder contract that consumers honor at inference time. For the layout of logical outputs per architecture, see <a href="#architecture-survey">Architecture Survey</a>.</p>
 <h3 id="decoding-flow">Decoding Flow</h3>
 <p>When a logical output has a <code>decoder</code> field set, the inference pipeline must:</p>
 <ol>

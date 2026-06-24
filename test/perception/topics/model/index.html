@@ -1979,9 +1979,11 @@
 <h1 id="model-topics">Model Topics</h1>
 <p>The model topics are managed by the <code>model</code> service and handles running vision machine learning models.  The service supports object detection and segmentation tasks.</p>
 <ul>
-<li>RTM models</li>
+<li>RTM models<ul>
 <li>Object Detection</li>
 <li>Segmentation</li>
+</ul>
+</li>
 <li>ByteTrack tracking</li>
 </ul>
 <p>The model topics are published under the <code>/model</code> namespace and offers the following sub-topics: <code>/model/boxes2d</code>, <code>/model/mask</code>, <code>/model/mask_compressed</code>, <code>/model/info</code>, <code>/model/visualization</code>. Tracking parameters are configurable through the <code>model</code> service. See model service configuration documentation for details.</p>

@@ -709,6 +709,14 @@
          <lastmod>2026-06-24</lastmod>
     </url>
     <url>
+         <loc>https://doc.edgefirst.ai/test/platforms/quickstart/jetson_orin/configuration/static_ip/</loc>
+         <lastmod>2026-06-24</lastmod>
+    </url>
+    <url>
+         <loc>https://doc.edgefirst.ai/test/platforms/quickstart/jetson_orin/configuration/wifi_ap/</loc>
+         <lastmod>2026-06-24</lastmod>
+    </url>
+    <url>
          <loc>https://doc.edgefirst.ai/test/platforms/quickstart/maivin/</loc>
          <lastmod>2026-06-24</lastmod>
     </url>

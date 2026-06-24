@@ -1729,20 +1729,20 @@
 <p>The radar module is connected to the Raivin using two networking interfaces.  The primary interface is the <code>can0</code> interface which is used to configure the radar module and receive the radar point-cloud.  This interface is required for to control the radar module.  The secondary interface is the <code>ethernet1</code> interface which is used to transmit the radar data cube data to the Raivin.  This interface is required to provide input to the RadarExp Fusion model, but is not required for the radar module to function in point-cloud mode.  The radar data cube generates about 300Mb/s of data which is transmitted to the Raivin for processing.</p>
 <h3 id="can-configuration"><abbr title="Controller Area Network">CAN</abbr> Configuration</h3>
 <p>The <abbr title="Controller Area Network">CAN</abbr> bus interface is managed through the systemd networking framework using the configuration file <code>/etc/systemd/network/can0.network</code>.  The <abbr title="Controller Area Network">CAN</abbr> bus interface will be preconfigured by Torizon for Maivin but is covered in this section.</p>
-<div class="highlight"><pre><span></span><code>[Match]
-Name=can0
+<div class="highlight"><pre><span></span><code><span class="k">[Match]</span>
+<span class="na">Name</span><span class="o">=</span><span class="s">can0</span>
 
-[CAN]
-BitRate=500K
+<span class="k">[CAN]</span>
+<span class="na">BitRate</span><span class="o">=</span><span class="s">500K</span>
 </code></pre></div>
 <p>The <code>can0</code> interface is configured for 500kbps.  The Radar Publishing Service manages the radar configuration and reading of the point-cloud data over <abbr title="Controller Area Network">CAN</abbr> and publishing the results over Zenoh.  Refer to the <a href="./">Radar Publishing Service</a> for details.</p>
 <h3 id="ethernet-configuration">Ethernet Configuration</h3>
 <p>The radar module streams the low-level radar data cube over an ethernet interface which is internally connected to the Raivin's <code>ethernet1</code> interface.  The connection is managed through the systemd network framework using the configuration file <code>/etc/systemd/network/ethernet1.network</code> along with the <code>ethernet1-master.service</code> systemd service which handles configuring the automotive ethernet PHY (1000Base-T1) as the connection master.  The <code>ethernet1-master.service</code> should be enabled using <code>sudo systemctl enable ethernet1-master</code> if not already enabled.</p>
-<div class="highlight"><pre><span></span><code>[Match]
-Name=ethernet1
+<div class="highlight"><pre><span></span><code><span class="k">[Match]</span>
+<span class="na">Name</span><span class="o">=</span><span class="s">ethernet1</span>
 
-[Network]
-Address=192.168.11.17/24
+<span class="k">[Network]</span>
+<span class="na">Address</span><span class="o">=</span><span class="s">192.168.11.17/24</span>
 </code></pre></div>
 
 

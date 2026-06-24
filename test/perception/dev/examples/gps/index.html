@@ -2115,7 +2115,7 @@
 Message: <a href="../../../api/sensor_msgs/#navsatfix">NavSatFix</a>
 Sample Code: <a href="https://github.com/EdgeFirstAI/samples/blob/main/python/gps.py">Python</a> / <a href="https://github.com/EdgeFirstAI/samples/blob/main/rust/gps.rs">Rust</a></p>
 <p>This example will go through how to connect to the <abbr title="Global Positioning System">GPS</abbr> topic published on your EdgeFirst Platform and how to display the information through the Rerun visualizer.</p>
-<h3 id="setting-up-subscriber">Setting up subscriber</h3>
+<h2 id="setting-up-subscriber">Setting up subscriber</h2>
 <p>After setting up the Zenoh session, we will create a subscriber to the <code>rt/gps</code> topic</p>
 <div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="python" name="__tabbed_1" type="radio" /><input id="rust" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="python">Python</label><label for="rust">Rust</label></div>
 <div class="tabbed-content">
@@ -2135,7 +2135,7 @@ Sample Code: <a href="https://github.com/EdgeFirstAI/samples/blob/main/python/gp
 </div>
 </div>
 </div>
-<h3 id="receive-the-message">Receive the Message</h3>
+<h2 id="receive-the-message">Receive the Message</h2>
 <p>We can now receive a message on the subscriber. After receiving the message, we will set it up for processing.</p>
 <div class="tabbed-set tabbed-alternate" data-tabs="2:2"><input checked="checked" id="python_1" name="__tabbed_2" type="radio" /><input id="rust_1" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="python_1">Python</label><label for="rust_1">Rust</label></div>
 <div class="tabbed-content">
@@ -2159,7 +2159,7 @@ Sample Code: <a href="https://github.com/EdgeFirstAI/samples/blob/main/python/gp
 </div>
 </div>
 </div>
-<h3 id="process-the-gps-data">Process the <abbr title="Global Positioning System">GPS</abbr> Data</h3>
+<h2 id="process-the-gps-data">Process the <abbr title="Global Positioning System">GPS</abbr> Data</h2>
 <p>We will now pull out the latitude/longitude data from the decoded NavSatFix message and log the data to Rerun.</p>
 <div class="tabbed-set tabbed-alternate" data-tabs="3:2"><input checked="checked" id="python_2" name="__tabbed_3" type="radio" /><input id="rust_2" name="__tabbed_3" type="radio" /><div class="tabbed-labels"><label for="python_2">Python</label><label for="rust_2">Rust</label></div>
 <div class="tabbed-content">
@@ -2179,7 +2179,7 @@ Sample Code: <a href="https://github.com/EdgeFirstAI/samples/blob/main/python/gp
 </div>
 </div>
 </div>
-<h3 id="results">Results</h3>
+<h2 id="results">Results</h2>
 <p>The command line output will appear as the following</p>
 <div class="highlight"><pre><span></span><code>Latitude: 51.036506 Longitude: -114.034886
 Latitude: 51.036506 Longitude: -114.034886

@@ -1958,14 +1958,18 @@
 <p>The camera topics are managed by the <code>maivin-camera</code> service and handles interfacing with a local camera to produce camera frames which can be shared to multiple consumers with low overhead by leveraging zero-copy through <abbr title="Direct Memory Access">DMA</abbr> buffers.  The service can also produce encoded frames in H.264 or JPEG suitable for recording or streaming to a remote device.  The following is a list of key features provided by the camera service.</p>
 <ul>
 <li>Video4Linux2 Cameras</li>
-<li>i.MX 8M Plus ISP</li>
+<li>i.MX 8M Plus ISP<ul>
 <li>Using the VSI ISP driver</li>
 <li>Publishes camera intrinsic parameters from ISP configuration</li>
+</ul>
+</li>
 <li>Zero-Copy frame publishing using Linux <a href="https://docs.kernel.org/driver-api/dma-buf.html">dma-buf</a></li>
-<li>Hardware H.264 Encoder</li>
+<li>Hardware H.264 Encoder<ul>
 <li>VSI Hantro (i.MX 8M Plus)</li>
 <li>1080 @ 60FPS</li>
 <li>4K @ 30FPS (special extension)</li>
+</ul>
+</li>
 <li>Software JPEG Encoder</li>
 </ul>
 <p>The camera topic is published under the <code>/camera</code> namespace and offers the following sub-topics.  Some topics are optional and might not be available on the current system, refer to the camera service configuration documentation for details.</p>
@@ -2048,7 +2052,7 @@
 </tr>
 <tr>
 <td style="text-align: center;">Foxglove</td>
-<td style="text-align: center;"><a href="">Compressed Image Example</a></td>
+<td style="text-align: center;"><a href="https://docs.foxglove.dev/docs/visualization/panels/image">Compressed Image Example</a></td>
 </tr>
 <tr>
 <td style="text-align: center;"><abbr title="Software Development Kit">SDK</abbr></td>

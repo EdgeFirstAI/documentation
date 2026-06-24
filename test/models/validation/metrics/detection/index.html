@@ -2210,7 +2210,7 @@
 
 
 <h1 id="object-detection-metrics">Object Detection Metrics</h1>
-<p>This section describes the validation metrics reported for <a href="../../vision/managed/">Object Detection Validation</a>.  The object detection metrics are based on <abbr title="Intersection over Union">IoU</abbr> which measures how closely the predictions aligns with the ground truth annotations.  For object detection, the <abbr title="Intersection over Union">IoU</abbr> is calculated from bounding boxes.  However, for <a href="../segmentation/#instance-segmentation-metrics">instance segmentation</a>, the <abbr title="Intersection over Union">IoU</abbr> is calculated from instance masks.  The methods for computing object detection and instance segmentation metrics are the same.  The object detection metrics are categorized into <strong>Full-Curve Metrics</strong> and <strong>Deployment Metrics</strong>. </p>
+<p>This section describes the validation metrics reported for <a href="../../vision/managed/">Object Detection Validation</a>.  The object detection metrics are based on <abbr title="Intersection over Union">IoU</abbr> which measures how closely the predictions aligns with the ground truth annotations.  For object detection, the <abbr title="Intersection over Union">IoU</abbr> is calculated from bounding boxes.  However, for <a href="../segmentation/#instance-segmentation-metrics">instance segmentation</a>, the <abbr title="Intersection over Union">IoU</abbr> is calculated from instance masks.  The methods for computing object detection and instance segmentation metrics are the same.  The object detection metrics are categorized into <strong>Full-Curve Metrics</strong> and <strong>Deployment Metrics</strong>.</p>
 <p>The Full-Curve Metrics assess the model performance across varying score and <abbr title="Intersection over Union">IoU</abbr> thresholds for all classes.  The Deployment Metrics are based on the best model performance at the optimal score threshold.</p>
 <h2 id="full-curve-metrics">Full-Curve Metrics</h2>
 <p>Full-Curve Metrics evaluate model performance across a wide range of confidence (score) and <abbr title="Intersection over Union">IoU</abbr> (0.50-0.95) thresholds.  To enable this, the <abbr title="Non-Maximum Suppression">NMS</abbr> score threshold is set very low (e.g., 0.001), allowing nearly all predictions to be considered.  The model is then evaluated over score thresholds from 0 to 1 and <abbr title="Intersection over Union">IoU</abbr> thresholds from 0.50 to 0.95 to understand how performance changes as filtering becomes more or less strict.</p>
@@ -2276,7 +2276,7 @@
 </li>
 </ul>
 <h3 id="f1-score">F1 Score</h3>
-<p>The Mean F1 Score is the harmonic mean between precision and recall used to determine the model’s optimal score threshold. It is derived from the F1 vs Confidence curve, which shows how the F1 score changes as the score threshold varies.  The model's optimal score threshold is at the max F1 score of this curve. </p>
+<p>The Mean F1 Score is the harmonic mean between precision and recall used to determine the model’s optimal score threshold. It is derived from the F1 vs Confidence curve, which shows how the F1 score changes as the score threshold varies.  The model's optimal score threshold is at the max F1 score of this curve.</p>
 <figure>
             <img align="center" alt="F1 versus Confidence" src="../../../assets/metrics/f1_vs_confidence.png" />
             <figcaption>F1 versus Confidence</figcaption>
@@ -2366,17 +2366,19 @@ t^* = \arg\max_t \ \frac{1}{C} \sum_{c=1}^{C} \text{F1}_c(t)
 p_{25} = Q_1,\quad p_{75} = Q_3,\quad p_{100} = \max(\text{IoU})
 \]</div>
 <ul>
-<li>The interquartile range (IQR) is defined as 
-$$
+<li>The interquartile range (IQR) is defined as</li>
+</ul>
+<div class="arithmatex">\[
 \text{IQR} = Q_3 - Q_1
-$$</li>
+\]</div>
+<ul>
 <li>The upper whisker (optimal <abbr title="Intersection over Union">IoU</abbr>) is calculated as:</li>
 </ul>
 <div class="arithmatex">\[
 \text{IoU}_{\text{optimal}} = \min\left(\max(\text{IoU}),\ Q_3 + 1.5 \cdot \text{IQR}\right)
 \]</div>
 <p><strong>What if the dataset does not have any ground truth intersections?</strong></p>
-<p>In some datasets, there may be no overlapping ground truth bounding boxes, meaning it is not possible to estimate an optimal <abbr title="Intersection over Union">IoU</abbr> threshold using the <abbr title="Intersection over Union">IoU</abbr> distribution of ground truth intersections.  In this case, a fallback strategy is used to choose the <abbr title="Intersection over Union">IoU</abbr> threshold that eliminates the highest number of localization false positives (duplicate predictions).  Note that the localization false positives are any predictions not matched to any ground truth primarily due to prediction duplications (not filtered by <abbr title="Non-Maximum Suppression">NMS</abbr>) or it does not intersect any ground truth bounding box. </p>
+<p>In some datasets, there may be no overlapping ground truth bounding boxes, meaning it is not possible to estimate an optimal <abbr title="Intersection over Union">IoU</abbr> threshold using the <abbr title="Intersection over Union">IoU</abbr> distribution of ground truth intersections.  In this case, a fallback strategy is used to choose the <abbr title="Intersection over Union">IoU</abbr> threshold that eliminates the highest number of localization false positives (duplicate predictions).  Note that the localization false positives are any predictions not matched to any ground truth primarily due to prediction duplications (not filtered by <abbr title="Non-Maximum Suppression">NMS</abbr>) or it does not intersect any ground truth bounding box.</p>
 <p>The <abbr title="Intersection over Union">IoU</abbr> values for these localization false positives are then collected.  These <abbr title="Intersection over Union">IoU</abbr> values represent the duplicated boxes that should have been filtered by <abbr title="Non-Maximum Suppression">NMS</abbr>.  The <abbr title="Intersection over Union">IoU</abbr> values of these false positives are then grouped into a histogram.  The optimal <abbr title="Intersection over Union">IoU</abbr> threshold is then selected as the lower edge of the bin with the highest frequency.  In other words, <strong>if there are no ground truth intersections, the bin with the most number of localization false positive is taken as the optimal <abbr title="Intersection over Union">IoU</abbr> threshold</strong>.</p>
 <div class="arithmatex">\[
 \text{IoU}_{\text{optimal}} = b_k \quad \text{where} \quad k = \arg\max_i \ \text{count}(b_i)
@@ -2384,7 +2386,7 @@ $$</li>
 <p><strong>What if there are no false positives?</strong></p>
 <p>If no false positives are present, or if the computed optimal <abbr title="Intersection over Union">IoU</abbr> threshold is 0, the system falls back to report the default <abbr title="Non-Maximum Suppression">NMS</abbr> <abbr title="Intersection over Union">IoU</abbr> threshold of 0.70, which is consistent with the Ultralytics default.</p>
 <h2 id="deployment-metrics">Deployment Metrics</h2>
-<p>As mentioned, the Full-Curve Metrics assess the model performance at varying <abbr title="Non-Maximum Suppression">NMS</abbr> score thresholds to find the <a href="#f1-score">optimal score threshold that yields the max F1-score</a>.  This score threshold is then used to filter the predictions.  These filtered predictions are then classified into true positives, false positives (classification, localization), and false negatives. </p>
+<p>As mentioned, the Full-Curve Metrics assess the model performance at varying <abbr title="Non-Maximum Suppression">NMS</abbr> score thresholds to find the <a href="#f1-score">optimal score threshold that yields the max F1-score</a>.  This score threshold is then used to filter the predictions.  These filtered predictions are then classified into true positives, false positives (classification, localization), and false negatives.</p>
 <div class="admonition note">
 <p class="admonition-title">Classifications</p>
 <p>For more information on how these predictions are matched and classified into true positives, false positives, and false negatives, please see the <a href="matching/">Matching and Classification Rules</a>.</p>
@@ -2411,7 +2413,7 @@ $$</li>
 <p>These histograms help reveal how different types of predictions are distributed.  For example, a high number of false positives with high confidence scores may indicate issues with the model’s classification behavior or training data. Similarly, a concentration of predictions with low <abbr title="Intersection over Union">IoU</abbr> values suggests poor localization, meaning predicted objects are not well aligned with the ground truth.</p>
 <p>Further analysis can be performed using the <a href="#confusion-matrix">Confusion Matrix</a>, which breaks down prediction outcomes by class.  This visualization highlights which classes the model detects well and which it frequently misses, potentially indicating a need for more training data for those classes.  It also reveals common misclassifications between classes, helping identify areas that may require further investigation or improvements in the training dataset.</p>
 <p>From these plots, <strong>the sum of true positives, false positives, and false negatives equals the totals reported in the deployment classifications</strong>. Every prediction is accounted for in this breakdown.</p>
-<p>Lastly, the precision, recall, and accuracy scores of each class are provided in the Class Metrics bar chart.  You can find the equations for precision, recall, and accuracy in the <a href="../#glossary">Glossary</a>. </p>
+<p>Lastly, the precision, recall, and accuracy scores of each class are provided in the Class Metrics bar chart.  You can find the equations for precision, recall, and accuracy in the <a href="../#glossary">Glossary</a>.</p>
 <figure>
             <img align="center" alt="Class Metrics" src="../../../assets/metrics/class_metrics.png" />
             <figcaption>Class Metrics</figcaption>
@@ -2540,43 +2542,43 @@ $$</li>
 </div>
 
 <p>The final calculated Full-Curve Metrics for this sample are as follows:</p>
-<div class="highlight"><pre><span></span><code><span class="w">	</span>+--------------------------------------------------+
-<span class="w">	</span><span class="p">|</span><span class="w">                </span>DETECTION<span class="w"> </span>METRICS<span class="w">                 </span><span class="p">|</span>
-<span class="w">	</span>+--------------------------------------------------+
-<span class="w">	</span><span class="p">|</span><span class="w"> </span>Ground<span class="w"> </span>Truths:<span class="w"> </span><span class="m">3</span><span class="w">                                 </span><span class="p">|</span>
-<span class="w">	</span><span class="p">|</span><span class="w"> </span>Predictions:<span class="w"> </span><span class="m">5</span><span class="w">                                   </span><span class="p">|</span>
-<span class="w">	</span>+---------------+-------------------+--------------+
-<span class="w">	</span><span class="p">|</span><span class="w">               </span><span class="p">|</span><span class="w"> </span>Mean<span class="w"> </span>Precision<span class="w">    </span><span class="p">|</span><span class="w">    </span><span class="m">99</span>.13<span class="w">     </span><span class="p">|</span>
-<span class="w">	</span><span class="p">|</span><span class="w">               </span><span class="p">|</span><span class="w"> </span>mAP@0.5<span class="w">           </span><span class="p">|</span><span class="w">     </span><span class="m">99</span>.5<span class="w">     </span><span class="p">|</span>
-<span class="w">	</span><span class="p">|</span><span class="w"> </span>Precision<span class="w"> </span><span class="o">(</span>%<span class="o">)</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>mAP@0.75<span class="w">          </span><span class="p">|</span><span class="w">     </span><span class="m">99</span>.5<span class="w">     </span><span class="p">|</span>
-<span class="w">	</span><span class="p">|</span><span class="w">               </span><span class="p">|</span><span class="w"> </span>mAP@0.5-0.95<span class="w">      </span><span class="p">|</span><span class="w">    </span><span class="m">67</span>.79<span class="w">     </span><span class="p">|</span>
-<span class="w">	</span>+---------------+-------------------+--------------+
-<span class="w">	</span><span class="p">|</span><span class="w"> </span>Recall<span class="w"> </span><span class="o">(</span>%<span class="o">)</span><span class="w">    </span><span class="p">|</span><span class="w"> </span>Mean<span class="w"> </span>Recall<span class="w">       </span><span class="p">|</span><span class="w">    </span><span class="m">100</span>.0<span class="w">     </span><span class="p">|</span>
-<span class="w">	</span>+---------------+-------------------+--------------+
-<span class="w">	</span><span class="p">|</span><span class="w"> </span>F1<span class="w"> </span>Score<span class="w"> </span><span class="o">(</span>%<span class="o">)</span><span class="w">  </span><span class="p">|</span><span class="w"> </span>Mean<span class="w"> </span>F1<span class="w">           </span><span class="p">|</span><span class="w">    </span><span class="m">99</span>.56<span class="w">     </span><span class="p">|</span>
-<span class="w">	</span>+---------------+-------------------+--------------+
+<div class="highlight"><pre><span></span><code><span class="w">    </span>+--------------------------------------------------+
+<span class="w">    </span><span class="p">|</span><span class="w">                </span>DETECTION<span class="w"> </span>METRICS<span class="w">                 </span><span class="p">|</span>
+<span class="w">    </span>+--------------------------------------------------+
+<span class="w">    </span><span class="p">|</span><span class="w"> </span>Ground<span class="w"> </span>Truths:<span class="w"> </span><span class="m">3</span><span class="w">                                 </span><span class="p">|</span>
+<span class="w">    </span><span class="p">|</span><span class="w"> </span>Predictions:<span class="w"> </span><span class="m">5</span><span class="w">                                   </span><span class="p">|</span>
+<span class="w">    </span>+---------------+-------------------+--------------+
+<span class="w">    </span><span class="p">|</span><span class="w">               </span><span class="p">|</span><span class="w"> </span>Mean<span class="w"> </span>Precision<span class="w">    </span><span class="p">|</span><span class="w">    </span><span class="m">99</span>.13<span class="w">     </span><span class="p">|</span>
+<span class="w">    </span><span class="p">|</span><span class="w">               </span><span class="p">|</span><span class="w"> </span>mAP@0.5<span class="w">           </span><span class="p">|</span><span class="w">     </span><span class="m">99</span>.5<span class="w">     </span><span class="p">|</span>
+<span class="w">    </span><span class="p">|</span><span class="w"> </span>Precision<span class="w"> </span><span class="o">(</span>%<span class="o">)</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>mAP@0.75<span class="w">          </span><span class="p">|</span><span class="w">     </span><span class="m">99</span>.5<span class="w">     </span><span class="p">|</span>
+<span class="w">    </span><span class="p">|</span><span class="w">               </span><span class="p">|</span><span class="w"> </span>mAP@0.5-0.95<span class="w">      </span><span class="p">|</span><span class="w">    </span><span class="m">67</span>.79<span class="w">     </span><span class="p">|</span>
+<span class="w">    </span>+---------------+-------------------+--------------+
+<span class="w">    </span><span class="p">|</span><span class="w"> </span>Recall<span class="w"> </span><span class="o">(</span>%<span class="o">)</span><span class="w">    </span><span class="p">|</span><span class="w"> </span>Mean<span class="w"> </span>Recall<span class="w">       </span><span class="p">|</span><span class="w">    </span><span class="m">100</span>.0<span class="w">     </span><span class="p">|</span>
+<span class="w">    </span>+---------------+-------------------+--------------+
+<span class="w">    </span><span class="p">|</span><span class="w"> </span>F1<span class="w"> </span>Score<span class="w"> </span><span class="o">(</span>%<span class="o">)</span><span class="w">  </span><span class="p">|</span><span class="w"> </span>Mean<span class="w"> </span>F1<span class="w">           </span><span class="p">|</span><span class="w">    </span><span class="m">99</span>.56<span class="w">     </span><span class="p">|</span>
+<span class="w">    </span>+---------------+-------------------+--------------+
 </code></pre></div>
 <p>The final calculated Deployment Metrics for this sample are as follows:</p>
-<div class="highlight"><pre><span></span><code><span class="w">	</span>+--------------------------------------------------+
-<span class="w">	</span><span class="p">|</span><span class="w">     </span>DEPLOYMENT<span class="w"> </span>METRICS<span class="w"> </span>@<span class="w"> </span>OPTIMAL<span class="w"> </span>THRESHOLDS<span class="w">      </span><span class="p">|</span>
-<span class="w">	</span>+---------------+----------------+-----------------+
-<span class="w">	</span><span class="p">|</span><span class="w"> </span>Ground<span class="w"> </span>Truths<span class="w"> </span><span class="p">|</span><span class="w"> </span>True<span class="w"> </span>Positives<span class="w"> </span><span class="p">|</span><span class="w"> </span>False<span class="w"> </span>Negatives<span class="w"> </span><span class="p">|</span>
-<span class="w">	</span>+---------------+----------------+-----------------+
-<span class="w">	</span><span class="p">|</span><span class="w">       </span><span class="m">3</span><span class="w">       </span><span class="p">|</span><span class="w">       </span><span class="m">3</span><span class="w">        </span><span class="p">|</span><span class="w">        </span><span class="m">0</span><span class="w">        </span><span class="p">|</span>
-<span class="w">	</span>+-------------------------+------------------------+
-<span class="w">	</span><span class="p">|</span><span class="w">    </span>Classification<span class="w"> </span>FP<span class="w">    </span><span class="p">|</span><span class="w">    </span>Localization<span class="w"> </span>FP<span class="w">     </span><span class="p">|</span>
-<span class="w">	</span>+-------------------------+------------------------+
-<span class="w">	</span><span class="p">|</span><span class="w">            </span><span class="m">0</span><span class="w">            </span><span class="p">|</span><span class="w">           </span><span class="m">0</span><span class="w">            </span><span class="p">|</span>
-<span class="w">	</span>+-------------------------+------------------------+
-<span class="w">	</span><span class="p">|</span><span class="w">    </span>Overall<span class="w"> </span>Accuracy<span class="w">     </span><span class="p">|</span><span class="w">         </span><span class="m">100</span>.0<span class="w">          </span><span class="p">|</span>
-<span class="w">	</span><span class="p">|</span><span class="w">    </span>Mean<span class="w"> </span>Class<span class="w"> </span>Accuracy<span class="w">  </span><span class="p">|</span><span class="w">         </span><span class="m">100</span>.0<span class="w">          </span><span class="p">|</span>
-<span class="w">	</span>+-------------------------+------------------------+
-<span class="w">	</span><span class="p">|</span><span class="w">    </span>Overall<span class="w"> </span>Precision<span class="w">    </span><span class="p">|</span><span class="w">         </span><span class="m">100</span>.0<span class="w">          </span><span class="p">|</span>
-<span class="w">	</span><span class="p">|</span><span class="w">    </span>Mean<span class="w"> </span>Class<span class="w"> </span>Precision<span class="w"> </span><span class="p">|</span><span class="w">         </span><span class="m">100</span>.0<span class="w">          </span><span class="p">|</span>
-<span class="w">	</span>+-------------------------+------------------------+
-<span class="w">	</span><span class="p">|</span><span class="w">    </span>Overall<span class="w"> </span>Recall<span class="w">       </span><span class="p">|</span><span class="w">         </span><span class="m">100</span>.0<span class="w">          </span><span class="p">|</span>
-<span class="w">	</span><span class="p">|</span><span class="w">    </span>Mean<span class="w"> </span>Class<span class="w"> </span>Recall<span class="w">    </span><span class="p">|</span><span class="w">         </span><span class="m">100</span>.0<span class="w">          </span><span class="p">|</span>
-<span class="w">	</span>+-------------------------+------------------------+
+<div class="highlight"><pre><span></span><code><span class="w">    </span>+--------------------------------------------------+
+<span class="w">    </span><span class="p">|</span><span class="w">     </span>DEPLOYMENT<span class="w"> </span>METRICS<span class="w"> </span>@<span class="w"> </span>OPTIMAL<span class="w"> </span>THRESHOLDS<span class="w">      </span><span class="p">|</span>
+<span class="w">    </span>+---------------+----------------+-----------------+
+<span class="w">    </span><span class="p">|</span><span class="w"> </span>Ground<span class="w"> </span>Truths<span class="w"> </span><span class="p">|</span><span class="w"> </span>True<span class="w"> </span>Positives<span class="w"> </span><span class="p">|</span><span class="w"> </span>False<span class="w"> </span>Negatives<span class="w"> </span><span class="p">|</span>
+<span class="w">    </span>+---------------+----------------+-----------------+
+<span class="w">    </span><span class="p">|</span><span class="w">       </span><span class="m">3</span><span class="w">       </span><span class="p">|</span><span class="w">       </span><span class="m">3</span><span class="w">        </span><span class="p">|</span><span class="w">        </span><span class="m">0</span><span class="w">        </span><span class="p">|</span>
+<span class="w">    </span>+-------------------------+------------------------+
+<span class="w">    </span><span class="p">|</span><span class="w">    </span>Classification<span class="w"> </span>FP<span class="w">    </span><span class="p">|</span><span class="w">    </span>Localization<span class="w"> </span>FP<span class="w">     </span><span class="p">|</span>
+<span class="w">    </span>+-------------------------+------------------------+
+<span class="w">    </span><span class="p">|</span><span class="w">            </span><span class="m">0</span><span class="w">            </span><span class="p">|</span><span class="w">           </span><span class="m">0</span><span class="w">            </span><span class="p">|</span>
+<span class="w">    </span>+-------------------------+------------------------+
+<span class="w">    </span><span class="p">|</span><span class="w">    </span>Overall<span class="w"> </span>Accuracy<span class="w">     </span><span class="p">|</span><span class="w">         </span><span class="m">100</span>.0<span class="w">          </span><span class="p">|</span>
+<span class="w">    </span><span class="p">|</span><span class="w">    </span>Mean<span class="w"> </span>Class<span class="w"> </span>Accuracy<span class="w">  </span><span class="p">|</span><span class="w">         </span><span class="m">100</span>.0<span class="w">          </span><span class="p">|</span>
+<span class="w">    </span>+-------------------------+------------------------+
+<span class="w">    </span><span class="p">|</span><span class="w">    </span>Overall<span class="w"> </span>Precision<span class="w">    </span><span class="p">|</span><span class="w">         </span><span class="m">100</span>.0<span class="w">          </span><span class="p">|</span>
+<span class="w">    </span><span class="p">|</span><span class="w">    </span>Mean<span class="w"> </span>Class<span class="w"> </span>Precision<span class="w"> </span><span class="p">|</span><span class="w">         </span><span class="m">100</span>.0<span class="w">          </span><span class="p">|</span>
+<span class="w">    </span>+-------------------------+------------------------+
+<span class="w">    </span><span class="p">|</span><span class="w">    </span>Overall<span class="w"> </span>Recall<span class="w">       </span><span class="p">|</span><span class="w">         </span><span class="m">100</span>.0<span class="w">          </span><span class="p">|</span>
+<span class="w">    </span><span class="p">|</span><span class="w">    </span>Mean<span class="w"> </span>Class<span class="w"> </span>Recall<span class="w">    </span><span class="p">|</span><span class="w">         </span><span class="m">100</span>.0<span class="w">          </span><span class="p">|</span>
+<span class="w">    </span>+-------------------------+------------------------+
 </code></pre></div>
 <div class="admonition note">
 <p class="admonition-title">Sorted Predictions</p>
@@ -3035,7 +3037,7 @@ There's four prediction with this class <code>n_p = 4</code> and two ground trut
 <p>Compute the precision and recall for each class</p>
 <p>The formulas for precision and recall are as follows.</p>
 <div class="arithmatex">\[
-\text{precision} = \frac{\text{TP}}{\text{TP} + \text{FP}} 
+\text{precision} = \frac{\text{TP}}{\text{TP} + \text{FP}}
 \]</div>
 <div class="arithmatex">\[
 \text{recall} = \frac{\text{TP}}{\text{GT}_{\text{c}}}
@@ -3044,9 +3046,9 @@ There's four prediction with this class <code>n_p = 4</code> and two ground trut
 <div class="admonition note">
 <p class="admonition-title">Confidence Curves</p>
 <ul>
-<li>The <a href="#mean-precision">precision vs confidence curve</a> is based on the <abbr title="Intersection over Union">IoU</abbr> threshold 0.50 then interpolated across 1000 data points </li>
-<li>The <a href="#mean-recall">recall vs confidence curve</a> is based on the <abbr title="Intersection over Union">IoU</abbr> threshold 0.50 then interpolated across 1000 data points </li>
-<li>The <a href="#f1-score">F1 vs confidence curve</a> is based on the <abbr title="Intersection over Union">IoU</abbr> threshold 0.50 then interpolated across 1000 data points </li>
+<li>The <a href="#mean-precision">precision vs confidence curve</a> is based on the <abbr title="Intersection over Union">IoU</abbr> threshold 0.50 then interpolated across 1000 data points</li>
+<li>The <a href="#mean-recall">recall vs confidence curve</a> is based on the <abbr title="Intersection over Union">IoU</abbr> threshold 0.50 then interpolated across 1000 data points</li>
+<li>The <a href="#f1-score">F1 vs confidence curve</a> is based on the <abbr title="Intersection over Union">IoU</abbr> threshold 0.50 then interpolated across 1000 data points</li>
 </ul>
 </div>
 <ul>
@@ -3270,7 +3272,7 @@ There's four prediction with this class <code>n_p = 4</code> and two ground trut
 </li>
 <li>
 <p>Compute the average precision (AP)</p>
-<p>The average precision is computed across <abbr title="Intersection over Union">IoU</abbr> thresholds 0.50 to 0.95 in 0.05 intervals. The average precision is calculated based on the area under the precision versus recall curve.  This is an integration using the composite trapezoidal rule. </p>
+<p>The average precision is computed across <abbr title="Intersection over Union">IoU</abbr> thresholds 0.50 to 0.95 in 0.05 intervals. The average precision is calculated based on the area under the precision versus recall curve.  This is an integration using the composite trapezoidal rule.</p>
 <p><strong>Average Precision (Discrete COCO / 101-point Interpolation)</strong></p>
 <div class="arithmatex">\[ \text{AP} = \sum_{k=1}^{101} \text{precision}(r_k) \cdot \Delta r \]</div>
 <p><strong>Average Precision (AP) per Class and <abbr title="Intersection over Union">IoU</abbr> Threshold</strong></p>

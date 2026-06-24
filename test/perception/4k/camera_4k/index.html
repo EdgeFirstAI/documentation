@@ -2214,9 +2214,9 @@ sudo<span class="w"> </span>camera<span class="w"> </span>--h264-tiles<span clas
 </code></pre></div>
 <h2 id="systemd-configuration-file">SystemD Configuration file</h2>
 <p>You can add the above parameters to the camera configuration file located at <code>/etc/default/camera</code>. The following lines can be added to the configuration file:</p>
-<div class="highlight"><pre><span></span><code>H264_TILES = &quot;true&quot;
-H264_TILES_FPS = &quot;15&quot;
-TRACY = &quot;true&quot;
+<div class="highlight"><pre><span></span><code><span class="na">H264_TILES</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;true&quot;</span>
+<span class="na">H264_TILES_FPS</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;15&quot;</span>
+<span class="na">TRACY</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;true&quot;</span>
 </code></pre></div>
 <p>The parameters for <code>CAMERA_SIZE</code> and <code>H264_BITRATE</code> already exist in <code>/etc/default/camera</code>. The H264 tile topics parameter is not available at this time.</p>
 <h2 id="web-ui-configuration">Web UI Configuration</h2>

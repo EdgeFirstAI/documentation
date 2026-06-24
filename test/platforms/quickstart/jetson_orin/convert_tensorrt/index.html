@@ -1677,6 +1677,10 @@
       
         
       
+        
+      
+        
+      
     
     
     
@@ -2223,17 +2227,17 @@
 </li>
 <li>
 <p>Copy the bundle to the Jetson via <a href="https://en.wikipedia.org/wiki/Secure_copy_protocol">SCP</a>:</p>
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span>scp<span class="w"> </span>&lt;model&gt;.tensorrt.zip<span class="w"> </span>username@hostname:~/
+<div class="highlight"><pre><span></span><code>scp<span class="w"> </span>&lt;model&gt;.tensorrt.zip<span class="w"> </span>username@hostname:~/
 </code></pre></div>
 </li>
 <li>
 <p>On the Jetson, unzip the bundle into a folder:</p>
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span>unzip<span class="w"> </span>-d<span class="w"> </span>&lt;model&gt;/<span class="w"> </span>&lt;model&gt;.tensorrt.zip
+<div class="highlight"><pre><span></span><code>unzip<span class="w"> </span>-d<span class="w"> </span>&lt;model&gt;/<span class="w"> </span>&lt;model&gt;.tensorrt.zip
 </code></pre></div>
 </li>
 <li>
 <p>Enter the extracted folder:</p>
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span><span class="nb">cd</span><span class="w"> </span>&lt;model&gt;/
+<div class="highlight"><pre><span></span><code><span class="nb">cd</span><span class="w"> </span>&lt;model&gt;/
 </code></pre></div>
 <div class="admonition note">
 <p class="admonition-title">Prerequisites</p>
@@ -2265,7 +2269,7 @@
 <li>
 <p>Compile the bundle into a TensorRT engine with <code>--publish</code> to push the sealed artifact back to EdgeFirst Studio.</p>
 <p>Run the build:</p>
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span>./build.sh<span class="w"> </span>fp16<span class="w"> </span>--publish
+<div class="highlight"><pre><span></span><code>./build.sh<span class="w"> </span>fp16<span class="w"> </span>--publish
 </code></pre></div>
 <p>The script verifies <code>trtexec</code>, <code>jq</code>, and <code>python3</code> are on <code>PATH</code> (all default on JetPack 6.2), then:</p>
 <ol>
@@ -2278,7 +2282,7 @@
 </li>
 <li>
 <p>The compiled <code>&lt;model&gt;.fp16.engine</code> is now ready to deploy. The artifact is also available in the Studio session for re-download to other compatible devices. Verify the engine loads successfully with:</p>
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span>trtexec<span class="w"> </span>--loadEngine<span class="o">=</span>&lt;model&gt;.fp16.engine<span class="w"> </span>--iterations<span class="o">=</span><span class="m">100</span>
+<div class="highlight"><pre><span></span><code>trtexec<span class="w"> </span>--loadEngine<span class="o">=</span>&lt;model&gt;.fp16.engine<span class="w"> </span>--iterations<span class="o">=</span><span class="m">100</span>
 </code></pre></div>
 </li>
 </ol>

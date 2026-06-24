@@ -111,7 +111,7 @@ These instructions installs PyCuda and ONNXRuntime which does not come pre-insta
     * CUDA 12.6 `pip3 install onnxruntime-gpu --index-url https://pypi.jetson-ai-lab.io/jp6/cu126 'numpy>1.24,<2'`
 
 !!! warning "Specific NumPy Version"
-    *NumPy ≥ 1.24 is required since earlier versions causes `TypeError: 'numpy._DTypeMeta' object is not subscriptable` upon `import pycuda`
+    * NumPy ≥ 1.24 is required since earlier versions causes `TypeError: 'numpy._DTypeMeta' object is not subscriptable` upon `import pycuda`
     * NumPy < 2 is also required since certain modules in the Jetson packages is compiled with NumPy < 2
 
 ## Next Steps

@@ -40,10 +40,10 @@ Run a spell checker on the documentation using `mkdocs build -s`.
 Lint the documentation Markdown using:
 
 ```sh
-npx --yes markdownlint-cli2@0.13.0 "docs/**/*.md"
+npx --yes markdownlint-cli2 "docs/**/*.md"
 ```
 
-This checks every Markdown file under `docs/` against the rules defined in `.markdownlint.json`, catching style and formatting issues such as inconsistent list indentation, trailing whitespace, missing code-fence languages, and disallowed inline HTML. Running it keeps the docs consistent and matches the lint step enforced in CI, so fixing reported issues locally avoids surprises in the pipeline.
+This checks every Markdown file under `docs/` against the rules in `.markdownlint-cli2.yaml`, which `markdownlint-cli2` discovers automatically. It catches style and formatting issues such as missing blank lines around headings, lists, and code fences, trailing whitespace, and missing code-fence languages. CI runs the same command in the `Lint Markdown` step of `.github/workflows/publish.yml`, but that step is intentionally non-blocking (`|| true` with `continue-on-error: true`), so lint findings are reported without failing the build. Running it locally keeps the docs consistent and surfaces issues the pipeline will not block on.
 
 ## Discrete Documentations
 

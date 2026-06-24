@@ -39,7 +39,7 @@ On the landing page you can:
 ## Explore Public Datasets
 
 The **Public Datasets** button on the landing page (under *Host and access public
-datasets*) opens the {{ studio_link("Public Projects", "project") }} gallery. 
+datasets*) opens the {{ studio_link("Public Projects", "project") }} gallery.
 
 {{ figure("/getting_started/assets/workflows/public-datasets-button.jpg", "Public Datasets Button") }}
 

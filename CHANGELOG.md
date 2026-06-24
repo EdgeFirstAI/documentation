@@ -11,8 +11,8 @@ file. The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.
   table, Profiler feature ribbon, free credits tip, and "Is EdgeFirst Studio right
   for you?" section linking to the Tourist workflow.
 - **Tourist workflow** (`discrete/workflows/tourist.md`): new "Is EdgeFirst Studio
-  for you?" section with four clickable GIFs (auto-labelling, model-optimization,
-  3D perception, profiler) linking to their respective documentation sections.
+  for you?" section with four autoplaying looping videos (auto-labelling,
+  model-optimization, 3D perception, profiler).
 - **Free credits note** added to `index.md`, `getting_started/workflows/index.md`,
   and `studio/user/index.md` (\$50 sign-up credit + \$15/month recurring).
 - **Profiler feature ribbon** (`ef-feature-ribbon` CSS component) added to
@@ -29,7 +29,11 @@ file. The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.
   instead of the cloud validation path.
 - **Login page** (`getting_started/login.md`): rewrote the transition sentence to
   be more inviting; added PC/phone/camera context and a "Next →" footer link.
-- Four workflow GIF assets added under `getting_started/assets/workflows/`.
+- Four workflow video assets (MP4) added under `getting_started/assets/workflows/`.
+- **`video()` mkdocs-macro** (`macros.py`): renders an autoplaying, looping, muted
+  inline `<video>` that behaves like a GIF; resolves the `<source>` URL via
+  `get_relative_url` so it works under `use_directory_urls` and the versioned
+  (mike) deployment, where MkDocs does not rewrite raw `<source>` URLs.
 - **2D annotation guide** (`discrete/datasets/annotate_2d_dataset.md`): enhanced
   with AGTG server launch steps, timeout warning, video playback verification tip,
   and back-to-gallery navigation. New screenshot assets added.
@@ -37,8 +41,8 @@ file. The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.
   public datasets description and new "Browse Public Experiments" section.
 - **Mobile image import screenshot** (`docs/datasets/assets/capture/mobile-image-import-fields.jpg`):
   new asset for uploading images workflow documentation.
-- **AGTG tutorial GIF** (`getting_started/assets/workflows/AGTG-tutorial.gif`):
-  new animated asset demonstrating annotation workflow.
+- **AGTG tutorial video** (`getting_started/assets/workflows/AGTG-tutorial.mp4`):
+  new asset demonstrating the annotation workflow.
 - **Device compatibility note** added to `recording_on_phone.md` explaining that
   screenshots are Samsung-based and device UIs may vary across manufacturers.
 - **Tutorials & Guides hub** (`docs/index.md`): Material grid-cards section linking
@@ -88,8 +92,17 @@ file. The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.
   screenshots for improved user clarity and step-by-step guidance.
 - **Workflow documentation clarified** in `discrete/datasets/uploading_*.md` and
   workflow files for improved user guidance.
-- **GIF files tracked with Git LFS** (`.gitattributes` updated) to manage large
-  animated assets efficiently and avoid GitHub file size warnings.
+- **Workflow GIFs converted to MP4**: six animated GIFs (auto-labelling,
+  model-optimization, 3D perception, profiler, AGTG-tutorial, and
+  `perception/dev/examples` boxes2d tracking) re-encoded as H.264 MP4 via the new
+  `video()` macro, shrinking the documentation media payload from ~156 MB to
+  ~8.8 MB to keep the GitHub Pages deploy within its size/time limits.
+- **`*.mp4` and `*.gif` tracked with Git LFS** (`.gitattributes`) to manage large
+  media assets efficiently and avoid GitHub file size warnings; stale
+  individual model-file LFS rules removed.
+- **Unused model assets removed**: duplicate
+  `models/modelpack/assets/coffeecup-modelpack-multitask-t-1f54.{onnx,tflite}` and
+  unreferenced `models/ultralytics/assets/yolov8s-seg_full_integer_quant*.tflite`.
 - `models/assets/deployment/run-model-button.jpg` removed (unused asset).
 - `getting_started/assets/workflows/dataset-groups.jpg` removed (outdated asset).
 - `getting_started/workflows/index.md` free credits note dollar signs escaped to

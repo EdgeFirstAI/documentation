@@ -1071,6 +1071,106 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="Available Apps">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#edgefirst-profiler" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        EdgeFirst Profiler
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#edgefirst-validator" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        EdgeFirst Validator
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#converter-apps" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Converter Apps
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Converter Apps">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#tflite-converter" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        TFLite Converter
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#neutron-converter" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Neutron Converter
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tensorrt-converter" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        TensorRT Converter
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ara2-converter" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ara2 Converter
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#hailo-converter" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Hailo Converter
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
@@ -1604,6 +1704,106 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="Available Apps">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#edgefirst-profiler" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        EdgeFirst Profiler
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#edgefirst-validator" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        EdgeFirst Validator
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#converter-apps" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Converter Apps
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Converter Apps">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#tflite-converter" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        TFLite Converter
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#neutron-converter" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Neutron Converter
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tensorrt-converter" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        TensorRT Converter
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ara2-converter" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ara2 Converter
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#hailo-converter" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Hailo Converter
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
@@ -1641,8 +1841,9 @@
 
 
 <h1 id="studio-apps-dashboard">Studio Apps Dashboard</h1>
-<p>The Studio Apps page lists all available EdgeFirst apps that can be run directly from
-EdgeFirst Studio.  Apps extend the platform with custom processing pipelines such as data import, model training, conversion, validation, and profiling.</p>
+<p>The Studio Apps page is a catalog that lists all available EdgeFirst apps.  Apps extend
+the platform with custom processing pipelines such as data import, model training,
+conversion, validation, and profiling.</p>
 <p>To access this page, click the <strong>Apps</strong> waffle icon in the top navigation bar and select
 <strong>Apps</strong> from the menu.</p>
 <figure>
@@ -1661,56 +1862,70 @@ EdgeFirst Studio.  Apps extend the platform with custom processing pipelines suc
 <li><strong>Runs</strong> — The total number of executions recorded for this app across the organization.</li>
 <li><strong>Pricing</strong> — The per-hour compute cost, or <strong>Free</strong> if there is no charge.</li>
 </ul>
-<p>Click the <strong>Run</strong> button on an app card to launch the app.  A configuration dialog will
-appear to set the app's input parameters before execution begins.  Once started, the
-app run is tracked in the <a href="../navigation/#tasks">Tasks panel</a>.</p>
+<div class="admonition note">
+<p class="admonition-title">Apps are launched from their workflow</p>
+<p>The Apps page is a catalog only — apps are not launched from here.  Each app is
+started from the relevant point in its workflow.  For example, Converter Apps are
+launched from a completed training session's <em>Artifacts</em> tab.  Once started, the app
+run is tracked in the <a href="../navigation/#tasks">Tasks panel</a>.</p>
+</div>
 <h2 id="available-apps">Available Apps</h2>
-<p>The following apps are available by default in EdgeFirst Studio:</p>
-<table>
-<thead>
-<tr>
-<th>App</th>
-<th>Description</th>
-<th>Pricing</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><strong>Roboflow Importer</strong></td>
-<td>Import datasets from Roboflow into EdgeFirst Studio.</td>
-<td>Free</td>
-</tr>
-<tr>
-<td><strong>EdgeFirst Profiler</strong></td>
-<td>Profile model inference pipelines and produce timing traces.</td>
-<td>Free</td>
-</tr>
-<tr>
-<td><strong>EdgeFirst Validator</strong></td>
-<td>Post-process predictions and timing traces to compute COCO/LVIS accuracy metrics and timing charts, then publish results to the validation session.</td>
-<td>Free</td>
-</tr>
-<tr>
-<td><strong>TensorRT Converter</strong></td>
-<td>Convert <abbr title="Open Neural Network Exchange">ONNX</abbr> models to TensorRT <code>.engine</code> plans cross-compiled for NVIDIA Jetson.</td>
-<td>$1/hour</td>
-</tr>
-<tr>
-<td><strong><abbr title="TensorFlow Lite">TFLite</abbr> Converter</strong></td>
-<td>Convert a SavedModel to <abbr title="TensorFlow Lite">TFLite</abbr> with optional <abbr title="Signed 8-bit integer">INT8</abbr> quantization, per-channel calibration, and configurable split support.</td>
-<td>$1/hour</td>
-</tr>
-</tbody>
-</table>
+<p>EdgeFirst Studio ships with the apps described below. Each app is documented in more
+detail on its own help page, linked from its card and from the sections that follow.</p>
+<h3 id="edgefirst-profiler">EdgeFirst Profiler</h3>
+<p>The on-target measurement engine. The Profiler runs the complete vision pipeline —
+decode, preprocess, inference, postprocess, and <abbr title="Non-Maximum Suppression">NMS</abbr> — on the target hardware your model
+will deploy to, then publishes per-image predictions and a detailed timing trace back to
+EdgeFirst Studio. Studio uses those artifacts to generate the accuracy metrics, timing
+charts, and trace visualizations for the validation session. See
+<a href="../../profiler/">Profiler</a>.</p>
+<h3 id="edgefirst-validator">EdgeFirst Validator</h3>
+<p>The Studio-side companion to the Profiler. The Validator post-processes the predictions
+and timing traces produced by a profiling run to compute COCO/LVIS accuracy metrics
+(such as <abbr title="mean Average Precision">mAP</abbr> and mIoU) and timing charts, then publishes the results to the validation
+session. See <a href="../../models/validation/metrics/">Validation Metrics</a>.</p>
+<h3 id="converter-apps">Converter Apps</h3>
+<p>Converter Apps turn a completed training session's framework-native artifact (a
+TensorFlow SavedModel or an <abbr title="Open Neural Network Exchange">ONNX</abbr> graph) into a deployment-ready binary for a specific
+target, embedding the <a href="../../models/metadata/">EdgeFirst model metadata</a> so the runtime can
+decode the model's outputs with no per-target glue code. A Converter App is launched from
+a training session's <em>Artifacts</em> tab. Most converters apply the <strong>EdgeFirst Smart
+Quantizer</strong> to recover <abbr title="Signed 8-bit integer">INT8</abbr> accuracy without retraining. For the full conversion
+workflow, the Smart Quantization mechanism, per-converter behavior, and calibration, see
+<a href="../../models/conversion/">Model Conversion</a>.</p>
+<h4 id="tflite-converter"><abbr title="TensorFlow Lite">TFLite</abbr> Converter</h4>
+<p>Converts a SavedModel into a quantized <code>.tflite</code> flatbuffer for NXP i.MX 8M Plus and
+generic CPU/<abbr title="Neural Processing Unit">NPU</abbr> <abbr title="TensorFlow Lite">TFLite</abbr> delegates, applying per-scale Smart Quantization. See
+<a href="../../models/conversion/tflite/"><abbr title="TensorFlow Lite">TFLite</abbr> Conversion</a>.</p>
+<h4 id="neutron-converter">Neutron Converter</h4>
+<p>Re-encodes a <abbr title="TensorFlow Lite">TFLite</abbr> model with Neutron microcode for NXP i.MX 95 and other NXP eIQ
+Neutron silicon. See <a href="../../models/conversion/neutron/">Neutron Conversion</a>.</p>
+<h4 id="tensorrt-converter">TensorRT Converter</h4>
+<p>Bundles an <abbr title="Open Neural Network Exchange">ONNX</abbr> graph into a <code>.tensorrt.zip</code> for an on-device TensorRT engine build on
+NVIDIA Jetson (<abbr title="Half-precision 16-bit floating-point">FP16</abbr> path). See <a href="../../models/conversion/tensorrt/">TensorRT Conversion</a>.</p>
+<h4 id="ara2-converter">Ara2 Converter</h4>
+<p>Converts a model into a <code>.dvm</code> Dataflow Virtual Machine binary for the NXP Ara240 <abbr title="Discrete Neural Processing Unit">DNPU</abbr>,
+with per-scale split and optional <abbr title="Signed 16-bit integer">INT16</abbr> <abbr title="Distribution Focal Loss">DFL</abbr> promotion. See
+<a href="../../models/conversion/ara2/">Ara2 Conversion</a>.</p>
+<h4 id="hailo-converter">Hailo Converter</h4>
+<p>Compiles a model into a <code>.hef</code> Hailo Executable Format binary for Hailo-8 and Hailo-8L
+NPUs, with structurally-required per-scale Smart Quantization. See
+<a href="../../models/conversion/hailo/">Hailo Conversion</a>.</p>
 <div class="admonition info">
 <p class="admonition-title">App Marketplace</p>
-<p>The available apps may change as new apps are published.  Contact
+<p>The available apps may change as new apps are published.  Per-app pricing is shown on
+each app card and reflected in your <a href="../user/billing/">billing</a>.  Contact
 <a href="mailto:support@edgefirst.ai">support@edgefirst.ai</a> for information on publishing
 your own apps to the marketplace.</p>
 </div>
 <h2 id="next-steps">Next Steps</h2>
-<p>For details on running model conversion apps, see <a href="../../models/conversion/tflite/">Model Conversion</a>.
-For the TensorRT converter, see <a href="../../models/conversion/tensorrt/">TensorRT Conversion</a>.</p>
+<ul>
+<li><a href="../../models/conversion/">Model Conversion</a> — the conversion workflow, Smart
+  Quantization, and per-converter launch options.</li>
+<li><a href="../../profiler/">Profiler</a> — on-target profiling and validation runs.</li>
+<li><a href="../../models/validation/metrics/">Validation Metrics</a> — how accuracy and timing
+  results are computed and presented.</li>
+</ul>
 
 
 

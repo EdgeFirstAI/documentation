@@ -34,4 +34,3 @@ You can also find more examples of deploying the model across different platform
 !!! note "Additional Platforms"
 
     Certain platforms are still under development and support for platforms beyond these listed will be available soon.  [Let us know](mailto:support@edgefirst.ai) which platform you'd like to see supported next!
-    

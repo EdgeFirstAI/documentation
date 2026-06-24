@@ -8,7 +8,7 @@ This article will show how to set up a static IP address for the Jetson Orin. By
 To set a static IP address:
 
 1. [SSH](../../platforms/networking/ssh.md) into the device using the host name and username
-2. Find the connection name of the interface you want to set the static IP address to 
+2. Find the connection name of the interface you want to set the static IP address to
 
     ```shell
     $ nmcli connection show
@@ -19,25 +19,25 @@ To set a static IP address:
 
     For example, to set the ethernet port to a static IP address, the connection name is 'Wired connection 1'.
 
-3. Set the static IP address using: 
+3. Set the static IP address using:
 
     ```shell
-    $ sudo nmcli con mod '<Connection_name>' ipv4.addresses "<desired IP/mask>"
+    sudo nmcli con mod '<Connection_name>' ipv4.addresses "<desired IP/mask>"
     ```
 
-    For example: 
+    For example:
 
     ```shell
-    $ sudo nmcli con mod 'Wired connection 1' ipv4.addresses "10.10.41.108/21"
+    sudo nmcli con mod 'Wired connection 1' ipv4.addresses "10.10.41.108/21"
     ```
 
-4. Set the gateway 
+4. Set the gateway
 
     ```shell
-    $ sudo nmcli con mod 'Wired connection 1' ipv4.gateway "10.10.40.1"
+    sudo nmcli con mod 'Wired connection 1' ipv4.gateway "10.10.40.1"
     ```
 
-    You can find the gateway using 
+    You can find the gateway using
 
     ```shell
     $ ip route
@@ -50,13 +50,13 @@ To set a static IP address:
 
     The gateway is `10.10.40.1` in this case.
 
-5. Configure DNS 
+5. Configure DNS
 
     ```shell
-    $ sudo nmcli con mod 'Wired connection 1' ipv4.dns "10.10.40.3"
+    sudo nmcli con mod 'Wired connection 1' ipv4.dns "10.10.40.3"
     ```
 
-    You can find the DNS IP using 
+    You can find the DNS IP using
 
     ```shell
     $ nmcli dev show | grep DNS
@@ -69,14 +69,14 @@ To set a static IP address:
 6. Finally, set the connection type to manual. This will save the static configuration
 
     ```shell
-    $ sudo nmcli con mod 'Wired connection 1' ipv4.method "manual"
+    sudo nmcli con mod 'Wired connection 1' ipv4.method "manual"
     ```
 
-7. After running the commands above, you can visualize your entire network configuration by opening the <connection-name> file: 
+7. After running the commands above, you can visualize your entire network configuration by opening the `<connection-name>` file:
 
     ```shell
-    $ cd /etc/NetworkManager/system-connections/
-    $ sudo cat Wired\ connection\ 1
+    cd /etc/NetworkManager/system-connections/
+    sudo cat Wired\ connection\ 1
     ```
 
     Expected file output:
@@ -102,16 +102,16 @@ To set a static IP address:
 8. Reload the configuration file
 
     ```shell
-    $ sudo nmcli connection reload
+    sudo nmcli connection reload
     ```
 
-9. Reboot the unit for the IP address to update 
+9. Reboot the unit for the IP address to update
 
     ```shell
-    $ sudo reboot
+    sudo reboot
     ```
 
-10. You should now be able to ping the IP address you’ve set 
+10. You should now be able to ping the IP address you've set
 
     ```shell
     > ping 10.10.41.108
@@ -126,7 +126,7 @@ To set a static IP address:
         Minimum = 0ms, Maximum = 0ms, Average = 0ms
     ```
 
-    You can also verify the IP address set to the Ethernet connection using 
+    You can also verify the IP address set to the Ethernet connection using
 
     ```shell
     $ ip address show
@@ -141,21 +141,20 @@ To set a static IP address:
 To return to Dynamic Network Configuration (DHCP):
 Enter the following commands to remove the static IP address and return to DHCP mode.  Note the order of commands is important.  The examples assume 'Wired connection 1'.  If not using 'Wired connection 1', replace with the connection name.
 
-
-1. Set the connection type to auto 
+1. Set the connection type to auto
 
     ```shell
-    $ sudo nmcli con mod 'Wired connection 1' ipv4.method "auto"
+    sudo nmcli con mod 'Wired connection 1' ipv4.method "auto"
     ```
 
-2. Remove the gateway from the list 
+2. Remove the gateway from the list
 
     ```shell
-    $ sudo nmcli con mod 'Wired connection 1' ipv4.gateway ""
+    sudo nmcli con mod 'Wired connection 1' ipv4.gateway ""
     ```
 
-3. Remove the static IP address from the list 
+3. Remove the static IP address from the list
 
     ```shell
-    $ sudo nmcli con mod 'Wired connection 1' ipv4.addresses ""
+    sudo nmcli con mod 'Wired connection 1' ipv4.addresses ""
     ```

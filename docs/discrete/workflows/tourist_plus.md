@@ -6,7 +6,7 @@ Once logged in, navigate to the **Sample Project** from the Home Page and click 
 
 {{ figure("/studio/assets/projects/sample-datasets-button.jpg", "Sample Project Datasets") }}
 
-You will find [sample datasets](../../studio/datasets/index.md) which contains annotations of objects representing common household items from Coffee Cups to Playing Cards. These datasets are ready to be used for training models to detect these objects. 
+You will find [sample datasets](../../studio/datasets/index.md) which contains annotations of objects representing common household items from Coffee Cups to Playing Cards. These datasets are ready to be used for training models to detect these objects.
 
 Click on any dataset card to view the dataset details, browse frames, and inspect annotations.  No copying is required to explore a public dataset.
 

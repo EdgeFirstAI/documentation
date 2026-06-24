@@ -28,7 +28,7 @@ The license for specific images can be found by:
 
 2. Go to the [download][download] page and download the "2017 Train/Val annotations \[241MB\]" ZIP file.
     {{ figure("../assets/coco/coco_download_annos.png", "COCO 2017 annotations download") }}
-    
+
 3. Unzip the "instances_train2017.json" and "instances_val2017.json" into a directory.
 4. In the same directory, copy the following Python script.
 

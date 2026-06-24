@@ -418,4 +418,3 @@ flowchart LR
 7. [Hardware Persona Workflows](hardware.md)
 
     Hardware-specific workflows for users with an EdgeFirst target device.  Each platform has its own step-by-step workflow covering device setup, dataset acquisition, model training, conversion, on-target validation, and deployment.
-    

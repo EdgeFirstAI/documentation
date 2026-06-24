@@ -1,9 +1,13 @@
 {
   "default": true,
   "MD013": false,
+  "MD007": {
+    "indent": 4
+  },
   "MD024": {
     "siblings_only": true
   },
+  "MD025": false,
   "MD029": false,
   "MD033": {
     "allowed_elements": [
@@ -16,9 +20,21 @@
       "figure",
       "figcaption",
       "div",
-      "iframe"
+      "span",
+      "p",
+      "strong",
+      "em",
+      "iframe",
+      "table",
+      "thead",
+      "tbody",
+      "tr",
+      "td",
+      "th"
     ]
   },
+  "MD041": false,
+  "MD051": false,
   "MD034": false,
   "MD036": false,
   "MD046": false,

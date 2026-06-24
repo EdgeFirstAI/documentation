@@ -2,7 +2,7 @@
 
 This dataset has a total of 1399 images and single label "coffeecup".  It has two partitions; "train" and "val".  There is a total of 1119 images for the training group ("train") and 280 images for the validation group ("val").
 
-Click the image preview to view the dataset gallery.  The dataset gallery will look like the following below. 
+Click the image preview to view the dataset gallery.  The dataset gallery will look like the following below.
 
 {{ figure("/datasets/assets/management/sample-dataset-sequences.jpg", "Dataset Sequences") }}
 

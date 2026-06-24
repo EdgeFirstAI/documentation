@@ -55,4 +55,4 @@ It is also possible to compare validation metrics for multiple sessions.  See [V
 
 ## Next Steps
 
-Now that you have validated your model, you can find examples for deploying your model in [EdgeFirst Studio](../../deployment/studio.md), [PC](../../deployment/pc/index.md), [Embedded Targets](../../deployment/launcher.md), the [Maivin](../../deployment/maivin.md), and the [Raivin](../../deployment/2d_raivin.md). 
+Now that you have validated your model, you can find examples for deploying your model in [EdgeFirst Studio](../../deployment/studio.md), [PC](../../deployment/pc/index.md), [Embedded Targets](../../deployment/launcher.md), the [Maivin](../../deployment/maivin.md), and the [Raivin](../../deployment/2d_raivin.md).

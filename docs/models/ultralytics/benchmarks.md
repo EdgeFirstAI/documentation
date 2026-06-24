@@ -80,7 +80,7 @@ This page provides a summary of the benchmarks gathered for Ultralytics across v
     | ultralytics-yolov8n-640x640-rgb | 0.583   | 0.374         |  137.43   | 
 
     Visit the full **COCO People** dataset [Benchmark here](../../datasets/coco_people/index.md).
-    
+
 === "COCO 2017"
 
     !!! note

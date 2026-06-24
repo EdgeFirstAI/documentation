@@ -48,7 +48,7 @@ ZIP files.
 
 **Fields**:
 
-```
+```text
 x, y, z          # Cartesian position (meters)
 speed            # Velocity (m/s)
 power            # Signal power

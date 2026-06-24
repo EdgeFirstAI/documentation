@@ -222,7 +222,7 @@ The `timing` struct contains `Int64` nanosecond duration fields:
 
 **Example**:
 
-```
+```text
 timing: {load: 1500000, preprocess: 3200000, inference: 12500000, decode: 800000}
 # = 1.5 ms load, 3.2 ms preprocess, 12.5 ms inference, 0.8 ms decode
 ```

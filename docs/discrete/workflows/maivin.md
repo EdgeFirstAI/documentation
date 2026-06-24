@@ -25,4 +25,5 @@ Finally, [split the dataset](../../datasets/tutorials/management.md#split-datase
 {% include-markdown "discrete/models/validate_vision.md" heading-offset=0 %}
 
 # Deploy Vision Model
+
 {% include-markdown "discrete/models/deploy_on_maivin.md" heading-offset=0 %}

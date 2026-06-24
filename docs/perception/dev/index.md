@@ -25,7 +25,7 @@ The EdgeFirst Middleware examples are provided in Python and Rust (C/C++ Coming 
 
 Whether running the examples on the target running the EdgeFirst Middleware or a PC connected to one you'll need to download the [EdgeFirst Samples](https://github.com/EdgeFirstAI/samples) to follow along with this guide.  This provides sample code in Python and Rust as well as the appropriate setup scripts to install the required dependencies.
 
-```
+```bash
 git clone https://github.com/EdgeFirstAI/samples.git
 ```
 

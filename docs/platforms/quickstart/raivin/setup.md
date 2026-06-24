@@ -13,12 +13,12 @@ The Raivin box contains the following items:
 - The Raivin vision module
 - A five-meter power cable, M12 circular connector (male) to 2.1mm x5.5mm barrel adapter (female)
 - Box with power adapters
-  - Power-adapter with interchangeable plugs.  2.1mm x 5.5mm barrel adapter (male) connector.
-  - Interchangeable plugs for the following regions:
-    - NEMA 1-15P (Type A) (North America)
-    - CEE-7/16 Alternative II "Europlug" (Type C) (Europe)
-    - AS/NZS 3112, ungrounded (Type I) (Australia / Oceania)
-    - BS 1363 (Type B) (British) wall adapter
+    - Power-adapter with interchangeable plugs.  2.1mm x 5.5mm barrel adapter (male) connector.
+    - Interchangeable plugs for the following regions:
+        - NEMA 1-15P (Type A) (North America)
+        - CEE-7/16 Alternative II "Europlug" (Type C) (Europe)
+        - AS/NZS 3112, ungrounded (Type I) (Australia / Oceania)
+        - BS 1363 (Type B) (British) wall adapter
 - Desktop tripod
 
 {% include-markdown "discrete/platforms/edgefirst_device_connections.md" %}

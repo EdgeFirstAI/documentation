@@ -16,7 +16,7 @@ This section covers Quick Start guides for deploying the EdgeFirst workflow in y
     [![imx8mp](assets/imx8mpevk-no-bg.png)](quickstart/imx8mplus/index.md) | [![imx95](assets/imx95.png)](quickstart/imx95/index.md)
 
 === "NVIDIA"
-    
+
     **[NVIDIA Jetson Orin Nano](quickstart/jetson_orin/index.md)**
 
     [![orin](assets/jetsonorin.png)](quickstart/jetson_orin/index.md)
@@ -33,12 +33,12 @@ The following diagram describes the workflow you will follow depending on the ha
 %%{init: {"flowchart": {"defaultRenderer": "elk", "nodeSpacing": 60, "rankSpacing": 80}, "themeVariables": { "fontSize": "40px" }} }%%
 
 flowchart LR
-    classDef blue fill:#d0ecff80,font-weight:bold; 
-    classDef teal fill:#a2e8ed80,font-weight:bold; 
-    classDef orange fill:#ffd69980,font-weight:bold; 
-    classDef green fill:#a9e5bb80,font-weight:bold; 
-    classDef purple fill:#d6c1f580,font-weight:bold; 
-    classDef coral fill:#ffc2bb80,font-weight:bold; 
+    classDef blue fill:#d0ecff80,font-weight:bold;
+    classDef teal fill:#a2e8ed80,font-weight:bold;
+    classDef orange fill:#ffd69980,font-weight:bold;
+    classDef green fill:#a9e5bb80,font-weight:bold;
+    classDef purple fill:#d6c1f580,font-weight:bold;
+    classDef coral fill:#ffc2bb80,font-weight:bold;
     classDef all fill:#f0e6f580,font-weight:bold;
     classDef invisible fill:transparent,stroke:transparent;
 

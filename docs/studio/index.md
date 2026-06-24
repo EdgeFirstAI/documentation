@@ -21,6 +21,18 @@ Learn more about:
 !!! tip "Choose Your Tier"
     📬 Want to learn more about pricing tiers or sign up for a specific tier? [Email our support team](mailto:support@edgefirst.ai) — we're here to help!
 
+## Browser Support
+
+For the best experience, we recommend using a Chromium-based browser such as **Google
+Chrome** or **Microsoft Edge**. These browsers are fully supported and validated against
+all EdgeFirst Studio features.
+
+!!! bug "Firefox support is a work in progress"
+    Firefox is not yet fully supported. Some controls — most notably **sliders** — are
+    currently non-functional in Firefox. Until this is resolved, please use a
+    Chromium-based browser such as **Google Chrome** or **Microsoft Edge** for any
+    workflow that relies on sliders.
+
 ## Getting Started
 
 New users should start with the [Home Page](home.md) and [Navigating EdgeFirst Studio](navigation.md). These guides explain the main features and dashboards.

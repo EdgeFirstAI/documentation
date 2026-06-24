@@ -38,7 +38,7 @@ Go ahead and launch the AGTG server.  Please allow ~5mins for the server to init
 
 Once the AGTG server has started, go ahead and [annotate the starting frame](../../datasets/tutorials/annotations/automatic.md#annotate-starting-frame).  Once the starting frame has been annotated, go ahead and [propagate the annotations](../../datasets/tutorials/annotations/automatic.md#propagate) throughout the rest of the frames.
 
-{{ figure("/getting_started/assets/workflows/AGTG-tutorial.gif", "AGTG Preview") }}
+{{ video("/getting_started/assets/workflows/AGTG-tutorial.mp4", "AGTG Preview") }}
 
 {{ figure("/datasets/assets/annotations/automatic/agtg-prompts.jpg", "AGTG Initial Prompts") }}
 

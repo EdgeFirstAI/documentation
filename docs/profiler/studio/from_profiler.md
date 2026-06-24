@@ -24,7 +24,7 @@ Once signed in the screen shows the **Projects** explorer.
 
 Use `↑` / `↓` to move and `Enter` to drill down:
 
-```
+```text
 Projects  →  Experiments  →  Training Sessions  →  Artifacts
 ```
 

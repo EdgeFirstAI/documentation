@@ -55,7 +55,7 @@ edgefirst-profiler
 
 Press **F2** to open the Studio screen, then navigate to your training session:
 
-```
+```text
 Projects  →  Experiments  →  Training Sessions  →  Artifacts
 ```
 

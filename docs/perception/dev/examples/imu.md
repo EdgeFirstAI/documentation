@@ -6,7 +6,7 @@ Sample Code: [Python](https://github.com/EdgeFirstAI/samples/blob/main/python/im
 
 This example will go through how to connect to the IMU topic published on your EdgeFirst Platform and how to display the information through the Rerun visualizer.
 
-### Setting up subscriber
+## Setting up subscriber
 
 After setting up the Zenoh session, we will create a subscriber to the `rt/imu` topic
 
@@ -31,7 +31,7 @@ After setting up the Zenoh session, we will create a subscriber to the `rt/imu` 
         .unwrap();
     ```
 
-### Receive the Message
+## Receive the Message
 
 We can now receive message on the subscriber. After receiving the message, we will need to deserialize it.
 
@@ -57,7 +57,7 @@ We can now receive message on the subscriber. After receiving the message, we wi
     }
     ```
 
-### Process the IMU Data
+## Process the IMU Data
 
 We will now pull out the IMU data from the decoded Imu message and send the quaternion to Rerun.
 
@@ -86,11 +86,11 @@ We will now pull out the IMU data from the decoded Imu message and send the quat
     let _ = rec.log("box", &rerun::Transform3D::default().with_quaternion(my_quat));
     ```
 
-### Results
+## Results
 
 The command line output will appear as the following
 
-```
+```text
 X: -0.0125 Y: 0.0383 Z: 0.0698 W: 0.9968
 X: -0.0125 Y: 0.0383 Z: 0.0698 W: 0.9968
 X: -0.0125 Y: 0.0383 Z: 0.0698 W: 0.9968

@@ -1,6 +1,6 @@
 # Segmentation Metrics
 
-This section describes the validation metrics reported for [Segmentation Validation](../vision/managed.md).  The segmentation task classifies into either **instance** or **semantic** segmentation.  Instance segmentation tracks each object separately which is very similar to object detection except that the model also outputs segmentation masks.  This type of validation requires both bounding boxes and segmentation masks.  Semantic segmentation classifies each pixel in the image to a specific class.  This type of segmentation does not identify individual objects, but a group of objects that belong to the same class.  This type of validation only requires segmentation masks. 
+This section describes the validation metrics reported for [Segmentation Validation](../vision/managed.md).  The segmentation task classifies into either **instance** or **semantic** segmentation.  Instance segmentation tracks each object separately which is very similar to object detection except that the model also outputs segmentation masks.  This type of validation requires both bounding boxes and segmentation masks.  Semantic segmentation classifies each pixel in the image to a specific class.  This type of segmentation does not identify individual objects, but a group of objects that belong to the same class.  This type of validation only requires segmentation masks.
 
 ## Instance Segmentation Metrics
 
@@ -55,56 +55,56 @@ The next section will show an example on how these metrics are calculated on a s
 Consider the following 5x2 segmentation masks for the ground truth and the model prediction with classes background (BG), A, and B.
 
 <div style="display: flex; justify-content: center; gap: 40px;">
-	<div style="text-align: center;">
-		<p><strong>Ground Truth Mask</strong></p>
-		<table>
-			<tr>
-				<td>BG</td><td>A</td><td>B</td><td>B</td><td>BG</td>
-			</tr>
-			<tr>
-				<td>BG</td><td>A</td><td>B</td><td>B</td><td>B</td>
-			</tr>
-		</table>
-	</div>
-	<div style="text-align: center;">
-		<p><strong>Prediction Mask</strong></p>
-		<table>
-			<tr>
-				<td>BG</td><td>A</td><td>A</td><td>B</td><td>BG</td>
-			</tr>
-			<tr>
-				<td>BG</td><td>A</td><td>B</td><td>BG</td><td>BG</td>
-			</tr>
-		</table>
-	</div>
+    <div style="text-align: center;">
+        <p><strong>Ground Truth Mask</strong></p>
+        <table>
+            <tr>
+                <td>BG</td><td>A</td><td>B</td><td>B</td><td>BG</td>
+            </tr>
+            <tr>
+                <td>BG</td><td>A</td><td>B</td><td>B</td><td>B</td>
+            </tr>
+        </table>
+    </div>
+    <div style="text-align: center;">
+        <p><strong>Prediction Mask</strong></p>
+        <table>
+            <tr>
+                <td>BG</td><td>A</td><td>A</td><td>B</td><td>BG</td>
+            </tr>
+            <tr>
+                <td>BG</td><td>A</td><td>B</td><td>BG</td><td>BG</td>
+            </tr>
+        </table>
+    </div>
 </div>
 
 !!! note "Class Indices"
-	If these classes were represented as integer indices, the background class is placed at the last index so that:
+    If these classes were represented as integer indices, the background class is placed at the last index so that:
 
-	* 0: A
-	* 1: B
-	* 2: BG
+    * 0: A
+    * 1: B
+    * 2: BG
 
 ```shell
-	+--------------------------------------------------+
-	|           SEMANTIC SEGMENTATION METRICS          |
-	+--------------------------------------------------+
-	| Ground Truths: 7                                 |
-	| Predictions: 5                                   |
-	| Union: 7                                         |
-	+------------------------+-------------------------+
-	|    True Predictions    |    False Predictions    |
-	+------------------------+-------------------------+
-	|           4            |            3            |
-	+--------------------------------------------------+
-	| Overall Accuracy   (%) |          57.14          |
-	| Overall F1         (%) |          66.67          |
-	+------------------------+-------------------------+
-	| Mean IoU           (%) |          53.33          |
-	| Mean Precision     (%) |          83.33          |
-	| Mean Recall        (%) |           70.0          |
-	+------------------------+-------------------------+
+    +--------------------------------------------------+
+    |           SEMANTIC SEGMENTATION METRICS          |
+    +--------------------------------------------------+
+    | Ground Truths: 7                                 |
+    | Predictions: 5                                   |
+    | Union: 7                                         |
+    +------------------------+-------------------------+
+    |    True Predictions    |    False Predictions    |
+    +------------------------+-------------------------+
+    |           4            |            3            |
+    +--------------------------------------------------+
+    | Overall Accuracy   (%) |          57.14          |
+    | Overall F1         (%) |          66.67          |
+    +------------------------+-------------------------+
+    | Mean IoU           (%) |          53.33          |
+    | Mean Precision     (%) |          83.33          |
+    | Mean Recall        (%) |           70.0          |
+    +------------------------+-------------------------+
 ```
 
 We start by calculating the metrics per class which is the precision, recall, and accuracy for class A and B.  Class background is not included in the computations because it dilutes the relevant classes A and B since most of the area in the mask is typically classified as background.
@@ -114,15 +114,15 @@ We start by calculating the metrics per class which is the precision, recall, an
 The following table shows the classifications for class A where T is denoted as a true prediction, F is denoted as a false prediction, and NULL are placed on the positions that do not involve class A.
 
 <div style="text-align: center;">
-	<p><strong>Classification A</strong></p>
-	<table>
-		<tr>
-			<td>NULL</td><td>T</td><td>F</td><td>NULL</td><td>NULL</td>
-		</tr>
-		<tr>
-			<td>NULL</td><td>T</td><td>NULL</td><td>NULL</td><td>NULL</td>
-		</tr>
-	</table>
+    <p><strong>Classification A</strong></p>
+    <table>
+        <tr>
+            <td>NULL</td><td>T</td><td>F</td><td>NULL</td><td>NULL</td>
+        </tr>
+        <tr>
+            <td>NULL</td><td>T</td><td>NULL</td><td>NULL</td><td>NULL</td>
+        </tr>
+    </table>
 </div>
 
 Using the equations for precision, recall, and accuracy above, these are the metrics for class A.
@@ -137,15 +137,15 @@ Using the equations for precision, recall, and accuracy above, these are the met
 The following table shows the classifications for class B.
 
 <div style="text-align: center;">
-	<p><strong>Classification B</strong></p>
-	<table>
-		<tr>
-			<td>NULL</td><td>NULL</td><td>F</td><td>T</td><td>NULL</td>
-		</tr>
-		<tr>
-			<td>NULL</td><td>NULL</td><td>T</td><td>F</td><td>F</td>
-		</tr>
-	</table>
+    <p><strong>Classification B</strong></p>
+    <table>
+        <tr>
+            <td>NULL</td><td>NULL</td><td>F</td><td>T</td><td>NULL</td>
+        </tr>
+        <tr>
+            <td>NULL</td><td>NULL</td><td>T</td><td>F</td><td>F</td>
+        </tr>
+    </table>
 </div>
 
 These are the metrics for class B.
@@ -158,15 +158,15 @@ These are the metrics for class B.
 **Combined Metrics**
 
 <div style="text-align: center;">
-	<p><strong>Combined Classification</strong></p>
-	<table>
-		<tr>
-			<td>NULL</td><td>T</td><td>F</td><td>T</td><td>NULL</td>
-		</tr>
-		<tr>
-			<td>NULL</td><td>T</td><td>T</td><td>F</td><td>F</td>
-		</tr>
-	</table>
+    <p><strong>Combined Classification</strong></p>
+    <table>
+        <tr>
+            <td>NULL</td><td>T</td><td>F</td><td>T</td><td>NULL</td>
+        </tr>
+        <tr>
+            <td>NULL</td><td>T</td><td>T</td><td>F</td><td>F</td>
+        </tr>
+    </table>
 </div>
 
 From the combined classification, we can see that there are 4 true predictions and 3 false predictions. There is also a total of 5 predictions and 7 ground truths.  From here we can calculate the overall accuracy and F1 score.

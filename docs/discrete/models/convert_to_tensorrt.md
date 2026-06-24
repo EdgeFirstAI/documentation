@@ -23,19 +23,19 @@ Conversion has two stages: EdgeFirst Studio packages the ONNX model and supporti
 5. Copy the bundle to the Jetson via [SCP](https://en.wikipedia.org/wiki/Secure_copy_protocol):
 
     ```shell
-    $ scp <model>.tensorrt.zip username@hostname:~/
+    scp <model>.tensorrt.zip username@hostname:~/
     ```
 
 6. On the Jetson, unzip the bundle into a folder:
 
     ```shell
-    $ unzip -d <model>/ <model>.tensorrt.zip
+    unzip -d <model>/ <model>.tensorrt.zip
     ```
 
 7. Enter the extracted folder:
 
     ```shell
-    $ cd <model>/
+    cd <model>/
     ```
 
     !!! note "Prerequisites"
@@ -71,7 +71,7 @@ Conversion has two stages: EdgeFirst Studio packages the ONNX model and supporti
     Run the build:
 
     ```shell
-    $ ./build.sh fp16 --publish
+    ./build.sh fp16 --publish
     ```
 
     The script verifies `trtexec`, `jq`, and `python3` are on `PATH` (all default on JetPack 6.2), then:
@@ -86,5 +86,5 @@ Conversion has two stages: EdgeFirst Studio packages the ONNX model and supporti
 9. The compiled `<model>.fp16.engine` is now ready to deploy. The artifact is also available in the Studio session for re-download to other compatible devices. Verify the engine loads successfully with:
 
     ```shell
-    $ trtexec --loadEngine=<model>.fp16.engine --iterations=100
+    trtexec --loadEngine=<model>.fp16.engine --iterations=100
     ```

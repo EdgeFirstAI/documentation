@@ -142,7 +142,7 @@ We can now process the data. In this example we will find the maximum and minimu
 
 The command line output will appear as the following
 
-```
+```text
 Recieved 23 radar points. Values: x: [2.04, 9.48]       y: [-2.99, 4.74]        z: [-2.07, 2.09]        rcs: [-13.80, 17.60]
 Recieved 23 radar points. Values: x: [2.04, 9.47]       y: [-2.99, 4.21]        z: [-2.11, 2.09]        rcs: [-13.80, 17.60]
 Recieved 23 radar points. Values: x: [2.04, 9.47]       y: [-2.97, 4.22]        z: [-2.09, 2.07]        rcs: [-14.00, 17.60]
@@ -367,7 +367,7 @@ The RadarInfo message contains information about the radar configuration. Variou
 
 The command line output will appear as the following
 
-```
+```text
 The radar configuration is: center frequency: low   frequency sweep: ultra-short   range toggle: off   detection sensitivity: high   sending cube: true
 The radar configuration is: center frequency: low   frequency sweep: ultra-short   range toggle: off   detection sensitivity: high   sending cube: true
 The radar configuration is: center frequency: low   frequency sweep: ultra-short   range toggle: off   detection sensitivity: high   sending cube: true
@@ -471,7 +471,7 @@ The RadarCube message contains data from the RadarCube.
 
 The command line output will appear as the following
 
-```
+```text
 The radar cube has shape: [2, 200, 4, 256]
 The radar cube has shape: [2, 200, 4, 256]
 The radar cube has shape: [2, 200, 4, 256]

@@ -70,7 +70,7 @@ The following images provides visualization to this rule.  The IoU threshold is 
 
 {{ figure("../../../assets/metrics/rule_5.1_000020.png", "Playing Cards; 000020.png") }}
 
-Otherwise, if these detections, are lower than the IoU threshold, they will be regarded as localization false positives (LOC) and one false negative from the ground truth as shown below.  Here both predictions have IoUs lower than the IoU threshold which is set to 0.90. 
+Otherwise, if these detections, are lower than the IoU threshold, they will be regarded as localization false positives (LOC) and one false negative from the ground truth as shown below.  Here both predictions have IoUs lower than the IoU threshold which is set to 0.90.
 
 {{ figure("../../../assets/metrics/rule_5.1_000000000127_fp.png", "000000000127.png; IoU threshold = 0.90") }}
 

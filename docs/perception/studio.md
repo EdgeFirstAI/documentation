@@ -27,7 +27,7 @@ A summary of the core features is listed below:
 The Python package includes the command-line application and is an easy way to install the binary.
 
 ```shell
-$ pip install edgefirst-client
+pip install edgefirst-client
 ```
 
 !!! tip "Included with EdgeFirst Middleware"
@@ -36,7 +36,7 @@ $ pip install edgefirst-client
 
 Once installed you can confirm you can communicate with the EdgeFirst Studio Server with the version command.
 
-```
+```console
 $ edgefirst-client version
 EdgeFirst Studio Server: 3.7.3-f0b4eee Client: 1.3.3
 ```
@@ -57,7 +57,7 @@ This will generate an authentication token in `/home/torizon/.config/edgefirstst
 To query the token, use the following command:
 
 ```shell
-$ edgefirst-client token
+edgefirst-client token
 ```
 
 This should produce an output similar to:
@@ -136,7 +136,7 @@ Make a note of the project ID where the dataset will be stored. In this case the
 Now that we have the project ID `628` and the snapshot ID `1816`, we can restore the snapshot using the `restore-snapshot` command.
 
 ```shell
-$ edgefirst-client restore-snapshot <PROJECT_ID> <SNAPSHOT_ID> --dataset-name "Dataset Name" --dataset-description "Dataset Description"
+edgefirst-client restore-snapshot <PROJECT_ID> <SNAPSHOT_ID> --dataset-name "Dataset Name" --dataset-description "Dataset Description"
 ```
 
 For example:
@@ -173,13 +173,13 @@ The `restore-snapshot` command provides several options to customize the dataset
 For example, to create a dataset with automatic depth maps and annotations for `person` and `car` objects, run the following command:
 
 ```shell
-$ edgefirst-client restore-snapshot <PROJECT_ID> <SNAPSHOT_ID> --dataset-name "Dataset Name" --dataset-description "Dataset Description" --autodepth --autolabel "person car"
+edgefirst-client restore-snapshot <PROJECT_ID> <SNAPSHOT_ID> --dataset-name "Dataset Name" --dataset-description "Dataset Description" --autodepth --autolabel "person car"
 ```
 
 For example:
 
 ```shell
-$ edgefirst-client restore-snapshot 628 1816 --dataset-name "Upload from verdin-imx8mp-15141091 with AGTG" --dataset-description "This is a dataset generated from Raivin verdin-imx8mp-15141091 on January 31, 2025 with depth map generation and automated labelling for the class person and car." --autolabel "person car" --autodepth
+edgefirst-client restore-snapshot 628 1816 --dataset-name "Upload from verdin-imx8mp-15141091 with AGTG" --dataset-description "This is a dataset generated from Raivin verdin-imx8mp-15141091 on January 31, 2025 with depth map generation and automated labelling for the class person and car." --autolabel "person car" --autodepth
 ```
 
 The `--autolabel` parameter currently supports [COCO labels](../datasets/coco/index.md#coco-labels). We can list any class found in the COCO labels list to auto annotate these classes. In EdgeFirst Studio, we can [visualize](../datasets/tutorials/management.md#view-dataset) the results of the auto-annotations when restoring the snapshot. In this example, "person" and "car" are being shown as specified from the command above.
@@ -210,7 +210,7 @@ The EdgeFirst Studio Client provides a comprehensive set of commands for interac
 - `logout`: Removes the stored authentication token
 
   ```shell
-  $ edgefirst-client logout
+  edgefirst-client logout
   ```
 
 - `token`: Displays the current authentication token
@@ -233,7 +233,7 @@ The EdgeFirst Studio Client provides a comprehensive set of commands for interac
 - `project`: Retrieves detailed information for a specific project using its ID
 
   ```shell
-  $ edgefirst-client project 54
+  edgefirst-client project 54
   ```
 
 - `find-projects`: Searches for projects by name
@@ -255,13 +255,13 @@ The EdgeFirst Studio Client provides a comprehensive set of commands for interac
 - `dataset`: Retrieves detailed information for a specific dataset using its ID
 
   ```shell
-  $ edgefirst-client dataset 32
+  edgefirst-client dataset 32
   ```
 
 - `find-datasets`: Searches for datasets by name (optionally filtered by project)
 
   ```shell
-  $ edgefirst-client find-datasets Playingcards --project-id 54
+  edgefirst-client find-datasets Playingcards --project-id 54
   ```
 
 ### Annotation Management
@@ -314,31 +314,31 @@ A single dataset is allowed to have multiple annotations sets. That is the reaso
 - `snapshot`: Retrieves detailed information for a specific snapshot
 
   ```shell
-  $ edgefirst-client snapshot 101
+  edgefirst-client snapshot 101
   ```
 
 - `find-snapshots`: Searches for snapshots by description
 
   ```shell
-  $ edgefirst-client find-snapshots "January 2023"
+  edgefirst-client find-snapshots "January 2023"
   ```
 
 - `create-snapshot`: Creates a new snapshot from a local file or directory
 
   ```shell
-  $ edgefirst-client create-snapshot ./my_dataset
+  edgefirst-client create-snapshot ./my_dataset
   ```
 
 - `download-snapshot`: Downloads a snapshot to the local filesystem as a ZIP + Arrow file pair (see [EdgeFirst Dataset Format](../datasets/format/index.md))
 
   ```shell
-  $ edgefirst-client download-snapshot 101 --output ./snapshot_2023_01
+  edgefirst-client download-snapshot 101 --output ./snapshot_2023_01
   ```
 
 - `restore-snapshot`: Restores a snapshot to a project
 
   ```shell
-  $ edgefirst-client restore-snapshot 101 54 --name "Restored Dataset" --topics "list of topics" --autolabel "list of labels"
+  edgefirst-client restore-snapshot 101 54 --name "Restored Dataset" --topics "list of topics" --autolabel "list of labels"
   ```
 
 ### Training Management
@@ -361,7 +361,7 @@ A single dataset is allowed to have multiple annotations sets. That is the reaso
 - `download-artifact`: Downloads artifacts from a training session. Notice this command requires the `output` parameter is pointing to a file and not to a folder
 
   ```shell
-  $ edgefirst-client download-artifact 324 labels.txt --output /home/reinier/labels.txt
+  edgefirst-client download-artifact 324 labels.txt --output /home/reinier/labels.txt
   ```
 
 Each command supports various options and flags that can be viewed using the `--help` flag with any command. For example:

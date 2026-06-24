@@ -28,7 +28,7 @@ On the top navbar, switch to the annotation set you created.
 
 {{ figure("/datasets/assets/annotations/automatic/agtg-segment-tool.jpg", "Auto Segment Mode") }}
 
-Go ahead and launch the AGTG server.  Please allow ~5mins for the server to initialize. 
+Go ahead and launch the AGTG server.  Please allow ~5mins for the server to initialize.
 
 !!! warning "AGTG Server Did Not Start"
 

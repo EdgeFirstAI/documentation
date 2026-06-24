@@ -92,7 +92,7 @@ Press **F2** to switch to the Studio screen. If you are not signed in, the login
 
 Once signed in, navigate the explorer:
 
-```
+```text
 Projects  →  Experiments  →  Training Sessions  →  Artifacts
 ```
 
@@ -116,7 +116,7 @@ The F4 dashboard streams iteration-level latency, system metrics, and per-stage 
 
 When the run finishes, a completion summary shows the headline numbers and the path to the trace file. The artifacts upload to Studio automatically and the cloud validator is triggered.
 
-```
+```text
 ╔═ Profiling Complete ═════════════════════════════╗
 ║                                                  ║
 ║  Iterations: 100                                 ║

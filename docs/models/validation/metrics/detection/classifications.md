@@ -63,4 +63,4 @@ This section will show examples of each of the classifications described above. 
 
 ## Conclusion
 
-This page has described how EdgeFirst Studio classifies predictions into true positives, false positives (classification and localization), and false negatives. 
+This page has described how EdgeFirst Studio classifies predictions into true positives, false positives (classification and localization), and false negatives.

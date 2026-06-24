@@ -4,13 +4,13 @@ The camera topics are managed by the `maivin-camera` service and handles interfa
 
 - Video4Linux2 Cameras
 - i.MX 8M Plus ISP
-  - Using the VSI ISP driver
-  - Publishes camera intrinsic parameters from ISP configuration
+    - Using the VSI ISP driver
+    - Publishes camera intrinsic parameters from ISP configuration
 - Zero-Copy frame publishing using Linux [dma-buf](https://docs.kernel.org/driver-api/dma-buf.html)
 - Hardware H.264 Encoder
-  - VSI Hantro (i.MX 8M Plus)
-  - 1080 @ 60FPS
-  - 4K @ 30FPS (special extension)
+    - VSI Hantro (i.MX 8M Plus)
+    - 1080 @ 60FPS
+    - 4K @ 30FPS (special extension)
 - Software JPEG Encoder
 
 The camera topic is published under the `/camera` namespace and offers the following sub-topics.  Some topics are optional and might not be available on the current system, refer to the camera service configuration documentation for details.
@@ -78,5 +78,5 @@ The `/camera/jpeg` topic uses ROS2's [CompressedImage](../api/sensor_msgs.md#com
 **Usage** | **Link**
 :------------------:|:------------------:
 Web UI | []()
-Foxglove | [Compressed Image Example]()
+Foxglove | [Compressed Image Example](https://docs.foxglove.dev/docs/visualization/panels/image)
 SDK | [JPEG Example](../dev/examples/camera.md#jpeg-camera-feed)

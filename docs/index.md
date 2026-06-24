@@ -36,7 +36,7 @@ New to EdgeFirst Studio or looking for a specific how-to? These guides walk you 
 
 <div class="grid cards" markdown>
 
--   :material-camera: __Dataset Tutorials__
+- :material-camera: **Dataset Tutorials**
 
     ---
 
@@ -44,7 +44,7 @@ New to EdgeFirst Studio or looking for a specific how-to? These guides walk you 
 
     [:octicons-arrow-right-24: Dataset Tutorials](datasets/tutorials/index.md)
 
--   :material-shape-plus: __Annotations__
+- :material-shape-plus: **Annotations**
 
     ---
 
@@ -52,7 +52,7 @@ New to EdgeFirst Studio or looking for a specific how-to? These guides walk you 
 
     [:octicons-arrow-right-24: Dataset Annotations](datasets/tutorials/annotations/index.md)
 
--   :material-cog-play: __Model Training__
+- :material-cog-play: **Model Training**
 
     ---
 
@@ -60,7 +60,7 @@ New to EdgeFirst Studio or looking for a specific how-to? These guides walk you 
 
     [:octicons-arrow-right-24: Model Training](models/training/vision.md)
 
--   :material-speedometer: __Profiler__
+- :material-speedometer: **Profiler**
 
     ---
 
@@ -68,7 +68,7 @@ New to EdgeFirst Studio or looking for a specific how-to? These guides walk you 
 
     [:octicons-arrow-right-24: Profiler Quick Start](profiler/quickstart.md)
 
--   :material-account-group: __User Workflows__
+- :material-account-group: **User Workflows**
 
     ---
 
@@ -76,7 +76,7 @@ New to EdgeFirst Studio or looking for a specific how-to? These guides walk you 
 
     [:octicons-arrow-right-24: User Workflows](getting_started/workflows/index.md)
 
--   :material-chip: __Platform Quick Starts__
+- :material-chip: **Platform Quick Starts**
 
     ---
 

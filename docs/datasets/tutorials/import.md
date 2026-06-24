@@ -138,7 +138,7 @@ Select the "Import Type" to "Darknet Dataset".
 
 {{ figure("../assets/import/coco128-darknet-ds-dropdown.jpg", "Darknet Dataset Option") }}
 
-Specify the dataset "coco128" in your local PC to import. 
+Specify the dataset "coco128" in your local PC to import.
 
 {{ figure("../assets/import/coco128-upload-ds.jpg", "Upload COCO128 Options") }}
 

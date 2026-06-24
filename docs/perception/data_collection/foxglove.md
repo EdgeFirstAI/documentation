@@ -125,7 +125,7 @@ By default, none of the radar topics are recorded as part of an MCAP file.  The 
 5. Change the color mode to Color Map, and select Turbo for the color map.  
 
       {{ figure("../assets/foxglove_radar_msg.png", "Foxglove Radar Message") }}
- 
+
 6. Leave the value min and value max on auto.
 7. You can now see the `/radar/cube` message.  
 

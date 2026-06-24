@@ -25,6 +25,14 @@ release yet; they are listed newest first.
   conversion pages; refreshed `apps-page.png`.
 - **Browser Support section** (`studio/index.md`): recommends Chromium-based
   browsers and adds a bug admonition noting Firefox sliders are not yet operational.
+- **Markdown Lint section** (`README.md`): documents running
+  `npx --yes markdownlint-cli2@0.13.0 "docs/**/*.md"` locally, what it checks
+  (the rules in `.markdownlint.json`), and why it mirrors the CI lint step.
+- **Markdownlint configuration** (`.markdownlint.json`): tuned the rule set to the
+  project's MkDocs Material conventions — 4-space nested-list indent (`MD007`),
+  an `allowed_elements` list for the inline HTML the docs rely on (`MD033`), and
+  disabling rules that conflict by design (e.g. `MD013`, `MD025`, `MD029`,
+  `MD034`, `MD036`, `MD041`, `MD046`, `MD051`, `MD060`).
 
 #### Changed
 
@@ -38,6 +46,14 @@ release yet; they are listed newest first.
 - **Dark-mode admonition titles** (`stylesheets/extra.css`): note, tip, info, and
   warning title bars now use translucent brand-hued tints under the slate scheme
   so the near-white title text no longer washes out on the light pastel backgrounds.
+- **Markdown lint violations** across the docs tree: standardised nested lists to
+  4-space indentation, stripped trailing whitespace (including CRLF files),
+  inserted required blank lines around lists, replaced raw `<img>` tags with the
+  `figure()` macro in `models/fusion/index.md`, wrapped a bare placeholder token
+  in `discrete/platforms/orin_static_ip.md`, and filled the determinable empty
+  Foxglove example links in `perception/topics/camera.md` and
+  `perception/topics/lidar.md`. Remaining empty links are genuine placeholders
+  with no target yet, and the lint step stays non-blocking in CI.
 - **Git LFS assets in published docs** (`.github/workflows/publish.yml`): the
   deploy workflow now checks out with `lfs: true`, so LFS-tracked images and GIFs
   resolve correctly on the published site instead of rendering as pointer files.

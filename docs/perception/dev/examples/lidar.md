@@ -107,7 +107,7 @@ The PCD contains x, y, z, and reflect values. The x, y, z are float32 and repres
 
 The command line output will appear as the following
 
-```
+```text
 Recieved 24448 lidar points.
 Recieved 24448 lidar points.
 Recieved 24448 lidar points.
@@ -222,7 +222,7 @@ We will now collect all the clustered points, which are all the points with `clu
 
 The command line output will appear as the following
 
-```
+```text
 Recieved 24448 lidar points. 12193 are clustered
 Recieved 24448 lidar points. 12219 are clustered
 Recieved 24448 lidar points. 12237 are clustered
@@ -352,7 +352,7 @@ to divide by 256.
 
 The command line output will appear as the following
 
-```
+```text
 Recieved 382x64 depth image.
 Recieved 382x64 depth image.
 Recieved 382x64 depth image.
@@ -468,7 +468,7 @@ We can now process the data. In this example we will find the maximum and minimu
 
 The command line output will appear as the following
 
-```
+```text
 Recieved 382x64 reflect image. reflect: [0, 175]
 Recieved 382x64 reflect image. reflect: [0, 166]
 Recieved 382x64 reflect image. reflect: [0, 181]

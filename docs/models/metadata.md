@@ -546,7 +546,7 @@ Per-type semantic fields are scoped to their output type:
 
 The HAL uses the two-layer `outputs[]` structure to decode any converter's decomposition.
 
-```
+```text
 For each logical output in outputs[]:
   if output has "outputs" children:
     # Converter split this logical output
@@ -596,7 +596,7 @@ The fallback always works for any decomposition:
 
 Quantized models store integer values instead of floats. Each output tensor includes parameters to convert back to floating-point using the dequantization formula:
 
-```
+```text
 real_value = scale * (quantized_value - zero_point)
 ```
 
@@ -1040,7 +1040,7 @@ Split hints encode model-specific knowledge about where natural quantization bou
 
 Split hints are **input metadata only**. They live in the uncompiled (ONNX / SavedModel) `edgefirst.json` and are consumed by the converter. The compiled (converted) model **replaces** `split_hints` with the compiled `outputs[]` array — the two-layer logical/physical structure is the authoritative description of the compiled model.
 
-```
+```text
 ┌──────────────────────┐     ┌──────────────────────┐     ┌──────────────────┐
 │  Training Framework  │     │      Converter        │     │       HAL        │
 │                      │     │                       │     │                  │

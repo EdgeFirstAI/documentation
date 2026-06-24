@@ -71,7 +71,7 @@ There are four BEV heatmaps generated during validation.  The heatmaps are a rep
 
 {{ figure("../../assets/metrics/tp-heatmap.jpg", "True Positive Heatmap") }}
 
-The measurement is based on each cell.  For each cell, what % of the sum of true positives, false positives, and false negatives were true positives.  In other words, this metric indicates how many predictions were correct in this position.  The equation for this heatmap is the following. 
+The measurement is based on each cell.  For each cell, what % of the sum of true positives, false positives, and false negatives were true positives.  In other words, this metric indicates how many predictions were correct in this position.  The equation for this heatmap is the following.
 
 $$
 \text{cell outcome} = \frac{\text{true positives}}{\text{true positives} + \text{false positives} + \text{false negatives}}

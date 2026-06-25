@@ -507,9 +507,9 @@ edgefirst-client update-dimensions ds-12345
 - This is a **one-time repair operation**. After it completes, the dataset's sample width/height columns are populated server-side and subsequent calls will report `Updated dimensions for 0 samples`.
 - The operation downloads each image in serial, so runtime scales linearly with the number of samples missing dimensions and the size of those images. For very large datasets, run the command from a host with good bandwidth to the EdgeFirst Studio object store.
 - Equivalent programmatic APIs:
-  - **Rust:** `Client::backfill_sample_dimensions(dataset_id, progress)` (and `Client::update_sample_dimensions` for already-known dimensions).
-  - **Python:** `client.backfill_sample_dimensions(dataset_id, progress=cb)`.
-  - **Swift/Kotlin (UniFFI):** `client.backfillSampleDimensions(datasetId)` — blocking, **no progress callback** in the FFI layer; for progress reporting on mobile, call the underlying `samples.update_dimensions` RPC directly or use the Python/Rust API on the server side.
+    - **Rust:** `Client::backfill_sample_dimensions(dataset_id, progress)` (and `Client::update_sample_dimensions` for already-known dimensions).
+    - **Python:** `client.backfill_sample_dimensions(dataset_id, progress=cb)`.
+    - **Swift/Kotlin (UniFFI):** `client.backfillSampleDimensions(datasetId)` — blocking, **no progress callback** in the FFI layer; for progress reporting on mobile, call the underlying `samples.update_dimensions` RPC directly or use the Python/Rust API on the server side.
 
 ## Snapshots
 

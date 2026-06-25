@@ -262,6 +262,8 @@ nav:
         - platforms/quickstart/jetson_orin/deploy.md
         - Configuration:
           - platforms/quickstart/jetson_orin/configuration/power_modes.md
+          - platforms/quickstart/jetson_orin/configuration/static_ip.md
+          - platforms/quickstart/jetson_orin/configuration/wifi_ap.md
       - Raspberry Pi Quick Start:
         - platforms/quickstart/raspberrypi/index.md
         - platforms/quickstart/raspberrypi/setup.md

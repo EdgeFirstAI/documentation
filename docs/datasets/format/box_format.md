@@ -47,7 +47,7 @@ This preserves backward compatibility with files written before metadata was int
 
 ### Conversion Between Formats
 
-```
+```text
 cxcywh → ltwh:  left = cx - w/2,  top = cy - h/2
 ltwh → cxcywh:  cx = left + w/2,  cy = top + h/2
 
@@ -86,7 +86,7 @@ graph TB
 
 ### Example (1920 x 1080 image)
 
-```
+```text
 JSON (ltwh):      {x: 0.683854, y: 0.342593, w: 0.015104, h: 0.050926}
 Arrow (cxcywh):   [0.691406, 0.368056, 0.015104, 0.050926]
 

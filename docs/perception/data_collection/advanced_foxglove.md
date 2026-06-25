@@ -35,34 +35,34 @@ To Create a 3D view for the Fusion Class:
 
 1. From a panel in Foxglove, click the "More" kebab icon and change the panel to a "3D" panel.  
 
-	{{ figure("../assets/adv_foxglove-change_panel.png", "Change to 3D") }}
+    {{ figure("../assets/adv_foxglove-change_panel.png", "Change to 3D") }}
 
 2. Click the "Settings" gear icon for the panel to open up the Settings Panel.  
 
-	{{ figure("../assets/adv_foxglove-settings_panel.png", "Settings Panel") }}
+    {{ figure("../assets/adv_foxglove-settings_panel.png", "Settings Panel") }}
 
 3. Change the title from 3D to "Vision Class".
 
 4. In the "Topics" side-panel, click the "visibility" closed-eye icon on the "/fusion/targets" to view the topic.  
 
-	{{ figure("../assets/adv_foxglove-visible.png", "Visible Topic") }}
+    {{ figure("../assets/adv_foxglove-visible.png", "Visible Topic") }}
 
 5. Expand the "/fusion/topics" settings and configure the following settings:
 
-	1. Point Size to "10"
-	2. Color mode to "Gradient"
-	3. Color by to "vision_class"
-	4. Set Gradient values to "000000ff" (black) and "00ff15ff" (green)
-	5. Set Value min to "0" and "max to "1"  
+    1. Point Size to "10"
+    2. Color mode to "Gradient"
+    3. Color by to "vision_class"
+    4. Set Gradient values to "000000ff" (black) and "00ff15ff" (green)
+    5. Set Value min to "0" and "max to "1"  
 
-	{{ figure("../assets/adv_foxglove-fusion_class.png", "Fusion Settings") }}
+    {{ figure("../assets/adv_foxglove-fusion_class.png", "Fusion Settings") }}
 
 6. Expand the "Custom Layer" side-panel, and then the "Grid" settings and configure the following settings.
 
-	1. Set Size and Divisions to "12"
-	2. Set the "Position X" setting to "6"  
+    1. Set Size and Divisions to "12"
+    2. Set the "Position X" setting to "6"  
 
-	{{ figure("../assets/adv_foxglove-grid.png", "Grid Settings") }}
+    {{ figure("../assets/adv_foxglove-grid.png", "Grid Settings") }}
 
 Once all that is finished, you should have a panel that looks as the left panel as follows - camera panel also shown for comparison.  
 
@@ -74,14 +74,14 @@ The steps above can be followed for the Vision Class as well, but please note - 
 
 1. On the "More" kebab icon of the fusion class, split the panel (in this case, down)
 
-	{{ figure("../assets/adv_foxglove-splitdown.png", "Split Down") }}
+    {{ figure("../assets/adv_foxglove-splitdown.png", "Split Down") }}
 
 2. In the bottom Fusion Class panel, make the following changes:
 
-	1. Change the "Title" to "Vision Class"
-	2. In the "/fusion/targets" settings, change "Color by" to "vision_class" and the right gradient to "ff8300ff" (orange)
+    1. Change the "Title" to "Vision Class"
+    2. In the "/fusion/targets" settings, change "Color by" to "vision_class" and the right gradient to "ff8300ff" (orange)
 
-	{{ figure("../assets/adv_foxglove-vision_class.png", "Vision Class") }}
+    {{ figure("../assets/adv_foxglove-vision_class.png", "Vision Class") }}
 
 The new panels should looks as below.
 
@@ -117,24 +117,24 @@ export const inputs = ["/fusion/targets"];
 export const output = "/studio_script/output_topic";
 
 export default function script(event: Input<"/fusion/targets">): {
-	Person: Array<string>;
+    Person: Array<string>;
 } {
-	let targets = event.message.width;
-	let d: Uint8Array = new Uint8Array(event.message.data);
-	let p_step = event.message.point_step;
-	let out_array: Array<string> = [];
+    let targets = event.message.width;
+    let d: Uint8Array = new Uint8Array(event.message.data);
+    let p_step = event.message.point_step;
+    let out_array: Array<string> = [];
 
-	for (let ii = 0; ii < targets; ii++) {
-		let f32r = new Float32Reader(ii * p_step);
-		let fusion = f32r.read(d, 28);
-		let vision = f32r.read(d, 32);
+    for (let ii = 0; ii < targets; ii++) {
+        let f32r = new Float32Reader(ii * p_step);
+        let fusion = f32r.read(d, 28);
+        let vision = f32r.read(d, 32);
 
-		if (fusion + vision > 0) {
-			let temp = `Fusion: ${fusion} Vision: ${vision}`;
-			out_array.push(temp);
-		}
-	}
-	return { Person: out_array };
+        if (fusion + vision > 0) {
+            let temp = `Fusion: ${fusion} Vision: ${vision}`;
+            out_array.push(temp);
+        }
+    }
+    return { Person: out_array };
 }
 ```
 
@@ -155,14 +155,14 @@ If it exists, we should be able to load the topic in a Raw Messages Panel as we 
 Using this script as a base to expand functionality should be quite easy.  For example, let's not just output the Fusion and Vision class values for each target person; let's also include Cluster ID and X,Y,Z distances.  We can do this by replacing the inside of the if statement with the following code.
 
 ```TypeScript
-		if (fusion + vision > 0) {
-			let x = Math.round(f32r.read(d, 0) * 100) / 100;
-			let y = Math.round(f32r.read(d, 4) * 100) / 100;
-			let z = Math.round(f32r.read(d, 8) * 100) / 100;
-			let id = f32r.read(d, 24);
+        if (fusion + vision > 0) {
+            let x = Math.round(f32r.read(d, 0) * 100) / 100;
+            let y = Math.round(f32r.read(d, 4) * 100) / 100;
+            let z = Math.round(f32r.read(d, 8) * 100) / 100;
+            let id = f32r.read(d, 24);
 
-			out_array.push(`tar: ${id} (${x}, ${y}, ${z}) F: ${fusion} V: ${vision}`);
-		}
+            out_array.push(`tar: ${id} (${x}, ${y}, ${z}) F: ${fusion} V: ${vision}`);
+        }
 ```
 
 {{ figure("../assets/adv_foxglove-script_final.png", "Final Script") }}

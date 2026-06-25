@@ -74,7 +74,7 @@ sudo camera \
 
 You can add the above parameters to the camera configuration file located at `/etc/default/camera`. The following lines can be added to the configuration file:
 
-```
+```ini
 H264_TILES = "true"
 H264_TILES_FPS = "15"
 TRACY = "true"

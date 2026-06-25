@@ -14,6 +14,6 @@ You will be greeted to the "Validate Sessions" page as shown below.
 
 {{ figure("/models/assets/validation/validation-sessions-page.jpg", "Validate Sessions Page") }}
 
-Start a validation session by clicking on the "Actions" button on the top right corner of the page and then click "+ New" as indicated. 
+Start a validation session by clicking on the "Actions" button on the top right corner of the page and then click "+ New" as indicated.
 
 {{ figure("/models/assets/validation/new-session-button.jpg", "New Session Button") }}

@@ -171,13 +171,13 @@ This script is required to run on the target as it will use the DMA Buffer topic
 1. Disable the current model service with the following command:
 
     ```shell
-    $ sudo systemctl stop model
+    sudo systemctl stop model
     ```
 
 2. You can then run the script using the following invocation:
 
     ```shell
-    $ sudo -E python3 boxes2d_publisher.py --model model.tflite --threshold 0.5 --shape 300,300
+    sudo -E python3 boxes2d_publisher.py --model model.tflite --threshold 0.5 --shape 300,300
     ```
 
     * the `--model` argument will be the path to the SSD model to be used to perform inference on the model and return boxes.  
@@ -189,5 +189,5 @@ This script is required to run on the target as it will use the DMA Buffer topic
 Once you disable the server, you should restart the model service with the following command.
 
 ```shell
-$ sudo systemctl restart model
+sudo systemctl restart model
 ```

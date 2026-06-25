@@ -105,7 +105,7 @@ When restoring a snapshot a pipeline with the following stages are deployed.
 
 This downloads the snapshot as a **ZIP + Arrow file pair** to your local machine:
 
-```
+```text
 my_snapshot.zip       # Sensor data (images, point clouds)
 my_snapshot.arrow     # Annotations (labels, boxes, masks)
 ```

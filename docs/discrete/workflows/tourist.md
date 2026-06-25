@@ -2,10 +2,10 @@
 
 <div class="grid" markdown="1">
 
-{{ figure("/getting_started/assets/workflows/auto-labelling.gif", "Auto-Labelling — AI-generated bounding boxes and segmentation masks") }}
-{{ figure("/getting_started/assets/workflows/model-optimization.gif", "Model Optimization — train, compare, and benchmark vision models") }}
-{{ figure("/getting_started/assets/workflows/3d_perception.gif", "3D Perception — LiDAR, RADAR, and depth sensor workflows") }}
-{{ figure("/getting_started/assets/workflows/profiler.gif", "EdgeFirst Profiler — on-target benchmarking with latency and accuracy metrics") }}
+{{ video("/getting_started/assets/workflows/auto-labelling.mp4", "Auto-Labelling — AI-generated bounding boxes and segmentation masks") }}
+{{ video("/getting_started/assets/workflows/model-optimization.mp4", "Model Optimization — train, compare, and benchmark vision models") }}
+{{ video("/getting_started/assets/workflows/3d_perception.mp4", "3D Perception — LiDAR, RADAR, and depth sensor workflows") }}
+{{ video("/getting_started/assets/workflows/profiler.mp4", "EdgeFirst Profiler — on-target benchmarking with latency and accuracy metrics") }}
 
 </div>
 
@@ -35,6 +35,41 @@ On the landing page you can:
 - Learn about the EdgeFirst Perception ecosystem and supported target hardware
 
 {{ figure("/getting_started/assets/studio_landing_page.jpg", "EdgeFirst Studio Landing Page") }}
+
+## Explore Public Datasets
+
+The **Public Datasets** button on the landing page (under *Host and access public
+datasets*) opens the {{ studio_link("Public Projects", "project") }} gallery.
+
+{{ figure("/getting_started/assets/workflows/public-datasets-button.jpg", "Public Datasets Button") }}
+
+This is the
+quickest way to see how a complete EdgeFirst Studio project is put together — still with
+no account or sign-up required.
+
+Public projects are organized into **Trending Projects** and **Most Recent Projects** so
+you can quickly find popular and newly published examples. Each project is a fully
+worked example that bundles everything together in one place:
+
+- **Datasets** — annotated images organized into annotation sets, ready to explore in the
+  dataset viewer.
+- **Trained models** — experiments with deployment-ready artifacts.
+- **Validation results** — accuracy and timing metrics so you can see how each model
+  performs before doing any work of your own.
+
+Projects you will find here include:
+
+| Public Project | What it demonstrates |
+| --- | --- |
+| **Sample Projects** | A curated set of EdgeFirst sample datasets with trained models ready for deployment and full validation results — the best starting point for a guided tour. |
+| **COCO Detection** | A YOLO object-detection workflow trained and validated on the COCO 2017 dataset across 80 common categories (people, vehicles, animals, and everyday items). |
+| **COCO Instance Segmentation** | A YOLO instance-segmentation workflow on COCO 2017 that adds pixel-level masks delineating each object instance. |
+
+!!! tip "Read-only, but yours to build on"
+    Public datasets and projects are **read-only** so the published examples stay intact.
+    When you find one you want to work with, copy it into one of your own projects to
+    modify the annotations, re-train the models, and run your own experiments — see the
+    [Copy a Dataset](../../getting_started/copy_dataset.md) guide.
 
 ## Platform Features
 

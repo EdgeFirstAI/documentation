@@ -23,7 +23,7 @@ so much). Producing that sample naively is wasteful and fragile:
   work that only depends on the *dataset*, not the model or the target.
 - **Preprocessing is the model's secret.** Calibration inputs must be
   preprocessed exactly as the model expects — the same letterbox geometry, the
-  same channel layout, the same [CameraAdaptor](../cameraadaptor.md) colour
+  same channel layout, the same [CameraAdaptor](../cameraadaptor.md) color
   conversion used in training. A model-agnostic converter does not — and should
   not — know those details.
 - **Divergent assumptions drift.** When each producer and consumer bakes its
@@ -74,7 +74,7 @@ flowchart LR
 
 !!! note
     A calibration snapshot is fully determined by **dataset-source
-    parameters** — the dataset, split, input geometry, colour convention, and
+    parameters** — the dataset, split, input geometry, color convention, and
     selection policy. **No model and no model inference is involved in
     producing it.** This is what lets one snapshot serve every model and every
     target that share a data-preparation pattern.
@@ -147,11 +147,11 @@ many converters.
 
 - **Letterbox resize.** The source image is scaled so its long side matches the
   model input (preserving aspect ratio, upscaling small images), then
-  centre-padded to the square input with a constant grey value (114). This is a
+  center-padded to the square input with a constant gray value (114). This is a
   required, model-defining step that is already performed identically during
   training, so the snapshot captures its exact result.
-- **Channel layout and CameraAdaptor.** The colour conversion (RGB, BGR, YUYV,
-  grey, …) and channel layout the model was trained with are applied, so the
+- **Channel layout and CameraAdaptor.** The color conversion (RGB, BGR, YUYV,
+  gray, …) and channel layout the model was trained with are applied, so the
   stored tensor is byte-identical to what the model sees at inference.
 
 **Recorded, not applied — the numeric normalization converters differ on:**
@@ -159,7 +159,7 @@ many converters.
 - The scale, mean, and standard deviation the model expects (e.g. scale
   `1/255` to map `[0, 255] → [0, 1]`) are stored in metadata. Each converter
   applies them on load in the form its quantizer expects — a signed-INT8 target
-  centres the range, a DFC-based target keeps `[0, 255]`, a TFLite per-input
+  centers the range, a DFC-based target keeps `[0, 255]`, a TFLite per-input
   pipeline applies its own — without the lossy `[0,1] → [0,255]` round-trips
   that plagued ad-hoc snapshots.
 
@@ -190,13 +190,13 @@ The parameter set covers every input that affects the produced bytes:
   "annotation_set_id": "as-1a3f",     // or null
   "split": "train",                   // calibration pools from the TRAINING split
   "input_shape": [640, 640],          // [H, W]
-  "channels": 3,                      // post colour-conversion channel count
+  "channels": 3,                      // post color-conversion channel count
   "layout": "NCHW",
   "dtype": "uint8",
   "resize": "letterbox",
   "letterbox": {                      // the exact recipe: long-side resize
     "pad_color": [114, 114, 114],     // (ceil rounding, linear interp),
-    "scale": "long_side",             // then centre-pad the short side
+    "scale": "long_side",             // then center-pad the short side
     "round": "ceil",
     "center": true,
     "interpolation": "linear"
@@ -219,7 +219,7 @@ Two properties follow from hashing the parameters rather than the content:
   the algorithm bumps the tag, which changes the hash and the filename — the
   only safe way to roll out an improved selector, since it cannot silently
   shadow snapshots produced by the old one.
-- **Cross-model reuse.** Two models with the same dataset, geometry, colour
+- **Cross-model reuse.** Two models with the same dataset, geometry, color
   convention, count, and seed resolve to the same filename, so the snapshot is
   generated once and reused.
 
@@ -324,7 +324,7 @@ A Converter App that calibrates from a snapshot must:
    `value_range`, `layout`, and `normalization` from `__metadata__`. Fail loudly
    if a required key is missing.
 2. **Apply the recorded normalization** to the uint8 samples in the form your
-   quantizer expects (signed/centred, `[0, 255]`, or per-input float), and
+   quantizer expects (signed/centered, `[0, 255]`, or per-input float), and
    transpose `NCHW → NHWC` if your runtime needs it.
 3. **Verify integrity.** Check `content_sha256` over the sample bytes on load.
 4. **Record traceability.** Write the snapshot filename into your converter

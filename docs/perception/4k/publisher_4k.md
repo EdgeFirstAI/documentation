@@ -19,7 +19,7 @@ Each topic must contain H.264 encoded video data.
 
 ### 2. Tile Processing Pipeline
 
-```
+```text
 MCAP File → H.264 Decode → Tile Stitching → 4K JPEG → ZIP Export
 ```
 
@@ -69,7 +69,7 @@ The system automatically detects tile topics and switches to stitching mode - no
 
 When tile stitching is active, you'll see logs like:
 
-```
+```text
 [INFO] Successfully created 198 stitched 4K frames
 [INFO] Using stitched frame 0 for sample 0 (timestamp: 4037102265000)
 [INFO] Using stitched frame 1 for sample 1 (timestamp: 4037140961000)

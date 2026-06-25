@@ -11,11 +11,11 @@ OSTree is a tool that provides a way to manage the filesystem of a Linux system 
 The Torizon for Maivin OSTree repository uses branches to manage the different versions of the software.  Three core branches are used:
 
 - **torizon/maivin/release**
-  - The release branch is the stable branch that is used for production systems.  This branch tracks the latest YEAR.MONTH.PATCH release.
+    - The release branch is the stable branch that is used for production systems.  This branch tracks the latest YEAR.MONTH.PATCH release.
 - **torizon/maivin/testing**
-  - The testing branch is used for testing new software releases.  This branch tracks the latest YEAR.MONTH.PATCHrcX release candidates.
+    - The testing branch is used for testing new software releases.  This branch tracks the latest YEAR.MONTH.PATCHrcX release candidates.
 - **torizon/maivin/develop**
-  - The develop branch is used for development of new features.  This branch is updated frequently and is likely to contain breaking or undocumented changes.  This branch should only be used by developers working on the platform.
+    - The develop branch is used for development of new features.  This branch is updated frequently and is likely to contain breaking or undocumented changes.  This branch should only be used by developers working on the platform.
 
 !!! note
 

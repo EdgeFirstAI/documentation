@@ -68,7 +68,7 @@ This is useful when you want to:
 To clone a session, click "clone training session" button on the training card.  A dialog will appear pre-filled with the source session's configuration.  Adjust the name and description as needed, then confirm.
 
 !!! note
-    Cloning is equivalent to creating a new session with **Use Default Weights** disabled and **Enable Training** disabled.  See [Enable Training and Use Default Weights](../models/training/vision.md#enable-training-and-use-default-weights) for the full behaviour matrix.
+    Cloning is equivalent to creating a new session with **Use Default Weights** disabled and **Enable Training** disabled.  See [Enable Training and Use Default Weights](../models/training/vision.md#enable-training-and-use-default-weights) for the full behavior matrix.
 
 ## Validation Sessions
 

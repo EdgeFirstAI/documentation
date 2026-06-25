@@ -41,8 +41,8 @@ To change the label of a single annotation follow these steps inside the dataset
 
 #### Edit Bounding Box Label
 
-1. Switch to label mode in the 2D editing panel 
-2. Select the desired label in the left panel 
+1. Switch to label mode in the 2D editing panel
+2. Select the desired label in the left panel
 3. Click on the object to change its label
 
 {{ figure("../../assets/annotations/change-annotation-label.jpg", "Change Box Annotation Label") }}

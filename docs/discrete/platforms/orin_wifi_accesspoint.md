@@ -38,8 +38,8 @@ This article will show how to setup the Jetson Orin Nano with a Wi-Fi Access Poi
 3. Install required packages
 
     ```shell
-    $ sudo apt update
-    $ sudo apt install -y hostapd dnsmasq iptables-persistent
+    sudo apt update
+    sudo apt install -y hostapd dnsmasq iptables-persistent
     ```
 
 4. Prevent NetworkManager from controlling Wi-Fi AP interface.  Create a NetworkManager override so wlP1p1s0 (specific to your system) is unmanaged
@@ -54,7 +54,7 @@ This article will show how to setup the Jetson Orin Nano with a Wi-Fi Access Poi
 5. Restart NetworkManager
 
     ```shell
-    $ sudo systemctl restart NetworkManager
+    sudo systemctl restart NetworkManager
     ```
 
 6. Assign static IP to Wi-Fi interface at boot.  Create a small systemd unit
@@ -150,7 +150,7 @@ This article will show how to setup the Jetson Orin Nano with a Wi-Fi Access Poi
     sudo systemctl restart dnsmasq
     ```
 
-14. Verify the static IP address 
+14. Verify the static IP address
 
     ```shell
     $ ip addr show wlP1p1s0
@@ -184,7 +184,7 @@ This article will show how to setup the Jetson Orin Nano with a Wi-Fi Access Poi
     See "systemctl status hostapd.service" and "journalctl -xeu hostapd.service" for details.
     ```
 
-    Check the service status 
+    Check the service status
 
     ```shell
     $ sudo journalctl -u hostapd -n 80 --no-pager

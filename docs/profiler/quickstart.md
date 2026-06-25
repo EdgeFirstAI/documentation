@@ -92,13 +92,13 @@ Press **F2** to switch to the Studio screen. If you are not signed in, the login
 
 Once signed in, navigate the explorer:
 
-```
+```text
 Projects  →  Experiments  →  Training Sessions  →  Artifacts
 ```
 
 {{ figure("assets/tui-studio-explorer.png", "F2 Studio — explorer drilling into a training session") }}
 
-Each artifact is prefixed with a coloured dot indicating whether it can be deployed on the current host:
+Each artifact is prefixed with a colored dot indicating whether it can be deployed on the current host:
 
 | Indicator | Status | Meaning | Example artifacts |
 |-----------|--------|---------|-------------------|
@@ -116,7 +116,7 @@ The F4 dashboard streams iteration-level latency, system metrics, and per-stage 
 
 When the run finishes, a completion summary shows the headline numbers and the path to the trace file. The artifacts upload to Studio automatically and the cloud validator is triggered.
 
-```
+```text
 ╔═ Profiling Complete ═════════════════════════════╗
 ║                                                  ║
 ║  Iterations: 100                                 ║

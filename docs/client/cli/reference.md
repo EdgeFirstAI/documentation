@@ -4,7 +4,7 @@ Complete command reference for `edgefirst-client`. For getting started, see the 
 
 edgefirst-client - Command-line interface for EdgeFirst Studio MLOps platform
 
-**Synopsis:** `edgefirst-client` [*OPTIONS*] *COMMAND*
+**Synopsis:** `edgefirst-client` \[*OPTIONS*\] *COMMAND*
 `edgefirst-client` is a command-line tool for interacting with EdgeFirst Studio, an MLOps platform for 3D/4D spatial perception AI. It provides comprehensive dataset management, training workflow orchestration, and artifact handling capabilities.
 
 Install the CLI and Python API together with:
@@ -115,7 +115,7 @@ Displays organization name, ID, and other metadata.
 
 List all projects available to the authenticated user.
 
-**edgefirst-client projects** [`--name` *NAME*]
+**edgefirst-client projects** \[`--name` *NAME*\]
 
 **Options:**
 
@@ -139,7 +139,7 @@ Retrieve detailed information for a specific project.
 
 List all datasets available to the authenticated user. If a project ID is provided, only datasets for that project are listed.
 
-**edgefirst-client datasets** [*OPTIONS*] [*PROJECT_ID*]
+**edgefirst-client datasets** \[*OPTIONS*\] \[*PROJECT_ID*\]
 
 **Arguments:**
 
@@ -161,7 +161,7 @@ List all datasets available to the authenticated user. If a project ID is provid
 
 Retrieve detailed information for a specific dataset.
 
-**edgefirst-client dataset** [*OPTIONS*] *DATASET_ID*
+**edgefirst-client dataset** \[*OPTIONS*\] *DATASET_ID*
 
 **Arguments:**
 
@@ -271,7 +271,7 @@ Delete an annotation set by marking it as deleted.
 
 Download a dataset to the local filesystem from the EdgeFirst Studio server.
 
-**edgefirst-client download-dataset** [*OPTIONS*] [*DATASET_ID*]
+**edgefirst-client download-dataset** \[*OPTIONS*\] \[*DATASET_ID*\]
 
 **Arguments:**
 
@@ -311,7 +311,7 @@ edgefirst-client download-dataset 12345 \
 ## Download multiple types with group filtering
 
 edgefirst-client download-dataset 12345 \
-    --types image,lidar --groups train,validation \
+    --types image,lidar.pcd --groups train,validation \
     --output /data/datasets/
 
 ## Download with flattened directory structure
@@ -357,7 +357,7 @@ output/
 
 Download dataset annotations to a local file. This command accompanies **download-dataset** and is used to download the annotations rather than the dataset file samples (images, radar, lidar, etc.).
 
-**edgefirst-client download-annotations** [*OPTIONS*] *ANNOTATION_SET_ID* *OUTPUT*
+**edgefirst-client download-annotations** \[*OPTIONS*\] *ANNOTATION_SET_ID* *OUTPUT*
 
 **Arguments:**
 
@@ -397,7 +397,7 @@ edgefirst-client download-annotations 54321 annotations.arrow \
 edgefirst-client download-annotations <as-id> coffee_cup.arrow --groups val
 ```
 
-For Arrow format documentation, see: ../../datasets/format/index.md
+For Arrow format documentation, see the [EdgeFirst Dataset Format](../../datasets/format/index.md).
 
 Python: load with `polars.read_ipc()` or `client.samples_dataframe()` — see [Tutorial 4](../tutorials/04_polars_dataframe.md).
 
@@ -405,7 +405,7 @@ Python: load with `polars.read_ipc()` or `client.samples_dataframe()` — see [T
 
 Upload samples to a dataset from images and/or Arrow annotations file. Supports flexible workflows: images-only, annotations-only, or both.
 
-**edgefirst-client upload-dataset** [*OPTIONS*] *DATASET_ID*
+**edgefirst-client upload-dataset** \[*OPTIONS*\] *DATASET_ID*
 
 **Arguments:**
 
@@ -540,7 +540,7 @@ Retrieve detailed information for a specific snapshot.
 
 Create a new snapshot from a local file/directory or from an existing server-side dataset. Smart argument interpretation automatically detects the source type.
 
-**edgefirst-client create-snapshot** [*OPTIONS*] *SOURCE*
+**edgefirst-client create-snapshot** \[*OPTIONS*\] *SOURCE*
 
 **Arguments:**
 
@@ -617,7 +617,7 @@ edgefirst-client create-snapshot ./my_data --from-path
 
 Download a snapshot to a local directory.
 
-**edgefirst-client download-snapshot** [*OPTIONS*] `--output` *OUTPUT* *SNAPSHOT_ID*
+**edgefirst-client download-snapshot** \[*OPTIONS*\] `--output` *OUTPUT* *SNAPSHOT_ID*
 
 **Arguments:**
 
@@ -642,7 +642,7 @@ edgefirst-client download-snapshot ss-abc123 --output ./snapshot_data/
 
 Restore a snapshot to a dataset in a project. Supports MCAP uploads with optional AGTG (auto-annotation) and automatic depth map generation for compatible camera data.
 
-**edgefirst-client restore-snapshot** [*OPTIONS*] *PROJECT_ID* *SNAPSHOT_ID*
+**edgefirst-client restore-snapshot** \[*OPTIONS*\] *PROJECT_ID* *SNAPSHOT_ID*
 
 **Arguments:**
 
@@ -718,7 +718,7 @@ edgefirst-client delete-snapshot ss-abc123
 
 Generate an Arrow annotation file from a folder of images. This is useful for importing existing image collections into EdgeFirst Dataset Format.
 
-**edgefirst-client generate-arrow** [*OPTIONS*] `--output` *OUTPUT* *FOLDER*
+**edgefirst-client generate-arrow** \[*OPTIONS*\] `--output` *OUTPUT* *FOLDER*
 
 The command will:
 
@@ -762,7 +762,7 @@ edgefirst-client generate-arrow ./sensor_data/camera/ --output ./sensor_data/my_
 
 Validate a snapshot directory structure against the EdgeFirst Dataset Format specification.
 
-**edgefirst-client validate-snapshot** [*OPTIONS*] *PATH*
+**edgefirst-client validate-snapshot** \[*OPTIONS*\] *PATH*
 
 The command checks that the directory follows the EdgeFirst Dataset Format:
 
@@ -806,13 +806,13 @@ edgefirst-client validate-snapshot ./sensor_data && edgefirst-client create-snap
 
 Tools for converting between the COCO (Common Objects in Context) annotation format and the EdgeFirst Dataset Format, and for importing and exporting COCO datasets directly to and from EdgeFirst Studio. These commands support bounding boxes and polygon segmentation; RLE segmentation is decoded to polygons.
 
-For details on the EdgeFirst Dataset Format and its COCO mapping, see: ../../datasets/format/index.md
+For details on the [EdgeFirst Dataset Format](../../datasets/format/index.md) and its COCO mapping.
 
 ### `coco-to-arrow`
 
 Convert COCO annotations to EdgeFirst Arrow format. Reads a COCO annotation JSON file or ZIP archive and converts it to the EdgeFirst Dataset Format (Arrow).
 
-**edgefirst-client coco-to-arrow** [*OPTIONS*] `--output` *OUTPUT* *COCO_PATH*
+**edgefirst-client coco-to-arrow** \[*OPTIONS*\] `--output` *OUTPUT* *COCO_PATH*
 
 **Arguments:**
 
@@ -853,7 +853,7 @@ edgefirst-client coco-to-arrow instances_val2017.json -o val.arrow --masks=false
 
 Convert EdgeFirst Arrow format to COCO annotations. Reads an EdgeFirst Arrow file and converts it to COCO JSON, optionally filtered by group.
 
-**edgefirst-client arrow-to-coco** [*OPTIONS*] `--output` *OUTPUT* *ARROW_PATH*
+**edgefirst-client arrow-to-coco** \[*OPTIONS*\] `--output` *OUTPUT* *ARROW_PATH*
 
 **Arguments:**
 
@@ -893,7 +893,7 @@ Import a COCO dataset directly into EdgeFirst Studio. Converts COCO annotations 
 
 COCO datasets must be extracted before import — ZIP archives are not supported directly. Extract the annotations and images first.
 
-**edgefirst-client import-coco** [*OPTIONS*] *COCO_PATH*
+**edgefirst-client import-coco** \[*OPTIONS*\] *COCO_PATH*
 
 **Arguments:**
 
@@ -966,7 +966,7 @@ edgefirst-client import-coco ./coco --dataset ds-123 --verify
 
 Export an EdgeFirst Studio dataset to COCO format. Downloads samples and annotations from Studio and converts them to COCO JSON, optionally bundling the images into a ZIP archive.
 
-**edgefirst-client export-coco** [*OPTIONS*] `--output` *OUTPUT* *DATASET_ID* *ANNOTATION_SET_ID*
+**edgefirst-client export-coco** \[*OPTIONS*\] `--output` *OUTPUT* *DATASET_ID* *ANNOTATION_SET_ID*
 
 **Arguments:**
 
@@ -1010,7 +1010,7 @@ edgefirst-client export-coco ds-123 as-456 -o coco.zip --images --groups train,v
 
 Migrate an Arrow file from the 2025.10 schema to the 2026.04 schema. Converts the legacy NaN-separated `mask` column (`List(Float32)`) to the new nested `polygon` column (`List(List(Float32))`) and sets the `schema_version` metadata.
 
-**edgefirst-client migrate** [*OPTIONS*] *INPUT*
+**edgefirst-client migrate** \[*OPTIONS*\] *INPUT*
 
 **Arguments:**
 
@@ -1041,7 +1041,7 @@ edgefirst-client migrate dataset.arrow --output migrated.arrow
 
 List training experiments for the provided project ID (optional). Experiments are a method of grouping training sessions together.
 
-**edgefirst-client experiments** [`--name` *NAME*] [*PROJECT_ID*]
+**edgefirst-client experiments** \[`--name` *NAME*\] \[*PROJECT_ID*\]
 
 **Arguments:**
 
@@ -1068,7 +1068,7 @@ Retrieve detailed information for a specific experiment.
 
 List training sessions for the provided experiment ID (optional). Sessions are individual training jobs that can be queried for detailed information.
 
-**edgefirst-client training-sessions** [`--name` *NAME*] [*EXPERIMENT_ID*]
+**edgefirst-client training-sessions** \[`--name` *NAME*\] \[*EXPERIMENT_ID*\]
 
 **Arguments:**
 
@@ -1084,7 +1084,7 @@ List training sessions for the provided experiment ID (optional). Sessions are i
 
 Retrieve training session information for the provided session ID.
 
-**edgefirst-client training-session** [*OPTIONS*] *TRAINING_SESSION_ID*
+**edgefirst-client training-session** \[*OPTIONS*\] *TRAINING_SESSION_ID*
 
 **Arguments:**
 
@@ -1152,7 +1152,7 @@ edgefirst-client download-artifact 12345 model.pth \
 
 Upload an artifact to the provided training session ID.
 
-**edgefirst-client upload-artifact** [`--name` *NAME*] *SESSION_ID* *PATH*
+**edgefirst-client upload-artifact** \[`--name` *NAME*\] *SESSION_ID* *PATH*
 
 **Arguments:**
 
@@ -1187,7 +1187,7 @@ edgefirst-client upload-artifact t-1a2b ./final.pth \
 
 List all tasks for the current user. Tasks represent asynchronous operations like training jobs, dataset imports, or model exports.
 
-**edgefirst-client tasks** [*OPTIONS*]
+**edgefirst-client tasks** \[*OPTIONS*\]
 
 **Options:**
 
@@ -1224,7 +1224,7 @@ edgefirst-client tasks --status running \
 
 Retrieve detailed information about a specific task.
 
-**edgefirst-client task** [*OPTIONS*] *TASK_ID*
+**edgefirst-client task** \[*OPTIONS*\] *TASK_ID*
 
 **Arguments:**
 

@@ -113,6 +113,8 @@ The F4 dashboard streams iteration-level latency, system metrics, and per-stage 
 
 {{ figure("assets/tui-profiler.png", "EdgeFirst Profiler — F4 dashboard during a run") }}
 
+The system-metrics row includes live **power draw** and on-board **temperatures** wherever the hardware exposes a sensor. The profiler shows a power meter only for the rails it can actually read — the CPU, GPU, Neural Engine, and DRAM rails on Apple Silicon, and the real board rails on a Linux device with a supported power monitor (for example an NVIDIA Jetson's board-input rail and its per-component breakdown). On a target with no power sensor, no power meters are shown — rather than a row pinned at 0 W — and the session report notes that power is unavailable. Temperatures are read from the platform's thermal zones and `hwmon` sensors, so the readout reflects what each board actually measures.
+
 When the run finishes, a completion summary shows the headline numbers and the path to the trace file. The artifacts upload to Studio automatically and the cloud validator is triggered.
 
 ```

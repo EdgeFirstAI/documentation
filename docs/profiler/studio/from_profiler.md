@@ -85,6 +85,14 @@ edgefirst-profiler validate \
 
 `--training-session` produces a brand-new validation session every time it is run; pass `--session-id v-XXXX` instead to re-publish to an existing session.
 
+To profile locally **without** creating a Studio session — useful for a quick one-off timing check — pass `--no-publish`:
+
+```sh
+edgefirst-profiler validate --training-session t-abc123 --no-publish
+```
+
+The run writes `predictions.parquet` and `trace.pftrace` to disk and skips both session creation and the cloud validator. This is the CLI equivalent of the F2 panel's **Publish: off** toggle. On a read-only or public project — where the profiler cannot create a session — a `--training-session` run falls back to this local-only behaviour automatically.
+
 ## When the run completes
 
 The completion summary in the TUI lists the new session ID, the headline latency numbers, and the local trace path. Press **Enter** to dismiss and return to the dashboard. Switch back to F2 to drill into the just-created session and confirm Studio received the artifacts; from there the Studio web UI is the canonical place for charts, comparisons, and the trace viewer.

@@ -97,7 +97,7 @@ Click **Open Trace** on the session card to load the published `trace.pftrace` i
 
 - Pipeline-stage spans (decode / preprocess / inference / postprocess / NMS).
 - Per-operator timing for the backend used (ORT nodes, TFLite ops, Neutron ticks, TensorRT layers, Hailo contexts).
-- System-metric counters (CPU%, RSS, temperature).
+- System-metric counters (CPU%, RSS, temperature, and board power where a sensor is present).
 
 {{ figure("../assets/studio-trace-viewer.png", "EdgeFirst Studio — trace viewer: pipeline-stage spans, per-operator timing, and system-metric counters") }}
 

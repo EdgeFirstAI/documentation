@@ -30,7 +30,7 @@ Use sequential mode when:
 
 - You are measuring the **pure inference latency** of a model without confounding pipeline-overlap effects.
 - You are diagnosing **which stage is the bottleneck** — sequential timing is the cleanest reference.
-- The platform's backend supports only depth 1 (see the table below) — the profiler clamps automatically and prints `Pipeline depth: 1 (sequential)` at run start.
+- The platform's backend supports only depth 1 (see the table below) — the profiler clamps automatically and reports the resolved mode at run start.
 
 ## Pipelined execution (Auto depth, default)
 
@@ -55,7 +55,7 @@ Each inference backend has an auto-selected inference depth determined by how ma
 | TensorRT (Jetson Orin) | device max | Full slot count auto-selected |
 | TFLite XNNPACK | 2 | |
 | TFLite Neutron (i.MX 95, DMA-BUF zero-copy) | 1 | Single-bind delegate; preprocess forced to 1 |
-| TFLite Neutron (i.MX 95, CPU-staging) | 4 | Multiple independent slots; up to 8 |
+| TFLite Neutron (i.MX 95, CPU-staging) | 4 | Multiple independent slots (up to 4) |
 | **TFLite VxDelegate** (i.MX 8M Plus VSI NPU) | **1** | Only one in-flight inference |
 | Ara240 (Kinara, i.MX 95) | 8 | I/O rebind pool; NPU ceiling ≈249 FPS YOLOv8n |
 | HailoRT (Hailo-8 / 8L) | device max | |
@@ -69,7 +69,7 @@ The VSI NPU on the i.MX 8M Plus serves only one inference client at a time, so o
 | Flag | Controls | Default (Auto) |
 | ---- | -------- | -------------- |
 | `--capture-depth N` | Parallel file-load / JPEG decode threads | 1 |
-| `--preprocess-depth N` | Parallel GPU image processor threads | 1 in DMA-BUF zero-copy mode, 4 in CPU-staging mode |
+| `--preprocess-depth N` | Parallel preprocess workers (CPU + DMA; GPU/OpenGL-accelerated where available) | 1 in DMA-BUF zero-copy mode, 4 in CPU-staging mode |
 | `--inference-depth N` | Concurrent in-flight inference slots | See backend table above |
 | `--postprocess-depth N` | Parallel model decoder (DFL + NMS) threads | Auto based on CPU core count |
 
@@ -145,17 +145,7 @@ edgefirst-profiler validate --session-id v-XXXX \
   --postprocess-depth 1
 ```
 
-The resolved depth for each stage and the operating mode are printed once at run start:
-
-```text
-Pipeline depth: 2 (pipelined)
-```
-
-or
-
-```text
-Pipeline depth: 1 (sequential)
-```
+The resolved per-stage depths, the backend, and the operating mode (pipelined vs sequential) are reported once at run start, and recorded in the `pipeline_config` trace event for the session.
 
 ## See also
 

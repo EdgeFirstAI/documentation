@@ -36,3 +36,5 @@ Each service handles a specific task:
 Services communicate through Zenoh, a high-performance publisher/subscriber stack. While EdgeFirst doesn't depend on ROS2, services encode messages using ROS2 CDR (Common Data Representation). The middleware uses ROS2 standard schemas where applicable and custom schemas where needed.
 
 See the [Recording](data_collection/recording.md) and [Foxglove](data_collection/foxglove.md) sections for details on streaming, recording, and tool interoperability.
+
+For programmatic access to EdgeFirst Studio (dataset upload, snapshots, training artifacts), see the [EdgeFirst Client](../client/index.md) documentation.

@@ -171,6 +171,12 @@ release yet; they are listed newest first.
 
 #### Added
 
+- **EdgeFirst Client section** (`docs/client/`): new top-level documentation for
+  `edgefirst-client` (CLI, dataset import pathways, seven Python tutorials, Python
+  and Rust API reference). Replaces `perception/studio.md` and
+  `perception/api/studio.md`; legacy `datasets/coco/import.md` removed in favour of
+  `client/import.md` (COCO/LVIS CLI, EdgeFirst format, conceptual Python imports).
+  Redirects added in `mkdocs.yml` (DE-2762).
 - **Getting Started index** (`docs/index.md`): product intro, Quick Start workflow
   table, Profiler feature ribbon, free credits tip, and "Is EdgeFirst Studio right
   for you?" section linking to the Tourist workflow.

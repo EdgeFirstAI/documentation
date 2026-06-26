@@ -82,6 +82,10 @@ plugins:
         # Embedded-target deployment is now covered by the deployment section.
         'models/ultralytics/npu.md': 'models/deployment/launcher.md'
         'models/modelpack/npu.md': 'models/deployment/launcher.md'
+        # --- Client docs moved out of Perception (DE-2762) ---
+        'perception/studio.md': 'client/cli/index.md'
+        'perception/api/studio.md': 'client/api/python.md'
+        'datasets/coco/import.md': 'client/import.md'
   - social:
       enabled: !ENV [CI, false]
       cards_layout: default

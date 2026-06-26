@@ -1,0 +1,4332 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="EdgeFirst Studio Documentation">
+      
+      
+        <meta name="author" content="Au-Zone Technologies">
+      
+      
+        <link rel="canonical" href="https://doc.edgefirst.ai/test/client/cli/reference/">
+      
+      
+        <link rel="prev" href="../">
+      
+      
+        <link rel="next" href="../../import/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../../assets/favicon.png">
+      <meta name="generator" content="mkdocs-ProperDocs 1.6.7, mkdocs-material-9.7.6">
+    
+    
+      
+        <title>CLI Reference - EdgeFirst Studio Documentation</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Barlow:300,300i,400,400i,700,700i%7CJetBrains+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Barlow";--md-code-font:"JetBrains Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/_mkdocstrings.css">
+    
+      <link rel="stylesheet" href="../../../stylesheets/extra.css">
+    
+      <link rel="stylesheet" href="../../../stylesheets/components.css">
+    
+      <link rel="stylesheet" href="../../../stylesheets/mermaid.css">
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+  
+
+
+  
+  
+
+<script id="__analytics">function __md_analytics(){function e(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],e("js",new Date),e("config","G-N2QMRM1BZK"),document.addEventListener("DOMContentLoaded",(function(){document.forms.search&&document.forms.search.query.addEventListener("blur",(function(){this.value&&e("event","search",{search_term:this.value})}));document$.subscribe((function(){var t=document.forms.feedback;if(void 0!==t)for(var a of t.querySelectorAll("[type=submit]"))a.addEventListener("click",(function(a){a.preventDefault();var n=document.location.pathname,d=this.getAttribute("data-md-value");e("event","feedback",{page:n,data:d}),t.firstElementChild.disabled=!0;var r=t.querySelector(".md-feedback__note [data-md-value='"+d+"']");r&&(r.hidden=!1)})),t.hidden=!1})),location$.subscribe((function(t){e("config","G-N2QMRM1BZK",{page_path:t.pathname})}))}));var t=document.createElement("script");t.async=!0,t.src="https://www.googletagmanager.com/gtag/js?id=G-N2QMRM1BZK",document.getElementById("__analytics").insertAdjacentElement("afterEnd",t)}</script>
+  
+    <script>if("undefined"!=typeof __md_analytics){var consent=__md_get("__consent");consent&&consent.analytics&&__md_analytics()}</script>
+  
+
+    
+    
+  
+<meta property="og:type" content="website" />
+<meta property="og:title" content="CLI Reference - EdgeFirst Studio Documentation" />
+<meta property="og:description" content="EdgeFirst Studio Documentation" />
+<meta property="og:image" content="https://doc.edgefirst.ai/test/assets/images/social/client/cli/reference.png" />
+<meta property="og:image:type" content="image/png" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta property="og:url" content="https://doc.edgefirst.ai/test/client/cli/reference/" />
+<meta property="twitter:card" content="summary_large_image" />
+<meta property="twitter:title" content="CLI Reference - EdgeFirst Studio Documentation" />
+<meta property="twitter:description" content="EdgeFirst Studio Documentation" />
+<meta property="twitter:image" content="https://doc.edgefirst.ai/test/assets/images/social/client/cli/reference.png" />
+</head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#cli-reference" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+        <aside class="md-banner">
+          <div class="md-banner__inner md-grid md-typeset">
+            
+            
+<a href="https://test.edgefirst.studio" style="display: flex; align-items: center; gap: 0.5rem;">
+  <span class="twemoji">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+  </span>
+  <span>Back to EdgeFirst Studio</span>
+</a>
+
+          </div>
+          
+        </aside>
+      
+    </div>
+    
+      <div data-md-color-scheme="default" data-md-component="outdated" hidden>
+        
+      </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../.." title="EdgeFirst Studio Documentation" class="md-header__button md-logo" aria-label="EdgeFirst Studio Documentation" data-md-component="logo">
+      
+  <img src="../../../assets/logo.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            EdgeFirst Studio Documentation
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              CLI Reference
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m14.3 16-.7-2h-3.2l-.7 2H7.8L11 7h2l3.2 9zM20 8.69V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12zm-9.15 3.96h2.3L12 9z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="amber"  aria-label="Light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Light mode" for="__palette_2" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5s-1.65.15-2.39.42zM3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29zm.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14zM20.65 7l-1.77 3.79a7.02 7.02 0 0 0-2.38-4.15zm-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29zM12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="amber"  aria-label="Dark mode"  type="radio" name="__palette" id="__palette_2">
+    
+      <label class="md-header__button md-icon" title="Dark mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3zm3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95zm-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../.." class="md-tabs__link">
+          
+  
+  
+    
+  
+  Getting Started
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../studio/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Studio
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../../" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Client
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../3D/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  3D MLOps
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../profiler/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Profiler <span class="ef-badge">New</span>
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../datasets/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Datasets
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../models/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Models
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../perception/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Perception
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../platforms/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Platforms
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="EdgeFirst Studio Documentation" class="md-nav__button md-logo" aria-label="EdgeFirst Studio Documentation" data-md-component="logo">
+      
+  <img src="../../../assets/logo.png" alt="logo">
+
+    </a>
+    EdgeFirst Studio Documentation
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../.." class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Getting Started
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../../studio/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Studio
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Client
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_3" id="__nav_3_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Client
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2" checked>
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Command-Line Interface
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_3_2" id="__nav_3_2_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Command-Line Interface
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    CLI Reference
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    CLI Reference
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#global-options" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Global options
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#authentication" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Authentication
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Authentication">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#version" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        version
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#login" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        login
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#logout" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        logout
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#token" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        token
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#organization" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Organization
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Organization">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#organization_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        organization
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#projects" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Projects
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Projects">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#projects_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        projects
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#project" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        project
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#datasets" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Datasets
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Datasets">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#datasets_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        datasets
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dataset" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        dataset
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#create-dataset" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        create-dataset
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#delete-dataset" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        delete-dataset
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#annotation-sets" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Annotation sets
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Annotation sets">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#create-annotation-set" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        create-annotation-set
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#delete-annotation-set" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        delete-annotation-set
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#dataset-operations" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Dataset operations
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Dataset operations">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#download-dataset" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        download-dataset
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#download-annotations" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        download-annotations
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#upload-dataset" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        upload-dataset
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#update-dimensions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        update-dimensions
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#snapshots" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Snapshots
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Snapshots">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#snapshots_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        snapshots
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#snapshot" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        snapshot
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#create-snapshot" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        create-snapshot
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#download-snapshot" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        download-snapshot
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#restore-snapshot" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        restore-snapshot
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#delete-snapshot" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        delete-snapshot
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#generate-arrow" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        generate-arrow
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#validate-snapshot" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        validate-snapshot
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#coco-interchange" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        COCO interchange
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="COCO interchange">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#coco-to-arrow" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        coco-to-arrow
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#arrow-to-coco" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        arrow-to-coco
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#import-coco" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        import-coco
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#export-coco" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        export-coco
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#migrate" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        migrate
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#training" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Training
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Training">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#experiments" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        experiments
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#experiment" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        experiment
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#training-sessions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        training-sessions
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#training-session" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        training-session
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#download-artifact" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        download-artifact
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#upload-artifact" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        upload-artifact
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tasks" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Tasks
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Tasks">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#tasks_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        tasks
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#task" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        task
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#validation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Validation
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Validation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#validation-sessions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        validation-sessions
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#validation-session" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        validation-session
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#environment-variables" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Environment variables
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#token-file-locations" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Token file locations
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#exit-status" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Exit status
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#examples" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Examples
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Examples">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#authentication-workflow" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Authentication Workflow
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#alternative-environment-variables" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Alternative: Environment Variables
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#alternative-token-based-authentication" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Alternative: Token-Based Authentication
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dataset-management-workflow" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Dataset Management Workflow
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#training-artifact-management" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Training Artifact Management
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#monitoring-tasks" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Monitoring Tasks
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#python-api-integration-pip-install" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Python API Integration (pip install)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#see-also" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        See also
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../import/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Dataset Import
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../tutorials/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Python Tutorials
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../api/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    API Reference
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../../3D/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3D MLOps
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../../profiler/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Profiler <span class="ef-badge">New</span>
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../../datasets/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Datasets
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../../models/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Models
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../../perception/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Perception
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../../platforms/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Platforms
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#global-options" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Global options
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#authentication" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Authentication
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Authentication">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#version" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        version
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#login" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        login
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#logout" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        logout
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#token" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        token
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#organization" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Organization
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Organization">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#organization_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        organization
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#projects" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Projects
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Projects">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#projects_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        projects
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#project" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        project
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#datasets" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Datasets
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Datasets">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#datasets_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        datasets
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dataset" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        dataset
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#create-dataset" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        create-dataset
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#delete-dataset" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        delete-dataset
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#annotation-sets" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Annotation sets
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Annotation sets">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#create-annotation-set" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        create-annotation-set
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#delete-annotation-set" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        delete-annotation-set
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#dataset-operations" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Dataset operations
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Dataset operations">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#download-dataset" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        download-dataset
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#download-annotations" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        download-annotations
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#upload-dataset" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        upload-dataset
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#update-dimensions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        update-dimensions
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#snapshots" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Snapshots
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Snapshots">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#snapshots_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        snapshots
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#snapshot" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        snapshot
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#create-snapshot" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        create-snapshot
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#download-snapshot" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        download-snapshot
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#restore-snapshot" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        restore-snapshot
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#delete-snapshot" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        delete-snapshot
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#generate-arrow" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        generate-arrow
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#validate-snapshot" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        validate-snapshot
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#coco-interchange" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        COCO interchange
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="COCO interchange">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#coco-to-arrow" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        coco-to-arrow
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#arrow-to-coco" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        arrow-to-coco
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#import-coco" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        import-coco
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#export-coco" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        export-coco
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#migrate" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        migrate
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#training" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Training
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Training">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#experiments" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        experiments
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#experiment" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        experiment
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#training-sessions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        training-sessions
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#training-session" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        training-session
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#download-artifact" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        download-artifact
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#upload-artifact" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        upload-artifact
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tasks" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Tasks
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Tasks">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#tasks_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        tasks
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#task" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        task
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#validation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Validation
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Validation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#validation-sessions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        validation-sessions
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#validation-session" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        validation-session
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#environment-variables" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Environment variables
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#token-file-locations" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Token file locations
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#exit-status" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Exit status
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#examples" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Examples
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Examples">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#authentication-workflow" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Authentication Workflow
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#alternative-environment-variables" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Alternative: Environment Variables
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#alternative-token-based-authentication" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Alternative: Token-Based Authentication
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dataset-management-workflow" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Dataset Management Workflow
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#training-artifact-management" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Training Artifact Management
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#monitoring-tasks" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Monitoring Tasks
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#python-api-integration-pip-install" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Python API Integration (pip install)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#see-also" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        See also
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+                
+
+
+
+
+  <nav class="md-path" aria-label="Navigation" >
+    <ol class="md-path__list">
+      
+      
+        
+  
+  
+    
+    
+      <li class="md-path__item">
+        <a href="../../" class="md-path__link">
+          
+  <span class="md-ellipsis">
+    Client
+  </span>
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+    
+    
+      <li class="md-path__item">
+        <a href="../" class="md-path__link">
+          
+  <span class="md-ellipsis">
+    Command-Line Interface
+  </span>
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ol>
+  </nav>
+
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="cli-reference">CLI Reference</h1>
+<p>Complete command reference for <code>edgefirst-client</code>. For getting started, see the <a href="../">CLI introduction</a>.</p>
+<p>edgefirst-client - Command-line interface for EdgeFirst Studio <abbr title="Machine Learning Operations">MLOps</abbr> platform</p>
+<p><strong>Synopsis:</strong> <code>edgefirst-client</code> [<em>OPTIONS</em>] <em>COMMAND</em>
+<code>edgefirst-client</code> is a command-line tool for interacting with EdgeFirst Studio, an <abbr title="Machine Learning Operations">MLOps</abbr> platform for 3D/4D spatial perception AI. It provides comprehensive dataset management, training workflow orchestration, and artifact handling capabilities.</p>
+<p>Install the CLI and Python <abbr title="Application Programming Interface">API</abbr> together with:</p>
+<div class="highlight"><pre><span></span><code>pip<span class="w"> </span>install<span class="w"> </span>edgefirst-client
+</code></pre></div>
+<p>This places both the <code>edgefirst-client</code> executable and the <strong>edgefirst_client</strong> Python module on your PATH (inside a virtual environment, use <code>python -m venv .venv</code> first). See <a href="../../tutorials/">Python tutorials</a> for tutorials.</p>
+<p>The client supports various authentication methods including environment variables, configuration files, and command-line options. Authentication tokens are cached in the OS-specific configuration directory for persistent sessions.</p>
+<h2 id="global-options">Global options</h2>
+<p><code>--server</code> <em>SERVER</em>
+:   EdgeFirst Studio server name. Maps to <code>https://{SERVER}.edgefirst.studio</code>, except "saas" or empty which maps to <code>https://edgefirst.studio</code>. Can be set via <strong>STUDIO_SERVER</strong> environment variable.</p>
+<pre><code>**Server Selection Priority:**
+
+1. **Token's server** (highest) - JWT tokens encode their server. If you have a valid stored or provided token, its server is used regardless of `--server`.
+2. `--server` option - Used when logging in with username/password, or when no token is available. If a token exists with a different server, a warning is displayed.
+3. **Default "saas"** - If no token and no server specified, the production server is used.
+</code></pre>
+<p><code>--username</code> <em>USERNAME</em>
+:   EdgeFirst Studio username for authentication. Can be set via <strong>STUDIO_USERNAME</strong> environment variable.</p>
+<p><code>--password</code> <em>PASSWORD</em>
+:   EdgeFirst Studio password for authentication. Can be set via <strong>STUDIO_PASSWORD</strong> environment variable.</p>
+<p><code>--token</code> <em>TOKEN</em>
+:   EdgeFirst Studio authentication token. Can be set via <strong>STUDIO_TOKEN</strong> environment variable. The server is extracted from the token and takes priority over <code>--server</code>.</p>
+<p><code>--token-path</code> <em>TOKEN_PATH</em>
+:   Path to the token file, overriding the default platform-specific location. Useful for testing or running multiple instances with different tokens. Can be set via <strong>STUDIO_TOKEN_PATH</strong> environment variable.</p>
+<p><strong>-v</strong>, <code>--verbose</code>
+:   Increase logging verbosity. Repeatable: <code>-v</code> enables debug logging and <code>-vv</code> enables trace logging. Applies to all commands.</p>
+<p><code>--trace-file</code> <em>TRACE_FILE</em>
+:   Write trace output to a file. The format is determined by the extension: <code>.json</code> for Chrome JSON format (viewable in the Perfetto UI) or <code>.pftrace</code> for native Perfetto format. Requires a build with the <code>trace-file</code> feature. Can be set via <strong>TRACE_FILE</strong> environment variable.</p>
+<p><strong>-h</strong>, <code>--help</code>
+:   Print help information.</p>
+<p><strong>-V</strong>, <code>--version</code>
+:   Print version information.</p>
+<h2 id="authentication">Authentication</h2>
+<h3 id="version"><code>version</code></h3>
+<p>Returns the EdgeFirst Studio server version.</p>
+<p><strong>edgefirst-client version</strong></p>
+<h3 id="login"><code>login</code></h3>
+<p>Login to the EdgeFirst Studio server. The authentication token is stored in the application configuration file for subsequent commands.</p>
+<p><code>edgefirst-client</code> [<code>--server</code> <em>SERVER</em>] <strong>login</strong></p>
+<p>When <code>--username</code> and <code>--password</code> are omitted, the CLI prompts for them
+interactively (recommended). Do not pass passwords on the command line.</p>
+<p>Optional flags <code>--username</code> and <code>--password</code> exist for non-interactive
+automation; prefer <strong>STUDIO_TOKEN</strong> or <strong>STUDIO_USERNAME</strong> / <strong>STUDIO_PASSWORD</strong>
+environment variables for scripts instead.</p>
+<p>Token storage locations:</p>
+<ul>
+<li>Linux: <code>~/.config/EdgeFirst Studio/token</code></li>
+<li>macOS: <code>~/Library/Application Support/ai.EdgeFirst.EdgeFirst Studio/token</code></li>
+<li>Windows: <code>%APPDATA%\EdgeFirst\EdgeFirst Studio\config\token</code></li>
+</ul>
+<p>After CLI login, Python examples can reuse the cached token with <code>Client()</code> (default <code>use_token_file=True</code>). See <a href="../../tutorials/01_authentication/">Tutorial 1</a>.</p>
+<h3 id="logout"><code>logout</code></h3>
+<p>Logout by removing the authentication token from the application configuration file.</p>
+<p><strong>edgefirst-client logout</strong></p>
+<h3 id="token"><code>token</code></h3>
+<p>Returns the EdgeFirst Studio authentication token for the provided username and password. This is typically stored in the <strong>STUDIO_TOKEN</strong> environment variable for subsequent commands to avoid re-entering credentials.</p>
+<p><code>edgefirst-client</code> <code>--username</code> <em>USERNAME</em> <code>--password</code> <em>PASSWORD</em> <strong>token</strong></p>
+<p>Example:</p>
+<div class="highlight"><pre><span></span><code><span class="nb">export</span><span class="w"> </span><span class="nv">STUDIO_TOKEN</span><span class="o">=</span><span class="k">$(</span>edgefirst-client<span class="w"> </span>--username<span class="w"> </span>user<span class="w"> </span>--password<span class="w"> </span>pass<span class="w"> </span>token<span class="k">)</span>
+</code></pre></div>
+<h2 id="organization">Organization</h2>
+<h3 id="organization_1"><code>organization</code></h3>
+<p>Show the authenticated user's organization information.</p>
+<p><strong>edgefirst-client organization</strong></p>
+<p>Displays organization name, ID, and other metadata.</p>
+<h2 id="projects">Projects</h2>
+<h3 id="projects_1"><code>projects</code></h3>
+<p>List all projects available to the authenticated user.</p>
+<p><strong>edgefirst-client projects</strong> [<code>--name</code> <em>NAME</em>]</p>
+<p><strong>Options:</strong></p>
+<p><code>--name</code> <em>NAME</em>
+:   Filter projects by name (case-insensitive substring match).</p>
+<h3 id="project"><code>project</code></h3>
+<p>Retrieve detailed information for a specific project.</p>
+<p><strong>edgefirst-client project</strong> <em>PROJECT_ID</em></p>
+<p><strong>Arguments:</strong></p>
+<p><em>PROJECT_ID</em>
+:   The unique identifier of the project.</p>
+<h2 id="datasets">Datasets</h2>
+<h3 id="datasets_1"><code>datasets</code></h3>
+<p>List all datasets available to the authenticated user. If a project ID is provided, only datasets for that project are listed.</p>
+<p><strong>edgefirst-client datasets</strong> [<em>OPTIONS</em>] [<em>PROJECT_ID</em>]</p>
+<p><strong>Arguments:</strong></p>
+<p><em>PROJECT_ID</em>
+:   Optional project ID to filter datasets.</p>
+<p><strong>Options:</strong></p>
+<p><strong>-a</strong>, <code>--annotation-sets</code>
+:   List available annotation sets for each dataset.</p>
+<p><strong>-l</strong>, <code>--labels</code>
+:   List available labels for each dataset.</p>
+<p><code>--name</code> <em>NAME</em>
+:   Filter datasets by name (case-insensitive substring match).</p>
+<h3 id="dataset"><code>dataset</code></h3>
+<p>Retrieve detailed information for a specific dataset.</p>
+<p><strong>edgefirst-client dataset</strong> [<em>OPTIONS</em>] <em>DATASET_ID</em></p>
+<p><strong>Arguments:</strong></p>
+<p><em>DATASET_ID</em>
+:   The unique identifier of the dataset.</p>
+<p><strong>Options:</strong></p>
+<p><strong>-a</strong>, <code>--annotation-sets</code>
+:   List available annotation sets for the dataset.</p>
+<p><strong>-l</strong>, <code>--labels</code>
+:   List available labels for the dataset.</p>
+<p><strong>-g</strong>, <code>--groups</code>
+:   List available groups (dataset splits, e.g. <code>train</code>/<code>val</code>) for the dataset.</p>
+<p><strong>Example (public Coffee Cup dataset on SaaS):</strong></p>
+<div class="highlight"><pre><span></span><code>edgefirst-client<span class="w"> </span>dataset<span class="w"> </span>ds-145f<span class="w"> </span>--annotation-sets<span class="w"> </span>--labels<span class="w"> </span>--groups
+</code></pre></div>
+<p>See also <a href="../../tutorials/02_explore_dataset/">Tutorial 2</a>.</p>
+<h3 id="create-dataset"><code>create-dataset</code></h3>
+<p>Create a new dataset in the specified project.</p>
+<p><strong>edgefirst-client create-dataset</strong> [<code>--description</code> <em>DESCRIPTION</em>] <em>PROJECT_ID</em> <em>NAME</em></p>
+<p><strong>Arguments:</strong></p>
+<p><em>PROJECT_ID</em>
+:   The project ID where the dataset will be created.</p>
+<p><em>NAME</em>
+:   Name of the new dataset.</p>
+<p><strong>Options:</strong></p>
+<p><code>--description</code> <em>DESCRIPTION</em>
+:   Optional description for the dataset.</p>
+<p><strong>Example:</strong></p>
+<div class="highlight"><pre><span></span><code>edgefirst-client<span class="w"> </span>create-dataset<span class="w"> </span><span class="m">12345</span><span class="w"> </span><span class="s2">&quot;Training Data&quot;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--description<span class="w"> </span><span class="s2">&quot;Q4 2025 training dataset&quot;</span>
+</code></pre></div>
+<h3 id="delete-dataset"><code>delete-dataset</code></h3>
+<p>Delete a dataset by marking it as deleted.</p>
+<p><strong>edgefirst-client delete-dataset</strong> <em>DATASET_ID</em></p>
+<p><strong>Arguments:</strong></p>
+<p><em>DATASET_ID</em>
+:   The unique identifier of the dataset to delete.</p>
+<p><strong>Note:</strong> This operation marks the dataset as deleted but may not immediately remove all associated data. Deletion is typically soft and may be reversible through the web interface.</p>
+<h2 id="annotation-sets">Annotation sets</h2>
+<h3 id="create-annotation-set"><code>create-annotation-set</code></h3>
+<p>Create a new annotation set for the specified dataset.</p>
+<p><strong>edgefirst-client create-annotation-set</strong> [<code>--description</code> <em>DESCRIPTION</em>] <em>DATASET_ID</em> <em>NAME</em></p>
+<p><strong>Arguments:</strong></p>
+<p><em>DATASET_ID</em>
+:   The dataset ID where the annotation set will be created.</p>
+<p><em>NAME</em>
+:   Name of the new annotation set.</p>
+<p><strong>Options:</strong></p>
+<p><code>--description</code> <em>DESCRIPTION</em>
+:   Optional description for the annotation set.</p>
+<p><strong>Example:</strong></p>
+<div class="highlight"><pre><span></span><code>edgefirst-client<span class="w"> </span>create-annotation-set<span class="w"> </span><span class="m">67890</span><span class="w"> </span><span class="s2">&quot;Manual Review&quot;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--description<span class="w"> </span><span class="s2">&quot;Human-verified annotations&quot;</span>
+</code></pre></div>
+<h3 id="delete-annotation-set"><code>delete-annotation-set</code></h3>
+<p>Delete an annotation set by marking it as deleted.</p>
+<p><strong>edgefirst-client delete-annotation-set</strong> <em>ANNOTATION_SET_ID</em></p>
+<p><strong>Arguments:</strong></p>
+<p><em>ANNOTATION_SET_ID</em>
+:   The unique identifier of the annotation set to delete.</p>
+<h2 id="dataset-operations">Dataset operations</h2>
+<h3 id="download-dataset"><code>download-dataset</code></h3>
+<p>Download a dataset to the local filesystem from the EdgeFirst Studio server.</p>
+<p><strong>edgefirst-client download-dataset</strong> [<em>OPTIONS</em>] [<em>DATASET_ID</em>]</p>
+<p><strong>Arguments:</strong></p>
+<p><em>DATASET_ID</em>
+:   The unique identifier of the dataset to download. Optional when <code>--list-types</code> is used.</p>
+<p><strong>Options:</strong></p>
+<p><code>--groups</code> <em>GROUPS</em>
+:   Only fetch samples belonging to the provided dataset groups (comma-separated list).</p>
+<p><code>--types</code> <em>TYPES</em>
+:   Fetch specific data types for the dataset (comma-separated list). Default: <strong>image</strong>.
+    Valid types: <code>image</code>, <code>lidar.pcd</code>, <code>lidar.png</code>, <code>lidar.jpg</code>, <code>radar.pcd</code>, <code>radar.png</code>, <code>all</code>. Use <code>all</code> to download every sensor type.</p>
+<p><code>--output</code> <em>OUTPUT</em>
+:   Output directory path. If not provided, downloads to the current working directory.</p>
+<p><code>--flatten</code>
+:   Download all files to the output directory without creating sequence subdirectories.
+    When enabled, filenames are automatically prefixed to avoid conflicts between sequences.
+    The prefix format is <code>{sequence_name}_{frame}_</code> when the frame number is available,
+    and <code>{sequence_name}_</code> when the frame number is not available. Default: creates subdirectories for sequences.</p>
+<p><code>--list-types</code>
+:   List all valid sensor types and exit. <em>DATASET_ID</em> is not required when this flag is used.</p>
+<p><strong>Example:</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c1">## Download only images to specific directory</span>
+
+edgefirst-client<span class="w"> </span>download-dataset<span class="w"> </span><span class="m">12345</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--types<span class="w"> </span>image<span class="w"> </span>--output<span class="w"> </span>./my-dataset
+
+<span class="c1">## Download multiple types with group filtering</span>
+
+edgefirst-client<span class="w"> </span>download-dataset<span class="w"> </span><span class="m">12345</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--types<span class="w"> </span>image,lidar.pcd<span class="w"> </span>--groups<span class="w"> </span>train,validation<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--output<span class="w"> </span>/data/datasets/
+
+<span class="c1">## Download with flattened directory structure</span>
+
+<span class="c1">## Files from sequences are prefixed with sequence_name_frame_</span>
+
+edgefirst-client<span class="w"> </span>download-dataset<span class="w"> </span><span class="m">12345</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--types<span class="w"> </span>image<span class="w"> </span>--output<span class="w"> </span>./flat-dataset<span class="w"> </span>--flatten
+
+<span class="c1">## Public Coffee Cup dataset (SaaS)</span>
+
+edgefirst-client<span class="w"> </span>download-dataset<span class="w"> </span>ds-145f<span class="w"> </span>--groups<span class="w"> </span>val<span class="w"> </span>--types<span class="w"> </span>image<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--output<span class="w"> </span>./coffee_cup_images/
+</code></pre></div>
+<p>See <a href="../../tutorials/05_download_dataset/">Tutorial 5</a>.</p>
+<p><strong>Directory Structure:</strong></p>
+<p>By default, downloads are organized by sequence:</p>
+<div class="highlight"><pre><span></span><code>output/
+├── sequence_A/
+│   ├── sequence_A_001.camera.jpeg
+│   └── sequence_A_002.camera.jpeg
+└── sequence_B/
+    ├── sequence_B_001.camera.jpeg
+    └── sequence_B_002.camera.jpeg
+</code></pre></div>
+<p>With <code>--flatten</code>, all files are placed in the output root with sequence prefixes:</p>
+<div class="highlight"><pre><span></span><code>output/
+├── sequence_A_001.camera.jpeg
+├── sequence_A_002.camera.jpeg
+├── sequence_B_001.camera.jpeg
+└── sequence_B_002.camera.jpeg
+</code></pre></div>
+<h3 id="download-annotations"><code>download-annotations</code></h3>
+<p>Download dataset annotations to a local file. This command accompanies <strong>download-dataset</strong> and is used to download the annotations rather than the dataset file samples (images, radar, lidar, etc.).</p>
+<p><strong>edgefirst-client download-annotations</strong> [<em>OPTIONS</em>] <em>ANNOTATION_SET_ID</em> <em>OUTPUT</em></p>
+<p><strong>Arguments:</strong></p>
+<p><em>ANNOTATION_SET_ID</em>
+:   The unique identifier of the annotation set to download.</p>
+<p><em>OUTPUT</em>
+:   Output file path. The format is determined by the file extension:
+    - <strong>.json</strong> - COCO-style JSON format
+    - <strong>.arrow</strong> - EdgeFirst Dataset Format (Apache Arrow)</p>
+<p><strong>Options:</strong></p>
+<p><code>--groups</code> <em>GROUPS</em>
+:   Only fetch samples belonging to the provided dataset groups (comma-separated list).</p>
+<p><code>--types</code> <em>TYPES</em>
+:   Annotation types to download (comma-separated list). Default: <strong>box2d</strong>.
+    Supported types: box2d, box3d, mask, polygon, polyline, keypoint.</p>
+<p><strong>Example:</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c1">## Download 2D bounding boxes as JSON</span>
+
+edgefirst-client<span class="w"> </span>download-annotations<span class="w"> </span><span class="m">54321</span><span class="w"> </span>annotations.json<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--types<span class="w"> </span>box2d
+
+<span class="c1">## Download all annotation types in Arrow format</span>
+
+edgefirst-client<span class="w"> </span>download-annotations<span class="w"> </span><span class="m">54321</span><span class="w"> </span>annotations.arrow<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--types<span class="w"> </span>box2d,box3d,mask<span class="w"> </span>--groups<span class="w"> </span>train
+
+<span class="c1">## Coffee Cup public dataset (resolve annotation set ID from dataset command)</span>
+
+edgefirst-client<span class="w"> </span>download-annotations<span class="w"> </span>&lt;as-id&gt;<span class="w"> </span>coffee_cup.arrow<span class="w"> </span>--groups<span class="w"> </span>val
+</code></pre></div>
+<p>For Arrow format documentation, see the <a href="../../../datasets/format/">EdgeFirst Dataset Format</a>.</p>
+<p>Python: load with <code>polars.read_ipc()</code> or <code>client.samples_dataframe()</code> — see <a href="../../tutorials/04_polars_dataframe/">Tutorial 4</a>.</p>
+<h3 id="upload-dataset"><code>upload-dataset</code></h3>
+<p>Upload samples to a dataset from images and/or Arrow annotations file. Supports flexible workflows: images-only, annotations-only, or both.</p>
+<p><strong>edgefirst-client upload-dataset</strong> [<em>OPTIONS</em>] <em>DATASET_ID</em></p>
+<p><strong>Arguments:</strong></p>
+<p><em>DATASET_ID</em>
+:   Dataset ID to upload samples to.</p>
+<p><strong>Options:</strong></p>
+<p><code>--annotations</code> <em>ANNOTATIONS</em>
+:   Path to Arrow file with annotations (EdgeFirst Dataset Format). If omitted, only images will be uploaded.</p>
+<p><code>--images</code> <em>IMAGES</em>
+:   Path to folder or ZIP containing images. If omitted, auto-discovers based on Arrow filename or "dataset" convention.</p>
+<p><code>--annotation-set-id</code> <em>ANNOTATION_SET_ID</em>
+:   Annotation Set ID for the annotations. Required if Arrow file contains annotations.</p>
+<p><strong>Image Discovery (when --images not provided):</strong></p>
+<p>The tool automatically searches for images in the following order:</p>
+<ol>
+<li>Folder named after Arrow file (e.g., <code>data/</code> for <code>data.arrow</code>)</li>
+<li>Folder named <code>dataset/</code></li>
+<li>ZIP file with same basename (e.g., <code>data.zip</code> for <code>data.arrow</code>)</li>
+<li><code>dataset.zip</code></li>
+</ol>
+<p><strong>Examples:</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c1">## Upload images only</span>
+
+edgefirst-client<span class="w"> </span>upload-dataset<span class="w"> </span><span class="m">12345</span><span class="w"> </span>--images<span class="w"> </span>./photos/
+
+<span class="c1">## Upload Arrow annotations with auto-discovered images</span>
+
+edgefirst-client<span class="w"> </span>upload-dataset<span class="w"> </span><span class="m">12345</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--annotations<span class="w"> </span>dataset.arrow<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--annotation-set-id<span class="w"> </span><span class="m">54321</span>
+
+<span class="c1">## Upload both with explicit paths</span>
+
+edgefirst-client<span class="w"> </span>upload-dataset<span class="w"> </span><span class="m">12345</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--annotations<span class="w"> </span>labels.arrow<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--images<span class="w"> </span>./images/<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--annotation-set-id<span class="w"> </span><span class="m">54321</span>
+</code></pre></div>
+<p><strong>Note:</strong> Uploads are batched (500 samples per batch) with progress tracking. Arrow files must conform to the EdgeFirst Dataset Format.</p>
+<h3 id="update-dimensions"><code>update-dimensions</code></h3>
+<p>Backfill missing image width/height metadata for an existing dataset. Useful for datasets uploaded before the client started extracting image dimensions at upload time, or for samples where dimensions could not be determined.</p>
+<p><strong>edgefirst-client update-dimensions</strong> <em>DATASET_ID</em></p>
+<p><strong>Arguments:</strong></p>
+<p><em>DATASET_ID</em>
+:   The unique identifier of the dataset to backfill. Accepts integer IDs or the <strong>ds-xxx</strong> form shown in the Web UI.</p>
+<p><strong>Behavior:</strong></p>
+<ol>
+<li>Fetches every sample in the dataset and filters to those missing <strong>width</strong> or <strong>height</strong>. If none are missing, the command prints <code>Updated dimensions for 0 samples</code> and exits successfully.</li>
+<li>For each remaining sample, downloads the associated image, extracts the pixel dimensions locally, and queues a <code>(sample_id, width, height)</code> update. Samples that lack an image URL, return a non-success <abbr title="Hypertext Transfer Protocol">HTTP</abbr> status (e.g. <code>404</code>, <code>500</code>), or cannot be parsed as a recognized image format are skipped silently — the command continues with the next sample.</li>
+<li>Sends queued updates to the server in batches of <strong>500</strong> via the <code>samples.update_dimensions</code> JSON-RPC method.</li>
+</ol>
+<p><strong>Progress output:</strong></p>
+<p>Progress is reported on stdout in the form:</p>
+<div class="highlight"><pre><span></span><code>[CURRENT/TOTAL] Computing dimensions
+</code></pre></div>
+<p><code>TOTAL</code> is the count of samples missing dimensions (not the full dataset), and <code>CURRENT</code> advances once per sample processed (including skipped ones). A final summary line is printed when the operation completes:</p>
+<div class="highlight"><pre><span></span><code>Updated dimensions for N samples
+</code></pre></div>
+<p><code>N</code> is the count returned by the server — the number of samples actually updated, which may be less than <code>TOTAL</code> if some samples were skipped.</p>
+<p><strong>Example:</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c1">## Backfill dimensions for a legacy dataset</span>
+
+edgefirst-client<span class="w"> </span>update-dimensions<span class="w"> </span><span class="m">12345</span>
+
+<span class="c1">## Using the ds- form</span>
+
+edgefirst-client<span class="w"> </span>update-dimensions<span class="w"> </span>ds-12345
+</code></pre></div>
+<p><strong>Notes:</strong></p>
+<ul>
+<li>This is a <strong>one-time repair operation</strong>. After it completes, the dataset's sample width/height columns are populated server-side and subsequent calls will report <code>Updated dimensions for 0 samples</code>.</li>
+<li>The operation downloads each image in serial, so runtime scales linearly with the number of samples missing dimensions and the size of those images. For very large datasets, run the command from a host with good bandwidth to the EdgeFirst Studio object store.</li>
+<li>Equivalent programmatic APIs:<ul>
+<li><strong>Rust:</strong> <code>Client::backfill_sample_dimensions(dataset_id, progress)</code> (and <code>Client::update_sample_dimensions</code> for already-known dimensions).</li>
+<li><strong>Python:</strong> <code>client.backfill_sample_dimensions(dataset_id, progress=cb)</code>.</li>
+<li><strong>Swift/Kotlin (UniFFI):</strong> <code>client.backfillSampleDimensions(datasetId)</code> — blocking, <strong>no progress callback</strong> in the FFI layer; for progress reporting on mobile, call the underlying <code>samples.update_dimensions</code> RPC directly or use the Python/Rust <abbr title="Application Programming Interface">API</abbr> on the server side.</li>
+</ul>
+</li>
+</ul>
+<h2 id="snapshots">Snapshots</h2>
+<p>Dataset snapshots preserve a complete copy of raw sensor data (<abbr title="Binary container format for robotics log data">MCAP</abbr> files), directories, or EdgeFirst Dataset Format data at a specific point in time. They can be restored to create new datasets with optional automatic annotation (AGTG) and depth map generation.</p>
+<p>For detailed information about snapshots, see: ../../studio/snapshots.md</p>
+<h3 id="snapshots_1"><code>snapshots</code></h3>
+<p>List all snapshots available to the authenticated user.</p>
+<p><strong>edgefirst-client snapshots</strong></p>
+<p>Displays snapshot ID, dataset reference, creation date, and username.</p>
+<h3 id="snapshot"><code>snapshot</code></h3>
+<p>Retrieve detailed information for a specific snapshot.</p>
+<p><strong>edgefirst-client snapshot</strong> <em>SNAPSHOT_ID</em></p>
+<p><strong>Arguments:</strong></p>
+<p><em>SNAPSHOT_ID</em>
+:   The unique identifier of the snapshot (format: <strong>ss-xxx</strong>).</p>
+<h3 id="create-snapshot"><code>create-snapshot</code></h3>
+<p>Create a new snapshot from a local file/directory or from an existing server-side dataset. Smart argument interpretation automatically detects the source type.</p>
+<p><strong>edgefirst-client create-snapshot</strong> [<em>OPTIONS</em>] <em>SOURCE</em></p>
+<p><strong>Arguments:</strong></p>
+<p><em>SOURCE</em>
+:   Source for the snapshot. Automatically interpreted based on format:
+    - <strong>ds-xxx</strong>: Dataset ID (creates snapshot from server dataset)
+    - <strong>as-xxx</strong>: Annotation Set ID (creates snapshot from parent dataset)
+    - <strong>path/to/file.mcap</strong>: Local <abbr title="Binary container format for robotics log data">MCAP</abbr> file upload
+    - <strong>path/to/folder/</strong>: Local directory upload
+    - <strong>path/to/file.zip</strong>: Local ZIP file upload</p>
+<p><strong>Options:</strong></p>
+<p><code>--annotation-set</code> <em>ANNOTATION_SET</em>
+:   When SOURCE is a dataset ID, optionally specify an annotation set ID (format: <strong>as-xxx</strong>) to include in the snapshot. If not provided, the default "annotations" set is used, or the first available annotation set if no default exists.</p>
+<p><strong>-d, --description</strong> <em>DESCRIPTION</em>
+:   Custom description for the snapshot. If not provided, auto-generates from source name and current date/time.</p>
+<p><code>--from-path</code>
+:   Explicitly treat SOURCE as a local file path (overrides auto-detection).</p>
+<p><code>--from-dataset</code>
+:   Explicitly treat SOURCE as a dataset ID (overrides auto-detection).</p>
+<p><strong>-m, --monitor</strong>
+:   Monitor the task progress until completion (server-side creation only).</p>
+<p><strong>Example:</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c1">## Create snapshot from server dataset (auto-detected by ds- prefix)</span>
+
+edgefirst-client<span class="w"> </span>create-snapshot<span class="w"> </span>ds-12345
+
+<span class="c1">## Create snapshot with specific annotation set</span>
+
+edgefirst-client<span class="w"> </span>create-snapshot<span class="w"> </span>ds-12345<span class="w"> </span>--annotation-set<span class="w"> </span>as-67890
+
+<span class="c1">## Create snapshot with custom description</span>
+
+edgefirst-client<span class="w"> </span>create-snapshot<span class="w"> </span>ds-12345<span class="w"> </span>--description<span class="w"> </span><span class="s2">&quot;Deer Dataset Backup&quot;</span>
+
+<span class="c1">## Create from annotation set (auto-detected by as- prefix, looks up parent dataset)</span>
+
+edgefirst-client<span class="w"> </span>create-snapshot<span class="w"> </span>as-abc123
+
+<span class="c1">## Create from server dataset and wait for completion</span>
+
+edgefirst-client<span class="w"> </span>create-snapshot<span class="w"> </span>ds-12345<span class="w"> </span>--monitor
+
+<span class="c1">## Upload local MCAP file (auto-detected by file extension)</span>
+
+edgefirst-client<span class="w"> </span>create-snapshot<span class="w"> </span>./recording.mcap
+
+<span class="c1">## Upload local directory</span>
+
+edgefirst-client<span class="w"> </span>create-snapshot<span class="w"> </span>./sensor_data/
+
+<span class="c1">## Upload local ZIP file</span>
+
+edgefirst-client<span class="w"> </span>create-snapshot<span class="w"> </span>./dataset.zip
+
+<span class="c1">## Explicitly specify source type</span>
+
+edgefirst-client<span class="w"> </span>create-snapshot<span class="w"> </span>ds-12345<span class="w"> </span>--from-dataset
+edgefirst-client<span class="w"> </span>create-snapshot<span class="w"> </span>./my_data<span class="w"> </span>--from-path
+</code></pre></div>
+<p><strong>Note:</strong> Server-side creation runs asynchronously. Use <code>--monitor</code> to wait for completion, or check status later with <code>edgefirst-client task &lt;TASK_ID&gt;</code>. Local uploads display progress during transfer.</p>
+<h3 id="download-snapshot"><code>download-snapshot</code></h3>
+<p>Download a snapshot to a local directory.</p>
+<p><strong>edgefirst-client download-snapshot</strong> [<em>OPTIONS</em>] <code>--output</code> <em>OUTPUT</em> <em>SNAPSHOT_ID</em></p>
+<p><strong>Arguments:</strong></p>
+<p><em>SNAPSHOT_ID</em>
+:   The unique identifier of the snapshot (format: <strong>ss-xxx</strong>).</p>
+<p><strong>Options:</strong></p>
+<p><code>--output</code> <em>OUTPUT</em>
+:   Output directory path where snapshot contents will be downloaded (required).</p>
+<p><strong>Example:</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c1">## Download snapshot</span>
+
+edgefirst-client<span class="w"> </span>download-snapshot<span class="w"> </span>ss-abc123<span class="w"> </span>--output<span class="w"> </span>./snapshot_data/
+</code></pre></div>
+<h3 id="restore-snapshot"><code>restore-snapshot</code></h3>
+<p>Restore a snapshot to a dataset in a project. Supports <abbr title="Binary container format for robotics log data">MCAP</abbr> uploads with optional AGTG (auto-annotation) and automatic depth map generation for compatible camera data.</p>
+<p><strong>edgefirst-client restore-snapshot</strong> [<em>OPTIONS</em>] <em>PROJECT_ID</em> <em>SNAPSHOT_ID</em></p>
+<p><strong>Arguments:</strong></p>
+<p><em>PROJECT_ID</em>
+:   The project ID to restore the snapshot into.</p>
+<p><em>SNAPSHOT_ID</em>
+:   The unique identifier of the snapshot to restore (format: <strong>ss-xxx</strong>).</p>
+<p><strong>Options:</strong></p>
+<p><code>--topics</code> <em>TOPICS</em>
+:   <abbr title="Binary container format for robotics log data">MCAP</abbr> topics to include (comma-separated). Empty means all topics.</p>
+<p><code>--autolabel</code> <em>AUTOLABEL</em>
+:   Object labels for AGTG auto-annotation (comma-separated, e.g. <code>person,car</code>). Empty means no AGTG. Requires compatible sensor data and trained models.</p>
+<p><code>--autodepth</code>
+:   Generate depth maps. Maivin/Raivin cameras only.</p>
+<p><code>--dataset-name</code> <em>DATASET_NAME</em>
+:   Custom name for the restored dataset.</p>
+<p><code>--dataset-description</code> <em>DATASET_DESCRIPTION</em>
+:   Description for the restored dataset.</p>
+<p><code>--monitor</code>
+:   Monitor the restore task progress until completion.</p>
+<p><strong>Example:</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c1">## Basic restore into a project</span>
+
+edgefirst-client<span class="w"> </span>restore-snapshot<span class="w"> </span>p-abc123<span class="w"> </span>ss-def456
+
+<span class="c1">## Restore with AGTG auto-annotation for the given labels</span>
+
+edgefirst-client<span class="w"> </span>restore-snapshot<span class="w"> </span>p-abc123<span class="w"> </span>ss-def456<span class="w"> </span>--autolabel<span class="w"> </span>person,car
+
+<span class="c1">## Restore with AGTG and depth generation, with a custom name, and wait for completion</span>
+
+edgefirst-client<span class="w"> </span>restore-snapshot<span class="w"> </span>p-abc123<span class="w"> </span>ss-def456<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--autolabel<span class="w"> </span>person,car<span class="w"> </span>--autodepth<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--dataset-name<span class="w"> </span><span class="s2">&quot;Field Test Restore&quot;</span><span class="w"> </span>--monitor
+</code></pre></div>
+<p><strong>Note:</strong> Restoration creates a new dataset. The original snapshot remains unchanged and can be restored multiple times. AGTG processing runs asynchronously — use <code>--monitor</code>, or check task status, for completion.</p>
+<p>For more information about AGTG, see: ../../datasets/tutorials/annotations/automatic.md</p>
+<h3 id="delete-snapshot"><code>delete-snapshot</code></h3>
+<p>Delete a snapshot permanently. This operation cannot be undone.</p>
+<p><strong>edgefirst-client delete-snapshot</strong> <em>SNAPSHOT_ID</em></p>
+<p><strong>Arguments:</strong></p>
+<p><em>SNAPSHOT_ID</em>
+:   The unique identifier of the snapshot to delete (format: <strong>ss-xxx</strong>).</p>
+<p><strong>Example:</strong></p>
+<div class="highlight"><pre><span></span><code>edgefirst-client<span class="w"> </span>delete-snapshot<span class="w"> </span>ss-abc123
+</code></pre></div>
+<p><strong>Warning:</strong> Deletion is permanent. Ensure the snapshot is no longer needed before deleting.</p>
+<h3 id="generate-arrow"><code>generate-arrow</code></h3>
+<p>Generate an Arrow annotation file from a folder of images. This is useful for importing existing image collections into EdgeFirst Dataset Format.</p>
+<p><strong>edgefirst-client generate-arrow</strong> [<em>OPTIONS</em>] <code>--output</code> <em>OUTPUT</em> <em>FOLDER</em></p>
+<p>The command will:</p>
+<ol>
+<li>Scan the folder recursively for image files (JPEG, PNG)</li>
+<li>Optionally detect sequence patterns (name_frame.ext)</li>
+<li>Create an Arrow file with the 2025.10 schema and null annotations</li>
+</ol>
+<p><strong>Arguments:</strong></p>
+<p><em>FOLDER</em>
+:   Folder containing images to process. The command scans recursively for supported image formats.</p>
+<p><strong>Options:</strong></p>
+<p><strong>-o, --output</strong> <em>OUTPUT</em>
+:   Output Arrow file path (required). The file will be created with the EdgeFirst Dataset Format schema.</p>
+<p><code>--detect-sequences</code>
+:   Detect sequence patterns in filenames. Files matching patterns like <code>name_001.jpg</code>, <code>name_002.jpg</code> will be grouped into sequences.</p>
+<p><strong>Example:</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c1">## Generate Arrow file from images</span>
+
+edgefirst-client<span class="w"> </span>generate-arrow<span class="w"> </span>./images<span class="w"> </span>--output<span class="w"> </span>dataset.arrow
+
+<span class="c1">## Generate with sequence detection</span>
+
+edgefirst-client<span class="w"> </span>generate-arrow<span class="w"> </span>./images<span class="w"> </span>-o<span class="w"> </span>my_data/my_data.arrow<span class="w"> </span>--detect-sequences
+
+<span class="c1">## Create Arrow file for existing dataset structure</span>
+
+edgefirst-client<span class="w"> </span>generate-arrow<span class="w"> </span>./sensor_data/camera/<span class="w"> </span>--output<span class="w"> </span>./sensor_data/my_data.arrow
+</code></pre></div>
+<p><strong>Note:</strong> The generated Arrow file contains null annotations for each image. Use EdgeFirst Studio to add annotations, or use <code>create-snapshot</code> to upload the directory to EdgeFirst Studio.</p>
+<h3 id="validate-snapshot"><code>validate-snapshot</code></h3>
+<p>Validate a snapshot directory structure against the EdgeFirst Dataset Format specification.</p>
+<p><strong>edgefirst-client validate-snapshot</strong> [<em>OPTIONS</em>] <em>PATH</em></p>
+<p>The command checks that the directory follows the EdgeFirst Dataset Format:</p>
+<ul>
+<li>Arrow file exists at expected location (<code>&lt;name&gt;.arrow</code> or <code>&lt;name&gt;/&lt;name&gt;.arrow</code>)</li>
+<li>Sensor container directory exists (e.g., <code>camera/</code>, <code>lidar/</code>)</li>
+<li>All files referenced in the Arrow file exist on disk</li>
+</ul>
+<p><strong>Arguments:</strong></p>
+<p><em>PATH</em>
+:   Snapshot directory to validate. Can be a directory containing an Arrow file and sensor data.</p>
+<p><strong>Options:</strong></p>
+<p><strong>-v, --verbose</strong>
+:   Show detailed validation issues including warnings and informational messages.</p>
+<p><strong>Example:</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c1">## Validate a snapshot directory</span>
+
+edgefirst-client<span class="w"> </span>validate-snapshot<span class="w"> </span>./my_dataset
+
+<span class="c1">## Validate with detailed output</span>
+
+edgefirst-client<span class="w"> </span>validate-snapshot<span class="w"> </span>./my_dataset<span class="w"> </span>--verbose
+
+<span class="c1">## Validate before uploading</span>
+
+edgefirst-client<span class="w"> </span>validate-snapshot<span class="w"> </span>./sensor_data<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>edgefirst-client<span class="w"> </span>create-snapshot<span class="w"> </span>./sensor_data
+</code></pre></div>
+<p><strong>Exit codes:</strong></p>
+<ul>
+<li><strong>0</strong>: Validation passed (warnings may be present)</li>
+<li><strong>1</strong>: Validation failed with errors</li>
+</ul>
+<h2 id="coco-interchange">COCO interchange</h2>
+<p>Tools for converting between the COCO (Common Objects in Context) annotation format and the EdgeFirst Dataset Format, and for importing and exporting COCO datasets directly to and from EdgeFirst Studio. These commands support bounding boxes and polygon segmentation; RLE segmentation is decoded to polygons.</p>
+<p>For details on the <a href="../../../datasets/format/">EdgeFirst Dataset Format</a> and its COCO mapping.</p>
+<h3 id="coco-to-arrow"><code>coco-to-arrow</code></h3>
+<p>Convert COCO annotations to EdgeFirst Arrow format. Reads a COCO annotation JSON file or ZIP archive and converts it to the EdgeFirst Dataset Format (Arrow).</p>
+<p><strong>edgefirst-client coco-to-arrow</strong> [<em>OPTIONS</em>] <code>--output</code> <em>OUTPUT</em> <em>COCO_PATH</em></p>
+<p><strong>Arguments:</strong></p>
+<p><em>COCO_PATH</em>
+:   Path to a COCO annotation file (JSON) or ZIP archive.</p>
+<p><strong>Options:</strong></p>
+<p><strong>-o, --output</strong> <em>OUTPUT</em>
+:   Output Arrow file path (required).</p>
+<p><code>--masks</code> <em>MASKS</em>
+:   Include segmentation masks. Defaults to <strong>true</strong>; pass <code>--masks=false</code> to convert bounding boxes only. [possible values: true, false]</p>
+<p><code>--group</code> <em>GROUP</em>
+:   Group name applied to all samples (e.g. <code>train</code>, <code>val</code>). Sets the dataset split for every converted sample.</p>
+<p><strong>Examples:</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c1">## Convert detection annotations (boxes + masks) to Arrow</span>
+
+edgefirst-client<span class="w"> </span>coco-to-arrow<span class="w"> </span>instances.json<span class="w"> </span>-o<span class="w"> </span>dataset.arrow
+
+<span class="c1">## Convert a COCO ZIP archive and tag every sample as the train split</span>
+
+edgefirst-client<span class="w"> </span>coco-to-arrow<span class="w"> </span>coco.zip<span class="w"> </span>-o<span class="w"> </span>dataset.arrow<span class="w"> </span>--group<span class="w"> </span>train
+
+<span class="c1">## Convert bounding boxes only (no segmentation)</span>
+
+edgefirst-client<span class="w"> </span>coco-to-arrow<span class="w"> </span>instances_val2017.json<span class="w"> </span>-o<span class="w"> </span>val.arrow<span class="w"> </span>--masks<span class="o">=</span><span class="nb">false</span><span class="w"> </span>--group<span class="w"> </span>val
+</code></pre></div>
+<p><strong>Note:</strong> Every image in the COCO <code>images</code> array produces at least one row. An image with no annotations is emitted as a single placeholder row with a null label, preserving the image and its <code>group</code> so dataset splits cover the full image set.</p>
+<h3 id="arrow-to-coco"><code>arrow-to-coco</code></h3>
+<p>Convert EdgeFirst Arrow format to COCO annotations. Reads an EdgeFirst Arrow file and converts it to COCO JSON, optionally filtered by group.</p>
+<p><strong>edgefirst-client arrow-to-coco</strong> [<em>OPTIONS</em>] <code>--output</code> <em>OUTPUT</em> <em>ARROW_PATH</em></p>
+<p><strong>Arguments:</strong></p>
+<p><em>ARROW_PATH</em>
+:   Path to an EdgeFirst Arrow file.</p>
+<p><strong>Options:</strong></p>
+<p><strong>-o, --output</strong> <em>OUTPUT</em>
+:   Output COCO JSON file path (required).</p>
+<p><code>--masks</code> <em>MASKS</em>
+:   Include segmentation masks. Defaults to <strong>true</strong>; pass <code>--masks=false</code> for bounding boxes only. [possible values: true, false]</p>
+<p><code>--groups</code> <em>GROUPS</em>
+:   Filter by group names (comma-separated, e.g. <code>train,val</code>). If omitted, all groups are exported.</p>
+<p><code>--pretty</code>
+:   Pretty-print the JSON output.</p>
+<p><strong>Examples:</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c1">## Convert an Arrow dataset to COCO JSON</span>
+
+edgefirst-client<span class="w"> </span>arrow-to-coco<span class="w"> </span>dataset.arrow<span class="w"> </span>-o<span class="w"> </span>instances.json
+
+<span class="c1">## Export only the train and val splits, pretty-printed</span>
+
+edgefirst-client<span class="w"> </span>arrow-to-coco<span class="w"> </span>dataset.arrow<span class="w"> </span>-o<span class="w"> </span>instances.json<span class="w"> </span>--groups<span class="w"> </span>train,val<span class="w"> </span>--pretty
+</code></pre></div>
+<h3 id="import-coco"><code>import-coco</code></h3>
+<p>Import a COCO dataset directly into EdgeFirst Studio. Converts COCO annotations and uploads the images and annotations to a dataset. Create a new dataset automatically with <code>--name</code>, or target an existing dataset and annotation set.</p>
+<p>COCO datasets must be extracted before import — ZIP archives are not supported directly. Extract the annotations and images first.</p>
+<p><strong>edgefirst-client import-coco</strong> [<em>OPTIONS</em>] <em>COCO_PATH</em></p>
+<p><strong>Arguments:</strong></p>
+<p><em>COCO_PATH</em>
+:   Path to a COCO annotation JSON file or an extracted COCO directory.</p>
+<p><strong>Options:</strong></p>
+<p><strong>-p, --project</strong> <em>PROJECT</em>
+:   Project ID. Required when creating a new dataset with <code>--name</code>.</p>
+<p><strong>-n, --name</strong> <em>NAME</em>
+:   Create a new dataset with this name (alternative to <code>--dataset</code>).</p>
+<p><strong>-d, --description</strong> <em>DESCRIPTION</em>
+:   Description for the new dataset (used with <code>--name</code>).</p>
+<p><code>--dataset</code> <em>DATASET</em>
+:   Target dataset ID (alternative to <code>--name</code>).</p>
+<p><code>--annotation-set</code> <em>ANNOTATION_SET</em>
+:   Target annotation set ID. Defaults to the dataset's first annotation set if not specified.</p>
+<p><code>--group</code> <em>GROUP</em>
+:   Group name for the imported samples. Acts as a filter against the group auto-detected from each image's path/filename; if omitted, the detected group is used.</p>
+<p><code>--masks</code> <em>MASKS</em>
+:   Include segmentation masks. Defaults to <strong>true</strong>; pass <code>--masks=false</code> for bounding boxes only. [possible values: true, false]</p>
+<p><code>--images</code> <em>IMAGES</em>
+:   Include images in the upload. Defaults to <strong>true</strong>; pass <code>--images=false</code> to upload annotations only. [possible values: true, false]</p>
+<p><code>--batch-size</code> <em>BATCH_SIZE</em>
+:   Number of samples per upload batch. [default: 100]</p>
+<p><code>--concurrency</code> <em>CONCURRENCY</em>
+:   Maximum number of concurrent uploads. [default: 64]</p>
+<p><code>--verify</code>
+:   Verify the import instead of uploading — compares the local COCO dataset against Studio and reports differences.</p>
+<p><code>--update</code>
+:   Update annotations on existing samples without re-uploading images. Use this to add masks to samples imported without them, or to sync updated annotations to Studio.</p>
+<p><strong>Examples:</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c1">## Create a new dataset and import (group auto-detected from image folders)</span>
+
+edgefirst-client<span class="w"> </span>import-coco<span class="w"> </span>./coco<span class="w"> </span>--project<span class="w"> </span>p-123<span class="w"> </span>--name<span class="w"> </span><span class="s2">&quot;COCO 2017&quot;</span>
+
+<span class="c1">## Import into an existing dataset and annotation set</span>
+
+edgefirst-client<span class="w"> </span>import-coco<span class="w"> </span>./coco<span class="w"> </span>--dataset<span class="w"> </span>ds-123<span class="w"> </span>--annotation-set<span class="w"> </span>as-456
+
+<span class="c1">## Import detection boxes only into an existing dataset</span>
+
+edgefirst-client<span class="w"> </span>import-coco<span class="w"> </span>./coco/annotations/instances_train2017.json<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--dataset<span class="w"> </span>ds-123<span class="w"> </span>--annotation-set<span class="w"> </span>as-456<span class="w"> </span>--masks<span class="o">=</span><span class="nb">false</span>
+
+<span class="c1">## Verify a previous import without uploading</span>
+
+edgefirst-client<span class="w"> </span>import-coco<span class="w"> </span>./coco<span class="w"> </span>--dataset<span class="w"> </span>ds-123<span class="w"> </span>--verify
+</code></pre></div>
+<p><strong>Note:</strong> <code>--group</code> matches against the group EdgeFirst derives from each image's path; standard COCO files reference images by bare filename (e.g. <code>000000397133.jpg</code>) and therefore carry no detectable group, so passing a value that does not match excludes those images. To assign a split to images that have none, convert with <code>coco-to-arrow --group</code> and upload with <code>upload-dataset</code>.</p>
+<h3 id="export-coco"><code>export-coco</code></h3>
+<p>Export an EdgeFirst Studio dataset to COCO format. Downloads samples and annotations from Studio and converts them to COCO JSON, optionally bundling the images into a ZIP archive.</p>
+<p><strong>edgefirst-client export-coco</strong> [<em>OPTIONS</em>] <code>--output</code> <em>OUTPUT</em> <em>DATASET_ID</em> <em>ANNOTATION_SET_ID</em></p>
+<p><strong>Arguments:</strong></p>
+<p><em>DATASET_ID</em>
+:   Source dataset ID in Studio.</p>
+<p><em>ANNOTATION_SET_ID</em>
+:   Source annotation set ID.</p>
+<p><strong>Options:</strong></p>
+<p><strong>-o, --output</strong> <em>OUTPUT</em>
+:   Output file path. Use a <code>.json</code> extension for annotations only, or <code>.zip</code> to bundle images (see <code>--images</code>).</p>
+<p><code>--groups</code> <em>GROUPS</em>
+:   Filter by group names (comma-separated, e.g. <code>train,val</code>). If omitted, all groups are exported.</p>
+<p><code>--masks</code> <em>MASKS</em>
+:   Include segmentation masks. Defaults to <strong>true</strong>; pass <code>--masks=false</code> for bounding boxes only. [possible values: true, false]</p>
+<p><code>--images</code>
+:   Include images in the output. This produces a ZIP archive containing both the COCO JSON and the image files.</p>
+<p><code>--pretty</code>
+:   Pretty-print the JSON output.</p>
+<p><strong>Examples:</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c1">## Export annotations to COCO JSON</span>
+
+edgefirst-client<span class="w"> </span>export-coco<span class="w"> </span>ds-123<span class="w"> </span>as-456<span class="w"> </span>-o<span class="w"> </span>instances.json
+
+<span class="c1">## Export the train and val splits with images as a ZIP bundle</span>
+
+edgefirst-client<span class="w"> </span>export-coco<span class="w"> </span>ds-123<span class="w"> </span>as-456<span class="w"> </span>-o<span class="w"> </span>coco.zip<span class="w"> </span>--images<span class="w"> </span>--groups<span class="w"> </span>train,val
+</code></pre></div>
+<h3 id="migrate"><code>migrate</code></h3>
+<p>Migrate an Arrow file from the 2025.10 schema to the 2026.04 schema. Converts the legacy NaN-separated <code>mask</code> column (<code>List(Float32)</code>) to the new nested <code>polygon</code> column (<code>List(List(Float32))</code>) and sets the <code>schema_version</code> metadata.</p>
+<p><strong>edgefirst-client migrate</strong> [<em>OPTIONS</em>] <em>INPUT</em></p>
+<p><strong>Arguments:</strong></p>
+<p><em>INPUT</em>
+:   Path to the input Arrow file.</p>
+<p><strong>Options:</strong></p>
+<p><code>--output</code> <em>OUTPUT</em>
+:   Output path. Defaults to overwriting the input file in place.</p>
+<p><strong>Examples:</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c1">## Migrate in place</span>
+
+edgefirst-client<span class="w"> </span>migrate<span class="w"> </span>dataset.arrow
+
+<span class="c1">## Migrate to a new file, preserving the original</span>
+
+edgefirst-client<span class="w"> </span>migrate<span class="w"> </span>dataset.arrow<span class="w"> </span>--output<span class="w"> </span>migrated.arrow
+</code></pre></div>
+<h2 id="training">Training</h2>
+<h3 id="experiments"><code>experiments</code></h3>
+<p>List training experiments for the provided project ID (optional). Experiments are a method of grouping training sessions together.</p>
+<p><strong>edgefirst-client experiments</strong> [<code>--name</code> <em>NAME</em>] [<em>PROJECT_ID</em>]</p>
+<p><strong>Arguments:</strong></p>
+<p><em>PROJECT_ID</em>
+:   Optional project ID to filter experiments.</p>
+<p><strong>Options:</strong></p>
+<p><code>--name</code> <em>NAME</em>
+:   Filter experiments by name (case-insensitive substring match).</p>
+<h3 id="experiment"><code>experiment</code></h3>
+<p>Retrieve detailed information for a specific experiment.</p>
+<p><strong>edgefirst-client experiment</strong> <em>EXPERIMENT_ID</em></p>
+<p><strong>Arguments:</strong></p>
+<p><em>EXPERIMENT_ID</em>
+:   The unique identifier of the experiment.</p>
+<h3 id="training-sessions"><code>training-sessions</code></h3>
+<p>List training sessions for the provided experiment ID (optional). Sessions are individual training jobs that can be queried for detailed information.</p>
+<p><strong>edgefirst-client training-sessions</strong> [<code>--name</code> <em>NAME</em>] [<em>EXPERIMENT_ID</em>]</p>
+<p><strong>Arguments:</strong></p>
+<p><em>EXPERIMENT_ID</em>
+:   Optional experiment ID to limit the training sessions.</p>
+<p><strong>Options:</strong></p>
+<p><code>--name</code> <em>NAME</em>
+:   Filter sessions by name (case-insensitive substring match).</p>
+<h3 id="training-session"><code>training-session</code></h3>
+<p>Retrieve training session information for the provided session ID.</p>
+<p><strong>edgefirst-client training-session</strong> [<em>OPTIONS</em>] <em>TRAINING_SESSION_ID</em></p>
+<p><strong>Arguments:</strong></p>
+<p><em>TRAINING_SESSION_ID</em>
+:   Training session ID. Can be either an integer or a string with the format <strong>t-xxx</strong> where xxx is the session ID in hexadecimal (as shown in the Web UI).</p>
+<p><strong>Options:</strong></p>
+<p><strong>-m</strong>, <code>--model</code>
+:   List the model parameters for the training session.</p>
+<p><strong>-d</strong>, <code>--dataset</code>
+:   List the dataset parameters for the training session.</p>
+<p><strong>-a</strong>, <code>--artifacts</code>
+:   List available artifacts for the training session.</p>
+<p><strong>Example:</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c1">## Get basic session info</span>
+
+edgefirst-client<span class="w"> </span>training-session<span class="w"> </span>t-1a2b
+
+<span class="c1">## Get session with model parameters</span>
+
+edgefirst-client<span class="w"> </span>training-session<span class="w"> </span><span class="m">12345</span><span class="w"> </span>--model<span class="w"> </span>--dataset
+</code></pre></div>
+<h3 id="download-artifact"><code>download-artifact</code></h3>
+<p>Download an artifact from the provided training session ID.</p>
+<p><strong>edgefirst-client download-artifact</strong> [<code>--output</code> <em>OUTPUT</em>] <em>SESSION_ID</em> <em>NAME</em></p>
+<p><strong>Arguments:</strong></p>
+<p><em>SESSION_ID</em>
+:   Training session ID. Can be either an integer or a string with the format <strong>t-xxx</strong>.</p>
+<p><em>NAME</em>
+:   Name of the artifact to download (e.g., <strong>model.pth</strong>, <strong>metrics.json</strong>).</p>
+<p><strong>Options:</strong></p>
+<p><code>--output</code> <em>OUTPUT</em>
+:   Optional output file path. If not provided, the artifact is downloaded to the current working directory with its original name.</p>
+<p><strong>Example:</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c1">## Download to current directory</span>
+
+edgefirst-client<span class="w"> </span>download-artifact<span class="w"> </span>t-1a2b<span class="w"> </span>best_model.pth
+
+<span class="c1">## Download to specific location</span>
+
+edgefirst-client<span class="w"> </span>download-artifact<span class="w"> </span><span class="m">12345</span><span class="w"> </span>model.pth<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--output<span class="w"> </span>/models/production/model-v2.pth
+</code></pre></div>
+<h3 id="upload-artifact"><code>upload-artifact</code></h3>
+<p>Upload an artifact to the provided training session ID.</p>
+<p><strong>edgefirst-client upload-artifact</strong> [<code>--name</code> <em>NAME</em>] <em>SESSION_ID</em> <em>PATH</em></p>
+<p><strong>Arguments:</strong></p>
+<p><em>SESSION_ID</em>
+:   Training session ID.</p>
+<p><em>PATH</em>
+:   Path to the artifact file to upload.</p>
+<p><strong>Options:</strong></p>
+<p><code>--name</code> <em>NAME</em>
+:   Optional name for the artifact. If not provided, the file's basename is used.</p>
+<p><strong>Example:</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c1">## Upload with original filename</span>
+
+edgefirst-client<span class="w"> </span>upload-artifact<span class="w"> </span><span class="m">12345</span><span class="w"> </span>./checkpoint.pth
+
+<span class="c1">## Upload with custom name</span>
+
+edgefirst-client<span class="w"> </span>upload-artifact<span class="w"> </span>t-1a2b<span class="w"> </span>./final.pth<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--name<span class="w"> </span>production_model.pth
+</code></pre></div>
+<h2 id="tasks">Tasks</h2>
+<h3 id="tasks_1"><code>tasks</code></h3>
+<p>List all tasks for the current user. Tasks represent asynchronous operations like training jobs, dataset imports, or model exports.</p>
+<p><strong>edgefirst-client tasks</strong> [<em>OPTIONS</em>]</p>
+<p><strong>Options:</strong></p>
+<p><code>--stages</code>
+:   Retrieve and display the task stages (detailed progress information).</p>
+<p><code>--name</code> <em>NAME</em>
+:   Filter tasks by name.</p>
+<p><code>--workflow</code> <em>WORKFLOW</em>
+:   Filter tasks by workflow type.</p>
+<p><code>--status</code> <em>STATUS</em>
+:   Filter tasks by status (e.g., pending, running, completed, failed).</p>
+<p><code>--manager</code> <em>MANAGER</em>
+:   Filter tasks by manager type.</p>
+<p><strong>Example:</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c1">## List all tasks</span>
+
+edgefirst-client<span class="w"> </span>tasks
+
+<span class="c1">## List running training tasks with stages</span>
+
+edgefirst-client<span class="w"> </span>tasks<span class="w"> </span>--status<span class="w"> </span>running<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--workflow<span class="w"> </span>training<span class="w"> </span>--stages
+</code></pre></div>
+<h3 id="task"><code>task</code></h3>
+<p>Retrieve detailed information about a specific task.</p>
+<p><strong>edgefirst-client task</strong> [<em>OPTIONS</em>] <em>TASK_ID</em></p>
+<p><strong>Arguments:</strong></p>
+<p><em>TASK_ID</em>
+:   The unique identifier of the task.</p>
+<p><strong>Options:</strong></p>
+<p><code>--monitor</code>
+:   Monitor the task progress until completion.</p>
+<h2 id="validation">Validation</h2>
+<h3 id="validation-sessions"><code>validation-sessions</code></h3>
+<p>List validation sessions for the provided project ID.</p>
+<p><strong>edgefirst-client validation-sessions</strong> <em>PROJECT_ID</em></p>
+<p><strong>Arguments:</strong></p>
+<p><em>PROJECT_ID</em>
+:   The project ID to list validation sessions for.</p>
+<h3 id="validation-session"><code>validation-session</code></h3>
+<p>Retrieve validation session information for the provided session ID.</p>
+<p><strong>edgefirst-client validation-session</strong> <em>SESSION_ID</em></p>
+<p><strong>Arguments:</strong></p>
+<p><em>SESSION_ID</em>
+:   The unique identifier of the validation session.</p>
+<h2 id="environment-variables">Environment variables</h2>
+<p><strong>STUDIO_SERVER</strong>
+:   EdgeFirst Studio server name. Used when logging in or when no token is available. If a token exists with a different server, <strong>STUDIO_SERVER</strong> is ignored and a warning is displayed.</p>
+<p><strong>STUDIO_USERNAME</strong>
+:   Username for authentication. Overridden by <code>--username</code> option.</p>
+<p><strong>STUDIO_PASSWORD</strong>
+:   Password for authentication. Overridden by <code>--password</code> option.</p>
+<p><strong>STUDIO_TOKEN</strong>
+:   Authentication token. The server is extracted from the token and takes priority over <strong>STUDIO_SERVER</strong>. Overridden by <code>--token</code> option.</p>
+<p><strong>RUST_LOG</strong>
+:   Logging level (error, warn, info, debug, trace). Default: info.</p>
+<h2 id="token-file-locations">Token file locations</h2>
+<p><strong>~/.config/EdgeFirst Studio/token</strong> (Linux)
+:   Cached authentication token for persistent sessions.</p>
+<p><strong>~/Library/Application Support/ai.EdgeFirst.EdgeFirst Studio/token</strong> (macOS)
+:   Cached authentication token for persistent sessions.</p>
+<p><strong>%APPDATA%\EdgeFirst\EdgeFirst Studio\config\token</strong> (Windows)
+:   Cached authentication token for persistent sessions.</p>
+<h2 id="exit-status">Exit status</h2>
+<p><strong>0</strong>
+:   Success</p>
+<p><strong>1</strong>
+:   General error (authentication failure, network error, invalid parameters)</p>
+<p><strong>101</strong>
+:   Test failure (when running tests)</p>
+<h2 id="examples">Examples</h2>
+<h3 id="authentication-workflow">Authentication Workflow</h3>
+<div class="highlight"><pre><span></span><code><span class="c1"># Login and cache token (prompts for username and password)</span>
+
+edgefirst-client<span class="w"> </span>--server<span class="w"> </span><span class="nb">test</span><span class="w"> </span>login
+
+<span class="c1"># Subsequent commands use cached token</span>
+
+edgefirst-client<span class="w"> </span>projects
+</code></pre></div>
+<h3 id="alternative-environment-variables">Alternative: Environment Variables</h3>
+<div class="highlight"><pre><span></span><code><span class="c1"># Set credentials in environment</span>
+
+<span class="nb">export</span><span class="w"> </span><span class="nv">STUDIO_SERVER</span><span class="o">=</span><span class="nb">test</span>
+<span class="nb">export</span><span class="w"> </span><span class="nv">STUDIO_USERNAME</span><span class="o">=</span>user@example.com
+<span class="nb">export</span><span class="w"> </span><span class="nv">STUDIO_PASSWORD</span><span class="o">=</span>secret
+
+<span class="c1"># Commands automatically use environment variables</span>
+
+edgefirst-client<span class="w"> </span>datasets
+</code></pre></div>
+<h3 id="alternative-token-based-authentication">Alternative: Token-Based Authentication</h3>
+<div class="highlight"><pre><span></span><code><span class="c1"># Get token and store in environment</span>
+
+<span class="nb">export</span><span class="w"> </span><span class="nv">STUDIO_TOKEN</span><span class="o">=</span><span class="k">$(</span>edgefirst-client<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--username<span class="w"> </span>user@example.com<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--password<span class="w"> </span>secret<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>token<span class="k">)</span>
+
+<span class="c1"># Use token for subsequent commands</span>
+
+edgefirst-client<span class="w"> </span>--token<span class="w"> </span><span class="nv">$STUDIO_TOKEN</span><span class="w"> </span>projects
+</code></pre></div>
+<h3 id="dataset-management-workflow">Dataset Management Workflow</h3>
+<div class="highlight"><pre><span></span><code><span class="c1"># Create a new project dataset</span>
+
+<span class="nv">DATASET_ID</span><span class="o">=</span><span class="k">$(</span>edgefirst-client<span class="w"> </span>create-dataset<span class="w"> </span><span class="m">12345</span><span class="w"> </span><span class="s2">&quot;Q4 Training&quot;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--description<span class="w"> </span><span class="s2">&quot;Fourth quarter training data&quot;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>grep<span class="w"> </span>-oP<span class="w"> </span><span class="s1">&#39;\d+$&#39;</span><span class="k">)</span>
+
+<span class="c1"># Create annotation set</span>
+
+<span class="nv">ANNSET_ID</span><span class="o">=</span><span class="k">$(</span>edgefirst-client<span class="w"> </span>create-annotation-set<span class="w"> </span><span class="nv">$DATASET_ID</span><span class="w"> </span><span class="s2">&quot;Manual&quot;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--description<span class="w"> </span><span class="s2">&quot;Human-verified annotations&quot;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>grep<span class="w"> </span>-oP<span class="w"> </span><span class="s1">&#39;\d+$&#39;</span><span class="k">)</span>
+
+<span class="c1"># Upload data</span>
+
+edgefirst-client<span class="w"> </span>upload-dataset<span class="w"> </span><span class="nv">$DATASET_ID</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--annotations<span class="w"> </span>data.arrow<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--images<span class="w"> </span>./photos/<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--annotation-set-id<span class="w"> </span><span class="nv">$ANNSET_ID</span>
+
+<span class="c1"># Download for verification</span>
+
+edgefirst-client<span class="w"> </span>download-dataset<span class="w"> </span><span class="nv">$DATASET_ID</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--output<span class="w"> </span>./verify/
+
+<span class="c1"># Clean up</span>
+
+edgefirst-client<span class="w"> </span>delete-annotation-set<span class="w"> </span><span class="nv">$ANNSET_ID</span>
+edgefirst-client<span class="w"> </span>delete-dataset<span class="w"> </span><span class="nv">$DATASET_ID</span>
+</code></pre></div>
+<h3 id="training-artifact-management">Training Artifact Management</h3>
+<div class="highlight"><pre><span></span><code><span class="c1"># List experiments and sessions</span>
+
+edgefirst-client<span class="w"> </span>experiments<span class="w"> </span><span class="m">12345</span>
+edgefirst-client<span class="w"> </span>training-sessions
+
+<span class="c1"># Get session details</span>
+
+edgefirst-client<span class="w"> </span>training-session<span class="w"> </span>t-1a2b<span class="w"> </span>--artifacts
+
+<span class="c1"># Download training artifacts</span>
+
+edgefirst-client<span class="w"> </span>download-artifact<span class="w"> </span>t-1a2b<span class="w"> </span>model.pth<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--output<span class="w"> </span>./models/
+
+<span class="c1"># Upload post-training artifacts</span>
+
+edgefirst-client<span class="w"> </span>upload-artifact<span class="w"> </span>t-1a2b<span class="w"> </span>./analysis.json
+</code></pre></div>
+<h3 id="monitoring-tasks">Monitoring Tasks</h3>
+<div class="highlight"><pre><span></span><code><span class="c1"># List all running tasks with stages</span>
+
+edgefirst-client<span class="w"> </span>tasks<span class="w"> </span>--status<span class="w"> </span>running<span class="w"> </span>--stages
+
+<span class="c1"># Monitor specific task</span>
+
+watch<span class="w"> </span>-n<span class="w"> </span><span class="m">5</span><span class="w"> </span><span class="s1">&#39;edgefirst-client task 98765&#39;</span>
+</code></pre></div>
+<h3 id="python-api-integration-pip-install">Python <abbr title="Application Programming Interface">API</abbr> Integration (pip install)</h3>
+<div class="highlight"><pre><span></span><code><span class="c1"># One install provides CLI + Python module</span>
+
+python3<span class="w"> </span>-m<span class="w"> </span>venv<span class="w"> </span>.venv<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nb">source</span><span class="w"> </span>.venv/bin/activate
+pip<span class="w"> </span>install<span class="w"> </span>edgefirst-client<span class="w"> </span>tqdm
+
+edgefirst-client<span class="w"> </span>login
+python<span class="w"> </span>examples/01_authentication.py
+</code></pre></div>
+<p>Hybrid CLI + Python workflow with the public Coffee Cup dataset (<code>ds-145f</code>):</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># Inspect dataset</span>
+
+edgefirst-client<span class="w"> </span>dataset<span class="w"> </span>ds-145f<span class="w"> </span>--annotation-sets<span class="w"> </span>--labels
+
+<span class="c1"># Export annotations as Arrow, analyze in Python</span>
+
+edgefirst-client<span class="w"> </span>download-annotations<span class="w"> </span>&lt;as-id&gt;<span class="w"> </span>coffee_cup.arrow<span class="w"> </span>--groups<span class="w"> </span>val
+python<span class="w"> </span>examples/04_polars_dataframe.py
+
+<span class="c1"># Download images</span>
+
+edgefirst-client<span class="w"> </span>download-dataset<span class="w"> </span>ds-145f<span class="w"> </span>--groups<span class="w"> </span>val<span class="w"> </span>--types<span class="w"> </span>image<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--output<span class="w"> </span>./coffee_cup_images/
+</code></pre></div>
+<p>Full tutorial index: <a href="../../tutorials/">Python tutorials</a>.</p>
+<h2 id="see-also">See also</h2>
+<ul>
+<li><a href="../">CLI introduction</a></li>
+<li><a href="../../import/">Dataset import</a></li>
+<li><a href="../../tutorials/">Python tutorials</a></li>
+<li><a href="https://github.com/EdgeFirstAI/client/blob/main/CLI.md">GitHub CLI.md</a> — upstream source for contributors</li>
+</ul>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  <form class="md-feedback" name="feedback" hidden>
+    <fieldset>
+      <legend class="md-feedback__title">
+        Was this page helpful?
+      </legend>
+      <div class="md-feedback__inner">
+        <div class="md-feedback__list">
+          
+            <button class="md-feedback__icon md-icon" type="submit" title="This page was helpful" data-md-value="1">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 12a8 8 0 0 0-8-8 8 8 0 0 0-8 8 8 8 0 0 0 8 8 8 8 0 0 0 8-8m2 0a10 10 0 0 1-10 10A10 10 0 0 1 2 12 10 10 0 0 1 12 2a10 10 0 0 1 10 10M10 9.5c0 .8-.7 1.5-1.5 1.5S7 10.3 7 9.5 7.7 8 8.5 8s1.5.7 1.5 1.5m7 0c0 .8-.7 1.5-1.5 1.5S14 10.3 14 9.5 14.7 8 15.5 8s1.5.7 1.5 1.5m-5 7.73c-1.75 0-3.29-.73-4.19-1.81L9.23 14c.45.72 1.52 1.23 2.77 1.23s2.32-.51 2.77-1.23l1.42 1.42c-.9 1.08-2.44 1.81-4.19 1.81"/></svg>
+            </button>
+          
+            <button class="md-feedback__icon md-icon" type="submit" title="This page could be improved" data-md-value="0">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 12a8 8 0 0 0-8-8 8 8 0 0 0-8 8 8 8 0 0 0 8 8 8 8 0 0 0 8-8m2 0a10 10 0 0 1-10 10A10 10 0 0 1 2 12 10 10 0 0 1 12 2a10 10 0 0 1 10 10m-6.5-4c.8 0 1.5.7 1.5 1.5s-.7 1.5-1.5 1.5-1.5-.7-1.5-1.5.7-1.5 1.5-1.5M10 9.5c0 .8-.7 1.5-1.5 1.5S7 10.3 7 9.5 7.7 8 8.5 8s1.5.7 1.5 1.5m2 4.5c1.75 0 3.29.72 4.19 1.81l-1.42 1.42C14.32 16.5 13.25 16 12 16s-2.32.5-2.77 1.23l-1.42-1.42C8.71 14.72 10.25 14 12 14"/></svg>
+            </button>
+          
+        </div>
+        <div class="md-feedback__note">
+          
+            <div data-md-value="1" hidden>
+              
+              
+                
+              
+              
+              
+                
+                
+              
+              Thanks for your feedback!
+            </div>
+          
+            <div data-md-value="0" hidden>
+              
+              
+                
+              
+              
+              
+                
+                
+              
+              Thanks for your feedback! Help us improve this page by using our <a href="..." target="_blank" rel="noopener">feedback form</a>.
+            </div>
+          
+        </div>
+      </div>
+    </fieldset>
+  </form>
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href="../" class="md-footer__link md-footer__link--prev" aria-label="Previous: Command-Line Interface">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                Command-Line Interface
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../../import/" class="md-footer__link md-footer__link--next" aria-label="Next: Dataset Import">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                Dataset Import
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2025 Au-Zone Technologies &mdash; <a href="#__consent">Privacy Settings</a>
+
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        
+<div class="md-social">
+  
+    
+    
+    
+    
+    <a href="https://github.com/EdgeFirstAI" target="_blank" rel="noopener" title="EdgeFirst on GitHub" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+    </a>
+  
+    
+    
+    
+    
+    <a href="https://ca.linkedin.com/company/au-zone-technologies" target="_blank" rel="noopener" title="Au-Zone Technologies on LinkedIn" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3M135.4 416H69V202.2h66.5V416zM102.2 96a38.5 38.5 0 1 1 0 77 38.5 38.5 0 1 1 0-77m282.1 320h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9z"/></svg>
+    </a>
+  
+    
+    
+    
+    
+    <a href="https://x.com/au_zone" target="_blank" rel="noopener" title="Au-Zone on X" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M357.2 48h70.6L273.6 224.2 455 464H313L201.7 318.6 74.5 464H3.8l164.9-188.5L-5.2 48h145.6l100.5 132.9zm-24.8 373.8h39.1L119.1 88h-42z"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+      <div class="md-consent" data-md-component="consent" id="__consent" hidden>
+        <div class="md-consent__overlay"></div>
+        <aside class="md-consent__inner">
+          <form class="md-consent__form md-grid md-typeset" name="consent">
+            
+
+
+  
+
+
+<h4>Privacy Settings</h4>
+<p>We use cookies to recognize your repeated visits and preferences, as well as to measure the effectiveness of our documentation and whether users find what they're searching for. With your consent, you're helping us to make our documentation better.</p>
+<input class="md-toggle" type="checkbox" id="__settings" >
+<div class="md-consent__settings">
+  <ul class="task-list">
+    
+    
+    
+      
+    
+    
+      
+        
+  
+  
+    
+    
+      
+    
+  
+  <li class="task-list-item">
+    <label class="task-list-control">
+      <input type="checkbox" name="analytics" checked>
+      <span class="task-list-indicator"></span>
+      Google Analytics
+    </label>
+  </li>
+
+      
+    
+  </ul>
+</div>
+<div class="md-consent__controls">
+  
+    
+      <button class="md-button md-button--primary">Accept</button>
+    
+    
+    
+  
+    
+    
+    
+      <label class="md-button" for="__settings">Manage settings</label>
+    
+  
+</div>
+          </form>
+        </aside>
+      </div>
+      <script>var consent=__md_get("__consent");if(consent)for(var input of document.forms.consent.elements)input.name&&(input.checked=consent[input.name]||!1);else"file:"!==location.protocol&&setTimeout((function(){document.querySelector("[data-md-component=consent]").hidden=!1}),250);var form=document.forms.consent;for(var action of["submit","reset"])form.addEventListener(action,(function(e){if(e.preventDefault(),"reset"===e.type)for(var n of document.forms.consent.elements)n.name&&(n.checked=!1);__md_set("__consent",Object.fromEntries(Array.from(new FormData(form).keys()).map((function(e){return[e,!0]})))),location.hash="",location.reload()}))</script>
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["content.code.copy", "content.code.annotate", "content.tabs.link", "navigation.instant", "navigation.tracking", "navigation.tabs", "navigation.tabs.sticky", "navigation.path", "navigation.indexes", "navigation.top", "navigation.footer", "navigation.prune", "toc.follow", "search.suggest", "search.highlight"], "search": "../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"alias": true, "default": "latest", "provider": "mike"}}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>

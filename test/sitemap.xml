@@ -29,6 +29,66 @@
          <lastmod>2026-06-26</lastmod>
     </url>
     <url>
+         <loc>https://doc.edgefirst.ai/test/client/</loc>
+         <lastmod>2026-06-26</lastmod>
+    </url>
+    <url>
+         <loc>https://doc.edgefirst.ai/test/client/import/</loc>
+         <lastmod>2026-06-26</lastmod>
+    </url>
+    <url>
+         <loc>https://doc.edgefirst.ai/test/client/api/</loc>
+         <lastmod>2026-06-26</lastmod>
+    </url>
+    <url>
+         <loc>https://doc.edgefirst.ai/test/client/api/python/</loc>
+         <lastmod>2026-06-26</lastmod>
+    </url>
+    <url>
+         <loc>https://doc.edgefirst.ai/test/client/api/rust/</loc>
+         <lastmod>2026-06-26</lastmod>
+    </url>
+    <url>
+         <loc>https://doc.edgefirst.ai/test/client/cli/</loc>
+         <lastmod>2026-06-26</lastmod>
+    </url>
+    <url>
+         <loc>https://doc.edgefirst.ai/test/client/cli/reference/</loc>
+         <lastmod>2026-06-26</lastmod>
+    </url>
+    <url>
+         <loc>https://doc.edgefirst.ai/test/client/tutorials/</loc>
+         <lastmod>2026-06-26</lastmod>
+    </url>
+    <url>
+         <loc>https://doc.edgefirst.ai/test/client/tutorials/01_authentication/</loc>
+         <lastmod>2026-06-26</lastmod>
+    </url>
+    <url>
+         <loc>https://doc.edgefirst.ai/test/client/tutorials/02_explore_dataset/</loc>
+         <lastmod>2026-06-26</lastmod>
+    </url>
+    <url>
+         <loc>https://doc.edgefirst.ai/test/client/tutorials/03_fetch_annotations/</loc>
+         <lastmod>2026-06-26</lastmod>
+    </url>
+    <url>
+         <loc>https://doc.edgefirst.ai/test/client/tutorials/04_polars_dataframe/</loc>
+         <lastmod>2026-06-26</lastmod>
+    </url>
+    <url>
+         <loc>https://doc.edgefirst.ai/test/client/tutorials/05_download_dataset/</loc>
+         <lastmod>2026-06-26</lastmod>
+    </url>
+    <url>
+         <loc>https://doc.edgefirst.ai/test/client/tutorials/06_create_annotations/</loc>
+         <lastmod>2026-06-26</lastmod>
+    </url>
+    <url>
+         <loc>https://doc.edgefirst.ai/test/client/tutorials/07_manage_labels/</loc>
+         <lastmod>2026-06-26</lastmod>
+    </url>
+    <url>
          <loc>https://doc.edgefirst.ai/test/datasets/</loc>
          <lastmod>2026-06-26</lastmod>
     </url>
@@ -38,10 +98,6 @@
     </url>
     <url>
          <loc>https://doc.edgefirst.ai/test/datasets/coco/</loc>
-         <lastmod>2026-06-26</lastmod>
-    </url>
-    <url>
-         <loc>https://doc.edgefirst.ai/test/datasets/coco/import/</loc>
          <lastmod>2026-06-26</lastmod>
     </url>
     <url>
@@ -373,10 +429,6 @@
          <lastmod>2026-06-26</lastmod>
     </url>
     <url>
-         <loc>https://doc.edgefirst.ai/test/perception/studio/</loc>
-         <lastmod>2026-06-26</lastmod>
-    </url>
-    <url>
          <loc>https://doc.edgefirst.ai/test/perception/4k/</loc>
          <lastmod>2026-06-26</lastmod>
     </url>
@@ -426,10 +478,6 @@
     </url>
     <url>
          <loc>https://doc.edgefirst.ai/test/perception/api/std_msgs/</loc>
-         <lastmod>2026-06-26</lastmod>
-    </url>
-    <url>
-         <loc>https://doc.edgefirst.ai/test/perception/api/studio/</loc>
          <lastmod>2026-06-26</lastmod>
     </url>
     <url>

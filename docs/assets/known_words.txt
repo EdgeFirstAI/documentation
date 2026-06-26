@@ -24,6 +24,7 @@ backend
 backends
 backfilled
 balenaetcher
+basename
 bbox
 bigendian
 binwidth
@@ -190,6 +191,7 @@ jpeg
 jpg
 jq
 json
+jupyter
 keras
 keybindings
 keychain
@@ -218,6 +220,7 @@ mariescu
 math
 mbps
 mcap
+md
 metal
 microcode
 microcontroller
@@ -297,6 +300,7 @@ plugins
 png
 pointcloud
 polars
+polyline
 postprocess
 postprocessed
 postprocessing
@@ -318,6 +322,7 @@ proj
 proto
 protos
 pt
+pth
 ptq
 pushdown
 py

@@ -14640,6 +14640,13 @@ SaaS and self-hosted EdgeFirst Studio instances.</p>
 </code></pre></div>
 
 
+<details class="see-also" open>
+  <summary>See also</summary>
+  <p>Repository examples: <code>examples/01_authentication.py</code> (auth),
+<code>examples/04_polars_dataframe.py</code> (DataFrames),
+<code>examples/06_create_annotations.py</code> (populate_samples).</p>
+</details>
+
 <details class="note" open>
   <summary>Note</summary>
   <p>The client also provides various utility methods for interacting with
@@ -14916,6 +14923,12 @@ to false.</p>
         </li>
     </ul>
 
+
+<details class="see-also" open>
+  <summary>See also</summary>
+  <p>After <code>edgefirst-client login</code>, <code>Client()</code> loads the cached
+token automatically. See <code>examples/01_authentication.py</code>.</p>
+</details>
 
     </div>
 
@@ -15937,7 +15950,7 @@ the request fails.</p>
   <blockquote>
 <blockquote>
 <blockquote>
-<p>client = Client().with_token_path(None)
+<p>client = Client()
 result = client.create_snapshot_from_dataset(
 ...     "ds-12345", "My Backup"
 ... )
@@ -16577,6 +16590,11 @@ callback. Supports:
 </ol>
 <p>Applications should detect the status change to
 reset their progress bar for the second phase.</p>
+</details>
+
+<details class="see-also" open>
+  <summary>See also</summary>
+  <p><code>examples/05_download_dataset.py</code> and CLI <code>download-dataset</code>.</p>
 </details>
 
     </div>
@@ -17609,6 +17627,11 @@ results = client.populate_samples(
 </blockquote>
 </details>
 
+<details class="see-also" open>
+  <summary>See also</summary>
+  <p><code>examples/06_create_annotations.py</code>.</p>
+</details>
+
     </div>
 
 </div>
@@ -18065,7 +18088,7 @@ the specified project. For <abbr title="Binary container format for robotics log
   <blockquote>
 <blockquote>
 <blockquote>
-<p>client = Client().with_token_path(None)
+<p>client = Client()
 result = client.restore_snapshot(
 ...     "p-1",
 ...     "ss-abc123",
@@ -18542,6 +18565,12 @@ Progress unit is samples fetched.</p>
         </li>
     </ul>
 
+
+<details class="see-also" open>
+  <summary>See also</summary>
+  <p>CLI <code>download-annotations</code> exports Arrow for <code>polars.read_ipc</code>.
+<code>examples/04_polars_dataframe.py</code>.</p>
+</details>
 
     </div>
 
@@ -27390,21 +27419,23 @@ tracking the restore process.</p>
   </span>
 
 </h4>
-<div class="doc-signature highlight"><pre><span></span><code><span class="n">date</span><span class="p">:</span> <span class="nb">str</span>
+<div class="doc-signature highlight"><pre><span></span><code><span class="n">date</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span>
 </code></pre></div>
 
     <div class="doc doc-contents ">
 
         <p>Returns the timestamp when the restore was initiated.</p>
+<p>The <code>snapshots.restore</code> response does not always include a date, so
+this may be None.</p>
 
 
 <p><span class="doc-section-title">Returns:</span></p>
     <ul>
         <li class="doc-section-item field-body">
-<b><code>str</code></b> (              <code><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#str">str</a></code>
-)          –
+              <code><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#str">str</a> | None</code>
+          –
           <div class="doc-md-description">
-            <p>The restore timestamp.</p>
+            <p>str | None: The restore timestamp, or None if not provided.</p>
           </div>
         </li>
     </ul>

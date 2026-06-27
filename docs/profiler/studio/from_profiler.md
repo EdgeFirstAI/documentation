@@ -24,7 +24,7 @@ Once signed in the screen shows the **Projects** explorer.
 
 Use `↑` / `↓` to move and `Enter` to drill down:
 
-```
+```text
 Projects  →  Experiments  →  Training Sessions  →  Artifacts
 ```
 
@@ -44,6 +44,9 @@ When you select an artifact (e.g., `best.onnx`, `best.tflite`, `best.engine`), a
 | **Live** | _(reserved)_ Stream live inference back to Studio rather than producing a validation session — covered in a future release. |
 
 Choosing **Validate** opens an inline configuration panel: dataset partition, confidence threshold, IoU threshold, top-K, max detections. Sensible defaults are pre-filled from the training session.
+
+!!! warning "Validation sessions need a writable project"
+    Creating a validation session requires **write access** to the Studio project. The profiler cannot create a session against the read-only public **Sample Project** — first [copy its dataset](../../getting_started/copy_dataset.md) into a project you own (and add your model), then create the training and validation session there. (On a read-only or public project, a `--training-session` run falls back to local-only mode automatically — see [CLI equivalent](#cli-equivalent) below.)
 
 ### 4. Confirm and run
 
@@ -91,7 +94,7 @@ To profile locally **without** creating a Studio session — useful for a quick 
 edgefirst-profiler validate --training-session t-abc123 --no-publish
 ```
 
-The run writes `predictions.parquet` and `trace.pftrace` to disk and skips both session creation and the cloud validator. This is the CLI equivalent of the F2 panel's **Publish: off** toggle. On a read-only or public project — where the profiler cannot create a session — a `--training-session` run falls back to this local-only behaviour automatically.
+The run writes `predictions.parquet` and `trace.pftrace` to disk and skips both session creation and the cloud validator. This is the CLI equivalent of the F2 panel's **Publish: off** toggle. On a read-only or public project — where the profiler cannot create a session — a `--training-session` run falls back to this local-only behavior automatically.
 
 ## When the run completes
 

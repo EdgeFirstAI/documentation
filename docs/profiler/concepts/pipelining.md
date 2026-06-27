@@ -149,5 +149,5 @@ The resolved per-stage depths, the backend, and the operating mode (pipelined vs
 
 ## See also
 
-- [i.MX 8M Plus — Inference depth](../installation/imx8mplus.md#pipeline-depth) — the VSI delegate's auto-clamp to depth 1.
+- [i.MX 8M Plus — Inference depth](../installation/imx8mplus.md#inference-depth) — the VSI delegate's auto-clamp to depth 1.
 - [Validation from Studio — Session Report](../studio/from_studio.md#what-the-run-looks-like) — the per-stage timing breakdown printed to stdout on completion.

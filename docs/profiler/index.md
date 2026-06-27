@@ -1,6 +1,6 @@
 # Profiler
 
-The **EdgeFirst Profiler** is the on-target measurement engine for the EdgeFirst Studio platform. It runs the complete vision pipeline — decode, preprocess, inference, postprocess, NMS — on the hardware your model will deploy to, then publishes per-image predictions and a detailed timing trace to EdgeFirst Studio where accuracy metrics, charts, and trace visualizations are produced.
+The **EdgeFirst Profiler** is the on-target measurement engine for the EdgeFirst Studio platform. It runs the complete vision pipeline — capture, preprocess, inference, postprocess, NMS — on the hardware your model will deploy to, then publishes per-image predictions and a detailed timing trace to EdgeFirst Studio where accuracy metrics, charts, and trace visualizations are produced.
 
 For public benchmarks, explore the **EdgeFirst Model Zoo on Hugging Face** at [https://huggingface.co/spaces/EdgeFirst/Models](https://huggingface.co/spaces/EdgeFirst/Models). We publish public benchmarks and metrics there across Ultralytics and other community models so you can compare your validation results against known baselines.
 
@@ -36,4 +36,4 @@ Both paths produce the same artifacts and the same Studio session card.
 - **[Quick Start](quickstart.md)** — install the profiler, sign in to Studio, run your first validation session in under fifteen minutes.
 - **[Installation](installation/index.md)** — supported targets, per-target dependencies, and target-specific quirks.
 - **[EdgeFirst Studio Integration](studio/index.md)** — connecting to Studio, validation from Studio, and validation from the profiler.
-- **[Pipelining](concepts/pipelining.md)** — the multi-stage measurement pipeline, the `--pipeline-depth` flag, and how each backend constrains it. (Concepts deep-dive.)
+- **[Pipelining](concepts/pipelining.md)** — the multi-stage measurement pipeline, the `--inference-depth` flag, and how each backend constrains it. (Concepts deep-dive.)

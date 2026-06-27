@@ -43,7 +43,7 @@ When launching the profiler with a TFLite model on i.MX 8M Plus, a **delegate se
 | `none` / `cpu` | Reference kernels only. |
 | path to `.so` | Custom delegate. |
 
-## Inference depth {#pipeline-depth}
+## Inference depth
 
 The VSI delegate supports **only one** in-flight inference at a time. The profiler detects this and clamps `--inference-depth` down to a single inference slot — CPU stages (capture, postprocess, encode) still overlap with the single inference, but two inferences cannot run concurrently on the NPU.
 

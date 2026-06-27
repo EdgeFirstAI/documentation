@@ -32,7 +32,7 @@ edgefirst-profiler --version
 
 ## CPU baseline (ONNX Runtime)
 
-The default `--provider cpu` is the most predictable baseline. CPU inference on the RPi5 makes the **decode** and **preprocess** stages a meaningful fraction of total wall time — the Studio trace view will show whether the bottleneck is the model or the pipeline around it.
+The default `--provider cpu` is the most predictable baseline. CPU inference on the RPi5 makes the **capture** and **preprocess** stages a meaningful fraction of total wall time — the Studio trace view will show whether the bottleneck is the model or the pipeline around it.
 
 ## Hailo-8 / 8L accelerator
 

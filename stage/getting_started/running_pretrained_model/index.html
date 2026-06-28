@@ -25,7 +25,7 @@
       
       
       <link rel="icon" href="../../assets/favicon.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+      <meta name="generator" content="mkdocs-ProperDocs 1.6.7, mkdocs-material-9.7.6">
     
     
       
@@ -318,6 +318,28 @@
     
     
       <li class="md-tabs__item">
+        <a href="../../client/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Client
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
         <a href="../../3D/" class="md-tabs__link">
           
   
@@ -493,6 +515,8 @@
       
         
           
+        
+      
         
       
         
@@ -847,6 +871,34 @@
   
   
     <li class="md-nav__item">
+      <a href="../convert_vision/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Convert Vision Model
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../validate_vision/" class="md-nav__link">
         
   
@@ -1038,6 +1090,71 @@
     
   
     Studio
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../client/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Client
   
 
     
@@ -1345,8 +1462,6 @@
       
         
       
-        
-      
     
     
     
@@ -1582,27 +1697,44 @@
 <hr />
 <h2 id="1-if-you-havent-already-log-in-to-edgefirst-studio">1. If you haven't already, log in to EdgeFirst Studio</h2>
 <ol>
-<li>Go to <a href="https://stage.edgefirst.studio/login">EdgeFirst Studio</a></li>
+<li>Go to <a href="https://stage.edgefirst.studio/">EdgeFirst Studio</a></li>
 <li>If you do not have an account, <a href="https://stage.edgefirst.studio/signup">create a free account</a> on the landing page</li>
 <li>Log in with your username and password</li>
 </ol>
 <h2 id="2-locate-a-model-to-run">2. Locate a Model to Run</h2>
 <p>EdgeFirst Studio provides several pre-trained models in the <strong>Sample Projects</strong> section.</p>
 <ol>
-<li>On the landing page after login, click <strong>GO TO PROJECTS</strong>.  This opens the Projects Dashboard</li>
+<li>
+<p>On the landing page after login, click <strong>PROJECTS</strong> at the top next to "Home".  This opens the Projects Dashboard</p>
+<p><figure markdown="span">
+        <img align="center" alt="Go To Projects" src="../../studio/assets/user/home-page-goto-projects.png" />
+        <figcaption>Go To Projects</figcaption>
+        </figure></p>
+</li>
 <li>
 <p>Find the <strong>Sample Projects</strong> card and click <strong>Model Experiments</strong></p>
 <p><figure markdown="span">
         <img align="center" alt="Sample Projects" src="../assets/run_model/sample-projects.png" width="400" />
         <figcaption>Sample Projects</figcaption>
         </figure></p>
+<p>On the <a href="../../studio/models/">Experiments page</a>, each card represents an experiment with multiple training and validation sessions.</p>
 </li>
 <li>
-<p>On the Experiments page, each card represents an experiment with multiple training and validation sessions</p>
+<p>Click on the <strong>Training Sessions</strong> for the "Coffee Cup Segmentation" Experiment to view available sessions.  Each session will have a model in different formats if training completed successfully</p>
+<p><figure markdown="span">
+        <img align="center" alt="Coffee Cup Experiment" src="../assets/run_model/coffeecup-experiment-sample-project.png" />
+        <figcaption>Coffee Cup Experiment</figcaption>
+        </figure></p>
 </li>
-<li>Click on the <strong>Training Sessions</strong> for the Coffee Cup Experiment to view available sessions.  Each session will have a model in different formats if training completed successfully</li>
 <li>
 <p>Click the training session <strong>CoffeCup-mpk3.1.0</strong> to open its details page</p>
+<p><figure markdown="span">
+        <img align="center" alt="Coffee Cup Training Card" src="../assets/run_model/coffeecup-training-session.png" />
+        <figcaption>Coffee Cup Training Card</figcaption>
+        </figure></p>
+</li>
+<li>
+<p>Open the <strong>Artifacts</strong> tab and click the <strong>Play</strong> button next to the artifact you want to deploy. For cloud inference, only <abbr title="Open Neural Network Exchange">ONNX</abbr> model artifacts are supported.</p>
 <p><figure markdown="span">
         <img align="center" alt="Training Session Details" src="../assets/run_model/trainer_details_page.png" />
         <figcaption>Training Session Details</figcaption>
@@ -1630,7 +1762,8 @@
 <li>Choose your camera and allow access when prompted</li>
 <li>The model will start running on the live stream.  Point the camera at coffee cups to see results in real time</li>
 </ol>
-<p>The next step is to dive into the full <abbr title="Machine Learning Operations">MLOps</abbr> workflow in EdgeFirst Studio!  Every workflow begins with creating your own project, which serves as the foundation for everything that follows.</p>
+<p>You're now ready to experience the full <abbr title="Machine Learning Operations">MLOps</abbr> workflow in EdgeFirst Studio. In under an hour — and for approximately $8 USD—you can copy a dataset, train a model, validate its performance, and deploy it in the browser.</p>
+<p>The journey begins by creating a project, which acts as the central workspace for all your datasets, models, validation sessions, and deployments.</p>
 
 
 

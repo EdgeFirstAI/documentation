@@ -15,7 +15,7 @@
         <link rel="canonical" href="https://doc.edgefirst.ai/stage/perception/launcher/">
       
       
-        <link rel="prev" href="../studio/">
+        <link rel="prev" href="../">
       
       
         <link rel="next" href="../data_collection/recording/">
@@ -25,7 +25,7 @@
       
       
       <link rel="icon" href="../../assets/favicon.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+      <meta name="generator" content="mkdocs-ProperDocs 1.6.7, mkdocs-material-9.7.6">
     
     
       
@@ -316,6 +316,28 @@
     
     
       <li class="md-tabs__item">
+        <a href="../../client/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Client
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
         <a href="../../3D/" class="md-tabs__link">
           
   
@@ -511,6 +533,8 @@
       
         
       
+        
+      
     
     
     
@@ -618,6 +642,71 @@
     
   
     Studio
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../client/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Client
   
 
     
@@ -927,8 +1016,6 @@
       
         
       
-        
-      
     
     
     
@@ -945,7 +1032,7 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" checked>
         
           
           <div class="md-nav__link md-nav__container">
@@ -967,14 +1054,14 @@
             </a>
             
               
-              <label class="md-nav__link " for="__nav_7" id="__nav_7_label" tabindex="">
+              <label class="md-nav__link " for="__nav_8" id="__nav_8_label" tabindex="">
                 <span class="md-nav__icon md-icon"></span>
               </label>
             
           </div>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="true">
-          <label class="md-nav__title" for="__nav_7">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_8">
             <span class="md-nav__icon md-icon"></span>
             
   
@@ -984,34 +1071,6 @@
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
             
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../studio/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Studio Client
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
               
             
               
@@ -1346,8 +1405,6 @@
       
         
           
-        
-      
         
       
         
@@ -1708,40 +1765,40 @@
 
 <h1 id="edgefirst-launcher">EdgeFirst Launcher</h1>
 <p>The EdgeFirst Launcher is responsible for managing the EdgeFirst Middleware in user-mode, which means a user launches the services manually from the command-line rather than system-managed where the services are under the control of systemd and installed into the system.</p>
-<p>The user-mode Middleware is meant to be installed using <code>pip install edgefirst</code> which will install the service binaries, webui, and supporting assets such as the default people detection model.  Deploying the launcher can be as simple as <code>edgefirst live</code> like the example shown in <a href="../../models/deployment/launcher/">Deploying to Embedded Targets</a>.  However, the description of each service are provided in the sections below and such as the commands used to deploy these services individually.</p>
-<h3 id="services">Services</h3>
+<p>The user-mode Middleware is meant to be installed using <code>pip install edgefirst</code> which will install the service binaries, webui, and supporting assets such as the default people detection model.  Deploying the launcher can be as simple as <code>edgefirst live</code> like the example shown in <a href="../../models/deployment/launcher/">Deploying to Embedded Targets</a>.  However, descriptions of each service are provided in the sections below such as the commands used to deploy these services individually.</p>
+<h2 id="services">Services</h2>
 <p>The <code>edgefirst</code> launcher is the preferred method of launching multiple services as user-mode whereas system-mode would prefer using systemd to manage services.  The services are described below which is intended for more advanced manual configuration of the services.</p>
-<h4 id="camera-service">Camera Service</h4>
+<h3 id="camera-service">Camera Service</h3>
 <p>The Camera Service or EdgeFirst Camera Publisher implements the standard <abbr title="Robot Operating System 2">ROS2</abbr> camera interfaces plus a proprietary extension to provide <abbr title="Direct Memory Access">DMA</abbr> support.  As with all EdgeFirst services the <abbr title="Robot Operating System 2">ROS2</abbr> interfaces are implemented over Zenoh and can plug into a true <abbr title="Robot Operating System 2">ROS2</abbr> setup using the zenoh-bridge-dds service.</p>
 <p>Deploy this service in your target with the following command.  The <code>&amp;</code> parameter will run the service in the background allowing you to continue using the terminal.  We also specify <code>--mirror none</code> to avoid any horizontal or vertical flip to the camera feed.  By default, the camera is flipped both horizontally and vertically to compensate for the orientation of the Maivin camera which is installed upside-down.</p>
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span>edgefirst-camera<span class="w"> </span>--h264<span class="w"> </span>--mirror<span class="w"> </span>none<span class="w"> </span><span class="p">&amp;</span>
+<div class="highlight"><pre><span></span><code>edgefirst-camera<span class="w"> </span>--h264<span class="w"> </span>--mirror<span class="w"> </span>none<span class="w"> </span><span class="p">&amp;</span>
 </code></pre></div>
 <p>The command below lists all available parameters from this service.</p>
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span>edgefirst-camera<span class="w"> </span>-h
+<div class="highlight"><pre><span></span><code>edgefirst-camera<span class="w"> </span>-h
 </code></pre></div>
 <div class="admonition info">
 <p class="admonition-title">Info</p>
 <p>To bring background executed commands to the foreground, enter <code>fg</code> allowing you to exit the program via CTRL-C.</p>
 </div>
-<h4 id="model-service">Model Service</h4>
+<h3 id="model-service">Model Service</h3>
 <p>The Model Service or Maivin Detection Service deploys a ModelPack Detection and Segmentation model for inference to output bounding boxes or segmentation masks on the detected objects in the camera feed.</p>
 <p>Deploy this service in your target with the following command.  In this command specify the path to the model denoted by <code>--model</code>.  We recommend using a quantized <abbr title="TensorFlow Lite">TFLite</abbr> model in embedded targets.</p>
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span>edgefirst-model<span class="w"> </span>--model<span class="w"> </span>mymodel.tflite<span class="w"> </span><span class="p">&amp;</span>
+<div class="highlight"><pre><span></span><code>edgefirst-model<span class="w"> </span>--model<span class="w"> </span>mymodel.tflite<span class="w"> </span><span class="p">&amp;</span>
 </code></pre></div>
 <p>The command below lists all available parameters from this service.</p>
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span>edgefirst-model<span class="w"> </span>-h
+<div class="highlight"><pre><span></span><code>edgefirst-model<span class="w"> </span>-h
 </code></pre></div>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
 <p>The camera service needs to be running in the background as described <a href="#camera-service">above</a> to fetch camera frames for model inference. </p>
 </div>
-<h4 id="webserver-service">Webserver Service</h4>
-<p>The Webserver Service or the EdgeFirst Web UI Server deploys a webserver on target to provide a GUI that's accessible using the target's IP address as the endpoint on a browser <code>https://MY_DEVICE_IP</code>.  The GUI would provide visualizations from the camera feed and model inferences and exposed the features for recording an <abbr title="Binary container format for robotics log data">MCAP</abbr>, downloading an <abbr title="Binary container format for robotics log data">MCAP</abbr> locally, deleting an <abbr title="Binary container format for robotics log data">MCAP</abbr>, or listing the recorded MCAPs as shown in the <a href="../../models/deployment/launcher/#live-camera-mode">Live Camera Mode</a> section.</p>
+<h3 id="webserver-service">Webserver Service</h3>
+<p>The Webserver Service or the EdgeFirst Web UI Server deploys a webserver on target to provide a GUI that's accessible using the target's IP address as the endpoint on a browser <code>https://MY_DEVICE_IP</code>.  The GUI provides visualizations from the camera feed and model inferences and exposes the features for recording an <abbr title="Binary container format for robotics log data">MCAP</abbr>, downloading an <abbr title="Binary container format for robotics log data">MCAP</abbr> locally, deleting an <abbr title="Binary container format for robotics log data">MCAP</abbr>, or listing the recorded MCAPs as shown in the <a href="../../models/deployment/launcher/#live-camera-mode">Live Camera Mode</a> section.</p>
 <p>If a virtual environment was created, deploy this service using the command below.  The <code>--docroot</code> directory needs to be specified.</p>
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span>edgefirst-websrv<span class="w"> </span>--docroot<span class="w"> </span>venv/share/edgefirst/webui
+<div class="highlight"><pre><span></span><code>edgefirst-websrv<span class="w"> </span>--docroot<span class="w"> </span>venv/share/edgefirst/webui
 </code></pre></div>
 <p>If a virtual environment was not created, deploy this service using the command below.</p>
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span>edgefirst-websrv<span class="w"> </span>--docroot<span class="w"> </span>/usr/share/edgefirst/webui/
+<div class="highlight"><pre><span></span><code>edgefirst-websrv<span class="w"> </span>--docroot<span class="w"> </span>/usr/share/edgefirst/webui/
 </code></pre></div>
 
 
@@ -1832,7 +1889,7 @@
       <nav class="md-footer__inner md-grid" aria-label="Footer" >
         
           
-          <a href="../studio/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Studio Client">
+          <a href="../" class="md-footer__link md-footer__link--prev" aria-label="Previous: The EdgeFirst Perception Middleware">
             <div class="md-footer__button md-icon">
               
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
@@ -1842,7 +1899,7 @@
                 Previous
               </span>
               <div class="md-ellipsis">
-                Studio Client
+                The EdgeFirst Perception Middleware
               </div>
             </div>
           </a>

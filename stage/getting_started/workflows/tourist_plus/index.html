@@ -25,7 +25,7 @@
       
       
       <link rel="icon" href="../../../assets/favicon.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+      <meta name="generator" content="mkdocs-ProperDocs 1.6.7, mkdocs-material-9.7.6">
     
     
       
@@ -318,6 +318,28 @@
     
     
       <li class="md-tabs__item">
+        <a href="../../../client/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Client
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
         <a href="../../../3D/" class="md-tabs__link">
           
   
@@ -493,6 +515,8 @@
       
         
           
+        
+      
         
       
         
@@ -745,6 +769,34 @@
   
   
     <li class="md-nav__item">
+      <a href="../../convert_vision/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Convert Vision Model
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../validate_vision/" class="md-nav__link">
         
   
@@ -836,7 +888,7 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1_10" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1_11" checked>
         
           
           <div class="md-nav__link md-nav__container">
@@ -858,14 +910,14 @@
             </a>
             
               
-              <label class="md-nav__link " for="__nav_1_10" id="__nav_1_10_label" tabindex="0">
+              <label class="md-nav__link " for="__nav_1_11" id="__nav_1_11_label" tabindex="0">
                 <span class="md-nav__icon md-icon"></span>
               </label>
             
           </div>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_1_10_label" aria-expanded="true">
-          <label class="md-nav__title" for="__nav_1_10">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_1_11_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_1_11">
             <span class="md-nav__icon md-icon"></span>
             
   
@@ -976,6 +1028,17 @@
     <span class="md-ellipsis">
       
         Browse Public Datasets
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#browse-public-experiments" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Browse Public Experiments
       
     </span>
   </a>
@@ -1220,6 +1283,71 @@
     
   
     Studio
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../../client/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Client
   
 
     
@@ -1527,8 +1655,6 @@
       
         
       
-        
-      
     
     
     
@@ -1678,6 +1804,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#browse-public-experiments" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Browse Public Experiments
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#browse-public-models" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -1778,12 +1915,34 @@
 </li>
 </ol>
 <h3 id="browse-public-datasets">Browse Public Datasets</h3>
-<p>Once logged in, navigate to the <strong>Sample Project</strong> from the Home Page.</p>
+<p>Once logged in, navigate to the <strong>Sample Project</strong> from the Home Page and click on the datasets.</p>
 <figure>
             <img align="center" alt="Sample Project Datasets" src="../../../studio/assets/projects/sample-datasets-button.jpg" />
             <figcaption>Sample Project Datasets</figcaption>
             </figure>
+<p>You will find <a href="../../../studio/datasets/">sample datasets</a> which contains annotations of objects representing common household items from Coffee Cups to Playing Cards. These datasets are ready to be used for training models to detect these objects.</p>
 <p>Click on any dataset card to view the dataset details, browse frames, and inspect annotations.  No copying is required to explore a public dataset.</p>
+<figure>
+            <img align="center" alt="Public Datasets" src="../../../studio/assets/datasets/public-datasets.jpg" />
+            <figcaption>Public Datasets</figcaption>
+            </figure>
+<h3 id="browse-public-experiments">Browse Public Experiments</h3>
+<p>EdgeFirst Studio organizes model training and validation into <a href="../../../studio/models/"><strong>experiments</strong></a>. Each experiment groups related training and validation sessions together so you can compare results, track improvements, and reproduce runs.</p>
+<p>From the Home Page, navigate to the <strong>Sample Project</strong> and click <strong>Model Experiments</strong> to browse the available experiments.</p>
+<figure>
+            <img align="center" alt="Sample Project Model Experiments" src="../../../studio/assets/projects/sample-experiments-button.jpg" />
+            <figcaption>Sample Project Model Experiments</figcaption>
+            </figure>
+<p>Inside an experiment you will find:</p>
+<ul>
+<li><strong>Training sessions</strong> — each session records the model architecture, dataset used, training parameters, loss curves, and the resulting model artifacts (<abbr title="Open Neural Network Exchange">ONNX</abbr>, <abbr title="TensorFlow Lite">TFLite</abbr>, etc.)</li>
+<li><strong>Validation sessions</strong> — each session measures the accuracy of a trained model against a dataset, producing precision-recall curves, <abbr title="mean Average Precision">mAP</abbr> scores, and per-class metrics</li>
+</ul>
+<figure>
+            <img align="center" alt="Sample Experiments — training and validation sessions" src="../../../studio/assets/projects/sample-experiments.jpg" />
+            <figcaption>Sample Experiments — training and validation sessions</figcaption>
+            </figure>
+<p>Exploring the sample experiments is a good way to understand what a completed <abbr title="Machine Learning Operations">MLOps</abbr> run looks like before you start training your own models.</p>
 <h3 id="browse-public-models">Browse Public Models</h3>
 <p>Navigate to the <strong>Models</strong> section from any project to browse available models and their associated training and validation sessions.</p>
 <p>Next deploy any model in EdgeFirst Studio by following this <a href="../../running_pretrained_model/">guide</a>.</p>

@@ -25,7 +25,7 @@
       
       
       <link rel="icon" href="../../../assets/favicon.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+      <meta name="generator" content="mkdocs-ProperDocs 1.6.7, mkdocs-material-9.7.6">
     
     
       
@@ -316,6 +316,28 @@
     
     
       <li class="md-tabs__item">
+        <a href="../../../client/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Client
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
         <a href="../../../3D/" class="md-tabs__link">
           
   
@@ -511,6 +533,8 @@
       
         
       
+        
+      
     
     
     
@@ -618,6 +642,71 @@
     
   
     Studio
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../../client/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Client
   
 
     
@@ -925,8 +1014,6 @@
       
         
       
-        
-      
     
     
     
@@ -1012,7 +1099,7 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9" checked>
         
           
           <div class="md-nav__link md-nav__container">
@@ -1034,14 +1121,14 @@
             </a>
             
               
-              <label class="md-nav__link " for="__nav_8" id="__nav_8_label" tabindex="">
+              <label class="md-nav__link " for="__nav_9" id="__nav_9_label" tabindex="">
                 <span class="md-nav__icon md-icon"></span>
               </label>
             
           </div>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="true">
-          <label class="md-nav__title" for="__nav_8">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_9_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_9">
             <span class="md-nav__icon md-icon"></span>
             
   
@@ -1291,10 +1378,10 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8_5" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9_5" checked>
         
           
-          <label class="md-nav__link" for="__nav_8_5" id="__nav_8_5_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_9_5" id="__nav_9_5_label" tabindex="0">
             
   
   
@@ -1312,8 +1399,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_8_5_label" aria-expanded="true">
-          <label class="md-nav__title" for="__nav_8_5">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_9_5_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_9_5">
             <span class="md-nav__icon md-icon"></span>
             
   
@@ -1851,14 +1938,14 @@ fusion.tflite<span class="w">  </span>modelpack.rtm
 <code>https://verdin-imx8mp-xxxxx/config/model</code></p>
 <h3 id="manual-model-deployment">Manual Model Deployment</h3>
 <p>In case the manual deployment is needed, you need to connect to the device via <a href="../../networking/ssh/"><abbr title="Secure Shell">SSH</abbr></a>:</p>
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span>ssh<span class="w"> </span>torizon@verdin-imx8mp-15141030
+<div class="highlight"><pre><span></span><code>ssh<span class="w"> </span>torizon@verdin-imx8mp-15141030
 </code></pre></div>
 <p>and edit the model parameters in <code>/etc/default/model</code></p>
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span>vi<span class="w"> </span>/etc/default/model
+<div class="highlight"><pre><span></span><code>vi<span class="w"> </span>/etc/default/model
 </code></pre></div>
 <p>then restart the model service using the <code>systemctl</code> command</p>
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span>sudo<span class="w"> </span>systemctl<span class="w"> </span>stop<span class="w"> </span>model
-$<span class="w"> </span>sudo<span class="w"> </span>systemctl<span class="w"> </span>start<span class="w"> </span>model
+<div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>systemctl<span class="w"> </span>stop<span class="w"> </span>model
+sudo<span class="w"> </span>systemctl<span class="w"> </span>start<span class="w"> </span>model
 </code></pre></div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
@@ -1874,9 +1961,9 @@ $<span class="w"> </span>sudo<span class="w"> </span>systemctl<span class="w"> <
 <div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>vi<span class="w"> </span>/etc/default/fusion
 </code></pre></div>
 <p>Change the model line to point to the new Fusion model <code>/home/torizon/fusion.tflite</code>:</p>
-<div class="highlight"><pre><span></span><code># The radar model
-MODEL = &quot;/usr/share/fusion/radarexp-ultra-short.tflite&quot;
-#MODEL = &quot;/home/torizon/fusion.tflite&quot;
+<div class="highlight"><pre><span></span><code><span class="c1"># The radar model</span>
+<span class="na">MODEL</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;/usr/share/fusion/radarexp-ultra-short.tflite&quot;</span>
+<span class="c1">#MODEL = &quot;/home/torizon/fusion.tflite&quot;</span>
 </code></pre></div>
 <p>After that, restart the Fusion Service using the following command:</p>
 <div class="highlight"><pre><span></span><code>systemctl<span class="w"> </span>restart<span class="w"> </span>fusion

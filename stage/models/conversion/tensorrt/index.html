@@ -25,7 +25,7 @@
       
       
       <link rel="icon" href="../../../assets/favicon.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+      <meta name="generator" content="mkdocs-ProperDocs 1.6.7, mkdocs-material-9.7.6">
     
     
       
@@ -316,6 +316,28 @@
     
     
       <li class="md-tabs__item">
+        <a href="../../../client/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Client
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
         <a href="../../../3D/" class="md-tabs__link">
           
   
@@ -511,6 +533,8 @@
       
         
       
+        
+      
     
     
     
@@ -618,6 +642,71 @@
     
   
     Studio
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../../client/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Client
   
 
     
@@ -872,7 +961,7 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" checked>
         
           
           <div class="md-nav__link md-nav__container">
@@ -894,14 +983,14 @@
             </a>
             
               
-              <label class="md-nav__link " for="__nav_6" id="__nav_6_label" tabindex="">
+              <label class="md-nav__link " for="__nav_7" id="__nav_7_label" tabindex="">
                 <span class="md-nav__icon md-icon"></span>
               </label>
             
           </div>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="true">
-          <label class="md-nav__title" for="__nav_6">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_7">
             <span class="md-nav__icon md-icon"></span>
             
   
@@ -1062,6 +1151,8 @@
       
         
       
+        
+      
     
     
     
@@ -1075,7 +1166,7 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_4" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7_4" checked>
         
           
           <div class="md-nav__link md-nav__container">
@@ -1097,14 +1188,14 @@
             </a>
             
               
-              <label class="md-nav__link " for="__nav_6_4" id="__nav_6_4_label" tabindex="0">
+              <label class="md-nav__link " for="__nav_7_4" id="__nav_7_4_label" tabindex="0">
                 <span class="md-nav__icon md-icon"></span>
               </label>
             
           </div>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_4_label" aria-expanded="true">
-          <label class="md-nav__title" for="__nav_6_4">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_7_4_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_7_4">
             <span class="md-nav__icon md-icon"></span>
             
   
@@ -1114,6 +1205,34 @@
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
             
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../calibration/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Calibration Snapshot
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
               
             
               
@@ -1627,8 +1746,6 @@
       
         
       
-        
-      
     
     
     
@@ -1901,6 +2018,10 @@
 <h1 id="tensorrt-converter">TensorRT Converter</h1>
 <p>The <strong>TensorRT Converter</strong> prepares an <abbr title="Open Neural Network Exchange">ONNX</abbr> model exported from an EdgeFirst Studio training session for deployment on <strong>NVIDIA Jetson</strong> devices. It is the only EdgeFirst Converter App that produces a portable bundle rather than a deployment-ready binary: the cloud-side job packages the <abbr title="Open Neural Network Exchange">ONNX</abbr> model with a <code>build.sh</code> script, and the user runs that script on the target Jetson, where <code>trtexec</code> compiles the final <code>.engine</code> against the exact OS, JetPack, <abbr title="NVIDIA Compute Unified Device Architecture">CUDA</abbr>, and TensorRT versions present on the device.</p>
 <p>This design is forced by TensorRT's binary contract: TensorRT 10.3 engine binaries are platform-locked at the OS and <abbr title="Application Binary Interface">ABI</abbr> level. An engine built on AWS Batch (x86-64) is rejected by the Jetson aarch64 TRT runtime with a "platform tag mismatch" error, even when the GPU compute capabilities match. NVIDIA's own DeepStream / TAO workflow defers the engine build to the target device for the same reason; the TensorRT Converter follows that pattern.</p>
+<div class="admonition tip">
+<p class="admonition-title">Model Zoo — Supported Models &amp; Benchmarks</p>
+<p>For the latest supported model list, <abbr title="Half-precision 16-bit floating-point">FP16</abbr> accuracy benchmarks, and validation results on NVIDIA Jetson, see the <a href="https://huggingface.co/spaces/EdgeFirst/Models">EdgeFirst Model Zoo</a> on Hugging Face.</p>
+</div>
 <h2 id="studio-launch-form">Studio Launch Form</h2>
 <p>The TensorRT Converter exposes <strong>no conversion knobs</strong> in EdgeFirst Studio — there is no <code>conversion</code> group on the launch form. You pick the training session and click <strong>Start App</strong>; the form includes an informational note explaining that the output is a portable bundle requiring an on-device build step.</p>
 <p>The only effective user choice happens later on the Jetson itself: <code>./build.sh fp16</code> (the default and recommended setting) or <code>./build.sh fp32</code> (for debugging — larger and slower). That choice is made when running the bundle's build script on the target device.</p>
@@ -1954,17 +2075,17 @@
 </li>
 <li>
 <p>Copy the bundle to the Jetson via <a href="https://en.wikipedia.org/wiki/Secure_copy_protocol">SCP</a>:</p>
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span>scp<span class="w"> </span>&lt;model&gt;.tensorrt.zip<span class="w"> </span>username@hostname:~/
+<div class="highlight"><pre><span></span><code>scp<span class="w"> </span>&lt;model&gt;.tensorrt.zip<span class="w"> </span>username@hostname:~/
 </code></pre></div>
 </li>
 <li>
 <p>On the Jetson, unzip the bundle into a folder:</p>
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span>unzip<span class="w"> </span>-d<span class="w"> </span>&lt;model&gt;/<span class="w"> </span>&lt;model&gt;.tensorrt.zip
+<div class="highlight"><pre><span></span><code>unzip<span class="w"> </span>-d<span class="w"> </span>&lt;model&gt;/<span class="w"> </span>&lt;model&gt;.tensorrt.zip
 </code></pre></div>
 </li>
 <li>
 <p>Enter the extracted folder:</p>
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span><span class="nb">cd</span><span class="w"> </span>&lt;model&gt;/
+<div class="highlight"><pre><span></span><code><span class="nb">cd</span><span class="w"> </span>&lt;model&gt;/
 </code></pre></div>
 <div class="admonition note">
 <p class="admonition-title">Prerequisites</p>
@@ -1981,7 +2102,7 @@
 </code></pre></div>
 </li>
 <li>
-<p>Install the <a href="../../../perception/studio/">edgefirst-client</a> package:</p>
+<p>Install the <a href="../../../client/cli/">edgefirst-client</a> package:</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>pip3<span class="w"> </span>install<span class="w"> </span>edgefirst-client
 </code></pre></div>
 </li>
@@ -1996,20 +2117,20 @@
 <li>
 <p>Compile the bundle into a TensorRT engine with <code>--publish</code> to push the sealed artifact back to EdgeFirst Studio.</p>
 <p>Run the build:</p>
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span>./build.sh<span class="w"> </span>fp16<span class="w"> </span>--publish
+<div class="highlight"><pre><span></span><code>./build.sh<span class="w"> </span>fp16<span class="w"> </span>--publish
 </code></pre></div>
 <p>The script verifies <code>trtexec</code>, <code>jq</code>, and <code>python3</code> are on <code>PATH</code> (all default on JetPack 6.2), then:</p>
 <ol>
 <li>Calls <code>trtexec --onnx=model.onnx --fp16 --saveEngine=&lt;name&gt;.fp16.engine</code>.</li>
 <li>Updates <code>edgefirst.json</code> with on-target build values via <code>jq</code> (precision, engine <code>sha256</code>, build timestamp, on-device TRT version, builder flags).</li>
 <li>ZIP-appends <code>edgefirst.json</code> and <code>labels.txt</code> to the engine using Python's <code>zipfile</code> module.</li>
-<li>If <code>--publish</code> is set, uploads the sealed engine to Studio via <code>edgefirst-client upload-artifact</code>. See the <a href="../../../perception/studio/">edgefirst-client</a> page for more.</li>
+<li>If <code>--publish</code> is set, uploads the sealed engine to Studio via <code>edgefirst-client upload-artifact</code>. See the <a href="../../../client/cli/">edgefirst-client</a> page for more.</li>
 </ol>
 <p>The output is a sealed <code>.fp16.engine</code> with metadata readable by any ZIP reader; the TensorRT deserializer ignores trailing bytes.</p>
 </li>
 <li>
 <p>The compiled <code>&lt;model&gt;.fp16.engine</code> is now ready to deploy. The artifact is also available in the Studio session for re-download to other compatible devices. Verify the engine loads successfully with:</p>
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span>trtexec<span class="w"> </span>--loadEngine<span class="o">=</span>&lt;model&gt;.fp16.engine<span class="w"> </span>--iterations<span class="o">=</span><span class="m">100</span>
+<div class="highlight"><pre><span></span><code>trtexec<span class="w"> </span>--loadEngine<span class="o">=</span>&lt;model&gt;.fp16.engine<span class="w"> </span>--iterations<span class="o">=</span><span class="m">100</span>
 </code></pre></div>
 </li>
 </ol>

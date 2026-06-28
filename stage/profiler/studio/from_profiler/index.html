@@ -25,7 +25,7 @@
       
       
       <link rel="icon" href="../../../assets/favicon.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+      <meta name="generator" content="mkdocs-ProperDocs 1.6.7, mkdocs-material-9.7.6">
     
     
       
@@ -316,6 +316,28 @@
     
     
       <li class="md-tabs__item">
+        <a href="../../../client/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Client
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
         <a href="../../../3D/" class="md-tabs__link">
           
   
@@ -511,6 +533,8 @@
       
         
       
+        
+      
     
     
     
@@ -653,6 +677,71 @@
       
         
       
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../../client/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Client
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
     
     
     
@@ -736,7 +825,7 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" checked>
         
           
           <div class="md-nav__link md-nav__container">
@@ -758,14 +847,14 @@
             </a>
             
               
-              <label class="md-nav__link " for="__nav_4" id="__nav_4_label" tabindex="">
+              <label class="md-nav__link " for="__nav_5" id="__nav_5_label" tabindex="">
                 <span class="md-nav__icon md-icon"></span>
               </label>
             
           </div>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
-          <label class="md-nav__title" for="__nav_4">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_5">
             <span class="md-nav__icon md-icon"></span>
             
   
@@ -813,6 +902,8 @@
   
     
     
+      
+        
       
         
       
@@ -971,7 +1062,7 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_5" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_5" checked>
         
           
           <div class="md-nav__link md-nav__container">
@@ -993,14 +1084,14 @@
             </a>
             
               
-              <label class="md-nav__link " for="__nav_4_5" id="__nav_4_5_label" tabindex="0">
+              <label class="md-nav__link " for="__nav_5_5" id="__nav_5_5_label" tabindex="0">
                 <span class="md-nav__icon md-icon"></span>
               </label>
             
           </div>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_5_label" aria-expanded="true">
-          <label class="md-nav__title" for="__nav_4_5">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_5_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_5_5">
             <span class="md-nav__icon md-icon"></span>
             
   
@@ -1426,8 +1517,6 @@
       
         
       
-        
-      
     
     
     
@@ -1784,6 +1873,10 @@
 </tbody>
 </table>
 <p>Choosing <strong>Validate</strong> opens an inline configuration panel: dataset partition, confidence threshold, <abbr title="Intersection over Union">IoU</abbr> threshold, top-K, max detections. Sensible defaults are pre-filled from the training session.</p>
+<div class="admonition warning">
+<p class="admonition-title">Validation sessions need a writable project</p>
+<p>Creating a validation session requires <strong>write access</strong> to the Studio project. The profiler cannot create a session against the read-only public <strong>Sample Project</strong> — first <a href="../../../getting_started/copy_dataset/">copy its dataset</a> into a project you own (and add your model), then create the training and validation session there. (On a read-only or public project, a <code>--training-session</code> run falls back to local-only mode automatically — see <a href="#cli-equivalent">CLI equivalent</a> below.)</p>
+</div>
 <h3 id="4-confirm-and-run">4. Confirm and run</h3>
 <p>Submit the configuration. The profiler:</p>
 <ol>
@@ -1814,6 +1907,10 @@
 <span class="w">    </span>--model<span class="w"> </span>best.tflite
 </code></pre></div>
 <p><code>--training-session</code> produces a brand-new validation session every time it is run; pass <code>--session-id v-XXXX</code> instead to re-publish to an existing session.</p>
+<p>To profile locally <strong>without</strong> creating a Studio session — useful for a quick one-off timing check — pass <code>--no-publish</code>:</p>
+<div class="highlight"><pre><span></span><code>edgefirst-profiler<span class="w"> </span>validate<span class="w"> </span>--training-session<span class="w"> </span>t-abc123<span class="w"> </span>--no-publish
+</code></pre></div>
+<p>The run writes <code>predictions.parquet</code> and <code>trace.pftrace</code> to disk and skips both session creation and the cloud validator. This is the CLI equivalent of the F2 panel's <strong>Publish: off</strong> toggle. On a read-only or public project — where the profiler cannot create a session — a <code>--training-session</code> run falls back to this local-only behavior automatically.</p>
 <h2 id="when-the-run-completes">When the run completes</h2>
 <p>The completion summary in the TUI lists the new session ID, the headline latency numbers, and the local trace path. Press <strong>Enter</strong> to dismiss and return to the dashboard. Switch back to F2 to drill into the just-created session and confirm Studio received the artifacts; from there the Studio web UI is the canonical place for charts, comparisons, and the trace viewer.</p>
 

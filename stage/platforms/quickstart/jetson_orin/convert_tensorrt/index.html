@@ -25,7 +25,7 @@
       
       
       <link rel="icon" href="../../../../assets/favicon.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+      <meta name="generator" content="mkdocs-ProperDocs 1.6.7, mkdocs-material-9.7.6">
     
     
       
@@ -316,6 +316,28 @@
     
     
       <li class="md-tabs__item">
+        <a href="../../../../client/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Client
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
         <a href="../../../../3D/" class="md-tabs__link">
           
   
@@ -511,6 +533,8 @@
       
         
       
+        
+      
     
     
     
@@ -618,6 +642,71 @@
     
   
     Studio
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../../../client/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Client
   
 
     
@@ -925,8 +1014,6 @@
       
         
       
-        
-      
     
     
     
@@ -1012,7 +1099,7 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9" checked>
         
           
           <div class="md-nav__link md-nav__container">
@@ -1034,14 +1121,14 @@
             </a>
             
               
-              <label class="md-nav__link " for="__nav_8" id="__nav_8_label" tabindex="">
+              <label class="md-nav__link " for="__nav_9" id="__nav_9_label" tabindex="">
                 <span class="md-nav__icon md-icon"></span>
               </label>
             
           </div>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="true">
-          <label class="md-nav__title" for="__nav_8">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_9_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_9">
             <span class="md-nav__icon md-icon"></span>
             
   
@@ -1089,10 +1176,10 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8_2" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9_2" checked>
         
           
-          <label class="md-nav__link" for="__nav_8_2" id="__nav_8_2_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_9_2" id="__nav_9_2_label" tabindex="0">
             
   
   
@@ -1110,8 +1197,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_8_2_label" aria-expanded="true">
-          <label class="md-nav__title" for="__nav_8_2">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_9_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_9_2">
             <span class="md-nav__icon md-icon"></span>
             
   
@@ -1445,7 +1532,7 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8_2_5" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9_2_5" checked>
         
           
           <div class="md-nav__link md-nav__container">
@@ -1467,14 +1554,14 @@
             </a>
             
               
-              <label class="md-nav__link " for="__nav_8_2_5" id="__nav_8_2_5_label" tabindex="0">
+              <label class="md-nav__link " for="__nav_9_2_5" id="__nav_9_2_5_label" tabindex="0">
                 <span class="md-nav__icon md-icon"></span>
               </label>
             
           </div>
         
-        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_8_2_5_label" aria-expanded="true">
-          <label class="md-nav__title" for="__nav_8_2_5">
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_9_2_5_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_9_2_5">
             <span class="md-nav__icon md-icon"></span>
             
   
@@ -1672,6 +1759,10 @@
   
     
     
+      
+        
+      
+        
       
         
       
@@ -2221,17 +2312,17 @@
 </li>
 <li>
 <p>Copy the bundle to the Jetson via <a href="https://en.wikipedia.org/wiki/Secure_copy_protocol">SCP</a>:</p>
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span>scp<span class="w"> </span>&lt;model&gt;.tensorrt.zip<span class="w"> </span>username@hostname:~/
+<div class="highlight"><pre><span></span><code>scp<span class="w"> </span>&lt;model&gt;.tensorrt.zip<span class="w"> </span>username@hostname:~/
 </code></pre></div>
 </li>
 <li>
 <p>On the Jetson, unzip the bundle into a folder:</p>
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span>unzip<span class="w"> </span>-d<span class="w"> </span>&lt;model&gt;/<span class="w"> </span>&lt;model&gt;.tensorrt.zip
+<div class="highlight"><pre><span></span><code>unzip<span class="w"> </span>-d<span class="w"> </span>&lt;model&gt;/<span class="w"> </span>&lt;model&gt;.tensorrt.zip
 </code></pre></div>
 </li>
 <li>
 <p>Enter the extracted folder:</p>
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span><span class="nb">cd</span><span class="w"> </span>&lt;model&gt;/
+<div class="highlight"><pre><span></span><code><span class="nb">cd</span><span class="w"> </span>&lt;model&gt;/
 </code></pre></div>
 <div class="admonition note">
 <p class="admonition-title">Prerequisites</p>
@@ -2248,7 +2339,7 @@
 </code></pre></div>
 </li>
 <li>
-<p>Install the <a href="../../../../perception/studio/">edgefirst-client</a> package:</p>
+<p>Install the <a href="../../../../client/cli/">edgefirst-client</a> package:</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>pip3<span class="w"> </span>install<span class="w"> </span>edgefirst-client
 </code></pre></div>
 </li>
@@ -2263,20 +2354,20 @@
 <li>
 <p>Compile the bundle into a TensorRT engine with <code>--publish</code> to push the sealed artifact back to EdgeFirst Studio.</p>
 <p>Run the build:</p>
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span>./build.sh<span class="w"> </span>fp16<span class="w"> </span>--publish
+<div class="highlight"><pre><span></span><code>./build.sh<span class="w"> </span>fp16<span class="w"> </span>--publish
 </code></pre></div>
 <p>The script verifies <code>trtexec</code>, <code>jq</code>, and <code>python3</code> are on <code>PATH</code> (all default on JetPack 6.2), then:</p>
 <ol>
 <li>Calls <code>trtexec --onnx=model.onnx --fp16 --saveEngine=&lt;name&gt;.fp16.engine</code>.</li>
 <li>Updates <code>edgefirst.json</code> with on-target build values via <code>jq</code> (precision, engine <code>sha256</code>, build timestamp, on-device TRT version, builder flags).</li>
 <li>ZIP-appends <code>edgefirst.json</code> and <code>labels.txt</code> to the engine using Python's <code>zipfile</code> module.</li>
-<li>If <code>--publish</code> is set, uploads the sealed engine to Studio via <code>edgefirst-client upload-artifact</code>. See the <a href="../../../../perception/studio/">edgefirst-client</a> page for more.</li>
+<li>If <code>--publish</code> is set, uploads the sealed engine to Studio via <code>edgefirst-client upload-artifact</code>. See the <a href="../../../../client/cli/">edgefirst-client</a> page for more.</li>
 </ol>
 <p>The output is a sealed <code>.fp16.engine</code> with metadata readable by any ZIP reader; the TensorRT deserializer ignores trailing bytes.</p>
 </li>
 <li>
 <p>The compiled <code>&lt;model&gt;.fp16.engine</code> is now ready to deploy. The artifact is also available in the Studio session for re-download to other compatible devices. Verify the engine loads successfully with:</p>
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span>trtexec<span class="w"> </span>--loadEngine<span class="o">=</span>&lt;model&gt;.fp16.engine<span class="w"> </span>--iterations<span class="o">=</span><span class="m">100</span>
+<div class="highlight"><pre><span></span><code>trtexec<span class="w"> </span>--loadEngine<span class="o">=</span>&lt;model&gt;.fp16.engine<span class="w"> </span>--iterations<span class="o">=</span><span class="m">100</span>
 </code></pre></div>
 </li>
 </ol>

@@ -25,7 +25,7 @@
       
       
       <link rel="icon" href="../../../assets/favicon.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+      <meta name="generator" content="mkdocs-ProperDocs 1.6.7, mkdocs-material-9.7.6">
     
     
       
@@ -316,6 +316,28 @@
     
     
       <li class="md-tabs__item">
+        <a href="../../../client/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Client
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
         <a href="../../../3D/" class="md-tabs__link">
           
   
@@ -511,6 +533,8 @@
       
         
       
+        
+      
     
     
     
@@ -618,6 +642,71 @@
     
   
     Studio
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../../client/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Client
   
 
     
@@ -925,8 +1014,6 @@
       
         
       
-        
-      
     
     
     
@@ -1012,7 +1099,7 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9" checked>
         
           
           <div class="md-nav__link md-nav__container">
@@ -1034,14 +1121,14 @@
             </a>
             
               
-              <label class="md-nav__link " for="__nav_8" id="__nav_8_label" tabindex="">
+              <label class="md-nav__link " for="__nav_9" id="__nav_9_label" tabindex="">
                 <span class="md-nav__icon md-icon"></span>
               </label>
             
           </div>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="true">
-          <label class="md-nav__title" for="__nav_8">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_9_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_9">
             <span class="md-nav__icon md-icon"></span>
             
   
@@ -1349,10 +1436,10 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8_6" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9_6" checked>
         
           
-          <label class="md-nav__link" for="__nav_8_6" id="__nav_8_6_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_9_6" id="__nav_9_6_label" tabindex="0">
             
   
   
@@ -1370,8 +1457,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_8_6_label" aria-expanded="true">
-          <label class="md-nav__title" for="__nav_8_6">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_9_6_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_9_6">
             <span class="md-nav__icon md-icon"></span>
             
   
@@ -2093,47 +2180,47 @@ network0:958cc5e3-1bbf-3d64-beeb-020d4414e254:802-3-ethernet:ethernet0
 sudo<span class="w"> </span>systemctl<span class="w"> </span>start<span class="w"> </span>hostapd
 </code></pre></div>
 <p>The Maivin ships with a default hostapd configuration which can be modified for your needs.  The following shows the base configuration which ships with Maivin. The full list of configuration options is documented in the <a href="https://w1.fi/cgit/hostap/plain/hostapd/hostapd.conf">hostapd.conf</a> reference file.</p>
-<div class="highlight"><pre><span></span><code>ssid=Maivin
-wpa_passphrase=maivin
-own_ip_addr=10.10.10.1
-interface=uap0
+<div class="highlight"><pre><span></span><code><span class="na">ssid</span><span class="o">=</span><span class="s">Maivin</span>
+<span class="na">wpa_passphrase</span><span class="o">=</span><span class="s">maivin</span>
+<span class="na">own_ip_addr</span><span class="o">=</span><span class="s">10.10.10.1</span>
+<span class="na">interface</span><span class="o">=</span><span class="s">uap0</span>
 
-country_code=CA
-hw_mode=a
-channel=40
+<span class="na">country_code</span><span class="o">=</span><span class="s">CA</span>
+<span class="na">hw_mode</span><span class="o">=</span><span class="s">a</span>
+<span class="na">channel</span><span class="o">=</span><span class="s">40</span>
 
-ieee80211ac=1
-ieee80211n=1
-ieee80211w=2
-wmm_enabled=1
+<span class="na">ieee80211ac</span><span class="o">=</span><span class="s">1</span>
+<span class="na">ieee80211n</span><span class="o">=</span><span class="s">1</span>
+<span class="na">ieee80211w</span><span class="o">=</span><span class="s">2</span>
+<span class="na">wmm_enabled</span><span class="o">=</span><span class="s">1</span>
 
-auth_algs=1
-wpa=2
-wpa_key_mgmt=WPA-PSK
-rsn_pairwise=CCMP
-wpa_pairwise=CCMP
-sae_require_mfp=1
+<span class="na">auth_algs</span><span class="o">=</span><span class="s">1</span>
+<span class="na">wpa</span><span class="o">=</span><span class="s">2</span>
+<span class="na">wpa_key_mgmt</span><span class="o">=</span><span class="s">WPA-PSK</span>
+<span class="na">rsn_pairwise</span><span class="o">=</span><span class="s">CCMP</span>
+<span class="na">wpa_pairwise</span><span class="o">=</span><span class="s">CCMP</span>
+<span class="na">sae_require_mfp</span><span class="o">=</span><span class="s">1</span>
 
-ht_capab=[LDPC][HT40+][GF][SHORT-GI-20][SHORT-GI-40][TX-STBC][DSSS_CCK-40]
+<span class="na">ht_capab</span><span class="o">=</span><span class="s">[LDPC][HT40+][GF][SHORT-GI-20][SHORT-GI-40][TX-STBC][DSSS_CCK-40]</span>
 </code></pre></div>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
 <p>Please make sure to change the default password before enabling Wi-Fi AP mode!</p>
 </div>
 <p>The Wi-Fi AP network configuration file is found under <code>/etc/systemd/network/hostapd.network</code> and is managed by <a href="https://systemd.io/">systemd</a>.  The following is the default configuration.  The full list of configuration options is documented in the <a href="https://www.freedesktop.org/software/systemd/man/latest/systemd.network.html">systemd network manual</a>.</p>
-<div class="highlight"><pre><span></span><code>[Match]
-Name=wlan0 uap0
-WLANInterfaceType=ap
+<div class="highlight"><pre><span></span><code><span class="k">[Match]</span>
+<span class="na">Name</span><span class="o">=</span><span class="s">wlan0 uap0</span>
+<span class="na">WLANInterfaceType</span><span class="o">=</span><span class="s">ap</span>
 
-[Network]
-Address=10.10.10.1/24
-DHCPServer=true
-IPMasquerade=yes
-IPForward=ipv4
+<span class="k">[Network]</span>
+<span class="na">Address</span><span class="o">=</span><span class="s">10.10.10.1/24</span>
+<span class="na">DHCPServer</span><span class="o">=</span><span class="s">true</span>
+<span class="na">IPMasquerade</span><span class="o">=</span><span class="s">yes</span>
+<span class="na">IPForward</span><span class="o">=</span><span class="s">ipv4</span>
 
-[DHCPServer]
-PoolOffset=100
-PoolSize=100
+<span class="k">[DHCPServer]</span>
+<span class="na">PoolOffset</span><span class="o">=</span><span class="s">100</span>
+<span class="na">PoolSize</span><span class="o">=</span><span class="s">100</span>
 </code></pre></div>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>

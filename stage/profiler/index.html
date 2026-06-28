@@ -25,7 +25,7 @@
       
       
       <link rel="icon" href="../assets/favicon.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+      <meta name="generator" content="mkdocs-ProperDocs 1.6.7, mkdocs-material-9.7.6">
     
     
       
@@ -316,6 +316,28 @@
     
     
       <li class="md-tabs__item">
+        <a href="../client/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Client
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
         <a href="../3D/" class="md-tabs__link">
           
   
@@ -511,6 +533,8 @@
       
         
       
+        
+      
     
     
     
@@ -653,6 +677,71 @@
       
         
       
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../client/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Client
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
     
     
     
@@ -736,7 +825,7 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" checked>
         
           
           <div class="md-nav__link md-nav__container">
@@ -758,14 +847,14 @@
             </a>
             
               
-              <label class="md-nav__link md-nav__link--active" for="__nav_4" id="__nav_4_label" tabindex="">
+              <label class="md-nav__link md-nav__link--active" for="__nav_5" id="__nav_5_label" tabindex="">
                 <span class="md-nav__icon md-icon"></span>
               </label>
             
           </div>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
-          <label class="md-nav__title" for="__nav_4">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_5">
             <span class="md-nav__icon md-icon"></span>
             
   
@@ -813,6 +902,8 @@
   
     
     
+      
+        
       
         
       
@@ -1171,8 +1262,6 @@
       
         
       
-        
-      
     
     
     
@@ -1344,6 +1433,56 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#platform-video-demos" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Platform Video Demos
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Platform Video Demos">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#macbook" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        MacBook
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#nxp-imx-95" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        NXP i.MX 95
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#nxp-ara240" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        NXP Ara240
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#read-next" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -1378,7 +1517,7 @@
 
 
 <h1 id="profiler">Profiler</h1>
-<p>The <strong>EdgeFirst Profiler</strong> is the on-target measurement engine for the EdgeFirst Studio platform. It runs the complete vision pipeline — decode, preprocess, inference, postprocess, <abbr title="Non-Maximum Suppression">NMS</abbr> — on the hardware your model will deploy to, then publishes per-image predictions and a detailed timing trace to EdgeFirst Studio where accuracy metrics, charts, and trace visualizations are produced.</p>
+<p>The <strong>EdgeFirst Profiler</strong> is the on-target measurement engine for the EdgeFirst Studio platform. It runs the complete vision pipeline — capture, preprocess, inference, postprocess, <abbr title="Non-Maximum Suppression">NMS</abbr> — on the hardware your model will deploy to, then publishes per-image predictions and a detailed timing trace to EdgeFirst Studio where accuracy metrics, charts, and trace visualizations are produced.</p>
 <p>For public benchmarks, explore the <strong>EdgeFirst Model Zoo on Hugging Face</strong> at <a href="https://huggingface.co/spaces/EdgeFirst/Models">https://huggingface.co/spaces/EdgeFirst/Models</a>. We publish public benchmarks and metrics there across Ultralytics and other community models so you can compare your validation results against known baselines.</p>
 <figure>
             <img align="center" alt="EdgeFirst Profiler — F4 dashboard during a validation run" src="assets/tui-profiler.png" />
@@ -1399,12 +1538,29 @@
 <li><strong>Validation from the Profiler</strong> — browse training sessions inside the profiler's TUI and let the profiler create the validation session in place.</li>
 </ul>
 <p>Both paths produce the same artifacts and the same Studio session card.</p>
+<h2 id="platform-video-demos">Platform Video Demos</h2>
+<p>These demos show EdgeFirst Profiler runs on common deployment and development targets.</p>
+<h3 id="macbook">MacBook</h3>
+<div style="text-align: center;">
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/M2j6ryFsbew?si=LN6zAJKAv83SgSVz" title="EdgeFirst Profiler on MacBook" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+</div>
+
+<h3 id="nxp-imx-95">NXP i.MX 95</h3>
+<div style="text-align: center;">
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/ajZR9XHaEVQ?si=9Jztb9hxUGhXp0qA" title="EdgeFirst Profiler on NXP i.MX 95" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+</div>
+
+<h3 id="nxp-ara240">NXP Ara240</h3>
+<div style="text-align: center;">
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/kN44eJ7BtZk?si=nPYj62d4XA1KxYeM" title="EdgeFirst Profiler on NXP Ara240" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+</div>
+
 <h2 id="read-next">Read next</h2>
 <ul>
-<li><strong><a href="quickstart/">Quick Start</a></strong> — install the profiler, sign in to Studio, run your first validation session in under five minutes.</li>
+<li><strong><a href="quickstart/">Quick Start</a></strong> — install the profiler, sign in to Studio, run your first validation session in under fifteen minutes.</li>
 <li><strong><a href="installation/">Installation</a></strong> — supported targets, per-target dependencies, and target-specific quirks.</li>
 <li><strong><a href="studio/">EdgeFirst Studio Integration</a></strong> — connecting to Studio, validation from Studio, and validation from the profiler.</li>
-<li><strong><a href="concepts/pipelining/">Pipelining</a></strong> — the multi-stage measurement pipeline, the <code>--pipeline-depth</code> flag, and how each backend constrains it. (Concepts deep-dive.)</li>
+<li><strong><a href="concepts/pipelining/">Pipelining</a></strong> — the multi-stage measurement pipeline, the <code>--inference-depth</code> flag, and how each backend constrains it. (Concepts deep-dive.)</li>
 </ul>
 
 

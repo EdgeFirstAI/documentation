@@ -25,7 +25,7 @@
       
       
       <link rel="icon" href="../../../assets/favicon.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+      <meta name="generator" content="mkdocs-ProperDocs 1.6.7, mkdocs-material-9.7.6">
     
     
       
@@ -318,6 +318,28 @@
     
     
       <li class="md-tabs__item">
+        <a href="../../../client/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Client
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
         <a href="../../../3D/" class="md-tabs__link">
           
   
@@ -491,6 +513,8 @@
       
         
           
+        
+      
         
       
         
@@ -1091,6 +1115,8 @@
       
         
       
+        
+      
     
     
     
@@ -1334,6 +1360,71 @@
             
           </ul>
         </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../../client/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Client
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
       
     </li>
   
@@ -1628,8 +1719,6 @@
       
         
       
-        
-      
     
     
     
@@ -1907,20 +1996,20 @@
             <img align="center" alt="The location of the 'Usage &amp; Billing' button" src="../../assets/user/usage-billing-button.jpg" />
             <figcaption>The location of the 'Usage &amp; Billing' button</figcaption>
             </figure>
-<p>This page may take some time to load.  Once the page loads, it will describe the current usages of EdgeFirst Studio features and the billing details as shown below.  The next sections will break down the components of this page in more detail.</p>
+<p>This page may take some time to load.  Once the page loads, it will display the <strong>Monthly Bill</strong> for your organization as shown below.  Use the month and year selectors at the top of the page to choose a billing period, then click <strong>Retrieve</strong> to load the usage for that period.  The bill groups usage by feature category — such as <strong>AIGT Time</strong>, <strong>Converter</strong>, <strong>Exporter</strong>, <strong>Training Time</strong>, and <strong>Validation Time</strong> — and reports the approximate <strong>Net Usage</strong> at the top right alongside a <strong>Grand Total</strong> at the bottom.  The next sections will break down the components of this page in more detail.</p>
 <figure>
-            <img align="center" alt="Usage &amp; Billing Page" src="../../assets/user/usage-billing-page.jpg" />
-            <figcaption>Usage &amp; Billing Page</figcaption>
+            <img align="center" alt="Monthly Bill Page" src="../../assets/user/usage-billing-page.jpg" />
+            <figcaption>Monthly Bill Page</figcaption>
             </figure>
 <h3 id="remaining-funds">Remaining Funds</h3>
 <p>Initially, for free trial users the remaining funds will show as "USD 50.00".  As you use EdgeFirst Studio such as importing datasets you will incur storage costs or deploying training and validation will incur server costs, and then you will see that these remaining funds will be deducted.  Once the remaining funds depletes, you will no longer be able to use any features in EdgeFirst Studio and your datasets will be parked, training and validation sessions will be paused or terminated.  It is recommended to always check the remaining funds in your organization before running experiments to ensure you have enough funds to support the cost of those experiments.  The cost of the features in EdgeFirst Studio will be discussed in more detail in the section <a href="#features-and-associated-costs">below</a>.  For options to add more funds into your organization, please reach out and <a href="mailto:support@edgefirst.ai">email our support team</a>.</p>
 <h3 id="features-and-associated-costs">Features and Associated Costs</h3>
-<p>Under the "Current Usage", there is a summary of the features used in EdgeFirst Studio with the associated time measurements during deployments.  For example, all training sessions in the organization accumulated to 7 minutes.  Furthermore, active datasets incur storage costs.  </p>
-<figure>
-            <img align="center" alt="Current Usage" src="../../assets/user/current-usage-section.jpg" />
-            <figcaption>Current Usage</figcaption>
-            </figure>
-<p>The billing details provide more information on the cost of each feature as shown below.</p>
+<p>Each feature category in the Monthly Bill can be expanded to reveal the individual line items that make up its total.  Every line item lists its <strong>Description</strong>, the <strong>Date</strong> it was incurred, the <strong>Rate</strong> applied (for example, $12/hour for Training and Validation), the <strong>Duration</strong> in hours, and two cost columns:</p>
+<ul>
+<li><strong>Cost</strong> — the gross cost of the usage, calculated from its rate and duration.</li>
+<li><strong>Charge</strong> — the net amount actually billed to your organization after any free credits or promotions are applied.  A line item may show a non-zero <strong>Cost</strong> but a <strong>Charge</strong> of $0.00 when it is fully covered by credits.</li>
+</ul>
+<p>The <strong>Grand Total</strong> row at the bottom of the bill sums the total billed duration together with the overall <strong>Cost</strong> and <strong>Charge</strong> for the selected period.</p>
 <figure>
             <img align="center" alt="Billing Details" src="../../assets/user/billing-details.jpg" />
             <figcaption>Billing Details</figcaption>

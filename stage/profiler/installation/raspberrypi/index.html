@@ -25,7 +25,7 @@
       
       
       <link rel="icon" href="../../../assets/favicon.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+      <meta name="generator" content="mkdocs-ProperDocs 1.6.7, mkdocs-material-9.7.6">
     
     
       
@@ -316,6 +316,28 @@
     
     
       <li class="md-tabs__item">
+        <a href="../../../client/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Client
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
         <a href="../../../3D/" class="md-tabs__link">
           
   
@@ -511,6 +533,8 @@
       
         
       
+        
+      
     
     
     
@@ -653,6 +677,71 @@
       
         
       
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../../client/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Client
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
     
     
     
@@ -736,7 +825,7 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" checked>
         
           
           <div class="md-nav__link md-nav__container">
@@ -758,14 +847,14 @@
             </a>
             
               
-              <label class="md-nav__link " for="__nav_4" id="__nav_4_label" tabindex="">
+              <label class="md-nav__link " for="__nav_5" id="__nav_5_label" tabindex="">
                 <span class="md-nav__icon md-icon"></span>
               </label>
             
           </div>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
-          <label class="md-nav__title" for="__nav_4">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_5">
             <span class="md-nav__icon md-icon"></span>
             
   
@@ -813,6 +902,8 @@
   
     
     
+      
+        
       
         
       
@@ -907,7 +998,7 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_4" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_4" checked>
         
           
           <div class="md-nav__link md-nav__container">
@@ -929,14 +1020,14 @@
             </a>
             
               
-              <label class="md-nav__link " for="__nav_4_4" id="__nav_4_4_label" tabindex="0">
+              <label class="md-nav__link " for="__nav_5_4" id="__nav_5_4_label" tabindex="0">
                 <span class="md-nav__icon md-icon"></span>
               </label>
             
           </div>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_4_label" aria-expanded="true">
-          <label class="md-nav__title" for="__nav_4_4">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_4_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_5_4">
             <span class="md-nav__icon md-icon"></span>
             
   
@@ -1271,7 +1362,7 @@
   <span class="md-ellipsis">
     
   
-    Kinara Ara-2
+    Kinara Ara240
   
 
     
@@ -1539,8 +1630,6 @@
       
         
           
-        
-      
         
       
         
@@ -1852,11 +1941,11 @@
 <div class="highlight"><pre><span></span><code>edgefirst-profiler<span class="w"> </span>--version
 </code></pre></div>
 <h2 id="cpu-baseline-onnx-runtime">CPU baseline (<abbr title="Open Neural Network Exchange">ONNX</abbr> Runtime)</h2>
-<p>The default <code>--provider cpu</code> is the most predictable baseline. CPU inference on the RPi5 makes the <strong>decode</strong> and <strong>preprocess</strong> stages a meaningful fraction of total wall time — the Studio trace view will show whether the bottleneck is the model or the pipeline around it.</p>
+<p>The default <code>--provider cpu</code> is the most predictable baseline. CPU inference on the RPi5 makes the <strong>capture</strong> and <strong>preprocess</strong> stages a meaningful fraction of total wall time — the Studio trace view will show whether the bottleneck is the model or the pipeline around it.</p>
 <h2 id="hailo-8-8l-accelerator">Hailo-8 / 8L accelerator</h2>
 <p>When a Hailo M.2 module is present and HailoRT is installed, the profiler routes compiled <code>.hef</code> files through the Hailo backend automatically. The Hailo backend is described in detail on the <a href="../hailo/">Hailo install page</a>, including the <code>libhailort_profiler</code> shim that exposes per-context timing.</p>
 <h2 id="thermal-considerations">Thermal considerations</h2>
-<p>The RPi5 will throttle under sustained inference if the SoC reaches ~85 °C. The profiler samples thermal-zone temperatures and reports them as system-metric counters; if the temperature climbs steadily during a long run, look at the per-iteration latency in the dashboard — a sudden bump usually corresponds to a thermal throttle event.</p>
+<p>The RPi5 will throttle under sustained inference if the SoC reaches ~85 °C. The profiler samples thermal-zone temperatures and reports them as system-metric counters; if the temperature climbs steadily during a long run, look at the per-iteration latency in the dashboard — a sudden bump usually corresponds to a thermal throttle event. On the Pi 5 the readout also includes the <strong>RP1</strong> I/O controller's temperature, captured through its <code>hwmon</code> sensor alongside the SoC thermal zones.</p>
 <p>A small heatsink and fan is enough to keep the SoC out of throttle territory during validation runs.</p>
 <h2 id="verifying-the-install">Verifying the install</h2>
 <div class="highlight"><pre><span></span><code>edgefirst-profiler<span class="w"> </span>login
@@ -1969,13 +2058,13 @@ edgefirst-profiler<span class="w">              </span><span class="c1"># opens 
         
         
           
-          <a href="../kinara/" class="md-footer__link md-footer__link--next" aria-label="Next: Kinara Ara-2">
+          <a href="../kinara/" class="md-footer__link md-footer__link--next" aria-label="Next: Kinara Ara240">
             <div class="md-footer__title">
               <span class="md-footer__direction">
                 Next
               </span>
               <div class="md-ellipsis">
-                Kinara Ara-2
+                Kinara Ara240
               </div>
             </div>
             <div class="md-footer__button md-icon">

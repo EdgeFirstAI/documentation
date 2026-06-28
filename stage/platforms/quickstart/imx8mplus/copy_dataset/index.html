@@ -25,7 +25,7 @@
       
       
       <link rel="icon" href="../../../../assets/favicon.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+      <meta name="generator" content="mkdocs-ProperDocs 1.6.7, mkdocs-material-9.7.6">
     
     
       
@@ -316,6 +316,28 @@
     
     
       <li class="md-tabs__item">
+        <a href="../../../../client/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Client
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
         <a href="../../../../3D/" class="md-tabs__link">
           
   
@@ -511,6 +533,8 @@
       
         
       
+        
+      
     
     
     
@@ -618,6 +642,71 @@
     
   
     Studio
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../../../client/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Client
   
 
     
@@ -925,8 +1014,6 @@
       
         
       
-        
-      
     
     
     
@@ -1012,7 +1099,7 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9" checked>
         
           
           <div class="md-nav__link md-nav__container">
@@ -1034,14 +1121,14 @@
             </a>
             
               
-              <label class="md-nav__link " for="__nav_8" id="__nav_8_label" tabindex="">
+              <label class="md-nav__link " for="__nav_9" id="__nav_9_label" tabindex="">
                 <span class="md-nav__icon md-icon"></span>
               </label>
             
           </div>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="true">
-          <label class="md-nav__title" for="__nav_8">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_9_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_9">
             <span class="md-nav__icon md-icon"></span>
             
   
@@ -1089,10 +1176,10 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8_2" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9_2" checked>
         
           
-          <label class="md-nav__link" for="__nav_8_2" id="__nav_8_2_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_9_2" id="__nav_9_2_label" tabindex="0">
             
   
   
@@ -1110,8 +1197,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_8_2_label" aria-expanded="true">
-          <label class="md-nav__title" for="__nav_8_2">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_9_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_9_2">
             <span class="md-nav__icon md-icon"></span>
             
   
@@ -1303,7 +1390,7 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8_2_3" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9_2_3" checked>
         
           
           <div class="md-nav__link md-nav__container">
@@ -1325,14 +1412,14 @@
             </a>
             
               
-              <label class="md-nav__link " for="__nav_8_2_3" id="__nav_8_2_3_label" tabindex="0">
+              <label class="md-nav__link " for="__nav_9_2_3" id="__nav_9_2_3_label" tabindex="0">
                 <span class="md-nav__icon md-icon"></span>
               </label>
             
           </div>
         
-        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_8_2_3_label" aria-expanded="true">
-          <label class="md-nav__title" for="__nav_8_2_3">
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_9_2_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_9_2_3">
             <span class="md-nav__icon md-icon"></span>
             
   
@@ -2325,7 +2412,13 @@
             <img align="center" alt="Copy Dataset" src="../../../../datasets/assets/management/copy-dataset-option.jpg" />
             <figcaption>Copy Dataset</figcaption>
             </figure>
-<p>This will open a new dialog for the user to specify the dataset source and destination.  The destination will be the location of the copied dataset.  The source is the current location of the dataset.  The source is set by default to the current dataset card you've selected.  In the example below, the source is set to the "Coffee Cup" dataset from "Sample Project".  The copied dataset will be placed as specified in the destination fields.  By default a new dataset container will be created in the specified project.  However, you can also <a href="../../../../datasets/tutorials/management/#create-dataset">create a dataset container</a> before copying and specify this dataset container in the destination fields.  </p>
+<p>This action opens a dialog where you can specify the source and destination for the dataset copy operation.</p>
+<ul>
+<li>Source: The current location of the dataset being copied. This field is automatically populated with the dataset card you selected before opening the dialog.</li>
+<li>Destination: The location where the copied dataset will be created.</li>
+</ul>
+<p>In the example below, the source is the "Coffee Cup" dataset in "Sample Project". The copied dataset will be created in the location specified by the destination fields.</p>
+<p>By default, the copy operation creates a new dataset container in the selected destination project. Alternatively, you can <a href="../../../../datasets/tutorials/management/#create-dataset">create a dataset container</a> before starting the copy operation and then select that existing container as the destination.</p>
 <p>Once you have made your selection, click "Apply" at the bottom right to start the copy process.</p>
 <figure>
             <img align="center" alt="Copy Dataset Options" src="../../../../datasets/assets/management/copy-dataset-options.jpg" />
@@ -2357,7 +2450,7 @@
 </tbody>
 </table>
 <h2 id="tag-dataset">Tag Dataset</h2>
-<p>To maintain the current state of the dataset, tag the dataset with a version.</p>
+<p>Before a dataset can be used for training, it must be tagged.  To preserve its current state, assign a version tag to the dataset.</p>
 <p>Click on the dataset options at the top right of the dataset card (three vertical dots). Then click the "History" button.</p>
 <figure>
             <img align="center" alt="Tag Dataset Options" src="../../../../datasets/assets/management/dataset-options-history.jpg" />

@@ -45,6 +45,12 @@ For more information on available "Data Augmentations" please see [Vision Augmen
 
 Once the configurations have been made, go ahead and click on the "Start Session" button on the bottom right of the window.  This will start the training session which will train the model for the number of epochs specified.
 
+!!! failure "InsufficientInstanceCapacity"
+
+    {{ img("/studio/assets/models/insufficient-capacity-error.jpg", "InsufficientInstanceCapacity Error") }}
+
+    If you see this error after starting your training session, retry creating the session. This can happen when AWS reports that no EC2 instances are currently available to launch; the current workaround is to retry.
+
 ## Session Progress
 
 Once the training session has started, the progress with the stages will be shown on the left and additional information and status is shown on the right.

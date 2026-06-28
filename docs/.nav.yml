@@ -7,6 +7,7 @@ nav:
     - getting_started/copy_dataset.md
     - getting_started/explore_dataset.md
     - getting_started/train_vision.md
+    - getting_started/convert_vision.md
     - getting_started/validate_vision.md
     - getting_started/deploy_model.md
     - User Workflows:
@@ -32,6 +33,7 @@ nav:
     - studio/projects.md
     - Datasets Dashboard:
       - studio/datasets/index.md
+      - studio/datasets/tag.md
       - studio/datasets/gallery.md
       - studio/datasets/annotations.md
       - studio/datasets/map.md
@@ -43,6 +45,25 @@ nav:
     - studio/apps.md
     - studio/tasks.md
     - studio/recycle.md
+  - Client:
+    - client/index.md
+    - Command-Line Interface:
+      - client/cli/index.md
+      - client/cli/reference.md
+    - client/import.md
+    - Python Tutorials:
+      - client/tutorials/index.md
+      - client/tutorials/01_authentication.md
+      - client/tutorials/02_explore_dataset.md
+      - client/tutorials/03_fetch_annotations.md
+      - client/tutorials/04_polars_dataframe.md
+      - client/tutorials/05_download_dataset.md
+      - client/tutorials/06_create_annotations.md
+      - client/tutorials/07_manage_labels.md
+    - API Reference:
+      - client/api/index.md
+      - client/api/python.md
+      - client/api/rust.md
   - 3D MLOps:
     - 3D/index.md
     - 3D/viewers.md
@@ -65,7 +86,6 @@ nav:
         - datasets/coco_people/index.md
       - COCO:
         - datasets/coco/index.md
-        - datasets/coco/import.md
       - Raivin Ultra Short:
         - datasets/raivin_ultra_short/index.md
     - EdgeFirst Dataset Format:
@@ -107,6 +127,7 @@ nav:
       - models/training/fusion.md
     - Model Conversion:
       - models/conversion/index.md
+      - models/conversion/calibration.md
       - models/conversion/tflite.md
       - models/conversion/neutron.md
       - models/conversion/tensorrt.md
@@ -142,7 +163,6 @@ nav:
     - models/augmentations.md
   - Perception:
     - perception/index.md
-    - perception/studio.md
     - perception/launcher.md
     - Dataset Collection Middleware:
       - perception/data_collection/recording.md
@@ -180,7 +200,6 @@ nav:
       - perception/api/sensor_msgs.md
       - perception/api/std_msgs.md
       - perception/api/builtin_interfaces.md
-      - perception/api/studio.md
     - Deep View RT:
       - perception/deepviewrt/index.md
     - 4K Video:
@@ -243,6 +262,8 @@ nav:
         - platforms/quickstart/jetson_orin/deploy.md
         - Configuration:
           - platforms/quickstart/jetson_orin/configuration/power_modes.md
+          - platforms/quickstart/jetson_orin/configuration/static_ip.md
+          - platforms/quickstart/jetson_orin/configuration/wifi_ap.md
       - Raspberry Pi Quick Start:
         - platforms/quickstart/raspberrypi/index.md
         - platforms/quickstart/raspberrypi/setup.md

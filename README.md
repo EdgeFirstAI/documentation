@@ -35,6 +35,16 @@ More information for using `mike` can be found [here](https://github.com/jimport
 
 Run a spell checker on the documentation using `mkdocs build -s`.
 
+## Markdown Lint
+
+Lint the documentation Markdown using:
+
+```sh
+npx --yes markdownlint-cli2 "docs/**/*.md"
+```
+
+This checks every Markdown file under `docs/` against the rules in `.markdownlint-cli2.yaml`, which `markdownlint-cli2` discovers automatically. It catches style and formatting issues such as missing blank lines around headings, lists, and code fences, trailing whitespace, and missing code-fence languages. CI runs the same command in the `Lint Markdown` step of `.github/workflows/publish.yml`, but that step is intentionally non-blocking (`|| true` with `continue-on-error: true`), so lint findings are reported without failing the build. Running it locally keeps the docs consistent and surfaces issues the pipeline will not block on.
+
 ## Discrete Documentations
 
 Discrete documentations allow a single doc file to appear in multiple locations.  The doc file needs to be maintained once and the changes will be propagated in all pages that contains the doc file. All discrete documentations are placed under the directory `/discrete`.  The syntax for adding the contents of the discrete doc in another doc is provided below.

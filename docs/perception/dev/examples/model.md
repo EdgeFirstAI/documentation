@@ -260,7 +260,7 @@ On your EdgeFirst Platform you can also allow tracking of the boxes and this can
 
 The main adjustments are that a color will be specified and each tracked box will have its own color as well as that we will add in the unique ID for the box into the label. All of this is contingent on tracking being enabled. The following image is taken when applied to a combined example.
 
-![Boxes2D Tracking](assets/boxes2d_tracking.gif)
+{{ video("assets/boxes2d_tracking.mp4", "Boxes2D Tracking") }}
 
 ## Model Mask
 
@@ -404,7 +404,7 @@ After setting up the Zenoh session, we will create a subscriber to the `model/ma
 
 ### Receive a message
 
-We can now await a message from that subscriber from an asynchronous function. After receiving the message, we will pass that message along to our processing function in a new thread to avoid missing messages. In addition we will log the annotations so Rerun knows what colours to use for each class.
+We can now await a message from that subscriber from an asynchronous function. After receiving the message, we will pass that message along to our processing function in a new thread to avoid missing messages. In addition we will log the annotations so Rerun knows what colors to use for each class.
 
 === "Python"
 

@@ -12,13 +12,19 @@ On the top right corner of the page, click on the "validate" button as indicated
 
 Specify the name of the validation session and the model and the dataset for validation.  The rest of the settings were kept as defaults.  Click "Start Session" at the bottom to start the validation session.
 
+!!! failure "InsufficientInstanceCapacity"
+
+    {{ img("/studio/assets/models/insufficient-capacity-error.jpg", "InsufficientInstanceCapacity Error") }}
+
+    If you see this error after starting your validation session, retry creating the session. This can happen when AWS reports that no EC2 instances are currently available to launch; the current workaround is to retry.
+
 {{ figure("/models/assets/validation/fusion-session-fields.jpg", "Start Validation Session") }}
 
 The validation session progress will appear in the "Validation" page as shown below.
 
 {{ figure("/models/assets/validation/fusion-session-progress.jpg", "Validation Progress") }}
 
-Once completed the session card will appear like the following below.  The validation metrics are displayed as charts which can be found by clicking the view charts button as shown.
+Once the session is complete, the session card will appear like the following. To view the validation metrics, click the validation charts button as indicated.
 
 {{ figure("/models/assets/validation/fusion-completed-session.jpg", "Completed Session") }}
 

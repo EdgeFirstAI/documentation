@@ -25,4 +25,5 @@ Finally, [split the dataset](../../datasets/tutorials/management.md#split-datase
 {% include-markdown "discrete/models/validate_fusion.md" heading-offset=0 %}
 
 # Deploy Fusion Model
+
 {% include-markdown "discrete/models/deploy_on_raivin_3d.md" heading-offset=0 %}

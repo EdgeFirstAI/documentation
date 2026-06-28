@@ -118,6 +118,29 @@
   background-color: var(--color-teal);
 }
 
+/*
+ * Dark-mode admonition titles.
+ *
+ * The title backgrounds above are light brand tints tuned for light mode. In
+ * the slate (dark) scheme Material recolors the title text to near-white,
+ * which washes out on those light fills. Swap in translucent brand-hued tints
+ * so the title text stays readable while keeping the brand colour cues.
+ */
+[data-md-color-scheme="slate"] .md-typeset .note > .admonition-title,
+[data-md-color-scheme="slate"] .md-typeset .note > summary {
+  background-color: rgba(62, 51, 113, 0.45);
+}
+[data-md-color-scheme="slate"] .md-typeset .tip > .admonition-title,
+[data-md-color-scheme="slate"] .md-typeset .tip > summary,
+[data-md-color-scheme="slate"] .md-typeset .info > .admonition-title,
+[data-md-color-scheme="slate"] .md-typeset .info > summary {
+  background-color: rgba(31, 160, 168, 0.25);
+}
+[data-md-color-scheme="slate"] .md-typeset .warning > .admonition-title,
+[data-md-color-scheme="slate"] .md-typeset .warning > summary {
+  background-color: rgba(232, 184, 32, 0.22);
+}
+
 /* Button styling */
 .md-typeset .md-button--primary {
   background-color: var(--color-navy);

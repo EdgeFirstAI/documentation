@@ -3,7 +3,7 @@
 2. When creating your account, enter the required fields denoted by the asterisk (*) and then create your account once completed.
 
     {{ figure("/studio/assets/user/signup-page.jpg", "Create a New Account") }}
-    
+
 3. An email will be sent to verify the email you provided.  Go ahead and click on "Verify Email" to verify your email.
 
     {{ figure("/studio/assets/user/email-verification.jpg", "Email Verification") }}

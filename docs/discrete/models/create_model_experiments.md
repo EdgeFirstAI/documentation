@@ -2,7 +2,7 @@
 
 You will be greeted with the "Model Experiments" page.  A new project will not have any experiments as shown below.  You will need to first create a model experiment.  As mentioned in the [Model Experiments Dashboard](../../studio/models.md), model experiments will contain both training and validation sessions.
 
-{{ figure("/models/assets/training/model-experiments-page.jpg", "Model Experiments Page") }}
+{{ figure("../../models/assets/training/created-experiment.jpg", "Model Experiments Page") }}
 
 Click on the "New Experiment" button as shown on the top right corner of the page.  Enter the name and the description of the experiment marked by the fields shown below.  Click on the "Create New Experiment" button to create your experiment.
 

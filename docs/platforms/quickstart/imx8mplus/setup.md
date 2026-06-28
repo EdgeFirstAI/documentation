@@ -3,6 +3,7 @@
 In this page you will find instructions to setup the i.MX 8M Plus from start to finish.  For the official instructions to setup the i.MX 8M Plus, refer to the [Getting Started Guide from NXP](https://www.nxp.com/document/guide/getting-started-with-the-i-mx-8m-plus-evk:GS-iMX-8M-Plus-EVK).
 
 ## Requirements
+
 1. i.MX 8M Plus EVK running [NXP Yocto BSP](https://www.nxp.com/design/design-center/software/embedded-software/i-mx-software/embedded-linux-for-i-mx-applications-processors:IMXLINUX)
 2. USB-C power cable
 3. Ethernet cable connected to live network connection
@@ -31,11 +32,11 @@ In this page you will find instructions to setup the i.MX 8M Plus from start to 
 
 3. Once authenticated, accept the license agreement as shown
 
-    {{ figure("../../assets/setup/nxp_bsp_license_agreement.jpg", "NXP License Agreement") }}    
+    {{ figure("../../assets/setup/nxp_bsp_license_agreement.jpg", "NXP License Agreement") }}
 
 4. The BSP should start downloading to your PC as a ZIP file named "LF_v6.18.2-1.0.0_images_IMX8MPEVK.zip" or similar
 
-    {{ figure("../../assets/setup/imx8mplus_bsp_download_progress.jpg", "BSP Download Progress") }}   
+    {{ figure("../../assets/setup/imx8mplus_bsp_download_progress.jpg", "BSP Download Progress") }}
 
 5. Use [balenaEtcher](https://etcher.balena.io/) to flash the SD card using an SD card reader connected to your PC.  Select the ZIP file that was downloaded and select the SD card for the storage.  Once selected, click "Flash!" to start
 

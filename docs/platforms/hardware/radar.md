@@ -14,7 +14,7 @@ The radar module is connected to the Raivin using two networking interfaces.  Th
 
 The CAN bus interface is managed through the systemd networking framework using the configuration file `/etc/systemd/network/can0.network`.  The CAN bus interface will be preconfigured by Torizon for Maivin but is covered in this section.
 
-```
+```ini
 [Match]
 Name=can0
 
@@ -28,7 +28,7 @@ The `can0` interface is configured for 500kbps.  The Radar Publishing Service ma
 
 The radar module streams the low-level radar data cube over an ethernet interface which is internally connected to the Raivin's `ethernet1` interface.  The connection is managed through the systemd network framework using the configuration file `/etc/systemd/network/ethernet1.network` along with the `ethernet1-master.service` systemd service which handles configuring the automotive ethernet PHY (1000Base-T1) as the connection master.  The `ethernet1-master.service` should be enabled using `sudo systemctl enable ethernet1-master` if not already enabled.
 
-```
+```ini
 [Match]
 Name=ethernet1
 

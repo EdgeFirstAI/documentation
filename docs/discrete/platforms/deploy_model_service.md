@@ -16,20 +16,20 @@ Remember to save the configurations at the end of the process. The  Model Config
 In case the manual deployment is needed, you need to connect to the device via [SSH](../../platforms/networking/ssh.md):
 
 ```shell
-$ ssh torizon@verdin-imx8mp-15141030
+ssh torizon@verdin-imx8mp-15141030
 ```
 
 and edit the model parameters in `/etc/default/model`
 
 ```shell
-$ vi /etc/default/model
+vi /etc/default/model
 ```
 
 then restart the model service using the `systemctl` command
 
 ```shell
-$ sudo systemctl stop model
-$ sudo systemctl start model
+sudo systemctl stop model
+sudo systemctl start model
 ```
 
 !!! note

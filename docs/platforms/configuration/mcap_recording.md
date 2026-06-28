@@ -20,16 +20,16 @@ This controls the MCAP compression level. Compression will impact the CPU usage 
 The rest of the page reports upon which topics are recording and allows the user to enable or disable certain optional topics. Mandatory topics that cannot be changed on the page include:
 
 - Localization topics, such as:  
-  - **/tf_static**: This is a meta-topic that includes information from all recorded topics.  
-  - **/gps**: This is the GPS topic that includes latitude, longitude, elevation, etc.  
-  - **/imu**: This is where the IMU sensor exports its information, and includes acceleration and orientation information about the vision module.
+    - **/tf_static**: This is a meta-topic that includes information from all recorded topics.  
+    - **/gps**: This is the GPS topic that includes latitude, longitude, elevation, etc.  
+    - **/imu**: This is where the IMU sensor exports its information, and includes acceleration and orientation information about the vision module.
 - Camera Topics, such as:  
-  - **/camera/info**: This includes information about the video sensor.  
-  - **/camera/h264**: This contains the raw-video output of the video sensor, in H.264 format.  
+    - **/camera/info**: This includes information about the video sensor.  
+    - **/camera/h264**: This contains the raw-video output of the video sensor, in H.264 format.  
 - Radar Topics (Raivin only), such as:  
-  - **/radar/info**: This contains information regarding the radar.  
-  - **/radar/targets**: This contains the target information from the radar sensor.  
-  - **/radar/clusters**: This contains the clustered information from the radar sensor. It also opens up the "/radar/cube" topic that can be enabled.  
+    - **/radar/info**: This contains information regarding the radar.  
+    - **/radar/targets**: This contains the target information from the radar sensor.  
+    - **/radar/clusters**: This contains the clustered information from the radar sensor. It also opens up the "/radar/cube" topic that can be enabled.  
 
 These topics are parts of the "Localization Topics", "Camera Topics", and "Radar Topics", which are currently locked.
 
@@ -64,13 +64,13 @@ Checking the "/fusion" topic box enables recording of the following topics:
 There are several settings that will stop or change specific topics, which may result in the topic not being recorded.
 
 - On the [Model Settings](model.md) page:  
-  - [Enabling Visualization](model.md#visualization) will create the `/model/visualization` topic  
-  - [Disabling Mask Compression](model.md#mask_compression) will stop the `/model/mask_compressed` topic and start the `/model/mask` topic  
-  - [Loading a Model without detection or segmentation outputs](model.md#model) will stop the corresponding `/model/boxes2d` or `/model/mask_compressed` topics  
+    - [Enabling Visualization](model.md#visualization) will create the `/model/visualization` topic  
+    - [Disabling Mask Compression](model.md#mask_compression) will stop the `/model/mask_compressed` topic and start the `/model/mask` topic  
+    - [Loading a Model without detection or segmentation outputs](model.md#model) will stop the corresponding `/model/boxes2d` or `/model/mask_compressed` topics  
 - On the [Camera Settings](camera.md) page:  
-  - [Setting the Camera Size to 4k](camera.md#camera-size) will put the Camera service into [4K Mode](../../perception/4k/index.md) and create the `/camera/h264/tl`, `/camera/h264/tr`, `/camera/h264/bl`, and  `/camera/h264/br` topics while stopping the default `/camera/h264` topic.
-  - [Disabling H264 streaming](camera.md#h264-streaming) will stop the `/camera/h264` topic
-  - [Enabling JPEG streaming](camera.md#jpeg-streaming) will create the `/camera/jpeg` topic
+    - [Setting the Camera Size to 4k](camera.md#camera-size) will put the Camera service into [4K Mode](../../perception/4k/index.md) and create the `/camera/h264/tl`, `/camera/h264/tr`, `/camera/h264/bl`, and  `/camera/h264/br` topics while stopping the default `/camera/h264` topic.
+    - [Disabling H264 streaming](camera.md#h264-streaming) will stop the `/camera/h264` topic
+    - [Enabling JPEG streaming](camera.md#jpeg-streaming) will create the `/camera/jpeg` topic
 
 Topics that have been stopped by a configuration change cannot be recorded into an MCAP file. However, the new topics created by the above changes are not automatically added to the MCAP recorder and will need to be added manually.
 
@@ -83,13 +83,13 @@ Topics that are not included by the Web UI front-end to be recorded must be adde
 
 The default topics line should read:
 
-```
+```ini
 TOPICS = "/tf_static /imu /gps /camera/info /camera/h264 /radar/clusters /radar/targets /radar/info /model/info /model/boxes2d /model/mask_compressed"
 ```
 
 To add topics to be recorded, simply add them in the quoted portion as space-separated items. For example, if we wanted to add the 4K tiles topics, we would just change the line to:
 
-```
+```ini
 TOPICS = "/tf_static /imu /gps /camera/info /radar/clusters /radar/targets /radar/info /model/info /model/boxes2d /model/mask_compressed /camera/h264/tl /camera/h264/tr /camera/h264/bl /camera/h264/br"
 ```
 

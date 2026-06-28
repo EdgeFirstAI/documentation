@@ -101,7 +101,7 @@ Syncing disks.
 
 ## Step 5 - Resize Filesystem
 
-```shell 
+```shell
 # resize2fs /dev/mmcblk1p2
 resize2fs 1.47.3 (8-Jul-2025)
 Filesystem at /dev/mmcblk1p2 is mounted on /; on-line resizing required

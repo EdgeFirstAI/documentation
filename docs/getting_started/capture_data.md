@@ -11,8 +11,4 @@ Next [view the gallery of the dataset](../datasets/tutorials/management.md#view-
 
 {{ figure("../getting_started/assets/workflows/pc-dataset-gallery.jpg", "Coffee Cup Gallery") }}
 
-Once all the captured data has been uploaded to the dataset container, you will now assign groups to the data to split the data into training and validation sets.  Follow the [tutorial for creating groups](../datasets/tutorials/management.md#split-dataset) with an 80% partition to training and 20% partition to validation.  The final outcome for the groups should look as follows.
-
-{{ figure("../getting_started/assets/workflows/dataset-groups.jpg", "Dataset Groups") }}
-
-Now that you have imported captured images or videos into EdgeFirst Studio and have split the captured data into training and validation partitions, you can now start annotating your data as shown in the next section below.
+Now that you have imported captured images or videos into EdgeFirst Studio you can now start annotating your data as shown in the next section below.

@@ -2,7 +2,7 @@
 
 A model experiment is a container of training and validation sessions in the experiment.  The following figure shown is the "Model Experiments" page.  This page will contain all the experiments that were started by the user.
 
-{{ figure("assets/models/experiments-page.jpg", "Project Experiments") }}
+{{ figure("../models/assets/training/created-experiment.jpg", "Project Experiments") }}
 
 The following figure breaks down the elements of an "Experiment" card.
 
@@ -68,7 +68,7 @@ This is useful when you want to:
 To clone a session, click "clone training session" button on the training card.  A dialog will appear pre-filled with the source session's configuration.  Adjust the name and description as needed, then confirm.
 
 !!! note
-    Cloning is equivalent to creating a new session with **Use Default Weights** disabled and **Enable Training** disabled.  See [Enable Training and Use Default Weights](../models/training/vision.md#enable-training-and-use-default-weights) for the full behaviour matrix.
+    Cloning is equivalent to creating a new session with **Use Default Weights** disabled and **Enable Training** disabled.  See [Enable Training and Use Default Weights](../models/training/vision.md#enable-training-and-use-default-weights) for the full behavior matrix.
 
 ## Validation Sessions
 
@@ -120,6 +120,9 @@ The action bar at the top of the details page provides the following operations:
 ## Running a model
 
 EdgeFirst Studio allows you to run trained models directly in the web browser. After a model has been trained, open the model details page by clicking on the trainer card. Only models trained on ModelPack are supported for live running. From there, click the Run Model button to start running the model.
+
+!!! note "ONNX models only"
+    Live browser-based model running only supports **ONNX** format. To validate or profile models in other formats (TFLite, Neutron, Hailo, TensorRT, etc.) on real hardware, use the [EdgeFirst Profiler](../profiler/index.md).
 
 {{ figure("assets/run_model_button.png", "Model Runner Button") }}
 

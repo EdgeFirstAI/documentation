@@ -6,7 +6,7 @@ Sample Code: [Python](https://github.com/EdgeFirstAI/samples/blob/main/python/gp
 
 This example will go through how to connect to the GPS topic published on your EdgeFirst Platform and how to display the information through the Rerun visualizer.
 
-### Setting up subscriber
+## Setting up subscriber
 
 After setting up the Zenoh session, we will create a subscriber to the `rt/gps` topic
 
@@ -27,7 +27,7 @@ After setting up the Zenoh session, we will create a subscriber to the `rt/gps` 
         .unwrap();
     ```
 
-### Receive the Message
+## Receive the Message
 
 We can now receive a message on the subscriber. After receiving the message, we will set it up for processing.
 
@@ -52,7 +52,7 @@ We can now receive a message on the subscriber. After receiving the message, we 
     let gps: NavSatFix = cdr::deserialize(&msg.payload().to_bytes())?;
     ```
 
-### Process the GPS Data
+## Process the GPS Data
 
 We will now pull out the latitude/longitude data from the decoded NavSatFix message and log the data to Rerun.
 
@@ -73,11 +73,11 @@ We will now pull out the latitude/longitude data from the decoded NavSatFix mess
     let _ = rec.log("CurrentLoc", &rerun::GeoPoints::from_lat_lon([(lat, long)]));
     ```
 
-### Results
+## Results
 
 The command line output will appear as the following
 
-```
+```text
 Latitude: 51.036506 Longitude: -114.034886
 Latitude: 51.036506 Longitude: -114.034886
 Latitude: 51.036506 Longitude: -114.034886

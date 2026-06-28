@@ -39,7 +39,7 @@ Once the AGTG server has been initialized, you can now proceed to the next step 
 
 Below is a detailed breakdown of the sidebar.
 
-{{ figure("assets/agtg/sidebar.png", "AGTG Sibebar") }}
+{{ figure("assets/agtg/sidebar.png", "AGTG Sidebar") }}
 
 {{ figure("assets/agtg/agtg-object-card.png", "AGTG Object Card") }}
 

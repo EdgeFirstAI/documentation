@@ -147,7 +147,7 @@ sudo systemctl start hostapd
 
 The Maivin ships with a default hostapd configuration which can be modified for your needs.  The following shows the base configuration which ships with Maivin. The full list of configuration options is documented in the [hostapd.conf][hostapd.conf] reference file.
 
-```
+```ini
 ssid=Maivin
 wpa_passphrase=maivin
 own_ip_addr=10.10.10.1
@@ -177,7 +177,7 @@ ht_capab=[LDPC][HT40+][GF][SHORT-GI-20][SHORT-GI-40][TX-STBC][DSSS_CCK-40]
 
 The Wi-Fi AP network configuration file is found under `/etc/systemd/network/hostapd.network` and is managed by [systemd][sysd].  The following is the default configuration.  The full list of configuration options is documented in the [systemd network manual][networkd].
 
-```
+```ini
 [Match]
 Name=wlan0 uap0
 WLANInterfaceType=ap

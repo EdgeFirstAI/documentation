@@ -34,7 +34,7 @@ Once the validation session has been created, [SSH](../../platforms/networking/s
     * Windows: `/path/to/myenv/Scripts/activate`
 
 ```shell
-$ pip install edgefirst-profiler
+pip install edgefirst-profiler
 ```
 
 See [Installation](../../profiler/installation/index.md) for platform installer alternatives and per-target dependencies.
@@ -42,13 +42,13 @@ See [Installation](../../profiler/installation/index.md) for platform installer 
 Next sign in to EdgeFirst Studio. The profiler stores the credentials and refreshes them automatically while you are using it.
 
 ```shell
-$ edgefirst-profiler login
+edgefirst-profiler login
 ```
 
 Run validation against the session ID from the session card:
 
 ```shell
-$ edgefirst-profiler validate --session-id v-1b51
+edgefirst-profiler validate --session-id v-1b51
 ```
 
 The profiler downloads the model artifact and dataset partition, runs the pipeline on the target, and uploads the predictions and trace back to Studio when the run completes.
@@ -56,7 +56,7 @@ The profiler downloads the model artifact and dataset partition, runs the pipeli
 If the model already lives on disk and you want to skip the download, pass `--model` alongside the session ID:
 
 ```shell
-$ edgefirst-profiler validate --session-id v-1b51 --model /path/to/mymodel.tflite
+edgefirst-profiler validate --session-id v-1b51 --model /path/to/mymodel.tflite
 ```
 
 Once the run is underway, the session card in Studio updates with progress.

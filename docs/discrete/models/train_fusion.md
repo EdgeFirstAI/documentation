@@ -26,11 +26,17 @@ Follow the settings indicated and keep the rest of the settings by their default
 
 {{ figure("/models/assets/training/fusion-train-settings.jpg", "Start Training Session") }}
 
+!!! failure "InsufficientInstanceCapacity"
+
+    {{ img("/studio/assets/models/insufficient-capacity-error.jpg", "InsufficientInstanceCapacity Error") }}
+
+    If you see this error after starting your training session, retry creating the session. This can happen when AWS reports that no EC2 instances are currently available to launch; the current workaround is to retry.
+
 The session progress will be shown like the following below.
 
 {{ figure("/models/assets/training/fusion-session-progress.jpg", "Training Session Progress") }}
 
-Once completed the session card will appear like the following below.
+Once the session is complete, the session card will appear like the following.
 
 {{ figure("/models/assets/training/fusion-completed-session.jpg", "Completed Session") }}
 

@@ -2,6 +2,9 @@
 
 EdgeFirst Studio offers workflows tailored to your hardware and resources.
 
+!!! tip "Free Credits"
+    New accounts receive **\$50 USD in free credits** upon sign-up, plus **\$15 USD in free credits every month**. No credit card required to get started.
+
 <div style="text-align: center;">
     <iframe width="560" height="315" src="https://www.youtube.com/embed/MmoDCXj72jk?si=I8gTw2VCtcts69ks" title="EdgeFirst Studio Overview" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 </div>
@@ -40,19 +43,19 @@ flowchart TD
     orin_user([Jetson Orin]):::purple
     pi_user([Raspberry Pi 5]):::coral
 
-    classDef yellow fill:#fff2a8,font-weight:bold;
-    classDef pink fill:#f7b6d9,font-weight:bold;
-    classDef gold fill:#ffe066,font-weight:bold;
-    classDef amber fill:#ffd54f,font-weight:bold;
-    classDef sage fill:#c8e6c9,font-weight:bold;
-    classDef indigo fill:#c8d3ff,font-weight:bold;
-    classDef blue fill:#d0ecff,font-weight:bold;
-    classDef teal fill:#a2e8ed,font-weight:bold;
-    classDef orange fill:#ffd699,font-weight:bold;
-    classDef darker_orange fill:#ffbb66,font-weight:bold;
-    classDef green fill:#a9e5bb,font-weight:bold;
-    classDef purple fill:#d6c1f5,font-weight:bold;
-    classDef coral fill:#ffc2bb,font-weight:bold;
+    classDef yellow fill:#fff2a880,font-weight:bold;
+    classDef pink fill:#f7b6d980,font-weight:bold;
+    classDef gold fill:#ffe06680,font-weight:bold;
+    classDef amber fill:#ffd54f80,font-weight:bold;
+    classDef sage fill:#c8e6c980,font-weight:bold;
+    classDef indigo fill:#c8d3ff80,font-weight:bold;
+    classDef blue fill:#d0ecff80,font-weight:bold;
+    classDef teal fill:#a2e8ed80,font-weight:bold;
+    classDef orange fill:#ffd69980,font-weight:bold;
+    classDef darker_orange fill:#ffbb6680,font-weight:bold;
+    classDef green fill:#a9e5bb80,font-weight:bold;
+    classDef purple fill:#d6c1f580,font-weight:bold;
+    classDef coral fill:#ffc2bb80,font-weight:bold;
 
     %% Cloud branch
     user --> has_platform
@@ -90,28 +93,31 @@ We've identified the following workflows that any user can follow starting from 
 * **Cloud Personas**: General-purpose cloud-based MLOps workflows designed for PC users.
 * **Hardware Personas**: Hardware-specific (specialized) MLOps workflows tailored for deployment, validation, and optimization on supported target devices.
 
+!!! note "About these workflows"
+    The following workflows use a specific configuration and most are based on using the **Coffee Cup** sample dataset to train a **ModelPack** vision model. Cost estimations shown in the table reflect this specific configuration — actual costs will vary depending on your dataset size, the model type and training configurations.
+
 ### Cloud Personas
 
-| Persona | Hardware | Features | Cost |
-|---------|----------|----------|------|
-| [Tourist](tourist.md) | PC | Explore {{ studio_link("EdgeFirst Studio") }} Landing Page and Feature Overview | Free |
-| [Tourist+](tourist_plus.md) | PC | {{ studio_link("Sign Up", "signup") }}, {{ studio_link("Login", "login") }}, Browse {{ studio_link("Public Datasets and Models", "project") }} | Free |
-| [Profiler](profiler.md) | PC | Browse [Hugging Face Model Zoo](https://huggingface.co/spaces/EdgeFirst/Models), Review Training and Validation Sessions | Free |
-| [Profiler+](profiler_plus.md) | PC | Copy Sample Dataset, Retrain, Revalidate, Compare Against Hugging Face Model Zoo, Deploy on Browser or on Target (if available) | TBA |
-| [Auditor](auditor.md) | PC | Copy Dataset, Annotate 2D, Train, Validate, Deploy on Browser | TBA |
-| [Web](web.md) | PC + Smartphone | Record, Annotate 2D, Train, Validate, Deploy on Browser | TBA |
+| Persona | Hardware | Features | Cost | Time |
+|---------|----------|----------|------|------|
+| [Tourist](tourist.md) | PC | Explore {{ studio_link("EdgeFirst Studio") }} Landing Page and Feature Overview | Free | N/A |
+| [Tourist+](tourist_plus.md) | PC | {{ studio_link("Sign Up", "signup") }}, {{ studio_link("Login", "login") }}, Browse {{ studio_link("Public Datasets and Models", "project") }} | Free | N/A |
+| [Profiler](profiler.md) | PC | Browse [Hugging Face Model Zoo](https://huggingface.co/spaces/EdgeFirst/Models), Review Training and Validation Sessions | Free | N/A |
+| [Profiler+](profiler_plus.md) | PC | Retrain, Revalidate, Reconvert Model, Compare Against [Hugging Face Model Zoo](https://huggingface.co/spaces/EdgeFirst/Models), Deploy on Browser or on Target (if available) | ~\$10-16 USD | ~1.75-4.5 hours |
+| [Auditor](auditor.md) | PC | Copy Sample Dataset, Annotate 2D, Train, Validate, Deploy on Browser | ~\$22 USD | ~2.5 hours |
+| [Web](web.md) | PC + Smartphone | Record, Annotate 2D, Train, Validate, Deploy on Browser | ~\$5 USD | ~45 minutes |
 
 ### Hardware Personas
 
-| Persona | Hardware | Features | Cost |
-|---------|----------|----------|------|
-| [Maivin](hardware.md) | PC + Maivin | Record MCAP, Annotate 2D, Train, Validate, Deploy on Maivin | TBA |
-| [Raivin](hardware.md) | PC + Raivin w/ Radar | Record MCAP, Annotate 2D + 3D, Train, Validate, Deploy on Raivin | TBA |
-| [LiDAR](hardware.md) | PC + Raivin w/ LiDAR | Record MCAP, Annotate 2D + 3D (enhanced), Train, Validate, Deploy on Raivin | TBA |
-| [i.MX 8M Plus](hardware.md) | PC + i.MX 8M Plus | Copy Dataset, Train, Validate, Deploy on i.MX 8M Plus | TBA |
-| [i.MX 95](hardware.md) | PC + i.MX 95 | Copy Dataset, Train, Validate, Deploy on i.MX 95 | TBA |
-| [Jetson Orin](hardware.md) | PC + Jetson Orin | Copy Dataset, Train, Validate, Deploy on Jetson Orin | TBA |
-| [Raspberry Pi 5](hardware.md) | PC + Raspberry Pi 5 | Copy Dataset, Train, Validate, Deploy on Raspberry Pi 5 | TBA |
+| Persona | Hardware | Features | Cost | Time |
+|---------|----------|----------|------|------|
+| [Maivin](hardware.md) | PC + Maivin | Record MCAP, Annotate 2D, Train, Convert to TFLite, Validate on Target, Deploy on Maivin | TBA | TBA |
+| [Raivin](hardware.md) | PC + Raivin w/ Radar | Record MCAP, Annotate 2D + 3D, Train, Convert to TFLite, Validate on Target, Deploy on Raivin | TBA | TBA |
+| [LiDAR](hardware.md) | PC + Raivin w/ LiDAR | Record MCAP, Annotate 2D + 3D (enhanced), Train, Convert to TFLite, Validate on Target, Deploy on Raivin | TBA | TBA |
+| [i.MX 8M Plus](hardware.md) | PC + i.MX 8M Plus | Copy Dataset, Train, Convert to TFLite or Kinara (FRDM), Validate on Target, Deploy on i.MX 8M Plus | ~\$9-11 USD | ~1.5-3.2 hours |
+| [i.MX 95](hardware.md) | PC + i.MX 95 | Copy Dataset, Train, Convert to Neutron or Kinara (FRDM), Validate on Target, Deploy on i.MX 95 | ~\$8-9 USD | ~1-1.2 hours |
+| [Jetson Orin](hardware.md) | PC + Jetson Orin | Copy Dataset, Train, Convert to TensorRT, Validate on Target, Deploy on Jetson Orin | ~\$8 USD | ~1 hour |
+| [Raspberry Pi 5](hardware.md) | PC + Raspberry Pi 5 | Copy Dataset, Train, Convert to Hailo, Validate on Target, Deploy on Raspberry Pi 5 | ~\$9-12 USD | ~1.8-4.3 hours |
 
 ## User Journey
 
@@ -361,19 +367,19 @@ flowchart LR
     validate_imx95 --> imx95
 
     %% ---------------- STYLES ----------------
-    classDef yellow fill:#fff2a8,font-weight:bold;
-    classDef pink fill:#f7b6d9,font-weight:bold;
-    classDef indigo fill:#c8d3ff,font-weight:bold;
-    classDef blue fill:#d0ecff,font-weight:bold;
-    classDef teal fill:#a2e8ed,font-weight:bold;
-    classDef orange fill:#ffd699,font-weight:bold;
-    classDef darker_orange fill:#ffbb66,font-weight:bold;
-    classDef green fill:#a9e5bb,font-weight:bold;
-    classDef purple fill:#d6c1f5,font-weight:bold;
-    classDef coral fill:#ffc2bb,font-weight:bold;
-    classDef gold fill:#ffe066,font-weight:bold;
-    classDef amber fill:#ffd54f,font-weight:bold;
-    classDef sage fill:#c8e6c9,font-weight:bold;
+    classDef yellow fill:#fff2a880,font-weight:bold;
+    classDef pink fill:#f7b6d980,font-weight:bold;
+    classDef indigo fill:#c8d3ff80,font-weight:bold;
+    classDef blue fill:#d0ecff80,font-weight:bold;
+    classDef teal fill:#a2e8ed80,font-weight:bold;
+    classDef orange fill:#ffd69980,font-weight:bold;
+    classDef darker_orange fill:#ffbb6680,font-weight:bold;
+    classDef green fill:#a9e5bb80,font-weight:bold;
+    classDef purple fill:#d6c1f580,font-weight:bold;
+    classDef coral fill:#ffc2bb80,font-weight:bold;
+    classDef gold fill:#ffe06680,font-weight:bold;
+    classDef amber fill:#ffd54f80,font-weight:bold;
+    classDef sage fill:#c8e6c980,font-weight:bold;
     classDef invisible fill:transparent,stroke:transparent;
     style TrainConvert fill:transparent,stroke:transparent;
 ```
@@ -397,7 +403,7 @@ flowchart LR
 
 4. [Profiler+ Workflow](profiler_plus.md)
 
-    This workflow extends the Profiler workflow with hands-on experimentation: copy a sample dataset, retrain a model, revalidate, and compare results against the Hugging Face Model Zoo baselines.  Models can be deployed on a browser or on a compatible target device.
+    This workflow extends the Profiler workflow with hands-on experimentation: copy a sample dataset, retrain a model, revalidate, and compare results against the [Hugging Face Model Zoo](https://huggingface.co/spaces/EdgeFirst/Models) baselines.  Models can be deployed on a browser or on a compatible target device.
 
 5. [Auditor Workflow](auditor.md)
 
@@ -412,8 +418,3 @@ flowchart LR
 7. [Hardware Persona Workflows](hardware.md)
 
     Hardware-specific workflows for users with an EdgeFirst target device.  Each platform has its own step-by-step workflow covering device setup, dataset acquisition, model training, conversion, on-target validation, and deployment.
-
-!!! note "Future Work"
-
-    The workflows with missing links are a work in progress and currently unavailable.
-    

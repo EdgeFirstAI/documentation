@@ -1,6 +1,6 @@
 # macOS
 
-The EdgeFirst Profiler ships a native **arm64** binary for macOS 11 and later. macOS is supported for **ONNX model development** — the vendor accelerator backends (TFLite/Neutron/VSI delegates, Hailo, TensorRT, Ara-2) are Linux-only and either fail to compile or require Linux-only runtime libraries.
+The EdgeFirst Profiler ships a native **arm64** binary for macOS 11 and later. macOS is supported for **ONNX model development** — the vendor accelerator backends (TFLite/Neutron/VSI delegates, Hailo, TensorRT, Ara240) are Linux-only and either fail to compile or require Linux-only runtime libraries.
 
 The macOS-specific accelerator path is the **CoreML execution provider** through ONNX Runtime, which offloads supported subgraphs to the Apple Neural Engine or the Metal GPU.
 
@@ -40,11 +40,19 @@ If you maintain a non-Homebrew install, set `ORT_DYLIB_PATH` to the absolute pat
 
 ## CoreML execution provider
 
-Pass `--provider coreml` to offload supported subgraphs to the Apple Neural Engine or Metal GPU when running a validation session.
+The bare `--provider coreml` flag is no longer accepted. Pass one of the three explicit compute-unit options instead (the old flag prints an error listing the replacements):
+
+| Flag | Compute unit | Notes |
+| ---- | ------------ | ----- |
+| `--provider coreml-cpu` | CoreML CPU kernels | Good baseline; no GPU or ANE scheduling overhead |
+| `--provider coreml-gpu` | Metal Performance Shaders, CPU fallback | Best throughput for GPU-heavy models. Auto inference depth: **3** (measured knee — ~427 FPS at depth 2, ~476 FPS at depth 3, ~466 FPS at depth 4) |
+| `--provider coreml-ane` | Apple Neural Engine, CPU fallback only | Auto inference depth: **2** (ANE serializes internally; only preprocess/postprocess overlap benefits from the extra slot) |
+
+**In the TUI:** the launch-time dialog presents a navigable list of providers — CPU, CoreML CPU, CoreML GPU, CoreML ANE — instead of the previous fixed two-key prompt. Navigate with ↑/↓ and press Enter to confirm, or press the number key shown next to the row.
 
 The CoreML EP caches compiled subgraphs at `~/Library/Caches/edgefirst-profiler/coreml/`. The first run of a given model is slower while compilation happens; subsequent runs are warm.
 
-CoreML coverage is partial — operators not supported by the Apple Neural Engine fall back to CPU within the same graph. Studio's trace view shows exactly which ops ran where.
+CoreML coverage is partial — operators not supported by the selected compute unit fall back to CPU within the same graph. Studio's trace view shows exactly which ops ran where.
 
 ## Verifying the install
 
@@ -61,7 +69,7 @@ Then run a validation session — see [Validation from Studio](../studio/from_st
 | ------- | ------- |
 | TensorFlow Lite | `libtensorflowlite_c.so` is Linux-only in the EdgeFirst distribution |
 | NXP Neutron / VSI delegates | Delegates ship with NXP Linux BSPs only |
-| Kinara Ara-2 | `ara2-proxy` daemon is Linux-only |
+| Kinara Ara240 | `ara2-proxy` daemon is Linux-only |
 | Hailo | HailoRT does not ship a macOS build |
 | TensorRT | TensorRT is Jetson / Linux + NVIDIA GPU |
 

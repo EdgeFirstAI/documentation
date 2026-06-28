@@ -7,7 +7,10 @@ The [AGTG pipeline](../../../studio/agtg.md) describes the stages for automating
 
 ## Fully Automatic Ground Truth Generation
 
-This annotation feature is available at the time of importing the dataset via [snapshot restoration](../../../studio/snapshots.md#restore-snapshot).  The auto-annotation process is done in the background allowing the user to focus on separate tasks.  This section will show the steps for performing this type of auto-annotation in EdgeFirst Studio.  However, this feature can also be deployed using the [EdgeFirst Client](../../../perception/studio.md#restore-snapshots) in the command line.
+!!! bug "Work in Progress"
+    The Fully Automatic Ground Truth Generation feature is currently **not operational** and is a work in progress — it fails to auto-annotate during snapshot restoration. In the meantime, please use the [Semi-Automatic Ground Truth Generation](#semi-automatic-ground-truth-generation) workflow instead.
+
+This annotation feature is available at the time of importing the dataset via [snapshot restoration](../../../studio/snapshots.md#restore-snapshot).  The auto-annotation process is done in the background allowing the user to focus on separate tasks.  This section will show the steps for performing this type of auto-annotation in EdgeFirst Studio.  This feature can also be deployed using the [EdgeFirst Client](../../../client/cli/index.md#restore-a-snapshot) from the command line.
 
 A complete description of this feature along with the buttons associated in this tutorial can be found under [Studio](../../../studio/snapshots.md).
 
@@ -26,10 +29,6 @@ Recall that [snapshots](../../../studio/snapshots.md) are frozen and compact for
     Next enter the name for the dataset snapshot.  Click on "Add Snapshot" to begin the snapshot creation.
 
     {{ figure("../../assets/annotations/automatic/create-snapshot-fields.jpg", "Name the Snapshot") }}
-
-    The snapshot creation process will be shown like the following.
-
-    {{ figure("../../assets/annotations/automatic/snapshot-creation-process.png", "Snapshot Process") }}
 
 2. Upload from MCAP File
 
@@ -66,13 +65,11 @@ A snapshot can be created from one of the three ways as described above: *Create
 
 {% include-markdown "discrete/datasets/restore_snapshot.md" heading-offset=2 %}
 
-[Insert Image]
+{{ figure("../../assets/annotations/automatic/coffeecup-restored-ds.jpg", "Restored Dataset") }}
 
-Next [navigate to the gallery](../management.md#view-dataset) of the dataset by clicking on the gallery button.  The figure below shows a side-by-side display of the annotations from frames 1-3.  The 2D annotations for both segmentation masks and bounding boxes were auto-generated in the background.
+Next [navigate to the gallery](../management.md#view-dataset) of the dataset by clicking on the gallery button.  The 2D annotations for both segmentation masks and bounding boxes should have been auto-generated in the background.
 
-**Frame 1** | **Frame 2** | **Frame 3**
-:------------------:|:------------------:|:------------------:
-![Annotation 1]() | ![Annotation 2]() | ![Annotation 3]()
+{{ figure("../../assets/annotations/automatic/agtg-restored-annotations.jpg", "Restored Annotations") }}
 
 The next section will describe the *Semi-Automatic Ground Truth Generation* for additional user control during the auto-annotation process.
 
@@ -104,9 +101,11 @@ Please wait while the server is being initialized.
 
 ### Annotate Starting Frame
 
+{{ video("../../../getting_started/assets/workflows/AGTG-tutorial.mp4", "AGTG Preview") }}
+
 Once the server has been initialized, annotate the starting frame.  This is the only annotation required by the user. The rest of the frames will be annotated by SAM-2 and the AGTG process.  This step is also known as initializing the SAM-2 state.  Each object must be annotated independently so the tracker can assign a unique ID.
 
-Start by drawing a bounding box for the first object by clicking and dragging.  For multiple objects in the frame, click "+" to add a new object as shown in red below.  The process for each object should be: *Add a new object* -> *Draw object prompt*.
+Start by drawing a bounding box for the first object by clicking and dragging.  For multiple objects in the frame, click "+" to add a new object as shown below.  The process for each object should be: *Add a new object* -> *Draw object prompt*.
 
 By default, the prompts provided to SAM-2 are bounding boxes (mouse click and drag) which should cover the object to be annotated in the frame.  However, points can also be provided (mouse clicks) by clicking areas that are part of the object.
 
@@ -122,7 +121,7 @@ As the frames propagate, you should see the frames being auto-annotated.  To sto
 
 Once the propagation completes as it reached the end frame, click on "Save Annotations" to save the generated annotations.
 
-{{ figure("../../assets/annotations/automatic/agtg-propagation-completed.jpg", "Propagation Completed") }}
+{{ figure("../../assets/annotations/automatic/propagation-completed.jpg", "Propagation Completed") }}
 
 ## Video Tutorials
 

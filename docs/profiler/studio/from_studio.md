@@ -4,6 +4,9 @@ A validation session is created from the Studio web UI; the session ID is then h
 
 ## 1. Create a validation session in Studio
 
+!!! warning "Validation sessions need a writable project"
+    Creating a validation session requires **write access** to the Studio project. You cannot validate against the read-only public **Sample Project** directly — first [copy its dataset](../../getting_started/copy_dataset.md) into a project you own (and add your model), then create the training and validation session there.
+
 From the Model Experiments dashboard, open the training session whose artifact you want to validate, then click **New Validation Session**. Choose **User Managed** as the validation type.
 
 {{ figure("../assets/studio-create-session.png", "EdgeFirst Studio — creating a user-managed validation session") }}
@@ -35,7 +38,7 @@ The profiler:
 
 1. Resolves the session against Studio.
 2. Downloads the model artifact and dataset partition into the cache (`~/.cache/edgefirst-profiler/` on Linux, `~/Library/Caches/edgefirst-profiler/` on macOS).
-3. Runs the full pipeline (decode → preprocess → inference → postprocess → NMS) over every image in the dataset.
+3. Runs the full pipeline (capture → preprocess → inference → postprocess → NMS) over every image in the dataset.
 4. Writes `predictions.parquet` and `trace.pftrace` into the cached session directory.
 5. Uploads both artifacts to Studio and triggers the cloud validator.
 
@@ -63,7 +66,7 @@ Fetching validation session v-1ce9...
   Pipeline Stage Breakdown
   -----------------------------------------------------------------------
   Stage                Mean   Median      p95      p99      Min      Max
-  image_decode        2.7ms    2.6ms    4.2ms    6.0ms    477µs   22.2ms
+  image_capture       2.7ms    2.6ms    4.2ms    6.0ms    477µs   22.2ms
   preprocess          1.1ms    766µs    2.7ms    8.8ms     89µs   29.2ms
   inference          33.4ms   31.8ms   40.6ms   47.1ms   28.4ms    1.35s
   ...
@@ -95,9 +98,9 @@ The metrics dashboard contains the standard `pycocotools` outputs (box mAP@0.5:0
 
 Click **Open Trace** on the session card to load the published `trace.pftrace` in Studio's trace viewer. The trace contains:
 
-- Pipeline-stage spans (decode / preprocess / inference / postprocess / NMS).
+- Pipeline-stage spans (capture / preprocess / inference / postprocess / NMS).
 - Per-operator timing for the backend used (ORT nodes, TFLite ops, Neutron ticks, TensorRT layers, Hailo contexts).
-- System-metric counters (CPU%, RSS, temperature).
+- System-metric counters (CPU%, RSS, temperatures, and board power where a sensor is present).
 
 {{ figure("../assets/studio-trace-viewer.png", "EdgeFirst Studio — trace viewer: pipeline-stage spans, per-operator timing, and system-metric counters") }}
 

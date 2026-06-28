@@ -34,9 +34,9 @@ Under all of that, we have a list of MCAP files in the recording directory. For 
 - The size of the MCAP, in MB
 - The creation date and time of the MCAP
 - Three Action buttons, which are:
-  - The "Info" button !["Info Button"](../assets/mcap_information.png), which shows information about the topics recorded in the MCAP file (see below).
-  - The "Download" button !["Download Button"](../../assets/buttons/mcap_download_button.png), which will download the MCAP file to your local machine.
-  - The "Delete" button !["Delete Button"](../assets/mcap_delete.png), which will remove the MCAP file.
+    - The "Info" button !["Info Button"](../assets/mcap_information.png), which shows information about the topics recorded in the MCAP file (see below).
+    - The "Download" button !["Download Button"](../../assets/buttons/mcap_download_button.png), which will download the MCAP file to your local machine.
+    - The "Delete" button !["Delete Button"](../assets/mcap_delete.png), which will remove the MCAP file.
 
 To leave the MCAP Modal, click the "X" close button in the top right corner of the modal.
 

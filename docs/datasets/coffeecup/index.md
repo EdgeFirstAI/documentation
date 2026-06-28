@@ -37,14 +37,10 @@ These tables provide the object detection and segmentation metrics for Vision mo
 
 **Groups**:
 
-- train: 915 images
-- val: 229 images
+- train: 1119 images
+- val: 280 images
 
 The dataset contains a total of 1399 images and one class.
-
-!!! info "Ungrouped Images"
-    There are 255 images in this dataset that are not associated to
-    the train or val groups.
 
 {{ figure("../assets/coffeecup/label_count.png", "Class Distribution") }}
 

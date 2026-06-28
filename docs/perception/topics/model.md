@@ -3,8 +3,8 @@
 The model topics are managed by the `model` service and handles running vision machine learning models.  The service supports object detection and segmentation tasks.
 
 - RTM models
-  - Object Detection
-  - Segmentation
+    - Object Detection
+    - Segmentation
 - ByteTrack tracking
 
 The model topics are published under the `/model` namespace and offers the following sub-topics: `/model/boxes2d`, `/model/mask`, `/model/mask_compressed`, `/model/info`, `/model/visualization`. Tracking parameters are configurable through the `model` service. See model service configuration documentation for details.

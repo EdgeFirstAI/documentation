@@ -7,7 +7,7 @@ the sensor data container share the same base name.
 
 Annotation files use the dataset base name with the format extension:
 
-```
+```text
 dataset_name/
 ├── dataset_name.arrow          # Arrow IPC (default)
 │   # — OR —
@@ -31,7 +31,7 @@ EdgeFirst supports three organizational patterns.
 
 Video frames with temporal ordering (from MCAP recordings or video files):
 
-```
+```text
 deer_dataset/
 ├── deer_dataset.arrow
 └── deer_dataset/
@@ -50,7 +50,7 @@ deer_dataset/
 
 Standalone images without temporal ordering:
 
-```
+```text
 coco_subset/
 ├── coco_subset.arrow
 └── coco_subset/
@@ -63,7 +63,7 @@ coco_subset/
 
 Combination of sequences and standalone images:
 
-```
+```text
 mixed_dataset/
 ├── mixed_dataset.arrow
 └── mixed_dataset/
@@ -78,7 +78,7 @@ mixed_dataset/
 
 A single frame can include multiple sensor modalities:
 
-```
+```text
 sensor_fusion/
 ├── sensor_fusion.parquet
 └── sensor_fusion/
@@ -97,7 +97,7 @@ sensor_fusion/
 As an alternative to nested subdirectories, datasets may use a flat layout with
 sequence prefixes:
 
-```
+```text
 dataset_name/
 ├── dataset_name.arrow
 └── dataset_name/
@@ -113,7 +113,7 @@ The EdgeFirst Client SDK detects the layout automatically — no manual configur
 
 EdgeFirst supports ZIP64 as an alternative to directories for the sensor container:
 
-```
+```text
 dataset_name/
 ├── dataset_name.arrow
 └── dataset_name.zip             # sensor data in ZIP

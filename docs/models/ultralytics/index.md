@@ -75,9 +75,15 @@ YOLOv5, YOLOv8, YOLO11, and YOLO26 can be trained in EdgeFirst Studio using a Gr
         1. **Model Task**: This can be either "Detection" or "Segmentation". Note for Ultralytics segmentation refers to instance segmentation
         2. **Model Version**: The Ultralytics version to train from the choices (v5, v8, v11, v26)
         3. **Model Size**: The size of the model from the choices (Nano, Small, Medium, Large, XLarge)
+        
     7. **Training Parameters**: In this section the user is able to specify the number of epochs to train the model as well as the batch size.  Remember the larger the input resolution the smaller the batch size
-        1. **Enable Training**: When enabled, the model is trained using the selected weights. When disabled (default), no training is performed — weights are pushed directly to the session artifacts. This default exists because full COCO training runs for Ultralytics are compute-intensive; EdgeFirst publishes vetted pre-trained weights so you can start quickly without a long training job. See the [behaviour matrix](../training/vision.md#enable-training-and-use-default-weights) for all combinations
+        1. **Enable Training**: When enabled, the model is trained using the selected weights. When disabled (default), no training is performed — weights are pushed directly to the session artifacts. This default exists because full COCO training runs for Ultralytics are compute-intensive; EdgeFirst publishes vetted pre-trained weights so you can start quickly without a long training job. See the [behavior matrix](../training/vision.md#enable-training-and-use-default-weights) for all combinations.
+
+            !!! note "No Training Charts"
+                Training sessions with **Enable Training** disabled will not generate loss or metric charts, since the chart x-axis is epoch-based. This is expected behavior.
+
         2. **Use Default Weights**: When enabled (default), training starts from pre-trained COCO weights. When disabled, starting weights are sourced from a prior training session you specify
+
     8. **Export Parameters**: Allow the user to set a portion of data for calibration when exporting the model for INT8 quantization. This section also allow the user to set the ONNX opset version
     9. **Export Pretrained Weights**: A checkbox to export the default pretrained weights from Ultralytics
     10. **Start Session**: This button will start the training session

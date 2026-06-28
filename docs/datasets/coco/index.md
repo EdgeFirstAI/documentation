@@ -10,6 +10,8 @@ We maintain a copy of the latest version of the COCO dataset (the 2017 version) 
 
 While individual images may be available for commercial use, the dataset as a whole should not be considered available for commercial use.
 
+To import your own COCO subset into EdgeFirst Studio, see [Dataset import with edgefirst-client](../../client/import.md#native-coco-and-lvis-support).
+
 ## Terms of Use
 
 The COCO dataset has two, separate [terms of use][terms]:
@@ -28,7 +30,7 @@ The license for specific images can be found by:
 
 2. Go to the [download][download] page and download the "2017 Train/Val annotations \[241MB\]" ZIP file.
     {{ figure("../assets/coco/coco_download_annos.png", "COCO 2017 annotations download") }}
-    
+
 3. Unzip the "instances_train2017.json" and "instances_val2017.json" into a directory.
 4. In the same directory, copy the following Python script.
 

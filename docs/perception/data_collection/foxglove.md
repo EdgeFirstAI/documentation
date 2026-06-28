@@ -70,7 +70,7 @@ The default Raivin layout includes:
 
 - Top panel: H.264 camera stream with bounding box overlays
       - Shows detection results (i.e. the colored boxes around people when using a detection model)
-      - Shows segmentation masks (i.e. the coloured blobs covering detected objects when using a segmentation model)
+      - Shows segmentation masks (i.e. the colored blobs covering detected objects when using a segmentation model)
 - Bottom right panel: GPS coordinates map view
       - Interactive map with zoomable blue target showing camera position
 - Bottom left panel: IMU sensor readings
@@ -125,7 +125,7 @@ By default, none of the radar topics are recorded as part of an MCAP file.  The 
 5. Change the color mode to Color Map, and select Turbo for the color map.  
 
       {{ figure("../assets/foxglove_radar_msg.png", "Foxglove Radar Message") }}
- 
+
 6. Leave the value min and value max on auto.
 7. You can now see the `/radar/cube` message.  
 

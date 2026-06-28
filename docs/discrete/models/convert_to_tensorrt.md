@@ -23,19 +23,19 @@ Conversion has two stages: EdgeFirst Studio packages the ONNX model and supporti
 5. Copy the bundle to the Jetson via [SCP](https://en.wikipedia.org/wiki/Secure_copy_protocol):
 
     ```shell
-    $ scp <model>.tensorrt.zip username@hostname:~/
+    scp <model>.tensorrt.zip username@hostname:~/
     ```
 
 6. On the Jetson, unzip the bundle into a folder:
 
     ```shell
-    $ unzip -d <model>/ <model>.tensorrt.zip
+    unzip -d <model>/ <model>.tensorrt.zip
     ```
 
 7. Enter the extracted folder:
 
     ```shell
-    $ cd <model>/
+    cd <model>/
     ```
 
     !!! note "Prerequisites"
@@ -54,7 +54,7 @@ Conversion has two stages: EdgeFirst Studio packages the ONNX model and supporti
             $ sudo apt install -y jq
             ```
 
-        3. Install the [edgefirst-client](../../perception/studio.md) package:
+        3. Install the [edgefirst-client](../../client/cli/index.md) package:
 
             ```shell
             $ pip3 install edgefirst-client
@@ -71,7 +71,7 @@ Conversion has two stages: EdgeFirst Studio packages the ONNX model and supporti
     Run the build:
 
     ```shell
-    $ ./build.sh fp16 --publish
+    ./build.sh fp16 --publish
     ```
 
     The script verifies `trtexec`, `jq`, and `python3` are on `PATH` (all default on JetPack 6.2), then:
@@ -79,12 +79,12 @@ Conversion has two stages: EdgeFirst Studio packages the ONNX model and supporti
     1. Calls `trtexec --onnx=model.onnx --fp16 --saveEngine=<name>.fp16.engine`.
     2. Updates `edgefirst.json` with on-target build values via `jq` (precision, engine `sha256`, build timestamp, on-device TRT version, builder flags).
     3. ZIP-appends `edgefirst.json` and `labels.txt` to the engine using Python's `zipfile` module.
-    4. If `--publish` is set, uploads the sealed engine to Studio via `edgefirst-client upload-artifact`. See the [edgefirst-client](../../perception/studio.md) page for more.
+    4. If `--publish` is set, uploads the sealed engine to Studio via `edgefirst-client upload-artifact`. See the [edgefirst-client](../../client/cli/index.md) page for more.
 
     The output is a sealed `.fp16.engine` with metadata readable by any ZIP reader; the TensorRT deserializer ignores trailing bytes.
 
 9. The compiled `<model>.fp16.engine` is now ready to deploy. The artifact is also available in the Studio session for re-download to other compatible devices. Verify the engine loads successfully with:
 
     ```shell
-    $ trtexec --loadEngine=<model>.fp16.engine --iterations=100
+    trtexec --loadEngine=<model>.fp16.engine --iterations=100
     ```

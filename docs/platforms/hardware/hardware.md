@@ -13,8 +13,8 @@ The Raivin configuration further extends the perception capabilities of the plat
 - 12-24V power input with protection for flexible installations.
 - Flexible communications options including RS-485, Ethernet, and Wi-Fi.
 - M.2 PCIe and USB expansion interface:
-  - Wireless LAN modem support
-  - Additional AI accelerator support
+    - Wireless LAN modem support
+    - Additional AI accelerator support
 - Expansion memory support via SD Card
 - Internal UART console debug interface
 - GNSS receiver

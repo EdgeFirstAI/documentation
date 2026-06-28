@@ -9,7 +9,7 @@ The camera augmentations are distinguished into two categories: *Geometric* and 
 
 !!! info
     During training, ModelPack retrieves a random selection of augmentations listed below. The operation for augmenting samples starts with a 50% chance of whether or not the sample is to be augmented. If the sample is to be augmented, only one random augmentation from Geometric and Non-Geometric types are applied to the sample. Then, the magnitude of this augmentation is based on a random selection from the minimum to the maximum set by the user under the [training options](training/vision.md#create-training-session) shown below.
-    
+
     {{ figure("assets/augmentations/training-augmentations-options.jpg", "Training Augmentations") }}     
 
 ## Geometric
@@ -104,7 +104,7 @@ This augmentation shifts the color of the image along the HSV color space.  A pa
 
 ### Saturation
 
-This augmentation applies saturation in the HSV (Hue, Saturation, Value) color space.  This augmentation either increases the intensity of the colours in the image for increased vibrancy or a decrease in intensity to become much more grayscale or monotone.  The following side-by-side figures shows the original image on the left and the transformed image on the right with saturation set to 150 for maximum effect.
+This augmentation applies saturation in the HSV (Hue, Saturation, Value) color space.  This augmentation either increases the intensity of the colors in the image for increased vibrancy or a decrease in intensity to become much more grayscale or monotone.  The following side-by-side figures shows the original image on the left and the transformed image on the right with saturation set to 150 for maximum effect.
 
 | Original                       | With Saturation Adjustments              |
 |--------------------------------|------------------------------------------|

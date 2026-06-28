@@ -19,31 +19,31 @@ The `/lidar/points` topic publishes information about the lidar points using the
 
 The XYZ coordinate system follows the [standard ROS convention](https://www.ros.org/reps/rep-0103.html#coordinate-frame-conventions) of x forward, y left, z up. However, note that the `lidar` frame is rotated 180 degrees from the `base_link` frame, with forward facing the back of the camera.
 
-**Usage** | **Link**
-:------------------:|:------------------:
-Web UI | []()
-Foxglove | [PointCloud2 Example]()
-SDK | [LiDAR Points Example](../dev/examples/lidar.md#lidar-points)
+| **Usage** | **Link** |
+|:------------------:|:------------------:|
+| Web UI | []() |
+| Foxglove | [PointCloud2 Example](https://docs.foxglove.dev/docs/visualization/panels/3d) |
+| SDK | [LiDAR Points Example](../dev/examples/lidar.md#lidar-points) |
 
 ## /lidar/reflect
 
 The `/lidar/reflect` topic publishes the reflectivity map using the [Image](../api/sensor_msgs.md#image) schema. The encoding of the image is `mono8`. The value of a pixel is the reflectivity of that point. The width of a pixel depends on the number of columns configured on the lidar.
 
-**Usage** | **Link**
-:------------------:|:------------------:
-Web UI | []()
-Foxglove | [Image Example]()
-SDK | [LiDAR Reflect Example](../dev/examples/lidar.md#lidar-reflect)
+| **Usage** | **Link** |
+|:------------------:|:------------------:|
+| Web UI | []() |
+| Foxglove | [Image Example](https://docs.foxglove.dev/docs/visualization/panels/image) |
+| SDK | [LiDAR Reflect Example](../dev/examples/lidar.md#lidar-reflect) |
 
 ## /lidar/depth
 
 The `/lidar/depth` topic publishes the depth map using the [Image](../api/sensor_msgs.md#image) schema. The encoding of the image is `mono16`. The value of a pixel is the distance from the lidar to the point in millimeters. The width of a pixel depends on the number of columns configured on the lidar.
 
-**Usage** | **Link**
-:------------------:|:------------------:
-Web UI | []()
-Foxglove | [Image Example]()
-SDK | [LiDAR Depth Example](../dev/examples/lidar.md#lidar-depth)
+| **Usage** | **Link** |
+|:------------------:|:------------------:|
+| Web UI | []() |
+| Foxglove | [Image Example](https://docs.foxglove.dev/docs/visualization/panels/image) |
+| SDK | [LiDAR Depth Example](../dev/examples/lidar.md#lidar-depth) |
 
 ## /lidar/clusters
 
@@ -61,8 +61,8 @@ The XYZ coordinate system follows the [standard ROS convention](https://www.ros.
 
 This topic is only published if the lidarpub service is configured with the clustering task enabled.
 
-**Usage** | **Link**
-:------------------:|:------------------:
-Web UI | []()
-Foxglove | [PointCloud2 Example]()
-SDK | [LiDAR Clusters Example](../dev/examples/lidar.md#lidar-clusters)
+| **Usage** | **Link** |
+|:------------------:|:------------------:|
+| Web UI | []() |
+| Foxglove | [PointCloud2 Example](https://docs.foxglove.dev/docs/visualization/panels/3d) |
+| SDK | [LiDAR Clusters Example](../dev/examples/lidar.md#lidar-clusters) |

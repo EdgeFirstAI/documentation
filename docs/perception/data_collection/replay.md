@@ -29,10 +29,10 @@ You can visit the page by clicking the "MCAP Details" Button on any Raivin Page.
 2. Click the "Play" button ![MCAP Replay Play Button](../assets/replay_play.png) next to the file
 3. In the playback options dialog, choose your preferred settings:
 
-	- Fusion Source: Choose between Live or MCAP data for the post-processed radar topics
-	- Model Source: Choose between Live or MCAP data for the post-processed image topics  
+    - Fusion Source: Choose between Live or MCAP data for the post-processed radar topics
+    - Model Source: Choose between Live or MCAP data for the post-processed image topics  
 
-		{{ figure("../assets/replay_options.png", "MCAP Replay Options") }}
+        {{ figure("../assets/replay_options.png", "MCAP Replay Options") }}
 
 4. Click "Start" to begin playback
 
@@ -62,7 +62,7 @@ The Replay Service supports a hybrid mode where you can:
 
 - Play back recorded sensor data while using live fusion and/or model data  
 
-	{{ figure("../assets/replay_options.png", "MCAP Replay Options") }}
+    {{ figure("../assets/replay_options.png", "MCAP Replay Options") }}
 
 - Use recorded data for some systems while maintaining live data for others
 - Mix and match recorded and live data sources based on your testing needs
@@ -77,19 +77,19 @@ Located in the top-right corner, the status indicator button shows status and st
 
 - **Live Mode** (Green): System mode is operating with live data and system status is working normally.
 
-	{{ figure("../assets/replay_livemode.png", "Live Mode Status") }}
+    {{ figure("../assets/replay_livemode.png", "Live Mode Status") }}
 
 - **Replay Mode** (Blue): System is playing back an MCAP file and system status is working normally.
 
-	{{ figure("../assets/replay_replay_mode.png", "Replay Mode Status") }}
+    {{ figure("../assets/replay_replay_mode.png", "Replay Mode Status") }}
 
-- **Stopped** (Red):  System is not playing back an MCAP nor operating with live data. 
+- **Stopped** (Red):  System is not playing back an MCAP nor operating with live data.
 
-	{{ figure("../assets/replay_stopped.png", "Stopped Status") }}
+    {{ figure("../assets/replay_stopped.png", "Stopped Status") }}
 
 - **Degraded Mode** (Amber): The system status is some expected services are not enabled.
 
-	{{ figure("../assets/replay_degraded_mode.png", "Degraded Status") }}
+    {{ figure("../assets/replay_degraded_mode.png", "Degraded Status") }}
 
 Click this button to view detailed service status, which shows the individual service states (Running/Stopped).  
 

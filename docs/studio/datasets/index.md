@@ -1,5 +1,8 @@
 # Dataset Dashboard
 
+!!! warning "Tag datasets before training"
+    Datasets must be tagged before they can be used for training. For guidance, see [Tagging Datasets](tag.md).
+
 The Dataset Dashboard shows a list of datasets in a project with a dataset summary in each dataset card.  For an in depth tutorial for creating datasets from capture to annotation, see the [Dataset Tutorials](../../datasets/tutorials/index.md). From the "Projects" page, we can click on the "Datasets" ![Dataset Button](../../assets/buttons/studio-datasets-button.jpg) button on the project card to see the project's datasets.  The public project "Sample Project" will contain the following datasets.
 
 {{ figure("../assets/datasets/public-datasets.jpg", "Public Datasets") }}
@@ -14,7 +17,7 @@ For datasets with **WRITE** access, the context menu will be shown like the foll
 
 {{ figure("../assets/datasets/write-access-dataset-context-menu.jpg", "Dataset Write Access Context Menu") }}
 
-This gives the user the options for [editing the dataset info](../../datasets/tutorials/management.md#edit-dataset-information), [importing existing datasets](../../datasets/tutorials/import.md), [exporting datasets into your local machine](../../datasets/tutorials/management.md#export-dataset), [creating snapshots](../snapshots.md#create-snapshot), and [copying datasets](../../datasets/tutorials/management.md#copy-dataset).  The rest of the options are described in the sections below such as the [dataset analytics](#analytics), [view on map](#view-on-map), [dataset history](#dataset-history), and [removing datasets](#remove-dataset).
+This gives the user the options for [editing the dataset info](../../datasets/tutorials/management.md#edit-dataset-information), [importing existing datasets](../../datasets/tutorials/import.md), [exporting datasets into your local machine](#export-dataset), [creating snapshots](../snapshots.md#create-snapshot), and [copying datasets](../../datasets/tutorials/management.md#copy-dataset).  The rest of the options are described in the sections below such as the [dataset analytics](#analytics), [view on map](#view-on-map), [dataset history](#dataset-history), and [removing datasets](#remove-dataset).
 
 ## Labels
 
@@ -81,7 +84,7 @@ The "Export Dataset" downloads the data from EdgeFirst Studio to the local folde
 
 {{ figure("../assets/datasets/export-dataset.png", "Export Dataset") }}
 
-To export datasets proceed with the steps as follows or follow this in-depth tutorial for [exporting datasets](../../datasets/tutorials/management.md#export-dataset).
+To export datasets proceed with the steps as follows.
 
 1. Select the dataset type: Detection (Bounding boxes) or Segmentation (Masks).
 2. Select the export format.

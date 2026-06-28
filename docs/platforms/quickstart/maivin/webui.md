@@ -12,7 +12,7 @@ There are three cards on the Main Page that link to the Visualization pages:
 
 - **GPS**: This page displays a map with the current location of the device, along with GPS coordinates.
 - **IMU**: This page displays the 3D orientation of the device with current pitch, yaw, and roll values.
-- **Segmentation View**: This page shows the camera with running segmentation and/or detection pipeline. 
+- **Segmentation View**: This page shows the camera with running segmentation and/or detection pipeline.
 
 {% include-markdown "discrete/platforms/edgefirst_main_page_overview.md" heading-offset=2 %}
 
@@ -22,7 +22,7 @@ These pages contain the user-facing functionality of the vision module.
 
 ### The Segmentation Page
 
-The Segmentation page shows camera overlain with the current visual model output. 
+The Segmentation page shows camera overlain with the current visual model output.
 
 {{ figure("../../assets/setup/ui-maivinSegmentation.jpg", "Maivin Segmentation Page") }}
 

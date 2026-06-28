@@ -1,6 +1,6 @@
 # Object Detection Metrics
 
-This section describes the validation metrics reported for [Object Detection Validation](../../vision/managed.md).  The object detection metrics are based on IoU which measures how closely the predictions aligns with the ground truth annotations.  For object detection, the IoU is calculated from bounding boxes.  However, for [instance segmentation](../segmentation.md#instance-segmentation-metrics), the IoU is calculated from instance masks.  The methods for computing object detection and instance segmentation metrics are the same.  The object detection metrics are categorized into **Full-Curve Metrics** and **Deployment Metrics**. 
+This section describes the validation metrics reported for [Object Detection Validation](../../vision/managed.md).  The object detection metrics are based on IoU which measures how closely the predictions aligns with the ground truth annotations.  For object detection, the IoU is calculated from bounding boxes.  However, for [instance segmentation](../segmentation.md#instance-segmentation-metrics), the IoU is calculated from instance masks.  The methods for computing object detection and instance segmentation metrics are the same.  The object detection metrics are categorized into **Full-Curve Metrics** and **Deployment Metrics**.
 
 The Full-Curve Metrics assess the model performance across varying score and IoU thresholds for all classes.  The Deployment Metrics are based on the best model performance at the optimal score threshold.
 
@@ -42,7 +42,7 @@ For a fixed IoU threshold, compute the AP (average precision):
 4. AP is computed as the area under this curve
 
 !!! note
-	IoU does not create the curve — it defines what counts as a true positive at each fixed threshold. For mAP@0.50:0.95, this AP computation is repeated over IoU thresholds from 0.50 to 0.95 and then averaged.
+    IoU does not create the curve — it defines what counts as a true positive at each fixed threshold. For mAP@0.50:0.95, this AP computation is repeated over IoU thresholds from 0.50 to 0.95 and then averaged.
 
 For each class:
 
@@ -53,18 +53,18 @@ For each class:
 **We report mAP at IoU thresholds (0.50, 0.75, 0.50-0.95):**
 
 * **mAP@0.50**
-	* Lenient matching (IoU ≥ 0.50)
-	* Focuses on detection correctness
+    * Lenient matching (IoU ≥ 0.50)
+    * Focuses on detection correctness
 * **mAP@0.75**
-	* Stricter matching
-	* Requires better localization
+    * Stricter matching
+    * Requires better localization
 * **mAP@0.50:0.95 (COCO metric)**
-	* Average AP across IoU thresholds from 0.50 to 0.95 (step 0.05)
-	* Evaluates both detection and localization quality
+    * Average AP across IoU thresholds from 0.50 to 0.95 (step 0.05)
+    * Evaluates both detection and localization quality
 
 ### F1 Score
 
-The Mean F1 Score is the harmonic mean between precision and recall used to determine the model’s optimal score threshold. It is derived from the F1 vs Confidence curve, which shows how the F1 score changes as the score threshold varies.  The model's optimal score threshold is at the max F1 score of this curve. 
+The Mean F1 Score is the harmonic mean between precision and recall used to determine the model’s optimal score threshold. It is derived from the F1 vs Confidence curve, which shows how the F1 score changes as the score threshold varies.  The model's optimal score threshold is at the max F1 score of this curve.
 
 {{ figure("../../../assets/metrics/f1_vs_confidence.png", "F1 versus Confidence") }}
 
@@ -78,7 +78,7 @@ $$
 $$
 
 !!! note
-	The equations for precision and recall are provided in the [glossary](../index.md#glossary).
+    The equations for precision and recall are provided in the [glossary](../index.md#glossary).
 
 The optimal score threshold is selected as the point where the mean F1 score across all classes is maximized:
 
@@ -110,7 +110,7 @@ $$
 $$
 
 !!! note
-	The equation for precision is provided in the [glossary](../index.md#glossary).
+    The equation for precision is provided in the [glossary](../index.md#glossary).
 
 The Mean Precision metric measures how accurate the model’s predictions are at the optimal threshold.  A high precision score indicates fewer false positives.
 
@@ -130,7 +130,7 @@ $$
 $$
 
 !!! note
-	The equation for recall is provided in the [glossary](../index.md#glossary).
+    The equation for recall is provided in the [glossary](../index.md#glossary).
 
 The Mean Recall metrics measures how well the model detects ground truth objects.  A high recall score indicates fewer missed detections.
 
@@ -154,10 +154,12 @@ $$
 p_{25} = Q_1,\quad p_{75} = Q_3,\quad p_{100} = \max(\text{IoU})
 $$
 
-* The interquartile range (IQR) is defined as 
+* The interquartile range (IQR) is defined as
+
 $$
 \text{IQR} = Q_3 - Q_1
 $$
+
 * The upper whisker (optimal IoU) is calculated as:
 
 $$
@@ -166,7 +168,7 @@ $$
 
 **What if the dataset does not have any ground truth intersections?**
 
-In some datasets, there may be no overlapping ground truth bounding boxes, meaning it is not possible to estimate an optimal IoU threshold using the IoU distribution of ground truth intersections.  In this case, a fallback strategy is used to choose the IoU threshold that eliminates the highest number of localization false positives (duplicate predictions).  Note that the localization false positives are any predictions not matched to any ground truth primarily due to prediction duplications (not filtered by NMS) or it does not intersect any ground truth bounding box. 
+In some datasets, there may be no overlapping ground truth bounding boxes, meaning it is not possible to estimate an optimal IoU threshold using the IoU distribution of ground truth intersections.  In this case, a fallback strategy is used to choose the IoU threshold that eliminates the highest number of localization false positives (duplicate predictions).  Note that the localization false positives are any predictions not matched to any ground truth primarily due to prediction duplications (not filtered by NMS) or it does not intersect any ground truth bounding box.
 
 The IoU values for these localization false positives are then collected.  These IoU values represent the duplicated boxes that should have been filtered by NMS.  The IoU values of these false positives are then grouped into a histogram.  The optimal IoU threshold is then selected as the lower edge of the bin with the highest frequency.  In other words, **if there are no ground truth intersections, the bin with the most number of localization false positive is taken as the optimal IoU threshold**.
 
@@ -180,10 +182,10 @@ If no false positives are present, or if the computed optimal IoU threshold is 0
 
 ## Deployment Metrics
 
-As mentioned, the Full-Curve Metrics assess the model performance at varying NMS score thresholds to find the [optimal score threshold that yields the max F1-score](#f1-score).  This score threshold is then used to filter the predictions.  These filtered predictions are then classified into true positives, false positives (classification, localization), and false negatives. 
+As mentioned, the Full-Curve Metrics assess the model performance at varying NMS score thresholds to find the [optimal score threshold that yields the max F1-score](#f1-score).  This score threshold is then used to filter the predictions.  These filtered predictions are then classified into true positives, false positives (classification, localization), and false negatives.
 
 !!! note "Classifications"
-	For more information on how these predictions are matched and classified into true positives, false positives, and false negatives, please see the [Matching and Classification Rules](matching.md).
+    For more information on how these predictions are matched and classified into true positives, false positives, and false negatives, please see the [Matching and Classification Rules](matching.md).
 
 {{ figure("../../../assets/metrics/deployment_classifications.png", "Deployment Classifications") }}
 
@@ -199,7 +201,7 @@ Further analysis can be performed using the [Confusion Matrix](#confusion-matrix
 
 From these plots, **the sum of true positives, false positives, and false negatives equals the totals reported in the deployment classifications**. Every prediction is accounted for in this breakdown.
 
-Lastly, the precision, recall, and accuracy scores of each class are provided in the Class Metrics bar chart.  You can find the equations for precision, recall, and accuracy in the [Glossary](../index.md#glossary). 
+Lastly, the precision, recall, and accuracy scores of each class are provided in the Class Metrics bar chart.  You can find the equations for precision, recall, and accuracy in the [Glossary](../index.md#glossary).
 
 {{ figure("../../../assets/metrics/class_metrics.png", "Class Metrics") }}
 
@@ -216,7 +218,7 @@ $$
 $$
 
 !!! note "Precision Equation"
-	The equation for precision is shown in the [Glossary](../index.md#glossary).
+    The equation for precision is shown in the [Glossary](../index.md#glossary).
 
 Precision measures how well the model outputs correct predictions.  Precision alone does not provide a final summary of the model performance because it only considers the ratio of the number of correct detections to the total number of detections.  Consider a case where the model might have made 9 detections which are all correct and yields a precision of 100%, but there are 200 ground truth annotations, the model missed the rest of the 191 annotations which yields a recall of 4.5%.
 
@@ -229,7 +231,7 @@ $$
 $$
 
 !!! note "Recall Equation"
-	The equation for recall is shown in the [Glossary](../index.md#glossary).
+    The equation for recall is shown in the [Glossary](../index.md#glossary).
 
 Recall measures how well the model finds the ground truth annotations.  This metric only considers the ratio of correct detections against the total number of ground truths.  However, it is possible that the model will correctly find all ground truth annotations, but it might have generated large amounts of localization false positives.
 
@@ -242,7 +244,7 @@ $$
 $$
 
 !!! note "Accuracy Equation"
-	The equation for accuracy is shown in the [Glossary](../index.md#glossary).
+    The equation for accuracy is shown in the [Glossary](../index.md#glossary).
 
 This accuracy metric provides a better representation of the overall model performance over precision and recall.  The accuracy metric aims to combine both precision and recall by considering correct detections (TP), false detections (localization FP and classification FP), and missed detections (FN).  The accuracy is the ratio of the correct detections against all model detections and all ground truth objects.  This metric aims to measure how well the model aligns its detections to the ground truth and a perfect alignment suggests zero missed annotations and zero false detections.
 
@@ -347,362 +349,362 @@ Let's take a closer look at how metrics are computed based on the following exam
 The final calculated Full-Curve Metrics for this sample are as follows:
 
 ```shell
-	+--------------------------------------------------+
-	|                DETECTION METRICS                 |
-	+--------------------------------------------------+
-	| Ground Truths: 3                                 |
-	| Predictions: 5                                   |
-	+---------------+-------------------+--------------+
-	|               | Mean Precision    |    99.13     |
-	|               | mAP@0.5           |     99.5     |
-	| Precision (%) | mAP@0.75          |     99.5     |
-	|               | mAP@0.5-0.95      |    67.79     |
-	+---------------+-------------------+--------------+
-	| Recall (%)    | Mean Recall       |    100.0     |
-	+---------------+-------------------+--------------+
-	| F1 Score (%)  | Mean F1           |    99.56     |
-	+---------------+-------------------+--------------+
+    +--------------------------------------------------+
+    |                DETECTION METRICS                 |
+    +--------------------------------------------------+
+    | Ground Truths: 3                                 |
+    | Predictions: 5                                   |
+    +---------------+-------------------+--------------+
+    |               | Mean Precision    |    99.13     |
+    |               | mAP@0.5           |     99.5     |
+    | Precision (%) | mAP@0.75          |     99.5     |
+    |               | mAP@0.5-0.95      |    67.79     |
+    +---------------+-------------------+--------------+
+    | Recall (%)    | Mean Recall       |    100.0     |
+    +---------------+-------------------+--------------+
+    | F1 Score (%)  | Mean F1           |    99.56     |
+    +---------------+-------------------+--------------+
 ```
 
 The final calculated Deployment Metrics for this sample are as follows:
 
 ```shell
-	+--------------------------------------------------+
-	|     DEPLOYMENT METRICS @ OPTIMAL THRESHOLDS      |
-	+---------------+----------------+-----------------+
-	| Ground Truths | True Positives | False Negatives |
-	+---------------+----------------+-----------------+
-	|       3       |       3        |        0        |
-	+-------------------------+------------------------+
-	|    Classification FP    |    Localization FP     |
-	+-------------------------+------------------------+
-	|            0            |           0            |
-	+-------------------------+------------------------+
-	|    Overall Accuracy     |         100.0          |
-	|    Mean Class Accuracy  |         100.0          |
-	+-------------------------+------------------------+
-	|    Overall Precision    |         100.0          |
-	|    Mean Class Precision |         100.0          |
-	+-------------------------+------------------------+
-	|    Overall Recall       |         100.0          |
-	|    Mean Class Recall    |         100.0          |
-	+-------------------------+------------------------+
+    +--------------------------------------------------+
+    |     DEPLOYMENT METRICS @ OPTIMAL THRESHOLDS      |
+    +---------------+----------------+-----------------+
+    | Ground Truths | True Positives | False Negatives |
+    +---------------+----------------+-----------------+
+    |       3       |       3        |        0        |
+    +-------------------------+------------------------+
+    |    Classification FP    |    Localization FP     |
+    +-------------------------+------------------------+
+    |            0            |           0            |
+    +-------------------------+------------------------+
+    |    Overall Accuracy     |         100.0          |
+    |    Mean Class Accuracy  |         100.0          |
+    +-------------------------+------------------------+
+    |    Overall Precision    |         100.0          |
+    |    Mean Class Precision |         100.0          |
+    +-------------------------+------------------------+
+    |    Overall Recall       |         100.0          |
+    |    Mean Class Recall    |         100.0          |
+    +-------------------------+------------------------+
 ```
 
 !!! note "Sorted Predictions"
-	The predictions are always sorted based on highest confidence first to lowest.
+    The predictions are always sorted based on highest confidence first to lowest.
 
 1. The batch IoU is calculated between the ground truth and the predictions
 
-	| GT \ Pred | Pred 0        | Pred 1        | Pred 2        | Pred 3        | Pred 4        |
-	|-----------|---------------|---------------|---------------|---------------|---------------|
-	| GT 0      | 0.0044969902  | 0.82639343    | 0.02061883    | 0.0000000     | 0.013678555   |
-	| GT 1      | 0.017273406   | 0.05893239    | 0.91331422    | 0.0000000     | 0.0000000     |
-	| GT 2      | 0.77907538    | 0.017573632   | 0.00063108001 | 0.0000000     | 0.0000000     |
+    | GT \ Pred | Pred 0        | Pred 1        | Pred 2        | Pred 3        | Pred 4        |
+    |-----------|---------------|---------------|---------------|---------------|---------------|
+    | GT 0      | 0.0044969902  | 0.82639343    | 0.02061883    | 0.0000000     | 0.013678555   |
+    | GT 1      | 0.017273406   | 0.05893239    | 0.91331422    | 0.0000000     | 0.0000000     |
+    | GT 2      | 0.77907538    | 0.017573632   | 0.00063108001 | 0.0000000     | 0.0000000     |
 
 2. Only the prediction labels that matches the ground truth labels are considered
 
-	* Correct Classes
+    * Correct Classes
 
-	| GT \ Pred    | Pred 0 "two" | Pred 1 "eight" | Pred 2 "eight" | Pred 3 "eight" | Pred 4 "eight" |
-	|--------------|--------------|----------------|----------------|----------------|----------------|
-	| GT 0 "eight" | False        | True           | True           | True           | True           |
-	| GT 1 "eight" | False        | True           | True           | True           | True           |
-	| GT 2 "two"   | True         | False          | False          | False          | False          |
+    | GT \ Pred    | Pred 0 "two" | Pred 1 "eight" | Pred 2 "eight" | Pred 3 "eight" | Pred 4 "eight" |
+    |--------------|--------------|----------------|----------------|----------------|----------------|
+    | GT 0 "eight" | False        | True           | True           | True           | True           |
+    | GT 1 "eight" | False        | True           | True           | True           | True           |
+    | GT 2 "two"   | True         | False          | False          | False          | False          |
 
-	* IoU Matrix
+    * IoU Matrix
 
-	| GT \ Pred | Pred 0     | Pred 1     | Pred 2     | Pred 3 | Pred 4     |
-	|-----------|------------|------------|------------|--------|------------|
-	| GT 0      | 0.0        | 0.8263934  | 0.02061883 | 0.0    | 0.01367856 |
-	| GT 1      | 0.0        | 0.05893239 | 0.9133142  | 0.0    | 0.0        |
-	| GT 2      | 0.7790754  | 0.0        | 0.0        | 0.0    | 0.0        |
+    | GT \ Pred | Pred 0     | Pred 1     | Pred 2     | Pred 3 | Pred 4     |
+    |-----------|------------|------------|------------|--------|------------|
+    | GT 0      | 0.0        | 0.8263934  | 0.02061883 | 0.0    | 0.01367856 |
+    | GT 1      | 0.0        | 0.05893239 | 0.9133142  | 0.0    | 0.0        |
+    | GT 2      | 0.7790754  | 0.0        | 0.0        | 0.0    | 0.0        |
 
 3. Build the correct matrix
 
-	The correct matrix is a n x 10 matrix where n represents the number of predictions and 10 represents the IoU thresholds from 0.50 to 0.95 in 0.05 intervals.  The correct matrix tracks whether each prediction remains as a true positive as the threshold increases.
+    The correct matrix is a n x 10 matrix where n represents the number of predictions and 10 represents the IoU thresholds from 0.50 to 0.95 in 0.05 intervals.  The correct matrix tracks whether each prediction remains as a true positive as the threshold increases.
 
-	| Pred \ IoU              | 0.50 | 0.55 | 0.60 | 0.65 | 0.70 | 0.75 | 0.80 | 0.85 | 0.90 | 0.95 |
-	|-------------------------|------|------|------|------|------|------|------|------|------|------|
-	| Pred 0 (0.7790754 IoU)  | True | True | True | True | True | True | False| False| False| False|
-	| Pred 1 (0.8263934 IoU)  | True | True | True | True | True | True | True | False| False| False|
-	| Pred 2 (0.9133142 IoU)  | True | True | True | True | True | True | True | True | True | False|
-	| Pred 3 (0.0 IoU)        | False| False| False| False| False| False| False| False| False| False|
-	| Pred 4 (0.01367856 IoU) | False| False| False| False| False| False| False| False| False| False|
+    | Pred \ IoU              | 0.50 | 0.55 | 0.60 | 0.65 | 0.70 | 0.75 | 0.80 | 0.85 | 0.90 | 0.95 |
+    |-------------------------|------|------|------|------|------|------|------|------|------|------|
+    | Pred 0 (0.7790754 IoU)  | True | True | True | True | True | True | False| False| False| False|
+    | Pred 1 (0.8263934 IoU)  | True | True | True | True | True | True | True | False| False| False|
+    | Pred 2 (0.9133142 IoU)  | True | True | True | True | True | True | True | True | True | False|
+    | Pred 3 (0.0 IoU)        | False| False| False| False| False| False| False| False| False| False|
+    | Pred 4 (0.01367856 IoU) | False| False| False| False| False| False| False| False| False| False|
 
 4. Gather the true positives and false positives for each class
 
-	Here we iterate through each unique ground truth class [5, 10].
+    Here we iterate through each unique ground truth class [5, 10].
 
-	!!! note "Accumulative Matrix"
+    !!! note "Accumulative Matrix"
 
-		The following matrices accumulates after each row (each prediction).
-		
-		* If the correct matrix is True, we add +1 to the current number of true positives in the subsequent row, but the number of false positives remains unchanged.
-		* Otherwise if the correct matrix is False, we add +1 to the current number of false positives in the subsequent row, but the number of true positives remains unchanged.
+        The following matrices accumulates after each row (each prediction).
 
-	* Class 5
+        * If the correct matrix is True, we add +1 to the current number of true positives in the subsequent row, but the number of false positives remains unchanged.
+        * Otherwise if the correct matrix is False, we add +1 to the current number of false positives in the subsequent row, but the number of true positives remains unchanged.
 
-		There's only one prediction with the class 5, this is the first prediction `i = [ True, False, False, False, False]`.
-		There's one prediction with this class `n_p = 1` and one ground truth with this class `n_l = 1`.
+    * Class 5
 
-		**True Positive Counts (TPC)**
+        There's only one prediction with the class 5, this is the first prediction `i = [ True, False, False, False, False]`.
+        There's one prediction with this class `n_p = 1` and one ground truth with this class `n_l = 1`.
 
-		| Pred \ IoU | 0.50 | 0.55 | 0.60 | 0.65 | 0.70 | 0.75 | 0.80 | 0.85 | 0.90 | 0.95 |
-		|------------|------|------|------|------|------|------|------|------|------|------|
-		| Pred 0     | 1    | 1    | 1    | 1    | 1    | 1    | 0    | 0    | 0    | 0    |
+        **True Positive Counts (TPC)**
 
-		**False Positive Counts (FPC)**
+        | Pred \ IoU | 0.50 | 0.55 | 0.60 | 0.65 | 0.70 | 0.75 | 0.80 | 0.85 | 0.90 | 0.95 |
+        |------------|------|------|------|------|------|------|------|------|------|------|
+        | Pred 0     | 1    | 1    | 1    | 1    | 1    | 1    | 0    | 0    | 0    | 0    |
 
-		| Pred \ IoU | 0.50 | 0.55 | 0.60 | 0.65 | 0.70 | 0.75 | 0.80 | 0.85 | 0.90 | 0.95 |
-		|------------|------|------|------|------|------|------|------|------|------|------|
-		| Pred 0     | 0    | 0    | 0    | 0    | 0    | 0    | 1    | 1    | 1    | 1    |
+        **False Positive Counts (FPC)**
 
-	* Class 10
+        | Pred \ IoU | 0.50 | 0.55 | 0.60 | 0.65 | 0.70 | 0.75 | 0.80 | 0.85 | 0.90 | 0.95 |
+        |------------|------|------|------|------|------|------|------|------|------|------|
+        | Pred 0     | 0    | 0    | 0    | 0    | 0    | 0    | 1    | 1    | 1    | 1    |
 
-		There are four predictions with the class 10, `i = [ False, True, True, True, True]`.
-		There's four prediction with this class `n_p = 4` and two ground truth with this class `n_l = 2`.
+    * Class 10
 
-		**True Positive Counts (TPC)**
+        There are four predictions with the class 10, `i = [ False, True, True, True, True]`.
+        There's four prediction with this class `n_p = 4` and two ground truth with this class `n_l = 2`.
 
-		| Pred \ IoU | 0.50 | 0.55 | 0.60 | 0.65 | 0.70 | 0.75 | 0.80 | 0.85 | 0.90 | 0.95 |
-		|------------|------|------|------|------|------|------|------|------|------|------|
-		| Pred 1     | 1    | 1    | 1    | 1    | 1    | 1    | 1    | 0    | 0    | 0    |
-		| Pred 2     | 2    | 2    | 2    | 2    | 2    | 2    | 2    | 1    | 1    | 0    |
-		| Pred 3     | 2    | 2    | 2    | 2    | 2    | 2    | 2    | 1    | 1    | 0    |
-		| Pred 4     | 2    | 2    | 2    | 2    | 2    | 2    | 2    | 1    | 1    | 0    |
+        **True Positive Counts (TPC)**
 
-		**False Positive Counts (FPC)**
+        | Pred \ IoU | 0.50 | 0.55 | 0.60 | 0.65 | 0.70 | 0.75 | 0.80 | 0.85 | 0.90 | 0.95 |
+        |------------|------|------|------|------|------|------|------|------|------|------|
+        | Pred 1     | 1    | 1    | 1    | 1    | 1    | 1    | 1    | 0    | 0    | 0    |
+        | Pred 2     | 2    | 2    | 2    | 2    | 2    | 2    | 2    | 1    | 1    | 0    |
+        | Pred 3     | 2    | 2    | 2    | 2    | 2    | 2    | 2    | 1    | 1    | 0    |
+        | Pred 4     | 2    | 2    | 2    | 2    | 2    | 2    | 2    | 1    | 1    | 0    |
 
-		| Pred \ IoU | 0.50 | 0.55 | 0.60 | 0.65 | 0.70 | 0.75 | 0.80 | 0.85 | 0.90 | 0.95 |
-		|------------|------|------|------|------|------|------|------|------|------|------|
-		| Pred 1     | 0    | 0    | 0    | 0    | 0    | 0    | 0    | 1    | 1    | 1    |
-		| Pred 2     | 0    | 0    | 0    | 0    | 0    | 0    | 0    | 1    | 1    | 2    |
-		| Pred 3     | 1    | 1    | 1    | 1    | 1    | 1    | 1    | 2    | 2    | 3    |
-		| Pred 4     | 2    | 2    | 2    | 2    | 2    | 2    | 2    | 3    | 3    | 4    |
+        **False Positive Counts (FPC)**
+
+        | Pred \ IoU | 0.50 | 0.55 | 0.60 | 0.65 | 0.70 | 0.75 | 0.80 | 0.85 | 0.90 | 0.95 |
+        |------------|------|------|------|------|------|------|------|------|------|------|
+        | Pred 1     | 0    | 0    | 0    | 0    | 0    | 0    | 0    | 1    | 1    | 1    |
+        | Pred 2     | 0    | 0    | 0    | 0    | 0    | 0    | 0    | 1    | 1    | 2    |
+        | Pred 3     | 1    | 1    | 1    | 1    | 1    | 1    | 1    | 2    | 2    | 3    |
+        | Pred 4     | 2    | 2    | 2    | 2    | 2    | 2    | 2    | 3    | 3    | 4    |
 
 5. Compute the precision and recall for each class
 
-	The formulas for precision and recall are as follows.
+    The formulas for precision and recall are as follows.
 
-	$$
-	\text{precision} = \frac{\text{TP}}{\text{TP} + \text{FP}} 
-	$$
+    $$
+    \text{precision} = \frac{\text{TP}}{\text{TP} + \text{FP}}
+    $$
 
-	$$
-	\text{recall} = \frac{\text{TP}}{\text{GT}_{\text{c}}}
-	$$
+    $$
+    \text{recall} = \frac{\text{TP}}{\text{GT}_{\text{c}}}
+    $$
 
-	where \( \text{GT}_c \) is the number of ground truth instances for class \( c \).
+    where \( \text{GT}_c \) is the number of ground truth instances for class \( c \).
 
-	!!! note "Confidence Curves"
-		* The [precision vs confidence curve](#mean-precision) is based on the IoU threshold 0.50 then interpolated across 1000 data points 
-		* The [recall vs confidence curve](#mean-recall) is based on the IoU threshold 0.50 then interpolated across 1000 data points 
-		* The [F1 vs confidence curve](#f1-score) is based on the IoU threshold 0.50 then interpolated across 1000 data points 
+    !!! note "Confidence Curves"
+        - The [precision vs confidence curve](#mean-precision) is based on the IoU threshold 0.50 then interpolated across 1000 data points
+        - The [recall vs confidence curve](#mean-recall) is based on the IoU threshold 0.50 then interpolated across 1000 data points
+        - The [F1 vs confidence curve](#f1-score) is based on the IoU threshold 0.50 then interpolated across 1000 data points
 
-	* Class 5
+    * Class 5
 
-		**Precision per Prediction and IoU Threshold**
+        **Precision per Prediction and IoU Threshold**
 
-		| Pred \ IoU | 0.50 | 0.55 | 0.60 | 0.65 | 0.70 | 0.75 | 0.80 | 0.85 | 0.90 | 0.95 |
-		|------------|------|------|------|------|------|------|------|------|------|------|
-		| Pred 0     | 1.0  | 1.0  | 1.0  | 1.0  | 1.0  | 1.0  | 0.0  | 0.0  | 0.0  | 0.0  |
+        | Pred \ IoU | 0.50 | 0.55 | 0.60 | 0.65 | 0.70 | 0.75 | 0.80 | 0.85 | 0.90 | 0.95 |
+        |------------|------|------|------|------|------|------|------|------|------|------|
+        | Pred 0     | 1.0  | 1.0  | 1.0  | 1.0  | 1.0  | 1.0  | 0.0  | 0.0  | 0.0  | 0.0  |
 
-		**Recall per Prediction and IoU Threshold**
+        **Recall per Prediction and IoU Threshold**
 
-		| Pred \ IoU | 0.50 | 0.55 | 0.60 | 0.65 | 0.70 | 0.75 | 0.80 | 0.85 | 0.90 | 0.95 |
-		|------------|------|------|------|------|------|------|------|------|------|------|
-		| Pred 0     | 1.0  | 1.0  | 1.0  | 1.0  | 1.0  | 1.0  | 1.0  | 0.0  | 0.0  | 0.0  |
+        | Pred \ IoU | 0.50 | 0.55 | 0.60 | 0.65 | 0.70 | 0.75 | 0.80 | 0.85 | 0.90 | 0.95 |
+        |------------|------|------|------|------|------|------|------|------|------|------|
+        | Pred 0     | 1.0  | 1.0  | 1.0  | 1.0  | 1.0  | 1.0  | 1.0  | 0.0  | 0.0  | 0.0  |
 
-	* Class 10
+    * Class 10
 
-		**Precision per Prediction and IoU Threshold**
+        **Precision per Prediction and IoU Threshold**
 
-		| Pred \ IoU | 0.50 | 0.55 | 0.60 | 0.65 | 0.70 | 0.75 | 0.80 | 0.85 | 0.90 | 0.95 |
-		|------------|------|------|------|------|------|------|------|------|------|------|
-		| Pred 0     | 1.0  | 1.0  | 1.0  | 1.0  | 1.0  | 1.0  | 1.0  | 0.0  | 0.0  | 0.0  |
-		| Pred 1     | 1.0  | 1.0  | 1.0  | 1.0  | 1.0  | 1.0  | 1.0  | 0.5  | 0.5  | 0.0  |
-		| Pred 2     | 0.667| 0.667| 0.667| 0.667| 0.667| 0.667| 0.667| 0.333| 0.333| 0.0  |
-		| Pred 3     | 0.5  | 0.5  | 0.5  | 0.5  | 0.5  | 0.5  | 0.5  | 0.25 | 0.25 | 0.0  |
+        | Pred \ IoU | 0.50 | 0.55 | 0.60 | 0.65 | 0.70 | 0.75 | 0.80 | 0.85 | 0.90 | 0.95 |
+        |------------|------|------|------|------|------|------|------|------|------|------|
+        | Pred 0     | 1.0  | 1.0  | 1.0  | 1.0  | 1.0  | 1.0  | 1.0  | 0.0  | 0.0  | 0.0  |
+        | Pred 1     | 1.0  | 1.0  | 1.0  | 1.0  | 1.0  | 1.0  | 1.0  | 0.5  | 0.5  | 0.0  |
+        | Pred 2     | 0.667| 0.667| 0.667| 0.667| 0.667| 0.667| 0.667| 0.333| 0.333| 0.0  |
+        | Pred 3     | 0.5  | 0.5  | 0.5  | 0.5  | 0.5  | 0.5  | 0.5  | 0.25 | 0.25 | 0.0  |
 
-		**Recall per Prediction and IoU Threshold**
+        **Recall per Prediction and IoU Threshold**
 
-		| Pred \ IoU | 0.50 | 0.55 | 0.60 | 0.65 | 0.70 | 0.75 | 0.80 | 0.85 | 0.90 | 0.95 |
-		|------------|------|------|------|------|------|------|------|------|------|------|
-		| Pred 0     | 0.5  | 0.5  | 0.5  | 0.5  | 0.5  | 0.5  | 0.5  | 0.0  | 0.0  | 0.0  |
-		| Pred 1     | 1.0  | 1.0  | 1.0  | 1.0  | 1.0  | 1.0  | 1.0  | 0.5  | 0.5  | 0.0  |
-		| Pred 2     | 1.0  | 1.0  | 1.0  | 1.0  | 1.0  | 1.0  | 1.0  | 0.5  | 0.5  | 0.0  |
-		| Pred 3     | 1.0  | 1.0  | 1.0  | 1.0  | 1.0  | 1.0  | 1.0  | 0.5  | 0.5  | 0.0  |
+        | Pred \ IoU | 0.50 | 0.55 | 0.60 | 0.65 | 0.70 | 0.75 | 0.80 | 0.85 | 0.90 | 0.95 |
+        |------------|------|------|------|------|------|------|------|------|------|------|
+        | Pred 0     | 0.5  | 0.5  | 0.5  | 0.5  | 0.5  | 0.5  | 0.5  | 0.0  | 0.0  | 0.0  |
+        | Pred 1     | 1.0  | 1.0  | 1.0  | 1.0  | 1.0  | 1.0  | 1.0  | 0.5  | 0.5  | 0.0  |
+        | Pred 2     | 1.0  | 1.0  | 1.0  | 1.0  | 1.0  | 1.0  | 1.0  | 0.5  | 0.5  | 0.0  |
+        | Pred 3     | 1.0  | 1.0  | 1.0  | 1.0  | 1.0  | 1.0  | 1.0  | 0.5  | 0.5  | 0.0  |
 
 6. Compute the average precision (AP)
 
-	The average precision is computed across IoU thresholds 0.50 to 0.95 in 0.05 intervals. The average precision is calculated based on the area under the precision versus recall curve.  This is an integration using the composite trapezoidal rule. 
+    The average precision is computed across IoU thresholds 0.50 to 0.95 in 0.05 intervals. The average precision is calculated based on the area under the precision versus recall curve.  This is an integration using the composite trapezoidal rule.
 
-	**Average Precision (Discrete COCO / 101-point Interpolation)**
+    **Average Precision (Discrete COCO / 101-point Interpolation)**
 
-	$$ \text{AP} = \sum_{k=1}^{101} \text{precision}(r_k) \cdot \Delta r $$
+    $$ \text{AP} = \sum_{k=1}^{101} \text{precision}(r_k) \cdot \Delta r $$
 
-	**Average Precision (AP) per Class and IoU Threshold**
+    **Average Precision (AP) per Class and IoU Threshold**
 
-	| Class \ IoU | 0.50 | 0.55 | 0.60 | 0.65 | 0.70 | 0.75 | 0.80 | 0.85 | 0.90 | 0.95 |
-	|-------------|------|------|------|------|------|------|------|------|------|------|
-	| Class 5     | 0.995| 0.995| 0.995| 0.995| 0.995| 0.995| 0.000| 0.000| 0.000| 0.000|
-	| Class 10    | 0.995| 0.995| 0.995| 0.995| 0.995| 0.995| 0.995| 0.31125| 0.31125| 0.000|
+    | Class \ IoU | 0.50 | 0.55 | 0.60 | 0.65 | 0.70 | 0.75 | 0.80 | 0.85 | 0.90 | 0.95 |
+    |-------------|------|------|------|------|------|------|------|------|------|------|
+    | Class 5     | 0.995| 0.995| 0.995| 0.995| 0.995| 0.995| 0.000| 0.000| 0.000| 0.000|
+    | Class 10    | 0.995| 0.995| 0.995| 0.995| 0.995| 0.995| 0.995| 0.31125| 0.31125| 0.000|
 
-	**Class 5**
-	
-	* Precision = 1.0 until IoU 0.75, then drops to 0
-	* Recall = 1.0 until IoU 0.80, then drops to 0
-	* AP ≈ 0.995 (slightly < 1 due to interpolation and discretization)
+    **Class 5**
 
-	**Class 10**
+    * Precision = 1.0 until IoU 0.75, then drops to 0
+    * Recall = 1.0 until IoU 0.80, then drops to 0
+    * AP ≈ 0.995 (slightly < 1 due to interpolation and discretization)
 
-	* Multiple predictions → gradual precision decay
-	* Recall increases stepwise (0.5 → 1.0)
+    **Class 10**
+
+    * Multiple predictions → gradual precision decay
+    * Recall increases stepwise (0.5 → 1.0)
 
 7. Compute final metrics
 
 === "Full-Curve Metrics"
 
-	* mAP@0.50
+    * mAP@0.50
 
-		$$ mAP@0.50 = \frac{1}{C}\sum_{i=1}^{C}\text{AP@0.50}_{i}, \quad C = \text{number of classes} $$
+        $$ mAP@0.50 = \frac{1}{C}\sum_{i=1}^{C}\text{AP@0.50}_{i}, \quad C = \text{number of classes} $$
 
-		Substituting values:
+        Substituting values:
 
-		$$
-		mAP@0.50 = \frac{0.995 + 0.995}{2} = 0.995
-		$$
+        $$
+        mAP@0.50 = \frac{0.995 + 0.995}{2} = 0.995
+        $$
 
-		---
+        ---
 
-	* mAP@0.75
+    * mAP@0.75
 
-		$$ mAP@0.75 = \frac{1}{C}\sum_{i=1}^{C}\text{AP@0.75}_{i}, \quad C = \text{number of classes} $$
+        $$ mAP@0.75 = \frac{1}{C}\sum_{i=1}^{C}\text{AP@0.75}_{i}, \quad C = \text{number of classes} $$
 
-		Substituting values:
+        Substituting values:
 
-		$$
-		mAP@0.75 = \frac{0.995 + 0.995}{2} = 0.995
-		$$
+        $$
+        mAP@0.75 = \frac{0.995 + 0.995}{2} = 0.995
+        $$
 
-		---
+        ---
 
-	* mAP@0.50–0.95
+    * mAP@0.50–0.95
 
-		First compute the average AP across IoU thresholds for each class:
+        First compute the average AP across IoU thresholds for each class:
 
-		$$ \text{AP}_{0.50:0.95} = \frac{1}{10} \sum_{t=1}^{10} \text{AP}_{\text{IoU}_t}, \quad \text{where } \text{IoU}_t \in \{0.50, 0.55, \dots, 0.95\} $$
+        $$ \text{AP}_{0.50:0.95} = \frac{1}{10} \sum_{t=1}^{10} \text{AP}_{\text{IoU}_t}, \quad \text{where } \text{IoU}_t \in \{0.50, 0.55, \dots, 0.95\} $$
 
-		Class-wise results:
+        Class-wise results:
 
-		$$
-		\text{AP}_{0.50:0.95}^{(5)} =
-		\frac{6 * 0.995}{10}
-		$$
+        $$
+        \text{AP}_{0.50:0.95}^{(5)} =
+        \frac{6 * 0.995}{10}
+        $$
 
-		$$
-		\text{AP}_{0.50:0.95}^{(10)} =
-		\frac{7 * 0.995 + 2 * 0.31125}{10}
-		$$
+        $$
+        \text{AP}_{0.50:0.95}^{(10)} =
+        \frac{7 * 0.995 + 2 * 0.31125}{10}
+        $$
 
-		Then compute the final mean across classes:
+        Then compute the final mean across classes:
 
-		$$ mAP@0.50-0.95 = \frac{1}{C}\sum_{i=1}^{C}\text{AP@0.50-0.95}_{i}, \quad C = \text{number of classes} $$
+        $$ mAP@0.50-0.95 = \frac{1}{C}\sum_{i=1}^{C}\text{AP@0.50-0.95}_{i}, \quad C = \text{number of classes} $$
 
-		$$
-		mAP@0.50-0.95 =
-		\frac{\text{AP}_{0.50:0.95}^{(5)} + \text{AP}_{0.50:0.95}^{(10)}}{2}
-		= 0.678
-		$$
+        $$
+        mAP@0.50-0.95 =
+        \frac{\text{AP}_{0.50:0.95}^{(5)} + \text{AP}_{0.50:0.95}^{(10)}}{2}
+        = 0.678
+        $$
 
-	* Mean Precision, Recall, F1
+    * Mean Precision, Recall, F1
 
-		The precision and recall values from step 5 where interpolated across 1000 data points where the x-axis represents the prediction confidence scores and the y-axis is either precision or recall.  The F1-score is then calculated using $$ \text{f1} = \frac{2 * precision * recall}{precision + recall} $$
+        The precision and recall values from step 5 where interpolated across 1000 data points where the x-axis represents the prediction confidence scores and the y-axis is either precision or recall.  The F1-score is then calculated using $$ \text{f1} = \frac{2 * precision * recall}{precision + recall} $$
 
-		The highest F1 score is at the score threshold `0.926`.  The precision, recall, and F1 score of each class at this threshold is as follows.
+        The highest F1 score is at the score threshold `0.926`.  The precision, recall, and F1 score of each class at this threshold is as follows.
 
-		| Class \ Metric | Precision  | Recall | F1-Score  | 
-		|----------------|------------|--------|-----------|
-		| Class 5        | 1.0        | 1.0    | 1.0       | 
-		| Class 10       | 0.98260945 | 1.0    | 0.99122845| 
+        | Class \ Metric | Precision  | Recall | F1-Score  |
+        |----------------|------------|--------|-----------|
+        | Class 5        | 1.0        | 1.0    | 1.0       |
+        | Class 10       | 0.98260945 | 1.0    | 0.99122845|
 
-		The reported metrics for the Mean Precision, Recall, and F1 is the average across each class.
+        The reported metrics for the Mean Precision, Recall, and F1 is the average across each class.
 
-		$$
-		\text{Mean Precision} = \frac{1.0 + 0.98260945}{2} = 0.9913
-		$$
+        $$
+        \text{Mean Precision} = \frac{1.0 + 0.98260945}{2} = 0.9913
+        $$
 
-		$$
-		\text{Mean Recall} = \frac{1.0 + 1.0}{2} = 1.0
-		$$
+        $$
+        \text{Mean Recall} = \frac{1.0 + 1.0}{2} = 1.0
+        $$
 
-		$$
-		\text{Mean F1} = \frac{1.0 + 0.99122845}{2} = 0.9956
-		$$
+        $$
+        \text{Mean F1} = \frac{1.0 + 0.99122845}{2} = 0.9956
+        $$
 
 === "Deployment Metrics"
 
-	The optimal score threshold found based on the highest F1 score is `0.926`.  To calculate the deployment metrics, we filter predictions based on scores greater than or equal to this threshold.
+    The optimal score threshold found based on the highest F1 score is `0.926`.  To calculate the deployment metrics, we filter predictions based on scores greater than or equal to this threshold.
 
-	**Filtered Predictions**
+    **Filtered Predictions**
 
-	| Pred | Index | Labels  | Scores     |
-	|------|-------|---------|------------|
-	| 0    | 5     | "two"   | 0.9549317  |
-	| 1    | 10    | "eight" | 0.95256793 |
-	| 2    | 10    | "eight" | 0.92612094 |
+    | Pred | Index | Labels  | Scores     |
+    |------|-------|---------|------------|
+    | 0    | 5     | "two"   | 0.9549317  |
+    | 1    | 10    | "eight" | 0.95256793 |
+    | 2    | 10    | "eight" | 0.92612094 |
 
-	**Ground Truth**
+    **Ground Truth**
 
-	| GT | Index | Labels  |
-	|----|-------|---------|
-	| 0  | 10    | "eight" |
-	| 1  | 10    | "eight" |
-	| 2  | 5     | "two"   |
+    | GT | Index | Labels  |
+    |----|-------|---------|
+    | 0  | 10    | "eight" |
+    | 1  | 10    | "eight" |
+    | 2  | 5     | "two"   |
 
-	1. Match predictions to ground truths by following the [Matching and Classifications Rules](matching.md)
+    1. Match predictions to ground truths by following the [Matching and Classifications Rules](matching.md)
 
-		Based on the batch IoU, the following matches are made.
+        Based on the batch IoU, the following matches are made.
 
-		**IoU Grid (GT vs Predictions)**
+        **IoU Grid (GT vs Predictions)**
 
-		| GT \ Pred | Pred 0       | Pred 1       | Pred 2       |
-		|-----------|--------------|--------------|--------------|
-		| GT 0      | 0.0044969902 | 0.82639343   | 0.02061883   |
-		| GT 1      | 0.017273406  | 0.05893239   | 0.91331422   |
-		| GT 2      | 0.77907538   | 0.017573632  | 0.00063108001|
+        | GT \ Pred | Pred 0       | Pred 1       | Pred 2       |
+        |-----------|--------------|--------------|--------------|
+        | GT 0      | 0.0044969902 | 0.82639343   | 0.02061883   |
+        | GT 1      | 0.017273406  | 0.05893239   | 0.91331422   |
+        | GT 2      | 0.77907538   | 0.017573632  | 0.00063108001|
 
-		* GT 0 => Pred 1
-		* GT 1 => Pred 2
-		* GT 2 => Pred 0
+        * GT 0 => Pred 1
+        * GT 1 => Pred 2
+        * GT 2 => Pred 0
 
-	2. Gather classifications of true positives, false positives, and false negatives per class
+    2. Gather classifications of true positives, false positives, and false negatives per class
 
-		In this sample, all predictions are regarded as a true positive since the labels matches the ground truth and the IoU >= 0.50 to be regarded as a true positive.  Please see [Object Detection Classifications](classifications.md) for more information.
+        In this sample, all predictions are regarded as a true positive since the labels matches the ground truth and the IoU >= 0.50 to be regarded as a true positive.  Please see [Object Detection Classifications](classifications.md) for more information.
 
-		{{ img("../../../assets/metrics/deployment_val_000143.jpg", "Playing Cards v7; val_000143.jpg") }}
+        {{ img("../../../assets/metrics/deployment_val_000143.jpg", "Playing Cards v7; val_000143.jpg") }}
 
-	3. Calculate precision, recall, and accuracy per class
+    3. Calculate precision, recall, and accuracy per class
 
-		| Class \ Classifications | TP | FN | FP | 
-		|-------------------------|----|----|----|
-		| Class 5                 | 1  | 0  | 0  | 
-		| Class 10                | 2  | 0  | 0  | 
+        | Class \ Classifications | TP | FN | FP |
+        |-------------------------|----|----|----|
+        | Class 5                 | 1  | 0  | 0  |
+        | Class 10                | 2  | 0  | 0  |
 
-		| Class \ Metric | Precision  | Recall | Accuracy  | 
-		|----------------|------------|--------|-----------|
-		| Class 5        | 1.0        | 1.0    | 1.0       | 
-		| Class 10       | 1.0        | 1.0    | 1.0       | 
+        | Class \ Metric | Precision  | Recall | Accuracy  |
+        |----------------|------------|--------|-----------|
+        | Class 5        | 1.0        | 1.0    | 1.0       |
+        | Class 10       | 1.0        | 1.0    | 1.0       |
 
-	4. Calculate the deployment precision, recall, and accuracy
+    4. Calculate the deployment precision, recall, and accuracy
 
-		The deployment metrics are calculated as the average across all classes
+        The deployment metrics are calculated as the average across all classes
 
-		| Precision  | Recall | Accuracy  | 
-		|------------|--------|-----------|
-		| 1.0        | 1.0    | 1.0       | 
-		| 1.0        | 1.0    | 1.0       | 
+        | Precision  | Recall | Accuracy  |
+        |------------|--------|-----------|
+        | 1.0        | 1.0    | 1.0       |
+        | 1.0        | 1.0    | 1.0       |
 
 ## Further Reading
 

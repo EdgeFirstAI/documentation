@@ -8,7 +8,7 @@ sudo vi /etc/default/fusion
 
 Change the model line to point to the new Fusion model `/home/torizon/fusion.tflite`:
 
-```
+```ini
 # The radar model
 MODEL = "/usr/share/fusion/radarexp-ultra-short.tflite"
 #MODEL = "/home/torizon/fusion.tflite"

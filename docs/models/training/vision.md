@@ -62,7 +62,12 @@ For more information on available "Data Augmentations" please see [Vision Augmen
     8. **Split Decoder**: Remove the decoder from the model and use a very optimized one from EdgeFirst.  This feature is very useful when the location of the boxes has to be precise (0-offset)
 7. **Training Parameters**: In this section the user is able to specify the number of epochs to train the model as well as the batch size.  Remember the larger the input resolution the smaller the batch size
     1. **Enable Training** *(Ultralytics only)*: When enabled, the model is trained using the selected weights. When disabled (default), no training is performed — weights are pushed directly to the session artifacts. See [Enable Training and Use Default Weights](#enable-training-and-use-default-weights) below.
+
+        !!! note "No Training Charts"
+            Training sessions with **Enable Training** disabled will not generate loss or metric charts, since the chart x-axis is epoch-based. This is expected behavior.
+
     2. **Use Default Weights**: When enabled (default), training starts from pre-trained COCO weights. When disabled, starting weights are sourced from a prior training session you specify.
+
 8. **Data Augmentation**: This section controls the probability of each augmentation technique.  This feature is crucial for training models and reduce overfitting, especially in small datasets
 9. **Export Parameters**: Allow the user to set a portion of data for calibration when exporting the model for INT8 quantization
 10. **Start Session**: This button will start the training session
@@ -71,17 +76,23 @@ For more information on available "Data Augmentations" please see [Vision Augmen
 
 The **Enable Training** checkbox (Ultralytics only) and **Use Default Weights** checkbox combine to control how the session is initialized and whether active training is performed:
 
-| Use Default Weights | Enable Training | Behaviour |
+| Use Default Weights | Enable Training | Behavior |
 |---------------------|-----------------|----------|
 | ✓ Enabled | ✓ Enabled | Train from pre-trained COCO weights. |
 | ✗ Disabled | ✓ Enabled | Train starting from weights of a prior training session you specify. |
-| ✓ Enabled | ✗ Disabled | **Default.** No training. Pre-trained COCO weights are copied directly to the session artifacts. Results will be poor on non-COCO datasets — Studio displays a warning. |
+| ✓ Enabled | ✗ Disabled | **Default.** No training. Pre-trained COCO weights are copied directly to the session artifacts. Results will be poor on non-COCO datasets — Studio displays a warning. This default exists because full COCO training for Ultralytics is compute-intensive, and it lets you reproduce validation and profiling results from the [EdgeFirst Model Zoo on Hugging Face](https://huggingface.co/spaces/EdgeFirst/Models) using the published COCO checkpoints. |
 | ✗ Disabled | ✗ Disabled | No training. Weights are copied from a specified prior training session — equivalent to cloning that session's artifacts. |
 
 !!! warning "COCO pre-trained weights and dataset compatibility"
     The **Use Default Weights** option initializes from pre-trained COCO weights. These weights can technically be used as a starting point for any dataset, but **if your dataset labels have no overlap with COCO category names, validation accuracy will be very poor** — the model's class outputs will not correspond to your labels.
 
     For best transfer-learning results, ensure your label names match the relevant COCO categories, or supply a prior EdgeFirst training session as the starting weights.
+
+!!! failure "InsufficientInstanceCapacity"
+
+    {{ img("/studio/assets/models/insufficient-capacity-error.jpg", "InsufficientInstanceCapacity Error") }}
+
+    If you see this error after starting your training session, retry creating the session. This can happen when AWS reports that no EC2 instances are currently available to launch; the current workaround is to retry.
 
 ## Session Progress
 

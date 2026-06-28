@@ -546,7 +546,7 @@ Per-type semantic fields are scoped to their output type:
 
 The HAL uses the two-layer `outputs[]` structure to decode any converter's decomposition.
 
-```
+```text
 For each logical output in outputs[]:
   if output has "outputs" children:
     # Converter split this logical output
@@ -596,7 +596,7 @@ The fallback always works for any decomposition:
 
 Quantized models store integer values instead of floats. Each output tensor includes parameters to convert back to floating-point using the dequantization formula:
 
-```
+```text
 real_value = scale * (quantized_value - zero_point)
 ```
 
@@ -885,7 +885,7 @@ outputs:
 
 ## Post-Processing & Two-Layer Outputs
 
-The two-layer `outputs[]` structure (introduced in [Output Specification](#output-specification)) is descriptive: converters declare the logical contract and — when they split the tensor further — describe the physical decomposition they produced. This section covers the post-processing decoder contract that consumers honour at inference time. For the layout of logical outputs per architecture, see [Architecture Survey](#architecture-survey).
+The two-layer `outputs[]` structure (introduced in [Output Specification](#output-specification)) is descriptive: converters declare the logical contract and — when they split the tensor further — describe the physical decomposition they produced. This section covers the post-processing decoder contract that consumers honor at inference time. For the layout of logical outputs per architecture, see [Architecture Survey](#architecture-survey).
 
 ### Decoding Flow
 
@@ -1040,7 +1040,7 @@ Split hints encode model-specific knowledge about where natural quantization bou
 
 Split hints are **input metadata only**. They live in the uncompiled (ONNX / SavedModel) `edgefirst.json` and are consumed by the converter. The compiled (converted) model **replaces** `split_hints` with the compiled `outputs[]` array — the two-layer logical/physical structure is the authoritative description of the compiled model.
 
-```
+```text
 ┌──────────────────────┐     ┌──────────────────────┐     ┌──────────────────┐
 │  Training Framework  │     │      Converter        │     │       HAL        │
 │                      │     │                       │     │                  │
@@ -1629,119 +1629,17 @@ instance_mask = sigmoid(mask_coefs @ protos)  # [32] @ [32, H, W] -> [H, W]
 
 ## Calibration Artifact
 
-Training frameworks produce a calibration artifact containing preprocessed, ready-to-consume calibration data. This artifact enables model-agnostic converters to perform quantization without knowing the model's preprocessing pipeline, input normalization, or data augmentation.
+Quantizing converters need a representative sample of model inputs to measure activation ranges. EdgeFirst Studio captures that sample once, at training time, as a `.safetensors` **calibration snapshot**: a pre-filtered, pre-processed subset of the training data with embedded metadata and full provenance back to the source samples.
 
-### Rationale
+The `edgefirst.json` `calibration` field records the snapshot filename:
 
-The training stage always generates calibration data because:
-
-- The model knows its own preprocessing (normalization, resizing, color space, [CameraAdaptor](cameraadaptor.md))
-- Multi-input models (e.g., camera + radar fusion) require model-specific preprocessing per input
-- Smart sample selection (percentile bounds, coverage optimization) runs once at training time
-- Converters become truly model-agnostic — they receive ready-to-consume tensors
-
-### Format
-
-Calibration data is stored in [safetensors](https://huggingface.co/docs/safetensors/) format with named tensors corresponding to model input names.
-
-### Naming Convention
-
-Calibration filenames encode the dataset and generation parameters for deterministic caching:
-
-```
-calibration-{dataset_id}-{param_hash}.safetensors
+```yaml
+calibration: string          # calibration-{dataset_id}-{param_hash}.safetensors
 ```
 
-**Example:** `calibration-ds-2bcc-a1b2c3d4.safetensors`
+Each consuming converter additionally records the filename it calibrated against in its [converter-traceability section](#converter-traceability) (e.g. `tflite_quantizer.calibration`), so the compiled model names its calibration snapshot, the snapshot names its parameter hash and source sample IDs, and the audit chain runs unbroken from a deployed binary back to individual training images.
 
-- `{dataset_id}` — Studio dataset label (e.g., `ds-2bcc`)
-- `{param_hash}` — Deterministic hash of the calibration generation parameters
-
-### Parameter Hash
-
-The parameter hash is computed from the inputs that determine calibration content. The hash is over the **parameters**, not the **content** — two trainers using the same parameters will produce the same hash even if they select different samples.
-
-Parameters included in the hash:
-
-| Parameter | Example | Why |
-| --------- | ------- | --- |
-| Dataset ID | `ds-2bcc` | Which dataset |
-| Annotation set ID | `as-1a3f` | Which annotation version |
-| Validation group | `val` | Which split |
-| Image size | `640x640` | Resize target |
-| Preprocessing | `normalize_uint8`, `letterbox` | How pixels are transformed |
-| CameraAdaptor | `rgb`, `yuyv`, `grey` | Color space / channel config |
-| Calibration coverage | `10` | Percentage of validation set |
-| Selection algorithm | `greedy_coverage_v1` | Algorithm version (invalidates cache on algorithm changes) |
-
-The hash function and parameter serialization order are defined by each training framework but must be deterministic and consistent across runs.
-
-### Storage: Studio Snapshots
-
-Calibration artifacts are stored as **Studio snapshots**, not session artifacts. The filename is the cache key.
-
-**Trainer workflow:**
-
-1. Compute the parameter hash from calibration generation parameters
-2. Build the filename: `calibration-{dataset_id}-{param_hash}.safetensors`
-3. Look up the snapshot by filename via Studio API
-4. If the snapshot exists → download and use it (skip generation)
-5. If not → generate the calibration set, publish it as a snapshot with this filename
-
-This means a calibration set is generated **once** for a given set of parameters. Subsequent training runs with the same dataset, preprocessing, and coverage reuse the cached snapshot automatically.
-
-### Tensor Naming
-
-Tensor names in the safetensors file **must match the model's input tensor names**. Converters load all tensors by name and feed them to the calibration generator.
-
-#### Single-Input Model
-
-For models with a single image input (e.g., Ultralytics detection or segmentation):
-
-```
-calibration-ds-2bcc-a1b2c3d4.safetensors:
-  images: float32 [500, 3, 640, 640]    # [num_samples, channels, height, width]
-```
-
-- Tensor name `images` matches the model's input tensor name
-- Samples are preprocessed identically to training/inference (normalized to [0.0, 1.0], resized, CameraAdaptor applied)
-- Typical sample count: ~500 images (10% of validation set or 500, whichever is smaller)
-
-#### Multi-Input Model
-
-For models with multiple inputs (e.g., camera + radar fusion):
-
-```
-calibration-ds-2bcc-a1b2c3d4.safetensors:
-  camera: float32 [500, 3, 360, 640]    # [num_samples, channels, height, width]
-  radar:  float32 [500, 200, 128, 8]    # [num_samples, range_bins, doppler_bins, features]
-```
-
-- Each tensor name (`camera`, `radar`) matches the corresponding model input name
-- Each input is preprocessed according to its own pipeline (image normalization for camera, range-doppler processing for radar)
-- All inputs have the same number of samples (first dimension)
-
-### Converter Usage
-
-Converters consume the calibration artifact as follows:
-
-1. Read `edgefirst.json` from the training session to get the calibration filename
-2. Download the calibration snapshot by filename via Studio API
-3. Load all tensors using any safetensors-compatible library
-4. Match tensor names to model input names
-5. Iterate over samples (first dimension) to feed the calibration generator
-
-```python
-from safetensors import safe_open
-
-with safe_open(calibration_path, framework="numpy") as f:
-    tensor_names = f.keys()
-    num_samples = f.get_tensor(next(iter(tensor_names))).shape[0]
-
-    for i in range(num_samples):
-        feed_dict = {name: f.get_tensor(name)[i:i+1] for name in tensor_names}
-        yield feed_dict  # Feed to TFLiteConverter representative_dataset or equivalent
-```
+The snapshot format (uint8 `[0, 255]` NCHW tensors plus a populated `__metadata__` map), the model-free dynamic-range selection algorithm, the parameter hash and caching scheme, the embedded-metadata schema, and the full producer/consumer contract are documented in [Model Conversion — Calibration Snapshot](conversion/calibration.md).
 
 ---
 

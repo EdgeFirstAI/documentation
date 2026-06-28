@@ -58,8 +58,16 @@ For more information on managing recordings, please see the [Managing Recordings
 
 ## Next Steps
 
-See the imported files by viewing the [dataset gallery](management.md#view-dataset).
+Now that your samples are uploaded, use the following path depending on your goal.
 
-EdgeFirst Studio also supports [import of existing datasets](import.md) and its annotations with various formats.
+1. Review uploaded samples
 
-For auto-annotating datasets, see the [Automatic Ground Truth Generation (AGTG)](annotations/automatic.md). Otherwise, you can perform [manual annotations](annotations/manual.md) which is typically used to correct errors or make some adjustments in the annotations.
+    Open the [dataset gallery](management.md#view-dataset) to confirm files were imported correctly.
+
+2. Import an existing dataset
+
+    If your data already exists in another format, follow [Import Datasets](import.md) to bring in datasets and annotations.
+
+3. Start annotation
+
+    Use [Automatic Ground Truth Generation (AGTG)](annotations/automatic.md) for faster labelling, then use [Manual Annotations](annotations/manual.md) to fix missed labels or refine results.

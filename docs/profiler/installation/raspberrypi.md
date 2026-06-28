@@ -32,7 +32,7 @@ edgefirst-profiler --version
 
 ## CPU baseline (ONNX Runtime)
 
-The default `--provider cpu` is the most predictable baseline. CPU inference on the RPi5 makes the **decode** and **preprocess** stages a meaningful fraction of total wall time — the Studio trace view will show whether the bottleneck is the model or the pipeline around it.
+The default `--provider cpu` is the most predictable baseline. CPU inference on the RPi5 makes the **capture** and **preprocess** stages a meaningful fraction of total wall time — the Studio trace view will show whether the bottleneck is the model or the pipeline around it.
 
 ## Hailo-8 / 8L accelerator
 
@@ -40,7 +40,7 @@ When a Hailo M.2 module is present and HailoRT is installed, the profiler routes
 
 ## Thermal considerations
 
-The RPi5 will throttle under sustained inference if the SoC reaches ~85 °C. The profiler samples thermal-zone temperatures and reports them as system-metric counters; if the temperature climbs steadily during a long run, look at the per-iteration latency in the dashboard — a sudden bump usually corresponds to a thermal throttle event.
+The RPi5 will throttle under sustained inference if the SoC reaches ~85 °C. The profiler samples thermal-zone temperatures and reports them as system-metric counters; if the temperature climbs steadily during a long run, look at the per-iteration latency in the dashboard — a sudden bump usually corresponds to a thermal throttle event. On the Pi 5 the readout also includes the **RP1** I/O controller's temperature, captured through its `hwmon` sensor alongside the SoC thermal zones.
 
 A small heatsink and fan is enough to keep the SoC out of throttle territory during validation runs.
 

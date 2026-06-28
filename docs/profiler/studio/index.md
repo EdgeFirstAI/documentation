@@ -12,6 +12,9 @@ This section covers:
 
 A validation session is the unit of work that links the device, the model, the dataset, and the Studio results. Every session has a short ID like `v-abc123`. The session ID is the only piece of state you need to remember.
 
+!!! warning "Validation sessions need a writable project"
+    Creating a validation session requires **write access** to the Studio project. You cannot validate against the read-only public **Sample Project** directly — first [copy its dataset](../../getting_started/copy_dataset.md) into a project you own (and add your model), then create the training and validation session there.
+
 ```mermaid
 sequenceDiagram
     participant Dev as You

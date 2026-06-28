@@ -13,7 +13,7 @@ nav:
     - NXP i.MX 95: installation/imx95.md
     - NXP i.MX 8M Plus: installation/imx8mplus.md
     - Raspberry Pi 5: installation/raspberrypi.md
-    - Kinara Ara-2: installation/kinara.md
+    - Kinara Ara240: installation/kinara.md
     - Hailo-8 / 8L: installation/hailo.md
   - EdgeFirst Studio Integration:
     - studio/index.md

@@ -84,6 +84,9 @@ Press `q` to quit (disabled while typing into form fields). `Ctrl-C` always quit
 
 The profiler is operated against a Studio validation session. Both paths produce the same Studio session card and the same set of accuracy charts.
 
+!!! warning "Validation sessions need a writable project"
+    Creating a validation session requires **write access** to the Studio project. You cannot validate against the read-only public **Sample Project** directly — first [copy its dataset](../getting_started/copy_dataset.md) into a project you own (and add your model), then create the training and validation session there.
+
 ### Path A — start from the profiler (recommended for new users)
 
 Press **F2** to switch to the Studio screen. If you are not signed in, the login form appears first.
@@ -102,17 +105,21 @@ Each artifact is prefixed with a colored dot indicating whether it can be deploy
 
 | Indicator | Status | Meaning | Example artifacts |
 |-----------|--------|---------|-------------------|
-| <span style="color: #4caf50">●</span> Green | Deployable | Format recognized and all runtime requirements met on this host. | `.onnx` (Generic ONNX), `.tflite` (Generic TFLite) |
-| <span style="color: #ff9800">●</span> Orange | Conditions not confirmed | Known deployable format for a specific target, but the required hardware, runtime, or accelerator was not detected. | `.hef` (Hailo-8L runtime absent), `.dvm` (NXP Ara240 not present), `.engine` (no CUDA host), `.imx95.tflite` (different SoC) |
-| <span style="color: #f44336">●</span> Red | Not deployable | Supporting file, archive, or unrecognized format — not a model the profiler can run directly. | `labels.txt`, `_saved_model.zip`, `.tensorrt.zip` |
+| 🟢 Green | Deployable | Format recognized and all runtime requirements met on this host. | `.onnx` (Generic ONNX), `.tflite` (Generic TFLite) |
+| 🟠 Orange | Conditions not confirmed | Known deployable format for a specific target, but the required hardware, runtime, or accelerator was not detected. | `.hef` (Hailo-8L runtime absent), `.dvm` (NXP Ara240 not present), `.engine` (no CUDA host), `.imx95.tflite` (different SoC) |
+| 🔴 Red | Not deployable | Supporting file, archive, or unrecognized format — not a model the profiler can run directly. | `labels.txt`, `_saved_model.zip`, `.tensorrt.zip` |
 
 Select an artifact and choose **Validate**. The profiler creates a new validation session in Studio, downloads anything missing, jumps to **F4 Profiler**, and starts the run.
 
 {{ figure("assets/tui-launch-validate.png", "F2 Studio — confirming Validate against a model artifact") }}
 
+Before the run starts, a **launch dialog** appears. For ONNX models it first asks which execution provider to use (CPU, CUDA if available, or CoreML on macOS). Then it shows four per-stage depth sliders — Capture, Preprocess, Inference, and Postprocess — each defaulting to **Auto**, which resolves to the value measured fastest for your model, runtime, and host. Press `Enter` to accept the Auto defaults and start immediately, or `c` to customize the depths. The dialog warns if a platform constraint (such as the i.MX 95 Neutron single-bind delegate) holds a stage to a single thread.
+
 The F4 dashboard streams iteration-level latency, system metrics, and per-stage timings while the run executes:
 
 {{ figure("assets/tui-profiler.png", "EdgeFirst Profiler — F4 dashboard during a run") }}
+
+The system-metrics row includes live **power draw** and on-board **temperatures** wherever the hardware exposes a sensor. The profiler shows a power meter only for the rails it can actually read — the CPU, GPU, Neural Engine, and DRAM rails on Apple Silicon, and the real board rails on a Linux device with a supported power monitor (for example an NVIDIA Jetson's board-input rail and its per-component breakdown). On a target with no power sensor, no power meters are shown — rather than a row pinned at 0 W — and the session report notes that power is unavailable. Temperatures are read from the platform's thermal zones and `hwmon` sensors, so the readout reflects what each board actually measures.
 
 When the run finishes, a completion summary shows the headline numbers and the path to the trace file. The artifacts upload to Studio automatically and the cloud validator is triggered.
 

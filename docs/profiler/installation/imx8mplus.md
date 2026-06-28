@@ -34,6 +34,8 @@ edgefirst-profiler --version
 
 ## Delegate selection
 
+When launching the profiler with a TFLite model on i.MX 8M Plus, a **delegate selection dialog** appears in the TUI, letting users pick VX or CPU/XNNPACK explicitly. For headless use, the `--delegate` CLI flag bypasses the dialog; the `auto` value in the table below still applies in that case.
+
 | Value | Behavior on i.MX 8M Plus |
 | ----- | ------------------------ |
 | _(omitted)_ / `auto` | Auto-detects i.MX 8M Plus from device-tree compatible string and loads `libvx_delegate.so`. |
@@ -41,9 +43,9 @@ edgefirst-profiler --version
 | `none` / `cpu` | Reference kernels only. |
 | path to `.so` | Custom delegate. |
 
-## Pipeline depth
+## Inference depth
 
-The VSI delegate supports **only one** in-flight inference at a time. The profiler detects this and clamps `--pipeline-depth` down to a single inference slot — CPU stages (decode, postprocess, encode) still overlap with the single inference, but two inferences cannot run concurrently on the NPU.
+The VSI delegate supports **only one** in-flight inference at a time. The profiler detects this and clamps `--inference-depth` down to a single inference slot — CPU stages (capture, postprocess, encode) still overlap with the single inference, but two inferences cannot run concurrently on the NPU.
 
 The Studio trace view makes this serialization visible — back-to-back invoke slices touch but never overlap.
 

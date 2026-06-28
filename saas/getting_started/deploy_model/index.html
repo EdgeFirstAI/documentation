@@ -25,7 +25,7 @@
       
       
       <link rel="icon" href="../../assets/favicon.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+      <meta name="generator" content="mkdocs-ProperDocs 1.6.7, mkdocs-material-9.7.6">
     
     
       
@@ -318,6 +318,28 @@
     
     
       <li class="md-tabs__item">
+        <a href="../../client/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Client
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
         <a href="../../3D/" class="md-tabs__link">
           
   
@@ -493,6 +515,8 @@
       
         
           
+        
+      
         
       
         
@@ -725,6 +749,34 @@
     
   
     Train Vision Model
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../convert_vision/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Convert Vision Model
   
 
     
@@ -994,6 +1046,71 @@
     
   
     Studio
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../client/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Client
   
 
     
@@ -1301,8 +1418,6 @@
       
         
       
-        
-      
     
     
     
@@ -1476,10 +1591,14 @@
 
 <h1 id="deploy-the-model">Deploy the Model</h1>
 <p>Once you have validated your trained model, you can deploy the model in the browser using EdgeFirst Studio.  You can follow these steps either on a PC or a mobile device connected to EdgeFirst Studio in a browser.  Please note that the browser will use the camera on your device to run model inference.</p>
+<div class="admonition note">
+<p class="admonition-title"><abbr title="Open Neural Network Exchange">ONNX</abbr> models only</p>
+<p>Live browser-based model running only supports <strong><abbr title="Open Neural Network Exchange">ONNX</abbr></strong> format. To validate or profile models in other formats (<abbr title="TensorFlow Lite">TFLite</abbr>, Neutron, Hailo, TensorRT, etc.) on real hardware, use the <a href="../../profiler/">EdgeFirst Profiler</a>.</p>
+</div>
 <p>From the training session card, you can run the model for inference by clicking the "Run Model" button on the top right of the page.</p>
 <figure>
-            <img align="center" alt="Run Model Button" src="../../models/assets/deployment/run-model-button.jpg" />
-            <figcaption>Run Model Button</figcaption>
+            <img align="center" alt="Training Session Details (Run Model button)" src="../assets/run_model/trainer_details_page.png" />
+            <figcaption>Training Session Details (Run Model button)</figcaption>
             </figure>
 <p>You will be given the option for either live inference or inference from a file upload.  Go ahead and demo the live inference feed by clicking the "Live" option.</p>
 <figure>
@@ -1516,9 +1635,9 @@
 </tr>
 <tr>
 <td>Mac/MacOS</td>
+<td>✅</td>
+<td>✅</td>
 <td></td>
-<td></td>
-<td>✅ (untested)</td>
 </tr>
 <tr>
 <td><a href="../../platforms/quickstart/maivin/deploy/">Maivin</a></td>
@@ -1530,7 +1649,7 @@
 <td><a href="../../platforms/quickstart/raivin/deploy/">Raivin Fusion</a></td>
 <td></td>
 <td>✅</td>
-<td>✅</td>
+<td>✅ (on target validation)</td>
 </tr>
 <tr>
 <td><a href="../../platforms/quickstart/imx8mplus/deploy/">i.MX 8M Plus EVK</a></td>
@@ -1552,9 +1671,9 @@
 </tr>
 <tr>
 <td><a href="../../platforms/quickstart/raspberrypi/deploy/">Raspberry Pi</a></td>
+<td>✅</td>
 <td></td>
-<td></td>
-<td>✅ (untested)</td>
+<td>✅ (native runner)</td>
 </tr>
 </tbody>
 </table>

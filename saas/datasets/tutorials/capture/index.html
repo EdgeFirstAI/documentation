@@ -25,7 +25,7 @@
       
       
       <link rel="icon" href="../../../assets/favicon.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+      <meta name="generator" content="mkdocs-ProperDocs 1.6.7, mkdocs-material-9.7.6">
     
     
       
@@ -316,6 +316,28 @@
     
     
       <li class="md-tabs__item">
+        <a href="../../../client/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Client
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
         <a href="../../../3D/" class="md-tabs__link">
           
   
@@ -511,6 +533,8 @@
       
         
       
+        
+      
     
     
     
@@ -618,6 +642,71 @@
     
   
     Studio
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../../client/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Client
   
 
     
@@ -799,7 +888,7 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" checked>
         
           
           <div class="md-nav__link md-nav__container">
@@ -821,14 +910,14 @@
             </a>
             
               
-              <label class="md-nav__link " for="__nav_5" id="__nav_5_label" tabindex="">
+              <label class="md-nav__link " for="__nav_6" id="__nav_6_label" tabindex="">
                 <span class="md-nav__icon md-icon"></span>
               </label>
             
           </div>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="true">
-          <label class="md-nav__title" for="__nav_5">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_6">
             <span class="md-nav__icon md-icon"></span>
             
   
@@ -1020,7 +1109,7 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_4" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_4" checked>
         
           
           <div class="md-nav__link md-nav__container">
@@ -1042,14 +1131,14 @@
             </a>
             
               
-              <label class="md-nav__link " for="__nav_5_4" id="__nav_5_4_label" tabindex="0">
+              <label class="md-nav__link " for="__nav_6_4" id="__nav_6_4_label" tabindex="0">
                 <span class="md-nav__icon md-icon"></span>
               </label>
             
           </div>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_4_label" aria-expanded="true">
-          <label class="md-nav__title" for="__nav_5_4">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_4_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_6_4">
             <span class="md-nav__icon md-icon"></span>
             
   
@@ -1541,8 +1630,6 @@
       
         
       
-        
-      
     
     
     
@@ -1926,6 +2013,17 @@
 <p class="admonition-title">Data Usage</p>
 <p>It is recommended to use a phone connected to a Wi-Fi network. A device connected to mobile data might be subject to intense usage when uploading files; video files or image files can be large in size. In the examples below, the video file used was ~15MB and the image files were ~2MB each.</p>
 </div>
+<div class="admonition warning">
+<p class="admonition-title">Limited Datasets</p>
+<p>The example below uses a small video recording and only a handful of images. While this is sufficient for demonstrating the workflow, training a model on a limited dataset will typically result in poor performance when deployed in real-world conditions that differ from the training samples.</p>
+<p>To improve model robustness and generalization, it is recommended to collect training data across a variety of conditions, backgrounds, lighting environments, and object variations. As a general guideline, a minimum dataset size of approximately 1,000 images or video frames is recommended, although the optimal size depends on the complexity of the task.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Device UI May Vary</p>
+<p>The video and image capture screenshots shown in this guide were taken on a Samsung smartphone.
+Camera app layouts, button locations, labels, and available options may differ on other devices and operating system versions.
+For device-specific steps, refer to your phone manufacturer documentation or device manual.</p>
+</div>
 <h3 id="record-video">Record Video</h3>
 <p>Using a smartphone, try to record a 30 second or more video with the camera application showing various orientations of coffee cups.  Typically, the video recording can be started by pressing the red circular button. The video can be stopped by pressing the same button again.</p>
 <figure>
@@ -1942,23 +2040,19 @@
 <p class="admonition-title">Leveraging Videos</p>
 <p>It is recommended to use videos rather than individual images.  This is because the <a href="../annotations/automatic/">Automatic Ground Truth Generation (AGTG)</a> feature leverages SAM-2 with tracking information which only needs a single annotation to annotate all frames.  However, individual images requires more effort by annotating each image separately.</p>
 </div>
-<div class="admonition warning">
-<p class="admonition-title">Limited Datasets</p>
-<p>Throughout the demos, the dataset is kept small.  However, training on limited datasets will result in poor model performances when the model is deployed under conditions that differs from the dataset samples.  It is suggested to increase the amount of training data under various conditions and backgrounds to train a more robust model.</p>
-</div>
 <h3 id="create-dataset">Create Dataset</h3>
-<p>If you have a video recording or sample images for your dataset, you can create a dataset container in EdgeFirst Studio to contain your video frames or images and annotations.</p>
-<p>Navigate to a web browser and <a href="https://edgefirst.studio/login">login</a> to EdgeFirst Studio.  Once logged in to EdgeFirst Studio, navigate to your project.  In this case the project name is "Object Detection".  Click on the "Datasets" button that is indicated in red below.</p>
+<p>If you have a video recording or sample images for your dataset, you can <a href="../management/#create-dataset">create a dataset container</a> in EdgeFirst Studio to contain your video frames or images and annotations.</p>
+<p>Navigate to a web browser and <a href="https://edgefirst.studio/login">login</a> to EdgeFirst Studio.  Once logged in to EdgeFirst Studio, navigate to your project.  In this case the project name is "My First Project".  Click on the "Datasets" button that is indicated in red below.</p>
 <figure>
             <img align="center" alt="Object Detection Project" src="../../assets/capture/mobile-projects.jpg" />
             <figcaption>Object Detection Project</figcaption>
             </figure>
-<p>This will bring you to the "Datasets" page of the selected project.  Create a new dataset container by clicking the "New Dataset" button that is indicated in red.</p>
+<p>This will bring you to the <a href="../../../studio/datasets/">Datasets Dashboard</a> of the selected project.  Create a new dataset container by clicking the "Actions" dropdown on the top right and then click the "New" button that is indicated in red.</p>
 <figure>
             <img align="center" alt="New Dataset" src="../../assets/capture/mobile-new-dataset.jpg" />
             <figcaption>New Dataset</figcaption>
             </figure>
-<p>Add the dataset and annotation container name, labels, and dataset description as indicated by the fields below.  It is up to you to specify the information in the fields and you do not have to strictly follow the example shown below.  Click the "Create" button once the fields have been filled.</p>
+<p>Enter a name for the dataset and annotation container, specify the labels, and provide a dataset description in the fields shown below. The values are entirely up to you and do not need to match the example. Once all required fields have been completed, click "Create" to create the dataset.</p>
 <figure>
             <img align="center" alt="Dataset Fields" src="../../assets/capture/mobile-dataset-details.jpg" />
             <figcaption>Dataset Fields</figcaption>
@@ -1969,7 +2063,7 @@
             <figcaption>Created Dataset</figcaption>
             </figure>
 <h3 id="upload-video">Upload Video</h3>
-<p>Video files can be uploaded into any dataset container in EdgeFirst Studio.  Choose the dataset container to upload the video file.  In this case, the dataset is called "Coffee Cup".  Click on the dataset context menu (three dots) and select import.</p>
+<p>Video files can be uploaded into any dataset container in EdgeFirst Studio.  Choose the dataset container to upload the video file.  In this case, the dataset is called "Coffee Cup".  Click on the dataset context menu (three dots) and click "Import".</p>
 <figure>
             <img align="center" alt="Dataset Import Option" src="../../assets/capture/mobile-dataset-import-option.jpg" />
             <figcaption>Dataset Import Option</figcaption>
@@ -1999,16 +2093,13 @@
             <img align="center" alt="Android File Manager" src="../../assets/capture/mobile-video-location.jpg" />
             <figcaption>Android File Manager</figcaption>
             </figure>
-<p>Once the video file has been selected, the <abbr title="Frames Per Second">FPS</abbr> (frames per second) is then set to 1 by default, however you can specify this to your desired <abbr title="Frames Per Second">FPS</abbr>.  Finally, go ahead and click the "Start Import" button to start importing the video file.</p>
+<p>After selecting the video file, the <abbr title="Frames Per Second">FPS</abbr> (frames per second) value is automatically set to 1 by default. You may adjust this value to match your desired frame extraction rate. When ready, click Start Import to begin importing the video.</p>
 <figure>
             <img align="center" alt="Import Fields" src="../../assets/capture/mobile-video-import-fields.jpg" />
             <figcaption>Import Fields</figcaption>
             </figure>
-<div class="admonition warning">
-<p class="admonition-title">Import Duration</p>
-<p>Importing a 30 second video could take up to 6 minutes.</p>
-</div>
-<p>This will start the import process and once it is completed, you should see the number of images in the dataset increased.  If you do not see any changes, refresh the browser.</p>
+<p>This will start the import process. For a 30-second video, the import typically takes about 2 minutes to complete.</p>
+<p>Once the import finishes, the number of images in the dataset should increase to reflect the newly imported frames. If the dataset does not appear to update, refresh the browser to view the latest changes.</p>
 <figure>
             <img align="center" alt="Imported Video" src="../../assets/capture/imported-video-outcome.jpg" />
             <figcaption>Imported Video</figcaption>
@@ -2038,7 +2129,12 @@
             <img align="center" alt="Android Multi-select Images" src="../../assets/capture/mobile-multi-select-images.jpg" />
             <figcaption>Android Multi-select Images</figcaption>
             </figure>
-<p>Once the image files have been selected, the progress for the image import will be shown.</p>
+<p>Once the image files have been selected, click on "Start Import" to start the import process.</p>
+<figure>
+            <img align="center" alt="Android Start Import Images" src="../../assets/capture/mobile-image-import-fields.jpg" />
+            <figcaption>Android Start Import Images</figcaption>
+            </figure>
+<p>The progress for the image import will be shown.</p>
 <figure>
             <img align="center" alt="Image Import Progress" src="../../assets/capture/image-import-progress.jpg" />
             <figcaption>Image Import Progress</figcaption>
@@ -2106,16 +2202,11 @@
 <p>Use the "Download" button <img alt="&quot;Download Button&quot;" src="../../../assets/buttons/mcap_download_button.png" /> in the row containing the name of the <abbr title="Binary container format for robotics log data">MCAP</abbr> file you want to download, which will download the <abbr title="Binary container format for robotics log data">MCAP</abbr> file to your local machine.</p>
 <p>You can also use an <a href="../../../platforms/networking/ssh/#secure-copy"><abbr title="Secure Shell">SSH</abbr> client to copy files</a> off the Raivin.</p>
 <h3 id="upload-mcap">Upload <abbr title="Binary container format for robotics log data">MCAP</abbr></h3>
-<p>To upload an <abbr title="Binary container format for robotics log data">MCAP</abbr> Recording into EdgeFirst Studio, first <a href="https://edgefirst.studio/login">login</a> to EdgeFirst Studio.  Once logged in to EdgeFirst Studio, navigate to the "Data Snapshots" under the tool options.</p>
+<p>To upload an <abbr title="Binary container format for robotics log data">MCAP</abbr> Recording into EdgeFirst Studio, first <a href="https://edgefirst.studio/login">login</a> to EdgeFirst Studio.  Once logged in to EdgeFirst Studio, navigate to the "Data Snapshots" under the apps menu.</p>
 <figure>
             <img align="center" alt="Data Snapshots" src="../../assets/annotations/automatic/data-snapshots.jpg" />
             <figcaption>Data Snapshots</figcaption>
             </figure>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>A project has already been created intended for object detection.  This step
-has been covered in <a href="../../../getting_started/create_project/">Getting Started</a>.</p>
-</div>
 <p>Once you are in the "Data Snapshots" page, upload the recorded <abbr title="Binary container format for robotics log data">MCAP</abbr> by clicking "From File" which opens a new window dialog for selecting the <abbr title="Binary container format for robotics log data">MCAP</abbr> downloaded in your PC.</p>
 <div class="admonition note">
 <p class="admonition-title">EdgeFirst Datasets</p>
@@ -2159,9 +2250,21 @@ has been covered in <a href="../../../getting_started/create_project/">Getting S
 
 <p>For more information on managing recordings, please see the <a href="../../../perception/data_collection/recording/#managing-recordings">Managing Recordings Section</a>.</p>
 <h2 id="next-steps">Next Steps</h2>
-<p>See the imported files by viewing the <a href="../management/#view-dataset">dataset gallery</a>.</p>
-<p>EdgeFirst Studio also supports <a href="../import/">import of existing datasets</a> and its annotations with various formats.</p>
-<p>For auto-annotating datasets, see the <a href="../annotations/automatic/">Automatic Ground Truth Generation (AGTG)</a>. Otherwise, you can perform <a href="../annotations/manual/">manual annotations</a> which is typically used to correct errors or make some adjustments in the annotations.</p>
+<p>Now that your samples are uploaded, use the following path depending on your goal.</p>
+<ol>
+<li>
+<p>Review uploaded samples</p>
+<p>Open the <a href="../management/#view-dataset">dataset gallery</a> to confirm files were imported correctly.</p>
+</li>
+<li>
+<p>Import an existing dataset</p>
+<p>If your data already exists in another format, follow <a href="../import/">Import Datasets</a> to bring in datasets and annotations.</p>
+</li>
+<li>
+<p>Start annotation</p>
+<p>Use <a href="../annotations/automatic/">Automatic Ground Truth Generation (AGTG)</a> for faster labelling, then use <a href="../annotations/manual/">Manual Annotations</a> to fix missed labels or refine results.</p>
+</li>
+</ol>
 
 
 

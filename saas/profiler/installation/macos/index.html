@@ -25,7 +25,7 @@
       
       
       <link rel="icon" href="../../../assets/favicon.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+      <meta name="generator" content="mkdocs-ProperDocs 1.6.7, mkdocs-material-9.7.6">
     
     
       
@@ -316,6 +316,28 @@
     
     
       <li class="md-tabs__item">
+        <a href="../../../client/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Client
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
         <a href="../../../3D/" class="md-tabs__link">
           
   
@@ -511,6 +533,8 @@
       
         
       
+        
+      
     
     
     
@@ -653,6 +677,71 @@
       
         
       
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../../client/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Client
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
     
     
     
@@ -736,7 +825,7 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" checked>
         
           
           <div class="md-nav__link md-nav__container">
@@ -758,14 +847,14 @@
             </a>
             
               
-              <label class="md-nav__link " for="__nav_4" id="__nav_4_label" tabindex="">
+              <label class="md-nav__link " for="__nav_5" id="__nav_5_label" tabindex="">
                 <span class="md-nav__icon md-icon"></span>
               </label>
             
           </div>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
-          <label class="md-nav__title" for="__nav_4">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_5">
             <span class="md-nav__icon md-icon"></span>
             
   
@@ -813,6 +902,8 @@
   
     
     
+      
+        
       
         
       
@@ -907,7 +998,7 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_4" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_4" checked>
         
           
           <div class="md-nav__link md-nav__container">
@@ -929,14 +1020,14 @@
             </a>
             
               
-              <label class="md-nav__link " for="__nav_4_4" id="__nav_4_4_label" tabindex="0">
+              <label class="md-nav__link " for="__nav_5_4" id="__nav_5_4_label" tabindex="0">
                 <span class="md-nav__icon md-icon"></span>
               </label>
             
           </div>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_4_label" aria-expanded="true">
-          <label class="md-nav__title" for="__nav_4_4">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_4_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_5_4">
             <span class="md-nav__icon md-icon"></span>
             
   
@@ -1260,7 +1351,7 @@
   <span class="md-ellipsis">
     
   
-    Kinara Ara-2
+    Kinara Ara240
   
 
     
@@ -1544,8 +1635,6 @@
       
         
       
-        
-      
     
     
     
@@ -1805,7 +1894,7 @@
 
 
 <h1 id="macos">macOS</h1>
-<p>The EdgeFirst Profiler ships a native <strong>arm64</strong> binary for macOS 11 and later. macOS is supported for <strong><abbr title="Open Neural Network Exchange">ONNX</abbr> model development</strong> — the vendor accelerator backends (<abbr title="TensorFlow Lite">TFLite</abbr>/Neutron/VSI delegates, Hailo, TensorRT, Ara-2) are Linux-only and either fail to compile or require Linux-only runtime libraries.</p>
+<p>The EdgeFirst Profiler ships a native <strong>arm64</strong> binary for macOS 11 and later. macOS is supported for <strong><abbr title="Open Neural Network Exchange">ONNX</abbr> model development</strong> — the vendor accelerator backends (<abbr title="TensorFlow Lite">TFLite</abbr>/Neutron/VSI delegates, Hailo, TensorRT, Ara240) are Linux-only and either fail to compile or require Linux-only runtime libraries.</p>
 <p>The macOS-specific accelerator path is the <strong>CoreML execution provider</strong> through <abbr title="Open Neural Network Exchange">ONNX</abbr> Runtime, which offloads supported subgraphs to the Apple Neural Engine or the Metal GPU.</p>
 <h2 id="install">Install</h2>
 <div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="python-pip" name="__tabbed_1" type="radio" /><input id="platform-installer" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="python-pip">Python (pip)</label><label for="platform-installer">Platform installer</label></div>
@@ -1831,9 +1920,36 @@
 <p>Homebrew installs <code>libonnxruntime.dylib</code> into <code>/opt/homebrew/lib</code>. That path is not on macOS's default dyld search path, but the profiler scans it explicitly — you do <strong>not</strong> need to set <code>ORT_DYLIB_PATH</code> or <code>DYLD_LIBRARY_PATH</code>.</p>
 <p>If you maintain a non-Homebrew install, set <code>ORT_DYLIB_PATH</code> to the absolute path of your <code>libonnxruntime.dylib</code>.</p>
 <h2 id="coreml-execution-provider">CoreML execution provider</h2>
-<p>Pass <code>--provider coreml</code> to offload supported subgraphs to the Apple Neural Engine or Metal GPU when running a validation session.</p>
+<p>The bare <code>--provider coreml</code> flag is no longer accepted. Pass one of the three explicit compute-unit options instead (the old flag prints an error listing the replacements):</p>
+<table>
+<thead>
+<tr>
+<th>Flag</th>
+<th>Compute unit</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>--provider coreml-cpu</code></td>
+<td>CoreML CPU kernels</td>
+<td>Good baseline; no GPU or ANE scheduling overhead</td>
+</tr>
+<tr>
+<td><code>--provider coreml-gpu</code></td>
+<td>Metal Performance Shaders, CPU fallback</td>
+<td>Best throughput for GPU-heavy models. Auto inference depth: <strong>3</strong> (measured knee — ~427 <abbr title="Frames Per Second">FPS</abbr> at depth 2, ~476 <abbr title="Frames Per Second">FPS</abbr> at depth 3, ~466 <abbr title="Frames Per Second">FPS</abbr> at depth 4)</td>
+</tr>
+<tr>
+<td><code>--provider coreml-ane</code></td>
+<td>Apple Neural Engine, CPU fallback only</td>
+<td>Auto inference depth: <strong>2</strong> (ANE serializes internally; only preprocess/postprocess overlap benefits from the extra slot)</td>
+</tr>
+</tbody>
+</table>
+<p><strong>In the TUI:</strong> the launch-time dialog presents a navigable list of providers — CPU, CoreML CPU, CoreML GPU, CoreML ANE — instead of the previous fixed two-key prompt. Navigate with ↑/↓ and press Enter to confirm, or press the number key shown next to the row.</p>
 <p>The CoreML EP caches compiled subgraphs at <code>~/Library/Caches/edgefirst-profiler/coreml/</code>. The first run of a given model is slower while compilation happens; subsequent runs are warm.</p>
-<p>CoreML coverage is partial — operators not supported by the Apple Neural Engine fall back to CPU within the same graph. Studio's trace view shows exactly which ops ran where.</p>
+<p>CoreML coverage is partial — operators not supported by the selected compute unit fall back to CPU within the same graph. Studio's trace view shows exactly which ops ran where.</p>
 <h2 id="verifying-the-install">Verifying the install</h2>
 <div class="highlight"><pre><span></span><code>edgefirst-profiler<span class="w"> </span>login<span class="w">        </span><span class="c1"># save Studio credentials</span>
 edgefirst-profiler<span class="w">              </span><span class="c1"># opens TUI on F1 Help</span>
@@ -1857,7 +1973,7 @@ edgefirst-profiler<span class="w">              </span><span class="c1"># opens 
 <td>Delegates ship with NXP Linux BSPs only</td>
 </tr>
 <tr>
-<td>Kinara Ara-2</td>
+<td>Kinara Ara240</td>
 <td><code>ara2-proxy</code> daemon is Linux-only</td>
 </tr>
 <tr>

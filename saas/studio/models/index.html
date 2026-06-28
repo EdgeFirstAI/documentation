@@ -25,7 +25,7 @@
       
       
       <link rel="icon" href="../../assets/favicon.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+      <meta name="generator" content="mkdocs-ProperDocs 1.6.7, mkdocs-material-9.7.6">
     
     
       
@@ -318,6 +318,28 @@
     
     
       <li class="md-tabs__item">
+        <a href="../../client/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Client
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
         <a href="../../3D/" class="md-tabs__link">
           
   
@@ -491,6 +513,8 @@
       
         
           
+        
+      
         
       
         
@@ -814,6 +838,8 @@
       
         
           
+        
+      
         
       
         
@@ -1225,6 +1251,71 @@
       
         
       
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../client/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Client
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
     
     
     
@@ -1497,8 +1588,6 @@
       
         
       
-        
-      
     
     
     
@@ -1751,7 +1840,7 @@
 <h1 id="model-experiments-dashboard">Model Experiments Dashboard</h1>
 <p>A model experiment is a container of training and validation sessions in the experiment.  The following figure shown is the "Model Experiments" page.  This page will contain all the experiments that were started by the user.</p>
 <figure>
-            <img align="center" alt="Project Experiments" src="../assets/models/experiments-page.jpg" />
+            <img align="center" alt="Project Experiments" src="../../models/assets/training/created-experiment.jpg" />
             <figcaption>Project Experiments</figcaption>
             </figure>
 <p>The following figure breaks down the elements of an "Experiment" card.</p>
@@ -1839,7 +1928,7 @@ a deep view into the session through the following tabs:</p>
 <p>To clone a session, click "clone training session" button on the training card.  A dialog will appear pre-filled with the source session's configuration.  Adjust the name and description as needed, then confirm.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>Cloning is equivalent to creating a new session with <strong>Use Default Weights</strong> disabled and <strong>Enable Training</strong> disabled.  See <a href="../../models/training/vision/#enable-training-and-use-default-weights">Enable Training and Use Default Weights</a> for the full behaviour matrix.</p>
+<p>Cloning is equivalent to creating a new session with <strong>Use Default Weights</strong> disabled and <strong>Enable Training</strong> disabled.  See <a href="../../models/training/vision/#enable-training-and-use-default-weights">Enable Training and Use Default Weights</a> for the full behavior matrix.</p>
 </div>
 <h2 id="validation-sessions">Validation Sessions</h2>
 <p>The validation sessions will assess the performance of the models in the training sessions.  A training session can have any number of validation sessions.  From the "Model Experiments" page, we can click on the "Validation Sessions" button with the icon <img alt="Validation Button" src="../../assets/buttons/studio-validation-button.jpg" /> to see the validation sessions in the experiment.  The figure below shows the layout of the validation session cards under the "Validation Sessions" page.</p>
@@ -1914,6 +2003,10 @@ provides the following tabs:</p>
 </ul>
 <h2 id="running-a-model">Running a model</h2>
 <p>EdgeFirst Studio allows you to run trained models directly in the web browser. After a model has been trained, open the model details page by clicking on the trainer card. Only models trained on ModelPack are supported for live running. From there, click the Run Model button to start running the model.</p>
+<div class="admonition note">
+<p class="admonition-title"><abbr title="Open Neural Network Exchange">ONNX</abbr> models only</p>
+<p>Live browser-based model running only supports <strong><abbr title="Open Neural Network Exchange">ONNX</abbr></strong> format. To validate or profile models in other formats (<abbr title="TensorFlow Lite">TFLite</abbr>, Neutron, Hailo, TensorRT, etc.) on real hardware, use the <a href="../../profiler/">EdgeFirst Profiler</a>.</p>
+</div>
 <figure>
             <img align="center" alt="Model Runner Button" src="../assets/run_model_button.png" />
             <figcaption>Model Runner Button</figcaption>

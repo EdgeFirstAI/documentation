@@ -25,7 +25,7 @@
       
       
       <link rel="icon" href="../../../assets/favicon.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+      <meta name="generator" content="mkdocs-ProperDocs 1.6.7, mkdocs-material-9.7.6">
     
     
       
@@ -316,6 +316,28 @@
     
     
       <li class="md-tabs__item">
+        <a href="../../../client/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Client
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
         <a href="../../../3D/" class="md-tabs__link">
           
   
@@ -511,6 +533,8 @@
       
         
       
+        
+      
     
     
     
@@ -618,6 +642,71 @@
     
   
     Studio
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../../client/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Client
   
 
     
@@ -925,8 +1014,6 @@
       
         
       
-        
-      
     
     
     
@@ -1012,7 +1099,7 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9" checked>
         
           
           <div class="md-nav__link md-nav__container">
@@ -1034,14 +1121,14 @@
             </a>
             
               
-              <label class="md-nav__link " for="__nav_8" id="__nav_8_label" tabindex="">
+              <label class="md-nav__link " for="__nav_9" id="__nav_9_label" tabindex="">
                 <span class="md-nav__icon md-icon"></span>
               </label>
             
           </div>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="true">
-          <label class="md-nav__title" for="__nav_8">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_9_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_9">
             <span class="md-nav__icon md-icon"></span>
             
   
@@ -1169,7 +1256,7 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8_3" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9_3" checked>
         
           
           <div class="md-nav__link md-nav__container">
@@ -1191,14 +1278,14 @@
             </a>
             
               
-              <label class="md-nav__link " for="__nav_8_3" id="__nav_8_3_label" tabindex="0">
+              <label class="md-nav__link " for="__nav_9_3" id="__nav_9_3_label" tabindex="0">
                 <span class="md-nav__icon md-icon"></span>
               </label>
             
           </div>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_8_3_label" aria-expanded="true">
-          <label class="md-nav__title" for="__nav_8_3">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_9_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_9_3">
             <span class="md-nav__icon md-icon"></span>
             
   
@@ -1976,31 +2063,31 @@
 <p class="admonition-title">Tip</p>
 <p>These values are stored in the <code>/etc/default/lidarpub</code> file on the device and can be hand-edited.  This is not recommended.</p>
 </div>
-<h3 id="log-level">Log Level</h3>
+<h2 id="log-level">Log Level</h2>
 <p>Log level for the application, relevant sub-filters are 'lidarpub' and 'ouster'. Refer to <a href="https://docs.rs/env_logger/latest/env_logger/#enabling-logging">RUST_LOG documentation</a> for details. Options are 'info', 'debug', 'warn', and 'error'.</p>
-<h3 id="zenoh-wait-before-drop-s">Zenoh Wait Before Drop (μs)</h3>
+<h2 id="zenoh-wait-before-drop-s">Zenoh Wait Before Drop (μs)</h2>
 <p>Microsecond timeout before dropping a Zenoh message. The default value of 100000 (100ms) is optimized for 10Hz operation. This setting helps manage message queuing and prevents buffer overflow.</p>
-<h3 id="target-device">Target Device</h3>
+<h2 id="target-device">Target Device</h2>
 <p>Hostname or IP address of the <abbr title="Light Detection and Ranging">LiDAR</abbr> target device. This should match the static IP address configured in Ouster Studio. The default value is typically set to <code>10.10.41.216</code>.</p>
-<h3 id="lidar-mode"><abbr title="Light Detection and Ranging">LiDAR</abbr> Mode</h3>
+<h2 id="lidar-mode"><abbr title="Light Detection and Ranging">LiDAR</abbr> Mode</h2>
 <p>Configures the <abbr title="Light Detection and Ranging">LiDAR</abbr>'s column resolution and refresh rate. The format is <code>columnsxrate</code>, where:  </p>
 <ul>
 <li><strong>Columns</strong>: Number of points per rotation (1024, 2048)  </li>
 <li><strong>Rate</strong>: Refresh rate in Hz (10, 20)  </li>
 </ul>
 <p>For example, <code>1024x20</code> means 1024 points per rotation at 20Hz refresh rate.</p>
-<h3 id="timestamp-mode">Timestamp Mode</h3>
+<h2 id="timestamp-mode">Timestamp Mode</h2>
 <p>Controls how the <abbr title="Light Detection and Ranging">LiDAR</abbr> configures its clock. Options are:  </p>
 <ul>
 <li><strong>Internal</strong>: Uses the <abbr title="Light Detection and Ranging">LiDAR</abbr>'s internal clock  </li>
 <li><strong>PTP</strong>: Uses Precision Time Protocol for synchronization  </li>
 <li><strong>NTP</strong>: Uses Network Time Protocol for synchronization  </li>
 </ul>
-<h3 id="transform-vector">Transform Vector</h3>
+<h2 id="transform-vector">Transform Vector</h2>
 <p>Defines the <abbr title="Light Detection and Ranging">LiDAR</abbr> frame transformation vector (X Y Z) from the base_link frame. This is used to properly position the <abbr title="Light Detection and Ranging">LiDAR</abbr> data in the vehicle's coordinate system. The default value is typically <code>0 0 -0.19</code> meters.</p>
-<h3 id="rotation-quaternion">Rotation Quaternion</h3>
+<h2 id="rotation-quaternion">Rotation Quaternion</h2>
 <p>Defines the <abbr title="Light Detection and Ranging">LiDAR</abbr> frame rotation quaternion (X Y Z W) from the base_link frame. This is used to properly orient the <abbr title="Light Detection and Ranging">LiDAR</abbr> data in the vehicle's coordinate system. The default value is typically <code>0 0 -0.9998157 0.0191974</code>.</p>
-<h3 id="field-of-view-settings">Field of View Settings</h3>
+<h2 id="field-of-view-settings">Field of View Settings</h2>
 <p>The <abbr title="Light Detection and Ranging">LiDAR</abbr> sensor has the following field of view characteristics:  </p>
 <ul>
 <li><strong>Horizontal Coverage</strong>: 140° (configurable)  </li>
@@ -2009,7 +2096,7 @@
 <li><strong>Vertical Field of View</strong>: 45° (+22.5° to -22.5°)  </li>
 </ul>
 <p>These settings can be adjusted to focus the <abbr title="Light Detection and Ranging">LiDAR</abbr>'s attention on specific areas of interest while reducing computational load.</p>
-<h3 id="additional-settings">Additional Settings</h3>
+<h2 id="additional-settings">Additional Settings</h2>
 <p>The <abbr title="Light Detection and Ranging">LiDAR</abbr> configuration also includes:  </p>
 <ul>
 <li><strong>Camera Field of View</strong>: 84° (for reference)  </li>

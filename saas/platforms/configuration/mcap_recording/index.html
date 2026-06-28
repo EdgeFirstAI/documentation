@@ -25,7 +25,7 @@
       
       
       <link rel="icon" href="../../../assets/favicon.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+      <meta name="generator" content="mkdocs-ProperDocs 1.6.7, mkdocs-material-9.7.6">
     
     
       
@@ -316,6 +316,28 @@
     
     
       <li class="md-tabs__item">
+        <a href="../../../client/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Client
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
         <a href="../../../3D/" class="md-tabs__link">
           
   
@@ -511,6 +533,8 @@
       
         
       
+        
+      
     
     
     
@@ -618,6 +642,71 @@
     
   
     Studio
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../../client/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Client
   
 
     
@@ -925,8 +1014,6 @@
       
         
       
-        
-      
     
     
     
@@ -1012,7 +1099,7 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9" checked>
         
           
           <div class="md-nav__link md-nav__container">
@@ -1034,14 +1121,14 @@
             </a>
             
               
-              <label class="md-nav__link " for="__nav_8" id="__nav_8_label" tabindex="">
+              <label class="md-nav__link " for="__nav_9" id="__nav_9_label" tabindex="">
                 <span class="md-nav__icon md-icon"></span>
               </label>
             
           </div>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="true">
-          <label class="md-nav__title" for="__nav_8">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_9_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_9">
             <span class="md-nav__icon md-icon"></span>
             
   
@@ -1169,7 +1256,7 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8_3" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9_3" checked>
         
           
           <div class="md-nav__link md-nav__container">
@@ -1191,14 +1278,14 @@
             </a>
             
               
-              <label class="md-nav__link " for="__nav_8_3" id="__nav_8_3_label" tabindex="0">
+              <label class="md-nav__link " for="__nav_9_3" id="__nav_9_3_label" tabindex="0">
                 <span class="md-nav__icon md-icon"></span>
               </label>
             
           </div>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_8_3_label" aria-expanded="true">
-          <label class="md-nav__title" for="__nav_8_3">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_9_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_9_3">
             <span class="md-nav__icon md-icon"></span>
             
   
@@ -2007,17 +2094,23 @@
 <h2 id="default-topics-recorded">Default Topics Recorded</h2>
 <p>The rest of the page reports upon which topics are recording and allows the user to enable or disable certain optional topics. Mandatory topics that cannot be changed on the page include:</p>
 <ul>
-<li>Localization topics, such as:  </li>
+<li>Localization topics, such as:  <ul>
 <li><strong>/tf_static</strong>: This is a meta-topic that includes information from all recorded topics.  </li>
 <li><strong>/gps</strong>: This is the <abbr title="Global Positioning System">GPS</abbr> topic that includes latitude, longitude, elevation, etc.  </li>
 <li><strong>/imu</strong>: This is where the <abbr title="Inertial Measurement Unit">IMU</abbr> sensor exports its information, and includes acceleration and orientation information about the vision module.</li>
-<li>Camera Topics, such as:  </li>
+</ul>
+</li>
+<li>Camera Topics, such as:  <ul>
 <li><strong>/camera/info</strong>: This includes information about the video sensor.  </li>
 <li><strong>/camera/h264</strong>: This contains the raw-video output of the video sensor, in H.264 format.  </li>
-<li>Radar Topics (Raivin only), such as:  </li>
+</ul>
+</li>
+<li>Radar Topics (Raivin only), such as:  <ul>
 <li><strong>/radar/info</strong>: This contains information regarding the radar.  </li>
 <li><strong>/radar/targets</strong>: This contains the target information from the radar sensor.  </li>
 <li><strong>/radar/clusters</strong>: This contains the clustered information from the radar sensor. It also opens up the "/radar/cube" topic that can be enabled.  </li>
+</ul>
+</li>
 </ul>
 <p>These topics are parts of the "Localization Topics", "Camera Topics", and "Radar Topics", which are currently locked.</p>
 <h2 id="configurable-topics-to-be-recorded">Configurable Topics to be Recorded</h2>
@@ -2044,14 +2137,18 @@
 <h2 id="caveats">Caveats</h2>
 <p>There are several settings that will stop or change specific topics, which may result in the topic not being recorded.</p>
 <ul>
-<li>On the <a href="../model/">Model Settings</a> page:  </li>
+<li>On the <a href="../model/">Model Settings</a> page:  <ul>
 <li><a href="../model/#visualization">Enabling Visualization</a> will create the <code>/model/visualization</code> topic  </li>
 <li><a href="../model/#mask_compression">Disabling Mask Compression</a> will stop the <code>/model/mask_compressed</code> topic and start the <code>/model/mask</code> topic  </li>
 <li><a href="../model/#model">Loading a Model without detection or segmentation outputs</a> will stop the corresponding <code>/model/boxes2d</code> or <code>/model/mask_compressed</code> topics  </li>
-<li>On the <a href="../camera/">Camera Settings</a> page:  </li>
+</ul>
+</li>
+<li>On the <a href="../camera/">Camera Settings</a> page:  <ul>
 <li><a href="../camera/#camera-size">Setting the Camera Size to 4k</a> will put the Camera service into <a href="../../../perception/4k/">4K Mode</a> and create the <code>/camera/h264/tl</code>, <code>/camera/h264/tr</code>, <code>/camera/h264/bl</code>, and  <code>/camera/h264/br</code> topics while stopping the default <code>/camera/h264</code> topic.</li>
 <li><a href="../camera/#h264-streaming">Disabling H264 streaming</a> will stop the <code>/camera/h264</code> topic</li>
 <li><a href="../camera/#jpeg-streaming">Enabling JPEG streaming</a> will create the <code>/camera/jpeg</code> topic</li>
+</ul>
+</li>
 </ul>
 <p>Topics that have been stopped by a configuration change cannot be recorded into an <abbr title="Binary container format for robotics log data">MCAP</abbr> file. However, the new topics created by the above changes are not automatically added to the <abbr title="Binary container format for robotics log data">MCAP</abbr> recorder and will need to be added manually.</p>
 <h3 id="adding-topics-manually-to-the-recording-service">Adding Topics Manually to the Recording Service</h3>
@@ -2061,10 +2158,10 @@
 <p>If you are unfamiliar with <code>vi</code>, please read a <a href="https://www.tutorialspoint.com/unix/unix-vi-editor.htm">quick tutorial</a>.</p>
 </div>
 <p>The default topics line should read:</p>
-<div class="highlight"><pre><span></span><code>TOPICS = &quot;/tf_static /imu /gps /camera/info /camera/h264 /radar/clusters /radar/targets /radar/info /model/info /model/boxes2d /model/mask_compressed&quot;
+<div class="highlight"><pre><span></span><code><span class="na">TOPICS</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;/tf_static /imu /gps /camera/info /camera/h264 /radar/clusters /radar/targets /radar/info /model/info /model/boxes2d /model/mask_compressed&quot;</span>
 </code></pre></div>
 <p>To add topics to be recorded, simply add them in the quoted portion as space-separated items. For example, if we wanted to add the 4K tiles topics, we would just change the line to:</p>
-<div class="highlight"><pre><span></span><code>TOPICS = &quot;/tf_static /imu /gps /camera/info /radar/clusters /radar/targets /radar/info /model/info /model/boxes2d /model/mask_compressed /camera/h264/tl /camera/h264/tr /camera/h264/bl /camera/h264/br&quot;
+<div class="highlight"><pre><span></span><code><span class="na">TOPICS</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;/tf_static /imu /gps /camera/info /radar/clusters /radar/targets /radar/info /model/info /model/boxes2d /model/mask_compressed /camera/h264/tl /camera/h264/tr /camera/h264/bl /camera/h264/br&quot;</span>
 </code></pre></div>
 
 

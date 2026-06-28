@@ -18,14 +18,14 @@
         <link rel="prev" href="../../quickstart/">
       
       
-        <link rel="next" href="../../installation/">
+        <link rel="next" href="../configuration/">
       
       
         
       
       
       <link rel="icon" href="../../../assets/favicon.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+      <meta name="generator" content="mkdocs-ProperDocs 1.6.7, mkdocs-material-9.7.6">
     
     
       
@@ -316,6 +316,28 @@
     
     
       <li class="md-tabs__item">
+        <a href="../../../client/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Client
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
         <a href="../../../3D/" class="md-tabs__link">
           
   
@@ -511,6 +533,8 @@
       
         
       
+        
+      
     
     
     
@@ -653,6 +677,71 @@
       
         
       
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../../client/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Client
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
     
     
     
@@ -736,7 +825,7 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" checked>
         
           
           <div class="md-nav__link md-nav__container">
@@ -758,14 +847,14 @@
             </a>
             
               
-              <label class="md-nav__link " for="__nav_4" id="__nav_4_label" tabindex="">
+              <label class="md-nav__link " for="__nav_5" id="__nav_5_label" tabindex="">
                 <span class="md-nav__icon md-icon"></span>
               </label>
             
           </div>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
-          <label class="md-nav__title" for="__nav_4">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_5">
             <span class="md-nav__icon md-icon"></span>
             
   
@@ -818,6 +907,8 @@
       
         
       
+        
+      
     
     
     
@@ -831,10 +922,10 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_3" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_3" checked>
         
           
-          <label class="md-nav__link" for="__nav_4_3" id="__nav_4_3_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_5_3" id="__nav_5_3_label" tabindex="0">
             
   
   
@@ -852,8 +943,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_3_label" aria-expanded="true">
-          <label class="md-nav__title" for="__nav_4_3">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_5_3">
             <span class="md-nav__icon md-icon"></span>
             
   
@@ -941,10 +1032,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#sequential-execution-pipeline-depth-1" class="md-nav__link">
+  <a href="#sequential-execution-inference-depth-1" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Sequential execution (--pipeline-depth 1)
+        Sequential execution (--inference-depth 1)
       
     </span>
   </a>
@@ -952,10 +1043,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#pipelined-execution-pipeline-depth-2-default" class="md-nav__link">
+  <a href="#pipelined-execution-auto-depth-default" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Pipelined execution (--pipeline-depth 2, default)
+        Pipelined execution (Auto depth, default)
       
     </span>
   </a>
@@ -963,22 +1054,33 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#backend-limits-and-auto-clamping" class="md-nav__link">
+  <a href="#backend-auto-depth-table" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Backend limits and auto-clamping
+        Backend auto-depth table
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Backend limits and auto-clamping">
+    <nav class="md-nav" aria-label="Backend auto-depth table">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#neutron-preprocess-and-inference-serialize" class="md-nav__link">
+  <a href="#per-stage-depth-flags" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Neutron — preprocess and inference serialize
+        Per-stage depth flags
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#neutron-dma-buf-zero-copy-vs-cpu-staging" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Neutron — DMA-BUF zero-copy vs CPU-staging
       
     </span>
   </a>
@@ -987,6 +1089,17 @@
         
       </ul>
     </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#launch-time-customize-dialog" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Launch-time Customize dialog
+      
+    </span>
+  </a>
   
 </li>
       
@@ -1027,6 +1140,34 @@
   
 </nav>
       
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../configuration/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Training Configurations
+  
+
+    
+  </span>
+  
+  
+
+      </a>
     </li>
   
 
@@ -1350,8 +1491,6 @@
       
         
       
-        
-      
     
     
     
@@ -1501,10 +1640,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#sequential-execution-pipeline-depth-1" class="md-nav__link">
+  <a href="#sequential-execution-inference-depth-1" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Sequential execution (--pipeline-depth 1)
+        Sequential execution (--inference-depth 1)
       
     </span>
   </a>
@@ -1512,10 +1651,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#pipelined-execution-pipeline-depth-2-default" class="md-nav__link">
+  <a href="#pipelined-execution-auto-depth-default" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Pipelined execution (--pipeline-depth 2, default)
+        Pipelined execution (Auto depth, default)
       
     </span>
   </a>
@@ -1523,22 +1662,33 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#backend-limits-and-auto-clamping" class="md-nav__link">
+  <a href="#backend-auto-depth-table" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Backend limits and auto-clamping
+        Backend auto-depth table
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Backend limits and auto-clamping">
+    <nav class="md-nav" aria-label="Backend auto-depth table">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#neutron-preprocess-and-inference-serialize" class="md-nav__link">
+  <a href="#per-stage-depth-flags" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Neutron — preprocess and inference serialize
+        Per-stage depth flags
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#neutron-dma-buf-zero-copy-vs-cpu-staging" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Neutron — DMA-BUF zero-copy vs CPU-staging
       
     </span>
   </a>
@@ -1547,6 +1697,17 @@
         
       </ul>
     </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#launch-time-customize-dialog" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Launch-time Customize dialog
+      
+    </span>
+  </a>
   
 </li>
       
@@ -1650,8 +1811,8 @@
 
 
 <h1 id="pipelining">Pipelining</h1>
-<p>The EdgeFirst Profiler runs a multi-stage measurement pipeline on every frame: image <strong>decode</strong>, <strong>preprocess</strong>, <strong>inference</strong>, <strong>postprocess</strong>, and <strong>output encoding</strong>. Each stage exercises a different part of the system — CPU, host memory, bus transfers, <abbr title="Neural Processing Unit">NPU</abbr>/GPU — and on a typical edge target the stages take substantially different amounts of time. <em>Pipelining</em> is the profiler's mechanism for overlapping those stages across frames so the slowest stage sets throughput, instead of the sum of all stage times setting it.</p>
-<p>This page explains the conceptual model, the <code>--pipeline-depth</code> flag that controls it, and how each supported backend constrains it.</p>
+<p>The EdgeFirst Profiler runs a multi-stage measurement pipeline on every frame: image <strong>capture</strong>, <strong>preprocess</strong>, <strong>inference</strong>, <strong>postprocess</strong>, and <strong>output encoding</strong>. Each stage exercises a different part of the system — CPU, host memory, bus transfers, <abbr title="Neural Processing Unit">NPU</abbr>/GPU — and on a typical edge target the stages take substantially different amounts of time. <em>Pipelining</em> is the profiler's mechanism for overlapping those stages across frames so the slowest stage sets throughput, instead of the sum of all stage times setting it.</p>
+<p>This page explains the conceptual model, the <code>--inference-depth</code> flag that controls it, the per-stage depth flags introduced in 1.5.0, and how each supported backend constrains it.</p>
 <h2 id="pipeline-stages">Pipeline stages</h2>
 <p>Every frame travels through the same sequence of stages, in order:</p>
 <table>
@@ -1664,7 +1825,7 @@
 </thead>
 <tbody>
 <tr>
-<td><strong>decode</strong></td>
+<td><strong>capture</strong></td>
 <td>CPU (libjpeg / hardware codec)</td>
 <td>Read the encoded image file, decode to pixels</td>
 </tr>
@@ -1691,8 +1852,8 @@
 </tbody>
 </table>
 <p>The <code>pycocotools</code>-style accuracy metrics are computed off-device in EdgeFirst Studio after the run completes — they are not part of the on-device pipeline.</p>
-<h2 id="sequential-execution-pipeline-depth-1">Sequential execution (<code>--pipeline-depth 1</code>)</h2>
-<p>With <code>--pipeline-depth 1</code> the profiler runs each stage on the current frame before starting any stage on the next frame. Each piece of hardware sits idle while the others work:</p>
+<h2 id="sequential-execution-inference-depth-1">Sequential execution (<code>--inference-depth 1</code>)</h2>
+<p>With <code>--inference-depth 1</code> the profiler runs each stage on the current frame before starting any stage on the next frame. Each piece of hardware sits idle while the others work:</p>
 <figure>
             <img align="center" alt="Sequential execution — one frame at a time, each stage idle while the others run. The NPU here is the bottleneck at 4.4 ms but only contributes 4.4 / 18.9 = 23% of the wall-clock per frame." src="../../assets/pipeline-sequential.png" />
             <figcaption>Sequential execution — one frame at a time, each stage idle while the others run. The <abbr title="Neural Processing Unit">NPU</abbr> here is the bottleneck at 4.4 ms but only contributes 4.4 / 18.9 = 23% of the wall-clock per frame.</figcaption>
@@ -1702,59 +1863,131 @@
 <ul>
 <li>You are measuring the <strong>pure inference latency</strong> of a model without confounding pipeline-overlap effects.</li>
 <li>You are diagnosing <strong>which stage is the bottleneck</strong> — sequential timing is the cleanest reference.</li>
-<li>The platform's backend supports only depth 1 (see the table below) — the profiler clamps automatically and prints <code>Pipeline depth: 1 (sequential)</code> at run start.</li>
+<li>The platform's backend supports only depth 1 (see the table below) — the profiler clamps automatically and reports the resolved mode at run start.</li>
 </ul>
-<h2 id="pipelined-execution-pipeline-depth-2-default">Pipelined execution (<code>--pipeline-depth 2</code>, default)</h2>
+<h2 id="pipelined-execution-auto-depth-default">Pipelined execution (Auto depth, default)</h2>
 <p>With depth ≥ 2 multiple frames are in flight through the pipeline at once: while one frame is in inference, the next frame is being preprocessed, the previous frame is being postprocessed, and so on. Every stage can be active simultaneously on different frames, and the slowest stage sets the throughput floor:</p>
 <figure>
             <img align="center" alt="Pipelined execution at depth 2 — three frames overlap in time. Per-frame latency is unchanged (18.9 ms) but throughput is now bottleneck-bound at 4.4 ms/frame (≈227 FPS) instead of 18.9 ms/frame." src="../../assets/pipeline-overlap.png" />
             <figcaption>Pipelined execution at depth 2 — three frames overlap in time. Per-frame latency is unchanged (18.9 ms) but throughput is now bottleneck-bound at 4.4 ms/frame (≈227 <abbr title="Frames Per Second">FPS</abbr>) instead of 18.9 ms/frame.</figcaption>
             </figure>
 <p>The important property: <strong>pipelining does not reduce the latency of any single frame</strong> — that critical path is unchanged. It increases throughput by converting "sum of stage times per frame" into "max of stage times per frame". For deployment profiling on real workloads the throughput number is almost always the more useful one.</p>
-<p>Default depth is 2. Higher depths give more overlap headroom (useful when stage durations are uneven) at the cost of memory — each additional slot keeps another in-flight frame's worth of buffers alive.</p>
-<h2 id="backend-limits-and-auto-clamping">Backend limits and auto-clamping</h2>
-<p>Each inference backend has a maximum pipeline depth determined by how many concurrent inference clients the hardware can serve. The profiler clamps <code>--pipeline-depth</code> to that maximum at startup:</p>
+<p>Starting in 1.5.0 the default inference depth is <strong>Auto</strong> — the profiler selects the depth that best matches the detected backend and platform rather than using a fixed value of 2. Higher depths give more overlap headroom (useful when stage durations are uneven) at the cost of memory — each additional slot keeps another in-flight frame's worth of buffers alive. Passing <code>--inference-depth N</code> always overrides the auto value.</p>
+<h2 id="backend-auto-depth-table">Backend auto-depth table</h2>
+<p>Each inference backend has an auto-selected inference depth determined by how many concurrent inference slots the hardware can serve efficiently. The profiler applies this default at startup unless overridden by <code>--inference-depth</code>:</p>
 <table>
 <thead>
 <tr>
 <th>Backend</th>
-<th style="text-align: right;">Default max depth</th>
+<th style="text-align: right;">Auto inference depth</th>
+<th>Notes</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td><abbr title="Open Neural Network Exchange">ONNX</abbr> Runtime (CPU / <abbr title="NVIDIA Compute Unified Device Architecture">CUDA</abbr> / CoreML)</td>
+<td><abbr title="Open Neural Network Exchange">ONNX</abbr> Runtime CPU</td>
 <td style="text-align: right;">2</td>
+<td>Generic default</td>
+</tr>
+<tr>
+<td><abbr title="Open Neural Network Exchange">ONNX</abbr> Runtime <abbr title="NVIDIA Compute Unified Device Architecture">CUDA</abbr> (x86_64 Linux)</td>
+<td style="text-align: right;">4</td>
+<td>Also sets preprocess depth to 1</td>
+</tr>
+<tr>
+<td><abbr title="Open Neural Network Exchange">ONNX</abbr> Runtime CoreML GPU (macOS)</td>
+<td style="text-align: right;">3</td>
+<td>Measured knee at depth 3</td>
+</tr>
+<tr>
+<td><abbr title="Open Neural Network Exchange">ONNX</abbr> Runtime CoreML ANE / CPU (macOS)</td>
+<td style="text-align: right;">2</td>
+<td>ANE serializes internally</td>
+</tr>
+<tr>
+<td>TensorRT (Jetson Orin)</td>
+<td style="text-align: right;">device max</td>
+<td>Full slot count auto-selected</td>
 </tr>
 <tr>
 <td><abbr title="TensorFlow Lite">TFLite</abbr> XNNPACK</td>
 <td style="text-align: right;">2</td>
+<td></td>
 </tr>
 <tr>
-<td><abbr title="TensorFlow Lite">TFLite</abbr> Neutron (i.MX 95)</td>
-<td style="text-align: right;">2</td>
+<td><abbr title="TensorFlow Lite">TFLite</abbr> Neutron (i.MX 95, <abbr title="Direct Memory Access">DMA</abbr>-BUF zero-copy)</td>
+<td style="text-align: right;">1</td>
+<td>Single-bind delegate; preprocess forced to 1</td>
+</tr>
+<tr>
+<td><abbr title="TensorFlow Lite">TFLite</abbr> Neutron (i.MX 95, CPU-staging)</td>
+<td style="text-align: right;">4</td>
+<td>Multiple independent slots (up to 4)</td>
 </tr>
 <tr>
 <td><strong><abbr title="TensorFlow Lite">TFLite</abbr> VxDelegate</strong> (i.MX 8M Plus VSI <abbr title="Neural Processing Unit">NPU</abbr>)</td>
 <td style="text-align: right;"><strong>1</strong></td>
+<td>Only one in-flight inference</td>
 </tr>
 <tr>
-<td>Ara-2 (Kinara)</td>
-<td style="text-align: right;">2</td>
+<td>Ara240 (Kinara, i.MX 95)</td>
+<td style="text-align: right;">8</td>
+<td>I/O rebind pool; <abbr title="Neural Processing Unit">NPU</abbr> ceiling ≈249 <abbr title="Frames Per Second">FPS</abbr> YOLOv8n</td>
 </tr>
 <tr>
 <td>HailoRT (Hailo-8 / 8L)</td>
-<td style="text-align: right;">2</td>
-</tr>
-<tr>
-<td>TensorRT (Jetson)</td>
-<td style="text-align: right;">2</td>
+<td style="text-align: right;">device max</td>
+<td></td>
 </tr>
 </tbody>
 </table>
 <p>The VSI <abbr title="Neural Processing Unit">NPU</abbr> on the i.MX 8M Plus serves only one inference client at a time, so on that target the profiler runs as sequential regardless of what the user requests.</p>
-<h3 id="neutron-preprocess-and-inference-serialize">Neutron — preprocess and inference serialize</h3>
-<p>On i.MX 95 with the Neutron delegate the trace viewer shows preprocess and inference slices touching back-to-back rather than overlapping, even though depth 2 is in effect. Decode and postprocess still overlap freely, so throughput still benefits from pipelining — but the preprocess → inference critical path behaves more like depth 1 than depth 2.</p>
+<h3 id="per-stage-depth-flags">Per-stage depth flags</h3>
+<p>1.5.0 exposes independent concurrency controls for every pipeline stage. Each flag defaults to <code>0</code> (Auto):</p>
+<table>
+<thead>
+<tr>
+<th>Flag</th>
+<th>Controls</th>
+<th>Default (Auto)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>--capture-depth N</code></td>
+<td>Parallel file-load / JPEG decode threads</td>
+<td>1</td>
+</tr>
+<tr>
+<td><code>--preprocess-depth N</code></td>
+<td>Parallel preprocess workers (CPU + <abbr title="Direct Memory Access">DMA</abbr>; GPU/OpenGL-accelerated where available)</td>
+<td>1 in <abbr title="Direct Memory Access">DMA</abbr>-BUF zero-copy mode, 4 in CPU-staging mode</td>
+</tr>
+<tr>
+<td><code>--inference-depth N</code></td>
+<td>Concurrent in-flight inference slots</td>
+<td>See backend table above</td>
+</tr>
+<tr>
+<td><code>--postprocess-depth N</code></td>
+<td>Parallel model decoder (<abbr title="Distribution Focal Loss">DFL</abbr> + <abbr title="Non-Maximum Suppression">NMS</abbr>) threads</td>
+<td>Auto based on CPU core count</td>
+</tr>
+</tbody>
+</table>
+<p>Setting any flag to <code>0</code> restores Auto for that stage. Passing <code>1</code> is equivalent to serializing that stage. The auto resolution for each stage is printed at run start alongside the backend name.</p>
+<h3 id="neutron-dma-buf-zero-copy-vs-cpu-staging">Neutron — <abbr title="Direct Memory Access">DMA</abbr>-BUF zero-copy vs CPU-staging</h3>
+<p>The Neutron delegate on i.MX 95 operates in two distinct modes depending on kernel support:</p>
+<p><strong><abbr title="Direct Memory Access">DMA</abbr>-BUF zero-copy mode</strong> (kernel patch present, or <code>NEUTRON_ENABLE_ZERO_COPY=1</code>): a single inference slot is bound directly to device memory. The preprocess stage serializes with inference — the trace viewer shows their slices touching back-to-back rather than overlapping, so the preprocess → inference critical path behaves more like depth 1 than depth 2. Capture and postprocess still overlap freely and throughput still benefits from pipelining across those stages. Auto inference depth is 1; preprocess is forced to 1.</p>
+<p><strong>CPU-staging mode</strong> (kernel patch absent, or <code>NEUTRON_ENABLE_ZERO_COPY=0</code>): up to 4 independent inference slots run in parallel, each staging its input through system memory before dispatch. Auto inference depth is 4, delivering approximately 97 <abbr title="Frames Per Second">FPS</abbr> on YOLOv5n at 640 on i.MX 95 Pro (single-slot baseline ≈73 <abbr title="Frames Per Second">FPS</abbr>). The profiler detects the mode automatically and falls back cleanly if <abbr title="Direct Memory Access">DMA</abbr>-BUF is unavailable. At depth 4 or above the launch-time dialog warns that the mode is CPU-staging.</p>
+<h2 id="launch-time-customize-dialog">Launch-time Customize dialog</h2>
+<p>Every run started from the TUI (F4 Start, Studio Validate, local profiling) opens a <strong>launch modal</strong> before the pipeline starts. For <abbr title="Open Neural Network Exchange">ONNX</abbr> models the dialog also selects the execution provider.</p>
+<ul>
+<li>Press <strong>Enter</strong> to launch immediately with Auto depths.</li>
+<li>Press <strong>c</strong> to open four sliders (Capture, Preprocess, Inference, Postprocess), each defaulting to Auto and showing what Auto will resolve to for the detected platform.</li>
+<li>Drag a slider to 1–8 to pin that stage; this is equivalent to passing the corresponding <code>--&lt;stage&gt;-depth N</code> flag.</li>
+<li>The dialog displays a warning banner when the platform constrains a stage to single-thread concurrency (for example, VxDelegate inference or Neutron <abbr title="Direct Memory Access">DMA</abbr>-BUF preprocess).</li>
+</ul>
 <h2 id="how-pipelining-appears-in-the-trace-viewer">How pipelining appears in the trace viewer</h2>
 <p>Open the Perfetto trace for any validation session in Studio (the <strong>Profile</strong> tab on the session card). At depth ≥ 2 you will see frames overlapping across the stage tracks — the same picture as the overlap diagram above, but with real timing.</p>
 <figure>
@@ -1763,33 +1996,43 @@
             </figure>
 <p>The four overlays on the trace above map directly to the pipeline stages, with each box covering a different frame in flight at the same instant:</p>
 <ul>
-<li><strong>0 — JPEG Decode</strong>: the CPU decoder reading the next image file off disk.</li>
+<li><strong>0 — Capture</strong>: the CPU decoder reading the next image file off disk.</li>
 <li><strong>1 — OpenGL Pre-processing</strong>: hardware-accelerated resize / color-convert / quantize via <code>edgefirst-hal</code>, writing into the input tensor.</li>
 <li><strong>2 — <abbr title="Neural Processing Unit">NPU</abbr> Inference</strong>: the accelerator running <code>invoke()</code> on the already-preprocessed frame from the previous slot.</li>
 <li><strong>3 — Model Decoder</strong>: postprocessing (box decode, <abbr title="Non-Maximum Suppression">NMS</abbr>, mask decode) of the frame whose inference just completed.</li>
 </ul>
 <p>Reading vertically at any point on the time axis shows what the profiler is doing concurrently — four frames in different stages of completion. Reading horizontally along any one track shows how that stage performs on consecutive frames.</p>
-<p>At depth 1, all stage tracks line up sequentially per frame: the next frame's decode slice does not start until the previous frame's last stage finishes.</p>
+<p>At depth 1, all stage tracks line up sequentially per frame: the next frame's capture slice does not start until the previous frame's last stage finishes.</p>
+<p><strong>Multi-slot <abbr title="Open Neural Network Exchange">ONNX</abbr> traces.</strong> When <code>--inference-depth</code> is greater than 1 on <abbr title="Open Neural Network Exchange">ONNX</abbr> Runtime, the trace shows one track per inference slot (<code>ort.run.slot0</code>, <code>ort.run.slot1</code>, …) with true wall-clock positions, making real overlap between concurrent inferences directly visible.</p>
+<p><strong>Per-frame identity.</strong> Every pipeline stage span now carries the <code>image_name</code> and <code>frame_id</code> it processed, so clicking any span in the trace viewer immediately identifies which image produced it.</p>
+<p><strong><code>frame_e2e</code> events.</strong> A <code>frame_e2e</code> event is emitted when each frame's result is ready. It carries the end-to-end <strong>work-time</strong> — the sum of that frame's own stage durations — which is the figure reported in the Session Report. Work-time is stable under varying pipeline depth; it does not balloon with queue backlog the way the raw capture→result wall-clock sojourn does in pipelined mode.</p>
+<p><strong><code>pipeline_config</code> event.</strong> A single <code>pipeline_config</code> event at the start of the run records the full pipeline geometry: backend, execution provider, resolved depths for all four stages, and the Neutron mode when applicable.</p>
 <p>A common diagnostic flow:</p>
 <ol>
-<li>Run once at the platform's default depth (likely 2).</li>
+<li>Run once at the platform's auto depth.</li>
 <li>Compare end-to-end throughput (<code>Session Report</code>) against the inference-only mean.</li>
-<li>If throughput is much lower than <code>1 / inference_mean</code>, the bottleneck is on a CPU stage — switch to sequential mode to confirm which one, then look at decode (large images) or postprocess (low confidence threshold producing many candidates).</li>
+<li>If throughput is much lower than <code>1 / inference_mean</code>, the bottleneck is on a CPU stage — switch to sequential mode (<code>--inference-depth 1</code>) to confirm which one, then look at capture (large images) or postprocess (low confidence threshold producing many candidates).</li>
 </ol>
 <h2 id="cli">CLI</h2>
-<div class="highlight"><pre><span></span><code>edgefirst-profiler<span class="w"> </span>validate<span class="w"> </span>--session-id<span class="w"> </span>v-XXXX<span class="w"> </span>--pipeline-depth<span class="w"> </span><span class="m">1</span>
-edgefirst-profiler<span class="w"> </span>validate<span class="w"> </span>--session-id<span class="w"> </span>v-XXXX<span class="w"> </span>--pipeline-depth<span class="w"> </span><span class="m">2</span><span class="w">   </span><span class="c1"># default</span>
-edgefirst-profiler<span class="w"> </span>validate<span class="w"> </span>--session-id<span class="w"> </span>v-XXXX<span class="w"> </span>--pipeline-depth<span class="w"> </span><span class="m">4</span><span class="w">   </span><span class="c1"># auto-clamped to backend max</span>
+<div class="highlight"><pre><span></span><code>edgefirst-profiler<span class="w"> </span>validate<span class="w"> </span>--session-id<span class="w"> </span>v-XXXX<span class="w"> </span>--inference-depth<span class="w"> </span><span class="m">1</span>
+edgefirst-profiler<span class="w"> </span>validate<span class="w"> </span>--session-id<span class="w"> </span>v-XXXX<span class="w"> </span>--inference-depth<span class="w"> </span><span class="m">2</span>
+edgefirst-profiler<span class="w"> </span>validate<span class="w"> </span>--session-id<span class="w"> </span>v-XXXX<span class="w"> </span>--inference-depth<span class="w"> </span><span class="m">4</span><span class="w">   </span><span class="c1"># auto-clamped to backend max</span>
 </code></pre></div>
-<p>The chosen depth and the clamped mode are printed once at run start:</p>
-<div class="highlight"><pre><span></span><code>Pipeline depth: 2 (pipelined)
+<p>Per-stage overrides can be combined:</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># Pin inference to 4 slots, let preprocess and postprocess stay on Auto</span>
+edgefirst-profiler<span class="w"> </span>validate<span class="w"> </span>--session-id<span class="w"> </span>v-XXXX<span class="w"> </span>--inference-depth<span class="w"> </span><span class="m">4</span>
+
+<span class="c1"># Fully manual geometry for reproducible benchmarking</span>
+edgefirst-profiler<span class="w"> </span>validate<span class="w"> </span>--session-id<span class="w"> </span>v-XXXX<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--capture-depth<span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--preprocess-depth<span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--inference-depth<span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--postprocess-depth<span class="w"> </span><span class="m">1</span>
 </code></pre></div>
-<p>or</p>
-<div class="highlight"><pre><span></span><code>Pipeline depth: 1 (sequential)
-</code></pre></div>
+<p>The resolved per-stage depths, the backend, and the operating mode (pipelined vs sequential) are reported once at run start, and recorded in the <code>pipeline_config</code> trace event for the session.</p>
 <h2 id="see-also">See also</h2>
 <ul>
-<li><a href="../../installation/imx8mplus/#pipeline-depth">i.MX 8M Plus — Pipeline depth</a> — the VSI delegate's auto-clamp to depth 1.</li>
+<li><a href="../../installation/imx8mplus/#inference-depth">i.MX 8M Plus — Inference depth</a> — the VSI delegate's auto-clamp to depth 1.</li>
 <li><a href="../../studio/from_studio/#what-the-run-looks-like">Validation from Studio — Session Report</a> — the per-stage timing breakdown printed to stdout on completion.</li>
 </ul>
 
@@ -1898,13 +2141,13 @@ edgefirst-profiler<span class="w"> </span>validate<span class="w"> </span>--sess
         
         
           
-          <a href="../../installation/" class="md-footer__link md-footer__link--next" aria-label="Next: Installation">
+          <a href="../configuration/" class="md-footer__link md-footer__link--next" aria-label="Next: Training Configurations">
             <div class="md-footer__title">
               <span class="md-footer__direction">
                 Next
               </span>
               <div class="md-ellipsis">
-                Installation
+                Training Configurations
               </div>
             </div>
             <div class="md-footer__button md-icon">

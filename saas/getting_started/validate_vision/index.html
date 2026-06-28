@@ -15,7 +15,7 @@
         <link rel="canonical" href="https://doc.edgefirst.ai/saas/getting_started/validate_vision/">
       
       
-        <link rel="prev" href="../train_vision/">
+        <link rel="prev" href="../convert_vision/">
       
       
         <link rel="next" href="../deploy_model/">
@@ -25,7 +25,7 @@
       
       
       <link rel="icon" href="../../assets/favicon.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+      <meta name="generator" content="mkdocs-ProperDocs 1.6.7, mkdocs-material-9.7.6">
     
     
       
@@ -318,6 +318,28 @@
     
     
       <li class="md-tabs__item">
+        <a href="../../client/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Client
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
         <a href="../../3D/" class="md-tabs__link">
           
   
@@ -493,6 +515,8 @@
       
         
           
+        
+      
         
       
         
@@ -742,6 +766,34 @@
                 
   
   
+  
+  
+    <li class="md-nav__item">
+      <a href="../convert_vision/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Convert Vision Model
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
     
   
   
@@ -753,6 +805,24 @@
       
         
       
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Validate Vision Model
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
       
       <a href="./" class="md-nav__link md-nav__link--active">
         
@@ -770,6 +840,36 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#cloud-validation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Cloud Validation
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
       
     </li>
   
@@ -946,6 +1046,71 @@
     
   
     Studio
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../client/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Client
   
 
     
@@ -1253,8 +1418,6 @@
       
         
       
-        
-      
     
     
     
@@ -1386,6 +1549,25 @@
     
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#cloud-validation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Cloud Validation
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -1408,7 +1590,33 @@
 
 
 <h1 id="validate-vision-model">Validate Vision Model</h1>
-<p>Now that you have trained a model, you can now validate the performance of your model.  This will briefly show the steps for validating a model, but for an in depth tutorial, please see <a href="../../models/validation/vision/managed/">Validating Vision Models</a>.</p>
+<p>Now that you have trained a model, you can validate its performance. The purpose of validation is to determine whether the selected model meets the performance requirements before deployment. EdgeFirst Studio offers two validation paths depending on your goal:</p>
+<table>
+<thead>
+<tr>
+<th>Path</th>
+<th>Where it runs</th>
+<th>Supported formats</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="../../models/validation/vision/managed/"><strong>Cloud Validation</strong></a> (this guide)</td>
+<td>EdgeFirst Studio EC2</td>
+<td><abbr title="Open Neural Network Exchange">ONNX</abbr>, Keras, <abbr title="TensorFlow Lite">TFLite</abbr></td>
+</tr>
+<tr>
+<td><a href="../../profiler/"><strong>On-Target Profiling</strong></a></td>
+<td>Your edge platform</td>
+<td>All converted formats (.tflite, .hef, .dvm, .engine)</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition info">
+<p class="admonition-title">Validating on target hardware?</p>
+<p>Cloud validation only supports <strong><abbr title="Open Neural Network Exchange">ONNX</abbr>, Keras, and <abbr title="TensorFlow Lite">TFLite</abbr></strong> artifacts. If you want to measure real inference latency and accuracy on your target device — including <abbr title="Neural Processing Unit">NPU</abbr>-compiled formats like Neutron, Hailo, Ara2, or TensorRT — use the <a href="../../profiler/">EdgeFirst Profiler</a>.</p>
+</div>
+<h2 id="cloud-validation">Cloud Validation</h2>
 <p>If you haven't already, click on the training session card for more information.</p>
 <figure>
             <img align="center" alt="Training Details" src="../../models/assets/training/vision-view-train-details.jpg" />
@@ -1419,11 +1627,18 @@
             <img align="center" alt="Validate Button" src="../../models/assets/validation/training_validate_button.jpg" />
             <figcaption>Validate Button</figcaption>
             </figure>
-<p>Specify the name of the validation session and the model and the dataset for validation.  <em>Under the model selection, you can select various trained model artifacts from the choices of <abbr title="Open Neural Network Exchange">ONNX</abbr>, <abbr title="TensorFlow Lite">TFLite</abbr>, TensorRT, Kinara, Hailo, etc.  Choose the model you plan to deploy on target.  The purpose of validation is to assess the model of whether or not it meets the performance requirements needed to be deployed on target.</em>  The rest of the settings were kept as defaults.  Click "Start Session" at the bottom to start the validation session.</p>
+<p>Enter a name for the validation session, then select the model and dataset to use for validation.</p>
+<p>Under <strong>Model Selection</strong>, choose an <strong><abbr title="Open Neural Network Exchange">ONNX</abbr>, Keras, or <abbr title="TensorFlow Lite">TFLite</abbr></strong> artifact — these are the formats supported by cloud validation.</p>
+<p>For this example, all remaining settings were left at their default values. When you are ready, click <strong>Start Session</strong> at the bottom of the page to begin the validation process.</p>
 <figure>
             <img align="center" alt="Start Validation Session" src="../../models/assets/validation/vision-validate-settings.jpg" />
             <figcaption>Start Validation Session</figcaption>
             </figure>
+<div class="admonition failure">
+<p class="admonition-title">InsufficientInstanceCapacity</p>
+<p><img alt="InsufficientInstanceCapacity Error" src="../../studio/assets/models/insufficient-capacity-error.jpg" /></p>
+<p>If you see this error after starting your validation session, retry creating the session. This can happen when AWS reports that no EC2 instances are currently available to launch; the current workaround is to retry.</p>
+</div>
 <p>Go to the created validation session by first going back to the "Model Experiments" page.</p>
 <figure>
             <img align="center" alt="Go to Model Experiments" src="../../models/assets/training/go-back-to-model-experiments.jpg" />
@@ -1439,15 +1654,15 @@
             <img align="center" alt="Validation Progress" src="../../models/assets/validation/vision-session-progress.jpg" />
             <figcaption>Validation Progress</figcaption>
             </figure>
-<p>Once completed the session card will appear like the following below.  To view the validation metrics, click on the validation charts button as indicated.</p>
+<p>Once the session is complete, the session card will appear like the following. To view the validation metrics, click the validation charts button as indicated.</p>
 <figure>
             <img align="center" alt="Completed Session" src="../../models/assets/validation/vision-completed-session.jpg" />
             <figcaption>Completed Session</figcaption>
             </figure>
-<p>The validation metrics should appear like the following.  For more information, please see the <a href="../../models/validation/metrics/">Validation Metrics</a> section.</p>
+<p>The validation metrics should appear like the following. For more information, please see the <a href="../../models/validation/metrics/">Validation Metrics</a> section.</p>
 <figure>
-            <img align="center" alt="Validation Charts" src="../../models/assets/validation/vision-charts.jpg" />
-            <figcaption>Validation Charts</figcaption>
+            <img align="center" alt="EdgeFirst Studio — validation metrics dashboard on a completed session: mAP, AP/AR breakdowns, confusion matrices, PR curves" src="../../models/assets/validation/vision-charts.jpg" />
+            <figcaption>EdgeFirst Studio — validation metrics dashboard on a completed session: <abbr title="mean Average Precision">mAP</abbr>, AP/AR breakdowns, confusion matrices, PR curves</figcaption>
             </figure>
 <p>You can navigate back to the training session by clicking on the "Training Session" link under the "Session" tab.</p>
 <figure>
@@ -1543,7 +1758,7 @@
       <nav class="md-footer__inner md-grid" aria-label="Footer" >
         
           
-          <a href="../train_vision/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Train Vision Model">
+          <a href="../convert_vision/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Convert Vision Model">
             <div class="md-footer__button md-icon">
               
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
@@ -1553,7 +1768,7 @@
                 Previous
               </span>
               <div class="md-ellipsis">
-                Train Vision Model
+                Convert Vision Model
               </div>
             </div>
           </a>

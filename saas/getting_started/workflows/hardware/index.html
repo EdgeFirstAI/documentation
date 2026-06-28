@@ -25,7 +25,7 @@
       
       
       <link rel="icon" href="../../../assets/favicon.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+      <meta name="generator" content="mkdocs-ProperDocs 1.6.7, mkdocs-material-9.7.6">
     
     
       
@@ -318,6 +318,28 @@
     
     
       <li class="md-tabs__item">
+        <a href="../../../client/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Client
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
         <a href="../../../3D/" class="md-tabs__link">
           
   
@@ -493,6 +515,8 @@
       
         
           
+        
+      
         
       
         
@@ -745,6 +769,34 @@
   
   
     <li class="md-nav__item">
+      <a href="../../convert_vision/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Convert Vision Model
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../validate_vision/" class="md-nav__link">
         
   
@@ -836,7 +888,7 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1_10" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1_11" checked>
         
           
           <div class="md-nav__link md-nav__container">
@@ -858,14 +910,14 @@
             </a>
             
               
-              <label class="md-nav__link " for="__nav_1_10" id="__nav_1_10_label" tabindex="0">
+              <label class="md-nav__link " for="__nav_1_11" id="__nav_1_11_label" tabindex="0">
                 <span class="md-nav__icon md-icon"></span>
               </label>
             
           </div>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_1_10_label" aria-expanded="true">
-          <label class="md-nav__title" for="__nav_1_10">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_1_11_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_1_11">
             <span class="md-nav__icon md-icon"></span>
             
   
@@ -1196,6 +1248,71 @@
       
         
       
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../../client/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Client
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
     
     
     
@@ -1468,8 +1585,6 @@
       
         
       
-        
-      
     
     
     
@@ -1668,6 +1783,10 @@
 <h1 id="hardware-workflows">Hardware Workflows</h1>
 <p>Hardware-specific workflows are tailored for users who have an EdgeFirst-supported target device and want to go through the full <abbr title="Machine Learning Operations">MLOps</abbr> loop: device setup, dataset acquisition, model training, model conversion, on-target validation, and deployment.</p>
 <p>Select your platform from the table below to get started.</p>
+<div class="admonition note">
+<p class="admonition-title">About these workflows</p>
+<p>The hardware workflows use the <strong>Coffee Cup</strong> sample dataset and train a <strong>ModelPack</strong> vision model. Cost estimations shown in the table reflect this specific configuration — actual costs will vary depending on your dataset size, the model type, and training configurations.</p>
+</div>
 <table>
 <thead>
 <tr>
@@ -1675,50 +1794,58 @@
 <th>Hardware</th>
 <th>Features</th>
 <th>Cost</th>
+<th>Time</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td><a href="../../../platforms/quickstart/maivin/">Maivin</a></td>
 <td>PC + Maivin</td>
-<td>Record <abbr title="Binary container format for robotics log data">MCAP</abbr>, Annotate 2D, Train, Validate, Deploy on Maivin</td>
+<td>Record <abbr title="Binary container format for robotics log data">MCAP</abbr>, Annotate 2D, Train, Convert to <abbr title="TensorFlow Lite">TFLite</abbr>, Validate on Target, Deploy on Maivin</td>
+<td>TBA</td>
 <td>TBA</td>
 </tr>
 <tr>
 <td><a href="../../../platforms/quickstart/raivin/">Raivin</a></td>
 <td>PC + Raivin w/ Radar</td>
-<td>Record <abbr title="Binary container format for robotics log data">MCAP</abbr>, Annotate 2D + 3D, Train, Validate, Deploy on Raivin</td>
+<td>Record <abbr title="Binary container format for robotics log data">MCAP</abbr>, Annotate 2D + 3D, Train, Convert to <abbr title="TensorFlow Lite">TFLite</abbr>, Validate on Target, Deploy on Raivin</td>
+<td>TBA</td>
 <td>TBA</td>
 </tr>
 <tr>
 <td><abbr title="Light Detection and Ranging">LiDAR</abbr> (<em>coming soon</em>)</td>
 <td>PC + Raivin w/ <abbr title="Light Detection and Ranging">LiDAR</abbr></td>
-<td>Record <abbr title="Binary container format for robotics log data">MCAP</abbr>, Annotate 2D + 3D (enhanced), Train, Validate, Deploy on Raivin</td>
+<td>Record <abbr title="Binary container format for robotics log data">MCAP</abbr>, Annotate 2D + 3D (enhanced), Train, Convert to <abbr title="TensorFlow Lite">TFLite</abbr>, Validate on Target, Deploy on Raivin</td>
+<td>TBA</td>
 <td>TBA</td>
 </tr>
 <tr>
 <td><a href="../../../platforms/quickstart/imx8mplus/">i.MX 8M Plus</a></td>
 <td>PC + i.MX 8M Plus</td>
-<td>Copy Dataset, Train, Validate, Deploy on i.MX 8M Plus</td>
-<td>TBA</td>
+<td>Copy Dataset, Train, Convert to <abbr title="TensorFlow Lite">TFLite</abbr> or Kinara (FRDM), Validate on Target, Deploy on i.MX 8M Plus</td>
+<td>~$9-11 USD</td>
+<td>~1.5-3.2 hours</td>
 </tr>
 <tr>
 <td><a href="../../../platforms/quickstart/imx95/">i.MX 95</a></td>
 <td>PC + i.MX 95</td>
-<td>Copy Dataset, Train, Validate, Deploy on i.MX 95</td>
-<td>TBA</td>
+<td>Copy Dataset, Train, Convert to Neutron or Kinara (FRDM), Validate on Target, Deploy on i.MX 95</td>
+<td>~$8-9 USD</td>
+<td>~1-1.2 hours</td>
 </tr>
 <tr>
 <td><a href="../../../platforms/quickstart/jetson_orin/">Jetson Orin</a></td>
 <td>PC + Jetson Orin</td>
-<td>Copy Dataset, Train, Validate, Deploy on Jetson Orin</td>
-<td>TBA</td>
+<td>Copy Dataset, Train, Convert to TensorRT, Validate on Target, Deploy on Jetson Orin</td>
+<td>~$8 USD</td>
+<td>~1 hour</td>
 </tr>
 <tr>
 <td><a href="../../../platforms/quickstart/raspberrypi/">Raspberry Pi 5</a></td>
 <td>PC + Raspberry Pi 5</td>
-<td>Copy Dataset, Train, Validate, Deploy on Raspberry Pi 5</td>
-<td>TBA</td>
+<td>Copy Dataset, Train, Convert to Hailo, Validate on Target, Deploy on Raspberry Pi 5</td>
+<td>~$9-12 USD</td>
+<td>~1.8-4.3 hours</td>
 </tr>
 </tbody>
 </table>

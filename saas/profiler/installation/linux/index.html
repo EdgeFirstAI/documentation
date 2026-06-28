@@ -25,7 +25,7 @@
       
       
       <link rel="icon" href="../../../assets/favicon.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+      <meta name="generator" content="mkdocs-ProperDocs 1.6.7, mkdocs-material-9.7.6">
     
     
       
@@ -316,6 +316,28 @@
     
     
       <li class="md-tabs__item">
+        <a href="../../../client/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Client
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
         <a href="../../../3D/" class="md-tabs__link">
           
   
@@ -511,6 +533,8 @@
       
         
       
+        
+      
     
     
     
@@ -653,6 +677,71 @@
       
         
       
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../../client/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Client
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
     
     
     
@@ -736,7 +825,7 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" checked>
         
           
           <div class="md-nav__link md-nav__container">
@@ -758,14 +847,14 @@
             </a>
             
               
-              <label class="md-nav__link " for="__nav_4" id="__nav_4_label" tabindex="">
+              <label class="md-nav__link " for="__nav_5" id="__nav_5_label" tabindex="">
                 <span class="md-nav__icon md-icon"></span>
               </label>
             
           </div>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
-          <label class="md-nav__title" for="__nav_4">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_5">
             <span class="md-nav__icon md-icon"></span>
             
   
@@ -813,6 +902,8 @@
   
     
     
+      
+        
       
         
       
@@ -907,7 +998,7 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_4" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_4" checked>
         
           
           <div class="md-nav__link md-nav__container">
@@ -929,14 +1020,14 @@
             </a>
             
               
-              <label class="md-nav__link " for="__nav_4_4" id="__nav_4_4_label" tabindex="0">
+              <label class="md-nav__link " for="__nav_5_4" id="__nav_5_4_label" tabindex="0">
                 <span class="md-nav__icon md-icon"></span>
               </label>
             
           </div>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_4_label" aria-expanded="true">
-          <label class="md-nav__title" for="__nav_4_4">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_4_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_5_4">
             <span class="md-nav__icon md-icon"></span>
             
   
@@ -1030,6 +1121,17 @@
     <span class="md-ellipsis">
       
         Default backend: ONNX Runtime
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#optional-nvidia-cuda-x86_64" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Optional: NVIDIA CUDA (x86_64)
       
     </span>
   </a>
@@ -1260,7 +1362,7 @@
   <span class="md-ellipsis">
     
   
-    Kinara Ara-2
+    Kinara Ara240
   
 
     
@@ -1544,8 +1646,6 @@
       
         
       
-        
-      
     
     
     
@@ -1706,6 +1806,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#optional-nvidia-cuda-x86_64" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Optional: NVIDIA CUDA (x86_64)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#optional-tensorflow-lite" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -1842,14 +1953,30 @@
 </div>
 </div>
 </div>
+<h2 id="optional-nvidia-cuda-x86_64">Optional: NVIDIA <abbr title="NVIDIA Compute Unified Device Architecture">CUDA</abbr> (x86_64)</h2>
+<p>Pass <code>--provider cuda</code> to offload <abbr title="Open Neural Network Exchange">ONNX</abbr> inference onto an NVIDIA GPU. <abbr title="NVIDIA Compute Unified Device Architecture">CUDA</abbr> and cuDNN libraries must be present on the system path. If they are missing, the profiler prints an actionable error naming the missing library and the exact <code>pip install</code> command — with the specific <code>nvidia-…-cu12</code> package filled in — to resolve it.</p>
+<p><strong>Auto-selected depth on x86_64 Linux with <code>--provider cuda</code>:</strong> inference depth 4, preprocess depth 1. Each additional ORT inference slot overlaps GPU execution with host staging, peaking at depth 4; a single preprocess thread avoids CPU contention with <abbr title="NVIDIA Compute Unified Device Architecture">CUDA</abbr> kernel dispatch. Measured on an RTX 4060 with YOLOv8n fp16 at 640×640, this yields approximately 352 → 447 <abbr title="Frames Per Second">FPS</abbr> (+27%) compared to the CPU default. The launch-time dialog shows these values under <strong>Auto</strong> when <abbr title="NVIDIA Compute Unified Device Architecture">CUDA</abbr> is selected.</p>
+<p><strong><abbr title="NVIDIA Compute Unified Device Architecture">CUDA</abbr> zero-copy input path (OpenGL–<abbr title="NVIDIA Compute Unified Device Architecture">CUDA</abbr> interop):</strong> disabled by default on x86_64 Linux. On discrete GPUs the GL→<abbr title="NVIDIA Compute Unified Device Architecture">CUDA</abbr> synchronization competes with <abbr title="NVIDIA Compute Unified Device Architecture">CUDA</abbr> inference kernel dispatch, while the PCIe <abbr title="Direct Memory Access">DMA</abbr> path runs independently — measured at 347 <abbr title="Frames Per Second">FPS</abbr> (CPU staging) vs 238 <abbr title="Frames Per Second">FPS</abbr> (GL interop) on an RTX 4060. Set <code>EDGEFIRST_ENABLE_CUDA_ZEROCOPY=1</code> to opt in; this is useful for benchmarking or integrated targets where the PCIe copy is the bottleneck.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The previous environment variable <code>EDGEFIRST_DISABLE_CUDA_ZEROCOPY</code> no longer has any effect.</p>
+</div>
 <h2 id="optional-tensorflow-lite">Optional: TensorFlow Lite</h2>
-<p>The <abbr title="TensorFlow Lite">TFLite</abbr> backend handles <code>.tflite</code> models and the XNNPACK delegate for accelerated CPU inference. The <abbr title="TensorFlow Lite">TFLite</abbr> C library is also the gateway to the <strong>NXP Neutron</strong> and <strong>VSI</strong> <abbr title="Neural Processing Unit">NPU</abbr> delegates on i.MX targets — those delegates are <code>.so</code> files passed to the profiler via <code>--delegate</code>. See the <a href="../imx95/">NXP i.MX 95</a> and <a href="../imx8mplus/">NXP i.MX 8M Plus</a> guides.</p>
+<p>The <abbr title="TensorFlow Lite">TFLite</abbr> backend handles <code>.tflite</code> models and the XNNPACK delegate for accelerated CPU inference, and requires a working <abbr title="TensorFlow Lite">TFLite</abbr> environment on the host. The <abbr title="TensorFlow Lite">TFLite</abbr> C library is also the gateway to the <strong>NXP Neutron</strong> and <strong>VSI</strong> <abbr title="Neural Processing Unit">NPU</abbr> delegates on i.MX targets — those delegates are <code>.so</code> files passed to the profiler via <code>--delegate</code>. See the <a href="../imx95/">NXP i.MX 95</a> and <a href="../imx8mplus/">NXP i.MX 8M Plus</a> guides.</p>
+<div class="admonition tip">
+<p class="admonition-title">Preferred runtime on desktop</p>
+<p>Outside embedded i.MX targets, <abbr title="Open Neural Network Exchange">ONNX</abbr> Runtime with a platform-appropriate execution provider — <abbr title="NVIDIA Compute Unified Device Architecture">CUDA</abbr>, CoreML, or plain CPU — is the preferred runtime on desktop platforms. Reach for the <abbr title="TensorFlow Lite">TFLite</abbr> backend when you are targeting the NXP Neutron/VSI <abbr title="Neural Processing Unit">NPU</abbr> delegates.</p>
+</div>
 <h2 id="verifying-the-install">Verifying the install</h2>
 <p>After install, sign in to Studio and confirm the credentials are saved:</p>
 <div class="highlight"><pre><span></span><code>edgefirst-profiler<span class="w"> </span>login
 edgefirst-profiler<span class="w">              </span><span class="c1"># opens TUI on F1 Help</span>
 </code></pre></div>
 <p>Then run a validation session — see <a href="../../studio/from_studio/">Validation from Studio</a> or <a href="../../studio/from_profiler/">Validation from the Profiler</a>.</p>
+<div class="admonition note">
+<p class="admonition-title">Validation needs a writable project</p>
+<p>Creating a validation session requires write access to the Studio project — you cannot profile against the read-only public <strong>Sample Project</strong> directly. First <a href="../../../getting_started/copy_dataset/">copy its dataset</a> into a project you own, then create the session there.</p>
+</div>
 <p>If <code>libonnxruntime</code> is not found when a session starts, the error message tells you exactly which library is missing and where it was looked for.</p>
 <h2 id="uninstall">Uninstall</h2>
 <div class="tabbed-set tabbed-alternate" data-tabs="3:2"><input checked="checked" id="python-pip_1" name="__tabbed_3" type="radio" /><input id="platform-installer_1" name="__tabbed_3" type="radio" /><div class="tabbed-labels"><label for="python-pip_1">Python (pip)</label><label for="platform-installer_1">Platform installer</label></div>

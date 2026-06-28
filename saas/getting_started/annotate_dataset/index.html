@@ -21,7 +21,7 @@
       
       
       <link rel="icon" href="../../assets/favicon.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+      <meta name="generator" content="mkdocs-ProperDocs 1.6.7, mkdocs-material-9.7.6">
     
     
       
@@ -312,6 +312,28 @@
     
     
       <li class="md-tabs__item">
+        <a href="../../client/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Client
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
         <a href="../../3D/" class="md-tabs__link">
           
   
@@ -505,6 +527,8 @@
       
         
       
+        
+      
     
     
     
@@ -612,6 +636,71 @@
     
   
     Studio
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../client/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Client
   
 
     
@@ -919,8 +1008,6 @@
       
         
       
-        
-      
     
     
     
@@ -1085,7 +1172,7 @@
             <img align="center" alt="Annotation Set Specifiers" src="../../datasets/assets/annotations/new-annotation-set-options.jpg" />
             <figcaption>Annotation Set Specifiers</figcaption>
             </figure>
-<p>A new annotation set was created called "new-annotations".</p>
+<p>A new annotation set is now created called "new-annotations".</p>
 <figure>
             <img align="center" alt="New Annotation Set" src="../../datasets/assets/annotations/new-annotation-set.jpg" />
             <figcaption>New Annotation Set</figcaption>
@@ -1096,7 +1183,7 @@
             <figcaption>Coffee Cup Gallery</figcaption>
             </figure>
 <p>The dataset will contain sequences (video) and images.  Click on any sequence card to start <a href="../../datasets/tutorials/annotations/automatic/#semi-automatic-ground-truth-generation">annotating sequences</a>.</p>
-<p>On the top navbar, switch to the right annotation set.</p>
+<p>On the top navbar, switch to the annotation set you created.</p>
 <figure>
             <img align="center" alt="Switch Annotation Set" src="../../datasets/assets/annotations/switch-annotation-sets.jpg" />
             <figcaption>Switch Annotation Set</figcaption>
@@ -1106,22 +1193,46 @@
             <img align="center" alt="Auto Segment Mode" src="../../datasets/assets/annotations/automatic/agtg-segment-tool.jpg" />
             <figcaption>Auto Segment Mode</figcaption>
             </figure>
-<p>Once the AGTG server has started, go ahead and <a href="../../datasets/tutorials/annotations/automatic/#annotate-starting-frame">annotate the starting frame</a>.</p>
+<p>Go ahead and launch the AGTG server.  Please allow ~5mins for the server to initialize.</p>
+<div class="admonition warning">
+<p class="admonition-title">AGTG Server Did Not Start</p>
+<p>If the AGTG server has not started after 5 minutes, refresh your browser and click the <strong>AI Segment Tool</strong> button again.</p>
+</div>
+<figure>
+            <img align="center" alt="AGTG Server" src="../../datasets/assets/annotations/automatic/launch-agtg-server.jpg" />
+            <figcaption>AGTG Server</figcaption>
+            </figure>
+<p>Once the AGTG server has started, go ahead and <a href="../../datasets/tutorials/annotations/automatic/#annotate-starting-frame">annotate the starting frame</a>.  Once the starting frame has been annotated, go ahead and <a href="../../datasets/tutorials/annotations/automatic/#propagate">propagate the annotations</a> throughout the rest of the frames.</p>
+<figure>
+<video autoplay="autoplay" loop="loop" muted="muted" playsinline="playsinline">
+<source src="../assets/workflows/AGTG-tutorial.mp4" type="video/mp4">
+AGTG Preview
+</video>
+
+<figcaption>AGTG Preview</figcaption>
+</figure>
 <figure>
             <img align="center" alt="AGTG Initial Prompts" src="../../datasets/assets/annotations/automatic/agtg-prompts.jpg" />
             <figcaption>AGTG Initial Prompts</figcaption>
-            </figure>
-<p>Once the starting frame has been annotate, go ahead and <a href="../../datasets/tutorials/annotations/automatic/#propagate">propagate the annotations</a> throughout the rest of the frames.</p>
-<figure>
-            <img align="center" alt="Propagation Process" src="../../datasets/assets/annotations/automatic/propagation-process.jpg" />
-            <figcaption>Propagation Process</figcaption>
             </figure>
 <p>Once the propagation completes, click "Save Annotations" to save the propagated annotations.</p>
 <figure>
             <img align="center" alt="Propagation Completed" src="../../datasets/assets/annotations/automatic/propagation-completed.jpg" />
             <figcaption>Propagation Completed</figcaption>
             </figure>
-<p>Repeat the steps for all the sequences in the dataset.  For the case of individual images, the same steps apply except there is no propagation step.  You can still use the AGTG feature to quickly annotate images as shown in <a href="../../datasets/tutorials/annotations/manual/#add-2d-annotations">Add 2D annotations</a>.</p>
+<div class="admonition note">
+<p class="admonition-title">Audit Annotations</p>
+<p>Run the video playback to browse through the generated annotations and verify that the generated annotations are correct.</p>
+<p>If an annotation was missed, you can quickly <a href="../../datasets/tutorials/annotations/manual/#add-2d-annotations">add the annotation</a> using the same process and click "Save AIGT Annotations" as shown.</p>
+<p><img alt="Add Missed Annotations" src="../../datasets/assets/annotations/automatic/add-missed-annotation.jpg" /></p>
+<p>For objects that were improperly annotated, you can <a href="../../datasets/tutorials/annotations/manual/#delete-2d-annotations">remove annotations</a>.  For annotations that require minor adjustments, EdgeFirst Studio has the features for <a href="../../datasets/tutorials/annotations/manual/#adjust-2d-annotations">adjusting annotations</a>.  Please click on the links as provided for further instructions on each of these features.</p>
+</div>
+<p>Repeat the steps for all the sequences in the dataset.  You can go back to the dataset sequences by pressing the back button on the top left corner.</p>
+<figure>
+            <img align="center" alt="AGTG Server" src="../../datasets/assets/annotations/automatic/back-to-gallery.jpg" />
+            <figcaption>AGTG Server</figcaption>
+            </figure>
+<p>For the case of individual images, the same steps apply except there is no propagation step.  You can still use the AGTG feature to quickly annotate images as shown in <a href="../../datasets/tutorials/annotations/manual/#add-2d-annotations">Add 2D annotations</a>.</p>
 <p>Now that you have annotated your dataset using the AGTG features in EdgeFirst Studio, audit your dataset to review the annotations and make any changes or corrections if necessary to the current annotations.</p>
 
 

@@ -1257,6 +1257,28 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#throughput-and-pipeline-overlap" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Throughput and pipeline overlap
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#power-monitoring" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Power monitoring
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#engine-sidecar-metadata" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -1401,7 +1423,7 @@
   <span class="md-ellipsis">
     
   
-    Kinara Ara-2
+    Kinara Ara240
   
 
     
@@ -1890,6 +1912,28 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#throughput-and-pipeline-overlap" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Throughput and pipeline overlap
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#power-monitoring" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Power monitoring
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#engine-sidecar-metadata" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2047,6 +2091,12 @@ sudo<span class="w"> </span>ldconfig
 </code></pre></div>
 <h3 id="per-layer-profiling">Per-layer profiling</h3>
 <p>Enable per-layer GPU profiling on a validation session with the <code>--layer-profile</code> flag — TensorRT's <code>IProfiler</code> callback reports execution time for every fused layer. Per-layer overhead is roughly 5–10%, so leave it off when measuring deployment latency and on when investigating a bottleneck.</p>
+<h3 id="throughput-and-pipeline-overlap">Throughput and pipeline overlap</h3>
+<p>TensorRT validation now keeps multiple frames in flight: the GPU works on frame N while frame N+1 is being captured and preprocessed, and detection outputs are read straight from GPU memory rather than copied back to the host first.</p>
+<p>End-to-end throughput roughly doubles compared to the previous single-frame-at-a-time approach — measured at ~277 <abbr title="Frames Per Second">FPS</abbr> on Jetson Orin Nano with YOLOv5n at 640×640 in MAXN_SUPER mode, up from ~150 <abbr title="Frames Per Second">FPS</abbr> previously bottlenecked on CPU image decoding. Detection accuracy is unchanged.</p>
+<p>The Perfetto trace gains per-frame <code>trt.h2d</code>, <code>trt.infer</code>, and <code>trt.d2h</code> tracks (host-to-device, TensorRT inference, device-to-host) measured with <abbr title="NVIDIA Compute Unified Device Architecture">CUDA</abbr> events, so GPU-side durations are accurate rather than host-side approximations. Falls back automatically on hardware that doesn't support the required GPU memory capabilities.</p>
+<h3 id="power-monitoring">Power monitoring</h3>
+<p>Jetson boards carry an on-board INA3221 power monitor, so the dashboard reports live power: the board-input rail plus its per-component breakdown (for example the CPU/GPU/SoC and <abbr title="Dynamic Random-Access Memory">DRAM</abbr> rails), each shown under its real name, and the session report adds a board-power line. The board total is counted once — on a multi-rail device that also exposes a board-total channel, the total is no longer double-added to its own components, which previously inflated a ~6.7 W reading to ~29 W on the Orin Nano.</p>
 <h3 id="engine-sidecar-metadata">Engine sidecar metadata</h3>
 <p>Compiled TensorRT engines do not carry the EdgeFirst decoder metadata that <abbr title="Open Neural Network Exchange">ONNX</abbr> <code>metadata_props</code> or <abbr title="TensorFlow Lite">TFLite</abbr> associated-files do. The profiler reads sidecars from the engine's parent directory:</p>
 <ul>

@@ -1951,6 +1951,10 @@
 <p>Press <code>q</code> to quit (disabled while typing into form fields). <code>Ctrl-C</code> always quits.</p>
 <h2 id="7-run-a-validation-session">7. Run a validation session</h2>
 <p>The profiler is operated against a Studio validation session. Both paths produce the same Studio session card and the same set of accuracy charts.</p>
+<div class="admonition warning">
+<p class="admonition-title">Validation sessions need a writable project</p>
+<p>Creating a validation session requires <strong>write access</strong> to the Studio project. You cannot validate against the read-only public <strong>Sample Project</strong> directly — first <a href="../../getting_started/copy_dataset/">copy its dataset</a> into a project you own (and add your model), then create the training and validation session there.</p>
+</div>
 <h3 id="path-a-start-from-the-profiler-recommended-for-new-users">Path A — start from the profiler (recommended for new users)</h3>
 <p>Press <strong>F2</strong> to switch to the Studio screen. If you are not signed in, the login form appears first.</p>
 <figure>
@@ -1976,19 +1980,19 @@
 </thead>
 <tbody>
 <tr>
-<td><span style="color: #4caf50">●</span> Green</td>
+<td>🟢 Green</td>
 <td>Deployable</td>
 <td>Format recognized and all runtime requirements met on this host.</td>
 <td><code>.onnx</code> (Generic <abbr title="Open Neural Network Exchange">ONNX</abbr>), <code>.tflite</code> (Generic <abbr title="TensorFlow Lite">TFLite</abbr>)</td>
 </tr>
 <tr>
-<td><span style="color: #ff9800">●</span> Orange</td>
+<td>🟠 Orange</td>
 <td>Conditions not confirmed</td>
 <td>Known deployable format for a specific target, but the required hardware, runtime, or accelerator was not detected.</td>
 <td><code>.hef</code> (Hailo-8L runtime absent), <code>.dvm</code> (NXP Ara240 not present), <code>.engine</code> (no <abbr title="NVIDIA Compute Unified Device Architecture">CUDA</abbr> host), <code>.imx95.tflite</code> (different SoC)</td>
 </tr>
 <tr>
-<td><span style="color: #f44336">●</span> Red</td>
+<td>🔴 Red</td>
 <td>Not deployable</td>
 <td>Supporting file, archive, or unrecognized format — not a model the profiler can run directly.</td>
 <td><code>labels.txt</code>, <code>_saved_model.zip</code>, <code>.tensorrt.zip</code></td>
@@ -2000,11 +2004,13 @@
             <img align="center" alt="F2 Studio — confirming Validate against a model artifact" src="../assets/tui-launch-validate.png" />
             <figcaption>F2 Studio — confirming Validate against a model artifact</figcaption>
             </figure>
+<p>Before the run starts, a <strong>launch dialog</strong> appears. For <abbr title="Open Neural Network Exchange">ONNX</abbr> models it first asks which execution provider to use (CPU, <abbr title="NVIDIA Compute Unified Device Architecture">CUDA</abbr> if available, or CoreML on macOS). Then it shows four per-stage depth sliders — Capture, Preprocess, Inference, and Postprocess — each defaulting to <strong>Auto</strong>, which resolves to the value measured fastest for your model, runtime, and host. Press <code>Enter</code> to accept the Auto defaults and start immediately, or <code>c</code> to customize the depths. The dialog warns if a platform constraint (such as the i.MX 95 Neutron single-bind delegate) holds a stage to a single thread.</p>
 <p>The F4 dashboard streams iteration-level latency, system metrics, and per-stage timings while the run executes:</p>
 <figure>
             <img align="center" alt="EdgeFirst Profiler — F4 dashboard during a run" src="../assets/tui-profiler.png" />
             <figcaption>EdgeFirst Profiler — F4 dashboard during a run</figcaption>
             </figure>
+<p>The system-metrics row includes live <strong>power draw</strong> and on-board <strong>temperatures</strong> wherever the hardware exposes a sensor. The profiler shows a power meter only for the rails it can actually read — the CPU, GPU, Neural Engine, and <abbr title="Dynamic Random-Access Memory">DRAM</abbr> rails on Apple Silicon, and the real board rails on a Linux device with a supported power monitor (for example an NVIDIA Jetson's board-input rail and its per-component breakdown). On a target with no power sensor, no power meters are shown — rather than a row pinned at 0 W — and the session report notes that power is unavailable. Temperatures are read from the platform's thermal zones and <code>hwmon</code> sensors, so the readout reflects what each board actually measures.</p>
 <p>When the run finishes, a completion summary shows the headline numbers and the path to the trace file. The artifacts upload to Studio automatically and the cloud validator is triggered.</p>
 <div class="highlight"><pre><span></span><code>╔═ Profiling Complete ═════════════════════════════╗
 ║                                                  ║

@@ -1251,6 +1251,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#neutron-inference-modes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Neutron inference modes
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#per-tick-neutron-profiling" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -1351,7 +1362,7 @@
   <span class="md-ellipsis">
     
   
-    Kinara Ara-2
+    Kinara Ara240
   
 
     
@@ -1806,6 +1817,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#neutron-inference-modes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Neutron inference modes
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#per-tick-neutron-profiling" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -1921,7 +1943,7 @@
 <div class="highlight"><pre><span></span><code>edgefirst-profiler<span class="w"> </span>--version
 </code></pre></div>
 <h2 id="delegate-selection">Delegate selection</h2>
-<p>The profiler picks a <abbr title="TensorFlow Lite">TFLite</abbr> delegate automatically — and you can override it on the validation session if needed. Delegate values:</p>
+<p>When launching the profiler with a <abbr title="TensorFlow Lite">TFLite</abbr> model on i.MX 95, a <strong>delegate selection dialog</strong> appears in the TUI. The dialog works like the <abbr title="Open Neural Network Exchange">ONNX</abbr> execution-provider modal — the user picks Neutron, VX, or CPU/XNNPACK explicitly rather than relying on auto-detection. Models that require the Neutron delegate (detected from the model file) skip the general dialog and go straight to a Neutron-specific picker. For headless use, the <code>--delegate</code> CLI flag bypasses the dialog entirely.</p>
 <table>
 <thead>
 <tr>
@@ -1949,6 +1971,16 @@
 </tbody>
 </table>
 <p>Auto-detection reads <code>/sys/firmware/devicetree/base/compatible</code> to identify i.MX 95 and pre-populate the delegate path in the TUI's profile configuration screen.</p>
+<h2 id="neutron-inference-modes">Neutron inference modes</h2>
+<p>The Neutron delegate supports two inference modes. The profiler detects which mode is available automatically — profiling works correctly in both.</p>
+<p><strong><abbr title="Direct Memory Access">DMA</abbr>-BUF zero-copy mode</strong> (default when the kernel zero-copy patch is present, or <code>NEUTRON_ENABLE_ZERO_COPY=1</code>)</p>
+<p>The delegate binds a single <abbr title="Direct Memory Access">DMA</abbr>-BUF tensor shared between the CPU and the <abbr title="Neural Processing Unit">NPU</abbr>. One inference slot runs at a time; preprocessing serializes with inference. This is the original Neutron inference mode.</p>
+<p><strong>CPU-staging mode</strong> (activated automatically when the kernel zero-copy patch is absent, or <code>NEUTRON_ENABLE_ZERO_COPY=0</code>)</p>
+<p>No <abbr title="Direct Memory Access">DMA</abbr>-BUF binding is used. Up to 4 independent inference slots run in parallel, giving significantly higher throughput. The profiler sets the inference depth to 4 automatically in this mode. Measured throughput on i.MX 95 Pro running YOLOv5n at 640×640: ~73 <abbr title="Frames Per Second">FPS</abbr> at depth 1, ~97 <abbr title="Frames Per Second">FPS</abbr> at depth 4.</p>
+<div class="admonition note">
+<p class="admonition-title">Fallback from zero-copy</p>
+<p>Previously, running a Neutron model on a board without the kernel zero-copy patch caused a crash on the first frame. The profiler now detects the missing patch and falls back to CPU-staging automatically.</p>
+</div>
 <h2 id="per-tick-neutron-profiling">Per-tick Neutron profiling</h2>
 <p>When both conditions below are met, the profiler reports <strong>per-tick</strong> timing — every <abbr title="Neural Processing Unit">NPU</abbr> kernel (<code>Conv2DDenseTT</code>, <code>AddTT</code>, …) appears as its own slice in the Studio trace view:</p>
 <ol>

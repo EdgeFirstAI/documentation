@@ -1600,6 +1600,10 @@
 </ol>
 <h2 id="validation-sessions-end-to-end">Validation sessions, end to end</h2>
 <p>A validation session is the unit of work that links the device, the model, the dataset, and the Studio results. Every session has a short ID like <code>v-abc123</code>. The session ID is the only piece of state you need to remember.</p>
+<div class="admonition warning">
+<p class="admonition-title">Validation sessions need a writable project</p>
+<p>Creating a validation session requires <strong>write access</strong> to the Studio project. You cannot validate against the read-only public <strong>Sample Project</strong> directly — first <a href="../../getting_started/copy_dataset/">copy its dataset</a> into a project you own (and add your model), then create the training and validation session there.</p>
+</div>
 <pre class="mermaid"><code>sequenceDiagram
     participant Dev as You
     participant Pro as edgefirst-profiler&lt;br/&gt;(on target)

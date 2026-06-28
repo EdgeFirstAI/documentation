@@ -1279,10 +1279,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#pipeline-depth" class="md-nav__link">
+  <a href="#inference-depth" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Pipeline depth
+        Inference depth
       
     </span>
   </a>
@@ -1351,7 +1351,7 @@
   <span class="md-ellipsis">
     
   
-    Kinara Ara-2
+    Kinara Ara240
   
 
     
@@ -1806,10 +1806,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#pipeline-depth" class="md-nav__link">
+  <a href="#inference-depth" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Pipeline depth
+        Inference depth
       
     </span>
   </a>
@@ -1920,6 +1920,7 @@
 <div class="highlight"><pre><span></span><code>edgefirst-profiler<span class="w"> </span>--version
 </code></pre></div>
 <h2 id="delegate-selection">Delegate selection</h2>
+<p>When launching the profiler with a <abbr title="TensorFlow Lite">TFLite</abbr> model on i.MX 8M Plus, a <strong>delegate selection dialog</strong> appears in the TUI, letting users pick VX or CPU/XNNPACK explicitly. For headless use, the <code>--delegate</code> CLI flag bypasses the dialog; the <code>auto</code> value in the table below still applies in that case.</p>
 <table>
 <thead>
 <tr>
@@ -1946,8 +1947,8 @@
 </tr>
 </tbody>
 </table>
-<h2 id="pipeline-depth">Pipeline depth</h2>
-<p>The VSI delegate supports <strong>only one</strong> in-flight inference at a time. The profiler detects this and clamps <code>--pipeline-depth</code> down to a single inference slot — CPU stages (decode, postprocess, encode) still overlap with the single inference, but two inferences cannot run concurrently on the <abbr title="Neural Processing Unit">NPU</abbr>.</p>
+<h2 id="inference-depth">Inference depth</h2>
+<p>The VSI delegate supports <strong>only one</strong> in-flight inference at a time. The profiler detects this and clamps <code>--inference-depth</code> down to a single inference slot — CPU stages (capture, postprocess, encode) still overlap with the single inference, but two inferences cannot run concurrently on the <abbr title="Neural Processing Unit">NPU</abbr>.</p>
 <p>The Studio trace view makes this serialization visible — back-to-back invoke slices touch but never overlap.</p>
 <p>See the <a href="../../concepts/pipelining/">Pipelining</a> concept page for the full backend table, the sequential vs. pipelined mental model, and how each mode appears in the trace viewer.</p>
 <h2 id="verifying-the-install">Verifying the install</h2>

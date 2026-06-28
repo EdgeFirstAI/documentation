@@ -1784,6 +1784,10 @@
 <h1 id="validation-from-edgefirst-studio">Validation from EdgeFirst Studio</h1>
 <p>A validation session is created from the Studio web UI; the session ID is then handed to the profiler on the target device, which downloads the model and dataset, runs the pipeline, and publishes the artifacts back to Studio for accuracy and timing analysis.</p>
 <h2 id="1-create-a-validation-session-in-studio">1. Create a validation session in Studio</h2>
+<div class="admonition warning">
+<p class="admonition-title">Validation sessions need a writable project</p>
+<p>Creating a validation session requires <strong>write access</strong> to the Studio project. You cannot validate against the read-only public <strong>Sample Project</strong> directly — first <a href="../../../getting_started/copy_dataset/">copy its dataset</a> into a project you own (and add your model), then create the training and validation session there.</p>
+</div>
 <p>From the Model Experiments dashboard, open the training session whose artifact you want to validate, then click <strong>New Validation Session</strong>. Choose <strong>User Managed</strong> as the validation type.</p>
 <figure>
             <img align="center" alt="EdgeFirst Studio — creating a user-managed validation session" src="../../assets/studio-create-session.png" />
@@ -1811,7 +1815,7 @@
 <ol>
 <li>Resolves the session against Studio.</li>
 <li>Downloads the model artifact and dataset partition into the cache (<code>~/.cache/edgefirst-profiler/</code> on Linux, <code>~/Library/Caches/edgefirst-profiler/</code> on macOS).</li>
-<li>Runs the full pipeline (decode → preprocess → inference → postprocess → <abbr title="Non-Maximum Suppression">NMS</abbr>) over every image in the dataset.</li>
+<li>Runs the full pipeline (capture → preprocess → inference → postprocess → <abbr title="Non-Maximum Suppression">NMS</abbr>) over every image in the dataset.</li>
 <li>Writes <code>predictions.parquet</code> and <code>trace.pftrace</code> into the cached session directory.</li>
 <li>Uploads both artifacts to Studio and triggers the cloud validator.</li>
 </ol>
@@ -1832,7 +1836,7 @@ Fetching validation session v-1ce9...
   Pipeline Stage Breakdown
   -----------------------------------------------------------------------
   Stage                Mean   Median      p95      p99      Min      Max
-  image_decode        2.7ms    2.6ms    4.2ms    6.0ms    477µs   22.2ms
+  image_capture       2.7ms    2.6ms    4.2ms    6.0ms    477µs   22.2ms
   preprocess          1.1ms    766µs    2.7ms    8.8ms     89µs   29.2ms
   inference          33.4ms   31.8ms   40.6ms   47.1ms   28.4ms    1.35s
   ...
@@ -1863,9 +1867,9 @@ Validator job submitted (job_id: 144e959d-...)
 <h2 id="4-open-the-trace-in-studio">4. Open the trace in Studio</h2>
 <p>Click <strong>Open Trace</strong> on the session card to load the published <code>trace.pftrace</code> in Studio's trace viewer. The trace contains:</p>
 <ul>
-<li>Pipeline-stage spans (decode / preprocess / inference / postprocess / <abbr title="Non-Maximum Suppression">NMS</abbr>).</li>
+<li>Pipeline-stage spans (capture / preprocess / inference / postprocess / <abbr title="Non-Maximum Suppression">NMS</abbr>).</li>
 <li>Per-operator timing for the backend used (ORT nodes, <abbr title="TensorFlow Lite">TFLite</abbr> ops, Neutron ticks, TensorRT layers, Hailo contexts).</li>
-<li>System-metric counters (CPU%, RSS, temperature).</li>
+<li>System-metric counters (CPU%, RSS, temperatures, and board power where a sensor is present).</li>
 </ul>
 <figure>
             <img align="center" alt="EdgeFirst Studio — trace viewer: pipeline-stage spans, per-operator timing, and system-metric counters" src="../../assets/studio-trace-viewer.png" />

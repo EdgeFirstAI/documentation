@@ -1517,7 +1517,7 @@
 
 
 <h1 id="profiler">Profiler</h1>
-<p>The <strong>EdgeFirst Profiler</strong> is the on-target measurement engine for the EdgeFirst Studio platform. It runs the complete vision pipeline — decode, preprocess, inference, postprocess, <abbr title="Non-Maximum Suppression">NMS</abbr> — on the hardware your model will deploy to, then publishes per-image predictions and a detailed timing trace to EdgeFirst Studio where accuracy metrics, charts, and trace visualizations are produced.</p>
+<p>The <strong>EdgeFirst Profiler</strong> is the on-target measurement engine for the EdgeFirst Studio platform. It runs the complete vision pipeline — capture, preprocess, inference, postprocess, <abbr title="Non-Maximum Suppression">NMS</abbr> — on the hardware your model will deploy to, then publishes per-image predictions and a detailed timing trace to EdgeFirst Studio where accuracy metrics, charts, and trace visualizations are produced.</p>
 <p>For public benchmarks, explore the <strong>EdgeFirst Model Zoo on Hugging Face</strong> at <a href="https://huggingface.co/spaces/EdgeFirst/Models">https://huggingface.co/spaces/EdgeFirst/Models</a>. We publish public benchmarks and metrics there across Ultralytics and other community models so you can compare your validation results against known baselines.</p>
 <figure>
             <img align="center" alt="EdgeFirst Profiler — F4 dashboard during a validation run" src="assets/tui-profiler.png" />
@@ -1560,7 +1560,7 @@
 <li><strong><a href="quickstart/">Quick Start</a></strong> — install the profiler, sign in to Studio, run your first validation session in under fifteen minutes.</li>
 <li><strong><a href="installation/">Installation</a></strong> — supported targets, per-target dependencies, and target-specific quirks.</li>
 <li><strong><a href="studio/">EdgeFirst Studio Integration</a></strong> — connecting to Studio, validation from Studio, and validation from the profiler.</li>
-<li><strong><a href="concepts/pipelining/">Pipelining</a></strong> — the multi-stage measurement pipeline, the <code>--pipeline-depth</code> flag, and how each backend constrains it. (Concepts deep-dive.)</li>
+<li><strong><a href="concepts/pipelining/">Pipelining</a></strong> — the multi-stage measurement pipeline, the <code>--inference-depth</code> flag, and how each backend constrains it. (Concepts deep-dive.)</li>
 </ul>
 
 

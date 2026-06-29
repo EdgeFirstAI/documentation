@@ -3442,7 +3442,7 @@ edgefirst-client<span class="w"> </span>update-dimensions<span class="w"> </span
 </ul>
 <h2 id="snapshots">Snapshots</h2>
 <p>Dataset snapshots preserve a complete copy of raw sensor data (<abbr title="Binary container format for robotics log data">MCAP</abbr> files), directories, or EdgeFirst Dataset Format data at a specific point in time. They can be restored to create new datasets with optional automatic annotation (AGTG) and depth map generation.</p>
-<p>For detailed information about snapshots, see: ../../studio/snapshots.md</p>
+<p>For detailed information about snapshots, see: <a href="../../../studio/snapshots/">Dataset Snapshots</a>.</p>
 <h3 id="snapshots_1"><code>snapshots</code></h3>
 <p>List all snapshots available to the authenticated user.</p>
 <p><strong>edgefirst-client snapshots</strong></p>
@@ -3565,7 +3565,7 @@ edgefirst-client<span class="w"> </span>restore-snapshot<span class="w"> </span>
 <span class="w">    </span>--dataset-name<span class="w"> </span><span class="s2">&quot;Field Test Restore&quot;</span><span class="w"> </span>--monitor
 </code></pre></div>
 <p><strong>Note:</strong> Restoration creates a new dataset. The original snapshot remains unchanged and can be restored multiple times. AGTG processing runs asynchronously — use <code>--monitor</code>, or check task status, for completion.</p>
-<p>For more information about AGTG, see: ../../datasets/tutorials/annotations/automatic.md</p>
+<p>For more information about AGTG, see: <a href="../../../studio/agtg/">Automatic Ground Truth Generation</a>.</p>
 <h3 id="delete-snapshot"><code>delete-snapshot</code></h3>
 <p>Delete a snapshot permanently. This operation cannot be undone.</p>
 <p><strong>edgefirst-client delete-snapshot</strong> <em>SNAPSHOT_ID</em></p>

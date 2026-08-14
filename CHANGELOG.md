@@ -9,6 +9,16 @@ Changes are grouped into dated release-candidate (`-rc`) snapshots by the date t
 corresponding pull request was opened. None of these snapshots are part of a tagged
 release yet; they are listed newest first.
 
+### [2026-08-14-rc]
+
+#### Fixed
+
+- **Host section no longer documents a username field** (`models/metadata.md`):
+  the schema-v2 `host.username` field (e.g. `john.doe`) has been replaced with
+  `host.organization` to match the ModelPack and Ultralytics trainer changes —
+  training sessions and organization names are safe to embed in `edgefirst.json`,
+  but individual usernames are not.
+
 ### [2026-06-24-rc]
 
 #### Added

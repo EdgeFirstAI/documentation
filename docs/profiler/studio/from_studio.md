@@ -41,7 +41,7 @@ The profiler:
 
 1. Resolves the session against Studio.
 2. Downloads the model artifact and dataset partition into the cache (`~/.cache/edgefirst-profiler/` on Linux, `~/Library/Caches/edgefirst-profiler/` on macOS).
-3. Runs the full pipeline (Image Load → Pre-processing → Inference → Model Decoder → Materialize Masks → Logger) over every image in the dataset. The Materialize Masks stage only does work for segmentation models.
+3. Runs the full pipeline (Image Load → Pre-processing → Inference → Model Decoder → Materialize Masks → Logger) over every image in the dataset. In the timing tables these stages are labeled `capture`, `preprocess`, `inference`, `model_decode`, and `materialize_masks`; the Logger stage records results and is not timed as a pipeline stage. Materialize Masks only does work for segmentation models.
 4. Writes `predictions.parquet` and `trace.pftrace`, then computes the COCO accuracy metrics on the device itself — see [Validation and Metrics](../concepts/validation.md).
 5. Publishes the full artifact set to the session: predictions, trace, `metrics.yaml`, `platform.yaml`, and the chart JSONs.
 
@@ -78,7 +78,7 @@ Results published to Studio session v-1ce9
 View details: https://edgefirst.studio/...
 ```
 
-The Pipeline Stage Breakdown shows the same data that drives the F4 TUI dashboard, formatted as a static table. The report also prints the local trace path; the same file is uploaded to Studio, where the full-resolution trace viewer lives in the validation session card. Warnings — corrupt images, decoder errors, skipped frames — print to the console by default; raise the verbosity with `-v`, `-vv`, or `-vvv` for info, debug, or trace detail.
+The Pipeline Stage Breakdown shows the same data that drives the F4 TUI dashboard, formatted as a static table. The transcript above is abbreviated (`...` lines) — the full report also prints the local path of the trace file; the same file is uploaded to Studio, where the full-resolution trace viewer lives in the validation session card. Warnings — corrupt images, decoder errors, skipped frames — print to the console by default; raise the verbosity with `-v`, `-vv`, or `-vvv` for info, debug, or trace detail.
 
 !!! note "System resource samples need a supported platform"
     The **System Resources** rows are sampled from `/proc`, `/sys`, and hwmon on Linux, including board power on devices with a supported power sensor. Apple Silicon Macs report CPU, GPU, ANE, and DRAM power. On other hosts, unsupported gauges are reported as unavailable.

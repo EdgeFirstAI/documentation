@@ -41,7 +41,7 @@ The Studio launch form drives the same dispatch path without the CLI. Pick the m
 
 ## Choosing hardware
 
-The Hardware menu offers a cost-optimized default plus a set of dedicated machines named for the EC2 instance they run on. Each named class owns one instance of exactly one type and nothing else shares that machine, so throughput measured on it is comparable between runs and against other models.
+The Hardware menu offers a cost-optimized default plus a set of dedicated machines named for the EC2 instance they run on. The class name is the hyphenated form of the EC2 instance type — class `c8g-12xlarge` runs on a `c8g.12xlarge` instance — and it is the hyphenated name that `--instance-class` and the `INSTANCE_CLASS` environment variable accept; session descriptions quote the canonical dotted type. Each named class owns one instance of exactly one type and nothing else shares that machine, so throughput measured on it is comparable between runs and against other models.
 
 | Class | Hardware |
 | ----- | -------- |

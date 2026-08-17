@@ -9,7 +9,23 @@ Changes are grouped into dated release-candidate (`-rc`) snapshots by the date t
 corresponding pull request was opened. None of these snapshots are part of a tagged
 release yet; they are listed newest first.
 
-### [2026-08-14-rc]
+### [2026-08-17-rc]
+
+#### Added
+
+- **Validation and Metrics concept page** (`profiler/concepts/validation.md`): new page documenting on-agent validation as it has worked since profiler 1.10.0 — `--validation off|after|during` and its auto-resolution, ground-truth sources, the `metrics.yaml` document structure (COCO summary metrics, per-class rows, `timing.trace`, `timing.concurrency`, `system`, `sahi`), re-scoring with `--predictions`/`--reprocess`/`--trace`, the `report` command, and the `publish` two-step route for memory-constrained segmentation targets.
+- **Tiled Inference (SAHI) concept page** (`profiler/concepts/sahi.md`): new page covering `--sahi`, `--sahi-overlap`, `--sahi-convert`, the dashboard `t` toggle, the detection-only constraint, overlap resolution (model metadata with a 10% fallback since 1.16.0), the per-image tile metrics, and the 1.16.1 advisory that earlier tiled runs with skipped frames understated accuracy.
+- **Container Images installation page** (`profiler/installation/docker.md`): new page with the GHCR tag matrix (`core`/`onnx`/`tflite`/`imx95`/`imx8mp`/`cuda`), per-target device flags, the `/config` volume, and output-ownership behavior; cross-linked from the Linux, i.MX, and Jetson pages.
+- **Cloud Runs page** (`profiler/studio/cloud.md`): new page for the `dispatch` command, the Studio launch form's model picker and Hardware menu, the EC2-named instance classes, dedicated capacity, the default-class throughput caveat, and `platform.yaml` as the canonical machine record.
+- All four pages registered in `profiler/.nav.yml`; new profiler-domain terms added to `docs/assets/known_words.txt` (also sorted and de-duplicated).
+
+#### Changed
+
+- **Profiler section updated from its 1.7.0 baseline to profiler 1.16.1** (all pages under `docs/profiler/`): the profiler computes COCO detection and segmentation metrics on-agent and publishes them to Studio — the section's pages and both mermaid diagrams no longer describe a separate cloud validator producing the metrics (`index.md`, `quickstart.md`, `studio/index.md`, `studio/from_studio.md`, `studio/from_profiler.md`).
+- **Pipelining page rewritten for the current depth model** (`profiler/concepts/pipelining.md`): five pipeline stages including Materialize Masks, core-aware CPU inference depths (up to 16 via `--inference-depth`), corrected per-backend auto-depth table (Orin Nano pins, RPi5+Hailo 4, CoreML GPU 3), the 1.16.1 preprocess-depth correction, capture-stage bottleneck reporting (`capture_bound`, compute-bottleneck fields), measured worker-concurrency verdicts, `--serialize-core`, and a summary of the TUNING methodology.
+- **Quickstart brought to the 1.16.1 command surface** (`profiler/quickstart.md`): all six subcommands, the five-slider launch dialog with the `s` and `t` shortcuts, the Docker install route, console warnings and `-v/-vv/-vvv`, and the clickable/copyable Studio link on completion.
+- **Installation pages corrected per target** (`profiler/installation/*.md`): CUDA on Jetson/L4T replaces the stale "ONNX on Jetson is CPU-only" guidance; the removed CoreML compile cache is no longer documented on macOS; delegate tables gain `gpu` and the `qnn` family (with `qnn-dsp` replacing `qnn-cpu`); the Raspberry Pi page documents the sudo elevation flow and `--output-owner`; the Kinara page leads troubleshooting with the elevated-access requirement and adds the per-layer NPU breakdown; stale `--version 1.0.1` install pins removed; TFLite runtime library corrected to `libtensorflow-lite.so` with `TFLITE_LIBRARY_PATH`; Hailo batching documented as under development (runs per-frame today).
+- **Studio integration pages corrected** (`profiler/studio/*.md`): the removed `--no-validate` flag replaced with `--validation off`; token-based CI authentication (`--token`/`--url`, `TOKEN`/`URL`) documented; `--training-session` artifact listing behavior corrected; the `publish` command documented; session re-run flag semantics, dataset-cache locking, and re-scoring workflows added.
 
 #### Fixed
 

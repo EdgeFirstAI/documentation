@@ -41,13 +41,19 @@ The recommended convenience path is `pip`. The wheel ships the same native binar
     irm https://raw.githubusercontent.com/EdgeFirstAI/profiler-cli/main/install.ps1 | iex
     ```
 
+=== "Docker"
+
+    ```sh
+    docker pull ghcr.io/edgefirstai/profiler-cli:onnx
+    ```
+
 Confirm the install:
 
 ```sh
 edgefirst-profiler --version
 ```
 
-For per-target details (NPU delegates, runtime libraries, hardware-specific quirks) see the [installation guides](installation/index.md).
+For per-target details (NPU delegates, runtime libraries, hardware-specific quirks) see the [installation guides](installation/index.md). On the NXP i.MX targets the container images are often the shortest path, because they bundle the vendor delegate and the TFLite runtime — see [Container Images](installation/docker.md).
 
 ## 5. Sign in to EdgeFirst Studio (profiler CLI)
 
@@ -59,7 +65,7 @@ The interactive prompt asks for **server**, **username**, and **password**. The 
 
 ## 6. Launch the TUI
 
-Running `edgefirst-profiler` with no subcommand launches the interactive terminal UI. Any explicit subcommand — `validate`, `login`, `publish`, `report` — bypasses the TUI and runs headlessly.
+Running `edgefirst-profiler` with no subcommand launches the interactive terminal UI. Any explicit subcommand — `validate`, `login`, `report`, `publish`, `dispatch`, `system-info` — bypasses the TUI and runs headlessly.
 
 ```sh
 edgefirst-profiler
@@ -113,7 +119,18 @@ Select an artifact and choose **Validate**. The profiler creates a new validatio
 
 {{ figure("assets/tui-launch-validate.png", "F2 Studio — confirming Validate against a model artifact") }}
 
-Before the run starts, a **launch dialog** appears. For ONNX models it first asks which execution provider to use (CPU, CUDA if available, or CoreML on macOS). Then it shows four per-stage depth sliders — Capture, Preprocess, Inference, and Postprocess — each defaulting to **Auto**, which resolves to the value measured fastest for your model, runtime, and host. Press `Enter` to accept the Auto defaults and start immediately, or `c` to customize the depths. The dialog warns if a platform constraint (such as the i.MX 95 Neutron single-bind delegate) holds a stage to a single thread.
+Before the run starts, a **launch dialog** appears. For ONNX models it first asks which execution provider to use — CPU, one of the three CoreML compute units on macOS, CUDA where an NVIDIA GPU is present, or the Qualcomm Hexagon HTP provider on Android. Then it shows five per-stage depth sliders — Capture, Preprocess, Inference, Postprocess, and Mask — each defaulting to **Auto**, which resolves to the value measured fastest for your model, runtime, and host.
+
+Four keys start the run:
+
+| Key | Effect |
+|-----|--------|
+| `Enter` | Launch immediately with Auto depths |
+| `c` | Open the sliders and pin individual stages |
+| `s` | Serialized-core preset — every core stage runs one frame at a time, for contention-free per-frame latency |
+| `t` | Toggle SAHI tiled inference on or off (shown as `Tiling: on/off`) |
+
+The dialog warns if a platform constraint (such as the i.MX 95 Neutron single-bind delegate) holds a stage to a single thread. See [Pipelining](concepts/pipelining.md) for what each stage does and [Tiled Inference (SAHI)](concepts/sahi.md) for the tiling toggle.
 
 The F4 dashboard streams iteration-level latency, system metrics, and per-stage timings while the run executes:
 
@@ -121,7 +138,7 @@ The F4 dashboard streams iteration-level latency, system metrics, and per-stage 
 
 The system-metrics row includes live **power draw** and on-board **temperatures** wherever the hardware exposes a sensor. The profiler shows a power meter only for the rails it can actually read — the CPU, GPU, Neural Engine, and DRAM rails on Apple Silicon, and the real board rails on a Linux device with a supported power monitor (for example an NVIDIA Jetson's board-input rail and its per-component breakdown). On a target with no power sensor, no power meters are shown — rather than a row pinned at 0 W — and the session report notes that power is unavailable. Temperatures are read from the platform's thermal zones and `hwmon` sensors, so the readout reflects what each board actually measures.
 
-When the run finishes, a completion summary shows the headline numbers and the path to the trace file. The artifacts upload to Studio automatically and the cloud validator is triggered.
+When the run finishes, the profiler scores the predictions against the session's ground truth, writes `metrics.yaml` and the charts beside the trace, and uploads the whole set to Studio. A completion summary then shows the headline numbers and the path to the trace file.
 
 ```text
 ╔═ Profiling Complete ═════════════════════════════╗
@@ -139,6 +156,8 @@ When the run finishes, a completion summary shows the headline numbers and the p
 ╚══════════════════════════════════════════════════╝
 ```
 
+For a published run the popup also carries the Studio link for the session, widened to fit the full address. Press `c` to copy that link to the system clipboard rather than selecting it by hand. The same link printed by a CLI run renders as a real clickable hyperlink in terminals that support it.
+
 For the full walkthrough see [Validation from the Profiler](studio/from_profiler.md).
 
 ### Path B — start from Studio
@@ -149,18 +168,23 @@ Create a user-managed validation session in the Studio web UI ([instructions](st
 edgefirst-profiler validate --session-id v-1ce9
 ```
 
-The profiler runs headlessly, prints progress bars for download/inference/upload, emits a formatted **Session Report** to stdout, and publishes results to Studio when the run completes.
+The profiler runs headlessly, prints progress bars for download/inference/upload, scores the run, emits a formatted **Session Report** to stdout, and publishes the results to Studio when the run completes.
+
+Warnings — corrupt images, decoder errors, skipped frames — print to the console as the run proceeds, so a run that quietly drops frames says so at the time. Add `-v`, `-vv`, or `-vvv` to raise the console verbosity to info, debug, or trace.
 
 ## 8. View the results in Studio
 
-Both paths land you at the same place: the validation session card in EdgeFirst Studio. The card shows progress while the cloud validator runs, then surfaces the accuracy charts and trace viewer when it completes.
+Both paths land you at the same place: the validation session card in EdgeFirst Studio. The card shows progress while the run is under way, then surfaces the accuracy charts and trace viewer the profiler published when it finished.
 
 {{ figure("assets/studio-trace-viewer.png", "EdgeFirst Studio — trace viewer on a completed validation session, showing pipeline stages and per-operator timing") }}
 
-See [Object Detection Metrics](../models/validation/metrics/detection/index.md) and [Segmentation Metrics](../models/validation/metrics/segmentation.md) for the metrics reference.
+The same numbers are on the target as well: every run writes `metrics.yaml` next to the trace and prints the metric tables to the console, so you do not have to open Studio to read the result. See [Validation and Metrics](concepts/validation.md) for what that document holds, and [Object Detection Metrics](../models/validation/metrics/detection/index.md) and [Segmentation Metrics](../models/validation/metrics/segmentation.md) for the metrics reference.
 
 ## Next steps
 
 - **Profile on edge hardware.** The convenience install path works on desktop hosts and most target boards. Embedded targets with NPU/GPU acceleration have a few extra knobs — pick your target from the [installation guides](installation/index.md).
 - **Pick the right Studio path.** [Validation from Studio](studio/from_studio.md) (session created in the web UI) versus [Validation from the Profiler](studio/from_profiler.md) (session created from the TUI).
+- **Validate without Studio.** A local model, a directory of images, and a ground-truth file are enough for a full accuracy run — see [Validation and Metrics](concepts/validation.md).
+- **Run in the cloud.** Hand a training session and an artifact to `dispatch` and pick the machine it runs on — see [Cloud Runs](studio/cloud.md).
+- **Tune the pipeline.** The per-stage depths are measured defaults, not universal ones — see [Pipelining](concepts/pipelining.md) if you are running on hardware we have not measured or alongside another workload.
 - **Connect to a different Studio.** See [Connecting to EdgeFirst Studio](studio/connecting.md) for `test` / `stage` / `saas` server selection and headless credential handling.

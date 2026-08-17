@@ -45,14 +45,16 @@ The bare `--provider coreml` flag is no longer accepted. Pass one of the three e
 | Flag | Compute unit | Notes |
 | ---- | ------------ | ----- |
 | `--provider coreml-cpu` | CoreML CPU kernels | Good baseline; no GPU or ANE scheduling overhead |
-| `--provider coreml-gpu` | Metal Performance Shaders, CPU fallback | Best throughput for GPU-heavy models. Auto inference depth: **3** (measured knee — ~427 FPS at depth 2, ~476 FPS at depth 3, ~466 FPS at depth 4) |
-| `--provider coreml-ane` | Apple Neural Engine, CPU fallback only | Auto inference depth: **2** (ANE serializes internally; only preprocess/postprocess overlap benefits from the extra slot) |
+| `--provider coreml-gpu` | Metal Performance Shaders, CPU fallback | Best throughput for GPU-heavy models. Auto inference depth: **3**, the only CoreML provider with a pinned platform default (measured knee — ~427 FPS at depth 2, ~476 FPS at depth 3, ~466 FPS at depth 4) |
+| `--provider coreml-ane` | Apple Neural Engine, CPU fallback only | Uses the generic auto inference depth (2) — the ANE serializes device work internally, so deeper pipelines mainly buy preprocess overlap |
 
 **In the TUI:** the launch-time dialog presents a navigable list of providers — CPU, CoreML CPU, CoreML GPU, CoreML ANE — instead of the previous fixed two-key prompt. Navigate with ↑/↓ and press Enter to confirm, or press the number key shown next to the row.
 
-The CoreML EP caches compiled subgraphs at `~/Library/Caches/edgefirst-profiler/coreml/`. The first run of a given model is slower while compilation happens; subsequent runs are warm.
+The `--provider qnn-htp` option also parses on macOS, but it is Android-only — on any non-Android host the run falls back to the CPU provider and says so.
 
-CoreML coverage is partial — operators not supported by the selected compute unit fall back to CPU within the same graph. Studio's trace view shows exactly which ops ran where.
+The CoreML model is compiled fresh each run; this one-time compile happens during session setup and does not affect the measured inference timings.
+
+CoreML coverage is partial — operators not supported by the selected compute unit fall back to CPU within the same graph. Studio's trace view shows exactly which ops ran where; the per-operation device-placement diagnostics are no longer printed to the terminal.
 
 ## Verifying the install
 
@@ -67,7 +69,7 @@ Then run a validation session — see [Validation from Studio](../studio/from_st
 
 | Backend | Why not |
 | ------- | ------- |
-| TensorFlow Lite | `libtensorflowlite_c.so` is Linux-only in the EdgeFirst distribution |
+| TensorFlow Lite | `libtensorflow-lite.so` is Linux-only in the EdgeFirst distribution |
 | NXP Neutron / VSI delegates | Delegates ship with NXP Linux BSPs only |
 | Kinara Ara240 | `ara2-proxy` daemon is Linux-only |
 | Hailo | HailoRT does not ship a macOS build |

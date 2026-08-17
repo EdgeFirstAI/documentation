@@ -26,10 +26,10 @@ The EdgeFirst Profiler ships an **x86_64** binary for Windows. As on macOS, the 
     - **Elevated:** installs to `%ProgramFiles%\edgefirst-profiler\` and updates the system `PATH`.
     - **Non-elevated:** installs to `%LOCALAPPDATA%\Programs\edgefirst-profiler\` and updates the user `PATH`.
 
-    Pin a specific release:
+    The installer takes the latest release by default. To pin one, pass `-Version`:
 
     ```powershell
-    & ([scriptblock]::Create((irm https://raw.githubusercontent.com/EdgeFirstAI/profiler-cli/main/install.ps1))) -Version 1.0.1
+    & ([scriptblock]::Create((irm https://raw.githubusercontent.com/EdgeFirstAI/profiler-cli/main/install.ps1))) -Version <version>
     ```
 
 Confirm in a **new** PowerShell window (so `PATH` is reloaded):
@@ -52,7 +52,7 @@ edgefirst-profiler
 
 ## What is not supported on Windows
 
-The same list as macOS — TFLite, Neutron / VSI delegates, Ara-2, Hailo, and TensorRT are Linux/edge-only. For validation against those backends, run the profiler on the target board itself, or on a Linux host with the relevant runtime libraries installed.
+The same list as macOS — TFLite, Neutron / VSI delegates, Kinara Ara240, Hailo, and TensorRT are Linux/edge-only. The CUDA execution provider (`--provider cuda`) is Linux-only, and the Qualcomm QNN routes (`--provider qnn-htp`, `--delegate qnn`) are Android-only. For validation against those backends, run the profiler on the target board itself, or on a Linux host with the relevant runtime libraries installed.
 
 ## Troubleshooting
 

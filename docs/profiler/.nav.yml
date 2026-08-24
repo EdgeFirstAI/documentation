@@ -3,12 +3,14 @@ nav:
   - Quick Start: quickstart.md
   - Concepts:
     - Pipelining: concepts/pipelining.md
+    - Validation and Metrics: concepts/validation.md
+    - Tiled Inference (SAHI): concepts/sahi.md
     - Training Configurations: concepts/configuration.md
   - Installation:
     - installation/index.md
     - Linux: installation/linux.md
     - macOS: installation/macos.md
-    - Windows: installation/windows.md
+    - Container Images: installation/docker.md
     - NVIDIA Jetson Orin: installation/jetson_orin.md
     - NXP i.MX 95: installation/imx95.md
     - NXP i.MX 8M Plus: installation/imx8mplus.md
@@ -20,3 +22,4 @@ nav:
     - Connecting to Studio: studio/connecting.md
     - Validation from Studio: studio/from_studio.md
     - Validation from the Profiler: studio/from_profiler.md
+    - Cloud Runs: studio/cloud.md

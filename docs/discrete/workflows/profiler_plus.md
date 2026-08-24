@@ -23,12 +23,6 @@ The Profiler+ workflow validates your model directly on your target hardware —
     curl -fsSL https://raw.githubusercontent.com/EdgeFirstAI/profiler-cli/main/install.sh | bash
     ```
 
-=== "Windows (PowerShell)"
-
-    ```powershell
-    irm https://raw.githubusercontent.com/EdgeFirstAI/profiler-cli/main/install.ps1 | iex
-    ```
-
 Confirm the install:
 
 ```sh

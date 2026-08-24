@@ -1,9 +1,9 @@
 # Installation
 
-The EdgeFirst Profiler is distributed four ways. Each ships the matching native binary for your host's OS and architecture (`x86_64` / `aarch64`, Linux / macOS / Windows) — the source and the CLI are identical, only the compiled artifact differs.
+The EdgeFirst Profiler is distributed four ways. Each ships the matching native binary for your host's OS and architecture (`x86_64` / `aarch64`, Linux / macOS) — the source and the CLI are identical, only the compiled artifact differs.
 
 - **`pip install edgefirst-profiler`** — the convenience path. Pulls the binary plus the few Python-side helpers needed for end-to-end workflows. This is the recommended default.
-- **Platform installer scripts** (`install.sh` / `install.ps1`) — the right choice for environments where Python is not available, or where the binary needs to land in a system-wide path like `/usr/local/bin`.
+- **Platform installer script** (`install.sh`) — the right choice for environments where Python is not available, or where the binary needs to land in a system-wide path like `/usr/local/bin`.
 - **Container images** — pre-built images on the GitHub Container Registry (`ghcr.io/edgefirstai/profiler-cli`) with the inference runtime already bundled, published per release as CPU, CUDA, TFLite, and NXP NPU variants. See [Container Images](docker.md).
 - **Vendor-shipped EdgeFirst images** — pre-installed and pinned to the BSP version for that target. Nothing to do.
 
@@ -15,7 +15,6 @@ Per-target pages below cover the runtime libraries, NPU delegates, daemons, and 
 | ------ | ------------ | --------------- | -------------------- |
 | [Linux](linux.md) | x86_64, aarch64 | ONNX Runtime (CPU) | TFLite XNNPACK |
 | [macOS](macos.md) | Apple Silicon | ONNX Runtime (CPU) | CoreML execution provider |
-| [Windows](windows.md) | x86_64 | ONNX Runtime (CPU) | — |
 | [NVIDIA Jetson Orin](jetson_orin.md) | aarch64 | ONNX Runtime (CUDA EP) | TensorRT (via `libtrt_shim.so`) |
 | [NXP i.MX 95](imx95.md) | aarch64 | TFLite | Neutron NPU delegate |
 | [NXP i.MX 8M Plus](imx8mplus.md) | aarch64 | TFLite | VSI NPU delegate |
@@ -34,7 +33,7 @@ The inference backend is chosen automatically from the model file extension:
 
 | Extension | Backend | Runtime dependency |
 | --------- | ------- | ------------------ |
-| `.onnx` | ONNX Runtime | `libonnxruntime.so` (Linux) / `libonnxruntime.dylib` (macOS) / `onnxruntime.dll` (Windows) |
+| `.onnx` | ONNX Runtime | `libonnxruntime.so` (Linux) / `libonnxruntime.dylib` (macOS) |
 | `*.qnn.onnx` | ONNX Runtime (QNN EP) | Android only — QNN-enabled ONNX Runtime plus the Qualcomm runtime, supplied by the device |
 | `.tflite` | TensorFlow Lite | `libtensorflow-lite.so` (Linux only); override the search path with `TFLITE_LIBRARY_PATH` |
 | `.dvm` | Kinara Ara240 | `ara2-proxy` daemon (Linux only) |

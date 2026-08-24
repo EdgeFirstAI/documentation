@@ -10,7 +10,6 @@ nav:
     - installation/index.md
     - Linux: installation/linux.md
     - macOS: installation/macos.md
-    - Windows: installation/windows.md
     - Container Images: installation/docker.md
     - NVIDIA Jetson Orin: installation/jetson_orin.md
     - NXP i.MX 95: installation/imx95.md

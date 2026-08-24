@@ -18,9 +18,9 @@ In the dialog, set:
 - **Dataset / partition** — the dataset and partition the profiler will validate against (typically `validation`).
 - **Parameters** — confidence threshold, IoU threshold, NMS top-K, max detections. Defaults match the COCO evaluation protocol; override only if you know why.
 
-Click **Start Session**. Studio creates a session card with a short ID, e.g., `v-1b51`.
+Click **Start Session**. Click the new validation session to open its details page. The session ID appears at the top of the Session tab (e.g., `v-1b51`).
 
-{{ figure("../assets/studio-session-id.png", "Validation session card with session ID v-1b51") }}
+{{ figure("../assets/studio-session-id.png", "EdgeFirst Studio — Validation Details page showing the session ID") }}
 
 ## 2. Run the profiler on the target
 

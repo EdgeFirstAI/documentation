@@ -35,12 +35,6 @@ The recommended convenience path is `pip`. The wheel ships the same native binar
     curl -fsSL https://raw.githubusercontent.com/EdgeFirstAI/profiler-cli/main/install.sh | bash
     ```
 
-=== "Windows (PowerShell)"
-
-    ```powershell
-    irm https://raw.githubusercontent.com/EdgeFirstAI/profiler-cli/main/install.ps1 | iex
-    ```
-
 === "Docker"
 
     ```sh

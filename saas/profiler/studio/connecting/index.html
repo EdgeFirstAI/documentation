@@ -25,7 +25,7 @@
       
       
       <link rel="icon" href="../../../assets/favicon.png">
-      <meta name="generator" content="mkdocs-ProperDocs 1.6.7, mkdocs-material-9.7.6">
+      <meta name="generator" content="mkdocs-ProperDocs 1.6.7, mkdocs-material-9.7.7">
     
     
       
@@ -33,7 +33,7 @@
       
     
     
-      <link rel="stylesheet" href="../../../assets/stylesheets/main.484c7ddc.min.css">
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.ec1eaa64.min.css">
       
         
         <link rel="stylesheet" href="../../../assets/stylesheets/palette.ab4e12ef.min.css">
@@ -907,6 +907,10 @@
       
         
       
+        
+      
+        
+      
     
     
     
@@ -1041,6 +1045,8 @@
       
         
           
+        
+      
         
       
         
@@ -1192,6 +1198,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#token-based-authentication-for-ci" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Token-based authentication for CI
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#interactive-login-tui" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -1287,6 +1304,34 @@
     
   
     Validation from the Profiler
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cloud/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Cloud Runs
   
 
     
@@ -1638,6 +1683,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#token-based-authentication-for-ci" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Token-based authentication for CI
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#interactive-login-tui" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -1786,6 +1842,22 @@
 edgefirst-profiler<span class="w"> </span>login
 </code></pre></div>
 <p>The flags take precedence over the environment variables if both are set.</p>
+<h2 id="token-based-authentication-for-ci">Token-based authentication for CI</h2>
+<p>Instead of running <code>login</code> at all, hand the profiler an already-issued bearer token and server address with the global <code>--token</code> and <code>--url</code> flags, or the <code>TOKEN</code> and <code>URL</code> environment variables. This is the path for CI jobs and other automated environments with no interactive session to log in from:</p>
+<div class="highlight"><pre><span></span><code><span class="nb">export</span><span class="w"> </span><span class="nv">TOKEN</span><span class="o">=</span>eyJhbGciOi...<span class="w">            </span><span class="c1"># use a CI secret store</span>
+<span class="nb">export</span><span class="w"> </span><span class="nv">URL</span><span class="o">=</span>https://test.edgefirst.studio
+edgefirst-profiler<span class="w"> </span>validate<span class="w"> </span>--session-id<span class="w"> </span>v-1b51
+</code></pre></div>
+<p>When both are supplied together they take precedence over a saved login. On their own the two behave differently:</p>
+<ul>
+<li><code>--url</code> typed on the command line without <code>--token</code> is rejected as a mistake, rather than silently falling back to the default server.</li>
+<li>An ambient <code>URL</code> environment variable without a <code>TOKEN</code> is tolerated and ignored, because <code>URL</code> is a common name for unrelated tools' own configuration.</li>
+</ul>
+<p>This is also how <a href="../cloud/">cloud runs</a> authenticate: the Studio platform injects <code>TOKEN</code> and <code>URL</code> into the launched container.</p>
+<div class="admonition tip">
+<p class="admonition-title">Pre-flight the host identity</p>
+<p><code>edgefirst-profiler system-info</code> prints the detected system identity — architecture, processor, accelerator, and platform, the same identity a real run uses to name its validation session — and exits. It runs headless and loads no inference runtime, so it makes a fast CI pre-flight to confirm host detection before committing to a full run.</p>
+</div>
 <h2 id="interactive-login-tui">Interactive login (TUI)</h2>
 <p>Open the TUI and press <strong>F2</strong> to land on the Studio screen. The first state is the login form: choose a server (<code>https://edgefirst.studio</code>, <code>https://test.edgefirst.studio</code>, or <code>https://stage.edgefirst.studio</code>), enter your username and password, and submit.</p>
 <figure>
@@ -1815,7 +1887,7 @@ edgefirst-profiler<span class="w"> </span>login
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="nb">Remove-Item</span> <span class="s2">&quot;$env:APPDATA\edgefirststudio\token&quot;</span>
+<div class="highlight"><pre><span></span><code><span class="nb">Remove-Item</span> <span class="s2">"$env:APPDATA\edgefirststudio\token"</span>
 </code></pre></div>
 </div>
 <div class="tabbed-block">
@@ -2073,7 +2145,7 @@ edgefirst-profiler<span class="w"> </span>login
       <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["content.code.copy", "content.code.annotate", "content.tabs.link", "navigation.instant", "navigation.tracking", "navigation.tabs", "navigation.tabs.sticky", "navigation.path", "navigation.indexes", "navigation.top", "navigation.footer", "navigation.prune", "toc.follow", "search.suggest", "search.highlight"], "search": "../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"alias": true, "default": "latest", "provider": "mike"}}</script>
     
     
-      <script src="../../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      <script src="../../../assets/javascripts/bundle.d7400e89.min.js"></script>
       
         <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
       

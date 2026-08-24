@@ -25,7 +25,7 @@
       
       
       <link rel="icon" href="../../../../assets/favicon.png">
-      <meta name="generator" content="mkdocs-ProperDocs 1.6.7, mkdocs-material-9.7.6">
+      <meta name="generator" content="mkdocs-ProperDocs 1.6.7, mkdocs-material-9.7.7">
     
     
       
@@ -33,7 +33,7 @@
       
     
     
-      <link rel="stylesheet" href="../../../../assets/stylesheets/main.484c7ddc.min.css">
+      <link rel="stylesheet" href="../../../../assets/stylesheets/main.ec1eaa64.min.css">
       
         
         <link rel="stylesheet" href="../../../../assets/stylesheets/palette.ab4e12ef.min.css">
@@ -2176,18 +2176,18 @@ Sample Code: <a href="https://github.com/EdgeFirstAI/samples/blob/main/python/im
 <div class="tabbed-content">
 <div class="tabbed-block">
 <div class="highlight"><pre><span></span><code><span class="c1"># Log the initial orientation</span>
-<span class="n">rr</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="s2">&quot;/imu&quot;</span><span class="p">,</span> <span class="n">rr</span><span class="o">.</span><span class="n">Boxes3D</span><span class="p">(</span><span class="n">half_sizes</span><span class="o">=</span><span class="p">[[</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">]],</span> <span class="n">fill_mode</span><span class="o">=</span><span class="s2">&quot;solid&quot;</span><span class="p">))</span>
-<span class="n">rr</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="s2">&quot;/imu&quot;</span><span class="p">,</span> <span class="n">rr</span><span class="o">.</span><span class="n">Transform3D</span><span class="p">(</span><span class="n">axis_length</span><span class="o">=</span><span class="mi">2</span><span class="p">))</span>
+<span class="n">rr</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="s2">"/imu"</span><span class="p">,</span> <span class="n">rr</span><span class="o">.</span><span class="n">Boxes3D</span><span class="p">(</span><span class="n">half_sizes</span><span class="o">=</span><span class="p">[[</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">]],</span> <span class="n">fill_mode</span><span class="o">=</span><span class="s2">"solid"</span><span class="p">))</span>
+<span class="n">rr</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="s2">"/imu"</span><span class="p">,</span> <span class="n">rr</span><span class="o">.</span><span class="n">Transform3D</span><span class="p">(</span><span class="n">axis_length</span><span class="o">=</span><span class="mi">2</span><span class="p">))</span>
 
-<span class="c1"># Create a subscriber for &quot;rt/imu&quot;</span>
+<span class="c1"># Create a subscriber for "rt/imu"</span>
 <span class="n">loop</span> <span class="o">=</span> <span class="n">asyncio</span><span class="o">.</span><span class="n">get_running_loop</span><span class="p">()</span>
 <span class="n">drain</span> <span class="o">=</span> <span class="n">MessageDrain</span><span class="p">(</span><span class="n">loop</span><span class="p">)</span>
-<span class="n">session</span><span class="o">.</span><span class="n">declare_subscriber</span><span class="p">(</span><span class="s1">&#39;rt/imu&#39;</span><span class="p">,</span> <span class="n">drain</span><span class="o">.</span><span class="n">callback</span><span class="p">)</span>
+<span class="n">session</span><span class="o">.</span><span class="n">declare_subscriber</span><span class="p">(</span><span class="s1">'rt/imu'</span><span class="p">,</span> <span class="n">drain</span><span class="o">.</span><span class="n">callback</span><span class="p">)</span>
 </code></pre></div>
 </div>
 <div class="tabbed-block">
 <div class="highlight"><pre><span></span><code><span class="kd">let</span><span class="w"> </span><span class="n">subscriber</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">session</span>
-<span class="w">    </span><span class="p">.</span><span class="n">declare_subscriber</span><span class="p">(</span><span class="s">&quot;rt/imu&quot;</span><span class="p">)</span>
+<span class="w">    </span><span class="p">.</span><span class="n">declare_subscriber</span><span class="p">(</span><span class="s">"rt/imu"</span><span class="p">)</span>
 <span class="w">    </span><span class="p">.</span><span class="k">await</span>
 <span class="w">    </span><span class="p">.</span><span class="n">unwrap</span><span class="p">();</span>
 </code></pre></div>
@@ -2230,7 +2230,7 @@ Sample Code: <a href="https://github.com/EdgeFirstAI/samples/blob/main/python/im
     <span class="n">y</span> <span class="o">=</span> <span class="n">imu</span><span class="o">.</span><span class="n">orientation</span><span class="o">.</span><span class="n">y</span>
     <span class="n">z</span> <span class="o">=</span> <span class="n">imu</span><span class="o">.</span><span class="n">orientation</span><span class="o">.</span><span class="n">z</span>
     <span class="n">w</span> <span class="o">=</span> <span class="n">imu</span><span class="o">.</span><span class="n">orientation</span><span class="o">.</span><span class="n">w</span>
-    <span class="n">rr</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="s2">&quot;/imu&quot;</span><span class="p">,</span>
+    <span class="n">rr</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="s2">"/imu"</span><span class="p">,</span>
             <span class="n">rr</span><span class="o">.</span><span class="n">Transform3D</span><span class="p">(</span><span class="n">clear</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
                             <span class="n">quaternion</span><span class="o">=</span><span class="n">Quaternion</span><span class="p">(</span><span class="n">xyzw</span><span class="o">=</span><span class="p">[</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span><span class="p">,</span> <span class="n">w</span><span class="p">])))</span>
 </code></pre></div>
@@ -2240,9 +2240,9 @@ Sample Code: <a href="https://github.com/EdgeFirstAI/samples/blob/main/python/im
 <span class="kd">let</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">imu</span><span class="p">.</span><span class="n">orientation</span><span class="p">.</span><span class="n">y</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="kt">f32</span><span class="p">;</span>
 <span class="kd">let</span><span class="w"> </span><span class="n">z</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">imu</span><span class="p">.</span><span class="n">orientation</span><span class="p">.</span><span class="n">z</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="kt">f32</span><span class="p">;</span>
 <span class="kd">let</span><span class="w"> </span><span class="n">w</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">imu</span><span class="p">.</span><span class="n">orientation</span><span class="p">.</span><span class="n">w</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="kt">f32</span><span class="p">;</span>
-<span class="c1">// println!(&quot;X: {} Y: {} Z: {} W: {}&quot;, x, y, z, w);</span>
+<span class="c1">// println!("X: {} Y: {} Z: {} W: {}", x, y, z, w);</span>
 <span class="kd">let</span><span class="w"> </span><span class="n">my_quat</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">rerun</span><span class="p">::</span><span class="n">Quaternion</span><span class="p">([</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="n">z</span><span class="p">,</span><span class="n">w</span><span class="p">]);</span>
-<span class="kd">let</span><span class="w"> </span><span class="n">_</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">rec</span><span class="p">.</span><span class="n">log</span><span class="p">(</span><span class="s">&quot;box&quot;</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">rerun</span><span class="p">::</span><span class="n">Transform3D</span><span class="p">::</span><span class="n">default</span><span class="p">().</span><span class="n">with_quaternion</span><span class="p">(</span><span class="n">my_quat</span><span class="p">));</span>
+<span class="kd">let</span><span class="w"> </span><span class="n">_</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">rec</span><span class="p">.</span><span class="n">log</span><span class="p">(</span><span class="s">"box"</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">rerun</span><span class="p">::</span><span class="n">Transform3D</span><span class="p">::</span><span class="n">default</span><span class="p">().</span><span class="n">with_quaternion</span><span class="p">(</span><span class="n">my_quat</span><span class="p">));</span>
 </code></pre></div>
 </div>
 </div>
@@ -2506,7 +2506,7 @@ X: -0.0125 Y: 0.0383 Z: 0.0698 W: 0.9968
       <script id="__config" type="application/json">{"annotate": null, "base": "../../../..", "features": ["content.code.copy", "content.code.annotate", "content.tabs.link", "navigation.instant", "navigation.tracking", "navigation.tabs", "navigation.tabs.sticky", "navigation.path", "navigation.indexes", "navigation.top", "navigation.footer", "navigation.prune", "toc.follow", "search.suggest", "search.highlight"], "search": "../../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"alias": true, "default": "latest", "provider": "mike"}}</script>
     
     
-      <script src="../../../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      <script src="../../../../assets/javascripts/bundle.d7400e89.min.js"></script>
       
         <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
       

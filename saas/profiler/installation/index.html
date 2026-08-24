@@ -25,7 +25,7 @@
       
       
       <link rel="icon" href="../../assets/favicon.png">
-      <meta name="generator" content="mkdocs-ProperDocs 1.6.7, mkdocs-material-9.7.6">
+      <meta name="generator" content="mkdocs-ProperDocs 1.6.7, mkdocs-material-9.7.7">
     
     
       
@@ -33,7 +33,7 @@
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.ec1eaa64.min.css">
       
         
         <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
@@ -907,6 +907,10 @@
       
         
       
+        
+      
+        
+      
     
     
     
@@ -1102,14 +1106,14 @@
   
   
     <li class="md-nav__item">
-      <a href="windows/" class="md-nav__link">
+      <a href="docker/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    Windows
+    Container Images
   
 
     
@@ -1310,6 +1314,8 @@
       
         
           
+        
+      
         
       
         
@@ -1759,10 +1765,11 @@
 
 
 <h1 id="installation">Installation</h1>
-<p>The EdgeFirst Profiler is distributed three ways. Each ships the matching native binary for your host's OS and architecture (<code>x86_64</code> / <code>aarch64</code>, Linux / macOS / Windows) — the source and the CLI are identical, only the compiled artifact differs.</p>
+<p>The EdgeFirst Profiler is distributed four ways. Each ships the matching native binary for your host's OS and architecture (<code>x86_64</code> / <code>aarch64</code>, Linux / macOS) — the source and the CLI are identical, only the compiled artifact differs.</p>
 <ul>
 <li><strong><code>pip install edgefirst-profiler</code></strong> — the convenience path. Pulls the binary plus the few Python-side helpers needed for end-to-end workflows. This is the recommended default.</li>
-<li><strong>Platform installer scripts</strong> (<code>install.sh</code> / <code>install.ps1</code>) — the right choice for environments where Python is not available, or where the binary needs to land in a system-wide path like <code>/usr/local/bin</code>.</li>
+<li><strong>Platform installer script</strong> (<code>install.sh</code>) — the right choice for environments where Python is not available, or where the binary needs to land in a system-wide path like <code>/usr/local/bin</code>.</li>
+<li><strong>Container images</strong> — pre-built images on the GitHub Container Registry (<code>ghcr.io/edgefirstai/profiler-cli</code>) with the inference runtime already bundled, published per release as CPU, <abbr title="NVIDIA Compute Unified Device Architecture">CUDA</abbr>, <abbr title="TensorFlow Lite">TFLite</abbr>, and NXP <abbr title="Neural Processing Unit">NPU</abbr> variants. See <a href="docker/">Container Images</a>.</li>
 <li><strong>Vendor-shipped EdgeFirst images</strong> — pre-installed and pinned to the BSP version for that target. Nothing to do.</li>
 </ul>
 <p>Per-target pages below cover the runtime libraries, <abbr title="Neural Processing Unit">NPU</abbr> delegates, daemons, and quirks that apply once the binary is in place.</p>
@@ -1790,12 +1797,6 @@
 <td>CoreML execution provider</td>
 </tr>
 <tr>
-<td><a href="windows/">Windows</a></td>
-<td>x86_64</td>
-<td><abbr title="Open Neural Network Exchange">ONNX</abbr> Runtime (CPU)</td>
-<td>—</td>
-</tr>
-<tr>
 <td><a href="jetson_orin/">NVIDIA Jetson Orin</a></td>
 <td>aarch64</td>
 <td><abbr title="Open Neural Network Exchange">ONNX</abbr> Runtime (<abbr title="NVIDIA Compute Unified Device Architecture">CUDA</abbr> EP)</td>
@@ -1820,7 +1821,7 @@
 <td>Hailo-8 / 8L (via HailoRT)</td>
 </tr>
 <tr>
-<td><a href="kinara/">Kinara Ara-2</a></td>
+<td><a href="kinara/">Kinara Ara240</a></td>
 <td>x86_64 / aarch64 host</td>
 <td><abbr title="Dataflow Virtual Machine">DVM</abbr> via <code>ara2-proxy</code></td>
 <td>—</td>
@@ -1831,8 +1832,15 @@
 <td>HailoRT</td>
 <td>—</td>
 </tr>
+<tr>
+<td>Android (Snapdragon)</td>
+<td>aarch64</td>
+<td><abbr title="Open Neural Network Exchange">ONNX</abbr> Runtime (QNN EP, <code>--provider qnn-htp</code>)</td>
+<td><abbr title="TensorFlow Lite">TFLite</abbr> QNN / GPU delegates (experimental)</td>
+</tr>
 </tbody>
 </table>
+<p>Android support runs inside the EdgeFirst mobile applications rather than as a standalone CLI install. The <abbr title="Open Neural Network Exchange">ONNX</abbr> route takes a Qualcomm-precompiled <code>*.qnn.onnx</code> artifact and runs it on the Hexagon <abbr title="Neural Processing Unit">NPU</abbr> through <abbr title="Open Neural Network Exchange">ONNX</abbr> Runtime's QNN execution provider; the device must supply the Qualcomm runtime and a QNN-enabled <abbr title="Open Neural Network Exchange">ONNX</abbr> Runtime — the profiler ships neither. The experimental <abbr title="TensorFlow Lite">TFLite</abbr> <code>--delegate qnn</code> and <code>--delegate gpu</code> routes are available to try but are excluded from published hardware comparisons for now.</p>
 <p>The profiler CLI and the workflow it drives are the same on every target — what varies (besides the OS/arch-matched binary) is which <strong>runtime libraries</strong> must be present on the system so the matching backend can <code>dlopen</code> them. Every backend loads its vendor library dynamically; nothing is statically linked, so a missing library on one target never breaks the profiler on another.</p>
 <h2 id="backends-and-how-they-are-selected">Backends and how they are selected</h2>
 <p>The inference backend is chosen automatically from the model file extension:</p>
@@ -1848,16 +1856,21 @@
 <tr>
 <td><code>.onnx</code></td>
 <td><abbr title="Open Neural Network Exchange">ONNX</abbr> Runtime</td>
-<td><code>libonnxruntime.so</code> (Linux) / <code>libonnxruntime.dylib</code> (macOS) / <code>onnxruntime.dll</code> (Windows)</td>
+<td><code>libonnxruntime.so</code> (Linux) / <code>libonnxruntime.dylib</code> (macOS)</td>
+</tr>
+<tr>
+<td><code>*.qnn.onnx</code></td>
+<td><abbr title="Open Neural Network Exchange">ONNX</abbr> Runtime (QNN EP)</td>
+<td>Android only — QNN-enabled <abbr title="Open Neural Network Exchange">ONNX</abbr> Runtime plus the Qualcomm runtime, supplied by the device</td>
 </tr>
 <tr>
 <td><code>.tflite</code></td>
 <td>TensorFlow Lite</td>
-<td><code>libtensorflowlite_c.so</code> (Linux only)</td>
+<td><code>libtensorflow-lite.so</code> (Linux only); override the search path with <code>TFLITE_LIBRARY_PATH</code></td>
 </tr>
 <tr>
 <td><code>.dvm</code></td>
-<td>Kinara Ara-2</td>
+<td>Kinara Ara240</td>
 <td><code>ara2-proxy</code> daemon (Linux only)</td>
 </tr>
 <tr>
@@ -2121,7 +2134,7 @@
       <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["content.code.copy", "content.code.annotate", "content.tabs.link", "navigation.instant", "navigation.tracking", "navigation.tabs", "navigation.tabs.sticky", "navigation.path", "navigation.indexes", "navigation.top", "navigation.footer", "navigation.prune", "toc.follow", "search.suggest", "search.highlight"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"alias": true, "default": "latest", "provider": "mike"}}</script>
     
     
-      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      <script src="../../assets/javascripts/bundle.d7400e89.min.js"></script>
       
         <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
       

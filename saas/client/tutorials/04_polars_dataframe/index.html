@@ -25,7 +25,7 @@
       
       
       <link rel="icon" href="../../../assets/favicon.png">
-      <meta name="generator" content="mkdocs-ProperDocs 1.6.7, mkdocs-material-9.7.6">
+      <meta name="generator" content="mkdocs-ProperDocs 1.6.7, mkdocs-material-9.7.7">
     
     
       
@@ -33,7 +33,7 @@
       
     
     
-      <link rel="stylesheet" href="../../../assets/stylesheets/main.484c7ddc.min.css">
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.ec1eaa64.min.css">
       
         
         <link rel="stylesheet" href="../../../assets/stylesheets/palette.ab4e12ef.min.css">
@@ -1882,10 +1882,10 @@
 <div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">subprocess</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">pathlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">Path</span>
 
-<span class="n">arrow_path</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="s2">&quot;coffee_cup.arrow&quot;</span><span class="p">)</span>
+<span class="n">arrow_path</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="s2">"coffee_cup.arrow"</span><span class="p">)</span>
 <span class="n">subprocess</span><span class="o">.</span><span class="n">run</span><span class="p">([</span>
-    <span class="s2">&quot;edgefirst-client&quot;</span><span class="p">,</span> <span class="s2">&quot;download-annotations&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;&lt;as-id&gt;&quot;</span><span class="p">,</span> <span class="nb">str</span><span class="p">(</span><span class="n">arrow_path</span><span class="p">),</span> <span class="s2">&quot;--groups&quot;</span><span class="p">,</span> <span class="s2">&quot;val&quot;</span><span class="p">,</span>
+    <span class="s2">"edgefirst-client"</span><span class="p">,</span> <span class="s2">"download-annotations"</span><span class="p">,</span>
+    <span class="s2">"&lt;as-id&gt;"</span><span class="p">,</span> <span class="nb">str</span><span class="p">(</span><span class="n">arrow_path</span><span class="p">),</span> <span class="s2">"--groups"</span><span class="p">,</span> <span class="s2">"val"</span><span class="p">,</span>
 <span class="p">],</span> <span class="n">check</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 </code></pre></div>
 <p>Set <code>SKIP_CLI_DOWNLOAD=1</code> to skip this step if the Arrow file already exists.</p>
@@ -1893,9 +1893,9 @@
 <div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">polars</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pl</span>
 
 <span class="n">df_cli</span> <span class="o">=</span> <span class="n">pl</span><span class="o">.</span><span class="n">read_ipc</span><span class="p">(</span><span class="n">arrow_path</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;CLI Arrow: </span><span class="si">{</span><span class="n">df_cli</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">}</span><span class="s2"> rows&quot;</span><span class="p">)</span>
-<span class="k">if</span> <span class="s2">&quot;label&quot;</span> <span class="ow">in</span> <span class="n">df_cli</span><span class="o">.</span><span class="n">columns</span><span class="p">:</span>
-    <span class="n">counts</span> <span class="o">=</span> <span class="n">df_cli</span><span class="o">.</span><span class="n">group_by</span><span class="p">(</span><span class="s2">&quot;label&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">len</span><span class="p">()</span><span class="o">.</span><span class="n">sort</span><span class="p">(</span><span class="s2">&quot;len&quot;</span><span class="p">,</span> <span class="n">descending</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"CLI Arrow: </span><span class="si">{</span><span class="n">df_cli</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">}</span><span class="s2"> rows"</span><span class="p">)</span>
+<span class="k">if</span> <span class="s2">"label"</span> <span class="ow">in</span> <span class="n">df_cli</span><span class="o">.</span><span class="n">columns</span><span class="p">:</span>
+    <span class="n">counts</span> <span class="o">=</span> <span class="n">df_cli</span><span class="o">.</span><span class="n">group_by</span><span class="p">(</span><span class="s2">"label"</span><span class="p">)</span><span class="o">.</span><span class="n">len</span><span class="p">()</span><span class="o">.</span><span class="n">sort</span><span class="p">(</span><span class="s2">"len"</span><span class="p">,</span> <span class="n">descending</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
     <span class="nb">print</span><span class="p">(</span><span class="n">counts</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">5</span><span class="p">))</span>
 </code></pre></div>
 <h3 id="3-use-the-native-api">3. Use the native <abbr title="Application Programming Interface">API</abbr></h3>
@@ -1906,9 +1906,9 @@
 <span class="n">annotation_set_id</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">annotation_sets</span><span class="p">(</span><span class="n">dataset</span><span class="o">.</span><span class="n">id</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">id</span>
 
 <span class="n">df_api</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">samples_dataframe</span><span class="p">(</span>
-    <span class="n">dataset</span><span class="o">.</span><span class="n">id</span><span class="p">,</span> <span class="n">annotation_set_id</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;val&quot;</span><span class="p">],</span> <span class="p">[],</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">dataset</span><span class="o">.</span><span class="n">id</span><span class="p">,</span> <span class="n">annotation_set_id</span><span class="p">,</span> <span class="p">[</span><span class="s2">"val"</span><span class="p">],</span> <span class="p">[],</span> <span class="kc">None</span><span class="p">,</span>
 <span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;API samples_dataframe: </span><span class="si">{</span><span class="n">df_api</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">}</span><span class="s2"> rows&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"API samples_dataframe: </span><span class="si">{</span><span class="n">df_api</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">}</span><span class="s2"> rows"</span><span class="p">)</span>
 </code></pre></div>
 <p>See the <a href="../../../datasets/format/schema/">EdgeFirst Dataset Format schema</a> for column definitions.</p>
 <h2 id="source">Source</h2>
@@ -2163,7 +2163,7 @@
       <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["content.code.copy", "content.code.annotate", "content.tabs.link", "navigation.instant", "navigation.tracking", "navigation.tabs", "navigation.tabs.sticky", "navigation.path", "navigation.indexes", "navigation.top", "navigation.footer", "navigation.prune", "toc.follow", "search.suggest", "search.highlight"], "search": "../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"alias": true, "default": "latest", "provider": "mike"}}</script>
     
     
-      <script src="../../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      <script src="../../../assets/javascripts/bundle.d7400e89.min.js"></script>
       
         <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
       

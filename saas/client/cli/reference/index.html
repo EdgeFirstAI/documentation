@@ -25,7 +25,7 @@
       
       
       <link rel="icon" href="../../../assets/favicon.png">
-      <meta name="generator" content="mkdocs-ProperDocs 1.6.7, mkdocs-material-9.7.6">
+      <meta name="generator" content="mkdocs-ProperDocs 1.6.7, mkdocs-material-9.7.7">
     
     
       
@@ -33,7 +33,7 @@
       
     
     
-      <link rel="stylesheet" href="../../../assets/stylesheets/main.484c7ddc.min.css">
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.ec1eaa64.min.css">
       
         
         <link rel="stylesheet" href="../../../assets/stylesheets/palette.ab4e12ef.min.css">
@@ -3231,8 +3231,8 @@ environment variables for scripts instead.</p>
 <p><code>--description</code> <em>DESCRIPTION</em>
 :   Optional description for the dataset.</p>
 <p><strong>Example:</strong></p>
-<div class="highlight"><pre><span></span><code>edgefirst-client<span class="w"> </span>create-dataset<span class="w"> </span><span class="m">12345</span><span class="w"> </span><span class="s2">&quot;Training Data&quot;</span><span class="w"> </span><span class="se">\</span>
-<span class="w">    </span>--description<span class="w"> </span><span class="s2">&quot;Q4 2025 training dataset&quot;</span>
+<div class="highlight"><pre><span></span><code>edgefirst-client<span class="w"> </span>create-dataset<span class="w"> </span><span class="m">12345</span><span class="w"> </span><span class="s2">"Training Data"</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--description<span class="w"> </span><span class="s2">"Q4 2025 training dataset"</span>
 </code></pre></div>
 <h3 id="delete-dataset"><code>delete-dataset</code></h3>
 <p>Delete a dataset by marking it as deleted.</p>
@@ -3254,8 +3254,8 @@ environment variables for scripts instead.</p>
 <p><code>--description</code> <em>DESCRIPTION</em>
 :   Optional description for the annotation set.</p>
 <p><strong>Example:</strong></p>
-<div class="highlight"><pre><span></span><code>edgefirst-client<span class="w"> </span>create-annotation-set<span class="w"> </span><span class="m">67890</span><span class="w"> </span><span class="s2">&quot;Manual Review&quot;</span><span class="w"> </span><span class="se">\</span>
-<span class="w">    </span>--description<span class="w"> </span><span class="s2">&quot;Human-verified annotations&quot;</span>
+<div class="highlight"><pre><span></span><code>edgefirst-client<span class="w"> </span>create-annotation-set<span class="w"> </span><span class="m">67890</span><span class="w"> </span><span class="s2">"Manual Review"</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--description<span class="w"> </span><span class="s2">"Human-verified annotations"</span>
 </code></pre></div>
 <h3 id="delete-annotation-set"><code>delete-annotation-set</code></h3>
 <p>Delete an annotation set by marking it as deleted.</p>
@@ -3442,7 +3442,7 @@ edgefirst-client<span class="w"> </span>update-dimensions<span class="w"> </span
 </ul>
 <h2 id="snapshots">Snapshots</h2>
 <p>Dataset snapshots preserve a complete copy of raw sensor data (<abbr title="Binary container format for robotics log data">MCAP</abbr> files), directories, or EdgeFirst Dataset Format data at a specific point in time. They can be restored to create new datasets with optional automatic annotation (AGTG) and depth map generation.</p>
-<p>For detailed information about snapshots, see: ../../studio/snapshots.md</p>
+<p>For detailed information about snapshots, see: <a href="../../../studio/snapshots/">Dataset Snapshots</a>.</p>
 <h3 id="snapshots_1"><code>snapshots</code></h3>
 <p>List all snapshots available to the authenticated user.</p>
 <p><strong>edgefirst-client snapshots</strong></p>
@@ -3486,7 +3486,7 @@ edgefirst-client<span class="w"> </span>create-snapshot<span class="w"> </span>d
 
 <span class="c1">## Create snapshot with custom description</span>
 
-edgefirst-client<span class="w"> </span>create-snapshot<span class="w"> </span>ds-12345<span class="w"> </span>--description<span class="w"> </span><span class="s2">&quot;Deer Dataset Backup&quot;</span>
+edgefirst-client<span class="w"> </span>create-snapshot<span class="w"> </span>ds-12345<span class="w"> </span>--description<span class="w"> </span><span class="s2">"Deer Dataset Backup"</span>
 
 <span class="c1">## Create from annotation set (auto-detected by as- prefix, looks up parent dataset)</span>
 
@@ -3562,10 +3562,10 @@ edgefirst-client<span class="w"> </span>restore-snapshot<span class="w"> </span>
 
 edgefirst-client<span class="w"> </span>restore-snapshot<span class="w"> </span>p-abc123<span class="w"> </span>ss-def456<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>--autolabel<span class="w"> </span>person,car<span class="w"> </span>--autodepth<span class="w"> </span><span class="se">\</span>
-<span class="w">    </span>--dataset-name<span class="w"> </span><span class="s2">&quot;Field Test Restore&quot;</span><span class="w"> </span>--monitor
+<span class="w">    </span>--dataset-name<span class="w"> </span><span class="s2">"Field Test Restore"</span><span class="w"> </span>--monitor
 </code></pre></div>
 <p><strong>Note:</strong> Restoration creates a new dataset. The original snapshot remains unchanged and can be restored multiple times. AGTG processing runs asynchronously — use <code>--monitor</code>, or check task status, for completion.</p>
-<p>For more information about AGTG, see: ../../datasets/tutorials/annotations/automatic.md</p>
+<p>For more information about AGTG, see: <a href="../../../studio/agtg/">Automatic Ground Truth Generation</a>.</p>
 <h3 id="delete-snapshot"><code>delete-snapshot</code></h3>
 <p>Delete a snapshot permanently. This operation cannot be undone.</p>
 <p><strong>edgefirst-client delete-snapshot</strong> <em>SNAPSHOT_ID</em></p>
@@ -3729,7 +3729,7 @@ edgefirst-client<span class="w"> </span>arrow-to-coco<span class="w"> </span>dat
 <p><strong>Examples:</strong></p>
 <div class="highlight"><pre><span></span><code><span class="c1">## Create a new dataset and import (group auto-detected from image folders)</span>
 
-edgefirst-client<span class="w"> </span>import-coco<span class="w"> </span>./coco<span class="w"> </span>--project<span class="w"> </span>p-123<span class="w"> </span>--name<span class="w"> </span><span class="s2">&quot;COCO 2017&quot;</span>
+edgefirst-client<span class="w"> </span>import-coco<span class="w"> </span>./coco<span class="w"> </span>--project<span class="w"> </span>p-123<span class="w"> </span>--name<span class="w"> </span><span class="s2">"COCO 2017"</span>
 
 <span class="c1">## Import into an existing dataset and annotation set</span>
 
@@ -3988,15 +3988,15 @@ edgefirst-client<span class="w"> </span>--token<span class="w"> </span><span cla
 <h3 id="dataset-management-workflow">Dataset Management Workflow</h3>
 <div class="highlight"><pre><span></span><code><span class="c1"># Create a new project dataset</span>
 
-<span class="nv">DATASET_ID</span><span class="o">=</span><span class="k">$(</span>edgefirst-client<span class="w"> </span>create-dataset<span class="w"> </span><span class="m">12345</span><span class="w"> </span><span class="s2">&quot;Q4 Training&quot;</span><span class="w"> </span><span class="se">\</span>
-<span class="w">    </span>--description<span class="w"> </span><span class="s2">&quot;Fourth quarter training data&quot;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span><span class="se">\</span>
-<span class="w">    </span>grep<span class="w"> </span>-oP<span class="w"> </span><span class="s1">&#39;\d+$&#39;</span><span class="k">)</span>
+<span class="nv">DATASET_ID</span><span class="o">=</span><span class="k">$(</span>edgefirst-client<span class="w"> </span>create-dataset<span class="w"> </span><span class="m">12345</span><span class="w"> </span><span class="s2">"Q4 Training"</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--description<span class="w"> </span><span class="s2">"Fourth quarter training data"</span><span class="w"> </span><span class="p">|</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>grep<span class="w"> </span>-oP<span class="w"> </span><span class="s1">'\d+$'</span><span class="k">)</span>
 
 <span class="c1"># Create annotation set</span>
 
-<span class="nv">ANNSET_ID</span><span class="o">=</span><span class="k">$(</span>edgefirst-client<span class="w"> </span>create-annotation-set<span class="w"> </span><span class="nv">$DATASET_ID</span><span class="w"> </span><span class="s2">&quot;Manual&quot;</span><span class="w"> </span><span class="se">\</span>
-<span class="w">    </span>--description<span class="w"> </span><span class="s2">&quot;Human-verified annotations&quot;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span><span class="se">\</span>
-<span class="w">    </span>grep<span class="w"> </span>-oP<span class="w"> </span><span class="s1">&#39;\d+$&#39;</span><span class="k">)</span>
+<span class="nv">ANNSET_ID</span><span class="o">=</span><span class="k">$(</span>edgefirst-client<span class="w"> </span>create-annotation-set<span class="w"> </span><span class="nv">$DATASET_ID</span><span class="w"> </span><span class="s2">"Manual"</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--description<span class="w"> </span><span class="s2">"Human-verified annotations"</span><span class="w"> </span><span class="p">|</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>grep<span class="w"> </span>-oP<span class="w"> </span><span class="s1">'\d+$'</span><span class="k">)</span>
 
 <span class="c1"># Upload data</span>
 
@@ -4041,7 +4041,7 @@ edgefirst-client<span class="w"> </span>tasks<span class="w"> </span>--status<sp
 
 <span class="c1"># Monitor specific task</span>
 
-watch<span class="w"> </span>-n<span class="w"> </span><span class="m">5</span><span class="w"> </span><span class="s1">&#39;edgefirst-client task 98765&#39;</span>
+watch<span class="w"> </span>-n<span class="w"> </span><span class="m">5</span><span class="w"> </span><span class="s1">'edgefirst-client task 98765'</span>
 </code></pre></div>
 <h3 id="python-api-integration-pip-install">Python <abbr title="Application Programming Interface">API</abbr> Integration (pip install)</h3>
 <div class="highlight"><pre><span></span><code><span class="c1"># One install provides CLI + Python module</span>
@@ -4323,7 +4323,7 @@ edgefirst-client<span class="w"> </span>download-dataset<span class="w"> </span>
       <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["content.code.copy", "content.code.annotate", "content.tabs.link", "navigation.instant", "navigation.tracking", "navigation.tabs", "navigation.tabs.sticky", "navigation.path", "navigation.indexes", "navigation.top", "navigation.footer", "navigation.prune", "toc.follow", "search.suggest", "search.highlight"], "search": "../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"alias": true, "default": "latest", "provider": "mike"}}</script>
     
     
-      <script src="../../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      <script src="../../../assets/javascripts/bundle.d7400e89.min.js"></script>
       
         <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
       

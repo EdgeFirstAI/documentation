@@ -25,7 +25,7 @@
       
       
       <link rel="icon" href="../../../assets/favicon.png">
-      <meta name="generator" content="mkdocs-ProperDocs 1.6.7, mkdocs-material-9.7.6">
+      <meta name="generator" content="mkdocs-ProperDocs 1.6.7, mkdocs-material-9.7.7">
     
     
       
@@ -33,7 +33,7 @@
       
     
     
-      <link rel="stylesheet" href="../../../assets/stylesheets/main.484c7ddc.min.css">
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.ec1eaa64.min.css">
       
         
         <link rel="stylesheet" href="../../../assets/stylesheets/palette.ab4e12ef.min.css">
@@ -907,6 +907,10 @@
       
         
       
+        
+      
+        
+      
     
     
     
@@ -1102,14 +1106,14 @@
   
   
     <li class="md-nav__item">
-      <a href="../windows/" class="md-nav__link">
+      <a href="../docker/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    Windows
+    Container Images
   
 
     
@@ -1363,6 +1367,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#inference-depth-and-batching" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Inference depth and batching
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#per-context-timing-libhailort_profilerso" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -1423,6 +1438,8 @@
       
         
           
+        
+      
         
       
         
@@ -1817,6 +1834,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#inference-depth-and-batching" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Inference depth and batching
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#per-context-timing-libhailort_profilerso" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -1922,7 +1950,7 @@
 <li>HailoRT 4.x runtime installed (<code>libhailort.so</code> on the loader path)</li>
 <li>Hailo PCIe driver (<code>hailo_pci</code>) and udev rules — installed by the HailoRT Debian packages</li>
 </ul>
-<div class="highlight"><pre><span></span><code>hailortcli<span class="w"> </span>scan<span class="w">   </span><span class="c1"># should print the device, e.g. &quot;Hailo-8L on PCIe slot ...&quot;</span>
+<div class="highlight"><pre><span></span><code>hailortcli<span class="w"> </span>scan<span class="w">   </span><span class="c1"># should print the device, e.g. "Hailo-8L on PCIe slot ..."</span>
 </code></pre></div>
 <p>If <code>hailortcli scan</code> reports no devices, fix the HailoRT install before running the profiler — the profiler depends on the same <code>libhailort.so</code> symbols.</p>
 <h2 id="install-the-profiler">Install the profiler</h2>
@@ -1943,6 +1971,10 @@
 </code></pre></div>
 <h2 id="backend-routing">Backend routing</h2>
 <p>The Hailo backend dlopens <code>libhailort.so</code> at runtime. As with every other backend, a missing library produces a clear error message naming the file — no <code>dlopen</code> traceback.</p>
+<p><code>.hef</code> is an edge-only format: there is no cloud machine with a Hailo device attached, so the <code>dispatch</code> command rejects a <code>.hef</code> artifact up front rather than starting a cloud run that cannot execute. Profile <code>.hef</code> models on the target hardware itself.</p>
+<h2 id="inference-depth-and-batching">Inference depth and batching</h2>
+<p>On the Raspberry Pi 5 with a Hailo-8L, the measured auto inference depth is <strong>4</strong>, matching the HailoRT async scheduler's driver-reported depth.</p>
+<p>The Hailo-only <code>--batch-size</code> flag sets how many frames go into each <code>run_async</code> batch (default 1, per-frame submission). Device batching is still under development: a value above 1 is accepted with a warning, but the run currently proceeds per-frame, which is the optimized low-latency default. Once batching lands, the intended guidance is to set the batch size to the camera count in a multi-camera deployment — HailoRT overlaps host-to-device transfer, compute, and device-to-host transfer within a batch, raising throughput at close to zero added latency. Non-Hailo backends ignore the flag.</p>
 <h2 id="per-context-timing-libhailort_profilerso">Per-context timing (<code>libhailort_profiler.so</code>)</h2>
 <p>For per-context lifecycle timing — <code>configure</code>, <code>activate</code>, <code>infer</code>, <code>deactivate</code> — the profiler can load an optional Hailo profiler shim, <code>libhailort_profiler.so</code>, that wraps HailoRT lifecycle calls. The shim ships in the EdgeFirst <abbr title="Software Development Kit">SDK</abbr> and is loaded automatically when present in <code>/usr/local/lib</code> or <code>/usr/lib</code>.</p>
 <p>The Hailo per-context timing appears alongside the rest of the trace in the Studio trace view. Without the shim the profiler still reports end-to-end inference timing, only the lifecycle breakdown is unavailable.</p>
@@ -2201,7 +2233,7 @@ edgefirst-profiler<span class="w">              </span><span class="c1"># opens 
       <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["content.code.copy", "content.code.annotate", "content.tabs.link", "navigation.instant", "navigation.tracking", "navigation.tabs", "navigation.tabs.sticky", "navigation.path", "navigation.indexes", "navigation.top", "navigation.footer", "navigation.prune", "toc.follow", "search.suggest", "search.highlight"], "search": "../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"alias": true, "default": "latest", "provider": "mike"}}</script>
     
     
-      <script src="../../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      <script src="../../../assets/javascripts/bundle.d7400e89.min.js"></script>
       
         <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
       

@@ -25,7 +25,7 @@
       
       
       <link rel="icon" href="../../../assets/favicon.png">
-      <meta name="generator" content="mkdocs-ProperDocs 1.6.7, mkdocs-material-9.7.6">
+      <meta name="generator" content="mkdocs-ProperDocs 1.6.7, mkdocs-material-9.7.7">
     
     
       
@@ -33,7 +33,7 @@
       
     
     
-      <link rel="stylesheet" href="../../../assets/stylesheets/main.484c7ddc.min.css">
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.ec1eaa64.min.css">
       
         
         <link rel="stylesheet" href="../../../assets/stylesheets/palette.ab4e12ef.min.css">
@@ -907,6 +907,10 @@
       
         
       
+        
+      
+        
+      
     
     
     
@@ -1041,6 +1045,8 @@
       
         
           
+        
+      
         
       
         
@@ -1304,6 +1310,34 @@
     
   
     Validation from the Profiler
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cloud/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Cloud Runs
   
 
     
@@ -1782,7 +1816,7 @@
 
 
 <h1 id="validation-from-edgefirst-studio">Validation from EdgeFirst Studio</h1>
-<p>A validation session is created from the Studio web UI; the session ID is then handed to the profiler on the target device, which downloads the model and dataset, runs the pipeline, and publishes the artifacts back to Studio for accuracy and timing analysis.</p>
+<p>A validation session is created from the Studio web UI; the session ID is then handed to the profiler on the target device, which downloads the model and dataset, runs the pipeline, computes the accuracy and timing metrics, and publishes the results back to Studio.</p>
 <h2 id="1-create-a-validation-session-in-studio">1. Create a validation session in Studio</h2>
 <div class="admonition warning">
 <p class="admonition-title">Validation sessions need a writable project</p>
@@ -1800,10 +1834,10 @@
 <li><strong>Dataset / partition</strong> — the dataset and partition the profiler will validate against (typically <code>validation</code>).</li>
 <li><strong>Parameters</strong> — confidence threshold, <abbr title="Intersection over Union">IoU</abbr> threshold, <abbr title="Non-Maximum Suppression">NMS</abbr> top-K, max detections. Defaults match the COCO evaluation protocol; override only if you know why.</li>
 </ul>
-<p>Click <strong>Start Session</strong>. Studio creates a session card with a short ID, e.g., <code>v-1b51</code>.</p>
+<p>Click <strong>Start Session</strong>. Click the new validation session to open its details page. The session ID appears at the top of the Session tab (e.g., <code>v-1b51</code>).</p>
 <figure>
-            <img align="center" alt="Validation session card with session ID v-1b51" src="../../assets/studio-session-id.png" />
-            <figcaption>Validation session card with session ID v-1b51</figcaption>
+            <img align="center" alt="EdgeFirst Studio — Validation Details page showing the session ID" src="../../assets/studio-session-id.png" />
+            <figcaption>EdgeFirst Studio — Validation Details page showing the session ID</figcaption>
             </figure>
 <h2 id="2-run-the-profiler-on-the-target">2. Run the profiler on the target</h2>
 <p><a href="../../../platforms/networking/ssh/"><abbr title="Secure Shell">SSH</abbr></a> into the target board and, if you have not already, <a href="../../installation/">install the profiler</a> and <a href="../connecting/">sign in to Studio</a>.</p>
@@ -1811,20 +1845,24 @@
 <div class="highlight"><pre><span></span><code>edgefirst-profiler<span class="w"> </span>validate<span class="w"> </span>--session-id<span class="w"> </span>v-1b51
 </code></pre></div>
 <p>When invoked with <code>--session-id</code> directly from the terminal, the profiler runs <strong>headlessly</strong> — there is no TUI, just a progress-bar-driven report. The same workflow is also available from inside the TUI; see <a href="../from_profiler/">Validation from the Profiler</a> for that path.</p>
+<div class="admonition warning">
+<p class="admonition-title">Re-running an existing session uses the flags you pass now</p>
+<p>Naming an existing validation session runs it again with the flags given <strong>now</strong> — it does not restore the ones its previous run used. Pipeline options such as <code>--sahi</code> must be passed again, or the re-run profiles a different pipeline and replaces the earlier results with it. Every run report states whether tiled inference was used, so a replaced tiled run is at least visible after the fact.</p>
+</div>
 <p>The profiler:</p>
 <ol>
 <li>Resolves the session against Studio.</li>
 <li>Downloads the model artifact and dataset partition into the cache (<code>~/.cache/edgefirst-profiler/</code> on Linux, <code>~/Library/Caches/edgefirst-profiler/</code> on macOS).</li>
-<li>Runs the full pipeline (capture → preprocess → inference → postprocess → <abbr title="Non-Maximum Suppression">NMS</abbr>) over every image in the dataset.</li>
-<li>Writes <code>predictions.parquet</code> and <code>trace.pftrace</code> into the cached session directory.</li>
-<li>Uploads both artifacts to Studio and triggers the cloud validator.</li>
+<li>Runs the full pipeline (Image Load → Pre-processing → Inference → Model Decoder → Materialize Masks → Logger) over every image in the dataset. In the timing tables these stages are labeled <code>capture</code>, <code>preprocess</code>, <code>inference</code>, <code>model_decode</code>, and <code>materialize_masks</code>; the Logger stage records results and is not timed as a pipeline stage. Materialize Masks only does work for segmentation models.</li>
+<li>Writes <code>predictions.parquet</code> and <code>trace.pftrace</code>, then computes the COCO accuracy metrics on the device itself — see <a href="../../concepts/validation/">Validation and Metrics</a>.</li>
+<li>Publishes the full artifact set to the session: predictions, trace, <code>metrics.yaml</code>, <code>platform.yaml</code>, and the chart JSONs.</li>
 </ol>
-<p>Pass <code>--no-publish</code> to keep the run local, or <code>--no-validate</code> to publish artifacts without triggering the cloud validator (useful when you just want the trace).</p>
-<p>If the model already lives on disk and you want to avoid the download:</p>
-<div class="highlight"><pre><span></span><code>edgefirst-profiler<span class="w"> </span>validate<span class="w"> </span><span class="se">\</span>
-<span class="w">    </span>--session-id<span class="w"> </span>v-1b51<span class="w"> </span><span class="se">\</span>
-<span class="w">    </span>--model<span class="w"> </span>/path/to/best.onnx
-</code></pre></div>
+<p>Pass <code>--no-publish</code> to keep the run local, or <code>--validation off</code> to publish the predictions and trace without computing accuracy metrics (useful when you just want the trace).</p>
+<div class="admonition note">
+<p class="admonition-title">Two profiler runs can share one dataset cache</p>
+<p>A second run that finds another profiler still downloading the same dataset — two containers mounting one cache volume, for example — waits for that download to finish and reuses it, instead of judging the half-finished copy incomplete and deleting it underneath the first run.</p>
+</div>
+<p>A validation session defines its own model, so <code>--model</code> cannot be combined with <code>--session-id</code> — the artifact is downloaded from the session (and reused from the cache on later runs).</p>
 <h3 id="what-the-run-looks-like">What the run looks like</h3>
 <p>The output is a sequence of progress bars (model download, inference, prediction upload) followed by a formatted <strong>Session Report</strong> table — pipeline-stage timings, throughput, coverage, and a trace file path:</p>
 <div class="highlight"><pre><span></span><code>$ edgefirst-profiler validate --session-id v-1ce9
@@ -1836,30 +1874,29 @@ Fetching validation session v-1ce9...
   Pipeline Stage Breakdown
   -----------------------------------------------------------------------
   Stage                Mean   Median      p95      p99      Min      Max
-  image_capture       2.7ms    2.6ms    4.2ms    6.0ms    477µs   22.2ms
+  capture             2.7ms    2.6ms    4.2ms    6.0ms    477µs   22.2ms
   preprocess          1.1ms    766µs    2.7ms    8.8ms     89µs   29.2ms
   inference          33.4ms   31.8ms   40.6ms   47.1ms   28.4ms    1.35s
-  ...
+  model_decode        1.2ms    1.1ms    2.1ms    3.0ms    412µs    8.4ms
+  -----------------------------------------------------------------------
   End-to-end         39.1ms   37.2ms   48.0ms   55.7ms   32.2ms    1.35s
-  Throughput      29.6 FPS
-
-  Trace: ~/.cache/edgefirst-profiler/validation/v-1ce9/trace.pftrace
+  Throughput      29.6 FPS (min 21.4 / max 33.0 / p95 31.8 / p99 32.6)
 ...
 Results published to Studio session v-1ce9
-Validator job submitted (job_id: 144e959d-...)
+View details: https://edgefirst.studio/...
 </code></pre></div>
-<p>The Pipeline Stage Breakdown shows the same data that drives the F4 TUI dashboard, formatted as a static table. The <strong>Trace</strong> path is the local copy of the file that was also uploaded to Studio; the full-resolution trace viewer lives in the validation session card in Studio.</p>
+<p>The Pipeline Stage Breakdown shows the same data that drives the F4 TUI dashboard, formatted as a static table. The transcript above is abbreviated (<code>...</code> lines) — the full report also prints the local path of the trace file; the same file is uploaded to Studio, where the full-resolution trace viewer lives in the validation session card. Warnings — corrupt images, decoder errors, skipped frames — print to the console by default; raise the verbosity with <code>-v</code>, <code>-vv</code>, or <code>-vvv</code> for info, debug, or trace detail.</p>
 <div class="admonition note">
-<p class="admonition-title">System resource samples are Linux-only</p>
-<p>The <strong>System Resources</strong> rows (CPU / Memory / RSS) are sampled from <code>/proc</code> and <code>/sys</code> and will report as zero on macOS or Windows hosts.</p>
+<p class="admonition-title">System resource samples need a supported platform</p>
+<p>The <strong>System Resources</strong> rows are sampled from <code>/proc</code>, <code>/sys</code>, and hwmon on Linux, including board power on devices with a supported power sensor. Apple Silicon Macs report CPU, GPU, ANE, and <abbr title="Dynamic Random-Access Memory">DRAM</abbr> power. On other hosts, unsupported gauges are reported as unavailable.</p>
 </div>
 <h2 id="3-watch-the-session-in-studio">3. Watch the session in Studio</h2>
-<p>While the profiler runs, the session card in Studio updates with status and progress. When the cloud validator finishes, the card transitions to <strong>Complete</strong> and the <strong>View Validation Charts</strong> button appears.</p>
+<p>While the profiler runs, the session card in Studio updates with status and progress. When the profiler finishes computing and publishing the metrics, the card transitions to <strong>Complete</strong> and the <strong>View Validation Charts</strong> button appears.</p>
 <figure>
-            <img align="center" alt="Validation session card showing progress while the profiler runs and the cloud validator finishes" src="../../assets/studio-session-progress.png" />
-            <figcaption>Validation session card showing progress while the profiler runs and the cloud validator finishes</figcaption>
+            <img align="center" alt="Validation session card showing progress while the profiler runs" src="../../assets/studio-session-progress.png" />
+            <figcaption>Validation session card showing progress while the profiler runs</figcaption>
             </figure>
-<p>The metrics dashboard contains the standard <code>pycocotools</code> outputs (box <abbr title="mean Average Precision">mAP</abbr>@0.5:0.95, AP/AR breakdowns, AP per class) plus instance-segmentation mask metrics when applicable. See <a href="../../../models/validation/metrics/detection/">Object Detection Metrics</a> and <a href="../../../models/validation/metrics/segmentation/">Segmentation Metrics</a> for the full reference.</p>
+<p>The metrics dashboard contains COCO-equivalent metrics computed by the profiler's own evaluator (box <abbr title="mean Average Precision">mAP</abbr>@0.5:0.95, AP/AR breakdowns, AP per class) plus instance-segmentation mask metrics when applicable. See <a href="../../../models/validation/metrics/detection/">Object Detection Metrics</a> and <a href="../../../models/validation/metrics/segmentation/">Segmentation Metrics</a> for the full reference.</p>
 <figure>
             <img align="center" alt="EdgeFirst Studio — validation metrics dashboard on a completed session: mAP, AP/AR breakdowns, confusion matrices, PR curves" src="../../assets/studio-validation-metrics.png" />
             <figcaption>EdgeFirst Studio — validation metrics dashboard on a completed session: <abbr title="mean Average Precision">mAP</abbr>, AP/AR breakdowns, confusion matrices, PR curves</figcaption>
@@ -1867,7 +1904,7 @@ Validator job submitted (job_id: 144e959d-...)
 <h2 id="4-open-the-trace-in-studio">4. Open the trace in Studio</h2>
 <p>Click <strong>Open Trace</strong> on the session card to load the published <code>trace.pftrace</code> in Studio's trace viewer. The trace contains:</p>
 <ul>
-<li>Pipeline-stage spans (capture / preprocess / inference / postprocess / <abbr title="Non-Maximum Suppression">NMS</abbr>).</li>
+<li>Pipeline-stage spans (capture / preprocess / inference / model decode / mask materialization).</li>
 <li>Per-operator timing for the backend used (ORT nodes, <abbr title="TensorFlow Lite">TFLite</abbr> ops, Neutron ticks, TensorRT layers, Hailo contexts).</li>
 <li>System-metric counters (CPU%, RSS, temperatures, and board power where a sensor is present).</li>
 </ul>
@@ -1878,7 +1915,10 @@ Validator job submitted (job_id: 144e959d-...)
 <h2 id="tips">Tips</h2>
 <ul>
 <li><strong>Override the output directory</strong> with <code>--output /path/to/results</code> when running on a board with a small root filesystem.</li>
-<li><strong>Skip the cloud validator</strong> with <code>--no-validate</code> to publish only the timing trace. Useful when iterating on a model where you have already confirmed accuracy.</li>
+<li><strong>Choose when accuracy is computed</strong> with <code>--validation off|after|during</code>. <code>after</code> (the default when ground truth is available) scores the run once profiling completes, keeping the evaluation off the measured hot path; <code>during</code> evaluates concurrently while the pipeline runs, so the validation overhead itself is captured in the trace; <code>off</code> skips accuracy entirely and still publishes the predictions and trace — useful when iterating on a model where you have already confirmed accuracy.</li>
+<li><strong>Re-score without re-running the model.</strong> <code>--predictions &lt;parquet&gt;</code> re-validates an existing predictions file against ground truth; add <code>--trace &lt;pftrace&gt;</code> to recover the run's measured timing, worker concurrency, and system telemetry fully offline. <code>--session-id &lt;id&gt; --reprocess</code> instead fetches the session's own uploaded predictions from Studio and re-scores them, for machines that never held the original file.</li>
+<li><strong>Measure clean per-stage latency</strong> with <code>--serialize-core</code>, which runs every core pipeline stage one frame at a time (no overlap) for contention-free per-frame numbers to compare against the overlapped, throughput-oriented default.</li>
+<li><strong>Profile your own images</strong> with <code>--images &lt;dir&gt;</code>, which overrides the session's dataset. Validation is disabled for such a run — the images carry no ground truth — and the profiler says so.</li>
 <li><strong>Pre-fill the TUI from a session</strong> by running <code>edgefirst-profiler --session-id v-1b51</code> (no <code>validate</code> subcommand). The TUI launches and jumps straight to the F4 Profiler screen with the session already resolved.</li>
 </ul>
 <h2 id="comparing-runs">Comparing runs</h2>
@@ -2131,7 +2171,7 @@ Validator job submitted (job_id: 144e959d-...)
       <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["content.code.copy", "content.code.annotate", "content.tabs.link", "navigation.instant", "navigation.tracking", "navigation.tabs", "navigation.tabs.sticky", "navigation.path", "navigation.indexes", "navigation.top", "navigation.footer", "navigation.prune", "toc.follow", "search.suggest", "search.highlight"], "search": "../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"alias": true, "default": "latest", "provider": "mike"}}</script>
     
     
-      <script src="../../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      <script src="../../../assets/javascripts/bundle.d7400e89.min.js"></script>
       
         <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
       

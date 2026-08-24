@@ -25,7 +25,7 @@
       
       
       <link rel="icon" href="../../../assets/favicon.png">
-      <meta name="generator" content="mkdocs-ProperDocs 1.6.7, mkdocs-material-9.7.6">
+      <meta name="generator" content="mkdocs-ProperDocs 1.6.7, mkdocs-material-9.7.7">
     
     
       
@@ -33,7 +33,7 @@
       
     
     
-      <link rel="stylesheet" href="../../../assets/stylesheets/main.484c7ddc.min.css">
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.ec1eaa64.min.css">
       
         
         <link rel="stylesheet" href="../../../assets/stylesheets/palette.ab4e12ef.min.css">
@@ -2127,7 +2127,7 @@ with no migration path (they did not exist in 2025.10).</p>
 </table>
 <div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">json</span>
 
-<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;annotations.json&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">"annotations.json"</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
     <span class="n">data</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
 
 <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="nb">list</span><span class="p">):</span>
@@ -2135,28 +2135,28 @@ with no migration path (they did not exist in 2025.10).</p>
     <span class="n">samples</span> <span class="o">=</span> <span class="n">data</span>
 <span class="k">else</span><span class="p">:</span>
     <span class="c1"># 2026.04</span>
-    <span class="n">samples</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s2">&quot;samples&quot;</span><span class="p">]</span>
-    <span class="n">version</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;schema_version&quot;</span><span class="p">)</span>
+    <span class="n">samples</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s2">"samples"</span><span class="p">]</span>
+    <span class="n">version</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"schema_version"</span><span class="p">)</span>
 </code></pre></div>
 <h2 id="reading-both-versions">Reading Both Versions</h2>
 <div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">polars</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pl</span>
 
 <span class="k">def</span><span class="w"> </span><span class="nf">read_dataset</span><span class="p">(</span><span class="n">path</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Read an EdgeFirst dataset, handling both 2025.10 and 2026.04.&quot;&quot;&quot;</span>
-    <span class="k">if</span> <span class="n">path</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="s2">&quot;.parquet&quot;</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">"""Read an EdgeFirst dataset, handling both 2025.10 and 2026.04."""</span>
+    <span class="k">if</span> <span class="n">path</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="s2">".parquet"</span><span class="p">):</span>
         <span class="n">df</span> <span class="o">=</span> <span class="n">pl</span><span class="o">.</span><span class="n">read_parquet</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>
     <span class="k">else</span><span class="p">:</span>
         <span class="n">df</span> <span class="o">=</span> <span class="n">pl</span><span class="o">.</span><span class="n">read_ipc</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>
 
     <span class="c1"># Detect version</span>
-    <span class="k">if</span> <span class="s2">&quot;polygon&quot;</span> <span class="ow">in</span> <span class="n">df</span><span class="o">.</span><span class="n">columns</span><span class="p">:</span>
+    <span class="k">if</span> <span class="s2">"polygon"</span> <span class="ow">in</span> <span class="n">df</span><span class="o">.</span><span class="n">columns</span><span class="p">:</span>
         <span class="k">return</span> <span class="n">read_2026_04</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
 
-    <span class="k">if</span> <span class="s2">&quot;mask&quot;</span> <span class="ow">in</span> <span class="n">df</span><span class="o">.</span><span class="n">columns</span><span class="p">:</span>
-        <span class="n">mask_dtype</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;mask&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">dtype</span><span class="p">)</span>
-        <span class="k">if</span> <span class="n">mask_dtype</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">&quot;List(Float32&quot;</span><span class="p">):</span>
+    <span class="k">if</span> <span class="s2">"mask"</span> <span class="ow">in</span> <span class="n">df</span><span class="o">.</span><span class="n">columns</span><span class="p">:</span>
+        <span class="n">mask_dtype</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s2">"mask"</span><span class="p">]</span><span class="o">.</span><span class="n">dtype</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">mask_dtype</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">"List(Float32"</span><span class="p">):</span>
             <span class="k">return</span> <span class="n">read_2025_10</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
-        <span class="k">elif</span> <span class="nb">str</span><span class="p">(</span><span class="n">mask_dtype</span><span class="p">)</span> <span class="o">==</span> <span class="s2">&quot;Binary&quot;</span><span class="p">:</span>
+        <span class="k">elif</span> <span class="nb">str</span><span class="p">(</span><span class="n">mask_dtype</span><span class="p">)</span> <span class="o">==</span> <span class="s2">"Binary"</span><span class="p">:</span>
             <span class="k">return</span> <span class="n">read_2026_04</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
 
     <span class="c1"># No geometry columns — compatible with either version</span>
@@ -2164,15 +2164,15 @@ with no migration path (they did not exist in 2025.10).</p>
 
 
 <span class="k">def</span><span class="w"> </span><span class="nf">read_2025_10</span><span class="p">(</span><span class="n">df</span><span class="p">:</span> <span class="n">pl</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Handle 2025.10 NaN-separated polygon data in the mask column.&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">"""Handle 2025.10 NaN-separated polygon data in the mask column."""</span>
     <span class="c1"># Convert mask: List&lt;f32&gt; (NaN-separated) -&gt; polygon: List&lt;List&lt;f32&gt;&gt;</span>
     <span class="c1"># This is what `edgefirst migrate` does</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;2025.10 format detected — consider running: edgefirst migrate&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">"2025.10 format detected — consider running: edgefirst migrate"</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">df</span>
 
 
 <span class="k">def</span><span class="w"> </span><span class="nf">read_2026_04</span><span class="p">(</span><span class="n">df</span><span class="p">:</span> <span class="n">pl</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Handle 2026.04 format with polygon and raster mask columns.&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">"""Handle 2026.04 format with polygon and raster mask columns."""</span>
     <span class="c1"># polygon: List&lt;List&lt;f32&gt;&gt; — interleaved xy pairs per ring</span>
     <span class="c1"># mask: Binary — PNG-encoded raster pixels</span>
     <span class="k">return</span> <span class="n">df</span>
@@ -2180,29 +2180,29 @@ with no migration path (they did not exist in 2025.10).</p>
 <h2 id="code-migration-checklist">Code Migration Checklist</h2>
 <h3 id="if-you-read-the-mask-column-directly">If you read the <code>mask</code> column directly</h3>
 <div class="highlight"><pre><span></span><code><span class="c1"># OLD (2025.10) — WILL BREAK on 2026.04 files</span>
-<span class="n">mask_data</span> <span class="o">=</span> <span class="n">row</span><span class="p">[</span><span class="s2">&quot;mask&quot;</span><span class="p">]</span>  <span class="c1"># List&lt;f32&gt; with NaN separators</span>
+<span class="n">mask_data</span> <span class="o">=</span> <span class="n">row</span><span class="p">[</span><span class="s2">"mask"</span><span class="p">]</span>  <span class="c1"># List&lt;f32&gt; with NaN separators</span>
 <span class="n">rings</span> <span class="o">=</span> <span class="n">split_on_nan</span><span class="p">(</span><span class="n">mask_data</span><span class="p">)</span>
 
 <span class="c1"># NEW (2026.04)</span>
-<span class="n">polygon_data</span> <span class="o">=</span> <span class="n">row</span><span class="p">[</span><span class="s2">&quot;polygon&quot;</span><span class="p">]</span>  <span class="c1"># List&lt;List&lt;f32&gt;&gt;, already split into rings</span>
+<span class="n">polygon_data</span> <span class="o">=</span> <span class="n">row</span><span class="p">[</span><span class="s2">"polygon"</span><span class="p">]</span>  <span class="c1"># List&lt;List&lt;f32&gt;&gt;, already split into rings</span>
 <span class="k">for</span> <span class="n">ring</span> <span class="ow">in</span> <span class="n">polygon_data</span><span class="p">:</span>
     <span class="n">points</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="n">ring</span><span class="p">[</span><span class="mi">0</span><span class="p">::</span><span class="mi">2</span><span class="p">],</span> <span class="n">ring</span><span class="p">[</span><span class="mi">1</span><span class="p">::</span><span class="mi">2</span><span class="p">]))</span>
 </code></pre></div>
 <h3 id="if-you-check-box2d_format">If you check <code>box2d_format</code></h3>
 <div class="highlight"><pre><span></span><code><span class="c1"># OLD (2025.10) — assumed cxcywh for Arrow, ltwh for JSON</span>
-<span class="n">cx</span><span class="p">,</span> <span class="n">cy</span><span class="p">,</span> <span class="n">w</span><span class="p">,</span> <span class="n">h</span> <span class="o">=</span> <span class="n">row</span><span class="p">[</span><span class="s2">&quot;box2d&quot;</span><span class="p">]</span>
+<span class="n">cx</span><span class="p">,</span> <span class="n">cy</span><span class="p">,</span> <span class="n">w</span><span class="p">,</span> <span class="n">h</span> <span class="o">=</span> <span class="n">row</span><span class="p">[</span><span class="s2">"box2d"</span><span class="p">]</span>
 
 <span class="c1"># NEW (2026.04) — check metadata</span>
 <span class="c1"># box2d_format metadata describes the layout; default is still cxcywh for Arrow</span>
-<span class="n">cx</span><span class="p">,</span> <span class="n">cy</span><span class="p">,</span> <span class="n">w</span><span class="p">,</span> <span class="n">h</span> <span class="o">=</span> <span class="n">row</span><span class="p">[</span><span class="s2">&quot;box2d&quot;</span><span class="p">]</span>  <span class="c1"># same default, but verify via metadata</span>
+<span class="n">cx</span><span class="p">,</span> <span class="n">cy</span><span class="p">,</span> <span class="n">w</span><span class="p">,</span> <span class="n">h</span> <span class="o">=</span> <span class="n">row</span><span class="p">[</span><span class="s2">"box2d"</span><span class="p">]</span>  <span class="c1"># same default, but verify via metadata</span>
 </code></pre></div>
 <h3 id="if-you-process-lidar-visualizations">If you process <abbr title="Light Detection and Ranging">LiDAR</abbr> visualizations</h3>
 <div class="highlight"><pre><span></span><code><span class="c1"># OLD (2025.10) — projected LiDAR images</span>
-<span class="n">depth_image</span> <span class="o">=</span> <span class="n">load</span><span class="p">(</span><span class="s2">&quot;frame_001.lidar.png&quot;</span><span class="p">)</span>
-<span class="n">reflect_image</span> <span class="o">=</span> <span class="n">load</span><span class="p">(</span><span class="s2">&quot;frame_001.lidar.jpeg&quot;</span><span class="p">)</span>
+<span class="n">depth_image</span> <span class="o">=</span> <span class="n">load</span><span class="p">(</span><span class="s2">"frame_001.lidar.png"</span><span class="p">)</span>
+<span class="n">reflect_image</span> <span class="o">=</span> <span class="n">load</span><span class="p">(</span><span class="s2">"frame_001.lidar.jpeg"</span><span class="p">)</span>
 
 <span class="c1"># NEW (2026.04) — project from PCD yourself</span>
-<span class="n">pcd</span> <span class="o">=</span> <span class="n">load</span><span class="p">(</span><span class="s2">&quot;frame_001.lidar.pcd&quot;</span><span class="p">)</span>
+<span class="n">pcd</span> <span class="o">=</span> <span class="n">load</span><span class="p">(</span><span class="s2">"frame_001.lidar.pcd"</span><span class="p">)</span>
 <span class="n">depth_image</span> <span class="o">=</span> <span class="n">project_to_depth</span><span class="p">(</span><span class="n">pcd</span><span class="p">,</span> <span class="n">calibration</span><span class="p">)</span>
 </code></pre></div>
 <h2 id="faq">FAQ</h2>
@@ -2489,7 +2489,7 @@ values. They are optional and absent from non-LVIS datasets.</p>
       <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["content.code.copy", "content.code.annotate", "content.tabs.link", "navigation.instant", "navigation.tracking", "navigation.tabs", "navigation.tabs.sticky", "navigation.path", "navigation.indexes", "navigation.top", "navigation.footer", "navigation.prune", "toc.follow", "search.suggest", "search.highlight"], "search": "../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"alias": true, "default": "latest", "provider": "mike"}}</script>
     
     
-      <script src="../../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      <script src="../../../assets/javascripts/bundle.d7400e89.min.js"></script>
       
         <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
       

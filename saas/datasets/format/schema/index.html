@@ -25,7 +25,7 @@
       
       
       <link rel="icon" href="../../../assets/favicon.png">
-      <meta name="generator" content="mkdocs-ProperDocs 1.6.7, mkdocs-material-9.7.6">
+      <meta name="generator" content="mkdocs-ProperDocs 1.6.7, mkdocs-material-9.7.7">
     
     
       
@@ -33,7 +33,7 @@
       
     
     
-      <link rel="stylesheet" href="../../../assets/stylesheets/main.484c7ddc.min.css">
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.ec1eaa64.min.css">
       
         
         <link rel="stylesheet" href="../../../assets/stylesheets/palette.ab4e12ef.min.css">
@@ -2383,10 +2383,10 @@ many training images contain it:</p>
 <p>This enables disaggregated AP metrics (AP_r, AP_c, AP_f) and long-tail distribution
 analysis. Use with Polars:</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># Count annotations by frequency group</span>
-<span class="n">df</span><span class="o">.</span><span class="n">group_by</span><span class="p">(</span><span class="s2">&quot;category_frequency&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">len</span><span class="p">()</span>
+<span class="n">df</span><span class="o">.</span><span class="n">group_by</span><span class="p">(</span><span class="s2">"category_frequency"</span><span class="p">)</span><span class="o">.</span><span class="n">len</span><span class="p">()</span>
 
 <span class="c1"># Filter to rare categories only</span>
-<span class="n">rare</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">pl</span><span class="o">.</span><span class="n">col</span><span class="p">(</span><span class="s2">&quot;category_frequency&quot;</span><span class="p">)</span> <span class="o">==</span> <span class="s2">&quot;r&quot;</span><span class="p">)</span>
+<span class="n">rare</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">pl</span><span class="o">.</span><span class="n">col</span><span class="p">(</span><span class="s2">"category_frequency"</span><span class="p">)</span> <span class="o">==</span> <span class="s2">"r"</span><span class="p">)</span>
 </code></pre></div>
 <h3 id="sample-metadata">Sample Metadata</h3>
 <table>
@@ -2517,47 +2517,47 @@ per-geometry confidence values in the range 0..1.</p>
 <p>For reference, the full Polars-style schema:</p>
 <div class="highlight"><pre><span></span><code><span class="p">(</span>
     <span class="c1"># ── Identity &amp; Classification ──────────────────────</span>
-    <span class="p">(</span><span class="s1">&#39;name&#39;</span><span class="p">,</span> <span class="n">String</span><span class="p">),</span>
-    <span class="p">(</span><span class="s1">&#39;frame&#39;</span><span class="p">,</span> <span class="n">UInt32</span><span class="p">),</span>
-    <span class="p">(</span><span class="s1">&#39;object_id&#39;</span><span class="p">,</span> <span class="n">String</span><span class="p">),</span>
-    <span class="p">(</span><span class="s1">&#39;label&#39;</span><span class="p">,</span> <span class="n">Categorical</span><span class="p">(</span><span class="n">ordering</span><span class="o">=</span><span class="s1">&#39;physical&#39;</span><span class="p">)),</span>
-    <span class="p">(</span><span class="s1">&#39;label_index&#39;</span><span class="p">,</span> <span class="n">UInt64</span><span class="p">),</span>                    <span class="c1"># source-faithful, may be non-contiguous</span>
-    <span class="p">(</span><span class="s1">&#39;group&#39;</span><span class="p">,</span> <span class="n">Categorical</span><span class="p">(</span><span class="n">ordering</span><span class="o">=</span><span class="s1">&#39;physical&#39;</span><span class="p">)),</span>
+    <span class="p">(</span><span class="s1">'name'</span><span class="p">,</span> <span class="n">String</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">'frame'</span><span class="p">,</span> <span class="n">UInt32</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">'object_id'</span><span class="p">,</span> <span class="n">String</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">'label'</span><span class="p">,</span> <span class="n">Categorical</span><span class="p">(</span><span class="n">ordering</span><span class="o">=</span><span class="s1">'physical'</span><span class="p">)),</span>
+    <span class="p">(</span><span class="s1">'label_index'</span><span class="p">,</span> <span class="n">UInt64</span><span class="p">),</span>                    <span class="c1"># source-faithful, may be non-contiguous</span>
+    <span class="p">(</span><span class="s1">'group'</span><span class="p">,</span> <span class="n">Categorical</span><span class="p">(</span><span class="n">ordering</span><span class="o">=</span><span class="s1">'physical'</span><span class="p">)),</span>
 
     <span class="c1"># ── Geometry: Polygon ──────────────────────────────</span>
-    <span class="p">(</span><span class="s1">&#39;polygon&#39;</span><span class="p">,</span> <span class="n">List</span><span class="p">(</span><span class="n">List</span><span class="p">(</span><span class="n">Float32</span><span class="p">))),</span>           <span class="c1"># interleaved [x1,y1,x2,y2,...] per ring</span>
-    <span class="p">(</span><span class="s1">&#39;polygon_score&#39;</span><span class="p">,</span> <span class="n">Float32</span><span class="p">),</span>                 <span class="c1"># OPTIONAL</span>
+    <span class="p">(</span><span class="s1">'polygon'</span><span class="p">,</span> <span class="n">List</span><span class="p">(</span><span class="n">List</span><span class="p">(</span><span class="n">Float32</span><span class="p">))),</span>           <span class="c1"># interleaved [x1,y1,x2,y2,...] per ring</span>
+    <span class="p">(</span><span class="s1">'polygon_score'</span><span class="p">,</span> <span class="n">Float32</span><span class="p">),</span>                 <span class="c1"># OPTIONAL</span>
 
     <span class="c1"># ── Geometry: Raster Mask ──────────────────────────</span>
-    <span class="p">(</span><span class="s1">&#39;mask&#39;</span><span class="p">,</span> <span class="n">Binary</span><span class="p">),</span>                            <span class="c1"># PNG-encoded grayscale raster pixels</span>
-    <span class="p">(</span><span class="s1">&#39;mask_score&#39;</span><span class="p">,</span> <span class="n">Float32</span><span class="p">),</span>                    <span class="c1"># OPTIONAL</span>
+    <span class="p">(</span><span class="s1">'mask'</span><span class="p">,</span> <span class="n">Binary</span><span class="p">),</span>                            <span class="c1"># PNG-encoded grayscale raster pixels</span>
+    <span class="p">(</span><span class="s1">'mask_score'</span><span class="p">,</span> <span class="n">Float32</span><span class="p">),</span>                    <span class="c1"># OPTIONAL</span>
 
     <span class="c1"># ── Geometry: 2D Bounding Box ──────────────────────</span>
-    <span class="p">(</span><span class="s1">&#39;box2d&#39;</span><span class="p">,</span> <span class="n">Array</span><span class="p">(</span><span class="n">Float32</span><span class="p">,</span> <span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="mi">4</span><span class="p">,))),</span>      <span class="c1"># layout from metadata</span>
-    <span class="p">(</span><span class="s1">&#39;box2d_score&#39;</span><span class="p">,</span> <span class="n">Float32</span><span class="p">),</span>                   <span class="c1"># OPTIONAL</span>
+    <span class="p">(</span><span class="s1">'box2d'</span><span class="p">,</span> <span class="n">Array</span><span class="p">(</span><span class="n">Float32</span><span class="p">,</span> <span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="mi">4</span><span class="p">,))),</span>      <span class="c1"># layout from metadata</span>
+    <span class="p">(</span><span class="s1">'box2d_score'</span><span class="p">,</span> <span class="n">Float32</span><span class="p">),</span>                   <span class="c1"># OPTIONAL</span>
 
     <span class="c1"># ── Geometry: 3D Bounding Box ──────────────────────</span>
-    <span class="p">(</span><span class="s1">&#39;box3d&#39;</span><span class="p">,</span> <span class="n">Array</span><span class="p">(</span><span class="n">Float32</span><span class="p">,</span> <span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="mi">6</span><span class="p">,))),</span>      <span class="c1"># [cx, cy, cz, w, h, l]</span>
-    <span class="p">(</span><span class="s1">&#39;box3d_score&#39;</span><span class="p">,</span> <span class="n">Float32</span><span class="p">),</span>                   <span class="c1"># OPTIONAL</span>
+    <span class="p">(</span><span class="s1">'box3d'</span><span class="p">,</span> <span class="n">Array</span><span class="p">(</span><span class="n">Float32</span><span class="p">,</span> <span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="mi">6</span><span class="p">,))),</span>      <span class="c1"># [cx, cy, cz, w, h, l]</span>
+    <span class="p">(</span><span class="s1">'box3d_score'</span><span class="p">,</span> <span class="n">Float32</span><span class="p">),</span>                   <span class="c1"># OPTIONAL</span>
 
     <span class="c1"># ── Annotation Metadata (optional) ─────────────────</span>
-    <span class="p">(</span><span class="s1">&#39;iscrowd&#39;</span><span class="p">,</span> <span class="n">Boolean</span><span class="p">),</span>                       <span class="c1"># OPTIONAL - true = crowd region, false or absent</span>
-    <span class="p">(</span><span class="s1">&#39;category_frequency&#39;</span><span class="p">,</span> <span class="n">Categorical</span><span class="p">(</span><span class="n">ordering</span><span class="o">=</span><span class="s1">&#39;physical&#39;</span><span class="p">)),</span>  <span class="c1"># OPTIONAL - LVIS &quot;f&quot;/&quot;c&quot;/&quot;r&quot;</span>
+    <span class="p">(</span><span class="s1">'iscrowd'</span><span class="p">,</span> <span class="n">Boolean</span><span class="p">),</span>                       <span class="c1"># OPTIONAL - true = crowd region, false or absent</span>
+    <span class="p">(</span><span class="s1">'category_frequency'</span><span class="p">,</span> <span class="n">Categorical</span><span class="p">(</span><span class="n">ordering</span><span class="o">=</span><span class="s1">'physical'</span><span class="p">)),</span>  <span class="c1"># OPTIONAL - LVIS "f"/"c"/"r"</span>
 
     <span class="c1"># ── Sample Metadata (optional) ─────────────────────</span>
-    <span class="p">(</span><span class="s1">&#39;size&#39;</span><span class="p">,</span> <span class="n">Array</span><span class="p">(</span><span class="n">UInt32</span><span class="p">,</span> <span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="mi">2</span><span class="p">,))),</span>         <span class="c1"># [width, height]</span>
-    <span class="p">(</span><span class="s1">&#39;location&#39;</span><span class="p">,</span> <span class="n">Array</span><span class="p">(</span><span class="n">Float32</span><span class="p">,</span> <span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="mi">2</span><span class="p">,))),</span>    <span class="c1"># [lat, lon]</span>
-    <span class="p">(</span><span class="s1">&#39;pose&#39;</span><span class="p">,</span> <span class="n">Array</span><span class="p">(</span><span class="n">Float32</span><span class="p">,</span> <span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="mi">3</span><span class="p">,))),</span>        <span class="c1"># [yaw, pitch, roll]</span>
-    <span class="p">(</span><span class="s1">&#39;degradation&#39;</span><span class="p">,</span> <span class="n">String</span><span class="p">),</span>
-    <span class="p">(</span><span class="s1">&#39;neg_label_indices&#39;</span><span class="p">,</span> <span class="n">List</span><span class="p">(</span><span class="n">UInt32</span><span class="p">)),</span>          <span class="c1"># OPTIONAL - LVIS negative categories</span>
-    <span class="p">(</span><span class="s1">&#39;not_exhaustive_label_indices&#39;</span><span class="p">,</span> <span class="n">List</span><span class="p">(</span><span class="n">UInt32</span><span class="p">)),</span>  <span class="c1"># OPTIONAL - LVIS incomplete categories</span>
+    <span class="p">(</span><span class="s1">'size'</span><span class="p">,</span> <span class="n">Array</span><span class="p">(</span><span class="n">UInt32</span><span class="p">,</span> <span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="mi">2</span><span class="p">,))),</span>         <span class="c1"># [width, height]</span>
+    <span class="p">(</span><span class="s1">'location'</span><span class="p">,</span> <span class="n">Array</span><span class="p">(</span><span class="n">Float32</span><span class="p">,</span> <span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="mi">2</span><span class="p">,))),</span>    <span class="c1"># [lat, lon]</span>
+    <span class="p">(</span><span class="s1">'pose'</span><span class="p">,</span> <span class="n">Array</span><span class="p">(</span><span class="n">Float32</span><span class="p">,</span> <span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="mi">3</span><span class="p">,))),</span>        <span class="c1"># [yaw, pitch, roll]</span>
+    <span class="p">(</span><span class="s1">'degradation'</span><span class="p">,</span> <span class="n">String</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">'neg_label_indices'</span><span class="p">,</span> <span class="n">List</span><span class="p">(</span><span class="n">UInt32</span><span class="p">)),</span>          <span class="c1"># OPTIONAL - LVIS negative categories</span>
+    <span class="p">(</span><span class="s1">'not_exhaustive_label_indices'</span><span class="p">,</span> <span class="n">List</span><span class="p">(</span><span class="n">UInt32</span><span class="p">)),</span>  <span class="c1"># OPTIONAL - LVIS incomplete categories</span>
 
     <span class="c1"># ── Instrumentation (optional) ─────────────────────</span>
-    <span class="p">(</span><span class="s1">&#39;timing&#39;</span><span class="p">,</span> <span class="n">Struct</span><span class="p">({</span>
-        <span class="s1">&#39;load&#39;</span><span class="p">:</span> <span class="n">Int64</span><span class="p">,</span>
-        <span class="s1">&#39;preprocess&#39;</span><span class="p">:</span> <span class="n">Int64</span><span class="p">,</span>
-        <span class="s1">&#39;inference&#39;</span><span class="p">:</span> <span class="n">Int64</span><span class="p">,</span>
-        <span class="s1">&#39;decode&#39;</span><span class="p">:</span> <span class="n">Int64</span><span class="p">,</span>
+    <span class="p">(</span><span class="s1">'timing'</span><span class="p">,</span> <span class="n">Struct</span><span class="p">({</span>
+        <span class="s1">'load'</span><span class="p">:</span> <span class="n">Int64</span><span class="p">,</span>
+        <span class="s1">'preprocess'</span><span class="p">:</span> <span class="n">Int64</span><span class="p">,</span>
+        <span class="s1">'inference'</span><span class="p">:</span> <span class="n">Int64</span><span class="p">,</span>
+        <span class="s1">'decode'</span><span class="p">:</span> <span class="n">Int64</span><span class="p">,</span>
     <span class="p">})),</span>
 <span class="p">)</span>
 </code></pre></div>
@@ -2632,19 +2632,19 @@ Versions are compared lexicographically. Unknown future versions should trigger 
 This enriches label semantics without adding per-row columns for data that is constant
 across all annotations sharing the same label.</p>
 <div class="highlight"><pre><span></span><code><span class="p">{</span>
-<span class="w">  </span><span class="nt">&quot;aerosol_can&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">&quot;supercategory&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;accessory&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">&quot;synset&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;aerosol.n.02&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">&quot;synonyms&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;aerosol_can&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;spray_can&quot;</span><span class="p">],</span>
-<span class="w">    </span><span class="nt">&quot;definition&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;a dispenser that holds a substance under pressure&quot;</span>
+<span class="w">  </span><span class="nt">"aerosol_can"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"supercategory"</span><span class="p">:</span><span class="w"> </span><span class="s2">"accessory"</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"synset"</span><span class="p">:</span><span class="w"> </span><span class="s2">"aerosol.n.02"</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"synonyms"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"aerosol_can"</span><span class="p">,</span><span class="w"> </span><span class="s2">"spray_can"</span><span class="p">],</span>
+<span class="w">    </span><span class="nt">"definition"</span><span class="p">:</span><span class="w"> </span><span class="s2">"a dispenser that holds a substance under pressure"</span>
 <span class="w">  </span><span class="p">},</span>
-<span class="w">  </span><span class="nt">&quot;person&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">&quot;supercategory&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;human&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">&quot;synset&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;person.n.01&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">&quot;synonyms&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;person&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;individual&quot;</span><span class="p">],</span>
-<span class="w">    </span><span class="nt">&quot;definition&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;a human being&quot;</span>
+<span class="w">  </span><span class="nt">"person"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"supercategory"</span><span class="p">:</span><span class="w"> </span><span class="s2">"human"</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"synset"</span><span class="p">:</span><span class="w"> </span><span class="s2">"person.n.01"</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"synonyms"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"person"</span><span class="p">,</span><span class="w"> </span><span class="s2">"individual"</span><span class="p">],</span>
+<span class="w">    </span><span class="nt">"definition"</span><span class="p">:</span><span class="w"> </span><span class="s2">"a human being"</span>
 <span class="w">  </span><span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
@@ -2702,7 +2702,7 @@ are intentionally not stored — they are recomputable statistics.</p>
 metadata provides the index-to-name mapping for semantic segmentation masks where each
 pixel value is an argmax class index.</p>
 <p><strong>Structure</strong>: JSON array where <code>labels[i]</code> is the class name for pixel value <code>i</code>:</p>
-<div class="highlight"><pre><span></span><code><span class="p">[</span><span class="s2">&quot;background&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;person&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;car&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;bicycle&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;dog&quot;</span><span class="p">]</span>
+<div class="highlight"><pre><span></span><code><span class="p">[</span><span class="s2">"background"</span><span class="p">,</span><span class="w"> </span><span class="s2">"person"</span><span class="p">,</span><span class="w"> </span><span class="s2">"car"</span><span class="p">,</span><span class="w"> </span><span class="s2">"bicycle"</span><span class="p">,</span><span class="w"> </span><span class="s2">"dog"</span><span class="p">]</span>
 </code></pre></div>
 <p>In this example, pixel value <code>0</code> = <code>"background"</code>, pixel value <code>1</code> = <code>"person"</code>,
 pixel value <code>2</code> = <code>"car"</code>, etc.</p>
@@ -2980,7 +2980,7 @@ background); this is likewise a model-specific convention.</p>
       <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["content.code.copy", "content.code.annotate", "content.tabs.link", "navigation.instant", "navigation.tracking", "navigation.tabs", "navigation.tabs.sticky", "navigation.path", "navigation.indexes", "navigation.top", "navigation.footer", "navigation.prune", "toc.follow", "search.suggest", "search.highlight"], "search": "../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"alias": true, "default": "latest", "provider": "mike"}}</script>
     
     
-      <script src="../../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      <script src="../../../assets/javascripts/bundle.d7400e89.min.js"></script>
       
         <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
       

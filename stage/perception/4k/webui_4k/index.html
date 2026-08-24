@@ -25,7 +25,7 @@
       
       
       <link rel="icon" href="../../../assets/favicon.png">
-      <meta name="generator" content="mkdocs-ProperDocs 1.6.7, mkdocs-material-9.7.6">
+      <meta name="generator" content="mkdocs-ProperDocs 1.6.7, mkdocs-material-9.7.7">
     
     
       
@@ -33,7 +33,7 @@
       
     
     
-      <link rel="stylesheet" href="../../../assets/stylesheets/main.484c7ddc.min.css">
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.ec1eaa64.min.css">
       
         
         <link rel="stylesheet" href="../../../assets/stylesheets/palette.ab4e12ef.min.css">
@@ -2409,17 +2409,17 @@
 </code></pre></div>
 <h3 id="tile-urls">Tile URLs</h3>
 <div class="highlight"><pre><span></span><code><span class="k">this</span><span class="p">.</span><span class="nx">tileUrls</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span>
-<span class="w">    </span><span class="s1">&#39;/rt/camera/h264/tl&#39;</span><span class="p">,</span><span class="w">  </span><span class="c1">// Top Left</span>
-<span class="w">    </span><span class="s1">&#39;/rt/camera/h264/tr&#39;</span><span class="p">,</span><span class="w">  </span><span class="c1">// Top Right</span>
-<span class="w">    </span><span class="s1">&#39;/rt/camera/h264/bl&#39;</span><span class="p">,</span><span class="w">  </span><span class="c1">// Bottom Left</span>
-<span class="w">    </span><span class="s1">&#39;/rt/camera/h264/br&#39;</span><span class="w">   </span><span class="c1">// Bottom Right</span>
+<span class="w">    </span><span class="s1">'/rt/camera/h264/tl'</span><span class="p">,</span><span class="w">  </span><span class="c1">// Top Left</span>
+<span class="w">    </span><span class="s1">'/rt/camera/h264/tr'</span><span class="p">,</span><span class="w">  </span><span class="c1">// Top Right</span>
+<span class="w">    </span><span class="s1">'/rt/camera/h264/bl'</span><span class="p">,</span><span class="w">  </span><span class="c1">// Bottom Left</span>
+<span class="w">    </span><span class="s1">'/rt/camera/h264/br'</span><span class="w">   </span><span class="c1">// Bottom Right</span>
 <span class="p">];</span>
-<span class="k">this</span><span class="p">.</span><span class="nx">fallbackUrl</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;/rt/camera/h264&#39;</span><span class="p">;</span>
+<span class="k">this</span><span class="p">.</span><span class="nx">fallbackUrl</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">'/rt/camera/h264'</span><span class="p">;</span>
 </code></pre></div>
 <h2 id="usage">Usage</h2>
 <h3 id="basic-implementation">Basic Implementation</h3>
-<div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="nx">SmartVideoManager</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;./SmartVideoManager.js&#39;</span><span class="p">;</span>
-<span class="k">import</span><span class="w"> </span><span class="nx">h264Stream</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;./stream.js&#39;</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="nx">SmartVideoManager</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">'./SmartVideoManager.js'</span><span class="p">;</span>
+<span class="k">import</span><span class="w"> </span><span class="nx">h264Stream</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">'./stream.js'</span><span class="p">;</span>
 
 <span class="kd">const</span><span class="w"> </span><span class="nx">videoManager</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">SmartVideoManager</span><span class="p">();</span>
 
@@ -2435,10 +2435,10 @@
 <h3 id="mode-detection">Mode Detection</h3>
 <div class="highlight"><pre><span></span><code><span class="c1">// Check current mode</span>
 <span class="kd">const</span><span class="w"> </span><span class="nx">mode</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">videoManager</span><span class="p">.</span><span class="nx">getMode</span><span class="p">();</span>
-<span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">mode</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="s1">&#39;tiles&#39;</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;Using 4K tiling&#39;</span><span class="p">);</span>
+<span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">mode</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="s1">'tiles'</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'Using 4K tiling'</span><span class="p">);</span>
 <span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;Using H.264 fallback&#39;</span><span class="p">);</span>
+<span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'Using H.264 fallback'</span><span class="p">);</span>
 <span class="p">}</span>
 </code></pre></div>
 <h2 id="troubleshooting">Troubleshooting</h2>
@@ -2734,7 +2734,7 @@
       <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["content.code.copy", "content.code.annotate", "content.tabs.link", "navigation.instant", "navigation.tracking", "navigation.tabs", "navigation.tabs.sticky", "navigation.path", "navigation.indexes", "navigation.top", "navigation.footer", "navigation.prune", "toc.follow", "search.suggest", "search.highlight"], "search": "../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"alias": true, "default": "latest", "provider": "mike"}}</script>
     
     
-      <script src="../../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      <script src="../../../assets/javascripts/bundle.d7400e89.min.js"></script>
       
         <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
       

@@ -2,6 +2,7 @@ aarch64
 abi
 ad
 addr
+afterward
 ai
 aigt
 analytics
@@ -14,6 +15,7 @@ artifact
 artifacts
 async
 au
+autocompletion
 autodepth
 autolabel
 autolabeling
@@ -23,6 +25,7 @@ babu
 backend
 backends
 backfilled
+backfilling
 balenaetcher
 basename
 bbox
@@ -105,6 +108,7 @@ downsampled
 downscaling
 dram
 dropdown
+dropdowns
 drvegrd
 ds
 dtype
@@ -118,6 +122,7 @@ epipolar
 eq
 esc
 europlug
+fargate
 fd
 fi
 filesystem
@@ -139,6 +144,7 @@ github
 glibc
 gps
 granularities
+graviton
 grayed
 grayscale
 greyscale
@@ -151,15 +157,18 @@ heatmap
 heatmaps
 heatsink
 hef
+hexagon
 hoc
 homebrew
 hostapd
 hostname
 hpp
 html
+htp
 http
 https
 huggingface
+hwmon
 hyperparameters
 hz
 imagenet
@@ -172,6 +181,8 @@ int16
 int8
 interop
 interquartile
+interruptible
+io
 ioparams
 iou
 ip
@@ -200,6 +211,7 @@ keyframes
 keypoint
 kg
 kinara
+kotlin
 kubernetes
 labeling
 labelling
@@ -214,10 +226,12 @@ logit
 logits
 lookahead
 lossy
+lvis
 maivin
 manylinux
 mariescu
 math
+maturin
 mbps
 mcap
 md
@@ -265,6 +279,7 @@ normalised
 npu
 nullable
 num
+nvjpeg
 objcls
 objectness
 odometry
@@ -282,9 +297,11 @@ opset
 organised
 ostree
 overfitting
+oversubscribe
 params
 parquet
 passos
+passwordless
 patrec
 pcd
 perfetto
@@ -308,6 +325,7 @@ powersave
 powershell
 pp
 pre
+precompiled
 preconfigured
 preimage
 preinstalled
@@ -318,6 +336,7 @@ preprocessing
 presigned
 pretrained
 profiler
+programmatically
 proj
 proto
 protos
@@ -329,6 +348,8 @@ py
 qat
 qmode
 qmodes
+qnn
+qualcomm
 quantizations
 quantize
 quantizer
@@ -359,12 +380,15 @@ runtimes
 rx
 saas
 safetensors
+sahi
 schedutil
 schemas
 seg
+shaders
 silu
 smartmicro
 smpl
+snapdragon
 softmax
 solarization
 solarizations
@@ -393,6 +417,7 @@ sys
 systemctl
 systemd
 teardown
+tegra
 telit
 tensorflow
 tensorrt
@@ -416,13 +441,6 @@ tw
 twostage
 tx
 txt
-io
-lvis
-maturin
-uniffi
-kotlin
-programmatically
-autocompletion
 ty
 tz
 udev
@@ -431,12 +449,14 @@ uid
 uint8
 ultralytics
 un-parked
+unattributable
 unbinned
 unboxing
 unclustered
 uncompiled
 ungrouped
 unicode
+uniffi
 unmanaged
 unnest
 unparseable
@@ -453,6 +473,7 @@ vapor
 vectorized
 venv
 vignesh
+vivante
 vs
 walkthrough
 walkthroughs

@@ -25,7 +25,7 @@
       
       
       <link rel="icon" href="../../../assets/favicon.png">
-      <meta name="generator" content="mkdocs-ProperDocs 1.6.7, mkdocs-material-9.7.6">
+      <meta name="generator" content="mkdocs-ProperDocs 1.6.7, mkdocs-material-9.7.7">
     
     
       
@@ -33,7 +33,7 @@
       
     
     
-      <link rel="stylesheet" href="../../../assets/stylesheets/main.484c7ddc.min.css">
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.ec1eaa64.min.css">
       
         
         <link rel="stylesheet" href="../../../assets/stylesheets/palette.ab4e12ef.min.css">
@@ -907,6 +907,10 @@
       
         
       
+        
+      
+        
+      
     
     
     
@@ -1102,14 +1106,14 @@
   
   
     <li class="md-nav__item">
-      <a href="../windows/" class="md-nav__link">
+      <a href="../docker/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    Windows
+    Container Images
   
 
     
@@ -1290,6 +1294,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#container-image" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Container image
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#verifying-the-install" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -1412,6 +1427,8 @@
       
         
           
+        
+      
         
       
         
@@ -1817,6 +1834,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#container-image" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Container image
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#verifying-the-install" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -1899,7 +1927,7 @@
 <h2 id="prerequisites">Prerequisites</h2>
 <ul>
 <li>NXP Linux BSP image with the EdgeFirst <abbr title="Software Development Kit">SDK</abbr> overlay</li>
-<li><code>libtensorflowlite_c.so</code> (preinstalled)</li>
+<li><code>libtensorflow-lite.so</code> (preinstalled; override the search path with <code>TFLITE_LIBRARY_PATH</code>)</li>
 <li><code>libvx_delegate.so</code> (preinstalled)</li>
 </ul>
 <p>The i.MX 8M Plus VSI <abbr title="Neural Processing Unit">NPU</abbr> runs standard <abbr title="TensorFlow Lite">TFLite</abbr> models — no model rewrite is required, unlike the i.MX 95 Neutron <abbr title="Neural Processing Unit">NPU</abbr>. Quantize the model to <code>int8</code> for best performance; floating-point graphs fall back to CPU.</p>
@@ -1942,15 +1970,29 @@
 <td>Reference kernels only.</td>
 </tr>
 <tr>
+<td><code>gpu</code></td>
+<td>LiteRT GPU (CL/GL) delegate when present — experimental.</td>
+</tr>
+<tr>
+<td><code>qnn</code> / <code>qnn-htp</code>, <code>qnn-gpu</code>, <code>qnn-dsp</code></td>
+<td>Qualcomm QNN delegate (Android targets; requires a build with the <code>qnn</code> feature and the device's Qualcomm libraries) — experimental.</td>
+</tr>
+<tr>
 <td>path to <code>.so</code></td>
 <td>Custom delegate.</td>
 </tr>
 </tbody>
 </table>
+<p>Unrecognized delegate names (a typo like <code>xnnpak</code>) are rejected at parse time with the valid options listed, rather than being treated as a file path. The Qualcomm backend previously offered as <code>qnn-cpu</code> is now <code>qnn-dsp</code> — there is no CPU backend in the QNN delegate, and <code>qnn-dsp</code> names the real legacy Hexagon DSP backend.</p>
 <h2 id="inference-depth">Inference depth</h2>
-<p>The VSI delegate supports <strong>only one</strong> in-flight inference at a time. The profiler detects this and clamps <code>--inference-depth</code> down to a single inference slot — CPU stages (capture, postprocess, encode) still overlap with the single inference, but two inferences cannot run concurrently on the <abbr title="Neural Processing Unit">NPU</abbr>.</p>
+<p>The VSI delegate supports <strong>only one</strong> in-flight inference at a time. The profiler detects this and clamps <code>--inference-depth</code> down to a single inference slot — CPU stages (capture, postprocess, encode) still overlap with the single inference, but two inferences cannot run concurrently on the <abbr title="Neural Processing Unit">NPU</abbr>. <abbr title="Neural Processing Unit">NPU</abbr> delegates are exempt from the core-aware concurrency default that CPU <abbr title="TensorFlow Lite">TFLite</abbr> runs get: the clamp to one slot applies regardless of the host's core count.</p>
 <p>The Studio trace view makes this serialization visible — back-to-back invoke slices touch but never overlap.</p>
 <p>See the <a href="../../concepts/pipelining/">Pipelining</a> concept page for the full backend table, the sequential vs. pipelined mental model, and how each mode appears in the trace viewer.</p>
+<h2 id="container-image">Container image</h2>
+<div class="admonition tip">
+<p class="admonition-title">Run from a container instead</p>
+<p>The <code>imx8mp</code> tag of the <a href="../docker/">profiler container images</a> bundles the VX delegate, the Vivante OpenVX userspace stack, and the <abbr title="TensorFlow Lite">TFLite</abbr> runtime, so no local install is needed. Map the <abbr title="Neural Processing Unit">NPU</abbr> with <code>--device /dev/galcore</code> plus the board's <abbr title="Direct Memory Access">DMA</abbr>-heap node (<code>ls /dev/dma_heap/</code>), or run with <code>--privileged</code> to grant both in one flag.</p>
+</div>
 <h2 id="verifying-the-install">Verifying the install</h2>
 <div class="highlight"><pre><span></span><code>edgefirst-profiler<span class="w"> </span>login
 edgefirst-profiler<span class="w">              </span><span class="c1"># F4 Profiler should show /usr/lib/libvx_delegate.so auto-filled</span>
@@ -2204,7 +2246,7 @@ edgefirst-profiler<span class="w">              </span><span class="c1"># F4 Pro
       <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["content.code.copy", "content.code.annotate", "content.tabs.link", "navigation.instant", "navigation.tracking", "navigation.tabs", "navigation.tabs.sticky", "navigation.path", "navigation.indexes", "navigation.top", "navigation.footer", "navigation.prune", "toc.follow", "search.suggest", "search.highlight"], "search": "../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"alias": true, "default": "latest", "provider": "mike"}}</script>
     
     
-      <script src="../../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      <script src="../../../assets/javascripts/bundle.d7400e89.min.js"></script>
       
         <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
       

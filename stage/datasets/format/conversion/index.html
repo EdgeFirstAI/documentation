@@ -25,7 +25,7 @@
       
       
       <link rel="icon" href="../../../assets/favicon.png">
-      <meta name="generator" content="mkdocs-ProperDocs 1.6.7, mkdocs-material-9.7.6">
+      <meta name="generator" content="mkdocs-ProperDocs 1.6.7, mkdocs-material-9.7.7">
     
     
       
@@ -33,7 +33,7 @@
       
     
     
-      <link rel="stylesheet" href="../../../assets/stylesheets/main.484c7ddc.min.css">
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.ec1eaa64.min.css">
       
         
         <link rel="stylesheet" href="../../../assets/stylesheets/palette.ab4e12ef.min.css">
@@ -1984,109 +1984,109 @@ upgrade instructions.</p>
 
 <span class="c1"># Method 1 (preferred): Check schema_version metadata</span>
 <span class="k">def</span><span class="w"> </span><span class="nf">get_schema_version</span><span class="p">(</span><span class="n">path</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Read schema_version from Arrow IPC or Parquet file metadata.&quot;&quot;&quot;</span>
-    <span class="k">if</span> <span class="n">path</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="s2">&quot;.parquet&quot;</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">"""Read schema_version from Arrow IPC or Parquet file metadata."""</span>
+    <span class="k">if</span> <span class="n">path</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="s2">".parquet"</span><span class="p">):</span>
         <span class="n">metadata</span> <span class="o">=</span> <span class="n">pq</span><span class="o">.</span><span class="n">read_schema</span><span class="p">(</span><span class="n">path</span><span class="p">)</span><span class="o">.</span><span class="n">metadata</span> <span class="ow">or</span> <span class="p">{}</span>
     <span class="k">else</span><span class="p">:</span>
-        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="s2">&quot;rb&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="s2">"rb"</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
             <span class="n">metadata</span> <span class="o">=</span> <span class="n">ipc</span><span class="o">.</span><span class="n">open_file</span><span class="p">(</span><span class="n">f</span><span class="p">)</span><span class="o">.</span><span class="n">schema</span><span class="o">.</span><span class="n">metadata</span> <span class="ow">or</span> <span class="p">{}</span>
-    <span class="k">return</span> <span class="n">metadata</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="sa">b</span><span class="s2">&quot;schema_version&quot;</span><span class="p">,</span> <span class="sa">b</span><span class="s2">&quot;&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">decode</span><span class="p">()</span>
+    <span class="k">return</span> <span class="n">metadata</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="sa">b</span><span class="s2">"schema_version"</span><span class="p">,</span> <span class="sa">b</span><span class="s2">""</span><span class="p">)</span><span class="o">.</span><span class="n">decode</span><span class="p">()</span>
 
-<span class="n">schema_version</span> <span class="o">=</span> <span class="n">get_schema_version</span><span class="p">(</span><span class="s2">&quot;dataset.arrow&quot;</span><span class="p">)</span>
+<span class="n">schema_version</span> <span class="o">=</span> <span class="n">get_schema_version</span><span class="p">(</span><span class="s2">"dataset.arrow"</span><span class="p">)</span>
 
 <span class="k">if</span> <span class="n">schema_version</span><span class="p">:</span>
-    <span class="n">version</span> <span class="o">=</span> <span class="n">schema_version</span>  <span class="c1"># e.g. &quot;2025.10&quot; or &quot;2026.04&quot;</span>
+    <span class="n">version</span> <span class="o">=</span> <span class="n">schema_version</span>  <span class="c1"># e.g. "2025.10" or "2026.04"</span>
 <span class="k">else</span><span class="p">:</span>
     <span class="c1"># Method 2 (fallback): Inspect column presence and types</span>
-    <span class="n">df</span> <span class="o">=</span> <span class="n">pl</span><span class="o">.</span><span class="n">read_ipc</span><span class="p">(</span><span class="s2">&quot;dataset.arrow&quot;</span><span class="p">)</span>  <span class="c1"># or pl.read_parquet(...)</span>
+    <span class="n">df</span> <span class="o">=</span> <span class="n">pl</span><span class="o">.</span><span class="n">read_ipc</span><span class="p">(</span><span class="s2">"dataset.arrow"</span><span class="p">)</span>  <span class="c1"># or pl.read_parquet(...)</span>
 
-    <span class="k">if</span> <span class="s2">&quot;polygon&quot;</span> <span class="ow">in</span> <span class="n">df</span><span class="o">.</span><span class="n">columns</span><span class="p">:</span>
-        <span class="n">version</span> <span class="o">=</span> <span class="s2">&quot;2026.04&quot;</span>
-    <span class="k">elif</span> <span class="s2">&quot;mask&quot;</span> <span class="ow">in</span> <span class="n">df</span><span class="o">.</span><span class="n">columns</span><span class="p">:</span>
-        <span class="n">mask_dtype</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;mask&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">dtype</span><span class="p">)</span>
-        <span class="k">if</span> <span class="n">mask_dtype</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">&quot;List(Float32&quot;</span><span class="p">):</span>
-            <span class="n">version</span> <span class="o">=</span> <span class="s2">&quot;2025.10&quot;</span>    <span class="c1"># NaN-separated polygon coordinates</span>
-        <span class="k">elif</span> <span class="nb">str</span><span class="p">(</span><span class="n">mask_dtype</span><span class="p">)</span> <span class="o">==</span> <span class="s2">&quot;Binary&quot;</span><span class="p">:</span>
-            <span class="n">version</span> <span class="o">=</span> <span class="s2">&quot;2026.04&quot;</span>    <span class="c1"># PNG-encoded raster pixels</span>
+    <span class="k">if</span> <span class="s2">"polygon"</span> <span class="ow">in</span> <span class="n">df</span><span class="o">.</span><span class="n">columns</span><span class="p">:</span>
+        <span class="n">version</span> <span class="o">=</span> <span class="s2">"2026.04"</span>
+    <span class="k">elif</span> <span class="s2">"mask"</span> <span class="ow">in</span> <span class="n">df</span><span class="o">.</span><span class="n">columns</span><span class="p">:</span>
+        <span class="n">mask_dtype</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s2">"mask"</span><span class="p">]</span><span class="o">.</span><span class="n">dtype</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">mask_dtype</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">"List(Float32"</span><span class="p">):</span>
+            <span class="n">version</span> <span class="o">=</span> <span class="s2">"2025.10"</span>    <span class="c1"># NaN-separated polygon coordinates</span>
+        <span class="k">elif</span> <span class="nb">str</span><span class="p">(</span><span class="n">mask_dtype</span><span class="p">)</span> <span class="o">==</span> <span class="s2">"Binary"</span><span class="p">:</span>
+            <span class="n">version</span> <span class="o">=</span> <span class="s2">"2026.04"</span>    <span class="c1"># PNG-encoded raster pixels</span>
         <span class="k">else</span><span class="p">:</span>
-            <span class="n">version</span> <span class="o">=</span> <span class="s2">&quot;unknown&quot;</span>
+            <span class="n">version</span> <span class="o">=</span> <span class="s2">"unknown"</span>
     <span class="k">else</span><span class="p">:</span>
-        <span class="n">version</span> <span class="o">=</span> <span class="s2">&quot;2025.10&quot;</span>        <span class="c1"># no geometry columns, no metadata</span>
+        <span class="n">version</span> <span class="o">=</span> <span class="s2">"2025.10"</span>        <span class="c1"># no geometry columns, no metadata</span>
 </code></pre></div>
 <h3 id="json-files">JSON Files</h3>
 <div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">json</span>
 
-<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;annotations.json&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">"annotations.json"</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
     <span class="n">data</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
 
 <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="nb">list</span><span class="p">):</span>
     <span class="c1"># 2025.10: bare array of samples</span>
     <span class="n">samples</span> <span class="o">=</span> <span class="n">data</span>
-    <span class="n">version</span> <span class="o">=</span> <span class="s2">&quot;2025.10&quot;</span>
+    <span class="n">version</span> <span class="o">=</span> <span class="s2">"2025.10"</span>
 <span class="k">else</span><span class="p">:</span>
     <span class="c1"># 2026.04: object wrapper with metadata</span>
-    <span class="n">samples</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s2">&quot;samples&quot;</span><span class="p">]</span>
-    <span class="n">version</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;schema_version&quot;</span><span class="p">,</span> <span class="s2">&quot;2025.10&quot;</span><span class="p">)</span>
+    <span class="n">samples</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s2">"samples"</span><span class="p">]</span>
+    <span class="n">version</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"schema_version"</span><span class="p">,</span> <span class="s2">"2025.10"</span><span class="p">)</span>
 </code></pre></div>
 <h2 id="reading-202604-files">Reading 2026.04 Files</h2>
 <h3 id="arrow-ipc-parquet">Arrow IPC / Parquet</h3>
 <div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">polars</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pl</span>
 
 <span class="c1"># Arrow IPC</span>
-<span class="n">df</span> <span class="o">=</span> <span class="n">pl</span><span class="o">.</span><span class="n">read_ipc</span><span class="p">(</span><span class="s2">&quot;dataset.arrow&quot;</span><span class="p">)</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pl</span><span class="o">.</span><span class="n">read_ipc</span><span class="p">(</span><span class="s2">"dataset.arrow"</span><span class="p">)</span>
 
 <span class="c1"># Parquet</span>
-<span class="n">df</span> <span class="o">=</span> <span class="n">pl</span><span class="o">.</span><span class="n">read_parquet</span><span class="p">(</span><span class="s2">&quot;dataset.parquet&quot;</span><span class="p">)</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pl</span><span class="o">.</span><span class="n">read_parquet</span><span class="p">(</span><span class="s2">"dataset.parquet"</span><span class="p">)</span>
 
 <span class="c1"># Access polygon data</span>
-<span class="k">if</span> <span class="s2">&quot;polygon&quot;</span> <span class="ow">in</span> <span class="n">df</span><span class="o">.</span><span class="n">columns</span><span class="p">:</span>
+<span class="k">if</span> <span class="s2">"polygon"</span> <span class="ow">in</span> <span class="n">df</span><span class="o">.</span><span class="n">columns</span><span class="p">:</span>
     <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">df</span><span class="o">.</span><span class="n">iter_rows</span><span class="p">(</span><span class="n">named</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
-        <span class="k">if</span> <span class="n">row</span><span class="p">[</span><span class="s2">&quot;polygon&quot;</span><span class="p">]</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-            <span class="k">for</span> <span class="n">ring</span> <span class="ow">in</span> <span class="n">row</span><span class="p">[</span><span class="s2">&quot;polygon&quot;</span><span class="p">]:</span>
+        <span class="k">if</span> <span class="n">row</span><span class="p">[</span><span class="s2">"polygon"</span><span class="p">]</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">for</span> <span class="n">ring</span> <span class="ow">in</span> <span class="n">row</span><span class="p">[</span><span class="s2">"polygon"</span><span class="p">]:</span>
                 <span class="c1"># ring is [x1, y1, x2, y2, ...] interleaved</span>
                 <span class="n">points</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="n">ring</span><span class="p">[</span><span class="mi">0</span><span class="p">::</span><span class="mi">2</span><span class="p">],</span> <span class="n">ring</span><span class="p">[</span><span class="mi">1</span><span class="p">::</span><span class="mi">2</span><span class="p">]))</span>
 
 <span class="c1"># Access raster mask data</span>
-<span class="k">if</span> <span class="s2">&quot;mask&quot;</span> <span class="ow">in</span> <span class="n">df</span><span class="o">.</span><span class="n">columns</span><span class="p">:</span>
+<span class="k">if</span> <span class="s2">"mask"</span> <span class="ow">in</span> <span class="n">df</span><span class="o">.</span><span class="n">columns</span><span class="p">:</span>
     <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">df</span><span class="o">.</span><span class="n">iter_rows</span><span class="p">(</span><span class="n">named</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
-        <span class="k">if</span> <span class="n">row</span><span class="p">[</span><span class="s2">&quot;mask&quot;</span><span class="p">]</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="n">row</span><span class="p">[</span><span class="s2">&quot;size&quot;</span><span class="p">]</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-            <span class="n">width</span><span class="p">,</span> <span class="n">height</span> <span class="o">=</span> <span class="n">row</span><span class="p">[</span><span class="s2">&quot;size&quot;</span><span class="p">]</span>
-            <span class="n">png_bytes</span> <span class="o">=</span> <span class="n">row</span><span class="p">[</span><span class="s2">&quot;mask&quot;</span><span class="p">]</span>  <span class="c1"># bytes (PNG-encoded raster pixels)</span>
+        <span class="k">if</span> <span class="n">row</span><span class="p">[</span><span class="s2">"mask"</span><span class="p">]</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="n">row</span><span class="p">[</span><span class="s2">"size"</span><span class="p">]</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">width</span><span class="p">,</span> <span class="n">height</span> <span class="o">=</span> <span class="n">row</span><span class="p">[</span><span class="s2">"size"</span><span class="p">]</span>
+            <span class="n">png_bytes</span> <span class="o">=</span> <span class="n">row</span><span class="p">[</span><span class="s2">"mask"</span><span class="p">]</span>  <span class="c1"># bytes (PNG-encoded raster pixels)</span>
 
 <span class="c1"># Access box2d — check format metadata</span>
 <span class="c1"># (Schema metadata access depends on Polars version; prefer the EdgeFirst Client SDK)</span>
-<span class="k">if</span> <span class="s2">&quot;box2d&quot;</span> <span class="ow">in</span> <span class="n">df</span><span class="o">.</span><span class="n">columns</span><span class="p">:</span>
+<span class="k">if</span> <span class="s2">"box2d"</span> <span class="ow">in</span> <span class="n">df</span><span class="o">.</span><span class="n">columns</span><span class="p">:</span>
     <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">df</span><span class="o">.</span><span class="n">iter_rows</span><span class="p">(</span><span class="n">named</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
-        <span class="k">if</span> <span class="n">row</span><span class="p">[</span><span class="s2">&quot;box2d&quot;</span><span class="p">]</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">row</span><span class="p">[</span><span class="s2">"box2d"</span><span class="p">]</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
             <span class="c1"># Default: [cx, cy, w, h] — check box2d_format metadata if available</span>
-            <span class="n">cx</span><span class="p">,</span> <span class="n">cy</span><span class="p">,</span> <span class="n">w</span><span class="p">,</span> <span class="n">h</span> <span class="o">=</span> <span class="n">row</span><span class="p">[</span><span class="s2">&quot;box2d&quot;</span><span class="p">]</span>
+            <span class="n">cx</span><span class="p">,</span> <span class="n">cy</span><span class="p">,</span> <span class="n">w</span><span class="p">,</span> <span class="n">h</span> <span class="o">=</span> <span class="n">row</span><span class="p">[</span><span class="s2">"box2d"</span><span class="p">]</span>
 
 <span class="c1"># Access timing instrumentation</span>
-<span class="k">if</span> <span class="s2">&quot;timing&quot;</span> <span class="ow">in</span> <span class="n">df</span><span class="o">.</span><span class="n">columns</span><span class="p">:</span>
+<span class="k">if</span> <span class="s2">"timing"</span> <span class="ow">in</span> <span class="n">df</span><span class="o">.</span><span class="n">columns</span><span class="p">:</span>
     <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">df</span><span class="o">.</span><span class="n">iter_rows</span><span class="p">(</span><span class="n">named</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
-        <span class="k">if</span> <span class="n">row</span><span class="p">[</span><span class="s2">&quot;timing&quot;</span><span class="p">]</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-            <span class="n">t</span> <span class="o">=</span> <span class="n">row</span><span class="p">[</span><span class="s2">&quot;timing&quot;</span><span class="p">]</span>
-            <span class="n">load_ms</span> <span class="o">=</span> <span class="n">t</span><span class="p">[</span><span class="s2">&quot;load&quot;</span><span class="p">]</span> <span class="o">/</span> <span class="mi">1_000_000</span>
-            <span class="n">inference_ms</span> <span class="o">=</span> <span class="n">t</span><span class="p">[</span><span class="s2">&quot;inference&quot;</span><span class="p">]</span> <span class="o">/</span> <span class="mi">1_000_000</span>
+        <span class="k">if</span> <span class="n">row</span><span class="p">[</span><span class="s2">"timing"</span><span class="p">]</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">t</span> <span class="o">=</span> <span class="n">row</span><span class="p">[</span><span class="s2">"timing"</span><span class="p">]</span>
+            <span class="n">load_ms</span> <span class="o">=</span> <span class="n">t</span><span class="p">[</span><span class="s2">"load"</span><span class="p">]</span> <span class="o">/</span> <span class="mi">1_000_000</span>
+            <span class="n">inference_ms</span> <span class="o">=</span> <span class="n">t</span><span class="p">[</span><span class="s2">"inference"</span><span class="p">]</span> <span class="o">/</span> <span class="mi">1_000_000</span>
 </code></pre></div>
 <h3 id="reading-parquet-with-duckdb">Reading Parquet with DuckDB</h3>
 <div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">duckdb</span>
 
 <span class="c1"># Count labels</span>
-<span class="n">result</span> <span class="o">=</span> <span class="n">duckdb</span><span class="o">.</span><span class="n">sql</span><span class="p">(</span><span class="s2">&quot;&quot;&quot;</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">duckdb</span><span class="o">.</span><span class="n">sql</span><span class="p">(</span><span class="s2">"""</span>
 <span class="s2">    SELECT label, count(*) as count</span>
-<span class="s2">    FROM &#39;dataset.parquet&#39;</span>
+<span class="s2">    FROM 'dataset.parquet'</span>
 <span class="s2">    GROUP BY label</span>
 <span class="s2">    ORDER BY count DESC</span>
-<span class="s2">&quot;&quot;&quot;</span><span class="p">)</span>
+<span class="s2">"""</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
 
 <span class="c1"># Filter by score</span>
-<span class="n">result</span> <span class="o">=</span> <span class="n">duckdb</span><span class="o">.</span><span class="n">sql</span><span class="p">(</span><span class="s2">&quot;&quot;&quot;</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">duckdb</span><span class="o">.</span><span class="n">sql</span><span class="p">(</span><span class="s2">"""</span>
 <span class="s2">    SELECT name, label, box2d, box2d_score</span>
-<span class="s2">    FROM &#39;dataset.parquet&#39;</span>
+<span class="s2">    FROM 'dataset.parquet'</span>
 <span class="s2">    WHERE box2d_score &gt; 0.8</span>
-<span class="s2">&quot;&quot;&quot;</span><span class="p">)</span>
+<span class="s2">"""</span><span class="p">)</span>
 </code></pre></div>
 <h2 id="json-to-dataframe-conversion-202604">JSON to DataFrame Conversion (2026.04)</h2>
 <h3 id="column-name-mapping">Column Name Mapping</h3>
@@ -2164,75 +2164,75 @@ full list.</p>
 <div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">polars</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pl</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">json</span><span class="o">,</span><span class="w"> </span><span class="nn">base64</span>
 
-<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;annotations.json&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">"annotations.json"</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
     <span class="n">data</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
 
 <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="nb">list</span><span class="p">):</span>
     <span class="n">samples</span> <span class="o">=</span> <span class="n">data</span>
-    <span class="n">box2d_format</span> <span class="o">=</span> <span class="s2">&quot;ltwh&quot;</span>       <span class="c1"># JSON default is ltwh (COCO convention)</span>
+    <span class="n">box2d_format</span> <span class="o">=</span> <span class="s2">"ltwh"</span>       <span class="c1"># JSON default is ltwh (COCO convention)</span>
 <span class="k">else</span><span class="p">:</span>
-    <span class="n">samples</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s2">&quot;samples&quot;</span><span class="p">]</span>
-    <span class="n">box2d_format</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;box2d_format&quot;</span><span class="p">,</span> <span class="s2">&quot;ltwh&quot;</span><span class="p">)</span>  <span class="c1"># Arrow default is cxcywh; JSON default is ltwh</span>
+    <span class="n">samples</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s2">"samples"</span><span class="p">]</span>
+    <span class="n">box2d_format</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"box2d_format"</span><span class="p">,</span> <span class="s2">"ltwh"</span><span class="p">)</span>  <span class="c1"># Arrow default is cxcywh; JSON default is ltwh</span>
 
 <span class="n">rows</span> <span class="o">=</span> <span class="p">[]</span>
 <span class="k">for</span> <span class="n">sample</span> <span class="ow">in</span> <span class="n">samples</span><span class="p">:</span>
-    <span class="n">size</span> <span class="o">=</span> <span class="p">[</span><span class="n">sample</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;width&quot;</span><span class="p">),</span> <span class="n">sample</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;height&quot;</span><span class="p">)]</span>
-    <span class="k">for</span> <span class="n">ann</span> <span class="ow">in</span> <span class="n">sample</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;annotations&quot;</span><span class="p">,</span> <span class="p">[]):</span>
+    <span class="n">size</span> <span class="o">=</span> <span class="p">[</span><span class="n">sample</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"width"</span><span class="p">),</span> <span class="n">sample</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"height"</span><span class="p">)]</span>
+    <span class="k">for</span> <span class="n">ann</span> <span class="ow">in</span> <span class="n">sample</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"annotations"</span><span class="p">,</span> <span class="p">[]):</span>
         <span class="n">row</span> <span class="o">=</span> <span class="p">{</span>
-            <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="n">sample</span><span class="p">[</span><span class="s2">&quot;image_name&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">rsplit</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">,</span> <span class="mi">1</span><span class="p">)[</span><span class="mi">0</span><span class="p">],</span>
-            <span class="s2">&quot;frame&quot;</span><span class="p">:</span> <span class="n">sample</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;frame_number&quot;</span><span class="p">),</span>
-            <span class="s2">&quot;object_id&quot;</span><span class="p">:</span> <span class="n">ann</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;object_id&quot;</span><span class="p">),</span>
-            <span class="s2">&quot;label&quot;</span><span class="p">:</span> <span class="n">ann</span><span class="p">[</span><span class="s2">&quot;label_name&quot;</span><span class="p">],</span>
-            <span class="s2">&quot;label_index&quot;</span><span class="p">:</span> <span class="n">ann</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;label_index&quot;</span><span class="p">),</span>
-            <span class="s2">&quot;group&quot;</span><span class="p">:</span> <span class="n">sample</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;group_name&quot;</span><span class="p">),</span>
+            <span class="s2">"name"</span><span class="p">:</span> <span class="n">sample</span><span class="p">[</span><span class="s2">"image_name"</span><span class="p">]</span><span class="o">.</span><span class="n">rsplit</span><span class="p">(</span><span class="s2">"."</span><span class="p">,</span> <span class="mi">1</span><span class="p">)[</span><span class="mi">0</span><span class="p">],</span>
+            <span class="s2">"frame"</span><span class="p">:</span> <span class="n">sample</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"frame_number"</span><span class="p">),</span>
+            <span class="s2">"object_id"</span><span class="p">:</span> <span class="n">ann</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"object_id"</span><span class="p">),</span>
+            <span class="s2">"label"</span><span class="p">:</span> <span class="n">ann</span><span class="p">[</span><span class="s2">"label_name"</span><span class="p">],</span>
+            <span class="s2">"label_index"</span><span class="p">:</span> <span class="n">ann</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"label_index"</span><span class="p">),</span>
+            <span class="s2">"group"</span><span class="p">:</span> <span class="n">sample</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"group_name"</span><span class="p">),</span>
         <span class="p">}</span>
 
         <span class="c1"># Polygon: JSON [[x,y],...] per ring -&gt; DataFrame [x,y,x,y,...] per ring</span>
-        <span class="k">if</span> <span class="n">ann</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;polygon&quot;</span><span class="p">):</span>
-            <span class="n">row</span><span class="p">[</span><span class="s2">&quot;polygon&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span>
+        <span class="k">if</span> <span class="n">ann</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"polygon"</span><span class="p">):</span>
+            <span class="n">row</span><span class="p">[</span><span class="s2">"polygon"</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span>
                 <span class="p">[</span><span class="n">coord</span> <span class="k">for</span> <span class="n">pt</span> <span class="ow">in</span> <span class="n">ring</span> <span class="k">for</span> <span class="n">coord</span> <span class="ow">in</span> <span class="n">pt</span><span class="p">]</span>
-                <span class="k">for</span> <span class="n">ring</span> <span class="ow">in</span> <span class="n">ann</span><span class="p">[</span><span class="s2">&quot;polygon&quot;</span><span class="p">]</span>
+                <span class="k">for</span> <span class="n">ring</span> <span class="ow">in</span> <span class="n">ann</span><span class="p">[</span><span class="s2">"polygon"</span><span class="p">]</span>
             <span class="p">]</span>
-            <span class="n">row</span><span class="p">[</span><span class="s2">&quot;polygon_score&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">ann</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;polygon_score&quot;</span><span class="p">)</span>
+            <span class="n">row</span><span class="p">[</span><span class="s2">"polygon_score"</span><span class="p">]</span> <span class="o">=</span> <span class="n">ann</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"polygon_score"</span><span class="p">)</span>
 
         <span class="c1"># Mask: JSON base64 PNG -&gt; DataFrame Binary (PNG bytes)</span>
-        <span class="k">if</span> <span class="n">ann</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;mask&quot;</span><span class="p">)</span> <span class="ow">and</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">ann</span><span class="p">[</span><span class="s2">&quot;mask&quot;</span><span class="p">],</span> <span class="nb">str</span><span class="p">):</span>
-            <span class="n">row</span><span class="p">[</span><span class="s2">&quot;mask&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">base64</span><span class="o">.</span><span class="n">b64decode</span><span class="p">(</span><span class="n">ann</span><span class="p">[</span><span class="s2">&quot;mask&quot;</span><span class="p">])</span>  <span class="c1"># PNG bytes</span>
-            <span class="n">row</span><span class="p">[</span><span class="s2">&quot;mask_score&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">ann</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;mask_score&quot;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">ann</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"mask"</span><span class="p">)</span> <span class="ow">and</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">ann</span><span class="p">[</span><span class="s2">"mask"</span><span class="p">],</span> <span class="nb">str</span><span class="p">):</span>
+            <span class="n">row</span><span class="p">[</span><span class="s2">"mask"</span><span class="p">]</span> <span class="o">=</span> <span class="n">base64</span><span class="o">.</span><span class="n">b64decode</span><span class="p">(</span><span class="n">ann</span><span class="p">[</span><span class="s2">"mask"</span><span class="p">])</span>  <span class="c1"># PNG bytes</span>
+            <span class="n">row</span><span class="p">[</span><span class="s2">"mask_score"</span><span class="p">]</span> <span class="o">=</span> <span class="n">ann</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"mask_score"</span><span class="p">)</span>
 
         <span class="c1"># Box2D: convert based on format metadata</span>
-        <span class="k">if</span> <span class="n">ann</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;box2d&quot;</span><span class="p">):</span>
-            <span class="n">b</span> <span class="o">=</span> <span class="n">ann</span><span class="p">[</span><span class="s2">&quot;box2d&quot;</span><span class="p">]</span>
-            <span class="k">if</span> <span class="n">box2d_format</span> <span class="o">==</span> <span class="s2">&quot;ltwh&quot;</span><span class="p">:</span>
-                <span class="n">row</span><span class="p">[</span><span class="s2">&quot;box2d&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="n">b</span><span class="p">[</span><span class="s2">&quot;x&quot;</span><span class="p">]</span> <span class="o">+</span> <span class="n">b</span><span class="p">[</span><span class="s2">&quot;w&quot;</span><span class="p">]</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="n">b</span><span class="p">[</span><span class="s2">&quot;y&quot;</span><span class="p">]</span> <span class="o">+</span> <span class="n">b</span><span class="p">[</span><span class="s2">&quot;h&quot;</span><span class="p">]</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="n">b</span><span class="p">[</span><span class="s2">&quot;w&quot;</span><span class="p">],</span> <span class="n">b</span><span class="p">[</span><span class="s2">&quot;h&quot;</span><span class="p">]]</span>
-            <span class="k">elif</span> <span class="n">box2d_format</span> <span class="o">==</span> <span class="s2">&quot;cxcywh&quot;</span><span class="p">:</span>
-                <span class="n">row</span><span class="p">[</span><span class="s2">&quot;box2d&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="n">b</span><span class="p">[</span><span class="s2">&quot;cx&quot;</span><span class="p">],</span> <span class="n">b</span><span class="p">[</span><span class="s2">&quot;cy&quot;</span><span class="p">],</span> <span class="n">b</span><span class="p">[</span><span class="s2">&quot;w&quot;</span><span class="p">],</span> <span class="n">b</span><span class="p">[</span><span class="s2">&quot;h&quot;</span><span class="p">]]</span>
-            <span class="n">row</span><span class="p">[</span><span class="s2">&quot;box2d_score&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">ann</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;box2d_score&quot;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">ann</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"box2d"</span><span class="p">):</span>
+            <span class="n">b</span> <span class="o">=</span> <span class="n">ann</span><span class="p">[</span><span class="s2">"box2d"</span><span class="p">]</span>
+            <span class="k">if</span> <span class="n">box2d_format</span> <span class="o">==</span> <span class="s2">"ltwh"</span><span class="p">:</span>
+                <span class="n">row</span><span class="p">[</span><span class="s2">"box2d"</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="n">b</span><span class="p">[</span><span class="s2">"x"</span><span class="p">]</span> <span class="o">+</span> <span class="n">b</span><span class="p">[</span><span class="s2">"w"</span><span class="p">]</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="n">b</span><span class="p">[</span><span class="s2">"y"</span><span class="p">]</span> <span class="o">+</span> <span class="n">b</span><span class="p">[</span><span class="s2">"h"</span><span class="p">]</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="n">b</span><span class="p">[</span><span class="s2">"w"</span><span class="p">],</span> <span class="n">b</span><span class="p">[</span><span class="s2">"h"</span><span class="p">]]</span>
+            <span class="k">elif</span> <span class="n">box2d_format</span> <span class="o">==</span> <span class="s2">"cxcywh"</span><span class="p">:</span>
+                <span class="n">row</span><span class="p">[</span><span class="s2">"box2d"</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="n">b</span><span class="p">[</span><span class="s2">"cx"</span><span class="p">],</span> <span class="n">b</span><span class="p">[</span><span class="s2">"cy"</span><span class="p">],</span> <span class="n">b</span><span class="p">[</span><span class="s2">"w"</span><span class="p">],</span> <span class="n">b</span><span class="p">[</span><span class="s2">"h"</span><span class="p">]]</span>
+            <span class="n">row</span><span class="p">[</span><span class="s2">"box2d_score"</span><span class="p">]</span> <span class="o">=</span> <span class="n">ann</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"box2d_score"</span><span class="p">)</span>
 
         <span class="c1"># Box3D: x,y,z are center coordinates (not corner)</span>
-        <span class="k">if</span> <span class="n">ann</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;box3d&quot;</span><span class="p">):</span>
-            <span class="n">b3</span> <span class="o">=</span> <span class="n">ann</span><span class="p">[</span><span class="s2">&quot;box3d&quot;</span><span class="p">]</span>
-            <span class="n">row</span><span class="p">[</span><span class="s2">&quot;box3d&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="n">b3</span><span class="p">[</span><span class="s2">&quot;x&quot;</span><span class="p">],</span> <span class="n">b3</span><span class="p">[</span><span class="s2">&quot;y&quot;</span><span class="p">],</span> <span class="n">b3</span><span class="p">[</span><span class="s2">&quot;z&quot;</span><span class="p">],</span> <span class="n">b3</span><span class="p">[</span><span class="s2">&quot;w&quot;</span><span class="p">],</span> <span class="n">b3</span><span class="p">[</span><span class="s2">&quot;h&quot;</span><span class="p">],</span> <span class="n">b3</span><span class="p">[</span><span class="s2">&quot;l&quot;</span><span class="p">]]</span>
-            <span class="n">row</span><span class="p">[</span><span class="s2">&quot;box3d_score&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">ann</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;box3d_score&quot;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">ann</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"box3d"</span><span class="p">):</span>
+            <span class="n">b3</span> <span class="o">=</span> <span class="n">ann</span><span class="p">[</span><span class="s2">"box3d"</span><span class="p">]</span>
+            <span class="n">row</span><span class="p">[</span><span class="s2">"box3d"</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="n">b3</span><span class="p">[</span><span class="s2">"x"</span><span class="p">],</span> <span class="n">b3</span><span class="p">[</span><span class="s2">"y"</span><span class="p">],</span> <span class="n">b3</span><span class="p">[</span><span class="s2">"z"</span><span class="p">],</span> <span class="n">b3</span><span class="p">[</span><span class="s2">"w"</span><span class="p">],</span> <span class="n">b3</span><span class="p">[</span><span class="s2">"h"</span><span class="p">],</span> <span class="n">b3</span><span class="p">[</span><span class="s2">"l"</span><span class="p">]]</span>
+            <span class="n">row</span><span class="p">[</span><span class="s2">"box3d_score"</span><span class="p">]</span> <span class="o">=</span> <span class="n">ann</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"box3d_score"</span><span class="p">)</span>
 
         <span class="c1"># Annotation metadata (COCO/LVIS extensions)</span>
-        <span class="k">if</span> <span class="s2">&quot;iscrowd&quot;</span> <span class="ow">in</span> <span class="n">ann</span><span class="p">:</span>
-            <span class="n">row</span><span class="p">[</span><span class="s2">&quot;iscrowd&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="nb">bool</span><span class="p">(</span><span class="n">ann</span><span class="p">[</span><span class="s2">&quot;iscrowd&quot;</span><span class="p">])</span>  <span class="c1"># ensure Boolean (handles legacy 0/1)</span>
-        <span class="k">if</span> <span class="s2">&quot;category_frequency&quot;</span> <span class="ow">in</span> <span class="n">ann</span><span class="p">:</span>
-            <span class="n">row</span><span class="p">[</span><span class="s2">&quot;category_frequency&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">ann</span><span class="p">[</span><span class="s2">&quot;category_frequency&quot;</span><span class="p">]</span>
+        <span class="k">if</span> <span class="s2">"iscrowd"</span> <span class="ow">in</span> <span class="n">ann</span><span class="p">:</span>
+            <span class="n">row</span><span class="p">[</span><span class="s2">"iscrowd"</span><span class="p">]</span> <span class="o">=</span> <span class="nb">bool</span><span class="p">(</span><span class="n">ann</span><span class="p">[</span><span class="s2">"iscrowd"</span><span class="p">])</span>  <span class="c1"># ensure Boolean (handles legacy 0/1)</span>
+        <span class="k">if</span> <span class="s2">"category_frequency"</span> <span class="ow">in</span> <span class="n">ann</span><span class="p">:</span>
+            <span class="n">row</span><span class="p">[</span><span class="s2">"category_frequency"</span><span class="p">]</span> <span class="o">=</span> <span class="n">ann</span><span class="p">[</span><span class="s2">"category_frequency"</span><span class="p">]</span>
 
         <span class="c1"># Sample-level LVIS fields (repeated per annotation row)</span>
-        <span class="k">if</span> <span class="s2">&quot;neg_label_indices&quot;</span> <span class="ow">in</span> <span class="n">sample</span><span class="p">:</span>
-            <span class="n">row</span><span class="p">[</span><span class="s2">&quot;neg_label_indices&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">sample</span><span class="p">[</span><span class="s2">&quot;neg_label_indices&quot;</span><span class="p">]</span>
-        <span class="k">if</span> <span class="s2">&quot;not_exhaustive_label_indices&quot;</span> <span class="ow">in</span> <span class="n">sample</span><span class="p">:</span>
-            <span class="n">row</span><span class="p">[</span><span class="s2">&quot;not_exhaustive_label_indices&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">sample</span><span class="p">[</span><span class="s2">&quot;not_exhaustive_label_indices&quot;</span><span class="p">]</span>
+        <span class="k">if</span> <span class="s2">"neg_label_indices"</span> <span class="ow">in</span> <span class="n">sample</span><span class="p">:</span>
+            <span class="n">row</span><span class="p">[</span><span class="s2">"neg_label_indices"</span><span class="p">]</span> <span class="o">=</span> <span class="n">sample</span><span class="p">[</span><span class="s2">"neg_label_indices"</span><span class="p">]</span>
+        <span class="k">if</span> <span class="s2">"not_exhaustive_label_indices"</span> <span class="ow">in</span> <span class="n">sample</span><span class="p">:</span>
+            <span class="n">row</span><span class="p">[</span><span class="s2">"not_exhaustive_label_indices"</span><span class="p">]</span> <span class="o">=</span> <span class="n">sample</span><span class="p">[</span><span class="s2">"not_exhaustive_label_indices"</span><span class="p">]</span>
 
-        <span class="n">row</span><span class="p">[</span><span class="s2">&quot;size&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">size</span>
+        <span class="n">row</span><span class="p">[</span><span class="s2">"size"</span><span class="p">]</span> <span class="o">=</span> <span class="n">size</span>
         <span class="n">rows</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">row</span><span class="p">)</span>
 
 <span class="n">df</span> <span class="o">=</span> <span class="n">pl</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">rows</span><span class="p">)</span>
-<span class="n">df</span><span class="o">.</span><span class="n">write_ipc</span><span class="p">(</span><span class="s2">&quot;annotations.arrow&quot;</span><span class="p">)</span>       <span class="c1"># Arrow IPC</span>
-<span class="c1"># df.write_parquet(&quot;annotations.parquet&quot;)  # or Parquet</span>
+<span class="n">df</span><span class="o">.</span><span class="n">write_ipc</span><span class="p">(</span><span class="s2">"annotations.arrow"</span><span class="p">)</span>       <span class="c1"># Arrow IPC</span>
+<span class="c1"># df.write_parquet("annotations.parquet")  # or Parquet</span>
 </code></pre></div>
 <h3 id="key-conversions-summary">Key Conversions Summary</h3>
 <table>
@@ -2565,7 +2565,7 @@ for users who need custom pipelines.</p>
       <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["content.code.copy", "content.code.annotate", "content.tabs.link", "navigation.instant", "navigation.tracking", "navigation.tabs", "navigation.tabs.sticky", "navigation.path", "navigation.indexes", "navigation.top", "navigation.footer", "navigation.prune", "toc.follow", "search.suggest", "search.highlight"], "search": "../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"alias": true, "default": "latest", "provider": "mike"}}</script>
     
     
-      <script src="../../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      <script src="../../../assets/javascripts/bundle.d7400e89.min.js"></script>
       
         <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
       

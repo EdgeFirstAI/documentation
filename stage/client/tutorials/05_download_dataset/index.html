@@ -25,7 +25,7 @@
       
       
       <link rel="icon" href="../../../assets/favicon.png">
-      <meta name="generator" content="mkdocs-ProperDocs 1.6.7, mkdocs-material-9.7.6">
+      <meta name="generator" content="mkdocs-ProperDocs 1.6.7, mkdocs-material-9.7.7">
     
     
       
@@ -33,7 +33,7 @@
       
     
     
-      <link rel="stylesheet" href="../../../assets/stylesheets/main.484c7ddc.min.css">
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.ec1eaa64.min.css">
       
         
         <link rel="stylesheet" href="../../../assets/stylesheets/palette.ab4e12ef.min.css">
@@ -1864,13 +1864,13 @@
 <span class="n">client</span> <span class="o">=</span> <span class="n">get_client</span><span class="p">()</span>
 <span class="n">dataset</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">dataset</span><span class="p">(</span><span class="n">COFFEE_CUP_DATASET_ID</span><span class="p">)</span>
 <span class="n">annotation_set_id</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">annotation_sets</span><span class="p">(</span><span class="n">dataset</span><span class="o">.</span><span class="n">id</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">id</span>
-<span class="n">output</span> <span class="o">=</span> <span class="s2">&quot;./coffee_cup_val&quot;</span>
+<span class="n">output</span> <span class="o">=</span> <span class="s2">"./coffee_cup_val"</span>
 
-<span class="k">with</span> <span class="n">tqdm</span><span class="p">(</span><span class="n">total</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">desc</span><span class="o">=</span><span class="s2">&quot;Downloading&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">bar</span><span class="p">:</span>
+<span class="k">with</span> <span class="n">tqdm</span><span class="p">(</span><span class="n">total</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">desc</span><span class="o">=</span><span class="s2">"Downloading"</span><span class="p">)</span> <span class="k">as</span> <span class="n">bar</span><span class="p">:</span>
     <span class="n">client</span><span class="o">.</span><span class="n">download_dataset</span><span class="p">(</span>
         <span class="n">dataset</span><span class="o">.</span><span class="n">id</span><span class="p">,</span>
         <span class="n">output</span><span class="p">,</span>
-        <span class="n">groups</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;val&quot;</span><span class="p">],</span>
+        <span class="n">groups</span><span class="o">=</span><span class="p">[</span><span class="s2">"val"</span><span class="p">],</span>
         <span class="n">types</span><span class="o">=</span><span class="p">[</span><span class="n">FileType</span><span class="o">.</span><span class="n">Image</span><span class="p">],</span>
         <span class="n">progress</span><span class="o">=</span><span class="k">lambda</span> <span class="n">c</span><span class="p">,</span> <span class="n">t</span><span class="p">:</span> <span class="n">progress_bar</span><span class="p">(</span><span class="n">c</span><span class="p">,</span> <span class="n">t</span><span class="p">,</span> <span class="n">bar</span><span class="p">),</span>
     <span class="p">)</span>
@@ -1878,13 +1878,13 @@
 <h3 id="2-write-yolo-darknet-labels">2. Write <abbr title="You Only Look Once">YOLO</abbr> Darknet labels</h3>
 <p>The script fetches annotations and writes <code>.txt</code> files with normalized center coordinates:</p>
 <div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">save_yolo_annotation</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">annotations</span><span class="p">):</span>
-    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="s2">&quot;w&quot;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">&quot;utf-8&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">handle</span><span class="p">:</span>
+    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="s2">"w"</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">"utf-8"</span><span class="p">)</span> <span class="k">as</span> <span class="n">handle</span><span class="p">:</span>
         <span class="k">for</span> <span class="n">ann</span> <span class="ow">in</span> <span class="n">annotations</span><span class="p">:</span>
             <span class="k">if</span> <span class="n">ann</span><span class="o">.</span><span class="n">box2d</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
                 <span class="n">box</span> <span class="o">=</span> <span class="n">ann</span><span class="o">.</span><span class="n">box2d</span>
                 <span class="n">handle</span><span class="o">.</span><span class="n">write</span><span class="p">(</span>
-                    <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">ann</span><span class="o">.</span><span class="n">label_index</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="n">box</span><span class="o">.</span><span class="n">cx</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="n">box</span><span class="o">.</span><span class="n">cy</span><span class="si">}</span><span class="s2"> &quot;</span>
-                    <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">box</span><span class="o">.</span><span class="n">width</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="n">box</span><span class="o">.</span><span class="n">height</span><span class="si">}</span><span class="se">\n</span><span class="s2">&quot;</span>
+                    <span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">ann</span><span class="o">.</span><span class="n">label_index</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="n">box</span><span class="o">.</span><span class="n">cx</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="n">box</span><span class="o">.</span><span class="n">cy</span><span class="si">}</span><span class="s2"> "</span>
+                    <span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">box</span><span class="o">.</span><span class="n">width</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="n">box</span><span class="o">.</span><span class="n">height</span><span class="si">}</span><span class="se">\n</span><span class="s2">"</span>
                 <span class="p">)</span>
 </code></pre></div>
 <p>This produces a Darknet-compatible layout alongside downloaded images.</p>
@@ -2140,7 +2140,7 @@
       <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["content.code.copy", "content.code.annotate", "content.tabs.link", "navigation.instant", "navigation.tracking", "navigation.tabs", "navigation.tabs.sticky", "navigation.path", "navigation.indexes", "navigation.top", "navigation.footer", "navigation.prune", "toc.follow", "search.suggest", "search.highlight"], "search": "../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"alias": true, "default": "latest", "provider": "mike"}}</script>
     
     
-      <script src="../../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      <script src="../../../assets/javascripts/bundle.d7400e89.min.js"></script>
       
         <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
       

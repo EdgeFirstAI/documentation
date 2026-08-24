@@ -25,7 +25,7 @@
       
       
       <link rel="icon" href="../../assets/favicon.png">
-      <meta name="generator" content="mkdocs-ProperDocs 1.6.7, mkdocs-material-9.7.6">
+      <meta name="generator" content="mkdocs-ProperDocs 1.6.7, mkdocs-material-9.7.7">
     
     
       
@@ -33,7 +33,7 @@
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.ec1eaa64.min.css">
       
         
         <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
@@ -1936,33 +1936,33 @@
 <span class="k">def</span><span class="w"> </span><span class="nf">search_anno_json</span><span class="p">(</span><span class="n">json_file</span><span class="p">:</span><span class="nb">str</span><span class="p">,</span> <span class="n">image_text</span><span class="p">:</span><span class="nb">str</span><span class="p">):</span>
 
     <span class="k">try</span><span class="p">:</span>
-        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">json_file</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">jf_obj</span><span class="p">:</span>
+        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">json_file</span><span class="p">,</span> <span class="s1">'r'</span><span class="p">)</span> <span class="k">as</span> <span class="n">jf_obj</span><span class="p">:</span>
             <span class="n">data</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">jf_obj</span><span class="p">)</span>
     <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
         <span class="nb">print</span><span class="p">(</span><span class="n">e</span><span class="p">)</span>
         <span class="k">return</span>
 
-    <span class="n">licenses</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;licenses&#39;</span><span class="p">]</span>
+    <span class="n">licenses</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s1">'licenses'</span><span class="p">]</span>
 
-    <span class="k">for</span> <span class="n">image</span> <span class="ow">in</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;images&#39;</span><span class="p">]:</span>
-        <span class="k">if</span> <span class="n">image_text</span> <span class="ow">in</span> <span class="n">image</span><span class="p">[</span><span class="s1">&#39;file_name&#39;</span><span class="p">]:</span>
-            <span class="n">lic</span> <span class="o">=</span> <span class="n">licenses</span><span class="p">[</span><span class="n">image</span><span class="p">[</span><span class="s1">&#39;license&#39;</span><span class="p">]][</span><span class="s1">&#39;name&#39;</span><span class="p">]</span>
-            <span class="n">url</span> <span class="o">=</span> <span class="n">licenses</span><span class="p">[</span><span class="n">image</span><span class="p">[</span><span class="s1">&#39;license&#39;</span><span class="p">]][</span><span class="s1">&#39;url&#39;</span><span class="p">]</span>
-            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;In &#39;</span><span class="si">{</span><span class="n">json_file</span><span class="si">}</span><span class="s2">&#39;, image &#39;</span><span class="si">{</span><span class="n">image</span><span class="p">[</span><span class="s1">&#39;file_name&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">&#39; has license &#39;</span><span class="si">{</span><span class="n">lic</span><span class="si">}</span><span class="s2"> ( </span><span class="si">{</span><span class="n">url</span><span class="si">}</span><span class="s2"> )&#39;&quot;</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">image</span> <span class="ow">in</span> <span class="n">data</span><span class="p">[</span><span class="s1">'images'</span><span class="p">]:</span>
+        <span class="k">if</span> <span class="n">image_text</span> <span class="ow">in</span> <span class="n">image</span><span class="p">[</span><span class="s1">'file_name'</span><span class="p">]:</span>
+            <span class="n">lic</span> <span class="o">=</span> <span class="n">licenses</span><span class="p">[</span><span class="n">image</span><span class="p">[</span><span class="s1">'license'</span><span class="p">]][</span><span class="s1">'name'</span><span class="p">]</span>
+            <span class="n">url</span> <span class="o">=</span> <span class="n">licenses</span><span class="p">[</span><span class="n">image</span><span class="p">[</span><span class="s1">'license'</span><span class="p">]][</span><span class="s1">'url'</span><span class="p">]</span>
+            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"In '</span><span class="si">{</span><span class="n">json_file</span><span class="si">}</span><span class="s2">', image '</span><span class="si">{</span><span class="n">image</span><span class="p">[</span><span class="s1">'file_name'</span><span class="p">]</span><span class="si">}</span><span class="s2">' has license '</span><span class="si">{</span><span class="n">lic</span><span class="si">}</span><span class="s2"> ( </span><span class="si">{</span><span class="n">url</span><span class="si">}</span><span class="s2"> )'"</span><span class="p">)</span>
 
-<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">"__main__"</span><span class="p">:</span>
     <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">)</span> <span class="o">!=</span> <span class="mi">2</span><span class="p">:</span>
-        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;This script expects 1 argument, not </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span><span class="si">}</span><span class="s2">.&quot;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"This script expects 1 argument, not </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span><span class="si">}</span><span class="s2">."</span><span class="p">)</span>
         <span class="n">exit</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
 
-    <span class="n">search_anno_json</span><span class="p">(</span><span class="s2">&quot;instances_train2017.json&quot;</span><span class="p">,</span> <span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
-    <span class="n">search_anno_json</span><span class="p">(</span><span class="s2">&quot;instances_val2017.json&quot;</span><span class="p">,</span> <span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+    <span class="n">search_anno_json</span><span class="p">(</span><span class="s2">"instances_train2017.json"</span><span class="p">,</span> <span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+    <span class="n">search_anno_json</span><span class="p">(</span><span class="s2">"instances_val2017.json"</span><span class="p">,</span> <span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
 </code></pre></div>
 </li>
 <li>
 <p>Run the script, with the image file name as the only argument:</p>
 <div class="highlight"><pre><span></span><code>python<span class="w"> </span>.<span class="se">\f</span>ind_license.py<span class="w"> </span><span class="m">147328</span>
-In<span class="w"> </span><span class="s1">&#39;instances_train2017.json&#39;</span>,<span class="w"> </span>image<span class="w"> </span><span class="s1">&#39;000000147328.jpg&#39;</span><span class="w"> </span>has<span class="w"> </span>license<span class="w"> </span><span class="s1">&#39;Attribution-NonCommercial License ( http://creativecommons.org/licenses/by-nc/2.0/ )&#39;</span>
+In<span class="w"> </span><span class="s1">'instances_train2017.json'</span>,<span class="w"> </span>image<span class="w"> </span><span class="s1">'000000147328.jpg'</span><span class="w"> </span>has<span class="w"> </span>license<span class="w"> </span><span class="s1">'Attribution-NonCommercial License ( http://creativecommons.org/licenses/by-nc/2.0/ )'</span>
 </code></pre></div>
 </li>
 </ol>
@@ -2319,7 +2319,7 @@ toothbrush
       <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["content.code.copy", "content.code.annotate", "content.tabs.link", "navigation.instant", "navigation.tracking", "navigation.tabs", "navigation.tabs.sticky", "navigation.path", "navigation.indexes", "navigation.top", "navigation.footer", "navigation.prune", "toc.follow", "search.suggest", "search.highlight"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"alias": true, "default": "latest", "provider": "mike"}}</script>
     
     
-      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      <script src="../../assets/javascripts/bundle.d7400e89.min.js"></script>
       
         <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
       

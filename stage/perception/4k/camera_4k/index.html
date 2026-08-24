@@ -25,7 +25,7 @@
       
       
       <link rel="icon" href="../../../assets/favicon.png">
-      <meta name="generator" content="mkdocs-ProperDocs 1.6.7, mkdocs-material-9.7.6">
+      <meta name="generator" content="mkdocs-ProperDocs 1.6.7, mkdocs-material-9.7.7">
     
     
       
@@ -33,7 +33,7 @@
       
     
     
-      <link rel="stylesheet" href="../../../assets/stylesheets/main.484c7ddc.min.css">
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.ec1eaa64.min.css">
       
         
         <link rel="stylesheet" href="../../../assets/stylesheets/palette.ab4e12ef.min.css">
@@ -2223,7 +2223,7 @@
 --h264-tiles
 
 <span class="c1"># Configure tile topics (default: rt/camera/h264/tl tr bl br)</span>
---h264-tiles-topics<span class="w"> </span><span class="s2">&quot;rt/camera/h264/tl rt/camera/h264/tr rt/camera/h264/bl rt/camera/h264/br&quot;</span>
+--h264-tiles-topics<span class="w"> </span><span class="s2">"rt/camera/h264/tl rt/camera/h264/tr rt/camera/h264/bl rt/camera/h264/br"</span>
 
 <span class="c1"># Set tile frame rate (default: 15 FPS)</span>
 --h264-tiles-fps<span class="w"> </span><span class="m">15</span>
@@ -2242,7 +2242,7 @@ sudo<span class="w"> </span>camera<span class="w"> </span>--h264-tiles<span clas
 <span class="nb">export</span><span class="w"> </span><span class="nv">H264_TILES_FPS</span><span class="o">=</span><span class="m">15</span>
 <span class="nb">export</span><span class="w"> </span><span class="nv">TRACY</span><span class="o">=</span><span class="nb">true</span>
 <span class="nb">export</span><span class="w"> </span><span class="nv">H264_BITRATE</span><span class="o">=</span>auto
-<span class="nb">export</span><span class="w"> </span><span class="nv">CAMERA_SIZE</span><span class="o">=</span><span class="s2">&quot;3840 2160&quot;</span>
+<span class="nb">export</span><span class="w"> </span><span class="nv">CAMERA_SIZE</span><span class="o">=</span><span class="s2">"3840 2160"</span>
 </code></pre></div>
 <p>The H264 tile topics environment variable is not available at this time.</p>
 <h3 id="usage-examples">Usage Examples</h3>
@@ -2269,9 +2269,9 @@ sudo<span class="w"> </span>camera<span class="w"> </span>--h264-tiles<span clas
 </code></pre></div>
 <h2 id="systemd-configuration-file">SystemD Configuration file</h2>
 <p>You can add the above parameters to the camera configuration file located at <code>/etc/default/camera</code>. The following lines can be added to the configuration file:</p>
-<div class="highlight"><pre><span></span><code><span class="na">H264_TILES</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;true&quot;</span>
-<span class="na">H264_TILES_FPS</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;15&quot;</span>
-<span class="na">TRACY</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;true&quot;</span>
+<div class="highlight"><pre><span></span><code><span class="na">H264_TILES</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"true"</span>
+<span class="na">H264_TILES_FPS</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"15"</span>
+<span class="na">TRACY</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"true"</span>
 </code></pre></div>
 <p>The parameters for <code>CAMERA_SIZE</code> and <code>H264_BITRATE</code> already exist in <code>/etc/default/camera</code>. The H264 tile topics parameter is not available at this time.</p>
 <h2 id="web-ui-configuration">Web UI Configuration</h2>
@@ -2565,7 +2565,7 @@ sudo<span class="w"> </span>camera<span class="w"> </span>--h264-tiles<span clas
       <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["content.code.copy", "content.code.annotate", "content.tabs.link", "navigation.instant", "navigation.tracking", "navigation.tabs", "navigation.tabs.sticky", "navigation.path", "navigation.indexes", "navigation.top", "navigation.footer", "navigation.prune", "toc.follow", "search.suggest", "search.highlight"], "search": "../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"alias": true, "default": "latest", "provider": "mike"}}</script>
     
     
-      <script src="../../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      <script src="../../../assets/javascripts/bundle.d7400e89.min.js"></script>
       
         <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
       

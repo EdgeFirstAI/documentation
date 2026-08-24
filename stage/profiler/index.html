@@ -25,7 +25,7 @@
       
       
       <link rel="icon" href="../assets/favicon.png">
-      <meta name="generator" content="mkdocs-ProperDocs 1.6.7, mkdocs-material-9.7.6">
+      <meta name="generator" content="mkdocs-ProperDocs 1.6.7, mkdocs-material-9.7.7">
     
     
       
@@ -33,7 +33,7 @@
       
     
     
-      <link rel="stylesheet" href="../assets/stylesheets/main.484c7ddc.min.css">
+      <link rel="stylesheet" href="../assets/stylesheets/main.ec1eaa64.min.css">
       
         
         <link rel="stylesheet" href="../assets/stylesheets/palette.ab4e12ef.min.css">
@@ -907,6 +907,10 @@
       
         
       
+        
+      
+        
+      
     
     
     
@@ -1039,6 +1043,8 @@
       
         
           
+        
+      
         
       
         
@@ -1517,7 +1523,7 @@
 
 
 <h1 id="profiler">Profiler</h1>
-<p>The <strong>EdgeFirst Profiler</strong> is the on-target measurement engine for the EdgeFirst Studio platform. It runs the complete vision pipeline — capture, preprocess, inference, postprocess, <abbr title="Non-Maximum Suppression">NMS</abbr> — on the hardware your model will deploy to, then publishes per-image predictions and a detailed timing trace to EdgeFirst Studio where accuracy metrics, charts, and trace visualizations are produced.</p>
+<p>The <strong>EdgeFirst Profiler</strong> is the on-target measurement engine for the EdgeFirst Studio platform. It runs the complete vision pipeline — capture, preprocess, inference, postprocess, <abbr title="Non-Maximum Suppression">NMS</abbr> — on the hardware your model will deploy to, then scores the result against ground truth and reports how fast each stage ran. Accuracy metrics, timing, and charts are all computed by the profiler itself, on the device; EdgeFirst Studio is where they are published, compared, and browsed.</p>
 <p>For public benchmarks, explore the <strong>EdgeFirst Model Zoo on Hugging Face</strong> at <a href="https://huggingface.co/spaces/EdgeFirst/Models">https://huggingface.co/spaces/EdgeFirst/Models</a>. We publish public benchmarks and metrics there across Ultralytics and other community models so you can compare your validation results against known baselines.</p>
 <figure>
             <img align="center" alt="EdgeFirst Profiler — F4 dashboard during a validation run" src="assets/tui-profiler.png" />
@@ -1525,19 +1531,24 @@
             </figure>
 <h2 id="what-it-is">What it is</h2>
 <p><code>edgefirst-profiler</code> is a native binary that runs on each supported target. It owns everything that has to happen <em>next to the silicon</em>: model loading, accelerated decode, pipeline orchestration, and the inference call itself. It uses <code>edgefirst-hal</code> under the hood for hardware-accelerated decode and pre/post-processing, drives every backend through a unified interface, and inherits the EdgeFirst <abbr title="Direct Memory Access">DMA</abbr> optimizations across the pipeline.</p>
-<p>The result is a small, portable, high-performance on-target tool. Adding a new device to the EdgeFirst ecosystem only requires landing the profiler on that platform — the same CLI and workflow plug straight into the existing Studio-side metrics, charts, and reports.</p>
+<p>The result is a small, portable, high-performance on-target tool with no Python and no <code>pycocotools</code> on the device. Adding a new device to the EdgeFirst ecosystem only requires landing the profiler on that platform — the same CLI, the same measurements, and the same published artifacts follow automatically.</p>
 <h2 id="how-it-fits-together">How it fits together</h2>
 <pre class="mermaid"><code>flowchart LR
-    A[edgefirst-profiler&lt;br/&gt;on target] --&gt;|predictions.parquet&lt;br/&gt;trace.pftrace| B[EdgeFirst Studio]
-    B --&gt;|mAP / mIoU&lt;br/&gt;charts, trace viewer| D[You]</code></pre>
-<p>The profiler measures and publishes. EdgeFirst Studio receives the artifacts and produces the accuracy charts, the per-operator timing visualizations, and the comparison views. The same <code>v-XXXX</code> validation-session ID links the on-target run to everything Studio shows afterwards.</p>
+    A[edgefirst-profiler&lt;br/&gt;on target] --&gt;|run pipeline,&lt;br/&gt;score, measure| A2[metrics.yaml&lt;br/&gt;predictions.parquet&lt;br/&gt;trace.pftrace&lt;br/&gt;charts]
+    A2 --&gt;|publish&lt;br/&gt;optional| B[EdgeFirst Studio]
+    A2 --&gt;|console summary| D[You]
+    B --&gt;|browse, compare,&lt;br/&gt;trace viewer| D</code></pre>
+<p>The profiler runs the pipeline, computes the accuracy metrics, and derives the timing and charts — all on the target. Publishing to Studio is a separate step, and an optional one: a run with no Studio session still writes <code>metrics.yaml</code>, the predictions, the trace, and a readable console summary to disk. When you do publish, the <code>v-XXXX</code> validation-session ID links the on-target run to everything Studio shows afterwards.</p>
 <h2 id="what-you-can-do-with-the-profiler">What you can do with the profiler</h2>
-<p>The profiler is always operated against an EdgeFirst Studio session. There are two equivalent entry points:</p>
+<p>There are several ways in, depending on where the model lives and where you want the results to land:</p>
 <ul>
-<li><strong>Validation from Studio</strong> — create a user-managed validation session in the Studio web UI, then run the profiler against that session ID on your target.</li>
-<li><strong>Validation from the Profiler</strong> — browse training sessions inside the profiler's TUI and let the profiler create the validation session in place.</li>
+<li><strong><a href="studio/from_studio/">Validation from Studio</a></strong> — create a user-managed validation session in the Studio web UI, then run the profiler against that session ID on your target.</li>
+<li><strong><a href="studio/from_profiler/">Validation from the Profiler</a></strong> — browse training sessions inside the profiler's TUI and let the profiler create the validation session in place.</li>
+<li><strong>Offline validation</strong> — point <code>validate</code> at a local model, a directory of images, and a ground-truth file. No Studio session is created and nothing is uploaded. See <a href="concepts/validation/">Validation and Metrics</a>.</li>
+<li><strong><a href="studio/cloud/">Cloud runs</a></strong> — hand a training session and an artifact to <code>dispatch</code> and let the run happen on a cloud machine you choose, instead of on hardware in front of you.</li>
 </ul>
-<p>Both paths produce the same artifacts and the same Studio session card.</p>
+<p>Three further commands round out the workflow. <code>report</code> prints a full summary of any run's <code>trace.pftrace</code> after the fact. <code>publish</code> uploads a finished result set to Studio from wherever the files ended up, separating measurement from publication. <code>system-info</code> prints how the current machine will be identified, without loading an inference runtime.</p>
+<p>Detection models can also run each image as a grid of overlapping tiles rather than one letterboxed frame, which markedly improves recall on small objects — see <a href="concepts/sahi/">Tiled Inference (SAHI)</a>.</p>
 <h2 id="platform-video-demos">Platform Video Demos</h2>
 <p>These demos show EdgeFirst Profiler runs on common deployment and development targets.</p>
 <h3 id="macbook">MacBook</h3>
@@ -1558,9 +1569,11 @@
 <h2 id="read-next">Read next</h2>
 <ul>
 <li><strong><a href="quickstart/">Quick Start</a></strong> — install the profiler, sign in to Studio, run your first validation session in under fifteen minutes.</li>
-<li><strong><a href="installation/">Installation</a></strong> — supported targets, per-target dependencies, and target-specific quirks.</li>
-<li><strong><a href="studio/">EdgeFirst Studio Integration</a></strong> — connecting to Studio, validation from Studio, and validation from the profiler.</li>
-<li><strong><a href="concepts/pipelining/">Pipelining</a></strong> — the multi-stage measurement pipeline, the <code>--inference-depth</code> flag, and how each backend constrains it. (Concepts deep-dive.)</li>
+<li><strong><a href="installation/">Installation</a></strong> — supported targets, per-target dependencies, container images, and target-specific quirks.</li>
+<li><strong><a href="studio/">EdgeFirst Studio Integration</a></strong> — connecting to Studio, validation from Studio, validation from the profiler, and cloud runs.</li>
+<li><strong><a href="concepts/validation/">Validation and Metrics</a></strong> — how accuracy is scored on-device, the <code>--validation</code> modes, what <code>metrics.yaml</code> contains, and how to re-score a run without re-running the model. (Concepts deep-dive.)</li>
+<li><strong><a href="concepts/pipelining/">Pipelining</a></strong> — the multi-stage measurement pipeline, the per-stage depth flags, and how each backend constrains them. (Concepts deep-dive.)</li>
+<li><strong><a href="concepts/sahi/">Tiled Inference (SAHI)</a></strong> — running each image as a grid of overlapping tiles to recover small objects. (Concepts deep-dive.)</li>
 </ul>
 
 
@@ -1810,7 +1823,7 @@
       <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["content.code.copy", "content.code.annotate", "content.tabs.link", "navigation.instant", "navigation.tracking", "navigation.tabs", "navigation.tabs.sticky", "navigation.path", "navigation.indexes", "navigation.top", "navigation.footer", "navigation.prune", "toc.follow", "search.suggest", "search.highlight"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"alias": true, "default": "latest", "provider": "mike"}}</script>
     
     
-      <script src="../assets/javascripts/bundle.79ae519e.min.js"></script>
+      <script src="../assets/javascripts/bundle.d7400e89.min.js"></script>
       
         <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
       

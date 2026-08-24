@@ -25,7 +25,7 @@
       
       
       <link rel="icon" href="../../assets/favicon.png">
-      <meta name="generator" content="mkdocs-ProperDocs 1.6.7, mkdocs-material-9.7.6">
+      <meta name="generator" content="mkdocs-ProperDocs 1.6.7, mkdocs-material-9.7.7">
     
     
       
@@ -33,7 +33,7 @@
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.ec1eaa64.min.css">
       
         
         <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
@@ -1739,17 +1739,17 @@ without external context.</p>
 <div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">polars</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pl</span>
 
 <span class="c1"># Read Arrow IPC or Parquet</span>
-<span class="n">df</span> <span class="o">=</span> <span class="n">pl</span><span class="o">.</span><span class="n">read_ipc</span><span class="p">(</span><span class="s2">&quot;dataset.arrow&quot;</span><span class="p">)</span>
-<span class="c1"># df = pl.read_parquet(&quot;dataset.parquet&quot;)</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pl</span><span class="o">.</span><span class="n">read_ipc</span><span class="p">(</span><span class="s2">"dataset.arrow"</span><span class="p">)</span>
+<span class="c1"># df = pl.read_parquet("dataset.parquet")</span>
 
 <span class="c1"># Quick version check — for robust metadata-based detection see Conversion Guidelines</span>
-<span class="k">if</span> <span class="s2">&quot;polygon&quot;</span> <span class="ow">in</span> <span class="n">df</span><span class="o">.</span><span class="n">columns</span><span class="p">:</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;2026.04 format (has polygon column)&quot;</span><span class="p">)</span>
-    <span class="n">polygons</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s2">&quot;polygon&quot;</span><span class="p">]</span>       <span class="c1"># List&lt;List&lt;f32&gt;&gt; — interleaved xy per ring</span>
-<span class="k">elif</span> <span class="s2">&quot;mask&quot;</span> <span class="ow">in</span> <span class="n">df</span><span class="o">.</span><span class="n">columns</span> <span class="ow">and</span> <span class="nb">str</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;mask&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">dtype</span><span class="p">)</span> <span class="o">==</span> <span class="s2">&quot;Binary&quot;</span><span class="p">:</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;2026.04 format (has Binary mask)&quot;</span><span class="p">)</span>
+<span class="k">if</span> <span class="s2">"polygon"</span> <span class="ow">in</span> <span class="n">df</span><span class="o">.</span><span class="n">columns</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">"2026.04 format (has polygon column)"</span><span class="p">)</span>
+    <span class="n">polygons</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s2">"polygon"</span><span class="p">]</span>       <span class="c1"># List&lt;List&lt;f32&gt;&gt; — interleaved xy per ring</span>
+<span class="k">elif</span> <span class="s2">"mask"</span> <span class="ow">in</span> <span class="n">df</span><span class="o">.</span><span class="n">columns</span> <span class="ow">and</span> <span class="nb">str</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s2">"mask"</span><span class="p">]</span><span class="o">.</span><span class="n">dtype</span><span class="p">)</span> <span class="o">==</span> <span class="s2">"Binary"</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">"2026.04 format (has Binary mask)"</span><span class="p">)</span>
 <span class="k">else</span><span class="p">:</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;2025.10 or earlier format&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">"2025.10 or earlier format"</span><span class="p">)</span>
 </code></pre></div>
 <div class="admonition tip">
 <p class="admonition-title">Use the EdgeFirst Client <abbr title="Software Development Kit">SDK</abbr></p>
@@ -2044,7 +2044,7 @@ automatically. Direct Polars access is shown here for illustration; prefer the
       <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["content.code.copy", "content.code.annotate", "content.tabs.link", "navigation.instant", "navigation.tracking", "navigation.tabs", "navigation.tabs.sticky", "navigation.path", "navigation.indexes", "navigation.top", "navigation.footer", "navigation.prune", "toc.follow", "search.suggest", "search.highlight"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"alias": true, "default": "latest", "provider": "mike"}}</script>
     
     
-      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      <script src="../../assets/javascripts/bundle.d7400e89.min.js"></script>
       
         <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
       

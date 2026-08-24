@@ -35,6 +35,26 @@ edgefirst-profiler login
 
 The flags take precedence over the environment variables if both are set.
 
+## Token-based authentication for CI
+
+Instead of running `login` at all, hand the profiler an already-issued bearer token and server address with the global `--token` and `--url` flags, or the `TOKEN` and `URL` environment variables. This is the path for CI jobs and other automated environments with no interactive session to log in from:
+
+```sh
+export TOKEN=eyJhbGciOi...            # use a CI secret store
+export URL=https://test.edgefirst.studio
+edgefirst-profiler validate --session-id v-1b51
+```
+
+When both are supplied together they take precedence over a saved login. On their own the two behave differently:
+
+- `--url` typed on the command line without `--token` is rejected as a mistake, rather than silently falling back to the default server.
+- An ambient `URL` environment variable without a `TOKEN` is tolerated and ignored, because `URL` is a common name for unrelated tools' own configuration.
+
+This is also how [cloud runs](cloud.md) authenticate: the Studio platform injects `TOKEN` and `URL` into the launched container.
+
+!!! tip "Pre-flight the host identity"
+    `edgefirst-profiler system-info` prints the detected system identity — architecture, processor, accelerator, and platform, the same identity a real run uses to name its validation session — and exits. It runs headless and loads no inference runtime, so it makes a fast CI pre-flight to confirm host detection before committing to a full run.
+
 ## Interactive login (TUI)
 
 Open the TUI and press **F2** to land on the Studio screen. The first state is the login form: choose a server (`https://edgefirst.studio`, `https://test.edgefirst.studio`, or `https://stage.edgefirst.studio`), enter your username and password, and submit.

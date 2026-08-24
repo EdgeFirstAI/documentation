@@ -36,17 +36,17 @@ Each level renders the same metadata you see in the Studio web UI: project owner
 
 ### 3. Pick an artifact and an action
 
-When you select an artifact (e.g., `best.onnx`, `best.tflite`, `best.engine`), an action menu pops up:
+The artifact list shows only recognized model formats — ONNX, TFLite, DVM, Hailo, and TensorRT — hiding label files, archives, and other non-model artifacts a training session produces. When you select an artifact (e.g., `best.onnx`, `best.tflite`, `best.engine`), an action menu pops up:
 
 | Action | Behavior |
 | ------ | -------- |
 | **Validate** | Create a new validation session bound to this artifact and the training session's dataset, then jump to the F4 Profiler screen to run it. |
-| **Live** | _(reserved)_ Stream live inference back to Studio rather than producing a validation session — covered in a future release. |
+| **Live** | _(reserved)_ Selecting it reports "Live profiling is not yet supported. Coming in a future release." |
 
 Choosing **Validate** opens an inline configuration panel: dataset partition, confidence threshold, IoU threshold, top-K, max detections. Sensible defaults are pre-filled from the training session.
 
 !!! warning "Validation sessions need a writable project"
-    Creating a validation session requires **write access** to the Studio project. The profiler cannot create a session against the read-only public **Sample Project** — first [copy its dataset](../../getting_started/copy_dataset.md) into a project you own (and add your model), then create the training and validation session there. (On a read-only or public project, a `--training-session` run falls back to local-only mode automatically — see [CLI equivalent](#cli-equivalent) below.)
+    Creating a validation session requires **write access** to the Studio project. The profiler cannot create a session against the read-only public **Sample Project**; when this happens, the dashboard's dialog explains the two ways forward: choose **Continue profiling-only** to run the model locally and see its on-device performance without publishing, or — to publish results — [copy the dataset](../../getting_started/copy_dataset.md) into a project you own (and add your model), then create the training and validation session there. (On a read-only or public project, a `--training-session` run falls back to local-only mode automatically — see [CLI equivalent](#cli-equivalent) below.)
 
 ### 4. Confirm and run
 
@@ -64,9 +64,9 @@ Once the dataset is local, the status bar shows the new session ID and the F4 da
 
 {{ figure("../assets/tui-profiler.png", "F4 dashboard during a profiler-initiated validation session") }}
 
-### 5. Publishing and the cloud validator
+### 5. Publishing
 
-Publish is automatic for sessions created from the F2 flow — the run uploads `predictions.parquet` and `trace.pftrace` to Studio and triggers the cloud validator on completion. The session ID is preserved in the run output directory (`./results/<v-XXXX>/`) so you can re-publish or re-run from the CLI later if you need to.
+Publish is automatic for sessions created from the F2 flow — on completion the run computes the accuracy metrics on the device and uploads the full artifact set to Studio: `predictions.parquet`, `trace.pftrace`, `metrics.yaml`, `platform.yaml`, and the chart JSONs. There is no separate cloud-validator step. A fresh run preserves the session ID in its output directory (`./results/<v-XXXX>/`) so you can re-publish or re-run from the CLI later if you need to; a re-validation of an existing session writes its results beside the session's own cached files instead, keeping one run's artifacts in one place (an explicit `--output` overrides either location).
 
 To skip the upload (e.g., when investigating a one-off timing question and the accuracy numbers are not interesting), use the configuration panel's **Publish: off** toggle before starting the run.
 
@@ -78,7 +78,7 @@ The TUI flow is convenient, but the same effect is reachable from the CLI when y
 edgefirst-profiler validate --training-session t-abc123
 ```
 
-The profiler creates the validation session itself, downloads `best.onnx` (the first `.onnx` artifact, by default), runs the pipeline, and publishes the results. Specify a particular artifact name with `--model`:
+Without `--model`, this lists the training session's available model artifacts and exits — the same listing `--list-models` produces explicitly. Re-run with `--model <artifact-name>` to select one; the profiler then creates the validation session itself, downloads the artifact, runs the pipeline, and publishes the results:
 
 ```sh
 edgefirst-profiler validate \
@@ -86,7 +86,7 @@ edgefirst-profiler validate \
     --model best.tflite
 ```
 
-`--training-session` produces a brand-new validation session every time it is run; pass `--session-id v-XXXX` instead to re-publish to an existing session.
+With `--training-session`, `--model` names a Studio artifact to download, not a local file path. `--training-session` produces a brand-new validation session every time it is run; pass `--session-id v-XXXX` instead to re-publish to an existing session.
 
 To profile locally **without** creating a Studio session — useful for a quick one-off timing check — pass `--no-publish`:
 
@@ -94,8 +94,28 @@ To profile locally **without** creating a Studio session — useful for a quick 
 edgefirst-profiler validate --training-session t-abc123 --no-publish
 ```
 
-The run writes `predictions.parquet` and `trace.pftrace` to disk and skips both session creation and the cloud validator. This is the CLI equivalent of the F2 panel's **Publish: off** toggle. On a read-only or public project — where the profiler cannot create a session — a `--training-session` run falls back to this local-only behavior automatically.
+The run writes `predictions.parquet` and `trace.pftrace` to disk and skips session creation and publishing entirely. This is the CLI equivalent of the F2 panel's **Publish: off** toggle. On a read-only or public project — where the profiler cannot create a session — a `--training-session` run falls back to this local-only behavior automatically.
+
+## Publishing results produced elsewhere
+
+The `publish` command separates profiling from publishing: point it at files a run already produced — `--predictions <parquet>`, plus optionally `--metrics <file>`, `--charts-dir <dir>`, and `--trace <file>` — and it creates a validation session (`--training-session`, `--artifact`, `--name`) and uploads them. Measure on the target device, then publish from whatever machine has the files and Studio credentials:
+
+```sh
+edgefirst-profiler publish \
+    --training-session t-abc123 \
+    --artifact best.onnx \
+    --name "imx95-npu-run" \
+    --predictions results/predictions.parquet \
+    --metrics results/metrics.yaml \
+    --trace results/trace.pftrace
+```
+
+Passing `--session v-XXXX` instead publishes into an existing session, preserving its ID — useful for backfilling metrics and charts onto a session whose predictions were already uploaded, without disturbing them.
+
+Omitting `--metrics` uploads the predictions and leaves the session awaiting accuracy, which any host can fill in afterwards with `validate --predictions <parquet> --session-id <id>`. This two-step route is the intended path for segmentation runs on memory-constrained devices, where evaluating mask accuracy on-device can run out of memory even though the device writes the predictions file fine.
+
+To launch a run on Studio-managed cloud hardware instead of your own device, see the `dispatch` command in [Cloud Runs](cloud.md).
 
 ## When the run completes
 
-The completion summary in the TUI lists the new session ID, the headline latency numbers, and the local trace path. Press **Enter** to dismiss and return to the dashboard. Switch back to F2 to drill into the just-created session and confirm Studio received the artifacts; from there the Studio web UI is the canonical place for charts, comparisons, and the trace viewer.
+The completion summary in the TUI lists the new session ID, the headline latency numbers, and the local trace path. For a published run, the popup also shows the session's Studio link, widening to fit long URLs rather than truncating them; press **c** while the popup is showing to copy it to the system clipboard (this works on Linux desktops too, where the copied text now persists so it can be pasted elsewhere). A headless CLI run prints the same link as `View details:`, rendered as a real clickable hyperlink in terminals that support it. Press **Enter** to dismiss and return to the dashboard. Switch back to F2 to drill into the just-created session and confirm Studio received the artifacts; from there the Studio web UI is the canonical place for charts, comparisons, and the trace viewer.

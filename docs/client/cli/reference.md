@@ -515,7 +515,7 @@ edgefirst-client update-dimensions ds-12345
 
 Dataset snapshots preserve a complete copy of raw sensor data (MCAP files), directories, or EdgeFirst Dataset Format data at a specific point in time. They can be restored to create new datasets with optional automatic annotation (AGTG) and depth map generation.
 
-For detailed information about snapshots, see: ../../studio/snapshots.md
+For detailed information about snapshots, see: [Dataset Snapshots](../../studio/snapshots.md).
 
 ### `snapshots`
 
@@ -693,7 +693,7 @@ edgefirst-client restore-snapshot p-abc123 ss-def456 \
 
 **Note:** Restoration creates a new dataset. The original snapshot remains unchanged and can be restored multiple times. AGTG processing runs asynchronously — use `--monitor`, or check task status, for completion.
 
-For more information about AGTG, see: ../../datasets/tutorials/annotations/automatic.md
+For more information about AGTG, see: [Automatic Ground Truth Generation](../../studio/agtg.md).
 
 ### `delete-snapshot`
 

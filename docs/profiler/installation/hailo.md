@@ -37,6 +37,14 @@ edgefirst-profiler --version
 
 The Hailo backend dlopens `libhailort.so` at runtime. As with every other backend, a missing library produces a clear error message naming the file — no `dlopen` traceback.
 
+`.hef` is an edge-only format: there is no cloud machine with a Hailo device attached, so the `dispatch` command rejects a `.hef` artifact up front rather than starting a cloud run that cannot execute. Profile `.hef` models on the target hardware itself.
+
+## Inference depth and batching
+
+On the Raspberry Pi 5 with a Hailo-8L, the measured auto inference depth is **4**, matching the HailoRT async scheduler's driver-reported depth.
+
+The Hailo-only `--batch-size` flag sets how many frames go into each `run_async` batch (default 1, per-frame submission). Device batching is still under development: a value above 1 is accepted with a warning, but the run currently proceeds per-frame, which is the optimized low-latency default. Once batching lands, the intended guidance is to set the batch size to the camera count in a multi-camera deployment — HailoRT overlaps host-to-device transfer, compute, and device-to-host transfer within a batch, raising throughput at close to zero added latency. Non-Hailo backends ignore the flag.
+
 ## Per-context timing (`libhailort_profiler.so`)
 
 For per-context lifecycle timing — `configure`, `activate`, `infer`, `deactivate` — the profiler can load an optional Hailo profiler shim, `libhailort_profiler.so`, that wraps HailoRT lifecycle calls. The shim ships in the EdgeFirst SDK and is loaded automatically when present in `/usr/local/lib` or `/usr/lib`.

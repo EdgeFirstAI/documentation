@@ -40,6 +40,11 @@ The Ara240 backend keeps up to **8 inference slots** in flight concurrently; thi
 
 The Perfetto trace now exposes per-frame NPU tracks: `npu.h2d` (PCIe host-to-device transfer), `npu.compute` (NPU execution), and `npu.d2h` (PCIe device-to-host transfer). This replaces the previous aggregate timing and lets you see precisely where each inference frame spends its time.
 
+For models built with a recent converter (≥ 2.5.0), the NPU compute phase is additionally split into one slice per layer, in execution order and named by layer (for example `model.22.dfl.Softmax`), so you can see which layers dominate the compute time rather than only its total. The split is an estimate of each layer's share of the measured compute time — the Ara240 reports no per-layer hardware timings — so treat it as relative guidance. Models from older converters show only the total.
+
+!!! note "`.dvm` is an edge-only format"
+    There is no cloud machine with an Ara240 attached, so the `dispatch` command rejects a `.dvm` artifact up front rather than starting a run that cannot execute — cloud runs support `.onnx` and `.tflite`. Profile `.dvm` models on the target hardware itself.
+
 ## Model metadata
 
 DVM files use a **zip trailer** to embed decoder configuration and class labels. When the trailer is missing or the model was produced by a toolchain that does not write it, the profiler runs in timing-only mode and prints a note on stderr.
@@ -51,7 +56,9 @@ edgefirst-profiler login
 edgefirst-profiler              # opens TUI on F1 Help
 ```
 
-If the `ara2-proxy` daemon is not running when a session starts, the profiler returns an error pointing at the daemon — not a connection-refused traceback. Restart the daemon:
+The most common connection failure is a **privilege** problem, not a daemon problem: while `ara2.service` is running, connecting to the proxy requires elevated access. The profiler's error message says so and suggests the fixes — run under `sudo`, or add your user to the `ara2` or `render` group. In the TUI, a run that fails this way offers to re-run itself under `sudo` directly.
+
+If the daemon itself is not running when a session starts, the profiler returns an error pointing at the daemon — not a connection-refused traceback. Restart the daemon:
 
 ```sh
 sudo systemctl restart ara2-proxy

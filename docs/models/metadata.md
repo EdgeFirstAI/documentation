@@ -216,7 +216,7 @@ host:
   studio_server: string    # Full EdgeFirst Studio hostname (e.g., stage.edgefirst.studio)
   project_id: string       # Project ID for Studio URLs
   session: string          # Training session ID
-  username: string         # User who initiated training
+  organization: string     # Organization that initiated training
 
 dataset:
   name: string             # Human-readable dataset name
@@ -1990,7 +1990,7 @@ host:
   studio_server: stage.edgefirst.studio  # Full EdgeFirst Studio hostname
   project_id: "1123"                    # Project ID for Studio URLs
   session: t-2110                       # Training session ID (hex, prefix t-)
-  username: john.doe                    # User who initiated training
+  organization: Au-Zone Technologies    # Organization that initiated training
 ```
 
 !!! note "Converting IDs for Studio URLs"

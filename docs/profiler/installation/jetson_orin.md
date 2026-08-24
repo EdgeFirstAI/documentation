@@ -46,13 +46,17 @@ edgefirst-profiler --version
 
 ## ONNX Runtime on Jetson
 
-A stable, JetPack-compatible `onnxruntime-gpu` aarch64 wheel channel is not currently available — the Jetson AI Lab index is intermittent and the EdgeFirst-maintained channel is not yet published. Until that lands, **ONNX Runtime on Jetson is CPU-only** through the standard PyPI wheel:
+The CUDA execution provider (`--provider cuda`) runs on Jetson / L4T, so `.onnx` models can be measured on the GPU the same way desktop GPUs are — a CUDA-enabled `libonnxruntime` must be present on the host. The simplest way to get one is the multi-architecture [`cuda` container image](docker.md), which bundles the GPU ONNX Runtime for JetPack 6.2 (CUDA 12.6); on Jetson, run it with `--runtime nvidia` and the container picks up the Tegra driver automatically:
 
 ```sh
-pip install onnxruntime
+docker run -it --rm --runtime nvidia -v edgefirst:/config ghcr.io/edgefirstai/profiler-cli:cuda
 ```
 
-For GPU inference on Jetson, convert the model to a TensorRT engine first and let the profiler load it through the TensorRT backend described below. See the [TensorRT Converter](https://doc.edgefirst.ai/test/models/conversion/tensorrt/) for the conversion workflow.
+For a CPU baseline, the standard PyPI wheel (`pip install onnxruntime`) provides the CPU-only `libonnxruntime`.
+
+With the CUDA execution provider, per-frame inference time is measured on the GPU's own clock rather than the host clock, removing host scheduling jitter from the reported number (with an automatic host-clock fallback if the GPU clock is unavailable).
+
+Alternatively, convert the model to a TensorRT engine and let the profiler load it through the TensorRT backend described below. See the [TensorRT Converter](../../models/conversion/tensorrt.md) for the conversion workflow.
 
 ## TensorRT (recommended for Jetson)
 
@@ -79,9 +83,12 @@ Enable per-layer GPU profiling on a validation session with the `--layer-profile
 
 ### Throughput and pipeline overlap
 
-TensorRT validation now keeps multiple frames in flight: the GPU works on frame N while frame N+1 is being captured and preprocessed, and detection outputs are read straight from GPU memory rather than copied back to the host first.
+TensorRT validation now keeps multiple frames in flight: the GPU works on frame N while frame N+1 is being captured and preprocessed, and detection outputs are read straight from GPU memory rather than copied back to the host first. Measured full-pipeline throughput on a Jetson Orin Nano is **~272 FPS** (yolov5n at 640×640, COCO 5k, MAXN_SUPER); the device itself measures ~358 FPS model-only, so the full image pipeline — not the GPU — is the gate. Detection accuracy is unchanged.
 
-End-to-end throughput roughly doubles compared to the previous single-frame-at-a-time approach — measured at ~277 FPS on Jetson Orin Nano with YOLOv5n at 640×640 in MAXN_SUPER mode, up from ~150 FPS previously bottlenecked on CPU image decoding. Detection accuracy is unchanged.
+On the Orin Nano the auto pipeline depths are deliberately pinned below the device maximum: **capture 2, inference 4, postprocess 2**. The full pipeline is CPU-contention-bound on the 6-core SoC, not decode-bound — at the generic auto of 4 capture and 4 postprocess workers, the CPU stages oversubscribe the cores and starve the priority-boosted inference dispatch thread, measuring ~250 FPS; pinning capture and postprocess to 2 frees cores for preprocessing and inference and lifts throughput to ~272 FPS.
+
+!!! note "GPU JPEG decode is deliberately not used"
+    nvJPEG could decode the dataset's JPEG files on the GPU, but on this shared iGPU it steals streaming multiprocessors from inference and measures **slower** end to end, so the profiler decodes on the CPU by design. Image decode is not the pipeline's gate on the Orin Nano.
 
 The Perfetto trace gains per-frame `trt.h2d`, `trt.infer`, and `trt.d2h` tracks (host-to-device, TensorRT inference, device-to-host) measured with CUDA events, so GPU-side durations are accurate rather than host-side approximations. Falls back automatically on hardware that doesn't support the required GPU memory capabilities.
 

@@ -907,6 +907,10 @@
       
         
       
+        
+      
+        
+      
     
     
     
@@ -1049,6 +1053,8 @@
       
         
       
+        
+      
     
     
     
@@ -1174,6 +1180,34 @@
     
   
     Validation from the Profiler
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="cloud/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Cloud Runs
   
 
     
@@ -1591,12 +1625,13 @@
 
 
 <h1 id="edgefirst-studio-integration">EdgeFirst Studio Integration</h1>
-<p>The profiler is always operated against an EdgeFirst Studio <strong>validation session</strong> — the mechanism that joins an on-target run to Studio's metrics dashboard and trace viewer.</p>
+<p>The profiler does not require Studio — an offline run against a local model, images, and ground truth computes its metrics entirely on its own. Connecting to Studio adds the <strong>validation session</strong>: the mechanism that stores a run's published artifacts, surfaces them on Studio's metrics dashboard and trace viewer, and makes runs comparable across models and devices.</p>
 <p>This section covers:</p>
 <ol>
-<li><strong><a href="connecting/">Connecting to Studio</a></strong> — interactive login and headless credential handling.</li>
+<li><strong><a href="connecting/">Connecting to Studio</a></strong> — interactive login, headless credential handling, and token-based authentication for CI.</li>
 <li><strong><a href="from_studio/">Validation from Studio</a></strong> — create a validation session in Studio, then point the profiler at the session ID.</li>
 <li><strong><a href="from_profiler/">Validation from the Profiler</a></strong> — browse projects and training sessions in the profiler's <strong>F2 Studio</strong> screen and create the validation session in place.</li>
+<li><strong><a href="cloud/">Cloud Runs</a></strong> — launch a validation run on Studio-managed cloud hardware, from the Studio launch form or the <code>dispatch</code> command.</li>
 </ol>
 <h2 id="validation-sessions-end-to-end">Validation sessions, end to end</h2>
 <p>A validation session is the unit of work that links the device, the model, the dataset, and the Studio results. Every session has a short ID like <code>v-abc123</code>. The session ID is the only piece of state you need to remember.</p>
@@ -1611,11 +1646,19 @@
 
     Dev-&gt;&gt;Pro: validate --session-id v-abc123
     Pro-&gt;&gt;St: pull model + dataset
-    Pro-&gt;&gt;Pro: run pipeline,&lt;br/&gt;write predictions.parquet + trace.pftrace
-    Pro-&gt;&gt;St: upload predictions + trace
-    St-&gt;&gt;St: compute mAP / mIoU,&lt;br/&gt;render charts and trace view
+    Pro-&gt;&gt;Pro: run pipeline,&lt;br/&gt;compute COCO accuracy metrics,&lt;br/&gt;produce charts
+    Pro-&gt;&gt;St: publish predictions.parquet, trace.pftrace,&lt;br/&gt;metrics.yaml, platform.yaml, chart JSONs
+    St-&gt;&gt;St: store artifacts,&lt;br/&gt;surface charts and trace view
     Dev-&gt;&gt;St: view charts, compare runs,&lt;br/&gt;open trace</code></pre>
-<p>The on-target side is the profiler. Studio receives the published artifacts and produces the accuracy charts, the per-operator timing visualizations, and the comparison views. The on-device dependency footprint is small — no Python, no <code>pycocotools</code> — and the binary uses <code>edgefirst-hal</code>, multiple inference engines, and the EdgeFirst <abbr title="Direct Memory Access">DMA</abbr> optimizations for high on-target performance.</p>
+<p>The on-target side does the measuring <em>and</em> the scoring: the profiler runs the pipeline, computes the COCO detection and segmentation metrics on the agent itself, and produces the charts — there is no separate cloud validation step. Studio stores the published artifacts and displays them: the accuracy charts, the per-operator timing visualizations, and the comparison views. The on-device dependency footprint is small — no Python, no <code>pycocotools</code>, even for the metrics computation — and the binary uses <code>edgefirst-hal</code>, multiple inference engines, and the EdgeFirst <abbr title="Direct Memory Access">DMA</abbr> optimizations for high on-target performance.</p>
+<p>A completed session carries the full artifact set:</p>
+<ul>
+<li><code>predictions.parquet</code> — the run's predictions (detections, and masks for segmentation models).</li>
+<li><code>trace.pftrace</code> — the Perfetto execution trace with pipeline-stage spans, per-operator timing, and system telemetry.</li>
+<li><code>metrics.yaml</code> — the accuracy and measured-timing metrics document, the same one an offline run writes locally.</li>
+<li><code>platform.yaml</code> — a structured record of the machine that ran it: architecture, processor, accelerator, board, OS, and memory.</li>
+<li>Chart JSONs — accuracy, timing and throughput, device execution-timing, and system-telemetry charts, produced by the profiler and rendered by Studio.</li>
+</ul>
 <h2 id="what-you-see-in-studio">What you see in Studio</h2>
 <p>When the validation session finishes, the session card surfaces accuracy charts, a per-frame timing summary, and the trace viewer.</p>
 <figure>

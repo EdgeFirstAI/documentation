@@ -2196,8 +2196,8 @@ Found<span class="w"> </span>objects:
 <ol>
 <li>
 <p>Load the model specifying the external delegate to use the device's <abbr title="Neural Processing Unit">NPU</abbr>.</p>
-<div class="highlight"><pre><span></span><code><span class="n">model_path</span> <span class="o">=</span> <span class="s2">&quot;ssd_mobilenet_v1_0.75_depth_quantized_300x300_coco14_sync_2018_07_18.tflite&quot;</span>
-<span class="n">delegate</span> <span class="o">=</span> <span class="s2">&quot;/usr/lib/libvx_delegate.so&quot;</span>
+<div class="highlight"><pre><span></span><code><span class="n">model_path</span> <span class="o">=</span> <span class="s2">"ssd_mobilenet_v1_0.75_depth_quantized_300x300_coco14_sync_2018_07_18.tflite"</span>
+<span class="n">delegate</span> <span class="o">=</span> <span class="s2">"/usr/lib/libvx_delegate.so"</span>
 
 <span class="n">ext_delegate</span> <span class="o">=</span> <span class="n">load_delegate</span><span class="p">(</span><span class="n">delegate</span><span class="p">,</span> <span class="p">{})</span>
 <span class="n">ip</span> <span class="o">=</span> <span class="n">Interpreter</span><span class="p">(</span><span class="n">model_path</span><span class="o">=</span><span class="n">model_path</span><span class="p">,</span> <span class="n">experimental_delegates</span><span class="o">=</span><span class="p">[</span><span class="n">ext_delegate</span><span class="p">])</span>
@@ -2220,16 +2220,16 @@ To use the CPU, remove this specification.</p>
 </li>
 <li>
 <p>Preprocess input image by resizing to the input shape of the model and type-casting the values to the input data type requirements of the model.</p>
-<div class="highlight"><pre><span></span><code><span class="n">image_path</span> <span class="o">=</span> <span class="s2">&quot;dog.jpg&quot;</span>
+<div class="highlight"><pre><span></span><code><span class="n">image_path</span> <span class="o">=</span> <span class="s2">"dog.jpg"</span>
 
 <span class="n">input_det</span> <span class="o">=</span> <span class="n">ip</span><span class="o">.</span><span class="n">get_input_details</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span>
-<span class="n">_</span><span class="p">,</span> <span class="n">height</span><span class="p">,</span> <span class="n">width</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">input_det</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;shape&quot;</span><span class="p">)</span>
+<span class="n">_</span><span class="p">,</span> <span class="n">height</span><span class="p">,</span> <span class="n">width</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">input_det</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"shape"</span><span class="p">)</span>
 <span class="n">img</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">Image</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">image_path</span><span class="p">)</span><span class="o">.</span><span class="n">resize</span><span class="p">((</span><span class="n">width</span><span class="p">,</span> <span class="n">height</span><span class="p">)))</span>
 
 <span class="c1"># is TFLite quantized int8 model</span>
-<span class="n">int8</span> <span class="o">=</span> <span class="n">input_det</span><span class="p">[</span><span class="s2">&quot;dtype&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="n">np</span><span class="o">.</span><span class="n">int8</span>
+<span class="n">int8</span> <span class="o">=</span> <span class="n">input_det</span><span class="p">[</span><span class="s2">"dtype"</span><span class="p">]</span> <span class="o">==</span> <span class="n">np</span><span class="o">.</span><span class="n">int8</span>
 <span class="c1"># is TFLite quantized uint8 model</span>
-<span class="n">uint8</span> <span class="o">=</span> <span class="n">input_det</span><span class="p">[</span><span class="s2">&quot;dtype&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="n">np</span><span class="o">.</span><span class="n">uint8</span>
+<span class="n">uint8</span> <span class="o">=</span> <span class="n">input_det</span><span class="p">[</span><span class="s2">"dtype"</span><span class="p">]</span> <span class="o">==</span> <span class="n">np</span><span class="o">.</span><span class="n">uint8</span>
 <span class="k">if</span> <span class="n">int8</span> <span class="ow">or</span> <span class="n">uint8</span><span class="p">:</span>
     <span class="n">img</span> <span class="o">=</span> <span class="n">img</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">uint8</span><span class="p">)</span> <span class="k">if</span> <span class="n">uint8</span> <span class="k">else</span> <span class="n">img</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">int8</span><span class="p">)</span>
 <span class="k">else</span><span class="p">:</span>
@@ -2239,7 +2239,7 @@ To use the CPU, remove this specification.</p>
 </li>
 <li>
 <p>Query inputs from the model's input details and set the input tensor.</p>
-<div class="highlight"><pre><span></span><code><span class="n">inp_id</span> <span class="o">=</span> <span class="n">ip</span><span class="o">.</span><span class="n">get_input_details</span><span class="p">()[</span><span class="mi">0</span><span class="p">][</span><span class="s2">&quot;index&quot;</span><span class="p">]</span>
+<div class="highlight"><pre><span></span><code><span class="n">inp_id</span> <span class="o">=</span> <span class="n">ip</span><span class="o">.</span><span class="n">get_input_details</span><span class="p">()[</span><span class="mi">0</span><span class="p">][</span><span class="s2">"index"</span><span class="p">]</span>
 <span class="n">ip</span><span class="o">.</span><span class="n">set_tensor</span><span class="p">(</span><span class="n">inp_id</span><span class="p">,</span> <span class="n">img</span><span class="p">)</span>
 </code></pre></div>
 </li>
@@ -2251,10 +2251,10 @@ To use the CPU, remove this specification.</p>
 <li>
 <p>Query model outputs from the model's output details.</p>
 <div class="highlight"><pre><span></span><code><span class="n">out_det</span> <span class="o">=</span> <span class="n">ip</span><span class="o">.</span><span class="n">get_output_details</span><span class="p">()</span>
-<span class="n">out_id0</span> <span class="o">=</span> <span class="n">out_det</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="s2">&quot;index&quot;</span><span class="p">]</span>
-<span class="n">out_id1</span> <span class="o">=</span> <span class="n">out_det</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="s2">&quot;index&quot;</span><span class="p">]</span>
-<span class="n">out_id2</span> <span class="o">=</span> <span class="n">out_det</span><span class="p">[</span><span class="mi">2</span><span class="p">][</span><span class="s2">&quot;index&quot;</span><span class="p">]</span>
-<span class="n">out_id3</span> <span class="o">=</span> <span class="n">out_det</span><span class="p">[</span><span class="mi">3</span><span class="p">][</span><span class="s2">&quot;index&quot;</span><span class="p">]</span>
+<span class="n">out_id0</span> <span class="o">=</span> <span class="n">out_det</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="s2">"index"</span><span class="p">]</span>
+<span class="n">out_id1</span> <span class="o">=</span> <span class="n">out_det</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="s2">"index"</span><span class="p">]</span>
+<span class="n">out_id2</span> <span class="o">=</span> <span class="n">out_det</span><span class="p">[</span><span class="mi">2</span><span class="p">][</span><span class="s2">"index"</span><span class="p">]</span>
+<span class="n">out_id3</span> <span class="o">=</span> <span class="n">out_det</span><span class="p">[</span><span class="mi">3</span><span class="p">][</span><span class="s2">"index"</span><span class="p">]</span>
 
 <span class="n">boxes</span> <span class="o">=</span> <span class="n">ip</span><span class="o">.</span><span class="n">get_tensor</span><span class="p">(</span><span class="n">out_id0</span><span class="p">)</span><span class="o">.</span><span class="n">squeeze</span><span class="p">()</span>
 <span class="n">classes</span> <span class="o">=</span> <span class="n">ip</span><span class="o">.</span><span class="n">get_tensor</span><span class="p">(</span><span class="n">out_id1</span><span class="p">)</span><span class="o">.</span><span class="n">squeeze</span><span class="p">()</span>

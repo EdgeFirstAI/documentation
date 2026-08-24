@@ -1911,11 +1911,11 @@
 
 <span class="n">dataset_id</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">create_dataset</span><span class="p">(</span>
     <span class="nb">str</span><span class="p">(</span><span class="n">project</span><span class="o">.</span><span class="n">id</span><span class="p">),</span>
-    <span class="s2">&quot;Example Populate ABC123&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;DE-2762 examples: populate_samples sandbox&quot;</span><span class="p">,</span>
+    <span class="s2">"Example Populate ABC123"</span><span class="p">,</span>
+    <span class="s2">"DE-2762 examples: populate_samples sandbox"</span><span class="p">,</span>
 <span class="p">)</span>
 <span class="n">annotation_set_id</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">create_annotation_set</span><span class="p">(</span>
-    <span class="n">dataset_id</span><span class="p">,</span> <span class="s2">&quot;Default&quot;</span><span class="p">,</span> <span class="s2">&quot;Example annotation set&quot;</span><span class="p">,</span>
+    <span class="n">dataset_id</span><span class="p">,</span> <span class="s2">"Default"</span><span class="p">,</span> <span class="s2">"Example annotation set"</span><span class="p">,</span>
 <span class="p">)</span>
 </code></pre></div>
 <h3 id="2-build-a-sample-with-a-bounding-box">2. Build a sample with a bounding box</h3>
@@ -1924,16 +1924,16 @@
 <span class="kn">from</span><span class="w"> </span><span class="nn">pathlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">Path</span>
 
 <span class="c1"># Create a test image with a red circle</span>
-<span class="n">image_path</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="s2">&quot;target/example_artifacts/example.png&quot;</span><span class="p">)</span>
+<span class="n">image_path</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="s2">"target/example_artifacts/example.png"</span><span class="p">)</span>
 <span class="c1"># ... draw image and compute normalized bbox (nx, ny, nw, nh) ...</span>
 
 <span class="n">sample</span> <span class="o">=</span> <span class="n">Sample</span><span class="p">()</span>
-<span class="n">sample</span><span class="o">.</span><span class="n">set_image_name</span><span class="p">(</span><span class="s2">&quot;example.png&quot;</span><span class="p">)</span>
-<span class="n">sample</span><span class="o">.</span><span class="n">add_file</span><span class="p">(</span><span class="n">SampleFile</span><span class="p">(</span><span class="s2">&quot;image&quot;</span><span class="p">,</span> <span class="nb">str</span><span class="p">(</span><span class="n">image_path</span><span class="p">)))</span>
+<span class="n">sample</span><span class="o">.</span><span class="n">set_image_name</span><span class="p">(</span><span class="s2">"example.png"</span><span class="p">)</span>
+<span class="n">sample</span><span class="o">.</span><span class="n">add_file</span><span class="p">(</span><span class="n">SampleFile</span><span class="p">(</span><span class="s2">"image"</span><span class="p">,</span> <span class="nb">str</span><span class="p">(</span><span class="n">image_path</span><span class="p">)))</span>
 
 <span class="n">annotation</span> <span class="o">=</span> <span class="n">Annotation</span><span class="p">()</span>
-<span class="n">annotation</span><span class="o">.</span><span class="n">set_label</span><span class="p">(</span><span class="s2">&quot;circle&quot;</span><span class="p">)</span>
-<span class="n">annotation</span><span class="o">.</span><span class="n">set_object_id</span><span class="p">(</span><span class="s2">&quot;circle-1&quot;</span><span class="p">)</span>
+<span class="n">annotation</span><span class="o">.</span><span class="n">set_label</span><span class="p">(</span><span class="s2">"circle"</span><span class="p">)</span>
+<span class="n">annotation</span><span class="o">.</span><span class="n">set_object_id</span><span class="p">(</span><span class="s2">"circle-1"</span><span class="p">)</span>
 <span class="n">annotation</span><span class="o">.</span><span class="n">set_box2d</span><span class="p">(</span><span class="n">Box2d</span><span class="p">(</span><span class="n">nx</span><span class="p">,</span> <span class="n">ny</span><span class="p">,</span> <span class="n">nw</span><span class="p">,</span> <span class="n">nh</span><span class="p">))</span>
 <span class="n">sample</span><span class="o">.</span><span class="n">add_annotation</span><span class="p">(</span><span class="n">annotation</span><span class="p">)</span>
 </code></pre></div>
@@ -1942,9 +1942,9 @@
     <span class="n">dataset_id</span><span class="p">,</span>
     <span class="n">annotation_set_id</span><span class="p">,</span>
     <span class="p">[</span><span class="n">sample</span><span class="p">],</span>
-    <span class="n">progress</span><span class="o">=</span><span class="k">lambda</span> <span class="n">c</span><span class="p">,</span> <span class="n">t</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  Upload </span><span class="si">{</span><span class="n">c</span><span class="si">}</span><span class="s2">/</span><span class="si">{</span><span class="n">t</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">),</span>
+    <span class="n">progress</span><span class="o">=</span><span class="k">lambda</span> <span class="n">c</span><span class="p">,</span> <span class="n">t</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"  Upload </span><span class="si">{</span><span class="n">c</span><span class="si">}</span><span class="s2">/</span><span class="si">{</span><span class="n">t</span><span class="si">}</span><span class="s2">"</span><span class="p">),</span>
 <span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Uploaded: </span><span class="si">{</span><span class="n">results</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">uuid</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Uploaded: </span><span class="si">{</span><span class="n">results</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">uuid</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
 </code></pre></div>
 <h3 id="4-verify-and-clean-up">4. Verify and clean up</h3>
 <div class="highlight"><pre><span></span><code><span class="n">fetched</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">samples</span><span class="p">(</span><span class="n">dataset_id</span><span class="p">,</span> <span class="n">annotation_set_id</span><span class="p">)</span>

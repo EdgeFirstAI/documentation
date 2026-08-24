@@ -18,7 +18,7 @@
         <link rel="prev" href="../linux/">
       
       
-        <link rel="next" href="../windows/">
+        <link rel="next" href="../docker/">
       
       
         
@@ -907,6 +907,10 @@
       
         
       
+        
+      
+        
+      
     
     
     
@@ -1204,14 +1208,14 @@
   
   
     <li class="md-nav__item">
-      <a href="../windows/" class="md-nav__link">
+      <a href="../docker/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    Windows
+    Container Images
   
 
     
@@ -1412,6 +1416,8 @@
       
         
           
+        
+      
         
       
         
@@ -1938,18 +1944,19 @@
 <tr>
 <td><code>--provider coreml-gpu</code></td>
 <td>Metal Performance Shaders, CPU fallback</td>
-<td>Best throughput for GPU-heavy models. Auto inference depth: <strong>3</strong> (measured knee — ~427 <abbr title="Frames Per Second">FPS</abbr> at depth 2, ~476 <abbr title="Frames Per Second">FPS</abbr> at depth 3, ~466 <abbr title="Frames Per Second">FPS</abbr> at depth 4)</td>
+<td>Best throughput for GPU-heavy models. Auto inference depth: <strong>3</strong>, the only CoreML provider with a pinned platform default (measured knee — ~427 <abbr title="Frames Per Second">FPS</abbr> at depth 2, ~476 <abbr title="Frames Per Second">FPS</abbr> at depth 3, ~466 <abbr title="Frames Per Second">FPS</abbr> at depth 4)</td>
 </tr>
 <tr>
 <td><code>--provider coreml-ane</code></td>
 <td>Apple Neural Engine, CPU fallback only</td>
-<td>Auto inference depth: <strong>2</strong> (ANE serializes internally; only preprocess/postprocess overlap benefits from the extra slot)</td>
+<td>Uses the generic auto inference depth (2) — the ANE serializes device work internally, so deeper pipelines mainly buy preprocess overlap</td>
 </tr>
 </tbody>
 </table>
 <p><strong>In the TUI:</strong> the launch-time dialog presents a navigable list of providers — CPU, CoreML CPU, CoreML GPU, CoreML ANE — instead of the previous fixed two-key prompt. Navigate with ↑/↓ and press Enter to confirm, or press the number key shown next to the row.</p>
-<p>The CoreML EP caches compiled subgraphs at <code>~/Library/Caches/edgefirst-profiler/coreml/</code>. The first run of a given model is slower while compilation happens; subsequent runs are warm.</p>
-<p>CoreML coverage is partial — operators not supported by the selected compute unit fall back to CPU within the same graph. Studio's trace view shows exactly which ops ran where.</p>
+<p>The <code>--provider qnn-htp</code> option also parses on macOS, but it is Android-only — on any non-Android host the run falls back to the CPU provider and says so.</p>
+<p>The CoreML model is compiled fresh each run; this one-time compile happens during session setup and does not affect the measured inference timings.</p>
+<p>CoreML coverage is partial — operators not supported by the selected compute unit fall back to CPU within the same graph. Studio's trace view shows exactly which ops ran where; the per-operation device-placement diagnostics are no longer printed to the terminal.</p>
 <h2 id="verifying-the-install">Verifying the install</h2>
 <div class="highlight"><pre><span></span><code>edgefirst-profiler<span class="w"> </span>login<span class="w">        </span><span class="c1"># save Studio credentials</span>
 edgefirst-profiler<span class="w">              </span><span class="c1"># opens TUI on F1 Help</span>
@@ -1966,7 +1973,7 @@ edgefirst-profiler<span class="w">              </span><span class="c1"># opens 
 <tbody>
 <tr>
 <td>TensorFlow Lite</td>
-<td><code>libtensorflowlite_c.so</code> is Linux-only in the EdgeFirst distribution</td>
+<td><code>libtensorflow-lite.so</code> is Linux-only in the EdgeFirst distribution</td>
 </tr>
 <tr>
 <td>NXP Neutron / VSI delegates</td>
@@ -2093,13 +2100,13 @@ edgefirst-profiler<span class="w">              </span><span class="c1"># opens 
         
         
           
-          <a href="../windows/" class="md-footer__link md-footer__link--next" aria-label="Next: Windows">
+          <a href="../docker/" class="md-footer__link md-footer__link--next" aria-label="Next: Container Images">
             <div class="md-footer__title">
               <span class="md-footer__direction">
                 Next
               </span>
               <div class="md-ellipsis">
-                Windows
+                Container Images
               </div>
             </div>
             <div class="md-footer__button md-icon">

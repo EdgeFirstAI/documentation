@@ -907,6 +907,10 @@
       
         
       
+        
+      
+        
+      
     
     
     
@@ -1102,14 +1106,14 @@
   
   
     <li class="md-nav__item">
-      <a href="../windows/" class="md-nav__link">
+      <a href="../docker/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    Windows
+    Container Images
   
 
     
@@ -1307,6 +1311,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#real-time-scheduling-and-sudo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Real-time scheduling and sudo
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#hailo-8-8l-accelerator" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -1423,6 +1438,8 @@
       
         
           
+        
+      
         
       
         
@@ -1817,6 +1834,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#real-time-scheduling-and-sudo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Real-time scheduling and sudo
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#hailo-8-8l-accelerator" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -1942,8 +1970,12 @@
 </code></pre></div>
 <h2 id="cpu-baseline-onnx-runtime">CPU baseline (<abbr title="Open Neural Network Exchange">ONNX</abbr> Runtime)</h2>
 <p>The default <code>--provider cpu</code> is the most predictable baseline. CPU inference on the RPi5 makes the <strong>capture</strong> and <strong>preprocess</strong> stages a meaningful fraction of total wall time — the Studio trace view will show whether the bottleneck is the model or the pipeline around it.</p>
+<h2 id="real-time-scheduling-and-sudo">Real-time scheduling and sudo</h2>
+<p>Real-time inference scheduling (<code>SCHED_FIFO</code>) requires elevated privileges on the Raspberry Pi, and it gives lower and more consistent inter-inference latency. The TUI asks <strong>before validation starts</strong> whether to run under <code>sudo</code> or to continue at normal priority; passwordless sudo skips the password prompt. If a run fails partway on a privilege error instead — for example <abbr title="Neural Processing Unit">NPU</abbr> or GPU zero-copy access being denied — the dashboard explains that elevated privileges are required and offers to re-run under <code>sudo</code>.</p>
+<p>Either way, trace and prediction files are handed back to your user afterward so the EdgeFirst Studio upload still works; the explicit <code>--output-owner &lt;uid:gid|username&gt;</code> flag (or the <code>EDGEFIRST_OUTPUT_OWNER</code> environment variable) overrides the target owner for scripted or root workflows. Each run also records its privilege diagnostics in <code>profiler.log</code> — the user it ran as, whether it was elevated via sudo, and whether inference obtained real-time scheduling priority or fell back to normal — so you can confirm from the log alone that an elevated retry took effect.</p>
 <h2 id="hailo-8-8l-accelerator">Hailo-8 / 8L accelerator</h2>
 <p>When a Hailo M.2 module is present and HailoRT is installed, the profiler routes compiled <code>.hef</code> files through the Hailo backend automatically. The Hailo backend is described in detail on the <a href="../hailo/">Hailo install page</a>, including the <code>libhailort_profiler</code> shim that exposes per-context timing.</p>
+<p>On the RPi5 with a Hailo-8L, the measured auto inference depth is <strong>4</strong>, matching the HailoRT async scheduler's driver-reported depth. The Hailo-only <code>--batch-size</code> flag exists but device batching is still under development: a value above 1 is accepted with a warning and the run proceeds per-frame, which is the optimized low-latency default.</p>
 <h2 id="thermal-considerations">Thermal considerations</h2>
 <p>The RPi5 will throttle under sustained inference if the SoC reaches ~85 °C. The profiler samples thermal-zone temperatures and reports them as system-metric counters; if the temperature climbs steadily during a long run, look at the per-iteration latency in the dashboard — a sudden bump usually corresponds to a thermal throttle event. On the Pi 5 the readout also includes the <strong>RP1</strong> I/O controller's temperature, captured through its <code>hwmon</code> sensor alongside the SoC thermal zones.</p>
 <p>A small heatsink and fan is enough to keep the SoC out of throttle territory during validation runs.</p>

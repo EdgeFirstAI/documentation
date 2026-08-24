@@ -2175,15 +2175,15 @@ Sample Code: <a href="https://github.com/EdgeFirstAI/samples/blob/main/python/gp
 <div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="python" name="__tabbed_1" type="radio" /><input id="rust" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="python">Python</label><label for="rust">Rust</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="c1"># Create a subscriber for &quot;rt/gps&quot;</span>
+<div class="highlight"><pre><span></span><code><span class="c1"># Create a subscriber for "rt/gps"</span>
 <span class="n">loop</span> <span class="o">=</span> <span class="n">asyncio</span><span class="o">.</span><span class="n">get_running_loop</span><span class="p">()</span>
 <span class="n">drain</span> <span class="o">=</span> <span class="n">MessageDrain</span><span class="p">(</span><span class="n">loop</span><span class="p">)</span>
-<span class="n">session</span><span class="o">.</span><span class="n">declare_subscriber</span><span class="p">(</span><span class="s1">&#39;rt/gps&#39;</span><span class="p">,</span> <span class="n">drain</span><span class="o">.</span><span class="n">callback</span><span class="p">)</span>
+<span class="n">session</span><span class="o">.</span><span class="n">declare_subscriber</span><span class="p">(</span><span class="s1">'rt/gps'</span><span class="p">,</span> <span class="n">drain</span><span class="o">.</span><span class="n">callback</span><span class="p">)</span>
 </code></pre></div>
 </div>
 <div class="tabbed-block">
 <div class="highlight"><pre><span></span><code><span class="kd">let</span><span class="w"> </span><span class="n">subscriber</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">session</span>
-<span class="w">    </span><span class="p">.</span><span class="n">declare_subscriber</span><span class="p">(</span><span class="s">&quot;rt/gps&quot;</span><span class="p">)</span>
+<span class="w">    </span><span class="p">.</span><span class="n">declare_subscriber</span><span class="p">(</span><span class="s">"rt/gps"</span><span class="p">)</span>
 <span class="w">    </span><span class="p">.</span><span class="k">await</span>
 <span class="w">    </span><span class="p">.</span><span class="n">unwrap</span><span class="p">();</span>
 </code></pre></div>
@@ -2221,15 +2221,15 @@ Sample Code: <a href="https://github.com/EdgeFirstAI/samples/blob/main/python/gp
 <div class="tabbed-block">
 <div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">gps_worker</span><span class="p">(</span><span class="n">msg</span><span class="p">):</span>
     <span class="n">gps</span> <span class="o">=</span> <span class="n">NavSatFix</span><span class="o">.</span><span class="n">deserialize</span><span class="p">(</span><span class="n">msg</span><span class="o">.</span><span class="n">payload</span><span class="o">.</span><span class="n">to_bytes</span><span class="p">())</span>
-    <span class="n">rr</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="s2">&quot;CurrentLoc&quot;</span><span class="p">,</span>
+    <span class="n">rr</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="s2">"CurrentLoc"</span><span class="p">,</span>
             <span class="n">rr</span><span class="o">.</span><span class="n">GeoPoints</span><span class="p">(</span><span class="n">lat_lon</span><span class="o">=</span><span class="p">[</span><span class="n">gps</span><span class="o">.</span><span class="n">latitude</span><span class="p">,</span> <span class="n">gps</span><span class="o">.</span><span class="n">longitude</span><span class="p">]))</span>
 </code></pre></div>
 </div>
 <div class="tabbed-block">
 <div class="highlight"><pre><span></span><code><span class="kd">let</span><span class="w"> </span><span class="n">lat</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">gps</span><span class="p">.</span><span class="n">latitude</span><span class="p">;</span>
 <span class="kd">let</span><span class="w"> </span><span class="n">long</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">gps</span><span class="p">.</span><span class="n">longitude</span><span class="p">;</span>
-<span class="c1">// println!(&quot;Latitude: {} Longitude: {}&quot;,lat, long);</span>
-<span class="kd">let</span><span class="w"> </span><span class="n">_</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">rec</span><span class="p">.</span><span class="n">log</span><span class="p">(</span><span class="s">&quot;CurrentLoc&quot;</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">rerun</span><span class="p">::</span><span class="n">GeoPoints</span><span class="p">::</span><span class="n">from_lat_lon</span><span class="p">([(</span><span class="n">lat</span><span class="p">,</span><span class="w"> </span><span class="n">long</span><span class="p">)]));</span>
+<span class="c1">// println!("Latitude: {} Longitude: {}",lat, long);</span>
+<span class="kd">let</span><span class="w"> </span><span class="n">_</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">rec</span><span class="p">.</span><span class="n">log</span><span class="p">(</span><span class="s">"CurrentLoc"</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">rerun</span><span class="p">::</span><span class="n">GeoPoints</span><span class="p">::</span><span class="n">from_lat_lon</span><span class="p">([(</span><span class="n">lat</span><span class="p">,</span><span class="w"> </span><span class="n">long</span><span class="p">)]));</span>
 </code></pre></div>
 </div>
 </div>

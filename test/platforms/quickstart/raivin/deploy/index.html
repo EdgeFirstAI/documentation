@@ -2505,7 +2505,7 @@ Password:<span class="w"> </span>****
 <p>To update the model path using the command line in the device, edit the following file using <code>sudo vi /etc/default/fusion</code>.</p>
 <p>Edit the following line <code>MODEL = "path/to/mymodel.tflite"</code> to point to the specific path to your model.  To edit, press <code>i</code> to enter into "Insert Mode".  You should now be able to edit the lines.  To exit "Insert Mode", press the ESC key on your keyboard.  Next save and exit the file by typing <code>:wq</code> on your keyboard.  More examples for using <code>vi</code> can be found <a href="https://coderwall.com/p/adv71w/basic-vim-commands-for-getting-started">here</a>.</p>
 <div class="highlight"><pre><span></span><code># The radar fusion model
-MODEL = &quot;path/to/mymodel.tflite&quot;
+MODEL = "path/to/mymodel.tflite"
 </code></pre></div>
 <p>Once the path to the model has been updated, restart the model service using <code>sudo systemctl restart fusion</code>.</p>
 </div>

@@ -18,7 +18,7 @@
         <link rel="prev" href="../../quickstart/">
       
       
-        <link rel="next" href="../configuration/">
+        <link rel="next" href="../validation/">
       
       
         
@@ -909,6 +909,10 @@
       
         
       
+        
+      
+        
+      
     
     
     
@@ -1054,6 +1058,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#inference-depth-on-a-cpu" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Inference depth on a CPU
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#backend-auto-depth-table" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -1115,10 +1130,54 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#is-it-the-model-or-the-images" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Is it the model, or the images?
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#measured-worker-concurrency" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Measured worker concurrency
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#cli" class="md-nav__link">
     <span class="md-ellipsis">
       
         CLI
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tiled-inference-and-the-pipeline" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Tiled inference and the pipeline
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#measuring-your-own-defaults" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Measuring your own defaults
       
     </span>
   </a>
@@ -1140,6 +1199,62 @@
   
 </nav>
       
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../validation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Validation and Metrics
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../sahi/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Tiled Inference (SAHI)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
     </li>
   
 
@@ -1268,6 +1383,8 @@
       
         
           
+        
+      
         
       
         
@@ -1662,6 +1779,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#inference-depth-on-a-cpu" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Inference depth on a CPU
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#backend-auto-depth-table" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -1723,10 +1851,54 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#is-it-the-model-or-the-images" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Is it the model, or the images?
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#measured-worker-concurrency" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Measured worker concurrency
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#cli" class="md-nav__link">
     <span class="md-ellipsis">
       
         CLI
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tiled-inference-and-the-pipeline" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Tiled inference and the pipeline
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#measuring-your-own-defaults" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Measuring your own defaults
       
     </span>
   </a>
@@ -1812,7 +1984,7 @@
 
 <h1 id="pipelining">Pipelining</h1>
 <p>The EdgeFirst Profiler runs a multi-stage measurement pipeline on every frame: image <strong>capture</strong>, <strong>preprocess</strong>, <strong>inference</strong>, <strong>postprocess</strong>, and <strong>output encoding</strong>. Each stage exercises a different part of the system — CPU, host memory, bus transfers, <abbr title="Neural Processing Unit">NPU</abbr>/GPU — and on a typical edge target the stages take substantially different amounts of time. <em>Pipelining</em> is the profiler's mechanism for overlapping those stages across frames so the slowest stage sets throughput, instead of the sum of all stage times setting it.</p>
-<p>This page explains the conceptual model, the <code>--inference-depth</code> flag that controls it, the per-stage depth flags introduced in 1.5.0, and how each supported backend constrains it.</p>
+<p>This page explains the conceptual model, the per-stage depth flags that control it, how each supported backend constrains them, and how to read what the profiler reports about its own pipeline.</p>
 <h2 id="pipeline-stages">Pipeline stages</h2>
 <p>Every frame travels through the same sequence of stages, in order:</p>
 <table>
@@ -1831,7 +2003,7 @@
 </tr>
 <tr>
 <td><strong>preprocess</strong></td>
-<td>CPU + <abbr title="Direct Memory Access">DMA</abbr></td>
+<td>CPU / GPU + <abbr title="Direct Memory Access">DMA</abbr></td>
 <td>Resize, color-convert, quantize into the input tensor</td>
 </tr>
 <tr>
@@ -1842,7 +2014,12 @@
 <tr>
 <td><strong>postprocess</strong></td>
 <td>CPU</td>
-<td>Score-threshold, box decode, <abbr title="Non-Maximum Suppression">NMS</abbr>, mask decode</td>
+<td>Score-threshold, box decode, <abbr title="Non-Maximum Suppression">NMS</abbr></td>
+</tr>
+<tr>
+<td><strong>materialize masks</strong></td>
+<td>CPU</td>
+<td>Build each detection's mask from the prototype tensor and PNG-encode it (segmentation only)</td>
 </tr>
 <tr>
 <td><strong>output</strong></td>
@@ -1851,7 +2028,7 @@
 </tr>
 </tbody>
 </table>
-<p>The <code>pycocotools</code>-style accuracy metrics are computed off-device in EdgeFirst Studio after the run completes — they are not part of the on-device pipeline.</p>
+<p>Accuracy scoring is not one of these stages by default. With <code>--validation after</code> — the default whenever a ground-truth source is available — the profiler evaluates the predictions once profiling has finished, reusing what was already written to disk, so scoring costs the measured run nothing. <code>--validation during</code> deliberately moves it onto the hot path so its cost appears in the trace. See <a href="../validation/">Validation and Metrics</a>.</p>
 <h2 id="sequential-execution-inference-depth-1">Sequential execution (<code>--inference-depth 1</code>)</h2>
 <p>With <code>--inference-depth 1</code> the profiler runs each stage on the current frame before starting any stage on the next frame. Each piece of hardware sits idle while the others work:</p>
 <figure>
@@ -1872,9 +2049,79 @@
             <figcaption>Pipelined execution at depth 2 — three frames overlap in time. Per-frame latency is unchanged (18.9 ms) but throughput is now bottleneck-bound at 4.4 ms/frame (≈227 <abbr title="Frames Per Second">FPS</abbr>) instead of 18.9 ms/frame.</figcaption>
             </figure>
 <p>The important property: <strong>pipelining does not reduce the latency of any single frame</strong> — that critical path is unchanged. It increases throughput by converting "sum of stage times per frame" into "max of stage times per frame". For deployment profiling on real workloads the throughput number is almost always the more useful one.</p>
-<p>Starting in 1.5.0 the default inference depth is <strong>Auto</strong> — the profiler selects the depth that best matches the detected backend and platform rather than using a fixed value of 2. Higher depths give more overlap headroom (useful when stage durations are uneven) at the cost of memory — each additional slot keeps another in-flight frame's worth of buffers alive. Passing <code>--inference-depth N</code> always overrides the auto value.</p>
+<p>The default inference depth is <strong>Auto</strong>: the profiler selects a depth from the detected backend, the platform, and — on a CPU runtime — the machine's core count, rather than using a fixed value. Higher depths give more overlap headroom (useful when stage durations are uneven) at the cost of memory, since each concurrent inference replicates the model. Passing <code>--inference-depth N</code> always overrides the auto value.</p>
+<h2 id="inference-depth-on-a-cpu">Inference depth on a CPU</h2>
+<p>On an accelerator the device serializes the work, and a small depth mainly hides transfer latency. On a <strong>CPU</strong> there is no separate device to overlap with: throughput comes from running several inference sessions at once, each on a slice of the cores. Choosing that slice is the whole game, and the right answer scales with the machine.</p>
+<p>The CPU default is therefore a table indexed by host core count:</p>
+<table>
+<thead>
+<tr>
+<th>Cores</th>
+<th>Slots</th>
+<th></th>
+<th>Cores</th>
+<th>Slots</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>1</td>
+<td></td>
+<td>12</td>
+<td>9</td>
+</tr>
+<tr>
+<td>2</td>
+<td>2</td>
+<td></td>
+<td>16</td>
+<td>10</td>
+</tr>
+<tr>
+<td>4</td>
+<td>4</td>
+<td></td>
+<td>24</td>
+<td>11</td>
+</tr>
+<tr>
+<td>6</td>
+<td>6</td>
+<td></td>
+<td>32</td>
+<td>12</td>
+</tr>
+<tr>
+<td><strong>8</strong></td>
+<td><strong>8</strong></td>
+<td></td>
+<td><strong>48</strong></td>
+<td><strong>13</strong></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td>64</td>
+<td>14</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td>96</td>
+<td>16</td>
+</tr>
+</tbody>
+</table>
+<p>Core counts between rows interpolate; below or above the table, the nearest end applies. The <strong>8</strong> and <strong>48</strong> rows are measured — full depth sweeps of YOLOv5n over COCO's 5000 validation images — and the rest follow their trend. The table is keyed on core count alone: a 48-core host behaved the same whether it was AWS Graviton4 or AWS Intel, so processor architecture is not consulted.</p>
+<div class="admonition note">
+<p class="admonition-title">The CPU cap is 16, but the slider stops at 8</p>
+<p><code>--inference-depth</code> accepts up to <strong>16</strong> concurrent inferences on a CPU. The depth sliders in the terminal interface's launch dialog still offer up to 8, so use the flag when you want more.</p>
+</div>
 <h2 id="backend-auto-depth-table">Backend auto-depth table</h2>
-<p>Each inference backend has an auto-selected inference depth determined by how many concurrent inference slots the hardware can serve efficiently. The profiler applies this default at startup unless overridden by <code>--inference-depth</code>:</p>
+<p>Targets with their own measured tuning override the core-count table. The profiler applies these at startup unless <code>--inference-depth</code> says otherwise:</p>
 <table>
 <thead>
 <tr>
@@ -1886,13 +2133,13 @@
 <tbody>
 <tr>
 <td><abbr title="Open Neural Network Exchange">ONNX</abbr> Runtime CPU</td>
-<td style="text-align: right;">2</td>
-<td>Generic default</td>
+<td style="text-align: right;">core-aware</td>
+<td>From the core-count table above</td>
 </tr>
 <tr>
 <td><abbr title="Open Neural Network Exchange">ONNX</abbr> Runtime <abbr title="NVIDIA Compute Unified Device Architecture">CUDA</abbr> (x86_64 Linux)</td>
 <td style="text-align: right;">4</td>
-<td>Also sets preprocess depth to 1</td>
+<td>Also pins preprocess to 1 — a single preprocess thread avoids CPU contention with <abbr title="NVIDIA Compute Unified Device Architecture">CUDA</abbr> kernel dispatch</td>
 </tr>
 <tr>
 <td><abbr title="Open Neural Network Exchange">ONNX</abbr> Runtime CoreML GPU (macOS)</td>
@@ -1901,28 +2148,28 @@
 </tr>
 <tr>
 <td><abbr title="Open Neural Network Exchange">ONNX</abbr> Runtime CoreML ANE / CPU (macOS)</td>
-<td style="text-align: right;">2</td>
-<td>ANE serializes internally</td>
+<td style="text-align: right;">core-aware</td>
+<td>No platform override; the ANE serializes device work internally, so extra slots buy only preprocess and postprocess overlap</td>
 </tr>
 <tr>
-<td>TensorRT (Jetson Orin)</td>
-<td style="text-align: right;">device max</td>
-<td>Full slot count auto-selected</td>
+<td>TensorRT (Jetson Orin Nano)</td>
+<td style="text-align: right;">4</td>
+<td>Also pins capture and postprocess to 2 — see the note below</td>
 </tr>
 <tr>
 <td><abbr title="TensorFlow Lite">TFLite</abbr> XNNPACK</td>
-<td style="text-align: right;">2</td>
-<td></td>
+<td style="text-align: right;">core-aware</td>
+<td>From the core-count table above</td>
 </tr>
 <tr>
 <td><abbr title="TensorFlow Lite">TFLite</abbr> Neutron (i.MX 95, <abbr title="Direct Memory Access">DMA</abbr>-BUF zero-copy)</td>
 <td style="text-align: right;">1</td>
-<td>Single-bind delegate; preprocess forced to 1</td>
+<td>Single-bind delegate; preprocess also forced to 1</td>
 </tr>
 <tr>
 <td><abbr title="TensorFlow Lite">TFLite</abbr> Neutron (i.MX 95, CPU-staging)</td>
 <td style="text-align: right;">4</td>
-<td>Multiple independent slots (up to 4)</td>
+<td>Multiple independent slots</td>
 </tr>
 <tr>
 <td><strong><abbr title="TensorFlow Lite">TFLite</abbr> VxDelegate</strong> (i.MX 8M Plus VSI <abbr title="Neural Processing Unit">NPU</abbr>)</td>
@@ -1935,47 +2182,61 @@
 <td>I/O rebind pool; <abbr title="Neural Processing Unit">NPU</abbr> ceiling ≈249 <abbr title="Frames Per Second">FPS</abbr> YOLOv8n</td>
 </tr>
 <tr>
-<td>HailoRT (Hailo-8 / 8L)</td>
-<td style="text-align: right;">device max</td>
-<td></td>
+<td>HailoRT (Hailo-8L on Raspberry Pi 5)</td>
+<td style="text-align: right;">4</td>
+<td>Measured on that pairing</td>
 </tr>
 </tbody>
 </table>
-<p>The VSI <abbr title="Neural Processing Unit">NPU</abbr> on the i.MX 8M Plus serves only one inference client at a time, so on that target the profiler runs as sequential regardless of what the user requests.</p>
+<p>The VSI <abbr title="Neural Processing Unit">NPU</abbr> on the i.MX 8M Plus serves only one inference client at a time, so on that target the inference stage runs sequentially regardless of what you request. The same is true of the Neutron delegate while <abbr title="Direct Memory Access">DMA</abbr>-BUF zero-copy is active. On both, a depth sweep will be flat.</p>
+<div class="admonition note">
+<p class="admonition-title">Why the Jetson Orin Nano pins more than inference</p>
+<p>The Orin Nano's full pipeline is CPU-contention-bound rather than decode-bound. Leaving capture and postprocess on their generic auto asks for more workers than the six-core SoC can serve, which starves the priority-boosted inference dispatch thread. Pinning capture and postprocess to 2 frees cores for preprocess and inference, measured at roughly 272 <abbr title="Frames Per Second">FPS</abbr> on YOLOv5n at 640 over COCO's 5000 images, against about 250 <abbr title="Frames Per Second">FPS</abbr> without those pins.</p>
+</div>
 <h3 id="per-stage-depth-flags">Per-stage depth flags</h3>
-<p>1.5.0 exposes independent concurrency controls for every pipeline stage. Each flag defaults to <code>0</code> (Auto):</p>
+<p>Every pipeline stage has an independent concurrency control. Each flag defaults to <code>0</code>, meaning Auto:</p>
 <table>
 <thead>
 <tr>
 <th>Flag</th>
 <th>Controls</th>
-<th>Default (Auto)</th>
+<th>Auto resolution</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td><code>--capture-depth N</code></td>
-<td>Parallel file-load / JPEG decode threads</td>
-<td>1</td>
+<td>Parallel file-load / JPEG-PNG decode workers</td>
+<td>A measured platform value if one exists, else the core count capped at 4</td>
 </tr>
 <tr>
 <td><code>--preprocess-depth N</code></td>
-<td>Parallel preprocess workers (CPU + <abbr title="Direct Memory Access">DMA</abbr>; GPU/OpenGL-accelerated where available)</td>
-<td>1 in <abbr title="Direct Memory Access">DMA</abbr>-BUF zero-copy mode, 4 in CPU-staging mode</td>
+<td>Parallel preprocess workers (GPU letterbox convert, or CPU staging)</td>
+<td>A measured platform value if one exists, else 4</td>
 </tr>
 <tr>
 <td><code>--inference-depth N</code></td>
 <td>Concurrent in-flight inference slots</td>
-<td>See backend table above</td>
+<td>See the tables above</td>
 </tr>
 <tr>
 <td><code>--postprocess-depth N</code></td>
-<td>Parallel model decoder (<abbr title="Distribution Focal Loss">DFL</abbr> + <abbr title="Non-Maximum Suppression">NMS</abbr>) threads</td>
-<td>Auto based on CPU core count</td>
+<td>Parallel model decoder (<abbr title="Distribution Focal Loss">DFL</abbr> + <abbr title="Non-Maximum Suppression">NMS</abbr>) workers</td>
+<td>A measured platform value if one exists, else the core count capped at 2</td>
+</tr>
+<tr>
+<td><code>--mask-depth N</code></td>
+<td>Parallel Materialize Masks workers (segmentation only)</td>
+<td>A measured platform value if one exists, else the core count capped at 2</td>
 </tr>
 </tbody>
 </table>
-<p>Setting any flag to <code>0</code> restores Auto for that stage. Passing <code>1</code> is equivalent to serializing that stage. The auto resolution for each stage is printed at run start alongside the backend name.</p>
+<p>Setting any flag to <code>0</code> restores Auto for that stage. Passing <code>1</code> serializes it. The resolved value for each stage is printed at run start alongside the backend name.</p>
+<p><code>--mask-depth</code> matters only for segmentation. Building each detection's mask from the prototype tensor and PNG-encoding it is the segmentation throughput gate when it runs single-threaded — frames materialize one at a time even when the accelerator already has the next result ready. A detection-only model ignores the flag entirely and runs a single pass-through worker, because there are no masks to build.</p>
+<div class="admonition note">
+<p class="admonition-title">Preprocess is not clamped to one worker on the CPU-staging path</p>
+<p>Earlier versions of this page said pre-processing was limited to a single worker when images were staged through the CPU. That was never true of the shipped behavior and is not true now: both pipeline shapes fan out, and the default is four workers. Only a single-bind delegate — the <abbr title="TensorFlow Lite">TFLite</abbr> VxDelegate, or Neutron while <abbr title="Direct Memory Access">DMA</abbr>-BUF zero-copy is active — forces preprocess to one, and device batch mode does the same.</p>
+</div>
 <h3 id="neutron-dma-buf-zero-copy-vs-cpu-staging">Neutron — <abbr title="Direct Memory Access">DMA</abbr>-BUF zero-copy vs CPU-staging</h3>
 <p>The Neutron delegate on i.MX 95 operates in two distinct modes depending on kernel support:</p>
 <p><strong><abbr title="Direct Memory Access">DMA</abbr>-BUF zero-copy mode</strong> (kernel patch present, or <code>NEUTRON_ENABLE_ZERO_COPY=1</code>): a single inference slot is bound directly to device memory. The preprocess stage serializes with inference — the trace viewer shows their slices touching back-to-back rather than overlapping, so the preprocess → inference critical path behaves more like depth 1 than depth 2. Capture and postprocess still overlap freely and throughput still benefits from pipelining across those stages. Auto inference depth is 1; preprocess is forced to 1.</p>
@@ -1984,8 +2245,10 @@
 <p>Every run started from the TUI (F4 Start, Studio Validate, local profiling) opens a <strong>launch modal</strong> before the pipeline starts. For <abbr title="Open Neural Network Exchange">ONNX</abbr> models the dialog also selects the execution provider.</p>
 <ul>
 <li>Press <strong>Enter</strong> to launch immediately with Auto depths.</li>
-<li>Press <strong>c</strong> to open four sliders (Capture, Preprocess, Inference, Postprocess), each defaulting to Auto and showing what Auto will resolve to for the detected platform.</li>
-<li>Drag a slider to 1–8 to pin that stage; this is equivalent to passing the corresponding <code>--&lt;stage&gt;-depth N</code> flag.</li>
+<li>Press <strong>c</strong> to open five sliders (Capture, Preprocess, Inference, Postprocess, Mask), each defaulting to Auto and showing what Auto will resolve to for the detected platform.</li>
+<li>Press <strong>s</strong> for the serialized-core preset — every core stage runs one frame at a time. This is the launch-dialog equivalent of <code>--serialize-core</code>.</li>
+<li>Press <strong>t</strong> to toggle SAHI tiled inference on or off, shown as <code>Tiling: on/off</code>.</li>
+<li>Move a slider to 1–8 to pin that stage; this is equivalent to passing the corresponding <code>--&lt;stage&gt;-depth N</code> flag. For a CPU inference depth above 8, use <code>--inference-depth</code> on the command line instead.</li>
 <li>The dialog displays a warning banner when the platform constrains a stage to single-thread concurrency (for example, VxDelegate inference or Neutron <abbr title="Direct Memory Access">DMA</abbr>-BUF preprocess).</li>
 </ul>
 <h2 id="how-pipelining-appears-in-the-trace-viewer">How pipelining appears in the trace viewer</h2>
@@ -1999,27 +2262,85 @@
 <li><strong>0 — Capture</strong>: the CPU decoder reading the next image file off disk.</li>
 <li><strong>1 — OpenGL Pre-processing</strong>: hardware-accelerated resize / color-convert / quantize via <code>edgefirst-hal</code>, writing into the input tensor.</li>
 <li><strong>2 — <abbr title="Neural Processing Unit">NPU</abbr> Inference</strong>: the accelerator running <code>invoke()</code> on the already-preprocessed frame from the previous slot.</li>
-<li><strong>3 — Model Decoder</strong>: postprocessing (box decode, <abbr title="Non-Maximum Suppression">NMS</abbr>, mask decode) of the frame whose inference just completed.</li>
+<li><strong>3 — Model Decoder</strong>: postprocessing (box decode, <abbr title="Non-Maximum Suppression">NMS</abbr>) of the frame whose inference just completed. On a segmentation model a further Materialize Masks track follows it.</li>
 </ul>
 <p>Reading vertically at any point on the time axis shows what the profiler is doing concurrently — four frames in different stages of completion. Reading horizontally along any one track shows how that stage performs on consecutive frames.</p>
 <p>At depth 1, all stage tracks line up sequentially per frame: the next frame's capture slice does not start until the previous frame's last stage finishes.</p>
 <p><strong>Multi-slot <abbr title="Open Neural Network Exchange">ONNX</abbr> traces.</strong> When <code>--inference-depth</code> is greater than 1 on <abbr title="Open Neural Network Exchange">ONNX</abbr> Runtime, the trace shows one track per inference slot (<code>ort.run.slot0</code>, <code>ort.run.slot1</code>, …) with true wall-clock positions, making real overlap between concurrent inferences directly visible.</p>
 <p><strong>Per-frame identity.</strong> Every pipeline stage span now carries the <code>image_name</code> and <code>frame_id</code> it processed, so clicking any span in the trace viewer immediately identifies which image produced it.</p>
-<p><strong><code>frame_e2e</code> events.</strong> A <code>frame_e2e</code> event is emitted when each frame's result is ready. It carries the end-to-end <strong>work-time</strong> — the sum of that frame's own stage durations — which is the figure reported in the Session Report. Work-time is stable under varying pipeline depth; it does not balloon with queue backlog the way the raw capture→result wall-clock sojourn does in pipelined mode.</p>
-<p><strong><code>pipeline_config</code> event.</strong> A single <code>pipeline_config</code> event at the start of the run records the full pipeline geometry: backend, execution provider, resolved depths for all four stages, and the Neutron mode when applicable.</p>
+<p><strong><code>frame_e2e</code> events.</strong> A <code>frame_e2e</code> event is emitted when each frame's result is ready. It carries the end-to-end <strong>work-time</strong> — the sum of that frame's own stage durations — which is the figure reported in the Session Report. Work-time is stable under varying pipeline depth; it does not balloon with queue backlog the way the raw wall-clock time from capture to result does in pipelined mode.</p>
+<p><strong><code>pipeline_config</code> event.</strong> A single <code>pipeline_config</code> event at the start of the run records the full pipeline geometry: backend, execution provider, the resolved per-stage depths, and the Neutron mode when applicable.</p>
+<h2 id="is-it-the-model-or-the-images">Is it the model, or the images?</h2>
+<p>Reading and JPEG/PNG-decoding each image used to be folded into preprocess, which meant it never appeared in the timing summary and the reported bottleneck was whichever compute stage came next. On a fast accelerator that answer is usually wrong. Capture is now measured and reported as its own stage, and it is frequently the real limit: one 5000-image COCO run that reported <code>inference</code> as the bottleneck at 914 <abbr title="Frames Per Second">FPS</abbr> was in fact capture-bound at 864 <abbr title="Frames Per Second">FPS</abbr>, with preprocess itself overstated at 3.13 ms instead of 0.64 ms.</p>
+<p>Alongside the ordinary bottleneck figure, the timing summary therefore reports what the run <em>would</em> do if decoding were free:</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>capture_bound</code></td>
+<td>Whether image load and decode is what limits this run</td>
+</tr>
+<tr>
+<td><code>compute_bottleneck_stage</code></td>
+<td>The stage that would limit throughput if capture were free</td>
+</tr>
+<tr>
+<td><code>compute_bottleneck_fps</code></td>
+<td>The rate at which it would do so</td>
+</tr>
+</tbody>
+</table>
+<p>This separates a dataset or codec limit from a model limit, and the distinction matters for deployment. A benchmark fed by JPEG files on disk can be bound by the host's decoder while the accelerator has headroom to spare; a deployed camera hands over frames already decoded, at its own frame rate. The compute ceiling is reported as a named stage rather than an inference-only number, because with a heavy postprocess it is not always inference that binds next.</p>
+<p>These fields appear in the console summary, in <code>metrics.yaml</code> under <code>timing.inline</code>, and in the published charts.</p>
+<h2 id="measured-worker-concurrency">Measured worker concurrency</h2>
+<p>The profiler does not assume its stage workers are busy — it measures them. For each stage it records how much of the run the workers actually spent occupied and how full the queue feeding that stage got, then assigns a verdict:</p>
+<table>
+<thead>
+<tr>
+<th>Verdict</th>
+<th>What it means</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Balanced</strong></td>
+<td>Occupancy and queue behavior are both mid-range; the reservation looks about right</td>
+</tr>
+<tr>
+<td><strong>OverReserved</strong></td>
+<td>Workers mostly idle and the inbound queue mostly empty — more workers than the workload needs</td>
+</tr>
+<tr>
+<td><strong>UnderReserved</strong></td>
+<td>Workers mostly saturated <em>and</em> the queue backing up — the stage is holding back throughput</td>
+</tr>
+<tr>
+<td><strong>Serialized</strong></td>
+<td>Reported for the inference stage, where the device serializes work regardless of worker count, so no reservation verdict applies</td>
+</tr>
+</tbody>
+</table>
+<p>The verdicts appear as a <strong>Pipeline Worker Concurrency</strong> table in the console summary, as a <code>timing.concurrency</code> block in <code>metrics.yaml</code>, and as two published charts — a queue-depth timeline and per-stage worker occupancy. An <code>UnderReserved</code> verdict on a stage is the clearest signal that raising that stage's depth will help; an <code>OverReserved</code> one says the opposite.</p>
+<p>Because real timing is available, throughput is derived from the run's own measured execution rather than from an assumed-linear estimate.</p>
 <p>A common diagnostic flow:</p>
 <ol>
 <li>Run once at the platform's auto depth.</li>
-<li>Compare end-to-end throughput (<code>Session Report</code>) against the inference-only mean.</li>
-<li>If throughput is much lower than <code>1 / inference_mean</code>, the bottleneck is on a CPU stage — switch to sequential mode (<code>--inference-depth 1</code>) to confirm which one, then look at capture (large images) or postprocess (low confidence threshold producing many candidates).</li>
+<li>Check <code>capture_bound</code> first. If the run is capture-bound, tuning inference will not move the headline number — look at image sizes, the codec, and <code>--capture-depth</code>.</li>
+<li>Otherwise read the worker-concurrency verdicts, and raise the depth of whichever stage came back <code>UnderReserved</code>.</li>
+<li>To confirm a diagnosis with contention-free per-stage numbers, re-run with <code>--serialize-core</code> and compare.</li>
 </ol>
 <h2 id="cli">CLI</h2>
 <div class="highlight"><pre><span></span><code>edgefirst-profiler<span class="w"> </span>validate<span class="w"> </span>--session-id<span class="w"> </span>v-XXXX<span class="w"> </span>--inference-depth<span class="w"> </span><span class="m">1</span>
-edgefirst-profiler<span class="w"> </span>validate<span class="w"> </span>--session-id<span class="w"> </span>v-XXXX<span class="w"> </span>--inference-depth<span class="w"> </span><span class="m">2</span>
-edgefirst-profiler<span class="w"> </span>validate<span class="w"> </span>--session-id<span class="w"> </span>v-XXXX<span class="w"> </span>--inference-depth<span class="w"> </span><span class="m">4</span><span class="w">   </span><span class="c1"># auto-clamped to backend max</span>
+edgefirst-profiler<span class="w"> </span>validate<span class="w"> </span>--session-id<span class="w"> </span>v-XXXX<span class="w"> </span>--inference-depth<span class="w"> </span><span class="m">4</span>
+edgefirst-profiler<span class="w"> </span>validate<span class="w"> </span>--session-id<span class="w"> </span>v-XXXX<span class="w"> </span>--inference-depth<span class="w"> </span><span class="m">13</span><span class="w">  </span><span class="c1"># up to 16 on a CPU</span>
 </code></pre></div>
 <p>Per-stage overrides can be combined:</p>
-<div class="highlight"><pre><span></span><code><span class="c1"># Pin inference to 4 slots, let preprocess and postprocess stay on Auto</span>
+<div class="highlight"><pre><span></span><code><span class="c1"># Pin inference to 4 slots, let every other stage stay on Auto</span>
 edgefirst-profiler<span class="w"> </span>validate<span class="w"> </span>--session-id<span class="w"> </span>v-XXXX<span class="w"> </span>--inference-depth<span class="w"> </span><span class="m">4</span>
 
 <span class="c1"># Fully manual geometry for reproducible benchmarking</span>
@@ -2027,11 +2348,31 @@ edgefirst-profiler<span class="w"> </span>validate<span class="w"> </span>--sess
 <span class="w">  </span>--capture-depth<span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="se">\</span>
 <span class="w">  </span>--preprocess-depth<span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="se">\</span>
 <span class="w">  </span>--inference-depth<span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="se">\</span>
-<span class="w">  </span>--postprocess-depth<span class="w"> </span><span class="m">1</span>
+<span class="w">  </span>--postprocess-depth<span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--mask-depth<span class="w"> </span><span class="m">1</span>
 </code></pre></div>
+<p><code>--serialize-core</code> is the shorthand for a clean per-stage latency run. It forces preprocess, inference, postprocess, and Materialize Masks to a single worker each, so no device serves two frames at once. Image decode stays concurrent — it sits upstream of the core pipeline, so keeping it parallel does not perturb the measurement:</p>
+<div class="highlight"><pre><span></span><code>edgefirst-profiler<span class="w"> </span>validate<span class="w"> </span>--session-id<span class="w"> </span>v-XXXX<span class="w"> </span>--serialize-core
+</code></pre></div>
+<p>Any explicit per-stage depth you pass alongside it still wins over the preset.</p>
+<p><code>--inference-depth</code> is also readable from the <code>INFERENCE_DEPTH</code> environment variable, for containers and job schedulers that cannot easily change a command line. The precedence, highest first, is the explicit flag, then the environment variable, then <code>--serialize-core</code>, then the measured default for your hardware.</p>
 <p>The resolved per-stage depths, the backend, and the operating mode (pipelined vs sequential) are reported once at run start, and recorded in the <code>pipeline_config</code> trace event for the session.</p>
+<h2 id="tiled-inference-and-the-pipeline">Tiled inference and the pipeline</h2>
+<p>With <code>--sahi</code>, each decoded frame expands into several overlapping tiles instead of one letterboxed image. Every tile flows through preprocess, inference, and model decode as its own work item, through the same concurrent stage pools described above, and the per-tile detections are merged back into full-frame coordinates at the end. The stage geometry does not change — but the work per frame multiplies by the tile count, which moves the bottleneck and makes the depth choices on this page matter more, not less. See <a href="../sahi/">Tiled Inference (SAHI)</a>.</p>
+<h2 id="measuring-your-own-defaults">Measuring your own defaults</h2>
+<p>The depths above are measured, not guessed — but they were measured on <em>some</em> hardware with <em>some</em> model, on a machine running the profiler and nothing else. That is the right basis for a default and deliberately not a claim about your deployment, which may run several models against a live camera, share the SoC with other services, and answer to a latency target rather than a throughput one.</p>
+<p>If you are running on hardware we have not measured, or alongside another workload, measure it yourself. The method is short:</p>
+<ol>
+<li><strong>Sweep the range.</strong> Run the same model and dataset at each depth from 1 to 16, changing nothing else, and compare the reported <abbr title="Frames Per Second">FPS</abbr>. Use the same dataset every time — a shorter one is fine for tuning, but a <em>different</em> one is not a comparison.</li>
+<li><strong>Check the peak is not at the edge.</strong> If the best value is the largest one you tried, you have measured your range rather than your hardware. A curve that rises to the last value you tested looks exactly like a curve that peaked there.</li>
+<li><strong>Check the difference is real.</strong> Run your best two or three depths three times each. If the spread between repeats of the <em>same</em> depth is comparable to the gap between <em>different</em> depths, the gap is noise — prefer the smaller depth, since every extra slot costs another copy of the model in memory. Cloud instances, shared machines, and anything thermally throttled deserve this check especially; one instance type behind the defaults above varies by nearly 10% between identical runs.</li>
+<li><strong>Confirm the depth you asked for is the depth that ran.</strong> The CPU cap, a backend limit, or a single-bind delegate can all clamp the request. The published metrics record how many inference workers were actually reserved; if that does not match what you asked for, the sweep is measuring one configuration repeatedly.</li>
+</ol>
+<p>Reading the result: throughput that rises then plateaus means take the smallest depth on the plateau. Throughput that rises the whole way means the range was too small. Throughput that is flat everywhere means either something is clamping the depth, or inference is not the bottleneck — check the capture and per-stage timings before tuning inference any further.</p>
+<p>Depth changes concurrency, not arithmetic. Accuracy does not move with it; if yours does, that is a bug worth reporting rather than a trade-off to balance.</p>
 <h2 id="see-also">See also</h2>
 <ul>
+<li><a href="../validation/">Validation and Metrics</a> — what the profiler computes from a run and where the timing lands in <code>metrics.yaml</code>.</li>
 <li><a href="../../installation/imx8mplus/#inference-depth">i.MX 8M Plus — Inference depth</a> — the VSI delegate's auto-clamp to depth 1.</li>
 <li><a href="../../studio/from_studio/#what-the-run-looks-like">Validation from Studio — Session Report</a> — the per-stage timing breakdown printed to stdout on completion.</li>
 </ul>
@@ -2141,13 +2482,13 @@ edgefirst-profiler<span class="w"> </span>validate<span class="w"> </span>--sess
         
         
           
-          <a href="../configuration/" class="md-footer__link md-footer__link--next" aria-label="Next: Training Configurations">
+          <a href="../validation/" class="md-footer__link md-footer__link--next" aria-label="Next: Validation and Metrics">
             <div class="md-footer__title">
               <span class="md-footer__direction">
                 Next
               </span>
               <div class="md-ellipsis">
-                Training Configurations
+                Validation and Metrics
               </div>
             </div>
             <div class="md-footer__button md-icon">

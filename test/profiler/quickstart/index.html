@@ -1081,6 +1081,10 @@
       
         
       
+        
+      
+        
+      
     
     
     
@@ -1213,6 +1217,8 @@
       
         
           
+        
+      
         
       
         
@@ -1883,7 +1889,7 @@
 </ol>
 <h2 id="4-install-the-profiler">4. Install the profiler</h2>
 <p>The recommended convenience path is <code>pip</code>. The wheel ships the same native binary the platform installers deliver, and pulls in the few Python-side helpers needed for end-to-end workflows. Platform installers are provided for environments where Python is not available.</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="1:3"><input checked="checked" id="python-pip" name="__tabbed_1" type="radio" /><input id="linux--macos" name="__tabbed_1" type="radio" /><input id="windows-powershell" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="python-pip">Python (pip)</label><label for="linux--macos">Linux / macOS</label><label for="windows-powershell">Windows (PowerShell)</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="1:3"><input checked="checked" id="python-pip" name="__tabbed_1" type="radio" /><input id="linux--macos" name="__tabbed_1" type="radio" /><input id="docker" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="python-pip">Python (pip)</label><label for="linux--macos">Linux / macOS</label><label for="docker">Docker</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <div class="highlight"><pre><span></span><code>pip<span class="w"> </span>install<span class="w"> </span>edgefirst-profiler
@@ -1894,7 +1900,7 @@
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="nb">irm </span><span class="n">https</span><span class="p">://</span><span class="n">raw</span><span class="p">.</span><span class="n">githubusercontent</span><span class="p">.</span><span class="n">com</span><span class="p">/</span><span class="n">EdgeFirstAI</span><span class="p">/</span><span class="n">profiler-cli</span><span class="p">/</span><span class="n">main</span><span class="p">/</span><span class="n">install</span><span class="p">.</span><span class="n">ps1</span> <span class="p">|</span> <span class="nb">iex</span>
+<div class="highlight"><pre><span></span><code>docker<span class="w"> </span>pull<span class="w"> </span>ghcr.io/edgefirstai/profiler-cli:onnx
 </code></pre></div>
 </div>
 </div>
@@ -1902,13 +1908,13 @@
 <p>Confirm the install:</p>
 <div class="highlight"><pre><span></span><code>edgefirst-profiler<span class="w"> </span>--version
 </code></pre></div>
-<p>For per-target details (<abbr title="Neural Processing Unit">NPU</abbr> delegates, runtime libraries, hardware-specific quirks) see the <a href="../installation/">installation guides</a>.</p>
+<p>For per-target details (<abbr title="Neural Processing Unit">NPU</abbr> delegates, runtime libraries, hardware-specific quirks) see the <a href="../installation/">installation guides</a>. On the NXP i.MX targets the container images are often the shortest path, because they bundle the vendor delegate and the <abbr title="TensorFlow Lite">TFLite</abbr> runtime — see <a href="../installation/docker/">Container Images</a>.</p>
 <h2 id="5-sign-in-to-edgefirst-studio-profiler-cli">5. Sign in to EdgeFirst Studio (profiler CLI)</h2>
 <div class="highlight"><pre><span></span><code>edgefirst-profiler<span class="w"> </span>login
 </code></pre></div>
 <p>The interactive prompt asks for <strong>server</strong>, <strong>username</strong>, and <strong>password</strong>. The credentials are saved to <code>~/.config/edgefirststudio/token</code> and refresh automatically while you are using the profiler. For headless / CI flows, see <a href="../studio/connecting/">Connecting to EdgeFirst Studio</a>.</p>
 <h2 id="6-launch-the-tui">6. Launch the TUI</h2>
-<p>Running <code>edgefirst-profiler</code> with no subcommand launches the interactive terminal UI. Any explicit subcommand — <code>validate</code>, <code>login</code>, <code>publish</code>, <code>report</code> — bypasses the TUI and runs headlessly.</p>
+<p>Running <code>edgefirst-profiler</code> with no subcommand launches the interactive terminal UI. Any explicit subcommand — <code>validate</code>, <code>login</code>, <code>report</code>, <code>publish</code>, <code>dispatch</code>, <code>system-info</code> — bypasses the TUI and runs headlessly.</p>
 <div class="highlight"><pre><span></span><code>edgefirst-profiler
 </code></pre></div>
 <p>The TUI opens on the <strong>F1 Help</strong> screen, which lists the keybindings and the four screens available to you:</p>
@@ -2004,14 +2010,42 @@
             <img align="center" alt="F2 Studio — confirming Validate against a model artifact" src="../assets/tui-launch-validate.png" />
             <figcaption>F2 Studio — confirming Validate against a model artifact</figcaption>
             </figure>
-<p>Before the run starts, a <strong>launch dialog</strong> appears. For <abbr title="Open Neural Network Exchange">ONNX</abbr> models it first asks which execution provider to use (CPU, <abbr title="NVIDIA Compute Unified Device Architecture">CUDA</abbr> if available, or CoreML on macOS). Then it shows four per-stage depth sliders — Capture, Preprocess, Inference, and Postprocess — each defaulting to <strong>Auto</strong>, which resolves to the value measured fastest for your model, runtime, and host. Press <code>Enter</code> to accept the Auto defaults and start immediately, or <code>c</code> to customize the depths. The dialog warns if a platform constraint (such as the i.MX 95 Neutron single-bind delegate) holds a stage to a single thread.</p>
+<p>Before the run starts, a <strong>launch dialog</strong> appears. For <abbr title="Open Neural Network Exchange">ONNX</abbr> models it first asks which execution provider to use — CPU, one of the three CoreML compute units on macOS, <abbr title="NVIDIA Compute Unified Device Architecture">CUDA</abbr> where an NVIDIA GPU is present, or the Qualcomm Hexagon HTP provider on Android. Then it shows five per-stage depth sliders — Capture, Preprocess, Inference, Postprocess, and Mask — each defaulting to <strong>Auto</strong>, which resolves to the value measured fastest for your model, runtime, and host.</p>
+<p>Four keys start the run:</p>
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>Effect</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Enter</code></td>
+<td>Launch immediately with Auto depths</td>
+</tr>
+<tr>
+<td><code>c</code></td>
+<td>Open the sliders and pin individual stages</td>
+</tr>
+<tr>
+<td><code>s</code></td>
+<td>Serialized-core preset — every core stage runs one frame at a time, for contention-free per-frame latency</td>
+</tr>
+<tr>
+<td><code>t</code></td>
+<td>Toggle SAHI tiled inference on or off (shown as <code>Tiling: on/off</code>)</td>
+</tr>
+</tbody>
+</table>
+<p>The dialog warns if a platform constraint (such as the i.MX 95 Neutron single-bind delegate) holds a stage to a single thread. See <a href="../concepts/pipelining/">Pipelining</a> for what each stage does and <a href="../concepts/sahi/">Tiled Inference (SAHI)</a> for the tiling toggle.</p>
 <p>The F4 dashboard streams iteration-level latency, system metrics, and per-stage timings while the run executes:</p>
 <figure>
             <img align="center" alt="EdgeFirst Profiler — F4 dashboard during a run" src="../assets/tui-profiler.png" />
             <figcaption>EdgeFirst Profiler — F4 dashboard during a run</figcaption>
             </figure>
 <p>The system-metrics row includes live <strong>power draw</strong> and on-board <strong>temperatures</strong> wherever the hardware exposes a sensor. The profiler shows a power meter only for the rails it can actually read — the CPU, GPU, Neural Engine, and <abbr title="Dynamic Random-Access Memory">DRAM</abbr> rails on Apple Silicon, and the real board rails on a Linux device with a supported power monitor (for example an NVIDIA Jetson's board-input rail and its per-component breakdown). On a target with no power sensor, no power meters are shown — rather than a row pinned at 0 W — and the session report notes that power is unavailable. Temperatures are read from the platform's thermal zones and <code>hwmon</code> sensors, so the readout reflects what each board actually measures.</p>
-<p>When the run finishes, a completion summary shows the headline numbers and the path to the trace file. The artifacts upload to Studio automatically and the cloud validator is triggered.</p>
+<p>When the run finishes, the profiler scores the predictions against the session's ground truth, writes <code>metrics.yaml</code> and the charts beside the trace, and uploads the whole set to Studio. A completion summary then shows the headline numbers and the path to the trace file.</p>
 <div class="highlight"><pre><span></span><code>╔═ Profiling Complete ═════════════════════════════╗
 ║                                                  ║
 ║  Iterations: 100                                 ║
@@ -2026,23 +2060,28 @@
 ║  [Enter] Dismiss                                 ║
 ╚══════════════════════════════════════════════════╝
 </code></pre></div>
+<p>For a published run the popup also carries the Studio link for the session, widened to fit the full address. Press <code>c</code> to copy that link to the system clipboard rather than selecting it by hand. The same link printed by a CLI run renders as a real clickable hyperlink in terminals that support it.</p>
 <p>For the full walkthrough see <a href="../studio/from_profiler/">Validation from the Profiler</a>.</p>
 <h3 id="path-b-start-from-studio">Path B — start from Studio</h3>
 <p>Create a user-managed validation session in the Studio web UI (<a href="../studio/from_studio/">instructions</a>). Make a note of the session ID, then on the target:</p>
 <div class="highlight"><pre><span></span><code>edgefirst-profiler<span class="w"> </span>validate<span class="w"> </span>--session-id<span class="w"> </span>v-1ce9
 </code></pre></div>
-<p>The profiler runs headlessly, prints progress bars for download/inference/upload, emits a formatted <strong>Session Report</strong> to stdout, and publishes results to Studio when the run completes.</p>
+<p>The profiler runs headlessly, prints progress bars for download/inference/upload, scores the run, emits a formatted <strong>Session Report</strong> to stdout, and publishes the results to Studio when the run completes.</p>
+<p>Warnings — corrupt images, decoder errors, skipped frames — print to the console as the run proceeds, so a run that quietly drops frames says so at the time. Add <code>-v</code>, <code>-vv</code>, or <code>-vvv</code> to raise the console verbosity to info, debug, or trace.</p>
 <h2 id="8-view-the-results-in-studio">8. View the results in Studio</h2>
-<p>Both paths land you at the same place: the validation session card in EdgeFirst Studio. The card shows progress while the cloud validator runs, then surfaces the accuracy charts and trace viewer when it completes.</p>
+<p>Both paths land you at the same place: the validation session card in EdgeFirst Studio. The card shows progress while the run is under way, then surfaces the accuracy charts and trace viewer the profiler published when it finished.</p>
 <figure>
             <img align="center" alt="EdgeFirst Studio — trace viewer on a completed validation session, showing pipeline stages and per-operator timing" src="../assets/studio-trace-viewer.png" />
             <figcaption>EdgeFirst Studio — trace viewer on a completed validation session, showing pipeline stages and per-operator timing</figcaption>
             </figure>
-<p>See <a href="../../models/validation/metrics/detection/">Object Detection Metrics</a> and <a href="../../models/validation/metrics/segmentation/">Segmentation Metrics</a> for the metrics reference.</p>
+<p>The same numbers are on the target as well: every run writes <code>metrics.yaml</code> next to the trace and prints the metric tables to the console, so you do not have to open Studio to read the result. See <a href="../concepts/validation/">Validation and Metrics</a> for what that document holds, and <a href="../../models/validation/metrics/detection/">Object Detection Metrics</a> and <a href="../../models/validation/metrics/segmentation/">Segmentation Metrics</a> for the metrics reference.</p>
 <h2 id="next-steps">Next steps</h2>
 <ul>
 <li><strong>Profile on edge hardware.</strong> The convenience install path works on desktop hosts and most target boards. Embedded targets with <abbr title="Neural Processing Unit">NPU</abbr>/GPU acceleration have a few extra knobs — pick your target from the <a href="../installation/">installation guides</a>.</li>
 <li><strong>Pick the right Studio path.</strong> <a href="../studio/from_studio/">Validation from Studio</a> (session created in the web UI) versus <a href="../studio/from_profiler/">Validation from the Profiler</a> (session created from the TUI).</li>
+<li><strong>Validate without Studio.</strong> A local model, a directory of images, and a ground-truth file are enough for a full accuracy run — see <a href="../concepts/validation/">Validation and Metrics</a>.</li>
+<li><strong>Run in the cloud.</strong> Hand a training session and an artifact to <code>dispatch</code> and pick the machine it runs on — see <a href="../studio/cloud/">Cloud Runs</a>.</li>
+<li><strong>Tune the pipeline.</strong> The per-stage depths are measured defaults, not universal ones — see <a href="../concepts/pipelining/">Pipelining</a> if you are running on hardware we have not measured or alongside another workload.</li>
 <li><strong>Connect to a different Studio.</strong> See <a href="../studio/connecting/">Connecting to EdgeFirst Studio</a> for <code>test</code> / <code>stage</code> / <code>saas</code> server selection and headless credential handling.</li>
 </ul>
 

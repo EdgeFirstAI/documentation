@@ -1906,22 +1906,22 @@
 <div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">edgefirst_client</span><span class="w"> </span><span class="kn">import</span> <span class="n">FileTokenStorage</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">examples</span><span class="w"> </span><span class="kn">import</span> <span class="n">get_client</span><span class="p">,</span> <span class="n">token_storage_path</span>
 
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Token file:&quot;</span><span class="p">,</span> <span class="n">token_storage_path</span><span class="p">())</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"Token file:"</span><span class="p">,</span> <span class="n">token_storage_path</span><span class="p">())</span>
 
 <span class="n">client</span> <span class="o">=</span> <span class="n">get_client</span><span class="p">()</span>
 <span class="n">client</span><span class="o">.</span><span class="n">verify_token</span><span class="p">()</span>
 
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Server URL:&quot;</span><span class="p">,</span> <span class="n">client</span><span class="o">.</span><span class="n">url</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Username:&quot;</span><span class="p">,</span> <span class="n">client</span><span class="o">.</span><span class="n">username</span><span class="p">())</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Token expires:&quot;</span><span class="p">,</span> <span class="n">client</span><span class="o">.</span><span class="n">token_expiration</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"Server URL:"</span><span class="p">,</span> <span class="n">client</span><span class="o">.</span><span class="n">url</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"Username:"</span><span class="p">,</span> <span class="n">client</span><span class="o">.</span><span class="n">username</span><span class="p">())</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"Token expires:"</span><span class="p">,</span> <span class="n">client</span><span class="o">.</span><span class="n">token_expiration</span><span class="p">)</span>
 </code></pre></div>
 <p><code>get_client()</code> checks <code>STUDIO_TOKEN</code>, then <code>STUDIO_USERNAME</code> / <code>STUDIO_PASSWORD</code>, then falls back to the CLI-cached token via <code>Client()</code>.</p>
 <h3 id="3-optionally-renew-the-token">3. Optionally renew the token</h3>
 <div class="highlight"><pre><span></span><code><span class="k">try</span><span class="p">:</span>
     <span class="n">client</span><span class="o">.</span><span class="n">renew_token</span><span class="p">()</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Token renewed successfully.&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">"Token renewed successfully."</span><span class="p">)</span>
 <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">exc</span><span class="p">:</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Token renew skipped or failed:&quot;</span><span class="p">,</span> <span class="n">exc</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">"Token renew skipped or failed:"</span><span class="p">,</span> <span class="n">exc</span><span class="p">)</span>
 </code></pre></div>
 <h2 id="expected-output">Expected output</h2>
 <div class="highlight"><pre><span></span><code>Token file: /home/user/.config/EdgeFirst Studio/token

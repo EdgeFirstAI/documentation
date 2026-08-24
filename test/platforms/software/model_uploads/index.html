@@ -1962,8 +1962,8 @@ sudo<span class="w"> </span>systemctl<span class="w"> </span>start<span class="w
 </code></pre></div>
 <p>Change the model line to point to the new Fusion model <code>/home/torizon/fusion.tflite</code>:</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># The radar model</span>
-<span class="na">MODEL</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;/usr/share/fusion/radarexp-ultra-short.tflite&quot;</span>
-<span class="c1">#MODEL = &quot;/home/torizon/fusion.tflite&quot;</span>
+<span class="na">MODEL</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"/usr/share/fusion/radarexp-ultra-short.tflite"</span>
+<span class="c1">#MODEL = "/home/torizon/fusion.tflite"</span>
 </code></pre></div>
 <p>After that, restart the Fusion Service using the following command:</p>
 <div class="highlight"><pre><span></span><code>systemctl<span class="w"> </span>restart<span class="w"> </span>fusion

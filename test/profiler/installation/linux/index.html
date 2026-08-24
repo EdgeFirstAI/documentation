@@ -907,6 +907,10 @@
       
         
       
+        
+      
+        
+      
     
     
     
@@ -1125,13 +1129,41 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="Default backend: ONNX Runtime">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#inference-concurrency-on-cpu" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Inference concurrency on CPU
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fp32-accuracy-on-arm-cpus" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        FP32 accuracy on Arm CPUs
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
-  <a href="#optional-nvidia-cuda-x86_64" class="md-nav__link">
+  <a href="#optional-nvidia-cuda" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Optional: NVIDIA CUDA (x86_64)
+        Optional: NVIDIA CUDA
       
     </span>
   </a>
@@ -1215,14 +1247,14 @@
   
   
     <li class="md-nav__item">
-      <a href="../windows/" class="md-nav__link">
+      <a href="../docker/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    Windows
+    Container Images
   
 
     
@@ -1423,6 +1455,8 @@
       
         
           
+        
+      
         
       
         
@@ -1803,13 +1837,41 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="Default backend: ONNX Runtime">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#inference-concurrency-on-cpu" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Inference concurrency on CPU
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fp32-accuracy-on-arm-cpus" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        FP32 accuracy on Arm CPUs
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
-  <a href="#optional-nvidia-cuda-x86_64" class="md-nav__link">
+  <a href="#optional-nvidia-cuda" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Optional: NVIDIA CUDA (x86_64)
+        Optional: NVIDIA CUDA
       
     </span>
   </a>
@@ -1927,9 +1989,7 @@
 <div class="tabbed-block">
 <div class="highlight"><pre><span></span><code>curl<span class="w"> </span>-fsSL<span class="w"> </span>https://raw.githubusercontent.com/EdgeFirstAI/profiler-cli/main/install.sh<span class="w"> </span><span class="p">|</span><span class="w"> </span>bash
 </code></pre></div>
-<p>The installer drops the binary into <code>/usr/local/bin</code> (run as root) or <code>~/.local/bin</code> (otherwise). Pin a specific release with <code>--version</code>:</p>
-<div class="highlight"><pre><span></span><code>curl<span class="w"> </span>-fsSL<span class="w"> </span>https://raw.githubusercontent.com/EdgeFirstAI/profiler-cli/main/install.sh<span class="w"> </span><span class="p">|</span><span class="w"> </span>bash<span class="w"> </span>-s<span class="w"> </span>--<span class="w"> </span>--version<span class="w"> </span><span class="m">1</span>.0.1
-</code></pre></div>
+<p>The installer drops the binary into <code>/usr/local/bin</code> (run as root) or <code>~/.local/bin</code> (otherwise). It installs the latest release by default; to pin one, append <code>-s -- --version &lt;version&gt;</code> to the <code>bash</code> invocation.</p>
 </div>
 </div>
 </div>
@@ -1953,16 +2013,20 @@
 </div>
 </div>
 </div>
-<h2 id="optional-nvidia-cuda-x86_64">Optional: NVIDIA <abbr title="NVIDIA Compute Unified Device Architecture">CUDA</abbr> (x86_64)</h2>
-<p>Pass <code>--provider cuda</code> to offload <abbr title="Open Neural Network Exchange">ONNX</abbr> inference onto an NVIDIA GPU. <abbr title="NVIDIA Compute Unified Device Architecture">CUDA</abbr> and cuDNN libraries must be present on the system path. If they are missing, the profiler prints an actionable error naming the missing library and the exact <code>pip install</code> command — with the specific <code>nvidia-…-cu12</code> package filled in — to resolve it.</p>
-<p><strong>Auto-selected depth on x86_64 Linux with <code>--provider cuda</code>:</strong> inference depth 4, preprocess depth 1. Each additional ORT inference slot overlaps GPU execution with host staging, peaking at depth 4; a single preprocess thread avoids CPU contention with <abbr title="NVIDIA Compute Unified Device Architecture">CUDA</abbr> kernel dispatch. Measured on an RTX 4060 with YOLOv8n fp16 at 640×640, this yields approximately 352 → 447 <abbr title="Frames Per Second">FPS</abbr> (+27%) compared to the CPU default. The launch-time dialog shows these values under <strong>Auto</strong> when <abbr title="NVIDIA Compute Unified Device Architecture">CUDA</abbr> is selected.</p>
+<h3 id="inference-concurrency-on-cpu">Inference concurrency on CPU</h3>
+<p>On the CPU execution provider, the profiler chooses how many inferences to run at once from the machine's core count, and splits the cores between the concurrent inference sessions and the surrounding decode stages. The defaults come from fleet measurements on machines from 1 to 96 cores; override the concurrency per run with <code>--inference-depth N</code> or the <code>INFERENCE_DEPTH</code> environment variable.</p>
+<h3 id="fp32-accuracy-on-arm-cpus"><abbr title="Single-precision 32-bit floating-point">FP32</abbr> accuracy on Arm CPUs</h3>
+<p>On 64-bit Arm hosts, <abbr title="Open Neural Network Exchange">ONNX</abbr> Runtime's BF16 fast-math GEMM kernels are <strong>off by default</strong>, so <abbr title="Single-precision 32-bit floating-point">FP32</abbr> runs are genuinely <abbr title="Single-precision 32-bit floating-point">FP32</abbr> and score the same as x86. Earlier releases enabled them by default, which quietly computed <code>MatMul</code>/<code>Gemm</code> in bfloat16 while reporting the run as <abbr title="Single-precision 32-bit floating-point">FP32</abbr> — models with attention blocks (YOLO11, YOLO26) collapsed to near-zero <abbr title="mean Average Precision">mAP</abbr> on Arm. Set <code>EDGEFIRST_ORT_BF16_FASTMATH=1</code> to opt back in for throughput experiments, bearing in mind that such a run is not an <abbr title="Single-precision 32-bit floating-point">FP32</abbr> measurement.</p>
+<h2 id="optional-nvidia-cuda">Optional: NVIDIA <abbr title="NVIDIA Compute Unified Device Architecture">CUDA</abbr></h2>
+<p>Pass <code>--provider cuda</code> to offload <abbr title="Open Neural Network Exchange">ONNX</abbr> inference onto an NVIDIA GPU. This works on x86_64 Linux with a discrete GPU and on aarch64 Linux for NVIDIA Jetson / L4T — see the <a href="../jetson_orin/">Jetson Orin guide</a>. <abbr title="NVIDIA Compute Unified Device Architecture">CUDA</abbr> and cuDNN libraries must be present on the system path. If they are missing, the profiler prints an actionable error naming the missing library and the exact <code>pip install</code> command — with the specific <code>nvidia-…-cu12</code> package filled in — to resolve it. A pre-built <a href="../docker/"><code>cuda</code> container image</a> is also available with the GPU <abbr title="Open Neural Network Exchange">ONNX</abbr> Runtime and <abbr title="NVIDIA Compute Unified Device Architecture">CUDA</abbr>/cuDNN closure bundled.</p>
+<p><strong>Auto-selected depth on x86_64 Linux with <code>--provider cuda</code>:</strong> inference depth 4, preprocess depth 1. Each additional ORT inference slot overlaps GPU execution with host staging, peaking at depth 4; a single preprocess thread avoids CPU contention with <abbr title="NVIDIA Compute Unified Device Architecture">CUDA</abbr> kernel dispatch. Measured on an RTX 4060 with YOLOv8n fp16 at 640×640, this yields approximately 352 → 447 <abbr title="Frames Per Second">FPS</abbr> (+27%) compared to the CPU default. The launch-time dialog shows these values under <strong>Auto</strong> when <abbr title="NVIDIA Compute Unified Device Architecture">CUDA</abbr> is selected. The single preprocess worker is a measured override specific to this target — everywhere else, pre-processing fans out to 4 workers by default, whether the images are staged through the CPU or converted zero-copy on the GPU.</p>
 <p><strong><abbr title="NVIDIA Compute Unified Device Architecture">CUDA</abbr> zero-copy input path (OpenGL–<abbr title="NVIDIA Compute Unified Device Architecture">CUDA</abbr> interop):</strong> disabled by default on x86_64 Linux. On discrete GPUs the GL→<abbr title="NVIDIA Compute Unified Device Architecture">CUDA</abbr> synchronization competes with <abbr title="NVIDIA Compute Unified Device Architecture">CUDA</abbr> inference kernel dispatch, while the PCIe <abbr title="Direct Memory Access">DMA</abbr> path runs independently — measured at 347 <abbr title="Frames Per Second">FPS</abbr> (CPU staging) vs 238 <abbr title="Frames Per Second">FPS</abbr> (GL interop) on an RTX 4060. Set <code>EDGEFIRST_ENABLE_CUDA_ZEROCOPY=1</code> to opt in; this is useful for benchmarking or integrated targets where the PCIe copy is the bottleneck.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>The previous environment variable <code>EDGEFIRST_DISABLE_CUDA_ZEROCOPY</code> no longer has any effect.</p>
 </div>
 <h2 id="optional-tensorflow-lite">Optional: TensorFlow Lite</h2>
-<p>The <abbr title="TensorFlow Lite">TFLite</abbr> backend handles <code>.tflite</code> models and the XNNPACK delegate for accelerated CPU inference, and requires a working <abbr title="TensorFlow Lite">TFLite</abbr> environment on the host. The <abbr title="TensorFlow Lite">TFLite</abbr> C library is also the gateway to the <strong>NXP Neutron</strong> and <strong>VSI</strong> <abbr title="Neural Processing Unit">NPU</abbr> delegates on i.MX targets — those delegates are <code>.so</code> files passed to the profiler via <code>--delegate</code>. See the <a href="../imx95/">NXP i.MX 95</a> and <a href="../imx8mplus/">NXP i.MX 8M Plus</a> guides.</p>
+<p>The <abbr title="TensorFlow Lite">TFLite</abbr> backend handles <code>.tflite</code> models and the XNNPACK delegate for accelerated CPU inference. It requires the native <abbr title="TensorFlow Lite">TFLite</abbr> runtime library, <code>libtensorflow-lite.so</code>, on the host — not the Python <code>tflite</code> or <code>tflite_runtime</code> packages, which is why installing those appears to do nothing. Point the profiler at a non-standard location with the <code>TFLITE_LIBRARY_PATH</code> environment variable, or use the <a href="../docker/"><code>tflite</code> container image</a>, which bundles the runtime. The <abbr title="TensorFlow Lite">TFLite</abbr> runtime is also the gateway to the <strong>NXP Neutron</strong> and <strong>VSI</strong> <abbr title="Neural Processing Unit">NPU</abbr> delegates on i.MX targets — those delegates are <code>.so</code> files passed to the profiler via <code>--delegate</code>. See the <a href="../imx95/">NXP i.MX 95</a> and <a href="../imx8mplus/">NXP i.MX 8M Plus</a> guides.</p>
 <div class="admonition tip">
 <p class="admonition-title">Preferred runtime on desktop</p>
 <p>Outside embedded i.MX targets, <abbr title="Open Neural Network Exchange">ONNX</abbr> Runtime with a platform-appropriate execution provider — <abbr title="NVIDIA Compute Unified Device Architecture">CUDA</abbr>, CoreML, or plain CPU — is the preferred runtime on desktop platforms. Reach for the <abbr title="TensorFlow Lite">TFLite</abbr> backend when you are targeting the NXP Neutron/VSI <abbr title="Neural Processing Unit">NPU</abbr> delegates.</p>

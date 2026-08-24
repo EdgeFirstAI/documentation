@@ -907,6 +907,10 @@
       
         
       
+        
+      
+        
+      
     
     
     
@@ -1102,14 +1106,14 @@
   
   
     <li class="md-nav__item">
-      <a href="../windows/" class="md-nav__link">
+      <a href="../docker/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    Windows
+    Container Images
   
 
     
@@ -1255,6 +1259,17 @@
     <span class="md-ellipsis">
       
         Neutron inference modes
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#container-image" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Container image
       
     </span>
   </a>
@@ -1423,6 +1438,8 @@
       
         
           
+        
+      
         
       
         
@@ -1828,6 +1845,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#container-image" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Container image
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#per-tick-neutron-profiling" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -1921,7 +1949,7 @@
 <h2 id="prerequisites">Prerequisites</h2>
 <ul>
 <li>NXP Linux BSP image with the EdgeFirst <abbr title="Software Development Kit">SDK</abbr> overlay</li>
-<li><code>libtensorflowlite_c.so</code> (preinstalled in the EdgeFirst image)</li>
+<li><code>libtensorflow-lite.so</code> (preinstalled in the EdgeFirst image; override the search path with <code>TFLITE_LIBRARY_PATH</code>)</li>
 <li><code>libneutron_delegate.so</code> (preinstalled in the EdgeFirst image)</li>
 <li><code>neutron-converter</code> toolchain (cross-host, used to compile models before deployment)</li>
 </ul>
@@ -1965,21 +1993,35 @@
 <td>No delegate — reference kernels.</td>
 </tr>
 <tr>
+<td><code>gpu</code></td>
+<td>LiteRT GPU (CL/GL) delegate when present — experimental.</td>
+</tr>
+<tr>
+<td><code>qnn</code> / <code>qnn-htp</code>, <code>qnn-gpu</code>, <code>qnn-dsp</code></td>
+<td>Qualcomm QNN delegate (Android targets; requires a build with the <code>qnn</code> feature and the device's Qualcomm libraries) — experimental.</td>
+</tr>
+<tr>
 <td>path to <code>.so</code></td>
 <td>Load a custom delegate from disk.</td>
 </tr>
 </tbody>
 </table>
+<p>Unrecognized delegate names (a typo like <code>xnnpak</code>) are rejected at parse time with the valid options listed, rather than being treated as a file path. The Qualcomm backend previously offered as <code>qnn-cpu</code> is now <code>qnn-dsp</code> — there is no CPU backend in the QNN delegate, and <code>qnn-dsp</code> names the real legacy Hexagon DSP backend.</p>
 <p>Auto-detection reads <code>/sys/firmware/devicetree/base/compatible</code> to identify i.MX 95 and pre-populate the delegate path in the TUI's profile configuration screen.</p>
 <h2 id="neutron-inference-modes">Neutron inference modes</h2>
 <p>The Neutron delegate supports two inference modes. The profiler detects which mode is available automatically — profiling works correctly in both.</p>
 <p><strong><abbr title="Direct Memory Access">DMA</abbr>-BUF zero-copy mode</strong> (default when the kernel zero-copy patch is present, or <code>NEUTRON_ENABLE_ZERO_COPY=1</code>)</p>
-<p>The delegate binds a single <abbr title="Direct Memory Access">DMA</abbr>-BUF tensor shared between the CPU and the <abbr title="Neural Processing Unit">NPU</abbr>. One inference slot runs at a time; preprocessing serializes with inference. This is the original Neutron inference mode.</p>
+<p>The delegate binds a single <abbr title="Direct Memory Access">DMA</abbr>-BUF tensor shared between the CPU and the <abbr title="Neural Processing Unit">NPU</abbr>. Because the input is bound once and cannot be rebound per frame, one inference slot runs at a time and pre-processing collapses to a single worker that serializes with inference. This serialization is a property of single-bind delegates — Neutron in zero-copy mode, and the i.MX 8M Plus VxDelegate — not of the pipeline: everywhere else, pre-processing fans out in parallel. This is the original Neutron inference mode.</p>
 <p><strong>CPU-staging mode</strong> (activated automatically when the kernel zero-copy patch is absent, or <code>NEUTRON_ENABLE_ZERO_COPY=0</code>)</p>
-<p>No <abbr title="Direct Memory Access">DMA</abbr>-BUF binding is used. Up to 4 independent inference slots run in parallel, giving significantly higher throughput. The profiler sets the inference depth to 4 automatically in this mode. Measured throughput on i.MX 95 Pro running YOLOv5n at 640×640: ~73 <abbr title="Frames Per Second">FPS</abbr> at depth 1, ~97 <abbr title="Frames Per Second">FPS</abbr> at depth 4.</p>
+<p>No <abbr title="Direct Memory Access">DMA</abbr>-BUF binding is used. Up to 4 independent inference slots run in parallel, giving significantly higher throughput. The profiler sets the inference depth to 4 automatically in this mode. Measured throughput on i.MX 95 Pro running YOLOv5n at 640×640: ~73 <abbr title="Frames Per Second">FPS</abbr> at depth 1, ~97 <abbr title="Frames Per Second">FPS</abbr> at depth 4. These are sweep-measured overrides for the i.MX 95, and they take precedence over the generic core-count-based inference depth defaults introduced for CPU runtimes — the i.MX 95 keeps its measured tuning.</p>
 <div class="admonition note">
 <p class="admonition-title">Fallback from zero-copy</p>
 <p>Previously, running a Neutron model on a board without the kernel zero-copy patch caused a crash on the first frame. The profiler now detects the missing patch and falls back to CPU-staging automatically.</p>
+</div>
+<h2 id="container-image">Container image</h2>
+<div class="admonition tip">
+<p class="admonition-title">Run from a container instead</p>
+<p>The <code>imx95</code> tag of the <a href="../docker/">profiler container images</a> bundles the Neutron delegate and driver from the eIQ Neutron <abbr title="Software Development Kit">SDK</abbr> 3.0.1 along with the <abbr title="TensorFlow Lite">TFLite</abbr> runtime, so no local install is needed. Map the <abbr title="Neural Processing Unit">NPU</abbr> with <code>--device /dev/neutron0</code> plus the board's <abbr title="Direct Memory Access">DMA</abbr>-heap node (<code>ls /dev/dma_heap/</code>), or run with <code>--privileged</code> to grant both in one flag. The matching Neutron firmware must still be installed on the <strong>host</strong> — the kernel loads it from the host filesystem, not from inside the container.</p>
 </div>
 <h2 id="per-tick-neutron-profiling">Per-tick Neutron profiling</h2>
 <p>When both conditions below are met, the profiler reports <strong>per-tick</strong> timing — every <abbr title="Neural Processing Unit">NPU</abbr> kernel (<code>Conv2DDenseTT</code>, <code>AddTT</code>, …) appears as its own slice in the Studio trace view:</p>

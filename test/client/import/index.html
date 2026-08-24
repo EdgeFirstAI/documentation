@@ -1732,7 +1732,7 @@
 <h3 id="import-coco">import-coco</h3>
 <p>Import an extracted COCO directory or annotation JSON file. ZIP archives are <strong>not</strong> supported — extract images and annotations first.</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># Create a new dataset in a project</span>
-edgefirst-client<span class="w"> </span>import-coco<span class="w"> </span>./coco<span class="w"> </span>--project<span class="w"> </span>p-123<span class="w"> </span>--name<span class="w"> </span><span class="s2">&quot;COCO 2017&quot;</span>
+edgefirst-client<span class="w"> </span>import-coco<span class="w"> </span>./coco<span class="w"> </span>--project<span class="w"> </span>p-123<span class="w"> </span>--name<span class="w"> </span><span class="s2">"COCO 2017"</span>
 
 <span class="c1"># Import into an existing dataset and annotation set</span>
 edgefirst-client<span class="w"> </span>import-coco<span class="w"> </span>./coco<span class="w"> </span>--dataset<span class="w"> </span>ds-123<span class="w"> </span>--annotation-set<span class="w"> </span>as-456
@@ -1776,7 +1776,7 @@ edgefirst-client<span class="w"> </span>upload-dataset<span class="w"> </span>ds
 <h3 id="snapshots">Snapshots</h3>
 <p>Upload a local directory or <abbr title="Binary container format for robotics log data">MCAP</abbr> file as a snapshot, then restore into a project:</p>
 <div class="highlight"><pre><span></span><code>edgefirst-client<span class="w"> </span>create-snapshot<span class="w"> </span>./sensor_data/
-edgefirst-client<span class="w"> </span>restore-snapshot<span class="w"> </span>p-123<span class="w"> </span>ss-abc<span class="w"> </span>--dataset-name<span class="w"> </span><span class="s2">&quot;Imported&quot;</span><span class="w"> </span>--monitor
+edgefirst-client<span class="w"> </span>restore-snapshot<span class="w"> </span>p-123<span class="w"> </span>ss-abc<span class="w"> </span>--dataset-name<span class="w"> </span><span class="s2">"Imported"</span><span class="w"> </span>--monitor
 </code></pre></div>
 <p>Preparation utilities:</p>
 <div class="highlight"><pre><span></span><code>edgefirst-client<span class="w"> </span>generate-arrow<span class="w"> </span>./images<span class="w"> </span>--output<span class="w"> </span>dataset.arrow

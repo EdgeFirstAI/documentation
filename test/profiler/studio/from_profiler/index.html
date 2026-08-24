@@ -18,7 +18,7 @@
         <link rel="prev" href="../from_studio/">
       
       
-        <link rel="next" href="../../../datasets/">
+        <link rel="next" href="../cloud/">
       
       
         
@@ -907,6 +907,10 @@
       
         
       
+        
+      
+        
+      
     
     
     
@@ -1041,6 +1045,8 @@
       
         
           
+        
+      
         
       
         
@@ -1293,10 +1299,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#5-publishing-and-the-cloud-validator" class="md-nav__link">
+  <a href="#5-publishing" class="md-nav__link">
     <span class="md-ellipsis">
       
-        5. Publishing and the cloud validator
+        5. Publishing
       
     </span>
   </a>
@@ -1320,6 +1326,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#publishing-results-produced-elsewhere" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Publishing results produced elsewhere
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#when-the-run-completes" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -1334,6 +1351,34 @@
   
 </nav>
       
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cloud/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Cloud Runs
+  
+
+    
+  </span>
+  
+  
+
+      </a>
     </li>
   
 
@@ -1722,10 +1767,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#5-publishing-and-the-cloud-validator" class="md-nav__link">
+  <a href="#5-publishing" class="md-nav__link">
     <span class="md-ellipsis">
       
-        5. Publishing and the cloud validator
+        5. Publishing
       
     </span>
   </a>
@@ -1742,6 +1787,17 @@
     <span class="md-ellipsis">
       
         CLI equivalent
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#publishing-results-produced-elsewhere" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Publishing results produced elsewhere
       
     </span>
   </a>
@@ -1853,7 +1909,7 @@
             </figure>
 <p><code>Backspace</code> (or <code>Esc</code>) goes one level up. Quit-on-Esc is disabled inside the explorer so you cannot accidentally lose your place.</p>
 <h3 id="3-pick-an-artifact-and-an-action">3. Pick an artifact and an action</h3>
-<p>When you select an artifact (e.g., <code>best.onnx</code>, <code>best.tflite</code>, <code>best.engine</code>), an action menu pops up:</p>
+<p>The artifact list shows only recognized model formats — <abbr title="Open Neural Network Exchange">ONNX</abbr>, <abbr title="TensorFlow Lite">TFLite</abbr>, <abbr title="Dataflow Virtual Machine">DVM</abbr>, Hailo, and TensorRT — hiding label files, archives, and other non-model artifacts a training session produces. When you select an artifact (e.g., <code>best.onnx</code>, <code>best.tflite</code>, <code>best.engine</code>), an action menu pops up:</p>
 <table>
 <thead>
 <tr>
@@ -1868,14 +1924,14 @@
 </tr>
 <tr>
 <td><strong>Live</strong></td>
-<td><em>(reserved)</em> Stream live inference back to Studio rather than producing a validation session — covered in a future release.</td>
+<td><em>(reserved)</em> Selecting it reports "Live profiling is not yet supported. Coming in a future release."</td>
 </tr>
 </tbody>
 </table>
 <p>Choosing <strong>Validate</strong> opens an inline configuration panel: dataset partition, confidence threshold, <abbr title="Intersection over Union">IoU</abbr> threshold, top-K, max detections. Sensible defaults are pre-filled from the training session.</p>
 <div class="admonition warning">
 <p class="admonition-title">Validation sessions need a writable project</p>
-<p>Creating a validation session requires <strong>write access</strong> to the Studio project. The profiler cannot create a session against the read-only public <strong>Sample Project</strong> — first <a href="../../../getting_started/copy_dataset/">copy its dataset</a> into a project you own (and add your model), then create the training and validation session there. (On a read-only or public project, a <code>--training-session</code> run falls back to local-only mode automatically — see <a href="#cli-equivalent">CLI equivalent</a> below.)</p>
+<p>Creating a validation session requires <strong>write access</strong> to the Studio project. The profiler cannot create a session against the read-only public <strong>Sample Project</strong>; when this happens, the dashboard's dialog explains the two ways forward: choose <strong>Continue profiling-only</strong> to run the model locally and see its on-device performance without publishing, or — to publish results — <a href="../../../getting_started/copy_dataset/">copy the dataset</a> into a project you own (and add your model), then create the training and validation session there. (On a read-only or public project, a <code>--training-session</code> run falls back to local-only mode automatically — see <a href="#cli-equivalent">CLI equivalent</a> below.)</p>
 </div>
 <h3 id="4-confirm-and-run">4. Confirm and run</h3>
 <p>Submit the configuration. The profiler:</p>
@@ -1894,25 +1950,38 @@
             <img align="center" alt="F4 dashboard during a profiler-initiated validation session" src="../../assets/tui-profiler.png" />
             <figcaption>F4 dashboard during a profiler-initiated validation session</figcaption>
             </figure>
-<h3 id="5-publishing-and-the-cloud-validator">5. Publishing and the cloud validator</h3>
-<p>Publish is automatic for sessions created from the F2 flow — the run uploads <code>predictions.parquet</code> and <code>trace.pftrace</code> to Studio and triggers the cloud validator on completion. The session ID is preserved in the run output directory (<code>./results/&lt;v-XXXX&gt;/</code>) so you can re-publish or re-run from the CLI later if you need to.</p>
+<h3 id="5-publishing">5. Publishing</h3>
+<p>Publish is automatic for sessions created from the F2 flow — on completion the run computes the accuracy metrics on the device and uploads the full artifact set to Studio: <code>predictions.parquet</code>, <code>trace.pftrace</code>, <code>metrics.yaml</code>, <code>platform.yaml</code>, and the chart JSONs. There is no separate cloud-validator step. A fresh run preserves the session ID in its output directory (<code>./results/&lt;v-XXXX&gt;/</code>) so you can re-publish or re-run from the CLI later if you need to; a re-validation of an existing session writes its results beside the session's own cached files instead, keeping one run's artifacts in one place (an explicit <code>--output</code> overrides either location).</p>
 <p>To skip the upload (e.g., when investigating a one-off timing question and the accuracy numbers are not interesting), use the configuration panel's <strong>Publish: off</strong> toggle before starting the run.</p>
 <h2 id="cli-equivalent">CLI equivalent</h2>
 <p>The TUI flow is convenient, but the same effect is reachable from the CLI when you already know the artifact you want:</p>
 <div class="highlight"><pre><span></span><code>edgefirst-profiler<span class="w"> </span>validate<span class="w"> </span>--training-session<span class="w"> </span>t-abc123
 </code></pre></div>
-<p>The profiler creates the validation session itself, downloads <code>best.onnx</code> (the first <code>.onnx</code> artifact, by default), runs the pipeline, and publishes the results. Specify a particular artifact name with <code>--model</code>:</p>
+<p>Without <code>--model</code>, this lists the training session's available model artifacts and exits — the same listing <code>--list-models</code> produces explicitly. Re-run with <code>--model &lt;artifact-name&gt;</code> to select one; the profiler then creates the validation session itself, downloads the artifact, runs the pipeline, and publishes the results:</p>
 <div class="highlight"><pre><span></span><code>edgefirst-profiler<span class="w"> </span>validate<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>--training-session<span class="w"> </span>t-abc123<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>--model<span class="w"> </span>best.tflite
 </code></pre></div>
-<p><code>--training-session</code> produces a brand-new validation session every time it is run; pass <code>--session-id v-XXXX</code> instead to re-publish to an existing session.</p>
+<p>With <code>--training-session</code>, <code>--model</code> names a Studio artifact to download, not a local file path. <code>--training-session</code> produces a brand-new validation session every time it is run; pass <code>--session-id v-XXXX</code> instead to re-publish to an existing session.</p>
 <p>To profile locally <strong>without</strong> creating a Studio session — useful for a quick one-off timing check — pass <code>--no-publish</code>:</p>
 <div class="highlight"><pre><span></span><code>edgefirst-profiler<span class="w"> </span>validate<span class="w"> </span>--training-session<span class="w"> </span>t-abc123<span class="w"> </span>--no-publish
 </code></pre></div>
-<p>The run writes <code>predictions.parquet</code> and <code>trace.pftrace</code> to disk and skips both session creation and the cloud validator. This is the CLI equivalent of the F2 panel's <strong>Publish: off</strong> toggle. On a read-only or public project — where the profiler cannot create a session — a <code>--training-session</code> run falls back to this local-only behavior automatically.</p>
+<p>The run writes <code>predictions.parquet</code> and <code>trace.pftrace</code> to disk and skips session creation and publishing entirely. This is the CLI equivalent of the F2 panel's <strong>Publish: off</strong> toggle. On a read-only or public project — where the profiler cannot create a session — a <code>--training-session</code> run falls back to this local-only behavior automatically.</p>
+<h2 id="publishing-results-produced-elsewhere">Publishing results produced elsewhere</h2>
+<p>The <code>publish</code> command separates profiling from publishing: point it at files a run already produced — <code>--predictions &lt;parquet&gt;</code>, plus optionally <code>--metrics &lt;file&gt;</code>, <code>--charts-dir &lt;dir&gt;</code>, and <code>--trace &lt;file&gt;</code> — and it creates a validation session (<code>--training-session</code>, <code>--artifact</code>, <code>--name</code>) and uploads them. Measure on the target device, then publish from whatever machine has the files and Studio credentials:</p>
+<div class="highlight"><pre><span></span><code>edgefirst-profiler<span class="w"> </span>publish<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--training-session<span class="w"> </span>t-abc123<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--artifact<span class="w"> </span>best.onnx<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--name<span class="w"> </span><span class="s2">"imx95-npu-run"</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--predictions<span class="w"> </span>results/predictions.parquet<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--metrics<span class="w"> </span>results/metrics.yaml<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--trace<span class="w"> </span>results/trace.pftrace
+</code></pre></div>
+<p>Passing <code>--session v-XXXX</code> instead publishes into an existing session, preserving its ID — useful for backfilling metrics and charts onto a session whose predictions were already uploaded, without disturbing them.</p>
+<p>Omitting <code>--metrics</code> uploads the predictions and leaves the session awaiting accuracy, which any host can fill in afterwards with <code>validate --predictions &lt;parquet&gt; --session-id &lt;id&gt;</code>. This two-step route is the intended path for segmentation runs on memory-constrained devices, where evaluating mask accuracy on-device can run out of memory even though the device writes the predictions file fine.</p>
+<p>To launch a run on Studio-managed cloud hardware instead of your own device, see the <code>dispatch</code> command in <a href="../cloud/">Cloud Runs</a>.</p>
 <h2 id="when-the-run-completes">When the run completes</h2>
-<p>The completion summary in the TUI lists the new session ID, the headline latency numbers, and the local trace path. Press <strong>Enter</strong> to dismiss and return to the dashboard. Switch back to F2 to drill into the just-created session and confirm Studio received the artifacts; from there the Studio web UI is the canonical place for charts, comparisons, and the trace viewer.</p>
+<p>The completion summary in the TUI lists the new session ID, the headline latency numbers, and the local trace path. For a published run, the popup also shows the session's Studio link, widening to fit long URLs rather than truncating them; press <strong>c</strong> while the popup is showing to copy it to the system clipboard (this works on Linux desktops too, where the copied text now persists so it can be pasted elsewhere). A headless CLI run prints the same link as <code>View details:</code>, rendered as a real clickable hyperlink in terminals that support it. Press <strong>Enter</strong> to dismiss and return to the dashboard. Switch back to F2 to drill into the just-created session and confirm Studio received the artifacts; from there the Studio web UI is the canonical place for charts, comparisons, and the trace viewer.</p>
 
 
 
@@ -2019,13 +2088,13 @@
         
         
           
-          <a href="../../../datasets/" class="md-footer__link md-footer__link--next" aria-label="Next: EdgeFirst Studio Dataset Zoo">
+          <a href="../cloud/" class="md-footer__link md-footer__link--next" aria-label="Next: Cloud Runs">
             <div class="md-footer__title">
               <span class="md-footer__direction">
                 Next
               </span>
               <div class="md-ellipsis">
-                EdgeFirst Studio Dataset Zoo
+                Cloud Runs
               </div>
             </div>
             <div class="md-footer__button md-icon">

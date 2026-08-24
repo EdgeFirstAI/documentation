@@ -907,6 +907,10 @@
       
         
       
+        
+      
+        
+      
     
     
     
@@ -1102,14 +1106,14 @@
   
   
     <li class="md-nav__item">
-      <a href="../windows/" class="md-nav__link">
+      <a href="../docker/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    Windows
+    Container Images
   
 
     
@@ -1412,6 +1416,8 @@
       
         
           
+        
+      
         
       
         
@@ -1923,13 +1929,19 @@
 <p><code>.dvm</code> files are detected automatically and routed to the Ara240 backend when a validation session runs. The Kinara daemon owns the device, so the profiler reports <strong>device-side</strong> sub-phase timing (<code>input_copy</code>, <code>invoke</code>, <code>output_copy</code>) along with the host-measured <code>roundtrip</code>. When the device-reported sub-phases do not sum to <code>roundtrip</code>, the gap reveals host-side overhead — IPC latency between the profiler and <code>ara2-proxy</code>, or driver setup time.</p>
 <p>The Ara240 backend keeps up to <strong>8 inference slots</strong> in flight concurrently; this is the auto-selected default and is the setting at which the profiler approaches the <abbr title="Neural Processing Unit">NPU</abbr> throughput ceiling. On i.MX 95 — where the Ara240 is accessed over PCIe from the Cortex-A core — the ceiling is model-specific: approximately <strong>194 <abbr title="Frames Per Second">FPS</abbr> for YOLOv5n</strong> and <strong>249 <abbr title="Frames Per Second">FPS</abbr> for YOLOv8n</strong> at 640×640 input resolution.</p>
 <p>The Perfetto trace now exposes per-frame <abbr title="Neural Processing Unit">NPU</abbr> tracks: <code>npu.h2d</code> (PCIe host-to-device transfer), <code>npu.compute</code> (<abbr title="Neural Processing Unit">NPU</abbr> execution), and <code>npu.d2h</code> (PCIe device-to-host transfer). This replaces the previous aggregate timing and lets you see precisely where each inference frame spends its time.</p>
+<p>For models built with a recent converter (≥ 2.5.0), the <abbr title="Neural Processing Unit">NPU</abbr> compute phase is additionally split into one slice per layer, in execution order and named by layer (for example <code>model.22.dfl.Softmax</code>), so you can see which layers dominate the compute time rather than only its total. The split is an estimate of each layer's share of the measured compute time — the Ara240 reports no per-layer hardware timings — so treat it as relative guidance. Models from older converters show only the total.</p>
+<div class="admonition note">
+<p class="admonition-title"><code>.dvm</code> is an edge-only format</p>
+<p>There is no cloud machine with an Ara240 attached, so the <code>dispatch</code> command rejects a <code>.dvm</code> artifact up front rather than starting a run that cannot execute — cloud runs support <code>.onnx</code> and <code>.tflite</code>. Profile <code>.dvm</code> models on the target hardware itself.</p>
+</div>
 <h2 id="model-metadata">Model metadata</h2>
 <p><abbr title="Dataflow Virtual Machine">DVM</abbr> files use a <strong>zip trailer</strong> to embed decoder configuration and class labels. When the trailer is missing or the model was produced by a toolchain that does not write it, the profiler runs in timing-only mode and prints a note on stderr.</p>
 <h2 id="verifying-the-install">Verifying the install</h2>
 <div class="highlight"><pre><span></span><code>edgefirst-profiler<span class="w"> </span>login
 edgefirst-profiler<span class="w">              </span><span class="c1"># opens TUI on F1 Help</span>
 </code></pre></div>
-<p>If the <code>ara2-proxy</code> daemon is not running when a session starts, the profiler returns an error pointing at the daemon — not a connection-refused traceback. Restart the daemon:</p>
+<p>The most common connection failure is a <strong>privilege</strong> problem, not a daemon problem: while <code>ara2.service</code> is running, connecting to the proxy requires elevated access. The profiler's error message says so and suggests the fixes — run under <code>sudo</code>, or add your user to the <code>ara2</code> or <code>render</code> group. In the TUI, a run that fails this way offers to re-run itself under <code>sudo</code> directly.</p>
+<p>If the daemon itself is not running when a session starts, the profiler returns an error pointing at the daemon — not a connection-refused traceback. Restart the daemon:</p>
 <div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>systemctl<span class="w"> </span>restart<span class="w"> </span>ara2-proxy
 </code></pre></div>
 <p>Then run a validation session — see <a href="../../studio/from_studio/">Validation from Studio</a> or <a href="../../studio/from_profiler/">Validation from the Profiler</a>.</p>

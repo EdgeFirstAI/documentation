@@ -15,7 +15,7 @@
         <link rel="canonical" href="https://doc.edgefirst.ai/test/profiler/installation/jetson_orin/">
       
       
-        <link rel="prev" href="../windows/">
+        <link rel="prev" href="../docker/">
       
       
         <link rel="next" href="../imx95/">
@@ -907,6 +907,10 @@
       
         
       
+        
+      
+        
+      
     
     
     
@@ -1102,14 +1106,14 @@
   
   
     <li class="md-nav__item">
-      <a href="../windows/" class="md-nav__link">
+      <a href="../docker/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    Windows
+    Container Images
   
 
     
@@ -1484,6 +1488,8 @@
       
         
           
+        
+      
         
       
         
@@ -2073,10 +2079,12 @@ ls<span class="w"> </span>/usr/lib/aarch64-linux-gnu/libnvinfer.so*<span class="
 <div class="highlight"><pre><span></span><code>edgefirst-profiler<span class="w"> </span>--version
 </code></pre></div>
 <h2 id="onnx-runtime-on-jetson"><abbr title="Open Neural Network Exchange">ONNX</abbr> Runtime on Jetson</h2>
-<p>A stable, JetPack-compatible <code>onnxruntime-gpu</code> aarch64 wheel channel is not currently available — the Jetson AI Lab index is intermittent and the EdgeFirst-maintained channel is not yet published. Until that lands, <strong><abbr title="Open Neural Network Exchange">ONNX</abbr> Runtime on Jetson is CPU-only</strong> through the standard PyPI wheel:</p>
-<div class="highlight"><pre><span></span><code>pip<span class="w"> </span>install<span class="w"> </span>onnxruntime
+<p>The <abbr title="NVIDIA Compute Unified Device Architecture">CUDA</abbr> execution provider (<code>--provider cuda</code>) runs on Jetson / L4T, so <code>.onnx</code> models can be measured on the GPU the same way desktop GPUs are — a <abbr title="NVIDIA Compute Unified Device Architecture">CUDA</abbr>-enabled <code>libonnxruntime</code> must be present on the host. The simplest way to get one is the multi-architecture <a href="../docker/"><code>cuda</code> container image</a>, which bundles the GPU <abbr title="Open Neural Network Exchange">ONNX</abbr> Runtime for JetPack 6.2 (<abbr title="NVIDIA Compute Unified Device Architecture">CUDA</abbr> 12.6); on Jetson, run it with <code>--runtime nvidia</code> and the container picks up the Tegra driver automatically:</p>
+<div class="highlight"><pre><span></span><code>docker<span class="w"> </span>run<span class="w"> </span>-it<span class="w"> </span>--rm<span class="w"> </span>--runtime<span class="w"> </span>nvidia<span class="w"> </span>-v<span class="w"> </span>edgefirst:/config<span class="w"> </span>ghcr.io/edgefirstai/profiler-cli:cuda
 </code></pre></div>
-<p>For GPU inference on Jetson, convert the model to a TensorRT engine first and let the profiler load it through the TensorRT backend described below. See the <a href="https://doc.edgefirst.ai/test/models/conversion/tensorrt/">TensorRT Converter</a> for the conversion workflow.</p>
+<p>For a CPU baseline, the standard PyPI wheel (<code>pip install onnxruntime</code>) provides the CPU-only <code>libonnxruntime</code>.</p>
+<p>With the <abbr title="NVIDIA Compute Unified Device Architecture">CUDA</abbr> execution provider, per-frame inference time is measured on the GPU's own clock rather than the host clock, removing host scheduling jitter from the reported number (with an automatic host-clock fallback if the GPU clock is unavailable).</p>
+<p>Alternatively, convert the model to a TensorRT engine and let the profiler load it through the TensorRT backend described below. See the <a href="../../../models/conversion/tensorrt/">TensorRT Converter</a> for the conversion workflow.</p>
 <h2 id="tensorrt-recommended-for-jetson">TensorRT (recommended for Jetson)</h2>
 <p>TensorRT is the canonical Jetson backend. The profiler accepts both compiled <code>.engine</code> files and source <code>.onnx</code> files (which it builds into engines on first use).</p>
 <h3 id="install-libtrt_shimso">Install <code>libtrt_shim.so</code></h3>
@@ -2092,8 +2100,12 @@ sudo<span class="w"> </span>ldconfig
 <h3 id="per-layer-profiling">Per-layer profiling</h3>
 <p>Enable per-layer GPU profiling on a validation session with the <code>--layer-profile</code> flag — TensorRT's <code>IProfiler</code> callback reports execution time for every fused layer. Per-layer overhead is roughly 5–10%, so leave it off when measuring deployment latency and on when investigating a bottleneck.</p>
 <h3 id="throughput-and-pipeline-overlap">Throughput and pipeline overlap</h3>
-<p>TensorRT validation now keeps multiple frames in flight: the GPU works on frame N while frame N+1 is being captured and preprocessed, and detection outputs are read straight from GPU memory rather than copied back to the host first.</p>
-<p>End-to-end throughput roughly doubles compared to the previous single-frame-at-a-time approach — measured at ~277 <abbr title="Frames Per Second">FPS</abbr> on Jetson Orin Nano with YOLOv5n at 640×640 in MAXN_SUPER mode, up from ~150 <abbr title="Frames Per Second">FPS</abbr> previously bottlenecked on CPU image decoding. Detection accuracy is unchanged.</p>
+<p>TensorRT validation now keeps multiple frames in flight: the GPU works on frame N while frame N+1 is being captured and preprocessed, and detection outputs are read straight from GPU memory rather than copied back to the host first. Measured full-pipeline throughput on a Jetson Orin Nano is <strong>~272 <abbr title="Frames Per Second">FPS</abbr></strong> (yolov5n at 640×640, COCO 5k, MAXN_SUPER); the device itself measures ~358 <abbr title="Frames Per Second">FPS</abbr> model-only, so the full image pipeline — not the GPU — is the gate. Detection accuracy is unchanged.</p>
+<p>On the Orin Nano the auto pipeline depths are deliberately pinned below the device maximum: <strong>capture 2, inference 4, postprocess 2</strong>. The full pipeline is CPU-contention-bound on the 6-core SoC, not decode-bound — at the generic auto of 4 capture and 4 postprocess workers, the CPU stages oversubscribe the cores and starve the priority-boosted inference dispatch thread, measuring ~250 <abbr title="Frames Per Second">FPS</abbr>; pinning capture and postprocess to 2 frees cores for preprocessing and inference and lifts throughput to ~272 <abbr title="Frames Per Second">FPS</abbr>.</p>
+<div class="admonition note">
+<p class="admonition-title">GPU JPEG decode is deliberately not used</p>
+<p>nvJPEG could decode the dataset's JPEG files on the GPU, but on this shared iGPU it steals streaming multiprocessors from inference and measures <strong>slower</strong> end to end, so the profiler decodes on the CPU by design. Image decode is not the pipeline's gate on the Orin Nano.</p>
+</div>
 <p>The Perfetto trace gains per-frame <code>trt.h2d</code>, <code>trt.infer</code>, and <code>trt.d2h</code> tracks (host-to-device, TensorRT inference, device-to-host) measured with <abbr title="NVIDIA Compute Unified Device Architecture">CUDA</abbr> events, so GPU-side durations are accurate rather than host-side approximations. Falls back automatically on hardware that doesn't support the required GPU memory capabilities.</p>
 <h3 id="power-monitoring">Power monitoring</h3>
 <p>Jetson boards carry an on-board INA3221 power monitor, so the dashboard reports live power: the board-input rail plus its per-component breakdown (for example the CPU/GPU/SoC and <abbr title="Dynamic Random-Access Memory">DRAM</abbr> rails), each shown under its real name, and the session report adds a board-power line. The board total is counted once — on a multi-rail device that also exposes a board-total channel, the total is no longer double-added to its own components, which previously inflated a ~6.7 W reading to ~29 W on the Orin Nano.</p>
@@ -2200,7 +2212,7 @@ edgefirst-profiler<span class="w">              </span><span class="c1"># opens 
       <nav class="md-footer__inner md-grid" aria-label="Footer" >
         
           
-          <a href="../windows/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Windows">
+          <a href="../docker/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Container Images">
             <div class="md-footer__button md-icon">
               
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
@@ -2210,7 +2222,7 @@ edgefirst-profiler<span class="w">              </span><span class="c1"># opens 
                 Previous
               </span>
               <div class="md-ellipsis">
-                Windows
+                Container Images
               </div>
             </div>
           </a>

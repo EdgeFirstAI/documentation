@@ -1987,7 +1987,7 @@ model concern.</p>
 This is the default output format for the EdgeFirst Client <abbr title="Software Development Kit">SDK</abbr>.</p>
 <div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">polars</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pl</span>
 
-<span class="n">df</span> <span class="o">=</span> <span class="n">pl</span><span class="o">.</span><span class="n">read_ipc</span><span class="p">(</span><span class="s2">&quot;dataset.arrow&quot;</span><span class="p">)</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pl</span><span class="o">.</span><span class="n">read_ipc</span><span class="p">(</span><span class="s2">"dataset.arrow"</span><span class="p">)</span>
 </code></pre></div>
 <p><strong>Characteristics</strong>:</p>
 <ul>
@@ -2005,11 +2005,11 @@ where read speed is critical.</p>
 storage, and interoperability with the broader data ecosystem.</p>
 <div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">polars</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pl</span>
 
-<span class="n">df</span> <span class="o">=</span> <span class="n">pl</span><span class="o">.</span><span class="n">read_parquet</span><span class="p">(</span><span class="s2">&quot;dataset.parquet&quot;</span><span class="p">)</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pl</span><span class="o">.</span><span class="n">read_parquet</span><span class="p">(</span><span class="s2">"dataset.parquet"</span><span class="p">)</span>
 
 <span class="c1"># Or use DuckDB for SQL queries</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">duckdb</span>
-<span class="n">result</span> <span class="o">=</span> <span class="n">duckdb</span><span class="o">.</span><span class="n">sql</span><span class="p">(</span><span class="s2">&quot;SELECT label, count(*) FROM &#39;dataset.parquet&#39; GROUP BY label&quot;</span><span class="p">)</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">duckdb</span><span class="o">.</span><span class="n">sql</span><span class="p">(</span><span class="s2">"SELECT label, count(*) FROM 'dataset.parquet' GROUP BY label"</span><span class="p">)</span>
 </code></pre></div>
 <p><strong>Characteristics</strong>:</p>
 <ul>
@@ -2070,21 +2070,21 @@ numeric class indices.</p>
 <li><strong>2026.04</strong>: Top-level is an object with <code>schema_version</code>: <code>{"schema_version": "2026.04", ...}</code></li>
 </ul>
 <div class="highlight"><pre><span></span><code><span class="p">{</span>
-<span class="w">  </span><span class="nt">&quot;schema_version&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2026.04&quot;</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;box2d_format&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;cxcywh&quot;</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;box2d_normalized&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;mask_interpretation&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;binary&quot;</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;samples&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">  </span><span class="nt">"schema_version"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2026.04"</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">"box2d_format"</span><span class="p">:</span><span class="w"> </span><span class="s2">"cxcywh"</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">"box2d_normalized"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">"mask_interpretation"</span><span class="p">:</span><span class="w"> </span><span class="s2">"binary"</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">"samples"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
 <span class="w">    </span><span class="p">{</span>
-<span class="w">      </span><span class="nt">&quot;image_name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;deer_001.camera.jpeg&quot;</span><span class="p">,</span>
-<span class="w">      </span><span class="nt">&quot;width&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1920</span><span class="p">,</span>
-<span class="w">      </span><span class="nt">&quot;height&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1080</span><span class="p">,</span>
-<span class="w">      </span><span class="nt">&quot;annotations&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">      </span><span class="nt">"image_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"deer_001.camera.jpeg"</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">"width"</span><span class="p">:</span><span class="w"> </span><span class="mi">1920</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">"height"</span><span class="p">:</span><span class="w"> </span><span class="mi">1080</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">"annotations"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
 <span class="w">        </span><span class="p">{</span>
-<span class="w">          </span><span class="nt">&quot;label_name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;deer&quot;</span><span class="p">,</span>
-<span class="w">          </span><span class="nt">&quot;label_index&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
-<span class="w">          </span><span class="nt">&quot;box2d&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="nt">&quot;cx&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">0.691</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;cy&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">0.368</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;w&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">0.015</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;h&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">0.051</span><span class="p">},</span>
-<span class="w">          </span><span class="nt">&quot;box2d_score&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">0.97</span>
+<span class="w">          </span><span class="nt">"label_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"deer"</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">"label_index"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">"box2d"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="nt">"cx"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.691</span><span class="p">,</span><span class="w"> </span><span class="nt">"cy"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.368</span><span class="p">,</span><span class="w"> </span><span class="nt">"w"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.015</span><span class="p">,</span><span class="w"> </span><span class="nt">"h"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.051</span><span class="p">},</span>
+<span class="w">          </span><span class="nt">"box2d_score"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.97</span>
 <span class="w">        </span><span class="p">}</span>
 <span class="w">      </span><span class="p">]</span>
 <span class="w">    </span><span class="p">}</span>

@@ -9,6 +9,17 @@ Changes are grouped into dated release-candidate (`-rc`) snapshots by the date t
 corresponding pull request was opened. None of these snapshots are part of a tagged
 release yet; they are listed newest first.
 
+### [2026-08-25-rc]
+
+#### Fixed
+
+- **IMU pose order corrected to `[roll, pitch, yaw]`** (`datasets/format/schema.md`,
+  `datasets/format/conversion.md`, `platforms/quickstart/maivin/webui.md`,
+  `platforms/quickstart/raivin/webui.md`): the dataset schema `pose` array, the
+  Arrow/JSON `sensors.imu` conversion mapping and step table, the "Pose array order"
+  tip, the Polars schema comment, and the Maivin/Raivin IMU WebUI descriptions now
+  all state `[roll, pitch, yaw]` (previously `[yaw, pitch, roll]` / "pitch, yaw, roll").
+
 ### [2026-08-17-rc]
 
 #### Added

@@ -11,7 +11,7 @@ The Main Page of the Maivin web interface should look as follows:
 There are three cards on the Main Page that link to the Visualization pages:
 
 - **GPS**: This page displays a map with the current location of the device, along with GPS coordinates.
-- **IMU**: This page displays the 3D orientation of the device with current pitch, yaw, and roll values.
+- **IMU**: This page displays the 3D orientation of the device with current roll, pitch, and yaw values.
 - **Segmentation View**: This page shows the camera with running segmentation and/or detection pipeline.
 
 {% include-markdown "discrete/platforms/edgefirst_main_page_overview.md" heading-offset=2 %}

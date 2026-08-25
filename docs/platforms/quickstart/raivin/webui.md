@@ -11,7 +11,7 @@ The Main Page of the Raivin web interface should look as follows:
 There are five cards on the Main Page that link to the Visualization pages:
 
 - **GPS**: This page displays a map with the current location of the device, along with GPS coordinates.
-- **IMU**: This page displays the 3D orientation of the device with current pitch, yaw, and roll values.
+- **IMU**: This page displays the 3D orientation of the device with current roll, pitch, and yaw values.
 - **Occupancy Grid**: This page will show the radar grid
 - **Segmentation View**: This page shows the camera with running segmentation and/or detection pipeline.  For Raivin devices equipped with a radar module, it will also show the radar grid.
 - **LiDAR View**: This page will show the LiDAR View, which will include the camera, radar grid, and LiDAR grid.

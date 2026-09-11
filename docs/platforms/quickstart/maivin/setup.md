@@ -27,7 +27,7 @@ After all that, you should see the [Maivin Main Page](webui.md).
 
 From here, we recommend that you check out the Camera page by clicking the "Camera" card, then enable the segmentation overlay from the page controls to see the detections of the default model drawn over the live video.
 
-{{ figure("../../assets/setup/ui-maivinSegmentation.jpg", "Maivin Camera Page") }}
+{{ figure("../../assets/setup/quickStart-segmentation.png", "Maivin Camera Page") }}
 
 {% include-markdown "discrete/platforms/edgefirst_performance_scaling.md" %}
 

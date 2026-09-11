@@ -26,7 +26,7 @@ These pages contain the user-facing functionality of the vision module.
 
 The Camera page shows the live camera video decoded from the `camera/h264` topic.  The controls at the top of the page toggle the segmentation overlay, which draws the detection boxes and segmentation masks published by the model service on `model/output` over the video, and the LiDAR overlay for devices with a LiDAR sensor.  A statistics panel reports the model latency and throughput.
 
-{{ figure("../../assets/setup/ui-maivinSegmentation.jpg", "Maivin Camera Page") }}
+{{ figure("../../assets/setup/quickStart-segmentation.png", "Maivin Camera Page") }}
 
 !!! note
 

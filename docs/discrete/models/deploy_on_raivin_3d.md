@@ -35,11 +35,11 @@ Next you will need to specify the path to the model in the device.  You can eith
 
     Select "Fusion Settings".
 
-    {{ figure("/models/assets/deployment/raivin-fusion-settings.jpg", "Model Settings") }}
+    {{ figure("/models/assets/deployment/raivin-fusion-settings.png", "Model Settings") }}
 
     Configure the path to the model in your device as specified under "The Radar model".  The fusion model also requires the [radar cube](../../platforms/configuration/radar.md#enable-cube) to be enabled on the Radar Settings page.  Once configured, click "Save Configuration" to save your changes.
 
-    {{ figure("/models/assets/deployment/configure-model-path-raivin.jpg", "Model Path") }}
+    {{ figure("/models/assets/deployment/configure-model-path-raivin.png", "Model Path") }}
 
 === "via Command Line"
 
@@ -58,11 +58,11 @@ Next you will need to specify the path to the model in the device.  You can eith
 
 Once the model path in the device is specified, ensure that all services are enabled.  To verify, go back to the settings and click on the "Service Status" button.
 
-{{ figure("/models/assets/deployment/raivin-service-status.jpg", "Service Status") }}
+{{ figure("/models/assets/deployment/raivin-service-status.png", "Service Status") }}
 
 You will be greeted with the "Service Overview" page.  Ensure that all services are enabled and running by toggling the "Enable" and "Start" buttons as shown.  Only "Enable" the "recorder" service as shown.  You will be using the recorder service in [MCAP Recording](../../perception/data_collection/recording.md).
 
-{{ figure("/models/assets/deployment/raivin-service-overview.jpg", "Service Overview") }}
+{{ figure("/models/assets/deployment/raivin-service-overview.png", "Service Overview") }}
 
 ## Live View (Camera Page)
 

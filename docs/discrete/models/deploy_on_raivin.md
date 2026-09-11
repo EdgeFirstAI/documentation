@@ -35,11 +35,11 @@ Next you will need to specify the path to the model in the device.  You can eith
 
     Select "Model Settings".
 
-    {{ figure("/models/assets/deployment/raivin-model-settings.jpg", "Model Settings") }}
+    {{ figure("/models/assets/deployment/raivin-model-settings.png", "Model Settings") }}
 
     Configure the path to the model in your device as specified under "MODEL:".  Once configured, click "Save Configuration" to save your changes.
 
-    {{ figure("/models/assets/deployment/configure-model-path-maivin.jpg", "Model Path") }}
+    {{ figure("/models/assets/deployment/configure-model-path-maivin.png", "Model Path") }}
 
 === "via Raivin Command Line"
 
@@ -64,11 +64,11 @@ Next you will need to specify the path to the model in the device.  You can eith
 
 Once the model path in the device is specified, ensure that the model and camera services are enabled and running.  To verify, go back to the settings and click on the "Service Status" button.
 
-{{ figure("/models/assets/deployment/raivin-service-status.jpg", "Service Status") }}
+{{ figure("/models/assets/deployment/raivin-service-status.png", "Service Status") }}
 
 You will be greeted with the "Service Overview" page.  Ensure that the model and camera services are enabled and running as shown.  You do not need to enable or start the recorder service, as we will be starting the recorder service as described in [MCAP Recording](../../perception/data_collection/recording.md).
 
-{{ figure("/models/assets/deployment/raivin-service-overview.jpg", "Service Overview") }}
+{{ figure("/models/assets/deployment/raivin-service-overview.png", "Service Overview") }}
 
 ## Live View (Camera Page)
 

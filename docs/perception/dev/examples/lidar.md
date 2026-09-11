@@ -2,6 +2,10 @@
 
 This example will go through how to connect to the lidar topic published on your EdgeFirst Platform and how to display the information on the command line as well as through the Rerun visualizer.
 
+!!! tip "Topic Names"
+
+    The topics below are subscribed with their bare names, which requires the Zenoh session to be opened with the namespace set to the device hostname as shown in the [Developer Guide](../index.md#subscriber).  Subscribe with a `**/` prefix, for example `**/camera/h264`, to match the topics from a session without a namespace or from a remote device.
+
 ## LiDAR Points
 
 Topic: [/lidar/points](../../topics/lidar.md#lidarpoints)  
@@ -15,18 +19,18 @@ After setting up the Zenoh session, we will create a subscriber to the `lidar/po
 === "Python"
 
     ``` python
-    # Create a subscriber for "rt/lidar/points"
+    # Create a subscriber for "lidar/points"
     loop = asyncio.get_running_loop()
     drain = MessageDrain(loop)
-    session.declare_subscriber('rt/lidar/points', drain.callback)
+    session.declare_subscriber('lidar/points', drain.callback)
     ```
 
 === "Rust"
 
     ``` rust
-    // Create a subscriber for "rt/lidar/points"
+    // Create a subscriber for "lidar/points"
     let subscriber = session
-        .declare_subscriber("rt/lidar/points")
+        .declare_subscriber("lidar/points")
         .await
         .unwrap();
     ```
@@ -130,18 +134,18 @@ After setting up the Zenoh session, we will create a subscriber to the `lidar/cl
 === "Python"
 
     ``` python
-    # Create a subscriber for "rt/lidar/cluster"
+    # Create a subscriber for "lidar/cluster"
     loop = asyncio.get_running_loop()
     drain = MessageDrain(loop)
-    session.declare_subscriber('rt/lidar/clusters', drain.callback)
+    session.declare_subscriber('lidar/clusters', drain.callback)
     ```
 
 === "Rust"
 
     ``` rust
-    // Create a subscriber for "rt/lidar/cluster"
+    // Create a subscriber for "lidar/cluster"
     let subscriber = session
-        .declare_subscriber("rt/lidar/clusters")
+        .declare_subscriber("lidar/clusters")
         .await
         .unwrap();
     ```
@@ -245,18 +249,18 @@ After setting up the Zenoh session, we will create a subscriber to the `lidar/de
 === "Python"
 
     ``` python
-    # Create a subscriber for "rt/lidar/depth"
+    # Create a subscriber for "lidar/depth"
     loop = asyncio.get_running_loop()
     drain = MessageDrain(loop)
-    session.declare_subscriber('rt/lidar/depth', drain.callback)
+    session.declare_subscriber('lidar/depth', drain.callback)
     ```
 
 === "Rust"
 
     ``` rust
-    // Create a subscriber for "rt/lidar/depth"
+    // Create a subscriber for "lidar/depth"
     let subscriber = session
-        .declare_subscriber("rt/lidar/depth")
+        .declare_subscriber("lidar/depth")
         .await
         .unwrap();
     ```
@@ -375,18 +379,18 @@ After setting up the Zenoh session, we will create a subscriber to the `lidar/re
 === "Python"
 
     ``` python
-    # Create a subscriber for "rt/lidar/reflect"
+    # Create a subscriber for "lidar/reflect"
     loop = asyncio.get_running_loop()
     drain = MessageDrain(loop)
-    session.declare_subscriber('rt/lidar/reflect', drain.callback)
+    session.declare_subscriber('lidar/reflect', drain.callback)
     ```
 
 === "Rust"
 
     ``` rust
-    // Create a subscriber for "rt/lidar/reflect"
+    // Create a subscriber for "lidar/reflect"
     let subscriber = session
-        .declare_subscriber("rt/lidar/reflect")
+        .declare_subscriber("lidar/reflect")
         .await
         .unwrap();
     ```
@@ -499,9 +503,9 @@ After setting up the Zenoh session, we will create a subscriber to the three top
     frame_size_storage = FrameSize()
 
     # Declare subscribers
-    session.declare_subscriber('rt/camera/h264', h264_drain.callback)
-    session.declare_subscriber('rt/model/boxes2d', boxes2d_drain.callback)
-    session.declare_subscriber('rt/lidar/clusters', lidar_drain.callback)
+    session.declare_subscriber('camera/h264', h264_drain.callback)
+    session.declare_subscriber('model/boxes2d', boxes2d_drain.callback)
+    session.declare_subscriber('lidar/clusters', lidar_drain.callback)
     ```
 
 ### Subscriber Callbacks

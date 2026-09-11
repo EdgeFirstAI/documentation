@@ -12,11 +12,13 @@ The `edgefirst` launcher is the preferred method of launching multiple services 
 
 The Camera Service or EdgeFirst Camera Publisher implements the standard ROS2 camera interfaces plus a proprietary extension to provide DMA support.  As with all EdgeFirst services the ROS2 interfaces are implemented over Zenoh and can plug into a true ROS2 setup using the zenoh-bridge-dds service.
 
-Deploy this service in your target with the following command.  The `&` parameter will run the service in the background allowing you to continue using the terminal.  We also specify `--mirror none` to avoid any horizontal or vertical flip to the camera feed.  By default, the camera is flipped both horizontally and vertically to compensate for the orientation of the Maivin camera which is installed upside-down.
+Deploy this service in your target with the following command.  The `&` parameter will run the service in the background allowing you to continue using the terminal.  The H.264 stream is enabled by default.  We also specify `--mirror none` to avoid any horizontal or vertical flip to the camera feed, the Maivin configuration sets the mirror to `both` to compensate for the orientation of the Maivin camera which is installed upside-down.
 
 ```shell
-edgefirst-camera --h264 --mirror none &
+edgefirst-camera --mirror none &
 ```
+
+The service publishes its topics inside a Zenoh namespace equal to the system hostname, refer to [Middleware Topics](topics/index.md#hostname-namespaces).
 
 The command below lists all available parameters from this service.
 
@@ -30,12 +32,12 @@ edgefirst-camera -h
 
 ### Model Service
 
-The Model Service or Maivin Detection Service deploys a ModelPack Detection and Segmentation model for inference to output bounding boxes or segmentation masks on the detected objects in the camera feed.
+The Model Service deploys a detection and segmentation model, such as ModelPack, Ultralytics YOLO, or an EdgeFirst Model Zoo model, for inference to output bounding boxes or segmentation masks on the detected objects in the camera feed on the unified `model/output` topic.
 
-Deploy this service in your target with the following command.  In this command specify the path to the model denoted by `--model`.  We recommend using a quantized TFLite model in embedded targets.
+Deploy this service in your target with the following command.  In this command specify the path to the model denoted by `--model` and the delegate library for the NPU with `--delegate`, omit the delegate for CPU inference.  We recommend using a quantized TFLite model in embedded targets.
 
 ```shell
-edgefirst-model --model mymodel.tflite &
+edgefirst-model --model mymodel.tflite --delegate /usr/lib/libvx_delegate.so &
 ```
 
 The command below lists all available parameters from this service.
@@ -46,11 +48,11 @@ edgefirst-model -h
 
 !!! warning
 
-    The camera service needs to be running in the background as described [above](#camera-service) to fetch camera frames for model inference. 
+    The camera service needs to be running in the background as described [above](#camera-service) to fetch camera frames for model inference over the `camera/frame` topic.
 
 ### Webserver Service
 
-The Webserver Service or the EdgeFirst Web UI Server deploys a webserver on target to provide a GUI that's accessible using the target's IP address as the endpoint on a browser `https://MY_DEVICE_IP`.  The GUI provides visualizations from the camera feed and model inferences and exposes the features for recording an MCAP, downloading an MCAP locally, deleting an MCAP, or listing the recorded MCAPs as shown in the [Live Camera Mode](../models/deployment/launcher.md#live-camera-mode) section.
+The Webserver Service or the EdgeFirst Web UI Server deploys a webserver on target to provide a GUI that's accessible using the target's IP address as the endpoint on a browser `https://MY_DEVICE_IP`.  Use the `--http-port` and `--https-port` options to select unprivileged ports when running without root permissions.  The GUI provides visualizations from the camera feed and model inferences and exposes the features for recording an MCAP, downloading an MCAP locally, deleting an MCAP, or listing the recorded MCAPs as shown in the [Live Camera Mode](../models/deployment/launcher.md#live-camera-mode) section.
 
 If a virtual environment was created, deploy this service using the command below.  The `--docroot` directory needs to be specified.
 

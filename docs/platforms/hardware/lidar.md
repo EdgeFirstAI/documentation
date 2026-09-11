@@ -1,6 +1,11 @@
 # LiDAR Module
 
-The Raivin configuration includes optional support for the [Ouster OS1-64 LiDAR sensor][ouster] which provides high-resolution 3D point cloud data useful for creating ground-truth annotations.  A mounting kit for the Ouster is available from Au-Zone to attach the Raivin to the Ouster and calibration profiles for this mounting configuration are provided.  The LiDAR sensor is connected to the Raivin through a Gigabit Ethernet interface, providing both data communication and power over Ethernet (PoE) capabilities.
+The Raivin configuration includes optional support for LiDAR sensors which provide high-resolution 3D point cloud data useful for creating ground-truth annotations.  The [LiDAR publishing service](../configuration/lidar.md) supports two sensor families:
+
+- The [Robosense E1R][robosense] solid-state LiDAR, which is the default sensor type of the LiDAR service.  Calibration profiles for mounting the E1R on the Maivin are provided and the sensor's built-in IMU enables the ground plane filter of the LiDAR service.
+- The [Ouster OS1-64 LiDAR sensor][ouster] spinning LiDAR.  A mounting kit for the Ouster is available from Au-Zone to attach the Raivin to the Ouster and calibration profiles for this mounting configuration are provided.
+
+The LiDAR sensor is connected to the Raivin's sensor Ethernet port, providing both data communication and power over Ethernet (PoE) capabilities.  The sections below describe the Ouster OS1 configuration.
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/LuA3JlRUfVY?si=FFKDY7dBWih5aG2W" title="Raivin Unboxing and LiDAR Mounting" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
@@ -46,6 +51,17 @@ After making all the changes required you can hit "Configure and Visualize" and 
 
 {{ figure("../assets/hardware/ouster-pcd.png", "Ouster PCD") }}
 
+## Networking
+
+The LiDAR connects to the Raivin's `ethernet1` sensor port which is managed by NetworkManager.  The `ethernet1-lidar` connection profile assigns the static address `192.168.1.102/24` to the port, configure the LiDAR with a static address on the same subnet and set it as the [Target Device](../configuration/lidar.md#target-device) of the LiDAR service.  The profile is not active by default as the port is shared with the radar module, activate it when provisioning the LiDAR.
+
+```bash
+sudo nmcli connection down ethernet1-radar
+sudo nmcli connection up ethernet1-lidar
+```
+
+The Raivin runs a PTP grandmaster on the sensor port, so the LiDAR can be configured to synchronize its clock to the Raivin by selecting the `ptp1588` [timestamp mode](../configuration/lidar.md#timestamp-mode).  Refer to [Networking](../networking/networking.md#sensor-network) for details.
+
 ## Firmware Requirements
 
 The sensor should be running firmware version v2.5.3 or later. The sensor's local information page can be accessed at:
@@ -83,7 +99,7 @@ The 0° azimuth angle aligns with the RJ45 Ethernet connector on the Ouster OS1 
 - 180°: Opposite the connector
 - 270°: Three-quarters counterclockwise from the connector
 
-The LiDAR settings can be configured using the webui LiDAR config page
+The LiDAR settings can be configured using the Web UI [LiDAR Settings page](../configuration/lidar.md)
 
 {{ figure("../assets/lidar-config.png", "LiDAR Azimuth Orientation") }}
 
@@ -91,7 +107,7 @@ The LiDAR settings can be configured using the webui LiDAR config page
 
 The LiDAR data can be visualized using:
 
-1. Raivin Webui for both live and recorded MCAPs
+1. Raivin Web UI [LiDAR page](../quickstart/raivin/webui.md#the-lidar-page) for both live and recorded MCAPs
 2. Rerun visualization tool for both PCAP files and live data
 3. Ouster Studio for live or recorded data
 
@@ -102,6 +118,7 @@ The LiDAR data can be visualized using:
 - [Sensor Data Format Documentation][dataformat]
 
 [ouster]: https://ouster.com/products/os1-lidar-sensor/
+[robosense]: https://www.robosense.ai/en/rslidar/E1R
 [studio]: https://ouster.com/products/software/ouster-studio
 [datasheet]: https://data.ouster.io/downloads/datasheets/datasheet-revd-v2p0-os1.pdf
 [docs]: https://static.ouster.dev/sensor-docs/

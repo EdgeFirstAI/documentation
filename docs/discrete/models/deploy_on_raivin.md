@@ -1,6 +1,6 @@
 This guide will showcase two methods of deploying the model.
 
-1. [Live View (Segmentation App)](#live-view-segmentation-app): Displays the live camera feed using the default model provided.
+1. [Live View (Camera Page)](#live-view-camera-page): Displays the live camera feed with the model output overlaid.
 2. [MCAP Recording](../../perception/data_collection/recording.md#record-mcap): Allows control of the recording options and provides download file options to replay the recording.
 
 {% include-markdown "discrete/models/download_model.md" %}
@@ -47,17 +47,16 @@ Next you will need to specify the path to the model in the device.  You can eith
 
     Next, you will see the file with the following contents.
 
-    ```vi
-    # This is the configuration file for the model systemd service file.  When
-    # running systemctl start detect the service will use these configurations.
-    # If running model directly, you must continue to use the command-line options.
-
-    # A model is required for the model application. This can be a segmentation model
-    # and/or a detection model.
-    MODEL = "path/to/mymodel.tflite"
+    ```ini
+    # ---------------------------------------------------------------------------
+    # Model Path
+    # ---------------------------------------------------------------------------
+    # Path to the inference model file (e.g., a .tflite model). This is required
+    # and the service will not start without it.
+    MODEL="/usr/share/edgefirst/modelzoo/yolov8n-det-int8-smart.tflite"
     ```
 
-    Edit the following line `MODEL = "path/to/mymodel.tflite"` to point to the specific path to your model.  To edit, press `i` to enter into "Insert Mode".  You should now be able to edit the lines.  To exit "Insert Mode", press the ESC key on your keyboard.  Next save and exit the file by typing `:wq` on your keyboard.  More examples for using `vi` can be found [here](https://coderwall.com/p/adv71w/basic-vim-commands-for-getting-started).
+    Edit the `MODEL=` line to point to the specific path to your model, for example `MODEL="/home/torizon/mymodel.tflite"`.  To edit, press `i` to enter into "Insert Mode".  You should now be able to edit the lines.  To exit "Insert Mode", press the ESC key on your keyboard.  Next save and exit the file by typing `:wq` on your keyboard.  More examples for using `vi` can be found [here](https://coderwall.com/p/adv71w/basic-vim-commands-for-getting-started).
 
     Once the path to the model has been updated, restart the model service using `sudo systemctl restart model`.
 
@@ -71,9 +70,9 @@ You will be greeted with the "Service Overview" page.  Ensure that the model and
 
 {{ figure("/models/assets/deployment/raivin-service-overview.jpg", "Service Overview") }}
 
-## Live View (Segmentation App)
+## Live View (Camera Page)
 
-Now you will see a live inference of the model in the device.  Once all services are enabled, go back to the main page and then select the "Segmentation View" application as shown.
+Now you will see a live inference of the model in the device.  Once all services are enabled, go back to the main page and then select the "Camera" card as shown, then enable the segmentation overlay from the page controls.
 
 {{ figure("/models/assets/deployment/raivin-segmentation-app.png", "Segmentation App") }}
 

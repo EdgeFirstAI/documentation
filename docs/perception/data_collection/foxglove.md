@@ -2,6 +2,10 @@
 
 [Foxglove Studio][foxglove] is an open source application developed by FoxGlove Technologies, Inc.  It is part of the [Robot Operating System (ROS)][ros] ecosystem and supports playback for MCAP recordings.  You can [download Foxglove Studio][foxglove_dl] as well as our [EdgeFirst plug-in for Foxglove][github_edgefirst_dl] and customized [Raivin Foxglove layout](../assets/Raivin_Foxglove_Layout.json){: download="Raivin_Foxglove_Layout.json" }
 
+!!! note "Topic names in layouts"
+
+    Recordings made with Torizon for Maivin 2026.08 name their channels without the `rt/` prefix used by earlier releases, for example `/camera/h264` and `/model/output`.  Layouts saved from older recordings need their panel topics updated, and the detection overlays now read the unified `/model/output` topic through the EdgeFirst plug-in.
+
 ## Getting Started
 
 Let's discuss how to install our custom plugins once you've installed Foxglove Studio.

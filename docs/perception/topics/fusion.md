@@ -1,16 +1,18 @@
 # Fusion Topics
 
-The fusion topics are managed by the `fusion` service and handles running radar only and radar fused with camera machine learning models. The service supports RTM and RTLite (formerly TFLite) models. The service can classify radar points based on model output.
+The fusion topics are managed by the `fusion` service which combines the radar and LiDAR point clouds with the vision model output.  The service implements a late-fusion pipeline which projects each sensor point onto the camera image using the camera intrinsics from `camera/info` and the sensor transforms from `tf_static`, and annotates the point with the class and instance of the detection box or segmentation mask it falls in.  The classified points are clustered into 3D bounding boxes and an occupancy grid.  The service can also run a [RadarExp](../../models/fusion/index.md) radar fusion model on the radar cube and camera frames.
 
-- RTM models
-- RTLite models
-- Camera projection
+- Radar and LiDAR late fusion with the [model output](model.md#modeloutput)
+- 3D bounding boxes from the clustered points
+- Occupancy grid
+- RadarExp fusion model on the radar cube (TFLite)
+- ByteTrack tracking of the fused objects
 
-The model topics are published under the `/fusion` namespace and offers the following sub-topics: `/fusion/targets`, `/fusion/occupancy`, `/fusion/model_output`. Fusion parameters are configurable through the `fusion` service. See fusion service configuration documentation for details.
+The fusion topics are published under the `fusion` namespace and offer the following sub-topics: `fusion/radar`, `fusion/lidar`, `fusion/occupancy`, `fusion/boxes3d`, and `fusion/model_output`.  Fusion parameters are configurable through the `fusion` service.  See the [fusion service configuration](../../platforms/configuration/fusion.md) documentation for details.  Topic names are relative to the device [hostname namespace](index.md#hostname-namespaces).
 
-## /fusion/radar
+## fusion/radar
 
-The `/fusion/radar` topic publishes information about the received radar points using the [PointCloud2](../api/sensor_msgs.md#pointcloud2) schema. The point cloud will contain the same fields and data as the input point cloud (by default, `/radar/clusters`), and two additional fields: `fusion_class` and `vision_class`. The two additional fields are both Float32 datatype, but the values is always integer. The `fusion_class` is the class of the radar point as determined by the radar fusion model. The `vision_class` is the class of the radar point as determined by projection of the radar point onto the camera segmentation. If the input data is clustered, points with the same non-zero cluster ID will have the same fusion/vision class.
+The `fusion/radar` topic publishes the radar points annotated with the vision classes using the [PointCloud2](../api/sensor_msgs.md#pointcloud2) schema.  The point cloud contains the same fields and data as the input point cloud, by default `radar/targets` on the Raivin, and additional fields: `vision_class` and `instance_id`, plus `track_id` when the model output carries tracks.  The `vision_class` is the class of the radar point as determined by projection of the radar point onto the camera detection boxes or segmentation masks, and `instance_id` identifies which detected object the point belongs to.  If the input data is clustered, points with the same non-zero cluster ID will have the same class.  Points which do not project onto a detected object are marked unclassified.
 
 | Field Name   | Datatype | Units | Notes                                                               |
 | ------------ | -------- | ----- | ------------------------------------------------------------------- |
@@ -20,57 +22,52 @@ The `/fusion/radar` topic publishes information about the received radar points 
 | speed        | float32  | m/s   | Only measures speed towards or away from the radar                  |
 | power        | float32  |       |                                                                     |
 | rcs          | float32  |       | Radar cross section                                                 |
-| cluster_id   | uint16   |       | 0 means not clustered. Otherwise same cluster id means same cluster |
-| fusion_class | uint8    |       | Points in the same cluster will have the same class                 |
-| vision_class | uint8    |       | Points in the same cluster will have the same class                 |
+| cluster_id   | float32  |       | Present when the input is `radar/clusters`, 0 means not clustered   |
+| vision_class | uint16   |       | Class index from the vision model, points in the same instance share the class |
+| instance_id  | uint16   |       | Identifies the detected object the point belongs to                 |
+| track_id     | uint32   |       | Present when tracking is enabled on the model service               |
 
-The XYZ coordinate system follows the [standard ROS convention](https://www.ros.org/reps/rep-0103.html#coordinate-frame-conventions) of x forward, y left, z up.
+The XYZ coordinate system follows the [standard ROS convention](https://www.ros.org/reps/rep-0103.html#coordinate-frame-conventions) of x forward, y left, z up.  The point coordinates are preserved from the input sensor frame and the message keeps the sensor frame ID.
 
-## /fusion/lidar
+This topic is only published when the fusion service is configured with a radar input topic.
 
-The `/fusion/lidar` topic publishes information about the received lidar points using the [PointCloud2](../api/sensor_msgs.md#pointcloud2) schema. The point cloud will contain the same fields and data as the input point cloud (by default, `/lidar/clusters`), and two additional fields: `fusion_class` and `vision_class`. The `fusion_class` is the class of the radar point as determined by the radar fusion model. The `vision_class` is the class of the radar point as determined by projection of the radar point onto the camera segmentation. If the input data is clustered, points with the same non-zero cluster ID will have the same fusion/vision class.
+## fusion/lidar
 
-| Field Name   | Datatype | Units | Notes                                                               |
-|--------------|----------|-------|---------------------------------------------------------------------|
-| x            | float32  | m     | Represent XYZ location of the point                                 |
-| y            | float32  | m     | Represent XYZ location of the point                                 |
-| z            | float32  | m     | Represent XYZ location of the point                                 |
-| reflect      | uint8    |       | Only measures speed towards or away from the radar                  |
-| cluster_id   | uint16   |       | 0 means not clustered. Otherwise same cluster id means same cluster |
-| fusion_class | uint8    |       | Points in the same cluster will have the same class                 |
-| vision_class | uint8    |       | Points in the same cluster will have the same class                 |
-
-The XYZ coordinate system follows the [standard ROS convention](https://www.ros.org/reps/rep-0103.html#coordinate-frame-conventions) of x forward, y left, z up.
-
-## /fusion/occupancy
-
-The `/fusion/occupancy` topic publishes information about location of detected objects using the [PointCloud2](../api/sensor_msgs.md#pointcloud2) schema.
-
-The point cloud will have the fields `x`, `y`, `z`, `cluster_id`, `vision_class`, `fusion_class`. If the input data is clustered, there will only be one point for each cluster id, located at the centroid of the cluster. If the input data is not clustered, the points will be located at the center of cells on a radial grid, as defined in the fusion service configuration.
+The `fusion/lidar` topic publishes the LiDAR points annotated with the vision classes using the [PointCloud2](../api/sensor_msgs.md#pointcloud2) schema.  The point cloud contains the same fields and data as the input point cloud, `lidar/clusters` or `lidar/points`, and the same additional `vision_class`, `instance_id`, and optional `track_id` fields as `fusion/radar`.
 
 | Field Name   | Datatype | Units | Notes                                                               |
 |--------------|----------|-------|---------------------------------------------------------------------|
 | x            | float32  | m     | Represent XYZ location of the point                                 |
 | y            | float32  | m     | Represent XYZ location of the point                                 |
 | z            | float32  | m     | Represent XYZ location of the point                                 |
-| cluster_id   | uint16   |       | 0 means not clustered. Otherwise same cluster id means same cluster |
-| fusion_class | uint8    |       | Points in the same cluster will have the same class                 |
-| vision_class | uint8    |       | Points in the same cluster will have the same class                 |
+| reflect      | uint8    |       | Intensity of the reflected LiDAR beam                               |
+| cluster_id   | uint16   |       | Present when the input is `lidar/clusters`, 0 means not clustered   |
+| vision_class | uint16   |       | Class index from the vision model                                   |
+| instance_id  | uint16   |       | Identifies the detected object the point belongs to                 |
+| track_id     | uint32   |       | Present when tracking is enabled on the model service               |
 
 The XYZ coordinate system follows the [standard ROS convention](https://www.ros.org/reps/rep-0103.html#coordinate-frame-conventions) of x forward, y left, z up.
 
-## /fusion/boxes3d
+This topic is only published when the fusion service is configured with a LiDAR input topic.
 
-The `/model/boxes3d` topic publishes information about the detected objects using the custom [Detect](../api/edgefirst_msgs.md#detect) schema. Each detect message contains information about the model timing, and a list of objects detected. Each object detected has the normalized bounding box coordinates, label, score, distance, speed, and tracking information included. The distance and speed are 0 when the values cannot be determined. When tracking is enabled, the track ID is a UUID string, and the lifetime represents how many times this track was seen.
+## fusion/occupancy
 
-The XYZ coordinate system follows the [standard ROS convention](https://www.ros.org/reps/rep-0103.html#coordinate-frame-conventions) for `_optical` frames of z forward, x right, y down.
+The `fusion/occupancy` topic publishes information about the location of detected objects using the [PointCloud2](../api/sensor_msgs.md#pointcloud2) schema.  The grid source is selected with the `GRID_SRC` setting, radar by default.
 
-This topic is only published if the model service is configured with a model that outputs object detection and when those detections contain depth from a model that is using either radar or lidar.
+The point cloud will have the fields `x`, `y`, `z`, `cluster_id`, `vision_class`, and `instance_id`.  If the input data is clustered, there will only be one point for each cluster id, located at the centroid of the cluster.  If the input data is not clustered, the points will be located at the center of cells on a radial grid, as defined by the [range and angle bins](../../platforms/configuration/fusion.md#occupancy-settings) of the fusion service configuration.
 
-## /fusion/model_output
+The XYZ coordinate system follows the [standard ROS convention](https://www.ros.org/reps/rep-0103.html#coordinate-frame-conventions) of x forward, y left, z up.
 
-The `/fusion/model_output` topic publishes information about the output grid the fusion model with the custom [Mask](../api/edgefirst_msgs.md#mask) schema. This contains the fusion model output as a mask. This can be used to confirm the model is working as expected.
+## fusion/boxes3d
 
-## /fusion/model_output/tracked
+The `fusion/boxes3d` topic publishes 3D bounding boxes for the detected objects using the custom [Detect](../api/edgefirst_msgs.md#detect) schema.  The boxes are built from the clustered sensor points assigned to each detected object, the source sensor is selected with the `BBOX3D_SRC` setting, radar by default on the Raivin.  Each box carries the label and score of the vision detection along with the distance and radial speed measured by the sensor, and the tracking information when tracking is enabled.  The message frame ID is the source sensor frame.
 
-The `/fusion/model_output/tracked` topic publishes information about the output grid the fusion model with the custom [Mask](../api/edgefirst_msgs.md#mask) schema. This contains the fusion model output as a mask. This can be used to confirm the model is working as expected. In addition, this topic will also attempt to track objects as they traverse the output grid.
+This topic is only published when the fusion service is configured with a 3D box source and the corresponding sensor input topic.
+
+## fusion/model_output
+
+The `fusion/model_output` topic publishes the output grid of the RadarExp fusion model with the custom [Mask](../api/edgefirst_msgs.md#mask) schema.  This contains the fusion model bird's eye view occupancy prediction as a mask which can be used to confirm the model is working as expected.  The grid geometry is described by the range and angle bins of the fusion service configuration.
+
+When tracking is enabled on the fusion service, the `fusion/model_output/tracked` topic publishes the same grid after tracking the occupied cells over time with the same [Mask](../api/edgefirst_msgs.md#mask) schema.
+
+These topics are only published when the fusion service is configured with a [radar fusion model](../../platforms/configuration/fusion.md#radar-fusion-model), which also requires the radar cube to be enabled.

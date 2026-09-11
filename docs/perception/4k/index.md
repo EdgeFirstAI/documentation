@@ -4,6 +4,10 @@
 
 The EdgeFirst Perception Middleware ecosystem provides advanced 4K video processing capabilities through a sophisticated tiling architecture. This document explains how the 4K functionality works, including video capture, processing, encoding, and streaming; it also provides a comprehensive overview of the 4K camera system's architecture and implementation. The tiling approach enables efficient processing and streaming of high-resolution video while maintaining performance and flexibility.
 
+!!! warning "Torizon for Maivin 2026.08"
+
+    On the Maivin and Raivin the 4K pipeline requires the `4k` [camera mode](../../platforms/configuration/camera.md#camera-mode) which switches the OS08A20 sensor to its full resolution readout at 30 FPS.  The 1080p60 capture path is the verified path for the 2026.08.0 release, the 4K tile frame mapping and Foxglove stitching have [known issues](../../platforms/software/issues.md#4k-camera-mode-follow-ups-edgeai-1230-edgeai-1406) deferred to a patch release.
+
 This system impacts two specific services:  
 
 1. [The Camera Service](camera_4k.md)  
@@ -34,14 +38,14 @@ The system implements a 2x2 tiling approach where a 4K source (3840x2160) is div
 The Frame Rate is managed with the follow design principles.
 
 - **Target Camera FPS**: 30 FPS  
-- **Tile FPS**: Configurable (default: 15 FPS)  
-- **Frame Interval**: Calculated as `1000ms / tile_fps`  
-- **Frame Dropping**: Skips encoding if insufficient time has passed  
+- **Tile FPS**: Configurable (default: 15 FPS, 0 for no limit)  
+- **Frame Pacing**: Phase locked to the requested tile rate so the measured rate matches the configured rate  
+- **Frame Dropping**: Frames arriving while an encoder channel is full are dropped and counted, the drop counters are summarized in the service log every 10 seconds  
 
 ### Camera Capture
 
 - Captures 4K video frames from camera device
-- Supports YUYV format
+- Supports the ISP NV12 output format
 - Configurable mirror settings (none, horizontal, vertical, both)
 - Target FPS: 30 FPS
 
@@ -52,7 +56,7 @@ When `h264_tiles` is enabled:
 - Creates 4 separate encoding threads  
 - Each thread processes one tile position  
 - Uses bounded channels (capacity: 3) for frame distribution  
-- Implements frame dropping when channels are full to prevent blocking  
+- Drops and counts frames when channels are full to prevent blocking  
 
 ### Video Encoding
 
@@ -67,11 +71,13 @@ The four topics are then streamed using Zenoh with each tile has its own Zenoh p
 
 **Topic Structure**
 <div class="grid cards" markdown  style="text-align:center;">
-- `rt/camera/h264/tl`
-- `rt/camera/h264/tr`
-- `rt/camera/h264/bl`
-- `rt/camera/h264/br`
+- `camera/h264/tl`
+- `camera/h264/tr`
+- `camera/h264/bl`
+- `camera/h264/br`
 </div>
+
+The topics are relative to the device [hostname namespace](../topics/index.md#hostname-namespaces) and configurable with the `H264_TILES_TOPICS` setting.
 
 The system is designed for seamless integration with ROS and Foxglove Studio:
 
@@ -142,8 +148,8 @@ fn try_send(tx: &Sender<(Image, Timestamp)>, img: Image, ts: Timestamp, _name: &
     match tx.try_send((img, ts)) {
         Ok(_) => {},
         Err(_) => {
-            // Silently drop frames when channels are full
-            // Prevents log spam during high load
+            // Count the dropped frame, the counters are reported
+            // in a rate-limited log line every 10 seconds
         }
     }
 }

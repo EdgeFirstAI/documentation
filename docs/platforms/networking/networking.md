@@ -8,16 +8,22 @@ This chapter documents the most common networking configurations for the Maivin.
 
 ## Network Interfaces
 
-The Maivin includes a number of networking interfaces: Ethernet, Wi-Fi, and an optional LTE modem.  The interface names and ports are described in the table below.  The `ethernet1` and `can0` interfaces are internal-only interfaces used by the Raivin to communicate with the internal radar module.  The remaining interfaces are user configurable.
+The Maivin includes a number of networking interfaces: Ethernet, Wi-Fi, and an optional LTE modem.  The interface names and ports are described in the table below.  The `ethernet1` and `can0` interfaces are sensor-only interfaces used by the Raivin to communicate with the internal radar module or an external LiDAR sensor.  The remaining interfaces are user configurable.
 
-| Name             | ID        | Details                                         |
-| ---------------- | --------- | ----------------------------------------------- |
-| Gigabit Ethernet | ethernet0 | RJ-45 port on the rear of the Maivin            |
-| Wi-Fi Client      | mlan0     | Wi-Fi client interface                           |
-| Wi-Fi AP          | uap0      | Wi-Fi Access Point interface                     |
-| LTE Modem        | wwan0     | Optional LTE Modem using internal m.2 expansion |
-| Radar Ethernet   | ethernet1 | Internal 1000BaseT1 interface to the Radar      |
-| CAN Bus          | can0      | Internal CAN interface to the Radar             |
+| Name             | ID        | Details                                                 |
+| ---------------- | --------- | ------------------------------------------------------- |
+| Gigabit Ethernet | ethernet0 | RJ-45 port on the rear of the Maivin                    |
+| Wi-Fi Client     | mlan0     | Wi-Fi client interface                                  |
+| Wi-Fi AP         | uap0      | Wi-Fi Access Point interface                            |
+| LTE Modem        | wwan0     | Optional LTE Modem using internal m.2 expansion         |
+| Sensor Ethernet  | ethernet1 | Internal 1000Base-T1 interface to the radar or LiDAR    |
+| CAN Bus          | can0      | Internal CAN interface to the Radar                     |
+
+NetworkManager is the sole network manager on Torizon for Maivin, the `systemd-networkd` service is masked.  The CAN bus is the exception as NetworkManager does not support CAN interfaces, it is configured by the `can0.service` systemd unit.
+
+!!! note
+
+    On lab units with a CPU serial number starting with `0` the Ethernet interfaces may enumerate as `end0` and `end1`, refer to the [Known Issues](../software/issues.md).  Customer units are not affected.
 
 ## Ethernet Setup
 
@@ -29,12 +35,13 @@ The Maivin ships with the Ethernet interface setup as a DHCP client and should a
 !!! tip
     If connecting to the Maivin using a Windows PC, either with an SSH client or a web browser, adding the ".local" suffix is optional.  For Linux or Mac machines, the suffix must be used.
 
-Once connected to the Maivin, standard Linux tools are available for listing the network interfaces and their current status.  NetworkManager offers the `nmcli` command-line tool for querying the status of the interfaces it manages; for example, the `nmcli connection` command is shown below.  We see the connection names `network0` and `network1` which are associated to the network interfaces `ethernet0` and `ethernet1`, respectively.  The connection names can be user defined, by default the `networkX` convention is followed which maps `X` to the equivalent `ethernetX` interface.
+Once connected to the Maivin, standard Linux tools are available for listing the network interfaces and their current status.  NetworkManager offers the `nmcli` command-line tool for querying the status of the interfaces it manages; for example, the `nmcli connection` command is shown below.  We see the connection name `network0` which is associated to the external network interface `ethernet0`, and the `ethernet1-radar` sensor profile which is associated to the `ethernet1` interface.  The `network0` connection name can be user defined.
 
 ```bash
 $ nmcli -t connection
 network0:958cc5e3-1bbf-3d64-beeb-020d4414e254:802-3-ethernet:ethernet0
-network1:78c31df4-8c89-31a6-9aeb-d5603e230e4e:802-3-ethernet:ethernet1
+ethernet1-radar:78c31df4-8c89-31a6-9aeb-d5603e230e4e:802-3-ethernet:ethernet1
+ethernet1-lidar:2f0a1c44-63a2-4a58-9b0e-0f6e8d5f2c11:802-3-ethernet:
 ```
 
 !!! tip
@@ -85,7 +92,7 @@ The following steps are then followed to configure the static IP address.  Note 
 The device should now be configured with the new static IP address.
 
 !!! warning
-    The internal Ethernet1 interface uses the 192.168.11.0/24 network to communicate with the radar module.  Do not configure the static IP address to reside on this network.
+    The internal `ethernet1` interface uses the 192.168.11.0/24 network to communicate with the radar module and the 192.168.1.0/24 network for the LiDAR profile.  Do not configure the static IP address to reside on these networks.
 
 !!! warning
     The `ipv4.addresses` element must be configured before switching the IPv4 method to manual.
@@ -131,21 +138,20 @@ NetworkManager handles the Wi-Fi client configuration.  Follow these steps to co
 
 ## Wi-Fi AP Setup
 
-Maivin units with Wi-Fi can be configured as an AP allowing client devices to connect to the Maivin.  Instead of using NetworkManager, we use the [Host AP daemon (hostapd)][hostapd].
+Maivin units with Wi-Fi can be configured as an AP allowing client devices to connect to the Maivin.  Instead of using NetworkManager, we use the [Host AP daemon (hostapd)][hostapd].  The `uap0` interface is excluded from NetworkManager through the `/etc/NetworkManager/conf.d/unmanaged.conf` file.
 
 !!! warning
     FCC regulations require special certifications for collocated transmitters (a device with multiple RF transmitters).  Maivin and Raivin are not currently certified for collocated transmitters so users must not enable more than one of the Wi-Fi, Modem, or Radar without first receiving FCC certification.  Refer to regulatory boards in your jurisdiction for your relevant regulations.
 
 Wi-Fi AP mode is configured using the `hostapd` service in Linux.  We describe a common Wi-Fi AP configuration; for more advanced setup, please refer to the [hostapd documentation][hostapd].
 
-To enable the Maivin Access Point with default configurations simply enable the `hostapd` service.
+To enable the Maivin Access Point with default configurations enable the `hostapd` service along with the companion `hostapd-network` service.  The companion service is bound to `hostapd`, it assigns the AP address, runs a dedicated `dnsmasq` DHCP server for the clients, and sets up IP forwarding and NAT so AP clients can reach the Internet through the Maivin's uplink.
 
 ```bash
-sudo systemctl enable hostapd
-sudo systemctl start hostapd
+sudo systemctl enable --now hostapd hostapd-network
 ```
 
-The Maivin ships with a default hostapd configuration which can be modified for your needs.  The following shows the base configuration which ships with Maivin. The full list of configuration options is documented in the [hostapd.conf][hostapd.conf] reference file.
+The Maivin ships with a default hostapd configuration in `/etc/hostapd.conf` which can be modified for your needs.  The following shows the base configuration which ships with Maivin. The full list of configuration options is documented in the [hostapd.conf][hostapd.conf] reference file.
 
 ```ini
 ssid=Maivin
@@ -175,26 +181,18 @@ ht_capab=[LDPC][HT40+][GF][SHORT-GI-20][SHORT-GI-40][TX-STBC][DSSS_CCK-40]
 !!! warning
     Please make sure to change the default password before enabling Wi-Fi AP mode!
 
-The Wi-Fi AP network configuration file is found under `/etc/systemd/network/hostapd.network` and is managed by [systemd][sysd].  The following is the default configuration.  The full list of configuration options is documented in the [systemd network manual][networkd].
+The default access point network is summarized below.  The AP address and DHCP range are configured by the `hostapd-network` service, whose DHCP server configuration is found under `/etc/hostapd-dhcp.conf`.
 
-```ini
-[Match]
-Name=wlan0 uap0
-WLANInterfaceType=ap
-
-[Network]
-Address=10.10.10.1/24
-DHCPServer=true
-IPMasquerade=yes
-IPForward=ipv4
-
-[DHCPServer]
-PoolOffset=100
-PoolSize=100
-```
+| Setting | Value |
+|---------|-------|
+| SSID | `Maivin` |
+| Band | 5 GHz (802.11ac), channel 40 |
+| Security | WPA2-PSK |
+| AP IP | `10.10.10.1/24` |
+| DHCP range | `10.10.10.100` to `10.10.10.199` |
 
 !!! warning
-    If you change the network address in `hostapd.network`, make sure it matches the address in `hostapd.conf`!
+    If you change the access point address in the DHCP configuration, make sure it matches the `own_ip_addr` address in `hostapd.conf`!
 
 ## LTE Modem Setup
 
@@ -287,14 +285,28 @@ The modem installation can be performed by customers by following these instruct
 !!! warning
     Installing an LTE modem is an advanced configuration which requires opening up the Maivin.  Extreme caution should be followed during this procedure.  We suggest ordering Maivin or Raivin units with the LTE option preconfigured.
 
-## Radar Networking
+## Sensor Network
 
-The `ethernet1` and `can0` interfaces are reserved for internal communications with the radar module on Raivin configurations.  Refer to the [Radar page](../hardware/radar.md) for details.
+The `ethernet1` and `can0` interfaces are reserved for communications with the radar module on Raivin configurations and with a LiDAR sensor.  Two NetworkManager profiles are installed for `ethernet1`, only one is active at a time.
+
+| Profile | Address | Autoconnect | Sensor |
+|---------|---------|:-----------:|--------|
+| `ethernet1-radar` | `192.168.11.17/24` | yes | [Radar module](../hardware/radar.md) |
+| `ethernet1-lidar` | `192.168.1.102/24` | no | [LiDAR module](../hardware/lidar.md) |
+
+Both profiles use policy routing so the sensor subnet is routed through its own routing table and the sensor interface never becomes the default gateway.  Switch between the profiles with `nmcli` when provisioning a LiDAR.
+
+```bash
+sudo nmcli connection down ethernet1-radar
+sudo nmcli connection up ethernet1-lidar
+```
+
+The `ethernet1-master.service` configures the 1000Base-T1 automotive Ethernet PHY as the link master, which is required for the radar module.  The Maivin also runs a PTP grandmaster (`ptp4l`) on `ethernet1` distributing the GNSS disciplined system time to the connected sensors, the `phc2sys-master@ethernet1` service keeps the interface clock in step with the system clock.  Sensors such as the Ouster LiDAR can synchronize to it by selecting their PTP timestamp mode.  The system clock itself is disciplined by `chrony` from the GNSS receiver through `gpsd` and the receiver's pulse per second signal, `chronyc sources` shows the `GPS` reference selected at stratum 1 on a healthy unit.
+
+Refer to the [Radar](../hardware/radar.md) and [LiDAR](../hardware/lidar.md) hardware pages for details.
 
 [nm]: https://networkmanager.dev
 [mm]: https://modemmanager.org
 [cidr]: https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing
 [hostapd]: https://wireless.docs.kernel.org/en/latest/en/users/documentation/hostapd.html
 [hostapd.conf]: https://w1.fi/cgit/hostap/plain/hostapd/hostapd.conf
-[sysd]: https://systemd.io/
-[networkd]: https://www.freedesktop.org/software/systemd/man/latest/systemd.network.html

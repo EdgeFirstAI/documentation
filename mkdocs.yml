@@ -86,6 +86,10 @@ plugins:
         'perception/studio.md': 'client/cli/index.md'
         'perception/api/studio.md': 'client/api/python.md'
         'datasets/coco/import.md': 'client/import.md'
+        # --- Web UI settings page removed with Web UI 4.x (Torizon for Maivin 2026.08) ---
+        # The webui service no longer has a configuration file; page-level display
+        # options are now controls on the Camera and Radar visualization pages.
+        'platforms/configuration/webui.md': 'platforms/configuration/index.md'
   - social:
       enabled: !ENV [CI, false]
       cards_layout: default

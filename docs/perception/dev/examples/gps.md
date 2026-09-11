@@ -4,25 +4,29 @@ Topic: [/gps](../../topics/navsat.md#gps)
 Message: [NavSatFix](../../api/sensor_msgs.md#navsatfix)
 Sample Code: [Python](https://github.com/EdgeFirstAI/samples/blob/main/python/gps.py) / [Rust](https://github.com/EdgeFirstAI/samples/blob/main/rust/gps.rs)
 
+!!! tip "Topic Names"
+
+    The topics below are subscribed with their bare names, which requires the Zenoh session to be opened with the namespace set to the device hostname as shown in the [Developer Guide](../index.md#subscriber).  Subscribe with a `**/` prefix, for example `**/camera/h264`, to match the topics from a session without a namespace or from a remote device.
+
 This example will go through how to connect to the GPS topic published on your EdgeFirst Platform and how to display the information through the Rerun visualizer.
 
 ## Setting up subscriber
 
-After setting up the Zenoh session, we will create a subscriber to the `rt/gps` topic
+After setting up the Zenoh session, we will create a subscriber to the `gps` topic
 
 === "Python"
 
     ``` python
-    # Create a subscriber for "rt/gps"
+    # Create a subscriber for "gps"
     loop = asyncio.get_running_loop()
     drain = MessageDrain(loop)
-    session.declare_subscriber('rt/gps', drain.callback)
+    session.declare_subscriber('gps', drain.callback)
     ```
 === "Rust"
 
     ``` rust
     let subscriber = session
-        .declare_subscriber("rt/gps")
+        .declare_subscriber("gps")
         .await
         .unwrap();
     ```

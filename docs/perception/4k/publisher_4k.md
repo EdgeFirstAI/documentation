@@ -15,7 +15,7 @@ The system automatically detects when all 4 required tile topics are present in 
 - `/camera/h264/bl` (Bottom Left)
 - `/camera/h264/br` (Bottom Right)
 
-Each topic must contain H.264 encoded video data.
+Each topic must contain H.264 encoded video data.  The publisher detects recordings carrying a hostname prefix or the legacy `rt/` prefix on the tile topics automatically.
 
 ### 2. Tile Processing Pipeline
 
@@ -51,7 +51,11 @@ MCAP File → H.264 Decode → Tile Stitching → 4K JPEG → ZIP Export
 
 ## Recording the 4K Topics
 
-The [Recording Service](../data_collection/recording.md), by default, [cannot be configured through the Web UI to capture the 4K video tiling topics](../../platforms/configuration/mcap_recording.md#caveats), but it can be [configured manually](../../platforms/configuration/mcap_recording.md#adding-topics-manually-to-the-recording-service). Please follow the instructions here to configure the recorder service before starting to record the 4K streams.
+The [Recording Service](../data_collection/recording.md) records every published topic by default, including the four tile topics once [tiling is enabled](camera_4k.md).  If the recorder was configured with an explicit topic list, the tile topics must be [added manually](../../platforms/configuration/mcap_recording.md#adding-topics-manually-to-the-recording-service) before recording the 4K streams.
+
+!!! warning
+
+    Stitching 4K tiled recordings of about 60 seconds or longer can exhaust the device memory, refer to the [Known Issues](../../platforms/software/issues.md#publisher-4k-tile-stitching-runs-out-of-memory-edgeai-1470).  Record short clips when using the tile topics and stop the `camera` and `model` services before running the publisher on the device.
 
 ## Usage
 
@@ -60,7 +64,7 @@ The Publisher binary is included on the platform and you must [SSH](../../platfo
 ### Command Line
 
 ```bash
-sudo publisher zip --out test your_file.mcap
+publisher zip --out test your_file.mcap
 ```
 
 The system automatically detects tile topics and switches to stitching mode - no additional flags required.

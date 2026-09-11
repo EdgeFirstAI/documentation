@@ -4,11 +4,15 @@ Topic: [/imu](../../topics/imu.md#imu)
 Message: [Imu](../../api/sensor_msgs.md#imu)
 Sample Code: [Python](https://github.com/EdgeFirstAI/samples/blob/main/python/imu.py) / [Rust](https://github.com/EdgeFirstAI/samples/blob/main/rust/imu.rs)
 
+!!! tip "Topic Names"
+
+    The topics below are subscribed with their bare names, which requires the Zenoh session to be opened with the namespace set to the device hostname as shown in the [Developer Guide](../index.md#subscriber).  Subscribe with a `**/` prefix, for example `**/camera/h264`, to match the topics from a session without a namespace or from a remote device.
+
 This example will go through how to connect to the IMU topic published on your EdgeFirst Platform and how to display the information through the Rerun visualizer.
 
 ## Setting up subscriber
 
-After setting up the Zenoh session, we will create a subscriber to the `rt/imu` topic
+After setting up the Zenoh session, we will create a subscriber to the `imu` topic
 
 === "Python"
 
@@ -17,16 +21,16 @@ After setting up the Zenoh session, we will create a subscriber to the `rt/imu` 
     rr.log("/imu", rr.Boxes3D(half_sizes=[[0.5, 0.5, 0.5]], fill_mode="solid"))
     rr.log("/imu", rr.Transform3D(axis_length=2))
 
-    # Create a subscriber for "rt/imu"
+    # Create a subscriber for "imu"
     loop = asyncio.get_running_loop()
     drain = MessageDrain(loop)
-    session.declare_subscriber('rt/imu', drain.callback)
+    session.declare_subscriber('imu', drain.callback)
     ```
 === "Rust"
 
     ``` rust
     let subscriber = session
-        .declare_subscriber("rt/imu")
+        .declare_subscriber("imu")
         .await
         .unwrap();
     ```

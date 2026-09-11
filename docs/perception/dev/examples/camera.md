@@ -2,6 +2,10 @@
 
 These examples demonstrate how to connect to various camera topics published on your EdgeFirst Platform and how to display the information through the command line.
 
+!!! tip "Topic Names"
+
+    The topics below are subscribed with their bare names, which requires the Zenoh session to be opened with the namespace set to the device hostname as shown in the [Developer Guide](../index.md#subscriber).  Subscribe with a `**/` prefix, for example `**/camera/h264`, to match the topics from a session without a namespace or from a remote device.
+
 !!! warning
 
     If the Rerun live feed appears to lag, your computer may lack the processing necessary for that stream size, either reduce the [stream size](../../../platforms/configuration/camera.md#stream-size) or use the --save argument to save it as a .rrd file which you can replay afterwards
@@ -19,18 +23,18 @@ After setting up the Zenoh session, we will create a subscriber to the `camera/i
 === "Python"
 
     ``` python
-    # Create a subscriber for "rt/camera/info"
+    # Create a subscriber for "camera/info"
     loop = asyncio.get_running_loop()
     drain = MessageDrain(loop)
-    session.declare_subscriber('rt/camera/info', drain.callback)
+    session.declare_subscriber('camera/info', drain.callback)
     ```
 
 === "Rust"
 
     ``` rust
-    // Create a subscriber for "rt/camera/info"
+    // Create a subscriber for "camera/info"
     let subscriber = session
-        .declare_subscriber("rt/camera/info")
+        .declare_subscriber("camera/info")
         .await
         .unwrap();
     ```
@@ -93,33 +97,37 @@ When displaying the results through Rerun you will see a log of the camera width
     let _ = rr.log("CameraInfo", &rerun::TextLog::new(text));
     ```
 
-## DMA Buffer
+## Camera Frame
 
-Topic: [/camera/dma](../../topics/camera.md#cameradma)  
-Message: [DmaBuffer](../../api/edgefirst_msgs.md#dmabuffer)  
+Topic: [/camera/frame](../../topics/camera.md#cameraframe)  
+Message: [CameraFrame](../../api/edgefirst_msgs.md#cameraframe)  
 Sample Code: [Python](https://github.com/EdgeFirstAI/samples/blob/main/python/camera/dma.py) / [Rust](https://github.com/EdgeFirstAI/samples/blob/main/rust/camera/dma.rs)  
 !!! warning  
-    The DMA Buffer example is only functional when run directly on the EdgeFirst Platform as it is references information that is only accessible on the EdgeFirst Platform.
+    The Camera Frame example is only functional when run directly on the EdgeFirst Platform as it references DMA buffers that are only accessible on the EdgeFirst Platform.  The example must run with the same permissions as the camera service, use `sudo`.
+
+!!! note "Migrating from DmaBuffer"
+
+    The `camera/frame` topic and its `CameraFrame` message replace the `camera/dma` topic and `DmaBuffer` message of earlier releases.  The published sample code predates this change, the snippets below show the equivalent processing with the `CameraFrame` message from EdgeFirst Schemas 4.0.
 
 ### Setting up subscriber
 
-After setting up the Zenoh session, we will create a subscriber to the `camera/dma` topic
+After setting up the Zenoh session, we will create a subscriber to the `camera/frame` topic
 
 === "Python"
 
     ``` python
-    # Create a subscriber for "rt/camera/dma"
+    # Create a subscriber for "camera/frame"
     loop = asyncio.get_running_loop()
     drain = MessageDrain(loop)
-    session.declare_subscriber('rt/camera/dma', drain.callback)
+    session.declare_subscriber('camera/frame', drain.callback)
     ```
 
 === "Rust"
 
     ``` rust
-    // Create a subscriber for "rt/camera/dma"
+    // Create a subscriber for "camera/frame"
     let subscriber = session
-        .declare_subscriber("rt/camera/dma")
+        .declare_subscriber("camera/frame")
         .await
         .unwrap();
     ```
@@ -131,10 +139,10 @@ We can now await a message from that subscriber. After receiving the message, we
 === "Python"
 
     ``` python
-    async def dma_handler(drain):
+    async def frame_handler(drain):
         while True:
             msg = await drain.get_latest()
-            thread = threading.Thread(target=dma_worker, args=[msg])
+            thread = threading.Thread(target=frame_worker, args=[msg])
             thread.start()
             
             while thread.is_alive():
@@ -145,35 +153,42 @@ We can now await a message from that subscriber. After receiving the message, we
 === "Rust"
 
     ``` rust
-    use edgefirst_schemas::edgefirst_msgs::DmaBuf;
+    use edgefirst_schemas::edgefirst_msgs::CameraFrame;
+
     // Receive a message
     let msg = subscriber.recv().unwrap();
-    let dma_buf: DmaBuf = cdr::deserialize(&msg.payload().to_bytes()).unwrap();
+    let frame = CameraFrame::from_cdr(&msg.payload().to_bytes()).unwrap();
     ```
 
 ### Process the Data
 
-The DmaBuffer message contains the process ID of the service that created the DMA buffer and the file descriptor of the DMA buffer, both of which will be necessary to access the image.
+The `CameraFrame` message carries a stamped `Tensor`.  The tensor contains the process ID of the camera service, the image `format` as a FOURCC such as `NV12`, the `shape` as `[height, width]`, and one `TensorPlane` per plane with the file descriptor `handle`, `offset`, `stride`, and `size` of the DMA buffer.  The process ID and the plane handle are necessary to access the image, the file descriptor is duplicated into our process with `pidfd_getfd` and mapped with `mmap`.
 
 === "Python"
 
     ``` python
-    def dma_worker(msg):
-        dma_buf = DmaBuffer.deserialize(msg.payload.to_bytes())
-        pidfd = pidfd_open(dma_buf.pid)
+    from edgefirst.schemas.edgefirst_msgs import CameraFrame
+
+    def frame_worker(msg):
+        frame = CameraFrame.from_cdr(msg.payload.to_bytes())
+        tensor = frame.tensor
+        plane = tensor.planes[0]
+        height, width = tensor.shape[0], tensor.shape[1]
+
+        pidfd = pidfd_open(tensor.pid)
         if pidfd < 0:
             return
 
-        fd = pidfd_getfd(pidfd, dma_buf.fd, GETFD_FLAGS)
+        fd = pidfd_getfd(pidfd, plane.handle, GETFD_FLAGS)
         if fd < 0:
             return
 
-        # Now fd can be used as a file descriptor
-        mm = mmap.mmap(fd, dma_buf.length)
-        rr.log("/camera", rr.Image(bytes=mm[:], 
-                                    width=dma_buf.width, 
-                                    height=dma_buf.height, 
-                                    pixel_format=rr.PixelFormat.YUY2))
+        # Now fd can be used as a file descriptor, the ISP produces NV12 frames
+        mm = mmap.mmap(fd, plane.size, offset=plane.offset)
+        rr.log("/camera", rr.Image(bytes=mm[:plane.used],
+                                    width=width,
+                                    height=height,
+                                    pixel_format=rr.PixelFormat.NV12))
         mm.close()
         os.close(fd)
         os.close(pidfd)
@@ -182,30 +197,33 @@ The DmaBuffer message contains the process ID of the service that created the DM
 === "Rust"
 
     ``` rust
-    let pidfd: PidFd = match PidFd::from_pid(dma_buf.pid as i32)
-    let fd = match get_file_from_pidfd(pidfd.as_raw_fd(), dma_buf.fd, GetFdFlags::empty())
+    let tensor = frame.tensor();
+    let plane = tensor.planes().next().unwrap();
+    let (height, width) = (tensor.shape()[0] as u32, tensor.shape()[1] as u32);
 
-    // YUYV has 2 bytes per pixel.
-    let image_size = (dma_buf.width * dma_buf.height * 2) as usize;
+    let pidfd: PidFd = match PidFd::from_pid(tensor.pid() as i32)
+    let fd = match get_file_from_pidfd(pidfd.as_raw_fd(), plane.handle() as i32, GetFdFlags::empty())
+
+    let image_size = plane.size() as usize;
     let mmap = unsafe {
         from_raw_parts_mut(
             mmap(
                 null_mut(),
                 image_size,
-                PROT_READ | PROT_WRITE,
+                PROT_READ,
                 MAP_SHARED,
                 fd.as_raw_fd(),
-                0,
+                plane.offset() as i64,
             ) as *mut u8,
             image_size,
         )
     };
     let rr_image = rerun::Image::from_pixel_format(
-        [dma_buf.width, dma_buf.height],
-        rerun::PixelFormat::YUY2,
-        mmap.to_vec(),
+        [width, height],
+        rerun::PixelFormat::NV12,
+        mmap[..plane.used() as usize].to_vec(),
     );
-    let _ = rec.log("camera/dma", &rr_image);
+    let _ = rec.log("camera/frame", &rr_image);
 
     unsafe {
         munmap(mmap.as_mut_ptr() as *mut c_void, image_size);
@@ -231,19 +249,19 @@ After setting up the Zenoh session, we will create a subscriber to the `camera/h
 === "Python"
 
     ``` python
-    # Create a subscriber for "rt/camera/h264"
+    # Create a subscriber for "camera/h264"
     loop = asyncio.get_running_loop()
     drain = MessageDrain(loop)
-    session.declare_subscriber('rt/camera/h264', drain.callback)
+    session.declare_subscriber('camera/h264', drain.callback)
     ```
 
 === "Rust"
 
     ``` rust
-    // Create a subscriber for "rt/camera/h264"
+    // Create a subscriber for "camera/h264"
     use openh264::decoder::Decoder;
     let subscriber = session
-        .declare_subscriber("rt/camera/h264")
+        .declare_subscriber("camera/h264")
         .await
         .unwrap();
     let mut decoder = Decoder::new()?;
@@ -339,18 +357,18 @@ After setting up the Zenoh session, we will create a subscriber to the `camera/j
 === "Python"
 
     ``` python
-    # Create a subscriber for "rt/camera/jpeg"
+    # Create a subscriber for "camera/jpeg"
     loop = asyncio.get_running_loop()
     drain = MessageDrain(loop)
-    session.declare_subscriber('rt/camera/jpeg', drain.callback)
+    session.declare_subscriber('camera/jpeg', drain.callback)
     ```
 
 === "Rust"
 
     ``` rust
-    // Create a subscriber for "rt/camera/jpeg"
+    // Create a subscriber for "camera/jpeg"
     let subscriber = session
-        .declare_subscriber("rt/camera/jpeg")
+        .declare_subscriber("camera/jpeg")
         .await
         .unwrap();
     ```

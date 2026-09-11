@@ -27,7 +27,7 @@ Each target takes up 36 bytes of data which is noted in the "point_step" field. 
 
 {{ figure("../assets/adv_foxglove-fusion_top_level_fields.png", "Top Level Fields") }}
 
-The Fusion and Vision Class are produced by Fusion service on the Raivin.  They will report 0 for any cluster not identified as a person and 1 for any cluster as belonging to a human.  The Raivin Web UI can use [either class or both classes together](../../platforms/configuration/webui.md#draw-pcd) to determine if any radar target is a person or not.
+The Fusion and Vision Class are produced by Fusion service on the Raivin.  They will report 0 for any cluster not identified as a person and 1 for any cluster as belonging to a human.  The Raivin Web UI [Radar page](../../platforms/quickstart/raivin/webui.md#the-radar-page) can color the radar points by either class to show which radar targets belong to a person.
 
 ## 3D Panes for Fusion
 

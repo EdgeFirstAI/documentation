@@ -1,6 +1,6 @@
 This guide will showcase two methods of deploying the model.
 
-1. [Live View (Segmentation App)](#live-view-segmentation-app): Displays the live camera feed using the default model provided.
+1. [Live View (Camera Page)](#live-view-camera-page): Displays the live camera feed with the model output overlaid.
 2. [MCAP Recording](../../perception/data_collection/recording.md#record-mcap): Allows control of the recording options and provides download file options to replay the recording.
 
 {% include-markdown "discrete/models/download_fusion_model.md" %}
@@ -37,7 +37,7 @@ Next you will need to specify the path to the model in the device.  You can eith
 
     {{ figure("/models/assets/deployment/raivin-fusion-settings.jpg", "Model Settings") }}
 
-    Configure the path to the model in your device as specified under "The Radar model".  Once configured, click "Save Configuration" to save your changes.
+    Configure the path to the model in your device as specified under "The Radar model".  The fusion model also requires the [radar cube](../../platforms/configuration/radar.md#enable-cube) to be enabled on the Radar Settings page.  Once configured, click "Save Configuration" to save your changes.
 
     {{ figure("/models/assets/deployment/configure-model-path-raivin.jpg", "Model Path") }}
 
@@ -45,11 +45,11 @@ Next you will need to specify the path to the model in the device.  You can eith
 
     To update the model path using the command line in the device, edit the following file using `sudo vi /etc/default/fusion`.
     
-    Edit the following line `MODEL = "path/to/mymodel.tflite"` to point to the specific path to your model.  To edit, press `i` to enter into "Insert Mode".  You should now be able to edit the lines.  To exit "Insert Mode", press the ESC key on your keyboard.  Next save and exit the file by typing `:wq` on your keyboard.  More examples for using `vi` can be found [here](https://coderwall.com/p/adv71w/basic-vim-commands-for-getting-started).
+    Edit the `MODEL=` line to point to the specific path to your model, for example `MODEL="/home/torizon/fusion.tflite"`.  To edit, press `i` to enter into "Insert Mode".  You should now be able to edit the lines.  To exit "Insert Mode", press the ESC key on your keyboard.  Next save and exit the file by typing `:wq` on your keyboard.  More examples for using `vi` can be found [here](https://coderwall.com/p/adv71w/basic-vim-commands-for-getting-started).
 
-    ```vi
-    # The radar fusion model
-    MODEL = "path/to/mymodel.tflite"
+    ```ini
+    # Path to the radar-camera fusion model (TFLite).
+    MODEL="/home/torizon/fusion.tflite"
     ```
 
     Once the path to the model has been updated, restart the model service using `sudo systemctl restart fusion`.
@@ -64,13 +64,13 @@ You will be greeted with the "Service Overview" page.  Ensure that all services 
 
 {{ figure("/models/assets/deployment/raivin-service-overview.jpg", "Service Overview") }}
 
-## Live View (Segmentation App)
+## Live View (Camera Page)
 
-Now you will see a live inference of the model in the device.  Once all services are enabled, go back to the main page and then select the "Segmentation View" application as shown.
+Now you will see a live inference of the model in the device.  Once all services are enabled, go back to the main page and then select the "Camera" card as shown, then enable the segmentation overlay from the page controls.
 
 {{ figure("/models/assets/deployment/raivin-segmentation-app.png", "Segmentation App") }}
 
-This will run inference on the model specified to generate segmentation masks of identified objects on the camera feed and highlights the radar point clouds on the occupancy grid marking the positions of the objects in world coordinates.  Examples are shown below.
+This will run inference on the model specified to generate segmentation masks of identified objects on the camera feed.  The "Radar" card opens the Radar page where the fusion output colors the radar points by the classes of the objects they belong to in world coordinates.  Examples are shown below.
 
 {{ figure("/models/assets/deployment/occupancy-sample-1.jpg", "Sample 1") }}
 

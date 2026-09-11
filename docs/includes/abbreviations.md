@@ -57,3 +57,12 @@
 *[NCHW]: Tensor layout — Batch, Channels, Height, Width
 *[MPU]: Microprocessor Unit
 *[MCU]: Microcontroller Unit
+*[PTP]: Precision Time Protocol
+*[GNSS]: Global Navigation Satellite System
+*[ISP]: Image Signal Processor
+*[VPU]: Video Processing Unit
+*[CDR]: Common Data Representation
+*[DHCP]: Dynamic Host Configuration Protocol
+*[NAT]: Network Address Translation
+*[RCS]: Radar Cross-Section
+*[DBSCAN]: Density-Based Spatial Clustering of Applications with Noise

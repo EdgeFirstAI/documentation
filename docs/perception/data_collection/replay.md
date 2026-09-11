@@ -4,6 +4,10 @@
 
 The Replay Service allows users to play back previously recorded MCAP files, enabling detailed analysis of MCAP data. This service provides flexible playback options and integrates with live fusion and model data for comprehensive testing and validation.
 
+!!! warning "Torizon for Maivin 2026.08"
+
+    The Replay service included in Torizon for Maivin 2026.08.0 predates the hostname namespace and EdgeFirst Schemas 4.0 migration of the other services and was not verified for this release.  Replayed camera frames are not consumed by the current Model service and radar, LiDAR, and fusion replay were not tested.  Refer to the [Known Issues](../../platforms/software/issues.md#replay-service-not-verified-on-2026080) and prefer [Foxglove Studio](foxglove.md) for reviewing recordings.
+
 ### How It Works
 
 The Replay Service offers:
@@ -66,6 +70,17 @@ The Replay Service supports a hybrid mode where you can:
 
 - Use recorded data for some systems while maintaining live data for others
 - Mix and match recorded and live data sources based on your testing needs
+
+## Configuration
+
+The Replay service is started by the Web UI with the selected recording, the remaining settings are stored in `/etc/default/replay` following the same conventions as the other [service configuration files](../../platforms/configuration/index.md#configuration-files).
+
+| Key | Default | Description |
+|-----|---------|-------------|
+| `MCAP` | | Path to the MCAP recording to replay, set by the Web UI |
+| `REPLAY_SPEED` | `1.0` | Playback speed multiplier, `0.5` is half speed and `2.0` double speed |
+| `TOPICS` | | Space-separated list of topics to publish from the recording, all topics when empty |
+| `IGNORE_TOPICS` | | Space-separated list of topics to skip, the Web UI uses this to keep the live model or fusion output |
 
 ## Status Monitoring
 

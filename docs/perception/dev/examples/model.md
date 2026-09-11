@@ -2,6 +2,10 @@
 
 These examples demonstrate how to connect to various model topics published on your EdgeFirst Platform and how to display the information through the command line.
 
+!!! tip "Topic Names"
+
+    The topics below are subscribed with their bare names, which requires the Zenoh session to be opened with the namespace set to the device hostname as shown in the [Developer Guide](../index.md#subscriber).  Subscribe with a `**/` prefix, for example `**/camera/h264`, to match the topics from a session without a namespace or from a remote device.
+
 ## Model Info
 
 Topic: [/model/info](../../topics/model.md#modelinfo)  
@@ -15,18 +19,18 @@ After setting up the Zenoh session, we will create a subscriber to the `model/in
 === "Python"
 
     ``` python
-    # Create a subscriber for "rt/model/info"
+    # Create a subscriber for "model/info"
     loop = asyncio.get_running_loop()
     drain = MessageDrain(loop)
-    session.declare_subscriber('rt/model/info', drain.callback)
+    session.declare_subscriber('model/info', drain.callback)
     ```
 
 === "Rust"
 
     ``` rust
-    // Create a subscriber for "rt/model/info"
+    // Create a subscriber for "model/info"
     let subscriber = session
-        .declare_subscriber("rt/model/info")
+        .declare_subscriber("model/info")
         .await
         .unwrap();
     ```
@@ -90,6 +94,10 @@ When displaying the results through Rerun you will see the model info.
 
 ## Boxes2D
 
+!!! warning "Legacy Topics"
+
+    The current model service publishes the boxes and masks together in the [Model](../../api/edgefirst_msgs.md#model) message on the [`model/output`](../../topics/model.md#modeloutput) topic.  The `model/boxes2d` and `model/mask` topics used by the following examples are disabled by default and must be re-enabled with the `DETECT_TOPIC` and `MASK_TOPIC` settings described in the [Model Settings](../../../platforms/configuration/model.md#topics).  The `model/mask_compressed` topic is no longer published.  The `boxes` and `masks` fields of the `Model` message use the same `Box` and `Mask` types shown below, so the processing code applies to `model/output` as well.
+
 Topic: [/model/boxes2d](../../topics/model.md#modelboxes2d)  
 Message: [ModelInfo](../../api/edgefirst_msgs.md#detect)  
 Sample Code: [Python](https://github.com/EdgeFirstAI/samples/blob/main/python/model/boxes2d.py) / [Rust](https://github.com/EdgeFirstAI/samples/blob/main/rust/model/boxes2d.rs)
@@ -101,18 +109,18 @@ After setting up the Zenoh session, we will create a subscriber to the `model/bo
 === "Python"
 
     ``` python
-    # Create a subscriber for "rt/model/boxes2d"
+    # Create a subscriber for "model/boxes2d"
     loop = asyncio.get_running_loop()
     drain = MessageDrain(loop)
-    session.declare_subscriber('rt/model/boxes2d', drain.callback)
+    session.declare_subscriber('model/boxes2d', drain.callback)
     ```
 
 === "Rust"
 
     ``` rust
-    // Create a subscriber for "rt/model/boxes2d"
+    // Create a subscriber for "model/boxes2d"
     let subscriber = session
-        .declare_subscriber("rt/model/boxes2d")
+        .declare_subscriber("model/boxes2d")
         .await
         .unwrap();
     ```
@@ -275,18 +283,18 @@ After setting up the Zenoh session, we will create a subscriber to the `model/ma
 === "Python"
 
     ``` python
-    # Create a subscriber for "rt/model/mask"
+    # Create a subscriber for "model/mask"
     loop = asyncio.get_running_loop()
     drain = MessageDrain(loop)
-    session.declare_subscriber('rt/model/mask', drain.callback)
+    session.declare_subscriber('model/mask', drain.callback)
     ```
 
 === "Rust"
 
     ``` rust
-    // Create a subscriber for "rt/model/mask"
+    // Create a subscriber for "model/mask"
     let subscriber = session
-        .declare_subscriber("rt/model/mask")
+        .declare_subscriber("model/mask")
         .await
         .unwrap();
     ```
@@ -387,17 +395,17 @@ After setting up the Zenoh session, we will create a subscriber to the `model/ma
 === "Python"
 
     ``` python
-    # Create a subscriber for "rt/model/mask_compressed"
+    # Create a subscriber for "model/mask_compressed"
     loop = asyncio.get_running_loop()
     drain = MessageDrain(loop)
-    session.declare_subscriber('rt/model/mask_compressed', drain.callback)
+    session.declare_subscriber('model/mask_compressed', drain.callback)
     ```
 
 === "Rust"
 
     ``` rust
-    // Create a subscriber for "rt/model/compressed_mask"
-    let subscriber = session.declare_subscriber("rt/model/mask_compressed")
+    // Create a subscriber for "model/compressed_mask"
+    let subscriber = session.declare_subscriber("model/mask_compressed")
     .await
     .unwrap();
     ```
@@ -508,12 +516,12 @@ After setting up the Zenoh session, we will create a subscriber to the three top
     boxes_drain = MessageDrain(loop)
     mask_drain = MessageDrain(loop)
     frame_size_storage = FrameSize()
-    session.declare_subscriber('rt/camera/h264', h264_drain.callback)
-    session.declare_subscriber('rt/model/boxes2d', boxes_drain.callback)
+    session.declare_subscriber('camera/h264', h264_drain.callback)
+    session.declare_subscriber('model/boxes2d', boxes_drain.callback)
     if args.remote:
-        session.declare_subscriber('rt/model/mask_compressed', mask_drain.callback)
+        session.declare_subscriber('model/mask_compressed', mask_drain.callback)
     else:
-        session.declare_subscriber('rt/model/mask', mask_drain.callback)
+        session.declare_subscriber('model/mask', mask_drain.callback)
     ```
 
 ### Subscriber Callbacks

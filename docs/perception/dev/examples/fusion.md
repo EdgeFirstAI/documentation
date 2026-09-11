@@ -2,6 +2,10 @@
 
 These examples demonstrate how to connect to various fusion topics published on your EdgeFirst Platform and how to display the information through the command line.
 
+!!! tip "Topic Names"
+
+    The topics below are subscribed with their bare names, which requires the Zenoh session to be opened with the namespace set to the device hostname as shown in the [Developer Guide](../index.md#subscriber).  Subscribe with a `**/` prefix, for example `**/camera/h264`, to match the topics from a session without a namespace or from a remote device.
+
 ## Fusion Occupancy
 
 Topic: [/fusion/occupancy](../../topics/fusion.md#fusionoccupancy)  
@@ -15,18 +19,18 @@ After setting up the Zenoh session, we will create a subscriber to the `fusion/o
 === "Python"
 
     ``` python
-    # Create a subscriber for "rt/fusion/occupancy"
+    # Create a subscriber for "fusion/occupancy"
     loop = asyncio.get_running_loop()
     drain = MessageDrain(loop)
-    session.declare_subscriber('rt/fusion/occupancy', drain.callback)
+    session.declare_subscriber('fusion/occupancy', drain.callback)
     ```
 
 === "Rust"
 
     ``` rust
-    // Create a subscriber for "rt/fusion/occupancy"
+    // Create a subscriber for "fusion/occupancy"
     let subscriber = session
-        .declare_subscriber("rt/fusion/occupancy")
+        .declare_subscriber("fusion/occupancy")
         .await
         .unwrap();
     ```
@@ -124,19 +128,19 @@ After setting up the Zenoh session, we will create a subscriber to the `fusion/m
 === "Python"
 
     ``` python
-    # Create a subscriber for "rt/fusion/model_output"
+    # Create a subscriber for "fusion/model_output"
     loop = asyncio.get_running_loop()
     drain = MessageDrain(loop)
 
-    session.declare_subscriber('rt/fusion/model_output', drain.callback)
+    session.declare_subscriber('fusion/model_output', drain.callback)
     ```
 
 === "Rust"
 
     ``` rust
-    // Create a subscriber for "rt/fusion/model_output"
+    // Create a subscriber for "fusion/model_output"
     let subscriber = session
-        .declare_subscriber("rt/fusion/model_output")
+        .declare_subscriber("fusion/model_output")
         .await
         .unwrap();
     ```
@@ -220,18 +224,18 @@ After setting up the Zenoh session, we will create a subscriber to the `fusion/m
 === "Python"
 
     ``` python
-    # Create a subscriber for "rt/fusion/mask_output/tracked"
+    # Create a subscriber for "fusion/mask_output/tracked"
     loop = asyncio.get_running_loop()
     drain = MessageDrain(loop)
-    session.declare_subscriber('rt/fusion/model_output/tracked', drain.callback)
+    session.declare_subscriber('fusion/model_output/tracked', drain.callback)
     ```
 
 === "Rust"
 
     ``` rust
-    // Create a subscriber for "rt/fusion/mask_output/tracked"
+    // Create a subscriber for "fusion/mask_output/tracked"
     let subscriber = session
-        .declare_subscriber("rt/fusion/mask_output/tracked")
+        .declare_subscriber("fusion/mask_output/tracked")
         .await
         .unwrap();
     ```
@@ -315,18 +319,18 @@ After setting up the Zenoh session, we will create a subscriber to the `fusion/r
 === "Python"
 
     ``` python
-    # Create a subscriber for "rt/fusion/radar"
+    # Create a subscriber for "fusion/radar"
     loop = asyncio.get_running_loop()
     drain = MessageDrain(loop)
-    session.declare_subscriber('rt/fusion/radar', drain.callback)
+    session.declare_subscriber('fusion/radar', drain.callback)
     ```
 
 === "Rust"
 
     ``` rust
-    // Create a subscriber for "rt/fusion/radar"
+    // Create a subscriber for "fusion/radar"
     let subscriber = session
-        .declare_subscriber("rt/fusion/radar")
+        .declare_subscriber("fusion/radar")
         .await
         .unwrap();
     ```
@@ -454,9 +458,9 @@ Message: [PointCloud2](../../api/sensor_msgs.md#pointcloud2)
 Sample Code: [Python](https://github.com/EdgeFirstAI/samples/blob/main/python/fusion/lidar.py) / [Rust](https://github.com/EdgeFirstAI/samples/blob/main/rust/fusion/lidar.rs)
 
 This demo requires lidar output to be enabled on `fusion` to work.
-By default the rt/fusion/lidar output is not enabled for `fusion`.
-To enable it, configure the env LIDAR_OUTPUT_TOPIC="rt/fusion/lidar"
-or set command line argument --lidar-output-topic=rt/fusion/lidar
+By default the `fusion/lidar` output is not enabled for `fusion` as the LiDAR input topic is empty.
+To enable it, set `LIDAR_PCD_TOPIC="lidar/clusters"` in `/etc/default/fusion`
+or set the command line argument `--lidar-pcd-topic lidar/clusters` to enable the LiDAR fusion pipeline, refer to the [Fusion Settings](../../../platforms/configuration/fusion.md#sensor-input-topics)
 
 ### Setting up subscriber
 
@@ -465,18 +469,18 @@ After setting up the Zenoh session, we will create a subscriber to the `fusion/l
 === "Python"
 
     ``` python
-    # Create a subscriber for "rt/fusion/lidar"
+    # Create a subscriber for "fusion/lidar"
     loop = asyncio.get_running_loop()
     drain = MessageDrain(loop)
-    session.declare_subscriber('rt/fusion/lidar', drain.callback)
+    session.declare_subscriber('fusion/lidar', drain.callback)
     ```
 
 === "Rust"
 
     ``` rust
-    // Create a subscriber for "rt/fusion/lidar"
+    // Create a subscriber for "fusion/lidar"
     let subscriber = session
-        .declare_subscriber("rt/fusion/lidar")
+        .declare_subscriber("fusion/lidar")
         .await
         .unwrap();
     ```
@@ -610,18 +614,18 @@ After setting up the Zenoh session, we will create a subscriber to the `fusion/b
 === "Python"
 
     ``` python
-    # Create a subscriber for "rt/fusion/boxes3d"
+    # Create a subscriber for "fusion/boxes3d"
     loop = asyncio.get_running_loop()
     drain = MessageDrain(loop)
-    session.declare_subscriber('rt/fusion/boxes3d', drain.callback)
+    session.declare_subscriber('fusion/boxes3d', drain.callback)
     ```
 
 === "Rust"
 
     ``` rust
-    // Create a subscriber for "rt/fusion/boxes3d"
+    // Create a subscriber for "fusion/boxes3d"
     let subscriber = session
-        .declare_subscriber("rt/fusion/boxes3d")
+        .declare_subscriber("fusion/boxes3d")
         .await
         .unwrap();
     ```

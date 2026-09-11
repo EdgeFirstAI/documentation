@@ -25,9 +25,9 @@ After all that, you should see the [Maivin Main Page](webui.md).
 
 {{ figure("../../assets/setup/ui-maivinMain.png", "Maivin Main Page") }}
 
-From here, we recommend that you check out the Segmentation View page by clicking the "Segmentation View" card.
+From here, we recommend that you check out the Camera page by clicking the "Camera" card, then enable the segmentation overlay from the page controls to see the detections of the default model drawn over the live video.
 
-{{ figure("../../assets/setup/ui-maivinSegmentation.jpg", "Maivin Segmentation Page") }}
+{{ figure("../../assets/setup/quickStart-segmentation.png", "Maivin Camera Page") }}
 
 {% include-markdown "discrete/platforms/edgefirst_performance_scaling.md" %}
 
@@ -39,3 +39,4 @@ Now that you have completed these initial steps, we recommend that you read the 
 - [SSH Walkthrough](../../networking/ssh.md), to learn how to SSH into your Maivin and basic command-line operations  
 - [Maivin Recording Walkthrough](../../../perception/data_collection/recording.md), to learn how to record datasets and download them to your PC  
 - [Model Upload Walkthrough](../../software/model_uploads.md), to learn how to upload vision models to your Maivin  
+- [Software Updates](../../software/updates.md), to keep your Maivin on the latest release  

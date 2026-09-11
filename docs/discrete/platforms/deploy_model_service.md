@@ -4,7 +4,7 @@ There are two ways to deploy a new, 2D model to the Raivin's Model Service: the 
 
 ## From the Raivin Web UI
 
-From the [Model Service Configuration page](../../platforms/configuration/model.md), enter the absolute filename `/home/torizon/modelpack.tflite` in the "MODEL" text-box.  Also, confirm the "Draw Boxes" check box is enabled, as the current trainer only supports 2D Box detection.  Hit the "Save Configuration" box and continue on.
+From the [Model Service Configuration page](../../platforms/configuration/model.md), enter the absolute filename `/home/torizon/modelpack.tflite` in the "MODEL" text-box.  Hit the "Save Configuration" button, the page reports when the model service has restarted with the new configuration.
 
 {{ figure("../../models/assets/deployment/model_location_webui.png", "Model Configuration Page") }}
 
@@ -22,19 +22,19 @@ ssh torizon@verdin-imx8mp-15141030
 and edit the model parameters in `/etc/default/model`
 
 ```shell
-vi /etc/default/model
+sudo vi /etc/default/model
 ```
 
 then restart the model service using the `systemctl` command
 
 ```shell
-sudo systemctl stop model
-sudo systemctl start model
+sudo systemctl restart model
 ```
 
 !!! note
-    Remember to use **sudo** to start and stop model services
 
-Now that the model is running, open the Raivin's Web UI, go to the [Segmentation Page](../../platforms/quickstart/raivin/webui.md#the-segmentation-page), and check the camera to see the model's detections.  
+    Remember to use **sudo** to edit the configuration and to restart the model service.
 
-{{ figure("../../models/assets/deployment/deployment-results.png", "Deployment Results") }}
+Now that the model is running, open the Raivin's Web UI, go to the [Camera Page](../../platforms/quickstart/raivin/webui.md#the-camera-page), enable the segmentation overlay, and check the camera to see the model's detections.  
+
+{{ figure("../../models/assets/deployment/segmentation-sample-1.png", "Deployment Results") }}

@@ -4,4 +4,4 @@ If you have a [Raivin Platform](../platforms/quickstart/raivin/index.md) then yo
 
 A sample model inference will show like the following on the Raivin Platform.
 
-{{ figure("../models/assets/deployment/occupancy-sample-1.jpg", "Model Inference on the Raivin") }}
+{{ figure("../models/assets/deployment/occupancy-sample-1.png", "Model Inference on the Raivin") }}

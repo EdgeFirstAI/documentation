@@ -13,7 +13,7 @@ The following is a sample 3D annotation (right) in EdgeFirst Studio represented 
 
 The Raivin platform can visualize the model inference using the [Web UI](../platforms/quickstart/raivin/webui.md) service which provide the 2D inference (segmentation masks and bounding boxes) and the 3D inference using a polar grid highlighting the clusters of Radar points indicating the position of the objects in world coordinates.
 
-{{ figure("../models/assets/deployment/occupancy-sample-1.jpg", "Model Inference on the Raivin") }}
+{{ figure("../models/assets/deployment/occupancy-sample-1.png", "Model Inference on the Raivin") }}
 
 In this section, you will explore the 3D MLOps in EdgeFirst Studio.  Start by learning more about the [3D viewers](viewers.md) in EdgeFirst Studio.
 

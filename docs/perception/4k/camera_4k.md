@@ -2,18 +2,22 @@
 
 The Camera service on the Maivin/Raivin supports 4K video in multiple fashions, including command-line configuration, adding the parameters to the camera configuration file, as well as through the Web UI.
 
+!!! note "Camera Mode"
+
+    On the Maivin and Raivin the sensor readout is selected by the `CAMERA_MODE` setting of `/etc/default/camera` and applied by the ISP before the camera service starts.  Set `CAMERA_MODE="4k"` for 4K capture, the default `1080p60` mode does not provide a 4K readout and the ISP does not upscale.  Refer to the [Camera Settings](../../platforms/configuration/camera.md#camera-mode).
+
 ## Command Line Configuration
 
-The camera service can be run at the platform's command-line interface. The first step would be to log on to the platform via [SSH](../../platforms/networking/ssh.md). Then stop the current camera service with the `sudo systemctl stop camera`. The following command-line options for the camera service are described below.
+The camera service can be run at the platform's command-line interface. The first step would be to log on to the platform via [SSH](../../platforms/networking/ssh.md). Then stop the current camera service with `sudo systemctl stop camera` and restart the ISP with `sudo systemctl restart imx8-isp` so the camera service is its first client, refer to the [Known Issues](../../platforms/software/issues.md#manual-camera-launch-fails-every-other-start-edgeai-1439). The following command-line options for the camera service are described below.
 
 ```bash
 # Enable 4K tile streaming
 --h264-tiles
 
-# Configure tile topics (default: rt/camera/h264/tl tr bl br)
---h264-tiles-topics "rt/camera/h264/tl rt/camera/h264/tr rt/camera/h264/bl rt/camera/h264/br"
+# Configure tile topics (default: camera/h264/tl tr bl br)
+--h264-tiles-topics "camera/h264/tl camera/h264/tr camera/h264/bl camera/h264/br"
 
-# Set tile frame rate (default: 15 FPS)
+# Set tile frame rate (default: 15 FPS, 0 for no limit)
 --h264-tiles-fps 15
 
 # Set H.264 bitrate
@@ -26,17 +30,16 @@ The camera service can be run at the platform's command-line interface. The firs
 sudo camera --h264-tiles --h264-tiles-fps 30 --camera-size 3840 2160
 ```
 
-You can also export these as environment variables prior to running the executable.
+You can also export these as environment variables prior to running the executable.  Every command-line option has an environment variable of the same name in upper-case.
 
 ```bash
 export H264_TILES=true
 export H264_TILES_FPS=15
+export H264_TILES_TOPICS="camera/h264/tl camera/h264/tr camera/h264/bl camera/h264/br"
 export TRACY=true
 export H264_BITRATE=auto
 export CAMERA_SIZE="3840 2160"
 ```
-
-The H264 tile topics environment variable is not available at this time.
 
 ### Usage Examples
 
@@ -55,7 +58,7 @@ sudo camera \
 ```bash
 sudo camera \
   --h264-tiles \
-  --h264-tiles-topics rt/camera/tl rt/camera/tr rt/camera/bl rt/camera/br \
+  --h264-tiles-topics "camera/tl camera/tr camera/bl camera/br" \
   --camera-size 3840 2160
 ```
 
@@ -72,19 +75,21 @@ sudo camera \
 
 ## SystemD Configuration file
 
-You can add the above parameters to the camera configuration file located at `/etc/default/camera`. The following lines can be added to the configuration file:
+You can set the above parameters in the camera configuration file located at `/etc/default/camera`, every key is present in the shipped file.  Set the following keys and restart the service with `sudo systemctl restart camera`:
 
 ```ini
-H264_TILES = "true"
-H264_TILES_FPS = "15"
-TRACY = "true"
+CAMERA_MODE="4k"
+CAMERA_SIZE="3840 2160"
+H264_TILES="true"
+H264_TILES_FPS="15"
+H264_TILES_TOPICS="camera/h264/tl camera/h264/tr camera/h264/bl camera/h264/br"
 ```
 
-The parameters for `CAMERA_SIZE` and `H264_BITRATE` already exist in `/etc/default/camera`. The H264 tile topics parameter is not available at this time.
+The `H264_BITRATE` and `TRACY` parameters are also available in `/etc/default/camera`.  Refer to the [Camera Settings](../../platforms/configuration/camera.md#h264-4k-tiling) page for the complete list.
 
 ## Web UI Configuration
 
-There is no configuration item in the Web UI to specifically enable 4K tiling; however, you can set the [Camera Size](../../platforms/configuration/camera.md#camera-size) to `3840 2160` to implicitly enter 4K tiling. As well, you can set the [H264 Bitrate](../../platforms/configuration/camera.md#h264-bitrate) here as well. Lastly, it is recommended that you [disable H264 streaming](../../platforms/configuration/camera.md#h264-streaming) to disable the 1K video stream `/camera/h264`.
+There is no configuration item in the Web UI to specifically enable 4K tiling or select the camera mode.  You can set the [Camera Size](../../platforms/configuration/camera.md#camera-size) to `3840 2160` and the [H264 Bitrate](../../platforms/configuration/camera.md#h264-bitrate) from the Camera Settings page, the `CAMERA_MODE` and `H264_TILES` keys must be set in the configuration file.  Once tiling is enabled the four tile topics replace the single `camera/h264` stream.
 
 ## Troubleshooting
 
@@ -101,7 +106,9 @@ There is no configuration item in the Web UI to specifically enable 4K tiling; h
 - Check bitrate settings  
 - Verify G2D hardware support  
 
-### Channel Full Errors
+### Dropped Frames
+
+The service log reports `dropped N of M frames (encoder channels full)` every 10 seconds along with the count per tile when the encoders cannot keep up.
 
 - Reduce tile FPS if encoding is slow  
 - Increase system performance  

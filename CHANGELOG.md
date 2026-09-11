@@ -5,9 +5,32 @@ file. The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.
 
 ## [Unreleased]
 
-Changes are grouped into dated release-candidate (`-rc`) snapshots by the date the
-corresponding pull request was opened. None of these snapshots are part of a tagged
-release yet; they are listed newest first.
+### Added
+
+- **Torizon for Maivin 2026.08.0 release notes** (`platforms/software/release_notes.md`): new section above 2025.01 covering Torizon OS 7.7.0, the meta-edgefirst middleware, hostname topic namespaces, the EdgeFirst Schemas 4.0 wire format, the Model Zoo default model, camera modes, Web UI 4.4, the resolved EDGEAI issues, the per-package version table, and upgrade notes.
+- **Known Issues for 2026.08.0** (`platforms/software/issues.md`): the customer-visible errata from the release page with EDGEAI keys and workarounds, plus the "No update available" deployment-origin repair.
+- **OSTree channels and upgrade flow** (`platforms/software/updates.md`): release, testing, and develop channels, `ostree admin upgrade` with no arguments, switching channels with `switch`, repairing the origin with `set-origin`, rollback, version string and `/etc/os-release` fields, and static deltas.
+- **Hostname Namespaces and Topic Overview** (`perception/topics/index.md`): the Zenoh session namespace convention replacing the `rt/` prefix and a table of every stock topic with its schema and service.
+- **Upload from the Web UI** (`perception/data_collection/publishing.md`): Studio login from the top ribbon and the Basic and Extended (AGTG) upload modes of the MCAP dialog; on-device export with `publisher zip`.
+- **Camera Frame developer example** (`perception/dev/examples/camera.md`): `CameraFrame` and `Tensor` based zero-copy frame access replacing the `DmaBuffer` example; `CameraFrame`, `Tensor`, `TensorPlane`, and `TensorStamped` added to the EdgeFirst Messages API reference (`edgefirst-schemas` 4.0.0 in `requirements.txt` resolves them).
+- Sensor Network section (`platforms/networking/networking.md`): `ethernet1-radar` and `ethernet1-lidar` NetworkManager profiles, policy routing, the automotive Ethernet master service, and the PTP grandmaster and GNSS disciplined chrony time stack.
+
+### Changed
+
+- **Configuration section rewritten for the 2026.08 services** (`platforms/configuration/*.md`): service inventory with short unit names under `maivin.target`, `EnvironmentFile` syntax and empty-value semantics, `/usr/etc/default` defaults, and every key of `/etc/default/{camera,model,recorder,radarpub,lidarpub,fusion}` from the shipped `.default` files including `CAMERA_MODE`, 4K tiling, camera calibration and transforms, `DELEGATE`, `TRACK_SCORE`, `CLASSES`, the unified `model/output` topic and legacy topic opt-in, recorder all-topics default and `CUBE_FPS`, radar transforms and Raivin ultra-short defaults, fusion late-fusion inputs, outputs, RadarExp model, tracking and bins, and LiDAR sensor type, clustering, ground filter, Ouster and Robosense settings.
+- **Topic pages updated to the 2026.08 services** (`perception/topics/*.md`): `camera/frame` replaces `camera/dma`, `model/output` with the `Model` message replaces `boxes2d`/`mask`/`mask_compressed`, fusion `fusion/radar`, `fusion/lidar`, `fusion/boxes3d`, `fusion/occupancy`, and `fusion/model_output` with the `vision_class`/`instance_id`/`track_id` fields, radar and LiDAR `tf_static` transforms and Robosense support, IMU and GPS service details, and all `rt/` prefixes removed.
+- **Perception overview** (`perception/index.md`, `perception/launcher.md`): service and library inventory, H.264 (not H.265) encoding, namespace communication model, `--delegate` for the model service, H.264 on by default.
+- **Maivin and Raivin quick starts** (`platforms/quickstart/{maivin,raivin}/*.md`, `discrete/platforms/*.md`): Torizon OS 7 architecture, the Camera, Radar, LiDAR, IMU, and GPS landing cards, Camera page overlays, the Radar page Source, Colour, and Elevation controls, the Studio and theme buttons on the top ribbon, and the Camera page replacing the Segmentation View in the setup and deployment walkthroughs (`discrete/models/deploy_on_*.md`, `platforms/software/model_uploads.md`).
+- **Hardware pages** (`platforms/hardware/{radar,lidar}.md`): CAN via `can0.service`, NetworkManager sensor profiles instead of `systemd-networkd` files, Robosense E1R support, and PTP time synchronization.
+- **Wi-Fi AP** (`platforms/networking/networking.md`): `hostapd` with the `hostapd-network` companion service and `dnsmasq` DHCP replacing the `systemd-networkd` `hostapd.network` configuration.
+- **Recording and Replay** (`perception/data_collection/{recording,replay}.md`): all-topics discovery, embedded schemas, publisher timestamps, hostname-stripped channel names, default storage location, Upload action, single-file delete, replay configuration keys, and the 2026.08 replay verification warning.
+- **4K pages** (`perception/4k/*.md`): `CAMERA_MODE="4k"` requirement, bare tile topic names, `H264_TILES_TOPICS` now settable from the environment, dropped frame telemetry, `/api/rt/` WebSocket endpoints, publisher prefix detection and stitching memory caveat.
+- **Developer guide and examples** (`perception/dev/index.md`, `perception/dev/examples/*.md`): `**` topic discovery showing hostname prefixed keys, opening the session with the hostname namespace, bare topic names in every snippet, legacy topic warnings on the model and SSD examples.
+- `edgefirst-client -V` example output updated to the shipped 2.13.2 client; `webui.service` renamed `websrv.service` in the SSH walkthrough.
+
+### Removed
+
+- **Web UI Settings page** (`platforms/configuration/webui.md` and its four screenshots): the `webui` service no longer has a configuration file, the display options moved to the Camera and Radar page controls.  A redirect to `platforms/configuration/index.md` is registered in `mkdocs.yml`.
 
 ### [2026-08-25-rc]
 

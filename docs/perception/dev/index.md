@@ -2,24 +2,34 @@
 
 This is the EdgeFirst Developer's Guide.  In this guide we will walk you through the API behind the EdgeFirst Middleware, before reading this guide you should be familiar with the general architecture of the middleware so you can understand how the services fit together and the topics that bind them.
 
-The examples can all be run on a device running the EdgeFirst Middleware or from a remote platform, such as a PC running Windows, Mac, or Linux.  If running these examples remotely make sure you have correctly enabled the `zenohd` router on the target device running the EdgeFirst Middleware. When running the samples on the device, the topics will be discovered automatically.
-
-!!! tip Enable Zenohd Router
-
-    The `zenohd` router allows remote connections to the device so you can follow these tutorials from a PC.
-    The router is enabled using the `sudo systemctl enable --now zenohd` command on the target device.
-
-!!! warning Security Warning
-
-    The default configuration for the `zenohd` service does not enable any authentication or encryption.
-    Make sure you follow the [Zenoh TLS Guide](https://zenoh.io/docs/manual/tls/) if you're running the 
-    `zenohd` on an untrusted network.
-
-The EdgeFirst Middleware examples are provided in Python and Rust (C/C++ Coming Soon!) and you can toggle the documentation for your preferred language throughout the tutorial.  
+The EdgeFirst Middleware examples are provided in Python and Rust (C/C++ Coming Soon!) and you can toggle the documentation for your preferred language throughout the tutorial.
 
 !!! note Running Remotely
 
     Some of the examples, such as those using the zero-copy camera frames, cannot be run remotely; these will be called out with a note.
+
+## Connecting to Zenoh
+
+The EdgeFirst Middleware services communicate over [Zenoh](https://zenoh.io), and every example in this guide can be run either directly on a device running the EdgeFirst Middleware or remotely from a PC running Windows, Mac, or Linux.
+
+### Local Connections
+
+When an example runs on the same device as the EdgeFirst Middleware, Zenoh's peer-to-peer multicast scouting automatically discovers the other services running on that device.  There's nothing to configure, just run the example and its topics are found automatically, this is why the samples "just work" when run on-target.
+
+### Remote Connections
+
+To connect from a separate PC you need a `zenohd` router running on the target device to bridge the connection, since multicast scouting does not typically cross networks.  Every sample accepts a `--remote` argument (or `--connect` for the [Listing Topics](#listing-topics) example) where you provide the target device's address, for example `--remote 10.1.1.10:7447` to connect over TCP using the default Zenoh port.
+
+!!! tip "Enable the Zenohd Router"
+
+    The `zenohd` router allows remote connections to the device so you can follow these tutorials from a PC.
+    Enable it on the target device with `sudo systemctl enable --now zenohd`.
+
+!!! warning "Security Warning"
+
+    The default configuration for the `zenohd` service does not enable any authentication or encryption.
+    Make sure you follow the [Zenoh TLS Guide](https://zenoh.io/docs/manual/tls/) if you're running the
+    `zenohd` on an untrusted network.
 
 !!! tip "Hostname Namespaces"
 

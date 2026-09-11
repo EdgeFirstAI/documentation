@@ -37,4 +37,4 @@ sudo systemctl restart model
 
 Now that the model is running, open the Raivin's Web UI, go to the [Camera Page](../../platforms/quickstart/raivin/webui.md#the-camera-page), enable the segmentation overlay, and check the camera to see the model's detections.  
 
-{{ figure("../../models/assets/deployment/deployment-results.png", "Deployment Results") }}
+{{ figure("../../models/assets/deployment/segmentation-sample-1.png", "Deployment Results") }}

@@ -78,7 +78,7 @@ Now you will see a live inference of the model in the device.  Once all services
 
 This will run inference on the model specified to generate segmentation masks and/or bounding boxes of identified objects on the camera feed.  In this case, the model is identifying coffee cups in the video feed.  An example is shown below.
 
-{{ figure("/models/assets/deployment/segmentation-sample-1.jpg", "Segmentation Sample 1") }}
+{{ figure("/models/assets/deployment/segmentation-sample-1.png", "Segmentation Sample 1") }}
 
 Now that the model has been updated, you can [make new recordings](../../perception/data_collection/recording.md#record-mcap) using the model's inference and then [visualize the recording using Foxglove Studio](../../perception/data_collection/foxglove.md).
 

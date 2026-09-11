@@ -72,9 +72,7 @@ Now you will see a live inference of the model in the device.  Once all services
 
 This will run inference on the model specified to generate segmentation masks of identified objects on the camera feed.  The "Radar" card opens the Radar page where the fusion output colors the radar points by the classes of the objects they belong to in world coordinates.  Examples are shown below.
 
-{{ figure("/models/assets/deployment/occupancy-sample-1.jpg", "Sample 1") }}
-
-{{ figure("/models/assets/deployment/occupancy-sample-2.jpg", "Sample 2") }}
+{{ figure("/models/assets/deployment/occupancy-sample-1.png", "Sample 1") }}
 
 Now that the model has been updated, you can [make new recordings](../../perception/data_collection/recording.md#record-mcap) using the model's inference and then [visualize the recording using Foxglove Studio](../../perception/data_collection/foxglove.md).
 

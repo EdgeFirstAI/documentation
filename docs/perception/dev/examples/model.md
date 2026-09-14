@@ -382,122 +382,11 @@ When displaying the results through Rerun you will see the segmentation without 
 
 {{ figure("assets/model_mask.png", "Model Mask") }}
 
-## Model Mask Compressed
-
-Topic: [/model/mask](../../topics/model.md#modelmask_compressed)  
-Message: [Mask](../../api/edgefirst_msgs.md#mask)  
-Sample Code: [Python](https://github.com/EdgeFirstAI/samples/blob/main/python/model/compressed_mask.py) / [Rust](https://github.com/EdgeFirstAI/samples/blob/main/rust/model/compressed_mask.rs)
-
-### Setting up subscriber
-
-After setting up the Zenoh session, we will create a subscriber to the `model/mask_compressed` topic
-
-=== "Python"
-
-    ``` python
-    # Create a subscriber for "model/mask_compressed"
-    loop = asyncio.get_running_loop()
-    drain = MessageDrain(loop)
-    session.declare_subscriber('model/mask_compressed', drain.callback)
-    ```
-
-=== "Rust"
-
-    ``` rust
-    // Create a subscriber for "model/compressed_mask"
-    let subscriber = session.declare_subscriber("model/mask_compressed")
-    .await
-    .unwrap();
-    ```
-
-### Receive a message
-
-We can now await a message from that subscriber from an asynchronous function. After receiving the message, we will pass that message along to our processing function in a new thread to avoid missing messages. In addition we will log the annotations so Rerun knows what colors to use for each class.
-
-=== "Python"
-
-    ``` python
-    async def mask_handler(drain):
-        rr.log("/", rr.AnnotationContext([(0, "background", (0,0,0)), (1, "person", (0,255,0))]))
-        while True:
-            msg = await drain.get_latest()
-            thread = threading.Thread(target=mask_worker, args=[msg])
-            thread.start()
-            
-            while thread.is_alive():
-                await asyncio.sleep(0.001)
-            thread.join()
-    ```
-
-=== "Rust"
-
-    ``` rust
-    use edgefirst_schemas::edgefirst_msgs::Mask;
-
-    // Receive a message
-    let msg = subscriber.recv().unwrap();
-    let mask: Mask = cdr::deserialize(&msg.payload().to_bytes())?;
-    ```
-
-### Process the Data
-
-The Mask message contains segmentation mask data. The worker will decompress the data and then perform argmax on the result to get the resultant class for each pixel to be logged.
-
-=== "Python"
-
-    ``` python
-    def mask_worker(msg):
-        mask = Mask.deserialize(msg.payload.to_bytes())
-        decoded_array = zstd.decompress(bytes(mask.mask))
-        np_arr = np.frombuffer(decoded_array, np.uint8)
-        np_arr = np.reshape(np_arr, [mask.height, mask.width, -1])
-        np_arr = np.argmax(np_arr, axis=2)
-        
-        rr.log("mask", rr.SegmentationImage(np_arr))
-    ```
-
-=== "Rust"
-
-    ``` rust
-    let decompressed_bytes = decode_all(Cursor::new(&mask.mask))?;
-        
-    let h = mask.height as usize;
-    let w = mask.width as usize;
-    let total_len = mask.mask.len() as u32;
-    let c = (total_len / (h as u32 * w as u32)) as usize;
-
-    let arr3 = Array::from_shape_vec([h, w, c], decompressed_bytes.clone())?;
-    
-    // Compute argmax along the last axis (class channel)
-    let array2: Array2<u8> = arr3
-        .map_axis(ndarray::Axis(2), |class_scores| {
-            class_scores
-                .iter()
-                .enumerate()
-                .max_by_key(|(_, val)| *val)
-                .map(|(idx, _)| idx as u8)
-                .unwrap_or(0)
-        });
-
-    // Log annotation context
-    rr.log(
-        "/",
-        &AnnotationContext::new([
-            (0, "background", rerun::Rgba32::from_rgb(0, 0, 0)),
-            (1, "person", rerun::Rgba32::from_rgb(0, 255, 0))])
-    )?;
-
-    // Log segmentation mask
-    let _ = rr.log("mask", &SegmentationImage::try_from(array2)?)?;
-    ``` 
-
-### Results
-
-When displaying the results through Rerun you will see the segmentation without any camera, to see the combined example please see the[Combined Example](#combined-example).
-
-{{ figure("assets/model_mask.png", "Model Mask") }}
-
 ## Combined Example
+
+!!! warning "Legacy Topics"
+
+    This example subscribes to the legacy `model/boxes2d` and `model/mask` topics, which are disabled by default on Torizon for Maivin 2026.08.  Set `DETECT_TOPIC="model/boxes2d"` and `MASK_TOPIC="model/mask"` in `/etc/default/model` as described in the [Model Settings](../../../platforms/configuration/model.md#topics) before running it, or adapt the callbacks to the [`model/output`](../../topics/model.md#modeloutput) topic which carries the same `Box` and `Mask` types.
 
 This example will demonstrate how to combine the camera feed with the model messages to create a composite Rerun view. The main difference when using multiple messages in a script, is that we will change from waiting on the message to be received to having a callback function for when a message is received. Using the initial method, the script would hang while waiting for a message topic to be published, so if the messages are being published at different rates, the slowest message rate will limit the others.
 
@@ -518,10 +407,7 @@ After setting up the Zenoh session, we will create a subscriber to the three top
     frame_size_storage = FrameSize()
     session.declare_subscriber('camera/h264', h264_drain.callback)
     session.declare_subscriber('model/boxes2d', boxes_drain.callback)
-    if args.remote:
-        session.declare_subscriber('model/mask_compressed', mask_drain.callback)
-    else:
-        session.declare_subscriber('model/mask', mask_drain.callback)
+    session.declare_subscriber('model/mask', mask_drain.callback)
     ```
 
 ### Subscriber Callbacks
@@ -533,7 +419,7 @@ We will now go through the handler functions that are in use for this example. T
     ``` python
     await asyncio.gather(h264_handler(h264_drain, frame_size_storage), 
                          boxes2d_handler(boxes_drain, frame_size_storage),
-                         mask_handler(mask_drain, frame_size_storage, args.remote))
+                         mask_handler(mask_drain, frame_size_storage))
     ```
 
 #### H264 Handler
@@ -612,32 +498,28 @@ The Boxes2D callback will wait for a Detect message from the MessageDrain and wi
 
 #### Mask Handler
 
-The Mask callback will wait for a Mask message from the MessageDrain and will pass that message to the worker, where the message will be processed and logged to Rerun. The mask_handler requires the remote field to be passed so it knows whether to decompress the mask data or not. Additionally, this handler will wait until the camera has started and logged a frame size so it knows what the height and width will be to resize the mask.
+The Mask callback will wait for a Mask message from the MessageDrain and will pass that message to the worker, where the message will be processed and logged to Rerun. Additionally, this handler will wait until the camera has started and logged a frame size so it knows what the height and width will be to resize the mask.
 
 === "Python"
 
     ``` python
-    async def mask_handler(drain, frame_storage, remote):
+    async def mask_handler(drain, frame_storage):
         _ = await frame_storage.get()
         rr.log("/", rr.AnnotationContext([(0, "background", (0, 0, 0, 0)), (1, "person", (0, 255, 0))]))
         while True:
             msg = await drain.get_latest()
             frame_size = await frame_storage.get()
-            thread = threading.Thread(target=mask_worker, args=[msg, frame_size, remote])
+            thread = threading.Thread(target=mask_worker, args=[msg, frame_size])
             thread.start()
             
             while thread.is_alive():
                 await asyncio.sleep(0.001)
             thread.join()
 
-    def mask_worker(msg, frame_size, remote):
+    def mask_worker(msg, frame_size):
         mask = Mask.deserialize(msg.payload.to_bytes())
-        if remote:
-            decoded_array = zstd.decompress(bytes(mask.mask))
-            np_arr = np.frombuffer(decoded_array, np.uint8).reshape(mask.height, mask.width, -1)
-        else:
-            np_arr = np.asarray(mask.mask, dtype=np.uint8)
-            np_arr = np.reshape(np_arr, [mask.height, mask.width, -1])
+        np_arr = np.asarray(mask.mask, dtype=np.uint8)
+        np_arr = np.reshape(np_arr, [mask.height, mask.width, -1])
         np_arr = cv2.resize(np_arr, frame_size)
         np_arr = np.argmax(np_arr, axis=2)
         

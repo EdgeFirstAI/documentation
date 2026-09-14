@@ -12,7 +12,7 @@ file. The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.
 - **OSTree channels and upgrade flow** (`platforms/software/updates.md`): release, testing, and develop channels, `ostree admin upgrade` with no arguments, switching channels with `switch`, repairing the origin with `set-origin`, rollback, version string and `/etc/os-release` fields, and static deltas.
 - **Hostname Namespaces and Topic Overview** (`perception/topics/index.md`): the Zenoh session namespace convention replacing the `rt/` prefix and a table of every stock topic with its schema and service.
 - **Upload from the Web UI** (`perception/data_collection/publishing.md`): Studio login from the top ribbon and the Basic and Extended (AGTG) upload modes of the MCAP dialog; on-device export with `publisher zip`.
-- **Camera Frame developer example** (`perception/dev/examples/camera.md`): `CameraFrame` and `Tensor` based zero-copy frame access replacing the `DmaBuffer` example; `CameraFrame`, `Tensor`, `TensorPlane`, and `TensorStamped` added to the EdgeFirst Messages API reference (`edgefirst-schemas` 4.0.0 in `requirements.txt` resolves them).
+- **Camera Frame developer example** (`perception/dev/examples/camera.md`): `CameraFrame` and `Tensor` based zero-copy frame access replacing the `DmaBuffer` example; `CameraFrame`, `Tensor`, `TensorPlane`, and `TensorStamped` added to the EdgeFirst Messages API reference, with `edgefirst-schemas` pinned to the 4.x series in `requirements.txt` so the generated reference matches the documented wire format.
 - Sensor Network section (`platforms/networking/networking.md`): `ethernet1-radar` and `ethernet1-lidar` NetworkManager profiles, policy routing, the automotive Ethernet master service, and the PTP grandmaster and GNSS disciplined chrony time stack.
 
 ### Changed
@@ -27,9 +27,15 @@ file. The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.
 - **4K pages** (`perception/4k/*.md`): `CAMERA_MODE="4k"` requirement, bare tile topic names, `H264_TILES_TOPICS` now settable from the environment, dropped frame telemetry, `/api/rt/` WebSocket endpoints, publisher prefix detection and stitching memory caveat.
 - **Developer guide and examples** (`perception/dev/index.md`, `perception/dev/examples/*.md`): `**` topic discovery showing hostname prefixed keys, opening the session with the hostname namespace, bare topic names in every snippet, legacy topic warnings on the model and SSD examples.
 - `edgefirst-client -V` example output updated to the shipped 2.13.2 client; `webui.service` renamed `websrv.service` in the SSH walkthrough.
+- **Wi-Fi AP setup corrected** (`platforms/networking/networking.md`): the Maivin does not ship with an access point configured, the section now covers writing `/etc/hostapd.conf` first with example network name and password placeholders, the 32 character SSID and 8 to 63 character WPA-PSK passphrase limits, and the `country_code` regulatory domain, before enabling `hostapd` and `hostapd-network`.
+- **Foxglove detection and segmentation walkthroughs** (`perception/data_collection/foxglove.md`, `perception/assets/Raivin_Foxglove_Layout.json`): the image annotations of the bundled Raivin layout and the viewing instructions now use `/model/output` instead of `rt/detect/boxes2d`, `/model/boxes2d`, and `/model/mask_compressed`; the radar cube section states that the cube depends on cube streaming rather than on the recorder defaults.
+- **Camera frame example assembles every plane** (`perception/dev/examples/camera.md`): the Python and Rust snippets map the whole DMA buffer from its start and copy each `TensorPlane` by its own `offset` and `used` length, the previous snippets passed the luma plane alone as a complete NV12 frame.
+- **Legacy topic warnings on the combined examples** (`perception/dev/examples/{model,lidar,radar}.md`): the combined examples subscribe to `model/boxes2d` and `model/mask`, which are disabled by default, and now point at the `DETECT_TOPIC` and `MASK_TOPIC` settings.
+- `fusion/mask_output/tracked` corrected to `fusion/model_output/tracked` in the fusion example (`perception/dev/examples/fusion.md`), and the `pidfd_open` and `pidfd_getfd` arguments corrected in the `camera/frame` sequence diagram (`perception/topics/camera.md`).
 
 ### Removed
 
+- **Model Mask Compressed example** (`perception/dev/examples/model.md`): the `model/mask_compressed` topic was removed in EdgeFirst Schemas 4.0 and is no longer published, the section documenting it and the `remote` decompression branch of the combined example are removed.
 - **Web UI Settings page** (`platforms/configuration/webui.md` and its four screenshots): the `webui` service no longer has a configuration file, the display options moved to the Camera and Radar page controls.  A redirect to `platforms/configuration/index.md` is registered in `mkdocs.yml`.
 
 ### [2026-08-25-rc]

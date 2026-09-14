@@ -72,6 +72,7 @@ changelog
 changelogs
 checkbox
 checkboxes
+chroma
 chrony
 chronyc
 chronyd
@@ -335,6 +336,7 @@ lossless
 losslessly
 lossy
 lsusb
+luma
 lvis
 lz4
 maivin

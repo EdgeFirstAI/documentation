@@ -5,7 +5,11 @@ This section will describe two, more advanced tasks with [Foxglove Studio](foxgl
 1. Using the 3D Panel to view the post-processed [Radar](../../platforms/hardware/radar.md) outputs contained in the "Fusion Targets" topics.
 2. Using the "User Scripts" panel to create a short Typescript script that also outputs the values for those topics.
 
-It is assumed you have read the [introduction to Foxglove Studio](foxglove.md), familiarized yourself with the application, and have [downloaded an MCAP](recording.md#download-mcap) that has recorded the [`/fusion/targets` topic](../../platforms/configuration/mcap_recording.md#fusion-recording-raivin-only).
+It is assumed you have read the [introduction to Foxglove Studio](foxglove.md), familiarized yourself with the application, and have [downloaded an MCAP](recording.md#download-mcap) that has recorded the [`/fusion/targets` topic](../../platforms/configuration/mcap_recording.md#topics-recorded).
+
+!!! warning "Pre-2026.08 Topic Layout"
+
+    This walkthrough describes the `/fusion/targets` topic and its `fusion_class` field as published by releases before Torizon for Maivin 2026.08.  The current fusion service publishes the annotated radar points on [`fusion/radar`](../topics/fusion.md#fusionradar) with the `vision_class` and `instance_id` fields, so the topic name, the field offsets used by the script, and the screenshots below do not match a 2026.08 recording.  The Foxglove workflow itself still applies, refer to the [Fusion Topics](../topics/fusion.md) page for the current field layout.
 
 ## The Fusion Targets Topic
 
@@ -27,7 +31,7 @@ Each target takes up 36 bytes of data which is noted in the "point_step" field. 
 
 {{ figure("../assets/adv_foxglove-fusion_top_level_fields.png", "Top Level Fields") }}
 
-The Fusion and Vision Class are produced by Fusion service on the Raivin.  They will report 0 for any cluster not identified as a person and 1 for any cluster as belonging to a human.  The Raivin Web UI [Radar page](../../platforms/quickstart/raivin/webui.md#the-radar-page) can color the radar points by either class to show which radar targets belong to a person.
+The Fusion and Vision Class are produced by Fusion service on the Raivin.  They will report 0 for any cluster not identified as a person and 1 for any cluster as belonging to a human.  The Raivin Web UI [Radar page](../../platforms/quickstart/raivin/webui.md#the-radar-page) colors the radar points by their vision class to show which radar targets belong to a person.
 
 ## 3D Panes for Fusion
 

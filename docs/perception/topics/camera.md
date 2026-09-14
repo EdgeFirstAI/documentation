@@ -41,8 +41,8 @@ sequenceDiagram
     loop
     autonumber
     Camera Service->>Client Application: CameraFrame(tensor.pid, planes[0].handle, ...)
-    Client Application-->>Linux Kernel: pidfd_open(pid, fd)
-    Client Application-->>Linux Kernel: pidfd_getfd(pidfd, handle)
+    Client Application-->>Linux Kernel: pidfd_open(pid, 0)
+    Client Application-->>Linux Kernel: pidfd_getfd(pidfd, handle, 0)
     Linux Kernel->>Client Application: fd duplicate
     Client Application-->>Linux Kernel: mmap(fd)
     Linux Kernel->>Client Application: ptr to camera pixels

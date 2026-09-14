@@ -155,7 +155,7 @@ An active Recorder Service will display the following status on the terminal.
 Check the status of the Web UI
 
 ```shell
-systemctl status webui
+systemctl status websrv
 ```
 
 If the Web UI is inactive, the following status will be displayed on the terminal.
@@ -169,7 +169,7 @@ If the Web UI is inactive, the following status will be displayed on the termina
 To start the Web UI, run the following command.
 
 ```shell
-sudo systemctl start webui
+sudo systemctl start websrv
 ```
 
 An active Web UI service will display the following status on the terminal.

@@ -143,19 +143,15 @@ Maivin units with Wi-Fi can be configured as an AP allowing client devices to co
 !!! warning
     FCC regulations require special certifications for collocated transmitters (a device with multiple RF transmitters).  Maivin and Raivin are not currently certified for collocated transmitters so users must not enable more than one of the Wi-Fi, Modem, or Radar without first receiving FCC certification.  Refer to regulatory boards in your jurisdiction for your relevant regulations.
 
-Wi-Fi AP mode is configured using the `hostapd` service in Linux.  We describe a common Wi-Fi AP configuration; for more advanced setup, please refer to the [hostapd documentation][hostapd].
+Wi-Fi AP mode is configured using the `hostapd` service in Linux.  The Maivin does not ship with an access point configured, you provide the network configuration in `/etc/hostapd.conf` before enabling the service.  We describe a common Wi-Fi AP configuration; for more advanced setup, please refer to the [hostapd documentation][hostapd].
 
-To enable the Maivin Access Point with default configurations enable the `hostapd` service along with the companion `hostapd-network` service.  The companion service is bound to `hostapd`, it assigns the AP address, runs a dedicated `dnsmasq` DHCP server for the clients, and sets up IP forwarding and NAT so AP clients can reach the Internet through the Maivin's uplink.
+### Access Point Configuration
 
-```bash
-sudo systemctl enable --now hostapd hostapd-network
-```
-
-The Maivin ships with a default hostapd configuration in `/etc/hostapd.conf` which can be modified for your needs.  The following shows the base configuration which ships with Maivin. The full list of configuration options is documented in the [hostapd.conf][hostapd.conf] reference file.
+The following is an example configuration to write to `/etc/hostapd.conf`.  The network name and password are placeholders which you must replace with your own values.  The full list of configuration options is documented in the [hostapd.conf][hostapd.conf] reference file.
 
 ```ini
-ssid=Maivin
-wpa_passphrase=maivin
+ssid=ExampleAP
+wpa_passphrase=ExamplePassword
 own_ip_addr=10.10.10.1
 interface=uap0
 
@@ -178,14 +174,25 @@ sae_require_mfp=1
 ht_capab=[LDPC][HT40+][GF][SHORT-GI-20][SHORT-GI-40][TX-STBC][DSSS_CCK-40]
 ```
 
-!!! warning
-    Please make sure to change the default password before enabling Wi-Fi AP mode!
+!!! warning "Choose Your Own Network Name and Password"
 
-The default access point network is summarized below.  The AP address and DHCP range are configured by the `hostapd-network` service, whose DHCP server configuration is found under `/etc/hostapd-dhcp.conf`.
+    The values above are examples and must not be used on a deployed device.  The `ssid` is limited to 32 characters.  The `wpa_passphrase` must be between 8 and 63 printable ASCII characters, `hostapd` refuses to start when the passphrase is shorter than 8 characters.
+
+The `country_code` must match the regulatory domain where the unit operates as it determines the channels and transmit power `hostapd` is allowed to use.  The example configures a 5 GHz 802.11ac network on channel 40.
+
+### Enabling the Access Point
+
+With `/etc/hostapd.conf` in place, enable the `hostapd` service along with the companion `hostapd-network` service.  The companion service is bound to `hostapd`, it assigns the AP address, runs a dedicated `dnsmasq` DHCP server for the clients, and sets up IP forwarding and NAT so AP clients can reach the Internet through the Maivin's uplink.
+
+```bash
+sudo systemctl enable --now hostapd hostapd-network
+```
+
+The access point network created by the example configuration is summarized below.  The AP address and DHCP range are configured by the `hostapd-network` service, whose DHCP server configuration is found under `/etc/hostapd-dhcp.conf`.
 
 | Setting | Value |
 |---------|-------|
-| SSID | `Maivin` |
+| SSID | `ExampleAP` |
 | Band | 5 GHz (802.11ac), channel 40 |
 | Security | WPA2-PSK |
 | AP IP | `10.10.10.1/24` |

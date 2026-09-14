@@ -213,18 +213,18 @@ The ModelOutput message contains fused model output data. You can log the data t
 
 ## Tracked Fusion Output Grid
 
-Topic: [/fusion/model_output/tracked](../../topics/fusion.md#fusionmodel_outputtracked)  
+Topic: [/fusion/model_output/tracked](../../topics/fusion.md#fusionmodel_output)  
 Message: [Mask](../../api/edgefirst_msgs.md#mask)  
 Sample Code: [Python](https://github.com/EdgeFirstAI/samples/blob/main/python/fusion/model_output_tracked.py) / [Rust](https://github.com/EdgeFirstAI/samples/blob/main/rust/fusion/model_output_tracked.rs)
 
 ### Setting up subscriber
 
-After setting up the Zenoh session, we will create a subscriber to the `fusion/mask_output/tracked` topic
+After setting up the Zenoh session, we will create a subscriber to the `fusion/model_output/tracked` topic
 
 === "Python"
 
     ``` python
-    # Create a subscriber for "fusion/mask_output/tracked"
+    # Create a subscriber for "fusion/model_output/tracked"
     loop = asyncio.get_running_loop()
     drain = MessageDrain(loop)
     session.declare_subscriber('fusion/model_output/tracked', drain.callback)
@@ -233,9 +233,9 @@ After setting up the Zenoh session, we will create a subscriber to the `fusion/m
 === "Rust"
 
     ``` rust
-    // Create a subscriber for "fusion/mask_output/tracked"
+    // Create a subscriber for "fusion/model_output/tracked"
     let subscriber = session
-        .declare_subscriber("fusion/mask_output/tracked")
+        .declare_subscriber("fusion/model_output/tracked")
         .await
         .unwrap();
     ```

@@ -162,7 +162,9 @@ We can now await a message from that subscriber. After receiving the message, we
 
 ### Process the Data
 
-The `CameraFrame` message carries a stamped `Tensor`.  The tensor contains the process ID of the camera service, the image `format` as a FOURCC such as `NV12`, the `shape` as `[height, width]`, and one `TensorPlane` per plane with the file descriptor `handle`, `offset`, `stride`, and `size` of the DMA buffer.  The process ID and the plane handle are necessary to access the image, the file descriptor is duplicated into our process with `pidfd_getfd` and mapped with `mmap`.
+The `CameraFrame` message carries a stamped `Tensor`.  The tensor contains the process ID of the camera service, the image `format` as a FOURCC such as `NV12`, the `shape` as `[height, width]`, and one `TensorPlane` per plane with the file descriptor `handle`, `offset`, `stride`, `size`, and `used` length of the DMA buffer.  The process ID and the plane handle are necessary to access the image, the file descriptor is duplicated into our process with `pidfd_getfd` and mapped with `mmap`.
+
+The ISP produces `NV12` frames which carry two planes, the luma plane followed by the interleaved chroma plane.  Both planes reference the same DMA buffer so a single duplicated file descriptor covers the frame, and each plane is located within the buffer by its own `offset` and `used` length.  The buffer is mapped from its start rather than from the plane offset because `mmap` requires a page aligned offset, which the chroma plane offset generally is not.
 
 === "Python"
 
@@ -172,20 +174,24 @@ The `CameraFrame` message carries a stamped `Tensor`.  The tensor contains the p
     def frame_worker(msg):
         frame = CameraFrame.from_cdr(msg.payload.to_bytes())
         tensor = frame.tensor
-        plane = tensor.planes[0]
         height, width = tensor.shape[0], tensor.shape[1]
 
         pidfd = pidfd_open(tensor.pid)
         if pidfd < 0:
             return
 
-        fd = pidfd_getfd(pidfd, plane.handle, GETFD_FLAGS)
+        # All planes of the frame share one DMA buffer, so the handle of the
+        # first plane is enough to reach the whole frame.
+        fd = pidfd_getfd(pidfd, tensor.planes[0].handle, GETFD_FLAGS)
         if fd < 0:
             return
 
-        # Now fd can be used as a file descriptor, the ISP produces NV12 frames
-        mm = mmap.mmap(fd, plane.size, offset=plane.offset)
-        rr.log("/camera", rr.Image(bytes=mm[:plane.used],
+        # Map the buffer from its start and copy each plane out of the mapping
+        # to assemble the complete NV12 frame.
+        length = max(p.offset + p.size for p in tensor.planes)
+        mm = mmap.mmap(fd, length, offset=0)
+        nv12 = b"".join(mm[p.offset:p.offset + p.used] for p in tensor.planes)
+        rr.log("/camera", rr.Image(bytes=nv12,
                                     width=width,
                                     height=height,
                                     pixel_format=rr.PixelFormat.NV12))
@@ -198,35 +204,48 @@ The `CameraFrame` message carries a stamped `Tensor`.  The tensor contains the p
 
     ``` rust
     let tensor = frame.tensor();
-    let plane = tensor.planes().next().unwrap();
+    let planes: Vec<_> = tensor.planes().collect();
     let (height, width) = (tensor.shape()[0] as u32, tensor.shape()[1] as u32);
 
     let pidfd: PidFd = match PidFd::from_pid(tensor.pid() as i32)
-    let fd = match get_file_from_pidfd(pidfd.as_raw_fd(), plane.handle() as i32, GetFdFlags::empty())
+    let fd = match get_file_from_pidfd(pidfd.as_raw_fd(), planes[0].handle() as i32, GetFdFlags::empty())
 
-    let image_size = plane.size() as usize;
+    // Map the buffer from its start, the plane offsets are not page aligned.
+    let buffer_size = planes
+        .iter()
+        .map(|plane| plane.offset() as usize + plane.size() as usize)
+        .max()
+        .unwrap();
     let mmap = unsafe {
         from_raw_parts_mut(
             mmap(
                 null_mut(),
-                image_size,
+                buffer_size,
                 PROT_READ,
                 MAP_SHARED,
                 fd.as_raw_fd(),
-                plane.offset() as i64,
+                0,
             ) as *mut u8,
-            image_size,
+            buffer_size,
         )
     };
+    // Copy each plane out of the mapping to assemble the complete NV12 frame.
+    let nv12: Vec<u8> = planes
+        .iter()
+        .flat_map(|plane| {
+            let start = plane.offset() as usize;
+            mmap[start..start + plane.used() as usize].to_vec()
+        })
+        .collect();
     let rr_image = rerun::Image::from_pixel_format(
         [width, height],
         rerun::PixelFormat::NV12,
-        mmap[..plane.used() as usize].to_vec(),
+        nv12,
     );
     let _ = rec.log("camera/frame", &rr_image);
 
     unsafe {
-        munmap(mmap.as_mut_ptr() as *mut c_void, image_size);
+        munmap(mmap.as_mut_ptr() as *mut c_void, buffer_size);
     }
     ```
 

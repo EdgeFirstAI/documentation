@@ -484,6 +484,10 @@ When displaying the results through Rerun you will see the reflection data gathe
 
 ## Combined Example
 
+!!! warning "Legacy Topics"
+
+    This example subscribes to `model/boxes2d`, a legacy topic which is disabled by default on Torizon for Maivin 2026.08.  Set `DETECT_TOPIC="model/boxes2d"` in `/etc/default/model` as described in the [Model Settings](../../../platforms/configuration/model.md#topics) before running it, or adapt the boxes callback to the [`model/output`](../../topics/model.md#modeloutput) topic which carries the same `Box` entries.
+
 This example will demonstrate how to combine the camera feed with the lidar messages to create a composite Rerun view. The main difference when using multiple messages in a script, is that we will change from waiting on the message to be received to having a callback function for when a message is received. Using the initial method, the script would hang while waiting for a message topic to be published, so if the messages are being published at different rates, the slowest message rate will limit the others.
 
 Sample Code: [Python](https://github.com/EdgeFirstAI/samples/blob/main/python/combined/camera_lidar.py) / [Rust](https://github.com/EdgeFirstAI/samples/blob/main/rust/combined/mega_sample.rs)

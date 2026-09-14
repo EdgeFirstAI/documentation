@@ -1,6 +1,6 @@
 # Raivin Web UI Walkthrough
 
-This article will walk you through the Raivin's Web User Interface (Web UI).
+This article will walk you through the Raivin's Web User Interface (Web UI).  The Web UI is served by the `websrv` service on the device over HTTP and HTTPS and is reached at `https://verdin-imx8mp-XXXXXXXX.local` where the eight digits are the device serial number.
 
 ## The Main Page
 
@@ -8,13 +8,13 @@ The Main Page of the Raivin web interface should look as follows:
 
 {{ figure("../../assets/setup/quickStart-mainPage.png", "Raivin Main Page") }}
 
-There are five cards on the Main Page that link to the Visualization pages:
+The Main Page shows one card for each running visualization.  Cards only appear while their service is running, so a Raivin with the radar publisher enabled shows the following cards:
 
-- **GPS**: This page displays a map with the current location of the device, along with GPS coordinates.
+- **Camera**: This page shows the live camera video with optional detection and segmentation overlays from the model service and, for LiDAR equipped devices, the projected LiDAR points.
+- **Radar**: This page shows the radar point cloud over a polar occupancy grid.
+- **LiDAR**: This page shows the 3D LiDAR point cloud, it appears when the LiDAR publisher is running.
 - **IMU**: This page displays the 3D orientation of the device with current roll, pitch, and yaw values.
-- **Occupancy Grid**: This page will show the radar grid
-- **Segmentation View**: This page shows the camera with running segmentation and/or detection pipeline.  For Raivin devices equipped with a radar module, it will also show the radar grid.
-- **LiDAR View**: This page will show the LiDAR View, which will include the camera, radar grid, and LiDAR grid.
+- **GPS**: This page displays a map with the current location of the device, along with GPS coordinates.
 
 {% include-markdown "discrete/platforms/edgefirst_main_page_overview.md" heading-offset=2 %}
 
@@ -22,27 +22,25 @@ There are five cards on the Main Page that link to the Visualization pages:
 
 These pages contain the user-facing functionality of the vision module.
 
-### The Segmentation Page
+### The Camera Page
 
-The Segmentation page shows camera overlain with the current visual model output.  For Raivin modules, this will also include the occupancy grid at the bottom.  
+The Camera page shows the live camera video decoded from the `camera/h264` topic.  The controls at the top of the page toggle the segmentation overlay, which draws the detection boxes and segmentation masks published by the model service on `model/output` over the video, and the LiDAR overlay which projects the LiDAR points onto the image colored by distance, cluster, or the classes assigned by the fusion service.
 
-{{ figure("../../assets/setup/quickStart-segmentation.png", "Raivin Segmentation Page") }}
+{{ figure("../../assets/setup/quickStart-segmentation.png", "Raivin Camera Page") }}
 
-White points are unmatched, raw data from the radar; green points are raw data matched to segmentation masks.
+### The Radar Page
 
-### The Occupancy Page
+The Radar page shows the radar point cloud on a polar grid spanning 140 degrees in front of the device with range rings every two meters.  The Source dropdown selects between the raw radar targets, the radar clusters, and the fusion radar output.  The Color dropdown colors the points by speed, power, radar cross-section (RCS), cluster, vision class, track ID, or instance ID depending on the fields carried by the selected stream, and the Elevation toggle lifts the points off the grid plane by their height.  A "Radar Unavailable" overlay is shown when the selected stream is not publishing.
 
-The Occupancy Page shows the raw, radar data, colored by radar cross-section (RCS) size.  
-
-{{ figure("../../assets/setup/quickStart-occupancy.png", "Occupancy Page") }}
+{{ figure("../../assets/setup/quickStart-occupancy.png", "Radar Page") }}
 
 {% include-markdown "discrete/platforms/edgefirst_common_services.md" heading-offset=2 %}
 
-### The LiDAR View Page
+### The LiDAR Page
 
-This page shows the segmentation view, the occupancy grid, and the 3D LiDAR view.  The 3D LiDAR view will be blank if the device does not have a LiDAR unit connected.
+This page shows the 3D LiDAR point cloud from the `lidar/points` topic with the same Source, Color, and Elevation controls as the Radar page, including coloring by the vision classes from the fusion service.  The page is available when the LiDAR publisher is running.
 
-{{ figure("../../assets/setup/quickStart-lidar.png", "LiDAR View Page") }}
+{{ figure("../../assets/setup/quickStart-lidar.png", "LiDAR Page") }}
 
 ## Next Steps
 

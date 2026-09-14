@@ -5,95 +5,111 @@ These settings configure the perception engine that is processing input from the
 {{ figure("../assets/configuration/configuration-model.png", "Model Settings page") }}
 
 !!! tip
-    These values are stored in the `/etc/default/model` file on the device and can be hand-edited.  This is not recommended.
+
+    These values are stored in the `/etc/default/model` file on the device and can be hand-edited.
+
+!!! warning "Settings page out of sync"
+
+    The Model Settings page of the Web UI in this release still lists settings from the previous Model service, such as `ENGINE`, `MASK_COMPRESSION`, `TRACK_HIGH_CONF`, and the `VIV_VX` graph cache options, which the current service ignores, and does not show the newer `DELEGATE`, `TRACK_SCORE`, `CLASSES`, and topic settings.  The settings described on this page are the keys accepted by the Model service in `/etc/default/model`.  Edit the file directly when a setting is missing from the page.  Refer to [Known Issues](../software/issues.md#web-ui-settings-page-gaps-edgeai-1229).
 
 ## Model
 
-A model is required for the model application for 2D image processing. This can be a segmentation model and/or a detection model.  By default, Maivin/Raivin comes with three [ModelPack](../../models/modelpack/index.md) models at trained on the [COCO People dataset](../../datasets/coco_people/index.md), located in the `/usr/share/model` directory:
+A model is required for the model service.  This can be a detection model, a segmentation model, or a model providing both.  Stored as `MODEL`, the service does not start without it.  By default the Maivin and Raivin run the [EdgeFirst Model Zoo](https://huggingface.co/EdgeFirst) YOLOv8n INT8 detection model installed under `/usr/share/edgefirst/modelzoo/`.
 
-| Model Name | Segmentation Masks? | Detection Boxes? | Default? |
-| ---------- | :-----------------: | :--------------: | :------: |
-| modelpack-people.tflite | :material-check: | :material-check: | :material-check: |
-| modelpack-people-detect.tflite | :material-close: | :material-check: | :material-close: |
-| modelpack-people-mask.tflite | :material-check: | :material-close: | :material-close: |
+| Model | Detection Boxes? | Segmentation Masks? | Default? |
+| ----- | :--------------: | :-----------------: | :------: |
+| `/usr/share/edgefirst/modelzoo/yolov8n-det-int8-smart.tflite` | :material-check: | :material-close: | :material-check: |
 
-## Engine
+Models trained in EdgeFirst Studio, [ModelPack](../../models/modelpack/index.md) or [Ultralytics](../../models/ultralytics/index.md), are deployed by [uploading them to the device](../software/model_uploads.md) and pointing this setting at the uploaded file, for example `/home/torizon/mymodel.tflite`.  The service reads the model task, labels, and decoder configuration from the EdgeFirst configuration embedded in the model.
 
-The model can be run using different computation engines.  The default engine is the NPU for the [i.MX 8M Plus](https://www.nxp.com/products/i.MX8MPLUS).  Other options are the CPU or the GPU.
+### EdgeFirst Config Override
 
-## Detection-only Settings
+Stored as `EDGEFIRST_CONFIG`, an optional path to an EdgeFirst configuration file in YAML or JSON that overrides the configuration embedded in the model or supplies one when the model has none.  Leave empty to use the model's built-in configuration.
 
-The following settings will only impact detection-based output in the `/model/boxes2d` topic with models that output object detection results.
+### SSD Model
 
-### Visualization
+Stored as `SSD_MODEL` and `false` by default, enables SSD decoding for SSD-style detection models without an embedded EdgeFirst configuration.
 
-Enables publishing the legacy visualization message for detection models.  It is 'false' by default which means only the primary model box and mask topics will be available.  If using [Foxglove Studio](../../perception/data_collection/foxglove.md) make sure you install the [EdgeFirst for Foxglove Plug-in](../../perception/data_collection/foxglove.md#installing-edgefirst-plugin).  If set to 'true', the `/model/visualization` topic will be created which can be used by FoxGlove to draw the default detection boxes.
+## Delegate
+
+The model can be run on the NPU or on the CPU.  Stored as `DELEGATE`, the path to the TensorFlow Lite delegate library.  On the i.MX 8M Plus the NPU is selected with `/usr/lib/libvx_delegate.so`, leave empty for CPU-only inference.  Model Zoo models compiled for the i.MX 95 Neutron NPU use `/usr/lib/libneutron_delegate.so`.
+
+!!! note "OpenVX Graph Caching"
+
+    The first load of a model on the NPU compiles the OpenVX graph which can take a minute.  The VX delegate caches the compiled graph and later loads are fast.  The caching is controlled by the driver environment variables `VIV_VX_ENABLE_CACHE_GRAPH_BINARY` and `VIV_VX_CACHE_BINARY_GRAPH_DIR` which can be added to `/etc/default/model` if required.
+
+## Detection Settings
+
+The following settings impact the detection boxes published in the `model/output` topic with models that output object detection results.
 
 ### Threshold
 
-Score threshold sets the minimum detection score before a bounding box is generated for the inferred object for detection.
+Stored as `THRESHOLD` with a default of `0.45`, the minimum detection score before a bounding box is generated for the inferred object.  When tracking is enabled this also serves as the threshold for creating new tracks.
 
 ### IOU
 
-Detection IoU controls the minimum overlap for merging boxes during NMS.  A larger number will produce more boxes with some overlap while a smaller number will generate fewer boxes.
+Stored as `IOU` with a default of `0.45`, the detection IoU controls the minimum overlap for merging boxes during NMS.  A larger number will produce more boxes with some overlap while a smaller number will generate fewer boxes.
 
-### MAX_BOXES
+### Max Boxes
 
-The maximum number of detection boxes which can be generated.
+Stored as `MAX_BOXES` with a default of `100`, the maximum number of detection boxes which can be generated per frame.
 
-### LABEL_OFFSET
+### Label Offset
 
-The label offset is required for certain models to account for differences in background class handling relative to the labels.  It should usually be zero but some odd configurations will sometimes require 1 or -1 for offset.
+Stored as `LABEL_OFFSET` with a default of `0`, the label offset is required for certain models to account for differences in background class handling relative to the labels.  It should usually be zero but some configurations require `1` or `-1`.
+
+### Labels
+
+Stored as `LABELS` with a default of `label`, controls the text drawn next to each detected box by the [visualization](#visualization) message.  Accepted values are `index`, `label`, `score`, `label-score`, and `track`.
+
+### Classes
+
+Stored as `CLASSES`, a space-separated list of label names to include in the output, for example `person car truck`.  Only boxes matching these labels, and their associated instance masks, are published.  Empty publishes all classes.
 
 ## Track Settings
 
 These settings impact object tracking with object detection.  They have no effect for segmentation-only models.
 
-### TRACK
+### Track
 
-This turns on the [ByteTrack][bytetracker] tracker. This is useful for smoothing bounding boxes across frames, and for associating multiple detections over time to a single object. None of the other settings will have an effect if this is set to 'false'.
+Stored as `TRACK` and `false` by default, this turns on the [ByteTrack][bytetracker] tracker.  This is useful for smoothing bounding boxes across frames, and for associating multiple detections over time to a single object.  None of the other track settings have an effect if this is `false`.  When tracking is enabled each box in `model/output` carries a track ID, lifetime, and creation time.
 
-### Track Extra Lifespan (seconds)
+### Track Extra Lifespan
 
-The number of seconds a tracked object can be missing for before being removed from tracking.
+Stored as `TRACK_EXTRA_LIFESPAN` with a default of `0.5`, the number of seconds a tracked object can be missing before being removed from tracking.
 
-### TRACK_HIGH_CONF
+### Track Score
 
-The high confidence threshold for the ByteTrack algorithm.
+Stored as `TRACK_SCORE` with a default of `0.1`, the score threshold used by the decoder when tracking is enabled.  A lower value than the detection threshold lets the tracker see more candidate detections so temporarily occluded objects can be recovered.
 
-### TRACK_IOU
+### Track IOU
 
-The tracking IoU threshold for box association. Higher values will require boxes to have higher IoU to the predicted track location to be associated.
+Stored as `TRACK_IOU` with a default of `0.25`, the tracking IoU threshold for box association.  Higher values require boxes to have a higher IoU to the predicted track location to be associated.
 
-### TRACK_UPDATE
+### Track Update
 
-The tracking update factor. Higher update factor will mean less smoothing but more rapid response to change. Use values from 0.0 to 1.0. Values outside this range will cause unexpected behavior.
+Stored as `TRACK_UPDATE` with a default of `0.25`, the Kalman filter update factor.  A higher update factor means less smoothing but a more rapid response to change.  Use values from `0.0` to `1.0`.
 
-## Segmentation-only Settings
+## Visualization
 
-The following setting will only impact segmentation-based output in the `/model/mask_compressed` or `/model/mask` topics with models that output segmentation results.
+Stored as `VISUALIZATION` and `false` by default, enables publishing the `model/visualization` topic with Foxglove image annotations drawing the detection boxes and labels.  This is intended for viewing detections in [Foxglove Studio](../../perception/data_collection/foxglove.md) without the EdgeFirst plug-in.  The camera information topic is required when enabled.
 
-### MASK_COMPRESSION
+## Topics
 
-Enable compression for segmentation masks.  When enabled, both the `/model/mask` and `/model/mask_compressed` topics will be available.  The compressed mask should be used from remote connections while the uncompressed topic should be used from local connections to avoid redundant compress/decompress steps.
+The model service subscribes to the camera frames and publishes its results on the following topics.  Topic names are relative to the device [hostname namespace](../../perception/topics/index.md#hostname-namespaces).
 
-!!! warning
-    Turning off mask compression will disable the `/model/mask_compressed` topic.  The Web UI will need to have its [Mask Topic](webui.md#topics) changed to `/model/mask`.  The segmentation mask will also not be recorded.
+| Key | Default | Description |
+|-----|---------|-------------|
+| `CAMERA_TOPIC` | `camera/frame` | Camera frame subscription |
+| `CAMERA_INFO_TOPIC` | `camera/info` | Camera information subscription, needed for visualization |
+| `OUTPUT_TOPIC` | `model/output` | Unified [Model](../../perception/topics/model.md#modeloutput) output with boxes, masks, tracks, and timing |
+| `INFO_TOPIC` | `model/info` | [Model information](../../perception/topics/model.md#modelinfo) |
+| `VISUAL_TOPIC` | `model/visualization` | Foxglove image annotations when visualization is enabled |
+| `DETECT_TOPIC` | | Legacy detection topic, disabled by default.  Set to `model/boxes2d` to re-enable |
+| `MASK_TOPIC` | | Legacy mask topic, disabled by default.  Set to `model/mask` to re-enable |
 
-## OpenVX Graph Caching
+!!! note "Legacy topics"
 
-The OpenVX driver provides a graph caching mechanism that significantly speeds up future reload times for the graph.  The cache stores a binary representation of the in-memory graph, not the model used to generate the graph, to the file system.  When loading a model, graph generation proceeds as normal but the time-consuming graph loading step will first attempt to load the cached representation.  
-
-The driver allows for many graphs to be stored and the location, along with enabling the feature, is controlled through a pair of environment variables.  This allows a user to select on a per-process basis when to enable graph cache and where to store the cache.
-
-These settings enable and configure this functionality.
-
-### VIV_VX_ENABLE_CACHE_GRAPH_BINARY
-
-This option will enable the graph caching which significantly speeds up load times for models.  If you encounter issues set to 0 to disable.
-
-### VIV_VX_CACHE_BINARY_GRAPH_DIR
-
-This controls the NPU graph cache storage location.
+    The previous `model/boxes2d`, `model/mask`, and `model/mask_compressed` topics are replaced by the unified `model/output` message.  Masks are no longer compressed by the service, compression is handled by the Web UI transport.  Applications built against the legacy topics can re-enable `model/boxes2d` and `model/mask` with the settings above.
 
 [bytetracker]: https://arxiv.org/abs/2110.06864

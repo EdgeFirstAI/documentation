@@ -2,6 +2,10 @@
 
 [Foxglove Studio][foxglove] is an open source application developed by FoxGlove Technologies, Inc.  It is part of the [Robot Operating System (ROS)][ros] ecosystem and supports playback for MCAP recordings.  You can [download Foxglove Studio][foxglove_dl] as well as our [EdgeFirst plug-in for Foxglove][github_edgefirst_dl] and customized [Raivin Foxglove layout](../assets/Raivin_Foxglove_Layout.json){: download="Raivin_Foxglove_Layout.json" }
 
+!!! note "Topic names in layouts"
+
+    Recordings made with Torizon for Maivin 2026.08 name their channels without the `rt/` prefix used by earlier releases, for example `/camera/h264` and `/model/output`.  Layouts saved from older recordings need their panel topics updated, and the detection overlays now read the unified `/model/output` topic through the EdgeFirst plug-in.  The Raivin layout linked above is configured for 2026.08 recordings.
+
 ## Getting Started
 
 Let's discuss how to install our custom plugins once you've installed Foxglove Studio.
@@ -83,37 +87,37 @@ In the example above, we see both detection boxes and segmentation masks in the 
 
 ### Viewing Detection Messages
 
-The detection boxes are contained in the `/model/boxes2d` topic.  By default, this topic is not enabled.  See the Maivin Dataset Recording section for details on how to enable this topic and record an MCAP with the Raivin.
+The detection boxes and the segmentation masks are contained in the `/model/output` topic, which the recorder captures by default.  The EdgeFirst Foxglove plug-in draws them as image annotations over the camera stream.
 
 !!! note
       Not all vision models are able to produce detection results.  The default model on the Raivin can produce both detection and segmentation results.
 
-1. Record a MCAP file that captures the `/model/boxes2d` topic.
-2. Confirm with the "Details" button that the newly recorded MCAP has a `/model/boxes2d` topic.  
+1. Record a MCAP file that captures the `/model/output` topic.
+2. Confirm with the "Details" button that the newly recorded MCAP has a `/model/output` topic.  
 
       {{ figure("../assets/foxglove_mcap_details.png", "MCAP Details") }}
 
 3. Download the file from the Raivin and load it in Foxglove Studio.
 4. Click the "Settings" gear icon on the right side of the `/camera/h264/` panel task bar.
-5. The `/model/boxes2d` option should appear in the "Image annotations" dropdown menu in the "Image Panel" settings sidebar (bottom left of image below).  
+5. The `/model/output` option should appear in the "Image annotations" dropdown menu in the "Image Panel" settings sidebar (bottom left of image below).  
 
       {{ figure("../assets/foxglove_detect_plugin_view.png", "Foxglove Detect Plugin View") }}
 
-6. Enable the `/model/boxes2d` image annotations by clicking the closed eye icon. This will draw boxes around the detected objects.  
+6. Enable the `/model/output` image annotations by clicking the closed eye icon. This will draw boxes around the detected objects.  
 
       {{ figure("../assets/foxglove_open_box_eye.png", "Foxglove Detect Boxes Enabled") }}
 
 ### Viewing Segmentation Messages
 
-Segmentation masks are contained in the `/model/mask_compressed` topic which is enabled on the Raivin by default.  Because of the amount of data included within this stream, it is not compatible with the default Image drawing API in Foxglove Studio. To visualize the Segmentation Mask, the EdgeFirst Foxglove plug-in must be installed to view segmentation masks in Foxglove.
+The segmentation masks travel in the same `/model/output` message as the detection boxes.  Because of the amount of data included within this stream, the masks are not compatible with the default Image drawing API in Foxglove Studio, the EdgeFirst Foxglove plug-in must be installed to view segmentation masks in Foxglove.
 
-The instructions to view these masks are the same as above but using the `/model/mask_compressed` topic instead of the `/model/boxes2d` topic.
+The masks are drawn by the same `/model/output` image annotations as the boxes, enabling the annotations shows both.
 
 {{ figure("../assets/foxglove_open_seg_eye.png", "Foxglove Detect Boxes Enabled") }}
 
 ### Viewing /radar/cube Messages
 
-By default, none of the radar topics are recorded as part of an MCAP file.  The Image panel in Foxglove can viewer can:
+The radar cube is only published when [cube streaming](../../platforms/configuration/radar.md#enable-cube) is enabled on the radar service.  The Image panel in Foxglove can viewer can:
 
 1. Record a MCAP file that has the `/radar/cube` message in it. See Maivin Dataset Recording for details.
 2. Play the MCAP file in Foxglove Studio. See Playback MCAP with Foxglove Studio for details.

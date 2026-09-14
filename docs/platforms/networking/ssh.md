@@ -155,33 +155,33 @@ An active Recorder Service will display the following status on the terminal.
 Check the status of the Web UI
 
 ```shell
-systemctl status webui
+systemctl status websrv
 ```
 
 If the Web UI is inactive, the following status will be displayed on the terminal.
 
 ```shell
-○ webui.service - Maivin Web UI Server
-     Loaded: loaded (/usr/lib/systemd/system/webui.service; enabled; vendor preset: enabled)
+○ websrv.service - Maivin Web UI Server
+     Loaded: loaded (/usr/lib/systemd/system/websrv.service; enabled; vendor preset: enabled)
      Active: inactive (dead)
 ```
 
 To start the Web UI, run the following command.
 
 ```shell
-sudo systemctl start webui
+sudo systemctl start websrv
 ```
 
 An active Web UI service will display the following status on the terminal.
 
 ```shell
-● webui.service - Maivin Web UI Server
-     Loaded: loaded (/usr/lib/systemd/system/webui.service; enabled; vendor preset: enabled)
+● websrv.service - Maivin Web UI Server
+     Loaded: loaded (/usr/lib/systemd/system/websrv.service; enabled; vendor preset: enabled)
      Active: active (running) since Mon 2025-04-07 16:06:37 UTC; 3s ago
    Main PID: 1327 (websrv)
       Tasks: 18 (limit: 3772)
      Memory: 21.0M
-     CGroup: /system.slice/webui.service
+     CGroup: /system.slice/websrv.service
              └─ 1327 /usr/bin/websrv
 ```
 

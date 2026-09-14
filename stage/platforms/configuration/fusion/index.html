@@ -1241,8 +1241,6 @@
       
         
       
-        
-      
     
     
     
@@ -1340,34 +1338,6 @@
     
   
     Camera Settings
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../webui/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Web UI Settings
   
 
     
@@ -1543,10 +1513,38 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#radar-input-topic" class="md-nav__link">
+  <a href="#sensor-input-topics" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Radar Input Topic
+        Sensor Input Topics
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Sensor Input Topics">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#max-model-age" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Max Model Age
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#fusion-output-topics" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Fusion Output Topics
       
     </span>
   </a>
@@ -1554,10 +1552,21 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#occlusion-angle-limit-and-occlusion-range-limit" class="md-nav__link">
+  <a href="#radar-fusion-model" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Occlusion Angle Limit and Occlusion Range Limit
+        Radar Fusion Model
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tracking" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Tracking
       
     </span>
   </a>
@@ -1575,17 +1584,6 @@
   
     <nav class="md-nav" aria-label="Occupancy Settings">
       <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#threshold" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Threshold
-      
-    </span>
-  </a>
-  
-</li>
         
           <li class="md-nav__item">
   <a href="#range-bin-limit" class="md-nav__link">
@@ -1625,6 +1623,17 @@
     <span class="md-ellipsis">
       
         Angle Bin Width
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#threshold" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Threshold
       
     </span>
   </a>
@@ -1917,10 +1926,38 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#radar-input-topic" class="md-nav__link">
+  <a href="#sensor-input-topics" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Radar Input Topic
+        Sensor Input Topics
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Sensor Input Topics">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#max-model-age" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Max Model Age
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#fusion-output-topics" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Fusion Output Topics
       
     </span>
   </a>
@@ -1928,10 +1965,21 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#occlusion-angle-limit-and-occlusion-range-limit" class="md-nav__link">
+  <a href="#radar-fusion-model" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Occlusion Angle Limit and Occlusion Range Limit
+        Radar Fusion Model
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tracking" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Tracking
       
     </span>
   </a>
@@ -1949,17 +1997,6 @@
   
     <nav class="md-nav" aria-label="Occupancy Settings">
       <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#threshold" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Threshold
-      
-    </span>
-  </a>
-  
-</li>
         
           <li class="md-nav__item">
   <a href="#range-bin-limit" class="md-nav__link">
@@ -1999,6 +2036,17 @@
     <span class="md-ellipsis">
       
         Angle Bin Width
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#threshold" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Threshold
       
     </span>
   </a>
@@ -2088,39 +2136,214 @@
 
 
 <h1 id="fusion-settings-raivin-only">Fusion Settings (Raivin-only)</h1>
-<p>These settings configure the perception engine that is processing input from the radar sensor and providing output on the Fusion topics.</p>
+<p>These settings configure the fusion service which combines the radar and <abbr title="Light Detection and Ranging">LiDAR</abbr> point clouds with the vision model output and provides output on the <a href="../../../perception/topics/fusion/">fusion topics</a>.  The fusion service implements two pipelines: a late-fusion pipeline which projects the sensor points onto the camera image and annotates every point with the vision class and instance it falls in, and an optional radar fusion model pipeline which runs a <a href="../../../models/fusion/">RadarExp</a> model on the radar cube and camera frames.</p>
 <figure>
             <img align="center" alt="Fusion Settings page" src="../../assets/configuration/configuration-fusion.png" />
             <figcaption>Fusion Settings page</figcaption>
             </figure>
 <div class="admonition tip">
 <p class="admonition-title">Tip</p>
-<p>These values are stored in the <code>/etc/default/fusion</code> file on the device and can be hand-edited.  This is not recommended.</p>
+<p>These values are stored in the <code>/etc/default/fusion</code> file on the device and can be hand-edited.  The Web UI exposes the radar input topic, the fusion model, and the occupancy grid settings, the remaining keys described below are only available in the file.</p>
 </div>
 <h2 id="log-level">Log Level</h2>
-<p>Log level for the application, relevant sub-filters include 'maivin-fusion'.  Refer to <a href="https://docs.rs/env_logger/latest/env_logger/#enabling-logging">RUST_LOG documentation</a> for details.</p>
-<h2 id="radar-input-topic">Radar Input Topic</h2>
-<p>The radar topic to use for a source of targets.  This is typically <code>/radar/clusters</code> which provides better target stability compared to the raw <code>/radar/targets</code> topic.</p>
-<div class="admonition warning">
-<p class="admonition-title">Warning</p>
-<p>This setting is currently disabled and is being replaced by input topics for both radar and <abbr title="Light Detection and Ranging">LiDAR</abbr>.  These can be manually edited into the <code>/etc/default/fusion</code> file but this is not recommended.</p>
-</div>
-<h2 id="occlusion-angle-limit-and-occlusion-range-limit">Occlusion Angle Limit and Occlusion Range Limit</h2>
-<p>These settings are currently disabled.</p>
+<p>Log level for the application, relevant sub-filters include <code>edgefirst_fusion</code> and <code>zenoh</code>.  Refer to the <a href="https://docs.rs/env_logger/latest/env_logger/#enabling-logging">RUST_LOG documentation</a> for details.  Stored as <code>RUST_LOG</code> with a default of <code>info</code>.</p>
+<h2 id="sensor-input-topics">Sensor Input Topics</h2>
+<p>The late-fusion pipelines are enabled by setting their input topic, leaving a topic empty disables that pipeline.  Topic names are relative to the device <a href="../../../perception/topics/#hostname-namespaces">hostname namespace</a>.</p>
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>Raivin Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>RADAR_PCD_TOPIC</code></td>
+<td><code>radar/targets</code></td>
+<td>Radar point cloud input, <code>radar/clusters</code> provides better target stability when <a href="../radar/#clustering">clustering</a> is enabled</td>
+</tr>
+<tr>
+<td><code>LIDAR_PCD_TOPIC</code></td>
+<td></td>
+<td><abbr title="Light Detection and Ranging">LiDAR</abbr> point cloud input, <code>lidar/clusters</code> or <code>lidar/points</code></td>
+</tr>
+<tr>
+<td><code>VISION_MODEL_TOPIC</code></td>
+<td><code>model/output</code></td>
+<td>Unified vision model output with detection boxes and segmentation masks</td>
+</tr>
+<tr>
+<td><code>MODEL_INFO_TOPIC</code></td>
+<td><code>model/info</code></td>
+<td>Model information used to resolve label names to class indices</td>
+</tr>
+<tr>
+<td><code>INFO_TOPIC</code></td>
+<td><code>camera/info</code></td>
+<td>Camera intrinsics used to project sensor points onto the image</td>
+</tr>
+</tbody>
+</table>
+<p>The service also subscribes to <code>tf_static</code> for the camera, radar, and <abbr title="Light Detection and Ranging">LiDAR</abbr> extrinsics.  The Radar Input Topic field on the settings page maps to <code>RADAR_PCD_TOPIC</code>.</p>
+<h3 id="max-model-age">Max Model Age</h3>
+<p>Stored as <code>MAX_MODEL_AGE</code> with a default of <code>0.5</code> seconds, the maximum age of the vision model output relative to the current point cloud frame.  A warning is logged when stale model output is used for fusion, <code>0</code> disables the check.</p>
+<h2 id="fusion-output-topics">Fusion Output Topics</h2>
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>RADAR_OUTPUT_TOPIC</code></td>
+<td><code>fusion/radar</code></td>
+<td>Radar points annotated with <code>vision_class</code> and <code>instance_id</code>, active when the radar input is set</td>
+</tr>
+<tr>
+<td><code>LIDAR_OUTPUT_TOPIC</code></td>
+<td><code>fusion/lidar</code></td>
+<td><abbr title="Light Detection and Ranging">LiDAR</abbr> points annotated with <code>vision_class</code> and <code>instance_id</code>, active when the <abbr title="Light Detection and Ranging">LiDAR</abbr> input is set</td>
+</tr>
+<tr>
+<td><code>BBOX3D_TOPIC</code></td>
+<td><code>fusion/boxes3d</code></td>
+<td>3D bounding boxes from the clustered points</td>
+</tr>
+<tr>
+<td><code>BBOX3D_SRC</code></td>
+<td><code>radar</code></td>
+<td>Sensor source for the 3D boxes, <code>radar</code>, <code>lidar</code>, or <code>disabled</code></td>
+</tr>
+<tr>
+<td><code>GRID_TOPIC</code></td>
+<td><code>fusion/occupancy</code></td>
+<td>Occupancy grid</td>
+</tr>
+<tr>
+<td><code>GRID_SRC</code></td>
+<td><code>radar</code></td>
+<td>Sensor source for the occupancy grid, <code>radar</code>, <code>lidar</code>, or <code>disabled</code></td>
+</tr>
+</tbody>
+</table>
+<h2 id="radar-fusion-model">Radar Fusion Model</h2>
+<p>The radar fusion model pipeline runs a <a href="../../../models/fusion/">RadarExp</a> model on the radar cube and camera frames to predict a bird's eye view occupancy grid.  The Raivin ships with the ultra-short range RadarExp models under <code>/usr/share/edgefirst/fusion/</code>, the pipeline is disabled until a model is configured.  Refer to <a href="../../software/model_uploads/">Uploading Models</a> for deploying a model trained in EdgeFirst Studio.</p>
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>MODEL</code></td>
+<td></td>
+<td>Path to the radar fusion model (<abbr title="TensorFlow Lite">TFLite</abbr>), empty disables the pipeline.  The "The Radar model" field on the settings page</td>
+</tr>
+<tr>
+<td><code>MODEL_DECODER</code></td>
+<td></td>
+<td>Optional second-stage decoder model for two-stage fusion models</td>
+</tr>
+<tr>
+<td><code>CAMERA_TOPIC</code></td>
+<td><code>camera/frame</code></td>
+<td>Camera frame input for the fusion model</td>
+</tr>
+<tr>
+<td><code>RADARCUBE_TOPIC</code></td>
+<td><code>radar/cube</code></td>
+<td>Radar cube input, requires the <a href="../radar/#enable-cube">radar cube</a> to be enabled</td>
+</tr>
+<tr>
+<td><code>MODEL_OUTPUT_TOPIC</code></td>
+<td><code>fusion/model_output</code></td>
+<td>Fusion model prediction output published as a mask</td>
+</tr>
+<tr>
+<td><code>MODEL_POLAR</code></td>
+<td><code>false</code></td>
+<td>Interpret the model output grid as polar coordinates</td>
+</tr>
+<tr>
+<td><code>MODEL_THRESHOLD</code></td>
+<td><code>0.5</code></td>
+<td>Confidence threshold applied to the model output.  The "Threshold" field on the settings page</td>
+</tr>
+<tr>
+<td><code>MODEL_GRID_SIZE</code></td>
+<td><code>1 1</code></td>
+<td>Real-world size (length width) in meters of each output cell, width in degrees when polar</td>
+</tr>
+<tr>
+<td><code>LOGITS</code></td>
+<td><code>true</code></td>
+<td>Apply the sigmoid function to the raw model outputs</td>
+</tr>
+<tr>
+<td><code>ENGINE</code></td>
+<td><code>npu</code></td>
+<td>Inference engine, <code>npu</code>, <code>cpu</code>, or <code>gpu</code></td>
+</tr>
+</tbody>
+</table>
+<h2 id="tracking">Tracking</h2>
+<p>The ByteTrack tracker reduces flickering in the radar fusion model output and provides persistent track identifiers for the 3D bounding boxes.</p>
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>TRACK</code></td>
+<td><code>false</code></td>
+<td>Enable the tracker</td>
+</tr>
+<tr>
+<td><code>TRACK_EXTRA_LIFESPAN</code></td>
+<td><code>0.5</code></td>
+<td>Seconds a tracked object may be missing before its track is removed</td>
+</tr>
+<tr>
+<td><code>TRACK_IOU</code></td>
+<td><code>0.1</code></td>
+<td><abbr title="Intersection over Union">IoU</abbr> threshold for associating detections with existing tracks</td>
+</tr>
+<tr>
+<td><code>TRACK_UPDATE</code></td>
+<td><code>0.4</code></td>
+<td>Kalman filter update factor from <code>0.0</code> to <code>1.0</code></td>
+</tr>
+</tbody>
+</table>
 <h2 id="occupancy-settings">Occupancy Settings</h2>
-<p>The following settings are only used when the radar <abbr title="Point Cloud">PCD</abbr> is unclustered, usually by setting the radar input topic to <code>/radar/targets</code> instead of <code>/radar/clusters</code>.  These settings configure the way Fusion service generates occupancy output from the unclustered radar <abbr title="Point Cloud">PCD</abbr>.</p>
-<h3 id="threshold">Threshold</h3>
-<p>The number of required targets to acknowledge the target as real as opposed to noise that is filtered out.</p>
+<p>The range and angle bins interpret the radar fusion model output and generate the occupancy grid when the input point cloud is not clustered, for example when the radar input topic is <code>radar/targets</code> instead of <code>radar/clusters</code>.  When the input is clustered, the occupancy grid contains one point per cluster located at its centroid.</p>
 <h3 id="range-bin-limit">Range Bin Limit</h3>
-<p>The minimum and maximum range to use for range bins, in meters.</p>
+<p>The minimum and maximum range to use for range bins, in meters.  Stored as <code>RANGE_BIN_LIMIT</code> with a default of <code>0 16</code>.</p>
 <h3 id="range-bin-width">Range Bin Width</h3>
-<p>The size of each range bin, in meters.</p>
+<p>The size of each range bin, in meters.  Stored as <code>RANGE_BIN_WIDTH</code> with a default of <code>1.0</code>.</p>
 <h3 id="angle-bin-limit">Angle Bin Limit</h3>
-<p>The minimum and maximum angles, in degrees, to use for angle bins. 0 degrees is forward.</p>
+<p>The minimum and maximum angles, in degrees, to use for angle bins.  0 degrees is forward.  Stored as <code>ANGLE_BIN_LIMIT</code> with a default of <code>-55 55</code>.</p>
 <h3 id="angle-bin-width">Angle Bin Width</h3>
-<p>The size of each angle bin, in degrees.</p>
+<p>The size of each angle bin, in degrees.  Stored as <code>ANGLE_BIN_WIDTH</code> with a default of <code>6.875</code>.</p>
+<h3 id="threshold">Threshold</h3>
+<p>The number of required targets in a bin to acknowledge the target as real as opposed to noise that is filtered out.  Only used in unclustered mode.  Stored as <code>THRESHOLD</code> with a default of <code>1</code>.</p>
 <h3 id="bin-delay">Bin Delay</h3>
-<p>Bin delay in radar message count.  Each cell needs to be valid for "bin delay" frames before it is drawn. The cell stops being drawn after being invalid for "bin delay" frames.</p>
+<p>Bin delay in radar message count.  Each cell needs to be valid for "bin delay" frames before it is drawn.  The cell stops being drawn after being invalid for "bin delay" frames.  Only used in unclustered mode.  Stored as <code>BIN_DELAY</code> with a default of <code>3</code>.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The Occlusion Angle Limit and Occlusion Range Limit fields on the settings page are not used by the current fusion service.</p>
+</div>
 
 
 

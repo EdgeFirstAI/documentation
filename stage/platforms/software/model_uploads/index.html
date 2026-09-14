@@ -1239,8 +1239,6 @@
       
         
       
-        
-      
     
     
     
@@ -1901,13 +1899,14 @@
 
 
 <h1 id="uploading-models">Uploading Models</h1>
-<p>This walkthrough describes how to upload new ModelPack 2D vision models and radar-vision fusion models to the Raivin.  </p>
+<p>This walkthrough describes how to upload new 2D vision models and radar-vision fusion models to the Raivin.  </p>
 <div class="admonition note">
 <p class="admonition-title">Maivin Instructions</p>
 <p>The examples below are based on a Raivin platform, however, the same instructions can be applied to a Maivin platform for uploading 2D vision models only.</p>
 </div>
 <h2 id="getting-new-models">Getting New Models</h2>
-<p>You can <a href="../../../models/">train models using EdgeFirst Studio</a>, both <a href="../../../models/training/vision/">Vision models</a> and <a href="../../../models/training/fusion/">Fusion Radar models</a>.  Once the models are trained, they can be downloaded from their respective, completed training sessions.</p>
+<p>You can <a href="../../../models/">train models using EdgeFirst Studio</a>, both <a href="../../../models/training/vision/">Vision models</a> and <a href="../../../models/training/fusion/">Fusion Radar models</a>.  Once the models are trained, they can be downloaded from their respective, completed training sessions.  The Model service accepts quantized <abbr title="TensorFlow Lite">TFLite</abbr> models with the EdgeFirst configuration embedded, which is how EdgeFirst Studio exports <a href="../../../models/modelpack/">ModelPack</a> and <a href="../../../models/ultralytics/">Ultralytics</a> models for the i.MX 8M Plus.</p>
+<p>The models shipped with the device are installed under <code>/usr/share/edgefirst/modelzoo/</code> for the vision model and <code>/usr/share/edgefirst/fusion/</code> for the RadarExp fusion models.  These directories are part of the read-only operating system image, uploaded models are stored under the <code>torizon</code> user home directory instead.</p>
 <h2 id="uploading-models-to-the-raivin">Uploading Models to the Raivin</h2>
 <p>In the <a href="../../networking/ssh/#secure-copy">SCP section in the <abbr title="Secure Shell">SSH</abbr> Tutorial</a>, files can be uploaded to the Raivin using the command:</p>
 <div class="highlight"><pre><span></span><code>scp<span class="w"> </span>input_file<span class="w"> </span>torizon@verdin-imx8mp-XXXXXXX:.
@@ -1916,20 +1915,20 @@
 <p class="admonition-title">Note</p>
 <p>The above command assumes you have an <abbr title="Secure Shell">SSH</abbr> client, such as OpenSSH, installed.  Please review the <a href="../../networking/ssh/"><abbr title="Secure Shell">SSH</abbr> documentation</a> to confirm.</p>
 </div>
-<p>For the following examples, we will have the Fusion model of <code>fusion.tflite</code> and the ModelPack model <code>modelpack.rtm</code> that we want to upload to target device <code>verdin-imx8mp-07130049</code>.</p>
+<p>For the following examples, we will have the Fusion model of <code>fusion.tflite</code> and the ModelPack model <code>modelpack.tflite</code> that we want to upload to target device <code>verdin-imx8mp-07130049</code>.</p>
 <p>First, we need to upload the files to the Raivin target using SCP:</p>
 <div class="highlight"><pre><span></span><code>scp<span class="w"> </span>fusion.tflite<span class="w"> </span>torizon@verdin-imx8mp-07130049:.
-scp<span class="w"> </span>modelpack.rtm<span class="w"> </span>torizon@verdin-imx8mp-07130049:.
+scp<span class="w"> </span>modelpack.tflite<span class="w"> </span>torizon@verdin-imx8mp-07130049:.
 </code></pre></div>
 <p>We should be able to confirm the files are there by using commands via <abbr title="Secure Shell">SSH</abbr>.</p>
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span>ssh<span class="w"> </span>torizon@verdin-imx8mp-07130049<span class="w"> </span>ls<span class="w"> </span>fusion.rtm<span class="w"> </span>modelpack.rtm
-fusion.tflite<span class="w">  </span>modelpack.rtm
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>ssh<span class="w"> </span>torizon@verdin-imx8mp-07130049<span class="w"> </span>ls<span class="w"> </span>fusion.tflite<span class="w"> </span>modelpack.tflite
+fusion.tflite<span class="w">  </span>modelpack.tflite
 </code></pre></div>
-<p>These files will be the <code>/home/torizon</code> directory, so their absolute filenames will be <code>/home/torizon/fusion.tflite</code> and <code>/home/torizon/modelpack.rtm</code>.  Once the files have been uploaded, we can then configure the device with the files.</p>
+<p>These files will be the <code>/home/torizon</code> directory, so their absolute filenames will be <code>/home/torizon/fusion.tflite</code> and <code>/home/torizon/modelpack.tflite</code>.  Once the files have been uploaded, we can then configure the device with the files.</p>
 <h2 id="deploying-a-new-model-to-the-model-service">Deploying a New Model to the Model Service</h2>
 <p>There are two ways to deploy a new, 2D model to the Raivin's Model Service: the Web UI Interface or via the command-line.</p>
 <h3 id="from-the-raivin-web-ui">From the Raivin Web UI</h3>
-<p>From the <a href="../../configuration/model/">Model Service Configuration page</a>, enter the absolute filename <code>/home/torizon/modelpack.tflite</code> in the "MODEL" text-box.  Also, confirm the "Draw Boxes" check box is enabled, as the current trainer only supports 2D Box detection.  Hit the "Save Configuration" box and continue on.</p>
+<p>From the <a href="../../configuration/model/">Model Service Configuration page</a>, enter the absolute filename <code>/home/torizon/modelpack.tflite</code> in the "MODEL" text-box.  Hit the "Save Configuration" button, the page reports when the model service has restarted with the new configuration.</p>
 <figure>
             <img align="center" alt="Model Configuration Page" src="../../../models/assets/deployment/model_location_webui.png" />
             <figcaption>Model Configuration Page</figcaption>
@@ -1941,35 +1940,34 @@ fusion.tflite<span class="w">  </span>modelpack.rtm
 <div class="highlight"><pre><span></span><code>ssh<span class="w"> </span>torizon@verdin-imx8mp-15141030
 </code></pre></div>
 <p>and edit the model parameters in <code>/etc/default/model</code></p>
-<div class="highlight"><pre><span></span><code>vi<span class="w"> </span>/etc/default/model
+<div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>vi<span class="w"> </span>/etc/default/model
 </code></pre></div>
 <p>then restart the model service using the <code>systemctl</code> command</p>
-<div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>systemctl<span class="w"> </span>stop<span class="w"> </span>model
-sudo<span class="w"> </span>systemctl<span class="w"> </span>start<span class="w"> </span>model
+<div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>systemctl<span class="w"> </span>restart<span class="w"> </span>model
 </code></pre></div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>Remember to use <strong>sudo</strong> to start and stop model services</p>
+<p>Remember to use <strong>sudo</strong> to edit the configuration and to restart the model service.</p>
 </div>
-<p>Now that the model is running, open the Raivin's Web UI, go to the <a href="../../quickstart/raivin/webui/#the-segmentation-page">Segmentation Page</a>, and check the camera to see the model's detections.  </p>
+<p>Now that the model is running, open the Raivin's Web UI, go to the <a href="../../quickstart/raivin/webui/#the-camera-page">Camera Page</a>, enable the segmentation overlay, and check the camera to see the model's detections.  </p>
 <figure>
-            <img align="center" alt="Deployment Results" src="../../../models/assets/deployment/deployment-results.png" />
+            <img align="center" alt="Deployment Results" src="../../../models/assets/deployment/segmentation-sample-1.png" />
             <figcaption>Deployment Results</figcaption>
             </figure>
 <h2 id="deploying-a-new-model-to-the-fusion-service">Deploying a New Model to the Fusion Service</h2>
-<p>As the Fusion Service Configuration page does not currently have a line item for Model, you will need to <abbr title="Secure Shell">SSH</abbr> into the device and edit the <code>/etc/default/fusion</code> file, using the following the command:</p>
+<p>The Fusion Service model can be configured from the "The Radar model" field of the <a href="../../configuration/fusion/">Fusion Settings page</a>, or by <abbr title="Secure Shell">SSH</abbr> into the device and editing the <code>/etc/default/fusion</code> file, using the following the command:</p>
 <div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>vi<span class="w"> </span>/etc/default/fusion
 </code></pre></div>
-<p>Change the model line to point to the new Fusion model <code>/home/torizon/fusion.tflite</code>:</p>
-<div class="highlight"><pre><span></span><code><span class="c1"># The radar model</span>
-<span class="na">MODEL</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"/usr/share/fusion/radarexp-ultra-short.tflite"</span>
-<span class="c1">#MODEL = "/home/torizon/fusion.tflite"</span>
+<p>Change the model line to point to the new Fusion model <code>/home/torizon/fusion.tflite</code>.  The fusion model pipeline is disabled while this setting is empty, the RadarExp models shipped with the Raivin are available under <code>/usr/share/edgefirst/fusion/</code>.</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># Path to the radar-camera fusion model (TFLite).</span>
+<span class="na">MODEL</span><span class="o">=</span><span class="s">"/home/torizon/fusion.tflite"</span>
+<span class="c1">#MODEL="/usr/share/edgefirst/fusion/radarexp-ultra-short.tflite"</span>
 </code></pre></div>
-<p>After that, restart the Fusion Service using the following command:</p>
-<div class="highlight"><pre><span></span><code>systemctl<span class="w"> </span>restart<span class="w"> </span>fusion
+<p>The fusion model requires the <a href="../../configuration/radar/#enable-cube">radar cube</a> to be enabled on the radar publisher.  After that, restart the Fusion Service using the following command:</p>
+<div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>systemctl<span class="w"> </span>restart<span class="w"> </span>fusion
 </code></pre></div>
 <h2 id="summary">Summary</h2>
-<p>At this point, the new models should be uploaded to the Raivin and you should be able to see the outputs on the <a href="../../quickstart/raivin/webui/#the-segmentation-page">Segmentation View page</a>.</p>
+<p>At this point, the new models should be uploaded to the Raivin and you should be able to see the outputs on the <a href="../../quickstart/raivin/webui/#the-camera-page">Camera page</a> with the segmentation overlay enabled and, for fusion models, on the <a href="../../quickstart/raivin/webui/#the-radar-page">Radar page</a>.</p>
 
 
 

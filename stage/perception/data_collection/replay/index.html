@@ -1340,6 +1340,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Configuration
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#status-monitoring" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -1986,6 +1997,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Configuration
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#status-monitoring" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2093,6 +2115,10 @@
 <h1 id="mcap-replay-service"><abbr title="Binary container format for robotics log data">MCAP</abbr> Replay Service</h1>
 <h2 id="overview">Overview</h2>
 <p>The Replay Service allows users to play back previously recorded <abbr title="Binary container format for robotics log data">MCAP</abbr> files, enabling detailed analysis of <abbr title="Binary container format for robotics log data">MCAP</abbr> data. This service provides flexible playback options and integrates with live fusion and model data for comprehensive testing and validation.</p>
+<div class="admonition warning">
+<p class="admonition-title">Torizon for Maivin 2026.08</p>
+<p>The Replay service included in Torizon for Maivin 2026.08.0 predates the hostname namespace and EdgeFirst Schemas 4.0 migration of the other services and was not verified for this release.  Replayed camera frames are not consumed by the current Model service and radar, <abbr title="Light Detection and Ranging">LiDAR</abbr>, and fusion replay were not tested.  Refer to the <a href="../../../platforms/software/issues/#replay-service-not-verified-on-2026080">Known Issues</a> and prefer <a href="../foxglove/">Foxglove Studio</a> for reviewing recordings.</p>
+</div>
 <h3 id="how-it-works">How It Works</h3>
 <p>The Replay Service offers:</p>
 <ul>
@@ -2171,6 +2197,39 @@
 </li>
 <li>Mix and match recorded and live data sources based on your testing needs</li>
 </ul>
+<h2 id="configuration">Configuration</h2>
+<p>The Replay service is started by the Web UI with the selected recording, the remaining settings are stored in <code>/etc/default/replay</code> following the same conventions as the other <a href="../../../platforms/configuration/#configuration-files">service configuration files</a>.</p>
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>MCAP</code></td>
+<td></td>
+<td>Path to the <abbr title="Binary container format for robotics log data">MCAP</abbr> recording to replay, set by the Web UI</td>
+</tr>
+<tr>
+<td><code>REPLAY_SPEED</code></td>
+<td><code>1.0</code></td>
+<td>Playback speed multiplier, <code>0.5</code> is half speed and <code>2.0</code> double speed</td>
+</tr>
+<tr>
+<td><code>TOPICS</code></td>
+<td></td>
+<td>Space-separated list of topics to publish from the recording, all topics when empty</td>
+</tr>
+<tr>
+<td><code>IGNORE_TOPICS</code></td>
+<td></td>
+<td>Space-separated list of topics to skip, the Web UI uses this to keep the live model or fusion output</td>
+</tr>
+</tbody>
+</table>
 <h2 id="status-monitoring">Status Monitoring</h2>
 <p>This section describes the various states the system can be in and how they are reported.</p>
 <h3 id="status-indicator-button-maivinraivin-only">Status Indicator Button (Maivin/Raivin only)</h3>

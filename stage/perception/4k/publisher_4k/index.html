@@ -2727,7 +2727,7 @@
 <li><code>/camera/h264/bl</code> (Bottom Left)</li>
 <li><code>/camera/h264/br</code> (Bottom Right)</li>
 </ul>
-<p>Each topic must contain H.264 encoded video data.</p>
+<p>Each topic must contain H.264 encoded video data.  The publisher detects recordings carrying a hostname prefix or the legacy <code>rt/</code> prefix on the tile topics automatically.</p>
 <h3 id="2-tile-processing-pipeline">2. Tile Processing Pipeline</h3>
 <div class="highlight"><pre><span></span><code>MCAP File → H.264 Decode → Tile Stitching → 4K JPEG → ZIP Export
 </code></pre></div>
@@ -2761,11 +2761,15 @@
 <li>Falls back to original images when no stitched frames are available</li>
 </ul>
 <h2 id="recording-the-4k-topics">Recording the 4K Topics</h2>
-<p>The <a href="../../data_collection/recording/">Recording Service</a>, by default, <a href="../../../platforms/configuration/mcap_recording/#caveats">cannot be configured through the Web UI to capture the 4K video tiling topics</a>, but it can be <a href="../../../platforms/configuration/mcap_recording/#adding-topics-manually-to-the-recording-service">configured manually</a>. Please follow the instructions here to configure the recorder service before starting to record the 4K streams.</p>
+<p>The <a href="../../data_collection/recording/">Recording Service</a> records every published topic by default, including the four tile topics once <a href="../camera_4k/">tiling is enabled</a>.  If the recorder was configured with an explicit topic list, the tile topics must be <a href="../../../platforms/configuration/mcap_recording/#adding-topics-manually-to-the-recording-service">added manually</a> before recording the 4K streams.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Stitching 4K tiled recordings of about 60 seconds or longer can exhaust the device memory, refer to the <a href="../../../platforms/software/issues/#publisher-4k-tile-stitching-runs-out-of-memory-edgeai-1470">Known Issues</a>.  Record short clips when using the tile topics and stop the <code>camera</code> and <code>model</code> services before running the publisher on the device.</p>
+</div>
 <h2 id="usage">Usage</h2>
 <p>The Publisher binary is included on the platform and you must <a href="../../../platforms/networking/ssh/"><abbr title="Secure Shell">SSH</abbr></a> onto platform to run the command.</p>
 <h3 id="command-line">Command Line</h3>
-<div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>publisher<span class="w"> </span>zip<span class="w"> </span>--out<span class="w"> </span><span class="nb">test</span><span class="w"> </span>your_file.mcap
+<div class="highlight"><pre><span></span><code>publisher<span class="w"> </span>zip<span class="w"> </span>--out<span class="w"> </span><span class="nb">test</span><span class="w"> </span>your_file.mcap
 </code></pre></div>
 <p>The system automatically detects tile topics and switches to stitching mode - no additional flags required.</p>
 <h3 id="output">Output</h3>

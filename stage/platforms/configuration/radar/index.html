@@ -1241,8 +1241,6 @@
       
         
       
-        
-      
     
     
     
@@ -1340,34 +1338,6 @@
     
   
     Camera Settings
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../webui/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Web UI Settings
   
 
     
@@ -1638,6 +1608,28 @@
         
       </ul>
     </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mirror" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Mirror
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#radar-transform" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Radar Transform
+      
+    </span>
+  </a>
   
 </li>
       
@@ -2065,6 +2057,28 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#mirror" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Mirror
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#radar-transform" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Radar Transform
+      
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -2132,54 +2146,91 @@
 
 
 <h1 id="radar-settings-raivin-only">Radar Settings (Raivin-only)</h1>
-<p>This page configures the radar publishing service that interacts with the Raivin's integrated <a href="https://www.smartmicro.com/automotive-radar/drvegrd-line#c20151">DRVEGRD-169 radar module</a> from <a href="https://www.smartmicro.com/">smartmicro</a>.  With the exception of the H.264 Bitrate and maybe camera or stream sizes, it is not recommended that you change these settings.</p>
+<p>This page configures the radar publishing service that interacts with the Raivin's integrated <a href="https://www.smartmicro.com/automotive-radar/drvegrd-line#c20151">DRVEGRD-169 radar module</a> from <a href="https://www.smartmicro.com/">smartmicro</a>.  With the exception of the frequency sweep and clustering options, it is not recommended that you change these settings.</p>
 <figure>
             <img align="center" alt="Radar Settings page" src="../../assets/configuration/configuration-radarpub.png" />
             <figcaption>Radar Settings page</figcaption>
             </figure>
 <div class="admonition tip">
 <p class="admonition-title">Tip</p>
-<p>These values are stored in the <code>/etc/default/radarpub</code> file on the device and can be hand-edited.  This is not recommended.</p>
+<p>These values are stored in the <code>/etc/default/radarpub</code> file on the device and can be hand-edited.  The Web UI exposes the radar and clustering settings, the transform and topic keys described below are only available in the file.</p>
 </div>
 <h2 id="log-level">Log Level</h2>
-<p>Log level for the application, relevant sub-filters are radarpub and drvegrd refer to <a href="https://docs.rs/env_logger/latest/env_logger/#enabling-logging">RUST_LOG documentation</a> for details.</p>
+<p>Log level for the application, relevant sub-filters are <code>radarpub</code> and <code>drvegrd</code>, refer to the <a href="https://docs.rs/env_logger/latest/env_logger/#enabling-logging">RUST_LOG documentation</a> for details.  Stored as <code>RUST_LOG</code> with a default of <code>info</code>.</p>
 <h2 id="center-frequency">Center Frequency</h2>
-<p>Radar center frequency band.  The low option is required when using the ultra-short FREQUENCY_SWEEP option. Options are 'low', 'medium', and 'high'.</p>
+<p>Radar center frequency band.  The low option is required when using the ultra-short frequency sweep option.  Options are <code>low</code>, <code>medium</code>, and <code>high</code>.  Stored as <code>CENTER_FREQUENCY</code>, the Raivin default is <code>low</code>.</p>
 <h2 id="frequency-sweep">Frequency Sweep</h2>
 <p>The frequency sweep controls the detection range of the radar.  The following breakdown gives a general range at which a vehicle-type object should be detected.</p>
 <ul>
-<li>ultra-short: 9m (requires CENTER_FREQUENCY="low")</li>
+<li>ultra-short: 9m (requires the low center frequency)</li>
 <li>short: 19m</li>
 <li>medium: 56m</li>
 <li>long: 130m</li>
 </ul>
+<p>Stored as <code>FREQUENCY_SWEEP</code>, the Raivin default is <code>ultra-short</code> which matches the shipped RadarExp fusion models.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>Ultra-short range (in Frequency Sweep) only works with Low Center frequency.</p>
+<p>Ultra-short range (in Frequency Sweep) only works with the low center frequency.</p>
 </div>
 <h2 id="range-toggle">Range Toggle</h2>
-<p>The range-toggle mode allows the radar to alternate between various frequency sweep configurations.  Applications must handle range toggling as targets will not be consistent between messages as the frequency alternates.</p>
+<p>The range-toggle mode allows the radar to alternate between two frequency sweep configurations.  Applications must handle range toggling as targets will not be consistent between messages as the frequency alternates.</p>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
-<p>The radar cube model does NOT currently handle alternating frequencies as it requires the dataset to be captured at a specific frequency sweep config.</p>
+<p>The radar cube model does NOT currently handle alternating frequencies as it requires the dataset to be captured at a specific frequency sweep configuration.</p>
 </div>
-<p>Options are 'off', 'short-medium', 'short-long', 'medium-long', 'long-ultra-short', 'medium-ultra-short', and 'short-ultra-short'.</p>
+<p>Options are <code>off</code>, <code>short-medium</code>, <code>short-long</code>, <code>medium-long</code>, <code>long-ultra-short</code>, <code>medium-ultra-short</code>, and <code>short-ultra-short</code>.  Stored as <code>RANGE_TOGGLE</code> with a default of <code>off</code>.</p>
 <h2 id="detection-sensitivity">Detection Sensitivity</h2>
-<p>The detection sensitivity only affects the radar target list (point-cloud) and controls the sensitivity to recognize a target.  The default is 'medium', the 'low' and 'high' sensitivity options will result in less and more targets, respectively.</p>
+<p>The detection sensitivity only affects the radar target list (point cloud) and controls the sensitivity to recognize a target.  The default is <code>medium</code>, the <code>low</code> and <code>high</code> sensitivity options will result in less and more targets, respectively.  Stored as <code>DETECTION_SENSITIVITY</code>.</p>
 <h2 id="enable-cube">Enable Cube</h2>
-<p>Enable streaming the low-level radar cube.  This can be used by the low-level radar fusion model or to record <abbr title="Binary container format for robotics log data">MCAP</abbr> files for the purpose of training this model.  The radar cube capture consumes approximately 240mbps bandwidth over the private Raivin ethernet connection and approximately 75% of one of the CPU cores, enable it when required but otherwise should be left disabled.</p>
+<p>Enable streaming the low-level radar cube on the <code>radar/cube</code> topic.  This can be used by the low-level radar fusion model or to record <abbr title="Binary container format for robotics log data">MCAP</abbr> files for the purpose of training this model.  The radar cube capture consumes approximately 240 Mbps of bandwidth over the private Raivin Ethernet connection and approximately 75% of one of the CPU cores, enable it when required but otherwise it should be left disabled.  Stored as <code>CUBE</code> with a default of <code>false</code>.</p>
 <h2 id="clustering-options">Clustering Options</h2>
-<p>The following settings enables and configures clustering the radar targets.</p>
+<p>The following settings enable and configure clustering the radar targets.</p>
 <h3 id="clustering">Clustering</h3>
-<p>Enable clustering the radar targets into the <code>/radar/clusters</code> topic.</p>
+<p>Enable clustering the radar targets into the <code>radar/clusters</code> topic using the Density-Based Spatial Clustering of Applications with Noise (<abbr title="Density-Based Spatial Clustering of Applications with Noise">DBSCAN</abbr>) algorithm.  Stored as <code>CLUSTERING</code> with a default of <code>false</code>.</p>
 <h3 id="window-size">Window Size</h3>
-<p>Temporal clustering of the radar targets using the window size.  The window size is the number of frames to cluster, each frame representing 55ms.  The window clustering is a rolling window so it does not incur any additional latency.</p>
+<p>Temporal clustering of the radar targets using the window size.  The window size is the number of frames to cluster, each frame representing 55ms.  The window clustering is a rolling window so it does not incur any additional latency.  Stored as <code>WINDOW_SIZE</code> with a default of <code>6</code>.</p>
 <h3 id="clustering-eps">Clustering EPS</h3>
-<p>The epsilon value to be used for Density-Based Spatial Clustering and Application with Noise (DBSCAN) clustering. Higher values mean points further from each other can be clustered together.</p>
+<p>The epsilon value to be used for <abbr title="Density-Based Spatial Clustering of Applications with Noise">DBSCAN</abbr> clustering.  Higher values mean points further from each other can be clustered together.  Stored as <code>CLUSTERING_EPS</code> with a default of <code>1</code>.</p>
 <h3 id="clustering-parameter-scale">Clustering Parameter Scale</h3>
-<p>Clustering DBSCAN parameter scaling. Parameter order is x, y, z, speed. Set the appropriate axis to 0 to ignore that axis. Default setting of <code>[0.5 1.0 0.0 0.0]</code> means that only xy distances are taken into account.</p>
+<p>Clustering <abbr title="Density-Based Spatial Clustering of Applications with Noise">DBSCAN</abbr> parameter scaling.  Parameter order is x, y, z, speed.  Set the appropriate axis to 0 to ignore that axis.  The default setting of <code>1 1 0 0</code> means that only xy distances are taken into account.  Stored as <code>CLUSTERING_PARAM_SCALE</code>.</p>
 <h3 id="clustering-point-limit">Clustering Point Limit</h3>
-<p>The minimum number of points per cluster for DBSCAN clustering.</p>
+<p>The minimum number of points per cluster for <abbr title="Density-Based Spatial Clustering of Applications with Noise">DBSCAN</abbr> clustering, the minimum value is 3.  Stored as <code>CLUSTERING_POINT_LIMIT</code> with a default of <code>5</code>.</p>
+<h2 id="mirror">Mirror</h2>
+<p>Mirror the radar detection coordinates to correct for the radar mounting orientation.  Stored as <code>MIRROR</code> with a default of <code>false</code>, this setting is only available in the file.</p>
+<h2 id="radar-transform">Radar Transform</h2>
+<p>The radar service publishes the static transform from the platform <code>base_link</code> frame to the radar frame on <code>tf_static</code>.  These settings are only available in the file.</p>
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>RADAR_TF_VEC</code></td>
+<td><code>0 0 0</code></td>
+<td>Translation (x y z) in meters from <code>base_link</code> to the radar</td>
+</tr>
+<tr>
+<td><code>RADAR_TF_QUAT</code></td>
+<td><code>0 0 0 1</code></td>
+<td>Rotation quaternion (x y z w) from <code>base_link</code> to the radar</td>
+</tr>
+<tr>
+<td><code>BASE_FRAME_ID</code></td>
+<td><code>base_link</code></td>
+<td>Frame ID of the platform base</td>
+</tr>
+<tr>
+<td><code>RADAR_FRAME_ID</code></td>
+<td><code>radar</code></td>
+<td>Frame ID of the radar</td>
+</tr>
+</tbody>
+</table>
+<p>The <a href="../../../perception/topics/radar/">radar topics</a> are published relative to the device <a href="../../../perception/topics/#hostname-namespaces">hostname namespace</a>.</p>
 
 
 

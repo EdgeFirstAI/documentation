@@ -1854,8 +1854,6 @@
       
         
       
-        
-      
     
     
     
@@ -2224,8 +2222,8 @@
             </figure>
 <p>The Maivin configuration is a vision-only platform that provides a vision-based perception stack for use in harsh environments, providing an IP66/67 waterproof enclosure and connectors.  The Maivin platform is built on the <a href="https://www.nxp.com/products/i.MX8MPLUS">NXP i.MX 8M Plus</a> processor which includes a 2 <abbr title="Trillion Operations Per Second">TOPS</abbr> AI accelerator.  The <a href="../../../perception/">EdgeFirst Perception Middleware</a> leverages the AI-accelerator enabling this vision sensor to be deployed in the field to deliver real-time edge perception applications.</p>
 <h2 id="system-architecture">System Architecture</h2>
-<p>The Maivin runs a Linux operating system based on Toradex's Torizon, we refer to the operating system as Torizon for Maivin.  The operating system packages include common libraries and tools you would expect to find on a typical embedded Linux operating system focused on computer vision and AI (Python, OpenCV, etc...).  </p>
-<p>Central to the EdgeFirst Platforms is the EdgeFirst Perception Middleware, what we call our collection of applications and libraries used in the implementation of the perception stack.  The details of the low-level libraries are covered in the <a href="../../../perception/">EdgeFirst Perception Developer Guide</a>, for this document we focus on describing the application services and how they fit together to deliver the perception middleware.</p>
+<p>The Maivin runs a Linux operating system based on Toradex's <a href="https://www.toradex.com/torizon">Torizon OS 7</a>, we refer to the operating system as Torizon for Maivin.  The operating system packages include common libraries and tools you would expect to find on a typical embedded Linux operating system focused on computer vision and AI (Python, OpenCV, GStreamer, etc...) along with the Docker container engine for user applications.  Refer to the <a href="../../software/release_notes/">Release Notes</a> for the versions included in the current release and to <a href="../../software/updates/">Software Updates</a> for keeping the platform up to date.</p>
+<p>Central to the EdgeFirst Platforms is the EdgeFirst Perception Middleware, what we call our collection of applications and libraries used in the implementation of the perception stack.  On the Maivin these applications run natively as systemd services with direct access to the <abbr title="Image Signal Processor">ISP</abbr>, <abbr title="Neural Processing Unit">NPU</abbr>, and video codec hardware.  The camera, model, <abbr title="Inertial Measurement Unit">IMU</abbr>, <abbr title="Global Positioning System">GPS</abbr>, and web services are pre-configured and running at first boot, while the radar, <abbr title="Light Detection and Ranging">LiDAR</abbr>, fusion, and recording services are installed but only enabled when required.  The details of the low-level libraries are covered in the <a href="../../../perception/dev/">EdgeFirst Perception Developer Guide</a>, for this document we focus on describing the application services and how they fit together to deliver the perception middleware.</p>
 <p>In this Quick Start, you will find instructions for:</p>
 <ol>
 <li><a href="setup/">Setting up your Maivin</a></li>

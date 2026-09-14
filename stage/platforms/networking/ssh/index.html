@@ -1237,8 +1237,6 @@
       
         
       
-        
-      
     
     
     
@@ -1955,24 +1953,24 @@ Jan<span class="w"> </span><span class="m">29</span><span class="w"> </span><spa
 </code></pre></div>
 <h4 id="web-ui">Web UI</h4>
 <p>Check the status of the Web UI</p>
-<div class="highlight"><pre><span></span><code>systemctl<span class="w"> </span>status<span class="w"> </span>webui
+<div class="highlight"><pre><span></span><code>systemctl<span class="w"> </span>status<span class="w"> </span>websrv
 </code></pre></div>
 <p>If the Web UI is inactive, the following status will be displayed on the terminal.</p>
-<div class="highlight"><pre><span></span><code>○<span class="w"> </span>webui.service<span class="w"> </span>-<span class="w"> </span>Maivin<span class="w"> </span>Web<span class="w"> </span>UI<span class="w"> </span>Server
-<span class="w">     </span>Loaded:<span class="w"> </span>loaded<span class="w"> </span><span class="o">(</span>/usr/lib/systemd/system/webui.service<span class="p">;</span><span class="w"> </span>enabled<span class="p">;</span><span class="w"> </span>vendor<span class="w"> </span>preset:<span class="w"> </span>enabled<span class="o">)</span>
+<div class="highlight"><pre><span></span><code>○<span class="w"> </span>websrv.service<span class="w"> </span>-<span class="w"> </span>Maivin<span class="w"> </span>Web<span class="w"> </span>UI<span class="w"> </span>Server
+<span class="w">     </span>Loaded:<span class="w"> </span>loaded<span class="w"> </span><span class="o">(</span>/usr/lib/systemd/system/websrv.service<span class="p">;</span><span class="w"> </span>enabled<span class="p">;</span><span class="w"> </span>vendor<span class="w"> </span>preset:<span class="w"> </span>enabled<span class="o">)</span>
 <span class="w">     </span>Active:<span class="w"> </span>inactive<span class="w"> </span><span class="o">(</span>dead<span class="o">)</span>
 </code></pre></div>
 <p>To start the Web UI, run the following command.</p>
-<div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>systemctl<span class="w"> </span>start<span class="w"> </span>webui
+<div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>systemctl<span class="w"> </span>start<span class="w"> </span>websrv
 </code></pre></div>
 <p>An active Web UI service will display the following status on the terminal.</p>
-<div class="highlight"><pre><span></span><code>●<span class="w"> </span>webui.service<span class="w"> </span>-<span class="w"> </span>Maivin<span class="w"> </span>Web<span class="w"> </span>UI<span class="w"> </span>Server
-<span class="w">     </span>Loaded:<span class="w"> </span>loaded<span class="w"> </span><span class="o">(</span>/usr/lib/systemd/system/webui.service<span class="p">;</span><span class="w"> </span>enabled<span class="p">;</span><span class="w"> </span>vendor<span class="w"> </span>preset:<span class="w"> </span>enabled<span class="o">)</span>
+<div class="highlight"><pre><span></span><code>●<span class="w"> </span>websrv.service<span class="w"> </span>-<span class="w"> </span>Maivin<span class="w"> </span>Web<span class="w"> </span>UI<span class="w"> </span>Server
+<span class="w">     </span>Loaded:<span class="w"> </span>loaded<span class="w"> </span><span class="o">(</span>/usr/lib/systemd/system/websrv.service<span class="p">;</span><span class="w"> </span>enabled<span class="p">;</span><span class="w"> </span>vendor<span class="w"> </span>preset:<span class="w"> </span>enabled<span class="o">)</span>
 <span class="w">     </span>Active:<span class="w"> </span>active<span class="w"> </span><span class="o">(</span>running<span class="o">)</span><span class="w"> </span>since<span class="w"> </span>Mon<span class="w"> </span><span class="m">2025</span>-04-07<span class="w"> </span><span class="m">16</span>:06:37<span class="w"> </span>UTC<span class="p">;</span><span class="w"> </span>3s<span class="w"> </span>ago
 <span class="w">   </span>Main<span class="w"> </span>PID:<span class="w"> </span><span class="m">1327</span><span class="w"> </span><span class="o">(</span>websrv<span class="o">)</span>
 <span class="w">      </span>Tasks:<span class="w"> </span><span class="m">18</span><span class="w"> </span><span class="o">(</span>limit:<span class="w"> </span><span class="m">3772</span><span class="o">)</span>
 <span class="w">     </span>Memory:<span class="w"> </span><span class="m">21</span>.0M
-<span class="w">     </span>CGroup:<span class="w"> </span>/system.slice/webui.service
+<span class="w">     </span>CGroup:<span class="w"> </span>/system.slice/websrv.service
 <span class="w">             </span>└─<span class="w"> </span><span class="m">1327</span><span class="w"> </span>/usr/bin/websrv
 </code></pre></div>
 <h2 id="secure-copy">Secure Copy</h2>

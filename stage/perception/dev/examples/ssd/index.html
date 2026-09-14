@@ -2122,7 +2122,15 @@
 
 
 <h1 id="mobilenet-ssd-examples">MobileNet <abbr title="Solid State Drive">SSD</abbr> Examples</h1>
+<div class="admonition warning">
+<p class="admonition-title">Legacy Example</p>
+<p>The publisher part of this example subscribes to the camera frames through the <code>camera/dma</code> topic and <code>DmaBuffer</code> message and publishes detections on <code>model/boxes2d</code>, both of which predate Torizon for Maivin 2026.08.  On the current release the camera frames are published as <a href="../../../topics/camera/#cameraframe"><code>camera/frame</code></a> messages inside the device <a href="../../../topics/#hostname-namespaces">hostname namespace</a>, the <a href="../camera/#camera-frame">Camera Frame example</a> shows the updated frame access and the <a href="../../../../platforms/configuration/model/#topics">Model Settings</a> describe the legacy topics.  The single image inference part of the example is unaffected.</p>
+</div>
 <p>These examples demonstrate how to deploy a MobileNet <abbr title="Solid State Drive">SSD</abbr> V1 model using the <abbr title="Neural Processing Unit">NPU</abbr> of an embedded platform such as a <a href="../../../../platforms/quickstart/maivin/">Maivin</a>.  The examples below are split into two parts; model inference on a single image and a model inference publisher. These examples have been tested on the <abbr title="TensorFlow Lite">TFLite</abbr> files found in <a href="https://github.com/apivovarov/ssd-tflite/tree/master">this <abbr title="Solid State Drive">SSD</abbr>-<abbr title="TensorFlow Lite">TFLite</abbr> repository</a>, and in <a href="https://github.com/Arm-Examples/ML-zoo/tree/master/models/object_detection/ssd_mobilenet_v1">ML-Zoo</a>.  </p>
+<div class="admonition tip">
+<p class="admonition-title">Topic Names</p>
+<p>The topics below are subscribed with their bare names, which requires the Zenoh session to be opened with the namespace set to the device hostname as shown in the <a href="../../#subscriber">Developer Guide</a>.  Subscribe with a <code>**/</code> prefix, for example <code>**/camera/h264</code>, to match the topics from a session without a namespace or from a remote device.</p>
+</div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>In a future release of the EdgeFirst middleware, the Model Service will be able to run MobileNet <abbr title="Solid State Drive">SSD</abbr> V1 models natively, again, testing on the above examples.</p>
@@ -2289,7 +2297,7 @@ The model outputs a maximum of 10 detections.  Currently there is no option to s
 </ul>
 </li>
 <li>
-<p>The <code>/rt/model/boxes2d</code> topic will now be published once again and can be subscribed to by any other example.</p>
+<p>The <code>model/boxes2d</code> topic will now be published once again and can be subscribed to by any other example.</p>
 </li>
 </ol>
 <p>Once you disable the server, you should restart the model service with the following command.</p>

@@ -1638,10 +1638,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#edgefirst.schemas.std_msgs.Header.frame_id" class="md-nav__link">
+  <a href="#edgefirst.schemas.std_msgs.Header.cdr_size" class="md-nav__link">
     <span class="md-ellipsis">
       
-        <code class="doc-symbol doc-symbol-toc doc-symbol-attribute"></code>&nbsp;frame_id
+        <code class="doc-symbol doc-symbol-toc doc-symbol-attribute"></code>&nbsp;cdr_size
       
     </span>
   </a>
@@ -1649,10 +1649,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#edgefirst.schemas.std_msgs.Header.stamp" class="md-nav__link">
+  <a href="#edgefirst.schemas.std_msgs.Header.to_bytes" class="md-nav__link">
     <span class="md-ellipsis">
       
-        <code class="doc-symbol doc-symbol-toc doc-symbol-attribute"></code>&nbsp;stamp
+        <code class="doc-symbol doc-symbol-toc doc-symbol-method"></code>&nbsp;to_bytes
       
     </span>
   </a>
@@ -1985,10 +1985,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#edgefirst.schemas.std_msgs.Header.frame_id" class="md-nav__link">
+  <a href="#edgefirst.schemas.std_msgs.Header.cdr_size" class="md-nav__link">
     <span class="md-ellipsis">
       
-        <code class="doc-symbol doc-symbol-toc doc-symbol-attribute"></code>&nbsp;frame_id
+        <code class="doc-symbol doc-symbol-toc doc-symbol-attribute"></code>&nbsp;cdr_size
       
     </span>
   </a>
@@ -1996,10 +1996,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#edgefirst.schemas.std_msgs.Header.stamp" class="md-nav__link">
+  <a href="#edgefirst.schemas.std_msgs.Header.to_bytes" class="md-nav__link">
     <span class="md-ellipsis">
       
-        <code class="doc-symbol doc-symbol-toc doc-symbol-attribute"></code>&nbsp;stamp
+        <code class="doc-symbol doc-symbol-toc doc-symbol-method"></code>&nbsp;to_bytes
       
     </span>
   </a>
@@ -2090,6 +2090,8 @@
 
 
 
+        <p><code>std_msgs.ColorRGBA</code> — <abbr title="Red Green Blue Alpha">RGBA</abbr> float32 colour. CdrFixed (16 bytes).</p>
+
 
 
 
@@ -2129,9 +2131,10 @@
 
 
 
-        <p>Standard metadata for higher-level stamped data types.
-This is generally used to communicate timestamped data
-in a particular coordinate frame.</p>
+        <p><code>std_msgs.Header</code> — <code>stamp</code> + <code>frame_id</code>. Buffer-backed.</p>
+<p>Stored as an owned <abbr title="Common Data Representation">CDR</abbr> buffer; field accessors do O(1) reads at
+known offsets. Decoding via :meth:<code>from_cdr</code> parses the buffer in a
+single pass and stamps a 1-element offset table.</p>
 
 
 
@@ -2155,47 +2158,21 @@ in a particular coordinate frame.</p>
 
 
 
-<h3 id="edgefirst.schemas.std_msgs.Header.frame_id" class="doc doc-heading">
-            <span class="doc doc-object-name doc-attribute-name">frame_id</span>
+<h3 id="edgefirst.schemas.std_msgs.Header.cdr_size" class="doc doc-heading">
+            <span class="doc doc-object-name doc-attribute-name">cdr_size</span>
 
 
   <span class="doc doc-labels">
-      <small class="doc doc-label doc-label-class-attribute"><code>class-attribute</code></small>
-      <small class="doc doc-label doc-label-instance-attribute"><code>instance-attribute</code></small>
+      <small class="doc doc-label doc-label-property"><code>property</code></small>
   </span>
 
 </h3>
-<div class="doc-signature highlight"><pre><span></span><code><span class="n">frame_id</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s1">''</span>
+<div class="doc-signature highlight"><pre><span></span><code><span class="n">cdr_size</span><span class="p">:</span> <span class="nb">int</span>
 </code></pre></div>
 
     <div class="doc doc-contents ">
 
-        <p>Transform frame with which this data is associated.</p>
-
-    </div>
-
-</div>
-
-<div class="doc doc-object doc-attribute">
-
-
-
-<h3 id="edgefirst.schemas.std_msgs.Header.stamp" class="doc doc-heading">
-            <span class="doc doc-object-name doc-attribute-name">stamp</span>
-
-
-  <span class="doc doc-labels">
-      <small class="doc doc-label doc-label-class-attribute"><code>class-attribute</code></small>
-      <small class="doc doc-label doc-label-instance-attribute"><code>instance-attribute</code></small>
-  </span>
-
-</h3>
-<div class="doc-signature highlight"><pre><span></span><code><span class="n">stamp</span><span class="p">:</span> <span class="n">Time</span> <span class="o">=</span> <span class="n">default_field</span><span class="p">(</span><span class="n">Time</span><span class="p">)</span>
-</code></pre></div>
-
-    <div class="doc doc-contents ">
-
-        <p>Two-integer timestamp that is expressed as seconds and nanoseconds.</p>
+        <p>Size of the underlying <abbr title="Common Data Representation">CDR</abbr> buffer in bytes.</p>
 
     </div>
 
@@ -2203,6 +2180,26 @@ in a particular coordinate frame.</p>
 
 
 
+
+<div class="doc doc-object doc-function">
+
+
+<h3 id="edgefirst.schemas.std_msgs.Header.to_bytes" class="doc doc-heading">
+            <span class="doc doc-object-name doc-function-name">to_bytes</span>
+
+
+</h3>
+<div class="doc-signature highlight"><pre><span></span><code><span class="nf">to_bytes</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="nb">bytes</span>
+</code></pre></div>
+
+    <div class="doc doc-contents ">
+
+        <p>Return the full <abbr title="Common Data Representation">CDR</abbr> buffer as <code>bytes</code> (one copy).</p>
+
+
+    </div>
+
+</div>
 
 
 

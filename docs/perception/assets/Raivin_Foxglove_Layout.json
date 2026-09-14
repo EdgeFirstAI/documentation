@@ -44,13 +44,7 @@
         "imageTopic": "/camera/h264",
         "calibrationTopic": "/camera/info",
         "annotations": {
-          "rt/detect/boxes2d": {
-            "visible": true
-          },
-          "/model/boxes2d": {
-            "visible": true
-          },
-          "/model/mask_compressed": {
+          "/model/output": {
             "visible": true
           }
         }

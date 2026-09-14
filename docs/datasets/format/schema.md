@@ -179,7 +179,7 @@ rare = df.filter(pl.col("category_frequency") == "r")
 |--------|------|-------------|
 | `size` | `Array<u32, 2>` | `[width, height]` — original image dimensions in pixels. Optional. |
 | `location` | `Array<f32, 2>` | `[latitude, longitude]` GPS coordinates |
-| `pose` | `Array<f32, 3>` | `[yaw, pitch, roll]` IMU orientation in degrees |
+| `pose` | `Array<f32, 3>` | `[roll, pitch, yaw]` IMU orientation in degrees |
 | `degradation` | `String` | Visual quality indicator (`none`, `low`, `medium`, `high`) |
 | `neg_label_indices` | `List<UInt32>` | `label_index` values for categories verified absent from this image |
 | `not_exhaustive_label_indices` | `List<UInt32>` | `label_index` values for categories with possibly incomplete annotation |
@@ -202,8 +202,8 @@ fields (repeated per annotation row for a given image).
     cast to a common type first: `col("neg_label_indices").cast(List(UInt64))`.
 
 !!! tip "Pose array order"
-    The `pose` array is always `[yaw, pitch, roll]` in degrees. The JSON representation
-    uses named fields `{yaw, pitch, roll}` in the `sensors.imu` object.
+    The `pose` array is always `[roll, pitch, yaw]` in degrees. The JSON representation
+    uses named fields `{roll, pitch, yaw}` in the `sensors.imu` object.
 
 ### Instrumentation
 
@@ -279,7 +279,7 @@ For reference, the full Polars-style schema:
     # ── Sample Metadata (optional) ─────────────────────
     ('size', Array(UInt32, shape=(2,))),         # [width, height]
     ('location', Array(Float32, shape=(2,))),    # [lat, lon]
-    ('pose', Array(Float32, shape=(3,))),        # [yaw, pitch, roll]
+    ('pose', Array(Float32, shape=(3,))),        # [roll, pitch, yaw]
     ('degradation', String),
     ('neg_label_indices', List(UInt32)),          # OPTIONAL - LVIS negative categories
     ('not_exhaustive_label_indices', List(UInt32)),  # OPTIONAL - LVIS incomplete categories

@@ -29,12 +29,13 @@ After all that, you should see the [Raivin Main Page](webui.md).
 
 {{ figure("../../assets/setup/quickStart-mainPage.png", "Raivin Main Page") }}
 
-From here, we recommend that you check out the Segmentation View page by clicking the "Segmentation View" card.
+From here, we recommend that you check out the Camera page by clicking the "Camera" card and the Radar page by clicking the "Radar" card.
 
-{{ figure("../../assets/setup/quickStart-segmentation.png", "Raivin Segmentation Page") }}
+{{ figure("../../assets/setup/quickStart-segmentation.png", "Raivin Camera Page") }}
 
 !!! note
-    The ultra-short model included in this release was trained for fixed camera and mostly tested indoors.
+
+    The ultra-short range RadarExp model included in this release was trained for a fixed camera and mostly tested indoors.  The radar publisher is configured for the low center frequency and ultra-short frequency sweep to match.
 
 {% include-markdown "discrete/platforms/edgefirst_performance_scaling.md" %}
 
@@ -46,3 +47,4 @@ Now that you have completed these initial steps, we recommend that you read the 
 - [SSH Walkthrough](../../networking/ssh.md), to learn how to SSH into your Raivin and basic command-line operations  
 - [Raivin Recording Walkthrough](../../../perception/data_collection/recording.md), to learn how to record datasets and download them to your PC  
 - [Model Upload Walkthrough](../../software/model_uploads.md), to learn how to upload vision models and radar fusion models to your Raivin  
+- [Software Updates](../../software/updates.md), to keep your Raivin on the latest release  

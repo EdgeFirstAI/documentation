@@ -4,7 +4,7 @@ This document introduces an example [Foxglove Studio][foxglove] layout displayin
 
 ## Recording the 4K Topics
 
-The [Recording Service](../data_collection/recording.md), by default, [cannot be configured through the Web UI to capture the 4K video tiling topics](../../platforms/configuration/mcap_recording.md#caveats), but it can be [configured manually](../../platforms/configuration/mcap_recording.md#adding-topics-manually-to-the-recording-service). Please follow the instructions here to configure the recorder service before starting to record the 4K streams.
+The [Recording Service](../data_collection/recording.md) records every published topic by default, including the four tile topics once [tiling is enabled](camera_4k.md).  If the recorder was configured with an explicit topic list, the tile topics must be [added manually](../../platforms/configuration/mcap_recording.md#adding-topics-manually-to-the-recording-service) before recording the 4K streams.
 
 ## Foxglove Studios
 

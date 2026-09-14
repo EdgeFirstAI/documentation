@@ -2,6 +2,10 @@
 
 This example will go through how to connect to the radar topic published on your EdgeFirst Platform and how to display the information on the command line as well as through the Rerun visualizer.
 
+!!! tip "Topic Names"
+
+    The topics below are subscribed with their bare names, which requires the Zenoh session to be opened with the namespace set to the device hostname as shown in the [Developer Guide](../index.md#subscriber).  Subscribe with a `**/` prefix, for example `**/camera/h264`, to match the topics from a session without a namespace or from a remote device.
+
 ## Radar Targets
 
 Topic: [/radar/targets](../../topics/radar.md#radartargets)  
@@ -15,18 +19,18 @@ After setting up the Zenoh session, we will create a subscriber to the `radar/ta
 === "Python"
 
     ``` python
-    # Create a subscriber for "rt/radar/targets"
+    # Create a subscriber for "radar/targets"
     loop = asyncio.get_running_loop()
     drain = MessageDrain(loop)
-    session.declare_subscriber('rt/radar/targets', drain.callback)
+    session.declare_subscriber('radar/targets', drain.callback)
     ```
 
 === "Rust"
 
     ``` rust
-    // Create a subscriber for "rt/radar/targets"
+    // Create a subscriber for "radar/targets"
     let subscriber = session
-        .declare_subscriber("rt/radar/targets")
+        .declare_subscriber("radar/targets")
         .await
         .unwrap();
     ```
@@ -54,7 +58,7 @@ We can now receive a message on the subscriber. After receiving the message, we 
     ``` rust
     use edgefirst_schemas::sensor_msgs::PointCloud2;
 
-    // Create a subscriber for "rt/radar/cluster"
+    // Create a subscriber for "radar/cluster"
     let msg = subscriber.recv().unwrap()
 
     let pcd: PointCloud2 = cdr::deserialize(&msg.payload().to_bytes())?;
@@ -165,18 +169,18 @@ After setting up the Zenoh session, we will create a subscriber to the `radar/cl
 === "Python"
 
     ``` python
-    # Create a subscriber for "rt/radar/cluster"
+    # Create a subscriber for "radar/cluster"
     loop = asyncio.get_running_loop()
     drain = MessageDrain(loop)
-    session.declare_subscriber('rt/radar/clusters', drain.callback)
+    session.declare_subscriber('radar/clusters', drain.callback)
     ```
 
 === "Rust"
 
     ``` rust
-    // Create a subscriber for "rt/radar/cluster"
+    // Create a subscriber for "radar/cluster"
     let subscriber = session
-        .declare_subscriber("rt/radar/clusters")
+        .declare_subscriber("radar/clusters")
         .await
         .unwrap();
     ```
@@ -204,7 +208,7 @@ We can now receive a message on the subscriber. After receiving the message, we 
     ``` rust
     use edgefirst_schemas::sensor_msgs::PointCloud2;
 
-    // Create a subscriber for "rt/radar/cluster"
+    // Create a subscriber for "radar/cluster"
     let msg = subscriber.recv().unwrap()
 
     let pcd: PointCloud2 = cdr::deserialize(&msg.payload().to_bytes())?;
@@ -290,18 +294,18 @@ After setting up the Zenoh session, we will create a subscriber to the `radar/in
 === "Python"
 
     ``` python
-    # Create a subscriber for "rt/radar/info"
+    # Create a subscriber for "radar/info"
     loop = asyncio.get_running_loop()
     drain = MessageDrain(loop)
-    session.declare_subscriber('rt/radar/info', drain.callback)
+    session.declare_subscriber('radar/info', drain.callback)
     ```
 
 === "Rust"
 
     ``` rust
-    // Create a subscriber for "rt/radar/info"
+    // Create a subscriber for "radar/info"
     let subscriber = session
-        .declare_subscriber("rt/radar/info")
+        .declare_subscriber("radar/info")
         .await
         .unwrap();
     ```
@@ -390,18 +394,18 @@ After setting up the Zenoh session, we will create a subscriber to the `radar/cu
 === "Python"
 
     ``` python
-    # Create a subscriber for "rt/radar/cube"
+    # Create a subscriber for "radar/cube"
     loop = asyncio.get_running_loop()
     drain = MessageDrain(loop)
-    session.declare_subscriber('rt/radar/cube', drain.callback)
+    session.declare_subscriber('radar/cube', drain.callback)
     ```
 
 === "Rust"
 
     ``` rust
-    // Create a subscriber for "rt/radar/cube"
+    // Create a subscriber for "radar/cube"
     let subscriber = session
-        .declare_subscriber("rt/radar/cube")
+        .declare_subscriber("radar/cube")
         .await
         .unwrap();
     ```
@@ -483,6 +487,10 @@ When displaying the results through Rerun you will see the radar cube displayed.
 
 ## Combined Example
 
+!!! warning "Legacy Topics"
+
+    This example subscribes to `model/boxes2d`, a legacy topic which is disabled by default on Torizon for Maivin 2026.08.  Set `DETECT_TOPIC="model/boxes2d"` in `/etc/default/model` as described in the [Model Settings](../../../platforms/configuration/model.md#topics) before running it, or adapt the boxes callback to the [`model/output`](../../topics/model.md#modeloutput) topic which carries the same `Box` entries.
+
 This example will demonstrate how to combine the camera feed with the radar messages to create a composite Rerun view. The main difference when using multiple messages in a script, is that we will change from waiting on the message to be received to having a callback function for when a message is received. Using the initial method, the script would hang while waiting for a message topic to be published, so if the messages are being published at different rates, the slowest message rate will limit the others.
 
 Sample Code: [Python](https://github.com/EdgeFirstAI/samples/blob/main/python/combined/camera_radar.py) / [Rust](https://github.com/EdgeFirstAI/samples/blob/main/rust/combined/mega_sample.rs)
@@ -501,9 +509,9 @@ After setting up the Zenoh session, we will create a subscriber to the three top
     frame_size_storage = FrameSize()
 
     # Declare subscribers
-    session.declare_subscriber('rt/camera/h264', h264_drain.callback)
-    session.declare_subscriber('rt/model/boxes2d', boxes2d_drain.callback)
-    session.declare_subscriber('rt/radar/clusters', radar_drain.callback)
+    session.declare_subscriber('camera/h264', h264_drain.callback)
+    session.declare_subscriber('model/boxes2d', boxes2d_drain.callback)
+    session.declare_subscriber('radar/clusters', radar_drain.callback)
     ```
 
 ### Subscriber Callbacks

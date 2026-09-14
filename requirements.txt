@@ -1,5 +1,5 @@
 edgefirst-client
-edgefirst-schemas
+edgefirst-schemas>=4.0,<5
 mike
 mkdocs-autorefs
 mkdocs-awesome-nav

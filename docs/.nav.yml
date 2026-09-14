@@ -279,7 +279,6 @@ nav:
       - platforms/configuration/index.md
       - platforms/configuration/mcap_recording.md
       - platforms/configuration/camera.md
-      - platforms/configuration/webui.md
       - platforms/configuration/model.md
       - platforms/configuration/service_status.md
       - platforms/configuration/radar.md

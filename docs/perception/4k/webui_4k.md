@@ -10,12 +10,12 @@ Of specific note:  the following is a "behind the scenes" view of how the Web UI
 
 ### How It Works
 
-The system attempts to stream 4K video by splitting it into 4 separate 1080p tiles:
+The browser receives the topics from the web server over WebSocket endpoints under `/api/rt/`, the web server maps each endpoint to the bare topic inside the device [hostname namespace](../topics/index.md#hostname-namespaces).  The system attempts to stream 4K video by splitting it into 4 separate 1080p tiles:
 
-- **Top Left (TL)**: `/rt/camera/h264/tl` - 1920x1080
-- **Top Right (TR)**: `/rt/camera/h264/tr` - 1920x1080  
-- **Bottom Left (BL)**: `/rt/camera/h264/bl` - 1920x1080
-- **Bottom Right (BR)**: `/rt/camera/h264/br` - 1920x1080
+- **Top Left (TL)**: `/api/rt/camera/h264/tl` - 1920x1080
+- **Top Right (TR)**: `/api/rt/camera/h264/tr` - 1920x1080  
+- **Bottom Left (BL)**: `/api/rt/camera/h264/bl` - 1920x1080
+- **Bottom Right (BR)**: `/api/rt/camera/h264/br` - 1920x1080
 
 These tiles are then merged into a single 4K canvas (3840x2160) for display.
 
@@ -48,7 +48,7 @@ The system automatically falls back to single H.264 stream in these scenarios:
 
 ### Fallback Behavior
 
-- **Single Stream**: Uses `/rt/camera/h264` endpoint
+- **Single Stream**: Uses `/api/rt/camera/h264` endpoint
 - **Resolution**: 1920x1080 (standard HD)
 - **Performance**: Lower resource usage, more stable
 - **Quality**: Good quality but not 4K
@@ -74,12 +74,12 @@ this.maxWaitForSync = 500; // Max wait for all tiles
 
 ```javascript
 this.tileUrls = [
-    '/rt/camera/h264/tl',  // Top Left
-    '/rt/camera/h264/tr',  // Top Right
-    '/rt/camera/h264/bl',  // Bottom Left
-    '/rt/camera/h264/br'   // Bottom Right
+    '/api/rt/camera/h264/tl',  // Top Left
+    '/api/rt/camera/h264/tr',  // Top Right
+    '/api/rt/camera/h264/bl',  // Bottom Left
+    '/api/rt/camera/h264/br'   // Bottom Right
 ];
-this.fallbackUrl = '/rt/camera/h264';
+this.fallbackUrl = '/api/rt/camera/h264';
 ```
 
 ## Usage

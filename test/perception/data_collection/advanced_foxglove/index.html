@@ -2018,7 +2018,11 @@
 <li>Using the 3D Panel to view the post-processed <a href="../../../platforms/hardware/radar/">Radar</a> outputs contained in the "Fusion Targets" topics.</li>
 <li>Using the "User Scripts" panel to create a short Typescript script that also outputs the values for those topics.</li>
 </ol>
-<p>It is assumed you have read the <a href="../foxglove/">introduction to Foxglove Studio</a>, familiarized yourself with the application, and have <a href="../recording/#download-mcap">downloaded an <abbr title="Binary container format for robotics log data">MCAP</abbr></a> that has recorded the <a href="../../../platforms/configuration/mcap_recording/#fusion-recording-raivin-only"><code>/fusion/targets</code> topic</a>.</p>
+<p>It is assumed you have read the <a href="../foxglove/">introduction to Foxglove Studio</a>, familiarized yourself with the application, and have <a href="../recording/#download-mcap">downloaded an <abbr title="Binary container format for robotics log data">MCAP</abbr></a> that has recorded the <a href="../../../platforms/configuration/mcap_recording/#topics-recorded"><code>/fusion/targets</code> topic</a>.</p>
+<div class="admonition warning">
+<p class="admonition-title">Pre-2026.08 Topic Layout</p>
+<p>This walkthrough describes the <code>/fusion/targets</code> topic and its <code>fusion_class</code> field as published by releases before Torizon for Maivin 2026.08.  The current fusion service publishes the annotated radar points on <a href="../../topics/fusion/#fusionradar"><code>fusion/radar</code></a> with the <code>vision_class</code> and <code>instance_id</code> fields, so the topic name, the field offsets used by the script, and the screenshots below do not match a 2026.08 recording.  The Foxglove workflow itself still applies, refer to the <a href="../../topics/fusion/">Fusion Topics</a> page for the current field layout.</p>
+</div>
 <h2 id="the-fusion-targets-topic">The Fusion Targets Topic</h2>
 <p>The "Fusion Targets" topic contains post-processed radar outputs that identify targets as people.  For each target it detects, it returns the following information about the target:</p>
 <ul>
@@ -2040,7 +2044,7 @@
             <img align="center" alt="Top Level Fields" src="../../assets/adv_foxglove-fusion_top_level_fields.png" />
             <figcaption>Top Level Fields</figcaption>
             </figure>
-<p>The Fusion and Vision Class are produced by Fusion service on the Raivin.  They will report 0 for any cluster not identified as a person and 1 for any cluster as belonging to a human.  The Raivin Web UI can use <a href="../../../platforms/configuration/webui/#draw-pcd">either class or both classes together</a> to determine if any radar target is a person or not.</p>
+<p>The Fusion and Vision Class are produced by Fusion service on the Raivin.  They will report 0 for any cluster not identified as a person and 1 for any cluster as belonging to a human.  The Raivin Web UI <a href="../../../platforms/quickstart/raivin/webui/#the-radar-page">Radar page</a> colors the radar points by their vision class to show which radar targets belong to a person.</p>
 <h2 id="3d-panes-for-fusion">3D Panes for Fusion</h2>
 <p>To Create a 3D view for the Fusion Class:</p>
 <ol>

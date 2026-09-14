@@ -1783,67 +1783,6 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#model-mask-compressed" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Model Mask Compressed
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Model Mask Compressed">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#setting-up-subscriber_3" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Setting up subscriber
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#receive-a-message_3" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Receive a message
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#process-the-data_3" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Process the Data
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#results_3" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Results
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#combined-example" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -1917,7 +1856,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#results_4" class="md-nav__link">
+  <a href="#results_3" class="md-nav__link">
     <span class="md-ellipsis">
       
         Results
@@ -2532,67 +2471,6 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#model-mask-compressed" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Model Mask Compressed
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Model Mask Compressed">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#setting-up-subscriber_3" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Setting up subscriber
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#receive-a-message_3" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Receive a message
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#process-the-data_3" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Process the Data
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#results_3" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Results
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#combined-example" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2666,7 +2544,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#results_4" class="md-nav__link">
+  <a href="#results_3" class="md-nav__link">
     <span class="md-ellipsis">
       
         Results
@@ -2767,6 +2645,10 @@
 
 <h1 id="model-schema-examples">Model Schema Examples</h1>
 <p>These examples demonstrate how to connect to various model topics published on your EdgeFirst Platform and how to display the information through the command line.</p>
+<div class="admonition tip">
+<p class="admonition-title">Topic Names</p>
+<p>The topics below are subscribed with their bare names, which requires the Zenoh session to be opened with the namespace set to the device hostname as shown in the <a href="../../#subscriber">Developer Guide</a>.  Subscribe with a <code>**/</code> prefix, for example <code>**/camera/h264</code>, to match the topics from a session without a namespace or from a remote device.</p>
+</div>
 <h2 id="model-info">Model Info</h2>
 <p>Topic: <a href="../../../topics/model/#modelinfo">/model/info</a><br />
 Message: <a href="../../../api/edgefirst_msgs/#modelinfo">ModelInfo</a><br />
@@ -2776,16 +2658,16 @@ Sample Code: <a href="https://github.com/EdgeFirstAI/samples/blob/main/python/mo
 <div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="python" name="__tabbed_1" type="radio" /><input id="rust" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="python">Python</label><label for="rust">Rust</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="c1"># Create a subscriber for "rt/model/info"</span>
+<div class="highlight"><pre><span></span><code><span class="c1"># Create a subscriber for "model/info"</span>
 <span class="n">loop</span> <span class="o">=</span> <span class="n">asyncio</span><span class="o">.</span><span class="n">get_running_loop</span><span class="p">()</span>
 <span class="n">drain</span> <span class="o">=</span> <span class="n">MessageDrain</span><span class="p">(</span><span class="n">loop</span><span class="p">)</span>
-<span class="n">session</span><span class="o">.</span><span class="n">declare_subscriber</span><span class="p">(</span><span class="s1">'rt/model/info'</span><span class="p">,</span> <span class="n">drain</span><span class="o">.</span><span class="n">callback</span><span class="p">)</span>
+<span class="n">session</span><span class="o">.</span><span class="n">declare_subscriber</span><span class="p">(</span><span class="s1">'model/info'</span><span class="p">,</span> <span class="n">drain</span><span class="o">.</span><span class="n">callback</span><span class="p">)</span>
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="c1">// Create a subscriber for "rt/model/info"</span>
+<div class="highlight"><pre><span></span><code><span class="c1">// Create a subscriber for "model/info"</span>
 <span class="kd">let</span><span class="w"> </span><span class="n">subscriber</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">session</span>
-<span class="w">    </span><span class="p">.</span><span class="n">declare_subscriber</span><span class="p">(</span><span class="s">"rt/model/info"</span><span class="p">)</span>
+<span class="w">    </span><span class="p">.</span><span class="n">declare_subscriber</span><span class="p">(</span><span class="s">"model/info"</span><span class="p">)</span>
 <span class="w">    </span><span class="p">.</span><span class="k">await</span>
 <span class="w">    </span><span class="p">.</span><span class="n">unwrap</span><span class="p">();</span>
 </code></pre></div>
@@ -2846,6 +2728,10 @@ Sample Code: <a href="https://github.com/EdgeFirstAI/samples/blob/main/python/mo
             <figcaption>Model Info</figcaption>
             </figure>
 <h2 id="boxes2d">Boxes2D</h2>
+<div class="admonition warning">
+<p class="admonition-title">Legacy Topics</p>
+<p>The current model service publishes the boxes and masks together in the <a href="../../../api/edgefirst_msgs/#model">Model</a> message on the <a href="../../../topics/model/#modeloutput"><code>model/output</code></a> topic.  The <code>model/boxes2d</code> and <code>model/mask</code> topics used by the following examples are disabled by default and must be re-enabled with the <code>DETECT_TOPIC</code> and <code>MASK_TOPIC</code> settings described in the <a href="../../../../platforms/configuration/model/#topics">Model Settings</a>.  The <code>model/mask_compressed</code> topic is no longer published.  The <code>boxes</code> and <code>masks</code> fields of the <code>Model</code> message use the same <code>Box</code> and <code>Mask</code> types shown below, so the processing code applies to <code>model/output</code> as well.</p>
+</div>
 <p>Topic: <a href="../../../topics/model/#modelboxes2d">/model/boxes2d</a><br />
 Message: <a href="../../../api/edgefirst_msgs/#detect">ModelInfo</a><br />
 Sample Code: <a href="https://github.com/EdgeFirstAI/samples/blob/main/python/model/boxes2d.py">Python</a> / <a href="https://github.com/EdgeFirstAI/samples/blob/main/rust/model/boxes2d.rs">Rust</a></p>
@@ -2854,16 +2740,16 @@ Sample Code: <a href="https://github.com/EdgeFirstAI/samples/blob/main/python/mo
 <div class="tabbed-set tabbed-alternate" data-tabs="4:2"><input checked="checked" id="python_3" name="__tabbed_4" type="radio" /><input id="rust_3" name="__tabbed_4" type="radio" /><div class="tabbed-labels"><label for="python_3">Python</label><label for="rust_3">Rust</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="c1"># Create a subscriber for "rt/model/boxes2d"</span>
+<div class="highlight"><pre><span></span><code><span class="c1"># Create a subscriber for "model/boxes2d"</span>
 <span class="n">loop</span> <span class="o">=</span> <span class="n">asyncio</span><span class="o">.</span><span class="n">get_running_loop</span><span class="p">()</span>
 <span class="n">drain</span> <span class="o">=</span> <span class="n">MessageDrain</span><span class="p">(</span><span class="n">loop</span><span class="p">)</span>
-<span class="n">session</span><span class="o">.</span><span class="n">declare_subscriber</span><span class="p">(</span><span class="s1">'rt/model/boxes2d'</span><span class="p">,</span> <span class="n">drain</span><span class="o">.</span><span class="n">callback</span><span class="p">)</span>
+<span class="n">session</span><span class="o">.</span><span class="n">declare_subscriber</span><span class="p">(</span><span class="s1">'model/boxes2d'</span><span class="p">,</span> <span class="n">drain</span><span class="o">.</span><span class="n">callback</span><span class="p">)</span>
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="c1">// Create a subscriber for "rt/model/boxes2d"</span>
+<div class="highlight"><pre><span></span><code><span class="c1">// Create a subscriber for "model/boxes2d"</span>
 <span class="kd">let</span><span class="w"> </span><span class="n">subscriber</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">session</span>
-<span class="w">    </span><span class="p">.</span><span class="n">declare_subscriber</span><span class="p">(</span><span class="s">"rt/model/boxes2d"</span><span class="p">)</span>
+<span class="w">    </span><span class="p">.</span><span class="n">declare_subscriber</span><span class="p">(</span><span class="s">"model/boxes2d"</span><span class="p">)</span>
 <span class="w">    </span><span class="p">.</span><span class="k">await</span>
 <span class="w">    </span><span class="p">.</span><span class="n">unwrap</span><span class="p">();</span>
 </code></pre></div>
@@ -3023,16 +2909,16 @@ Sample Code: <a href="https://github.com/EdgeFirstAI/samples/blob/main/python/mo
 <div class="tabbed-set tabbed-alternate" data-tabs="8:2"><input checked="checked" id="python_7" name="__tabbed_8" type="radio" /><input id="rust_7" name="__tabbed_8" type="radio" /><div class="tabbed-labels"><label for="python_7">Python</label><label for="rust_7">Rust</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="c1"># Create a subscriber for "rt/model/mask"</span>
+<div class="highlight"><pre><span></span><code><span class="c1"># Create a subscriber for "model/mask"</span>
 <span class="n">loop</span> <span class="o">=</span> <span class="n">asyncio</span><span class="o">.</span><span class="n">get_running_loop</span><span class="p">()</span>
 <span class="n">drain</span> <span class="o">=</span> <span class="n">MessageDrain</span><span class="p">(</span><span class="n">loop</span><span class="p">)</span>
-<span class="n">session</span><span class="o">.</span><span class="n">declare_subscriber</span><span class="p">(</span><span class="s1">'rt/model/mask'</span><span class="p">,</span> <span class="n">drain</span><span class="o">.</span><span class="n">callback</span><span class="p">)</span>
+<span class="n">session</span><span class="o">.</span><span class="n">declare_subscriber</span><span class="p">(</span><span class="s1">'model/mask'</span><span class="p">,</span> <span class="n">drain</span><span class="o">.</span><span class="n">callback</span><span class="p">)</span>
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="c1">// Create a subscriber for "rt/model/mask"</span>
+<div class="highlight"><pre><span></span><code><span class="c1">// Create a subscriber for "model/mask"</span>
 <span class="kd">let</span><span class="w"> </span><span class="n">subscriber</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">session</span>
-<span class="w">    </span><span class="p">.</span><span class="n">declare_subscriber</span><span class="p">(</span><span class="s">"rt/model/mask"</span><span class="p">)</span>
+<span class="w">    </span><span class="p">.</span><span class="n">declare_subscriber</span><span class="p">(</span><span class="s">"model/mask"</span><span class="p">)</span>
 <span class="w">    </span><span class="p">.</span><span class="k">await</span>
 <span class="w">    </span><span class="p">.</span><span class="n">unwrap</span><span class="p">();</span>
 </code></pre></div>
@@ -3118,119 +3004,16 @@ Sample Code: <a href="https://github.com/EdgeFirstAI/samples/blob/main/python/mo
             <img align="center" alt="Model Mask" src="../assets/model_mask.png" />
             <figcaption>Model Mask</figcaption>
             </figure>
-<h2 id="model-mask-compressed">Model Mask Compressed</h2>
-<p>Topic: <a href="../../../topics/model/#modelmask_compressed">/model/mask</a><br />
-Message: <a href="../../../api/edgefirst_msgs/#mask">Mask</a><br />
-Sample Code: <a href="https://github.com/EdgeFirstAI/samples/blob/main/python/model/compressed_mask.py">Python</a> / <a href="https://github.com/EdgeFirstAI/samples/blob/main/rust/model/compressed_mask.rs">Rust</a></p>
-<h3 id="setting-up-subscriber_3">Setting up subscriber</h3>
-<p>After setting up the Zenoh session, we will create a subscriber to the <code>model/mask_compressed</code> topic</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="11:2"><input checked="checked" id="python_10" name="__tabbed_11" type="radio" /><input id="rust_10" name="__tabbed_11" type="radio" /><div class="tabbed-labels"><label for="python_10">Python</label><label for="rust_10">Rust</label></div>
-<div class="tabbed-content">
-<div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="c1"># Create a subscriber for "rt/model/mask_compressed"</span>
-<span class="n">loop</span> <span class="o">=</span> <span class="n">asyncio</span><span class="o">.</span><span class="n">get_running_loop</span><span class="p">()</span>
-<span class="n">drain</span> <span class="o">=</span> <span class="n">MessageDrain</span><span class="p">(</span><span class="n">loop</span><span class="p">)</span>
-<span class="n">session</span><span class="o">.</span><span class="n">declare_subscriber</span><span class="p">(</span><span class="s1">'rt/model/mask_compressed'</span><span class="p">,</span> <span class="n">drain</span><span class="o">.</span><span class="n">callback</span><span class="p">)</span>
-</code></pre></div>
-</div>
-<div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="c1">// Create a subscriber for "rt/model/compressed_mask"</span>
-<span class="kd">let</span><span class="w"> </span><span class="n">subscriber</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">session</span><span class="p">.</span><span class="n">declare_subscriber</span><span class="p">(</span><span class="s">"rt/model/mask_compressed"</span><span class="p">)</span>
-<span class="p">.</span><span class="k">await</span>
-<span class="p">.</span><span class="n">unwrap</span><span class="p">();</span>
-</code></pre></div>
-</div>
-</div>
-</div>
-<h3 id="receive-a-message_3">Receive a message</h3>
-<p>We can now await a message from that subscriber from an asynchronous function. After receiving the message, we will pass that message along to our processing function in a new thread to avoid missing messages. In addition we will log the annotations so Rerun knows what colors to use for each class.</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="12:2"><input checked="checked" id="python_11" name="__tabbed_12" type="radio" /><input id="rust_11" name="__tabbed_12" type="radio" /><div class="tabbed-labels"><label for="python_11">Python</label><label for="rust_11">Rust</label></div>
-<div class="tabbed-content">
-<div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">mask_handler</span><span class="p">(</span><span class="n">drain</span><span class="p">):</span>
-    <span class="n">rr</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="s2">"/"</span><span class="p">,</span> <span class="n">rr</span><span class="o">.</span><span class="n">AnnotationContext</span><span class="p">([(</span><span class="mi">0</span><span class="p">,</span> <span class="s2">"background"</span><span class="p">,</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">)),</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="s2">"person"</span><span class="p">,</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">255</span><span class="p">,</span><span class="mi">0</span><span class="p">))]))</span>
-    <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
-        <span class="n">msg</span> <span class="o">=</span> <span class="k">await</span> <span class="n">drain</span><span class="o">.</span><span class="n">get_latest</span><span class="p">()</span>
-        <span class="n">thread</span> <span class="o">=</span> <span class="n">threading</span><span class="o">.</span><span class="n">Thread</span><span class="p">(</span><span class="n">target</span><span class="o">=</span><span class="n">mask_worker</span><span class="p">,</span> <span class="n">args</span><span class="o">=</span><span class="p">[</span><span class="n">msg</span><span class="p">])</span>
-        <span class="n">thread</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
-        
-        <span class="k">while</span> <span class="n">thread</span><span class="o">.</span><span class="n">is_alive</span><span class="p">():</span>
-            <span class="k">await</span> <span class="n">asyncio</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mf">0.001</span><span class="p">)</span>
-        <span class="n">thread</span><span class="o">.</span><span class="n">join</span><span class="p">()</span>
-</code></pre></div>
-</div>
-<div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="k">use</span><span class="w"> </span><span class="n">edgefirst_schemas</span><span class="p">::</span><span class="n">edgefirst_msgs</span><span class="p">::</span><span class="n">Mask</span><span class="p">;</span>
-
-<span class="c1">// Receive a message</span>
-<span class="kd">let</span><span class="w"> </span><span class="n">msg</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">subscriber</span><span class="p">.</span><span class="n">recv</span><span class="p">().</span><span class="n">unwrap</span><span class="p">();</span>
-<span class="kd">let</span><span class="w"> </span><span class="n">mask</span><span class="p">:</span><span class="w"> </span><span class="nc">Mask</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">cdr</span><span class="p">::</span><span class="n">deserialize</span><span class="p">(</span><span class="o">&amp;</span><span class="n">msg</span><span class="p">.</span><span class="n">payload</span><span class="p">().</span><span class="n">to_bytes</span><span class="p">())</span><span class="o">?</span><span class="p">;</span>
-</code></pre></div>
-</div>
-</div>
-</div>
-<h3 id="process-the-data_3">Process the Data</h3>
-<p>The Mask message contains segmentation mask data. The worker will decompress the data and then perform argmax on the result to get the resultant class for each pixel to be logged.</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="13:2"><input checked="checked" id="python_12" name="__tabbed_13" type="radio" /><input id="rust_12" name="__tabbed_13" type="radio" /><div class="tabbed-labels"><label for="python_12">Python</label><label for="rust_12">Rust</label></div>
-<div class="tabbed-content">
-<div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">mask_worker</span><span class="p">(</span><span class="n">msg</span><span class="p">):</span>
-    <span class="n">mask</span> <span class="o">=</span> <span class="n">Mask</span><span class="o">.</span><span class="n">deserialize</span><span class="p">(</span><span class="n">msg</span><span class="o">.</span><span class="n">payload</span><span class="o">.</span><span class="n">to_bytes</span><span class="p">())</span>
-    <span class="n">decoded_array</span> <span class="o">=</span> <span class="n">zstd</span><span class="o">.</span><span class="n">decompress</span><span class="p">(</span><span class="nb">bytes</span><span class="p">(</span><span class="n">mask</span><span class="o">.</span><span class="n">mask</span><span class="p">))</span>
-    <span class="n">np_arr</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">frombuffer</span><span class="p">(</span><span class="n">decoded_array</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">uint8</span><span class="p">)</span>
-    <span class="n">np_arr</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">np_arr</span><span class="p">,</span> <span class="p">[</span><span class="n">mask</span><span class="o">.</span><span class="n">height</span><span class="p">,</span> <span class="n">mask</span><span class="o">.</span><span class="n">width</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">])</span>
-    <span class="n">np_arr</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">argmax</span><span class="p">(</span><span class="n">np_arr</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
-    
-    <span class="n">rr</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="s2">"mask"</span><span class="p">,</span> <span class="n">rr</span><span class="o">.</span><span class="n">SegmentationImage</span><span class="p">(</span><span class="n">np_arr</span><span class="p">))</span>
-</code></pre></div>
-</div>
-<div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="kd">let</span><span class="w"> </span><span class="n">decompressed_bytes</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">decode_all</span><span class="p">(</span><span class="n">Cursor</span><span class="p">::</span><span class="n">new</span><span class="p">(</span><span class="o">&amp;</span><span class="n">mask</span><span class="p">.</span><span class="n">mask</span><span class="p">))</span><span class="o">?</span><span class="p">;</span>
-<span class="w">    </span>
-<span class="kd">let</span><span class="w"> </span><span class="n">h</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">mask</span><span class="p">.</span><span class="n">height</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="kt">usize</span><span class="p">;</span>
-<span class="kd">let</span><span class="w"> </span><span class="n">w</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">mask</span><span class="p">.</span><span class="n">width</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="kt">usize</span><span class="p">;</span>
-<span class="kd">let</span><span class="w"> </span><span class="n">total_len</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">mask</span><span class="p">.</span><span class="n">mask</span><span class="p">.</span><span class="n">len</span><span class="p">()</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="kt">u32</span><span class="p">;</span>
-<span class="kd">let</span><span class="w"> </span><span class="n">c</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">total_len</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="p">(</span><span class="n">h</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="kt">u32</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">w</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="kt">u32</span><span class="p">))</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="kt">usize</span><span class="p">;</span>
-
-<span class="kd">let</span><span class="w"> </span><span class="n">arr3</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Array</span><span class="p">::</span><span class="n">from_shape_vec</span><span class="p">([</span><span class="n">h</span><span class="p">,</span><span class="w"> </span><span class="n">w</span><span class="p">,</span><span class="w"> </span><span class="n">c</span><span class="p">],</span><span class="w"> </span><span class="n">decompressed_bytes</span><span class="p">.</span><span class="n">clone</span><span class="p">())</span><span class="o">?</span><span class="p">;</span>
-
-<span class="c1">// Compute argmax along the last axis (class channel)</span>
-<span class="kd">let</span><span class="w"> </span><span class="n">array2</span><span class="p">:</span><span class="w"> </span><span class="nc">Array2</span><span class="o">&lt;</span><span class="kt">u8</span><span class="o">&gt;</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">arr3</span>
-<span class="w">    </span><span class="p">.</span><span class="n">map_axis</span><span class="p">(</span><span class="n">ndarray</span><span class="p">::</span><span class="n">Axis</span><span class="p">(</span><span class="mi">2</span><span class="p">),</span><span class="w"> </span><span class="o">|</span><span class="n">class_scores</span><span class="o">|</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="n">class_scores</span>
-<span class="w">            </span><span class="p">.</span><span class="n">iter</span><span class="p">()</span>
-<span class="w">            </span><span class="p">.</span><span class="n">enumerate</span><span class="p">()</span>
-<span class="w">            </span><span class="p">.</span><span class="n">max_by_key</span><span class="p">(</span><span class="o">|</span><span class="p">(</span><span class="n">_</span><span class="p">,</span><span class="w"> </span><span class="n">val</span><span class="p">)</span><span class="o">|</span><span class="w"> </span><span class="o">*</span><span class="n">val</span><span class="p">)</span>
-<span class="w">            </span><span class="p">.</span><span class="n">map</span><span class="p">(</span><span class="o">|</span><span class="p">(</span><span class="n">idx</span><span class="p">,</span><span class="w"> </span><span class="n">_</span><span class="p">)</span><span class="o">|</span><span class="w"> </span><span class="n">idx</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="kt">u8</span><span class="p">)</span>
-<span class="w">            </span><span class="p">.</span><span class="n">unwrap_or</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
-<span class="w">    </span><span class="p">});</span>
-
-<span class="c1">// Log annotation context</span>
-<span class="n">rr</span><span class="p">.</span><span class="n">log</span><span class="p">(</span>
-<span class="w">    </span><span class="s">"/"</span><span class="p">,</span>
-<span class="w">    </span><span class="o">&amp;</span><span class="n">AnnotationContext</span><span class="p">::</span><span class="n">new</span><span class="p">([</span>
-<span class="w">        </span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="s">"background"</span><span class="p">,</span><span class="w"> </span><span class="n">rerun</span><span class="p">::</span><span class="n">Rgba32</span><span class="p">::</span><span class="n">from_rgb</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">)),</span>
-<span class="w">        </span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="s">"person"</span><span class="p">,</span><span class="w"> </span><span class="n">rerun</span><span class="p">::</span><span class="n">Rgba32</span><span class="p">::</span><span class="n">from_rgb</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">255</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">))])</span>
-<span class="p">)</span><span class="o">?</span><span class="p">;</span>
-
-<span class="c1">// Log segmentation mask</span>
-<span class="kd">let</span><span class="w"> </span><span class="n">_</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">rr</span><span class="p">.</span><span class="n">log</span><span class="p">(</span><span class="s">"mask"</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">SegmentationImage</span><span class="p">::</span><span class="n">try_from</span><span class="p">(</span><span class="n">array2</span><span class="p">)</span><span class="o">?</span><span class="p">)</span><span class="o">?</span><span class="p">;</span>
-</code></pre></div>
-</div>
-</div>
-</div>
-<h3 id="results_3">Results</h3>
-<p>When displaying the results through Rerun you will see the segmentation without any camera, to see the combined example please see the<a href="#combined-example">Combined Example</a>.</p>
-<figure>
-            <img align="center" alt="Model Mask" src="../assets/model_mask.png" />
-            <figcaption>Model Mask</figcaption>
-            </figure>
 <h2 id="combined-example">Combined Example</h2>
+<div class="admonition warning">
+<p class="admonition-title">Legacy Topics</p>
+<p>This example subscribes to the legacy <code>model/boxes2d</code> and <code>model/mask</code> topics, which are disabled by default on Torizon for Maivin 2026.08.  Set <code>DETECT_TOPIC="model/boxes2d"</code> and <code>MASK_TOPIC="model/mask"</code> in <code>/etc/default/model</code> as described in the <a href="../../../../platforms/configuration/model/#topics">Model Settings</a> before running it, or adapt the callbacks to the <a href="../../../topics/model/#modeloutput"><code>model/output</code></a> topic which carries the same <code>Box</code> and <code>Mask</code> types.</p>
+</div>
 <p>This example will demonstrate how to combine the camera feed with the model messages to create a composite Rerun view. The main difference when using multiple messages in a script, is that we will change from waiting on the message to be received to having a callback function for when a message is received. Using the initial method, the script would hang while waiting for a message topic to be published, so if the messages are being published at different rates, the slowest message rate will limit the others.</p>
 <p>Sample Code: <a href="https://github.com/EdgeFirstAI/samples/blob/main/python/combined/camera_model.py">Python</a> / <a href="https://github.com/EdgeFirstAI/samples/blob/main/rust/combined/mega_sample.rs">Rust</a></p>
 <h3 id="setting-up-the-subscribers">Setting up the subscribers</h3>
 <p>After setting up the Zenoh session, we will create a subscriber to the three topics, camera, boxes and segmentation. A FrameSize is additionally created to pass the stream size from the camera to the boxes and segmentation mask so they can be resized appropriately.</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="14:1"><input checked="checked" id="python_13" name="__tabbed_14" type="radio" /><div class="tabbed-labels"><label for="python_13">Python</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="11:1"><input checked="checked" id="python_10" name="__tabbed_11" type="radio" /><div class="tabbed-labels"><label for="python_10">Python</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <div class="highlight"><pre><span></span><code><span class="c1"># Create the necessary subscribers</span>
@@ -3239,31 +3022,28 @@ Sample Code: <a href="https://github.com/EdgeFirstAI/samples/blob/main/python/mo
 <span class="n">boxes_drain</span> <span class="o">=</span> <span class="n">MessageDrain</span><span class="p">(</span><span class="n">loop</span><span class="p">)</span>
 <span class="n">mask_drain</span> <span class="o">=</span> <span class="n">MessageDrain</span><span class="p">(</span><span class="n">loop</span><span class="p">)</span>
 <span class="n">frame_size_storage</span> <span class="o">=</span> <span class="n">FrameSize</span><span class="p">()</span>
-<span class="n">session</span><span class="o">.</span><span class="n">declare_subscriber</span><span class="p">(</span><span class="s1">'rt/camera/h264'</span><span class="p">,</span> <span class="n">h264_drain</span><span class="o">.</span><span class="n">callback</span><span class="p">)</span>
-<span class="n">session</span><span class="o">.</span><span class="n">declare_subscriber</span><span class="p">(</span><span class="s1">'rt/model/boxes2d'</span><span class="p">,</span> <span class="n">boxes_drain</span><span class="o">.</span><span class="n">callback</span><span class="p">)</span>
-<span class="k">if</span> <span class="n">args</span><span class="o">.</span><span class="n">remote</span><span class="p">:</span>
-    <span class="n">session</span><span class="o">.</span><span class="n">declare_subscriber</span><span class="p">(</span><span class="s1">'rt/model/mask_compressed'</span><span class="p">,</span> <span class="n">mask_drain</span><span class="o">.</span><span class="n">callback</span><span class="p">)</span>
-<span class="k">else</span><span class="p">:</span>
-    <span class="n">session</span><span class="o">.</span><span class="n">declare_subscriber</span><span class="p">(</span><span class="s1">'rt/model/mask'</span><span class="p">,</span> <span class="n">mask_drain</span><span class="o">.</span><span class="n">callback</span><span class="p">)</span>
+<span class="n">session</span><span class="o">.</span><span class="n">declare_subscriber</span><span class="p">(</span><span class="s1">'camera/h264'</span><span class="p">,</span> <span class="n">h264_drain</span><span class="o">.</span><span class="n">callback</span><span class="p">)</span>
+<span class="n">session</span><span class="o">.</span><span class="n">declare_subscriber</span><span class="p">(</span><span class="s1">'model/boxes2d'</span><span class="p">,</span> <span class="n">boxes_drain</span><span class="o">.</span><span class="n">callback</span><span class="p">)</span>
+<span class="n">session</span><span class="o">.</span><span class="n">declare_subscriber</span><span class="p">(</span><span class="s1">'model/mask'</span><span class="p">,</span> <span class="n">mask_drain</span><span class="o">.</span><span class="n">callback</span><span class="p">)</span>
 </code></pre></div>
 </div>
 </div>
 </div>
 <h3 id="subscriber-callbacks">Subscriber Callbacks</h3>
 <p>We will now go through the handler functions that are in use for this example. These handler functions will independently handle each of the messages received through the MessageDrain. Additionally, we will make use of a FrameSize object to communicate the frame size of the camera to the boxes and segmentation mask so they can be resized appropriately.</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="15:1"><input checked="checked" id="python_14" name="__tabbed_15" type="radio" /><div class="tabbed-labels"><label for="python_14">Python</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="12:1"><input checked="checked" id="python_11" name="__tabbed_12" type="radio" /><div class="tabbed-labels"><label for="python_11">Python</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <div class="highlight"><pre><span></span><code><span class="k">await</span> <span class="n">asyncio</span><span class="o">.</span><span class="n">gather</span><span class="p">(</span><span class="n">h264_handler</span><span class="p">(</span><span class="n">h264_drain</span><span class="p">,</span> <span class="n">frame_size_storage</span><span class="p">),</span> 
                      <span class="n">boxes2d_handler</span><span class="p">(</span><span class="n">boxes_drain</span><span class="p">,</span> <span class="n">frame_size_storage</span><span class="p">),</span>
-                     <span class="n">mask_handler</span><span class="p">(</span><span class="n">mask_drain</span><span class="p">,</span> <span class="n">frame_size_storage</span><span class="p">,</span> <span class="n">args</span><span class="o">.</span><span class="n">remote</span><span class="p">))</span>
+                     <span class="n">mask_handler</span><span class="p">(</span><span class="n">mask_drain</span><span class="p">,</span> <span class="n">frame_size_storage</span><span class="p">))</span>
 </code></pre></div>
 </div>
 </div>
 </div>
 <h4 id="h264-handler">H264 Handler</h4>
 <p>The H264 handler will receive the CompressedVideo message from the MessageDrain and after initializing the required containers will pass that message to the worker, where the message will be processed and logged to Rerun.</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="16:1"><input checked="checked" id="python_15" name="__tabbed_16" type="radio" /><div class="tabbed-labels"><label for="python_15">Python</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="13:1"><input checked="checked" id="python_12" name="__tabbed_13" type="radio" /><div class="tabbed-labels"><label for="python_12">Python</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <div class="highlight"><pre><span></span><code><span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">h264_handler</span><span class="p">(</span><span class="n">drain</span><span class="p">,</span> <span class="n">frame_storage</span><span class="p">):</span>
@@ -3300,7 +3080,7 @@ Sample Code: <a href="https://github.com/EdgeFirstAI/samples/blob/main/python/mo
 </div>
 <h4 id="boxes2d-handler">Boxes2D Handler</h4>
 <p>The Boxes2D callback will wait for a Detect message from the MessageDrain and will pass that message to the worker, where the message will be processed and logged to Rerun. The boxes logged will use tracking when available. Additionally, this handler will wait until the camera has started and logged a frame size so it knows what the height and width will be to resize the boxes.</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="17:1"><input checked="checked" id="python_16" name="__tabbed_17" type="radio" /><div class="tabbed-labels"><label for="python_16">Python</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="14:1"><input checked="checked" id="python_13" name="__tabbed_14" type="radio" /><div class="tabbed-labels"><label for="python_13">Python</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <div class="highlight"><pre><span></span><code><span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">boxes2d_handler</span><span class="p">(</span><span class="n">drain</span><span class="p">,</span> <span class="n">frame_storage</span><span class="p">):</span>
@@ -3336,31 +3116,27 @@ Sample Code: <a href="https://github.com/EdgeFirstAI/samples/blob/main/python/mo
 </div>
 </div>
 <h4 id="mask-handler">Mask Handler</h4>
-<p>The Mask callback will wait for a Mask message from the MessageDrain and will pass that message to the worker, where the message will be processed and logged to Rerun. The mask_handler requires the remote field to be passed so it knows whether to decompress the mask data or not. Additionally, this handler will wait until the camera has started and logged a frame size so it knows what the height and width will be to resize the mask.</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="18:1"><input checked="checked" id="python_17" name="__tabbed_18" type="radio" /><div class="tabbed-labels"><label for="python_17">Python</label></div>
+<p>The Mask callback will wait for a Mask message from the MessageDrain and will pass that message to the worker, where the message will be processed and logged to Rerun. Additionally, this handler will wait until the camera has started and logged a frame size so it knows what the height and width will be to resize the mask.</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="15:1"><input checked="checked" id="python_14" name="__tabbed_15" type="radio" /><div class="tabbed-labels"><label for="python_14">Python</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">mask_handler</span><span class="p">(</span><span class="n">drain</span><span class="p">,</span> <span class="n">frame_storage</span><span class="p">,</span> <span class="n">remote</span><span class="p">):</span>
+<div class="highlight"><pre><span></span><code><span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">mask_handler</span><span class="p">(</span><span class="n">drain</span><span class="p">,</span> <span class="n">frame_storage</span><span class="p">):</span>
     <span class="n">_</span> <span class="o">=</span> <span class="k">await</span> <span class="n">frame_storage</span><span class="o">.</span><span class="n">get</span><span class="p">()</span>
     <span class="n">rr</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="s2">"/"</span><span class="p">,</span> <span class="n">rr</span><span class="o">.</span><span class="n">AnnotationContext</span><span class="p">([(</span><span class="mi">0</span><span class="p">,</span> <span class="s2">"background"</span><span class="p">,</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)),</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="s2">"person"</span><span class="p">,</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">255</span><span class="p">,</span> <span class="mi">0</span><span class="p">))]))</span>
     <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
         <span class="n">msg</span> <span class="o">=</span> <span class="k">await</span> <span class="n">drain</span><span class="o">.</span><span class="n">get_latest</span><span class="p">()</span>
         <span class="n">frame_size</span> <span class="o">=</span> <span class="k">await</span> <span class="n">frame_storage</span><span class="o">.</span><span class="n">get</span><span class="p">()</span>
-        <span class="n">thread</span> <span class="o">=</span> <span class="n">threading</span><span class="o">.</span><span class="n">Thread</span><span class="p">(</span><span class="n">target</span><span class="o">=</span><span class="n">mask_worker</span><span class="p">,</span> <span class="n">args</span><span class="o">=</span><span class="p">[</span><span class="n">msg</span><span class="p">,</span> <span class="n">frame_size</span><span class="p">,</span> <span class="n">remote</span><span class="p">])</span>
+        <span class="n">thread</span> <span class="o">=</span> <span class="n">threading</span><span class="o">.</span><span class="n">Thread</span><span class="p">(</span><span class="n">target</span><span class="o">=</span><span class="n">mask_worker</span><span class="p">,</span> <span class="n">args</span><span class="o">=</span><span class="p">[</span><span class="n">msg</span><span class="p">,</span> <span class="n">frame_size</span><span class="p">])</span>
         <span class="n">thread</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
         
         <span class="k">while</span> <span class="n">thread</span><span class="o">.</span><span class="n">is_alive</span><span class="p">():</span>
             <span class="k">await</span> <span class="n">asyncio</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mf">0.001</span><span class="p">)</span>
         <span class="n">thread</span><span class="o">.</span><span class="n">join</span><span class="p">()</span>
 
-<span class="k">def</span><span class="w"> </span><span class="nf">mask_worker</span><span class="p">(</span><span class="n">msg</span><span class="p">,</span> <span class="n">frame_size</span><span class="p">,</span> <span class="n">remote</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">mask_worker</span><span class="p">(</span><span class="n">msg</span><span class="p">,</span> <span class="n">frame_size</span><span class="p">):</span>
     <span class="n">mask</span> <span class="o">=</span> <span class="n">Mask</span><span class="o">.</span><span class="n">deserialize</span><span class="p">(</span><span class="n">msg</span><span class="o">.</span><span class="n">payload</span><span class="o">.</span><span class="n">to_bytes</span><span class="p">())</span>
-    <span class="k">if</span> <span class="n">remote</span><span class="p">:</span>
-        <span class="n">decoded_array</span> <span class="o">=</span> <span class="n">zstd</span><span class="o">.</span><span class="n">decompress</span><span class="p">(</span><span class="nb">bytes</span><span class="p">(</span><span class="n">mask</span><span class="o">.</span><span class="n">mask</span><span class="p">))</span>
-        <span class="n">np_arr</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">frombuffer</span><span class="p">(</span><span class="n">decoded_array</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">uint8</span><span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">mask</span><span class="o">.</span><span class="n">height</span><span class="p">,</span> <span class="n">mask</span><span class="o">.</span><span class="n">width</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span>
-    <span class="k">else</span><span class="p">:</span>
-        <span class="n">np_arr</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">mask</span><span class="o">.</span><span class="n">mask</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">uint8</span><span class="p">)</span>
-        <span class="n">np_arr</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">np_arr</span><span class="p">,</span> <span class="p">[</span><span class="n">mask</span><span class="o">.</span><span class="n">height</span><span class="p">,</span> <span class="n">mask</span><span class="o">.</span><span class="n">width</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">])</span>
+    <span class="n">np_arr</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">mask</span><span class="o">.</span><span class="n">mask</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">uint8</span><span class="p">)</span>
+    <span class="n">np_arr</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">np_arr</span><span class="p">,</span> <span class="p">[</span><span class="n">mask</span><span class="o">.</span><span class="n">height</span><span class="p">,</span> <span class="n">mask</span><span class="o">.</span><span class="n">width</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">])</span>
     <span class="n">np_arr</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">resize</span><span class="p">(</span><span class="n">np_arr</span><span class="p">,</span> <span class="n">frame_size</span><span class="p">)</span>
     <span class="n">np_arr</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">argmax</span><span class="p">(</span><span class="n">np_arr</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
     
@@ -3369,7 +3145,7 @@ Sample Code: <a href="https://github.com/EdgeFirstAI/samples/blob/main/python/mo
 </div>
 </div>
 </div>
-<h3 id="results_4">Results</h3>
+<h3 id="results_3">Results</h3>
 <p>When displaying the results through Rerun you will see the combined image of the camera feed, segmentation image and boxes.</p>
 <figure>
             <img align="center" alt="Camera + Segmentation + Boxes" src="../assets/camera_model_combined.png" />

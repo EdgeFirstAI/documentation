@@ -1650,31 +1650,104 @@
 
 
 <h1 id="the-edgefirst-perception-middleware">The EdgeFirst Perception Middleware</h1>
-<p>The EdgeFirst Perception Middleware is a collection of applications and libraries used in the implementation of the modular perception stack. The perception stack is built on Zenoh that uses ROS 2–compatible CDR message formats to publish and subscribe messages to each topics accessible in the stack over the network.</p>
+<p>The EdgeFirst Perception Middleware is a collection of applications and libraries used in the implementation of the modular perception stack.  The perception stack is built on <a href="https://zenoh.io/">Zenoh</a> and uses ROS 2 compatible <abbr title="Common Data Representation">CDR</abbr> message formats to publish and subscribe messages on topics accessible in the stack over the network.  The middleware is open source under the Apache 2.0 license and published from the <a href="https://github.com/EdgeFirstAI">EdgeFirstAI GitHub organization</a>, the <a href="../platforms/quickstart/maivin/">Torizon for Maivin</a> platform ships the middleware preinstalled and preconfigured.</p>
 <h2 id="middleware-services">Middleware Services</h2>
-<p>The Perception Middleware is modular and split into various application services, each focused on a general task.  For example a camera service is charged with interfacing with the camera and ISP (Image Signal Processor) to efficiently deliver camera frames to other services who need access to the camera.  The camera service is also responsible for encoding camera frames using a video codec into H.265 video for efficient recording or remote streaming, this feature of the camera service can be configured or disabled if recording or streaming are not required.</p>
-<p>The middleware services communicate with each other using the Zenoh networking middleware which provides a highly efficient publisher/subscriber communications stack.  This architecture is similar to <abbr title="Robot Operating System 2">ROS2</abbr> and our services encode their messages using the <abbr title="Robot Operating System 2">ROS2</abbr> CDR (Common Data Representation). We use the <abbr title="Robot Operating System 2">ROS2</abbr> standard schemas where applicable and augment with our own custom schemas where required.  The <a href="data_collection/recording/">Recorder</a> and <a href="data_collection/foxglove/">Foxglove</a> chapters go into more detail on how this allows efficient streaming and recording of messages and interoperability with industry standard tools.</p>
+<p>The Perception Middleware is modular and split into various application services, each focused on a general task.  For example the camera service is charged with interfacing with the camera and <abbr title="Image Signal Processor">ISP</abbr> (Image Signal Processor) to efficiently deliver camera frames to other services who need access to the camera.  The camera service is also responsible for encoding camera frames using the hardware video codec into H.264 video for efficient recording or remote streaming, this feature of the camera service can be configured or disabled if recording or streaming are not required.</p>
+<p>The middleware services communicate with each other using the Zenoh networking middleware which provides a highly efficient publisher/subscriber communications stack.  This architecture is similar to ROS 2 and our services encode their messages using the ROS 2 <abbr title="Common Data Representation">CDR</abbr> (Common Data Representation).  We use the ROS 2 standard schemas where applicable and augment with our own custom schemas where required.  The <a href="data_collection/recording/">Recorder</a> and <a href="data_collection/foxglove/">Foxglove</a> chapters go into more detail on how this allows efficient streaming and recording of messages and interoperability with industry standard tools.</p>
 <pre class="mermaid"><code>graph LR
-    camera --&gt; model["vision model"] --&gt; zenoh    
-    radarpub --&gt; fusion["fusion model"] --&gt; zenoh
+    camera --&gt; model["vision model"] --&gt; zenoh
+    radarpub --&gt; fusion["fusion"] --&gt; zenoh
+    lidarpub --&gt; fusion
     lidarpub --&gt; zenoh
     camera --&gt; fusion
     radarpub --&gt; zenoh
-    camera --&gt; zenoh    
+    camera --&gt; zenoh
     model --&gt; fusion
     navsat --&gt; zenoh
     imu --&gt; zenoh
     zenoh --&gt; recorder --&gt; mcap
-    zenoh --&gt; webui --&gt; https
+    mcap --&gt; replay --&gt; zenoh
+    zenoh --&gt; websrv --&gt; https
     zenoh --&gt; user["user apps"]
     https --&gt; user</code></pre>
 <h2 id="architecture">Architecture</h2>
-<p>Each service handles a specific task:</p>
+<p>Each service handles a specific task and publishes its results on a set of <a href="topics/">topics</a>.  The services are independent processes, a service can be stopped, reconfigured, and restarted without affecting the others, and several instances of a service can run to support multiple cameras or multiple models.</p>
+<table>
+<thead>
+<tr>
+<th>Service</th>
+<th>Binary</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="topics/camera/">Camera</a></td>
+<td><code>edgefirst-camera</code></td>
+<td>Interfaces with the camera and <abbr title="Image Signal Processor">ISP</abbr> to publish zero-copy camera frames along with H.264 and optional JPEG streams.  Publishes the camera intrinsics and the camera transform.</td>
+</tr>
+<tr>
+<td><a href="topics/model/">Model</a></td>
+<td><code>edgefirst-model</code></td>
+<td>Runs a vision model on the camera frames using the <abbr title="Neural Processing Unit">NPU</abbr> and publishes detection boxes, segmentation masks, tracks, and timing in a unified message.</td>
+</tr>
+<tr>
+<td><a href="topics/fusion/">Fusion</a></td>
+<td><code>edgefirst-fusion</code></td>
+<td>Projects the radar and <abbr title="Light Detection and Ranging">LiDAR</abbr> point clouds onto the vision model output to classify targets, builds 3D bounding boxes and an occupancy grid, and optionally runs a RadarExp fusion model on the radar cube.</td>
+</tr>
+<tr>
+<td><a href="topics/radar/">Radar</a></td>
+<td><code>edgefirst-radarpub</code></td>
+<td>Interfaces with the smartmicro radar over <abbr title="Controller Area Network">CAN</abbr> and Ethernet to publish the radar point cloud, clusters, and radar cube.</td>
+</tr>
+<tr>
+<td><a href="topics/lidar/"><abbr title="Light Detection and Ranging">LiDAR</abbr></a></td>
+<td><code>edgefirst-lidarpub</code></td>
+<td>Interfaces with Robosense and Ouster <abbr title="Light Detection and Ranging">LiDAR</abbr> sensors to publish point clouds, clusters, and depth and reflectivity images.</td>
+</tr>
+<tr>
+<td><a href="topics/imu/"><abbr title="Inertial Measurement Unit">IMU</abbr></a></td>
+<td><code>edgefirst-imu</code></td>
+<td>Publishes the device orientation, angular velocity, and linear acceleration.</td>
+</tr>
+<tr>
+<td><a href="topics/navsat/">NavSat</a></td>
+<td><code>edgefirst-navsat</code></td>
+<td>Publishes the <abbr title="Global Positioning System">GPS</abbr> position from <code>gpsd</code>.</td>
+</tr>
+<tr>
+<td><a href="data_collection/recording/">Recorder</a></td>
+<td><code>edgefirst-recorder</code></td>
+<td>Records topics into <abbr title="Binary container format for robotics log data">MCAP</abbr> files with the schemas embedded for playback and dataset creation.</td>
+</tr>
+<tr>
+<td><a href="data_collection/replay/">Replay</a></td>
+<td><code>edgefirst-replay</code></td>
+<td>Replays <abbr title="Binary container format for robotics log data">MCAP</abbr> recordings onto the topics in place of the live sensors.</td>
+</tr>
+<tr>
+<td>Web Server</td>
+<td><code>edgefirst-websrv</code></td>
+<td>Serves the <a href="../platforms/quickstart/maivin/webui/">Web UI</a>, bridges topics to the browser over WebSockets, and provides the configuration, recording, and EdgeFirst Studio upload APIs.</td>
+</tr>
+<tr>
+<td>Zenoh Router</td>
+<td><code>zenohd</code></td>
+<td>Optional router allowing <a href="dev/">remote applications</a> to reach the device topics.</td>
+</tr>
+</tbody>
+</table>
+<p>The services are built on a set of shared libraries which are also published from the EdgeFirst GitHub organization with Rust, C, and Python bindings.</p>
 <ul>
-<li><strong>Camera Service</strong>: Interfaces with the camera and ISP (Image Signal Processor) to deliver frames to other services. It also encodes frames to H.265 video for recording or streaming. You can configure or disable encoding if not needed.</li>
+<li><strong>EdgeFirst Schemas</strong> provide the message definitions and <abbr title="Common Data Representation">CDR</abbr> encoding for the ROS 2 common interfaces, the Foxglove messages, and the EdgeFirst custom messages, refer to the <a href="api/"><abbr title="Application Programming Interface">API</abbr> Reference</a>.</li>
+<li><strong>EdgeFirst <abbr title="Hardware Abstraction Layer">HAL</abbr></strong> provides the tensor, image processing, decoder, and tracker building blocks used by the model and fusion services.</li>
+<li><strong>VideoStream</strong> provides zero-copy camera frame sharing across processes along with the hardware codec interfaces.</li>
 </ul>
+<p>On Torizon for Maivin the services run as systemd units under the <code>maivin.target</code> target with their configuration under <code>/etc/default/</code>, refer to the platform <a href="../platforms/configuration/">Configuration</a> section.  On other platforms the services can be launched in user-mode with the <a href="launcher/">EdgeFirst Launcher</a>.</p>
 <h2 id="communication">Communication</h2>
-<p>Services communicate through Zenoh, a high-performance publisher/subscriber stack. While EdgeFirst doesn't depend on <abbr title="Robot Operating System 2">ROS2</abbr>, services encode messages using <abbr title="Robot Operating System 2">ROS2</abbr> CDR (Common Data Representation). The middleware uses <abbr title="Robot Operating System 2">ROS2</abbr> standard schemas where applicable and custom schemas where needed.</p>
+<p>Services communicate through Zenoh, a high-performance publisher/subscriber stack.  While EdgeFirst doesn't depend on ROS 2, services encode messages using the ROS 2 <abbr title="Common Data Representation">CDR</abbr> (Common Data Representation).  The middleware uses ROS 2 standard schemas where applicable and custom schemas where needed.</p>
+<p>Each service opens its Zenoh session inside a namespace equal to the device hostname, so the topics are published on bare keys such as <code>camera/h264</code> and reach the network as <code>verdin-imx8mp-XXXXXXXX/camera/h264</code>.  This keeps the topics of several devices on the same network apart and lets recordings from multiple devices be merged.  Refer to <a href="topics/#hostname-namespaces">Middleware Topics</a> for the details and to the <a href="dev/">Developer Guide</a> for subscribing from your own applications.</p>
 <p>See the <a href="data_collection/recording/">Recording</a> and <a href="data_collection/foxglove/">Foxglove</a> sections for details on streaming, recording, and tool interoperability.</p>
 <p>For programmatic access to EdgeFirst Studio (dataset upload, snapshots, training artifacts), see the <a href="../client/">EdgeFirst Client</a> documentation.</p>
 

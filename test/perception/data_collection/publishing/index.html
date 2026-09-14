@@ -1301,10 +1301,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#method-1-download-the-mcap-from-the-raivin-and-publish-to-studio" class="md-nav__link">
+  <a href="#method-1-upload-from-the-web-ui" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Method 1: Download the MCAP from the Raivin and Publish to Studio
+        Method 1: Upload from the Web UI
       
     </span>
   </a>
@@ -1312,10 +1312,32 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#method-2-publish-the-mcap-directly-using-the-edgefirst-client" class="md-nav__link">
+  <a href="#method-2-download-the-mcap-from-the-raivin-and-publish-to-studio" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Method 2: Publish the MCAP directly using the EdgeFirst Client
+        Method 2: Download the MCAP from the Raivin and Publish to Studio
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#method-3-publish-the-mcap-directly-using-the-edgefirst-client" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Method 3: Publish the MCAP directly using the EdgeFirst Client
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#exporting-recordings-on-the-device" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Exporting Recordings on the Device
       
     </span>
   </a>
@@ -1846,10 +1868,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#method-1-download-the-mcap-from-the-raivin-and-publish-to-studio" class="md-nav__link">
+  <a href="#method-1-upload-from-the-web-ui" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Method 1: Download the MCAP from the Raivin and Publish to Studio
+        Method 1: Upload from the Web UI
       
     </span>
   </a>
@@ -1857,10 +1879,32 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#method-2-publish-the-mcap-directly-using-the-edgefirst-client" class="md-nav__link">
+  <a href="#method-2-download-the-mcap-from-the-raivin-and-publish-to-studio" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Method 2: Publish the MCAP directly using the EdgeFirst Client
+        Method 2: Download the MCAP from the Raivin and Publish to Studio
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#method-3-publish-the-mcap-directly-using-the-edgefirst-client" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Method 3: Publish the MCAP directly using the EdgeFirst Client
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#exporting-recordings-on-the-device" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Exporting Recordings on the Device
       
     </span>
   </a>
@@ -1949,7 +1993,7 @@
 <p class="admonition-title">EdgeFirst Client</p>
 <p>For the full <abbr title="Binary container format for robotics log data">MCAP</abbr> snapshot workflow (<code>create-snapshot</code>, <code>restore-snapshot</code>), see the <a href="../../../client/cli/#mcap-snapshot-workflow">EdgeFirst Client CLI</a>.</p>
 </div>
-<p>Once you have a <abbr title="Binary container format for robotics log data">MCAP</abbr> created from the <a href="../recording/">Recording Service</a>, you can upload it as a <a href="../../../datasets/">dataset</a> to <a href="../../../studio/">EdgeFirst Studio</a> to <a href="../../../studio/agtg/">auto-annotation</a> and <a href="../../../models/">train additional models</a> from.  There are two methods to upload the <abbr title="Binary container format for robotics log data">MCAP</abbr> to EdgeFirst Studio:  download the <abbr title="Binary container format for robotics log data">MCAP</abbr> from Raivin and use EdgeFirst Studio to create a snapshot, or use the <a href="../../../client/cli/">EdgeFirst Client</a> on the Raivin device to directly upload the file from the Raivin to the Studio as a snapshot.</p>
+<p>Once you have a <abbr title="Binary container format for robotics log data">MCAP</abbr> created from the <a href="../recording/">Recording Service</a>, you can upload it as a <a href="../../../datasets/">dataset</a> to <a href="../../../studio/">EdgeFirst Studio</a> to <a href="../../../studio/agtg/">auto-annotate</a> and <a href="../../../models/">train additional models</a> from.  There are three methods to upload the <abbr title="Binary container format for robotics log data">MCAP</abbr> to EdgeFirst Studio: upload the <abbr title="Binary container format for robotics log data">MCAP</abbr> directly from the Web UI of the device, download the <abbr title="Binary container format for robotics log data">MCAP</abbr> from the Raivin and use EdgeFirst Studio to create a snapshot, or use the <a href="../../../client/cli/">EdgeFirst Client</a> on the Raivin device to directly upload the file from the Raivin to the Studio as a snapshot.</p>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
 <p>Uploading snapshots should not deduct funds from your EdgeFirst Studio account. However, creating datasets from snapshots, called <em>restoring</em> snapshots, will absolutely incur costs.</p>
@@ -1961,28 +2005,41 @@
             </figure>
 <h2 id="prerequisites">Prerequisites</h2>
 <p>It is assumed you have followed the steps in the <a href="../recording/">Recording Service page</a> and have an <abbr title="Binary container format for robotics log data">MCAP</abbr> file as well as working knowledge of the page.</p>
-<p>You must have followed the steps in the <a href="../../../">EdgeFirst Studio Quick Start</a> to create a user account, login to the account, and create an initial project. You will need the username and password for both publishing methods.</p>
-<p>Most of the workflows below require working knowledge with <a href="../../../platforms/networking/ssh/"><abbr title="Secure Shell">SSH</abbr> and command-line interfaces</a>. It is recommended that you read and follow the steps on that page to confirm <abbr title="Secure Shell">SSH</abbr> connectivity with the Raivin.</p>
-<h2 id="method-1-download-the-mcap-from-the-raivin-and-publish-to-studio">Method 1: Download the <abbr title="Binary container format for robotics log data">MCAP</abbr> from the Raivin and Publish to Studio</h2>
-<p>The first method is to download the <abbr title="Binary container format for robotics log data">MCAP</abbr> from the Raivin.  This can be accomplished in <a href="../recording/#download-mcap">two ways</a> :  </p>
+<p>You must have followed the steps in the <a href="../../../">EdgeFirst Studio Quick Start</a> to create a user account, login to the account, and create an initial project. You will need the username and password for all publishing methods.</p>
+<p>Methods 2 and 3 below require working knowledge with <a href="../../../platforms/networking/ssh/"><abbr title="Secure Shell">SSH</abbr> and command-line interfaces</a>. It is recommended that you read and follow the steps on that page to confirm <abbr title="Secure Shell">SSH</abbr> connectivity with the Raivin.</p>
+<h2 id="method-1-upload-from-the-web-ui">Method 1: Upload from the Web UI</h2>
+<p>The Web UI can upload recordings directly from the device to EdgeFirst Studio.  The upload runs in the background on the device, so it continues if the browser is closed, and the progress is reported in the <abbr title="Binary container format for robotics log data">MCAP</abbr> Modal.</p>
+<p>First log in to EdgeFirst Studio from the device.  Click the EdgeFirst Studio button on the top ribbon, which shows a gray indicator while logged out, and enter your EdgeFirst Studio username and password in the "Login to EdgeFirst Studio" dialog.  The indicator turns green once the device is logged in, clicking it again shows the account and offers to log out.</p>
+<p>Next open the <a href="../recording/#the-mcap-modal"><abbr title="Binary container format for robotics log data">MCAP</abbr> Modal</a> and click the "Upload" button in the row of the recording to upload.  The "Upload to EdgeFirst Studio" dialog offers two upload modes:</p>
+<ul>
+<li><strong>Basic (Snapshot only)</strong> uploads the recording as a snapshot.  The snapshot then appears on the <a href="../../../studio/snapshots/">EdgeFirst Studio Snapshot page</a> where it can be restored into a dataset of any project.</li>
+<li><strong>Extended (with AGTG)</strong> uploads the recording as a snapshot and then restores it into a dataset of the selected project with automatic annotation.  Select the project, optionally enter a dataset name, and pick the labels to annotate from the project's label list.</li>
+</ul>
+<p>Click "Upload" to start.  The dialog reports the upload progress and completes with the snapshot identifier, "Continue in Background" closes the dialog while the upload proceeds.  The upload state is persisted on the device, an upload interrupted by a power loss is reported as failed when the device restarts.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The Extended mode has known limitations in this release, refer to the <a href="../../../platforms/software/issues/#upload-to-studio-dialog-limitations-edgeai-1407">Known Issues</a>.  When in doubt use the Basic mode and restore the snapshot in EdgeFirst Studio.</p>
+</div>
+<h2 id="method-2-download-the-mcap-from-the-raivin-and-publish-to-studio">Method 2: Download the <abbr title="Binary container format for robotics log data">MCAP</abbr> from the Raivin and Publish to Studio</h2>
+<p>The second method is to download the <abbr title="Binary container format for robotics log data">MCAP</abbr> from the Raivin.  This can be accomplished in <a href="../recording/#download-mcap">two ways</a> :  </p>
 <ul>
 <li>use the download button for the <abbr title="Binary container format for robotics log data">MCAP</abbr> on the <a href="../recording/#the-mcap-modal"><abbr title="Binary container format for robotics log data">MCAP</abbr> Details Modal</a> to download the <abbr title="Binary container format for robotics log data">MCAP</abbr> to your PC via the Raivin's Web UI.  </li>
 <li>use <a href="../../../platforms/networking/ssh/#secure-copy">SCP</a> to download the file to your PC via the command-line interface.</li>
 </ul>
-<p>For our example above, you would click the second green "download" button from the top or run the following command on your PC:</p>
+<p>For our example above, you would click the "download" button of the recording or run the following command on your PC:</p>
 <div class="highlight"><pre><span></span><code>scp<span class="w"> </span>torizon@verdin-imx8mp-07130049:/media/DATA/verdin-imx8mp-07130049_2025_04_09_12_44_12.mcap<span class="w"> </span>.
 </code></pre></div>
 <p>Once the <abbr title="Binary container format for robotics log data">MCAP</abbr> file is downloaded to your PC, you can login to EdgeFirst Studio and use the <a href="../../../studio/snapshots/">EdgeFirst Studio Snapshot page</a> to upload the <abbr title="Binary container format for robotics log data">MCAP</abbr> file to Studio.</p>
-<h2 id="method-2-publish-the-mcap-directly-using-the-edgefirst-client">Method 2: Publish the <abbr title="Binary container format for robotics log data">MCAP</abbr> directly using the EdgeFirst Client</h2>
-<p>The second method is to use the <a href="../../../client/cli/">EdgeFirst Client</a> on the device to directly upload the <abbr title="Binary container format for robotics log data">MCAP</abbr> to EdgeFirst Studio as a snapshot. This requires that you <abbr title="Secure Shell">SSH</abbr> into the device and run commands on the Linux shell of the Raivin.</p>
+<h2 id="method-3-publish-the-mcap-directly-using-the-edgefirst-client">Method 3: Publish the <abbr title="Binary container format for robotics log data">MCAP</abbr> directly using the EdgeFirst Client</h2>
+<p>The third method is to use the <a href="../../../client/cli/">EdgeFirst Client</a> on the device to directly upload the <abbr title="Binary container format for robotics log data">MCAP</abbr> to EdgeFirst Studio as a snapshot. This requires that you <abbr title="Secure Shell">SSH</abbr> into the device and run commands on the Linux shell of the Raivin.</p>
 <p>First, you would need to use the <abbr title="Secure Shell">SSH</abbr> client to log into the device:</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>ssh<span class="w"> </span>torizon@verdin-imx8mp-07130049
 Last<span class="w"> </span>login:<span class="w"> </span>Fri<span class="w"> </span>Apr<span class="w"> </span><span class="m">25</span><span class="w"> </span><span class="m">15</span>:29:08<span class="w"> </span><span class="m">2025</span><span class="w"> </span>from<span class="w"> </span><span class="m">10</span>.10.20.3
 torizon@verdin-imx8mp-07130049:~$
 </code></pre></div>
-<p>Confirm that the version of your EdgeFirst Client is 1.3.3 or higher:</p>
-<div class="highlight"><pre><span></span><code>torizon@verdin-imx8mp-07130049:~$<span class="w"> </span>edgefirst-client<span class="w"> </span>-V
-edgefirst-client<span class="w"> </span><span class="m">1</span>.3.3
+<p>Confirm the version of the EdgeFirst Client installed on the device, Torizon for Maivin 2026.08 ships version 2.13.2:</p>
+<div class="highlight"><pre><span></span><code>torizon@verdin-imx8mp-07130049:~$<span class="w"> </span>edgefirst-client<span class="w"> </span>--version
+edgefirst-client<span class="w"> </span><span class="m">2</span>.13.2
 torizon@verdin-imx8mp-07130049:~$
 </code></pre></div>
 <p>From here, you should run a directory listing to see the files in the <abbr title="Binary container format for robotics log data">MCAP</abbr> save directory:</p>
@@ -2012,6 +2069,11 @@ torizon@verdin-imx8mp-07130049:~$
             <img align="center" alt="Recording Service" src="../../assets/Publishing-studioSnapshots.png" />
             <figcaption>Recording Service</figcaption>
             </figure>
+<h2 id="exporting-recordings-on-the-device">Exporting Recordings on the Device</h2>
+<p>The EdgeFirst Publisher is also installed on the device as the <code>publisher</code> command.  It converts a recording into the <a href="../../../datasets/format/">EdgeFirst Dataset Format</a>, a ZIP archive of camera frames along with an Arrow annotations table carrying the detections and segmentation masks recorded from the model service, the <abbr title="Global Positioning System">GPS</abbr> location, and the <abbr title="Inertial Measurement Unit">IMU</abbr> pose.  The publisher recognizes recordings from the current release, from earlier releases with the <code>rt/</code> prefix, and recordings carrying a hostname prefix.</p>
+<div class="highlight"><pre><span></span><code>publisher<span class="w"> </span>zip<span class="w"> </span>-f<span class="w"> </span><span class="m">1</span><span class="w"> </span>--out<span class="w"> </span><span class="nb">export</span><span class="w"> </span>verdin-imx8mp-07130049_2025_04_09_12_44_12.mcap
+</code></pre></div>
+<p>The <code>-f</code> option samples the recording at the given frame rate.  The export walks every H.264 frame of the recording, so a sampled export of a long 60 <abbr title="Frames Per Second">FPS</abbr> recording can take several minutes on the device, run long exports inside a <code>tmux</code> session.  Refer to <a href="../../4k/publisher_4k/">Maivin Publisher with 4K</a> for exporting 4K tiled recordings.</p>
 <h2 id="next-steps">Next Steps</h2>
 <p>Once the <abbr title="Binary container format for robotics log data">MCAP</abbr> is uploaded as a snapshot to EdgeFirst Studio, you can <a href="../../../studio/snapshots/#restore-snapshot">restore the snapshot</a> into the initial project you created as part of the <a href="../../../">EdgeFirst Studio Quick Start</a>.</p>
 <div class="admonition warning">

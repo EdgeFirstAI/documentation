@@ -1497,10 +1497,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#live-view-segmentation-app" class="md-nav__link">
+  <a href="#live-view-camera-page" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Live View (Segmentation App)
+        Live View (Camera Page)
       
     </span>
   </a>
@@ -1964,10 +1964,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#live-view-segmentation-app" class="md-nav__link">
+  <a href="#live-view-camera-page" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Live View (Segmentation App)
+        Live View (Camera Page)
       
     </span>
   </a>
@@ -2074,7 +2074,7 @@
             </figure>
 <p>This guide will showcase two methods of deploying the model.</p>
 <ol>
-<li><a href="#live-view-segmentation-app">Live View (Segmentation App)</a>: Displays the live camera feed using the default model provided.</li>
+<li><a href="#live-view-camera-page">Live View (Camera Page)</a>: Displays the live camera feed with the model output overlaid.</li>
 <li><a href="../../../perception/data_collection/recording/#record-mcap"><abbr title="Binary container format for robotics log data">MCAP</abbr> Recording</a>: Allows control of the recording options and provides download file options to replay the recording.</li>
 </ol>
 <h2 id="download-the-model">Download the Model</h2>
@@ -2155,27 +2155,26 @@ Password:<span class="w"> </span>****
         </figure></p>
 <p>Select "Model Settings".</p>
 <p><figure markdown="span">
-        <img align="center" alt="Model Settings" src="../../assets/deployment/raivin-model-settings.jpg" />
+        <img align="center" alt="Model Settings" src="../../assets/deployment/raivin-model-settings.png" />
         <figcaption>Model Settings</figcaption>
         </figure></p>
 <p>Configure the path to the model in your device as specified under "MODEL:".  Once configured, click "Save Configuration" to save your changes.</p>
 <p><figure markdown="span">
-        <img align="center" alt="Model Path" src="../../assets/deployment/configure-model-path-maivin.jpg" />
+        <img align="center" alt="Model Path" src="../../assets/deployment/configure-model-path-maivin.png" />
         <figcaption>Model Path</figcaption>
         </figure></p>
 </div>
 <div class="tabbed-block">
 <p>To update the model path using the command line in the device, edit the following file using <code>sudo vi /etc/default/model</code>.</p>
 <p>Next, you will see the file with the following contents.</p>
-<div class="highlight"><pre><span></span><code># This is the configuration file for the model systemd service file.  When
-# running systemctl start detect the service will use these configurations.
-# If running model directly, you must continue to use the command-line options.
-
-# A model is required for the model application. This can be a segmentation model
-# and/or a detection model.
-MODEL = "path/to/mymodel.tflite"
+<div class="highlight"><pre><span></span><code><span class="c1"># ---------------------------------------------------------------------------</span>
+<span class="c1"># Model Path</span>
+<span class="c1"># ---------------------------------------------------------------------------</span>
+<span class="c1"># Path to the inference model file (e.g., a .tflite model). This is required</span>
+<span class="c1"># and the service will not start without it.</span>
+<span class="na">MODEL</span><span class="o">=</span><span class="s">"/usr/share/edgefirst/modelzoo/yolov8n-det-int8-smart.tflite"</span>
 </code></pre></div>
-<p>Edit the following line <code>MODEL = "path/to/mymodel.tflite"</code> to point to the specific path to your model.  To edit, press <code>i</code> to enter into "Insert Mode".  You should now be able to edit the lines.  To exit "Insert Mode", press the ESC key on your keyboard.  Next save and exit the file by typing <code>:wq</code> on your keyboard.  More examples for using <code>vi</code> can be found <a href="https://coderwall.com/p/adv71w/basic-vim-commands-for-getting-started">here</a>.</p>
+<p>Edit the <code>MODEL=</code> line to point to the specific path to your model, for example <code>MODEL="/home/torizon/mymodel.tflite"</code>.  To edit, press <code>i</code> to enter into "Insert Mode".  You should now be able to edit the lines.  To exit "Insert Mode", press the ESC key on your keyboard.  Next save and exit the file by typing <code>:wq</code> on your keyboard.  More examples for using <code>vi</code> can be found <a href="https://coderwall.com/p/adv71w/basic-vim-commands-for-getting-started">here</a>.</p>
 <p>Once the path to the model has been updated, restart the model service using <code>sudo systemctl restart model</code>.</p>
 </div>
 </div>
@@ -2183,23 +2182,23 @@ MODEL = "path/to/mymodel.tflite"
 <h2 id="enable-and-start-the-camera-and-model-services">Enable and Start the Camera and Model Services</h2>
 <p>Once the model path in the device is specified, ensure that the model and camera services are enabled and running.  To verify, go back to the settings and click on the "Service Status" button.</p>
 <figure>
-            <img align="center" alt="Service Status" src="../../assets/deployment/raivin-service-status.jpg" />
+            <img align="center" alt="Service Status" src="../../assets/deployment/raivin-service-status.png" />
             <figcaption>Service Status</figcaption>
             </figure>
 <p>You will be greeted with the "Service Overview" page.  Ensure that the model and camera services are enabled and running as shown.  You do not need to enable or start the recorder service, as we will be starting the recorder service as described in <a href="../../../perception/data_collection/recording/"><abbr title="Binary container format for robotics log data">MCAP</abbr> Recording</a>.</p>
 <figure>
-            <img align="center" alt="Service Overview" src="../../assets/deployment/raivin-service-overview.jpg" />
+            <img align="center" alt="Service Overview" src="../../assets/deployment/raivin-service-overview.png" />
             <figcaption>Service Overview</figcaption>
             </figure>
-<h2 id="live-view-segmentation-app">Live View (Segmentation App)</h2>
-<p>Now you will see a live inference of the model in the device.  Once all services are enabled, go back to the main page and then select the "Segmentation View" application as shown.</p>
+<h2 id="live-view-camera-page">Live View (Camera Page)</h2>
+<p>Now you will see a live inference of the model in the device.  Once all services are enabled, go back to the main page and then select the "Camera" card as shown, then enable the segmentation overlay from the page controls.</p>
 <figure>
             <img align="center" alt="Segmentation App" src="../../assets/deployment/raivin-segmentation-app.png" />
             <figcaption>Segmentation App</figcaption>
             </figure>
 <p>This will run inference on the model specified to generate segmentation masks and/or bounding boxes of identified objects on the camera feed.  In this case, the model is identifying coffee cups in the video feed.  An example is shown below.</p>
 <figure>
-            <img align="center" alt="Segmentation Sample 1" src="../../assets/deployment/segmentation-sample-1.jpg" />
+            <img align="center" alt="Segmentation Sample 1" src="../../assets/deployment/segmentation-sample-1.png" />
             <figcaption>Segmentation Sample 1</figcaption>
             </figure>
 <p>Now that the model has been updated, you can <a href="../../../perception/data_collection/recording/#record-mcap">make new recordings</a> using the model's inference and then <a href="../../../perception/data_collection/foxglove/">visualize the recording using Foxglove Studio</a>.</p>

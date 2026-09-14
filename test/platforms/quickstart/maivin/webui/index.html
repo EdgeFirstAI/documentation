@@ -1446,10 +1446,10 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#the-segmentation-page" class="md-nav__link">
+  <a href="#the-camera-page" class="md-nav__link">
     <span class="md-ellipsis">
       
-        The Segmentation Page
+        The Camera Page
       
     </span>
   </a>
@@ -2012,8 +2012,6 @@
       
         
       
-        
-      
     
     
     
@@ -2335,10 +2333,10 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#the-segmentation-page" class="md-nav__link">
+  <a href="#the-camera-page" class="md-nav__link">
     <span class="md-ellipsis">
       
-        The Segmentation Page
+        The Camera Page
       
     </span>
   </a>
@@ -2476,31 +2474,35 @@
 
 
 <h1 id="maivin-web-ui-walkthrough">Maivin Web UI Walkthrough</h1>
-<p>This article will walk you through the Maivin's Web User Interface (Web UI).</p>
+<p>This article will walk you through the Maivin's Web User Interface (Web UI).  The Web UI is served by the <code>websrv</code> service on the device over <abbr title="Hypertext Transfer Protocol">HTTP</abbr> and <abbr title="Hypertext Transfer Protocol Secure">HTTPS</abbr> and is reached at <code>https://verdin-imx8mp-XXXXXXXX.local</code> where the eight digits are the device serial number.</p>
 <h2 id="the-main-page">The Main Page</h2>
 <p>The Main Page of the Maivin web interface should look as follows:</p>
 <figure>
             <img align="center" alt="Maivin Main Page" src="../../../assets/setup/ui-maivinMain.png" />
             <figcaption>Maivin Main Page</figcaption>
             </figure>
-<p>There are three cards on the Main Page that link to the Visualization pages:</p>
+<p>The Main Page shows one card for each running visualization.  Cards only appear while their service is running, so a stock Maivin shows the following three cards:</p>
 <ul>
-<li><strong><abbr title="Global Positioning System">GPS</abbr></strong>: This page displays a map with the current location of the device, along with <abbr title="Global Positioning System">GPS</abbr> coordinates.</li>
+<li><strong>Camera</strong>: This page shows the live camera video with optional detection and segmentation overlays from the model service.</li>
 <li><strong><abbr title="Inertial Measurement Unit">IMU</abbr></strong>: This page displays the 3D orientation of the device with current roll, pitch, and yaw values.</li>
-<li><strong>Segmentation View</strong>: This page shows the camera with running segmentation and/or detection pipeline.</li>
+<li><strong><abbr title="Global Positioning System">GPS</abbr></strong>: This page displays a map with the current location of the device, along with <abbr title="Global Positioning System">GPS</abbr> coordinates.</li>
 </ul>
+<p>The <strong><abbr title="Light Detection and Ranging">LiDAR</abbr></strong> and <strong>Radar</strong> cards described in the <a href="../../raivin/webui/">Raivin Web UI Walkthrough</a> appear when the <abbr title="Light Detection and Ranging">LiDAR</abbr> or radar publisher services are running.</p>
 <h3 id="the-top-ribbon">The Top Ribbon</h3>
-<p>The ribbon at the top of the web interface is available on every page of the web interface.  The following six elements are available on every page of the device's web interface.</p>
+<p>The ribbon at the top of the web interface is available on every page of the web interface.  The following elements are available on every page of the device's web interface.</p>
 <ol>
 <li>On the left, the "Home" button with the Au-Zone icon, which will return the user to the Main Page</li>
 <li>In the middle, the title of the current page</li>
 <li>On the right side, we first have the Recording Indicator, shown as a gray oval with "REC" when not recording from the sensors and a red oval when recording</li>
 <li>The <abbr title="Binary container format for robotics log data">MCAP</abbr> Details Modal button, which opens the <abbr title="Binary container format for robotics log data">MCAP</abbr> Modal</li>
+<li>The EdgeFirst Studio button, which shows whether the device is logged in to EdgeFirst Studio and opens the login dialog used for <a href="../../../../perception/data_collection/publishing/#method-1-upload-from-the-web-ui">uploading recordings</a></li>
 <li>The System Status Indicator and Dropdown button</li>
+<li>The theme toggle switching the interface between light, dark, and automatic modes</li>
 <li>The farthest rightmost button, with the gear icon, is the Settings Button which will take you to the <a href="../../../configuration/">Settings Page</a></li>
 </ol>
+<p>Notifications such as the outcome of saving a configuration page or starting a recording appear as cards below the ribbon.  Errors stay until dismissed while informational notifications clear on their own.</p>
 <h3 id="the-mcap-modal">The <abbr title="Binary container format for robotics log data">MCAP</abbr> Modal</h3>
-<p>The <abbr title="Binary container format for robotics log data">MCAP</abbr> Modal is the interface to manage <abbr title="Binary container format for robotics log data">MCAP</abbr> recordings, including getting information about recorded <abbr title="Binary container format for robotics log data">MCAP</abbr> files, disk usage, deletion and downloading files.  More information about the <abbr title="Binary container format for robotics log data">MCAP</abbr> Modal and recording MCAPs is in the <a href="../../../../perception/data_collection/recording/">Recording section</a></p>
+<p>The <abbr title="Binary container format for robotics log data">MCAP</abbr> Modal is the interface to manage <abbr title="Binary container format for robotics log data">MCAP</abbr> recordings, including getting information about recorded <abbr title="Binary container format for robotics log data">MCAP</abbr> files, disk usage, deletion, downloading files, uploading files to EdgeFirst Studio, and replaying files on the device.  More information about the <abbr title="Binary container format for robotics log data">MCAP</abbr> Modal and recording MCAPs is in the <a href="../../../../perception/data_collection/recording/">Recording section</a></p>
 <figure>
             <img align="center" alt="A recorded MCAP file" src="../../../assets/setup/quickStart-mcap.png" />
             <figcaption>A recorded <abbr title="Binary container format for robotics log data">MCAP</abbr> file</figcaption>
@@ -2523,21 +2525,25 @@
             </figure>
 <h2 id="the-visualization-pages">The Visualization Pages</h2>
 <p>These pages contain the user-facing functionality of the vision module.</p>
-<h3 id="the-segmentation-page">The Segmentation Page</h3>
-<p>The Segmentation page shows camera overlain with the current visual model output.</p>
+<h3 id="the-camera-page">The Camera Page</h3>
+<p>The Camera page shows the live camera video decoded from the <code>camera/h264</code> topic.  The controls at the top of the page toggle the segmentation overlay, which draws the detection boxes and segmentation masks published by the model service on <code>model/output</code> over the video, and the <abbr title="Light Detection and Ranging">LiDAR</abbr> overlay for devices with a <abbr title="Light Detection and Ranging">LiDAR</abbr> sensor.  A statistics panel reports the model latency and throughput.</p>
 <figure>
-            <img align="center" alt="Maivin Segmentation Page" src="../../../assets/setup/ui-maivinSegmentation.jpg" />
-            <figcaption>Maivin Segmentation Page</figcaption>
+            <img align="center" alt="Maivin Camera Page" src="../../../assets/setup/quickStart-segmentation.png" />
+            <figcaption>Maivin Camera Page</figcaption>
             </figure>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The overlay state is not persisted across page refreshes and enabling the overlays can stutter the live video with segmentation models, refer to the <a href="../../../software/issues/">Known Issues</a>.</p>
+</div>
 <h3 id="the-gps-page">The <abbr title="Global Positioning System">GPS</abbr> Page</h3>
-<p>The <abbr title="Global Positioning System">GPS</abbr> page shows an interactive map centered on the device's location.  </p>
+<p>The <abbr title="Global Positioning System">GPS</abbr> page shows an interactive map centered on the device's location as published by the NavSat service on the <code>gps</code> topic.  </p>
 <figure>
             <img align="center" alt="GPS Page" src="../../../assets/setup/quickStart-gps.png" />
             <figcaption><abbr title="Global Positioning System">GPS</abbr> Page</figcaption>
             </figure>
-<p>This should be familiar to anyone who has used standard map web interfaces.  The map can be moved by dragging with left-mouse button (or touch with a touchscreen-enabled device).  The "+" and "-" buttons on the left will zoom-in and zoom-out on the map.  The "Refresh" button will re-center the map on the device's location.  The latitude and longitude are also reported on the web interface.</p>
+<p>This should be familiar to anyone who has used standard map web interfaces.  The map can be moved by dragging with left-mouse button (or touch with a touchscreen-enabled device).  The "+" and "-" buttons on the left will zoom-in and zoom-out on the map.  The "Refresh" button will re-center the map on the device's location.  The latitude and longitude are also reported on the web interface.  The map tiles are loaded from the Internet, the position readout works without connectivity.</p>
 <h3 id="the-imu-page">The <abbr title="Inertial Measurement Unit">IMU</abbr> Page</h3>
-<p>The <abbr title="Inertial Measurement Unit">IMU</abbr> page shows the device's orientation in 3D.  </p>
+<p>The <abbr title="Inertial Measurement Unit">IMU</abbr> page shows the device's orientation in 3D as published by the <abbr title="Inertial Measurement Unit">IMU</abbr> service on the <code>imu</code> topic.  </p>
 <figure>
             <img align="center" alt="IMU Page" src="../../../assets/setup/quickStart-imu.png" />
             <figcaption><abbr title="Inertial Measurement Unit">IMU</abbr> Page</figcaption>

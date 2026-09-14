@@ -1241,8 +1241,6 @@
       
         
       
-        
-      
     
     
     
@@ -1340,34 +1338,6 @@
     
   
     Camera Settings
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="webui/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Web UI Settings
   
 
     
@@ -1743,10 +1713,32 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#configuration-files" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Configuration Files
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#services" class="md-nav__link">
     <span class="md-ellipsis">
       
         Services
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#zenoh-networking" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Zenoh Networking
       
     </span>
   </a>
@@ -1825,65 +1817,155 @@
             <img align="center" alt="root Settings page" src="../assets/configuration/configuration-root.png" />
             <figcaption>root Settings page</figcaption>
             </figure>
-<p>Every settings page has a "Save Configuration" button at the bottom of the page. If you make changes, click this button to save them.</p>
+<p>The Settings page links to the following pages.</p>
+<table>
+<thead>
+<tr>
+<th>Settings Page</th>
+<th>Service</th>
+<th>Configuration File</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="camera/">Camera Settings</a></td>
+<td><code>camera</code></td>
+<td><code>/etc/default/camera</code></td>
+</tr>
+<tr>
+<td><a href="model/">Model Settings</a></td>
+<td><code>model</code></td>
+<td><code>/etc/default/model</code></td>
+</tr>
+<tr>
+<td><a href="mcap_recording/"><abbr title="Binary container format for robotics log data">MCAP</abbr> Recorder</a></td>
+<td><code>recorder</code></td>
+<td><code>/etc/default/recorder</code></td>
+</tr>
+<tr>
+<td><a href="radar/">Radar Settings</a></td>
+<td><code>radarpub</code></td>
+<td><code>/etc/default/radarpub</code></td>
+</tr>
+<tr>
+<td><a href="lidar/"><abbr title="Light Detection and Ranging">LiDAR</abbr> Settings</a></td>
+<td><code>lidarpub</code></td>
+<td><code>/etc/default/lidarpub</code></td>
+</tr>
+<tr>
+<td><a href="fusion/">Fusion Settings</a></td>
+<td><code>fusion</code></td>
+<td><code>/etc/default/fusion</code></td>
+</tr>
+<tr>
+<td><a href="service_status/">Service Status</a></td>
+<td>all</td>
+<td></td>
+</tr>
+<tr>
+<td>EdgeFirst Studio</td>
+<td><code>websrv</code></td>
+<td>Login to EdgeFirst Studio for <a href="../../perception/data_collection/publishing/#method-1-upload-from-the-web-ui">uploading recordings</a></td>
+</tr>
+</tbody>
+</table>
+<p>Every settings page has a "Save Configuration" button at the bottom of the page. If you make changes, click this button to save them.  Saving rewrites the configuration file and restarts the service, the page reports whether the service restarted successfully and lists any key that was rejected or could not be matched to the configuration file.</p>
 <figure>
             <img align="center" alt="Save Configuration button" src="../assets/configuration/configuration-saveConfiguration.png" />
             <figcaption>Save Configuration button</figcaption>
             </figure>
-<p>As well, each settings page will have a corresponding configuration file located in <code>/etc/default/</code> on the device. These can be edited with the <code>vi</code> text editor, for example, the <code>sudo vi /etc/default/camera</code> command will edit the configuration file for the camera service.</p>
+<h2 id="configuration-files">Configuration Files</h2>
+<p>Each service reads its configuration from a file under <code>/etc/default/</code> named after the service, for example <code>/etc/default/camera</code> for the camera service.  The files are loaded by systemd as an <code>EnvironmentFile</code>, every variable maps to a command-line option of the service with the same name in lower-case and dashes in place of underscores.  Running a service manually from the command line does not read the file, the equivalent command-line options or environment variables must be provided instead.</p>
+<p>The files follow the systemd <code>EnvironmentFile</code> syntax:</p>
+<ul>
+<li>Lines beginning with <code>#</code> or <code>;</code> are comments.</li>
+<li>One <code>KEY="value"</code> pair per line with no spaces around the <code>=</code> sign.</li>
+<li>Quotes are optional and are stripped by systemd.</li>
+<li>A key set to an empty value, <code>KEY=""</code>, is treated as unset and the built-in default applies.</li>
+</ul>
+<p>The files can be edited over <a href="../networking/ssh/"><abbr title="Secure Shell">SSH</abbr></a> with the <code>vi</code> text editor, for example <code>sudo vi /etc/default/camera</code> edits the camera configuration.  Restart the service afterwards with <code>sudo systemctl restart camera</code>.  The shipped defaults for every service are kept under <code>/usr/etc/default/</code> for reference.</p>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
-<p>It is not recommended for users to manually edit the configuration files in <code>/etc/default</code>.</p>
+<p>Prefer the Web UI settings pages over manual edits.  Configuration files persist across <a href="../software/updates/">OSTree updates</a>, so a file you have edited keeps your version and does not pick up keys added by a newer release.  Compare against <code>/usr/etc/default/&lt;service&gt;</code> after an update.</p>
 </div>
 <div class="admonition tip">
 <p class="admonition-title">Restore Default Settings</p>
-<p>You can restore default factory settings of the Maivin/Raivin with this command <code>sudo cp -a /usr/etc/default/. /etc/default/</code></p>
+<p>You can restore the factory default settings of the Maivin/Raivin with the command <code>sudo cp -a /usr/etc/default/. /etc/default/</code> followed by a reboot.</p>
 </div>
 <h2 id="services">Services</h2>
-<p>On Maivin and Raivin devices, system services are managed by systemd.
-This means all core components — such as model execution, data pipelines, and supporting processes — run as systemd services in the background.</p>
+<p>On Maivin and Raivin devices, system services are managed by systemd.  This means all core components, such as camera capture, model inference, sensor publishing, and recording, run as systemd services in the background.  The services are grouped under the <code>maivin.target</code> systemd target which starts them together after boot.  The previous <code>raivin.target</code> name remains available as an alias of <code>maivin.target</code>.</p>
+<p>Each service is provided by the open source <a href="../../perception/">EdgeFirst Perception Middleware</a> as an <code>edgefirst-&lt;service&gt;</code> binary.  Torizon for Maivin installs each unit under its short name and provides a matching <code>/usr/bin/&lt;service&gt;</code> alias for the binary.</p>
 <table>
 <thead>
 <tr>
 <th>Service</th>
+<th style="text-align: center;">Auto-Start</th>
 <th>Description</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>camera.service</td>
-<td>Maivin/Raivin Camera Service</td>
+<td><code>camera.service</code></td>
+<td style="text-align: center;">enabled</td>
+<td>Camera capture through the i.MX 8M Plus <abbr title="Image Signal Processor">ISP</abbr>, H.264 and JPEG encoding</td>
 </tr>
 <tr>
-<td>imu.service</td>
-<td>Maivin/Raivin <abbr title="Inertial Measurement Unit">IMU</abbr> Service</td>
+<td><code>model.service</code></td>
+<td style="text-align: center;">enabled</td>
+<td>Vision model inference on the <abbr title="Neural Processing Unit">NPU</abbr></td>
 </tr>
 <tr>
-<td>model.service</td>
-<td>Maivin/Raivin Model Service</td>
+<td><code>imu.service</code></td>
+<td style="text-align: center;">enabled</td>
+<td><abbr title="Inertial Measurement Unit">IMU</abbr> orientation, angular velocity, and linear acceleration</td>
 </tr>
 <tr>
-<td>navsat.service</td>
-<td>Maivin/Raivin NavSat Service</td>
+<td><code>navsat.service</code></td>
+<td style="text-align: center;">enabled</td>
+<td><abbr title="Global Positioning System">GPS</abbr> position from <code>gpsd</code></td>
 </tr>
 <tr>
-<td>recorder.service</td>
-<td>Maivin/Raivin <abbr title="Binary container format for robotics log data">MCAP</abbr> Recorder Service</td>
+<td><code>websrv.service</code></td>
+<td style="text-align: center;">enabled</td>
+<td>Web server hosting the Web UI and the configuration <abbr title="Application Programming Interface">API</abbr></td>
 </tr>
 <tr>
-<td>webui.service</td>
-<td>Maivin/Raivin Web UI Server</td>
+<td><code>fusion.service</code></td>
+<td style="text-align: center;">disabled</td>
+<td>Radar and <abbr title="Light Detection and Ranging">LiDAR</abbr> sensor fusion with the vision model (Raivin)</td>
 </tr>
 <tr>
-<td>zenohd.service</td>
-<td>running Zenoh Message Router</td>
+<td><code>radarpub.service</code></td>
+<td style="text-align: center;">disabled</td>
+<td>Radar point cloud and radar cube publisher (Raivin)</td>
+</tr>
+<tr>
+<td><code>lidarpub.service</code></td>
+<td style="text-align: center;">disabled</td>
+<td><abbr title="Light Detection and Ranging">LiDAR</abbr> point cloud publisher (Raivin)</td>
+</tr>
+<tr>
+<td><code>recorder.service</code></td>
+<td style="text-align: center;">disabled</td>
+<td><abbr title="Binary container format for robotics log data">MCAP</abbr> recorder, started from the Web UI recording button</td>
+</tr>
+<tr>
+<td><code>replay.service</code></td>
+<td style="text-align: center;">disabled</td>
+<td><abbr title="Binary container format for robotics log data">MCAP</abbr> replay, started from the Web UI <abbr title="Binary container format for robotics log data">MCAP</abbr> dialog</td>
+</tr>
+<tr>
+<td><code>zenohd.service</code></td>
+<td style="text-align: center;">disabled</td>
+<td>Zenoh router allowing remote clients to reach the device topics</td>
 </tr>
 </tbody>
 </table>
+<p>Services enabled by default form the base Maivin perception stack.  The radar, <abbr title="Light Detection and Ranging">LiDAR</abbr>, and fusion services are enabled during provisioning of Raivin configurations.  The recorder and replay services are controlled by the Web UI and do not need to be enabled unless <a href="../../perception/data_collection/recording/#recording-on-boot-up">recording on boot</a> is desired.</p>
 <p>Using systemctl, you can control how these services run, whether they start automatically on boot, and inspect their current state.</p>
 <div class="admonition note">
 <p class="admonition-title">Controllable in the Web UI</p>
-<p>These commands can be controlled through the Maivin's <a href="../quickstart/maivin/webui/">Web UI</a>.</p>
+<p>These services can also be controlled through the <a href="service_status/">Service Status</a> page of the Web UI.</p>
 </div>
 <ul>
 <li>
@@ -1907,15 +1989,59 @@ This means all core components — such as model execution, data pipelines, and 
     <code>sudo systemctl restart &lt;service&gt;</code></p>
 </li>
 <li>
-<p>See list of available services on device:
-    <code>systemctl list-unit-files --type=service</code></p>
+<p>See the status of all middleware services:
+    <code>systemctl list-dependencies maivin.target</code></p>
 </li>
 <li>
 <p>Disable Maivin-specific services (unloaded system):
     <code>sudo systemctl set-default multi-user.target</code></p>
 </li>
 </ul>
-<p>To view logs and timing information for a service <code>journalctl -u &lt;service&gt;</code>.</p>
+<p>To view logs and timing information for a service use <code>journalctl -u &lt;service&gt;</code>, adding <code>-f</code> to follow the log live.</p>
+<h2 id="zenoh-networking">Zenoh Networking</h2>
+<p>Every service shares the same Zenoh networking options at the end of its configuration file.  By default services run in <code>peer</code> mode and discover each other on the device using multicast scouting.  Remote applications reach the device topics through the <code>zenohd</code> router, refer to the <a href="../../perception/dev/">Developer Guide</a> for enabling the router.</p>
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>MODE</code></td>
+<td><code>peer</code></td>
+<td>Zenoh participant mode, <code>peer</code>, <code>client</code>, or <code>router</code></td>
+</tr>
+<tr>
+<td><code>CONNECT</code></td>
+<td></td>
+<td>Zenoh endpoints to connect to, required when <code>MODE</code> is <code>client</code>, for example <code>tcp/192.168.1.1:7447</code></td>
+</tr>
+<tr>
+<td><code>LISTEN</code></td>
+<td></td>
+<td>Zenoh endpoints to listen on</td>
+</tr>
+<tr>
+<td><code>NO_MULTICAST_SCOUTING</code></td>
+<td><code>false</code></td>
+<td>Disable multicast discovery, use <code>CONNECT</code> and <code>LISTEN</code> instead</td>
+</tr>
+<tr>
+<td><code>RUST_LOG</code></td>
+<td><code>info</code></td>
+<td>Log level filter, refer to the <a href="https://docs.rs/env_logger/latest/env_logger/#enabling-logging">RUST_LOG documentation</a></td>
+</tr>
+<tr>
+<td><code>TRACY</code></td>
+<td><code>false</code></td>
+<td>Enable the <a href="../../perception/4k/#monitoring-and-debugging">Tracy</a> profiler broadcast</td>
+</tr>
+</tbody>
+</table>
+<p>The services publish their topics inside a Zenoh namespace equal to the device hostname, refer to <a href="../../perception/topics/#hostname-namespaces">Middleware Topics</a>.  Topic settings in the configuration files are written without the hostname, for example <code>camera/h264</code>.</p>
 
 
 

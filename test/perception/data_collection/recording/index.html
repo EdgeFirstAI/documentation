@@ -2124,7 +2124,7 @@
 
 <h1 id="mcap-recording-service"><abbr title="Binary container format for robotics log data">MCAP</abbr> Recording Service</h1>
 <h2 id="overview">Overview</h2>
-<p>The Recorder Service enables you to capture and store <a href="https://www.ros.org/"><abbr title="Robot Operating System 2">ROS2</abbr></a> topic data in <a href="https://mcap.dev/"><abbr title="Binary container format for robotics log data">MCAP</abbr></a> format, providing a comprehensive recording solution for your Raivin system. This service acts as a data historian, collecting published topics from various services for later analysis and playback.</p>
+<p>The Recorder Service enables you to capture and store the middleware topics in <a href="https://mcap.dev/"><abbr title="Binary container format for robotics log data">MCAP</abbr></a> format, providing a comprehensive recording solution for your Raivin system.  This service acts as a data historian, collecting published topics from various services for later analysis, playback, and dataset creation in EdgeFirst Studio.</p>
 <div class="admonition note">
 <p class="admonition-title">Maivin Instructions</p>
 <p>The instructions below are based on a Raivin platform, however, the same instructions can be applied to a Maivin platform.</p>
@@ -2132,11 +2132,14 @@
 <h3 id="how-it-works">How It Works</h3>
 <p>When active, the Recorder Service:</p>
 <ul>
-<li>Logs specified topics</li>
-<li>Compiles data into an <abbr title="Binary container format for robotics log data">MCAP</abbr>-format recording</li>
+<li>Discovers and records every topic published on the device, or only the topics selected in its <a href="../../../platforms/configuration/mcap_recording/">configuration</a></li>
+<li>Embeds the message schemas in the <abbr title="Binary container format for robotics log data">MCAP</abbr> file so the recording can be decoded by Foxglove Studio, EdgeFirst Studio, and the EdgeFirst Publisher without access to the device</li>
+<li>Records the timestamp of the publishing service rather than the receive time when the publisher provides one</li>
+<li>Compiles data into an <abbr title="Binary container format for robotics log data">MCAP</abbr>-format recording under the configured storage location</li>
 <li>Automatically saves the file upon service termination</li>
 <li>Provides real-time recording status</li>
 </ul>
+<p>The topics are recorded with the device <a href="../../topics/#hostname-namespaces">hostname namespace</a> stripped, so the channels in the <abbr title="Binary container format for robotics log data">MCAP</abbr> file are named <code>/camera/h264</code>, <code>/model/output</code>, and so on.  The zero-copy <code>camera/frame</code> topic is not recorded, the camera pixels are recorded from the <code>camera/h264</code> stream.</p>
 <h3 id="the-mcap-modal">The <abbr title="Binary container format for robotics log data">MCAP</abbr> Modal</h3>
 <p>The <abbr title="Binary container format for robotics log data">MCAP</abbr> Recording Service is managed on its own modal, which can be accessed by clicking the "<abbr title="Binary container format for robotics log data">MCAP</abbr> Details" button on the top navbar of any Raivin Web UI Page.</p>
 <figure>
@@ -2144,22 +2147,22 @@
             <figcaption><abbr title="Binary container format for robotics log data">MCAP</abbr> Recorder Interface</figcaption>
             </figure>
 <p>At the top ribbon of the <abbr title="Binary container format for robotics log data">MCAP</abbr> Modal we have the title, the Disk Usage Infobar, and the "Live Mode" button. Under the ribbon, we have the Recording Toggle, which will start or end an <abbr title="Binary container format for robotics log data">MCAP</abbr> recording. We also have the "Live Mode" button, which will take the Raivin out of <a href="../replay/">"Replay Mode"</a> and back to "Live Mode".</p>
-<p>Underneath the <abbr title="Binary container format for robotics log data">MCAP</abbr> navbar, we have the current <abbr title="Binary container format for robotics log data">MCAP</abbr> recording directory -- in the above image, it is <code>/media/DATA</code>. Under this directory text, we have a "select all" checkbox which can be used to select every <abbr title="Binary container format for robotics log data">MCAP</abbr> for deletion; the "Delete Selected" button which will delete the <abbr title="Binary container format for robotics log data">MCAP</abbr> selected by the checkboxes, and the "Search files..." textfield if we need to search for a specific file.</p>
+<p>Underneath the <abbr title="Binary container format for robotics log data">MCAP</abbr> navbar, we have the current <abbr title="Binary container format for robotics log data">MCAP</abbr> recording directory, which is <code>/home/torizon/recordings</code> by default or <code>/media/DATA</code> when an SD card is configured as the <a href="../../../platforms/configuration/mcap_recording/#storage-location">storage location</a>.  Under this directory text, we have the "Search files..." textfield if we need to search for a specific file.</p>
 <p>Under all of that, we have a list of <abbr title="Binary container format for robotics log data">MCAP</abbr> files in the recording directory. For each <abbr title="Binary container format for robotics log data">MCAP</abbr> file, the following elements and information exist, starting from left to right:</p>
 <ul>
-<li>A selection checkbox.</li>
 <li>A playback button <img alt="&quot;Replay Button&quot;" src="../../assets/replay_play.png" />. Clicking this will put the device into <a href="../replay/">"Replay Mode"</a>, replaying the sensor information from this <abbr title="Binary container format for robotics log data">MCAP</abbr> file.</li>
 <li>The filename of the <abbr title="Binary container format for robotics log data">MCAP</abbr></li>
 <li>The size of the <abbr title="Binary container format for robotics log data">MCAP</abbr>, in MB</li>
 <li>The creation date and time of the <abbr title="Binary container format for robotics log data">MCAP</abbr></li>
-<li>Three Action buttons, which are:<ul>
+<li>The Action buttons, which are:<ul>
 <li>The "Info" button <img alt="&quot;Info Button&quot;" src="../../assets/mcap_information.png" />, which shows information about the topics recorded in the <abbr title="Binary container format for robotics log data">MCAP</abbr> file (see below).</li>
 <li>The "Download" button <img alt="&quot;Download Button&quot;" src="../../../assets/buttons/mcap_download_button.png" />, which will download the <abbr title="Binary container format for robotics log data">MCAP</abbr> file to your local machine.</li>
+<li>The "Upload" button, which uploads the <abbr title="Binary container format for robotics log data">MCAP</abbr> file to EdgeFirst Studio as described in <a href="../publishing/#method-1-upload-from-the-web-ui">Publishing</a>.</li>
 <li>The "Delete" button <img alt="&quot;Delete Button&quot;" src="../../assets/mcap_delete.png" />, which will remove the <abbr title="Binary container format for robotics log data">MCAP</abbr> file.</li>
 </ul>
 </li>
 </ul>
-<p>To leave the <abbr title="Binary container format for robotics log data">MCAP</abbr> Modal, click the "X" close button in the top right corner of the modal.</p>
+<p>Recordings are deleted one at a time, the notification names the deleted file so several deletions in a row stay readable.  To leave the <abbr title="Binary container format for robotics log data">MCAP</abbr> Modal, click the "X" close button in the top right corner of the modal.</p>
 <h2 id="record-mcap">Record <abbr title="Binary container format for robotics log data">MCAP</abbr></h2>
 <p><abbr title="Binary container format for robotics log data">MCAP</abbr> recordings can be started and stopped using the Recording Button at the device's <a href="../../../platforms/quickstart/maivin/webui/#the-top-ribbon">top navbar</a>.  It is to the left of the <abbr title="Binary container format for robotics log data">MCAP</abbr> Details hamburger button, which is used to open the <a href="./#the-mcap-modal"><abbr title="Binary container format for robotics log data">MCAP</abbr> Details Modal</a>.</p>
 <figure>
@@ -2222,20 +2225,23 @@
 <li><em>HH_MM_SS</em> is the UTC time the recording started in 24-hour notation</li>
 </ul>
 </div>
-<p>Any <abbr title="Binary container format for robotics log data">MCAP</abbr> recording can be deleted by clicking its "Delete" button and confirming that you wish to delete the recording, as well as clicking its checkbox and clicking the "Delete Selected" button.</p>
+<p>Any <abbr title="Binary container format for robotics log data">MCAP</abbr> recording can be deleted by clicking its "Delete" button and confirming that you wish to delete the recording.</p>
+<p>The <code>mcap</code> command line tool is also installed on the device for inspecting recordings over <abbr title="Secure Shell">SSH</abbr>, for example <code>mcap info recording.mcap</code> lists the channels, schemas, and message counts.</p>
 <h2 id="configuration">Configuration</h2>
 <p>The Recorder Service can have the following settings configured:</p>
 <ul>
-<li>Which topics to record</li>
+<li>Which topics to record, all published topics by default</li>
 <li>Location of the recording file</li>
 <li>Recording compression</li>
+<li>Maximum recording duration</li>
+<li>Radar cube frame rate limit</li>
 </ul>
 <p>These settings can be configured in the <a href="../../../platforms/configuration/mcap_recording/"><abbr title="Binary container format for robotics log data">MCAP</abbr> Recorder Settings Page</a>.</p>
 <h2 id="recording-on-boot-up">Recording On Boot-up</h2>
 <p>The Recording Service can be set up to automatically start on boot-up.</p>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
-<p>Having the Recording Service run for prolonged periods of time will fill the SD card of the Raivin.  Use this functionality with caution.</p>
+<p>Having the Recording Service run for prolonged periods of time will fill the storage of the Raivin.  Use this functionality with caution and consider setting a <a href="../../../platforms/configuration/mcap_recording/#duration">maximum duration</a>.</p>
 </div>
 <p>On the <a href="../../../platforms/configuration/service_status/">Services Status</a> page, you can use the Recorder Service status card to enable the recorder service to start on boot.</p>
 <figure>

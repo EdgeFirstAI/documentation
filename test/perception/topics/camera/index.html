@@ -1318,7 +1318,7 @@
   <a href="#camerainfo" class="md-nav__link">
     <span class="md-ellipsis">
       
-        /camera/info
+        camera/info
       
     </span>
   </a>
@@ -1326,10 +1326,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#cameradma" class="md-nav__link">
+  <a href="#cameraframe" class="md-nav__link">
     <span class="md-ellipsis">
       
-        /camera/dma
+        camera/frame
       
     </span>
   </a>
@@ -1340,7 +1340,7 @@
   <a href="#camerah264" class="md-nav__link">
     <span class="md-ellipsis">
       
-        /camera/h264
+        camera/h264
       
     </span>
   </a>
@@ -1351,7 +1351,7 @@
   <a href="#camerajpeg" class="md-nav__link">
     <span class="md-ellipsis">
       
-        /camera/jpeg
+        camera/jpeg
       
     </span>
   </a>
@@ -1903,7 +1903,7 @@
   <a href="#camerainfo" class="md-nav__link">
     <span class="md-ellipsis">
       
-        /camera/info
+        camera/info
       
     </span>
   </a>
@@ -1911,10 +1911,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#cameradma" class="md-nav__link">
+  <a href="#cameraframe" class="md-nav__link">
     <span class="md-ellipsis">
       
-        /camera/dma
+        camera/frame
       
     </span>
   </a>
@@ -1925,7 +1925,7 @@
   <a href="#camerah264" class="md-nav__link">
     <span class="md-ellipsis">
       
-        /camera/h264
+        camera/h264
       
     </span>
   </a>
@@ -1936,7 +1936,7 @@
   <a href="#camerajpeg" class="md-nav__link">
     <span class="md-ellipsis">
       
-        /camera/jpeg
+        camera/jpeg
       
     </span>
   </a>
@@ -2010,65 +2010,27 @@
 
 
 <h1 id="camera-topics">Camera Topics</h1>
-<p>The camera topics are managed by the <code>maivin-camera</code> service and handles interfacing with a local camera to produce camera frames which can be shared to multiple consumers with low overhead by leveraging zero-copy through <abbr title="Direct Memory Access">DMA</abbr> buffers.  The service can also produce encoded frames in H.264 or JPEG suitable for recording or streaming to a remote device.  The following is a list of key features provided by the camera service.</p>
+<p>The camera topics are managed by the <code>camera</code> service and handles interfacing with a local camera to produce camera frames which can be shared to multiple consumers with low overhead by leveraging zero-copy through <abbr title="Direct Memory Access">DMA</abbr> buffers.  The service can also produce encoded frames in H.264 or JPEG suitable for recording or streaming to a remote device.  The following is a list of key features provided by the camera service.</p>
 <ul>
 <li>Video4Linux2 Cameras</li>
-<li>i.MX 8M Plus ISP<ul>
-<li>Using the VSI ISP driver</li>
-<li>Publishes camera intrinsic parameters from ISP configuration</li>
+<li>i.MX 8M Plus <abbr title="Image Signal Processor">ISP</abbr><ul>
+<li>Using the VSI <abbr title="Image Signal Processor">ISP</abbr> driver</li>
+<li>Publishes camera intrinsic parameters from <abbr title="Image Signal Processor">ISP</abbr> configuration</li>
 </ul>
 </li>
 <li>Zero-Copy frame publishing using Linux <a href="https://docs.kernel.org/driver-api/dma-buf.html">dma-buf</a></li>
 <li>Hardware H.264 Encoder<ul>
 <li>VSI Hantro (i.MX 8M Plus)</li>
-<li>1080 @ 60FPS</li>
-<li>4K @ 30FPS (special extension)</li>
+<li>1080p @ 60FPS</li>
+<li>4K @ 30FPS through <a href="../../4k/">tiling</a></li>
 </ul>
 </li>
 <li>Software JPEG Encoder</li>
+<li>Recording and replay of the H.264 stream for reproducible testing</li>
 </ul>
-<p>The camera topic is published under the <code>/camera</code> namespace and offers the following sub-topics.  Some topics are optional and might not be available on the current system, refer to the camera service configuration documentation for details.</p>
-<h2 id="camerainfo">/camera/info</h2>
-<p>The <code>/camera/info</code> topic publishes information about the camera using the <a href="../../api/sensor_msgs/#camerainfo">CameraInfo</a> schema.  The schema provides the specifications for the camera resolution and optical parameters.</p>
-<h2 id="cameradma">/camera/dma</h2>
-<p>The <code>/camera/dma</code> topic uses the custom <a href="../../api/edgefirst_msgs/#dmabuffer">DmaBuffer</a> EdgeFirst schema for transmitting Linux <a href="https://docs.kernel.org/driver-api/dma-buf.html">dma-buf</a> descriptors.  This enables high-performance zero-copy of camera buffers between applications with trivial overhead.  A DmaBuffer provides the frame file descriptor and parent process descriptor along with the buffer resolution and format described using a <a href="https://fourcc.org">FOURCC</a> code.</p>
-<p>The mechanism for sharing buffers is for the camera service to publish its own <code>pid</code> along with the file descriptor (<code>fd</code>) of the buffer along with the buffer parameters (width, height, stride, fourcc).  When a subscriber receives the message it must first duplicate the file descriptor into its own process space, this is done using the <a href="https://man7.org/linux/man-pages/man2/pidfd_getfd.2.html">pidfd_getfd</a> system call.  Once the file descriptor has been duplicated it can be used normally, either used as-is with an <abbr title="Application Programming Interface">API</abbr> which can consume a <code>dma-buf</code> or by using <a href="https://man7.org/linux/man-pages/man2/mmap.2.html">mmap</a> to map the contents of the buffer into user-space.</p>
-<pre class="mermaid"><code>sequenceDiagram
-    loop
-    autonumber
-    Camera Service-&gt;&gt;Client Application: DmaBuffer(pid, fd, ...)
-    Client Application--&gt;&gt;Linux Kernel: pidfd_open(pid, fd)
-    Client Application--&gt;&gt;Linux Kernel: pidfd_getfd(pidfd, fd)
-    Linux Kernel-&gt;&gt;Client Application: fd duplicate
-    Client Application--&gt;&gt;Linux Kernel: mmap(fd)
-    Linux Kernel-&gt;&gt;Client Application: ptr to camera pixels
-    Client Application--&gt;Linux Kernel: Client Application Processing
-    Client Application--&gt;&gt;Linux Kernel: munmap(ptr)
-    Client Application--&gt;&gt;Linux Kernel: close(fd)
-    Client Application--&gt;&gt;Linux Kernel: close(pidfd)
-    end</code></pre>
-<ol>
-<li>Camera service publishes a DmaBuffer for each frame received from the camera.</li>
-<li>Client application calls <code>pidfd_open(pid, 0)</code> to acquire a file descriptor that refers to the camera service process.</li>
-<li>Client application calls <code>pidfd_getfd(pidfd, fd, 0)</code> to acquire a local duplicate of the camera buffer file descriptor.</li>
-<li>A new file descriptor is returned, to release the <code>dma-buf</code> object we will need to call <code>close(fd)</code> later.</li>
-<li>Client application calls <code>mmap(fd, ...)</code> to acquire a local pointer to the camera buffer's pixel data.</li>
-<li>A read-only pointer is returned to the client application, it will need to be released using <code>munmap(ptr)</code> later.</li>
-<li>Client application processes the pixel data.</li>
-<li>Client application calls <code>munmap(ptr)</code> to free the mapped buffer.</li>
-<li>Client application calls <code>close(fd)</code> to release the <code>dma-buf</code> object.</li>
-<li>Client application calls <code>close(pidfd)</code> to release file descriptor for the camera service process.</li>
-</ol>
-<div class="admonition tip">
-<p class="admonition-title">Permission Denied Errors</p>
-<p>The client application will not be able to call pidfd_getfd if the client application runs at a lower permission level than the camera service. If this error occurs, try running the client application as <code>sudo</code> or as a service.</p>
-</div>
-<div class="admonition tip">
-<p class="admonition-title">Mapping <abbr title="Direct Memory Access">DMA</abbr> Buffers</p>
-<p>Mapping <abbr title="Direct Memory Access">DMA</abbr> buffers into user-space requires additional synchronization primitives around accesses.  We cover these details in our camera sample application.  Further details are documented in the Linux Kernel Manual under <a href="https://docs.kernel.org/driver-api/dma-buf.html#cpu-access-to-dma-buffer-objects">CPU Access to <abbr title="Direct Memory Access">DMA</abbr> Buffer Objects</a>.</p>
-</div>
-<h2 id="camerah264">/camera/h264</h2>
-<p>The <code>/camera/h264</code> topic uses Foxglove's <a href="../../api/foxglove_msgs/#compressedvideo">CompressedVideo</a> schema to publish h.264 encoded video frames.  The h.264 encoder uses key-frames, I-Frames, at a typical rate of 1Hz with the frames in-between encoded as P/B-Frames.  The decoder requires an initial I-Frame before it can decode additional frames.  This is typically handled transparently but means when sending <code>CompressedVideo</code> data to the h.264 decoder it could take up to a second until valid output is produced.</p>
+<p>The camera topics are published under the <code>camera</code> namespace and offer the following sub-topics.  Some topics are optional and might not be available on the current system, refer to the <a href="../../../platforms/configuration/camera/">camera service configuration</a> documentation for details.  Topic names are relative to the device <a href="../#hostname-namespaces">hostname namespace</a>.</p>
+<h2 id="camerainfo">camera/info</h2>
+<p>The <code>camera/info</code> topic publishes information about the camera using the <a href="../../api/sensor_msgs/#camerainfo">CameraInfo</a> schema.  The schema provides the specifications for the camera resolution and optical parameters.  On the Maivin the intrinsic parameters come from the <abbr title="Image Signal Processor">ISP</abbr> calibration matching the configured <a href="../../../platforms/configuration/camera/#camera-mode">camera mode</a>.  The camera service also publishes the static transform from the <code>base_link</code> frame to the <code>camera_optical</code> frame on the <code>tf_static</code> topic.</p>
 <table>
 <thead>
 <tr>
@@ -2079,7 +2041,75 @@
 <tbody>
 <tr>
 <td style="text-align: center;">Web UI</td>
-<td style="text-align: center;"><a href=""></a></td>
+<td style="text-align: center;">Used by the Camera page overlays</td>
+</tr>
+<tr>
+<td style="text-align: center;">Foxglove</td>
+<td style="text-align: center;"><a href="https://docs.foxglove.dev/docs/visualization/panels/image">Image Panel Calibration</a></td>
+</tr>
+<tr>
+<td style="text-align: center;"><abbr title="Software Development Kit">SDK</abbr></td>
+<td style="text-align: center;"><a href="../../dev/examples/camera/#camera-info">Camera Info Example</a></td>
+</tr>
+</tbody>
+</table>
+<h2 id="cameraframe">camera/frame</h2>
+<p>The <code>camera/frame</code> topic uses the custom <a href="../../api/edgefirst_msgs/#cameraframe">CameraFrame</a> EdgeFirst schema for transmitting camera frames as Linux <a href="https://docs.kernel.org/driver-api/dma-buf.html">dma-buf</a> descriptors.  This enables high-performance zero-copy of camera buffers between applications with trivial overhead.  A <code>CameraFrame</code> is a stamped <a href="../../api/edgefirst_msgs/#tensor">Tensor</a>: the header carries the timestamp and the camera frame ID, <code>seq</code> carries the V4L2 frame sequence for drop detection, and the tensor carries the producer process ID, the image format described as a FOURCC such as <code>NV12</code>, the colorimetry, the shape as <code>[height, width]</code>, and one <a href="../../api/edgefirst_msgs/#tensorplane">TensorPlane</a> per plane with the dma-buf file descriptor handle, offset, stride, and size.</p>
+<div class="admonition note">
+<p class="admonition-title">Migrating from camera/dma</p>
+<p><code>camera/frame</code> replaces the <code>camera/dma</code> topic and its <code>DmaBuffer</code> schema from earlier releases, which were removed in EdgeFirst Schemas 4.0.  Consumers must decode the <code>CameraFrame</code> message with schemas 4.0 or later, the model and fusion services included in Torizon for Maivin 2026.08 consume <code>camera/frame</code>.</p>
+</div>
+<p>The mechanism for sharing buffers is for the camera service to publish its own <code>pid</code> along with the file descriptor <code>handle</code> of each plane along with the buffer parameters (shape, stride, format).  When a subscriber receives the message it must first duplicate the file descriptor into its own process space, this is done using the <a href="https://man7.org/linux/man-pages/man2/pidfd_getfd.2.html">pidfd_getfd</a> system call.  Once the file descriptor has been duplicated it can be used normally, either used as-is with an <abbr title="Application Programming Interface">API</abbr> which can consume a <code>dma-buf</code> or by using <a href="https://man7.org/linux/man-pages/man2/mmap.2.html">mmap</a> to map the contents of the buffer into user-space.</p>
+<pre class="mermaid"><code>sequenceDiagram
+    loop
+    autonumber
+    Camera Service-&gt;&gt;Client Application: CameraFrame(tensor.pid, planes[0].handle, ...)
+    Client Application--&gt;&gt;Linux Kernel: pidfd_open(pid, 0)
+    Client Application--&gt;&gt;Linux Kernel: pidfd_getfd(pidfd, handle, 0)
+    Linux Kernel-&gt;&gt;Client Application: fd duplicate
+    Client Application--&gt;&gt;Linux Kernel: mmap(fd)
+    Linux Kernel-&gt;&gt;Client Application: ptr to camera pixels
+    Client Application--&gt;Linux Kernel: Client Application Processing
+    Client Application--&gt;&gt;Linux Kernel: munmap(ptr)
+    Client Application--&gt;&gt;Linux Kernel: close(fd)
+    Client Application--&gt;&gt;Linux Kernel: close(pidfd)
+    end</code></pre>
+<ol>
+<li>Camera service publishes a CameraFrame for each frame received from the camera.</li>
+<li>Client application calls <code>pidfd_open(pid, 0)</code> to acquire a file descriptor that refers to the camera service process.</li>
+<li>Client application calls <code>pidfd_getfd(pidfd, handle, 0)</code> to acquire a local duplicate of the camera buffer file descriptor.</li>
+<li>A new file descriptor is returned, to release the <code>dma-buf</code> object we will need to call <code>close(fd)</code> later.</li>
+<li>Client application calls <code>mmap(fd, ...)</code> to acquire a local pointer to the camera buffer's pixel data.</li>
+<li>A read-only pointer is returned to the client application, it will need to be released using <code>munmap(ptr)</code> later.</li>
+<li>Client application processes the pixel data.</li>
+<li>Client application calls <code>munmap(ptr)</code> to free the mapped buffer.</li>
+<li>Client application calls <code>close(fd)</code> to release the <code>dma-buf</code> object.</li>
+<li>Client application calls <code>close(pidfd)</code> to release file descriptor for the camera service process.</li>
+</ol>
+<p>The tensor also carries a <code>fence_fd</code> which, when not <code>-1</code>, is a <abbr title="Direct Memory Access">DMA</abbr> fence the consumer must wait on before reading the planes.  The camera service publishes frames with the fence already signaled.</p>
+<div class="admonition tip">
+<p class="admonition-title">Permission Denied Errors</p>
+<p>The client application will not be able to call pidfd_getfd if the client application runs at a lower permission level than the camera service. If this error occurs, try running the client application as <code>sudo</code> or as a service.</p>
+</div>
+<div class="admonition tip">
+<p class="admonition-title">Mapping <abbr title="Direct Memory Access">DMA</abbr> Buffers</p>
+<p>Mapping <abbr title="Direct Memory Access">DMA</abbr> buffers into user-space requires additional synchronization primitives around accesses.  We cover these details in our camera sample application.  Further details are documented in the Linux Kernel Manual under <a href="https://docs.kernel.org/driver-api/dma-buf.html#cpu-access-to-dma-buffer-objects">CPU Access to <abbr title="Direct Memory Access">DMA</abbr> Buffer Objects</a>.</p>
+</div>
+<p>This topic can only be consumed by applications running on the same device as the camera service, remote applications should use the compressed topics below.  The <code>camera/frame</code> topic is not recorded by the <a href="../../data_collection/recording/">Recorder</a>.</p>
+<h2 id="camerah264">camera/h264</h2>
+<p>The <code>camera/h264</code> topic uses Foxglove's <a href="../../api/foxglove_msgs/#compressedvideo">CompressedVideo</a> schema to publish H.264 encoded video frames.  The H.264 encoder uses key-frames, I-Frames, at a typical rate of 1Hz with the frames in-between encoded as P/B-Frames.  The decoder requires an initial I-Frame before it can decode additional frames.  This is typically handled transparently but means when sending <code>CompressedVideo</code> data to the H.264 decoder it could take up to a second until valid output is produced.  The stream is enabled by default and is used by the Web UI camera page and the recorder, the encoder runs at the frame rate the camera is configured for.</p>
+<p>When the camera captures at 4K with <a href="../../4k/camera_4k/">tiling</a> enabled the frame is encoded as four 1080p tiles on the <code>camera/h264/tl</code>, <code>camera/h264/tr</code>, <code>camera/h264/bl</code>, and <code>camera/h264/br</code> topics instead.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: center;"><strong>Usage</strong></th>
+<th style="text-align: center;"><strong>Link</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;">Web UI</td>
+<td style="text-align: center;"><a href="../../../platforms/quickstart/maivin/webui/#the-camera-page">Camera Page</a></td>
 </tr>
 <tr>
 <td style="text-align: center;">Foxglove</td>
@@ -2091,8 +2121,8 @@
 </tr>
 </tbody>
 </table>
-<h2 id="camerajpeg">/camera/jpeg</h2>
-<p>The <code>/camera/jpeg</code> topic uses <abbr title="Robot Operating System 2">ROS2</abbr>'s <a href="../../api/sensor_msgs/#compressedimage">CompressedImage</a> schema to publish JPEG encoded camera frames.  Each frame is a complete JPEG image and can be decoded using any standard JPEG decoder. The JPEG topic will not be enabled by default. In order to enable the JPEG topic, please follow the guide noted in <a href="../../../platforms/configuration/camera/#h264-streaming">configuration</a></p>
+<h2 id="camerajpeg">camera/jpeg</h2>
+<p>The <code>camera/jpeg</code> topic uses ROS 2's <a href="../../api/sensor_msgs/#compressedimage">CompressedImage</a> schema to publish JPEG encoded camera frames.  Each frame is a complete JPEG image and can be decoded using any standard JPEG decoder.  The JPEG topic is not enabled by default as the encoder runs on the CPU, refer to the <a href="../../../platforms/configuration/camera/#jpeg-streaming">camera configuration</a> to enable it and adjust the quality.</p>
 <table>
 <thead>
 <tr>
@@ -2103,7 +2133,7 @@
 <tbody>
 <tr>
 <td style="text-align: center;">Web UI</td>
-<td style="text-align: center;"><a href=""></a></td>
+<td style="text-align: center;">JPEG page</td>
 </tr>
 <tr>
 <td style="text-align: center;">Foxglove</td>

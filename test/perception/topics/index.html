@@ -1802,6 +1802,36 @@
     
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#hostname-namespaces" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Hostname Namespaces
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#topic-overview" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Topic Overview
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -1873,34 +1903,196 @@ subscribes to the camera service to receive camera frames which are then process
 model results.  There are numerous such services, some can be run in multiple instances to support multiple camera inputs
 or multiple parallel models.</p>
 <pre class="mermaid"><code>graph LR
-    camera --&gt; model["vision model"] --&gt; zenoh    
-    radarpub --&gt; fusion["fusion model"] --&gt; zenoh
+    camera --&gt; model["vision model"] --&gt; zenoh
+    radarpub --&gt; fusion["fusion"] --&gt; zenoh
+    lidarpub --&gt; fusion
     lidarpub --&gt; zenoh
     camera --&gt; fusion
     radarpub --&gt; zenoh
-    camera --&gt; zenoh    
+    camera --&gt; zenoh
     model --&gt; fusion
     navsat --&gt; zenoh
     imu --&gt; zenoh
     zenoh --&gt; recorder --&gt; mcap
-    zenoh --&gt; webui --&gt; https
+    zenoh --&gt; websrv --&gt; https
     zenoh --&gt; user["user apps"]
     https --&gt; user</code></pre>
 <p>These middleware applications publish messages and subscribe to messages from other publishers on what is referred to as a topic.
-Services will often publish to multiple topics within a namespace, for example the camera service uses the <code>/camera</code> namespace
-to publish a few topics such as <code>/camera/info</code> which publishes information about the camera such as resolution and intrinsic
-calibration parameters.  The camera service also publishes <code>/camera/dma</code> which handles zero-copy of camera frames between
-consumers, it can also publish the <code>/camera/h264</code> or <code>/camera/jpeg</code> topics for cases where compressed frames are required, such
+Services will often publish to multiple topics within a namespace, for example the camera service uses the <code>camera</code> namespace
+to publish a few topics such as <code>camera/info</code> which publishes information about the camera such as resolution and intrinsic
+calibration parameters.  The camera service also publishes <code>camera/frame</code> which handles zero-copy of camera frames between
+consumers, it can also publish the <code>camera/h264</code> or <code>camera/jpeg</code> topics for cases where compressed frames are required, such
 as when recording or streaming the camera over the network.</p>
 <p>Topics are identified by these path-like names and the underlying discovery and network connections to publish and subscribe
 over topics is handled by the <a href="https://zenoh.io/">Zenoh</a> library.  Zenoh topics are by default available only on the local device, a service named
 <code>zenohd</code> can be run to allow remote connections to the device's topics through a router interface defined as part of the Zenoh
 protocol.  Messages published over Zenoh support various encodings defined through MIME types.  The EdgeFirst Middleware uses
-the Common Data Representation (CDR) encoding for messages, this is an open standard encoding and the same used by <abbr title="Robot Operating System 2">ROS2</abbr>.  The
-CDR encoding uses schemas to represent each type of message, the EdgeFirst Middleware uses the <abbr title="Robot Operating System 2">ROS2</abbr> common interfaces whenever
-possible and provides custom schemas when required.  The schemas are published on Github and we provide premade bindings for
-Python and Rust.  The schemas can be installed into a <abbr title="Robot Operating System 2">ROS2</abbr> system, we cover EdgeFirst Middleware with <abbr title="Robot Operating System 2">ROS2</abbr> integration in the
-Zenoh <abbr title="Robot Operating System 2">ROS2</abbr> Bridge chapter.</p>
+the Common Data Representation (<abbr title="Common Data Representation">CDR</abbr>) encoding for messages, this is an open standard encoding and the same used by ROS 2.  The
+<abbr title="Common Data Representation">CDR</abbr> encoding uses schemas to represent each type of message, the EdgeFirst Middleware uses the ROS 2 common interfaces whenever
+possible and provides custom schemas when required.  The schemas are published on GitHub and we provide premade bindings for
+Python, Rust, and C, refer to the <a href="../api/"><abbr title="Application Programming Interface">API</abbr> Reference</a>.</p>
+<h2 id="hostname-namespaces">Hostname Namespaces</h2>
+<p>Every EdgeFirst service opens its Zenoh session with the session namespace set to the device hostname.  The services publish and
+subscribe on bare application keys such as <code>camera/h264</code>, and Zenoh prefixes the namespace so the key on the wire is
+<code>{hostname}/camera/h264</code>, for example <code>verdin-imx8mp-15141091/camera/h264</code>.  When the hostname is empty or invalid the services fall
+back to the <code>localhost</code> namespace.</p>
+<p>This convention replaces the <code>rt/</code> prefix used by earlier releases, which was a legacy of the Zenoh ROS 2 bridge.  The namespace keeps
+the topics of several devices on the same network apart, avoids cross-talk between devices, and makes recordings from multiple devices
+mergeable.  It has the following consequences for applications and tools:</p>
+<ul>
+<li>An application running on the device should open its Zenoh session with the namespace set to the hostname and then use the bare
+  topic names, exactly as the services do.  This is what the <a href="../dev/">developer examples</a> demonstrate.</li>
+<li>An application running remotely, or subscribing to several devices, can subscribe with a wildcard such as <code>**/camera/h264</code> or
+  <code>verdin-imx8mp-15141091/camera/h264</code> from a session without a namespace.</li>
+<li>The topic names in the service configuration files are written without the hostname, for example <code>camera/h264</code>.</li>
+<li>The <a href="../data_collection/recording/">Recorder</a> records topics with the hostname stripped, so the channels in an <abbr title="Binary container format for robotics log data">MCAP</abbr> file are named
+  <code>/camera/h264</code>, <code>/model/output</code>, and so on.  The <a href="../data_collection/publishing/">EdgeFirst Publisher</a> and EdgeFirst Studio also
+  accept recordings from earlier releases carrying the <code>rt/</code> prefix or the hostname prefix.</li>
+<li>Applications still hard-coded to <code>rt/...</code> topics do not receive data from the current services.</li>
+</ul>
+<p>The Web UI reaches the same topics through the web server, which maps its <code>/api/rt/{topic}</code> WebSocket endpoints to the bare
+application keys.</p>
+<h2 id="topic-overview">Topic Overview</h2>
+<p>The following topics are published by the stock services, the pages of this section describe each in detail along with the
+schemas used.  Topics marked optional depend on the service configuration.</p>
+<table>
+<thead>
+<tr>
+<th>Topic</th>
+<th>Schema</th>
+<th>Service</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>camera/frame</code></td>
+<td><a href="../api/edgefirst_msgs/#cameraframe">CameraFrame</a></td>
+<td>camera</td>
+<td>Zero-copy camera frames, local consumers only</td>
+</tr>
+<tr>
+<td><code>camera/info</code></td>
+<td><a href="../api/sensor_msgs/#camerainfo">CameraInfo</a></td>
+<td>camera</td>
+<td>Camera intrinsics</td>
+</tr>
+<tr>
+<td><code>camera/h264</code></td>
+<td><a href="../api/foxglove_msgs/#compressedvideo">CompressedVideo</a></td>
+<td>camera</td>
+<td>H.264 video stream</td>
+</tr>
+<tr>
+<td><code>camera/jpeg</code></td>
+<td><a href="../api/sensor_msgs/#compressedimage">CompressedImage</a></td>
+<td>camera</td>
+<td>Optional JPEG frames</td>
+</tr>
+<tr>
+<td><code>camera/h264/{tl,tr,bl,br}</code></td>
+<td><a href="../api/foxglove_msgs/#compressedvideo">CompressedVideo</a></td>
+<td>camera</td>
+<td>Optional <a href="../4k/">4K tiles</a></td>
+</tr>
+<tr>
+<td><code>model/output</code></td>
+<td><a href="../api/edgefirst_msgs/#model">Model</a></td>
+<td>model</td>
+<td>Boxes, masks, tracks, and timing</td>
+</tr>
+<tr>
+<td><code>model/info</code></td>
+<td><a href="../api/edgefirst_msgs/#modelinfo">ModelInfo</a></td>
+<td>model</td>
+<td>Model name, labels, and tensor shapes</td>
+</tr>
+<tr>
+<td><code>model/visualization</code></td>
+<td><a href="../api/foxglove_msgs/#imageannotations">ImageAnnotations</a></td>
+<td>model</td>
+<td>Optional Foxglove annotations</td>
+</tr>
+<tr>
+<td><code>model/boxes2d</code>, <code>model/mask</code></td>
+<td><a href="../api/edgefirst_msgs/#detect">Detect</a>, <a href="../api/edgefirst_msgs/#mask">Mask</a></td>
+<td>model</td>
+<td>Optional legacy topics</td>
+</tr>
+<tr>
+<td><code>radar/targets</code>, <code>radar/clusters</code></td>
+<td><a href="../api/sensor_msgs/#pointcloud2">PointCloud2</a></td>
+<td>radarpub</td>
+<td>Radar point clouds</td>
+</tr>
+<tr>
+<td><code>radar/cube</code></td>
+<td><a href="../api/edgefirst_msgs/#radarcube">RadarCube</a></td>
+<td>radarpub</td>
+<td>Optional radar data cube</td>
+</tr>
+<tr>
+<td><code>radar/info</code></td>
+<td><a href="../api/edgefirst_msgs/#radarinfo">RadarInfo</a></td>
+<td>radarpub</td>
+<td>Radar configuration</td>
+</tr>
+<tr>
+<td><code>lidar/points</code>, <code>lidar/clusters</code></td>
+<td><a href="../api/sensor_msgs/#pointcloud2">PointCloud2</a></td>
+<td>lidarpub</td>
+<td><abbr title="Light Detection and Ranging">LiDAR</abbr> point clouds</td>
+</tr>
+<tr>
+<td><code>lidar/depth</code>, <code>lidar/reflect</code></td>
+<td><a href="../api/sensor_msgs/#image">Image</a></td>
+<td>lidarpub</td>
+<td><abbr title="Light Detection and Ranging">LiDAR</abbr> depth and reflectivity images</td>
+</tr>
+<tr>
+<td><code>fusion/radar</code>, <code>fusion/lidar</code></td>
+<td><a href="../api/sensor_msgs/#pointcloud2">PointCloud2</a></td>
+<td>fusion</td>
+<td>Points annotated with vision classes</td>
+</tr>
+<tr>
+<td><code>fusion/occupancy</code></td>
+<td><a href="../api/sensor_msgs/#pointcloud2">PointCloud2</a></td>
+<td>fusion</td>
+<td>Occupancy grid</td>
+</tr>
+<tr>
+<td><code>fusion/boxes3d</code></td>
+<td><a href="../api/edgefirst_msgs/#detect">Detect</a></td>
+<td>fusion</td>
+<td>3D bounding boxes</td>
+</tr>
+<tr>
+<td><code>fusion/model_output</code></td>
+<td><a href="../api/edgefirst_msgs/#mask">Mask</a></td>
+<td>fusion</td>
+<td>Optional RadarExp model output</td>
+</tr>
+<tr>
+<td><code>imu</code></td>
+<td><a href="../api/sensor_msgs/#imu">Imu</a></td>
+<td>imu</td>
+<td>Orientation and motion</td>
+</tr>
+<tr>
+<td><code>gps</code></td>
+<td><a href="../api/sensor_msgs/#navsatfix">NavSatFix</a></td>
+<td>navsat</td>
+<td><abbr title="Global Positioning System">GPS</abbr> position</td>
+</tr>
+<tr>
+<td><code>tf_static</code></td>
+<td><a href="../api/geometry_msgs/#transformstamped">TransformStamped</a></td>
+<td>camera, radarpub, lidarpub, fusion</td>
+<td>Static sensor transforms from <code>base_link</code></td>
+</tr>
+</tbody>
+</table>
 <p>User applications interface with the EdgeFirst Middleware by subscribing to the appropriate topics.  For example, if we need
 an application to display the camera feed with bounding boxes drawn from the detection model we would write an application
 which subscribes to the camera and model topics.  This application would be responsible for drawing the camera pixels and

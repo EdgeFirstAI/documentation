@@ -1239,8 +1239,6 @@
       
         
       
-        
-      
     
     
     
@@ -1615,6 +1613,34 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="Wi-Fi AP Setup">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#access-point-configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Access Point Configuration
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#enabling-the-access-point" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Enabling the Access Point
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
@@ -1696,10 +1722,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#radar-networking" class="md-nav__link">
+  <a href="#sensor-network" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Radar Networking
+        Sensor Network
       
     </span>
   </a>
@@ -1865,6 +1891,34 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="Wi-Fi AP Setup">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#access-point-configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Access Point Configuration
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#enabling-the-access-point" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Enabling the Access Point
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
@@ -1946,10 +2000,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#radar-networking" class="md-nav__link">
+  <a href="#sensor-network" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Radar Networking
+        Sensor Network
       
     </span>
   </a>
@@ -2027,7 +2081,7 @@
 <p>As noted in the Quick Start, the Maivin can be discovered on a network using the <code>verdin-imx8mp-XXXXXXXX.local</code> hostname where the 'XXXXXXXX' is the eight-digit serial number of the unit.  The serial number can be found on the rear sticker near the connection ports.</p>
 <p>This chapter documents the most common networking configurations for the Maivin.  For further detailed documentation, please refer to the <a href="https://networkmanager.dev">NetworkManager Documentation</a>.</p>
 <h2 id="network-interfaces">Network Interfaces</h2>
-<p>The Maivin includes a number of networking interfaces: Ethernet, Wi-Fi, and an optional LTE modem.  The interface names and ports are described in the table below.  The <code>ethernet1</code> and <code>can0</code> interfaces are internal-only interfaces used by the Raivin to communicate with the internal radar module.  The remaining interfaces are user configurable.</p>
+<p>The Maivin includes a number of networking interfaces: Ethernet, Wi-Fi, and an optional LTE modem.  The interface names and ports are described in the table below.  The <code>ethernet1</code> and <code>can0</code> interfaces are sensor-only interfaces used by the Raivin to communicate with the internal radar module or an external <abbr title="Light Detection and Ranging">LiDAR</abbr> sensor.  The remaining interfaces are user configurable.</p>
 <table>
 <thead>
 <tr>
@@ -2058,9 +2112,9 @@
 <td>Optional LTE Modem using internal m.2 expansion</td>
 </tr>
 <tr>
-<td>Radar Ethernet</td>
+<td>Sensor Ethernet</td>
 <td>ethernet1</td>
-<td>Internal 1000BaseT1 interface to the Radar</td>
+<td>Internal 1000Base-T1 interface to the radar or <abbr title="Light Detection and Ranging">LiDAR</abbr></td>
 </tr>
 <tr>
 <td><abbr title="Controller Area Network">CAN</abbr> Bus</td>
@@ -2069,8 +2123,13 @@
 </tr>
 </tbody>
 </table>
+<p>NetworkManager is the sole network manager on Torizon for Maivin, the <code>systemd-networkd</code> service is masked.  The <abbr title="Controller Area Network">CAN</abbr> bus is the exception as NetworkManager does not support <abbr title="Controller Area Network">CAN</abbr> interfaces, it is configured by the <code>can0.service</code> systemd unit.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>On lab units with a CPU serial number starting with <code>0</code> the Ethernet interfaces may enumerate as <code>end0</code> and <code>end1</code>, refer to the <a href="../../software/issues/">Known Issues</a>.  Customer units are not affected.</p>
+</div>
 <h2 id="ethernet-setup">Ethernet Setup</h2>
-<p>The Maivin ships with the Ethernet interface setup as a DHCP client and should automatically get an IP address on a network which provides DHCP.  Otherwise the Maivin will fallback to a link-local IP.  In either scenario, the Maivin can be accessed using the <code>verdin-imx8mp-XXXXXXXX.local</code> hostname.</p>
+<p>The Maivin ships with the Ethernet interface setup as a <abbr title="Dynamic Host Configuration Protocol">DHCP</abbr> client and should automatically get an IP address on a network which provides <abbr title="Dynamic Host Configuration Protocol">DHCP</abbr>.  Otherwise the Maivin will fallback to a link-local IP.  In either scenario, the Maivin can be accessed using the <code>verdin-imx8mp-XXXXXXXX.local</code> hostname.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>The Maivin also supports IPv6 which will be available through a link-local address.  This IPv6 link-local address will be associated with the <code>verdin-imx8mp-XXXXXXXX.local</code> hostname.</p>
@@ -2079,10 +2138,11 @@
 <p class="admonition-title">Tip</p>
 <p>If connecting to the Maivin using a Windows PC, either with an <abbr title="Secure Shell">SSH</abbr> client or a web browser, adding the ".local" suffix is optional.  For Linux or Mac machines, the suffix must be used.</p>
 </div>
-<p>Once connected to the Maivin, standard Linux tools are available for listing the network interfaces and their current status.  NetworkManager offers the <code>nmcli</code> command-line tool for querying the status of the interfaces it manages; for example, the <code>nmcli connection</code> command is shown below.  We see the connection names <code>network0</code> and <code>network1</code> which are associated to the network interfaces <code>ethernet0</code> and <code>ethernet1</code>, respectively.  The connection names can be user defined, by default the <code>networkX</code> convention is followed which maps <code>X</code> to the equivalent <code>ethernetX</code> interface.</p>
+<p>Once connected to the Maivin, standard Linux tools are available for listing the network interfaces and their current status.  NetworkManager offers the <code>nmcli</code> command-line tool for querying the status of the interfaces it manages; for example, the <code>nmcli connection</code> command is shown below.  We see the connection name <code>network0</code> which is associated to the external network interface <code>ethernet0</code>, and the <code>ethernet1-radar</code> sensor profile which is associated to the <code>ethernet1</code> interface.  The <code>network0</code> connection name can be user defined.</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>nmcli<span class="w"> </span>-t<span class="w"> </span>connection
 network0:958cc5e3-1bbf-3d64-beeb-020d4414e254:802-3-ethernet:ethernet0
-network1:78c31df4-8c89-31a6-9aeb-d5603e230e4e:802-3-ethernet:ethernet1
+ethernet1-radar:78c31df4-8c89-31a6-9aeb-d5603e230e4e:802-3-ethernet:ethernet1
+ethernet1-lidar:2f0a1c44-63a2-4a58-9b0e-0f6e8d5f2c11:802-3-ethernet:
 </code></pre></div>
 <div class="admonition tip">
 <p class="admonition-title">Tip</p>
@@ -2126,7 +2186,7 @@ network0:958cc5e3-1bbf-3d64-beeb-020d4414e254:802-3-ethernet:ethernet0
 <p>The device should now be configured with the new static IP address.</p>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
-<p>The internal Ethernet1 interface uses the 192.168.11.0/24 network to communicate with the radar module.  Do not configure the static IP address to reside on this network.</p>
+<p>The internal <code>ethernet1</code> interface uses the 192.168.11.0/24 network to communicate with the radar module and the 192.168.1.0/24 network for the <abbr title="Light Detection and Ranging">LiDAR</abbr> profile.  Do not configure the static IP address to reside on these networks.</p>
 </div>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
@@ -2136,10 +2196,10 @@ network0:958cc5e3-1bbf-3d64-beeb-020d4414e254:802-3-ethernet:ethernet0
 <p class="admonition-title">Warning</p>
 <p>Calling the <code>connection up</code> command while connected through this interface can cause the link to drop.  Reconnect using the new address.  An alternate to the <code>connection up</code> command is to use <code>sudo reboot</code> to restart the device.</p>
 </div>
-<h3 id="re-enable-dhcp">Re-enable DHCP</h3>
-<p>To revert the connection to using DHCP you must follow these steps.</p>
+<h3 id="re-enable-dhcp">Re-enable <abbr title="Dynamic Host Configuration Protocol">DHCP</abbr></h3>
+<p>To revert the connection to using <abbr title="Dynamic Host Configuration Protocol">DHCP</abbr> you must follow these steps.</p>
 <ol>
-<li>Configure automatic (DHCP) mode:<br />
+<li>Configure automatic (<abbr title="Dynamic Host Configuration Protocol">DHCP</abbr>) mode:<br />
 <code>nmcli con mod network0 ipv4.method auto</code></li>
 <li>Remove the previous gateway:<br />
 <code>nmcli con mod network0 ipv4.gateway ""</code></li>
@@ -2150,8 +2210,8 @@ network0:958cc5e3-1bbf-3d64-beeb-020d4414e254:802-3-ethernet:ethernet0
 <li>Activate the changes:<br />
 <code>nmcli con up network0</code></li>
 </ol>
-<h3 id="mixed-static-and-dhcp">Mixed Static and DHCP</h3>
-<p>NetworkManager allows mixed static and DHCP configurations.   If you configure <code>ipv4.method auto</code> you can still configure some of the other IPv4 parameters statically.</p>
+<h3 id="mixed-static-and-dhcp">Mixed Static and <abbr title="Dynamic Host Configuration Protocol">DHCP</abbr></h3>
+<p>NetworkManager allows mixed static and <abbr title="Dynamic Host Configuration Protocol">DHCP</abbr> configurations.   If you configure <code>ipv4.method auto</code> you can still configure some of the other IPv4 parameters statically.</p>
 <h2 id="wi-fi-client-setup">Wi-Fi Client Setup</h2>
 <p>Maivin units with Wi-Fi can be configured to connect to a Wi-Fi Access Point (AP).  Refer to the next section if you instead want to use your Maivin as a Wi-Fi AP.</p>
 <div class="admonition warning">
@@ -2169,19 +2229,16 @@ network0:958cc5e3-1bbf-3d64-beeb-020d4414e254:802-3-ethernet:ethernet0
 <code>ifconfig mlan0</code></li>
 </ol>
 <h2 id="wi-fi-ap-setup">Wi-Fi AP Setup</h2>
-<p>Maivin units with Wi-Fi can be configured as an AP allowing client devices to connect to the Maivin.  Instead of using NetworkManager, we use the <a href="https://wireless.docs.kernel.org/en/latest/en/users/documentation/hostapd.html">Host AP daemon (hostapd)</a>.</p>
+<p>Maivin units with Wi-Fi can be configured as an AP allowing client devices to connect to the Maivin.  Instead of using NetworkManager, we use the <a href="https://wireless.docs.kernel.org/en/latest/en/users/documentation/hostapd.html">Host AP daemon (hostapd)</a>.  The <code>uap0</code> interface is excluded from NetworkManager through the <code>/etc/NetworkManager/conf.d/unmanaged.conf</code> file.</p>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
 <p>FCC regulations require special certifications for collocated transmitters (a device with multiple RF transmitters).  Maivin and Raivin are not currently certified for collocated transmitters so users must not enable more than one of the Wi-Fi, Modem, or Radar without first receiving FCC certification.  Refer to regulatory boards in your jurisdiction for your relevant regulations.</p>
 </div>
-<p>Wi-Fi AP mode is configured using the <code>hostapd</code> service in Linux.  We describe a common Wi-Fi AP configuration; for more advanced setup, please refer to the <a href="https://wireless.docs.kernel.org/en/latest/en/users/documentation/hostapd.html">hostapd documentation</a>.</p>
-<p>To enable the Maivin Access Point with default configurations simply enable the <code>hostapd</code> service.</p>
-<div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>systemctl<span class="w"> </span><span class="nb">enable</span><span class="w"> </span>hostapd
-sudo<span class="w"> </span>systemctl<span class="w"> </span>start<span class="w"> </span>hostapd
-</code></pre></div>
-<p>The Maivin ships with a default hostapd configuration which can be modified for your needs.  The following shows the base configuration which ships with Maivin. The full list of configuration options is documented in the <a href="https://w1.fi/cgit/hostap/plain/hostapd/hostapd.conf">hostapd.conf</a> reference file.</p>
-<div class="highlight"><pre><span></span><code><span class="na">ssid</span><span class="o">=</span><span class="s">Maivin</span>
-<span class="na">wpa_passphrase</span><span class="o">=</span><span class="s">maivin</span>
+<p>Wi-Fi AP mode is configured using the <code>hostapd</code> service in Linux.  The Maivin does not ship with an access point configured, you provide the network configuration in <code>/etc/hostapd.conf</code> before enabling the service.  We describe a common Wi-Fi AP configuration; for more advanced setup, please refer to the <a href="https://wireless.docs.kernel.org/en/latest/en/users/documentation/hostapd.html">hostapd documentation</a>.</p>
+<h3 id="access-point-configuration">Access Point Configuration</h3>
+<p>The following is an example configuration to write to <code>/etc/hostapd.conf</code>.  The network name and password are placeholders which you must replace with your own values.  The full list of configuration options is documented in the <a href="https://w1.fi/cgit/hostap/plain/hostapd/hostapd.conf">hostapd.conf</a> reference file.</p>
+<div class="highlight"><pre><span></span><code><span class="na">ssid</span><span class="o">=</span><span class="s">ExampleAP</span>
+<span class="na">wpa_passphrase</span><span class="o">=</span><span class="s">ExamplePassword</span>
 <span class="na">own_ip_addr</span><span class="o">=</span><span class="s">10.10.10.1</span>
 <span class="na">interface</span><span class="o">=</span><span class="s">uap0</span>
 
@@ -2204,27 +2261,48 @@ sudo<span class="w"> </span>systemctl<span class="w"> </span>start<span class="w
 <span class="na">ht_capab</span><span class="o">=</span><span class="s">[LDPC][HT40+][GF][SHORT-GI-20][SHORT-GI-40][TX-STBC][DSSS_CCK-40]</span>
 </code></pre></div>
 <div class="admonition warning">
-<p class="admonition-title">Warning</p>
-<p>Please make sure to change the default password before enabling Wi-Fi AP mode!</p>
+<p class="admonition-title">Choose Your Own Network Name and Password</p>
+<p>The values above are examples and must not be used on a deployed device.  The <code>ssid</code> is limited to 32 characters.  The <code>wpa_passphrase</code> must be between 8 and 63 printable ASCII characters, <code>hostapd</code> refuses to start when the passphrase is shorter than 8 characters.</p>
 </div>
-<p>The Wi-Fi AP network configuration file is found under <code>/etc/systemd/network/hostapd.network</code> and is managed by <a href="https://systemd.io/">systemd</a>.  The following is the default configuration.  The full list of configuration options is documented in the <a href="https://www.freedesktop.org/software/systemd/man/latest/systemd.network.html">systemd network manual</a>.</p>
-<div class="highlight"><pre><span></span><code><span class="k">[Match]</span>
-<span class="na">Name</span><span class="o">=</span><span class="s">wlan0 uap0</span>
-<span class="na">WLANInterfaceType</span><span class="o">=</span><span class="s">ap</span>
-
-<span class="k">[Network]</span>
-<span class="na">Address</span><span class="o">=</span><span class="s">10.10.10.1/24</span>
-<span class="na">DHCPServer</span><span class="o">=</span><span class="s">true</span>
-<span class="na">IPMasquerade</span><span class="o">=</span><span class="s">yes</span>
-<span class="na">IPForward</span><span class="o">=</span><span class="s">ipv4</span>
-
-<span class="k">[DHCPServer]</span>
-<span class="na">PoolOffset</span><span class="o">=</span><span class="s">100</span>
-<span class="na">PoolSize</span><span class="o">=</span><span class="s">100</span>
+<p>The <code>country_code</code> must match the regulatory domain where the unit operates as it determines the channels and transmit power <code>hostapd</code> is allowed to use.  The example configures a 5 GHz 802.11ac network on channel 40.</p>
+<h3 id="enabling-the-access-point">Enabling the Access Point</h3>
+<p>With <code>/etc/hostapd.conf</code> in place, enable the <code>hostapd</code> service along with the companion <code>hostapd-network</code> service.  The companion service is bound to <code>hostapd</code>, it assigns the AP address, runs a dedicated <code>dnsmasq</code> <abbr title="Dynamic Host Configuration Protocol">DHCP</abbr> server for the clients, and sets up IP forwarding and <abbr title="Network Address Translation">NAT</abbr> so AP clients can reach the Internet through the Maivin's uplink.</p>
+<div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>systemctl<span class="w"> </span><span class="nb">enable</span><span class="w"> </span>--now<span class="w"> </span>hostapd<span class="w"> </span>hostapd-network
 </code></pre></div>
+<p>The access point network created by the example configuration is summarized below.  The AP address and <abbr title="Dynamic Host Configuration Protocol">DHCP</abbr> range are configured by the <code>hostapd-network</code> service, whose <abbr title="Dynamic Host Configuration Protocol">DHCP</abbr> server configuration is found under <code>/etc/hostapd-dhcp.conf</code>.</p>
+<table>
+<thead>
+<tr>
+<th>Setting</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>SSID</td>
+<td><code>ExampleAP</code></td>
+</tr>
+<tr>
+<td>Band</td>
+<td>5 GHz (802.11ac), channel 40</td>
+</tr>
+<tr>
+<td>Security</td>
+<td>WPA2-PSK</td>
+</tr>
+<tr>
+<td>AP IP</td>
+<td><code>10.10.10.1/24</code></td>
+</tr>
+<tr>
+<td><abbr title="Dynamic Host Configuration Protocol">DHCP</abbr> range</td>
+<td><code>10.10.10.100</code> to <code>10.10.10.199</code></td>
+</tr>
+</tbody>
+</table>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
-<p>If you change the network address in <code>hostapd.network</code>, make sure it matches the address in <code>hostapd.conf</code>!</p>
+<p>If you change the access point address in the <abbr title="Dynamic Host Configuration Protocol">DHCP</abbr> configuration, make sure it matches the <code>own_ip_addr</code> address in <code>hostapd.conf</code>!</p>
 </div>
 <h2 id="lte-modem-setup">LTE Modem Setup</h2>
 <p>Maivin provides an m.2 expansion port which can be used to add an LTE modem to the device.  We offer Maivin and Raivin units preconfigured with an LTE modem and SIM card or a modem can be added by customers themselves following the instructions at the end of this section.</p>
@@ -2299,8 +2377,38 @@ sudo<span class="w"> </span>systemctl<span class="w"> </span>start<span class="w
 <p class="admonition-title">Warning</p>
 <p>Installing an LTE modem is an advanced configuration which requires opening up the Maivin.  Extreme caution should be followed during this procedure.  We suggest ordering Maivin or Raivin units with the LTE option preconfigured.</p>
 </div>
-<h2 id="radar-networking">Radar Networking</h2>
-<p>The <code>ethernet1</code> and <code>can0</code> interfaces are reserved for internal communications with the radar module on Raivin configurations.  Refer to the <a href="../../hardware/radar/">Radar page</a> for details.</p>
+<h2 id="sensor-network">Sensor Network</h2>
+<p>The <code>ethernet1</code> and <code>can0</code> interfaces are reserved for communications with the radar module on Raivin configurations and with a <abbr title="Light Detection and Ranging">LiDAR</abbr> sensor.  Two NetworkManager profiles are installed for <code>ethernet1</code>, only one is active at a time.</p>
+<table>
+<thead>
+<tr>
+<th>Profile</th>
+<th>Address</th>
+<th style="text-align: center;">Autoconnect</th>
+<th>Sensor</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>ethernet1-radar</code></td>
+<td><code>192.168.11.17/24</code></td>
+<td style="text-align: center;">yes</td>
+<td><a href="../../hardware/radar/">Radar module</a></td>
+</tr>
+<tr>
+<td><code>ethernet1-lidar</code></td>
+<td><code>192.168.1.102/24</code></td>
+<td style="text-align: center;">no</td>
+<td><a href="../../hardware/lidar/"><abbr title="Light Detection and Ranging">LiDAR</abbr> module</a></td>
+</tr>
+</tbody>
+</table>
+<p>Both profiles use policy routing so the sensor subnet is routed through its own routing table and the sensor interface never becomes the default gateway.  Switch between the profiles with <code>nmcli</code> when provisioning a <abbr title="Light Detection and Ranging">LiDAR</abbr>.</p>
+<div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>nmcli<span class="w"> </span>connection<span class="w"> </span>down<span class="w"> </span>ethernet1-radar
+sudo<span class="w"> </span>nmcli<span class="w"> </span>connection<span class="w"> </span>up<span class="w"> </span>ethernet1-lidar
+</code></pre></div>
+<p>The <code>ethernet1-master.service</code> configures the 1000Base-T1 automotive Ethernet PHY as the link master, which is required for the radar module.  The Maivin also runs a <abbr title="Precision Time Protocol">PTP</abbr> grandmaster (<code>ptp4l</code>) on <code>ethernet1</code> distributing the <abbr title="Global Navigation Satellite System">GNSS</abbr> disciplined system time to the connected sensors, the <code>phc2sys-master@ethernet1</code> service keeps the interface clock in step with the system clock.  Sensors such as the Ouster <abbr title="Light Detection and Ranging">LiDAR</abbr> can synchronize to it by selecting their <abbr title="Precision Time Protocol">PTP</abbr> timestamp mode.  The system clock itself is disciplined by <code>chrony</code> from the <abbr title="Global Navigation Satellite System">GNSS</abbr> receiver through <code>gpsd</code> and the receiver's pulse per second signal, <code>chronyc sources</code> shows the <code>GPS</code> reference selected at stratum 1 on a healthy unit.</p>
+<p>Refer to the <a href="../../hardware/radar/">Radar</a> and <a href="../../hardware/lidar/"><abbr title="Light Detection and Ranging">LiDAR</abbr></a> hardware pages for details.</p>
 
 
 

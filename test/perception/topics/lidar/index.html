@@ -1402,7 +1402,7 @@
   <a href="#lidarpoints" class="md-nav__link">
     <span class="md-ellipsis">
       
-        /lidar/points
+        lidar/points
       
     </span>
   </a>
@@ -1413,7 +1413,7 @@
   <a href="#lidarreflect" class="md-nav__link">
     <span class="md-ellipsis">
       
-        /lidar/reflect
+        lidar/reflect
       
     </span>
   </a>
@@ -1424,7 +1424,7 @@
   <a href="#lidardepth" class="md-nav__link">
     <span class="md-ellipsis">
       
-        /lidar/depth
+        lidar/depth
       
     </span>
   </a>
@@ -1435,7 +1435,7 @@
   <a href="#lidarclusters" class="md-nav__link">
     <span class="md-ellipsis">
       
-        /lidar/clusters
+        lidar/clusters
       
     </span>
   </a>
@@ -1903,7 +1903,7 @@
   <a href="#lidarpoints" class="md-nav__link">
     <span class="md-ellipsis">
       
-        /lidar/points
+        lidar/points
       
     </span>
   </a>
@@ -1914,7 +1914,7 @@
   <a href="#lidarreflect" class="md-nav__link">
     <span class="md-ellipsis">
       
-        /lidar/reflect
+        lidar/reflect
       
     </span>
   </a>
@@ -1925,7 +1925,7 @@
   <a href="#lidardepth" class="md-nav__link">
     <span class="md-ellipsis">
       
-        /lidar/depth
+        lidar/depth
       
     </span>
   </a>
@@ -1936,7 +1936,7 @@
   <a href="#lidarclusters" class="md-nav__link">
     <span class="md-ellipsis">
       
-        /lidar/clusters
+        lidar/clusters
       
     </span>
   </a>
@@ -2010,12 +2010,15 @@
 
 
 <h1 id="lidar-topics"><abbr title="Light Detection and Ranging">LiDAR</abbr> Topics</h1>
-<p>The lidar topics are managed by the <code>lidarpub</code> service and handles interfacing with a connected lidar to produce lidar point clouds, reflectivity maps, and depth maps.</p>
+<p>The lidar topics are managed by the <code>lidarpub</code> service and handles interfacing with a connected lidar to produce lidar point clouds, reflectivity maps, and depth maps.  The service can cluster the point cloud and remove the ground plane before clustering, and publishes the static transform from the <code>base_link</code> frame to the <code>lidar</code> frame on the <code>tf_static</code> topic.</p>
 <ul>
+<li>Robosense E1R</li>
 <li>Ouster OS1</li>
+<li><abbr title="Density-Based Spatial Clustering of Applications with Noise">DBSCAN</abbr> and voxel clustering</li>
+<li><abbr title="Inertial Measurement Unit">IMU</abbr>-guided ground plane filter</li>
 </ul>
-<p>The lidar topics are published under the <code>/lidar</code> namespace and offers the following sub-topics: <code>/lidar/points</code>, <code>/lidar/reflect</code>, <code>/lidar/depth</code>, and <code>/lidar/clusters</code>. The density of the lidar points, the frequency of updates, and the field of view of the lidar are configurable through the <code>lidarpub</code> service. See lidarpub service configuration documentation for details.</p>
-<h2 id="lidarpoints">/lidar/points</h2>
+<p>The lidar topics are published under the <code>lidar</code> namespace and offer the following sub-topics: <code>lidar/points</code>, <code>lidar/reflect</code>, <code>lidar/depth</code>, and <code>lidar/clusters</code>.  The sensor type, the density of the lidar points, the frequency of updates, the field of view, and the clustering are configurable through the <code>lidarpub</code> service, see the <a href="../../../platforms/configuration/lidar/"><abbr title="Light Detection and Ranging">LiDAR</abbr> service configuration</a> documentation for details.  Topic names are relative to the device <a href="../#hostname-namespaces">hostname namespace</a>.</p>
+<h2 id="lidarpoints">lidar/points</h2>
 <p>The <code>/lidar/points</code> topic publishes information about the lidar points using the <a href="../../api/sensor_msgs/#pointcloud2">PointCloud2</a> schema. The point cloud will have the fields <code>x</code>, <code>y</code>, <code>z</code>, and <code>reflect</code>.</p>
 <table>
 <thead>
@@ -2053,7 +2056,7 @@
 </tr>
 </tbody>
 </table>
-<p>The XYZ coordinate system follows the <a href="https://www.ros.org/reps/rep-0103.html#coordinate-frame-conventions">standard ROS convention</a> of x forward, y left, z up. However, note that the <code>lidar</code> frame is rotated 180 degrees from the <code>base_link</code> frame, with forward facing the back of the camera.</p>
+<p>The XYZ coordinate system follows the <a href="https://www.ros.org/reps/rep-0103.html#coordinate-frame-conventions">standard ROS convention</a> of x forward, y left, z up.  Note that the Ouster <code>lidar</code> frame is rotated 180 degrees from the <code>base_link</code> frame as its 0 degree point is at the rear connector, the transform published on <code>tf_static</code> accounts for the mounting.</p>
 <table>
 <thead>
 <tr>
@@ -2064,7 +2067,7 @@
 <tbody>
 <tr>
 <td style="text-align: center;">Web UI</td>
-<td style="text-align: center;"><a href=""></a></td>
+<td style="text-align: center;"><a href="../../../platforms/quickstart/raivin/webui/#the-lidar-page"><abbr title="Light Detection and Ranging">LiDAR</abbr> Page</a></td>
 </tr>
 <tr>
 <td style="text-align: center;">Foxglove</td>
@@ -2076,8 +2079,8 @@
 </tr>
 </tbody>
 </table>
-<h2 id="lidarreflect">/lidar/reflect</h2>
-<p>The <code>/lidar/reflect</code> topic publishes the reflectivity map using the <a href="../../api/sensor_msgs/#image">Image</a> schema. The encoding of the image is <code>mono8</code>. The value of a pixel is the reflectivity of that point. The width of a pixel depends on the number of columns configured on the lidar.</p>
+<h2 id="lidarreflect">lidar/reflect</h2>
+<p>The <code>/lidar/reflect</code> topic publishes the reflectivity map using the <a href="../../api/sensor_msgs/#image">Image</a> schema. The encoding of the image is <code>mono8</code>. The value of a pixel is the reflectivity of that point. The image width depends on the number of columns configured on the lidar.  These images are published for the Ouster sensor.</p>
 <table>
 <thead>
 <tr>
@@ -2088,7 +2091,7 @@
 <tbody>
 <tr>
 <td style="text-align: center;">Web UI</td>
-<td style="text-align: center;"><a href=""></a></td>
+<td style="text-align: center;"></td>
 </tr>
 <tr>
 <td style="text-align: center;">Foxglove</td>
@@ -2100,8 +2103,8 @@
 </tr>
 </tbody>
 </table>
-<h2 id="lidardepth">/lidar/depth</h2>
-<p>The <code>/lidar/depth</code> topic publishes the depth map using the <a href="../../api/sensor_msgs/#image">Image</a> schema. The encoding of the image is <code>mono16</code>. The value of a pixel is the distance from the lidar to the point in millimeters. The width of a pixel depends on the number of columns configured on the lidar.</p>
+<h2 id="lidardepth">lidar/depth</h2>
+<p>The <code>/lidar/depth</code> topic publishes the depth map using the <a href="../../api/sensor_msgs/#image">Image</a> schema. The encoding of the image is <code>mono16</code>. The value of a pixel is the distance from the lidar to the point in millimeters. The image width depends on the number of columns configured on the lidar.  These images are published for the Ouster sensor.</p>
 <table>
 <thead>
 <tr>
@@ -2112,7 +2115,7 @@
 <tbody>
 <tr>
 <td style="text-align: center;">Web UI</td>
-<td style="text-align: center;"><a href=""></a></td>
+<td style="text-align: center;"></td>
 </tr>
 <tr>
 <td style="text-align: center;">Foxglove</td>
@@ -2124,7 +2127,7 @@
 </tr>
 </tbody>
 </table>
-<h2 id="lidarclusters">/lidar/clusters</h2>
+<h2 id="lidarclusters">lidar/clusters</h2>
 <p>The <code>/lidar/clusters</code> topic publishes the lidar clusters pointcloud using the <a href="../../api/sensor_msgs/#pointcloud2">PointCloud2</a> schema. The point cloud will have the fields <code>x</code>, <code>y</code>, <code>z</code>, <code>cluster_id</code>, and <code>reflect</code>.</p>
 <table>
 <thead>
@@ -2168,8 +2171,8 @@
 </tr>
 </tbody>
 </table>
-<p>The XYZ coordinate system follows the <a href="https://www.ros.org/reps/rep-0103.html#coordinate-frame-conventions">standard ROS convention</a> of x forward, y left, z up. However, note that the <code>lidar</code> frame is rotated 180 degrees from the <code>base_link</code> frame, with forward facing the back of the camera.</p>
-<p>This topic is only published if the lidarpub service is configured with the clustering task enabled.</p>
+<p>The XYZ coordinate system follows the <a href="https://www.ros.org/reps/rep-0103.html#coordinate-frame-conventions">standard ROS convention</a> of x forward, y left, z up.  Note that the Ouster <code>lidar</code> frame is rotated 180 degrees from the <code>base_link</code> frame as its 0 degree point is at the rear connector, the transform published on <code>tf_static</code> accounts for the mounting.</p>
+<p>This topic is only published if the lidarpub service is configured with a <a href="../../../platforms/configuration/lidar/#clustering">clustering</a> algorithm.</p>
 <table>
 <thead>
 <tr>
@@ -2180,7 +2183,7 @@
 <tbody>
 <tr>
 <td style="text-align: center;">Web UI</td>
-<td style="text-align: center;"><a href=""></a></td>
+<td style="text-align: center;"><a href="../../../platforms/quickstart/raivin/webui/#the-lidar-page"><abbr title="Light Detection and Ranging">LiDAR</abbr> Page</a></td>
 </tr>
 <tr>
 <td style="text-align: center;">Foxglove</td>

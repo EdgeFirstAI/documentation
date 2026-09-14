@@ -15,7 +15,7 @@
         <link rel="canonical" href="https://doc.edgefirst.ai/test/platforms/configuration/model/">
       
       
-        <link rel="prev" href="../webui/">
+        <link rel="prev" href="../camera/">
       
       
         <link rel="next" href="../service_status/">
@@ -1241,8 +1241,6 @@
       
         
       
-        
-      
     
     
     
@@ -1357,34 +1355,6 @@
                 
   
   
-  
-  
-    <li class="md-nav__item">
-      <a href="../webui/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Web UI Settings
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
     
   
   
@@ -1456,41 +1426,58 @@
     </span>
   </a>
   
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#engine" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Engine
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#detection-only-settings" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Detection-only Settings
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Detection-only Settings">
+    <nav class="md-nav" aria-label="Model">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#visualization" class="md-nav__link">
+  <a href="#edgefirst-config-override" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Visualization
+        EdgeFirst Config Override
       
     </span>
   </a>
   
 </li>
+        
+          <li class="md-nav__item">
+  <a href="#ssd-model" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        SSD Model
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#delegate" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Delegate
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#detection-settings" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Detection Settings
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Detection Settings">
+      <ul class="md-nav__list">
         
           <li class="md-nav__item">
   <a href="#threshold" class="md-nav__link">
@@ -1515,10 +1502,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#max_boxes" class="md-nav__link">
+  <a href="#max-boxes" class="md-nav__link">
     <span class="md-ellipsis">
       
-        MAX_BOXES
+        Max Boxes
       
     </span>
   </a>
@@ -1526,10 +1513,32 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#label_offset" class="md-nav__link">
+  <a href="#label-offset" class="md-nav__link">
     <span class="md-ellipsis">
       
-        LABEL_OFFSET
+        Label Offset
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#labels" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Labels
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#classes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Classes
       
     </span>
   </a>
@@ -1557,7 +1566,7 @@
   <a href="#track" class="md-nav__link">
     <span class="md-ellipsis">
       
-        TRACK
+        Track
       
     </span>
   </a>
@@ -1565,10 +1574,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#track-extra-lifespan-seconds" class="md-nav__link">
+  <a href="#track-extra-lifespan" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Track Extra Lifespan (seconds)
+        Track Extra Lifespan
       
     </span>
   </a>
@@ -1576,10 +1585,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#track_high_conf" class="md-nav__link">
+  <a href="#track-score" class="md-nav__link">
     <span class="md-ellipsis">
       
-        TRACK_HIGH_CONF
+        Track Score
       
     </span>
   </a>
@@ -1587,10 +1596,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#track_iou" class="md-nav__link">
+  <a href="#track-iou" class="md-nav__link">
     <span class="md-ellipsis">
       
-        TRACK_IOU
+        Track IOU
       
     </span>
   </a>
@@ -1598,10 +1607,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#track_update" class="md-nav__link">
+  <a href="#track-update" class="md-nav__link">
     <span class="md-ellipsis">
       
-        TRACK_UPDATE
+        Track Update
       
     </span>
   </a>
@@ -1614,69 +1623,24 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#segmentation-only-settings" class="md-nav__link">
+  <a href="#visualization" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Segmentation-only Settings
+        Visualization
       
     </span>
   </a>
-  
-    <nav class="md-nav" aria-label="Segmentation-only Settings">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#mask_compression" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        MASK_COMPRESSION
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#openvx-graph-caching" class="md-nav__link">
+  <a href="#topics" class="md-nav__link">
     <span class="md-ellipsis">
       
-        OpenVX Graph Caching
+        Topics
       
     </span>
   </a>
-  
-    <nav class="md-nav" aria-label="OpenVX Graph Caching">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#viv_vx_enable_cache_graph_binary" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        VIV_VX_ENABLE_CACHE_GRAPH_BINARY
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#viv_vx_cache_binary_graph_dir" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        VIV_VX_CACHE_BINARY_GRAPH_DIR
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
@@ -2031,41 +1995,58 @@
     </span>
   </a>
   
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#engine" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Engine
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#detection-only-settings" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Detection-only Settings
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Detection-only Settings">
+    <nav class="md-nav" aria-label="Model">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#visualization" class="md-nav__link">
+  <a href="#edgefirst-config-override" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Visualization
+        EdgeFirst Config Override
       
     </span>
   </a>
   
 </li>
+        
+          <li class="md-nav__item">
+  <a href="#ssd-model" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        SSD Model
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#delegate" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Delegate
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#detection-settings" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Detection Settings
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Detection Settings">
+      <ul class="md-nav__list">
         
           <li class="md-nav__item">
   <a href="#threshold" class="md-nav__link">
@@ -2090,10 +2071,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#max_boxes" class="md-nav__link">
+  <a href="#max-boxes" class="md-nav__link">
     <span class="md-ellipsis">
       
-        MAX_BOXES
+        Max Boxes
       
     </span>
   </a>
@@ -2101,10 +2082,32 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#label_offset" class="md-nav__link">
+  <a href="#label-offset" class="md-nav__link">
     <span class="md-ellipsis">
       
-        LABEL_OFFSET
+        Label Offset
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#labels" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Labels
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#classes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Classes
       
     </span>
   </a>
@@ -2132,7 +2135,7 @@
   <a href="#track" class="md-nav__link">
     <span class="md-ellipsis">
       
-        TRACK
+        Track
       
     </span>
   </a>
@@ -2140,10 +2143,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#track-extra-lifespan-seconds" class="md-nav__link">
+  <a href="#track-extra-lifespan" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Track Extra Lifespan (seconds)
+        Track Extra Lifespan
       
     </span>
   </a>
@@ -2151,10 +2154,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#track_high_conf" class="md-nav__link">
+  <a href="#track-score" class="md-nav__link">
     <span class="md-ellipsis">
       
-        TRACK_HIGH_CONF
+        Track Score
       
     </span>
   </a>
@@ -2162,10 +2165,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#track_iou" class="md-nav__link">
+  <a href="#track-iou" class="md-nav__link">
     <span class="md-ellipsis">
       
-        TRACK_IOU
+        Track IOU
       
     </span>
   </a>
@@ -2173,10 +2176,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#track_update" class="md-nav__link">
+  <a href="#track-update" class="md-nav__link">
     <span class="md-ellipsis">
       
-        TRACK_UPDATE
+        Track Update
       
     </span>
   </a>
@@ -2189,69 +2192,24 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#segmentation-only-settings" class="md-nav__link">
+  <a href="#visualization" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Segmentation-only Settings
+        Visualization
       
     </span>
   </a>
-  
-    <nav class="md-nav" aria-label="Segmentation-only Settings">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#mask_compression" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        MASK_COMPRESSION
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#openvx-graph-caching" class="md-nav__link">
+  <a href="#topics" class="md-nav__link">
     <span class="md-ellipsis">
       
-        OpenVX Graph Caching
+        Topics
       
     </span>
   </a>
-  
-    <nav class="md-nav" aria-label="OpenVX Graph Caching">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#viv_vx_enable_cache_graph_binary" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        VIV_VX_ENABLE_CACHE_GRAPH_BINARY
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#viv_vx_cache_binary_graph_dir" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        VIV_VX_CACHE_BINARY_GRAPH_DIR
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
@@ -2329,82 +2287,123 @@
             </figure>
 <div class="admonition tip">
 <p class="admonition-title">Tip</p>
-<p>These values are stored in the <code>/etc/default/model</code> file on the device and can be hand-edited.  This is not recommended.</p>
+<p>These values are stored in the <code>/etc/default/model</code> file on the device and can be hand-edited.</p>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Settings page out of sync</p>
+<p>The Model Settings page of the Web UI in this release still lists settings from the previous Model service, such as <code>ENGINE</code>, <code>MASK_COMPRESSION</code>, <code>TRACK_HIGH_CONF</code>, and the <code>VIV_VX</code> graph cache options, which the current service ignores, and does not show the newer <code>DELEGATE</code>, <code>TRACK_SCORE</code>, <code>CLASSES</code>, and topic settings.  The settings described on this page are the keys accepted by the Model service in <code>/etc/default/model</code>.  Edit the file directly when a setting is missing from the page.  Refer to <a href="../../software/issues/#web-ui-settings-page-gaps-edgeai-1229">Known Issues</a>.</p>
 </div>
 <h2 id="model">Model</h2>
-<p>A model is required for the model application for 2D image processing. This can be a segmentation model and/or a detection model.  By default, Maivin/Raivin comes with three <a href="../../../models/modelpack/">ModelPack</a> models at trained on the <a href="../../../datasets/coco_people/">COCO People dataset</a>, located in the <code>/usr/share/model</code> directory:</p>
+<p>A model is required for the model service.  This can be a detection model, a segmentation model, or a model providing both.  Stored as <code>MODEL</code>, the service does not start without it.  By default the Maivin and Raivin run the <a href="https://huggingface.co/EdgeFirst">EdgeFirst Model Zoo</a> YOLOv8n <abbr title="Signed 8-bit integer">INT8</abbr> detection model installed under <code>/usr/share/edgefirst/modelzoo/</code>.</p>
 <table>
 <thead>
 <tr>
-<th>Model Name</th>
-<th style="text-align: center;">Segmentation Masks?</th>
+<th>Model</th>
 <th style="text-align: center;">Detection Boxes?</th>
+<th style="text-align: center;">Segmentation Masks?</th>
 <th style="text-align: center;">Default?</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>modelpack-people.tflite</td>
-<td style="text-align: center;"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 7 9 19l-5.5-5.5 1.41-1.41L9 16.17 19.59 5.59z"/></svg></span></td>
-<td style="text-align: center;"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 7 9 19l-5.5-5.5 1.41-1.41L9 16.17 19.59 5.59z"/></svg></span></td>
-<td style="text-align: center;"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 7 9 19l-5.5-5.5 1.41-1.41L9 16.17 19.59 5.59z"/></svg></span></td>
-</tr>
-<tr>
-<td>modelpack-people-detect.tflite</td>
-<td style="text-align: center;"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg></span></td>
+<td><code>/usr/share/edgefirst/modelzoo/yolov8n-det-int8-smart.tflite</code></td>
 <td style="text-align: center;"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 7 9 19l-5.5-5.5 1.41-1.41L9 16.17 19.59 5.59z"/></svg></span></td>
 <td style="text-align: center;"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg></span></td>
-</tr>
-<tr>
-<td>modelpack-people-mask.tflite</td>
 <td style="text-align: center;"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 7 9 19l-5.5-5.5 1.41-1.41L9 16.17 19.59 5.59z"/></svg></span></td>
-<td style="text-align: center;"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg></span></td>
-<td style="text-align: center;"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg></span></td>
 </tr>
 </tbody>
 </table>
-<h2 id="engine">Engine</h2>
-<p>The model can be run using different computation engines.  The default engine is the <abbr title="Neural Processing Unit">NPU</abbr> for the <a href="https://www.nxp.com/products/i.MX8MPLUS">i.MX 8M Plus</a>.  Other options are the CPU or the GPU.</p>
-<h2 id="detection-only-settings">Detection-only Settings</h2>
-<p>The following settings will only impact detection-based output in the <code>/model/boxes2d</code> topic with models that output object detection results.</p>
-<h3 id="visualization">Visualization</h3>
-<p>Enables publishing the legacy visualization message for detection models.  It is 'false' by default which means only the primary model box and mask topics will be available.  If using <a href="../../../perception/data_collection/foxglove/">Foxglove Studio</a> make sure you install the <a href="../../../perception/data_collection/foxglove/#installing-edgefirst-plugin">EdgeFirst for Foxglove Plug-in</a>.  If set to 'true', the <code>/model/visualization</code> topic will be created which can be used by FoxGlove to draw the default detection boxes.</p>
+<p>Models trained in EdgeFirst Studio, <a href="../../../models/modelpack/">ModelPack</a> or <a href="../../../models/ultralytics/">Ultralytics</a>, are deployed by <a href="../../software/model_uploads/">uploading them to the device</a> and pointing this setting at the uploaded file, for example <code>/home/torizon/mymodel.tflite</code>.  The service reads the model task, labels, and decoder configuration from the EdgeFirst configuration embedded in the model.</p>
+<h3 id="edgefirst-config-override">EdgeFirst Config Override</h3>
+<p>Stored as <code>EDGEFIRST_CONFIG</code>, an optional path to an EdgeFirst configuration file in YAML or JSON that overrides the configuration embedded in the model or supplies one when the model has none.  Leave empty to use the model's built-in configuration.</p>
+<h3 id="ssd-model"><abbr title="Solid State Drive">SSD</abbr> Model</h3>
+<p>Stored as <code>SSD_MODEL</code> and <code>false</code> by default, enables <abbr title="Solid State Drive">SSD</abbr> decoding for <abbr title="Solid State Drive">SSD</abbr>-style detection models without an embedded EdgeFirst configuration.</p>
+<h2 id="delegate">Delegate</h2>
+<p>The model can be run on the <abbr title="Neural Processing Unit">NPU</abbr> or on the CPU.  Stored as <code>DELEGATE</code>, the path to the TensorFlow Lite delegate library.  On the i.MX 8M Plus the <abbr title="Neural Processing Unit">NPU</abbr> is selected with <code>/usr/lib/libvx_delegate.so</code>, leave empty for CPU-only inference.  Model Zoo models compiled for the i.MX 95 Neutron <abbr title="Neural Processing Unit">NPU</abbr> use <code>/usr/lib/libneutron_delegate.so</code>.</p>
+<div class="admonition note">
+<p class="admonition-title">OpenVX Graph Caching</p>
+<p>The first load of a model on the <abbr title="Neural Processing Unit">NPU</abbr> compiles the OpenVX graph which can take a minute.  The VX delegate caches the compiled graph and later loads are fast.  The caching is controlled by the driver environment variables <code>VIV_VX_ENABLE_CACHE_GRAPH_BINARY</code> and <code>VIV_VX_CACHE_BINARY_GRAPH_DIR</code> which can be added to <code>/etc/default/model</code> if required.</p>
+</div>
+<h2 id="detection-settings">Detection Settings</h2>
+<p>The following settings impact the detection boxes published in the <code>model/output</code> topic with models that output object detection results.</p>
 <h3 id="threshold">Threshold</h3>
-<p>Score threshold sets the minimum detection score before a bounding box is generated for the inferred object for detection.</p>
+<p>Stored as <code>THRESHOLD</code> with a default of <code>0.45</code>, the minimum detection score before a bounding box is generated for the inferred object.  When tracking is enabled this also serves as the threshold for creating new tracks.</p>
 <h3 id="iou">IOU</h3>
-<p>Detection <abbr title="Intersection over Union">IoU</abbr> controls the minimum overlap for merging boxes during <abbr title="Non-Maximum Suppression">NMS</abbr>.  A larger number will produce more boxes with some overlap while a smaller number will generate fewer boxes.</p>
-<h3 id="max_boxes">MAX_BOXES</h3>
-<p>The maximum number of detection boxes which can be generated.</p>
-<h3 id="label_offset">LABEL_OFFSET</h3>
-<p>The label offset is required for certain models to account for differences in background class handling relative to the labels.  It should usually be zero but some odd configurations will sometimes require 1 or -1 for offset.</p>
+<p>Stored as <code>IOU</code> with a default of <code>0.45</code>, the detection <abbr title="Intersection over Union">IoU</abbr> controls the minimum overlap for merging boxes during <abbr title="Non-Maximum Suppression">NMS</abbr>.  A larger number will produce more boxes with some overlap while a smaller number will generate fewer boxes.</p>
+<h3 id="max-boxes">Max Boxes</h3>
+<p>Stored as <code>MAX_BOXES</code> with a default of <code>100</code>, the maximum number of detection boxes which can be generated per frame.</p>
+<h3 id="label-offset">Label Offset</h3>
+<p>Stored as <code>LABEL_OFFSET</code> with a default of <code>0</code>, the label offset is required for certain models to account for differences in background class handling relative to the labels.  It should usually be zero but some configurations require <code>1</code> or <code>-1</code>.</p>
+<h3 id="labels">Labels</h3>
+<p>Stored as <code>LABELS</code> with a default of <code>label</code>, controls the text drawn next to each detected box by the <a href="#visualization">visualization</a> message.  Accepted values are <code>index</code>, <code>label</code>, <code>score</code>, <code>label-score</code>, and <code>track</code>.</p>
+<h3 id="classes">Classes</h3>
+<p>Stored as <code>CLASSES</code>, a space-separated list of label names to include in the output, for example <code>person car truck</code>.  Only boxes matching these labels, and their associated instance masks, are published.  Empty publishes all classes.</p>
 <h2 id="track-settings">Track Settings</h2>
 <p>These settings impact object tracking with object detection.  They have no effect for segmentation-only models.</p>
-<h3 id="track">TRACK</h3>
-<p>This turns on the <a href="https://arxiv.org/abs/2110.06864">ByteTrack</a> tracker. This is useful for smoothing bounding boxes across frames, and for associating multiple detections over time to a single object. None of the other settings will have an effect if this is set to 'false'.</p>
-<h3 id="track-extra-lifespan-seconds">Track Extra Lifespan (seconds)</h3>
-<p>The number of seconds a tracked object can be missing for before being removed from tracking.</p>
-<h3 id="track_high_conf">TRACK_HIGH_CONF</h3>
-<p>The high confidence threshold for the ByteTrack algorithm.</p>
-<h3 id="track_iou">TRACK_IOU</h3>
-<p>The tracking <abbr title="Intersection over Union">IoU</abbr> threshold for box association. Higher values will require boxes to have higher <abbr title="Intersection over Union">IoU</abbr> to the predicted track location to be associated.</p>
-<h3 id="track_update">TRACK_UPDATE</h3>
-<p>The tracking update factor. Higher update factor will mean less smoothing but more rapid response to change. Use values from 0.0 to 1.0. Values outside this range will cause unexpected behavior.</p>
-<h2 id="segmentation-only-settings">Segmentation-only Settings</h2>
-<p>The following setting will only impact segmentation-based output in the <code>/model/mask_compressed</code> or <code>/model/mask</code> topics with models that output segmentation results.</p>
-<h3 id="mask_compression">MASK_COMPRESSION</h3>
-<p>Enable compression for segmentation masks.  When enabled, both the <code>/model/mask</code> and <code>/model/mask_compressed</code> topics will be available.  The compressed mask should be used from remote connections while the uncompressed topic should be used from local connections to avoid redundant compress/decompress steps.</p>
-<div class="admonition warning">
-<p class="admonition-title">Warning</p>
-<p>Turning off mask compression will disable the <code>/model/mask_compressed</code> topic.  The Web UI will need to have its <a href="../webui/#topics">Mask Topic</a> changed to <code>/model/mask</code>.  The segmentation mask will also not be recorded.</p>
+<h3 id="track">Track</h3>
+<p>Stored as <code>TRACK</code> and <code>false</code> by default, this turns on the <a href="https://arxiv.org/abs/2110.06864">ByteTrack</a> tracker.  This is useful for smoothing bounding boxes across frames, and for associating multiple detections over time to a single object.  None of the other track settings have an effect if this is <code>false</code>.  When tracking is enabled each box in <code>model/output</code> carries a track ID, lifetime, and creation time.</p>
+<h3 id="track-extra-lifespan">Track Extra Lifespan</h3>
+<p>Stored as <code>TRACK_EXTRA_LIFESPAN</code> with a default of <code>0.5</code>, the number of seconds a tracked object can be missing before being removed from tracking.</p>
+<h3 id="track-score">Track Score</h3>
+<p>Stored as <code>TRACK_SCORE</code> with a default of <code>0.1</code>, the score threshold used by the decoder when tracking is enabled.  A lower value than the detection threshold lets the tracker see more candidate detections so temporarily occluded objects can be recovered.</p>
+<h3 id="track-iou">Track IOU</h3>
+<p>Stored as <code>TRACK_IOU</code> with a default of <code>0.25</code>, the tracking <abbr title="Intersection over Union">IoU</abbr> threshold for box association.  Higher values require boxes to have a higher <abbr title="Intersection over Union">IoU</abbr> to the predicted track location to be associated.</p>
+<h3 id="track-update">Track Update</h3>
+<p>Stored as <code>TRACK_UPDATE</code> with a default of <code>0.25</code>, the Kalman filter update factor.  A higher update factor means less smoothing but a more rapid response to change.  Use values from <code>0.0</code> to <code>1.0</code>.</p>
+<h2 id="visualization">Visualization</h2>
+<p>Stored as <code>VISUALIZATION</code> and <code>false</code> by default, enables publishing the <code>model/visualization</code> topic with Foxglove image annotations drawing the detection boxes and labels.  This is intended for viewing detections in <a href="../../../perception/data_collection/foxglove/">Foxglove Studio</a> without the EdgeFirst plug-in.  The camera information topic is required when enabled.</p>
+<h2 id="topics">Topics</h2>
+<p>The model service subscribes to the camera frames and publishes its results on the following topics.  Topic names are relative to the device <a href="../../../perception/topics/#hostname-namespaces">hostname namespace</a>.</p>
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>CAMERA_TOPIC</code></td>
+<td><code>camera/frame</code></td>
+<td>Camera frame subscription</td>
+</tr>
+<tr>
+<td><code>CAMERA_INFO_TOPIC</code></td>
+<td><code>camera/info</code></td>
+<td>Camera information subscription, needed for visualization</td>
+</tr>
+<tr>
+<td><code>OUTPUT_TOPIC</code></td>
+<td><code>model/output</code></td>
+<td>Unified <a href="../../../perception/topics/model/#modeloutput">Model</a> output with boxes, masks, tracks, and timing</td>
+</tr>
+<tr>
+<td><code>INFO_TOPIC</code></td>
+<td><code>model/info</code></td>
+<td><a href="../../../perception/topics/model/#modelinfo">Model information</a></td>
+</tr>
+<tr>
+<td><code>VISUAL_TOPIC</code></td>
+<td><code>model/visualization</code></td>
+<td>Foxglove image annotations when visualization is enabled</td>
+</tr>
+<tr>
+<td><code>DETECT_TOPIC</code></td>
+<td></td>
+<td>Legacy detection topic, disabled by default.  Set to <code>model/boxes2d</code> to re-enable</td>
+</tr>
+<tr>
+<td><code>MASK_TOPIC</code></td>
+<td></td>
+<td>Legacy mask topic, disabled by default.  Set to <code>model/mask</code> to re-enable</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition note">
+<p class="admonition-title">Legacy topics</p>
+<p>The previous <code>model/boxes2d</code>, <code>model/mask</code>, and <code>model/mask_compressed</code> topics are replaced by the unified <code>model/output</code> message.  Masks are no longer compressed by the service, compression is handled by the Web UI transport.  Applications built against the legacy topics can re-enable <code>model/boxes2d</code> and <code>model/mask</code> with the settings above.</p>
 </div>
-<h2 id="openvx-graph-caching">OpenVX Graph Caching</h2>
-<p>The OpenVX driver provides a graph caching mechanism that significantly speeds up future reload times for the graph.  The cache stores a binary representation of the in-memory graph, not the model used to generate the graph, to the file system.  When loading a model, graph generation proceeds as normal but the time-consuming graph loading step will first attempt to load the cached representation.  </p>
-<p>The driver allows for many graphs to be stored and the location, along with enabling the feature, is controlled through a pair of environment variables.  This allows a user to select on a per-process basis when to enable graph cache and where to store the cache.</p>
-<p>These settings enable and configure this functionality.</p>
-<h3 id="viv_vx_enable_cache_graph_binary">VIV_VX_ENABLE_CACHE_GRAPH_BINARY</h3>
-<p>This option will enable the graph caching which significantly speeds up load times for models.  If you encounter issues set to 0 to disable.</p>
-<h3 id="viv_vx_cache_binary_graph_dir">VIV_VX_CACHE_BINARY_GRAPH_DIR</h3>
-<p>This controls the <abbr title="Neural Processing Unit">NPU</abbr> graph cache storage location.</p>
 
 
 
@@ -2494,7 +2493,7 @@
       <nav class="md-footer__inner md-grid" aria-label="Footer" >
         
           
-          <a href="../webui/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Web UI Settings">
+          <a href="../camera/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Camera Settings">
             <div class="md-footer__button md-icon">
               
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
@@ -2504,7 +2503,7 @@
                 Previous
               </span>
               <div class="md-ellipsis">
-                Web UI Settings
+                Camera Settings
               </div>
             </div>
           </a>

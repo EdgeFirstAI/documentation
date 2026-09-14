@@ -1694,10 +1694,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#channel-full-errors" class="md-nav__link">
+  <a href="#dropped-frames" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Channel Full Errors
+        Dropped Frames
       
     </span>
   </a>
@@ -2084,10 +2084,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#channel-full-errors" class="md-nav__link">
+  <a href="#dropped-frames" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Channel Full Errors
+        Dropped Frames
       
     </span>
   </a>
@@ -2217,15 +2217,19 @@
 
 <h1 id="the-4k-camera-service">The 4K Camera Service</h1>
 <p>The Camera service on the Maivin/Raivin supports 4K video in multiple fashions, including command-line configuration, adding the parameters to the camera configuration file, as well as through the Web UI.</p>
+<div class="admonition note">
+<p class="admonition-title">Camera Mode</p>
+<p>On the Maivin and Raivin the sensor readout is selected by the <code>CAMERA_MODE</code> setting of <code>/etc/default/camera</code> and applied by the <abbr title="Image Signal Processor">ISP</abbr> before the camera service starts.  Set <code>CAMERA_MODE="4k"</code> for 4K capture, the default <code>1080p60</code> mode does not provide a 4K readout and the <abbr title="Image Signal Processor">ISP</abbr> does not upscale.  Refer to the <a href="../../../platforms/configuration/camera/#camera-mode">Camera Settings</a>.</p>
+</div>
 <h2 id="command-line-configuration">Command Line Configuration</h2>
-<p>The camera service can be run at the platform's command-line interface. The first step would be to log on to the platform via <a href="../../../platforms/networking/ssh/"><abbr title="Secure Shell">SSH</abbr></a>. Then stop the current camera service with the <code>sudo systemctl stop camera</code>. The following command-line options for the camera service are described below.</p>
+<p>The camera service can be run at the platform's command-line interface. The first step would be to log on to the platform via <a href="../../../platforms/networking/ssh/"><abbr title="Secure Shell">SSH</abbr></a>. Then stop the current camera service with <code>sudo systemctl stop camera</code> and restart the <abbr title="Image Signal Processor">ISP</abbr> with <code>sudo systemctl restart imx8-isp</code> so the camera service is its first client, refer to the <a href="../../../platforms/software/issues/#manual-camera-launch-fails-every-other-start-edgeai-1439">Known Issues</a>. The following command-line options for the camera service are described below.</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># Enable 4K tile streaming</span>
 --h264-tiles
 
-<span class="c1"># Configure tile topics (default: rt/camera/h264/tl tr bl br)</span>
---h264-tiles-topics<span class="w"> </span><span class="s2">"rt/camera/h264/tl rt/camera/h264/tr rt/camera/h264/bl rt/camera/h264/br"</span>
+<span class="c1"># Configure tile topics (default: camera/h264/tl tr bl br)</span>
+--h264-tiles-topics<span class="w"> </span><span class="s2">"camera/h264/tl camera/h264/tr camera/h264/bl camera/h264/br"</span>
 
-<span class="c1"># Set tile frame rate (default: 15 FPS)</span>
+<span class="c1"># Set tile frame rate (default: 15 FPS, 0 for no limit)</span>
 --h264-tiles-fps<span class="w"> </span><span class="m">15</span>
 
 <span class="c1"># Set H.264 bitrate</span>
@@ -2237,14 +2241,14 @@
 <span class="c1"># How to Run</span>
 sudo<span class="w"> </span>camera<span class="w"> </span>--h264-tiles<span class="w"> </span>--h264-tiles-fps<span class="w"> </span><span class="m">30</span><span class="w"> </span>--camera-size<span class="w"> </span><span class="m">3840</span><span class="w"> </span><span class="m">2160</span>
 </code></pre></div>
-<p>You can also export these as environment variables prior to running the executable.</p>
+<p>You can also export these as environment variables prior to running the executable.  Every command-line option has an environment variable of the same name in upper-case.</p>
 <div class="highlight"><pre><span></span><code><span class="nb">export</span><span class="w"> </span><span class="nv">H264_TILES</span><span class="o">=</span><span class="nb">true</span>
 <span class="nb">export</span><span class="w"> </span><span class="nv">H264_TILES_FPS</span><span class="o">=</span><span class="m">15</span>
+<span class="nb">export</span><span class="w"> </span><span class="nv">H264_TILES_TOPICS</span><span class="o">=</span><span class="s2">"camera/h264/tl camera/h264/tr camera/h264/bl camera/h264/br"</span>
 <span class="nb">export</span><span class="w"> </span><span class="nv">TRACY</span><span class="o">=</span><span class="nb">true</span>
 <span class="nb">export</span><span class="w"> </span><span class="nv">H264_BITRATE</span><span class="o">=</span>auto
 <span class="nb">export</span><span class="w"> </span><span class="nv">CAMERA_SIZE</span><span class="o">=</span><span class="s2">"3840 2160"</span>
 </code></pre></div>
-<p>The H264 tile topics environment variable is not available at this time.</p>
 <h3 id="usage-examples">Usage Examples</h3>
 <h4 id="basic-4k-tile-streaming">Basic 4K Tile Streaming</h4>
 <div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>camera<span class="w"> </span><span class="se">\</span>
@@ -2256,7 +2260,7 @@ sudo<span class="w"> </span>camera<span class="w"> </span>--h264-tiles<span clas
 <h4 id="custom-topic-configuration">Custom Topic Configuration</h4>
 <div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>camera<span class="w"> </span><span class="se">\</span>
 <span class="w">  </span>--h264-tiles<span class="w"> </span><span class="se">\</span>
-<span class="w">  </span>--h264-tiles-topics<span class="w"> </span>rt/camera/tl<span class="w"> </span>rt/camera/tr<span class="w"> </span>rt/camera/bl<span class="w"> </span>rt/camera/br<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--h264-tiles-topics<span class="w"> </span><span class="s2">"camera/tl camera/tr camera/bl camera/br"</span><span class="w"> </span><span class="se">\</span>
 <span class="w">  </span>--camera-size<span class="w"> </span><span class="m">3840</span><span class="w"> </span><span class="m">2160</span>
 </code></pre></div>
 <h4 id="high-performance-setup">High Performance Setup</h4>
@@ -2268,14 +2272,16 @@ sudo<span class="w"> </span>camera<span class="w"> </span>--h264-tiles<span clas
 <span class="w">  </span>--tracy<span class="w">  </span><span class="c1"># Enable profiling</span>
 </code></pre></div>
 <h2 id="systemd-configuration-file">SystemD Configuration file</h2>
-<p>You can add the above parameters to the camera configuration file located at <code>/etc/default/camera</code>. The following lines can be added to the configuration file:</p>
-<div class="highlight"><pre><span></span><code><span class="na">H264_TILES</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"true"</span>
-<span class="na">H264_TILES_FPS</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"15"</span>
-<span class="na">TRACY</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"true"</span>
+<p>You can set the above parameters in the camera configuration file located at <code>/etc/default/camera</code>, every key is present in the shipped file.  Set the following keys and restart the service with <code>sudo systemctl restart camera</code>:</p>
+<div class="highlight"><pre><span></span><code><span class="na">CAMERA_MODE</span><span class="o">=</span><span class="s">"4k"</span>
+<span class="na">CAMERA_SIZE</span><span class="o">=</span><span class="s">"3840 2160"</span>
+<span class="na">H264_TILES</span><span class="o">=</span><span class="s">"true"</span>
+<span class="na">H264_TILES_FPS</span><span class="o">=</span><span class="s">"15"</span>
+<span class="na">H264_TILES_TOPICS</span><span class="o">=</span><span class="s">"camera/h264/tl camera/h264/tr camera/h264/bl camera/h264/br"</span>
 </code></pre></div>
-<p>The parameters for <code>CAMERA_SIZE</code> and <code>H264_BITRATE</code> already exist in <code>/etc/default/camera</code>. The H264 tile topics parameter is not available at this time.</p>
+<p>The <code>H264_BITRATE</code> and <code>TRACY</code> parameters are also available in <code>/etc/default/camera</code>.  Refer to the <a href="../../../platforms/configuration/camera/#h264-4k-tiling">Camera Settings</a> page for the complete list.</p>
 <h2 id="web-ui-configuration">Web UI Configuration</h2>
-<p>There is no configuration item in the Web UI to specifically enable 4K tiling; however, you can set the <a href="../../../platforms/configuration/camera/#camera-size">Camera Size</a> to <code>3840 2160</code> to implicitly enter 4K tiling. As well, you can set the <a href="../../../platforms/configuration/camera/#h264-bitrate">H264 Bitrate</a> here as well. Lastly, it is recommended that you <a href="../../../platforms/configuration/camera/#h264-streaming">disable H264 streaming</a> to disable the 1K video stream <code>/camera/h264</code>.</p>
+<p>There is no configuration item in the Web UI to specifically enable 4K tiling or select the camera mode.  You can set the <a href="../../../platforms/configuration/camera/#camera-size">Camera Size</a> to <code>3840 2160</code> and the <a href="../../../platforms/configuration/camera/#h264-bitrate">H264 Bitrate</a> from the Camera Settings page, the <code>CAMERA_MODE</code> and <code>H264_TILES</code> keys must be set in the configuration file.  Once tiling is enabled the four tile topics replace the single <code>camera/h264</code> stream.</p>
 <h2 id="troubleshooting">Troubleshooting</h2>
 <h3 id="low-fps-warnings">Low <abbr title="Frames Per Second">FPS</abbr> Warnings</h3>
 <ul>
@@ -2290,7 +2296,8 @@ sudo<span class="w"> </span>camera<span class="w"> </span>--h264-tiles<span clas
 <li>Check bitrate settings  </li>
 <li>Verify G2D hardware support  </li>
 </ul>
-<h3 id="channel-full-errors">Channel Full Errors</h3>
+<h3 id="dropped-frames">Dropped Frames</h3>
+<p>The service log reports <code>dropped N of M frames (encoder channels full)</code> every 10 seconds along with the count per tile when the encoders cannot keep up.</p>
 <ul>
 <li>Reduce tile <abbr title="Frames Per Second">FPS</abbr> if encoding is slow  </li>
 <li>Increase system performance  </li>

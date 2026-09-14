@@ -1510,15 +1510,15 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#dma-buffer" class="md-nav__link">
+  <a href="#camera-frame" class="md-nav__link">
     <span class="md-ellipsis">
       
-        DMA Buffer
+        Camera Frame
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="DMA Buffer">
+    <nav class="md-nav" aria-label="Camera Frame">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -2299,15 +2299,15 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#dma-buffer" class="md-nav__link">
+  <a href="#camera-frame" class="md-nav__link">
     <span class="md-ellipsis">
       
-        DMA Buffer
+        Camera Frame
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="DMA Buffer">
+    <nav class="md-nav" aria-label="Camera Frame">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -2567,6 +2567,10 @@
 
 <h1 id="camera-schema-examples">Camera Schema Examples</h1>
 <p>These examples demonstrate how to connect to various camera topics published on your EdgeFirst Platform and how to display the information through the command line.</p>
+<div class="admonition tip">
+<p class="admonition-title">Topic Names</p>
+<p>The topics below are subscribed with their bare names, which requires the Zenoh session to be opened with the namespace set to the device hostname as shown in the <a href="../../#subscriber">Developer Guide</a>.  Subscribe with a <code>**/</code> prefix, for example <code>**/camera/h264</code>, to match the topics from a session without a namespace or from a remote device.</p>
+</div>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
 <p>If the Rerun live feed appears to lag, your computer may lack the processing necessary for that stream size, either reduce the <a href="../../../../platforms/configuration/camera/#stream-size">stream size</a> or use the --save argument to save it as a .rrd file which you can replay afterwards</p>
@@ -2580,16 +2584,16 @@ Sample Code: <a href="https://github.com/EdgeFirstAI/samples/blob/main/python/ca
 <div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="python" name="__tabbed_1" type="radio" /><input id="rust" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="python">Python</label><label for="rust">Rust</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="c1"># Create a subscriber for "rt/camera/info"</span>
+<div class="highlight"><pre><span></span><code><span class="c1"># Create a subscriber for "camera/info"</span>
 <span class="n">loop</span> <span class="o">=</span> <span class="n">asyncio</span><span class="o">.</span><span class="n">get_running_loop</span><span class="p">()</span>
 <span class="n">drain</span> <span class="o">=</span> <span class="n">MessageDrain</span><span class="p">(</span><span class="n">loop</span><span class="p">)</span>
-<span class="n">session</span><span class="o">.</span><span class="n">declare_subscriber</span><span class="p">(</span><span class="s1">'rt/camera/info'</span><span class="p">,</span> <span class="n">drain</span><span class="o">.</span><span class="n">callback</span><span class="p">)</span>
+<span class="n">session</span><span class="o">.</span><span class="n">declare_subscriber</span><span class="p">(</span><span class="s1">'camera/info'</span><span class="p">,</span> <span class="n">drain</span><span class="o">.</span><span class="n">callback</span><span class="p">)</span>
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="c1">// Create a subscriber for "rt/camera/info"</span>
+<div class="highlight"><pre><span></span><code><span class="c1">// Create a subscriber for "camera/info"</span>
 <span class="kd">let</span><span class="w"> </span><span class="n">subscriber</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">session</span>
-<span class="w">    </span><span class="p">.</span><span class="n">declare_subscriber</span><span class="p">(</span><span class="s">"rt/camera/info"</span><span class="p">)</span>
+<span class="w">    </span><span class="p">.</span><span class="n">declare_subscriber</span><span class="p">(</span><span class="s">"camera/info"</span><span class="p">)</span>
 <span class="w">    </span><span class="p">.</span><span class="k">await</span>
 <span class="w">    </span><span class="p">.</span><span class="n">unwrap</span><span class="p">();</span>
 </code></pre></div>
@@ -2654,29 +2658,33 @@ Sample Code: <a href="https://github.com/EdgeFirstAI/samples/blob/main/python/ca
 </div>
 </div>
 </div>
-<h2 id="dma-buffer"><abbr title="Direct Memory Access">DMA</abbr> Buffer</h2>
-<p>Topic: <a href="../../../topics/camera/#cameradma">/camera/dma</a><br />
-Message: <a href="../../../api/edgefirst_msgs/#dmabuffer">DmaBuffer</a><br />
+<h2 id="camera-frame">Camera Frame</h2>
+<p>Topic: <a href="../../../topics/camera/#cameraframe">/camera/frame</a><br />
+Message: <a href="../../../api/edgefirst_msgs/#cameraframe">CameraFrame</a><br />
 Sample Code: <a href="https://github.com/EdgeFirstAI/samples/blob/main/python/camera/dma.py">Python</a> / <a href="https://github.com/EdgeFirstAI/samples/blob/main/rust/camera/dma.rs">Rust</a>  </p>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
-<p>The <abbr title="Direct Memory Access">DMA</abbr> Buffer example is only functional when run directly on the EdgeFirst Platform as it is references information that is only accessible on the EdgeFirst Platform.</p>
+<p>The Camera Frame example is only functional when run directly on the EdgeFirst Platform as it references <abbr title="Direct Memory Access">DMA</abbr> buffers that are only accessible on the EdgeFirst Platform.  The example must run with the same permissions as the camera service, use <code>sudo</code>.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Migrating from DmaBuffer</p>
+<p>The <code>camera/frame</code> topic and its <code>CameraFrame</code> message replace the <code>camera/dma</code> topic and <code>DmaBuffer</code> message of earlier releases.  The published sample code predates this change, the snippets below show the equivalent processing with the <code>CameraFrame</code> message from EdgeFirst Schemas 4.0.</p>
 </div>
 <h3 id="setting-up-subscriber_1">Setting up subscriber</h3>
-<p>After setting up the Zenoh session, we will create a subscriber to the <code>camera/dma</code> topic</p>
+<p>After setting up the Zenoh session, we will create a subscriber to the <code>camera/frame</code> topic</p>
 <div class="tabbed-set tabbed-alternate" data-tabs="5:2"><input checked="checked" id="python_3" name="__tabbed_5" type="radio" /><input id="rust_3" name="__tabbed_5" type="radio" /><div class="tabbed-labels"><label for="python_3">Python</label><label for="rust_3">Rust</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="c1"># Create a subscriber for "rt/camera/dma"</span>
+<div class="highlight"><pre><span></span><code><span class="c1"># Create a subscriber for "camera/frame"</span>
 <span class="n">loop</span> <span class="o">=</span> <span class="n">asyncio</span><span class="o">.</span><span class="n">get_running_loop</span><span class="p">()</span>
 <span class="n">drain</span> <span class="o">=</span> <span class="n">MessageDrain</span><span class="p">(</span><span class="n">loop</span><span class="p">)</span>
-<span class="n">session</span><span class="o">.</span><span class="n">declare_subscriber</span><span class="p">(</span><span class="s1">'rt/camera/dma'</span><span class="p">,</span> <span class="n">drain</span><span class="o">.</span><span class="n">callback</span><span class="p">)</span>
+<span class="n">session</span><span class="o">.</span><span class="n">declare_subscriber</span><span class="p">(</span><span class="s1">'camera/frame'</span><span class="p">,</span> <span class="n">drain</span><span class="o">.</span><span class="n">callback</span><span class="p">)</span>
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="c1">// Create a subscriber for "rt/camera/dma"</span>
+<div class="highlight"><pre><span></span><code><span class="c1">// Create a subscriber for "camera/frame"</span>
 <span class="kd">let</span><span class="w"> </span><span class="n">subscriber</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">session</span>
-<span class="w">    </span><span class="p">.</span><span class="n">declare_subscriber</span><span class="p">(</span><span class="s">"rt/camera/dma"</span><span class="p">)</span>
+<span class="w">    </span><span class="p">.</span><span class="n">declare_subscriber</span><span class="p">(</span><span class="s">"camera/frame"</span><span class="p">)</span>
 <span class="w">    </span><span class="p">.</span><span class="k">await</span>
 <span class="w">    </span><span class="p">.</span><span class="n">unwrap</span><span class="p">();</span>
 </code></pre></div>
@@ -2688,10 +2696,10 @@ Sample Code: <a href="https://github.com/EdgeFirstAI/samples/blob/main/python/ca
 <div class="tabbed-set tabbed-alternate" data-tabs="6:2"><input checked="checked" id="python_4" name="__tabbed_6" type="radio" /><input id="rust_4" name="__tabbed_6" type="radio" /><div class="tabbed-labels"><label for="python_4">Python</label><label for="rust_4">Rust</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">dma_handler</span><span class="p">(</span><span class="n">drain</span><span class="p">):</span>
+<div class="highlight"><pre><span></span><code><span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">frame_handler</span><span class="p">(</span><span class="n">drain</span><span class="p">):</span>
     <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
         <span class="n">msg</span> <span class="o">=</span> <span class="k">await</span> <span class="n">drain</span><span class="o">.</span><span class="n">get_latest</span><span class="p">()</span>
-        <span class="n">thread</span> <span class="o">=</span> <span class="n">threading</span><span class="o">.</span><span class="n">Thread</span><span class="p">(</span><span class="n">target</span><span class="o">=</span><span class="n">dma_worker</span><span class="p">,</span> <span class="n">args</span><span class="o">=</span><span class="p">[</span><span class="n">msg</span><span class="p">])</span>
+        <span class="n">thread</span> <span class="o">=</span> <span class="n">threading</span><span class="o">.</span><span class="n">Thread</span><span class="p">(</span><span class="n">target</span><span class="o">=</span><span class="n">frame_worker</span><span class="p">,</span> <span class="n">args</span><span class="o">=</span><span class="p">[</span><span class="n">msg</span><span class="p">])</span>
         <span class="n">thread</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
         
         <span class="k">while</span> <span class="n">thread</span><span class="o">.</span><span class="n">is_alive</span><span class="p">():</span>
@@ -2700,68 +2708,96 @@ Sample Code: <a href="https://github.com/EdgeFirstAI/samples/blob/main/python/ca
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="k">use</span><span class="w"> </span><span class="n">edgefirst_schemas</span><span class="p">::</span><span class="n">edgefirst_msgs</span><span class="p">::</span><span class="n">DmaBuf</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><span class="k">use</span><span class="w"> </span><span class="n">edgefirst_schemas</span><span class="p">::</span><span class="n">edgefirst_msgs</span><span class="p">::</span><span class="n">CameraFrame</span><span class="p">;</span>
+
 <span class="c1">// Receive a message</span>
 <span class="kd">let</span><span class="w"> </span><span class="n">msg</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">subscriber</span><span class="p">.</span><span class="n">recv</span><span class="p">().</span><span class="n">unwrap</span><span class="p">();</span>
-<span class="kd">let</span><span class="w"> </span><span class="n">dma_buf</span><span class="p">:</span><span class="w"> </span><span class="nc">DmaBuf</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">cdr</span><span class="p">::</span><span class="n">deserialize</span><span class="p">(</span><span class="o">&amp;</span><span class="n">msg</span><span class="p">.</span><span class="n">payload</span><span class="p">().</span><span class="n">to_bytes</span><span class="p">()).</span><span class="n">unwrap</span><span class="p">();</span>
+<span class="kd">let</span><span class="w"> </span><span class="n">frame</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">CameraFrame</span><span class="p">::</span><span class="n">from_cdr</span><span class="p">(</span><span class="o">&amp;</span><span class="n">msg</span><span class="p">.</span><span class="n">payload</span><span class="p">().</span><span class="n">to_bytes</span><span class="p">()).</span><span class="n">unwrap</span><span class="p">();</span>
 </code></pre></div>
 </div>
 </div>
 </div>
 <h3 id="process-the-data_1">Process the Data</h3>
-<p>The DmaBuffer message contains the process ID of the service that created the <abbr title="Direct Memory Access">DMA</abbr> buffer and the file descriptor of the <abbr title="Direct Memory Access">DMA</abbr> buffer, both of which will be necessary to access the image.</p>
+<p>The <code>CameraFrame</code> message carries a stamped <code>Tensor</code>.  The tensor contains the process ID of the camera service, the image <code>format</code> as a FOURCC such as <code>NV12</code>, the <code>shape</code> as <code>[height, width]</code>, and one <code>TensorPlane</code> per plane with the file descriptor <code>handle</code>, <code>offset</code>, <code>stride</code>, <code>size</code>, and <code>used</code> length of the <abbr title="Direct Memory Access">DMA</abbr> buffer.  The process ID and the plane handle are necessary to access the image, the file descriptor is duplicated into our process with <code>pidfd_getfd</code> and mapped with <code>mmap</code>.</p>
+<p>The <abbr title="Image Signal Processor">ISP</abbr> produces <code>NV12</code> frames which carry two planes, the luma plane followed by the interleaved chroma plane.  Both planes reference the same <abbr title="Direct Memory Access">DMA</abbr> buffer so a single duplicated file descriptor covers the frame, and each plane is located within the buffer by its own <code>offset</code> and <code>used</code> length.  The buffer is mapped from its start rather than from the plane offset because <code>mmap</code> requires a page aligned offset, which the chroma plane offset generally is not.</p>
 <div class="tabbed-set tabbed-alternate" data-tabs="7:2"><input checked="checked" id="python_5" name="__tabbed_7" type="radio" /><input id="rust_5" name="__tabbed_7" type="radio" /><div class="tabbed-labels"><label for="python_5">Python</label><label for="rust_5">Rust</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">dma_worker</span><span class="p">(</span><span class="n">msg</span><span class="p">):</span>
-    <span class="n">dma_buf</span> <span class="o">=</span> <span class="n">DmaBuffer</span><span class="o">.</span><span class="n">deserialize</span><span class="p">(</span><span class="n">msg</span><span class="o">.</span><span class="n">payload</span><span class="o">.</span><span class="n">to_bytes</span><span class="p">())</span>
-    <span class="n">pidfd</span> <span class="o">=</span> <span class="n">pidfd_open</span><span class="p">(</span><span class="n">dma_buf</span><span class="o">.</span><span class="n">pid</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">edgefirst.schemas.edgefirst_msgs</span><span class="w"> </span><span class="kn">import</span> <span class="n">CameraFrame</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">frame_worker</span><span class="p">(</span><span class="n">msg</span><span class="p">):</span>
+    <span class="n">frame</span> <span class="o">=</span> <span class="n">CameraFrame</span><span class="o">.</span><span class="n">from_cdr</span><span class="p">(</span><span class="n">msg</span><span class="o">.</span><span class="n">payload</span><span class="o">.</span><span class="n">to_bytes</span><span class="p">())</span>
+    <span class="n">tensor</span> <span class="o">=</span> <span class="n">frame</span><span class="o">.</span><span class="n">tensor</span>
+    <span class="n">height</span><span class="p">,</span> <span class="n">width</span> <span class="o">=</span> <span class="n">tensor</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">tensor</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+
+    <span class="n">pidfd</span> <span class="o">=</span> <span class="n">pidfd_open</span><span class="p">(</span><span class="n">tensor</span><span class="o">.</span><span class="n">pid</span><span class="p">)</span>
     <span class="k">if</span> <span class="n">pidfd</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">:</span>
         <span class="k">return</span>
 
-    <span class="n">fd</span> <span class="o">=</span> <span class="n">pidfd_getfd</span><span class="p">(</span><span class="n">pidfd</span><span class="p">,</span> <span class="n">dma_buf</span><span class="o">.</span><span class="n">fd</span><span class="p">,</span> <span class="n">GETFD_FLAGS</span><span class="p">)</span>
+    <span class="c1"># All planes of the frame share one DMA buffer, so the handle of the</span>
+    <span class="c1"># first plane is enough to reach the whole frame.</span>
+    <span class="n">fd</span> <span class="o">=</span> <span class="n">pidfd_getfd</span><span class="p">(</span><span class="n">pidfd</span><span class="p">,</span> <span class="n">tensor</span><span class="o">.</span><span class="n">planes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">handle</span><span class="p">,</span> <span class="n">GETFD_FLAGS</span><span class="p">)</span>
     <span class="k">if</span> <span class="n">fd</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">:</span>
         <span class="k">return</span>
 
-    <span class="c1"># Now fd can be used as a file descriptor</span>
-    <span class="n">mm</span> <span class="o">=</span> <span class="n">mmap</span><span class="o">.</span><span class="n">mmap</span><span class="p">(</span><span class="n">fd</span><span class="p">,</span> <span class="n">dma_buf</span><span class="o">.</span><span class="n">length</span><span class="p">)</span>
-    <span class="n">rr</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="s2">"/camera"</span><span class="p">,</span> <span class="n">rr</span><span class="o">.</span><span class="n">Image</span><span class="p">(</span><span class="nb">bytes</span><span class="o">=</span><span class="n">mm</span><span class="p">[:],</span> 
-                                <span class="n">width</span><span class="o">=</span><span class="n">dma_buf</span><span class="o">.</span><span class="n">width</span><span class="p">,</span> 
-                                <span class="n">height</span><span class="o">=</span><span class="n">dma_buf</span><span class="o">.</span><span class="n">height</span><span class="p">,</span> 
-                                <span class="n">pixel_format</span><span class="o">=</span><span class="n">rr</span><span class="o">.</span><span class="n">PixelFormat</span><span class="o">.</span><span class="n">YUY2</span><span class="p">))</span>
+    <span class="c1"># Map the buffer from its start and copy each plane out of the mapping</span>
+    <span class="c1"># to assemble the complete NV12 frame.</span>
+    <span class="n">length</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">p</span><span class="o">.</span><span class="n">offset</span> <span class="o">+</span> <span class="n">p</span><span class="o">.</span><span class="n">size</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">tensor</span><span class="o">.</span><span class="n">planes</span><span class="p">)</span>
+    <span class="n">mm</span> <span class="o">=</span> <span class="n">mmap</span><span class="o">.</span><span class="n">mmap</span><span class="p">(</span><span class="n">fd</span><span class="p">,</span> <span class="n">length</span><span class="p">,</span> <span class="n">offset</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+    <span class="n">nv12</span> <span class="o">=</span> <span class="sa">b</span><span class="s2">""</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">mm</span><span class="p">[</span><span class="n">p</span><span class="o">.</span><span class="n">offset</span><span class="p">:</span><span class="n">p</span><span class="o">.</span><span class="n">offset</span> <span class="o">+</span> <span class="n">p</span><span class="o">.</span><span class="n">used</span><span class="p">]</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">tensor</span><span class="o">.</span><span class="n">planes</span><span class="p">)</span>
+    <span class="n">rr</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="s2">"/camera"</span><span class="p">,</span> <span class="n">rr</span><span class="o">.</span><span class="n">Image</span><span class="p">(</span><span class="nb">bytes</span><span class="o">=</span><span class="n">nv12</span><span class="p">,</span>
+                                <span class="n">width</span><span class="o">=</span><span class="n">width</span><span class="p">,</span>
+                                <span class="n">height</span><span class="o">=</span><span class="n">height</span><span class="p">,</span>
+                                <span class="n">pixel_format</span><span class="o">=</span><span class="n">rr</span><span class="o">.</span><span class="n">PixelFormat</span><span class="o">.</span><span class="n">NV12</span><span class="p">))</span>
     <span class="n">mm</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
     <span class="n">os</span><span class="o">.</span><span class="n">close</span><span class="p">(</span><span class="n">fd</span><span class="p">)</span>
     <span class="n">os</span><span class="o">.</span><span class="n">close</span><span class="p">(</span><span class="n">pidfd</span><span class="p">)</span>
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="kd">let</span><span class="w"> </span><span class="n">pidfd</span><span class="p">:</span><span class="w"> </span><span class="nc">PidFd</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">match</span><span class="w"> </span><span class="n">PidFd</span><span class="p">::</span><span class="n">from_pid</span><span class="p">(</span><span class="n">dma_buf</span><span class="p">.</span><span class="n">pid</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="kt">i32</span><span class="p">)</span>
-<span class="kd">let</span><span class="w"> </span><span class="n">fd</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">match</span><span class="w"> </span><span class="n">get_file_from_pidfd</span><span class="p">(</span><span class="n">pidfd</span><span class="p">.</span><span class="n">as_raw_fd</span><span class="p">(),</span><span class="w"> </span><span class="n">dma_buf</span><span class="p">.</span><span class="n">fd</span><span class="p">,</span><span class="w"> </span><span class="n">GetFdFlags</span><span class="p">::</span><span class="n">empty</span><span class="p">())</span>
+<div class="highlight"><pre><span></span><code><span class="kd">let</span><span class="w"> </span><span class="n">tensor</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">frame</span><span class="p">.</span><span class="n">tensor</span><span class="p">();</span>
+<span class="kd">let</span><span class="w"> </span><span class="n">planes</span><span class="p">:</span><span class="w"> </span><span class="nb">Vec</span><span class="o">&lt;</span><span class="n">_</span><span class="o">&gt;</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">tensor</span><span class="p">.</span><span class="n">planes</span><span class="p">().</span><span class="n">collect</span><span class="p">();</span>
+<span class="kd">let</span><span class="w"> </span><span class="p">(</span><span class="n">height</span><span class="p">,</span><span class="w"> </span><span class="n">width</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">tensor</span><span class="p">.</span><span class="n">shape</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="kt">u32</span><span class="p">,</span><span class="w"> </span><span class="n">tensor</span><span class="p">.</span><span class="n">shape</span><span class="p">()[</span><span class="mi">1</span><span class="p">]</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="kt">u32</span><span class="p">);</span>
 
-<span class="c1">// YUYV has 2 bytes per pixel.</span>
-<span class="kd">let</span><span class="w"> </span><span class="n">image_size</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">dma_buf</span><span class="p">.</span><span class="n">width</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">dma_buf</span><span class="p">.</span><span class="n">height</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">2</span><span class="p">)</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="kt">usize</span><span class="p">;</span>
+<span class="kd">let</span><span class="w"> </span><span class="n">pidfd</span><span class="p">:</span><span class="w"> </span><span class="nc">PidFd</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">match</span><span class="w"> </span><span class="n">PidFd</span><span class="p">::</span><span class="n">from_pid</span><span class="p">(</span><span class="n">tensor</span><span class="p">.</span><span class="n">pid</span><span class="p">()</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="kt">i32</span><span class="p">)</span>
+<span class="kd">let</span><span class="w"> </span><span class="n">fd</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">match</span><span class="w"> </span><span class="n">get_file_from_pidfd</span><span class="p">(</span><span class="n">pidfd</span><span class="p">.</span><span class="n">as_raw_fd</span><span class="p">(),</span><span class="w"> </span><span class="n">planes</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="n">handle</span><span class="p">()</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="kt">i32</span><span class="p">,</span><span class="w"> </span><span class="n">GetFdFlags</span><span class="p">::</span><span class="n">empty</span><span class="p">())</span>
+
+<span class="c1">// Map the buffer from its start, the plane offsets are not page aligned.</span>
+<span class="kd">let</span><span class="w"> </span><span class="n">buffer_size</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">planes</span>
+<span class="w">    </span><span class="p">.</span><span class="n">iter</span><span class="p">()</span>
+<span class="w">    </span><span class="p">.</span><span class="n">map</span><span class="p">(</span><span class="o">|</span><span class="n">plane</span><span class="o">|</span><span class="w"> </span><span class="n">plane</span><span class="p">.</span><span class="n">offset</span><span class="p">()</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="kt">usize</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">plane</span><span class="p">.</span><span class="n">size</span><span class="p">()</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="kt">usize</span><span class="p">)</span>
+<span class="w">    </span><span class="p">.</span><span class="n">max</span><span class="p">()</span>
+<span class="w">    </span><span class="p">.</span><span class="n">unwrap</span><span class="p">();</span>
 <span class="kd">let</span><span class="w"> </span><span class="n">mmap</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">unsafe</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="n">from_raw_parts_mut</span><span class="p">(</span>
 <span class="w">        </span><span class="n">mmap</span><span class="p">(</span>
 <span class="w">            </span><span class="n">null_mut</span><span class="p">(),</span>
-<span class="w">            </span><span class="n">image_size</span><span class="p">,</span>
-<span class="w">            </span><span class="n">PROT_READ</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">PROT_WRITE</span><span class="p">,</span>
+<span class="w">            </span><span class="n">buffer_size</span><span class="p">,</span>
+<span class="w">            </span><span class="n">PROT_READ</span><span class="p">,</span>
 <span class="w">            </span><span class="n">MAP_SHARED</span><span class="p">,</span>
 <span class="w">            </span><span class="n">fd</span><span class="p">.</span><span class="n">as_raw_fd</span><span class="p">(),</span>
 <span class="w">            </span><span class="mi">0</span><span class="p">,</span>
 <span class="w">        </span><span class="p">)</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="o">*</span><span class="k">mut</span><span class="w"> </span><span class="kt">u8</span><span class="p">,</span>
-<span class="w">        </span><span class="n">image_size</span><span class="p">,</span>
+<span class="w">        </span><span class="n">buffer_size</span><span class="p">,</span>
 <span class="w">    </span><span class="p">)</span>
 <span class="p">};</span>
+<span class="c1">// Copy each plane out of the mapping to assemble the complete NV12 frame.</span>
+<span class="kd">let</span><span class="w"> </span><span class="n">nv12</span><span class="p">:</span><span class="w"> </span><span class="nb">Vec</span><span class="o">&lt;</span><span class="kt">u8</span><span class="o">&gt;</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">planes</span>
+<span class="w">    </span><span class="p">.</span><span class="n">iter</span><span class="p">()</span>
+<span class="w">    </span><span class="p">.</span><span class="n">flat_map</span><span class="p">(</span><span class="o">|</span><span class="n">plane</span><span class="o">|</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="kd">let</span><span class="w"> </span><span class="n">start</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">plane</span><span class="p">.</span><span class="n">offset</span><span class="p">()</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="kt">usize</span><span class="p">;</span>
+<span class="w">        </span><span class="n">mmap</span><span class="p">[</span><span class="n">start</span><span class="o">..</span><span class="n">start</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">plane</span><span class="p">.</span><span class="n">used</span><span class="p">()</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="kt">usize</span><span class="p">].</span><span class="n">to_vec</span><span class="p">()</span>
+<span class="w">    </span><span class="p">})</span>
+<span class="w">    </span><span class="p">.</span><span class="n">collect</span><span class="p">();</span>
 <span class="kd">let</span><span class="w"> </span><span class="n">rr_image</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">rerun</span><span class="p">::</span><span class="n">Image</span><span class="p">::</span><span class="n">from_pixel_format</span><span class="p">(</span>
-<span class="w">    </span><span class="p">[</span><span class="n">dma_buf</span><span class="p">.</span><span class="n">width</span><span class="p">,</span><span class="w"> </span><span class="n">dma_buf</span><span class="p">.</span><span class="n">height</span><span class="p">],</span>
-<span class="w">    </span><span class="n">rerun</span><span class="p">::</span><span class="n">PixelFormat</span><span class="p">::</span><span class="n">YUY2</span><span class="p">,</span>
-<span class="w">    </span><span class="n">mmap</span><span class="p">.</span><span class="n">to_vec</span><span class="p">(),</span>
+<span class="w">    </span><span class="p">[</span><span class="n">width</span><span class="p">,</span><span class="w"> </span><span class="n">height</span><span class="p">],</span>
+<span class="w">    </span><span class="n">rerun</span><span class="p">::</span><span class="n">PixelFormat</span><span class="p">::</span><span class="n">NV12</span><span class="p">,</span>
+<span class="w">    </span><span class="n">nv12</span><span class="p">,</span>
 <span class="p">);</span>
-<span class="kd">let</span><span class="w"> </span><span class="n">_</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">rec</span><span class="p">.</span><span class="n">log</span><span class="p">(</span><span class="s">"camera/dma"</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">rr_image</span><span class="p">);</span>
+<span class="kd">let</span><span class="w"> </span><span class="n">_</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">rec</span><span class="p">.</span><span class="n">log</span><span class="p">(</span><span class="s">"camera/frame"</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">rr_image</span><span class="p">);</span>
 
 <span class="k">unsafe</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="n">munmap</span><span class="p">(</span><span class="n">mmap</span><span class="p">.</span><span class="n">as_mut_ptr</span><span class="p">()</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="o">*</span><span class="k">mut</span><span class="w"> </span><span class="n">c_void</span><span class="p">,</span><span class="w"> </span><span class="n">image_size</span><span class="p">);</span>
+<span class="w">    </span><span class="n">munmap</span><span class="p">(</span><span class="n">mmap</span><span class="p">.</span><span class="n">as_mut_ptr</span><span class="p">()</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="o">*</span><span class="k">mut</span><span class="w"> </span><span class="n">c_void</span><span class="p">,</span><span class="w"> </span><span class="n">buffer_size</span><span class="p">);</span>
 <span class="p">}</span>
 </code></pre></div>
 </div>
@@ -2782,17 +2818,17 @@ Sample Code: <a href="https://github.com/EdgeFirstAI/samples/blob/main/python/ca
 <div class="tabbed-set tabbed-alternate" data-tabs="8:2"><input checked="checked" id="python_6" name="__tabbed_8" type="radio" /><input id="rust_6" name="__tabbed_8" type="radio" /><div class="tabbed-labels"><label for="python_6">Python</label><label for="rust_6">Rust</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="c1"># Create a subscriber for "rt/camera/h264"</span>
+<div class="highlight"><pre><span></span><code><span class="c1"># Create a subscriber for "camera/h264"</span>
 <span class="n">loop</span> <span class="o">=</span> <span class="n">asyncio</span><span class="o">.</span><span class="n">get_running_loop</span><span class="p">()</span>
 <span class="n">drain</span> <span class="o">=</span> <span class="n">MessageDrain</span><span class="p">(</span><span class="n">loop</span><span class="p">)</span>
-<span class="n">session</span><span class="o">.</span><span class="n">declare_subscriber</span><span class="p">(</span><span class="s1">'rt/camera/h264'</span><span class="p">,</span> <span class="n">drain</span><span class="o">.</span><span class="n">callback</span><span class="p">)</span>
+<span class="n">session</span><span class="o">.</span><span class="n">declare_subscriber</span><span class="p">(</span><span class="s1">'camera/h264'</span><span class="p">,</span> <span class="n">drain</span><span class="o">.</span><span class="n">callback</span><span class="p">)</span>
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="c1">// Create a subscriber for "rt/camera/h264"</span>
+<div class="highlight"><pre><span></span><code><span class="c1">// Create a subscriber for "camera/h264"</span>
 <span class="k">use</span><span class="w"> </span><span class="n">openh264</span><span class="p">::</span><span class="n">decoder</span><span class="p">::</span><span class="n">Decoder</span><span class="p">;</span>
 <span class="kd">let</span><span class="w"> </span><span class="n">subscriber</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">session</span>
-<span class="w">    </span><span class="p">.</span><span class="n">declare_subscriber</span><span class="p">(</span><span class="s">"rt/camera/h264"</span><span class="p">)</span>
+<span class="w">    </span><span class="p">.</span><span class="n">declare_subscriber</span><span class="p">(</span><span class="s">"camera/h264"</span><span class="p">)</span>
 <span class="w">    </span><span class="p">.</span><span class="k">await</span>
 <span class="w">    </span><span class="p">.</span><span class="n">unwrap</span><span class="p">();</span>
 <span class="kd">let</span><span class="w"> </span><span class="k">mut</span><span class="w"> </span><span class="n">decoder</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Decoder</span><span class="p">::</span><span class="n">new</span><span class="p">()</span><span class="o">?</span><span class="p">;</span>
@@ -2882,16 +2918,16 @@ Sample Code: <a href="https://github.com/EdgeFirstAI/samples/blob/main/python/ca
 <div class="tabbed-set tabbed-alternate" data-tabs="11:2"><input checked="checked" id="python_9" name="__tabbed_11" type="radio" /><input id="rust_9" name="__tabbed_11" type="radio" /><div class="tabbed-labels"><label for="python_9">Python</label><label for="rust_9">Rust</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="c1"># Create a subscriber for "rt/camera/jpeg"</span>
+<div class="highlight"><pre><span></span><code><span class="c1"># Create a subscriber for "camera/jpeg"</span>
 <span class="n">loop</span> <span class="o">=</span> <span class="n">asyncio</span><span class="o">.</span><span class="n">get_running_loop</span><span class="p">()</span>
 <span class="n">drain</span> <span class="o">=</span> <span class="n">MessageDrain</span><span class="p">(</span><span class="n">loop</span><span class="p">)</span>
-<span class="n">session</span><span class="o">.</span><span class="n">declare_subscriber</span><span class="p">(</span><span class="s1">'rt/camera/jpeg'</span><span class="p">,</span> <span class="n">drain</span><span class="o">.</span><span class="n">callback</span><span class="p">)</span>
+<span class="n">session</span><span class="o">.</span><span class="n">declare_subscriber</span><span class="p">(</span><span class="s1">'camera/jpeg'</span><span class="p">,</span> <span class="n">drain</span><span class="o">.</span><span class="n">callback</span><span class="p">)</span>
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="c1">// Create a subscriber for "rt/camera/jpeg"</span>
+<div class="highlight"><pre><span></span><code><span class="c1">// Create a subscriber for "camera/jpeg"</span>
 <span class="kd">let</span><span class="w"> </span><span class="n">subscriber</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">session</span>
-<span class="w">    </span><span class="p">.</span><span class="n">declare_subscriber</span><span class="p">(</span><span class="s">"rt/camera/jpeg"</span><span class="p">)</span>
+<span class="w">    </span><span class="p">.</span><span class="n">declare_subscriber</span><span class="p">(</span><span class="s">"camera/jpeg"</span><span class="p">)</span>
 <span class="w">    </span><span class="p">.</span><span class="k">await</span>
 <span class="w">    </span><span class="p">.</span><span class="n">unwrap</span><span class="p">();</span>
 </code></pre></div>

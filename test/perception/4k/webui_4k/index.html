@@ -2355,12 +2355,12 @@
 <p>Of specific note:  the following is a "behind the scenes" view of how the Web UI manages the 4K outputs from the camera service automatically.  There are no actions the user needs to take to configure the Web UI service to accept 4K video output from the camera service.</p>
 <h2 id="4k-tiling-system">4K Tiling System</h2>
 <h3 id="how-it-works">How It Works</h3>
-<p>The system attempts to stream 4K video by splitting it into 4 separate 1080p tiles:</p>
+<p>The browser receives the topics from the web server over WebSocket endpoints under <code>/api/rt/</code>, the web server maps each endpoint to the bare topic inside the device <a href="../../topics/#hostname-namespaces">hostname namespace</a>.  The system attempts to stream 4K video by splitting it into 4 separate 1080p tiles:</p>
 <ul>
-<li><strong>Top Left (TL)</strong>: <code>/rt/camera/h264/tl</code> - 1920x1080</li>
-<li><strong>Top Right (TR)</strong>: <code>/rt/camera/h264/tr</code> - 1920x1080  </li>
-<li><strong>Bottom Left (BL)</strong>: <code>/rt/camera/h264/bl</code> - 1920x1080</li>
-<li><strong>Bottom Right (BR)</strong>: <code>/rt/camera/h264/br</code> - 1920x1080</li>
+<li><strong>Top Left (TL)</strong>: <code>/api/rt/camera/h264/tl</code> - 1920x1080</li>
+<li><strong>Top Right (TR)</strong>: <code>/api/rt/camera/h264/tr</code> - 1920x1080  </li>
+<li><strong>Bottom Left (BL)</strong>: <code>/api/rt/camera/h264/bl</code> - 1920x1080</li>
+<li><strong>Bottom Right (BR)</strong>: <code>/api/rt/camera/h264/br</code> - 1920x1080</li>
 </ul>
 <p>These tiles are then merged into a single 4K canvas (3840x2160) for display.</p>
 <h3 id="tile-detection-process">Tile Detection Process</h3>
@@ -2389,7 +2389,7 @@
 </ol>
 <h3 id="fallback-behavior">Fallback Behavior</h3>
 <ul>
-<li><strong>Single Stream</strong>: Uses <code>/rt/camera/h264</code> endpoint</li>
+<li><strong>Single Stream</strong>: Uses <code>/api/rt/camera/h264</code> endpoint</li>
 <li><strong>Resolution</strong>: 1920x1080 (standard HD)</li>
 <li><strong>Performance</strong>: Lower resource usage, more stable</li>
 <li><strong>Quality</strong>: Good quality but not 4K</li>
@@ -2409,12 +2409,12 @@
 </code></pre></div>
 <h3 id="tile-urls">Tile URLs</h3>
 <div class="highlight"><pre><span></span><code><span class="k">this</span><span class="p">.</span><span class="nx">tileUrls</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span>
-<span class="w">    </span><span class="s1">'/rt/camera/h264/tl'</span><span class="p">,</span><span class="w">  </span><span class="c1">// Top Left</span>
-<span class="w">    </span><span class="s1">'/rt/camera/h264/tr'</span><span class="p">,</span><span class="w">  </span><span class="c1">// Top Right</span>
-<span class="w">    </span><span class="s1">'/rt/camera/h264/bl'</span><span class="p">,</span><span class="w">  </span><span class="c1">// Bottom Left</span>
-<span class="w">    </span><span class="s1">'/rt/camera/h264/br'</span><span class="w">   </span><span class="c1">// Bottom Right</span>
+<span class="w">    </span><span class="s1">'/api/rt/camera/h264/tl'</span><span class="p">,</span><span class="w">  </span><span class="c1">// Top Left</span>
+<span class="w">    </span><span class="s1">'/api/rt/camera/h264/tr'</span><span class="p">,</span><span class="w">  </span><span class="c1">// Top Right</span>
+<span class="w">    </span><span class="s1">'/api/rt/camera/h264/bl'</span><span class="p">,</span><span class="w">  </span><span class="c1">// Bottom Left</span>
+<span class="w">    </span><span class="s1">'/api/rt/camera/h264/br'</span><span class="w">   </span><span class="c1">// Bottom Right</span>
 <span class="p">];</span>
-<span class="k">this</span><span class="p">.</span><span class="nx">fallbackUrl</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">'/rt/camera/h264'</span><span class="p">;</span>
+<span class="k">this</span><span class="p">.</span><span class="nx">fallbackUrl</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">'/api/rt/camera/h264'</span><span class="p">;</span>
 </code></pre></div>
 <h2 id="usage">Usage</h2>
 <h3 id="basic-implementation">Basic Implementation</h3>

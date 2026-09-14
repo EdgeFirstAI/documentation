@@ -1,6 +1,14 @@
 # MobileNet SSD Examples
 
+!!! warning "Legacy Example"
+
+    The publisher part of this example subscribes to the camera frames through the `camera/dma` topic and `DmaBuffer` message and publishes detections on `model/boxes2d`, both of which predate Torizon for Maivin 2026.08.  On the current release the camera frames are published as [`camera/frame`](../../topics/camera.md#cameraframe) messages inside the device [hostname namespace](../../topics/index.md#hostname-namespaces), the [Camera Frame example](camera.md#camera-frame) shows the updated frame access and the [Model Settings](../../../platforms/configuration/model.md#topics) describe the legacy topics.  The single image inference part of the example is unaffected.
+
 These examples demonstrate how to deploy a MobileNet SSD V1 model using the NPU of an embedded platform such as a [Maivin](../../../platforms/quickstart/maivin/index.md).  The examples below are split into two parts; model inference on a single image and a model inference publisher. These examples have been tested on the TFLite files found in [this SSD-TFLite repository](https://github.com/apivovarov/ssd-tflite/tree/master), and in [ML-Zoo](https://github.com/Arm-Examples/ML-zoo/tree/master/models/object_detection/ssd_mobilenet_v1).  
+
+!!! tip "Topic Names"
+
+    The topics below are subscribed with their bare names, which requires the Zenoh session to be opened with the namespace set to the device hostname as shown in the [Developer Guide](../index.md#subscriber).  Subscribe with a `**/` prefix, for example `**/camera/h264`, to match the topics from a session without a namespace or from a remote device.
 
 !!! note
     In a future release of the EdgeFirst middleware, the Model Service will be able to run MobileNet SSD V1 models natively, again, testing on the above examples.
@@ -184,7 +192,7 @@ This script is required to run on the target as it will use the DMA Buffer topic
     * the `--threshold` argument will set the score threshold for a box to be published by the server.  
     * the `--shape` argument is the input height,width of the model, comma delimited.  
 
-3. The `/rt/model/boxes2d` topic will now be published once again and can be subscribed to by any other example.
+3. The `model/boxes2d` topic will now be published once again and can be subscribed to by any other example.
 
 Once you disable the server, you should restart the model service with the following command.
 

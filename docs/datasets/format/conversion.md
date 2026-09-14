@@ -149,7 +149,7 @@ result = duckdb.sql("""
 | `category_frequency` | `category_frequency` | Same in both formats (`"f"`, `"c"`, `"r"`) |
 | `neg_label_indices` | `neg_label_indices` | Arrow: `List<UInt32>`; JSON: array of integers |
 | `not_exhaustive_label_indices` | `not_exhaustive_label_indices` | Arrow: `List<UInt32>`; JSON: array of integers |
-| `pose` | `sensors.imu` | Arrow: `[yaw, pitch, roll]`; JSON: `{yaw, pitch, roll}` object |
+| `pose` | `sensors.imu` | Arrow: `[roll, pitch, yaw]`; JSON: `{roll, pitch, yaw}` object |
 | `location` | `sensors.gps` | Arrow: `[lat, lon]`; JSON: `{latitude, longitude}` object |
 
 File-level metadata keys (`mask_interpretation`, `category_metadata`, `box2d_format`, etc.)
@@ -245,7 +245,7 @@ df.write_ipc("annotations.arrow")       # Arrow IPC
 | 5 | **Box2D**: check `box2d_format` — convert `ltwh` to `cxcywh` if needed | JSON to DataFrame |
 | 6 | **Box3D**: `{x,y,z,w,h,l}` to `[cx,cy,cz,w,h,l]` | JSON to DataFrame |
 | 7 | **GPS**: `{latitude, longitude}` to `[lat, lon]` | JSON to DataFrame |
-| 8 | **IMU**: `{yaw, pitch, roll}` to `[yaw, pitch, roll]` | JSON to DataFrame |
+| 8 | **IMU**: `{roll, pitch, yaw}` to `[roll, pitch, yaw]` | JSON to DataFrame |
 | 9 | **Score columns**: omit entirely for ground truth files | Both |
 | 10 | **`neg_label_indices`** / **`not_exhaustive_label_indices`**: sample-level, repeated per annotation row | JSON to DataFrame |
 | 11 | **`label_index`**: preserved as-is (source-faithful, non-contiguous) | Both |

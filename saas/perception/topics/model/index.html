@@ -1427,32 +1427,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#modelboxes2d" class="md-nav__link">
+  <a href="#modeloutput" class="md-nav__link">
     <span class="md-ellipsis">
       
-        /model/boxes2d
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#modelmask" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        /model/mask
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#modelmask_compressed" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        /model/mask_compressed
+        model/output
       
     </span>
   </a>
@@ -1463,7 +1441,7 @@
   <a href="#modelinfo" class="md-nav__link">
     <span class="md-ellipsis">
       
-        /model/info
+        model/info
       
     </span>
   </a>
@@ -1474,10 +1452,49 @@
   <a href="#modelvisualization" class="md-nav__link">
     <span class="md-ellipsis">
       
-        /model/visualization
+        model/visualization
       
     </span>
   </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#legacy-topics" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Legacy Topics
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Legacy Topics">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#modelboxes2d" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        model/boxes2d
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#modelmask" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        model/mask
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -1911,32 +1928,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#modelboxes2d" class="md-nav__link">
+  <a href="#modeloutput" class="md-nav__link">
     <span class="md-ellipsis">
       
-        /model/boxes2d
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#modelmask" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        /model/mask
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#modelmask_compressed" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        /model/mask_compressed
+        model/output
       
     </span>
   </a>
@@ -1947,7 +1942,7 @@
   <a href="#modelinfo" class="md-nav__link">
     <span class="md-ellipsis">
       
-        /model/info
+        model/info
       
     </span>
   </a>
@@ -1958,10 +1953,49 @@
   <a href="#modelvisualization" class="md-nav__link">
     <span class="md-ellipsis">
       
-        /model/visualization
+        model/visualization
       
     </span>
   </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#legacy-topics" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Legacy Topics
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Legacy Topics">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#modelboxes2d" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        model/boxes2d
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#modelmask" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        model/mask
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -2032,33 +2066,59 @@
 
 
 <h1 id="model-topics">Model Topics</h1>
-<p>The model topics are managed by the <code>model</code> service and handles running vision machine learning models.  The service supports object detection and segmentation tasks.</p>
+<p>The model topics are managed by the <code>model</code> service and handles running vision machine learning models on the camera frames.  The service supports object detection and segmentation tasks.</p>
 <ul>
-<li>RTM models<ul>
+<li>TensorFlow Lite models on the <abbr title="Neural Processing Unit">NPU</abbr> through a delegate, or on the CPU<ul>
 <li>Object Detection</li>
-<li>Segmentation</li>
+<li>Instance and Semantic Segmentation</li>
 </ul>
 </li>
+<li>ModelPack, Ultralytics <abbr title="You Only Look Once">YOLO</abbr>, and EdgeFirst Model Zoo models with the embedded EdgeFirst configuration</li>
 <li>ByteTrack tracking</li>
 </ul>
-<p>The model topics are published under the <code>/model</code> namespace and offers the following sub-topics: <code>/model/boxes2d</code>, <code>/model/mask</code>, <code>/model/mask_compressed</code>, <code>/model/info</code>, <code>/model/visualization</code>. Tracking parameters are configurable through the <code>model</code> service. See model service configuration documentation for details.</p>
-<h2 id="modelboxes2d">/model/boxes2d</h2>
-<p>The <code>/model/boxes2d</code> topic publishes information about the detected objects using the custom <a href="../../api/edgefirst_msgs/#detect">Detect</a> schema. Each detect message contains information about the model timing, and a list of objects detected. Each object detected has the normalized bounding box coordinates, label, score, distance, speed, and tracking information included. The distance and speed are 0 when the values cannot be determined. When tracking is enabled, the track ID is a UUID string, and the lifetime represents how many times this track was seen.</p>
-<p>The XYZ coordinate system follows the <a href="https://www.ros.org/reps/rep-0103.html#coordinate-frame-conventions">standard ROS convention</a> for <code>_optical</code> frames of z forward, x right, y down.</p>
-<p>This topic is only published if the model service is configured with a model that outputs object detection.</p>
-<h2 id="modelmask">/model/mask</h2>
-<p>The <code>/model/mask</code> topic publishes information about segmentation masks using the custom <a href="../../api/edgefirst_msgs/#mask">Mask</a> schema. Each mask message has the width, height, and length of the mask message. The messages on <code>/model/mask</code> are uncompressed and the encoding is an empty string. This topic is recommended to be consumed by other services on the device to save compression and decompression time.</p>
-<p>The XYZ coordinate system follows the <a href="https://www.ros.org/reps/rep-0103.html#coordinate-frame-conventions">standard ROS convention</a> for <code>_optical</code> frames of z forward, x right, y down.</p>
-<p>This topic is only published if the model service is configured with a model that outputs segmentation.</p>
-<h2 id="modelmask_compressed">/model/mask_compressed</h2>
-<p>The <code>/model/mask_compressed</code> topic publishes information about segmentation masks using the custom <a href="../../api/edgefirst_msgs/#mask">Mask</a> schema. Each mask message has the width, height, and length of the mask message. The messages on <code>/model/mask_compressed</code> are compressed and the encoding is <code>zstd</code>. This topic is recommended to be consumed by services that are operating over the network to reduce network bandwidth requirements. This topic will be delayed by the time it takes the service to compress the mask.</p>
-<p>The XYZ coordinate system follows the <a href="https://www.ros.org/reps/rep-0103.html#coordinate-frame-conventions">standard ROS convention</a> for <code>_optical</code> frames of z forward, x right, y down.</p>
-<p>This topic is only published if the model service is configured to enable compression and configured with a model that outputs segmentation.</p>
-<h2 id="modelinfo">/model/info</h2>
-<p>The <code>/model/info</code> topic publishes information about the current model configuration. It describes shape and type of the input and output tensors, the labels of the model, the tasks the model supports, the format of the model, and the name of the model.</p>
-<h2 id="modelvisualization">/model/visualization</h2>
-<p>The <code>/model/visualization</code> topic publishes information about the detected objects using the <a href="../../api/foxglove_msgs/#imageannotations">ImageAnnotations</a> schema. This message contains text and line annotations which will draw boxes and labels in Foxglove. This message is intended only for help visualizing the detection results in Foxglove without needed the EdgeFirst Detect plugin.</p>
-<p>This topic is only published if the model service is configured to enable visualization and configured with a model that outputs object detection.</p>
+<p>The model service subscribes to the <a href="../camera/#cameraframe">camera frames</a> and publishes its results under the <code>model</code> namespace on the following sub-topics: <code>model/output</code>, <code>model/info</code>, and optionally <code>model/visualization</code>.  The legacy <code>model/boxes2d</code> and <code>model/mask</code> topics can be re-enabled through configuration.  Detection, tracking, and topic parameters are configurable through the <code>model</code> service.  See the <a href="../../../platforms/configuration/model/">model service configuration</a> documentation for details.  Topic names are relative to the device <a href="../#hostname-namespaces">hostname namespace</a>.</p>
+<h2 id="modeloutput">model/output</h2>
+<p>The <code>model/output</code> topic publishes the complete result of each inference using the custom <a href="../../api/edgefirst_msgs/#model">Model</a> schema.  Each message contains the model timing and the detected objects.</p>
+<ul>
+<li>The <code>input_time</code>, <code>model_time</code>, <code>output_time</code>, and <code>decode_time</code> durations break down the time spent loading the camera frame into the model input, running the model, reading the outputs, and decoding the outputs including <abbr title="Non-Maximum Suppression">NMS</abbr> and tracking.</li>
+<li>The <code>boxes</code> array holds one <a href="../../api/edgefirst_msgs/#box">Box</a> per detected object with the normalized center point, width, and height of the bounding box, the label, the score, the distance and speed which are <code>0</code> when unknown, and the <a href="../../api/edgefirst_msgs/#track">Track</a> information.  When tracking is enabled the track ID is a UUID string and the lifetime represents how many frames this track was seen, otherwise the track ID is empty.</li>
+<li>The <code>masks</code> array holds the segmentation <a href="../../api/edgefirst_msgs/#mask">Mask</a> messages.  A semantic segmentation model publishes a single mask with <code>boxed</code> false where each pixel holds the class index.  An instance segmentation model publishes one mask per detected box with <code>boxed</code> true, in the same order as the <code>boxes</code> array, cropped to the box.  Masks are published uncompressed with an empty encoding.</li>
+</ul>
+<p>The box coordinates are normalized to the camera frame, the service back-projects the detections through its aspect-preserving letterbox so the coordinates align with the original camera image.  The XYZ coordinate system follows the <a href="https://www.ros.org/reps/rep-0103.html#coordinate-frame-conventions">standard ROS convention</a> for <code>_optical</code> frames of z forward, x right, y down.</p>
+<p>The <code>boxes</code> array is empty for segmentation-only models and the <code>masks</code> array is empty for detection-only models.  The message header timestamp matches the camera frame the inference was run on, which lets consumers such as the Web UI align the overlay with the decoded video frame.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: center;"><strong>Usage</strong></th>
+<th style="text-align: center;"><strong>Link</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;">Web UI</td>
+<td style="text-align: center;"><a href="../../../platforms/quickstart/maivin/webui/#the-camera-page">Camera Page</a> segmentation overlay</td>
+</tr>
+<tr>
+<td style="text-align: center;">Foxglove</td>
+<td style="text-align: center;"><a href="../../data_collection/foxglove/#installing-edgefirst-plugin">EdgeFirst Plug-in</a></td>
+</tr>
+<tr>
+<td style="text-align: center;"><abbr title="Software Development Kit">SDK</abbr></td>
+<td style="text-align: center;"><a href="../../dev/examples/model/">Model Example</a></td>
+</tr>
+</tbody>
+</table>
+<h2 id="modelinfo">model/info</h2>
+<p>The <code>model/info</code> topic publishes information about the current model configuration using the custom <a href="../../api/edgefirst_msgs/#modelinfo">ModelInfo</a> schema.  It describes the shape and type of the input and output tensors, the labels of the model, the tasks the model supports, the format of the model, and the name of the model.  Consumers such as the fusion service and the EdgeFirst Publisher use the labels to map the class indices found in the masks and boxes to label names.</p>
+<h2 id="modelvisualization">model/visualization</h2>
+<p>The <code>model/visualization</code> topic publishes information about the detected objects using the <a href="../../api/foxglove_msgs/#imageannotations">ImageAnnotations</a> schema.  This message contains text and line annotations which will draw boxes and labels in Foxglove.  This message is intended only for help visualizing the detection results in Foxglove without needing the EdgeFirst plug-in.</p>
+<p>This topic is only published if the model service is configured to enable <a href="../../../platforms/configuration/model/#visualization">visualization</a> and configured with a model that outputs object detection.</p>
+<h2 id="legacy-topics">Legacy Topics</h2>
+<p>Earlier releases of the model service published the detection boxes and the segmentation masks on separate topics.  These topics are disabled by default and can be re-enabled with the <code>DETECT_TOPIC</code> and <code>MASK_TOPIC</code> settings of the <a href="../../../platforms/configuration/model/#topics">model service configuration</a> for applications which have not migrated to <code>model/output</code>.</p>
+<h3 id="modelboxes2d">model/boxes2d</h3>
+<p>The <code>model/boxes2d</code> topic publishes the detected objects using the custom <a href="../../api/edgefirst_msgs/#detect">Detect</a> schema with the same <a href="../../api/edgefirst_msgs/#box">Box</a> entries as <code>model/output</code>.</p>
+<h3 id="modelmask">model/mask</h3>
+<p>The <code>model/mask</code> topic publishes the segmentation masks using the custom <a href="../../api/edgefirst_msgs/#mask">Mask</a> schema.  The masks are uncompressed, the previous <code>model/mask_compressed</code> topic with zstd compressed masks is no longer provided as compression is handled by the Web UI transport.</p>
 
 
 

@@ -1374,7 +1374,7 @@
   <a href="#imu" class="md-nav__link">
     <span class="md-ellipsis">
       
-        /imu
+        imu
       
     </span>
   </a>
@@ -1870,7 +1870,7 @@
   <a href="#imu" class="md-nav__link">
     <span class="md-ellipsis">
       
-        /imu
+        imu
       
     </span>
   </a>
@@ -1945,9 +1945,9 @@
 
 <h1 id="imu-topics"><abbr title="Inertial Measurement Unit">IMU</abbr> Topics</h1>
 <p>The imu topics are managed by the <code>imu</code> service and handles publishing the orientation of the device. The service also supports publishing the angular velocity and linear acceleration of the device</p>
-<p>The imu topic is published under the <code>/imu</code> topic.</p>
-<h2 id="imu">/imu</h2>
-<p>The <code>/imu</code> topic publishes information about the device's orientation, angular velocity, and linear acceleration using the <a href="../../api/sensor_msgs/#imu">Imu</a> schema.</p>
+<p>The imu topic is published under the <code>imu</code> topic, relative to the device <a href="../#hostname-namespaces">hostname namespace</a>, at the sensor report rate of roughly 100 to 140 Hz.  The sensor timeout and Zenoh settings are configured in <code>/etc/default/imu</code>, refer to <a href="../../../platforms/configuration/#configuration-files">Configuration</a>.</p>
+<h2 id="imu">imu</h2>
+<p>The <code>imu</code> topic publishes information about the device's orientation, angular velocity, and linear acceleration using the <a href="../../api/sensor_msgs/#imu">Imu</a> schema.</p>
 <p>The XYZ coordinate system follows the <a href="https://www.ros.org/reps/rep-0103.html#coordinate-frame-conventions">standard ROS convention</a> of x forward, y left, z up.</p>
 <table>
 <thead>
@@ -1959,7 +1959,7 @@
 <tbody>
 <tr>
 <td style="text-align: center;">Web UI</td>
-<td style="text-align: center;"><a href=""></a></td>
+<td style="text-align: center;"><a href="../../../platforms/quickstart/maivin/webui/#the-imu-page"><abbr title="Inertial Measurement Unit">IMU</abbr> Page</a></td>
 </tr>
 <tr>
 <td style="text-align: center;">Foxglove</td>

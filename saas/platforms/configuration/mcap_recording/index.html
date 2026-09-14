@@ -1241,8 +1241,6 @@
       
         
       
-        
-      
     
     
     
@@ -1386,10 +1384,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#default-topics-recorded" class="md-nav__link">
+  <a href="#duration" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Default Topics Recorded
+        Duration
       
     </span>
   </a>
@@ -1397,44 +1395,22 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#configurable-topics-to-be-recorded" class="md-nav__link">
+  <a href="#topics-recorded" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Configurable Topics to be Recorded
+        Topics Recorded
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Configurable Topics to be Recorded">
+    <nav class="md-nav" aria-label="Topics Recorded">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#radar-cube-raivin-only" class="md-nav__link">
+  <a href="#radar-cube-fps-raivin-only" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Radar Cube (Raivin Only)
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#model-recording" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Model Recording
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#fusion-recording-raivin-only" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Fusion Recording (Raivin Only)
+        Radar Cube FPS (Raivin Only)
       
     </span>
   </a>
@@ -1498,34 +1474,6 @@
     
   
     Camera Settings
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../webui/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Web UI Settings
   
 
     
@@ -1923,10 +1871,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#default-topics-recorded" class="md-nav__link">
+  <a href="#duration" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Default Topics Recorded
+        Duration
       
     </span>
   </a>
@@ -1934,44 +1882,22 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#configurable-topics-to-be-recorded" class="md-nav__link">
+  <a href="#topics-recorded" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Configurable Topics to be Recorded
+        Topics Recorded
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Configurable Topics to be Recorded">
+    <nav class="md-nav" aria-label="Topics Recorded">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#radar-cube-raivin-only" class="md-nav__link">
+  <a href="#radar-cube-fps-raivin-only" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Radar Cube (Raivin Only)
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#model-recording" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Model Recording
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#fusion-recording-raivin-only" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Fusion Recording (Raivin Only)
+        Radar Cube FPS (Raivin Only)
       
     </span>
   </a>
@@ -2078,91 +2004,91 @@
 
 
 <h1 id="recorder-settings">Recorder Settings</h1>
-<p>This page configures how sensor and processed outputs are saved on the <a href="../../../perception/data_collection/recording/"><abbr title="Binary container format for robotics log data">MCAP</abbr> Recording Page</a>.</p>
+<p>This page configures how sensor and processed outputs are saved by the <a href="../../../perception/data_collection/recording/"><abbr title="Binary container format for robotics log data">MCAP</abbr> Recording Service</a>.</p>
 <figure>
             <img align="center" alt="MCAP Settings page" src="../../assets/configuration/configuration-mcap.png" />
             <figcaption><abbr title="Binary container format for robotics log data">MCAP</abbr> Settings page</figcaption>
             </figure>
 <div class="admonition tip">
 <p class="admonition-title">Tip</p>
-<p>These values are stored in the <code>/etc/default/recorder</code> file on the device and can be hand-edited. This is not recommended.</p>
+<p>These values are stored in the <code>/etc/default/recorder</code> file on the device and can be hand-edited.</p>
 </div>
 <h2 id="storage-location">Storage Location</h2>
-<p>This controls the storage location for the <abbr title="Binary container format for robotics log data">MCAP</abbr> recordings. If using an SD Card, this should point to <code>/media/DATA</code> or adjusted for the SD Card mount point.</p>
+<p>This controls the storage location for the <abbr title="Binary container format for robotics log data">MCAP</abbr> recordings.  Stored as <code>STORAGE</code>, the directory is created automatically when it does not exist.  The recorder service runs as the <code>torizon</code> user and defaults to <code>$HOME/recordings</code>, which resolves to <code>/home/torizon/recordings</code>.  If using an SD card this should point to <code>/media/DATA</code> or be adjusted for the SD card mount point.</p>
 <h2 id="compression">Compression</h2>
-<p>This controls the <abbr title="Binary container format for robotics log data">MCAP</abbr> compression level. Compression will impact the CPU usage compared to no compression but can have significant benefits to <abbr title="Binary container format for robotics log data">MCAP</abbr> size. It is most impactful when recording the <code>/radar/cube</code> or <code>/model/mask</code> topics. Options are <code>none</code>, <code>lz4</code>, and <code>zstd</code>. The <a href="https://lz4.org/">LZ4</a> compression is faster while <a href="https://facebook.github.io/zstd/">ZSTD</a> provides better compression. No compression is the fastest but creates files up to 3x larger.</p>
-<h2 id="default-topics-recorded">Default Topics Recorded</h2>
-<p>The rest of the page reports upon which topics are recording and allows the user to enable or disable certain optional topics. Mandatory topics that cannot be changed on the page include:</p>
+<p>This controls the <abbr title="Binary container format for robotics log data">MCAP</abbr> compression algorithm.  Compression will impact the CPU usage compared to no compression but can have significant benefits to <abbr title="Binary container format for robotics log data">MCAP</abbr> size.  It is most impactful when recording the <code>radar/cube</code> or <code>model/output</code> topics with segmentation masks.  Stored as <code>COMPRESSION</code>, options are <code>none</code>, <code>lz4</code>, and <code>zstd</code> with a default of <code>lz4</code>.  The <a href="https://lz4.org/">LZ4</a> compression is faster while <a href="https://facebook.github.io/zstd/">ZSTD</a> provides better compression.  No compression is the fastest but creates files up to 3x larger.</p>
+<h2 id="duration">Duration</h2>
+<p>Stored as <code>DURATION</code>, the maximum recording duration in seconds after which the recorder stops automatically.  Leave empty for unlimited recording, the recorder then runs until stopped from the Web UI recording button or the service is stopped.</p>
+<h2 id="topics-recorded">Topics Recorded</h2>
+<p>Stored as <code>TOPICS</code>, a space-separated list of topics to record.  When the list is empty, the default, the recorder discovers every topic currently published on the device and records all of them.  Topic names are written relative to the device <a href="../../../perception/topics/#hostname-namespaces">hostname namespace</a>, for example <code>camera/h264</code>, and are recorded in the <abbr title="Binary container format for robotics log data">MCAP</abbr> file as <code>/camera/h264</code>.</p>
+<p>The Recorder Settings page lists the topics published by the stock services grouped by service and lets the user enable or disable optional topics.  Saving the page writes the selected topics to the <code>TOPICS</code> setting.</p>
 <ul>
-<li>Localization topics, such as:  <ul>
-<li><strong>/tf_static</strong>: This is a meta-topic that includes information from all recorded topics.  </li>
-<li><strong>/gps</strong>: This is the <abbr title="Global Positioning System">GPS</abbr> topic that includes latitude, longitude, elevation, etc.  </li>
-<li><strong>/imu</strong>: This is where the <abbr title="Inertial Measurement Unit">IMU</abbr> sensor exports its information, and includes acceleration and orientation information about the vision module.</li>
+<li>Localization topics:<ul>
+<li><strong>/tf_static</strong>: The static transforms between the sensor frames published by the camera, radar, and <abbr title="Light Detection and Ranging">LiDAR</abbr> services.</li>
+<li><strong>/gps</strong>: The <abbr title="Global Positioning System">GPS</abbr> topic that includes latitude, longitude, elevation, etc.</li>
+<li><strong>/imu</strong>: The <abbr title="Inertial Measurement Unit">IMU</abbr> sensor orientation, angular velocity, and linear acceleration.</li>
 </ul>
 </li>
-<li>Camera Topics, such as:  <ul>
-<li><strong>/camera/info</strong>: This includes information about the video sensor.  </li>
-<li><strong>/camera/h264</strong>: This contains the raw-video output of the video sensor, in H.264 format.  </li>
+<li>Camera topics:<ul>
+<li><strong>/camera/info</strong>: The camera intrinsic parameters.</li>
+<li><strong>/camera/h264</strong>: The H.264 encoded video from the camera.</li>
+<li><strong>/camera/jpeg</strong>: JPEG frames when <a href="../camera/#jpeg-streaming">JPEG streaming</a> is enabled.</li>
 </ul>
 </li>
-<li>Radar Topics (Raivin only), such as:  <ul>
-<li><strong>/radar/info</strong>: This contains information regarding the radar.  </li>
-<li><strong>/radar/targets</strong>: This contains the target information from the radar sensor.  </li>
-<li><strong>/radar/clusters</strong>: This contains the clustered information from the radar sensor. It also opens up the "/radar/cube" topic that can be enabled.  </li>
+<li>Model topics:<ul>
+<li><strong>/model/info</strong>: Information about the model being run.</li>
+<li><strong>/model/output</strong>: The detection boxes, segmentation masks, tracks, and timing published by the model service.</li>
+</ul>
+</li>
+<li>Radar topics (Raivin only):<ul>
+<li><strong>/radar/info</strong>: The radar configuration.</li>
+<li><strong>/radar/targets</strong>: The radar point cloud.</li>
+<li><strong>/radar/clusters</strong>: The clustered radar point cloud when <a href="../radar/#clustering">clustering</a> is enabled.</li>
+<li><strong>/radar/cube</strong>: The raw radar cube when <a href="../radar/#enable-cube">cube streaming</a> is enabled.</li>
+</ul>
+</li>
+<li>Fusion topics (Raivin only):<ul>
+<li><strong>/fusion/radar</strong>: The radar point cloud annotated with the vision classes and instances.</li>
+<li><strong>/fusion/lidar</strong>: The <abbr title="Light Detection and Ranging">LiDAR</abbr> point cloud annotated with the vision classes and instances.</li>
+<li><strong>/fusion/occupancy</strong>: The occupancy grid of the detected objects.</li>
 </ul>
 </li>
 </ul>
-<p>These topics are parts of the "Localization Topics", "Camera Topics", and "Radar Topics", which are currently locked.</p>
-<h2 id="configurable-topics-to-be-recorded">Configurable Topics to be Recorded</h2>
-<p>Several configuration boxes can be interacted with, and will enable recording of additional topics, as described below.</p>
-<h3 id="radar-cube-raivin-only">Radar Cube (Raivin Only)</h3>
-<ul>
-<li><strong>/radar/cube</strong>: The raw radar cube data output. This can be a lot of data, and we expose a setting to the user to limit this.</li>
-</ul>
-<p>The Radar Cube <abbr title="Frames Per Second">FPS</abbr> setting limits the radar cube framerate to reduce recording size. While the camera topic is encoded with H.264 which makes use of keyframes to significantly reduce the topic size, no such compression is available for the radar cube which means only the COMPRESSION parameter applies (if enabled). While capturing datasets, the full 18 <abbr title="Frames Per Second">FPS</abbr> is typically not required and it is recommended to set this parameter to 1-5 <abbr title="Frames Per Second">FPS</abbr> to reduce the <abbr title="Binary container format for robotics log data">MCAP</abbr> size.</p>
-<h3 id="model-recording">Model Recording</h3>
-<p>Checking the "/model" topic box enables the following topics:</p>
-<ul>
-<li><strong>/model/info</strong>: This contains information regarding the model being run.</li>
-<li><strong>/model/boxes2d</strong>: This includes detection boxes from the model, if the model supports object detection.</li>
-<li><strong>/model/mask_compressed</strong>: This contains the output of the segmentation model if running.</li>
-</ul>
-<h3 id="fusion-recording-raivin-only">Fusion Recording (Raivin Only)</h3>
-<p>Checking the "/fusion" topic box enables recording of the following topics:</p>
-<ul>
-<li><strong>/fusion/radar</strong>: This contains information regarding the analysis of the radar targets, including the classes of the targets reported by both the Vision and Fusion outputs.</li>
-<li><strong>/fusion/lidar</strong>: This contains information regarding the analysis of the <abbr title="Light Detection and Ranging">LiDAR</abbr> targets, including the classes of the targets reported by both the Vision and Fusion outputs.</li>
-<li><strong>/fusion/occupancy</strong>: This contains information regarding the occupancy of targets on a polar grid emanating from the camera.</li>
-</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The <code>camera/frame</code> topic carries the zero-copy camera frames shared between services on the device and is not recorded, the camera pixels are recorded from the H.264 stream.</p>
+</div>
+<h3 id="radar-cube-fps-raivin-only">Radar Cube <abbr title="Frames Per Second">FPS</abbr> (Raivin Only)</h3>
+<p>The raw radar cube can be a lot of data.  Stored as <code>CUBE_FPS</code>, this limits the radar cube frame rate recorded to reduce the recording size, leave empty to record at the native publish rate.  While the camera topic is encoded with H.264 which makes use of keyframes to significantly reduce the topic size, no such compression is available for the radar cube which means only the compression setting applies.  While capturing datasets, the full 18 <abbr title="Frames Per Second">FPS</abbr> is typically not required and it is recommended to set this parameter to 1 to 5 <abbr title="Frames Per Second">FPS</abbr> to reduce the <abbr title="Binary container format for robotics log data">MCAP</abbr> size.</p>
 <h2 id="caveats">Caveats</h2>
 <p>There are several settings that will stop or change specific topics, which may result in the topic not being recorded.</p>
 <ul>
-<li>On the <a href="../model/">Model Settings</a> page:  <ul>
-<li><a href="../model/#visualization">Enabling Visualization</a> will create the <code>/model/visualization</code> topic  </li>
-<li><a href="../model/#mask_compression">Disabling Mask Compression</a> will stop the <code>/model/mask_compressed</code> topic and start the <code>/model/mask</code> topic  </li>
-<li><a href="../model/#model">Loading a Model without detection or segmentation outputs</a> will stop the corresponding <code>/model/boxes2d</code> or <code>/model/mask_compressed</code> topics  </li>
+<li>On the <a href="../model/">Model Settings</a> page:<ul>
+<li><a href="../model/#visualization">Enabling Visualization</a> will create the <code>model/visualization</code> topic.</li>
+<li><a href="../model/#topics">Re-enabling the legacy topics</a> will create the <code>model/boxes2d</code> or <code>model/mask</code> topics.</li>
 </ul>
 </li>
-<li>On the <a href="../camera/">Camera Settings</a> page:  <ul>
-<li><a href="../camera/#camera-size">Setting the Camera Size to 4k</a> will put the Camera service into <a href="../../../perception/4k/">4K Mode</a> and create the <code>/camera/h264/tl</code>, <code>/camera/h264/tr</code>, <code>/camera/h264/bl</code>, and  <code>/camera/h264/br</code> topics while stopping the default <code>/camera/h264</code> topic.</li>
-<li><a href="../camera/#h264-streaming">Disabling H264 streaming</a> will stop the <code>/camera/h264</code> topic</li>
-<li><a href="../camera/#jpeg-streaming">Enabling JPEG streaming</a> will create the <code>/camera/jpeg</code> topic</li>
+<li>On the <a href="../camera/">Camera Settings</a> page:<ul>
+<li><a href="../camera/#h264-4k-tiling">Enabling 4K tiling</a> will create the <code>camera/h264/tl</code>, <code>camera/h264/tr</code>, <code>camera/h264/bl</code>, and <code>camera/h264/br</code> topics.</li>
+<li><a href="../camera/#h264-streaming">Disabling H264 streaming</a> will stop the <code>camera/h264</code> topic.</li>
+<li><a href="../camera/#jpeg-streaming">Enabling JPEG streaming</a> will create the <code>camera/jpeg</code> topic.</li>
 </ul>
 </li>
 </ul>
-<p>Topics that have been stopped by a configuration change cannot be recorded into an <abbr title="Binary container format for robotics log data">MCAP</abbr> file. However, the new topics created by the above changes are not automatically added to the <abbr title="Binary container format for robotics log data">MCAP</abbr> recorder and will need to be added manually.</p>
+<p>When the <code>TOPICS</code> setting is empty every published topic is recorded, including the ones created by the changes above.  When the topics were selected explicitly on the Recorder Settings page, newly created topics are not recorded until they are added to the <code>TOPICS</code> setting.</p>
 <h3 id="adding-topics-manually-to-the-recording-service">Adding Topics Manually to the Recording Service</h3>
-<p>Topics that are not included by the Web UI front-end to be recorded must be added manually at the platform command-line interface. You will need to <a href="../../networking/ssh/"><abbr title="Secure Shell">SSH</abbr> into the platform</a>. Then, the topics will need to be added manually to the <code>TOPICS</code> line in the <code>/etc/default/recorder</code> configuration file. To edit this file, you need to run the <code>sudo vi /etc/default/recorder</code> command.</p>
+<p>Topics that are not listed on the Recorder Settings page can be added manually at the platform command-line interface.  You will need to <a href="../../networking/ssh/"><abbr title="Secure Shell">SSH</abbr> into the platform</a> and edit the <code>TOPICS</code> line in the <code>/etc/default/recorder</code> configuration file with the <code>sudo vi /etc/default/recorder</code> command.</p>
 <div class="admonition tip">
 <p class="admonition-title">Tip</p>
 <p>If you are unfamiliar with <code>vi</code>, please read a <a href="https://www.tutorialspoint.com/unix/unix-vi-editor.htm">quick tutorial</a>.</p>
 </div>
-<p>The default topics line should read:</p>
-<div class="highlight"><pre><span></span><code><span class="na">TOPICS</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"/tf_static /imu /gps /camera/info /camera/h264 /radar/clusters /radar/targets /radar/info /model/info /model/boxes2d /model/mask_compressed"</span>
+<p>To record only a specific set of topics, list them as space-separated items.  For example, to record the localization, camera, model, and 4K tile topics:</p>
+<div class="highlight"><pre><span></span><code><span class="na">TOPICS</span><span class="o">=</span><span class="s">"tf_static imu gps camera/info camera/h264/tl camera/h264/tr camera/h264/bl camera/h264/br model/info model/output"</span>
 </code></pre></div>
-<p>To add topics to be recorded, simply add them in the quoted portion as space-separated items. For example, if we wanted to add the 4K tiles topics, we would just change the line to:</p>
-<div class="highlight"><pre><span></span><code><span class="na">TOPICS</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"/tf_static /imu /gps /camera/info /radar/clusters /radar/targets /radar/info /model/info /model/boxes2d /model/mask_compressed /camera/h264/tl /camera/h264/tr /camera/h264/bl /camera/h264/br"</span>
+<p>Clear the setting to return to recording every published topic.</p>
+<div class="highlight"><pre><span></span><code><span class="na">TOPICS</span><span class="o">=</span><span class="s">""</span>
 </code></pre></div>
+<p>Restart the recorder from the Web UI recording button for the change to take effect.</p>
 
 
 

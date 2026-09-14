@@ -2789,6 +2789,10 @@
 
 <h1 id="radar-schema-example">Radar Schema Example</h1>
 <p>This example will go through how to connect to the radar topic published on your EdgeFirst Platform and how to display the information on the command line as well as through the Rerun visualizer.</p>
+<div class="admonition tip">
+<p class="admonition-title">Topic Names</p>
+<p>The topics below are subscribed with their bare names, which requires the Zenoh session to be opened with the namespace set to the device hostname as shown in the <a href="../../#subscriber">Developer Guide</a>.  Subscribe with a <code>**/</code> prefix, for example <code>**/camera/h264</code>, to match the topics from a session without a namespace or from a remote device.</p>
+</div>
 <h2 id="radar-targets">Radar Targets</h2>
 <p>Topic: <a href="../../../topics/radar/#radartargets">/radar/targets</a><br />
 Message: <a href="../../../api/sensor_msgs/#pointcloud2">PointCloud2</a>
@@ -2798,16 +2802,16 @@ Sample Code: <a href="https://github.com/EdgeFirstAI/samples/blob/main/python/ra
 <div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="python" name="__tabbed_1" type="radio" /><input id="rust" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="python">Python</label><label for="rust">Rust</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="c1"># Create a subscriber for "rt/radar/targets"</span>
+<div class="highlight"><pre><span></span><code><span class="c1"># Create a subscriber for "radar/targets"</span>
 <span class="n">loop</span> <span class="o">=</span> <span class="n">asyncio</span><span class="o">.</span><span class="n">get_running_loop</span><span class="p">()</span>
 <span class="n">drain</span> <span class="o">=</span> <span class="n">MessageDrain</span><span class="p">(</span><span class="n">loop</span><span class="p">)</span>
-<span class="n">session</span><span class="o">.</span><span class="n">declare_subscriber</span><span class="p">(</span><span class="s1">'rt/radar/targets'</span><span class="p">,</span> <span class="n">drain</span><span class="o">.</span><span class="n">callback</span><span class="p">)</span>
+<span class="n">session</span><span class="o">.</span><span class="n">declare_subscriber</span><span class="p">(</span><span class="s1">'radar/targets'</span><span class="p">,</span> <span class="n">drain</span><span class="o">.</span><span class="n">callback</span><span class="p">)</span>
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="c1">// Create a subscriber for "rt/radar/targets"</span>
+<div class="highlight"><pre><span></span><code><span class="c1">// Create a subscriber for "radar/targets"</span>
 <span class="kd">let</span><span class="w"> </span><span class="n">subscriber</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">session</span>
-<span class="w">    </span><span class="p">.</span><span class="n">declare_subscriber</span><span class="p">(</span><span class="s">"rt/radar/targets"</span><span class="p">)</span>
+<span class="w">    </span><span class="p">.</span><span class="n">declare_subscriber</span><span class="p">(</span><span class="s">"radar/targets"</span><span class="p">)</span>
 <span class="w">    </span><span class="p">.</span><span class="k">await</span>
 <span class="w">    </span><span class="p">.</span><span class="n">unwrap</span><span class="p">();</span>
 </code></pre></div>
@@ -2833,7 +2837,7 @@ Sample Code: <a href="https://github.com/EdgeFirstAI/samples/blob/main/python/ra
 <div class="tabbed-block">
 <div class="highlight"><pre><span></span><code><span class="k">use</span><span class="w"> </span><span class="n">edgefirst_schemas</span><span class="p">::</span><span class="n">sensor_msgs</span><span class="p">::</span><span class="n">PointCloud2</span><span class="p">;</span>
 
-<span class="c1">// Create a subscriber for "rt/radar/cluster"</span>
+<span class="c1">// Create a subscriber for "radar/cluster"</span>
 <span class="kd">let</span><span class="w"> </span><span class="n">msg</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">subscriber</span><span class="p">.</span><span class="n">recv</span><span class="p">().</span><span class="n">unwrap</span><span class="p">()</span>
 
 <span class="kd">let</span><span class="w"> </span><span class="n">pcd</span><span class="p">:</span><span class="w"> </span><span class="nc">PointCloud2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">cdr</span><span class="p">::</span><span class="n">deserialize</span><span class="p">(</span><span class="o">&amp;</span><span class="n">msg</span><span class="p">.</span><span class="n">payload</span><span class="p">().</span><span class="n">to_bytes</span><span class="p">())</span><span class="o">?</span><span class="p">;</span>
@@ -2935,16 +2939,16 @@ Sample Code: <a href="https://github.com/EdgeFirstAI/samples/blob/main/python/ra
 <div class="tabbed-set tabbed-alternate" data-tabs="5:2"><input checked="checked" id="python_4" name="__tabbed_5" type="radio" /><input id="rust_4" name="__tabbed_5" type="radio" /><div class="tabbed-labels"><label for="python_4">Python</label><label for="rust_4">Rust</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="c1"># Create a subscriber for "rt/radar/cluster"</span>
+<div class="highlight"><pre><span></span><code><span class="c1"># Create a subscriber for "radar/cluster"</span>
 <span class="n">loop</span> <span class="o">=</span> <span class="n">asyncio</span><span class="o">.</span><span class="n">get_running_loop</span><span class="p">()</span>
 <span class="n">drain</span> <span class="o">=</span> <span class="n">MessageDrain</span><span class="p">(</span><span class="n">loop</span><span class="p">)</span>
-<span class="n">session</span><span class="o">.</span><span class="n">declare_subscriber</span><span class="p">(</span><span class="s1">'rt/radar/clusters'</span><span class="p">,</span> <span class="n">drain</span><span class="o">.</span><span class="n">callback</span><span class="p">)</span>
+<span class="n">session</span><span class="o">.</span><span class="n">declare_subscriber</span><span class="p">(</span><span class="s1">'radar/clusters'</span><span class="p">,</span> <span class="n">drain</span><span class="o">.</span><span class="n">callback</span><span class="p">)</span>
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="c1">// Create a subscriber for "rt/radar/cluster"</span>
+<div class="highlight"><pre><span></span><code><span class="c1">// Create a subscriber for "radar/cluster"</span>
 <span class="kd">let</span><span class="w"> </span><span class="n">subscriber</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">session</span>
-<span class="w">    </span><span class="p">.</span><span class="n">declare_subscriber</span><span class="p">(</span><span class="s">"rt/radar/clusters"</span><span class="p">)</span>
+<span class="w">    </span><span class="p">.</span><span class="n">declare_subscriber</span><span class="p">(</span><span class="s">"radar/clusters"</span><span class="p">)</span>
 <span class="w">    </span><span class="p">.</span><span class="k">await</span>
 <span class="w">    </span><span class="p">.</span><span class="n">unwrap</span><span class="p">();</span>
 </code></pre></div>
@@ -2970,7 +2974,7 @@ Sample Code: <a href="https://github.com/EdgeFirstAI/samples/blob/main/python/ra
 <div class="tabbed-block">
 <div class="highlight"><pre><span></span><code><span class="k">use</span><span class="w"> </span><span class="n">edgefirst_schemas</span><span class="p">::</span><span class="n">sensor_msgs</span><span class="p">::</span><span class="n">PointCloud2</span><span class="p">;</span>
 
-<span class="c1">// Create a subscriber for "rt/radar/cluster"</span>
+<span class="c1">// Create a subscriber for "radar/cluster"</span>
 <span class="kd">let</span><span class="w"> </span><span class="n">msg</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">subscriber</span><span class="p">.</span><span class="n">recv</span><span class="p">().</span><span class="n">unwrap</span><span class="p">()</span>
 
 <span class="kd">let</span><span class="w"> </span><span class="n">pcd</span><span class="p">:</span><span class="w"> </span><span class="nc">PointCloud2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">cdr</span><span class="p">::</span><span class="n">deserialize</span><span class="p">(</span><span class="o">&amp;</span><span class="n">msg</span><span class="p">.</span><span class="n">payload</span><span class="p">().</span><span class="n">to_bytes</span><span class="p">())</span><span class="o">?</span><span class="p">;</span>
@@ -3050,16 +3054,16 @@ Sample Code: <a href="https://github.com/EdgeFirstAI/samples/blob/main/python/ra
 <div class="tabbed-set tabbed-alternate" data-tabs="9:2"><input checked="checked" id="python_8" name="__tabbed_9" type="radio" /><input id="rust_8" name="__tabbed_9" type="radio" /><div class="tabbed-labels"><label for="python_8">Python</label><label for="rust_8">Rust</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="c1"># Create a subscriber for "rt/radar/info"</span>
+<div class="highlight"><pre><span></span><code><span class="c1"># Create a subscriber for "radar/info"</span>
 <span class="n">loop</span> <span class="o">=</span> <span class="n">asyncio</span><span class="o">.</span><span class="n">get_running_loop</span><span class="p">()</span>
 <span class="n">drain</span> <span class="o">=</span> <span class="n">MessageDrain</span><span class="p">(</span><span class="n">loop</span><span class="p">)</span>
-<span class="n">session</span><span class="o">.</span><span class="n">declare_subscriber</span><span class="p">(</span><span class="s1">'rt/radar/info'</span><span class="p">,</span> <span class="n">drain</span><span class="o">.</span><span class="n">callback</span><span class="p">)</span>
+<span class="n">session</span><span class="o">.</span><span class="n">declare_subscriber</span><span class="p">(</span><span class="s1">'radar/info'</span><span class="p">,</span> <span class="n">drain</span><span class="o">.</span><span class="n">callback</span><span class="p">)</span>
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="c1">// Create a subscriber for "rt/radar/info"</span>
+<div class="highlight"><pre><span></span><code><span class="c1">// Create a subscriber for "radar/info"</span>
 <span class="kd">let</span><span class="w"> </span><span class="n">subscriber</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">session</span>
-<span class="w">    </span><span class="p">.</span><span class="n">declare_subscriber</span><span class="p">(</span><span class="s">"rt/radar/info"</span><span class="p">)</span>
+<span class="w">    </span><span class="p">.</span><span class="n">declare_subscriber</span><span class="p">(</span><span class="s">"radar/info"</span><span class="p">)</span>
 <span class="w">    </span><span class="p">.</span><span class="k">await</span>
 <span class="w">    </span><span class="p">.</span><span class="n">unwrap</span><span class="p">();</span>
 </code></pre></div>
@@ -3139,16 +3143,16 @@ Sample Code: <a href="https://github.com/EdgeFirstAI/samples/blob/main/python/ra
 <div class="tabbed-set tabbed-alternate" data-tabs="12:2"><input checked="checked" id="python_11" name="__tabbed_12" type="radio" /><input id="rust_11" name="__tabbed_12" type="radio" /><div class="tabbed-labels"><label for="python_11">Python</label><label for="rust_11">Rust</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="c1"># Create a subscriber for "rt/radar/cube"</span>
+<div class="highlight"><pre><span></span><code><span class="c1"># Create a subscriber for "radar/cube"</span>
 <span class="n">loop</span> <span class="o">=</span> <span class="n">asyncio</span><span class="o">.</span><span class="n">get_running_loop</span><span class="p">()</span>
 <span class="n">drain</span> <span class="o">=</span> <span class="n">MessageDrain</span><span class="p">(</span><span class="n">loop</span><span class="p">)</span>
-<span class="n">session</span><span class="o">.</span><span class="n">declare_subscriber</span><span class="p">(</span><span class="s1">'rt/radar/cube'</span><span class="p">,</span> <span class="n">drain</span><span class="o">.</span><span class="n">callback</span><span class="p">)</span>
+<span class="n">session</span><span class="o">.</span><span class="n">declare_subscriber</span><span class="p">(</span><span class="s1">'radar/cube'</span><span class="p">,</span> <span class="n">drain</span><span class="o">.</span><span class="n">callback</span><span class="p">)</span>
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="c1">// Create a subscriber for "rt/radar/cube"</span>
+<div class="highlight"><pre><span></span><code><span class="c1">// Create a subscriber for "radar/cube"</span>
 <span class="kd">let</span><span class="w"> </span><span class="n">subscriber</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">session</span>
-<span class="w">    </span><span class="p">.</span><span class="n">declare_subscriber</span><span class="p">(</span><span class="s">"rt/radar/cube"</span><span class="p">)</span>
+<span class="w">    </span><span class="p">.</span><span class="n">declare_subscriber</span><span class="p">(</span><span class="s">"radar/cube"</span><span class="p">)</span>
 <span class="w">    </span><span class="p">.</span><span class="k">await</span>
 <span class="w">    </span><span class="p">.</span><span class="n">unwrap</span><span class="p">();</span>
 </code></pre></div>
@@ -3224,6 +3228,10 @@ The radar cube has shape: [2, 200, 4, 256]
             <figcaption>Radar Cube Display</figcaption>
             </figure>
 <h2 id="combined-example">Combined Example</h2>
+<div class="admonition warning">
+<p class="admonition-title">Legacy Topics</p>
+<p>This example subscribes to <code>model/boxes2d</code>, a legacy topic which is disabled by default on Torizon for Maivin 2026.08.  Set <code>DETECT_TOPIC="model/boxes2d"</code> in <code>/etc/default/model</code> as described in the <a href="../../../../platforms/configuration/model/#topics">Model Settings</a> before running it, or adapt the boxes callback to the <a href="../../../topics/model/#modeloutput"><code>model/output</code></a> topic which carries the same <code>Box</code> entries.</p>
+</div>
 <p>This example will demonstrate how to combine the camera feed with the radar messages to create a composite Rerun view. The main difference when using multiple messages in a script, is that we will change from waiting on the message to be received to having a callback function for when a message is received. Using the initial method, the script would hang while waiting for a message topic to be published, so if the messages are being published at different rates, the slowest message rate will limit the others.</p>
 <p>Sample Code: <a href="https://github.com/EdgeFirstAI/samples/blob/main/python/combined/camera_radar.py">Python</a> / <a href="https://github.com/EdgeFirstAI/samples/blob/main/rust/combined/mega_sample.rs">Rust</a></p>
 <h3 id="setting-up-the-subscribers">Setting up the subscribers</h3>
@@ -3238,9 +3246,9 @@ The radar cube has shape: [2, 200, 4, 256]
 <span class="n">frame_size_storage</span> <span class="o">=</span> <span class="n">FrameSize</span><span class="p">()</span>
 
 <span class="c1"># Declare subscribers</span>
-<span class="n">session</span><span class="o">.</span><span class="n">declare_subscriber</span><span class="p">(</span><span class="s1">'rt/camera/h264'</span><span class="p">,</span> <span class="n">h264_drain</span><span class="o">.</span><span class="n">callback</span><span class="p">)</span>
-<span class="n">session</span><span class="o">.</span><span class="n">declare_subscriber</span><span class="p">(</span><span class="s1">'rt/model/boxes2d'</span><span class="p">,</span> <span class="n">boxes2d_drain</span><span class="o">.</span><span class="n">callback</span><span class="p">)</span>
-<span class="n">session</span><span class="o">.</span><span class="n">declare_subscriber</span><span class="p">(</span><span class="s1">'rt/radar/clusters'</span><span class="p">,</span> <span class="n">radar_drain</span><span class="o">.</span><span class="n">callback</span><span class="p">)</span>
+<span class="n">session</span><span class="o">.</span><span class="n">declare_subscriber</span><span class="p">(</span><span class="s1">'camera/h264'</span><span class="p">,</span> <span class="n">h264_drain</span><span class="o">.</span><span class="n">callback</span><span class="p">)</span>
+<span class="n">session</span><span class="o">.</span><span class="n">declare_subscriber</span><span class="p">(</span><span class="s1">'model/boxes2d'</span><span class="p">,</span> <span class="n">boxes2d_drain</span><span class="o">.</span><span class="n">callback</span><span class="p">)</span>
+<span class="n">session</span><span class="o">.</span><span class="n">declare_subscriber</span><span class="p">(</span><span class="s1">'radar/clusters'</span><span class="p">,</span> <span class="n">radar_drain</span><span class="o">.</span><span class="n">callback</span><span class="p">)</span>
 </code></pre></div>
 </div>
 </div>

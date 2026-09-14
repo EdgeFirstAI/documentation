@@ -1239,8 +1239,6 @@
       
         
       
-        
-      
     
     
     
@@ -1807,28 +1805,32 @@
 
 
 <h1 id="radar-module">Radar Module</h1>
-<p>The Raivin configuration includes an integrated <a href="https://www.smartmicro.com/automotive-radar/drvegrd-line#c20151">DRVEGRD-169 radar module</a> from <a href="https://www.smartmicro.com/">smartmicro</a>.  The radar module is internally connected to the Raivin which provides power and data communications interfaces.  The primary data and control interface uses the <abbr title="Controller Area Network">CAN</abbr> bus protocol.  The radar module is also connected through an internal Gigabit Ethernet interface which is used to transmit the <a href="https://www.mathworks.com/help/phased/gs/radar-data-cube.html">radar data cube</a> used by the RadarExp Fusion model.</p>
+<p>The Raivin configuration includes an integrated <a href="https://www.smartmicro.com/automotive-radar/drvegrd-line#c20151">DRVEGRD-169 radar module</a> from <a href="https://www.smartmicro.com/">smartmicro</a>.  The radar module is internally connected to the Raivin which provides power and data communications interfaces.  The primary data and control interface uses the <abbr title="Controller Area Network">CAN</abbr> bus protocol.  The radar module is also connected through an internal automotive Ethernet interface which is used to transmit the <a href="https://www.mathworks.com/help/phased/gs/radar-data-cube.html">radar data cube</a> used by the RadarExp Fusion model.</p>
 <h2 id="specifications">Specifications</h2>
-<p>The DRVEGRD 169 radar module is a 79GHz radar sensor for multiple automotive applications that features 4D/PxHD technology.  The sensor’s antenna aims at ultra-short, short and medium range applications with a very wide, horizontal angular coverage of 140°.  A full set of the radar module specifications can be found <a href="https://www.smartmicro.com/automotive-radar/drvegrd-line#c20151">here</a>.</p>
+<p>The DRVEGRD 169 radar module is a 79GHz radar sensor for multiple automotive applications that features 4D/PxHD technology.  The sensor's antenna aims at ultra-short, short and medium range applications with a very wide, horizontal angular coverage of 140°.  A full set of the radar module specifications can be found on the <a href="https://www.smartmicro.com/automotive-radar/drvegrd-line#c20151">smartmicro DRVEGRD product page</a>.</p>
 <h2 id="networking">Networking</h2>
-<p>The radar module is connected to the Raivin using two networking interfaces.  The primary interface is the <code>can0</code> interface which is used to configure the radar module and receive the radar point-cloud.  This interface is required for to control the radar module.  The secondary interface is the <code>ethernet1</code> interface which is used to transmit the radar data cube data to the Raivin.  This interface is required to provide input to the RadarExp Fusion model, but is not required for the radar module to function in point-cloud mode.  The radar data cube generates about 300Mb/s of data which is transmitted to the Raivin for processing.</p>
+<p>The radar module is connected to the Raivin using two networking interfaces.  The primary interface is the <code>can0</code> interface which is used to configure the radar module and receive the radar point-cloud.  This interface is required to control the radar module.  The secondary interface is the <code>ethernet1</code> interface which is used to transmit the radar data cube to the Raivin.  This interface is required to provide input to the RadarExp Fusion model, but is not required for the radar module to function in point-cloud mode.  The radar data cube generates about 300Mb/s of data which is transmitted to the Raivin for processing.</p>
 <h3 id="can-configuration"><abbr title="Controller Area Network">CAN</abbr> Configuration</h3>
-<p>The <abbr title="Controller Area Network">CAN</abbr> bus interface is managed through the systemd networking framework using the configuration file <code>/etc/systemd/network/can0.network</code>.  The <abbr title="Controller Area Network">CAN</abbr> bus interface will be preconfigured by Torizon for Maivin but is covered in this section.</p>
-<div class="highlight"><pre><span></span><code><span class="k">[Match]</span>
-<span class="na">Name</span><span class="o">=</span><span class="s">can0</span>
-
-<span class="k">[CAN]</span>
-<span class="na">BitRate</span><span class="o">=</span><span class="s">500K</span>
+<p>NetworkManager does not manage <abbr title="Controller Area Network">CAN</abbr> interfaces, so the <abbr title="Controller Area Network">CAN</abbr> bus is configured by the <code>can0.service</code> systemd unit which brings the interface up at 500 kbps whenever the <abbr title="Controller Area Network">CAN</abbr> hardware is present.</p>
+<div class="highlight"><pre><span></span><code><span class="k">[Service]</span>
+<span class="na">Type</span><span class="o">=</span><span class="s">oneshot</span>
+<span class="na">RemainAfterExit</span><span class="o">=</span><span class="s">yes</span>
+<span class="na">ExecStart</span><span class="o">=</span><span class="s">/sbin/ip link set can0 type can bitrate 500000</span>
+<span class="na">ExecStart</span><span class="o">=</span><span class="s">/sbin/ip link set can0 up</span>
+<span class="na">ExecStop</span><span class="o">=</span><span class="s">/sbin/ip link set can0 down</span>
 </code></pre></div>
-<p>The <code>can0</code> interface is configured for 500kbps.  The Radar Publishing Service manages the radar configuration and reading of the point-cloud data over <abbr title="Controller Area Network">CAN</abbr> and publishing the results over Zenoh.  Refer to the <a href="./">Radar Publishing Service</a> for details.</p>
+<p>The <a href="../../configuration/radar/">Radar Publishing Service</a> manages the radar configuration and reading of the point-cloud data over <abbr title="Controller Area Network">CAN</abbr> and publishing the results over Zenoh.  Refer to the <a href="../../../perception/topics/radar/">radar topics</a> for details.</p>
 <h3 id="ethernet-configuration">Ethernet Configuration</h3>
-<p>The radar module streams the low-level radar data cube over an ethernet interface which is internally connected to the Raivin's <code>ethernet1</code> interface.  The connection is managed through the systemd network framework using the configuration file <code>/etc/systemd/network/ethernet1.network</code> along with the <code>ethernet1-master.service</code> systemd service which handles configuring the automotive ethernet PHY (1000Base-T1) as the connection master.  The <code>ethernet1-master.service</code> should be enabled using <code>sudo systemctl enable ethernet1-master</code> if not already enabled.</p>
-<div class="highlight"><pre><span></span><code><span class="k">[Match]</span>
-<span class="na">Name</span><span class="o">=</span><span class="s">ethernet1</span>
-
-<span class="k">[Network]</span>
-<span class="na">Address</span><span class="o">=</span><span class="s">192.168.11.17/24</span>
+<p>The radar module streams the low-level radar data cube over a 1000Base-T1 automotive Ethernet link which is internally connected to the Raivin's <code>ethernet1</code> interface.  The connection is managed by NetworkManager through the <code>ethernet1-radar</code> connection profile which assigns the static address <code>192.168.11.17/24</code> and uses policy routing so the sensor traffic never becomes the default route.  The <code>ethernet1-master.service</code> systemd service configures the automotive Ethernet PHY as the link master before the radar publisher starts.</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>nmcli<span class="w"> </span>-t<span class="w"> </span>connection
+network0:...:802-3-ethernet:ethernet0
+ethernet1-radar:...:802-3-ethernet:ethernet1
 </code></pre></div>
+<p>The <code>ethernet1-lidar</code> profile assigns the address used by the <a href="../lidar/"><abbr title="Light Detection and Ranging">LiDAR</abbr> module</a> to the same port.  Only one of the two profiles is active at a time and the switch is made with <code>nmcli</code>.</p>
+<div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>nmcli<span class="w"> </span>connection<span class="w"> </span>down<span class="w"> </span>ethernet1-lidar
+sudo<span class="w"> </span>nmcli<span class="w"> </span>connection<span class="w"> </span>up<span class="w"> </span>ethernet1-radar
+</code></pre></div>
+<p>The Raivin runs a <abbr title="Precision Time Protocol">PTP</abbr> grandmaster on <code>ethernet1</code> so that sensors on the port can synchronize their clocks to the <abbr title="Global Navigation Satellite System">GNSS</abbr> disciplined system clock, refer to <a href="../../networking/networking/#sensor-network">Networking</a> for details.</p>
 
 
 

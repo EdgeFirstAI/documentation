@@ -1637,28 +1637,6 @@
   
 </li>
         
-          <li class="md-nav__item">
-  <a href="#edgefirst.schemas.builtin_interfaces.Duration.nanosec" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        <code class="doc-symbol doc-symbol-toc doc-symbol-attribute"></code>&nbsp;nanosec
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#edgefirst.schemas.builtin_interfaces.Duration.sec" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        <code class="doc-symbol doc-symbol-toc doc-symbol-attribute"></code>&nbsp;sec
-      
-    </span>
-  </a>
-  
-</li>
-        
       </ul>
     </nav>
   
@@ -1688,10 +1666,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#edgefirst.schemas.builtin_interfaces.Time.nanosec" class="md-nav__link">
+  <a href="#edgefirst.schemas.builtin_interfaces.Time.from_cdr" class="md-nav__link">
     <span class="md-ellipsis">
       
-        <code class="doc-symbol doc-symbol-toc doc-symbol-attribute"></code>&nbsp;nanosec
+        <code class="doc-symbol doc-symbol-toc doc-symbol-method"></code>&nbsp;from_cdr
       
     </span>
   </a>
@@ -1699,10 +1677,32 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#edgefirst.schemas.builtin_interfaces.Time.sec" class="md-nav__link">
+  <a href="#edgefirst.schemas.builtin_interfaces.Time.from_nanos" class="md-nav__link">
     <span class="md-ellipsis">
       
-        <code class="doc-symbol doc-symbol-toc doc-symbol-attribute"></code>&nbsp;sec
+        <code class="doc-symbol doc-symbol-toc doc-symbol-method"></code>&nbsp;from_nanos
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#edgefirst.schemas.builtin_interfaces.Time.to_bytes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        <code class="doc-symbol doc-symbol-toc doc-symbol-method"></code>&nbsp;to_bytes
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#edgefirst.schemas.builtin_interfaces.Time.to_nanos" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        <code class="doc-symbol doc-symbol-toc doc-symbol-method"></code>&nbsp;to_nanos
       
     </span>
   </a>
@@ -1978,28 +1978,6 @@
   
 </li>
         
-          <li class="md-nav__item">
-  <a href="#edgefirst.schemas.builtin_interfaces.Duration.nanosec" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        <code class="doc-symbol doc-symbol-toc doc-symbol-attribute"></code>&nbsp;nanosec
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#edgefirst.schemas.builtin_interfaces.Duration.sec" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        <code class="doc-symbol doc-symbol-toc doc-symbol-attribute"></code>&nbsp;sec
-      
-    </span>
-  </a>
-  
-</li>
-        
       </ul>
     </nav>
   
@@ -2029,10 +2007,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#edgefirst.schemas.builtin_interfaces.Time.nanosec" class="md-nav__link">
+  <a href="#edgefirst.schemas.builtin_interfaces.Time.from_cdr" class="md-nav__link">
     <span class="md-ellipsis">
       
-        <code class="doc-symbol doc-symbol-toc doc-symbol-attribute"></code>&nbsp;nanosec
+        <code class="doc-symbol doc-symbol-toc doc-symbol-method"></code>&nbsp;from_cdr
       
     </span>
   </a>
@@ -2040,10 +2018,32 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#edgefirst.schemas.builtin_interfaces.Time.sec" class="md-nav__link">
+  <a href="#edgefirst.schemas.builtin_interfaces.Time.from_nanos" class="md-nav__link">
     <span class="md-ellipsis">
       
-        <code class="doc-symbol doc-symbol-toc doc-symbol-attribute"></code>&nbsp;sec
+        <code class="doc-symbol doc-symbol-toc doc-symbol-method"></code>&nbsp;from_nanos
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#edgefirst.schemas.builtin_interfaces.Time.to_bytes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        <code class="doc-symbol doc-symbol-toc doc-symbol-method"></code>&nbsp;to_bytes
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#edgefirst.schemas.builtin_interfaces.Time.to_nanos" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        <code class="doc-symbol doc-symbol-toc doc-symbol-method"></code>&nbsp;to_nanos
       
     </span>
   </a>
@@ -2135,9 +2135,8 @@
 
 
 
-        <p>Duration defines a period between two time points.
-Messages of this datatype are of ROS Time following this design:
-https://design.ros2.org/articles/clock_and_time.html</p>
+        <p><code>builtin_interfaces.Duration</code> — signed time span (sec + nanosec).</p>
+<p>Same wire format as :class:<code>Time</code>.</p>
 
 
 
@@ -2156,56 +2155,6 @@ https://design.ros2.org/articles/clock_and_time.html</p>
 
 
 
-
-<div class="doc doc-object doc-attribute">
-
-
-
-<h3 id="edgefirst.schemas.builtin_interfaces.Duration.nanosec" class="doc doc-heading">
-            <span class="doc doc-object-name doc-attribute-name">nanosec</span>
-
-
-  <span class="doc doc-labels">
-      <small class="doc doc-label doc-label-class-attribute"><code>class-attribute</code></small>
-      <small class="doc doc-label doc-label-instance-attribute"><code>instance-attribute</code></small>
-  </span>
-
-</h3>
-<div class="doc-signature highlight"><pre><span></span><code><span class="n">nanosec</span><span class="p">:</span> <span class="n">uint32</span> <span class="o">=</span> <span class="mi">0</span>
-</code></pre></div>
-
-    <div class="doc doc-contents ">
-
-        <p>The nanoseconds component, valid in the range [0, 10e9).</p>
-
-    </div>
-
-</div>
-
-<div class="doc doc-object doc-attribute">
-
-
-
-<h3 id="edgefirst.schemas.builtin_interfaces.Duration.sec" class="doc doc-heading">
-            <span class="doc doc-object-name doc-attribute-name">sec</span>
-
-
-  <span class="doc doc-labels">
-      <small class="doc doc-label doc-label-class-attribute"><code>class-attribute</code></small>
-      <small class="doc doc-label doc-label-instance-attribute"><code>instance-attribute</code></small>
-  </span>
-
-</h3>
-<div class="doc-signature highlight"><pre><span></span><code><span class="n">sec</span><span class="p">:</span> <span class="n">int32</span> <span class="o">=</span> <span class="mi">0</span>
-</code></pre></div>
-
-    <div class="doc doc-contents ">
-
-        <p>The seconds component, valid over all int32 values.</p>
-
-    </div>
-
-</div>
 
 
 
@@ -2228,6 +2177,12 @@ https://design.ros2.org/articles/clock_and_time.html</p>
 
 
 
+        <p><code>builtin_interfaces.Time</code> — POSIX-style timestamp.</p>
+<p>Wire format: 12 bytes total (4-byte <abbr title="Common Data Representation">CDR</abbr> encapsulation header +
+<code>i32 sec</code> + <code>u32 nanosec</code>). Negative <code>sec</code> represents pre-epoch
+timestamps; :meth:<code>to_nanos</code> returns <code>None</code> in that case since the
+value can't be represented as <code>u64</code>.</p>
+
 
 
 
@@ -2246,58 +2201,96 @@ https://design.ros2.org/articles/clock_and_time.html</p>
 
 
 
-<div class="doc doc-object doc-attribute">
 
 
 
-<h3 id="edgefirst.schemas.builtin_interfaces.Time.nanosec" class="doc doc-heading">
-            <span class="doc doc-object-name doc-attribute-name">nanosec</span>
+<div class="doc doc-object doc-function">
+
+
+<h3 id="edgefirst.schemas.builtin_interfaces.Time.from_cdr" class="doc doc-heading">
+            <span class="doc doc-object-name doc-function-name">from_cdr</span>
 
 
   <span class="doc doc-labels">
-      <small class="doc doc-label doc-label-class-attribute"><code>class-attribute</code></small>
-      <small class="doc doc-label doc-label-instance-attribute"><code>instance-attribute</code></small>
+      <small class="doc doc-label doc-label-classmethod"><code>classmethod</code></small>
   </span>
 
 </h3>
-<div class="doc-signature highlight"><pre><span></span><code><span class="n">nanosec</span><span class="p">:</span> <span class="n">uint32</span> <span class="o">=</span> <span class="mi">0</span>
+<div class="doc-signature highlight"><pre><span></span><code><span class="nf">from_cdr</span><span class="p">(</span><span class="n">buf</span><span class="p">:</span> <span class="n">BufferLike</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Time</span>
 </code></pre></div>
 
     <div class="doc doc-contents ">
 
-        <p>The nanoseconds component, valid in the range [0, 10e9).</p>
+        <p>Decode a standalone <abbr title="Common Data Representation">CDR</abbr> <code>Time</code> buffer.</p>
+
 
     </div>
 
 </div>
 
-<div class="doc doc-object doc-attribute">
+<div class="doc doc-object doc-function">
 
 
-
-<h3 id="edgefirst.schemas.builtin_interfaces.Time.sec" class="doc doc-heading">
-            <span class="doc doc-object-name doc-attribute-name">sec</span>
+<h3 id="edgefirst.schemas.builtin_interfaces.Time.from_nanos" class="doc doc-heading">
+            <span class="doc doc-object-name doc-function-name">from_nanos</span>
 
 
   <span class="doc doc-labels">
-      <small class="doc doc-label doc-label-class-attribute"><code>class-attribute</code></small>
-      <small class="doc doc-label doc-label-instance-attribute"><code>instance-attribute</code></small>
+      <small class="doc doc-label doc-label-staticmethod"><code>staticmethod</code></small>
   </span>
 
 </h3>
-<div class="doc-signature highlight"><pre><span></span><code><span class="n">sec</span><span class="p">:</span> <span class="n">int32</span> <span class="o">=</span> <span class="mi">0</span>
+<div class="doc-signature highlight"><pre><span></span><code><span class="nf">from_nanos</span><span class="p">(</span><span class="n">nanos</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Time</span>
 </code></pre></div>
 
     <div class="doc doc-contents ">
 
-        <p>The seconds component, valid over all int32 values.</p>
+        <p>Construct from a 64-bit nanosecond count.</p>
+
 
     </div>
 
 </div>
 
+<div class="doc doc-object doc-function">
 
 
+<h3 id="edgefirst.schemas.builtin_interfaces.Time.to_bytes" class="doc doc-heading">
+            <span class="doc doc-object-name doc-function-name">to_bytes</span>
+
+
+</h3>
+<div class="doc-signature highlight"><pre><span></span><code><span class="nf">to_bytes</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="nb">bytes</span>
+</code></pre></div>
+
+    <div class="doc doc-contents ">
+
+        <p>Encode as a standalone <abbr title="Common Data Representation">CDR</abbr> buffer (12 bytes).</p>
+
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h3 id="edgefirst.schemas.builtin_interfaces.Time.to_nanos" class="doc doc-heading">
+            <span class="doc doc-object-name doc-function-name">to_nanos</span>
+
+
+</h3>
+<div class="doc-signature highlight"><pre><span></span><code><span class="nf">to_nanos</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span>
+</code></pre></div>
+
+    <div class="doc doc-contents ">
+
+        <p>Convert to nanoseconds, or <code>None</code> for pre-epoch (negative <code>sec</code>).</p>
+
+
+    </div>
+
+</div>
 
 
 

@@ -2065,6 +2065,10 @@
 <h1 id="4k-camera-system">4K Camera System</h1>
 <h2 id="overview">Overview</h2>
 <p>The EdgeFirst Perception Middleware ecosystem provides advanced 4K video processing capabilities through a sophisticated tiling architecture. This document explains how the 4K functionality works, including video capture, processing, encoding, and streaming; it also provides a comprehensive overview of the 4K camera system's architecture and implementation. The tiling approach enables efficient processing and streaming of high-resolution video while maintaining performance and flexibility.</p>
+<div class="admonition warning">
+<p class="admonition-title">Torizon for Maivin 2026.08</p>
+<p>On the Maivin and Raivin the 4K pipeline requires the <code>4k</code> <a href="../../platforms/configuration/camera/#camera-mode">camera mode</a> which switches the OS08A20 sensor to its full resolution readout at 30 <abbr title="Frames Per Second">FPS</abbr>.  The 1080p60 capture path is the verified path for the 2026.08.0 release, the 4K tile frame mapping and Foxglove stitching have <a href="../../platforms/software/issues/#4k-camera-mode-follow-ups-edgeai-1230-edgeai-1406">known issues</a> deferred to a patch release.</p>
+</div>
 <p>This system impacts two specific services:  </p>
 <ol>
 <li><a href="camera_4k/">The Camera Service</a>  </li>
@@ -2095,14 +2099,14 @@
 <p>The Frame Rate is managed with the follow design principles.</p>
 <ul>
 <li><strong>Target Camera <abbr title="Frames Per Second">FPS</abbr></strong>: 30 <abbr title="Frames Per Second">FPS</abbr>  </li>
-<li><strong>Tile <abbr title="Frames Per Second">FPS</abbr></strong>: Configurable (default: 15 <abbr title="Frames Per Second">FPS</abbr>)  </li>
-<li><strong>Frame Interval</strong>: Calculated as <code>1000ms / tile_fps</code>  </li>
-<li><strong>Frame Dropping</strong>: Skips encoding if insufficient time has passed  </li>
+<li><strong>Tile <abbr title="Frames Per Second">FPS</abbr></strong>: Configurable (default: 15 <abbr title="Frames Per Second">FPS</abbr>, 0 for no limit)  </li>
+<li><strong>Frame Pacing</strong>: Phase locked to the requested tile rate so the measured rate matches the configured rate  </li>
+<li><strong>Frame Dropping</strong>: Frames arriving while an encoder channel is full are dropped and counted, the drop counters are summarized in the service log every 10 seconds  </li>
 </ul>
 <h3 id="camera-capture">Camera Capture</h3>
 <ul>
 <li>Captures 4K video frames from camera device</li>
-<li>Supports YUYV format</li>
+<li>Supports the <abbr title="Image Signal Processor">ISP</abbr> NV12 output format</li>
 <li>Configurable mirror settings (none, horizontal, vertical, both)</li>
 <li>Target <abbr title="Frames Per Second">FPS</abbr>: 30 <abbr title="Frames Per Second">FPS</abbr></li>
 </ul>
@@ -2112,7 +2116,7 @@
 <li>Creates 4 separate encoding threads  </li>
 <li>Each thread processes one tile position  </li>
 <li>Uses bounded channels (capacity: 3) for frame distribution  </li>
-<li>Implements frame dropping when channels are full to prevent blocking  </li>
+<li>Drops and counts frames when channels are full to prevent blocking  </li>
 </ul>
 <h3 id="video-encoding">Video Encoding</h3>
 <ul>
@@ -2126,12 +2130,13 @@
 <p><strong>Topic Structure</strong></p>
 <div class="grid cards" style="text-align:center;">
 <ul>
-<li><code>rt/camera/h264/tl</code></li>
-<li><code>rt/camera/h264/tr</code></li>
-<li><code>rt/camera/h264/bl</code></li>
-<li><code>rt/camera/h264/br</code></li>
+<li><code>camera/h264/tl</code></li>
+<li><code>camera/h264/tr</code></li>
+<li><code>camera/h264/bl</code></li>
+<li><code>camera/h264/br</code></li>
 </ul>
 </div>
+<p>The topics are relative to the device <a href="../topics/#hostname-namespaces">hostname namespace</a> and configurable with the <code>H264_TILES_TOPICS</code> setting.</p>
 <p>The system is designed for seamless integration with ROS and Foxglove Studio:</p>
 <ul>
 <li><strong>Foxglove Studio</strong>: Can subscribe to individual tile topics  </li>
@@ -2185,8 +2190,8 @@
 <span class="w">    </span><span class="k">match</span><span class="w"> </span><span class="n">tx</span><span class="p">.</span><span class="n">try_send</span><span class="p">((</span><span class="n">img</span><span class="p">,</span><span class="w"> </span><span class="n">ts</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
 <span class="w">        </span><span class="nb">Ok</span><span class="p">(</span><span class="n">_</span><span class="p">)</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="p">{},</span>
 <span class="w">        </span><span class="nb">Err</span><span class="p">(</span><span class="n">_</span><span class="p">)</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="p">{</span>
-<span class="w">            </span><span class="c1">// Silently drop frames when channels are full</span>
-<span class="w">            </span><span class="c1">// Prevents log spam during high load</span>
+<span class="w">            </span><span class="c1">// Count the dropped frame, the counters are reported</span>
+<span class="w">            </span><span class="c1">// in a rate-limited log line every 10 seconds</span>
 <span class="w">        </span><span class="p">}</span>
 <span class="w">    </span><span class="p">}</span>
 <span class="p">}</span>

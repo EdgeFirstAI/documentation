@@ -1239,8 +1239,6 @@
       
         
       
-        
-      
     
     
     
@@ -1517,6 +1515,17 @@
         
       </ul>
     </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#networking" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Networking
+      
+    </span>
+  </a>
   
 </li>
       
@@ -1819,6 +1828,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#networking" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Networking
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#firmware-requirements" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -1963,7 +1983,12 @@
 
 
 <h1 id="lidar-module"><abbr title="Light Detection and Ranging">LiDAR</abbr> Module</h1>
-<p>The Raivin configuration includes optional support for the <a href="https://ouster.com/products/os1-lidar-sensor/">Ouster OS1-64 <abbr title="Light Detection and Ranging">LiDAR</abbr> sensor</a> which provides high-resolution 3D point cloud data useful for creating ground-truth annotations.  A mounting kit for the Ouster is available from Au-Zone to attach the Raivin to the Ouster and calibration profiles for this mounting configuration are provided.  The <abbr title="Light Detection and Ranging">LiDAR</abbr> sensor is connected to the Raivin through a Gigabit Ethernet interface, providing both data communication and power over Ethernet (<abbr title="Power over Ethernet">PoE</abbr>) capabilities.</p>
+<p>The Raivin configuration includes optional support for <abbr title="Light Detection and Ranging">LiDAR</abbr> sensors which provide high-resolution 3D point cloud data useful for creating ground-truth annotations.  The <a href="../../configuration/lidar/"><abbr title="Light Detection and Ranging">LiDAR</abbr> publishing service</a> supports two sensor families:</p>
+<ul>
+<li>The <a href="https://www.robosense.ai/en/rslidar/E1R">Robosense E1R</a> solid-state <abbr title="Light Detection and Ranging">LiDAR</abbr>, which is the default sensor type of the <abbr title="Light Detection and Ranging">LiDAR</abbr> service.  Calibration profiles for mounting the E1R on the Maivin are provided and the sensor's built-in <abbr title="Inertial Measurement Unit">IMU</abbr> enables the ground plane filter of the <abbr title="Light Detection and Ranging">LiDAR</abbr> service.</li>
+<li>The <a href="https://ouster.com/products/os1-lidar-sensor/">Ouster OS1-64 <abbr title="Light Detection and Ranging">LiDAR</abbr> sensor</a> spinning <abbr title="Light Detection and Ranging">LiDAR</abbr>.  A mounting kit for the Ouster is available from Au-Zone to attach the Raivin to the Ouster and calibration profiles for this mounting configuration are provided.</li>
+</ul>
+<p>The <abbr title="Light Detection and Ranging">LiDAR</abbr> sensor is connected to the Raivin's sensor Ethernet port, providing both data communication and power over Ethernet (<abbr title="Power over Ethernet">PoE</abbr>) capabilities.  The sections below describe the Ouster OS1 configuration.</p>
 <iframe width="560" height="315" src="https://www.youtube.com/embed/LuA3JlRUfVY?si=FFKDY7dBWih5aG2W" title="Raivin Unboxing and LiDAR Mounting" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
 <h2 id="specifications">Specifications</h2>
@@ -2011,6 +2036,12 @@
             <img align="center" alt="Ouster PCD" src="../../assets/hardware/ouster-pcd.png" />
             <figcaption>Ouster <abbr title="Point Cloud">PCD</abbr></figcaption>
             </figure>
+<h2 id="networking">Networking</h2>
+<p>The <abbr title="Light Detection and Ranging">LiDAR</abbr> connects to the Raivin's <code>ethernet1</code> sensor port which is managed by NetworkManager.  The <code>ethernet1-lidar</code> connection profile assigns the static address <code>192.168.1.102/24</code> to the port, configure the <abbr title="Light Detection and Ranging">LiDAR</abbr> with a static address on the same subnet and set it as the <a href="../../configuration/lidar/#target-device">Target Device</a> of the <abbr title="Light Detection and Ranging">LiDAR</abbr> service.  The profile is not active by default as the port is shared with the radar module, activate it when provisioning the <abbr title="Light Detection and Ranging">LiDAR</abbr>.</p>
+<div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>nmcli<span class="w"> </span>connection<span class="w"> </span>down<span class="w"> </span>ethernet1-radar
+sudo<span class="w"> </span>nmcli<span class="w"> </span>connection<span class="w"> </span>up<span class="w"> </span>ethernet1-lidar
+</code></pre></div>
+<p>The Raivin runs a <abbr title="Precision Time Protocol">PTP</abbr> grandmaster on the sensor port, so the <abbr title="Light Detection and Ranging">LiDAR</abbr> can be configured to synchronize its clock to the Raivin by selecting the <code>ptp1588</code> <a href="../../configuration/lidar/#timestamp-mode">timestamp mode</a>.  Refer to <a href="../../networking/networking/#sensor-network">Networking</a> for details.</p>
 <h2 id="firmware-requirements">Firmware Requirements</h2>
 <p>The sensor should be running firmware version v2.5.3 or later. The sensor's local information page can be accessed at:</p>
 <div class="highlight"><pre><span></span><code>http://os-&lt;serial_number&gt;.local/
@@ -2041,7 +2072,7 @@
 <li>180°: Opposite the connector</li>
 <li>270°: Three-quarters counterclockwise from the connector</li>
 </ul>
-<p>The <abbr title="Light Detection and Ranging">LiDAR</abbr> settings can be configured using the webui <abbr title="Light Detection and Ranging">LiDAR</abbr> config page</p>
+<p>The <abbr title="Light Detection and Ranging">LiDAR</abbr> settings can be configured using the Web UI <a href="../../configuration/lidar/"><abbr title="Light Detection and Ranging">LiDAR</abbr> Settings page</a></p>
 <figure>
             <img align="center" alt="LiDAR Azimuth Orientation" src="../../assets/lidar-config.png" />
             <figcaption><abbr title="Light Detection and Ranging">LiDAR</abbr> Azimuth Orientation</figcaption>
@@ -2049,7 +2080,7 @@
 <h2 id="data-visualization">Data Visualization</h2>
 <p>The <abbr title="Light Detection and Ranging">LiDAR</abbr> data can be visualized using:</p>
 <ol>
-<li>Raivin Webui for both live and recorded MCAPs</li>
+<li>Raivin Web UI <a href="../../quickstart/raivin/webui/#the-lidar-page"><abbr title="Light Detection and Ranging">LiDAR</abbr> page</a> for both live and recorded MCAPs</li>
 <li>Rerun visualization tool for both PCAP files and live data</li>
 <li>Ouster Studio for live or recorded data</li>
 </ol>

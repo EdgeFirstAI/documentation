@@ -2018,8 +2018,6 @@
       
         
       
-        
-      
     
     
     
@@ -2381,7 +2379,7 @@
 
 
 <h1 id="setup-static-ip-address">Setup Static IP Address</h1>
-<p>This article will show how to set up a static IP address for the Jetson Orin. By default, the Jetson Orin uses DHCP for Ethernet connections, and a hostname to find the unit on the network.  This setup will use <a href="https://networkmanager.dev/">NetworkManager</a> already installed as part of the Jetpack v6.2.1 BSP.</p>
+<p>This article will show how to set up a static IP address for the Jetson Orin. By default, the Jetson Orin uses <abbr title="Dynamic Host Configuration Protocol">DHCP</abbr> for Ethernet connections, and a hostname to find the unit on the network.  This setup will use <a href="https://networkmanager.dev/">NetworkManager</a> already installed as part of the Jetpack v6.2.1 BSP.</p>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
 <p>If the static IP address is set to something that is not accessible on the network, then the unit will no longer be accessible using the hostname, or IP address.  This will require the unit to be opened to access the internal serial port to reconfigure the network or connected to a network that can be accessed.</p>
@@ -2493,8 +2491,8 @@ Approximate<span class="w"> </span>round<span class="w"> </span>trip<span class=
 </code></pre></div>
 </li>
 </ol>
-<p>To return to Dynamic Network Configuration (DHCP):
-Enter the following commands to remove the static IP address and return to DHCP mode.  Note the order of commands is important.  The examples assume 'Wired connection 1'.  If not using 'Wired connection 1', replace with the connection name.</p>
+<p>To return to Dynamic Network Configuration (<abbr title="Dynamic Host Configuration Protocol">DHCP</abbr>):
+Enter the following commands to remove the static IP address and return to <abbr title="Dynamic Host Configuration Protocol">DHCP</abbr> mode.  Note the order of commands is important.  The examples assume 'Wired connection 1'.  If not using 'Wired connection 1', replace with the connection name.</p>
 <ol>
 <li>
 <p>Set the connection type to auto</p>

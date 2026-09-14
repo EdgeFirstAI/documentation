@@ -18,7 +18,7 @@
         <link rel="prev" href="../mcap_recording/">
       
       
-        <link rel="next" href="../webui/">
+        <link rel="next" href="../model/">
       
       
         
@@ -1241,8 +1241,6 @@
       
         
       
-        
-      
     
     
     
@@ -1403,6 +1401,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#camera-mode" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Camera Mode
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#camera-size" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -1436,6 +1445,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#h264-streaming" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        H.264 Streaming
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#h264-bitrate" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -1447,10 +1467,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#h264-streaming" class="md-nav__link">
+  <a href="#h264-4k-tiling" class="md-nav__link">
     <span class="md-ellipsis">
       
-        H.264 Streaming
+        H.264 4K Tiling
       
     </span>
   </a>
@@ -1468,38 +1488,43 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#recording-and-replay" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Recording and Replay
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#camera-calibration-and-transform" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Camera Calibration and Transform
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#topics" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Topics
+      
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
       
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../webui/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Web UI Settings
-  
-
-    
-  </span>
-  
-  
-
-      </a>
     </li>
   
 
@@ -1878,6 +1903,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#camera-mode" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Camera Mode
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#camera-size" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -1911,17 +1947,6 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#h264-bitrate" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        H.264 Bitrate
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#h264-streaming" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -1933,10 +1958,65 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#h264-bitrate" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        H.264 Bitrate
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#h264-4k-tiling" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        H.264 4K Tiling
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#jpeg-streaming" class="md-nav__link">
     <span class="md-ellipsis">
       
         JPEG Streaming
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#recording-and-replay" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Recording and Replay
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#camera-calibration-and-transform" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Camera Calibration and Transform
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#topics" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Topics
       
     </span>
   </a>
@@ -2010,29 +2090,191 @@
 
 
 <h1 id="camera-settings">Camera Settings</h1>
-<p>This page configures the camera service that interacts with the Raivin's <a href="https://www.ovt.com/products/os08a20/">OmniVision OS08A20 image sensor</a>. With the exception of the H.264 Bitrate, camera and stream sizes, it is not recommended that you change these settings.</p>
+<p>This page configures the camera service that interacts with the Maivin and Raivin's <a href="https://www.ovt.com/products/os08a20/">OmniVision OS08A20 image sensor</a> through the i.MX 8M Plus <abbr title="Image Signal Processor">ISP</abbr>.  With the exception of the H.264 bitrate, the camera mode, and the camera and stream sizes, it is not recommended that you change these settings.</p>
 <figure>
             <img align="center" alt="Camera Settings page" src="../../assets/configuration/configuration-camera.png" />
             <figcaption>Camera Settings page</figcaption>
             </figure>
 <div class="admonition tip">
 <p class="admonition-title">Tip</p>
-<p>These values are stored in the <code>/etc/default/camera</code> file on the device and can be hand-edited. This is not recommended.</p>
+<p>These values are stored in the <code>/etc/default/camera</code> file on the device and can be hand-edited.  The Web UI exposes the most common settings, the remaining keys described below are only available in the file.</p>
 </div>
 <h2 id="camera-device">Camera Device</h2>
-<p>This configures what camera device the camera service will use, which on Raivin will be <code>/dev/video3</code>.</p>
+<p>This configures what camera device the camera service will use, which on Maivin and Raivin is <code>/dev/video3</code>, the <abbr title="Image Signal Processor">ISP</abbr> output.  Stored as <code>CAMERA</code>.</p>
+<h2 id="camera-mode">Camera Mode</h2>
+<p>The camera mode selects the OS08A20 sensor's native readout mode.  It is applied by restarting the <abbr title="Image Signal Processor">ISP</abbr> with the matching sensor configuration before the camera service starts.  Stored as <code>CAMERA_MODE</code>, this setting is specific to Maivin and Raivin.</p>
+<table>
+<thead>
+<tr>
+<th>Mode</th>
+<th>Sensor Readout</th>
+<th>Frame Rate</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>1080p60</code></td>
+<td>1920x1080, horizontally binned</td>
+<td>60 <abbr title="Frames Per Second">FPS</abbr> (default)</td>
+</tr>
+<tr>
+<td><code>4k</code></td>
+<td>3840x2160, full resolution</td>
+<td>30 <abbr title="Frames Per Second">FPS</abbr></td>
+</tr>
+</tbody>
+</table>
+<p>The default <code>1080p60</code> mode gives better low-light and fast-exposure handling than the full resolution readout and is the mode the shipped model was tuned for.  The <code>4k</code> mode is required for <a href="../../../perception/4k/">4K tiled streaming</a> and has <a href="../../software/issues/#4k-camera-mode-follow-ups-edgeai-1230-edgeai-1406">known issues</a> in this release.  There is no 1080p30 mode.</p>
+<p>The camera mode is independent of the camera size below.  The <abbr title="Image Signal Processor">ISP</abbr> downscales from the native readout to the requested camera size but never upscales, so the camera size must not exceed the resolution of the selected mode.</p>
 <h2 id="camera-size">Camera Size</h2>
-<p>This sets the camera resolution which is used for the camera capture and separate from the streaming resolution. The camera resolution can be set to any resolution supported by the camera. If the camera size is set to "3840 2160", it will put the camera service into <a href="../../../perception/4k/">4K Mode</a>.</p>
+<p>This sets the camera resolution which is used for the camera capture and is separate from the streaming resolution.  Stored as <code>CAMERA_SIZE</code> as <code>"width height"</code>, the default is <code>1920 1080</code>.  Setting the camera size to <code>3840 2160</code> together with the <code>4k</code> camera mode puts the camera service into <a href="../../../perception/4k/">4K Mode</a>.</p>
 <h2 id="stream-size">Stream Size</h2>
-<p>This configures the streaming resolution for the H.264 and JPEG streaming. The H.264 stream supports up to HD resolution (1920x1080). The JPEG stream supports all resolutions but is encoded on the CPU so the practical limit is around 960x540 or 640x360 to maintain 16:9 aspect ratio.</p>
+<p>This configures the streaming resolution for the H.264 and JPEG streaming.  Stored as <code>STREAM_SIZE</code>, the default is <code>1920 1080</code>.  The hardware H.264 encoder supports up to HD resolution (1920x1080), a larger camera size is downscaled to the stream size before encoding unless <a href="#h264-4k-tiling">tiling</a> is enabled.  A stream size larger than the camera size is rejected at startup.  The JPEG stream supports all resolutions but is encoded on the CPU so the practical limit is around 960x540 or 640x360 to maintain a 16:9 aspect ratio.</p>
 <h2 id="mirror">Mirror</h2>
-<p>The camera mirror setting can flip the camera image to match the orientation of the camera. The camera can also be mirrored horizontally to provide a mirror image. Accepted values are "none", "horizontal", "vertical", and "both". This is set to "both" as the image sensor is both upside-down and inverted.</p>
-<h2 id="h264-bitrate">H.264 Bitrate</h2>
-<p>Controls the H.264 streaming compression level. The higher the bitrate, the better the quality of the image. The actual bitrate remains variable based on the scene but this value sets the cap. Possible values are "auto", "mbps5", "mbps25", "mbps50", and "mbps100". The "auto" setting is about 10 Mbps on the Raivin. This also impacts <abbr title="Binary container format for robotics log data">MCAP</abbr> recording size.</p>
+<p>The camera mirror setting can flip the camera image to match the orientation of the camera.  Accepted values are <code>none</code>, <code>horizontal</code>, <code>vertical</code>, and <code>both</code>.  Stored as <code>MIRROR</code>, this is set to <code>both</code> as the image sensor is mounted upside-down in the Maivin and Raivin enclosures.</p>
 <h2 id="h264-streaming">H.264 Streaming</h2>
-<p>This setting enables or disables the <code>/camera/h264</code> topic. This is enabled by default.</p>
+<p>This setting enables or disables the <code>camera/h264</code> topic.  Stored as <code>H264</code>, this is enabled by default.  Recording and the Web UI camera view require the H.264 stream.</p>
+<h2 id="h264-bitrate">H.264 Bitrate</h2>
+<p>Controls the H.264 streaming compression level.  The higher the bitrate, the better the quality of the image.  The actual bitrate remains variable based on the scene but this value sets the cap.  Possible values are <code>auto</code>, <code>mbps5</code>, <code>mbps25</code>, <code>mbps50</code>, and <code>mbps100</code>.  Stored as <code>H264_BITRATE</code>, the <code>auto</code> setting selects a bitrate from the stream resolution and is about 10 Mbps at 1080p.  This also impacts <abbr title="Binary container format for robotics log data">MCAP</abbr> recording size.</p>
+<h2 id="h264-4k-tiling">H.264 4K Tiling</h2>
+<p>When the camera captures at 4K the hardware encoder is limited to 1080p.  Enabling tiles splits each 4K frame into four 1080p quadrants encoded independently and published on the <code>camera/h264/tl</code>, <code>camera/h264/tr</code>, <code>camera/h264/bl</code>, and <code>camera/h264/br</code> topics.  These settings are only available in the configuration file, refer to <a href="../../../perception/4k/camera_4k/">The 4K Camera Service</a>.</p>
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>H264_TILES</code></td>
+<td><code>false</code></td>
+<td>Enable the four tile streams</td>
+</tr>
+<tr>
+<td><code>H264_TILES_FPS</code></td>
+<td><code>15</code></td>
+<td>Frame rate limit applied to the tile streams, <code>0</code> means no limit</td>
+</tr>
+<tr>
+<td><code>H264_TILES_TOPICS</code></td>
+<td><code>camera/h264/tl camera/h264/tr camera/h264/bl camera/h264/br</code></td>
+<td>The four tile topics in top-left, top-right, bottom-left, bottom-right order</td>
+</tr>
+</tbody>
+</table>
 <h2 id="jpeg-streaming">JPEG Streaming</h2>
-<p>This setting enables or disables the <code>/camera/jpeg</code> topic. This is disabled by default. Enabling this will result in higher system utilization and larger <abbr title="Binary container format for robotics log data">MCAP</abbr> files but will provide JPEG screen captures from the camera service.</p>
+<p>This setting enables or disables the <code>camera/jpeg</code> topic.  Stored as <code>JPEG</code>, this is disabled by default.  Enabling this will result in higher system utilization and larger <abbr title="Binary container format for robotics log data">MCAP</abbr> files but will provide JPEG screen captures from the camera service.  The JPEG quality is stored as <code>JPEG_QUALITY</code> with a default of <code>85</code>, quality is a weak lever on CPU usage so reduce the stream size or disable JPEG if the cost is too high.</p>
+<h2 id="recording-and-replay">Recording and Replay</h2>
+<p>The camera service can record its live H.264 stream to a raw file and replay such a file in place of the live camera.  These settings are only available in the configuration file and are intended for development and reproducible testing.</p>
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>RECORD</code></td>
+<td></td>
+<td>Record the live H.264 stream to this file along with a <code>&lt;path&gt;.json</code> sidecar</td>
+</tr>
+<tr>
+<td><code>REPLAY</code></td>
+<td></td>
+<td>Replay a previously recorded <code>.h264</code> file instead of opening the camera</td>
+</tr>
+<tr>
+<td><code>REPLAY_LOOP</code></td>
+<td><code>false</code></td>
+<td>Loop the replay on end of file</td>
+</tr>
+<tr>
+<td><code>REPLAY_FPS</code></td>
+<td></td>
+<td>Override the replay frame rate, the sidecar rate is used when empty</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p><code>RECORD</code> writes continuously with no size cap or rotation for as long as the service runs and will fill the filesystem if left set.  Clear the setting after a capture session.</p>
+</div>
+<h2 id="camera-calibration-and-transform">Camera Calibration and Transform</h2>
+<p>The camera service publishes the camera intrinsic parameters on <code>camera/info</code> and the static transform from the <code>base_link</code> frame to the camera optical frame on <code>tf_static</code>.</p>
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>CAM_INFO_PATH</code></td>
+<td></td>
+<td>Path to a camera calibration file in the <abbr title="Image Signal Processor">ISP</abbr> format.  Left empty on Maivin, the calibration matching the camera mode is selected automatically from <code>/usr/lib/imx8-isp/dewarp_config/</code></td>
+</tr>
+<tr>
+<td><code>CAM_TF_VEC</code></td>
+<td><code>0 0 0</code></td>
+<td>Translation (x y z) in meters from <code>base_link</code> to the camera optical frame</td>
+</tr>
+<tr>
+<td><code>CAM_TF_QUAT</code></td>
+<td><code>-1 1 -1 1</code></td>
+<td>Rotation quaternion (x y z w) from <code>base_link</code> to the camera optical frame</td>
+</tr>
+<tr>
+<td><code>BASE_FRAME_ID</code></td>
+<td><code>base_link</code></td>
+<td>Frame ID of the platform base</td>
+</tr>
+<tr>
+<td><code>CAMERA_FRAME_ID</code></td>
+<td><code>camera_optical</code></td>
+<td>Frame ID stamped into every published frame</td>
+</tr>
+</tbody>
+</table>
+<p>If a configured calibration file cannot be loaded the service logs a warning and falls back to built-in defaults, which are nominal for a 1080p sensor and not valid for projection or sensor fusion.</p>
+<h2 id="topics">Topics</h2>
+<p>The topics published by the camera service can be renamed when integrating with a consumer that expects different names.  Topic names are relative to the device <a href="../../../perception/topics/#hostname-namespaces">hostname namespace</a>.</p>
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>Default</th>
+<th>Schema</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>FRAME_TOPIC</code></td>
+<td><code>camera/frame</code></td>
+<td><a href="../../../perception/topics/camera/#cameraframe">CameraFrame</a></td>
+</tr>
+<tr>
+<td><code>INFO_TOPIC</code></td>
+<td><code>camera/info</code></td>
+<td><a href="../../../perception/topics/camera/#camerainfo">CameraInfo</a></td>
+</tr>
+<tr>
+<td><code>H264_TOPIC</code></td>
+<td><code>camera/h264</code></td>
+<td><a href="../../../perception/topics/camera/#camerah264">CompressedVideo</a></td>
+</tr>
+<tr>
+<td><code>JPEG_TOPIC</code></td>
+<td><code>camera/jpeg</code></td>
+<td><a href="../../../perception/topics/camera/#camerajpeg">CompressedImage</a></td>
+</tr>
+</tbody>
+</table>
 
 
 
@@ -2139,13 +2381,13 @@
         
         
           
-          <a href="../webui/" class="md-footer__link md-footer__link--next" aria-label="Next: Web UI Settings">
+          <a href="../model/" class="md-footer__link md-footer__link--next" aria-label="Next: Model Settings">
             <div class="md-footer__title">
               <span class="md-footer__direction">
                 Next
               </span>
               <div class="md-ellipsis">
-                Web UI Settings
+                Model Settings
               </div>
             </div>
             <div class="md-footer__button md-icon">

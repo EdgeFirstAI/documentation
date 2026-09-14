@@ -1458,7 +1458,7 @@
   <a href="#gps" class="md-nav__link">
     <span class="md-ellipsis">
       
-        /gps
+        gps
       
     </span>
   </a>
@@ -1870,7 +1870,7 @@
   <a href="#gps" class="md-nav__link">
     <span class="md-ellipsis">
       
-        /gps
+        gps
       
     </span>
   </a>
@@ -1944,10 +1944,10 @@
 
 
 <h1 id="gps-topics"><abbr title="Global Positioning System">GPS</abbr> Topics</h1>
-<p>The <abbr title="Global Positioning System">GPS</abbr> topic is managed by the <code>navsat</code> service and handles publishing the <abbr title="Global Positioning System">GPS</abbr> location of the device.</p>
-<p>The <abbr title="Global Positioning System">GPS</abbr> topic is published under the <code>/gps</code> topic.</p>
-<h2 id="gps">/gps</h2>
-<p>The <code>/gps</code> topic publishes information about the device's position and altitude using the <a href="../../api/sensor_msgs/#navsatfix">NatSatFix</a> schema.</p>
+<p>The <abbr title="Global Positioning System">GPS</abbr> topic is managed by the <code>navsat</code> service and handles publishing the <abbr title="Global Positioning System">GPS</abbr> location of the device.  The service reads the position from the <code>gpsd</code> daemon which interfaces with the <abbr title="Global Navigation Satellite System">GNSS</abbr> receiver, the receiver also disciplines the system clock through <code>chrony</code>.</p>
+<p>The <abbr title="Global Positioning System">GPS</abbr> topic is published under the <code>gps</code> topic, relative to the device <a href="../#hostname-namespaces">hostname namespace</a>.  The topic name and the <code>gpsd</code> address are configurable in <code>/etc/default/navsat</code>.</p>
+<h2 id="gps">gps</h2>
+<p>The <code>gps</code> topic publishes information about the device's position and altitude using the <a href="../../api/sensor_msgs/#navsatfix">NavSatFix</a> schema.</p>
 <table>
 <thead>
 <tr>
@@ -1958,7 +1958,7 @@
 <tbody>
 <tr>
 <td style="text-align: center;">Web UI</td>
-<td style="text-align: center;"><a href=""></a></td>
+<td style="text-align: center;"><a href="../../../platforms/quickstart/maivin/webui/#the-gps-page"><abbr title="Global Positioning System">GPS</abbr> Page</a></td>
 </tr>
 <tr>
 <td style="text-align: center;">Foxglove</td>

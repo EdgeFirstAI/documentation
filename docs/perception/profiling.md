@@ -32,7 +32,7 @@ The services require **Tracy v0.14.1**.  Installing that version is the whole of
 
 ## Install the Tracy profiler
 
-Prebuilt binaries are published for each platform on the [Tracy releases page][releases].  Download the archive for your workstation, unpack it, and run the profiler from it.  There is nothing to install on the device.
+Prebuilt binaries are published for each platform on the [Tracy releases page][releases].  Download the archive for your workstation, unpack it, and run the profiler from it. **There is nothing to install on the device.**
 
 | Platform | Download |
 |----------|----------|

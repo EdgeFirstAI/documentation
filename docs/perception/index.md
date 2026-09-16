@@ -11,7 +11,7 @@ The middleware services communicate with each other using the Zenoh networking m
 ![EdgeFirst Perception Middleware Diagram](assets/edgefirst-zenoh-diagram-light.png#only-light)
 ![EdgeFirst Perception Middleware Diagram](assets/edgefirst-zenoh-diagram-dark.png#only-dark)
 
-There is no message broker in the middle.  Each service is a Zenoh peer on one session and the peers discover one another through multicast scouting, so what distinguishes a service is which side of the session it touches: some only produce topics, some consume topics and publish derived ones, and some only consume.  The `zenohd` router is the exception, it is a gateway rather than a participant and exists so applications off the device can reach the same topics, refer to the [Developer Guide](dev/index.md#remote-connections).
+There is no message broker in the middle.  Each service opens its own Zenoh session and the peers discover one another through multicast scouting, so what distinguishes a service is which side of the topic space it touches: some only produce topics, some consume topics and publish derived ones, and some only consume.  The `zenohd` router is the exception, it is a gateway rather than a participant and exists so applications off the device can reach the same topics, refer to the [Developer Guide](dev/index.md#remote-connections).
 
 ## Architecture
 
@@ -55,7 +55,7 @@ The practical consequence is that decode cost tracks the number of variable-leng
 | `radar/cube` | [RadarCube](api/edgefirst_msgs.md#radarcube), DRVEGRD-171 extra long | 58 ns | 3.4 ms | 3.4 ms |
 | `lidar/points` | [PointCloud2](api/sensor_msgs.md#pointcloud2), Ouster 2048x10 128 beam | 123 ns | 784 µs | 819 µs |
 | `fusion/lidar` | [PointCloud2](api/sensor_msgs.md#pointcloud2), Ouster points with vision classes | 124 ns | 415 µs | 437 µs |
-| `model/output` | [Mask](api/edgefirst_msgs.md#mask), 640x640 over 8 classes | 53 ns | 28.1 µs | 26.8 µs |
+| `model/output` | [Mask](api/edgefirst_msgs.md#mask) carried in the [Model](api/edgefirst_msgs.md#model) message, 640x640 over 8 classes | 53 ns | 28.1 µs | 26.8 µs |
 
 A subscriber that reads a handful of fields, which is the common case, pays close to the decode cost alone.  A subscriber that walks an entire bulk payload pays for the walk either way and the advantage narrows.  The full methodology, the access and workflow patterns, and the per-schema results are in [BENCHMARKS.md][benchmarks] in the schemas repository.
 

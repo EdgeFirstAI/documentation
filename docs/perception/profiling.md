@@ -46,9 +46,11 @@ Tracy publishes a thorough manual covering the interface in far more depth than 
 
 ## Enable profiling on the device
 
-The instrumentation is compiled into every service but stays inert until it is switched on.  Each service reads an `EnvironmentFile` under `/etc/default/`, so enabling it is a configuration change and a restart.
+The instrumentation is compiled into every service but stays inert until it is switched on.  How you switch it on depends on whether the services are managed by systemd or launched by hand.
 
-Set `TRACY` to `true` in the file for the service you want to profile and restart the unit.  For the camera service:
+### System-mode services
+
+On Torizon for Maivin the services run as systemd units and each reads an `EnvironmentFile` under `/etc/default/`, so enabling profiling is a configuration change and a restart.  Set `TRACY` to `true` in the file for the service you want to profile and restart the unit.  For the camera service:
 
 ```sh
 sudo sed -i 's/^TRACY=.*/TRACY="true"/' /etc/default/camera
@@ -57,9 +59,19 @@ sudo systemctl restart camera
 
 The same applies to `model`, `fusion`, `radarpub`, `imu`, `navsat`, and `replay`.
 
-!!! tip "The lidarpub setting is commented out"
+!!! tip "The lidarpub setting ships commented out"
 
-    `/etc/default/lidarpub` ships with its `TRACY` line commented out rather than set to `false`.  Uncomment it, or add a `TRACY="true"` line, then restart the unit.
+    `/etc/default/lidarpub` ships the line as `#TRACY="false"`.  Uncommenting it on its own leaves profiling disabled, so replace it with `TRACY="true"`, or add that line separately, before restarting the unit.
+
+### User-mode services
+
+Where the services are launched from the command line with the [EdgeFirst Launcher](launcher.md) there is no `EnvironmentFile`.  Pass `--tracy` to the service instead:
+
+```sh
+edgefirst-camera --mirror none --tracy &
+```
+
+Every instrumented service accepts the flag, and `TRACY=true` in the environment does the same thing.
 
 Refer to the [platform Configuration](../platforms/configuration/index.md) section for how these files are structured and how they interact with the packaged defaults.
 
@@ -117,7 +129,7 @@ Tracy can also show sampled call stacks and memory allocation tracking, but both
 
 ## Limits
 
-- **Live only.**  Nothing is written to disk unless you use `tracy-capture`.  Profiling data does not reach an MCAP recording or EdgeFirst Studio.
+- **Nothing is saved automatically.**  A live session is kept only in memory until you save it, either with **Save trace** in the profiler or by recording with `tracy-capture` from the start.  Profiling data does not reach an MCAP recording or EdgeFirst Studio.
 - **One service at a time per profiler.**  Profiling several services concurrently needs several profiler instances.
 - **Version locked**, as described above.
 - **One process per session.**  A Tracy session shows a single service.  Relating a camera zone to the model zone which consumed that frame is done through the message timestamps in a [recording](data_collection/recording.md), not in Tracy.

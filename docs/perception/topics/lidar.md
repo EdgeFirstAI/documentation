@@ -52,13 +52,13 @@ This topic is only published if the lidarpub service is configured with a [clust
 
 ## lidar/imu
 
-The `/lidar/imu` topic publishes the inertial readings reported by the LiDAR sensor itself using the [Imu](../api/sensor_msgs.md#imu) schema.  It is published for sensors which provide one, on the Robosense E1R the readings arrive on the device information packets.  This is a separate sensor from the device IMU published on the [`imu`](imu.md) topic and is expressed in the `lidar` frame.
+The `/lidar/imu` topic publishes the inertial readings reported by the LiDAR sensor itself using the [Imu](../api/sensor_msgs.md#imu) schema.  It is published for sensors which provide one.  On the Robosense E1R the readings arrive on the device information packets.  This is a separate sensor from the device IMU published on the [`imu`](imu.md) topic and is expressed in the `lidar` frame.
 
 | Field | Populated | Notes |
 |-------|-----------|-------|
 | `angular_velocity` | Yes | Roll, pitch, and yaw rates from the sensor |
 | `linear_acceleration` | Yes | Acceleration reported by the sensor |
 | `orientation` | No | Published as the identity quaternion, the sensor does not report a fused orientation |
-| covariances | No | Left as zeros |
+| `orientation_covariance`, `angular_velocity_covariance`, `linear_acceleration_covariance` | No | All three are left as zeros |
 
 The service uses these readings for the [ground plane filter](../../platforms/configuration/lidar.md#clustering) when it is enabled, so the topic is also useful for confirming the filter has usable input.

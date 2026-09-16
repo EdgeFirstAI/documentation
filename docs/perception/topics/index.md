@@ -9,7 +9,7 @@ or multiple parallel models.
 ![EdgeFirst Perception Middleware Diagram](../assets/edgefirst-zenoh-diagram-light.png#only-light)
 ![EdgeFirst Perception Middleware Diagram](../assets/edgefirst-zenoh-diagram-dark.png#only-dark)
 
-Each service is a Zenoh peer on one session, so what distinguishes them is which side of the session they touch: some only produce topics, some consume topics and publish derived ones, and some only consume.  Refer to the [Perception Middleware overview](../index.md) for the services and the libraries they are built on.
+Each service opens its own Zenoh session and joins the others as a peer, so what distinguishes them is which side of the topic space they touch: some only produce topics, some consume topics and publish derived ones, and some only consume.  Refer to the [Perception Middleware overview](../index.md) for the services and the libraries they are built on.
 
 These middleware applications publish messages and subscribe to messages from other publishers on what is referred to as a topic.
 Services will often publish to multiple topics within a namespace, for example the camera service uses the `camera` namespace

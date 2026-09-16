@@ -57,6 +57,12 @@ sudo sed -i 's/^TRACY=.*/TRACY="true"/' /etc/default/camera
 sudo systemctl restart camera
 ```
 
+To disable Tracy you would use
+```sh
+sudo sed -i 's/^TRACY=.*/TRACY="false"/' /etc/default/camera
+sudo systemctl restart camera
+```
+
 The same applies to `model`, `fusion`, `radarpub`, `imu`, `navsat`, and `replay`.
 
 !!! tip "The lidarpub setting ships commented out"

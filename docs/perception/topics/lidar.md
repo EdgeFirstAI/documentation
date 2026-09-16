@@ -1,13 +1,13 @@
 # LiDAR Topics
 
-The lidar topics are managed by the `lidarpub` service and handles interfacing with a connected lidar to produce lidar point clouds, reflectivity maps, and depth maps.  The service can cluster the point cloud and remove the ground plane before clustering, and publishes the static transform from the `base_link` frame to the `lidar` frame on the `tf_static` topic.
+The lidar topics are managed by the `lidarpub` service and handles interfacing with a connected lidar to produce lidar point clouds.  The service can cluster the point cloud and remove the ground plane before clustering, and publishes the static transform from the `base_link` frame to the `lidar` frame on the `tf_static` topic.
 
 - Robosense E1R
 - Ouster OS1
 - DBSCAN and voxel clustering
 - IMU-guided ground plane filter
 
-The lidar topics are published under the `lidar` namespace and offer the following sub-topics: `lidar/points`, `lidar/reflect`, `lidar/depth`, and `lidar/clusters`.  The sensor type, the density of the lidar points, the frequency of updates, the field of view, and the clustering are configurable through the `lidarpub` service, see the [LiDAR service configuration](../../platforms/configuration/lidar.md) documentation for details.  Topic names are relative to the device [hostname namespace](index.md#hostname-namespaces).
+The lidar topics are published under the `lidar` namespace and offer the following sub-topics: `lidar/points`, `lidar/clusters`, and `lidar/imu`.  The sensor type, the density of the lidar points, the frequency of updates, the field of view, and the clustering are configurable through the `lidarpub` service, see the [LiDAR service configuration](../../platforms/configuration/lidar.md) documentation for details.  Topic names are relative to the device [hostname namespace](index.md#hostname-namespaces).
 
 ## lidar/points
 
@@ -27,26 +27,6 @@ The XYZ coordinate system follows the [standard ROS convention](https://www.ros.
 | Web UI | [LiDAR Page](../../platforms/quickstart/raivin/webui.md#the-lidar-page) |
 | Foxglove | [PointCloud2 Example](https://docs.foxglove.dev/docs/visualization/panels/3d) |
 | SDK | [LiDAR Points Example](../dev/examples/lidar.md#lidar-points) |
-
-## lidar/reflect
-
-The `/lidar/reflect` topic publishes the reflectivity map using the [Image](../api/sensor_msgs.md#image) schema. The encoding of the image is `mono8`. The value of a pixel is the reflectivity of that point. The image width depends on the number of columns configured on the lidar.  These images are published for the Ouster sensor.
-
-| **Usage** | **Link** |
-|:------------------:|:------------------:|
-| Web UI | |
-| Foxglove | [Image Example](https://docs.foxglove.dev/docs/visualization/panels/image) |
-| SDK | [LiDAR Reflect Example](../dev/examples/lidar.md#lidar-reflect) |
-
-## lidar/depth
-
-The `/lidar/depth` topic publishes the depth map using the [Image](../api/sensor_msgs.md#image) schema. The encoding of the image is `mono16`. The value of a pixel is the distance from the lidar to the point in millimeters. The image width depends on the number of columns configured on the lidar.  These images are published for the Ouster sensor.
-
-| **Usage** | **Link** |
-|:------------------:|:------------------:|
-| Web UI | |
-| Foxglove | [Image Example](https://docs.foxglove.dev/docs/visualization/panels/image) |
-| SDK | [LiDAR Depth Example](../dev/examples/lidar.md#lidar-depth) |
 
 ## lidar/clusters
 
@@ -69,3 +49,16 @@ This topic is only published if the lidarpub service is configured with a [clust
 | Web UI | [LiDAR Page](../../platforms/quickstart/raivin/webui.md#the-lidar-page) |
 | Foxglove | [PointCloud2 Example](https://docs.foxglove.dev/docs/visualization/panels/3d) |
 | SDK | [LiDAR Clusters Example](../dev/examples/lidar.md#lidar-clusters) |
+
+## lidar/imu
+
+The `/lidar/imu` topic publishes the inertial readings reported by the LiDAR sensor itself using the [Imu](../api/sensor_msgs.md#imu) schema.  It is published for sensors which provide one, on the Robosense E1R the readings arrive on the device information packets.  This is a separate sensor from the device IMU published on the [`imu`](imu.md) topic and is expressed in the `lidar` frame.
+
+| Field | Populated | Notes |
+|-------|-----------|-------|
+| `angular_velocity` | Yes | Roll, pitch, and yaw rates from the sensor |
+| `linear_acceleration` | Yes | Acceleration reported by the sensor |
+| `orientation` | No | Published as the identity quaternion, the sensor does not report a fused orientation |
+| covariances | No | Left as zeros |
+
+The service uses these readings for the [ground plane filter](../../platforms/configuration/lidar.md#clustering) when it is enabled, so the topic is also useful for confirming the filter has usable input.

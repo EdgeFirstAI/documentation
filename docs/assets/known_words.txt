@@ -339,6 +339,7 @@ lsusb
 luma
 lvis
 lz4
+macos
 maivin
 manylinux
 mariescu
@@ -413,6 +414,7 @@ nmea
 nms
 normalised
 npu
+ns
 nullable
 num
 numpy

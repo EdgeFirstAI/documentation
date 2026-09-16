@@ -88,7 +88,7 @@ schemas used.  Topics marked optional depend on the service configuration.
 | `fusion/radar`, `fusion/lidar` | [PointCloud2](../api/sensor_msgs.md#pointcloud2) | fusion | Points annotated with vision classes |
 | `fusion/occupancy` | [PointCloud2](../api/sensor_msgs.md#pointcloud2) | fusion | Occupancy grid |
 | `fusion/boxes3d` | [Detect](../api/edgefirst_msgs.md#detect) | fusion | 3D bounding boxes |
-| `fusion/model_output` | [Mask](../api/edgefirst_msgs.md#mask) | fusion | Optional RadarExp model output |
+| `fusion/model_output` | [Mask](../api/edgefirst_msgs.md#mask) | fusion | Optional EdgeFirst Fusion Model output |
 | `imu` | [Imu](../api/sensor_msgs.md#imu) | imu | Orientation and motion |
 | `gps` | [NavSatFix](../api/sensor_msgs.md#navsatfix) | navsat | GPS position |
 | `tf_static` | [TransformStamped](../api/geometry_msgs.md#transformstamped) | camera, radarpub, lidarpub, fusion | Static sensor transforms from `base_link` |

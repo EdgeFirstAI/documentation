@@ -59,7 +59,7 @@ The `/radar/cube` topic publishes information about the received radar sensor da
 
 !!! note
 
-    This topic is only published if the radarpub service is configured with the [radar cube](../../platforms/configuration/radar.md#enable-cube) publishing enabled.  The cube consumes about 240 Mbps on the sensor Ethernet link and a CPU core, enable it only when training or running a RadarExp fusion model.
+    This topic is only published if the radarpub service is configured with the [radar cube](../../platforms/configuration/radar.md#enable-cube) publishing enabled.  The cube consumes about 240 Mbps on the sensor Ethernet link and a CPU core, enable it only when training or running an EdgeFirst Fusion Model.
 
 | **Usage** | **Link** |
 |:------------------:|:------------------:|

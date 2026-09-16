@@ -2032,12 +2032,12 @@
 
 
 <h1 id="fusion-topics">Fusion Topics</h1>
-<p>The fusion topics are managed by the <code>fusion</code> service which combines the radar and <abbr title="Light Detection and Ranging">LiDAR</abbr> point clouds with the vision model output.  The service implements a late-fusion pipeline which projects each sensor point onto the camera image using the camera intrinsics from <code>camera/info</code> and the sensor transforms from <code>tf_static</code>, and annotates the point with the class and instance of the detection box or segmentation mask it falls in.  The classified points are clustered into 3D bounding boxes and an occupancy grid.  The service can also run a <a href="../../../models/fusion/">RadarExp</a> radar fusion model on the radar cube and camera frames.</p>
+<p>The fusion topics are managed by the <code>fusion</code> service which combines the radar and <abbr title="Light Detection and Ranging">LiDAR</abbr> point clouds with the vision model output.  The service implements a late-fusion pipeline which projects each sensor point onto the camera image using the camera intrinsics from <code>camera/info</code> and the sensor transforms from <code>tf_static</code>, and annotates the point with the class and instance of the detection box or segmentation mask it falls in.  The classified points are clustered into 3D bounding boxes and an occupancy grid.  The service can also run an <a href="../../../models/fusion/">EdgeFirst Fusion Model</a> on the radar cube and camera frames.</p>
 <ul>
 <li>Radar and <abbr title="Light Detection and Ranging">LiDAR</abbr> late fusion with the <a href="../model/#modeloutput">model output</a></li>
 <li>3D bounding boxes from the clustered points</li>
 <li>Occupancy grid</li>
-<li>RadarExp fusion model on the radar cube (<abbr title="TensorFlow Lite">TFLite</abbr>)</li>
+<li>EdgeFirst Fusion Model on the radar cube (<abbr title="TensorFlow Lite">TFLite</abbr>)</li>
 <li>ByteTrack tracking of the fused objects</li>
 </ul>
 <p>The fusion topics are published under the <code>fusion</code> namespace and offer the following sub-topics: <code>fusion/radar</code>, <code>fusion/lidar</code>, <code>fusion/occupancy</code>, <code>fusion/boxes3d</code>, and <code>fusion/model_output</code>.  Fusion parameters are configurable through the <code>fusion</code> service.  See the <a href="../../../platforms/configuration/fusion/">fusion service configuration</a> documentation for details.  Topic names are relative to the device <a href="../#hostname-namespaces">hostname namespace</a>.</p>
@@ -2189,7 +2189,7 @@
 <p>The <code>fusion/boxes3d</code> topic publishes 3D bounding boxes for the detected objects using the custom <a href="../../api/edgefirst_msgs/#detect">Detect</a> schema.  The boxes are built from the clustered sensor points assigned to each detected object, the source sensor is selected with the <code>BBOX3D_SRC</code> setting, radar by default on the Raivin.  Each box carries the label and score of the vision detection along with the distance and radial speed measured by the sensor, and the tracking information when tracking is enabled.  The message frame ID is the source sensor frame.</p>
 <p>This topic is only published when the fusion service is configured with a 3D box source and the corresponding sensor input topic.</p>
 <h2 id="fusionmodel_output">fusion/model_output</h2>
-<p>The <code>fusion/model_output</code> topic publishes the output grid of the RadarExp fusion model with the custom <a href="../../api/edgefirst_msgs/#mask">Mask</a> schema.  This contains the fusion model bird's eye view occupancy prediction as a mask which can be used to confirm the model is working as expected.  The grid geometry is described by the range and angle bins of the fusion service configuration.</p>
+<p>The <code>fusion/model_output</code> topic publishes the output grid of the EdgeFirst Fusion Model with the custom <a href="../../api/edgefirst_msgs/#mask">Mask</a> schema.  This contains the fusion model bird's eye view occupancy prediction as a mask which can be used to confirm the model is working as expected.  The grid geometry is described by the range and angle bins of the fusion service configuration.</p>
 <p>When tracking is enabled on the fusion service, the <code>fusion/model_output/tracked</code> topic publishes the same grid after tracking the occupied cells over time with the same <a href="../../api/edgefirst_msgs/#mask">Mask</a> schema.</p>
 <p>These topics are only published when the fusion service is configured with a <a href="../../../platforms/configuration/fusion/#radar-fusion-model">radar fusion model</a>, which also requires the radar cube to be enabled.</p>
 

@@ -2136,7 +2136,7 @@
 
 
 <h1 id="fusion-settings-raivin-only">Fusion Settings (Raivin-only)</h1>
-<p>These settings configure the fusion service which combines the radar and <abbr title="Light Detection and Ranging">LiDAR</abbr> point clouds with the vision model output and provides output on the <a href="../../../perception/topics/fusion/">fusion topics</a>.  The fusion service implements two pipelines: a late-fusion pipeline which projects the sensor points onto the camera image and annotates every point with the vision class and instance it falls in, and an optional radar fusion model pipeline which runs a <a href="../../../models/fusion/">RadarExp</a> model on the radar cube and camera frames.</p>
+<p>These settings configure the fusion service which combines the radar and <abbr title="Light Detection and Ranging">LiDAR</abbr> point clouds with the vision model output and provides output on the <a href="../../../perception/topics/fusion/">fusion topics</a>.  The fusion service implements two pipelines: a late-fusion pipeline which projects the sensor points onto the camera image and annotates every point with the vision class and instance it falls in, and an optional radar fusion model pipeline which runs an <a href="../../../models/fusion/">EdgeFirst Fusion Model</a> on the radar cube and camera frames.</p>
 <figure>
             <img align="center" alt="Fusion Settings page" src="../../assets/configuration/configuration-fusion.png" />
             <figcaption>Fusion Settings page</figcaption>
@@ -2231,7 +2231,7 @@
 </tbody>
 </table>
 <h2 id="radar-fusion-model">Radar Fusion Model</h2>
-<p>The radar fusion model pipeline runs a <a href="../../../models/fusion/">RadarExp</a> model on the radar cube and camera frames to predict a bird's eye view occupancy grid.  The Raivin ships with the ultra-short range RadarExp models under <code>/usr/share/edgefirst/fusion/</code>, the pipeline is disabled until a model is configured.  Refer to <a href="../../software/model_uploads/">Uploading Models</a> for deploying a model trained in EdgeFirst Studio.</p>
+<p>The radar fusion model pipeline runs an <a href="../../../models/fusion/">EdgeFirst Fusion Model</a> on the radar cube and camera frames to predict a bird's eye view occupancy grid.  The Raivin ships with the ultra-short range EdgeFirst Fusion Models under <code>/usr/share/edgefirst/fusion/</code>, the pipeline is disabled until a model is configured.  Refer to <a href="../../software/model_uploads/">Uploading Models</a> for deploying a model trained in EdgeFirst Studio.</p>
 <table>
 <thead>
 <tr>

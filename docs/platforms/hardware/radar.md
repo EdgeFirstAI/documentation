@@ -1,6 +1,6 @@
 # Radar Module
 
-The Raivin configuration includes an integrated [DRVEGRD-169 radar module][radar] from [smartmicro][smart].  The radar module is internally connected to the Raivin which provides power and data communications interfaces.  The primary data and control interface uses the CAN bus protocol.  The radar module is also connected through an internal automotive Ethernet interface which is used to transmit the [radar data cube][cube] used by the RadarExp Fusion model.
+The Raivin configuration includes an integrated [DRVEGRD-169 radar module][radar] from [smartmicro][smart].  The radar module is internally connected to the Raivin which provides power and data communications interfaces.  The primary data and control interface uses the CAN bus protocol.  The radar module is also connected through an internal automotive Ethernet interface which is used to transmit the [radar data cube][cube] used by the EdgeFirst Fusion Model.
 
 ## Specifications
 
@@ -8,7 +8,7 @@ The DRVEGRD 169 radar module is a 79GHz radar sensor for multiple automotive app
 
 ## Networking
 
-The radar module is connected to the Raivin using two networking interfaces.  The primary interface is the `can0` interface which is used to configure the radar module and receive the radar point-cloud.  This interface is required to control the radar module.  The secondary interface is the `ethernet1` interface which is used to transmit the radar data cube to the Raivin.  This interface is required to provide input to the RadarExp Fusion model, but is not required for the radar module to function in point-cloud mode.  The radar data cube generates about 300Mb/s of data which is transmitted to the Raivin for processing.
+The radar module is connected to the Raivin using two networking interfaces.  The primary interface is the `can0` interface which is used to configure the radar module and receive the radar point-cloud.  This interface is required to control the radar module.  The secondary interface is the `ethernet1` interface which is used to transmit the radar data cube to the Raivin.  This interface is required to provide input to the EdgeFirst Fusion Model, but is not required for the radar module to function in point-cloud mode.  The radar data cube generates about 300Mb/s of data which is transmitted to the Raivin for processing.
 
 ### CAN Configuration
 

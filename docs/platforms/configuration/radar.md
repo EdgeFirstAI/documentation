@@ -25,7 +25,7 @@ The frequency sweep controls the detection range of the radar.  The following br
 - medium: 56m
 - long: 130m
 
-Stored as `FREQUENCY_SWEEP`, the Raivin default is `ultra-short` which matches the shipped RadarExp fusion models.
+Stored as `FREQUENCY_SWEEP`, the Raivin default is `ultra-short` which matches the shipped EdgeFirst Fusion Models.
 
 !!! note
 

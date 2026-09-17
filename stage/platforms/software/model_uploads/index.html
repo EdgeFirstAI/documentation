@@ -1014,6 +1014,8 @@
       
         
       
+        
+      
     
     
     
@@ -1906,7 +1908,7 @@
 </div>
 <h2 id="getting-new-models">Getting New Models</h2>
 <p>You can <a href="../../../models/">train models using EdgeFirst Studio</a>, both <a href="../../../models/training/vision/">Vision models</a> and <a href="../../../models/training/fusion/">Fusion Radar models</a>.  Once the models are trained, they can be downloaded from their respective, completed training sessions.  The Model service accepts quantized <abbr title="TensorFlow Lite">TFLite</abbr> models with the EdgeFirst configuration embedded, which is how EdgeFirst Studio exports <a href="../../../models/modelpack/">ModelPack</a> and <a href="../../../models/ultralytics/">Ultralytics</a> models for the i.MX 8M Plus.</p>
-<p>The models shipped with the device are installed under <code>/usr/share/edgefirst/modelzoo/</code> for the vision model and <code>/usr/share/edgefirst/fusion/</code> for the RadarExp fusion models.  These directories are part of the read-only operating system image, uploaded models are stored under the <code>torizon</code> user home directory instead.</p>
+<p>The models shipped with the device are installed under <code>/usr/share/edgefirst/modelzoo/</code> for the vision model and <code>/usr/share/edgefirst/fusion/</code> for the EdgeFirst Fusion Models.  These directories are part of the read-only operating system image, uploaded models are stored under the <code>torizon</code> user home directory instead.</p>
 <h2 id="uploading-models-to-the-raivin">Uploading Models to the Raivin</h2>
 <p>In the <a href="../../networking/ssh/#secure-copy">SCP section in the <abbr title="Secure Shell">SSH</abbr> Tutorial</a>, files can be uploaded to the Raivin using the command:</p>
 <div class="highlight"><pre><span></span><code>scp<span class="w"> </span>input_file<span class="w"> </span>torizon@verdin-imx8mp-XXXXXXX:.
@@ -1958,7 +1960,7 @@ fusion.tflite<span class="w">  </span>modelpack.tflite
 <p>The Fusion Service model can be configured from the "The Radar model" field of the <a href="../../configuration/fusion/">Fusion Settings page</a>, or by <abbr title="Secure Shell">SSH</abbr> into the device and editing the <code>/etc/default/fusion</code> file, using the following the command:</p>
 <div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>vi<span class="w"> </span>/etc/default/fusion
 </code></pre></div>
-<p>Change the model line to point to the new Fusion model <code>/home/torizon/fusion.tflite</code>.  The fusion model pipeline is disabled while this setting is empty, the RadarExp models shipped with the Raivin are available under <code>/usr/share/edgefirst/fusion/</code>.</p>
+<p>Change the model line to point to the new Fusion model <code>/home/torizon/fusion.tflite</code>.  The fusion model pipeline is disabled while this setting is empty, the EdgeFirst Fusion Models shipped with the Raivin are available under <code>/usr/share/edgefirst/fusion/</code>.</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># Path to the radar-camera fusion model (TFLite).</span>
 <span class="na">MODEL</span><span class="o">=</span><span class="s">"/home/torizon/fusion.tflite"</span>
 <span class="c1">#MODEL="/usr/share/edgefirst/fusion/radarexp-ultra-short.tflite"</span>

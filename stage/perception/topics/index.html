@@ -1016,6 +1016,8 @@
       
         
       
+        
+      
     
     
     
@@ -1088,6 +1090,34 @@
     
   
     EdgeFirst Launcher
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../profiling/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Profiling the Middleware
   
 
     
@@ -1207,7 +1237,7 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8_4" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8_5" checked>
         
           
           <div class="md-nav__link md-nav__container">
@@ -1229,14 +1259,14 @@
             </a>
             
               
-              <label class="md-nav__link md-nav__link--active" for="__nav_8_4" id="__nav_8_4_label" tabindex="0">
+              <label class="md-nav__link md-nav__link--active" for="__nav_8_5" id="__nav_8_5_label" tabindex="0">
                 <span class="md-nav__icon md-icon"></span>
               </label>
             
           </div>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_8_4_label" aria-expanded="true">
-          <label class="md-nav__title" for="__nav_8_4">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_8_5_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_8_5">
             <span class="md-nav__icon md-icon"></span>
             
   
@@ -1902,21 +1932,9 @@ For example the camera service is tasked with configuring the camera source and 
 subscribes to the camera service to receive camera frames which are then processed by the model and, in turn, publish the
 model results.  There are numerous such services, some can be run in multiple instances to support multiple camera inputs
 or multiple parallel models.</p>
-<pre class="mermaid"><code>graph LR
-    camera --&gt; model["vision model"] --&gt; zenoh
-    radarpub --&gt; fusion["fusion"] --&gt; zenoh
-    lidarpub --&gt; fusion
-    lidarpub --&gt; zenoh
-    camera --&gt; fusion
-    radarpub --&gt; zenoh
-    camera --&gt; zenoh
-    model --&gt; fusion
-    navsat --&gt; zenoh
-    imu --&gt; zenoh
-    zenoh --&gt; recorder --&gt; mcap
-    zenoh --&gt; websrv --&gt; https
-    zenoh --&gt; user["user apps"]
-    https --&gt; user</code></pre>
+<p><img alt="EdgeFirst Perception Middleware Diagram" src="../assets/edgefirst-zenoh-diagram-light.png#only-light" />
+<img alt="EdgeFirst Perception Middleware Diagram" src="../assets/edgefirst-zenoh-diagram-dark.png#only-dark" /></p>
+<p>Each service opens its own Zenoh session and joins the others as a peer, so what distinguishes them is which side of the topic space they touch: some only produce topics, some consume topics and publish derived ones, and some only consume.  Refer to the <a href="../">Perception Middleware overview</a> for the services and the libraries they are built on.</p>
 <p>These middleware applications publish messages and subscribe to messages from other publishers on what is referred to as a topic.
 Services will often publish to multiple topics within a namespace, for example the camera service uses the <code>camera</code> namespace
 to publish a few topics such as <code>camera/info</code> which publishes information about the camera such as resolution and intrinsic
@@ -1930,7 +1948,8 @@ protocol.  Messages published over Zenoh support various encodings defined throu
 the Common Data Representation (<abbr title="Common Data Representation">CDR</abbr>) encoding for messages, this is an open standard encoding and the same used by ROS 2.  The
 <abbr title="Common Data Representation">CDR</abbr> encoding uses schemas to represent each type of message, the EdgeFirst Middleware uses the ROS 2 common interfaces whenever
 possible and provides custom schemas when required.  The schemas are published on GitHub and we provide premade bindings for
-Python, Rust, and C, refer to the <a href="../api/"><abbr title="Application Programming Interface">API</abbr> Reference</a>.</p>
+Python, Rust, and C, refer to the <a href="../api/"><abbr title="Application Programming Interface">API</abbr> Reference</a> for the message definitions and to <a href="../#message-schemas">Message Schemas</a>
+for how the encoding decodes without copying.</p>
 <h2 id="hostname-namespaces">Hostname Namespaces</h2>
 <p>Every EdgeFirst service opens its Zenoh session with the session namespace set to the device hostname.  The services publish and
 subscribe on bare application keys such as <code>camera/h264</code>, and Zenoh prefixes the namespace so the key on the wire is
@@ -2044,10 +2063,10 @@ schemas used.  Topics marked optional depend on the service configuration.</p>
 <td><abbr title="Light Detection and Ranging">LiDAR</abbr> point clouds</td>
 </tr>
 <tr>
-<td><code>lidar/depth</code>, <code>lidar/reflect</code></td>
-<td><a href="../api/sensor_msgs/#image">Image</a></td>
+<td><code>lidar/imu</code></td>
+<td><a href="../api/sensor_msgs/#imu">Imu</a></td>
 <td>lidarpub</td>
-<td><abbr title="Light Detection and Ranging">LiDAR</abbr> depth and reflectivity images</td>
+<td>Angular velocity and acceleration from the <abbr title="Light Detection and Ranging">LiDAR</abbr> sensor, where it provides one</td>
 </tr>
 <tr>
 <td><code>fusion/radar</code>, <code>fusion/lidar</code></td>
@@ -2071,7 +2090,7 @@ schemas used.  Topics marked optional depend on the service configuration.</p>
 <td><code>fusion/model_output</code></td>
 <td><a href="../api/edgefirst_msgs/#mask">Mask</a></td>
 <td>fusion</td>
-<td>Optional RadarExp model output</td>
+<td>Optional EdgeFirst Fusion Model output</td>
 </tr>
 <tr>
 <td><code>imu</code></td>

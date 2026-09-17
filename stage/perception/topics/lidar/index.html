@@ -1016,6 +1016,8 @@
       
         
       
+        
+      
     
     
     
@@ -1088,6 +1090,34 @@
     
   
     EdgeFirst Launcher
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../profiling/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Profiling the Middleware
   
 
     
@@ -1207,7 +1237,7 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8_4" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8_5" checked>
         
           
           <div class="md-nav__link md-nav__container">
@@ -1229,14 +1259,14 @@
             </a>
             
               
-              <label class="md-nav__link " for="__nav_8_4" id="__nav_8_4_label" tabindex="0">
+              <label class="md-nav__link " for="__nav_8_5" id="__nav_8_5_label" tabindex="0">
                 <span class="md-nav__icon md-icon"></span>
               </label>
             
           </div>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_8_4_label" aria-expanded="true">
-          <label class="md-nav__title" for="__nav_8_4">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_8_5_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_8_5">
             <span class="md-nav__icon md-icon"></span>
             
   
@@ -1410,32 +1440,21 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#lidarreflect" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        lidar/reflect
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#lidardepth" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        lidar/depth
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#lidarclusters" class="md-nav__link">
     <span class="md-ellipsis">
       
         lidar/clusters
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lidarimu" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        lidar/imu
       
     </span>
   </a>
@@ -1911,32 +1930,21 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#lidarreflect" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        lidar/reflect
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#lidardepth" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        lidar/depth
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#lidarclusters" class="md-nav__link">
     <span class="md-ellipsis">
       
         lidar/clusters
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lidarimu" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        lidar/imu
       
     </span>
   </a>
@@ -2010,14 +2018,14 @@
 
 
 <h1 id="lidar-topics"><abbr title="Light Detection and Ranging">LiDAR</abbr> Topics</h1>
-<p>The lidar topics are managed by the <code>lidarpub</code> service and handles interfacing with a connected lidar to produce lidar point clouds, reflectivity maps, and depth maps.  The service can cluster the point cloud and remove the ground plane before clustering, and publishes the static transform from the <code>base_link</code> frame to the <code>lidar</code> frame on the <code>tf_static</code> topic.</p>
+<p>The lidar topics are managed by the <code>lidarpub</code> service and handles interfacing with a connected lidar to produce lidar point clouds.  The service can cluster the point cloud and remove the ground plane before clustering, and publishes the static transform from the <code>base_link</code> frame to the <code>lidar</code> frame on the <code>tf_static</code> topic.</p>
 <ul>
 <li>Robosense E1R</li>
 <li>Ouster OS1</li>
 <li><abbr title="Density-Based Spatial Clustering of Applications with Noise">DBSCAN</abbr> and voxel clustering</li>
 <li><abbr title="Inertial Measurement Unit">IMU</abbr>-guided ground plane filter</li>
 </ul>
-<p>The lidar topics are published under the <code>lidar</code> namespace and offer the following sub-topics: <code>lidar/points</code>, <code>lidar/reflect</code>, <code>lidar/depth</code>, and <code>lidar/clusters</code>.  The sensor type, the density of the lidar points, the frequency of updates, the field of view, and the clustering are configurable through the <code>lidarpub</code> service, see the <a href="../../../platforms/configuration/lidar/"><abbr title="Light Detection and Ranging">LiDAR</abbr> service configuration</a> documentation for details.  Topic names are relative to the device <a href="../#hostname-namespaces">hostname namespace</a>.</p>
+<p>The lidar topics are published under the <code>lidar</code> namespace and offer the following sub-topics: <code>lidar/points</code>, <code>lidar/clusters</code>, and <code>lidar/imu</code>.  The sensor type, the density of the lidar points, the frequency of updates, the field of view, and the clustering are configurable through the <code>lidarpub</code> service, see the <a href="../../../platforms/configuration/lidar/"><abbr title="Light Detection and Ranging">LiDAR</abbr> service configuration</a> documentation for details.  Topic names are relative to the device <a href="../#hostname-namespaces">hostname namespace</a>.</p>
 <h2 id="lidarpoints">lidar/points</h2>
 <p>The <code>/lidar/points</code> topic publishes information about the lidar points using the <a href="../../api/sensor_msgs/#pointcloud2">PointCloud2</a> schema. The point cloud will have the fields <code>x</code>, <code>y</code>, <code>z</code>, and <code>reflect</code>.</p>
 <table>
@@ -2076,54 +2084,6 @@
 <tr>
 <td style="text-align: center;"><abbr title="Software Development Kit">SDK</abbr></td>
 <td style="text-align: center;"><a href="../../dev/examples/lidar/#lidar-points"><abbr title="Light Detection and Ranging">LiDAR</abbr> Points Example</a></td>
-</tr>
-</tbody>
-</table>
-<h2 id="lidarreflect">lidar/reflect</h2>
-<p>The <code>/lidar/reflect</code> topic publishes the reflectivity map using the <a href="../../api/sensor_msgs/#image">Image</a> schema. The encoding of the image is <code>mono8</code>. The value of a pixel is the reflectivity of that point. The image width depends on the number of columns configured on the lidar.  These images are published for the Ouster sensor.</p>
-<table>
-<thead>
-<tr>
-<th style="text-align: center;"><strong>Usage</strong></th>
-<th style="text-align: center;"><strong>Link</strong></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align: center;">Web UI</td>
-<td style="text-align: center;"></td>
-</tr>
-<tr>
-<td style="text-align: center;">Foxglove</td>
-<td style="text-align: center;"><a href="https://docs.foxglove.dev/docs/visualization/panels/image">Image Example</a></td>
-</tr>
-<tr>
-<td style="text-align: center;"><abbr title="Software Development Kit">SDK</abbr></td>
-<td style="text-align: center;"><a href="../../dev/examples/lidar/#lidar-reflect"><abbr title="Light Detection and Ranging">LiDAR</abbr> Reflect Example</a></td>
-</tr>
-</tbody>
-</table>
-<h2 id="lidardepth">lidar/depth</h2>
-<p>The <code>/lidar/depth</code> topic publishes the depth map using the <a href="../../api/sensor_msgs/#image">Image</a> schema. The encoding of the image is <code>mono16</code>. The value of a pixel is the distance from the lidar to the point in millimeters. The image width depends on the number of columns configured on the lidar.  These images are published for the Ouster sensor.</p>
-<table>
-<thead>
-<tr>
-<th style="text-align: center;"><strong>Usage</strong></th>
-<th style="text-align: center;"><strong>Link</strong></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align: center;">Web UI</td>
-<td style="text-align: center;"></td>
-</tr>
-<tr>
-<td style="text-align: center;">Foxglove</td>
-<td style="text-align: center;"><a href="https://docs.foxglove.dev/docs/visualization/panels/image">Image Example</a></td>
-</tr>
-<tr>
-<td style="text-align: center;"><abbr title="Software Development Kit">SDK</abbr></td>
-<td style="text-align: center;"><a href="../../dev/examples/lidar/#lidar-depth"><abbr title="Light Detection and Ranging">LiDAR</abbr> Depth Example</a></td>
 </tr>
 </tbody>
 </table>
@@ -2195,6 +2155,40 @@
 </tr>
 </tbody>
 </table>
+<h2 id="lidarimu">lidar/imu</h2>
+<p>The <code>/lidar/imu</code> topic publishes the inertial readings reported by the <abbr title="Light Detection and Ranging">LiDAR</abbr> sensor itself using the <a href="../../api/sensor_msgs/#imu">Imu</a> schema.  It is published for sensors which provide one.  On the Robosense E1R the readings arrive on the device information packets.  This is a separate sensor from the device <abbr title="Inertial Measurement Unit">IMU</abbr> published on the <a href="../imu/"><code>imu</code></a> topic and is expressed in the <code>lidar</code> frame.</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Populated</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>angular_velocity</code></td>
+<td>Yes</td>
+<td>Roll, pitch, and yaw rates from the sensor</td>
+</tr>
+<tr>
+<td><code>linear_acceleration</code></td>
+<td>Yes</td>
+<td>Acceleration reported by the sensor</td>
+</tr>
+<tr>
+<td><code>orientation</code></td>
+<td>No</td>
+<td>Published as the identity quaternion, the sensor does not report a fused orientation</td>
+</tr>
+<tr>
+<td><code>orientation_covariance</code>, <code>angular_velocity_covariance</code>, <code>linear_acceleration_covariance</code></td>
+<td>No</td>
+<td>All three are left as zeros</td>
+</tr>
+</tbody>
+</table>
+<p>The service uses these readings for the <a href="../../../platforms/configuration/lidar/#clustering">ground plane filter</a> when it is enabled, so the topic is also useful for confirming the filter has usable input.</p>
 
 
 

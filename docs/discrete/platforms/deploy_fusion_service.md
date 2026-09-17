@@ -6,7 +6,7 @@ The Fusion Service model can be configured from the "The Radar model" field of t
 sudo vi /etc/default/fusion
 ```
 
-Change the model line to point to the new Fusion model `/home/torizon/fusion.tflite`.  The fusion model pipeline is disabled while this setting is empty, the RadarExp models shipped with the Raivin are available under `/usr/share/edgefirst/fusion/`.
+Change the model line to point to the new Fusion model `/home/torizon/fusion.tflite`.  The fusion model pipeline is disabled while this setting is empty, the EdgeFirst Fusion Models shipped with the Raivin are available under `/usr/share/edgefirst/fusion/`.
 
 ```ini
 # Path to the radar-camera fusion model (TFLite).

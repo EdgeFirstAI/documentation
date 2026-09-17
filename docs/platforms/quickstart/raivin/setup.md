@@ -35,7 +35,7 @@ From here, we recommend that you check out the Camera page by clicking the "Came
 
 !!! note
 
-    The ultra-short range RadarExp model included in this release was trained for a fixed camera and mostly tested indoors.  The radar publisher is configured for the low center frequency and ultra-short frequency sweep to match.
+    The ultra-short range EdgeFirst Fusion Model included in this release was trained for a fixed camera and mostly tested indoors.  The radar publisher is configured for the low center frequency and ultra-short frequency sweep to match.
 
 {% include-markdown "discrete/platforms/edgefirst_performance_scaling.md" %}
 

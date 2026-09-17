@@ -104,7 +104,7 @@ Every service shares the same Zenoh networking options at the end of its configu
 | `LISTEN` | | Zenoh endpoints to listen on |
 | `NO_MULTICAST_SCOUTING` | `false` | Disable multicast discovery, use `CONNECT` and `LISTEN` instead |
 | `RUST_LOG` | `info` | Log level filter, refer to the [RUST_LOG documentation][rustlog] |
-| `TRACY` | `false` | Enable the [Tracy](../../perception/4k/index.md#monitoring-and-debugging) profiler broadcast |
+| `TRACY` | `false` | Enable the [Tracy](../../perception/profiling.md) profiler broadcast |
 
 The services publish their topics inside a Zenoh namespace equal to the device hostname, refer to [Middleware Topics](../../perception/topics/index.md#hostname-namespaces).  Topic settings in the configuration files are written without the hostname, for example `camera/h264`.
 

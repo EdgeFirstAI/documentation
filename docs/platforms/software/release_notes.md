@@ -43,7 +43,7 @@ Known issues and their workarounds are listed on the [Known Issues](issues.md) p
 - EdgeFirst Model Zoo YOLOv8n detection and segmentation (INT8, i.MX 8M Plus NPU)
 - ModelPack for detection and segmentation
 - Ultralytics YOLO detection and instance segmentation
-- RadarExp fusion models (ultra-short range) installed under `/usr/share/edgefirst/fusion/`
+- EdgeFirst Fusion Models (ultra-short range) installed under `/usr/share/edgefirst/fusion/`
 
 ### EdgeFirst Packages
 
@@ -97,7 +97,7 @@ This release includes a major update to the Web UI interface of the Maivin Perce
 ### EdgeFirst Models
 
 - ModelPack for Detection and Segmentation
-- RadarExp Fusion Model
+- EdgeFirst Fusion Model
 
 ### EdgeFirst Packages
 

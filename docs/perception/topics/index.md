@@ -6,23 +6,10 @@ subscribes to the camera service to receive camera frames which are then process
 model results.  There are numerous such services, some can be run in multiple instances to support multiple camera inputs
 or multiple parallel models.
 
-```mermaid
-graph LR
-    camera --> model["vision model"] --> zenoh
-    radarpub --> fusion["fusion"] --> zenoh
-    lidarpub --> fusion
-    lidarpub --> zenoh
-    camera --> fusion
-    radarpub --> zenoh
-    camera --> zenoh
-    model --> fusion
-    navsat --> zenoh
-    imu --> zenoh
-    zenoh --> recorder --> mcap
-    zenoh --> websrv --> https
-    zenoh --> user["user apps"]
-    https --> user
-```
+![EdgeFirst Perception Middleware Diagram](../assets/edgefirst-zenoh-diagram-light.png#only-light)
+![EdgeFirst Perception Middleware Diagram](../assets/edgefirst-zenoh-diagram-dark.png#only-dark)
+
+Each service opens its own Zenoh session and joins the others as a peer, so what distinguishes them is which side of the topic space they touch: some only produce topics, some consume topics and publish derived ones, and some only consume.  Refer to the [Perception Middleware overview](../index.md) for the services and the libraries they are built on.
 
 These middleware applications publish messages and subscribe to messages from other publishers on what is referred to as a topic.
 Services will often publish to multiple topics within a namespace, for example the camera service uses the `camera` namespace
@@ -38,7 +25,8 @@ protocol.  Messages published over Zenoh support various encodings defined throu
 the Common Data Representation (CDR) encoding for messages, this is an open standard encoding and the same used by ROS 2.  The
 CDR encoding uses schemas to represent each type of message, the EdgeFirst Middleware uses the ROS 2 common interfaces whenever
 possible and provides custom schemas when required.  The schemas are published on GitHub and we provide premade bindings for
-Python, Rust, and C, refer to the [API Reference](../api/index.md).
+Python, Rust, and C, refer to the [API Reference](../api/index.md) for the message definitions and to [Message Schemas](../index.md#message-schemas)
+for how the encoding decodes without copying.
 
 ## Hostname Namespaces
 
@@ -84,11 +72,11 @@ schemas used.  Topics marked optional depend on the service configuration.
 | `radar/cube` | [RadarCube](../api/edgefirst_msgs.md#radarcube) | radarpub | Optional radar data cube |
 | `radar/info` | [RadarInfo](../api/edgefirst_msgs.md#radarinfo) | radarpub | Radar configuration |
 | `lidar/points`, `lidar/clusters` | [PointCloud2](../api/sensor_msgs.md#pointcloud2) | lidarpub | LiDAR point clouds |
-| `lidar/depth`, `lidar/reflect` | [Image](../api/sensor_msgs.md#image) | lidarpub | LiDAR depth and reflectivity images |
+| `lidar/imu` | [Imu](../api/sensor_msgs.md#imu) | lidarpub | Angular velocity and acceleration from the LiDAR sensor, where it provides one |
 | `fusion/radar`, `fusion/lidar` | [PointCloud2](../api/sensor_msgs.md#pointcloud2) | fusion | Points annotated with vision classes |
 | `fusion/occupancy` | [PointCloud2](../api/sensor_msgs.md#pointcloud2) | fusion | Occupancy grid |
 | `fusion/boxes3d` | [Detect](../api/edgefirst_msgs.md#detect) | fusion | 3D bounding boxes |
-| `fusion/model_output` | [Mask](../api/edgefirst_msgs.md#mask) | fusion | Optional RadarExp model output |
+| `fusion/model_output` | [Mask](../api/edgefirst_msgs.md#mask) | fusion | Optional EdgeFirst Fusion Model output |
 | `imu` | [Imu](../api/sensor_msgs.md#imu) | imu | Orientation and motion |
 | `gps` | [NavSatFix](../api/sensor_msgs.md#navsatfix) | navsat | GPS position |
 | `tf_static` | [TransformStamped](../api/geometry_msgs.md#transformstamped) | camera, radarpub, lidarpub, fusion | Static sensor transforms from `base_link` |

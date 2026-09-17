@@ -206,19 +206,21 @@ FoxgloveCompressedVideo {
 
 ## Monitoring and Debugging
 
-Monitoring is handled via [Tracy][tracy]. Current release has been tested against [Tracy Profiler 0.12.2][0.12.2] for Windows and will not work on 0.11.1 and earlier. Please read the documentation on how to run Tracy for full details. For a quickstart, once you download the download the `windows-0.12.2.zip` file from the repository and unzip it, you can run the profiler with `tracy-profiler.exe` command. This will open the following window:
+The camera service reports its tiling work to the [Tracy][tracy] profiler, which attaches from a workstation while the device runs.  Refer to [Profiling the Middleware](../profiling.md) for the full workflow, including the profiler version your services require, enabling `TRACY` in `/etc/default/camera`, and connecting to the device.
+
+Launching the profiler opens the connection window.
+
 {{ figure("../assets/index_4k_tracy_profiler.jpg", "Tracy Profiler") }}
 
-This should discover any services running Tracy monitoring clients.
+Any service on the device with profiling enabled is discovered and listed, the camera service among them.  Selecting it opens the timeline.
+
 {{ figure("../assets/index_4k_tracy_profiler_discovered.jpg", "Tracy Profiler Discovered Camera Service") }}
 
-Clicking on the newly discovered client should take you to the monitoring screen.
+With the camera service attached, the tiling paths appear as follows.
 
-### Tracy Profiling
-
-- **Frame Marks**: Visual frame boundaries in Tracy
-- **Bitrate Plotting**: Real-time bitrate monitoring
-- **Performance Metrics**: Encoding time and throughput
+- **Frame marks** for the capture loop, with secondary frames for the `h264` and `h264_tile` paths
+- **Plots** for `fps` and `h264_bitrate`, giving real-time bitrate and throughput
+- **Zones** for the encode stages, including `h264_resize`, `h264_encode`, and the per-tile work
 
 ### Logging
 
@@ -227,4 +229,3 @@ Clicking on the newly discovered client should take you to the monitoring screen
 - **Performance Warnings**: FPS monitoring and alerts
 
 [tracy]: https://github.com/wolfpld/tracy
-[0.12.2]: https://github.com/wolfpld/tracy/releases/tag/v0.12.2

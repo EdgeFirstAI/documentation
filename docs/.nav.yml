@@ -164,6 +164,7 @@ nav:
   - Perception:
     - perception/index.md
     - perception/launcher.md
+    - perception/clock_sync.md
     - perception/profiling.md
     - Dataset Collection Middleware:
       - perception/data_collection/recording.md

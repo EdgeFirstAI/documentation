@@ -528,7 +528,6 @@ quantizing
 quickstart
 quickstarts
 radarcube
-radarexp
 radarinfo
 radarpub
 raivin

@@ -1,6 +1,6 @@
 # Fusion Settings (Raivin-only)
 
-These settings configure the fusion service which combines the radar and LiDAR point clouds with the vision model output and provides output on the [fusion topics](../../perception/topics/fusion.md).  The fusion service implements two pipelines: a late-fusion pipeline which projects the sensor points onto the camera image and annotates every point with the vision class and instance it falls in, and an optional radar fusion model pipeline which runs a [RadarExp](../../models/fusion/index.md) model on the radar cube and camera frames.
+These settings configure the fusion service which combines the radar and LiDAR point clouds with the vision model output and provides output on the [fusion topics](../../perception/topics/fusion.md).  The fusion service implements two pipelines: a late-fusion pipeline which projects the sensor points onto the camera image and annotates every point with the vision class and instance it falls in, and an optional radar fusion model pipeline which runs an [EdgeFirst Fusion Model](../../models/fusion/index.md) on the radar cube and camera frames.
 
 {{ figure("../assets/configuration/configuration-fusion.png", "Fusion Settings page") }}
 
@@ -43,7 +43,7 @@ Stored as `MAX_MODEL_AGE` with a default of `0.5` seconds, the maximum age of th
 
 ## Radar Fusion Model
 
-The radar fusion model pipeline runs a [RadarExp](../../models/fusion/index.md) model on the radar cube and camera frames to predict a bird's eye view occupancy grid.  The Raivin ships with the ultra-short range RadarExp models under `/usr/share/edgefirst/fusion/`, the pipeline is disabled until a model is configured.  Refer to [Uploading Models](../software/model_uploads.md) for deploying a model trained in EdgeFirst Studio.
+The radar fusion model pipeline runs an [EdgeFirst Fusion Model](../../models/fusion/index.md) on the radar cube and camera frames to predict a bird's eye view occupancy grid.  The Raivin ships with the ultra-short range EdgeFirst Fusion Models under `/usr/share/edgefirst/fusion/`, the pipeline is disabled until a model is configured.  Refer to [Uploading Models](../software/model_uploads.md) for deploying a model trained in EdgeFirst Studio.
 
 | Key | Default | Description |
 |-----|---------|-------------|

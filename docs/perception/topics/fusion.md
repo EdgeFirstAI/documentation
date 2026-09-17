@@ -1,11 +1,11 @@
 # Fusion Topics
 
-The fusion topics are managed by the `fusion` service which combines the radar and LiDAR point clouds with the vision model output.  The service implements a late-fusion pipeline which projects each sensor point onto the camera image using the camera intrinsics from `camera/info` and the sensor transforms from `tf_static`, and annotates the point with the class and instance of the detection box or segmentation mask it falls in.  The classified points are clustered into 3D bounding boxes and an occupancy grid.  The service can also run a [RadarExp](../../models/fusion/index.md) radar fusion model on the radar cube and camera frames.
+The fusion topics are managed by the `fusion` service which combines the radar and LiDAR point clouds with the vision model output.  The service implements a late-fusion pipeline which projects each sensor point onto the camera image using the camera intrinsics from `camera/info` and the sensor transforms from `tf_static`, and annotates the point with the class and instance of the detection box or segmentation mask it falls in.  The classified points are clustered into 3D bounding boxes and an occupancy grid.  The service can also run an [EdgeFirst Fusion Model](../../models/fusion/index.md) on the radar cube and camera frames.
 
 - Radar and LiDAR late fusion with the [model output](model.md#modeloutput)
 - 3D bounding boxes from the clustered points
 - Occupancy grid
-- RadarExp fusion model on the radar cube (TFLite)
+- EdgeFirst Fusion Model on the radar cube (TFLite)
 - ByteTrack tracking of the fused objects
 
 The fusion topics are published under the `fusion` namespace and offer the following sub-topics: `fusion/radar`, `fusion/lidar`, `fusion/occupancy`, `fusion/boxes3d`, and `fusion/model_output`.  Fusion parameters are configurable through the `fusion` service.  See the [fusion service configuration](../../platforms/configuration/fusion.md) documentation for details.  Topic names are relative to the device [hostname namespace](index.md#hostname-namespaces).
@@ -66,7 +66,7 @@ This topic is only published when the fusion service is configured with a 3D box
 
 ## fusion/model_output
 
-The `fusion/model_output` topic publishes the output grid of the RadarExp fusion model with the custom [Mask](../api/edgefirst_msgs.md#mask) schema.  This contains the fusion model bird's eye view occupancy prediction as a mask which can be used to confirm the model is working as expected.  The grid geometry is described by the range and angle bins of the fusion service configuration.
+The `fusion/model_output` topic publishes the output grid of the EdgeFirst Fusion Model with the custom [Mask](../api/edgefirst_msgs.md#mask) schema.  This contains the fusion model bird's eye view occupancy prediction as a mask which can be used to confirm the model is working as expected.  The grid geometry is described by the range and angle bins of the fusion service configuration.
 
 When tracking is enabled on the fusion service, the `fusion/model_output/tracked` topic publishes the same grid after tracking the occupied cells over time with the same [Mask](../api/edgefirst_msgs.md#mask) schema.
 

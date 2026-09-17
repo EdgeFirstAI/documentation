@@ -21,7 +21,7 @@ Each service handles a specific task and publishes its results on a set of [topi
 |---------|--------|-------------|
 | [Camera](topics/camera.md) | `edgefirst-camera` | Interfaces with the camera and ISP to publish zero-copy camera frames along with H.264 and optional JPEG streams.  Publishes the camera intrinsics and the camera transform. |
 | [Model](topics/model.md) | `edgefirst-model` | Runs a vision model on the camera frames using the NPU and publishes detection boxes, segmentation masks, tracks, and timing in a unified message. |
-| [Fusion](topics/fusion.md) | `edgefirst-fusion` | Projects the radar and LiDAR point clouds onto the vision model output to classify targets, builds 3D bounding boxes and an occupancy grid, and optionally runs a RadarExp fusion model on the radar cube. |
+| [Fusion](topics/fusion.md) | `edgefirst-fusion` | Projects the radar and LiDAR point clouds onto the vision model output to classify targets, builds 3D bounding boxes and an occupancy grid, and optionally runs an EdgeFirst Fusion Model on the radar cube. |
 | [Radar](topics/radar.md) | `edgefirst-radarpub` | Interfaces with the smartmicro radar over CAN and Ethernet to publish the radar point cloud, clusters, and radar cube. |
 | [LiDAR](topics/lidar.md) | `edgefirst-lidarpub` | Interfaces with Robosense and Ouster LiDAR sensors to publish point clouds and clusters, along with the sensor IMU where the LiDAR provides one. |
 | [IMU](topics/imu.md) | `edgefirst-imu` | Publishes the device orientation, angular velocity, and linear acceleration. |

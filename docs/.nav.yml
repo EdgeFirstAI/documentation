@@ -164,14 +164,6 @@ nav:
   - Perception:
     - perception/index.md
     - perception/launcher.md
-    - perception/clock_sync.md
-    - perception/profiling.md
-    - Dataset Collection Middleware:
-      - perception/data_collection/recording.md
-      - perception/data_collection/replay.md
-      - perception/data_collection/publishing.md
-      - perception/data_collection/foxglove.md
-      - perception/data_collection/advanced_foxglove.md
     - Topics:
       - perception/topics/index.md
       - perception/topics/camera.md
@@ -181,6 +173,21 @@ nav:
       - perception/topics/model.md
       - perception/topics/navsat.md
       - perception/topics/radar.md
+    - Dataset Collection:
+      - perception/data_collection/recording.md
+      - perception/data_collection/replay.md
+      - perception/data_collection/publishing.md
+      - perception/data_collection/foxglove.md
+      - perception/data_collection/advanced_foxglove.md
+    - Advanced:
+      - 4K Video:
+        - perception/4k/index.md
+        - perception/4k/camera_4k.md
+        - perception/4k/webui_4k.md
+        - perception/4k/publisher_4k.md
+        - perception/4k/foxglove_4k.md
+      - perception/profiling.md
+      - perception/clock_sync.md
     - Developer Guide:
       - perception/dev/index.md
       - Examples:
@@ -204,12 +211,6 @@ nav:
       - perception/api/builtin_interfaces.md
     - Deep View RT:
       - perception/deepviewrt/index.md
-    - 4K Video:
-      - perception/4k/index.md
-      - perception/4k/camera_4k.md
-      - perception/4k/webui_4k.md
-      - perception/4k/publisher_4k.md
-      - perception/4k/foxglove_4k.md
   - Platforms:
     - platforms/index.md
     - Getting Started:

@@ -245,10 +245,10 @@ Because every service tolerates steps, the platform does not need to protect the
 
 ### PTP for Sensors
 
-The Maivin can act as an IEEE 1588 grandmaster on the internal sensor network (`ethernet1`) using `ptp4l` with hardware timestamping and `phc2sys-master@ethernet1`, which pushes `CLOCK_REALTIME` into the interface's PTP hardware clock with no offset applied, so the hardware clock carries UTC rather than the TAI timescale that IEEE 1588 uses by default and a sensor disciplined from it reads the same Unix time as the host. UTC and TAI are not interchangeable: TAI leads UTC by the accumulated leap seconds, 37 s at the time of writing, so a sensor that assumes a TAI grandmaster, or a `phc2sys` configured to apply the current UTC offset, is off by that amount from every other stamp in the recording. Confirm the timescale when adding a sensor. This is installed but **disabled by default**; enable it per deployment when a sensor should timestamp in the host clock domain:
+The Maivin can act as an IEEE 1588 grandmaster on the internal sensor network (`ethernet1`) using `ptp4l` with hardware timestamping and `phc2sys-master@ethernet1`, which pushes `CLOCK_REALTIME` into the interface's PTP hardware clock with no offset applied, so the hardware clock carries UTC rather than the TAI timescale that IEEE 1588 uses by default and a sensor disciplined from it reads the same Unix time as the host. UTC and TAI are not interchangeable: TAI leads UTC by the accumulated leap seconds, 37 s at the time of writing, so a sensor that assumes a TAI grandmaster, or a `phc2sys` configured to apply the current UTC offset, is off by that amount from every other stamp in the recording. Confirm the timescale when adding a sensor. Both units are **enabled by default** on `ethernet1`, so the Maivin is already the PTP time source for the sensors on that port:
 
 ```shell
-sudo systemctl enable --now ptp4l.service phc2sys-master@ethernet1.service
+systemctl status ptp4l.service phc2sys-master@ethernet1.service
 ```
 
 With PTP running, the Ouster lidar is set to the `ptp1588` [timestamp mode](../platforms/configuration/lidar.md#timestamp-mode) (`TIMESTAMP_MODE`) so its per-column measurement timestamps are Unix time in the host domain. The default `internal` mode counts nanoseconds since sensor power-on, which is not a host-domain clock and must not be published as `header.stamp`.

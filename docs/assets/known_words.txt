@@ -127,6 +127,7 @@ dequant
 dequantization
 dequantize
 dequantizing
+dequeues
 deserialize
 deserialized
 deserializer
@@ -236,6 +237,7 @@ hantro
 hashmap
 hdparm
 hdr
+headerless
 headlessly
 heatmap
 heatmaps

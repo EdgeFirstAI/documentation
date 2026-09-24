@@ -43,4 +43,4 @@ See the [Coffee Cup dataset zoo](../datasets/coffeecup/index.md) for background 
 
 !!! tip "Included with EdgeFirst Middleware"
 
-    On edge devices, `edgefirst-client` is installed as part of the standard EdgeFirst Middleware installation. Use `edgefirst-client version` to confirm connectivity to EdgeFirst Studio.
+    On edge devices, `edgefirst-client` is installed as part of the standard EdgeFirst Middleware installation. Use `edgefirst-client server-version` to confirm connectivity to EdgeFirst Studio.

@@ -285,7 +285,8 @@ export:
 
 # Decoder Configuration (Ultralytics only)
 decoder_version: string    # YOLO architecture version: yolov5, yolov8, yolo11, yolo26
-nms: string                # HAL decoder NMS mode: class_agnostic, class_aware
+nms: string                # HAL decoder NMS mode: class_aware (default when absent), class_agnostic
+nms_multi_label: boolean   # Optional. Multi-label candidate selection (validation decode); absent or false = one class per anchor
 
 # Calibration Artifact (see Calibration Artifact section)
 calibration: string          # Snapshot filename: calibration-{dataset_id}-{param_hash}.safetensors
@@ -540,7 +541,7 @@ The presence of a `decoder` field on a logical output signals that post-processi
 
 Semantic and decode fields live on the **logical output** and apply to all children. Physical children carry only tensor-level fields.
 
-**Root-level only:** `decoder_version`, `nms` (HAL NMS mode). These describe model-wide behavior and never appear inside an `outputs[]` entry.
+**Root-level only:** `decoder_version`, `nms` (HAL NMS mode), `nms_multi_label` (HAL multi-label decode). These describe model-wide behavior and never appear inside an `outputs[]` entry.
 
 **Logical output only:** `decoder`, `encoding`, `score_format`, `normalized`, `anchors`
 
@@ -1072,7 +1073,7 @@ When a logical output has a `decoder` field set, the inference pipeline must:
 3. **Dequantize physical tensors** → Using each child's `quantization` (or the logical's own if no children)
 4. **Reassemble into the logical tensor** → If the logical output has physical children, merge them per the rules in [HAL Decoder Algorithm — Merge Strategy](#merge-strategy) (channel concat for sub-splits, spatial concat for per-scale splits). If there are no children, the logical output IS the tensor.
 5. **Apply decoder** → Framework-specific: anchor decode (`modelpack`), DFL/direct decode (`ultralytics`)
-6. **Run NMS** → Unless the model has embedded NMS (`validation.nms: none`)
+6. **Run NMS** → Unless the model has embedded NMS (`validation.nms: none`), using the mode from the root-level `nms` field (class-aware when absent)
 
 ### Decoder Field
 
@@ -1181,22 +1182,22 @@ decoder_version: yolov8    # Traditional model requiring external NMS
 **When `decoder_version` is absent or any other value:**
 
 - Traditional YOLO architecture requiring external NMS
-- The root-level `nms` field controls which NMS algorithm the HAL decoder uses
+- The root-level `nms` field controls which NMS algorithm the HAL decoder uses; class-aware NMS applies when it is absent
 
 ### HAL NMS Field
 
 The root-level `nms` field controls the HAL decoder's NMS behavior:
 
 ```yaml
-nms: class_agnostic    # Suppress overlapping boxes regardless of class (default)
+nms: class_aware       # Only suppress boxes with the same class label (default when absent)
 # or
-nms: class_aware       # Only suppress boxes with the same class label
+nms: class_agnostic    # Suppress overlapping boxes regardless of class
 ```
 
 | Value | Behavior |
 | ----- | -------- |
-| `class_agnostic` | Suppress overlapping boxes regardless of class label (default) |
-| `class_aware` | Only suppress boxes that share the same class AND overlap |
+| `class_aware` | Only suppress boxes that share the same class AND overlap (default) |
+| `class_agnostic` | Suppress overlapping boxes regardless of class label |
 
 !!! warning "Two distinct `nms` fields"
     This document uses `nms` at two levels with different semantics:
@@ -1205,6 +1206,35 @@ nms: class_aware       # Only suppress boxes with the same class label
     - **`validation.nms`** (see [Validation Parameters](#validation-parameters)) — NMS *implementation*: `hal`, `numpy`, `tensorflow`, `torch`, or `none`.
 
     The two fields are independent and can coexist.
+
+When `nms` is absent, or is the v1 value `auto`, the HAL decoder uses class-aware NMS, so overlapping objects of different classes (a person on a bicycle) do not suppress each other. An explicit `class_agnostic` always takes effect, including together with [`nms_multi_label`](#hal-multi-label-field). The resolved mode applies to every NMS decode path, ModelPack detection models included.
+
+### HAL Multi-Label Field
+
+The optional root-level `nms_multi_label` field selects how the HAL decoder picks candidate boxes before NMS:
+
+```yaml
+nms_multi_label: true    # One candidate per class above the score threshold
+# or
+nms_multi_label: false   # One candidate per anchor, labeled with its highest-scoring class (default)
+```
+
+| Value | Behavior |
+| ----- | -------- |
+| absent or `false` | Argmax decode: each anchor yields at most one candidate, labeled with its highest-scoring class (default) |
+| `true` | Multi-label decode: each anchor yields one candidate for every class whose score meets the score threshold |
+
+Multi-label decode reproduces the candidate selection of Ultralytics validation (`val` with `multi_label=True`), which is how COCO-style mAP is counted. Use it when the decoded detections must match a validation run. It is not typical for deployment, because one object can produce several boxes, one per class above the threshold, and a deployed application usually wants one label per object.
+
+End-to-end models (`type: detections`, such as YOLO26 with `model.end2end: true`) ignore `nms_multi_label`: the model emits its own post-NMS detections, and the decoder applies only the score threshold and `max_det`.
+
+Multi-label decode interacts with the other decoder parameters as follows:
+
+- **NMS mode**: the candidates go through the NMS mode set by the root-level [`nms`](#hal-nms-field) field. An explicit `class_agnostic` suppresses across the classes of one anchor, as Ultralytics does with `agnostic=True`. When `nms` is not set, NMS is class-aware and every class of an anchor is kept.
+- **`pre_nms_top_k`**: multi-label decode emits up to anchors × classes candidates, so when it is on and `pre_nms_top_k` is not set explicitly the decoder uses a cap of 30 000, the Ultralytics `max_nms` value, instead of the argmax default of 300. An explicit `pre_nms_top_k` always wins, and `0` means no limit.
+- **Overrides**: `DecoderBuilder::with_multi_label`, the Python `multi_label` constructor argument, and the C `ef_decoder_params_set_multi_label` override the metadata value in either direction. Without an override, the metadata value applies, and the decoder is argmax if the key is absent.
+- **Warning**: a decoder that takes multi-label from this key logs a warning when it is built, because the model file then changes what every untracked `decode` returns. Pass `multi_label=False` to override it.
+- **Tracking**: tracked decode (`decode_tracked`, `decode_proto_tracked`, `decode_for_tracking`) always decodes one label per box regardless of this key, because a tracker matches on IoU only and per-class duplicates of one anchor would become spurious tracks.
 
 ---
 

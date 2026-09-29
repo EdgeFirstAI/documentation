@@ -15,7 +15,7 @@ so much). Producing that sample naively is wasteful and fragile:
   every converter, for every target, on every conversion, repeats expensive
   work that only depends on the *dataset*, not the model or the target.
 - **Preprocessing is the model's secret.** Calibration inputs must be
-  preprocessed exactly as the model expects — the same letterbox geometry, the
+  preprocessed exactly as the model expects — the same letterbox (or stretch) geometry, the
   same channel layout, the same [CameraAdaptor](../cameraadaptor.md) color
   conversion used in training. A model-agnostic converter does not — and should
   not — know those details.
@@ -30,11 +30,11 @@ The calibration snapshot moves all of that work to the one place that already
 has the answers — the trainer — and captures the result in a self-describing,
 content-addressed file:
 
-- **Generated when a session exports the model.** The trainer already decodes the dataset and knows the model's input geometry; it selects the calibration subset and writes the snapshot as a by-product of export, at that geometry (letterboxed frames, or deployment-grid tiles for tiled models). No separate calibration job exists.
+- **Generated when a session exports the model.** The trainer already decodes the dataset and knows the model's input geometry; it selects the calibration subset and writes the snapshot as a by-product of export, at that geometry (letterboxed or stretched frames, or deployment-grid tiles for tiled models). No separate calibration job exists.
 - **Pre-filtered.** A model-free selection picks the ~500 samples that best
   span the dataset's pixel dynamic range, so a small set calibrates as well as
   — or better than — the full pool.
-- **Pre-processed to the model's geometry, but not normalization.** The geometric preprocessing that *is* the model's secret (letterbox resize or, for [tiled models](../metadata.md#tiling), a native-scale deployment-grid tile, plus channel layout and CameraAdaptor) is baked into the stored pixels. The numeric normalization that converters legitimately differ on is **recorded as metadata, not applied** (see [Letterbox, Not Normalization](#letterbox-not-normalization)).
+- **Pre-processed to the model's geometry, but not normalization.** The geometric preprocessing that *is* the model's secret (letterbox or stretch resize or, for [tiled models](../metadata.md#tiling), a native-scale deployment-grid tile, plus channel layout and CameraAdaptor) is baked into the stored pixels. The numeric normalization that converters legitimately differ on is **recorded as metadata, not applied** (see [Letterbox, Not Normalization](#letterbox-not-normalization)).
 - **Reusable across models by hash.** The filename encodes a hash of the
   generation parameters. Two models trained on the same dataset with the same
   input geometry and data-preparation pattern resolve to the **same snapshot**
@@ -49,7 +49,7 @@ content-addressed file:
 flowchart LR
     subgraph Train["Export (once per dataset + geometry)"]
         Pool["Training split<br/>10³–10⁶ samples"] --> Select["Model-free<br/>dynamic-range selection"]
-        Select --> Pre["Letterbox or grid tile +<br/>CameraAdaptor"]
+        Select --> Pre["Letterbox, stretch or tiled +<br/>CameraAdaptor"]
         Pre --> Snap["calibration-{dataset}-{hash}<br/>.safetensors"]
     end
     Snap --> Store["EdgeFirst Studio<br/>Snapshot store"]
@@ -132,7 +132,7 @@ many converters.
 
 **Baked in — the geometric preprocessing that is the model's secret:**
 
-- **Letterbox resize, or grid tile.** For whole-frame and non-tiled models the source image is scaled to fit the model input, preserving aspect ratio (upscaling small images), then center-padded to it with a constant gray value (114). For [tiled models](#tiled-models) the snapshot instead holds native-scale tiles cut from the deployment grid. Either way this is a required, model-defining step that matches what the model sees at runtime, so the snapshot captures its exact result.
+- **Letterbox, stretch or tiled resize.** For whole-frame and non-tiled models the source image is either scaled to fit the model input, preserving aspect ratio (upscaling small images), then center-padded to it with a constant gray value (114) (`letterbox`), or resized directly to it without padding (`stretch`). For [tiled models](#tiled-models) the snapshot instead holds native-scale tiles cut from the deployment grid. Either way this is a required, model-defining step that matches what the model sees at runtime, so the snapshot captures its exact result.
 - **Channel layout and CameraAdaptor.** The color conversion (RGB, BGR, YUYV,
   gray, …) and channel layout the model was trained with are applied, so the
   stored tensor is byte-identical to what the model sees at inference.
@@ -146,7 +146,7 @@ many converters.
   pipeline applies its own — without the lossy `[0,1] → [0,255]` round-trips
   that plagued ad-hoc snapshots.
 
-Generating the snapshot when the session exports the model is what makes this clean: the letterbox or grid-tile recipe is reused verbatim from the training data pipeline, and the parameter hash makes the resulting file reusable across every model that shares the same recipe.
+Generating the snapshot when the session exports the model is what makes this clean: the letterbox, stretch or tiled recipe is reused verbatim from the training data pipeline, and the parameter hash makes the resulting file reusable across every model that shares the same recipe.
 
 ## Parameter Hash and Caching
 
@@ -173,7 +173,7 @@ The parameter set covers every input that affects the produced bytes:
   "channels": 3,                      // post color-conversion channel count
   "layout": "NCHW",
   "dtype": "uint8",
-  "resize": "letterbox",
+  "resize": "letterbox",              // "letterbox", "stretch" or "tiled"
   "letterbox": {                      // the exact recipe: long-side resize
     "pad_color": [114, 114, 114],     // (ceil rounding, linear interp),
     "scale": "long_side",             // then center-pad the short side
@@ -192,6 +192,8 @@ The parameter set covers every input that affects the produced bytes:
   "seed": 42                          // selection seed
 }
 ```
+
+`resize` is `"letterbox"`, `"stretch"` or `"tiled"`. `"stretch"` resizes the frame directly to the model input without padding, for models trained at a fixed aspect ratio such as ModelPack's native-aspect models, and its parameter set has no `letterbox` block. The `letterbox` block is present for `letterbox` and `tiled` snapshots.
 
 Two properties follow from hashing the parameters rather than the content:
 
@@ -216,7 +218,7 @@ A [tiled model](../metadata.md#tiling) is calibrated on the tiles it sees at run
 ```jsonc
 {
   "input_shape": [640, 640],          // the tile [H, W]
-  "resize": "grid_tile",
+  "resize": "tiled",
   "grid": {                           // the runtime grid (tiling.grid)
     "algorithm": "evendist",
     "version": 1,
@@ -268,7 +270,7 @@ and **must** fail loudly when a required key is absent rather than guessing.
 | `value_range` | `[0, 255]` | Stored sample range (not normalized). |
 | `layout` | `"NCHW"` | Stored layout. |
 | `normalization` | `{"scale":…,"mean":…,"std":…}` | What the model expects; the consumer applies it. |
-| `count_requested` | `500` | Requested sample count: the number of frames to select. A letterbox snapshot stores one sample per frame. |
+| `count_requested` | `500` | Requested sample count: the number of frames to select. A non-tiled snapshot (letterbox or stretch) stores one sample per frame. |
 | `count_actual` | `500` | Samples actually written. Smaller than requested for small pools; a [tiled snapshot](#tiled-models) can hold more, with extremum tiles and whole-frame samples. |
 | `selection` | `"max_dynamic_range_v1"` | Selection algorithm tag. |
 | `seed` | `42` | Selection seed. |
@@ -316,7 +318,7 @@ A training framework that emits EdgeFirst calibration snapshots must:
    versioned, deterministic algorithm. Under `max_dynamic_range_v1` the selected
    set's per-channel min/max must equal the pool's — the extrema-bearing images
    are mandatory, and a tiled snapshot stores the tiles that hold the extrema pixels.
-3. **Preprocess at the model's geometry.** Letterbox each selected frame to the model input, or for a [tiled model](../metadata.md#tiling) cut deployment-grid tiles at native scale, plus whole-frame samples when its `full_frame` pass is enabled (see [Tiled models](#tiled-models)); apply the CameraAdaptor recipe; store **uint8 [0, 255] NCHW**. Record the geometry (`input_shape`, `resize`, and `grid` for tiles) and the normalization the model expects in metadata — do **not** apply the normalization to the stored bytes.
+3. **Preprocess at the model's geometry.** Letterbox or stretch each selected frame to the model input (stretch for models trained with a direct resize), or for a [tiled model](../metadata.md#tiling) cut deployment-grid tiles at native scale, plus whole-frame samples when its `full_frame` pass is enabled (see [Tiled models](#tiled-models)); apply the CameraAdaptor recipe; store **uint8 [0, 255] NCHW**. Record the geometry (`input_shape`, `resize`, and `grid` for tiles) and the normalization the model expects in metadata — do **not** apply the normalization to the stored bytes.
 4. **Name and hash deterministically.** Serialize the canonical parameter set
    with sorted keys and a fixed float representation; hash to 16 hex characters;
    build the filename. Identical parameters over an identical pool must produce
@@ -341,14 +343,23 @@ A Converter App that calibrates from a snapshot must:
 5. **Record traceability.** Write the snapshot filename into your converter section of `edgefirst.json`, together with `calibration_geometry: {resize, input_shape}` from the snapshot's parameters, adding `full_frame: true` when the parameters carry it.
 
 ```python
+from collections.abc import Mapping
 from safetensors import safe_open
 import json, numpy as np
 
 # model_meta: the model's embedded EdgeFirst metadata (edgefirst.json)
 # model_input_hw: the model's input (H, W) after layout mapping and overrides
-tiling = model_meta.get("tiling", {})
-tiling_mode = tiling.get("mode")                          # None without tiling
-full_frame = tiling.get("full_frame", {}).get("enabled", False)
+def model_tiling(edgefirst):
+    """(mode, full_frame_enabled) of a model's version-1 tiling section, or (None, False)."""
+    tiling = edgefirst.get("tiling") if isinstance(edgefirst, Mapping) else None
+    if not isinstance(tiling, Mapping) or tiling.get("version") != 1 or isinstance(tiling.get("version"), bool):
+        return None, False
+    full_frame = tiling.get("full_frame")
+    enabled = isinstance(full_frame, Mapping) and full_frame.get("enabled") is True
+    return tiling.get("mode"), enabled
+
+
+tiling_mode, full_frame = model_tiling(model_meta)       # (None, False) without a version-1 tiling section
 
 with safe_open(calibration_path, framework="numpy") as f:
     meta = f.metadata()                       # __metadata__ map
@@ -379,31 +390,66 @@ A consumer verifies four things before it uses a snapshot, in this order, and st
 
 1. The snapshot's `params.input_shape` equals the model's input height and width. Use the input after any layout mapping, and after any explicit input-shape override the converter applies.
 2. The stored samples' height and width equal `params.input_shape`.
-3. `params.resize` matches the model: `grid_tile` (with a `grid` block whose `algorithm` is `evendist`) when the model's `tiling.mode` is `tiled`, and `letterbox` otherwise, including models without a `tiling` section.
-4. `params.full_frame` (`false` when absent) equals the model's `tiling.full_frame.enabled` (`false` without a `tiling` section).
+3. `params.resize` matches the model: `tiled` (with a `grid` block whose `algorithm` is `evendist`) when the model's `tiling.mode` is `tiled`, `letterbox` when it is `whole_frame`, and `letterbox` or `stretch` for a model without a `tiling` section, or `tiled` when the snapshot's parameters carry a `tiling` block, as ModelPack's tiled snapshots do. A `tiling` section whose `version` is not the integer `1` counts as absent.
+4. `params.full_frame` (`false` when absent, and it must be a boolean) equals the model's `tiling.full_frame.enabled` (`false` without a `tiling` section).
 
 ```python
+from collections.abc import Mapping
+from numbers import Integral
+
+
+def _hw(value, what):
+    if value is None or isinstance(value, (str, bytes, Mapping)):
+        raise ValueError(f"{what} must be [H, W] integers; got {value!r}")
+    try:
+        items = list(value)
+    except TypeError:
+        raise ValueError(f"{what} must be [H, W] integers; got {value!r}") from None
+    if len(items) != 2 or not all(isinstance(v, Integral) and not isinstance(v, bool) for v in items):
+        raise ValueError(f"{what} must be [H, W] integers; got {value!r}")
+    h, w = (int(v) for v in items)
+    if h <= 0 or w <= 0:
+        raise ValueError(f"{what} must be positive; got {value!r}")
+    return h, w
+
+
 def check_snapshot_geometry(params, sample_hw, model_input_hw, tiling_mode, full_frame=False):
-    if "input_shape" not in params or "resize" not in params:
-        raise ValueError("calibration snapshot params lack input_shape or resize")
-    snapshot_hw = tuple(params["input_shape"])
-    if snapshot_hw != tuple(model_input_hw):
-        raise ValueError(f"calibration snapshot input_shape {list(snapshot_hw)} does not match the model input {list(model_input_hw)}")
-    if tuple(sample_hw) != snapshot_hw:
-        raise ValueError(f"calibration sample H,W {list(sample_hw)} does not match the snapshot input_shape {list(snapshot_hw)}")
-    expected = "grid_tile" if tiling_mode == "tiled" else "letterbox"
-    if params["resize"] != expected:
-        raise ValueError(f"calibration snapshot resize must be {expected!r} for a {tiling_mode or 'non-tiled'} model; got {params['resize']!r}")
-    if expected == "grid_tile" and (params.get("grid") or {}).get("algorithm") != "evendist":
-        raise ValueError("grid_tile calibration snapshot lacks a grid block with algorithm evendist")
-    if params.get("full_frame", False) != full_frame:
+    if not isinstance(params, Mapping):
+        raise ValueError("calibration snapshot params are missing or not a mapping")
+    if "input_shape" not in params:
+        raise ValueError("calibration snapshot params lack input_shape")
+    if "resize" not in params:
+        raise ValueError("calibration snapshot params lack resize")
+    snapshot = _hw(params["input_shape"], "calibration snapshot input_shape")
+    model = _hw(model_input_hw, "model input")
+    if snapshot != model:
+        raise ValueError(f"calibration snapshot input_shape {list(snapshot)} does not match the model input {list(model)}")
+    sample = _hw(sample_hw, "calibration sample H,W")
+    if sample != snapshot:
+        raise ValueError(f"calibration sample H,W {list(sample)} does not match the snapshot input_shape {list(snapshot)}")
+    resize = params["resize"]
+    if tiling_mode == "tiled":
+        if resize != "tiled":
+            raise ValueError(f"calibration snapshot resize must be 'tiled' for a tiled model; got {resize!r}")
+        grid = params.get("grid")
+        if not isinstance(grid, Mapping) or grid.get("algorithm") != "evendist":
+            raise ValueError("tiled calibration snapshot lacks a grid block with algorithm evendist")
+    elif tiling_mode == "whole_frame":
+        if resize != "letterbox":
+            raise ValueError(f"calibration snapshot resize must be 'letterbox' for a whole_frame model; got {resize!r}")
+    elif resize not in ("letterbox", "stretch") and not (resize == "tiled" and isinstance(params.get("tiling"), Mapping)):
+        raise ValueError(f"calibration snapshot resize must be 'letterbox' or 'stretch' for a non-tiled model; got {resize!r}")
+    has_frames = params.get("full_frame", False)
+    if not isinstance(has_frames, bool):
+        raise ValueError(f"calibration snapshot full_frame must be true or false; got {has_frames!r}")
+    if has_frames != bool(full_frame):
         want = "must include" if full_frame else "must not include"
         raise ValueError(f"calibration snapshot {want} whole-frame samples (full_frame) for this model")
 ```
 
-Consumers also reject a malformed shape (a missing value, a value that is not a sequence, or a height or width that is not an integer) with a clear error, rather than letting the comparison fail or pass by accident.
+Consumers reject a malformed shape (a missing value, a value that is not a two-element sequence, a height or width that is not a positive integer) with an error naming the field, rather than letting the comparison fail or pass by accident.
 
-Snapshots produced before tiled models existed carry `resize: letterbox` without a `grid` block, and continue to pass for models without a `tiling` section.
+Snapshots with `resize: letterbox` or `resize: stretch` and no `grid` block pass for models without a `tiling` section, as do ModelPack tiled snapshots, whose parameters carry a `tiling` block instead of a `grid` block.
 
 ## What's Next
 

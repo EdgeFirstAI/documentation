@@ -1,13 +1,6 @@
 # Calibration Snapshot
 
-Every quantizing Converter App needs the same thing before it can turn a
-float32 graph into an INT8 binary: a small, representative batch of model
-inputs to measure activation ranges against. EdgeFirst Studio produces that
-batch **once, at training time**, as a portable `.safetensors` **calibration
-snapshot** — a pre-filtered, pre-processed subset of the training data with
-full provenance back to the source samples. Every converter downloads the same
-snapshot, so calibration is consistent across targets and never has to be
-regenerated per conversion.
+Every quantizing Converter App needs the same thing before it can turn a float32 graph into an INT8 binary: a small, representative batch of model inputs to measure activation ranges against. EdgeFirst Studio produces that batch when a session exports the model, at that model's input geometry, as a portable `.safetensors` **calibration snapshot** — a pre-filtered, pre-processed subset of the training data with full provenance back to the source samples. Every converter downloads the same snapshot, so calibration is consistent across targets and never has to be regenerated per conversion.
 
 ## The Problem
 
@@ -37,17 +30,11 @@ The calibration snapshot moves all of that work to the one place that already
 has the answers — the trainer — and captures the result in a self-describing,
 content-addressed file:
 
-- **Generated once at training time.** The trainer already decodes and
-  letterboxes the dataset; it selects the calibration subset and writes the
-  snapshot as a by-product of export. No separate calibration job exists.
+- **Generated when a session exports the model.** The trainer already decodes the dataset and knows the model's input geometry; it selects the calibration subset and writes the snapshot as a by-product of export, at that geometry (letterboxed frames, or deployment-grid tiles for tiled models). No separate calibration job exists.
 - **Pre-filtered.** A model-free selection picks the ~500 samples that best
   span the dataset's pixel dynamic range, so a small set calibrates as well as
   — or better than — the full pool.
-- **Pre-processed through letterbox, but not normalization.** The geometric
-  preprocessing that *is* the model's secret (letterbox resize, channel layout,
-  CameraAdaptor) is baked into the stored pixels. The numeric normalization
-  that converters legitimately differ on is **recorded as metadata, not
-  applied** (see [Letterbox, Not Normalization](#letterbox-not-normalization)).
+- **Pre-processed to the model's geometry, but not normalization.** The geometric preprocessing that *is* the model's secret (letterbox resize or, for [tiled models](../metadata.md#tiling), a native-scale deployment-grid tile, plus channel layout and CameraAdaptor) is baked into the stored pixels. The numeric normalization that converters legitimately differ on is **recorded as metadata, not applied** (see [Letterbox, Not Normalization](#letterbox-not-normalization)).
 - **Reusable across models by hash.** The filename encodes a hash of the
   generation parameters. Two models trained on the same dataset with the same
   input geometry and data-preparation pattern resolve to the **same snapshot**
@@ -60,9 +47,9 @@ content-addressed file:
 
 ```mermaid
 flowchart LR
-    subgraph Train["Training (once per dataset + geometry)"]
+    subgraph Train["Export (once per dataset + geometry)"]
         Pool["Training split<br/>10³–10⁶ samples"] --> Select["Model-free<br/>dynamic-range selection"]
-        Select --> Pre["Letterbox +<br/>CameraAdaptor"]
+        Select --> Pre["Letterbox or grid tile +<br/>CameraAdaptor"]
         Pre --> Snap["calibration-{dataset}-{hash}<br/>.safetensors"]
     end
     Snap --> Store["EdgeFirst Studio<br/>Snapshot store"]
@@ -110,7 +97,7 @@ extremes.
 The reference algorithm, tagged `max_dynamic_range_v1`:
 
 1. Decode every pool image at native resolution; compute its per-channel
-   min/max and a normalized 64-bin histogram.
+   min/max, the position of the first pixel in row-major order holding each, and a normalized 64-bin histogram.
 2. **Seed** the set with the images holding the global per-channel extrema —
    these define the achievable range and are mandatory members.
 3. **Greedily** add the image whose inclusion most reduces the L1 distance
@@ -145,11 +132,7 @@ many converters.
 
 **Baked in — the geometric preprocessing that is the model's secret:**
 
-- **Letterbox resize.** The source image is scaled so its long side matches the
-  model input (preserving aspect ratio, upscaling small images), then
-  center-padded to the square input with a constant gray value (114). This is a
-  required, model-defining step that is already performed identically during
-  training, so the snapshot captures its exact result.
+- **Letterbox resize, or grid tile.** For whole-frame and non-tiled models the source image is scaled to fit the model input, preserving aspect ratio (upscaling small images), then center-padded to it with a constant gray value (114). For [tiled models](#tiled-models) the snapshot instead holds native-scale tiles cut from the deployment grid. Either way this is a required, model-defining step that matches what the model sees at runtime, so the snapshot captures its exact result.
 - **Channel layout and CameraAdaptor.** The color conversion (RGB, BGR, YUYV,
   gray, …) and channel layout the model was trained with are applied, so the
   stored tensor is byte-identical to what the model sees at inference.
@@ -163,10 +146,7 @@ many converters.
   pipeline applies its own — without the lossy `[0,1] → [0,255]` round-trips
   that plagued ad-hoc snapshots.
 
-Generating the snapshot at training time is what makes this clean: the
-letterbox recipe is reused verbatim from the training data pipeline, and the
-parameter hash makes the resulting file reusable across every model that shares
-the same recipe.
+Generating the snapshot when the session exports the model is what makes this clean: the letterbox or grid-tile recipe is reused verbatim from the training data pipeline, and the parameter hash makes the resulting file reusable across every model that shares the same recipe.
 
 ## Parameter Hash and Caching
 
@@ -229,6 +209,38 @@ calibration needs input coverage, not labels. When the pool is smaller than the
 requested count, the whole pool is used and both the requested and actual
 counts are recorded.
 
+### Tiled models
+
+A [tiled model](../metadata.md#tiling) is calibrated on the tiles it sees at runtime, not on whole frames squeezed into the tile size. Its parameter set replaces the letterbox recipe with the deployment grid:
+
+```jsonc
+{
+  "input_shape": [640, 640],          // the tile [H, W]
+  "resize": "grid_tile",
+  "grid": {                           // the runtime grid (tiling.grid)
+    "algorithm": "evendist",
+    "version": 1,
+    "min_overlap": 0.1
+  },
+  "letterbox": { "...": "..." },      // kept: frames smaller than a tile, and whole-frame samples, are letterboxed
+  "full_frame": true                  // only when the model's tiling.full_frame.enabled is true; omitted otherwise
+  // all other keys as above
+}
+```
+
+Selection is unchanged: the same model-free selection picks `count` frames from the training split, including the frames that hold the pool's per-channel extrema. Each selected frame then contributes samples cut from its [deployment grid](../metadata.md#grid) at native scale:
+
+- **Extremum tiles.** For each per-channel minimum and maximum of the pool, the frame that selection seeded for it contributes the lowest-index grid tile containing the frame's first pixel, in row-major order, with that value. A tile named by several extrema is stored once. Because tiles are native-scale crops, the snapshot keeps the pool's per-channel extrema, as `max_dynamic_range_v1` requires.
+- **One tile per other frame.** A frame that holds no extremum contributes one tile, chosen by a generator seeded from the selection `seed` and the frame's position in the pool, so the choice is deterministic and independent of which other frames were selected.
+- **Whole-frame samples.** When the model's `tiling.full_frame.enabled` is `true`, the runtime also runs each whole frame letterboxed into the tile, so every selected frame also contributes that whole-frame sample, and the parameter set gains `"full_frame": true`.
+
+Samples are stored frame by frame in ascending pool order; within a frame, tiles in ascending grid index, then the whole-frame sample. A tiled snapshot therefore holds at least `count` samples: a frame seeded for extrema in different tiles adds one tile for each, and whole-frame samples add one per frame.
+
+A frame smaller than a tile along an axis is letterboxed into the tile, exactly as the runtime places it; `tiling.fit` is always `letterbox` in version 1. Because `grid` and `full_frame` are part of the hash preimage, a tiled snapshot never shares a filename with a letterbox snapshot of the same size, or with a tiled snapshot that lacks whole-frame samples.
+
+!!! warning "Whole-frame snapshots at high resolution are large"
+    A whole-frame snapshot stores full frames at the export resolution: 500 samples at 3840×2176 are about 12.5 GB, against about 0.6 GB for 500 tiles of 640×640. Producers warn when a snapshot exceeds 4 GiB. Reduce the sample count for large whole-frame exports.
+
 ### Caching against the Studio snapshot store
 
 Calibration snapshots are stored as [EdgeFirst Studio
@@ -256,8 +268,8 @@ and **must** fail loudly when a required key is absent rather than guessing.
 | `value_range` | `[0, 255]` | Stored sample range (not normalized). |
 | `layout` | `"NCHW"` | Stored layout. |
 | `normalization` | `{"scale":…,"mean":…,"std":…}` | What the model expects; the consumer applies it. |
-| `count_requested` | `500` | Requested sample count. |
-| `count_actual` | `500` | Samples actually written (may be smaller than requested for small pools). |
+| `count_requested` | `500` | Requested sample count: the number of frames to select. A letterbox snapshot stores one sample per frame. |
+| `count_actual` | `500` | Samples actually written. Smaller than requested for small pools; a [tiled snapshot](#tiled-models) can hold more, with extremum tiles and whole-frame samples. |
 | `selection` | `"max_dynamic_range_v1"` | Selection algorithm tag. |
 | `seed` | `42` | Selection seed. |
 | `content_sha256` | `"…"` | Digest over the concatenated sample bytes (integrity + cache validation). |
@@ -303,10 +315,8 @@ A training framework that emits EdgeFirst calibration snapshots must:
 2. **Select model-free.** Compute source-pixel descriptors and select with a
    versioned, deterministic algorithm. Under `max_dynamic_range_v1` the selected
    set's per-channel min/max must equal the pool's — the extrema-bearing images
-   are mandatory.
-3. **Preprocess through letterbox only.** Apply the model's exact letterbox and
-   CameraAdaptor recipe; store **uint8 [0, 255] NCHW**. Record the normalization
-   the model expects in metadata — do **not** apply it to the stored bytes.
+   are mandatory, and a tiled snapshot stores the tiles that hold the extrema pixels.
+3. **Preprocess at the model's geometry.** Letterbox each selected frame to the model input, or for a [tiled model](../metadata.md#tiling) cut deployment-grid tiles at native scale, plus whole-frame samples when its `full_frame` pass is enabled (see [Tiled models](#tiled-models)); apply the CameraAdaptor recipe; store **uint8 [0, 255] NCHW**. Record the geometry (`input_shape`, `resize`, and `grid` for tiles) and the normalization the model expects in metadata — do **not** apply the normalization to the stored bytes.
 4. **Name and hash deterministically.** Serialize the canonical parameter set
    with sorted keys and a fixed float representation; hash to 16 hex characters;
    build the filename. Identical parameters over an identical pool must produce
@@ -327,16 +337,26 @@ A Converter App that calibrates from a snapshot must:
    quantizer expects (signed/centered, `[0, 255]`, or per-input float), and
    transpose `NCHW → NHWC` if your runtime needs it.
 3. **Verify integrity.** Check `content_sha256` over the sample bytes on load.
-4. **Record traceability.** Write the snapshot filename into your converter
-   section of `edgefirst.json`.
+4. **Check the geometry.** Before calibrating, confirm the snapshot fits the model (see [Geometry check](#geometry-check)), and fail loudly if it does not. A mismatched snapshot otherwise fails deep inside a toolchain, or worse, calibrates silently on the wrong input distribution.
+5. **Record traceability.** Write the snapshot filename into your converter section of `edgefirst.json`, together with `calibration_geometry: {resize, input_shape}` from the snapshot's parameters, adding `full_frame: true` when the parameters carry it.
 
 ```python
 from safetensors import safe_open
 import json, numpy as np
 
+# model_meta: the model's embedded EdgeFirst metadata (edgefirst.json)
+# model_input_hw: the model's input (H, W) after layout mapping and overrides
+tiling = model_meta.get("tiling", {})
+tiling_mode = tiling.get("mode")                          # None without tiling
+full_frame = tiling.get("full_frame", {}).get("enabled", False)
+
 with safe_open(calibration_path, framework="numpy") as f:
     meta = f.metadata()                       # __metadata__ map
     names = json.loads(meta["tensor_names"])
+    params = json.loads(meta["params"])
+    sample_hw = f.get_slice(names[0]).get_shape()[2:4]   # NCHW -> (H, W)
+    check_snapshot_geometry(params, sample_hw, model_input_hw, tiling_mode, full_frame)  # see Geometry Check
+
     norm = json.loads(meta["normalization"])  # {scale, mean, std}
     scale = np.float32(norm["scale"])
     mean = np.asarray(norm["mean"], np.float32)
@@ -352,6 +372,38 @@ with safe_open(calibration_path, framework="numpy") as f:
             feed[name] = sample[np.newaxis]               # NHWC, batch 1
         yield feed                                        # representative_dataset
 ```
+
+## Geometry Check
+
+A consumer verifies four things before it uses a snapshot, in this order, and stops at the first failure with a clear message:
+
+1. The snapshot's `params.input_shape` equals the model's input height and width. Use the input after any layout mapping, and after any explicit input-shape override the converter applies.
+2. The stored samples' height and width equal `params.input_shape`.
+3. `params.resize` matches the model: `grid_tile` (with a `grid` block whose `algorithm` is `evendist`) when the model's `tiling.mode` is `tiled`, and `letterbox` otherwise, including models without a `tiling` section.
+4. `params.full_frame` (`false` when absent) equals the model's `tiling.full_frame.enabled` (`false` without a `tiling` section).
+
+```python
+def check_snapshot_geometry(params, sample_hw, model_input_hw, tiling_mode, full_frame=False):
+    if "input_shape" not in params or "resize" not in params:
+        raise ValueError("calibration snapshot params lack input_shape or resize")
+    snapshot_hw = tuple(params["input_shape"])
+    if snapshot_hw != tuple(model_input_hw):
+        raise ValueError(f"calibration snapshot input_shape {list(snapshot_hw)} does not match the model input {list(model_input_hw)}")
+    if tuple(sample_hw) != snapshot_hw:
+        raise ValueError(f"calibration sample H,W {list(sample_hw)} does not match the snapshot input_shape {list(snapshot_hw)}")
+    expected = "grid_tile" if tiling_mode == "tiled" else "letterbox"
+    if params["resize"] != expected:
+        raise ValueError(f"calibration snapshot resize must be {expected!r} for a {tiling_mode or 'non-tiled'} model; got {params['resize']!r}")
+    if expected == "grid_tile" and (params.get("grid") or {}).get("algorithm") != "evendist":
+        raise ValueError("grid_tile calibration snapshot lacks a grid block with algorithm evendist")
+    if params.get("full_frame", False) != full_frame:
+        want = "must include" if full_frame else "must not include"
+        raise ValueError(f"calibration snapshot {want} whole-frame samples (full_frame) for this model")
+```
+
+Consumers also reject a malformed shape (a missing value, a value that is not a sequence, or a height or width that is not an integer) with a clear error, rather than letting the comparison fail or pass by accident.
+
+Snapshots produced before tiled models existed carry `resize: letterbox` without a `grid` block, and continue to pass for models without a `tiling` section.
 
 ## What's Next
 

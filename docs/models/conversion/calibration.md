@@ -193,7 +193,7 @@ The parameter set covers every input that affects the produced bytes:
 }
 ```
 
-`resize` is `"letterbox"`, `"stretch"` or `"tiled"`. `"stretch"` resizes the frame directly to the model input without padding, for models trained at a fixed aspect ratio such as ModelPack's native-aspect models, and its parameter set has no `letterbox` block. The `letterbox` block is present for `letterbox` and `tiled` snapshots.
+`resize` is `"letterbox"`, `"stretch"` or `"tiled"`. `"stretch"` resizes the frame directly to the model input without padding, for models trained on frames resized directly to a fixed aspect ratio, and its parameter set has no `letterbox` block. The `letterbox` block is present for `letterbox` and `tiled` snapshots.
 
 Two properties follow from hashing the parameters rather than the content:
 
@@ -241,7 +241,7 @@ Samples are stored frame by frame in ascending pool order; within a frame, tiles
 A frame smaller than a tile along an axis is letterboxed into the tile, exactly as the runtime places it; `tiling.fit` is always `letterbox` in version 1. Because `grid` and `full_frame` are part of the hash preimage, a tiled snapshot never shares a filename with a letterbox snapshot of the same size, or with a tiled snapshot that lacks whole-frame samples.
 
 !!! warning "Whole-frame snapshots at high resolution are large"
-    A whole-frame snapshot stores full frames at the export resolution: 500 samples at 3840×2176 are about 12.5 GB, against about 0.6 GB for 500 tiles of 640×640. Producers warn when a snapshot exceeds 4 GiB. Reduce the sample count for large whole-frame exports.
+    A whole-frame snapshot stores full frames at the export resolution: 500 samples at 3840×2176 are about 12.5 GB, against about 0.6 GB for 500 tiles of 640×640. Producers should warn when a snapshot exceeds 4 GiB. Reduce the sample count for large whole-frame exports.
 
 ### Caching against the Studio snapshot store
 
@@ -404,7 +404,7 @@ A consumer verifies four things before it uses a snapshot, in this order, and st
 
 1. The snapshot's `params` are a mapping with `input_shape` and `resize`, and `params.input_shape` equals the model's input height and width. The model input is the one the converter actually compiles: the model graph input, or an explicit input-shape override, after any layout mapping. When the metadata `input.shape` disagrees with the graph and no override applies, the converter fails rather than choosing one.
 2. The stored samples' height and width equal `params.input_shape`.
-3. `params.resize` matches the model: `tiled` (with a `grid` block whose `algorithm` is `evendist`) when the model's `tiling.mode` is `tiled`, `letterbox` when it is `whole_frame`, and `letterbox` or `stretch` only for a model without a supported `tiling` section (`stretch` is never valid for a `whole_frame` model), or `tiled` when the snapshot's parameters carry a `tiling` block, as ModelPack's tiled snapshots do. A `tiling` section whose `version` is not the integer `1` counts as absent: `1.0` and `true` are not version 1. A converter rejects such a section outright (see [Converter Traceability](../metadata.md#converter-traceability)), so the check treats it as absent only where it is applied to a document the converter has not screened.
+3. `params.resize` matches the model: `tiled` (with a `grid` block whose `algorithm` is `evendist`) when the model's `tiling.mode` is `tiled`, `letterbox` when it is `whole_frame`, and `letterbox` or `stretch` only for a model without a supported `tiling` section (`stretch` is never valid for a `whole_frame` model), or `tiled` when the snapshot's parameters carry a `tiling` block instead of a `grid` block. A `tiling` section whose `version` is not the integer `1` counts as absent: `1.0` and `true` are not version 1. A converter rejects such a section outright (see [Converter Traceability](../metadata.md#converter-traceability)), so the check treats it as absent only where it is applied to a document the converter has not screened.
 4. `params.full_frame` (`false` when absent, and it must be a boolean) equals the model's `tiling.full_frame.enabled` (`false` without a `tiling` section).
 
 ```python
@@ -486,7 +486,7 @@ def check_converter_tiling(edgefirst):
 
 Consumers reject a malformed shape (a missing value, a value that is not a two-element sequence, a height or width that is not a positive integer) with an error naming the field, rather than letting the comparison fail or pass by accident.
 
-Snapshots with `resize: letterbox` or `resize: stretch` and no `grid` block pass for models without a `tiling` section, as do ModelPack tiled snapshots, whose parameters carry a `tiling` block instead of a `grid` block.
+Snapshots with `resize: letterbox` or `resize: stretch` and no `grid` block pass for models without a `tiling` section, as do `tiled` snapshots whose parameters carry a `tiling` block instead of a `grid` block.
 
 ## What's Next
 

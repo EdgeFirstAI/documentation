@@ -283,7 +283,7 @@ export:
   export_output_type: string
   calibration_samples: int
 
-# Decoder Configuration (Ultralytics only)
+# Decoder Configuration
 decoder_version: string    # YOLO architecture version: yolov5, yolov8, yolo11, yolo26
 nms: string                # HAL decoder NMS mode: class_aware (default when absent), class_agnostic
 nms_multi_label: boolean   # Optional. Multi-label candidate selection (validation decode); absent or false = one class per anchor
@@ -448,9 +448,9 @@ Logical output types used across frameworks:
 | `protos` | Instance segmentation prototypes | `[1, num_protos, H, W]` |
 | `landmarks` | Facial / keypoint landmarks | `[1, num_landmarks, num_boxes]` |
 | `detections` | Fully decoded post-NMS detections (end-to-end) | `[1, max_det, 6]` (x1,y1,x2,y2,conf,class) |
-| `segmentation` | Semantic segmentation output (ModelPack) | `[1, H, W, num_classes]` |
-| `masks` | Semantic segmentation masks (ModelPack) | `[1, H, W]` |
-| `detection` | ModelPack anchor-grid raw output requiring anchor decode | `[1, H, W, anchors×features]` |
+| `segmentation` | Semantic segmentation output | `[1, H, W, num_classes]` |
+| `masks` | Semantic segmentation masks | `[1, H, W]` |
+| `detection` | Anchor-grid raw output requiring anchor decode | `[1, H, W, anchors×features]` |
 
 Physical-child subtypes (appear only inside `outputs[]` children):
 
@@ -486,7 +486,7 @@ outputs:
 | `num_features` | Feature dimension (box coords + classes + mask coefficients) |
 | `num_boxes` | Number of detection boxes/anchors |
 | `num_protos` | Number of prototype masks (instance segmentation) |
-| `num_anchors_x_features` | Combined anchor × features-per-anchor dimension (ModelPack grid outputs) |
+| `num_anchors_x_features` | Combined anchor × features-per-anchor dimension (anchor-grid outputs) |
 | `padding` | Padding/alignment dimension used to satisfy expected tensor shapes. Must always be 1 |
 | `box_coords` | The coordinates of the boxes. Must be 4 |
 
@@ -777,7 +777,7 @@ input:
 
 **Native Aspect Ratio (typical for purpose-built datasets):**
 
-- [ModelPack](modelpack/index.md) models are often trained at the camera's native aspect ratio
+- The model is trained at the camera's native aspect ratio
 - Images are directly resized to target dimensions without padding
 - Best accuracy when deployment camera matches training data
 
@@ -824,7 +824,7 @@ The `cameraadaptor` field specifies the expected input format for the model. See
 
 Models trained on native-resolution tiles of high-resolution frames carry an optional `tiling` section. A runtime reads it to decide whether to cut each frame into tiles or run the whole frame through the model, and it records how the model was trained, exported and calibrated. A model without the section is not tile-trained and is handled exactly as before.
 
-The tiling mode and the input resolution are fixed when the model is exported, because edge runtimes compile a static input shape. Trainers export a tile-trained model **tiled** at its tile size by default. The contract defines one workflow for deploying the same weights at another resolution, for example whole-frame at a camera's native resolution: it is done by starting a new training session with training disabled, selecting the tile-trained session as its weights source, and choosing the deployment mode and input resolution. That session exports and calibrates at the new geometry without retraining.
+The tiling mode and the input resolution are fixed when the model is exported, because edge runtimes compile a static input shape. The default deployment of a tile-trained model is **tiled** at its tile size. The contract defines one workflow for deploying the same weights at another resolution, for example whole-frame at a camera's native resolution: it is done by starting a new training session with training disabled, selecting the tile-trained session as its weights source, and choosing the deployment mode and input resolution. That session exports and calibrates at the new geometry without retraining.
 
 ### Tiling Schema
 
@@ -849,7 +849,7 @@ tiling:
     calibration: {resize: tiled, input_shape: [640, 640], full_frame: false}
 ```
 
-In version 1 every key shown above is required, except `export.weights_from` and the contents of `training.params`. Values in parentheses below are the values trainers write; they are not defaults that a runtime fills in for missing keys.
+In version 1 every key shown above is required, except `export.weights_from` and the contents of `training.params`. Values in parentheses below are recommended values; they are not defaults that a runtime fills in for missing keys.
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
@@ -1089,7 +1089,7 @@ outputs:
 
 #### `modelpack` — Anchor-Based YOLO Decoder
 
-Used by [ModelPack](modelpack/index.md) models. Traditional YOLO-style grid decoding with pre-defined anchor boxes.
+Traditional YOLO-style grid decoding with pre-defined anchor boxes.
 
 **Characteristics:**
 
@@ -1120,7 +1120,7 @@ outputs:
 
 #### `ultralytics` — Anchor-Free DFL Decoder
 
-Used by [Ultralytics](ultralytics/index.md) models (YOLOv5, YOLOv8, YOLO11, YOLO26). Modern anchor-free detection using Distribution Focal Loss (DFL).
+Modern anchor-free detection using Distribution Focal Loss (DFL).
 
 **Characteristics:**
 
@@ -1152,7 +1152,7 @@ x2y2 = anchor_points + rb
 
 ### Decoder Version Field
 
-The `decoder_version` field specifies the YOLO architecture version for Ultralytics models. This field is critical for determining the correct decoding strategy, especially for end-to-end models.
+The optional `decoder_version` field specifies the YOLO architecture version of the model. This field is critical for determining the correct decoding strategy, especially for end-to-end models.
 
 ```yaml
 decoder_version: yolo26    # End-to-end model with embedded NMS
@@ -1207,7 +1207,7 @@ nms: class_agnostic    # Suppress overlapping boxes regardless of class
 
     The two fields are independent and can coexist.
 
-When `nms` is absent, or is the v1 value `auto`, the HAL decoder uses class-aware NMS, so overlapping objects of different classes (a person on a bicycle) do not suppress each other. An explicit `class_agnostic` always takes effect, including together with [`nms_multi_label`](#hal-multi-label-field). The resolved mode applies to every NMS decode path, ModelPack detection models included.
+When `nms` is absent, or is the v1 value `auto`, the HAL decoder uses class-aware NMS, so overlapping objects of different classes (a person on a bicycle) do not suppress each other. An explicit `class_agnostic` always takes effect, including together with [`nms_multi_label`](#hal-multi-label-field). The resolved mode applies to every NMS decode path, whatever the output's `decoder`.
 
 ### HAL Multi-Label Field
 
@@ -1823,7 +1823,7 @@ YOLOv5 is anchor-based with 3 anchors per cell. Per-scale physical channel count
 
 ### Instance Segmentation Mask Computation
 
-For instance segmentation outputs (Ultralytics), the final per-object mask is computed from mask coefficients and prototypes:
+For instance segmentation outputs, the final per-object mask is computed from mask coefficients and prototypes:
 
 ```python
 # For each detected object with mask_coefs [32]:
@@ -2313,9 +2313,9 @@ outputs:
 
 ---
 
-## Appendix: Ultralytics YOLO Split Hints Reference
+## Appendix: YOLO Split Hints Reference
 
-This appendix shows the exact `split_hints` that edgefirst-studio-ultralytics embeds in ONNX metadata for each supported YOLO version × task combination, using 80 COCO classes as the reference.
+This appendix shows the `split_hints` in ONNX metadata for each supported YOLO version × task combination, using 80 COCO classes as the reference.
 
 All versions share:
 

@@ -65,6 +65,7 @@ cdot
 cdr
 centered
 centers
+centred
 centres
 centroid
 centroids
@@ -97,6 +98,7 @@ compressedvideo
 concat
 config
 conv
+convolutional
 coords
 copyds
 costmap
@@ -402,6 +404,7 @@ nchw
 ndarray
 neighbor
 neighbors
+neighbouring
 netmask
 netplan
 netron

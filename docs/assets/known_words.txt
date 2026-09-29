@@ -189,6 +189,7 @@ ethernet1
 ethtool
 europlug
 evk
+extremum
 extrinsics
 fargate
 fd

@@ -296,13 +296,13 @@ tiling:
   mode: string                 # tiled | whole_frame (how the runtime feeds frames)
   tile: [int, int]             # Runtime tile [H, W]; equals the input H, W in tiled mode
   grid: {algorithm: string, version: int, min_overlap: float}
-  fit: string                  # letterbox | stretch
+  fit: string                  # letterbox
   pad: [int, int, int]
   per_tile: {nms: string, iou: float, score: float}
   merge: {mode: string, metric: string, threshold: float, class_agnostic: boolean, max_det: int}
   full_frame: {enabled: boolean, own_above_area: float}
   training: {session: string, sampler: string, version: string, params: object}
-  export: {session: string, weights_from: string, calibration: {resize: string, input_shape: [int, int]}}
+  export: {session: string, weights_from: string, calibration: {resize: string, input_shape: [int, int], full_frame: boolean}}
 
 # Split Hints — INPUT metadata only, present in uncompiled ONNX/SavedModel.
 # The compiled (converted) model REPLACES split_hints with the outputs[] array.
@@ -822,7 +822,7 @@ The `cameraadaptor` field specifies the expected input format for the model. See
 ## Tiling
 
 !!! note "Status"
-    This section defines the tiling contract. Export-only re-export sessions with a weights source, embedded metadata in `.pt` weights, and automatic runtime support for the `tiling` section in the HAL and the profiler arrive in upcoming releases. Until then, enable tiled inference with the profiler's `--sahi` options; see [Tiled Inference (SAHI)](../profiler/concepts/sahi.md).
+    This section defines the tiling contract. Export-only re-export sessions with a weights source and automatic runtime support for the `tiling` section in the HAL and the profiler arrive in upcoming releases. Until then, enable tiled inference with the profiler's `--sahi` options; see [Tiled Inference (SAHI)](../profiler/concepts/sahi.md).
 
 Models trained on native-resolution tiles of high-resolution frames carry an optional `tiling` section. A runtime reads it to decide whether to cut each frame into tiles or run the whole frame through the model, and it records how the model was trained, exported and calibrated. A model without the section is not tile-trained and is handled exactly as before.
 
@@ -848,7 +848,7 @@ tiling:
     params: {tile_size: [640, 640], windows_per_frame: 4, seed: 0}
   export:
     session: t-1a2b
-    calibration: {resize: grid_tile, input_shape: [640, 640]}
+    calibration: {resize: grid_tile, input_shape: [640, 640], full_frame: false}
 ```
 
 In version 1 every key shown above is required, except `export.weights_from` and the contents of `training.params`. Values in parentheses below are the values trainers write; they are not defaults that a runtime fills in for missing keys.
@@ -858,21 +858,42 @@ In version 1 every key shown above is required, except `export.weights_from` and
 | `version` | int | Section version. The current version is `1`. A runtime that finds a version it does not support must warn and treat the model as not tile-trained. |
 | `mode` | string | `tiled`: the runtime cuts each frame into a grid of `tile`-sized crops, runs each, and merges the detections. `whole_frame`: the runtime letterboxes the whole frame into the model input and runs it once. |
 | `tile` | [int, int] | Runtime tile `[H, W]` in pixels. In `tiled` mode it equals the input height and width. |
-| `grid.algorithm` | string | `evendist`: tile origins spread evenly from 0 to `frame − tile` per axis, so every seam overlaps by at least `min_overlap` and no tile is shifted. |
+| `grid.algorithm` | string | `evendist`: tile origins spread evenly from 0 to `frame − tile` per axis, so every seam overlaps by at least `min_overlap` and no tile is shifted. See [Grid](#grid). |
 | `grid.version` | int | Grid algorithm version (`1`). |
 | `grid.min_overlap` | float | Minimum overlap between neighbouring tiles as a fraction of the tile, `0 ≤ min_overlap < 1` (`0.1`). |
-| `fit` | string | How a crop smaller than the tile is placed: `letterbox` (aspect preserved, content centred, padded with `pad`) or `stretch`. Full-size tiles are identical either way. |
+| `fit` | string | How a crop smaller than the tile is placed. Version 1 defines only `letterbox`: aspect preserved, content centred, padded with `pad` (see [Grid](#grid)). |
 | `pad` | [int, int, int] | Letterbox pad colour, three integers from 0 to 255 (`114` per channel). |
 | `per_tile.nms` | string | NMS applied to each tile's detections before merging: `class_aware`, `class_agnostic`, or `none` for end-to-end models. |
 | `per_tile.iou` / `per_tile.score` | float | Per-tile NMS IoU threshold (`0.5`) and score floor (`0.001`), each from 0 to 1. |
-| `merge.mode` | string | Cross-tile merge: `keep_best` keeps the highest-scoring box of each group unchanged; `union` replaces the group with its enclosing box. |
+| `merge.mode` | string | Cross-tile merge: `keep_best` keeps the highest-scoring box of each group unchanged; `union` replaces the group with its enclosing box. See [Merge](#merge). |
 | `merge.metric` | string | `ios` (intersection over the smaller box, which matches objects cut by a tile seam) or `iou`. |
 | `merge.threshold` | float | Overlap at which two boxes of the same class (or any class if `class_agnostic`) are merged, from 0 to 1 (`0.5`). |
 | `merge.class_agnostic` | boolean | Merge across classes (`false`). |
 | `merge.max_det` | int | Maximum detections per frame after merging, a positive integer (`300`). |
-| `full_frame` | object | Extra whole-frame pass merged with the tiles: `enabled` (boolean, `false`) and `own_above_area`, a fraction of the frame area from 0 to 1 above which whole-frame boxes replace overlapping tile boxes (`0.02`). |
+| `full_frame` | object | Extra whole-frame pass merged with the tiles: `enabled` (boolean, `false`) and `own_above_area`, a fraction of the frame area from 0 to 1 above which whole-frame boxes replace overlapping tile boxes (`0.02`). In the pass the whole frame is letterboxed into the tile. `enabled` may be `true` only in `tiled` mode. |
 | `training` | object | How the weights were trained: the training `session`, the `sampler` and its `version`, and its parameters as trained. Written once by the session that trained the weights and copied unchanged by every later export. |
-| `export` | object | How this model was produced: the exporting `session`, `weights_from` (the session whose weights were loaded, omitted when the same session trained and exported), and the `calibration` geometry (see [Tiling Rules](#tiling-rules)). |
+| `export` | object | How this model was produced: the exporting `session`, `weights_from` (the session whose weights were loaded, omitted when the same session trained and exported), and the `calibration` geometry: `resize`, `input_shape`, and `full_frame`, which is `true` when the snapshot also holds whole-frame samples (see [Tiling Rules](#tiling-rules)). |
+
+### Grid
+
+The `evendist` version 1 grid is computed per axis, for a frame length `L` and a tile length `T` in pixels, identically on every runtime:
+
+1. If `L ≤ T`, the axis has a single origin `0` and the crop covers the whole axis.
+2. Otherwise let `last = L − T`, `step = max(1, ⌊(1 − min_overlap) × T⌋)` and `n = ⌈last / step⌉`. `min_overlap` is first rounded to a 32-bit float, then `step` is evaluated in 64-bit floating point; `n` is an integer division rounded up. The origins are `oᵢ = round(i × last / n)` for `i = 0 … n`, with `i`, `last` and `n` converted to 32-bit floats, the product and quotient evaluated in 32-bit floating point, and the result rounded half away from zero. The first origin is `0` and the last is `last`.
+
+A 3840-pixel axis with a 640-pixel tile and `min_overlap: 0.1` gives `step = 575` (0.1 as a 32-bit float is slightly larger than 0.1), `n = 6` and origins 0, 533, 1067, 1600, 2133, 2667, 3200. A 2160-pixel axis gives origins 0, 507, 1013, 1520.
+
+The tiles are every pair of a row origin and a column origin, in row-major order: rows top to bottom, and within a row the columns left to right. A tile's index is its position in this order. Each crop is `min(T, L)` pixels along each axis, so crops are full tiles except on an axis shorter than the tile. Such a crop is letterboxed: scaled by the largest factor that fits it in the tile with its aspect ratio kept, the scaled size rounded half away from zero (at least 1 pixel), placed at offset `⌊(tile − scaled) / 2⌋` on each axis, and the rest filled with `pad`.
+
+### Merge
+
+Each tile's detections are filtered with `per_tile` NMS, mapped back into frame pixels in 32-bit floating point, and concatenated in tile-index order. The merge then groups them greedily:
+
+1. Sort the detections by score, highest first. Equal scores keep their concatenated order.
+2. Walk the sorted list. Each detection not yet claimed is kept, and claims every later unclaimed detection of the same class (any class if `class_agnostic`) whose overlap with it, by `metric`, is at least `threshold`. `ios` is the intersection divided by the smaller box's area and `iou` the intersection over the union, each with the denominator floored at `1e-9`.
+3. A detection is compared only with the kept detection that claims it; grouping is not transitive. If A claims B, and C overlaps B but not A, C stays unclaimed and is considered in its own turn.
+4. `keep_best` emits the kept detection unchanged. `union` emits the box enclosing the kept detection and everything it claimed, with the kept detection's score and class.
+5. The output is the emitted detections in the order they were kept, truncated to `max_det`.
 
 ### Tiling Modes
 
@@ -880,7 +901,7 @@ In version 1 every key shown above is required, except `export.weights_from` and
 | - | ------- | ------------- |
 | Model input | The tile, e.g. `640×640` | The export resolution, e.g. `3840×2176` for 4K frames (height and width are multiples of 32) |
 | Runtime | Grid of tiles per frame, per-tile NMS, merge into frame coordinates | One inference per frame on the letterboxed frame |
-| Calibration snapshot | Deployment-grid tiles at native scale (`resize: grid_tile`) | Frames letterboxed to the export resolution (`resize: letterbox`) |
+| Calibration snapshot | Deployment-grid tiles at native scale (`resize: grid_tile`), plus whole-frame samples when `full_frame.enabled` | Frames letterboxed to the export resolution (`resize: letterbox`) |
 | When to use | High-resolution cameras on accelerators that cannot fit the whole frame, and the default for tile-trained models | The accelerator fits the whole frame; usually faster than tiling the same frame |
 
 Both modes use the same weights, because the detectors are fully convolutional and were trained at native scale.
@@ -889,7 +910,7 @@ Both modes use the same weights, because the detectors are fully convolutional a
 
 1. In `tiled` mode the input height and width equal `tile`. The tile may differ from the training tile (`training.params.tile_size`), because objects are still seen at native scale.
 2. In `whole_frame` mode the input is the export resolution, with height and width multiples of 32.
-3. `export.calibration.resize` is `grid_tile` in `tiled` mode and `letterbox` in `whole_frame` mode, and `export.calibration.input_shape` equals the input height and width. See [Calibration Snapshot](conversion/calibration.md#geometry-check).
+3. `export.calibration.resize` is `grid_tile` in `tiled` mode and `letterbox` in `whole_frame` mode, `export.calibration.input_shape` equals the input height and width, and `export.calibration.full_frame` equals `full_frame.enabled`. See [Calibration Snapshot](conversion/calibration.md#geometry-check).
 4. `training` is never modified after the session that trained the weights wrote it. `export` describes the most recent export.
 5. Converters copy the `tiling` section unchanged; see [Converter Traceability](#converter-traceability).
 6. Unknown keys are ignored.
@@ -919,7 +940,7 @@ tiling:
   export:
     session: t-3c4d
     weights_from: t-1a2b
-    calibration: {resize: letterbox, input_shape: [2176, 3840]}
+    calibration: {resize: letterbox, input_shape: [2176, 3840], full_frame: false}
 ```
 
 ### Example: Tiled Re-Export at a New Tile Size
@@ -947,7 +968,7 @@ tiling:
   export:
     session: t-3c4e
     weights_from: t-1a2b
-    calibration: {resize: grid_tile, input_shape: [1280, 1280]}
+    calibration: {resize: grid_tile, input_shape: [1280, 1280], full_frame: false}
 ```
 
 ### Models Without Tiling
@@ -1813,7 +1834,7 @@ When a converter processes a model, it augments the existing `edgefirst.json` wi
 - Multiple converter sections can coexist when a model passes through a pipeline chain (e.g., TFLite Quantizer followed by Neutron Converter).
 - Converters copy the [`tiling`](#tiling) section unchanged. It describes the model, and a runtime reads it from the compiled artifact to decide how to feed frames; conversion decisions belong in the converter's own section.
 - The height and width in `input.shape` match the compiled artifact's input, in the layout of the output format.
-- A converter that calibrates checks the snapshot's geometry against the model before using it (see [Calibration Snapshot — Geometry check](conversion/calibration.md#geometry-check)) and records `calibration_geometry: {resize, input_shape}` beside its `calibration` field.
+- A converter that calibrates checks the snapshot's geometry against the model before using it (see [Calibration Snapshot — Geometry check](conversion/calibration.md#geometry-check)) and records `calibration_geometry: {resize, input_shape}` beside its `calibration` field, adding `full_frame: true` when the snapshot holds whole-frame samples.
 
 ### Converter Section Schema
 
@@ -1826,7 +1847,7 @@ Each converter section is a free-form object, but should include at minimum:
 | `task` | string | Studio batch task ID for this conversion step (e.g., `bt-3a1f`) |
 | `splits_applied` | string[] | List of `split_hints[].type` values that were consumed |
 | `calibration` | string or object | Calibration snapshot used: the snapshot filename, or a converter-specific record that names it |
-| `calibration_geometry` | object | `{resize, input_shape}` of the snapshot, present when the converter calibrated (see [Geometry check](conversion/calibration.md#geometry-check)) |
+| `calibration_geometry` | object | `{resize, input_shape}` of the snapshot, with `full_frame: true` when it holds whole-frame samples; present when the converter calibrated (see [Geometry check](conversion/calibration.md#geometry-check)) |
 
 Additional fields are converter-specific and documented by each converter app.
 

@@ -2408,7 +2408,7 @@ encodes a hash of that set so the snapshot is <strong>content-addressed</strong>
   "seed": 42                          // selection seed
 }
 </code></pre></div>
-<p><code>resize</code> is <code>"letterbox"</code>, <code>"stretch"</code> or <code>"tiled"</code>. <code>"stretch"</code> resizes the frame directly to the model input without padding, for models trained at a fixed aspect ratio such as ModelPack's native-aspect models, and its parameter set has no <code>letterbox</code> block. The <code>letterbox</code> block is present for <code>letterbox</code> and <code>tiled</code> snapshots.</p>
+<p><code>resize</code> is <code>"letterbox"</code>, <code>"stretch"</code> or <code>"tiled"</code>. <code>"stretch"</code> resizes the frame directly to the model input without padding, for models trained on frames resized directly to a fixed aspect ratio, and its parameter set has no <code>letterbox</code> block. The <code>letterbox</code> block is present for <code>letterbox</code> and <code>tiled</code> snapshots.</p>
 <p>Two properties follow from hashing the parameters rather than the content:</p>
 <ul>
 <li><strong>Versioned selection.</strong> The <code>selection</code> tag names the algorithm. Changing
@@ -2449,7 +2449,7 @@ counts are recorded.</p>
 <p>A frame smaller than a tile along an axis is letterboxed into the tile, exactly as the runtime places it; <code>tiling.fit</code> is always <code>letterbox</code> in version 1. Because <code>grid</code> and <code>full_frame</code> are part of the hash preimage, a tiled snapshot never shares a filename with a letterbox snapshot of the same size, or with a tiled snapshot that lacks whole-frame samples.</p>
 <div class="admonition warning">
 <p class="admonition-title">Whole-frame snapshots at high resolution are large</p>
-<p>A whole-frame snapshot stores full frames at the export resolution: 500 samples at 3840×2176 are about 12.5 GB, against about 0.6 GB for 500 tiles of 640×640. Producers warn when a snapshot exceeds 4 GiB. Reduce the sample count for large whole-frame exports.</p>
+<p>A whole-frame snapshot stores full frames at the export resolution: 500 samples at 3840×2176 are about 12.5 GB, against about 0.6 GB for 500 tiles of 640×640. Producers should warn when a snapshot exceeds 4 GiB. Reduce the sample count for large whole-frame exports.</p>
 </div>
 <h3 id="caching-against-the-studio-snapshot-store">Caching against the Studio snapshot store</h3>
 <p>Calibration snapshots are stored as <a href="../../../studio/snapshots/">EdgeFirst Studio
@@ -2674,7 +2674,7 @@ exact samples it was built from:</p>
 <ol>
 <li>The snapshot's <code>params</code> are a mapping with <code>input_shape</code> and <code>resize</code>, and <code>params.input_shape</code> equals the model's input height and width. The model input is the one the converter actually compiles: the model graph input, or an explicit input-shape override, after any layout mapping. When the metadata <code>input.shape</code> disagrees with the graph and no override applies, the converter fails rather than choosing one.</li>
 <li>The stored samples' height and width equal <code>params.input_shape</code>.</li>
-<li><code>params.resize</code> matches the model: <code>tiled</code> (with a <code>grid</code> block whose <code>algorithm</code> is <code>evendist</code>) when the model's <code>tiling.mode</code> is <code>tiled</code>, <code>letterbox</code> when it is <code>whole_frame</code>, and <code>letterbox</code> or <code>stretch</code> only for a model without a supported <code>tiling</code> section (<code>stretch</code> is never valid for a <code>whole_frame</code> model), or <code>tiled</code> when the snapshot's parameters carry a <code>tiling</code> block, as ModelPack's tiled snapshots do. A <code>tiling</code> section whose <code>version</code> is not the integer <code>1</code> counts as absent: <code>1.0</code> and <code>true</code> are not version 1. A converter rejects such a section outright (see <a href="../../metadata/#converter-traceability">Converter Traceability</a>), so the check treats it as absent only where it is applied to a document the converter has not screened.</li>
+<li><code>params.resize</code> matches the model: <code>tiled</code> (with a <code>grid</code> block whose <code>algorithm</code> is <code>evendist</code>) when the model's <code>tiling.mode</code> is <code>tiled</code>, <code>letterbox</code> when it is <code>whole_frame</code>, and <code>letterbox</code> or <code>stretch</code> only for a model without a supported <code>tiling</code> section (<code>stretch</code> is never valid for a <code>whole_frame</code> model), or <code>tiled</code> when the snapshot's parameters carry a <code>tiling</code> block instead of a <code>grid</code> block. A <code>tiling</code> section whose <code>version</code> is not the integer <code>1</code> counts as absent: <code>1.0</code> and <code>true</code> are not version 1. A converter rejects such a section outright (see <a href="../../metadata/#converter-traceability">Converter Traceability</a>), so the check treats it as absent only where it is applied to a document the converter has not screened.</li>
 <li><code>params.full_frame</code> (<code>false</code> when absent, and it must be a boolean) equals the model's <code>tiling.full_frame.enabled</code> (<code>false</code> without a <code>tiling</code> section).</li>
 </ol>
 <div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">collections.abc</span><span class="w"> </span><span class="kn">import</span> <span class="n">Mapping</span>
@@ -2751,7 +2751,7 @@ exact samples it was built from:</p>
         <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">"model tiling mode </span><span class="si">{</span><span class="n">tiling</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">'mode'</span><span class="p">)</span><span class="si">!r}</span><span class="s2"> is not supported (expected tiled or whole_frame)"</span><span class="p">)</span>
 </code></pre></div>
 <p>Consumers reject a malformed shape (a missing value, a value that is not a two-element sequence, a height or width that is not a positive integer) with an error naming the field, rather than letting the comparison fail or pass by accident.</p>
-<p>Snapshots with <code>resize: letterbox</code> or <code>resize: stretch</code> and no <code>grid</code> block pass for models without a <code>tiling</code> section, as do ModelPack tiled snapshots, whose parameters carry a <code>tiling</code> block instead of a <code>grid</code> block.</p>
+<p>Snapshots with <code>resize: letterbox</code> or <code>resize: stretch</code> and no <code>grid</code> block pass for models without a <code>tiling</code> section, as do <code>tiled</code> snapshots whose parameters carry a <code>tiling</code> block instead of a <code>grid</code> block.</p>
 <h2 id="whats-next">What's Next</h2>
 <ul>
 <li><a href="../#smart-quantization">Smart Quantization</a> — why activation ranges

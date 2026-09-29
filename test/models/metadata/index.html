@@ -2094,6 +2094,17 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#hal-multi-label-field" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        HAL Multi-Label Field
+      
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -2615,15 +2626,15 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#appendix-ultralytics-yolo-split-hints-reference" class="md-nav__link">
+  <a href="#appendix-yolo-split-hints-reference" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Appendix: Ultralytics YOLO Split Hints Reference
+        Appendix: YOLO Split Hints Reference
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Appendix: Ultralytics YOLO Split Hints Reference">
+    <nav class="md-nav" aria-label="Appendix: YOLO Split Hints Reference">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -3657,6 +3668,17 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#hal-multi-label-field" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        HAL Multi-Label Field
+      
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -4178,15 +4200,15 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#appendix-ultralytics-yolo-split-hints-reference" class="md-nav__link">
+  <a href="#appendix-yolo-split-hints-reference" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Appendix: Ultralytics YOLO Split Hints Reference
+        Appendix: YOLO Split Hints Reference
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Appendix: Ultralytics YOLO Split Hints Reference">
+    <nav class="md-nav" aria-label="Appendix: YOLO Split Hints Reference">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -4630,9 +4652,10 @@
 <span class="w">  </span><span class="nt">export_output_type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">string</span>
 <span class="w">  </span><span class="nt">calibration_samples</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">int</span>
 
-<span class="c1"># Decoder Configuration (Ultralytics only)</span>
+<span class="c1"># Decoder Configuration</span>
 <span class="nt">decoder_version</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">string</span><span class="w">    </span><span class="c1"># YOLO architecture version: yolov5, yolov8, yolo11, yolo26</span>
-<span class="nt">nms</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">string</span><span class="w">                </span><span class="c1"># HAL decoder NMS mode: class_agnostic, class_aware</span>
+<span class="nt">nms</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">string</span><span class="w">                </span><span class="c1"># HAL decoder NMS mode: class_aware (default when absent), class_agnostic</span>
+<span class="nt">nms_multi_label</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">boolean</span><span class="w">   </span><span class="c1"># Optional. Multi-label candidate selection (validation decode); absent or false = one class per anchor</span>
 
 <span class="c1"># Calibration Artifact (see Calibration Artifact section)</span>
 <span class="nt">calibration</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">string</span><span class="w">          </span><span class="c1"># Snapshot filename: calibration-{dataset_id}-{param_hash}.safetensors</span>
@@ -4825,17 +4848,17 @@
 </tr>
 <tr>
 <td><code>segmentation</code></td>
-<td>Semantic segmentation output (ModelPack)</td>
+<td>Semantic segmentation output</td>
 <td><code>[1, H, W, num_classes]</code></td>
 </tr>
 <tr>
 <td><code>masks</code></td>
-<td>Semantic segmentation masks (ModelPack)</td>
+<td>Semantic segmentation masks</td>
 <td><code>[1, H, W]</code></td>
 </tr>
 <tr>
 <td><code>detection</code></td>
-<td>ModelPack anchor-grid raw output requiring anchor decode</td>
+<td>Anchor-grid raw output requiring anchor decode</td>
 <td><code>[1, H, W, anchors×features]</code></td>
 </tr>
 </tbody>
@@ -4917,7 +4940,7 @@
 </tr>
 <tr>
 <td><code>num_anchors_x_features</code></td>
-<td>Combined anchor × features-per-anchor dimension (ModelPack grid outputs)</td>
+<td>Combined anchor × features-per-anchor dimension (anchor-grid outputs)</td>
 </tr>
 <tr>
 <td><code>padding</code></td>
@@ -5007,7 +5030,7 @@
 </code></pre></div>
 <h3 id="logical-vs-physical-field-placement">Logical vs Physical Field Placement</h3>
 <p>Semantic and decode fields live on the <strong>logical output</strong> and apply to all children. Physical children carry only tensor-level fields.</p>
-<p><strong>Root-level only:</strong> <code>decoder_version</code>, <code>nms</code> (<abbr title="Hardware Abstraction Layer">HAL</abbr> <abbr title="Non-Maximum Suppression">NMS</abbr> mode). These describe model-wide behavior and never appear inside an <code>outputs[]</code> entry.</p>
+<p><strong>Root-level only:</strong> <code>decoder_version</code>, <code>nms</code> (<abbr title="Hardware Abstraction Layer">HAL</abbr> <abbr title="Non-Maximum Suppression">NMS</abbr> mode), <code>nms_multi_label</code> (<abbr title="Hardware Abstraction Layer">HAL</abbr> multi-label decode). These describe model-wide behavior and never appear inside an <code>outputs[]</code> entry.</p>
 <p><strong>Logical output only:</strong> <code>decoder</code>, <code>encoding</code>, <code>score_format</code>, <code>normalized</code>, <code>anchors</code></p>
 <p><strong>Physical output only:</strong> <code>quantization</code> (always required), <code>dtype</code>, <code>scale_index</code>, <code>activation_applied</code>, <code>activation_required</code></p>
 <p><strong>Both levels:</strong> <code>name</code>, <code>type</code>, <code>shape</code>, <code>dshape</code>, <code>stride</code></p>
@@ -5331,7 +5354,7 @@
 </code></pre></div>
 <p><strong>Native Aspect Ratio (typical for purpose-built datasets):</strong></p>
 <ul>
-<li><a href="../modelpack/">ModelPack</a> models are often trained at the camera's native aspect ratio</li>
+<li>The model is trained at the camera's native aspect ratio</li>
 <li>Images are directly resized to target dimensions without padding</li>
 <li>Best accuracy when deployment camera matches training data</li>
 </ul>
@@ -5400,7 +5423,7 @@
 <hr />
 <h2 id="tiling">Tiling</h2>
 <p>Models trained on native-resolution tiles of high-resolution frames carry an optional <code>tiling</code> section. A runtime reads it to decide whether to cut each frame into tiles or run the whole frame through the model, and it records how the model was trained, exported and calibrated. A model without the section is not tile-trained and is handled exactly as before.</p>
-<p>The tiling mode and the input resolution are fixed when the model is exported, because edge runtimes compile a static input shape. Trainers export a tile-trained model <strong>tiled</strong> at its tile size by default. The contract defines one workflow for deploying the same weights at another resolution, for example whole-frame at a camera's native resolution: it is done by starting a new training session with training disabled, selecting the tile-trained session as its weights source, and choosing the deployment mode and input resolution. That session exports and calibrates at the new geometry without retraining.</p>
+<p>The tiling mode and the input resolution are fixed when the model is exported, because edge runtimes compile a static input shape. The default deployment of a tile-trained model is <strong>tiled</strong> at its tile size. The contract defines one workflow for deploying the same weights at another resolution, for example whole-frame at a camera's native resolution: it is done by starting a new training session with training disabled, selecting the tile-trained session as its weights source, and choosing the deployment mode and input resolution. That session exports and calibrates at the new geometry without retraining.</p>
 <h3 id="tiling-schema">Tiling Schema</h3>
 <div class="highlight"><pre><span></span><code><span class="nt">tiling</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">version</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span>
@@ -5421,7 +5444,7 @@
 <span class="w">    </span><span class="nt">session</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">t-1a2b</span>
 <span class="w">    </span><span class="nt">calibration</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="nt">resize</span><span class="p">:</span><span class="w"> </span><span class="nv">tiled</span><span class="p p-Indicator">,</span><span class="nt"> input_shape</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">640</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">640</span><span class="p p-Indicator">],</span><span class="nt"> full_frame</span><span class="p">:</span><span class="w"> </span><span class="nv">false</span><span class="p p-Indicator">}</span>
 </code></pre></div>
-<p>In version 1 every key shown above is required, except <code>export.weights_from</code> and the contents of <code>training.params</code>. Values in parentheses below are the values trainers write; they are not defaults that a runtime fills in for missing keys.</p>
+<p>In version 1 every key shown above is required, except <code>export.weights_from</code> and the contents of <code>training.params</code>. Values in parentheses below are recommended values; they are not defaults that a runtime fills in for missing keys.</p>
 <table>
 <thead>
 <tr>
@@ -5791,7 +5814,7 @@
 <li><strong>Dequantize physical tensors</strong> → Using each child's <code>quantization</code> (or the logical's own if no children)</li>
 <li><strong>Reassemble into the logical tensor</strong> → If the logical output has physical children, merge them per the rules in <a href="#merge-strategy"><abbr title="Hardware Abstraction Layer">HAL</abbr> Decoder Algorithm — Merge Strategy</a> (channel concat for sub-splits, spatial concat for per-scale splits). If there are no children, the logical output IS the tensor.</li>
 <li><strong>Apply decoder</strong> → Framework-specific: anchor decode (<code>modelpack</code>), <abbr title="Distribution Focal Loss">DFL</abbr>/direct decode (<code>ultralytics</code>)</li>
-<li><strong>Run <abbr title="Non-Maximum Suppression">NMS</abbr></strong> → Unless the model has embedded <abbr title="Non-Maximum Suppression">NMS</abbr> (<code>validation.nms: none</code>)</li>
+<li><strong>Run <abbr title="Non-Maximum Suppression">NMS</abbr></strong> → Unless the model has embedded <abbr title="Non-Maximum Suppression">NMS</abbr> (<code>validation.nms: none</code>), using the mode from the root-level <code>nms</code> field (class-aware when absent)</li>
 </ol>
 <h3 id="decoder-field">Decoder Field</h3>
 <p>The <code>decoder</code> field specifies which decoding algorithm to use:</p>
@@ -5802,7 +5825,7 @@
 <span class="w">    </span><span class="nt">decoder</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ultralytics</span>
 </code></pre></div>
 <h4 id="modelpack-anchor-based-yolo-decoder"><code>modelpack</code> — Anchor-Based <abbr title="You Only Look Once">YOLO</abbr> Decoder</h4>
-<p>Used by <a href="../modelpack/">ModelPack</a> models. Traditional <abbr title="You Only Look Once">YOLO</abbr>-style grid decoding with pre-defined anchor boxes.</p>
+<p>Traditional <abbr title="You Only Look Once">YOLO</abbr>-style grid decoding with pre-defined anchor boxes.</p>
 <p><strong>Characteristics:</strong></p>
 <ul>
 <li><strong>Anchor-based</strong>: Uses pre-defined anchor boxes per output level (3 anchors × 3 scales typical)</li>
@@ -5825,7 +5848,7 @@
 <span class="w">    </span><span class="nt">stride</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">16</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">16</span><span class="p p-Indicator">]</span><span class="w">      </span><span class="c1"># Required — spatial stride</span>
 </code></pre></div>
 <h4 id="ultralytics-anchor-free-dfl-decoder"><code>ultralytics</code> — Anchor-Free <abbr title="Distribution Focal Loss">DFL</abbr> Decoder</h4>
-<p>Used by <a href="../ultralytics/">Ultralytics</a> models (YOLOv5, YOLOv8, YOLO11, YOLO26). Modern anchor-free detection using Distribution Focal Loss (<abbr title="Distribution Focal Loss">DFL</abbr>).</p>
+<p>Modern anchor-free detection using Distribution Focal Loss (<abbr title="Distribution Focal Loss">DFL</abbr>).</p>
 <p><strong>Characteristics:</strong></p>
 <ul>
 <li><strong>Anchor-free</strong>: Uses anchor points (grid centers) instead of pre-defined boxes</li>
@@ -5875,7 +5898,7 @@
 </tbody>
 </table>
 <h3 id="decoder-version-field">Decoder Version Field</h3>
-<p>The <code>decoder_version</code> field specifies the <abbr title="You Only Look Once">YOLO</abbr> architecture version for Ultralytics models. This field is critical for determining the correct decoding strategy, especially for end-to-end models.</p>
+<p>The optional <code>decoder_version</code> field specifies the <abbr title="You Only Look Once">YOLO</abbr> architecture version of the model. This field is critical for determining the correct decoding strategy, especially for end-to-end models.</p>
 <div class="highlight"><pre><span></span><code><span class="nt">decoder_version</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">yolo26</span><span class="w">    </span><span class="c1"># End-to-end model with embedded NMS</span>
 <span class="c1"># or</span>
 <span class="nt">decoder_version</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">yolov8</span><span class="w">    </span><span class="c1"># Traditional model requiring external NMS</span>
@@ -5926,13 +5949,13 @@
 <p><strong>When <code>decoder_version</code> is absent or any other value:</strong></p>
 <ul>
 <li>Traditional <abbr title="You Only Look Once">YOLO</abbr> architecture requiring external <abbr title="Non-Maximum Suppression">NMS</abbr></li>
-<li>The root-level <code>nms</code> field controls which <abbr title="Non-Maximum Suppression">NMS</abbr> algorithm the <abbr title="Hardware Abstraction Layer">HAL</abbr> decoder uses</li>
+<li>The root-level <code>nms</code> field controls which <abbr title="Non-Maximum Suppression">NMS</abbr> algorithm the <abbr title="Hardware Abstraction Layer">HAL</abbr> decoder uses; class-aware <abbr title="Non-Maximum Suppression">NMS</abbr> applies when it is absent</li>
 </ul>
 <h3 id="hal-nms-field"><abbr title="Hardware Abstraction Layer">HAL</abbr> <abbr title="Non-Maximum Suppression">NMS</abbr> Field</h3>
 <p>The root-level <code>nms</code> field controls the <abbr title="Hardware Abstraction Layer">HAL</abbr> decoder's <abbr title="Non-Maximum Suppression">NMS</abbr> behavior:</p>
-<div class="highlight"><pre><span></span><code><span class="nt">nms</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">class_agnostic</span><span class="w">    </span><span class="c1"># Suppress overlapping boxes regardless of class (default)</span>
+<div class="highlight"><pre><span></span><code><span class="nt">nms</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">class_aware</span><span class="w">       </span><span class="c1"># Only suppress boxes with the same class label (default when absent)</span>
 <span class="c1"># or</span>
-<span class="nt">nms</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">class_aware</span><span class="w">       </span><span class="c1"># Only suppress boxes with the same class label</span>
+<span class="nt">nms</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">class_agnostic</span><span class="w">    </span><span class="c1"># Suppress overlapping boxes regardless of class</span>
 </code></pre></div>
 <table>
 <thead>
@@ -5943,12 +5966,12 @@
 </thead>
 <tbody>
 <tr>
-<td><code>class_agnostic</code></td>
-<td>Suppress overlapping boxes regardless of class label (default)</td>
+<td><code>class_aware</code></td>
+<td>Only suppress boxes that share the same class AND overlap (default)</td>
 </tr>
 <tr>
-<td><code>class_aware</code></td>
-<td>Only suppress boxes that share the same class AND overlap</td>
+<td><code>class_agnostic</code></td>
+<td>Suppress overlapping boxes regardless of class label</td>
 </tr>
 </tbody>
 </table>
@@ -5961,6 +5984,41 @@
 </ul>
 <p>The two fields are independent and can coexist.</p>
 </div>
+<p>When <code>nms</code> is absent, or is the v1 value <code>auto</code>, the <abbr title="Hardware Abstraction Layer">HAL</abbr> decoder uses class-aware <abbr title="Non-Maximum Suppression">NMS</abbr>, so overlapping objects of different classes (a person on a bicycle) do not suppress each other. An explicit <code>class_agnostic</code> always takes effect, including together with <a href="#hal-multi-label-field"><code>nms_multi_label</code></a>. The resolved mode applies to every <abbr title="Non-Maximum Suppression">NMS</abbr> decode path, whatever the output's <code>decoder</code>.</p>
+<h3 id="hal-multi-label-field"><abbr title="Hardware Abstraction Layer">HAL</abbr> Multi-Label Field</h3>
+<p>The optional root-level <code>nms_multi_label</code> field selects how the <abbr title="Hardware Abstraction Layer">HAL</abbr> decoder picks candidate boxes before <abbr title="Non-Maximum Suppression">NMS</abbr>:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">nms_multi_label</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span><span class="w">    </span><span class="c1"># One candidate per class above the score threshold</span>
+<span class="c1"># or</span>
+<span class="nt">nms_multi_label</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span><span class="w">   </span><span class="c1"># One candidate per anchor, labeled with its highest-scoring class (default)</span>
+</code></pre></div>
+<table>
+<thead>
+<tr>
+<th>Value</th>
+<th>Behavior</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>absent or <code>false</code></td>
+<td>Argmax decode: each anchor yields at most one candidate, labeled with its highest-scoring class (default)</td>
+</tr>
+<tr>
+<td><code>true</code></td>
+<td>Multi-label decode: each anchor yields one candidate for every class whose score meets the score threshold</td>
+</tr>
+</tbody>
+</table>
+<p>Multi-label decode reproduces the candidate selection of Ultralytics validation (<code>val</code> with <code>multi_label=True</code>), which is how COCO-style <abbr title="mean Average Precision">mAP</abbr> is counted. Use it when the decoded detections must match a validation run. It is not typical for deployment, because one object can produce several boxes, one per class above the threshold, and a deployed application usually wants one label per object.</p>
+<p>End-to-end models (<code>type: detections</code>, such as YOLO26 with <code>model.end2end: true</code>) ignore <code>nms_multi_label</code>: the model emits its own post-<abbr title="Non-Maximum Suppression">NMS</abbr> detections, and the decoder applies only the score threshold and <code>max_det</code>.</p>
+<p>Multi-label decode interacts with the other decoder parameters as follows:</p>
+<ul>
+<li><strong><abbr title="Non-Maximum Suppression">NMS</abbr> mode</strong>: the candidates go through the <abbr title="Non-Maximum Suppression">NMS</abbr> mode set by the root-level <a href="#hal-nms-field"><code>nms</code></a> field. An explicit <code>class_agnostic</code> suppresses across the classes of one anchor, as Ultralytics does with <code>agnostic=True</code>. When <code>nms</code> is not set, <abbr title="Non-Maximum Suppression">NMS</abbr> is class-aware and every class of an anchor is kept.</li>
+<li><strong><code>pre_nms_top_k</code></strong>: multi-label decode emits up to anchors × classes candidates, so when it is on and <code>pre_nms_top_k</code> is not set explicitly the decoder uses a cap of 30 000, the Ultralytics <code>max_nms</code> value, instead of the argmax default of 300. An explicit <code>pre_nms_top_k</code> always wins, and <code>0</code> means no limit.</li>
+<li><strong>Overrides</strong>: <code>DecoderBuilder::with_multi_label</code>, the Python <code>multi_label</code> constructor argument, and the C <code>ef_decoder_params_set_multi_label</code> override the metadata value in either direction. Without an override, the metadata value applies, and the decoder is argmax if the key is absent.</li>
+<li><strong>Warning</strong>: a decoder that takes multi-label from this key logs a warning when it is built, because the model file then changes what every untracked <code>decode</code> returns. Pass <code>multi_label=False</code> to override it.</li>
+<li><strong>Tracking</strong>: tracked decode (<code>decode_tracked</code>, <code>decode_proto_tracked</code>, <code>decode_for_tracking</code>) always decodes one label per box regardless of this key, because a tracker matches on <abbr title="Intersection over Union">IoU</abbr> only and per-class duplicates of one anchor would become spurious tracks.</li>
+</ul>
 <hr />
 <h2 id="split-hints">Split Hints</h2>
 <p>Split hints encode model-specific knowledge about where natural quantization boundaries exist within output tensors. The training framework identifies these boundaries based on its knowledge of the model architecture; the converter decides whether to apply them and how far to decompose beyond them.</p>
@@ -6664,7 +6722,7 @@
 <span class="p">}</span>
 </code></pre></div>
 <h3 id="instance-segmentation-mask-computation">Instance Segmentation Mask Computation</h3>
-<p>For instance segmentation outputs (Ultralytics), the final per-object mask is computed from mask coefficients and prototypes:</p>
+<p>For instance segmentation outputs, the final per-object mask is computed from mask coefficients and prototypes:</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># For each detected object with mask_coefs [32]:</span>
 <span class="n">instance_mask</span> <span class="o">=</span> <span class="n">sigmoid</span><span class="p">(</span><span class="n">mask_coefs</span> <span class="o">@</span> <span class="n">protos</span><span class="p">)</span>  <span class="c1"># [32] @ [32, H, W] -&gt; [H, W]</span>
 <span class="c1"># Crop to bounding box region for final instance mask</span>
@@ -7183,8 +7241,8 @@ zip<span class="w"> </span>mymodel.tflite<span class="w"> </span>edgefirst.json
 <span class="w">    </span><span class="nt">score_format</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">per_class</span>
 </code></pre></div>
 <hr />
-<h2 id="appendix-ultralytics-yolo-split-hints-reference">Appendix: Ultralytics <abbr title="You Only Look Once">YOLO</abbr> Split Hints Reference</h2>
-<p>This appendix shows the exact <code>split_hints</code> that edgefirst-studio-ultralytics embeds in <abbr title="Open Neural Network Exchange">ONNX</abbr> metadata for each supported <abbr title="You Only Look Once">YOLO</abbr> version × task combination, using 80 COCO classes as the reference.</p>
+<h2 id="appendix-yolo-split-hints-reference">Appendix: <abbr title="You Only Look Once">YOLO</abbr> Split Hints Reference</h2>
+<p>This appendix shows the <code>split_hints</code> in <abbr title="Open Neural Network Exchange">ONNX</abbr> metadata for each supported <abbr title="You Only Look Once">YOLO</abbr> version × task combination, using 80 COCO classes as the reference.</p>
 <p>All versions share:</p>
 <ul>
 <li>3 <abbr title="Feature Pyramid Network">FPN</abbr> scales, strides [8, 16, 32]</li>

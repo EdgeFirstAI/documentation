@@ -344,6 +344,7 @@ A Converter App that calibrates from a snapshot must:
 
 ```python
 from collections.abc import Mapping
+from numbers import Integral
 from safetensors import safe_open
 import json, numpy as np
 
@@ -370,7 +371,8 @@ tiling_mode, full_frame = model_tiling(model_meta)       # (None, False) without
 with safe_open(calibration_path, framework="numpy") as f:
     meta = f.metadata()                       # __metadata__ map
     names = json.loads(meta["tensor_names"])
-    params = json.loads(meta["params"])
+    raw_params = meta.get("params")
+    params = json.loads(raw_params) if raw_params else None   # a missing value is reported by the params check
     check_snapshot_params(params, model_input_hw)        # rule 1, before any sample tensor is read
     if not names or names[0] not in f.keys():
         raise ValueError("calibration snapshot tensor_names is empty or names a missing tensor")

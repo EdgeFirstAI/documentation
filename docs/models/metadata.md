@@ -845,7 +845,7 @@ tiling:
     params: {tile_size: [640, 640], windows_per_frame: 4, seed: 0}
   export:
     session: t-1a2b
-    calibration: {resize: grid_tile, input_shape: [640, 640], full_frame: false}
+    calibration: {resize: tiled, input_shape: [640, 640], full_frame: false}
 ```
 
 In version 1 every key shown above is required, except `export.weights_from` and the contents of `training.params`. Values in parentheses below are the values trainers write; they are not defaults that a runtime fills in for missing keys.
@@ -898,7 +898,7 @@ Each tile's detections are filtered with `per_tile` NMS, mapped back into frame 
 | - | ------- | ------------- |
 | Model input | The tile, e.g. `640×640` | The export resolution, e.g. `3840×2176` for 4K frames (height and width are multiples of 32) |
 | Runtime | Grid of tiles per frame, per-tile NMS, merge into frame coordinates | One inference per frame on the letterboxed frame |
-| Calibration snapshot | Deployment-grid tiles at native scale (`resize: grid_tile`), plus whole-frame samples when `full_frame.enabled` | Frames letterboxed to the export resolution (`resize: letterbox`) |
+| Calibration snapshot | Deployment-grid tiles at native scale (`resize: tiled`), plus whole-frame samples when `full_frame.enabled` | Frames letterboxed to the export resolution (`resize: letterbox`) |
 | When to use | High-resolution cameras on accelerators that cannot fit the whole frame, and the default for tile-trained models | The accelerator fits the whole frame; usually faster than tiling the same frame |
 
 Both modes use the same weights, because the detectors are fully convolutional and were trained at native scale.
@@ -907,7 +907,7 @@ Both modes use the same weights, because the detectors are fully convolutional a
 
 1. In `tiled` mode the input height and width equal `tile`. The tile may differ from the training tile (`training.params.tile_size`), because objects are still seen at native scale.
 2. In `whole_frame` mode the input is the export resolution, with height and width multiples of 32.
-3. `export.calibration.resize` is `grid_tile` in `tiled` mode and `letterbox` in `whole_frame` mode, `export.calibration.input_shape` equals the input height and width, and `export.calibration.full_frame` equals `full_frame.enabled`. See [Calibration Snapshot](conversion/calibration.md#geometry-check).
+3. `export.calibration.resize` is `tiled` in `tiled` mode and `letterbox` in `whole_frame` mode, `export.calibration.input_shape` equals the input height and width, and `export.calibration.full_frame` equals `full_frame.enabled`. See [Calibration Snapshot](conversion/calibration.md#geometry-check).
 4. `training` is never modified after the session that trained the weights wrote it. `export` describes the most recent export.
 5. Converters copy the `tiling` section unchanged; see [Converter Traceability](#converter-traceability).
 6. Unknown keys are ignored.
@@ -965,7 +965,7 @@ tiling:
   export:
     session: t-3c4e
     weights_from: t-1a2b
-    calibration: {resize: grid_tile, input_shape: [1280, 1280], full_frame: false}
+    calibration: {resize: tiled, input_shape: [1280, 1280], full_frame: false}
 ```
 
 ### Models Without Tiling
@@ -1805,7 +1805,7 @@ instance_mask = sigmoid(mask_coefs @ protos)  # [32] @ [32, H, W] -> [H, W]
 
 ## Calibration Artifact
 
-Quantizing converters need a representative sample of model inputs to measure activation ranges. EdgeFirst Studio captures that sample when a session exports the model, at that model's input geometry, as a `.safetensors` **calibration snapshot**: a pre-filtered, pre-processed subset of the training data with embedded metadata and full provenance back to the source samples. Whole-frame and non-tiled models are calibrated on letterboxed frames at the input resolution; [tiled models](#tiling) are calibrated on deployment-grid tiles at native scale.
+Quantizing converters need a representative sample of model inputs to measure activation ranges. EdgeFirst Studio captures that sample when a session exports the model, at that model's input geometry, as a `.safetensors` **calibration snapshot**: a pre-filtered, pre-processed subset of the training data with embedded metadata and full provenance back to the source samples. `whole_frame` models and models without a `tiling` section are calibrated on letterboxed frames at the input resolution (or, for models without a supported `tiling` section that were trained with a direct resize, stretched frames); [tiled models](#tiling) are calibrated on deployment-grid tiles at native scale.
 
 The `edgefirst.json` `calibration` field records the snapshot filename:
 
@@ -1830,8 +1830,9 @@ When a converter processes a model, it augments the existing `edgefirst.json` wi
 - The converter section records conversion parameters, version, and any decisions made during conversion.
 - Multiple converter sections can coexist when a model passes through a pipeline chain (e.g., TFLite Quantizer followed by Neutron Converter).
 - Converters copy the [`tiling`](#tiling) section unchanged. It describes the model, and a runtime reads it from the compiled artifact to decide how to feed frames; conversion decisions belong in the converter's own section.
+- A converter rejects a present `tiling` section that is not a mapping with integer `version: 1` (`1.0` and `true` do not qualify) and a `mode` of `tiled` or `whole_frame`, before it does any work, so it never copies an unsupported section into a compiled artifact. An absent `tiling` section is valid.
 - The height and width in `input.shape` match the compiled artifact's input, in the layout of the output format.
-- A converter that calibrates checks the snapshot's geometry against the model before using it (see [Calibration Snapshot — Geometry check](conversion/calibration.md#geometry-check)) and records `calibration_geometry: {resize, input_shape}` beside its `calibration` field, adding `full_frame: true` when the snapshot holds whole-frame samples.
+- A converter that calibrates checks the snapshot's geometry against the model before using it (see [Calibration Snapshot — Geometry check](conversion/calibration.md#geometry-check)). The check reads the snapshot parameters first and the sample tensor second. It compares the snapshot with the input the converter actually compiles (the model graph input, or an explicit input-shape override), and fails when the metadata `input.shape` disagrees with the graph. The converter records `calibration_geometry: {resize, input_shape}` beside its `calibration` field, adding `full_frame: true` when the snapshot holds whole-frame samples.
 
 ### Converter Section Schema
 

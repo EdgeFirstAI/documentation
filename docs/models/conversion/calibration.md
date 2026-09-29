@@ -132,7 +132,7 @@ many converters.
 
 **Baked in — the geometric preprocessing that is the model's secret:**
 
-- **Letterbox, stretch or tiled resize.** For whole-frame and non-tiled models the source image is either scaled to fit the model input, preserving aspect ratio (upscaling small images), then center-padded to it with a constant gray value (114) (`letterbox`), or resized directly to it without padding (`stretch`). For [tiled models](#tiled-models) the snapshot instead holds native-scale tiles cut from the deployment grid. Either way this is a required, model-defining step that matches what the model sees at runtime, so the snapshot captures its exact result.
+- **Letterbox, stretch or tiled resize.** For models without a supported `tiling` section the source image is either scaled to fit the model input, preserving aspect ratio (upscaling small images), then center-padded to it with a constant gray value (114) (`letterbox`), or resized directly to it without padding (`stretch`). A `whole_frame` tiling model is always `letterbox`, because its runtime letterboxes the frame. For [tiled models](#tiled-models) the snapshot instead holds native-scale tiles cut from the deployment grid. Either way this is a required, model-defining step that matches what the model sees at runtime, so the snapshot captures its exact result.
 - **Channel layout and CameraAdaptor.** The color conversion (RGB, BGR, YUYV,
   gray, …) and channel layout the model was trained with are applied, so the
   stored tensor is byte-identical to what the model sees at inference.
@@ -348,25 +348,37 @@ from safetensors import safe_open
 import json, numpy as np
 
 # model_meta: the model's embedded EdgeFirst metadata (edgefirst.json)
-# model_input_hw: the model's input (H, W) after layout mapping and overrides
+# model_input_hw: the (H, W) of the input the converter compiles (the model graph input, or an
+#   explicit input-shape override), after layout mapping
+def _is_version_one(value):
+    return isinstance(value, Integral) and not isinstance(value, bool) and value == 1
+
+
 def model_tiling(edgefirst):
     """(mode, full_frame_enabled) of a model's version-1 tiling section, or (None, False)."""
     tiling = edgefirst.get("tiling") if isinstance(edgefirst, Mapping) else None
-    if not isinstance(tiling, Mapping) or tiling.get("version") != 1 or isinstance(tiling.get("version"), bool):
+    if not isinstance(tiling, Mapping) or not _is_version_one(tiling.get("version")):
         return None, False
     full_frame = tiling.get("full_frame")
     enabled = isinstance(full_frame, Mapping) and full_frame.get("enabled") is True
     return tiling.get("mode"), enabled
 
 
-tiling_mode, full_frame = model_tiling(model_meta)       # (None, False) without a version-1 tiling section
+check_converter_tiling(model_meta)                       # see Converter Traceability
+tiling_mode, full_frame = model_tiling(model_meta)       # (None, False) without a tiling section
 
 with safe_open(calibration_path, framework="numpy") as f:
     meta = f.metadata()                       # __metadata__ map
     names = json.loads(meta["tensor_names"])
     params = json.loads(meta["params"])
-    sample_hw = f.get_slice(names[0]).get_shape()[2:4]   # NCHW -> (H, W)
-    check_snapshot_geometry(params, sample_hw, model_input_hw, tiling_mode, full_frame)  # see Geometry Check
+    check_snapshot_params(params, model_input_hw)        # rule 1, before any sample tensor is read
+    if not names or names[0] not in f.keys():
+        raise ValueError("calibration snapshot tensor_names is empty or names a missing tensor")
+    shape = f.get_slice(names[0]).get_shape()
+    if len(shape) != 4:
+        raise ValueError(f"calibration sample tensor {names[0]!r} must be rank 4 (N, C, H, W); got {list(shape)}")
+    sample_hw = shape[2:4]                               # NCHW -> (H, W)
+    check_snapshot_geometry(params, sample_hw, model_input_hw, tiling_mode, full_frame)  # full check
 
     norm = json.loads(meta["normalization"])  # {scale, mean, std}
     scale = np.float32(norm["scale"])
@@ -386,11 +398,11 @@ with safe_open(calibration_path, framework="numpy") as f:
 
 ## Geometry Check
 
-A consumer verifies four things before it uses a snapshot, in this order, and stops at the first failure with a clear message:
+A consumer verifies four things before it uses a snapshot, in this order, and stops at the first failure with a clear message. The first rule needs only the snapshot's parameters, so the consumer checks it before it reads any sample tensor. Reading the sample then reports a clear error for a missing or misnamed tensor, an empty `tensor_names`, or a tensor that is not rank 4. The full check follows, so the order is parameters check, sample read, full check.
 
-1. The snapshot's `params.input_shape` equals the model's input height and width. Use the input after any layout mapping, and after any explicit input-shape override the converter applies.
+1. The snapshot's `params` are a mapping with `input_shape` and `resize`, and `params.input_shape` equals the model's input height and width. The model input is the one the converter actually compiles: the model graph input, or an explicit input-shape override, after any layout mapping. When the metadata `input.shape` disagrees with the graph and no override applies, the converter fails rather than choosing one.
 2. The stored samples' height and width equal `params.input_shape`.
-3. `params.resize` matches the model: `tiled` (with a `grid` block whose `algorithm` is `evendist`) when the model's `tiling.mode` is `tiled`, `letterbox` when it is `whole_frame`, and `letterbox` or `stretch` for a model without a `tiling` section, or `tiled` when the snapshot's parameters carry a `tiling` block, as ModelPack's tiled snapshots do. A `tiling` section whose `version` is not the integer `1` counts as absent.
+3. `params.resize` matches the model: `tiled` (with a `grid` block whose `algorithm` is `evendist`) when the model's `tiling.mode` is `tiled`, `letterbox` when it is `whole_frame`, and `letterbox` or `stretch` only for a model without a supported `tiling` section (`stretch` is never valid for a `whole_frame` model), or `tiled` when the snapshot's parameters carry a `tiling` block, as ModelPack's tiled snapshots do. A `tiling` section whose `version` is not the integer `1` counts as absent: `1.0` and `true` are not version 1. A converter rejects such a section outright (see [Converter Traceability](../metadata.md#converter-traceability)), so the check treats it as absent only where it is applied to a document the converter has not screened.
 4. `params.full_frame` (`false` when absent, and it must be a boolean) equals the model's `tiling.full_frame.enabled` (`false` without a `tiling` section).
 
 ```python
@@ -413,7 +425,8 @@ def _hw(value, what):
     return h, w
 
 
-def check_snapshot_geometry(params, sample_hw, model_input_hw, tiling_mode, full_frame=False):
+def check_snapshot_params(params, model_input_hw):
+    """Rule 1: run it before reading any sample tensor."""
     if not isinstance(params, Mapping):
         raise ValueError("calibration snapshot params are missing or not a mapping")
     if "input_shape" not in params:
@@ -424,6 +437,11 @@ def check_snapshot_geometry(params, sample_hw, model_input_hw, tiling_mode, full
     model = _hw(model_input_hw, "model input")
     if snapshot != model:
         raise ValueError(f"calibration snapshot input_shape {list(snapshot)} does not match the model input {list(model)}")
+    return snapshot
+
+
+def check_snapshot_geometry(params, sample_hw, model_input_hw, tiling_mode, full_frame=False):
+    snapshot = check_snapshot_params(params, model_input_hw)
     sample = _hw(sample_hw, "calibration sample H,W")
     if sample != snapshot:
         raise ValueError(f"calibration sample H,W {list(sample)} does not match the snapshot input_shape {list(snapshot)}")
@@ -445,6 +463,23 @@ def check_snapshot_geometry(params, sample_hw, model_input_hw, tiling_mode, full
     if has_frames != bool(full_frame):
         want = "must include" if full_frame else "must not include"
         raise ValueError(f"calibration snapshot {want} whole-frame samples (full_frame) for this model")
+```
+
+```python
+TILING_MODES = ("tiled", "whole_frame")
+
+
+def check_converter_tiling(edgefirst):
+    """Reject a `tiling` section a converter must not copy into its output."""
+    if not isinstance(edgefirst, Mapping) or "tiling" not in edgefirst:
+        return
+    tiling = edgefirst["tiling"]
+    if not isinstance(tiling, Mapping):
+        raise ValueError(f"model tiling section must be a mapping; got {type(tiling).__name__}")
+    if not _is_version_one(tiling.get("version")):
+        raise ValueError(f"model tiling version {tiling.get('version')!r} is not supported (expected 1)")
+    if tiling.get("mode") not in TILING_MODES:
+        raise ValueError(f"model tiling mode {tiling.get('mode')!r} is not supported (expected tiled or whole_frame)")
 ```
 
 Consumers reject a malformed shape (a missing value, a value that is not a two-element sequence, a height or width that is not a positive integer) with an error naming the field, rather than letting the comparison fail or pass by accident.

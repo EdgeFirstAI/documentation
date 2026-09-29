@@ -129,6 +129,7 @@ dequant
 dequantization
 dequantize
 dequantizing
+dequeues
 deserialize
 deserialized
 deserializer
@@ -239,6 +240,7 @@ hantro
 hashmap
 hdparm
 hdr
+headerless
 headlessly
 heatmap
 heatmaps
@@ -539,11 +541,14 @@ ratatui
 rclone
 rcn
 rcs
+realtime
 recomputable
 redownload
 refclock
+refclocks
 refspec
 repr
+republishes
 requantize
 rerun
 resolv
@@ -579,6 +584,7 @@ sftp
 shaders
 signaled
 silu
+slewed
 smartmicro
 smp
 smpl
@@ -614,6 +620,7 @@ subwindow
 sudo
 superset
 sync_file
+synchronizers
 synset
 sys
 sysfs
@@ -638,7 +645,9 @@ tf_static
 tflite
 th
 thresholded
+timebase
 timepulse
+timestamping
 tmux
 tokio
 toml
@@ -689,10 +698,12 @@ unicode
 uniffi
 unmanaged
 unnest
+unoffset
 unparseable
 unprivileged
 unquantized
 unstamped
+unsynchronized
 untrusted
 uplink
 upsample
@@ -700,6 +711,7 @@ upscaled
 upscales
 upscaling
 uptane
+uptime
 url
 userspace
 utf

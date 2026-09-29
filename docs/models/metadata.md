@@ -821,9 +821,6 @@ The `cameraadaptor` field specifies the expected input format for the model. See
 
 ## Tiling
 
-!!! note "Status"
-    This section defines the tiling contract. Export-only re-export sessions with a weights source and automatic runtime support for the `tiling` section in the HAL and the profiler arrive in upcoming releases. Until then, enable tiled inference with the profiler's `--sahi` options; see [Tiled Inference (SAHI)](../profiler/concepts/sahi.md).
-
 Models trained on native-resolution tiles of high-resolution frames carry an optional `tiling` section. A runtime reads it to decide whether to cut each frame into tiles or run the whole frame through the model, and it records how the model was trained, exported and calibrated. A model without the section is not tile-trained and is handled exactly as before.
 
 The tiling mode and the input resolution are fixed when the model is exported, because edge runtimes compile a static input shape. Trainers export a tile-trained model **tiled** at its tile size by default. The contract defines one workflow for deploying the same weights at another resolution, for example whole-frame at a camera's native resolution: it is done by starting a new training session with training disabled, selecting the tile-trained session as its weights source, and choosing the deployment mode and input resolution. That session exports and calibrates at the new geometry without retraining.

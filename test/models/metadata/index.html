@@ -1856,6 +1856,111 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#tiling" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Tiling
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Tiling">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#tiling-schema" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Tiling Schema
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#grid" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Grid
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#merge" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Merge
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tiling-modes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Tiling Modes
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tiling-rules" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Tiling Rules
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#example-whole-frame-re-export" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Example: Whole-Frame Re-Export
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#example-tiled-re-export-at-a-new-tile-size" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Example: Tiled Re-Export at a New Tile Size
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#models-without-tiling" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Models Without Tiling
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#validation-parameters" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -3314,6 +3419,111 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#tiling" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Tiling
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Tiling">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#tiling-schema" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Tiling Schema
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#grid" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Grid
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#merge" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Merge
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tiling-modes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Tiling Modes
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tiling-rules" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Tiling Rules
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#example-whole-frame-re-export" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Example: Whole-Frame Re-Export
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#example-tiled-re-export-at-a-new-tile-size" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Example: Tiled Re-Export at a New Tile Size
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#models-without-tiling" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Models Without Tiling
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#validation-parameters" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -4134,8 +4344,21 @@
 <td><code>edgefirst</code> (JSON)</td>
 <td><code>labels</code> (JSON array)</td>
 </tr>
+<tr>
+<td>Keras weights (<code>.keras</code>)</td>
+<td>ZIP archive member</td>
+<td><code>edgefirst.json</code></td>
+<td><code>labels.txt</code></td>
+</tr>
+<tr>
+<td>PyTorch weights (<code>.pt</code>)</td>
+<td>Checkpoint dictionary key</td>
+<td><code>edgefirst</code> (JSON string)</td>
+<td><code>dataset.classes</code></td>
+</tr>
 </tbody>
 </table>
+<p>Metadata is always embedded in the artifact it describes. Trainers embed the same metadata in the weights they publish (<code>.keras</code> or <code>.pt</code>) as in the exported models, so that a later session can load those weights and know exactly how they were trained. A standalone <code>edgefirst.json</code> is never published, because a session produces several artifacts and a loose file would not say which one it describes.</p>
 <h3 id="supported-training-frameworks">Supported Training Frameworks</h3>
 <table>
 <thead>
@@ -4413,6 +4636,20 @@
 
 <span class="c1"># Calibration Artifact (see Calibration Artifact section)</span>
 <span class="nt">calibration</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">string</span><span class="w">          </span><span class="c1"># Snapshot filename: calibration-{dataset_id}-{param_hash}.safetensors</span>
+
+<span class="c1"># Tiling (tile-trained models only — see Tiling section)</span>
+<span class="nt">tiling</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">version</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">int</span><span class="w">                 </span><span class="c1"># Section version (1)</span>
+<span class="w">  </span><span class="nt">mode</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">string</span><span class="w">                 </span><span class="c1"># tiled | whole_frame (how the runtime feeds frames)</span>
+<span class="w">  </span><span class="nt">tile</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">int</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">int</span><span class="p p-Indicator">]</span><span class="w">             </span><span class="c1"># Runtime tile [H, W]; equals the input H, W in tiled mode</span>
+<span class="w">  </span><span class="nt">grid</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="nt">algorithm</span><span class="p">:</span><span class="w"> </span><span class="nv">string</span><span class="p p-Indicator">,</span><span class="nt"> version</span><span class="p">:</span><span class="w"> </span><span class="nv">int</span><span class="p p-Indicator">,</span><span class="nt"> min_overlap</span><span class="p">:</span><span class="w"> </span><span class="nv">float</span><span class="p p-Indicator">}</span>
+<span class="w">  </span><span class="nt">fit</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">string</span><span class="w">                  </span><span class="c1"># letterbox</span>
+<span class="w">  </span><span class="nt">pad</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">int</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">int</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">int</span><span class="p p-Indicator">]</span>
+<span class="w">  </span><span class="nt">per_tile</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="nt">nms</span><span class="p">:</span><span class="w"> </span><span class="nv">string</span><span class="p p-Indicator">,</span><span class="nt"> iou</span><span class="p">:</span><span class="w"> </span><span class="nv">float</span><span class="p p-Indicator">,</span><span class="nt"> score</span><span class="p">:</span><span class="w"> </span><span class="nv">float</span><span class="p p-Indicator">}</span>
+<span class="w">  </span><span class="nt">merge</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="nt">mode</span><span class="p">:</span><span class="w"> </span><span class="nv">string</span><span class="p p-Indicator">,</span><span class="nt"> metric</span><span class="p">:</span><span class="w"> </span><span class="nv">string</span><span class="p p-Indicator">,</span><span class="nt"> threshold</span><span class="p">:</span><span class="w"> </span><span class="nv">float</span><span class="p p-Indicator">,</span><span class="nt"> class_agnostic</span><span class="p">:</span><span class="w"> </span><span class="nv">boolean</span><span class="p p-Indicator">,</span><span class="nt"> max_det</span><span class="p">:</span><span class="w"> </span><span class="nv">int</span><span class="p p-Indicator">}</span>
+<span class="w">  </span><span class="nt">full_frame</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="nt">enabled</span><span class="p">:</span><span class="w"> </span><span class="nv">boolean</span><span class="p p-Indicator">,</span><span class="nt"> own_above_area</span><span class="p">:</span><span class="w"> </span><span class="nv">float</span><span class="p p-Indicator">}</span>
+<span class="w">  </span><span class="nt">training</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="nt">session</span><span class="p">:</span><span class="w"> </span><span class="nv">string</span><span class="p p-Indicator">,</span><span class="nt"> sampler</span><span class="p">:</span><span class="w"> </span><span class="nv">string</span><span class="p p-Indicator">,</span><span class="nt"> version</span><span class="p">:</span><span class="w"> </span><span class="nv">string</span><span class="p p-Indicator">,</span><span class="nt"> params</span><span class="p">:</span><span class="w"> </span><span class="nv">object</span><span class="p p-Indicator">}</span>
+<span class="w">  </span><span class="nt">export</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="nt">session</span><span class="p">:</span><span class="w"> </span><span class="nv">string</span><span class="p p-Indicator">,</span><span class="nt"> weights_from</span><span class="p">:</span><span class="w"> </span><span class="nv">string</span><span class="p p-Indicator">,</span><span class="nt"> calibration</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="nt">resize</span><span class="p">:</span><span class="w"> </span><span class="nv">string</span><span class="p p-Indicator">,</span><span class="nt"> input_shape</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">int</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">int</span><span class="p p-Indicator">],</span><span class="nt"> full_frame</span><span class="p">:</span><span class="w"> </span><span class="nv">boolean</span><span class="p p-Indicator">}}</span>
 
 <span class="c1"># Split Hints — INPUT metadata only, present in uncompiled ONNX/SavedModel.</span>
 <span class="c1"># The compiled (converted) model REPLACES split_hints with the outputs[] array.</span>
@@ -5160,6 +5397,245 @@
 </tr>
 </tbody>
 </table>
+<hr />
+<h2 id="tiling">Tiling</h2>
+<p>Models trained on native-resolution tiles of high-resolution frames carry an optional <code>tiling</code> section. A runtime reads it to decide whether to cut each frame into tiles or run the whole frame through the model, and it records how the model was trained, exported and calibrated. A model without the section is not tile-trained and is handled exactly as before.</p>
+<p>The tiling mode and the input resolution are fixed when the model is exported, because edge runtimes compile a static input shape. Trainers export a tile-trained model <strong>tiled</strong> at its tile size by default. The contract defines one workflow for deploying the same weights at another resolution, for example whole-frame at a camera's native resolution: it is done by starting a new training session with training disabled, selecting the tile-trained session as its weights source, and choosing the deployment mode and input resolution. That session exports and calibrates at the new geometry without retraining.</p>
+<h3 id="tiling-schema">Tiling Schema</h3>
+<div class="highlight"><pre><span></span><code><span class="nt">tiling</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">version</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span>
+<span class="w">  </span><span class="nt">mode</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tiled</span><span class="w">                    </span><span class="c1"># tiled | whole_frame</span>
+<span class="w">  </span><span class="nt">tile</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">640</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">640</span><span class="p p-Indicator">]</span><span class="w">               </span><span class="c1"># runtime tile [H, W]</span>
+<span class="w">  </span><span class="nt">grid</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="nt">algorithm</span><span class="p">:</span><span class="w"> </span><span class="nv">evendist</span><span class="p p-Indicator">,</span><span class="nt"> version</span><span class="p">:</span><span class="w"> </span><span class="nv">1</span><span class="p p-Indicator">,</span><span class="nt"> min_overlap</span><span class="p">:</span><span class="w"> </span><span class="nv">0.1</span><span class="p p-Indicator">}</span>
+<span class="w">  </span><span class="nt">fit</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">letterbox</span>
+<span class="w">  </span><span class="nt">pad</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">114</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">114</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">114</span><span class="p p-Indicator">]</span>
+<span class="w">  </span><span class="nt">per_tile</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="nt">nms</span><span class="p">:</span><span class="w"> </span><span class="nv">class_aware</span><span class="p p-Indicator">,</span><span class="nt"> iou</span><span class="p">:</span><span class="w"> </span><span class="nv">0.5</span><span class="p p-Indicator">,</span><span class="nt"> score</span><span class="p">:</span><span class="w"> </span><span class="nv">0.001</span><span class="p p-Indicator">}</span>
+<span class="w">  </span><span class="nt">merge</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="nt">mode</span><span class="p">:</span><span class="w"> </span><span class="nv">keep_best</span><span class="p p-Indicator">,</span><span class="nt"> metric</span><span class="p">:</span><span class="w"> </span><span class="nv">ios</span><span class="p p-Indicator">,</span><span class="nt"> threshold</span><span class="p">:</span><span class="w"> </span><span class="nv">0.5</span><span class="p p-Indicator">,</span><span class="nt"> class_agnostic</span><span class="p">:</span><span class="w"> </span><span class="nv">false</span><span class="p p-Indicator">,</span><span class="nt"> max_det</span><span class="p">:</span><span class="w"> </span><span class="nv">300</span><span class="p p-Indicator">}</span>
+<span class="w">  </span><span class="nt">full_frame</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="nt">enabled</span><span class="p">:</span><span class="w"> </span><span class="nv">false</span><span class="p p-Indicator">,</span><span class="nt"> own_above_area</span><span class="p">:</span><span class="w"> </span><span class="nv">0.02</span><span class="p p-Indicator">}</span>
+<span class="w">  </span><span class="nt">training</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">session</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">t-1a2b</span>
+<span class="w">    </span><span class="nt">sampler</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">edgefirst-tiling</span>
+<span class="w">    </span><span class="nt">version</span><span class="p">:</span><span class="w"> </span><span class="s">"3.0"</span>
+<span class="w">    </span><span class="nt">params</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="nt">tile_size</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">640</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">640</span><span class="p p-Indicator">],</span><span class="nt"> windows_per_frame</span><span class="p">:</span><span class="w"> </span><span class="nv">4</span><span class="p p-Indicator">,</span><span class="nt"> seed</span><span class="p">:</span><span class="w"> </span><span class="nv">0</span><span class="p p-Indicator">}</span>
+<span class="w">  </span><span class="nt">export</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">session</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">t-1a2b</span>
+<span class="w">    </span><span class="nt">calibration</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="nt">resize</span><span class="p">:</span><span class="w"> </span><span class="nv">grid_tile</span><span class="p p-Indicator">,</span><span class="nt"> input_shape</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">640</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">640</span><span class="p p-Indicator">],</span><span class="nt"> full_frame</span><span class="p">:</span><span class="w"> </span><span class="nv">false</span><span class="p p-Indicator">}</span>
+</code></pre></div>
+<p>In version 1 every key shown above is required, except <code>export.weights_from</code> and the contents of <code>training.params</code>. Values in parentheses below are the values trainers write; they are not defaults that a runtime fills in for missing keys.</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>version</code></td>
+<td>int</td>
+<td>Section version. The current version is <code>1</code>. A runtime that finds a version it does not support must warn and treat the model as not tile-trained.</td>
+</tr>
+<tr>
+<td><code>mode</code></td>
+<td>string</td>
+<td><code>tiled</code>: the runtime cuts each frame into a grid of <code>tile</code>-sized crops, runs each, and merges the detections. <code>whole_frame</code>: the runtime letterboxes the whole frame into the model input and runs it once.</td>
+</tr>
+<tr>
+<td><code>tile</code></td>
+<td>[int, int]</td>
+<td>Runtime tile <code>[H, W]</code> in pixels. In <code>tiled</code> mode it equals the input height and width.</td>
+</tr>
+<tr>
+<td><code>grid.algorithm</code></td>
+<td>string</td>
+<td><code>evendist</code>: tile origins spread evenly from 0 to <code>frame − tile</code> per axis, so every seam overlaps by at least <code>min_overlap</code> and no tile is shifted. See <a href="#grid">Grid</a>.</td>
+</tr>
+<tr>
+<td><code>grid.version</code></td>
+<td>int</td>
+<td>Grid algorithm version (<code>1</code>).</td>
+</tr>
+<tr>
+<td><code>grid.min_overlap</code></td>
+<td>float</td>
+<td>Minimum overlap between neighbouring tiles as a fraction of the tile, <code>0 ≤ min_overlap &lt; 1</code> (<code>0.1</code>).</td>
+</tr>
+<tr>
+<td><code>fit</code></td>
+<td>string</td>
+<td>How a crop smaller than the tile is placed. Version 1 defines only <code>letterbox</code>: aspect preserved, content centred, padded with <code>pad</code> (see <a href="#grid">Grid</a>).</td>
+</tr>
+<tr>
+<td><code>pad</code></td>
+<td>[int, int, int]</td>
+<td>Letterbox pad colour, three integers from 0 to 255 (<code>114</code> per channel).</td>
+</tr>
+<tr>
+<td><code>per_tile.nms</code></td>
+<td>string</td>
+<td><abbr title="Non-Maximum Suppression">NMS</abbr> applied to each tile's detections before merging: <code>class_aware</code>, <code>class_agnostic</code>, or <code>none</code> for end-to-end models.</td>
+</tr>
+<tr>
+<td><code>per_tile.iou</code> / <code>per_tile.score</code></td>
+<td>float</td>
+<td>Per-tile <abbr title="Non-Maximum Suppression">NMS</abbr> <abbr title="Intersection over Union">IoU</abbr> threshold (<code>0.5</code>) and score floor (<code>0.001</code>), each from 0 to 1.</td>
+</tr>
+<tr>
+<td><code>merge.mode</code></td>
+<td>string</td>
+<td>Cross-tile merge: <code>keep_best</code> keeps the highest-scoring box of each group unchanged; <code>union</code> replaces the group with its enclosing box. See <a href="#merge">Merge</a>.</td>
+</tr>
+<tr>
+<td><code>merge.metric</code></td>
+<td>string</td>
+<td><code>ios</code> (intersection over the smaller box, which matches objects cut by a tile seam) or <code>iou</code>.</td>
+</tr>
+<tr>
+<td><code>merge.threshold</code></td>
+<td>float</td>
+<td>Overlap at which two boxes of the same class (or any class if <code>class_agnostic</code>) are merged, from 0 to 1 (<code>0.5</code>).</td>
+</tr>
+<tr>
+<td><code>merge.class_agnostic</code></td>
+<td>boolean</td>
+<td>Merge across classes (<code>false</code>).</td>
+</tr>
+<tr>
+<td><code>merge.max_det</code></td>
+<td>int</td>
+<td>Maximum detections per frame after merging, a positive integer (<code>300</code>).</td>
+</tr>
+<tr>
+<td><code>full_frame</code></td>
+<td>object</td>
+<td>Extra whole-frame pass merged with the tiles: <code>enabled</code> (boolean, <code>false</code>) and <code>own_above_area</code>, a fraction of the frame area from 0 to 1 above which whole-frame boxes replace overlapping tile boxes (<code>0.02</code>). In the pass the whole frame is letterboxed into the tile. <code>enabled</code> may be <code>true</code> only in <code>tiled</code> mode.</td>
+</tr>
+<tr>
+<td><code>training</code></td>
+<td>object</td>
+<td>How the weights were trained: the training <code>session</code>, the <code>sampler</code> and its <code>version</code>, and its parameters as trained. Written once by the session that trained the weights and copied unchanged by every later export.</td>
+</tr>
+<tr>
+<td><code>export</code></td>
+<td>object</td>
+<td>How this model was produced: the exporting <code>session</code>, <code>weights_from</code> (the session whose weights were loaded, omitted when the same session trained and exported), and the <code>calibration</code> geometry: <code>resize</code>, <code>input_shape</code>, and <code>full_frame</code>, which is <code>true</code> when the snapshot also holds whole-frame samples (see <a href="#tiling-rules">Tiling Rules</a>).</td>
+</tr>
+</tbody>
+</table>
+<h3 id="grid">Grid</h3>
+<p>The <code>evendist</code> version 1 grid is computed per axis, for a frame length <code>L</code> and a tile length <code>T</code> in pixels, identically on every runtime:</p>
+<ol>
+<li>If <code>L ≤ T</code>, the axis has a single origin <code>0</code> and the crop covers the whole axis.</li>
+<li>Otherwise let <code>last = L − T</code>, <code>step = max(1, ⌊(1 − min_overlap) × T⌋)</code> and <code>n = ⌈last / step⌉</code>. <code>min_overlap</code> is first rounded to a 32-bit float, then <code>step</code> is evaluated in 64-bit floating point; <code>n</code> is an integer division rounded up. The origins are <code>oᵢ = round(i × last / n)</code> for <code>i = 0 … n</code>, with <code>i</code>, <code>last</code> and <code>n</code> converted to 32-bit floats, the product and quotient evaluated in 32-bit floating point, and the result rounded half away from zero. The first origin is <code>0</code> and the last is <code>last</code>.</li>
+</ol>
+<p>A 3840-pixel axis with a 640-pixel tile and <code>min_overlap: 0.1</code> gives <code>step = 575</code> (0.1 as a 32-bit float is slightly larger than 0.1), <code>n = 6</code> and origins 0, 533, 1067, 1600, 2133, 2667, 3200. A 2160-pixel axis gives origins 0, 507, 1013, 1520.</p>
+<p>The tiles are every pair of a row origin and a column origin, in row-major order: rows top to bottom, and within a row the columns left to right. A tile's index is its position in this order. Each crop is <code>min(T, L)</code> pixels along each axis, so crops are full tiles except on an axis shorter than the tile. Such a crop is letterboxed: scaled by the largest factor that fits it in the tile with its aspect ratio kept, the scaled size rounded half away from zero (at least 1 pixel), placed at offset <code>⌊(tile − scaled) / 2⌋</code> on each axis, and the rest filled with <code>pad</code>.</p>
+<h3 id="merge">Merge</h3>
+<p>Each tile's detections are filtered with <code>per_tile</code> <abbr title="Non-Maximum Suppression">NMS</abbr>, mapped back into frame pixels in 32-bit floating point, and concatenated in tile-index order. The merge then groups them greedily:</p>
+<ol>
+<li>Sort the detections by score, highest first. Equal scores keep their concatenated order.</li>
+<li>Walk the sorted list. Each detection not yet claimed is kept, and claims every later unclaimed detection of the same class (any class if <code>class_agnostic</code>) whose overlap with it, by <code>metric</code>, is at least <code>threshold</code>. <code>ios</code> is the intersection divided by the smaller box's area and <code>iou</code> the intersection over the union, each with the denominator floored at <code>1e-9</code>.</li>
+<li>A detection is compared only with the kept detection that claims it; grouping is not transitive. If A claims B, and C overlaps B but not A, C stays unclaimed and is considered in its own turn.</li>
+<li><code>keep_best</code> emits the kept detection unchanged. <code>union</code> emits the box enclosing the kept detection and everything it claimed, with the kept detection's score and class.</li>
+<li>The output is the emitted detections in the order they were kept, truncated to <code>max_det</code>.</li>
+</ol>
+<h3 id="tiling-modes">Tiling Modes</h3>
+<table>
+<thead>
+<tr>
+<th></th>
+<th><code>tiled</code></th>
+<th><code>whole_frame</code></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Model input</td>
+<td>The tile, e.g. <code>640×640</code></td>
+<td>The export resolution, e.g. <code>3840×2176</code> for 4K frames (height and width are multiples of 32)</td>
+</tr>
+<tr>
+<td>Runtime</td>
+<td>Grid of tiles per frame, per-tile <abbr title="Non-Maximum Suppression">NMS</abbr>, merge into frame coordinates</td>
+<td>One inference per frame on the letterboxed frame</td>
+</tr>
+<tr>
+<td>Calibration snapshot</td>
+<td>Deployment-grid tiles at native scale (<code>resize: grid_tile</code>), plus whole-frame samples when <code>full_frame.enabled</code></td>
+<td>Frames letterboxed to the export resolution (<code>resize: letterbox</code>)</td>
+</tr>
+<tr>
+<td>When to use</td>
+<td>High-resolution cameras on accelerators that cannot fit the whole frame, and the default for tile-trained models</td>
+<td>The accelerator fits the whole frame; usually faster than tiling the same frame</td>
+</tr>
+</tbody>
+</table>
+<p>Both modes use the same weights, because the detectors are fully convolutional and were trained at native scale.</p>
+<h3 id="tiling-rules">Tiling Rules</h3>
+<ol>
+<li>In <code>tiled</code> mode the input height and width equal <code>tile</code>. The tile may differ from the training tile (<code>training.params.tile_size</code>), because objects are still seen at native scale.</li>
+<li>In <code>whole_frame</code> mode the input is the export resolution, with height and width multiples of 32.</li>
+<li><code>export.calibration.resize</code> is <code>grid_tile</code> in <code>tiled</code> mode and <code>letterbox</code> in <code>whole_frame</code> mode, <code>export.calibration.input_shape</code> equals the input height and width, and <code>export.calibration.full_frame</code> equals <code>full_frame.enabled</code>. See <a href="../conversion/calibration/#geometry-check">Calibration Snapshot</a>.</li>
+<li><code>training</code> is never modified after the session that trained the weights wrote it. <code>export</code> describes the most recent export.</li>
+<li>Converters copy the <code>tiling</code> section unchanged; see <a href="#converter-traceability">Converter Traceability</a>.</li>
+<li>Unknown keys are ignored.</li>
+</ol>
+<h3 id="example-whole-frame-re-export">Example: Whole-Frame Re-Export</h3>
+<p>The weights trained tiled in session <code>t-1a2b</code>, re-exported whole-frame at 4K by export-only session <code>t-3c4d</code>:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">input</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">shape</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">1</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">3</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">2176</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">3840</span><span class="p p-Indicator">]</span>
+<span class="nt">tiling</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">version</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span>
+<span class="w">  </span><span class="nt">mode</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">whole_frame</span>
+<span class="w">  </span><span class="nt">tile</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">640</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">640</span><span class="p p-Indicator">]</span>
+<span class="w">  </span><span class="nt">grid</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="nt">algorithm</span><span class="p">:</span><span class="w"> </span><span class="nv">evendist</span><span class="p p-Indicator">,</span><span class="nt"> version</span><span class="p">:</span><span class="w"> </span><span class="nv">1</span><span class="p p-Indicator">,</span><span class="nt"> min_overlap</span><span class="p">:</span><span class="w"> </span><span class="nv">0.1</span><span class="p p-Indicator">}</span>
+<span class="w">  </span><span class="nt">fit</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">letterbox</span>
+<span class="w">  </span><span class="nt">pad</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">114</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">114</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">114</span><span class="p p-Indicator">]</span>
+<span class="w">  </span><span class="nt">per_tile</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="nt">nms</span><span class="p">:</span><span class="w"> </span><span class="nv">class_aware</span><span class="p p-Indicator">,</span><span class="nt"> iou</span><span class="p">:</span><span class="w"> </span><span class="nv">0.5</span><span class="p p-Indicator">,</span><span class="nt"> score</span><span class="p">:</span><span class="w"> </span><span class="nv">0.001</span><span class="p p-Indicator">}</span>
+<span class="w">  </span><span class="nt">merge</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="nt">mode</span><span class="p">:</span><span class="w"> </span><span class="nv">keep_best</span><span class="p p-Indicator">,</span><span class="nt"> metric</span><span class="p">:</span><span class="w"> </span><span class="nv">ios</span><span class="p p-Indicator">,</span><span class="nt"> threshold</span><span class="p">:</span><span class="w"> </span><span class="nv">0.5</span><span class="p p-Indicator">,</span><span class="nt"> class_agnostic</span><span class="p">:</span><span class="w"> </span><span class="nv">false</span><span class="p p-Indicator">,</span><span class="nt"> max_det</span><span class="p">:</span><span class="w"> </span><span class="nv">300</span><span class="p p-Indicator">}</span>
+<span class="w">  </span><span class="nt">full_frame</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="nt">enabled</span><span class="p">:</span><span class="w"> </span><span class="nv">false</span><span class="p p-Indicator">,</span><span class="nt"> own_above_area</span><span class="p">:</span><span class="w"> </span><span class="nv">0.02</span><span class="p p-Indicator">}</span>
+<span class="w">  </span><span class="nt">training</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">session</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">t-1a2b</span>
+<span class="w">    </span><span class="nt">sampler</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">edgefirst-tiling</span>
+<span class="w">    </span><span class="nt">version</span><span class="p">:</span><span class="w"> </span><span class="s">"3.0"</span>
+<span class="w">    </span><span class="nt">params</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="nt">tile_size</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">640</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">640</span><span class="p p-Indicator">],</span><span class="nt"> windows_per_frame</span><span class="p">:</span><span class="w"> </span><span class="nv">4</span><span class="p p-Indicator">,</span><span class="nt"> seed</span><span class="p">:</span><span class="w"> </span><span class="nv">0</span><span class="p p-Indicator">}</span>
+<span class="w">  </span><span class="nt">export</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">session</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">t-3c4d</span>
+<span class="w">    </span><span class="nt">weights_from</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">t-1a2b</span>
+<span class="w">    </span><span class="nt">calibration</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="nt">resize</span><span class="p">:</span><span class="w"> </span><span class="nv">letterbox</span><span class="p p-Indicator">,</span><span class="nt"> input_shape</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">2176</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">3840</span><span class="p p-Indicator">],</span><span class="nt"> full_frame</span><span class="p">:</span><span class="w"> </span><span class="nv">false</span><span class="p p-Indicator">}</span>
+</code></pre></div>
+<h3 id="example-tiled-re-export-at-a-new-tile-size">Example: Tiled Re-Export at a New Tile Size</h3>
+<p>The same weights re-exported tiled at a 1280×1280 tile by export-only session <code>t-3c4e</code>, as a <abbr title="TensorFlow Lite">TFLite</abbr> model with an <abbr title="Tensor layout — Batch, Height, Width, Channels">NHWC</abbr> input. The runtime tile differs from the 640×640 training tile, which rule 1 allows. This model has an end-to-end head, so <code>per_tile.nms</code> is <code>none</code>:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">input</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">shape</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">1</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">1280</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">1280</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">3</span><span class="p p-Indicator">]</span>
+<span class="nt">tiling</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">version</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span>
+<span class="w">  </span><span class="nt">mode</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tiled</span>
+<span class="w">  </span><span class="nt">tile</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">1280</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">1280</span><span class="p p-Indicator">]</span>
+<span class="w">  </span><span class="nt">grid</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="nt">algorithm</span><span class="p">:</span><span class="w"> </span><span class="nv">evendist</span><span class="p p-Indicator">,</span><span class="nt"> version</span><span class="p">:</span><span class="w"> </span><span class="nv">1</span><span class="p p-Indicator">,</span><span class="nt"> min_overlap</span><span class="p">:</span><span class="w"> </span><span class="nv">0.1</span><span class="p p-Indicator">}</span>
+<span class="w">  </span><span class="nt">fit</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">letterbox</span>
+<span class="w">  </span><span class="nt">pad</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">114</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">114</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">114</span><span class="p p-Indicator">]</span>
+<span class="w">  </span><span class="nt">per_tile</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="nt">nms</span><span class="p">:</span><span class="w"> </span><span class="nv">none</span><span class="p p-Indicator">,</span><span class="nt"> iou</span><span class="p">:</span><span class="w"> </span><span class="nv">0.5</span><span class="p p-Indicator">,</span><span class="nt"> score</span><span class="p">:</span><span class="w"> </span><span class="nv">0.001</span><span class="p p-Indicator">}</span>
+<span class="w">  </span><span class="nt">merge</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="nt">mode</span><span class="p">:</span><span class="w"> </span><span class="nv">keep_best</span><span class="p p-Indicator">,</span><span class="nt"> metric</span><span class="p">:</span><span class="w"> </span><span class="nv">ios</span><span class="p p-Indicator">,</span><span class="nt"> threshold</span><span class="p">:</span><span class="w"> </span><span class="nv">0.5</span><span class="p p-Indicator">,</span><span class="nt"> class_agnostic</span><span class="p">:</span><span class="w"> </span><span class="nv">false</span><span class="p p-Indicator">,</span><span class="nt"> max_det</span><span class="p">:</span><span class="w"> </span><span class="nv">300</span><span class="p p-Indicator">}</span>
+<span class="w">  </span><span class="nt">full_frame</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="nt">enabled</span><span class="p">:</span><span class="w"> </span><span class="nv">false</span><span class="p p-Indicator">,</span><span class="nt"> own_above_area</span><span class="p">:</span><span class="w"> </span><span class="nv">0.02</span><span class="p p-Indicator">}</span>
+<span class="w">  </span><span class="nt">training</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">session</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">t-1a2b</span>
+<span class="w">    </span><span class="nt">sampler</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">edgefirst-tiling</span>
+<span class="w">    </span><span class="nt">version</span><span class="p">:</span><span class="w"> </span><span class="s">"3.0"</span>
+<span class="w">    </span><span class="nt">params</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="nt">tile_size</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">640</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">640</span><span class="p p-Indicator">],</span><span class="nt"> windows_per_frame</span><span class="p">:</span><span class="w"> </span><span class="nv">4</span><span class="p p-Indicator">,</span><span class="nt"> seed</span><span class="p">:</span><span class="w"> </span><span class="nv">0</span><span class="p p-Indicator">}</span>
+<span class="w">  </span><span class="nt">export</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">session</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">t-3c4e</span>
+<span class="w">    </span><span class="nt">weights_from</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">t-1a2b</span>
+<span class="w">    </span><span class="nt">calibration</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="nt">resize</span><span class="p">:</span><span class="w"> </span><span class="nv">grid_tile</span><span class="p p-Indicator">,</span><span class="nt"> input_shape</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">1280</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">1280</span><span class="p p-Indicator">],</span><span class="nt"> full_frame</span><span class="p">:</span><span class="w"> </span><span class="nv">false</span><span class="p p-Indicator">}</span>
+</code></pre></div>
+<h3 id="models-without-tiling">Models Without Tiling</h3>
+<p>A model that was not tile-trained has no <code>tiling</code> key. Its runtime behavior is unchanged: the runtime letterboxes each frame into the model input and runs it once, and tiled inference happens only when an application requests it explicitly.</p>
+<div class="admonition note">
+<p class="admonition-title">Session references</p>
+<p>Session IDs in metadata use the <code>t-</code> prefix with a hexadecimal value, as elsewhere in this document. Tools that accept a session reference must also accept the decimal integer, with or without quotes: <code>t-2a3f</code>, <code>"10815"</code> and <code>10815</code> name the same session.</p>
+</div>
 <hr />
 <h2 id="validation-parameters">Validation Parameters</h2>
 <p>The <code>validation</code> section records the recommended settings based on how the model was trained. These parameters are <strong>informational preferences</strong> — they document the model author's intended configuration for validation and inference.</p>
@@ -6195,7 +6671,7 @@
 </code></pre></div>
 <hr />
 <h2 id="calibration-artifact">Calibration Artifact</h2>
-<p>Quantizing converters need a representative sample of model inputs to measure activation ranges. EdgeFirst Studio captures that sample once, at training time, as a <code>.safetensors</code> <strong>calibration snapshot</strong>: a pre-filtered, pre-processed subset of the training data with embedded metadata and full provenance back to the source samples.</p>
+<p>Quantizing converters need a representative sample of model inputs to measure activation ranges. EdgeFirst Studio captures that sample when a session exports the model, at that model's input geometry, as a <code>.safetensors</code> <strong>calibration snapshot</strong>: a pre-filtered, pre-processed subset of the training data with embedded metadata and full provenance back to the source samples. Whole-frame and non-tiled models are calibrated on letterboxed frames at the input resolution; <a href="#tiling">tiled models</a> are calibrated on deployment-grid tiles at native scale.</p>
 <p>The <code>edgefirst.json</code> <code>calibration</code> field records the snapshot filename:</p>
 <div class="highlight"><pre><span></span><code><span class="nt">calibration</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">string</span><span class="w">          </span><span class="c1"># calibration-{dataset_id}-{param_hash}.safetensors</span>
 </code></pre></div>
@@ -6210,6 +6686,9 @@
 <li>Each converter adds a top-level key named after itself (e.g., <code>"tflite_quantizer"</code>, <code>"neutron"</code>, <code>"ara2"</code>, <code>"hailo"</code>).</li>
 <li>The converter section records conversion parameters, version, and any decisions made during conversion.</li>
 <li>Multiple converter sections can coexist when a model passes through a pipeline chain (e.g., <abbr title="TensorFlow Lite">TFLite</abbr> Quantizer followed by Neutron Converter).</li>
+<li>Converters copy the <a href="#tiling"><code>tiling</code></a> section unchanged. It describes the model, and a runtime reads it from the compiled artifact to decide how to feed frames; conversion decisions belong in the converter's own section.</li>
+<li>The height and width in <code>input.shape</code> match the compiled artifact's input, in the layout of the output format.</li>
+<li>A converter that calibrates checks the snapshot's geometry against the model before using it (see <a href="../conversion/calibration/#geometry-check">Calibration Snapshot — Geometry check</a>) and records <code>calibration_geometry: {resize, input_shape}</code> beside its <code>calibration</code> field, adding <code>full_frame: true</code> when the snapshot holds whole-frame samples.</li>
 </ul>
 <h3 id="converter-section-schema">Converter Section Schema</h3>
 <p>Each converter section is a free-form object, but should include at minimum:</p>
@@ -6242,6 +6721,16 @@
 <td>string[]</td>
 <td>List of <code>split_hints[].type</code> values that were consumed</td>
 </tr>
+<tr>
+<td><code>calibration</code></td>
+<td>string or object</td>
+<td>Calibration snapshot used: the snapshot filename, or a converter-specific record that names it</td>
+</tr>
+<tr>
+<td><code>calibration_geometry</code></td>
+<td>object</td>
+<td><code>{resize, input_shape}</code> of the snapshot, with <code>full_frame: true</code> when it holds whole-frame samples; present when the converter calibrated (see <a href="../conversion/calibration/#geometry-check">Geometry check</a>)</td>
+</tr>
 </tbody>
 </table>
 <p>Additional fields are converter-specific and documented by each converter app.</p>
@@ -6260,6 +6749,7 @@
 <span class="w">    </span><span class="nt">"input_dtype"</span><span class="p">:</span><span class="w"> </span><span class="s2">"uint8"</span><span class="p">,</span>
 <span class="w">    </span><span class="nt">"output_dtype"</span><span class="p">:</span><span class="w"> </span><span class="s2">"int8"</span><span class="p">,</span>
 <span class="w">    </span><span class="nt">"calibration"</span><span class="p">:</span><span class="w"> </span><span class="s2">"calibration-ds-2bcc-a1b2c3d4.safetensors"</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"calibration_geometry"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="nt">"resize"</span><span class="p">:</span><span class="w"> </span><span class="s2">"letterbox"</span><span class="p">,</span><span class="w"> </span><span class="nt">"input_shape"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="mi">640</span><span class="p">,</span><span class="w"> </span><span class="mi">640</span><span class="p">]},</span>
 <span class="w">    </span><span class="nt">"calibration_samples"</span><span class="p">:</span><span class="w"> </span><span class="mi">500</span><span class="p">,</span>
 <span class="w">    </span><span class="nt">"splits_applied"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"quantization_split"</span><span class="p">],</span>
 <span class="w">    </span><span class="nt">"quantizer"</span><span class="p">:</span><span class="w"> </span><span class="s2">"mlir"</span>
@@ -6281,6 +6771,7 @@
 <span class="w">    </span><span class="nt">"input_dtype"</span><span class="p">:</span><span class="w"> </span><span class="s2">"uint8"</span><span class="p">,</span>
 <span class="w">    </span><span class="nt">"output_dtype"</span><span class="p">:</span><span class="w"> </span><span class="s2">"int8"</span><span class="p">,</span>
 <span class="w">    </span><span class="nt">"calibration"</span><span class="p">:</span><span class="w"> </span><span class="s2">"calibration-ds-2bcc-a1b2c3d4.safetensors"</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"calibration_geometry"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="nt">"resize"</span><span class="p">:</span><span class="w"> </span><span class="s2">"letterbox"</span><span class="p">,</span><span class="w"> </span><span class="nt">"input_shape"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="mi">640</span><span class="p">,</span><span class="w"> </span><span class="mi">640</span><span class="p">]},</span>
 <span class="w">    </span><span class="nt">"calibration_samples"</span><span class="p">:</span><span class="w"> </span><span class="mi">500</span><span class="p">,</span>
 <span class="w">    </span><span class="nt">"splits_applied"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span>
 <span class="w">    </span><span class="nt">"quantizer"</span><span class="p">:</span><span class="w"> </span><span class="s2">"mlir"</span>

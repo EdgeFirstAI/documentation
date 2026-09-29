@@ -5419,7 +5419,7 @@
 <span class="w">    </span><span class="nt">params</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="nt">tile_size</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">640</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">640</span><span class="p p-Indicator">],</span><span class="nt"> windows_per_frame</span><span class="p">:</span><span class="w"> </span><span class="nv">4</span><span class="p p-Indicator">,</span><span class="nt"> seed</span><span class="p">:</span><span class="w"> </span><span class="nv">0</span><span class="p p-Indicator">}</span>
 <span class="w">  </span><span class="nt">export</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">session</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">t-1a2b</span>
-<span class="w">    </span><span class="nt">calibration</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="nt">resize</span><span class="p">:</span><span class="w"> </span><span class="nv">grid_tile</span><span class="p p-Indicator">,</span><span class="nt"> input_shape</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">640</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">640</span><span class="p p-Indicator">],</span><span class="nt"> full_frame</span><span class="p">:</span><span class="w"> </span><span class="nv">false</span><span class="p p-Indicator">}</span>
+<span class="w">    </span><span class="nt">calibration</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="nt">resize</span><span class="p">:</span><span class="w"> </span><span class="nv">tiled</span><span class="p p-Indicator">,</span><span class="nt"> input_shape</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">640</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">640</span><span class="p p-Indicator">],</span><span class="nt"> full_frame</span><span class="p">:</span><span class="w"> </span><span class="nv">false</span><span class="p p-Indicator">}</span>
 </code></pre></div>
 <p>In version 1 every key shown above is required, except <code>export.weights_from</code> and the contents of <code>training.params</code>. Values in parentheses below are the values trainers write; they are not defaults that a runtime fills in for missing keys.</p>
 <table>
@@ -5562,7 +5562,7 @@
 </tr>
 <tr>
 <td>Calibration snapshot</td>
-<td>Deployment-grid tiles at native scale (<code>resize: grid_tile</code>), plus whole-frame samples when <code>full_frame.enabled</code></td>
+<td>Deployment-grid tiles at native scale (<code>resize: tiled</code>), plus whole-frame samples when <code>full_frame.enabled</code></td>
 <td>Frames letterboxed to the export resolution (<code>resize: letterbox</code>)</td>
 </tr>
 <tr>
@@ -5577,7 +5577,7 @@
 <ol>
 <li>In <code>tiled</code> mode the input height and width equal <code>tile</code>. The tile may differ from the training tile (<code>training.params.tile_size</code>), because objects are still seen at native scale.</li>
 <li>In <code>whole_frame</code> mode the input is the export resolution, with height and width multiples of 32.</li>
-<li><code>export.calibration.resize</code> is <code>grid_tile</code> in <code>tiled</code> mode and <code>letterbox</code> in <code>whole_frame</code> mode, <code>export.calibration.input_shape</code> equals the input height and width, and <code>export.calibration.full_frame</code> equals <code>full_frame.enabled</code>. See <a href="../conversion/calibration/#geometry-check">Calibration Snapshot</a>.</li>
+<li><code>export.calibration.resize</code> is <code>tiled</code> in <code>tiled</code> mode and <code>letterbox</code> in <code>whole_frame</code> mode, <code>export.calibration.input_shape</code> equals the input height and width, and <code>export.calibration.full_frame</code> equals <code>full_frame.enabled</code>. See <a href="../conversion/calibration/#geometry-check">Calibration Snapshot</a>.</li>
 <li><code>training</code> is never modified after the session that trained the weights wrote it. <code>export</code> describes the most recent export.</li>
 <li>Converters copy the <code>tiling</code> section unchanged; see <a href="#converter-traceability">Converter Traceability</a>.</li>
 <li>Unknown keys are ignored.</li>
@@ -5628,7 +5628,7 @@
 <span class="w">  </span><span class="nt">export</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">session</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">t-3c4e</span>
 <span class="w">    </span><span class="nt">weights_from</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">t-1a2b</span>
-<span class="w">    </span><span class="nt">calibration</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="nt">resize</span><span class="p">:</span><span class="w"> </span><span class="nv">grid_tile</span><span class="p p-Indicator">,</span><span class="nt"> input_shape</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">1280</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">1280</span><span class="p p-Indicator">],</span><span class="nt"> full_frame</span><span class="p">:</span><span class="w"> </span><span class="nv">false</span><span class="p p-Indicator">}</span>
+<span class="w">    </span><span class="nt">calibration</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="nt">resize</span><span class="p">:</span><span class="w"> </span><span class="nv">tiled</span><span class="p p-Indicator">,</span><span class="nt"> input_shape</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">1280</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">1280</span><span class="p p-Indicator">],</span><span class="nt"> full_frame</span><span class="p">:</span><span class="w"> </span><span class="nv">false</span><span class="p p-Indicator">}</span>
 </code></pre></div>
 <h3 id="models-without-tiling">Models Without Tiling</h3>
 <p>A model that was not tile-trained has no <code>tiling</code> key. Its runtime behavior is unchanged: the runtime letterboxes each frame into the model input and runs it once, and tiled inference happens only when an application requests it explicitly.</p>
@@ -6671,7 +6671,7 @@
 </code></pre></div>
 <hr />
 <h2 id="calibration-artifact">Calibration Artifact</h2>
-<p>Quantizing converters need a representative sample of model inputs to measure activation ranges. EdgeFirst Studio captures that sample when a session exports the model, at that model's input geometry, as a <code>.safetensors</code> <strong>calibration snapshot</strong>: a pre-filtered, pre-processed subset of the training data with embedded metadata and full provenance back to the source samples. Whole-frame and non-tiled models are calibrated on letterboxed frames at the input resolution; <a href="#tiling">tiled models</a> are calibrated on deployment-grid tiles at native scale.</p>
+<p>Quantizing converters need a representative sample of model inputs to measure activation ranges. EdgeFirst Studio captures that sample when a session exports the model, at that model's input geometry, as a <code>.safetensors</code> <strong>calibration snapshot</strong>: a pre-filtered, pre-processed subset of the training data with embedded metadata and full provenance back to the source samples. <code>whole_frame</code> models and models without a <code>tiling</code> section are calibrated on letterboxed frames at the input resolution (or, for models without a supported <code>tiling</code> section that were trained with a direct resize, stretched frames); <a href="#tiling">tiled models</a> are calibrated on deployment-grid tiles at native scale.</p>
 <p>The <code>edgefirst.json</code> <code>calibration</code> field records the snapshot filename:</p>
 <div class="highlight"><pre><span></span><code><span class="nt">calibration</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">string</span><span class="w">          </span><span class="c1"># calibration-{dataset_id}-{param_hash}.safetensors</span>
 </code></pre></div>
@@ -6687,8 +6687,9 @@
 <li>The converter section records conversion parameters, version, and any decisions made during conversion.</li>
 <li>Multiple converter sections can coexist when a model passes through a pipeline chain (e.g., <abbr title="TensorFlow Lite">TFLite</abbr> Quantizer followed by Neutron Converter).</li>
 <li>Converters copy the <a href="#tiling"><code>tiling</code></a> section unchanged. It describes the model, and a runtime reads it from the compiled artifact to decide how to feed frames; conversion decisions belong in the converter's own section.</li>
+<li>A converter rejects a present <code>tiling</code> section that is not a mapping with integer <code>version: 1</code> (<code>1.0</code> and <code>true</code> do not qualify) and a <code>mode</code> of <code>tiled</code> or <code>whole_frame</code>, before it does any work, so it never copies an unsupported section into a compiled artifact. An absent <code>tiling</code> section is valid.</li>
 <li>The height and width in <code>input.shape</code> match the compiled artifact's input, in the layout of the output format.</li>
-<li>A converter that calibrates checks the snapshot's geometry against the model before using it (see <a href="../conversion/calibration/#geometry-check">Calibration Snapshot — Geometry check</a>) and records <code>calibration_geometry: {resize, input_shape}</code> beside its <code>calibration</code> field, adding <code>full_frame: true</code> when the snapshot holds whole-frame samples.</li>
+<li>A converter that calibrates checks the snapshot's geometry against the model before using it (see <a href="../conversion/calibration/#geometry-check">Calibration Snapshot — Geometry check</a>). The check reads the snapshot parameters first and the sample tensor second. It compares the snapshot with the input the converter actually compiles (the model graph input, or an explicit input-shape override), and fails when the metadata <code>input.shape</code> disagrees with the graph. The converter records <code>calibration_geometry: {resize, input_shape}</code> beside its <code>calibration</code> field, adding <code>full_frame: true</code> when the snapshot holds whole-frame samples.</li>
 </ul>
 <h3 id="converter-section-schema">Converter Section Schema</h3>
 <p>Each converter section is a free-form object, but should include at minimum:</p>

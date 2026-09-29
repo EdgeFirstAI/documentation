@@ -2219,7 +2219,7 @@ so much). Producing that sample naively is wasteful and fragile:</p>
   every converter, for every target, on every conversion, repeats expensive
   work that only depends on the <em>dataset</em>, not the model or the target.</li>
 <li><strong>Preprocessing is the model's secret.</strong> Calibration inputs must be
-  preprocessed exactly as the model expects — the same letterbox geometry, the
+  preprocessed exactly as the model expects — the same letterbox (or stretch) geometry, the
   same channel layout, the same <a href="../../cameraadaptor/">CameraAdaptor</a> color
   conversion used in training. A model-agnostic converter does not — and should
   not — know those details.</li>
@@ -2233,11 +2233,11 @@ so much). Producing that sample naively is wasteful and fragile:</p>
 has the answers — the trainer — and captures the result in a self-describing,
 content-addressed file:</p>
 <ul>
-<li><strong>Generated when a session exports the model.</strong> The trainer already decodes the dataset and knows the model's input geometry; it selects the calibration subset and writes the snapshot as a by-product of export, at that geometry (letterboxed frames, or deployment-grid tiles for tiled models). No separate calibration job exists.</li>
+<li><strong>Generated when a session exports the model.</strong> The trainer already decodes the dataset and knows the model's input geometry; it selects the calibration subset and writes the snapshot as a by-product of export, at that geometry (letterboxed or stretched frames, or deployment-grid tiles for tiled models). No separate calibration job exists.</li>
 <li><strong>Pre-filtered.</strong> A model-free selection picks the ~500 samples that best
   span the dataset's pixel dynamic range, so a small set calibrates as well as
   — or better than — the full pool.</li>
-<li><strong>Pre-processed to the model's geometry, but not normalization.</strong> The geometric preprocessing that <em>is</em> the model's secret (letterbox resize or, for <a href="../../metadata/#tiling">tiled models</a>, a native-scale deployment-grid tile, plus channel layout and CameraAdaptor) is baked into the stored pixels. The numeric normalization that converters legitimately differ on is <strong>recorded as metadata, not applied</strong> (see <a href="#letterbox-not-normalization">Letterbox, Not Normalization</a>).</li>
+<li><strong>Pre-processed to the model's geometry, but not normalization.</strong> The geometric preprocessing that <em>is</em> the model's secret (letterbox or stretch resize or, for <a href="../../metadata/#tiling">tiled models</a>, a native-scale deployment-grid tile, plus channel layout and CameraAdaptor) is baked into the stored pixels. The numeric normalization that converters legitimately differ on is <strong>recorded as metadata, not applied</strong> (see <a href="#letterbox-not-normalization">Letterbox, Not Normalization</a>).</li>
 <li><strong>Reusable across models by hash.</strong> The filename encodes a hash of the
   generation parameters. Two models trained on the same dataset with the same
   input geometry and data-preparation pattern resolve to the <strong>same snapshot</strong>
@@ -2251,7 +2251,7 @@ content-addressed file:</p>
 <pre class="mermaid"><code>flowchart LR
     subgraph Train["Export (once per dataset + geometry)"]
         Pool["Training split&lt;br/&gt;10³–10⁶ samples"] --&gt; Select["Model-free&lt;br/&gt;dynamic-range selection"]
-        Select --&gt; Pre["Letterbox or grid tile +&lt;br/&gt;CameraAdaptor"]
+        Select --&gt; Pre["Letterbox, stretch or tiled +&lt;br/&gt;CameraAdaptor"]
         Pre --&gt; Snap["calibration-{dataset}-{hash}&lt;br/&gt;.safetensors"]
     end
     Snap --&gt; Store["EdgeFirst Studio&lt;br/&gt;Snapshot store"]
@@ -2354,7 +2354,7 @@ as metadata</em> is deliberate, and it is the crux of why one snapshot can serve
 many converters.</p>
 <p><strong>Baked in — the geometric preprocessing that is the model's secret:</strong></p>
 <ul>
-<li><strong>Letterbox resize, or grid tile.</strong> For whole-frame and non-tiled models the source image is scaled to fit the model input, preserving aspect ratio (upscaling small images), then center-padded to it with a constant gray value (114). For <a href="#tiled-models">tiled models</a> the snapshot instead holds native-scale tiles cut from the deployment grid. Either way this is a required, model-defining step that matches what the model sees at runtime, so the snapshot captures its exact result.</li>
+<li><strong>Letterbox, stretch or tiled resize.</strong> For models without a supported <code>tiling</code> section the source image is either scaled to fit the model input, preserving aspect ratio (upscaling small images), then center-padded to it with a constant gray value (114) (<code>letterbox</code>), or resized directly to it without padding (<code>stretch</code>). A <code>whole_frame</code> tiling model is always <code>letterbox</code>, because its runtime letterboxes the frame. For <a href="#tiled-models">tiled models</a> the snapshot instead holds native-scale tiles cut from the deployment grid. Either way this is a required, model-defining step that matches what the model sees at runtime, so the snapshot captures its exact result.</li>
 <li><strong>Channel layout and CameraAdaptor.</strong> The color conversion (<abbr title="Red Green Blue">RGB</abbr>, BGR, YUYV,
   gray, …) and channel layout the model was trained with are applied, so the
   stored tensor is byte-identical to what the model sees at inference.</li>
@@ -2368,7 +2368,7 @@ many converters.</p>
   pipeline applies its own — without the lossy <code>[0,1] → [0,255]</code> round-trips
   that plagued ad-hoc snapshots.</li>
 </ul>
-<p>Generating the snapshot when the session exports the model is what makes this clean: the letterbox or grid-tile recipe is reused verbatim from the training data pipeline, and the parameter hash makes the resulting file reusable across every model that shares the same recipe.</p>
+<p>Generating the snapshot when the session exports the model is what makes this clean: the letterbox, stretch or tiled recipe is reused verbatim from the training data pipeline, and the parameter hash makes the resulting file reusable across every model that shares the same recipe.</p>
 <h2 id="parameter-hash-and-caching">Parameter Hash and Caching</h2>
 <p>The snapshot is a pure function of a canonical parameter set. The filename
 encodes a hash of that set so the snapshot is <strong>content-addressed</strong>:</p>
@@ -2389,7 +2389,7 @@ encodes a hash of that set so the snapshot is <strong>content-addressed</strong>
   "channels": 3,                      // post color-conversion channel count
   "layout": "NCHW",
   "dtype": "uint8",
-  "resize": "letterbox",
+  "resize": "letterbox",              // "letterbox", "stretch" or "tiled"
   "letterbox": {                      // the exact recipe: long-side resize
     "pad_color": [114, 114, 114],     // (ceil rounding, linear interp),
     "scale": "long_side",             // then center-pad the short side
@@ -2408,6 +2408,7 @@ encodes a hash of that set so the snapshot is <strong>content-addressed</strong>
   "seed": 42                          // selection seed
 }
 </code></pre></div>
+<p><code>resize</code> is <code>"letterbox"</code>, <code>"stretch"</code> or <code>"tiled"</code>. <code>"stretch"</code> resizes the frame directly to the model input without padding, for models trained at a fixed aspect ratio such as ModelPack's native-aspect models, and its parameter set has no <code>letterbox</code> block. The <code>letterbox</code> block is present for <code>letterbox</code> and <code>tiled</code> snapshots.</p>
 <p>Two properties follow from hashing the parameters rather than the content:</p>
 <ul>
 <li><strong>Versioned selection.</strong> The <code>selection</code> tag names the algorithm. Changing
@@ -2427,7 +2428,7 @@ counts are recorded.</p>
 <p>A <a href="../../metadata/#tiling">tiled model</a> is calibrated on the tiles it sees at runtime, not on whole frames squeezed into the tile size. Its parameter set replaces the letterbox recipe with the deployment grid:</p>
 <div class="highlight"><pre><span></span><code>{
   "input_shape": [640, 640],          // the tile [H, W]
-  "resize": "grid_tile",
+  "resize": "tiled",
   "grid": {                           // the runtime grid (tiling.grid)
     "algorithm": "evendist",
     "version": 1,
@@ -2512,7 +2513,7 @@ and <strong>must</strong> fail loudly when a required key is absent rather than 
 <tr>
 <td><code>count_requested</code></td>
 <td><code>500</code></td>
-<td>Requested sample count: the number of frames to select. A letterbox snapshot stores one sample per frame.</td>
+<td>Requested sample count: the number of frames to select. A non-tiled snapshot (letterbox or stretch) stores one sample per frame.</td>
 </tr>
 <tr>
 <td><code>count_actual</code></td>
@@ -2591,7 +2592,7 @@ exact samples it was built from:</p>
    versioned, deterministic algorithm. Under <code>max_dynamic_range_v1</code> the selected
    set's per-channel min/max must equal the pool's — the extrema-bearing images
    are mandatory, and a tiled snapshot stores the tiles that hold the extrema pixels.</li>
-<li><strong>Preprocess at the model's geometry.</strong> Letterbox each selected frame to the model input, or for a <a href="../../metadata/#tiling">tiled model</a> cut deployment-grid tiles at native scale, plus whole-frame samples when its <code>full_frame</code> pass is enabled (see <a href="#tiled-models">Tiled models</a>); apply the CameraAdaptor recipe; store <strong>uint8 [0, 255] <abbr title="Tensor layout — Batch, Channels, Height, Width">NCHW</abbr></strong>. Record the geometry (<code>input_shape</code>, <code>resize</code>, and <code>grid</code> for tiles) and the normalization the model expects in metadata — do <strong>not</strong> apply the normalization to the stored bytes.</li>
+<li><strong>Preprocess at the model's geometry.</strong> Letterbox or stretch each selected frame to the model input (stretch for models trained with a direct resize), or for a <a href="../../metadata/#tiling">tiled model</a> cut deployment-grid tiles at native scale, plus whole-frame samples when its <code>full_frame</code> pass is enabled (see <a href="#tiled-models">Tiled models</a>); apply the CameraAdaptor recipe; store <strong>uint8 [0, 255] <abbr title="Tensor layout — Batch, Channels, Height, Width">NCHW</abbr></strong>. Record the geometry (<code>input_shape</code>, <code>resize</code>, and <code>grid</code> for tiles) and the normalization the model expects in metadata — do <strong>not</strong> apply the normalization to the stored bytes.</li>
 <li><strong>Name and hash deterministically.</strong> Serialize the canonical parameter set
    with sorted keys and a fixed float representation; hash to 16 hex characters;
    build the filename. Identical parameters over an identical pool must produce
@@ -2614,21 +2615,44 @@ exact samples it was built from:</p>
 <li><strong>Check the geometry.</strong> Before calibrating, confirm the snapshot fits the model (see <a href="#geometry-check">Geometry check</a>), and fail loudly if it does not. A mismatched snapshot otherwise fails deep inside a toolchain, or worse, calibrates silently on the wrong input distribution.</li>
 <li><strong>Record traceability.</strong> Write the snapshot filename into your converter section of <code>edgefirst.json</code>, together with <code>calibration_geometry: {resize, input_shape}</code> from the snapshot's parameters, adding <code>full_frame: true</code> when the parameters carry it.</li>
 </ol>
-<div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">safetensors</span><span class="w"> </span><span class="kn">import</span> <span class="n">safe_open</span>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">collections.abc</span><span class="w"> </span><span class="kn">import</span> <span class="n">Mapping</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">numbers</span><span class="w"> </span><span class="kn">import</span> <span class="n">Integral</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">safetensors</span><span class="w"> </span><span class="kn">import</span> <span class="n">safe_open</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">json</span><span class="o">,</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
 
 <span class="c1"># model_meta: the model's embedded EdgeFirst metadata (edgefirst.json)</span>
-<span class="c1"># model_input_hw: the model's input (H, W) after layout mapping and overrides</span>
-<span class="n">tiling</span> <span class="o">=</span> <span class="n">model_meta</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"tiling"</span><span class="p">,</span> <span class="p">{})</span>
-<span class="n">tiling_mode</span> <span class="o">=</span> <span class="n">tiling</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"mode"</span><span class="p">)</span>                          <span class="c1"># None without tiling</span>
-<span class="n">full_frame</span> <span class="o">=</span> <span class="n">tiling</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"full_frame"</span><span class="p">,</span> <span class="p">{})</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"enabled"</span><span class="p">,</span> <span class="kc">False</span><span class="p">)</span>
+<span class="c1"># model_input_hw: the (H, W) of the input the converter compiles (the model graph input, or an</span>
+<span class="c1">#   explicit input-shape override), after layout mapping</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">_is_version_one</span><span class="p">(</span><span class="n">value</span><span class="p">):</span>
+    <span class="k">return</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="n">Integral</span><span class="p">)</span> <span class="ow">and</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="nb">bool</span><span class="p">)</span> <span class="ow">and</span> <span class="n">value</span> <span class="o">==</span> <span class="mi">1</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">model_tiling</span><span class="p">(</span><span class="n">edgefirst</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">"""(mode, full_frame_enabled) of a model's version-1 tiling section, or (None, False)."""</span>
+    <span class="n">tiling</span> <span class="o">=</span> <span class="n">edgefirst</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"tiling"</span><span class="p">)</span> <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">edgefirst</span><span class="p">,</span> <span class="n">Mapping</span><span class="p">)</span> <span class="k">else</span> <span class="kc">None</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">tiling</span><span class="p">,</span> <span class="n">Mapping</span><span class="p">)</span> <span class="ow">or</span> <span class="ow">not</span> <span class="n">_is_version_one</span><span class="p">(</span><span class="n">tiling</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"version"</span><span class="p">)):</span>
+        <span class="k">return</span> <span class="kc">None</span><span class="p">,</span> <span class="kc">False</span>
+    <span class="n">full_frame</span> <span class="o">=</span> <span class="n">tiling</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"full_frame"</span><span class="p">)</span>
+    <span class="n">enabled</span> <span class="o">=</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">full_frame</span><span class="p">,</span> <span class="n">Mapping</span><span class="p">)</span> <span class="ow">and</span> <span class="n">full_frame</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"enabled"</span><span class="p">)</span> <span class="ow">is</span> <span class="kc">True</span>
+    <span class="k">return</span> <span class="n">tiling</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"mode"</span><span class="p">),</span> <span class="n">enabled</span>
+
+
+<span class="n">check_converter_tiling</span><span class="p">(</span><span class="n">model_meta</span><span class="p">)</span>                       <span class="c1"># see Converter Traceability</span>
+<span class="n">tiling_mode</span><span class="p">,</span> <span class="n">full_frame</span> <span class="o">=</span> <span class="n">model_tiling</span><span class="p">(</span><span class="n">model_meta</span><span class="p">)</span>       <span class="c1"># (None, False) without a tiling section</span>
 
 <span class="k">with</span> <span class="n">safe_open</span><span class="p">(</span><span class="n">calibration_path</span><span class="p">,</span> <span class="n">framework</span><span class="o">=</span><span class="s2">"numpy"</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
     <span class="n">meta</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">metadata</span><span class="p">()</span>                       <span class="c1"># __metadata__ map</span>
     <span class="n">names</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">meta</span><span class="p">[</span><span class="s2">"tensor_names"</span><span class="p">])</span>
-    <span class="n">params</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">meta</span><span class="p">[</span><span class="s2">"params"</span><span class="p">])</span>
-    <span class="n">sample_hw</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">get_slice</span><span class="p">(</span><span class="n">names</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span><span class="o">.</span><span class="n">get_shape</span><span class="p">()[</span><span class="mi">2</span><span class="p">:</span><span class="mi">4</span><span class="p">]</span>   <span class="c1"># NCHW -&gt; (H, W)</span>
-    <span class="n">check_snapshot_geometry</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">sample_hw</span><span class="p">,</span> <span class="n">model_input_hw</span><span class="p">,</span> <span class="n">tiling_mode</span><span class="p">,</span> <span class="n">full_frame</span><span class="p">)</span>  <span class="c1"># see Geometry Check</span>
+    <span class="n">raw_params</span> <span class="o">=</span> <span class="n">meta</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"params"</span><span class="p">)</span>
+    <span class="n">params</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">raw_params</span><span class="p">)</span> <span class="k">if</span> <span class="n">raw_params</span> <span class="k">else</span> <span class="kc">None</span>   <span class="c1"># a missing value is reported by the params check</span>
+    <span class="n">check_snapshot_params</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">model_input_hw</span><span class="p">)</span>        <span class="c1"># rule 1, before any sample tensor is read</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">names</span> <span class="ow">or</span> <span class="n">names</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">f</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">"calibration snapshot tensor_names is empty or names a missing tensor"</span><span class="p">)</span>
+    <span class="n">shape</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">get_slice</span><span class="p">(</span><span class="n">names</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span><span class="o">.</span><span class="n">get_shape</span><span class="p">()</span>
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">shape</span><span class="p">)</span> <span class="o">!=</span> <span class="mi">4</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">"calibration sample tensor </span><span class="si">{</span><span class="n">names</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">!r}</span><span class="s2"> must be rank 4 (N, C, H, W); got </span><span class="si">{</span><span class="nb">list</span><span class="p">(</span><span class="n">shape</span><span class="p">)</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+    <span class="n">sample_hw</span> <span class="o">=</span> <span class="n">shape</span><span class="p">[</span><span class="mi">2</span><span class="p">:</span><span class="mi">4</span><span class="p">]</span>                               <span class="c1"># NCHW -&gt; (H, W)</span>
+    <span class="n">check_snapshot_geometry</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">sample_hw</span><span class="p">,</span> <span class="n">model_input_hw</span><span class="p">,</span> <span class="n">tiling_mode</span><span class="p">,</span> <span class="n">full_frame</span><span class="p">)</span>  <span class="c1"># full check</span>
 
     <span class="n">norm</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">meta</span><span class="p">[</span><span class="s2">"normalization"</span><span class="p">])</span>  <span class="c1"># {scale, mean, std}</span>
     <span class="n">scale</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">(</span><span class="n">norm</span><span class="p">[</span><span class="s2">"scale"</span><span class="p">])</span>
@@ -2646,32 +2670,88 @@ exact samples it was built from:</p>
         <span class="k">yield</span> <span class="n">feed</span>                                        <span class="c1"># representative_dataset</span>
 </code></pre></div>
 <h2 id="geometry-check">Geometry Check</h2>
-<p>A consumer verifies four things before it uses a snapshot, in this order, and stops at the first failure with a clear message:</p>
+<p>A consumer verifies four things before it uses a snapshot, in this order, and stops at the first failure with a clear message. The first rule needs only the snapshot's parameters, so the consumer checks it before it reads any sample tensor. Reading the sample then reports a clear error for a missing or misnamed tensor, an empty <code>tensor_names</code>, or a tensor that is not rank 4. The full check follows, so the order is parameters check, sample read, full check.</p>
 <ol>
-<li>The snapshot's <code>params.input_shape</code> equals the model's input height and width. Use the input after any layout mapping, and after any explicit input-shape override the converter applies.</li>
+<li>The snapshot's <code>params</code> are a mapping with <code>input_shape</code> and <code>resize</code>, and <code>params.input_shape</code> equals the model's input height and width. The model input is the one the converter actually compiles: the model graph input, or an explicit input-shape override, after any layout mapping. When the metadata <code>input.shape</code> disagrees with the graph and no override applies, the converter fails rather than choosing one.</li>
 <li>The stored samples' height and width equal <code>params.input_shape</code>.</li>
-<li><code>params.resize</code> matches the model: <code>grid_tile</code> (with a <code>grid</code> block whose <code>algorithm</code> is <code>evendist</code>) when the model's <code>tiling.mode</code> is <code>tiled</code>, and <code>letterbox</code> otherwise, including models without a <code>tiling</code> section.</li>
-<li><code>params.full_frame</code> (<code>false</code> when absent) equals the model's <code>tiling.full_frame.enabled</code> (<code>false</code> without a <code>tiling</code> section).</li>
+<li><code>params.resize</code> matches the model: <code>tiled</code> (with a <code>grid</code> block whose <code>algorithm</code> is <code>evendist</code>) when the model's <code>tiling.mode</code> is <code>tiled</code>, <code>letterbox</code> when it is <code>whole_frame</code>, and <code>letterbox</code> or <code>stretch</code> only for a model without a supported <code>tiling</code> section (<code>stretch</code> is never valid for a <code>whole_frame</code> model), or <code>tiled</code> when the snapshot's parameters carry a <code>tiling</code> block, as ModelPack's tiled snapshots do. A <code>tiling</code> section whose <code>version</code> is not the integer <code>1</code> counts as absent: <code>1.0</code> and <code>true</code> are not version 1. A converter rejects such a section outright (see <a href="../../metadata/#converter-traceability">Converter Traceability</a>), so the check treats it as absent only where it is applied to a document the converter has not screened.</li>
+<li><code>params.full_frame</code> (<code>false</code> when absent, and it must be a boolean) equals the model's <code>tiling.full_frame.enabled</code> (<code>false</code> without a <code>tiling</code> section).</li>
 </ol>
-<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">check_snapshot_geometry</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">sample_hw</span><span class="p">,</span> <span class="n">model_input_hw</span><span class="p">,</span> <span class="n">tiling_mode</span><span class="p">,</span> <span class="n">full_frame</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
-    <span class="k">if</span> <span class="s2">"input_shape"</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">params</span> <span class="ow">or</span> <span class="s2">"resize"</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">params</span><span class="p">:</span>
-        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">"calibration snapshot params lack input_shape or resize"</span><span class="p">)</span>
-    <span class="n">snapshot_hw</span> <span class="o">=</span> <span class="nb">tuple</span><span class="p">(</span><span class="n">params</span><span class="p">[</span><span class="s2">"input_shape"</span><span class="p">])</span>
-    <span class="k">if</span> <span class="n">snapshot_hw</span> <span class="o">!=</span> <span class="nb">tuple</span><span class="p">(</span><span class="n">model_input_hw</span><span class="p">):</span>
-        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">"calibration snapshot input_shape </span><span class="si">{</span><span class="nb">list</span><span class="p">(</span><span class="n">snapshot_hw</span><span class="p">)</span><span class="si">}</span><span class="s2"> does not match the model input </span><span class="si">{</span><span class="nb">list</span><span class="p">(</span><span class="n">model_input_hw</span><span class="p">)</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
-    <span class="k">if</span> <span class="nb">tuple</span><span class="p">(</span><span class="n">sample_hw</span><span class="p">)</span> <span class="o">!=</span> <span class="n">snapshot_hw</span><span class="p">:</span>
-        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">"calibration sample H,W </span><span class="si">{</span><span class="nb">list</span><span class="p">(</span><span class="n">sample_hw</span><span class="p">)</span><span class="si">}</span><span class="s2"> does not match the snapshot input_shape </span><span class="si">{</span><span class="nb">list</span><span class="p">(</span><span class="n">snapshot_hw</span><span class="p">)</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
-    <span class="n">expected</span> <span class="o">=</span> <span class="s2">"grid_tile"</span> <span class="k">if</span> <span class="n">tiling_mode</span> <span class="o">==</span> <span class="s2">"tiled"</span> <span class="k">else</span> <span class="s2">"letterbox"</span>
-    <span class="k">if</span> <span class="n">params</span><span class="p">[</span><span class="s2">"resize"</span><span class="p">]</span> <span class="o">!=</span> <span class="n">expected</span><span class="p">:</span>
-        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">"calibration snapshot resize must be </span><span class="si">{</span><span class="n">expected</span><span class="si">!r}</span><span class="s2"> for a </span><span class="si">{</span><span class="n">tiling_mode</span><span class="w"> </span><span class="ow">or</span><span class="w"> </span><span class="s1">'non-tiled'</span><span class="si">}</span><span class="s2"> model; got </span><span class="si">{</span><span class="n">params</span><span class="p">[</span><span class="s1">'resize'</span><span class="p">]</span><span class="si">!r}</span><span class="s2">"</span><span class="p">)</span>
-    <span class="k">if</span> <span class="n">expected</span> <span class="o">==</span> <span class="s2">"grid_tile"</span> <span class="ow">and</span> <span class="p">(</span><span class="n">params</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"grid"</span><span class="p">)</span> <span class="ow">or</span> <span class="p">{})</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"algorithm"</span><span class="p">)</span> <span class="o">!=</span> <span class="s2">"evendist"</span><span class="p">:</span>
-        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">"grid_tile calibration snapshot lacks a grid block with algorithm evendist"</span><span class="p">)</span>
-    <span class="k">if</span> <span class="n">params</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"full_frame"</span><span class="p">,</span> <span class="kc">False</span><span class="p">)</span> <span class="o">!=</span> <span class="n">full_frame</span><span class="p">:</span>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">collections.abc</span><span class="w"> </span><span class="kn">import</span> <span class="n">Mapping</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">numbers</span><span class="w"> </span><span class="kn">import</span> <span class="n">Integral</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">_hw</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="n">what</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">value</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">or</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="p">(</span><span class="nb">str</span><span class="p">,</span> <span class="nb">bytes</span><span class="p">,</span> <span class="n">Mapping</span><span class="p">)):</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">what</span><span class="si">}</span><span class="s2"> must be [H, W] integers; got </span><span class="si">{</span><span class="n">value</span><span class="si">!r}</span><span class="s2">"</span><span class="p">)</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">items</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
+    <span class="k">except</span> <span class="ne">TypeError</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">what</span><span class="si">}</span><span class="s2"> must be [H, W] integers; got </span><span class="si">{</span><span class="n">value</span><span class="si">!r}</span><span class="s2">"</span><span class="p">)</span> <span class="kn">from</span><span class="w"> </span><span class="kc">None</span>
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">items</span><span class="p">)</span> <span class="o">!=</span> <span class="mi">2</span> <span class="ow">or</span> <span class="ow">not</span> <span class="nb">all</span><span class="p">(</span><span class="nb">isinstance</span><span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="n">Integral</span><span class="p">)</span> <span class="ow">and</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="nb">bool</span><span class="p">)</span> <span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">items</span><span class="p">):</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">what</span><span class="si">}</span><span class="s2"> must be [H, W] integers; got </span><span class="si">{</span><span class="n">value</span><span class="si">!r}</span><span class="s2">"</span><span class="p">)</span>
+    <span class="n">h</span><span class="p">,</span> <span class="n">w</span> <span class="o">=</span> <span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">v</span><span class="p">)</span> <span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">items</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">h</span> <span class="o">&lt;=</span> <span class="mi">0</span> <span class="ow">or</span> <span class="n">w</span> <span class="o">&lt;=</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">what</span><span class="si">}</span><span class="s2"> must be positive; got </span><span class="si">{</span><span class="n">value</span><span class="si">!r}</span><span class="s2">"</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">h</span><span class="p">,</span> <span class="n">w</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">check_snapshot_params</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">model_input_hw</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">"""Rule 1: run it before reading any sample tensor."""</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">Mapping</span><span class="p">):</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">"calibration snapshot params are missing or not a mapping"</span><span class="p">)</span>
+    <span class="k">if</span> <span class="s2">"input_shape"</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">params</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">"calibration snapshot params lack input_shape"</span><span class="p">)</span>
+    <span class="k">if</span> <span class="s2">"resize"</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">params</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">"calibration snapshot params lack resize"</span><span class="p">)</span>
+    <span class="n">snapshot</span> <span class="o">=</span> <span class="n">_hw</span><span class="p">(</span><span class="n">params</span><span class="p">[</span><span class="s2">"input_shape"</span><span class="p">],</span> <span class="s2">"calibration snapshot input_shape"</span><span class="p">)</span>
+    <span class="n">model</span> <span class="o">=</span> <span class="n">_hw</span><span class="p">(</span><span class="n">model_input_hw</span><span class="p">,</span> <span class="s2">"model input"</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">snapshot</span> <span class="o">!=</span> <span class="n">model</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">"calibration snapshot input_shape </span><span class="si">{</span><span class="nb">list</span><span class="p">(</span><span class="n">snapshot</span><span class="p">)</span><span class="si">}</span><span class="s2"> does not match the model input </span><span class="si">{</span><span class="nb">list</span><span class="p">(</span><span class="n">model</span><span class="p">)</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">snapshot</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">check_snapshot_geometry</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">sample_hw</span><span class="p">,</span> <span class="n">model_input_hw</span><span class="p">,</span> <span class="n">tiling_mode</span><span class="p">,</span> <span class="n">full_frame</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+    <span class="n">snapshot</span> <span class="o">=</span> <span class="n">check_snapshot_params</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">model_input_hw</span><span class="p">)</span>
+    <span class="n">sample</span> <span class="o">=</span> <span class="n">_hw</span><span class="p">(</span><span class="n">sample_hw</span><span class="p">,</span> <span class="s2">"calibration sample H,W"</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">sample</span> <span class="o">!=</span> <span class="n">snapshot</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">"calibration sample H,W </span><span class="si">{</span><span class="nb">list</span><span class="p">(</span><span class="n">sample</span><span class="p">)</span><span class="si">}</span><span class="s2"> does not match the snapshot input_shape </span><span class="si">{</span><span class="nb">list</span><span class="p">(</span><span class="n">snapshot</span><span class="p">)</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+    <span class="n">resize</span> <span class="o">=</span> <span class="n">params</span><span class="p">[</span><span class="s2">"resize"</span><span class="p">]</span>
+    <span class="k">if</span> <span class="n">tiling_mode</span> <span class="o">==</span> <span class="s2">"tiled"</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">resize</span> <span class="o">!=</span> <span class="s2">"tiled"</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">"calibration snapshot resize must be 'tiled' for a tiled model; got </span><span class="si">{</span><span class="n">resize</span><span class="si">!r}</span><span class="s2">"</span><span class="p">)</span>
+        <span class="n">grid</span> <span class="o">=</span> <span class="n">params</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"grid"</span><span class="p">)</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">grid</span><span class="p">,</span> <span class="n">Mapping</span><span class="p">)</span> <span class="ow">or</span> <span class="n">grid</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"algorithm"</span><span class="p">)</span> <span class="o">!=</span> <span class="s2">"evendist"</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">"tiled calibration snapshot lacks a grid block with algorithm evendist"</span><span class="p">)</span>
+    <span class="k">elif</span> <span class="n">tiling_mode</span> <span class="o">==</span> <span class="s2">"whole_frame"</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">resize</span> <span class="o">!=</span> <span class="s2">"letterbox"</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">"calibration snapshot resize must be 'letterbox' for a whole_frame model; got </span><span class="si">{</span><span class="n">resize</span><span class="si">!r}</span><span class="s2">"</span><span class="p">)</span>
+    <span class="k">elif</span> <span class="n">resize</span> <span class="ow">not</span> <span class="ow">in</span> <span class="p">(</span><span class="s2">"letterbox"</span><span class="p">,</span> <span class="s2">"stretch"</span><span class="p">)</span> <span class="ow">and</span> <span class="ow">not</span> <span class="p">(</span><span class="n">resize</span> <span class="o">==</span> <span class="s2">"tiled"</span> <span class="ow">and</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">params</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"tiling"</span><span class="p">),</span> <span class="n">Mapping</span><span class="p">)):</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">"calibration snapshot resize must be 'letterbox' or 'stretch' for a non-tiled model; got </span><span class="si">{</span><span class="n">resize</span><span class="si">!r}</span><span class="s2">"</span><span class="p">)</span>
+    <span class="n">has_frames</span> <span class="o">=</span> <span class="n">params</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"full_frame"</span><span class="p">,</span> <span class="kc">False</span><span class="p">)</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">has_frames</span><span class="p">,</span> <span class="nb">bool</span><span class="p">):</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">"calibration snapshot full_frame must be true or false; got </span><span class="si">{</span><span class="n">has_frames</span><span class="si">!r}</span><span class="s2">"</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">has_frames</span> <span class="o">!=</span> <span class="nb">bool</span><span class="p">(</span><span class="n">full_frame</span><span class="p">):</span>
         <span class="n">want</span> <span class="o">=</span> <span class="s2">"must include"</span> <span class="k">if</span> <span class="n">full_frame</span> <span class="k">else</span> <span class="s2">"must not include"</span>
         <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">"calibration snapshot </span><span class="si">{</span><span class="n">want</span><span class="si">}</span><span class="s2"> whole-frame samples (full_frame) for this model"</span><span class="p">)</span>
 </code></pre></div>
-<p>Consumers also reject a malformed shape (a missing value, a value that is not a sequence, or a height or width that is not an integer) with a clear error, rather than letting the comparison fail or pass by accident.</p>
-<p>Snapshots produced before tiled models existed carry <code>resize: letterbox</code> without a <code>grid</code> block, and continue to pass for models without a <code>tiling</code> section.</p>
+<div class="highlight"><pre><span></span><code><span class="n">TILING_MODES</span> <span class="o">=</span> <span class="p">(</span><span class="s2">"tiled"</span><span class="p">,</span> <span class="s2">"whole_frame"</span><span class="p">)</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">check_converter_tiling</span><span class="p">(</span><span class="n">edgefirst</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">"""Reject a `tiling` section a converter must not copy into its output."""</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">edgefirst</span><span class="p">,</span> <span class="n">Mapping</span><span class="p">)</span> <span class="ow">or</span> <span class="s2">"tiling"</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">edgefirst</span><span class="p">:</span>
+        <span class="k">return</span>
+    <span class="n">tiling</span> <span class="o">=</span> <span class="n">edgefirst</span><span class="p">[</span><span class="s2">"tiling"</span><span class="p">]</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">tiling</span><span class="p">,</span> <span class="n">Mapping</span><span class="p">):</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">"model tiling section must be a mapping; got </span><span class="si">{</span><span class="nb">type</span><span class="p">(</span><span class="n">tiling</span><span class="p">)</span><span class="o">.</span><span class="vm">__name__</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">_is_version_one</span><span class="p">(</span><span class="n">tiling</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"version"</span><span class="p">)):</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">"model tiling version </span><span class="si">{</span><span class="n">tiling</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">'version'</span><span class="p">)</span><span class="si">!r}</span><span class="s2"> is not supported (expected 1)"</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">tiling</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"mode"</span><span class="p">)</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">TILING_MODES</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">"model tiling mode </span><span class="si">{</span><span class="n">tiling</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">'mode'</span><span class="p">)</span><span class="si">!r}</span><span class="s2"> is not supported (expected tiled or whole_frame)"</span><span class="p">)</span>
+</code></pre></div>
+<p>Consumers reject a malformed shape (a missing value, a value that is not a two-element sequence, a height or width that is not a positive integer) with an error naming the field, rather than letting the comparison fail or pass by accident.</p>
+<p>Snapshots with <code>resize: letterbox</code> or <code>resize: stretch</code> and no <code>grid</code> block pass for models without a <code>tiling</code> section, as do ModelPack tiled snapshots, whose parameters carry a <code>tiling</code> block instead of a <code>grid</code> block.</p>
 <h2 id="whats-next">What's Next</h2>
 <ul>
 <li><a href="../#smart-quantization">Smart Quantization</a> — why activation ranges

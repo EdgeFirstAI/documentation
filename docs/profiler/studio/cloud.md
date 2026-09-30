@@ -37,25 +37,25 @@ For scripting, `dispatch` prints one status line per outcome: `job-dispatched <t
 
 ## Launching from Studio
 
-The Studio launch form drives the same dispatch path without the CLI. Pick the model through the form's model picker — project, experiment, and training session dropdowns, then the artifact from a list — and the hardware from the **Hardware** menu. That is the whole form: the validation session is created by the run itself, so there is nothing else to fill in.
+The Studio launch form drives the same dispatch path without the CLI. Pick the model through the form's model picker — project, experiment, and training session dropdowns, then the artifact from a list, which offers only the `.onnx` and `.tflite` files a cloud machine can run — and the hardware from the **Hardware** menu. That is the whole form: the validation session is created by the run itself, so there is nothing else to fill in.
 
 ## Choosing hardware
 
 The Hardware menu offers a cost-optimized default plus a set of dedicated machines named for the EC2 instance they run on. The class name is the hyphenated form of the EC2 instance type — class `c8g-12xlarge` runs on a `c8g.12xlarge` instance — and it is the hyphenated name that `--instance-class` and the `INSTANCE_CLASS` environment variable accept; session descriptions quote the canonical dotted type. Each named class owns one instance of exactly one type and nothing else shares that machine, so throughput measured on it is comparable between runs and against other models.
 
-| Class | Hardware |
-| ----- | -------- |
-| `default` | Cost-optimized shared-CPU class (Fargate) |
-| `m8g-2xlarge` | AWS Graviton4, 8 vCPUs |
-| `c8g-12xlarge` | AWS Graviton4, 48 vCPUs |
-| `m7i-2xlarge` | Intel Sapphire Rapids, 8 vCPUs |
-| `c7i-12xlarge` | Intel Sapphire Rapids, 48 vCPUs |
-| `g5-2xlarge` | NVIDIA A10G GPU |
+| Class | Hardware | Model formats |
+| ----- | -------- | ------------- |
+| `default` | Cost-optimized shared-CPU class (Fargate) | ONNX, TFLite (CPU) |
+| `m8g-2xlarge` | AWS Graviton4, 8 vCPUs | ONNX, TFLite (CPU) |
+| `c8g-12xlarge` | AWS Graviton4, 48 vCPUs | ONNX, TFLite (CPU) |
+| `m7i-2xlarge` | Intel Sapphire Rapids, 8 vCPUs | ONNX, TFLite (CPU) |
+| `c7i-12xlarge` | Intel Sapphire Rapids, 48 vCPUs | ONNX, TFLite (CPU) |
+| `g5-2xlarge` | NVIDIA A10G GPU | ONNX (CUDA) |
 
 The menu entries also state the processor, vCPU count, and memory for each option.
 
 - **The default class gives trustworthy accuracy but not benchmark-grade throughput.** It runs on Fargate, where the underlying processor varies from run to run and is not recorded, so two runs can land on different CPU generations with nothing to say which. Use a named class when the timing numbers matter.
-- **The GPU option serves ONNX models only.** GPU runs use the CUDA execution provider automatically; there is no CUDA build for TFLite.
+- **TFLite runs on the CPU only.** Every CPU class runs TFLite models with XNNPACK. TFLite has no CUDA delegate, so the GPU option serves ONNX models only and runs them on the CUDA execution provider automatically. To measure a model on the GPU, validate its ONNX export.
 - **Validation never runs on interruptible capacity.** Every queue that runs a validation is dedicated: an interruption mid-run would force the most expensive part — the dataset download — to start over, and the restarted run's timing would be indistinguishable from a genuinely slow model. Only the short pre-launch dispatch step uses discounted capacity, where an interruption costs a few seconds.
 
 !!! warning "Old class names no longer exist"

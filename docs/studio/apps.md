@@ -25,8 +25,9 @@ Each app is displayed as a card with the following information:
 !!! note "Apps are launched from their workflow"
     The Apps page is a catalog only — apps are not launched from here.  Each app is
     started from the relevant point in its workflow.  For example, Converter Apps are
-    launched from a completed training session's *Artifacts* tab.  Once started, the app
-    run is tracked in the [Tasks panel](navigation.md#tasks).
+    launched from a completed training session's *Artifacts* tab, and Training Apps from an
+    experiment's *Training Sessions* page.  Once started, the app run is tracked in the
+    [Tasks panel](navigation.md#tasks).
 
 ## Available Apps
 
@@ -48,6 +49,18 @@ The Studio-side companion to the Profiler. The Validator post-processes the pred
 and timing traces produced by a profiling run to compute COCO/LVIS accuracy metrics
 (such as mAP and mIoU) and timing charts, then publishes the results to the validation
 session. See [Validation Metrics](../models/validation/metrics/index.md).
+
+### Training Apps
+
+Training Apps produce vision models for a dataset and publish the model, its [metadata](../models/metadata.md) and an INT8 calibration snapshot to a training session. A Training App is launched from an experiment's *Training Sessions* page, where its launch form collects the dataset, the destination experiment and the training parameters. The session runs on a cloud GPU instance.  See [Training Vision Models](../models/training/vision.md).
+
+#### ModelPack
+
+Trains ModelPack object detection, semantic segmentation and multitask models, with optional Input Tiling (SAHI) for small objects in high-resolution images.  See [ModelPack](../models/modelpack/index.md).
+
+#### Ultralytics
+
+Trains or exports Ultralytics YOLO detection and instance segmentation models, starting from COCO pretrained weights or a previous session's weights, with optional Input Tiling for detection.  See [Ultralytics](../models/ultralytics/index.md).
 
 ### Converter Apps
 

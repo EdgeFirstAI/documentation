@@ -98,9 +98,9 @@ Inside the experiment, create a New Session and name it `musicbox-detector`. Thi
 
 Most hyper parameters are auto-tuned by ModelPack, but some can be customized:
 
-* **Input Resolution**: `640x360
-`
-* **Model Name**: `Legacy` (more model variants are going to be integrated in future versions)
+* **Input Resolution**: `640x360`
+
+* **Model Backbone**: `CSPDarkNet19 (default)`
 
 * **Epochs**: `50 (default)`
 

@@ -1,6 +1,6 @@
 # Annotation Schema
 
-**Schema version**: `2026.04`
+**Schema version**: `2026.10`
 
 The EdgeFirst annotation schema uses a flat, columnar layout: **one row per annotation
 instance**. All columns are nullable unless noted otherwise. Optional columns may be
@@ -96,8 +96,7 @@ interpolation that extends beyond box bounds.
 | `mask` + `box2d` (instance seg) | Sigmoid confidence (0–255) or binary (0/1) for a single instance | `label` column on the row |
 | `mask` without `box2d` (semantic seg) | Argmax class indices | Optional file-level `labels` metadata; index ordering is model-specific |
 
-**Interpretation**: Controlled by `mask_interpretation` file-level metadata. The PNG
-bit depth determines the value range:
+**Interpretation**: The PNG bit depth determines the value range. The specification reserves a `mask_interpretation` file-level metadata key to name the pixel meaning; it is not yet written or read by the EdgeFirst Client (see [File-Level Metadata](#file-level-metadata)).
 
 | Value | Description |
 |-------|-------------|
@@ -116,21 +115,19 @@ full-image coordinates — polygons are normalized (0..1), masks cover the full 
 
 | Column | Type | Description |
 |--------|------|-------------|
-| `box2d` | `Array<f32, 4>` | Layout described by `box2d_format` metadata |
+| `box2d` | `Array<f32, 4>` | `[center_x, center_y, width, height]`, normalized |
 | `box2d_score` | `Float32` | Confidence score (0..1), nullable, optional |
 
-The array element order depends on the `box2d_format` file metadata. Default is
-`[center_x, center_y, width, height]` (`cxcywh`). See [Box Formats](box_format.md)
-for all layouts.
+Arrow and Parquet files always store `box2d` as `[center_x, center_y, width, height]` (`cxcywh`) in normalized coordinates. See [Box Formats](box_format.md) for the JSON layout and conversions.
 
 ### Geometry: 3D Bounding Box
 
 | Column | Type | Description |
 |--------|------|-------------|
-| `box3d` | `Array<f32, 6>` | Layout described by `box3d_format` metadata |
+| `box3d` | `Array<f32, 6>` | `[center_x, center_y, center_z, width, height, length]` |
 | `box3d_score` | `Float32` | Confidence score (0..1), nullable, optional |
 
-Default layout: `[center_x, center_y, center_z, width, height, length]` (`cxcyczwhl`).
+Layout: `[center_x, center_y, center_z, width, height, length]` (`cxcyczwhl`).
 
 - Width (w) = X-axis extent
 - Height (h) = Y-axis extent
@@ -143,17 +140,63 @@ See [Box Formats](box_format.md) for details.
 
 | Column | Type | Description |
 |--------|------|-------------|
-| `iscrowd` | `Boolean` | `true` = crowd region, `false` or absent = single instance. Optional, from COCO. |
+| `ignore` | `Boolean` | `true` = don't-care region, masked out of loss and evaluation. Optional. New in 2026.10. |
+| `exclude` | `Boolean` | `true` = real object outside the dataset's class set. Optional. New in 2026.10. |
+| `iscrowd` | `Boolean` | **Deprecated in 2026.10** — mirror of `ignore`, written for compatibility. Optional. |
 | `category_frequency` | `Categorical` | Long-tail frequency group: `"f"`, `"c"`, or `"r"`. Optional. |
+| `truncation` | `UInt32` | Source truncation flag (how much of the object is cut off by the image border). Optional. |
+| `occlusion` | `UInt32` | Source occlusion flag (how much of the object is hidden by other objects). Optional. |
 
-!!! info "New in 2026.04"
-    These columns support COCO/LVIS dataset extensions. They are optional and will be
-    absent from files that don't originate from COCO-family datasets.
+These columns are optional and absent from files whose source dataset does not provide them. Columns whose values are all null are dropped when a file is written, so a 2026.10 file with no flagged rows has no `ignore` or `exclude` column.
 
-**`iscrowd`**: COCO crowd annotations mark regions containing multiple overlapping
-instances. Evaluation protocols treat them differently (matched but not penalized as
-false negatives). LVIS does not use crowd annotations — this column will be absent or
-null for LVIS-sourced data.
+#### ignore
+
+!!! info "New in 2026.10"
+
+Marks a don't-care region that should be masked out of loss and evaluation rather than treated as a false negative or false positive.
+
+- `true` — don't-care region
+- `false` or absent — ordinary annotation
+
+`label` and `label_index` are optional on a flagged row. A labeled `ignore` row applies to that class only (for example a crowd of people should not penalize a `person` detector inside the region); an unlabeled `ignore` row applies to all classes.
+
+**Sources**: COCO `iscrowd=1` becomes `ignore=true`. VisDrone category 0 (`ignored regions`) becomes an unlabeled `ignore=true` row when `edgefirst-client visdrone-to-arrow --keep-ignored` is used; by default those rows are dropped.
+
+**JSON representation**: `"ignore": true` on the annotation object, omitted when null. On read, `iscrowd` is accepted as an alias of `ignore`.
+
+#### exclude
+
+!!! info "New in 2026.10"
+
+Marks a real object that falls outside the dataset's class set. Trainers leave it out of training, and evaluators should neither count a detection that matches it as a false positive nor count the object itself as a missed detection.
+
+- `true` — real object outside the class set
+- `false` or absent — ordinary annotation
+
+`label` and `label_index` are optional on a flagged row and are typically absent, since the object has no class in this dataset.
+
+**Sources**: VisDrone category 11 (`others`) becomes an unlabeled `exclude=true` row when `edgefirst-client visdrone-to-arrow --keep-ignored` is used; by default those rows are dropped.
+
+**JSON representation**: `"exclude": true` on the annotation object, omitted when null.
+
+!!! warning "EdgeFirst Studio does not store `ignore` or `exclude` yet"
+    Uploads with `upload-dataset`, `populate_samples`, `import-coco`, and `import-coco --update` drop annotations flagged `ignore` or `exclude`, including COCO crowd annotations, and log one warning per upload with the number skipped. Keep the Arrow or Parquet file as the source of truth for these flags.
+
+#### iscrowd
+
+!!! warning "Deprecated in 2026.10"
+    `iscrowd` is replaced by [`ignore`](#ignore). Read and write support will be removed in a future release.
+
+Files written by the EdgeFirst Client carry `iscrowd` as an exact mirror of `ignore`, so it can be `true` on rows that are not COCO crowds (for example unlabeled VisDrone `ignored regions`). In 2026.04 files it holds the COCO `iscrowd` field.
+
+The client reads `iscrowd` as `ignore` when `ignore` is absent:
+
+- **Arrow / Parquet**: the fallback is per column. When the file has an `ignore` column, it is used for every row (even rows where it is null) and `iscrowd` is not consulted. Both `Boolean` and the older integer type are accepted.
+- **JSON**: the fallback is per annotation. An annotation object without an `ignore` key, or with `"ignore": null`, takes its `iscrowd` value.
+
+`edgefirst-client arrow-to-coco` writes COCO `iscrowd=1` from labeled `ignore` rows. Unlabeled `ignore` rows and all `exclude` rows have no COCO equivalent and are skipped with one warning giving the count.
+
+#### category_frequency
 
 **`category_frequency`**: LVIS assigns each category to a frequency group based on how
 many training images contain it:
@@ -173,13 +216,27 @@ df.group_by("category_frequency").len()
 rare = df.filter(pl.col("category_frequency") == "r")
 ```
 
+#### truncation and occlusion
+
+Source dataset flags describing how much of the object is cut off by the image border (`truncation`) or hidden by other objects (`occlusion`). Values keep the source dataset's scale:
+
+| Source | `truncation` | `occlusion` |
+|--------|--------------|-------------|
+| VisDrone | 0 = none, 1 = 1–50% | 0 = none, 1 = 1–50%, 2 = over 50% |
+| KITTI | `round(truncated * 100)`, clipped to 0–100 | `occluded` 0–3, stored as is |
+
+**JSON representation**: a nested object on the annotation, `"attributes": {"truncation": 1, "occlusion": 2}`, omitted when both are absent.
+
+!!! note "Not stored by EdgeFirst Studio yet"
+    `upload-dataset` sends these columns but Studio does not persist them yet; the client warns which optional columns are not stored. Keep the Arrow or Parquet file as the source of truth.
+
 ### Sample Metadata
 
 | Column | Type | Description |
 |--------|------|-------------|
 | `size` | `Array<u32, 2>` | `[width, height]` — original image dimensions in pixels. Optional. |
-| `location` | `Array<f32, 2>` | `[latitude, longitude]` GPS coordinates |
-| `pose` | `Array<f32, 3>` | `[roll, pitch, yaw]` IMU orientation in degrees |
+| `location` | `Array<f32, 2>` | `[latitude, longitude]` GPS coordinates in decimal degrees |
+| `pose` | `Array<f32, 3>` | `[roll, pitch, yaw]` IMU orientation in signed degrees (see [IMU orientation](#imu-orientation)) |
 | `degradation` | `String` | Visual quality indicator (`none`, `low`, `medium`, `high`) |
 | `neg_label_indices` | `List<UInt32>` | `label_index` values for categories verified absent from this image |
 | `not_exhaustive_label_indices` | `List<UInt32>` | `label_index` values for categories with possibly incomplete annotation |
@@ -201,9 +258,22 @@ fields (repeated per annotation row for a given image).
     COCO (max ID ~90) and LVIS (max ID ~1723). If you cross-join these columns in Polars,
     cast to a common type first: `col("neg_label_indices").cast(List(UInt64))`.
 
-!!! tip "Pose array order"
-    The `pose` array is always `[roll, pitch, yaw]` in degrees. The JSON representation
-    uses named fields `{roll, pitch, yaw}` in the `sensors.imu` object.
+#### IMU orientation
+
+The `pose` column stores the sensor orientation as three Euler angles in **signed degrees**, listed in axis order:
+
+| Index | Angle | Axis | Range |
+|-------|-------|------|-------|
+| `pose[0]` | roll | X | −180 to 180 |
+| `pose[1]` | pitch | Y | −90 to 90 |
+| `pose[2]` | yaw | Z | −180 to 180 |
+
+The angles follow the [ROS REP-103](https://www.ros.org/reps/rep-0103.html) convention: rotations about the fixed X, Y, and Z axes, which is equivalent to the intrinsic Z-Y′-X″ (yaw, then pitch, then roll) sequence, so `R = Rz(yaw) · Ry(pitch) · Rx(roll)`. Listing the values by axis (x, y, z) matches ROS 2 (`tf2` `setRPY`/`getRPY`, URDF `rpy`, the `sensor_msgs/Imu` covariance layout), MAVLink `ATTITUDE`, and KITTI OXTS.
+
+The JSON representation uses named fields `{roll, pitch, yaw}` in the `sensors.imu` object, so field order does not matter there.
+
+!!! warning "Files written before 2026.10 may have roll and yaw swapped"
+    Before 2026.10 the `pose` order was not consistent between tools. EdgeFirst Client 2.14 and earlier wrote `[yaw, pitch, roll]`, while the EdgeFirst Publisher wrote `[roll, pitch, yaw]` with each angle wrapped to 0–360. The order cannot be detected from the file, so check which tool produced an older file and swap `pose[0]` and `pose[2]` if needed. See [Migration Guide](migration.md#imu-pose-and-gps-location-in-older-files).
 
 ### Instrumentation
 
@@ -237,8 +307,7 @@ per-geometry confidence values in the range 0..1.
 
 - A single row may have **different scores** for different geometry types (e.g., high
   box confidence but lower polygon confidence)
-- Raster masks additionally carry **per-pixel** scores via `mask_interpretation`
-  metadata; `mask_score` is the per-instance aggregate
+- Raster masks can additionally carry **per-pixel** scores in 8-bit or 16-bit PNG pixels; `mask_score` is the per-instance aggregate
 - **Ground truth files**: score columns should be **omitted entirely** (not filled
   with nulls). Readers must treat absent score columns as "not applicable."
 
@@ -265,7 +334,7 @@ For reference, the full Polars-style schema:
     ('mask_score', Float32),                    # OPTIONAL
 
     # ── Geometry: 2D Bounding Box ──────────────────────
-    ('box2d', Array(Float32, shape=(4,))),      # layout from metadata
+    ('box2d', Array(Float32, shape=(4,))),      # [cx, cy, w, h]
     ('box2d_score', Float32),                   # OPTIONAL
 
     # ── Geometry: 3D Bounding Box ──────────────────────
@@ -273,13 +342,17 @@ For reference, the full Polars-style schema:
     ('box3d_score', Float32),                   # OPTIONAL
 
     # ── Annotation Metadata (optional) ─────────────────
-    ('iscrowd', Boolean),                       # OPTIONAL - true = crowd region, false or absent
+    ('ignore', Boolean),                        # OPTIONAL - don't-care region (2026.10)
+    ('exclude', Boolean),                       # OPTIONAL - object outside the class set (2026.10)
+    ('iscrowd', Boolean),                       # DEPRECATED - mirror of ignore
     ('category_frequency', Categorical(ordering='physical')),  # OPTIONAL - LVIS "f"/"c"/"r"
+    ('truncation', UInt32),                     # OPTIONAL - source truncation flag
+    ('occlusion', UInt32),                      # OPTIONAL - source occlusion flag
 
     # ── Sample Metadata (optional) ─────────────────────
     ('size', Array(UInt32, shape=(2,))),         # [width, height]
     ('location', Array(Float32, shape=(2,))),    # [lat, lon]
-    ('pose', Array(Float32, shape=(3,))),        # [roll, pitch, yaw]
+    ('pose', Array(Float32, shape=(3,))),        # [roll, pitch, yaw], signed degrees
     ('degradation', String),
     ('neg_label_indices', List(UInt32)),          # OPTIONAL - LVIS negative categories
     ('not_exhaustive_label_indices', List(UInt32)),  # OPTIONAL - LVIS incomplete categories
@@ -299,18 +372,21 @@ For reference, the full Polars-style schema:
 Arrow IPC stores key-value metadata on the schema, while Parquet stores key-value
 metadata in the file footer. In both formats, all metadata values are strings.
 
-| Key | Values | Default (absent) | Description |
-|-----|--------|-------------------|-------------|
-| `schema_version` | `"2026.04"` | `"2025.10"` | Format version. Absent = legacy file. |
-| `box2d_format` | `"cxcywh"`, `"xyxy"`, `"ltwh"` | `"cxcywh"` | Box2D layout descriptor |
-| `box2d_normalized` | `"true"`, `"false"` | `"true"` | Box2D coordinate system |
-| `box3d_format` | `"cxcyczwhl"` | `"cxcyczwhl"` | Box3D layout descriptor |
-| `box3d_normalized` | `"true"`, `"false"` | `"true"` | Box3D coordinate system |
-| `mask_interpretation` | `"binary"`, `"confidence"`, `"sigmoid"`, `"logits"` | `"binary"` | Pixel value meaning |
-| `category_metadata` | JSON string | absent | Per-label metadata (synset, synonyms, definition) |
-| `labels` | JSON array `["person", "car", ...]` | absent | Ordered class names for semantic segmentation masks. `labels[i]` = class name for argmax pixel value `i`. |
+| Key | Values | Default (absent) | Description | Implemented |
+|-----|--------|-------------------|-------------|-------------|
+| `schema_version` | `"2026.10"` (current), `"2026.04"` | `"2025.10"` | Format version. Absent = legacy file. | Yes |
+| `category_metadata` | JSON string | absent | Per-label metadata (synset, synonyms, definition) | Yes |
+| `labels` | JSON array `["person", "car", ...]` | absent | Ordered class names for semantic segmentation masks. `labels[i]` = class name for argmax pixel value `i`. | Yes |
+| `box2d_format` | `"cxcywh"`, `"xyxy"`, `"ltwh"` | `"cxcywh"` | Box2D layout descriptor | Reserved |
+| `box2d_normalized` | `"true"`, `"false"` | `"true"` | Box2D coordinate system | Reserved |
+| `box3d_format` | `"cxcyczwhl"` | `"cxcyczwhl"` | Box3D layout descriptor | Reserved |
+| `box3d_normalized` | `"true"`, `"false"` | `"true"` | Box3D coordinate system | Reserved |
+| `mask_interpretation` | `"binary"`, `"confidence"`, `"sigmoid"`, `"logits"` | `"binary"` | Pixel value meaning | Reserved |
 
-Version format is `YYYY.MM` with mandatory zero-padding (e.g., `"2025.10"`, `"2026.04"`).
+!!! note "Reserved keys"
+    Only `schema_version`, `category_metadata`, and `labels` are written and read by the EdgeFirst Client. The reserved keys are part of the specification's design but are not yet implemented: `box2d` is always `cxcywh` in Arrow and Parquet and `ltwh` in JSON, and coordinates are always normalized. Readers should not rely on the reserved keys being present.
+
+Version format is `YYYY.MM` with mandatory zero-padding (e.g., `"2025.10"`, `"2026.04"`, `"2026.10"`).
 Versions are compared lexicographically. Unknown future versions should trigger a warning
 (not an error) and attempt best-effort reading via schema introspection.
 

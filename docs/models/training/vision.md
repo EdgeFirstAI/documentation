@@ -34,59 +34,51 @@ Start a training session by clicking on the "Actions" button on the top right co
 
 {{ figure("../assets/training/new-session-button.jpg", "New Session Button") }}
 
-You will be greeted with a training session dialog.  In this dialog, specify the "Trainer Type" to either "ModelPack" or "Ultralytics" and provide a name and description of the training session as shown below.  Next specify the dataset to be used with training and validation partitions.  In this example, the dataset specified is the "Coffee Cup" dataset which was used as an example under the [Getting Started](../../getting_started/capture_data.md).  Next specify the training parameters.  By default, object detection (bounding boxes) model will be trained.  However, you can specify either "Segmentation" or both.  Additional information on these parameters are provided by hovering over the info button ![Info Button](../../assets/buttons/studio-info-button.jpg).
+Select the trainer, either "ModelPack" or "Ultralytics".  Both trainers run as Studio apps on cloud GPU instances, and Studio opens the launch form of the selected trainer.  Provide a name and description of the training session and specify the dataset to be used for training and validation.  In this example, the dataset specified is the "Coffee Cup" dataset which was used as an example under the [Getting Started](../../getting_started/capture_data.md).  Next specify the training parameters.  Additional information on these parameters are provided by hovering over the info button ![Info Button](../../assets/buttons/studio-info-button.jpg).
 
 !!! tip "Input Resolution"
-    We recommend changing the input resolution to 640x360 to maximize detection rates on small datasets.
+    For ModelPack, we recommend changing the input resolution to 640x360 to maximize detection rates on small datasets.
 
 !!! warning "Large Batch Size"
     For small datasets, a large batch size may produce poor results. Use a batch size of 4 or 8.
 
 For more information on available "Data Augmentations" please see [Vision Augmentations](../augmentations.md).
 
-{{ figure("../assets/training/vision-train-settings.jpg", "Training Session Fields") }}
+The launch forms of both trainers start with the same three groups.
 
-1. **Model Name**: This field specifies the name of the training session and will be used to name the artifacts (e.g. `modelpack-coffecup-640x640-rgba-t-<session ID>.tflite` or `modelpack-coffecup-640x640-rgba-t-<session ID>.onnx`)
-2. **Description**: This field is used to add some hints about the training session.  Commonly used to highlight some parameters
-3. **Training Data**: In this section the user must select the dataset as well as train/val groups
-4. **Input Resolution**: The user can pick predefined input resolutions.  Even when ModelPack accepts any resolution we keep this option as simple as possible.  In case you need a different resolution to be supported, please reach out and [email our support team](mailto:support@edgefirst.ai)
-5. **Camera Adaptor**: ModelPack accepts six different input optimizations.  It could be either of RGB, BGR, RGBA, BGRA, Greyscale, or YUYV
-6. **Model Parameters**: This section configures the model architecture
-    1. **Model Backbone**: Model backbone exposes a CSPDarknet19 optimized for boosting inference time and a CSPDarknet53 optimized for accuracy
-    2. **Model Size**: Similar to modern architectures, ModelPack also accepts dynamic scaling factors (`width in [0.25, 0.5, 0.75, 1.0]`, `depth in [0.33, 0.33, 0.66, 1.0]`)
-    3. **Activation Function**: This parameter defines the main activation used in the model. Exposed values are ReLU, ReLU6 and SiLU.  The best tradeoff between speed and accuracy is produced by ReLU6 activation in most of the cases
-    4. **Interpolation Method**: Model upsample layers are ruled by a resize operation.  This operation can run with two different algorithms: `Bilinear` or `Nearest`
-    5. **Object Detection**: Enables object detection task (enabled by default)
-    6. **Segmentation**: Enables Semantic Segmentation
-    7. **Space to Depth**: This feature enables the Space to Depth Transformation to the input in order to reduce model complexity on higher resolutions
-    8. **Split Decoder**: Remove the decoder from the model and use a very optimized one from EdgeFirst.  This feature is very useful when the location of the boxes has to be precise (0-offset)
-7. **Training Parameters**: In this section the user is able to specify the number of epochs to train the model as well as the batch size.  Remember the larger the input resolution the smaller the batch size
-    1. **Enable Training** *(Ultralytics only)*: When enabled, the model is trained using the selected weights. When disabled (default), no training is performed — weights are pushed directly to the session artifacts. See [Enable Training and Use Default Weights](#enable-training-and-use-default-weights) below.
+| Group | Description |
+|-------|-------------|
+| **Training Session** | The **Name** and optional **Description** of the training session.  The name is also used to name the artifacts. |
+| **Source Dataset** | The dataset the session trains and validates on, with its annotation set and tag. |
+| **Destination Experiment** | The experiment the training session is created in.  Artifacts and charts are published there when the session finishes. |
 
-        !!! note "No Training Charts"
-            Training sessions with **Enable Training** disabled will not generate loss or metric charts, since the chart x-axis is epoch-based. This is expected behavior.
+The groups that follow depend on the trainer.
 
-    2. **Use Default Weights**: When enabled (default), training starts from pre-trained COCO weights. When disabled, starting weights are sourced from a prior training session you specify.
+| Trainer | Groups | Parameter Reference |
+|---------|--------|---------------------|
+| **ModelPack** | Input (Input Resolution, Camera Adaptor, Input Tiling (SAHI), Letterbox Resize), Model Parameters, Training Parameters, Data Augmentation, Export Parameters | [ModelPack Training Parameters](../modelpack/index.md#training-parameters) |
+| **Ultralytics** | Input (Input Resolution), Task Selection, Training (Weights, Enable Training and its training settings), Export Parameters | [Ultralytics Training Parameters](../ultralytics/index.md#training-parameters) |
 
-8. **Data Augmentation**: This section controls the probability of each augmentation technique.  This feature is crucial for training models and reduce overfitting, especially in small datasets
-9. **Export Parameters**: Allow the user to set a portion of data for calibration when exporting the model for INT8 quantization
-10. **Start Session**: This button will start the training session
+Click "Start Session" to start the training session.
 
-### Enable Training and Use Default Weights
+### Weights and Enable Training
 
-The **Enable Training** checkbox (Ultralytics only) and **Use Default Weights** checkbox combine to control how the session is initialized and whether active training is performed:
+The two trainers start from different weights.
 
-| Use Default Weights | Enable Training | Behavior |
-|---------------------|-----------------|----------|
-| ✓ Enabled | ✓ Enabled | Train from pre-trained COCO weights. |
-| ✗ Disabled | ✓ Enabled | Train starting from weights of a prior training session you specify. |
-| ✓ Enabled | ✗ Disabled | **Default.** No training. Pre-trained COCO weights are copied directly to the session artifacts. Results will be poor on non-COCO datasets — Studio displays a warning. This default exists because full COCO training for Ultralytics is compute-intensive, and it lets you reproduce validation and profiling results from the [EdgeFirst Model Zoo on Hugging Face](https://huggingface.co/spaces/EdgeFirst/Models) using the published COCO checkpoints. |
-| ✗ Disabled | ✗ Disabled | No training. Weights are copied from a specified prior training session — equivalent to cloning that session's artifacts. |
+- **ModelPack** always trains.  The backbone starts from ImageNet-pretrained weights and the detection and segmentation heads start fresh.
+- **Ultralytics** has a **Weights** field and an **Enable Training** toggle in its Training group.  **Weights** is either **Pretrained (COCO)** (default), the Ultralytics COCO weights for the selected model, or a previous Ultralytics training session, whose published weights bring their own model definition.  **Enable Training** is off by default.
 
-!!! warning "COCO pre-trained weights and dataset compatibility"
-    The **Use Default Weights** option initializes from pre-trained COCO weights. These weights can technically be used as a starting point for any dataset, but **if your dataset labels have no overlap with COCO category names, validation accuracy will be very poor** — the model's class outputs will not correspond to your labels.
+| Weights | Enable Training | Ultralytics Session Behavior |
+|---------|-----------------|------------------------------|
+| Pretrained (COCO) | Off | **Default.** No training.  The session exports the COCO pretrained weights (80 classes) at the selected Input Resolution.  This lets you reproduce validation and profiling results from the [EdgeFirst Model Zoo on Hugging Face](https://huggingface.co/spaces/EdgeFirst/Models) using the published COCO checkpoints. |
+| Pretrained (COCO) | On | Fine-tunes the COCO pretrained weights on the selected dataset. |
+| A previous training session | On | Fine-tunes the weights published by that session on the selected dataset. |
+| A previous training session | Off | No training.  The session exports that session's weights at the Input Resolution and Deployment chosen on the form, for example to deploy tile-trained weights whole frame. |
 
-    For best transfer-learning results, ensure your label names match the relevant COCO categories, or supply a prior EdgeFirst training session as the starting weights.
+A session with **Enable Training** off validates the exported model and reports the results as its final validation metrics.  It runs no epochs, so its loss and learning-rate charts stay empty.  See [Weights Source](../ultralytics/index.md#weights-source) for the details.
+
+!!! warning "COCO pretrained weights and dataset compatibility"
+    **Pretrained (COCO)** weights without training detect the 80 COCO classes.  When your dataset classes differ from the COCO classes, the session skips validation, and the model's class outputs do not correspond to your labels.  Turn on **Enable Training** to fine-tune the weights on your dataset.
 
 !!! failure "InsufficientInstanceCapacity"
 
@@ -101,7 +93,7 @@ Once the training session has started, the progress with the stages will be show
 {{ figure("../assets/training/vision-session-progress.jpg", "Training Session") }}
 
 The training process begins with cloud instance initialization. Then the dataset is downloaded and cached.  Training starts afterwards.
-At the end of the training process, the model is quantized and the model artifacts will be published on the training session available for download.
+At the end of the training process, the model is exported and the model artifacts are published on the training session, available for download.
 
 ## Completed Session
 

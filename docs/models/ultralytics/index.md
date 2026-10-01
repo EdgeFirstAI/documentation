@@ -53,7 +53,7 @@ YOLOv5, YOLOv8, YOLO11, and YOLO26 can be trained in EdgeFirst Studio using a Gr
 
     <h2 id="train" style="display: none;"></h2>
 
-    4. **Configure model parameters** (architecture, input size, epochs, etc.) and start **Training**.
+    4. **[Configure the launch form](#training-parameters)** (input resolution, model, weights, training and export) and start the session.
 
     {{ img("../assets/ultralytics/ultralytics-train-04.jpg", "Configure and Train") }}{ align=center }
 
@@ -66,27 +66,35 @@ YOLOv5, YOLOv8, YOLO11, and YOLO26 can be trained in EdgeFirst Studio using a Gr
 
     <h2 id="training-parameters" style="display: none;"></h2>
 
-    1. **Model Name**: This field specifies the name of the training session and will be used to name the artifacts (e.g. `yolov8n-coffecup-640x640-rgb-t-<session ID>.tflite` or `yolov8n-coffecup-640x640-rgb-t-<session ID>.onnx`).
-    2. **Description**: This field is used to add some hints about the training session.  Commonly used to highlight some parameters
-    3. **Training Data**: In this section the user must select the dataset as well as train/val groups
-    4. **Input Resolution**: The user can pick predefined input resolutions.  In case you need a different resolution to be supported, please reach out and [email our support team](mailto:support@edgefirst.ai)
-    5. **Camera Adaptor**: Ultralytics accepts six different input optimizations.  It could be either of RGB, BGR, RGBA, BGRA, Greyscale, or YUYV
-    6. **Model Parameters**: This section configures the model architecture
-        1. **Model Task**: This can be either "Detection" or "Segmentation". Note for Ultralytics segmentation refers to instance segmentation
-        2. **Model Version**: The Ultralytics version to train from the choices (v5, v8, v11, v26)
-        3. **Model Size**: The size of the model from the choices (Nano, Small, Medium, Large, XLarge)
-        
-    7. **Training Parameters**: In this section the user is able to specify the number of epochs to train the model as well as the batch size.  Remember the larger the input resolution the smaller the batch size
-        1. **Enable Training**: When enabled, the model is trained using the selected weights. When disabled (default), no training is performed — weights are pushed directly to the session artifacts. This default exists because full COCO training runs for Ultralytics are compute-intensive; EdgeFirst publishes vetted pre-trained weights so you can start quickly without a long training job. See the [behavior matrix](../training/vision.md#enable-training-and-use-default-weights) for all combinations.
+    The Ultralytics launch form groups its fields as follows.
 
-            !!! note "No Training Charts"
-                Training sessions with **Enable Training** disabled will not generate loss or metric charts, since the chart x-axis is epoch-based. This is expected behavior.
+    1. **Training Session**
+        1. **Name**: The name of the training session, also used to name the artifacts (e.g. `yolov8n-coffecup-640x640-rgb-t-<session ID>.onnx`)
+        2. **Description**: An optional description of the training session, commonly used to highlight some parameters
+    2. **Source Dataset**: The dataset the session trains, validates and calibrates on, with its annotation set and tag
+    3. **Destination Experiment**: The experiment the training session is created in.  Artifacts and charts are published there when the session finishes
+    4. **Input Resolution**: The network input resolution (width x height), 640x640 by default.  Every option is divisible by 32 to match the YOLO backbone stride, and the list covers 1:1, 4:3 and 16:9 resolutions from 320x320 up to 3840x2176 (4K).  A dataset whose aspect ratio differs from the Input Resolution is letterboxed.  Detection accuracy is typically best near 640, the resolution the COCO weights are pretrained at.  With [Input Tiling](#input-tiling) the larger side of the Input Resolution is the tile size.  In case you need a different resolution to be supported, please reach out and [email our support team](mailto:support@edgefirst.ai)
+    5. **Task Selection**: Defines the model architecture.  These fields are ignored when the **Weights** are a previous training session
+        1. **Model Task**: Either "Detection" (default) or "Segmentation". Note for Ultralytics segmentation refers to instance segmentation
+        2. **Model Version**: The Ultralytics version from the choices v5, v8 (default), v11 and v26
+        3. **Model Size**: The size of the model from the choices Nano (default), Small, Medium, Large and XLarge
+    6. **Training**
+        1. **Weights**: The weights the session starts from, either **Pretrained (COCO)** (default) or a previous Ultralytics training session.  See [Weights Source](#weights-source)
+        2. **Enable Training**: Off by default, so the session exports the selected weights without training.  Turn it on to fine-tune the weights on the selected dataset, for example when your dataset classes differ from the 80 COCO classes, when you need a non-RGB camera format, or to improve accuracy beyond the COCO baseline.  See [Weights Source](#weights-source) for what each combination does.  The following fields appear when **Enable Training** is on
+            1. **Epochs**: The number of epochs to train the model, 50 by default (1 to 500)
+            2. **Batch Size**: The number of samples processed in a single training step, 16 by default (1 to 64).  Remember the larger the input resolution the smaller the batch size
+            3. **Camera Adaptor**: The target camera format of the model input, one of RGB (default), BGR, RGBA, BGRA, Greyscale or YUYV.  See [Camera Adaptor](#camera-adaptor)
+            4. **Input Tiling**: Trains detection models on native-resolution tiles.  See [Input Tiling](#input-tiling)
 
-        2. **Use Default Weights**: When enabled (default), training starts from pre-trained COCO weights. When disabled, starting weights are sourced from a prior training session you specify
+            !!! note "Charts Without Training"
+                A session with **Enable Training** off runs no epochs, so its loss and learning-rate charts stay empty.  Its mAP, precision and recall charts hold a single point, the validation of the exported model.  See [Weights Source](#weights-source).
 
-    8. **Export Parameters**: Allow the user to set a portion of data for calibration when exporting the model for INT8 quantization. This section also allow the user to set the ONNX opset version
-    9. **Export Pretrained Weights**: A checkbox to export the default pretrained weights from Ultralytics
-    10. **Start Session**: This button will start the training session
+    7. **Export Parameters**
+        1. **Calibration Samples**: The number of training images in the INT8 quantization calibration snapshot, 500 by default (100 to 2000).  Very low counts can reduce quantized accuracy, while higher counts increase export time with diminishing returns.  Snapshots are reused across compatible sessions
+        2. **ONNX Opset Version**: The ONNX opset version of the exported model, 11, 12 or 13 (default)
+        3. **End-to-End (NMS-free)**: YOLO26 only, off by default.  Builds and trains the one-to-one head so the exported model outputs final detections without NMS.  Leave it off for the best INT8 accuracy, because training the one-to-one head reduces the weight of the one-to-many head used with NMS.  A session with another Model Version fails at launch when it is enabled
+        4. **Deployment**: **Tiled** (default) or **Whole frame**, for export-only sessions whose **Weights** were trained with Input Tiling.  See [Deploying Tile-Trained Weights](#deploying-tile-trained-weights)
+    8. **Start Session**: This button starts the training session
 
 !!! note "Important"
     Datasets and default weights are handled internally by EdgeFirst Studio.  There's no need to migrate or store data locally.
@@ -106,9 +114,76 @@ All versions share the same anchor-free `Detect` head and use the same decoder a
 
 ## Camera Adaptor
 
-The **Camera Adaptor** dropdown is available when configuring a training session, allowing you to select the target camera format for your deployment platform. This trains the model to accept native camera output (BGR, RGBA, YUYV, etc.) without runtime conversion.
+The **Camera Adaptor** dropdown under **Enable Training** selects the target camera format for your deployment platform. This trains the model to accept native camera output (BGR, RGBA, YUYV, etc.) without runtime conversion.  RGB matches the pretrained baseline; the other formats train the first convolution layer to adapt to the new input layout.  When the **Weights** are a previous training session, the camera adaptor comes from those weights and the dropdown is ignored.
 
 See [Camera Adaptor](../cameraadaptor.md) for details on supported formats and platform guidance.
+
+## Weights Source
+
+The **Weights** field in the Training group selects the weights a session starts from.
+
+- **Pretrained (COCO)** (default) uses the Ultralytics COCO weights for the Model Task, Model Version and Model Size selected on the form.
+- **A previous training session** uses the `.pt` weights published by an Ultralytics training session together with that session's model definition. The task, version, size, camera adaptor and end-to-end head come from the weights (weights that name no camera adaptor are RGB, like the pretrained weights), so the Task Selection values (**Model Task**, **Model Version** and **Model Size**), the **Camera Adaptor** and the **End-to-End** value on the form are ignored.
+
+The **Enable Training** setting then decides what the session does with the weights.
+
+| Enable Training | Session behavior |
+|-----------------|-------------------|
+| On | Training starts from the selected weights and fine-tunes them on the selected dataset. |
+| Off | The session re-exports the selected weights without retraining, at the Input Resolution and Deployment chosen on the form. |
+
+A session with trained or sourced weights publishes them as `<session name>-<session ID>.pt` with the model metadata embedded, so it can be selected as the weights source of a later session.  An export-only session with **Pretrained (COCO)** weights publishes no `.pt`.
+
+A session with **Enable Training** off validates the exported model on the dataset's validation split and reports the results as the session's final validation metrics, the same metrics a training session reports for its final checkpoint.  The mAP, precision and recall charts hold that single final-validation point; the loss and learning-rate charts stay empty because no epochs run.  Tile-trained weights are validated at the deployed geometry; other models are validated at the Input Resolution.  Validation is skipped when the dataset has no validation split or its classes differ from the model's, for example **Pretrained (COCO)** weights on a dataset that is not COCO.
+
+## Input Tiling
+
+Small objects in high-resolution frames lose most of their pixels when the frame is downscaled to the model's input size.  **Input Tiling**, available when **Enable Training** is on, trains on native-resolution tiles cut from each frame instead, so small objects keep their native pixel scale.
+
+When Input Tiling is enabled, the larger side of the **Input Resolution** is the tile size.  The following settings control how tiles are sampled and validated.
+
+| Setting | Default | Description |
+|---------|---------|-------------|
+| **Frames per Batch** | 4 (1 to 16) | Frames each training batch is drawn from.  Each frame contributes about batch ÷ Frames per Batch tiles, and every frame is visited once per epoch. |
+| **Object Windows** | 0.75 | Target share of an epoch's tiles that contain a labeled object. |
+| **Background Windows** | 0.15 | Target share of an epoch's tiles that contain no labeled object.  Frames without labels supply these first. |
+| **Full-Frame Windows** | 0.10 | Target share of an epoch's tiles that are a whole labeled frame, downscaled to the tile size. |
+| **Validation** | Whole frame | **Whole frame** scores full native-resolution frames, **Tiled** scores the deployment tile grid with the detections merged across tiles, and **Both** reports both, with the tiled metrics under a `tiled/` prefix. |
+
+Positive tiles prefer placements that hold several labeled objects.
+
+Input Tiling supports detection with the **RGB** or **BGR** camera adaptor.
+
+A tiling training session exports a tiled model at its tile size, with a calibration snapshot cut from the deployment tile grid.
+
+## Deploying Tile-Trained Weights
+
+A model is exported for one input geometry, and a tiled model is exported tiled at its tile size.  The same tile-trained weights can be deployed at another geometry without retraining by starting an export-only session.
+
+The **Deployment** setting in the Export Parameters applies to export-only sessions whose **Weights** were trained with Input Tiling, and is ignored for other sessions.
+
+| Deployment | Input Resolution is | Runtime behavior |
+|------------|---------------------|-------------------|
+| **Tiled** (default) | The tile size. | The runtime cuts each frame into tiles of this size.  A frame smaller than the tile is letterboxed, centred, into it. |
+| **Whole frame** | The model input. | The runtime letterboxes each frame into the model input once, with the padding centred. |
+
+### Train Tiled, Deploy Whole Frame
+
+1. Train a detection model with **Input Tiling** enabled.
+2. Start a new Ultralytics session on the same dataset with **Enable Training** off.
+3. Set **Weights** to the tiled training session.
+4. Set **Deployment** to **Whole frame**.
+5. Set **Input Resolution** to the size the model receives, for example `3840x2176` for 4K frames.  A 1080p frame maps to `1920x1088` and a 4K frame to `3840x2176`.
+
+The session exports and calibrates at the new geometry without training.
+
+### Tiled Re-Export at Another Tile Size
+
+To deploy the weights tiled at a different tile size, follow the same steps with **Deployment** set to **Tiled** and choose the tile size as the **Input Resolution**.  Any **Input Resolution** option is available, including `1920x1088` and `3840x2176`.
+
+### Metadata
+
+The model metadata records how the model was trained and exported in `tiling.training` and `tiling.export`.  See [Tiling](../metadata.md#tiling) for the schema and [Tiled Models](../conversion/calibration.md#tiled-models) for the calibration of tiled models.
 
 ## Custom Models
 

@@ -57,18 +57,14 @@ The action bar at the top of the details page provides the following operations:
 
 ### Cloning a Training Session
 
-Cloning creates a new training session from an existing one. The clone preserves the source session's trainer type, model, dataset selection, and other session configuration, but it overrides two training controls: **Use Default Weights** is disabled and **Enable Training** is disabled. Because training is not run, the completed weights from the source session are copied directly into the new session's artifacts.
+Cloning creates a new training session from an existing one.  To clone a session, click "clone training session" button on the training card.  A dialog will appear pre-filled with the source session's configuration.  Adjust the name and description as needed, then confirm.
 
-This is useful when you want to:
+The clone runs the source session's trainer with its configuration.  To reuse the trained weights of an Ultralytics session instead, start a new Ultralytics session with its **Weights** set to that session:
 
-- Reuse a trained model as a starting point for fine-tuning with a different dataset.
-- Preserve a snapshot of a model at a specific training state before further experimentation.
-- Share a model artifact under a new session name without re-running training.
+- With **Enable Training** on, the new session fine-tunes those weights, for example on a different dataset.
+- With **Enable Training** off, the new session exports those weights without retraining, for example at another Input Resolution or Deployment.
 
-To clone a session, click "clone training session" button on the training card.  A dialog will appear pre-filled with the source session's configuration.  Adjust the name and description as needed, then confirm.
-
-!!! note
-    Cloning is equivalent to creating a new session with **Use Default Weights** disabled and **Enable Training** disabled.  See [Enable Training and Use Default Weights](../models/training/vision.md#enable-training-and-use-default-weights) for the full behavior matrix.
+See [Weights and Enable Training](../models/training/vision.md#weights-and-enable-training) for the full behavior matrix.
 
 ## Validation Sessions
 

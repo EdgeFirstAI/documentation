@@ -32,7 +32,7 @@
 
         {{ img("/models/assets/training/no-training-charts.jpg", "No Training Charts") }}
 
-        Training sessions configured without epochs will not generate loss or metric charts, since the chart x-axis is epoch-based. This is expected behavior.
+        A session with **Enable Training** off runs no epochs, so its loss and learning-rate charts stay empty.  Its mAP, precision and recall charts hold a single point, the validation of the exported model.  This is expected behavior.
 
 6. The completed training session should look like the following
 

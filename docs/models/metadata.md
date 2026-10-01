@@ -842,8 +842,8 @@ tiling:
   training:
     session: t-1a2b
     sampler: edgefirst-tiling
-    version: "3.0"
-    params: {tile_size: [640, 640], windows_per_frame: 4, seed: 0}
+    version: "3.1"
+    params: {tile_size: [640, 640], frames_per_batch: 4, seed: 0}
   export:
     session: t-1a2b
     calibration: {resize: tiled, input_shape: [640, 640], full_frame: false}
@@ -933,8 +933,8 @@ tiling:
   training:
     session: t-1a2b
     sampler: edgefirst-tiling
-    version: "3.0"
-    params: {tile_size: [640, 640], windows_per_frame: 4, seed: 0}
+    version: "3.1"
+    params: {tile_size: [640, 640], frames_per_batch: 4, seed: 0}
   export:
     session: t-3c4d
     weights_from: t-1a2b
@@ -961,8 +961,8 @@ tiling:
   training:
     session: t-1a2b
     sampler: edgefirst-tiling
-    version: "3.0"
-    params: {tile_size: [640, 640], windows_per_frame: 4, seed: 0}
+    version: "3.1"
+    params: {tile_size: [640, 640], frames_per_batch: 4, seed: 0}
   export:
     session: t-3c4e
     weights_from: t-1a2b

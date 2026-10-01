@@ -144,11 +144,13 @@ When Input Tiling is enabled, the larger side of the **Input Resolution** is the
 
 | Setting | Default | Description |
 |---------|---------|-------------|
-| **Windows per Frame** | 4 (1 to 8) | Number of tiles cut from each decoded frame.  Extra tiles feed mosaic. |
-| **Object Windows** | 0.75 | Share of tiles placed around a labeled object. |
-| **Background Windows** | 0.15 | Share of tiles that contain no labeled object. |
-| **Full-Frame Windows** | 0.10 | Share of tiles that are the whole frame, downscaled to the tile size. |
+| **Frames per Batch** | 4 (1 to 16) | Frames each training batch is drawn from.  Each frame contributes about batch ÷ Frames per Batch tiles, and every frame is visited once per epoch. |
+| **Object Windows** | 0.75 | Target share of an epoch's tiles that contain a labeled object. |
+| **Background Windows** | 0.15 | Target share of an epoch's tiles that contain no labeled object.  Frames without labels supply these first. |
+| **Full-Frame Windows** | 0.10 | Target share of an epoch's tiles that are a whole labeled frame, downscaled to the tile size. |
 | **Validation** | Whole frame | **Whole frame** scores full native-resolution frames, **Tiled** scores the deployment tile grid with the detections merged across tiles, and **Both** reports both, with the tiled metrics under a `tiled/` prefix. |
+
+Positive tiles prefer placements that hold several labeled objects.
 
 Input Tiling supports detection with the **RGB** or **BGR** camera adaptor.
 

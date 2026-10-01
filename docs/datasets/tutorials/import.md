@@ -2,6 +2,14 @@
 
 This page will provide tutorials for importing annotated datasets with various formats in EdgeFirst Studio.  
 
+## Import Videos
+
+{% include-markdown "discrete/datasets/import_videos.md" %}
+
+## Import Images
+
+{% include-markdown "discrete/datasets/import_images.md" %}
+
 ## Import Darknet Datasets
 
 There are two methods for importing Darknet Datasets.

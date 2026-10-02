@@ -41,7 +41,6 @@ Now that you have imported videos or images into EdgeFirst Studio, let's take a 
 !!! note "Annotation Tutorial"
     For an in-depth tutorial on annotating datasets, please see our [Dataset Tutorials](../../../datasets/tutorials/annotations/automatic.md#semi-automatic-ground-truth-generation).
 
-
 ## Split Dataset
 
 Now that you have annotated your dataset, let's split the dataset into train and validation groups which will be needed for model training.

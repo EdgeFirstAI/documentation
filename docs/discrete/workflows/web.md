@@ -16,9 +16,11 @@ Now that you have imported captured images or videos into EdgeFirst Studio you c
 {% include-markdown "discrete/datasets/annotate_2d_dataset.md" heading-offset=0 %}
 
 # Split Dataset
+
 {% include-markdown "discrete/datasets/split_dataset.md" heading-offset=0 %}
 
 # Tag Dataset
+
 {% include-markdown "discrete/datasets/tag_dataset.md" heading-offset=0 %}
 
 {% include-markdown "discrete/models/train_vision.md" heading-offset=0 %}

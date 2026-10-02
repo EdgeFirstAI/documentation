@@ -1,5 +1,3 @@
-# Split Dataset
-
 Partitioning the dataset is crucial in reserving dataset portions used for training and portions used for validation to assess the performance of the model.  In EdgeFirst Studio, the partitions are 80% towards training and 20% towards validation.  This operation randomly shuffles the data prior to assigning them to the specified groups.
 
 !!! warning

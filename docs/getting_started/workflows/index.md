@@ -411,7 +411,7 @@ flowchart LR
 
 6. [Web Workflow](web.md)
 
-    This workflow is intended for users with a personal computer and a mobile device with a camera with access to Wi-Fi and a web browser.  The examples shown in this workflow will be from a Windows computer and an Android phone for recording images.  Proceed to this workflow to see capturing and annotating datasets that will be used to train, validate, and deploy Vision models.
+    This workflow is intended for users with a personal computer and a mobile device with a camera with access to Wi-Fi and a web browser.  The examples shown in this workflow are from a Windows computer and an Android phone for recording images.  Proceed to this workflow to see capturing and annotating datasets that will be used to train, validate, and deploy Vision models.
 
 ### Hardware Workflows
 

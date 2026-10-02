@@ -9,6 +9,12 @@ This section covers Quick Start guides for deploying the EdgeFirst workflow in y
     [![Maivin](assets/maivin-2.png)](quickstart/maivin/index.md) | [![Raivin](assets/raivin.png)](quickstart/raivin/index.md)
     **Vision-only configuration**  | **Combined vision and radar/LiDAR configuration**
 
+=== "PHYTEC"
+
+    **[phyFLEX-i.MX 95 Libra](quickstart/phytec_imx95/index.md)**
+
+    [![phytec95](assets/phytec_imx95-libra.jpg)](quickstart/phytec_imx95/index.md)
+
 === "NXP"
 
     **[i.MX 8M Plus](quickstart/imx8mplus/index.md)** | **[i.MX 95](quickstart/imx95/index.md)** 

@@ -229,7 +229,7 @@ nav:
           - platforms/quickstart/raivin/train.md
           - platforms/quickstart/raivin/validate.md
           - platforms/quickstart/raivin/deploy.md
-      - Phytec Platforms:
+      - PHYTEC Platforms:
         - phyFLEX-i.MX 95 Libra:
           - platforms/quickstart/phytec_imx95/index.md
           - platforms/quickstart/phytec_imx95/setup.md

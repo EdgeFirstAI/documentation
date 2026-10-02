@@ -6,7 +6,7 @@
 
     {{ figure("/studio/assets/navigation/importer_apps.png", "Importer Apps") }}
 
-3. Click on "Run App" on the Image Importer App
+3. Click "Run App" on the image importer app as shown below.
 
     {{ figure("/datasets/assets/import/image_importer.png", "Image Importer App") }}
 

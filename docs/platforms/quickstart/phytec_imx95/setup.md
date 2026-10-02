@@ -1,10 +1,10 @@
 # phyFLEX-i.MX 95 Libra Setup Guide
 
-This guide walk you through how to flash the BSP for the phyFLEX-i.MX95 Libra development kit. You can also find the official [setup guide](https://phytec.github.io/doc-bsp-yocto/bsp/imx9/imx95-fpsc/alpha2.html) provided by Phytec.
+This guide walks you through how to flash the BSP for the phyFLEX-i.MX95 Libra development kit. You can also find the official [setup guide](https://phytec.github.io/doc-bsp-yocto/bsp/imx9/imx95-fpsc/alpha2.html) provided by PHYTEC.
 
 ## Flash a microSD card with the phytec-vision-image
 
-1. Using a Linux machine, fetch the BSP from Phytec's download page.
+1. Using a Linux machine, fetch the BSP from PHYTEC's download page.
 
     ```shell
     wget https://download.phytec.de/Software/Linux/BSP-Yocto-i.MX95/BSP-Yocto-NXP-i.MX95-ALPHA2/images/ampliphy-vendor/imx95-phyflex-libra-rdk-2/phytec-vision-image-imx95-phyflex-libra-rdk-2.rootfs.wic.xz
@@ -13,10 +13,10 @@ This guide walk you through how to flash the BSP for the phyFLEX-i.MX95 Libra de
 2. Flash the SD card using the following command.
 
     !!! warning "Data Loss"
-        Be very careful when specifying the SD card mounting point.
-        Specifying the wrong device will lead to data loss. Find your SD card mounting point using `lsblk`.
+        Be very careful when specifying the SD card device.
+        Specifying the wrong device can cause data loss. Find your SD card's block-device path using `lsblk`.
 
-        Replace "/dev/sdX" with the correct device in your system.
+        Replace `/dev/sdX` with the correct block-device path for your system.
 
     ```shell
     xzcat phytec-vision-image-imx95-phyflex-libra-rdk-2.rootfs.wic.xz | sudo dd of=/dev/sdX bs=4M status=progress && sync
@@ -30,7 +30,7 @@ This guide walk you through how to flash the BSP for the phyFLEX-i.MX95 Libra de
 
 ## Connect to the device
 
-{{ figure("../../assets/setup/phytec/Libra-front-components2.jpg", "Libra FPSC Components (front)") }}
+{{ figure("../../assets/setup/phytec/libra-front-components2.jpg", "Libra FPSC Components (front)") }}
 
 1. Use X14 (Debug) USB-C port to connect your host PC to the board via Serial using a baudrate 115200.
 

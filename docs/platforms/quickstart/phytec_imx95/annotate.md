@@ -10,7 +10,7 @@ Now that you have imported videos or images into EdgeFirst Studio, let's take a 
 
     {{ figure("../../../datasets/assets/annotations/automatic/add_labels.jpg", "Add Labels") }}
 
-3. Once the labels has been added, start the "AI Segment Tool" and click on "Launch AGTG Server" as shown.
+3. Once the labels have been added, start the "AI Segment Tool" and click on "Launch AGTG Server" as shown.
 
     {{ figure("../../../datasets/assets/annotations/automatic/launch_agtg_server_phytec.jpg", "Start AGTG Server") }}
 
@@ -38,9 +38,13 @@ Now that you have imported videos or images into EdgeFirst Studio, let's take a 
 
     {{ figure("../../../datasets/assets/annotations/automatic/back_to_gallery_phytec.jpg", "Back to Gallery") }}
 
+!!! note "Annotation Tutorial"
+    For an in-depth tutorial on annotating datasets, please see our [Dataset Tutorials](../../../datasets/tutorials/annotations/automatic.md#semi-automatic-ground-truth-generation).
+
+
 ## Split Dataset
 
-Now that you have annotated your dataset, let's split the dataset into train and validation groups which will be needed to train your model.
+Now that you have annotated your dataset, let's split the dataset into train and validation groups which will be needed for model training.
 
 {% include-markdown "discrete/datasets/split_dataset.md" %}
 

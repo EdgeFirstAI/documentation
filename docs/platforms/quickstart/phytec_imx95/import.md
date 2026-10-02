@@ -16,4 +16,4 @@ Now that you have captured videos or images for your dataset, follow this guide 
 
 ## Next Steps
 
-Now that you have imported your videos or images into EdgeFirst Studio, let's take a look at how to annotate the dataset which can then be used to train a detection model based on the annotated objects.
+Now that you have imported your videos or images into EdgeFirst Studio, let's take a look at how to [annotate the dataset](annotate.md) which can then be used to train a detection model based on the annotated objects.

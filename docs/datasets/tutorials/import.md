@@ -1,6 +1,6 @@
 # Dataset Import
 
-This page will provide tutorials for importing annotated datasets with various formats in EdgeFirst Studio.  
+This page provides tutorials for importing raw media and annotated datasets in various formats into EdgeFirst Studio.  
 
 ## Import Videos
 

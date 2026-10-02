@@ -1,14 +1,14 @@
 # GStreamer Dataset Capture
 
-This guide walks you through how to capture videos and images from the phyFLEX-i.MX 95 Libra development kit with a [phyCAM-L camera](https://www.phytec.eu/en/produkte/embedded-imaging/kameramodule/vz-023-phycam-l-mini/) using [Gstreamer](https://gstreamer.freedesktop.org/).
+This guide walks you through how to capture videos and images from the phyFLEX-i.MX 95 Libra development kit with a [VM-020 phyCAM-L camera](https://www.phytec.eu/en/produkte/embedded-imaging/kameramodule/vm-020-phycam-l/) using [GStreamer](https://gstreamer.freedesktop.org/).
 
-The examples shown in this guide is based on Phytec's Dataset Collection demo for capturing small hardware objects such as screws, nuts, washers, etc.
+The examples shown in this guide are based on PHYTEC's Dataset Collection demo for capturing small hardware objects such as screws, nuts, washers, etc.
 
-{{ figure("../../assets/setup/phytec/phytec_dataset_collection.png", "Phytec Demo") }}
+{{ figure("../../assets/setup/phytec/phytec_dataset_collection.png", "PHYTEC Demo") }}
 
 ## Setup Camera
 
-{{ figure("../../assets/setup/phytec/Libra-back-components2.jpg", "Libra FPSC Components (back)") }}
+{{ figure("../../assets/setup/phytec/libra-back-components2.jpg", "Libra FPSC Components (back)") }}
 
 1. Ensure the camera is connected to CSI1 port X32.
 
@@ -53,7 +53,7 @@ The examples shown in this guide is based on Phytec's Dataset Collection demo fo
     |-----------------|---------------|
     | ![Manual](../../assets/setup/phytec/manual_exposure.png) | ![Auto](../../assets/setup/phytec/auto_exposure.png) |
 
-3. Start the dataset capture using the following Gstreamer commands.
+3. Start the dataset capture using the following GStreamer commands.
 
     Record a video:
 
@@ -74,4 +74,4 @@ The examples shown in this guide is based on Phytec's Dataset Collection demo fo
 
 ## Next Steps
 
-Now that you have captured some videos and images using Gstreamer, let's take a look at [importing the captures](import.md) into EdgeFirst Studio to begin the annotation process.
+Now that you have captured some videos and images using GStreamer, let's take a look at [importing the captures](import.md) into EdgeFirst Studio to begin the annotation process.

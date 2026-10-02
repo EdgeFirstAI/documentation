@@ -66,6 +66,8 @@ For cases where the annotations need corrections, please see [Manual 2D Annotati
 
 {% include-markdown "discrete/datasets/tag_dataset.md" %}
 
+## Split Dataset
+
 {% include-markdown "discrete/datasets/split_dataset.md" %}
 
 ## Combine Datasets

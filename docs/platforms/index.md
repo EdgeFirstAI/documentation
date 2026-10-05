@@ -13,7 +13,7 @@ This section covers Quick Start guides for deploying the EdgeFirst workflow in y
 
     **[phyFLEX-i.MX 95 Libra](quickstart/phytec_imx95/index.md)**
 
-    [![phytec95](assets/phytec_imx95-libra.jpg)](quickstart/phytec_imx95/index.md)
+    [![phytec95](assets/phytec_imx95-libra.png)](quickstart/phytec_imx95/index.md)
 
 === "NXP"
 

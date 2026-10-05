@@ -4,13 +4,9 @@ This guide walks you through how to capture videos and images from the phyFLEX-i
 
 The examples shown in this guide are based on PHYTEC's Dataset Collection demo for capturing small hardware objects such as screws, nuts, washers, etc.
 
-{{ figure("../../assets/setup/phytec/phytec_dataset_collection.png", "PHYTEC Demo") }}
-
 ## Setup Camera
 
-{{ figure("../../assets/setup/phytec/libra-back-components2.jpg", "Libra FPSC Components (back)") }}
-
-1. Ensure the camera is connected to CSI1 port X32.
+1. Ensure the camera is connected to CSI1 port X32
 
 2. Ensure "/boot/overlays.txt" is set to:
 
@@ -19,30 +15,32 @@ The examples shown in this guide are based on PHYTEC's Dataset Collection demo f
     fit_overlay_conf=conf-imx95-phyflex-libra-rdk-lvds-ph128800t006-zhc01.dtbo#conf-imx95-phyflex-libra-rdk-neoisp.dtbo#conf-imx95-phyflex-libra-rdk-vm020-fpdlink-port0-csi1.dtbo
     ```
 
-3. Run this command if you need to set "/boot/overlays.txt" to the proper setting.
+3. Run this command if you need to set "/boot/overlays.txt" to the proper setting
 
     ```shell
     # echo 'fit_overlay_conf=conf-imx95-phyflex-libra-rdk-lvds-ph128800t006-zhc01.dtbo#conf-imx95-phyflex-libra-rdk-neoisp.dtbo#conf-imx95-phyflex-libra-rdk-vm020-fpdlink-port0-csi1.dtbo' > /boot/overlays.txt
     ```
 
-    Then `reboot` the board.
+    Then `reboot` after applying the setting.
 
-## Test Camera
-
-1. Test that the camera feed is displayed on the monitor using the following commands.
+4. Test that the camera feed is displayed on the monitor using the following examples provided in the BSP
 
     ```shell
     # cd /root/gstreamer-examples/isp/
     # ./capture-libcamera-liveview-csi1.sh
     ```
 
+    You should see a live feed of the camera on the monitor. 
+
     {{ figure("../../assets/setup/phytec/imx95_livestream.png", "Live Stream View") }}
 
 ## GStreamer Capture
 
-1. Ensure adequate lighting is placed upon the tray and keep wiring away from the camera’s field of view.
+1. Ensure adequate lighting is placed upon the tray and keep wiring away from the camera’s field of view
 
 2. Ensure the camera’s exposure mode is set to auto `v4l2-ctl -d /dev/v4l-subdev21 --set-ctrl=auto_exposure=0`
+    
+    You can confirm the current exposure mode setting with this command:
 
     ```shell
     # v4l2-ctl -d /dev/v4l-subdev21 --get-ctrl=auto_exposure
@@ -53,7 +51,7 @@ The examples shown in this guide are based on PHYTEC's Dataset Collection demo f
     |-----------------|---------------|
     | ![Manual](../../assets/setup/phytec/manual_exposure.png) | ![Auto](../../assets/setup/phytec/auto_exposure.png) |
 
-3. Start the dataset capture using the following GStreamer commands.
+3. Start the dataset capture using the following GStreamer commands
 
     Record a video:
 
@@ -70,8 +68,8 @@ The examples shown in this guide are based on PHYTEC's Dataset Collection demo f
     !!! tip "Auto-Annotations with Video Propagation"
         It’s recommended to capture videos for your dataset to take advantage of auto-annotations using video propagation capabilities in EdgeFirst Studio.
 
-4. Once you have captured some samples, [SCP](../../networking/ssh.md#secure-copy) the files into your local machine.
+4. Once you have captured some samples for your dataset, copy the files to your PC
 
 ## Next Steps
 
-Now that you have captured some videos and images using GStreamer, let's take a look at [importing the captures](import.md) into EdgeFirst Studio to begin the annotation process.
+Now that you have captured some videos or images using GStreamer, let's take a look at [importing the captures](import.md) into EdgeFirst Studio to begin the annotation process.

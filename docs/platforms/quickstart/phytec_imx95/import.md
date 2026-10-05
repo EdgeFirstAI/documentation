@@ -1,8 +1,10 @@
 # Import Videos and Images into EdgeFirst Studio
 
-Now that you have captured videos or images for your dataset, follow this guide to import the captures into EdgeFirst Studio. If you haven't already created a project in EdgeFirst Studio, please follow the section below to do so, since a project will contain your datasets, annotations, and trained model artifacts of your experiment.
+Now that you have captured videos or images for your dataset, let's import the files into EdgeFirst Studio. If you haven't already signed up to {{ studio_link("sign up", "signup") }}, please follow the [Getting Started](../../../index.md) guide to sign up.
 
 ## Create a Project
+
+Let’s start by creating a project in EdgeFirst Studio. A project is needed when starting a new experiment since it is treated as the top level directory that contains your datasets, annotations, and trained model artifacts of your experiment.
 
 {% include-markdown "discrete/studio/create_project.md" %}
 

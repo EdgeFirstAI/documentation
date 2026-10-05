@@ -1,6 +1,6 @@
 # phyFLEX-i.MX 95 Libra Quick Start
 
-{{ figure("../../assets/phytec_imx95-libra.jpg", "phyFLEX-i.MX 95 Libra", "50%") }}
+{{ figure("../../assets/phytec_imx95-libra.png", "phyFLEX-i.MX 95 Libra", "50%") }}
 
 The phyFLEX-i.MX 95 Libra is a development-focused platform for building and evaluating vision-based edge AI applications on NXP hardware using PHYTEC's i.MX 95 development kit. This platform is built on the [NXP i.MX 95](https://www.nxp.com/products/processors-and-microcontrollers/arm-processors/i-mx-applications-processors/i-mx-9-applications-processors/i-mx-95-applications-processors:IMX95) application processor, which includes the Neutron NPU for accelerated inference. The [EdgeFirst Perception Middleware](../../../perception/index.md) and EdgeFirst Studio workflow support training, conversion, validation, and deployment of vision models for this target.
 

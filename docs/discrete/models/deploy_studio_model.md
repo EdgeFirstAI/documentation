@@ -25,11 +25,10 @@ Click the "Run Model" button on the top right of the page.
 
 ## Live Inference
 
-You will be given the option for either live inference or inference from a file upload.  Go ahead and demo the live inference feed by clicking the "Live" option.
+You will be given the option for either live inference or inference from a file upload.
+By default, the live inference feed will be selected.
 
-{{ figure("/models/assets/deployment/live-inference-option.jpg", "Live Inference Option") }}
-
-You should now see the live inference feed on your browser running the trained model.
+You should see the live inference feed on your browser running the trained model.
 
 {{ figure("/models/assets/deployment/studio-runner-live-inference.jpg", "Live Inference") }}
 

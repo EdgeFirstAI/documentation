@@ -1,6 +1,6 @@
 # Capture with a Phone
 
-The examples below will show video recording and image captures of coffee cups using a phone for training a Vision model that detects coffee cups. However, you can choose any type of objects in your dataset.
+This guide is based on recording and capturing images of coffee cups using a phone.  However, you can choose any type of objects for your dataset and the same steps will apply.
 
 {% include-markdown "discrete/datasets/recording_on_phone.md" heading-offset=2 %}
 {% include-markdown "discrete/datasets/create_dataset_container.md" heading-offset=0 %}

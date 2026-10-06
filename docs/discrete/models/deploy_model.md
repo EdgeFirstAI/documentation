@@ -9,10 +9,6 @@ From the training session card, you can run the model for inference by clicking 
 
 {{ figure("/getting_started/assets/run_model/trainer_details_page.png", "Training Session Details (Run Model button)") }}
 
-You will be given the option for either live inference or inference from a file upload.  Go ahead and demo the live inference feed by clicking the "Live" option.
-
-{{ figure("/models/assets/deployment/live-inference-option.jpg", "Live Inference Option") }}
-
 You should now see the live inference feed on your browser running the trained model.
 
 {{ figure("/models/assets/deployment/studio-runner-live-inference.jpg", "Live Inference") }}

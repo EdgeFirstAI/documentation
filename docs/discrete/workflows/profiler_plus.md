@@ -23,6 +23,12 @@ The Profiler+ workflow validates your model directly on your target hardware —
     curl -fsSL https://raw.githubusercontent.com/EdgeFirstAI/profiler-cli/main/install.sh | bash
     ```
 
+!!! note "ONNX Runtime Library"
+    Install the ONNX Runtime library `pip install onnxruntime` if it is missing
+    from your system to profile ONNX models.
+
+    {{ figure("/models/assets/validation/missing_onnxruntime.jpg", "Missing ONNXRuntime Library") }}
+
 Confirm the install:
 
 ```sh
@@ -57,11 +63,21 @@ Select the converted model artifact that matches your target hardware and choose
 
 The **F4 Profiler** dashboard streams iteration-level latency and per-stage timings live during the run. When complete, predictions and the timing trace upload to EdgeFirst Studio where mAP, precision-recall curves, and the trace viewer are generated.
 
+In EdgeFirst Studio, you can see the validation session by navigating to the validation sessions under "Model Experiments".
+
+{{ figure("/models/assets/validation/validation-sessions.jpg", "Validation Session") }}
+
+The metrics of the validation session can be viewed by clicking on the "charts" button on the validation session card.
+
+{{ figure("/models/assets/validation/profiler_completed_validation.jpg", "Validation Charts") }}
+
 For the full walkthrough see [Profiler Quick Start](../../profiler/quickstart.md) and [Validation from the Profiler](../../profiler/studio/from_profiler.md).
 
 ## Compare Results to the Model Zoo
 
 After validation, compare your results with the [EdgeFirst Model Zoo on Hugging Face](https://huggingface.co/spaces/EdgeFirst/Models) to see how close your model is to the published baselines.
+
+{{ figure("/models/assets/validation/profiler_baselines.jpg", "EdgeFirst Profiler Baselines") }}
 
 Focus on:
 

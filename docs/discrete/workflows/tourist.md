@@ -12,7 +12,7 @@
 EdgeFirst Studio is designed for teams and individuals building AI-powered products for the edge. If any of the following sounds familiar, you're in the right place:
 
 - **You want to train and deploy vision models** without managing your own training infrastructure
-- **You work with edge hardware** — cameras, NPUs, embedded systems — and need models that actually run fast on device
+- **You work with edge hardware** — cameras, NPUs, embedded systems — and require models optimized for the hardware
 - **You need to manage datasets** — annotate, version, audit, and share image or sensor data across a team
 - **You want to benchmark models on real hardware** and see accuracy alongside latency, not just one or the other
 - **You're evaluating pre-trained models** and want to compare them against your own fine-tuned results

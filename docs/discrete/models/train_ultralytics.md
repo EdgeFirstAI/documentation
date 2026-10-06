@@ -10,23 +10,20 @@
 
     {{ figure("/models/assets/training/training-sessions.jpg", "Training Sessions") }}
 
-4. Create a new training session by clicking the "Actions" dropdown menu on the top right of the page and then click the "+ New" button
+4. Create a new training session by clicking the "Actions" dropdown menu on the top right of the page and then click the "New Ultralytics Trainer" button
 
-    {{ figure("/models/assets/training/new-session-button.jpg", "New Session Button") }}
+    {{ figure("/models/assets/training/new-ultralytics-session-button.jpg", "New Session Button") }}
 
 5. Start a YOLOv8n detection model by following these settings. Once the settings are set, click on "Start Session" at the bottom of the window
+
+    !!! note "Outdated training panel"
+        The following training configuration panel is currently out of date.  Additional formatting fixes to the current panel are still in progress before we can push a new image of the layout.
 
     {{ figure("/profiler/assets/studio-yolo-model-configurations.jpg", "Ultralytics Training Settings") }}
 
     This will start a training session in progress.
 
     {{ figure("/models/assets/training/training-session-progress-ultralytics.jpg", "Ultralytics Training Progress") }}
-
-    !!! failure "InsufficientInstanceCapacity"
-
-        {{ img("/studio/assets/models/insufficient-capacity-error.jpg", "InsufficientInstanceCapacity Error") }}
-
-        If you see this error after starting your training session, retry creating the session. This can happen when AWS reports that no EC2 instances are currently available to launch; the current workaround is to retry.
 
     !!! note "No Training Charts"
 
@@ -40,9 +37,9 @@
 
 7. We support model conversion and optimization workflows that enable trained models to be deployed on a wide range of target platforms and hardware architectures.
 
-    Follow the model conversion workflow that corresponds to your target platform. If you are deploying to a Windows/Linux PC or macOS system, you can skip this section and proceed directly to the next step to validate the ONNX model, which is automatically generated as part of the training session outputs.
-
-    If you are deploying to one of the supported hardware platforms listed below, follow the platform-specific conversion instructions for your target device.
+    If you are deploying to one of the supported hardware platforms listed below, follow the platform-specific conversion instructions for your target device. 
+    
+    However, this guide will use the out-of-the-box trained ONNX model which can be deployed on a Windows/Linux PC or macOS system. You can skip this section and proceed directly to the next step to validate the ONNX model in your PC.
 
     | Converter | Supported Targets | Output Format | Docs |
     |-----------|------------------|---------------|------|
@@ -52,7 +49,7 @@
     | **Ara2 Converter** | NXP Ara240 DNPU | `.dvm` Dataflow Virtual Machine binary | [Ara2 Converter](../../models/conversion/ara2.md) |
     | **Hailo Converter** | Hailo-8 (26 TOPS), Hailo-8L (13 TOPS) | `.hef` Hailo Executable Format | [Hailo Converter](../../models/conversion/hailo.md) |
 
-8. All converted models should appear under the model artifacts of the training session card.  Click on the training session card to expand for more details.
+8. All converted models should appear listed under the model artifacts of the training session card.
 
     {{ figure("/models/assets/conversion/yolov8n-det-model-artifacts.jpg", "YOLOv8n Detection Model Artifacts") }}
 

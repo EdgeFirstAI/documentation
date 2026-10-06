@@ -2,7 +2,11 @@
 
 ## Browse Public Datasets
 
-Once logged in, navigate to the **Sample Project** from the Home Page and click on the datasets.
+Once logged in, navigate to the "Projects" page by clicking the "PROJECTS" button at the top navbar.
+
+{{ figure("/studio/assets/user/home-page-goto-projects.png", "Go To Projects") }}
+
+Then find the **Sample Project** from the page and click on its datasets as shown.
 
 {{ figure("/studio/assets/projects/sample-datasets-button.jpg", "Sample Project Datasets") }}
 

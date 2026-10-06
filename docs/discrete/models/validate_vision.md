@@ -26,13 +26,10 @@ Under **Model Selection**, choose an **ONNX, Keras, or TFLite** artifact — the
 
 For this example, all remaining settings were left at their default values. When you are ready, click **Start Session** at the bottom of the page to begin the validation process.
 
+!!! note "Outdated validation panel"
+    The following validation configuration panel is currently out of date.  Additional formatting fixes to the current panel are still in progress before we can push a new image of the layout.
+
 {{ figure("/models/assets/validation/vision-validate-settings.jpg", "Start Validation Session") }}
-
-!!! failure "InsufficientInstanceCapacity"
-
-    {{ img("/studio/assets/models/insufficient-capacity-error.jpg", "InsufficientInstanceCapacity Error") }}
-
-    If you see this error after starting your validation session, retry creating the session. This can happen when AWS reports that no EC2 instances are currently available to launch; the current workaround is to retry.
 
 Go to the created validation session by first going back to the "Model Experiments" page.
 

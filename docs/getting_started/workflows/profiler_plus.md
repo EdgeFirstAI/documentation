@@ -1,6 +1,6 @@
 # Profiler+ Workflow
 
-In this workflow, you will retrain an Ultralytics model, revalidate it using [edgefirst-profiler](../../profiler/index.md), and compare your results against the [EdgeFirst Model Zoo on Hugging Face](https://huggingface.co/spaces/EdgeFirst/Models) baselines.  Models can be deployed in the browser or on a compatible target device.
+In this workflow, you will retrain an Ultralytics model, validate it in your PC using [edgefirst-profiler](../../profiler/index.md), and compare your results against the [EdgeFirst Model Zoo on Hugging Face](https://huggingface.co/spaces/EdgeFirst/Models) baselines.  Models can be deployed in the browser or on a compatible target device.
 
 {% include-markdown "discrete/workflows/profiler_plus.md" %}
 

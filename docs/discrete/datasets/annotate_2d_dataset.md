@@ -30,7 +30,7 @@ On the top navbar, switch to the annotation set you created.
 
 Go ahead and launch the AGTG server.  Please allow ~5mins for the server to initialize.
 
-!!! warning "AGTG Server Did Not Start"
+!!! warning "AGTG Server did not Start"
 
     If the AGTG server has not started after 5 minutes, refresh your browser and click the **AI Segment Tool** button again.
 
@@ -54,7 +54,7 @@ Once the propagation completes, click "Save Annotations" to save the propagated 
 
     {{ img("/datasets/assets/annotations/automatic/add-missed-annotation.jpg", "Add Missed Annotations") }}
 
-    For objects that were improperly annotated, you can [remove annotations](../../datasets/tutorials/annotations/manual.md#delete-2d-annotations).  For annotations that require minor adjustments, EdgeFirst Studio has the features for [adjusting annotations](../../datasets/tutorials/annotations/manual.md#adjust-2d-annotations).  Please click on the links as provided for further instructions on each of these features.
+    For objects that were improperly annotated, you can [remove annotations](../../datasets/tutorials/annotations/manual.md#delete-2d-annotations).  For annotations that require minor adjustments, EdgeFirst Studio has the features for [adjusting annotations](../../datasets/tutorials/annotations/manual.md#adjust-2d-annotations).  Please click on the links as provided for further instructions to these features.
 
 Repeat the steps for all the sequences in the dataset.  You can go back to the dataset sequences by pressing the back button on the top left corner.
 

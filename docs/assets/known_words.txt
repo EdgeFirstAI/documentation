@@ -65,6 +65,7 @@ cdot
 cdr
 centered
 centers
+centred
 centres
 centroid
 centroids
@@ -97,6 +98,7 @@ compressedvideo
 concat
 config
 conv
+convolutional
 coords
 copyds
 costmap
@@ -188,6 +190,7 @@ ethernet1
 ethtool
 europlug
 evk
+extremum
 extrinsics
 fargate
 fd
@@ -404,6 +407,7 @@ nchw
 ndarray
 neighbor
 neighbors
+neighbouring
 netmask
 netplan
 netron
@@ -699,6 +703,7 @@ unparseable
 unprivileged
 unquantized
 unstamped
+untracked
 unsynchronized
 untrusted
 uplink

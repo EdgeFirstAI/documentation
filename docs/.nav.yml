@@ -217,7 +217,10 @@ nav:
           - platforms/quickstart/maivin/index.md
           - platforms/quickstart/maivin/setup.md
           - platforms/quickstart/maivin/webui.md
-          - platforms/quickstart/maivin/copy_dataset.md
+          - platforms/quickstart/maivin/record.md
+          - platforms/quickstart/maivin/upload.md
+          - platforms/quickstart/maivin/restore.md
+          - platforms/quickstart/maivin/split.md
           - platforms/quickstart/maivin/train.md
           - platforms/quickstart/maivin/validate.md
           - platforms/quickstart/maivin/deploy.md
@@ -225,7 +228,10 @@ nav:
           - platforms/quickstart/raivin/index.md
           - platforms/quickstart/raivin/setup.md
           - platforms/quickstart/raivin/webui.md
-          - platforms/quickstart/raivin/copy_dataset.md
+          - platforms/quickstart/raivin/record.md
+          - platforms/quickstart/raivin/upload.md
+          - platforms/quickstart/raivin/restore.md
+          - platforms/quickstart/raivin/split.md
           - platforms/quickstart/raivin/train.md
           - platforms/quickstart/raivin/validate.md
           - platforms/quickstart/raivin/deploy.md

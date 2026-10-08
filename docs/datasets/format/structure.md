@@ -17,11 +17,7 @@ dataset_name/
 └── dataset_name/               # Sensor container (directory or .zip)
 ```
 
-Exactly **one annotation file** per dataset directory — choose a single format from
-`.arrow`, `.parquet`, or `.json`. The tree above shows the three supported alternatives;
-do not include more than one annotation file for the same dataset. The sensor container
-directory name matches the dataset base name regardless of which annotation file format
-you choose.
+Exactly **one annotation file** per dataset directory — choose a single format from `.arrow`, `.parquet`, or `.json`. The tree above shows the three supported alternatives; do not include more than one annotation file for the same dataset, so discovery is unambiguous. The sensor container directory name matches the dataset base name regardless of which annotation file format you choose. `edgefirst-client validate-snapshot` accepts either an `.arrow` or a `.parquet` annotation file whose name matches the dataset directory.
 
 ## Dataset Layouts
 
@@ -44,7 +40,10 @@ deer_dataset/
 **File naming convention**:
 
 - Sequence format: `{hostname}_{date}_{time}` (from MCAP)
-- Frame format: `{sequence_name}_{frame_number}.{sensor}.{ext}`
+- Frame format: `{sequence_name}_{frame_number}.{sensor}.{ext}`, with the frame number written as is (no zero padding)
+
+!!! note "Zero-padded frame names"
+    Readers also accept the older zero-padded form `{sequence_name}_{frame:03}` (for example `sequence_A_001`), so datasets exported with three-digit frame numbers continue to validate and upload.
 
 ### 2. Image-Based Datasets
 
@@ -68,8 +67,8 @@ mixed_dataset/
 ├── mixed_dataset.arrow
 └── mixed_dataset/
     ├── sequence_A/
-    │   ├── sequence_A_001.camera.jpeg
-    │   └── sequence_A_002.camera.jpeg
+    │   ├── sequence_A_1.camera.jpeg
+    │   └── sequence_A_2.camera.jpeg
     ├── standalone_image1.jpg
     └── standalone_image2.jpg
 ```
@@ -83,12 +82,12 @@ sensor_fusion/
 ├── sensor_fusion.parquet
 └── sensor_fusion/
     └── drive_2026_03_18/
-        ├── drive_2026_03_18_001.camera.jpeg
-        ├── drive_2026_03_18_001.radar.png
-        ├── drive_2026_03_18_001.radar.pcd
-        ├── drive_2026_03_18_001.lidar.pcd
-        ├── drive_2026_03_18_002.camera.jpeg
-        ├── drive_2026_03_18_002.radar.png
+        ├── drive_2026_03_18_1.camera.jpeg
+        ├── drive_2026_03_18_1.radar.png
+        ├── drive_2026_03_18_1.radar.pcd
+        ├── drive_2026_03_18_1.lidar.pcd
+        ├── drive_2026_03_18_2.camera.jpeg
+        ├── drive_2026_03_18_2.radar.png
         └── ...
 ```
 
@@ -101,9 +100,9 @@ sequence prefixes:
 dataset_name/
 ├── dataset_name.arrow
 └── dataset_name/
-    ├── sequence_A_001.camera.jpeg
-    ├── sequence_A_002.camera.jpeg
-    ├── sequence_B_001.camera.jpeg
+    ├── sequence_A_1.camera.jpeg
+    ├── sequence_A_2.camera.jpeg
+    ├── sequence_B_1.camera.jpeg
     └── standalone_image.jpg
 ```
 

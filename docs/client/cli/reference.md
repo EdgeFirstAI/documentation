@@ -54,11 +54,13 @@ The client supports various authentication methods including environment variabl
 
 ## Authentication
 
-### `version`
+### `server-version`
 
-Returns the EdgeFirst Studio server version.
+Returns the EdgeFirst Studio server version and the client version. Does not require authentication.
 
-**edgefirst-client version**
+**edgefirst-client server-version**
+
+Note: this command was named `version` prior to 2.12.0. That name now refers to the dataset-versioning subcommand group (`tag`, `changelog`, `current`, `summary`; `restore` lives under `version tag restore`) — see [Dataset versioning](#dataset-versioning).
 
 ### `login`
 
@@ -66,20 +68,17 @@ Login to the EdgeFirst Studio server. The authentication token is stored in the 
 
 `edgefirst-client` [`--server` *SERVER*] **login**
 
-When `--username` and `--password` are omitted, the CLI prompts for them
-interactively (recommended). Do not pass passwords on the command line.
+When `--username` and `--password` are omitted, the CLI prompts for them interactively (recommended). Do not pass passwords on the command line.
 
-Optional flags `--username` and `--password` exist for non-interactive
-automation; prefer **STUDIO_TOKEN** or **STUDIO_USERNAME** / **STUDIO_PASSWORD**
-environment variables for scripts instead.
+Optional flags `--username` and `--password` exist for non-interactive automation; prefer **STUDIO_TOKEN** or **STUDIO_USERNAME** / **STUDIO_PASSWORD** environment variables for scripts instead.
 
 Token storage locations:
 
-- Linux: `~/.config/EdgeFirst Studio/token`
-- macOS: `~/Library/Application Support/ai.EdgeFirst.EdgeFirst Studio/token`
+- Linux: `~/.config/edgefirststudio/token`
+- macOS: `~/Library/Application Support/ai.EdgeFirst.EdgeFirst-Studio/token`
 - Windows: `%APPDATA%\EdgeFirst\EdgeFirst Studio\config\token`
 
-After CLI login, Python examples can reuse the cached token with `Client()` (default `use_token_file=True`). See [Tutorial 1](../tutorials/01_authentication.md).
+After CLI login, Python code can reuse the cached token with a bare `Client()` call, which loads the same file-backed token automatically. See [Tutorial 1](../tutorials/01_authentication.md). Passing credentials or storage options as constructor keywords (`Client(username=..., password=...)`, `Client(token=...)`, `Client(use_token_file=False)`) is the deprecated pre-2.6.0 style and now emits a `DeprecationWarning`; prefer the builder pattern (`Client().with_login(...)`, `Client().with_token(...)`, `Client().with_memory_storage()`) for new code.
 
 ### `logout`
 
@@ -296,33 +295,34 @@ Download a dataset to the local filesystem from the EdgeFirst Studio server.
     The prefix format is `{sequence_name}_{frame}_` when the frame number is available,
     and `{sequence_name}_` when the frame number is not available. Default: creates subdirectories for sequences.
 
+`--tag` *TAG*
+:   Download files from the specified tagged version instead of the current HEAD state. The tag must exist for the dataset. When omitted, downloads the current live data.
+
 `--list-types`
 :   List all valid sensor types and exit. *DATASET_ID* is not required when this flag is used.
 
 **Example:**
 
 ```bash
-
-## Download only images to specific directory
-
+# Download only images to specific directory
 edgefirst-client download-dataset 12345 \
     --types image --output ./my-dataset
 
-## Download multiple types with group filtering
-
+# Download multiple types with group filtering
 edgefirst-client download-dataset 12345 \
     --types image,lidar.pcd --groups train,validation \
     --output /data/datasets/
 
-## Download with flattened directory structure
-
-## Files from sequences are prefixed with sequence_name_frame_
-
+# Download with flattened directory structure
+# Files from sequences are prefixed with sequence_name_frame_
 edgefirst-client download-dataset 12345 \
     --types image --output ./flat-dataset --flatten
 
-## Public Coffee Cup dataset (SaaS)
+# Download from a tagged version for reproducible training
+edgefirst-client download-dataset 12345 \
+    --tag v1.0 --types image --output ./versioned-data
 
+# Public Coffee Cup dataset (SaaS)
 edgefirst-client download-dataset ds-145f --groups val --types image \
     --output ./coffee_cup_images/
 ```
@@ -375,25 +375,27 @@ Download dataset annotations to a local file. This command accompanies **downloa
 :   Only fetch samples belonging to the provided dataset groups (comma-separated list).
 
 `--types` *TYPES*
-:   Annotation types to download (comma-separated list). Default: **box2d**.
-    Supported types: box2d, box3d, mask, polygon, polyline, keypoint.
+:   Annotation types to download (comma-separated list). If omitted, all annotation types are downloaded. Supported types: box2d, box3d, polygon, raster. For backward compatibility `mask` and `seg` are accepted as aliases for `polygon` — note that `mask` therefore selects vector polygons, **not** raster masks; use `raster` for raster pixel masks. There is no `polyline` or `keypoint` annotation type; an unrecognized value is rejected with an error listing the accepted types.
+
+`--tag` *TAG*
+:   Download annotations from the specified tagged version instead of the current HEAD state. The tag must exist for the annotation set's dataset.
 
 **Example:**
 
 ```bash
-
-## Download 2D bounding boxes as JSON
-
+# Download 2D bounding boxes as JSON
 edgefirst-client download-annotations 54321 annotations.json \
     --types box2d
 
-## Download all annotation types in Arrow format
-
+# Download all annotation types in Arrow format
 edgefirst-client download-annotations 54321 annotations.arrow \
     --types box2d,box3d,mask --groups train
 
-## Coffee Cup public dataset (resolve annotation set ID from dataset command)
+# Download annotations from a tagged version
+edgefirst-client download-annotations 54321 annotations.arrow \
+    --tag v1.0 --types box2d
 
+# Coffee Cup public dataset (resolve annotation set ID from dataset command)
 edgefirst-client download-annotations <as-id> coffee_cup.arrow --groups val
 ```
 
@@ -435,26 +437,24 @@ The tool automatically searches for images in the following order:
 **Examples:**
 
 ```bash
-
-## Upload images only
-
+# Upload images only
 edgefirst-client upload-dataset 12345 --images ./photos/
 
-## Upload Arrow annotations with auto-discovered images
-
+# Upload Arrow annotations with auto-discovered images
 edgefirst-client upload-dataset 12345 \
     --annotations dataset.arrow \
     --annotation-set-id 54321
 
-## Upload both with explicit paths
-
+# Upload both with explicit paths
 edgefirst-client upload-dataset 12345 \
     --annotations labels.arrow \
     --images ./images/ \
     --annotation-set-id 54321
 ```
 
-**Note:** Uploads are batched (500 samples per batch) with progress tracking. Arrow files must conform to the EdgeFirst Dataset Format.
+**Note:** Uploads are batched (50 samples per batch, so a failed batch only requires retrying 50 samples) with progress tracking. Batch concurrency defaults to 4 and is configurable via **EDGEFIRST_UPLOAD_BATCHES**. Arrow files must conform to the EdgeFirst Dataset Format.
+
+**Note:** Annotations flagged `ignore` or `exclude` are dropped before upload and reported once as `⚠ Skipping N annotations flagged ignore/exclude: Studio does not support these flags yet`, since EdgeFirst Studio does not store these flags yet.
 
 ### `update-dimensions`
 
@@ -492,13 +492,10 @@ Updated dimensions for N samples
 **Example:**
 
 ```bash
-
-## Backfill dimensions for a legacy dataset
-
+# Backfill dimensions for a legacy dataset
 edgefirst-client update-dimensions 12345
 
-## Using the ds- form
-
+# Using the ds- form
 edgefirst-client update-dimensions ds-12345
 ```
 
@@ -509,7 +506,177 @@ edgefirst-client update-dimensions ds-12345
 - Equivalent programmatic APIs:
     - **Rust:** `Client::backfill_sample_dimensions(dataset_id, progress)` (and `Client::update_sample_dimensions` for already-known dimensions).
     - **Python:** `client.backfill_sample_dimensions(dataset_id, progress=cb)`.
-    - **Swift/Kotlin (UniFFI):** `client.backfillSampleDimensions(datasetId)` — blocking, **no progress callback** in the FFI layer; for progress reporting on mobile, call the underlying `samples.update_dimensions` RPC directly or use the Python/Rust API on the server side.
+
+### `delete-samples`
+
+Delete one or more samples (images) from a dataset.
+
+**edgefirst-client delete-samples** *DATASET_ID* *SAMPLE_IDS*...
+
+**Arguments:**
+
+*DATASET_ID*
+:   The unique identifier of the dataset the samples belong to.
+
+*SAMPLE_IDS*
+:   One or more sample (image) IDs to delete.
+
+**Example:**
+
+```bash
+edgefirst-client delete-samples 12345 1001 1002
+```
+
+**Note:** Annotations belonging to the deleted samples are removed automatically by the server (cascade delete) — no separate step is needed. Deletion is asynchronous on the server: the command returns once the request is accepted, before the delete has actually completed, so samples may not disappear from subsequent queries immediately.
+
+## Dataset versioning
+
+The `version` subcommand group manages dataset version tags, changelog inspection, and dataset restore. Every dataset modification is recorded with a monotonic serial number. Named tags capture the complete dataset state at a point in time, enabling reproducible training runs and controlled rollbacks.
+
+**Key concepts:**
+
+- **Serial** — Per-dataset monotonic counter that increments with each logged change.
+- **Tag** — Named reference to a serial number and full database snapshot (images, annotations, labels, annotation sets, sensor data).
+- **Changelog** — Append-only audit trail of every dataset modification.
+
+Tag names may contain alphanumeric characters, dots, dashes, and underscores (e.g., `v1.0`, `training-2026-04`, `baseline_v3`).
+
+### `version tag create`
+
+Create a named version tag capturing the current dataset state.
+
+**edgefirst-client version tag create** *DATASET* *NAME* [*OPTIONS*]
+
+**Arguments:**
+
+*DATASET*
+:   Dataset identifier (ID string, for example `ds-1a2b3c`).
+
+*NAME*
+:   Tag name. Allowed characters: alphanumeric, `.`, `-`, `_`. Max 100 characters. Case-sensitive.
+
+**Options:**
+
+**-d**, `--description` *DESCRIPTION*
+:   Human-readable description for the tag.
+
+**Example:**
+
+```bash
+# Tag current dataset state for a training run
+edgefirst-client version tag create ds-1a2b3c v1.0 -d "Initial production dataset"
+
+# Tag using dataset name
+edgefirst-client version tag create "My Dataset" training-2026-04
+```
+
+### `version tag list`
+
+List all version tags for a dataset, ordered by serial number (most recent first).
+
+**edgefirst-client version tag list** *DATASET*
+
+**Example:**
+
+```bash
+edgefirst-client version tag list ds-1a2b3c
+```
+
+### `version tag get`
+
+Show detailed information for a specific version tag.
+
+**edgefirst-client version tag get** *DATASET* *NAME*
+
+**Example:**
+
+```bash
+edgefirst-client version tag get ds-1a2b3c v1.0
+```
+
+### `version tag delete`
+
+Delete a version tag and its snapshot data. This operation is irreversible.
+
+**edgefirst-client version tag delete** *DATASET* *NAME*
+
+**Example:**
+
+```bash
+edgefirst-client version tag delete ds-1a2b3c v1.0-draft
+```
+
+### `version tag restore`
+
+Restore a dataset to the state captured by a version tag. All changes made after the tag are discarded. The tag itself is preserved and can be restored again.
+
+**edgefirst-client version tag restore** *DATASET* *NAME*
+
+**Example:**
+
+```bash
+edgefirst-client version tag restore ds-1a2b3c v1.0
+```
+
+### `version changelog`
+
+Show changelog entries for a dataset. Accepts serial numbers or tag names as range boundaries.
+
+**edgefirst-client version changelog** *DATASET* [*OPTIONS*]
+
+**Options:**
+
+`--from` *VERSION*
+:   Start of the range (tag name or serial number, inclusive). Defaults to the beginning of the changelog.
+
+`--to` *VERSION*
+:   End of the range (tag name or serial number, inclusive). Defaults to the current serial.
+
+`--types` *TYPES*
+:   Filter by entity types (comma-separated). Valid values: `image`, `annotation`, `label`, `annotation_set`, `sensor_data`, `dataset`.
+
+`--limit` *LIMIT*
+:   Maximum number of entries to return. Default: **100**.
+
+**Example:**
+
+```bash
+# Show all recent changelog entries
+edgefirst-client version changelog ds-1a2b3c
+
+# Show changes between two tags
+edgefirst-client version changelog ds-1a2b3c --from v1.0 --to v2.0
+
+# Show only annotation changes since a specific serial
+edgefirst-client version changelog ds-1a2b3c --from 10 --types annotation
+
+# Show the 50 most recent entries
+edgefirst-client version changelog ds-1a2b3c --limit 50
+```
+
+### `version current`
+
+Show the current version information for a dataset: serial number, all tags, and a dataset summary.
+
+**edgefirst-client version current** *DATASET*
+
+**Example:**
+
+```bash
+edgefirst-client version current ds-1a2b3c
+```
+
+### `version summary`
+
+Show cached dataset metrics: image count, annotation counts by type, label count, and annotation set count.
+
+**edgefirst-client version summary** *DATASET*
+
+**Example:**
+
+```bash
+edgefirst-client version summary ds-1a2b3c
+```
 
 ## Snapshots
 
@@ -549,8 +716,9 @@ Create a new snapshot from a local file/directory or from an existing server-sid
     - **ds-xxx**: Dataset ID (creates snapshot from server dataset)
     - **as-xxx**: Annotation Set ID (creates snapshot from parent dataset)
     - **path/to/file.mcap**: Local MCAP file upload
-    - **path/to/folder/**: Local directory upload
-    - **path/to/file.zip**: Local ZIP file upload
+    - **path/to/folder/**: Local directory upload (pre-validated against the EdgeFirst Dataset Format; structural errors abort with a hint to run `generate-arrow`, lesser issues only warn)
+    - **path/to/file.arrow** with a same-basename **path/to/file.zip** sibling in the same directory: uploaded together as a paired EdgeFirst Dataset Format source
+    - **path/to/file.zip** (no matching **.arrow** sibling): Local ZIP file upload
 
 **Options:**
 
@@ -572,41 +740,31 @@ Create a new snapshot from a local file/directory or from an existing server-sid
 **Example:**
 
 ```bash
-
-## Create snapshot from server dataset (auto-detected by ds- prefix)
-
+# Create snapshot from server dataset (auto-detected by ds- prefix)
 edgefirst-client create-snapshot ds-12345
 
-## Create snapshot with specific annotation set
-
+# Create snapshot with specific annotation set
 edgefirst-client create-snapshot ds-12345 --annotation-set as-67890
 
-## Create snapshot with custom description
-
+# Create snapshot with custom description
 edgefirst-client create-snapshot ds-12345 --description "Deer Dataset Backup"
 
-## Create from annotation set (auto-detected by as- prefix, looks up parent dataset)
-
+# Create from annotation set (auto-detected by as- prefix, looks up parent dataset)
 edgefirst-client create-snapshot as-abc123
 
-## Create from server dataset and wait for completion
-
+# Create from server dataset and wait for completion
 edgefirst-client create-snapshot ds-12345 --monitor
 
-## Upload local MCAP file (auto-detected by file extension)
-
+# Upload local MCAP file (auto-detected by file extension)
 edgefirst-client create-snapshot ./recording.mcap
 
-## Upload local directory
-
+# Upload local directory
 edgefirst-client create-snapshot ./sensor_data/
 
-## Upload local ZIP file
-
+# Upload local ZIP file
 edgefirst-client create-snapshot ./dataset.zip
 
-## Explicitly specify source type
-
+# Explicitly specify source type
 edgefirst-client create-snapshot ds-12345 --from-dataset
 edgefirst-client create-snapshot ./my_data --from-path
 ```
@@ -632,9 +790,7 @@ Download a snapshot to a local directory.
 **Example:**
 
 ```bash
-
-## Download snapshot
-
+# Download snapshot
 edgefirst-client download-snapshot ss-abc123 --output ./snapshot_data/
 ```
 
@@ -675,17 +831,13 @@ Restore a snapshot to a dataset in a project. Supports MCAP uploads with optiona
 **Example:**
 
 ```bash
-
-## Basic restore into a project
-
+# Basic restore into a project
 edgefirst-client restore-snapshot p-abc123 ss-def456
 
-## Restore with AGTG auto-annotation for the given labels
-
+# Restore with AGTG auto-annotation for the given labels
 edgefirst-client restore-snapshot p-abc123 ss-def456 --autolabel person,car
 
-## Restore with AGTG and depth generation, with a custom name, and wait for completion
-
+# Restore with AGTG and depth generation, with a custom name, and wait for completion
 edgefirst-client restore-snapshot p-abc123 ss-def456 \
     --autolabel person,car --autodepth \
     --dataset-name "Field Test Restore" --monitor
@@ -724,7 +876,7 @@ The command will:
 
 1. Scan the folder recursively for image files (JPEG, PNG)
 2. Optionally detect sequence patterns (name_frame.ext)
-3. Create an Arrow file with the 2025.10 schema and null annotations
+3. Create an Arrow file with the current 2026.10 schema and null annotations
 
 **Arguments:**
 
@@ -742,17 +894,13 @@ The command will:
 **Example:**
 
 ```bash
-
-## Generate Arrow file from images
-
+# Generate Arrow file from images
 edgefirst-client generate-arrow ./images --output dataset.arrow
 
-## Generate with sequence detection
-
+# Generate with sequence detection
 edgefirst-client generate-arrow ./images -o my_data/my_data.arrow --detect-sequences
 
-## Create Arrow file for existing dataset structure
-
+# Create Arrow file for existing dataset structure
 edgefirst-client generate-arrow ./sensor_data/camera/ --output ./sensor_data/my_data.arrow
 ```
 
@@ -766,34 +914,29 @@ Validate a snapshot directory structure against the EdgeFirst Dataset Format spe
 
 The command checks that the directory follows the EdgeFirst Dataset Format:
 
-- Arrow file exists at expected location (`<name>.arrow` or `<name>/<name>.arrow`)
+- Exactly one annotation file exists at the expected location (`<name>.arrow` or `<name>.parquet`)
 - Sensor container directory exists (e.g., `camera/`, `lidar/`)
-- All files referenced in the Arrow file exist on disk
+- All files referenced in the annotation file exist on disk
 
 **Arguments:**
 
 *PATH*
-:   Snapshot directory to validate. Can be a directory containing an Arrow file and sensor data.
+:   Snapshot directory to validate. The directory basename must match its Arrow or Parquet annotation filename and sibling sensor container.
 
 **Options:**
 
-**-v, \--verbose**
-:   Show detailed validation issues including warnings and informational messages.
+`validate-snapshot` takes no options of its own. Detailed output (warnings and informational messages beyond the first 5 of each kind) is controlled by the global **-v**, `--verbose` flag documented under [Global options](#global-options), not a command-local flag — pass it anywhere on the command line.
 
 **Example:**
 
 ```bash
-
-## Validate a snapshot directory
-
+# Validate a snapshot directory
 edgefirst-client validate-snapshot ./my_dataset
 
-## Validate with detailed output
+# Validate with detailed output (global -v flag)
+edgefirst-client -v validate-snapshot ./my_dataset
 
-edgefirst-client validate-snapshot ./my_dataset --verbose
-
-## Validate before uploading
-
+# Validate before uploading
 edgefirst-client validate-snapshot ./sensor_data && edgefirst-client create-snapshot ./sensor_data
 ```
 
@@ -804,61 +947,85 @@ edgefirst-client validate-snapshot ./sensor_data && edgefirst-client create-snap
 
 ## COCO interchange
 
-Tools for converting between the COCO (Common Objects in Context) annotation format and the EdgeFirst Dataset Format, and for importing and exporting COCO datasets directly to and from EdgeFirst Studio. These commands support bounding boxes and polygon segmentation; RLE segmentation is decoded to polygons.
+Tools for converting between the COCO (Common Objects in Context) annotation format and the EdgeFirst Dataset Format, and for importing and exporting COCO datasets directly to and from EdgeFirst Studio. These commands support bounding boxes, polygon segmentation, and RLE segmentation. RLE masks are stored as PNG-encoded raster data in the EdgeFirst `mask` column.
 
 For details on the [EdgeFirst Dataset Format](../../datasets/format/index.md) and its COCO mapping.
 
 ### `coco-to-arrow`
 
-Convert COCO annotations to EdgeFirst Arrow format. Reads a COCO annotation JSON file or ZIP archive and converts it to the EdgeFirst Dataset Format (Arrow).
+Convert COCO annotations to the EdgeFirst Dataset Format. The input may be one COCO annotation JSON file, a ZIP archive, or a standard extracted COCO directory. For a directory, all `instances_*.json` files are combined into one output and split names such as `train` and `val` are inferred into the sample-level `group` column. Referenced images can be staged alongside the annotation file for a complete offline dataset.
 
 **edgefirst-client coco-to-arrow** \[*OPTIONS*\] `--output` *OUTPUT* *COCO_PATH*
 
 **Arguments:**
 
 *COCO_PATH*
-:   Path to a COCO annotation file (JSON) or ZIP archive.
+:   Path to a COCO annotation file (JSON), ZIP archive, or extracted COCO root. A standard root contains `annotations/instances_train*.json`, `annotations/instances_val*.json`, and matching image directories such as `train2017/` and `val2017/`.
 
 **Options:**
 
 **-o, \--output** *OUTPUT*
-:   Output Arrow file path (required).
+:   Output annotation file path (required). Format is chosen by extension: `.parquet` writes Apache Parquet, anything else (including `.arrow`) writes Arrow IPC. Both carry the same file-level metadata (`schema_version`, `category_metadata`, `labels`).
 
 `--masks` *MASKS*
 :   Include segmentation masks. Defaults to **true**; pass `--masks=false` to convert bounding boxes only. [possible values: true, false]
 
 `--group` *GROUP*
-:   Group name applied to all samples (e.g. `train`, `val`). Sets the dataset split for every converted sample.
+:   Group name applied to all samples (e.g. `train`, `val`). Use this for a single JSON/ZIP input. On a directory input it overrides inferred split groups for every discovered annotation file; omit it to preserve train/val.
+
+`--images` *IMAGES*
+:   Stage referenced images into the EdgeFirst on-disk layout next to the output: for `<dir>/<stem>.arrow` or `.parquet`, images are copied into `<dir>/<stem>/`. With a directory input, pass the COCO root so split directories are resolved automatically. Missing images warn but do not fail conversion; re-running is idempotent.
+
+`--link`
+:   Symlink staged images instead of copying (requires `--images`). Saves disk space for large datasets.
 
 **Examples:**
 
 ```bash
+# Standard COCO train + val -> one offline Arrow dataset:
+# coco/coco.arrow plus linked images in coco/coco/
+edgefirst-client coco-to-arrow ~/Datasets/COCO \
+  -o coco/coco.arrow --images ~/Datasets/COCO --link
+edgefirst-client validate-snapshot coco
 
-## Convert detection annotations (boxes + masks) to Arrow
+# The same combined dataset as Parquet
+edgefirst-client coco-to-arrow ~/Datasets/COCO \
+  -o coco-parquet/coco-parquet.parquet --images ~/Datasets/COCO --link
+edgefirst-client validate-snapshot coco-parquet
 
-edgefirst-client coco-to-arrow instances.json -o dataset.arrow
+# One split from a single JSON; --group assigns the split
+edgefirst-client coco-to-arrow instances_val2017.json \
+  -o val/val.arrow --images ~/Datasets/COCO/val2017 --group val
 
-## Convert a COCO ZIP archive and tag every sample as the train split
-
-edgefirst-client coco-to-arrow coco.zip -o dataset.arrow --group train
-
-## Convert bounding boxes only (no segmentation)
-
-edgefirst-client coco-to-arrow instances_val2017.json -o val.arrow --masks=false --group val
+# Convert bounding boxes only (no segmentation)
+edgefirst-client coco-to-arrow instances_val2017.json \
+  -o val.parquet --masks=false --group val
 ```
 
-**Note:** Every image in the COCO `images` array produces at least one row. An image with no annotations is emitted as a single placeholder row with a null label, preserving the image and its `group` so dataset splits cover the full image set.
+Every image in each COCO `images` array produces at least one row. An image with no annotations is emitted as a placeholder row with a null label, preserving the image and its `group` so splits cover the full image set.
+
+COCO crowd annotations (`iscrowd: 1`) are written with `ignore = true`, keeping their label and index; the deprecated `iscrowd` column is written as a mirror.
+
+Load and filter the resulting groups with Polars:
+
+```python
+import polars as pl
+
+df = pl.read_ipc("coco/coco.arrow")  # pl.read_parquet(...) for Parquet
+train = df.filter(pl.col("group") == "train")
+val = df.filter(pl.col("group") == "val")
+```
 
 ### `arrow-to-coco`
 
-Convert EdgeFirst Arrow format to COCO annotations. Reads an EdgeFirst Arrow file and converts it to COCO JSON, optionally filtered by group.
+Convert EdgeFirst Arrow IPC or Parquet annotations to COCO JSON, optionally filtered by group.
 
 **edgefirst-client arrow-to-coco** \[*OPTIONS*\] `--output` *OUTPUT* *ARROW_PATH*
 
 **Arguments:**
 
 *ARROW_PATH*
-:   Path to an EdgeFirst Arrow file.
+:   Path to an EdgeFirst Arrow IPC or Parquet file.
 
 **Options:**
 
@@ -877,15 +1044,16 @@ Convert EdgeFirst Arrow format to COCO annotations. Reads an EdgeFirst Arrow fil
 **Examples:**
 
 ```bash
-
-## Convert an Arrow dataset to COCO JSON
-
+# Convert an Arrow dataset to COCO JSON
 edgefirst-client arrow-to-coco dataset.arrow -o instances.json
 
-## Export only the train and val splits, pretty-printed
-
+# Export only the train and val splits, pretty-printed
 edgefirst-client arrow-to-coco dataset.arrow -o instances.json --groups train,val --pretty
 ```
+
+**Note:** COCO `iscrowd` is written from the `ignore` column (or a legacy `iscrowd` column). Rows flagged `exclude`, and `ignore` rows without a label, have no COCO equivalent and are skipped; one warning gives the count. `exclude` rows do not create a COCO category.
+
+**Category ids:** COCO `category_id` is taken from `label_index` when present, unchanged. A dataset indexed from 0, such as a default `visdrone-to-arrow` conversion (`pedestrian` = 0), therefore produces `category_id` 0. Some COCO tools reserve 0 for background; remap the ids if your consumer does.
 
 ### `import-coco`
 
@@ -941,26 +1109,23 @@ COCO datasets must be extracted before import — ZIP archives are not supported
 **Examples:**
 
 ```bash
-
-## Create a new dataset and import (group auto-detected from image folders)
-
+# Create a new dataset and import (group auto-detected from image folders)
 edgefirst-client import-coco ./coco --project p-123 --name "COCO 2017"
 
-## Import into an existing dataset and annotation set
-
+# Import into an existing dataset and annotation set
 edgefirst-client import-coco ./coco --dataset ds-123 --annotation-set as-456
 
-## Import detection boxes only into an existing dataset
-
+# Import detection boxes only into an existing dataset
 edgefirst-client import-coco ./coco/annotations/instances_train2017.json \
     --dataset ds-123 --annotation-set as-456 --masks=false
 
-## Verify a previous import without uploading
-
+# Verify a previous import without uploading
 edgefirst-client import-coco ./coco --dataset ds-123 --verify
 ```
 
 **Note:** `--group` matches against the group EdgeFirst derives from each image's path; standard COCO files reference images by bare filename (e.g. `000000397133.jpg`) and therefore carry no detectable group, so passing a value that does not match excludes those images. To assign a split to images that have none, convert with `coco-to-arrow --group` and upload with `upload-dataset`.
+
+**Note:** COCO crowd annotations (`iscrowd: 1`) map to the `ignore` flag, which EdgeFirst Studio does not store yet. Import and `--update` skip them and log one warning with the count, and `--verify` leaves them out of the expected COCO annotation count.
 
 ### `export-coco`
 
@@ -996,19 +1161,20 @@ Export an EdgeFirst Studio dataset to COCO format. Downloads samples and annotat
 **Examples:**
 
 ```bash
-
-## Export annotations to COCO JSON
-
+# Export annotations to COCO JSON
 edgefirst-client export-coco ds-123 as-456 -o instances.json
 
-## Export the train and val splits with images as a ZIP bundle
-
+# Export the train and val splits with images as a ZIP bundle
 edgefirst-client export-coco ds-123 as-456 -o coco.zip --images --groups train,val
 ```
 
 ### `migrate`
 
-Migrate an Arrow file from the 2025.10 schema to the 2026.04 schema. Converts the legacy NaN-separated `mask` column (`List(Float32)`) to the new nested `polygon` column (`List(List(Float32))`) and sets the `schema_version` metadata.
+Migrate an Arrow file from an older schema to the current 2026.10 schema. Files already at 2026.10 are left unchanged.
+
+- From 2025.10: converts the legacy NaN-separated `mask` column (`List(Float32)`) to the nested `polygon` column (`List(List(Float32))`). A Binary raster `mask` column is left unchanged.
+- From 2026.04: adds the `ignore` column from the deprecated `iscrowd` column and keeps `iscrowd` as a mirror.
+- In both cases, sets the `schema_version` metadata to 2026.10.
 
 **edgefirst-client migrate** \[*OPTIONS*\] *INPUT*
 
@@ -1025,15 +1191,101 @@ Migrate an Arrow file from the 2025.10 schema to the 2026.04 schema. Converts th
 **Examples:**
 
 ```bash
-
-## Migrate in place
-
+# Migrate in place
 edgefirst-client migrate dataset.arrow
 
-## Migrate to a new file, preserving the original
-
+# Migrate to a new file, preserving the original
 edgefirst-client migrate dataset.arrow --output migrated.arrow
 ```
+
+## VisDrone interchange
+
+Convert the VisDrone2019 aerial detection benchmark (DET still images and VID video sequences) into the EdgeFirst Dataset Format. The converter is offline and needs no Studio credentials. Extract the official archives first; note that `VisDrone2019-DET-test-dev.zip` has no top-level folder, so extract it into a directory of your choosing and pass `--group test-dev`.
+
+### `visdrone-to-arrow`
+
+**edgefirst-client visdrone-to-arrow** \[*OPTIONS*\] `--output` *OUTPUT* *SPLIT_DIR*...
+
+**Arguments:**
+
+*SPLIT_DIR*
+:   One or more extracted split directories. A DET split contains `annotations/<name>.txt` and `images/<name>.jpg`; a VID split contains `annotations/<seq>.txt` and `sequences/<seq>/0000001.jpg`. DET and VID splits may be combined into one output.
+
+**Options:**
+
+**-o, \--output** *OUTPUT*
+:   Output annotation file (required). `.parquet` writes Apache Parquet, anything else writes Arrow IPC. File metadata carries `schema_version`, `labels` (the ten VisDrone object classes in `label_index` order) and `category_metadata`.
+
+`--group` *GROUP*
+:   Group applied to every sample. When omitted, the group is inferred from each directory name ending in `-train`, `-val`, `-test-dev` or `-test-challenge`, and conversion fails for any other name.
+
+`--images`
+:   Stage the split images into `<dir>/<stem>/` next to the output. DET images keep their names; VID frames are renamed to `<seq>/<seq>_<frame>.camera.jpeg` so `validate-snapshot` and `upload-dataset` resolve them.
+
+`--link`
+:   Symlink staged images instead of copying (Unix only; requires `--images`).
+
+`--keep-ignored`
+:   Keep VisDrone category 0 (`ignored regions`) and 11 (`others`) instead of dropping them. Category 0 becomes an unlabeled row flagged `ignore=true`; category 11 becomes an unlabeled row flagged `exclude=true`. Neither gets a `label` or `label_index`. Python: `keep_ignored=True`.
+
+**Mapping:**
+
+By default, categories 0 (`ignored regions`) and 11 (`others`) are dropped; the remaining ten classes are indexed `label_index = object_category - 1` (`pedestrian` = 0 … `motor` = 9), matching the Ultralytics VisDrone mapping. With `--keep-ignored`, categories 0 and 11 are kept as unlabeled rows flagged `ignore`/`exclude` (see below) instead of being dropped.
+
+| VisDrone | EdgeFirst |
+|---|---|
+| `bbox_left, bbox_top, bbox_width, bbox_height` | `box2d` normalized `[cx, cy, w, h]` |
+| `object_category` 1..10 | `label`, `label_index = object_category - 1` |
+| `object_category` 0 (`ignored regions`) | dropped by default; with `--keep-ignored`, an unlabeled row with `ignore = true` |
+| `object_category` 11 (`others`) | dropped by default; with `--keep-ignored`, an unlabeled row with `exclude = true` |
+| `score` | not stored: it is 0 exactly when the category is 0 or 11 |
+| `truncation`, `occlusion` | `truncation`, `occlusion` columns |
+| VID `frame_index`, sequence | `frame`, `name` = sequence |
+| VID `target_id` | `object_id` = `<seq>/<target_id>` |
+
+**Examples:**
+
+```bash
+# DET train + val into one offline dataset
+edgefirst-client visdrone-to-arrow VisDrone2019-DET-train VisDrone2019-DET-val \
+  -o visdrone-det/visdrone-det.arrow --images
+edgefirst-client validate-snapshot visdrone-det
+
+# test-dev, extracted into a folder without a split suffix
+edgefirst-client visdrone-to-arrow testdev -o visdrone-testdev/visdrone-testdev.parquet \
+  --group test-dev --images
+
+# VID val as a sequence dataset
+edgefirst-client visdrone-to-arrow VisDrone2019-VID-val -o visdrone-vid/visdrone-vid.arrow --images
+
+# DET val + VID train in one offline dataset (mixed splits)
+edgefirst-client visdrone-to-arrow VisDrone2019-DET-val VisDrone2019-VID-train \
+  -o visdrone-mixed/visdrone-mixed.arrow --images
+```
+
+Ignored regions and `others` are already dropped by default; filter to the train group directly with Polars:
+
+```python
+import polars as pl
+
+df = pl.read_ipc("visdrone-det/visdrone-det.arrow")
+train = df.filter(pl.col("group") == "train")
+```
+
+Rerun with `--keep-ignored` and filter on the flags instead of `label_index` if those rows are needed:
+
+```python
+df = pl.read_ipc("visdrone-det/visdrone-det.arrow")
+
+## A split with no ignored regions or no others has no column for that flag.
+
+flag_cols = [c for c in ("ignore", "exclude") if c in df.columns]
+flagged = df.filter(pl.any_horizontal(flag_cols)) if flag_cols else df.clear()
+```
+
+**Studio notes (first pass):** `upload-dataset` publishes the converted dataset. Labels are created with `label_index` 0–9 (`pedestrian` = 0), groups follow the split names, VID frames become Studio sequences and `object_id` is stored as `object_reference`, so track ids survive. Rows flagged `ignore`/`exclude` (from `--keep-ignored`) are not uploaded, and `truncation` and `occlusion` are not stored by Studio yet; keep the Arrow file as the source of truth. Version tag restore drops per-annotation attributes.
+
+**Source fidelity:** boxes are converted exactly as written in the VisDrone text files. A few extend past the image edge (34 boxes across the six official splits) and a few have zero height (3 boxes); they are kept, not clipped or dropped, so evaluation against the official protocol stays exact. Filter them in Polars if a trainer rejects them.
 
 ## Training
 
@@ -1105,13 +1357,10 @@ Retrieve training session information for the provided session ID.
 **Example:**
 
 ```bash
-
-## Get basic session info
-
+# Get basic session info
 edgefirst-client training-session t-1a2b
 
-## Get session with model parameters
-
+# Get session with model parameters
 edgefirst-client training-session 12345 --model --dataset
 ```
 
@@ -1137,13 +1386,10 @@ Download an artifact from the provided training session ID.
 **Example:**
 
 ```bash
-
-## Download to current directory
-
+# Download to current directory
 edgefirst-client download-artifact t-1a2b best_model.pth
 
-## Download to specific location
-
+# Download to specific location
 edgefirst-client download-artifact 12345 model.pth \
     --output /models/production/model-v2.pth
 ```
@@ -1170,15 +1416,156 @@ Upload an artifact to the provided training session ID.
 **Example:**
 
 ```bash
-
-## Upload with original filename
-
+# Upload with original filename
 edgefirst-client upload-artifact 12345 ./checkpoint.pth
 
-## Upload with custom name
-
+# Upload with custom name
 edgefirst-client upload-artifact t-1a2b ./final.pth \
     --name production_model.pth
+```
+
+### `trainer-schemas`
+
+List the trainer types available on the server. The reported schema type is used with the `trainer-schema` and `start-training-session` commands.
+
+**edgefirst-client trainer-schemas**
+
+### `trainer-schema`
+
+Show the parameter schema for a trainer type. The schema describes the hyperparameters accepted by `start-training-session --param`, including defaults, ranges, and nested parameter groups.
+
+**edgefirst-client trainer-schema** *SCHEMA_TYPE*
+
+**Arguments:**
+
+*SCHEMA_TYPE*
+:   Trainer schema type (see the `trainer-schemas` command).
+
+**Example:**
+
+```bash
+edgefirst-client trainer-schema modelpack
+```
+
+### `start-training-session`
+
+Launch a new training session for an experiment. The session trains on a single dataset using group-based train/validation splits. The dataset tag defaults to the latest tag and the split groups default to the dataset's standard `train` and `val` groups.
+
+**edgefirst-client start-training-session** \[*OPTIONS*\] `--name` *NAME* `--experiment-id` *ID* `--trainer-type` *TYPE* `--dataset-id` *ID* `--annotation-set-id` *ID* *PROJECT_ID*
+
+**Arguments:**
+
+*PROJECT_ID*
+:   Project ID owning the experiment and dataset.
+
+**Options:**
+
+`--name` *NAME*
+:   Name for the training task (required).
+
+`--experiment-id` *ID*
+:   Experiment ID the session belongs to (required).
+
+`--trainer-type` *TYPE*
+:   Trainer schema type (required, see `trainer-schemas`).
+
+`--dataset-id` *ID*
+:   Dataset ID to train on (required).
+
+`--annotation-set-id` *ID*
+:   Annotation set ID providing the ground-truth labels (required).
+
+`--tag` *TAG*
+:   Dataset tag to train against. Defaults to the latest tag; it is an error if the dataset has no tags and none is provided.
+
+`--train-group` *GROUP*
+:   Training split group name. Defaults to `train`.
+
+`--val-group` *GROUP*
+:   Validation split group name. Defaults to `val`.
+
+`--param` *KEY=VALUE*
+:   Trainer hyperparameter, repeatable. Values are parsed as JSON (numbers, booleans) and fall back to strings. See `trainer-schema` for accepted parameters.
+
+`--session-name` *NAME*
+:   Optional display name for the training session.
+
+`--session-description` *DESC*
+:   Optional description for the training session.
+
+`--weights-session` *ID*
+:   Optional source training session ID for transfer-learning weights.
+
+`--local`
+:   Create a user-managed session. No cloud instance is provisioned; the caller runs the training loop and uploads artifacts/metrics.
+
+`--kubernetes`
+:   Schedule onto the organization's Kubernetes runner instead of a cloud instance.
+
+`--monitor`
+:   Monitor the launched task's progress until completion.
+
+**Example:**
+
+```bash
+# Launch a cloud training session with the latest dataset tag
+edgefirst-client start-training-session p-123 \
+    --name nightly-run --experiment-id exp-45 \
+    --trainer-type modelpack \
+    --dataset-id ds-678 --annotation-set-id as-910 \
+    --param epochs=100 --param batch_size=8 --monitor
+
+# Launch a user-managed session against a specific tag and groups
+edgefirst-client start-training-session p-123 \
+    --name local-run --experiment-id exp-45 \
+    --trainer-type modelpack \
+    --dataset-id ds-678 --annotation-set-id as-910 \
+    --tag v2.0 --train-group daylight --val-group night --local
+```
+
+### `update-training-session`
+
+Update the name and/or description of a training session. At least one of `--name` or `--description` must be provided.
+
+**edgefirst-client update-training-session** \[*OPTIONS*\] *SESSION_ID*
+
+**Arguments:**
+
+*SESSION_ID*
+:   Training session ID.
+
+**Options:**
+
+`--name` *NAME*
+:   New session name.
+
+`--description` *DESC*
+:   New session description.
+
+**Example:**
+
+```bash
+edgefirst-client update-training-session t-1a2b \
+    --name "baseline v2" --description "retrained with new tags"
+```
+
+### `delete-training-sessions`
+
+Delete one or more training sessions.
+
+**WARNING:** validation sessions attached to the deleted training sessions are removed as well, along with all artifacts and checkpoints.
+
+**edgefirst-client delete-training-sessions** *SESSION_IDS*...
+
+**Arguments:**
+
+*SESSION_IDS*
+:   One or more training session IDs to delete.
+
+**Example:**
+
+```bash
+edgefirst-client delete-training-sessions t-1a2b t-3c4d
 ```
 
 ## Tasks
@@ -1209,13 +1596,10 @@ List all tasks for the current user. Tasks represent asynchronous operations lik
 **Example:**
 
 ```bash
-
-## List all tasks
-
+# List all tasks
 edgefirst-client tasks
 
-## List running training tasks with stages
-
+# List running training tasks with stages
 edgefirst-client tasks --status running \
     --workflow training --stages
 ```
@@ -1260,6 +1644,53 @@ Retrieve validation session information for the provided session ID.
 *SESSION_ID*
 :   The unique identifier of the validation session.
 
+### `update-validation-session`
+
+Update the name and/or description of a validation session. At least one of `--name` or `--description` must be provided.
+
+**edgefirst-client update-validation-session** \[*OPTIONS*\] *SESSION_ID*
+
+**Arguments:**
+
+*SESSION_ID*
+:   Validation session ID.
+
+**Options:**
+
+`--name` *NAME*
+:   New session name.
+
+`--description` *DESC*
+:   New session description.
+
+### `delete-validation-sessions`
+
+Delete one or more validation sessions. Only the validation sessions are removed; the parent training session is never affected.
+
+**edgefirst-client delete-validation-sessions** *SESSION_IDS*...
+
+**Arguments:**
+
+*SESSION_IDS*
+:   One or more validation session IDs to delete.
+
+**Example:**
+
+```bash
+edgefirst-client delete-validation-sessions v-5e6f v-7a8b
+```
+
+### `validator-schemas`
+
+List the validator schemas available on the server. Each schema describes the parameters accepted by the matching validator type.
+
+**edgefirst-client validator-schemas** \[`--type` *TYPE*\]
+
+**Options:**
+
+`--type` *TYPE*
+:   Only show the schema with this type.
+
 ## Environment variables
 
 **STUDIO_SERVER**
@@ -1277,12 +1708,18 @@ Retrieve validation session information for the provided session ID.
 **RUST_LOG**
 :   Logging level (error, warn, info, debug, trace). Default: info.
 
+**EDGEFIRST_UPLOAD_BATCHES**
+:   Number of concurrent batch-upload tasks used by `upload-dataset`. Default: 4.
+
+**MAX_TASKS**
+:   General upload/download task concurrency (e.g. `download-snapshot`). Default: half the available CPU cores, clamped to the 2-8 range. Distinct from **EDGEFIRST_UPLOAD_BATCHES**.
+
 ## Token file locations
 
-**~/.config/EdgeFirst Studio/token** (Linux)
+**~/.config/edgefirststudio/token** (Linux)
 :   Cached authentication token for persistent sessions.
 
-**~/Library/Application Support/ai.EdgeFirst.EdgeFirst Studio/token** (macOS)
+**~/Library/Application Support/ai.EdgeFirst.EdgeFirst-Studio/token** (macOS)
 :   Cached authentication token for persistent sessions.
 
 **%APPDATA%\\EdgeFirst\\EdgeFirst Studio\\config\\token** (Windows)

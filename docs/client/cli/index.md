@@ -4,7 +4,7 @@
 
 ```bash
 pip install edgefirst-client
-edgefirst-client version
+edgefirst-client server-version
 ```
 
 For the full command listing, see the [CLI reference](reference.md).

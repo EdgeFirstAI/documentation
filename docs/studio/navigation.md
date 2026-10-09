@@ -1,6 +1,6 @@
 # Navigating EdgeFirst Studio
 
-This page describes how to navigate towards different functionalities in the EdgeFirst Studio.  When first logged in to EdgeFirst Studio, you will be directed to the [User Home Page](home.md) as shown below.
+This page describes how to navigate towards different pages and features of EdgeFirst Studio.  When first logged in to EdgeFirst Studio, you will be directed to the [User Home Page](home.md) as shown below.
 
 {{ figure("assets/user/home-page.png", "Starting Page") }}
 
@@ -13,7 +13,7 @@ The elements of the navbar are:
 1. The EdgeFirst Studio Home Button. This button will return a user to the [Home Page](home.md)
 2. The "Back" button to return to the previous page
 3. The "Projects"button to navigate towards the [Projects Page](projects.md)
-4. The Page Title.  On other pages, there will be a "Projects" drop-down to navigate to other projects
+4. The Page Title.  On other pages, these will be links to show parent-child pages
 5. The current amount of funds and "Add Funds" button
 6. The Help Button.  This will take the user to the page's corresponding documentation page
 7. The Apps Waffle Button.  This will take the user to the [Apps Menu](navigation.md#apps-menu)

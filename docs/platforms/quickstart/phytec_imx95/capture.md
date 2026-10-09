@@ -30,7 +30,7 @@ The examples shown in this guide are based on PHYTEC's Dataset Collection demo f
     # ./capture-libcamera-liveview-csi1.sh
     ```
 
-    You should see a live feed of the camera on the monitor. 
+    You should see a live feed of the camera on the monitor.
 
     {{ figure("../../assets/setup/phytec/imx95_livestream.png", "Live Stream View") }}
 
@@ -39,7 +39,7 @@ The examples shown in this guide are based on PHYTEC's Dataset Collection demo f
 1. Ensure adequate lighting is placed upon the tray and keep wiring away from the camera’s field of view
 
 2. Ensure the camera’s exposure mode is set to auto `v4l2-ctl -d /dev/v4l-subdev21 --set-ctrl=auto_exposure=0`
-    
+
     You can confirm the current exposure mode setting with this command:
 
     ```shell

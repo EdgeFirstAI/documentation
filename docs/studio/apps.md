@@ -1,6 +1,6 @@
-# Studio Apps Dashboard
+# Apps Dashboard
 
-The Studio Apps page is a catalog that lists all available EdgeFirst apps.  Apps extend
+The Studio Apps page is a catalog that lists all available EdgeFirst apps. Apps extend
 the platform with custom processing pipelines such as data import, model training,
 conversion, validation, and profiling.
 
@@ -9,29 +9,76 @@ To access this page, click the **Apps** waffle icon in the top navigation bar an
 
 {{ figure("assets/apps-page.png", "Studio Apps Marketplace") }}
 
+## Search And Filter
+
+The top of the Apps page provides filters to help narrow the catalog:
+
+- **Name**: Search by the app package or internal app name.
+- **Title**: Search by the user-facing app title.
+- **Author**: Filter apps by publisher.
+- **Type**: Filter by app category such as AIGT, Converter, Exporter, Importer,
+  Profiler, Trainer, or Validator.
+
+When a type filter is active, a **Clear Filter** button appears so you can return to the
+full catalog.
+
+## App Categories
+
+When no type filter is selected, the Apps page first shows category cards rather than
+individual app cards. Each category card summarizes one app type and includes:
+
+- **Category name** such as Converter or Importer.
+- **Description** of what that class of apps is used for.
+- **Apps** count showing how many apps are available in that category.
+- **Free** count showing how many apps in the category have no hourly cost.
+- **Author** dropdown for narrowing that category by publisher.
+
+Clicking a category card, or choosing a specific value in the **Type** filter, opens the
+list of individual apps for that category.
+
 ## App Cards
 
-Each app is displayed as a card with the following information:
+After selecting a category, each app is displayed as a detailed card with the following
+information:
 
-- **Name** — The display name of the app.
+- **Title** — The display name of the app.
+- **Type** — The app category, such as `converter`.
+- **Preview image** — A visual identifier for the app.
 - **Description** — A brief summary of what the app does.
-- **Package ID** (package field) — The internal package identifier used by the platform.
-- **Version** — The currently published version of the app.
+- **Package ID and Version** — The internal package identifier and published version,
+  shown together, for example `edgefirst-studio-neutron : 1.4.1`.
+- **Runs** — The total number of executions recorded for the app.
 - **Author** — The organization or individual that published the app.
 - **Help** — A link to the app's full documentation page.
-- **Runs** — The total number of executions recorded for this app across the organization.
 - **Pricing** — The per-hour compute cost, or **Free** if there is no charge.
 
 !!! note "Apps are launched from their workflow"
-    The Apps page is a catalog only — apps are not launched from here.  Each app is
-    started from the relevant point in its workflow.  For example, Converter Apps are
-    launched from a completed training session's *Artifacts* tab.  Once started, the app
-    run is tracked in the [Tasks panel](navigation.md#tasks).
+    The Apps page is a catalog only. Apps are not launched directly from this page.
+    Each app is started from the relevant point in its workflow. For example,
+    Converter Apps are launched from a completed training session's *Artifacts* tab.
+    Once started, the app run is tracked in the [Tasks page](tasks.md).
 
 ## Available Apps
 
 EdgeFirst Studio ships with the apps described below. Each app is documented in more
 detail on its own help page, linked from its card and from the sections that follow.
+
+### App Types
+
+The Apps page groups apps into the following categories:
+
+- **Converter**: Converts a trained model into a deployment-ready artifact for a target
+  runtime or accelerator.
+- **Exporter**: Packages datasets, annotations, or model outputs into an external format
+  for download or use outside Studio.
+- **Importer**: Brings external data such as images, videos, annotations, or dataset
+  archives into Studio.
+- **Profiler**: Runs on-target measurement and produces timing traces, predictions, and
+  performance artifacts for validation.
+- **Trainer**: Launches model training jobs and produces training sessions, checkpoints,
+  and deployment artifacts.
+- **Validator**: Evaluates trained or profiled models and produces quality metrics,
+  charts, and reports.
 
 ### EdgeFirst Profiler
 
@@ -89,8 +136,8 @@ NPUs, with structurally-required per-scale Smart Quantization. See
 [Hailo Conversion](../models/conversion/hailo.md).
 
 !!! info "App Marketplace"
-    The available apps may change as new apps are published.  Per-app pricing is shown on
-    each app card and reflected in your [billing](user/billing.md).  Contact
+    The available apps may change as new apps are published. Per-app pricing is shown on
+    each app card and reflected in your [billing](user/billing.md). Contact
     [support@edgefirst.ai](mailto:support@edgefirst.ai) for information on publishing
     your own apps to the marketplace.
 

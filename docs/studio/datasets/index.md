@@ -27,18 +27,18 @@ Click on labels (i) icon to open the dialog to edit labels.
 
 The edit dialog allows to:
 
-- Add Label (class).
-- Change the color of the label.
-- Change the order of the labels by changing its index.
-- Delete a label.
-- Change the name of a label.
+- Add Label (class)
+- Change the color of the label
+- Change the order of the labels by changing its index
+- Delete a label
+- Change the name of a label
 
 Tutorials for these operations can be found under the [Dataset Annotations](../../datasets/tutorials/annotations/index.md#dataset-labels) section.
 
 ## Groups
 
-- Groups splits the images into training and validation images
-- One image can be associated with zero or only one group at a time
+- Groups splits the dataset into training and validation samples
+- One sample can be associated with zero or only one group at a time
 - Use the slider to adjust percentages for each group.
 - If "Only non-grouped images" is unchecked, all images will be shuffled and assigned new groups.
 
@@ -64,7 +64,7 @@ There are several import types available.
 
 {{ figure("../assets/datasets/import-datasets.png", "Importing Datasets") }}
 
-To import datasets proceed with the steps as follows or follow this in-depth tutorial for [importing datasets](../../datasets/tutorials/import.md).
+To import datasets, proceed with the steps as follows or follow this in-depth tutorial for [importing datasets](../../datasets/tutorials/import.md).
 
 1. Select an import type.  The [EdgeFirst Dataset Format](../../datasets/format/index.md) is the proprietary format used by many operations in EdgeFirst Studio.
 2. Create an annotation set where annotations are to be imported.  If only images are imported, then this step is not required.
@@ -90,9 +90,9 @@ To export datasets proceed with the steps as follows.
 2. Select the export format.
 3. Select the annotation set to be exported if required.
 4. Select Mode:
-    - Dataset - Exports images and annotations. Exports a ZIP file in the downloads folder.
-    - Annotations Only - Exports only the annotations. Exports a ZIP file in the downloads folder.
-    - Image URLS only - Useful for larger datasets. Exports a file with image urls in the downloads folder.
+    - Dataset - exports images and annotations. Exports a ZIP file in the downloads folder.
+    - Annotations Only - exports only the annotations. Exports a ZIP file in the downloads folder.
+    - Image URLS only - useful for larger datasets. Exports a file with image urls in the downloads folder.
 
 !!! tip "Large Datasets"
     For datasets larger than 10000 images, export image URLS and annotations separately and then use a script to download images.
@@ -129,16 +129,18 @@ If GPS location is present, then the annotation can be viewed on the map by usin
 
 ### Dataset History
 
-The dataset history introduces versioning for the dataset.  This allows any changes made to the dataset to be tracked via the "Changelog" section and allows the user to restore the state of the dataset with a known version, delete a dataset version, or add a new dataset version for the current state of the dataset.
+The dataset history introduces versioning to the dataset.  This allows any changes made to the dataset to be tracked via the "Changelog" section and allows the user to restore the state of the dataset with a known version or add a new dataset version to the current state of the dataset.
 
 {{ figure("../assets/datasets/dataset-history.jpg", "Dataset History") }}
+
+More information regarding the [tagging of datasets](tag.md) can be found by clicking on the link provided.
 
 ### Remove Dataset
 
 To delete a dataset, click "Move to Recycle Bin".  This moves the dataset and all of its contents to the Recycle Bin.
 
 !!! info
-    The deleted dataset goes to the recycle bin that can be restored.  The storage used by the dataset is only released when the dataset is purged from the recycle bin.
+    Deleted dataset inside the recycle bin can be restored.  The storage used by the dataset is only released when the dataset is purged from the recycle bin.
 
 ## Next Steps
 

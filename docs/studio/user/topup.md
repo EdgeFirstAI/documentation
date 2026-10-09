@@ -1,8 +1,7 @@
 # Top-up
 
 The Top-up page allows administrators to add credit balance to their organization account.
-To access this page, click the **Add Funds** button in the top navigation bar, or navigate to
-**Admin Console** from the user menu, select **Billing** from the side navigation, then click **Top-up**.
+To access this page, click the **Add Funds** button in the top navigation bar.
 
 {{ figure("../assets/user/topup-page.png", "Add Credit Balance") }}
 
@@ -33,3 +32,4 @@ have a credit card configured.
 
 To review your current plan limits and payment methods, see [Subscription](subscription.md).
 To review your transaction history, see [Billing Information](billing.md#transactions).
+Otherwise proceed to the next section to learn more about [managing your projects](../projects.md) in EdgeFirst Studio.

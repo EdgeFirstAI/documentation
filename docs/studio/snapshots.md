@@ -1,6 +1,6 @@
 # Snapshots Dashboard
 
-Snapshots are portable, frozen copies of datasets in the [EdgeFirst Dataset Format](../datasets/format/index.md). Each snapshot consists of a **ZIP + Arrow file pair**:
+Snapshots are portable, frozen copies of datasets. A snapshot can either be imported or exported. Imported snapshots are typically in the form of an MCAP which brings in data recordings from an [EdgeFirst Platform](../platforms/index.md) which can then be restored into EdgeFirst Studio as a dataset. Exported snapshots are Studio datasets converted into snapshots which can be downloaded into the user's machine in the [EdgeFirst Dataset Format](../datasets/format/index.md) which consists of a **ZIP + Arrow file pair**:
 
 - **ZIP file**: Contains sensor data (images, point clouds, etc.)
 - **Arrow file**: Contains annotations (labels, bounding boxes, masks, metadata)
@@ -30,9 +30,9 @@ A snapshot can be created by the following ways:
 ### Create from Existing Dataset
 
 1. From the dataset card, open the context menu and select "Create Snapshot".
-2. Select the dataset and annotation set to create a snapshot from and give it a description.
+2. Select the annotation set and give the snapshot a name.
 3. This will trigger the creation of a snapshot.
-4. The status of the snapshot generation will be shown in the dataset card.
+4. The status of the snapshot generation will be shown in the [tasks page](tasks.md).
 5. When completed, the snapshot will appear in the snapshots dashboard.
 
 ### Upload from MCAP File
@@ -50,17 +50,17 @@ This format is the [EdgeFirst Dataset Format](../datasets/format/index.md) where
 
 ### Pipeline
 
-When creating a snapshot a pipeline with the following stages are deployed.
+When creating a snapshot, a pipeline with the following stages are deployed.
 
-1. Server Initialization: Initialize the backend server for handling the processes.
-2. Downloading Files from Cloud Storage: Fetches the dataset images from the S3 bucket.
-3. Exporting Files from Database: Fetches the dataset annotations from the Studio database.
-4. Zipping Files for Upload: Formulation of the [EdgeFirst Dataset Format](../datasets/format/index.md) and placing the fetched dataset files as a single ZIP file.
-5. Uploading Snapshot to Cloud Storage: Uploading the dataset into S3 bucket.
+1. Server Initialization: initialize the backend server for handling the processes.
+2. Downloading Files from Cloud Storage: fetches the dataset images from the S3 bucket.
+3. Exporting Files from Database: fetches the dataset annotations from the Studio database.
+4. Zipping Files for Upload: formulation of the [EdgeFirst Dataset Format](../datasets/format/index.md) and placing the fetched dataset files as a single ZIP file.
+5. Uploading Snapshot to Cloud Storage: uploading the dataset into S3 bucket.
 
 ## Restore Snapshot
 
-This action will take an MCAP or ZIP/Arrow files and create a dataset in EdgeFirst Studio.  The backend pipelines for auto depth map generation, object detection, and Automated Ground Truth Generation can also be selected at this time while restoring.
+This action will take the imported MCAP or ZIP/Arrow files to create a dataset in EdgeFirst Studio.  The backend pipelines for auto depth map generation, object detection, and Automated Ground Truth Generation can also be selected at this time while restoring.
 
 The tutorial for restoring snapshots can be found under the [Dataset Annotations](../datasets/tutorials/annotations/automatic.md#restore-snapshot) section.
 
@@ -71,32 +71,34 @@ The stages for restoring a snapshot are shown below.
 1. Click on the snapshot context menu (three dots).
 2. Select "Restore".
 
-{{ figure("assets/snapshots/options.png", "Snapshot Options") }}
+    {{ figure("assets/snapshots/options.png", "Snapshot Options") }}
 
 3. This will open the restore dialog for specifying the options.
 
-{{ figure("assets/snapshots/restore-dialog.png", "Restore Options") }}
+    {{ figure("assets/snapshots/restore-dialog.png", "Restore Options") }}
 
-4. Select "Project" where the dataset will be created.
-5. Enter the dataset name and description. If the dataset name is not provided a dataset, a dataset with the snapshot name will be created.
-6. Check "Use MCAP Selected Topics" if selected topics are to be imported (for example ignoring Radar and only importing Segmentation).
-7. Select "Use MCAP Frame Rate" to select a custom frame rate.
+    {{ figure("../datasets/assets/annotations/automatic/restore_mcap_prompts.jpg", "Restore Snapshot Steps") }}
+
+4. Specify the "Project" destination to store the dataset once it completes.
+5. Enter the dataset name and description. If the dataset name is not provided, the snapshot name will be used.
+6. For additional MCAP settings such as adjusting the FPS, enable "Use MCAP Selected Topics".
+7. Specify the source of annotations from either the MCAP model topic, or enable auto generation of 2D boxes, 3D boxes, and segmentation masks by deploying a Studio trained model or a base YOLOx model for [COCO](../datasets/coco/index.md#coco-labels) annototions.
+
 8. Select "Depth Generation" to use AI Model based depth map generation.
-9. Select "AI Ground Truth Generation" to enable auto generation of 2D boxes, 3D boxes, and segmentation masks.
-10. Click "RESTORE SNAPSHOT".
-11. The dataset dashboard will have a new dataset with progress indication.
-12. The progress for different stages will be at different rates.
+9. Click "Start App".
+10. The status of the snapshot generation will be shown in the [tasks page](tasks.md).
+11. Once complete, the dataset dashboard will show the new restored dataset.
 
 ### Pipeline
 
-When restoring a snapshot a pipeline with the following stages are deployed.
+When restoring a snapshot, a pipeline with the following stages are deployed.
 
-1. Download Snapshot from Cloud Storage: Fetches the dataset from the S3 server.
-2. Converting MCAP to Dataset: This is only present when the method of [creating a snapshot](#upload-from-mcap-file) is from an MCAP file.
-3. Automatic Annotations Generation: Runs AGTG to auto annotate the dataset with COCO labels.
-4. Prepare Data for Upload: Data preparation processes.
-5. Importing Images and Annotations to Database: Uploading the images and annotations to the Studio database.
-6. Uploading Files to Cloud Storage: Uploading the annotated dataset back into S3 bucket.
+1. Initializing Server Environment: Starts a batch server to host the restore process.
+2. Downloading MCAP from Cloud Storage: Fetches the snapshot from the S3 server.
+3. Converting MCAP to Zip and Arrow: This is only present when the method of [creating a snapshot](#upload-from-mcap-file) is from an MCAP file.
+4. Depth Generation: Runs depth generation for each frame in the snapshot.
+5. Automatic Ground Truth Generation: Runs AGTG to auto annotate the dataset.
+6. Importing Dataset: Uploading the images and annotations to the Studio database.
 
 ## Download Snapshot
 

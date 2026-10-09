@@ -2,12 +2,25 @@
 
 The Tasks page provides a centralized view of all background operations running in
 EdgeFirst Studio — including model training, validation, app runs, and data imports.
-Both currently running and completed operations are visible here.
+Both currently running and completed operations are visible here in a single paginated view.
 
 To access this page, click the **Apps** waffle icon in the top navigation bar and
 select **Tasks** from the menu.
 
-{{ figure("assets/tasks-page.png", "Tasks Page") }}
+{{ figure("assets/tasks/tasks_button.jpg", "Tasks Button") }}
+
+The tasks page will look like the following:
+
+{{ figure("assets/tasks_page.jpg", "Tasks Page") }}
+
+## Toolbar
+
+The toolbar at the top-right of the page provides the main navigation and display controls:
+
+- **Page navigation** — Jump to the first, previous, next, or last page of tasks.
+- **Page indicator** — Shows the current page number and total number of pages.
+- **Filter** — Opens the task filters. The badge on the button shows how many filters are currently active.
+- **View toggle** — Switch between **Card View** and **List View**.
 
 ## Views
 
@@ -15,28 +28,13 @@ The page supports two display modes, toggled with the button in the top-right co
 of the toolbar:
 
 - **Card View** (default) — Displays each task as an expanded card showing full details.
-- **List View** — Displays tasks in a compact table format for a broader overview.
+- **List View** — Displays the same task information in a denser row-based layout for easier scanning.
 
 ## Filtering
 
-Use the **Start Date** and **End Date** fields to limit the tasks shown to a specific
-time window.  Click the calendar icon to open the date picker.
-
-Toggle **Show Deleted** to include tasks that have been removed from the active list.
-
-## Task Sections
-
-Tasks are grouped into two collapsible sections:
-
-### Active Tasks
-
-Shows all currently running or queued operations.  Each active task card displays
-real-time status alongside the controls described below.
-
-### Historical Tasks
-
-Shows all completed, failed, or stopped operations.  The count in the section
-heading reflects the total number of historical tasks matching the current filter.
+Use the **Filter** button to narrow the list of tasks. Depending on the active filters,
+you can limit the results shown on the page and focus on the operations relevant to
+your current workflow.
 
 ## Task Card
 
@@ -45,22 +43,26 @@ Each task card shows the following information:
 | Field | Description |
 | ----- | ----------- |
 | **Task ID** | A unique identifier for the task (e.g. `bt-445d`). Click the copy icon to copy it to the clipboard. |
-| **Status** | The current state of the task: **Completed**, **Running**, **Failed**, or **Stopped**. |
-| **Name** | The display name assigned to the task at creation time. |
+| **Name** | The display name assigned to the task at creation time, shown beneath the task ID. |
+| **Status** | The current state of the task such as **complete**, **queued**, **running**, **terminated**, or **failed**. |
+| **Timestamp** | The date and time associated with the task entry. |
+| **Duration / Age** | The elapsed runtime or age shown next to the timestamp. |
+| **Progress** | The current stage label, step counter, progress bar, and percentage complete. |
+| **Message** | A short status message describing the current or final task state. |
+| **App Name** | The app or service associated with the task when applicable. |
 | **Type** | The task category — `training`, `validation`, `app.<name>`, or `import`. |
-| **Trainer / Validator** | For training and validation tasks, links to the associated session IDs. |
-| **Start Date** | When the task began executing. |
-| **Duration** | Total elapsed time. |
-| **Process ID** | The internal process UUID. Click the copy icon to copy it. |
+| **Linked resources** | Related items such as experiment, dataset, training session, or validation session. These identifiers can be copied from the card. |
+| **Process ID** | The internal process UUID shown in the status area for tasks that expose it. |
 
 ### Task Actions
 
-Each card has an action bar with the following buttons:
+Each task card includes action buttons near the top-right corner for task management. Depending on the task state and type, these actions can include:
 
 - **View Logs** — Open the live or historical console output for the task.
-- **Stop** — Terminate a running task.
-- **Delete** — Remove the task from the history list.
-- **Copy** — Copy the task details to the clipboard.
+- **Task Actions Menu** — Open additional task-specific actions.
+- **Delete** — Remove the task from the visible history when supported.
+
+In **List View**, the same information is displayed in a more compact format while preserving the per-task action controls.
 
 ## Next Steps
 

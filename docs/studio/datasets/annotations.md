@@ -8,9 +8,9 @@ For these operations please refer to the following figure.
 
 {{ figure("../assets/datasets/annotationset-attributes.jpg", "Annotation Set Attributes") }}
 
-- Click on the add annotation set button (+) to add an annotation set.
+- Click on the add annotation set button "+"" to add an annotation set.
 - Each annotation set has an extended menu to edit the annotation set information or delete the annotation set - all associated annotations will also be deleted.  Please note that deleted annotation sets goes the the Recycle Bin and can either be restored or permanently deleted.  The storage is only freed when the Recycling Bin is cleared.  
-- Each annotation set has an (i) button to get/set the details of the annotation set.
+- Each annotation set has an (i) button to get the details of the annotation set.
 
 ## Editing 2D Annotations
 
@@ -20,6 +20,10 @@ There are two modes of operations:
 2. Edit Annotations from the Gallery
 
 ## Auditing Tasks Board
+
+!!! note "Feature Unavailable"
+
+    Auditing Tasks is currently unavailable and this feature is a work in progress. The screenshots provided in this section are out of date until the new implementations and fixes are set in place.
 
 EdgeFirst Studio allows multiple users to remotely access a single dataset and annotation set and make changes without interfering with each other. Users can navigate to this page using the Apps Menu.
 
@@ -143,4 +147,4 @@ Users can edit the size of the annotation by mouse click and drag.
 
 ## Next Steps
 
-This page has described the features and contexts of annotations sets and making any changes to the annotations.  For more tutorials on annotating datasets, visit the [Dataset Annotations](../../datasets/tutorials/annotations/index.md) section.  Otherwise, proceed to the [Model Experiments Dashboard](../models.md) to learn more about the context of model training and validation.
+This page has described the features and contexts of annotations sets and making any changes to the annotations.  For more tutorials on annotating datasets, visit the [Dataset Annotations](../../datasets/tutorials/annotations/index.md) section.  Otherwise, learn more about other dataset features in Studio such as the [Dataset Map](map.md).

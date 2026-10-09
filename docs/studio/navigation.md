@@ -56,7 +56,7 @@ The "Help" button will point towards the link in the EdgeFirst documentation tha
 
 You can request additional funds via the "Add Funds" button. This will bring up the "Top-up" page. Here you can request funds from us via Credit Card, Coupon, or by other reasons through the "email" button.
 
-{{ figure("assets/navigation/request-funds.png", "Apps Menu") }}
+{{ figure("assets/navigation/request-funds.png", "Request Funds Modal") }}
 
 ## Apps Menu
 
@@ -64,41 +64,63 @@ The Apps Menu provides selections towards the various tools provided in EdgeFirs
 
 {{ figure("assets/navigation/apps-menu.png", "Apps Menu") }}
 
-### Projects
+### Datasets Dropdown
 
-Clicking on "Projects" takes the user to the [Projects Dashboard](projects.md).  This operation is the same as clicking on the "Projects" button on the top navigation bar.  A project is a high-level collections of sensor datasets, model experiments, and other automation and management tasks associated with the dataset inputs and model outputs.
+Clicking on "DATASETS" expands into further features related to datasets in EdgeFirst Studio.
 
-### Datasets
+{{ figure("assets/navigation/datasets_dropdown.jpg", "Datasets Dropdown") }}
 
-Clicking on "Datasets" takes the user to the [Datasets Dashboard](datasets/index.md).  This page lists all datasets available to the user in the selected project.  A dataset is a collection of sensor data, such as images, videos (sequences), radar cubes, etc. logically grouped together by the user.  Usually, each dataset contained within a project will come from a single recording session.
+#### Datasets
 
-### Auditing Tasks
+The "Datasets" button takes the user to the [Datasets Dashboard](datasets/index.md).  This page lists all datasets available to the user in the selected project.  A dataset is a collection of sensor data, such as images, videos (sequences), radar cubes, etc. logically grouped together by the user.  Usually, each dataset contained within a project will come from a single recording session.
 
-Clicking on "Auditing Tasks" takes the user to the [Auditing Tasks Dashboard](datasets/annotations.md#auditing-tasks-board).  This page lists all auditing tasks for any dataset in the selected project.  Auditing tasks are formal operations of editing, approving, or removing annotations.  However, other methods of annotating datasets are described in the [Dataset Annotations](../datasets/tutorials/annotations/index.md) section.
+#### Audit
 
-### Model Experiments
+Clicking on "Audit" takes the user to the [Auditing Tasks Dashboard](datasets/annotations.md#auditing-tasks-board).  This page lists all auditing tasks for any dataset in the selected project.  Auditing tasks are formal operations of editing, approving, or removing annotations.  However, other methods of annotating datasets are described in the [Dataset Annotations](../datasets/tutorials/annotations/index.md) section.
 
-Clicking on "Model Experiments" takes the user to the [Model Experiments Dashboard](models.md).  This page contains all training sessions and validation sessions.  Additional features for comparing training charts and validation metrics are also available.  More information can be found in the [model training](../models/training/vision.md) and [model validation](../models/validation/vision/managed.md) sections.  A model experiment is a high-level collection of training and validation sessions.  A training session is the functionality of converting datasets into vision- and radar-based models that can be deployed back to the [EdgeFirst Platforms](../platforms/index.md) for inference.  A validation session is the functionality to take a model and measure its performance against other models or a standardized validation set to see if it is ready for deployment.
+#### Snapshots
 
-### Cloud Instances
+Clicking on "Snapshots" takes the user to the [Snapshots Dashboard](snapshots.md).  This page allows users to create and restore snapshots.  A snapshot is a frozen and compact form of a dataset represented in the [EdgeFirst Dataset Format](../datasets/format/index.md).  A snapshot can either be imported into Studio as a dataset or exported back into your local machine.
 
-Clicking on the "Cloud Instances" takes the user to the [Cloud Instances Dashboard](instances.md). This page allows user to view currently running cloud instances and to stop a running cloud instance in here.  A cloud instance is a server dedicated to hosting any operations such as model training and validation, or [AGTG](agtg.md) operations.
+### Models Dropdown
 
-### Data Snapshots
+Clicking on "MODELS" expands into further features related to model operations in EdgeFirst Studio.
 
-Clicking on the "Data Snapshots" takes the user to the [Snapshots Dashboard](snapshots.md).  This page allows users to create and restore snapshots.  This is a method to preserve the current state of the dataset.  A snapshot is a frozen and compact form of a dataset represented in the [EdgeFirst Dataset Format](../datasets/format/index.md).
+{{ figure("assets/navigation/models_dropdown.jpg", "Models Dropdown") }}
+
+#### Experiments
+
+Clicking on "Experiments" takes the user to the [Model Experiments Dashboard](models.md).  This page contains all training sessions and validation sessions.  Additional features for comparing training charts and validation metrics are also available.  More information can be found in the [model training](../models/training/vision.md) and [model validation](../models/validation/vision/managed.md) sections.  A model experiment is a high-level collection of training and validation sessions.  A training session is the functionality of converting datasets into vision- and radar-based models that can be deployed back to the [embedded target](../platforms/index.md) for inference.  A validation session is the functionality to take a model and measure its performance against other models or a standardized validation set to see if it is ready for deployment.
+
+#### Profilers
+
+!!! note "Work in Progress"
+
+    This feature is currently a work in progress in EdgeFirst Studio. Once ready, the feature will provide the tools for users to use as described below.
+
+Clicking on "Profilers" takes the user to the Profiler Dashboard.  This feature allows users to compare the performance of models across embedded targets to allow users to find the best model-target combination to deploy into their system. This feature installs the same set of tools as our [HuggingFace Dashboard](https://huggingface.co/spaces/EdgeFirst/Models) for model comparison with additional filtering, sorting, and scoping capabilities.
+
+### Advanced Dropdown
+
+Clicking on "ADVANCED" expands into further core operating features of EdgeFirst Studio.
+
+{{ figure("assets/navigation/models_dropdown.jpg", "Models Dropdown") }}
+
+#### Cloud Instances
+
+Clicking on "Cloud Instances" takes the user to the [Cloud Instances Dashboard](instances.md). This page allows users to view currently running cloud instances and to stop a running cloud instance in here.  A cloud instance is a server dedicated to hosting any operations such as model training and validation, or [AGTG](agtg.md) operations.
+
+#### Tasks
+
+Clicking on "Tasks" takes the user to the Tasks Dashboard where it lists all pending, running, terminated, failed, or successful MLOPs processes in EdgeFirst Studio from data import, annotations to model training, validation, or model conversions.  Furthermore, it also keeps a history of operations ran that either completed successfully, terminated, or failed.
 
 ### Apps
 
-Clicking on the "Apps" takes the user to the Apps Dashboard where it lists existing EdgeFirst Studio apps that can be run by the user to perform operations such as training, validation, or model conversions and quantizations.  Model conversion can be in the form of converting ONNX to TFLite with the neutron delegate support to allow inference in NXP's i.MX 95 as an example.
-
-### Tasks
-
-Clicking on the "Tasks" takes the user to the Tasks Dashboard where it lists all pending and running operations in EdgeFirst Studio from model training, validation, or model conversions.  Furthermore, it also provides a history of these operations that were run that either completed successfully, terminated, or failed.
+Clicking on "APPS" takes the user to the [Apps Dashboard](apps.md) where it lists existing EdgeFirst Studio apps that can be run by the user to perform operations such as training, validation, or model conversions and quantizations.  Model conversion can be in the form of converting ONNX to TFLite with the neutron delegate support to allow inference in NXP's i.MX 95 as an example.
 
 ### Recycling Bin
 
-Clicking on the "Recycle Bin" takes the user to the Recycle Bin page.  This page is used for managing the recycling bin.  The deletions of the following items can be reverted or purged:
+Clicking on the "Recycle Bin" takes the user to the [Recycle Bin](recycle.md) page.  This page is used for managing the recycling bin.  The deletions of the following items can be restored or purged to free memory usages:
 
 1. Project
 2. Dataset

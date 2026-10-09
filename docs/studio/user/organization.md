@@ -41,7 +41,7 @@ This section will provide details about the users in your organization.  The fol
 3. An admin user creates the accounts for other users in the organization.
 4. Any user cannot invite other users in different organizations.
 
-The user who signs up is the admin of the organization.  However, this user can also set other users in the organization as admin or other roles.  More information about the roles and permissions of users in the [section below](#roles).
+The user who signs up is the admin of the organization.  However, this user can also set other users in the organization as admin or non-admin. The difference between admin and non-admin users is that admin users can add new users or remove users from the organization.
 
 ### Current Users
 
@@ -49,21 +49,9 @@ You can see the list of all users in your organization by clicking on "User Mana
 
 {{ figure("../assets/user/user-manager.jpg", "User Manager") }}
 
-As an admin user, you can edit the information of each user by clicking the "pencil" ![Pencil Button](../../assets/buttons/studio-edit-user-button.jpg) button next to their profiles.  This will bring the page that allows you to modify the user's profile information.  From this page you can change the first and last name of the user and their email.  You can also set the user's role or custom permissions.  More information on the [user's roles](#roles) are provided in the section below.  You can either click "Apply" to save the changes or "Cancel" to abort any changes.  Lastly, you can also change the user's password.
+As an admin user, you can edit the information of each user by clicking the "pencil" ![Pencil Button](../../assets/buttons/studio-edit-user-button.jpg) button next to their profiles.  This will bring the page that allows you to modify the user's profile information.  From this page you can change the first and last name of the user and their email.  You can also set the user's role as either admin or non-admin. You can either click "Apply" to save the changes or "Cancel" to abort any changes.  Lastly, you can also change the user's password.
 
 {{ figure("../assets/user/modify-user-information.jpg", "Modify User Information") }}
-
-### Roles
-
-The roles available that can be designated to each user in the organization would be "Admin", "Audit & Label", and "Custom Permissions".
-
-{{ figure("../assets/user/user-roles.jpg", "User Roles") }}
-
-The "Admin" user has read and write access to all projects, datasets, and model experiments in the organization.  The admin can also add new users, remove existing users, or edit user information in the organization.  This user has full access to the organization.
-
-The "Audit & Label" user has limited access to EdgeFirst Studio.  The only features available to this type of user are auditing and labelling datasets using the task board.
-
-The user with "Custom Permissions" has specific permissions on different elements of EdgeFirst Studio.  These elements are "Projects", "Datasets", "Trainer", and "Task Board".  You can set "Read-Only" permissions to allow users for view-only.  The permission for "Write" allows the users to make changes to the elements such as creating their own datasets or modifying current datasets.
 
 {% include-markdown "discrete/user/new_users.md" heading-offset=2 %}
 

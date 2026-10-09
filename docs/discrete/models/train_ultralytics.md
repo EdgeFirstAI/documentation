@@ -37,8 +37,8 @@
 
 7. We support model conversion and optimization workflows that enable trained models to be deployed on a wide range of target platforms and hardware architectures.
 
-    If you are deploying to one of the supported hardware platforms listed below, follow the platform-specific conversion instructions for your target device. 
-    
+    If you are deploying to one of the supported hardware platforms listed below, follow the platform-specific conversion instructions for your target device.
+
     However, this guide will use the out-of-the-box trained ONNX model which can be deployed on a Windows/Linux PC or macOS system. You can skip this section and proceed directly to the next step to validate the ONNX model in your PC.
 
     | Converter | Supported Targets | Output Format | Docs |

@@ -34,7 +34,7 @@ Now that you can [see your profile information](#profile-information).  You can 
 
 {{ figure("../assets/user/edit-profile-button.jpg", "Edit Profile Button") }}
 
-This will bring you to the page to edit your profile information such as your username, first and last name, your email, and the [role](organization.md#roles) associated to your account.
+This will bring you to the page to edit your profile information such as your username, first and last name, your email, and the role associated to your account.
 
 {{ figure("../assets/user/edit-profile-information.jpg", "Edit Profile Information") }}
 

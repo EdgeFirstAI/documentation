@@ -9,4 +9,7 @@
 
 {% include-markdown "discrete/models/train_vision.md" %}
 {% include-markdown "discrete/models/validate_vision.md" %}
+
+## Deploy Model
+
 {% include-markdown "discrete/models/deploy_studio_model.md" %}

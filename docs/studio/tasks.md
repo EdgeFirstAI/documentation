@@ -11,7 +11,7 @@ select **Tasks** from the menu.
 
 The tasks page will look like the following:
 
-{{ figure("assets/tasks_page.jpg", "Tasks Page") }}
+{{ figure("assets/tasks/tasks_page.jpg", "Tasks Page") }}
 
 ## Toolbar
 

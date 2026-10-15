@@ -133,6 +133,7 @@ nav:
       - models/conversion/tensorrt.md
       - models/conversion/ara2.md
       - models/conversion/hailo.md
+      - models/conversion/qualcomm.md
     - Model Validation:
       - Validating Vision Models:
         - models/validation/vision/managed.md

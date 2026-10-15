@@ -1,6 +1,6 @@
 # Model Conversion
 
-Once a model has been trained in [EdgeFirst Studio](../../studio/index.md), it is exported in a portable framework-native form — a TensorFlow SavedModel or an ONNX graph. Before that model can run on an embedded NPU, FPGA, or accelerator, it must be **converted** into the binary format the target runtime expects: a quantized TFLite flatbuffer for NXP i.MX 8M Plus, a `.dvm` for the NXP Ara240 DNPU, a `.hef` for Hailo-8 / Hailo-8L, a Neutron-compiled flatbuffer for NXP eIQ Neutron silicon, or a TensorRT engine for NVIDIA Jetson.
+Once a model has been trained in [EdgeFirst Studio](../../studio/index.md), it is exported in a portable framework-native form — a TensorFlow SavedModel or an ONNX graph. Before that model can run on an embedded NPU, FPGA, or accelerator, it must be **converted** into the binary format the target runtime expects: a quantized TFLite flatbuffer for NXP i.MX 8M Plus, a `.dvm` for the NXP Ara240 DNPU, a `.hef` for Hailo-8 / Hailo-8L, a Neutron-compiled flatbuffer for NXP eIQ Neutron silicon, a TensorRT engine for NVIDIA Jetson, or a `.qnn.onnx` context binary for the Hexagon NPU in Qualcomm Dragonwing and Snapdragon processors.
 
 EdgeFirst Studio packages this work as **Converter Apps**. A Converter App is launched directly from a completed training session's *Artifacts* tab. The app produces a deployment-ready artifact and embeds [EdgeFirst model metadata](../metadata.md) into it so that the runtime can decode the model's outputs without any per-target glue code.
 
@@ -58,6 +58,7 @@ Not every Converter App implements Smart Quantization the same way; the techniqu
 | [Ara2 Converter](ara2.md) | Per-scale split when the trainer supplies stride information, with the option to additionally **promote DFL decode arithmetic to INT16** inside the quantized graph. The Ara240 DNPU has DRAM and tolerates large output tensors, so the converter is not forced into a graph cut for hardware reasons — INT16 promotion is the distinctive accuracy lever it can pull on top of decomposition. |
 | [Hailo Converter](hailo.md) | Per-scale graph surgery is **structurally required** — large concatenated tensors exceed a single hardware context's SRAM. Sigmoid is optionally folded into the output quantization; DFL runs in float on the HAL. |
 | [Neutron Converter](neutron.md) | Quantization is **inherited from the upstream TFLite Converter** — the Neutron stage is a re-encoder, not a quantizer. Smart split on Neutron also delivers a pipelining win (CPU decode threads run alongside NPU inference). |
+| [Qualcomm Converter](qualcomm.md) | Per-scale split (**Smart**) as on TFLite, or a **Logical** split that keeps box decoding on the NPU and gives `boxes`, `scores` and `mask_coefs` their own scales. Two further levers: **INT16 activations** (w8a16), and **TF-Enhanced + SeqMSE** quantization, which halves the INT8 loss on small-object datasets. The [optimization profiles](qualcomm.md#choosing-a-profile) set all three; Smart at INT8 is the default. |
 | [TensorRT Converter](tensorrt.md) | **Not applicable** — Jetson is an FP16 target today. There is no INT8 quantization step to defeat; the converter bundles the ONNX graph for on-device engine build. |
 
 ## Available Converter Apps
@@ -69,8 +70,9 @@ Not every Converter App implements Smart Quantization the same way; the techniqu
 | [TensorRT Converter](tensorrt.md) | NVIDIA Jetson (Orin Nano Super validated; broader Jetson lineup in progress) | `.tensorrt.zip` bundle (engine built on-device) |
 | [Ara2 Converter](ara2.md) | [NXP Ara240 DNPU](https://www.nxp.com/products/ARA240) | `.dvm` Dataflow Virtual Machine binary |
 | [Hailo Converter](hailo.md) | Hailo-8 (26 TOPS), Hailo-8L (13 TOPS) | `.hef` Hailo Executable Format |
+| [Qualcomm Converter](qualcomm.md) | Qualcomm Dragonwing IQ-9075 / IQ-9100 and Snapdragon 8 Elite Gen 5 validated; further Dragonwing and Snapdragon processors in progress | `.qnn.onnx` with an embedded QNN context binary |
 
-Every output artifact has its `edgefirst.json` and `labels.txt` appended to it, so the runtime decoder needs nothing beyond the file itself. Picking the right Converter App is mostly a question of which target hardware you intend to deploy on; see the per-converter pages for Studio launch-form specifics, supported model architectures, and known limitations.
+Every output artifact has its `edgefirst.json` and `labels.txt` embedded in it, so the runtime decoder needs nothing beyond the file itself. Picking the right Converter App is mostly a question of which target hardware you intend to deploy on; see the per-converter pages for Studio launch-form specifics, supported model architectures, and known limitations.
 
 ## Calibration
 

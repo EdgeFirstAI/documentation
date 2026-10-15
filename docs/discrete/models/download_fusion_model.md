@@ -32,8 +32,8 @@ Download the model from EdgeFirst Studio into the device.  There are two methods
     This method expects you to have already connected to the device via [SSH](../../platforms/networking/ssh.md).  The [EdgeFirst Client](../../client/cli/index.md) can be installed via `pip3 install edgefirst-client`.  You can verify the installation with the client version command.
 
     ```shell
-    $ edgefirst-client version
-    EdgeFirst Studio Server: 3.7.8-a50429e Client: 1.3.3
+    $ edgefirst-client server-version
+    EdgeFirst Studio Server [https://edgefirst.studio]: <server version> Client: <client version>
     ```
 
     Next login to EdgeFirst Studio with the command.

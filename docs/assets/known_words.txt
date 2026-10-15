@@ -9,6 +9,7 @@ aigt
 aktualizr
 analytics
 analyze
+annset
 api
 apis
 apn
@@ -51,6 +52,7 @@ bitmask
 bitrate
 bitstream
 bool
+booleans
 bootloader
 boxplot
 braille
@@ -176,6 +178,7 @@ dvm
 dyld
 e1r
 edgefirst
+edgefirststudio
 encodings
 endian
 enum
@@ -195,6 +198,7 @@ extrinsics
 fargate
 fd
 fds
+fetchable
 fi
 filesystem
 flatbuffer
@@ -249,6 +253,7 @@ hef
 hexagon
 hoc
 homebrew
+honored
 hostapd
 hostname
 hotspot
@@ -259,6 +264,7 @@ http
 https
 huggingface
 hwmon
+hyperparameter
 hyperparameters
 hz
 imageannotations
@@ -337,6 +343,7 @@ ln920
 logit
 logits
 lookahead
+loopback
 lossless
 losslessly
 lossy
@@ -619,6 +626,8 @@ substring
 subwindow
 sudo
 superset
+symlink
+symlinks
 sync_file
 synchronizers
 synset
@@ -696,6 +705,7 @@ ungrouped
 unicast
 unicode
 uniffi
+unlabeled
 unmanaged
 unnest
 unoffset
@@ -725,6 +735,7 @@ verdin
 verisilicon
 videostream
 vignesh
+visdrone
 vivante
 voxel
 vs

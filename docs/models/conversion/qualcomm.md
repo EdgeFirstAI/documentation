@@ -29,12 +29,12 @@ Every profile calibrates on 100 samples from the calibration snapshot.
 
 ### Choosing a profile
 
-**Start with Balanced.** It was the best accuracy-for-speed choice on every VisDrone configuration measured and on 17 of 21 COCO configurations, typically about 1 point of mAP below the FP32 model.
+**Start with Balanced.** It is the default, with a median loss of about 1 point of mAP against the FP32 model. No other profile was both faster and more accurate on any VisDrone configuration measured, or on 17 of the 21 COCO configurations. The exceptions are nano and small models on COCO-style data, where Highest Throughput trades a few points of accuracy for a higher frame rate.
 
 | Profile | Use when | Avoid when |
 |---------|----------|------------|
-| **Balanced** | Almost always: detection and segmentation, any model size, any dataset and input resolution. | — |
-| **Best Accuracy** | Accuracy within about 0.1 points of the FP32 model matters more than frame rate. | Throughput-bound deployments. It runs at about 0.35–0.9× the frame rate of Balanced (lowest on medium models and large inputs), with 1.65–1.85× the end-to-end latency. |
+| **Balanced** | The default for detection and segmentation at every model size, dataset and input resolution measured. | — |
+| **Best Accuracy** | Accuracy within about 0.1 points of the FP32 model matters more than frame rate. | Throughput-bound deployments. It runs at about 0.35–0.9× the frame rate of Balanced (lowest on medium models and large inputs), with a median 1.65–1.85× the end-to-end latency. |
 | **Highest Throughput** | Nano and small models at 640×640 on datasets of mostly medium and large objects, such as COCO, where the CPU-side box decoding limits frame rate. | Medium models, where it is no faster than Balanced (0.89–1.14×). Small-object datasets and large inputs: on VisDrone it loses 35–60% of the mAP at 640×640 to 1344×768, and 17–25% on tiled models. |
 
 The measured trade-off for Highest Throughput against Balanced on COCO:
@@ -48,7 +48,7 @@ The measured trade-off for Highest Throughput against Balanced on COCO:
 | Segmentation | small | −3.5 to −3.9 | −0.9 to −1.2 | 1.29–1.43× |
 | Segmentation | medium | −4.1 to −5.0 | −0.9 to −1.6 | 0.97–1.14× |
 
-Highest Throughput also cuts end-to-end latency by about 20–25% compared with Balanced, because the box decoding stays on the NPU rather than running on the CPU after inference.
+Highest Throughput also cuts end-to-end latency by a median 20–25% compared with Balanced, because the box decoding stays on the NPU rather than running on the CPU after inference.
 
 !!! note "How these figures were measured"
     All figures on this page come from the Qualcomm Converter 0.7.3 benchmark on a Dragonwing IQ-9075 EVK, measured with the EdgeFirst Profiler 1.19.0: 57 configurations, of which 21 are COCO (YOLOv5, YOLOv8, YOLO11 and YOLO26 detection; YOLOv8, YOLO11 and YOLO26 segmentation; nano, small and medium at 640×640) and 36 are VisDrone (YOLOv8, YOLO11 and YOLO26 nano, small and medium at 640×640, 1280×1280, 1344×768 and 640×640 tiled). Accuracy is box mAP50-95 on the full validation set unless marked as mask mAP; the FP32 reference is the same model run in ONNX Runtime. Frame rate is the profiler's pipelined throughput. All eight combinations are published in the [EdgeFirst Model Zoo](https://huggingface.co/spaces/EdgeFirst/Models).
@@ -68,7 +68,7 @@ Selecting **Advanced** starts from the Balanced settings; nothing changes until 
 
 - `smart` cuts at the per-scale prediction convolutions, so each scale's boxes, scores and mask coefficients get their own quantization scale. Box decoding (DFL and box assembly) moves off the NPU into the HAL on the CPU.
 - `logical` keeps the decoder on the NPU and cuts only at the final concatenation, so `boxes`, `scores` and `mask_coefs` each get their own scale but the decoding itself runs in the quantized graph.
-- `combined` leaves the reference model's outputs unchanged. It is not a tuning option: use it only for models that `smart` and `logical` cannot split, such as end-to-end exports.
+- `combined` leaves the reference model's outputs unchanged. It is not a tuning option, and it is not a deployment fallback. It exists only so that models `smart` and `logical` cannot split, such as end-to-end (NMS-free) exports, can still be converted for testing and benchmarking. End-to-end models are not supported for deployment on the Hexagon NPU (see [Known Limitations](#known-limitations)). To deploy, export the standard (non-end-to-end) model and convert it with `smart` or `logical`.
 
 At INT8 the split matters most. Logical splitting gave up a median 3.7 points of mAP against Smart on COCO and 11 points on VisDrone, because box regression and DFL decoding run in INT8 on the NPU, and small objects need fine box precision. At INT16 the split hardly matters: Logical is about 0.3 points below Smart on both datasets.
 

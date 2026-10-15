@@ -389,7 +389,7 @@ edgefirst-client download-annotations 54321 annotations.json \
 
 # Download all annotation types in Arrow format
 edgefirst-client download-annotations 54321 annotations.arrow \
-    --types box2d,box3d,mask --groups train
+    --groups train
 
 # Download annotations from a tagged version
 edgefirst-client download-annotations 54321 annotations.arrow \
@@ -405,7 +405,7 @@ Python: load with `polars.read_ipc()` or `client.samples_dataframe()` — see [T
 
 ### `upload-dataset`
 
-Upload samples to a dataset from images and/or Arrow annotations file. Supports flexible workflows: images-only, annotations-only, or both.
+Upload samples to a dataset from images and/or an Arrow or Parquet annotation file. Supports flexible workflows: images-only, annotations-only, or both.
 
 **edgefirst-client upload-dataset** \[*OPTIONS*\] *DATASET_ID*
 
@@ -417,7 +417,7 @@ Upload samples to a dataset from images and/or Arrow annotations file. Supports 
 **Options:**
 
 `--annotations` *ANNOTATIONS*
-:   Path to Arrow file with annotations (EdgeFirst Dataset Format). If omitted, only images will be uploaded.
+:   Path to an Arrow IPC or Parquet annotation file (EdgeFirst Dataset Format). If omitted, only images will be uploaded.
 
 `--images` *IMAGES*
 :   Path to folder or ZIP containing images. If omitted, auto-discovers based on Arrow filename or "dataset" convention.
@@ -452,7 +452,7 @@ edgefirst-client upload-dataset 12345 \
     --annotation-set-id 54321
 ```
 
-**Note:** Uploads are batched (50 samples per batch, so a failed batch only requires retrying 50 samples) with progress tracking. Batch concurrency defaults to 4 and is configurable via **EDGEFIRST_UPLOAD_BATCHES**. Arrow files must conform to the EdgeFirst Dataset Format.
+**Note:** Uploads are batched (50 samples per batch, so a failed batch only requires retrying 50 samples) with progress tracking. Batch concurrency defaults to 4 and is configurable via **EDGEFIRST_UPLOAD_BATCHES**. Annotation files must conform to the EdgeFirst Dataset Format.
 
 **Note:** Annotations flagged `ignore` or `exclude` are dropped before upload and reported once as `⚠ Skipping N annotations flagged ignore/exclude: Studio does not support these flags yet`, since EdgeFirst Studio does not store these flags yet.
 

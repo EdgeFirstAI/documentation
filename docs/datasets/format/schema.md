@@ -80,14 +80,11 @@ are valid but wasteful and ambiguous — a reader cannot distinguish "binary mas
 the mask is binary.
 
 **Dimensions**: Mask dimensions are defined by the PNG image itself, not by the `size`
-column or `box2d`. The producer determines the resolution — it could be the original
+column or `box2d`. For a mask without an offset, the producer determines the resolution — it could be the original
 image size, model input size, or model output size. Consumers read the PNG header to
 discover the mask dimensions and rescale to the target coordinate space as needed.
 
-**Coverage**: The mask covers the **full image**, not a crop of the bounding box. For
-instance segmentation, most pixels are 0 (background) and the object region has
-confidence scores or binary 1 values. This avoids lossy cropping and handles
-interpolation that extends beyond box bounds.
+**Coverage**: An instance segmentation mask is either **image-sized** or an **offset tile** covering only the part of the image that holds the object (see [Instance Mask Tiles](#instance-mask-tiles)). Pixels outside the object are 0 (background) and the object region has confidence scores or binary 1 values. Semantic segmentation masks are always image-sized (or model-output-sized) and never carry an offset.
 
 **Interpretation by context**:
 
@@ -109,7 +106,30 @@ interpolation that extends beyond box bounds.
 
 **Relationship to polygon**: `polygon` and `mask` can coexist in the same file
 (e.g., panoptic segmentation). Typically a dataset uses one or the other. Both use
-full-image coordinates — polygons are normalized (0..1), masks cover the full image.
+full-image coordinates — polygons are normalized (0..1), masks cover the full image or are placed on it by their offset.
+
+#### Instance Mask Tiles
+
+!!! info "Clarified in 2026.10 (EdgeFirst Client 2.17.0)"
+    Tiled instance masks clarify how the existing `mask` column may be written. They are not a new version: `schema_version` stays `"2026.10"`, no columns change, and every existing file reads exactly as before. Readers older than EdgeFirst Client 2.17.0 ignore the offset and place a tile at the image origin, so use 2.17.0 or later, or apply the reader rules below, to read tiled masks.
+
+An instance mask usually covers a small part of the image, so an image-sized mask spends most of its storage and decode time on background. An instance mask may instead be cropped to the tile of the image that contains the mask. A tiled mask carries a standard PNG `oFFs` chunk giving the tile's top-left position on the image:
+
+| Field | Type | Value |
+|-------|------|-------|
+| x position | `int32`, big-endian | Column of the tile's left edge on the image, in pixels |
+| y position | `int32`, big-endian | Row of the tile's top edge on the image, in pixels |
+| unit specifier | `uint8` | `0` (pixels) |
+
+The `oFFs` chunk must appear before the first `IDAT` chunk, as the PNG specification requires. Readers interpret a mask as follows:
+
+- **`oFFs` present with unit `0` (pixels)**: place the PNG's top-left pixel at `(x, y)` on the image. Pixels of the image outside the tile are background. Any part of the tile that falls outside the image is discarded; offsets may be negative, and the tile may extend past the right or bottom edge.
+- **No `oFFs` chunk**: the mask is image-sized (or model-output-sized) and covers the full image from the origin.
+- **`oFFs` with any other unit**: the offset is ignored and the mask is treated as having no offset.
+
+Tile offsets are in image pixel coordinates, so a tiled mask is at image resolution. The tile is not tied to `box2d`: it should cover the mask's full extent, which may reach beyond the box (for example from mask interpolation), so cropping to the box would be lossy. The 1-bit preference for binary masks applies to tiles as well.
+
+The EdgeFirst Profiler writes its segmentation predictions as tiles from the release that pairs with EdgeFirst Client 2.17.0, which makes prediction files about 20% smaller and validation of segmentation models many times faster. Writers that must support readers older than EdgeFirst Client 2.17.0 should keep writing image-sized masks. See [Reading Instance Mask Tiles](conversion.md#reading-instance-mask-tiles) for reader code.
 
 ### Geometry: 2D Bounding Box
 

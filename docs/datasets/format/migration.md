@@ -68,13 +68,50 @@ Before 2026.10, the array order of the `pose` column was not consistent between 
 | EdgeFirst Publisher 1.9 and earlier | `[roll, pitch, yaw]` | 0–360 degrees | `[lon, lat]` |
 | 2026.10 files (all writers) | `[roll, pitch, yaw]` | Signed degrees | `[lat, lon]` |
 
-`edgefirst-client upload-dataset` (2.15.0 and later) reads `pose` as `[roll, pitch, yaw]` and `location` as `[lat, lon]` whatever the file's version, so correct an older file before uploading it. To bring an older file in line with 2026.10, swap roll and yaw for files from the client, convert the 0–360 range to signed degrees for files from the Publisher, and swap latitude and longitude for files from Publisher 1.9 and earlier:
+`edgefirst-client upload-dataset` (2.15.0 and later) reads `pose` as `[roll, pitch, yaw]` and `location` as `[lat, lon]` whatever the file's version, so correct an older file before uploading it. Each fix below applies to one writer only. Running a fix on a file from a different writer corrupts columns that are already in the right order, so run only the snippet for the tool that produced the file. Studio JSON and the Studio API use the named fields `{roll, pitch, yaw}` and `{lat, lon}` and are not affected.
+
+**EdgeFirst Client 2.14 and earlier** — swap roll and yaw:
 
 ```python
 import polars as pl
 
 df = pl.read_ipc("dataset.arrow")
+pose = pl.col("pose")
 
+# [yaw, pitch, roll] -> [roll, pitch, yaw]
+df = df.with_columns(
+    pl.when(pose.is_not_null())
+    .then(pl.concat_list(pose.arr.get(2), pose.arr.get(1), pose.arr.get(0)).list.to_array(3))
+    .alias("pose")
+)
+```
+
+**EdgeFirst Publisher 1.10** — convert the 0–360 range to signed degrees:
+
+```python
+import polars as pl
+
+df = pl.read_ipc("dataset.arrow")
+pose = pl.col("pose")
+
+def signed(angle: pl.Expr) -> pl.Expr:
+    """Map an angle in 0..360 degrees to -180..180."""
+    return (angle + 180.0) % 360.0 - 180.0
+
+# Order is already [roll, pitch, yaw]; only the range changes
+df = df.with_columns(
+    pl.when(pose.is_not_null())
+    .then(pl.concat_list(signed(pose.arr.get(0)), signed(pose.arr.get(1)), signed(pose.arr.get(2))).list.to_array(3))
+    .alias("pose")
+)
+```
+
+**EdgeFirst Publisher 1.9 and earlier** — convert the `pose` range and swap latitude and longitude:
+
+```python
+import polars as pl
+
+df = pl.read_ipc("dataset.arrow")
 pose = pl.col("pose")
 location = pl.col("location")
 
@@ -82,29 +119,23 @@ def signed(angle: pl.Expr) -> pl.Expr:
     """Map an angle in 0..360 degrees to -180..180."""
     return (angle + 180.0) % 360.0 - 180.0
 
-# EdgeFirst Client 2.14 and earlier: [yaw, pitch, roll] -> [roll, pitch, yaw]
 df = df.with_columns(
-    pl.when(pose.is_not_null())
-    .then(pl.concat_list(pose.arr.get(2), pose.arr.get(1), pose.arr.get(0)).list.to_array(3))
-    .alias("pose")
-)
-
-# EdgeFirst Publisher: 0..360 -> signed degrees (order is already [roll, pitch, yaw])
-df = df.with_columns(
+    # Order is already [roll, pitch, yaw]; only the range changes
     pl.when(pose.is_not_null())
     .then(pl.concat_list(signed(pose.arr.get(0)), signed(pose.arr.get(1)), signed(pose.arr.get(2))).list.to_array(3))
-    .alias("pose")
-)
-
-# EdgeFirst Publisher 1.9 and earlier: [lon, lat] -> [lat, lon]
-df = df.with_columns(
+    .alias("pose"),
+    # [lon, lat] -> [lat, lon]
     pl.when(location.is_not_null())
     .then(pl.concat_list(location.arr.get(1), location.arr.get(0)).list.to_array(2))
-    .alias("location")
+    .alias("location"),
 )
 ```
 
-Apply only the steps that match the file's writer. Studio JSON and the Studio API use the named fields `{roll, pitch, yaw}` and `{lat, lon}` and are not affected.
+### Clarifications to 2026.10
+
+These clarify how existing 2026.10 columns may be written. They do not change `schema_version` or the schema, and no migration is needed.
+
+- **Instance mask tiles** (EdgeFirst Client 2.17.0): an instance segmentation `mask` PNG may cover only the tile of the image that contains the mask, with a standard PNG `oFFs` chunk in pixel units giving the tile's top-left position on the image. Masks without `oFFs` keep their previous meaning, and semantic segmentation masks stay image-sized. Readers that ignore `oFFs`, including EdgeFirst Client 2.16 and earlier and generic PNG tools, place a tile at the image origin. See [Instance Mask Tiles](schema.md#instance-mask-tiles) for the reader rules and [Reading Instance Mask Tiles](conversion.md#reading-instance-mask-tiles) for code.
 
 ## Upgrading from 2025.10
 

@@ -92,7 +92,7 @@ if "mask" in df.columns:
     for row in df.iter_rows(named=True):
         if row["mask"] is not None and row["size"] is not None:
             width, height = row["size"]
-            png_bytes = row["mask"]  # bytes (PNG-encoded raster pixels)
+            png_bytes = row["mask"]  # PNG bytes; may be an offset tile (see below)
 
 # Access box2d — always [cx, cy, w, h], normalized
 if "box2d" in df.columns:
@@ -128,6 +128,48 @@ if "timing" in df.columns:
             load_ms = t["load"] / 1_000_000
             inference_ms = t["inference"] / 1_000_000
 ```
+
+### Reading Instance Mask Tiles
+
+An instance mask may be a tile of the image positioned by a PNG `oFFs` chunk rather than an image-sized mask (see [Instance Mask Tiles](schema.md#instance-mask-tiles)). Read the offset before using a mask, and place the tile on an image-sized canvas when the consumer expects one:
+
+```python
+import io
+import struct
+
+import numpy as np
+from PIL import Image
+
+def mask_offset(png: bytes) -> tuple[int, int] | None:
+    """Pixel position of a mask tile's top-left corner, or None for an image-sized mask."""
+    pos = 8  # skip the PNG signature
+    while pos + 8 <= len(png):
+        length, kind = struct.unpack(">I4s", png[pos:pos + 8])
+        if kind == b"oFFs" and length == 9:
+            x, y, unit = struct.unpack(">iiB", png[pos + 8:pos + 17])
+            return (x, y) if unit == 0 else None
+        if kind in (b"IDAT", b"IEND"):
+            return None  # oFFs must precede the image data
+        pos += 12 + length
+    return None
+
+def place_mask(png: bytes, width: int, height: int) -> np.ndarray:
+    """Return the mask on a height x width canvas; image-sized masks are returned as is."""
+    tile = np.array(Image.open(io.BytesIO(png)))
+    offset = mask_offset(png)
+    if offset is None:
+        return tile
+    x, y = offset
+    canvas = np.zeros((height, width), dtype=tile.dtype)
+    # Clip the tile to the image; offsets may be negative or overhang the edges
+    x0, y0 = max(x, 0), max(y, 0)
+    x1, y1 = min(x + tile.shape[1], width), min(y + tile.shape[0], height)
+    if x0 < x1 and y0 < y1:
+        canvas[y0:y1, x0:x1] = tile[y0 - y:y1 - y, x0 - x:x1 - x]
+    return canvas
+```
+
+The EdgeFirst Client 2.17.0 and later exposes the offset as `Annotation.mask_offset`, which returns `(x, y)` or `None`.
 
 ### Reading Parquet with DuckDB
 
@@ -178,7 +220,39 @@ File-level metadata keys (`schema_version`, `category_metadata`, `labels`) are n
 
 ```python
 import polars as pl
+import pyarrow.ipc as ipc
+import pyarrow.parquet as pq
 import json, base64
+
+# Column types from the 2026.10 schema. Polars infers Int64 and variable-length
+# List columns from Python values, so every column is cast to its schema type.
+SCHEMA = {
+    "name": pl.String,
+    "frame": pl.UInt32,
+    "object_id": pl.String,
+    "label": pl.Categorical,
+    "label_index": pl.UInt64,
+    "group": pl.Categorical,
+    "polygon": pl.List(pl.List(pl.Float32)),
+    "polygon_score": pl.Float32,
+    "mask": pl.Binary,
+    "mask_score": pl.Float32,
+    "box2d": pl.Array(pl.Float32, 4),
+    "box2d_score": pl.Float32,
+    "box3d": pl.Array(pl.Float32, 6),
+    "box3d_score": pl.Float32,
+    "ignore": pl.Boolean,
+    "exclude": pl.Boolean,
+    "category_frequency": pl.Categorical,
+    "truncation": pl.UInt32,
+    "occlusion": pl.UInt32,
+    "neg_label_indices": pl.List(pl.UInt32),
+    "not_exhaustive_label_indices": pl.List(pl.UInt32),
+    "size": pl.Array(pl.UInt32, 2),
+    "location": pl.Array(pl.Float32, 2),
+    "pose": pl.Array(pl.Float32, 3),
+}
+CORE = ["name", "frame", "object_id", "label", "label_index", "group"]
 
 with open("annotations.json") as f:
     data = json.load(f)
@@ -187,7 +261,8 @@ samples = data if isinstance(data, list) else data["samples"]
 
 rows = []
 for sample in samples:
-    size = [sample.get("width"), sample.get("height")]
+    width, height = sample.get("width"), sample.get("height")
+    size = [width, height] if width and height else None
     sensors = sample.get("sensors") or {}
     gps, imu = sensors.get("gps"), sensors.get("imu")
     location = [gps["lat"], gps["lon"]] if gps else None
@@ -253,10 +328,20 @@ for sample in samples:
         row["pose"] = pose
         rows.append(row)
 
-df = pl.DataFrame(rows)
-df.write_ipc("annotations.arrow")       # Arrow IPC
-# df.write_parquet("annotations.parquet")  # or Parquet
+df = pl.DataFrame(rows, infer_schema_length=None)
+df = df.select(pl.col(c).cast(t) for c, t in SCHEMA.items() if c in df.columns)
+
+# Optional columns with no values are omitted (e.g. score columns in ground truth)
+df = df.drop([c for c in df.columns if c not in CORE and df[c].null_count() == df.height])
+
+# Polars cannot attach schema metadata, so write through PyArrow
+table = df.to_arrow().replace_schema_metadata({"schema_version": "2026.10"})
+with ipc.new_file("annotations.arrow", table.schema) as writer:   # Arrow IPC
+    writer.write_table(table)
+# pq.write_table(table, "annotations.parquet")                     # or Parquet
 ```
+
+Add `category_metadata` and `labels` to the metadata dictionary as JSON strings when the source provides them. The EdgeFirst Client SDK writes all three keys for you.
 
 ### Key Conversions Summary
 

@@ -869,7 +869,7 @@ input:
 Every field is optional. When a field is absent, consumers fall back to the legacy [`validation`](#validation-parameters) fields (`validation.normalization`, `validation.preprocessing`), then to `unsigned` normalization and a centred letterbox padded with 114. The block was added to schema version 2 without a version change; parsers that predate it ignore it.
 
 !!! note "Sliding-window evaluation"
-    Some published segmentation results (UperNet with ConvNeXt or BEiT, DINOv2, SegFormer on Cityscapes) use sliding-window inference over a larger image. Exported models have a fixed input shape, so the block describes single-pass inference only. Sliding-window inference corresponds to the [Tiling](#tiling) section.
+    Some published segmentation results (UperNet with ConvNeXt or BEiT, DINOv2, SegFormer on Cityscapes) use sliding-window inference over a larger image, stitching the overlapping score maps. The block describes single-pass inference at the fixed input shape only. Sliding-window geometry and score-map stitching are outside this block, and the [Tiling](#tiling) section does not cover them: tiling reconstructs bounding boxes only.
 
 ### Camera Adaptor
 
@@ -889,6 +889,8 @@ The `cameraadaptor` field specifies the expected input format for the model. See
 ## Tiling
 
 Models trained on native-resolution tiles of high-resolution frames carry an optional `tiling` section. A runtime reads it to decide whether to cut each frame into tiles or run the whole frame through the model, and it records how the model was trained, exported and calibrated. A model without the section is not tile-trained and is handled exactly as before.
+
+Tiling reconstructs bounding boxes only: per-tile detections are merged into frame detections. Masks, whether instance masks or semantic segmentation maps, are not reconstructed across tiles.
 
 The tiling mode and the input resolution are fixed when the model is exported, because edge runtimes compile a static input shape. The default deployment of a tile-trained model is **tiled** at its tile size. The contract defines one workflow for deploying the same weights at another resolution, for example whole-frame at a camera's native resolution: it is done by starting a new training session with training disabled, selecting the tile-trained session as its weights source, and choosing the deployment mode and input resolution. That session exports and calibrates at the new geometry without retraining.
 
@@ -1312,7 +1314,10 @@ Multi-label decode interacts with the other decoder parameters as follows:
 
 Semantic segmentation models assign a class to every pixel. Their logical outputs use `decoder: semantic` and one of three forms:
 
-| Form | Logical output(s) | Examples | HAL decode |
+!!! note "Metadata and decoder support"
+    This section defines the metadata contract and the decode algorithm a consumer implements. The HAL parses and validates every field described here. Its semantic decoder is in development: until a HAL release includes it, building a decoder for a `decoder: semantic` output returns a "not supported" error, and the reserved mask-classification outputs stay unsupported after that.
+
+| Form | Logical output(s) | Examples | Decode |
 | ---- | ----------------- | -------- | ---------- |
 | Per-pixel scores | one `segmentation` | SegFormer, DeepLabV3(+), PSPNet, UperNet, PIDNet, DDRNet, BiSeNet, LRASPP, MediaPipe selfie | Upsample the scores, then argmax (or threshold one channel) |
 | Class map | one `masks` | Exports ending in `ArgMax`: Coral DeepLab (int64), PaddleSeg (int32), Ultralytics semantic ONNX (uint8) | Nearest-neighbour resize only |
@@ -1342,6 +1347,8 @@ Auxiliary heads that remain in an export (training-time aux heads, PIDNet's P an
 
 Both modes map each output pixel through the letterbox geometry of the input (see [Preprocessing Block](#preprocessing-block)), so the padding is cropped and the class map covers the original image.
 
+Multi-channel outputs (two or more classes) take the argmax over the class axis:
+
 ```python
 # accurate (reference): upsample the scores, then argmax
 scores = crop_letterbox(scores, letterbox, stride)            # at output resolution
@@ -1355,9 +1362,23 @@ class_map = crop_letterbox(class_map, letterbox, stride)
 class_map = resize(class_map, (H, W), method="nearest")
 ```
 
+Single-channel outputs compare the score with `threshold` instead, since an argmax over one channel is always 0. The foreground class is 1 and the background 0:
+
+```python
+# accurate: resize the score, then threshold
+score = crop_letterbox(score, letterbox, stride)
+score = resize(score, (H, W), method=upsample.method,
+               align_corners=upsample.align_corners)
+class_map = (score > threshold).astype(np.uint8)
+
+# fast: threshold first, then nearest-neighbour upsample
+class_map = (crop_letterbox(score, letterbox, stride) > threshold).astype(np.uint8)
+class_map = resize(class_map, (H, W), method="nearest")
+```
+
 Reference pipelines often upsample twice: first to the model input size, then, after cropping the padding, to the original image size. Fusing the two into one resize changes SegFormer B1 mIoU by less than 0.02 points. `fast` costs SegFormer B1 0.17–0.33 mIoU points on ADE20K and is much cheaper, because only one channel is resized.
 
-Quantized outputs with one scale and zero point for the whole tensor decode on the integer values directly: dequantization with a positive scale preserves the argmax, and bilinear weights sum to 1. Per-channel quantization is dequantized first.
+Quantized multi-channel outputs with one scale and zero point for the whole tensor can take the argmax on the integer values directly: dequantization with a positive scale preserves the argmax, and bilinear weights sum to 1. Per-channel quantization is dequantized first. A single-channel threshold is a real value, so either dequantize the score or convert the threshold to quantized units, `threshold / scale + zero_point`, before comparing. Comparing the raw integer with `threshold` is wrong: with scale `1/255` and zero point `0`, the integer `64` is a score of about `0.25`, below a threshold of `0.5`, yet `64 > 0.5`.
 
 ### Mask Classification (Reserved)
 

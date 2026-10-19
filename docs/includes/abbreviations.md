@@ -36,6 +36,7 @@
 *[DFL]: Distribution Focal Loss
 *[FPN]: Feature Pyramid Network
 *[DNPU]: Discrete Neural Processing Unit
+*[HTP]: Hexagon Tensor Processor
 *[DRAM]: Dynamic Random-Access Memory
 *[SRAM]: Static Random-Access Memory
 *[HAL]: Hardware Abstraction Layer

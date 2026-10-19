@@ -1,14 +1,15 @@
 # Box Formats
 
-EdgeFirst 2026.04 introduces **metadata-based format selection** for bounding boxes.
-The `box2d_format` and `box3d_format` file-level metadata keys describe the array
-layout so that readers can interpret box data without assumptions.
+EdgeFirst datasets store 2D boxes as `[center_x, center_y, width, height]` (`cxcywh`) in Arrow and Parquet files and as `{x, y, w, h}` (`ltwh`, left/top corner) in JSON files and the EdgeFirst Studio API. All box coordinates are normalized to the 0..1 range.
+
+!!! note "Box format metadata is reserved"
+    The specification reserves the `box2d_format`, `box2d_normalized`, `box3d_format`, and `box3d_normalized` file-level metadata keys so that a future release can describe other layouts. The EdgeFirst Client does not write or read these keys yet: box layouts are fixed as described on this page. The format descriptors below document the layouts and the conversions between them.
 
 ## Box2D
 
 ### Format Descriptors
 
-The `box2d_format` metadata key selects the array element order:
+Three layouts are defined. `cxcywh` is used by Arrow and Parquet, `ltwh` by JSON; `xyxy` is reserved for future use.
 
 | Value | Array Layout | JSON Fields | Description |
 |-------|-------------|-------------|-------------|
@@ -18,7 +19,7 @@ The `box2d_format` metadata key selects the array element order:
 
 ### Coordinate System
 
-The `box2d_normalized` metadata key indicates whether coordinates are normalized:
+Coordinates are normalized. The reserved `box2d_normalized` key would indicate pixel coordinates:
 
 | Value | Description |
 |-------|-------------|
@@ -29,21 +30,14 @@ The `box2d_normalized` metadata key indicates whether coordinates are normalized
     In Arrow/Parquet file metadata, all values are strings (`"true"`, `"false"`).
     In JSON files, use native boolean values (`true`, `false`).
 
-### Default Behavior (Metadata Absent)
+### Layout by Storage Format
 
-When `box2d_format` metadata is **absent**, the default depends on the storage format.
-This preserves backward compatibility with files written before metadata was introduced.
-
-| Storage Format | Default `box2d_format` | Reason |
-|---------------|------------------------|--------|
-| Arrow IPC | `cxcywh` | Backward compatibility with 2025.10 Arrow files |
-| Parquet | `cxcywh` | New format, follows Arrow convention |
-| JSON (file) | `ltwh` | Backward compatibility with Studio JSON-RPC API |
-| JSON-RPC API | Always `ltwh` | Fixed protocol, cannot be changed |
-
-!!! tip "When metadata IS present, it is authoritative"
-    Regardless of storage format, the `box2d_format` metadata value overrides the
-    default. A JSON file with `"box2d_format": "cxcywh"` uses center coordinates.
+| Storage Format | `box2d` layout | Reason |
+|---------------|----------------|--------|
+| Arrow IPC | `cxcywh` | ML convention, unchanged since 2025.10 |
+| Parquet | `cxcywh` | Same schema as Arrow IPC |
+| JSON (file) | `ltwh` | Matches the Studio JSON-RPC API |
+| JSON-RPC API | `ltwh` | Fixed protocol |
 
 ### Conversion Between Formats
 
@@ -105,7 +99,7 @@ Pixel coordinates:
 
 ### Format Descriptor
 
-The `box3d_format` metadata key describes the 3D box array layout:
+The 3D box array layout is fixed:
 
 | Value | Array Layout | Description |
 |-------|-------------|-------------|
@@ -129,7 +123,7 @@ or object centroid).
 
 ### Coordinate System
 
-The `box3d_normalized` metadata key indicates whether coordinates are normalized:
+Coordinates are normalized. The reserved `box3d_normalized` key would indicate absolute units:
 
 | Value | Description |
 |-------|-------------|

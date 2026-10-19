@@ -9,6 +9,7 @@ aigt
 aktualizr
 analytics
 analyze
+annset
 api
 apis
 apn
@@ -51,6 +52,7 @@ bitmask
 bitrate
 bitstream
 bool
+booleans
 bootloader
 boxplot
 braille
@@ -129,6 +131,7 @@ dequant
 dequantization
 dequantize
 dequantizing
+dequeues
 deserialize
 deserialized
 deserializer
@@ -163,6 +166,7 @@ downsampled
 downscaled
 downscales
 downscaling
+dragonwing
 dram
 dropdown
 dropdowns
@@ -175,6 +179,7 @@ dvm
 dyld
 e1r
 edgefirst
+edgefirststudio
 encodings
 endian
 enum
@@ -194,6 +199,7 @@ extrinsics
 fargate
 fd
 fds
+fetchable
 fi
 filesystem
 flatbuffer
@@ -239,6 +245,7 @@ hantro
 hashmap
 hdparm
 hdr
+headerless
 headlessly
 heatmap
 heatmaps
@@ -247,6 +254,7 @@ hef
 hexagon
 hoc
 homebrew
+honored
 hostapd
 hostname
 hotspot
@@ -257,6 +265,7 @@ http
 https
 huggingface
 hwmon
+hyperparameter
 hyperparameters
 hz
 imageannotations
@@ -335,6 +344,7 @@ ln920
 logit
 logits
 lookahead
+loopback
 lossless
 losslessly
 lossy
@@ -539,11 +549,14 @@ ratatui
 rclone
 rcn
 rcs
+realtime
 recomputable
 redownload
 refclock
+refclocks
 refspec
 repr
+republishes
 requantize
 rerun
 resolv
@@ -579,6 +592,7 @@ sftp
 shaders
 signaled
 silu
+slewed
 smartmicro
 smp
 smpl
@@ -613,7 +627,10 @@ substring
 subwindow
 sudo
 superset
+symlink
+symlinks
 sync_file
+synchronizers
 synset
 sys
 sysfs
@@ -638,7 +655,9 @@ tf_static
 tflite
 th
 thresholded
+timebase
 timepulse
+timestamping
 tmux
 tokio
 toml
@@ -687,13 +706,16 @@ ungrouped
 unicast
 unicode
 uniffi
+unlabeled
 unmanaged
 unnest
+unoffset
 unparseable
 unprivileged
 unquantized
 unstamped
 untracked
+unsynchronized
 untrusted
 uplink
 upsample
@@ -701,6 +723,7 @@ upscaled
 upscales
 upscaling
 uptane
+uptime
 url
 userspace
 utf
@@ -713,6 +736,7 @@ verdin
 verisilicon
 videostream
 vignesh
+visdrone
 vivante
 voxel
 vs

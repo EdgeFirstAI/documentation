@@ -10,7 +10,7 @@ ModelPack is optimized for real-time vision applications such as industrial auto
 
 ## Getting Started
 
-ModelPack can be trained now in EdgeFirst Studio using a Graphical User Interface by following four simple steps:
+ModelPack can be trained in {{ studio_link("EdgeFirst Studio") }} by following four simple steps:
 
 === "Select Framework"
 
@@ -73,13 +73,12 @@ ModelPack can be trained now in EdgeFirst Studio using a Graphical User Interfac
         1. **Name**: The name of the training session, also used to name the artifacts (e.g. `modelpack-coffecup-640x640-rgba-t-<session ID>.onnx`)
         2. **Description**: An optional description of the training session, commonly used to highlight some parameters
     2. **Source Dataset**: The dataset the session trains and validates on, with its annotation set and tag
-    3. **Destination Experiment**: The experiment the training session is created in.  Artifacts and charts are published there when training finishes
-    4. **Input**
+    3. **Input**
         1. **Input Resolution**: The network input resolution (width x height), 480x270 by default.  The list covers 1:1, 16:9 and 4:3 resolutions from 320x180 up to 3840x2160 (4K UHD) and 2592x1944.  Pick the resolution closest to your deployment camera.  Higher resolutions need more GPU memory, and the trainer reduces the batch size automatically when it does not fit.  With [Input Tiling (SAHI)](#input-tiling-sahi) the Input Resolution is the tile size.  In case you need a different resolution to be supported, please reach out and [email our support team](mailto:support@edgefirst.ai)
         2. **Camera Adaptor**: The target camera format of the model input, one of RGB (default), BGR, RGBA, BGRA, Greyscale or YUYV.  See [Camera Adaptor and Letterbox](#camera-adaptor-and-letterbox)
         3. **Input Tiling (SAHI)**: Off by default.  Trains on native-resolution tiles of each image and validates on full images.  The tiling settings and **Tiled Validation** that follow it configure the tiles.  See [Input Tiling (SAHI)](#input-tiling-sahi)
         4. **Letterbox Resize**: On by default.  Resizes each image into the model input while preserving its aspect ratio.  See [Camera Adaptor and Letterbox](#camera-adaptor-and-letterbox)
-    5. **Model Parameters**: Configures the model architecture and the tasks to train
+    4. **Model Parameters**: Configures the model architecture and the tasks to train
         1. **Model Backbone**: CSPDarkNet19 (default), optimized for inference time, or CSPDarkNet53, optimized for accuracy
         2. **Model Size**: Nano (default), Small, Medium or Large.  Similar to modern architectures, ModelPack scales the channel width and the block depth with the size (width `0.25`, `0.375`, `0.5`, `0.75` and depth `0.33`, `0.33`, `0.33`, `0.67` from Nano to Large)
         3. **Activation Function**: The main activation used in the model, one of ReLU, ReLU6 (default) and SiLU.  ReLU6 produces the best tradeoff between speed and accuracy in most cases
@@ -87,14 +86,15 @@ ModelPack can be trained now in EdgeFirst Studio using a Graphical User Interfac
         5. **Segmentation**: Trains a semantic segmentation model.  Selecting both **Object Detection** and **Segmentation** produces a multitask model with one output per task
         6. **Focus Input**: Off by default.  Reshapes the input as a 2x2 patch grid before the first convolution, trading per-pixel processing for a higher channel count at half resolution.  This is often a small inference speedup on NPUs, with a possible accuracy cost on very small objects
         7. **Fine Detection Head**: Off by default.  Adds a stride-8 (P3) detection head so small objects, below 32 pixels, have enough feature cells to localize.  Recommended together with Input Tiling.  It applies to CSPDarkNet19; CSPDarkNet53 always has the stride-8 head
-    6. **Training Parameters**
+    5. **Training Parameters**:
+
         1. **Epochs**: The number of epochs to train the model, 50 by default (1 to 500)
         2. **Batch Size**: The number of samples processed in a single training step, 16 by default (1 to 64).  Remember the larger the input resolution the smaller the batch size
 
         !!! note "ModelPack always trains"
             Every ModelPack session trains on the selected dataset.  The backbone starts from ImageNet-pretrained weights and the detection and segmentation heads start fresh.
 
-    7. **Data Augmentation**: The probability of each augmentation technique, in percent.  Augmentation is crucial for training models and reducing overfitting, especially on small datasets.  See [Vision Augmentations](../augmentations.md)
+    6. **Data Augmentation**: The probability of each augmentation technique, in percent.  Augmentation is crucial for training models and reducing overfitting, especially on small datasets.  See [Vision Augmentations](../augmentations.md)
         1. **Random Brightness and Contrast**: 50 by default
         2. **Random HSV**: Random hue, saturation and value, 30 by default
         3. **Random Grayscale**: 10 by default
@@ -103,10 +103,10 @@ ModelPack can be trained now in EdgeFirst Studio using a Graphical User Interfac
         6. **Random Shift and Scale**: 25 by default.  Not used with Input Tiling
         7. **Random Mosaic**: 25 by default.  With Input Tiling, four tiles are combined at native scale
         8. **Mosaic Center Jitter**: 0 by default (0 to 0.45).  The half-range for randomizing the center point of a mosaic, as a fraction of the tile size.  0 keeps the fixed-center 2x2 mosaic layout; higher values vary the size of each quadrant.  It has an effect only when **Random Mosaic** is above 0
-    8. **Export Parameters**: The session publishes FP32 and FP16 ONNX models, a TensorFlow SavedModel and an INT8 calibration snapshot.  The [converter apps](../conversion/index.md) use them to produce INT8 quantized models for each target NPU
+    7. **Export Parameters**: The session publishes FP32 and FP16 ONNX models, a TensorFlow SavedModel and an INT8 calibration snapshot.  The [converter apps](../conversion/index.md) use them to produce INT8 quantized models for each target NPU
         1. **Calibration Samples**: The number of images in the INT8 calibration snapshot, 500 by default (100 to 2000).  Very low counts can reduce quantized accuracy.  Snapshots are reused across sessions with matching settings
         2. **ONNX Opset Version**: The ONNX opset version of the exported model, 11, 12 or 13 (default).  Keep the default unless a downstream tool requires an older version
-    9. **Start Session**: This button starts the training session
+    8. **Start Session**: This button starts the training session
 
 ## Camera Adaptor and Letterbox
 

@@ -1,8 +1,8 @@
 # Training Fusion Models
 
-This tutorial describes the steps to train **Fusion** models in EdgeFirst Studio.  Recall that Fusion models are used for spatial perception using Radar data and camera frames as inputs to the model.  If you are working towards object detection, see [Training Vision Models](vision.md).
+This tutorial describes the steps to train **Fusion** models in EdgeFirst Studio.  Fusion models are used for spatial perception using Radar data and camera frames as inputs to the model.  If you are working towards object detection, see [Training Vision Models](vision.md).
 
-## View Dataset
+## Verify Dataset
 
 First ensure that the dataset is ready to be used for training.  This means that the dataset meets all of the criteria listed below.
 
@@ -10,11 +10,12 @@ First ensure that the dataset is ready to be used for training.  This means that
 - [x] Contains training and validation partitions
 - [x] Contains a dataset tag/version
 
-The section [View Fusion Dataset](../../datasets/tutorials/management.md#view-fusion-dataset) will show an example of a completed dataset.
+!!! tip "Complete Dataset"
+    [See an example dataset](../../datasets/tutorials/management.md#view-fusion-dataset) that is ready for training.
 
 ## Specify Project Experiments
 
-From the [Projects page](../../studio/projects.md), choose the project that contains the dataset you plan to use.  In this example, the project chosen is called "My First Project" project.  Next click the "Model Experiments" button as indicated in red.
+From the ["Projects"](../../studio/projects.md) page, choose the project that contains the dataset you plan to use.  In this example, the project chosen is called "My First Project" project.  Next click the "Model Experiments" button as indicated in red.
 
 {{ figure("../assets/training/model-experiments.jpg", "Model Experiments") }}
 

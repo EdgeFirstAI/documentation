@@ -1,8 +1,8 @@
 # Training Vision Models
 
-This tutorial describes the steps to train **Vision** models in EdgeFirst Studio.  Recall that Vision models are models that perform object detection in camera frames or images.  EdgeFirst Studio is capable of training ModelPack and Ultralytics object detection models.  For a tutorial to train Fusion models, see [Training Fusion Models](fusion.md).
+This tutorial describes the steps to train **Vision** models in EdgeFirst Studio.  Vision models are models that perform object detection in camera frames or images.  EdgeFirst Studio is capable of training ModelPack and Ultralytics object detection models.  For a tutorial to train Fusion models, see [Training Fusion Models](fusion.md).
 
-## View Dataset
+## Verify Dataset
 
 First ensure that the dataset is ready to be used for training.  This means that the dataset meets all of the criteria listed below.
 
@@ -10,11 +10,12 @@ First ensure that the dataset is ready to be used for training.  This means that
 - [x] Contains training and validation partitions
 - [x] Contains a dataset tag/version
 
-The section [View Dataset](../../datasets/tutorials/management.md#view-dataset) will show an example of a completed dataset.
+!!! tip "Complete Dataset"
+    [See an example dataset](../../datasets/tutorials/management.md#view-dataset) that is ready for training.
 
 ## Specify Project Experiments
 
-From the [Projects page](../../studio/projects.md), choose the project that contains the dataset you plan to use.  In this example, the project chosen is called "My First Project".  Next click the "Model Experiments" button as indicated in red.
+From the ["Projects"](../../studio/projects.md) page, choose the project that contains the dataset you plan to use.  In this example, the project chosen is called "My First Project".  Next click the "Model Experiments" button as indicated in red.
 
 {{ figure("../assets/training/model-experiments.jpg", "Model Experiments") }}
 

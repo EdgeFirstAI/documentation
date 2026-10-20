@@ -9,7 +9,7 @@ Our Model Zoo ecosystem provides a collection of models to be re-trained through
 
 ## Getting Started
 
-YOLOv5, YOLOv8, YOLO11, and YOLO26 can be trained in EdgeFirst Studio using a Graphical User Interface by following four simple steps:
+YOLOv5, YOLOv8, YOLO11, and YOLO26 can be trained in {{ studio_link("EdgeFirst Studio") }} by following four simple steps:
 
 === "Select Framework"
 
@@ -72,15 +72,20 @@ YOLOv5, YOLOv8, YOLO11, and YOLO26 can be trained in EdgeFirst Studio using a Gr
         1. **Name**: The name of the training session, also used to name the artifacts (e.g. `yolov8n-coffecup-640x640-rgb-t-<session ID>.onnx`)
         2. **Description**: An optional description of the training session, commonly used to highlight some parameters
     2. **Source Dataset**: The dataset the session trains, validates and calibrates on, with its annotation set and tag
-    3. **Destination Experiment**: The experiment the training session is created in.  Artifacts and charts are published there when the session finishes
-    4. **Input Resolution**: The network input resolution (width x height), 640x640 by default.  Every option is divisible by 32 to match the YOLO backbone stride, and the list covers 1:1, 4:3 and 16:9 resolutions from 320x320 up to 3840x2176 (4K).  A dataset whose aspect ratio differs from the Input Resolution is letterboxed.  Detection accuracy is typically best near 640, the resolution the COCO weights are pretrained at.  With [Input Tiling](#input-tiling) the larger side of the Input Resolution is the tile size.  In case you need a different resolution to be supported, please reach out and [email our support team](mailto:support@edgefirst.ai)
-    5. **Task Selection**: Defines the model architecture.  These fields are ignored when the **Weights** are a previous training session
+    3. **Input Resolution**: The network input resolution (width x height), 640x640 by default.  Every option is divisible by 32 to match the YOLO backbone stride, and the list covers 1:1, 4:3 and 16:9 resolutions from 320x320 up to 3840x2176 (4K).  A dataset whose aspect ratio differs from the Input Resolution is letterboxed.  Detection accuracy is typically best near 640, the resolution the COCO weights are pretrained at.  With [Input Tiling](#input-tiling) the larger side of the Input Resolution is the tile size.  In case you need a different resolution to be supported, please reach out and [email our support team](mailto:support@edgefirst.ai)
+    4. **Task Selection**: Defines the model architecture.  These fields are ignored when the **Weights** are a previous training session
         1. **Model Task**: Either "Detection" (default) or "Segmentation". Note for Ultralytics segmentation refers to instance segmentation
         2. **Model Version**: The Ultralytics version from the choices v5, v8 (default), v11 and v26
         3. **Model Size**: The size of the model from the choices Nano (default), Small, Medium, Large and XLarge
+    5. **Export Parameters**
+        1. **Calibration Samples**: The number of training images in the INT8 quantization calibration snapshot, 500 by default (100 to 2000).  Very low counts can reduce quantized accuracy, while higher counts increase export time with diminishing returns.  Snapshots are reused across compatible sessions
+        2. **ONNX Opset Version**: The ONNX opset version of the exported model, 11, 12 or 13 (default)
+        3. **End-to-End (NMS-free)**: YOLO26 only, off by default.  Builds and trains the one-to-one head so the exported model outputs final detections without NMS.  Leave it off for the best INT8 accuracy, because training the one-to-one head reduces the weight of the one-to-many head used with NMS.  A session with another Model Version fails at launch when it is enabled
+        4. **Deployment**: **Tiled** (default) or **Whole frame**, for export-only sessions whose **Weights** were trained with Input Tiling.  See [Deploying Tile-Trained Weights](#deploying-tile-trained-weights)
     6. **Training**
         1. **Weights**: The weights the session starts from, either **Pretrained (COCO)** (default) or a previous Ultralytics training session.  See [Weights Source](#weights-source)
         2. **Enable Training**: Off by default, so the session exports the selected weights without training.  Turn it on to fine-tune the weights on the selected dataset, for example when your dataset classes differ from the 80 COCO classes, when you need a non-RGB camera format, or to improve accuracy beyond the COCO baseline.  See [Weights Source](#weights-source) for what each combination does.  The following fields appear when **Enable Training** is on
+
             1. **Epochs**: The number of epochs to train the model, 50 by default (1 to 500)
             2. **Batch Size**: The number of samples processed in a single training step, 16 by default (1 to 64).  Remember the larger the input resolution the smaller the batch size
             3. **Camera Adaptor**: The target camera format of the model input, one of RGB (default), BGR, RGBA, BGRA, Greyscale or YUYV.  See [Camera Adaptor](#camera-adaptor)
@@ -89,12 +94,7 @@ YOLOv5, YOLOv8, YOLO11, and YOLO26 can be trained in EdgeFirst Studio using a Gr
             !!! note "Charts Without Training"
                 A session with **Enable Training** off runs no epochs, so its loss and learning-rate charts stay empty.  Its mAP, precision and recall charts hold a single point, the validation of the exported model.  See [Weights Source](#weights-source).
 
-    7. **Export Parameters**
-        1. **Calibration Samples**: The number of training images in the INT8 quantization calibration snapshot, 500 by default (100 to 2000).  Very low counts can reduce quantized accuracy, while higher counts increase export time with diminishing returns.  Snapshots are reused across compatible sessions
-        2. **ONNX Opset Version**: The ONNX opset version of the exported model, 11, 12 or 13 (default)
-        3. **End-to-End (NMS-free)**: YOLO26 only, off by default.  Builds and trains the one-to-one head so the exported model outputs final detections without NMS.  Leave it off for the best INT8 accuracy, because training the one-to-one head reduces the weight of the one-to-many head used with NMS.  A session with another Model Version fails at launch when it is enabled
-        4. **Deployment**: **Tiled** (default) or **Whole frame**, for export-only sessions whose **Weights** were trained with Input Tiling.  See [Deploying Tile-Trained Weights](#deploying-tile-trained-weights)
-    8. **Start Session**: This button starts the training session
+    7. **Start Session**: This button starts the training session
 
 !!! note "Important"
     Datasets and default weights are handled internally by EdgeFirst Studio.  There's no need to migrate or store data locally.
@@ -190,12 +190,6 @@ The model metadata records how the model was trained and exported in `tiling.tra
 If you have a custom float model, it is highly recommended to [export to a quantized model](../conversion/tflite.md) to deploy and maximize the model's performance using the target's NPU.
 
 Deploying a quantized TFLite on the **i.MX 95 EVK** requires an extra step of [converting the model using NXP's eIQ neutron converter](../conversion/neutron.md).  This will allow the model to be deployed on the i.MX 95 using the Neutron delegate in the platform.
-
-!!! warning "Specific BSP versions required"
-
-    The latest BSP available for the Maivin lacks the `onnxruntime` library needed to run ONNX on the NPU.
-
-    On the i.MX 8M Plus EVK, BSP v5.15 are used in the examples which was noted to have the providers needed for ONNX to run on the NPU `NnapiExecutionProvider`, `VsiNpuExecutionProvider`.  Later BSPs such as v6.12 did not have these providers.  This still needs confirmation from NXP as to why these providers were removed. 
 
 ## License
 

@@ -31,7 +31,7 @@ You will be greeted to the "Training Sessions" page as shown below.
 
 {{ figure("../assets/training/training-sessions-page.jpg", "Training Sessions Page") }}
 
-Start a training session by clicking on the "Actions" button on the top right corner of the page and then click "+ New" as indicated.
+Start a training session by clicking on the "Actions" button on the top right corner of the page and then click "+ New Trainer Session" as indicated.
 
 {{ figure("../assets/training/new-session-button.jpg", "New Session Button") }}
 

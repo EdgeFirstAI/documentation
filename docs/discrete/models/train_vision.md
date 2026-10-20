@@ -18,7 +18,7 @@ Navigate to the "Training Sessions".
 
 {{ figure("/models/assets/training/training-sessions.jpg", "Training Sessions") }}
 
-Create a new training session by clicking the "Actions" dropdown menu on the top right of the page and then click the "+ New" button.
+Create a new training session by clicking the "Actions" dropdown menu on the top right of the page and then click the "+ New Trainer Session" button.
 
 {{ figure("/models/assets/training/new-mpk-session-button.jpg", "New Session Button") }}
 

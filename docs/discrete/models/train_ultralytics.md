@@ -10,7 +10,7 @@
 
     {{ figure("/models/assets/training/training-sessions.jpg", "Training Sessions") }}
 
-4. Create a new training session by clicking the "Actions" dropdown menu on the top right of the page and then click the "+ New" button
+4. Create a new training session by clicking the "Actions" dropdown menu on the top right of the page and then click the "+ New Trainer Session" button
 
     {{ figure("/models/assets/training/new-ultralytics-session-button.jpg", "New Session Button") }}
 

@@ -51,16 +51,15 @@ The launch forms of both trainers start with the same three groups.
 |-------|-------------|
 | **Training Session** | The **Name** and optional **Description** of the training session.  The name is also used to name the artifacts. |
 | **Source Dataset** | The dataset the session trains and validates on, with its annotation set and tag. |
-| **Destination Experiment** | The experiment the training session is created in.  Artifacts and charts are published there when the session finishes. |
 
 The groups that follow depend on the trainer.
 
 | Trainer | Groups | Parameter Reference |
 |---------|--------|---------------------|
 | **ModelPack** | Input (Input Resolution, Camera Adaptor, Input Tiling (SAHI), Letterbox Resize), Model Parameters, Training Parameters, Data Augmentation, Export Parameters | [ModelPack Training Parameters](../modelpack/index.md#training-parameters) |
-| **Ultralytics** | Input (Input Resolution), Task Selection, Training (Weights, Enable Training and its training settings), Export Parameters | [Ultralytics Training Parameters](../ultralytics/index.md#training-parameters) |
+| **Ultralytics** | Input (Input Resolution), Task Selection, Export Parameters, Training (Weights, Enable Training and its training settings) | [Ultralytics Training Parameters](../ultralytics/index.md#training-parameters) |
 
-Click "Start Session" to start the training session.
+Click "Start App" to start the training session.
 
 ### Weights and Enable Training
 
@@ -80,12 +79,6 @@ A session with **Enable Training** off validates the exported model and reports 
 
 !!! warning "COCO pretrained weights and dataset compatibility"
     **Pretrained (COCO)** weights without training detect the 80 COCO classes.  When your dataset classes differ from the COCO classes, the session skips validation, and the model's class outputs do not correspond to your labels.  Turn on **Enable Training** to fine-tune the weights on your dataset.
-
-!!! failure "InsufficientInstanceCapacity"
-
-    {{ img("/studio/assets/models/insufficient-capacity-error.jpg", "InsufficientInstanceCapacity Error") }}
-
-    If you see this error after starting your training session, retry creating the session. This can happen when AWS reports that no EC2 instances are currently available to launch; the current workaround is to retry.
 
 ## Session Progress
 

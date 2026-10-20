@@ -94,7 +94,7 @@ YOLOv5, YOLOv8, YOLO11, and YOLO26 can be trained in {{ studio_link("EdgeFirst S
             !!! note "Charts Without Training"
                 A session with **Enable Training** off runs no epochs, so its loss and learning-rate charts stay empty.  Its mAP, precision and recall charts hold a single point, the validation of the exported model.  See [Weights Source](#weights-source).
 
-    7. **Start Session**: This button starts the training session
+    7. **Start App**: This button starts the training session
 
 !!! note "Important"
     Datasets and default weights are handled internally by EdgeFirst Studio.  There's no need to migrate or store data locally.

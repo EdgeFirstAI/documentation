@@ -106,7 +106,7 @@ ModelPack can be trained in {{ studio_link("EdgeFirst Studio") }} by following f
     7. **Export Parameters**: The session publishes FP32 and FP16 ONNX models, a TensorFlow SavedModel and an INT8 calibration snapshot.  The [converter apps](../conversion/index.md) use them to produce INT8 quantized models for each target NPU
         1. **Calibration Samples**: The number of images in the INT8 calibration snapshot, 500 by default (100 to 2000).  Very low counts can reduce quantized accuracy.  Snapshots are reused across sessions with matching settings
         2. **ONNX Opset Version**: The ONNX opset version of the exported model, 11, 12 or 13 (default).  Keep the default unless a downstream tool requires an older version
-    8. **Start Session**: This button starts the training session
+    8. **Start App**: This button starts the training session
 
 ## Camera Adaptor and Letterbox
 

@@ -1315,7 +1315,7 @@ Multi-label decode interacts with the other decoder parameters as follows:
 Semantic segmentation models assign a class to every pixel. Their logical outputs use `decoder: semantic` and one of three forms:
 
 !!! note "Metadata and decoder support"
-    This section defines the metadata contract and the decode algorithm a consumer implements. The HAL parses and validates every field described here, and its semantic decoder decodes per-pixel scores and class maps. The reserved mask-classification outputs return a "not supported" error.
+    This section defines the metadata contract and the decode algorithm a consumer implements. The HAL parses and validates every field described here. From HAL 0.36.0 its semantic decoder decodes per-pixel scores and class maps; the reserved mask-classification outputs return a "not supported" error.
 
 | Form | Logical output(s) | Examples | Decode |
 | ---- | ----------------- | -------- | ---------- |

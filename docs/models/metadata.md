@@ -238,6 +238,14 @@ input:
   cameraadaptor: string    # Camera format (rgb, bgr, rgba, bgra, grey, yuyv)
   input_channels: int      # Channels from camera (3=RGB, 4=RGBA, 1=grey)
   output_channels: int     # Channels after CameraAdaptor transform
+  preprocessing:           # Optional (see Input Preprocessing)
+    normalization: string or {mean: [float], std: [float]}  # unsigned | signed | raw | imagenet, or per-channel mean/std on 0-255
+    resize: string         # stretch | letterbox
+    interpolation: string  # bilinear | nearest | bicubic | area (reference filter, informational)
+    letterbox:
+      placement: string    # center (default) | top_left
+      pad: [float]         # Per-channel pad value (default 114, pixel space)
+      pad_space: string    # pixel (default) | normalized
 
 model:
   name: string             # Model/session name from training (artifact naming)
@@ -328,7 +336,8 @@ split_hints:
 outputs:
   - name: string               # Logical output name
     type: string               # Semantic type: boxes, scores, objectness, mask_coefs, protos,
-                               # landmarks, classes, detections, segmentation, masks, detection
+                               # landmarks, classes, detections, segmentation, masks, detection,
+                               # class_logits, mask_logits (reserved)
     shape: [int]               # Reconstructed logical shape (what fallback dequant+merge produces)
     dshape:                    # Named dimensions (see dshape section)
       - batch: int
@@ -341,16 +350,25 @@ outputs:
       - num_anchors_x_features: int
       - box_coords: int
       - padding: int
-    decoder: string            # 'modelpack' | 'ultralytics' — required for outputs needing decode
+      - num_queries: int
+    decoder: string            # 'modelpack' | 'ultralytics' | 'semantic' — required for outputs needing decode
     encoding: string           # 'dfl' | 'direct' | 'anchor' — required on boxes
     score_format: string       # 'per_class' | 'obj_x_class' (scores only)
     normalized: boolean        # Coordinates in [0,1] (true) or pixels (false); boxes and detections only
     stride: int or [int, int]  # Spatial stride; 2-element form for non-square inputs
     anchors: [[float, float]]  # Normalized anchors (ModelPack anchor-based outputs)
 
+    # Semantic segmentation fields (see Semantic Segmentation)
+    upsample: {method: string, align_corners: boolean}  # bilinear | nearest | bicubic
+    decode_mode: string        # accurate | fast
+    threshold: float           # Single-channel outputs only
+    background_index: int      # Channel of the background class, when the model has one
+    no_object_index: int       # class_logits only (reserved); absent means the last class
+    mask_activation: string    # mask_logits only (reserved): sigmoid | softmax_over_queries
+
     # When the converter did NOT further split this logical output,
     # it IS the physical tensor — the following fields are present directly:
-    dtype: string              # Tensor data type (e.g. int8, uint8, float32)
+    dtype: string              # Tensor data type (e.g. int8, uint8, float32, int64)
     quantization:              # Quantization parameters (null for float models)
       scale: float or [float]
       zero_point: int or [int]
@@ -448,9 +466,11 @@ Logical output types used across frameworks:
 | `protos` | Instance segmentation prototypes | `[1, num_protos, H, W]` |
 | `landmarks` | Facial / keypoint landmarks | `[1, num_landmarks, num_boxes]` |
 | `detections` | Fully decoded post-NMS detections (end-to-end) | `[1, max_det, 6]` (x1,y1,x2,y2,conf,class) |
-| `segmentation` | Semantic segmentation output | `[1, H, W, num_classes]` |
-| `masks` | Semantic segmentation masks | `[1, H, W]` |
+| `segmentation` | Semantic segmentation per-pixel class scores | `[1, H, W, num_classes]` or `[1, num_classes, H, W]` |
+| `masks` | Semantic segmentation class map, argmax applied in the graph | `[1, H, W]` |
 | `detection` | Anchor-grid raw output requiring anchor decode | `[1, H, W, anchors×features]` |
+| `class_logits` | Mask-classification per-query class logits (reserved) | `[1, num_queries, num_classes + 1]` |
+| `mask_logits` | Mask-classification per-query mask logits (reserved) | `[1, num_queries, H, W]` |
 
 Physical-child subtypes (appear only inside `outputs[]` children):
 
@@ -489,6 +509,7 @@ outputs:
 | `num_anchors_x_features` | Combined anchor × features-per-anchor dimension (anchor-grid outputs) |
 | `padding` | Padding/alignment dimension used to satisfy expected tensor shapes. Must always be 1 |
 | `box_coords` | The coordinates of the boxes. Must be 4 |
+| `num_queries` | Number of queries of a mask-classification model |
 
 `dshape` entries are ordered objects — the position of each key matches the axis position in `shape`. Ordering is authoritative for consumers mapping shapes to names.
 
@@ -543,7 +564,7 @@ Semantic and decode fields live on the **logical output** and apply to all child
 
 **Root-level only:** `decoder_version`, `nms` (HAL NMS mode), `nms_multi_label` (HAL multi-label decode). These describe model-wide behavior and never appear inside an `outputs[]` entry.
 
-**Logical output only:** `decoder`, `encoding`, `score_format`, `normalized`, `anchors`
+**Logical output only:** `decoder`, `encoding`, `score_format`, `normalized`, `anchors`, `upsample`, `decode_mode`, `threshold`, `background_index`, `no_object_index`, `mask_activation`
 
 **Physical output only:** `quantization` (always required), `dtype`, `scale_index`, `activation_applied`, `activation_required`
 
@@ -558,6 +579,9 @@ Per-type semantic fields are scoped to their output type:
 - `normalized` → `boxes` and `detections` only
 - `anchors` → `boxes` with `encoding: anchor` only
 - `stride` on a non-split logical output → spatial stride hint (e.g. `protos` at stride 4)
+- `upsample`, `decode_mode`, `background_index` → `segmentation` and `masks` with `decoder: semantic`
+- `threshold` → single-channel `segmentation` with `decoder: semantic`
+- `no_object_index` → `class_logits` only; `mask_activation` → `mask_logits` only
 
 ---
 
@@ -785,7 +809,8 @@ input:
 
 - Used when training on images from diverse cameras and aspect ratios
 - Image is scaled to fit within target size while maintaining aspect ratio
-- Gray padding (value 114) added to reach exact dimensions
+- Padding added to reach exact dimensions: gray (value 114) by default, or the value in `input.preprocessing.letterbox.pad`
+- The scaled image is centred by default; `input.preprocessing.letterbox.placement: top_left` anchors it at the top-left with all padding on the bottom and right
 - Inference must apply same letterbox transform and account for padding offset in output coordinates
 
 **Example:** A 1920x1080 image letterboxed to 640x640:
@@ -796,14 +821,55 @@ input:
 
 ### Pixel Normalization
 
-Input pixels are normalized from `[0, 255]` to `[0.0, 1.0]`:
+Normalization is defined on 0–255 pixel values as `(x - mean) / std` per channel. A model declares it in `input.preprocessing.normalization`, either as a preset or as explicit per-channel coefficients:
+
+| Preset | mean | std | Result range | Typical models |
+| ------ | ---- | --- | ------------ | -------------- |
+| `unsigned` | 0 | 255 | `[0, 1]` | ModelPack, Ultralytics YOLO (default) |
+| `signed` | 127.5 | 127.5 | `[-1, 1]` | TF DeepLab, MediaPipe, PP-LiteSeg |
+| `raw` | 0 | 1 | `[0, 255]` | Models with normalization in the graph |
+| `imagenet` | 123.675, 116.28, 103.53 | 58.395, 57.12, 57.375 | about `[-2.1, 2.6]` | SegFormer, DeepLabV3, UperNet and most ImageNet-pretrained backbones |
 
 ```python
-# Standard normalization
-normalized = pixels.astype(np.float32) / 255.0
+# Explicit form, equivalent to the imagenet preset
+normalized = (pixels.astype(np.float32) - mean) / std
 ```
 
-For quantized models (INT8), the quantization parameters handle the scaling internally — raw uint8 pixel values can often be used directly.
+A single `mean` or `std` value applies to every channel. The coefficients describe the trained weights, not the architecture: ports of the same architecture differ (BEiT uses `imagenet` in mmsegmentation and `signed` in Hugging Face), so the producer records what its export expects.
+
+For quantized models (INT8), the input quantization is applied after normalization. When the normalization and input quantization cancel out, raw uint8 pixel values can be fed directly.
+
+### Preprocessing Block
+
+The optional `input.preprocessing` block records everything a runtime needs to reproduce the model's reference pre-processing:
+
+```yaml
+input:
+  shape: [1, 3, 512, 512]
+  cameraadaptor: rgb
+  preprocessing:
+    normalization: imagenet        # or {mean: [...], std: [...]}
+    resize: letterbox              # stretch | letterbox
+    interpolation: bilinear        # bilinear | nearest | bicubic | area
+    letterbox:
+      placement: top_left          # center | top_left
+      pad: [0.0, 0.0, 0.0]
+      pad_space: normalized        # pixel | normalized
+```
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| `normalization` | string or object | Preset name (`unsigned`, `signed`, `raw`, `imagenet`) or `{mean, std}` with one value or one value per channel, on the 0–255 scale. Every `std` must be non-zero. |
+| `resize` | string | `stretch` scales each axis independently to the input size. `letterbox` preserves the aspect ratio and pads. |
+| `interpolation` | string | Resampling filter of the reference pipeline. Informational: a runtime may use another filter and should state the difference when comparing accuracy. Segmentation models are sensitive to it; nearest-neighbour resizing costs SegFormer B1 0.6–1.0 mIoU points against bilinear. |
+| `letterbox.placement` | string | `center` (default) splits the padding between both sides of each axis. `top_left` puts all padding on the bottom and right, as mmsegmentation and TF DeepLab do. |
+| `letterbox.pad` | [float] | Pad value, one per channel or a single shared value. Default 114 per channel. |
+| `letterbox.pad_space` | string | `pixel` (default): `pad` is a 0–255 value that is normalized like image content. `normalized`: `pad` is written as-is into the normalized input, for example 0.0 to pad with the mean colour after `imagenet` normalization. |
+
+Every field is optional. When a field is absent, consumers fall back to the legacy [`validation`](#validation-parameters) fields (`validation.normalization`, `validation.preprocessing`), then to `unsigned` normalization and a centred letterbox padded with 114. The block was added to schema version 2 without a version change; parsers that predate it ignore it.
+
+!!! note "Sliding-window evaluation"
+    Some published segmentation results (UperNet with ConvNeXt or BEiT, DINOv2, SegFormer on Cityscapes) use sliding-window inference over a larger image, stitching the overlapping score maps. The block describes single-pass inference at the fixed input shape only. Sliding-window geometry and score-map stitching are outside this block, and the [Tiling](#tiling) section does not cover them: tiling reconstructs bounding boxes only.
 
 ### Camera Adaptor
 
@@ -823,6 +889,8 @@ The `cameraadaptor` field specifies the expected input format for the model. See
 ## Tiling
 
 Models trained on native-resolution tiles of high-resolution frames carry an optional `tiling` section. A runtime reads it to decide whether to cut each frame into tiles or run the whole frame through the model, and it records how the model was trained, exported and calibrated. A model without the section is not tile-trained and is handled exactly as before.
+
+Tiling reconstructs bounding boxes only: per-tile detections are merged into frame detections. Masks, whether instance masks or semantic segmentation maps, are not reconstructed across tiles.
 
 The tiling mode and the input resolution are fixed when the model is exported, because edge runtimes compile a static input shape. The default deployment of a tile-trained model is **tiled** at its tile size. The contract defines one workflow for deploying the same weights at another resolution, for example whole-frame at a camera's native resolution: it is done by starting a new training session with training disabled, selecting the tile-trained session as its weights source, and choosing the deployment mode and input resolution. That session exports and calibrates at the new geometry without retraining.
 
@@ -997,7 +1065,7 @@ The `validation` section records the recommended settings based on how the model
 | `iou` | NMS IoU threshold | `0.7` | Yes |
 | `score` | NMS confidence score threshold | `0.001` | Yes |
 | `nms` | NMS algorithm | *(not set)* | See below |
-| `normalization` | Input pixel normalization | `unsigned` | Yes |
+| `normalization` | Input pixel normalization preset (`unsigned`, `signed`, `raw`, `imagenet`). Superseded by `input.preprocessing.normalization` when present | `unsigned` | Yes |
 | `preprocessing` | Image preprocessing method | `letterbox` | Yes |
 
 Most parameters (`iou`, `score`, `normalization`, `preprocessing`, and NMS algorithm choices like `hal`/`tensorflow`/`numpy`/`torch`) can be overridden at runtime based on deployment preferences.
@@ -1150,6 +1218,10 @@ x2y2 = anchor_points + rb
 | YOLO11 | C3k2, C2PSA | DWConv→Conv (efficient) |
 | YOLO26 | C3k2, A2C2f | DWConv→Conv (efficient) |
 
+#### `semantic` — Semantic Segmentation Decoder
+
+Per-pixel class decoding for semantic segmentation models: upsampling of a class-score map and argmax, or resizing of a class map the model already computed. See [Semantic Segmentation](#semantic-segmentation) for the fields and the decode algorithm.
+
 ### Decoder Version Field
 
 The optional `decoder_version` field specifies the YOLO architecture version of the model. This field is critical for determining the correct decoding strategy, especially for end-to-end models.
@@ -1235,6 +1307,107 @@ Multi-label decode interacts with the other decoder parameters as follows:
 - **Overrides**: `DecoderBuilder::with_multi_label`, the Python `multi_label` constructor argument, and the C `ef_decoder_params_set_multi_label` override the metadata value in either direction. Without an override, the metadata value applies, and the decoder is argmax if the key is absent.
 - **Warning**: a decoder that takes multi-label from this key logs a warning when it is built, because the model file then changes what every untracked `decode` returns. Pass `multi_label=False` to override it.
 - **Tracking**: tracked decode (`decode_tracked`, `decode_proto_tracked`, `decode_for_tracking`) always decodes one label per box regardless of this key, because a tracker matches on IoU only and per-class duplicates of one anchor would become spurious tracks.
+
+---
+
+## Semantic Segmentation
+
+Semantic segmentation models assign a class to every pixel. Their logical outputs use `decoder: semantic` and one of three forms:
+
+!!! note "Metadata and decoder support"
+    This section defines the metadata contract and the decode algorithm a consumer implements. The HAL parses and validates every field described here. From HAL 0.36.0 its semantic decoder decodes per-pixel scores and class maps; the reserved mask-classification outputs return a "not supported" error.
+
+| Form | Logical output(s) | Examples | Decode |
+| ---- | ----------------- | -------- | ---------- |
+| Per-pixel scores | one `segmentation` | SegFormer, DeepLabV3(+), PSPNet, UperNet, PIDNet, DDRNet, BiSeNet, LRASPP, MediaPipe selfie | Upsample the scores, then argmax (or threshold one channel) |
+| Class map | one `masks` | Exports ending in `ArgMax`: Coral DeepLab (int64), PaddleSeg (int32), Ultralytics semantic ONNX (uint8) | Nearest-neighbour resize only; the HAL accepts `uint8`, `uint16`, `int32`, `uint32` and `int64` |
+| Mask classification (reserved) | `class_logits` + `mask_logits` | MaskFormer, Mask2Former, OneFormer, PEM | Not yet decoded by the HAL |
+
+A semantic output is a single tensor; the HAL rejects a `decoder: semantic` output that has physical children.
+
+ModelPack semantic segmentation (`decoder: modelpack`, see [Example 1](#example-1-modelpack-semantic-segmentation)) keeps its existing behaviour.
+
+### Semantic Output Fields
+
+| Field | Applies to | Description |
+| ----- | ---------- | ----------- |
+| `dshape` | all | Names the class axis `num_classes` and the spatial axes `height`/`width`, so both NCHW and NHWC layouts decode correctly. A class map has no class axis. |
+| `stride` | `segmentation`, `masks` | Output stride relative to the model input (4 for SegFormer, 8 for DeepLabV3 d8, 1 when the model upsamples in the graph). Informational for the HAL decoder, which maps the letterbox onto the score map by its size, so non-integer strides such as DINOv2's 14-pixel patches need no special handling. |
+| `activation_applied` | `segmentation` | `softmax` or `sigmoid` when the scores are probabilities; absent for logits. Argmax is unaffected; the activation matters for `threshold` and for confidence output. |
+| `upsample` | `segmentation`, `masks` | `{method, align_corners}`. `method` is `bilinear` (default for scores), `nearest` (always used for class maps) or `bicubic` (EfficientViT-Seg; not supported by the HAL decoder). `align_corners` follows PyTorch semantics and defaults to `false`; PIDNet, TF DeepLab and the mmsegmentation 769×769 configs use `true`. |
+| `decode_mode` | `segmentation` | Default decode mode, `accurate` (default) or `fast`. Runtimes may override it. |
+| `threshold` | `segmentation` with one channel | Foreground threshold in the space of the tensor: a probability when `activation_applied: sigmoid`, a logit otherwise (`0.0` is equivalent to probability 0.5). Absent means `0.5` when `activation_applied` is `sigmoid` or `softmax`, else `0.0`. |
+| `background_index` | `segmentation`, `masks` | Channel of the background class when the model has one (VOC-style models use 0). ADE20K and Cityscapes models have none. |
+| `no_object_index` | `class_logits` (reserved) | Index of the "no object" class. Absent means the last class. |
+| `mask_activation` | `mask_logits` (reserved) | `sigmoid` (MaskFormer, Mask2Former, OneFormer) or `softmax_over_queries` (kMaX-DeepLab). |
+
+Class labels come from `dataset.classes` (or the `labels` file) in channel order: label `i` names channel `i`. Dataset conventions such as an ignore index (255) or ADE20K's `reduce_zero_label`, where channel `c` is dataset class `c + 1`, belong to the dataset and the validator, not to the decoder.
+
+Auxiliary heads that remain in an export (training-time aux heads, PIDNet's P and D branches) are listed without a `type`, so the decoder ignores them. Select the decoded head by its logical output, never by position.
+
+### Decode Modes
+
+Both modes map each output pixel through the letterbox geometry of the input (see [Preprocessing Block](#preprocessing-block)), so the padding is cropped and the class map covers the original image. `accurate` is the reference decode. `fast` trades a small, measured accuracy cost for speed and is not required to reproduce a reference pipeline pixel for pixel.
+
+The letterbox content region is mapped into score-map coordinates as a fractional region rather than cropped to whole cells, because the image edge rarely falls on a cell boundary (a 504-row image region at stride 4 ends at row 126, a 509-row one at row 127.25). For an axis of `n` score-map cells, a content region starting at normalized `t0` and ending at `t1`, and `out` output pixels:
+
+```python
+r0, rl = t0 * n, (t1 - t0) * n               # region start and length in cells
+
+def src_bilinear(d):                          # output pixel d -> source coordinate
+    if align_corners:
+        s = r0 + d * (rl - 1) / (out - 1)
+    else:
+        s = r0 + (d + 0.5) * rl / out - 0.5   # PyTorch half-pixel convention
+    return clamp(s, 0, n - 1)                 # taps at the edge may read padding cells
+
+def src_nearest(d):                           # pixel-center nearest neighbour
+    return clamp(floor(r0 + (d + 0.5) * rl / out), 0, n - 1)
+```
+
+`sample` reads the scores at fractional source coordinates with `upsample.method`; with `nearest` it uses `src_nearest` and is equivalent to the fast path. Multi-channel outputs (two or more classes) take the argmax over the class axis:
+
+```python
+ys, xs = np.arange(H), np.arange(W)                             # output pixels
+
+# accurate (reference): resample every channel, then argmax
+scores = sample(scores, src_bilinear(ys), src_bilinear(xs))     # [C, H, W]
+class_map = scores.argmax(axis=0)
+
+# fast: argmax at the score-map resolution, then nearest-neighbour sampling
+class_map = scores.argmax(axis=0)                                # [h, w]
+class_map = class_map[src_nearest(ys)][:, src_nearest(xs)]       # [H, W]
+```
+
+Single-channel outputs compare the score with `threshold` instead, since an argmax over one channel is always 0. The foreground class is 1 and the background 0:
+
+```python
+# accurate: resample the score, then threshold
+class_map = (sample(score, src_bilinear(ys), src_bilinear(xs)) > threshold).astype(np.uint8)
+
+# fast: threshold at the score-map resolution, then nearest-neighbour sampling
+class_map = (score > threshold).astype(np.uint8)[src_nearest(ys)][:, src_nearest(xs)]
+```
+
+Ties in the argmax go to the lowest class index, as `torch.argmax` does.
+
+Reference pipelines often upsample twice: first to the model input size, then, after cropping the padding, to the original image size. On SegFormer B1 (ADE20K val, three input shapes), the single resize over the fractional region is within 0.01 mIoU points of the two-step reference and agrees with it on 99.94–99.97% of pixels; cropping to whole cells instead agrees on only 99.4–99.7%. `fast` costs 0.12–0.13 mIoU points and is much cheaper, because only one channel is resized. Pixel-center sampling matters there: PyTorch's legacy `nearest` mode (`floor(d * scale)`, no half-pixel offset) shifts the class map by half a score-map cell and costs 0.17–0.19 points.
+
+Quantized multi-channel outputs with one scale and zero point for the whole tensor can take the argmax on the integer values directly: dequantization with a positive scale preserves the argmax, and bilinear weights sum to 1. Per-channel quantization is dequantized first. A single-channel threshold is a real value, so either dequantize the score or convert the threshold to quantized units, `threshold / scale + zero_point`, before comparing. Comparing the raw integer with `threshold` is wrong: with scale `1/255` and zero point `0`, the integer `64` is a score of about `0.25`, below a threshold of `0.5`, yet `64 > 0.5`.
+
+### Mask Classification (Reserved)
+
+Mask-classification models predict `Q` queries, each with a class distribution and a mask. The semantic map is:
+
+```python
+cls = softmax(class_logits, axis=-1)          # [Q, K+1]
+cls = np.delete(cls, no_object_index, axis=-1) # [Q, K]  drop "no object"
+masks = sigmoid(mask_logits)                  # [Q, h, w]  (softmax over Q for softmax_over_queries)
+scores = np.einsum("qc,qhw->chw", cls, masks) # [K, h, w]
+class_map = resize(scores, (H, W)).argmax(axis=0)
+```
+
+The output types, the `num_queries` dimension and the `no_object_index` and `mask_activation` fields are reserved so producers can describe these models now. The HAL rejects them until it implements the formula.
 
 ---
 
@@ -1380,6 +1553,9 @@ Coverage of the two-layer output model across the detection, segmentation, and e
 | YOLOv5 segmentation | 3 | combined + protos | No | 4 logical w/ children + 1 direct (`protos`) |
 | ModelPack detection | 3 | 1 per-scale | No | 3 logical `type: detection` (one per scale), no children — `encoding: anchor` |
 | ModelPack semantic seg | — | 1 | No | 1 logical `type: segmentation`, no children |
+| SegFormer / DeepLab / per-pixel semantic seg | — | 1 | — | 1 logical `type: segmentation`, `decoder: semantic` |
+| Semantic seg with in-graph argmax | — | 1 | — | 1 logical `type: masks`, `decoder: semantic` |
+| Mask2Former / OneFormer (reserved) | — | 2 | — | `class_logits` + `mask_logits` |
 | SSD MobileNet | 6 | 2 (box, score) | No | 2 logical (`boxes`, `scores`), 6 per-scale children each — `encoding: anchor` |
 | FastSAM | 3 | 3 + protos | Yes | Same as YOLOv8 segmentation |
 
@@ -1821,6 +1997,38 @@ YOLOv5 is anchor-based with 3 anchors per cell. Per-scale physical channel count
 }
 ```
 
+### Example 8: SegFormer B1 Semantic Segmentation (ADE20K, ONNX FP32)
+
+ImageNet normalization, a top-left letterbox padded with 0.0 in the normalized domain, and 150-class logits at stride 4. Channel `c` is ADE20K class `c + 1`; label 0 is never predicted.
+
+```json
+{
+  "schema_version": 2,
+  "input": {
+    "shape": [1, 3, 512, 672],
+    "dshape": [{"batch": 1}, {"channels": 3}, {"height": 512}, {"width": 672}],
+    "cameraadaptor": "rgb",
+    "preprocessing": {
+      "normalization": "imagenet",
+      "resize": "letterbox",
+      "interpolation": "bilinear",
+      "letterbox": {"placement": "top_left", "pad": [0.0, 0.0, 0.0], "pad_space": "normalized"}
+    }
+  },
+  "outputs": [
+    {
+      "name": "logits", "type": "segmentation", "decoder": "semantic",
+      "shape": [1, 150, 128, 168],
+      "dshape": [{"batch": 1}, {"num_classes": 150}, {"height": 128}, {"width": 168}],
+      "dtype": "float32", "quantization": null,
+      "stride": 4,
+      "upsample": {"method": "bilinear", "align_corners": false},
+      "decode_mode": "accurate"
+    }
+  ]
+}
+```
+
 ### Instance Segmentation Mask Computation
 
 For instance segmentation outputs, the final per-object mask is computed from mask coefficients and prototypes:
@@ -2245,6 +2453,10 @@ The input section specifies image preprocessing requirements. See [Vision Augmen
 input:
   shape: [1, 640, 640, 3]  # Input tensor shape
   cameraadaptor: rgb       # rgb, rgba, yuyv, bgr
+  preprocessing:           # Optional; see Preprocessing Block
+    normalization: unsigned
+    resize: letterbox
+    letterbox: {placement: center, pad: [114, 114, 114], pad_space: pixel}
 ```
 
 !!! note "Data Layout"

@@ -1315,13 +1315,15 @@ Multi-label decode interacts with the other decoder parameters as follows:
 Semantic segmentation models assign a class to every pixel. Their logical outputs use `decoder: semantic` and one of three forms:
 
 !!! note "Metadata and decoder support"
-    This section defines the metadata contract and the decode algorithm a consumer implements. The HAL parses and validates every field described here. Its semantic decoder is in development: until a HAL release includes it, building a decoder for a `decoder: semantic` output returns a "not supported" error, and the reserved mask-classification outputs stay unsupported after that.
+    This section defines the metadata contract and the decode algorithm a consumer implements. The HAL parses and validates every field described here, and its semantic decoder decodes per-pixel scores and class maps. The reserved mask-classification outputs return a "not supported" error.
 
 | Form | Logical output(s) | Examples | Decode |
 | ---- | ----------------- | -------- | ---------- |
 | Per-pixel scores | one `segmentation` | SegFormer, DeepLabV3(+), PSPNet, UperNet, PIDNet, DDRNet, BiSeNet, LRASPP, MediaPipe selfie | Upsample the scores, then argmax (or threshold one channel) |
-| Class map | one `masks` | Exports ending in `ArgMax`: Coral DeepLab (int64), PaddleSeg (int32), Ultralytics semantic ONNX (uint8) | Nearest-neighbour resize only |
+| Class map | one `masks` | Exports ending in `ArgMax`: Coral DeepLab (int64), PaddleSeg (int32), Ultralytics semantic ONNX (uint8) | Nearest-neighbour resize only; the HAL accepts `uint8`, `uint16`, `int32`, `uint32` and `int64` |
 | Mask classification (reserved) | `class_logits` + `mask_logits` | MaskFormer, Mask2Former, OneFormer, PEM | Not yet decoded by the HAL |
+
+A semantic output is a single tensor; the HAL rejects a `decoder: semantic` output that has physical children.
 
 ModelPack semantic segmentation (`decoder: modelpack`, see [Example 1](#example-1-modelpack-semantic-segmentation)) keeps its existing behaviour.
 
@@ -1330,11 +1332,11 @@ ModelPack semantic segmentation (`decoder: modelpack`, see [Example 1](#example-
 | Field | Applies to | Description |
 | ----- | ---------- | ----------- |
 | `dshape` | all | Names the class axis `num_classes` and the spatial axes `height`/`width`, so both NCHW and NHWC layouts decode correctly. A class map has no class axis. |
-| `stride` | `segmentation`, `masks` | Output stride relative to the model input (4 for SegFormer, 8 for DeepLabV3 d8, 1 when the model upsamples in the graph). The HAL also derives it from the input and output shapes, which covers non-integer strides such as DINOv2's 14-pixel patches. |
+| `stride` | `segmentation`, `masks` | Output stride relative to the model input (4 for SegFormer, 8 for DeepLabV3 d8, 1 when the model upsamples in the graph). Informational for the HAL decoder, which maps the letterbox onto the score map by its size, so non-integer strides such as DINOv2's 14-pixel patches need no special handling. |
 | `activation_applied` | `segmentation` | `softmax` or `sigmoid` when the scores are probabilities; absent for logits. Argmax is unaffected; the activation matters for `threshold` and for confidence output. |
 | `upsample` | `segmentation`, `masks` | `{method, align_corners}`. `method` is `bilinear` (default for scores), `nearest` (always used for class maps) or `bicubic` (EfficientViT-Seg; not supported by the HAL decoder). `align_corners` follows PyTorch semantics and defaults to `false`; PIDNet, TF DeepLab and the mmsegmentation 769×769 configs use `true`. |
-| `decode_mode` | `segmentation` | Default decode mode, `accurate` or `fast`. Runtimes may override it. |
-| `threshold` | `segmentation` with one channel | Foreground threshold in the space of the tensor: a probability when `activation_applied: sigmoid`, a logit otherwise (`0.0` is equivalent to probability 0.5). |
+| `decode_mode` | `segmentation` | Default decode mode, `accurate` (default) or `fast`. Runtimes may override it. |
+| `threshold` | `segmentation` with one channel | Foreground threshold in the space of the tensor: a probability when `activation_applied: sigmoid`, a logit otherwise (`0.0` is equivalent to probability 0.5). Absent means `0.5` when `activation_applied` is `sigmoid` or `softmax`, else `0.0`. |
 | `background_index` | `segmentation`, `masks` | Channel of the background class when the model has one (VOC-style models use 0). ADE20K and Cityscapes models have none. |
 | `no_object_index` | `class_logits` (reserved) | Index of the "no object" class. Absent means the last class. |
 | `mask_activation` | `mask_logits` (reserved) | `sigmoid` (MaskFormer, Mask2Former, OneFormer) or `softmax_over_queries` (kMaX-DeepLab). |
@@ -1345,38 +1347,51 @@ Auxiliary heads that remain in an export (training-time aux heads, PIDNet's P an
 
 ### Decode Modes
 
-Both modes map each output pixel through the letterbox geometry of the input (see [Preprocessing Block](#preprocessing-block)), so the padding is cropped and the class map covers the original image.
+Both modes map each output pixel through the letterbox geometry of the input (see [Preprocessing Block](#preprocessing-block)), so the padding is cropped and the class map covers the original image. `accurate` is the reference decode. `fast` trades a small, measured accuracy cost for speed and is not required to reproduce a reference pipeline pixel for pixel.
 
-Multi-channel outputs (two or more classes) take the argmax over the class axis:
+The letterbox content region is mapped into score-map coordinates as a fractional region rather than cropped to whole cells, because the image edge rarely falls on a cell boundary (a 504-row image region at stride 4 ends at row 126, a 509-row one at row 127.25). For an axis of `n` score-map cells, a content region starting at normalized `t0` and ending at `t1`, and `out` output pixels:
 
 ```python
-# accurate (reference): upsample the scores, then argmax
-scores = crop_letterbox(scores, letterbox, stride)            # at output resolution
-scores = resize(scores, (H, W), method=upsample.method,
-                align_corners=upsample.align_corners)         # all channels
-class_map = scores.argmax(axis=channel_axis)
+r0, rl = t0 * n, (t1 - t0) * n               # region start and length in cells
 
-# fast: argmax first, then nearest-neighbour upsample of the class map
-class_map = scores.argmax(axis=channel_axis)
-class_map = crop_letterbox(class_map, letterbox, stride)
-class_map = resize(class_map, (H, W), method="nearest")
+def src_bilinear(d):                          # output pixel d -> source coordinate
+    if align_corners:
+        s = r0 + d * (rl - 1) / (out - 1)
+    else:
+        s = r0 + (d + 0.5) * rl / out - 0.5   # PyTorch half-pixel convention
+    return clamp(s, 0, n - 1)                 # taps at the edge may read padding cells
+
+def src_nearest(d):                           # pixel-center nearest neighbour
+    return clamp(floor(r0 + (d + 0.5) * rl / out), 0, n - 1)
+```
+
+`sample` reads the scores at fractional source coordinates with `upsample.method`; with `nearest` it uses `src_nearest` and is equivalent to the fast path. Multi-channel outputs (two or more classes) take the argmax over the class axis:
+
+```python
+ys, xs = np.arange(H), np.arange(W)                             # output pixels
+
+# accurate (reference): resample every channel, then argmax
+scores = sample(scores, src_bilinear(ys), src_bilinear(xs))     # [C, H, W]
+class_map = scores.argmax(axis=0)
+
+# fast: argmax at the score-map resolution, then nearest-neighbour sampling
+class_map = scores.argmax(axis=0)                                # [h, w]
+class_map = class_map[src_nearest(ys)][:, src_nearest(xs)]       # [H, W]
 ```
 
 Single-channel outputs compare the score with `threshold` instead, since an argmax over one channel is always 0. The foreground class is 1 and the background 0:
 
 ```python
-# accurate: resize the score, then threshold
-score = crop_letterbox(score, letterbox, stride)
-score = resize(score, (H, W), method=upsample.method,
-               align_corners=upsample.align_corners)
-class_map = (score > threshold).astype(np.uint8)
+# accurate: resample the score, then threshold
+class_map = (sample(score, src_bilinear(ys), src_bilinear(xs)) > threshold).astype(np.uint8)
 
-# fast: threshold first, then nearest-neighbour upsample
-class_map = (crop_letterbox(score, letterbox, stride) > threshold).astype(np.uint8)
-class_map = resize(class_map, (H, W), method="nearest")
+# fast: threshold at the score-map resolution, then nearest-neighbour sampling
+class_map = (score > threshold).astype(np.uint8)[src_nearest(ys)][:, src_nearest(xs)]
 ```
 
-Reference pipelines often upsample twice: first to the model input size, then, after cropping the padding, to the original image size. Fusing the two into one resize changes SegFormer B1 mIoU by less than 0.02 points. `fast` costs SegFormer B1 0.17–0.33 mIoU points on ADE20K and is much cheaper, because only one channel is resized.
+Ties in the argmax go to the lowest class index, as `torch.argmax` does.
+
+Reference pipelines often upsample twice: first to the model input size, then, after cropping the padding, to the original image size. On SegFormer B1 (ADE20K val, three input shapes), the single resize over the fractional region is within 0.01 mIoU points of the two-step reference and agrees with it on 99.94–99.97% of pixels; cropping to whole cells instead agrees on only 99.4–99.7%. `fast` costs 0.12–0.13 mIoU points and is much cheaper, because only one channel is resized. Pixel-center sampling matters there: PyTorch's legacy `nearest` mode (`floor(d * scale)`, no half-pixel offset) shifts the class map by half a score-map cell and costs 0.17–0.19 points.
 
 Quantized multi-channel outputs with one scale and zero point for the whole tensor can take the argmax on the integer values directly: dequantization with a positive scale preserves the argmax, and bilinear weights sum to 1. Per-channel quantization is dequantized first. A single-channel threshold is a real value, so either dequantize the score or convert the threshold to quantized units, `threshold / scale + zero_point`, before comparing. Comparing the raw integer with `threshold` is wrong: with scale `1/255` and zero point `0`, the integer `64` is a score of about `0.25`, below a threshold of `0.5`, yet `64 > 0.5`.
 

@@ -52,8 +52,8 @@ We can now receive a message on the subscriber. After receiving the message, we 
 
     ``` rust
     use edgefirst_schemas::sensor_msgs::{NavSatFix};
-    msg = subscriber.recv()
-    let gps: NavSatFix = cdr::deserialize(&msg.payload().to_bytes())?;
+    let msg = subscriber.recv().unwrap();
+    let gps = NavSatFix::from_cdr(msg.payload().to_bytes())?;
     ```
 
 ## Process the GPS Data
@@ -64,7 +64,11 @@ We will now pull out the latitude/longitude data from the decoded NavSatFix mess
 
     ``` python
     def gps_worker(msg):
-        gps = NavSatFix.deserialize(msg.payload.to_bytes())
+        try:
+            gps = NavSatFix.from_cdr(msg.payload.to_bytes())
+        except Exception as e:
+            print(f"Error processing GPS: {e}", file=sys.stderr)
+            return
         rr.log("CurrentLoc",
                 rr.GeoPoints(lat_lon=[gps.latitude, gps.longitude]))
     ```

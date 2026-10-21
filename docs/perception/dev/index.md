@@ -18,7 +18,7 @@ When an example runs on the same device as the EdgeFirst Middleware, Zenoh's pee
 
 ### Remote Connections
 
-To connect from a separate PC you need a `zenohd` router running on the target device to bridge the connection, since multicast scouting does not typically cross networks.  Every sample accepts a `--remote` argument (or `--connect` for the [Listing Topics](#listing-topics) example) where you provide the target device's address, for example `--remote 10.1.1.10:7447` to connect over TCP using the default Zenoh port.
+To connect from a separate PC you need a `zenohd` router running on the target device to bridge the connection, since multicast scouting does not typically cross networks.  Every sample accepts a `--remote` argument (or `--connect` for the [Listing Topics](#listing-topics) example) where you provide the target device's **hostname**, not its IP address, for example `--remote verdin-imx8mp-12345678:7447` to connect over TCP using the default Zenoh port.  The hostname is required, not just convenient, because the samples parse it out of `--remote` to match the [hostname-namespaced](#hostname-namespaces) topics published by the device.
 
 !!! tip "Enable the Zenohd Router"
 
@@ -33,7 +33,7 @@ To connect from a separate PC you need a `zenohd` router running on the target d
 
 !!! tip "Hostname Namespaces"
 
-    The EdgeFirst services publish inside a Zenoh namespace equal to the device hostname, so the topic `camera/h264` is `verdin-imx8mp-XXXXXXXX/camera/h264` on the wire.  The examples open their session with the namespace set to the hostname when running on the device and use the bare topic names.  When running remotely, set the namespace to the hostname of the target device or subscribe with a `**/` wildcard prefix.  Refer to [Middleware Topics](../topics/index.md#hostname-namespaces).  The samples repository is being updated for the namespaces, samples still subscribing to `rt/...` topics need the prefix removed.
+    The EdgeFirst services publish inside a Zenoh namespace equal to the device hostname, so the topic `camera/h264` is `verdin-imx8mp-XXXXXXXX/camera/h264` on the wire.  The samples achieve this without a session-level namespace: each sample parses the hostname out of its `--remote` argument (or falls back to the `*` wildcard when run locally without `--remote`) and prepends it to every topic key it subscribes to, for example `format!("{}/camera/h264", args.hostname())` in Rust.  Opening the session with the namespace set to the hostname and using bare topic names, as shown in the snippets throughout this guide, achieves the same result and remains a valid alternative for your own applications.  Refer to [Middleware Topics](../topics/index.md#hostname-namespaces).
 
 ## Installation
 
@@ -167,7 +167,7 @@ Running this sample on the target will list the available topics.  The example c
 
 !!! tip "Remote Targets"
 
-    If running these examples remotely you will need to provide the remote endpoint, for example if your target device has the address 10.1.1.10 then you would use `--remote tcp/10.1.1.10:7447` to connect using TCP on the default Zenoh port.
+    If running these examples remotely you will need to provide the remote endpoint, for example if your target device's hostname is `verdin-imx8mp-12345678` then you would use `--remote verdin-imx8mp-12345678:7447` to connect using TCP on the default Zenoh port.
 
 === "Python"
 

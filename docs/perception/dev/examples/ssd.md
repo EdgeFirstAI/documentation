@@ -1,8 +1,8 @@
 # MobileNet SSD Examples
 
-!!! warning "Legacy Example"
+!!! note "Model Service Topic"
 
-    The publisher part of this example subscribes to the camera frames through the `camera/dma` topic and `DmaBuffer` message and publishes detections on `model/boxes2d`, both of which predate Torizon for Maivin 2026.08.  On the current release the camera frames are published as [`camera/frame`](../../topics/camera.md#cameraframe) messages inside the device [hostname namespace](../../topics/index.md#hostname-namespaces), the [Camera Frame example](camera.md#camera-frame) shows the updated frame access and the [Model Settings](../../../platforms/configuration/model.md#topics) describe the legacy topics.  The single image inference part of the example is unaffected.
+    The publisher part of this example publishes detections on `model/boxes2d`, which is disabled by default on Torizon for Maivin 2026.08; see the [Model Settings](../../../platforms/configuration/model.md#topics) to re-enable it, or use the unified [`model/output`](../../topics/model.md#modeloutput) topic instead.  It consumes the camera frames through the [`camera/frame`](../../topics/camera.md#cameraframe) topic and `CameraFrame` message, the same zero-copy access shown in the [Camera Frame example](camera.md#camera-frame).
 
 These examples demonstrate how to deploy a MobileNet SSD V1 model using the NPU of an embedded platform such as a [Maivin](../../../platforms/quickstart/maivin/index.md).  The examples below are split into two parts; model inference on a single image and a model inference publisher. These examples have been tested on the TFLite files found in [this SSD-TFLite repository](https://github.com/apivovarov/ssd-tflite/tree/master), and in [ML-Zoo](https://github.com/Arm-Examples/ML-zoo/tree/master/models/object_detection/ssd_mobilenet_v1).  
 
@@ -174,7 +174,7 @@ These are the postprocessed model outputs which can then be visualized.
 
 Additionally, this can be all integrated to simulate the model service using any pre-defined SSD model, for this example we will use the pretrained TFLite SSD model. This can be done with the provided [Publisher Script](assets/boxes2d_publisher.py){: download="boxes2d_publisher.py"}
 
-This script is required to run on the target as it will use the DMA Buffer topic to provide the images for the model. Additionally, the script will need to be run using sudo as it needs to access the file descriptor to get the DMA buffer and cannot without sudo.
+This script is required to run on the target as it will use the `camera/frame` topic to provide the images for the model. Additionally, the script will need to be run using sudo as it needs to access the file descriptor to get the DMA buffer and cannot without sudo.
 
 1. Disable the current model service with the following command:
 

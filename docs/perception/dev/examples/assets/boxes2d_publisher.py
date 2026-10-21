@@ -1,12 +1,13 @@
 import zenoh
 from zenoh import Encoding
-from edgefirst.schemas.edgefirst_msgs import DmaBuffer, Box, Detect, Track
+from edgefirst.schemas.edgefirst_msgs import CameraFrame, Box, Detect
 from edgefirst.schemas.std_msgs import Header
 from edgefirst.schemas.builtin_interfaces import Time
 from tflite_runtime.interpreter import Interpreter, load_delegate 
 from PIL import Image, ImageDraw, ImageFont
 from argparse import ArgumentParser
 import sys
+import socket
 import mmap
 import ctypes
 import os
@@ -109,7 +110,7 @@ GETFD_FLAGS = 0
 if sys.platform.startswith('linux'):
     libc = ctypes.CDLL("libc.so.6", use_errno=True)
 else:
-    print("DMA only works on EdgeFirst Platforms")
+    print("Camera Frame only works on EdgeFirst Platforms")
     sys.exit(0)
 
 def pidfd_open(pid: int, flags: int = 0) -> int:
@@ -166,21 +167,31 @@ class MessageDrain:
         return latest
 
 def dma_worker(msg, ip, ids, session, args):
-    dma_buf = DmaBuffer.deserialize(msg.payload.to_bytes())
-    input_timestamp = Time(sec=dma_buf.header.stamp.sec,
-                           nanosec=dma_buf.header.stamp.nanosec)
-    pidfd = pidfd_open(dma_buf.pid)
+    try:
+        frame = CameraFrame.from_cdr(msg.payload.to_bytes())
+    except Exception as e:
+        print(f"Error processing Camera Frame: {e}", file=sys.stderr)
+        return
+
+    tensor = frame.tensor
+    height, width = tensor.shape[0], tensor.shape[1]
+    input_timestamp = Time(sec=frame.header.stamp.sec,
+                           nanosec=frame.header.stamp.nanosec)
+    pidfd = pidfd_open(tensor.pid)
     if pidfd < 0:
         return
 
-    fd = pidfd_getfd(pidfd, dma_buf.fd, GETFD_FLAGS)
+    # All planes of the frame share one DMA buffer, so the handle of the
+    # first plane is enough to reach the whole frame.
+    fd = pidfd_getfd(pidfd, tensor.planes[0].handle, GETFD_FLAGS)
     if fd < 0:
         return
 
-    # Now fd can be used as a file descriptor
-    mm = mmap.mmap(fd, dma_buf.length)
-    yuy2_bytes = mm[:dma_buf.length]
-    im_buf = np.frombuffer(yuy2_bytes, dtype=np.uint8)
+    # Map the buffer from its start and copy each plane out of the mapping
+    # to assemble the complete NV12 frame.
+    length = max(p.offset + p.size for p in tensor.planes)
+    mm = mmap.mmap(fd, length, offset=0)
+    nv12_bytes = b"".join(mm[p.offset:p.offset + p.used] for p in tensor.planes)
     mm.close()
     os.close(fd)
     os.close(pidfd)
@@ -189,19 +200,10 @@ def dma_worker(msg, ip, ids, session, args):
     if len(input_shape) != 2:
         raise AssertionError("Input shape should be only the height and width, ie. 300,300")
 
-    fourcc_str = "".join([chr((dma_buf.fourcc >> (8 * i)) & 0xFF) for i in range(4)])
-    
-    # YUY2 is 2 bytes per pixel, so shape is (height, width * 2)
-    if fourcc_str == "YUYV":
-        yuy2_np = im_buf.reshape((dma_buf.height, dma_buf.width, 2))
-        # Convert YUY2 to RGB
-        rgb_img = cv2.cvtColor(yuy2_np, cv2.COLOR_YUV2RGB_YUY2)
-    elif fourcc_str == "RGBA":
-        rgb_img = im_buf.reshape((dma_buf.height, dma_buf.width, 4))
-        rgb_img = cv2.cvtColor(rgb_img, cv2.COLOR_RGBA2RGB)
-    else:
-        print("Image type %s currently unsupported for this sample")
-        return
+    # The ISP produces NV12 frames: a full-resolution luma plane followed by
+    # a half-resolution interleaved chroma plane, 1.5 bytes per pixel.
+    nv12_np = np.frombuffer(nv12_bytes, dtype=np.uint8).reshape((height * 3 // 2, width))
+    rgb_img = cv2.cvtColor(nv12_np, cv2.COLOR_YUV2RGB_NV12)
 
     rgb_img = cv2.resize(rgb_img, (input_shape[0], input_shape[1]))
     rgb_img = np.transpose(rgb_img, [1,0,2])
@@ -237,7 +239,7 @@ def dma_worker(msg, ip, ids, session, args):
                                  height = height,
                                  label = label,
                                  score = scores[i],
-                                 track=Track()))
+                                 track_id = ""))
     now = time.time()
     cur_sec = int(now)
     cur_nanosec = int((now - cur_sec) * 1e9)
@@ -249,7 +251,7 @@ def dma_worker(msg, ip, ids, session, args):
                         output_time=output_timestamp,
                         boxes=publish_boxes)
 
-    session.put("rt/model/boxes2d", detect_obj.serialize(),
+    session.put("model/boxes2d", detect_obj.to_cdr(),
                 encoding="edgefirst_msgs/msg/Detect")
 
 async def dma_handler(drain, ip, ids, session, args):
@@ -270,9 +272,11 @@ async def dma_handler(drain, ip, ids, session, args):
     
 async def main_async(args):
     # Setup rerun
-    # Zenoh config
+    # Zenoh config: publish and subscribe under the device hostname namespace,
+    # matching how the real model service and the other samples find topics.
     config = zenoh.Config()
     config.insert_json5("scouting/multicast/interface", "'lo'")
+    config.insert_json5("namespace", '"%s"' % socket.gethostname())
     session = zenoh.open(config)
 
     # Create drains
@@ -297,7 +301,7 @@ async def main_async(args):
     ids.append(out_det[3]["index"])
     ids.append(ip.get_input_details()[0]["index"])
 
-    session.declare_subscriber('rt/camera/dma', drain.callback)
+    session.declare_subscriber('camera/frame', drain.callback)
     try:
         await asyncio.gather((dma_handler(drain, ip, ids, session, args)))
     except KeyboardInterrupt:

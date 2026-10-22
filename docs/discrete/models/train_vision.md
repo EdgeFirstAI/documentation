@@ -18,19 +18,13 @@ Navigate to the "Training Sessions".
 
 {{ figure("/models/assets/training/training-sessions.jpg", "Training Sessions") }}
 
-Create a new training session by clicking the "Actions" dropdown menu on the top right of the page and then click the "+ New" button.
+Create a new training session by clicking the "Actions" dropdown menu on the top right of the page and then click the "+ New Trainer Session" button.
 
-{{ figure("/models/assets/training/new-session-button.jpg", "New Session Button") }}
+{{ figure("/models/assets/training/new-mpk-session-button.jpg", "New Session Button") }}
 
-Follow the settings indicated and keep the rest of the settings default.  Click "Start Session" to start the training session.
+Follow the settings indicated and keep the rest of the settings default.  Click "Start App" to start the training session.
 
 {{ figure("/models/assets/training/vision-train-settings.jpg", "Start Training Session") }}
-
-!!! failure "InsufficientInstanceCapacity"
-
-    {{ img("/studio/assets/models/insufficient-capacity-error.jpg", "InsufficientInstanceCapacity Error") }}
-
-    If you see this error after starting your training session, retry creating the session. This can happen when AWS reports that no EC2 instances are currently available to launch; the current workaround is to retry.
 
 The session progress will be shown like the following below.
 

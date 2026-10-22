@@ -28,12 +28,6 @@ For this example, all remaining settings were left at their default values. When
 
 {{ figure("/models/assets/validation/vision-validate-settings.jpg", "Start Validation Session") }}
 
-!!! failure "InsufficientInstanceCapacity"
-
-    {{ img("/studio/assets/models/insufficient-capacity-error.jpg", "InsufficientInstanceCapacity Error") }}
-
-    If you see this error after starting your validation session, retry creating the session. This can happen when AWS reports that no EC2 instances are currently available to launch; the current workaround is to retry.
-
 Go to the created validation session by first going back to the "Model Experiments" page.
 
 {{ figure("/models/assets/training/go-back-to-model-experiments.jpg", "Go to Model Experiments") }}

@@ -9,9 +9,17 @@ Follow these steps for deploying the documentation locally on your machine.
 
 `pip install -r requirements.txt`
 
-`mkdocs serve`
+`properdocs serve`
 
 You should now be able to see the documentation on your browser by visiting this link `http://localhost:8000/`.
+
+For faster local iteration while editing content, use the dirty rebuild mode:
+
+```sh
+properdocs serve --dirty
+```
+
+This rebuilds only the files that changed instead of rebuilding the full site each time, which is noticeably faster for this documentation set.
 
 ## Mike
 

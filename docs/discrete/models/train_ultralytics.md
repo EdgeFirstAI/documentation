@@ -10,11 +10,11 @@
 
     {{ figure("/models/assets/training/training-sessions.jpg", "Training Sessions") }}
 
-4. Create a new training session by clicking the "Actions" dropdown menu on the top right of the page and then click the "+ New" button
+4. Create a new training session by clicking the "Actions" dropdown menu on the top right of the page and then click the "+ New Trainer Session" button
 
-    {{ figure("/models/assets/training/new-session-button.jpg", "New Session Button") }}
+    {{ figure("/models/assets/training/new-ultralytics-session-button.jpg", "New Session Button") }}
 
-5. Start a YOLOv8n detection model by following these settings. Once the settings are set, click on "Start Session" at the bottom of the window
+5. Start a YOLOv8n detection model by following these settings. Once the settings are set, click on "Start App" at the bottom of the window
 
     {{ figure("/profiler/assets/studio-yolo-model-configurations.jpg", "Ultralytics Training Settings") }}
 
@@ -22,17 +22,11 @@
 
     {{ figure("/models/assets/training/training-session-progress-ultralytics.jpg", "Ultralytics Training Progress") }}
 
-    !!! failure "InsufficientInstanceCapacity"
-
-        {{ img("/studio/assets/models/insufficient-capacity-error.jpg", "InsufficientInstanceCapacity Error") }}
-
-        If you see this error after starting your training session, retry creating the session. This can happen when AWS reports that no EC2 instances are currently available to launch; the current workaround is to retry.
-
     !!! note "No Training Charts"
 
         {{ img("/models/assets/training/no-training-charts.jpg", "No Training Charts") }}
 
-        Training sessions configured without epochs will not generate loss or metric charts, since the chart x-axis is epoch-based. This is expected behavior.
+        A session with **Enable Training** off runs no epochs, so its loss and learning-rate charts stay empty.  Its mAP, precision and recall charts hold a single point, the validation of the exported model.  This is expected behavior.
 
 6. The completed training session should look like the following
 

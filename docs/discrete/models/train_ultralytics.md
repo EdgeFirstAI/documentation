@@ -10,14 +10,11 @@
 
     {{ figure("/models/assets/training/training-sessions.jpg", "Training Sessions") }}
 
-4. Create a new training session by clicking the "Actions" dropdown menu on the top right of the page and then click the "New Ultralytics Trainer" button
+4. Create a new training session by clicking the "Actions" dropdown menu on the top right of the page and then click the "+ New Trainer Session" button
 
     {{ figure("/models/assets/training/new-ultralytics-session-button.jpg", "New Session Button") }}
 
-5. Start a YOLOv8n detection model by following these settings. Once the settings are set, click on "Start Session" at the bottom of the window
-
-    !!! note "Outdated training panel"
-        The following training configuration panel is currently out of date.  Additional formatting fixes to the current panel are still in progress before we can push a new image of the layout.
+5. Start a YOLOv8n detection model by following these settings. Once the settings are set, click on "Start App" at the bottom of the window
 
     {{ figure("/profiler/assets/studio-yolo-model-configurations.jpg", "Ultralytics Training Settings") }}
 
@@ -29,7 +26,7 @@
 
         {{ img("/models/assets/training/no-training-charts.jpg", "No Training Charts") }}
 
-        Training sessions configured without epochs will not generate loss or metric charts, since the chart x-axis is epoch-based. This is expected behavior.
+        A session with **Enable Training** off runs no epochs, so its loss and learning-rate charts stay empty.  Its mAP, precision and recall charts hold a single point, the validation of the exported model.  This is expected behavior.
 
 6. The completed training session should look like the following
 

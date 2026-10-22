@@ -219,6 +219,7 @@ A [tiled model](../metadata.md#tiling) is calibrated on the tiles it sees at run
 {
   "input_shape": [640, 640],          // the tile [H, W]
   "resize": "tiled",
+  "selection": "max_dynamic_range_tiled_v1", // tiled selection (below); count is a tile count
   "grid": {                           // the runtime grid (tiling.grid)
     "algorithm": "evendist",
     "version": 1,
@@ -230,13 +231,14 @@ A [tiled model](../metadata.md#tiling) is calibrated on the tiles it sees at run
 }
 ```
 
-Selection is unchanged: the same model-free selection picks `count` frames from the training split, including the frames that hold the pool's per-channel extrema. Each selected frame then contributes samples cut from its [deployment grid](../metadata.md#grid) at native scale:
+For a tiled snapshot `count` is the number of tiles to store, and the selection tag is `max_dynamic_range_tiled_v1`. Frames are chosen exactly as under `max_dynamic_range_v1`: the same model-free selection picks up to `count` frames from the training split, including the frames that hold the pool's per-channel extrema. Each selected frame then contributes tiles cut from its [deployment grid](../metadata.md#grid) at native scale:
 
-- **Extremum tiles.** For each per-channel minimum and maximum of the pool, the frame that selection seeded for it contributes the lowest-index grid tile containing the frame's first pixel, in row-major order, with that value. A tile named by several extrema is stored once. Because tiles are native-scale crops, the snapshot keeps the pool's per-channel extrema, as `max_dynamic_range_v1` requires.
+- **Extremum tiles.** For each per-channel minimum and maximum of the pool, the frame that selection seeded for it contributes the lowest-index grid tile containing the frame's first pixel, in row-major order, with that value. A tile named by several extrema is stored once. Because tiles are native-scale crops, the snapshot keeps the pool's per-channel extrema.
 - **One tile per other frame.** A frame that holds no extremum contributes one tile, chosen by a generator seeded from the selection `seed` and the frame's position in the pool, so the choice is deterministic and independent of which other frames were selected.
-- **Whole-frame samples.** When the model's `tiling.full_frame.enabled` is `true`, the runtime also runs each whole frame letterboxed into the tile, so every selected frame also contributes that whole-frame sample, and the parameter set gains `"full_frame": true`.
+- **Additional tiles for small pools.** When the tiles above number fewer than `count`, which happens when the pool holds fewer frames than `count`, frames contribute further distinct grid tiles until `count` tiles are stored or every grid tile of every selected frame is taken. Each frame draws its further tiles in an order given by the same seeded generator, and tiles are added one per frame per round, frames holding the fewest tiles first and ties in ascending pool order, so the tiles spread evenly across frames.
+- **Whole-frame samples.** When the model's `tiling.full_frame.enabled` is `true`, the runtime also runs each whole frame letterboxed into the tile, so every selected frame also contributes that whole-frame sample, and the parameter set gains `"full_frame": true`. Whole-frame samples do not count toward `count`.
 
-Samples are stored frame by frame in ascending pool order; within a frame, tiles in ascending grid index, then the whole-frame sample. A tiled snapshot therefore holds at least `count` samples: a frame seeded for extrema in different tiles adds one tile for each, and whole-frame samples add one per frame.
+Samples are stored frame by frame in ascending pool order; within a frame, tiles in ascending grid index, then the whole-frame sample. A tiled snapshot holds `count` tiles when the pool has enough grid tiles, and more when frames seeded for extrema in different tiles add one tile for each; whole-frame samples add one per frame.
 
 A frame smaller than a tile along an axis is letterboxed into the tile, exactly as the runtime places it; `tiling.fit` is always `letterbox` in version 1. Because `grid` and `full_frame` are part of the hash preimage, a tiled snapshot never shares a filename with a letterbox snapshot of the same size, or with a tiled snapshot that lacks whole-frame samples.
 
@@ -270,9 +272,9 @@ and **must** fail loudly when a required key is absent rather than guessing.
 | `value_range` | `[0, 255]` | Stored sample range (not normalized). |
 | `layout` | `"NCHW"` | Stored layout. |
 | `normalization` | `{"scale":…,"mean":…,"std":…}` | What the model expects; the consumer applies it. |
-| `count_requested` | `500` | Requested sample count: the number of frames to select. A non-tiled snapshot (letterbox or stretch) stores one sample per frame. |
-| `count_actual` | `500` | Samples actually written. Smaller than requested for small pools; a [tiled snapshot](#tiled-models) can hold more, with extremum tiles and whole-frame samples. |
-| `selection` | `"max_dynamic_range_v1"` | Selection algorithm tag. |
+| `count_requested` | `500` | Requested sample count: the number of frames for a non-tiled snapshot (letterbox or stretch), which stores one sample per frame, or the number of tiles for a [tiled snapshot](#tiled-models). |
+| `count_actual` | `500` | Samples actually written. Smaller than requested when the pool holds too few frames, or a tiled pool too few grid tiles; a [tiled snapshot](#tiled-models) can hold more, with extremum tiles and whole-frame samples. |
+| `selection` | `"max_dynamic_range_v1"` | Selection algorithm tag: `max_dynamic_range_v1`, or `max_dynamic_range_tiled_v1` for a tiled snapshot. |
 | `seed` | `42` | Selection seed. |
 | `content_sha256` | `"…"` | Digest over the concatenated sample bytes (integrity + cache validation). |
 | `producer` | `"edgefirst-studio-ultralytics/1.13.0"` | Generating component and version. |
@@ -315,7 +317,7 @@ A training framework that emits EdgeFirst calibration snapshots must:
    default; record the resolved pool identity (dataset, annotation set, split,
    size) in metadata.
 2. **Select model-free.** Compute source-pixel descriptors and select with a
-   versioned, deterministic algorithm. Under `max_dynamic_range_v1` the selected
+   versioned, deterministic algorithm. Under `max_dynamic_range_v1` and `max_dynamic_range_tiled_v1` the selected
    set's per-channel min/max must equal the pool's — the extrema-bearing images
    are mandatory, and a tiled snapshot stores the tiles that hold the extrema pixels.
 3. **Preprocess at the model's geometry.** Letterbox or stretch each selected frame to the model input (stretch for models trained with a direct resize), or for a [tiled model](../metadata.md#tiling) cut deployment-grid tiles at native scale, plus whole-frame samples when its `full_frame` pass is enabled (see [Tiled models](#tiled-models)); apply the CameraAdaptor recipe; store **uint8 [0, 255] NCHW**. Record the geometry (`input_shape`, `resize`, and `grid` for tiles) and the normalization the model expects in metadata — do **not** apply the normalization to the stored bytes.

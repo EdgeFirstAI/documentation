@@ -48,7 +48,7 @@ Both [ModelPack](modelpack/index.md) and [Ultralytics](ultralytics/index.md) tra
 
 {{ figure("assets/cameraadaptor/studio-cameraadaptor-dropdown.png", "Camera Adaptor Dropdown") }}
 
-The dropdown offers the same set of supported formats for both training frameworks.
+The dropdown offers the same set of supported formats for both training frameworks.  ModelPack shows it in the Input group of its launch form.  Ultralytics shows it under **Enable Training**, because it applies when the session trains; an Ultralytics session that starts from a previous session's weights takes the camera adaptor from those weights.
 
 ## Supported Formats
 

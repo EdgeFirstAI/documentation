@@ -22,10 +22,7 @@ Start a new training session by clicking the "Actions" dropdown menu on the top 
 
 {{ figure("/models/assets/training/new-mpk-session-button.jpg", "New Session Button") }}
 
-Follow the settings indicated and keep the rest of the settings default.  Click "Start Session" to start the training session.
-
-!!! note "Outdated training panel"
-    The following training configuration panel is currently out of date.  Additional formatting fixes to the current panel are still in progress before we can push a new image of the layout.
+Follow the settings indicated and keep the rest of the settings default.  Click "Start App" to start the training session.
 
 {{ figure("/models/assets/training/vision-train-settings.jpg", "Start Training Session") }}
 

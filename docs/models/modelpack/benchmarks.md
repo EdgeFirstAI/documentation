@@ -32,7 +32,9 @@ This page presents comprehensive benchmark results for ModelPack, a versatile mo
 
 === "Coffee Cup"
 
-    ## Object Detection and Segmentation Metrics
+    ## Coffee Cup
+
+    The Coffee Cup dataset is a compact, task-focused benchmark for semantic segmentation and object detection in a cluttered tabletop setting. It contains annotated coffee cup examples captured in varied poses and lighting conditions, making it useful for evaluating lightweight models that need strong localization and mask quality in real-world scenes.
     
     **Table: ModelPack on CoffeeCup - RGB - (640x640) | ONNX**
 
@@ -73,7 +75,7 @@ This page presents comprehensive benchmark results for ModelPack, a versatile mo
 
 === "COCO People"
 
-    This dataset contains only annotations for person class from original dataset. However, all the images are included during training as negative samples
+    This dataset contains only annotations for the person class from original COCO2017 dataset. However, all the images are included during training as negative samples.
 
     **Table: ModelPack on COCO People - RGB - (640x640) - ONNX - (100 epochs)**
 

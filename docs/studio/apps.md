@@ -96,6 +96,18 @@ and timing traces produced by a profiling run to compute COCO/LVIS accuracy metr
 (such as mAP and mIoU) and timing charts, then publishes the results to the validation
 session. See [Validation Metrics](../models/validation/metrics/index.md).
 
+### Training Apps
+
+Training Apps produce vision models for a dataset and publish the model, its [metadata](../models/metadata.md) and an INT8 calibration snapshot to a training session. A Training App is launched from an experiment's *Training Sessions* page, where its launch form collects the dataset, the destination experiment and the training parameters. The session runs on a cloud GPU instance.  See [Training Vision Models](../models/training/vision.md).
+
+#### ModelPack
+
+Trains ModelPack object detection, semantic segmentation and multitask models, with optional Input Tiling (SAHI) for small objects in high-resolution images.  See [ModelPack](../models/modelpack/index.md).
+
+#### Ultralytics
+
+Trains or exports Ultralytics YOLO detection and instance segmentation models, starting from COCO pretrained weights or a previous session's weights, with optional Input Tiling for detection.  See [Ultralytics](../models/ultralytics/index.md).
+
 ### Converter Apps
 
 Converter Apps turn a completed training session's framework-native artifact (a

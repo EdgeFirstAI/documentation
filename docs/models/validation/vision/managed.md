@@ -14,12 +14,6 @@ You will be greeted with a validation session dialog.  In this dialog, specify t
 
 Once the settings have been specified, go ahead and click on the "Start Session" button on the bottom right of the dialog.  This will start the validation session which will validate the model using the validation partition of the dataset.
 
-!!! failure "InsufficientInstanceCapacity"
-
-    {{ img("/studio/assets/models/insufficient-capacity-error.jpg", "InsufficientInstanceCapacity Error") }}
-
-    If you see this error after starting your validation session, retry creating the session. This can happen when AWS reports that no EC2 instances are currently available to launch; the current workaround is to retry.
-
 ## Session Progress
 
 Once the validation session has started, the progress with the stages will be shown on the left and additional information and status is shown on the right.

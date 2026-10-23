@@ -2431,11 +2431,17 @@ The dataset section references the [dataset](../datasets/index.md) used for trai
 dataset:
   name: "COCO 2017"      # Human-readable name
   id: ds-abc123          # Dataset ID (prefix: ds-)
-  classes:               # Ordered list of class labels
-    - background
+  classes:               # Ordered list of class labels, by class index
     - person
+    - bicycle
     - car
 ```
+
+`classes` lists the classes in the order of their indices in the model's outputs. Detection models have no background class. A background class is a semantic segmentation convention, and where it sits varies from model to model:
+
+- **ModelPack** adds background as an extra last channel with no entry in `classes`, so a model trained on N classes has N + 1 segmentation channels. Its masks and boxes then share class indices 0 to N − 1, and index N is background.
+- **VOC-style models** list `background` as class 0 and declare it with [`background_index`](#semantic-output-fields).
+- **ADE20K and Cityscapes models** have no background class.
 
 ### Model Identification
 

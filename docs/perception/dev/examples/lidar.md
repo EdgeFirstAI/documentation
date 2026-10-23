@@ -56,13 +56,13 @@ We can now receive a message on the subscriber. After receiving the message, we 
 === "Rust"
 
     ``` rust
-    use edgefirst_schemas::sensor_msgs::PointCloud2;
+    use edgefirst_schemas::sensor_msgs::{PointCloud2, pointcloud::DynPointCloud};
 
     // Receive a message
-    let msg = subscriber.recv().unwrap()
+    let msg = subscriber.recv().unwrap();
 
-    // Deserialize message
-    let pcd: PointCloud2 = cdr::deserialize(&msg.payload().to_bytes())?;
+    // Decode message
+    let pcd = PointCloud2::from_cdr(msg.payload().to_bytes())?;
     ```
 
 ### Decode PCD Data
@@ -73,14 +73,18 @@ The next step is to decode the PCD data. Please see [examples/pcd](pcd.md) for a
 
     ``` python
     def points_worker(msg):
-        pcd = PointCloud2.deserialize(msg.payload.to_bytes())
+        try:
+            pcd = PointCloud2.from_cdr(msg.payload.to_bytes())
+        except Exception as e:
+            print(f"Error processing Lidar Points: {e}", file=sys.stderr)
+            return
         points = decode_pcd(pcd)
     ```
 
 === "Rust"
 
     ``` rust
-    let points = decode_pcd(pcd);
+    let cloud = DynPointCloud::from_pointcloud2(&pcd)?;
     ```
 
 ### Process the Data
@@ -98,12 +102,13 @@ The PCD contains x, y, z, and reflect values. The x, y, z are float32 and repres
 === "Rust"
 
     ``` rust
-    let x_vals: Vec<_> = points.iter().map(|p| p.x).collect();
-    let y_vals: Vec<_> = points.iter().map(|p| p.y).collect();
-    let z_vals: Vec<_> = points.iter().map(|p| p.z).collect();
-    let reflect = points
+    let points: Vec<_> = cloud.iter().collect();
+    let x_vals: Vec<_> = points.iter().map(|p| p.read_f32("x").unwrap_or(0.0)).collect();
+    let y_vals: Vec<_> = points.iter().map(|p| p.read_f32("y").unwrap_or(0.0)).collect();
+    let z_vals: Vec<_> = points.iter().map(|p| p.read_f32("z").unwrap_or(0.0)).collect();
+    let reflect: Vec<_> = points
         .iter()
-        .map(|p| *p.fields.get("reflect").unwrap())
+        .map(|p| p.read_as_f32("reflect").unwrap_or(0.0))
         .collect();
     ```
 
@@ -171,13 +176,13 @@ We can now receive a message on the subscriber. After receiving the message, we 
 === "Rust"
 
     ``` rust
-    use edgefirst_schemas::sensor_msgs::PointCloud2;
+    use edgefirst_schemas::sensor_msgs::{PointCloud2, pointcloud::DynPointCloud};
 
     // Receive a message
-    let msg = subscriber.recv().unwrap()
+    let msg = subscriber.recv().unwrap();
 
-    // Deserialize message
-    let pcd: PointCloud2 = cdr::deserialize(&msg.payload().to_bytes())?;
+    // Decode message
+    let pcd = PointCloud2::from_cdr(msg.payload().to_bytes())?;
     ```
 
 ### Decode PCD Data
@@ -188,14 +193,18 @@ The next step is to decode the PCD data. Please see [examples/pcd](pcd.md) for a
 
     ``` python
     def clusters_worker(msg):
-        pcd = PointCloud2.deserialize(msg.payload.to_bytes())
+        try:
+            pcd = PointCloud2.from_cdr(msg.payload.to_bytes())
+        except Exception as e:
+            print(f"Error processing Lidar Clusters: {e}", file=sys.stderr)
+            return
         points = decode_pcd(pcd)
     ```
 
 === "Rust"
 
     ``` rust
-    let points = decode_pcd(pcd);
+    let cloud = DynPointCloud::from_pointcloud2(&pcd)?;
     ```
 
 ### Collect the Clustered Points
@@ -219,7 +228,10 @@ We will now collect all the clustered points, which are all the points with `clu
 === "Rust"
 
     ``` rust
-    let clustered_points: Vec<_> = points.iter().filter(|x| x.fields.get("cluster_id") > 0.0).collect();
+    let clustered_points: Vec<_> = cloud
+        .iter()
+        .filter(|p| p.read_as_f64("cluster_id").unwrap_or(0.0) > 0.0)
+        .collect();
     ```
 
 ### Results
@@ -336,14 +348,18 @@ The Boxes2D callback will wait for a Detect message from the MessageDrain and wi
             thread.join()
 
     def boxes2d_worker(msg, boxes_tracked, frame_size):
-        detection = Detect.deserialize(msg.payload.to_bytes())
+        try:
+            detection = Detect.from_cdr(msg.payload.to_bytes())
+        except Exception as e:
+            print(f"Error processing Model Boxes2D: {e}", file=sys.stderr)
+            return
         centers, sizes, labels, colors = [], [], [], []
         for box in detection.boxes:
-            if box.track.id and box.track.id not in boxes_tracked:
-                boxes_tracked[box.track.id] = [box.label + ": " + box.track.id[:6], list(np.random.choice(range(256), size=3))]
-            if box.track.id:
-                colors.append(boxes_tracked[box.track.id][1])
-                labels.append(boxes_tracked[box.track.id][0])
+            if box.track_id and box.track_id not in boxes_tracked:
+                boxes_tracked[box.track_id] = [box.label + ": " + box.track_id[:6], list(np.random.choice(range(256), size=3))]
+            if box.track_id:
+                colors.append(boxes_tracked[box.track_id][1])
+                labels.append(boxes_tracked[box.track_id][0])
             else:
                 colors.append([0,255,0])
                 labels.append(box.label)
@@ -370,7 +386,11 @@ The LiDAR callback will receive the pointcloud message, perform post-processing 
             thread.join()
 
     def clusters_worker(msg):
-        pcd = PointCloud2.deserialize(msg.payload.to_bytes())
+        try:
+            pcd = PointCloud2.from_cdr(msg.payload.to_bytes())
+        except Exception as e:
+            print(f"Error processing Lidar Clusters: {e}", file=sys.stderr)
+            return
         points = decode_pcd(pcd)
         clusters = [p for p in points if p.cluster_id > 0]
         if not clusters:

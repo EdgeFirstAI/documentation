@@ -1,6 +1,11 @@
 # PointCloud2 Decoding Example
 
-This example will go through how to decode PointCloud2 data. This will give an array of `Point`s which will contain the `x`, `y`, `z` values of each point, as well a dictionary/hashmap with all the other fields. If only a specific field is needed, that field can be added directly, similar to the `x`, `y`, `z` fields, and the dictionary/hashmap can be removed to increase performance.
+This example will go through how to decode PointCloud2 data.  The Python sample below hand-decodes
+the message into an array of `Point`s which will contain the `x`, `y`, `z` values of each point, as
+well a dictionary/hashmap with all the other fields.  If only a specific field is needed, that
+field can be added directly, similar to the `x`, `y`, `z` fields, and the dictionary/hashmap can be
+removed to increase performance.  The Rust sample instead uses the `DynPointCloud` helper built
+into `edgefirst-schemas`, which reads any named field without a hand-rolled decoder.
 
 === "Python"
 
@@ -70,192 +75,25 @@ def decode_pcd(pcd: PointCloud2) -> list[Point]:
 
 === "Rust"
 
-``` rust
+    The `edgefirst-schemas` crate provides a built-in `DynPointCloud` helper that reads the
+    `PointCloud2` field layout for you, so there's no need to hand-roll a decoder as shown in the
+    Python tab.  Build it once from the message with `from_pointcloud2`, then `iter()` it to read
+    any named field (`x`, `y`, `z`, `speed`, `power`, `rcs`, `cluster_id`, `vision_class`, ...)
+    with automatic datatype conversion and endian handling.
 
-use edgefirst_schemas::sensor_msgs::{PointCloud2, PointField, point_field};
-use std::collections::HashMap;
+    ``` rust
+    use edgefirst_schemas::sensor_msgs::{PointCloud2, pointcloud::DynPointCloud};
 
-const SIZE_OF_DATATYPE: [usize; 9] = [
-    0,
-    1, // pub const INT8: u8 = 1;
-    1, // pub const UINT8: u8 = 2;
-    2, // pub const INT16: u8 = 3;
-    2, // pub const UINT16: u8 = 4;
-    4, // pub const INT32: u8 = 5;
-    4, // pub const UINT32: u8 = 6;
-    4, // pub const FLOAT32: u8 = 7;
-    8, //pub const FLOAT64: u8 = 8;
-];
+    let pcd = PointCloud2::from_cdr(msg.payload().to_bytes())?;
+    let cloud = DynPointCloud::from_pointcloud2(&pcd)?;
 
-struct ParsedPoint {
-    x: f64,
-    y: f64,
-    z: f64,
-    fields: HashMap<String, f64>,
-}
+    for point in cloud.iter() {
+        let x = point.read_f32("x").unwrap_or(0.0);
+        let y = point.read_f32("y").unwrap_or(0.0);
+        let z = point.read_f32("z").unwrap_or(0.0);
 
-fn decode_pcd(pcd: &PointCloud2) -> Vec<ParsedPoint> {
-    let mut points = Vec::new();
-    for i in 0..pcd.height {
-        for j in 0..pcd.width {
-            let start = (i * pcd.row_step + j * pcd.point_step) as usize;
-            let end = start + pcd.point_step as usize;
-            let p = if pcd.is_bigendian {
-                parse_point_be(&pcd.fields, &pcd.data[start..end])
-            } else {
-                parse_point_le(&pcd.fields, &pcd.data[start..end])
-            };
-            points.push(p);
-        }
+        // Any other field is read the same way; `read_as_f32`/`read_as_f64`
+        // convert automatically regardless of the field's wire datatype.
+        let speed = point.read_as_f32("speed").unwrap_or(0.0);
     }
-    points
-}
-
-fn parse_point_le(fields: &[PointField], data: &[u8]) -> ParsedPoint {
-    let mut p = ParsedPoint {
-        x: 0.0,
-        y: 0.0,
-        z: 0.0,
-        fields: HashMap::new()
-    };
-    for f in fields {
-        let start = f.offset as usize;
-        let val = match f.datatype {
-            point_field::INT8 => {
-                let bytes = data[start..start + SIZE_OF_DATATYPE[point_field::INT8 as usize]]
-                    .try_into()
-                    .unwrap_or_else(|e| panic!("Expected slice with 1 element: {:?}", e));
-                i8::from_le_bytes(bytes) as f64
-            }
-            point_field::UINT8 => {
-                let bytes = data[start..start + SIZE_OF_DATATYPE[point_field::UINT8 as usize]]
-                    .try_into()
-                    .unwrap_or_else(|e| panic!("Expected slice with 1 element: {:?}", e));
-                u8::from_le_bytes(bytes) as f64
-            }
-            point_field::INT16 => {
-                let bytes = data[start..start + SIZE_OF_DATATYPE[point_field::INT16 as usize]]
-                    .try_into()
-                    .unwrap_or_else(|e| panic!("Expected slice with 1 element: {:?}", e));
-                i16::from_le_bytes(bytes) as f64
-            }
-            point_field::UINT16 => {
-                let bytes = data[start..start + SIZE_OF_DATATYPE[point_field::UINT16 as usize]]
-                    .try_into()
-                    .unwrap_or_else(|e| panic!("Expected slice with 1 element: {:?}", e));
-                u16::from_le_bytes(bytes) as f64
-            }
-            point_field::INT32 => {
-                let bytes = data[start..start + SIZE_OF_DATATYPE[point_field::INT32 as usize]]
-                    .try_into()
-                    .unwrap_or_else(|e| panic!("Expected slice with 1 element: {:?}", e));
-                i32::from_le_bytes(bytes) as f64
-            }
-            point_field::UINT32 => {
-                let bytes = data[start..start + SIZE_OF_DATATYPE[point_field::UINT32 as usize]]
-                    .try_into()
-                    .unwrap_or_else(|e| panic!("Expected slice with 1 element: {:?}", e));
-                u32::from_le_bytes(bytes) as f64
-            }
-            point_field::FLOAT32 => {
-                let bytes = data[start..start + SIZE_OF_DATATYPE[point_field::FLOAT32 as usize]]
-                    .try_into()
-                    .unwrap_or_else(|e| panic!("Expected slice with 1 element: {:?}", e));
-                f32::from_le_bytes(bytes) as f64
-            }
-            point_field::FLOAT64 => {
-                let bytes = data[start..start + SIZE_OF_DATATYPE[point_field::FLOAT64 as usize]]
-                    .try_into()
-                    .unwrap_or_else(|e| panic!("Expected slice with 1 element: {:?}", e));
-                f64::from_le_bytes(bytes)
-            }
-            _ => {
-                // Unknown datatype in PointField
-                continue;
-            }
-        };
-        match f.name.as_str() {
-            "x" => p.x = val,
-            "y" => p.y = val,
-            "z" => p.z = val,
-           _ => { p.fields.insert(f.name.clone(), val); },
-        }
-    }
-    p
-}
-
-fn parse_point_be(fields: &[PointField], data: &[u8]) -> ParsedPoint {
-    let mut p = ParsedPoint {
-        x: 0.0,
-        y: 0.0,
-        z: 0.0,
-        fields: HashMap::new(),
-    };
-    for f in fields {
-        let start = f.offset as usize;
-
-        let val = match f.datatype {
-            point_field::INT8 => {
-                let bytes = data[start..start + SIZE_OF_DATATYPE[point_field::INT8 as usize]]
-                    .try_into()
-                    .unwrap_or_else(|e| panic!("Expected slice with 1 element: {:?}", e));
-                i8::from_be_bytes(bytes) as f64
-            }
-            point_field::UINT8 => {
-                let bytes = data[start..start + SIZE_OF_DATATYPE[point_field::UINT8 as usize]]
-                    .try_into()
-                    .unwrap_or_else(|e| panic!("Expected slice with 1 element: {:?}", e));
-                u8::from_be_bytes(bytes) as f64
-            }
-            point_field::INT16 => {
-                let bytes = data[start..start + SIZE_OF_DATATYPE[point_field::INT16 as usize]]
-                    .try_into()
-                    .unwrap_or_else(|e| panic!("Expected slice with 1 element: {:?}", e));
-                i16::from_be_bytes(bytes) as f64
-            }
-            point_field::UINT16 => {
-                let bytes = data[start..start + SIZE_OF_DATATYPE[point_field::UINT16 as usize]]
-                    .try_into()
-                    .unwrap_or_else(|e| panic!("Expected slice with 1 element: {:?}", e));
-                u16::from_be_bytes(bytes) as f64
-            }
-            point_field::INT32 => {
-                let bytes = data[start..start + SIZE_OF_DATATYPE[point_field::INT32 as usize]]
-                    .try_into()
-                    .unwrap_or_else(|e| panic!("Expected slice with 1 element: {:?}", e));
-                i32::from_be_bytes(bytes) as f64
-            }
-            point_field::UINT32 => {
-                let bytes = data[start..start + SIZE_OF_DATATYPE[point_field::UINT32 as usize]]
-                    .try_into()
-                    .unwrap_or_else(|e| panic!("Expected slice with 1 element: {:?}", e));
-                u32::from_be_bytes(bytes) as f64
-            }
-            point_field::FLOAT32 => {
-                let bytes = data[start..start + SIZE_OF_DATATYPE[point_field::FLOAT32 as usize]]
-                    .try_into()
-                    .unwrap_or_else(|e| panic!("Expected slice with 1 element: {:?}", e));
-                f32::from_be_bytes(bytes) as f64
-            }
-            point_field::FLOAT64 => {
-                let bytes = data[start..start + SIZE_OF_DATATYPE[point_field::FLOAT64 as usize]]
-                    .try_into()
-                    .unwrap_or_else(|e| panic!("Expected slice with 1 element: {:?}", e));
-                f64::from_be_bytes(bytes)
-            }
-            _ => {
-                // "Unknown datatype in PointField
-                continue;
-            }
-        };
-        match f.name.as_str() {
-            "x" => p.x = val,
-            "y" => p.y = val,
-            "z" => p.z = val,
-            _ => { p.fields.insert(f.name.clone(), val); },
-        }
-    }
-
-    p
-}
-```
+    ```

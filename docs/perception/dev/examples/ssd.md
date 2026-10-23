@@ -2,7 +2,7 @@
 
 !!! note "Model Service Topic"
 
-    The publisher part of this example publishes detections on `model/boxes2d`, which is disabled by default on Torizon for Maivin 2026.08; see the [Model Settings](../../../platforms/configuration/model.md#topics) to re-enable it, or use the unified [`model/output`](../../topics/model.md#modeloutput) topic instead.  It consumes the camera frames through the [`camera/frame`](../../topics/camera.md#cameraframe) topic and `CameraFrame` message, the same zero-copy access shown in the [Camera Frame example](camera.md#camera-frame).
+    The publisher part of this example consumes the camera frames through the [`camera/frame`](../../topics/camera.md#cameraframe) topic and `CameraFrame` message, the same zero-copy access shown in the [Camera Frame example](camera.md#camera-frame), and publishes its detections on the unified [`model/output`](../../topics/model.md#modeloutput) topic using the `Model` message so it can be consumed by the same examples and tools that read the real model service's output.
 
 These examples demonstrate how to deploy a MobileNet SSD V1 model using the NPU of an embedded platform such as a [Maivin](../../../platforms/quickstart/maivin/index.md).  The examples below are split into two parts; model inference on a single image and a model inference publisher. These examples have been tested on the TFLite files found in [this SSD-TFLite repository](https://github.com/apivovarov/ssd-tflite/tree/master), and in [ML-Zoo](https://github.com/Arm-Examples/ML-zoo/tree/master/models/object_detection/ssd_mobilenet_v1).  
 
@@ -192,7 +192,7 @@ This script is required to run on the target as it will use the `camera/frame` t
     * the `--threshold` argument will set the score threshold for a box to be published by the server.  
     * the `--shape` argument is the input height,width of the model, comma delimited.  
 
-3. The `model/boxes2d` topic will now be published once again and can be subscribed to by any other example.
+3. The `model/output` topic will now be published once again and can be subscribed to by any other example, such as the [Model Output](model.md#model-output) example.
 
 Once you disable the server, you should restart the model service with the following command.
 

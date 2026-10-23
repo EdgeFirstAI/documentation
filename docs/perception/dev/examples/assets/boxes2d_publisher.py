@@ -1,16 +1,18 @@
+# SPDX-License-Identifier: Apache-2.0
+# Copyright © 2025 Au-Zone Technologies. All Rights Reserved.
+
 import zenoh
-from zenoh import Encoding
-from edgefirst.schemas.edgefirst_msgs import CameraFrame, Box, Detect
+from edgefirst.schemas.edgefirst_msgs import CameraFrame, DetectBox, Model
 from edgefirst.schemas.std_msgs import Header
-from edgefirst.schemas.builtin_interfaces import Time
+from edgefirst.schemas.builtin_interfaces import Duration
 from tflite_runtime.interpreter import Interpreter, load_delegate 
 from PIL import Image, ImageDraw, ImageFont
 from argparse import ArgumentParser
 import sys
-import socket
 import mmap
 import ctypes
 import os
+import socket
 import asyncio
 import time
 import numpy as np
@@ -101,6 +103,12 @@ image_classes = {
 }
 
 
+def duration_since(start_time):
+    elapsed = time.time() - start_time
+    sec = int(elapsed)
+    return Duration(sec=sec, nanosec=int((elapsed - sec) * 1e9))
+
+
 # Constants for syscall
 SYS_pidfd_open = 434  # From syscall.h
 SYS_pidfd_getfd = 438 # From syscall.h
@@ -110,7 +118,7 @@ GETFD_FLAGS = 0
 if sys.platform.startswith('linux'):
     libc = ctypes.CDLL("libc.so.6", use_errno=True)
 else:
-    print("Camera Frame only works on EdgeFirst Platforms")
+    print("DMA only works on EdgeFirst Platforms")
     sys.exit(0)
 
 def pidfd_open(pid: int, flags: int = 0) -> int:
@@ -166,17 +174,17 @@ class MessageDrain:
             latest = self._queue.get_nowait()
         return latest
 
-def dma_worker(msg, ip, ids, session, args):
+def frame_worker(msg, ip, ids, session, host, args):
     try:
         frame = CameraFrame.from_cdr(msg.payload.to_bytes())
     except Exception as e:
         print(f"Error processing Camera Frame: {e}", file=sys.stderr)
         return
 
+    decode_start = time.time()
     tensor = frame.tensor
     height, width = tensor.shape[0], tensor.shape[1]
-    input_timestamp = Time(sec=frame.header.stamp.sec,
-                           nanosec=frame.header.stamp.nanosec)
+
     pidfd = pidfd_open(tensor.pid)
     if pidfd < 0:
         return
@@ -187,11 +195,9 @@ def dma_worker(msg, ip, ids, session, args):
     if fd < 0:
         return
 
-    # Map the buffer from its start and copy each plane out of the mapping
-    # to assemble the complete NV12 frame.
     length = max(p.offset + p.size for p in tensor.planes)
     mm = mmap.mmap(fd, length, offset=0)
-    nv12_bytes = b"".join(mm[p.offset:p.offset + p.used] for p in tensor.planes)
+    nv12 = b"".join(mm[p.offset:p.offset + p.used] for p in tensor.planes)
     mm.close()
     os.close(fd)
     os.close(pidfd)
@@ -200,25 +206,20 @@ def dma_worker(msg, ip, ids, session, args):
     if len(input_shape) != 2:
         raise AssertionError("Input shape should be only the height and width, ie. 300,300")
 
-    # The ISP produces NV12 frames: a full-resolution luma plane followed by
-    # a half-resolution interleaved chroma plane, 1.5 bytes per pixel.
-    nv12_np = np.frombuffer(nv12_bytes, dtype=np.uint8).reshape((height * 3 // 2, width))
+    nv12_np = np.frombuffer(nv12, dtype=np.uint8).reshape((height * 3 // 2, width))
     rgb_img = cv2.cvtColor(nv12_np, cv2.COLOR_YUV2RGB_NV12)
 
     rgb_img = cv2.resize(rgb_img, (input_shape[0], input_shape[1]))
-    rgb_img = np.transpose(rgb_img, [1,0,2])
+    rgb_img = np.transpose(rgb_img, [1, 0, 2])
     rgb_img = np.reshape(rgb_img, [1] + list(rgb_img.shape))
-    
+    input_time = duration_since(decode_start)
 
     ip.set_tensor(ids[4], rgb_img)
-    start_time = time.time()
+    model_start = time.time()
     ip.invoke()
-    model_time = time.time() - start_time
-    model_sec = int(model_time)
-    model_nanosec = int((model_time - model_sec) * 1e9)
-    model_timestamp = Time(sec = model_sec,
-                           nanosec = model_nanosec)
-    
+    model_time = duration_since(model_start)
+
+    output_start = time.time()
     boxes = ip.get_tensor(ids[0]).squeeze()
     classes = ip.get_tensor(ids[1]).squeeze()
     scores = ip.get_tensor(ids[2]).squeeze()
@@ -233,32 +234,31 @@ def dma_worker(msg, ip, ids, session, args):
         width = boxes[i][2] - boxes[i][0]
         height = boxes[i][3] - boxes[i][1]
         label = image_classes[int(classes[i]) + 1]
-        publish_boxes.append(Box(center_x = center_x,
-                                 center_y = center_y,
-                                 width = width,
-                                 height = height,
-                                 label = label,
-                                 score = scores[i],
-                                 track_id = ""))
-    now = time.time()
-    cur_sec = int(now)
-    cur_nanosec = int((now - cur_sec) * 1e9)
-    output_timestamp = Time(sec=cur_sec, nanosec=cur_nanosec)
-    detect_header = Header(stamp=Time(sec=cur_sec, nanosec=cur_nanosec))
-    detect_obj = Detect(header=detect_header,
-                        input_timestamp=input_timestamp,
-                        model_time=model_timestamp,
-                        output_time=output_timestamp,
-                        boxes=publish_boxes)
+        publish_boxes.append(DetectBox(center_x=center_x,
+                                       center_y=center_y,
+                                       width=width,
+                                       height=height,
+                                       label=label,
+                                       score=float(scores[i])))
 
-    session.put("model/boxes2d", detect_obj.to_cdr(),
-                encoding="edgefirst_msgs/msg/Detect")
+    # Propagate the camera frame's own acquisition timestamp so consumers
+    # (e.g. the Web UI) can align these boxes with the frame they came from.
+    model_header = Header(stamp=frame.stamp, frame_id=frame.frame_id)
+    model_obj = Model(header=model_header,
+                      input_time=input_time,
+                      model_time=model_time,
+                      output_time=duration_since(output_start),
+                      decode_time=duration_since(decode_start),
+                      boxes=publish_boxes)
 
-async def dma_handler(drain, ip, ids, session, args):
+    session.put(f"{host}/model/output", model_obj.to_bytes(),
+                encoding="edgefirst_msgs/msg/Model")
+
+async def frame_handler(drain, ip, ids, session, host, args):
     while True:
         try:
             msg = await drain.get_latest()
-            thread = threading.Thread(target=dma_worker, args=[msg, ip, ids, session, args])
+            thread = threading.Thread(target=frame_worker, args=[msg, ip, ids, session, host, args])
             thread.start()
             
             while thread.is_alive():
@@ -272,12 +272,11 @@ async def dma_handler(drain, ip, ids, session, args):
     
 async def main_async(args):
     # Setup rerun
-    # Zenoh config: publish and subscribe under the device hostname namespace,
-    # matching how the real model service and the other samples find topics.
+    # Zenoh config
     config = zenoh.Config()
     config.insert_json5("scouting/multicast/interface", "'lo'")
-    config.insert_json5("namespace", '"%s"' % socket.gethostname())
     session = zenoh.open(config)
+    host = socket.gethostname()
 
     # Create drains
     loop = asyncio.get_running_loop()
@@ -301,9 +300,9 @@ async def main_async(args):
     ids.append(out_det[3]["index"])
     ids.append(ip.get_input_details()[0]["index"])
 
-    session.declare_subscriber('camera/frame', drain.callback)
+    session.declare_subscriber(f"{host}/camera/frame", drain.callback)
     try:
-        await asyncio.gather((dma_handler(drain, ip, ids, session, args)))
+        await asyncio.gather((frame_handler(drain, ip, ids, session, host, args)))
     except KeyboardInterrupt:
         session.close()
         sys.exit(0)
@@ -324,3 +323,4 @@ def main():
 
 if __name__ == "__main__":
     main()
+

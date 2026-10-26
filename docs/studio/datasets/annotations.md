@@ -56,63 +56,11 @@ Task entry is created in the Task board. There are three columns:
 
 Click on any task entry and start editing. The editing process is described below.
 
-## Edit images from gallery
-
-The tutorials for annotating images from the gallery is provided in the [Dataset Annotations](../../datasets/tutorials/annotations/index.md) sections.
-
-1. Open the dataset [gallery](gallery.md)
-2. Click on an image.
-
-{{ figure("../assets/datasets/edit-options.png", "Edit Options") }}
-
-### Add a Bounding Box
-
-1. Click on a label from Labels section – all boxes drawn will be of this class.
-2. Click on the Detection Bounding Box Mode (or press b).
-3. Click and drag on image to draw as many rectangular bounding boxes.
-4. Select any other class and add boxes for that class.
-5. Click on "SAVE ANNOTATIONS" to finalize the annotations.
-
-### Add a Polygon Annotation with Vertices
-
-1. Click on a label from Labels section – all polygons drawn will be of this class.
-2. Click on the Segmentation Vertex Mode (or press p).
-3. Continuously click on image to draw as many vertices of the polygon as required.
-4. Select any other class and polygons for that class.
-5. Select Pointer mode (q) to edit any vertices.
-6. Click on "SAVE ANNOTATIONS" to finalize the annotations.
-
-### Add a Polygon Annotation with Brush
-
-1. Click on a label from Labels section – all polygons drawn will be of this class.
-2. Click on the Segmentation Brush Mode (or press w).
-3. Hold mouse down on image to draw the polygon as required.
-4. Select any other class and add polygons for that class.
-5. Select Pointer mode (q) to edit any vertex.
-6. Select Segmentation Eraser mode (e) to erase parts of the polygon.
-7. NOTE: Only the polygon selected (using pointer tool) will be erased.
-8. Use [+] and [-] buttons to make the brush/eraser larger or smaller.
-9. Click on "SAVE ANNOTATIONS" to finalize the annotations.
-
-### Change Class Label of an Annotation
-
-1. Click on a label from Labels section – all annotations clicked will be of this class.
-3. Click on the Change Label Mode (or press l).
-4. Click on any annotation to change its class to the selected class.
-
-### Edit Images from the Auditing Task Board
-
-Go to the Auditing Tasks board.
-
-{{ figure("../assets/datasets/auditing-tasks.png", "Audit Annotations") }}
-
-Create a new task or continue an existing task.
-
-#### Label
+### Label
 
 Add, delete, or edit annotations in one annotation set in the target annotation set and save changes in the same annotation set.
 
-#### Audit
+### Audit
 
 Review annotations in the reference annotation set then approve, reject, or edit annotation and place changes in a reference annotation set.
 
@@ -144,6 +92,63 @@ In this mode only one annotation is shown at a time.  The user can edit with sin
 7. (SHIFT 0-9) - change the annotation class from 10 to 19.
 
 Users can edit the size of the annotation by mouse click and drag.
+
+## Edit images from gallery
+
+The full in-depth tutorials for annotating images from the gallery is provided in the [Dataset Annotations](../../datasets/tutorials/annotations/index.md) sections. This section describes the features available for annotating datasets from the gallery in EdgeFirst Studio.
+
+1. Open the dataset [gallery](gallery.md)
+2. Click on an image.
+
+{{ figure("../assets/datasets/edit-options.png", "Edit Options") }}
+
+### Add a Bounding Box
+
+1. Click on a label from Labels section – all boxes drawn will be of this class.
+2. Click on the Detection Bounding Box Mode (or press b).
+3. Click and drag on image to draw as many rectangular bounding boxes.
+4. Select any other class and add boxes for that class.
+5. Click on "SAVE IMAGE ANNOTATIONS" at the top right to finalize the annotations.
+
+### Add a Polygon Annotation with Vertices
+
+1. Click on a label from Labels section – all polygons drawn will be of this class.
+2. Click on the Segmentation Vertex Mode (or press p).
+3. Continuously click on image to draw as many vertices of the polygon as required.
+4. Select any other class and polygons for that class.
+5. Select Pointer mode (q) to edit any vertices.
+6. Click on "SAVE IMAGE ANNOTATIONS" to finalize the annotations.
+
+### Add a Polygon Annotation with Brush
+
+1. Click on a label from Labels section – all polygons drawn will be of this class.
+2. Click on the Segmentation Brush Mode (or press w).
+3. Hold mouse down on image to draw the polygon as required.
+4. Select any other class and add polygons for that class.
+5. Select Pointer mode (q) to edit any vertex.
+6. Select Segmentation Eraser mode (e) to erase parts of the polygon.
+7. NOTE: Only the polygon selected (using pointer tool) will be erased.
+8. Use [+] and [-] buttons to make the brush/eraser larger or smaller.
+9. Click on "SAVE IMAGE ANNOTATIONS" to finalize the annotations.
+
+### Change Class Label of an Annotation
+
+1. Click on a label from Labels section – all annotations clicked will be of this class.
+3. Click on the Change Label Mode (or press l).
+4. Click on any annotation to change its class to the selected class.
+
+### Join Annotations
+
+It is important to join the 2D (masks and boxes) or 3D annotations that describe the same object. Annotations generated by the *AI Segment Tool* automatically links the annotation types tied to the same object. However, annotations generated by the manual methods shown above do not automatically link as the same object.
+
+For example, the following mask and bounding box annotation for the "keyboard" was created manually. You can join these two annotations by:
+
+1. Hold CTRL on you keyboard.
+2. Select the bounding box and the mask on the image.
+3. Click "join".
+4. Once the annotations are joined, clicking on the object should highlight its annotations (mask and bounding box).
+
+{{ figure("../assets/datasets/join-annotations.jpg", "Join Annotations") }}
 
 ## Next Steps
 

@@ -20,14 +20,7 @@ On the top right corner of the page, click on the "validate" button as indicated
 
 {{ figure("/models/assets/validation/training_validate_button.jpg", "Validate Button") }}
 
-Enter a name for the validation session, then select the model and dataset to use for validation.
-
-Under **Model Selection**, choose an **ONNX, Keras, or TFLite** artifact — these are the formats supported by cloud validation.
-
-For this example, all remaining settings were left at their default values. When you are ready, click **Start Session** at the bottom of the page to begin the validation process.
-
-!!! note "Outdated validation panel"
-    The following validation configuration panel is currently out of date.  Additional formatting fixes to the current panel are still in progress before we can push a new image of the layout.
+Select the model to use for validation. Select either an **ONNX, Keras, or TFLite** models — these are the formats supported by cloud validation. When you are ready, click **START APP** to begin the validation process.
 
 {{ figure("/models/assets/validation/vision-validate-settings.jpg", "Start Validation Session") }}
 

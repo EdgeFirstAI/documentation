@@ -1,6 +1,6 @@
 # On Target Validation
 
-User-managed validation runs the model on a real edge device and publishes the per-image predictions plus a detailed performance trace back to EdgeFirst Studio for accuracy and timing analysis. It is the right choice when you need to know how the model **actually behaves** on the hardware it will deploy to — not on a cloud instance.
+On-target validation runs the model on a real edge device and publishes the per-image predictions plus a detailed performance trace back to EdgeFirst Studio for accuracy and timing analysis. It is the right choice when you need to know how the model **actually behaves** on the hardware it will deploy to — not on a cloud instance.
 
 The on-target tool for this workflow is the **[EdgeFirst Profiler](../../../profiler/index.md)**.
 

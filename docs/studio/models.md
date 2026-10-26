@@ -76,9 +76,9 @@ Now the charts for each selected sessions are displayed side-by-side.  All the c
 
 {{ figure("assets/models/validation-charts-comparison.jpg", "Comparing Validation Sessions") }}
 
-There are two types of validation: **managed** and **user-managed**. Managed validations are set by default in EdgeFirst Studio which triggers an EC2 instance that downloads the dataset and the inference model for validation. This type of validation is best used if you do not have an embedded platform to deploy the model. User-managed validations are hosted in embedded platforms where the dataset and the inference model will be downloaded. This type of validation is best used if you have an embedded platform available to verify how the model would perform in the platform and determine the model's inference time when deployed.
+There are two types of validation: **cloud validation** and **on-target profiling**. Cloud validations are set by default in EdgeFirst Studio which triggers an EC2 instance that downloads the dataset and the inference model for validation. This type of validation is best used if you do not have an embedded platform to deploy the model. On-target profiling are hosted on embedded platforms where the dataset and the inference model will be downloaded. This type of validation is best used if you have an embedded platform available to verify how the model would perform on the platform and determine the model's inference time when deployed.
 
-For more details regarding deploying validation sessions, please see [Validating Vision Models](../models/validation/vision/managed.md) and [Validating Fusion Models](../models/validation/fusion/managed.md) for validating Fusion models.
+For more details regarding deploying validation sessions, please see [Validating Vision Models](../models/validation/vision/managed.md) and [Validating Fusion Models](../models/validation/fusion/managed.md).
 
 ### Validation Session Details
 
@@ -126,4 +126,4 @@ For more information, please see the full tutorial on [model deployment](../mode
 
 ## Next Steps
 
-Now that you are familiar with the layout of the Model Experiments Dashboard, proceed to the next section for learning more about the context of the [Cloud Instances Dashboard](instances.md).
+Now that you are familiar with the layout of the Model Experiments Dashboard, proceed to the next section for learning more about the context of the [Tasks Dashboard](tasks.md).

@@ -12,13 +12,14 @@ The elements of the navbar are:
 
 1. The EdgeFirst Studio Home Button. This button will return a user to the [Home Page](home.md)
 2. The "Back" button to return to the previous page
-3. The "Projects"button to navigate towards the [Projects Page](projects.md)
+3. The "Projects" button to navigate towards the [Projects Page](projects.md)
 4. The Page Title.  On other pages, these will be links to show parent-child pages
-5. The current amount of funds and "Add Funds" button
-6. The Help Button.  This will take the user to the page's corresponding documentation page
-7. The Apps Waffle Button.  This will take the user to the [Apps Menu](navigation.md#apps-menu)
-8. The Help Center Button.  This will take the user to the [General Help Center](navigation.md#general-help)
-9. The User Menu Button.  This will take the user to the [User Menu](navigation.md#user-menu)
+5. The "Tasks" button and the number of active tasks will take the user to the [Tasks Page](tasks.md)
+6. The current amount of funds and "Add Funds" button will take the user to the [Top Up Modal](user/topup.md)
+7. The Help Button.  This will take the user to the page's corresponding documentation page
+8. The Apps Waffle Button.  This will take the user to the [Apps Menu](navigation.md#apps-menu)
+9. The Help Center Button.  This will take the user to the [General Help Center](navigation.md#general-help)
+10. The User Menu Button.  This will take the user to the [User Menu](navigation.md#user-menu)
 
 ## User Menu
 
@@ -54,7 +55,7 @@ The "Help" button will point towards the link in the EdgeFirst documentation tha
 
 ## Add Funds
 
-You can request additional funds via the "Add Funds" button. This will bring up the "Top-up" page. Here you can request funds from us via Credit Card, Coupon, or by other reasons through the "email" button.
+You can request additional funds via the "Add Funds" button. This will bring up the "Top-up" page. Here you can request funds from us via Credit Card, Coupon, or by other means through the "email" button.
 
 {{ figure("assets/navigation/request-funds.png", "Request Funds Modal") }}
 
@@ -100,23 +101,13 @@ Clicking on "Experiments" takes the user to the [Model Experiments Dashboard](mo
 
 Clicking on "Profilers" takes the user to the Profiler Dashboard.  This feature allows users to compare the performance of models across embedded targets to allow users to find the best model-target combination to deploy into their system. This feature installs the same set of tools as our [HuggingFace Dashboard](https://huggingface.co/spaces/EdgeFirst/Models) for model comparison with additional filtering, sorting, and scoping capabilities.
 
-### Advanced Dropdown
-
-Clicking on "ADVANCED" expands into further core operating features of EdgeFirst Studio.
-
-{{ figure("assets/navigation/models_dropdown.jpg", "Models Dropdown") }}
-
-#### Cloud Instances
-
-Clicking on "Cloud Instances" takes the user to the [Cloud Instances Dashboard](instances.md). This page allows users to view currently running cloud instances and to stop a running cloud instance in here.  A cloud instance is a server dedicated to hosting any operations such as model training and validation, or [AGTG](agtg.md) operations.
-
-#### Tasks
-
-Clicking on "Tasks" takes the user to the Tasks Dashboard where it lists all pending, running, terminated, failed, or successful MLOPs processes in EdgeFirst Studio from data import, annotations to model training, validation, or model conversions.  Furthermore, it also keeps a history of operations ran that either completed successfully, terminated, or failed.
-
 ### Apps
 
 Clicking on "APPS" takes the user to the [Apps Dashboard](apps.md) where it lists existing EdgeFirst Studio apps that can be run by the user to perform operations such as training, validation, or model conversions and quantizations.  Model conversion can be in the form of converting ONNX to TFLite with the neutron delegate support to allow inference in NXP's i.MX 95 as an example.
+
+### Debug
+
+This option is intended for developer and internal debugging use only.
 
 ### Recycling Bin
 

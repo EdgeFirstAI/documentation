@@ -2754,8 +2754,8 @@ All models: 3 scales, strides [8, 16, 32], 8400 spatial positions at 640px input
 2. [ModelPack Overview](modelpack/index.md) - Architecture details and training parameters
 3. [Ultralytics Integration](ultralytics/index.md) - YOLOv8/v11/v26 training and deployment
 4. [Training Vision Models](training/vision.md) - Step-by-step training workflow
-5. [On Cloud Validation](validation/vision/managed.md) - Managed validation sessions
-6. [On Target Validation](validation/vision/user_managed.md) - User-managed validation with the EdgeFirst Profiler
+5. [On Cloud Validation](validation/vision/managed.md) - Cloud validation sessions
+6. [On Target Validation](validation/vision/user_managed.md) - On-target validation with the EdgeFirst Profiler
 7. [Model Quantization](conversion/tflite.md) - Converting ONNX to quantized TFLite
 8. [Deploying to Embedded Targets](deployment/launcher.md) - Model deployment workflow
 9. [EdgeFirst Perception Middleware](../perception/index.md) - Runtime inference stack

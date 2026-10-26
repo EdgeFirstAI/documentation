@@ -2,7 +2,7 @@
 
 We support model conversion and optimization workflows that enable trained models to be deployed on a wide range of target platforms and hardware architectures.
 
-Follow the model conversion workflow that corresponds to your target platform. If you are deploying to a Windows/Linux PC or macOS system, you can skip this section and proceed directly to the next step to validate the ONNX model, which is automatically generated as part of the training session outputs.
+Follow the model conversion workflow that corresponds to your target platform. *If you are deploying to a Windows/Linux PC or macOS system, you can skip this section and proceed directly to the next step to validate the ONNX model*, which is automatically generated as part of the training session outputs.
 
 If you are deploying to one of the supported hardware platforms listed below, follow the platform-specific conversion instructions for your target device.
 

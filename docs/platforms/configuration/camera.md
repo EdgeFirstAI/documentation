@@ -14,20 +14,25 @@ This configures what camera device the camera service will use, which on Maivin 
 
 ## Camera Mode
 
-The camera mode selects the OS08A20 sensor's native readout mode.  It is applied by restarting the ISP with the matching sensor configuration before the camera service starts.  Stored as `CAMERA_MODE`, this setting is specific to Maivin and Raivin.
+The camera mode selects the OS08A20 sensor's native readout mode.  It is applied by restarting the ISP with the matching sensor configuration before the camera service starts.  Stored as `CAMERA_MODE`, the values are case-insensitive and this setting is specific to Maivin and Raivin.
 
 | Mode | Sensor Readout | Frame Rate |
 |------|----------------|------------|
-| `1080p60` | 1920x1080, horizontally binned | 60 FPS (default) |
-| `4k` | 3840x2160, full resolution | 30 FPS |
+| `1080p30` | 1920x1080, horizontally binned | 30 FPS (default) |
+| `1080p60` | 1920x1080, horizontally binned | 60 FPS |
+| `4K30` | 3840x2160, full resolution | 30 FPS |
 
-The default `1080p60` mode gives better low-light and fast-exposure handling than the full resolution readout and is the mode the shipped model was tuned for.  The `4k` mode is required for [4K tiled streaming](../../perception/4k/index.md) and has [known issues](../software/issues.md#4k-camera-mode-follow-ups-edgeai-1230-edgeai-1406) in this release.  There is no 1080p30 mode.
+The default `1080p30` mode uses the same sensor readout as `1080p60` with the frame rate capped to 30 FPS once the stream starts, the OS08A20 has no native 1080p 30 FPS mode.  It keeps the H.264 encoder and the Web UI within what they can sustain while the other services run, at 60 FPS the encoder drops frames on a loaded Raivin.  Both 1080p modes give better low-light and fast-exposure handling than the full resolution readout and use the readout the shipped model was tuned for.  The `4K30` mode is required for [4K tiled streaming](../../perception/4k/index.md) and has [known issues](../software/issues.md#4k-camera-mode-follow-ups-edgeai-1230-edgeai-1406) in this release.  An unrecognized value falls back to `4K30` and logs a warning.  Releases before 2026.10 named the 4K mode `4k` and had no `1080p30` mode.
+
+!!! note "Changing the camera mode"
+
+    Edit `CAMERA_MODE` in `/etc/default/camera` and reboot the device with `sudo reboot`.  Restarting only the camera service with `sudo systemctl restart camera` can leave the ISP unable to start until the next reboot.
 
 The camera mode is independent of the camera size below.  The ISP downscales from the native readout to the requested camera size but never upscales, so the camera size must not exceed the resolution of the selected mode.
 
 ## Camera Size
 
-This sets the camera resolution which is used for the camera capture and is separate from the streaming resolution.  Stored as `CAMERA_SIZE` as `"width height"`, the default is `1920 1080`.  Setting the camera size to `3840 2160` together with the `4k` camera mode puts the camera service into [4K Mode](../../perception/4k/index.md).
+This sets the camera resolution which is used for the camera capture and is separate from the streaming resolution.  Stored as `CAMERA_SIZE` as `"width height"`, the default is `1920 1080`.  Setting the camera size to `3840 2160` together with the `4K30` camera mode puts the camera service into [4K Mode](../../perception/4k/index.md).
 
 ## Stream Size
 

@@ -1,6 +1,6 @@
 # Upload Video
 
-Video files can be uploaded into any dataset container in EdgeFirst Studio.  Choose the dataset container to upload the video file.  In this case, the dataset is called "Coffee Cup".  Click on the dataset context menu (three dots) and click "Import".
+Video files can be uploaded into any dataset container in EdgeFirst Studio.  Choose the dataset container to upload the video file.  In this case, the dataset is called "Coffee Cup".  Click on the dataset context menu (three dots) then click "Import" and select "Videos".
 
 {{ figure("/datasets/assets/capture/mobile-video-import-type.jpg", "Dataset Video Import") }}
 

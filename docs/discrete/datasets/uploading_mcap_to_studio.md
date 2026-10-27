@@ -25,14 +25,14 @@ The MCAP should be available in {{ studio_link("EdgeFirst Studio") }} as a snaps
 
 ## From EdgeFirst Studio
 
-To upload an MCAP Recording into EdgeFirst Studio, first {{ studio_link("login", "login") }} to EdgeFirst Studio.  Once logged in to EdgeFirst Studio, navigate to the "Data Snapshots" under the apps menu.
+To upload an MCAP Recording into EdgeFirst Studio, first {{ studio_link("login", "login") }} to EdgeFirst Studio.  Once logged in to EdgeFirst Studio, navigate to the "Snapshots" page under the apps menu.
 
-{{ figure("/datasets/assets/annotations/automatic/data-snapshots.jpg", "Data Snapshots") }}
+{{ figure("/datasets/assets/annotations/automatic/data-snapshots.jpg", "Snapshots Page") }}
 
-Once you are in the "Data Snapshots" page, upload the recorded MCAP by clicking "From File" which opens a new window dialog for selecting the MCAP downloaded in your PC.
+Once you are in the "Snapshots" page, upload the recorded MCAP by clicking "From File" which opens a new window dialog for selecting the MCAP downloaded in your PC.
 
 !!! note "EdgeFirst Datasets"
-    You can also drag and drop [EdgeFirst Datasets](../../datasets/format/index.md) ZIP and Arrow files in the "Data Snapshots".
+    You can also drag and drop [EdgeFirst Datasets](../../datasets/format/index.md) ZIP and Arrow files in the "Snapshots" page.
 
 {{ figure("/datasets/assets/capture/mcap-upload.jpg", "Upload MCAP") }}
 

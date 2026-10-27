@@ -42,7 +42,7 @@ Once the AGTG server has started, go ahead and [annotate the starting frame](../
 
 {{ figure("/datasets/assets/annotations/automatic/agtg-prompts.jpg", "AGTG Initial Prompts") }}
 
-Once the propagation completes, click "Save Annotations" to save the propagated annotations.
+Once the propagation completes, click "Save AIGT Annotations" to save the propagated annotations.
 
 {{ figure("/datasets/assets/annotations/automatic/propagation-completed.jpg", "Propagation Completed") }}
 

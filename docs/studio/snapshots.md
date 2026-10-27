@@ -7,7 +7,7 @@ Snapshots are portable, frozen copies of datasets. A snapshot can either be impo
 
 This format makes snapshots easy to download, share, archive, and re-import into any EdgeFirst Studio project.
 
-{{ figure("assets/snapshots/data-snapshots.png", "Data Snapshots") }}
+{{ figure("assets/snapshots/data-snapshots.png", "Snapshots Page") }}
 
 The snapshots menu shows the list of snapshots with its name and status.
 

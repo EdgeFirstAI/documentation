@@ -1,6 +1,6 @@
 # Upload Images
 
-Image files can be uploaded into any dataset container in EdgeFirst Studio.  Choose the dataset container to upload image files.  In this case, the dataset is called "Coffee Cup".  Click on the dataset context menu (three dots) and select import.
+Image files can be uploaded into any dataset container in EdgeFirst Studio.  Choose the dataset container to upload image files.  In this case, the dataset is called "Coffee Cup".  Click on the dataset context menu (three dots) then click "Import" and select "Images".
 
 {{ figure("/datasets/assets/capture/mobile-image-import-type.jpg", "Dataset Image Import") }}
 

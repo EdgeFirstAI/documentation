@@ -4,7 +4,7 @@ This page will provide tutorials for annotating datasets in EdgeFirst Studio.  A
 
 {{ figure("../../assets/annotations/sample-studio-annotations.jpg", "Sample Annotations") }}
 
-To reduce the effort required during the annotation process, EdgeFirst Studio provides the tools to auto annotate either a single image or a sequential set of frames in a dataset by leveraging SAM-2 auto-segment and tracking capabilities.  Please note that it is not always guaranteed that the auto-annotations will yield 100% accuracy, so EdgeFirst Studio also provides the tools for manual annotations to correct any errors or make adjustments to the existing annotations.
+To reduce the effort required during the annotation process, EdgeFirst Studio provides the tools to auto annotate either a single image or a sequential set of frames in a dataset by leveraging SAM2 auto-segment and tracking capabilities.  Please note that it is not always guaranteed that the auto-annotations will yield 100% accuracy, so EdgeFirst Studio also provides the tools for manual annotations to correct any errors or make adjustments to the existing annotations.
 
 1. Follow these [steps to auto-annotate](automatic.md) your dataset using the Automatic Ground Truth Generation (AGTG) pipeline.
 2. Follow these steps for [manual annotations](manual.md).
@@ -68,17 +68,3 @@ To remove a label, click on the button with a pencil icon under "Labels" on the 
 This will show the list of existing labels.  Click on the "x" button shown on the right of the label when hovering over it.  This will delete the label from the list along with the annotations with this label.
 
 {{ figure("../../assets/annotations/delete-plate-label.jpg", "Added Label") }}
-
-## Terminate AGTG Server
-
-In order to avoid running out of credits, terminate an idle AGTG server.  As mentioned, 15 minutes of inactivity will auto-terminate AGTG servers.  However, you can terminate a server as shown below.  Navigate to the *Cloud Instances* under the apps menu.
-
-{{ figure("../../assets/annotations/cloud-instances.jpg", "Cloud Instances") }}
-
-Select the AGTG server and click "Stop" to stop the server.
-
-{{ figure("../../assets/annotations/select-ai-server.jpg", "Select AGTG Server") }}
-
-Confirm the AGTG server deletion.
-
-{{ figure("../../assets/annotations/delete-agtg-server.jpg", "Delete AGTG Server") }}

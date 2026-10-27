@@ -82,8 +82,7 @@ The stages for restoring a snapshot are shown below.
 4. Specify the "Project" destination to store the dataset once it completes.
 5. Enter the dataset name and description. If the dataset name is not provided, the snapshot name will be used.
 6. For additional MCAP settings such as adjusting the FPS, enable "Use MCAP Selected Topics".
-7. Specify the source of annotations from either the MCAP model topic, or enable auto generation of 2D boxes, 3D boxes, and segmentation masks by deploying a Studio trained model or a base YOLOx model for [COCO](../datasets/coco/index.md#coco-labels) annototions.
-
+7. Specify the source of annotations from either the MCAP model topic, or enable auto generation of 2D boxes, 3D boxes, and segmentation masks by deploying a Studio trained model or a base YOLOx model for [COCO](../datasets/coco/index.md#coco-labels) annotations.
 8. Select "Depth Generation" to use AI Model based depth map generation.
 9. Click "Start App".
 10. The status of the snapshot generation will be shown in the [tasks page](tasks.md).

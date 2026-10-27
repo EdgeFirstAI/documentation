@@ -104,7 +104,7 @@ The action bar at the top of the details page provides the following operations:
 
 ## Running a model
 
-EdgeFirst Studio allows you to run trained models directly in the web browser. After a model has been trained, open the model details page by clicking on the trainer card. Only ONNX models are currently supported for live inference in the browser. Supported models will have a play button next to the artfacts as shown.
+EdgeFirst Studio allows you to run trained models directly in the web browser. After a model has been trained, open the model details page by clicking on the trainer card. Only ONNX models are currently supported for live inference in the browser. Supported models will have a play button next to the artifacts as shown.
 
 !!! note "ONNX models only"
     Live browser-based model running only supports **ONNX** format. To validate or profile models in other formats (TFLite, Neutron, Hailo, TensorRT, etc.) on real hardware, use the [EdgeFirst Profiler](../profiler/index.md).

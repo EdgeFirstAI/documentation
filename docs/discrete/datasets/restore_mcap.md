@@ -14,7 +14,7 @@ Then click on the sequence to navigate to the gallery to view individual frames 
 
 {{ figure("/datasets/assets/annotations/automatic/imported_mcap_sequence.jpg", "Imported MCAP Sequence") }}
 
-The auto-generated annotations should be visible thoughout the frames.
+The auto-generated annotations should be visible throughout the frames.
 
 {{ figure("/datasets/assets/annotations/automatic/restored_mcap_result.jpg", "Resulting Restored MCAP") }}
 

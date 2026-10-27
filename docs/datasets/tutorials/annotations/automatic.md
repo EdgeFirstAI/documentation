@@ -113,8 +113,7 @@ By default, the prompts provided to SAM2 are bounding boxes (mouse click and dra
 Once the first frame has been annotated (*prompts for SAM2*), specify the "End Frame" which marks the point where SAM2 stops propagating.  By default this is the end of the sequence (last frame).  
 
 !!! Bug "Large Tracks"
-    We recommend keeping the tracks to less than 500 frames at a time. We observed unpredicatble behaviour from the tool when 
-    deploying tracks of ~1500 or higher.
+    We recommend keeping the tracks to less than 500 frames at a time. We observed unpredictable behavior from the tool when deploying tracks of ~1500 or higher.
 
 Once this has been specified, click on "Propagate" to start the propagation process.
 

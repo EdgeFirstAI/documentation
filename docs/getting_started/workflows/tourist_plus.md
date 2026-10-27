@@ -43,6 +43,5 @@ Navigate to the **Models** section from any project to browse available models a
 
 Next deploy any model in EdgeFirst Studio by following this [guide](../../getting_started/running_pretrained_model.md).
 
-
 !!! tip "Ready to go further?"
     To copy a sample dataset and train your own model, follow the [Profiler+ Workflow](profiler_plus.md) or the [Web Workflow](web.md).

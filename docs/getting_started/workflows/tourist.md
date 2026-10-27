@@ -89,6 +89,5 @@ Use the table below as a quick overview of what is visible on the landing page.
 | Public Datasets | Host and access public datasets. |
 | Model Benchmarking | Benchmark and profile models on edge platforms and analyze performance. |
 
-
 !!! tip "Ready to go further?"
     Sign up for a free account and browse public datasets and models by following the [Tourist+ Workflow](tourist_plus.md).

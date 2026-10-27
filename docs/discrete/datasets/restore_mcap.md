@@ -1,3 +1,7 @@
+The uploaded MCAP can be found in the "Snapshots" page.
+
+{{ figure("/datasets/assets/annotations/automatic/data-snapshots.jpg", "Snapshots Page") }}
+
 From the snapshots page, select the MCAP you plan to restore into a dataset.  The click on the snapshot's extended menu as shown and select "restore".
 
 {{ figure("/datasets/assets/annotations/automatic/restore_mcap.jpg", "Restore MCAP") }}

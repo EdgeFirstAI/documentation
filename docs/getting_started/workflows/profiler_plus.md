@@ -63,7 +63,7 @@ Press **F2** to open the Studio screen, then navigate to your training session:
 Projects  →  Experiments  →  Training Sessions  →  Artifacts
 ```
 
-Select the converted model artifact that matches your target hardware and choose **Validate**. The profiler creates a validation session in Studio, downloads the model and dataset to the device, and starts the run automatically.
+Select the trained ONNX model artifact and choose **Validate** to run this workflow on your PC. If you are instead validating on compatible target hardware, select the converted artifact for that target. The profiler creates a validation session in Studio, downloads the model and dataset to the machine running the profiler, and starts the run automatically.
 
 The **F4 Profiler** dashboard streams iteration-level latency and per-stage timings live during the run. When complete, predictions and the timing trace upload to EdgeFirst Studio where mAP, precision-recall curves, and the trace viewer are generated.
 

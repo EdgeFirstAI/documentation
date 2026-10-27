@@ -52,11 +52,13 @@ information:
 - **Help** — A link to the app's full documentation page.
 - **Pricing** — The per-hour compute cost, or **Free** if there is no charge.
 
-!!! note "Apps are launched from their workflow"
-    The Apps page is a catalog only. Apps are not launched directly from this page.
-    Each app is started from the relevant point in its workflow. For example,
-    Converter Apps are launched from a completed training session's *Artifacts* tab.
-    Once started, the app run is tracked in the [Tasks page](tasks.md).
+!!! note "Launch behavior varies by app type"
+    The Apps page is the app catalog and is also the normal launch point for
+    importer workflows, which may be started directly from the app card with
+    **Run App**. Other app families remain workflow-scoped: for example,
+    Converter Apps are launched from a completed training session's *Artifacts* tab,
+    while trainer and validation flows begin from the relevant session or experiment
+    page. Once started, the app run is tracked in the [Tasks page](tasks.md).
 
 ## Available Apps
 

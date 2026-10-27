@@ -861,7 +861,7 @@ input:
 | ----- | ---- | ----------- |
 | `normalization` | string or object | Preset name (`unsigned`, `signed`, `raw`, `imagenet`) or `{mean, std}` with one value or one value per channel, on the 0–255 scale. Every `std` must be non-zero. |
 | `resize` | string | `stretch` scales each axis independently to the input size. `letterbox` preserves the aspect ratio and pads. |
-| `interpolation` | string | Resampling filter of the reference pipeline. Informational: a runtime may use another filter and should state the difference when comparing accuracy. Segmentation models are sensitive to it; nearest-neighbour resizing costs SegFormer B1 0.6–1.0 mIoU points against bilinear. |
+| `interpolation` | string | Resampling filter of the reference pipeline. Informational: a runtime may use another filter and should state the difference when comparing accuracy. Segmentation models are sensitive to it; nearest-neighbor resizing costs SegFormer B1 0.6–1.0 mIoU points against bilinear. |
 | `letterbox.placement` | string | `center` (default) splits the padding between both sides of each axis. `top_left` puts all padding on the bottom and right, as mmsegmentation and TF DeepLab do. |
 | `letterbox.pad` | [float] | Pad value, one per channel or a single shared value. Default 114 per channel. |
 | `letterbox.pad_space` | string | `pixel` (default): `pad` is a 0–255 value that is normalized like image content. `normalized`: `pad` is written as-is into the normalized input, for example 0.0 to pad with the mean colour after `imagenet` normalization. |
@@ -1320,12 +1320,12 @@ Semantic segmentation models assign a class to every pixel. Their logical output
 | Form | Logical output(s) | Examples | Decode |
 | ---- | ----------------- | -------- | ---------- |
 | Per-pixel scores | one `segmentation` | SegFormer, DeepLabV3(+), PSPNet, UperNet, PIDNet, DDRNet, BiSeNet, LRASPP, MediaPipe selfie | Upsample the scores, then argmax (or threshold one channel) |
-| Class map | one `masks` | Exports ending in `ArgMax`: Coral DeepLab (int64), PaddleSeg (int32), Ultralytics semantic ONNX (uint8) | Nearest-neighbour resize only; the HAL accepts `uint8`, `uint16`, `int32`, `uint32` and `int64` |
+| Class map | one `masks` | Exports ending in `ArgMax`: Coral DeepLab (int64), PaddleSeg (int32), Ultralytics semantic ONNX (uint8) | Nearest-neighbor resize only; the HAL accepts `uint8`, `uint16`, `int32`, `uint32` and `int64` |
 | Mask classification (reserved) | `class_logits` + `mask_logits` | MaskFormer, Mask2Former, OneFormer, PEM | Not yet decoded by the HAL |
 
 A semantic output is a single tensor; the HAL rejects a `decoder: semantic` output that has physical children.
 
-ModelPack semantic segmentation (`decoder: modelpack`, see [Example 1](#example-1-modelpack-semantic-segmentation)) keeps its existing behaviour.
+ModelPack semantic segmentation (`decoder: modelpack`, see [Example 1](#example-1-modelpack-semantic-segmentation)) keeps its existing behavior.
 
 ### Semantic Output Fields
 
@@ -1361,7 +1361,7 @@ def src_bilinear(d):                          # output pixel d -> source coordin
         s = r0 + (d + 0.5) * rl / out - 0.5   # PyTorch half-pixel convention
     return clamp(s, 0, n - 1)                 # taps at the edge may read padding cells
 
-def src_nearest(d):                           # pixel-center nearest neighbour
+def src_nearest(d):                           # pixel-center nearest neighbor
     return clamp(floor(r0 + (d + 0.5) * rl / out), 0, n - 1)
 ```
 
@@ -1374,7 +1374,7 @@ ys, xs = np.arange(H), np.arange(W)                             # output pixels
 scores = sample(scores, src_bilinear(ys), src_bilinear(xs))     # [C, H, W]
 class_map = scores.argmax(axis=0)
 
-# fast: argmax at the score-map resolution, then nearest-neighbour sampling
+# fast: argmax at the score-map resolution, then nearest-neighbor sampling
 class_map = scores.argmax(axis=0)                                # [h, w]
 class_map = class_map[src_nearest(ys)][:, src_nearest(xs)]       # [H, W]
 ```
@@ -1385,7 +1385,7 @@ Single-channel outputs compare the score with `threshold` instead, since an argm
 # accurate: resample the score, then threshold
 class_map = (sample(score, src_bilinear(ys), src_bilinear(xs)) > threshold).astype(np.uint8)
 
-# fast: threshold at the score-map resolution, then nearest-neighbour sampling
+# fast: threshold at the score-map resolution, then nearest-neighbor sampling
 class_map = (score > threshold).astype(np.uint8)[src_nearest(ys)][:, src_nearest(xs)]
 ```
 
@@ -2754,8 +2754,8 @@ All models: 3 scales, strides [8, 16, 32], 8400 spatial positions at 640px input
 2. [ModelPack Overview](modelpack/index.md) - Architecture details and training parameters
 3. [Ultralytics Integration](ultralytics/index.md) - YOLOv8/v11/v26 training and deployment
 4. [Training Vision Models](training/vision.md) - Step-by-step training workflow
-5. [On Cloud Validation](validation/vision/managed.md) - Managed validation sessions
-6. [On Target Validation](validation/vision/user_managed.md) - User-managed validation with the EdgeFirst Profiler
+5. [On Cloud Validation](validation/vision/managed.md) - Cloud validation sessions
+6. [On Target Validation](validation/vision/user_managed.md) - On-target validation with the EdgeFirst Profiler
 7. [Model Quantization](conversion/tflite.md) - Converting ONNX to quantized TFLite
 8. [Deploying to Embedded Targets](deployment/launcher.md) - Model deployment workflow
 9. [EdgeFirst Perception Middleware](../perception/index.md) - Runtime inference stack

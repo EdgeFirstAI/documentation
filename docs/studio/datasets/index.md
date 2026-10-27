@@ -27,18 +27,18 @@ Click on labels (i) icon to open the dialog to edit labels.
 
 The edit dialog allows to:
 
-- Add Label (class).
-- Change the color of the label.
-- Change the order of the labels by changing its index.
-- Delete a label.
-- Change the name of a label.
+- Add Label (class)
+- Change the color of the label
+- Change the order of the labels by changing its index
+- Delete a label
+- Change the name of a label
 
 Tutorials for these operations can be found under the [Dataset Annotations](../../datasets/tutorials/annotations/index.md#dataset-labels) section.
 
 ## Groups
 
-- Groups splits the images into training and validation images
-- One image can be associated with zero or only one group at a time
+- Groups splits the dataset into training and validation samples
+- One sample can be associated with zero or only one group at a time
 - Use the slider to adjust percentages for each group.
 - If "Only non-grouped images" is unchecked, all images will be shuffled and assigned new groups.
 
@@ -64,14 +64,15 @@ There are several import types available.
 
 {{ figure("../assets/datasets/import-datasets.png", "Importing Datasets") }}
 
-To import datasets proceed with the steps as follows or follow this in-depth tutorial for [importing datasets](../../datasets/tutorials/import.md).
+To import datasets, proceed with the steps as follows or follow this in-depth tutorial for [importing datasets](../../datasets/tutorials/import.md).
 
-1. Select an import type.  The [EdgeFirst Dataset Format](../../datasets/format/index.md) is the proprietary format used by many operations in EdgeFirst Studio.
-2. Create an annotation set where annotations are to be imported.  If only images are imported, then this step is not required.
-3. Drag and drop a folder or group of files.
-4. Select an annotation set if the annotation type allows annotation import.
-5. Click "START IMPORT".
-6. Import will start in the background and the status is shown in the task progress popup.
+1. Open the dataset extended menu.
+2. Select "Import"
+3. Select an import type. The available options invokes the various importer apps: [images](../../datasets/tutorials/import.md#import-images), [videos](../../datasets/tutorials/import.md#import-videos), [Darknet Dataset](../../datasets/tutorials/import.md#import-darknet-datasets), [EdgeFirst Dataset](../../datasets/format/index.md), or [MCAP](../../datasets/tutorials/capture.md#upload-mcap).
+4. Drag and drop a folder or group of files from your local machine into the app.
+5. Select an annotation set if the annotation type allows annotation import.
+6. Click "START IMPORT".
+7. Import will start in the background and the status is shown in the task progress popup.
 
 {{ figure("../assets/datasets/import-taskbar.png", "Taskbar") }}
 
@@ -86,16 +87,29 @@ The "Export Dataset" downloads the data from EdgeFirst Studio to the local folde
 
 To export datasets proceed with the steps as follows.
 
-1. Select the dataset type: Detection (Bounding boxes) or Segmentation (Masks).
-2. Select the export format.
-3. Select the annotation set to be exported if required.
-4. Select Mode:
-    - Dataset - Exports images and annotations. Exports a ZIP file in the downloads folder.
-    - Annotations Only - Exports only the annotations. Exports a ZIP file in the downloads folder.
-    - Image URLS only - Useful for larger datasets. Exports a file with image urls in the downloads folder.
+1. Open the dataset extended menu.
+2. Select "Export".
+3. Select the dataset type: Detection (Bounding boxes) or Segmentation (Masks).
+4. Select the export format.
+5. Select the annotation set to be exported if required.
+6. Select Mode:
+    - Dataset - exports images and annotations. Exports a ZIP file in the downloads folder.
+    - Annotations Only - exports only the annotations. Exports a ZIP file in the downloads folder.
+    - Image URLS only - useful for larger datasets. Exports a file with image urls in the downloads folder.
+7. Click "Export" to export the dataset into your local machine.
 
 !!! tip "Large Datasets"
     For datasets larger than 10000 images, export image URLS and annotations separately and then use a script to download images.
+
+### Create Snapshot
+
+Create a snapshot of the dataset to preserve its current state. Snapshots are useful for freezing a dataset version before making changes, for tracking a known-good baseline, or for exporting the dataset in a compact, versioned form.
+
+1. Open the dataset extended menu.
+2. Select "Create Snapshot".
+3. Specify the project and the dataset to create as a snapshot.
+4. Provide a snapshot name.
+5. Click "Start App" to start the process.
 
 ### Copy Dataset
 
@@ -108,7 +122,8 @@ To copy datasets proceed with the steps as follows or follow this in-depth tutor
 3. Source project, dataset, and annotation set (if applicable) are auto-filled, but you can select a different source if required.
 4. Destination project is selected by default. If *New Dataset (Dataset name)* is selected, a new dataset along with any annotation set from source will be created in the destination project. Otherwise, you can choose a dataset and an annotation set as destination.
 5. Optionally select *Copy Selected Annotation Types Only* to only copy annotations and files that match the checked types.
-6. Select filters if required. Please refer to [Gallery Filters](gallery.md#filters) for more information.  
+6. Select filters if required. Please refer to [Gallery Filters](gallery.md#filters) for more information.
+7. Click "Apply" to start the copy process.
 
 ### Analytics
 
@@ -129,16 +144,18 @@ If GPS location is present, then the annotation can be viewed on the map by usin
 
 ### Dataset History
 
-The dataset history introduces versioning for the dataset.  This allows any changes made to the dataset to be tracked via the "Changelog" section and allows the user to restore the state of the dataset with a known version, delete a dataset version, or add a new dataset version for the current state of the dataset.
+The dataset history introduces versioning to the dataset.  This allows any changes made to the dataset to be tracked via the "Changelog" section and allows the user to restore the state of the dataset with a known version or add a new dataset version to the current state of the dataset.
 
 {{ figure("../assets/datasets/dataset-history.jpg", "Dataset History") }}
+
+More information regarding the [tagging of datasets](tag.md) can be found by clicking on the link provided.
 
 ### Remove Dataset
 
 To delete a dataset, click "Move to Recycle Bin".  This moves the dataset and all of its contents to the Recycle Bin.
 
 !!! info
-    The deleted dataset goes to the recycle bin that can be restored.  The storage used by the dataset is only released when the dataset is purged from the recycle bin.
+    Deleted dataset inside the recycle bin can be restored.  The storage used by the dataset is only released when the dataset is purged from the recycle bin.
 
 ## Next Steps
 

@@ -29,17 +29,17 @@ and annual billing.  Annual billing reduces the effective monthly cost.
 
 EdgeFirst Studio offers the following subscription tiers:
 
-| Feature | Free (Public) | Professional ($179/month) | Teams ($359/month) |
-| ------- | ------------- | ------------------------- | ------------------ |
-| Active Users | 1 | 1 | 20 |
-| Image Storage | 100K | 500K | 4M |
-| Projects | 3 | 10 | 30 |
-| Datasets | 15 | 50 | 250 |
-| Total Storage | 100 GB | 500 GB | 2 TB |
-| AI Package | Explore | Develop | Scale |
-| Pay as you go | Yes | Yes | Yes |
-| Projects and Data | Public | Private | Private |
-| Support | Community | Community | Custom |
+| Feature | Free (Public) | Professional ($179/month) | Teams ($359/month) | Custom (Call us) | Daily (Call us/day) |
+| ------- | ------------- | ------------------------- | ------------------ | ---------------- | ------------------- |
+| Active Users | 1 | 1 | 20 | Unlimited | Unlimited |
+| Image Storage | 250K | 500K | 2M | Unlimited | 10K |
+| Projects | 3 | 10 | 30 | Unlimited | 50 |
+| Datasets | 15 | 50 | 250 | Unlimited | 25 |
+| Total Storage | 100 GB | 500 GB | 2 TB | Unlimited | 1 GB |
+| AI Package | Explore | Develop | Scale | Flex | Not listed |
+| Pay as you go | Yes | Yes | Yes | Custom | Not listed |
+| Projects and Data | Public | Private | Private | Private | Not listed |
+| Support | Community | Community | Custom | Dedicated | Not listed |
 
 To change your plan, click the **Choose** button on the desired plan card.  The change takes
 effect at the start of the next billing cycle unless a downgrade is applied immediately.

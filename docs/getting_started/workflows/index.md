@@ -94,7 +94,7 @@ We've identified the following workflows that any user can follow starting from 
 * **Hardware Personas**: Hardware-specific (specialized) MLOps workflows tailored for deployment, validation, and optimization on supported target devices.
 
 !!! note "About these workflows"
-    The following workflows use a specific configuration and most are based on using the **Coffee Cup** sample dataset to train a **ModelPack** vision model. Cost estimations shown in the table reflect this specific configuration — actual costs will vary depending on your dataset size, the model type and training configurations.
+    The following workflows uses a specific configuration and most are based on using the **Coffee Cup** sample dataset to train a **ModelPack** vision model. Cost estimations shown in the table reflect this specific configuration — actual costs will vary depending on your dataset size, the model type and training configurations.
 
 ### Cloud Personas
 
@@ -411,7 +411,7 @@ flowchart LR
 
 6. [Web Workflow](web.md)
 
-    This workflow is intended for users with a personal computer and a mobile device with a camera with access to Wi-Fi and a web browser.  The examples shown in this workflow will be from a Windows computer and an Android phone for recording images.  Proceed to this workflow to see capturing and annotating datasets that will be used to train, validate, and deploy Vision models.
+    This workflow is intended for users with a personal computer and a mobile device with a camera with access to Wi-Fi and a web browser.  The examples shown in this workflow are from a Windows computer and an Android phone for recording images.  Proceed to this workflow to see capturing and annotating datasets that will be used to train, validate, and deploy Vision models.
 
 ### Hardware Workflows
 

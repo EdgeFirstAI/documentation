@@ -1515,7 +1515,7 @@ edgefirst-client start-training-session p-123 \
     --dataset-id ds-678 --annotation-set-id as-910 \
     --param epochs=100 --param batch_size=8 --monitor
 
-# Launch a user-managed session against a specific tag and groups
+# Launch a user-managed training session against a specific tag and groups
 edgefirst-client start-training-session p-123 \
     --name local-run --experiment-id exp-45 \
     --trainer-type modelpack \

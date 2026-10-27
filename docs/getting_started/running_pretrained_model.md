@@ -21,21 +21,21 @@ EdgeFirst Studio includes a built-in model runner that allows you to quickly run
 
 EdgeFirst Studio provides several pre-trained models in the **Sample Projects** section.
 
-1. On the landing page after login, click **PROJECTS** at the top next to "Home".  This opens the Projects Dashboard
+1. On the landing page after login, click **PROJECTS** at the top next to "Home".  This opens the Projects Dashboard.
 
     {{ figure("/studio/assets/user/home-page-goto-projects.png", "Go To Projects") }}
 
-2. Find the **Sample Projects** card and click **Model Experiments**
+2. Find the **Sample Project** card and click **Model Experiments**.
 
     {{ figure("assets/run_model/sample-projects.png", "Sample Projects", "400") }}
 
     On the [Experiments page](../studio/models.md), each card represents an experiment with multiple training and validation sessions.
 
-3. Click on the **Training Sessions** for the "Coffee Cup Segmentation" Experiment to view available sessions.  Each session will have a model in different formats if training completed successfully
+3. Click on the **Training Sessions** for the "Coffee Cup Segmentation" Experiment to view available sessions.  Each session will have a model in different formats if training completed successfully.
 
     {{ figure("assets/run_model/coffeecup-experiment-sample-project.png", "Coffee Cup Experiment") }}
 
-4. Click the training session **CoffeCup-mpk3.1.0** to open its details page
+4. Click the training session **yolov8n-seg-coffeecups** to open its details page.
 
     {{ figure("assets/run_model/coffeecup-training-session.png", "Coffee Cup Training Card") }}
 
@@ -43,7 +43,7 @@ EdgeFirst Studio provides several pre-trained models in the **Sample Projects** 
 
     {{ figure("assets/run_model/trainer_details_page.png", "Training Session Details") }}
 
-6. Click the **Run Model** button.  If the model is not supported or the ONNX file is missing, this button will not appear.  This opens the Model Runner dashboard
+6. Click the **Run Model** button.  If the model is not supported or the ONNX file is missing, this button will not appear.  This opens the Model Runner dashboard.
 
 ---
 
@@ -63,9 +63,9 @@ In the Model Runner Dashboard, upload any of these images to see the model resul
 
 ## 4. Running Model on Live Camera Stream
 
-1. In the Model Runner dashboard, select **Live**
-2. Choose your camera and allow access when prompted
-3. The model will start running on the live stream.  Point the camera at coffee cups to see results in real time
+1. In the Model Runner dashboard, select **Live**.
+2. Choose your camera and allow access when prompted.
+3. The model will start running on the live stream.  Point the camera at coffee cups to see results in real time.
 
 You're now ready to experience the full MLOps workflow in EdgeFirst Studio. In under an hour — and for approximately \$8 USD—you can copy a dataset, train a model, validate its performance, and deploy it in the browser.
 

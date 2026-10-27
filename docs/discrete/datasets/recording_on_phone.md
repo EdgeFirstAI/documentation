@@ -24,4 +24,4 @@ Furthermore, you can also capture individual images as shown below.  You can tak
 {{ figure("/datasets/assets/capture/mobile-image-capture.jpg", "Mobile Image Capture") }}
 
 !!! tip "Leveraging Videos"
-    It is recommended to use videos rather than individual images.  This is because the [Automatic Ground Truth Generation (AGTG)](../../datasets/tutorials/annotations/automatic.md) feature leverages SAM-2 with tracking information which only needs a single annotation to annotate all frames.  However, individual images requires more effort by annotating each image separately.
+    It is recommended to use videos rather than individual images.  This is because the [Automatic Ground Truth Generation (AGTG)](../../datasets/tutorials/annotations/automatic.md) feature leverages SAM2 with tracking information which only needs a single annotation to annotate all frames.  However, individual images requires more effort by annotating each image separately.

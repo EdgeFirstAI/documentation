@@ -14,21 +14,13 @@ An experiment will contain child training and validation sessions.  The training
 
 Training sessions take in datasets and synthesize from them new AI models for object recognition (Vision) or object perception (Fusion).
 
-From the "Model Experiments" page, we can click on the "Training Sessions" button with the icon ![Trainers Button](../assets/buttons/studio-trainers-button.png) to see the training sessions in the experiment.  The figure below shows the layout of the training session cards under the "Training Sessions" page.
+From the "Model Experiments" page, we can click on the "Training Sessions" button with the icon ![Trainers Button](../assets/buttons/studio-trainers-button.jpg) to see the training sessions in the experiment.  The figure below shows the layout of the training session cards under the "Training Sessions" page.
 
 {{ figure("assets/models/training-sessions.jpg", "Training Sessions") }}
 
 The following figure describes the attributes of any given training session.
 
 {{ figure("../models/assets/training/training-session-attributes.jpg", "Training Session Attributes") }}
-
-To compare all the training charts of each session, click on "All Charts" at the top right corner of the "Training Sessions" page.  This will show the charts from each session overlaid on top of one another for a quick comparison.
-
-{{ figure("assets/models/all-charts.jpg", "All Charts") }}
-
-All the training charts will be displayed with a legend that indicates the training session.
-
-{{ figure("assets/models/all-training-charts.jpg", "All Charts") }}
 
 For more details regarding deploying training sessions, please see [Training Vision Models](../models/training/vision.md) and [Training Fusion Models](../models/training/fusion.md) for training Fusion models.
 
@@ -76,21 +68,17 @@ The following figure describes the attributes of any given validation session.
 
 {{ figure("../models/assets/validation/validation-session-attributes.jpg", "Validation Session Attributes") }}
 
-To compare the validation charts of each session, click on "Compare" at the top right corner of the "Validate Sessions" page.  This will show the charts of each validation session side-by-side for a quick comparison.
+To compare the validation charts of each session, select the validation sessions to compare by using the checkbox on the top left of each session card and then click on "Compare" at the top right corner of the "Validate Sessions" page.  This will show the charts of each validation session side-by-side for a quick comparison.
 
 {{ figure("assets/models/compare-validation-sessions.jpg", "Compare Validation Sessions") }}
 
-Next select the validation session results you wish to compare.  Once selected, click "Compare" to show the validation charts side-by-side.
-
-{{ figure("assets/models/validation-sessions-to-compare.jpg", "Select Validation Sessions") }}
-
-Now the charts for each session are displayed side-by-side.  All the charts for a single training session will be shown in one column.  A new column indicates another session.
+Now the charts for each selected sessions are displayed side-by-side.  All the charts for a single training session will be shown in one column.  A new column indicates another session.
 
 {{ figure("assets/models/validation-charts-comparison.jpg", "Comparing Validation Sessions") }}
 
-There are two types of validation: **managed** and **user-managed**. Managed validations are set by default in EdgeFirst Studio which triggers an EC2 instance that downloads the dataset and the inference model for validation. This type of validation is best used if you do not have an embedded platform to deploy the model. User-managed validations are hosted in embedded platforms where the dataset and the inference model will be downloaded. This type of validation is best used if you have an embedded platform available to verify how the model would perform in the platform and determine the model's inference time when deployed.
+There are two types of validation: **cloud validation** and **on-target profiling**. Cloud validations are set by default in EdgeFirst Studio which triggers an EC2 instance that downloads the dataset and the inference model for validation. This type of validation is best used if you do not have an embedded platform to deploy the model. On-target profiling are hosted on embedded platforms where the dataset and the inference model will be downloaded. This type of validation is best used if you have an embedded platform available to verify how the model would perform on the platform and determine the model's inference time when deployed.
 
-For more details regarding deploying validation sessions, please see [Validating Vision Models](../models/validation/vision/managed.md) and [Validating Fusion Models](../models/validation/fusion/managed.md) for validating Fusion models.
+For more details regarding deploying validation sessions, please see [Validating Vision Models](../models/validation/vision/managed.md) and [Validating Fusion Models](../models/validation/fusion/managed.md).
 
 ### Validation Session Details
 
@@ -106,6 +94,7 @@ provides the following tabs:
 | **Charts** | Validation metric charts such as precision-recall curves. |
 | **Metrics** | Tabular accuracy metrics (mAP, AP per class, etc.) from the completed validation run. |
 | **Runs** | Individual run attempts for this session. |
+| **Profile** | Loads the trace files measuring the performance of the model on target |
 
 The action bar at the top of the details page provides the following operations:
 
@@ -115,26 +104,26 @@ The action bar at the top of the details page provides the following operations:
 
 ## Running a model
 
-EdgeFirst Studio allows you to run trained models directly in the web browser. After a model has been trained, open the model details page by clicking on the trainer card. Only models trained on ModelPack are supported for live running. From there, click the Run Model button to start running the model.
+EdgeFirst Studio allows you to run trained models directly in the web browser. After a model has been trained, open the model details page by clicking on the trainer card. Only ONNX models are currently supported for live inference in the browser. Supported models will have a play button next to the artifacts as shown.
 
 !!! note "ONNX models only"
     Live browser-based model running only supports **ONNX** format. To validate or profile models in other formats (TFLite, Neutron, Hailo, TensorRT, etc.) on real hardware, use the [EdgeFirst Profiler](../profiler/index.md).
 
-{{ figure("assets/run_model_button.png", "Model Runner Button") }}
+{{ figure("../getting_started/assets/run_model/trainer_details_page.png", "Training Session Details (Run Model button)") }}
 
-This will open the model runner dashboard.
+You should now see the live inference feed on your browser running the trained model.
 
-{{ figure("assets/model_runner_dash.png", "Model Runner Dashboard") }}
+{{ figure("../models/assets/deployment/studio-runner-live-inference.jpg", "Live Inference") }}
 
 Please wait while the model loads. This may take up to 60 seconds, depending on the model size.
 Once the model is loaded, select a mode: Live to run the model on images from a camera stream, or Upload to choose a file from local storage.
 
 The model will run automatically, and the results will be displayed on the screen. The output (segmentation or detection) depends on the type of model being used.
 
-The count shows the number of iterations of model runner.
+{{ figure("/models/assets/deployment/studio-runner-image-inference.jpg", "Image Inference") }}
 
-{{ figure("assets/model_runner_results.png", "Model Runner Results") }}
+For more information, please see the full tutorial on [model deployment](../models/deployment/studio.md).
 
 ## Next Steps
 
-Now that you are familiar with the layout of the Model Experiments Dashboard, proceed to the next section for learning more about the context of the [Cloud Instances Dashboard](instances.md).
+Now that you are familiar with the layout of the Model Experiments Dashboard, proceed to the next section for learning more about the context of the [Tasks Dashboard](tasks.md).

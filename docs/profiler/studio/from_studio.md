@@ -9,7 +9,7 @@ A validation session is created from the Studio web UI; the session ID is then h
 
 From the Model Experiments dashboard, open the training session whose artifact you want to validate, then click **New Validation Session**. Choose **User Managed** as the validation type.
 
-{{ figure("../assets/studio-create-session.png", "EdgeFirst Studio — creating a user-managed validation session") }}
+{{ figure("../assets/studio-create-session.png", "EdgeFirst Studio — creating an on-target validation session") }}
 
 In the dialog, set:
 

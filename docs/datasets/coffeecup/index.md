@@ -1,6 +1,6 @@
 # Coffee Cup Dataset
 
-The Coffee Cup dataset is part of our [Data Capture Tutorial](../../datasets/tutorials/capture.md).  The dataset has different types of coffee cups on different poses and surfaces with annotations for Object Detection and Semantic Segmentation.
+The Coffee Cup dataset is part of our [Data Capture Tutorial](../../datasets/tutorials/capture.md).  The dataset has different types of coffee cups on different poses and surfaces with annotations for Object Detection and Instance Segmentation.
 
 ## Object Detection Benchmark (50 epochs)
 

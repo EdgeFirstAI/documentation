@@ -1,6 +1,6 @@
 # Dataset Gallery
 
-To open a dataset gallery, click on the image preview of the dataset card.
+To open the dataset's gallery, click on the image preview of the dataset card.
 
 {{ figure("../../datasets/assets/management/copied-dataset-result.jpg", "Dataset Card") }}
 
@@ -15,6 +15,10 @@ Filters allow users to select images based on the filter conditions.  The number
 {{ figure("../assets/datasets/gallery-filters.png", "Gallery Filters") }}
 
 ## Tag an Image
+
+!!! note "Feature Unavailable"
+
+    Image tagging is currently unavailable and this feature is a work in progress. The screenshots provided in this section are out of date until the new implementations for image tagging are set in place.
 
 You can create tags for images.  These tags can be used to filter out images of certain tags.  Tags can be added from the "ACTIONS" dropdown and can be filtered using the "IMAGE TAGS" filter.
 
@@ -38,14 +42,16 @@ You can create tags for images.  These tags can be used to filter out images of 
 
 ## Copy Selected Items
 
-You can copy selected items to another dataset.  This operation can be found under the "ACTIONS" dropdown.  The copy dialog will appear.
+You can copy selected items to another dataset.  This operation can be found under the "Actions" dropdown.  The copy dialog will appear.
 
 {{ figure("../assets/datasets/copy-selected-items.png", "Copy Selected Items") }}
 
-1. Source is auto-filled using the current dataset and first annotation set if applicable.  You can select a different source annotation set.
-2. Destination will be defaulted to a new dataset along with any selected annotation set.  You can select another dataset and annotation if needed.
-3. Selected file names that will be copied are shown at the bottom.
-4. Progress can be tracked in the task progress popup.
+1. Select the images to copy by using the checkbox for each image as shown.
+2. Select "Copy Selected Images" from the "Actions" dropdown.
+3. From the modal, source is auto-filled using the current dataset and first annotation set if applicable.  You can select a different source annotation set.
+4. Destination will be defaulted to a new dataset along with any selected annotation set.  You can select another dataset and annotation if needed.
+5. Selected file names that will be copied are shown under "Images".
+6. Progress can be tracked in the task progress popup.
 
 ## Next Steps
 

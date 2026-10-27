@@ -3,15 +3,15 @@
 Once you have validated your trained model, you can deploy the model in the browser using EdgeFirst Studio.  You can follow these steps either on a PC or a mobile device connected to EdgeFirst Studio in a browser.  Please note that the browser will use the camera on your device to run model inference.
 
 !!! note "ONNX models only"
-    Live browser-based model running only supports **ONNX** format. To validate or profile models in other formats (TFLite, Neutron, Hailo, TensorRT, etc.) on real hardware, use the [EdgeFirst Profiler](../../profiler/index.md).
+    Live browser-based model inference only supports the **ONNX** format. To validate or profile models in other formats (TFLite, Neutron, Hailo, TensorRT, etc.) on real hardware, use the [EdgeFirst Profiler](../../profiler/index.md).
 
-From the training session card, you can run the model for inference by clicking the "Run Model" button on the top right of the page.
+If you haven't already, click on the train session card for more information.
+
+{{ figure("/models/assets/training/vision-view-train-details.jpg", "Training Details") }}
+
+Inside the training session, navigate to the artifacts tab as shown below. Clicking the "play" button next to the artifact will run the app to show live model inference on your browser.
 
 {{ figure("/getting_started/assets/run_model/trainer_details_page.png", "Training Session Details (Run Model button)") }}
-
-You will be given the option for either live inference or inference from a file upload.  Go ahead and demo the live inference feed by clicking the "Live" option.
-
-{{ figure("/models/assets/deployment/live-inference-option.jpg", "Live Inference Option") }}
 
 You should now see the live inference feed on your browser running the trained model.
 

@@ -1,6 +1,6 @@
 # Billing Information
 
-This page will describe the billing information that is subjected to the user's organization.  Prior to reading the contents in this page, it is recommended to be familiar with the [Organization Management](organization.md).  A trial user (Public Tier) is given 50.00 USD worth of credits to experience the features in EdgeFirst Studio.  However, for multi-user tiers, the credits in the organization will be shared amongst the members.  
+This page will describe the billing information that is subjected to the user's organization.  Prior to reading the contents in this page, it is recommended to be familiar with the [Organization Management](organization.md).  A trial user (Public Tier) is given \$50.00 USD worth of credits to experience the features in EdgeFirst Studio.  However, for multi-user tiers, the credits in the organization will be shared amongst the members.  
 
 ## Usage & Billing
 
@@ -12,7 +12,7 @@ This will navigate you to the "Organization Information" page.  Click on the "Bi
 
 {{ figure("../assets/user/usage-billing-button.jpg", "The location of the 'Usage & Billing' button") }}
 
-This page may take some time to load.  Once the page loads, it will display the **Monthly Bill** for your organization as shown below.  Use the month and year selectors at the top of the page to choose a billing period, then click **Retrieve** to load the usage for that period.  The bill groups usage by feature category — such as **AIGT Time**, **Converter**, **Exporter**, **Training Time**, and **Validation Time** — and reports the approximate **Net Usage** at the top right alongside a **Grand Total** at the bottom.  The next sections will break down the components of this page in more detail.
+This page may take some time to load.  Once the page loads, it will display the **Monthly Bill** for your organization as shown below.  Use the month and year selectors at the top of the page to choose a billing period, then click **Retrieve** to load the usage for that period.  The bill groups usage by feature category — such as **AIGT Time**, **Converter**, **Importer**, **Exporter**, **Training Time**, and **Validation Time** — and reports the approximate **Net Usage** at the top right alongside a **Grand Total** at the bottom.  The next sections will break down the components of this page in more detail.
 
 {{ figure("../assets/user/usage-billing-page.jpg", "Monthly Bill Page") }}
 
@@ -37,8 +37,8 @@ The "Transactions" page will show your purchases or the amount of credits alloca
 
 {{ figure("../assets/user/transactions-button.jpg", "Transactions Summary") }}
 
-Since this is a trial account, the only transaction shown is the 50.00 USD credits allocated to my organization upon sign up.
+Since this is a trial account, the only transaction shown is the \$50.00 USD credits allocated to my organization upon sign up.
 
 ## Next Steps
 
-This page has described billing information and the cost of each feature in EdgeFirst Studio.  Next we invite you to learn more about [managing your projects](../projects.md) in EdgeFirst Studio.
+This page has described billing information and the cost of each feature in EdgeFirst Studio.  Next we invite you to learn more about the various [subscription plans](subscription.md) offered in EdgeFirst Studio.

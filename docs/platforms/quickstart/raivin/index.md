@@ -6,7 +6,7 @@ The Raivin configuration further extends the perception capabilities of the [Mai
 
 ## System Architecture
 
-The Raivin runs a Linux operating system based on Toradex's [Torizon OS 7](https://www.toradex.com/torizon), we refer to the operating system as Torizon for Maivin.  The operating system packages include common libraries and tools you would expect to find on a typical embedded Linux operating system focused on computer vision and AI (Python, OpenCV, GStreamer, etc...) along with the Docker container engine for user applications.  Refer to the [Release Notes](../../software/release_notes.md) for the versions included in the current release and to [Software Updates](../../software/updates.md) for keeping the platform up to date.
+The Raivin runs a Linux operating system based on Toradex's [Torizon OS 7](https://www.toradex.com/torizon), we refer to the operating system as Torizon for Maivin.  The operating system packages include common libraries and tools you would expect to find on a typical embedded Linux operating system focused on computer vision and AI (Python, OpenCV, GStreamer, etc...) along with the Docker container engine for user applications.  Refer to the [Release Notes](../../software/release_notes.md) for the versions included in the current release and the [Software Updates](../../software/updates.md) for keeping the platform up to date.
 
 Central to the EdgeFirst Platforms is the EdgeFirst Perception Middleware, what we call our collection of applications and libraries used in the implementation of the perception stack.  On the Raivin these applications run natively as systemd services, the radar or LiDAR publisher and the fusion service are enabled during provisioning in addition to the base Maivin services.  The details of the low-level libraries are covered in the [EdgeFirst Perception Developer Guide](../../../perception/dev/index.md), for this document we focus on describing the application services and how they fit together to deliver the perception middleware.
 
@@ -14,7 +14,10 @@ In this Quick Start, you will find instructions for:
 
 1. [Setting up your Raivin](setup.md)
 2. [Visiting the Raivin's Web UI](webui.md)
-3. [Copying a Sample Dataset in EdgeFirst Studio for Training](copy_dataset.md)
-4. [Training Fusion Model](train.md)
-5. [Validating Fusion Model](validate.md)
-6. [Deploying Fusion Model](deploy.md)
+3. [Recording an MCAP using the Raivin](record.md)
+4. [Uploading the MCAP to EdgeFirst Studio](upload.md)
+5. [Restoring an MCAP into a Dataset](restore.md)
+6. [Split and Tag the Restored Dataset for Training](split.md)
+7. [Training Fusion Model](train.md)
+8. [Validating Fusion Model](validate.md)
+9. [Deploying Fusion Model](deploy.md)

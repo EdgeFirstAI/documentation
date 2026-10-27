@@ -1,21 +1,14 @@
 # Upload Images
 
-!!! warning "HEIC is not fully supported"
-    Apple devices capture HEIC image formats by default.  This format has not been fully supported yet in EdgeFirst Studio.  Please make sure to use JPEGs, JPGs, or PNGs for uploading images to EdgeFirst Studio.
-
 Image files can be uploaded into any dataset container in EdgeFirst Studio.  Choose the dataset container to upload image files.  In this case, the dataset is called "Coffee Cup".  Click on the dataset context menu (three dots) and select import.
 
-{{ figure("/datasets/assets/capture/mobile-dataset-import-option.jpg", "Dataset Import Option") }}
+{{ figure("/datasets/assets/capture/mobile-image-import-type.jpg", "Dataset Image Import") }}
 
-This will bring you to the "Import Dataset" page.
+Click on "Choose Files" as indicated.  This will bring up the option to specify the location of the files.
 
-{{ figure("/datasets/assets/capture/mobile-import-dataset.jpg", "Dataset Import") }}
+{{ figure("/datasets/assets/capture/mobile-select-image-file.jpg", "Choose Files") }}
 
-Click on "select files".  This will bring up the option to specify the location of the files.
-
-{{ figure("/datasets/assets/capture/mobile-media-picker.jpg", "Android Mobile Media Picker") }}
-
-In my current setup, I have selected "Photos & Videos" from the options above and then I have multi-selected the images I want to import by press and hold on a single image to enable multi-select.  To import, I pressed "Select".
+This will bring the modal to multi-select the images I want to import by pressing and holding on a single image to enable multi-select.  To import, I pressed "Select".
 
 {{ figure("/datasets/assets/capture/mobile-multi-select-images.jpg", "Android Multi-select Images") }}
 

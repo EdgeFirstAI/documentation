@@ -68,10 +68,6 @@ Once a container has been created, open the dataset context menu denoted by the 
 
 {{ figure("../assets/import/coco128-options.jpg", "Dataset Options") }}
 
-Select the "Import Type" to "Darknet Dataset".  
-
-{{ figure("../assets/import/coco128-darknet-ds-dropdown.jpg", "Darknet Dataset Option") }}
-
 Specify the dataset in your local PC "coco128-train" to import.
 
 {{ figure("../assets/import/coco128-upload-train-ds.jpg", "Upload COCO128 Training Samples") }}

@@ -8,7 +8,7 @@ Alternatively, EdgeFirst Studio also supports **On-Target Validation**. In this 
 
 {% include-markdown "discrete/models/create_validation_session.md" %}
 
-You will be greeted with a validation session dialog.  In this dialog, specify the name of the validation session, the model to validate, and the dataset to deploy.  In this example, the "Coffee Cup" dataset with the validation partition will be used.  *Under the model selection, you can select various trained model artifacts from the choices of ONNX, TFLite, TensorRT, Kinara, Hailo, etc.  Choose the model you plan to deploy on target.  The purpose of validation is to assess the model of whether or not it meets the performance requirements needed to be deployed on target.*  Additional parameters are available on the right for user override. Otherwise the same parameters set in the training session will be used. For more information on these parameters hover over the info button ![Info Button](../../../assets/buttons/studio-info-button.jpg).
+You will be greeted with the validation session dialog.  Select the model to use for validation. Select either an **ONNX, Keras, or TFLite** models — these are the formats supported by cloud validation. When you are ready, click **START APP** to begin the validation process.
 
 {{ figure("../../assets/validation/vision-validate-settings.jpg", "Validation Session Fields") }}
 

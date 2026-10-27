@@ -43,6 +43,7 @@
     | **TFLite Converter** | NXP i.MX 8M Plus (VIP8000), generic CPU/NPU TFLite delegates | `.tflite` flatbuffer | [TFLite Converter](../../models/conversion/tflite.md) |
     | **Neutron Converter** | NXP i.MX 95, i.MX 943/952, S32N79, MCX N54x/N94x, i.MX RT700, S32K5 | `.tflite` flatbuffer with Neutron microcode | [Neutron Converter](../../models/conversion/neutron.md) |
     | **TensorRT Converter** | NVIDIA Jetson (Orin Nano Super validated; broader lineup in progress) | `.tensorrt.zip` bundle (engine built on-device) | [TensorRT Converter](../../models/conversion/tensorrt.md) |
+    | **Qualcomm Converter** | Qualcomm Snapdragon X Elite / Qualcomm AI Engine platforms | `.qnn` or target-specific Qualcomm runtime package | [Qualcomm Converter](../../models/conversion/qualcomm.md) |
     | **Ara2 Converter** | NXP Ara240 DNPU | `.dvm` Dataflow Virtual Machine binary | [Ara2 Converter](../../models/conversion/ara2.md) |
     | **Hailo Converter** | Hailo-8 (26 TOPS), Hailo-8L (13 TOPS) | `.hef` Hailo Executable Format | [Hailo Converter](../../models/conversion/hailo.md) |
 

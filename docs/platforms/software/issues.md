@@ -64,6 +64,12 @@ Stitching 4K tiled recordings of about 60 seconds or longer can exhaust the devi
 
 **Workaround:** record short clips of about 8 seconds when using the tile topics, stop the `camera` and `model` services before running the publisher to free memory, and prefer a 1080p camera mode for HD capture.
 
+### Replay service not fully updated
+
+The Replay service included in this release has not been fully updated for the hostname namespaces and EdgeFirst Schemas 4.0 of the other services, so replayed topics and camera frames may not be consumed by the Model service.  Radar, LiDAR, and fusion replay were not verified for this release.
+
+**Workaround:** review recordings in [Foxglove Studio](../../perception/data_collection/foxglove.md) or upload them to [EdgeFirst Studio](../../perception/data_collection/publishing.md).
+
 ## Torizon for Maivin 2026.08.0
 
 ### Topic names changed to hostname namespaces (EDGEAI-1396)

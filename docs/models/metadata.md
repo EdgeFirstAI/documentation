@@ -33,6 +33,8 @@ EdgeFirst models from the [Model Zoo](index.md) (including [ModelPack](modelpack
 
 Metadata is always embedded in the artifact it describes. Trainers embed the same metadata in the weights they publish (`.keras` or `.pt`) as in the exported models, so that a later session can load those weights and know exactly how they were trained. A standalone `edgefirst.json` is never published, because a session produces several artifacts and a loose file would not say which one it describes.
 
+Class labels are listed in channel order, one per class, with no leading or trailing spaces and no empty names. The HAL trims leading and trailing spaces, tabs and other blank characters from every class name it reads, so a Hugging Face `id2label` entry such as ADE20K's `"bed "` resolves to `"bed"`, and it keeps the spaces inside a name (`"chest of drawers"`). If a source has an empty name, an unparseable list, or a number of names that differs from the number of classes in the model's outputs, the HAL ignores that source's labels with a warning and uses the next source. The count is checked for every model type whose outputs state it, including semantic segmentation and Ultralytics and ModelPack detection; end-to-end detection outputs do not state it. A ModelPack segmentation output has one channel more than its classes: the last channel is background and has no entry in the class labels, so a multitask model's masks and boxes share class indices. Names that repeat ignoring case are reported, because they make matching classes by name ambiguous.
+
 ### Supported Training Frameworks
 
 | Framework | Decoder | Architecture | Use Case |
@@ -243,7 +245,7 @@ input:
     resize: string         # stretch | letterbox
     interpolation: string  # bilinear | nearest | bicubic | area (reference filter, informational)
     letterbox:
-      placement: string    # center (default) | top_left
+      placement: string    # center (default) | topleft
       pad: [float]         # Per-channel pad value (default 114, pixel space)
       pad_space: string    # pixel (default) | normalized
 
@@ -810,7 +812,7 @@ input:
 - Used when training on images from diverse cameras and aspect ratios
 - Image is scaled to fit within target size while maintaining aspect ratio
 - Padding added to reach exact dimensions: gray (value 114) by default, or the value in `input.preprocessing.letterbox.pad`
-- The scaled image is centred by default; `input.preprocessing.letterbox.placement: top_left` anchors it at the top-left with all padding on the bottom and right
+- The scaled image is centred by default; `input.preprocessing.letterbox.placement: topleft` anchors it at the top-left with all padding on the bottom and right
 - Inference must apply same letterbox transform and account for padding offset in output coordinates
 
 **Example:** A 1920x1080 image letterboxed to 640x640:
@@ -852,7 +854,7 @@ input:
     resize: letterbox              # stretch | letterbox
     interpolation: bilinear        # bilinear | nearest | bicubic | area
     letterbox:
-      placement: top_left          # center | top_left
+      placement: topleft           # center | topleft
       pad: [0.0, 0.0, 0.0]
       pad_space: normalized        # pixel | normalized
 ```
@@ -862,7 +864,7 @@ input:
 | `normalization` | string or object | Preset name (`unsigned`, `signed`, `raw`, `imagenet`) or `{mean, std}` with one value or one value per channel, on the 0–255 scale. Every `std` must be non-zero. |
 | `resize` | string | `stretch` scales each axis independently to the input size. `letterbox` preserves the aspect ratio and pads. |
 | `interpolation` | string | Resampling filter of the reference pipeline. Informational: a runtime may use another filter and should state the difference when comparing accuracy. Segmentation models are sensitive to it; nearest-neighbour resizing costs SegFormer B1 0.6–1.0 mIoU points against bilinear. |
-| `letterbox.placement` | string | `center` (default) splits the padding between both sides of each axis. `top_left` puts all padding on the bottom and right, as mmsegmentation and TF DeepLab do. |
+| `letterbox.placement` | string | `center` (default) splits the padding between both sides of each axis. `topleft` puts all padding on the bottom and right, as mmsegmentation and TF DeepLab do. |
 | `letterbox.pad` | [float] | Pad value, one per channel or a single shared value. Default 114 per channel. |
 | `letterbox.pad_space` | string | `pixel` (default): `pad` is a 0–255 value that is normalized like image content. `normalized`: `pad` is written as-is into the normalized input, for example 0.0 to pad with the mean colour after `imagenet` normalization. |
 
@@ -2012,7 +2014,7 @@ ImageNet normalization, a top-left letterbox padded with 0.0 in the normalized d
       "normalization": "imagenet",
       "resize": "letterbox",
       "interpolation": "bilinear",
-      "letterbox": {"placement": "top_left", "pad": [0.0, 0.0, 0.0], "pad_space": "normalized"}
+      "letterbox": {"placement": "topleft", "pad": [0.0, 0.0, 0.0], "pad_space": "normalized"}
     }
   },
   "outputs": [
@@ -2429,11 +2431,17 @@ The dataset section references the [dataset](../datasets/index.md) used for trai
 dataset:
   name: "COCO 2017"      # Human-readable name
   id: ds-abc123          # Dataset ID (prefix: ds-)
-  classes:               # Ordered list of class labels
-    - background
+  classes:               # Ordered list of class labels, by class index
     - person
+    - bicycle
     - car
 ```
+
+`classes` lists the classes in the order of their indices in the model's outputs. Detection models have no background class. A background class is a semantic segmentation convention, and where it sits varies from model to model:
+
+- **ModelPack** adds background as an extra last channel with no entry in `classes`, so a model trained on N classes has N + 1 segmentation channels. Its masks and boxes then share class indices 0 to N − 1, and index N is background.
+- **VOC-style models** list `background` as class 0 and declare it with [`background_index`](#semantic-output-fields).
+- **ADE20K and Cityscapes models** have no background class.
 
 ### Model Identification
 

@@ -69,7 +69,7 @@ No DMA-BUF binding is used. Up to 4 independent inference slots run in parallel,
 ## Container image
 
 !!! tip "Run from a container instead"
-    The `imx95` tag of the [profiler container images](docker.md) bundles the Neutron delegate and driver from the eIQ Neutron SDK 3.0.1 along with the TFLite runtime, so no local install is needed. Map the NPU with `--device /dev/neutron0` plus the board's DMA-heap node (`ls /dev/dma_heap/`), or run with `--privileged` to grant both in one flag. The matching Neutron firmware must still be installed on the **host** — the kernel loads it from the host filesystem, not from inside the container.
+    The `imx95` tag of the [profiler container images](docker.md) bundles the Neutron delegate and driver from the eIQ Neutron SDK 3.2.3, the version the Studio Neutron converter compiles with by default, along with the TFLite runtime, so no local install is needed. Map the NPU with `--device /dev/neutron0` plus the board's DMA-heap node (`ls /dev/dma_heap/`), or run with `--privileged` to grant both in one flag. The matching SDK 3.2.3 Neutron firmware must still be installed on the **host** — the kernel loads it from the host filesystem, not from inside the container.
 
 ## Per-tick Neutron profiling
 

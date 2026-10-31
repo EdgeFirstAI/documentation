@@ -9,7 +9,7 @@ Pre-built EdgeFirst Profiler images are published to `ghcr.io/edgefirstai/profil
 | `core` | amd64 + arm64 | Binary only, no inference runtime | Base image (`FROM`) for bringing your own runtime |
 | `onnx` | amd64 + arm64 | CPU ONNX Runtime | CPU ONNX inference, CI, development |
 | `tflite` | amd64 + arm64 | TFLite C++ runtime (`libtensorflow-lite.so`) | CPU TFLite inference |
-| `imx95` | arm64 only | `tflite` plus the Neutron delegate and driver (eIQ SDK 3.0.1) | NXP i.MX 95 Neutron NPU |
+| `imx95` | arm64 only | `tflite` plus the Neutron delegate and driver (eIQ SDK 3.2.3) | NXP i.MX 95 Neutron NPU |
 | `imx8mp` | arm64 only | `tflite` plus the VX delegate and Vivante OpenVX stack | NXP i.MX 8M Plus VSI NPU |
 | `cuda` | amd64 + arm64 | GPU ONNX Runtime with CUDA 12.6 / cuDNN 9 | NVIDIA discrete GPU (amd64) or Jetson (arm64) |
 | `latest` | amd64 + arm64 | Alias for `onnx` | **CPU only** |

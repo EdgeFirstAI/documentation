@@ -101,13 +101,13 @@ The 0° azimuth angle aligns with the RJ45 Ethernet connector on the Ouster OS1 
 
 The LiDAR settings can be configured using the Web UI [LiDAR Settings page](../configuration/lidar.md)
 
-{{ figure("../assets/lidar-config.png", "LiDAR Azimuth Orientation") }}
+{{ figure("../quickstart/nxp_imx/auzone/assets/lidar-config.png", "LiDAR Azimuth Orientation") }}
 
 ## Data Visualization
 
 The LiDAR data can be visualized using:
 
-1. Raivin Web UI [LiDAR page](../quickstart/raivin/webui.md#the-lidar-page) for both live and recorded MCAPs
+1. Raivin Web UI [LiDAR page](../quickstart/nxp_imx/auzone/raivin/webui.md#the-lidar-page) for both live and recorded MCAPs
 2. Rerun visualization tool for both PCAP files and live data
 3. Ouster Studio for live or recorded data
 

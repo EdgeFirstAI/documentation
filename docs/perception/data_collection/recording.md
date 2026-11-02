@@ -25,7 +25,7 @@ The topics are recorded with the device [hostname namespace](../topics/index.md#
 
 The MCAP Recording Service is managed on its own modal, which can be accessed by clicking the "MCAP Details" button on the top navbar of any Raivin Web UI Page.
 
-{{ figure("../../platforms/assets/setup/quickStart-mcap.png", "MCAP Recorder Interface") }}
+{{ figure("../../platforms/quickstart/nxp_imx/auzone/assets/quickStart-mcap.png", "MCAP Recorder Interface") }}
 
 At the top ribbon of the MCAP Modal we have the title, the Disk Usage Infobar, and the "Live Mode" button. Under the ribbon, we have the Recording Toggle, which will start or end an MCAP recording. We also have the "Live Mode" button, which will take the Raivin out of ["Replay Mode"](replay.md) and back to "Live Mode".
 

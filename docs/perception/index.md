@@ -1,6 +1,6 @@
 # The EdgeFirst Perception Middleware
 
-The EdgeFirst Perception Middleware is a collection of applications and libraries used in the implementation of the modular perception stack.  The perception stack is built on [Zenoh][zenoh] and uses ROS 2 compatible CDR message formats to publish and subscribe messages on topics accessible in the stack over the network.  The middleware is open source under the Apache 2.0 license and published from the [EdgeFirstAI GitHub organization][github], the [Torizon for Maivin](../platforms/quickstart/maivin/index.md) platform ships the middleware preinstalled and preconfigured.
+The EdgeFirst Perception Middleware is a collection of applications and libraries used in the implementation of the modular perception stack.  The perception stack is built on [Zenoh][zenoh] and uses ROS 2 compatible CDR message formats to publish and subscribe messages on topics accessible in the stack over the network.  The middleware is open source under the Apache 2.0 license and published from the [EdgeFirstAI GitHub organization][github], the [Torizon for Maivin](../platforms/quickstart/nxp_imx/auzone/maivin/index.md) platform ships the middleware preinstalled and preconfigured.
 
 ## Middleware Services
 
@@ -28,7 +28,7 @@ Each service handles a specific task and publishes its results on a set of [topi
 | [NavSat](topics/navsat.md) | `edgefirst-navsat` | Publishes the GPS position from `gpsd`. |
 | [Recorder](data_collection/recording.md) | `edgefirst-recorder` | Records topics into MCAP files with the schemas embedded for playback and dataset creation. |
 | [Replay](data_collection/replay.md) | `edgefirst-replay` | Replays MCAP recordings onto the topics in place of the live sensors. |
-| Web Server | `edgefirst-websrv` | Serves the [Web UI](../platforms/quickstart/maivin/webui.md), bridges topics to the browser over WebSockets, and provides the configuration, recording, and EdgeFirst Studio upload APIs. |
+| Web Server | `edgefirst-websrv` | Serves the [Web UI](../platforms/quickstart/nxp_imx/auzone/maivin/webui.md), bridges topics to the browser over WebSockets, and provides the configuration, recording, and EdgeFirst Studio upload APIs. |
 | Zenoh Router | `zenohd` | Optional gateway allowing [remote applications](dev/index.md#remote-connections) to reach the device topics from another machine.  Disabled by default. |
 
 The services are built on a set of shared libraries which are also published from the EdgeFirst GitHub organization with Rust, C, and Python bindings.

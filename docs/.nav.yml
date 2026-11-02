@@ -209,94 +209,115 @@ nav:
       - perception/deepviewrt/index.md
   - Platforms:
     - platforms/index.md
-    - Getting Started:
-      - EdgeFirst Platforms:
-        - Maivin:
-          - platforms/quickstart/maivin/index.md
-          - platforms/quickstart/maivin/setup.md
-          - platforms/quickstart/maivin/webui.md
-          - platforms/quickstart/maivin/record.md
-          - platforms/quickstart/maivin/upload.md
-          - platforms/quickstart/maivin/project.md
-          - platforms/quickstart/maivin/restore.md
-          - platforms/quickstart/maivin/split.md
-          - platforms/quickstart/maivin/train.md
-          - platforms/quickstart/maivin/validate.md
-          - platforms/quickstart/maivin/deploy.md
-        - Raivin:
-          - platforms/quickstart/raivin/index.md
-          - platforms/quickstart/raivin/setup.md
-          - platforms/quickstart/raivin/webui.md
-          - platforms/quickstart/raivin/record.md
-          - platforms/quickstart/raivin/upload.md
-          - platforms/quickstart/raivin/project.md
-          - platforms/quickstart/raivin/restore.md
-          - platforms/quickstart/raivin/split.md
-          - platforms/quickstart/raivin/train.md
-          - platforms/quickstart/raivin/validate.md
-          - platforms/quickstart/raivin/deploy.md
-      - PHYTEC Platforms:
-        - phyFLEX-i.MX 95 Libra:
-          - platforms/quickstart/phytec_imx95/index.md
-          - platforms/quickstart/phytec_imx95/setup.md
-          - platforms/quickstart/phytec_imx95/capture.md
-          - platforms/quickstart/phytec_imx95/import.md
-          - platforms/quickstart/phytec_imx95/annotate.md
-          - platforms/quickstart/phytec_imx95/train.md
-          - platforms/quickstart/phytec_imx95/convert_neutron.md
-          - platforms/quickstart/phytec_imx95/validate.md
-          - platforms/quickstart/phytec_imx95/deploy.md
-      - NXP Platforms:
-        - i.MX 8M Plus:
-          - platforms/quickstart/imx8mplus/index.md
-          - platforms/quickstart/imx8mplus/setup.md
-          - platforms/quickstart/imx8mplus/copy_dataset.md
-          - platforms/quickstart/imx8mplus/train.md
-          - Model Conversions:
-            - platforms/quickstart/imx8mplus/conversion/index.md
-            - platforms/quickstart/imx8mplus/conversion/convert_kinara.md
-            - platforms/quickstart/imx8mplus/conversion/convert_tflite.md
-          - platforms/quickstart/imx8mplus/validate.md
-          - platforms/quickstart/imx8mplus/deploy.md
-          - Configuration:
-            - platforms/quickstart/imx8mplus/configuration/performance_scaling.md
-            - platforms/quickstart/imx8mplus/configuration/resize_sdcard_partition.md
-        - i.MX 95:
-          - platforms/quickstart/imx95/index.md
-          - platforms/quickstart/imx95/setup.md
-          - platforms/quickstart/imx95/copy_dataset.md
-          - platforms/quickstart/imx95/train.md
-          - Model Conversions:
-            - platforms/quickstart/imx95/conversion/index.md
-            - platforms/quickstart/imx95/conversion/convert_kinara.md
-            - platforms/quickstart/imx95/conversion/convert_neutron.md
-          - platforms/quickstart/imx95/validate.md
-          - platforms/quickstart/imx95/deploy.md
-      - NVIDIA Platforms:
+    - Quick Start:
+      - NXP i.MX:
+        - NXP Semiconductors:
+          - i.MX 8M Plus EVK:
+            - platforms/quickstart/nxp_imx/nxp/imx8mplus/index.md
+            - platforms/quickstart/nxp_imx/nxp/imx8mplus/setup.md
+            - platforms/quickstart/nxp_imx/nxp/imx8mplus/profile.md
+            - platforms/quickstart/nxp_imx/nxp/imx8mplus/deploy.md
+          - FRDM i.MX 8M Plus:
+            - platforms/quickstart/nxp_imx/nxp/frdm_imx8mplus/index.md
+          - i.MX 95 EVK:
+            - platforms/quickstart/nxp_imx/nxp/imx95/index.md
+            - platforms/quickstart/nxp_imx/nxp/imx95/setup.md
+            - platforms/quickstart/nxp_imx/nxp/imx95/copy_dataset.md
+            - platforms/quickstart/nxp_imx/nxp/imx95/train.md
+            - Model Conversions:
+              - platforms/quickstart/nxp_imx/nxp/imx95/conversion/index.md
+              - platforms/quickstart/nxp_imx/nxp/imx95/conversion/convert_kinara.md
+              - platforms/quickstart/nxp_imx/nxp/imx95/conversion/convert_neutron.md
+            - platforms/quickstart/nxp_imx/nxp/imx95/validate.md
+            - platforms/quickstart/nxp_imx/nxp/imx95/deploy.md
+          - FRDM i.MX 95:
+            - platforms/quickstart/nxp_imx/nxp/frdm_imx95/index.md
+        - Au-Zone Technologies:
+          - Maivin:
+            - platforms/quickstart/nxp_imx/auzone/maivin/index.md
+            - platforms/quickstart/nxp_imx/auzone/maivin/setup.md
+            - platforms/quickstart/nxp_imx/auzone/maivin/webui.md
+            - platforms/quickstart/nxp_imx/auzone/maivin/record.md
+            - platforms/quickstart/nxp_imx/auzone/maivin/upload.md
+            - platforms/quickstart/nxp_imx/auzone/maivin/project.md
+            - platforms/quickstart/nxp_imx/auzone/maivin/restore.md
+            - platforms/quickstart/nxp_imx/auzone/maivin/split.md
+            - platforms/quickstart/nxp_imx/auzone/maivin/train.md
+            - platforms/quickstart/nxp_imx/auzone/maivin/validate.md
+            - platforms/quickstart/nxp_imx/auzone/maivin/deploy.md
+          - Raivin:
+            - platforms/quickstart/nxp_imx/auzone/raivin/index.md
+            - platforms/quickstart/nxp_imx/auzone/raivin/setup.md
+            - platforms/quickstart/nxp_imx/auzone/raivin/webui.md
+            - platforms/quickstart/nxp_imx/auzone/raivin/record.md
+            - platforms/quickstart/nxp_imx/auzone/raivin/upload.md
+            - platforms/quickstart/nxp_imx/auzone/raivin/project.md
+            - platforms/quickstart/nxp_imx/auzone/raivin/restore.md
+            - platforms/quickstart/nxp_imx/auzone/raivin/split.md
+            - platforms/quickstart/nxp_imx/auzone/raivin/train.md
+            - platforms/quickstart/nxp_imx/auzone/raivin/validate.md
+            - platforms/quickstart/nxp_imx/auzone/raivin/deploy.md
+        - PHYTEC:
+          - phyFLEX Libra i.MX 8M Plus:
+            - platforms/quickstart/nxp_imx/phytec/phyflex_libra_imx8mplus/index.md
+          - phyFLEX Libra i.MX 95:
+            - platforms/quickstart/nxp_imx/phytec/phyflex_libra_imx95/index.md
+            - platforms/quickstart/nxp_imx/phytec/phyflex_libra_imx95/setup.md
+            - platforms/quickstart/nxp_imx/phytec/phyflex_libra_imx95/capture.md
+            - platforms/quickstart/nxp_imx/phytec/phyflex_libra_imx95/import.md
+            - platforms/quickstart/nxp_imx/phytec/phyflex_libra_imx95/annotate.md
+            - platforms/quickstart/nxp_imx/phytec/phyflex_libra_imx95/train.md
+            - platforms/quickstart/nxp_imx/phytec/phyflex_libra_imx95/convert_neutron.md
+            - platforms/quickstart/nxp_imx/phytec/phyflex_libra_imx95/validate.md
+            - platforms/quickstart/nxp_imx/phytec/phyflex_libra_imx95/deploy.md
+          - phyBOARD-Pollux i.MX 8M Plus:
+            - platforms/quickstart/nxp_imx/phytec/phyboard_pollux_imx8mplus/index.md
+          - phyVIP i.MX 8M Plus:
+            - platforms/quickstart/nxp_imx/phytec/phyvip_imx8mplus/index.md
+        - Ezurio:
+          - Nitrogen8M Plus SMARC:
+            - platforms/quickstart/nxp_imx/ezurio/nitrogen8mplus_smarc/index.md
+          - Nitrogen95 SMARC:
+            - platforms/quickstart/nxp_imx/ezurio/nitrogen95_smarc/index.md
+        - Toradex:
+          - Verdin iMX8M Plus:
+            - platforms/quickstart/nxp_imx/toradex/verdin_imx8mplus/index.md
+          - Verdin iMX95:
+            - platforms/quickstart/nxp_imx/toradex/verdin_imx95/index.md
+          - Aquila iMX95:
+            - platforms/quickstart/nxp_imx/toradex/aquila_imx95/index.md
+      - NVIDIA Jetson:
         - Jetson Orin Nano:
-          - platforms/quickstart/jetson_orin/index.md
-          - platforms/quickstart/jetson_orin/setup.md
-          - platforms/quickstart/jetson_orin/copy_dataset.md
-          - platforms/quickstart/jetson_orin/train.md
-          - platforms/quickstart/jetson_orin/convert_tensorrt.md
-          - platforms/quickstart/jetson_orin/validate.md
-          - platforms/quickstart/jetson_orin/deploy.md
+          - platforms/quickstart/nvidia_jetson/jetson_orin_nano/index.md
+          - platforms/quickstart/nvidia_jetson/jetson_orin_nano/setup.md
+          - platforms/quickstart/nvidia_jetson/jetson_orin_nano/copy_dataset.md
+          - platforms/quickstart/nvidia_jetson/jetson_orin_nano/train.md
+          - platforms/quickstart/nvidia_jetson/jetson_orin_nano/convert_tensorrt.md
+          - platforms/quickstart/nvidia_jetson/jetson_orin_nano/validate.md
+          - platforms/quickstart/nvidia_jetson/jetson_orin_nano/deploy.md
           - Configuration:
-            - platforms/quickstart/jetson_orin/configuration/power_modes.md
-            - platforms/quickstart/jetson_orin/configuration/static_ip.md
-            - platforms/quickstart/jetson_orin/configuration/wifi_ap.md
-      - Raspberry Pi Platforms:
+            - platforms/quickstart/nvidia_jetson/jetson_orin_nano/configuration/power_modes.md
+            - platforms/quickstart/nvidia_jetson/jetson_orin_nano/configuration/static_ip.md
+            - platforms/quickstart/nvidia_jetson/jetson_orin_nano/configuration/wifi_ap.md
+        - Jetson AGX Xavier:
+          - platforms/quickstart/nvidia_jetson/jetson_agx_xavier/index.md
+      - Raspberry Pi:
         - Raspberry Pi 5:
-          - platforms/quickstart/raspberrypi/index.md
-          - platforms/quickstart/raspberrypi/setup.md
-          - platforms/quickstart/raspberrypi/copy_dataset.md
-          - platforms/quickstart/raspberrypi/train.md
+          - platforms/quickstart/raspberrypi/raspberrypi5/index.md
+          - platforms/quickstart/raspberrypi/raspberrypi5/setup.md
+          - platforms/quickstart/raspberrypi/raspberrypi5/copy_dataset.md
+          - platforms/quickstart/raspberrypi/raspberrypi5/train.md
           - Model Conversions:
-            - platforms/quickstart/raspberrypi/conversion/index.md
-            - platforms/quickstart/raspberrypi/conversion/convert_hailo.md
-            - platforms/quickstart/raspberrypi/conversion/convert_tflite.md
-          - platforms/quickstart/raspberrypi/validate.md
-          - platforms/quickstart/raspberrypi/deploy.md
+            - platforms/quickstart/raspberrypi/raspberrypi5/conversion/index.md
+            - platforms/quickstart/raspberrypi/raspberrypi5/conversion/convert_hailo.md
+            - platforms/quickstart/raspberrypi/raspberrypi5/conversion/convert_tflite.md
+          - platforms/quickstart/raspberrypi/raspberrypi5/validate.md
+          - platforms/quickstart/raspberrypi/raspberrypi5/deploy.md
+      # - Qualcomm Dragonwing:
+      # - x86_64:
+      #   - Ubuntu:
+      #   - MacOS:
+      #   - Windows:
     - Configuration:
       - platforms/configuration/index.md
       - platforms/configuration/mcap_recording.md

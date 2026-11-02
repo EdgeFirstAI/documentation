@@ -10,6 +10,6 @@ The `gps` topic publishes information about the device's position and altitude u
 
 **Usage** | **Link**
 :------------------:|:------------------:
-Web UI | [GPS Page](../../platforms/quickstart/maivin/webui.md#the-gps-page)
+Web UI | [GPS Page](../../platforms/quickstart/nxp_imx/auzone/maivin/webui.md#the-gps-page)
 Foxglove | [Map Example](https://docs.foxglove.dev/docs/visualization/panels/map)
 SDK | [GPS Example](../dev/examples/gps.md#gps-schema-example)

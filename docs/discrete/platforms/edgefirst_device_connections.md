@@ -8,11 +8,11 @@ Optionally, you can connect an antenna to the SMA connector on the top-right cor
 
 Chose the proper power adapter plug from your region and connect it to the power cable.  Then connect the M12 connector of the power cable to the connection at the back of the module, making sure to align the tab at the top of the connector to its corresponding slot.  
 
-{{ figure("/platforms/assets/setup/quickStart-m12.png", "M12 Connector") }}
+{{ figure("/platforms/quickstart/nxp_imx/auzone/assets/quickStart-m12.png", "M12 Connector") }}
 
 The device should boot up as soon as it is connected.  A blue light above and to the right of the power connector should start blinking.  
 
-{{ figure("/platforms/assets/setup/quickStart-backPic.png", "Back Picture") }}
+{{ figure("/platforms/quickstart/nxp_imx/auzone/assets/quickStart-backPic.png", "Back Picture") }}
 
 !!! Danger
     The Raivin may get hot during operation.  Do not handle while operating.  Temperature can be measured with the `cat /dev/carrier_temp` command, which will output device temperature in millidegree Celsius.

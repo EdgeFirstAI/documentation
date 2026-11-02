@@ -15,7 +15,7 @@ You need an SSH client ([OpenSSH][openssh], [PuTTY][putty], etc.) to SSH into th
 
 ## The Initial SSH Session
 
-First, verify that your Maivin is turned on and connected to the network.  You can follow the [Setup instructions](../quickstart/maivin/setup.md#on-boot-up) to get the hostname of the device, which for the examples in this section will be `verdin-imx8mp-06976895.local`.
+First, verify that your Maivin is turned on and connected to the network.  You can follow the [Setup instructions](../quickstart/nxp_imx/auzone/maivin/setup.md#on-boot-up) to get the hostname of the device, which for the examples in this section will be `verdin-imx8mp-06976895.local`.
 
 !!! tip
     Windows does not need the `.local` hostname suffix.

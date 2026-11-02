@@ -23,9 +23,9 @@ If you have an [EdgeFirst Platform](../../platforms/index.md), follow this tutor
 !!! note
     Replace `<hostname>` with the hostname of your device.
 
-You will be greeted with the Maivin [Web UI Main Page](../../platforms/quickstart/maivin/webui.md) page.
+You will be greeted with the Maivin [Web UI Main Page](../../platforms/quickstart/nxp_imx/auzone/maivin/webui.md) page.
 
-{{ figure("../../platforms/assets/setup/ui-maivinMain.png", "Web UI Main Page") }}
+{{ figure("../../platforms/quickstart/nxp_imx/auzone/assets/ui-maivinMain.png", "Web UI Main Page") }}
 
 {% include-markdown "discrete/datasets/recording_mcap_on_device.md" heading-offset=2 %}
 

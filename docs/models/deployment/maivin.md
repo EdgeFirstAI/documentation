@@ -1,8 +1,8 @@
 # Deploying to the Maivin
 
-Now that you have validated your Vision Model either [On Cloud](../validation/vision/managed.md) or [On Target](../validation/vision/user_managed.md), this guide will walk you through deploying Vision models on a [Maivin Platform](../../platforms/quickstart/maivin/index.md).  
+Now that you have validated your Vision Model either [On Cloud](../validation/vision/managed.md) or [On Target](../validation/vision/user_managed.md), this guide will walk you through deploying Vision models on a [Maivin Platform](../../platforms/quickstart/nxp_imx/auzone/maivin/index.md).  
 
-{{ figure("../../platforms/assets/maivin-2.png", "Maivin", "50%") }}
+{{ figure("../../platforms/quickstart/nxp_imx/auzone/assets/maivin-2.png", "Maivin", "50%") }}
 
 {% include-markdown "discrete/models/deploy_on_maivin.md" heading-offset=0 %}
 

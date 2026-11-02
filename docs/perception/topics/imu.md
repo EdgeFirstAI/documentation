@@ -12,6 +12,6 @@ The XYZ coordinate system follows the [standard ROS convention](https://www.ros.
 
 **Usage** | **Link**
 :------------------:|:------------------:
-Web UI | [IMU Page](../../platforms/quickstart/maivin/webui.md#the-imu-page)
+Web UI | [IMU Page](../../platforms/quickstart/nxp_imx/auzone/maivin/webui.md#the-imu-page)
 Foxglove | [IMU Data Plotting Example](../data_collection/foxglove.md#imu-data-plotting)
 SDK | [IMU Example](../dev/examples/imu.md#imu-schema-example)

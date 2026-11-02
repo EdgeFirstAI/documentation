@@ -24,7 +24,7 @@ The `boxes` array is empty for segmentation-only models and the `masks` array is
 
 **Usage** | **Link**
 :------------------:|:------------------:
-Web UI | [Camera Page](../../platforms/quickstart/maivin/webui.md#the-camera-page) segmentation overlay
+Web UI | [Camera Page](../../platforms/quickstart/nxp_imx/auzone/maivin/webui.md#the-camera-page) segmentation overlay
 Foxglove | [EdgeFirst Plug-in](../data_collection/foxglove.md#installing-edgefirst-plugin)
 SDK | [Model Example](../dev/examples/model.md)
 

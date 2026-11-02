@@ -25,7 +25,7 @@ The XYZ coordinate system follows the [standard ROS convention](https://www.ros.
 
 | **Usage** | **Link** |
 |:------------------:|:------------------:|
-| Web UI | [Radar Page](../../platforms/quickstart/raivin/webui.md#the-radar-page) |
+| Web UI | [Radar Page](../../platforms/quickstart/nxp_imx/auzone/raivin/webui.md#the-radar-page) |
 | Foxglove | [3D Panel](https://docs.foxglove.dev/docs/visualization/panels/3d) |
 | SDK | [Radar Targets Example](../dev/examples/radar.md#radar-targets) |
 
@@ -49,7 +49,7 @@ This topic is only published if the radarpub service is configured with the [clu
 
 | **Usage** | **Link** |
 |:------------------:|:------------------:|
-| Web UI | [Radar Page](../../platforms/quickstart/raivin/webui.md#the-radar-page) |
+| Web UI | [Radar Page](../../platforms/quickstart/nxp_imx/auzone/raivin/webui.md#the-radar-page) |
 | Foxglove | [3D Panel](https://docs.foxglove.dev/docs/visualization/panels/3d) |
 | SDK | [Radar Clusters Example](../dev/examples/radar.md#radar-clusters) |
 

@@ -1,6 +1,6 @@
 # Record MCAP
 
-MCAP recordings can be started and stopped using the Recording Button at the device's [top navbar](../../platforms/quickstart/maivin/webui.md#the-top-ribbon).  It is to the left of the MCAP Details hamburger button, which is used to open the [MCAP Details Modal](../../perception/data_collection/recording.md#the-mcap-modal).
+MCAP recordings can be started and stopped using the Recording Button at the device's [top navbar](../../platforms/quickstart/nxp_imx/auzone/maivin/webui.md#the-top-ribbon).  It is to the left of the MCAP Details hamburger button, which is used to open the [MCAP Details Modal](../../perception/data_collection/recording.md#the-mcap-modal).
 
 {{ figure("/perception/assets/mcap-RecordingButton_McapDetailsButton.png", "MCAP Recording and Details Buttons") }}
 
@@ -21,11 +21,11 @@ To start a recording, simply click the "Recording" button to begin capturing dat
 
 !!! warning "Low Disk Space"
      If there is not enough room on the drive to record an MCAP, recording will automatically stop and you will get a "Low Disk Space" error.
-     {{ figure("/platforms/assets/mcap_low-disk-space.png", "MCAP Low Disk Space Warning") }}
+     {{ figure("/platforms/quickstart/nxp_imx/auzone/assets/mcap_low-disk-space.png", "MCAP Low Disk Space Warning") }}
 
 If you were to open the MCAP Details Modal while recording, you would see a new MCAP file in the MCAP list.
 
-{{ figure("/platforms/assets/mcap_modal_while_recording.png", "MCAP Modal While Recording") }}
+{{ figure("/platforms/quickstart/nxp_imx/auzone/assets/mcap_modal_while_recording.png", "MCAP Modal While Recording") }}
 
 ## Stop Recording
 

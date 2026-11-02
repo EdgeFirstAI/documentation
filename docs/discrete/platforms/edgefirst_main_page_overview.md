@@ -17,18 +17,18 @@ Notifications such as the outcome of saving a configuration page or starting a r
 
 The MCAP Modal is the interface to manage MCAP recordings, including getting information about recorded MCAP files, disk usage, deletion, downloading files, uploading files to EdgeFirst Studio, and replaying files on the device.  More information about the MCAP Modal and recording MCAPs is in the [Recording section](../../perception/data_collection/recording.md).
 
-{{ figure("/platforms/assets/setup/quickStart-mcap.png", "A recorded MCAP file") }}
+{{ figure("/platforms/quickstart/nxp_imx/auzone/assets/quickStart-mcap.png", "A recorded MCAP file") }}
 
 # System Status Indicator
 
 Mousing over the System Status Indicator field will give a brief summary of any problems.  
 
-{{ figure("/platforms/assets/setup/quickStart-statusDropDownGood.png", "Dropdown reporting good") }}
+{{ figure("/platforms/quickstart/nxp_imx/auzone/assets/quickStart-statusDropDownGood.png", "Dropdown reporting good") }}
 
-{{ figure("/platforms/assets/setup/quickStart-statusDropDownDegraded.png", "Dropdown reporting bad") }}
+{{ figure("/platforms/quickstart/nxp_imx/auzone/assets/quickStart-statusDropDownDegraded.png", "Dropdown reporting bad") }}
 
 More on these status can be found in the [Status Monitoring section](../../perception/data_collection/replay.md#status-monitoring).
 
 Clicking on the indicator will bring up the Service Status Modal, which contains a list of services and, if available, clickable gear icons that link to the service's configuration page.
 
-{{ figure("/platforms/assets/setup/quickStart-serviceStatusModal.png", "Service Status Modal") }}
+{{ figure("/platforms/quickstart/nxp_imx/auzone/assets/quickStart-serviceStatusModal.png", "Service Status Modal") }}

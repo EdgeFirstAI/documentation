@@ -1,195 +1,94 @@
-# Supported Platforms
+# Edge Platforms
 
-This section covers Quick Start guides for deploying the EdgeFirst workflow in your platform. These guides will start from setting up your platform to running model inference in your platform.
+*Explore the complete dataset-to-deployment lifecycle within your platform.*
 
-=== "EdgeFirst"
+=== "NXP i.MX"
 
-    **[Maivin](quickstart/maivin/index.md)** | **[Raivin](quickstart/raivin/index.md)** 
+    **Choose Your Vendor**{ .ef-tab-title }
+
+    Select the vendor of your i.MX hardware to see the supported platforms.
+
+    === "NXP"
+
+        **Choose Your Platform**{ .ef-tab-title }
+
+        Select the platform provided by NXP.
+
+        **[i.MX 8M Plus](quickstart/nxp_imx/nxp/imx8mplus/index.md)** | **[FRDM i.MX 8M Plus](quickstart/nxp_imx/nxp/frdm_imx8mplus/index.md)**
+        :-----------------------------:|:----------------------------: 
+        [![imx8mp](quickstart/nxp_imx/nxp/assets/imx8mpevk-no-bg.png)](quickstart/nxp_imx/nxp/imx8mplus/index.md) | [![frdm_imx8mp](quickstart/nxp_imx/nxp/assets/frdm_imx8mpevk.png)](quickstart/nxp_imx/nxp/frdm_imx8mplus/index.md)
+
+        **[i.MX 95](quickstart/nxp_imx/nxp/imx95/index.md)** | **[FRDM i.MX 95](quickstart/nxp_imx/nxp/frdm_imx95/index.md)**
+        :-----------------------------:|:----------------------------:
+        [![imx95](quickstart/nxp_imx/nxp/assets/imx95.png)](quickstart/nxp_imx/nxp/imx95/index.md) | [![frdm_imx95](quickstart/nxp_imx/nxp/assets/frdm_imx95.png)](quickstart/nxp_imx/nxp/frdm_imx95/index.md)
+    
+    === "Au-Zone Technologies"
+
+        **Choose Your Platform**{ .ef-tab-title }
+
+        Select the platform provided by us.
+
+        **[Maivin](quickstart/nxp_imx/auzone/maivin/index.md)** | **[Raivin](quickstart/nxp_imx/auzone/raivin/index.md)** 
+        :-----------------------------:|:----------------------------: 
+        [![Maivin](quickstart/nxp_imx/auzone/assets/maivin-2.png)](quickstart/nxp_imx/auzone/maivin/index.md) | [![Raivin](quickstart/nxp_imx/auzone/assets/raivin.png)](quickstart/nxp_imx/auzone/raivin/index.md)
+        **Vision-Only Configuration** | **Combined Vision and Radar/LiDAR Configuration**
+
+    === "PHYTEC"
+
+        **Choose Your Platform**{ .ef-tab-title }
+
+        Select the platform provided by PHYTEC.
+
+        **[phyFLEX Libra i.MX 8M Plus](quickstart/nxp_imx/phytec/phyflex_libra_imx8mplus/index.md)** | **[phyFLEX Libra i.MX 95](quickstart/nxp_imx/phytec/phyflex_libra_imx95/index.md)** 
+        :-----------------------------:|:----------------------------: 
+        [![phyflex8mplibra](quickstart/nxp_imx/phytec/assets/phytec_imx8mp-libra.png)](quickstart/nxp_imx/phytec/phyflex_libra_imx8mplus/index.md) | [![phyflex95libra](quickstart/nxp_imx/phytec/assets/phytec_imx95-libra.png)](quickstart/nxp_imx/phytec/phyflex_libra_imx95/index.md)
+
+        **[phyBOARD-Pollux i.MX 8M Plus](quickstart/nxp_imx/phytec/phyboard_pollux_imx8mplus/index.md)** | **[phyVIP i.MX 8M Plus](quickstart/nxp_imx/phytec/phyvip_imx8mplus/index.md)**
+        :-----------------------------:|:----------------------------:
+        [![phyboard_pollux_imx8mp](quickstart/nxp_imx/phytec/assets/phyboard_pollux_imx8mp.png)](quickstart/nxp_imx/phytec/phyboard_pollux_imx8mplus/index.md) | [![phyvip_imx8mp](quickstart/nxp_imx/phytec/assets/phyvip_imx8mp.png)](quickstart/nxp_imx/phytec/phyvip_imx8mplus/index.md)
+
+    === "Ezurio"
+
+        **Choose Your SOM**{ .ef-tab-title }
+
+        Select the SOM provided by Ezurio.
+
+        **[Nitrogen8M Plus SMARC](quickstart/nxp_imx/ezurio/nitrogen8mplus_smarc/index.md)** | **[Nitrogen95 SMARC](quickstart/nxp_imx/ezurio/nitrogen95_smarc/index.md)** 
+        :-----------------------------:|:----------------------------: 
+        [![nitrogren_8mp](quickstart/nxp_imx/ezurio/assets/nitrogen8mp_smarc.png)](quickstart/nxp_imx/ezurio/nitrogen8mplus_smarc/index.md) | [![nitrogen95](quickstart/nxp_imx/ezurio/assets/nitrogen95_smarc.png)](quickstart/nxp_imx/ezurio/nitrogen95_smarc/index.md)
+
+    === "Toradex"
+
+        **Choose Your SOM**{ .ef-tab-title }
+
+        Select the SOM provided by Toradex.
+
+        **[Verdin iMX8M Plus](quickstart/nxp_imx/toradex/verdin_imx8mplus/index.md)** | **[Verdin iMX95](quickstart/nxp_imx/toradex/verdin_imx95/index.md)** 
+        :-----------------------------:|:----------------------------: 
+        [![Verdin iMX8M Plus](quickstart/nxp_imx/toradex/assets/verdin-imx8mp.png)](quickstart/nxp_imx/toradex/verdin_imx8mplus/index.md) | [![Verdin iMX95](quickstart/nxp_imx/toradex/assets/verdin-imx95.png)](quickstart/nxp_imx/toradex/verdin_imx95/index.md)
+
+=== "NVIDIA Jetson"
+
+    **Choose Your Platform**{ .ef-tab-title }
+
+    Select the platform provided by NVIDIA.
+
+    **[Jetson Orin Nano](quickstart/nvidia_jetson/jetson_orin_nano/index.md)** | **[Jetson AGX Xavier](quickstart/nvidia_jetson/jetson_agx_xavier/index.md)** 
     :-----------------------------:|:----------------------------: 
-    [![Maivin](assets/maivin-2.png)](quickstart/maivin/index.md) | [![Raivin](assets/raivin.png)](quickstart/raivin/index.md)
-    **Vision-only configuration**  | **Combined vision and radar/LiDAR configuration**
-
-=== "PHYTEC"
-
-    **[phyFLEX-i.MX 95 Libra](quickstart/phytec_imx95/index.md)**
-
-    [![phytec95](assets/phytec_imx95-libra.png)](quickstart/phytec_imx95/index.md)
-
-=== "NXP"
-
-    **[i.MX 8M Plus](quickstart/imx8mplus/index.md)** | **[i.MX 95](quickstart/imx95/index.md)** 
-    :-----------------------------:|:----------------------------: 
-    [![imx8mp](assets/imx8mpevk-no-bg.png)](quickstart/imx8mplus/index.md) | [![imx95](assets/imx95.png)](quickstart/imx95/index.md)
-
-=== "NVIDIA"
-
-    **[NVIDIA Jetson Orin Nano](quickstart/jetson_orin/index.md)**
-
-    [![orin](assets/jetsonorin.png)](quickstart/jetson_orin/index.md)
+    [![orin](quickstart/nvidia_jetson/assets/jetsonorin.png)](quickstart/nvidia_jetson/jetson_orin_nano/index.md) | [![xavier](quickstart/nvidia_jetson/assets/jetson_agx_xavier.png)](quickstart/nvidia_jetson/jetson_agx_xavier/index.md)
 
 === "Raspberry Pi"
 
-    **[Raspberry Pi 5](quickstart/raspberrypi/index.md)**
+    **Choose Your Platform**{ .ef-tab-title }
+
+    Select the platform provided by Raspberry Pi.
+
+    **[Raspberry Pi 5](quickstart/raspberrypi/raspberrypi5/index.md)**
     
-    [![pi5](assets/raspberrypi5.png)](quickstart/raspberrypi/index.md)
+    [![pi5](quickstart/raspberrypi/assets/raspberrypi5.png)](quickstart/raspberrypi/raspberrypi5/index.md)
 
-The following diagram describes the workflow you will follow depending on the hardware available.
+=== "x86_64"
 
-```mermaid
-%%{init: {"flowchart": {"defaultRenderer": "elk", "nodeSpacing": 60, "rankSpacing": 80}, "themeVariables": { "fontSize": "40px" }} }%%
+    **Choose Your OS**{ .ef-tab-title }
 
-flowchart LR
-    classDef blue fill:#d0ecff80,font-weight:bold;
-    classDef teal fill:#a2e8ed80,font-weight:bold;
-    classDef orange fill:#ffd69980,font-weight:bold;
-    classDef green fill:#a9e5bb80,font-weight:bold;
-    classDef purple fill:#d6c1f580,font-weight:bold;
-    classDef coral fill:#ffc2bb80,font-weight:bold;
-    classDef all fill:#f0e6f580,font-weight:bold;
-    classDef invisible fill:transparent,stroke:transparent;
-
-    %% ---------- USER GROUP ----------
-    subgraph Users
-    direction TB
-    users_pad[" "]:::invisible
-    maivin_user([Maivin]):::blue 
-    click maivin_user "quickstart/maivin/" "Open Maivin"
-
-    raivin_user([Raivin]):::orange 
-    click raivin_user "quickstart/raivin/" "Open Raivin"
-
-    imx8mp_user([i.MX 8M Plus]):::green 
-    click imx8mp_user "quickstart/imx8mplus/" "Open i.MX 8M Plus"
-
-    imx95_user([i.MX 95]):::teal 
-    click imx95_user "quickstart/imx95/" "Open i.MX 95"
-
-    orin_user([Jetson Orin]):::purple 
-    click orin_user "quickstart/jetson_orin/" "Open Jetson Orin"
-
-    pi_user([Raspberry Pi 5]):::coral 
-    click pi_user "quickstart/raspberrypi/" "Open Raspberry Pi 5"
-    end
-
-    %% ---------- SETUP ----------
-    subgraph Device_Setup
-    direction TB
-    setup_pad[" "]:::invisible
-    maivin_setup[Setup Maivin]:::blue 
-    click maivin_setup "quickstart/maivin/setup" "Open Maivin Setup"
-
-    raivin_setup[Setup Raivin]:::orange
-    click raivin_setup "quickstart/raivin/setup" "Open Raivin Setup"
-
-    imx8mp_setup[Setup i.MX 8M Plus]:::green
-    click imx8mp_setup "quickstart/imx8mplus/setup" "Open i.MX 8M Plus Setup"
-
-    imx95_setup[Setup i.MX 95]:::teal 
-    click imx95_setup "quickstart/imx95/setup" "Open i.MX 95 Setup"
-
-    orin_setup[Setup Jetson Orin]:::purple
-    click orin_setup "quickstart/jetson_orin/setup" "Open Jetson Orin Setup"
-
-    pi_setup[Setup Raspberry Pi 5]:::coral 
-    click pi_setup "quickstart/raspberrypi/setup" "Open Raspberry Pi Setup"
-
-    copy_dataset[[Copy Sample Dataset]]
-    click copy_dataset "../getting_started/copy_dataset" "Copy Public Dataset"
-    end
-
-    %% ---------- TRAINING ----------
-    subgraph Training
-    direction TB
-    training_pad[" "]:::invisible
-    train_2d[[Train Vision Model]]
-    click train_2d "../models/training/vision" "Open Training Vision"
-
-    ara2{Device has ARA2 processor?}
-    validate_2d[Validate Vision Model]
-    click validate_2d "../models/validation/vision/user_managed" "Open Validating Vision"
-
-    train_3d[[Train Fusion Model]]:::orange 
-    click train_3d "../models/training/fusion" "Open Training Fusion"
-
-    validate_3d[Validate Fusion Model]:::orange 
-    click validate_3d "../models/validation/fusion/managed" "Open Validating Fusion"
-    end
-
-    %% ---------- CONVERSION ----------
-    subgraph Model_Conversion
-    direction TB
-    conversion_pad[" "]:::invisible
-    neutron_converter[Neutron Converter]:::teal 
-    click neutron_converter "../models/ultralytics/neutron" "Open Neutron Converter"
-
-    kinara_converter[Kinara Converter]
-
-    validate_imx95[Validate Neutron Converted Model]:::teal 
-    click validate_imx95 "../models/validation/vision/user_managed" "Open Validating Vision"
-    end
-
-    %% ---------- DEPLOYMENT ----------
-    subgraph Deployment
-    direction TB
-    deploy_pad[" "]:::invisible
-    browser((Browser))
-
-    maivin((Maivin)):::blue 
-    click maivin "quickstart/maivin/deploy" "Open Maivin Deploy"
-
-    raivin((Raivin)):::orange 
-    click raivin "quickstart/raivin/deploy" "Open Raivin Deploy"
-
-    imx8mp((i.MX 8M Plus)):::green 
-    click imx8mp "quickstart/imx8mplus/deploy" "Open i.MX 8M Plus Deploy"
-
-    imx95((i.MX 95)):::teal 
-    click imx95 "quickstart/imx95/deploy" "Open i.MX 95 Deploy"
-
-    orin((Jetson Orin)):::purple 
-    click orin "quickstart/jetson_orin/deploy" "Open Jetson Orin Deploy"
-
-    pi((Raspberry Pi 5)):::coral 
-    click pi "quickstart/raspberrypi/deploy" "Open Raspberry Pi Deploy"
-    end
-
-    %% ---------- USER → SETUP ----------
-    maivin_user --> maivin_setup
-    raivin_user --> raivin_setup
-    imx8mp_user --> imx8mp_setup
-    imx95_user --> imx95_setup
-    orin_user --> orin_setup
-    pi_user --> pi_setup
-
-    %% ---------- SETUP → DATA ----------
-    maivin_setup --> copy_dataset
-    raivin_setup --> copy_dataset
-    imx8mp_setup --> copy_dataset
-    imx95_setup --> copy_dataset
-    orin_setup --> copy_dataset
-    pi_setup --> copy_dataset
-
-    %% ---------- CONVERSION ----------
-    train_2d --> neutron_converter --> validate_imx95
-    ara2 -- Yes --> kinara_converter --> validate_2d
-    ara2 -- No --> validate_2d
-
-    %% ---------- CORE PIPELINE ----------
-    copy_dataset --> train_2d
-    train_2d --> ara2
-
-    %% ---------- 3D PIPELINE ----------
-    copy_dataset -- Raivin Only --> train_3d
-    train_3d --> validate_3d
-
-    %% ---------- DEPLOYMENT ----------
-    validate_2d --> browser
-    validate_2d --> maivin
-    validate_2d --> imx8mp
-    validate_2d --> orin
-    validate_2d --> pi
-    validate_2d --> raivin
-
-    validate_imx95 --> imx95
-    validate_3d --> raivin
-```
+    Select the operating system of your machine.

@@ -18,4 +18,4 @@ The models shipped with the device are installed under `/usr/share/edgefirst/mod
 
 ## Summary
 
-At this point, the new models should be uploaded to the Raivin and you should be able to see the outputs on the [Camera page](../quickstart/raivin/webui.md#the-camera-page) with the segmentation overlay enabled and, for fusion models, on the [Radar page](../quickstart/raivin/webui.md#the-radar-page).
+At this point, the new models should be uploaded to the Raivin and you should be able to see the outputs on the [Camera page](../quickstart/nxp_imx/auzone/raivin/webui.md#the-camera-page) with the segmentation overlay enabled and, for fusion models, on the [Radar page](../quickstart/nxp_imx/auzone/raivin/webui.md#the-radar-page).

@@ -9,19 +9,19 @@ There are two ways of uploading an MCAP into EdgeFirst Studio:
 
 Click the "Upload" button !["Upload Button"](../../assets/buttons/mcap_upload_button.jpg) in the row containing the name of the MCAP file you want to upload to EdgeFirst Studio, which will bring you to the upload MCAP modal. In this modal, provide your login information to upload the MCAP file to your EdgeFirst Studio account.
 
-{{ figure("/platforms/assets/setup/upload_mcap_modal.png", "Upload MCAP Modal") }}
+{{ figure("/platforms/quickstart/nxp_imx/auzone/assets/upload_mcap_modal.png", "Upload MCAP Modal") }}
 
 Once logged in, upload the MCAP by clicking the "Upload" button as shown.
 
-{{ figure("/platforms/assets/setup/upload_mcap_button.png", "Upload MCAP Button") }}
+{{ figure("/platforms/quickstart/nxp_imx/auzone/assets/upload_mcap_button.png", "Upload MCAP Button") }}
 
 Once the upload completes, a similar indication should be shown below.
 
-{{ figure("/platforms/assets/setup/upload_mcap_complete.png", "Upload MCAP Completed") }}
+{{ figure("/platforms/quickstart/nxp_imx/auzone/assets/upload_mcap_complete.png", "Upload MCAP Completed") }}
 
 The MCAP should be available in {{ studio_link("EdgeFirst Studio") }} as a snapshot.
 
-{{ figure("/platforms/assets/setup/studio_uploaded_mcap.jpg", "Uploaded MCAP as a Snapshot in EdgeFirst Studio") }}
+{{ figure("/platforms/quickstart/nxp_imx/auzone/assets/studio_uploaded_mcap.jpg", "Uploaded MCAP as a Snapshot in EdgeFirst Studio") }}
 
 ## From EdgeFirst Studio
 

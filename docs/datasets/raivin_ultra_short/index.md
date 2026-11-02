@@ -1,6 +1,6 @@
 # Raivin Ultra Short Dataset
 
-The Raivin Ultra Short dataset is a 3D dataset created by Au-Zone Technologies to evaluate [Fusion models](../../models/fusion/index.md) for people awareness in indoor and outdoor scenarios.  It was captured on a [Raivin platform](../../platforms/quickstart/raivin/index.md) and pairs synchronized camera frames with Radar and/or LiDAR point clouds (PCDs), enabling 3D tracking and spatial perception of people at close range (the "Ultra Short" 9&nbsp;m Radar range mode).
+The Raivin Ultra Short dataset is a 3D dataset created by Au-Zone Technologies to evaluate [Fusion models](../../models/fusion/index.md) for people awareness in indoor and outdoor scenarios.  It was captured on a [Raivin platform](../../platforms/quickstart/nxp_imx/auzone/raivin/index.md) and pairs synchronized camera frames with Radar and/or LiDAR point clouds (PCDs), enabling 3D tracking and spatial perception of people at close range (the "Ultra Short" 9&nbsp;m Radar range mode).
 
 The dataset is publicly available in EdgeFirst Studio and can be explored in the [Raivin Ultra Short gallery](https://edgefirst.studio/public/datasets/ds-c1f/gallery).  Public datasets are read-only, so copy the project into your own workspace if you want to build on it.
 
@@ -63,7 +63,7 @@ To train your own Fusion model on this dataset, follow [Training Fusion Models](
 
 ### Deploy and Test on the Raivin
 
-After [validating the model](../../models/validation/fusion/managed.md), deploy it back onto the Raivin for live spatial inference by following [Deploying to the Raivin (Fusion)](../../models/deployment/3d_raivin.md).  Once deployed, the Raivin's [Web UI](../../platforms/quickstart/raivin/webui.md) shows the 2D inference (segmentation masks and bounding boxes) alongside the 3D occupancy grid highlighting detected people.  You can also capture an MCAP of the live inferences on the device and review it in Foxglove Studio.
+After [validating the model](../../models/validation/fusion/managed.md), deploy it back onto the Raivin for live spatial inference by following [Deploying to the Raivin (Fusion)](../../models/deployment/3d_raivin.md).  Once deployed, the Raivin's [Web UI](../../platforms/quickstart/nxp_imx/auzone/raivin/webui.md) shows the 2D inference (segmentation masks and bounding boxes) alongside the 3D occupancy grid highlighting detected people.  You can also capture an MCAP of the live inferences on the device and review it in Foxglove Studio.
 
 ## More 3D Workflows
 

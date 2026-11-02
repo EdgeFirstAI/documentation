@@ -1,11 +1,11 @@
 # Deploying to the Raivin (Vision)
 
-Now that you have validated your Vision Model from either on the [cloud](../validation/vision/managed.md) or [on-target](../validation/vision/user_managed.md) validation, this guide will walk you through deploying Vision models on a [Raivin Platform](../../platforms/quickstart/raivin/index.md).
+Now that you have validated your Vision Model from either on the [cloud](../validation/vision/managed.md) or [on-target](../validation/vision/user_managed.md) validation, this guide will walk you through deploying Vision models on a [Raivin Platform](../../platforms/quickstart/nxp_imx/auzone/raivin/index.md).
 
 !!! note "3D Applications"
     The Raivin is also capable of deploying Fusion models for 3D perception by following this [guide](3d_raivin.md).
 
-{{ figure("../../platforms/assets/raivin.png", "Raivin", "50%") }}
+{{ figure("../../platforms/quickstart/nxp_imx/auzone/assets/raivin.png", "Raivin", "50%") }}
 
 {% include-markdown "discrete/models/deploy_on_raivin.md" heading-offset=0 %}
 

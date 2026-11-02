@@ -1,6 +1,6 @@
 # 3D MLOps
 
-EdgeFirst Studio offers 3D Machine Learning Operations using a [Raivin platform](../platforms/quickstart/raivin/index.md) that support dataset annotations using world coordinates and model training to detect the position of objects for practical applications such as object awareness or perception.
+EdgeFirst Studio offers 3D Machine Learning Operations using a [Raivin platform](../platforms/quickstart/nxp_imx/auzone/raivin/index.md) that support dataset annotations using world coordinates and model training to detect the position of objects for practical applications such as object awareness or perception.
 
 The following is a sample 3D annotation (right) in EdgeFirst Studio represented as 3D bounding boxes around the objects of interest.  The 2D image (left) are shown beside with the 2D annotations represented as segmentation masks and 2D bounding boxes covering the objects of interest in the image.
 
@@ -11,7 +11,7 @@ The following is a sample 3D annotation (right) in EdgeFirst Studio represented 
 
 {{ figure("../datasets/assets/annotations/sample-studio-annotations.jpg", "EdgeFirst Studio Annotations") }}
 
-The Raivin platform can visualize the model inference using the [Web UI](../platforms/quickstart/raivin/webui.md) service which provide the 2D inference (segmentation masks and bounding boxes) and the 3D inference using a polar grid highlighting the clusters of Radar points indicating the position of the objects in world coordinates.
+The Raivin platform can visualize the model inference using the [Web UI](../platforms/quickstart/nxp_imx/auzone/raivin/webui.md) service which provide the 2D inference (segmentation masks and bounding boxes) and the 3D inference using a polar grid highlighting the clusters of Radar points indicating the position of the objects in world coordinates.
 
 {{ figure("../models/assets/deployment/occupancy-sample-1.png", "Model Inference on the Raivin") }}
 

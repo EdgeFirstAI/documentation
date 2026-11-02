@@ -24,12 +24,12 @@ You can also find more examples of deploying the model across different platform
 | [EdgeFirst Studio](../../models/deployment/studio.md)                  | ✅                  | ✅         |                |
 | [PC / Linux](../../models/deployment/pc/index.md)                      | ✅                  | ✅         |                |
 | Mac/MacOS                                                              | ✅                  | ✅         |                |
-| [Maivin](../../platforms/quickstart/maivin/deploy.md)                  | ✅                  | ✅         | ✅             |
-| [Raivin Fusion](../../platforms/quickstart/raivin/deploy.md)           |                      | ✅         | ✅ (on target validation) |
-| [i.MX 8M Plus EVK](../../platforms/quickstart/imx8mplus/deploy.md)     | ✅                  |             | ✅ (native runner) |
-| [i.MX 95 EVK](../../platforms/quickstart/imx95/deploy.md)              | ✅                  |             | ✅ (native runner) |
-| [NVIDIA Jetson Orin](../../platforms/quickstart/jetson_orin/deploy.md) | ✅                  |             | ✅ (native runner) |
-| [Raspberry Pi](../../platforms/quickstart/raspberrypi/deploy.md)       | ✅                  |             | ✅ (native runner) |
+| [Maivin](../../platforms/quickstart/nxp_imx/auzone/maivin/deploy.md)                  | ✅                  | ✅         | ✅             |
+| [Raivin Fusion](../../platforms/quickstart/nxp_imx/auzone/raivin/deploy.md)           |                      | ✅         | ✅ (on target validation) |
+| [i.MX 8M Plus EVK](../../platforms/quickstart/nxp_imx/nxp/imx8mplus/deploy.md)     | ✅                  |             | ✅ (native runner) |
+| [i.MX 95 EVK](../../platforms/quickstart/nxp_imx/nxp/imx95/deploy.md)              | ✅                  |             | ✅ (native runner) |
+| [NVIDIA Jetson Orin](../../platforms/quickstart/nvidia_jetson/jetson_orin_nano/deploy.md) | ✅                  |             | ✅ (native runner) |
+| [Raspberry Pi](../../platforms/quickstart/raspberrypi/raspberrypi5/deploy.md)       | ✅                  |             | ✅ (native runner) |
 
 !!! note "Additional Platforms"
 

@@ -2,7 +2,7 @@
 
 The EdgeFirst Profiler runs on the **NXP i.MX 8M Plus** (aarch64) and uses the **VeriSilicon (VSI) NPU** for hardware-accelerated inference, exposed through the TFLite C library and the `libvx_delegate.so` shared object.
 
-For a guided platform tour see the [i.MX 8M Plus Quick Start](../../platforms/quickstart/imx8mplus/index.md). This page covers only the profiler-specific setup.
+For a guided platform tour see the [i.MX 8M Plus Quick Start](../../platforms/quickstart/nxp_imx/nxp/imx8mplus/index.md). This page covers only the profiler-specific setup.
 
 ## Prerequisites
 

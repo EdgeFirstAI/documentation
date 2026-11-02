@@ -1,1 +1,0 @@
-{% include-markdown "discrete/models/validate_vision_ontarget.md" heading-offset=0 %}

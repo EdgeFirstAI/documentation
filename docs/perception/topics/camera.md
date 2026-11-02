@@ -84,7 +84,7 @@ When the camera captures at 4K with [tiling](../4k/camera_4k.md) enabled the fra
 
 **Usage** | **Link**
 :------------------:|:------------------:
-Web UI | [Camera Page](../../platforms/quickstart/maivin/webui.md#the-camera-page)
+Web UI | [Camera Page](../../platforms/quickstart/nxp_imx/auzone/maivin/webui.md#the-camera-page)
 Foxglove | [CompressedVideo Example](../data_collection/foxglove.md#viewing-detection-messages)
 SDK | [H264 Example](../dev/examples/camera.md#h264-camera-feed)
 

@@ -21,7 +21,7 @@ The Replay Service offers:
 
 The Replay Service is built into the [MCAP Recorder Modal](recording.md).
 
-{{ figure("../../platforms/assets/setup/quickStart-mcap.png", "MCAP Recorder Interface") }}
+{{ figure("../../platforms/quickstart/nxp_imx/auzone/assets/quickStart-mcap.png", "MCAP Recorder Interface") }}
 
 You can visit the page by clicking the "MCAP Details" Button on any Raivin Page.
 
@@ -108,7 +108,7 @@ Located in the top-right corner, the status indicator button shows status and st
 
 Click this button to view detailed service status, which shows the individual service states (Running/Stopped).  
 
-{{ figure("../../platforms/assets/setup/quickStart-serviceStatusModal.png", "Service Status Modal") }}
+{{ figure("../../platforms/quickstart/nxp_imx/auzone/assets/quickStart-serviceStatusModal.png", "Service Status Modal") }}
 
 ### Recording Button
 

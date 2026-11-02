@@ -12,11 +12,11 @@ Use your browser to connect to the Web UI of the remote device, enter the follow
 !!! note
     Replace `<hostname>` with the hostname of your device.
 
-You will be greeted with the Maivin [Web UI Main Page](../../platforms/quickstart/maivin/webui.md) page.
+You will be greeted with the Maivin [Web UI Main Page](../../platforms/quickstart/nxp_imx/auzone/maivin/webui.md) page.
 
-{{ figure("/platforms/assets/setup/ui-maivinMain.png", "Web UI Main Page") }}
+{{ figure("/platforms/quickstart/nxp_imx/auzone/assets/ui-maivinMain.png", "Web UI Main Page") }}
 
-For more information, please see the [Web UI Walkthrough](../../platforms/quickstart/maivin/webui.md).
+For more information, please see the [Web UI Walkthrough](../../platforms/quickstart/nxp_imx/auzone/maivin/webui.md).
 
 ## Update the Model Path
 

@@ -2,7 +2,7 @@
 
 To download an MCAP recording from the device, click the MCAP Details hamburger button !["MCAP Details Button"](../../assets/buttons/mcap_details_button.jpg) to open the MCAP Details Modal.
 
-{{ figure("/platforms/assets/setup/quickStart-mcap.png", "MCAP Modal") }}
+{{ figure("/platforms/quickstart/nxp_imx/auzone/assets/quickStart-mcap.png", "MCAP Modal") }}
 
 Click the "Download" button !["Download Button"](../../assets/buttons/mcap_download_button.png) in the row containing the name of the MCAP file you want to download, which will download the MCAP file to your local machine.
 

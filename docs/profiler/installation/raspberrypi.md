@@ -2,7 +2,7 @@
 
 The EdgeFirst Profiler runs on the **Raspberry Pi 5** (aarch64). The CPU baseline uses ONNX Runtime; optional accelerators include the **Hailo-8L** M.2 module — the same M.2 form factor Raspberry Pi's AI Kit ships with — accessed through HailoRT.
 
-For a guided platform tour see the [Raspberry Pi Quick Start](../../platforms/quickstart/raspberrypi/index.md). This page covers only the profiler-specific setup.
+For a guided platform tour see the [Raspberry Pi Quick Start](../../platforms/quickstart/raspberrypi/raspberrypi5/index.md). This page covers only the profiler-specific setup.
 
 ## Prerequisites
 

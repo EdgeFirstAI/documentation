@@ -24,7 +24,7 @@ The XYZ coordinate system follows the [standard ROS convention](https://www.ros.
 
 | **Usage** | **Link** |
 |:------------------:|:------------------:|
-| Web UI | [LiDAR Page](../../platforms/quickstart/raivin/webui.md#the-lidar-page) |
+| Web UI | [LiDAR Page](../../platforms/quickstart/nxp_imx/auzone/raivin/webui.md#the-lidar-page) |
 | Foxglove | [PointCloud2 Example](https://docs.foxglove.dev/docs/visualization/panels/3d) |
 | SDK | [LiDAR Points Example](../dev/examples/lidar.md#lidar-points) |
 
@@ -46,7 +46,7 @@ This topic is only published if the lidarpub service is configured with a [clust
 
 | **Usage** | **Link** |
 |:------------------:|:------------------:|
-| Web UI | [LiDAR Page](../../platforms/quickstart/raivin/webui.md#the-lidar-page) |
+| Web UI | [LiDAR Page](../../platforms/quickstart/nxp_imx/auzone/raivin/webui.md#the-lidar-page) |
 | Foxglove | [PointCloud2 Example](https://docs.foxglove.dev/docs/visualization/panels/3d) |
 | SDK | [LiDAR Clusters Example](../dev/examples/lidar.md#lidar-clusters) |
 

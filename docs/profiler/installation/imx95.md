@@ -2,7 +2,7 @@
 
 The EdgeFirst Profiler runs on the **NXP i.MX 95** (aarch64) and uses the **Neutron NPU** for hardware-accelerated inference. The Neutron NPU is exposed to the profiler through the TFLite C library and the NXP `libneutron_delegate.so`.
 
-For a guided platform tour see the [i.MX 95 Quick Start](../../platforms/quickstart/imx95/index.md). This page covers only the profiler-specific setup.
+For a guided platform tour see the [i.MX 95 Quick Start](../../platforms/quickstart/nxp_imx/nxp/imx95/index.md). This page covers only the profiler-specific setup.
 
 ## Prerequisites
 

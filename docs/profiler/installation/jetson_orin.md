@@ -5,7 +5,7 @@ The EdgeFirst Profiler runs on **NVIDIA Jetson Orin** and **Orin Nano** (aarch64
 - **ONNX Runtime with the CUDA execution provider** — drop-in for `.onnx` models, no extra dependencies beyond JetPack's CUDA runtime.
 - **TensorRT backend** — for `.engine` / `.trt` files. Loads `libtrt_shim.so`, a thin C++ shim the profiler links to at runtime so the binary itself has zero compile-time CUDA/TensorRT dependencies.
 
-For a guided platform tour see the [NVIDIA Jetson Quick Start](../../platforms/quickstart/jetson_orin/index.md). This page covers only the profiler-specific setup.
+For a guided platform tour see the [NVIDIA Jetson Quick Start](../../platforms/quickstart/nvidia_jetson/jetson_orin_nano/index.md). This page covers only the profiler-specific setup.
 
 ## Prerequisites
 

@@ -1,13 +1,21 @@
 # Dataset Import
 
-This page will provide tutorials for importing annotated datasets with various formats in EdgeFirst Studio.  
+This page provides tutorials for importing raw media and annotated datasets in various formats into EdgeFirst Studio.  
+
+## Import Videos
+
+{% include-markdown "discrete/datasets/import_videos.md" %}
+
+## Import Images
+
+{% include-markdown "discrete/datasets/import_images.md" %}
 
 ## Import Darknet Datasets
 
 There are two methods for importing Darknet Datasets.
 
 1. *Pre-Split*: The dataset directory already contains training and validation splits.
-2. *No Split*: The dataset directory does not have a training and validation split. All samples are inside the image and labels directories.
+2. *No Split*: The dataset directory does not have a training and validation split. All samples are inside the images and labels directories.
 
 ### Pre-Split
 
@@ -56,23 +64,15 @@ Let's first import the training samples.  To import a dataset, first [create a d
 
 {{ figure("../assets/import/coco128-container.jpg", "COCO128 Dataset Container") }}
 
-Once a container has been created, open the dataset context menu denoted by the three vertical dots on the top right corner of the dataset card and then click "import".
+Once a container has been created, open the dataset context menu denoted by the three vertical dots on the top right corner of the dataset card, then click "import" and select "Darknet Dataset".
 
 {{ figure("../assets/import/coco128-options.jpg", "Dataset Options") }}
-
-Select the "Import Type" to "Darknet Dataset".  
-
-{{ figure("../assets/import/coco128-darknet-ds-dropdown.jpg", "Darknet Dataset Option") }}
 
 Specify the dataset in your local PC "coco128-train" to import.
 
 {{ figure("../assets/import/coco128-upload-train-ds.jpg", "Upload COCO128 Training Samples") }}
 
-Click "Start Import" at the bottom right to start the import process.
-
-Import Options | Import Process
-:-----------------------------:|:----------------------------:
-![Import Options](../assets/import/coco128-train-import-options.jpg) | ![Import Process](../assets/import/coco128-import-process.jpg)
+{{ figure("../assets/import/coco128-import-process.jpg", "COCO128 Upload Process") }}
 
 Once completed, all the training samples have been imported to the dataset container.
 
@@ -86,19 +86,15 @@ All of the samples should now be set towards the training group.
 
 {{ figure("../assets/import/coco128-all-training-samples.jpg", "100% Training Samples") }}
 
-Repeat the steps to import the validation samples.  Select the "Import" button under the dataset context menu.
+Repeat the steps to import the validation samples.  Click the "Import" button under the dataset context menu and select "Darknet Dataset".
 
 {{ figure("../assets/import/coco128-options.jpg", "Import Option") }}
 
-Select the "Import Type" to "Darknet Dataset".
+Specify the validation dataset in your local PC. The same steps as the training partition can be applied as shown below.
 
-{{ figure("../assets/import/coco128-darknet-ds-dropdown.jpg", "Darknet Dataset Option") }}
+{{ figure("../assets/import/coco128-upload-train-ds.jpg", "Upload COCO128 Validation Samples") }}
 
-Specify the dataset in your local PC "coco128-val" to import.  Specify the annotation set to the "annotations" annotation set.  The following figure shows the specifications.
-
-{{ figure("../assets/import/coco128-upload-val-ds.jpg", "Upload COCO128 Validation Samples") }}
-
-Click "Start Import" to start the import process and once it completes, the validation samples should have been imported.
+Click "Start Import" to start the dataset import process.
 
 {{ figure("../assets/import/coco128-val-imported.jpg", "Imported COCO128 Validation Samples") }}
 
@@ -130,23 +126,19 @@ The [COCO128](https://www.kaggle.com/datasets/ultralytics/coco128?resource=downl
 
 {{ figure("../assets/import/coco128-directories.jpg", "COCO128") }}
 
-Once a container has been created, open the dataset context menu denoted by the three vertical dots on the top right corner of the dataset card and click "Import".
+Once a container has been created, open the dataset context menu denoted by the three vertical dots on the top right corner of the dataset card, then click "Import" and select "Darknet Dataset".
 
 {{ figure("../assets/import/coco128-options.jpg", "Dataset Options") }}
 
-Select the "Import Type" to "Darknet Dataset".  
-
-{{ figure("../assets/import/coco128-darknet-ds-dropdown.jpg", "Darknet Dataset Option") }}
-
 Specify the dataset "coco128" in your local PC to import.
 
-{{ figure("../assets/import/coco128-upload-ds.jpg", "Upload COCO128 Options") }}
+{{ figure("../assets/import/coco128-upload-train-ds.jpg", "Upload COCO128 Options") }}
 
 Select "Start Import" at the bottom right to start the import process.
 
-Start Import | Import Process
-:-----------------------------:|:----------------------------:
-![Start Import](../assets/import/coco128-train-import-options.jpg) | ![Import Process](../assets/import/coco128-import-process.jpg)
+{{ figure("../assets/import/coco128-upload-train-ds.jpg", "Upload COCO128 Options") }}
+
+{{ figure("../assets/import/coco128-import-process.jpg", "COCO128 Upload Process") }}
 
 Once completed, the dataset container will now contain 128 images from COCO and
 the annotations stored in the "annotations" container.
@@ -167,23 +159,19 @@ To import a dataset, first [create a dataset](management.md#create-dataset) cont
 
 {{ figure("../assets/import/coco2017-container.jpg", "COCO2017 Dataset Container") }}
 
-Once a container has been created, open the dataset context menu denoted by the three vertical dots on the top right corner of the dataset card and select "Import".
+Once a container has been created, open the dataset context menu denoted by the three vertical dots on the top right corner of the dataset card, the click "Import" and select "EdgeFirst Dataset".
 
 {{ figure("../assets/import/coco2017-import-option.jpg", "Import Option") }}
 
-Select the "Import Type" to "EdgeFirst Dataset".
-
-{{ figure("../assets/import/coco2017-edgefirst-ds-dropdown.jpg", "EdgeFirst Dataset Dropdown") }}
-
-Specify the [ZIP and Arrow file](../format/index.md) in your machine to be imported.  Specify the annotation set to the "annotations" annotation set to store the dataset annotations.  The following figure shows the specifications.
+Specify the [ZIP and Arrow file](../format/index.md) in your machine to be imported.
 
 {{ figure("../assets/import/coco2017-import-options.jpg", "Import Options") }}
 
-Select "Start Import" at the bottom right to start the import process.
+Click "Upload" to upload the dataset files and then select "Start Import" at the bottom right to start the import process.
 
-Start Import | Import Process
-:-----------------------------:|:----------------------------:
-![Start Import](../assets/import/coco2017-start-import.jpg) | ![Import Process](../assets/import/coco2017-import-process.jpg)
+{{ figure("../assets/import/coco2017-start-import.jpg", "Start Import") }}
+
+{{ figure("../assets/import/coco2017-import-process.jpg", "Import Process") }}
 
 Once completed, the dataset container will now store the COCO dataset along with its annotations.
 

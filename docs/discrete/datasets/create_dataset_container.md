@@ -1,6 +1,6 @@
 # Create Dataset
 
-If you have a video recording or sample images for your dataset, you can [create a dataset container](../../datasets/tutorials/management.md#create-dataset) in EdgeFirst Studio to contain your video frames or images and annotations.
+You can create an empty dataset in EdgeFirst Studio. If you have a video recording or sample images to import into EdgeFirst Studio, you can specify this empty dataset to store your imported samples and annotations.
 
 Navigate to a web browser and {{ studio_link("login", "login") }} to EdgeFirst Studio.  Once logged in to EdgeFirst Studio, navigate to your project.  In this case the project name is "My First Project".  Click on the "Datasets" button that is indicated in red below.
 

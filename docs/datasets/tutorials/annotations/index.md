@@ -1,10 +1,10 @@
 # Dataset Annotations
 
-This page will provide tutorials for annotating datasets in EdgeFirst Studio.  As described in the [EdgeFirst Dataset Format](../../format/index.md), a dataset can have 2D and 3D annotations.  Shown below is an example of 2D annotations (left) and 3D annotations (right).  A 2D annotation is a combination of 2D bounding boxes and segmentation masks for any given object that are semantic pixel-based image coordinates.  A 3D annotation is a 3D bounding box surrounding the object in real world coordinates (meters).
+This page will provide tutorials for annotating datasets in EdgeFirst Studio.  As described in the [EdgeFirst Dataset Format](../../format/index.md), a dataset can have 2D and 3D annotations.  Shown below is an example of 2D annotations (left) and 3D annotations (right).  A 2D annotation is a combination of 2D bounding boxes and segmentation masks for any given object that are instance pixel-based image coordinates.  A 3D annotation is a 3D bounding box surrounding the object in real world coordinates (meters).
 
 {{ figure("../../assets/annotations/sample-studio-annotations.jpg", "Sample Annotations") }}
 
-To reduce the effort required during the annotation process, EdgeFirst Studio provides the tools to auto annotate either a single image or a sequential set of frames in a dataset by leveraging SAM-2 auto-segment and tracking capabilities.  Please note that it is not always guaranteed that the auto-annotations will yield 100% accuracy, so EdgeFirst Studio provides the tools for manual annotations to correct any errors or make adjustments to the existing annotations.
+To reduce the effort required during the annotation process, EdgeFirst Studio provides the tools to auto annotate either a single image or a sequential set of frames in a dataset by leveraging SAM2 auto-segment and tracking capabilities.  Please note that it is not always guaranteed that the auto-annotations will yield 100% accuracy, so EdgeFirst Studio also provides the tools for manual annotations to correct any errors or make adjustments to the existing annotations.
 
 1. Follow these [steps to auto-annotate](automatic.md) your dataset using the Automatic Ground Truth Generation (AGTG) pipeline.
 2. Follow these steps for [manual annotations](manual.md).
@@ -29,32 +29,13 @@ The changes should now be reflected in the [gallery](../management.md#view-datas
 
 {{ figure("../../assets/annotations/coffee-cups-annotations-edited.jpg", "Edited Sample Coffee Cups") }}
 
-To change the label of a single annotation follow these steps inside the dataset [gallery](../management.md#view-dataset).
-
-!!! bug "Annotation Types Are Not Linked (Work in Progress)"
-
-    Bounding box and mask annotations are currently managed independently and are not linked to a single object.  As a result, changing the label of a bounding box does not automatically update the label of its corresponding mask annotation.
-
-    To keep annotations consistent, you must update the label for each annotation type separately.
-
-    **This is a known limitation that is being addressed in an upcoming release.**
-
-#### Edit Bounding Box Label
+To change the label of a single annotation follow these steps inside the dataset gallery.
 
 1. Switch to label mode in the 2D editing panel
 2. Select the desired label in the left panel
 3. Click on the object to change its label
 
 {{ figure("../../assets/annotations/change-annotation-label.jpg", "Change Box Annotation Label") }}
-
-#### Edit Segmentation Mask Label
-
-1. Hide the bounding boxes
-2. Switch to label mode 2D editing panel
-3. Select the desired label in the left panel
-4. Click on the object to change its label
-
-{{ figure("../../assets/annotations/change-mask-annotation-label.jpg", "Change Mask Annotation Label") }}
 
 ### Add Label
 
@@ -87,17 +68,3 @@ To remove a label, click on the button with a pencil icon under "Labels" on the 
 This will show the list of existing labels.  Click on the "x" button shown on the right of the label when hovering over it.  This will delete the label from the list along with the annotations with this label.
 
 {{ figure("../../assets/annotations/delete-plate-label.jpg", "Added Label") }}
-
-## Terminate AGTG Server
-
-In order to avoid running out of credits, terminate an idle AGTG server.  As mentioned, 15 minutes of inactivity will auto-terminate AGTG servers.  However, you can terminate a server as shown below.  Navigate to the *Cloud Instances* under the apps menu.
-
-{{ figure("../../assets/annotations/cloud-instances.jpg", "Cloud Instances") }}
-
-Select the AGTG server and click "Stop" to stop the server.
-
-{{ figure("../../assets/annotations/select-ai-server.jpg", "Select AGTG Server") }}
-
-Confirm the AGTG server deletion.
-
-{{ figure("../../assets/annotations/delete-agtg-server.jpg", "Delete AGTG Server") }}

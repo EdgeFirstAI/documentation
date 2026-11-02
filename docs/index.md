@@ -32,7 +32,7 @@ Start by creating your EdgeFirst Studio account. If you already have an account,
 
 ## Tutorials & Guides
 
-New to EdgeFirst Studio or looking for a specific how-to? These guides walk you through the platform step by step.
+New to EdgeFirst Studio or looking for a specific how-to? These guides walks you through the platform step by step.
 
 <div class="grid cards" markdown>
 

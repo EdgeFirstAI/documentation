@@ -63,7 +63,7 @@ $ rtm-converter --metadata file1.bin --metadata file2.bin,entry_name1 --metadata
     model_in.onnx model_out.rtm
 ```
 
-The metadata argument is a repeatable argument that can be used to store any additional information within the RTM. These are stored in the metadata field and can be accessed as seen in this [sample](). When providing a .txt file, it will be stored as plaintext, but otherwise the file provided will be stored as bytes.
+The metadata argument is a repeatable argument that can be used to store any additional information within the RTM. These are stored in the metadata field and can be accessed through the API. When providing a .txt file, it will be stored as plaintext, but otherwise the file provided will be stored as bytes.
 
 These cover the majority of arguments that will be used the most, but there are many others that can be viewed in the help dialog of the tool.
 

@@ -33,6 +33,7 @@ avahi
 aws
 axum
 babu
+baudrate
 backend
 backends
 backfilled
@@ -54,6 +55,7 @@ bitstream
 bool
 booleans
 bootloader
+bootmode
 boxplot
 braille
 buf
@@ -80,6 +82,7 @@ chrony
 chronyc
 chronyd
 ci
+cityscapes
 clap
 cli
 clusters
@@ -87,6 +90,7 @@ codec
 codecs
 coefs
 coffeecup
+coffeecups
 colored
 colorimetry
 coloring
@@ -99,6 +103,7 @@ compressedimage
 compressedvideo
 concat
 config
+configs
 conv
 convolutional
 coords
@@ -129,6 +134,7 @@ depthmaps
 depthwise
 dequant
 dequantization
+dequantized
 dequantize
 dequantizing
 dequeues
@@ -382,6 +388,7 @@ mlops
 mm
 mmap
 mmcli
+mmsegmentation
 modelinfo
 modelname
 modelpack
@@ -481,6 +488,7 @@ per-tensor
 perfetto
 pftrace
 phc
+phytec
 pi
 pid
 pidfd
@@ -517,6 +525,7 @@ preprocessing
 presigned
 pretrained
 profiler
+profilers
 programmatically
 proj
 proto
@@ -559,6 +568,7 @@ repr
 republishes
 requantize
 rerun
+resampling
 resolv
 rest
 restful
@@ -588,6 +598,7 @@ scouting
 scp
 seg
 serde
+selfie
 sftp
 shaders
 signaled
@@ -713,12 +724,16 @@ unoffset
 unparseable
 unprivileged
 unquantized
+unsplit
 unstamped
 untracked
 unsynchronized
 untrusted
 uplink
 upsample
+upsampled
+upsamples
+upsampling
 upscaled
 upscales
 upscaling

@@ -1,6 +1,6 @@
 # On Cloud Validation
 
-This tutorial walks through how to run validation in the cloud using EdgeFirst Studio. In this setup, validation is executed as a **managed validation session**, which runs on a self-hosted EC2 instance.  This option is ideal for users who do not have access to an embedded platform to host the validation process locally.
+This tutorial walks through how to run validation in the cloud using EdgeFirst Studio which runs on a self-hosted EC2 instance.  This option is ideal for users who do not have access to an embedded platform to host the validation process locally.
 
 In this tutorial, you will validate a **Fusion** model trained using either the [end-to-end workflows](../../../getting_started/workflows/index.md) or the [Training Fusion](../../training/fusion.md) guide.  Note that a Fusion model performs spatial perception using Radar and Camera sensors.  If you are working with Vision models, refer to [Validating Vision Models](../vision/managed.md).
 

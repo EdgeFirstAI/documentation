@@ -1,8 +1,8 @@
 # Train Vision Model
 
-Now that your dataset is fully annotated, versioned, and split into training and validation partitions, you are ready to begin training your model.  This will briefly show the steps for training a model, but for an in depth tutorial, please see [Training Vision Models](../../models/training/vision.md).
+Now that your dataset is fully annotated, tagged, and split into training and validation partitions, you are ready to begin training your model.  This guide briefly shows the steps for training a model, but for an in depth tutorial, please see [Training Vision Models](../../models/training/vision.md).
 
-Navigate back to the "Projects" page.  You can go back to the "Projects" page by clicking the Apps Menu waffle button on the top right of the Navigation bar.  Click the first selection to take you to the "Projects page".
+Navigate back to the "Projects" page.  You can go back to the "Projects" page by clicking the "PROJECTS" button on the top navbar as shown.
 
 {{ figure("/studio/assets/navigation/go-to-projects-page.jpg", "Go to Projects Page") }}
 
@@ -18,7 +18,7 @@ Navigate to the "Training Sessions".
 
 {{ figure("/models/assets/training/training-sessions.jpg", "Training Sessions") }}
 
-Create a new training session by clicking the "Actions" dropdown menu on the top right of the page and then click the "+ New Trainer Session" button.
+Start a new training session by clicking the "Actions" dropdown menu on the top right of the page.  From here you can either train [ModelPack](../../models/modelpack/index.md) or [Ultralytics](../../models/ultralytics/index.md) models.  In this guide, we will demonstrate starting a ModelPack session.
 
 {{ figure("/models/assets/training/new-mpk-session-button.jpg", "New Session Button") }}
 
@@ -30,14 +30,12 @@ The session progress will be shown like the following below.
 
 {{ figure("/models/assets/training/vision-session-progress.jpg", "Training Session Progress") }}
 
-Once the session is complete, the session card will appear like the following.
-
-{{ figure("/models/assets/training/vision-completed-session.jpg", "Completed Session") }}
-
-Click the training session card for more information.
+Once the session is complete, the session card will appear like the following. Click the training session card for more information.
 
 {{ figure("/models/assets/training/vision-view-train-details.jpg", "Training Details") }}
 
 The trained models will be listed under the "Artifacts" tab.  The download button next to these artifacts will download the artifacts to your machine.
 
 {{ figure("/models/assets/training/vision-session-artifacts.jpg", "Model Artifacts") }}
+
+Now that you have trained your model, you can also find various model converters and exporters in EdgeFirst Studio that builds supported model formats for specific compute hardware.  The next section will give you a quick overview of the available model converters in EdgeFirst Studio to see its intended supported target.

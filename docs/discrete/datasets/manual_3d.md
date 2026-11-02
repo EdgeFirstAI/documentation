@@ -36,7 +36,7 @@ Similar to the workflow as scaling the 3D bounding boxes above, move the three a
 |-----------------------------|---------------------------|-----------------------|
 | ![YZ](../../datasets/assets/annotations/manual/box-3d-translateyz.jpg) | ![XY](../../datasets/assets/annotations/manual/box-3d-translatexy.jpg) | ![Positive Shift](../../datasets/assets/annotations/manual/box-3d-translatexz.jpg) |
 
-Once the 3D bounding box annotation is properly oriented, click "Save Annotations" to save the changes.
+Once the 3D bounding box annotation is properly oriented, click "Save Image Annotations" to save the changes.
 
 {{ figure("/datasets/assets/annotations/manual/submit-audit-3d-boxes.jpg", "Submit 3D Annotations") }}
 
@@ -50,7 +50,7 @@ Now click on the grid to add a new 3D bounding box on the position of the click.
 
 {{ figure("/datasets/assets/annotations/manual/added-3d-box.jpg", "Added 3D Annotations") }}
 
-This newly added 3D bounding box may not be scaled or translated properly.  Follow instructions for [scaling](#scale-3d-annotation) and [translating](#translate-3d-annotation) a 3D bounding box to properly center the bounding box around the LiDAR point cloud as shown below.  Once the annotation is properly scaled and translated, click "Save Annotations" to save the annotation.
+The added 3D bounding box may not be scaled or translated properly.  Follow instructions for [scaling](#scale-3d-annotation) and [translating](#translate-3d-annotation) a 3D bounding box to properly center the bounding box around the LiDAR point cloud as shown below.  Once the annotation is properly scaled and translated, click "Save Image Annotations" to save the annotation.
 
 {{ figure("/datasets/assets/annotations/manual/submit-added-3d-box.jpg", "Submit 3D Annotations") }}
 

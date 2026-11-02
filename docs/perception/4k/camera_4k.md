@@ -4,7 +4,7 @@ The Camera service on the Maivin/Raivin supports 4K video in multiple fashions, 
 
 !!! note "Camera Mode"
 
-    On the Maivin and Raivin the sensor readout is selected by the `CAMERA_MODE` setting of `/etc/default/camera` and applied by the ISP before the camera service starts.  Set `CAMERA_MODE="4k"` for 4K capture, the default `1080p60` mode does not provide a 4K readout and the ISP does not upscale.  Refer to the [Camera Settings](../../platforms/configuration/camera.md#camera-mode).
+    On the Maivin and Raivin the sensor readout is selected by the `CAMERA_MODE` setting of `/etc/default/camera` and applied by the ISP before the camera service starts.  Set `CAMERA_MODE="4K30"` for 4K capture, the default `1080p30` mode does not provide a 4K readout and the ISP does not upscale.  Refer to the [Camera Settings](../../platforms/configuration/camera.md#camera-mode).
 
 ## Command Line Configuration
 
@@ -75,10 +75,10 @@ sudo camera \
 
 ## SystemD Configuration file
 
-You can set the above parameters in the camera configuration file located at `/etc/default/camera`, every key is present in the shipped file.  Set the following keys and restart the service with `sudo systemctl restart camera`:
+You can set the above parameters in the camera configuration file located at `/etc/default/camera`, every key is present in the shipped file.  Set the following keys and reboot the device with `sudo reboot` to apply them.  Restarting only the camera service with `sudo systemctl restart camera` can leave the ISP unable to start until the next reboot.
 
 ```ini
-CAMERA_MODE="4k"
+CAMERA_MODE="4K30"
 CAMERA_SIZE="3840 2160"
 H264_TILES="true"
 H264_TILES_FPS="15"

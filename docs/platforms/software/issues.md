@@ -1,6 +1,74 @@
 # Known Issues
 
-This page lists the customer-visible issues known on the current Torizon for Maivin release along with their workarounds.  When reporting an issue to Au-Zone support, please include the release information from `/etc/os-release` (the `VERSION_ID` and `BUILD_ID` fields), the issue key from this page when applicable, the steps to reproduce, and whether the camera was running in the `1080p60` or `4k` [camera mode](../configuration/camera.md#camera-mode).
+This page lists the customer-visible issues known on the current Torizon for Maivin release along with their workarounds.  Releases are listed newest first and the sections of earlier releases are kept for reference.  When reporting an issue to Au-Zone support, please include the release information from `/etc/os-release` (the `VERSION_ID` and `BUILD_ID` fields), the issue key from this page when applicable, the steps to reproduce, and whether the camera was running in the `1080p30`, `1080p60` or `4K30` [camera mode](../configuration/camera.md#camera-mode).
+
+## Torizon for Maivin 2026.10.0
+
+### Web UI settings page gaps (EDGEAI-1229)
+
+Some settings pages do not yet reflect every option supported by the services, notably the [Model Settings](../configuration/model.md) page which still shows options from the previous Model service.  Overlay state on the Camera page is not persisted across page refreshes and the GPS map has weak defaults.
+
+**Workaround:** edit the corresponding `/etc/default/<service>` file over [SSH](../networking/ssh.md) and restart the service with `sudo systemctl restart <service>` when a setting cannot be changed from the Web UI.  Reboot the device instead when the setting is the camera mode.
+
+### Some segmentation model configurations fail (EDGEAI-1221)
+
+Some ModelPack and YOLO segmentation configurations fail to deploy on the Model service, including background class indexing issues, missing detections, and unsupported embedded configuration keys such as `protos` or `ultralytics`.
+
+**Workaround:** use validated detection models such as the shipped Model Zoo YOLOv8n detector, and validate segmentation models on the device before deploying them in the field.
+
+### Upload to Studio dialog limitations (EDGEAI-1407)
+
+In the [Upload to EdgeFirst Studio](../../perception/data_collection/publishing.md#method-1-upload-from-the-web-ui) dialog the label controls are only available in Extended mode, the project selection can reset, the server may ignore the selected project, and identifiers are shown in decimal where EdgeFirst Studio shows hexadecimal.
+
+**Workaround:** upload in Basic mode and complete the project and label binding in EdgeFirst Studio when [restoring the snapshot](../../studio/snapshots.md#restore-snapshot).
+
+### Overlays can freeze the live camera view (EDGEAI-1445)
+
+Enabling the detection box or segmentation mask overlays on the Camera page can freeze or stutter the live video, most noticeably with segmentation models.
+
+**Workaround:** disable the overlays for live monitoring and review annotated output from recordings in Foxglove Studio or EdgeFirst Studio.
+
+### Manual camera launch fails every other start (EDGEAI-1439)
+
+Launching `edgefirst-camera` manually from the command line, rather than through `camera.service`, can fail with `Invalid argument` on every second start because the ISP media server only serves a single client per lifetime.  Repeated failures can wedge the capture pipeline until reboot.  The stock `camera.service` restarts the ISP before every start and is not affected.
+
+**Workaround:** restart the ISP before a manual launch with `sudo systemctl restart imx8-isp` followed by `sudo edgefirst-camera ...`.  Reboot the device if the capture pipeline is wedged.
+
+### 4K camera mode follow-ups (EDGEAI-1230, EDGEAI-1406)
+
+The default `1080p30` capture, recording, and streaming paths are verified for this release.  The `4K30` camera mode with H.264 tiling has remaining issues with the `tf_static` frame mapping of the tiles and the tile stitching in Foxglove Studio which are deferred to a patch release.
+
+**Workaround:** prefer the `1080p30` camera mode.  Do not rely on the 4K multi-tile Foxglove stitching until the patch release.
+
+### 1080p60 H.264 stream runs at 30 FPS (EDGEAI-1464)
+
+With H.264 streaming enabled and the camera in the `1080p60` mode, the camera frame output runs at 30 FPS rather than 60 FPS.
+
+**Workaround:** use the default `1080p30` camera mode, which is the supported 30 FPS configuration.
+
+### IMU publishes near 140 Hz (EDGEAI-1468)
+
+The `imu` topic publishes at roughly 140 Hz, above the previously documented 80 to 120 Hz band.  This is a warning only.
+
+**Workaround:** downsample in the consumer when a strict rate is required.
+
+### Publisher frame sampling is slow (EDGEAI-1469)
+
+Exporting a recording with the publisher at a sampled frame rate, for example `-f 1`, produces the correct output but decodes every H.264 frame in the recording.  A 66 second 60 FPS recording can take seven to eight minutes to export on the device.
+
+**Workaround:** run long exports inside a `tmux` or `screen` session so the export survives a dropped SSH connection.
+
+### Publisher 4K tile stitching runs out of memory (EDGEAI-1470)
+
+Stitching 4K tiled recordings of about 60 seconds or longer can exhaust the device memory.  1080p exports are not affected.
+
+**Workaround:** record short clips of about 8 seconds when using the tile topics, stop the `camera` and `model` services before running the publisher to free memory, and prefer a 1080p camera mode for HD capture.
+
+### Replay service not fully updated
+
+The Replay service included in this release has not been fully updated for the hostname namespaces and EdgeFirst Schemas 4.0 of the other services, so replayed topics and camera frames may not be consumed by the Model service.  Radar, LiDAR, and fusion replay were not verified for this release.
+
+**Workaround:** review recordings in [Foxglove Studio](../../perception/data_collection/foxglove.md) or upload them to [EdgeFirst Studio](../../perception/data_collection/publishing.md).
 
 ## Torizon for Maivin 2026.08.0
 
@@ -24,7 +92,7 @@ On earlier 2026.08 release candidates, saving a settings page only rewrote keys 
 
 ### Ethernet interfaces named end0 and end1 (EDGEAI-1424)
 
-On lab units with a CPU serial number starting with `0`, the Ethernet interfaces may enumerate as `end0` and `end1` instead of `ethernet0` and `ethernet1`.  Customer units, whose serial numbers start with `1`, are not affected and no customer action is required.
+On lab units with a CPU serial number starting with `0`, the Ethernet interfaces may enumerate as `end0` and `end1` instead of `ethernet0` and `ethernet1`.  Customer units, whose serial numbers start with `1`, are not affected and no customer action is required.  Resolved in 2026.10.0.
 
 ### Some segmentation model configurations fail (EDGEAI-1221)
 
@@ -62,9 +130,9 @@ The `imu` topic publishes at roughly 140 Hz, above the previously documented 80 
 
 **Workaround:** downsample in the consumer when a strict rate is required.
 
-### No 1080p30 camera mode (EDGEAI-1464)
+### No 1080p30 camera mode
 
-The `CAMERA_MODE` setting supports `1080p60` and `4k` only.
+The `CAMERA_MODE` setting supports `1080p60` and `4k` only.  Resolved in 2026.10.0, which adds the `1080p30` mode and makes it the default.
 
 **Workaround:** use `1080p60` and subsample frames in the consumer for 30 FPS workflows.
 

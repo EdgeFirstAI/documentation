@@ -19,7 +19,7 @@ After setting up the Zenoh session, we will create a subscriber to the `imu` top
     ``` python
     # Log the initial orientation
     rr.log("/imu", rr.Boxes3D(half_sizes=[[0.5, 0.5, 0.5]], fill_mode="solid"))
-    rr.log("/imu", rr.Transform3D(axis_length=2))
+    rr.log("/imu", rr.TransformAxes3D(2))
 
     # Create a subscriber for "imu"
     loop = asyncio.get_running_loop()
@@ -57,7 +57,7 @@ We can now receive message on the subscriber. After receiving the message, we wi
     ``` rust
     use edgefirst_schemas::sensor_msgs::{IMU};
     while let Ok(msg) = subscriber.recv() {
-        let imu: IMU = cdr::deserialize(&msg.payload().to_bytes())?;
+        let imu = IMU::from_cdr(msg.payload().to_bytes())?;
     }
     ```
 
@@ -69,14 +69,17 @@ We will now pull out the IMU data from the decoded Imu message and send the quat
 
     ``` python
     def imu_worker(msg):
-        imu = Imu.deserialize(msg.payload.to_bytes())
+        try:
+            imu = Imu.from_cdr(msg.payload.to_bytes())
+        except Exception as e:
+            print(f"Error processing IMU: {e}", file=sys.stderr)
+            return
         x = imu.orientation.x
         y = imu.orientation.y
         z = imu.orientation.z
         w = imu.orientation.w
         rr.log("/imu",
-                rr.Transform3D(clear=False,
-                                quaternion=Quaternion(xyzw=[x, y, z, w])))
+                rr.Transform3D(quaternion=Quaternion(xyzw=[x, y, z, w])))
     ```
 === "Rust"
 

@@ -12,4 +12,4 @@ Before recording, open Settings from the Menu on the Web UI and confirm:
 
 ## Next Steps
 
-Now that you have recorded an MCAP, you can [upload the MCAP to EdgeFirst Studio](upload.md) to begin building your dataset using this MCAP.
+Now that you have recorded an MCAP, the next step in the Raivin Quick Start guide is to [upload the MCAP to EdgeFirst Studio](upload.md) to begin building your dataset using this MCAP.  If you download it to your local machine, you may also use [Foxglove](../../../perception/data_collection/foxglove.md) to view the dataset.

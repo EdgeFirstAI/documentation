@@ -10,4 +10,4 @@
 
 ## Next Steps
 
-Now that you have an annotated and tagged dataset with train and validation samples, you can begin [training your fusion model](train.md) in the next section.
+Now that you have an annotated and tagged dataset with train and validation samples, the next step in the Raivin Quick Start guide is [training your fusion model](train.md).

@@ -33,7 +33,7 @@ This section covers Quick Start guides for deploying the EdgeFirst workflow in y
     
     [![pi5](assets/raspberrypi5.png)](quickstart/raspberrypi/index.md)
 
-The following diagram describes the workflow you will follow depending on the hardware available.
+The following diagram describes the workflow you will follow depending on the hardware available. The bolded links will take you to the specific documentation to review.  Specifically, the Maivin and Raivin boxes on the left-hand side will take you to their respective Quick Start guides.
 
 ```mermaid
 %%{init: {"flowchart": {"defaultRenderer": "elk", "nodeSpacing": 60, "rankSpacing": 80}, "themeVariables": { "fontSize": "40px" }} }%%
@@ -46,6 +46,7 @@ flowchart LR
     classDef purple fill:#d6c1f580,font-weight:bold;
     classDef coral fill:#ffc2bb80,font-weight:bold;
     classDef all fill:#f0e6f580,font-weight:bold;
+    classDef boxes fill:#fce94f80,font-weight:bold;
     classDef invisible fill:transparent,stroke:transparent;
 
     %% ---------- USER GROUP ----------
@@ -93,7 +94,7 @@ flowchart LR
     pi_setup[Setup Raspberry Pi 5]:::coral 
     click pi_setup "quickstart/raspberrypi/setup" "Open Raspberry Pi Setup"
 
-    copy_dataset[[Copy Sample Dataset]]
+    copy_dataset[Copy Sample Dataset]:::boxes
     click copy_dataset "../getting_started/copy_dataset" "Copy Public Dataset"
     end
 
@@ -101,11 +102,11 @@ flowchart LR
     subgraph Training
     direction TB
     training_pad[" "]:::invisible
-    train_2d[[Train Vision Model]]
+    train_2d[Train Vision Model]:::boxes
     click train_2d "../models/training/vision" "Open Training Vision"
 
     ara2{Device has ARA2 processor?}
-    validate_2d[Validate Vision Model]
+    validate_2d[Validate Vision Model]:::boxes
     click validate_2d "../models/validation/vision/user_managed" "Open Validating Vision"
 
     train_3d[[Train Fusion Model]]:::orange 
@@ -154,42 +155,42 @@ flowchart LR
     end
 
     %% ---------- USER → SETUP ----------
-    maivin_user --> maivin_setup
-    raivin_user --> raivin_setup
-    imx8mp_user --> imx8mp_setup
-    imx95_user --> imx95_setup
-    orin_user --> orin_setup
-    pi_user --> pi_setup
+    maivin_user ==> maivin_setup
+    raivin_user ==> raivin_setup
+    imx8mp_user ==> imx8mp_setup
+    imx95_user ==> imx95_setup
+    orin_user ==> orin_setup
+    pi_user ==> pi_setup
 
     %% ---------- SETUP → DATA ----------
-    maivin_setup --> copy_dataset
-    raivin_setup --> copy_dataset
-    imx8mp_setup --> copy_dataset
-    imx95_setup --> copy_dataset
-    orin_setup --> copy_dataset
-    pi_setup --> copy_dataset
+    maivin_setup ==> copy_dataset
+    raivin_setup ==> copy_dataset
+    imx8mp_setup ==> copy_dataset
+    imx95_setup ==> copy_dataset
+    orin_setup ==> copy_dataset
+    pi_setup ==> copy_dataset
 
     %% ---------- CONVERSION ----------
-    train_2d --> neutron_converter --> validate_imx95
-    ara2 -- Yes --> kinara_converter --> validate_2d
-    ara2 -- No --> validate_2d
+    train_2d ==> neutron_converter ==> validate_imx95
+    ara2 == Yes ==> kinara_converter ==> validate_2d
+    ara2 == No ==> validate_2d
 
     %% ---------- CORE PIPELINE ----------
-    copy_dataset --> train_2d
-    train_2d --> ara2
+    copy_dataset ==> train_2d
+    train_2d ==> ara2
 
     %% ---------- 3D PIPELINE ----------
-    copy_dataset -- Raivin Only --> train_3d
-    train_3d --> validate_3d
+    copy_dataset == Raivin Only ==> train_3d
+    train_3d ==> validate_3d
 
     %% ---------- DEPLOYMENT ----------
-    validate_2d --> browser
-    validate_2d --> maivin
-    validate_2d --> imx8mp
-    validate_2d --> orin
-    validate_2d --> pi
-    validate_2d --> raivin
+    validate_2d ==> browser
+    validate_2d ==> maivin
+    validate_2d ==> imx8mp
+    validate_2d ==> orin
+    validate_2d ==> pi
+    validate_2d ==> raivin
 
-    validate_imx95 --> imx95
-    validate_3d --> raivin
+    validate_imx95 ==> imx95
+    validate_3d ==> raivin
 ```

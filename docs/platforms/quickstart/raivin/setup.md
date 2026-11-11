@@ -39,12 +39,12 @@ From here, we recommend that you check out the Camera page by clicking the "Came
 
 ## Next Steps
 
-Now that your Raivin is set up, [record an MCAP](record.md) to start building your dataset.
+Now that your Raivin is set up, the next step in the Raivin Quick Start guide is to [record an MCAP](record.md) to start building your dataset.
 
 Other useful resources:
 
 - [Web UI Walkthrough](webui.md), to see what each card on the main page does
-- [CPU Performance Scaling](configuration/performance_scaling.md), to adjust the device's power/performance tradeoff
+- [CPU Performance Scaling](../../hardware/performance_scaling.md), to adjust the device's power/performance tradeoff
 - [SSH Walkthrough](../../networking/ssh.md), to learn how to SSH into your Raivin and basic command-line operations
 - [Model Upload Walkthrough](../../software/model_uploads.md), to learn how to upload vision models and radar fusion models to your Raivin
 - [Software Updates](../../software/updates.md), to keep your Raivin on the latest release

@@ -4,4 +4,4 @@
 
 ## Next Steps
 
-Once you have restored your MCAP into a dataset, prepare the dataset for training by [splitting and tagging the dataset](split.md).
+Once you have restored your MCAP into a dataset, the next step in the Raivin Quick Start guide is to prepare the dataset for training by [splitting and tagging the dataset](split.md).

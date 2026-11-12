@@ -94,17 +94,24 @@ flowchart LR
     pi_setup[Setup Raspberry Pi 5]:::coral 
     click pi_setup "quickstart/raspberrypi/setup" "Open Raspberry Pi Setup"
 
-    copy_dataset[Record MCAP]:::boxes
-    click copy_dataset "../perception/data_collection/recording/" "Record MCAP"
+    record_mcap[Record MCAP]:::boxes
+    click record_mcap "../perception/data_collection/recording/" "Record MCAP"
 
     upload_mcap[Upload MCAP]:::boxes
-    click copy_dataset "../perception/data_collection/publishing/" "Upload MCAP"
+    click upload_mcap "../perception/data_collection/publishing/" "Upload MCAP"
     end
 
     %% ---------- TRAINING ----------
     subgraph Training
     direction TB
     training_pad[" "]:::invisible
+
+    restore_mcap[Restore MCAP]:::boxes
+    click restore_mcap "../studio/snapshots/#restore-snapshot" "Restore MCAP"
+
+    copy_sample[Copy Sample Dataset]:::boxes
+    click copy_sample "../getting_started/copy_dataset/"
+
     train_2d[Train Vision Model]:::boxes
     click train_2d "../models/training/vision" "Open Training Vision"
 
@@ -166,13 +173,13 @@ flowchart LR
     pi_user ==> pi_setup
 
     %% ---------- SETUP → DATA ----------
-    maivin_setup ==> copy_dataset
-    raivin_setup ==> copy_dataset
-    imx8mp_setup ==> copy_dataset
-    imx95_setup ==> copy_dataset
-    orin_setup ==> copy_dataset
-    pi_setup ==> copy_dataset
-    copy_dataset ==> upload_mcap
+    maivin_setup ==> record_mcap
+    raivin_setup ==> record_mcap
+    imx8mp_setup ==> copy_sample
+    imx95_setup ==> copy_sample
+    orin_setup ==> copy_sample
+    pi_setup ==> copy_sample
+    record_mcap ==> upload_mcap
 
     %% ---------- CONVERSION ----------
     train_2d ==> neutron_converter ==> validate_imx95
@@ -180,11 +187,13 @@ flowchart LR
     ara2 == No ==> validate_2d
 
     %% ---------- CORE PIPELINE ----------
-    upload_mcap ==> train_2d
+    upload_mcap ==> restore_mcap
+    restore_mcap ==> train_2d
+    copy_sample ==> train_2d
     train_2d ==> ara2
 
     %% ---------- 3D PIPELINE ----------
-    upload_mcap == Raivin Only ==> train_3d
+    restore_mcap == Raivin Only ==> train_3d
     train_3d ==> validate_3d
 
     %% ---------- DEPLOYMENT ----------

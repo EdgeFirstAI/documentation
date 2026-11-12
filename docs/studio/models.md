@@ -104,19 +104,19 @@ The action bar at the top of the details page provides the following operations:
 
 ## Running a model
 
-EdgeFirst Studio allows you to run trained models directly in the web browser. After a model has been trained, open the model details page by clicking on the trainer card. Only ONNX models are currently supported for live inference in the browser. Supported models will have a play button next to the artifacts as shown.
+EdgeFirst Studio allows you to run trained models directly in the web browser. After a model has been trained, open the model details page by clicking the training session card. Only ONNX models are currently supported for live inference in the browser. On the **Artifacts** tab, click the **Run Model** button (the play icon) next to the ONNX artifact.
 
 !!! note "ONNX models only"
     Live browser-based model running only supports **ONNX** format. To validate or profile models in other formats (TFLite, Neutron, Hailo, TensorRT, etc.) on real hardware, use the [EdgeFirst Profiler](../profiler/index.md).
 
 {{ figure("../getting_started/assets/run_model/trainer_details_page.png", "Training Session Details (Run Model button)") }}
 
+Please wait while the model loads. This may take up to 60 seconds, depending on the model size.
+Once the model is loaded, select a mode: Live to run the model on images from a camera stream, or Upload to choose a file from local storage.
+
 You should now see the live inference feed on your browser running the trained model.
 
 {{ figure("../models/assets/deployment/studio-runner-live-inference.jpg", "Live Inference") }}
-
-Please wait while the model loads. This may take up to 60 seconds, depending on the model size.
-Once the model is loaded, select a mode: Live to run the model on images from a camera stream, or Upload to choose a file from local storage.
 
 The model will run automatically, and the results will be displayed on the screen. The output (segmentation or detection) depends on the type of model being used.
 

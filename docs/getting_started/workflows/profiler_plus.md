@@ -1,17 +1,17 @@
 # Profiler+ Workflow
 
-In this workflow, you will retrain an Ultralytics model, validate it in your PC using [edgefirst-profiler](../../profiler/index.md), and compare your results against the [EdgeFirst Model Zoo on Hugging Face](https://huggingface.co/spaces/EdgeFirst/Models) baselines.  Models can be deployed in the browser or on a compatible target device.
+In this workflow, you will retrain an Ultralytics model, validate it on your PC using [edgefirst-profiler](../../profiler/index.md), and compare your results against the [EdgeFirst Model Zoo on Hugging Face](https://huggingface.co/spaces/EdgeFirst/Models) baselines.  Models can be deployed in the browser or on a compatible target device.
 
 ## Create an Ultralytics Training Session
 
 {% include-markdown "discrete/models/train_ultralytics.md" heading-offset=0 %}
 
-## Validate on Target with the EdgeFirst Profiler
+## Validate on Your PC or on Target with the EdgeFirst Profiler
 
-The Profiler+ workflow validates your model directly on your target hardware — not in the cloud. This gives you real inference latency, NPU utilization, and per-stage timing alongside accuracy metrics.
+The Profiler+ workflow validates your model on your PC or directly on your target hardware, not in the cloud. This gives you real inference latency, NPU utilization, and per-stage timing alongside accuracy metrics.
 
 !!! info "Cloud validation not used here"
-    Cloud validation only supports ONNX, Keras, and TFLite artifacts running on a cloud instance. On-target profiling with the EdgeFirst Profiler supports all converted formats (`.tflite`, `.hef`, `.dvm`, `.tensorrt.zip`) and measures real hardware performance.
+    Cloud validation only supports ONNX, Keras, and TFLite artifacts running on a cloud instance. The EdgeFirst Profiler runs on your PC or on the target and supports all converted formats (`.tflite`, `.hef`, `.dvm`, `.tensorrt.zip`, `.onnx`).
 
 ### Install the profiler
 

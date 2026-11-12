@@ -15,11 +15,11 @@ Click on the training sessions of your experiment.
 
 {{ figure("/models/assets/validation/training-sessions.jpg", "Training Sessions") }}
 
-Click on the selected training session.
+Click the training session card.
 
 {{ figure("/models/assets/training/vision-view-train-details.jpg", "Training Session Details") }}
 
-Click the "Run Model" button on the top right of the page.
+On the **Artifacts** tab, click the **Run Model** button (the play icon) next to the ONNX artifact.
 
 {{ figure("/getting_started/assets/run_model/trainer_details_page.png", "Training Session Details (Run Model button)") }}
 

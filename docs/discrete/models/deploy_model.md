@@ -5,11 +5,11 @@ Once you have validated your trained model, you can deploy the model in the brow
 !!! note "ONNX models only"
     Live browser-based model inference only supports the **ONNX** format. To validate or profile models in other formats (TFLite, Neutron, Hailo, TensorRT, etc.) on real hardware, use the [EdgeFirst Profiler](../../profiler/index.md).
 
-If you haven't already, click on the train session card for more information.
+If you haven't already, click the training session card for more information.
 
 {{ figure("/models/assets/training/vision-view-train-details.jpg", "Training Details") }}
 
-Inside the training session, navigate to the artifacts tab as shown below. Clicking the "play" button next to the artifact will run the app to show live model inference on your browser.
+On the **Artifacts** tab, click the **Run Model** button (the play icon) next to the ONNX artifact. This runs the model and shows live inference in your browser.
 
 {{ figure("/getting_started/assets/run_model/trainer_details_page.png", "Training Session Details (Run Model button)") }}
 

@@ -39,11 +39,9 @@ EdgeFirst Studio provides several pre-trained models in the **Sample Projects** 
 
     {{ figure("assets/run_model/coffeecup-training-session.png", "Coffee Cup Training Card") }}
 
-5. Open the **Artifacts** tab and click the **Play** button next to the artifact you want to deploy. For cloud inference, only ONNX model artifacts are supported.
+5. Open the **Artifacts** tab and click the **Run Model** button (the play icon) next to the ONNX artifact. If the model is not supported or the ONNX file is missing, this button will not appear. This opens the Model Runner dashboard.
 
-    {{ figure("assets/run_model/trainer_details_page.png", "Training Session Details") }}
-
-6. Click the **Run Model** button.  If the model is not supported or the ONNX file is missing, this button will not appear.  This opens the Model Runner dashboard.
+    {{ figure("assets/run_model/trainer_details_page.png", "Training Session Details (Run Model button)") }}
 
 ---
 

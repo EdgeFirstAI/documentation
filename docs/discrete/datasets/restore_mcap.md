@@ -2,11 +2,17 @@ The uploaded MCAP can be found in the "Snapshots" page.
 
 {{ figure("/datasets/assets/annotations/automatic/data-snapshots.jpg", "Snapshots Page") }}
 
-From the snapshots page, select the MCAP you plan to restore into a dataset.  The click on the snapshot's extended menu as shown and select "restore".
+From the snapshots page, select the MCAP you plan to restore into a dataset. Then click on the snapshot's extended menu as shown and select "restore".
 
 {{ figure("/datasets/assets/annotations/automatic/restore_mcap.jpg", "Restore MCAP") }}
 
-Specify the app parameters to configure your dataset import based on the description below. Then click "START APP" to start the process.
+Set the restore fields, then click "START APP":
+
+- **Project**: where the restored dataset is stored.
+- **Dataset name and description**: if the name is left empty, the snapshot name is used.
+- **MCAP topic settings**: enable "Use MCAP Selected Topics" to choose topics and adjust the frame rate.
+- **Annotation source**: the MCAP model topic, or auto-generated 2D boxes, 3D boxes, and segmentation masks.
+- **Depth generation**: optional AI depth maps for each frame.
 
 {{ figure("/datasets/assets/annotations/automatic/restore_mcap_prompts.jpg", "Restore MCAP Configuration") }}
 

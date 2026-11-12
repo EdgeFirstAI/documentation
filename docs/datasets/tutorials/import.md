@@ -72,6 +72,8 @@ Specify the dataset in your local PC "coco128-train" to import.
 
 {{ figure("../assets/import/coco128-upload-train-ds.jpg", "Upload COCO128 Training Samples") }}
 
+Select **Start Import** at the bottom right.
+
 {{ figure("../assets/import/coco128-import-process.jpg", "COCO128 Upload Process") }}
 
 Once completed, all the training samples have been imported to the dataset container.
@@ -90,11 +92,7 @@ Repeat the steps to import the validation samples.  Click the "Import" button un
 
 {{ figure("../assets/import/coco128-options.jpg", "Import Option") }}
 
-Specify the validation dataset in your local PC. The same steps as the training partition can be applied as shown below.
-
-{{ figure("../assets/import/coco128-upload-train-ds.jpg", "Upload COCO128 Validation Samples") }}
-
-Click "Start Import" to start the dataset import process.
+Specify the validation dataset in your local PC. The same steps as the training partition can be applied, including **Start Import**.
 
 {{ figure("../assets/import/coco128-val-imported.jpg", "Imported COCO128 Validation Samples") }}
 
@@ -135,8 +133,6 @@ Specify the dataset "coco128" in your local PC to import.
 {{ figure("../assets/import/coco128-upload-train-ds.jpg", "Upload COCO128 Options") }}
 
 Select "Start Import" at the bottom right to start the import process.
-
-{{ figure("../assets/import/coco128-upload-train-ds.jpg", "Upload COCO128 Options") }}
 
 {{ figure("../assets/import/coco128-import-process.jpg", "COCO128 Upload Process") }}
 

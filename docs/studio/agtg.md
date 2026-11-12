@@ -31,7 +31,7 @@ There are three steps involved in this process: *Initialize AGTG Server*, *Annot
 
 {{ figure("../datasets/assets/annotations/automatic/agtg-segment-tool.jpg", "Select the AI Segment Tool") }}
 
-Clicking on this feature will prompt you to [start an AGTG server](../datasets/tutorials/annotations/automatic.md#initialize-agtg-server).  This is a cloud based server that hosts SAM2 and the AGTG backend.  As indicated, this server will take some time (~3 minutes) to initialize and once initialized, 15 minutes of inactivity will auto-terminate the server.  This is a safety mechanism to prevent extreme usage of the credits available in your account.  As a safety precaution, ensure that all unused servers are terminated to prevent any unnecessary server costs.
+Clicking on this feature will prompt you to [start an AGTG server](../datasets/tutorials/annotations/automatic.md#initialize-agtg-server).  This is a cloud based server that hosts SAM2 and the AGTG backend.  As indicated, this server will take some time (~3 minutes) to initialize and once initialized, 15 minutes of inactivity will auto-terminate the server.  This is a safety mechanism to prevent extreme usage of the credits available in your account.  As a safety precaution, ensure that all unused servers are terminated to prevent any unnecessary server costs.  When you have finished annotating, click the **Shutdown AGTG Server** button to stop the server.
 
 {{ figure("../datasets/assets/annotations/manual/confirm-agtg-server-launch.jpg", "Launch AGTG Server") }}
 

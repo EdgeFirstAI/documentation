@@ -38,4 +38,4 @@ The trained models will be listed under the "Artifacts" tab.  The download butto
 
 {{ figure("/models/assets/training/vision-session-artifacts.jpg", "Model Artifacts") }}
 
-Now that you have trained your model, you can also find various model converters and exporters in EdgeFirst Studio that builds supported model formats for specific compute hardware.  The next section will give you a quick overview of the available model converters in EdgeFirst Studio to see its intended supported target.
+Now that you have trained your model, you can also find various model converters and exporters in EdgeFirst Studio that build supported model formats for specific computing hardware.

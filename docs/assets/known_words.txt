@@ -33,7 +33,6 @@ avahi
 aws
 axum
 babu
-baudrate
 backend
 backends
 backfilled
@@ -41,6 +40,7 @@ backfilling
 backport
 balenaetcher
 basename
+baudrate
 bblayers
 bbox
 bev
@@ -134,8 +134,8 @@ depthmaps
 depthwise
 dequant
 dequantization
-dequantized
 dequantize
+dequantized
 dequantizing
 dequeues
 deserialize
@@ -731,7 +731,6 @@ unsynchronized
 untrusted
 uplink
 upsample
-upsampled
 upsamples
 upsampling
 upscaled

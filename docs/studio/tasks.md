@@ -3,8 +3,7 @@
 The Tasks page provides a centralized view of all background operations running in
 EdgeFirst Studio where it lists all pending, running, terminated, failed, or successful MLOPs processes in EdgeFirst Studio — including model training, validation, app runs, and data imports. Both currently running and completed operations are visible here in a single paginated view. Furthermore, it also keeps a history of operations ran that either completed successfully, terminated, or failed.
 
-To access this page, click the **Apps** waffle icon in the top navigation bar and
-select **Tasks** from the menu.
+To access this page, click the **Tasks** button in the top navigation bar.
 
 {{ figure("assets/tasks/tasks_button.jpg", "Tasks Button") }}
 

@@ -863,7 +863,7 @@ input:
 | ----- | ---- | ----------- |
 | `normalization` | string or object | Preset name (`unsigned`, `signed`, `raw`, `imagenet`) or `{mean, std}` with one value or one value per channel, on the 0–255 scale. Every `std` must be non-zero. |
 | `resize` | string | `stretch` scales each axis independently to the input size. `letterbox` preserves the aspect ratio and pads. |
-| `interpolation` | string | Resampling filter of the reference pipeline. Informational: a runtime may use another filter and should state the difference when comparing accuracy. Segmentation models are sensitive to it; nearest-neighbour resizing costs SegFormer B1 0.6–1.0 mIoU points against bilinear. |
+| `interpolation` | string | Resampling filter of the reference pipeline. Informational: a runtime may use another filter and should state the difference when comparing accuracy. Segmentation models are sensitive to it; nearest-neighbor resizing costs SegFormer B1 0.6–1.0 mIoU points against bilinear. |
 | `letterbox.placement` | string | `center` (default) splits the padding between both sides of each axis. `topleft` puts all padding on the bottom and right, as mmsegmentation and TF DeepLab do. |
 | `letterbox.pad` | [float] | Pad value, one per channel or a single shared value. Default 114 per channel. |
 | `letterbox.pad_space` | string | `pixel` (default): `pad` is a 0–255 value that is normalized like image content. `normalized`: `pad` is written as-is into the normalized input, for example 0.0 to pad with the mean colour after `imagenet` normalization. |

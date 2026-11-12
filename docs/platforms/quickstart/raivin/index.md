@@ -21,9 +21,10 @@ In this Quick Start, you will find instructions for:
 3. [Uploading the MCAP to EdgeFirst Studio](upload.md)
 4. [Creating a project in EdgeFirst Studio](project.md)
 5. [Restoring the MCAP into a Dataset](restore.md)
-6. [Splitting and Tagging the Restored Dataset for Training](split.md)
-7. [Training a Fusion Model](train.md)
-8. [Validating the Fusion Model](validate.md)
-9. [Deploying the Fusion Model](deploy.md)
+6. [Annotating the Dataset](annotate.md)
+7. [Splitting and Tagging the Dataset for Training](split.md)
+8. [Training a Fusion Model](train.md)
+9. [Validating the Fusion Model](validate.md)
+10. [Deploying the Fusion Model](deploy.md)
 
 Each page links to the next, so you can also just start with [Setup](setup.md) and follow the trail through to deployment.  For a tour of the device's main page, see the [Web UI Walkthrough](webui.md).  Please note that this Raivin Quick Start guide only includes Fusion Model training for 3D models; the Maivin Quick Start contains the steps on how to [train](../maivin/train.md), [validate](../maivin/validate.md), and [deploy](../maivin/deploy.md) 2D models.

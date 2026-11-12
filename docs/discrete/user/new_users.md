@@ -8,7 +8,7 @@ From the "User Manager" page, we can create new accounts/profiles for new users 
 
 {{ figure("/studio/assets/user/new-user-buttons.jpg", "New User") }}
 
-This will bring you to the page that allows you to specify the new user's information as shown below.  Here you can specify the new user's first and last name, their login credentials such as their username and password.  Finally you will need to specify their email and their [role in the organization](../../studio/user/organization.md#roles).
+This will bring you to the page that allows you to specify the new user's information as shown below.  Here you can specify the new user's first and last name, their login credentials such as their username and password.  Finally you will need to specify their email and their role in the organization.
 
 {{ figure("/studio/assets/user/new-user-fields.jpg", "New User Fields") }}
 

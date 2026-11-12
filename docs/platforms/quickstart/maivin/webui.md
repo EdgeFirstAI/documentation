@@ -36,4 +36,4 @@ The Camera page shows the live camera video decoded from the `camera/h264` topic
 
 ## Next Steps
 
-Now that you have set up your Maivin and are familiar with the Maivin's Web UI, you can proceed to [copying a public dataset](copy_dataset.md) in {{ studio_link("EdgeFirst Studio") }} to train your own vision model that will be deployed in this device.
+Now that you have set up your Maivin and are familiar with the Maivin's Web UI, you can start [recording an MCAP](record.md) using the Maivin to start building your own dataset in EdgeFirst Studio.

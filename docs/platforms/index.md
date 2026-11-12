@@ -9,6 +9,12 @@ This section covers Quick Start guides for deploying the EdgeFirst workflow in y
     [![Maivin](assets/maivin-2.png)](quickstart/maivin/index.md) | [![Raivin](assets/raivin.png)](quickstart/raivin/index.md)
     **Vision-only configuration**  | **Combined vision and radar/LiDAR configuration**
 
+=== "PHYTEC"
+
+    **[phyFLEX-i.MX 95 Libra](quickstart/phytec_imx95/index.md)**
+
+    [![phytec95](assets/phytec_imx95-libra.png)](quickstart/phytec_imx95/index.md)
+
 === "NXP"
 
     **[i.MX 8M Plus](quickstart/imx8mplus/index.md)** | **[i.MX 95](quickstart/imx95/index.md)** 
@@ -27,7 +33,7 @@ This section covers Quick Start guides for deploying the EdgeFirst workflow in y
     
     [![pi5](assets/raspberrypi5.png)](quickstart/raspberrypi/index.md)
 
-The following diagram describes the workflow you will follow depending on the hardware available.
+The following diagram describes the workflow you will follow depending on the hardware available. The highlighted boxes are links to the matching documentation. Specifically, the Maivin and Raivin boxes on the left-hand side will take you to their respective Quick Start guides.
 
 ```mermaid
 %%{init: {"flowchart": {"defaultRenderer": "elk", "nodeSpacing": 60, "rankSpacing": 80}, "themeVariables": { "fontSize": "40px" }} }%%
@@ -40,6 +46,7 @@ flowchart LR
     classDef purple fill:#d6c1f580,font-weight:bold;
     classDef coral fill:#ffc2bb80,font-weight:bold;
     classDef all fill:#f0e6f580,font-weight:bold;
+    classDef boxes fill:#fce94f80,font-weight:bold;
     classDef invisible fill:transparent,stroke:transparent;
 
     %% ---------- USER GROUP ----------
@@ -87,19 +94,29 @@ flowchart LR
     pi_setup[Setup Raspberry Pi 5]:::coral 
     click pi_setup "quickstart/raspberrypi/setup" "Open Raspberry Pi Setup"
 
-    copy_dataset[[Copy Sample Dataset]]
-    click copy_dataset "../getting_started/copy_dataset" "Copy Public Dataset"
+    record_mcap[Record MCAP]:::boxes
+    click record_mcap "../perception/data_collection/recording/" "Record MCAP"
+
+    upload_mcap[Upload MCAP]:::boxes
+    click upload_mcap "../perception/data_collection/publishing/" "Upload MCAP"
     end
 
     %% ---------- TRAINING ----------
     subgraph Training
     direction TB
     training_pad[" "]:::invisible
-    train_2d[[Train Vision Model]]
+
+    restore_mcap[Restore MCAP]:::boxes
+    click restore_mcap "../studio/snapshots/#restore-snapshot" "Restore MCAP"
+
+    copy_sample[Copy Sample Dataset]:::boxes
+    click copy_sample "../getting_started/copy_dataset/"
+
+    train_2d[Train Vision Model]:::boxes
     click train_2d "../models/training/vision" "Open Training Vision"
 
     ara2{Device has ARA2 processor?}
-    validate_2d[Validate Vision Model]
+    validate_2d[Validate Vision Model]:::boxes
     click validate_2d "../models/validation/vision/user_managed" "Open Validating Vision"
 
     train_3d[[Train Fusion Model]]:::orange 
@@ -148,42 +165,45 @@ flowchart LR
     end
 
     %% ---------- USER → SETUP ----------
-    maivin_user --> maivin_setup
-    raivin_user --> raivin_setup
-    imx8mp_user --> imx8mp_setup
-    imx95_user --> imx95_setup
-    orin_user --> orin_setup
-    pi_user --> pi_setup
+    maivin_user ==> maivin_setup
+    raivin_user ==> raivin_setup
+    imx8mp_user ==> imx8mp_setup
+    imx95_user ==> imx95_setup
+    orin_user ==> orin_setup
+    pi_user ==> pi_setup
 
     %% ---------- SETUP → DATA ----------
-    maivin_setup --> copy_dataset
-    raivin_setup --> copy_dataset
-    imx8mp_setup --> copy_dataset
-    imx95_setup --> copy_dataset
-    orin_setup --> copy_dataset
-    pi_setup --> copy_dataset
+    maivin_setup ==> record_mcap
+    raivin_setup ==> record_mcap
+    imx8mp_setup ==> copy_sample
+    imx95_setup ==> copy_sample
+    orin_setup ==> copy_sample
+    pi_setup ==> copy_sample
+    record_mcap ==> upload_mcap
 
     %% ---------- CONVERSION ----------
-    train_2d --> neutron_converter --> validate_imx95
-    ara2 -- Yes --> kinara_converter --> validate_2d
-    ara2 -- No --> validate_2d
+    train_2d ==> neutron_converter ==> validate_imx95
+    ara2 == Yes ==> kinara_converter ==> validate_2d
+    ara2 == No ==> validate_2d
 
     %% ---------- CORE PIPELINE ----------
-    copy_dataset --> train_2d
-    train_2d --> ara2
+    upload_mcap ==> restore_mcap
+    restore_mcap ==> train_2d
+    copy_sample ==> train_2d
+    train_2d ==> ara2
 
     %% ---------- 3D PIPELINE ----------
-    copy_dataset -- Raivin Only --> train_3d
-    train_3d --> validate_3d
+    restore_mcap == Raivin Only ==> train_3d
+    train_3d ==> validate_3d
 
     %% ---------- DEPLOYMENT ----------
-    validate_2d --> browser
-    validate_2d --> maivin
-    validate_2d --> imx8mp
-    validate_2d --> orin
-    validate_2d --> pi
-    validate_2d --> raivin
+    validate_2d ==> browser
+    validate_2d ==> maivin
+    validate_2d ==> imx8mp
+    validate_2d ==> orin
+    validate_2d ==> pi
+    validate_2d ==> raivin
 
-    validate_imx95 --> imx95
-    validate_3d --> raivin
+    validate_imx95 ==> imx95
+    validate_3d ==> raivin
 ```

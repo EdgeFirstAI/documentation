@@ -22,6 +22,7 @@ Next [navigate to the gallery](../../datasets/tutorials/management.md#view-datas
 Finally, [split the dataset](../../datasets/tutorials/management.md#split-dataset) into training and validation groups.
 
 {% include-markdown "discrete/models/train_vision.md" heading-offset=0 %}
+{% include-markdown "discrete/models/convert_to_tflite.md" heading-offset=0 %}
 {% include-markdown "discrete/models/validate_vision.md" heading-offset=0 %}
 
 # Deploy Vision Model

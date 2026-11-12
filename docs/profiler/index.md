@@ -28,7 +28,7 @@ The profiler runs the pipeline, computes the accuracy metrics, and derives the t
 
 There are several ways in, depending on where the model lives and where you want the results to land:
 
-- **[Validation from Studio](studio/from_studio.md)** — create a user-managed validation session in the Studio web UI, then run the profiler against that session ID on your target.
+- **[Validation from Studio](studio/from_studio.md)** — create an on-target validation session in the Studio web UI, then run the profiler against that session ID on your target.
 - **[Validation from the Profiler](studio/from_profiler.md)** — browse training sessions inside the profiler's TUI and let the profiler create the validation session in place.
 - **Offline validation** — point `validate` at a local model, a directory of images, and a ground-truth file. No Studio session is created and nothing is uploaded. See [Validation and Metrics](concepts/validation.md).
 - **[Cloud runs](studio/cloud.md)** — hand a training session and an artifact to `dispatch` and let the run happen on a cloud machine you choose, instead of on hardware in front of you.

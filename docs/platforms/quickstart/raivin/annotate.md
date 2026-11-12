@@ -54,6 +54,8 @@ For more detail on each option, see the [AGTG tutorial](../../../datasets/tutori
 
 To move, resize or delete a 2D or 3D box, or to change its label, follow the [Manual Annotations](../../../datasets/tutorials/annotations/manual.md) tutorial.
 
+When every sequence is annotated and the boxes are correct, continue to the next step: [Split and Tag Dataset](split.md).
+
 ## More Information
 
 - [Automatic Ground Truth Generation (AGTG)](../../../studio/agtg.md): how the AGTG pipeline works and what each control in the tool does.

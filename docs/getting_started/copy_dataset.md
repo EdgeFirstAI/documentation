@@ -6,7 +6,7 @@ Now that you have created your own project, you can copy a dataset into your pro
     Copying a dataset is optional. You can use any dataset inside the public projects
     to train your model.
 
-    However, we still recommended following the steps outlined below to become
+    However, we still recommend following the steps outlined below to become
     familiar with the copying process.
 
 {{ figure("../studio/assets/projects/new-project.jpg", "New Project") }}

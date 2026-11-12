@@ -30,7 +30,7 @@ On the top navbar, switch to the annotation set you created.
 
 Go ahead and launch the AGTG server.  Please allow ~5mins for the server to initialize.
 
-!!! warning "AGTG Server did not Start"
+!!! warning "AGTG Server did not start"
 
     If the AGTG server has not started after 5 minutes, refresh your browser and click the **AI Segment Tool** button again.
 

@@ -20,7 +20,7 @@ Filters allow users to select images based on the filter conditions.  The number
 
     Image tagging is currently unavailable and this feature is a work in progress. The screenshots provided in this section are out of date until the new implementations for image tagging are set in place.
 
-You can create tags for images.  These tags can be used to filter out images of certain tags.  Tags can be added from the "ACTIONS" dropdown and can be filtered using the "IMAGE TAGS" filter.
+You can create tags for images.  These tags can be used to filter out images of certain tags.  Tags can be added from the "Actions" dropdown and can be filtered using the "IMAGE TAGS" filter.
 
 - Display tags: enable "Show Tags" under "Display Image Options".
 
@@ -51,7 +51,7 @@ You can copy selected items to another dataset.  This operation can be found und
 3. From the modal, source is auto-filled using the current dataset and first annotation set if applicable.  You can select a different source annotation set.
 4. Destination will be defaulted to a new dataset along with any selected annotation set.  You can select another dataset and annotation if needed.
 5. Selected file names that will be copied are shown under "Images".
-6. Progress can be tracked in the task progress popup.
+6. Progress can be tracked on the [Tasks page](../tasks.md).
 
 ## Next Steps
 

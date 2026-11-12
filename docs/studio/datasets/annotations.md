@@ -8,7 +8,7 @@ For these operations please refer to the following figure.
 
 {{ figure("../assets/datasets/annotationset-attributes.jpg", "Annotation Set Attributes") }}
 
-- Click on the add annotation set button "+"" to add an annotation set.
+- Click on the add annotation set button "+" to add an annotation set.
 - Each annotation set has an extended menu to edit the annotation set information or delete the annotation set - all associated annotations will also be deleted.  Please note that deleted annotation sets goes the the Recycle Bin and can either be restored or permanently deleted.  The storage is only freed when the Recycling Bin is cleared.  
 - Each annotation set has an (i) button to get the details of the annotation set.
 
@@ -143,7 +143,7 @@ It is important to join the 2D (masks and boxes) or 3D annotations that describe
 
 For example, the following mask and bounding box annotation for the "keyboard" was created manually. You can join these two annotations by:
 
-1. Hold CTRL on you keyboard.
+1. Hold CTRL on your keyboard.
 2. Select the bounding box and the mask on the image.
 3. Click "join".
 4. Once the annotations are joined, clicking on the object should highlight its annotations (mask and bounding box).

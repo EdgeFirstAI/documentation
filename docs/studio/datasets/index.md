@@ -67,12 +67,12 @@ There are several import types available.
 To import datasets, proceed with the steps as follows or follow this in-depth tutorial for [importing datasets](../../datasets/tutorials/import.md).
 
 1. Open the dataset extended menu.
-2. Select "Import"
-3. Select an import type. The available options invokes the various importer apps: [images](../../datasets/tutorials/import.md#import-images), [videos](../../datasets/tutorials/import.md#import-videos), [Darknet Dataset](../../datasets/tutorials/import.md#import-darknet-datasets), [EdgeFirst Dataset](../../datasets/format/index.md), or [MCAP](../../datasets/tutorials/capture.md#upload-mcap).
+2. Select "Import".
+3. Select an import type. The available options invoke the various importer apps: [images](../../datasets/tutorials/import.md#import-images), [videos](../../datasets/tutorials/import.md#import-videos), [Darknet Dataset](../../datasets/tutorials/import.md#import-darknet-datasets), [EdgeFirst Dataset](../../datasets/format/index.md), or [MCAP](../../datasets/tutorials/capture.md#upload-mcap).
 4. Drag and drop a folder or group of files from your local machine into the app.
 5. Select an annotation set if the annotation type allows annotation import.
 6. Click "START IMPORT".
-7. Import will start in the background and the status is shown in the task progress popup.
+7. Import will start in the background and the status is shown on the [Tasks page](../tasks.md).
 
 {{ figure("../assets/datasets/import-taskbar.png", "Taskbar") }}
 

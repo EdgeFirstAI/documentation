@@ -8,7 +8,7 @@ Alternatively, EdgeFirst Studio also supports **On-Target Validation**. In this 
 
 {% include-markdown "discrete/models/create_validation_session.md" %}
 
-You will be greeted with the validation session dialog.  Select the model to use for validation. Select either an **ONNX, Keras, or TFLite** models — these are the formats supported by cloud validation. When you are ready, click **START APP** to begin the validation process.
+You will be greeted with the validation session dialog.  Select the model to use for validation. Select either an **ONNX, Keras, or TFLite** model — these are the formats supported by cloud validation. When you are ready, click **START APP** to begin the validation process.
 
 {{ figure("../../assets/validation/vision-validate-settings.jpg", "Validation Session Fields") }}
 

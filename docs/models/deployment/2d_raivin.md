@@ -1,6 +1,6 @@
 # Deploying to the Raivin (Vision)
 
-Now that you have validated your Vision Model from either on the [cloud](../validation/vision/managed.md) or [on-target](../validation/vision/user_managed.md) validation, this guide will walk you through deploying Vision models on a [Raivin Platform](../../platforms/quickstart/raivin/index.md).
+Now that you have validated your Vision Model with either [cloud](../validation/vision/managed.md) or [on-target](../validation/vision/user_managed.md) validation, this guide will walk you through deploying Vision models on a [Raivin Platform](../../platforms/quickstart/raivin/index.md).
 
 !!! note "3D Applications"
     The Raivin is also capable of deploying Fusion models for 3D perception by following this [guide](3d_raivin.md).

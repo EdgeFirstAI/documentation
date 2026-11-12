@@ -7,7 +7,7 @@ A validation session is created from the Studio web UI; the session ID is then h
 !!! warning "Validation sessions need a writable project"
     Creating a validation session requires **write access** to the Studio project. You cannot validate against the read-only public **Sample Project** directly — first [copy its dataset](../../getting_started/copy_dataset.md) into a project you own (and add your model), then create the training and validation session there.
 
-From the Model Experiments dashboard, open the training session whose artifact you want to validate, then click **New Validation Session**. Choose **User Managed** as the validation type.
+From the Model Experiments dashboard, open the training session whose artifact you want to validate, then click **New Validation Session**. Choose an **on-target** validation session.
 
 {{ figure("../assets/studio-create-session.png", "EdgeFirst Studio — creating an on-target validation session") }}
 

@@ -2,7 +2,7 @@
 
 {{ figure("assets/projects/studio-from-scratch.jpg", "Starting Page") }}
 
-The "Projects" page organizes data into logical project partitions.  A project is a high-level collections of sensor datasets, model experiments, and other automation and management tasks associated with the dataset inputs and model outputs.  When you first login, this page will already contain public projects called "Sample Project", "COCO Detection", "COCO Instance Segmentation".
+The "Projects" page organizes data into logical project partitions.  A project is a high-level collection of sensor datasets, model experiments, and other automation and management tasks associated with the dataset inputs and model outputs.  When you first login, this page will already contain public projects called "Sample Project", "COCO Detection", "COCO Instance Segmentation".
 
 To return to this page from any other page, you can click on the "Projects" button on the top navigation bar.
 

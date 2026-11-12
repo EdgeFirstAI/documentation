@@ -72,7 +72,7 @@ To compare the validation charts of each session, select the validation sessions
 
 {{ figure("assets/models/compare-validation-sessions.jpg", "Compare Validation Sessions") }}
 
-Now the charts for each selected sessions are displayed side-by-side.  All the charts for a single training session will be shown in one column.  A new column indicates another session.
+Now the charts for each selected session are displayed side-by-side.  All the charts for a single training session will be shown in one column.  A new column indicates another session.
 
 {{ figure("assets/models/validation-charts-comparison.jpg", "Comparing Validation Sessions") }}
 

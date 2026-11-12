@@ -16,7 +16,7 @@ The top of the Apps page provides filters to help narrow the catalog:
 - **Name**: Search by the app package or internal app name.
 - **Title**: Search by the user-facing app title.
 - **Author**: Filter apps by publisher.
-- **Type**: Filter by app category such as AIGT, Converter, Exporter, Importer,
+- **Type**: Filter by app category such as Converter, Exporter, Importer,
   Profiler, Trainer, or Validator.
 
 When a type filter is active, a **Clear Filter** button appears so you can return to the
@@ -124,7 +124,7 @@ store locally, move between systems, or hand off to another workflow.
 
 ### Trainer Apps
 
-Trainer Apps produce vision models for a dataset and publish the model, its [metadata](../models/metadata.md) and an INT8 calibration snapshot to a training session. A Training App is launched from an experiment's *Training Sessions* page, where its launch form collects the dataset, the destination experiment and the training parameters. The session runs on a cloud GPU instance.  See [Training Vision Models](../models/training/vision.md).
+Trainer Apps produce vision models for a dataset and publish the model, its [metadata](../models/metadata.md) and an INT8 calibration snapshot to a training session. A Trainer App is launched from an experiment's *Training Sessions* page, where its launch form collects the dataset, the destination experiment and the training parameters. The session runs on a cloud GPU instance.  See [Training Vision Models](../models/training/vision.md).
 
 #### ModelPack
 
@@ -173,12 +173,6 @@ Compiles a model into a `.hef` Hailo Executable Format binary for Hailo-8 and Ha
 NPUs, with structurally-required per-scale Smart Quantization. See
 [Hailo Conversion](../models/conversion/hailo.md).
 
-!!! info "App Marketplace"
-    The available apps may change as new apps are published. Per-app pricing is shown on
-    each app card and reflected in your [billing](user/billing.md). Contact
-    [support@edgefirst.ai](mailto:support@edgefirst.ai) for information on publishing
-    your own apps to the marketplace.
-
 ### EdgeFirst Profiler
 
 The on-target measurement engine. The Profiler runs the complete vision pipeline —
@@ -194,6 +188,12 @@ The Studio-side companion to the Profiler. The Validator post-processes the pred
 and timing traces produced by a profiling run to compute COCO/LVIS accuracy metrics
 (such as mAP and mIoU) and timing charts, then publishes the results to the validation
 session. See [Validation Metrics](../models/validation/metrics/index.md).
+
+!!! info "App Marketplace"
+    The available apps may change as new apps are published. Per-app pricing is shown on
+    each app card and reflected in your [billing](user/billing.md). Contact
+    [support@edgefirst.ai](mailto:support@edgefirst.ai) for information on publishing
+    your own apps to the marketplace.
 
 ## Next Steps
 

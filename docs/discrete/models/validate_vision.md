@@ -20,7 +20,7 @@ On the top right corner of the page, click on the "validate" button as indicated
 
 {{ figure("/models/assets/validation/training_validate_button.jpg", "Validate Button") }}
 
-Select the model to use for validation. Select either an **ONNX, Keras, or TFLite** models — these are the formats supported by cloud validation. When you are ready, click **START APP** to begin the validation process.
+Select the model to use for validation. Select either an **ONNX, Keras, or TFLite** model — these are the formats supported by cloud validation. When you are ready, click **START APP** to begin the validation process.
 
 {{ figure("/models/assets/validation/vision-validate-settings.jpg", "Start Validation Session") }}
 

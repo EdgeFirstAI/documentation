@@ -24,7 +24,7 @@ Click on any dataset card to view the dataset details, browse frames, and inspec
 
 EdgeFirst Studio organizes model training and validation into [**experiments**](../../studio/models.md). Each experiment groups related training and validation sessions together so you can compare results, track improvements, and reproduce runs.
 
-From the Home Page, navigate to the **Sample Project** and click **Model Experiments** to browse the available experiments.
+From the Projects page, open the **Sample Project** and click **Model Experiments** to browse the available experiments.
 
 {{ figure("/studio/assets/projects/sample-experiments-button.jpg", "Sample Project Model Experiments") }}
 

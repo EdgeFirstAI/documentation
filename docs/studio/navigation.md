@@ -99,7 +99,7 @@ Clicking on "Experiments" takes the user to the [Model Experiments Dashboard](mo
 
     This feature is currently a work in progress in EdgeFirst Studio. Once ready, the feature will provide the tools for users to use as described below.
 
-Clicking on "Profilers" takes the user to the Profiler Dashboard.  This feature allows users to compare the performance of models across embedded targets to allow users to find the best model-target combination to deploy into their system. This feature installs the same set of tools as our [HuggingFace Dashboard](https://huggingface.co/spaces/EdgeFirst/Models) for model comparison with additional filtering, sorting, and scoping capabilities.
+Clicking on "Profilers" takes the user to the Profiler Dashboard.  This feature allows users to compare the performance of models across embedded targets to allow users to find the best model-target combination to deploy into their system. This feature provides the same set of tools as our [HuggingFace Dashboard](https://huggingface.co/spaces/EdgeFirst/Models) for model comparison with additional filtering, sorting, and scoping capabilities.
 
 ### Apps
 

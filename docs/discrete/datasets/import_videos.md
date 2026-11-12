@@ -1,4 +1,4 @@
-1. Click on the Apps waffle menu at the top navbar on the top navbar as shown below. This will open another panel, then click on the "APPS" button to navigate to the "APPS" page.
+1. Click on the Apps waffle menu at the top navbar as shown below. This will open another panel, then click on the "APPS" button to navigate to the "APPS" page.
 
     {{ figure("/studio/assets/navigation/apps_button.png", "Go to Apps") }}
 
@@ -6,7 +6,7 @@
 
     {{ figure("/studio/assets/navigation/importer_apps.png", "Apps Page") }}
 
-3. Find the "Video Importer" app and click the "Run App" button associated to the app. This will open the settings for the video importer app to configure the video import process.
+3. Find the "Video Importer" app and click the "Run App" button for the app. This will open the settings for the video importer app to configure the video import process.
 
     {{ figure("/datasets/assets/import/video_importer.png", "Video Importer App") }}
 

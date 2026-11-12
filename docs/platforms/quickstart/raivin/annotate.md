@@ -54,6 +54,14 @@ For more detail on each option, see the [AGTG tutorial](../../../datasets/tutori
 
 To move, resize or delete a 2D or 3D box, or to change its label, follow the [Manual Annotations](../../../datasets/tutorials/annotations/manual.md) tutorial.
 
+## More Information
+
+- [Automatic Ground Truth Generation (AGTG)](../../../studio/agtg.md): how the AGTG pipeline works and what each control in the tool does.
+- [AGTG Tutorial](../../../datasets/tutorials/annotations/automatic.md): fully automatic annotation during restore, and semi-automatic annotation in the gallery, with video tutorials.
+- [Manual Annotations](../../../datasets/tutorials/annotations/manual.md): adjusting 2D and 3D boxes by hand.
+- [3D Annotations](../../../3D/annotation.md): what the 3D boxes represent and how they are built from Radar or LiDAR point clouds.
+- [Dataset Annotations](../../../datasets/tutorials/annotations/index.md): adding, editing and removing labels.
+
 ## Next Steps
 
 Once every sequence is annotated, the next step in the Raivin Quick Start guide is to prepare the dataset for training by [splitting and tagging the dataset](split.md).

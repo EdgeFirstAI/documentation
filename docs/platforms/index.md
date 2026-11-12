@@ -33,7 +33,7 @@ This section covers Quick Start guides for deploying the EdgeFirst workflow in y
     
     [![pi5](assets/raspberrypi5.png)](quickstart/raspberrypi/index.md)
 
-The following diagram describes the workflow you will follow depending on the hardware available. The bolded links will take you to the specific documentation to review.  Specifically, the Maivin and Raivin boxes on the left-hand side will take you to their respective Quick Start guides.
+The following diagram describes the workflow you will follow depending on the hardware available. The highlighted boxes are links to the matching documentation. Specifically, the Maivin and Raivin boxes on the left-hand side will take you to their respective Quick Start guides.
 
 ```mermaid
 %%{init: {"flowchart": {"defaultRenderer": "elk", "nodeSpacing": 60, "rankSpacing": 80}, "themeVariables": { "fontSize": "40px" }} }%%
@@ -94,8 +94,11 @@ flowchart LR
     pi_setup[Setup Raspberry Pi 5]:::coral 
     click pi_setup "quickstart/raspberrypi/setup" "Open Raspberry Pi Setup"
 
-    copy_dataset[Copy Sample Dataset]:::boxes
-    click copy_dataset "../getting_started/copy_dataset" "Copy Public Dataset"
+    copy_dataset[Record MCAP]:::boxes
+    click copy_dataset "../perception/data_collection/recording/" "Record MCAP"
+
+    upload_mcap[Upload MCAP]:::boxes
+    click copy_dataset "../perception/data_collection/publishing/" "Upload MCAP"
     end
 
     %% ---------- TRAINING ----------
@@ -169,6 +172,7 @@ flowchart LR
     imx95_setup ==> copy_dataset
     orin_setup ==> copy_dataset
     pi_setup ==> copy_dataset
+    copy_dataset ==> upload_mcap
 
     %% ---------- CONVERSION ----------
     train_2d ==> neutron_converter ==> validate_imx95
@@ -176,11 +180,11 @@ flowchart LR
     ara2 == No ==> validate_2d
 
     %% ---------- CORE PIPELINE ----------
-    copy_dataset ==> train_2d
+    upload_mcap ==> train_2d
     train_2d ==> ara2
 
     %% ---------- 3D PIPELINE ----------
-    copy_dataset == Raivin Only ==> train_3d
+    upload_mcap == Raivin Only ==> train_3d
     train_3d ==> validate_3d
 
     %% ---------- DEPLOYMENT ----------

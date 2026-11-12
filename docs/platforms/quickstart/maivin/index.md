@@ -6,7 +6,7 @@
 
 The Maivin configuration is a vision-only platform that provides a vision-based perception stack for use in harsh environments, providing an IP66/67 waterproof enclosure and connectors.  The Maivin platform is built on the [NXP i.MX 8M Plus](https://www.nxp.com/products/i.MX8MPLUS) processor which includes a 2 TOPS AI accelerator.  The [EdgeFirst Perception Middleware](../../../perception/index.md) leverages the AI-accelerator enabling this vision sensor to be deployed in the field to deliver real-time edge perception applications.
 
-## System Overiew
+## System Overview
 
 The Maivin runs a Linux operating system based on Toradex's [Torizon OS 7](https://www.toradex.com/torizon), we refer to the operating system as Torizon for Maivin.  The operating system packages include common libraries and tools you would expect to find on a typical embedded Linux operating system focused on computer vision and AI (Python, OpenCV, GStreamer, etc...) along with the Docker container engine for user applications.  Refer to the [Release Notes](../../software/release_notes.md) for the versions included in the current release and to [Software Updates](../../software/updates.md) for keeping the platform up to date.
 
@@ -20,10 +20,11 @@ In this Quick Start, you will find instructions for:
 2. [Visiting the Maivin's Web UI](webui.md)
 3. [Recording an MCAP using the Maivin](record.md)
 4. [Uploading the MCAP to EdgeFirst Studio](upload.md)
-5. [Restoring an MCAP into a Dataset](restore.md)
-6. [Split and Tag the Restored Dataset for Training](split.md)
-7. [Training Vision Model](train.md)
-8. [Validating Vision Model](validate.md)
-9. [Deploying Vision Model](deploy.md)
+5. [Creating a project in EdgeFirst Studio](project.md)
+6. [Restoring an MCAP into a Dataset](restore.md)
+7. [Split and Tag the Restored Dataset for Training](split.md)
+8. [Training Vision Model](train.md)
+9. [Validating Vision Model](validate.md)
+10. [Deploying Vision Model](deploy.md)
 
 Each page links to the next, so you can also just start with [Setup](setup.md) and follow the trail through to deployment.  For a tour of the device's main page, see the [Web UI Walkthrough](webui.md).

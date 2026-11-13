@@ -26,19 +26,18 @@ Hardware modules are available at https://www.au-zone.com/edgefirstmodules.
 ## Common Commands
 
 ```bash
-# Setup (use a local venv, never install globally)
-python -m venv venv && source venv/bin/activate
-pip install -r requirements.txt
+# Setup: uv creates .venv from uv.lock (Python version from .python-version)
+uv sync
 
 # Local development server
-mkdocs serve                  # http://localhost:8000/
+uv run properdocs serve       # http://localhost:8000/
 
-# Spell check (strict mode — runs during CI)
-mkdocs build -s
+# Strict build with spell check (runs on every pull request in the build workflow)
+uv run properdocs build -s
 
 # Versioned deploy with mike (used in CI and for local verification)
-mike deploy -r <branch> <version> <alias>
-mike serve
+uv run mike deploy -r <branch> <version> <alias>
+uv run mike serve
 
 # Markdown linting (used in CI)
 npx markdownlint-cli2 "docs/**/*.md"
@@ -49,6 +48,7 @@ npx markdownlint-cli2 "docs/**/*.md"
 ### Site Structure
 
 - `mkdocs.yml` — Central configuration: nav structure, plugins, theme, markdown extensions
+- `pyproject.toml` / `uv.lock` — Build dependencies; Dependabot updates the lock file and GitHub Actions in one weekly pull request
 - `docs/` — All documentation content organized by product area
 - `docs/.nav.yml` — Top-level navigation structure (used by `awesome-nav` plugin)
 - `docs/discrete/` — Reusable doc fragments included across multiple pages (excluded from direct nav)
@@ -78,7 +78,7 @@ The site uses `mike` for version management. Three branches auto-deploy via CI:
 | `stage` | Staging |
 | `saas` | Production (set as `latest` default) |
 
-CI runs on push to these branches (`.github/workflows/publish.yml`), deploys to GitHub Pages via `gh-pages` branch.
+CI runs on push to these branches (`.github/workflows/publish.yml`), deploys to GitHub Pages via `gh-pages` branch. Pull requests run a strict build (`.github/workflows/build.yml`).
 
 ### Key Plugins
 

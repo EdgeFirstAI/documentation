@@ -1,11 +1,14 @@
 edgefirst-client
 edgefirst-schemas>=4.0,<5
 mike
+Markdown>=3.6,<3.10
+mkdocstrings>=1.0.4,<1.0.8
+mkdocstrings-python>=2.0.4,<2.0.10
+pymdown-extensions>=11.1,<12.2
 mkdocs-autorefs
 mkdocs-awesome-nav
 mkdocs-material
 mkdocs-redirects
-mkdocstrings-python
 mkdocs-include-markdown-plugin
 mkdocs-spellcheck[codespell,symspellpy]
 pillow

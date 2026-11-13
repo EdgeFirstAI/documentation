@@ -231,6 +231,7 @@ nav:
           - platforms/quickstart/raivin/upload.md
           - platforms/quickstart/raivin/project.md
           - platforms/quickstart/raivin/restore.md
+          - platforms/quickstart/raivin/annotate.md
           - platforms/quickstart/raivin/split.md
           - platforms/quickstart/raivin/train.md
           - platforms/quickstart/raivin/validate.md

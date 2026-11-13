@@ -1,0 +1,27 @@
+version: 2
+
+# Every ecosystem lands in one pull request per week.
+multi-ecosystem-groups:
+  weekly:
+    schedule:
+      interval: weekly
+      day: monday
+
+updates:
+  - package-ecosystem: uv
+    directory: /
+    multi-ecosystem-group: weekly
+    patterns: ["*"]
+    # Lock-only dependencies such as pymdown-extensions break the build as
+    # readily as direct ones, so update the whole lock file.
+    allow:
+      - dependency-type: all
+    # Skip releases younger than a week so a dependent package has time to
+    # ship a compatible release first.
+    cooldown:
+      default-days: 7
+
+  - package-ecosystem: github-actions
+    directory: /
+    multi-ecosystem-group: weekly
+    patterns: ["*"]

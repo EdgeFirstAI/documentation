@@ -7,16 +7,16 @@ The EdgeFirst Documentation provides tutorials and information related to EdgeFi
 ## MkDocs
 Follow these steps for deploying the documentation locally on your machine.
 
-`pip install -r requirements.txt`
+Install [uv](https://docs.astral.sh/uv/getting-started/installation/), then run the server. `uv run` creates `.venv` from `uv.lock` on first use, with the Python version in `.python-version`.
 
-`properdocs serve`
+`uv run properdocs serve`
 
 You should now be able to see the documentation on your browser by visiting this link `http://localhost:8000/`.
 
 For faster local iteration while editing content, use the dirty rebuild mode:
 
 ```sh
-properdocs serve --dirty
+uv run properdocs serve --dirty
 ```
 
 This rebuilds only the files that changed instead of rebuilding the full site each time, which is noticeably faster for this documentation set.
@@ -25,23 +25,23 @@ This rebuilds only the files that changed instead of rebuilding the full site ea
 
 **Alternatively**, use `mike` which is typically used for extra verification that the links are not broken.
 
-`mike deploy -r <git branch> <version> <alias>` [Example: `mike deploy -r DE-1941-doc-fixes v1.0 testing-v1.0`]
+`uv run mike deploy -r <git branch> <version> <alias>` [Example: `uv run mike deploy -r DE-1941-doc-fixes v1.0 testing-v1.0`]
 
-`mike set-default <version>` [Example: `mike set-default v1.0`]
+`uv run mike set-default <version>` [Example: `uv run mike set-default v1.0`]
 
-Once deployed, run `mike serve` and access the documentation in this link `http://localhost:8000/v1.0/`.
+Once deployed, run `uv run mike serve` and access the documentation in this link `http://localhost:8000/v1.0/`.
 
 This will create a local branch for the documentation that will show like the following below.
 
 ![Local Deployed Documentation](docs/assets/mike-deploy-local.jpg)
 
-To delete the local branches that's created, run `mike delete <identifier>` [Example: `mike delete DE-1941-doc-fixes`]
+To delete the local branches that's created, run `uv run mike delete <identifier>` [Example: `uv run mike delete DE-1941-doc-fixes`]
 
 More information for using `mike` can be found [here](https://github.com/jimporter/mike?tab=readme-ov-file#building-your-docs).
 
 ## Spell Check
 
-Run a spell checker on the documentation using `mkdocs build -s`.
+Run a spell checker on the documentation using `uv run properdocs build -s`. The `build` workflow runs the same strict build on every pull request.
 
 ## Markdown Lint
 

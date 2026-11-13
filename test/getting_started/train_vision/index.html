@@ -970,8 +970,6 @@
       
         
       
-        
-      
     
     
     
@@ -1370,8 +1368,6 @@
       
         
       
-        
-      
     
     
     
@@ -1525,8 +1521,8 @@
 
 
 <h1 id="train-vision-model">Train Vision Model</h1>
-<p>Now that your dataset is fully annotated, versioned, and split into training and validation partitions, you are ready to begin training your model.  This will briefly show the steps for training a model, but for an in depth tutorial, please see <a href="../../models/training/vision/">Training Vision Models</a>.</p>
-<p>Navigate back to the "Projects" page.  You can go back to the "Projects" page by clicking the Apps Menu waffle button on the top right of the Navigation bar.  Click the first selection to take you to the "Projects page".</p>
+<p>Now that your dataset is fully annotated, tagged, and split into training and validation partitions, you are ready to begin training your model.  This guide briefly shows the steps for training a model, but for an in depth tutorial, please see <a href="../../models/training/vision/">Training Vision Models</a>.</p>
+<p>Navigate back to the "Projects" page.  You can go back to the "Projects" page by clicking the "PROJECTS" button on the top navbar as shown.</p>
 <figure>
             <img align="center" alt="Go to Projects Page" src="../../studio/assets/navigation/go-to-projects-page.jpg" />
             <figcaption>Go to Projects Page</figcaption>
@@ -1546,32 +1542,22 @@
             <img align="center" alt="Training Sessions" src="../../models/assets/training/training-sessions.jpg" />
             <figcaption>Training Sessions</figcaption>
             </figure>
-<p>Create a new training session by clicking the "Actions" dropdown menu on the top right of the page and then click the "+ New" button.</p>
+<p>Start a new training session by clicking the "Actions" dropdown menu on the top right of the page.  From here you can either train <a href="../../models/modelpack/">ModelPack</a> or <a href="../../models/ultralytics/">Ultralytics</a> models.  In this guide, we will demonstrate starting a ModelPack session.</p>
 <figure>
-            <img align="center" alt="New Session Button" src="../../models/assets/training/new-session-button.jpg" />
+            <img align="center" alt="New Session Button" src="../../models/assets/training/new-mpk-session-button.jpg" />
             <figcaption>New Session Button</figcaption>
             </figure>
-<p>Follow the settings indicated and keep the rest of the settings default.  Click "Start Session" to start the training session.</p>
+<p>Follow the settings indicated and keep the rest of the settings default.  Click "Start App" to start the training session.</p>
 <figure>
             <img align="center" alt="Start Training Session" src="../../models/assets/training/vision-train-settings.jpg" />
             <figcaption>Start Training Session</figcaption>
             </figure>
-<div class="admonition failure">
-<p class="admonition-title">InsufficientInstanceCapacity</p>
-<p><img alt="InsufficientInstanceCapacity Error" src="../../studio/assets/models/insufficient-capacity-error.jpg" /></p>
-<p>If you see this error after starting your training session, retry creating the session. This can happen when AWS reports that no EC2 instances are currently available to launch; the current workaround is to retry.</p>
-</div>
 <p>The session progress will be shown like the following below.</p>
 <figure>
             <img align="center" alt="Training Session Progress" src="../../models/assets/training/vision-session-progress.jpg" />
             <figcaption>Training Session Progress</figcaption>
             </figure>
-<p>Once the session is complete, the session card will appear like the following.</p>
-<figure>
-            <img align="center" alt="Completed Session" src="../../models/assets/training/vision-completed-session.jpg" />
-            <figcaption>Completed Session</figcaption>
-            </figure>
-<p>Click the training session card for more information.</p>
+<p>Once the session is complete, the session card will appear like the following. Click the training session card for more information.</p>
 <figure>
             <img align="center" alt="Training Details" src="../../models/assets/training/vision-view-train-details.jpg" />
             <figcaption>Training Details</figcaption>
@@ -1581,6 +1567,7 @@
             <img align="center" alt="Model Artifacts" src="../../models/assets/training/vision-session-artifacts.jpg" />
             <figcaption>Model Artifacts</figcaption>
             </figure>
+<p>Now that you have trained your model, you can also find various model converters and exporters in EdgeFirst Studio that build supported model formats for specific computing hardware.</p>
 
 
 

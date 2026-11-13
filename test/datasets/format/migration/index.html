@@ -29,7 +29,7 @@
     
     
       
-        <title>Upgrading from 2025.10 to 2026.04 - EdgeFirst Studio Documentation</title>
+        <title>Migration Guide - EdgeFirst Studio Documentation</title>
       
     
     
@@ -81,7 +81,7 @@
     
   
 <meta property="og:type" content="website" />
-<meta property="og:title" content="Upgrading from 2025.10 to 2026.04 - EdgeFirst Studio Documentation" />
+<meta property="og:title" content="Migration Guide - EdgeFirst Studio Documentation" />
 <meta property="og:description" content="EdgeFirst Studio Documentation" />
 <meta property="og:image" content="https://doc.edgefirst.ai/test/assets/images/social/datasets/format/migration.png" />
 <meta property="og:image:type" content="image/png" />
@@ -89,7 +89,7 @@
 <meta property="og:image:height" content="630" />
 <meta property="og:url" content="https://doc.edgefirst.ai/test/datasets/format/migration/" />
 <meta property="twitter:card" content="summary_large_image" />
-<meta property="twitter:title" content="Upgrading from 2025.10 to 2026.04 - EdgeFirst Studio Documentation" />
+<meta property="twitter:title" content="Migration Guide - EdgeFirst Studio Documentation" />
 <meta property="twitter:description" content="EdgeFirst Studio Documentation" />
 <meta property="twitter:image" content="https://doc.edgefirst.ai/test/assets/images/social/datasets/format/migration.png" />
 </head>
@@ -111,7 +111,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#upgrading-from-202510-to-202604" class="md-skip">
+        <a href="#migration-guide" class="md-skip">
           Skip to content
         </a>
       
@@ -165,7 +165,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Upgrading from 2025.10 to 2026.04
+              Migration Guide
             
           </span>
         </div>
@@ -590,8 +590,6 @@
       
         
           
-        
-      
         
       
         
@@ -1275,7 +1273,7 @@
   <span class="md-ellipsis">
     
   
-    Upgrading from 2025.10 to 2026.04
+    Migration Guide
   
 
     
@@ -1293,7 +1291,7 @@
   <span class="md-ellipsis">
     
   
-    Upgrading from 2025.10 to 2026.04
+    Migration Guide
   
 
     
@@ -1319,6 +1317,18 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#upgrading-from-202604-to-202610" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Upgrading from 2026.04 to 2026.10
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Upgrading from 2026.04 to 2026.10">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
   <a href="#what-changed" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -1328,8 +1338,8 @@
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
+        
+          <li class="md-nav__item">
   <a href="#migration-command" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -1337,6 +1347,83 @@
       
     </span>
   </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#readers-need-not-migrate" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Readers Need Not Migrate
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#imu-pose-and-gps-location-in-older-files" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        IMU Pose and GPS Location in Older Files
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#clarifications-to-202610" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Clarifications to 2026.10
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#upgrading-from-202510" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Upgrading from 2025.10
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Upgrading from 2025.10">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#what-changed_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What Changed
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#migration-command_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Migration Command
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -1380,10 +1467,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#reading-both-versions" class="md-nav__link">
+  <a href="#reading-all-versions" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Reading Both Versions
+        Reading All Versions
       
     </span>
   </a>
@@ -1414,10 +1501,21 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#if-you-check-box2d_format" class="md-nav__link">
+  <a href="#if-you-read-iscrowd" class="md-nav__link">
     <span class="md-ellipsis">
       
-        If you check box2d_format
+        If you read iscrowd
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#if-you-read-the-pose-column" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        If you read the pose column
       
     </span>
   </a>
@@ -1641,8 +1739,6 @@
       
         
       
-        
-      
     
     
     
@@ -1781,6 +1877,18 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#upgrading-from-202604-to-202610" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Upgrading from 2026.04 to 2026.10
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Upgrading from 2026.04 to 2026.10">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
   <a href="#what-changed" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -1790,8 +1898,8 @@
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
+        
+          <li class="md-nav__item">
   <a href="#migration-command" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -1799,6 +1907,83 @@
       
     </span>
   </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#readers-need-not-migrate" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Readers Need Not Migrate
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#imu-pose-and-gps-location-in-older-files" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        IMU Pose and GPS Location in Older Files
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#clarifications-to-202610" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Clarifications to 2026.10
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#upgrading-from-202510" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Upgrading from 2025.10
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Upgrading from 2025.10">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#what-changed_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What Changed
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#migration-command_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Migration Command
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -1842,10 +2027,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#reading-both-versions" class="md-nav__link">
+  <a href="#reading-all-versions" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Reading Both Versions
+        Reading All Versions
       
     </span>
   </a>
@@ -1876,10 +2061,21 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#if-you-check-box2d_format" class="md-nav__link">
+  <a href="#if-you-read-iscrowd" class="md-nav__link">
     <span class="md-ellipsis">
       
-        If you check box2d_format
+        If you read iscrowd
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#if-you-read-the-pose-column" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        If you read the pose column
       
     </span>
   </a>
@@ -1979,16 +2175,202 @@
 
 
 
-<h1 id="upgrading-from-202510-to-202604">Upgrading from 2025.10 to 2026.04</h1>
-<p>This guide covers the breaking changes introduced in schema version 2026.04 and how
-to migrate existing datasets and code.</p>
-<h2 id="what-changed">What Changed</h2>
+<h1 id="migration-guide">Migration Guide</h1>
+<p>This guide covers upgrading datasets and code to schema version <strong>2026.10</strong>, the format written by EdgeFirst Client 2.15.0 and later. 2026.10 is an additive change on top of 2026.04; 2026.04 introduced the breaking changes from 2025.10.</p>
+<table>
+<thead>
+<tr>
+<th>From</th>
+<th>To</th>
+<th>Breaking</th>
+<th>Migration command</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2026.04</td>
+<td>2026.10</td>
+<td>No</td>
+<td>Optional — readers accept 2026.04 files as is</td>
+</tr>
+<tr>
+<td>2025.10</td>
+<td>2026.10</td>
+<td>Yes</td>
+<td><code>edgefirst-client migrate</code> converts directly to 2026.10</td>
+</tr>
+</tbody>
+</table>
+<h2 id="upgrading-from-202604-to-202610">Upgrading from 2026.04 to 2026.10</h2>
+<h3 id="what-changed">What Changed</h3>
+<table>
+<thead>
+<tr>
+<th>Area</th>
+<th>2026.04</th>
+<th>2026.10</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Don't-care flag</td>
+<td><code>iscrowd: Boolean</code> (COCO crowd regions only)</td>
+<td><code>ignore: Boolean</code> — same COCO source, plus don't-care regions from other formats (for example VisDrone <code>ignored regions</code>)</td>
+</tr>
+<tr>
+<td>Excluded objects</td>
+<td>Not represented</td>
+<td><code>exclude: Boolean</code> — real objects outside the class set (for example VisDrone <code>others</code>)</td>
+</tr>
+<tr>
+<td><code>iscrowd</code></td>
+<td>Current</td>
+<td><strong>Deprecated</strong> — written as a mirror of <code>ignore</code> for compatibility</td>
+</tr>
+<tr>
+<td>Attribute columns</td>
+<td>Not represented</td>
+<td><code>truncation</code> and <code>occlusion</code> (<code>UInt32</code>), JSON <code>attributes</code> object</td>
+</tr>
+<tr>
+<td><abbr title="Inertial Measurement Unit">IMU</abbr> <code>pose</code></td>
+<td>Order not consistent between tools</td>
+<td><code>[roll, pitch, yaw]</code> in signed degrees</td>
+</tr>
+</tbody>
+</table>
+<p>No existing column is removed or changes type. See <a href="../schema/#annotation-metadata">Annotation Schema</a> for the column definitions.</p>
+<h3 id="migration-command">Migration Command</h3>
+<div class="highlight"><pre><span></span><code>edgefirst-client<span class="w"> </span>migrate<span class="w"> </span>dataset.arrow<span class="w"> </span><span class="o">[</span>--output<span class="w"> </span>migrated.arrow<span class="o">]</span>
+</code></pre></div>
+<p><code>edgefirst-client migrate</code> upgrades a 2026.04 file to 2026.10:</p>
+<ol>
+<li>Adds the <code>ignore</code> column from the deprecated <code>iscrowd</code> column when <code>ignore</code> is not already present, keeping <code>iscrowd</code> as a mirror</li>
+<li>Leaves the Binary raster <code>mask</code> column and all other columns unchanged</li>
+<li>Sets <code>schema_version = "2026.10"</code> in file metadata</li>
+<li>Writes to <code>--output</code>, or overwrites the input file in place when <code>--output</code> is omitted</li>
+</ol>
+<p>No <code>exclude</code> column is created — there is nothing in a 2026.04 file to derive it from. The command does not reorder <code>pose</code> or <code>location</code>; see <a href="#imu-pose-and-gps-location-in-older-files"><abbr title="Inertial Measurement Unit">IMU</abbr> Pose and <abbr title="Global Positioning System">GPS</abbr> Location in Older Files</a>.</p>
+<h3 id="readers-need-not-migrate">Readers Need Not Migrate</h3>
+<p>Files do not need to be migrated to be read. Readers prefer the <code>ignore</code> column but fall back to <code>iscrowd</code> (accepting either <code>Boolean</code> or the older integer type) when <code>ignore</code> is absent, so 2026.04 files continue to work with the current client without running <code>migrate</code>.</p>
+<p>If your code reads <code>iscrowd</code> directly, switch it to <code>ignore</code> with the same fallback:</p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">polars</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pl</span>
+
+<span class="n">df</span> <span class="o">=</span> <span class="n">pl</span><span class="o">.</span><span class="n">read_ipc</span><span class="p">(</span><span class="s2">"dataset.arrow"</span><span class="p">)</span>
+
+<span class="k">if</span> <span class="s2">"ignore"</span> <span class="ow">in</span> <span class="n">df</span><span class="o">.</span><span class="n">columns</span><span class="p">:</span>
+    <span class="n">ignore</span> <span class="o">=</span> <span class="n">pl</span><span class="o">.</span><span class="n">col</span><span class="p">(</span><span class="s2">"ignore"</span><span class="p">)</span><span class="o">.</span><span class="n">fill_null</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
+<span class="k">elif</span> <span class="s2">"iscrowd"</span> <span class="ow">in</span> <span class="n">df</span><span class="o">.</span><span class="n">columns</span><span class="p">:</span>
+    <span class="n">ignore</span> <span class="o">=</span> <span class="n">pl</span><span class="o">.</span><span class="n">col</span><span class="p">(</span><span class="s2">"iscrowd"</span><span class="p">)</span><span class="o">.</span><span class="n">cast</span><span class="p">(</span><span class="n">pl</span><span class="o">.</span><span class="n">Boolean</span><span class="p">)</span><span class="o">.</span><span class="n">fill_null</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="n">ignore</span> <span class="o">=</span> <span class="n">pl</span><span class="o">.</span><span class="n">lit</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
+
+<span class="n">annotations</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="o">~</span><span class="n">ignore</span><span class="p">)</span>
+</code></pre></div>
+<h3 id="imu-pose-and-gps-location-in-older-files"><abbr title="Inertial Measurement Unit">IMU</abbr> Pose and <abbr title="Global Positioning System">GPS</abbr> Location in Older Files</h3>
+<p>Before 2026.10, the array order of the <code>pose</code> column was not consistent between the tools that write EdgeFirst datasets, and some EdgeFirst Publisher releases wrote <code>location</code> in the reverse order. The order cannot be detected from the file itself, so check which tool produced an older file:</p>
+<table>
+<thead>
+<tr>
+<th>Writer</th>
+<th><code>pose</code> order</th>
+<th><code>pose</code> range</th>
+<th><code>location</code> order</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>EdgeFirst Client 2.14 and earlier (<code>download-annotations</code>, <code>samples_dataframe</code>, Studio snapshots created through the client)</td>
+<td><code>[yaw, pitch, roll]</code></td>
+<td>Signed degrees</td>
+<td><code>[lat, lon]</code></td>
+</tr>
+<tr>
+<td>EdgeFirst Publisher 1.10 (Torizon for Maivin 2026.08)</td>
+<td><code>[roll, pitch, yaw]</code></td>
+<td>0–360 degrees</td>
+<td><code>[lat, lon]</code></td>
+</tr>
+<tr>
+<td>EdgeFirst Publisher 1.9 and earlier</td>
+<td><code>[roll, pitch, yaw]</code></td>
+<td>0–360 degrees</td>
+<td><code>[lon, lat]</code></td>
+</tr>
+<tr>
+<td>2026.10 files (all writers)</td>
+<td><code>[roll, pitch, yaw]</code></td>
+<td>Signed degrees</td>
+<td><code>[lat, lon]</code></td>
+</tr>
+</tbody>
+</table>
+<p><code>edgefirst-client upload-dataset</code> (2.15.0 and later) reads <code>pose</code> as <code>[roll, pitch, yaw]</code> and <code>location</code> as <code>[lat, lon]</code> whatever the file's version, so correct an older file before uploading it. Each fix below applies to one writer only. Running a fix on a file from a different writer corrupts columns that are already in the right order, so run only the snippet for the tool that produced the file. Studio JSON and the Studio <abbr title="Application Programming Interface">API</abbr> use the named fields <code>{roll, pitch, yaw}</code> and <code>{lat, lon}</code> and are not affected.</p>
+<p><strong>EdgeFirst Client 2.14 and earlier</strong> — swap roll and yaw:</p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">polars</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pl</span>
+
+<span class="n">df</span> <span class="o">=</span> <span class="n">pl</span><span class="o">.</span><span class="n">read_ipc</span><span class="p">(</span><span class="s2">"dataset.arrow"</span><span class="p">)</span>
+<span class="n">pose</span> <span class="o">=</span> <span class="n">pl</span><span class="o">.</span><span class="n">col</span><span class="p">(</span><span class="s2">"pose"</span><span class="p">)</span>
+
+<span class="c1"># [yaw, pitch, roll] -&gt; [roll, pitch, yaw]</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">with_columns</span><span class="p">(</span>
+    <span class="n">pl</span><span class="o">.</span><span class="n">when</span><span class="p">(</span><span class="n">pose</span><span class="o">.</span><span class="n">is_not_null</span><span class="p">())</span>
+    <span class="o">.</span><span class="n">then</span><span class="p">(</span><span class="n">pl</span><span class="o">.</span><span class="n">concat_list</span><span class="p">(</span><span class="n">pose</span><span class="o">.</span><span class="n">arr</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="mi">2</span><span class="p">),</span> <span class="n">pose</span><span class="o">.</span><span class="n">arr</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span> <span class="n">pose</span><span class="o">.</span><span class="n">arr</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="mi">0</span><span class="p">))</span><span class="o">.</span><span class="n">list</span><span class="o">.</span><span class="n">to_array</span><span class="p">(</span><span class="mi">3</span><span class="p">))</span>
+    <span class="o">.</span><span class="n">alias</span><span class="p">(</span><span class="s2">"pose"</span><span class="p">)</span>
+<span class="p">)</span>
+</code></pre></div>
+<p><strong>EdgeFirst Publisher 1.10</strong> — convert the 0–360 range to signed degrees:</p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">polars</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pl</span>
+
+<span class="n">df</span> <span class="o">=</span> <span class="n">pl</span><span class="o">.</span><span class="n">read_ipc</span><span class="p">(</span><span class="s2">"dataset.arrow"</span><span class="p">)</span>
+<span class="n">pose</span> <span class="o">=</span> <span class="n">pl</span><span class="o">.</span><span class="n">col</span><span class="p">(</span><span class="s2">"pose"</span><span class="p">)</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">signed</span><span class="p">(</span><span class="n">angle</span><span class="p">:</span> <span class="n">pl</span><span class="o">.</span><span class="n">Expr</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pl</span><span class="o">.</span><span class="n">Expr</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">"""Map an angle in 0..360 degrees to -180..180."""</span>
+    <span class="k">return</span> <span class="p">(</span><span class="n">angle</span> <span class="o">+</span> <span class="mf">180.0</span><span class="p">)</span> <span class="o">%</span> <span class="mf">360.0</span> <span class="o">-</span> <span class="mf">180.0</span>
+
+<span class="c1"># Order is already [roll, pitch, yaw]; only the range changes</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">with_columns</span><span class="p">(</span>
+    <span class="n">pl</span><span class="o">.</span><span class="n">when</span><span class="p">(</span><span class="n">pose</span><span class="o">.</span><span class="n">is_not_null</span><span class="p">())</span>
+    <span class="o">.</span><span class="n">then</span><span class="p">(</span><span class="n">pl</span><span class="o">.</span><span class="n">concat_list</span><span class="p">(</span><span class="n">signed</span><span class="p">(</span><span class="n">pose</span><span class="o">.</span><span class="n">arr</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="mi">0</span><span class="p">)),</span> <span class="n">signed</span><span class="p">(</span><span class="n">pose</span><span class="o">.</span><span class="n">arr</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="mi">1</span><span class="p">)),</span> <span class="n">signed</span><span class="p">(</span><span class="n">pose</span><span class="o">.</span><span class="n">arr</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="mi">2</span><span class="p">)))</span><span class="o">.</span><span class="n">list</span><span class="o">.</span><span class="n">to_array</span><span class="p">(</span><span class="mi">3</span><span class="p">))</span>
+    <span class="o">.</span><span class="n">alias</span><span class="p">(</span><span class="s2">"pose"</span><span class="p">)</span>
+<span class="p">)</span>
+</code></pre></div>
+<p><strong>EdgeFirst Publisher 1.9 and earlier</strong> — convert the <code>pose</code> range and swap latitude and longitude:</p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">polars</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pl</span>
+
+<span class="n">df</span> <span class="o">=</span> <span class="n">pl</span><span class="o">.</span><span class="n">read_ipc</span><span class="p">(</span><span class="s2">"dataset.arrow"</span><span class="p">)</span>
+<span class="n">pose</span> <span class="o">=</span> <span class="n">pl</span><span class="o">.</span><span class="n">col</span><span class="p">(</span><span class="s2">"pose"</span><span class="p">)</span>
+<span class="n">location</span> <span class="o">=</span> <span class="n">pl</span><span class="o">.</span><span class="n">col</span><span class="p">(</span><span class="s2">"location"</span><span class="p">)</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">signed</span><span class="p">(</span><span class="n">angle</span><span class="p">:</span> <span class="n">pl</span><span class="o">.</span><span class="n">Expr</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pl</span><span class="o">.</span><span class="n">Expr</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">"""Map an angle in 0..360 degrees to -180..180."""</span>
+    <span class="k">return</span> <span class="p">(</span><span class="n">angle</span> <span class="o">+</span> <span class="mf">180.0</span><span class="p">)</span> <span class="o">%</span> <span class="mf">360.0</span> <span class="o">-</span> <span class="mf">180.0</span>
+
+<span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">with_columns</span><span class="p">(</span>
+    <span class="c1"># Order is already [roll, pitch, yaw]; only the range changes</span>
+    <span class="n">pl</span><span class="o">.</span><span class="n">when</span><span class="p">(</span><span class="n">pose</span><span class="o">.</span><span class="n">is_not_null</span><span class="p">())</span>
+    <span class="o">.</span><span class="n">then</span><span class="p">(</span><span class="n">pl</span><span class="o">.</span><span class="n">concat_list</span><span class="p">(</span><span class="n">signed</span><span class="p">(</span><span class="n">pose</span><span class="o">.</span><span class="n">arr</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="mi">0</span><span class="p">)),</span> <span class="n">signed</span><span class="p">(</span><span class="n">pose</span><span class="o">.</span><span class="n">arr</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="mi">1</span><span class="p">)),</span> <span class="n">signed</span><span class="p">(</span><span class="n">pose</span><span class="o">.</span><span class="n">arr</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="mi">2</span><span class="p">)))</span><span class="o">.</span><span class="n">list</span><span class="o">.</span><span class="n">to_array</span><span class="p">(</span><span class="mi">3</span><span class="p">))</span>
+    <span class="o">.</span><span class="n">alias</span><span class="p">(</span><span class="s2">"pose"</span><span class="p">),</span>
+    <span class="c1"># [lon, lat] -&gt; [lat, lon]</span>
+    <span class="n">pl</span><span class="o">.</span><span class="n">when</span><span class="p">(</span><span class="n">location</span><span class="o">.</span><span class="n">is_not_null</span><span class="p">())</span>
+    <span class="o">.</span><span class="n">then</span><span class="p">(</span><span class="n">pl</span><span class="o">.</span><span class="n">concat_list</span><span class="p">(</span><span class="n">location</span><span class="o">.</span><span class="n">arr</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span> <span class="n">location</span><span class="o">.</span><span class="n">arr</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="mi">0</span><span class="p">))</span><span class="o">.</span><span class="n">list</span><span class="o">.</span><span class="n">to_array</span><span class="p">(</span><span class="mi">2</span><span class="p">))</span>
+    <span class="o">.</span><span class="n">alias</span><span class="p">(</span><span class="s2">"location"</span><span class="p">),</span>
+<span class="p">)</span>
+</code></pre></div>
+<h3 id="clarifications-to-202610">Clarifications to 2026.10</h3>
+<p>These clarify how existing 2026.10 columns may be written. They do not change <code>schema_version</code> or the schema, and no migration is needed.</p>
+<ul>
+<li><strong>Instance mask tiles</strong> (EdgeFirst Client 2.17.0): an instance segmentation <code>mask</code> PNG may cover only the tile of the image that contains the mask, with a standard PNG <code>oFFs</code> chunk in pixel units giving the tile's top-left position on the image. Masks without <code>oFFs</code> keep their previous meaning, and semantic segmentation masks stay image-sized. Readers that ignore <code>oFFs</code>, including EdgeFirst Client 2.16 and earlier and generic PNG tools, place a tile at the image origin. See <a href="../schema/#instance-mask-tiles">Instance Mask Tiles</a> for the reader rules and <a href="../conversion/#reading-instance-mask-tiles">Reading Instance Mask Tiles</a> for code.</li>
+</ul>
+<h2 id="upgrading-from-202510">Upgrading from 2025.10</h2>
+<h3 id="what-changed_1">What Changed</h3>
 <table>
 <thead>
 <tr>
 <th>Area</th>
 <th>2025.10</th>
-<th>2026.04</th>
+<th>2026.04 and later</th>
 <th>Impact</th>
 </tr>
 </thead>
@@ -2014,19 +2396,19 @@ to migrate existing datasets and code.</p>
 <tr>
 <td><code>iscrowd</code> type</td>
 <td><code>UInt8</code> (0/1)</td>
-<td><code>Boolean</code> (true/false)</td>
+<td><code>Boolean</code> (true/false), deprecated in 2026.10 in favor of <code>ignore</code></td>
 <td>Column type changed</td>
 </tr>
 <tr>
 <td>New columns</td>
 <td>N/A</td>
-<td><code>polygon_score</code>, <code>mask_score</code>, <code>box2d_score</code>, <code>box3d_score</code>, <code>timing</code>, <code>iscrowd</code>, <code>category_frequency</code>, <code>neg_label_indices</code>, <code>not_exhaustive_label_indices</code></td>
+<td><code>polygon_score</code>, <code>mask_score</code>, <code>box2d_score</code>, <code>box3d_score</code>, <code>timing</code>, <code>category_frequency</code>, <code>neg_label_indices</code>, <code>not_exhaustive_label_indices</code>, and in 2026.10 <code>ignore</code>, <code>exclude</code>, <code>truncation</code>, <code>occlusion</code></td>
 <td>Additive (non-breaking for readers that ignore unknown columns)</td>
 </tr>
 <tr>
 <td>File metadata</td>
 <td>None</td>
-<td><code>schema_version</code>, <code>box2d_format</code>, <code>box2d_normalized</code>, <code>category_metadata</code>, <code>labels</code>, etc.</td>
+<td><code>schema_version</code>, <code>category_metadata</code>, <code>labels</code></td>
 <td>Additive</td>
 </tr>
 <tr>
@@ -2044,70 +2426,63 @@ to migrate existing datasets and code.</p>
 <tr>
 <td>Parquet support</td>
 <td>N/A</td>
-<td><code>.parquet</code> files supported</td>
+<td><code>.parquet</code> files supported (client 2.14.0 and later)</td>
 <td>New capability</td>
 </tr>
 </tbody>
 </table>
 <div class="admonition danger">
 <p class="admonition-title">Old code will produce corrupt data</p>
-<p>Code that reads the <code>mask</code> column as <code>List&lt;Float32&gt;</code> and splits on NaN values
-will fail or produce incorrect results when applied to 2026.04 files where <code>mask</code>
-is <code>Binary</code> (PNG-encoded raster data). Additionally, <code>iscrowd</code> changed from <code>UInt8</code>
-to <code>Boolean</code>. Always check the schema version before processing.</p>
+<p>Code that reads the <code>mask</code> column as <code>List&lt;Float32&gt;</code> and splits on NaN values will fail or produce incorrect results when applied to 2026.04 and later files where <code>mask</code> is <code>Binary</code> (PNG-encoded raster data). Additionally, <code>iscrowd</code> changed from <code>UInt8</code> to <code>Boolean</code>. Always check the schema version before processing.</p>
 </div>
-<h2 id="migration-command">Migration Command</h2>
-<div class="admonition note">
-<p class="admonition-title">Planned for edgefirst-client 2.10.0</p>
-<p>The <code>edgefirst migrate</code> command is planned for the EdgeFirst Client <abbr title="Software Development Kit">SDK</abbr> version 2.10.0.
-It is not yet available in current releases.</p>
-</div>
-<div class="highlight"><pre><span></span><code>edgefirst<span class="w"> </span>migrate<span class="w"> </span>&lt;input.arrow&gt;<span class="w"> </span><span class="o">[</span>--output<span class="w"> </span>&lt;output.arrow&gt;<span class="o">]</span>
+<h3 id="migration-command_1">Migration Command</h3>
+<div class="highlight"><pre><span></span><code>edgefirst-client<span class="w"> </span>migrate<span class="w"> </span>dataset.arrow<span class="w"> </span><span class="o">[</span>--output<span class="w"> </span>migrated.arrow<span class="o">]</span>
 </code></pre></div>
-<p>The migration utility will perform these steps:</p>
+<p><code>edgefirst-client migrate</code> converts a 2025.10 Arrow file directly to 2026.10:</p>
 <ol>
 <li>Reads the 2025.10 <code>mask: List&lt;Float32&gt;</code> column with NaN separators</li>
-<li>Converts to <code>polygon: List&lt;List&lt;Float32&gt;&gt;</code> (split on NaN, pair coordinates)</li>
+<li>Converts it to <code>polygon: List&lt;List&lt;Float32&gt;&gt;</code> (split on NaN, pair coordinates into rings)</li>
 <li>Removes the old <code>mask</code> column (no raster data to migrate — it did not exist in 2025.10)</li>
-<li>Sets <code>schema_version = "2026.04"</code> in file metadata</li>
-<li>Writes the new file (preserving all other columns unchanged)</li>
+<li>Converts an integer <code>iscrowd</code> column to <code>Boolean</code> and adds <code>ignore</code> from it</li>
+<li>Sets <code>schema_version = "2026.10"</code> in file metadata</li>
+<li>Writes to <code>--output</code>, or overwrites the input file in place when <code>--output</code> is omitted, and reports the number of polygon annotations converted</li>
 </ol>
-<p>This is a <strong>lossless conversion</strong> for polygon data. Raster masks are a new capability
-with no migration path (they did not exist in 2025.10).</p>
+<p>This is a <strong>lossless conversion</strong> for polygon data. Apart from <code>ignore</code>, no new columns are created: scores, timing, and LVIS fields are not added. Files already at 2026.10 are left unchanged.</p>
 <h2 id="version-detection">Version Detection</h2>
 <h3 id="arrow-parquet-files">Arrow / Parquet Files</h3>
+<p>Apply the rules in order; the first rule that matches wins:</p>
 <table>
 <thead>
 <tr>
+<th>#</th>
 <th>Signal</th>
 <th>Interpretation</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td><code>schema_version</code> metadata = <code>"2026.04"</code></td>
-<td>2026.04 format</td>
+<td>1</td>
+<td><code>schema_version</code> metadata present</td>
+<td>Use the stated version</td>
 </tr>
 <tr>
-<td><code>schema_version</code> absent + <code>mask: List&lt;Float32&gt;</code></td>
-<td>2025.10 — NaN-separated polygon data in <code>mask</code></td>
+<td>2</td>
+<td><code>ignore</code> or <code>exclude</code> column present</td>
+<td>2026.10</td>
 </tr>
 <tr>
-<td><code>schema_version</code> absent + no <code>mask</code> / no <code>polygon</code></td>
-<td>2025.10 — no geometry</td>
+<td>3</td>
+<td><code>polygon</code> column present, or <code>mask: Binary</code></td>
+<td>2026.04 or later</td>
 </tr>
 <tr>
-<td><code>schema_version</code> absent + <code>mask: Binary</code></td>
-<td>2026.04 — type is unambiguous</td>
-</tr>
-<tr>
-<td><code>polygon</code> column present</td>
-<td>2026.04</td>
+<td>4</td>
+<td><code>mask: List&lt;Float32&gt;</code>, or no geometry columns</td>
+<td>2025.10</td>
 </tr>
 </tbody>
 </table>
-<p><strong>Robustness rule</strong>: If the physical type of the <code>mask</code> column is <code>Binary</code>, treat as
-2026.04 regardless of <code>schema_version</code> presence. The column type itself is unambiguous.</p>
+<p>A 2026.10 file with no flagged rows has no <code>ignore</code> or <code>exclude</code> column, because columns whose values are all null are dropped when a file is written. Rule 3 therefore cannot tell 2026.04 from 2026.10; rely on <code>schema_version</code>, which the EdgeFirst Client always writes.</p>
 <h3 id="json-files">JSON Files</h3>
 <table>
 <thead>
@@ -2123,7 +2498,7 @@ with no migration path (they did not exist in 2025.10).</p>
 </tr>
 <tr>
 <td>Top-level is a JSON object with <code>schema_version</code></td>
-<td>2026.04 — metadata wrapper</td>
+<td>Use the stated version</td>
 </tr>
 </tbody>
 </table>
@@ -2135,114 +2510,130 @@ with no migration path (they did not exist in 2025.10).</p>
 <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="nb">list</span><span class="p">):</span>
     <span class="c1"># 2025.10 legacy</span>
     <span class="n">samples</span> <span class="o">=</span> <span class="n">data</span>
+    <span class="n">version</span> <span class="o">=</span> <span class="s2">"2025.10"</span>
 <span class="k">else</span><span class="p">:</span>
-    <span class="c1"># 2026.04</span>
+    <span class="c1"># 2026.04 and later</span>
     <span class="n">samples</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s2">"samples"</span><span class="p">]</span>
     <span class="n">version</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"schema_version"</span><span class="p">)</span>
 </code></pre></div>
-<h2 id="reading-both-versions">Reading Both Versions</h2>
+<h2 id="reading-all-versions">Reading All Versions</h2>
 <div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">polars</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pl</span>
 
 <span class="k">def</span><span class="w"> </span><span class="nf">read_dataset</span><span class="p">(</span><span class="n">path</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">"""Read an EdgeFirst dataset, handling both 2025.10 and 2026.04."""</span>
+<span class="w">    </span><span class="sd">"""Read an EdgeFirst dataset written in 2025.10, 2026.04, or 2026.10."""</span>
     <span class="k">if</span> <span class="n">path</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="s2">".parquet"</span><span class="p">):</span>
         <span class="n">df</span> <span class="o">=</span> <span class="n">pl</span><span class="o">.</span><span class="n">read_parquet</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>
     <span class="k">else</span><span class="p">:</span>
         <span class="n">df</span> <span class="o">=</span> <span class="n">pl</span><span class="o">.</span><span class="n">read_ipc</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>
 
-    <span class="c1"># Detect version</span>
     <span class="k">if</span> <span class="s2">"polygon"</span> <span class="ow">in</span> <span class="n">df</span><span class="o">.</span><span class="n">columns</span><span class="p">:</span>
-        <span class="k">return</span> <span class="n">read_2026_04</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">read_current</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
 
     <span class="k">if</span> <span class="s2">"mask"</span> <span class="ow">in</span> <span class="n">df</span><span class="o">.</span><span class="n">columns</span><span class="p">:</span>
         <span class="n">mask_dtype</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s2">"mask"</span><span class="p">]</span><span class="o">.</span><span class="n">dtype</span><span class="p">)</span>
         <span class="k">if</span> <span class="n">mask_dtype</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">"List(Float32"</span><span class="p">):</span>
             <span class="k">return</span> <span class="n">read_2025_10</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
-        <span class="k">elif</span> <span class="nb">str</span><span class="p">(</span><span class="n">mask_dtype</span><span class="p">)</span> <span class="o">==</span> <span class="s2">"Binary"</span><span class="p">:</span>
-            <span class="k">return</span> <span class="n">read_2026_04</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
+        <span class="k">elif</span> <span class="n">mask_dtype</span> <span class="o">==</span> <span class="s2">"Binary"</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">read_current</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
 
-    <span class="c1"># No geometry columns — compatible with either version</span>
-    <span class="k">return</span> <span class="n">df</span>
+    <span class="c1"># No geometry columns — compatible with every version</span>
+    <span class="k">return</span> <span class="n">read_current</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
 
 
 <span class="k">def</span><span class="w"> </span><span class="nf">read_2025_10</span><span class="p">(</span><span class="n">df</span><span class="p">:</span> <span class="n">pl</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">"""Handle 2025.10 NaN-separated polygon data in the mask column."""</span>
     <span class="c1"># Convert mask: List&lt;f32&gt; (NaN-separated) -&gt; polygon: List&lt;List&lt;f32&gt;&gt;</span>
-    <span class="c1"># This is what `edgefirst migrate` does</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">"2025.10 format detected — consider running: edgefirst migrate"</span><span class="p">)</span>
+    <span class="c1"># This is what `edgefirst-client migrate` does</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">"2025.10 format detected — consider running: edgefirst-client migrate"</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">df</span>
 
 
-<span class="k">def</span><span class="w"> </span><span class="nf">read_2026_04</span><span class="p">(</span><span class="n">df</span><span class="p">:</span> <span class="n">pl</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">"""Handle 2026.04 format with polygon and raster mask columns."""</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">read_current</span><span class="p">(</span><span class="n">df</span><span class="p">:</span> <span class="n">pl</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">"""Handle 2026.04 and 2026.10 files."""</span>
     <span class="c1"># polygon: List&lt;List&lt;f32&gt;&gt; — interleaved xy pairs per ring</span>
     <span class="c1"># mask: Binary — PNG-encoded raster pixels</span>
+    <span class="c1"># ignore: prefer it, fall back to the deprecated iscrowd column</span>
+    <span class="k">if</span> <span class="s2">"ignore"</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">df</span><span class="o">.</span><span class="n">columns</span> <span class="ow">and</span> <span class="s2">"iscrowd"</span> <span class="ow">in</span> <span class="n">df</span><span class="o">.</span><span class="n">columns</span><span class="p">:</span>
+        <span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">with_columns</span><span class="p">(</span><span class="n">pl</span><span class="o">.</span><span class="n">col</span><span class="p">(</span><span class="s2">"iscrowd"</span><span class="p">)</span><span class="o">.</span><span class="n">cast</span><span class="p">(</span><span class="n">pl</span><span class="o">.</span><span class="n">Boolean</span><span class="p">)</span><span class="o">.</span><span class="n">alias</span><span class="p">(</span><span class="s2">"ignore"</span><span class="p">))</span>
     <span class="k">return</span> <span class="n">df</span>
 </code></pre></div>
 <h2 id="code-migration-checklist">Code Migration Checklist</h2>
 <h3 id="if-you-read-the-mask-column-directly">If you read the <code>mask</code> column directly</h3>
-<div class="highlight"><pre><span></span><code><span class="c1"># OLD (2025.10) — WILL BREAK on 2026.04 files</span>
+<div class="highlight"><pre><span></span><code><span class="c1"># OLD (2025.10) — WILL BREAK on 2026.04 and later files</span>
 <span class="n">mask_data</span> <span class="o">=</span> <span class="n">row</span><span class="p">[</span><span class="s2">"mask"</span><span class="p">]</span>  <span class="c1"># List&lt;f32&gt; with NaN separators</span>
 <span class="n">rings</span> <span class="o">=</span> <span class="n">split_on_nan</span><span class="p">(</span><span class="n">mask_data</span><span class="p">)</span>
 
-<span class="c1"># NEW (2026.04)</span>
+<span class="c1"># NEW (2026.04 and later)</span>
 <span class="n">polygon_data</span> <span class="o">=</span> <span class="n">row</span><span class="p">[</span><span class="s2">"polygon"</span><span class="p">]</span>  <span class="c1"># List&lt;List&lt;f32&gt;&gt;, already split into rings</span>
 <span class="k">for</span> <span class="n">ring</span> <span class="ow">in</span> <span class="n">polygon_data</span><span class="p">:</span>
     <span class="n">points</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="n">ring</span><span class="p">[</span><span class="mi">0</span><span class="p">::</span><span class="mi">2</span><span class="p">],</span> <span class="n">ring</span><span class="p">[</span><span class="mi">1</span><span class="p">::</span><span class="mi">2</span><span class="p">]))</span>
 </code></pre></div>
-<h3 id="if-you-check-box2d_format">If you check <code>box2d_format</code></h3>
-<div class="highlight"><pre><span></span><code><span class="c1"># OLD (2025.10) — assumed cxcywh for Arrow, ltwh for JSON</span>
-<span class="n">cx</span><span class="p">,</span> <span class="n">cy</span><span class="p">,</span> <span class="n">w</span><span class="p">,</span> <span class="n">h</span> <span class="o">=</span> <span class="n">row</span><span class="p">[</span><span class="s2">"box2d"</span><span class="p">]</span>
+<h3 id="if-you-read-iscrowd">If you read <code>iscrowd</code></h3>
+<div class="highlight"><pre><span></span><code><span class="c1"># OLD (2026.04)</span>
+<span class="n">is_crowd</span> <span class="o">=</span> <span class="n">row</span><span class="p">[</span><span class="s2">"iscrowd"</span><span class="p">]</span>
 
-<span class="c1"># NEW (2026.04) — check metadata</span>
-<span class="c1"># box2d_format metadata describes the layout; default is still cxcywh for Arrow</span>
-<span class="n">cx</span><span class="p">,</span> <span class="n">cy</span><span class="p">,</span> <span class="n">w</span><span class="p">,</span> <span class="n">h</span> <span class="o">=</span> <span class="n">row</span><span class="p">[</span><span class="s2">"box2d"</span><span class="p">]</span>  <span class="c1"># same default, but verify via metadata</span>
+<span class="c1"># NEW (2026.10) — iscrowd is a deprecated mirror of ignore</span>
+<span class="n">is_dont_care</span> <span class="o">=</span> <span class="n">row</span><span class="p">[</span><span class="s2">"ignore"</span><span class="p">]</span> <span class="k">if</span> <span class="s2">"ignore"</span> <span class="ow">in</span> <span class="n">row</span> <span class="k">else</span> <span class="n">row</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"iscrowd"</span><span class="p">)</span>
+<span class="n">is_excluded</span> <span class="o">=</span> <span class="n">row</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"exclude"</span><span class="p">)</span>
 </code></pre></div>
+<h3 id="if-you-read-the-pose-column">If you read the <code>pose</code> column</h3>
+<div class="highlight"><pre><span></span><code><span class="c1"># 2026.10 — always [roll, pitch, yaw] in signed degrees</span>
+<span class="n">roll</span><span class="p">,</span> <span class="n">pitch</span><span class="p">,</span> <span class="n">yaw</span> <span class="o">=</span> <span class="n">row</span><span class="p">[</span><span class="s2">"pose"</span><span class="p">]</span>
+</code></pre></div>
+<p>For older files, see <a href="#imu-pose-and-gps-location-in-older-files"><abbr title="Inertial Measurement Unit">IMU</abbr> Pose and <abbr title="Global Positioning System">GPS</abbr> Location in Older Files</a>.</p>
 <h3 id="if-you-process-lidar-visualizations">If you process <abbr title="Light Detection and Ranging">LiDAR</abbr> visualizations</h3>
 <div class="highlight"><pre><span></span><code><span class="c1"># OLD (2025.10) — projected LiDAR images</span>
 <span class="n">depth_image</span> <span class="o">=</span> <span class="n">load</span><span class="p">(</span><span class="s2">"frame_001.lidar.png"</span><span class="p">)</span>
 <span class="n">reflect_image</span> <span class="o">=</span> <span class="n">load</span><span class="p">(</span><span class="s2">"frame_001.lidar.jpeg"</span><span class="p">)</span>
 
-<span class="c1"># NEW (2026.04) — project from PCD yourself</span>
+<span class="c1"># NEW (2026.04 and later) — project from PCD yourself</span>
 <span class="n">pcd</span> <span class="o">=</span> <span class="n">load</span><span class="p">(</span><span class="s2">"frame_001.lidar.pcd"</span><span class="p">)</span>
 <span class="n">depth_image</span> <span class="o">=</span> <span class="n">project_to_depth</span><span class="p">(</span><span class="n">pcd</span><span class="p">,</span> <span class="n">calibration</span><span class="p">)</span>
 </code></pre></div>
 <h2 id="faq">FAQ</h2>
-<p><strong>Q: Can I read 2026.04 files with old <abbr title="Software Development Kit">SDK</abbr> versions?</strong></p>
-<p>No. <abbr title="Software Development Kit">SDK</abbr> versions prior to 3.0 do not understand the <code>polygon</code> column or the <code>Binary</code>
-mask type. Update the EdgeFirst Client <abbr title="Software Development Kit">SDK</abbr> to version 3.0 or later.</p>
+<p><strong>Q: Which EdgeFirst Client versions read and write each schema?</strong></p>
+<table>
+<thead>
+<tr>
+<th>Client version</th>
+<th>Writes</th>
+<th>Reads</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2.15.0 and later</td>
+<td>2026.10 (Arrow IPC or Parquet)</td>
+<td>2025.10, 2026.04, 2026.10</td>
+</tr>
+<tr>
+<td>2.14.x</td>
+<td>2026.04 (Arrow IPC or Parquet)</td>
+<td>2025.10, 2026.04</td>
+</tr>
+<tr>
+<td>2.9.0 – 2.13.x</td>
+<td>2026.04 (Arrow IPC)</td>
+<td>2025.10, 2026.04</td>
+</tr>
+</tbody>
+</table>
 <p><strong>Q: Do I need to migrate all my datasets at once?</strong></p>
-<p>No. The EdgeFirst Client <abbr title="Software Development Kit">SDK</abbr> 3.0+ reads both 2025.10 and 2026.04 files transparently.
-Migrate when convenient — there is no deadline.</p>
+<p>No. The EdgeFirst Client reads 2025.10, 2026.04, and 2026.10 files transparently. Migrate when convenient — there is no deadline.</p>
 <p><strong>Q: What happens to raster mask data during migration?</strong></p>
-<p>Raster masks (<code>Binary</code>, PNG-encoded) are a <strong>new</strong> capability in 2026.04. The 2025.10 <code>mask</code>
-column contained polygon data (NaN-separated <code>List&lt;Float32&gt;</code>), not raster data. Migration
-moves polygon data to the new <code>polygon</code> column and removes the old <code>mask</code> column. There
-is no raster data to lose.</p>
+<p>Raster masks (<code>Binary</code>, PNG-encoded) are a <strong>new</strong> capability in 2026.04. The 2025.10 <code>mask</code> column contained polygon data (NaN-separated <code>List&lt;Float32&gt;</code>), not raster data. Migration moves polygon data to the new <code>polygon</code> column and removes the old <code>mask</code> column. There is no raster data to lose.</p>
 <p><strong>Q: Can polygon and mask coexist in the same file?</strong></p>
-<p>Yes. A 2026.04 file can have both <code>polygon</code> (vector contours) and <code>mask</code> (raster pixels)
-columns populated. This supports use cases like panoptic segmentation where instance
-polygons and semantic raster masks are both needed.</p>
-<p><strong>Q: How do I tell if a JSON file is 2025.10 or 2026.04?</strong></p>
-<p>Check the top-level structure. 2025.10 JSON files are a bare array <code>[...]</code>. 2026.04
-files are an object <code>{"schema_version": "2026.04", "samples": [...]}</code>.</p>
+<p>Yes. A file can have both <code>polygon</code> (vector contours) and <code>mask</code> (raster pixels) columns populated. This supports use cases like panoptic segmentation where instance polygons and semantic raster masks are both needed.</p>
+<p><strong>Q: How do I tell if a JSON file is 2025.10 or later?</strong></p>
+<p>Check the top-level structure. 2025.10 JSON files are a bare array <code>[...]</code>. Later files are an object <code>{"schema_version": "2026.10", "samples": [...]}</code>.</p>
 <p><strong>Q: My <code>label_index</code> values changed after re-importing a dataset. Is that expected?</strong></p>
-<p>Yes, if you are importing a file that was created with the 2025.10 <abbr title="Software Development Kit">SDK</abbr>. The 2025.10 <abbr title="Software Development Kit">SDK</abbr>
-assigned <code>label_index</code> values using alphabetical ordering of category names (0-based,
-contiguous). The 2026.04 <abbr title="Software Development Kit">SDK</abbr> preserves the original source <code>category_id</code> as <code>label_index</code>
-(non-contiguous, may not start at 0). Both are valid; the 2026.04 behavior is correct for
-round-trip fidelity with COCO and LVIS datasets.</p>
+<p>Yes, if you are importing a file that was created with the 2025.10 <abbr title="Software Development Kit">SDK</abbr>. The 2025.10 <abbr title="Software Development Kit">SDK</abbr> assigned <code>label_index</code> values using alphabetical ordering of category names (0-based, contiguous). Since 2026.04 the <abbr title="Software Development Kit">SDK</abbr> preserves the original source <code>category_id</code> as <code>label_index</code> (non-contiguous, may not start at 0). Both are valid; the current behavior is correct for round-trip fidelity with COCO and LVIS datasets.</p>
 <p><strong>Q: Does the COCO importer support LVIS annotations?</strong></p>
-<p>Yes. The COCO format importer (<code>--format coco</code>) handles LVIS extensions automatically.
-LVIS-specific fields (<code>neg_category_ids</code>, <code>not_exhaustive_category_ids</code>, category
-<code>frequency</code>/<code>synset</code>/<code>synonyms</code>/<code>def</code>) are parsed when present and mapped to the
-corresponding EdgeFirst columns and file-level metadata. No separate LVIS mode is needed.</p>
+<p>Yes. The COCO importer handles LVIS extensions automatically. LVIS-specific fields (<code>neg_category_ids</code>, <code>not_exhaustive_category_ids</code>, category <code>frequency</code>/<code>synset</code>/<code>synonyms</code>/<code>def</code>) are parsed when present and mapped to the corresponding EdgeFirst columns and file-level metadata. No separate LVIS mode is needed.</p>
 <p><strong>Q: What are <code>neg_label_indices</code> and <code>not_exhaustive_label_indices</code>?</strong></p>
-<p>These are LVIS-specific sample-level columns that support the LVIS federated annotation
-evaluation protocol. <code>neg_label_indices</code> lists categories confirmed absent from an image
-(valid false positives). <code>not_exhaustive_label_indices</code> lists categories with potentially
-incomplete annotation (unmatched predictions are ignored). Both reference <code>label_index</code>
-values. They are optional and absent from non-LVIS datasets.</p>
+<p>These are LVIS-specific sample-level columns that support the LVIS federated annotation evaluation protocol. <code>neg_label_indices</code> lists categories confirmed absent from an image (valid false positives). <code>not_exhaustive_label_indices</code> lists categories with potentially incomplete annotation (unmatched predictions are ignored). Both reference <code>label_index</code> values. They are optional and absent from non-LVIS datasets.</p>
+<p><strong>Q: Why are my crowd annotations missing after uploading to EdgeFirst Studio?</strong></p>
+<p>Studio does not store the <code>ignore</code> and <code>exclude</code> flags yet. Uploads drop annotations flagged <code>ignore</code> or <code>exclude</code>, including COCO crowd annotations, and log one warning with the number skipped. Keep the Arrow or Parquet file as the source of truth for these annotations.</p>
 
 
 

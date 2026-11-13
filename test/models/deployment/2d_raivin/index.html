@@ -614,8 +614,6 @@
       
         
       
-        
-      
     
     
     
@@ -1137,6 +1135,8 @@
       
         
           
+        
+      
         
       
         
@@ -1782,8 +1782,6 @@
       
         
       
-        
-      
     
     
     
@@ -2065,7 +2063,7 @@
 
 
 <h1 id="deploying-to-the-raivin-vision">Deploying to the Raivin (Vision)</h1>
-<p>Now that you have validated your Vision Model from either a <a href="../../validation/vision/managed/">managed</a> or <a href="../../validation/vision/user_managed/">user-managed</a> session, this guide will walk you through deploying Vision models on a <a href="../../../platforms/quickstart/raivin/">Raivin Platform</a>.</p>
+<p>Now that you have validated your Vision Model with either <a href="../../validation/vision/managed/">cloud</a> or <a href="../../validation/vision/user_managed/">on-target</a> validation, this guide will walk you through deploying Vision models on a <a href="../../../platforms/quickstart/raivin/">Raivin Platform</a>.</p>
 <div class="admonition note">
 <p class="admonition-title">3D Applications</p>
 <p>The Raivin is also capable of deploying Fusion models for 3D perception by following this <a href="../3d_raivin/">guide</a>.</p>
@@ -2107,8 +2105,8 @@
 </div>
 <div class="tabbed-block">
 <p>This method expects you to have already connected to the device via <a href="../../../platforms/networking/ssh/"><abbr title="Secure Shell">SSH</abbr></a>.  The <a href="../../../client/cli/">EdgeFirst Client</a> can be installed via <code>pip3 install edgefirst-client</code>.  You can verify the installation with the client version command.</p>
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span>edgefirst-client<span class="w"> </span>version
-EdgeFirst<span class="w"> </span>Studio<span class="w"> </span>Server:<span class="w"> </span><span class="m">3</span>.7.8-a50429e<span class="w"> </span>Client:<span class="w"> </span><span class="m">1</span>.3.3
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>edgefirst-client<span class="w"> </span>server-version
+EdgeFirst<span class="w"> </span>Studio<span class="w"> </span>Server<span class="w"> </span><span class="o">[</span>https://edgefirst.studio<span class="o">]</span>:<span class="w"> </span>&lt;server<span class="w"> </span>version&gt;<span class="w"> </span>Client:<span class="w"> </span>&lt;client<span class="w"> </span>version&gt;
 </code></pre></div>
 <p>Next login to EdgeFirst Studio with the command.</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>edgefirst-client<span class="w"> </span>login

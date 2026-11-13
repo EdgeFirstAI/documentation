@@ -614,8 +614,6 @@
       
         
       
-        
-      
     
     
     
@@ -1153,6 +1151,8 @@
       
         
       
+        
+      
     
     
     
@@ -1582,6 +1582,34 @@
 
               
             
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../qualcomm/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Qualcomm Converter
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
           </ul>
         </nav>
       
@@ -1824,8 +1852,6 @@
       
         
           
-        
-      
         
       
         
@@ -2429,6 +2455,7 @@ counts are recorded.</p>
 <div class="highlight"><pre><span></span><code>{
   "input_shape": [640, 640],          // the tile [H, W]
   "resize": "tiled",
+  "selection": "max_dynamic_range_tiled_v1", // tiled selection (below); count is a tile count
   "grid": {                           // the runtime grid (tiling.grid)
     "algorithm": "evendist",
     "version": 1,
@@ -2439,13 +2466,14 @@ counts are recorded.</p>
   // all other keys as above
 }
 </code></pre></div>
-<p>Selection is unchanged: the same model-free selection picks <code>count</code> frames from the training split, including the frames that hold the pool's per-channel extrema. Each selected frame then contributes samples cut from its <a href="../../metadata/#grid">deployment grid</a> at native scale:</p>
+<p>For a tiled snapshot <code>count</code> is the number of tiles to store, and the selection tag is <code>max_dynamic_range_tiled_v1</code>. Frames are chosen exactly as under <code>max_dynamic_range_v1</code>: the same model-free selection picks up to <code>count</code> frames from the training split, including the frames that hold the pool's per-channel extrema. Each selected frame then contributes tiles cut from its <a href="../../metadata/#grid">deployment grid</a> at native scale:</p>
 <ul>
-<li><strong>Extremum tiles.</strong> For each per-channel minimum and maximum of the pool, the frame that selection seeded for it contributes the lowest-index grid tile containing the frame's first pixel, in row-major order, with that value. A tile named by several extrema is stored once. Because tiles are native-scale crops, the snapshot keeps the pool's per-channel extrema, as <code>max_dynamic_range_v1</code> requires.</li>
+<li><strong>Extremum tiles.</strong> For each per-channel minimum and maximum of the pool, the frame that selection seeded for it contributes the lowest-index grid tile containing the frame's first pixel, in row-major order, with that value. A tile named by several extrema is stored once. Because tiles are native-scale crops, the snapshot keeps the pool's per-channel extrema.</li>
 <li><strong>One tile per other frame.</strong> A frame that holds no extremum contributes one tile, chosen by a generator seeded from the selection <code>seed</code> and the frame's position in the pool, so the choice is deterministic and independent of which other frames were selected.</li>
-<li><strong>Whole-frame samples.</strong> When the model's <code>tiling.full_frame.enabled</code> is <code>true</code>, the runtime also runs each whole frame letterboxed into the tile, so every selected frame also contributes that whole-frame sample, and the parameter set gains <code>"full_frame": true</code>.</li>
+<li><strong>Additional tiles for small pools.</strong> When the tiles above number fewer than <code>count</code>, which happens when the pool holds fewer frames than <code>count</code>, frames contribute further distinct grid tiles until <code>count</code> tiles are stored or every grid tile of every selected frame is taken. Each frame draws its further tiles in an order given by the same seeded generator, and tiles are added one per frame per round, frames holding the fewest tiles first and ties in ascending pool order, so the tiles spread evenly across frames.</li>
+<li><strong>Whole-frame samples.</strong> When the model's <code>tiling.full_frame.enabled</code> is <code>true</code>, the runtime also runs each whole frame letterboxed into the tile, so every selected frame also contributes that whole-frame sample, and the parameter set gains <code>"full_frame": true</code>. Whole-frame samples do not count toward <code>count</code>.</li>
 </ul>
-<p>Samples are stored frame by frame in ascending pool order; within a frame, tiles in ascending grid index, then the whole-frame sample. A tiled snapshot therefore holds at least <code>count</code> samples: a frame seeded for extrema in different tiles adds one tile for each, and whole-frame samples add one per frame.</p>
+<p>Samples are stored frame by frame in ascending pool order; within a frame, tiles in ascending grid index, then the whole-frame sample. A tiled snapshot holds <code>count</code> tiles when the pool has enough grid tiles, and more when frames seeded for extrema in different tiles add one tile for each; whole-frame samples add one per frame.</p>
 <p>A frame smaller than a tile along an axis is letterboxed into the tile, exactly as the runtime places it; <code>tiling.fit</code> is always <code>letterbox</code> in version 1. Because <code>grid</code> and <code>full_frame</code> are part of the hash preimage, a tiled snapshot never shares a filename with a letterbox snapshot of the same size, or with a tiled snapshot that lacks whole-frame samples.</p>
 <div class="admonition warning">
 <p class="admonition-title">Whole-frame snapshots at high resolution are large</p>
@@ -2513,17 +2541,17 @@ and <strong>must</strong> fail loudly when a required key is absent rather than 
 <tr>
 <td><code>count_requested</code></td>
 <td><code>500</code></td>
-<td>Requested sample count: the number of frames to select. A non-tiled snapshot (letterbox or stretch) stores one sample per frame.</td>
+<td>Requested sample count: the number of frames for a non-tiled snapshot (letterbox or stretch), which stores one sample per frame, or the number of tiles for a <a href="#tiled-models">tiled snapshot</a>.</td>
 </tr>
 <tr>
 <td><code>count_actual</code></td>
 <td><code>500</code></td>
-<td>Samples actually written. Smaller than requested for small pools; a <a href="#tiled-models">tiled snapshot</a> can hold more, with extremum tiles and whole-frame samples.</td>
+<td>Samples actually written. Smaller than requested when the pool holds too few frames, or a tiled pool too few grid tiles; a <a href="#tiled-models">tiled snapshot</a> can hold more, with extremum tiles and whole-frame samples.</td>
 </tr>
 <tr>
 <td><code>selection</code></td>
 <td><code>"max_dynamic_range_v1"</code></td>
-<td>Selection algorithm tag.</td>
+<td>Selection algorithm tag: <code>max_dynamic_range_v1</code>, or <code>max_dynamic_range_tiled_v1</code> for a tiled snapshot.</td>
 </tr>
 <tr>
 <td><code>seed</code></td>
@@ -2589,7 +2617,7 @@ exact samples it was built from:</p>
    default; record the resolved pool identity (dataset, annotation set, split,
    size) in metadata.</li>
 <li><strong>Select model-free.</strong> Compute source-pixel descriptors and select with a
-   versioned, deterministic algorithm. Under <code>max_dynamic_range_v1</code> the selected
+   versioned, deterministic algorithm. Under <code>max_dynamic_range_v1</code> and <code>max_dynamic_range_tiled_v1</code> the selected
    set's per-channel min/max must equal the pool's — the extrema-bearing images
    are mandatory, and a tiled snapshot stores the tiles that hold the extrema pixels.</li>
 <li><strong>Preprocess at the model's geometry.</strong> Letterbox or stretch each selected frame to the model input (stretch for models trained with a direct resize), or for a <a href="../../metadata/#tiling">tiled model</a> cut deployment-grid tiles at native scale, plus whole-frame samples when its <code>full_frame</code> pass is enabled (see <a href="#tiled-models">Tiled models</a>); apply the CameraAdaptor recipe; store <strong>uint8 [0, 255] <abbr title="Tensor layout — Batch, Channels, Height, Width">NCHW</abbr></strong>. Record the geometry (<code>input_shape</code>, <code>resize</code>, and <code>grid</code> for tiles) and the normalization the model expects in metadata — do <strong>not</strong> apply the normalization to the stored bytes.</li>

@@ -616,8 +616,6 @@
       
         
       
-        
-      
     
     
     
@@ -950,17 +948,6 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#roles" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Roles
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
   <a href="#add-new-users" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -1191,6 +1178,34 @@
   
   
     <li class="md-nav__item">
+      <a href="../../snapshots/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Snapshots Dashboard
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../agtg/" class="md-nav__link">
         
   
@@ -1247,42 +1262,14 @@
   
   
     <li class="md-nav__item">
-      <a href="../../instances/" class="md-nav__link">
+      <a href="../../tasks/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    Cloud Instances Dashboard
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../snapshots/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Snapshots Dashboard
+    Tasks Dashboard
   
 
     
@@ -1310,35 +1297,7 @@
   <span class="md-ellipsis">
     
   
-    Studio Apps Dashboard
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../tasks/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Tasks Dashboard
+    Apps Dashboard
   
 
     
@@ -1741,8 +1700,6 @@
       
         
       
-        
-      
     
     
     
@@ -1926,17 +1883,6 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#roles" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Roles
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
   <a href="#add-new-users" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2072,27 +2018,18 @@
 <li>An admin user creates the accounts for other users in the organization.</li>
 <li>Any user cannot invite other users in different organizations.</li>
 </ol>
-<p>The user who signs up is the admin of the organization.  However, this user can also set other users in the organization as admin or other roles.  More information about the roles and permissions of users in the <a href="#roles">section below</a>.</p>
+<p>The user who signs up is the admin of the organization.  However, this user can also set other users in the organization as admin or non-admin. The difference between admin and non-admin users is that admin users can add new users or remove users from the organization.</p>
 <h3 id="current-users">Current Users</h3>
 <p>You can see the list of all users in your organization by clicking on "User Manager" as shown below.</p>
 <figure>
             <img align="center" alt="User Manager" src="../../assets/user/user-manager.jpg" />
             <figcaption>User Manager</figcaption>
             </figure>
-<p>As an admin user, you can edit the information of each user by clicking the "pencil" <img alt="Pencil Button" src="../../../assets/buttons/studio-edit-user-button.jpg" /> button next to their profiles.  This will bring the page that allows you to modify the user's profile information.  From this page you can change the first and last name of the user and their email.  You can also set the user's role or custom permissions.  More information on the <a href="#roles">user's roles</a> are provided in the section below.  You can either click "Apply" to save the changes or "Cancel" to abort any changes.  Lastly, you can also change the user's password.</p>
+<p>As an admin user, you can edit the information of each user by clicking the "pencil" <img alt="Pencil Button" src="../../../assets/buttons/studio-edit-user-button.jpg" /> button next to their profiles.  This will bring the page that allows you to modify the user's profile information.  From this page you can change the first and last name of the user and their email.  You can also set the user's role as either admin or non-admin. You can either click "Apply" to save the changes or "Cancel" to abort any changes.  Lastly, you can also change the user's password.</p>
 <figure>
             <img align="center" alt="Modify User Information" src="../../assets/user/modify-user-information.jpg" />
             <figcaption>Modify User Information</figcaption>
             </figure>
-<h3 id="roles">Roles</h3>
-<p>The roles available that can be designated to each user in the organization would be "Admin", "Audit &amp; Label", and "Custom Permissions".</p>
-<figure>
-            <img align="center" alt="User Roles" src="../../assets/user/user-roles.jpg" />
-            <figcaption>User Roles</figcaption>
-            </figure>
-<p>The "Admin" user has read and write access to all projects, datasets, and model experiments in the organization.  The admin can also add new users, remove existing users, or edit user information in the organization.  This user has full access to the organization.</p>
-<p>The "Audit &amp; Label" user has limited access to EdgeFirst Studio.  The only features available to this type of user are auditing and labelling datasets using the task board.</p>
-<p>The user with "Custom Permissions" has specific permissions on different elements of EdgeFirst Studio.  These elements are "Projects", "Datasets", "Trainer", and "Task Board".  You can set "Read-Only" permissions to allow users for view-only.  The permission for "Write" allows the users to make changes to the elements such as creating their own datasets or modifying current datasets.</p>
 <h3 id="add-new-users">Add New Users</h3>
 <p>Navigate to the "User Manager" page by clicking on "User Manager" as shown below.</p>
 <figure>
@@ -2104,7 +2041,7 @@
             <img align="center" alt="New User" src="../../assets/user/new-user-buttons.jpg" />
             <figcaption>New User</figcaption>
             </figure>
-<p>This will bring you to the page that allows you to specify the new user's information as shown below.  Here you can specify the new user's first and last name, their login credentials such as their username and password.  Finally you will need to specify their email and their <a href="./#roles">role in the organization</a>.</p>
+<p>This will bring you to the page that allows you to specify the new user's information as shown below.  Here you can specify the new user's first and last name, their login credentials such as their username and password.  Finally you will need to specify their email and their role in the organization.</p>
 <figure>
             <img align="center" alt="New User Fields" src="../../assets/user/new-user-fields.jpg" />
             <figcaption>New User Fields</figcaption>

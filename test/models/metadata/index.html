@@ -614,8 +614,6 @@
       
         
       
-        
-      
     
     
     
@@ -1137,6 +1135,8 @@
       
         
           
+        
+      
         
       
         
@@ -1840,6 +1840,17 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#preprocessing-block" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Preprocessing Block
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#camera-adaptor" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2067,6 +2078,17 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#semantic-semantic-segmentation-decoder" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        semantic — Semantic Segmentation Decoder
+      
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -2099,6 +2121,56 @@
     <span class="md-ellipsis">
       
         HAL Multi-Label Field
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#semantic-segmentation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Semantic Segmentation
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Semantic Segmentation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#semantic-output-fields" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Semantic Output Fields
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#decode-modes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Decode Modes
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mask-classification-reserved" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Mask Classification (Reserved)
       
     </span>
   </a>
@@ -2326,6 +2398,17 @@
     <span class="md-ellipsis">
       
         Example 7: YOLOv5 Detection (Anchor-Based, Per-Scale Children, obj_x_class)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#example-8-segformer-b1-semantic-segmentation-ade20k-onnx-fp32" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Example 8: SegFormer B1 Semantic Segmentation (ADE20K, ONNX FP32)
       
     </span>
   </a>
@@ -2813,8 +2896,6 @@
       
         
           
-        
-      
         
       
         
@@ -3414,6 +3495,17 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#preprocessing-block" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Preprocessing Block
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#camera-adaptor" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -3641,6 +3733,17 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#semantic-semantic-segmentation-decoder" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        semantic — Semantic Segmentation Decoder
+      
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -3673,6 +3776,56 @@
     <span class="md-ellipsis">
       
         HAL Multi-Label Field
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#semantic-segmentation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Semantic Segmentation
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Semantic Segmentation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#semantic-output-fields" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Semantic Output Fields
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#decode-modes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Decode Modes
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mask-classification-reserved" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Mask Classification (Reserved)
       
     </span>
   </a>
@@ -3900,6 +4053,17 @@
     <span class="md-ellipsis">
       
         Example 7: YOLOv5 Detection (Anchor-Based, Per-Scale Children, obj_x_class)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#example-8-segformer-b1-semantic-segmentation-ade20k-onnx-fp32" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Example 8: SegFormer B1 Semantic Segmentation (ADE20K, ONNX FP32)
       
     </span>
   </a>
@@ -4381,6 +4545,7 @@
 </tbody>
 </table>
 <p>Metadata is always embedded in the artifact it describes. Trainers embed the same metadata in the weights they publish (<code>.keras</code> or <code>.pt</code>) as in the exported models, so that a later session can load those weights and know exactly how they were trained. A standalone <code>edgefirst.json</code> is never published, because a session produces several artifacts and a loose file would not say which one it describes.</p>
+<p>Class labels are listed in channel order, one per class, with no leading or trailing spaces and no empty names. The <abbr title="Hardware Abstraction Layer">HAL</abbr> trims leading and trailing spaces, tabs and other blank characters from every class name it reads, so a Hugging Face <code>id2label</code> entry such as ADE20K's <code>"bed "</code> resolves to <code>"bed"</code>, and it keeps the spaces inside a name (<code>"chest of drawers"</code>). If a source has an empty name, an unparseable list, or a number of names that differs from the number of classes in the model's outputs, the <abbr title="Hardware Abstraction Layer">HAL</abbr> ignores that source's labels with a warning and uses the next source. The count is checked for every model type whose outputs state it, including semantic segmentation and Ultralytics and ModelPack detection; end-to-end detection outputs do not state it. A ModelPack segmentation output has one channel more than its classes: the last channel is background and has no entry in the class labels, so a multitask model's masks and boxes share class indices. Names that repeat ignoring case are reported, because they make matching classes by name ambiguous.</p>
 <h3 id="supported-training-frameworks">Supported Training Frameworks</h3>
 <table>
 <thead>
@@ -4607,6 +4772,14 @@
 <span class="w">  </span><span class="nt">cameraadaptor</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">string</span><span class="w">    </span><span class="c1"># Camera format (rgb, bgr, rgba, bgra, grey, yuyv)</span>
 <span class="w">  </span><span class="nt">input_channels</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">int</span><span class="w">      </span><span class="c1"># Channels from camera (3=RGB, 4=RGBA, 1=grey)</span>
 <span class="w">  </span><span class="nt">output_channels</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">int</span><span class="w">     </span><span class="c1"># Channels after CameraAdaptor transform</span>
+<span class="w">  </span><span class="nt">preprocessing</span><span class="p">:</span><span class="w">           </span><span class="c1"># Optional (see Input Preprocessing)</span>
+<span class="w">    </span><span class="nt">normalization</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">string or {mean</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">float</span><span class="p p-Indicator">]</span><span class="err">,</span><span class="w"> </span><span class="nt">std</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">float</span><span class="p p-Indicator">]</span><span class="err">}</span><span class="w">  </span><span class="c1"># unsigned | signed | raw | imagenet, or per-channel mean/std on 0-255</span>
+<span class="w">    </span><span class="nt">resize</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">string</span><span class="w">         </span><span class="c1"># stretch | letterbox</span>
+<span class="w">    </span><span class="nt">interpolation</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">string</span><span class="w">  </span><span class="c1"># bilinear | nearest | bicubic | area (reference filter, informational)</span>
+<span class="w">    </span><span class="nt">letterbox</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">placement</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">string</span><span class="w">    </span><span class="c1"># center (default) | topleft</span>
+<span class="w">      </span><span class="nt">pad</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">float</span><span class="p p-Indicator">]</span><span class="w">         </span><span class="c1"># Per-channel pad value (default 114, pixel space)</span>
+<span class="w">      </span><span class="nt">pad_space</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">string</span><span class="w">    </span><span class="c1"># pixel (default) | normalized</span>
 
 <span class="nt">model</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">string</span><span class="w">             </span><span class="c1"># Model/session name from training (artifact naming)</span>
@@ -4697,7 +4870,8 @@
 <span class="nt">outputs</span><span class="p">:</span>
 <span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">string</span><span class="w">               </span><span class="c1"># Logical output name</span>
 <span class="w">    </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">string</span><span class="w">               </span><span class="c1"># Semantic type: boxes, scores, objectness, mask_coefs, protos,</span>
-<span class="w">                               </span><span class="c1"># landmarks, classes, detections, segmentation, masks, detection</span>
+<span class="w">                               </span><span class="c1"># landmarks, classes, detections, segmentation, masks, detection,</span>
+<span class="w">                               </span><span class="c1"># class_logits, mask_logits (reserved)</span>
 <span class="w">    </span><span class="nt">shape</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">int</span><span class="p p-Indicator">]</span><span class="w">               </span><span class="c1"># Reconstructed logical shape (what fallback dequant+merge produces)</span>
 <span class="w">    </span><span class="nt">dshape</span><span class="p">:</span><span class="w">                    </span><span class="c1"># Named dimensions (see dshape section)</span>
 <span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">batch</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">int</span>
@@ -4710,16 +4884,25 @@
 <span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">num_anchors_x_features</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">int</span>
 <span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">box_coords</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">int</span>
 <span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">padding</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">int</span>
-<span class="w">    </span><span class="nt">decoder</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">string</span><span class="w">            </span><span class="c1"># 'modelpack' | 'ultralytics' — required for outputs needing decode</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">num_queries</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">int</span>
+<span class="w">    </span><span class="nt">decoder</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">string</span><span class="w">            </span><span class="c1"># 'modelpack' | 'ultralytics' | 'semantic' — required for outputs needing decode</span>
 <span class="w">    </span><span class="nt">encoding</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">string</span><span class="w">           </span><span class="c1"># 'dfl' | 'direct' | 'anchor' — required on boxes</span>
 <span class="w">    </span><span class="nt">score_format</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">string</span><span class="w">       </span><span class="c1"># 'per_class' | 'obj_x_class' (scores only)</span>
 <span class="w">    </span><span class="nt">normalized</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">boolean</span><span class="w">        </span><span class="c1"># Coordinates in [0,1] (true) or pixels (false); boxes and detections only</span>
 <span class="w">    </span><span class="nt">stride</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">int or [int, int]</span><span class="w">  </span><span class="c1"># Spatial stride; 2-element form for non-square inputs</span>
 <span class="w">    </span><span class="nt">anchors</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[[</span><span class="nv">float</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">float</span><span class="p p-Indicator">]]</span><span class="w">  </span><span class="c1"># Normalized anchors (ModelPack anchor-based outputs)</span>
 
+<span class="w">    </span><span class="c1"># Semantic segmentation fields (see Semantic Segmentation)</span>
+<span class="w">    </span><span class="nt">upsample</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="nt">method</span><span class="p">:</span><span class="w"> </span><span class="nv">string</span><span class="p p-Indicator">,</span><span class="nt"> align_corners</span><span class="p">:</span><span class="w"> </span><span class="nv">boolean</span><span class="p p-Indicator">}</span><span class="w">  </span><span class="c1"># bilinear | nearest | bicubic</span>
+<span class="w">    </span><span class="nt">decode_mode</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">string</span><span class="w">        </span><span class="c1"># accurate | fast</span>
+<span class="w">    </span><span class="nt">threshold</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">float</span><span class="w">           </span><span class="c1"># Single-channel outputs only</span>
+<span class="w">    </span><span class="nt">background_index</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">int</span><span class="w">      </span><span class="c1"># Channel of the background class, when the model has one</span>
+<span class="w">    </span><span class="nt">no_object_index</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">int</span><span class="w">       </span><span class="c1"># class_logits only (reserved); absent means the last class</span>
+<span class="w">    </span><span class="nt">mask_activation</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">string</span><span class="w">    </span><span class="c1"># mask_logits only (reserved): sigmoid | softmax_over_queries</span>
+
 <span class="w">    </span><span class="c1"># When the converter did NOT further split this logical output,</span>
 <span class="w">    </span><span class="c1"># it IS the physical tensor — the following fields are present directly:</span>
-<span class="w">    </span><span class="nt">dtype</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">string</span><span class="w">              </span><span class="c1"># Tensor data type (e.g. int8, uint8, float32)</span>
+<span class="w">    </span><span class="nt">dtype</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">string</span><span class="w">              </span><span class="c1"># Tensor data type (e.g. int8, uint8, float32, int64)</span>
 <span class="w">    </span><span class="nt">quantization</span><span class="p">:</span><span class="w">              </span><span class="c1"># Quantization parameters (null for float models)</span>
 <span class="w">      </span><span class="nt">scale</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">float or [float]</span>
 <span class="w">      </span><span class="nt">zero_point</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">int or [int]</span>
@@ -4848,18 +5031,28 @@
 </tr>
 <tr>
 <td><code>segmentation</code></td>
-<td>Semantic segmentation output</td>
-<td><code>[1, H, W, num_classes]</code></td>
+<td>Semantic segmentation per-pixel class scores</td>
+<td><code>[1, H, W, num_classes]</code> or <code>[1, num_classes, H, W]</code></td>
 </tr>
 <tr>
 <td><code>masks</code></td>
-<td>Semantic segmentation masks</td>
+<td>Semantic segmentation class map, argmax applied in the graph</td>
 <td><code>[1, H, W]</code></td>
 </tr>
 <tr>
 <td><code>detection</code></td>
 <td>Anchor-grid raw output requiring anchor decode</td>
 <td><code>[1, H, W, anchors×features]</code></td>
+</tr>
+<tr>
+<td><code>class_logits</code></td>
+<td>Mask-classification per-query class logits (reserved)</td>
+<td><code>[1, num_queries, num_classes + 1]</code></td>
+</tr>
+<tr>
+<td><code>mask_logits</code></td>
+<td>Mask-classification per-query mask logits (reserved)</td>
+<td><code>[1, num_queries, H, W]</code></td>
 </tr>
 </tbody>
 </table>
@@ -4950,6 +5143,10 @@
 <td><code>box_coords</code></td>
 <td>The coordinates of the boxes. Must be 4</td>
 </tr>
+<tr>
+<td><code>num_queries</code></td>
+<td>Number of queries of a mask-classification model</td>
+</tr>
 </tbody>
 </table>
 <p><code>dshape</code> entries are ordered objects — the position of each key matches the axis position in <code>shape</code>. Ordering is authoritative for consumers mapping shapes to names.</p>
@@ -5031,7 +5228,7 @@
 <h3 id="logical-vs-physical-field-placement">Logical vs Physical Field Placement</h3>
 <p>Semantic and decode fields live on the <strong>logical output</strong> and apply to all children. Physical children carry only tensor-level fields.</p>
 <p><strong>Root-level only:</strong> <code>decoder_version</code>, <code>nms</code> (<abbr title="Hardware Abstraction Layer">HAL</abbr> <abbr title="Non-Maximum Suppression">NMS</abbr> mode), <code>nms_multi_label</code> (<abbr title="Hardware Abstraction Layer">HAL</abbr> multi-label decode). These describe model-wide behavior and never appear inside an <code>outputs[]</code> entry.</p>
-<p><strong>Logical output only:</strong> <code>decoder</code>, <code>encoding</code>, <code>score_format</code>, <code>normalized</code>, <code>anchors</code></p>
+<p><strong>Logical output only:</strong> <code>decoder</code>, <code>encoding</code>, <code>score_format</code>, <code>normalized</code>, <code>anchors</code>, <code>upsample</code>, <code>decode_mode</code>, <code>threshold</code>, <code>background_index</code>, <code>no_object_index</code>, <code>mask_activation</code></p>
 <p><strong>Physical output only:</strong> <code>quantization</code> (always required), <code>dtype</code>, <code>scale_index</code>, <code>activation_applied</code>, <code>activation_required</code></p>
 <p><strong>Both levels:</strong> <code>name</code>, <code>type</code>, <code>shape</code>, <code>dshape</code>, <code>stride</code></p>
 <p>When a logical output has no children, it also carries <code>dtype</code> and <code>quantization</code> directly — it IS the physical tensor.</p>
@@ -5042,6 +5239,9 @@
 <li><code>normalized</code> → <code>boxes</code> and <code>detections</code> only</li>
 <li><code>anchors</code> → <code>boxes</code> with <code>encoding: anchor</code> only</li>
 <li><code>stride</code> on a non-split logical output → spatial stride hint (e.g. <code>protos</code> at stride 4)</li>
+<li><code>upsample</code>, <code>decode_mode</code>, <code>background_index</code> → <code>segmentation</code> and <code>masks</code> with <code>decoder: semantic</code></li>
+<li><code>threshold</code> → single-channel <code>segmentation</code> with <code>decoder: semantic</code></li>
+<li><code>no_object_index</code> → <code>class_logits</code> only; <code>mask_activation</code> → <code>mask_logits</code> only</li>
 </ul>
 <hr />
 <h2 id="hal-decoder-algorithm"><abbr title="Hardware Abstraction Layer">HAL</abbr> Decoder Algorithm</h2>
@@ -5362,7 +5562,8 @@
 <ul>
 <li>Used when training on images from diverse cameras and aspect ratios</li>
 <li>Image is scaled to fit within target size while maintaining aspect ratio</li>
-<li>Gray padding (value 114) added to reach exact dimensions</li>
+<li>Padding added to reach exact dimensions: gray (value 114) by default, or the value in <code>input.preprocessing.letterbox.pad</code></li>
+<li>The scaled image is centred by default; <code>input.preprocessing.letterbox.placement: topleft</code> anchors it at the top-left with all padding on the bottom and right</li>
 <li>Inference must apply same letterbox transform and account for padding offset in output coordinates</li>
 </ul>
 <p><strong>Example:</strong> A 1920x1080 image letterboxed to 640x640:</p>
@@ -5372,11 +5573,113 @@
 <li>Output box coordinates must be adjusted to remove padding offset</li>
 </ul>
 <h3 id="pixel-normalization">Pixel Normalization</h3>
-<p>Input pixels are normalized from <code>[0, 255]</code> to <code>[0.0, 1.0]</code>:</p>
-<div class="highlight"><pre><span></span><code><span class="c1"># Standard normalization</span>
-<span class="n">normalized</span> <span class="o">=</span> <span class="n">pixels</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span> <span class="o">/</span> <span class="mf">255.0</span>
+<p>Normalization is defined on 0–255 pixel values as <code>(x - mean) / std</code> per channel. A model declares it in <code>input.preprocessing.normalization</code>, either as a preset or as explicit per-channel coefficients:</p>
+<table>
+<thead>
+<tr>
+<th>Preset</th>
+<th>mean</th>
+<th>std</th>
+<th>Result range</th>
+<th>Typical models</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>unsigned</code></td>
+<td>0</td>
+<td>255</td>
+<td><code>[0, 1]</code></td>
+<td>ModelPack, Ultralytics <abbr title="You Only Look Once">YOLO</abbr> (default)</td>
+</tr>
+<tr>
+<td><code>signed</code></td>
+<td>127.5</td>
+<td>127.5</td>
+<td><code>[-1, 1]</code></td>
+<td>TF DeepLab, MediaPipe, PP-LiteSeg</td>
+</tr>
+<tr>
+<td><code>raw</code></td>
+<td>0</td>
+<td>1</td>
+<td><code>[0, 255]</code></td>
+<td>Models with normalization in the graph</td>
+</tr>
+<tr>
+<td><code>imagenet</code></td>
+<td>123.675, 116.28, 103.53</td>
+<td>58.395, 57.12, 57.375</td>
+<td>about <code>[-2.1, 2.6]</code></td>
+<td>SegFormer, DeepLabV3, UperNet and most ImageNet-pretrained backbones</td>
+</tr>
+</tbody>
+</table>
+<div class="highlight"><pre><span></span><code><span class="c1"># Explicit form, equivalent to the imagenet preset</span>
+<span class="n">normalized</span> <span class="o">=</span> <span class="p">(</span><span class="n">pixels</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span> <span class="o">-</span> <span class="n">mean</span><span class="p">)</span> <span class="o">/</span> <span class="n">std</span>
 </code></pre></div>
-<p>For quantized models (<abbr title="Signed 8-bit integer">INT8</abbr>), the quantization parameters handle the scaling internally — raw uint8 pixel values can often be used directly.</p>
+<p>A single <code>mean</code> or <code>std</code> value applies to every channel. The coefficients describe the trained weights, not the architecture: ports of the same architecture differ (BEiT uses <code>imagenet</code> in mmsegmentation and <code>signed</code> in Hugging Face), so the producer records what its export expects.</p>
+<p>For quantized models (<abbr title="Signed 8-bit integer">INT8</abbr>), the input quantization is applied after normalization. When the normalization and input quantization cancel out, raw uint8 pixel values can be fed directly.</p>
+<h3 id="preprocessing-block">Preprocessing Block</h3>
+<p>The optional <code>input.preprocessing</code> block records everything a runtime needs to reproduce the model's reference pre-processing:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">input</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">shape</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">1</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">3</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">512</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">512</span><span class="p p-Indicator">]</span>
+<span class="w">  </span><span class="nt">cameraadaptor</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">rgb</span>
+<span class="w">  </span><span class="nt">preprocessing</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">normalization</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">imagenet</span><span class="w">        </span><span class="c1"># or {mean: [...], std: [...]}</span>
+<span class="w">    </span><span class="nt">resize</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">letterbox</span><span class="w">              </span><span class="c1"># stretch | letterbox</span>
+<span class="w">    </span><span class="nt">interpolation</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">bilinear</span><span class="w">        </span><span class="c1"># bilinear | nearest | bicubic | area</span>
+<span class="w">    </span><span class="nt">letterbox</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">placement</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">topleft</span><span class="w">           </span><span class="c1"># center | topleft</span>
+<span class="w">      </span><span class="nt">pad</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">0.0</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">0.0</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">0.0</span><span class="p p-Indicator">]</span>
+<span class="w">      </span><span class="nt">pad_space</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">normalized</span><span class="w">        </span><span class="c1"># pixel | normalized</span>
+</code></pre></div>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>normalization</code></td>
+<td>string or object</td>
+<td>Preset name (<code>unsigned</code>, <code>signed</code>, <code>raw</code>, <code>imagenet</code>) or <code>{mean, std}</code> with one value or one value per channel, on the 0–255 scale. Every <code>std</code> must be non-zero.</td>
+</tr>
+<tr>
+<td><code>resize</code></td>
+<td>string</td>
+<td><code>stretch</code> scales each axis independently to the input size. <code>letterbox</code> preserves the aspect ratio and pads.</td>
+</tr>
+<tr>
+<td><code>interpolation</code></td>
+<td>string</td>
+<td>Resampling filter of the reference pipeline. Informational: a runtime may use another filter and should state the difference when comparing accuracy. Segmentation models are sensitive to it; nearest-neighbor resizing costs SegFormer B1 0.6–1.0 mIoU points against bilinear.</td>
+</tr>
+<tr>
+<td><code>letterbox.placement</code></td>
+<td>string</td>
+<td><code>center</code> (default) splits the padding between both sides of each axis. <code>topleft</code> puts all padding on the bottom and right, as mmsegmentation and TF DeepLab do.</td>
+</tr>
+<tr>
+<td><code>letterbox.pad</code></td>
+<td>[float]</td>
+<td>Pad value, one per channel or a single shared value. Default 114 per channel.</td>
+</tr>
+<tr>
+<td><code>letterbox.pad_space</code></td>
+<td>string</td>
+<td><code>pixel</code> (default): <code>pad</code> is a 0–255 value that is normalized like image content. <code>normalized</code>: <code>pad</code> is written as-is into the normalized input, for example 0.0 to pad with the mean colour after <code>imagenet</code> normalization.</td>
+</tr>
+</tbody>
+</table>
+<p>Every field is optional. When a field is absent, consumers fall back to the legacy <a href="#validation-parameters"><code>validation</code></a> fields (<code>validation.normalization</code>, <code>validation.preprocessing</code>), then to <code>unsigned</code> normalization and a centred letterbox padded with 114. The block was added to schema version 2 without a version change; parsers that predate it ignore it.</p>
+<div class="admonition note">
+<p class="admonition-title">Sliding-window evaluation</p>
+<p>Some published segmentation results (UperNet with ConvNeXt or BEiT, DINOv2, SegFormer on Cityscapes) use sliding-window inference over a larger image, stitching the overlapping score maps. The block describes single-pass inference at the fixed input shape only. Sliding-window geometry and score-map stitching are outside this block, and the <a href="#tiling">Tiling</a> section does not cover them: tiling reconstructs bounding boxes only.</p>
+</div>
 <h3 id="camera-adaptor">Camera Adaptor</h3>
 <p>The <code>cameraadaptor</code> field specifies the expected input format for the model. See <a href="../cameraadaptor/">Camera Adaptor</a> for details on how this enables models to consume native camera formats without runtime conversion.</p>
 <table>
@@ -5423,6 +5726,7 @@
 <hr />
 <h2 id="tiling">Tiling</h2>
 <p>Models trained on native-resolution tiles of high-resolution frames carry an optional <code>tiling</code> section. A runtime reads it to decide whether to cut each frame into tiles or run the whole frame through the model, and it records how the model was trained, exported and calibrated. A model without the section is not tile-trained and is handled exactly as before.</p>
+<p>Tiling reconstructs bounding boxes only: per-tile detections are merged into frame detections. Masks, whether instance masks or semantic segmentation maps, are not reconstructed across tiles.</p>
 <p>The tiling mode and the input resolution are fixed when the model is exported, because edge runtimes compile a static input shape. The default deployment of a tile-trained model is <strong>tiled</strong> at its tile size. The contract defines one workflow for deploying the same weights at another resolution, for example whole-frame at a camera's native resolution: it is done by starting a new training session with training disabled, selecting the tile-trained session as its weights source, and choosing the deployment mode and input resolution. That session exports and calibrates at the new geometry without retraining.</p>
 <h3 id="tiling-schema">Tiling Schema</h3>
 <div class="highlight"><pre><span></span><code><span class="nt">tiling</span><span class="p">:</span>
@@ -5438,8 +5742,8 @@
 <span class="w">  </span><span class="nt">training</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">session</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">t-1a2b</span>
 <span class="w">    </span><span class="nt">sampler</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">edgefirst-tiling</span>
-<span class="w">    </span><span class="nt">version</span><span class="p">:</span><span class="w"> </span><span class="s">"3.0"</span>
-<span class="w">    </span><span class="nt">params</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="nt">tile_size</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">640</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">640</span><span class="p p-Indicator">],</span><span class="nt"> windows_per_frame</span><span class="p">:</span><span class="w"> </span><span class="nv">4</span><span class="p p-Indicator">,</span><span class="nt"> seed</span><span class="p">:</span><span class="w"> </span><span class="nv">0</span><span class="p p-Indicator">}</span>
+<span class="w">    </span><span class="nt">version</span><span class="p">:</span><span class="w"> </span><span class="s">"3.1"</span>
+<span class="w">    </span><span class="nt">params</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="nt">tile_size</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">640</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">640</span><span class="p p-Indicator">],</span><span class="nt"> frames_per_batch</span><span class="p">:</span><span class="w"> </span><span class="nv">4</span><span class="p p-Indicator">,</span><span class="nt"> seed</span><span class="p">:</span><span class="w"> </span><span class="nv">0</span><span class="p p-Indicator">}</span>
 <span class="w">  </span><span class="nt">export</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">session</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">t-1a2b</span>
 <span class="w">    </span><span class="nt">calibration</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="nt">resize</span><span class="p">:</span><span class="w"> </span><span class="nv">tiled</span><span class="p p-Indicator">,</span><span class="nt"> input_shape</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">640</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">640</span><span class="p p-Indicator">],</span><span class="nt"> full_frame</span><span class="p">:</span><span class="w"> </span><span class="nv">false</span><span class="p p-Indicator">}</span>
@@ -5622,8 +5926,8 @@
 <span class="w">  </span><span class="nt">training</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">session</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">t-1a2b</span>
 <span class="w">    </span><span class="nt">sampler</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">edgefirst-tiling</span>
-<span class="w">    </span><span class="nt">version</span><span class="p">:</span><span class="w"> </span><span class="s">"3.0"</span>
-<span class="w">    </span><span class="nt">params</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="nt">tile_size</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">640</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">640</span><span class="p p-Indicator">],</span><span class="nt"> windows_per_frame</span><span class="p">:</span><span class="w"> </span><span class="nv">4</span><span class="p p-Indicator">,</span><span class="nt"> seed</span><span class="p">:</span><span class="w"> </span><span class="nv">0</span><span class="p p-Indicator">}</span>
+<span class="w">    </span><span class="nt">version</span><span class="p">:</span><span class="w"> </span><span class="s">"3.1"</span>
+<span class="w">    </span><span class="nt">params</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="nt">tile_size</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">640</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">640</span><span class="p p-Indicator">],</span><span class="nt"> frames_per_batch</span><span class="p">:</span><span class="w"> </span><span class="nv">4</span><span class="p p-Indicator">,</span><span class="nt"> seed</span><span class="p">:</span><span class="w"> </span><span class="nv">0</span><span class="p p-Indicator">}</span>
 <span class="w">  </span><span class="nt">export</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">session</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">t-3c4d</span>
 <span class="w">    </span><span class="nt">weights_from</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">t-1a2b</span>
@@ -5646,8 +5950,8 @@
 <span class="w">  </span><span class="nt">training</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">session</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">t-1a2b</span>
 <span class="w">    </span><span class="nt">sampler</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">edgefirst-tiling</span>
-<span class="w">    </span><span class="nt">version</span><span class="p">:</span><span class="w"> </span><span class="s">"3.0"</span>
-<span class="w">    </span><span class="nt">params</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="nt">tile_size</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">640</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">640</span><span class="p p-Indicator">],</span><span class="nt"> windows_per_frame</span><span class="p">:</span><span class="w"> </span><span class="nv">4</span><span class="p p-Indicator">,</span><span class="nt"> seed</span><span class="p">:</span><span class="w"> </span><span class="nv">0</span><span class="p p-Indicator">}</span>
+<span class="w">    </span><span class="nt">version</span><span class="p">:</span><span class="w"> </span><span class="s">"3.1"</span>
+<span class="w">    </span><span class="nt">params</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="nt">tile_size</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">640</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">640</span><span class="p p-Indicator">],</span><span class="nt"> frames_per_batch</span><span class="p">:</span><span class="w"> </span><span class="nv">4</span><span class="p p-Indicator">,</span><span class="nt"> seed</span><span class="p">:</span><span class="w"> </span><span class="nv">0</span><span class="p p-Indicator">}</span>
 <span class="w">  </span><span class="nt">export</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">session</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">t-3c4e</span>
 <span class="w">    </span><span class="nt">weights_from</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">t-1a2b</span>
@@ -5702,7 +6006,7 @@
 </tr>
 <tr>
 <td><code>normalization</code></td>
-<td>Input pixel normalization</td>
+<td>Input pixel normalization preset (<code>unsigned</code>, <code>signed</code>, <code>raw</code>, <code>imagenet</code>). Superseded by <code>input.preprocessing.normalization</code> when present</td>
 <td><code>unsigned</code></td>
 <td>Yes</td>
 </tr>
@@ -5897,6 +6201,8 @@
 </tr>
 </tbody>
 </table>
+<h4 id="semantic-semantic-segmentation-decoder"><code>semantic</code> — Semantic Segmentation Decoder</h4>
+<p>Per-pixel class decoding for semantic segmentation models: upsampling of a class-score map and argmax, or resizing of a class map the model already computed. See <a href="#semantic-segmentation">Semantic Segmentation</a> for the fields and the decode algorithm.</p>
 <h3 id="decoder-version-field">Decoder Version Field</h3>
 <p>The optional <code>decoder_version</code> field specifies the <abbr title="You Only Look Once">YOLO</abbr> architecture version of the model. This field is critical for determining the correct decoding strategy, especially for end-to-end models.</p>
 <div class="highlight"><pre><span></span><code><span class="nt">decoder_version</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">yolo26</span><span class="w">    </span><span class="c1"># End-to-end model with embedded NMS</span>
@@ -6019,6 +6325,149 @@
 <li><strong>Warning</strong>: a decoder that takes multi-label from this key logs a warning when it is built, because the model file then changes what every untracked <code>decode</code> returns. Pass <code>multi_label=False</code> to override it.</li>
 <li><strong>Tracking</strong>: tracked decode (<code>decode_tracked</code>, <code>decode_proto_tracked</code>, <code>decode_for_tracking</code>) always decodes one label per box regardless of this key, because a tracker matches on <abbr title="Intersection over Union">IoU</abbr> only and per-class duplicates of one anchor would become spurious tracks.</li>
 </ul>
+<hr />
+<h2 id="semantic-segmentation">Semantic Segmentation</h2>
+<p>Semantic segmentation models assign a class to every pixel. Their logical outputs use <code>decoder: semantic</code> and one of three forms:</p>
+<div class="admonition note">
+<p class="admonition-title">Metadata and decoder support</p>
+<p>This section defines the metadata contract and the decode algorithm a consumer implements. The <abbr title="Hardware Abstraction Layer">HAL</abbr> parses and validates every field described here. From <abbr title="Hardware Abstraction Layer">HAL</abbr> 0.36.0 its semantic decoder decodes per-pixel scores and class maps; the reserved mask-classification outputs return a "not supported" error.</p>
+</div>
+<table>
+<thead>
+<tr>
+<th>Form</th>
+<th>Logical output(s)</th>
+<th>Examples</th>
+<th>Decode</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Per-pixel scores</td>
+<td>one <code>segmentation</code></td>
+<td>SegFormer, DeepLabV3(+), PSPNet, UperNet, PIDNet, DDRNet, BiSeNet, LRASPP, MediaPipe selfie</td>
+<td>Upsample the scores, then argmax (or threshold one channel)</td>
+</tr>
+<tr>
+<td>Class map</td>
+<td>one <code>masks</code></td>
+<td>Exports ending in <code>ArgMax</code>: Coral DeepLab (int64), PaddleSeg (int32), Ultralytics semantic <abbr title="Open Neural Network Exchange">ONNX</abbr> (uint8)</td>
+<td>Nearest-neighbor resize only; the <abbr title="Hardware Abstraction Layer">HAL</abbr> accepts <code>uint8</code>, <code>uint16</code>, <code>int32</code>, <code>uint32</code> and <code>int64</code></td>
+</tr>
+<tr>
+<td>Mask classification (reserved)</td>
+<td><code>class_logits</code> + <code>mask_logits</code></td>
+<td>MaskFormer, Mask2Former, OneFormer, PEM</td>
+<td>Not yet decoded by the <abbr title="Hardware Abstraction Layer">HAL</abbr></td>
+</tr>
+</tbody>
+</table>
+<p>A semantic output is a single tensor; the <abbr title="Hardware Abstraction Layer">HAL</abbr> rejects a <code>decoder: semantic</code> output that has physical children.</p>
+<p>ModelPack semantic segmentation (<code>decoder: modelpack</code>, see <a href="#example-1-modelpack-semantic-segmentation">Example 1</a>) keeps its existing behavior.</p>
+<h3 id="semantic-output-fields">Semantic Output Fields</h3>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Applies to</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>dshape</code></td>
+<td>all</td>
+<td>Names the class axis <code>num_classes</code> and the spatial axes <code>height</code>/<code>width</code>, so both <abbr title="Tensor layout — Batch, Channels, Height, Width">NCHW</abbr> and <abbr title="Tensor layout — Batch, Height, Width, Channels">NHWC</abbr> layouts decode correctly. A class map has no class axis.</td>
+</tr>
+<tr>
+<td><code>stride</code></td>
+<td><code>segmentation</code>, <code>masks</code></td>
+<td>Output stride relative to the model input (4 for SegFormer, 8 for DeepLabV3 d8, 1 when the model upsamples in the graph). Informational for the <abbr title="Hardware Abstraction Layer">HAL</abbr> decoder, which maps the letterbox onto the score map by its size, so non-integer strides such as DINOv2's 14-pixel patches need no special handling.</td>
+</tr>
+<tr>
+<td><code>activation_applied</code></td>
+<td><code>segmentation</code></td>
+<td><code>softmax</code> or <code>sigmoid</code> when the scores are probabilities; absent for logits. Argmax is unaffected; the activation matters for <code>threshold</code> and for confidence output.</td>
+</tr>
+<tr>
+<td><code>upsample</code></td>
+<td><code>segmentation</code>, <code>masks</code></td>
+<td><code>{method, align_corners}</code>. <code>method</code> is <code>bilinear</code> (default for scores), <code>nearest</code> (always used for class maps) or <code>bicubic</code> (EfficientViT-Seg; not supported by the <abbr title="Hardware Abstraction Layer">HAL</abbr> decoder). <code>align_corners</code> follows PyTorch semantics and defaults to <code>false</code>; PIDNet, TF DeepLab and the mmsegmentation 769×769 configs use <code>true</code>.</td>
+</tr>
+<tr>
+<td><code>decode_mode</code></td>
+<td><code>segmentation</code></td>
+<td>Default decode mode, <code>accurate</code> (default) or <code>fast</code>. Runtimes may override it.</td>
+</tr>
+<tr>
+<td><code>threshold</code></td>
+<td><code>segmentation</code> with one channel</td>
+<td>Foreground threshold in the space of the tensor: a probability when <code>activation_applied: sigmoid</code>, a logit otherwise (<code>0.0</code> is equivalent to probability 0.5). Absent means <code>0.5</code> when <code>activation_applied</code> is <code>sigmoid</code> or <code>softmax</code>, else <code>0.0</code>.</td>
+</tr>
+<tr>
+<td><code>background_index</code></td>
+<td><code>segmentation</code>, <code>masks</code></td>
+<td>Channel of the background class when the model has one (VOC-style models use 0). ADE20K and Cityscapes models have none.</td>
+</tr>
+<tr>
+<td><code>no_object_index</code></td>
+<td><code>class_logits</code> (reserved)</td>
+<td>Index of the "no object" class. Absent means the last class.</td>
+</tr>
+<tr>
+<td><code>mask_activation</code></td>
+<td><code>mask_logits</code> (reserved)</td>
+<td><code>sigmoid</code> (MaskFormer, Mask2Former, OneFormer) or <code>softmax_over_queries</code> (kMaX-DeepLab).</td>
+</tr>
+</tbody>
+</table>
+<p>Class labels come from <code>dataset.classes</code> (or the <code>labels</code> file) in channel order: label <code>i</code> names channel <code>i</code>. Dataset conventions such as an ignore index (255) or ADE20K's <code>reduce_zero_label</code>, where channel <code>c</code> is dataset class <code>c + 1</code>, belong to the dataset and the validator, not to the decoder.</p>
+<p>Auxiliary heads that remain in an export (training-time aux heads, PIDNet's P and D branches) are listed without a <code>type</code>, so the decoder ignores them. Select the decoded head by its logical output, never by position.</p>
+<h3 id="decode-modes">Decode Modes</h3>
+<p>Both modes map each output pixel through the letterbox geometry of the input (see <a href="#preprocessing-block">Preprocessing Block</a>), so the padding is cropped and the class map covers the original image. <code>accurate</code> is the reference decode. <code>fast</code> trades a small, measured accuracy cost for speed and is not required to reproduce a reference pipeline pixel for pixel.</p>
+<p>The letterbox content region is mapped into score-map coordinates as a fractional region rather than cropped to whole cells, because the image edge rarely falls on a cell boundary (a 504-row image region at stride 4 ends at row 126, a 509-row one at row 127.25). For an axis of <code>n</code> score-map cells, a content region starting at normalized <code>t0</code> and ending at <code>t1</code>, and <code>out</code> output pixels:</p>
+<div class="highlight"><pre><span></span><code><span class="n">r0</span><span class="p">,</span> <span class="n">rl</span> <span class="o">=</span> <span class="n">t0</span> <span class="o">*</span> <span class="n">n</span><span class="p">,</span> <span class="p">(</span><span class="n">t1</span> <span class="o">-</span> <span class="n">t0</span><span class="p">)</span> <span class="o">*</span> <span class="n">n</span>               <span class="c1"># region start and length in cells</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">src_bilinear</span><span class="p">(</span><span class="n">d</span><span class="p">):</span>                          <span class="c1"># output pixel d -&gt; source coordinate</span>
+    <span class="k">if</span> <span class="n">align_corners</span><span class="p">:</span>
+        <span class="n">s</span> <span class="o">=</span> <span class="n">r0</span> <span class="o">+</span> <span class="n">d</span> <span class="o">*</span> <span class="p">(</span><span class="n">rl</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="n">out</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">s</span> <span class="o">=</span> <span class="n">r0</span> <span class="o">+</span> <span class="p">(</span><span class="n">d</span> <span class="o">+</span> <span class="mf">0.5</span><span class="p">)</span> <span class="o">*</span> <span class="n">rl</span> <span class="o">/</span> <span class="n">out</span> <span class="o">-</span> <span class="mf">0.5</span>   <span class="c1"># PyTorch half-pixel convention</span>
+    <span class="k">return</span> <span class="n">clamp</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">n</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span>                 <span class="c1"># taps at the edge may read padding cells</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">src_nearest</span><span class="p">(</span><span class="n">d</span><span class="p">):</span>                           <span class="c1"># pixel-center nearest neighbor</span>
+    <span class="k">return</span> <span class="n">clamp</span><span class="p">(</span><span class="n">floor</span><span class="p">(</span><span class="n">r0</span> <span class="o">+</span> <span class="p">(</span><span class="n">d</span> <span class="o">+</span> <span class="mf">0.5</span><span class="p">)</span> <span class="o">*</span> <span class="n">rl</span> <span class="o">/</span> <span class="n">out</span><span class="p">),</span> <span class="mi">0</span><span class="p">,</span> <span class="n">n</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span>
+</code></pre></div>
+<p><code>sample</code> reads the scores at fractional source coordinates with <code>upsample.method</code>; with <code>nearest</code> it uses <code>src_nearest</code> and is equivalent to the fast path. Multi-channel outputs (two or more classes) take the argmax over the class axis:</p>
+<div class="highlight"><pre><span></span><code><span class="n">ys</span><span class="p">,</span> <span class="n">xs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">H</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">W</span><span class="p">)</span>                             <span class="c1"># output pixels</span>
+
+<span class="c1"># accurate (reference): resample every channel, then argmax</span>
+<span class="n">scores</span> <span class="o">=</span> <span class="n">sample</span><span class="p">(</span><span class="n">scores</span><span class="p">,</span> <span class="n">src_bilinear</span><span class="p">(</span><span class="n">ys</span><span class="p">),</span> <span class="n">src_bilinear</span><span class="p">(</span><span class="n">xs</span><span class="p">))</span>     <span class="c1"># [C, H, W]</span>
+<span class="n">class_map</span> <span class="o">=</span> <span class="n">scores</span><span class="o">.</span><span class="n">argmax</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+
+<span class="c1"># fast: argmax at the score-map resolution, then nearest-neighbor sampling</span>
+<span class="n">class_map</span> <span class="o">=</span> <span class="n">scores</span><span class="o">.</span><span class="n">argmax</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>                                <span class="c1"># [h, w]</span>
+<span class="n">class_map</span> <span class="o">=</span> <span class="n">class_map</span><span class="p">[</span><span class="n">src_nearest</span><span class="p">(</span><span class="n">ys</span><span class="p">)][:,</span> <span class="n">src_nearest</span><span class="p">(</span><span class="n">xs</span><span class="p">)]</span>       <span class="c1"># [H, W]</span>
+</code></pre></div>
+<p>Single-channel outputs compare the score with <code>threshold</code> instead, since an argmax over one channel is always 0. The foreground class is 1 and the background 0:</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># accurate: resample the score, then threshold</span>
+<span class="n">class_map</span> <span class="o">=</span> <span class="p">(</span><span class="n">sample</span><span class="p">(</span><span class="n">score</span><span class="p">,</span> <span class="n">src_bilinear</span><span class="p">(</span><span class="n">ys</span><span class="p">),</span> <span class="n">src_bilinear</span><span class="p">(</span><span class="n">xs</span><span class="p">))</span> <span class="o">&gt;</span> <span class="n">threshold</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">uint8</span><span class="p">)</span>
+
+<span class="c1"># fast: threshold at the score-map resolution, then nearest-neighbor sampling</span>
+<span class="n">class_map</span> <span class="o">=</span> <span class="p">(</span><span class="n">score</span> <span class="o">&gt;</span> <span class="n">threshold</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">uint8</span><span class="p">)[</span><span class="n">src_nearest</span><span class="p">(</span><span class="n">ys</span><span class="p">)][:,</span> <span class="n">src_nearest</span><span class="p">(</span><span class="n">xs</span><span class="p">)]</span>
+</code></pre></div>
+<p>Ties in the argmax go to the lowest class index, as <code>torch.argmax</code> does.</p>
+<p>Reference pipelines often upsample twice: first to the model input size, then, after cropping the padding, to the original image size. On SegFormer B1 (ADE20K val, three input shapes), the single resize over the fractional region is within 0.01 mIoU points of the two-step reference and agrees with it on 99.94–99.97% of pixels; cropping to whole cells instead agrees on only 99.4–99.7%. <code>fast</code> costs 0.12–0.13 mIoU points and is much cheaper, because only one channel is resized. Pixel-center sampling matters there: PyTorch's legacy <code>nearest</code> mode (<code>floor(d * scale)</code>, no half-pixel offset) shifts the class map by half a score-map cell and costs 0.17–0.19 points.</p>
+<p>Quantized multi-channel outputs with one scale and zero point for the whole tensor can take the argmax on the integer values directly: dequantization with a positive scale preserves the argmax, and bilinear weights sum to 1. Per-channel quantization is dequantized first. A single-channel threshold is a real value, so either dequantize the score or convert the threshold to quantized units, <code>threshold / scale + zero_point</code>, before comparing. Comparing the raw integer with <code>threshold</code> is wrong: with scale <code>1/255</code> and zero point <code>0</code>, the integer <code>64</code> is a score of about <code>0.25</code>, below a threshold of <code>0.5</code>, yet <code>64 &gt; 0.5</code>.</p>
+<h3 id="mask-classification-reserved">Mask Classification (Reserved)</h3>
+<p>Mask-classification models predict <code>Q</code> queries, each with a class distribution and a mask. The semantic map is:</p>
+<div class="highlight"><pre><span></span><code><span class="bp">cls</span> <span class="o">=</span> <span class="n">softmax</span><span class="p">(</span><span class="n">class_logits</span><span class="p">,</span> <span class="n">axis</span><span class="o">=-</span><span class="mi">1</span><span class="p">)</span>          <span class="c1"># [Q, K+1]</span>
+<span class="bp">cls</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">delete</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">no_object_index</span><span class="p">,</span> <span class="n">axis</span><span class="o">=-</span><span class="mi">1</span><span class="p">)</span> <span class="c1"># [Q, K]  drop "no object"</span>
+<span class="n">masks</span> <span class="o">=</span> <span class="n">sigmoid</span><span class="p">(</span><span class="n">mask_logits</span><span class="p">)</span>                  <span class="c1"># [Q, h, w]  (softmax over Q for softmax_over_queries)</span>
+<span class="n">scores</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">einsum</span><span class="p">(</span><span class="s2">"qc,qhw-&gt;chw"</span><span class="p">,</span> <span class="bp">cls</span><span class="p">,</span> <span class="n">masks</span><span class="p">)</span> <span class="c1"># [K, h, w]</span>
+<span class="n">class_map</span> <span class="o">=</span> <span class="n">resize</span><span class="p">(</span><span class="n">scores</span><span class="p">,</span> <span class="p">(</span><span class="n">H</span><span class="p">,</span> <span class="n">W</span><span class="p">))</span><span class="o">.</span><span class="n">argmax</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+</code></pre></div>
+<p>The output types, the <code>num_queries</code> dimension and the <code>no_object_index</code> and <code>mask_activation</code> fields are reserved so producers can describe these models now. The <abbr title="Hardware Abstraction Layer">HAL</abbr> rejects them until it implements the formula.</p>
 <hr />
 <h2 id="split-hints">Split Hints</h2>
 <p>Split hints encode model-specific knowledge about where natural quantization boundaries exist within output tensors. The training framework identifies these boundaries based on its knowledge of the model architecture; the converter decides whether to apply them and how far to decompose beyond them.</p>
@@ -6296,6 +6745,27 @@
 <td>1</td>
 <td>No</td>
 <td>1 logical <code>type: segmentation</code>, no children</td>
+</tr>
+<tr>
+<td>SegFormer / DeepLab / per-pixel semantic seg</td>
+<td>—</td>
+<td>1</td>
+<td>—</td>
+<td>1 logical <code>type: segmentation</code>, <code>decoder: semantic</code></td>
+</tr>
+<tr>
+<td>Semantic seg with in-graph argmax</td>
+<td>—</td>
+<td>1</td>
+<td>—</td>
+<td>1 logical <code>type: masks</code>, <code>decoder: semantic</code></td>
+</tr>
+<tr>
+<td>Mask2Former / OneFormer (reserved)</td>
+<td>—</td>
+<td>2</td>
+<td>—</td>
+<td><code>class_logits</code> + <code>mask_logits</code></td>
 </tr>
 <tr>
 <td><abbr title="Solid State Drive">SSD</abbr> MobileNet</td>
@@ -6717,6 +7187,34 @@
 <span class="w">          </span><span class="nt">"activation_applied"</span><span class="p">:</span><span class="w"> </span><span class="s2">"sigmoid"</span>
 <span class="w">        </span><span class="p">}</span>
 <span class="w">      </span><span class="p">]</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">]</span>
+<span class="p">}</span>
+</code></pre></div>
+<h3 id="example-8-segformer-b1-semantic-segmentation-ade20k-onnx-fp32">Example 8: SegFormer B1 Semantic Segmentation (ADE20K, <abbr title="Open Neural Network Exchange">ONNX</abbr> <abbr title="Single-precision 32-bit floating-point">FP32</abbr>)</h3>
+<p>ImageNet normalization, a top-left letterbox padded with 0.0 in the normalized domain, and 150-class logits at stride 4. Channel <code>c</code> is ADE20K class <code>c + 1</code>; label 0 is never predicted.</p>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nt">"schema_version"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">"input"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">"shape"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="mi">512</span><span class="p">,</span><span class="w"> </span><span class="mi">672</span><span class="p">],</span>
+<span class="w">    </span><span class="nt">"dshape"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="nt">"batch"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">},</span><span class="w"> </span><span class="p">{</span><span class="nt">"channels"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">},</span><span class="w"> </span><span class="p">{</span><span class="nt">"height"</span><span class="p">:</span><span class="w"> </span><span class="mi">512</span><span class="p">},</span><span class="w"> </span><span class="p">{</span><span class="nt">"width"</span><span class="p">:</span><span class="w"> </span><span class="mi">672</span><span class="p">}],</span>
+<span class="w">    </span><span class="nt">"cameraadaptor"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rgb"</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"preprocessing"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">"normalization"</span><span class="p">:</span><span class="w"> </span><span class="s2">"imagenet"</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">"resize"</span><span class="p">:</span><span class="w"> </span><span class="s2">"letterbox"</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">"interpolation"</span><span class="p">:</span><span class="w"> </span><span class="s2">"bilinear"</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">"letterbox"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="nt">"placement"</span><span class="p">:</span><span class="w"> </span><span class="s2">"topleft"</span><span class="p">,</span><span class="w"> </span><span class="nt">"pad"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="mf">0.0</span><span class="p">,</span><span class="w"> </span><span class="mf">0.0</span><span class="p">,</span><span class="w"> </span><span class="mf">0.0</span><span class="p">],</span><span class="w"> </span><span class="nt">"pad_space"</span><span class="p">:</span><span class="w"> </span><span class="s2">"normalized"</span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">},</span>
+<span class="w">  </span><span class="nt">"outputs"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"logits"</span><span class="p">,</span><span class="w"> </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"segmentation"</span><span class="p">,</span><span class="w"> </span><span class="nt">"decoder"</span><span class="p">:</span><span class="w"> </span><span class="s2">"semantic"</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">"shape"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">150</span><span class="p">,</span><span class="w"> </span><span class="mi">128</span><span class="p">,</span><span class="w"> </span><span class="mi">168</span><span class="p">],</span>
+<span class="w">      </span><span class="nt">"dshape"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="nt">"batch"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">},</span><span class="w"> </span><span class="p">{</span><span class="nt">"num_classes"</span><span class="p">:</span><span class="w"> </span><span class="mi">150</span><span class="p">},</span><span class="w"> </span><span class="p">{</span><span class="nt">"height"</span><span class="p">:</span><span class="w"> </span><span class="mi">128</span><span class="p">},</span><span class="w"> </span><span class="p">{</span><span class="nt">"width"</span><span class="p">:</span><span class="w"> </span><span class="mi">168</span><span class="p">}],</span>
+<span class="w">      </span><span class="nt">"dtype"</span><span class="p">:</span><span class="w"> </span><span class="s2">"float32"</span><span class="p">,</span><span class="w"> </span><span class="nt">"quantization"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">"stride"</span><span class="p">:</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">"upsample"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="nt">"method"</span><span class="p">:</span><span class="w"> </span><span class="s2">"bilinear"</span><span class="p">,</span><span class="w"> </span><span class="nt">"align_corners"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">},</span>
+<span class="w">      </span><span class="nt">"decode_mode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"accurate"</span>
 <span class="w">    </span><span class="p">}</span>
 <span class="w">  </span><span class="p">]</span>
 <span class="p">}</span>
@@ -7167,11 +7665,17 @@ zip<span class="w"> </span>mymodel.tflite<span class="w"> </span>edgefirst.json
 <div class="highlight"><pre><span></span><code><span class="nt">dataset</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="s">"COCO</span><span class="nv"> </span><span class="s">2017"</span><span class="w">      </span><span class="c1"># Human-readable name</span>
 <span class="w">  </span><span class="nt">id</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ds-abc123</span><span class="w">          </span><span class="c1"># Dataset ID (prefix: ds-)</span>
-<span class="w">  </span><span class="nt">classes</span><span class="p">:</span><span class="w">               </span><span class="c1"># Ordered list of class labels</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">background</span>
+<span class="w">  </span><span class="nt">classes</span><span class="p">:</span><span class="w">               </span><span class="c1"># Ordered list of class labels, by class index</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">person</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">bicycle</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">car</span>
 </code></pre></div>
+<p><code>classes</code> lists the classes in the order of their indices in the model's outputs. Detection models have no background class. A background class is a semantic segmentation convention, and where it sits varies from model to model:</p>
+<ul>
+<li><strong>ModelPack</strong> adds background as an extra last channel with no entry in <code>classes</code>, so a model trained on N classes has N + 1 segmentation channels. Its masks and boxes then share class indices 0 to N − 1, and index N is background.</li>
+<li><strong>VOC-style models</strong> list <code>background</code> as class 0 and declare it with <a href="#semantic-output-fields"><code>background_index</code></a>.</li>
+<li><strong>ADE20K and Cityscapes models</strong> have no background class.</li>
+</ul>
 <h3 id="model-identification">Model Identification</h3>
 <p>Top-level fields for model identification, populated from the <a href="../training/vision/">training session</a> name and description.</p>
 <div class="highlight"><pre><span></span><code><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="s">"coffeecup-detection"</span><span class="w">       </span><span class="c1"># Model/session name (used in filename)</span>
@@ -7183,6 +7687,10 @@ zip<span class="w"> </span>mymodel.tflite<span class="w"> </span>edgefirst.json
 <div class="highlight"><pre><span></span><code><span class="nt">input</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">shape</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">1</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">640</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">640</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">3</span><span class="p p-Indicator">]</span><span class="w">  </span><span class="c1"># Input tensor shape</span>
 <span class="w">  </span><span class="nt">cameraadaptor</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">rgb</span><span class="w">       </span><span class="c1"># rgb, rgba, yuyv, bgr</span>
+<span class="w">  </span><span class="nt">preprocessing</span><span class="p">:</span><span class="w">           </span><span class="c1"># Optional; see Preprocessing Block</span>
+<span class="w">    </span><span class="nt">normalization</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">unsigned</span>
+<span class="w">    </span><span class="nt">resize</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">letterbox</span>
+<span class="w">    </span><span class="nt">letterbox</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="nt">placement</span><span class="p">:</span><span class="w"> </span><span class="nv">center</span><span class="p p-Indicator">,</span><span class="nt"> pad</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">114</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">114</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">114</span><span class="p p-Indicator">],</span><span class="nt"> pad_space</span><span class="p">:</span><span class="w"> </span><span class="nv">pixel</span><span class="p p-Indicator">}</span>
 </code></pre></div>
 <div class="admonition note">
 <p class="admonition-title">Data Layout</p>
@@ -7707,8 +8215,8 @@ zip<span class="w"> </span>mymodel.tflite<span class="w"> </span>edgefirst.json
 <li><a href="../modelpack/">ModelPack Overview</a> - Architecture details and training parameters</li>
 <li><a href="../ultralytics/">Ultralytics Integration</a> - YOLOv8/v11/v26 training and deployment</li>
 <li><a href="../training/vision/">Training Vision Models</a> - Step-by-step training workflow</li>
-<li><a href="../validation/vision/managed/">On Cloud Validation</a> - Managed validation sessions</li>
-<li><a href="../validation/vision/user_managed/">On Target Validation</a> - User-managed validation with the EdgeFirst Profiler</li>
+<li><a href="../validation/vision/managed/">On Cloud Validation</a> - Cloud validation sessions</li>
+<li><a href="../validation/vision/user_managed/">On Target Validation</a> - On-target validation with the EdgeFirst Profiler</li>
 <li><a href="../conversion/tflite/">Model Quantization</a> - Converting <abbr title="Open Neural Network Exchange">ONNX</abbr> to quantized <abbr title="TensorFlow Lite">TFLite</abbr></li>
 <li><a href="../deployment/launcher/">Deploying to Embedded Targets</a> - Model deployment workflow</li>
 <li><a href="../../perception/">EdgeFirst Perception Middleware</a> - Runtime inference stack</li>

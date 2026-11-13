@@ -614,8 +614,6 @@
       
         
       
-        
-      
     
     
     
@@ -1079,8 +1077,6 @@
       
         
       
-        
-      
     
     
     
@@ -1275,10 +1271,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#object-detection-and-segmentation-metrics" class="md-nav__link">
+  <a href="#coffee-cup" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Object Detection and Segmentation Metrics
+        Coffee Cup
       
     </span>
   </a>
@@ -1461,6 +1457,8 @@
       
         
           
+        
+      
         
       
         
@@ -1770,8 +1768,6 @@
       
         
       
-        
-      
     
     
     
@@ -1921,10 +1917,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#object-detection-and-segmentation-metrics" class="md-nav__link">
+  <a href="#coffee-cup" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Object Detection and Segmentation Metrics
+        Coffee Cup
       
     </span>
   </a>
@@ -2047,11 +2043,11 @@
 
 <h1 id="ultralytics-benchmarks">Ultralytics Benchmarks</h1>
 <p>This page provides a summary of the benchmarks gathered for Ultralytics across various datasets.</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="1:6"><input checked="checked" id="playingcards" name="__tabbed_1" type="radio" /><input id="coffee-cup" name="__tabbed_1" type="radio" /><input id="bdd100k_1" name="__tabbed_1" type="radio" /><input id="coco-people" name="__tabbed_1" type="radio" /><input id="coco-2017" name="__tabbed_1" type="radio" /><input id="imagenet" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="playingcards">Playingcards</label><label for="coffee-cup">Coffee Cup</label><label for="bdd100k_1">BDD100K</label><label for="coco-people">COCO People</label><label for="coco-2017">COCO 2017</label><label for="imagenet">ImageNet</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="1:6"><input checked="checked" id="playingcards" name="__tabbed_1" type="radio" /><input id="coffee-cup_1" name="__tabbed_1" type="radio" /><input id="bdd100k_1" name="__tabbed_1" type="radio" /><input id="coco-people" name="__tabbed_1" type="radio" /><input id="coco-2017" name="__tabbed_1" type="radio" /><input id="imagenet" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="playingcards">Playingcards</label><label for="coffee-cup_1">Coffee Cup</label><label for="bdd100k_1">BDD100K</label><label for="coco-people">COCO People</label><label for="coco-2017">COCO 2017</label><label for="imagenet">ImageNet</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <h2 id="playing-cards">Playing Cards</h2>
-<p>The Playing Cards dataset is a custom object detection dataset containing over 1,000 images annotated across 13 card classes (e.g., Ace to King).  It focuses on detecting cards in varied orientations and real-world settings.  We use this dataset to benchmark Ultralytics models for lightweight, task-specific detection performance. </p>
+<p>The Playing Cards dataset is a custom object detection dataset containing over 1,000 images annotated across 13 card classes (e.g., Ace to King).  It focuses on detecting cards in varied orientations and real-world settings.  We use this dataset to benchmark Ultralytics models for lightweight, task-specific detection performance.</p>
 <p><strong>Table: Ultralytics on Playing Cards - <abbr title="Red Green Blue">RGB</abbr> - (640x640) - <abbr title="Open Neural Network Exchange">ONNX</abbr> - (50 epochs)</strong></p>
 <table>
 <thead>
@@ -2091,7 +2087,8 @@
 <p>Visit the full <strong>Playingcards</strong> dataset <a href="../../../datasets/playingcards/">Benchmark here</a>.</p>
 </div>
 <div class="tabbed-block">
-<h2 id="object-detection-and-segmentation-metrics">Object Detection and Segmentation Metrics</h2>
+<h2 id="coffee-cup">Coffee Cup</h2>
+<p>The Coffee Cup dataset is a compact, task-focused benchmark for instance segmentation and object detection in a cluttered tabletop setting. It contains annotated coffee cup examples captured in varied poses and lighting conditions, making it useful for evaluating lightweight models that need strong localization and mask quality in real-world scenes.</p>
 <p><strong>Table: Ultralytics on CoffeeCup - <abbr title="Red Green Blue">RGB</abbr> - (640x640) | <abbr title="Open Neural Network Exchange">ONNX</abbr></strong></p>
 <table>
 <thead>
@@ -2181,7 +2178,7 @@
 <p>Visit the full <strong>BDD100K</strong> dataset <a href="../../../datasets/bdd100k/">Benchmark here</a>.</p>
 </div>
 <div class="tabbed-block">
-<p>This dataset contains only annotations for person class from original dataset.  However, all the images are included during training as negative samples</p>
+<p>This dataset contains only annotations for the person class from original COCO2017 dataset.  However, all the images are included during training as negative samples.</p>
 <p><strong>Table: Ultralytics on COCO People - <abbr title="Red Green Blue">RGB</abbr> - (640x640) - <abbr title="Open Neural Network Exchange">ONNX</abbr> - (100 epochs)</strong></p>
 <table>
 <thead>
@@ -2221,10 +2218,7 @@
 <p>Visit the full <strong>COCO People</strong> dataset <a href="../../../datasets/coco_people/">Benchmark here</a>.</p>
 </div>
 <div class="tabbed-block">
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>COCO benchmark is coming soon !!!</p>
-</div>
+<p>See the complete COCO benchmark for Ultralytics in <a href="https://huggingface.co/spaces/EdgeFirst/Models">Hugging Face</a>.</p>
 </div>
 <div class="tabbed-block">
 <div class="admonition note">

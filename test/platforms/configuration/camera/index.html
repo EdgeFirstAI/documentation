@@ -614,8 +614,6 @@
       
         
       
-        
-      
     
     
     
@@ -1014,8 +1012,6 @@
       
         
       
-        
-      
     
     
     
@@ -1161,8 +1157,6 @@
       
         
       
-        
-      
     
     
     
@@ -1178,6 +1172,10 @@
     <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
       
         
+  
+  
+  
+    
   
   
   
@@ -1204,6 +1202,8 @@
         <span class="md-nav__icon md-icon"></span>
       
     </a>
+  
+
   
 
   
@@ -1695,6 +1695,8 @@
       
         
       
+        
+      
     
     
     
@@ -2104,7 +2106,7 @@
 <h2 id="camera-device">Camera Device</h2>
 <p>This configures what camera device the camera service will use, which on Maivin and Raivin is <code>/dev/video3</code>, the <abbr title="Image Signal Processor">ISP</abbr> output.  Stored as <code>CAMERA</code>.</p>
 <h2 id="camera-mode">Camera Mode</h2>
-<p>The camera mode selects the OS08A20 sensor's native readout mode.  It is applied by restarting the <abbr title="Image Signal Processor">ISP</abbr> with the matching sensor configuration before the camera service starts.  Stored as <code>CAMERA_MODE</code>, this setting is specific to Maivin and Raivin.</p>
+<p>The camera mode selects the OS08A20 sensor's native readout mode.  It is applied by restarting the <abbr title="Image Signal Processor">ISP</abbr> with the matching sensor configuration before the camera service starts.  Stored as <code>CAMERA_MODE</code>, the values are case-insensitive and this setting is specific to Maivin and Raivin.</p>
 <table>
 <thead>
 <tr>
@@ -2115,21 +2117,30 @@
 </thead>
 <tbody>
 <tr>
-<td><code>1080p60</code></td>
+<td><code>1080p30</code></td>
 <td>1920x1080, horizontally binned</td>
-<td>60 <abbr title="Frames Per Second">FPS</abbr> (default)</td>
+<td>30 <abbr title="Frames Per Second">FPS</abbr> (default)</td>
 </tr>
 <tr>
-<td><code>4k</code></td>
+<td><code>1080p60</code></td>
+<td>1920x1080, horizontally binned</td>
+<td>60 <abbr title="Frames Per Second">FPS</abbr></td>
+</tr>
+<tr>
+<td><code>4K30</code></td>
 <td>3840x2160, full resolution</td>
 <td>30 <abbr title="Frames Per Second">FPS</abbr></td>
 </tr>
 </tbody>
 </table>
-<p>The default <code>1080p60</code> mode gives better low-light and fast-exposure handling than the full resolution readout and is the mode the shipped model was tuned for.  The <code>4k</code> mode is required for <a href="../../../perception/4k/">4K tiled streaming</a> and has <a href="../../software/issues/#4k-camera-mode-follow-ups-edgeai-1230-edgeai-1406">known issues</a> in this release.  There is no 1080p30 mode.</p>
+<p>The default <code>1080p30</code> mode uses the same sensor readout as <code>1080p60</code> with the frame rate capped to 30 <abbr title="Frames Per Second">FPS</abbr> once the stream starts, the OS08A20 has no native 1080p 30 <abbr title="Frames Per Second">FPS</abbr> mode.  It keeps the H.264 encoder and the Web UI within what they can sustain while the other services run, at 60 <abbr title="Frames Per Second">FPS</abbr> the encoder drops frames on a loaded Raivin.  Both 1080p modes give better low-light and fast-exposure handling than the full resolution readout and use the readout the shipped model was tuned for.  The <code>4K30</code> mode is required for <a href="../../../perception/4k/">4K tiled streaming</a> and has <a href="../../software/issues/#4k-camera-mode-follow-ups-edgeai-1230-edgeai-1406">known issues</a> in this release.  An unrecognized value falls back to <code>4K30</code> and logs a warning.  Releases before 2026.10 named the 4K mode <code>4k</code> and had no <code>1080p30</code> mode.</p>
+<div class="admonition note">
+<p class="admonition-title">Changing the camera mode</p>
+<p>Edit <code>CAMERA_MODE</code> in <code>/etc/default/camera</code> and reboot the device with <code>sudo reboot</code>.  Restarting only the camera service with <code>sudo systemctl restart camera</code> can leave the <abbr title="Image Signal Processor">ISP</abbr> unable to start until the next reboot.</p>
+</div>
 <p>The camera mode is independent of the camera size below.  The <abbr title="Image Signal Processor">ISP</abbr> downscales from the native readout to the requested camera size but never upscales, so the camera size must not exceed the resolution of the selected mode.</p>
 <h2 id="camera-size">Camera Size</h2>
-<p>This sets the camera resolution which is used for the camera capture and is separate from the streaming resolution.  Stored as <code>CAMERA_SIZE</code> as <code>"width height"</code>, the default is <code>1920 1080</code>.  Setting the camera size to <code>3840 2160</code> together with the <code>4k</code> camera mode puts the camera service into <a href="../../../perception/4k/">4K Mode</a>.</p>
+<p>This sets the camera resolution which is used for the camera capture and is separate from the streaming resolution.  Stored as <code>CAMERA_SIZE</code> as <code>"width height"</code>, the default is <code>1920 1080</code>.  Setting the camera size to <code>3840 2160</code> together with the <code>4K30</code> camera mode puts the camera service into <a href="../../../perception/4k/">4K Mode</a>.</p>
 <h2 id="stream-size">Stream Size</h2>
 <p>This configures the streaming resolution for the H.264 and JPEG streaming.  Stored as <code>STREAM_SIZE</code>, the default is <code>1920 1080</code>.  The hardware H.264 encoder supports up to HD resolution (1920x1080), a larger camera size is downscaled to the stream size before encoding unless <a href="#h264-4k-tiling">tiling</a> is enabled.  A stream size larger than the camera size is rejected at startup.  The JPEG stream supports all resolutions but is encoded on the CPU so the practical limit is around 960x540 or 640x360 to maintain a 16:9 aspect ratio.</p>
 <h2 id="mirror">Mirror</h2>

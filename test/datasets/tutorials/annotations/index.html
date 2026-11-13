@@ -614,8 +614,6 @@
       
         
       
-        
-      
     
     
     
@@ -1486,8 +1484,6 @@
       
         
       
-        
-      
     
     
     
@@ -1646,34 +1642,6 @@
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Edit Label">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#edit-bounding-box-label" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Edit Bounding Box Label
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#edit-segmentation-mask-label" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Edit Segmentation Mask Label
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
 </li>
         
           <li class="md-nav__item">
@@ -1700,17 +1668,6 @@
         
       </ul>
     </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#terminate-agtg-server" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Terminate AGTG Server
-      
-    </span>
-  </a>
   
 </li>
       
@@ -1799,12 +1756,12 @@
 
 
 <h1 id="dataset-annotations">Dataset Annotations</h1>
-<p>This page will provide tutorials for annotating datasets in EdgeFirst Studio.  As described in the <a href="../../format/">EdgeFirst Dataset Format</a>, a dataset can have 2D and 3D annotations.  Shown below is an example of 2D annotations (left) and 3D annotations (right).  A 2D annotation is a combination of 2D bounding boxes and segmentation masks for any given object that are semantic pixel-based image coordinates.  A 3D annotation is a 3D bounding box surrounding the object in real world coordinates (meters).</p>
+<p>This page will provide tutorials for annotating datasets in EdgeFirst Studio.  As described in the <a href="../../format/">EdgeFirst Dataset Format</a>, a dataset can have 2D and 3D annotations.  Shown below is an example of 2D annotations (left) and 3D annotations (right).  A 2D annotation is a combination of 2D bounding boxes and segmentation masks for any given object that are instance pixel-based image coordinates.  A 3D annotation is a 3D bounding box surrounding the object in real world coordinates (meters).</p>
 <figure>
             <img align="center" alt="Sample Annotations" src="../../assets/annotations/sample-studio-annotations.jpg" />
             <figcaption>Sample Annotations</figcaption>
             </figure>
-<p>To reduce the effort required during the annotation process, EdgeFirst Studio provides the tools to auto annotate either a single image or a sequential set of frames in a dataset by leveraging SAM-2 auto-segment and tracking capabilities.  Please note that it is not always guaranteed that the auto-annotations will yield 100% accuracy, so EdgeFirst Studio provides the tools for manual annotations to correct any errors or make adjustments to the existing annotations.</p>
+<p>To reduce the effort required during the annotation process, EdgeFirst Studio provides the tools to auto annotate either a single image or a sequential set of frames in a dataset by leveraging SAM2 auto-segment and tracking capabilities.  Please note that it is not always guaranteed that the auto-annotations will yield 100% accuracy, so EdgeFirst Studio also provides the tools for manual annotations to correct any errors or make adjustments to the existing annotations.</p>
 <ol>
 <li>Follow these <a href="automatic/">steps to auto-annotate</a> your dataset using the Automatic Ground Truth Generation (AGTG) pipeline.</li>
 <li>Follow these steps for <a href="manual/">manual annotations</a>.</li>
@@ -1831,14 +1788,7 @@
             <img align="center" alt="Edited Sample Coffee Cups" src="../../assets/annotations/coffee-cups-annotations-edited.jpg" />
             <figcaption>Edited Sample Coffee Cups</figcaption>
             </figure>
-<p>To change the label of a single annotation follow these steps inside the dataset <a href="../management/#view-dataset">gallery</a>.</p>
-<div class="admonition bug">
-<p class="admonition-title">Annotation Types Are Not Linked (Work in Progress)</p>
-<p>Bounding box and mask annotations are currently managed independently and are not linked to a single object.  As a result, changing the label of a bounding box does not automatically update the label of its corresponding mask annotation.</p>
-<p>To keep annotations consistent, you must update the label for each annotation type separately.</p>
-<p><strong>This is a known limitation that is being addressed in an upcoming release.</strong></p>
-</div>
-<h4 id="edit-bounding-box-label">Edit Bounding Box Label</h4>
+<p>To change the label of a single annotation follow these steps inside the dataset gallery.</p>
 <ol>
 <li>Switch to label mode in the 2D editing panel</li>
 <li>Select the desired label in the left panel</li>
@@ -1847,17 +1797,6 @@
 <figure>
             <img align="center" alt="Change Box Annotation Label" src="../../assets/annotations/change-annotation-label.jpg" />
             <figcaption>Change Box Annotation Label</figcaption>
-            </figure>
-<h4 id="edit-segmentation-mask-label">Edit Segmentation Mask Label</h4>
-<ol>
-<li>Hide the bounding boxes</li>
-<li>Switch to label mode 2D editing panel</li>
-<li>Select the desired label in the left panel</li>
-<li>Click on the object to change its label</li>
-</ol>
-<figure>
-            <img align="center" alt="Change Mask Annotation Label" src="../../assets/annotations/change-mask-annotation-label.jpg" />
-            <figcaption>Change Mask Annotation Label</figcaption>
             </figure>
 <h3 id="add-label">Add Label</h3>
 <p>To add a new label, click on the button with a pencil icon under "Labels" on the dataset card.</p>
@@ -1895,22 +1834,6 @@
 <figure>
             <img align="center" alt="Added Label" src="../../assets/annotations/delete-plate-label.jpg" />
             <figcaption>Added Label</figcaption>
-            </figure>
-<h2 id="terminate-agtg-server">Terminate AGTG Server</h2>
-<p>In order to avoid running out of credits, terminate an idle AGTG server.  As mentioned, 15 minutes of inactivity will auto-terminate AGTG servers.  However, you can terminate a server as shown below.  Navigate to the <em>Cloud Instances</em> under the apps menu.</p>
-<figure>
-            <img align="center" alt="Cloud Instances" src="../../assets/annotations/cloud-instances.jpg" />
-            <figcaption>Cloud Instances</figcaption>
-            </figure>
-<p>Select the AGTG server and click "Stop" to stop the server.</p>
-<figure>
-            <img align="center" alt="Select AGTG Server" src="../../assets/annotations/select-ai-server.jpg" />
-            <figcaption>Select AGTG Server</figcaption>
-            </figure>
-<p>Confirm the AGTG server deletion.</p>
-<figure>
-            <img align="center" alt="Delete AGTG Server" src="../../assets/annotations/delete-agtg-server.jpg" />
-            <figcaption>Delete AGTG Server</figcaption>
             </figure>
 
 

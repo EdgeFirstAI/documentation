@@ -614,8 +614,6 @@
       
         
       
-        
-      
     
     
     
@@ -1266,7 +1264,7 @@
   <span class="md-ellipsis">
     
   
-    Upgrading from 2025.10 to 2026.04
+    Migration Guide
   
 
     
@@ -1445,8 +1443,6 @@
       
         
           
-        
-      
         
       
         
@@ -1700,10 +1696,11 @@
 
 
 <h1 id="dataset-format-overview">Dataset Format Overview</h1>
-<p>The EdgeFirst Dataset Format provides a structured, self-describing representation for
-multi-sensor annotations. Version <strong>2026.04</strong> introduces Parquet support, polygon geometry,
-raster masks, confidence scores, and file-level metadata that makes every file interpretable
-without external context.</p>
+<p>The EdgeFirst Dataset Format provides a structured, self-describing representation for multi-sensor annotations. The current version is <strong>2026.10</strong>, written by EdgeFirst Client 2.15.0 and later.</p>
+<ul>
+<li><strong>2026.10</strong> adds the <code>ignore</code> and <code>exclude</code> annotation flags (deprecating <code>iscrowd</code>), the <code>truncation</code> and <code>occlusion</code> attribute columns, and defines the <abbr title="Inertial Measurement Unit">IMU</abbr> <code>pose</code> column as <code>[roll, pitch, yaw]</code> in signed degrees.</li>
+<li><strong>2026.04</strong> introduced Parquet support, polygon geometry, raster masks, confidence scores, and file-level metadata that makes every file interpretable without external context.</li>
+</ul>
 <pre class="mermaid"><code>graph TB
     subgraph Dataset["EdgeFirst Dataset"]
         direction TB
@@ -1732,7 +1729,7 @@ without external context.</p>
 <ul>
 <li><strong>Normalized coordinates</strong> — all spatial data uses the 0..1 range (resolution-independent)</li>
 <li><strong>Three storage formats</strong> — Arrow IPC (local performance), Parquet (transfer / interop), JSON (human-readable)</li>
-<li><strong>Self-describing files</strong> — file-level metadata records <code>schema_version</code>, box layouts, and mask interpretation</li>
+<li><strong>Self-describing files</strong> — file-level metadata records <code>schema_version</code>, category metadata, and class labels</li>
 <li><strong>One row per instance</strong> — flat columnar layout optimized for ML queries</li>
 <li><strong>Sensor data always external</strong> — Arrow/Parquet/JSON contain annotations only; sensor data lives in sibling folders or ZIP files</li>
 <li><strong>Lossless data representation</strong> — annotation data converts between formats without loss</li>
@@ -1745,11 +1742,13 @@ without external context.</p>
 <span class="c1"># df = pl.read_parquet("dataset.parquet")</span>
 
 <span class="c1"># Quick version check — for robust metadata-based detection see Conversion Guidelines</span>
-<span class="k">if</span> <span class="s2">"polygon"</span> <span class="ow">in</span> <span class="n">df</span><span class="o">.</span><span class="n">columns</span><span class="p">:</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">"2026.04 format (has polygon column)"</span><span class="p">)</span>
+<span class="k">if</span> <span class="s2">"ignore"</span> <span class="ow">in</span> <span class="n">df</span><span class="o">.</span><span class="n">columns</span> <span class="ow">or</span> <span class="s2">"exclude"</span> <span class="ow">in</span> <span class="n">df</span><span class="o">.</span><span class="n">columns</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">"2026.10 format (has ignore/exclude flags)"</span><span class="p">)</span>
+<span class="k">elif</span> <span class="s2">"polygon"</span> <span class="ow">in</span> <span class="n">df</span><span class="o">.</span><span class="n">columns</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">"2026.04 or later format (has polygon column)"</span><span class="p">)</span>
     <span class="n">polygons</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s2">"polygon"</span><span class="p">]</span>       <span class="c1"># List&lt;List&lt;f32&gt;&gt; — interleaved xy per ring</span>
 <span class="k">elif</span> <span class="s2">"mask"</span> <span class="ow">in</span> <span class="n">df</span><span class="o">.</span><span class="n">columns</span> <span class="ow">and</span> <span class="nb">str</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s2">"mask"</span><span class="p">]</span><span class="o">.</span><span class="n">dtype</span><span class="p">)</span> <span class="o">==</span> <span class="s2">"Binary"</span><span class="p">:</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">"2026.04 format (has Binary mask)"</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">"2026.04 or later format (has Binary mask)"</span><span class="p">)</span>
 <span class="k">else</span><span class="p">:</span>
     <span class="nb">print</span><span class="p">(</span><span class="s2">"2025.10 or earlier format"</span><span class="p">)</span>
 </code></pre></div>
@@ -1774,7 +1773,7 @@ automatically. Direct Polars access is shown here for illustration; prefer the
 </tr>
 <tr>
 <td><a href="box_format/">Box Formats</a></td>
-<td>Box2D / Box3D layout descriptors and metadata</td>
+<td>Box2D / Box3D layouts and conversions</td>
 </tr>
 <tr>
 <td><a href="formats/">Storage Formats</a></td>
@@ -1794,7 +1793,7 @@ automatically. Direct Polars access is shown here for illustration; prefer the
 </tr>
 <tr>
 <td><a href="migration/">Migration Guide</a></td>
-<td>Upgrading from 2025.10 to 2026.04</td>
+<td>Upgrading from 2025.10 or 2026.04 to 2026.10, and <abbr title="Inertial Measurement Unit">IMU</abbr> pose order in older files</td>
 </tr>
 </tbody>
 </table>

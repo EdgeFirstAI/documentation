@@ -614,8 +614,6 @@
       
         
       
-        
-      
     
     
     
@@ -1644,8 +1642,6 @@
       
         
       
-        
-      
     
     
     
@@ -1981,16 +1977,12 @@
 <h1 id="automatic-ground-truth-generation-agtg">Automatic Ground Truth Generation (AGTG)</h1>
 <p>The <a href="../../../../studio/agtg/">AGTG pipeline</a> describes the stages for automating the annotation process of a dataset. There are two modes of operation.</p>
 <ol>
-<li><em>Fully Automatic</em>: This is invoked at the time of importing the dataset as a <a href="../../../../studio/snapshots/">snapshot</a> and as a background process which deploys a detection model to drive SAM-2.</li>
-<li><em>Semi-Automatic</em>: This is invoked when users trigger the AI assisted annotations in the dataset gallery.  Users can select portions of the dataset to auto-annotate, but SAM-2 requires initial annotations from the users as prompts.</li>
+<li><em>Fully Automatic</em>: This is invoked at the time of importing the dataset as a <a href="../../../../studio/snapshots/#restore-snapshot">snapshot</a> and as a background process which deploys a detection model to drive SAM2.</li>
+<li><em>Semi-Automatic</em>: This is invoked when users trigger the "AI Segment Tool" inside the dataset gallery.  Users can select portions of the dataset to auto-annotate, but SAM2 requires initial annotations from the users as prompts.</li>
 </ol>
 <h2 id="fully-automatic-ground-truth-generation">Fully Automatic Ground Truth Generation</h2>
-<div class="admonition bug">
-<p class="admonition-title">Work in Progress</p>
-<p>The Fully Automatic Ground Truth Generation feature is currently <strong>not operational</strong> and is a work in progress — it fails to auto-annotate during snapshot restoration. In the meantime, please use the <a href="#semi-automatic-ground-truth-generation">Semi-Automatic Ground Truth Generation</a> workflow instead.</p>
-</div>
 <p>This annotation feature is available at the time of importing the dataset via <a href="../../../../studio/snapshots/#restore-snapshot">snapshot restoration</a>.  The auto-annotation process is done in the background allowing the user to focus on separate tasks.  This section will show the steps for performing this type of auto-annotation in EdgeFirst Studio.  This feature can also be deployed using the <a href="../../../../client/cli/#restore-a-snapshot">EdgeFirst Client</a> from the command line.</p>
-<p>A complete description of this feature along with the buttons associated in this tutorial can be found under <a href="../../../../studio/snapshots/">Studio</a>.</p>
+<p>A complete description of dataset snapshots and related features can be found under <a href="../../../../studio/snapshots/">Studio Snapshots</a>.</p>
 <p>This feature is a two-step process: <em>Create Snapshot</em> and <em>Restore Snapshot</em>.</p>
 <h3 id="create-snapshot">Create Snapshot</h3>
 <p>Recall that <a href="../../../../studio/snapshots/">snapshots</a> are frozen and compact form of datasets.  There are three ways of creating snapshots.</p>
@@ -2011,10 +2003,10 @@
 <li>
 <p>Upload from <abbr title="Binary container format for robotics log data">MCAP</abbr> File</p>
 <p>An <abbr title="Binary container format for robotics log data">MCAP</abbr> file is a <a href="../../capture/#capture-with-an-edgefirst-platform">recording captured</a> by an <a href="../../../../platforms/">EdgeFirst Platform</a> such as a Maivin or a Raivin.</p>
-<p>To create a snapshot from an <abbr title="Binary container format for robotics log data">MCAP</abbr> file, visit the "Data Snapshots" page.</p>
+<p>To create a snapshot from an <abbr title="Binary container format for robotics log data">MCAP</abbr> file, visit the "Snapshots" page.</p>
 <p><figure markdown="span">
-        <img align="center" alt="Data Snapshots" src="../../../assets/annotations/automatic/data-snapshots.jpg" />
-        <figcaption>Data Snapshots</figcaption>
+        <img align="center" alt="Snapshots Page" src="../../../assets/annotations/automatic/data-snapshots.jpg" />
+        <figcaption>Snapshots Page</figcaption>
         </figure></p>
 <p>Either drag and drop an <abbr title="Binary container format for robotics log data">MCAP</abbr> file into the page OR click on the "From File" button to allow selection of the <abbr title="Binary container format for robotics log data">MCAP</abbr> file from your directories.</p>
 <p><figure markdown="span">
@@ -2024,11 +2016,11 @@
 </li>
 <li>
 <p>Upload from ZIP/Arrow (EdgeFirst Dataset) Files</p>
-<p>The ZIP/Arrow files together creates the <a href="../../../format/">EdgeFirst Dataset Format</a>.</p>
-<p>To create a snapshot from a ZIP/Arrow files, visit the "Data Snapshots" page.</p>
+<p>The ZIP/Arrow files together forms the <a href="../../../format/">EdgeFirst Dataset Format</a>.</p>
+<p>To create a snapshot from ZIP/Arrow files, visit the "Snapshots" page.</p>
 <p><figure markdown="span">
-        <img align="center" alt="Data Snapshots" src="../../../assets/annotations/automatic/data-snapshots.jpg" />
-        <figcaption>Data Snapshots</figcaption>
+        <img align="center" alt="Snapshots Page" src="../../../assets/annotations/automatic/data-snapshots.jpg" />
+        <figcaption>Snapshots Page</figcaption>
         </figure></p>
 <p>Either drag and drop the ZIP/Arrow files into the page OR click on the "From File" button to allow selection of the ZIP/Arrow files from your directories.</p>
 <p><figure markdown="span">
@@ -2049,31 +2041,27 @@ If there are multiple ZIP and Arrow pairs, then each pair will become a sequence
 <p>A snapshot can be created from one of the three ways as described above: <em>Create from Existing Dataset</em>, <em>Upload from <abbr title="Binary container format for robotics log data">MCAP</abbr> File</em>, <em>Upload from ZIP/Arrow File</em>.  The next section will show how to restore these created snapshots for auto-annotations.</p>
 <h3 id="restore-snapshot">Restore Snapshot</h3>
 <p>The snapshot restoration process involves several dataset transformations such as the frame rate specification, depth map generation, and auto-annotations. More information can be found in <a href="../../../../studio/snapshots/">Studio</a>.</p>
-<div class="admonition info">
-<p class="admonition-title">COCO Annotations</p>
-<p>The labels supported during the auto-annotation process for the <em>Fully Automatic Ground Truth Generation</em> are the <a href="../../../coco/#coco-labels">COCO labels</a> listed.</p>
-</div>
-<p>The created snapshots can be found under "Data Snapshots".</p>
+<p>The created snapshots can be found in the "Snapshots" page.</p>
 <figure>
-            <img align="center" alt="Data Snapshots" src="../../../assets/annotations/automatic/data-snapshots.jpg" />
-            <figcaption>Data Snapshots</figcaption>
+            <img align="center" alt="Snapshots Page" src="../../../assets/annotations/automatic/data-snapshots.jpg" />
+            <figcaption>Snapshots Page</figcaption>
             </figure>
 <p>To restore the snapshot, click on the snapshot context menu and select "Restore".</p>
 <figure>
             <img align="center" alt="Restore Snapshots" src="../../../assets/annotations/automatic/restore-snapshot.jpg" />
             <figcaption>Restore Snapshots</figcaption>
             </figure>
-<p>Restoring a snapshot will create a new dataset entirely with annotations.  Specify the project to contain this new dataset and specify the name and the description of the dataset.  Furthermore, toggle the "AI Ground Truth Generation" to auto annotate the dataset samples.  The rest of the settings can be kept in their defaults for this tutorial.  Click "Restore" to start the restoration process.</p>
+<p>Restoring a snapshot will create a new dataset entirely with annotations.  Specify the project to contain this new dataset and specify the name and the description of the dataset.  Furthermore, select the method for annotating the dataset. We recommend the second option, which deploys a pretrained YOLOX model to annotate the dataset with <a href="../../../coco/#coco-labels">COCO classes</a>. If you need to auto-annotate with your own custom classes, you will need a model trained in Studio with your custom classes.</p>
 <figure>
             <img align="center" alt="Restore Snapshots Fields" src="../../../assets/annotations/automatic/restore-snapshot-fields.jpg" />
             <figcaption>Restore Snapshots Fields</figcaption>
             </figure>
-<p>The snapshot restore process can be found under the project datasets.</p>
+<p>Click "Start App" to start the annotation process. The progress is reported in the <a href="../../../../studio/tasks/">"Tasks" page</a>.</p>
 <figure>
             <img align="center" alt="Restore Snapshots Progress" src="../../../assets/annotations/automatic/snapshot-restore-process.jpg" />
             <figcaption>Restore Snapshots Progress</figcaption>
             </figure>
-<p>Once completed, the dataset will now contain annotations that resulted from the auto-annotation process.</p>
+<p>Once completed, the new dataset will now contain annotations that resulted from the auto-annotation process. You can also click on the dataset link shown above to navigate directly to the created dataset.</p>
 <figure>
             <img align="center" alt="Restored Dataset" src="../../../assets/annotations/automatic/coffeecup-restored-ds.jpg" />
             <figcaption>Restored Dataset</figcaption>
@@ -2085,8 +2073,8 @@ If there are multiple ZIP and Arrow pairs, then each pair will become a sequence
             </figure>
 <p>The next section will describe the <em>Semi-Automatic Ground Truth Generation</em> for additional user control during the auto-annotation process.</p>
 <h2 id="semi-automatic-ground-truth-generation">Semi-Automatic Ground Truth Generation</h2>
-<p>This annotation feature is available after <a href="../../capture/">capturing the dataset</a> into EdgeFirst Studio.  This process occurs in the <a href="../../management/#view-dataset">dataset gallery</a> where the user has more
-control over the annotation process.  This feature will preload all frames of a <em>video</em> sequence in the dataset into SAM-2 to generate segmentation masks, 2D bounding boxes, 3D bounding boxes (For Raivin/<abbr title="Light Detection and Ranging">LiDAR</abbr> Only) by tracking the object across the frames.</p>
+<p>This annotation feature is available after <a href="../../capture/">importing the dataset</a> into EdgeFirst Studio.  This process occurs in the <a href="../../management/#view-dataset">dataset gallery</a> where the user has more
+control over the annotation process with the ability to annotate any object with custom classes.  This feature will preload all frames of a <em>video</em> sequence in the dataset into <a href="https://ai.meta.com/research/sam2/">SAM2</a> to generate segmentation masks, 2D bounding boxes, 3D bounding boxes (For Raivin/<abbr title="Light Detection and Ranging">LiDAR</abbr> Only) by tracking the object across the frames.</p>
 <p>A complete description of this feature along with the functionalities of each buttons shown in this tutorial can be found under <a href="../../../../studio/agtg/#semi-automatic-ground-truth-generation">Studio</a>.</p>
 <p>This feature is a three-step process: <em>Initialize AGTG Server</em>, <em>Annotate Starting Frame</em>, <em>Propagate</em>.</p>
 <h3 id="initialize-agtg-server">Initialize AGTG Server</h3>
@@ -2107,7 +2095,7 @@ control over the annotation process.  This feature will preload all frames of a 
             </figure>
 <div class="admonition warning">
 <p class="admonition-title">Active AGTG Server</p>
-<p>This server is costing credits to run.  An inactivity of 15 minutes will auto-terminate this server.  Otherwise, once you have completed the annotations, please ensure to <a href="../#terminate-agtg-server">terminate the AGTG server</a> to avoid spending more of your credits.</p>
+<p>This server is costing credits to run.  An inactivity of 15 minutes will auto-terminate this server.  Otherwise, once you have completed the annotations, please ensure to terminate the AGTG server by clicking "Shutdown AGTG Server" to avoid spending more of your credits.</p>
 </div>
 <h3 id="annotate-starting-frame">Annotate Starting Frame</h3>
 <figure>
@@ -2118,21 +2106,26 @@ AGTG Preview
 
 <figcaption>AGTG Preview</figcaption>
 </figure>
-<p>Once the server has been initialized, annotate the starting frame.  This is the only annotation required by the user. The rest of the frames will be annotated by SAM-2 and the AGTG process.  This step is also known as initializing the SAM-2 state.  Each object must be annotated independently so the tracker can assign a unique ID.</p>
+<p>Once the server has been initialized, annotate the starting frame.  This is the only annotation required by the user. The rest of the frames will be annotated by SAM2 and the AGTG process.  This step is also known as initializing the SAM2 state.  Each object must be annotated independently so the tracker can assign a unique ID.</p>
 <p>Start by drawing a bounding box for the first object by clicking and dragging.  For multiple objects in the frame, click "+" to add a new object as shown below.  The process for each object should be: <em>Add a new object</em> -&gt; <em>Draw object prompt</em>.</p>
-<p>By default, the prompts provided to SAM-2 are bounding boxes (mouse click and drag) which should cover the object to be annotated in the frame.  However, points can also be provided (mouse clicks) by clicking areas that are part of the object.</p>
+<p>By default, the prompts provided to SAM2 are bounding boxes (mouse click and drag) which should cover the object to be annotated in the frame.  However, points can also be provided (mouse clicks) by clicking areas that are part of the object.</p>
 <figure>
             <img align="center" alt="AGTG Initial Prompts" src="../../../assets/annotations/automatic/agtg-prompts.jpg" />
             <figcaption>AGTG Initial Prompts</figcaption>
             </figure>
 <h3 id="propagate">Propagate</h3>
-<p>Once the first frame has been annotated (<em>prompts for SAM-2</em>), specify the "End Frame" which marks the point where SAM-2 stops propagating.  By default this is the end of the sequence (last frame).  Once this has been specified, click on "Propagate" to start the propagation process.</p>
+<p>Once the first frame has been annotated (<em>prompts for SAM2</em>), specify the "End Frame" which marks the point where SAM2 stops propagating.  By default this is the end of the sequence (last frame).  </p>
+<div class="admonition bug">
+<p class="admonition-title">Large Tracks</p>
+<p>We recommend keeping the tracks to less than 500 frames at a time. We observed unpredictable behavior from the tool when deploying tracks of ~1500 or higher.</p>
+</div>
+<p>Once this has been specified, click on "Propagate" to start the propagation process.</p>
 <p>As the frames propagate, you should see the frames being auto-annotated.  To stop the propagation process click on "Stop Propagation".</p>
 <figure>
             <img align="center" alt="Propagation Process" src="../../../assets/annotations/automatic/propagation-process.jpg" />
             <figcaption>Propagation Process</figcaption>
             </figure>
-<p>Once the propagation completes as it reached the end frame, click on "Save Annotations" to save the generated annotations.</p>
+<p>Once the propagation completes as it reached the end frame, click on "Save AIGT Annotations" to save the generated annotations.</p>
 <figure>
             <img align="center" alt="Propagation Completed" src="../../../assets/annotations/automatic/propagation-completed.jpg" />
             <figcaption>Propagation Completed</figcaption>

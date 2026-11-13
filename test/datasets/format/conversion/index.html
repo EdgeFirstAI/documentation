@@ -614,8 +614,6 @@
       
         
       
-        
-      
     
     
     
@@ -1330,15 +1328,15 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#reading-202604-files" class="md-nav__link">
+  <a href="#reading-202604-and-202610-files" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Reading 2026.04 Files
+        Reading 2026.04 and 2026.10 Files
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Reading 2026.04 Files">
+    <nav class="md-nav" aria-label="Reading 2026.04 and 2026.10 Files">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -1346,6 +1344,17 @@
     <span class="md-ellipsis">
       
         Arrow IPC / Parquet
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#reading-instance-mask-tiles" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Reading Instance Mask Tiles
       
     </span>
   </a>
@@ -1369,15 +1378,15 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#json-to-dataframe-conversion-202604" class="md-nav__link">
+  <a href="#json-to-dataframe-conversion-202604-and-later" class="md-nav__link">
     <span class="md-ellipsis">
       
-        JSON to DataFrame Conversion (2026.04)
+        JSON to DataFrame Conversion (2026.04 and later)
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="JSON to DataFrame Conversion (2026.04)">
+    <nav class="md-nav" aria-label="JSON to DataFrame Conversion (2026.04 and later)">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -1441,7 +1450,7 @@
   <span class="md-ellipsis">
     
   
-    Upgrading from 2025.10 to 2026.04
+    Migration Guide
   
 
     
@@ -1636,8 +1645,6 @@
       
         
       
-        
-      
     
     
     
@@ -1815,15 +1822,15 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#reading-202604-files" class="md-nav__link">
+  <a href="#reading-202604-and-202610-files" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Reading 2026.04 Files
+        Reading 2026.04 and 2026.10 Files
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Reading 2026.04 Files">
+    <nav class="md-nav" aria-label="Reading 2026.04 and 2026.10 Files">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -1831,6 +1838,17 @@
     <span class="md-ellipsis">
       
         Arrow IPC / Parquet
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#reading-instance-mask-tiles" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Reading Instance Mask Tiles
       
     </span>
   </a>
@@ -1854,15 +1872,15 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#json-to-dataframe-conversion-202604" class="md-nav__link">
+  <a href="#json-to-dataframe-conversion-202604-and-later" class="md-nav__link">
     <span class="md-ellipsis">
       
-        JSON to DataFrame Conversion (2026.04)
+        JSON to DataFrame Conversion (2026.04 and later)
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="JSON to DataFrame Conversion (2026.04)">
+    <nav class="md-nav" aria-label="JSON to DataFrame Conversion (2026.04 and later)">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -1971,11 +1989,8 @@
 
 <h1 id="conversion-guidelines">Conversion Guidelines</h1>
 <div class="admonition danger">
-<p class="admonition-title">2025.10 code is incompatible with 2026.04 files</p>
-<p>Code written for the 2025.10 schema (NaN-separated masks, <code>mask: List&lt;Float32&gt;</code>)
-will produce <strong>corrupt data</strong> when applied to 2026.04 files. Always check the
-schema version before processing. See the <a href="../migration/">Migration Guide</a> for
-upgrade instructions.</p>
+<p class="admonition-title">2025.10 code is incompatible with 2026.04 and later files</p>
+<p>Code written for the 2025.10 schema (NaN-separated masks, <code>mask: List&lt;Float32&gt;</code>) will produce <strong>corrupt data</strong> when applied to 2026.04 or 2026.10 files. Always check the schema version before processing. See the <a href="../migration/">Migration Guide</a> for upgrade instructions.</p>
 </div>
 <h2 id="version-detection">Version Detection</h2>
 <p>Always detect the schema version before reading annotation data.</p>
@@ -1997,19 +2012,21 @@ upgrade instructions.</p>
 <span class="n">schema_version</span> <span class="o">=</span> <span class="n">get_schema_version</span><span class="p">(</span><span class="s2">"dataset.arrow"</span><span class="p">)</span>
 
 <span class="k">if</span> <span class="n">schema_version</span><span class="p">:</span>
-    <span class="n">version</span> <span class="o">=</span> <span class="n">schema_version</span>  <span class="c1"># e.g. "2025.10" or "2026.04"</span>
+    <span class="n">version</span> <span class="o">=</span> <span class="n">schema_version</span>  <span class="c1"># e.g. "2025.10", "2026.04", or "2026.10"</span>
 <span class="k">else</span><span class="p">:</span>
-    <span class="c1"># Method 2 (fallback): Inspect column presence and types</span>
+    <span class="c1"># Method 2 (fallback): Inspect column presence and types. The first rule that matches wins.</span>
     <span class="n">df</span> <span class="o">=</span> <span class="n">pl</span><span class="o">.</span><span class="n">read_ipc</span><span class="p">(</span><span class="s2">"dataset.arrow"</span><span class="p">)</span>  <span class="c1"># or pl.read_parquet(...)</span>
 
-    <span class="k">if</span> <span class="s2">"polygon"</span> <span class="ow">in</span> <span class="n">df</span><span class="o">.</span><span class="n">columns</span><span class="p">:</span>
-        <span class="n">version</span> <span class="o">=</span> <span class="s2">"2026.04"</span>
+    <span class="k">if</span> <span class="s2">"ignore"</span> <span class="ow">in</span> <span class="n">df</span><span class="o">.</span><span class="n">columns</span> <span class="ow">or</span> <span class="s2">"exclude"</span> <span class="ow">in</span> <span class="n">df</span><span class="o">.</span><span class="n">columns</span><span class="p">:</span>
+        <span class="n">version</span> <span class="o">=</span> <span class="s2">"2026.10"</span>
+    <span class="k">elif</span> <span class="s2">"polygon"</span> <span class="ow">in</span> <span class="n">df</span><span class="o">.</span><span class="n">columns</span><span class="p">:</span>
+        <span class="n">version</span> <span class="o">=</span> <span class="s2">"2026.04"</span>        <span class="c1"># or 2026.10 with no flagged rows</span>
     <span class="k">elif</span> <span class="s2">"mask"</span> <span class="ow">in</span> <span class="n">df</span><span class="o">.</span><span class="n">columns</span><span class="p">:</span>
         <span class="n">mask_dtype</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s2">"mask"</span><span class="p">]</span><span class="o">.</span><span class="n">dtype</span><span class="p">)</span>
         <span class="k">if</span> <span class="n">mask_dtype</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">"List(Float32"</span><span class="p">):</span>
             <span class="n">version</span> <span class="o">=</span> <span class="s2">"2025.10"</span>    <span class="c1"># NaN-separated polygon coordinates</span>
         <span class="k">elif</span> <span class="nb">str</span><span class="p">(</span><span class="n">mask_dtype</span><span class="p">)</span> <span class="o">==</span> <span class="s2">"Binary"</span><span class="p">:</span>
-            <span class="n">version</span> <span class="o">=</span> <span class="s2">"2026.04"</span>    <span class="c1"># PNG-encoded raster pixels</span>
+            <span class="n">version</span> <span class="o">=</span> <span class="s2">"2026.04"</span>    <span class="c1"># PNG-encoded raster pixels, or 2026.10</span>
         <span class="k">else</span><span class="p">:</span>
             <span class="n">version</span> <span class="o">=</span> <span class="s2">"unknown"</span>
     <span class="k">else</span><span class="p">:</span>
@@ -2026,11 +2043,11 @@ upgrade instructions.</p>
     <span class="n">samples</span> <span class="o">=</span> <span class="n">data</span>
     <span class="n">version</span> <span class="o">=</span> <span class="s2">"2025.10"</span>
 <span class="k">else</span><span class="p">:</span>
-    <span class="c1"># 2026.04: object wrapper with metadata</span>
+    <span class="c1"># 2026.04 and later: object wrapper with metadata</span>
     <span class="n">samples</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s2">"samples"</span><span class="p">]</span>
     <span class="n">version</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"schema_version"</span><span class="p">,</span> <span class="s2">"2025.10"</span><span class="p">)</span>
 </code></pre></div>
-<h2 id="reading-202604-files">Reading 2026.04 Files</h2>
+<h2 id="reading-202604-and-202610-files">Reading 2026.04 and 2026.10 Files</h2>
 <h3 id="arrow-ipc-parquet">Arrow IPC / Parquet</h3>
 <div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">polars</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pl</span>
 
@@ -2053,15 +2070,33 @@ upgrade instructions.</p>
     <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">df</span><span class="o">.</span><span class="n">iter_rows</span><span class="p">(</span><span class="n">named</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
         <span class="k">if</span> <span class="n">row</span><span class="p">[</span><span class="s2">"mask"</span><span class="p">]</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="n">row</span><span class="p">[</span><span class="s2">"size"</span><span class="p">]</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
             <span class="n">width</span><span class="p">,</span> <span class="n">height</span> <span class="o">=</span> <span class="n">row</span><span class="p">[</span><span class="s2">"size"</span><span class="p">]</span>
-            <span class="n">png_bytes</span> <span class="o">=</span> <span class="n">row</span><span class="p">[</span><span class="s2">"mask"</span><span class="p">]</span>  <span class="c1"># bytes (PNG-encoded raster pixels)</span>
+            <span class="n">png_bytes</span> <span class="o">=</span> <span class="n">row</span><span class="p">[</span><span class="s2">"mask"</span><span class="p">]</span>  <span class="c1"># PNG bytes; may be an offset tile (see below)</span>
 
-<span class="c1"># Access box2d — check format metadata</span>
-<span class="c1"># (Schema metadata access depends on Polars version; prefer the EdgeFirst Client SDK)</span>
+<span class="c1"># Access box2d — always [cx, cy, w, h], normalized</span>
 <span class="k">if</span> <span class="s2">"box2d"</span> <span class="ow">in</span> <span class="n">df</span><span class="o">.</span><span class="n">columns</span><span class="p">:</span>
     <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">df</span><span class="o">.</span><span class="n">iter_rows</span><span class="p">(</span><span class="n">named</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
         <span class="k">if</span> <span class="n">row</span><span class="p">[</span><span class="s2">"box2d"</span><span class="p">]</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-            <span class="c1"># Default: [cx, cy, w, h] — check box2d_format metadata if available</span>
             <span class="n">cx</span><span class="p">,</span> <span class="n">cy</span><span class="p">,</span> <span class="n">w</span><span class="p">,</span> <span class="n">h</span> <span class="o">=</span> <span class="n">row</span><span class="p">[</span><span class="s2">"box2d"</span><span class="p">]</span>
+
+<span class="c1"># Separate don't-care and excluded rows from ordinary annotations.</span>
+<span class="c1"># Prefer ignore; fall back to the deprecated iscrowd column only when ignore is absent.</span>
+<span class="k">if</span> <span class="s2">"ignore"</span> <span class="ow">in</span> <span class="n">df</span><span class="o">.</span><span class="n">columns</span><span class="p">:</span>
+    <span class="n">ignore</span> <span class="o">=</span> <span class="n">pl</span><span class="o">.</span><span class="n">col</span><span class="p">(</span><span class="s2">"ignore"</span><span class="p">)</span><span class="o">.</span><span class="n">fill_null</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
+<span class="k">elif</span> <span class="s2">"iscrowd"</span> <span class="ow">in</span> <span class="n">df</span><span class="o">.</span><span class="n">columns</span><span class="p">:</span>
+    <span class="n">ignore</span> <span class="o">=</span> <span class="n">pl</span><span class="o">.</span><span class="n">col</span><span class="p">(</span><span class="s2">"iscrowd"</span><span class="p">)</span><span class="o">.</span><span class="n">cast</span><span class="p">(</span><span class="n">pl</span><span class="o">.</span><span class="n">Boolean</span><span class="p">)</span><span class="o">.</span><span class="n">fill_null</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="n">ignore</span> <span class="o">=</span> <span class="n">pl</span><span class="o">.</span><span class="n">lit</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">exclude</span> <span class="o">=</span> <span class="n">pl</span><span class="o">.</span><span class="n">col</span><span class="p">(</span><span class="s2">"exclude"</span><span class="p">)</span><span class="o">.</span><span class="n">fill_null</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span> <span class="k">if</span> <span class="s2">"exclude"</span> <span class="ow">in</span> <span class="n">df</span><span class="o">.</span><span class="n">columns</span> <span class="k">else</span> <span class="n">pl</span><span class="o">.</span><span class="n">lit</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
+
+<span class="n">annotations</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="o">~</span><span class="n">ignore</span> <span class="o">&amp;</span> <span class="o">~</span><span class="n">exclude</span><span class="p">)</span>
+<span class="n">dont_care</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">ignore</span><span class="p">)</span>
+<span class="n">excluded</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">exclude</span><span class="p">)</span>
+
+<span class="c1"># IMU orientation — [roll, pitch, yaw] in signed degrees</span>
+<span class="k">if</span> <span class="s2">"pose"</span> <span class="ow">in</span> <span class="n">df</span><span class="o">.</span><span class="n">columns</span><span class="p">:</span>
+    <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">df</span><span class="o">.</span><span class="n">iter_rows</span><span class="p">(</span><span class="n">named</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">row</span><span class="p">[</span><span class="s2">"pose"</span><span class="p">]</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">roll</span><span class="p">,</span> <span class="n">pitch</span><span class="p">,</span> <span class="n">yaw</span> <span class="o">=</span> <span class="n">row</span><span class="p">[</span><span class="s2">"pose"</span><span class="p">]</span>
 
 <span class="c1"># Access timing instrumentation</span>
 <span class="k">if</span> <span class="s2">"timing"</span> <span class="ow">in</span> <span class="n">df</span><span class="o">.</span><span class="n">columns</span><span class="p">:</span>
@@ -2071,6 +2106,43 @@ upgrade instructions.</p>
             <span class="n">load_ms</span> <span class="o">=</span> <span class="n">t</span><span class="p">[</span><span class="s2">"load"</span><span class="p">]</span> <span class="o">/</span> <span class="mi">1_000_000</span>
             <span class="n">inference_ms</span> <span class="o">=</span> <span class="n">t</span><span class="p">[</span><span class="s2">"inference"</span><span class="p">]</span> <span class="o">/</span> <span class="mi">1_000_000</span>
 </code></pre></div>
+<h3 id="reading-instance-mask-tiles">Reading Instance Mask Tiles</h3>
+<p>An instance mask may be a tile of the image positioned by a PNG <code>oFFs</code> chunk rather than an image-sized mask (see <a href="../schema/#instance-mask-tiles">Instance Mask Tiles</a>). Read the offset before using a mask, and place the tile on an image-sized canvas when the consumer expects one:</p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">io</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">struct</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">PIL</span><span class="w"> </span><span class="kn">import</span> <span class="n">Image</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">mask_offset</span><span class="p">(</span><span class="n">png</span><span class="p">:</span> <span class="nb">bytes</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">tuple</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="nb">int</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">"""Pixel position of a mask tile's top-left corner, or None for an image-sized mask."""</span>
+    <span class="n">pos</span> <span class="o">=</span> <span class="mi">8</span>  <span class="c1"># skip the PNG signature</span>
+    <span class="k">while</span> <span class="n">pos</span> <span class="o">+</span> <span class="mi">8</span> <span class="o">&lt;=</span> <span class="nb">len</span><span class="p">(</span><span class="n">png</span><span class="p">):</span>
+        <span class="n">length</span><span class="p">,</span> <span class="n">kind</span> <span class="o">=</span> <span class="n">struct</span><span class="o">.</span><span class="n">unpack</span><span class="p">(</span><span class="s2">"&gt;I4s"</span><span class="p">,</span> <span class="n">png</span><span class="p">[</span><span class="n">pos</span><span class="p">:</span><span class="n">pos</span> <span class="o">+</span> <span class="mi">8</span><span class="p">])</span>
+        <span class="k">if</span> <span class="n">kind</span> <span class="o">==</span> <span class="sa">b</span><span class="s2">"oFFs"</span> <span class="ow">and</span> <span class="n">length</span> <span class="o">==</span> <span class="mi">9</span><span class="p">:</span>
+            <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">unit</span> <span class="o">=</span> <span class="n">struct</span><span class="o">.</span><span class="n">unpack</span><span class="p">(</span><span class="s2">"&gt;iiB"</span><span class="p">,</span> <span class="n">png</span><span class="p">[</span><span class="n">pos</span> <span class="o">+</span> <span class="mi">8</span><span class="p">:</span><span class="n">pos</span> <span class="o">+</span> <span class="mi">17</span><span class="p">])</span>
+            <span class="k">return</span> <span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span> <span class="k">if</span> <span class="n">unit</span> <span class="o">==</span> <span class="mi">0</span> <span class="k">else</span> <span class="kc">None</span>
+        <span class="k">if</span> <span class="n">kind</span> <span class="ow">in</span> <span class="p">(</span><span class="sa">b</span><span class="s2">"IDAT"</span><span class="p">,</span> <span class="sa">b</span><span class="s2">"IEND"</span><span class="p">):</span>
+            <span class="k">return</span> <span class="kc">None</span>  <span class="c1"># oFFs must precede the image data</span>
+        <span class="n">pos</span> <span class="o">+=</span> <span class="mi">12</span> <span class="o">+</span> <span class="n">length</span>
+    <span class="k">return</span> <span class="kc">None</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">place_mask</span><span class="p">(</span><span class="n">png</span><span class="p">:</span> <span class="nb">bytes</span><span class="p">,</span> <span class="n">width</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">height</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">"""Return the mask on a height x width canvas; image-sized masks are returned as is."""</span>
+    <span class="n">tile</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">Image</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">io</span><span class="o">.</span><span class="n">BytesIO</span><span class="p">(</span><span class="n">png</span><span class="p">)))</span>
+    <span class="n">offset</span> <span class="o">=</span> <span class="n">mask_offset</span><span class="p">(</span><span class="n">png</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">offset</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">tile</span>
+    <span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">offset</span>
+    <span class="n">canvas</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">height</span><span class="p">,</span> <span class="n">width</span><span class="p">),</span> <span class="n">dtype</span><span class="o">=</span><span class="n">tile</span><span class="o">.</span><span class="n">dtype</span><span class="p">)</span>
+    <span class="c1"># Clip the tile to the image; offsets may be negative or overhang the edges</span>
+    <span class="n">x0</span><span class="p">,</span> <span class="n">y0</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="nb">max</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+    <span class="n">x1</span><span class="p">,</span> <span class="n">y1</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="n">x</span> <span class="o">+</span> <span class="n">tile</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">width</span><span class="p">),</span> <span class="nb">min</span><span class="p">(</span><span class="n">y</span> <span class="o">+</span> <span class="n">tile</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">height</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">x0</span> <span class="o">&lt;</span> <span class="n">x1</span> <span class="ow">and</span> <span class="n">y0</span> <span class="o">&lt;</span> <span class="n">y1</span><span class="p">:</span>
+        <span class="n">canvas</span><span class="p">[</span><span class="n">y0</span><span class="p">:</span><span class="n">y1</span><span class="p">,</span> <span class="n">x0</span><span class="p">:</span><span class="n">x1</span><span class="p">]</span> <span class="o">=</span> <span class="n">tile</span><span class="p">[</span><span class="n">y0</span> <span class="o">-</span> <span class="n">y</span><span class="p">:</span><span class="n">y1</span> <span class="o">-</span> <span class="n">y</span><span class="p">,</span> <span class="n">x0</span> <span class="o">-</span> <span class="n">x</span><span class="p">:</span><span class="n">x1</span> <span class="o">-</span> <span class="n">x</span><span class="p">]</span>
+    <span class="k">return</span> <span class="n">canvas</span>
+</code></pre></div>
+<p>The EdgeFirst Client 2.17.0 and later exposes the offset as <code>Annotation.mask_offset</code>, which returns <code>(x, y)</code> or <code>None</code>.</p>
 <h3 id="reading-parquet-with-duckdb">Reading Parquet with DuckDB</h3>
 <div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">duckdb</span>
 
@@ -2090,7 +2162,7 @@ upgrade instructions.</p>
 <span class="s2">    WHERE box2d_score &gt; 0.8</span>
 <span class="s2">"""</span><span class="p">)</span>
 </code></pre></div>
-<h2 id="json-to-dataframe-conversion-202604">JSON to DataFrame Conversion (2026.04)</h2>
+<h2 id="json-to-dataframe-conversion-202604-and-later">JSON to DataFrame Conversion (2026.04 and later)</h2>
 <h3 id="column-name-mapping">Column Name Mapping</h3>
 <table>
 <thead>
@@ -2127,14 +2199,29 @@ upgrade instructions.</p>
 <td>Arrow: <code>Binary</code> (PNG bytes); JSON: base64-encoded PNG string</td>
 </tr>
 <tr>
+<td><code>ignore</code></td>
+<td><code>ignore</code></td>
+<td><code>Boolean</code> in both formats; JSON also accepts <code>iscrowd</code> as an alias</td>
+</tr>
+<tr>
+<td><code>exclude</code></td>
+<td><code>exclude</code></td>
+<td><code>Boolean</code> in both formats</td>
+</tr>
+<tr>
 <td><code>iscrowd</code></td>
 <td><code>iscrowd</code></td>
-<td><code>Boolean</code> (<code>true</code>/<code>false</code>) in both formats</td>
+<td>Deprecated mirror of <code>ignore</code></td>
 </tr>
 <tr>
 <td><code>category_frequency</code></td>
 <td><code>category_frequency</code></td>
 <td>Same in both formats (<code>"f"</code>, <code>"c"</code>, <code>"r"</code>)</td>
+</tr>
+<tr>
+<td><code>truncation</code>, <code>occlusion</code></td>
+<td><code>attributes.truncation</code>, <code>attributes.occlusion</code></td>
+<td>Arrow: <code>UInt32</code> columns; JSON: nested <code>attributes</code> object</td>
 </tr>
 <tr>
 <td><code>neg_label_indices</code></td>
@@ -2149,42 +2236,72 @@ upgrade instructions.</p>
 <tr>
 <td><code>pose</code></td>
 <td><code>sensors.imu</code></td>
-<td>Arrow: <code>[roll, pitch, yaw]</code>; JSON: <code>{roll, pitch, yaw}</code> object</td>
+<td>Arrow: <code>[roll, pitch, yaw]</code> signed degrees; JSON: <code>{roll, pitch, yaw}</code> object</td>
 </tr>
 <tr>
 <td><code>location</code></td>
 <td><code>sensors.gps</code></td>
-<td>Arrow: <code>[lat, lon]</code>; JSON: <code>{latitude, longitude}</code> object</td>
+<td>Arrow: <code>[lat, lon]</code>; JSON: <code>{lat, lon}</code> object</td>
 </tr>
 </tbody>
 </table>
-<p>File-level metadata keys (<code>mask_interpretation</code>, <code>category_metadata</code>, <code>box2d_format</code>, etc.)
-are not per-row columns. They are stored in the Arrow/Parquet schema metadata or in the
-JSON top-level object. See <a href="../schema/#file-level-metadata">File-Level Metadata</a> for the
-full list.</p>
+<p>File-level metadata keys (<code>schema_version</code>, <code>category_metadata</code>, <code>labels</code>) are not per-row columns. They are stored in the Arrow/Parquet schema metadata or in the JSON top-level object. See <a href="../schema/#file-level-metadata">File-Level Metadata</a> for the full list.</p>
 <h3 id="full-conversion-example">Full Conversion Example</h3>
 <div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">polars</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pl</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pyarrow.ipc</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">ipc</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pyarrow.parquet</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pq</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">json</span><span class="o">,</span><span class="w"> </span><span class="nn">base64</span>
+
+<span class="c1"># Column types from the 2026.10 schema. Polars infers Int64 and variable-length</span>
+<span class="c1"># List columns from Python values, so every column is cast to its schema type.</span>
+<span class="n">SCHEMA</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">"name"</span><span class="p">:</span> <span class="n">pl</span><span class="o">.</span><span class="n">String</span><span class="p">,</span>
+    <span class="s2">"frame"</span><span class="p">:</span> <span class="n">pl</span><span class="o">.</span><span class="n">UInt32</span><span class="p">,</span>
+    <span class="s2">"object_id"</span><span class="p">:</span> <span class="n">pl</span><span class="o">.</span><span class="n">String</span><span class="p">,</span>
+    <span class="s2">"label"</span><span class="p">:</span> <span class="n">pl</span><span class="o">.</span><span class="n">Categorical</span><span class="p">,</span>
+    <span class="s2">"label_index"</span><span class="p">:</span> <span class="n">pl</span><span class="o">.</span><span class="n">UInt64</span><span class="p">,</span>
+    <span class="s2">"group"</span><span class="p">:</span> <span class="n">pl</span><span class="o">.</span><span class="n">Categorical</span><span class="p">,</span>
+    <span class="s2">"polygon"</span><span class="p">:</span> <span class="n">pl</span><span class="o">.</span><span class="n">List</span><span class="p">(</span><span class="n">pl</span><span class="o">.</span><span class="n">List</span><span class="p">(</span><span class="n">pl</span><span class="o">.</span><span class="n">Float32</span><span class="p">)),</span>
+    <span class="s2">"polygon_score"</span><span class="p">:</span> <span class="n">pl</span><span class="o">.</span><span class="n">Float32</span><span class="p">,</span>
+    <span class="s2">"mask"</span><span class="p">:</span> <span class="n">pl</span><span class="o">.</span><span class="n">Binary</span><span class="p">,</span>
+    <span class="s2">"mask_score"</span><span class="p">:</span> <span class="n">pl</span><span class="o">.</span><span class="n">Float32</span><span class="p">,</span>
+    <span class="s2">"box2d"</span><span class="p">:</span> <span class="n">pl</span><span class="o">.</span><span class="n">Array</span><span class="p">(</span><span class="n">pl</span><span class="o">.</span><span class="n">Float32</span><span class="p">,</span> <span class="mi">4</span><span class="p">),</span>
+    <span class="s2">"box2d_score"</span><span class="p">:</span> <span class="n">pl</span><span class="o">.</span><span class="n">Float32</span><span class="p">,</span>
+    <span class="s2">"box3d"</span><span class="p">:</span> <span class="n">pl</span><span class="o">.</span><span class="n">Array</span><span class="p">(</span><span class="n">pl</span><span class="o">.</span><span class="n">Float32</span><span class="p">,</span> <span class="mi">6</span><span class="p">),</span>
+    <span class="s2">"box3d_score"</span><span class="p">:</span> <span class="n">pl</span><span class="o">.</span><span class="n">Float32</span><span class="p">,</span>
+    <span class="s2">"ignore"</span><span class="p">:</span> <span class="n">pl</span><span class="o">.</span><span class="n">Boolean</span><span class="p">,</span>
+    <span class="s2">"exclude"</span><span class="p">:</span> <span class="n">pl</span><span class="o">.</span><span class="n">Boolean</span><span class="p">,</span>
+    <span class="s2">"category_frequency"</span><span class="p">:</span> <span class="n">pl</span><span class="o">.</span><span class="n">Categorical</span><span class="p">,</span>
+    <span class="s2">"truncation"</span><span class="p">:</span> <span class="n">pl</span><span class="o">.</span><span class="n">UInt32</span><span class="p">,</span>
+    <span class="s2">"occlusion"</span><span class="p">:</span> <span class="n">pl</span><span class="o">.</span><span class="n">UInt32</span><span class="p">,</span>
+    <span class="s2">"neg_label_indices"</span><span class="p">:</span> <span class="n">pl</span><span class="o">.</span><span class="n">List</span><span class="p">(</span><span class="n">pl</span><span class="o">.</span><span class="n">UInt32</span><span class="p">),</span>
+    <span class="s2">"not_exhaustive_label_indices"</span><span class="p">:</span> <span class="n">pl</span><span class="o">.</span><span class="n">List</span><span class="p">(</span><span class="n">pl</span><span class="o">.</span><span class="n">UInt32</span><span class="p">),</span>
+    <span class="s2">"size"</span><span class="p">:</span> <span class="n">pl</span><span class="o">.</span><span class="n">Array</span><span class="p">(</span><span class="n">pl</span><span class="o">.</span><span class="n">UInt32</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span>
+    <span class="s2">"location"</span><span class="p">:</span> <span class="n">pl</span><span class="o">.</span><span class="n">Array</span><span class="p">(</span><span class="n">pl</span><span class="o">.</span><span class="n">Float32</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span>
+    <span class="s2">"pose"</span><span class="p">:</span> <span class="n">pl</span><span class="o">.</span><span class="n">Array</span><span class="p">(</span><span class="n">pl</span><span class="o">.</span><span class="n">Float32</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span>
+<span class="p">}</span>
+<span class="n">CORE</span> <span class="o">=</span> <span class="p">[</span><span class="s2">"name"</span><span class="p">,</span> <span class="s2">"frame"</span><span class="p">,</span> <span class="s2">"object_id"</span><span class="p">,</span> <span class="s2">"label"</span><span class="p">,</span> <span class="s2">"label_index"</span><span class="p">,</span> <span class="s2">"group"</span><span class="p">]</span>
 
 <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">"annotations.json"</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
     <span class="n">data</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
 
-<span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="nb">list</span><span class="p">):</span>
-    <span class="n">samples</span> <span class="o">=</span> <span class="n">data</span>
-    <span class="n">box2d_format</span> <span class="o">=</span> <span class="s2">"ltwh"</span>       <span class="c1"># JSON default is ltwh (COCO convention)</span>
-<span class="k">else</span><span class="p">:</span>
-    <span class="n">samples</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s2">"samples"</span><span class="p">]</span>
-    <span class="n">box2d_format</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"box2d_format"</span><span class="p">,</span> <span class="s2">"ltwh"</span><span class="p">)</span>  <span class="c1"># Arrow default is cxcywh; JSON default is ltwh</span>
+<span class="n">samples</span> <span class="o">=</span> <span class="n">data</span> <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="nb">list</span><span class="p">)</span> <span class="k">else</span> <span class="n">data</span><span class="p">[</span><span class="s2">"samples"</span><span class="p">]</span>
 
 <span class="n">rows</span> <span class="o">=</span> <span class="p">[]</span>
 <span class="k">for</span> <span class="n">sample</span> <span class="ow">in</span> <span class="n">samples</span><span class="p">:</span>
-    <span class="n">size</span> <span class="o">=</span> <span class="p">[</span><span class="n">sample</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"width"</span><span class="p">),</span> <span class="n">sample</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"height"</span><span class="p">)]</span>
+    <span class="n">width</span><span class="p">,</span> <span class="n">height</span> <span class="o">=</span> <span class="n">sample</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"width"</span><span class="p">),</span> <span class="n">sample</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"height"</span><span class="p">)</span>
+    <span class="n">size</span> <span class="o">=</span> <span class="p">[</span><span class="n">width</span><span class="p">,</span> <span class="n">height</span><span class="p">]</span> <span class="k">if</span> <span class="n">width</span> <span class="ow">and</span> <span class="n">height</span> <span class="k">else</span> <span class="kc">None</span>
+    <span class="n">sensors</span> <span class="o">=</span> <span class="n">sample</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"sensors"</span><span class="p">)</span> <span class="ow">or</span> <span class="p">{}</span>
+    <span class="n">gps</span><span class="p">,</span> <span class="n">imu</span> <span class="o">=</span> <span class="n">sensors</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"gps"</span><span class="p">),</span> <span class="n">sensors</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"imu"</span><span class="p">)</span>
+    <span class="n">location</span> <span class="o">=</span> <span class="p">[</span><span class="n">gps</span><span class="p">[</span><span class="s2">"lat"</span><span class="p">],</span> <span class="n">gps</span><span class="p">[</span><span class="s2">"lon"</span><span class="p">]]</span> <span class="k">if</span> <span class="n">gps</span> <span class="k">else</span> <span class="kc">None</span>
+    <span class="n">pose</span> <span class="o">=</span> <span class="p">[</span><span class="n">imu</span><span class="p">[</span><span class="s2">"roll"</span><span class="p">],</span> <span class="n">imu</span><span class="p">[</span><span class="s2">"pitch"</span><span class="p">],</span> <span class="n">imu</span><span class="p">[</span><span class="s2">"yaw"</span><span class="p">]]</span> <span class="k">if</span> <span class="n">imu</span> <span class="k">else</span> <span class="kc">None</span>
+
     <span class="k">for</span> <span class="n">ann</span> <span class="ow">in</span> <span class="n">sample</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"annotations"</span><span class="p">,</span> <span class="p">[]):</span>
         <span class="n">row</span> <span class="o">=</span> <span class="p">{</span>
             <span class="s2">"name"</span><span class="p">:</span> <span class="n">sample</span><span class="p">[</span><span class="s2">"image_name"</span><span class="p">]</span><span class="o">.</span><span class="n">rsplit</span><span class="p">(</span><span class="s2">"."</span><span class="p">,</span> <span class="mi">1</span><span class="p">)[</span><span class="mi">0</span><span class="p">],</span>
             <span class="s2">"frame"</span><span class="p">:</span> <span class="n">sample</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"frame_number"</span><span class="p">),</span>
             <span class="s2">"object_id"</span><span class="p">:</span> <span class="n">ann</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"object_id"</span><span class="p">),</span>
-            <span class="s2">"label"</span><span class="p">:</span> <span class="n">ann</span><span class="p">[</span><span class="s2">"label_name"</span><span class="p">],</span>
+            <span class="s2">"label"</span><span class="p">:</span> <span class="n">ann</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"label_name"</span><span class="p">),</span>  <span class="c1"># optional on ignore/exclude rows</span>
             <span class="s2">"label_index"</span><span class="p">:</span> <span class="n">ann</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"label_index"</span><span class="p">),</span>
             <span class="s2">"group"</span><span class="p">:</span> <span class="n">sample</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"group_name"</span><span class="p">),</span>
         <span class="p">}</span>
@@ -2202,13 +2319,10 @@ full list.</p>
             <span class="n">row</span><span class="p">[</span><span class="s2">"mask"</span><span class="p">]</span> <span class="o">=</span> <span class="n">base64</span><span class="o">.</span><span class="n">b64decode</span><span class="p">(</span><span class="n">ann</span><span class="p">[</span><span class="s2">"mask"</span><span class="p">])</span>  <span class="c1"># PNG bytes</span>
             <span class="n">row</span><span class="p">[</span><span class="s2">"mask_score"</span><span class="p">]</span> <span class="o">=</span> <span class="n">ann</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"mask_score"</span><span class="p">)</span>
 
-        <span class="c1"># Box2D: convert based on format metadata</span>
+        <span class="c1"># Box2D: JSON ltwh {x, y, w, h} -&gt; Arrow cxcywh [cx, cy, w, h]</span>
         <span class="k">if</span> <span class="n">ann</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"box2d"</span><span class="p">):</span>
             <span class="n">b</span> <span class="o">=</span> <span class="n">ann</span><span class="p">[</span><span class="s2">"box2d"</span><span class="p">]</span>
-            <span class="k">if</span> <span class="n">box2d_format</span> <span class="o">==</span> <span class="s2">"ltwh"</span><span class="p">:</span>
-                <span class="n">row</span><span class="p">[</span><span class="s2">"box2d"</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="n">b</span><span class="p">[</span><span class="s2">"x"</span><span class="p">]</span> <span class="o">+</span> <span class="n">b</span><span class="p">[</span><span class="s2">"w"</span><span class="p">]</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="n">b</span><span class="p">[</span><span class="s2">"y"</span><span class="p">]</span> <span class="o">+</span> <span class="n">b</span><span class="p">[</span><span class="s2">"h"</span><span class="p">]</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="n">b</span><span class="p">[</span><span class="s2">"w"</span><span class="p">],</span> <span class="n">b</span><span class="p">[</span><span class="s2">"h"</span><span class="p">]]</span>
-            <span class="k">elif</span> <span class="n">box2d_format</span> <span class="o">==</span> <span class="s2">"cxcywh"</span><span class="p">:</span>
-                <span class="n">row</span><span class="p">[</span><span class="s2">"box2d"</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="n">b</span><span class="p">[</span><span class="s2">"cx"</span><span class="p">],</span> <span class="n">b</span><span class="p">[</span><span class="s2">"cy"</span><span class="p">],</span> <span class="n">b</span><span class="p">[</span><span class="s2">"w"</span><span class="p">],</span> <span class="n">b</span><span class="p">[</span><span class="s2">"h"</span><span class="p">]]</span>
+            <span class="n">row</span><span class="p">[</span><span class="s2">"box2d"</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="n">b</span><span class="p">[</span><span class="s2">"x"</span><span class="p">]</span> <span class="o">+</span> <span class="n">b</span><span class="p">[</span><span class="s2">"w"</span><span class="p">]</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="n">b</span><span class="p">[</span><span class="s2">"y"</span><span class="p">]</span> <span class="o">+</span> <span class="n">b</span><span class="p">[</span><span class="s2">"h"</span><span class="p">]</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="n">b</span><span class="p">[</span><span class="s2">"w"</span><span class="p">],</span> <span class="n">b</span><span class="p">[</span><span class="s2">"h"</span><span class="p">]]</span>
             <span class="n">row</span><span class="p">[</span><span class="s2">"box2d_score"</span><span class="p">]</span> <span class="o">=</span> <span class="n">ann</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"box2d_score"</span><span class="p">)</span>
 
         <span class="c1"># Box3D: x,y,z are center coordinates (not corner)</span>
@@ -2217,11 +2331,19 @@ full list.</p>
             <span class="n">row</span><span class="p">[</span><span class="s2">"box3d"</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="n">b3</span><span class="p">[</span><span class="s2">"x"</span><span class="p">],</span> <span class="n">b3</span><span class="p">[</span><span class="s2">"y"</span><span class="p">],</span> <span class="n">b3</span><span class="p">[</span><span class="s2">"z"</span><span class="p">],</span> <span class="n">b3</span><span class="p">[</span><span class="s2">"w"</span><span class="p">],</span> <span class="n">b3</span><span class="p">[</span><span class="s2">"h"</span><span class="p">],</span> <span class="n">b3</span><span class="p">[</span><span class="s2">"l"</span><span class="p">]]</span>
             <span class="n">row</span><span class="p">[</span><span class="s2">"box3d_score"</span><span class="p">]</span> <span class="o">=</span> <span class="n">ann</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"box3d_score"</span><span class="p">)</span>
 
-        <span class="c1"># Annotation metadata (COCO/LVIS extensions)</span>
-        <span class="k">if</span> <span class="s2">"iscrowd"</span> <span class="ow">in</span> <span class="n">ann</span><span class="p">:</span>
-            <span class="n">row</span><span class="p">[</span><span class="s2">"iscrowd"</span><span class="p">]</span> <span class="o">=</span> <span class="nb">bool</span><span class="p">(</span><span class="n">ann</span><span class="p">[</span><span class="s2">"iscrowd"</span><span class="p">])</span>  <span class="c1"># ensure Boolean (handles legacy 0/1)</span>
+        <span class="c1"># ignore / exclude flags; iscrowd is a deprecated alias of ignore</span>
+        <span class="n">ignore</span> <span class="o">=</span> <span class="n">ann</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"ignore"</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">ignore</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">and</span> <span class="n">ann</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"iscrowd"</span><span class="p">)</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">ignore</span> <span class="o">=</span> <span class="nb">bool</span><span class="p">(</span><span class="n">ann</span><span class="p">[</span><span class="s2">"iscrowd"</span><span class="p">])</span>  <span class="c1"># handles legacy 0/1</span>
+        <span class="n">row</span><span class="p">[</span><span class="s2">"ignore"</span><span class="p">]</span> <span class="o">=</span> <span class="n">ignore</span>
+        <span class="n">row</span><span class="p">[</span><span class="s2">"exclude"</span><span class="p">]</span> <span class="o">=</span> <span class="n">ann</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"exclude"</span><span class="p">)</span>
+
+        <span class="c1"># Annotation metadata (LVIS, VisDrone, KITTI extensions)</span>
         <span class="k">if</span> <span class="s2">"category_frequency"</span> <span class="ow">in</span> <span class="n">ann</span><span class="p">:</span>
             <span class="n">row</span><span class="p">[</span><span class="s2">"category_frequency"</span><span class="p">]</span> <span class="o">=</span> <span class="n">ann</span><span class="p">[</span><span class="s2">"category_frequency"</span><span class="p">]</span>
+        <span class="n">attributes</span> <span class="o">=</span> <span class="n">ann</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"attributes"</span><span class="p">)</span> <span class="ow">or</span> <span class="p">{}</span>
+        <span class="n">row</span><span class="p">[</span><span class="s2">"truncation"</span><span class="p">]</span> <span class="o">=</span> <span class="n">attributes</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"truncation"</span><span class="p">)</span>
+        <span class="n">row</span><span class="p">[</span><span class="s2">"occlusion"</span><span class="p">]</span> <span class="o">=</span> <span class="n">attributes</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"occlusion"</span><span class="p">)</span>
 
         <span class="c1"># Sample-level LVIS fields (repeated per annotation row)</span>
         <span class="k">if</span> <span class="s2">"neg_label_indices"</span> <span class="ow">in</span> <span class="n">sample</span><span class="p">:</span>
@@ -2230,12 +2352,23 @@ full list.</p>
             <span class="n">row</span><span class="p">[</span><span class="s2">"not_exhaustive_label_indices"</span><span class="p">]</span> <span class="o">=</span> <span class="n">sample</span><span class="p">[</span><span class="s2">"not_exhaustive_label_indices"</span><span class="p">]</span>
 
         <span class="n">row</span><span class="p">[</span><span class="s2">"size"</span><span class="p">]</span> <span class="o">=</span> <span class="n">size</span>
+        <span class="n">row</span><span class="p">[</span><span class="s2">"location"</span><span class="p">]</span> <span class="o">=</span> <span class="n">location</span>
+        <span class="n">row</span><span class="p">[</span><span class="s2">"pose"</span><span class="p">]</span> <span class="o">=</span> <span class="n">pose</span>
         <span class="n">rows</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">row</span><span class="p">)</span>
 
-<span class="n">df</span> <span class="o">=</span> <span class="n">pl</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">rows</span><span class="p">)</span>
-<span class="n">df</span><span class="o">.</span><span class="n">write_ipc</span><span class="p">(</span><span class="s2">"annotations.arrow"</span><span class="p">)</span>       <span class="c1"># Arrow IPC</span>
-<span class="c1"># df.write_parquet("annotations.parquet")  # or Parquet</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pl</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">rows</span><span class="p">,</span> <span class="n">infer_schema_length</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="n">pl</span><span class="o">.</span><span class="n">col</span><span class="p">(</span><span class="n">c</span><span class="p">)</span><span class="o">.</span><span class="n">cast</span><span class="p">(</span><span class="n">t</span><span class="p">)</span> <span class="k">for</span> <span class="n">c</span><span class="p">,</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">SCHEMA</span><span class="o">.</span><span class="n">items</span><span class="p">()</span> <span class="k">if</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">df</span><span class="o">.</span><span class="n">columns</span><span class="p">)</span>
+
+<span class="c1"># Optional columns with no values are omitted (e.g. score columns in ground truth)</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">drop</span><span class="p">([</span><span class="n">c</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">df</span><span class="o">.</span><span class="n">columns</span> <span class="k">if</span> <span class="n">c</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">CORE</span> <span class="ow">and</span> <span class="n">df</span><span class="p">[</span><span class="n">c</span><span class="p">]</span><span class="o">.</span><span class="n">null_count</span><span class="p">()</span> <span class="o">==</span> <span class="n">df</span><span class="o">.</span><span class="n">height</span><span class="p">])</span>
+
+<span class="c1"># Polars cannot attach schema metadata, so write through PyArrow</span>
+<span class="n">table</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">to_arrow</span><span class="p">()</span><span class="o">.</span><span class="n">replace_schema_metadata</span><span class="p">({</span><span class="s2">"schema_version"</span><span class="p">:</span> <span class="s2">"2026.10"</span><span class="p">})</span>
+<span class="k">with</span> <span class="n">ipc</span><span class="o">.</span><span class="n">new_file</span><span class="p">(</span><span class="s2">"annotations.arrow"</span><span class="p">,</span> <span class="n">table</span><span class="o">.</span><span class="n">schema</span><span class="p">)</span> <span class="k">as</span> <span class="n">writer</span><span class="p">:</span>   <span class="c1"># Arrow IPC</span>
+    <span class="n">writer</span><span class="o">.</span><span class="n">write_table</span><span class="p">(</span><span class="n">table</span><span class="p">)</span>
+<span class="c1"># pq.write_table(table, "annotations.parquet")                     # or Parquet</span>
 </code></pre></div>
+<p>Add <code>category_metadata</code> and <code>labels</code> to the metadata dictionary as JSON strings when the source provides them. The EdgeFirst Client <abbr title="Software Development Kit">SDK</abbr> writes all three keys for you.</p>
 <h3 id="key-conversions-summary">Key Conversions Summary</h3>
 <table>
 <thead>
@@ -2268,7 +2401,7 @@ full list.</p>
 </tr>
 <tr>
 <td>5</td>
-<td><strong>Box2D</strong>: check <code>box2d_format</code> — convert <code>ltwh</code> to <code>cxcywh</code> if needed</td>
+<td><strong>Box2D</strong>: <code>ltwh</code> <code>{x, y, w, h}</code> to <code>cxcywh</code> <code>[cx, cy, w, h]</code></td>
 <td>JSON to DataFrame</td>
 </tr>
 <tr>
@@ -2278,12 +2411,12 @@ full list.</p>
 </tr>
 <tr>
 <td>7</td>
-<td><strong><abbr title="Global Positioning System">GPS</abbr></strong>: <code>{latitude, longitude}</code> to <code>[lat, lon]</code></td>
+<td><strong><abbr title="Global Positioning System">GPS</abbr></strong>: <code>{lat, lon}</code> to <code>[lat, lon]</code></td>
 <td>JSON to DataFrame</td>
 </tr>
 <tr>
 <td>8</td>
-<td><strong><abbr title="Inertial Measurement Unit">IMU</abbr></strong>: <code>{roll, pitch, yaw}</code> to <code>[roll, pitch, yaw]</code></td>
+<td><strong><abbr title="Inertial Measurement Unit">IMU</abbr></strong>: <code>{roll, pitch, yaw}</code> to <code>[roll, pitch, yaw]</code>, signed degrees</td>
 <td>JSON to DataFrame</td>
 </tr>
 <tr>
@@ -2293,21 +2426,26 @@ full list.</p>
 </tr>
 <tr>
 <td>10</td>
-<td><strong><code>neg_label_indices</code></strong> / <strong><code>not_exhaustive_label_indices</code></strong>: sample-level, repeated per annotation row</td>
+<td><strong><code>ignore</code></strong> / <strong><code>exclude</code></strong>: annotation-level <code>Boolean</code>, same semantics in both formats; <code>iscrowd</code> is accepted as a deprecated alias of <code>ignore</code></td>
 <td>JSON to DataFrame</td>
 </tr>
 <tr>
 <td>11</td>
+<td><strong>Attributes</strong>: JSON <code>attributes.truncation</code> / <code>attributes.occlusion</code> to <code>UInt32</code> columns</td>
+<td>JSON to DataFrame</td>
+</tr>
+<tr>
+<td>12</td>
+<td><strong><code>neg_label_indices</code></strong> / <strong><code>not_exhaustive_label_indices</code></strong>: sample-level, repeated per annotation row</td>
+<td>JSON to DataFrame</td>
+</tr>
+<tr>
+<td>13</td>
 <td><strong><code>label_index</code></strong>: preserved as-is (source-faithful, non-contiguous)</td>
 <td>Both</td>
 </tr>
 <tr>
-<td>12</td>
-<td><strong><code>mask_interpretation</code></strong>: file-level metadata (<code>"binary"</code>, <code>"confidence"</code>, <code>"sigmoid"</code>, <code>"logits"</code>) — set on the Arrow schema, not per-row</td>
-<td>Both</td>
-</tr>
-<tr>
-<td>13</td>
+<td>14</td>
 <td><strong><code>category_metadata</code></strong>: file-level metadata — JSON-encoded string of per-label synset/synonyms/definition. Extract from LVIS <code>categories</code> array when importing; attach to Arrow schema metadata when writing.</td>
 <td>Both</td>
 </tr>
@@ -2425,13 +2563,13 @@ for users who need custom pipelines.</p>
         
         
           
-          <a href="../migration/" class="md-footer__link md-footer__link--next" aria-label="Next: Upgrading from 2025.10 to 2026.04">
+          <a href="../migration/" class="md-footer__link md-footer__link--next" aria-label="Next: Migration Guide">
             <div class="md-footer__title">
               <span class="md-footer__direction">
                 Next
               </span>
               <div class="md-ellipsis">
-                Upgrading from 2025.10 to 2026.04
+                Migration Guide
               </div>
             </div>
             <div class="md-footer__button md-icon">

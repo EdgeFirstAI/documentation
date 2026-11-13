@@ -614,8 +614,6 @@
       
         
       
-        
-      
     
     
     
@@ -1490,8 +1488,6 @@
       
         
       
-        
-      
     
     
     
@@ -1765,7 +1761,7 @@
 <p>Everything is validated before anything is launched: a model format with no cloud machine behind it (<code>.hef</code> and <code>.engine</code> are edge-only formats) or an unrecognized compute class is rejected up front, so a mistyped launch leaves no half-started session and costs no compute time. If a run cannot be started at all, a session it just created is marked with the failure rather than left waiting forever — while a session named with <code>--session-id</code> is left untouched, since a launch that never started says nothing about results already published there.</p>
 <p>For scripting, <code>dispatch</code> prints one status line per outcome: <code>job-dispatched &lt;target&gt; &lt;job-id&gt;</code> for a new run (the validation session does not exist until the launched run creates it), or <code>session-dispatched &lt;id&gt; &lt;target&gt; &lt;job-id&gt;</code> when re-scoring an existing session. Every option can also come from the environment — <code>VALIDATION_SESSION_ID</code>, <code>TRAINING_SESSION_ID</code>, <code>ARTIFACT_NAME</code>, <code>INSTANCE_CLASS</code> — which is how a launch from Studio supplies them.</p>
 <h2 id="launching-from-studio">Launching from Studio</h2>
-<p>The Studio launch form drives the same dispatch path without the CLI. Pick the model through the form's model picker — project, experiment, and training session dropdowns, then the artifact from a list — and the hardware from the <strong>Hardware</strong> menu. That is the whole form: the validation session is created by the run itself, so there is nothing else to fill in.</p>
+<p>The Studio launch form drives the same dispatch path without the CLI. Pick the model through the form's model picker — project, experiment, and training session dropdowns, then the artifact from a list, which offers only the <code>.onnx</code> and <code>.tflite</code> files a cloud machine can run — and the hardware from the <strong>Hardware</strong> menu. That is the whole form: the validation session is created by the run itself, so there is nothing else to fill in.</p>
 <h2 id="choosing-hardware">Choosing hardware</h2>
 <p>The Hardware menu offers a cost-optimized default plus a set of dedicated machines named for the EC2 instance they run on. The class name is the hyphenated form of the EC2 instance type — class <code>c8g-12xlarge</code> runs on a <code>c8g.12xlarge</code> instance — and it is the hyphenated name that <code>--instance-class</code> and the <code>INSTANCE_CLASS</code> environment variable accept; session descriptions quote the canonical dotted type. Each named class owns one instance of exactly one type and nothing else shares that machine, so throughput measured on it is comparable between runs and against other models.</p>
 <table>
@@ -1773,39 +1769,46 @@
 <tr>
 <th>Class</th>
 <th>Hardware</th>
+<th>Model formats</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td><code>default</code></td>
 <td>Cost-optimized shared-CPU class (Fargate)</td>
+<td><abbr title="Open Neural Network Exchange">ONNX</abbr>, <abbr title="TensorFlow Lite">TFLite</abbr> (CPU)</td>
 </tr>
 <tr>
 <td><code>m8g-2xlarge</code></td>
 <td>AWS Graviton4, 8 vCPUs</td>
+<td><abbr title="Open Neural Network Exchange">ONNX</abbr>, <abbr title="TensorFlow Lite">TFLite</abbr> (CPU)</td>
 </tr>
 <tr>
 <td><code>c8g-12xlarge</code></td>
 <td>AWS Graviton4, 48 vCPUs</td>
+<td><abbr title="Open Neural Network Exchange">ONNX</abbr>, <abbr title="TensorFlow Lite">TFLite</abbr> (CPU)</td>
 </tr>
 <tr>
 <td><code>m7i-2xlarge</code></td>
 <td>Intel Sapphire Rapids, 8 vCPUs</td>
+<td><abbr title="Open Neural Network Exchange">ONNX</abbr>, <abbr title="TensorFlow Lite">TFLite</abbr> (CPU)</td>
 </tr>
 <tr>
 <td><code>c7i-12xlarge</code></td>
 <td>Intel Sapphire Rapids, 48 vCPUs</td>
+<td><abbr title="Open Neural Network Exchange">ONNX</abbr>, <abbr title="TensorFlow Lite">TFLite</abbr> (CPU)</td>
 </tr>
 <tr>
 <td><code>g5-2xlarge</code></td>
 <td>NVIDIA A10G GPU</td>
+<td><abbr title="Open Neural Network Exchange">ONNX</abbr> (<abbr title="NVIDIA Compute Unified Device Architecture">CUDA</abbr>)</td>
 </tr>
 </tbody>
 </table>
 <p>The menu entries also state the processor, vCPU count, and memory for each option.</p>
 <ul>
 <li><strong>The default class gives trustworthy accuracy but not benchmark-grade throughput.</strong> It runs on Fargate, where the underlying processor varies from run to run and is not recorded, so two runs can land on different CPU generations with nothing to say which. Use a named class when the timing numbers matter.</li>
-<li><strong>The GPU option serves <abbr title="Open Neural Network Exchange">ONNX</abbr> models only.</strong> GPU runs use the <abbr title="NVIDIA Compute Unified Device Architecture">CUDA</abbr> execution provider automatically; there is no <abbr title="NVIDIA Compute Unified Device Architecture">CUDA</abbr> build for <abbr title="TensorFlow Lite">TFLite</abbr>.</li>
+<li><strong><abbr title="TensorFlow Lite">TFLite</abbr> runs on the CPU only.</strong> Every CPU class runs <abbr title="TensorFlow Lite">TFLite</abbr> models with XNNPACK. <abbr title="TensorFlow Lite">TFLite</abbr> has no <abbr title="NVIDIA Compute Unified Device Architecture">CUDA</abbr> delegate, so the GPU option serves <abbr title="Open Neural Network Exchange">ONNX</abbr> models only and runs them on the <abbr title="NVIDIA Compute Unified Device Architecture">CUDA</abbr> execution provider automatically. To measure a model on the GPU, validate its <abbr title="Open Neural Network Exchange">ONNX</abbr> export.</li>
 <li><strong>Validation never runs on interruptible capacity.</strong> Every queue that runs a validation is dedicated: an interruption mid-run would force the most expensive part — the dataset download — to start over, and the restarted run's timing would be indistinguishable from a genuinely slow model. Only the short pre-launch dispatch step uses discounted capacity, where an interruption costs a few seconds.</li>
 </ul>
 <div class="admonition warning">

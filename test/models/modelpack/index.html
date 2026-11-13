@@ -18,7 +18,7 @@
         <link rel="prev" href="../">
       
       
-        <link rel="next" href="tutorials/">
+        <link rel="next" href="benchmarks/">
       
       
         
@@ -614,8 +614,6 @@
       
         
       
-        
-      
     
     
     
@@ -1081,8 +1079,6 @@
       
         
       
-        
-      
     
     
     
@@ -1135,68 +1131,6 @@
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
             
-              
-            
-              
-                
-  
-  
-  
-  
-    
-    
-      
-        
-          
-        
-      
-        
-      
-        
-      
-    
-    
-    
-      
-      
-    
-    
-      
-        
-        
-      
-    
-    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
-      
-        
-  
-  
-  
-    <a href="tutorials/" class="md-nav__link">
-      
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Quick Start Guide
-  
-
-    
-  </span>
-  
-  
-
-      
-        <span class="md-nav__icon md-icon"></span>
-      
-    </a>
-  
-
-      
-    </li>
-  
-
               
             
               
@@ -1432,6 +1366,8 @@
       
         
           
+        
+      
         
       
         
@@ -1741,8 +1677,6 @@
       
         
       
-        
-      
     
     
     
@@ -1892,6 +1826,56 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#camera-adaptor-and-letterbox" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Camera Adaptor and Letterbox
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#input-tiling-sahi" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Input Tiling (SAHI)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Input Tiling (SAHI)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#tiled-validation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Tiled Validation
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#deploying-tile-trained-models" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Deploying Tile-Trained Models
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#modelpack-architecture" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2014,7 +1998,7 @@
 </table>
 <p>ModelPack is optimized for real-time vision applications such as industrial automation, robotics, and autonomous systems. It combines object detection — locating multiple objects within an image using bounding boxes — with instance segmentation, which outlines each object’s exact shape at the pixel level. This unified approach enables detailed scene understanding at the edge and can contribute in a late fusion with the radar model.</p>
 <h2 id="getting-started">Getting Started</h2>
-<p>ModelPack can be trained now in EdgeFirst Studio using a Graphical User Interface by following four simple steps:</p>
+<p>ModelPack can be trained in <a href="https://test.edgefirst.studio/">EdgeFirst Studio</a> by following four simple steps:</p>
 <div class="tabbed-set tabbed-alternate" data-tabs="1:5"><input checked="checked" id="select-framework" name="__tabbed_1" type="radio" /><input id="name-session" name="__tabbed_1" type="radio" /><input id="select-dataset" name="__tabbed_1" type="radio" /><input id="train" name="__tabbed_1" type="radio" /><input id="training-parameters" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="select-framework">Select Framework</label><label for="name-session">Name Session</label><label for="select-dataset">Select Dataset</label><label for="train">Train</label><label for="training-parameters">Training Parameters</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
@@ -2052,7 +2036,7 @@
 <div class="tabbed-block">
 <p><h2 id="train" style="display: none;"></h2></p>
 <ol>
-<li><strong><a href="#training-parameters">Configure model parameters</a></strong> (architecture, input size, epochs, etc.) and start <strong>Training</strong>.</li>
+<li><strong><a href="#training-parameters">Configure the launch form</a></strong> (input, model, training, augmentation and export) and start the session.</li>
 </ol>
 <p><img align="center" alt="Configure and Train" src="../assets/modelpack/modelpack-train-04.jpg" /></p>
 <p><div class="wizard-actions" style="max-width: fit-content; margin-left: auto; margin-right: auto;" markdown>
@@ -2062,44 +2046,162 @@
 </div>
 <div class="tabbed-block">
 <p><h2 id="training-parameters" style="display: none;"></h2></p>
+<p>The ModelPack launch form groups its fields as follows.</p>
 <ol>
-<li><strong>Model Name</strong>: This field specifies the name of the training session and will be used to name the artifacts (e.g. <code>modelpack-coffecup-640x640-rgba-t-&lt;session ID&gt;.tflite</code> or <code>modelpack-coffecup-640x640-rgba-t-&lt;session ID&gt;.onnx</code>)</li>
-<li><strong>Description</strong>: This field is used to add some hints about the training session.  Commonly used to highlight some parameters</li>
-<li><strong>Training Data</strong>: In this section the user must select the dataset as well as train/val groups</li>
-<li><strong>Input Resolution</strong>: The user can pick predefined input resolutions.  Even when ModelPack accepts any resolution we keep this option as simple as possible.  In case you need a different resolution to be supported, please reach out and <a href="mailto:support@edgefirst.ai">email our support team</a></li>
-<li><strong>Camera Adaptor</strong>: ModelPack accepts six different input optimizations.  It could be either of <abbr title="Red Green Blue">RGB</abbr>, BGR, <abbr title="Red Green Blue Alpha">RGBA</abbr>, BGRA, Greyscale, or YUYV</li>
-<li><strong>Model Parameters</strong>: This section configures the model architecture<ol>
-<li><strong>Model Backbone</strong>: Model backbone exposes a CSPDarknet19 optimized for boosting inference time and a CSPDarknet53 optimized for accuracy</li>
-<li><strong>Model Size</strong>: Similar to modern architectures, ModelPack also accepts dynamic scaling factors (<code>width in [0.25, 0.5, 0.75, 1.0]</code>, <code>depth in [0.33, 0.33, 0.66, 1.0]</code>)</li>
-<li><strong>Activation Function</strong>: This parameter defines the main activation used in the model. Exposed values are ReLU, ReLU6 and SiLU.  The best tradeoff between speed and accuracy is produced by ReLU6 activation in most of the cases</li>
-<li><strong>Interpolation Method</strong>: Model upsample layers are ruled by a resize operation.  This operation can run with two different algorithms: <code>Bilinear</code> or <code>Nearest</code></li>
-<li><strong>Object Detection</strong>: Enables object detection task (enabled by default)</li>
-<li><strong>Segmentation</strong>: Enables Semantic Segmentation</li>
-<li><strong>Space to Depth</strong>: This feature enables the Space to Depth Transformation to the input in order to reduce model complexity on higher resolutions</li>
-<li><strong>Split Decoder</strong>: Remove the decoder from the model and use a very optimized one from EdgeFirst.  This feature is very useful when the location of the boxes has to be precise (0-offset)</li>
+<li><strong>Training Session</strong><ol>
+<li><strong>Name</strong>: The name of the training session, also used to name the artifacts (e.g. <code>modelpack-coffecup-640x640-rgba-t-&lt;session ID&gt;.onnx</code>)</li>
+<li><strong>Description</strong>: An optional description of the training session, commonly used to highlight some parameters</li>
+</ol>
+</li>
+<li><strong>Source Dataset</strong>: The dataset the session trains and validates on, with its annotation set and tag</li>
+<li><strong>Input</strong><ol>
+<li><strong>Input Resolution</strong>: The network input resolution (width x height), 480x270 by default.  The list covers 1:1, 16:9 and 4:3 resolutions from 320x180 up to 3840x2160 (4K UHD) and 2592x1944.  Pick the resolution closest to your deployment camera.  Higher resolutions need more GPU memory, and the trainer reduces the batch size automatically when it does not fit.  With <a href="#input-tiling-sahi">Input Tiling (SAHI)</a> the Input Resolution is the tile size.  In case you need a different resolution to be supported, please reach out and <a href="mailto:support@edgefirst.ai">email our support team</a></li>
+<li><strong>Camera Adaptor</strong>: The target camera format of the model input, one of <abbr title="Red Green Blue">RGB</abbr> (default), BGR, <abbr title="Red Green Blue Alpha">RGBA</abbr>, BGRA, Greyscale or YUYV.  See <a href="#camera-adaptor-and-letterbox">Camera Adaptor and Letterbox</a></li>
+<li><strong>Input Tiling (SAHI)</strong>: Off by default.  Trains on native-resolution tiles of each image and validates on full images.  The tiling settings and <strong>Tiled Validation</strong> that follow it configure the tiles.  See <a href="#input-tiling-sahi">Input Tiling (SAHI)</a></li>
+<li><strong>Letterbox Resize</strong>: On by default.  Resizes each image into the model input while preserving its aspect ratio.  See <a href="#camera-adaptor-and-letterbox">Camera Adaptor and Letterbox</a></li>
+</ol>
+</li>
+<li><strong>Model Parameters</strong>: Configures the model architecture and the tasks to train<ol>
+<li><strong>Model Backbone</strong>: CSPDarkNet19 (default), optimized for inference time, or CSPDarkNet53, optimized for accuracy</li>
+<li><strong>Model Size</strong>: Nano (default), Small, Medium or Large.  Similar to modern architectures, ModelPack scales the channel width and the block depth with the size (width <code>0.25</code>, <code>0.375</code>, <code>0.5</code>, <code>0.75</code> and depth <code>0.33</code>, <code>0.33</code>, <code>0.33</code>, <code>0.67</code> from Nano to Large)</li>
+<li><strong>Activation Function</strong>: The main activation used in the model, one of ReLU, ReLU6 (default) and SiLU.  ReLU6 produces the best tradeoff between speed and accuracy in most cases</li>
+<li><strong>Object Detection</strong>: Trains an object detection model (enabled by default)</li>
+<li><strong>Segmentation</strong>: Trains a semantic segmentation model.  Selecting both <strong>Object Detection</strong> and <strong>Segmentation</strong> produces a multitask model with one output per task</li>
+<li><strong>Focus Input</strong>: Off by default.  Reshapes the input as a 2x2 patch grid before the first convolution, trading per-pixel processing for a higher channel count at half resolution.  This is often a small inference speedup on NPUs, with a possible accuracy cost on very small objects</li>
+<li><strong>Fine Detection Head</strong>: Off by default.  Adds a stride-8 (P3) detection head so small objects, below 32 pixels, have enough feature cells to localize.  Recommended together with Input Tiling.  It applies to CSPDarkNet19; CSPDarkNet53 always has the stride-8 head</li>
 </ol>
 </li>
 <li>
-<p><strong>Training Parameters</strong>: In this section the user is able to specify the number of epochs to train the model as well as the batch size.  Remember the larger the input resolution the smaller the batch size</p>
+<p><strong>Training Parameters</strong>:</p>
 <ol>
-<li>
-<p><strong>Use Default Weights</strong>: When enabled (default), training starts from pre-trained COCO weights. When disabled, starting weights are sourced from a prior training session you specify.</p>
+<li><strong>Epochs</strong>: The number of epochs to train the model, 50 by default (1 to 500)</li>
+<li><strong>Batch Size</strong>: The number of samples processed in a single training step, 16 by default (1 to 64).  Remember the larger the input resolution the smaller the batch size</li>
+</ol>
 <div class="admonition note">
-<p class="admonition-title">ModelPack does not have an Enable Training checkbox</p>
-<p>For ModelPack training always runs. Disabling <strong>Use Default Weights</strong> lets you supply a prior session's weights as the starting point; leaving it enabled trains from COCO pre-trained weights. <strong>Enable Training</strong> are <a href="../ultralytics/#training-parameters">Ultralytics-only</a> and do not apply here</p>
+<p class="admonition-title">ModelPack always trains</p>
+<p>Every ModelPack session trains on the selected dataset.  The backbone starts from ImageNet-pretrained weights and the detection and segmentation heads start fresh.</p>
 </div>
-</li>
-</ol>
 </li>
 <li>
-<p><strong>Data Augmentation</strong>: This section controls the probability of each augmentation technique.  This feature is crucial for training models and reduce overfitting, especially in small datasets</p>
+<p><strong>Data Augmentation</strong>: The probability of each augmentation technique, in percent.  Augmentation is crucial for training models and reducing overfitting, especially on small datasets.  See <a href="../augmentations/">Vision Augmentations</a></p>
+<ol>
+<li><strong>Random Brightness and Contrast</strong>: 50 by default</li>
+<li><strong>Random HSV</strong>: Random hue, saturation and value, 30 by default</li>
+<li><strong>Random Grayscale</strong>: 10 by default</li>
+<li><strong>Random Horizontal Flip</strong>: 50 by default</li>
+<li><strong>Random Vertical Flip</strong>: 0 by default.  A vertical mirror is not label-preserving for ground-referenced scenes; enable it for overhead or aerial imagery</li>
+<li><strong>Random Shift and Scale</strong>: 25 by default.  Not used with Input Tiling</li>
+<li><strong>Random Mosaic</strong>: 25 by default.  With Input Tiling, four tiles are combined at native scale</li>
+<li><strong>Mosaic Center Jitter</strong>: 0 by default (0 to 0.45).  The half-range for randomizing the center point of a mosaic, as a fraction of the tile size.  0 keeps the fixed-center 2x2 mosaic layout; higher values vary the size of each quadrant.  It has an effect only when <strong>Random Mosaic</strong> is above 0</li>
+</ol>
 </li>
-<li><strong>Export Parameters</strong>: Allow the user to set a portion of data for calibration when exporting the model for <abbr title="Signed 8-bit integer">INT8</abbr> quantization</li>
-<li><strong>Start Session</strong>: This button will start the training session</li>
+<li><strong>Export Parameters</strong>: The session publishes <abbr title="Single-precision 32-bit floating-point">FP32</abbr> and <abbr title="Half-precision 16-bit floating-point">FP16</abbr> <abbr title="Open Neural Network Exchange">ONNX</abbr> models, a TensorFlow SavedModel and an <abbr title="Signed 8-bit integer">INT8</abbr> calibration snapshot.  The <a href="../conversion/">converter apps</a> use them to produce <abbr title="Signed 8-bit integer">INT8</abbr> quantized models for each target <abbr title="Neural Processing Unit">NPU</abbr><ol>
+<li><strong>Calibration Samples</strong>: The number of images in the <abbr title="Signed 8-bit integer">INT8</abbr> calibration snapshot, 500 by default (100 to 2000).  Very low counts can reduce quantized accuracy.  Snapshots are reused across sessions with matching settings</li>
+<li><strong><abbr title="Open Neural Network Exchange">ONNX</abbr> Opset Version</strong>: The <abbr title="Open Neural Network Exchange">ONNX</abbr> opset version of the exported model, 11, 12 or 13 (default).  Keep the default unless a downstream tool requires an older version</li>
+</ol>
+</li>
+<li><strong>Start App</strong>: This button starts the training session</li>
 </ol>
 </div>
 </div>
 </div>
+<h2 id="camera-adaptor-and-letterbox">Camera Adaptor and Letterbox</h2>
+<p>The <strong>Camera Adaptor</strong> dropdown in the Input group selects the target camera format of the model input.  Select the format that matches your deployment camera or <abbr title="Image Signal Processor">ISP</abbr> output to avoid runtime color conversions.  See <a href="../cameraadaptor/">Camera Adaptor</a> for the supported formats and platform guidance.</p>
+<p>The photometric augmentations (brightness and contrast, HSV and grayscale) apply to the <abbr title="Red Green Blue">RGB</abbr>, BGR and Greyscale formats.  The <abbr title="Red Green Blue Alpha">RGBA</abbr>, BGRA and YUYV formats receive the geometric augmentations only.</p>
+<p><strong>Letterbox Resize</strong> fits each image into the model input with an aspect-preserving letterbox: the image is scaled to fit, centred, and padded with gray (114).  Boxes are remapped into the padded image, and segmentation masks are padded with the background class.  Leave it on for general datasets.  For fixed-camera datasets whose frames already match the input aspect ratio it has no effect and can be turned off, which resizes the image directly to the model input and skips the padding.</p>
+<p>The resize mode is recorded in the <a href="../metadata/">model metadata</a> so deployment runtimes preprocess identically, and the calibration snapshot uses the same resize mode, so <abbr title="Signed 8-bit integer">INT8</abbr> calibration sees the deployment input.</p>
+<h2 id="input-tiling-sahi">Input Tiling (SAHI)</h2>
+<p>Small objects in high-resolution images lose most of their pixels when the image is downscaled to the model's input size.  <strong>Input Tiling (SAHI)</strong> trains on native-resolution tiles of each image instead of downscaling the whole image, then validates on full images, so small objects keep their native pixel scale.</p>
+<p>With Input Tiling enabled, the <strong>Input Resolution</strong> is the tile size; 640x640 is the preferred choice.  Input Tiling supports object detection with the <strong><abbr title="Red Green Blue">RGB</abbr></strong> or <strong>BGR</strong> camera adaptor.</p>
+<p>The following settings, in the Input group, control how tiles are sampled.  Their defaults are the validated recipe.</p>
+<table>
+<thead>
+<tr>
+<th>Setting</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Tiles per Image</strong></td>
+<td>4 (1 to 8)</td>
+<td>Tiles cut from each decoded image per epoch.</td>
+</tr>
+<tr>
+<td><strong>Background Tiles (%)</strong></td>
+<td>15 (0 to 50)</td>
+<td>Percentage of tiles that contain no annotated object.  Lower it for densely annotated datasets.</td>
+</tr>
+<tr>
+<td><strong>Full-Image Tiles (%)</strong></td>
+<td>10 (0 to 50)</td>
+<td>Percentage of tiles that show the whole image fitted into the tile, keeping large objects and scene context.  The remaining tiles are placed around objects.</td>
+</tr>
+<tr>
+<td><strong>Grid-Aligned Tiles (%)</strong></td>
+<td>25 (0 to 100)</td>
+<td>Percentage of object and background tiles taken from the deployment tile grid, so the model sees the tile edges it meets at inference.</td>
+</tr>
+<tr>
+<td><strong>Native-Scale Tiles (%)</strong></td>
+<td>50 (0 to 100)</td>
+<td>Percentage of tiles cropped at exactly the deployment scale.  The rest are zoomed within the <strong>Tile Zoom Range</strong>.</td>
+</tr>
+<tr>
+<td><strong>Tile Zoom Range</strong></td>
+<td>1.33 (1.0 to 2.0)</td>
+<td>Largest zoom applied to non-native tiles, in and out equally: 1.33 samples between 0.75x and 1.33x.  1.0 disables zoom.</td>
+</tr>
+<tr>
+<td><strong>Minimum Visible Fraction</strong></td>
+<td>0.25 (0.05 to 0.9)</td>
+<td>An object cut by a tile edge is kept as a target only when at least this fraction of its area is inside the tile.</td>
+</tr>
+<tr>
+<td><strong>Final Native Epochs</strong></td>
+<td>10 (0 to 50)</td>
+<td>Closing epochs trained on native-scale tiles only, with the tile mosaic off, to match deployment.  Limited to half of the epochs.</td>
+</tr>
+<tr>
+<td><strong>Class-Balanced Tiles</strong></td>
+<td>Off</td>
+<td>Places more tiles around objects of rare classes.</td>
+</tr>
+<tr>
+<td><strong>Tiled Validation</strong></td>
+<td>Whole Image</td>
+<td>How validation scores the model on full images.  See <a href="#tiled-validation">Tiled Validation</a>.</td>
+</tr>
+</tbody>
+</table>
+<p>A tile smaller than the Input Resolution, such as a full-image tile or a tile cut from an image smaller than the tile, is letterboxed, centred, into it.  With Input Tiling, <strong>Random Mosaic</strong> combines four tiles at native scale and <strong>Random Shift and Scale</strong> is not used, because the tile sampler applies its own zoom.  The anchors are fit to the boxes as they appear in the tiles.</p>
+<h3 id="tiled-validation">Tiled Validation</h3>
+<p>A tile-trained model is scored on full images, the deployment metric, rather than per tile.  <strong>Tiled Validation</strong> selects how.</p>
+<table>
+<thead>
+<tr>
+<th>Tiled Validation</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Whole Image</strong> (default)</td>
+<td>Each full image runs through the model in one pass at native resolution.</td>
+</tr>
+<tr>
+<td><strong>Tile Grid</strong></td>
+<td>Each image is cut into the deployment tile grid, an evenly distributed grid with at least 10% overlap between tiles.  Each tile is detected separately, and the detections are lifted to image coordinates and merged across tiles.</td>
+</tr>
+<tr>
+<td><strong>Both</strong></td>
+<td>Runs both and reports the tile grid metrics alongside the whole-image metrics.  This is slower.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="deploying-tile-trained-models">Deploying Tile-Trained Models</h3>
+<p>A tile-trained model exports at the tile size.  Its <a href="../metadata/#tiling">model metadata</a> carries a <code>tiling</code> section describing the deployment tile grid and the merge of detections across tiles, so the runtime cuts each frame into tiles of the Input Resolution.  The calibration snapshot holds deployment-grid tiles rather than whole images; see <a href="../conversion/calibration/#tiled-models">Tiled Models</a>.</p>
 <h2 id="modelpack-architecture">ModelPack Architecture</h2>
 <p>ModelPack is a modern object detector and it adopts similar scaling strategies seen in the <abbr title="You Only Look Once">YOLO</abbr> family models.
 The model expands and contracts based on the width and height parameters.
@@ -2116,7 +2218,7 @@ Different than YOLOx, ModelPack is NOT anchor free, which makes the model more a
             <img align="center" alt="ModelPack Architecture" src="../assets/modelpack-arch.png" />
             <figcaption>ModelPack Architecture</figcaption>
             </figure>
-<p>ModelPack outputs can be configured on Studio User Interface as explained in the <a href="../training/vision/">ModelPack training guide</a>.</p>
+<p>ModelPack outputs are configured in the <a href="#training-parameters">launch form</a> of the training session.  See <a href="../training/vision/">Training Vision Models</a> for the training workflow.</p>
 
 
 
@@ -2223,13 +2325,13 @@ Different than YOLOx, ModelPack is NOT anchor free, which makes the model more a
         
         
           
-          <a href="tutorials/" class="md-footer__link md-footer__link--next" aria-label="Next: Quick Start Guide">
+          <a href="benchmarks/" class="md-footer__link md-footer__link--next" aria-label="Next: ModelPack Benchmarks">
             <div class="md-footer__title">
               <span class="md-footer__direction">
                 Next
               </span>
               <div class="md-ellipsis">
-                Quick Start Guide
+                ModelPack Benchmarks
               </div>
             </div>
             <div class="md-footer__button md-icon">

@@ -614,8 +614,6 @@
       
         
       
-        
-      
     
     
     
@@ -1418,7 +1416,7 @@
   <span class="md-ellipsis">
     
   
-    Upgrading from 2025.10 to 2026.04
+    Migration Guide
   
 
     
@@ -1597,8 +1595,6 @@
       
         
           
-        
-      
         
       
         
@@ -1936,11 +1932,7 @@ the sensor data container share the same base name.</p>
 ├── dataset_name.json           # JSON (human-readable)
 └── dataset_name/               # Sensor container (directory or .zip)
 </code></pre></div>
-<p>Exactly <strong>one annotation file</strong> per dataset directory — choose a single format from
-<code>.arrow</code>, <code>.parquet</code>, or <code>.json</code>. The tree above shows the three supported alternatives;
-do not include more than one annotation file for the same dataset. The sensor container
-directory name matches the dataset base name regardless of which annotation file format
-you choose.</p>
+<p>Exactly <strong>one annotation file</strong> per dataset directory — choose a single format from <code>.arrow</code>, <code>.parquet</code>, or <code>.json</code>. The tree above shows the three supported alternatives; do not include more than one annotation file for the same dataset, so discovery is unambiguous. The sensor container directory name matches the dataset base name regardless of which annotation file format you choose. <code>edgefirst-client validate-snapshot</code> accepts either an <code>.arrow</code> or a <code>.parquet</code> annotation file whose name matches the dataset directory.</p>
 <h2 id="dataset-layouts">Dataset Layouts</h2>
 <p>EdgeFirst supports three organizational patterns.</p>
 <h3 id="1-sequence-based-datasets">1. Sequence-Based Datasets</h3>
@@ -1956,8 +1948,12 @@ you choose.</p>
 <p><strong>File naming convention</strong>:</p>
 <ul>
 <li>Sequence format: <code>{hostname}_{date}_{time}</code> (from <abbr title="Binary container format for robotics log data">MCAP</abbr>)</li>
-<li>Frame format: <code>{sequence_name}_{frame_number}.{sensor}.{ext}</code></li>
+<li>Frame format: <code>{sequence_name}_{frame_number}.{sensor}.{ext}</code>, with the frame number written as is (no zero padding)</li>
 </ul>
+<div class="admonition note">
+<p class="admonition-title">Zero-padded frame names</p>
+<p>Readers also accept the older zero-padded form <code>{sequence_name}_{frame:03}</code> (for example <code>sequence_A_001</code>), so datasets exported with three-digit frame numbers continue to validate and upload.</p>
+</div>
 <h3 id="2-image-based-datasets">2. Image-Based Datasets</h3>
 <p>Standalone images without temporal ordering:</p>
 <div class="highlight"><pre><span></span><code>coco_subset/
@@ -1973,8 +1969,8 @@ you choose.</p>
 ├── mixed_dataset.arrow
 └── mixed_dataset/
     ├── sequence_A/
-    │   ├── sequence_A_001.camera.jpeg
-    │   └── sequence_A_002.camera.jpeg
+    │   ├── sequence_A_1.camera.jpeg
+    │   └── sequence_A_2.camera.jpeg
     ├── standalone_image1.jpg
     └── standalone_image2.jpg
 </code></pre></div>
@@ -1984,12 +1980,12 @@ you choose.</p>
 ├── sensor_fusion.parquet
 └── sensor_fusion/
     └── drive_2026_03_18/
-        ├── drive_2026_03_18_001.camera.jpeg
-        ├── drive_2026_03_18_001.radar.png
-        ├── drive_2026_03_18_001.radar.pcd
-        ├── drive_2026_03_18_001.lidar.pcd
-        ├── drive_2026_03_18_002.camera.jpeg
-        ├── drive_2026_03_18_002.radar.png
+        ├── drive_2026_03_18_1.camera.jpeg
+        ├── drive_2026_03_18_1.radar.png
+        ├── drive_2026_03_18_1.radar.pcd
+        ├── drive_2026_03_18_1.lidar.pcd
+        ├── drive_2026_03_18_2.camera.jpeg
+        ├── drive_2026_03_18_2.radar.png
         └── ...
 </code></pre></div>
 <h2 id="flattened-structure">Flattened Structure</h2>
@@ -1998,9 +1994,9 @@ sequence prefixes:</p>
 <div class="highlight"><pre><span></span><code>dataset_name/
 ├── dataset_name.arrow
 └── dataset_name/
-    ├── sequence_A_001.camera.jpeg
-    ├── sequence_A_002.camera.jpeg
-    ├── sequence_B_001.camera.jpeg
+    ├── sequence_A_1.camera.jpeg
+    ├── sequence_A_2.camera.jpeg
+    ├── sequence_B_1.camera.jpeg
     └── standalone_image.jpg
 </code></pre></div>
 <p>The EdgeFirst Client <abbr title="Software Development Kit">SDK</abbr> detects the layout automatically — no manual configuration is needed.</p>

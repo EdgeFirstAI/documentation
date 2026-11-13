@@ -614,8 +614,6 @@
       
         
       
-        
-      
     
     
     
@@ -1213,10 +1211,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#default-behavior-metadata-absent" class="md-nav__link">
+  <a href="#layout-by-storage-format" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Default Behavior (Metadata Absent)
+        Layout by Storage Format
       
     </span>
   </a>
@@ -1468,7 +1466,7 @@
   <span class="md-ellipsis">
     
   
-    Upgrading from 2025.10 to 2026.04
+    Migration Guide
   
 
     
@@ -1663,8 +1661,6 @@
       
         
       
-        
-      
     
     
     
@@ -1837,10 +1833,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#default-behavior-metadata-absent" class="md-nav__link">
+  <a href="#layout-by-storage-format" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Default Behavior (Metadata Absent)
+        Layout by Storage Format
       
     </span>
   </a>
@@ -2024,12 +2020,14 @@
 
 
 <h1 id="box-formats">Box Formats</h1>
-<p>EdgeFirst 2026.04 introduces <strong>metadata-based format selection</strong> for bounding boxes.
-The <code>box2d_format</code> and <code>box3d_format</code> file-level metadata keys describe the array
-layout so that readers can interpret box data without assumptions.</p>
+<p>EdgeFirst datasets store 2D boxes as <code>[center_x, center_y, width, height]</code> (<code>cxcywh</code>) in Arrow and Parquet files and as <code>{x, y, w, h}</code> (<code>ltwh</code>, left/top corner) in JSON files and the EdgeFirst Studio <abbr title="Application Programming Interface">API</abbr>. All box coordinates are normalized to the 0..1 range.</p>
+<div class="admonition note">
+<p class="admonition-title">Box format metadata is reserved</p>
+<p>The specification reserves the <code>box2d_format</code>, <code>box2d_normalized</code>, <code>box3d_format</code>, and <code>box3d_normalized</code> file-level metadata keys so that a future release can describe other layouts. The EdgeFirst Client does not write or read these keys yet: box layouts are fixed as described on this page. The format descriptors below document the layouts and the conversions between them.</p>
+</div>
 <h2 id="box2d">Box2D</h2>
 <h3 id="format-descriptors">Format Descriptors</h3>
-<p>The <code>box2d_format</code> metadata key selects the array element order:</p>
+<p>Three layouts are defined. <code>cxcywh</code> is used by Arrow and Parquet, <code>ltwh</code> by JSON; <code>xyxy</code> is reserved for future use.</p>
 <table>
 <thead>
 <tr>
@@ -2061,7 +2059,7 @@ layout so that readers can interpret box data without assumptions.</p>
 </tbody>
 </table>
 <h3 id="coordinate-system">Coordinate System</h3>
-<p>The <code>box2d_normalized</code> metadata key indicates whether coordinates are normalized:</p>
+<p>Coordinates are normalized. The reserved <code>box2d_normalized</code> key would indicate pixel coordinates:</p>
 <table>
 <thead>
 <tr>
@@ -2085,14 +2083,12 @@ layout so that readers can interpret box data without assumptions.</p>
 <p>In Arrow/Parquet file metadata, all values are strings (<code>"true"</code>, <code>"false"</code>).
 In JSON files, use native boolean values (<code>true</code>, <code>false</code>).</p>
 </div>
-<h3 id="default-behavior-metadata-absent">Default Behavior (Metadata Absent)</h3>
-<p>When <code>box2d_format</code> metadata is <strong>absent</strong>, the default depends on the storage format.
-This preserves backward compatibility with files written before metadata was introduced.</p>
+<h3 id="layout-by-storage-format">Layout by Storage Format</h3>
 <table>
 <thead>
 <tr>
 <th>Storage Format</th>
-<th>Default <code>box2d_format</code></th>
+<th><code>box2d</code> layout</th>
 <th>Reason</th>
 </tr>
 </thead>
@@ -2100,30 +2096,25 @@ This preserves backward compatibility with files written before metadata was int
 <tr>
 <td>Arrow IPC</td>
 <td><code>cxcywh</code></td>
-<td>Backward compatibility with 2025.10 Arrow files</td>
+<td>ML convention, unchanged since 2025.10</td>
 </tr>
 <tr>
 <td>Parquet</td>
 <td><code>cxcywh</code></td>
-<td>New format, follows Arrow convention</td>
+<td>Same schema as Arrow IPC</td>
 </tr>
 <tr>
 <td>JSON (file)</td>
 <td><code>ltwh</code></td>
-<td>Backward compatibility with Studio JSON-RPC <abbr title="Application Programming Interface">API</abbr></td>
+<td>Matches the Studio JSON-RPC <abbr title="Application Programming Interface">API</abbr></td>
 </tr>
 <tr>
 <td>JSON-RPC <abbr title="Application Programming Interface">API</abbr></td>
-<td>Always <code>ltwh</code></td>
-<td>Fixed protocol, cannot be changed</td>
+<td><code>ltwh</code></td>
+<td>Fixed protocol</td>
 </tr>
 </tbody>
 </table>
-<div class="admonition tip">
-<p class="admonition-title">When metadata IS present, it is authoritative</p>
-<p>Regardless of storage format, the <code>box2d_format</code> metadata value overrides the
-default. A JSON file with <code>"box2d_format": "cxcywh"</code> uses center coordinates.</p>
-</div>
 <h3 id="conversion-between-formats">Conversion Between Formats</h3>
 <div class="highlight"><pre><span></span><code>cxcywh → ltwh:  left = cx - w/2,  top = cy - h/2
 ltwh → cxcywh:  cx = left + w/2,  cy = top + h/2
@@ -2172,7 +2163,7 @@ Pixel coordinates:
 </code></pre></div>
 <h2 id="box3d">Box3D</h2>
 <h3 id="format-descriptor">Format Descriptor</h3>
-<p>The <code>box3d_format</code> metadata key describes the 3D box array layout:</p>
+<p>The 3D box array layout is fixed:</p>
 <table>
 <thead>
 <tr>
@@ -2225,7 +2216,7 @@ may have listed <code>[x, y, z, l, w, h]</code> — that was a documentation err
 <code>Box3d</code> struct field order <code>{x, y, z, w, h, l}</code> matches this array layout exactly.</p>
 </div>
 <h3 id="coordinate-system_1">Coordinate System</h3>
-<p>The <code>box3d_normalized</code> metadata key indicates whether coordinates are normalized:</p>
+<p>Coordinates are normalized. The reserved <code>box3d_normalized</code> key would indicate absolute units:</p>
 <table>
 <thead>
 <tr>

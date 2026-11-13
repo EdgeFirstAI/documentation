@@ -614,8 +614,6 @@
       
         
       
-        
-      
     
     
     
@@ -1249,6 +1247,23 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="Geometry: Raster Mask">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#instance-mask-tiles" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Instance Mask Tiles
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
         
           <li class="md-nav__item">
@@ -1282,6 +1297,67 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="Annotation Metadata">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ignore" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ignore
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exclude" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        exclude
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#iscrowd" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        iscrowd
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#category_frequency" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        category_frequency
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#truncation-and-occlusion" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        truncation and occlusion
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
         
           <li class="md-nav__item">
@@ -1292,6 +1368,23 @@
       
     </span>
   </a>
+  
+    <nav class="md-nav" aria-label="Sample Metadata">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#imu-orientation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        IMU orientation
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
         
@@ -1490,7 +1583,7 @@
   <span class="md-ellipsis">
     
   
-    Upgrading from 2025.10 to 2026.04
+    Migration Guide
   
 
     
@@ -1669,8 +1762,6 @@
       
         
           
-        
-      
         
       
         
@@ -1867,6 +1958,23 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="Geometry: Raster Mask">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#instance-mask-tiles" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Instance Mask Tiles
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
         
           <li class="md-nav__item">
@@ -1900,6 +2008,67 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="Annotation Metadata">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ignore" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ignore
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exclude" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        exclude
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#iscrowd" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        iscrowd
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#category_frequency" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        category_frequency
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#truncation-and-occlusion" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        truncation and occlusion
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
         
           <li class="md-nav__item">
@@ -1910,6 +2079,23 @@
       
     </span>
   </a>
+  
+    <nav class="md-nav" aria-label="Sample Metadata">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#imu-orientation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        IMU orientation
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
         
@@ -2068,7 +2254,7 @@
 
 
 <h1 id="annotation-schema">Annotation Schema</h1>
-<p><strong>Schema version</strong>: <code>2026.04</code></p>
+<p><strong>Schema version</strong>: <code>2026.10</code></p>
 <p>The EdgeFirst annotation schema uses a flat, columnar layout: <strong>one row per annotation
 instance</strong>. All columns are nullable unless noted otherwise. Optional columns may be
 absent entirely from a file.</p>
@@ -2228,13 +2414,10 @@ are valid but wasteful and ambiguous — a reader cannot distinguish "binary mas
 8-bit" from "8-bit score data." 1-bit encoding is self-documenting: if the PNG is 1-bit,
 the mask is binary.</p>
 <p><strong>Dimensions</strong>: Mask dimensions are defined by the PNG image itself, not by the <code>size</code>
-column or <code>box2d</code>. The producer determines the resolution — it could be the original
+column or <code>box2d</code>. For a mask without an offset, the producer determines the resolution — it could be the original
 image size, model input size, or model output size. Consumers read the PNG header to
 discover the mask dimensions and rescale to the target coordinate space as needed.</p>
-<p><strong>Coverage</strong>: The mask covers the <strong>full image</strong>, not a crop of the bounding box. For
-instance segmentation, most pixels are 0 (background) and the object region has
-confidence scores or binary 1 values. This avoids lossy cropping and handles
-interpolation that extends beyond box bounds.</p>
+<p><strong>Coverage</strong>: An instance segmentation mask is either <strong>image-sized</strong> or an <strong>offset tile</strong> covering only the part of the image that holds the object (see <a href="#instance-mask-tiles">Instance Mask Tiles</a>). Pixels outside the object are 0 (background) and the object region has confidence scores or binary 1 values. Semantic segmentation masks are always image-sized (or model-output-sized) and never carry an offset.</p>
 <p><strong>Interpretation by context</strong>:</p>
 <table>
 <thead>
@@ -2257,8 +2440,7 @@ interpolation that extends beyond box bounds.</p>
 </tr>
 </tbody>
 </table>
-<p><strong>Interpretation</strong>: Controlled by <code>mask_interpretation</code> file-level metadata. The PNG
-bit depth determines the value range:</p>
+<p><strong>Interpretation</strong>: The PNG bit depth determines the value range. The specification reserves a <code>mask_interpretation</code> file-level metadata key to name the pixel meaning; it is not yet written or read by the EdgeFirst Client (see <a href="#file-level-metadata">File-Level Metadata</a>).</p>
 <table>
 <thead>
 <tr>
@@ -2288,7 +2470,47 @@ bit depth determines the value range:</p>
 <p><strong>JSON representation</strong>: base64-encoded PNG bytes.</p>
 <p><strong>Relationship to polygon</strong>: <code>polygon</code> and <code>mask</code> can coexist in the same file
 (e.g., panoptic segmentation). Typically a dataset uses one or the other. Both use
-full-image coordinates — polygons are normalized (0..1), masks cover the full image.</p>
+full-image coordinates — polygons are normalized (0..1), masks cover the full image or are placed on it by their offset.</p>
+<h4 id="instance-mask-tiles">Instance Mask Tiles</h4>
+<div class="admonition info">
+<p class="admonition-title">Clarified in 2026.10 (EdgeFirst Client 2.17.0)</p>
+<p>Tiled instance masks clarify how the existing <code>mask</code> column may be written. They are not a new version: <code>schema_version</code> stays <code>"2026.10"</code>, no columns change, and every existing file reads exactly as before. Readers older than EdgeFirst Client 2.17.0 ignore the offset and place a tile at the image origin, so use 2.17.0 or later, or apply the reader rules below, to read tiled masks.</p>
+</div>
+<p>An instance mask usually covers a small part of the image, so an image-sized mask spends most of its storage and decode time on background. An instance mask may instead be cropped to the tile of the image that contains the mask. A tiled mask carries a standard PNG <code>oFFs</code> chunk giving the tile's top-left position on the image:</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>x position</td>
+<td><code>int32</code>, big-endian</td>
+<td>Column of the tile's left edge on the image, in pixels</td>
+</tr>
+<tr>
+<td>y position</td>
+<td><code>int32</code>, big-endian</td>
+<td>Row of the tile's top edge on the image, in pixels</td>
+</tr>
+<tr>
+<td>unit specifier</td>
+<td><code>uint8</code></td>
+<td><code>0</code> (pixels)</td>
+</tr>
+</tbody>
+</table>
+<p>The <code>oFFs</code> chunk must appear before the first <code>IDAT</code> chunk, as the PNG specification requires. Readers interpret a mask as follows:</p>
+<ul>
+<li><strong><code>oFFs</code> present with unit <code>0</code> (pixels)</strong>: place the PNG's top-left pixel at <code>(x, y)</code> on the image. Pixels of the image outside the tile are background. Any part of the tile that falls outside the image is discarded; offsets may be negative, and the tile may extend past the right or bottom edge.</li>
+<li><strong>No <code>oFFs</code> chunk</strong>: the mask is image-sized (or model-output-sized) and covers the full image from the origin.</li>
+<li><strong><code>oFFs</code> with any other unit</strong>: the offset is ignored and the mask is treated as having no offset.</li>
+</ul>
+<p>Tile offsets are in image pixel coordinates, so a tiled mask is at image resolution. The tile is not tied to <code>box2d</code>: it should cover the mask's full extent, which may reach beyond the box (for example from mask interpolation), so cropping to the box would be lossy. The 1-bit preference for binary masks applies to tiles as well.</p>
+<p>The EdgeFirst Profiler writes its segmentation predictions as tiles from the release that pairs with EdgeFirst Client 2.17.0, which makes prediction files about 20% smaller and validation of segmentation models many times faster. Writers that must support readers older than EdgeFirst Client 2.17.0 should keep writing image-sized masks. See <a href="../conversion/#reading-instance-mask-tiles">Reading Instance Mask Tiles</a> for reader code.</p>
 <h3 id="geometry-2d-bounding-box">Geometry: 2D Bounding Box</h3>
 <table>
 <thead>
@@ -2302,7 +2524,7 @@ full-image coordinates — polygons are normalized (0..1), masks cover the full 
 <tr>
 <td><code>box2d</code></td>
 <td><code>Array&lt;f32, 4&gt;</code></td>
-<td>Layout described by <code>box2d_format</code> metadata</td>
+<td><code>[center_x, center_y, width, height]</code>, normalized</td>
 </tr>
 <tr>
 <td><code>box2d_score</code></td>
@@ -2311,9 +2533,7 @@ full-image coordinates — polygons are normalized (0..1), masks cover the full 
 </tr>
 </tbody>
 </table>
-<p>The array element order depends on the <code>box2d_format</code> file metadata. Default is
-<code>[center_x, center_y, width, height]</code> (<code>cxcywh</code>). See <a href="../box_format/">Box Formats</a>
-for all layouts.</p>
+<p>Arrow and Parquet files always store <code>box2d</code> as <code>[center_x, center_y, width, height]</code> (<code>cxcywh</code>) in normalized coordinates. See <a href="../box_format/">Box Formats</a> for the JSON layout and conversions.</p>
 <h3 id="geometry-3d-bounding-box">Geometry: 3D Bounding Box</h3>
 <table>
 <thead>
@@ -2327,7 +2547,7 @@ for all layouts.</p>
 <tr>
 <td><code>box3d</code></td>
 <td><code>Array&lt;f32, 6&gt;</code></td>
-<td>Layout described by <code>box3d_format</code> metadata</td>
+<td><code>[center_x, center_y, center_z, width, height, length]</code></td>
 </tr>
 <tr>
 <td><code>box3d_score</code></td>
@@ -2336,7 +2556,7 @@ for all layouts.</p>
 </tr>
 </tbody>
 </table>
-<p>Default layout: <code>[center_x, center_y, center_z, width, height, length]</code> (<code>cxcyczwhl</code>).</p>
+<p>Layout: <code>[center_x, center_y, center_z, width, height, length]</code> (<code>cxcyczwhl</code>).</p>
 <ul>
 <li>Width (w) = X-axis extent</li>
 <li>Height (h) = Y-axis extent</li>
@@ -2355,26 +2575,79 @@ See <a href="../box_format/">Box Formats</a> for details.</p>
 </thead>
 <tbody>
 <tr>
+<td><code>ignore</code></td>
+<td><code>Boolean</code></td>
+<td><code>true</code> = don't-care region, masked out of loss and evaluation. Optional. New in 2026.10.</td>
+</tr>
+<tr>
+<td><code>exclude</code></td>
+<td><code>Boolean</code></td>
+<td><code>true</code> = real object outside the dataset's class set. Optional. New in 2026.10.</td>
+</tr>
+<tr>
 <td><code>iscrowd</code></td>
 <td><code>Boolean</code></td>
-<td><code>true</code> = crowd region, <code>false</code> or absent = single instance. Optional, from COCO.</td>
+<td><strong>Deprecated in 2026.10</strong> — mirror of <code>ignore</code>, written for compatibility. Optional.</td>
 </tr>
 <tr>
 <td><code>category_frequency</code></td>
 <td><code>Categorical</code></td>
 <td>Long-tail frequency group: <code>"f"</code>, <code>"c"</code>, or <code>"r"</code>. Optional.</td>
 </tr>
+<tr>
+<td><code>truncation</code></td>
+<td><code>UInt32</code></td>
+<td>Source truncation flag (how much of the object is cut off by the image border). Optional.</td>
+</tr>
+<tr>
+<td><code>occlusion</code></td>
+<td><code>UInt32</code></td>
+<td>Source occlusion flag (how much of the object is hidden by other objects). Optional.</td>
+</tr>
 </tbody>
 </table>
+<p>These columns are optional and absent from files whose source dataset does not provide them. Columns whose values are all null are dropped when a file is written, so a 2026.10 file with no flagged rows has no <code>ignore</code> or <code>exclude</code> column.</p>
+<h4 id="ignore">ignore</h4>
 <div class="admonition info">
-<p class="admonition-title">New in 2026.04</p>
-<p>These columns support COCO/LVIS dataset extensions. They are optional and will be
-absent from files that don't originate from COCO-family datasets.</p>
+<p class="admonition-title">New in 2026.10</p>
 </div>
-<p><strong><code>iscrowd</code></strong>: COCO crowd annotations mark regions containing multiple overlapping
-instances. Evaluation protocols treat them differently (matched but not penalized as
-false negatives). LVIS does not use crowd annotations — this column will be absent or
-null for LVIS-sourced data.</p>
+<p>Marks a don't-care region that should be masked out of loss and evaluation rather than treated as a false negative or false positive.</p>
+<ul>
+<li><code>true</code> — don't-care region</li>
+<li><code>false</code> or absent — ordinary annotation</li>
+</ul>
+<p><code>label</code> and <code>label_index</code> are optional on a flagged row. A labeled <code>ignore</code> row applies to that class only (for example a crowd of people should not penalize a <code>person</code> detector inside the region); an unlabeled <code>ignore</code> row applies to all classes.</p>
+<p><strong>Sources</strong>: COCO <code>iscrowd=1</code> becomes <code>ignore=true</code>. VisDrone category 0 (<code>ignored regions</code>) becomes an unlabeled <code>ignore=true</code> row when <code>edgefirst-client visdrone-to-arrow --keep-ignored</code> is used; by default those rows are dropped.</p>
+<p><strong>JSON representation</strong>: <code>"ignore": true</code> on the annotation object, omitted when null. On read, <code>iscrowd</code> is accepted as an alias of <code>ignore</code>.</p>
+<h4 id="exclude">exclude</h4>
+<div class="admonition info">
+<p class="admonition-title">New in 2026.10</p>
+</div>
+<p>Marks a real object that falls outside the dataset's class set. Trainers leave it out of training, and evaluators should neither count a detection that matches it as a false positive nor count the object itself as a missed detection.</p>
+<ul>
+<li><code>true</code> — real object outside the class set</li>
+<li><code>false</code> or absent — ordinary annotation</li>
+</ul>
+<p><code>label</code> and <code>label_index</code> are optional on a flagged row and are typically absent, since the object has no class in this dataset.</p>
+<p><strong>Sources</strong>: VisDrone category 11 (<code>others</code>) becomes an unlabeled <code>exclude=true</code> row when <code>edgefirst-client visdrone-to-arrow --keep-ignored</code> is used; by default those rows are dropped.</p>
+<p><strong>JSON representation</strong>: <code>"exclude": true</code> on the annotation object, omitted when null.</p>
+<div class="admonition warning">
+<p class="admonition-title">EdgeFirst Studio does not store <code>ignore</code> or <code>exclude</code> yet</p>
+<p>Uploads with <code>upload-dataset</code>, <code>populate_samples</code>, <code>import-coco</code>, and <code>import-coco --update</code> drop annotations flagged <code>ignore</code> or <code>exclude</code>, including COCO crowd annotations, and log one warning per upload with the number skipped. Keep the Arrow or Parquet file as the source of truth for these flags.</p>
+</div>
+<h4 id="iscrowd">iscrowd</h4>
+<div class="admonition warning">
+<p class="admonition-title">Deprecated in 2026.10</p>
+<p><code>iscrowd</code> is replaced by <a href="#ignore"><code>ignore</code></a>. Read and write support will be removed in a future release.</p>
+</div>
+<p>Files written by the EdgeFirst Client carry <code>iscrowd</code> as an exact mirror of <code>ignore</code>, so it can be <code>true</code> on rows that are not COCO crowds (for example unlabeled VisDrone <code>ignored regions</code>). In 2026.04 files it holds the COCO <code>iscrowd</code> field.</p>
+<p>The client reads <code>iscrowd</code> as <code>ignore</code> when <code>ignore</code> is absent:</p>
+<ul>
+<li><strong>Arrow / Parquet</strong>: the fallback is per column. When the file has an <code>ignore</code> column, it is used for every row (even rows where it is null) and <code>iscrowd</code> is not consulted. Both <code>Boolean</code> and the older integer type are accepted.</li>
+<li><strong>JSON</strong>: the fallback is per annotation. An annotation object without an <code>ignore</code> key, or with <code>"ignore": null</code>, takes its <code>iscrowd</code> value.</li>
+</ul>
+<p><code>edgefirst-client arrow-to-coco</code> writes COCO <code>iscrowd=1</code> from labeled <code>ignore</code> rows. Unlabeled <code>ignore</code> rows and all <code>exclude</code> rows have no COCO equivalent and are skipped with one warning giving the count.</p>
+<h4 id="category_frequency">category_frequency</h4>
 <p><strong><code>category_frequency</code></strong>: LVIS assigns each category to a frequency group based on how
 many training images contain it:</p>
 <ul>
@@ -2390,6 +2663,34 @@ analysis. Use with Polars:</p>
 <span class="c1"># Filter to rare categories only</span>
 <span class="n">rare</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">pl</span><span class="o">.</span><span class="n">col</span><span class="p">(</span><span class="s2">"category_frequency"</span><span class="p">)</span> <span class="o">==</span> <span class="s2">"r"</span><span class="p">)</span>
 </code></pre></div>
+<h4 id="truncation-and-occlusion">truncation and occlusion</h4>
+<p>Source dataset flags describing how much of the object is cut off by the image border (<code>truncation</code>) or hidden by other objects (<code>occlusion</code>). Values keep the source dataset's scale:</p>
+<table>
+<thead>
+<tr>
+<th>Source</th>
+<th><code>truncation</code></th>
+<th><code>occlusion</code></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>VisDrone</td>
+<td>0 = none, 1 = 1–50%</td>
+<td>0 = none, 1 = 1–50%, 2 = over 50%</td>
+</tr>
+<tr>
+<td>KITTI</td>
+<td><code>round(truncated * 100)</code>, clipped to 0–100</td>
+<td><code>occluded</code> 0–3, stored as is</td>
+</tr>
+</tbody>
+</table>
+<p><strong>JSON representation</strong>: a nested object on the annotation, <code>"attributes": {"truncation": 1, "occlusion": 2}</code>, omitted when both are absent.</p>
+<div class="admonition note">
+<p class="admonition-title">Not stored by EdgeFirst Studio yet</p>
+<p><code>upload-dataset</code> sends these columns but Studio does not persist them yet; the client warns which optional columns are not stored. Keep the Arrow or Parquet file as the source of truth.</p>
+</div>
 <h3 id="sample-metadata">Sample Metadata</h3>
 <table>
 <thead>
@@ -2408,12 +2709,12 @@ analysis. Use with Polars:</p>
 <tr>
 <td><code>location</code></td>
 <td><code>Array&lt;f32, 2&gt;</code></td>
-<td><code>[latitude, longitude]</code> <abbr title="Global Positioning System">GPS</abbr> coordinates</td>
+<td><code>[latitude, longitude]</code> <abbr title="Global Positioning System">GPS</abbr> coordinates in decimal degrees</td>
 </tr>
 <tr>
 <td><code>pose</code></td>
 <td><code>Array&lt;f32, 3&gt;</code></td>
-<td><code>[roll, pitch, yaw]</code> <abbr title="Inertial Measurement Unit">IMU</abbr> orientation in degrees</td>
+<td><code>[roll, pitch, yaw]</code> <abbr title="Inertial Measurement Unit">IMU</abbr> orientation in signed degrees (see <a href="#imu-orientation"><abbr title="Inertial Measurement Unit">IMU</abbr> orientation</a>)</td>
 </tr>
 <tr>
 <td><code>degradation</code></td>
@@ -2449,10 +2750,43 @@ fields (repeated per annotation row for a given image).</p>
 COCO (max ID ~90) and LVIS (max ID ~1723). If you cross-join these columns in Polars,
 cast to a common type first: <code>col("neg_label_indices").cast(List(UInt64))</code>.</p>
 </div>
-<div class="admonition tip">
-<p class="admonition-title">Pose array order</p>
-<p>The <code>pose</code> array is always <code>[roll, pitch, yaw]</code> in degrees. The JSON representation
-uses named fields <code>{roll, pitch, yaw}</code> in the <code>sensors.imu</code> object.</p>
+<h4 id="imu-orientation"><abbr title="Inertial Measurement Unit">IMU</abbr> orientation</h4>
+<p>The <code>pose</code> column stores the sensor orientation as three Euler angles in <strong>signed degrees</strong>, listed in axis order:</p>
+<table>
+<thead>
+<tr>
+<th>Index</th>
+<th>Angle</th>
+<th>Axis</th>
+<th>Range</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>pose[0]</code></td>
+<td>roll</td>
+<td>X</td>
+<td>−180 to 180</td>
+</tr>
+<tr>
+<td><code>pose[1]</code></td>
+<td>pitch</td>
+<td>Y</td>
+<td>−90 to 90</td>
+</tr>
+<tr>
+<td><code>pose[2]</code></td>
+<td>yaw</td>
+<td>Z</td>
+<td>−180 to 180</td>
+</tr>
+</tbody>
+</table>
+<p>The angles follow the <a href="https://www.ros.org/reps/rep-0103.html">ROS REP-103</a> convention: rotations about the fixed X, Y, and Z axes, which is equivalent to the intrinsic Z-Y′-X″ (yaw, then pitch, then roll) sequence, so <code>R = Rz(yaw) · Ry(pitch) · Rx(roll)</code>. Listing the values by axis (x, y, z) matches ROS 2 (<code>tf2</code> <code>setRPY</code>/<code>getRPY</code>, URDF <code>rpy</code>, the <code>sensor_msgs/Imu</code> covariance layout), MAVLink <code>ATTITUDE</code>, and KITTI OXTS.</p>
+<p>The JSON representation uses named fields <code>{roll, pitch, yaw}</code> in the <code>sensors.imu</code> object, so field order does not matter there.</p>
+<div class="admonition warning">
+<p class="admonition-title">Files written before 2026.10 may have roll and yaw swapped</p>
+<p>Before 2026.10 the <code>pose</code> order was not consistent between tools. EdgeFirst Client 2.14 and earlier wrote <code>[yaw, pitch, roll]</code>, while the EdgeFirst Publisher wrote <code>[roll, pitch, yaw]</code> with each angle wrapped to 0–360. The order cannot be detected from the file, so check which tool produced an older file and swap <code>pose[0]</code> and <code>pose[2]</code> if needed. See <a href="../migration/#imu-pose-and-gps-location-in-older-files">Migration Guide</a>.</p>
 </div>
 <h3 id="instrumentation">Instrumentation</h3>
 <table>
@@ -2510,8 +2844,7 @@ per-geometry confidence values in the range 0..1.</p>
 <ul>
 <li>A single row may have <strong>different scores</strong> for different geometry types (e.g., high
   box confidence but lower polygon confidence)</li>
-<li>Raster masks additionally carry <strong>per-pixel</strong> scores via <code>mask_interpretation</code>
-  metadata; <code>mask_score</code> is the per-instance aggregate</li>
+<li>Raster masks can additionally carry <strong>per-pixel</strong> scores in 8-bit or 16-bit PNG pixels; <code>mask_score</code> is the per-instance aggregate</li>
 <li><strong>Ground truth files</strong>: score columns should be <strong>omitted entirely</strong> (not filled
   with nulls). Readers must treat absent score columns as "not applicable."</li>
 </ul>
@@ -2535,7 +2868,7 @@ per-geometry confidence values in the range 0..1.</p>
     <span class="p">(</span><span class="s1">'mask_score'</span><span class="p">,</span> <span class="n">Float32</span><span class="p">),</span>                    <span class="c1"># OPTIONAL</span>
 
     <span class="c1"># ── Geometry: 2D Bounding Box ──────────────────────</span>
-    <span class="p">(</span><span class="s1">'box2d'</span><span class="p">,</span> <span class="n">Array</span><span class="p">(</span><span class="n">Float32</span><span class="p">,</span> <span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="mi">4</span><span class="p">,))),</span>      <span class="c1"># layout from metadata</span>
+    <span class="p">(</span><span class="s1">'box2d'</span><span class="p">,</span> <span class="n">Array</span><span class="p">(</span><span class="n">Float32</span><span class="p">,</span> <span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="mi">4</span><span class="p">,))),</span>      <span class="c1"># [cx, cy, w, h]</span>
     <span class="p">(</span><span class="s1">'box2d_score'</span><span class="p">,</span> <span class="n">Float32</span><span class="p">),</span>                   <span class="c1"># OPTIONAL</span>
 
     <span class="c1"># ── Geometry: 3D Bounding Box ──────────────────────</span>
@@ -2543,13 +2876,17 @@ per-geometry confidence values in the range 0..1.</p>
     <span class="p">(</span><span class="s1">'box3d_score'</span><span class="p">,</span> <span class="n">Float32</span><span class="p">),</span>                   <span class="c1"># OPTIONAL</span>
 
     <span class="c1"># ── Annotation Metadata (optional) ─────────────────</span>
-    <span class="p">(</span><span class="s1">'iscrowd'</span><span class="p">,</span> <span class="n">Boolean</span><span class="p">),</span>                       <span class="c1"># OPTIONAL - true = crowd region, false or absent</span>
+    <span class="p">(</span><span class="s1">'ignore'</span><span class="p">,</span> <span class="n">Boolean</span><span class="p">),</span>                        <span class="c1"># OPTIONAL - don't-care region (2026.10)</span>
+    <span class="p">(</span><span class="s1">'exclude'</span><span class="p">,</span> <span class="n">Boolean</span><span class="p">),</span>                       <span class="c1"># OPTIONAL - object outside the class set (2026.10)</span>
+    <span class="p">(</span><span class="s1">'iscrowd'</span><span class="p">,</span> <span class="n">Boolean</span><span class="p">),</span>                       <span class="c1"># DEPRECATED - mirror of ignore</span>
     <span class="p">(</span><span class="s1">'category_frequency'</span><span class="p">,</span> <span class="n">Categorical</span><span class="p">(</span><span class="n">ordering</span><span class="o">=</span><span class="s1">'physical'</span><span class="p">)),</span>  <span class="c1"># OPTIONAL - LVIS "f"/"c"/"r"</span>
+    <span class="p">(</span><span class="s1">'truncation'</span><span class="p">,</span> <span class="n">UInt32</span><span class="p">),</span>                     <span class="c1"># OPTIONAL - source truncation flag</span>
+    <span class="p">(</span><span class="s1">'occlusion'</span><span class="p">,</span> <span class="n">UInt32</span><span class="p">),</span>                      <span class="c1"># OPTIONAL - source occlusion flag</span>
 
     <span class="c1"># ── Sample Metadata (optional) ─────────────────────</span>
     <span class="p">(</span><span class="s1">'size'</span><span class="p">,</span> <span class="n">Array</span><span class="p">(</span><span class="n">UInt32</span><span class="p">,</span> <span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="mi">2</span><span class="p">,))),</span>         <span class="c1"># [width, height]</span>
     <span class="p">(</span><span class="s1">'location'</span><span class="p">,</span> <span class="n">Array</span><span class="p">(</span><span class="n">Float32</span><span class="p">,</span> <span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="mi">2</span><span class="p">,))),</span>    <span class="c1"># [lat, lon]</span>
-    <span class="p">(</span><span class="s1">'pose'</span><span class="p">,</span> <span class="n">Array</span><span class="p">(</span><span class="n">Float32</span><span class="p">,</span> <span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="mi">3</span><span class="p">,))),</span>        <span class="c1"># [roll, pitch, yaw]</span>
+    <span class="p">(</span><span class="s1">'pose'</span><span class="p">,</span> <span class="n">Array</span><span class="p">(</span><span class="n">Float32</span><span class="p">,</span> <span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="mi">3</span><span class="p">,))),</span>        <span class="c1"># [roll, pitch, yaw], signed degrees</span>
     <span class="p">(</span><span class="s1">'degradation'</span><span class="p">,</span> <span class="n">String</span><span class="p">),</span>
     <span class="p">(</span><span class="s1">'neg_label_indices'</span><span class="p">,</span> <span class="n">List</span><span class="p">(</span><span class="n">UInt32</span><span class="p">)),</span>          <span class="c1"># OPTIONAL - LVIS negative categories</span>
     <span class="p">(</span><span class="s1">'not_exhaustive_label_indices'</span><span class="p">,</span> <span class="n">List</span><span class="p">(</span><span class="n">UInt32</span><span class="p">)),</span>  <span class="c1"># OPTIONAL - LVIS incomplete categories</span>
@@ -2573,60 +2910,73 @@ metadata in the file footer. In both formats, all metadata values are strings.</
 <th>Values</th>
 <th>Default (absent)</th>
 <th>Description</th>
+<th>Implemented</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td><code>schema_version</code></td>
-<td><code>"2026.04"</code></td>
+<td><code>"2026.10"</code> (current), <code>"2026.04"</code></td>
 <td><code>"2025.10"</code></td>
 <td>Format version. Absent = legacy file.</td>
-</tr>
-<tr>
-<td><code>box2d_format</code></td>
-<td><code>"cxcywh"</code>, <code>"xyxy"</code>, <code>"ltwh"</code></td>
-<td><code>"cxcywh"</code></td>
-<td>Box2D layout descriptor</td>
-</tr>
-<tr>
-<td><code>box2d_normalized</code></td>
-<td><code>"true"</code>, <code>"false"</code></td>
-<td><code>"true"</code></td>
-<td>Box2D coordinate system</td>
-</tr>
-<tr>
-<td><code>box3d_format</code></td>
-<td><code>"cxcyczwhl"</code></td>
-<td><code>"cxcyczwhl"</code></td>
-<td>Box3D layout descriptor</td>
-</tr>
-<tr>
-<td><code>box3d_normalized</code></td>
-<td><code>"true"</code>, <code>"false"</code></td>
-<td><code>"true"</code></td>
-<td>Box3D coordinate system</td>
-</tr>
-<tr>
-<td><code>mask_interpretation</code></td>
-<td><code>"binary"</code>, <code>"confidence"</code>, <code>"sigmoid"</code>, <code>"logits"</code></td>
-<td><code>"binary"</code></td>
-<td>Pixel value meaning</td>
+<td>Yes</td>
 </tr>
 <tr>
 <td><code>category_metadata</code></td>
 <td>JSON string</td>
 <td>absent</td>
 <td>Per-label metadata (synset, synonyms, definition)</td>
+<td>Yes</td>
 </tr>
 <tr>
 <td><code>labels</code></td>
 <td>JSON array <code>["person", "car", ...]</code></td>
 <td>absent</td>
 <td>Ordered class names for semantic segmentation masks. <code>labels[i]</code> = class name for argmax pixel value <code>i</code>.</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td><code>box2d_format</code></td>
+<td><code>"cxcywh"</code>, <code>"xyxy"</code>, <code>"ltwh"</code></td>
+<td><code>"cxcywh"</code></td>
+<td>Box2D layout descriptor</td>
+<td>Reserved</td>
+</tr>
+<tr>
+<td><code>box2d_normalized</code></td>
+<td><code>"true"</code>, <code>"false"</code></td>
+<td><code>"true"</code></td>
+<td>Box2D coordinate system</td>
+<td>Reserved</td>
+</tr>
+<tr>
+<td><code>box3d_format</code></td>
+<td><code>"cxcyczwhl"</code></td>
+<td><code>"cxcyczwhl"</code></td>
+<td>Box3D layout descriptor</td>
+<td>Reserved</td>
+</tr>
+<tr>
+<td><code>box3d_normalized</code></td>
+<td><code>"true"</code>, <code>"false"</code></td>
+<td><code>"true"</code></td>
+<td>Box3D coordinate system</td>
+<td>Reserved</td>
+</tr>
+<tr>
+<td><code>mask_interpretation</code></td>
+<td><code>"binary"</code>, <code>"confidence"</code>, <code>"sigmoid"</code>, <code>"logits"</code></td>
+<td><code>"binary"</code></td>
+<td>Pixel value meaning</td>
+<td>Reserved</td>
 </tr>
 </tbody>
 </table>
-<p>Version format is <code>YYYY.MM</code> with mandatory zero-padding (e.g., <code>"2025.10"</code>, <code>"2026.04"</code>).
+<div class="admonition note">
+<p class="admonition-title">Reserved keys</p>
+<p>Only <code>schema_version</code>, <code>category_metadata</code>, and <code>labels</code> are written and read by the EdgeFirst Client. The reserved keys are part of the specification's design but are not yet implemented: <code>box2d</code> is always <code>cxcywh</code> in Arrow and Parquet and <code>ltwh</code> in JSON, and coordinates are always normalized. Readers should not rely on the reserved keys being present.</p>
+</div>
+<p>Version format is <code>YYYY.MM</code> with mandatory zero-padding (e.g., <code>"2025.10"</code>, <code>"2026.04"</code>, <code>"2026.10"</code>).
 Versions are compared lexicographically. Unknown future versions should trigger a warning
 (not an error) and attempt best-effort reading via schema introspection.</p>
 <h3 id="category-metadata">Category Metadata</h3>

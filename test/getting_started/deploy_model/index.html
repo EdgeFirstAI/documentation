@@ -1018,8 +1018,6 @@
       
         
       
-        
-      
     
     
     
@@ -1418,8 +1416,6 @@
       
         
       
-        
-      
     
     
     
@@ -1595,17 +1591,17 @@
 <p>Once you have validated your trained model, you can deploy the model in the browser using EdgeFirst Studio.  You can follow these steps either on a PC or a mobile device connected to EdgeFirst Studio in a browser.  Please note that the browser will use the camera on your device to run model inference.</p>
 <div class="admonition note">
 <p class="admonition-title"><abbr title="Open Neural Network Exchange">ONNX</abbr> models only</p>
-<p>Live browser-based model running only supports <strong><abbr title="Open Neural Network Exchange">ONNX</abbr></strong> format. To validate or profile models in other formats (<abbr title="TensorFlow Lite">TFLite</abbr>, Neutron, Hailo, TensorRT, etc.) on real hardware, use the <a href="../../profiler/">EdgeFirst Profiler</a>.</p>
+<p>Live browser-based model inference only supports the <strong><abbr title="Open Neural Network Exchange">ONNX</abbr></strong> format. To validate or profile models in other formats (<abbr title="TensorFlow Lite">TFLite</abbr>, Neutron, Hailo, TensorRT, etc.) on real hardware, use the <a href="../../profiler/">EdgeFirst Profiler</a>.</p>
 </div>
-<p>From the training session card, you can run the model for inference by clicking the "Run Model" button on the top right of the page.</p>
+<p>If you haven't already, click the training session card for more information.</p>
+<figure>
+            <img align="center" alt="Training Details" src="../../models/assets/training/vision-view-train-details.jpg" />
+            <figcaption>Training Details</figcaption>
+            </figure>
+<p>On the <strong>Artifacts</strong> tab, click the <strong>Run Model</strong> button (the play icon) next to the <abbr title="Open Neural Network Exchange">ONNX</abbr> artifact. This runs the model and shows live inference in your browser.</p>
 <figure>
             <img align="center" alt="Training Session Details (Run Model button)" src="../assets/run_model/trainer_details_page.png" />
             <figcaption>Training Session Details (Run Model button)</figcaption>
-            </figure>
-<p>You will be given the option for either live inference or inference from a file upload.  Go ahead and demo the live inference feed by clicking the "Live" option.</p>
-<figure>
-            <img align="center" alt="Live Inference Option" src="../../models/assets/deployment/live-inference-option.jpg" />
-            <figcaption>Live Inference Option</figcaption>
             </figure>
 <p>You should now see the live inference feed on your browser running the trained model.</p>
 <figure>

@@ -15,7 +15,7 @@
         <link rel="canonical" href="https://doc.edgefirst.ai/test/platforms/">
       
       
-        <link rel="prev" href="../perception/4k/foxglove_4k/">
+        <link rel="prev" href="../perception/deepviewrt/">
       
       
         <link rel="next" href="quickstart/maivin/">
@@ -614,8 +614,6 @@
       
         
       
-        
-      
     
     
     
@@ -1014,8 +1012,6 @@
       
         
       
-        
-      
     
     
     
@@ -1161,8 +1157,6 @@
       
         
       
-        
-      
     
     
     
@@ -1178,6 +1172,10 @@
     <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
       
         
+  
+  
+  
+    
   
   
   
@@ -1204,6 +1202,8 @@
         <span class="md-nav__icon md-icon"></span>
       
     </a>
+  
+
   
 
   
@@ -1294,6 +1294,8 @@
   
     
     
+      
+        
       
         
       
@@ -1516,7 +1518,7 @@
 
 <h1 id="supported-platforms">Supported Platforms</h1>
 <p>This section covers Quick Start guides for deploying the EdgeFirst workflow in your platform. These guides will start from setting up your platform to running model inference in your platform.</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="1:4"><input checked="checked" id="edgefirst" name="__tabbed_1" type="radio" /><input id="nxp" name="__tabbed_1" type="radio" /><input id="nvidia" name="__tabbed_1" type="radio" /><input id="raspberry-pi" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="edgefirst">EdgeFirst</label><label for="nxp">NXP</label><label for="nvidia">NVIDIA</label><label for="raspberry-pi">Raspberry Pi</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="1:5"><input checked="checked" id="edgefirst" name="__tabbed_1" type="radio" /><input id="phytec" name="__tabbed_1" type="radio" /><input id="nxp" name="__tabbed_1" type="radio" /><input id="nvidia" name="__tabbed_1" type="radio" /><input id="raspberry-pi" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="edgefirst">EdgeFirst</label><label for="phytec">PHYTEC</label><label for="nxp">NXP</label><label for="nvidia">NVIDIA</label><label for="raspberry-pi">Raspberry Pi</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <table>
@@ -1537,6 +1539,10 @@
 </tr>
 </tbody>
 </table>
+</div>
+<div class="tabbed-block">
+<p><strong><a href="quickstart/phytec_imx95/">phyFLEX-i.MX 95 Libra</a></strong></p>
+<p><a href="quickstart/phytec_imx95/"><img alt="phytec95" src="assets/phytec_imx95-libra.png" /></a></p>
 </div>
 <div class="tabbed-block">
 <table>
@@ -1564,7 +1570,7 @@
 </div>
 </div>
 </div>
-<p>The following diagram describes the workflow you will follow depending on the hardware available.</p>
+<p>The following diagram describes the workflow you will follow depending on the hardware available. The highlighted boxes are links to the matching documentation. Specifically, the Maivin and Raivin boxes on the left-hand side will take you to their respective Quick Start guides.</p>
 <pre class="mermaid"><code>%%{init: {"flowchart": {"defaultRenderer": "elk", "nodeSpacing": 60, "rankSpacing": 80}, "themeVariables": { "fontSize": "40px" }} }%%
 
 flowchart LR
@@ -1575,6 +1581,7 @@ flowchart LR
     classDef purple fill:#d6c1f580,font-weight:bold;
     classDef coral fill:#ffc2bb80,font-weight:bold;
     classDef all fill:#f0e6f580,font-weight:bold;
+    classDef boxes fill:#fce94f80,font-weight:bold;
     classDef invisible fill:transparent,stroke:transparent;
 
     %% ---------- USER GROUP ----------
@@ -1622,19 +1629,29 @@ flowchart LR
     pi_setup[Setup Raspberry Pi 5]:::coral 
     click pi_setup "quickstart/raspberrypi/setup" "Open Raspberry Pi Setup"
 
-    copy_dataset[[Copy Sample Dataset]]
-    click copy_dataset "../getting_started/copy_dataset" "Copy Public Dataset"
+    record_mcap[Record MCAP]:::boxes
+    click record_mcap "../perception/data_collection/recording/" "Record MCAP"
+
+    upload_mcap[Upload MCAP]:::boxes
+    click upload_mcap "../perception/data_collection/publishing/" "Upload MCAP"
     end
 
     %% ---------- TRAINING ----------
     subgraph Training
     direction TB
     training_pad[" "]:::invisible
-    train_2d[[Train Vision Model]]
+
+    restore_mcap[Restore MCAP]:::boxes
+    click restore_mcap "../studio/snapshots/#restore-snapshot" "Restore MCAP"
+
+    copy_sample[Copy Sample Dataset]:::boxes
+    click copy_sample "../getting_started/copy_dataset/"
+
+    train_2d[Train Vision Model]:::boxes
     click train_2d "../models/training/vision" "Open Training Vision"
 
     ara2{Device has ARA2 processor?}
-    validate_2d[Validate Vision Model]
+    validate_2d[Validate Vision Model]:::boxes
     click validate_2d "../models/validation/vision/user_managed" "Open Validating Vision"
 
     train_3d[[Train Fusion Model]]:::orange 
@@ -1683,44 +1700,47 @@ flowchart LR
     end
 
     %% ---------- USER → SETUP ----------
-    maivin_user --&gt; maivin_setup
-    raivin_user --&gt; raivin_setup
-    imx8mp_user --&gt; imx8mp_setup
-    imx95_user --&gt; imx95_setup
-    orin_user --&gt; orin_setup
-    pi_user --&gt; pi_setup
+    maivin_user ==&gt; maivin_setup
+    raivin_user ==&gt; raivin_setup
+    imx8mp_user ==&gt; imx8mp_setup
+    imx95_user ==&gt; imx95_setup
+    orin_user ==&gt; orin_setup
+    pi_user ==&gt; pi_setup
 
     %% ---------- SETUP → DATA ----------
-    maivin_setup --&gt; copy_dataset
-    raivin_setup --&gt; copy_dataset
-    imx8mp_setup --&gt; copy_dataset
-    imx95_setup --&gt; copy_dataset
-    orin_setup --&gt; copy_dataset
-    pi_setup --&gt; copy_dataset
+    maivin_setup ==&gt; record_mcap
+    raivin_setup ==&gt; record_mcap
+    imx8mp_setup ==&gt; copy_sample
+    imx95_setup ==&gt; copy_sample
+    orin_setup ==&gt; copy_sample
+    pi_setup ==&gt; copy_sample
+    record_mcap ==&gt; upload_mcap
 
     %% ---------- CONVERSION ----------
-    train_2d --&gt; neutron_converter --&gt; validate_imx95
-    ara2 -- Yes --&gt; kinara_converter --&gt; validate_2d
-    ara2 -- No --&gt; validate_2d
+    train_2d ==&gt; neutron_converter ==&gt; validate_imx95
+    ara2 == Yes ==&gt; kinara_converter ==&gt; validate_2d
+    ara2 == No ==&gt; validate_2d
 
     %% ---------- CORE PIPELINE ----------
-    copy_dataset --&gt; train_2d
-    train_2d --&gt; ara2
+    upload_mcap ==&gt; restore_mcap
+    restore_mcap ==&gt; train_2d
+    copy_sample ==&gt; train_2d
+    train_2d ==&gt; ara2
 
     %% ---------- 3D PIPELINE ----------
-    copy_dataset -- Raivin Only --&gt; train_3d
-    train_3d --&gt; validate_3d
+    restore_mcap == Raivin Only ==&gt; train_3d
+    train_3d ==&gt; validate_3d
 
     %% ---------- DEPLOYMENT ----------
-    validate_2d --&gt; browser
-    validate_2d --&gt; maivin
-    validate_2d --&gt; imx8mp
-    validate_2d --&gt; orin
-    validate_2d --&gt; pi
-    validate_2d --&gt; raivin
+    validate_2d ==&gt; browser
+    validate_2d ==&gt; maivin
+    validate_2d ==&gt; imx8mp
+    validate_2d ==&gt; orin
+    validate_2d ==&gt; pi
+    validate_2d ==&gt; raivin
 
-    validate_imx95 --&gt; imx95
-    validate_3d --&gt; raivin</code></pre>
+    validate_imx95 ==&gt; imx95
+    validate_3d ==&gt; raivin</code></pre>
 
 
 
@@ -1810,7 +1830,7 @@ flowchart LR
       <nav class="md-footer__inner md-grid" aria-label="Footer" >
         
           
-          <a href="../perception/4k/foxglove_4k/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Foxglove with 4K">
+          <a href="../perception/deepviewrt/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Deep View RT">
             <div class="md-footer__button md-icon">
               
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
@@ -1820,7 +1840,7 @@ flowchart LR
                 Previous
               </span>
               <div class="md-ellipsis">
-                Foxglove with 4K
+                Deep View RT
               </div>
             </div>
           </a>

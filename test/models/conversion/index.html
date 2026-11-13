@@ -614,8 +614,6 @@
       
         
       
-        
-      
     
     
     
@@ -1153,6 +1151,8 @@
       
         
       
+        
+      
     
     
     
@@ -1362,6 +1362,34 @@
     
   
     Hailo Converter
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="qualcomm/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Qualcomm Converter
   
 
     
@@ -1617,8 +1645,6 @@
       
         
           
-        
-      
         
       
         
@@ -1944,7 +1970,7 @@
 
 
 <h1 id="model-conversion">Model Conversion</h1>
-<p>Once a model has been trained in <a href="../../studio/">EdgeFirst Studio</a>, it is exported in a portable framework-native form — a TensorFlow SavedModel or an <abbr title="Open Neural Network Exchange">ONNX</abbr> graph. Before that model can run on an embedded <abbr title="Neural Processing Unit">NPU</abbr>, FPGA, or accelerator, it must be <strong>converted</strong> into the binary format the target runtime expects: a quantized <abbr title="TensorFlow Lite">TFLite</abbr> flatbuffer for NXP i.MX 8M Plus, a <code>.dvm</code> for the NXP Ara240 <abbr title="Discrete Neural Processing Unit">DNPU</abbr>, a <code>.hef</code> for Hailo-8 / Hailo-8L, a Neutron-compiled flatbuffer for NXP eIQ Neutron silicon, or a TensorRT engine for NVIDIA Jetson.</p>
+<p>Once a model has been trained in <a href="../../studio/">EdgeFirst Studio</a>, it is exported in a portable framework-native form — a TensorFlow SavedModel or an <abbr title="Open Neural Network Exchange">ONNX</abbr> graph. Before that model can run on an embedded <abbr title="Neural Processing Unit">NPU</abbr>, FPGA, or accelerator, it must be <strong>converted</strong> into the binary format the target runtime expects: a quantized <abbr title="TensorFlow Lite">TFLite</abbr> flatbuffer for NXP i.MX 8M Plus, a <code>.dvm</code> for the NXP Ara240 <abbr title="Discrete Neural Processing Unit">DNPU</abbr>, a <code>.hef</code> for Hailo-8 / Hailo-8L, a Neutron-compiled flatbuffer for NXP eIQ Neutron silicon, a TensorRT engine for NVIDIA Jetson, or a <code>.qnn.onnx</code> context binary for the Hexagon <abbr title="Neural Processing Unit">NPU</abbr> in Qualcomm Dragonwing and Snapdragon processors.</p>
 <p>EdgeFirst Studio packages this work as <strong>Converter Apps</strong>. A Converter App is launched directly from a completed training session's <em>Artifacts</em> tab. The app produces a deployment-ready artifact and embeds <a href="../metadata/">EdgeFirst model metadata</a> into it so that the runtime can decode the model's outputs without any per-target glue code.</p>
 <h2 id="the-conversion-workflow">The Conversion Workflow</h2>
 <p>The same conceptual flow applies to every target:</p>
@@ -2010,6 +2036,10 @@
 <td>Quantization is <strong>inherited from the upstream <abbr title="TensorFlow Lite">TFLite</abbr> Converter</strong> — the Neutron stage is a re-encoder, not a quantizer. Smart split on Neutron also delivers a pipelining win (CPU decode threads run alongside <abbr title="Neural Processing Unit">NPU</abbr> inference).</td>
 </tr>
 <tr>
+<td><a href="qualcomm/">Qualcomm Converter</a></td>
+<td>Per-scale split (<strong>Smart</strong>) as on <abbr title="TensorFlow Lite">TFLite</abbr>, or a <strong>Logical</strong> split that keeps box decoding on the <abbr title="Neural Processing Unit">NPU</abbr> and gives <code>boxes</code>, <code>scores</code> and <code>mask_coefs</code> their own scales. Two further levers: <strong><abbr title="Signed 16-bit integer">INT16</abbr> activations</strong> (w8a16), and <strong>TF-Enhanced + SeqMSE</strong> quantization, which halves the <abbr title="Signed 8-bit integer">INT8</abbr> loss on small-object datasets. The <a href="qualcomm/#choosing-a-profile">optimization profiles</a> set all three; Smart at <abbr title="Signed 8-bit integer">INT8</abbr> is the default.</td>
+</tr>
+<tr>
 <td><a href="tensorrt/">TensorRT Converter</a></td>
 <td><strong>Not applicable</strong> — Jetson is an <abbr title="Half-precision 16-bit floating-point">FP16</abbr> target today. There is no <abbr title="Signed 8-bit integer">INT8</abbr> quantization step to defeat; the converter bundles the <abbr title="Open Neural Network Exchange">ONNX</abbr> graph for on-device engine build.</td>
 </tr>
@@ -2050,9 +2080,14 @@
 <td>Hailo-8 (26 <abbr title="Trillion Operations Per Second">TOPS</abbr>), Hailo-8L (13 <abbr title="Trillion Operations Per Second">TOPS</abbr>)</td>
 <td><code>.hef</code> Hailo Executable Format</td>
 </tr>
+<tr>
+<td><a href="qualcomm/">Qualcomm Converter</a></td>
+<td>Qualcomm Dragonwing IQ-9075 / IQ-9100 and Snapdragon 8 Elite Gen 5 validated; further Dragonwing and Snapdragon processors in progress</td>
+<td><code>.qnn.onnx</code> with an embedded QNN context binary</td>
+</tr>
 </tbody>
 </table>
-<p>Every output artifact has its <code>edgefirst.json</code> and <code>labels.txt</code> appended to it, so the runtime decoder needs nothing beyond the file itself. Picking the right Converter App is mostly a question of which target hardware you intend to deploy on; see the per-converter pages for Studio launch-form specifics, supported model architectures, and known limitations.</p>
+<p>Every output artifact has its <code>edgefirst.json</code> and <code>labels.txt</code> embedded in it, so the runtime decoder needs nothing beyond the file itself. Picking the right Converter App is mostly a question of which target hardware you intend to deploy on; see the per-converter pages for Studio launch-form specifics, supported model architectures, and known limitations.</p>
 <h2 id="calibration">Calibration</h2>
 <p><abbr title="Signed 8-bit integer">INT8</abbr> quantization requires a representative sample of the input distribution so the converter can measure the activation ranges that determine each tensor's scale. EdgeFirst Studio captures this sample automatically during training as a <code>.safetensors</code> snapshot keyed by dataset ID and parameter hash, and the Converter App downloads it as part of the conversion job. <strong>There is no calibration step a Studio user needs to perform manually</strong> — the snapshot is reused across models and targets that share a data-preparation pattern, and regenerated only when the dataset or input geometry changes.</p>
 <p>The snapshot format, the model-free selection algorithm, the parameter hash, and the producer/consumer contract are documented in <a href="calibration/">Calibration Snapshot</a>.</p>

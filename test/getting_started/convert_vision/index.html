@@ -970,8 +970,6 @@
       
         
       
-        
-      
     
     
     
@@ -1370,8 +1368,6 @@
       
         
       
-        
-      
     
     
     
@@ -1526,7 +1522,7 @@
 
 <h1 id="convert-vision-model">Convert Vision Model</h1>
 <p>We support model conversion and optimization workflows that enable trained models to be deployed on a wide range of target platforms and hardware architectures.</p>
-<p>Follow the model conversion workflow that corresponds to your target platform. If you are deploying to a Windows/Linux PC or macOS system, you can skip this section and proceed directly to the next step to validate the <abbr title="Open Neural Network Exchange">ONNX</abbr> model, which is automatically generated as part of the training session outputs.</p>
+<p>Follow the model conversion workflow that corresponds to your target platform. <em>If you are deploying to a Windows/Linux PC or macOS system, you can skip this section and proceed directly to the next step to validate the <abbr title="Open Neural Network Exchange">ONNX</abbr> model</em>, which is automatically generated as part of the training session outputs.</p>
 <p>If you are deploying to one of the supported hardware platforms listed below, follow the platform-specific conversion instructions for your target device.</p>
 <table>
 <thead>
@@ -1555,6 +1551,12 @@
 <td>NVIDIA Jetson (Orin Nano Super validated; broader lineup in progress)</td>
 <td><code>.tensorrt.zip</code> bundle (engine built on-device)</td>
 <td><a href="../../models/conversion/tensorrt/">TensorRT Converter</a></td>
+</tr>
+<tr>
+<td><strong>Qualcomm Converter</strong></td>
+<td>Qualcomm Dragonwing / Snapdragon (see converter guide for supported targets)</td>
+<td><code>.qnn.onnx</code> with embedded QNN context</td>
+<td><a href="../../models/conversion/qualcomm/">Qualcomm Converter</a></td>
 </tr>
 <tr>
 <td><strong>Ara2 Converter</strong></td>

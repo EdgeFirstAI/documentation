@@ -616,8 +616,6 @@
       
         
       
-        
-      
     
     
     
@@ -1004,6 +1002,34 @@
   
   
     <li class="md-nav__item">
+      <a href="../snapshots/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Snapshots Dashboard
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../agtg/" class="md-nav__link">
         
   
@@ -1060,42 +1086,14 @@
   
   
     <li class="md-nav__item">
-      <a href="../instances/" class="md-nav__link">
+      <a href="../tasks/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    Cloud Instances Dashboard
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../snapshots/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Snapshots Dashboard
+    Tasks Dashboard
   
 
     
@@ -1123,35 +1121,7 @@
   <span class="md-ellipsis">
     
   
-    Studio Apps Dashboard
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../tasks/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Tasks Dashboard
+    Apps Dashboard
   
 
     
@@ -1554,8 +1524,6 @@
       
         
       
-        
-      
     
     
     
@@ -1776,8 +1744,8 @@
             <img align="center" alt="Starting Page" src="../assets/projects/studio-from-scratch.jpg" />
             <figcaption>Starting Page</figcaption>
             </figure>
-<p>The "Projects" page organizes data into logical project partitions.  When you first login, this page will already contain a project called "Sample Project".</p>
-<p>To return to this page from any other page, you can click the Apps Menu <img alt="Apps Button" src="../../assets/buttons/studio_apps_button.png" /> waffle button and select the "Projects" menu item or click on the "Projects" button on the top navigation bar.</p>
+<p>The "Projects" page organizes data into logical project partitions.  A project is a high-level collection of sensor datasets, model experiments, and other automation and management tasks associated with the dataset inputs and model outputs.  When you first login, this page will already contain public projects called "Sample Project", "COCO Detection", "COCO Instance Segmentation".</p>
+<p>To return to this page from any other page, you can click on the "Projects" button on the top navigation bar.</p>
 <p>The following figure describes the UI elements of the "Project" card.  Take special note of the project attributes (datasets, auditing tasks, etc.) as these are the buttons that lead into further parts of the project.  Furthermore, the figure below describes "Sample Project" which is a <strong>Read-Only</strong> public project and therefore, the project context menu is unavailable.  For your own created projects, this option will be available.</p>
 <figure>
             <img align="center" alt="Project Attributes" src="../assets/projects/project-attributes.jpg" />
@@ -1800,28 +1768,28 @@ train --&gt; validation[Validation Sessions]</code></pre>
 <h2 id="create-project">Create Project</h2>
 <ol>
 <li>
-<p>From the <a href="../home/">User Home Page</a> screen, click the "Projects" button.</p>
+<p>Click the "PROJECTS" button shown on the top navbar as highlighted below.</p>
 <p><figure markdown="span">
         <img align="center" alt="Go To Projects" src="../assets/user/home-page-goto-projects.png" />
         <figcaption>Go To Projects</figcaption>
         </figure></p>
 </li>
 <li>
-<p>Now that you are in the "Projects" page, create your first project by clicking on the "New Project" button on the top-right corner of the page.</p>
+<p>Create your project by clicking the "New Project" button on the top-right corner of the page.</p>
 <p><figure markdown="span">
         <img align="center" alt="Create Project" src="../assets/projects/create-project.jpg" />
         <figcaption>Create Project</figcaption>
         </figure></p>
 </li>
 <li>
-<p>Provide a name and a description of the project as shown in the example below.  Click the "Create" button to create your new project.</p>
+<p>Provide a name and description of the project and then click "Create" to create your project.</p>
 <p><figure markdown="span">
         <img align="center" alt="Project Details" src="../assets/projects/create-project-fields.jpg" />
         <figcaption>Project Details</figcaption>
         </figure></p>
 </li>
 <li>
-<p>Your created project will be shown like the example below.  </p>
+<p>Your created project will now appear in the page.</p>
 <p><figure markdown="span">
         <img align="center" alt="New Project" src="../assets/projects/new-project.jpg" />
         <figcaption>New Project</figcaption>
@@ -1843,7 +1811,30 @@ train --&gt; validation[Validation Sessions]</code></pre>
 </ol>
 <h2 id="project-access-control">Project Access Control</h2>
 <p>Project access control allows project resources to be selectively available to different users.</p>
-<p>For more information please visit <a href="../user/organization/#roles">Access Control</a>.</p>
+<ol>
+<li>Click the project's extended menu shown as the three vertical dots in the top-right corner of the project card.</li>
+<li>Click <strong>Manage Access</strong>.</li>
+</ol>
+<figure>
+            <img align="center" alt="Project Access Control" src="../assets/projects/access_control.jpg" />
+            <figcaption>Project Access Control</figcaption>
+            </figure>
+<p>The <strong>Manage Access</strong> dialog lets you review the current visibility of the project and grant access to additional users. To add a user, click the icon highlighted in red.</p>
+<figure>
+            <img align="center" alt="Project Access Control Modal" src="../assets/projects/project_access_control.jpg" />
+            <figcaption>Project Access Control Modal</figcaption>
+            </figure>
+<p>Access Type:</p>
+<ol>
+<li><strong>Organization</strong>: Everyone in your organization has access to this project.</li>
+<li><strong>Public</strong>: Share this project with the EdgeFirst Studio community. By default, users outside your organization can read but not write to the project.</li>
+<li><strong>Private</strong>: Limit access to the project owner and organization admins.</li>
+</ol>
+<p>Use the access control dialog to view and edit which users can access the selected project.</p>
+<div class="admonition note">
+<p class="admonition-title">Read-only projects</p>
+<p>Public sample projects are read-only, so the extended menu and <strong>Manage Access</strong> option are only available on projects that your organization can modify.</p>
+</div>
 <h2 id="next-steps">Next Steps</h2>
 <p>Now that you are familiar with the Project Dashboard, learn more about the <a href="../datasets/">Datasets Dashboard</a> next.</p>
 

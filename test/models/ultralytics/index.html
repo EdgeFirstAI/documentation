@@ -614,8 +614,6 @@
       
         
       
-        
-      
     
     
     
@@ -1079,8 +1077,6 @@
       
         
       
-        
-      
     
     
     
@@ -1370,6 +1366,8 @@
       
         
           
+        
+      
         
       
         
@@ -1679,8 +1677,6 @@
       
         
       
-        
-      
     
     
     
@@ -1852,6 +1848,78 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#weights-source" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Weights Source
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#input-tiling" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Input Tiling
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#deploying-tile-trained-weights" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Deploying Tile-Trained Weights
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Deploying Tile-Trained Weights">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#train-tiled-deploy-whole-frame" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Train Tiled, Deploy Whole Frame
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tiled-re-export-at-another-tile-size" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Tiled Re-Export at Another Tile Size
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#metadata" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Metadata
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#custom-models" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -1973,7 +2041,7 @@
 </div>
 <p>Our Model Zoo ecosystem provides a collection of models to be re-trained through EdgeFirst Studio and deployed to a wide range of devices using a consistent workflow to achieve the best performance and latency at the edge.</p>
 <h2 id="getting-started">Getting Started</h2>
-<p>YOLOv5, YOLOv8, YOLO11, and YOLO26 can be trained in EdgeFirst Studio using a Graphical User Interface by following four simple steps:</p>
+<p>YOLOv5, YOLOv8, YOLO11, and YOLO26 can be trained in <a href="https://test.edgefirst.studio/">EdgeFirst Studio</a> by following four simple steps:</p>
 <div class="tabbed-set tabbed-alternate" data-tabs="1:5"><input checked="checked" id="select-framework" name="__tabbed_1" type="radio" /><input id="name-session" name="__tabbed_1" type="radio" /><input id="select-dataset" name="__tabbed_1" type="radio" /><input id="train" name="__tabbed_1" type="radio" /><input id="training-parameters" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="select-framework">Select Framework</label><label for="name-session">Name Session</label><label for="select-dataset">Select Dataset</label><label for="train">Train</label><label for="training-parameters">Training Parameters</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
@@ -2011,7 +2079,7 @@
 <div class="tabbed-block">
 <p><h2 id="train" style="display: none;"></h2></p>
 <ol>
-<li><strong>Configure model parameters</strong> (architecture, input size, epochs, etc.) and start <strong>Training</strong>.</li>
+<li><strong><a href="#training-parameters">Configure the launch form</a></strong> (input resolution, model, weights, training and export) and start the session.</li>
 </ol>
 <p><img align="center" alt="Configure and Train" src="../assets/ultralytics/ultralytics-train-04.jpg" /></p>
 <p><div class="wizard-actions" style="max-width: fit-content; margin-left: auto; margin-right: auto;" markdown>
@@ -2021,40 +2089,50 @@
 </div>
 <div class="tabbed-block">
 <p><h2 id="training-parameters" style="display: none;"></h2></p>
+<p>The Ultralytics launch form groups its fields as follows.</p>
 <ol>
-<li><strong>Model Name</strong>: This field specifies the name of the training session and will be used to name the artifacts (e.g. <code>yolov8n-coffecup-640x640-rgb-t-&lt;session ID&gt;.tflite</code> or <code>yolov8n-coffecup-640x640-rgb-t-&lt;session ID&gt;.onnx</code>).</li>
-<li><strong>Description</strong>: This field is used to add some hints about the training session.  Commonly used to highlight some parameters</li>
-<li><strong>Training Data</strong>: In this section the user must select the dataset as well as train/val groups</li>
-<li><strong>Input Resolution</strong>: The user can pick predefined input resolutions.  In case you need a different resolution to be supported, please reach out and <a href="mailto:support@edgefirst.ai">email our support team</a></li>
-<li><strong>Camera Adaptor</strong>: Ultralytics accepts six different input optimizations.  It could be either of <abbr title="Red Green Blue">RGB</abbr>, BGR, <abbr title="Red Green Blue Alpha">RGBA</abbr>, BGRA, Greyscale, or YUYV</li>
-<li>
-<p><strong>Model Parameters</strong>: This section configures the model architecture</p>
-<ol>
-<li><strong>Model Task</strong>: This can be either "Detection" or "Segmentation". Note for Ultralytics segmentation refers to instance segmentation</li>
-<li><strong>Model Version</strong>: The Ultralytics version to train from the choices (v5, v8, v11, v26)</li>
-<li><strong>Model Size</strong>: The size of the model from the choices (Nano, Small, Medium, Large, XLarge)</li>
+<li><strong>Training Session</strong><ol>
+<li><strong>Name</strong>: The name of the training session, also used to name the artifacts (e.g. <code>yolov8n-coffecup-640x640-rgb-t-&lt;session ID&gt;.onnx</code>)</li>
+<li><strong>Description</strong>: An optional description of the training session, commonly used to highlight some parameters</li>
+</ol>
+</li>
+<li><strong>Source Dataset</strong>: The dataset the session trains, validates and calibrates on, with its annotation set and tag</li>
+<li><strong>Input Resolution</strong>: The network input resolution (width x height), 640x640 by default.  Every option is divisible by 32 to match the <abbr title="You Only Look Once">YOLO</abbr> backbone stride, and the list covers 1:1, 4:3 and 16:9 resolutions from 320x320 up to 3840x2176 (4K).  A dataset whose aspect ratio differs from the Input Resolution is letterboxed.  Detection accuracy is typically best near 640, the resolution the COCO weights are pretrained at.  With <a href="#input-tiling">Input Tiling</a> the larger side of the Input Resolution is the tile size.  In case you need a different resolution to be supported, please reach out and <a href="mailto:support@edgefirst.ai">email our support team</a></li>
+<li><strong>Task Selection</strong>: Defines the model architecture.  These fields are ignored when the <strong>Weights</strong> are a previous training session<ol>
+<li><strong>Model Task</strong>: Either "Detection" (default) or "Segmentation". Note for Ultralytics segmentation refers to instance segmentation</li>
+<li><strong>Model Version</strong>: The Ultralytics version from the choices v5, v8 (default), v11 and v26</li>
+<li><strong>Model Size</strong>: The size of the model from the choices Nano (default), Small, Medium, Large and XLarge</li>
+</ol>
+</li>
+<li><strong>Export Parameters</strong><ol>
+<li><strong>Calibration Samples</strong>: The number of training images in the <abbr title="Signed 8-bit integer">INT8</abbr> quantization calibration snapshot, 500 by default (100 to 2000).  Very low counts can reduce quantized accuracy, while higher counts increase export time with diminishing returns.  Snapshots are reused across compatible sessions</li>
+<li><strong><abbr title="Open Neural Network Exchange">ONNX</abbr> Opset Version</strong>: The <abbr title="Open Neural Network Exchange">ONNX</abbr> opset version of the exported model, 11, 12 or 13 (default)</li>
+<li><strong>End-to-End (<abbr title="Non-Maximum Suppression">NMS</abbr>-free)</strong>: YOLO26 only, off by default.  Builds and trains the one-to-one head so the exported model outputs final detections without <abbr title="Non-Maximum Suppression">NMS</abbr>.  Leave it off for the best <abbr title="Signed 8-bit integer">INT8</abbr> accuracy, because training the one-to-one head reduces the weight of the one-to-many head used with <abbr title="Non-Maximum Suppression">NMS</abbr>.  A session with another Model Version fails at launch when it is enabled</li>
+<li><strong>Deployment</strong>: <strong>Tiled</strong> (default) or <strong>Whole frame</strong>, for export-only sessions whose <strong>Weights</strong> were trained with Input Tiling.  See <a href="#deploying-tile-trained-weights">Deploying Tile-Trained Weights</a></li>
 </ol>
 </li>
 <li>
-<p><strong>Training Parameters</strong>: In this section the user is able to specify the number of epochs to train the model as well as the batch size.  Remember the larger the input resolution the smaller the batch size</p>
+<p><strong>Training</strong></p>
 <ol>
+<li><strong>Weights</strong>: The weights the session starts from, either <strong>Pretrained (COCO)</strong> (default) or a previous Ultralytics training session.  See <a href="#weights-source">Weights Source</a></li>
 <li>
-<p><strong>Enable Training</strong>: When enabled, the model is trained using the selected weights. When disabled (default), no training is performed — weights are pushed directly to the session artifacts. This default exists because full COCO training runs for Ultralytics are compute-intensive; EdgeFirst publishes vetted pre-trained weights so you can start quickly without a long training job. See the <a href="../training/vision/#enable-training-and-use-default-weights">behavior matrix</a> for all combinations.</p>
+<p><strong>Enable Training</strong>: Off by default, so the session exports the selected weights without training.  Turn it on to fine-tune the weights on the selected dataset, for example when your dataset classes differ from the 80 COCO classes, when you need a non-<abbr title="Red Green Blue">RGB</abbr> camera format, or to improve accuracy beyond the COCO baseline.  See <a href="#weights-source">Weights Source</a> for what each combination does.  The following fields appear when <strong>Enable Training</strong> is on</p>
+<ol>
+<li><strong>Epochs</strong>: The number of epochs to train the model, 50 by default (1 to 500)</li>
+<li><strong>Batch Size</strong>: The number of samples processed in a single training step, 16 by default (1 to 64).  Remember the larger the input resolution the smaller the batch size</li>
+<li><strong>Camera Adaptor</strong>: The target camera format of the model input, one of <abbr title="Red Green Blue">RGB</abbr> (default), BGR, <abbr title="Red Green Blue Alpha">RGBA</abbr>, BGRA, Greyscale or YUYV.  See <a href="#camera-adaptor">Camera Adaptor</a></li>
+<li><strong>Input Tiling</strong>: Trains detection models on native-resolution tiles.  See <a href="#input-tiling">Input Tiling</a></li>
+</ol>
 <div class="admonition note">
-<p class="admonition-title">No Training Charts</p>
-<p>Training sessions with <strong>Enable Training</strong> disabled will not generate loss or metric charts, since the chart x-axis is epoch-based. This is expected behavior.</p>
+<p class="admonition-title">Charts Without Training</p>
+<p>A session with <strong>Enable Training</strong> off runs no epochs, so its loss and learning-rate charts stay empty.  Its <abbr title="mean Average Precision">mAP</abbr>, precision and recall charts hold a single point, the validation of the exported model.  See <a href="#weights-source">Weights Source</a>.</p>
 </div>
 </li>
-<li>
-<p><strong>Use Default Weights</strong>: When enabled (default), training starts from pre-trained COCO weights. When disabled, starting weights are sourced from a prior training session you specify</p>
-</li>
 </ol>
 </li>
 <li>
-<p><strong>Export Parameters</strong>: Allow the user to set a portion of data for calibration when exporting the model for <abbr title="Signed 8-bit integer">INT8</abbr> quantization. This section also allow the user to set the <abbr title="Open Neural Network Exchange">ONNX</abbr> opset version</p>
+<p><strong>Start App</strong>: This button starts the training session</p>
 </li>
-<li><strong>Export Pretrained Weights</strong>: A checkbox to export the default pretrained weights from Ultralytics</li>
-<li><strong>Start Session</strong>: This button will start the training session</li>
 </ol>
 </div>
 </div>
@@ -2098,16 +2176,117 @@
 </table>
 <p>All versions share the same anchor-free <code>Detect</code> head and use the same decoder at inference time. See <a href="../metadata/">Model Metadata</a> for details on how the decoder works across versions.</p>
 <h2 id="camera-adaptor">Camera Adaptor</h2>
-<p>The <strong>Camera Adaptor</strong> dropdown is available when configuring a training session, allowing you to select the target camera format for your deployment platform. This trains the model to accept native camera output (BGR, <abbr title="Red Green Blue Alpha">RGBA</abbr>, YUYV, etc.) without runtime conversion.</p>
+<p>The <strong>Camera Adaptor</strong> dropdown under <strong>Enable Training</strong> selects the target camera format for your deployment platform. This trains the model to accept native camera output (BGR, <abbr title="Red Green Blue Alpha">RGBA</abbr>, YUYV, etc.) without runtime conversion.  <abbr title="Red Green Blue">RGB</abbr> matches the pretrained baseline; the other formats train the first convolution layer to adapt to the new input layout.  When the <strong>Weights</strong> are a previous training session, the camera adaptor comes from those weights and the dropdown is ignored.</p>
 <p>See <a href="../cameraadaptor/">Camera Adaptor</a> for details on supported formats and platform guidance.</p>
+<h2 id="weights-source">Weights Source</h2>
+<p>The <strong>Weights</strong> field in the Training group selects the weights a session starts from.</p>
+<ul>
+<li><strong>Pretrained (COCO)</strong> (default) uses the Ultralytics COCO weights for the Model Task, Model Version and Model Size selected on the form.</li>
+<li><strong>A previous training session</strong> uses the <code>.pt</code> weights published by an Ultralytics training session together with that session's model definition. The task, version, size, camera adaptor and end-to-end head come from the weights (weights that name no camera adaptor are <abbr title="Red Green Blue">RGB</abbr>, like the pretrained weights), so the Task Selection values (<strong>Model Task</strong>, <strong>Model Version</strong> and <strong>Model Size</strong>), the <strong>Camera Adaptor</strong> and the <strong>End-to-End</strong> value on the form are ignored.</li>
+</ul>
+<p>The <strong>Enable Training</strong> setting then decides what the session does with the weights.</p>
+<table>
+<thead>
+<tr>
+<th>Enable Training</th>
+<th>Session behavior</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>On</td>
+<td>Training starts from the selected weights and fine-tunes them on the selected dataset.</td>
+</tr>
+<tr>
+<td>Off</td>
+<td>The session re-exports the selected weights without retraining, at the Input Resolution and Deployment chosen on the form.</td>
+</tr>
+</tbody>
+</table>
+<p>A session with trained or sourced weights publishes them as <code>&lt;session name&gt;-&lt;session ID&gt;.pt</code> with the model metadata embedded, so it can be selected as the weights source of a later session.  An export-only session with <strong>Pretrained (COCO)</strong> weights publishes no <code>.pt</code>.</p>
+<p>A session with <strong>Enable Training</strong> off validates the exported model on the dataset's validation split and reports the results as the session's final validation metrics, the same metrics a training session reports for its final checkpoint.  The <abbr title="mean Average Precision">mAP</abbr>, precision and recall charts hold that single final-validation point; the loss and learning-rate charts stay empty because no epochs run.  Tile-trained weights are validated at the deployed geometry; other models are validated at the Input Resolution.  Validation is skipped when the dataset has no validation split or its classes differ from the model's, for example <strong>Pretrained (COCO)</strong> weights on a dataset that is not COCO.</p>
+<h2 id="input-tiling">Input Tiling</h2>
+<p>Small objects in high-resolution frames lose most of their pixels when the frame is downscaled to the model's input size.  <strong>Input Tiling</strong>, available when <strong>Enable Training</strong> is on, trains on native-resolution tiles cut from each frame instead, so small objects keep their native pixel scale.</p>
+<p>When Input Tiling is enabled, the larger side of the <strong>Input Resolution</strong> is the tile size.  The following settings control how tiles are sampled and validated.</p>
+<table>
+<thead>
+<tr>
+<th>Setting</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Frames per Batch</strong></td>
+<td>4 (1 to 16)</td>
+<td>Frames each training batch is drawn from.  Each frame contributes about batch ÷ Frames per Batch tiles, and every frame is visited once per epoch.</td>
+</tr>
+<tr>
+<td><strong>Object Windows</strong></td>
+<td>0.75</td>
+<td>Target share of an epoch's tiles that contain a labeled object.</td>
+</tr>
+<tr>
+<td><strong>Background Windows</strong></td>
+<td>0.15</td>
+<td>Target share of an epoch's tiles that contain no labeled object.  Frames without labels supply these first.</td>
+</tr>
+<tr>
+<td><strong>Full-Frame Windows</strong></td>
+<td>0.10</td>
+<td>Target share of an epoch's tiles that are a whole labeled frame, downscaled to the tile size.</td>
+</tr>
+<tr>
+<td><strong>Validation</strong></td>
+<td>Whole frame</td>
+<td><strong>Whole frame</strong> scores full native-resolution frames, <strong>Tiled</strong> scores the deployment tile grid with the detections merged across tiles, and <strong>Both</strong> reports both, with the tiled metrics under a <code>tiled/</code> prefix.</td>
+</tr>
+</tbody>
+</table>
+<p>Positive tiles prefer placements that hold several labeled objects.</p>
+<p>Input Tiling supports detection with the <strong><abbr title="Red Green Blue">RGB</abbr></strong> or <strong>BGR</strong> camera adaptor.</p>
+<p>A tiling training session exports a tiled model at its tile size, with a calibration snapshot cut from the deployment tile grid.</p>
+<h2 id="deploying-tile-trained-weights">Deploying Tile-Trained Weights</h2>
+<p>A model is exported for one input geometry, and a tiled model is exported tiled at its tile size.  The same tile-trained weights can be deployed at another geometry without retraining by starting an export-only session.</p>
+<p>The <strong>Deployment</strong> setting in the Export Parameters applies to export-only sessions whose <strong>Weights</strong> were trained with Input Tiling, and is ignored for other sessions.</p>
+<table>
+<thead>
+<tr>
+<th>Deployment</th>
+<th>Input Resolution is</th>
+<th>Runtime behavior</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Tiled</strong> (default)</td>
+<td>The tile size.</td>
+<td>The runtime cuts each frame into tiles of this size.  A frame smaller than the tile is letterboxed, centred, into it.</td>
+</tr>
+<tr>
+<td><strong>Whole frame</strong></td>
+<td>The model input.</td>
+<td>The runtime letterboxes each frame into the model input once, with the padding centred.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="train-tiled-deploy-whole-frame">Train Tiled, Deploy Whole Frame</h3>
+<ol>
+<li>Train a detection model with <strong>Input Tiling</strong> enabled.</li>
+<li>Start a new Ultralytics session on the same dataset with <strong>Enable Training</strong> off.</li>
+<li>Set <strong>Weights</strong> to the tiled training session.</li>
+<li>Set <strong>Deployment</strong> to <strong>Whole frame</strong>.</li>
+<li>Set <strong>Input Resolution</strong> to the size the model receives, for example <code>3840x2176</code> for 4K frames.  A 1080p frame maps to <code>1920x1088</code> and a 4K frame to <code>3840x2176</code>.</li>
+</ol>
+<p>The session exports and calibrates at the new geometry without training.</p>
+<h3 id="tiled-re-export-at-another-tile-size">Tiled Re-Export at Another Tile Size</h3>
+<p>To deploy the weights tiled at a different tile size, follow the same steps with <strong>Deployment</strong> set to <strong>Tiled</strong> and choose the tile size as the <strong>Input Resolution</strong>.  Any <strong>Input Resolution</strong> option is available, including <code>1920x1088</code> and <code>3840x2176</code>.</p>
+<h3 id="metadata">Metadata</h3>
+<p>The model metadata records how the model was trained and exported in <code>tiling.training</code> and <code>tiling.export</code>.  See <a href="../metadata/#tiling">Tiling</a> for the schema and <a href="../conversion/calibration/#tiled-models">Tiled Models</a> for the calibration of tiled models.</p>
 <h2 id="custom-models">Custom Models</h2>
 <p>If you have a custom float model, it is highly recommended to <a href="../conversion/tflite/">export to a quantized model</a> to deploy and maximize the model's performance using the target's <abbr title="Neural Processing Unit">NPU</abbr>.</p>
 <p>Deploying a quantized <abbr title="TensorFlow Lite">TFLite</abbr> on the <strong>i.MX 95 EVK</strong> requires an extra step of <a href="../conversion/neutron/">converting the model using NXP's eIQ neutron converter</a>.  This will allow the model to be deployed on the i.MX 95 using the Neutron delegate in the platform.</p>
-<div class="admonition warning">
-<p class="admonition-title">Specific BSP versions required</p>
-<p>The latest BSP available for the Maivin lacks the <code>onnxruntime</code> library needed to run <abbr title="Open Neural Network Exchange">ONNX</abbr> on the <abbr title="Neural Processing Unit">NPU</abbr>.</p>
-<p>On the i.MX 8M Plus EVK, BSP v5.15 are used in the examples which was noted to have the providers needed for <abbr title="Open Neural Network Exchange">ONNX</abbr> to run on the <abbr title="Neural Processing Unit">NPU</abbr> <code>NnapiExecutionProvider</code>, <code>VsiNpuExecutionProvider</code>.  Later BSPs such as v6.12 did not have these providers.  This still needs confirmation from NXP as to why these providers were removed. </p>
-</div>
 <h2 id="license">License</h2>
 <p>Ultralytics <abbr title="You Only Look Once">YOLO</abbr> is covered by the GNU AGPL-3.0 license which allows for free use of this model within the constraints of the license.  Ultralytics offers <a href="https://www.ultralytics.com/license">commercial licensing options</a>.</p>
 

@@ -616,8 +616,6 @@
       
         
       
-        
-      
     
     
     
@@ -1152,6 +1150,34 @@
   
   
     <li class="md-nav__item">
+      <a href="../../snapshots/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Snapshots Dashboard
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../agtg/" class="md-nav__link">
         
   
@@ -1208,42 +1234,14 @@
   
   
     <li class="md-nav__item">
-      <a href="../../instances/" class="md-nav__link">
+      <a href="../../tasks/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    Cloud Instances Dashboard
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../snapshots/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Snapshots Dashboard
+    Tasks Dashboard
   
 
     
@@ -1271,35 +1269,7 @@
   <span class="md-ellipsis">
     
   
-    Studio Apps Dashboard
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../tasks/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Tasks Dashboard
+    Apps Dashboard
   
 
     
@@ -1702,8 +1672,6 @@
       
         
       
-        
-      
     
     
     
@@ -1952,7 +1920,7 @@
 
 
 <h1 id="dataset-gallery">Dataset Gallery</h1>
-<p>To open a dataset gallery, click on the image preview of the dataset card.</p>
+<p>To open the dataset's gallery, click on the image preview of the dataset card.</p>
 <figure>
             <img align="center" alt="Dataset Card" src="../../../datasets/assets/management/copied-dataset-result.jpg" />
             <figcaption>Dataset Card</figcaption>
@@ -1969,7 +1937,11 @@
             <figcaption>Gallery Filters</figcaption>
             </figure>
 <h2 id="tag-an-image">Tag an Image</h2>
-<p>You can create tags for images.  These tags can be used to filter out images of certain tags.  Tags can be added from the "ACTIONS" dropdown and can be filtered using the "IMAGE TAGS" filter.</p>
+<div class="admonition note">
+<p class="admonition-title">Feature Unavailable</p>
+<p>Image tagging is currently unavailable and this feature is a work in progress. The screenshots provided in this section are out of date until the new implementations for image tagging are set in place.</p>
+</div>
+<p>You can create tags for images.  These tags can be used to filter out images of certain tags.  Tags can be added from the "Actions" dropdown and can be filtered using the "IMAGE TAGS" filter.</p>
 <ul>
 <li>Display tags: enable "Show Tags" under "Display Image Options".</li>
 </ul>
@@ -2002,16 +1974,18 @@
 <li>Apply and revert tags: at least one image must be selected to apply or revert tags.  Click on any tag under the dropdown to select it.  Applied tags are denoted by a check icon.  To remove the applied tags, click on it again.</li>
 </ul>
 <h2 id="copy-selected-items">Copy Selected Items</h2>
-<p>You can copy selected items to another dataset.  This operation can be found under the "ACTIONS" dropdown.  The copy dialog will appear.</p>
+<p>You can copy selected items to another dataset.  This operation can be found under the "Actions" dropdown.  The copy dialog will appear.</p>
 <figure>
             <img align="center" alt="Copy Selected Items" src="../../assets/datasets/copy-selected-items.png" />
             <figcaption>Copy Selected Items</figcaption>
             </figure>
 <ol>
-<li>Source is auto-filled using the current dataset and first annotation set if applicable.  You can select a different source annotation set.</li>
+<li>Select the images to copy by using the checkbox for each image as shown.</li>
+<li>Select "Copy Selected Images" from the "Actions" dropdown.</li>
+<li>From the modal, source is auto-filled using the current dataset and first annotation set if applicable.  You can select a different source annotation set.</li>
 <li>Destination will be defaulted to a new dataset along with any selected annotation set.  You can select another dataset and annotation if needed.</li>
-<li>Selected file names that will be copied are shown at the bottom.</li>
-<li>Progress can be tracked in the task progress popup.</li>
+<li>Selected file names that will be copied are shown under "Images".</li>
+<li>Progress can be tracked on the <a href="../../tasks/">Tasks page</a>.</li>
 </ol>
 <h2 id="next-steps">Next Steps</h2>
 <p>This page has described the features and context of the dataset gallery.  Proceed to the next section for learning more about <a href="../annotations/">annotation sets</a>.</p>

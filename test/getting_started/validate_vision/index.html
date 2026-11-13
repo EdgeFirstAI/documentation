@@ -1018,8 +1018,6 @@
       
         
       
-        
-      
     
     
     
@@ -1418,8 +1416,6 @@
       
         
       
-        
-      
     
     
     
@@ -1629,18 +1625,11 @@
             <img align="center" alt="Validate Button" src="../../models/assets/validation/training_validate_button.jpg" />
             <figcaption>Validate Button</figcaption>
             </figure>
-<p>Enter a name for the validation session, then select the model and dataset to use for validation.</p>
-<p>Under <strong>Model Selection</strong>, choose an <strong><abbr title="Open Neural Network Exchange">ONNX</abbr>, Keras, or <abbr title="TensorFlow Lite">TFLite</abbr></strong> artifact — these are the formats supported by cloud validation.</p>
-<p>For this example, all remaining settings were left at their default values. When you are ready, click <strong>Start Session</strong> at the bottom of the page to begin the validation process.</p>
+<p>Select the model to use for validation. Select either an <strong><abbr title="Open Neural Network Exchange">ONNX</abbr>, Keras, or <abbr title="TensorFlow Lite">TFLite</abbr></strong> model — these are the formats supported by cloud validation. When you are ready, click <strong>START APP</strong> to begin the validation process.</p>
 <figure>
             <img align="center" alt="Start Validation Session" src="../../models/assets/validation/vision-validate-settings.jpg" />
             <figcaption>Start Validation Session</figcaption>
             </figure>
-<div class="admonition failure">
-<p class="admonition-title">InsufficientInstanceCapacity</p>
-<p><img alt="InsufficientInstanceCapacity Error" src="../../studio/assets/models/insufficient-capacity-error.jpg" /></p>
-<p>If you see this error after starting your validation session, retry creating the session. This can happen when AWS reports that no EC2 instances are currently available to launch; the current workaround is to retry.</p>
-</div>
 <p>Go to the created validation session by first going back to the "Model Experiments" page.</p>
 <figure>
             <img align="center" alt="Go to Model Experiments" src="../../models/assets/training/go-back-to-model-experiments.jpg" />

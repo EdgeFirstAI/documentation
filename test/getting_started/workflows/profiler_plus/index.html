@@ -1091,15 +1091,15 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#validate-on-target-with-the-edgefirst-profiler" class="md-nav__link">
+  <a href="#validate-on-your-pc-or-on-target-with-the-edgefirst-profiler" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Validate on Target with the EdgeFirst Profiler
+        Validate on Your PC or on Target with the EdgeFirst Profiler
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Validate on Target with the EdgeFirst Profiler">
+    <nav class="md-nav" aria-label="Validate on Your PC or on Target with the EdgeFirst Profiler">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -1281,8 +1281,6 @@
       
         
           
-        
-      
         
       
         
@@ -1705,8 +1703,6 @@
       
         
       
-        
-      
     
     
     
@@ -1856,15 +1852,15 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#validate-on-target-with-the-edgefirst-profiler" class="md-nav__link">
+  <a href="#validate-on-your-pc-or-on-target-with-the-edgefirst-profiler" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Validate on Target with the EdgeFirst Profiler
+        Validate on Your PC or on Target with the EdgeFirst Profiler
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Validate on Target with the EdgeFirst Profiler">
+    <nav class="md-nav" aria-label="Validate on Your PC or on Target with the EdgeFirst Profiler">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -1994,8 +1990,8 @@
 
 
 <h1 id="profiler-workflow">Profiler+ Workflow</h1>
-<p>In this workflow, you will retrain an Ultralytics model, revalidate it using <a href="../../../profiler/">edgefirst-profiler</a>, and compare your results against the <a href="https://huggingface.co/spaces/EdgeFirst/Models">EdgeFirst Model Zoo on Hugging Face</a> baselines.  Models can be deployed in the browser or on a compatible target device.</p>
-<h3 id="create-an-ultralytics-training-session">Create an Ultralytics Training Session</h3>
+<p>In this workflow, you will retrain an Ultralytics model, validate it on your PC using <a href="../../../profiler/">edgefirst-profiler</a>, and compare your results against the <a href="https://huggingface.co/spaces/EdgeFirst/Models">EdgeFirst Model Zoo on Hugging Face</a> baselines.  Models can be deployed in the browser or on a compatible target device.</p>
+<h2 id="create-an-ultralytics-training-session">Create an Ultralytics Training Session</h2>
 <ol>
 <li>
 <p>Click on "Model Experiments" of your created project</p>
@@ -2019,14 +2015,14 @@
         </figure></p>
 </li>
 <li>
-<p>Create a new training session by clicking the "Actions" dropdown menu on the top right of the page and then click the "+ New" button</p>
+<p>Create a new training session by clicking the "Actions" dropdown menu on the top right of the page and then click the "+ New Trainer Session" button</p>
 <p><figure markdown="span">
-        <img align="center" alt="New Session Button" src="../../../models/assets/training/new-session-button.jpg" />
+        <img align="center" alt="New Session Button" src="../../../models/assets/training/new-ultralytics-session-button.jpg" />
         <figcaption>New Session Button</figcaption>
         </figure></p>
 </li>
 <li>
-<p>Start a YOLOv8n detection model by following these settings. Once the settings are set, click on "Start Session" at the bottom of the window</p>
+<p>Start a YOLOv8n detection model by following these settings. Once the settings are set, click on "Start App" at the bottom of the window</p>
 <p><figure markdown="span">
         <img align="center" alt="Ultralytics Training Settings" src="../../../profiler/assets/studio-yolo-model-configurations.jpg" />
         <figcaption>Ultralytics Training Settings</figcaption>
@@ -2036,15 +2032,10 @@
         <img align="center" alt="Ultralytics Training Progress" src="../../../models/assets/training/training-session-progress-ultralytics.jpg" />
         <figcaption>Ultralytics Training Progress</figcaption>
         </figure></p>
-<div class="admonition failure">
-<p class="admonition-title">InsufficientInstanceCapacity</p>
-<p><img alt="InsufficientInstanceCapacity Error" src="../../../studio/assets/models/insufficient-capacity-error.jpg" /></p>
-<p>If you see this error after starting your training session, retry creating the session. This can happen when AWS reports that no EC2 instances are currently available to launch; the current workaround is to retry.</p>
-</div>
 <div class="admonition note">
 <p class="admonition-title">No Training Charts</p>
 <p><img alt="No Training Charts" src="../../../models/assets/training/no-training-charts.jpg" /></p>
-<p>Training sessions configured without epochs will not generate loss or metric charts, since the chart x-axis is epoch-based. This is expected behavior.</p>
+<p>A session with <strong>Enable Training</strong> off runs no epochs, so its loss and learning-rate charts stay empty.  Its <abbr title="mean Average Precision">mAP</abbr>, precision and recall charts hold a single point, the validation of the exported model.  This is expected behavior.</p>
 </div>
 </li>
 <li>
@@ -2056,8 +2047,8 @@
 </li>
 <li>
 <p>We support model conversion and optimization workflows that enable trained models to be deployed on a wide range of target platforms and hardware architectures.</p>
-<p>Follow the model conversion workflow that corresponds to your target platform. If you are deploying to a Windows/Linux PC or macOS system, you can skip this section and proceed directly to the next step to validate the <abbr title="Open Neural Network Exchange">ONNX</abbr> model, which is automatically generated as part of the training session outputs.</p>
 <p>If you are deploying to one of the supported hardware platforms listed below, follow the platform-specific conversion instructions for your target device.</p>
+<p>However, this guide will use the out-of-the-box trained <abbr title="Open Neural Network Exchange">ONNX</abbr> model which can be deployed on a Windows/Linux PC or macOS system. You can skip this section and proceed directly to the next step to validate the <abbr title="Open Neural Network Exchange">ONNX</abbr> model in your PC.</p>
 <table>
 <thead>
 <tr>
@@ -2087,6 +2078,12 @@
 <td><a href="../../../models/conversion/tensorrt/">TensorRT Converter</a></td>
 </tr>
 <tr>
+<td><strong>Qualcomm Converter</strong></td>
+<td>Qualcomm Dragonwing / Snapdragon (see converter guide for supported targets)</td>
+<td><code>.qnn.onnx</code> with embedded QNN context</td>
+<td><a href="../../../models/conversion/qualcomm/">Qualcomm Converter</a></td>
+</tr>
+<tr>
 <td><strong>Ara2 Converter</strong></td>
 <td>NXP Ara240 <abbr title="Discrete Neural Processing Unit">DNPU</abbr></td>
 <td><code>.dvm</code> Dataflow Virtual Machine binary</td>
@@ -2102,7 +2099,7 @@
 </table>
 </li>
 <li>
-<p>All converted models should appear under the model artifacts of the training session card.  Click on the training session card to expand for more details.</p>
+<p>All converted models should appear listed under the model artifacts of the training session card.</p>
 <p><figure markdown="span">
         <img align="center" alt="YOLOv8n Detection Model Artifacts" src="../../../models/assets/conversion/yolov8n-det-model-artifacts.jpg" />
         <figcaption>YOLOv8n Detection Model Artifacts</figcaption>
@@ -2110,13 +2107,13 @@
 <p>Once you have converted your model, you can proceed towards profiling and validating the performance of your model next.</p>
 </li>
 </ol>
-<h3 id="validate-on-target-with-the-edgefirst-profiler">Validate on Target with the EdgeFirst Profiler</h3>
-<p>The Profiler+ workflow validates your model directly on your target hardware — not in the cloud. This gives you real inference latency, <abbr title="Neural Processing Unit">NPU</abbr> utilization, and per-stage timing alongside accuracy metrics.</p>
+<h2 id="validate-on-your-pc-or-on-target-with-the-edgefirst-profiler">Validate on Your PC or on Target with the EdgeFirst Profiler</h2>
+<p>The Profiler+ workflow validates your model on your PC or directly on your target hardware, not in the cloud. This gives you real inference latency, <abbr title="Neural Processing Unit">NPU</abbr> utilization, and per-stage timing alongside accuracy metrics.</p>
 <div class="admonition info">
 <p class="admonition-title">Cloud validation not used here</p>
-<p>Cloud validation only supports <abbr title="Open Neural Network Exchange">ONNX</abbr>, Keras, and <abbr title="TensorFlow Lite">TFLite</abbr> artifacts running on a cloud instance. On-target profiling with the EdgeFirst Profiler supports all converted formats (<code>.tflite</code>, <code>.hef</code>, <code>.dvm</code>, <code>.tensorrt.zip</code>) and measures real hardware performance.</p>
+<p>Cloud validation only supports <abbr title="Open Neural Network Exchange">ONNX</abbr>, Keras, and <abbr title="TensorFlow Lite">TFLite</abbr> artifacts running on a cloud instance. The EdgeFirst Profiler runs on your PC or on the target and supports all converted formats (<code>.tflite</code>, <code>.hef</code>, <code>.dvm</code>, <code>.tensorrt.zip</code>, <code>.onnx</code>).</p>
 </div>
-<h4 id="install-the-profiler">Install the profiler</h4>
+<h3 id="install-the-profiler">Install the profiler</h3>
 <div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="python-pip" name="__tabbed_1" type="radio" /><input id="linux--macos" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="python-pip">Python (pip)</label><label for="linux--macos">Linux / macOS</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
@@ -2129,26 +2126,49 @@
 </div>
 </div>
 </div>
+<div class="admonition note">
+<p class="admonition-title"><abbr title="Open Neural Network Exchange">ONNX</abbr> Runtime Library</p>
+<p>Install the <abbr title="Open Neural Network Exchange">ONNX</abbr> Runtime library <code>pip install onnxruntime</code> if it is missing
+from your system to profile <abbr title="Open Neural Network Exchange">ONNX</abbr> models.</p>
+<p><figure markdown="span">
+        <img align="center" alt="Missing ONNXRuntime Library" src="../../../models/assets/validation/missing_onnxruntime.jpg" />
+        <figcaption>Missing ONNXRuntime Library</figcaption>
+        </figure></p>
+</div>
 <p>Confirm the install:</p>
 <div class="highlight"><pre><span></span><code>edgefirst-profiler<span class="w"> </span>--version
 </code></pre></div>
 <p>For per-platform guides including <abbr title="Neural Processing Unit">NPU</abbr> delegate setup, see the <a href="../../../profiler/installation/">Profiler Installation</a> section.</p>
-<h4 id="sign-in-to-edgefirst-studio">Sign in to EdgeFirst Studio</h4>
+<h3 id="sign-in-to-edgefirst-studio">Sign in to EdgeFirst Studio</h3>
 <div class="highlight"><pre><span></span><code>edgefirst-profiler<span class="w"> </span>login
 </code></pre></div>
 <p>The interactive prompt asks for <strong>server</strong>, <strong>username</strong>, and <strong>password</strong>. Credentials are saved locally and refresh automatically.</p>
-<h4 id="run-a-validation-session">Run a validation session</h4>
+<h3 id="run-a-validation-session">Run a validation session</h3>
 <p>Launch the profiler TUI:</p>
 <div class="highlight"><pre><span></span><code>edgefirst-profiler
 </code></pre></div>
 <p>Press <strong>F2</strong> to open the Studio screen, then navigate to your training session:</p>
 <div class="highlight"><pre><span></span><code>Projects  →  Experiments  →  Training Sessions  →  Artifacts
 </code></pre></div>
-<p>Select the converted model artifact that matches your target hardware and choose <strong>Validate</strong>. The profiler creates a validation session in Studio, downloads the model and dataset to the device, and starts the run automatically.</p>
+<p>Select the trained <abbr title="Open Neural Network Exchange">ONNX</abbr> model artifact and choose <strong>Validate</strong> to run this workflow on your PC. If you are instead validating on compatible target hardware, select the converted artifact for that target. The profiler creates a validation session in Studio, downloads the model and dataset to the machine running the profiler, and starts the run automatically.</p>
 <p>The <strong>F4 Profiler</strong> dashboard streams iteration-level latency and per-stage timings live during the run. When complete, predictions and the timing trace upload to EdgeFirst Studio where <abbr title="mean Average Precision">mAP</abbr>, precision-recall curves, and the trace viewer are generated.</p>
+<p>In EdgeFirst Studio, you can see the validation session by navigating to the validation sessions under "Model Experiments".</p>
+<figure>
+            <img align="center" alt="Validation Session" src="../../../models/assets/validation/validation-sessions.jpg" />
+            <figcaption>Validation Session</figcaption>
+            </figure>
+<p>The metrics of the validation session can be viewed by clicking on the "charts" button on the validation session card.</p>
+<figure>
+            <img align="center" alt="Validation Charts" src="../../../models/assets/validation/profiler_completed_validation.jpg" />
+            <figcaption>Validation Charts</figcaption>
+            </figure>
 <p>For the full walkthrough see <a href="../../../profiler/quickstart/">Profiler Quick Start</a> and <a href="../../../profiler/studio/from_profiler/">Validation from the Profiler</a>.</p>
-<h3 id="compare-results-to-the-model-zoo">Compare Results to the Model Zoo</h3>
+<h2 id="compare-results-to-the-model-zoo">Compare Results to the Model Zoo</h2>
 <p>After validation, compare your results with the <a href="https://huggingface.co/spaces/EdgeFirst/Models">EdgeFirst Model Zoo on Hugging Face</a> to see how close your model is to the published baselines.</p>
+<figure>
+            <img align="center" alt="EdgeFirst Profiler Baselines" src="../../../models/assets/validation/profiler_baselines.jpg" />
+            <figcaption>EdgeFirst Profiler Baselines</figcaption>
+            </figure>
 <p>Focus on:</p>
 <ul>
 <li><strong>Task match</strong>: Use the same task type (detection, segmentation, classification) as your training run.</li>

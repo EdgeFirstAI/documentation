@@ -15,7 +15,7 @@
         <link rel="canonical" href="https://doc.edgefirst.ai/test/models/validation/vision/managed/">
       
       
-        <link rel="prev" href="../../../conversion/hailo/">
+        <link rel="prev" href="../../../conversion/qualcomm/">
       
       
         <link rel="next" href="../user_managed/">
@@ -614,8 +614,6 @@
       
         
       
-        
-      
     
     
     
@@ -1137,6 +1135,8 @@
       
         
           
+        
+      
         
       
         
@@ -1820,8 +1820,6 @@
       
         
       
-        
-      
     
     
     
@@ -2129,9 +2127,9 @@
 
 
 <h1 id="on-cloud-validation">On Cloud Validation</h1>
-<p>This tutorial walks through how to run validation in the cloud using EdgeFirst Studio. In this setup, validation is executed as a <strong>managed validation session</strong>, which runs on a self-hosted EC2 instance.  This option is ideal for users who do not have access to an embedded platform to host the validation process locally.</p>
+<p>This tutorial walks through how to run validation in the cloud using EdgeFirst Studio which runs on a self-hosted EC2 instance.  This option is ideal for users who do not have access to an embedded platform to host the validation process locally.</p>
 <p>In this tutorial, you will validate a <strong>Vision</strong> model trained using either the <a href="../../../../getting_started/workflows/">end-to-end workflows</a> or the <a href="../../../training/vision/">Training Vision</a> guide.  Note that a Vision model detects objects in camera frames or images.  If you are working with Fusion models, refer to <a href="../../fusion/managed/">Validating Fusion Models</a>.</p>
-<p>Alternatively, EdgeFirst Studio also supports <strong>On-Target Validation</strong>, which runs as a user-managed validation session. In this mode, the model is deployed and validated directly on an embedded platform.  For more details, see <a href="../user_managed/">On Target Validation</a>.</p>
+<p>Alternatively, EdgeFirst Studio also supports <strong>On-Target Validation</strong>. In this mode, the model is deployed and validated directly on an embedded platform.  For more details, see <a href="../user_managed/">On Target Validation</a>.</p>
 <h2 id="specify-project-experiments">Specify Project Experiments</h2>
 <p>From the <a href="../../../../studio/projects/">Projects page</a>, choose the project that contains the training session with the models you want to validate.  In this example, the project chosen is called "My First Project".  Next click the "Model Experiments" button as indicated in red.</p>
 <figure>
@@ -2154,17 +2152,11 @@
             <img align="center" alt="New Session Button" src="../../../assets/validation/new-session-button.jpg" />
             <figcaption>New Session Button</figcaption>
             </figure>
-<p>You will be greeted with a validation session dialog.  In this dialog, specify the name of the validation session, the model to validate, and the dataset to deploy.  In this example, the "Coffee Cup" dataset with the validation partition will be used.  <em>Under the model selection, you can select various trained model artifacts from the choices of <abbr title="Open Neural Network Exchange">ONNX</abbr>, <abbr title="TensorFlow Lite">TFLite</abbr>, TensorRT, Kinara, Hailo, etc.  Choose the model you plan to deploy on target.  The purpose of validation is to assess the model of whether or not it meets the performance requirements needed to be deployed on target.</em>  Additional parameters are available on the right for user override. Otherwise the same parameters set in the training session will be used. For more information on these parameters hover over the info button <img alt="Info Button" src="../../../../assets/buttons/studio-info-button.jpg" />.</p>
+<p>You will be greeted with the validation session dialog.  Select the model to use for validation. Select either an <strong><abbr title="Open Neural Network Exchange">ONNX</abbr>, Keras, or <abbr title="TensorFlow Lite">TFLite</abbr></strong> model — these are the formats supported by cloud validation. When you are ready, click <strong>START APP</strong> to begin the validation process.</p>
 <figure>
             <img align="center" alt="Validation Session Fields" src="../../../assets/validation/vision-validate-settings.jpg" />
             <figcaption>Validation Session Fields</figcaption>
             </figure>
-<p>Once the settings have been specified, go ahead and click on the "Start Session" button on the bottom right of the dialog.  This will start the validation session which will validate the model using the validation partition of the dataset.</p>
-<div class="admonition failure">
-<p class="admonition-title">InsufficientInstanceCapacity</p>
-<p><img alt="InsufficientInstanceCapacity Error" src="../../../../studio/assets/models/insufficient-capacity-error.jpg" /></p>
-<p>If you see this error after starting your validation session, retry creating the session. This can happen when AWS reports that no EC2 instances are currently available to launch; the current workaround is to retry.</p>
-</div>
 <h2 id="session-progress">Session Progress</h2>
 <p>Once the validation session has started, the progress with the stages will be shown on the left and additional information and status is shown on the right.</p>
 <figure>
@@ -2290,7 +2282,7 @@
       <nav class="md-footer__inner md-grid" aria-label="Footer" >
         
           
-          <a href="../../../conversion/hailo/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Hailo Converter">
+          <a href="../../../conversion/qualcomm/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Qualcomm Converter">
             <div class="md-footer__button md-icon">
               
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
@@ -2300,7 +2292,7 @@
                 Previous
               </span>
               <div class="md-ellipsis">
-                Hailo Converter
+                Qualcomm Converter
               </div>
             </div>
           </a>

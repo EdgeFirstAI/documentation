@@ -18,7 +18,7 @@
         <link rel="prev" href="../agtg/">
       
       
-        <link rel="next" href="../instances/">
+        <link rel="next" href="../tasks/">
       
       
         
@@ -616,8 +616,6 @@
       
         
       
-        
-      
     
     
     
@@ -902,6 +900,34 @@
   
   
     <li class="md-nav__item">
+      <a href="../snapshots/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Snapshots Dashboard
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../agtg/" class="md-nav__link">
         
   
@@ -1094,42 +1120,14 @@
   
   
     <li class="md-nav__item">
-      <a href="../instances/" class="md-nav__link">
+      <a href="../tasks/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    Cloud Instances Dashboard
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../snapshots/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Snapshots Dashboard
+    Tasks Dashboard
   
 
     
@@ -1157,35 +1155,7 @@
   <span class="md-ellipsis">
     
   
-    Studio Apps Dashboard
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../tasks/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Tasks Dashboard
+    Apps Dashboard
   
 
     
@@ -1588,8 +1558,6 @@
       
         
       
-        
-      
     
     
     
@@ -1853,7 +1821,7 @@
 <p>An experiment will contain child training and validation sessions.  The training sessions and validation sessions will be described in more detail in the sections below.</p>
 <h2 id="training-sessions">Training Sessions</h2>
 <p>Training sessions take in datasets and synthesize from them new AI models for object recognition (Vision) or object perception (Fusion).</p>
-<p>From the "Model Experiments" page, we can click on the "Training Sessions" button with the icon <img alt="Trainers Button" src="../../assets/buttons/studio-trainers-button.png" /> to see the training sessions in the experiment.  The figure below shows the layout of the training session cards under the "Training Sessions" page.</p>
+<p>From the "Model Experiments" page, we can click on the "Training Sessions" button with the icon <img alt="Trainers Button" src="../../assets/buttons/studio-trainers-button.jpg" /> to see the training sessions in the experiment.  The figure below shows the layout of the training session cards under the "Training Sessions" page.</p>
 <figure>
             <img align="center" alt="Training Sessions" src="../assets/models/training-sessions.jpg" />
             <figcaption>Training Sessions</figcaption>
@@ -1862,16 +1830,6 @@
 <figure>
             <img align="center" alt="Training Session Attributes" src="../../models/assets/training/training-session-attributes.jpg" />
             <figcaption>Training Session Attributes</figcaption>
-            </figure>
-<p>To compare all the training charts of each session, click on "All Charts" at the top right corner of the "Training Sessions" page.  This will show the charts from each session overlaid on top of one another for a quick comparison.</p>
-<figure>
-            <img align="center" alt="All Charts" src="../assets/models/all-charts.jpg" />
-            <figcaption>All Charts</figcaption>
-            </figure>
-<p>All the training charts will be displayed with a legend that indicates the training session.</p>
-<figure>
-            <img align="center" alt="All Charts" src="../assets/models/all-training-charts.jpg" />
-            <figcaption>All Charts</figcaption>
             </figure>
 <p>For more details regarding deploying training sessions, please see <a href="../../models/training/vision/">Training Vision Models</a> and <a href="../../models/training/fusion/">Training Fusion Models</a> for training Fusion models.</p>
 <h3 id="training-session-details">Training Session Details</h3>
@@ -1920,18 +1878,13 @@ a deep view into the session through the following tabs:</p>
 <li><strong>Recycle Bin</strong> — Move the session to the recycle bin.</li>
 </ul>
 <h3 id="cloning-a-training-session">Cloning a Training Session</h3>
-<p>Cloning creates a new training session from an existing one. The clone preserves the source session's trainer type, model, dataset selection, and other session configuration, but it overrides two training controls: <strong>Use Default Weights</strong> is disabled and <strong>Enable Training</strong> is disabled. Because training is not run, the completed weights from the source session are copied directly into the new session's artifacts.</p>
-<p>This is useful when you want to:</p>
+<p>Cloning creates a new training session from an existing one.  To clone a session, click "clone training session" button on the training card.  A dialog will appear pre-filled with the source session's configuration.  Adjust the name and description as needed, then confirm.</p>
+<p>The clone runs the source session's trainer with its configuration.  To reuse the trained weights of an Ultralytics session instead, start a new Ultralytics session with its <strong>Weights</strong> set to that session:</p>
 <ul>
-<li>Reuse a trained model as a starting point for fine-tuning with a different dataset.</li>
-<li>Preserve a snapshot of a model at a specific training state before further experimentation.</li>
-<li>Share a model artifact under a new session name without re-running training.</li>
+<li>With <strong>Enable Training</strong> on, the new session fine-tunes those weights, for example on a different dataset.</li>
+<li>With <strong>Enable Training</strong> off, the new session exports those weights without retraining, for example at another Input Resolution or Deployment.</li>
 </ul>
-<p>To clone a session, click "clone training session" button on the training card.  A dialog will appear pre-filled with the source session's configuration.  Adjust the name and description as needed, then confirm.</p>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>Cloning is equivalent to creating a new session with <strong>Use Default Weights</strong> disabled and <strong>Enable Training</strong> disabled.  See <a href="../../models/training/vision/#enable-training-and-use-default-weights">Enable Training and Use Default Weights</a> for the full behavior matrix.</p>
-</div>
+<p>See <a href="../../models/training/vision/#weights-and-enable-training">Weights and Enable Training</a> for the full behavior matrix.</p>
 <h2 id="validation-sessions">Validation Sessions</h2>
 <p>The validation sessions will assess the performance of the models in the training sessions.  A training session can have any number of validation sessions.  From the "Model Experiments" page, we can click on the "Validation Sessions" button with the icon <img alt="Validation Button" src="../../assets/buttons/studio-validation-button.jpg" /> to see the validation sessions in the experiment.  The figure below shows the layout of the validation session cards under the "Validation Sessions" page.</p>
 <figure>
@@ -1943,23 +1896,18 @@ a deep view into the session through the following tabs:</p>
             <img align="center" alt="Validation Session Attributes" src="../../models/assets/validation/validation-session-attributes.jpg" />
             <figcaption>Validation Session Attributes</figcaption>
             </figure>
-<p>To compare the validation charts of each session, click on "Compare" at the top right corner of the "Validate Sessions" page.  This will show the charts of each validation session side-by-side for a quick comparison.</p>
+<p>To compare the validation charts of each session, select the validation sessions to compare by using the checkbox on the top left of each session card and then click on "Compare" at the top right corner of the "Validate Sessions" page.  This will show the charts of each validation session side-by-side for a quick comparison.</p>
 <figure>
             <img align="center" alt="Compare Validation Sessions" src="../assets/models/compare-validation-sessions.jpg" />
             <figcaption>Compare Validation Sessions</figcaption>
             </figure>
-<p>Next select the validation session results you wish to compare.  Once selected, click "Compare" to show the validation charts side-by-side.</p>
-<figure>
-            <img align="center" alt="Select Validation Sessions" src="../assets/models/validation-sessions-to-compare.jpg" />
-            <figcaption>Select Validation Sessions</figcaption>
-            </figure>
-<p>Now the charts for each session are displayed side-by-side.  All the charts for a single training session will be shown in one column.  A new column indicates another session.</p>
+<p>Now the charts for each selected session are displayed side-by-side.  All the charts for a single training session will be shown in one column.  A new column indicates another session.</p>
 <figure>
             <img align="center" alt="Comparing Validation Sessions" src="../assets/models/validation-charts-comparison.jpg" />
             <figcaption>Comparing Validation Sessions</figcaption>
             </figure>
-<p>There are two types of validation: <strong>managed</strong> and <strong>user-managed</strong>. Managed validations are set by default in EdgeFirst Studio which triggers an EC2 instance that downloads the dataset and the inference model for validation. This type of validation is best used if you do not have an embedded platform to deploy the model. User-managed validations are hosted in embedded platforms where the dataset and the inference model will be downloaded. This type of validation is best used if you have an embedded platform available to verify how the model would perform in the platform and determine the model's inference time when deployed.</p>
-<p>For more details regarding deploying validation sessions, please see <a href="../../models/validation/vision/managed/">Validating Vision Models</a> and <a href="../../models/validation/fusion/managed/">Validating Fusion Models</a> for validating Fusion models.</p>
+<p>There are two types of validation: <strong>cloud validation</strong> and <strong>on-target profiling</strong>. Cloud validations are set by default in EdgeFirst Studio which triggers an EC2 instance that downloads the dataset and the inference model for validation. This type of validation is best used if you do not have an embedded platform to deploy the model. On-target profiling are hosted on embedded platforms where the dataset and the inference model will be downloaded. This type of validation is best used if you have an embedded platform available to verify how the model would perform on the platform and determine the model's inference time when deployed.</p>
+<p>For more details regarding deploying validation sessions, please see <a href="../../models/validation/vision/managed/">Validating Vision Models</a> and <a href="../../models/validation/fusion/managed/">Validating Fusion Models</a>.</p>
 <h3 id="validation-session-details">Validation Session Details</h3>
 <p>Click on any validation session card to open its details page.  The details page
 provides the following tabs:</p>
@@ -1995,6 +1943,10 @@ provides the following tabs:</p>
 <td><strong>Runs</strong></td>
 <td>Individual run attempts for this session.</td>
 </tr>
+<tr>
+<td><strong>Profile</strong></td>
+<td>Loads the trace files measuring the performance of the model on target</td>
+</tr>
 </tbody>
 </table>
 <p>The action bar at the top of the details page provides the following operations:</p>
@@ -2004,30 +1956,30 @@ provides the following tabs:</p>
 <li><strong>Recycle Bin</strong> — Move the session to the recycle bin.</li>
 </ul>
 <h2 id="running-a-model">Running a model</h2>
-<p>EdgeFirst Studio allows you to run trained models directly in the web browser. After a model has been trained, open the model details page by clicking on the trainer card. Only models trained on ModelPack are supported for live running. From there, click the Run Model button to start running the model.</p>
+<p>EdgeFirst Studio allows you to run trained models directly in the web browser. After a model has been trained, open the model details page by clicking the training session card. Only <abbr title="Open Neural Network Exchange">ONNX</abbr> models are currently supported for live inference in the browser. On the <strong>Artifacts</strong> tab, click the <strong>Run Model</strong> button (the play icon) next to the <abbr title="Open Neural Network Exchange">ONNX</abbr> artifact.</p>
 <div class="admonition note">
 <p class="admonition-title"><abbr title="Open Neural Network Exchange">ONNX</abbr> models only</p>
 <p>Live browser-based model running only supports <strong><abbr title="Open Neural Network Exchange">ONNX</abbr></strong> format. To validate or profile models in other formats (<abbr title="TensorFlow Lite">TFLite</abbr>, Neutron, Hailo, TensorRT, etc.) on real hardware, use the <a href="../../profiler/">EdgeFirst Profiler</a>.</p>
 </div>
 <figure>
-            <img align="center" alt="Model Runner Button" src="../assets/run_model_button.png" />
-            <figcaption>Model Runner Button</figcaption>
-            </figure>
-<p>This will open the model runner dashboard.</p>
-<figure>
-            <img align="center" alt="Model Runner Dashboard" src="../assets/model_runner_dash.png" />
-            <figcaption>Model Runner Dashboard</figcaption>
+            <img align="center" alt="Training Session Details (Run Model button)" src="../../getting_started/assets/run_model/trainer_details_page.png" />
+            <figcaption>Training Session Details (Run Model button)</figcaption>
             </figure>
 <p>Please wait while the model loads. This may take up to 60 seconds, depending on the model size.
 Once the model is loaded, select a mode: Live to run the model on images from a camera stream, or Upload to choose a file from local storage.</p>
-<p>The model will run automatically, and the results will be displayed on the screen. The output (segmentation or detection) depends on the type of model being used.</p>
-<p>The count shows the number of iterations of model runner.</p>
+<p>You should now see the live inference feed on your browser running the trained model.</p>
 <figure>
-            <img align="center" alt="Model Runner Results" src="../assets/model_runner_results.png" />
-            <figcaption>Model Runner Results</figcaption>
+            <img align="center" alt="Live Inference" src="../../models/assets/deployment/studio-runner-live-inference.jpg" />
+            <figcaption>Live Inference</figcaption>
             </figure>
+<p>The model will run automatically, and the results will be displayed on the screen. The output (segmentation or detection) depends on the type of model being used.</p>
+<figure>
+            <img align="center" alt="Image Inference" src="../../models/assets/deployment/studio-runner-image-inference.jpg" />
+            <figcaption>Image Inference</figcaption>
+            </figure>
+<p>For more information, please see the full tutorial on <a href="../../models/deployment/studio/">model deployment</a>.</p>
 <h2 id="next-steps">Next Steps</h2>
-<p>Now that you are familiar with the layout of the Model Experiments Dashboard, proceed to the next section for learning more about the context of the <a href="../instances/">Cloud Instances Dashboard</a>.</p>
+<p>Now that you are familiar with the layout of the Model Experiments Dashboard, proceed to the next section for learning more about the context of the <a href="../tasks/">Tasks Dashboard</a>.</p>
 
 
 
@@ -2134,13 +2086,13 @@ Once the model is loaded, select a mode: Live to run the model on images from a 
         
         
           
-          <a href="../instances/" class="md-footer__link md-footer__link--next" aria-label="Next: Cloud Instances Dashboard">
+          <a href="../tasks/" class="md-footer__link md-footer__link--next" aria-label="Next: Tasks Dashboard">
             <div class="md-footer__title">
               <span class="md-footer__direction">
                 Next
               </span>
               <div class="md-ellipsis">
-                Cloud Instances Dashboard
+                Tasks Dashboard
               </div>
             </div>
             <div class="md-footer__button md-icon">

@@ -614,8 +614,6 @@
       
         
       
-        
-      
     
     
     
@@ -1014,8 +1012,6 @@
       
         
       
-        
-      
     
     
     
@@ -1161,8 +1157,6 @@
       
         
       
-        
-      
     
     
     
@@ -1178,6 +1172,10 @@
     <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
       
         
+  
+  
+  
+    
   
   
   
@@ -1204,6 +1202,8 @@
         <span class="md-nav__icon md-icon"></span>
       
     </a>
+  
+
   
 
   
@@ -1652,6 +1652,8 @@
       
         
       
+        
+      
     
     
     
@@ -2032,6 +2034,7 @@
 </ul>
 </li>
 <li>Camera topics:<ul>
+<li><strong>/camera/frame</strong>: A small reference to each captured frame with its timestamp and sequence number, without the pixels (see the note below).</li>
 <li><strong>/camera/info</strong>: The camera intrinsic parameters.</li>
 <li><strong>/camera/h264</strong>: The H.264 encoded video from the camera.</li>
 <li><strong>/camera/jpeg</strong>: JPEG frames when <a href="../camera/#jpeg-streaming">JPEG streaming</a> is enabled.</li>
@@ -2058,7 +2061,7 @@
 </ul>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>The <code>camera/frame</code> topic carries the zero-copy camera frames shared between services on the device and is not recorded, the camera pixels are recorded from the H.264 stream.</p>
+<p>The <code>camera/frame</code> topic carries the zero-copy camera frames shared between services on the device.  It is recorded, but each message only references the shared buffer (timestamp, frame sequence number, image shape and format, about 230 bytes) and does not contain the pixels.  The camera pixels are recorded from the H.264 stream, and the <code>camera/frame</code> sequence numbers show frames dropped at capture.</p>
 </div>
 <h3 id="radar-cube-fps-raivin-only">Radar Cube <abbr title="Frames Per Second">FPS</abbr> (Raivin Only)</h3>
 <p>The raw radar cube can be a lot of data.  Stored as <code>CUBE_FPS</code>, this limits the radar cube frame rate recorded to reduce the recording size, leave empty to record at the native publish rate.  While the camera topic is encoded with H.264 which makes use of keyframes to significantly reduce the topic size, no such compression is available for the radar cube which means only the compression setting applies.  While capturing datasets, the full 18 <abbr title="Frames Per Second">FPS</abbr> is typically not required and it is recommended to set this parameter to 1 to 5 <abbr title="Frames Per Second">FPS</abbr> to reduce the <abbr title="Binary container format for robotics log data">MCAP</abbr> size.</p>

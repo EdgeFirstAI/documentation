@@ -15,10 +15,10 @@
         <link rel="canonical" href="https://doc.edgefirst.ai/test/studio/tasks/">
       
       
-        <link rel="prev" href="../apps/">
+        <link rel="prev" href="../models/">
       
       
-        <link rel="next" href="../recycle/">
+        <link rel="next" href="../apps/">
       
       
         
@@ -616,8 +616,6 @@
       
         
       
-        
-      
     
     
     
@@ -902,6 +900,34 @@
   
   
     <li class="md-nav__item">
+      <a href="../snapshots/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Snapshots Dashboard
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../agtg/" class="md-nav__link">
         
   
@@ -938,90 +964,6 @@
     
   
     Model Experiments Dashboard
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../instances/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Cloud Instances Dashboard
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../snapshots/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Snapshots Dashboard
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../apps/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Studio Apps Dashboard
   
 
     
@@ -1102,6 +1044,17 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#toolbar" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Toolbar
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#views" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -1120,45 +1073,6 @@
       
     </span>
   </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#task-sections" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Task Sections
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Task Sections">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#active-tasks" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Active Tasks
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#historical-tasks" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Historical Tasks
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
@@ -1205,6 +1119,34 @@
   
 </nav>
       
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../apps/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Apps Dashboard
+  
+
+    
+  </span>
+  
+  
+
+      </a>
     </li>
   
 
@@ -1599,8 +1541,6 @@
       
         
       
-        
-      
     
     
     
@@ -1739,6 +1679,17 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#toolbar" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Toolbar
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#views" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -1757,45 +1708,6 @@
       
     </span>
   </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#task-sections" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Task Sections
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Task Sections">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#active-tasks" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Active Tasks
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#historical-tasks" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Historical Tasks
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
@@ -1863,33 +1775,36 @@
 
 <h1 id="tasks-dashboard">Tasks Dashboard</h1>
 <p>The Tasks page provides a centralized view of all background operations running in
-EdgeFirst Studio — including model training, validation, app runs, and data imports.
-Both currently running and completed operations are visible here.</p>
-<p>To access this page, click the <strong>Apps</strong> waffle icon in the top navigation bar and
-select <strong>Tasks</strong> from the menu.</p>
+EdgeFirst Studio where it lists all pending, running, terminated, failed, or successful MLOPs processes in EdgeFirst Studio — including model training, validation, app runs, and data imports. Both currently running and completed operations are visible here in a single paginated view. Furthermore, it also keeps a history of operations ran that either completed successfully, terminated, or failed.</p>
+<p>To access this page, click the <strong>Tasks</strong> button in the top navigation bar.</p>
 <figure>
-            <img align="center" alt="Tasks Page" src="../assets/tasks-page.png" />
+            <img align="center" alt="Tasks Button" src="../assets/tasks/tasks_button.jpg" />
+            <figcaption>Tasks Button</figcaption>
+            </figure>
+<p>The tasks page will look like the following:</p>
+<figure>
+            <img align="center" alt="Tasks Page" src="../assets/tasks/tasks_page.jpg" />
             <figcaption>Tasks Page</figcaption>
             </figure>
+<h2 id="toolbar">Toolbar</h2>
+<p>The toolbar at the top-right of the page provides the main navigation and display controls:</p>
+<ul>
+<li><strong>Page navigation</strong> — Jump to the first, previous, next, or last page of tasks.</li>
+<li><strong>Page indicator</strong> — Shows the current page number and total number of pages.</li>
+<li><strong>Filter</strong> — Opens the task filters. The badge on the button shows how many filters are currently active.</li>
+<li><strong>View toggle</strong> — Switch between <strong>Card View</strong> and <strong>List View</strong>.</li>
+</ul>
 <h2 id="views">Views</h2>
 <p>The page supports two display modes, toggled with the button in the top-right corner
 of the toolbar:</p>
 <ul>
 <li><strong>Card View</strong> (default) — Displays each task as an expanded card showing full details.</li>
-<li><strong>List View</strong> — Displays tasks in a compact table format for a broader overview.</li>
+<li><strong>List View</strong> — Displays the same task information in a denser row-based layout for easier scanning.</li>
 </ul>
 <h2 id="filtering">Filtering</h2>
-<p>Use the <strong>Start Date</strong> and <strong>End Date</strong> fields to limit the tasks shown to a specific
-time window.  Click the calendar icon to open the date picker.</p>
-<p>Toggle <strong>Show Deleted</strong> to include tasks that have been removed from the active list.</p>
-<h2 id="task-sections">Task Sections</h2>
-<p>Tasks are grouped into two collapsible sections:</p>
-<h3 id="active-tasks">Active Tasks</h3>
-<p>Shows all currently running or queued operations.  Each active task card displays
-real-time status alongside the controls described below.</p>
-<h3 id="historical-tasks">Historical Tasks</h3>
-<p>Shows all completed, failed, or stopped operations.  The count in the section
-heading reflects the total number of historical tasks matching the current filter.</p>
+<p>Use the <strong>Filter</strong> button to narrow the list of tasks. Depending on the active filters,
+you can limit the results shown on the page and focus on the operations relevant to
+your current workflow.</p>
 <h2 id="task-card">Task Card</h2>
 <p>Each task card shows the following information:</p>
 <table>
@@ -1905,43 +1820,55 @@ heading reflects the total number of historical tasks matching the current filte
 <td>A unique identifier for the task (e.g. <code>bt-445d</code>). Click the copy icon to copy it to the clipboard.</td>
 </tr>
 <tr>
-<td><strong>Status</strong></td>
-<td>The current state of the task: <strong>Completed</strong>, <strong>Running</strong>, <strong>Failed</strong>, or <strong>Stopped</strong>.</td>
+<td><strong>Name</strong></td>
+<td>The display name assigned to the task at creation time, shown beneath the task ID.</td>
 </tr>
 <tr>
-<td><strong>Name</strong></td>
-<td>The display name assigned to the task at creation time.</td>
+<td><strong>Status</strong></td>
+<td>The current state of the task such as <strong>complete</strong>, <strong>queued</strong>, <strong>running</strong>, <strong>terminated</strong>, or <strong>failed</strong>.</td>
+</tr>
+<tr>
+<td><strong>Timestamp</strong></td>
+<td>The date and time associated with the task entry.</td>
+</tr>
+<tr>
+<td><strong>Duration / Age</strong></td>
+<td>The elapsed runtime or age shown next to the timestamp.</td>
+</tr>
+<tr>
+<td><strong>Progress</strong></td>
+<td>The current stage label, step counter, progress bar, and percentage complete.</td>
+</tr>
+<tr>
+<td><strong>Message</strong></td>
+<td>A short status message describing the current or final task state.</td>
+</tr>
+<tr>
+<td><strong>App Name</strong></td>
+<td>The app or service associated with the task when applicable.</td>
 </tr>
 <tr>
 <td><strong>Type</strong></td>
 <td>The task category — <code>training</code>, <code>validation</code>, <code>app.&lt;name&gt;</code>, or <code>import</code>.</td>
 </tr>
 <tr>
-<td><strong>Trainer / Validator</strong></td>
-<td>For training and validation tasks, links to the associated session IDs.</td>
-</tr>
-<tr>
-<td><strong>Start Date</strong></td>
-<td>When the task began executing.</td>
-</tr>
-<tr>
-<td><strong>Duration</strong></td>
-<td>Total elapsed time.</td>
+<td><strong>Linked resources</strong></td>
+<td>Related items such as experiment, dataset, training session, or validation session. These identifiers can be copied from the card.</td>
 </tr>
 <tr>
 <td><strong>Process ID</strong></td>
-<td>The internal process UUID. Click the copy icon to copy it.</td>
+<td>The internal process UUID shown in the status area for tasks that expose it.</td>
 </tr>
 </tbody>
 </table>
 <h3 id="task-actions">Task Actions</h3>
-<p>Each card has an action bar with the following buttons:</p>
+<p>Each task card includes action buttons near the top-right corner for task management. Depending on the task state and type, these actions can include:</p>
 <ul>
 <li><strong>View Logs</strong> — Open the live or historical console output for the task.</li>
-<li><strong>Stop</strong> — Terminate a running task.</li>
-<li><strong>Delete</strong> — Remove the task from the history list.</li>
-<li><strong>Copy</strong> — Copy the task details to the clipboard.</li>
+<li><strong>Task Actions Menu</strong> — Open additional task-specific actions.</li>
+<li><strong>Delete</strong> — Remove the task from the visible history when supported.</li>
 </ul>
+<p>In <strong>List View</strong>, the same information is displayed in a more compact format while preserving the per-task action controls.</p>
 <h2 id="next-steps">Next Steps</h2>
 <p>For model training tasks, see <a href="../../models/training/vision/">Training Vision Models</a>.
 For validation tasks, see <a href="../../models/validation/vision/managed/">Validating Vision Models</a>.
@@ -2035,7 +1962,7 @@ For app tasks, see <a href="../apps/">Studio Apps</a>.</p>
       <nav class="md-footer__inner md-grid" aria-label="Footer" >
         
           
-          <a href="../apps/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Studio Apps Dashboard">
+          <a href="../models/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Model Experiments Dashboard">
             <div class="md-footer__button md-icon">
               
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
@@ -2045,20 +1972,20 @@ For app tasks, see <a href="../apps/">Studio Apps</a>.</p>
                 Previous
               </span>
               <div class="md-ellipsis">
-                Studio Apps Dashboard
+                Model Experiments Dashboard
               </div>
             </div>
           </a>
         
         
           
-          <a href="../recycle/" class="md-footer__link md-footer__link--next" aria-label="Next: Recycle Bin">
+          <a href="../apps/" class="md-footer__link md-footer__link--next" aria-label="Next: Apps Dashboard">
             <div class="md-footer__title">
               <span class="md-footer__direction">
                 Next
               </span>
               <div class="md-ellipsis">
-                Recycle Bin
+                Apps Dashboard
               </div>
             </div>
             <div class="md-footer__button md-icon">

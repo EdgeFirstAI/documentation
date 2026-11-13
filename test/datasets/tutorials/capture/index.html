@@ -614,8 +614,6 @@
       
         
       
-        
-      
     
     
     
@@ -1359,6 +1357,34 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="Upload MCAP">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#from-the-maivinraivin" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        From the Maivin/Raivin
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#from-edgefirst-studio" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        From EdgeFirst Studio
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
         
           <li class="md-nav__item">
@@ -1614,8 +1640,6 @@
       
         
           
-        
-      
         
       
         
@@ -1912,6 +1936,34 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="Upload MCAP">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#from-the-maivinraivin" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        From the Maivin/Raivin
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#from-edgefirst-studio" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        From EdgeFirst Studio
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
         
           <li class="md-nav__item">
@@ -2040,10 +2092,10 @@ For device-specific steps, refer to your phone manufacturer documentation or dev
             </figure>
 <div class="admonition tip">
 <p class="admonition-title">Leveraging Videos</p>
-<p>It is recommended to use videos rather than individual images.  This is because the <a href="../annotations/automatic/">Automatic Ground Truth Generation (AGTG)</a> feature leverages SAM-2 with tracking information which only needs a single annotation to annotate all frames.  However, individual images requires more effort by annotating each image separately.</p>
+<p>It is recommended to use videos rather than individual images.  This is because the <a href="../annotations/automatic/">Automatic Ground Truth Generation (AGTG)</a> feature leverages SAM2 with tracking information which only needs a single annotation to annotate all frames.  However, individual images requires more effort by annotating each image separately.</p>
 </div>
 <h3 id="create-dataset">Create Dataset</h3>
-<p>If you have a video recording or sample images for your dataset, you can <a href="../management/#create-dataset">create a dataset container</a> in EdgeFirst Studio to contain your video frames or images and annotations.</p>
+<p>You can create an empty dataset in EdgeFirst Studio. If you have a video recording or sample images to import into EdgeFirst Studio, you can specify this empty dataset to store your imported samples and annotations.</p>
 <p>Navigate to a web browser and <a href="https://test.edgefirst.studio/login">login</a> to EdgeFirst Studio.  Once logged in to EdgeFirst Studio, navigate to your project.  In this case the project name is "My First Project".  Click on the "Datasets" button that is indicated in red below.</p>
 <figure>
             <img align="center" alt="Object Detection Project" src="../../assets/capture/mobile-projects.jpg" />
@@ -2065,68 +2117,49 @@ For device-specific steps, refer to your phone manufacturer documentation or dev
             <figcaption>Created Dataset</figcaption>
             </figure>
 <h3 id="upload-video">Upload Video</h3>
-<p>Video files can be uploaded into any dataset container in EdgeFirst Studio.  Choose the dataset container to upload the video file.  In this case, the dataset is called "Coffee Cup".  Click on the dataset context menu (three dots) and click "Import".</p>
-<figure>
-            <img align="center" alt="Dataset Import Option" src="../../assets/capture/mobile-dataset-import-option.jpg" />
-            <figcaption>Dataset Import Option</figcaption>
-            </figure>
-<p>This will bring you to the "Import Dataset" page.</p>
-<figure>
-            <img align="center" alt="Dataset Import" src="../../assets/capture/mobile-import-dataset.jpg" />
-            <figcaption>Dataset Import</figcaption>
-            </figure>
-<p>Click on the drop-down that says "Import Type" and then specify "Videos" and then click "Done" as shown below.</p>
+<p>Video files can be uploaded into any dataset container in EdgeFirst Studio.  Choose the dataset container to upload the video file.  In this case, the dataset is called "Coffee Cup".  Click on the dataset context menu (three dots) then click "Import" and select "Videos".</p>
 <figure>
             <img align="center" alt="Dataset Video Import" src="../../assets/capture/mobile-video-import-type.jpg" />
             <figcaption>Dataset Video Import</figcaption>
             </figure>
-<p>Now that the import type is specified to a "Videos", click on "select files" as indicated.</p>
+<p>Click on "Choose Files" as indicated.</p>
 <figure>
             <img align="center" alt="Select Video File" src="../../assets/capture/mobile-select-video-file.jpg" />
             <figcaption>Select Video File</figcaption>
             </figure>
-<p>On an android device, this will bring up the option to specify the location of the files.</p>
-<figure>
-            <img align="center" alt="Android Select File Options" src="../../assets/capture/mobile-video-options.jpg" />
-            <figcaption>Android Select File Options</figcaption>
-            </figure>
-<p>In my current setup, I have selected "My Files" from the options above and then "Videos" which will allow me to pinpoint the location of the video I have recorded.</p>
+<p>On an android device, this will bring up the option to specify the location of the files. I have selected "Videos" which will allow me to pinpoint the location of the video in my device.</p>
 <figure>
             <img align="center" alt="Android File Manager" src="../../assets/capture/mobile-video-location.jpg" />
             <figcaption>Android File Manager</figcaption>
             </figure>
-<p>After selecting the video file, the <abbr title="Frames Per Second">FPS</abbr> (frames per second) value is automatically set to 1 by default. You may adjust this value to match your desired frame extraction rate. When ready, click Start Import to begin importing the video.</p>
+<p>After selecting the video file, click the "Upload" button as shown.</p>
+<figure>
+            <img align="center" alt="Upload Video File" src="../../assets/capture/mobile-video-upload.jpg" />
+            <figcaption>Upload Video File</figcaption>
+            </figure>
+<p>The <abbr title="Frames Per Second">FPS</abbr> (frames per second) value is automatically set to 1 by default. You may adjust this value to match your desired frame rate. When ready, click Start App to begin importing the video.</p>
 <figure>
             <img align="center" alt="Import Fields" src="../../assets/capture/mobile-video-import-fields.jpg" />
             <figcaption>Import Fields</figcaption>
             </figure>
-<p>This will start the import process. For a 30-second video, the import typically takes about 2 minutes to complete.</p>
-<p>Once the import finishes, the number of images in the dataset should increase to reflect the newly imported frames. If the dataset does not appear to update, refresh the browser to view the latest changes.</p>
+<p>This will start the import process. For a 30-second video imported at 1 <abbr title="Frames Per Second">FPS</abbr>, the import typically takes ~1 minute to complete.</p>
+<p>Once the import finishes, the number of images in the dataset should increase to reflect the imported frames. If the dataset does not appear to update, refresh the browser to view the latest changes.</p>
 <figure>
             <img align="center" alt="Imported Video" src="../../assets/capture/imported-video-outcome.jpg" />
             <figcaption>Imported Video</figcaption>
             </figure>
 <h3 id="upload-images">Upload Images</h3>
-<div class="admonition warning">
-<p class="admonition-title">HEIC is not fully supported</p>
-<p>Apple devices capture HEIC image formats by default.  This format has not been fully supported yet in EdgeFirst Studio.  Please make sure to use JPEGs, JPGs, or PNGs for uploading images to EdgeFirst Studio.</p>
-</div>
-<p>Image files can be uploaded into any dataset container in EdgeFirst Studio.  Choose the dataset container to upload image files.  In this case, the dataset is called "Coffee Cup".  Click on the dataset context menu (three dots) and select import.</p>
+<p>Image files can be uploaded into any dataset container in EdgeFirst Studio.  Choose the dataset container to upload image files.  In this case, the dataset is called "Coffee Cup".  Click on the dataset context menu (three dots) then click "Import" and select "Images".</p>
 <figure>
-            <img align="center" alt="Dataset Import Option" src="../../assets/capture/mobile-dataset-import-option.jpg" />
-            <figcaption>Dataset Import Option</figcaption>
+            <img align="center" alt="Dataset Image Import" src="../../assets/capture/mobile-image-import-type.jpg" />
+            <figcaption>Dataset Image Import</figcaption>
             </figure>
-<p>This will bring you to the "Import Dataset" page.</p>
+<p>Click on "Choose Files" as indicated.  This will bring up the option to specify the location of the files.</p>
 <figure>
-            <img align="center" alt="Dataset Import" src="../../assets/capture/mobile-import-dataset.jpg" />
-            <figcaption>Dataset Import</figcaption>
+            <img align="center" alt="Choose Files" src="../../assets/capture/mobile-select-image-file.jpg" />
+            <figcaption>Choose Files</figcaption>
             </figure>
-<p>Click on "select files".  This will bring up the option to specify the location of the files.</p>
-<figure>
-            <img align="center" alt="Android Mobile Media Picker" src="../../assets/capture/mobile-media-picker.jpg" />
-            <figcaption>Android Mobile Media Picker</figcaption>
-            </figure>
-<p>In my current setup, I have selected "Photos &amp; Videos" from the options above and then I have multi-selected the images I want to import by press and hold on a single image to enable multi-select.  To import, I pressed "Select".</p>
+<p>This will bring the modal to multi-select the images I want to import by pressing and holding on a single image to enable multi-select.  To import, I pressed "Select".</p>
 <figure>
             <img align="center" alt="Android Multi-select Images" src="../../assets/capture/mobile-multi-select-images.jpg" />
             <figcaption>Android Multi-select Images</figcaption>
@@ -2201,18 +2234,45 @@ For device-specific steps, refer to your phone manufacturer documentation or dev
             <img align="center" alt="MCAP Modal" src="../../../platforms/assets/setup/quickStart-mcap.png" />
             <figcaption><abbr title="Binary container format for robotics log data">MCAP</abbr> Modal</figcaption>
             </figure>
-<p>Use the "Download" button <img alt="&quot;Download Button&quot;" src="../../../assets/buttons/mcap_download_button.png" /> in the row containing the name of the <abbr title="Binary container format for robotics log data">MCAP</abbr> file you want to download, which will download the <abbr title="Binary container format for robotics log data">MCAP</abbr> file to your local machine.</p>
-<p>You can also use an <a href="../../../platforms/networking/ssh/#secure-copy"><abbr title="Secure Shell">SSH</abbr> client to copy files</a> off the Raivin.</p>
+<p>Click the "Download" button <img alt="&quot;Download Button&quot;" src="../../../assets/buttons/mcap_download_button.png" /> in the row containing the name of the <abbr title="Binary container format for robotics log data">MCAP</abbr> file you want to download, which will download the <abbr title="Binary container format for robotics log data">MCAP</abbr> file to your local machine.</p>
+<p>You can also use an <a href="../../../platforms/networking/ssh/#secure-copy"><abbr title="Secure Shell">SSH</abbr> client to copy files</a> off the M/Raivin.</p>
 <h3 id="upload-mcap">Upload <abbr title="Binary container format for robotics log data">MCAP</abbr></h3>
-<p>To upload an <abbr title="Binary container format for robotics log data">MCAP</abbr> Recording into EdgeFirst Studio, first <a href="https://test.edgefirst.studio/login">login</a> to EdgeFirst Studio.  Once logged in to EdgeFirst Studio, navigate to the "Data Snapshots" under the apps menu.</p>
+<p>There are two ways of uploading an <abbr title="Binary container format for robotics log data">MCAP</abbr> into EdgeFirst Studio:</p>
+<ol>
+<li>From the Maivin/Raivin device</li>
+<li>From EdgeFirst Studio</li>
+</ol>
+<h4 id="from-the-maivinraivin">From the Maivin/Raivin</h4>
+<p>Click the "Upload" button <img alt="&quot;Upload Button&quot;" src="../../../assets/buttons/mcap_upload_button.jpg" /> in the row containing the name of the <abbr title="Binary container format for robotics log data">MCAP</abbr> file you want to upload to EdgeFirst Studio, which will bring you to the upload <abbr title="Binary container format for robotics log data">MCAP</abbr> modal. In this modal, provide your login information to upload the <abbr title="Binary container format for robotics log data">MCAP</abbr> file to your EdgeFirst Studio account.</p>
 <figure>
-            <img align="center" alt="Data Snapshots" src="../../assets/annotations/automatic/data-snapshots.jpg" />
-            <figcaption>Data Snapshots</figcaption>
+            <img align="center" alt="Upload MCAP Modal" src="../../../platforms/assets/setup/upload_mcap_modal.png" />
+            <figcaption>Upload <abbr title="Binary container format for robotics log data">MCAP</abbr> Modal</figcaption>
             </figure>
-<p>Once you are in the "Data Snapshots" page, upload the recorded <abbr title="Binary container format for robotics log data">MCAP</abbr> by clicking "From File" which opens a new window dialog for selecting the <abbr title="Binary container format for robotics log data">MCAP</abbr> downloaded in your PC.</p>
+<p>Once logged in, upload the <abbr title="Binary container format for robotics log data">MCAP</abbr> by clicking the "Upload" button as shown.</p>
+<figure>
+            <img align="center" alt="Upload MCAP Button" src="../../../platforms/assets/setup/upload_mcap_button.png" />
+            <figcaption>Upload <abbr title="Binary container format for robotics log data">MCAP</abbr> Button</figcaption>
+            </figure>
+<p>Once the upload completes, a similar indication should be shown below.</p>
+<figure>
+            <img align="center" alt="Upload MCAP Completed" src="../../../platforms/assets/setup/upload_mcap_complete.png" />
+            <figcaption>Upload <abbr title="Binary container format for robotics log data">MCAP</abbr> Completed</figcaption>
+            </figure>
+<p>The <abbr title="Binary container format for robotics log data">MCAP</abbr> should be available in <a href="https://test.edgefirst.studio/">EdgeFirst Studio</a> as a snapshot.</p>
+<figure>
+            <img align="center" alt="Uploaded MCAP as a Snapshot in EdgeFirst Studio" src="../../../platforms/assets/setup/studio_uploaded_mcap.jpg" />
+            <figcaption>Uploaded <abbr title="Binary container format for robotics log data">MCAP</abbr> as a Snapshot in EdgeFirst Studio</figcaption>
+            </figure>
+<h4 id="from-edgefirst-studio">From EdgeFirst Studio</h4>
+<p>To upload an <abbr title="Binary container format for robotics log data">MCAP</abbr> Recording into EdgeFirst Studio, first <a href="https://test.edgefirst.studio/login">login</a> to EdgeFirst Studio.  Once logged in to EdgeFirst Studio, navigate to the "Snapshots" page under the apps menu.</p>
+<figure>
+            <img align="center" alt="Snapshots Page" src="../../assets/annotations/automatic/data-snapshots.jpg" />
+            <figcaption>Snapshots Page</figcaption>
+            </figure>
+<p>Once you are in the "Snapshots" page, upload the recorded <abbr title="Binary container format for robotics log data">MCAP</abbr> by clicking "From File" which opens a new window dialog for selecting the <abbr title="Binary container format for robotics log data">MCAP</abbr> downloaded in your PC.</p>
 <div class="admonition note">
 <p class="admonition-title">EdgeFirst Datasets</p>
-<p>You can also drag and drop <a href="../../format/">EdgeFirst Datasets</a> ZIP and Arrow files in the "Data Snapshots".</p>
+<p>You can also drag and drop <a href="../../format/">EdgeFirst Datasets</a> ZIP and Arrow files in the "Snapshots" page.</p>
 </div>
 <figure>
             <img align="center" alt="Upload MCAP" src="../../assets/capture/mcap-upload.jpg" />

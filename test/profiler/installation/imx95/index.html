@@ -614,8 +614,6 @@
       
         
       
-        
-      
     
     
     
@@ -1663,8 +1661,6 @@
       
         
       
-        
-      
     
     
     
@@ -2023,7 +2019,7 @@
 <h2 id="container-image">Container image</h2>
 <div class="admonition tip">
 <p class="admonition-title">Run from a container instead</p>
-<p>The <code>imx95</code> tag of the <a href="../docker/">profiler container images</a> bundles the Neutron delegate and driver from the eIQ Neutron <abbr title="Software Development Kit">SDK</abbr> 3.0.1 along with the <abbr title="TensorFlow Lite">TFLite</abbr> runtime, so no local install is needed. Map the <abbr title="Neural Processing Unit">NPU</abbr> with <code>--device /dev/neutron0</code> plus the board's <abbr title="Direct Memory Access">DMA</abbr>-heap node (<code>ls /dev/dma_heap/</code>), or run with <code>--privileged</code> to grant both in one flag. The matching Neutron firmware must still be installed on the <strong>host</strong> — the kernel loads it from the host filesystem, not from inside the container.</p>
+<p>The <code>imx95</code> tag of the <a href="../docker/">profiler container images</a> bundles the Neutron delegate and driver from the eIQ Neutron <abbr title="Software Development Kit">SDK</abbr> 3.2.3, the version the Studio Neutron converter compiles with by default, along with the <abbr title="TensorFlow Lite">TFLite</abbr> runtime, so no local install is needed. Map the <abbr title="Neural Processing Unit">NPU</abbr> with <code>--device /dev/neutron0</code> plus the board's <abbr title="Direct Memory Access">DMA</abbr>-heap node (<code>ls /dev/dma_heap/</code>), or run with <code>--privileged</code> to grant both in one flag. The matching <abbr title="Software Development Kit">SDK</abbr> 3.2.3 Neutron firmware must still be installed on the <strong>host</strong> — the kernel loads it from the host filesystem, not from inside the container.</p>
 </div>
 <h2 id="per-tick-neutron-profiling">Per-tick Neutron profiling</h2>
 <p>When both conditions below are met, the profiler reports <strong>per-tick</strong> timing — every <abbr title="Neural Processing Unit">NPU</abbr> kernel (<code>Conv2DDenseTT</code>, <code>AddTT</code>, …) appears as its own slice in the Studio trace view:</p>

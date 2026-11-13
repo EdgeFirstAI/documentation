@@ -1119,17 +1119,6 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#tag-dataset" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Tag Dataset
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#annotate-dataset" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -1141,10 +1130,32 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#tag-dataset" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Tag Dataset
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#train-vision-model" class="md-nav__link">
     <span class="md-ellipsis">
       
         Train Vision Model
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#convert-vision-model" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Convert Vision Model
       
     </span>
   </a>
@@ -1173,6 +1184,23 @@
   </a>
   
 </li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#deploy-model" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Deploy Model
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Deploy Model">
+      <ul class="md-nav__list">
         
           <li class="md-nav__item">
   <a href="#live-inference" class="md-nav__link">
@@ -1303,8 +1331,6 @@
       
         
           
-        
-      
         
       
         
@@ -1727,8 +1753,6 @@
       
         
       
-        
-      
     
     
     
@@ -1878,17 +1902,6 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#tag-dataset" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Tag Dataset
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#annotate-dataset" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -1900,10 +1913,32 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#tag-dataset" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Tag Dataset
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#train-vision-model" class="md-nav__link">
     <span class="md-ellipsis">
       
         Train Vision Model
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#convert-vision-model" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Convert Vision Model
       
     </span>
   </a>
@@ -1932,6 +1967,23 @@
   </a>
   
 </li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#deploy-model" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Deploy Model
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Deploy Model">
+      <ul class="md-nav__list">
         
           <li class="md-nav__item">
   <a href="#live-inference" class="md-nav__link">
@@ -2039,7 +2091,13 @@
 
 <h1 id="auditor-workflow">Auditor Workflow</h1>
 <p>In this workflow, you will learn how to annotate your own dataset, train a model, validate it, and deploy it on the browser — all in the cloud without requiring target hardware.</p>
-<h3 id="copy-dataset">Copy Dataset</h3>
+<p>First copy a dataset from the "Sample Project" as shown below.</p>
+<figure>
+            <img align="center" alt="Sample Datasets Button" src="../../../studio/assets/projects/sample-datasets-button.jpg" />
+            <figcaption>Sample Datasets Button</figcaption>
+            </figure>
+<p>Inside "Sample Project", you will find a sample dataset called "Coffee Cup".  The examples shown will copy this dataset to train a model that detects coffee cups on images.</p>
+<h2 id="copy-dataset">Copy Dataset</h2>
 <p>To copy a dataset, navigate to the dataset you would like to copy.  On the dataset card, select "Copy Dataset" from the dataset options as shown below.</p>
 <figure>
             <img align="center" alt="Copy Dataset" src="../../../datasets/assets/management/copy-dataset-option.jpg" />
@@ -2082,29 +2140,7 @@
 </tr>
 </tbody>
 </table>
-<h3 id="tag-dataset">Tag Dataset</h3>
-<p>Before a dataset can be used for training, it must be tagged.  To preserve its current state, assign a version tag to the dataset.</p>
-<p>Click on the dataset options at the top right of the dataset card (three vertical dots). Then click the "History" button.</p>
-<figure>
-            <img align="center" alt="Tag Dataset Options" src="../../../datasets/assets/management/dataset-options-history.jpg" />
-            <figcaption>Tag Dataset Options</figcaption>
-            </figure>
-<p>Add a new tagged version of the dataset by clicking the + green button on the right of the page as shown.</p>
-<figure>
-            <img align="center" alt="Tag Dataset Button" src="../../../datasets/assets/management/dataset-history-add-new-tag.jpg" />
-            <figcaption>Tag Dataset Button</figcaption>
-            </figure>
-<p>Specify the tag version and tag description. Click "Create Tag" to tag the dataset.</p>
-<figure>
-            <img align="center" alt="Tag Dataset Options" src="../../../datasets/assets/management/dataset-tag-options.jpg" />
-            <figcaption>Tag Dataset Options</figcaption>
-            </figure>
-<p>The new dataset tag will appear under "Version History" of this page.  You can go back to the dataset card by clicking the "Back to Datasets" button.</p>
-<figure>
-            <img align="center" alt="Back to Datasets Button" src="../../../datasets/assets/management/back-to-datasets-button.jpg" />
-            <figcaption>Back to Datasets Button</figcaption>
-            </figure>
-<h3 id="annotate-dataset">Annotate Dataset</h3>
+<h2 id="annotate-dataset">Annotate Dataset</h2>
 <p>Now that you have a dataset in your project, you can start annotating the dataset.  This will briefly show the steps for annotating the dataset, but for an in depth tutorial on the annotation process, please see <a href="../../../datasets/tutorials/annotations/">Dataset Annotations</a>.  </p>
 <p>To annotate a dataset, first create an annotation set on the dataset card.</p>
 <figure>
@@ -2139,7 +2175,7 @@
             </figure>
 <p>Go ahead and launch the AGTG server.  Please allow ~5mins for the server to initialize.</p>
 <div class="admonition warning">
-<p class="admonition-title">AGTG Server Did Not Start</p>
+<p class="admonition-title">AGTG Server did not start</p>
 <p>If the AGTG server has not started after 5 minutes, refresh your browser and click the <strong>AI Segment Tool</strong> button again.</p>
 </div>
 <figure>
@@ -2159,7 +2195,7 @@ AGTG Preview
             <img align="center" alt="AGTG Initial Prompts" src="../../../datasets/assets/annotations/automatic/agtg-prompts.jpg" />
             <figcaption>AGTG Initial Prompts</figcaption>
             </figure>
-<p>Once the propagation completes, click "Save Annotations" to save the propagated annotations.</p>
+<p>Once the propagation completes, click "Save AIGT Annotations" to save the propagated annotations.</p>
 <figure>
             <img align="center" alt="Propagation Completed" src="../../../datasets/assets/annotations/automatic/propagation-completed.jpg" />
             <figcaption>Propagation Completed</figcaption>
@@ -2169,7 +2205,7 @@ AGTG Preview
 <p>Run the video playback to browse through the generated annotations and verify that the generated annotations are correct.</p>
 <p>If an annotation was missed, you can quickly <a href="../../../datasets/tutorials/annotations/manual/#add-2d-annotations">add the annotation</a> using the same process and click "Save AIGT Annotations" as shown.</p>
 <p><img alt="Add Missed Annotations" src="../../../datasets/assets/annotations/automatic/add-missed-annotation.jpg" /></p>
-<p>For objects that were improperly annotated, you can <a href="../../../datasets/tutorials/annotations/manual/#delete-2d-annotations">remove annotations</a>.  For annotations that require minor adjustments, EdgeFirst Studio has the features for <a href="../../../datasets/tutorials/annotations/manual/#adjust-2d-annotations">adjusting annotations</a>.  Please click on the links as provided for further instructions on each of these features.</p>
+<p>For objects that were improperly annotated, you can <a href="../../../datasets/tutorials/annotations/manual/#delete-2d-annotations">remove annotations</a>.  For annotations that require minor adjustments, EdgeFirst Studio has the features for <a href="../../../datasets/tutorials/annotations/manual/#adjust-2d-annotations">adjusting annotations</a>.  Please click on the links as provided for further instructions to these features.</p>
 </div>
 <p>Repeat the steps for all the sequences in the dataset.  You can go back to the dataset sequences by pressing the back button on the top left corner.</p>
 <figure>
@@ -2177,9 +2213,31 @@ AGTG Preview
             <figcaption>AGTG Server</figcaption>
             </figure>
 <p>For the case of individual images, the same steps apply except there is no propagation step.  You can still use the AGTG feature to quickly annotate images as shown in <a href="../../../datasets/tutorials/annotations/manual/#add-2d-annotations">Add 2D annotations</a>.</p>
-<h3 id="train-vision-model">Train Vision Model</h3>
-<p>Now that your dataset is fully annotated, versioned, and split into training and validation partitions, you are ready to begin training your model.  This will briefly show the steps for training a model, but for an in depth tutorial, please see <a href="../../../models/training/vision/">Training Vision Models</a>.</p>
-<p>Navigate back to the "Projects" page.  You can go back to the "Projects" page by clicking the Apps Menu waffle button on the top right of the Navigation bar.  Click the first selection to take you to the "Projects page".</p>
+<h2 id="tag-dataset">Tag Dataset</h2>
+<p>Before a dataset can be used for training, it must be tagged to preserve its current state.  Assign a version tag to the dataset.</p>
+<p>Click on the dataset options at the top right of the dataset card (three vertical dots). Then click the "History" button.</p>
+<figure>
+            <img align="center" alt="Tag Dataset Options" src="../../../datasets/assets/management/dataset-options-history.jpg" />
+            <figcaption>Tag Dataset Options</figcaption>
+            </figure>
+<p>Add a new tagged version of the dataset by clicking "Tag This Version" button as shown.</p>
+<figure>
+            <img align="center" alt="Tag Dataset Button" src="../../../datasets/assets/management/dataset-history-add-new-tag.jpg" />
+            <figcaption>Tag Dataset Button</figcaption>
+            </figure>
+<p>Specify the tag version and tag description. Click "Create Tag" to tag the dataset.</p>
+<figure>
+            <img align="center" alt="Tag Dataset Options" src="../../../datasets/assets/management/dataset-tag-options.jpg" />
+            <figcaption>Tag Dataset Options</figcaption>
+            </figure>
+<p>The new dataset tag will appear under "Version History" of this page.  You can go back to the dataset card by clicking the "Back to Datasets" button.</p>
+<figure>
+            <img align="center" alt="Back to Datasets Button" src="../../../datasets/assets/management/back-to-datasets-button.jpg" />
+            <figcaption>Back to Datasets Button</figcaption>
+            </figure>
+<h2 id="train-vision-model">Train Vision Model</h2>
+<p>Now that your dataset is fully annotated, tagged, and split into training and validation partitions, you are ready to begin training your model.  This guide briefly shows the steps for training a model, but for an in depth tutorial, please see <a href="../../../models/training/vision/">Training Vision Models</a>.</p>
+<p>Navigate back to the "Projects" page.  You can go back to the "Projects" page by clicking the "PROJECTS" button on the top navbar as shown.</p>
 <figure>
             <img align="center" alt="Go to Projects Page" src="../../../studio/assets/navigation/go-to-projects-page.jpg" />
             <figcaption>Go to Projects Page</figcaption>
@@ -2199,32 +2257,22 @@ AGTG Preview
             <img align="center" alt="Training Sessions" src="../../../models/assets/training/training-sessions.jpg" />
             <figcaption>Training Sessions</figcaption>
             </figure>
-<p>Create a new training session by clicking the "Actions" dropdown menu on the top right of the page and then click the "+ New" button.</p>
+<p>Start a new training session by clicking the "Actions" dropdown menu on the top right of the page.  From here you can either train <a href="../../../models/modelpack/">ModelPack</a> or <a href="../../../models/ultralytics/">Ultralytics</a> models.  In this guide, we will demonstrate starting a ModelPack session.</p>
 <figure>
-            <img align="center" alt="New Session Button" src="../../../models/assets/training/new-session-button.jpg" />
+            <img align="center" alt="New Session Button" src="../../../models/assets/training/new-mpk-session-button.jpg" />
             <figcaption>New Session Button</figcaption>
             </figure>
-<p>Follow the settings indicated and keep the rest of the settings default.  Click "Start Session" to start the training session.</p>
+<p>Follow the settings indicated and keep the rest of the settings default.  Click "Start App" to start the training session.</p>
 <figure>
             <img align="center" alt="Start Training Session" src="../../../models/assets/training/vision-train-settings.jpg" />
             <figcaption>Start Training Session</figcaption>
             </figure>
-<div class="admonition failure">
-<p class="admonition-title">InsufficientInstanceCapacity</p>
-<p><img alt="InsufficientInstanceCapacity Error" src="../../../studio/assets/models/insufficient-capacity-error.jpg" /></p>
-<p>If you see this error after starting your training session, retry creating the session. This can happen when AWS reports that no EC2 instances are currently available to launch; the current workaround is to retry.</p>
-</div>
 <p>The session progress will be shown like the following below.</p>
 <figure>
             <img align="center" alt="Training Session Progress" src="../../../models/assets/training/vision-session-progress.jpg" />
             <figcaption>Training Session Progress</figcaption>
             </figure>
-<p>Once the session is complete, the session card will appear like the following.</p>
-<figure>
-            <img align="center" alt="Completed Session" src="../../../models/assets/training/vision-completed-session.jpg" />
-            <figcaption>Completed Session</figcaption>
-            </figure>
-<p>Click the training session card for more information.</p>
+<p>Once the session is complete, the session card will appear like the following. Click the training session card for more information.</p>
 <figure>
             <img align="center" alt="Training Details" src="../../../models/assets/training/vision-view-train-details.jpg" />
             <figcaption>Training Details</figcaption>
@@ -2234,7 +2282,60 @@ AGTG Preview
             <img align="center" alt="Model Artifacts" src="../../../models/assets/training/vision-session-artifacts.jpg" />
             <figcaption>Model Artifacts</figcaption>
             </figure>
-<h3 id="validate-vision-model">Validate Vision Model</h3>
+<p>Now that you have trained your model, you can also find various model converters and exporters in EdgeFirst Studio that build supported model formats for specific computing hardware.</p>
+<h2 id="convert-vision-model">Convert Vision Model</h2>
+<p>We support model conversion and optimization workflows that enable trained models to be deployed on a wide range of target platforms and hardware architectures.</p>
+<p>Follow the model conversion workflow that corresponds to your target platform. <em>If you are deploying to a Windows/Linux PC or macOS system, you can skip this section and proceed directly to the next step to validate the <abbr title="Open Neural Network Exchange">ONNX</abbr> model</em>, which is automatically generated as part of the training session outputs.</p>
+<p>If you are deploying to one of the supported hardware platforms listed below, follow the platform-specific conversion instructions for your target device.</p>
+<table>
+<thead>
+<tr>
+<th>Converter</th>
+<th>Supported Targets</th>
+<th>Output Format</th>
+<th>Docs</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong><abbr title="TensorFlow Lite">TFLite</abbr> Converter</strong></td>
+<td>NXP i.MX 8M Plus (VIP8000), generic CPU/<abbr title="Neural Processing Unit">NPU</abbr> <abbr title="TensorFlow Lite">TFLite</abbr> delegates</td>
+<td><code>.tflite</code> flatbuffer</td>
+<td><a href="../../../models/conversion/tflite/"><abbr title="TensorFlow Lite">TFLite</abbr> Converter</a></td>
+</tr>
+<tr>
+<td><strong>Neutron Converter</strong></td>
+<td>NXP i.MX 95, i.MX 943/952, S32N79, MCX N54x/N94x, i.MX RT700, S32K5</td>
+<td><code>.tflite</code> flatbuffer with Neutron microcode</td>
+<td><a href="../../../models/conversion/neutron/">Neutron Converter</a></td>
+</tr>
+<tr>
+<td><strong>TensorRT Converter</strong></td>
+<td>NVIDIA Jetson (Orin Nano Super validated; broader lineup in progress)</td>
+<td><code>.tensorrt.zip</code> bundle (engine built on-device)</td>
+<td><a href="../../../models/conversion/tensorrt/">TensorRT Converter</a></td>
+</tr>
+<tr>
+<td><strong>Qualcomm Converter</strong></td>
+<td>Qualcomm Dragonwing / Snapdragon (see converter guide for supported targets)</td>
+<td><code>.qnn.onnx</code> with embedded QNN context</td>
+<td><a href="../../../models/conversion/qualcomm/">Qualcomm Converter</a></td>
+</tr>
+<tr>
+<td><strong>Ara2 Converter</strong></td>
+<td>NXP Ara240 <abbr title="Discrete Neural Processing Unit">DNPU</abbr></td>
+<td><code>.dvm</code> Dataflow Virtual Machine binary</td>
+<td><a href="../../../models/conversion/ara2/">Ara2 Converter</a></td>
+</tr>
+<tr>
+<td><strong>Hailo Converter</strong></td>
+<td>Hailo-8 (26 <abbr title="Trillion Operations Per Second">TOPS</abbr>), Hailo-8L (13 <abbr title="Trillion Operations Per Second">TOPS</abbr>)</td>
+<td><code>.hef</code> Hailo Executable Format</td>
+<td><a href="../../../models/conversion/hailo/">Hailo Converter</a></td>
+</tr>
+</tbody>
+</table>
+<h2 id="validate-vision-model">Validate Vision Model</h2>
 <p>Now that you have trained a model, you can validate its performance. The purpose of validation is to determine whether the selected model meets the performance requirements before deployment. EdgeFirst Studio offers two validation paths depending on your goal:</p>
 <table>
 <thead>
@@ -2261,7 +2362,7 @@ AGTG Preview
 <p class="admonition-title">Validating on target hardware?</p>
 <p>Cloud validation only supports <strong><abbr title="Open Neural Network Exchange">ONNX</abbr>, Keras, and <abbr title="TensorFlow Lite">TFLite</abbr></strong> artifacts. If you want to measure real inference latency and accuracy on your target device — including <abbr title="Neural Processing Unit">NPU</abbr>-compiled formats like Neutron, Hailo, Ara2, or TensorRT — use the <a href="../../../profiler/">EdgeFirst Profiler</a>.</p>
 </div>
-<h4 id="cloud-validation">Cloud Validation</h4>
+<h3 id="cloud-validation">Cloud Validation</h3>
 <p>If you haven't already, click on the training session card for more information.</p>
 <figure>
             <img align="center" alt="Training Details" src="../../../models/assets/training/vision-view-train-details.jpg" />
@@ -2272,18 +2373,11 @@ AGTG Preview
             <img align="center" alt="Validate Button" src="../../../models/assets/validation/training_validate_button.jpg" />
             <figcaption>Validate Button</figcaption>
             </figure>
-<p>Enter a name for the validation session, then select the model and dataset to use for validation.</p>
-<p>Under <strong>Model Selection</strong>, choose an <strong><abbr title="Open Neural Network Exchange">ONNX</abbr>, Keras, or <abbr title="TensorFlow Lite">TFLite</abbr></strong> artifact — these are the formats supported by cloud validation.</p>
-<p>For this example, all remaining settings were left at their default values. When you are ready, click <strong>Start Session</strong> at the bottom of the page to begin the validation process.</p>
+<p>Select the model to use for validation. Select either an <strong><abbr title="Open Neural Network Exchange">ONNX</abbr>, Keras, or <abbr title="TensorFlow Lite">TFLite</abbr></strong> model — these are the formats supported by cloud validation. When you are ready, click <strong>START APP</strong> to begin the validation process.</p>
 <figure>
             <img align="center" alt="Start Validation Session" src="../../../models/assets/validation/vision-validate-settings.jpg" />
             <figcaption>Start Validation Session</figcaption>
             </figure>
-<div class="admonition failure">
-<p class="admonition-title">InsufficientInstanceCapacity</p>
-<p><img alt="InsufficientInstanceCapacity Error" src="../../../studio/assets/models/insufficient-capacity-error.jpg" /></p>
-<p>If you see this error after starting your validation session, retry creating the session. This can happen when AWS reports that no EC2 instances are currently available to launch; the current workaround is to retry.</p>
-</div>
 <p>Go to the created validation session by first going back to the "Model Experiments" page.</p>
 <figure>
             <img align="center" alt="Go to Model Experiments" src="../../../models/assets/training/go-back-to-model-experiments.jpg" />
@@ -2314,10 +2408,11 @@ AGTG Preview
             <img align="center" alt="Go Back to the Training Session" src="../../../models/assets/validation/back-to-training-session.jpg" />
             <figcaption>Go Back to the Training Session</figcaption>
             </figure>
+<h2 id="deploy-model">Deploy Model</h2>
 <p>After <a href="../../../models/training/vision/">training a <strong>Vision</strong> model</a> in EdgeFirst Studio, you can deploy the <abbr title="Open Neural Network Exchange">ONNX</abbr> model on any device connected to a browser with access to a camera (for example, your phone or your PC). This guide will show you the steps for deploying the model using EdgeFirst Studio.</p>
 <div class="admonition note">
 <p class="admonition-title"><abbr title="Open Neural Network Exchange">ONNX</abbr> models only</p>
-<p>Live browser-based model running only supports <strong><abbr title="Open Neural Network Exchange">ONNX</abbr></strong> format. To validate or profile models in other formats (<abbr title="TensorFlow Lite">TFLite</abbr>, Neutron, Hailo, TensorRT, etc.) on real hardware, use the <a href="../../../profiler/">EdgeFirst Profiler</a>.</p>
+<p>Live browser-based model inference only supports the <strong><abbr title="Open Neural Network Exchange">ONNX</abbr></strong> format. To validate or profile models in other formats (<abbr title="TensorFlow Lite">TFLite</abbr>, Neutron, Hailo, TensorRT, etc.) on real hardware, use the <a href="../../../profiler/">EdgeFirst Profiler</a>.</p>
 </div>
 <p>Navigate to the training session you wish to deploy by going back to the "Projects" page by clicking the "Projects" button at the top left of the page.</p>
 <figure>
@@ -2334,28 +2429,25 @@ AGTG Preview
             <img align="center" alt="Training Sessions" src="../../../models/assets/validation/training-sessions.jpg" />
             <figcaption>Training Sessions</figcaption>
             </figure>
-<p>Click on the selected training session.</p>
+<p>Click the training session card.</p>
 <figure>
             <img align="center" alt="Training Session Details" src="../../../models/assets/training/vision-view-train-details.jpg" />
             <figcaption>Training Session Details</figcaption>
             </figure>
-<p>Click the "Run Model" button on the top right of the page.</p>
+<p>On the <strong>Artifacts</strong> tab, click the <strong>Run Model</strong> button (the play icon) next to the <abbr title="Open Neural Network Exchange">ONNX</abbr> artifact.</p>
 <figure>
             <img align="center" alt="Training Session Details (Run Model button)" src="../../assets/run_model/trainer_details_page.png" />
             <figcaption>Training Session Details (Run Model button)</figcaption>
             </figure>
-<h4 id="live-inference">Live Inference</h4>
-<p>You will be given the option for either live inference or inference from a file upload.  Go ahead and demo the live inference feed by clicking the "Live" option.</p>
-<figure>
-            <img align="center" alt="Live Inference Option" src="../../../models/assets/deployment/live-inference-option.jpg" />
-            <figcaption>Live Inference Option</figcaption>
-            </figure>
-<p>You should now see the live inference feed on your browser running the trained model.</p>
+<h3 id="live-inference">Live Inference</h3>
+<p>You will be given the option for either live inference or inference from a file upload.
+By default, the live inference feed will be selected.</p>
+<p>You should see the live inference feed on your browser running the trained model.</p>
 <figure>
             <img align="center" alt="Live Inference" src="../../../models/assets/deployment/studio-runner-live-inference.jpg" />
             <figcaption>Live Inference</figcaption>
             </figure>
-<h4 id="image-inference">Image Inference</h4>
+<h3 id="image-inference">Image Inference</h3>
 <p>Alternatively, you can also select the "Upload" option where you can select any image in your filesystem to pass to the model for inference.</p>
 <figure>
             <img align="center" alt="Image Inference Option" src="../../../models/assets/deployment/image-inference-option.jpg" />

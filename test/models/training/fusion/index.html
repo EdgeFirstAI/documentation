@@ -614,8 +614,6 @@
       
         
       
-        
-      
     
     
     
@@ -1223,10 +1221,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#view-dataset" class="md-nav__link">
+  <a href="#verify-dataset" class="md-nav__link">
     <span class="md-ellipsis">
       
-        View Dataset
+        Verify Dataset
       
     </span>
   </a>
@@ -1366,6 +1364,8 @@
       
         
           
+        
+      
         
       
         
@@ -1675,8 +1675,6 @@
       
         
       
-        
-      
     
     
     
@@ -1815,10 +1813,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#view-dataset" class="md-nav__link">
+  <a href="#verify-dataset" class="md-nav__link">
     <span class="md-ellipsis">
       
-        View Dataset
+        Verify Dataset
       
     </span>
   </a>
@@ -1997,27 +1995,26 @@
 
 
 <h1 id="training-fusion-models">Training Fusion Models</h1>
-<p>This tutorial describes the steps to train <strong>Fusion</strong> models in EdgeFirst Studio.  Recall that Fusion models are used for spatial perception using Radar data and camera frames as inputs to the model.  If you are working towards object detection, see <a href="../vision/">Training Vision Models</a>.</p>
-<h2 id="view-dataset">View Dataset</h2>
+<p>This tutorial describes the steps to train <strong>Fusion</strong> models in EdgeFirst Studio.  Fusion models are used for spatial perception using Radar data and camera frames as inputs to the model.  If you are working towards object detection, see <a href="../vision/">Training Vision Models</a>.</p>
+<h2 id="verify-dataset">Verify Dataset</h2>
 <p>First ensure that the dataset is ready to be used for training.  This means that the dataset meets all of the criteria listed below.</p>
 <ul class="task-list">
 <li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> Complete Annotations (bounding boxes and/or segmentation masks/polygons)</li>
 <li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> Contains training and validation partitions</li>
 <li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> Contains a dataset tag/version</li>
 </ul>
-<p>The section <a href="../../../datasets/tutorials/management/#view-fusion-dataset">View Fusion Dataset</a> will show an example of a completed dataset.</p>
+<div class="admonition tip">
+<p class="admonition-title">Complete Dataset</p>
+<p><a href="../../../datasets/tutorials/management/#view-fusion-dataset">See an example dataset</a> that is ready for training.</p>
+</div>
 <h2 id="specify-project-experiments">Specify Project Experiments</h2>
-<p>From the <a href="../../../studio/projects/">Projects page</a>, choose the project that contains the dataset you plan to use.  In this example, the project chosen is called "My First Project" project.  Next click the "Model Experiments" button as indicated in red.</p>
+<p>From the <a href="../../../studio/projects/">"Projects"</a> page, choose the project that contains the dataset you plan to use.  In this example, the project chosen is called "My First Project" project.  Next click the "Model Experiments" button as indicated in red.</p>
 <figure>
             <img align="center" alt="Model Experiments" src="../../assets/training/model-experiments.jpg" />
             <figcaption>Model Experiments</figcaption>
             </figure>
 <h2 id="create-model-experiment">Create Model Experiment</h2>
-<p>You will be greeted with the "Model Experiments" page.  A new project will not have any experiments as shown below.  You will need to first create a model experiment.  As mentioned in the <a href="../../../studio/models/">Model Experiments Dashboard</a>, model experiments will contain both training and validation sessions.</p>
-<figure>
-            <img align="center" alt="Model Experiments Page" src="../../assets/training/created-experiment.jpg" />
-            <figcaption>Model Experiments Page</figcaption>
-            </figure>
+<p>You will be greeted with the "Model Experiments" page. Each <a href="../../../studio/models/">model experiment</a> will contain both training and validation sessions. A new project will not have any experiments.</p>
 <p>Click on the "New Experiment" button as shown on the top right corner of the page.  Enter the name and the description of the experiment marked by the fields shown below.  Click on the "Create New Experiment" button to create your experiment.</p>
 <figure>
             <img align="center" alt="New Experiment Button" src="../../assets/training/create-experiment.jpg" />
@@ -2055,11 +2052,6 @@
             <figcaption>Training Session Fields</figcaption>
             </figure>
 <p>Once the configurations have been made, go ahead and click on the "Start Session" button on the bottom right of the window.  This will start the training session which will train the model for the number of epochs specified.</p>
-<div class="admonition failure">
-<p class="admonition-title">InsufficientInstanceCapacity</p>
-<p><img alt="InsufficientInstanceCapacity Error" src="../../../studio/assets/models/insufficient-capacity-error.jpg" /></p>
-<p>If you see this error after starting your training session, retry creating the session. This can happen when AWS reports that no EC2 instances are currently available to launch; the current workaround is to retry.</p>
-</div>
 <h2 id="session-progress">Session Progress</h2>
 <p>Once the training session has started, the progress with the stages will be shown on the left and additional information and status is shown on the right.</p>
 <figure>

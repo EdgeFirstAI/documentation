@@ -614,8 +614,6 @@
       
         
       
-        
-      
     
     
     
@@ -1195,10 +1193,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#view-dataset" class="md-nav__link">
+  <a href="#verify-dataset" class="md-nav__link">
     <span class="md-ellipsis">
       
-        View Dataset
+        Verify Dataset
       
     </span>
   </a>
@@ -1240,10 +1238,10 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#enable-training-and-use-default-weights" class="md-nav__link">
+  <a href="#weights-and-enable-training" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Enable Training and Use Default Weights
+        Weights and Enable Training
       
     </span>
   </a>
@@ -1355,6 +1353,8 @@
       
         
           
+        
+      
         
       
         
@@ -1664,8 +1664,6 @@
       
         
       
-        
-      
     
     
     
@@ -1804,10 +1802,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#view-dataset" class="md-nav__link">
+  <a href="#verify-dataset" class="md-nav__link">
     <span class="md-ellipsis">
       
-        View Dataset
+        Verify Dataset
       
     </span>
   </a>
@@ -1849,10 +1847,10 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#enable-training-and-use-default-weights" class="md-nav__link">
+  <a href="#weights-and-enable-training" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Enable Training and Use Default Weights
+        Weights and Enable Training
       
     </span>
   </a>
@@ -1975,27 +1973,26 @@
 
 
 <h1 id="training-vision-models">Training Vision Models</h1>
-<p>This tutorial describes the steps to train <strong>Vision</strong> models in EdgeFirst Studio.  Recall that Vision models are models that perform object detection in camera frames or images.  EdgeFirst Studio is capable of training ModelPack and Ultralytics object detection models.  For a tutorial to train Fusion models, see <a href="../fusion/">Training Fusion Models</a>.</p>
-<h2 id="view-dataset">View Dataset</h2>
+<p>This tutorial describes the steps to train <strong>Vision</strong> models in EdgeFirst Studio.  Vision models are models that perform object detection in camera frames or images.  EdgeFirst Studio is capable of training ModelPack and Ultralytics object detection models.  For a tutorial to train Fusion models, see <a href="../fusion/">Training Fusion Models</a>.</p>
+<h2 id="verify-dataset">Verify Dataset</h2>
 <p>First ensure that the dataset is ready to be used for training.  This means that the dataset meets all of the criteria listed below.</p>
 <ul class="task-list">
 <li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> Complete Annotations (bounding boxes and/or segmentation masks/polygons)</li>
 <li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> Contains training and validation partitions</li>
 <li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> Contains a dataset tag/version</li>
 </ul>
-<p>The section <a href="../../../datasets/tutorials/management/#view-dataset">View Dataset</a> will show an example of a completed dataset.</p>
+<div class="admonition tip">
+<p class="admonition-title">Complete Dataset</p>
+<p><a href="../../../datasets/tutorials/management/#view-dataset">See an example dataset</a> that is ready for training.</p>
+</div>
 <h2 id="specify-project-experiments">Specify Project Experiments</h2>
-<p>From the <a href="../../../studio/projects/">Projects page</a>, choose the project that contains the dataset you plan to use.  In this example, the project chosen is called "My First Project".  Next click the "Model Experiments" button as indicated in red.</p>
+<p>From the <a href="../../../studio/projects/">"Projects"</a> page, choose the project that contains the dataset you plan to use.  In this example, the project chosen is called "My First Project".  Next click the "Model Experiments" button as indicated in red.</p>
 <figure>
             <img align="center" alt="Model Experiments" src="../../assets/training/model-experiments.jpg" />
             <figcaption>Model Experiments</figcaption>
             </figure>
 <h2 id="create-model-experiment">Create Model Experiment</h2>
-<p>You will be greeted with the "Model Experiments" page.  A new project will not have any experiments as shown below.  You will need to first create a model experiment.  As mentioned in the <a href="../../../studio/models/">Model Experiments Dashboard</a>, model experiments will contain both training and validation sessions.</p>
-<figure>
-            <img align="center" alt="Model Experiments Page" src="../../assets/training/created-experiment.jpg" />
-            <figcaption>Model Experiments Page</figcaption>
-            </figure>
+<p>You will be greeted with the "Model Experiments" page. Each <a href="../../../studio/models/">model experiment</a> will contain both training and validation sessions. A new project will not have any experiments.</p>
 <p>Click on the "New Experiment" button as shown on the top right corner of the page.  Enter the name and the description of the experiment marked by the fields shown below.  Click on the "Create New Experiment" button to create your experiment.</p>
 <figure>
             <img align="center" alt="New Experiment Button" src="../../assets/training/create-experiment.jpg" />
@@ -2017,105 +2014,104 @@
             <img align="center" alt="Training Sessions Page" src="../../assets/training/training-sessions-page.jpg" />
             <figcaption>Training Sessions Page</figcaption>
             </figure>
-<p>Start a training session by clicking on the "Actions" button on the top right corner of the page and then click "+ New" as indicated.</p>
+<p>Start a training session by clicking on the "Actions" button on the top right corner of the page and then click "+ New Trainer Session" as indicated.</p>
 <figure>
             <img align="center" alt="New Session Button" src="../../assets/training/new-session-button.jpg" />
             <figcaption>New Session Button</figcaption>
             </figure>
-<p>You will be greeted with a training session dialog.  In this dialog, specify the "Trainer Type" to either "ModelPack" or "Ultralytics" and provide a name and description of the training session as shown below.  Next specify the dataset to be used with training and validation partitions.  In this example, the dataset specified is the "Coffee Cup" dataset which was used as an example under the <a href="../../../getting_started/capture_data/">Getting Started</a>.  Next specify the training parameters.  By default, object detection (bounding boxes) model will be trained.  However, you can specify either "Segmentation" or both.  Additional information on these parameters are provided by hovering over the info button <img alt="Info Button" src="../../../assets/buttons/studio-info-button.jpg" />.</p>
+<p>Select the trainer, either "ModelPack" or "Ultralytics".  Both trainers run as Studio apps on cloud GPU instances, and Studio opens the launch form of the selected trainer.  Provide a name and description of the training session and specify the dataset to be used for training and validation.  In this example, the dataset specified is the "Coffee Cup" dataset which was used as an example under the <a href="../../../getting_started/capture_data/">Getting Started</a>.  Next specify the training parameters.  Additional information on these parameters are provided by hovering over the info button <img alt="Info Button" src="../../../assets/buttons/studio-info-button.jpg" />.</p>
 <div class="admonition tip">
 <p class="admonition-title">Input Resolution</p>
-<p>We recommend changing the input resolution to 640x360 to maximize detection rates on small datasets.</p>
+<p>For ModelPack, we recommend changing the input resolution to 640x360 to maximize detection rates on small datasets.</p>
 </div>
 <div class="admonition warning">
 <p class="admonition-title">Large Batch Size</p>
 <p>For small datasets, a large batch size may produce poor results. Use a batch size of 4 or 8.</p>
 </div>
 <p>For more information on available "Data Augmentations" please see <a href="../../augmentations/">Vision Augmentations</a>.</p>
-<figure>
-            <img align="center" alt="Training Session Fields" src="../../assets/training/vision-train-settings.jpg" />
-            <figcaption>Training Session Fields</figcaption>
-            </figure>
-<ol>
-<li><strong>Model Name</strong>: This field specifies the name of the training session and will be used to name the artifacts (e.g. <code>modelpack-coffecup-640x640-rgba-t-&lt;session ID&gt;.tflite</code> or <code>modelpack-coffecup-640x640-rgba-t-&lt;session ID&gt;.onnx</code>)</li>
-<li><strong>Description</strong>: This field is used to add some hints about the training session.  Commonly used to highlight some parameters</li>
-<li><strong>Training Data</strong>: In this section the user must select the dataset as well as train/val groups</li>
-<li><strong>Input Resolution</strong>: The user can pick predefined input resolutions.  Even when ModelPack accepts any resolution we keep this option as simple as possible.  In case you need a different resolution to be supported, please reach out and <a href="mailto:support@edgefirst.ai">email our support team</a></li>
-<li><strong>Camera Adaptor</strong>: ModelPack accepts six different input optimizations.  It could be either of <abbr title="Red Green Blue">RGB</abbr>, BGR, <abbr title="Red Green Blue Alpha">RGBA</abbr>, BGRA, Greyscale, or YUYV</li>
-<li><strong>Model Parameters</strong>: This section configures the model architecture<ol>
-<li><strong>Model Backbone</strong>: Model backbone exposes a CSPDarknet19 optimized for boosting inference time and a CSPDarknet53 optimized for accuracy</li>
-<li><strong>Model Size</strong>: Similar to modern architectures, ModelPack also accepts dynamic scaling factors (<code>width in [0.25, 0.5, 0.75, 1.0]</code>, <code>depth in [0.33, 0.33, 0.66, 1.0]</code>)</li>
-<li><strong>Activation Function</strong>: This parameter defines the main activation used in the model. Exposed values are ReLU, ReLU6 and SiLU.  The best tradeoff between speed and accuracy is produced by ReLU6 activation in most of the cases</li>
-<li><strong>Interpolation Method</strong>: Model upsample layers are ruled by a resize operation.  This operation can run with two different algorithms: <code>Bilinear</code> or <code>Nearest</code></li>
-<li><strong>Object Detection</strong>: Enables object detection task (enabled by default)</li>
-<li><strong>Segmentation</strong>: Enables Semantic Segmentation</li>
-<li><strong>Space to Depth</strong>: This feature enables the Space to Depth Transformation to the input in order to reduce model complexity on higher resolutions</li>
-<li><strong>Split Decoder</strong>: Remove the decoder from the model and use a very optimized one from EdgeFirst.  This feature is very useful when the location of the boxes has to be precise (0-offset)</li>
-</ol>
-</li>
-<li>
-<p><strong>Training Parameters</strong>: In this section the user is able to specify the number of epochs to train the model as well as the batch size.  Remember the larger the input resolution the smaller the batch size</p>
-<ol>
-<li>
-<p><strong>Enable Training</strong> <em>(Ultralytics only)</em>: When enabled, the model is trained using the selected weights. When disabled (default), no training is performed — weights are pushed directly to the session artifacts. See <a href="#enable-training-and-use-default-weights">Enable Training and Use Default Weights</a> below.</p>
-<div class="admonition note">
-<p class="admonition-title">No Training Charts</p>
-<p>Training sessions with <strong>Enable Training</strong> disabled will not generate loss or metric charts, since the chart x-axis is epoch-based. This is expected behavior.</p>
-</div>
-</li>
-<li>
-<p><strong>Use Default Weights</strong>: When enabled (default), training starts from pre-trained COCO weights. When disabled, starting weights are sourced from a prior training session you specify.</p>
-</li>
-</ol>
-</li>
-<li>
-<p><strong>Data Augmentation</strong>: This section controls the probability of each augmentation technique.  This feature is crucial for training models and reduce overfitting, especially in small datasets</p>
-</li>
-<li><strong>Export Parameters</strong>: Allow the user to set a portion of data for calibration when exporting the model for <abbr title="Signed 8-bit integer">INT8</abbr> quantization</li>
-<li><strong>Start Session</strong>: This button will start the training session</li>
-</ol>
-<h3 id="enable-training-and-use-default-weights">Enable Training and Use Default Weights</h3>
-<p>The <strong>Enable Training</strong> checkbox (Ultralytics only) and <strong>Use Default Weights</strong> checkbox combine to control how the session is initialized and whether active training is performed:</p>
+<p>The launch forms of both trainers start with the same three groups.</p>
 <table>
 <thead>
 <tr>
-<th>Use Default Weights</th>
-<th>Enable Training</th>
-<th>Behavior</th>
+<th>Group</th>
+<th>Description</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>✓ Enabled</td>
-<td>✓ Enabled</td>
-<td>Train from pre-trained COCO weights.</td>
+<td><strong>Training Session</strong></td>
+<td>The <strong>Name</strong> and optional <strong>Description</strong> of the training session.  The name is also used to name the artifacts.</td>
 </tr>
 <tr>
-<td>✗ Disabled</td>
-<td>✓ Enabled</td>
-<td>Train starting from weights of a prior training session you specify.</td>
-</tr>
-<tr>
-<td>✓ Enabled</td>
-<td>✗ Disabled</td>
-<td><strong>Default.</strong> No training. Pre-trained COCO weights are copied directly to the session artifacts. Results will be poor on non-COCO datasets — Studio displays a warning. This default exists because full COCO training for Ultralytics is compute-intensive, and it lets you reproduce validation and profiling results from the <a href="https://huggingface.co/spaces/EdgeFirst/Models">EdgeFirst Model Zoo on Hugging Face</a> using the published COCO checkpoints.</td>
-</tr>
-<tr>
-<td>✗ Disabled</td>
-<td>✗ Disabled</td>
-<td>No training. Weights are copied from a specified prior training session — equivalent to cloning that session's artifacts.</td>
+<td><strong>Source Dataset</strong></td>
+<td>The dataset the session trains and validates on, with its annotation set and tag.</td>
 </tr>
 </tbody>
 </table>
+<p>The groups that follow depend on the trainer.</p>
+<table>
+<thead>
+<tr>
+<th>Trainer</th>
+<th>Groups</th>
+<th>Parameter Reference</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>ModelPack</strong></td>
+<td>Input (Input Resolution, Camera Adaptor, Input Tiling (SAHI), Letterbox Resize), Model Parameters, Training Parameters, Data Augmentation, Export Parameters</td>
+<td><a href="../../modelpack/#training-parameters">ModelPack Training Parameters</a></td>
+</tr>
+<tr>
+<td><strong>Ultralytics</strong></td>
+<td>Input (Input Resolution), Task Selection, Export Parameters, Training (Weights, Enable Training and its training settings)</td>
+<td><a href="../../ultralytics/#training-parameters">Ultralytics Training Parameters</a></td>
+</tr>
+</tbody>
+</table>
+<p>Click "Start App" to start the training session.</p>
+<h3 id="weights-and-enable-training">Weights and Enable Training</h3>
+<p>The two trainers start from different weights.</p>
+<ul>
+<li><strong>ModelPack</strong> always trains.  The backbone starts from ImageNet-pretrained weights and the detection and segmentation heads start fresh.</li>
+<li><strong>Ultralytics</strong> has a <strong>Weights</strong> field and an <strong>Enable Training</strong> toggle in its Training group.  <strong>Weights</strong> is either <strong>Pretrained (COCO)</strong> (default), the Ultralytics COCO weights for the selected model, or a previous Ultralytics training session, whose published weights bring their own model definition.  <strong>Enable Training</strong> is off by default.</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Weights</th>
+<th>Enable Training</th>
+<th>Ultralytics Session Behavior</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Pretrained (COCO)</td>
+<td>Off</td>
+<td><strong>Default.</strong> No training.  The session exports the COCO pretrained weights (80 classes) at the selected Input Resolution.  This lets you reproduce validation and profiling results from the <a href="https://huggingface.co/spaces/EdgeFirst/Models">EdgeFirst Model Zoo on Hugging Face</a> using the published COCO checkpoints.</td>
+</tr>
+<tr>
+<td>Pretrained (COCO)</td>
+<td>On</td>
+<td>Fine-tunes the COCO pretrained weights on the selected dataset.</td>
+</tr>
+<tr>
+<td>A previous training session</td>
+<td>On</td>
+<td>Fine-tunes the weights published by that session on the selected dataset.</td>
+</tr>
+<tr>
+<td>A previous training session</td>
+<td>Off</td>
+<td>No training.  The session exports that session's weights at the Input Resolution and Deployment chosen on the form, for example to deploy tile-trained weights whole frame.</td>
+</tr>
+</tbody>
+</table>
+<p>A session with <strong>Enable Training</strong> off validates the exported model and reports the results as its final validation metrics.  It runs no epochs, so its loss and learning-rate charts stay empty.  See <a href="../../ultralytics/#weights-source">Weights Source</a> for the details.</p>
 <div class="admonition warning">
-<p class="admonition-title">COCO pre-trained weights and dataset compatibility</p>
-<p>The <strong>Use Default Weights</strong> option initializes from pre-trained COCO weights. These weights can technically be used as a starting point for any dataset, but <strong>if your dataset labels have no overlap with COCO category names, validation accuracy will be very poor</strong> — the model's class outputs will not correspond to your labels.</p>
-<p>For best transfer-learning results, ensure your label names match the relevant COCO categories, or supply a prior EdgeFirst training session as the starting weights.</p>
-</div>
-<div class="admonition failure">
-<p class="admonition-title">InsufficientInstanceCapacity</p>
-<p><img alt="InsufficientInstanceCapacity Error" src="../../../studio/assets/models/insufficient-capacity-error.jpg" /></p>
-<p>If you see this error after starting your training session, retry creating the session. This can happen when AWS reports that no EC2 instances are currently available to launch; the current workaround is to retry.</p>
+<p class="admonition-title">COCO pretrained weights and dataset compatibility</p>
+<p><strong>Pretrained (COCO)</strong> weights without training detect the 80 COCO classes.  When your dataset classes differ from the COCO classes, the session skips validation, and the model's class outputs do not correspond to your labels.  Turn on <strong>Enable Training</strong> to fine-tune the weights on your dataset.</p>
 </div>
 <h2 id="session-progress">Session Progress</h2>
 <p>Once the training session has started, the progress with the stages will be shown on the left and additional information and status is shown on the right.</p>
@@ -2124,7 +2120,7 @@
             <figcaption>Training Session</figcaption>
             </figure>
 <p>The training process begins with cloud instance initialization. Then the dataset is downloaded and cached.  Training starts afterwards.
-At the end of the training process, the model is quantized and the model artifacts will be published on the training session available for download.</p>
+At the end of the training process, the model is exported and the model artifacts are published on the training session, available for download.</p>
 <h2 id="completed-session">Completed Session</h2>
 <p>The completed session will look as follows with the status set to "Complete".</p>
 <figure>

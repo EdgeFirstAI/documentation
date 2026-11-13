@@ -614,8 +614,6 @@
       
         
       
-        
-      
     
     
     
@@ -1016,8 +1014,6 @@
       
         
       
-        
-      
     
     
     
@@ -1109,98 +1105,6 @@
   
   
   
-    <li class="md-nav__item">
-      <a href="../../profiling/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Profiling the Middleware
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    
-    
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-    
-    
-    
-      
-      
-    
-    
-      
-        
-        
-      
-    
-    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
-      
-        
-  
-  
-  
-    <a href="../../data_collection/recording/" class="md-nav__link">
-      
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Dataset Collection Middleware
-  
-
-    
-  </span>
-  
-  
-
-      
-        <span class="md-nav__icon md-icon"></span>
-      
-    </a>
-  
-
-      
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
     
     
       
@@ -1259,6 +1163,136 @@
         <span class="md-nav__icon md-icon"></span>
       
     </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../data_collection/recording/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Dataset Collection
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    
+  
+  
+  
+    <a href="../../4k/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Advanced
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
   
 
       
@@ -2119,72 +2153,6 @@
     
   
     Deep View RT
-  
-
-    
-  </span>
-  
-  
-
-      
-        <span class="md-nav__icon md-icon"></span>
-      
-    </a>
-  
-
-      
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    
-    
-      
-        
-          
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-    
-    
-    
-      
-      
-    
-    
-      
-        
-        
-      
-    
-    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
-      
-        
-  
-  
-  
-    <a href="../../4k/" class="md-nav__link">
-      
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    4K Video
   
 
     
@@ -3220,9 +3188,9 @@ alignment within composite messages).</p>
 
         <p><code>sensor_msgs.PointField</code> — descriptor of one field within a
 :class:<code>PointCloud2</code>'s packed point layout.</p>
-<p><code>datatype</code> follows the ROS 2 spec:
-    1 <abbr title="Signed 8-bit integer">INT8</abbr>, 2 <abbr title="Unsigned 8-bit integer">UINT8</abbr>, 3 <abbr title="Signed 16-bit integer">INT16</abbr>, 4 UINT16, 5 INT32, 6 UINT32,
-    7 FLOAT32, 8 FLOAT64.</p>
+<p><code>datatype</code> is a ROS 2 PointField datatype code, named by the class
+attributes <code>INT8</code>, <code>UINT8</code>, <code>INT16</code>, <code>UINT16</code>, <code>INT32</code>,
+<code>UINT32</code>, <code>FLOAT32</code> and <code>FLOAT64</code>.</p>
 
 
 
@@ -3271,10 +3239,10 @@ alignment within composite messages).</p>
 <h4 id="edgefirst.schemas.sensor_msgs.PointCloud2--example">Example</h4>
 <p>::</p>
 <pre><code>fields = [
-    PointField(name="x", offset=0,  datatype=7, count=1),  # float32
-    PointField(name="y", offset=4,  datatype=7, count=1),
-    PointField(name="z", offset=8,  datatype=7, count=1),
-    PointField(name="i", offset=12, datatype=2, count=1),  # uint8
+    PointField(name="x", offset=0,  datatype=PointField.FLOAT32),
+    PointField(name="y", offset=4,  datatype=PointField.FLOAT32),
+    PointField(name="z", offset=8,  datatype=PointField.FLOAT32),
+    PointField(name="i", offset=12, datatype=PointField.UINT8),
 ]
 pc = PointCloud2(
     header=Header(stamp=Time(1, 0), frame_id="lidar"),

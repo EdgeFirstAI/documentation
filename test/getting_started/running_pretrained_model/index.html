@@ -1062,8 +1062,6 @@
       
         
       
-        
-      
     
     
     
@@ -1462,8 +1460,6 @@
       
         
       
-        
-      
     
     
     
@@ -1704,17 +1700,17 @@
 <li>Log in with your username and password</li>
 </ol>
 <h2 id="2-locate-a-model-to-run">2. Locate a Model to Run</h2>
-<p>EdgeFirst Studio provides several pre-trained models in the <strong>Sample Projects</strong> section.</p>
+<p>EdgeFirst Studio provides several pre-trained models in the <strong>Sample Project</strong>.</p>
 <ol>
 <li>
-<p>On the landing page after login, click <strong>PROJECTS</strong> at the top next to "Home".  This opens the Projects Dashboard</p>
+<p>On the landing page after login, click <strong>PROJECTS</strong> at the top next to "Home".  This opens the Projects Dashboard.</p>
 <p><figure markdown="span">
         <img align="center" alt="Go To Projects" src="../../studio/assets/user/home-page-goto-projects.png" />
         <figcaption>Go To Projects</figcaption>
         </figure></p>
 </li>
 <li>
-<p>Find the <strong>Sample Projects</strong> card and click <strong>Model Experiments</strong></p>
+<p>Find the <strong>Sample Project</strong> card and click <strong>Model Experiments</strong>.</p>
 <p><figure markdown="span">
         <img align="center" alt="Sample Projects" src="../assets/run_model/sample-projects.png" width="400" />
         <figcaption>Sample Projects</figcaption>
@@ -1722,28 +1718,25 @@
 <p>On the <a href="../../studio/models/">Experiments page</a>, each card represents an experiment with multiple training and validation sessions.</p>
 </li>
 <li>
-<p>Click on the <strong>Training Sessions</strong> for the "Coffee Cup Segmentation" Experiment to view available sessions.  Each session will have a model in different formats if training completed successfully</p>
+<p>Click on the <strong>Training Sessions</strong> for the "Coffee Cup Segmentation" Experiment to view available sessions.  Each session will have a model in different formats if training completed successfully.</p>
 <p><figure markdown="span">
         <img align="center" alt="Coffee Cup Experiment" src="../assets/run_model/coffeecup-experiment-sample-project.png" />
         <figcaption>Coffee Cup Experiment</figcaption>
         </figure></p>
 </li>
 <li>
-<p>Click the training session <strong>CoffeCup-mpk3.1.0</strong> to open its details page</p>
+<p>Click the training session <strong>yolov8n-seg-coffeecups</strong> to open its details page.</p>
 <p><figure markdown="span">
         <img align="center" alt="Coffee Cup Training Card" src="../assets/run_model/coffeecup-training-session.png" />
         <figcaption>Coffee Cup Training Card</figcaption>
         </figure></p>
 </li>
 <li>
-<p>Open the <strong>Artifacts</strong> tab and click the <strong>Play</strong> button next to the artifact you want to deploy. For cloud inference, only <abbr title="Open Neural Network Exchange">ONNX</abbr> model artifacts are supported.</p>
+<p>Open the <strong>Artifacts</strong> tab and click the <strong>Run Model</strong> button (the play icon) next to the <abbr title="Open Neural Network Exchange">ONNX</abbr> artifact. If the model is not supported or the <abbr title="Open Neural Network Exchange">ONNX</abbr> file is missing, this button will not appear. This opens the Model Runner dashboard.</p>
 <p><figure markdown="span">
-        <img align="center" alt="Training Session Details" src="../assets/run_model/trainer_details_page.png" />
-        <figcaption>Training Session Details</figcaption>
+        <img align="center" alt="Training Session Details (Run Model button)" src="../assets/run_model/trainer_details_page.png" />
+        <figcaption>Training Session Details (Run Model button)</figcaption>
         </figure></p>
-</li>
-<li>
-<p>Click the <strong>Run Model</strong> button.  If the model is not supported or the <abbr title="Open Neural Network Exchange">ONNX</abbr> file is missing, this button will not appear.  This opens the Model Runner dashboard</p>
 </li>
 </ol>
 <hr />
@@ -1760,9 +1753,9 @@
 <hr />
 <h2 id="4-running-model-on-live-camera-stream">4. Running Model on Live Camera Stream</h2>
 <ol>
-<li>In the Model Runner dashboard, select <strong>Live</strong></li>
-<li>Choose your camera and allow access when prompted</li>
-<li>The model will start running on the live stream.  Point the camera at coffee cups to see results in real time</li>
+<li>In the Model Runner dashboard, select <strong>Live</strong>.</li>
+<li>Choose your camera and allow access when prompted.</li>
+<li>The model will start running on the live stream.  Point the camera at coffee cups to see results in real time.</li>
 </ol>
 <p>You're now ready to experience the full <abbr title="Machine Learning Operations">MLOps</abbr> workflow in EdgeFirst Studio. In under an hour — and for approximately $8 USD—you can copy a dataset, train a model, validate its performance, and deploy it in the browser.</p>
 <p>The journey begins by creating a project, which acts as the central workspace for all your datasets, models, validation sessions, and deployments.</p>

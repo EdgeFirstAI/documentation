@@ -614,8 +614,6 @@
       
         
       
-        
-      
     
     
     
@@ -898,6 +896,23 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="coco-to-arrow and arrow-to-coco">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#offline-coco-dataset" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Offline COCO dataset
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
         
           <li class="md-nav__item">
@@ -913,6 +928,17 @@
         
       </ul>
     </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#visdrone" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        VisDrone
+      
+    </span>
+  </a>
   
 </li>
       
@@ -1416,8 +1442,6 @@
       
         
       
-        
-      
     
     
     
@@ -1587,6 +1611,23 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="coco-to-arrow and arrow-to-coco">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#offline-coco-dataset" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Offline COCO dataset
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
         
           <li class="md-nav__item">
@@ -1602,6 +1643,17 @@
         
       </ul>
     </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#visdrone" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        VisDrone
+      
+    </span>
+  </a>
   
 </li>
       
@@ -1694,12 +1746,15 @@
 <pre class="mermaid"><code>flowchart TD
   start[Import data into Studio]
   start --&gt; cocoPath{Source is COCO or LVIS JSON?}
-  start --&gt; efPath{Source is EdgeFirst ZIP/Arrow?}
+  start --&gt; visdronePath{Source is VisDrone2019?}
+  start --&gt; efPath{Source is EdgeFirst Arrow/Parquet?}
   start --&gt; customPath{Custom source e.g. TFDS?}
   cocoPath --&gt;|Yes| nativeCoco["CLI: import-coco / coco-to-arrow"]
+  visdronePath --&gt;|Yes| visdrone["CLI: visdrone-to-arrow"]
   efPath --&gt;|Yes| efFormat["CLI: upload-dataset / create-snapshot"]
   customPath --&gt;|Yes| pythonApi["Python API: populate_samples workflow"]
   nativeCoco --&gt; studio[EdgeFirst Studio dataset]
+  visdrone --&gt; efFormat
   efFormat --&gt; studio
   pythonApi --&gt; studio</code></pre>
 <p>For Darknet/<abbr title="You Only Look Once">YOLO</abbr> imports through the Studio web UI, see the <a href="../../datasets/tutorials/import/">dataset import tutorial</a>.</p>
@@ -1723,11 +1778,11 @@
 </tr>
 <tr>
 <td><code>coco-to-arrow</code></td>
-<td>Convert COCO/LVIS JSON to EdgeFirst Arrow</td>
+<td>Convert COCO/LVIS JSON, a ZIP, or an extracted COCO directory to an offline EdgeFirst dataset (Arrow or Parquet)</td>
 </tr>
 <tr>
 <td><code>arrow-to-coco</code></td>
-<td>Convert EdgeFirst Arrow to COCO JSON</td>
+<td>Convert an EdgeFirst Arrow or Parquet file to COCO JSON</td>
 </tr>
 </tbody>
 </table>
@@ -1745,26 +1800,75 @@ edgefirst-client<span class="w"> </span>import-coco<span class="w"> </span>./coc
 </code></pre></div>
 <div class="admonition note">
 <p class="admonition-title">Group assignment</p>
-<p>Standard COCO JSON references images by bare filename (e.g. <code>000000397133.jpg</code>) with no detectable train/val group. To assign splits, convert with <code>coco-to-arrow --group train</code> and upload with <code>upload-dataset</code> instead.</p>
+<p>Standard COCO JSON references images by bare filename (e.g. <code>000000397133.jpg</code>) with no detectable train/val group. To assign splits, convert with <code>coco-to-arrow</code> (which infers the split from each <code>instances_*.json</code> filename when given a directory, or takes <code>--group</code>) and upload with <code>upload-dataset</code> instead.</p>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Crowd annotations are skipped</p>
+<p>COCO crowd annotations (<code>iscrowd=1</code>) map to the <code>ignore</code> flag, which EdgeFirst Studio does not store yet. <code>import-coco</code> and <code>import-coco --update</code> skip them and log one warning with the count, and <code>--verify</code> leaves them out of the comparison.</p>
 </div>
 <p>See the <a href="../cli/reference/#import-coco">CLI reference</a> for <code>--verify</code>, <code>--update</code>, and batch options.</p>
 <h3 id="coco-to-arrow-and-arrow-to-coco">coco-to-arrow and arrow-to-coco</h3>
-<p>Convert between COCO/LVIS and <a href="../../datasets/format/">EdgeFirst Dataset Format</a> without uploading:</p>
+<p>Convert between COCO/LVIS and <a href="../../datasets/format/">EdgeFirst Dataset Format</a> without uploading. No Studio credentials are needed.</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># COCO/LVIS JSON to Arrow (preserves category_id and object_id)</span>
 edgefirst-client<span class="w"> </span>coco-to-arrow<span class="w"> </span>instances.json<span class="w"> </span>-o<span class="w"> </span>dataset.arrow<span class="w"> </span>--group<span class="w"> </span>train
 
 <span class="c1"># Arrow back to COCO JSON</span>
 edgefirst-client<span class="w"> </span>arrow-to-coco<span class="w"> </span>dataset.arrow<span class="w"> </span>-o<span class="w"> </span>instances.json<span class="w"> </span>--groups<span class="w"> </span>train,val
 </code></pre></div>
-<p>LVIS taxonomies with more than 255 categories are supported (Arrow <code>label_index</code> uses <code>U16</code>).</p>
+<p>LVIS taxonomies with more than 255 categories are supported; <code>label_index</code> is stored as <code>UInt64</code> and preserves the source <code>category_id</code>.</p>
+<p><code>arrow-to-coco</code> writes COCO <code>iscrowd=1</code> from labeled <code>ignore</code> rows. Unlabeled <code>ignore</code> rows and all <code>exclude</code> rows have no COCO equivalent and are skipped with one warning giving the count.</p>
+<h4 id="offline-coco-dataset">Offline COCO dataset</h4>
+<p>Given a standard extracted COCO directory, <code>coco-to-arrow</code> produces one offline dataset containing every split, with the images staged next to the annotation file:</p>
+<div class="highlight"><pre><span></span><code>COCO/
+├── annotations/
+│   ├── instances_train2017.json
+│   └── instances_val2017.json
+├── train2017/
+└── val2017/
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="c1"># Arrow IPC</span>
+edgefirst-client<span class="w"> </span>coco-to-arrow<span class="w"> </span>COCO<span class="w"> </span>--output<span class="w"> </span>coco/coco.arrow<span class="w"> </span>--images<span class="w"> </span>COCO<span class="w"> </span>--link
+edgefirst-client<span class="w"> </span>validate-snapshot<span class="w"> </span>coco
+
+<span class="c1"># Parquet — chosen by the .parquet extension</span>
+edgefirst-client<span class="w"> </span>coco-to-arrow<span class="w"> </span>COCO<span class="w"> </span>--output<span class="w"> </span>coco-parquet/coco-parquet.parquet<span class="w"> </span>--images<span class="w"> </span>COCO<span class="w"> </span>--link
+edgefirst-client<span class="w"> </span>validate-snapshot<span class="w"> </span>coco-parquet
+</code></pre></div>
+<p>Directory conversion discovers the <code>instances_*.json</code> files and assigns the split inferred from each filename to the <code>group</code> column (<code>train</code>, <code>val</code>, or <code>test</code>). <code>--images</code> copies the referenced images into a sibling folder; <code>--link</code> creates symlinks instead (Unix only). Existing staged files are left untouched on re-run, and missing source images or filename collisions are reported as warnings. An image with no annotations still receives one row with a null <code>label</code>, keeping its <code>name</code>, <code>size</code>, and <code>group</code>.</p>
+<div class="highlight"><pre><span></span><code>coco/
+├── coco.arrow                 # or coco.parquet
+└── coco/
+    ├── 000000000009.jpg
+    └── ...
+</code></pre></div>
+<p>Select a split with Polars:</p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">polars</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pl</span>
+
+<span class="n">df</span> <span class="o">=</span> <span class="n">pl</span><span class="o">.</span><span class="n">read_ipc</span><span class="p">(</span><span class="s2">"coco/coco.arrow"</span><span class="p">)</span>    <span class="c1"># or pl.read_parquet("coco-parquet/coco-parquet.parquet")</span>
+<span class="n">train</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">pl</span><span class="o">.</span><span class="n">col</span><span class="p">(</span><span class="s2">"group"</span><span class="p">)</span> <span class="o">==</span> <span class="s2">"train"</span><span class="p">)</span>
+<span class="n">val</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">pl</span><span class="o">.</span><span class="n">col</span><span class="p">(</span><span class="s2">"group"</span><span class="p">)</span> <span class="o">==</span> <span class="s2">"val"</span><span class="p">)</span>
+</code></pre></div>
 <h3 id="export-coco">export-coco</h3>
 <p>Download a Studio dataset as COCO:</p>
 <div class="highlight"><pre><span></span><code>edgefirst-client<span class="w"> </span>export-coco<span class="w"> </span>ds-123<span class="w"> </span>as-456<span class="w"> </span>-o<span class="w"> </span>instances.json
 edgefirst-client<span class="w"> </span>export-coco<span class="w"> </span>ds-123<span class="w"> </span>as-456<span class="w"> </span>-o<span class="w"> </span>coco.zip<span class="w"> </span>--images<span class="w"> </span>--groups<span class="w"> </span>train,val
 </code></pre></div>
 <p>When restoring <abbr title="Binary container format for robotics log data">MCAP</abbr> snapshots with auto-annotation, <code>--autolabel</code> accepts <a href="../../datasets/coco/#coco-labels">COCO labels</a>.</p>
+<h2 id="visdrone">VisDrone</h2>
+<p><code>visdrone-to-arrow</code> converts extracted <a href="https://github.com/VisDrone/VisDrone-Dataset">VisDrone2019</a> DET (still image) and VID (video sequence) splits into one offline EdgeFirst dataset. Several split directories can be combined; the group is inferred from each directory name (<code>-train</code>, <code>-val</code>, <code>-test-dev</code>, <code>-test-challenge</code>) or set with <code>--group</code>.</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># DET train + val into one offline dataset</span>
+edgefirst-client<span class="w"> </span>visdrone-to-arrow<span class="w"> </span>VisDrone2019-DET-train<span class="w"> </span>VisDrone2019-DET-val<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-o<span class="w"> </span>visdrone-det/visdrone-det.arrow<span class="w"> </span>--images
+edgefirst-client<span class="w"> </span>validate-snapshot<span class="w"> </span>visdrone-det
+
+<span class="c1"># VID val as a sequence dataset, written as Parquet</span>
+edgefirst-client<span class="w"> </span>visdrone-to-arrow<span class="w"> </span>VisDrone2019-VID-val<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-o<span class="w"> </span>visdrone-vid/visdrone-vid.parquet<span class="w"> </span>--images
+</code></pre></div>
+<p>The ten VisDrone object classes are indexed <code>label_index</code> 0–9 (<code>pedestrian</code> = 0 … <code>motor</code> = 9), matching the Ultralytics VisDrone mapping. VID sequences become <code>name</code>/<code>frame</code> rows with <code>object_id = &lt;sequence&gt;/&lt;target_id&gt;</code>, which Studio keeps as the object reference, so track IDs survive upload. The VisDrone <code>truncation</code> and <code>occlusion</code> values are stored in the matching <a href="../../datasets/format/schema/#truncation-and-occlusion">annotation columns</a>.</p>
+<p>By default, VisDrone category 0 (<code>ignored regions</code>) and category 11 (<code>others</code>) are dropped. <code>--keep-ignored</code> keeps them as unlabeled rows flagged <a href="../../datasets/format/schema/#ignore"><code>ignore</code></a> and <a href="../../datasets/format/schema/#exclude"><code>exclude</code></a> for evaluation protocols that need them. Studio does not store these flags or the attribute columns yet; see the <a href="../cli/reference/#visdrone-to-arrow">CLI reference</a> for details.</p>
 <h2 id="edgefirst-dataset-format">EdgeFirst Dataset Format</h2>
-<p>Import data natively in the <a href="../../datasets/format/">EdgeFirst Dataset Format</a> (ZIP + Arrow pairs).</p>
+<p>Import data natively in the <a href="../../datasets/format/">EdgeFirst Dataset Format</a> (an Arrow or Parquet annotation file with a sibling image folder or ZIP).</p>
 <h3 id="upload-dataset">upload-dataset</h3>
 <div class="highlight"><pre><span></span><code><span class="c1"># Images only</span>
 edgefirst-client<span class="w"> </span>upload-dataset<span class="w"> </span>ds-123<span class="w"> </span>--images<span class="w"> </span>./photos/
@@ -1774,7 +1878,15 @@ edgefirst-client<span class="w"> </span>upload-dataset<span class="w"> </span>ds
 <span class="w">    </span>--annotations<span class="w"> </span>dataset.arrow<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>--annotation-set-id<span class="w"> </span>as-456
 </code></pre></div>
-<p>Arrow files must conform to the current schema (2026.04). Use <code>edgefirst-client migrate</code> to upgrade legacy 2025.10 Arrow files — see the <a href="../../datasets/format/migration/">migration guide</a>.</p>
+<p>Annotation files can be Arrow IPC or Parquet and must conform to schema 2026.04 or 2026.10; 2026.04 files are accepted as is. Use <code>edgefirst-client migrate</code> to upgrade legacy 2025.10 Arrow files — see the <a href="../../datasets/format/migration/">migration guide</a>.</p>
+<div class="admonition warning">
+<p class="admonition-title">Data not stored by Studio yet</p>
+<p><code>upload-dataset</code> drops annotations flagged <code>ignore</code> or <code>exclude</code> and logs one warning with the count. It sends the <code>truncation</code> and <code>occlusion</code> columns, but Studio does not persist them yet. Keep the annotation file as the source of truth for this data.</p>
+</div>
+<div class="admonition warning">
+<p class="admonition-title"><abbr title="Inertial Measurement Unit">IMU</abbr> pose and <abbr title="Global Positioning System">GPS</abbr> location in older files</p>
+<p><code>upload-dataset</code> reads <code>pose</code> as <code>[roll, pitch, yaw]</code> in signed degrees and <code>location</code> as <code>[lat, lon]</code>, as schema 2026.10 defines. Files written by EdgeFirst Client 2.14 and earlier store <code>pose</code> as <code>[yaw, pitch, roll]</code>, and files from the EdgeFirst Publisher use a 0–360 range (and <code>[lon, lat]</code> before Publisher 1.10). Correct these files before uploading them; see <a href="../../datasets/format/migration/#imu-pose-and-gps-location-in-older-files"><abbr title="Inertial Measurement Unit">IMU</abbr> Pose and <abbr title="Global Positioning System">GPS</abbr> Location in Older Files</a>.</p>
+</div>
 <h3 id="snapshots">Snapshots</h3>
 <p>Upload a local directory or <abbr title="Binary container format for robotics log data">MCAP</abbr> file as a snapshot, then restore into a project:</p>
 <div class="highlight"><pre><span></span><code>edgefirst-client<span class="w"> </span>create-snapshot<span class="w"> </span>./sensor_data/
@@ -1787,8 +1899,7 @@ edgefirst-client<span class="w"> </span>validate-snapshot<span class="w"> </span
 </code></pre></div>
 <div class="admonition note">
 <p class="admonition-title">Arrow schema version</p>
-<p><code>generate-arrow</code> produces a 2025.10 Arrow file. Before <code>upload-dataset</code>, migrate to
-2026.04 with <code>edgefirst-client migrate</code> (see the <a href="../../datasets/format/migration/">migration guide</a>).</p>
+<p><code>generate-arrow</code> produces an Arrow file with the current 2026.10 schema and null annotations, ready for <code>upload-dataset</code>. <code>migrate</code> is only needed for files written in the 2025.10 schema (see the <a href="../../datasets/format/migration/">migration guide</a>).</p>
 </div>
 <p>See <a href="../cli/#mcap-snapshot-workflow">CLI: <abbr title="Binary container format for robotics log data">MCAP</abbr> snapshot workflow</a> and <a href="../../studio/snapshots/">Studio Snapshots</a>.</p>
 <h2 id="custom-imports-via-python-api">Custom imports via Python <abbr title="Application Programming Interface">API</abbr></h2>
@@ -1815,6 +1926,7 @@ edgefirst-client<span class="w"> </span>validate-snapshot<span class="w"> </span
 <h2 id="see-also">See also</h2>
 <ul>
 <li><a href="../cli/reference/#coco-interchange">CLI reference: COCO interchange</a></li>
+<li><a href="../cli/reference/#visdrone-interchange">CLI reference: VisDrone interchange</a></li>
 <li><a href="../../datasets/format/">EdgeFirst Dataset Format</a></li>
 <li><a href="../api/python/">Python <abbr title="Application Programming Interface">API</abbr> reference</a></li>
 </ul>

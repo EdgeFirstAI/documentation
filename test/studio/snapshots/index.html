@@ -15,10 +15,10 @@
         <link rel="canonical" href="https://doc.edgefirst.ai/test/studio/snapshots/">
       
       
-        <link rel="prev" href="../instances/">
+        <link rel="prev" href="../datasets/history/">
       
       
-        <link rel="next" href="../apps/">
+        <link rel="next" href="../agtg/">
       
       
         
@@ -616,8 +616,6 @@
       
         
       
-        
-      
     
     
     
@@ -899,90 +897,6 @@
                 
   
   
-  
-  
-    <li class="md-nav__item">
-      <a href="../agtg/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Automatic Ground Truth Generation (AGTG)
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../models/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Model Experiments Dashboard
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../instances/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Cloud Instances Dashboard
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
     
   
   
@@ -1183,14 +1097,42 @@
   
   
     <li class="md-nav__item">
-      <a href="../apps/" class="md-nav__link">
+      <a href="../agtg/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    Studio Apps Dashboard
+    Automatic Ground Truth Generation (AGTG)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../models/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Model Experiments Dashboard
   
 
     
@@ -1219,6 +1161,34 @@
     
   
     Tasks Dashboard
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../apps/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Apps Dashboard
   
 
     
@@ -1621,8 +1591,6 @@
       
         
       
-        
-      
     
     
     
@@ -1906,15 +1874,15 @@
 
 
 <h1 id="snapshots-dashboard">Snapshots Dashboard</h1>
-<p>Snapshots are portable, frozen copies of datasets in the <a href="../../datasets/format/">EdgeFirst Dataset Format</a>. Each snapshot consists of a <strong>ZIP + Arrow file pair</strong>:</p>
+<p>Snapshots are portable, frozen copies of datasets. A snapshot can either be imported or exported. Imported snapshots are typically in the form of an <abbr title="Binary container format for robotics log data">MCAP</abbr> which brings in data recordings from an <a href="../../platforms/">EdgeFirst Platform</a> which can then be restored into EdgeFirst Studio as a dataset. Exported snapshots are Studio datasets converted into snapshots which can be downloaded into the user's machine in the <a href="../../datasets/format/">EdgeFirst Dataset Format</a> which consists of a <strong>ZIP + Arrow file pair</strong>:</p>
 <ul>
 <li><strong>ZIP file</strong>: Contains sensor data (images, point clouds, etc.)</li>
 <li><strong>Arrow file</strong>: Contains annotations (labels, bounding boxes, masks, metadata)</li>
 </ul>
 <p>This format makes snapshots easy to download, share, archive, and re-import into any EdgeFirst Studio project.</p>
 <figure>
-            <img align="center" alt="Data Snapshots" src="../assets/snapshots/data-snapshots.png" />
-            <figcaption>Data Snapshots</figcaption>
+            <img align="center" alt="Snapshots Page" src="../assets/snapshots/data-snapshots.png" />
+            <figcaption>Snapshots Page</figcaption>
             </figure>
 <p>The snapshots menu shows the list of snapshots with its name and status.</p>
 <figure>
@@ -1937,9 +1905,9 @@
 <h3 id="create-from-existing-dataset">Create from Existing Dataset</h3>
 <ol>
 <li>From the dataset card, open the context menu and select "Create Snapshot".</li>
-<li>Select the dataset and annotation set to create a snapshot from and give it a description.</li>
+<li>Select the annotation set and give the snapshot a name.</li>
 <li>This will trigger the creation of a snapshot.</li>
-<li>The status of the snapshot generation will be shown in the dataset card.</li>
+<li>The status of the snapshot generation will be shown in the <a href="../tasks/">tasks page</a>.</li>
 <li>When completed, the snapshot will appear in the snapshots dashboard.</li>
 </ol>
 <h3 id="upload-from-mcap-file">Upload from <abbr title="Binary container format for robotics log data">MCAP</abbr> File</h3>
@@ -1955,16 +1923,16 @@
 <li>Once the files are selected, this will start the import sequence progress shown below.</li>
 </ol>
 <h3 id="pipeline">Pipeline</h3>
-<p>When creating a snapshot a pipeline with the following stages are deployed.</p>
+<p>When creating a snapshot, a pipeline with the following stages are deployed.</p>
 <ol>
-<li>Server Initialization: Initialize the backend server for handling the processes.</li>
-<li>Downloading Files from Cloud Storage: Fetches the dataset images from the S3 bucket.</li>
-<li>Exporting Files from Database: Fetches the dataset annotations from the Studio database.</li>
-<li>Zipping Files for Upload: Formulation of the <a href="../../datasets/format/">EdgeFirst Dataset Format</a> and placing the fetched dataset files as a single ZIP file.</li>
-<li>Uploading Snapshot to Cloud Storage: Uploading the dataset into S3 bucket.</li>
+<li>Server Initialization: initialize the backend server for handling the processes.</li>
+<li>Downloading Files from Cloud Storage: fetches the dataset images from the S3 bucket.</li>
+<li>Exporting Files from Database: fetches the dataset annotations from the Studio database.</li>
+<li>Zipping Files for Upload: formulation of the <a href="../../datasets/format/">EdgeFirst Dataset Format</a> and placing the fetched dataset files as a single ZIP file.</li>
+<li>Uploading Snapshot to Cloud Storage: uploading the dataset into S3 bucket.</li>
 </ol>
 <h2 id="restore-snapshot">Restore Snapshot</h2>
-<p>This action will take an <abbr title="Binary container format for robotics log data">MCAP</abbr> or ZIP/Arrow files and create a dataset in EdgeFirst Studio.  The backend pipelines for auto depth map generation, object detection, and Automated Ground Truth Generation can also be selected at this time while restoring.</p>
+<p>This action will take the imported <abbr title="Binary container format for robotics log data">MCAP</abbr> or ZIP/Arrow files to create a dataset in EdgeFirst Studio.  The backend pipelines for auto depth map generation, object detection, and Automated Ground Truth Generation can also be selected at this time while restoring.</p>
 <p>The tutorial for restoring snapshots can be found under the <a href="../../datasets/tutorials/annotations/automatic/#restore-snapshot">Dataset Annotations</a> section.</p>
 <p>The stages for restoring a snapshot are shown below.</p>
 <figure>
@@ -1973,39 +1941,44 @@
             </figure>
 <ol>
 <li>Click on the snapshot context menu (three dots).</li>
-<li>Select "Restore".</li>
-</ol>
-<figure>
-            <img align="center" alt="Snapshot Options" src="../assets/snapshots/options.png" />
-            <figcaption>Snapshot Options</figcaption>
-            </figure>
-<ol>
-<li>This will open the restore dialog for specifying the options.</li>
-</ol>
-<figure>
-            <img align="center" alt="Restore Options" src="../assets/snapshots/restore-dialog.png" />
-            <figcaption>Restore Options</figcaption>
-            </figure>
-<ol>
-<li>Select "Project" where the dataset will be created.</li>
-<li>Enter the dataset name and description. If the dataset name is not provided a dataset, a dataset with the snapshot name will be created.</li>
-<li>Check "Use <abbr title="Binary container format for robotics log data">MCAP</abbr> Selected Topics" if selected topics are to be imported (for example ignoring Radar and only importing Segmentation).</li>
-<li>Select "Use <abbr title="Binary container format for robotics log data">MCAP</abbr> Frame Rate" to select a custom frame rate.</li>
+<li>
+<p>Select "Restore".</p>
+<p><figure markdown="span">
+        <img align="center" alt="Snapshot Options" src="../assets/snapshots/options.png" />
+        <figcaption>Snapshot Options</figcaption>
+        </figure></p>
+</li>
+<li>
+<p>This will open the restore dialog for specifying the options.</p>
+<p><figure markdown="span">
+        <img align="center" alt="Restore Options" src="../assets/snapshots/restore-dialog.png" />
+        <figcaption>Restore Options</figcaption>
+        </figure></p>
+<p><figure markdown="span">
+        <img align="center" alt="Restore Snapshot Steps" src="../../datasets/assets/annotations/automatic/restore_mcap_prompts.jpg" />
+        <figcaption>Restore Snapshot Steps</figcaption>
+        </figure></p>
+</li>
+<li>
+<p>Specify the "Project" destination to store the dataset once it completes.</p>
+</li>
+<li>Enter the dataset name and description. If the dataset name is not provided, the snapshot name will be used.</li>
+<li>For additional <abbr title="Binary container format for robotics log data">MCAP</abbr> settings such as adjusting the <abbr title="Frames Per Second">FPS</abbr>, enable "Use <abbr title="Binary container format for robotics log data">MCAP</abbr> Selected Topics".</li>
+<li>Specify the source of annotations from either the <abbr title="Binary container format for robotics log data">MCAP</abbr> model topic, or enable auto generation of 2D boxes, 3D boxes, and segmentation masks by deploying a Studio trained model or a base YOLOx model for <a href="../../datasets/coco/#coco-labels">COCO</a> annotations.</li>
 <li>Select "Depth Generation" to use AI Model based depth map generation.</li>
-<li>Select "AI Ground Truth Generation" to enable auto generation of 2D boxes, 3D boxes, and segmentation masks.</li>
-<li>Click "RESTORE SNAPSHOT".</li>
-<li>The dataset dashboard will have a new dataset with progress indication.</li>
-<li>The progress for different stages will be at different rates.</li>
+<li>Click "Start App".</li>
+<li>The status of the snapshot generation will be shown in the <a href="../tasks/">tasks page</a>.</li>
+<li>Once complete, the dataset dashboard will show the new restored dataset.</li>
 </ol>
 <h3 id="pipeline_1">Pipeline</h3>
-<p>When restoring a snapshot a pipeline with the following stages are deployed.</p>
+<p>When restoring a snapshot, a pipeline with the following stages are deployed.</p>
 <ol>
-<li>Download Snapshot from Cloud Storage: Fetches the dataset from the S3 server.</li>
-<li>Converting <abbr title="Binary container format for robotics log data">MCAP</abbr> to Dataset: This is only present when the method of <a href="#upload-from-mcap-file">creating a snapshot</a> is from an <abbr title="Binary container format for robotics log data">MCAP</abbr> file.</li>
-<li>Automatic Annotations Generation: Runs AGTG to auto annotate the dataset with COCO labels.</li>
-<li>Prepare Data for Upload: Data preparation processes.</li>
-<li>Importing Images and Annotations to Database: Uploading the images and annotations to the Studio database.</li>
-<li>Uploading Files to Cloud Storage: Uploading the annotated dataset back into S3 bucket.</li>
+<li>Initializing Server Environment: Starts a batch server to host the restore process.</li>
+<li>Downloading <abbr title="Binary container format for robotics log data">MCAP</abbr> from Cloud Storage: Fetches the snapshot from the S3 server.</li>
+<li>Converting <abbr title="Binary container format for robotics log data">MCAP</abbr> to Zip and Arrow: This is only present when the method of <a href="#upload-from-mcap-file">creating a snapshot</a> is from an <abbr title="Binary container format for robotics log data">MCAP</abbr> file.</li>
+<li>Depth Generation: Runs depth generation for each frame in the snapshot.</li>
+<li>Automatic Ground Truth Generation: Runs AGTG to auto annotate the dataset.</li>
+<li>Importing Dataset: Uploading the images and annotations to the Studio database.</li>
 </ol>
 <h2 id="download-snapshot">Download Snapshot</h2>
 <ol>
@@ -2124,7 +2097,7 @@ my_snapshot.arrow     # Annotations (labels, boxes, masks)
       <nav class="md-footer__inner md-grid" aria-label="Footer" >
         
           
-          <a href="../instances/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Cloud Instances Dashboard">
+          <a href="../datasets/history/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Dataset History">
             <div class="md-footer__button md-icon">
               
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
@@ -2134,20 +2107,20 @@ my_snapshot.arrow     # Annotations (labels, boxes, masks)
                 Previous
               </span>
               <div class="md-ellipsis">
-                Cloud Instances Dashboard
+                Dataset History
               </div>
             </div>
           </a>
         
         
           
-          <a href="../apps/" class="md-footer__link md-footer__link--next" aria-label="Next: Studio Apps Dashboard">
+          <a href="../agtg/" class="md-footer__link md-footer__link--next" aria-label="Next: Automatic Ground Truth Generation (AGTG)">
             <div class="md-footer__title">
               <span class="md-footer__direction">
                 Next
               </span>
               <div class="md-ellipsis">
-                Studio Apps Dashboard
+                Automatic Ground Truth Generation (AGTG)
               </div>
             </div>
             <div class="md-footer__button md-icon">

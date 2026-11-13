@@ -1230,10 +1230,32 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#tag-dataset" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Tag Dataset
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#train-vision-model" class="md-nav__link">
     <span class="md-ellipsis">
       
         Train Vision Model
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#convert-vision-model" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Convert Vision Model
       
     </span>
   </a>
@@ -1353,8 +1375,6 @@
       
         
           
-        
-      
         
       
         
@@ -1777,8 +1797,6 @@
       
         
       
-        
-      
     
     
     
@@ -2011,10 +2029,32 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#tag-dataset" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Tag Dataset
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#train-vision-model" class="md-nav__link">
     <span class="md-ellipsis">
       
         Train Vision Model
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#convert-vision-model" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Convert Vision Model
       
     </span>
   </a>
@@ -2138,9 +2178,9 @@
 
 
 <h1 id="web-workflow">Web Workflow</h1>
-<p>In this workflow, you will explore recording a video or capturing images using a mobile device and then upload the captured data into EdgeFirst Studio for annotation and then model training, validation, and deployment using the PC. This workflow requires the user to have <a href="https://test.edgefirst.studio/signup">signed up</a> and <a href="https://test.edgefirst.studio/login">logged in</a> to EdgeFirst Studio and followed the initial steps described in the <a href="../../../">Getting Started with EdgeFirst Studio</a>.</p>
+<p>In this workflow, you will explore recording a video or capturing images using a mobile device and then upload the captured data into EdgeFirst Studio for annotation and model training, validation, and deployment using the PC. This workflow requires the user to have <a href="https://test.edgefirst.studio/signup">signed up</a> and <a href="https://test.edgefirst.studio/login">logged in</a> to EdgeFirst Studio and followed the initial steps described in the <a href="../../../">Getting Started with EdgeFirst Studio</a>.</p>
 <h2 id="capture-with-a-phone">Capture with a Phone</h2>
-<p>The examples below will show video recording and image captures of coffee cups using a phone for training a Vision model that detects coffee cups. However, you can choose any type of objects in your dataset.</p>
+<p>This guide is based on recording and capturing images of coffee cups using a phone.  However, you can choose any type of objects for your dataset and the same steps will apply.</p>
 <div class="admonition warning">
 <p class="admonition-title">Data Usage</p>
 <p>It is recommended to use a phone connected to a Wi-Fi network. A device connected to mobile data might be subject to intense usage when uploading files; video files or image files can be large in size. In the examples below, the video file used was ~15MB and the image files were ~2MB each.</p>
@@ -2156,13 +2196,13 @@
 Camera app layouts, button locations, labels, and available options may differ on other devices and operating system versions.
 For device-specific steps, refer to your phone manufacturer documentation or device manual.</p>
 </div>
-<h4 id="record-video">Record Video</h4>
+<h3 id="record-video">Record Video</h3>
 <p>Using a smartphone, try to record a 30 second or more video with the camera application showing various orientations of coffee cups.  Typically, the video recording can be started by pressing the red circular button. The video can be stopped by pressing the same button again.</p>
 <figure>
             <img align="center" alt="Mobile Video Capture" src="../../../datasets/assets/capture/mobile-video-capture.jpg" />
             <figcaption>Mobile Video Capture</figcaption>
             </figure>
-<h4 id="capture-images">Capture Images</h4>
+<h3 id="capture-images">Capture Images</h3>
 <p>Furthermore, you can also capture individual images as shown below.  You can take image snapshots from the camera by pressing the white circular button.</p>
 <figure>
             <img align="center" alt="Mobile Image Capture" src="../../../datasets/assets/capture/mobile-image-capture.jpg" />
@@ -2170,10 +2210,10 @@ For device-specific steps, refer to your phone manufacturer documentation or dev
             </figure>
 <div class="admonition tip">
 <p class="admonition-title">Leveraging Videos</p>
-<p>It is recommended to use videos rather than individual images.  This is because the <a href="../../../datasets/tutorials/annotations/automatic/">Automatic Ground Truth Generation (AGTG)</a> feature leverages SAM-2 with tracking information which only needs a single annotation to annotate all frames.  However, individual images requires more effort by annotating each image separately.</p>
+<p>It is recommended to use videos rather than individual images.  This is because the <a href="../../../datasets/tutorials/annotations/automatic/">Automatic Ground Truth Generation (AGTG)</a> feature leverages SAM2 with tracking information which only needs a single annotation to annotate all frames.  However, individual images requires more effort by annotating each image separately.</p>
 </div>
 <h2 id="create-dataset">Create Dataset</h2>
-<p>If you have a video recording or sample images for your dataset, you can <a href="../../../datasets/tutorials/management/#create-dataset">create a dataset container</a> in EdgeFirst Studio to contain your video frames or images and annotations.</p>
+<p>You can create an empty dataset in EdgeFirst Studio. If you have a video recording or sample images to import into EdgeFirst Studio, you can specify this empty dataset to store your imported samples and annotations.</p>
 <p>Navigate to a web browser and <a href="https://test.edgefirst.studio/login">login</a> to EdgeFirst Studio.  Once logged in to EdgeFirst Studio, navigate to your project.  In this case the project name is "My First Project".  Click on the "Datasets" button that is indicated in red below.</p>
 <figure>
             <img align="center" alt="Object Detection Project" src="../../../datasets/assets/capture/mobile-projects.jpg" />
@@ -2195,68 +2235,49 @@ For device-specific steps, refer to your phone manufacturer documentation or dev
             <figcaption>Created Dataset</figcaption>
             </figure>
 <h2 id="upload-video">Upload Video</h2>
-<p>Video files can be uploaded into any dataset container in EdgeFirst Studio.  Choose the dataset container to upload the video file.  In this case, the dataset is called "Coffee Cup".  Click on the dataset context menu (three dots) and click "Import".</p>
-<figure>
-            <img align="center" alt="Dataset Import Option" src="../../../datasets/assets/capture/mobile-dataset-import-option.jpg" />
-            <figcaption>Dataset Import Option</figcaption>
-            </figure>
-<p>This will bring you to the "Import Dataset" page.</p>
-<figure>
-            <img align="center" alt="Dataset Import" src="../../../datasets/assets/capture/mobile-import-dataset.jpg" />
-            <figcaption>Dataset Import</figcaption>
-            </figure>
-<p>Click on the drop-down that says "Import Type" and then specify "Videos" and then click "Done" as shown below.</p>
+<p>Video files can be uploaded into any dataset container in EdgeFirst Studio.  Choose the dataset container to upload the video file.  In this case, the dataset is called "Coffee Cup".  Click on the dataset context menu (three dots) then click "Import" and select "Videos".</p>
 <figure>
             <img align="center" alt="Dataset Video Import" src="../../../datasets/assets/capture/mobile-video-import-type.jpg" />
             <figcaption>Dataset Video Import</figcaption>
             </figure>
-<p>Now that the import type is specified to a "Videos", click on "select files" as indicated.</p>
+<p>Click on "Choose Files" as indicated.</p>
 <figure>
             <img align="center" alt="Select Video File" src="../../../datasets/assets/capture/mobile-select-video-file.jpg" />
             <figcaption>Select Video File</figcaption>
             </figure>
-<p>On an android device, this will bring up the option to specify the location of the files.</p>
-<figure>
-            <img align="center" alt="Android Select File Options" src="../../../datasets/assets/capture/mobile-video-options.jpg" />
-            <figcaption>Android Select File Options</figcaption>
-            </figure>
-<p>In my current setup, I have selected "My Files" from the options above and then "Videos" which will allow me to pinpoint the location of the video I have recorded.</p>
+<p>On an android device, this will bring up the option to specify the location of the files. I have selected "Videos" which will allow me to pinpoint the location of the video in my device.</p>
 <figure>
             <img align="center" alt="Android File Manager" src="../../../datasets/assets/capture/mobile-video-location.jpg" />
             <figcaption>Android File Manager</figcaption>
             </figure>
-<p>After selecting the video file, the <abbr title="Frames Per Second">FPS</abbr> (frames per second) value is automatically set to 1 by default. You may adjust this value to match your desired frame extraction rate. When ready, click Start Import to begin importing the video.</p>
+<p>After selecting the video file, click the "Upload" button as shown.</p>
+<figure>
+            <img align="center" alt="Upload Video File" src="../../../datasets/assets/capture/mobile-video-upload.jpg" />
+            <figcaption>Upload Video File</figcaption>
+            </figure>
+<p>The <abbr title="Frames Per Second">FPS</abbr> (frames per second) value is automatically set to 1 by default. You may adjust this value to match your desired frame rate. When ready, click Start App to begin importing the video.</p>
 <figure>
             <img align="center" alt="Import Fields" src="../../../datasets/assets/capture/mobile-video-import-fields.jpg" />
             <figcaption>Import Fields</figcaption>
             </figure>
-<p>This will start the import process. For a 30-second video, the import typically takes about 2 minutes to complete.</p>
-<p>Once the import finishes, the number of images in the dataset should increase to reflect the newly imported frames. If the dataset does not appear to update, refresh the browser to view the latest changes.</p>
+<p>This will start the import process. For a 30-second video imported at 1 <abbr title="Frames Per Second">FPS</abbr>, the import typically takes ~1 minute to complete.</p>
+<p>Once the import finishes, the number of images in the dataset should increase to reflect the imported frames. If the dataset does not appear to update, refresh the browser to view the latest changes.</p>
 <figure>
             <img align="center" alt="Imported Video" src="../../../datasets/assets/capture/imported-video-outcome.jpg" />
             <figcaption>Imported Video</figcaption>
             </figure>
 <h2 id="upload-images">Upload Images</h2>
-<div class="admonition warning">
-<p class="admonition-title">HEIC is not fully supported</p>
-<p>Apple devices capture HEIC image formats by default.  This format has not been fully supported yet in EdgeFirst Studio.  Please make sure to use JPEGs, JPGs, or PNGs for uploading images to EdgeFirst Studio.</p>
-</div>
-<p>Image files can be uploaded into any dataset container in EdgeFirst Studio.  Choose the dataset container to upload image files.  In this case, the dataset is called "Coffee Cup".  Click on the dataset context menu (three dots) and select import.</p>
+<p>Image files can be uploaded into any dataset container in EdgeFirst Studio.  Choose the dataset container to upload image files.  In this case, the dataset is called "Coffee Cup".  Click on the dataset context menu (three dots) then click "Import" and select "Images".</p>
 <figure>
-            <img align="center" alt="Dataset Import Option" src="../../../datasets/assets/capture/mobile-dataset-import-option.jpg" />
-            <figcaption>Dataset Import Option</figcaption>
+            <img align="center" alt="Dataset Image Import" src="../../../datasets/assets/capture/mobile-image-import-type.jpg" />
+            <figcaption>Dataset Image Import</figcaption>
             </figure>
-<p>This will bring you to the "Import Dataset" page.</p>
+<p>Click on "Choose Files" as indicated.  This will bring up the option to specify the location of the files.</p>
 <figure>
-            <img align="center" alt="Dataset Import" src="../../../datasets/assets/capture/mobile-import-dataset.jpg" />
-            <figcaption>Dataset Import</figcaption>
+            <img align="center" alt="Choose Files" src="../../../datasets/assets/capture/mobile-select-image-file.jpg" />
+            <figcaption>Choose Files</figcaption>
             </figure>
-<p>Click on "select files".  This will bring up the option to specify the location of the files.</p>
-<figure>
-            <img align="center" alt="Android Mobile Media Picker" src="../../../datasets/assets/capture/mobile-media-picker.jpg" />
-            <figcaption>Android Mobile Media Picker</figcaption>
-            </figure>
-<p>In my current setup, I have selected "Photos &amp; Videos" from the options above and then I have multi-selected the images I want to import by press and hold on a single image to enable multi-select.  To import, I pressed "Select".</p>
+<p>This will bring the modal to multi-select the images I want to import by pressing and holding on a single image to enable multi-select.  To import, I pressed "Select".</p>
 <figure>
             <img align="center" alt="Android Multi-select Images" src="../../../datasets/assets/capture/mobile-multi-select-images.jpg" />
             <figcaption>Android Multi-select Images</figcaption>
@@ -2317,7 +2338,7 @@ For device-specific steps, refer to your phone manufacturer documentation or dev
             </figure>
 <p>Go ahead and launch the AGTG server.  Please allow ~5mins for the server to initialize.</p>
 <div class="admonition warning">
-<p class="admonition-title">AGTG Server Did Not Start</p>
+<p class="admonition-title">AGTG Server did not start</p>
 <p>If the AGTG server has not started after 5 minutes, refresh your browser and click the <strong>AI Segment Tool</strong> button again.</p>
 </div>
 <figure>
@@ -2337,7 +2358,7 @@ AGTG Preview
             <img align="center" alt="AGTG Initial Prompts" src="../../../datasets/assets/annotations/automatic/agtg-prompts.jpg" />
             <figcaption>AGTG Initial Prompts</figcaption>
             </figure>
-<p>Once the propagation completes, click "Save Annotations" to save the propagated annotations.</p>
+<p>Once the propagation completes, click "Save AIGT Annotations" to save the propagated annotations.</p>
 <figure>
             <img align="center" alt="Propagation Completed" src="../../../datasets/assets/annotations/automatic/propagation-completed.jpg" />
             <figcaption>Propagation Completed</figcaption>
@@ -2347,7 +2368,7 @@ AGTG Preview
 <p>Run the video playback to browse through the generated annotations and verify that the generated annotations are correct.</p>
 <p>If an annotation was missed, you can quickly <a href="../../../datasets/tutorials/annotations/manual/#add-2d-annotations">add the annotation</a> using the same process and click "Save AIGT Annotations" as shown.</p>
 <p><img alt="Add Missed Annotations" src="../../../datasets/assets/annotations/automatic/add-missed-annotation.jpg" /></p>
-<p>For objects that were improperly annotated, you can <a href="../../../datasets/tutorials/annotations/manual/#delete-2d-annotations">remove annotations</a>.  For annotations that require minor adjustments, EdgeFirst Studio has the features for <a href="../../../datasets/tutorials/annotations/manual/#adjust-2d-annotations">adjusting annotations</a>.  Please click on the links as provided for further instructions on each of these features.</p>
+<p>For objects that were improperly annotated, you can <a href="../../../datasets/tutorials/annotations/manual/#delete-2d-annotations">remove annotations</a>.  For annotations that require minor adjustments, EdgeFirst Studio has the features for <a href="../../../datasets/tutorials/annotations/manual/#adjust-2d-annotations">adjusting annotations</a>.  Please click on the links as provided for further instructions to these features.</p>
 </div>
 <p>Repeat the steps for all the sequences in the dataset.  You can go back to the dataset sequences by pressing the back button on the top left corner.</p>
 <figure>
@@ -2356,7 +2377,7 @@ AGTG Preview
             </figure>
 <p>For the case of individual images, the same steps apply except there is no propagation step.  You can still use the AGTG feature to quickly annotate images as shown in <a href="../../../datasets/tutorials/annotations/manual/#add-2d-annotations">Add 2D annotations</a>.</p>
 <h2 id="split-dataset">Split Dataset</h2>
-<p>Partitioning the dataset is crucial in reserving dataset portions used for training and portions used for validation to assess the performance of the model.  In EdgeFirst Studio, the partitions are 80% towards training and 20% towards validation.  This operation randomly shuffles the data prior to assigning them to the specified groups.</p>
+<p>Partitioning the dataset is crucial in reserving dataset portions used for training and portions used for validation to assess the performance of the model.  By default in EdgeFirst Studio, the partitions are 80% towards training and 20% towards validation.  This operation randomly shuffles the data prior to assigning them to the specified groups.</p>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
 <p>The dataset needs to be re-split whenever new sample images or frames are added to the dataset.  Newly added samples are not automatically added to any group that already exists.</p>
@@ -2371,7 +2392,7 @@ AGTG Preview
             <img align="center" alt="Add Groups" src="../../../datasets/assets/management/add-groups-button.jpg" />
             <figcaption>Add Groups</figcaption>
             </figure>
-<p>This will open a new dialog to specify the percentages of the partition belonging to the "Training" group or "Validation" group. By default 80% of the samples will be dedicated to training and 20% remaining will be dedicated towards the validation samples.</p>
+<p>This will open a new dialog to specify the percentages of the partition belonging to the "Training" group or "Validation" group. By default 80% of the samples will be dedicated to training and the remaining 20% will be dedicated towards the validation samples.</p>
 <figure>
             <img align="center" alt="Groups Field" src="../../../datasets/assets/management/groups-field.jpg" />
             <figcaption>Groups Field</figcaption>
@@ -2381,13 +2402,14 @@ AGTG Preview
             <img align="center" alt="Dataset Groups" src="../../../datasets/assets/management/dataset-with-groups.jpg" />
             <figcaption>Dataset Groups</figcaption>
             </figure>
-<p>Before a dataset can be used for training, it must be tagged.  To preserve its current state, assign a version tag to the dataset.</p>
+<h2 id="tag-dataset">Tag Dataset</h2>
+<p>Before a dataset can be used for training, it must be tagged to preserve its current state.  Assign a version tag to the dataset.</p>
 <p>Click on the dataset options at the top right of the dataset card (three vertical dots). Then click the "History" button.</p>
 <figure>
             <img align="center" alt="Tag Dataset Options" src="../../../datasets/assets/management/dataset-options-history.jpg" />
             <figcaption>Tag Dataset Options</figcaption>
             </figure>
-<p>Add a new tagged version of the dataset by clicking the + green button on the right of the page as shown.</p>
+<p>Add a new tagged version of the dataset by clicking "Tag This Version" button as shown.</p>
 <figure>
             <img align="center" alt="Tag Dataset Button" src="../../../datasets/assets/management/dataset-history-add-new-tag.jpg" />
             <figcaption>Tag Dataset Button</figcaption>
@@ -2403,8 +2425,8 @@ AGTG Preview
             <figcaption>Back to Datasets Button</figcaption>
             </figure>
 <h2 id="train-vision-model">Train Vision Model</h2>
-<p>Now that your dataset is fully annotated, versioned, and split into training and validation partitions, you are ready to begin training your model.  This will briefly show the steps for training a model, but for an in depth tutorial, please see <a href="../../../models/training/vision/">Training Vision Models</a>.</p>
-<p>Navigate back to the "Projects" page.  You can go back to the "Projects" page by clicking the Apps Menu waffle button on the top right of the Navigation bar.  Click the first selection to take you to the "Projects page".</p>
+<p>Now that your dataset is fully annotated, tagged, and split into training and validation partitions, you are ready to begin training your model.  This guide briefly shows the steps for training a model, but for an in depth tutorial, please see <a href="../../../models/training/vision/">Training Vision Models</a>.</p>
+<p>Navigate back to the "Projects" page.  You can go back to the "Projects" page by clicking the "PROJECTS" button on the top navbar as shown.</p>
 <figure>
             <img align="center" alt="Go to Projects Page" src="../../../studio/assets/navigation/go-to-projects-page.jpg" />
             <figcaption>Go to Projects Page</figcaption>
@@ -2424,32 +2446,22 @@ AGTG Preview
             <img align="center" alt="Training Sessions" src="../../../models/assets/training/training-sessions.jpg" />
             <figcaption>Training Sessions</figcaption>
             </figure>
-<p>Create a new training session by clicking the "Actions" dropdown menu on the top right of the page and then click the "+ New" button.</p>
+<p>Start a new training session by clicking the "Actions" dropdown menu on the top right of the page.  From here you can either train <a href="../../../models/modelpack/">ModelPack</a> or <a href="../../../models/ultralytics/">Ultralytics</a> models.  In this guide, we will demonstrate starting a ModelPack session.</p>
 <figure>
-            <img align="center" alt="New Session Button" src="../../../models/assets/training/new-session-button.jpg" />
+            <img align="center" alt="New Session Button" src="../../../models/assets/training/new-mpk-session-button.jpg" />
             <figcaption>New Session Button</figcaption>
             </figure>
-<p>Follow the settings indicated and keep the rest of the settings default.  Click "Start Session" to start the training session.</p>
+<p>Follow the settings indicated and keep the rest of the settings default.  Click "Start App" to start the training session.</p>
 <figure>
             <img align="center" alt="Start Training Session" src="../../../models/assets/training/vision-train-settings.jpg" />
             <figcaption>Start Training Session</figcaption>
             </figure>
-<div class="admonition failure">
-<p class="admonition-title">InsufficientInstanceCapacity</p>
-<p><img alt="InsufficientInstanceCapacity Error" src="../../../studio/assets/models/insufficient-capacity-error.jpg" /></p>
-<p>If you see this error after starting your training session, retry creating the session. This can happen when AWS reports that no EC2 instances are currently available to launch; the current workaround is to retry.</p>
-</div>
 <p>The session progress will be shown like the following below.</p>
 <figure>
             <img align="center" alt="Training Session Progress" src="../../../models/assets/training/vision-session-progress.jpg" />
             <figcaption>Training Session Progress</figcaption>
             </figure>
-<p>Once the session is complete, the session card will appear like the following.</p>
-<figure>
-            <img align="center" alt="Completed Session" src="../../../models/assets/training/vision-completed-session.jpg" />
-            <figcaption>Completed Session</figcaption>
-            </figure>
-<p>Click the training session card for more information.</p>
+<p>Once the session is complete, the session card will appear like the following. Click the training session card for more information.</p>
 <figure>
             <img align="center" alt="Training Details" src="../../../models/assets/training/vision-view-train-details.jpg" />
             <figcaption>Training Details</figcaption>
@@ -2459,6 +2471,59 @@ AGTG Preview
             <img align="center" alt="Model Artifacts" src="../../../models/assets/training/vision-session-artifacts.jpg" />
             <figcaption>Model Artifacts</figcaption>
             </figure>
+<p>Now that you have trained your model, you can also find various model converters and exporters in EdgeFirst Studio that build supported model formats for specific computing hardware.</p>
+<h2 id="convert-vision-model">Convert Vision Model</h2>
+<p>We support model conversion and optimization workflows that enable trained models to be deployed on a wide range of target platforms and hardware architectures.</p>
+<p>Follow the model conversion workflow that corresponds to your target platform. <em>If you are deploying to a Windows/Linux PC or macOS system, you can skip this section and proceed directly to the next step to validate the <abbr title="Open Neural Network Exchange">ONNX</abbr> model</em>, which is automatically generated as part of the training session outputs.</p>
+<p>If you are deploying to one of the supported hardware platforms listed below, follow the platform-specific conversion instructions for your target device.</p>
+<table>
+<thead>
+<tr>
+<th>Converter</th>
+<th>Supported Targets</th>
+<th>Output Format</th>
+<th>Docs</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong><abbr title="TensorFlow Lite">TFLite</abbr> Converter</strong></td>
+<td>NXP i.MX 8M Plus (VIP8000), generic CPU/<abbr title="Neural Processing Unit">NPU</abbr> <abbr title="TensorFlow Lite">TFLite</abbr> delegates</td>
+<td><code>.tflite</code> flatbuffer</td>
+<td><a href="../../../models/conversion/tflite/"><abbr title="TensorFlow Lite">TFLite</abbr> Converter</a></td>
+</tr>
+<tr>
+<td><strong>Neutron Converter</strong></td>
+<td>NXP i.MX 95, i.MX 943/952, S32N79, MCX N54x/N94x, i.MX RT700, S32K5</td>
+<td><code>.tflite</code> flatbuffer with Neutron microcode</td>
+<td><a href="../../../models/conversion/neutron/">Neutron Converter</a></td>
+</tr>
+<tr>
+<td><strong>TensorRT Converter</strong></td>
+<td>NVIDIA Jetson (Orin Nano Super validated; broader lineup in progress)</td>
+<td><code>.tensorrt.zip</code> bundle (engine built on-device)</td>
+<td><a href="../../../models/conversion/tensorrt/">TensorRT Converter</a></td>
+</tr>
+<tr>
+<td><strong>Qualcomm Converter</strong></td>
+<td>Qualcomm Dragonwing / Snapdragon (see converter guide for supported targets)</td>
+<td><code>.qnn.onnx</code> with embedded QNN context</td>
+<td><a href="../../../models/conversion/qualcomm/">Qualcomm Converter</a></td>
+</tr>
+<tr>
+<td><strong>Ara2 Converter</strong></td>
+<td>NXP Ara240 <abbr title="Discrete Neural Processing Unit">DNPU</abbr></td>
+<td><code>.dvm</code> Dataflow Virtual Machine binary</td>
+<td><a href="../../../models/conversion/ara2/">Ara2 Converter</a></td>
+</tr>
+<tr>
+<td><strong>Hailo Converter</strong></td>
+<td>Hailo-8 (26 <abbr title="Trillion Operations Per Second">TOPS</abbr>), Hailo-8L (13 <abbr title="Trillion Operations Per Second">TOPS</abbr>)</td>
+<td><code>.hef</code> Hailo Executable Format</td>
+<td><a href="../../../models/conversion/hailo/">Hailo Converter</a></td>
+</tr>
+</tbody>
+</table>
 <h2 id="validate-vision-model">Validate Vision Model</h2>
 <p>Now that you have trained a model, you can validate its performance. The purpose of validation is to determine whether the selected model meets the performance requirements before deployment. EdgeFirst Studio offers two validation paths depending on your goal:</p>
 <table>
@@ -2497,18 +2562,11 @@ AGTG Preview
             <img align="center" alt="Validate Button" src="../../../models/assets/validation/training_validate_button.jpg" />
             <figcaption>Validate Button</figcaption>
             </figure>
-<p>Enter a name for the validation session, then select the model and dataset to use for validation.</p>
-<p>Under <strong>Model Selection</strong>, choose an <strong><abbr title="Open Neural Network Exchange">ONNX</abbr>, Keras, or <abbr title="TensorFlow Lite">TFLite</abbr></strong> artifact — these are the formats supported by cloud validation.</p>
-<p>For this example, all remaining settings were left at their default values. When you are ready, click <strong>Start Session</strong> at the bottom of the page to begin the validation process.</p>
+<p>Select the model to use for validation. Select either an <strong><abbr title="Open Neural Network Exchange">ONNX</abbr>, Keras, or <abbr title="TensorFlow Lite">TFLite</abbr></strong> model — these are the formats supported by cloud validation. When you are ready, click <strong>START APP</strong> to begin the validation process.</p>
 <figure>
             <img align="center" alt="Start Validation Session" src="../../../models/assets/validation/vision-validate-settings.jpg" />
             <figcaption>Start Validation Session</figcaption>
             </figure>
-<div class="admonition failure">
-<p class="admonition-title">InsufficientInstanceCapacity</p>
-<p><img alt="InsufficientInstanceCapacity Error" src="../../../studio/assets/models/insufficient-capacity-error.jpg" /></p>
-<p>If you see this error after starting your validation session, retry creating the session. This can happen when AWS reports that no EC2 instances are currently available to launch; the current workaround is to retry.</p>
-</div>
 <p>Go to the created validation session by first going back to the "Model Experiments" page.</p>
 <figure>
             <img align="center" alt="Go to Model Experiments" src="../../../models/assets/training/go-back-to-model-experiments.jpg" />
@@ -2543,17 +2601,17 @@ AGTG Preview
 <p>Once you have validated your trained model, you can deploy the model in the browser using EdgeFirst Studio.  You can follow these steps either on a PC or a mobile device connected to EdgeFirst Studio in a browser.  Please note that the browser will use the camera on your device to run model inference.</p>
 <div class="admonition note">
 <p class="admonition-title"><abbr title="Open Neural Network Exchange">ONNX</abbr> models only</p>
-<p>Live browser-based model running only supports <strong><abbr title="Open Neural Network Exchange">ONNX</abbr></strong> format. To validate or profile models in other formats (<abbr title="TensorFlow Lite">TFLite</abbr>, Neutron, Hailo, TensorRT, etc.) on real hardware, use the <a href="../../../profiler/">EdgeFirst Profiler</a>.</p>
+<p>Live browser-based model inference only supports the <strong><abbr title="Open Neural Network Exchange">ONNX</abbr></strong> format. To validate or profile models in other formats (<abbr title="TensorFlow Lite">TFLite</abbr>, Neutron, Hailo, TensorRT, etc.) on real hardware, use the <a href="../../../profiler/">EdgeFirst Profiler</a>.</p>
 </div>
-<p>From the training session card, you can run the model for inference by clicking the "Run Model" button on the top right of the page.</p>
+<p>If you haven't already, click the training session card for more information.</p>
+<figure>
+            <img align="center" alt="Training Details" src="../../../models/assets/training/vision-view-train-details.jpg" />
+            <figcaption>Training Details</figcaption>
+            </figure>
+<p>On the <strong>Artifacts</strong> tab, click the <strong>Run Model</strong> button (the play icon) next to the <abbr title="Open Neural Network Exchange">ONNX</abbr> artifact. This runs the model and shows live inference in your browser.</p>
 <figure>
             <img align="center" alt="Training Session Details (Run Model button)" src="../../assets/run_model/trainer_details_page.png" />
             <figcaption>Training Session Details (Run Model button)</figcaption>
-            </figure>
-<p>You will be given the option for either live inference or inference from a file upload.  Go ahead and demo the live inference feed by clicking the "Live" option.</p>
-<figure>
-            <img align="center" alt="Live Inference Option" src="../../../models/assets/deployment/live-inference-option.jpg" />
-            <figcaption>Live Inference Option</figcaption>
             </figure>
 <p>You should now see the live inference feed on your browser running the trained model.</p>
 <figure>

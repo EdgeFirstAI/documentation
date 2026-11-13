@@ -1,0 +1,3035 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="EdgeFirst Studio Documentation">
+      
+      
+        <meta name="author" content="Au-Zone Technologies">
+      
+      
+        <link rel="canonical" href="https://doc.edgefirst.ai/test/perception/clock_sync/">
+      
+      
+        <link rel="prev" href="../profiling/">
+      
+      
+        <link rel="next" href="../dev/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/favicon.png">
+      <meta name="generator" content="mkdocs-ProperDocs 1.6.7, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>Clock Synchronization and Timestamps - EdgeFirst Studio Documentation</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.ec1eaa64.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Barlow:300,300i,400,400i,700,700i%7CJetBrains+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Barlow";--md-code-font:"JetBrains Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/_mkdocstrings.css">
+    
+      <link rel="stylesheet" href="../../stylesheets/extra.css">
+    
+      <link rel="stylesheet" href="../../stylesheets/components.css">
+    
+      <link rel="stylesheet" href="../../stylesheets/mermaid.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+  
+
+
+  
+  
+
+<script id="__analytics">function __md_analytics(){function e(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],e("js",new Date),e("config","G-N2QMRM1BZK"),document.addEventListener("DOMContentLoaded",(function(){document.forms.search&&document.forms.search.query.addEventListener("blur",(function(){this.value&&e("event","search",{search_term:this.value})}));document$.subscribe((function(){var t=document.forms.feedback;if(void 0!==t)for(var a of t.querySelectorAll("[type=submit]"))a.addEventListener("click",(function(a){a.preventDefault();var n=document.location.pathname,d=this.getAttribute("data-md-value");e("event","feedback",{page:n,data:d}),t.firstElementChild.disabled=!0;var r=t.querySelector(".md-feedback__note [data-md-value='"+d+"']");r&&(r.hidden=!1)})),t.hidden=!1})),location$.subscribe((function(t){e("config","G-N2QMRM1BZK",{page_path:t.pathname})}))}));var t=document.createElement("script");t.async=!0,t.src="https://www.googletagmanager.com/gtag/js?id=G-N2QMRM1BZK",document.getElementById("__analytics").insertAdjacentElement("afterEnd",t)}</script>
+  
+    <script>if("undefined"!=typeof __md_analytics){var consent=__md_get("__consent");consent&&consent.analytics&&__md_analytics()}</script>
+  
+
+    
+    
+  
+<meta property="og:type" content="website" />
+<meta property="og:title" content="Clock Synchronization and Timestamps - EdgeFirst Studio Documentation" />
+<meta property="og:description" content="EdgeFirst Studio Documentation" />
+<meta property="og:image" content="https://doc.edgefirst.ai/test/assets/images/social/perception/clock_sync.png" />
+<meta property="og:image:type" content="image/png" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta property="og:url" content="https://doc.edgefirst.ai/test/perception/clock_sync/" />
+<meta property="twitter:card" content="summary_large_image" />
+<meta property="twitter:title" content="Clock Synchronization and Timestamps - EdgeFirst Studio Documentation" />
+<meta property="twitter:description" content="EdgeFirst Studio Documentation" />
+<meta property="twitter:image" content="https://doc.edgefirst.ai/test/assets/images/social/perception/clock_sync.png" />
+</head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#clock-synchronization-and-timestamps" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+        <aside class="md-banner">
+          <div class="md-banner__inner md-grid md-typeset">
+            
+            
+<a href="https://test.edgefirst.studio" style="display: flex; align-items: center; gap: 0.5rem;">
+  <span class="twemoji">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+  </span>
+  <span>Back to EdgeFirst Studio</span>
+</a>
+
+          </div>
+          
+        </aside>
+      
+    </div>
+    
+      <div data-md-color-scheme="default" data-md-component="outdated" hidden>
+        
+      </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="EdgeFirst Studio Documentation" class="md-header__button md-logo" aria-label="EdgeFirst Studio Documentation" data-md-component="logo">
+      
+  <img src="../../assets/logo.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            EdgeFirst Studio Documentation
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Clock Synchronization and Timestamps
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m14.3 16-.7-2h-3.2l-.7 2H7.8L11 7h2l3.2 9zM20 8.69V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12zm-9.15 3.96h2.3L12 9z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="amber"  aria-label="Light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Light mode" for="__palette_2" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5s-1.65.15-2.39.42zM3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29zm.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14zM20.65 7l-1.77 3.79a7.02 7.02 0 0 0-2.38-4.15zm-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29zM12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="amber"  aria-label="Dark mode"  type="radio" name="__palette" id="__palette_2">
+    
+      <label class="md-header__button md-icon" title="Dark mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3zm3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95zm-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../.." class="md-tabs__link">
+          
+  
+  
+    
+  
+  Getting Started
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../studio/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Studio
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../client/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Client
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../3D/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  3D MLOps
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../profiler/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Profiler <span class="ef-badge">New</span>
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../datasets/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Datasets
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../models/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Models
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Perception
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../platforms/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Platforms
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="EdgeFirst Studio Documentation" class="md-nav__button md-logo" aria-label="EdgeFirst Studio Documentation" data-md-component="logo">
+      
+  <img src="../../assets/logo.png" alt="logo">
+
+    </a>
+    EdgeFirst Studio Documentation
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../.." class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Getting Started
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../studio/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Studio
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../client/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Client
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../3D/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3D MLOps
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../profiler/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Profiler <span class="ef-badge">New</span>
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../datasets/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Datasets
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../models/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Models
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" checked>
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Perception
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_8" id="__nav_8_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_8">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Perception
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../launcher/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    EdgeFirst Launcher
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../topics/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Topics
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../data_collection/recording/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Dataset Collection
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8_5" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_8_5" id="__nav_8_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Advanced
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_8_5_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_8_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Advanced
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../4k/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4K Video
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../profiling/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Profiling the Middleware
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Clock Synchronization and Timestamps
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Clock Synchronization and Timestamps
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#three-timestamps-per-message" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Three Timestamps per Message
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#clocks-on-the-device" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Clocks on the Device
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Clocks on the Device">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#why-acquisition-time-on-the-realtime-clock" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Why Acquisition Time on the Realtime Clock
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-timestamp-contract" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The Timestamp Contract
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="The Timestamp Contract">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#source-publishers" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Source Publishers
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#derived-publishers" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Derived Publishers
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#recorder" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Recorder
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dataset-publisher" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Dataset Publisher
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#replay" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Replay
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#time-sources-on-the-maivin-platform" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Time Sources on the Maivin Platform
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Time Sources on the Maivin Platform">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#no-persistent-real-time-clock" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        No Persistent Real-Time Clock
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#chrony-gnss-and-ntp" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        chrony, GNSS and NTP
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#boot-sequence" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Boot Sequence
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#resilience-to-late-or-absent-synchronization" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Resilience to Late or Absent Synchronization
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ptp-for-sensors" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        PTP for Sensors
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#service-reference" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Service Reference
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#inspecting-timestamps-in-a-recording" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Inspecting Timestamps in a Recording
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#troubleshooting" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Troubleshooting
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#multi-device-and-ros-2-notes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Multi-Device and ROS 2 Notes
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../dev/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Developer Guide
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../api/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    API Reference
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+    
+    
+    
+      
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../deepviewrt/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Deep View RT
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../platforms/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Platforms
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#three-timestamps-per-message" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Three Timestamps per Message
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#clocks-on-the-device" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Clocks on the Device
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Clocks on the Device">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#why-acquisition-time-on-the-realtime-clock" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Why Acquisition Time on the Realtime Clock
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-timestamp-contract" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The Timestamp Contract
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="The Timestamp Contract">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#source-publishers" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Source Publishers
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#derived-publishers" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Derived Publishers
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#recorder" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Recorder
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dataset-publisher" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Dataset Publisher
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#replay" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Replay
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#time-sources-on-the-maivin-platform" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Time Sources on the Maivin Platform
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Time Sources on the Maivin Platform">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#no-persistent-real-time-clock" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        No Persistent Real-Time Clock
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#chrony-gnss-and-ntp" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        chrony, GNSS and NTP
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#boot-sequence" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Boot Sequence
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#resilience-to-late-or-absent-synchronization" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Resilience to Late or Absent Synchronization
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ptp-for-sensors" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        PTP for Sensors
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#service-reference" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Service Reference
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#inspecting-timestamps-in-a-recording" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Inspecting Timestamps in a Recording
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#troubleshooting" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Troubleshooting
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#multi-device-and-ros-2-notes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Multi-Device and ROS 2 Notes
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+                
+
+
+
+
+  <nav class="md-path" aria-label="Navigation" >
+    <ol class="md-path__list">
+      
+      
+        
+  
+  
+    
+    
+      <li class="md-path__item">
+        <a href="../" class="md-path__link">
+          
+  <span class="md-ellipsis">
+    Perception
+  </span>
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+    
+    
+      
+  
+  
+    
+    
+      <li class="md-path__item">
+        <a href="../4k/" class="md-path__link">
+          
+  <span class="md-ellipsis">
+    Advanced
+  </span>
+
+        </a>
+      </li>
+    
+  
+
+    
+  
+
+      
+    </ol>
+  </nav>
+
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="clock-synchronization-and-timestamps">Clock Synchronization and Timestamps</h1>
+<p>Every message published by the EdgeFirst Perception Middleware carries time. Camera frames, lidar sweeps, radar cubes, <abbr title="Inertial Measurement Unit">IMU</abbr> samples, <abbr title="Global Positioning System">GPS</abbr> fixes, model detections and fusion outputs are only useful together when their timestamps come from one clock and mean one thing: the instant the measurement was taken. This page describes the clocks available on the device, the timestamp contract every service follows, how the Recorder and dataset Publisher rely on that contract, and how the Maivin platform family keeps the system clock synchronized.</p>
+<p>The contract in one sentence: <strong>acquisition time, expressed as Unix time from the host's <code>CLOCK_REALTIME</code>, travels unchanged from the sensor through the ROS 2 message header, the Zenoh sample timestamp, the <abbr title="Binary container format for robotics log data">MCAP</abbr> <code>publish_time</code>, and finally into dataset sample alignment.</strong> Recorder receive time is a separate clock, recorded alongside, and is never used to align sensors.</p>
+<div class="admonition note">
+<p class="admonition-title">Torizon for Maivin 2026.09</p>
+<p>The timestamp contract described on this page is delivered by the middleware services in the Torizon for Maivin 2026.09 release.</p>
+</div>
+<h2 id="three-timestamps-per-message">Three Timestamps per Message</h2>
+<p>A published message carries time in up to three places. A message with a header is stamped in all three, and two of those must agree. A headerless message, such as <code>Mask</code>, has no <code>header.stamp</code> and is located in time by its Zenoh sample timestamp alone. In both cases the Recorder's receive time is recorded alongside and is deliberately different.</p>
+<table>
+<thead>
+<tr>
+<th>Timestamp</th>
+<th>Where it lives</th>
+<th>Who sets it</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>header.stamp</code></td>
+<td>Inside the <abbr title="Common Data Representation">CDR</abbr> payload (<code>std_msgs/Header</code>, or the first timestamp field such as <code>CompressedVideo.timestamp</code>)</td>
+<td>The publishing service</td>
+<td>Acquisition time of the measurement</td>
+</tr>
+<tr>
+<td>Zenoh sample timestamp</td>
+<td>Zenoh transport metadata attached on <code>put()</code></td>
+<td>The publishing service</td>
+<td>The same instant as <code>header.stamp</code>, to the <code>NTP64</code> resolution of about 0.233 ns</td>
+</tr>
+<tr>
+<td><abbr title="Binary container format for robotics log data">MCAP</abbr> <code>publish_time</code> / <code>log_time</code></td>
+<td>The <abbr title="Binary container format for robotics log data">MCAP</abbr> message record written by the Recorder</td>
+<td>The Recorder</td>
+<td><code>publish_time</code> is copied from the Zenoh sample timestamp; <code>log_time</code> is the Recorder's own clock when the sample arrived</td>
+</tr>
+</tbody>
+</table>
+<p>The Recorder never decodes <abbr title="Common Data Representation">CDR</abbr> payloads. It copies the Zenoh sample timestamp into <code>publish_time</code>, so the <abbr title="Binary container format for robotics log data">MCAP</abbr> <code>publish_time</code> is only as good as the timestamp the publisher attached. This is why the contract requires the Zenoh timestamp to be the same value as <code>header.stamp</code>: it makes acquisition time available to schema-agnostic tools without parsing every message type.</p>
+<pre class="mermaid"><code>flowchart TD
+    A["Capture instant&lt;br/&gt;(CLOCK_MONOTONIC or sensor clock)"] --&gt;|"convert on every frame"| B["header.stamp&lt;br/&gt;Unix nanoseconds, CLOCK_REALTIME"]
+    B --&gt;|"same instant"| C["Zenoh sample timestamp&lt;br/&gt;put(..., timestamp)"]
+    B --&gt;|"inherited by"| G["Model and fusion outputs"]
+    G --&gt; C
+    C --&gt;|"copied by the Recorder"| D["MCAP publish_time"]
+    R["Recorder receive&lt;br/&gt;SystemTime::now()"] --&gt; E["MCAP log_time"]
+    D --&gt; F["Dataset sample alignment&lt;br/&gt;(edgefirst-publisher)"]
+    E -.-&gt;|"diagnostics only"| F</code></pre>
+<p><code>log_time - publish_time</code> on a recording approximates the end-to-end latency from acquisition to the Recorder: sensor readout, encoding, inference, Zenoh transport and scheduling. On a healthy, synchronized system it is a few milliseconds for sensors and tens of milliseconds for model outputs. It is an estimate rather than a measurement: the two stamps are taken at different points, and across a clock step they fall on opposite sides of it, so the difference jumps by the size of the step and can turn negative. A value of hours or days is not latency at all but a clock-domain fault.</p>
+<h2 id="clocks-on-the-device">Clocks on the Device</h2>
+<p>Linux exposes several clocks, and the middleware uses each for a specific purpose.</p>
+<table>
+<thead>
+<tr>
+<th>Clock</th>
+<th>Behavior</th>
+<th>Used for</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>CLOCK_REALTIME</code></td>
+<td>Unix wall-clock time. Stepped by <code>chronyd</code> when the error is large, slewed (frequency-adjusted) when it is small.</td>
+<td>All published timestamps</td>
+</tr>
+<tr>
+<td><code>CLOCK_MONOTONIC</code></td>
+<td>Counts from boot. Never steps, but is slewed together with <code>CLOCK_REALTIME</code> by the same frequency adjustments.</td>
+<td>V4L2 camera buffer timestamps, latency measurement, timeouts</td>
+</tr>
+<tr>
+<td><code>CLOCK_MONOTONIC_RAW</code></td>
+<td>Raw hardware counter, not slewed.</td>
+<td>Not used for stamps</td>
+</tr>
+<tr>
+<td>Sensor clocks</td>
+<td>Ouster internal oscillator (nanoseconds since sensor power-on), SmartMicro radar cycle time, <abbr title="Global Navigation Satellite System">GNSS</abbr> time, BNO08x report timebase.</td>
+<td>Only when disciplined to the host clock or translated into it</td>
+</tr>
+</tbody>
+</table>
+<p>The important consequence is how the two Linux clocks move relative to each other:</p>
+<ul>
+<li>A <strong>slew</strong> changes the rate of both clocks equally. The difference <code>CLOCK_REALTIME - CLOCK_MONOTONIC</code> stays constant.</li>
+<li>A <strong>step</strong> changes only <code>CLOCK_REALTIME</code>. The difference jumps by the size of the step.</li>
+</ul>
+<p>On the Maivin platform a step of more than a year happens on almost every cold boot, and it happens <em>after</em> the middleware services have started (see <a href="#boot-sequence">Boot Sequence</a>). Any service that captured <code>CLOCK_REALTIME - CLOCK_MONOTONIC</code> once and kept using it would publish every subsequent timestamp in the pre-step clock domain, leaving its topics more than a year behind every other topic in a recording. The contract therefore forbids cached clock offsets.</p>
+<div class="admonition note">
+<p class="admonition-title">ROS 2 convention</p>
+<p>ROS 2 <code>header.stamp</code> is system (wall-clock) time in seconds and nanoseconds since the Unix epoch, and the <code>sec</code> field is a signed 32-bit integer. EdgeFirst services follow this convention and saturate at the year 2038 limit rather than overflow.</p>
+</div>
+<h3 id="why-acquisition-time-on-the-realtime-clock">Why Acquisition Time on the Realtime Clock</h3>
+<p>The two clocks answer two different questions, and the middleware uses each for the question it answers well.</p>
+<ul>
+<li><strong>Durations belong to <code>CLOCK_MONOTONIC</code>.</strong> How long a track has been alive, whether a sensor has gone quiet, how much latency a frame accumulated: these are differences between two instants on the same host, and the monotonic clock is the only one guaranteed never to jump between them. The kernel stamps V4L2 buffers on this clock for the same reason, so that video can be correlated with other local sources such as audio regardless of what the wall clock does. Every timeout, expiry and latency measurement in the middleware stays on this clock.</li>
+<li><strong>Instants that leave the process belong to <code>CLOCK_REALTIME</code>.</strong> A stamp is compared with stamps from other services, other devices, <abbr title="Global Navigation Satellite System">GNSS</abbr> receivers and <abbr title="Precision Time Protocol">PTP</abbr>-disciplined sensors, and it is read by people. The monotonic clock has no meaning outside one boot of one host, so a published instant must be Unix time. ROS 2 headers, the Zenoh sample timestamp (a 32.32 NTP64 value) and <abbr title="Binary container format for robotics log data">MCAP</abbr> message records all define their timestamps as wall-clock time.</li>
+</ul>
+<p>Converting a monotonic capture time to realtime is therefore a translation at the process boundary, not a rejection of the monotonic clock. The translation reads the current difference between the two clocks for every sample, so that a step in <code>CLOCK_REALTIME</code> moves the published stamps at the same moment for every service, and the step handling described below reconciles the two sides of it. No service measures a <em>runtime</em> duration across the published stamps of one topic; live durations such as track lifetimes and sensor timeouts are taken on the monotonic clock directly. Offline consumers are a separate case and do perform timestamp arithmetic by necessity: the dataset Publisher derives frame-rate buckets and skip durations from <code>publish_time</code>, and Replay derives pacing from recorded <code>log_time</code> gaps. Both therefore have to handle a clock step inside a file, which is why step handling is part of the contract below rather than an afterthought.</p>
+<p>The stamp is the <strong>acquisition</strong> instant, not the publish instant, following the ROS 2 sensor message definitions, where the <code>Image</code>, <code>CameraInfo</code> and <code>PointCloud2</code> headers are documented as the acquisition time of the data. Acquisition time is the only instant that is the same for every representation of one measurement (the raw frame, its H.264 and JPEG encodings, the model output computed from it) and the only one that fusion and dataset alignment can compare across sensors. The publish instant differs per representation by the processing that produced it and is recovered on a recording as <code>log_time - publish_time</code>. Two consequences follow:</p>
+<ul>
+<li>The <strong>acquisition instant is the closest one available for each sensor</strong>, in this order of preference. First, the sensor's own timestamp when its clock is synchronized to the host: a lidar disciplined by the Maivin <abbr title="Precision Time Protocol">PTP</abbr> grandmaster stamps every column at the true measurement instant, with no network latency or jitter in the value, and that is better than anything the host can observe. Second, a timestamp taken by the kernel driver at capture, such as the V4L2 buffer timestamp, which the capture driver records in its interrupt handler when the frame arrives (end of frame by default, start of exposure when the driver reports <code>V4L2_BUF_FLAG_TSTAMP_SRC_SOE</code>) and which is acquisition time in every sense the contract needs, taken before any user-space scheduling. Third, host time at first observation in user space, for a radar <abbr title="Controller Area Network">CAN</abbr> frame set or an <abbr title="Inertial Measurement Unit">IMU</abbr> report, which includes the transport latency. Whichever instant a topic uses is fixed and recorded in the <a href="#service-reference">Service Reference</a>, so a constant residual to the physical event, such as readout time or <abbr title="Controller Area Network">CAN</abbr> latency, can be removed by a consumer with a per-sensor offset.</li>
+<li>The Zenoh sample timestamp and the <abbr title="Binary container format for robotics log data">MCAP</abbr> <code>publish_time</code> carry the acquisition instant rather than the instant of the <code>put()</code>. Zenoh describes its timestamp as the ingestion time used to order samples, and <abbr title="Binary container format for robotics log data">MCAP</abbr> describes <code>publish_time</code> as the time the message was published. Both are used here as the acquisition time on purpose, so that ordering, storage and dataset alignment all operate on the one value that is shared across representations of a measurement. While the host clock is synchronized, acquisition stamps are monotone per topic, in the past relative to any router, and unique per key expression, so the ordering guarantees hold. Neither property is unconditional. A backward step of <code>CLOCK_REALTIME</code> makes published stamps non-monotonic across the step, and a publisher whose clock runs ahead of a router can produce a stamp in the router's future, which <code>zenohd</code> re-stamps or drops (see <a href="#multi-device-and-ros-2-notes">Multi-Device and ROS 2 Notes</a>). Consumers therefore treat a step as a segment boundary instead of relying on global monotonicity.</li>
+</ul>
+<h2 id="the-timestamp-contract">The Timestamp Contract</h2>
+<p>The rules below are normative for every service that creates, transforms or consumes timestamps.</p>
+<p>They describe the EdgeFirst Perception services. An application that publishes its own topics into the same session is outside the middleware and has to implement the same rules itself before its topics can take part in alignment. A publisher that stamps the header with its own publish time, or that calls <code>put()</code> without attaching a timestamp and lets the session assign one, produces a topic the Recorder reports as <code>fallback to recorder receive time</code>; such a topic is recorded faithfully but does not align with the sensors. The developer examples in this manual predate this contract and illustrate the message schemas rather than the timestamp rules.</p>
+<h3 id="source-publishers">Source Publishers</h3>
+<p>Source publishers are the services that talk to hardware: camera, lidar (<code>lidarpub</code>), radar (<code>radarpub</code>), <abbr title="Inertial Measurement Unit">IMU</abbr> (<code>imu</code>) and <abbr title="Global Positioning System">GPS</abbr> (<code>navsat</code>).</p>
+<ol>
+<li><strong>Stamp with acquisition time.</strong> <code>header.stamp</code> (or the equivalent first timestamp field) is the instant the measurement was taken, not the time the message was built or published. The instant is the one named for the topic in the <a href="#service-reference">Service Reference</a> and never changes between releases without a note there.</li>
+<li><strong>Stay in the host clock domain.</strong> The published value is Unix time from the host's <code>CLOCK_REALTIME</code>. A monotonic capture timestamp, such as the V4L2 buffer timestamp, is converted by adding the current <code>CLOCK_REALTIME - CLOCK_MONOTONIC</code> difference, <strong>recomputed at every conversion</strong>. The two reads are not atomic, so the difference is measured as a bracket: read <code>CLOCK_REALTIME</code>, then <code>CLOCK_MONOTONIC</code>, then <code>CLOCK_REALTIME</code> again, take the midpoint of the two realtime reads, and retry when the bracket is wider than a few microseconds because the thread was preempted between the reads. All three reads go through the vDSO and cost tens of nanoseconds, so there is nothing to gain from caching. The conversion is applied as close to acquisition as possible, on the thread that dequeues the buffer, and never to a capture time that has been waiting in a queue: a frame captured before a clock step but converted after it would be shifted by the entire step even though its acquisition was not. A service that buffers monotonic capture times must convert each one on arrival, or record the offset in force when the buffer was captured and use that one. When the true acquisition instant is not available, the host time at first observation is used.</li>
+<li><strong>Prefer a synchronized sensor clock; translate or reject an unsynchronized one.</strong> A timestamp generated by a sensor's own clock is the best acquisition time available when that clock is disciplined to the host (for example an Ouster lidar in its <code>ptp1588</code> <a href="../../platforms/configuration/lidar/#timestamp-mode">timestamp mode</a> with the Maivin acting as <abbr title="Precision Time Protocol">PTP</abbr> grandmaster), because it removes the transport latency and jitter from the stamp, and it is used in preference to host observation time. A sensor clock that is not disciplined may be published only when the service maintains a measured offset between the sensor clock and the host clock. Otherwise it is a second clock domain, breaks alignment for every consumer, and host time at first observation is used instead.</li>
+<li><strong>Attach the same value to the Zenoh sample.</strong> Every <code>put()</code> carries <code>timestamp(...)</code> derived from <code>header.stamp</code> and converted to Zenoh <code>NTP64</code> form. <code>NTP64</code> is a 32.32 fixed-point value, so its fractional second quantizes to 2^-32 s, about 0.233 ns, and an arbitrary nanosecond count does not survive the conversion bit for bit: 1 ns decodes to roughly 0.931 ns. The two stamps therefore denote the same instant to within that resolution rather than being byte-identical, and a consumer comparing them allows a tolerance of a nanosecond or two instead of testing for equality.</li>
+<li><strong>Never stamp with uptime, <code>Instant::now()</code>, or publish-complete time.</strong></li>
+<li><strong>Metadata topics follow their data; configuration topics do not.</strong> <code>camera/info</code> describes a frame and is stamped with that frame's acquisition time. Static transforms (<code>tf_static</code>) and configuration topics that describe the running service rather than a measurement, such as <code>model/info</code> and <code>radar/info</code>, are stamped at the time they are published. None of them participates in sample alignment.</li>
+</ol>
+<h3 id="derived-publishers">Derived Publishers</h3>
+<p>Derived publishers consume measurements and publish results: the model service and the fusion service.</p>
+<ol>
+<li><strong>Inherit the source stamp.</strong> Model output for a camera frame carries that frame's <code>header.stamp</code>, and its Zenoh sample timestamp is the same value. Fusion outputs carry the stamp of the primary sensor of the fused object, which is the radar or lidar point cloud for <code>fusion/boxes3d</code> and the occupancy grid. The policy is documented per topic in the <a href="#service-reference">Service Reference</a>.</li>
+<li><strong>Latency goes into duration fields, never into the stamp.</strong> Preprocessing, inference, output and decode times are reported in the <code>Model</code> message duration fields (<code>input_time</code>, <code>model_time</code>, <code>output_time</code>, <code>decode_time</code>). On a recording the same information is available as <code>log_time - publish_time</code>.</li>
+<li><strong>Messages without a header</strong> (such as <code>Mask</code>) are located in time only by their Zenoh sample timestamp, which therefore must be the source acquisition stamp.</li>
+<li><strong>Tolerate clock steps.</strong> Trackers and expiry logic keyed on <code>header.stamp</code> must survive a forward or backward step without stalling or expiring every track at once. Lifetimes are measured on <code>CLOCK_MONOTONIC</code>; a stamp that moves backwards resets the timeline instead of blocking it.</li>
+</ol>
+<h3 id="recorder">Recorder</h3>
+<ol>
+<li><code>log_time</code> is <code>SystemTime::now()</code> when the sample is received. It is never replaced.</li>
+<li><code>publish_time</code> is the Zenoh sample timestamp when present and representable as Unix nanoseconds. Otherwise it falls back to <code>log_time</code>.</li>
+<li>
+<p>The first sample on each topic logs which mode is in use:</p>
+<div class="highlight"><pre><span></span><code>Timestamps for camera/frame: source-stamped from Zenoh sample
+Timestamps for fusion/radar: fallback to recorder receive time (missing or invalid source timestamp)
+</code></pre></div>
+<p>A fallback line is a diagnostic that the producer did not source-stamp. It must not be the steady state for any topic that participates in sample alignment: camera frame, H.264, JPEG, camera info, lidar, radar, <abbr title="Inertial Measurement Unit">IMU</abbr>, <abbr title="Global Positioning System">GPS</abbr>, model and fusion topics.</p>
+</li>
+<li>
+<p>A source timestamp that is implausibly far from <code>log_time</code> is a diagnostic of a clock-domain fault upstream. The Recorder still records it unchanged so the fault remains visible in the file.</p>
+</li>
+<li><strong>A clock step during a recording is marked, not split.</strong> The Recorder watches for steps with a <code>timerfd</code> armed on <code>CLOCK_REALTIME</code> with <code>TFD_TIMER_ABSTIME</code> and <code>TFD_TIMER_CANCEL_ON_SET</code>, which the kernel cancels with <code>ECANCELED</code> at the instant the clock is set discontinuously, and confirms the size of the step from the change in <code>CLOCK_REALTIME - CLOCK_MONOTONIC</code>. When that difference changes by more than one second the clock has been stepped. The Recorder keeps writing the same file, logs the step, and writes an <abbr title="Binary container format for robotics log data">MCAP</abbr> metadata record named <code>clock_step</code> carrying the receive time immediately before and after the step and the size of the step in nanoseconds. It also writes a <code>clock_sync</code> metadata record when the file is opened, with the chrony reference, stratum and estimated error at that moment, so a file recorded before synchronization documents its own epoch. Recordings stay one file per session; every consumer is responsible for handling the step (see below).</li>
+</ol>
+<h3 id="dataset-publisher">Dataset Publisher</h3>
+<p>The <code>edgefirst-publisher</code> converts <abbr title="Binary container format for robotics log data">MCAP</abbr> recordings into EdgeFirst datasets (ZIP and Arrow). It aligns exclusively on <abbr title="Binary container format for robotics log data">MCAP</abbr> <code>publish_time</code> and does not decode <code>header.stamp</code> on that path.</p>
+<ul>
+<li>Each field (H.264 frame, JPEG, <abbr title="Inertial Measurement Unit">IMU</abbr>, <abbr title="Global Positioning System">GPS</abbr>, model output, radar and lidar point clouds, masks) is buffered by <code>publish_time</code> plus its optional <code>--*-offset</code> in nanoseconds.</li>
+<li>A dataset sample is emitted for each message on the preferred topic (normally <code>camera/h264</code>) once the stream has advanced <code>--lookahead</code> (default one second) past it. Companion fields are the buffered values nearest in time to the sample, before or after.</li>
+<li><code>-f</code> frame-rate sampling keeps the first frame in each <code>1/fps</code> bucket, measured on unoffset <code>publish_time</code> from the first preferred-topic message.</li>
+<li><code>--skip-messages</code> skips a leading duration of the recording, measured from the <code>publish_time</code> of the first message on any topic.</li>
+<li>4K tile stitching is the one place <code>header.stamp</code> is read: the <a href="../4k/publisher_4k/#step-2-tile-stitching">four tiles of a frame</a> are grouped by exact equality of their payload stamps. This works only because all four tiles carry the identical acquisition stamp. The separate step that maps a stitched frame onto a dataset sample is sequential and does not read stamps.</li>
+</ul>
+<p>Because everything above happens in one clock, a topic whose <code>publish_time</code> sits in a different domain is excluded from every sample: its frames look either already skipped or infinitely far from any companion. The signature of this fault is a dataset with no samples from an <abbr title="Binary container format for robotics log data">MCAP</abbr> that contains camera messages, which is why the Publisher reports the time domain of every topic instead of finishing silently (see below).</p>
+<p>The Publisher must also handle a clock step inside a file, because a recording may start before the clock is synchronized. Every service follows the step at the same moment, so the messages on each side of it are internally consistent and only the boundary needs care. The Publisher reads the Recorder's <code>clock_step</code> metadata records first and uses them as the authoritative segment boundaries, reporting the <code>clock_sync</code> state of the file alongside. It also scans for discontinuities itself, so that files without metadata records and files with a step the Recorder did not see are handled the same way: a jump in <code>publish_time</code> on the preferred topic larger than a few seconds, forward or backward, is a segment boundary. At each boundary it flushes buffered companions so nothing from one side is matched to a sample on the other, restarts the <code>-f</code> bucket origin and the <code>--skip-messages</code> origin at the first message of the new segment, and continues writing the same dataset with the frame index running on. All time arithmetic saturates instead of wrapping. The step and the message count on each side are reported in the log, and a conversion that discards every preferred-topic message says why, naming the topics whose time domain disagrees with the preferred topic, instead of finishing silently with an empty dataset.</p>
+<h3 id="replay">Replay</h3>
+<p>The Replay service republishes a recording over Zenoh. It preserves the recorded <abbr title="Common Data Representation">CDR</abbr> payloads, including <code>header.stamp</code>, and paces playback on <code>log_time</code>. The contract requires replayed samples to carry the recorded <code>publish_time</code> as their Zenoh sample timestamp, so that a recording made during replay keeps the original acquisition times instead of degrading to receive time. Pacing must not stall on a clock step inside the file. Replay knows the typical interval of every topic from the recording itself. The <abbr title="Binary container format for robotics log data">MCAP</abbr> statistics give only a message count and the first and last <code>log_time</code>, and that span includes any step inside the file, so the count-over-duration rate is only valid after subtracting the steps recorded in the <code>clock_step</code> metadata; the median gap between consecutive messages on the topic is the robust estimate and works on files without metadata. When the gap to the next message is far larger than that topic's typical interval, on the order of ten times, Replay waits the typical interval instead of the recorded gap, so a step plays as one ordinary frame period rather than a wait as long as the step itself.</p>
+<p>Tools that summarize a recording from the <abbr title="Binary container format for robotics log data">MCAP</abbr> statistics, such as the Web UI's duration and per-topic frame-rate figures, subtract the steps recorded in <code>clock_step</code> metadata from the span, or fall back to excluding gaps larger than a few seconds, for the same reason.</p>
+<h2 id="time-sources-on-the-maivin-platform">Time Sources on the Maivin Platform</h2>
+<p>The Maivin and Raivin run the middleware services as native systemd units on Torizon OS. There are no containers involved, so every service sees the same kernel clocks.</p>
+<h3 id="no-persistent-real-time-clock">No Persistent Real-Time Clock</h3>
+<p>The on-board <code>rtc-ds1307</code> loses its stored time on every power cycle because it has no working backup supply. At boot the kernel logs <code>rtc-ds1307: oscillator failed, set time!</code> and <code>hctosys: unable to read the hardware clock</code>, and systemd initializes <code>CLOCK_REALTIME</code> to its build-time epoch. On current Torizon 7 images that epoch is 2025-05-29, which is why unsynchronized recordings and log lines cluster around that date. The clock becomes correct only when <code>chronyd</code> obtains a source.</p>
+<h3 id="chrony-gnss-and-ntp">chrony, <abbr title="Global Navigation Satellite System">GNSS</abbr> and NTP</h3>
+<p><code>chronyd</code> disciplines the system clock. The stock Torizon configuration in <code>/etc/chrony.conf</code> provides:</p>
+<div class="highlight"><pre><span></span><code>confdir /etc/chrony/conf.d
+pool 0.openembedded.pool.ntp.org iburst
+sourcedir /etc/chrony/sources.d
+makestep 1.0 3
+driftfile /var/lib/chrony/drift
+rtcsync
+</code></pre></div>
+<p><code>makestep 1.0 3</code> allows the clock to be <strong>stepped</strong> if the error exceeds one second during the first three clock updates after <code>chronyd</code> starts. Later corrections are slewed. On a cold boot the first update therefore steps the clock by more than a year; every subsequent correction is a gradual rate change that does not disturb <code>CLOCK_REALTIME - CLOCK_MONOTONIC</code>.</p>
+<p>The Maivin layer (<code>meta-maivin</code>) adds the <abbr title="Global Navigation Satellite System">GNSS</abbr> receiver as a stratum 0 reference in <code>/etc/chrony/conf.d/gpsd.conf</code>:</p>
+<div class="highlight"><pre><span></span><code>refclock SHM 0 refid NMEA delay 0.5 poll 0 noselect
+refclock PPS /dev/pps-gps refid GPS lock NMEA maxlockage 10 precision 1e-7 poll 0 prefer
+</code></pre></div>
+<ul>
+<li><code>NMEA</code> is the coarse time from <code>gpsd</code> over the receiver's serial port (<code>/dev/ttymxc3</code>). It is accurate to roughly 200 ms and is marked <code>noselect</code>: it exists only to tell the PPS source which second each pulse belongs to.</li>
+<li><code>GPS</code> is the receiver's 1 PPS timepulse on Verdin SODIMM 64, captured by the kernel <code>pps-gpio</code> driver and exposed as <code>/dev/pps-gps</code> through a udev rule. It is microsecond accurate and preferred over NTP once locked.</li>
+</ul>
+<div class="highlight"><pre><span></span><code>GNSS receiver
+  ├─→ NMEA over /dev/ttymxc3 → gpsd → SHM 0 ─┐
+  └─→ TIMEPULSE on SODIMM 64 → pps-gpio ─────┤
+                                             └─→ chronyd (disciplines CLOCK_REALTIME)
+                                                  ├─→ pool NTP servers (when a network is available)
+                                                  └─→ phc2sys-master → ethernet1 PHC → ptp4l → sensors (opt-in)
+</code></pre></div>
+<p>A healthy unit shows the <abbr title="Global Positioning System">GPS</abbr> source selected at stratum 1:</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>chronyc<span class="w"> </span>tracking
+Reference<span class="w"> </span>ID<span class="w">    </span>:<span class="w"> </span><span class="m">47505300</span><span class="w"> </span><span class="o">(</span>GPS<span class="o">)</span>
+Stratum<span class="w">         </span>:<span class="w"> </span><span class="m">1</span>
+System<span class="w"> </span><span class="nb">time</span><span class="w">     </span>:<span class="w"> </span><span class="m">0</span>.000031795<span class="w"> </span>seconds<span class="w"> </span>fast<span class="w"> </span>of<span class="w"> </span>NTP<span class="w"> </span><span class="nb">time</span>
+Last<span class="w"> </span>offset<span class="w">     </span>:<span class="w"> </span>+0.000041701<span class="w"> </span>seconds
+$<span class="w"> </span>chronyc<span class="w"> </span>sources
+MS<span class="w"> </span>Name/IP<span class="w"> </span>address<span class="w">         </span>Stratum<span class="w"> </span>Poll<span class="w"> </span>Reach<span class="w"> </span>LastRx<span class="w"> </span>Last<span class="w"> </span><span class="nv">sample</span>
+<span class="o">===============================================================================</span>
+<span class="c1">#? NMEA                          0   0   377     0   +256ms[ +256ms] +/-  250ms</span>
+<span class="c1">#* GPS                           0   0   377     1    +12us[  +45us] +/-  125ns</span>
+^-<span class="w"> </span>archer.fsck.ca<span class="w">                </span><span class="m">2</span><span class="w">  </span><span class="m">10</span><span class="w">   </span><span class="m">377</span><span class="w">   </span><span class="m">128</span><span class="w">   </span>+557us<span class="o">[</span><span class="w">  </span>-65us<span class="o">]</span><span class="w"> </span>+/-<span class="w">   </span>39ms
+</code></pre></div>
+<div class="admonition warning">
+<p class="admonition-title">Stale /etc/chrony.conf after an OSTree update</p>
+<p>OSTree merges <code>/etc</code> across updates. If <code>chronyc sources</code> shows only pool servers at stratum 2 or higher and the <abbr title="Global Navigation Satellite System">GNSS</abbr> refclocks are missing, compare <code>/etc/chrony.conf</code> with <code>/usr/etc/chrony.conf</code>; a stale copy that predates the <code>confdir</code> directive masks the shipped configuration.</p>
+</div>
+<h3 id="boot-sequence">Boot Sequence</h3>
+<p>A representative cold boot of a Maivin with network NTP available proceeds as follows. Times are seconds after kernel start.</p>
+<table>
+<thead>
+<tr>
+<th>Time</th>
+<th>Event</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1.3 s</td>
+<td>Kernel cannot read the RTC; <code>CLOCK_REALTIME</code> starts at the systemd epoch</td>
+</tr>
+<tr>
+<td>4 s</td>
+<td><code>systemd-time-wait-sync.service</code> starts a bounded <code>chronyc waitsync</code> (up to 24 tries, 5 s apart)</td>
+</tr>
+<tr>
+<td>8 s</td>
+<td><code>chronyd</code> starts</td>
+</tr>
+<tr>
+<td>11 to 12 s</td>
+<td><abbr title="Inertial Measurement Unit">IMU</abbr>, NavSat, camera, model and Web UI services start</td>
+</tr>
+<tr>
+<td>41 s</td>
+<td><code>chronyd</code> selects its first NTP source and steps the clock forward to the current date, a step of more than a year</td>
+</tr>
+<tr>
+<td>45 s</td>
+<td><code>time-sync.target</code>, then <code>multi-user.target</code> and <code>maivin.target</code> are reached</td>
+</tr>
+<tr>
+<td>400 s</td>
+<td><code>chronyd</code> switches to the <abbr title="Global Positioning System">GPS</abbr> reference once the PPS source is locked; the correction is milliseconds and is slewed</td>
+</tr>
+</tbody>
+</table>
+<pre class="mermaid"><code>sequenceDiagram
+    participant K as Kernel
+    participant S as systemd
+    participant C as chronyd
+    participant M as Middleware services
+    K-&gt;&gt;S: RTC unreadable, CLOCK_REALTIME = build epoch
+    S-&gt;&gt;S: systemd-time-wait-sync starts (chronyc waitsync, max 120 s)
+    S-&gt;&gt;C: start chronyd
+    S-&gt;&gt;M: services start (no dependency on time sync)
+    Note over M: a cached REALTIME - MONOTONIC offset&lt;br/&gt;captured here is wrong by the size of the step
+    C--&gt;&gt;C: first NTP or GNSS sample (seconds, minutes, hours, or never)
+    C-&gt;&gt;K: step CLOCK_REALTIME
+    S-&gt;&gt;S: time-sync.target, multi-user.target, maivin.target
+    Note over M: services following the contract publish correct&lt;br/&gt;stamps from this point without a restart</code></pre>
+<p>This is the favorable case. Three facts about the platform mean the step can arrive at any time, or never:</p>
+<ul>
+<li>The middleware services start roughly 30 seconds <strong>before</strong> the clock step even when a source is available. Ordering them after <code>maivin.target</code> does not help, because a target's <code>After=</code> ordering does not propagate to the units it wants.</li>
+<li>The wait is bounded. <code>chronyc waitsync</code> gives up after about two minutes, <code>systemd-time-wait-sync.service</code> exits successfully, and boot continues with an unsynchronized clock.</li>
+<li>Neither source is dependable. <abbr title="Global Navigation Satellite System">GNSS</abbr> needs sky view, an attached antenna and an interference-free band; a unit under a roof, with a damaged cable, or in the presence of jamming or spoofing has no <abbr title="Global Positioning System">GPS</abbr> reference. NTP needs a route to the internet, and on a vehicle the network can come up ten minutes after boot or not at all.</li>
+</ul>
+<h3 id="resilience-to-late-or-absent-synchronization">Resilience to Late or Absent Synchronization</h3>
+<p>No middleware service depends on <code>time-sync.target</code>, waits for <code>chronyd</code>, or assumes that the clock is correct when it starts. The design treats synchronization as an event that may happen at any moment during operation and requires every stage of the pipeline to be correct before it, during it and after it:</p>
+<ul>
+<li><strong>Before synchronization</strong> every stamp is in the boot epoch, but every service is in the <em>same</em> wrong epoch because they all read <code>CLOCK_REALTIME</code> at each conversion. Alignment, recording and dataset conversion all work; only the absolute date is wrong. The Recorder records the chrony state in the file so this is visible.</li>
+<li><strong>At the step</strong> the publishers follow <code>CLOCK_REALTIME</code> immediately because nothing caches an offset. Trackers and expiry logic run on <code>CLOCK_MONOTONIC</code>, so a step in stamps neither stalls them nor expires every track. Fusion may pair one camera frame with one radar or lidar sweep from the other side of the step; the mismatch is bounded by pipeline latency and lasts for a single output. The Recorder keeps writing the same file and marks the step in it, and the dataset Publisher, Replay and the Web UI treat the step as a boundary between two consistent segments of one recording.</li>
+<li><strong>After synchronization</strong> stamps are correct Unix time with no restart of any service. Later corrections from chrony are slews and do not affect the offset between the two clocks.</li>
+</ul>
+<p>Startup ordering is therefore never part of the timestamp design. The only unit that legitimately depends on time synchronization is <code>phc2sys-master</code>, which distributes the host clock to sensors over <abbr title="Precision Time Protocol">PTP</abbr> and is pointless until the host clock is right.</p>
+<p>Because every service tolerates steps, the platform does not need to protect them from steps either. <code>makestep 1.0 3</code> limits stepping to the first three clock updates; a unit that first synchronizes to a poor NTP source and only reaches <abbr title="Global Navigation Satellite System">GNSS</abbr> after those updates would then slew a large residual at up to 83 ms per second. Allowing <code>chronyd</code> to step on any update (<code>makestep 1.0 -1</code>) is the configuration chrony recommends for machines without a working RTC, and it is safe under this contract.</p>
+<h3 id="ptp-for-sensors"><abbr title="Precision Time Protocol">PTP</abbr> for Sensors</h3>
+<p>The Maivin can act as an IEEE 1588 grandmaster on the internal sensor network (<code>ethernet1</code>) using <code>ptp4l</code> with hardware timestamping and <code>phc2sys-master@ethernet1</code>, which pushes <code>CLOCK_REALTIME</code> into the interface's <abbr title="Precision Time Protocol">PTP</abbr> hardware clock with no offset applied, so the hardware clock carries UTC rather than the TAI timescale that IEEE 1588 uses by default and a sensor disciplined from it reads the same Unix time as the host. UTC and TAI are not interchangeable: TAI leads UTC by the accumulated leap seconds, 37 s at the time of writing, so a sensor that assumes a TAI grandmaster, or a <code>phc2sys</code> configured to apply the current UTC offset, is off by that amount from every other stamp in the recording. Confirm the timescale when adding a sensor. Both units are <strong>enabled by default</strong> on <code>ethernet1</code>, so the Maivin is already the <abbr title="Precision Time Protocol">PTP</abbr> time source for the sensors on that port:</p>
+<div class="highlight"><pre><span></span><code>systemctl<span class="w"> </span>status<span class="w"> </span>ptp4l.service<span class="w"> </span>phc2sys-master@ethernet1.service
+</code></pre></div>
+<p>With <abbr title="Precision Time Protocol">PTP</abbr> running, the Ouster lidar is set to the <code>ptp1588</code> <a href="../../platforms/configuration/lidar/#timestamp-mode">timestamp mode</a> (<code>TIMESTAMP_MODE</code>) so its per-column measurement timestamps are Unix time in the host domain. The default <code>internal</code> mode counts nanoseconds since sensor power-on, which is not a host-domain clock and must not be published as <code>header.stamp</code>.</p>
+<h2 id="service-reference">Service Reference</h2>
+<p>The table records, per topic, where acquisition time comes from and what the contract requires for <code>header.stamp</code> and the Zenoh sample timestamp. It covers the stock topics listed in the <a href="../topics/">Topic Overview</a>; topics added by an application are the publisher's own responsibility. Topic names are shown without the hostname namespace prefix, and the legacy <code>model/boxes2d</code> and <code>model/mask</code> topics are disabled by default.</p>
+<table>
+<thead>
+<tr>
+<th>Service</th>
+<th>Topic</th>
+<th>Acquisition source</th>
+<th><code>header.stamp</code></th>
+<th>Zenoh sample timestamp</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>camera</td>
+<td><code>camera/frame</code>, <code>camera/h264</code>, <code>camera/jpeg</code>, <code>camera/h264/{tl,tr,bl,br}</code></td>
+<td>V4L2 buffer timestamp (<code>CLOCK_MONOTONIC</code>, end of frame)</td>
+<td>Monotonic capture time plus the current realtime offset</td>
+<td>Same as <code>header.stamp</code></td>
+</tr>
+<tr>
+<td>camera</td>
+<td><code>camera/info</code></td>
+<td>The frame it describes</td>
+<td>Frame acquisition stamp</td>
+<td>Same as <code>header.stamp</code></td>
+</tr>
+<tr>
+<td>camera</td>
+<td><code>tf_static</code></td>
+<td>Static</td>
+<td>Time of republish</td>
+<td>Same as <code>header.stamp</code></td>
+</tr>
+<tr>
+<td>lidarpub</td>
+<td><code>lidar/points</code>, <code>lidar/clusters</code></td>
+<td>Ouster column timestamps (start of sweep) when <abbr title="Precision Time Protocol">PTP</abbr>-disciplined, otherwise host time at the first packet of the sweep</td>
+<td>Host-domain start-of-sweep time; clusters inherit their source cloud stamp</td>
+<td>Same as <code>header.stamp</code></td>
+</tr>
+<tr>
+<td>lidarpub</td>
+<td><code>lidar/imu</code></td>
+<td>The sensor's own inertial report (Robosense device information packets)</td>
+<td>Host time when the report is read</td>
+<td>Same as <code>header.stamp</code></td>
+</tr>
+<tr>
+<td>radarpub</td>
+<td><code>radar/targets</code>, <code>radar/clusters</code></td>
+<td>Host time when the <abbr title="Controller Area Network">CAN</abbr> frame set completes (the radar does not timestamp <abbr title="Controller Area Network">CAN</abbr> targets)</td>
+<td>Host time; clusters inherit the newest contributing frame</td>
+<td>Same as <code>header.stamp</code></td>
+</tr>
+<tr>
+<td>radarpub</td>
+<td><code>radar/cube</code></td>
+<td>Radar Ethernet port header time (microseconds)</td>
+<td>Host-domain time: sensor time only when disciplined or offset-corrected, otherwise host receive time</td>
+<td>Same as <code>header.stamp</code></td>
+</tr>
+<tr>
+<td>radarpub</td>
+<td><code>radar/info</code>, <code>tf_static</code></td>
+<td>Static</td>
+<td>Time of republish</td>
+<td>Same as <code>header.stamp</code></td>
+</tr>
+<tr>
+<td>imu</td>
+<td><code>imu</code></td>
+<td>BNO08x rotation-vector report at 200 Hz</td>
+<td>Host time when the report is read</td>
+<td>Same as <code>header.stamp</code></td>
+</tr>
+<tr>
+<td>navsat</td>
+<td><code>gps</code></td>
+<td>gpsd TPV and GST reports</td>
+<td>Host time when the report is handled</td>
+<td>Same as <code>header.stamp</code></td>
+</tr>
+<tr>
+<td>model</td>
+<td><code>model/output</code>, <code>model/visualization</code>, and the legacy <code>model/boxes2d</code></td>
+<td>The input camera frame</td>
+<td>Camera frame stamp</td>
+<td>Same as <code>header.stamp</code></td>
+</tr>
+<tr>
+<td>model</td>
+<td><code>model/mask</code> (legacy)</td>
+<td>The input camera frame</td>
+<td>No header in the schema</td>
+<td>Camera frame stamp</td>
+</tr>
+<tr>
+<td>model</td>
+<td><code>model/info</code></td>
+<td>Configuration, not a measurement</td>
+<td>Time of publication</td>
+<td>Same as <code>header.stamp</code></td>
+</tr>
+<tr>
+<td>fusion</td>
+<td><code>fusion/radar</code>, <code>fusion/lidar</code>, <code>fusion/occupancy</code>, <code>fusion/boxes3d</code></td>
+<td>The radar or lidar point cloud the output is built from, selected by <code>GRID_SRC</code> and <code>BBOX3D_SRC</code></td>
+<td>Point cloud stamp</td>
+<td>Same as <code>header.stamp</code></td>
+</tr>
+<tr>
+<td>fusion</td>
+<td><code>fusion/model_output</code>, <code>fusion/model_output/tracked</code></td>
+<td>The radar cube the Fusion Model grid was computed from</td>
+<td>No header in the schema</td>
+<td>Radar cube stamp</td>
+</tr>
+<tr>
+<td>recorder</td>
+<td><abbr title="Binary container format for robotics log data">MCAP</abbr></td>
+<td>Zenoh sample timestamp</td>
+<td>not applicable</td>
+<td><code>publish_time</code> = sample timestamp, <code>log_time</code> = receive</td>
+</tr>
+<tr>
+<td>replay</td>
+<td>All replayed topics</td>
+<td>Recorded payload</td>
+<td>Preserved from the recording</td>
+<td>Recorded <code>publish_time</code></td>
+</tr>
+</tbody>
+</table>
+<h2 id="inspecting-timestamps-in-a-recording">Inspecting Timestamps in a Recording</h2>
+<p>Foxglove's playback timeline is driven by receive time (<code>log_time</code>). Individual panels can plot or annotate against header stamps, but that does not change the global ordering of messages during playback, so a discrepancy between the two stamps shows up as panels drifting against the timeline rather than as a different playback order. To check the contract directly, compare the two <abbr title="Binary container format for robotics log data">MCAP</abbr> stamps per topic:</p>
+<div class="highlight"><pre><span></span><code>mcap<span class="w"> </span>info<span class="w"> </span>recording.mcap
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">statistics</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">collections</span><span class="w"> </span><span class="kn">import</span> <span class="n">defaultdict</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">mcap.reader</span><span class="w"> </span><span class="kn">import</span> <span class="n">make_reader</span>
+
+<span class="n">lag</span> <span class="o">=</span> <span class="n">defaultdict</span><span class="p">(</span><span class="nb">list</span><span class="p">)</span>
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">"recording.mcap"</span><span class="p">,</span> <span class="s2">"rb"</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+    <span class="k">for</span> <span class="n">_schema</span><span class="p">,</span> <span class="n">channel</span><span class="p">,</span> <span class="n">message</span> <span class="ow">in</span> <span class="n">make_reader</span><span class="p">(</span><span class="n">f</span><span class="p">)</span><span class="o">.</span><span class="n">iter_messages</span><span class="p">():</span>
+        <span class="n">lag</span><span class="p">[</span><span class="n">channel</span><span class="o">.</span><span class="n">topic</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">message</span><span class="o">.</span><span class="n">log_time</span> <span class="o">-</span> <span class="n">message</span><span class="o">.</span><span class="n">publish_time</span><span class="p">)</span> <span class="o">/</span> <span class="mf">1e9</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">topic</span><span class="p">,</span> <span class="n">values</span> <span class="ow">in</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">lag</span><span class="o">.</span><span class="n">items</span><span class="p">()):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">topic</span><span class="si">:</span><span class="s2">32s</span><span class="si">}</span><span class="s2"> median log_time - publish_time </span><span class="si">{</span><span class="n">statistics</span><span class="o">.</span><span class="n">median</span><span class="p">(</span><span class="n">values</span><span class="p">)</span><span class="si">:</span><span class="s2">+.4f</span><span class="si">}</span><span class="s2"> s  n=</span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">values</span><span class="p">)</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+</code></pre></div>
+<p>Expected results on a healthy recording:</p>
+<ul>
+<li>Every topic that participates in alignment shows a small positive median, from under a millisecond for <abbr title="Inertial Measurement Unit">IMU</abbr> and <abbr title="Global Positioning System">GPS</abbr> to tens of milliseconds for model and fusion outputs.</li>
+<li>No topic shows a value of hours or days.</li>
+<li>No topic shows exactly zero across all messages, which means it fell back to receive time.</li>
+</ul>
+<p>On the device, the Recorder's first-sample log lines and the chrony state tell the rest of the story:</p>
+<div class="highlight"><pre><span></span><code>journalctl<span class="w"> </span>-b<span class="w"> </span>-u<span class="w"> </span>recorder.service<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span><span class="s2">"Timestamps for"</span>
+journalctl<span class="w"> </span>-b<span class="w"> </span>-o<span class="w"> </span>short-monotonic<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>-E<span class="w"> </span><span class="s2">"System clock wrong|Selected source|Clock offset"</span>
+chronyc<span class="w"> </span>tracking
+</code></pre></div>
+<h2 id="troubleshooting">Troubleshooting</h2>
+<table>
+<thead>
+<tr>
+<th>Symptom</th>
+<th>Likely cause</th>
+<th>Action</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>edgefirst-publisher</code> writes an empty ZIP and Arrow file although the <abbr title="Binary container format for robotics log data">MCAP</abbr> contains camera messages</td>
+<td>Camera topics are in a different clock domain than the rest of the recording</td>
+<td>Run the script above. A constant offset of months or years on <code>camera/*</code> means the camera topics are stamped in a different clock domain. Restart the camera service and record again.</td>
+</tr>
+<tr>
+<td>Frame count is short of <code>fps × duration</code></td>
+<td>Some frames fall outside the preferred-topic bucket timeline because of mixed clock domains</td>
+<td>Same check as above.</td>
+</tr>
+<tr>
+<td>Recorder logs <code>fallback to recorder receive time</code> for an alignment topic</td>
+<td>The producer did not attach a Zenoh sample timestamp</td>
+<td>Identify the producer of the topic and check its logs; a producer outside the middleware (for example a custom publisher) must attach the Zenoh timestamp itself.</td>
+</tr>
+<tr>
+<td><code>chronyc sources</code> shows no <code>GPS</code> line, or <code>#? GPS</code> never becomes <code>#* GPS</code></td>
+<td><code>/dev/pps-gps</code> missing (the <code>pps-gpio</code> module was not loaded before <code>chronyd</code> started), no <abbr title="Global Navigation Satellite System">GNSS</abbr> fix, or <code>gpsd</code> stopped (<code>u-center.service</code> conflicts with it)</td>
+<td><code>ls -l /dev/pps-gps</code>, <code>systemctl status gpsd</code>, then <code>systemctl restart chronyd</code>.</td>
+</tr>
+<tr>
+<td>Log lines and <abbr title="Binary container format for robotics log data">MCAP</abbr> file names dated 2025-05-29</td>
+<td>Unit is unsynchronized: no <abbr title="Global Navigation Satellite System">GNSS</abbr> fix and no reachable NTP server</td>
+<td>Provide sky view or a network route; the clock steps as soon as a source is selected.</td>
+</tr>
+<tr>
+<td>Timestamps jump inside a recording, or its duration shows as more than a year</td>
+<td>A clock step while recording (the Recorder marks it with a <code>clock_step</code> metadata record)</td>
+<td>The Publisher converts both segments into one dataset. To convert only one segment, split the file at the step with <code>mcap filter --start-secs/--end-secs</code>.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="multi-device-and-ros-2-notes">Multi-Device and ROS 2 Notes</h2>
+<ul>
+<li>Timestamps compare across devices only if every device is synchronized. Use the <abbr title="Global Navigation Satellite System">GNSS</abbr> reference where available and NTP otherwise. The error between two devices is at least the sum of their individual distances to the reference, so estimate it from the root distance reported by <code>chronyc tracking</code> on <em>both</em> devices; the figure from a single device describes only that device's distance to its own reference and does not bound the difference between two of them.</li>
+<li>Zenoh peers do not run a hybrid logical clock, so the sample timestamp is exactly the value the publisher sets. A <code>zenohd</code> router does run one and re-stamps any sample more than 500 ms in the future relative to its own clock (or drops it when <code>drop_future_timestamp</code> is enabled). Acquisition stamps are always in the past, so this only affects a publisher whose clock runs ahead of the router.</li>
+<li>ROS 2 nodes bridged through <code>zenoh-bridge-ros2dds</code> see the same <code>header.stamp</code> values and can use standard <code>message_filters</code> time synchronizers on them.</li>
+<li><abbr title="Binary container format for robotics log data">MCAP</abbr> file names use the device's local time (UTC on Maivin) while all message stamps are UTC nanoseconds.</li>
+</ul>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  <form class="md-feedback" name="feedback" hidden>
+    <fieldset>
+      <legend class="md-feedback__title">
+        Was this page helpful?
+      </legend>
+      <div class="md-feedback__inner">
+        <div class="md-feedback__list">
+          
+            <button class="md-feedback__icon md-icon" type="submit" title="This page was helpful" data-md-value="1">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 12a8 8 0 0 0-8-8 8 8 0 0 0-8 8 8 8 0 0 0 8 8 8 8 0 0 0 8-8m2 0a10 10 0 0 1-10 10A10 10 0 0 1 2 12 10 10 0 0 1 12 2a10 10 0 0 1 10 10M10 9.5c0 .8-.7 1.5-1.5 1.5S7 10.3 7 9.5 7.7 8 8.5 8s1.5.7 1.5 1.5m7 0c0 .8-.7 1.5-1.5 1.5S14 10.3 14 9.5 14.7 8 15.5 8s1.5.7 1.5 1.5m-5 7.73c-1.75 0-3.29-.73-4.19-1.81L9.23 14c.45.72 1.52 1.23 2.77 1.23s2.32-.51 2.77-1.23l1.42 1.42c-.9 1.08-2.44 1.81-4.19 1.81"/></svg>
+            </button>
+          
+            <button class="md-feedback__icon md-icon" type="submit" title="This page could be improved" data-md-value="0">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 12a8 8 0 0 0-8-8 8 8 0 0 0-8 8 8 8 0 0 0 8 8 8 8 0 0 0 8-8m2 0a10 10 0 0 1-10 10A10 10 0 0 1 2 12 10 10 0 0 1 12 2a10 10 0 0 1 10 10m-6.5-4c.8 0 1.5.7 1.5 1.5s-.7 1.5-1.5 1.5-1.5-.7-1.5-1.5.7-1.5 1.5-1.5M10 9.5c0 .8-.7 1.5-1.5 1.5S7 10.3 7 9.5 7.7 8 8.5 8s1.5.7 1.5 1.5m2 4.5c1.75 0 3.29.72 4.19 1.81l-1.42 1.42C14.32 16.5 13.25 16 12 16s-2.32.5-2.77 1.23l-1.42-1.42C8.71 14.72 10.25 14 12 14"/></svg>
+            </button>
+          
+        </div>
+        <div class="md-feedback__note">
+          
+            <div data-md-value="1" hidden>
+              
+              
+                
+              
+              
+              
+                
+                
+              
+              Thanks for your feedback!
+            </div>
+          
+            <div data-md-value="0" hidden>
+              
+              
+                
+              
+              
+              
+                
+                
+              
+              Thanks for your feedback! Help us improve this page by using our <a href="..." target="_blank" rel="noopener">feedback form</a>.
+            </div>
+          
+        </div>
+      </div>
+    </fieldset>
+  </form>
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href="../profiling/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Profiling the Middleware">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                Profiling the Middleware
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../dev/" class="md-footer__link md-footer__link--next" aria-label="Next: Developer Guide">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                Developer Guide
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2025 Au-Zone Technologies &mdash; <a href="#__consent">Privacy Settings</a>
+
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        
+<div class="md-social">
+  
+    
+    
+    
+    
+    <a href="https://github.com/EdgeFirstAI" target="_blank" rel="noopener" title="EdgeFirst on GitHub" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+    </a>
+  
+    
+    
+    
+    
+    <a href="https://ca.linkedin.com/company/au-zone-technologies" target="_blank" rel="noopener" title="Au-Zone Technologies on LinkedIn" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3M135.4 416H69V202.2h66.5V416zM102.2 96a38.5 38.5 0 1 1 0 77 38.5 38.5 0 1 1 0-77m282.1 320h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9z"/></svg>
+    </a>
+  
+    
+    
+    
+    
+    <a href="https://x.com/au_zone" target="_blank" rel="noopener" title="Au-Zone on X" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M357.2 48h70.6L273.6 224.2 455 464H313L201.7 318.6 74.5 464H3.8l164.9-188.5L-5.2 48h145.6l100.5 132.9zm-24.8 373.8h39.1L119.1 88h-42z"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+      <div class="md-consent" data-md-component="consent" id="__consent" hidden>
+        <div class="md-consent__overlay"></div>
+        <aside class="md-consent__inner">
+          <form class="md-consent__form md-grid md-typeset" name="consent">
+            
+
+
+  
+
+
+<h4>Privacy Settings</h4>
+<p>We use cookies to recognize your repeated visits and preferences, as well as to measure the effectiveness of our documentation and whether users find what they're searching for. With your consent, you're helping us to make our documentation better.</p>
+<input class="md-toggle" type="checkbox" id="__settings" >
+<div class="md-consent__settings">
+  <ul class="task-list">
+    
+    
+    
+      
+    
+    
+      
+        
+  
+  
+    
+    
+      
+    
+  
+  <li class="task-list-item">
+    <label class="task-list-control">
+      <input type="checkbox" name="analytics" checked>
+      <span class="task-list-indicator"></span>
+      Google Analytics
+    </label>
+  </li>
+
+      
+    
+  </ul>
+</div>
+<div class="md-consent__controls">
+  
+    
+      <button class="md-button md-button--primary">Accept</button>
+    
+    
+    
+  
+    
+    
+    
+      <label class="md-button" for="__settings">Manage settings</label>
+    
+  
+</div>
+          </form>
+        </aside>
+      </div>
+      <script>var consent=__md_get("__consent");if(consent)for(var input of document.forms.consent.elements)input.name&&(input.checked=consent[input.name]||!1);else"file:"!==location.protocol&&setTimeout((function(){document.querySelector("[data-md-component=consent]").hidden=!1}),250);var form=document.forms.consent;for(var action of["submit","reset"])form.addEventListener(action,(function(e){if(e.preventDefault(),"reset"===e.type)for(var n of document.forms.consent.elements)n.name&&(n.checked=!1);__md_set("__consent",Object.fromEntries(Array.from(new FormData(form).keys()).map((function(e){return[e,!0]})))),location.hash="",location.reload()}))</script>
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["content.code.copy", "content.code.annotate", "content.tabs.link", "navigation.instant", "navigation.tracking", "navigation.tabs", "navigation.tabs.sticky", "navigation.path", "navigation.indexes", "navigation.top", "navigation.footer", "navigation.prune", "toc.follow", "search.suggest", "search.highlight"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"alias": true, "default": "latest", "provider": "mike"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>

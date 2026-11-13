@@ -616,8 +616,6 @@
       
         
       
-        
-      
     
     
     
@@ -1061,6 +1059,34 @@
   
   
     <li class="md-nav__item">
+      <a href="../snapshots/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Snapshots Dashboard
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../agtg/" class="md-nav__link">
         
   
@@ -1117,42 +1143,14 @@
   
   
     <li class="md-nav__item">
-      <a href="../instances/" class="md-nav__link">
+      <a href="../tasks/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    Cloud Instances Dashboard
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../snapshots/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Snapshots Dashboard
+    Tasks Dashboard
   
 
     
@@ -1180,35 +1178,7 @@
   <span class="md-ellipsis">
     
   
-    Studio Apps Dashboard
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../tasks/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Tasks Dashboard
+    Apps Dashboard
   
 
     
@@ -1611,8 +1581,6 @@
       
         
       
-        
-      
     
     
     
@@ -1818,6 +1786,17 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#create-snapshot" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Create Snapshot
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#copy-dataset" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -1984,17 +1963,17 @@
             </figure>
 <p>The edit dialog allows to:</p>
 <ul>
-<li>Add Label (class).</li>
-<li>Change the color of the label.</li>
-<li>Change the order of the labels by changing its index.</li>
-<li>Delete a label.</li>
-<li>Change the name of a label.</li>
+<li>Add Label (class)</li>
+<li>Change the color of the label</li>
+<li>Change the order of the labels by changing its index</li>
+<li>Delete a label</li>
+<li>Change the name of a label</li>
 </ul>
 <p>Tutorials for these operations can be found under the <a href="../../datasets/tutorials/annotations/#dataset-labels">Dataset Annotations</a> section.</p>
 <h2 id="groups">Groups</h2>
 <ul>
-<li>Groups splits the images into training and validation images</li>
-<li>One image can be associated with zero or only one group at a time</li>
+<li>Groups splits the dataset into training and validation samples</li>
+<li>One sample can be associated with zero or only one group at a time</li>
 <li>Use the slider to adjust percentages for each group.</li>
 <li>If "Only non-grouped images" is unchecked, all images will be shuffled and assigned new groups.</li>
 </ul>
@@ -2018,14 +1997,15 @@
             <img align="center" alt="Importing Datasets" src="../assets/datasets/import-datasets.png" />
             <figcaption>Importing Datasets</figcaption>
             </figure>
-<p>To import datasets proceed with the steps as follows or follow this in-depth tutorial for <a href="../../datasets/tutorials/import/">importing datasets</a>.</p>
+<p>To import datasets, proceed with the steps as follows or follow this in-depth tutorial for <a href="../../datasets/tutorials/import/">importing datasets</a>.</p>
 <ol>
-<li>Select an import type.  The <a href="../../datasets/format/">EdgeFirst Dataset Format</a> is the proprietary format used by many operations in EdgeFirst Studio.</li>
-<li>Create an annotation set where annotations are to be imported.  If only images are imported, then this step is not required.</li>
-<li>Drag and drop a folder or group of files.</li>
+<li>Open the dataset extended menu.</li>
+<li>Select "Import".</li>
+<li>Select an import type. The available options invoke the various importer apps: <a href="../../datasets/tutorials/import/#import-images">images</a>, <a href="../../datasets/tutorials/import/#import-videos">videos</a>, <a href="../../datasets/tutorials/import/#import-darknet-datasets">Darknet Dataset</a>, <a href="../../datasets/format/">EdgeFirst Dataset</a>, or <a href="../../datasets/tutorials/capture/#upload-mcap"><abbr title="Binary container format for robotics log data">MCAP</abbr></a>.</li>
+<li>Drag and drop a folder or group of files from your local machine into the app.</li>
 <li>Select an annotation set if the annotation type allows annotation import.</li>
 <li>Click "START IMPORT".</li>
-<li>Import will start in the background and the status is shown in the task progress popup.</li>
+<li>Import will start in the background and the status is shown on the <a href="../tasks/">Tasks page</a>.</li>
 </ol>
 <figure>
             <img align="center" alt="Taskbar" src="../assets/datasets/import-taskbar.png" />
@@ -2043,20 +2023,32 @@
             </figure>
 <p>To export datasets proceed with the steps as follows.</p>
 <ol>
+<li>Open the dataset extended menu.</li>
+<li>Select "Export".</li>
 <li>Select the dataset type: Detection (Bounding boxes) or Segmentation (Masks).</li>
 <li>Select the export format.</li>
 <li>Select the annotation set to be exported if required.</li>
 <li>Select Mode:<ul>
-<li>Dataset - Exports images and annotations. Exports a ZIP file in the downloads folder.</li>
-<li>Annotations Only - Exports only the annotations. Exports a ZIP file in the downloads folder.</li>
-<li>Image URLS only - Useful for larger datasets. Exports a file with image urls in the downloads folder.</li>
+<li>Dataset - exports images and annotations. Exports a ZIP file in the downloads folder.</li>
+<li>Annotations Only - exports only the annotations. Exports a ZIP file in the downloads folder.</li>
+<li>Image URLS only - useful for larger datasets. Exports a file with image urls in the downloads folder.</li>
 </ul>
 </li>
+<li>Click "Export" to export the dataset into your local machine.</li>
 </ol>
 <div class="admonition tip">
 <p class="admonition-title">Large Datasets</p>
 <p>For datasets larger than 10000 images, export image URLS and annotations separately and then use a script to download images.</p>
 </div>
+<h3 id="create-snapshot">Create Snapshot</h3>
+<p>Create a snapshot of the dataset to preserve its current state. Snapshots are useful for freezing a dataset version before making changes, for tracking a known-good baseline, or for exporting the dataset in a compact, versioned form.</p>
+<ol>
+<li>Open the dataset extended menu.</li>
+<li>Select "Create Snapshot".</li>
+<li>Specify the project and the dataset to create as a snapshot.</li>
+<li>Provide a snapshot name.</li>
+<li>Click "Start App" to start the process.</li>
+</ol>
 <h3 id="copy-dataset">Copy Dataset</h3>
 <figure>
             <img align="center" alt="Copying Datasets" src="../../datasets/assets/management/copy-dataset-options.jpg" />
@@ -2069,7 +2061,8 @@
 <li>Source project, dataset, and annotation set (if applicable) are auto-filled, but you can select a different source if required.</li>
 <li>Destination project is selected by default. If <em>New Dataset (Dataset name)</em> is selected, a new dataset along with any annotation set from source will be created in the destination project. Otherwise, you can choose a dataset and an annotation set as destination.</li>
 <li>Optionally select <em>Copy Selected Annotation Types Only</em> to only copy annotations and files that match the checked types.</li>
-<li>Select filters if required. Please refer to <a href="gallery/#filters">Gallery Filters</a> for more information.  </li>
+<li>Select filters if required. Please refer to <a href="gallery/#filters">Gallery Filters</a> for more information.</li>
+<li>Click "Apply" to start the copy process.</li>
 </ol>
 <h3 id="analytics">Analytics</h3>
 <p>Click on Analytics to see more statistical information about the dataset.</p>
@@ -2089,16 +2082,17 @@
             <figcaption>Dataset Maps</figcaption>
             </figure>
 <h3 id="dataset-history">Dataset History</h3>
-<p>The dataset history introduces versioning for the dataset.  This allows any changes made to the dataset to be tracked via the "Changelog" section and allows the user to restore the state of the dataset with a known version, delete a dataset version, or add a new dataset version for the current state of the dataset.</p>
+<p>The dataset history introduces versioning to the dataset.  This allows any changes made to the dataset to be tracked via the "Changelog" section and allows the user to restore the state of the dataset with a known version or add a new dataset version to the current state of the dataset.</p>
 <figure>
             <img align="center" alt="Dataset History" src="../assets/datasets/dataset-history.jpg" />
             <figcaption>Dataset History</figcaption>
             </figure>
+<p>More information regarding the <a href="tag/">tagging of datasets</a> can be found by clicking on the link provided.</p>
 <h3 id="remove-dataset">Remove Dataset</h3>
 <p>To delete a dataset, click "Move to Recycle Bin".  This moves the dataset and all of its contents to the Recycle Bin.</p>
 <div class="admonition info">
 <p class="admonition-title">Info</p>
-<p>The deleted dataset goes to the recycle bin that can be restored.  The storage used by the dataset is only released when the dataset is purged from the recycle bin.</p>
+<p>Deleted dataset inside the recycle bin can be restored.  The storage used by the dataset is only released when the dataset is purged from the recycle bin.</p>
 </div>
 <h2 id="next-steps">Next Steps</h2>
 <p>This page has described the features and context of the dataset card.  Proceed to the next sections to learn more about the <a href="gallery/">Dataset Gallery</a> and <a href="annotations/">Annotation Sets</a>.</p>

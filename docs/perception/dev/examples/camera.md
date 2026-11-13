@@ -64,7 +64,7 @@ We can now await a message from that subscriber. After receiving the message, we
 
     // Receive a message
     let msg = subscriber.recv().unwrap();
-    let info: CameraInfo = cdr::deserialize(&msg.payload().to_bytes())?;
+    let info = CameraInfo::from_cdr(msg.payload().to_bytes())?;
     ```
 
 ### Process the Data
@@ -75,7 +75,11 @@ The CameraInfo message contains camera calibration and configuration information
 
     ``` python
     def info_worker(msg):
-        info = CameraInfo.deserialize(msg.payload.to_bytes())
+        try:
+            info = CameraInfo.from_cdr(msg.payload.to_bytes())
+        except Exception as e:
+            print(f"Error processing Camera Info: {e}", file=sys.stderr)
+            return
         width = info.width
         height = info.height
         rr.log("CameraInfo", rr.TextLog("Camera Width: %d Camera Height: %d" % (width, height)))

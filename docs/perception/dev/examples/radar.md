@@ -56,12 +56,12 @@ We can now receive a message on the subscriber. After receiving the message, we 
 === "Rust"
 
     ``` rust
-    use edgefirst_schemas::sensor_msgs::PointCloud2;
+    use edgefirst_schemas::sensor_msgs::{PointCloud2, pointcloud::DynPointCloud};
 
     // Create a subscriber for "radar/cluster"
-    let msg = subscriber.recv().unwrap()
+    let msg = subscriber.recv().unwrap();
 
-    let pcd: PointCloud2 = cdr::deserialize(&msg.payload().to_bytes())?;
+    let pcd = PointCloud2::from_cdr(msg.payload().to_bytes())?;
     ```
 
 ### Decode PCD Data
@@ -72,7 +72,11 @@ The next step is to decode the PCD data. Please see [examples/pcd](pcd.md) for a
 
     ``` python
     def targets_worker(msg):
-        pcd = PointCloud2.deserialize(msg.payload.to_bytes())
+        try:
+            pcd = PointCloud2.from_cdr(msg.payload.to_bytes())
+        except Exception as e:
+            print(f"Error processing Radar Targets: {e}", file=sys.stderr)
+            return
         points = decode_pcd(pcd)
         pos = [[p.x, p.y, p.z] for p in points]
         rr.log("radar/targets", rr.Points3D(pos))
@@ -81,12 +85,14 @@ The next step is to decode the PCD data. Please see [examples/pcd](pcd.md) for a
 === "Rust"
 
     ``` rust
-    let points = decode_pcd(&pcd);
-    let points = Points3D::new(
-        points
-            .iter()
-            .map(|p| Position3D::new(p.x as f32, p.y as f32, p.z as f32)),
-    );
+    let cloud = DynPointCloud::from_pointcloud2(&pcd)?;
+    let points = Points3D::new(cloud.iter().map(|p| {
+        Position3D::new(
+            p.read_f32("x").unwrap_or(0.0),
+            p.read_f32("y").unwrap_or(0.0),
+            p.read_f32("z").unwrap_or(0.0),
+        )
+    }));
 
     rr.log("radar/targets", &points)?;
     ```
@@ -105,41 +111,31 @@ We can now process the data. In this example we will find the maximum and minimu
 === "Rust"
 
     ``` rust
-    let min_x = points.iter().map(|p| p.x).fold(f64::INFINITY, f64::min);
-    let max_x = points.iter().map(|p| p.x).fold(f64::NEG_INFINITY, f64::max);
+    let points: Vec<_> = cloud.iter().collect();
+    let x_vals: Vec<_> = points.iter().map(|p| p.read_f32("x").unwrap_or(0.0)).collect();
+    let y_vals: Vec<_> = points.iter().map(|p| p.read_f32("y").unwrap_or(0.0)).collect();
+    let z_vals: Vec<_> = points.iter().map(|p| p.read_f32("z").unwrap_or(0.0)).collect();
 
-    let min_y = points.iter().map(|p| p.y).fold(f64::INFINITY, f64::min);
-    let max_y = points.iter().map(|p| p.y).fold(f64::NEG_INFINITY, f64::max);
+    let min_x = x_vals.iter().cloned().fold(f32::INFINITY, f32::min);
+    let max_x = x_vals.iter().cloned().fold(f32::NEG_INFINITY, f32::max);
 
-    let min_z = points.iter().map(|p| p.z).fold(f64::INFINITY, f64::min);
-    let max_z = points.iter().map(|p| p.z).fold(f64::NEG_INFINITY, f64::max);
+    let min_y = y_vals.iter().cloned().fold(f32::INFINITY, f32::min);
+    let max_y = y_vals.iter().cloned().fold(f32::NEG_INFINITY, f32::max);
 
-    let min_speed = points
-        .iter()
-        .map(|p| *p.fields.get("speed").unwrap())
-        .fold(f64::INFINITY, f64::min);
-    let max_speed = points
-        .iter()
-        .map(|p| *p.fields.get("speed").unwrap())
-        .fold(f64::NEG_INFINITY, f64::max);
+    let min_z = z_vals.iter().cloned().fold(f32::INFINITY, f32::min);
+    let max_z = z_vals.iter().cloned().fold(f32::NEG_INFINITY, f32::max);
 
-    let min_power = points
-        .iter()
-        .map(|p| *p.fields.get("power").unwrap())
-        .fold(f64::INFINITY, f64::min);
-    let max_power = points
-        .iter()
-        .map(|p| *p.fields.get("power").unwrap())
-        .fold(f64::NEG_INFINITY, f64::max);
+    let speed_vals: Vec<_> = points.iter().map(|p| p.read_as_f32("speed").unwrap_or(0.0)).collect();
+    let min_speed = speed_vals.iter().cloned().fold(f32::INFINITY, f32::min);
+    let max_speed = speed_vals.iter().cloned().fold(f32::NEG_INFINITY, f32::max);
 
-    let min_rcs = points
-        .iter()
-        .map(|p| *p.fields.get("rcs").unwrap())
-        .fold(f64::INFINITY, f64::min);
-    let max_rcs = points
-        .iter()
-        .map(|p| *p.fields.get("rcs").unwrap())
-        .fold(f64::NEG_INFINITY, f64::max);
+    let power_vals: Vec<_> = points.iter().map(|p| p.read_as_f32("power").unwrap_or(0.0)).collect();
+    let min_power = power_vals.iter().cloned().fold(f32::INFINITY, f32::min);
+    let max_power = power_vals.iter().cloned().fold(f32::NEG_INFINITY, f32::max);
+
+    let rcs_vals: Vec<_> = points.iter().map(|p| p.read_as_f32("rcs").unwrap_or(0.0)).collect();
+    let min_rcs = rcs_vals.iter().cloned().fold(f32::INFINITY, f32::min);
+    let max_rcs = rcs_vals.iter().cloned().fold(f32::NEG_INFINITY, f32::max);
     ```
 
 ### Results
@@ -206,12 +202,12 @@ We can now receive a message on the subscriber. After receiving the message, we 
 === "Rust"
 
     ``` rust
-    use edgefirst_schemas::sensor_msgs::PointCloud2;
+    use edgefirst_schemas::sensor_msgs::{PointCloud2, pointcloud::DynPointCloud};
 
     // Create a subscriber for "radar/cluster"
-    let msg = subscriber.recv().unwrap()
+    let msg = subscriber.recv().unwrap();
 
-    let pcd: PointCloud2 = cdr::deserialize(&msg.payload().to_bytes())?;
+    let pcd = PointCloud2::from_cdr(msg.payload().to_bytes())?;
     ```
 
 ### Decode PCD Data
@@ -222,14 +218,18 @@ The next step is to decode the PCD data. Please see [examples/pcd](pcd.md) for a
 
     ``` python
     def clusters_worker(msg):
-        pcd = PointCloud2.deserialize(msg.payload.to_bytes())
+        try:
+            pcd = PointCloud2.from_cdr(msg.payload.to_bytes())
+        except Exception as e:
+            print(f"Error processing Radar Clusters: {e}", file=sys.stderr)
+            return
         points = decode_pcd(pcd)
     ```
 
 === "Rust"
 
     ``` rust
-    let points = decode_pcd(pcd);
+    let cloud = DynPointCloud::from_pointcloud2(&pcd)?;
     ```
 
 ### Collect the Clustered Points
@@ -252,22 +252,26 @@ We will now collect all the clustered points, which are all the points with `clu
 === "Rust"
 
     ``` rust
-    let clustered_points: Vec<_> = points.iter().filter(|x| x.id > 0).collect();
+    let clustered_points: Vec<_> = cloud
+        .iter()
+        .filter(|p| p.read_as_f64("cluster_id").unwrap_or(0.0) > 0.0)
+        .collect();
     let max_cluster_id = clustered_points
         .iter()
-        .map(|x| x.id)
-        .max()
-        .unwrap_or(1)
-        .max(1);
+        .map(|p| p.read_as_f64("cluster_id").unwrap_or(0.0))
+        .fold(1.0_f64, f64::max);
 
-    let points = Points3D::new(
-        clustered_points
-            .iter()
-            .map(|p| Position3D::new(p.x as f32, p.y as f32, p.z as f32)),
-    )
+    let points = Points3D::new(clustered_points.iter().map(|p| {
+        Position3D::new(
+            p.read_f32("x").unwrap_or(0.0),
+            p.read_f32("y").unwrap_or(0.0),
+            p.read_f32("z").unwrap_or(0.0),
+        )
+    }))
     .with_colors(clustered_points.iter().map(|p| {
+        let cluster_id = p.read_as_f64("cluster_id").unwrap_or(0.0);
         let (r, g, b) = colorous::TURBO
-            .eval_continuous(p.id as f64 / max_cluster_id as f64)
+            .eval_continuous(cluster_id / max_cluster_id)
             .as_tuple();
         Color::from_rgb(r, g, b)
     }));
@@ -334,10 +338,9 @@ We can now receive a message on the subscriber. After receiving the message, we 
     use edgefirst_schemas::edgefirst_msgs::RadarInfo;
 
     // receive a message
-    let msg = subscriber.recv().unwrap()
+    let msg = subscriber.recv().unwrap();
 
-    // Deserialize message
-    let radar_info: RadarInfo = cdr::deserialize(&msg.payload().to_bytes())?;
+    let radar_info = RadarInfo::from_cdr(msg.payload().to_bytes())?;
     ```
 
 ### Process the Data
@@ -348,7 +351,11 @@ The RadarInfo message contains information about the radar configuration. Variou
 
     ``` python
     def info_worker(msg):
-        radar_info = RadarInfo.deserialize(msg.payload.to_bytes())
+        try:
+            radar_info = RadarInfo.from_cdr(msg.payload.to_bytes())
+        except Exception as e:
+            print(f"Error processing Radar Info: {e}", file=sys.stderr)
+            return
         radar_log = "Range Mode: %s\n" % str(radar_info.frequency_sweep)
         radar_log += "Center Band: %s\n" % str(radar_info.center_frequency)
         radar_log += "Sensitivity: %s\n" % str(radar_info.detection_sensitivity)
@@ -434,10 +441,9 @@ We can now receive a message on the subscriber. After receiving the message, we 
     use edgefirst_schemas::edgefirst_msgs::RadarCube;
 
     // receive a message
-    let msg = subscriber.recv().unwrap()
+    let msg = subscriber.recv().unwrap();
 
-    // Deserialize message
-    let radar_cube: RadarCube = cdr::deserialize(&msg.payload().to_bytes())?;
+    let radar_cube = RadarCube::from_cdr(msg.payload().to_bytes())?;
     ```
 
 ### Process the Data
@@ -448,7 +454,11 @@ The RadarCube message contains data from the RadarCube.
 
     ``` python
     def cube_worker(msg):
-        radar_cube = RadarCube.deserialize(msg.payload.to_bytes())
+        try:
+            radar_cube = RadarCube.from_cdr(msg.payload.to_bytes())
+        except Exception as e:
+            print(f"Error processing Radar Cube: {e}", file=sys.stderr)
+            return
         data = np.array(radar_cube.cube).reshape(radar_cube.shape)
         # Take the absolute value of the data to improve visualization.
         data = np.abs(data)
@@ -584,14 +594,18 @@ The Boxes2D callback will wait for a Detect message from the MessageDrain and wi
             thread.join()
 
     def boxes2d_worker(msg, boxes_tracked, frame_size):
-        detection = Detect.deserialize(msg.payload.to_bytes())
+        try:
+            detection = Detect.from_cdr(msg.payload.to_bytes())
+        except Exception as e:
+            print(f"Error processing Model Boxes2D: {e}", file=sys.stderr)
+            return
         centers, sizes, labels, colors = [], [], [], []
         for box in detection.boxes:
-            if box.track.id and box.track.id not in boxes_tracked:
-                boxes_tracked[box.track.id] = [box.label + ": " + box.track.id[:6], list(np.random.choice(range(256), size=3))]
-            if box.track.id:
-                colors.append(boxes_tracked[box.track.id][1])
-                labels.append(boxes_tracked[box.track.id][0])
+            if box.track_id and box.track_id not in boxes_tracked:
+                boxes_tracked[box.track_id] = [box.label + ": " + box.track_id[:6], list(np.random.choice(range(256), size=3))]
+            if box.track_id:
+                colors.append(boxes_tracked[box.track_id][1])
+                labels.append(boxes_tracked[box.track_id][0])
             else:
                 colors.append([0,255,0])
                 labels.append(box.label)
@@ -618,7 +632,11 @@ The radar callback will receive the pointcloud message, perform post-processing 
             thread.join()
 
     def clusters_worker(msg):
-        pcd = PointCloud2.deserialize(msg.payload.to_bytes())
+        try:
+            pcd = PointCloud2.from_cdr(msg.payload.to_bytes())
+        except Exception as e:
+            print(f"Error processing Radar Clusters: {e}", file=sys.stderr)
+            return
         points = decode_pcd(pcd)
         clusters = [p for p in points if p.cluster_id > 0]
         if not clusters:

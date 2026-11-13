@@ -56,12 +56,12 @@ We can now await a message from that subscriber. After receiving the message, we
 === "Rust"
 
     ``` rust
-    use edgefirst_schemas::sensor_msgs::PointCloud2;
+    use edgefirst_schemas::sensor_msgs::{PointCloud2, pointcloud::DynPointCloud};
 
     // Receive a message
     let msg = subscriber.recv().unwrap();
 
-    let pcd: PointCloud2 = cdr::deserialize(&msg.payload().to_bytes())?;
+    let pcd = PointCloud2::from_cdr(msg.payload().to_bytes())?;
     ```
 
 ### Process the Data
@@ -72,7 +72,11 @@ The Occupancy message contains occupancy grid data. You can log the data through
 
     ``` python
     def occupancy_worker(msg):
-        pcd = PointCloud2.deserialize(msg.payload.to_bytes())
+        try:
+            pcd = PointCloud2.from_cdr(msg.payload.to_bytes())
+        except Exception as e:
+            print(f"Error processing Fusion Occupancy: {e}", file=sys.stderr)
+            return
         points = decode_pcd(pcd)
         if not points:
             rr.log("fusion/occupancy", rr.Points3D(positions=[], colors=[])) 
@@ -87,22 +91,24 @@ The Occupancy message contains occupancy grid data. You can log the data through
 === "Rust"
 
     ``` rust
-    let points = decode_pcd(&pcd);
+    let cloud = DynPointCloud::from_pointcloud2(&pcd)?;
+    let points: Vec<_> = cloud.iter().collect();
     let max_class = points
         .iter()
-        .map(|x| x.fields["vision_class"] as isize)
-        .max()
-        .unwrap_or(1)
-        .max(1);
+        .map(|p| p.read_as_f64("vision_class").unwrap_or(0.0))
+        .fold(1.0_f64, f64::max);
 
-    let rr_points = Points3D::new(
-        points
-            .iter()
-            .map(|p| Position3D::new(p.x as f32, p.y as f32, p.z as f32)),
-    )
+    let rr_points = Points3D::new(points.iter().map(|p| {
+        Position3D::new(
+            p.read_f32("x").unwrap_or(0.0),
+            p.read_f32("y").unwrap_or(0.0),
+            p.read_f32("z").unwrap_or(0.0),
+        )
+    }))
     .with_colors(points.iter().map(|p| {
+        let vision_class = p.read_as_f64("vision_class").unwrap_or(0.0);
         let (r, g, b) = colorous::TURBO
-            .eval_continuous(p.fields["vision_class"] / max_class as f64)
+            .eval_continuous(vision_class / max_class)
             .as_tuple();
         Color::from_rgb(r, g, b)
     }));
@@ -171,7 +177,7 @@ We can now receive a message on the subscriber. After receiving the message, we 
     // Receive a message
     let msg = subscriber.recv().unwrap();
 
-    let mask: Mask = cdr::deserialize(&msg.payload().to_bytes())?;
+    let mask = Mask::from_cdr(msg.payload().to_bytes())?;
     ```
 
 ### Process the Data
@@ -182,7 +188,11 @@ The ModelOutput message contains fused model output data. You can log the data t
 
     ``` python
     def model_output_worker(msg):
-        mask = Mask.deserialize(msg.payload.to_bytes())
+        try:
+            mask = Mask.from_cdr(msg.payload.to_bytes())
+        except Exception as e:
+            print(f"Error processing Fusion Model Output: {e}", file=sys.stderr)
+            return
         np_arr = np.asarray(mask.mask, dtype=np.uint8)
         np_arr = np.reshape(np_arr, [mask.height, mask.width, -1])
         np_arr = np.argmax(np_arr, axis=2)
@@ -266,7 +276,7 @@ We can now receive a message on the subscriber. After receiving the message, we 
     // Receive a message
     let msg = subscriber.recv().unwrap();
 
-    let mask: Mask = cdr::deserialize(&msg.payload().to_bytes())?;
+    let mask = Mask::from_cdr(msg.payload().to_bytes())?;
     ```
 
 ### Process the Data
@@ -277,7 +287,11 @@ The MaskOutputTracked message contains fused model output data. You can log the 
 
     ``` python
     def model_output_worker(msg):
-        mask = Mask.deserialize(msg.payload.to_bytes())
+        try:
+            mask = Mask.from_cdr(msg.payload.to_bytes())
+        except Exception as e:
+            print(f"Error processing Fusion Model Output Tracked: {e}", file=sys.stderr)
+            return
         np_arr = np.asarray(mask.mask, dtype=np.uint8)
         np_arr = np.reshape(np_arr, [mask.height, mask.width, -1])
         np_arr = np.argmax(np_arr, axis=2)
@@ -356,12 +370,12 @@ We can now receive a message on the subscriber. After receiving the message, we 
 === "Rust"
 
     ``` rust
-    edgefirst_schemas::sensor_msgs::PointCloud2;
+    use edgefirst_schemas::sensor_msgs::{PointCloud2, pointcloud::DynPointCloud};
 
     // Receive a message
     let msg = subscriber.recv().unwrap();
 
-    let pcd: PointCloud2 = cdr::deserialize(&msg.payload().to_bytes())?;
+    let pcd = PointCloud2::from_cdr(msg.payload().to_bytes())?;
     ```
 
 ### Decode PCD Data
@@ -372,15 +386,19 @@ The next step is to decode the PCD data. Please see [examples/pcd](pcd.md) for a
 
     ``` python
     def radar_worker(msg):
-        pcd = PointCloud2.deserialize(msg.payload.to_bytes())
+        try:
+            pcd = PointCloud2.from_cdr(msg.payload.to_bytes())
+        except Exception as e:
+            print(f"Error processing Fusion Radar: {e}", file=sys.stderr)
+            return
         points = decode_pcd(pcd)
     ```
 
 === "Rust"
 
     ``` rust
-    use edgefirst_schemas::decode_pcd;
-    let points = decode_pcd(pcd);
+    let cloud = DynPointCloud::from_pointcloud2(&pcd)?;
+    let points: Vec<_> = cloud.iter().collect();
     ```
 
 ### Process the Data
@@ -404,16 +422,19 @@ We can now process the data. In this example we will find the maximum and minimu
 === "Rust"
 
     ``` rust
-    let points: Vec<_> = points.iter().filter(|p| p.fields["vision_class"] != 0).collect();
+    let points: Vec<_> = points
+        .into_iter()
+        .filter(|p| p.read_as_f64("vision_class").unwrap_or(0.0) != 0.0)
+        .collect();
 
-    let min_x = points.iter().map(|p| p.x).fold(f64::INFINITY, f64::min);
-    let max_x = points.iter().map(|p| p.x).fold(f64::NEG_INFINITY, f64::max);
+    let min_x = points.iter().map(|p| p.read_f32("x").unwrap_or(0.0)).fold(f32::INFINITY, f32::min);
+    let max_x = points.iter().map(|p| p.read_f32("x").unwrap_or(0.0)).fold(f32::NEG_INFINITY, f32::max);
 
-    let min_y = points.iter().map(|p| p.y).fold(f64::INFINITY, f64::min);
-    let max_y = points.iter().map(|p| p.y).fold(f64::NEG_INFINITY, f64::max);
+    let min_y = points.iter().map(|p| p.read_f32("y").unwrap_or(0.0)).fold(f32::INFINITY, f32::min);
+    let max_y = points.iter().map(|p| p.read_f32("y").unwrap_or(0.0)).fold(f32::NEG_INFINITY, f32::max);
 
-    let min_z = points.iter().map(|p| p.z).fold(f64::INFINITY, f64::min);
-    let max_z = points.iter().map(|p| p.z).fold(f64::NEG_INFINITY, f64::max);
+    let min_z = points.iter().map(|p| p.read_f32("z").unwrap_or(0.0)).fold(f32::INFINITY, f32::min);
+    let max_z = points.iter().map(|p| p.read_f32("z").unwrap_or(0.0)).fold(f32::NEG_INFINITY, f32::max);
     ```
 
 ### Results
@@ -506,12 +527,12 @@ We can now receive a message on the subscriber. After receiving the message, we 
 === "Rust"
 
     ``` rust
-    edgefirst_schemas::sensor_msgs::PointCloud2;
+    use edgefirst_schemas::sensor_msgs::{PointCloud2, pointcloud::DynPointCloud};
 
     // Receive a message
     let msg = subscriber.recv().unwrap();
 
-    let pcd: PointCloud2 = cdr::deserialize(&msg.payload().to_bytes())?;
+    let pcd = PointCloud2::from_cdr(msg.payload().to_bytes())?;
     ```
 
 ### Decode PCD Data
@@ -522,15 +543,19 @@ The next step is to decode the PCD data. Please see [examples/pcd](pcd.md) for a
 
     ``` python
     def lidar_worker(msg):
-        pcd = PointCloud2.deserialize(msg.payload.to_bytes())
+        try:
+            pcd = PointCloud2.from_cdr(msg.payload.to_bytes())
+        except Exception as e:
+            print(f"Error processing Fusion LiDAR: {e}", file=sys.stderr)
+            return
         points = decode_pcd(pcd)
     ```
 
 === "Rust"
 
     ``` rust
-    use edgefirst_schemas::decode_pcd;
-    let points = decode_pcd(pcd);
+    let cloud = DynPointCloud::from_pointcloud2(&pcd)?;
+    let points: Vec<_> = cloud.iter().collect();
     ```
 
 ### Process the Data
@@ -554,16 +579,19 @@ We can now process the data. In this example we will find the maximum and minimu
 === "Rust"
 
     ``` rust
-    let points: Vec<_> = points.iter().filter(|p| p.fields["vision_class"] != 0).collect();
+    let points: Vec<_> = points
+        .into_iter()
+        .filter(|p| p.read_as_f64("vision_class").unwrap_or(0.0) != 0.0)
+        .collect();
 
-    let min_x = points.iter().map(|p| p.x).fold(f64::INFINITY, f64::min);
-    let max_x = points.iter().map(|p| p.x).fold(f64::NEG_INFINITY, f64::max);
+    let min_x = points.iter().map(|p| p.read_f32("x").unwrap_or(0.0)).fold(f32::INFINITY, f32::min);
+    let max_x = points.iter().map(|p| p.read_f32("x").unwrap_or(0.0)).fold(f32::NEG_INFINITY, f32::max);
 
-    let min_y = points.iter().map(|p| p.y).fold(f64::INFINITY, f64::min);
-    let max_y = points.iter().map(|p| p.y).fold(f64::NEG_INFINITY, f64::max);
+    let min_y = points.iter().map(|p| p.read_f32("y").unwrap_or(0.0)).fold(f32::INFINITY, f32::min);
+    let max_y = points.iter().map(|p| p.read_f32("y").unwrap_or(0.0)).fold(f32::NEG_INFINITY, f32::max);
 
-    let min_z = points.iter().map(|p| p.z).fold(f64::INFINITY, f64::min);
-    let max_z = points.iter().map(|p| p.z).fold(f64::NEG_INFINITY, f64::max);
+    let min_z = points.iter().map(|p| p.read_f32("z").unwrap_or(0.0)).fold(f32::INFINITY, f32::min);
+    let max_z = points.iter().map(|p| p.read_f32("z").unwrap_or(0.0)).fold(f32::NEG_INFINITY, f32::max);
     ```
 
 ### Results
@@ -656,7 +684,7 @@ We can now receive a message on the subscriber. After receiving the message, we 
     // Receive a message
     let msg = subscriber.recv().unwrap();
 
-    let boxes: Detect = cdr::deserialize(&msg.payload().to_bytes())?;
+    let boxes = Detect::from_cdr(msg.payload().to_bytes())?;
     ```
 
 ### Process the Data
@@ -667,7 +695,11 @@ The message contains a 2D bounding box with distances. Following the optical fra
 
     ``` python
     def boxes3d_worker(msg):
-        detection = Detect.deserialize(msg.payload.to_bytes())
+        try:
+            detection = Detect.from_cdr(msg.payload.to_bytes())
+        except Exception as e:
+            print(f"Error processing Fusion Boxes3D: {e}", file=sys.stderr)
+            return
         # The 3D boxes are in an _optical frame of reference, where x is right, y is down, and z (distance) is forward
         # We will convert them to a normal frame of reference, where x is forward, y is left, and z is up
         centers = [(x.distance, -x.center_x, -x.center_y)

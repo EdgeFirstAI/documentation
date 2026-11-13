@@ -60,7 +60,7 @@ We can now await a message from that subscriber. After receiving the message, we
 
     // Receive a message
     let msg = subscriber.recv().unwrap();
-    let info: ModelInfo = cdr::deserialize(&msg.payload().to_bytes())?;
+    let info = ModelInfo::from_cdr(msg.payload().to_bytes())?;
     ```
 
 ### Process the Data
@@ -71,7 +71,11 @@ The ModelInfo message contains information about the model configuration. You ca
 
     ``` python
     def info_worker(msg):
-        info = ModelInfo.deserialize(msg.payload.to_bytes())
+        try:
+            info = ModelInfo.from_cdr(msg.payload.to_bytes())
+        except Exception as e:
+            print(f"Error processing Model Info: {e}", file=sys.stderr)
+            return
         m_type = info.model_type
         m_name = info.model_name
         rr.log("ModelInfo", rr.TextLog("Model Name: %s Model Type: %s" % (m_name, m_type)))
@@ -91,6 +95,142 @@ The ModelInfo message contains information about the model configuration. You ca
 When displaying the results through Rerun you will see the model info.
 
 {{ figure("assets/model_info.png", "Model Info") }}
+
+## Model Output
+
+!!! tip "Default Topic"
+
+    `model/output` is the default, always-on model topic on EdgeFirst Perception 2.8+.  It carries the same `Box` and `Mask` entries as the `model/boxes2d`, `model/mask`, and `model/mask_compressed` topics below combined into a single message, so most applications only need this one subscriber.  The legacy topics are disabled by default; see the [Legacy Topics](#boxes2d) warning further down to re-enable them.
+
+Topic: [/model/output](../../topics/model.md#modeloutput)  
+Message: [Model](../../api/edgefirst_msgs.md#model)  
+Sample Code: [Python](https://github.com/EdgeFirstAI/samples/blob/main/python/model/output.py) / [Rust](https://github.com/EdgeFirstAI/samples/blob/main/rust/model/output.rs)
+
+### Setting up subscriber
+
+After setting up the Zenoh session, we will create a subscriber to the `model/output` topic
+
+=== "Python"
+
+    ``` python
+    # Create a subscriber for "model/output"
+    loop = asyncio.get_running_loop()
+    drain = MessageDrain(loop)
+    session.declare_subscriber('model/output', drain.callback)
+    ```
+
+=== "Rust"
+
+    ``` rust
+    // Create a subscriber for "model/output"
+    let subscriber = session
+        .declare_subscriber("model/output")
+        .await
+        .unwrap();
+    ```
+
+### Receive a message
+
+We can now await a message from that subscriber. After receiving the message, we will pass that message along to our processing function in a new thread to avoid missing messages.
+
+=== "Python"
+
+    ``` python
+    async def output_handler(drain):
+        rr.log(
+            "/",
+            rr.AnnotationContext(
+                [(0, "background", (0, 0, 0)), (1, "person", (0, 255, 0))]
+            ),
+        )
+        while True:
+            msg = await drain.get_latest()
+            thread = threading.Thread(target=output_worker, args=[msg])
+            thread.start()
+
+            while thread.is_alive():
+                await asyncio.sleep(0.001)
+            thread.join()
+    ```
+
+=== "Rust"
+
+    ``` rust
+    use edgefirst_schemas::edgefirst_msgs::Model;
+
+    // Receive a message
+    let msg = subscriber.recv().unwrap();
+    let model = Model::from_cdr(msg.payload().to_bytes())?;
+    ```
+
+### Process the Data
+
+The `Model` message carries both the `boxes` and `masks` arrays together.  Boxes are processed exactly like [Boxes2D](#boxes2d) above, including [track IDs](#box-tracking) when tracking is enabled, and masks are processed exactly like [Model Mask](#model-mask) below.
+
+=== "Python"
+
+    ``` python
+    def output_worker(msg):
+        try:
+            model = Model.from_cdr(msg.payload.to_bytes())
+        except Exception as e:
+            print(f"Error processing Model Output: {e}", file=sys.stderr)
+            return
+
+        centers = []
+        sizes = []
+        labels = []
+        for box in model.boxes:
+            centers.append((box.center_x, box.center_y))
+            sizes.append((box.width, box.height))
+            labels.append(box.label)
+        rr.log("boxes", rr.Boxes2D(centers=centers, sizes=sizes, labels=labels))
+
+        for mask in model.masks:
+            np_arr = np.frombuffer(mask.mask, dtype=np.uint8)
+            np_arr = np.reshape(np_arr, [mask.height, mask.width, -1])
+            np_arr = np.argmax(np_arr, axis=2)
+            rr.log("mask", rr.SegmentationImage(np_arr))
+    ```
+
+=== "Rust"
+
+    ``` rust
+    let mut centers = Vec::new();
+    let mut sizes = Vec::new();
+    let mut labels = Vec::new();
+    for b in model.boxes() {
+        centers.push([b.center_x, b.center_y]);
+        sizes.push([b.width, b.height]);
+        labels.push(b.label);
+    }
+    rr.log(
+        "boxes",
+        &Boxes2D::from_centers_and_sizes(centers, sizes).with_labels(labels),
+    )?;
+
+    for mask in model.masks() {
+        let h = mask.height as usize;
+        let w = mask.width as usize;
+        let c = mask.mask.len() / (h * w);
+
+        let arr3 = Array::from_shape_vec((h, w, c), mask.mask.to_vec())?;
+        let array2: Array2<u8> = arr3.map_axis(ndarray::Axis(2), |class_scores| {
+            class_scores
+                .iter()
+                .enumerate()
+                .max_by_key(|(_, val)| *val)
+                .map(|(idx, _)| idx as u8)
+                .unwrap_or(0)
+        });
+
+        rr.log("mask", &SegmentationImage::try_from(array2)?)?;
+    }
+    ```
+
+### Results
+
+When displaying the results through Rerun you will see both the detection boxes and the segmentation mask from a single subscriber, equivalent to the [Combined Example](#combined-example) below but without needing to subscribe to the separate legacy topics.
 
 ## Boxes2D
 
@@ -151,7 +291,7 @@ We can now await a message from that subscriber. After receiving the message, we
 
     // Receive a message
     let msg = subscriber.recv().unwrap();
-    let detection: Detect = cdr::deserialize(&msg.payload().to_bytes())?;
+    let detection = Detect::from_cdr(msg.payload().to_bytes())?;
     ```
 
 ### Process the Data
@@ -164,7 +304,11 @@ The Boxes2D message contains 2D bounding box detections. The message will be sen
     from edgefirst.schemas.edgefirst_msgs import Detect
 
     def boxes2d_worker(msg):
-        detection = Detect.deserialize(msg.payload.to_bytes())
+        try:
+            detection = Detect.from_cdr(msg.payload.to_bytes())
+        except Exception as e:
+            print(f"Error processing Model Boxes2D: {e}", file=sys.stderr)
+            return
         centers = []
         sizes = []
         labels = []
@@ -182,7 +326,7 @@ The Boxes2D message contains 2D bounding box detections. The message will be sen
     let mut sizes = Vec::new();
     let mut labels = Vec::new();
 
-    for b in detection.boxes {
+    for b in detection.boxes() {
         centers.push([b.center_x, b.center_y]);
         sizes.push([b.width, b.height]);
         labels.push(b.label);
@@ -205,17 +349,21 @@ On your EdgeFirst Platform you can also allow tracking of the boxes and this can
 
     ``` python
     def boxes2d_worker(msg, boxes_tracked):
-        detection = Detect.deserialize(msg.payload.to_bytes())
+        try:
+            detection = Detect.from_cdr(msg.payload.to_bytes())
+        except Exception as e:
+            print(f"Error processing Model Boxes2D: {e}", file=sys.stderr)
+            return
         centers = []
         sizes = []
         labels = []
         colors = []
         for box in detection.boxes:
-            if box.track.id and box.track.id not in boxes_tracked:
-                boxes_tracked[box.track.id] = [box.label + ": " + box.track.id[:6], list(np.random.choice(range(256), size=3))]
-            if box.track.id:
-                colors.append(boxes_tracked[box.track.id][1])
-                labels.append(boxes_tracked[box.track.id][0])
+            if box.track_id and box.track_id not in boxes_tracked:
+                boxes_tracked[box.track_id] = [box.label + ": " + box.track_id[:6], list(np.random.choice(range(256), size=3))]
+            if box.track_id:
+                colors.append(boxes_tracked[box.track_id][1])
+                labels.append(boxes_tracked[box.track_id][0])
             else:
                 colors.append([0,255,0])
                 labels.append(box.label)
@@ -227,23 +375,23 @@ On your EdgeFirst Platform you can also allow tracking of the boxes and this can
 === "Rust"
 
     ``` rust
-    let detection: Detect = cdr::deserialize(&msg.payload().to_bytes())?;
+    let detection = Detect::from_cdr(msg.payload().to_bytes())?;
     let mut centers = Vec::new();
     let mut sizes = Vec::new();
     let mut labels = Vec::new();
     let mut colors = Vec::new();
 
-    for b in detection.boxes {
-        if !b.track.id.is_empty() {
+    for b in detection.boxes() {
+        if !b.track_id.is_empty() {
             // Insert into map if not already present
-            let entry = boxes_tracked.entry(b.track.id.clone()).or_insert_with(|| {
+            let entry = boxes_tracked.entry(b.track_id.to_string()).or_insert_with(|| {
                 let mut rng_maker = rng();
                 let random_color = [
                     rng_maker.random_range(0..=255),
                     rng_maker.random_range(0..=255),
                     rng_maker.random_range(0..=255),
                 ];
-                let short_id = &b.track.id[..6.min(b.track.id.len())];
+                let short_id = &b.track_id[..6.min(b.track_id.len())];
                 let label = format!("{}: {}", b.label, short_id);
                 (label, random_color)
             });
@@ -333,7 +481,7 @@ We can now await a message from that subscriber. After receiving the message, we
 
     // Receive a message
     let msg = subscriber.recv().unwrap();
-    let mask: Mask = cdr::deserialize(&msg.payload().to_bytes())?;
+    let mask = Mask::from_cdr(msg.payload().to_bytes())?;
     ```
 
 ### Process the Data
@@ -344,7 +492,11 @@ The Mask message contains segmentation mask data. The worker will perform argmax
 
     ``` python
     def mask_worker(msg):
-        mask = Mask.deserialize(msg.payload.to_bytes())
+        try:
+            mask = Mask.from_cdr(msg.payload.to_bytes())
+        except Exception as e:
+            print(f"Error processing Model Mask: {e}", file=sys.stderr)
+            return
         np_arr = np.asarray(mask.mask, dtype=np.uint8)
         np_arr = np.reshape(np_arr, [mask.height, mask.width, -1])
         np_arr = np.argmax(np_arr, axis=2)
@@ -480,14 +632,18 @@ The Boxes2D callback will wait for a Detect message from the MessageDrain and wi
             thread.join()
 
     def boxes2d_worker(msg, boxes_tracked, frame_size):
-        detection = Detect.deserialize(msg.payload.to_bytes())
+        try:
+            detection = Detect.from_cdr(msg.payload.to_bytes())
+        except Exception as e:
+            print(f"Error processing Model Boxes2D: {e}", file=sys.stderr)
+            return
         centers, sizes, labels, colors = [], [], [], []
         for box in detection.boxes:
-            if box.track.id and box.track.id not in boxes_tracked:
-                boxes_tracked[box.track.id] = [box.label + ": " + box.track.id[:6], list(np.random.choice(range(256), size=3))]
-            if box.track.id:
-                colors.append(boxes_tracked[box.track.id][1])
-                labels.append(boxes_tracked[box.track.id][0])
+            if box.track_id and box.track_id not in boxes_tracked:
+                boxes_tracked[box.track_id] = [box.label + ": " + box.track_id[:6], list(np.random.choice(range(256), size=3))]
+            if box.track_id:
+                colors.append(boxes_tracked[box.track_id][1])
+                labels.append(boxes_tracked[box.track_id][0])
             else:
                 colors.append([0,255,0])
                 labels.append(box.label)
@@ -517,7 +673,11 @@ The Mask callback will wait for a Mask message from the MessageDrain and will pa
             thread.join()
 
     def mask_worker(msg, frame_size):
-        mask = Mask.deserialize(msg.payload.to_bytes())
+        try:
+            mask = Mask.from_cdr(msg.payload.to_bytes())
+        except Exception as e:
+            print(f"Error processing Model Mask: {e}", file=sys.stderr)
+            return
         np_arr = np.asarray(mask.mask, dtype=np.uint8)
         np_arr = np.reshape(np_arr, [mask.height, mask.width, -1])
         np_arr = cv2.resize(np_arr, frame_size)

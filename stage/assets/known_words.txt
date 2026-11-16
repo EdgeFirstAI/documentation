@@ -9,6 +9,7 @@ aigt
 aktualizr
 analytics
 analyze
+annset
 api
 apis
 apn
@@ -39,6 +40,7 @@ backfilling
 backport
 balenaetcher
 basename
+baudrate
 bblayers
 bbox
 bev
@@ -51,7 +53,9 @@ bitmask
 bitrate
 bitstream
 bool
+booleans
 bootloader
+bootmode
 boxplot
 braille
 buf
@@ -65,6 +69,7 @@ cdot
 cdr
 centered
 centers
+centred
 centres
 centroid
 centroids
@@ -77,6 +82,7 @@ chrony
 chronyc
 chronyd
 ci
+cityscapes
 clap
 cli
 clusters
@@ -84,6 +90,7 @@ codec
 codecs
 coefs
 coffeecup
+coffeecups
 colored
 colorimetry
 coloring
@@ -96,7 +103,9 @@ compressedimage
 compressedvideo
 concat
 config
+configs
 conv
+convolutional
 coords
 copyds
 costmap
@@ -126,7 +135,9 @@ depthwise
 dequant
 dequantization
 dequantize
+dequantized
 dequantizing
+dequeues
 deserialize
 deserialized
 deserializer
@@ -161,6 +172,7 @@ downsampled
 downscaled
 downscales
 downscaling
+dragonwing
 dram
 dropdown
 dropdowns
@@ -173,6 +185,7 @@ dvm
 dyld
 e1r
 edgefirst
+edgefirststudio
 encodings
 endian
 enum
@@ -187,10 +200,12 @@ ethernet1
 ethtool
 europlug
 evk
+extremum
 extrinsics
 fargate
 fd
 fds
+fetchable
 fi
 filesystem
 flatbuffer
@@ -211,6 +226,7 @@ framerate
 franti
 frdm
 frontend
+func
 fx
 fy
 gandham
@@ -236,6 +252,7 @@ hantro
 hashmap
 hdparm
 hdr
+headerless
 headlessly
 heatmap
 heatmaps
@@ -244,6 +261,7 @@ hef
 hexagon
 hoc
 homebrew
+honored
 hostapd
 hostname
 hotspot
@@ -254,6 +272,7 @@ http
 https
 huggingface
 hwmon
+hyperparameter
 hyperparameters
 hz
 imageannotations
@@ -332,6 +351,7 @@ ln920
 logit
 logits
 lookahead
+loopback
 lossless
 losslessly
 lossy
@@ -369,6 +389,7 @@ mlops
 mm
 mmap
 mmcli
+mmsegmentation
 modelinfo
 modelname
 modelpack
@@ -402,6 +423,7 @@ nchw
 ndarray
 neighbor
 neighbors
+neighbouring
 netmask
 netplan
 netron
@@ -467,6 +489,7 @@ per-tensor
 perfetto
 pftrace
 phc
+phytec
 pi
 pid
 pidfd
@@ -503,6 +526,7 @@ preprocessing
 presigned
 pretrained
 profiler
+profilers
 programmatically
 proj
 proto
@@ -535,13 +559,17 @@ ratatui
 rclone
 rcn
 rcs
+realtime
 recomputable
 redownload
 refclock
+refclocks
 refspec
 repr
+republishes
 requantize
 rerun
+resampling
 resolv
 rest
 restful
@@ -570,11 +598,14 @@ schemas
 scouting
 scp
 seg
+seqa
 serde
+selfie
 sftp
 shaders
 signaled
 silu
+slewed
 smartmicro
 smp
 smpl
@@ -609,7 +640,10 @@ substring
 subwindow
 sudo
 superset
+symlink
+symlinks
 sync_file
+synchronizers
 synset
 sys
 sysfs
@@ -634,7 +668,9 @@ tf_static
 tflite
 th
 thresholded
+timebase
 timepulse
+timestamping
 tmux
 tokio
 toml
@@ -683,23 +719,32 @@ ungrouped
 unicast
 unicode
 uniffi
+unlabeled
 unmanaged
 unnest
+unoffset
 unparseable
 unprivileged
 unquantized
+unsplit
 unstamped
+untracked
+unsynchronized
 untrusted
 uplink
 upsample
+upsamples
+upsampling
 upscaled
 upscales
 upscaling
 uptane
+uptime
 url
 userspace
 utf
 uuid
+uuids
 validator
 vapor
 vectorized
@@ -708,6 +753,7 @@ verdin
 verisilicon
 videostream
 vignesh
+visdrone
 vivante
 voxel
 vs

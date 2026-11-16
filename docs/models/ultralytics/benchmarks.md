@@ -6,7 +6,7 @@ This page provides a summary of the benchmarks gathered for Ultralytics across v
 
     ## Playing Cards
 
-    The Playing Cards dataset is a custom object detection dataset containing over 1,000 images annotated across 13 card classes (e.g., Ace to King).  It focuses on detecting cards in varied orientations and real-world settings.  We use this dataset to benchmark Ultralytics models for lightweight, task-specific detection performance. 
+    The Playing Cards dataset is a custom object detection dataset containing over 1,000 images annotated across 13 card classes (e.g., Ace to King).  It focuses on detecting cards in varied orientations and real-world settings.  We use this dataset to benchmark Ultralytics models for lightweight, task-specific detection performance.
 
     **Table: Ultralytics on Playing Cards - RGB - (640x640) - ONNX - (50 epochs)**
 
@@ -24,7 +24,9 @@ This page provides a summary of the benchmarks gathered for Ultralytics across v
 
 === "Coffee Cup"
 
-    ## Object Detection and Segmentation Metrics
+    ## Coffee Cup
+
+    The Coffee Cup dataset is a compact, task-focused benchmark for instance segmentation and object detection in a cluttered tabletop setting. It contains annotated coffee cup examples captured in varied poses and lighting conditions, making it useful for evaluating lightweight models that need strong localization and mask quality in real-world scenes.
 
     **Table: Ultralytics on CoffeeCup - RGB - (640x640) | ONNX**
 
@@ -65,7 +67,7 @@ This page provides a summary of the benchmarks gathered for Ultralytics across v
 
 === "COCO People"
 
-    This dataset contains only annotations for person class from original dataset.  However, all the images are included during training as negative samples
+    This dataset contains only annotations for the person class from original COCO2017 dataset.  However, all the images are included during training as negative samples.
 
     **Table: Ultralytics on COCO People - RGB - (640x640) - ONNX - (100 epochs)**
 
@@ -83,8 +85,7 @@ This page provides a summary of the benchmarks gathered for Ultralytics across v
 
 === "COCO 2017"
 
-    !!! note
-        COCO benchmark is coming soon !!!
+    See the complete COCO benchmark for Ultralytics in [Hugging Face](https://huggingface.co/spaces/EdgeFirst/Models).
 
 === "ImageNet"
 

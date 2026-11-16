@@ -28,6 +28,12 @@ EdgeFirst models from the [Model Zoo](index.md) (including [ModelPack](modelpack
 | ------ | ----------------- | ------------- | ------ |
 | TFLite | ZIP archive (associated files) | `edgefirst.json` | `labels.txt` |
 | ONNX | Custom metadata properties | `edgefirst` (JSON) | `labels` (JSON array) |
+| Keras weights (`.keras`) | ZIP archive member | `edgefirst.json` | `labels.txt` |
+| PyTorch weights (`.pt`) | Checkpoint dictionary key | `edgefirst` (JSON string) | `dataset.classes` |
+
+Metadata is always embedded in the artifact it describes. Trainers embed the same metadata in the weights they publish (`.keras` or `.pt`) as in the exported models, so that a later session can load those weights and know exactly how they were trained. A standalone `edgefirst.json` is never published, because a session produces several artifacts and a loose file would not say which one it describes.
+
+Class labels are listed in channel order, one per class, with no leading or trailing spaces and no empty names. The HAL trims leading and trailing spaces, tabs and other blank characters from every class name it reads, so a Hugging Face `id2label` entry such as ADE20K's `"bed "` resolves to `"bed"`, and it keeps the spaces inside a name (`"chest of drawers"`). If a source has an empty name, an unparseable list, or a number of names that differs from the number of classes in the model's outputs, the HAL ignores that source's labels with a warning and uses the next source. The count is checked for every model type whose outputs state it, including semantic segmentation and Ultralytics and ModelPack detection; end-to-end detection outputs do not state it. A ModelPack segmentation output has one channel more than its classes: the last channel is background and has no entry in the class labels, so a multitask model's masks and boxes share class indices. Names that repeat ignoring case are reported, because they make matching classes by name ambiguous.
 
 ### Supported Training Frameworks
 
@@ -234,6 +240,14 @@ input:
   cameraadaptor: string    # Camera format (rgb, bgr, rgba, bgra, grey, yuyv)
   input_channels: int      # Channels from camera (3=RGB, 4=RGBA, 1=grey)
   output_channels: int     # Channels after CameraAdaptor transform
+  preprocessing:           # Optional (see Input Preprocessing)
+    normalization: string or {mean: [float], std: [float]}  # unsigned | signed | raw | imagenet, or per-channel mean/std on 0-255
+    resize: string         # stretch | letterbox
+    interpolation: string  # bilinear | nearest | bicubic | area (reference filter, informational)
+    letterbox:
+      placement: string    # center (default) | topleft
+      pad: [float]         # Per-channel pad value (default 114, pixel space)
+      pad_space: string    # pixel (default) | normalized
 
 model:
   name: string             # Model/session name from training (artifact naming)
@@ -279,12 +293,27 @@ export:
   export_output_type: string
   calibration_samples: int
 
-# Decoder Configuration (Ultralytics only)
+# Decoder Configuration
 decoder_version: string    # YOLO architecture version: yolov5, yolov8, yolo11, yolo26
-nms: string                # HAL decoder NMS mode: class_agnostic, class_aware
+nms: string                # HAL decoder NMS mode: class_aware (default when absent), class_agnostic
+nms_multi_label: boolean   # Optional. Multi-label candidate selection (validation decode); absent or false = one class per anchor
 
 # Calibration Artifact (see Calibration Artifact section)
 calibration: string          # Snapshot filename: calibration-{dataset_id}-{param_hash}.safetensors
+
+# Tiling (tile-trained models only — see Tiling section)
+tiling:
+  version: int                 # Section version (1)
+  mode: string                 # tiled | whole_frame (how the runtime feeds frames)
+  tile: [int, int]             # Runtime tile [H, W]; equals the input H, W in tiled mode
+  grid: {algorithm: string, version: int, min_overlap: float}
+  fit: string                  # letterbox
+  pad: [int, int, int]
+  per_tile: {nms: string, iou: float, score: float}
+  merge: {mode: string, metric: string, threshold: float, class_agnostic: boolean, max_det: int}
+  full_frame: {enabled: boolean, own_above_area: float}
+  training: {session: string, sampler: string, version: string, params: object}
+  export: {session: string, weights_from: string, calibration: {resize: string, input_shape: [int, int], full_frame: boolean}}
 
 # Split Hints — INPUT metadata only, present in uncompiled ONNX/SavedModel.
 # The compiled (converted) model REPLACES split_hints with the outputs[] array.
@@ -309,7 +338,8 @@ split_hints:
 outputs:
   - name: string               # Logical output name
     type: string               # Semantic type: boxes, scores, objectness, mask_coefs, protos,
-                               # landmarks, classes, detections, segmentation, masks, detection
+                               # landmarks, classes, detections, segmentation, masks, detection,
+                               # class_logits, mask_logits (reserved)
     shape: [int]               # Reconstructed logical shape (what fallback dequant+merge produces)
     dshape:                    # Named dimensions (see dshape section)
       - batch: int
@@ -322,16 +352,25 @@ outputs:
       - num_anchors_x_features: int
       - box_coords: int
       - padding: int
-    decoder: string            # 'modelpack' | 'ultralytics' — required for outputs needing decode
+      - num_queries: int
+    decoder: string            # 'modelpack' | 'ultralytics' | 'semantic' — required for outputs needing decode
     encoding: string           # 'dfl' | 'direct' | 'anchor' — required on boxes
     score_format: string       # 'per_class' | 'obj_x_class' (scores only)
     normalized: boolean        # Coordinates in [0,1] (true) or pixels (false); boxes and detections only
     stride: int or [int, int]  # Spatial stride; 2-element form for non-square inputs
     anchors: [[float, float]]  # Normalized anchors (ModelPack anchor-based outputs)
 
+    # Semantic segmentation fields (see Semantic Segmentation)
+    upsample: {method: string, align_corners: boolean}  # bilinear | nearest | bicubic
+    decode_mode: string        # accurate | fast
+    threshold: float           # Single-channel outputs only
+    background_index: int      # Channel of the background class, when the model has one
+    no_object_index: int       # class_logits only (reserved); absent means the last class
+    mask_activation: string    # mask_logits only (reserved): sigmoid | softmax_over_queries
+
     # When the converter did NOT further split this logical output,
     # it IS the physical tensor — the following fields are present directly:
-    dtype: string              # Tensor data type (e.g. int8, uint8, float32)
+    dtype: string              # Tensor data type (e.g. int8, uint8, float32, int64)
     quantization:              # Quantization parameters (null for float models)
       scale: float or [float]
       zero_point: int or [int]
@@ -429,9 +468,11 @@ Logical output types used across frameworks:
 | `protos` | Instance segmentation prototypes | `[1, num_protos, H, W]` |
 | `landmarks` | Facial / keypoint landmarks | `[1, num_landmarks, num_boxes]` |
 | `detections` | Fully decoded post-NMS detections (end-to-end) | `[1, max_det, 6]` (x1,y1,x2,y2,conf,class) |
-| `segmentation` | Semantic segmentation output (ModelPack) | `[1, H, W, num_classes]` |
-| `masks` | Semantic segmentation masks (ModelPack) | `[1, H, W]` |
-| `detection` | ModelPack anchor-grid raw output requiring anchor decode | `[1, H, W, anchors×features]` |
+| `segmentation` | Semantic segmentation per-pixel class scores | `[1, H, W, num_classes]` or `[1, num_classes, H, W]` |
+| `masks` | Semantic segmentation class map, argmax applied in the graph | `[1, H, W]` |
+| `detection` | Anchor-grid raw output requiring anchor decode | `[1, H, W, anchors×features]` |
+| `class_logits` | Mask-classification per-query class logits (reserved) | `[1, num_queries, num_classes + 1]` |
+| `mask_logits` | Mask-classification per-query mask logits (reserved) | `[1, num_queries, H, W]` |
 
 Physical-child subtypes (appear only inside `outputs[]` children):
 
@@ -467,9 +508,10 @@ outputs:
 | `num_features` | Feature dimension (box coords + classes + mask coefficients) |
 | `num_boxes` | Number of detection boxes/anchors |
 | `num_protos` | Number of prototype masks (instance segmentation) |
-| `num_anchors_x_features` | Combined anchor × features-per-anchor dimension (ModelPack grid outputs) |
+| `num_anchors_x_features` | Combined anchor × features-per-anchor dimension (anchor-grid outputs) |
 | `padding` | Padding/alignment dimension used to satisfy expected tensor shapes. Must always be 1 |
 | `box_coords` | The coordinates of the boxes. Must be 4 |
+| `num_queries` | Number of queries of a mask-classification model |
 
 `dshape` entries are ordered objects — the position of each key matches the axis position in `shape`. Ordering is authoritative for consumers mapping shapes to names.
 
@@ -522,9 +564,9 @@ The presence of a `decoder` field on a logical output signals that post-processi
 
 Semantic and decode fields live on the **logical output** and apply to all children. Physical children carry only tensor-level fields.
 
-**Root-level only:** `decoder_version`, `nms` (HAL NMS mode). These describe model-wide behavior and never appear inside an `outputs[]` entry.
+**Root-level only:** `decoder_version`, `nms` (HAL NMS mode), `nms_multi_label` (HAL multi-label decode). These describe model-wide behavior and never appear inside an `outputs[]` entry.
 
-**Logical output only:** `decoder`, `encoding`, `score_format`, `normalized`, `anchors`
+**Logical output only:** `decoder`, `encoding`, `score_format`, `normalized`, `anchors`, `upsample`, `decode_mode`, `threshold`, `background_index`, `no_object_index`, `mask_activation`
 
 **Physical output only:** `quantization` (always required), `dtype`, `scale_index`, `activation_applied`, `activation_required`
 
@@ -539,6 +581,9 @@ Per-type semantic fields are scoped to their output type:
 - `normalized` → `boxes` and `detections` only
 - `anchors` → `boxes` with `encoding: anchor` only
 - `stride` on a non-split logical output → spatial stride hint (e.g. `protos` at stride 4)
+- `upsample`, `decode_mode`, `background_index` → `segmentation` and `masks` with `decoder: semantic`
+- `threshold` → single-channel `segmentation` with `decoder: semantic`
+- `no_object_index` → `class_logits` only; `mask_activation` → `mask_logits` only
 
 ---
 
@@ -758,7 +803,7 @@ input:
 
 **Native Aspect Ratio (typical for purpose-built datasets):**
 
-- [ModelPack](modelpack/index.md) models are often trained at the camera's native aspect ratio
+- The model is trained at the camera's native aspect ratio
 - Images are directly resized to target dimensions without padding
 - Best accuracy when deployment camera matches training data
 
@@ -766,7 +811,8 @@ input:
 
 - Used when training on images from diverse cameras and aspect ratios
 - Image is scaled to fit within target size while maintaining aspect ratio
-- Gray padding (value 114) added to reach exact dimensions
+- Padding added to reach exact dimensions: gray (value 114) by default, or the value in `input.preprocessing.letterbox.pad`
+- The scaled image is centred by default; `input.preprocessing.letterbox.placement: topleft` anchors it at the top-left with all padding on the bottom and right
 - Inference must apply same letterbox transform and account for padding offset in output coordinates
 
 **Example:** A 1920x1080 image letterboxed to 640x640:
@@ -777,14 +823,55 @@ input:
 
 ### Pixel Normalization
 
-Input pixels are normalized from `[0, 255]` to `[0.0, 1.0]`:
+Normalization is defined on 0–255 pixel values as `(x - mean) / std` per channel. A model declares it in `input.preprocessing.normalization`, either as a preset or as explicit per-channel coefficients:
+
+| Preset | mean | std | Result range | Typical models |
+| ------ | ---- | --- | ------------ | -------------- |
+| `unsigned` | 0 | 255 | `[0, 1]` | ModelPack, Ultralytics YOLO (default) |
+| `signed` | 127.5 | 127.5 | `[-1, 1]` | TF DeepLab, MediaPipe, PP-LiteSeg |
+| `raw` | 0 | 1 | `[0, 255]` | Models with normalization in the graph |
+| `imagenet` | 123.675, 116.28, 103.53 | 58.395, 57.12, 57.375 | about `[-2.1, 2.6]` | SegFormer, DeepLabV3, UperNet and most ImageNet-pretrained backbones |
 
 ```python
-# Standard normalization
-normalized = pixels.astype(np.float32) / 255.0
+# Explicit form, equivalent to the imagenet preset
+normalized = (pixels.astype(np.float32) - mean) / std
 ```
 
-For quantized models (INT8), the quantization parameters handle the scaling internally — raw uint8 pixel values can often be used directly.
+A single `mean` or `std` value applies to every channel. The coefficients describe the trained weights, not the architecture: ports of the same architecture differ (BEiT uses `imagenet` in mmsegmentation and `signed` in Hugging Face), so the producer records what its export expects.
+
+For quantized models (INT8), the input quantization is applied after normalization. When the normalization and input quantization cancel out, raw uint8 pixel values can be fed directly.
+
+### Preprocessing Block
+
+The optional `input.preprocessing` block records everything a runtime needs to reproduce the model's reference pre-processing:
+
+```yaml
+input:
+  shape: [1, 3, 512, 512]
+  cameraadaptor: rgb
+  preprocessing:
+    normalization: imagenet        # or {mean: [...], std: [...]}
+    resize: letterbox              # stretch | letterbox
+    interpolation: bilinear        # bilinear | nearest | bicubic | area
+    letterbox:
+      placement: topleft           # center | topleft
+      pad: [0.0, 0.0, 0.0]
+      pad_space: normalized        # pixel | normalized
+```
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| `normalization` | string or object | Preset name (`unsigned`, `signed`, `raw`, `imagenet`) or `{mean, std}` with one value or one value per channel, on the 0–255 scale. Every `std` must be non-zero. |
+| `resize` | string | `stretch` scales each axis independently to the input size. `letterbox` preserves the aspect ratio and pads. |
+| `interpolation` | string | Resampling filter of the reference pipeline. Informational: a runtime may use another filter and should state the difference when comparing accuracy. Segmentation models are sensitive to it; nearest-neighbor resizing costs SegFormer B1 0.6–1.0 mIoU points against bilinear. |
+| `letterbox.placement` | string | `center` (default) splits the padding between both sides of each axis. `topleft` puts all padding on the bottom and right, as mmsegmentation and TF DeepLab do. |
+| `letterbox.pad` | [float] | Pad value, one per channel or a single shared value. Default 114 per channel. |
+| `letterbox.pad_space` | string | `pixel` (default): `pad` is a 0–255 value that is normalized like image content. `normalized`: `pad` is written as-is into the normalized input, for example 0.0 to pad with the mean colour after `imagenet` normalization. |
+
+Every field is optional. When a field is absent, consumers fall back to the legacy [`validation`](#validation-parameters) fields (`validation.normalization`, `validation.preprocessing`), then to `unsigned` normalization and a centred letterbox padded with 114. The block was added to schema version 2 without a version change; parsers that predate it ignore it.
+
+!!! note "Sliding-window evaluation"
+    Some published segmentation results (UperNet with ConvNeXt or BEiT, DINOv2, SegFormer on Cityscapes) use sliding-window inference over a larger image, stitching the overlapping score maps. The block describes single-pass inference at the fixed input shape only. Sliding-window geometry and score-map stitching are outside this block, and the [Tiling](#tiling) section does not cover them: tiling reconstructs bounding boxes only.
 
 ### Camera Adaptor
 
@@ -798,6 +885,166 @@ The `cameraadaptor` field specifies the expected input format for the model. See
 | `bgra` | BGR with alpha | Blue, Green, Red, Alpha |
 | `grey` | Greyscale | Single channel |
 | `yuyv` | YUV 4:2:2 packed | For direct camera sensor input |
+
+---
+
+## Tiling
+
+Models trained on native-resolution tiles of high-resolution frames carry an optional `tiling` section. A runtime reads it to decide whether to cut each frame into tiles or run the whole frame through the model, and it records how the model was trained, exported and calibrated. A model without the section is not tile-trained and is handled exactly as before.
+
+Tiling reconstructs bounding boxes only: per-tile detections are merged into frame detections. Masks, whether instance masks or semantic segmentation maps, are not reconstructed across tiles.
+
+The tiling mode and the input resolution are fixed when the model is exported, because edge runtimes compile a static input shape. The default deployment of a tile-trained model is **tiled** at its tile size. The contract defines one workflow for deploying the same weights at another resolution, for example whole-frame at a camera's native resolution: it is done by starting a new training session with training disabled, selecting the tile-trained session as its weights source, and choosing the deployment mode and input resolution. That session exports and calibrates at the new geometry without retraining.
+
+### Tiling Schema
+
+```yaml
+tiling:
+  version: 1
+  mode: tiled                    # tiled | whole_frame
+  tile: [640, 640]               # runtime tile [H, W]
+  grid: {algorithm: evendist, version: 1, min_overlap: 0.1}
+  fit: letterbox
+  pad: [114, 114, 114]
+  per_tile: {nms: class_aware, iou: 0.5, score: 0.001}
+  merge: {mode: keep_best, metric: ios, threshold: 0.5, class_agnostic: false, max_det: 300}
+  full_frame: {enabled: false, own_above_area: 0.02}
+  training:
+    session: t-1a2b
+    sampler: edgefirst-tiling
+    version: "3.1"
+    params: {tile_size: [640, 640], frames_per_batch: 4, seed: 0}
+  export:
+    session: t-1a2b
+    calibration: {resize: tiled, input_shape: [640, 640], full_frame: false}
+```
+
+In version 1 every key shown above is required, except `export.weights_from` and the contents of `training.params`. Values in parentheses below are recommended values; they are not defaults that a runtime fills in for missing keys.
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| `version` | int | Section version. The current version is `1`. A runtime that finds a version it does not support must warn and treat the model as not tile-trained. |
+| `mode` | string | `tiled`: the runtime cuts each frame into a grid of `tile`-sized crops, runs each, and merges the detections. `whole_frame`: the runtime letterboxes the whole frame into the model input and runs it once. |
+| `tile` | [int, int] | Runtime tile `[H, W]` in pixels. In `tiled` mode it equals the input height and width. |
+| `grid.algorithm` | string | `evendist`: tile origins spread evenly from 0 to `frame − tile` per axis, so every seam overlaps by at least `min_overlap` and no tile is shifted. See [Grid](#grid). |
+| `grid.version` | int | Grid algorithm version (`1`). |
+| `grid.min_overlap` | float | Minimum overlap between neighbouring tiles as a fraction of the tile, `0 ≤ min_overlap < 1` (`0.1`). |
+| `fit` | string | How a crop smaller than the tile is placed. Version 1 defines only `letterbox`: aspect preserved, content centred, padded with `pad` (see [Grid](#grid)). |
+| `pad` | [int, int, int] | Letterbox pad colour, three integers from 0 to 255 (`114` per channel). |
+| `per_tile.nms` | string | NMS applied to each tile's detections before merging: `class_aware`, `class_agnostic`, or `none` for end-to-end models. |
+| `per_tile.iou` / `per_tile.score` | float | Per-tile NMS IoU threshold (`0.5`) and score floor (`0.001`), each from 0 to 1. |
+| `merge.mode` | string | Cross-tile merge: `keep_best` keeps the highest-scoring box of each group unchanged; `union` replaces the group with its enclosing box. See [Merge](#merge). |
+| `merge.metric` | string | `ios` (intersection over the smaller box, which matches objects cut by a tile seam) or `iou`. |
+| `merge.threshold` | float | Overlap at which two boxes of the same class (or any class if `class_agnostic`) are merged, from 0 to 1 (`0.5`). |
+| `merge.class_agnostic` | boolean | Merge across classes (`false`). |
+| `merge.max_det` | int | Maximum detections per frame after merging, a positive integer (`300`). |
+| `full_frame` | object | Extra whole-frame pass merged with the tiles: `enabled` (boolean, `false`) and `own_above_area`, a fraction of the frame area from 0 to 1 above which whole-frame boxes replace overlapping tile boxes (`0.02`). In the pass the whole frame is letterboxed into the tile. `enabled` may be `true` only in `tiled` mode. |
+| `training` | object | How the weights were trained: the training `session`, the `sampler` and its `version`, and its parameters as trained. Written once by the session that trained the weights and copied unchanged by every later export. |
+| `export` | object | How this model was produced: the exporting `session`, `weights_from` (the session whose weights were loaded, omitted when the same session trained and exported), and the `calibration` geometry: `resize`, `input_shape`, and `full_frame`, which is `true` when the snapshot also holds whole-frame samples (see [Tiling Rules](#tiling-rules)). |
+
+### Grid
+
+The `evendist` version 1 grid is computed per axis, for a frame length `L` and a tile length `T` in pixels, identically on every runtime:
+
+1. If `L ≤ T`, the axis has a single origin `0` and the crop covers the whole axis.
+2. Otherwise let `last = L − T`, `step = max(1, ⌊(1 − min_overlap) × T⌋)` and `n = ⌈last / step⌉`. `min_overlap` is first rounded to a 32-bit float, then `step` is evaluated in 64-bit floating point; `n` is an integer division rounded up. The origins are `oᵢ = round(i × last / n)` for `i = 0 … n`, with `i`, `last` and `n` converted to 32-bit floats, the product and quotient evaluated in 32-bit floating point, and the result rounded half away from zero. The first origin is `0` and the last is `last`.
+
+A 3840-pixel axis with a 640-pixel tile and `min_overlap: 0.1` gives `step = 575` (0.1 as a 32-bit float is slightly larger than 0.1), `n = 6` and origins 0, 533, 1067, 1600, 2133, 2667, 3200. A 2160-pixel axis gives origins 0, 507, 1013, 1520.
+
+The tiles are every pair of a row origin and a column origin, in row-major order: rows top to bottom, and within a row the columns left to right. A tile's index is its position in this order. Each crop is `min(T, L)` pixels along each axis, so crops are full tiles except on an axis shorter than the tile. Such a crop is letterboxed: scaled by the largest factor that fits it in the tile with its aspect ratio kept, the scaled size rounded half away from zero (at least 1 pixel), placed at offset `⌊(tile − scaled) / 2⌋` on each axis, and the rest filled with `pad`.
+
+### Merge
+
+Each tile's detections are filtered with `per_tile` NMS, mapped back into frame pixels in 32-bit floating point, and concatenated in tile-index order. The merge then groups them greedily:
+
+1. Sort the detections by score, highest first. Equal scores keep their concatenated order.
+2. Walk the sorted list. Each detection not yet claimed is kept, and claims every later unclaimed detection of the same class (any class if `class_agnostic`) whose overlap with it, by `metric`, is at least `threshold`. `ios` is the intersection divided by the smaller box's area and `iou` the intersection over the union, each with the denominator floored at `1e-9`.
+3. A detection is compared only with the kept detection that claims it; grouping is not transitive. If A claims B, and C overlaps B but not A, C stays unclaimed and is considered in its own turn.
+4. `keep_best` emits the kept detection unchanged. `union` emits the box enclosing the kept detection and everything it claimed, with the kept detection's score and class.
+5. The output is the emitted detections in the order they were kept, truncated to `max_det`.
+
+### Tiling Modes
+
+| | `tiled` | `whole_frame` |
+| - | ------- | ------------- |
+| Model input | The tile, e.g. `640×640` | The export resolution, e.g. `3840×2176` for 4K frames (height and width are multiples of 32) |
+| Runtime | Grid of tiles per frame, per-tile NMS, merge into frame coordinates | One inference per frame on the letterboxed frame |
+| Calibration snapshot | Deployment-grid tiles at native scale (`resize: tiled`), plus whole-frame samples when `full_frame.enabled` | Frames letterboxed to the export resolution (`resize: letterbox`) |
+| When to use | High-resolution cameras on accelerators that cannot fit the whole frame, and the default for tile-trained models | The accelerator fits the whole frame; usually faster than tiling the same frame |
+
+Both modes use the same weights, because the detectors are fully convolutional and were trained at native scale.
+
+### Tiling Rules
+
+1. In `tiled` mode the input height and width equal `tile`. The tile may differ from the training tile (`training.params.tile_size`), because objects are still seen at native scale.
+2. In `whole_frame` mode the input is the export resolution, with height and width multiples of 32.
+3. `export.calibration.resize` is `tiled` in `tiled` mode and `letterbox` in `whole_frame` mode, `export.calibration.input_shape` equals the input height and width, and `export.calibration.full_frame` equals `full_frame.enabled`. See [Calibration Snapshot](conversion/calibration.md#geometry-check).
+4. `training` is never modified after the session that trained the weights wrote it. `export` describes the most recent export.
+5. Converters copy the `tiling` section unchanged; see [Converter Traceability](#converter-traceability).
+6. Unknown keys are ignored.
+
+### Example: Whole-Frame Re-Export
+
+The weights trained tiled in session `t-1a2b`, re-exported whole-frame at 4K by export-only session `t-3c4d`:
+
+```yaml
+input:
+  shape: [1, 3, 2176, 3840]
+tiling:
+  version: 1
+  mode: whole_frame
+  tile: [640, 640]
+  grid: {algorithm: evendist, version: 1, min_overlap: 0.1}
+  fit: letterbox
+  pad: [114, 114, 114]
+  per_tile: {nms: class_aware, iou: 0.5, score: 0.001}
+  merge: {mode: keep_best, metric: ios, threshold: 0.5, class_agnostic: false, max_det: 300}
+  full_frame: {enabled: false, own_above_area: 0.02}
+  training:
+    session: t-1a2b
+    sampler: edgefirst-tiling
+    version: "3.1"
+    params: {tile_size: [640, 640], frames_per_batch: 4, seed: 0}
+  export:
+    session: t-3c4d
+    weights_from: t-1a2b
+    calibration: {resize: letterbox, input_shape: [2176, 3840], full_frame: false}
+```
+
+### Example: Tiled Re-Export at a New Tile Size
+
+The same weights re-exported tiled at a 1280×1280 tile by export-only session `t-3c4e`, as a TFLite model with an NHWC input. The runtime tile differs from the 640×640 training tile, which rule 1 allows. This model has an end-to-end head, so `per_tile.nms` is `none`:
+
+```yaml
+input:
+  shape: [1, 1280, 1280, 3]
+tiling:
+  version: 1
+  mode: tiled
+  tile: [1280, 1280]
+  grid: {algorithm: evendist, version: 1, min_overlap: 0.1}
+  fit: letterbox
+  pad: [114, 114, 114]
+  per_tile: {nms: none, iou: 0.5, score: 0.001}
+  merge: {mode: keep_best, metric: ios, threshold: 0.5, class_agnostic: false, max_det: 300}
+  full_frame: {enabled: false, own_above_area: 0.02}
+  training:
+    session: t-1a2b
+    sampler: edgefirst-tiling
+    version: "3.1"
+    params: {tile_size: [640, 640], frames_per_batch: 4, seed: 0}
+  export:
+    session: t-3c4e
+    weights_from: t-1a2b
+    calibration: {resize: tiled, input_shape: [1280, 1280], full_frame: false}
+```
+
+### Models Without Tiling
+
+A model that was not tile-trained has no `tiling` key. Its runtime behavior is unchanged: the runtime letterboxes each frame into the model input and runs it once, and tiled inference happens only when an application requests it explicitly.
+
+!!! note "Session references"
+    Session IDs in metadata use the `t-` prefix with a hexadecimal value, as elsewhere in this document. Tools that accept a session reference must also accept the decimal integer, with or without quotes: `t-2a3f`, `"10815"` and `10815` name the same session.
 
 ---
 
@@ -820,7 +1067,7 @@ The `validation` section records the recommended settings based on how the model
 | `iou` | NMS IoU threshold | `0.7` | Yes |
 | `score` | NMS confidence score threshold | `0.001` | Yes |
 | `nms` | NMS algorithm | *(not set)* | See below |
-| `normalization` | Input pixel normalization | `unsigned` | Yes |
+| `normalization` | Input pixel normalization preset (`unsigned`, `signed`, `raw`, `imagenet`). Superseded by `input.preprocessing.normalization` when present | `unsigned` | Yes |
 | `preprocessing` | Image preprocessing method | `letterbox` | Yes |
 
 Most parameters (`iou`, `score`, `normalization`, `preprocessing`, and NMS algorithm choices like `hal`/`tensorflow`/`numpy`/`torch`) can be overridden at runtime based on deployment preferences.
@@ -896,7 +1143,7 @@ When a logical output has a `decoder` field set, the inference pipeline must:
 3. **Dequantize physical tensors** → Using each child's `quantization` (or the logical's own if no children)
 4. **Reassemble into the logical tensor** → If the logical output has physical children, merge them per the rules in [HAL Decoder Algorithm — Merge Strategy](#merge-strategy) (channel concat for sub-splits, spatial concat for per-scale splits). If there are no children, the logical output IS the tensor.
 5. **Apply decoder** → Framework-specific: anchor decode (`modelpack`), DFL/direct decode (`ultralytics`)
-6. **Run NMS** → Unless the model has embedded NMS (`validation.nms: none`)
+6. **Run NMS** → Unless the model has embedded NMS (`validation.nms: none`), using the mode from the root-level `nms` field (class-aware when absent)
 
 ### Decoder Field
 
@@ -912,7 +1159,7 @@ outputs:
 
 #### `modelpack` — Anchor-Based YOLO Decoder
 
-Used by [ModelPack](modelpack/index.md) models. Traditional YOLO-style grid decoding with pre-defined anchor boxes.
+Traditional YOLO-style grid decoding with pre-defined anchor boxes.
 
 **Characteristics:**
 
@@ -943,7 +1190,7 @@ outputs:
 
 #### `ultralytics` — Anchor-Free DFL Decoder
 
-Used by [Ultralytics](ultralytics/index.md) models (YOLOv5, YOLOv8, YOLO11, YOLO26). Modern anchor-free detection using Distribution Focal Loss (DFL).
+Modern anchor-free detection using Distribution Focal Loss (DFL).
 
 **Characteristics:**
 
@@ -973,9 +1220,13 @@ x2y2 = anchor_points + rb
 | YOLO11 | C3k2, C2PSA | DWConv→Conv (efficient) |
 | YOLO26 | C3k2, A2C2f | DWConv→Conv (efficient) |
 
+#### `semantic` — Semantic Segmentation Decoder
+
+Per-pixel class decoding for semantic segmentation models: upsampling of a class-score map and argmax, or resizing of a class map the model already computed. See [Semantic Segmentation](#semantic-segmentation) for the fields and the decode algorithm.
+
 ### Decoder Version Field
 
-The `decoder_version` field specifies the YOLO architecture version for Ultralytics models. This field is critical for determining the correct decoding strategy, especially for end-to-end models.
+The optional `decoder_version` field specifies the YOLO architecture version of the model. This field is critical for determining the correct decoding strategy, especially for end-to-end models.
 
 ```yaml
 decoder_version: yolo26    # End-to-end model with embedded NMS
@@ -1005,22 +1256,22 @@ decoder_version: yolov8    # Traditional model requiring external NMS
 **When `decoder_version` is absent or any other value:**
 
 - Traditional YOLO architecture requiring external NMS
-- The root-level `nms` field controls which NMS algorithm the HAL decoder uses
+- The root-level `nms` field controls which NMS algorithm the HAL decoder uses; class-aware NMS applies when it is absent
 
 ### HAL NMS Field
 
 The root-level `nms` field controls the HAL decoder's NMS behavior:
 
 ```yaml
-nms: class_agnostic    # Suppress overlapping boxes regardless of class (default)
+nms: class_aware       # Only suppress boxes with the same class label (default when absent)
 # or
-nms: class_aware       # Only suppress boxes with the same class label
+nms: class_agnostic    # Suppress overlapping boxes regardless of class
 ```
 
 | Value | Behavior |
 | ----- | -------- |
-| `class_agnostic` | Suppress overlapping boxes regardless of class label (default) |
-| `class_aware` | Only suppress boxes that share the same class AND overlap |
+| `class_aware` | Only suppress boxes that share the same class AND overlap (default) |
+| `class_agnostic` | Suppress overlapping boxes regardless of class label |
 
 !!! warning "Two distinct `nms` fields"
     This document uses `nms` at two levels with different semantics:
@@ -1029,6 +1280,136 @@ nms: class_aware       # Only suppress boxes with the same class label
     - **`validation.nms`** (see [Validation Parameters](#validation-parameters)) — NMS *implementation*: `hal`, `numpy`, `tensorflow`, `torch`, or `none`.
 
     The two fields are independent and can coexist.
+
+When `nms` is absent, or is the v1 value `auto`, the HAL decoder uses class-aware NMS, so overlapping objects of different classes (a person on a bicycle) do not suppress each other. An explicit `class_agnostic` always takes effect, including together with [`nms_multi_label`](#hal-multi-label-field). The resolved mode applies to every NMS decode path, whatever the output's `decoder`.
+
+### HAL Multi-Label Field
+
+The optional root-level `nms_multi_label` field selects how the HAL decoder picks candidate boxes before NMS:
+
+```yaml
+nms_multi_label: true    # One candidate per class above the score threshold
+# or
+nms_multi_label: false   # One candidate per anchor, labeled with its highest-scoring class (default)
+```
+
+| Value | Behavior |
+| ----- | -------- |
+| absent or `false` | Argmax decode: each anchor yields at most one candidate, labeled with its highest-scoring class (default) |
+| `true` | Multi-label decode: each anchor yields one candidate for every class whose score meets the score threshold |
+
+Multi-label decode reproduces the candidate selection of Ultralytics validation (`val` with `multi_label=True`), which is how COCO-style mAP is counted. Use it when the decoded detections must match a validation run. It is not typical for deployment, because one object can produce several boxes, one per class above the threshold, and a deployed application usually wants one label per object.
+
+End-to-end models (`type: detections`, such as YOLO26 with `model.end2end: true`) ignore `nms_multi_label`: the model emits its own post-NMS detections, and the decoder applies only the score threshold and `max_det`.
+
+Multi-label decode interacts with the other decoder parameters as follows:
+
+- **NMS mode**: the candidates go through the NMS mode set by the root-level [`nms`](#hal-nms-field) field. An explicit `class_agnostic` suppresses across the classes of one anchor, as Ultralytics does with `agnostic=True`. When `nms` is not set, NMS is class-aware and every class of an anchor is kept.
+- **`pre_nms_top_k`**: multi-label decode emits up to anchors × classes candidates, so when it is on and `pre_nms_top_k` is not set explicitly the decoder uses a cap of 30 000, the Ultralytics `max_nms` value, instead of the argmax default of 300. An explicit `pre_nms_top_k` always wins, and `0` means no limit.
+- **Overrides**: `DecoderBuilder::with_multi_label`, the Python `multi_label` constructor argument, and the C `ef_decoder_params_set_multi_label` override the metadata value in either direction. Without an override, the metadata value applies, and the decoder is argmax if the key is absent.
+- **Warning**: a decoder that takes multi-label from this key logs a warning when it is built, because the model file then changes what every untracked `decode` returns. Pass `multi_label=False` to override it.
+- **Tracking**: tracked decode (`decode_tracked`, `decode_proto_tracked`, `decode_for_tracking`) always decodes one label per box regardless of this key, because a tracker matches on IoU only and per-class duplicates of one anchor would become spurious tracks.
+
+---
+
+## Semantic Segmentation
+
+Semantic segmentation models assign a class to every pixel. Their logical outputs use `decoder: semantic` and one of three forms:
+
+!!! note "Metadata and decoder support"
+    This section defines the metadata contract and the decode algorithm a consumer implements. The HAL parses and validates every field described here. From HAL 0.36.0 its semantic decoder decodes per-pixel scores and class maps; the reserved mask-classification outputs return a "not supported" error.
+
+| Form | Logical output(s) | Examples | Decode |
+| ---- | ----------------- | -------- | ---------- |
+| Per-pixel scores | one `segmentation` | SegFormer, DeepLabV3(+), PSPNet, UperNet, PIDNet, DDRNet, BiSeNet, LRASPP, MediaPipe selfie | Upsample the scores, then argmax (or threshold one channel) |
+| Class map | one `masks` | Exports ending in `ArgMax`: Coral DeepLab (int64), PaddleSeg (int32), Ultralytics semantic ONNX (uint8) | Nearest-neighbor resize only; the HAL accepts `uint8`, `uint16`, `int32`, `uint32` and `int64` |
+| Mask classification (reserved) | `class_logits` + `mask_logits` | MaskFormer, Mask2Former, OneFormer, PEM | Not yet decoded by the HAL |
+
+A semantic output is a single tensor; the HAL rejects a `decoder: semantic` output that has physical children.
+
+ModelPack semantic segmentation (`decoder: modelpack`, see [Example 1](#example-1-modelpack-semantic-segmentation)) keeps its existing behavior.
+
+### Semantic Output Fields
+
+| Field | Applies to | Description |
+| ----- | ---------- | ----------- |
+| `dshape` | all | Names the class axis `num_classes` and the spatial axes `height`/`width`, so both NCHW and NHWC layouts decode correctly. A class map has no class axis. |
+| `stride` | `segmentation`, `masks` | Output stride relative to the model input (4 for SegFormer, 8 for DeepLabV3 d8, 1 when the model upsamples in the graph). Informational for the HAL decoder, which maps the letterbox onto the score map by its size, so non-integer strides such as DINOv2's 14-pixel patches need no special handling. |
+| `activation_applied` | `segmentation` | `softmax` or `sigmoid` when the scores are probabilities; absent for logits. Argmax is unaffected; the activation matters for `threshold` and for confidence output. |
+| `upsample` | `segmentation`, `masks` | `{method, align_corners}`. `method` is `bilinear` (default for scores), `nearest` (always used for class maps) or `bicubic` (EfficientViT-Seg; not supported by the HAL decoder). `align_corners` follows PyTorch semantics and defaults to `false`; PIDNet, TF DeepLab and the mmsegmentation 769×769 configs use `true`. |
+| `decode_mode` | `segmentation` | Default decode mode, `accurate` (default) or `fast`. Runtimes may override it. |
+| `threshold` | `segmentation` with one channel | Foreground threshold in the space of the tensor: a probability when `activation_applied: sigmoid`, a logit otherwise (`0.0` is equivalent to probability 0.5). Absent means `0.5` when `activation_applied` is `sigmoid` or `softmax`, else `0.0`. |
+| `background_index` | `segmentation`, `masks` | Channel of the background class when the model has one (VOC-style models use 0). ADE20K and Cityscapes models have none. |
+| `no_object_index` | `class_logits` (reserved) | Index of the "no object" class. Absent means the last class. |
+| `mask_activation` | `mask_logits` (reserved) | `sigmoid` (MaskFormer, Mask2Former, OneFormer) or `softmax_over_queries` (kMaX-DeepLab). |
+
+Class labels come from `dataset.classes` (or the `labels` file) in channel order: label `i` names channel `i`. Dataset conventions such as an ignore index (255) or ADE20K's `reduce_zero_label`, where channel `c` is dataset class `c + 1`, belong to the dataset and the validator, not to the decoder.
+
+Auxiliary heads that remain in an export (training-time aux heads, PIDNet's P and D branches) are listed without a `type`, so the decoder ignores them. Select the decoded head by its logical output, never by position.
+
+### Decode Modes
+
+Both modes map each output pixel through the letterbox geometry of the input (see [Preprocessing Block](#preprocessing-block)), so the padding is cropped and the class map covers the original image. `accurate` is the reference decode. `fast` trades a small, measured accuracy cost for speed and is not required to reproduce a reference pipeline pixel for pixel.
+
+The letterbox content region is mapped into score-map coordinates as a fractional region rather than cropped to whole cells, because the image edge rarely falls on a cell boundary (a 504-row image region at stride 4 ends at row 126, a 509-row one at row 127.25). For an axis of `n` score-map cells, a content region starting at normalized `t0` and ending at `t1`, and `out` output pixels:
+
+```python
+r0, rl = t0 * n, (t1 - t0) * n               # region start and length in cells
+
+def src_bilinear(d):                          # output pixel d -> source coordinate
+    if align_corners:
+        s = r0 + d * (rl - 1) / (out - 1)
+    else:
+        s = r0 + (d + 0.5) * rl / out - 0.5   # PyTorch half-pixel convention
+    return clamp(s, 0, n - 1)                 # taps at the edge may read padding cells
+
+def src_nearest(d):                           # pixel-center nearest neighbor
+    return clamp(floor(r0 + (d + 0.5) * rl / out), 0, n - 1)
+```
+
+`sample` reads the scores at fractional source coordinates with `upsample.method`; with `nearest` it uses `src_nearest` and is equivalent to the fast path. Multi-channel outputs (two or more classes) take the argmax over the class axis:
+
+```python
+ys, xs = np.arange(H), np.arange(W)                             # output pixels
+
+# accurate (reference): resample every channel, then argmax
+scores = sample(scores, src_bilinear(ys), src_bilinear(xs))     # [C, H, W]
+class_map = scores.argmax(axis=0)
+
+# fast: argmax at the score-map resolution, then nearest-neighbor sampling
+class_map = scores.argmax(axis=0)                                # [h, w]
+class_map = class_map[src_nearest(ys)][:, src_nearest(xs)]       # [H, W]
+```
+
+Single-channel outputs compare the score with `threshold` instead, since an argmax over one channel is always 0. The foreground class is 1 and the background 0:
+
+```python
+# accurate: resample the score, then threshold
+class_map = (sample(score, src_bilinear(ys), src_bilinear(xs)) > threshold).astype(np.uint8)
+
+# fast: threshold at the score-map resolution, then nearest-neighbor sampling
+class_map = (score > threshold).astype(np.uint8)[src_nearest(ys)][:, src_nearest(xs)]
+```
+
+Ties in the argmax go to the lowest class index, as `torch.argmax` does.
+
+Reference pipelines often upsample twice: first to the model input size, then, after cropping the padding, to the original image size. On SegFormer B1 (ADE20K val, three input shapes), the single resize over the fractional region is within 0.01 mIoU points of the two-step reference and agrees with it on 99.94–99.97% of pixels; cropping to whole cells instead agrees on only 99.4–99.7%. `fast` costs 0.12–0.13 mIoU points and is much cheaper, because only one channel is resized. Pixel-center sampling matters there: PyTorch's legacy `nearest` mode (`floor(d * scale)`, no half-pixel offset) shifts the class map by half a score-map cell and costs 0.17–0.19 points.
+
+Quantized multi-channel outputs with one scale and zero point for the whole tensor can take the argmax on the integer values directly: dequantization with a positive scale preserves the argmax, and bilinear weights sum to 1. Per-channel quantization is dequantized first. A single-channel threshold is a real value, so either dequantize the score or convert the threshold to quantized units, `threshold / scale + zero_point`, before comparing. Comparing the raw integer with `threshold` is wrong: with scale `1/255` and zero point `0`, the integer `64` is a score of about `0.25`, below a threshold of `0.5`, yet `64 > 0.5`.
+
+### Mask Classification (Reserved)
+
+Mask-classification models predict `Q` queries, each with a class distribution and a mask. The semantic map is:
+
+```python
+cls = softmax(class_logits, axis=-1)          # [Q, K+1]
+cls = np.delete(cls, no_object_index, axis=-1) # [Q, K]  drop "no object"
+masks = sigmoid(mask_logits)                  # [Q, h, w]  (softmax over Q for softmax_over_queries)
+scores = np.einsum("qc,qhw->chw", cls, masks) # [K, h, w]
+class_map = resize(scores, (H, W)).argmax(axis=0)
+```
+
+The output types, the `num_queries` dimension and the `no_object_index` and `mask_activation` fields are reserved so producers can describe these models now. The HAL rejects them until it implements the formula.
 
 ---
 
@@ -1174,6 +1555,9 @@ Coverage of the two-layer output model across the detection, segmentation, and e
 | YOLOv5 segmentation | 3 | combined + protos | No | 4 logical w/ children + 1 direct (`protos`) |
 | ModelPack detection | 3 | 1 per-scale | No | 3 logical `type: detection` (one per scale), no children — `encoding: anchor` |
 | ModelPack semantic seg | — | 1 | No | 1 logical `type: segmentation`, no children |
+| SegFormer / DeepLab / per-pixel semantic seg | — | 1 | — | 1 logical `type: segmentation`, `decoder: semantic` |
+| Semantic seg with in-graph argmax | — | 1 | — | 1 logical `type: masks`, `decoder: semantic` |
+| Mask2Former / OneFormer (reserved) | — | 2 | — | `class_logits` + `mask_logits` |
 | SSD MobileNet | 6 | 2 (box, score) | No | 2 logical (`boxes`, `scores`), 6 per-scale children each — `encoding: anchor` |
 | FastSAM | 3 | 3 + protos | Yes | Same as YOLOv8 segmentation |
 
@@ -1615,9 +1999,41 @@ YOLOv5 is anchor-based with 3 anchors per cell. Per-scale physical channel count
 }
 ```
 
+### Example 8: SegFormer B1 Semantic Segmentation (ADE20K, ONNX FP32)
+
+ImageNet normalization, a top-left letterbox padded with 0.0 in the normalized domain, and 150-class logits at stride 4. Channel `c` is ADE20K class `c + 1`; label 0 is never predicted.
+
+```json
+{
+  "schema_version": 2,
+  "input": {
+    "shape": [1, 3, 512, 672],
+    "dshape": [{"batch": 1}, {"channels": 3}, {"height": 512}, {"width": 672}],
+    "cameraadaptor": "rgb",
+    "preprocessing": {
+      "normalization": "imagenet",
+      "resize": "letterbox",
+      "interpolation": "bilinear",
+      "letterbox": {"placement": "topleft", "pad": [0.0, 0.0, 0.0], "pad_space": "normalized"}
+    }
+  },
+  "outputs": [
+    {
+      "name": "logits", "type": "segmentation", "decoder": "semantic",
+      "shape": [1, 150, 128, 168],
+      "dshape": [{"batch": 1}, {"num_classes": 150}, {"height": 128}, {"width": 168}],
+      "dtype": "float32", "quantization": null,
+      "stride": 4,
+      "upsample": {"method": "bilinear", "align_corners": false},
+      "decode_mode": "accurate"
+    }
+  ]
+}
+```
+
 ### Instance Segmentation Mask Computation
 
-For instance segmentation outputs (Ultralytics), the final per-object mask is computed from mask coefficients and prototypes:
+For instance segmentation outputs, the final per-object mask is computed from mask coefficients and prototypes:
 
 ```python
 # For each detected object with mask_coefs [32]:
@@ -1629,7 +2045,7 @@ instance_mask = sigmoid(mask_coefs @ protos)  # [32] @ [32, H, W] -> [H, W]
 
 ## Calibration Artifact
 
-Quantizing converters need a representative sample of model inputs to measure activation ranges. EdgeFirst Studio captures that sample once, at training time, as a `.safetensors` **calibration snapshot**: a pre-filtered, pre-processed subset of the training data with embedded metadata and full provenance back to the source samples.
+Quantizing converters need a representative sample of model inputs to measure activation ranges. EdgeFirst Studio captures that sample when a session exports the model, at that model's input geometry, as a `.safetensors` **calibration snapshot**: a pre-filtered, pre-processed subset of the training data with embedded metadata and full provenance back to the source samples. `whole_frame` models and models without a `tiling` section are calibrated on letterboxed frames at the input resolution (or, for models without a supported `tiling` section that were trained with a direct resize, stretched frames); [tiled models](#tiling) are calibrated on deployment-grid tiles at native scale.
 
 The `edgefirst.json` `calibration` field records the snapshot filename:
 
@@ -1653,6 +2069,10 @@ When a converter processes a model, it augments the existing `edgefirst.json` wi
 - Each converter adds a top-level key named after itself (e.g., `"tflite_quantizer"`, `"neutron"`, `"ara2"`, `"hailo"`).
 - The converter section records conversion parameters, version, and any decisions made during conversion.
 - Multiple converter sections can coexist when a model passes through a pipeline chain (e.g., TFLite Quantizer followed by Neutron Converter).
+- Converters copy the [`tiling`](#tiling) section unchanged. It describes the model, and a runtime reads it from the compiled artifact to decide how to feed frames; conversion decisions belong in the converter's own section.
+- A converter rejects a present `tiling` section that is not a mapping with integer `version: 1` (`1.0` and `true` do not qualify) and a `mode` of `tiled` or `whole_frame`, before it does any work, so it never copies an unsupported section into a compiled artifact. An absent `tiling` section is valid.
+- The height and width in `input.shape` match the compiled artifact's input, in the layout of the output format.
+- A converter that calibrates checks the snapshot's geometry against the model before using it (see [Calibration Snapshot — Geometry check](conversion/calibration.md#geometry-check)). The check reads the snapshot parameters first and the sample tensor second. It compares the snapshot with the input the converter actually compiles (the model graph input, or an explicit input-shape override), and fails when the metadata `input.shape` disagrees with the graph. The converter records `calibration_geometry: {resize, input_shape}` beside its `calibration` field, adding `full_frame: true` when the snapshot holds whole-frame samples.
 
 ### Converter Section Schema
 
@@ -1664,6 +2084,8 @@ Each converter section is a free-form object, but should include at minimum:
 | `timestamp` | string | ISO 8601 conversion timestamp |
 | `task` | string | Studio batch task ID for this conversion step (e.g., `bt-3a1f`) |
 | `splits_applied` | string[] | List of `split_hints[].type` values that were consumed |
+| `calibration` | string or object | Calibration snapshot used: the snapshot filename, or a converter-specific record that names it |
+| `calibration_geometry` | object | `{resize, input_shape}` of the snapshot, with `full_frame: true` when it holds whole-frame samples; present when the converter calibrated (see [Geometry check](conversion/calibration.md#geometry-check)) |
 
 Additional fields are converter-specific and documented by each converter app.
 
@@ -1685,6 +2107,7 @@ After TFLite quantization of an Ultralytics detection model:
     "input_dtype": "uint8",
     "output_dtype": "int8",
     "calibration": "calibration-ds-2bcc-a1b2c3d4.safetensors",
+    "calibration_geometry": {"resize": "letterbox", "input_shape": [640, 640]},
     "calibration_samples": 500,
     "splits_applied": ["quantization_split"],
     "quantizer": "mlir"
@@ -1710,6 +2133,7 @@ After TFLite quantization followed by Neutron conversion for i.MX95 deployment:
     "input_dtype": "uint8",
     "output_dtype": "int8",
     "calibration": "calibration-ds-2bcc-a1b2c3d4.safetensors",
+    "calibration_geometry": {"resize": "letterbox", "input_shape": [640, 640]},
     "calibration_samples": 500,
     "splits_applied": [],
     "quantizer": "mlir"
@@ -2007,11 +2431,17 @@ The dataset section references the [dataset](../datasets/index.md) used for trai
 dataset:
   name: "COCO 2017"      # Human-readable name
   id: ds-abc123          # Dataset ID (prefix: ds-)
-  classes:               # Ordered list of class labels
-    - background
+  classes:               # Ordered list of class labels, by class index
     - person
+    - bicycle
     - car
 ```
+
+`classes` lists the classes in the order of their indices in the model's outputs. Detection models have no background class. A background class is a semantic segmentation convention, and where it sits varies from model to model:
+
+- **ModelPack** adds background as an extra last channel with no entry in `classes`, so a model trained on N classes has N + 1 segmentation channels. Its masks and boxes then share class indices 0 to N − 1, and index N is background.
+- **VOC-style models** list `background` as class 0 and declare it with [`background_index`](#semantic-output-fields).
+- **ADE20K and Cityscapes models** have no background class.
 
 ### Model Identification
 
@@ -2031,6 +2461,10 @@ The input section specifies image preprocessing requirements. See [Vision Augmen
 input:
   shape: [1, 640, 640, 3]  # Input tensor shape
   cameraadaptor: rgb       # rgb, rgba, yuyv, bgr
+  preprocessing:           # Optional; see Preprocessing Block
+    normalization: unsigned
+    resize: letterbox
+    letterbox: {placement: center, pad: [114, 114, 114], pad_space: pixel}
 ```
 
 !!! note "Data Layout"
@@ -2099,9 +2533,9 @@ outputs:
 
 ---
 
-## Appendix: Ultralytics YOLO Split Hints Reference
+## Appendix: YOLO Split Hints Reference
 
-This appendix shows the exact `split_hints` that edgefirst-studio-ultralytics embeds in ONNX metadata for each supported YOLO version × task combination, using 80 COCO classes as the reference.
+This appendix shows the `split_hints` in ONNX metadata for each supported YOLO version × task combination, using 80 COCO classes as the reference.
 
 All versions share:
 
@@ -2328,8 +2762,8 @@ All models: 3 scales, strides [8, 16, 32], 8400 spatial positions at 640px input
 2. [ModelPack Overview](modelpack/index.md) - Architecture details and training parameters
 3. [Ultralytics Integration](ultralytics/index.md) - YOLOv8/v11/v26 training and deployment
 4. [Training Vision Models](training/vision.md) - Step-by-step training workflow
-5. [On Cloud Validation](validation/vision/managed.md) - Managed validation sessions
-6. [On Target Validation](validation/vision/user_managed.md) - User-managed validation with the EdgeFirst Profiler
+5. [On Cloud Validation](validation/vision/managed.md) - Cloud validation sessions
+6. [On Target Validation](validation/vision/user_managed.md) - On-target validation with the EdgeFirst Profiler
 7. [Model Quantization](conversion/tflite.md) - Converting ONNX to quantized TFLite
 8. [Deploying to Embedded Targets](deployment/launcher.md) - Model deployment workflow
 9. [EdgeFirst Perception Middleware](../perception/index.md) - Runtime inference stack

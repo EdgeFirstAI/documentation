@@ -1,5 +1,19 @@
 # Release Notes
 
+## Version 2026.10.0
+
+Torizon for Maivin 2026.10.0 is an update to 2026.08.0 for Maivin and Raivin.
+
+### Highlights
+
+- **Default camera mode is `1080p30`**.  The `CAMERA_MODE` setting accepts `1080p30` (default), `1080p60` and `4K30`, case-insensitive.  `1080p30` uses the same sensor readout as `1080p60` with the frame rate capped to 30 FPS, which keeps the H.264 encoder and the Web UI within what they can sustain while the other services run.  The 4K mode is renamed from `4k` to `4K30`.  Refer to [Camera Settings](../configuration/camera.md#camera-mode).
+- **`camera/frame` is recorded**.  Each message references the shared camera buffer with its timestamp and sequence number and carries no pixels, so the sequence numbers show frames dropped at capture.  Refer to [MCAP Recording](../configuration/mcap_recording.md).
+
+### Upgrade Notes
+
+- **Camera mode**.  A unit keeps the `CAMERA_MODE` stored in its `/etc/default/camera`, so units that were running the previous default stay on `1080p60` until the setting is changed.  Set `CAMERA_MODE="1080p30"` to use the new default.  A value of `4k` is not recognized by 2026.10.0 and falls back to `4K30` with a warning in the log, set `CAMERA_MODE="4K30"` to remove the warning.
+- **Applying a camera mode change**.  Reboot the device with `sudo reboot`.  Restarting only the camera service can leave the ISP unable to start until the next reboot.
+
 ## Version 2026.08.0
 
 Torizon for Maivin 2026.08.0 is a major platform release for Maivin and Raivin.  It moves the operating system to Torizon OS 7 and replaces the previous middleware packaging with the open source [EdgeFirst Perception Middleware](../../perception/index.md) services published from the [EdgeFirstAI GitHub organization](https://github.com/EdgeFirstAI).  The 2025.08 release candidates that some units received are superseded by this release.

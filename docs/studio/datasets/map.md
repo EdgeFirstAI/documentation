@@ -15,8 +15,7 @@ navigation after opening the datasets list.
 | Control | Description |
 | ------- | ----------- |
 | **+** / **–** buttons | Zoom in and out on the map. |
-| **Filter** | Open the filter panel to narrow which datasets are shown on the map. |
-| **Source Dataset** selector | Choose which specific dataset's GPS points are displayed on the map. |
+| **Filter** | Open the filter panel to narrow which images are shown on the map. |
 
 ## Filter Panel
 
@@ -40,5 +39,4 @@ Datasets or images without GPS data will not produce any map markers.
 
 ## Next Steps
 
-Return to the [Dataset Dashboard](index.md) to manage datasets, or see the
-[Dataset Tutorials](../../datasets/tutorials/index.md) for end-to-end dataset workflows.
+See how the dataset's history and versioning is managed in the [next section](history.md).

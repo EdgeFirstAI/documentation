@@ -31,6 +31,7 @@ The Recorder Settings page lists the topics published by the stock services grou
     - **/gps**: The GPS topic that includes latitude, longitude, elevation, etc.
     - **/imu**: The IMU sensor orientation, angular velocity, and linear acceleration.
 - Camera topics:
+    - **/camera/frame**: A small reference to each captured frame with its timestamp and sequence number, without the pixels (see the note below).
     - **/camera/info**: The camera intrinsic parameters.
     - **/camera/h264**: The H.264 encoded video from the camera.
     - **/camera/jpeg**: JPEG frames when [JPEG streaming](camera.md#jpeg-streaming) is enabled.
@@ -49,7 +50,7 @@ The Recorder Settings page lists the topics published by the stock services grou
 
 !!! note
 
-    The `camera/frame` topic carries the zero-copy camera frames shared between services on the device and is not recorded, the camera pixels are recorded from the H.264 stream.
+    The `camera/frame` topic carries the zero-copy camera frames shared between services on the device.  It is recorded, but each message only references the shared buffer (timestamp, frame sequence number, image shape and format, about 230 bytes) and does not contain the pixels.  The camera pixels are recorded from the H.264 stream, and the `camera/frame` sequence numbers show frames dropped at capture.
 
 ### Radar Cube FPS (Raivin Only)
 

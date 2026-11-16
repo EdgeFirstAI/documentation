@@ -10,7 +10,7 @@ The Deep View Converter is a tool for taking a pretrained model from a framework
 
 Previously, the converter was capable of handling conversion between the various formats, converting ONNX to TFLite and vice versa, but due to the rate of change of these libraries and the improvement in conversion tools between these main frameworks, the Deep View Converter going forward will focus solely on conversion to RTM, dropping the plugin system that was being used for conversion between these alternate frameworks.
 
-Additionally, due to the the improvements in quantization capabilities of each framework, we do recommend using their tools for quantization. Support does exist within the converter for quantization currently, but as the tools change and improve at a steady rate, we recommend using the tools listed for quantization for [TensorFlow](https://www.tensorflow.org/model_optimization/guide/quantization/post_training) and [ONNX](https://onnxruntime.ai/docs/performance/model-optimizations/quantization.html)
+Additionally, due to the the improvements in quantization capabilities of each framework, we do recommend using their tools for quantization. Support does exist within the converter for quantization currently, but as the tools change and improve at a steady rate, we recommend using the tools listed for quantization for [TensorFlow](https://www.tensorflow.org/model_optimization/guide/quantization/post_training) and [ONNX](https://onnxruntime.ai/docs/performance/model-optimizations/quantization.html).
 
 ### Setup
 
@@ -63,7 +63,7 @@ $ rtm-converter --metadata file1.bin --metadata file2.bin,entry_name1 --metadata
     model_in.onnx model_out.rtm
 ```
 
-The metadata argument is a repeatable argument that can be used to store any additional information within the RTM. These are stored in the metadata field and can be accessed as seen in this [sample](). When providing a .txt file, it will be stored as plaintext, but otherwise the file provided will be stored as bytes.
+The metadata argument is a repeatable argument that can be used to store any additional information within the RTM. These are stored in the metadata field and can be accessed through the API. When providing a .txt file, it will be stored as plaintext, but otherwise the file provided will be stored as bytes.
 
 These cover the majority of arguments that will be used the most, but there are many others that can be viewed in the help dialog of the tool.
 

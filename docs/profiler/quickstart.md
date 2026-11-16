@@ -156,7 +156,7 @@ For the full walkthrough see [Validation from the Profiler](studio/from_profiler
 
 ### Path B — start from Studio
 
-Create a user-managed validation session in the Studio web UI ([instructions](studio/from_studio.md)). Make a note of the session ID, then on the target:
+Create an on-target validation session in the Studio web UI ([instructions](studio/from_studio.md)). Make a note of the session ID, then on the target:
 
 ```sh
 edgefirst-profiler validate --session-id v-1ce9

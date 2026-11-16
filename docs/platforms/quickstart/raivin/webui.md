@@ -11,8 +11,8 @@ The Main Page of the Raivin web interface should look as follows:
 The Main Page shows one card for each running visualization.  Cards only appear while their service is running, so a Raivin with the radar publisher enabled shows the following cards:
 
 - **Camera**: This page shows the live camera video with optional detection and segmentation overlays from the model service and, for LiDAR equipped devices, the projected LiDAR points.
-- **Radar**: This page shows the radar point cloud over a polar occupancy grid.
 - **LiDAR**: This page shows the 3D LiDAR point cloud, it appears when the LiDAR publisher is running.
+- **Radar**: This page shows the radar point cloud over a polar occupancy grid.
 - **IMU**: This page displays the 3D orientation of the device with current roll, pitch, and yaw values.
 - **GPS**: This page displays a map with the current location of the device, along with GPS coordinates.
 
@@ -44,4 +44,4 @@ This page shows the 3D LiDAR point cloud from the `lidar/points` topic with the 
 
 ## Next Steps
 
-Now that you have set up your Raivin and are familiar with the Raivin's Web UI, you can proceed to [copying a public dataset](copy_dataset.md) in {{ studio_link("EdgeFirst Studio") }} to train your own vision model that will be deployed in this device.
+Now that you have set up your Raivin and are familiar with the Raivin's Web UI, you can start [recording an MCAP](record.md) using the Raivin to start building your own dataset in EdgeFirst Studio.

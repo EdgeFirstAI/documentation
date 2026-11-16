@@ -1,0 +1,28 @@
+name: build
+
+on:
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: build-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1  # v7.0.1
+        with:
+          lfs: true
+
+      # Installs uv and Python, then runs `uv sync --locked` against uv.lock.
+      - uses: EdgeFirstAI/.github/.github/actions/setup-python-uv@0cbb8f91f0d3e7d15726329f3fa651450bfdbbf0  # v5.1.0
+
+      # Strict mode turns on the spellcheck plugin and fails on any warning.
+      - name: Build documentation
+        run: uv run --locked properdocs build --strict

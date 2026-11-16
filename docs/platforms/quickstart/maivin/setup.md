@@ -33,7 +33,9 @@ From here, we recommend that you check out the Camera page by clicking the "Came
 
 ## Next Steps
 
-Now that you have completed these initial steps, we recommend that you read the following walkthroughs:  
+Now that your Maivin is set up, the next step in the Maivin Quick Start guide is to [record an MCAP](record.md) to start building your dataset.
+
+Other useful resources:
 
 - [Maivin Web UI Walkthrough](webui.md), to see what each UI card on the splash screen does  
 - [SSH Walkthrough](../../networking/ssh.md), to learn how to SSH into your Maivin and basic command-line operations  

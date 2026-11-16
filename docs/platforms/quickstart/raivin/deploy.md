@@ -7,3 +7,7 @@ Now that you have [validated your model](../../../models/validation/fusion/manag
 ## Conclusion
 
 In this guide, you have trained and validated a model from EdgeFirst Studio, copied the model into the Raivin, configured the Raivin model services, and ran inference on the model in the Raivin.  You have seen the model running live using the Raivin's camera and ran a Raivin MCAP recording to capture the model inference in the frames that can be visualized using Foxglove Studio.
+
+## Next Steps
+
+To keep improving your model, loop back to [recording a new dataset](record.md) with your deployed model running live.

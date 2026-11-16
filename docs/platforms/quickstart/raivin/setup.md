@@ -37,14 +37,14 @@ From here, we recommend that you check out the Camera page by clicking the "Came
 
     The ultra-short range EdgeFirst Fusion Model included in this release was trained for a fixed camera and mostly tested indoors.  The radar publisher is configured for the low center frequency and ultra-short frequency sweep to match.
 
-{% include-markdown "discrete/platforms/edgefirst_performance_scaling.md" %}
-
 ## Next Steps
 
-Now that you have completed these initial steps, we recommend that you read the following walkthroughs:  
+Now that your Raivin is set up, the next step in the Raivin Quick Start guide is to [record an MCAP](record.md) to start building your dataset.
 
-- [Raivin Web UI Walkthrough](webui.md), to see what each UI card on the splash screen does  
-- [SSH Walkthrough](../../networking/ssh.md), to learn how to SSH into your Raivin and basic command-line operations  
-- [Raivin Recording Walkthrough](../../../perception/data_collection/recording.md), to learn how to record datasets and download them to your PC  
-- [Model Upload Walkthrough](../../software/model_uploads.md), to learn how to upload vision models and radar fusion models to your Raivin  
-- [Software Updates](../../software/updates.md), to keep your Raivin on the latest release  
+Other useful resources:
+
+- [Web UI Walkthrough](webui.md), to see what each card on the main page does
+- [CPU Performance Scaling](../../hardware/performance_scaling.md), to adjust the device's power/performance tradeoff
+- [SSH Walkthrough](../../networking/ssh.md), to learn how to SSH into your Raivin and basic command-line operations
+- [Model Upload Walkthrough](../../software/model_uploads.md), to learn how to upload vision models and radar fusion models to your Raivin
+- [Software Updates](../../software/updates.md), to keep your Raivin on the latest release

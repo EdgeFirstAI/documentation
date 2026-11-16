@@ -1,6 +1,6 @@
 # Storage Formats
 
-EdgeFirst 2026.04 supports three annotation storage formats. All three express the
+EdgeFirst 2026.10 supports three annotation storage formats. All three express the
 **same logical schema** — the choice is a deployment / transfer concern, not a data
 model concern.
 
@@ -69,7 +69,7 @@ df = pl.read_ipc("dataset.arrow")
 - Zero-copy memory mapping — fastest local performance
 - Efficient querying and filtering via Polars
 - Multi-language support (Python, Rust, JavaScript)
-- Schema-level metadata preserves `schema_version`, box format descriptors, etc.
+- Schema-level metadata preserves `schema_version`, `category_metadata`, and `labels`
 
 **When to use**: Local ML training, data analysis, batch processing, any pipeline
 where read speed is critical.
@@ -80,8 +80,7 @@ where read speed is critical.
 
 **Extension**: `.parquet`
 
-Parquet provides ZSTD-compressed columnar storage optimized for transfer, cloud
-storage, and interoperability with the broader data ecosystem.
+Parquet provides ZSTD-compressed columnar storage optimized for transfer, cloud storage, and interoperability with the broader data ecosystem. Parquet files use the same schema as Arrow IPC and are supported by EdgeFirst Client 2.14.0 and later. Commands that write an annotation file choose Parquet when the output path ends in `.parquet`.
 
 ```python
 import polars as pl
@@ -98,21 +97,14 @@ result = duckdb.sql("SELECT label, count(*) FROM 'dataset.parquet' GROUP BY labe
 - ZSTD compression for smaller file sizes
 - Column statistics enable predicate pushdown (DuckDB, Spark)
 - Widely supported across data tooling (pandas, BigQuery, Spark, DuckDB)
-- File-level metadata preserves `schema_version`, box format descriptors, etc.
+- File-level metadata (footer key-value pairs) preserves `schema_version`, `category_metadata`, and `labels`
 
 **When to use**: Distributing datasets, cloud storage, querying with DuckDB/Spark,
 archival, bandwidth-constrained transfers.
 
 ### Parquet Configuration
 
-EdgeFirst uses the following Parquet defaults:
-
-| Setting | Value | Rationale |
-| ------- | ----- | --------- |
-| Compression | ZSTD (level 3) | Best compression/speed trade-off for transfer |
-| Row group size | 64K rows or 256 MB | Balance between random access and compression |
-| Page encoding | Parquet v2 (data page v2) | Better compression, widely supported |
-| Statistics | Enabled (min/max per column) | Enables predicate pushdown in DuckDB/Spark |
+The EdgeFirst Client writes Parquet with the Polars writer defaults: ZSTD compression and per-column min/max statistics, which enable predicate pushdown in DuckDB and Spark. The file-level metadata keys are stored as Parquet footer key-value pairs, giving full parity with Arrow IPC.
 
 !!! warning "Categorical column encoding"
     `Categorical` columns (`label`, `group`) are written as `Dictionary`-encoded
@@ -131,14 +123,11 @@ JSON files are human-readable and compatible with the EdgeFirst Studio JSON-RPC 
 **Version detection**:
 
 - **2025.10 (legacy)**: Top-level is a bare JSON array `[...]`
-- **2026.04**: Top-level is an object with `schema_version`: `{"schema_version": "2026.04", ...}`
+- **2026.04 and later**: Top-level is an object with `schema_version`: `{"schema_version": "2026.10", ...}`
 
 ```json
 {
-  "schema_version": "2026.04",
-  "box2d_format": "cxcywh",
-  "box2d_normalized": true,
-  "mask_interpretation": "binary",
+  "schema_version": "2026.10",
   "samples": [
     {
       "image_name": "deer_001.camera.jpeg",
@@ -148,8 +137,12 @@ JSON files are human-readable and compatible with the EdgeFirst Studio JSON-RPC 
         {
           "label_name": "deer",
           "label_index": 0,
-          "box2d": {"cx": 0.691, "cy": 0.368, "w": 0.015, "h": 0.051},
+          "box2d": {"x": 0.683, "y": 0.343, "w": 0.015, "h": 0.051},
           "box2d_score": 0.97
+        },
+        {
+          "ignore": true,
+          "box2d": {"x": 0.120, "y": 0.610, "w": 0.200, "h": 0.150}
         }
       ]
     }

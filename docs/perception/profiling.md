@@ -58,6 +58,7 @@ sudo systemctl restart camera
 ```
 
 To disable Tracy you would use
+
 ```sh
 sudo sed -i 's/^TRACY=.*/TRACY="false"/' /etc/default/camera
 sudo systemctl restart camera

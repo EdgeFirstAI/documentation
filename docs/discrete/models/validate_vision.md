@@ -20,19 +20,9 @@ On the top right corner of the page, click on the "validate" button as indicated
 
 {{ figure("/models/assets/validation/training_validate_button.jpg", "Validate Button") }}
 
-Enter a name for the validation session, then select the model and dataset to use for validation.
-
-Under **Model Selection**, choose an **ONNX, Keras, or TFLite** artifact — these are the formats supported by cloud validation.
-
-For this example, all remaining settings were left at their default values. When you are ready, click **Start Session** at the bottom of the page to begin the validation process.
+Select the model to use for validation. Select either an **ONNX, Keras, or TFLite** model — these are the formats supported by cloud validation. When you are ready, click **START APP** to begin the validation process.
 
 {{ figure("/models/assets/validation/vision-validate-settings.jpg", "Start Validation Session") }}
-
-!!! failure "InsufficientInstanceCapacity"
-
-    {{ img("/studio/assets/models/insufficient-capacity-error.jpg", "InsufficientInstanceCapacity Error") }}
-
-    If you see this error after starting your validation session, retry creating the session. This can happen when AWS reports that no EC2 instances are currently available to launch; the current workaround is to retry.
 
 Go to the created validation session by first going back to the "Model Experiments" page.
 

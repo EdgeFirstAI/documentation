@@ -1,6 +1,6 @@
 # On Cloud Validation
 
-This tutorial walks through how to run validation in the cloud using EdgeFirst Studio. In this setup, validation is executed as a **managed validation session**, which runs on a self-hosted EC2 instance.  This option is ideal for users who do not have access to an embedded platform to host the validation process locally.
+This tutorial walks through how to run validation in the cloud using EdgeFirst Studio which runs on a self-hosted EC2 instance.  This option is ideal for users who do not have access to an embedded platform to host the validation process locally.
 
 In this tutorial, you will validate a **Fusion** model trained using either the [end-to-end workflows](../../../getting_started/workflows/index.md) or the [Training Fusion](../../training/fusion.md) guide.  Note that a Fusion model performs spatial perception using Radar and Camera sensors.  If you are working with Vision models, refer to [Validating Vision Models](../vision/managed.md).
 
@@ -13,12 +13,6 @@ The only augmentation available for this type of validation is `blur`.  See [Vis
 {{ figure("../../assets/validation/fusion-session-fields.jpg", "Validation Session Fields") }}
 
 Once the configurations have been made, go ahead and click on the "Start Session" button on the bottom right of the window.  This will start the validation session which will validate the model using the validation partition of the dataset.
-
-!!! failure "InsufficientInstanceCapacity"
-
-    {{ img("/studio/assets/models/insufficient-capacity-error.jpg", "InsufficientInstanceCapacity Error") }}
-
-    If you see this error after starting your validation session, retry creating the session. This can happen when AWS reports that no EC2 instances are currently available to launch; the current workaround is to retry.
 
 ## Session Progress
 

@@ -1,4 +1,4 @@
-Before a dataset can be used for training, it must be tagged.  To preserve its current state, assign a version tag to the dataset.
+Before a dataset can be used for training, it must be tagged to preserve its current state.  Assign a version tag to the dataset.
 
 Click on the dataset options at the top right of the dataset card (three vertical dots). Then click the "History" button.
 

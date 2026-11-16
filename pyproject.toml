@@ -1,0 +1,24 @@
+[project]
+name = "edgefirst-documentation"
+version = "0"
+description = "EdgeFirst documentation site (doc.edgefirst.ai)"
+requires-python = ">=3.12"
+dependencies = [
+    "black",
+    "cairosvg",
+    "edgefirst-client",
+    "edgefirst-schemas>=4.0,<5",
+    "mike",
+    "mkdocs-autorefs",
+    "mkdocs-awesome-nav",
+    "mkdocs-include-markdown-plugin",
+    "mkdocs-macros-plugin",
+    "mkdocs-material",
+    "mkdocs-redirects",
+    "mkdocs-spellcheck[codespell,symspellpy]",
+    "mkdocstrings-python",
+    "pillow",
+]
+
+[tool.uv]
+package = false

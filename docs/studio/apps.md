@@ -124,15 +124,17 @@ store locally, move between systems, or hand off to another workflow.
 
 ### Trainer Apps
 
-Trainer Apps produce vision models for a dataset and publish the model, its [metadata](../models/metadata.md) and an INT8 calibration snapshot to a training session. A Trainer App is launched from an experiment's *Training Sessions* page, where its launch form collects the dataset, the destination experiment and the training parameters. The session runs on a cloud GPU instance.  See [Training Vision Models](../models/training/vision.md).
+Trainer Apps produce vision models for a dataset and publish the model, its [metadata](../models/metadata.md) and an INT8 calibration snapshot to a training session. A Trainer App is launched from an experiment's *Training Sessions* page, where its launch form collects the dataset, the destination experiment, the weights and the training parameters. The session runs on a cloud GPU instance.  See [Training Vision Models](../models/training/vision.md).
 
 #### ModelPack
 
-Trains ModelPack object detection, semantic segmentation and multitask models, with optional Input Tiling (SAHI) for small objects in high-resolution images.  See [ModelPack](../models/modelpack/index.md).
+Trains ModelPack object detection, semantic segmentation and multitask models, starting from pretrained weights or a previous session's weights, with optional Input Tiling (SAHI) for small objects in high-resolution images.  With training off, it re-exports a previous session's weights, for example tile-trained weights at whole-frame resolution.  See [ModelPack](../models/modelpack/index.md).
 
 #### Ultralytics
 
 Trains or exports Ultralytics YOLO detection and instance segmentation models, starting from COCO pretrained weights or a previous session's weights, with optional Input Tiling for detection.  See [Ultralytics](../models/ultralytics/index.md).
+
+See [Training for Small Objects (SAHI)](../models/training/sahi.md) for training with Input Tiling and deploying the result tiled or whole frame.
 
 ### Converter Apps
 

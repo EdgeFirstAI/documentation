@@ -119,6 +119,7 @@ nav:
         - models/fusion/benchmarks.md
     - Model Training:
       - models/training/vision.md
+      - models/training/sahi.md
       - models/training/fusion.md
     - Model Conversion:
       - models/conversion/index.md

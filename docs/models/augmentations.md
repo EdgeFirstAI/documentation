@@ -8,7 +8,7 @@ This page is dedicated to describing all available vision augmentations during t
 The camera augmentations are distinguished into two categories: *Geometric* and *Non-Geometric*.
 
 !!! info
-    During training, ModelPack retrieves a random selection of augmentations listed below. The operation for augmenting samples starts with a 50% chance of whether or not the sample is to be augmented. If the sample is to be augmented, only one random augmentation from Geometric and Non-Geometric types are applied to the sample. Then, the magnitude of this augmentation is based on a random selection from the minimum to the maximum set by the user under the [training options](training/vision.md#create-training-session) shown below.
+    During training, each augmentation in the **Data Augmentation** group of the [ModelPack launch form](modelpack/index.md#training-parameters) is applied to a sample with the probability set for it, in percent, so a sample can receive several augmentations.  The augmentations are turned off for the final 10% of the epochs.  The Ultralytics trainer has its own **Augmentation** group; see [Ultralytics Augmentation](ultralytics/index.md#augmentation).
 
     {{ figure("assets/augmentations/training-augmentations-options.jpg", "Training Augmentations") }}     
 
@@ -41,7 +41,7 @@ This type of augmentation flips the image in the x-axis.  Once the image is flip
 | ![Original](assets/augmentations/without_hflip.jpg) | ![Flipped](assets/augmentations/with_hflip.jpg) |
 
 !!! note
-    The augmentation for a vertical flip is omitted because these cases are arguably rare for samples being upside-down.
+    Both trainers also offer a vertical flip, off by default.  A vertical mirror is not label-preserving for ground-referenced scenes, where up stays up; enable it for overhead or aerial imagery.
 
 ## Non-Geometric
 

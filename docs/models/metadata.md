@@ -894,7 +894,7 @@ Models trained on native-resolution tiles of high-resolution frames carry an opt
 
 Tiling reconstructs bounding boxes only: per-tile detections are merged into frame detections. Masks, whether instance masks or semantic segmentation maps, are not reconstructed across tiles.
 
-The tiling mode and the input resolution are fixed when the model is exported, because edge runtimes compile a static input shape. The default deployment of a tile-trained model is **tiled** at its tile size. The contract defines one workflow for deploying the same weights at another resolution, for example whole-frame at a camera's native resolution: it is done by starting a new training session with training disabled, selecting the tile-trained session as its weights source, and choosing the deployment mode and input resolution. That session exports and calibrates at the new geometry without retraining.
+The tiling mode and the input resolution are fixed when the model is exported, because edge runtimes compile a static input shape. The session that trains the weights exports them **tiled** at its tile size. The contract defines one workflow for deploying the same weights at another resolution, for example whole-frame at a camera's native resolution: it is done by starting a new training session with training disabled, selecting the tile-trained session as its weights source, and choosing the deployment mode and input resolution. That session exports and calibrates at the new geometry without retraining. See [Training for Small Objects (SAHI)](training/sahi.md) for the workflow in EdgeFirst Studio and for choosing between the two modes.
 
 ### Tiling Schema
 
@@ -970,13 +970,13 @@ Each tile's detections are filtered with `per_tile` NMS, mapped back into frame 
 | Model input | The tile, e.g. `640×640` | The export resolution, e.g. `3840×2176` for 4K frames (height and width are multiples of 32) |
 | Runtime | Grid of tiles per frame, per-tile NMS, merge into frame coordinates | One inference per frame on the letterboxed frame |
 | Calibration snapshot | Deployment-grid tiles at native scale (`resize: tiled`), plus whole-frame samples when `full_frame.enabled` | Frames letterboxed to the export resolution (`resize: letterbox`) |
-| When to use | High-resolution cameras on accelerators that cannot fit the whole frame, and the default for tile-trained models | The accelerator fits the whole frame; usually faster than tiling the same frame |
+| When to use | High-resolution cameras on accelerators that cannot fit the whole frame, and the export of the session that trained the weights | The accelerator fits the whole frame; usually faster than tiling the same frame |
 
 Both modes use the same weights, because the detectors are fully convolutional and were trained at native scale.
 
 ### Tiling Rules
 
-1. In `tiled` mode the input height and width equal `tile`. The tile may differ from the training tile (`training.params.tile_size`), because objects are still seen at native scale.
+1. In `tiled` mode the input height and width equal `tile`. The tile may differ from the training tile, because objects are still seen at native scale. The keys of `training.params` are specific to the trainer, so a runtime must not depend on them.
 2. In `whole_frame` mode the input is the export resolution, with height and width multiples of 32.
 3. `export.calibration.resize` is `tiled` in `tiled` mode and `letterbox` in `whole_frame` mode, `export.calibration.input_shape` equals the input height and width, and `export.calibration.full_frame` equals `full_frame.enabled`. See [Calibration Snapshot](conversion/calibration.md#geometry-check).
 4. `training` is never modified after the session that trained the weights wrote it. `export` describes the most recent export.

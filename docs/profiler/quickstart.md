@@ -122,7 +122,7 @@ Four keys start the run:
 | `Enter` | Launch immediately with Auto depths |
 | `c` | Open the sliders and pin individual stages |
 | `s` | Serialized-core preset — every core stage runs one frame at a time, for contention-free per-frame latency |
-| `t` | Toggle SAHI tiled inference on or off (shown as `Tiling: on/off`) |
+| `t` | Toggle `--sahi` tiled inference (shown as `Tiling: on`, or `Tiling: auto (on for tiled models)` when off) |
 
 The dialog warns if a platform constraint (such as the i.MX 95 Neutron single-bind delegate) holds a stage to a single thread. See [Pipelining](concepts/pipelining.md) for what each stage does and [Tiled Inference (SAHI)](concepts/sahi.md) for the tiling toggle.
 

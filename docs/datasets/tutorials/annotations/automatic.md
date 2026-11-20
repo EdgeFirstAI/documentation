@@ -98,7 +98,7 @@ Please wait while the server is being initialized.
 
 ### Annotate Starting Frame
 
-{{ video("../../../getting_started/assets/workflows/AGTG-tutorial.mp4", "AGTG Preview") }}
+{{ video("../../../getting_started/assets/workflows/agtg-2d-tutorial.mp4", "AGTG Preview") }}
 
 Once the server has been initialized, annotate the starting frame.  This is the only annotation required by the user. The rest of the frames will be annotated by SAM2 and the AGTG process.  This step is also known as initializing the SAM2 state.  Each object must be annotated independently so the tracker can assign a unique ID.
 

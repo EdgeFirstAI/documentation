@@ -61,7 +61,7 @@ When every sequence is annotated and the boxes are correct, continue to the next
 - [Automatic Ground Truth Generation (AGTG)](../../../studio/agtg.md): how the AGTG pipeline works and what each control in the tool does.
 - [AGTG Tutorial](../../../datasets/tutorials/annotations/automatic.md): fully automatic annotation during restore, and semi-automatic annotation in the gallery, with video tutorials.
 - [Manual Annotations](../../../datasets/tutorials/annotations/manual.md): adjusting 2D and 3D boxes by hand.
-- [3D Annotations](../../../3D/annotation.md): what the 3D boxes represent and how they are built from Radar or LiDAR point clouds.
+- [3D Annotations](../../../3D/annotations/index.md): what the 3D boxes represent and how they are built from Radar or LiDAR point clouds.
 - [Dataset Annotations](../../../datasets/tutorials/annotations/index.md): adding, editing and removing labels.
 
 ## Next Steps

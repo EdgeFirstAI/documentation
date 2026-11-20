@@ -53,7 +53,7 @@ The dataset follows the standard EdgeFirst [dataset capture](../tutorials/captur
 
 1. **Record** — Camera, Radar, and LiDAR streams are recorded together as an MCAP on the device using the [MCAP Recording Service](../../perception/data_collection/recording.md).  Recording on-device keeps the camera frames and PCDs time-synchronized, which is essential for accurate fusion.
 2. **Import** — The MCAP recording is uploaded into EdgeFirst Studio, which extracts the camera frames and the Radar/LiDAR PCDs into a dataset container.  See [Dataset Capture](../tutorials/capture.md#capture-with-an-edgefirst-platform) for uploading MCAPs, and [Dataset Import](../tutorials/import.md) for other dataset formats.
-3. **Annotate** — Because the PCDs are present, 3D bounding boxes are generated automatically with the [Automatic Ground Truth Generation (AGTG)](../tutorials/annotations/automatic.md) pipeline and then refined manually.  See [3D Annotations](../../3D/annotation.md) and [Dataset Annotations](../tutorials/annotations/index.md) for the full annotation workflow.
+3. **Annotate** — Because the PCDs are present, 3D bounding boxes are generated automatically with the [Automatic Ground Truth Generation (AGTG)](../tutorials/annotations/automatic.md) pipeline and then refined manually.  See [3D Annotations](../../3D/annotations/index.md) and [Dataset Annotations](../tutorials/annotations/index.md) for the full annotation workflow.
 
 ## Fusion Model
 
@@ -70,7 +70,7 @@ After [validating the model](../../models/validation/fusion/managed.md), deploy 
 This dataset is part of EdgeFirst Studio's [3D MLOps](../../3D/index.md) capabilities.  Refer to the 3D section for end-to-end guidance on working with 3D datasets and Fusion models:
 
 - [3D Viewers](../../3D/viewers.md) — inspect camera frames, Radar/LiDAR PCDs, and 3D annotations together.
-- [3D Annotations](../../3D/annotation.md) — create and refine 3D bounding boxes, including the AGTG pipeline.
+- [3D Annotations](../../3D/annotations/index.md) — create and refine 3D bounding boxes, including the AGTG pipeline.
 - [Training 3D Perception (Fusion) Models](../../3D/training.md) — configure and run Fusion training sessions.
 - [Validation](../../3D/validation.md) — review Fusion model metrics and BEV occupancy results.
 - [Deployment](../../3D/deployment.md) — run the trained model on the Raivin platform.

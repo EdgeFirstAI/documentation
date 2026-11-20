@@ -67,7 +67,12 @@ nav:
     - 3D/index.md
     - 3D/viewers.md
     - Workflows:
-      - 3D/annotation.md
+      - 3D Annotations:
+        - 3D/annotations/index.md
+        - 3D/annotations/2d_annotations.md
+        - 3D/annotations/3d_annotations.md
+        - 3D/annotations/cases.md
+        - 3D/annotations/hotkeys.md
       - 3D/training.md
       - 3D/validation.md
       - 3D/deployment.md

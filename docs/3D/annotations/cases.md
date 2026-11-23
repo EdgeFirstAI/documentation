@@ -37,7 +37,7 @@ Expanding an annotation type shows options to toggle its 2D projection, display 
 To add an annotation to an existing object, or to redraw one of its annotations:
 
 1. Select the object, either from the **Annotations** panel or by clicking it in the canvas.  Make sure only one object is selected.
-2. Pick the tool for the annotation type: the box, line or brush tool in the 2D canvas, or the 3D box or clustering tool in the 3D canvas.
+2. Pick the tool for the annotation type: the box, point or brush tool in the 2D canvas, or the 3D box or clustering tool in the 3D canvas.
 3. Draw the annotation.
 
 If the object already has an annotation of that type, the new drawing **replaces** it.  Otherwise the annotation is added to the object.  When no object is selected, drawing creates a new object with the currently selected label.
@@ -106,7 +106,7 @@ When SAM does not produce a usable segmentation, build the object by hand:
 1. Select the label for the object.
 2. In the 2D canvas, draw the 2D box with the box tool (`B`).  This creates the object.
 3. Select the new object in the **Annotations** panel.
-4. Draw the polygon with the line tool (`P`) to click the outline, or with the brush tool (`W`) to paint the mask.  The polygon is added to the same object.
+4. Draw the polygon with the point tool (`P`) to click the outline, or with the brush tool (`W`) to paint the mask.  The polygon is added to the same object.
 5. Select the object again if needed, switch to the 3D canvas and add the 3D box with the [clustering tool (preferred)](3d_annotations.md#cluster-3d-annotation) (`C`) or the 3D box tool (`B`).  The 3D box is added to the same object.
 6. Click **Save Image Annotations** to save.
 

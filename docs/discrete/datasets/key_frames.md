@@ -5,7 +5,7 @@
     Only 2D and 3D bounding boxes can be generated using this method. 
     Segmentation masks/polygons are not yet supported.
 
-This feature is another method for automatically generating annotations. It requires a start and end frame and the tool generates the annotation through the interpolation beween these two frames. However, we still recommend using the [Automatic Ground Truth Generation](../../3D/annotations/index.md#automatic-ground-truth-generation) as it remains the superior method of auto-annotating; requiring only the first frame as the prompt.
+This feature is another method for automatically generating annotations. It requires a start and end frame and the tool generates the annotation through the interpolation between these two frames. However, we still recommend using the [Automatic Ground Truth Generation](../../3D/annotations/index.md#automatic-ground-truth-generation) as it remains the superior method of auto-annotating; requiring only the first frame as the prompt.
 
 When annotating a sequence, key frames let you annotate an object on a couple frames and have Studio fill in the frames between them.  Studio linearly interpolates the 2D box and/or the 3D box between the key frames.
 

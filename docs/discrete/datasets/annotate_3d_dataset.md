@@ -60,7 +60,7 @@ Step through the frames and check that:
 * Each object keeps the same label from frame to frame.
 * No boxes are drawn around background or empty space.
 
-If any of the following cases are indentified, click on the links provided to fix the errors in your dataset: 
+If any of the following cases are identified, click on the links provided to fix the errors in your dataset: 
 
 1. An object was not annotated:
 

@@ -21,7 +21,7 @@ jobs:
           lfs: true
 
       # Installs uv and Python, then runs `uv sync --locked` against uv.lock.
-      - uses: EdgeFirstAI/.github/.github/actions/setup-python-uv@0cbb8f91f0d3e7d15726329f3fa651450bfdbbf0  # v5.1.0
+      - uses: EdgeFirstAI/.github/.github/actions/setup-python-uv@966df5c40680f6946896cb5e51542d5dde1bfa1a  # v5.1.1
 
       # Strict mode turns on the spellcheck plugin and fails on any warning.
       - name: Build documentation

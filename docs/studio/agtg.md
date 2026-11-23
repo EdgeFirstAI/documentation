@@ -17,7 +17,7 @@ This functionality is available at the time of [restoring a snapshot](snapshots.
 
 ## Semi-Automatic Ground Truth Generation
 
-This functionality is available after importing the dataset into EdgeFirst Studio.  This type of AGTG requires user annotations in the starting frame to give SAM2 context as to which objects to annotate throughout the rest of the frames.  This section will describe this type of AGTG.  However, the full tutorial for this workflow is found under [Dataset Annotations](../datasets/tutorials/annotations/automatic.md#semi-automatic-ground-truth-generation).
+This functionality is available after importing the dataset into EdgeFirst Studio.  This type of AGTG requires user annotations in the starting frame to give SAM2 context as to which objects to annotate throughout the rest of the frames.  This section will describe this type of AGTG.  However, the full tutorial for this workflow is found under Dataset Annotations: [2D](../datasets/tutorials/annotations/automatic.md#2d-automatic-ground-truth-generation) or [3D](../datasets/tutorials/annotations/automatic.md#3d-automatic-ground-truth-generation)..
 
 This AGTG feature can be found in the [dataset gallery](datasets/gallery.md).  The dataset gallery can contain sequences or images.
 

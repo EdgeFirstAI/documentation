@@ -28,19 +28,13 @@ Learn more about:
 | Browser           | Supported | Known Issues |
 |-------------------|-----------|--------------|
 | Google Chrome     | Yes       |              |
-| Safari            | No        |              |
+| Safari            | No        | This browser has not yet been fully tested |
 | Microsoft Edge    | Yes       |              |
-| Firefox           | No        | Sliders are locked in place |
+| Firefox           | Yes       |              |
 
 For the best experience, we recommend using a Chromium-based browser such as **Google
 Chrome** or **Microsoft Edge**. These browsers are fully supported and validated against
 all EdgeFirst Studio features.
-
-!!! bug "Firefox and Safari browser support is currently a work in progress"
-    Firefox is not yet fully supported. Some controls — most notably **sliders** — are
-    currently non-functional in Firefox. Safari is not yet fully supported either.
-    Until this is resolved, please use a Chromium-based browser such as **Google Chrome**
-    or **Microsoft Edge**.
 
 ## Getting Started
 

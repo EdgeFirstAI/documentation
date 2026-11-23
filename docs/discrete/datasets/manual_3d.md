@@ -2,7 +2,7 @@ This section describes fine tuning adjustments to the 3D bounding boxes in the d
 
 First [navigate to the dataset gallery](../../datasets/tutorials/management.md#view-dataset).  Ensure that the LiDAR and/or Radar point clouds, and the 3D bounding box annotations are toggled visible.
 
-{{ figure("/datasets/assets/annotations/manual/visible-3d-annotations.jpg", "Visible 3D Annotations") }}
+{{ figure("/3D/assets/pcd_visibility.jpg", "Visible 3D Annotations") }}
 
 ## Scale 3D Annotation
 

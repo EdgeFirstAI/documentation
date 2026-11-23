@@ -39,7 +39,7 @@ Now that you have imported videos or images into EdgeFirst Studio, let's take a 
     {{ figure("../../assets/setup/phytec/back_to_gallery.jpg", "Back to Gallery") }}
 
 !!! note "Annotation Tutorial"
-    For an in-depth tutorial on annotating datasets, please see our [Dataset Tutorials](../../../datasets/tutorials/annotations/automatic.md#semi-automatic-ground-truth-generation).
+    For an in-depth tutorial on annotating datasets, please see our [Dataset Tutorials](../../../datasets/tutorials/annotations/automatic.md#2d-automatic-ground-truth-generation).
 
 ## Split Dataset
 

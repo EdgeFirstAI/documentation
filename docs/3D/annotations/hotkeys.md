@@ -13,7 +13,7 @@ These shortcuts apply when the 3D canvas is the active pane.
 |---|---|
 | `Q` | 3D pointer tool: select, move and edit existing 3D annotations. |
 | `B` | 3D box tool: draw a new 3D box. |
-| `C` | [Clustering tool](index.md#cluster-3d-annotation): drag a region to box the largest cluster of points. |
+| `C` | [Clustering tool](3d_annotations.md#cluster-3d-annotation): drag a region to box the largest cluster of points. |
 | `L` | Edit the label. |
 | `G` | Translate (move) the selected 3D box. |
 | `S` | Scale the selected 3D box. |

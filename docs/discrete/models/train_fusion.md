@@ -1,8 +1,14 @@
 # Train a Fusion Model
 
-Now that you have a fully annotated dataset with a training and validation partition, you can begin training your model.  This will briefly show the steps for training a model, but for an in depth tutorial, please see [Training Fusion Models](../../models/training/fusion.md).
+Before you can start training your model, check that the dataset meets the following requirements:
 
-Navigate back to the "Projects" page.  You can go back to the "Projects" page by clicking the Apps Menu waffle button on the top right of the Navigation bar.  Click the first selection to take you to the "Projects page".
+- [x] Complete Annotations (2D and 3D bounding boxes and segmentation masks/polygons)
+- [x] Contains [training and validation partitions](../../datasets/tutorials/management.md#split-dataset)
+- [x] Contains a [dataset tag/version](../../datasets/tutorials/management.md#tag-dataset)
+
+Once you have a fully annotated dataset with a training and validation partition, you can begin training your model.  This will briefly show the steps for training a model, but for an in depth tutorial, please see [Training Fusion Models](../../models/training/fusion.md).
+
+Navigate back to the "Projects" page. 
 
 {{ figure("/studio/assets/navigation/go-to-projects-page.jpg", "Go to Projects Page") }}
 
@@ -20,7 +26,7 @@ Navigate to the "Training Sessions".
 
 Create a new training session by clicking the "Actions" dropdown menu on the top right of the page and then click the "+ New Trainer Session" button.
 
-{{ figure("/models/assets/training/new-session-button.jpg", "New Session Button") }}
+{{ figure("/models/assets/training/new-fusion-session-button.jpg", "New Session Button") }}
 
 Follow the settings indicated and keep the rest of the settings by their default.  Click "Start Session" to start the training session.
 

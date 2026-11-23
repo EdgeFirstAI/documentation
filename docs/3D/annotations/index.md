@@ -4,10 +4,6 @@ The 3D annotations are a set of 3D bounding boxes in meters that represent the p
 
 {{ figure("../assets/3d_bounding_box_plus_lidar.jpg", "LiDAR PCDs") }}
 
-## Annotations on the Same Object
-
-A 2D box, a segmentation mask, and a 3D box can all belong to the same object.  See [Objects and Annotation Cases](cases.md) for how objects are organised, how to join annotations that ended up on separate objects, and how to resolve common cases.
-
 ## Automatic Ground Truth Generation
 
 {% include-markdown "discrete/datasets/annotate_3d_dataset.md" %}

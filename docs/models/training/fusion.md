@@ -33,7 +33,7 @@ You will be greeted to the "Training Sessions" page as shown below.
 
 Start a training session by clicking on the "New Session" button on the top right corner of the page.
 
-{{ figure("../assets/training/new-session-button.jpg", "New Session Button") }}
+{{ figure("../assets/training/new-fusion-session-button.jpg", "New Session Button") }}
 
 You will be greeted with the training session dialog.  In this dialog, specify the "Trainer Type" to "EdgeFirst Fusion" and provide a name and description of the training session as shown below.  Next specify the dataset to be used with training and validation partitions.  Next specify the Model Settings.  By default, the model will be trained using both the Camera and the Radar sensors.  However, you can specify one of the sensors turned off.  This model will output an occupancy grid highlighting the positions of the detections in world coordinates.  Additional information on these parameters are provided by hovering over the info button ![Info Button](../../assets/buttons/studio-info-button.jpg).
 

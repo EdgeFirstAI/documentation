@@ -2,7 +2,7 @@ The 3D annotations are formulated from either Radar or LiDAR PCDs whichever is a
 
 This annotation process allows you to annotate any object with 2D and 3D annotations. 2D annotations exists on the frame as 2D bounding boxes and segmentation masks in pixel coordinates. 3D annotations are 3D bounding boxes in meters that describe the physical dimension of the annotated object and visualized in the 3D panel.
 
-This feature is a five-step process: intialize AGTG Server, Annotate Starting Frame, Propagate, Save Annotations, Audit Annotations.
+This feature is a five-step process: *initialize AGTG server*, *annotate starting frame*, *propagate*, *save annotations*, *audit annotations*.
 
 {{ video("/getting_started/assets/workflows/agtg-3d-tutorial.mp4", "AGTG Preview") }}
 
@@ -54,7 +54,13 @@ Once propagation completes, click "Save AIGT Annotations". This will save the ge
 
 The generated annotations may not have been perfect. Remember, the AGTG feature merely aids the annotation process and reduces the time it takes to annotate a dataset, but it currently does not entirely replace the human effort needed to obtain a correctly annotated dataset.
 
-Review the generated annotations by moving back to the starting frame in the video playback and identify cases where:
+Step through the frames and check that:
+
+* Every object has a 2D box on the image and a 3D box around its points.
+* Each object keeps the same label from frame to frame.
+* No boxes are drawn around background or empty space.
+
+If any of the following cases are indentified, click on the links provided to fix the errors in your dataset: 
 
 1. An object was not annotated:
 
@@ -77,5 +83,13 @@ Review the generated annotations by moving back to the starting frame in the vid
     {{ img("/3D/assets/project_lidar_pcd.jpg", "Project PCDs the the Frame") }}
 
     However, we provide a ["Clustering Mode"](../../3D/annotations/3d_annotations.md#cluster-3d-annotation) which requires the user to select a set of clustered PCDs to automatically draw a 3D bounding box for the object.
+
+Repeat the steps for all the sequences in your dataset. You can go back to the dataset sequences by pressing the back button on the top left corner.
+
+{{ figure("/3D/assets/back-to-gallery.jpg", "Back to Dataset Gallery") }}
+
+## Annotations on the Same Object
+
+A 2D box, a segmentation mask, and a 3D box can all belong to the same object.  See [Objects and Annotation Cases](../../3D/annotations/cases.md) for how objects are organised, how to join annotations that ended up on separate objects, and how to resolve common cases.
 
 For the keyboard shortcuts available while annotating, see [3D Keyboard Hotkeys](../../3D/annotations/hotkeys.md).

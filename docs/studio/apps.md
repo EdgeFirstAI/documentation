@@ -95,7 +95,8 @@ The available importer workflows include:
 - **Videos** — Import video files and convert them into dataset frames for annotation and training. See [Import Videos](../datasets/tutorials/import.md#import-videos).
 - **Darknet Dataset** — Import YOLO/Darknet-style image and label directories, including split or unsplit layouts. See [Import Darknet Datasets](../datasets/tutorials/import.md#import-darknet-datasets).
 - **EdgeFirst Dataset** — Import a packaged EdgeFirst dataset archive containing the dataset and annotation files. See [Import EdgeFirst Datasets](../datasets/tutorials/import.md#import-edgefirst-datasets).
-- **MCAP / Recording Upload** — Upload MCAP recordings captured from an EdgeFirst platform and restore them into a dataset. See [Upload MCAP](../datasets/tutorials/capture.md#upload-mcap) and [MCAP Publishing](../perception/data_collection/publishing.md).
+- **MCAP Upload** — Import an existing MCAP recording from your machine. See [Import MCAPs](../datasets/tutorials/import.md#import-mcaps).
+- **Platform Recording Upload** — Upload MCAP recordings captured from an EdgeFirst platform and restore them into a dataset. See [Upload MCAP](../datasets/tutorials/capture.md#upload-mcap) and [MCAP Publishing](../perception/data_collection/publishing.md).
 
 Together, these importer apps cover the common onboarding paths for raw media, annotated data,
 third-party dataset formats, and platform recordings.

@@ -10,6 +10,10 @@ This page provides tutorials for importing raw media and annotated datasets in v
 
 {% include-markdown "discrete/datasets/import_images.md" %}
 
+## Import MCAPs
+
+{% include-markdown "discrete/datasets/import_mcaps.md" %}
+
 ## Import Darknet Datasets
 
 There are two methods for importing Darknet Datasets.

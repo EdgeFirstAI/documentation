@@ -16,7 +16,7 @@ Set the restore fields, then click "START APP":
 
 {{ figure("/datasets/assets/annotations/automatic/restore_mcap_prompts.jpg", "Restore MCAP Configuration") }}
 
-You can find the process of the app by clicking the "Tasks" button on Studio navbar. Once the process completes, you can navigate to the dataset in Studio by clicking on the dataset link shown on the task card "ds-536d".
+You can find the process of the app by clicking the "Tasks" button on the Studio navbar. Once the process completes, you can navigate to the dataset in Studio by clicking on the dataset link shown on the task card "ds-536d".
 
 {{ figure("/datasets/assets/annotations/automatic/restore_mcap_task.jpg", "Process Completed") }}
 

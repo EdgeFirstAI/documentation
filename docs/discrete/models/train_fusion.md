@@ -8,7 +8,7 @@ Before you can start training your model, check that the dataset meets the follo
 
 Once you have a fully annotated dataset with a training and validation partition, you can begin training your model.  This will briefly show the steps for training a model, but for an in depth tutorial, please see [Training Fusion Models](../../models/training/fusion.md).
 
-Navigate back to the "Projects" page. 
+Navigate back to the "Projects" page.
 
 {{ figure("/studio/assets/navigation/go-to-projects-page.jpg", "Go to Projects Page") }}
 

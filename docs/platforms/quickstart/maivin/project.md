@@ -7,4 +7,3 @@ If you haven't already created your own project in {{ studio_link("EdgeFirst Stu
 ## Next Steps
 
 Now that you have your own project in EdgeFirst Studio, [set up your Maivin](setup.md) hardware next to start capturing data from the device.
-

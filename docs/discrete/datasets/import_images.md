@@ -23,4 +23,3 @@
 6. Navigating to your project should now contain a new dataset with the imported images.
 
     {{ figure("/datasets/assets/import/imported_images.png", "Imported Images") }}
-    

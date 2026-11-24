@@ -57,7 +57,7 @@ By default, the prompts provided to SAM2 are bounding boxes (mouse click and dra
 
 {{ figure("/datasets/assets/annotations/automatic/agtg-prompts.jpg", "AGTG Initial Prompts") }}
 
-## Propagate 
+## Propagate
 
 Once the starting frame has been annotated, specify the "End Frame" which marks the frame where SAM2 stops propagating. By default this is the end of the sequence (last frame) if your sequence is less than 500 frames.  Otherwise the end frame is at the 500th frame.
 

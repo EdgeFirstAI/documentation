@@ -30,7 +30,7 @@ If you have an MCAP recording [captured from either a Maivin/Raivin platform](..
 
     {{ figure("/datasets/assets/annotations/automatic/restore_mcap_prompts.jpg", "Import MCAP Configuration") }}
 
-7. You can find the process of the app by clicking the "Tasks" button on the Studio navbar. Once the process completes, you can navigate to the dataset in Studio by clicking on the dataset link shown on the task card "ds-536d".
+7. Click **START APP** to begin the import, then click **Tasks** on the Studio navbar to monitor its progress. Once the process completes, open the dataset using the dataset link on the task card.
 
     {{ figure("/datasets/assets/annotations/automatic/restore_mcap_task.jpg", "Process Completed") }}
 

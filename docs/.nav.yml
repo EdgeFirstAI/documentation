@@ -219,11 +219,11 @@ nav:
         - Maivin:
           - platforms/quickstart/maivin/index.md
           - platforms/quickstart/maivin/studio.md
+          - platforms/quickstart/maivin/project.md
           - platforms/quickstart/maivin/setup.md
           - platforms/quickstart/maivin/webui.md
           - platforms/quickstart/maivin/record.md
           - platforms/quickstart/maivin/upload.md
-          - platforms/quickstart/maivin/project.md
           - platforms/quickstart/maivin/restore.md
           - platforms/quickstart/maivin/annotate.md
           - platforms/quickstart/maivin/split.md

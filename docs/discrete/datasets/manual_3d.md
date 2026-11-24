@@ -84,7 +84,7 @@ Click "Save Image Annotations" or press "ENTER" on your keyboard to save the new
 
 ## Delete 3D Annotation
 
-To delete an annotation, first click on the pointer tool !["Pointer Tool"](../../assets/buttons/studio-pointer-tool.jpg). Click on the annotated object to select the annotation.  To delete, press the "Delete" key on your keyboard or click on the delete button.
+To delete only a 3D box, expand the object in the **Annotations** panel and click the delete button for that annotation type. The object's other annotations are kept. Selecting the object and pressing `Delete` on your keyboard, or clicking **Delete Object**, deletes the entire object and all of its annotations.
 
 {{ figure("/datasets/assets/annotations/manual/deleted-3d-annotation.jpg", "Delete 3D Annotations") }}
 

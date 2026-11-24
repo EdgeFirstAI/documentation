@@ -26,6 +26,11 @@ Launch the AGTG server by clicking on the "AI Segment Tool".
 
 ## Annotate Starting Frame
 
+Once the AGTG server has started, go ahead and annotate the starting frame.
+
+!!! warning "Active AGTG Server"
+    This server is costing credits to run.  An inactivity of 15 minutes will auto-terminate this server.  Otherwise, once you have completed the annotations, please ensure to terminate the AGTG server by clicking !["Stop Task Button"](../../assets/buttons/studio_trash_button.jpg) to avoid spending more of your credits.
+
 Annotate the starting frame by drawing a box around the object (click and drag). This will point SAM to the object in the frame that you would like to track. If a second object also needs to be annotated, click on the "+" button as shown to add a new object. Do this for each new object in your frame.
 
 {{ figure("/3D/assets/annotate_starting_frame.jpg", "Annotate Frame") }}

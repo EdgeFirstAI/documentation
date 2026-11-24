@@ -211,7 +211,7 @@ While the AGTG tool is active the ribbon shows these buttons.
 
 ### AGTG Task and Server
 
-The sidebar also shows an **AGTG Task** card with the status of the server.  Use its terminate option or **Shutdown AGTG Server** to stop the server.  The server stops by itself after 15 minutes of inactivity, but shut it down when you are done so that no credits are used unnecessarily.
+The sidebar also shows an **AGTG Task** card with the status of the server.  Use its terminate option or ![**Stop Task Button**](../../assets/buttons/studio_trash_button.jpg) to stop the server.  The server stops by itself after 15 minutes of inactivity, but shut it down when you are done so that no credits are used unnecessarily.
 
 !!! note
     To place the generated annotations on the right objects, or to fix annotations that ended up on separate objects, see [Objects and Annotation Cases](../../3D/annotations/cases.md).

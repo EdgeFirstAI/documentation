@@ -15,7 +15,7 @@ Please wait while the server is being initialized.
 {{ figure("/datasets/assets/annotations/manual/agtg-server-initialization.jpg", "Launch AGTG Server") }}
 
 !!! warning "Active AGTG Server"
-    This server is costing credits to run.  An inactivity of 15 minutes will auto-terminate this server.  Otherwise, once you have completed the annotations, please ensure to terminate the AGTG server by clicking "Shutdown AGTG Server" to avoid spending more of your credits.
+    This server is costing credits to run.  An inactivity of 15 minutes will auto-terminate this server.  Otherwise, once you have completed the annotations, please ensure to terminate the AGTG server by clicking !["Stop Task Button"](../../assets/buttons/studio_trash_button.jpg) to avoid spending more of your credits.
 
 Once the server is initialized, draw the bounding box around the object by clicking on the image and then dragging the mouse to expand the bounding box.  This will start segmenting the object.  Once the object is properly segmented, go ahead and click "Save AIGT Annotations" as indicated in red to save the annotation and to move forward to the next image.
 
@@ -46,7 +46,7 @@ After making the adjustments, go ahead and press "ENTER" on your keyboard or cli
 
 ## Delete 2D Annotations
 
-To delete an annotation, first click on the pointer tool !["Pointer Tool"](../../assets/buttons/studio-pointer-tool.jpg). Click on the annotated object on the frame to select it.  To delete the annotation, either press the "Delete" key on your keyboard or the delete button on Studio.
+To delete only a 2D box or segmentation mask, expand the object in the **Annotations** panel and click the delete button for that annotation type. The object's other annotations are kept. Selecting the object and pressing `Delete` on your keyboard, or clicking **Delete Object**, deletes the entire object and all of its annotations.
 
 {{ figure("/datasets/assets/annotations/manual/deleted-2d-annotation.jpg", "Delete Annotations") }}
 

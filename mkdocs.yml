@@ -90,6 +90,8 @@ plugins:
         # The webui service no longer has a configuration file; page-level display
         # options are now controls on the Camera and Radar visualization pages.
         'platforms/configuration/webui.md': 'platforms/configuration/index.md'
+        # --- 3D annotation page became the 3D Annotations section (DE-3163) ---
+        '3D/annotation.md': '3D/annotations/index.md'
   - social:
       enabled: !ENV [CI, false]
       cards_layout: default

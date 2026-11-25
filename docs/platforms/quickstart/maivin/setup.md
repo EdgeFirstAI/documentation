@@ -29,15 +29,14 @@ From here, we recommend that you check out the Camera page by clicking the "Came
 
 {{ figure("../../assets/setup/quickStart-segmentation.png", "Maivin Camera Page") }}
 
-{% include-markdown "discrete/platforms/edgefirst_performance_scaling.md" %}
-
 ## Next Steps
 
 Now that your Maivin is set up, the next step in the Maivin Quick Start guide is to [record an MCAP](record.md) to start building your dataset.
 
 Other useful resources:
 
-- [Maivin Web UI Walkthrough](webui.md), to see what each UI card on the splash screen does  
+- [Maivin Web UI Walkthrough](webui.md), to see what each UI card on the splash screen does
+- [CPU Performance Scaling](../../hardware/performance_scaling.md), to adjust the device's power/performance tradeoff
 - [SSH Walkthrough](../../networking/ssh.md), to learn how to SSH into your Maivin and basic command-line operations  
 - [Maivin Recording Walkthrough](../../../perception/data_collection/recording.md), to learn how to record datasets and download them to your PC  
 - [Model Upload Walkthrough](../../software/model_uploads.md), to learn how to upload vision models to your Maivin  

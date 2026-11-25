@@ -16,15 +16,17 @@ Central to the EdgeFirst Platforms is the EdgeFirst Perception Middleware, what 
 
 In this Quick Start, you will find instructions for:
 
-1. [Setting up your Raivin](setup.md)
-2. [Recording an MCAP using the Raivin](record.md)
-3. [Uploading the MCAP to EdgeFirst Studio](upload.md)
-4. [Creating a project in EdgeFirst Studio](project.md)
-5. [Restoring the MCAP into a Dataset](restore.md)
-6. [Annotating the Dataset](annotate.md)
-7. [Splitting and Tagging the Dataset for Training](split.md)
-8. [Training a Fusion Model](train.md)
-9. [Validating the Fusion Model](validate.md)
-10. [Deploying the Fusion Model](deploy.md)
+1. [Sign Up and Log In to EdgeFirst Studio](studio.md)
+2. [Create your project in EdgeFirst Studio](project.md)
+3. [Setting up your Raivin](setup.md)
+4. [Visiting the Raivin's Web UI](webui.md)
+5. [Recording an MCAP using the Raivin](record.md)
+6. [Uploading the MCAP to EdgeFirst Studio](upload.md)
+7. [Restoring the MCAP into a Dataset](restore.md)
+8. [Annotating the Dataset](annotate.md)
+9. [Splitting and Tagging the Dataset for Training](split.md)
+10. [Training a Fusion Model](train.md)
+11. [Validating the Fusion Model](validate.md)
+12. [Deploying the Fusion Model](deploy.md)
 
-Each page links to the next, so you can also just start with [Setup](setup.md) and follow the trail through to deployment.  For a tour of the device's main page, see the [Web UI Walkthrough](webui.md).  Please note that this Raivin Quick Start guide only includes Fusion Model training for 3D models; the Maivin Quick Start contains the steps on how to [train](../maivin/train.md), [validate](../maivin/validate.md), and [deploy](../maivin/deploy.md) 2D models.
+Each page links to the next, so you can also just start with [EdgeFirst Studio](studio.md) and follow the trail through to deployment.  For a tour of the device's main page, see the [Web UI Walkthrough](webui.md).  Please note that this Raivin Quick Start guide only includes Fusion Model training for 3D models; the Maivin Quick Start contains the steps on how to [train](../maivin/train.md), [validate](../maivin/validate.md), and [deploy](../maivin/deploy.md) 2D models.

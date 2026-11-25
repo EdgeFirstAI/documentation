@@ -69,6 +69,8 @@ detail on its own help page, linked from its card and from the sections that fol
 
 The Apps page groups apps into the following categories:
 
+- **AGTG**: Hosts the services used for Automatic Ground Truth Generation, such as a
+  dedicated SAM2 server for assisted annotation.
 - **Converter**: Converts a trained model into a deployment-ready artifact for a target
   runtime or accelerator.
 - **Exporter**: Packages datasets, annotations, or model outputs into an external format
@@ -95,7 +97,8 @@ The available importer workflows include:
 - **Videos** — Import video files and convert them into dataset frames for annotation and training. See [Import Videos](../datasets/tutorials/import.md#import-videos).
 - **Darknet Dataset** — Import YOLO/Darknet-style image and label directories, including split or unsplit layouts. See [Import Darknet Datasets](../datasets/tutorials/import.md#import-darknet-datasets).
 - **EdgeFirst Dataset** — Import a packaged EdgeFirst dataset archive containing the dataset and annotation files. See [Import EdgeFirst Datasets](../datasets/tutorials/import.md#import-edgefirst-datasets).
-- **MCAP / Recording Upload** — Upload MCAP recordings captured from an EdgeFirst platform and restore them into a dataset. See [Upload MCAP](../datasets/tutorials/capture.md#upload-mcap) and [MCAP Publishing](../perception/data_collection/publishing.md).
+- **MCAP Upload** — Import an existing MCAP recording from your machine. See [Import MCAPs](../datasets/tutorials/import.md#import-mcaps).
+- **Platform Recording Upload** — Upload MCAP recordings captured from an EdgeFirst platform and restore them into a dataset. See [Upload MCAP](../datasets/tutorials/capture.md#upload-mcap) and [MCAP Publishing](../perception/data_collection/publishing.md).
 
 Together, these importer apps cover the common onboarding paths for raw media, annotated data,
 third-party dataset formats, and platform recordings.
@@ -172,6 +175,23 @@ with per-scale split and optional INT16 DFL promotion. See
 Compiles a model into a `.hef` Hailo Executable Format binary for Hailo-8 and Hailo-8L
 NPUs, with structurally-required per-scale Smart Quantization. See
 [Hailo Conversion](../models/conversion/hailo.md).
+
+### AGTG Apps
+
+AGTG Apps support Automatic Ground Truth Generation (AGTG), which populates a dataset with
+2D and 3D annotations with minimal human effort.  Unlike the other app types, the "EdgeFirst Studio SAM2 Server" App
+starts a long-running server that is used interactively from the dataset gallery rather than
+a one-off processing job.  For details on the workflow and the algorithm, see
+[Automatic Ground Truth Generation](agtg.md).
+
+#### EdgeFirst Studio SAM 2 Server
+
+A cloud server dedicated to hosting SAM2 and the AGTG backend.  It is
+used by the AI assisted annotation tools in the dataset gallery to segment and track
+objects.  The server is started from the gallery's AI Segment Tool, appears in the
+[Tasks page](tasks.md) while it runs, and terminates automatically after 15 minutes of
+inactivity.  Stop it manually when annotation is finished to avoid unnecessary charges.  See
+[Automatic Ground Truth Generation](agtg.md#semi-automatic-ground-truth-generation).
 
 ### EdgeFirst Profiler
 

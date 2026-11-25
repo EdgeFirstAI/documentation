@@ -16,7 +16,7 @@ Set the restore fields, then click "START APP":
 
 {{ figure("/datasets/assets/annotations/automatic/restore_mcap_prompts.jpg", "Restore MCAP Configuration") }}
 
-Once the process completes, you can navigate to the dataset in Studio by clicking on the link shown on the task card "ds-23fa".
+You can find the process of the app by clicking the "Tasks" button on the Studio navbar. Once the process completes, you can navigate to the dataset in Studio by clicking on the dataset link shown on the task card "ds-536d".
 
 {{ figure("/datasets/assets/annotations/automatic/restore_mcap_task.jpg", "Process Completed") }}
 
@@ -28,4 +28,4 @@ The auto-generated annotations should be visible throughout the frames.
 
 {{ figure("/datasets/assets/annotations/automatic/restored_mcap_result.jpg", "Resulting Restored MCAP") }}
 
-If the snapshot was restored into a dataset without any annotations or some frames are missing annotations, you can also follow through the [Dataset Annotations Tutorials](../../datasets/tutorials/annotations/automatic.md#semi-automatic-ground-truth-generation) to annotate your dataset in EdgeFirst Studio.
+If the snapshot was restored into a dataset without any annotations or some frames are missing annotations, you can also follow through the [Dataset Annotations Tutorials](../../datasets/tutorials/annotations/automatic.md) to annotate your dataset with [2D](../../datasets/tutorials/annotations/automatic.md#2d-automatic-ground-truth-generation) or [3D](../../datasets/tutorials/annotations/automatic.md#3d-automatic-ground-truth-generation) annotations in EdgeFirst Studio.

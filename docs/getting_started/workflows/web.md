@@ -17,6 +17,8 @@ Next [view the gallery of the dataset](../../datasets/tutorials/management.md#vi
 
 Now that you have imported captured images or videos into EdgeFirst Studio you can now start annotating your data as shown in the next section below.
 
+## Annotate Dataset
+
 {% include-markdown "discrete/datasets/annotate_2d_dataset.md" %}
 
 ## Split Dataset

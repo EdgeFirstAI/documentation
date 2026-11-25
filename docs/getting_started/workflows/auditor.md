@@ -11,6 +11,9 @@ Inside "Sample Project", you will find a sample dataset called "Coffee Cup".  Th
 ## Copy Dataset
 
 {% include-markdown "discrete/datasets/copy_dataset.md" %}
+
+## Annotate Dataset
+
 {% include-markdown "discrete/datasets/annotate_2d_dataset.md" %}
 
 ## Tag Dataset

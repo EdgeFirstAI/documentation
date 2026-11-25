@@ -12,6 +12,8 @@
 
 4. Click "Choose Files" to select video files from your PC. Drag and drop selected files into the app as shown.
 
+    The supported video formats are `.mp4`, `.mov`, `.avi`, `.mkv` and `.webm`.
+
     {{ figure("/datasets/assets/import/drag_drop_videos.png", "Drag and Drop Video Files") }}
 
 5. Once the files have been selected, import the videos by following the steps as shown below.

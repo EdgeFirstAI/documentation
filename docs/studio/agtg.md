@@ -11,13 +11,19 @@ A complete annotation set will have 2D and 3D annotations as shown below which i
 
 {{ figure("../datasets/assets/annotations/sample-studio-annotations.jpg", "Sample Annotations") }}
 
+## AGTG App
+
+AGTG is also available as an app in EdgeFirst Studio called "EdgeFirst Studio SAM 2 Server".  The AGTG-App runs a server dedicated to hosting SAM2 for the annotation process.  The server also hosts the AGTG backend, including AutoSAM, which formulates the annotations from the SAM2 results.  The AI assisted annotation tools in the dataset gallery send their requests to this server, so it must be running before annotating.
+
+{{ figure("assets/agtg/agtg-app.png", "AGTG App") }}
+
 ## Fully Automatic Ground Truth Generation
 
 This functionality is available at the time of [restoring a snapshot](snapshots.md#restore-snapshot).  To invoke the restore feature, import/create a snapshot and then enable AGTG while restoring the snapshot.  The full tutorial for this workflow is found under [Dataset Annotations](../datasets/tutorials/annotations/automatic.md#fully-automatic-ground-truth-generation).
 
 ## Semi-Automatic Ground Truth Generation
 
-This functionality is available after importing the dataset into EdgeFirst Studio.  This type of AGTG requires user annotations in the starting frame to give SAM2 context as to which objects to annotate throughout the rest of the frames.  This section will describe this type of AGTG.  However, the full tutorial for this workflow is found under [Dataset Annotations](../datasets/tutorials/annotations/automatic.md#semi-automatic-ground-truth-generation).
+This functionality is available after importing the dataset into EdgeFirst Studio.  This type of AGTG requires user annotations in the starting frame to give SAM2 context as to which objects to annotate throughout the rest of the frames.  This section will describe this type of AGTG.  However, the full tutorial for this workflow is found under Dataset Annotations: [2D](../datasets/tutorials/annotations/automatic.md#2d-automatic-ground-truth-generation) or [3D](../datasets/tutorials/annotations/automatic.md#3d-automatic-ground-truth-generation)..
 
 This AGTG feature can be found in the [dataset gallery](datasets/gallery.md).  The dataset gallery can contain sequences or images.
 
@@ -31,7 +37,7 @@ There are three steps involved in this process: *Initialize AGTG Server*, *Annot
 
 {{ figure("../datasets/assets/annotations/automatic/agtg-segment-tool.jpg", "Select the AI Segment Tool") }}
 
-Clicking on this feature will prompt you to [start an AGTG server](../datasets/tutorials/annotations/automatic.md#initialize-agtg-server).  This is a cloud based server that hosts SAM2 and the AGTG backend.  As indicated, this server will take some time (~3 minutes) to initialize and once initialized, 15 minutes of inactivity will auto-terminate the server.  This is a safety mechanism to prevent extreme usage of the credits available in your account.  As a safety precaution, ensure that all unused servers are terminated to prevent any unnecessary server costs.  When you have finished annotating, click the **Shutdown AGTG Server** button to stop the server.
+Clicking on this feature will prompt you to [start an AGTG server](../datasets/tutorials/annotations/automatic.md#initialize-agtg-server).  This is a cloud based server that hosts SAM2 and the AGTG backend.  As indicated, this server will take some time (~3 minutes) to initialize and once initialized, 15 minutes of inactivity will auto-terminate the server.  This is a safety mechanism to prevent extreme usage of the credits available in your account.  As a safety precaution, ensure that all unused servers are terminated to prevent any unnecessary server costs.  When you have finished annotating, click the ![**Stop Task Button**](../assets/buttons/studio_trash_button.jpg) button to stop the server.
 
 {{ figure("../datasets/assets/annotations/manual/confirm-agtg-server-launch.jpg", "Launch AGTG Server") }}
 
@@ -45,9 +51,9 @@ Below is a detailed breakdown of the sidebar.
 
 The number of object cards on the right panel represents the number of objects in the image.  For each object, annotate by either drawing a bounding box (click and drag) around the object or markers (mouse clicks) to specify the region that contains the object.  To draw a bounding box, click anywhere on the frame and then drag the mouse to expand the bounding box.  The bounding box should cover the object to annotate in the frame.
 
-**Markers**         | **Boxes**
-:------------------:|:------------------:
-![Markers](assets/agtg/agtg-markers.jpg) | ![Boxes](assets/agtg/agtg-boxes.jpg)
+| **Markers** | **Boxes** |
+|:-----------:|:---------:|
+| ![Markers](assets/agtg/agtg-markers.jpg) | ![Boxes](assets/agtg/agtg-boxes.jpg) |
 
 !!! Note "Multiple Objects"
     Press the "+" button beside the "Select Objects" to add a new object to annotate. Also the object class (label) should be selected from the object label drop down.
@@ -71,7 +77,7 @@ Once the propagation completes, click on "SAVE AIGT ANNOTATIONS" to save the ann
 
 The AGTG algorithm is designed to generate the ground truth annotations of a sequential dataset.  The annotations are categorized as image-based 2D annotations and spatial-based 3D annotations.  Image-based annotations are 2D bounding boxes and segmentation masks marking the objects in an image in pixel coordinates.  Spatial-based annotations are 3D bounding boxes around objects in world coordinates such as meters.  More information regarding these annotation types are found [here](../datasets/format/schema.md).
 
-Image-based annotations are generated using Vision models.  A YOLOx ONNX model is used to generate 2D bounding boxes.  The large [SAM2 PyTorch model](https://github.com/facebookresearch/sam2) is used to generate 2D segmentation masks by taking advantage of the model’s object tracking and propagation capabilities.
+Image-based annotations are generated using Vision models.  A YOLOx ONNX model trained on COCO classes is used as a seed model for example to generate 2D bounding boxes.  The large [SAM2 PyTorch model](https://github.com/facebookresearch/sam2) is used to generate 2D segmentation masks from the 2D bounding boxes generated by the Vision model. The AGTG tool takes advantage of the SAM2's object tracking and propagation capabilities to auto-annotate throughout the frames in the dataset.
 
 Spatial-based annotations are generated using sensor information such as the LiDAR and Radar and model predictions such as the 2D annotations (bounding boxes and masks) and depth estimations from a large ONNX depth model from [Metrics3D](https://github.com/YvanYin/Metric3D).  These annotations will be generated for recordings captured using the Raivin with either a Radar or a LiDAR module attached.
 
@@ -87,9 +93,10 @@ flowchart TB
     propagation[SAM2 Propagation]
     2D[SAM2 Masks to 2D Bounding Boxes]
 
-    filter[Mask and LiDAR PCD Filter]
-    lidar_cluster[LiDAR PCD DBSCAN Clustering]
-    specify_cluster[PCD Cluster Specification]
+    filter[Select Seed PCDs]
+    lidar_cluster[Gather PCDs in Padded Box and Depth Window, then DBSCAN Clustering]
+    specify_cluster[Merge Clusters Containing Seeds]
+    grow[Absorb Nearby PCDs]
     3D[3D Box Formulation]
 
     depth_map[Depth Map Localization]
@@ -98,7 +105,7 @@ flowchart TB
 
     %% Flowchart
     yolox --> propagation_type--> propagation --> 2D --> lidar
-    lidar -- Yes --> filter --> lidar_cluster --> specify_cluster --> 3D
+    lidar -- Yes --> filter --> lidar_cluster --> specify_cluster --> grow --> 3D
     lidar -- No --> radar_cluster --> projection --> depth_map --> 3D
 ```
 
@@ -111,7 +118,41 @@ The spatial-based annotations are formulated based on one of the following senso
 
 For Raivin recordings without the LiDAR PCDs, the first combination is applied to formulate 3D bounding box annotations using Radar PCDs instead.  This process applies a DBSCAN clustering algorithm to the Radar PCDs to cluster groups of points belonging to a single object.  Next the process intends to find the Radar PCD cluster that corresponds to the object that is segmented in the image.  The logic here is to project the 2D bounding box into world coordinates and to take the depth estimations enclosed by the segmentation mask to find the nearest distance between the (x, y) coordinates and the cluster’s centroid.  The cluster with the smallest distance from the estimated coordinates is the PCD cluster that represents the object.  The 3D bounding box is formulated by taking the x, y, z center coordinates (centroid) of the cluster and the depth, width, height of the bounding box are taken from both the 2D image projections and the dimensions of the cluster.
 
-For Raivin recordings with the LiDAR module, the second combination is applied to formulate the 3D bounding box annotations.  Since the LiDAR PCDs have higher resolution over Radar, there is no clustering needed to be applied to the PCDs at the start.  The process starts by filtering the LiDAR PCDs that intersects only with the segmentation mask.  However, the PCDs that intersect with the mask are not always guaranteed to belong to the object, a DBSCAN clustering algorithm is applied to the set of filtered PCDs.  The cluster with the highest number of points is taken as the cluster that represents the object segmented in the image.  Finally, the 3D bounding box is formulated by taking the x, y, z center coordinates (centroid) of the cluster and the depth, width, height dimensions of the cluster.
+For Raivin recordings with the LiDAR module, the second combination is applied to formulate the 3D bounding box annotations using a seed-and-grow approach.  The segmentation mask alone is not used to crop the PCDs because the mask can truncate the object, for example where the mask edge is slightly inside the object or the object is partly occluded.  Instead, the mask only selects the starting points (seeds) and the 3D box is grown from them.
+
+1. **Select seeds**: The LiDAR PCDs that project inside the segmentation mask are the seeds.  If no PCD intersects the mask, or no mask is available, the PCDs that project inside the 2D bounding box are used instead.
+2. **Estimate the object depth**: The median x (forward distance) of the seeds is taken as the depth of the object.  The median is robust to a few seeds that belong to the background.
+3. **Gather candidates**: From the whole point cloud, the PCDs that project inside the 2D bounding box dilated by a padding (15% per side by default) and that are within a depth window around the median depth (±1 m by default) are collected.  Seeds are always included.
+4. **Cluster**: A DBSCAN clustering algorithm is applied to the candidates to group the PCDs that belong to the same surface.
+5. **Merge seeded clusters**: Every cluster that contains at least one seed is merged into the object.  The clusters are selected by their seeds, not by their size, so a large background cluster inside the padded box is not chosen over a smaller cluster on the segmented object.
+6. **Grow**: Any candidate PCD, including the points DBSCAN left unclustered as noise, that lies within a margin (0.3 m by default) of the merged cluster's extents is absorbed.  This keeps sparse returns on the edge of the object inside the box.
+7. **Build the box**: The 3D bounding box is formulated from the full extents of the merged cluster.  The center is the middle of the extents and the depth, width, and height are the size of the extents.
+
+!!! note
+    The padding, depth window, and grow margin only affect which PCDs can join the object.  The padded box and depth window limit the candidates, so a PCD outside of them is never included in the 3D box regardless of the grow margin.
+
+### AutoSAM Settings
+
+AutoSAM is a dependency of the AGTG-App that performs the auto-annotation and formulates the 3D bounding boxes.  AutoSAM itself depends on a fork of the SAM2 library.
+
+The following settings control the LiDAR 3D box formulation in AutoSAM.  They are defined in the `Config` class.
+
+| Setting | Default | Description |
+|---------|---------|-------------|
+| `LIDAR_INTERSECTION` | `"mask"` | Selects which PCDs are the seeds.  `"mask"` seeds from the PCDs inside the segmentation mask and falls back to the 2D box when none intersect.  `"box"` seeds from the PCDs inside the 2D box only. |
+| `LIDAR_BOX_PADDING` | `0.15` | Fraction of the 2D box width and height added to each side when gathering candidate PCDs.  This is measured in image space, so the distance it covers depends on how far the object is. |
+| `LIDAR_DEPTH_WINDOW` | `1.0` | Distance in meters around the median seed depth within which candidate PCDs are kept. |
+| `LIDAR_GROW_MARGIN` | `0.3` | Distance in meters around the merged cluster's extents within which extra PCDs, including unclustered ones, are absorbed into the 3D box. |
+
+The DBSCAN clustering parameters for the LiDAR PCDs are fixed in AutoSAM and are not configurable.
+
+| Parameter | Value | Description |
+|-----------|-------|-------------|
+| Clustering epsilon | `0.25` | Maximum scaled distance between neighbouring PCDs of the same cluster. |
+| Parameter scale | `[2, 0.5, 0.5, 0]` | Scale applied to the x, y, z, and extra fields before computing distances.  Gaps along x are weighted more than gaps along y and z. |
+| Minimum points | `4` | Minimum number of PCDs to form a cluster.  Groups with fewer points are treated as noise. |
+
+If PCDs of the object are still left outside of the 3D box, increase `LIDAR_GROW_MARGIN` first.  If the object is large or its PCDs are far from the 2D box, increase `LIDAR_BOX_PADDING` or `LIDAR_DEPTH_WINDOW`.  Larger values risk including background PCDs in the box.
 
 ## Next Steps
 

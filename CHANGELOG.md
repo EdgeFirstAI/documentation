@@ -7,6 +7,27 @@ file. The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.
 
 ### Added
 
+- **3D Annotations section** (`3D/annotations/`): replaces `3D/annotation.md` with an index, 2D annotations, 3D annotations, Objects and Annotation Cases (several annotations per object, replace on draw, Join, and the manual workflow when SAM fails) and Keyboard Hotkeys pages. Clustering (a 3D box from the point cloud) and key frame interpolation are shared includes, and the 2D and 3D AGTG tutorials have new videos (DE-3163).
+- **Keyboard Hotkeys reference** (`discrete/datasets/hot_keys.md`): the 3D and 2D canvases, editing, sequences, the SAM2 sidebar and audit mode, included by the 3D annotations hotkeys page and the Studio gallery page (DE-3163, DE-2832).
+- **Import MCAPs tutorial** (`datasets/tutorials/import.md`, `discrete/datasets/import_mcaps.md`): importing an MCAP recording with the MCAP Importer app (DE-2204).
+- **Studio sign-up and login pages and a Maivin annotate page** (`platforms/quickstart/{maivin,raivin}/studio.md`, `platforms/quickstart/maivin/annotate.md`) (DE-3163).
+- **AGTG App and AutoSAM** (`studio/agtg.md`, `studio/apps.md`): an AGTG App section with a screenshot explaining that the app runs a server dedicated to hosting SAM2 for the annotation process, an AutoSAM introduction (the AGTG-App dependency that auto-annotates and formulates 3D boxes, built on a fork of SAM2), and AGTG Apps with the EdgeFirst Studio SAM 2 Server app on the Apps page (DE-3163).
+
+### Changed
+
+- **Studio gallery page revamped** (`studio/datasets/gallery.md`): the gallery header controls, filters, Actions menu, editor toolbar and ribbon, and the AI Segment Tool (AGTG) sidebar and ribbon buttons, with links to the AGTG algorithm and tutorials (DE-2832).
+- **Annotations page** (`studio/datasets/annotations.md`): links to the gallery editor reference and to Objects and Annotation Cases for how annotations tie to unique objects.
+- **Supported file formats listed for image and video import** (`discrete/datasets/import_{images,videos}.md`), with refreshed image importer screenshots (DE-2204).
+- **Importer Apps list** (`studio/apps.md`): MCAP Upload and Platform Recording Upload are separate entries (DE-2204).
+- **Maivin and Raivin quick starts reordered** (`platforms/quickstart/{maivin,raivin}/`): project creation comes before device setup, the Raivin steps include the Web UI, and the index step lists and navigation match (DE-3163).
+- **3D MLOps pages** (`3D/index.md`, `3D/viewers.md`, `datasets/tutorials/annotations/{automatic,manual}.md`): a more inviting introduction, the depth map and 3D boxes numbering in the viewers page, the manual tutorial split into 2D and 3D headings, and the automatic tutorial slimmed down to share its common content.
+- **Fusion training** (`models/training/fusion.md`, `discrete/models/train_fusion.md`): Fusion-specific "New Session" button and settings screenshots.
+- Spellcheck dictionary (`assets/known_words.txt`): new 3D annotation, gallery and import terms.
+
+### [2026-11-13-rc]
+
+#### Added
+
 - **Semantic segmentation model metadata** (`models/metadata.md`): an `input.preprocessing` block for normalization (the `unsigned`, `signed`, `raw` and `imagenet` presets or per-channel mean and std on 0–255 values), resize mode, reference interpolation, and letterbox placement, pad value and pad space; the `semantic` decoder with its `upsample`, `decode_mode`, `threshold` and `background_index` fields, per-pixel scores and in-graph argmax class maps, the accurate and fast decode modes with their letterbox geometry and pixel-center nearest sampling, and the `int64` dtype; reserved `class_logits` and `mask_logits` outputs with the `num_queries` dimension and the `no_object_index` and `mask_activation` fields for mask-classification models; and a SegFormer B1 example. Additive to schema version 2 (EDGEAI-2329).
 - **Clock Synchronization and Timestamps page** (`perception/clock_sync.md`): the three timestamps carried by every middleware message (`header.stamp`, the Zenoh sample timestamp, and MCAP `publish_time`/`log_time`), the Linux clocks behind them, and the acquisition-time contract for source publishers, derived publishers, the Recorder, the dataset Publisher and Replay, including how a clock step inside a recording is marked with `clock_step` and `clock_sync` metadata and handled as a segment boundary.  Documents the Maivin time sources (no persistent RTC, chrony with GNSS PPS and NTP, optional PTP for sensors), the boot sequence, resilience to late or absent synchronization, a per-topic service reference, a recording inspection script and troubleshooting (DE-2964).
 - **Profiling the Middleware** (`perception/profiling.md`): the Tracy-based workflow for the perception services, covering which services are instrumented and what each one reports, the required Tracy version and the prebuilt downloads for Windows, Linux, and macOS, enabling `TRACY` in `/etc/default/<service>`, connecting through the profiler's network discovery, headless capture with `tracy-capture`, reading the timeline and finding the expensive stage through the Statistics and Find zone views, and the limits of the current tooling (EDGEAI-1667).
@@ -23,8 +44,16 @@ file. The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.
 - **Migration from 2026.04 to 2026.10** (`datasets/format/migration.md`): the changes, `edgefirst-client migrate` for 2026.04 files, reading 2026.04 files without migrating, and a table of the `pose` and `location` array orders written by each EdgeFirst Client and EdgeFirst Publisher release before 2026.10 with Polars code to bring older files in line (DE-2971).
 - **Offline COCO datasets and VisDrone import** (`client/import.md`): converting an extracted COCO directory with `coco-to-arrow --images --link` into one Arrow or Parquet dataset with inferred splits, the `visdrone-to-arrow` converter and its `--keep-ignored` option, and the annotations EdgeFirst Studio does not store yet (DE-2971).
 - **CLI reference commands for edgefirst-client 2.15.0** (`client/cli/reference.md`): the `version` dataset-versioning group, `delete-samples`, `visdrone-to-arrow`, `trainer-schemas`, `trainer-schema`, `start-training-session`, `update-training-session`, `delete-training-sessions`, `update-validation-session`, `delete-validation-sessions`, `validator-schemas`, and the `EDGEFIRST_UPLOAD_BATCHES` and `MAX_TASKS` environment variables.
+- **Tiling deployment contract** (`models/metadata.md`, `models/conversion/calibration.md`): tiled and whole-frame modes fixed at export, the evendist v1 grid, per-tile NMS and cross-tile merge settings, required fields and ranges, the training and export records that let a runtime wire a tile-trained model, the tiling sampler version 3.1 in the training examples, and `.keras` and `.pt` weights artifacts with embedded metadata. Calibration snapshots are specified at each exported model's geometry, with grid-tile snapshots counted in tiles under `max_dynamic_range_tiled_v1`, the whole-frame snapshot size warning, the calibration resize modes, and the geometry check converters run before calibrating (DE-2951).
+- **`nms_multi_label` metadata key** (`models/metadata.md`) (EDGEAI-2001).
+- **Trainer app launch forms** (`models/ultralytics/index.md`, `models/modelpack/index.md`, `models/training/vision.md`): the Ultralytics and ModelPack trainers launch as Studio apps. Documents the Ultralytics Weights source, Input Tiling, export Deployment (tiled or whole-frame, including 1920x1088 and 3840x2176), Frames per Batch and the epoch-level tiling mix, and ModelPack's camera adaptor, letterbox, Input Tiling (SAHI) and tiled validation (DE-2951).
+- **Qualcomm Converter page** (`models/conversion/qualcomm.md`): the launch form, optimization profiles and Advanced settings, with guidance on choosing a profile from the IQ-9075 benchmark of eight precision, split and quantization combinations. Added to the conversion index and navigation (DE-3018).
+- **PHYTEC phyFLEX-i.MX 95 Libra quick start** (`platforms/quickstart/phytec_imx95/`): setup, capture, import, annotation, training, Neutron conversion, validation and deployment, with PHYTEC added to the platform vendors on the Platforms page (DE-2979).
+- **Browser Support Matrix and Pricing Tiers** (`studio/index.md`, `studio/navigation.md`): supported and unsupported browsers, and the pricing tiers (DE-1630).
+- **Annotate Dataset step in the Raivin quick start** (`platforms/quickstart/raivin/annotate.md`): checking the restored annotations, adding missing ones with the AGTG tool and fixing boxes by hand, between Restore and Split (EDGEAI-1376).
+- **Torizon for Maivin 2026.10.0 release notes and known issues** (`platforms/software/{release_notes,issues}.md`): the 1080p30 default and the Replay service known issue (EDGEAI-2392).
 
-### Changed
+#### Changed
 
 - **Letterbox placement spelled `topleft`** (`models/metadata.md`): `input.preprocessing.letterbox.placement` takes `center` or `topleft`. HAL 0.36.0 wrote `top_left`, which the HAL no longer reads, so models carrying it must be updated (EDGEAI-2360).
 - **Class label rules** (`models/metadata.md`): class labels are written with no leading or trailing spaces and no empty names. The HAL trims the names it reads, ignores a label source it cannot use with a warning, and reports names that repeat ignoring case (EDGEAI-2360).
@@ -53,13 +82,20 @@ file. The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.
 - **Client import and CLI reference for 2.15.0** (`client/import.md`, `client/cli/reference.md`): Parquet accepted wherever an annotation file is read, `generate-arrow` writing the 2026.10 schema, `coco-to-arrow` directory input and image staging, crowd annotations skipped by `import-coco` and `upload-dataset`, the `pose` and `location` order `upload-dataset` reads and the correction older files need, `migrate` to 2026.10, the `version` command renamed `server-version`, token file paths, `download-annotations` types, the upload batch size, and `validate-snapshot` options; the `label_index` type is corrected to `UInt64` (DE-2971).
 - `edgefirst-client version` replaced with `edgefirst-client server-version` (`client/index.md`, `client/cli/index.md`, `discrete/models/download_model.md`, `discrete/models/download_fusion_model.md`).
 - Spellcheck dictionary (`assets/known_words.txt`): words from the 2.15.0 CLI reference and the `edgefirst_client` Python API reference.
+- **Camera mode settings for 2026.10** (`platforms/configuration/camera.md`, `platforms/configuration/mcap_recording.md`, `perception/4k/camera_4k.md`): 1080p30 is the default mode, 1080p60 and 4K30 are the other accepted values, an unknown value falls back to 4K30, a mode change is applied by rebooting, `camera/frame` is recorded as a buffer reference without pixels, and the 4K setup uses `CAMERA_MODE="4K30"` (EDGEAI-2392).
+- **RadarExp renamed to EdgeFirst Fusion Model** across the Perception and Platforms pages.
+- **Cloud runs hardware table** (`profiler/studio/cloud.md`): lists the model formats each class runs; TFLite runs with XNNPACK on the CPU classes only and the GPU class needs the ONNX export (DE-2973).
+- **eIQ Neutron SDK 3.2.3** stated for the profiler i.MX 95 image (`profiler/installation/{docker,imx95}.md`) (EDGEAI-2357).
+- **Studio documentation refreshed** (`studio/*.md`, `studio/user/*.md`, `platforms/quickstart/{maivin,raivin}/*.md`): the Studio index, navigation, projects, datasets, snapshots, tasks, models, Apps and account pages and the Maivin and Raivin quick starts updated to the current Studio interface, together with the dataset import, mobile upload, AGTG, model conversion and validation workflow pages and their screenshots (EDGEAI-1376, DE-2979).
+- **ModelPack and Ultralytics training pages and benchmarks refreshed** (`models/{modelpack,ultralytics,training}/`) with the current training interface and a new ML steps image (DE-2951).
+- **Documentation build locked with uv** (`pyproject.toml`, `uv.lock`, `.github/`): `requirements.txt` replaced by `pyproject.toml` and `uv.lock` on Python 3.12, publishing through `uv sync --locked`, a strict build workflow on every pull request, and weekly Dependabot updates grouped into one pull request.
 
-### Removed
+#### Removed
 
 - **LiDAR depth and reflectivity topics** (`perception/topics/lidar.md`, `perception/topics/index.md`, `perception/dev/examples/lidar.md`): `lidar/depth` and `lidar/reflect` are an obsolete feature and are no longer published by the `lidarpub` service.  Their topic sections, the table rows, the two developer examples, and the `lidar_depth.png` and `lidar_reflect.png` screenshots are removed.
 - **Model Mask Compressed example** (`perception/dev/examples/model.md`): the `model/mask_compressed` topic was removed in EdgeFirst Schemas 4.0 and is no longer published, the section documenting it and the `remote` decompression branch of the combined example are removed.
 - **Web UI Settings page** (`platforms/configuration/webui.md` and its four screenshots): the `webui` service no longer has a configuration file, the display options moved to the Camera and Radar page controls.  A redirect to `platforms/configuration/index.md` is registered in `mkdocs.yml`.
-
+- **ModelPack tutorials** (`models/modelpack/tutorials/`): the Music Box and Measurement Tape tutorial pages and their assets are removed (DE-2951).
 ### [2026-08-25-rc]
 
 #### Fixed

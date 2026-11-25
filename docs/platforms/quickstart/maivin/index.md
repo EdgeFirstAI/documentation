@@ -16,15 +16,17 @@ Central to the EdgeFirst Platforms is the EdgeFirst Perception Middleware, what 
 
 In this Quick Start, you will find instructions for:
 
-1. [Setting up your Maivin](setup.md)
-2. [Visiting the Maivin's Web UI](webui.md)
-3. [Recording an MCAP using the Maivin](record.md)
-4. [Uploading the MCAP to EdgeFirst Studio](upload.md)
-5. [Creating a project in EdgeFirst Studio](project.md)
-6. [Restoring an MCAP into a Dataset](restore.md)
-7. [Split and Tag the Restored Dataset for Training](split.md)
-8. [Training Vision Model](train.md)
-9. [Validating Vision Model](validate.md)
-10. [Deploying Vision Model](deploy.md)
+1. [Sign Up and Log In to EdgeFirst Studio](studio.md)
+2. [Create your project in EdgeFirst Studio](project.md)
+3. [Setting up your Maivin](setup.md)
+4. [Visiting the Maivin's Web UI](webui.md)
+5. [Recording an MCAP using the Maivin](record.md)
+6. [Uploading the MCAP to EdgeFirst Studio](upload.md)
+7. [Restoring an MCAP into a Dataset](restore.md)
+8. [Annotating the Dataset](annotate.md)
+9. [Split and Tag the Restored Dataset for Training](split.md)
+10. [Training Vision Model](train.md)
+11. [Validating Vision Model](validate.md)
+12. [Deploying Vision Model](deploy.md)
 
-Each page links to the next, so you can also just start with [Setup](setup.md) and follow the trail through to deployment.  For a tour of the device's main page, see the [Web UI Walkthrough](webui.md).
+Each page links to the next, so you can also just start with [EdgeFirst Studio](studio.md) and follow the trail through to deployment.  For a tour of the device's main page, see the [Web UI Walkthrough](webui.md).

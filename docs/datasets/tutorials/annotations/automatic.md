@@ -70,60 +70,15 @@ Next [navigate to the gallery](../management.md#view-dataset) of the dataset by 
 
 The next section will describe the *Semi-Automatic Ground Truth Generation* for additional user control during the auto-annotation process.
 
-## Semi-Automatic Ground Truth Generation
+## 2D Automatic Ground Truth Generation
 
-This annotation feature is available after [importing the dataset](../capture.md) into EdgeFirst Studio.  This process occurs in the [dataset gallery](../management.md#view-dataset) where the user has more
-control over the annotation process with the ability to annotate any object with custom classes.  This feature will preload all frames of a *video* sequence in the dataset into [SAM2](https://ai.meta.com/research/sam2/) to generate segmentation masks, 2D bounding boxes, 3D bounding boxes (For Raivin/LiDAR Only) by tracking the object across the frames.
+{% include-markdown "discrete/datasets/annotate_2d_dataset.md" %}
 
-A complete description of this feature along with the functionalities of each buttons shown in this tutorial can be found under [Studio](../../../studio/agtg.md#semi-automatic-ground-truth-generation).
+## 3D Automatic Ground Truth Generation
 
-This feature is a three-step process: *Initialize AGTG Server*, *Annotate Starting Frame*, *Propagate*.
+{% include-markdown "discrete/datasets/annotate_3d_dataset.md" %}
 
-### Initialize AGTG Server
-
-Inside the dataset gallery, click on the "AI Segment Tool" to start the AGTG server.
-
-{{ figure("../../assets/annotations/automatic/agtg-segment-tool.jpg", "Auto Segment Mode") }}
-
-If there is currently no AGTG server available, go ahead and click on "Launch AGTG Server".
-
-{{ figure("../../assets/annotations/manual/confirm-agtg-server-launch.jpg", "Launch AGTG Server") }}
-
-Please wait while the server is being initialized.
-
-{{ figure("../../assets/annotations/manual/agtg-server-initialization.jpg", "Launch AGTG Server") }}
-
-!!! warning "Active AGTG Server"
-    This server is costing credits to run.  An inactivity of 15 minutes will auto-terminate this server.  Otherwise, once you have completed the annotations, please ensure to terminate the AGTG server by clicking "Shutdown AGTG Server" to avoid spending more of your credits.
-
-### Annotate Starting Frame
-
-{{ video("../../../getting_started/assets/workflows/AGTG-tutorial.mp4", "AGTG Preview") }}
-
-Once the server has been initialized, annotate the starting frame.  This is the only annotation required by the user. The rest of the frames will be annotated by SAM2 and the AGTG process.  This step is also known as initializing the SAM2 state.  Each object must be annotated independently so the tracker can assign a unique ID.
-
-Start by drawing a bounding box for the first object by clicking and dragging.  For multiple objects in the frame, click "+" to add a new object as shown below.  The process for each object should be: *Add a new object* -> *Draw object prompt*.
-
-By default, the prompts provided to SAM2 are bounding boxes (mouse click and drag) which should cover the object to be annotated in the frame.  However, points can also be provided (mouse clicks) by clicking areas that are part of the object.
-
-{{ figure("../../assets/annotations/automatic/agtg-prompts.jpg", "AGTG Initial Prompts") }}
-
-### Propagate
-
-Once the first frame has been annotated (*prompts for SAM2*), specify the "End Frame" which marks the point where SAM2 stops propagating.  By default this is the end of the sequence (last frame).  
-
-!!! Bug "Large Tracks"
-    We recommend keeping the tracks to less than 500 frames at a time. We observed unpredictable behavior from the tool when deploying tracks of ~1500 or higher.
-
-Once this has been specified, click on "Propagate" to start the propagation process.
-
-As the frames propagate, you should see the frames being auto-annotated.  To stop the propagation process click on "Stop Propagation".
-
-{{ figure("../../assets/annotations/automatic/propagation-process.jpg", "Propagation Process") }}
-
-Once the propagation completes as it reached the end frame, click on "Save AIGT Annotations" to save the generated annotations.
-
-{{ figure("../../assets/annotations/automatic/propagation-completed.jpg", "Propagation Completed") }}
+{% include-markdown "discrete/datasets/key_frames.md" %}
 
 ## Video Tutorials
 

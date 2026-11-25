@@ -4,7 +4,11 @@ This page will describe the steps for manually adding annotations in the dataset
 
 As mentioned, a dataset can have 2D and 3D annotations.  This page is split into tutorials for manually annotating 2D and 3D annotations.
 
+## Manual 2D Annotations
+
 {% include-markdown "discrete/datasets/manual_2d.md" %}
+
+## Manual 3D Annotations
 
 {% include-markdown "discrete/datasets/manual_3d.md" %}
 

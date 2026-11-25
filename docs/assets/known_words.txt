@@ -798,3 +798,7 @@ zoomable
 zstd
 zx
 zy
+tooltip
+unreviewed
+unselect
+callouts

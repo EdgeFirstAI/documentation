@@ -1,5 +1,3 @@
-# Manual 2D Annotations
-
 This section describes the steps for adjusting 2D annotations in the dataset.
 
 ## Add 2D Annotations
@@ -17,7 +15,7 @@ Please wait while the server is being initialized.
 {{ figure("/datasets/assets/annotations/manual/agtg-server-initialization.jpg", "Launch AGTG Server") }}
 
 !!! warning "Active AGTG Server"
-    This server is costing credits to run.  An inactivity of 15 minutes will auto-terminate this server.  Otherwise, once you have completed the annotations, please ensure to terminate the AGTG server by clicking "Shutdown AGTG Server" to avoid spending more of your credits.
+    This server is costing credits to run.  An inactivity of 15 minutes will auto-terminate this server.  Otherwise, once you have completed the annotations, please ensure to terminate the AGTG server by clicking !["Stop Task Button"](../../assets/buttons/studio_trash_button.jpg) to avoid spending more of your credits.
 
 Once the server is initialized, draw the bounding box around the object by clicking on the image and then dragging the mouse to expand the bounding box.  This will start segmenting the object.  Once the object is properly segmented, go ahead and click "Save AIGT Annotations" as indicated in red to save the annotation and to move forward to the next image.
 
@@ -34,30 +32,22 @@ The standard steps for using these tools are described below.
 
 {{ figure("/datasets/assets/annotations/manual/2d-manual-annotation-tools.jpg", "2D Manual Annotation Tools") }}
 
+After making the adjustments, go ahead and press "ENTER" on your keyboard or click on the "Save Image Annotations" button on the top right to save these adjustments and move forward with the next image in the dataset.
+
 ## Adjust 2D Annotations
 
-To resize a 2D bounding box annotation, select the bounding box from the dropdown on the left under "2D Bounding Box".
+To resize a 2D bounding box annotation, click on the annotated object on the frame to select it.
+This will show the corner points around the bounding box allowing you to click on these points and drag the mouse to resize the bounding box.
+Similarly, the anchor points around the mask polygon also shows allowing you to adjust the mask.
 
 {{ figure("/datasets/assets/annotations/manual/2d-box-annotation.jpg", "Resize Bounding Box") }}
 
-This will show the anchor points around the bounding box allowing you to click on these points and drag the mouse to resize the bounding box.
-
-Similarly, to adjust the 2D segmentation mask annotation, select the segmentation mask from the dropdown on the left under "2D Polygon". This will also show the anchor points around the mask polygon allowing you to adjust the mask.
-
-{{ figure("/datasets/assets/annotations/manual/2d-mask-annotation.jpg", "Adjust Segmentation Mask") }}
-
-After making the adjustments, go ahead and click on the "Save Image Annotations" button on the top right to save these adjustments and move forward with the next image in the dataset.
+After making the adjustments, go ahead and press "ENTER" on your keyboard or click on the "Save Image Annotations" button on the top right to save these adjustments and move forward with the next image in the dataset.
 
 ## Delete 2D Annotations
 
-To delete an annotation, first click on the pointer tool !["Pointer Tool"](../../assets/buttons/studio-pointer-tool.jpg). Click on the annotation.  This will first highlight the bounding box annotation.  To delete the annotation, press the "Delete" key on your keyboard.
+To delete only a 2D box or segmentation mask, expand the object in the **Annotations** panel and click the delete button for that annotation type. The object's other annotations are kept. Selecting the object and pressing `Delete` on your keyboard, or clicking **Delete Object**, deletes the entire object and all of its annotations.
 
-{{ figure("/datasets/assets/annotations/manual/2d-box-annotation.jpg", "Delete Bounding Box") }}
+{{ figure("/datasets/assets/annotations/manual/deleted-2d-annotation.jpg", "Delete Annotations") }}
 
-Next repeat the same process for the segmentation mask.  Click on the mask annotation to highlight the mask.  To delete the annotation, press the "Delete" key on your keyboard or click on the "Delete" button next to the annotation to delete the annotation.
-
-{{ figure("/datasets/assets/annotations/manual/delete-segmentation-mask.jpg", "Delete Segmentation Mask") }}
-
-The annotations will be deleted after following the steps above.
-
-{{ figure("/datasets/assets/annotations/manual/deleted-2d-annotation.jpg", "Deleted Annotations") }}
+After making the adjustments, go ahead and press "ENTER" on your keyboard or click on the "Save Image Annotations" button on the top right to save these adjustments and move forward with the next image in the dataset.

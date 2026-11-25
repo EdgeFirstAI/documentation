@@ -11,6 +11,7 @@ file. The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.
 - **Keyboard Hotkeys reference** (`discrete/datasets/hot_keys.md`): the 3D and 2D canvases, editing, sequences, the SAM2 sidebar and audit mode, included by the 3D annotations hotkeys page and the Studio gallery page (DE-3163, DE-2832).
 - **Import MCAPs tutorial** (`datasets/tutorials/import.md`, `discrete/datasets/import_mcaps.md`): importing an MCAP recording with the MCAP Importer app (DE-2204).
 - **Studio sign-up and login pages and a Maivin annotate page** (`platforms/quickstart/{maivin,raivin}/studio.md`, `platforms/quickstart/maivin/annotate.md`) (DE-3163).
+- **AGTG App and AutoSAM** (`studio/agtg.md`, `studio/apps.md`): an AGTG App section with a screenshot explaining that the app runs a server dedicated to hosting SAM2 for the annotation process, an AutoSAM introduction (the AGTG-App dependency that auto-annotates and formulates 3D boxes, built on a fork of SAM2), and AGTG Apps with the EdgeFirst Studio SAM 2 Server app on the Apps page (DE-3163).
 
 ### Changed
 

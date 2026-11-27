@@ -35,7 +35,7 @@ edgefirst-profiler validate --session-id v-1b51
 When invoked with `--session-id` directly from the terminal, the profiler runs **headlessly** — there is no TUI, just a progress-bar-driven report. The same workflow is also available from inside the TUI; see [Validation from the Profiler](from_profiler.md) for that path.
 
 !!! warning "Re-running an existing session uses the flags you pass now"
-    Naming an existing validation session runs it again with the flags given **now** — it does not restore the ones its previous run used. Pipeline options such as `--sahi` must be passed again, or the re-run profiles a different pipeline and replaces the earlier results with it. Every run report states whether tiled inference was used, so a replaced tiled run is at least visible after the fact.
+    Naming an existing validation session runs it again with the flags given **now** — it does not restore the ones its previous run used. Pipeline options such as `--sahi` must be passed again, or the re-run profiles a different pipeline and replaces the earlier results with it. A model whose metadata declares tiled deployment is tiled on every run, with or without `--sahi`. Every run report states whether tiled inference was used, so a replaced tiled run is at least visible after the fact.
 
 The profiler:
 

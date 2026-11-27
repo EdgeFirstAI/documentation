@@ -38,7 +38,7 @@ Start a training session by clicking on the "Actions" button on the top right co
 Select the trainer, either "ModelPack" or "Ultralytics".  Both trainers run as Studio apps on cloud GPU instances, and Studio opens the launch form of the selected trainer.  Provide a name and description of the training session and specify the dataset to be used for training and validation.  In this example, the dataset specified is the "Coffee Cup" dataset which was used as an example under the [Getting Started](../../getting_started/capture_data.md).  Next specify the training parameters.  Additional information on these parameters are provided by hovering over the info button ![Info Button](../../assets/buttons/studio-info-button.jpg).
 
 !!! tip "Input Resolution"
-    For ModelPack, we recommend changing the input resolution to 640x360 to maximize detection rates on small datasets.
+    For ModelPack, we recommend changing the input resolution to 640x360 to maximize detection rates on small datasets.  For small objects in high-resolution images, consider [Input Tiling](sahi.md) instead of a larger input resolution.
 
 !!! warning "Large Batch Size"
     For small datasets, a large batch size may produce poor results. Use a batch size of 4 or 8.
@@ -50,32 +50,35 @@ The launch forms of both trainers start with the same three groups.
 | Group | Description |
 |-------|-------------|
 | **Training Session** | The **Name** and optional **Description** of the training session.  The name is also used to name the artifacts. |
-| **Source Dataset** | The dataset the session trains and validates on, with its annotation set and tag. |
+| **Source Dataset** | The dataset the session trains, validates and calibrates on, with its annotation set and tag. |
+| **Destination Experiment** | The experiment the session is created in, where its artifacts and charts are published.  The dataset and the experiment can belong to different projects. |
 
 The groups that follow depend on the trainer.
 
 | Trainer | Groups | Parameter Reference |
 |---------|--------|---------------------|
-| **ModelPack** | Input (Input Resolution, Camera Adaptor, Input Tiling (SAHI), Letterbox Resize), Model Parameters, Training Parameters, Data Augmentation, Export Parameters | [ModelPack Training Parameters](../modelpack/index.md#training-parameters) |
-| **Ultralytics** | Input (Input Resolution), Task Selection, Export Parameters, Training (Weights, Enable Training and its training settings) | [Ultralytics Training Parameters](../ultralytics/index.md#training-parameters) |
+| **ModelPack** | Input (Input Resolution, Camera Adaptor, Input Tiling (SAHI) and its settings, Letterbox Resize), Model Parameters, Training Parameters (Weights, Enable Training, Epochs, Batch Size), Data Augmentation, Export Parameters (Calibration Samples, ONNX Opset Version, Deployment) | [ModelPack Training Parameters](../modelpack/index.md#training-parameters) |
+| **Ultralytics** | Input (Input Resolution, Custom Resolution), Task Selection, Training (Weights, Enable Training and its training, optimizer, Camera Adaptor and Input Tiling settings), Augmentation, Export Parameters (Calibration Samples, ONNX Opset Version, End-to-End, Deployment) | [Ultralytics Training Parameters](../ultralytics/index.md#training-parameters) |
+
+To train for small objects in high-resolution images, see [Training for Small Objects (SAHI)](sahi.md).
 
 Click "Start App" to start the training session.
 
 ### Weights and Enable Training
 
-The two trainers start from different weights.
+Both trainers have a **Weights** field and an **Enable Training** toggle.  **Weights** is either the trainer's pretrained weights or a previous training session of the same trainer, whose published weights bring their own model definition.  The defaults differ.
 
-- **ModelPack** always trains.  The backbone starts from ImageNet-pretrained weights and the detection and segmentation heads start fresh.
-- **Ultralytics** has a **Weights** field and an **Enable Training** toggle in its Training group.  **Weights** is either **Pretrained (COCO)** (default), the Ultralytics COCO weights for the selected model, or a previous Ultralytics training session, whose published weights bring their own model definition.  **Enable Training** is off by default.
+- **ModelPack** starts from **Default Weights**, COCO- or ImageNet-pretrained where available for the selected backbone and size, with **Enable Training** on.  An export-only ModelPack session needs a previous training session as its **Weights**.  See [ModelPack Weights Source](../modelpack/index.md#weights-source).
+- **Ultralytics** starts from **Pretrained (COCO)**, the Ultralytics COCO weights for the selected model, with **Enable Training** off.  The table below describes the Ultralytics combinations.
 
 | Weights | Enable Training | Ultralytics Session Behavior |
 |---------|-----------------|------------------------------|
 | Pretrained (COCO) | Off | **Default.** No training.  The session exports the COCO pretrained weights (80 classes) at the selected Input Resolution.  This lets you reproduce validation and profiling results from the [EdgeFirst Model Zoo on Hugging Face](https://huggingface.co/spaces/EdgeFirst/Models) using the published COCO checkpoints. |
 | Pretrained (COCO) | On | Fine-tunes the COCO pretrained weights on the selected dataset. |
 | A previous training session | On | Fine-tunes the weights published by that session on the selected dataset. |
-| A previous training session | Off | No training.  The session exports that session's weights at the Input Resolution and Deployment chosen on the form, for example to deploy tile-trained weights whole frame. |
+| A previous training session | Off | No training.  The session exports that session's weights at the Input Resolution and Deployment chosen on the form, for example to deploy tile-trained weights whole frame.  ModelPack supports this combination too. |
 
-A session with **Enable Training** off validates the exported model and reports the results as its final validation metrics.  It runs no epochs, so its loss and learning-rate charts stay empty.  See [Weights Source](../ultralytics/index.md#weights-source) for the details.
+A session with **Enable Training** off validates the exported model and reports the results as its final validation metrics.  It runs no epochs, so its loss and learning-rate charts stay empty.  See [Weights Source](../ultralytics/index.md#weights-source) for the details, and [Deploying a Tile-Trained Model](sahi.md#deploying-a-tile-trained-model) for re-exporting tile-trained weights.
 
 !!! warning "COCO pretrained weights and dataset compatibility"
     **Pretrained (COCO)** weights without training detect the 80 COCO classes.  When your dataset classes differ from the COCO classes, the session skips validation, and the model's class outputs do not correspond to your labels.  Turn on **Enable Training** to fine-tune the weights on your dataset.

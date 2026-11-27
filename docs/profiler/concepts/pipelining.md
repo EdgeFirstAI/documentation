@@ -124,7 +124,7 @@ Every run started from the TUI (F4 Start, Studio Validate, local profiling) open
 - Press **Enter** to launch immediately with Auto depths.
 - Press **c** to open five sliders (Capture, Preprocess, Inference, Postprocess, Mask), each defaulting to Auto and showing what Auto will resolve to for the detected platform.
 - Press **s** for the serialized-core preset — every core stage runs one frame at a time. This is the launch-dialog equivalent of `--serialize-core`.
-- Press **t** to toggle SAHI tiled inference on or off, shown as `Tiling: on/off`.
+- Press **t** to toggle `--sahi` tiled inference, shown as `Tiling: on`, or `Tiling: auto (on for tiled models)` when off. Models whose metadata declares tiled deployment are tiled either way.
 - Move a slider to 1–8 to pin that stage; this is equivalent to passing the corresponding `--<stage>-depth N` flag. For a CPU inference depth above 8, use `--inference-depth` on the command line instead.
 - The dialog displays a warning banner when the platform constrains a stage to single-thread concurrency (for example, VxDelegate inference or Neutron DMA-BUF preprocess).
 
@@ -228,7 +228,7 @@ The resolved per-stage depths, the backend, and the operating mode (pipelined vs
 
 ## Tiled inference and the pipeline
 
-With `--sahi`, each decoded frame expands into several overlapping tiles instead of one letterboxed image. Every tile flows through preprocess, inference, and model decode as its own work item, through the same concurrent stage pools described above, and the per-tile detections are merged back into full-frame coordinates at the end. The stage geometry does not change — but the work per frame multiplies by the tile count, which moves the bottleneck and makes the depth choices on this page matter more, not less. See [Tiled Inference (SAHI)](sahi.md).
+When a run tiles, with `--sahi` or because the model's metadata declares tiled deployment, each decoded frame expands into several overlapping tiles instead of one letterboxed image. Every tile flows through preprocess, inference, and model decode as its own work item, through the same concurrent stage pools described above, and the per-tile detections are merged back into full-frame coordinates at the end. The stage geometry does not change — but the work per frame multiplies by the tile count, which moves the bottleneck and makes the depth choices on this page matter more, not less. See [Tiled Inference (SAHI)](sahi.md).
 
 ## Measuring your own defaults
 

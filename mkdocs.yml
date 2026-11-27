@@ -78,6 +78,8 @@ plugins:
         'models/modelpack/quantize.md': 'models/conversion/index.md'
         # Kinara converter renamed to ARA-2 (DE-2497, 2026-05-24).
         'models/conversion/kinara.md': 'models/conversion/ara2.md'
+        # Help link of the ModelPack Studio app
+        'models/training/modelpack.md': 'models/modelpack/index.md'
         # --- NPU on-target deployment demos removed (EDGEAI-547, 2026-05-21) ---
         # Embedded-target deployment is now covered by the deployment section.
         'models/ultralytics/npu.md': 'models/deployment/launcher.md'

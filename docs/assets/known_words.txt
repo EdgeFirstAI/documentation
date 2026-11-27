@@ -465,6 +465,7 @@ os08a20
 os1
 ostree
 ouster
+overfit
 overfitting
 overlays
 oversubscribe
@@ -728,6 +729,7 @@ unprivileged
 unquantized
 unsplit
 unstamped
+untiled
 untracked
 unsynchronized
 untrusted
